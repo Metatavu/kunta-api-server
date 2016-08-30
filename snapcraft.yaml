@@ -1,0 +1,25 @@
+name: kunta-api-server
+version: "0.0.1-SNAPSHOT"
+summary: Kunta API Serevr
+description: Kunta API Server 
+confinement: devmode
+
+apps:
+  wildfly:
+    command: bin/wrapper
+    daemon: fork
+    plugs: [network-bind]
+
+parts:
+  webapp:
+    plugin: maven
+    source: https://github.com/otavanopisto/kunta-api-server.git
+    source-type: git
+    
+wildfly:
+  plugin: dump
+  source: http://download.jboss.org/wildfly/10.1.0.Final/wildfly-10.1.0.Final.tar.gz
+  
+local-files:
+  plugin: make
+  source: .
