@@ -15,6 +15,12 @@ parts:
     source: http://download.jboss.org/wildfly/10.1.0.Final/wildfly-10.1.0.Final.tar.gz
     stage-packages:
       - openjdk-8-jdk
+  wildfly-hibernate-ogm:
+    plugin: dump
+    source: https://repo1.maven.org/maven2/org/hibernate/ogm/hibernate-ogm-modules-wildfly10/5.0.1.Final/hibernate-ogm-modules-wildfly10-5.0.1.Final.zip      
+    organize:
+      org: modules/system/layers/base/org
+      
   webapp:
     plugin: maven
     source: https://github.com/otavanopisto/kunta-api-server.git
