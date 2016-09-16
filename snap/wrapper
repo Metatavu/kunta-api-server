@@ -6,5 +6,6 @@ set -x
 export JBOSS_HOME="$SNAP_DATA"
 export JBOSS_BASE_DIR="$SNAP"
 export JBOSS_MODE=standalone
+export RUN_CONF=$JBOSS_BASE_DIR/$JBOSS_MODE/standalone-ka.xml
 
-$JBOSS_BASE_DIR/bin/standalone.sh
+$JBOSS_BASE_DIR/bin/standalone.sh --properties=$SNAP/jboss.properties
