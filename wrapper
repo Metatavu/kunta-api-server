@@ -1,0 +1,10 @@
+#!/bin/sh
+
+set -e
+set -x
+
+export JBOSS_HOME="$SNAP_DATA"
+export JBOSS_BASE_DIR="$SNAP"
+export JBOSS_MODE=standalone
+
+$JBOSS_BASE_DIR/bin/standalone.sh
