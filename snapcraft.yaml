@@ -20,7 +20,6 @@ parts:
     plugin: maven
     source: https://github.com/otavanopisto/kunta-api-server.git
     source-type: git
-    after: [cassandra]
   local-files:
     plugin: make
     source: .
