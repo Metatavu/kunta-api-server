@@ -3,7 +3,6 @@ version: "0.0.1-SNAPSHOT"
 summary: Kunta API Serevr
 description: Kunta API Server 
 confinement: devmode
-vendor: Metatavu Oy
 
 apps:
   wildfly:
