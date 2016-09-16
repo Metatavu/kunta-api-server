@@ -7,7 +7,7 @@ confinement: devmode
 apps:
   wildfly:
     command: bin/wrapper
-    daemon: fork
+    daemon: simple
     plugs: [network-bind]
 
 parts:
