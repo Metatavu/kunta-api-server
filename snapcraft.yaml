@@ -8,7 +8,6 @@ apps:
   wildfly:
     command: bin/wrapper
     daemon: simple
-    plugs: [network-bind]
 
 parts:
   wildfly:
