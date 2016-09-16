@@ -1,0 +1,5 @@
+/target/
+/database.cql
+/.settings/
+/.classpath
+/.project
