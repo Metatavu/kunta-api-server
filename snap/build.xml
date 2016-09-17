@@ -3,10 +3,18 @@
   <property environment="env"/>
 
   <target name="install">
-    <mkdir dir="${env.SNAP_DATA}/common/wildfly/deployments" />
+    <mkdir dir="${env.SNAP_DATA}/common/wildfly/standalone/deployments" />
     <mkdir dir="${env.SNAP_DATA}/common/wildfly/standalone" />
-  	<copy todir="${env.SNAP_DATA}/common/wildfly/standalone">
+    <mkdir dir="${env.SNAP_DATA}/common/wildfly/standalone/configuration" />
+  	<copy todir="${env.SNAP_DATA}/common/wildfly/standalone/configuration">
       <fileset dir="${env.SNAP}/standalone/configuration"/>
+  	</copy>
+  	
+    <mkdir dir="${env.SNAP_DATA}/common/wildfly/domain/deployments" />
+    <mkdir dir="${env.SNAP_DATA}/common/wildfly/domain" />
+    <mkdir dir="${env.SNAP_DATA}/common/wildfly/domain/configuration" />
+  	<copy todir="${env.SNAP_DATA}/common/wildfly/domain/configuration">
+      <fileset dir="${env.SNAP}/domain/configuration"/>
   	</copy>
   </target>
 
