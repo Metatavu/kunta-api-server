@@ -3,19 +3,30 @@
   <property environment="env"/>
 
   <target name="install">
-    <mkdir dir="${env.SNAP_DATA}/common/wildfly/standalone/deployments" />
-    <mkdir dir="${env.SNAP_DATA}/common/wildfly/standalone" />
+  	<mkdir dir="${env.SNAP_DATA}/common/wildfly/standalone" />
     <mkdir dir="${env.SNAP_DATA}/common/wildfly/standalone/configuration" />
   	<copy todir="${env.SNAP_DATA}/common/wildfly/standalone/configuration">
       <fileset dir="${env.SNAP}/standalone/configuration"/>
   	</copy>
   	
-    <mkdir dir="${env.SNAP_DATA}/common/wildfly/domain/deployments" />
+    <delete includeemptydirs="true" dir="${env.SNAP_COMMON}/wildfly/standalone/deployments"/>
+
+  	<copy todir="${env.SNAP_COMMON}/wildfly/standalone/deployments">
+      <fileset dir="${env.SNAP}/war" includes="*.war"/>
+  	</copy>
+  	
     <mkdir dir="${env.SNAP_DATA}/common/wildfly/domain" />
     <mkdir dir="${env.SNAP_DATA}/common/wildfly/domain/configuration" />
   	<copy todir="${env.SNAP_DATA}/common/wildfly/domain/configuration">
       <fileset dir="${env.SNAP}/domain/configuration"/>
   	</copy>
+  	
+    <delete includeemptydirs="true" dir="${env.SNAP_COMMON}/wildfly/domain/deployments"/>
+
+  	<copy todir="${env.SNAP_COMMON}/wildfly/domain/deployments">
+      <fileset dir="${env.SNAP}/war" includes="*.war"/>
+  	</copy>
+
   </target>
 
 </project>
