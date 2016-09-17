@@ -8,7 +8,6 @@ apps:
   wildfly:
     command: bin/wrapper
     daemon: simple
-
 parts:
   wildfly:
     plugin: dump
@@ -20,7 +19,6 @@ parts:
     source: https://repo1.maven.org/maven2/org/hibernate/ogm/hibernate-ogm-modules-wildfly10/5.0.1.Final/hibernate-ogm-modules-wildfly10-5.0.1.Final.zip      
     organize:
       org: modules/system/layers/base/org
-      
   webapp:
     plugin: maven
     source: https://github.com/otavanopisto/kunta-api-server.git

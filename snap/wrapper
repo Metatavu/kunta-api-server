@@ -5,5 +5,6 @@ set -x
 
 export JBOSS_HOME="$SNAP"
 export JBOSS_MODE=standalone
+export JBOSS_LOG_DIR="$SNAP_DATA/common/wildfly/log/"
 
 $JBOSS_HOME/bin/standalone.sh --properties=$JBOSS_HOME/jboss.properties
