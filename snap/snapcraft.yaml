@@ -26,3 +26,6 @@ parts:
   local-files:
     plugin: make
     source: .
+  data-files:
+    plugin: ant
+    source: .

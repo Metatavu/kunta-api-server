@@ -1,0 +1,13 @@
+<project name="install" default="install" basedir=".">
+	
+  <property environment="env"/>
+
+  <target name="install">
+    <mkdir dir="${env.SNAP_DATA}/common/wildfly/deployments" />
+    <mkdir dir="${env.SNAP_DATA}/common/wildfly/standalone" />
+  	<copy todir="${env.SNAP_DATA}/common/wildfly/standalone">
+      <fileset dir="${env.SNAP}/standalone/configuration"/>
+  	</copy>
+  </target>
+
+</project>
