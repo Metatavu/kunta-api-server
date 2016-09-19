@@ -298,14 +298,14 @@ public class MikkeliNytRestTestsIT extends AbstractIntegrationTest {
   }
 
   private void createSettings(String kuntaApiOrganizationId, String baseUrl, String imagesBasePath) {
-    insertSystemSetting(MikkeliNytConsts.SYSTEM_SETTING_APIKEY, ORGANIZATION_SETTING_APIKEY);
+    insertOrganizationSetting(kuntaApiOrganizationId, MikkeliNytConsts.ORGANIZATION_SETTING_APIKEY, ORGANIZATION_SETTING_APIKEY);
     insertOrganizationSetting(kuntaApiOrganizationId, MikkeliNytConsts.ORGANIZATION_SETTING_LOCATION, ORGANIZATION_SETTING_LOCATION);
     insertOrganizationSetting(kuntaApiOrganizationId, MikkeliNytConsts.ORGANIZATION_SETTING_BASEURL, baseUrl);
     insertOrganizationSetting(kuntaApiOrganizationId, MikkeliNytConsts.ORGANIZATION_SETTING_IMAGEBASEURL, String.format("%s/%s/1000/", baseUrl, imagesBasePath));
   }
   
   private void deleteSettings(String kuntaApiOrganizationId) {
-    deleteSystemSetting(MikkeliNytConsts.SYSTEM_SETTING_APIKEY);
+    deleteOrganizationSetting(kuntaApiOrganizationId, MikkeliNytConsts.ORGANIZATION_SETTING_APIKEY);
     deleteOrganizationSetting(kuntaApiOrganizationId, MikkeliNytConsts.ORGANIZATION_SETTING_LOCATION);
     deleteOrganizationSetting(kuntaApiOrganizationId, MikkeliNytConsts.ORGANIZATION_SETTING_BASEURL);
     deleteOrganizationSetting(kuntaApiOrganizationId, MikkeliNytConsts.ORGANIZATION_SETTING_IMAGEBASEURL);

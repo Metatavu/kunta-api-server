@@ -63,19 +63,11 @@ public abstract class AbstractTest {
   protected long insertOrganizationSetting(String organizationId, String key, String value) {
     return executeInsert("insert into OrganizationSetting (settingKey, organizationKuntaApiId, value) values (?, ?, ?)", key, organizationId, value);
   }
-
-  protected long insertSystemSetting(String key, String value) {
-    return executeInsert("insert into SystemSetting (settingKey, value) values (?, ?)", key, value);
-  }
   
   protected void deleteOrganizationSetting(String organizationId, String key) {
     executeDelete("delete from OrganizationSetting where settingKey = ? and organizationKuntaApiId = ?", key, organizationId);
   }
-
-  protected void deleteSystemSetting(String key) {
-    executeDelete("delete from SystemSetting where settingKey = ?", key);
-  }
-
+  
   protected long createIdentifier(String kuntaApiId, String source, String sourceId, String type) {
     return executeInsert("insert into Identifier (kuntaApiId, source, sourceId, type) values (?, ?, ?, ?)", 
       kuntaApiId, source, sourceId, type);

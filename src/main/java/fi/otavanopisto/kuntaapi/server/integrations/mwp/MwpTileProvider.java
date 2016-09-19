@@ -63,7 +63,7 @@ public class MwpTileProvider extends AbstractMwpProvider implements TileProvider
     String status = null;
     String filter = null;
 
-    ApiResponse<List<fi.otavanopisto.mwp.client.model.Tile>> response = mwpApi.getApi().wpV2TileGet(context, page, perPage, search, after,
+    ApiResponse<List<fi.otavanopisto.mwp.client.model.Tile>> response = mwpApi.getApi(organizationId).wpV2TileGet(context, page, perPage, search, after,
         before, exclude, include, offset, order, orderby, slug, status, filter);
 
     if (!response.isOk()) {
@@ -77,7 +77,7 @@ public class MwpTileProvider extends AbstractMwpProvider implements TileProvider
 
   @Override
   public Tile findOrganizationTile(OrganizationId organizationId, TileId tileId) {
-    fi.otavanopisto.mwp.client.model.Tile mwpTile = findTileByTileId(tileId);
+    fi.otavanopisto.mwp.client.model.Tile mwpTile = findTileByTileId(organizationId, tileId);
     if (mwpTile != null) {
       return translateTile(mwpTile);
     }
@@ -87,11 +87,11 @@ public class MwpTileProvider extends AbstractMwpProvider implements TileProvider
 
   @Override
   public List<Attachment> listOrganizationTileImages(OrganizationId organizationId, TileId tileId) {
-    fi.otavanopisto.mwp.client.model.Tile mwpTile = findTileByTileId(tileId);
+    fi.otavanopisto.mwp.client.model.Tile mwpTile = findTileByTileId(organizationId, tileId);
     if (mwpTile != null) {
       Integer featuredMediaId = mwpTile.getFeaturedMedia();
       if (featuredMediaId != null) {
-        fi.otavanopisto.mwp.client.model.Attachment featuredMedia = findMedia(featuredMediaId);
+        fi.otavanopisto.mwp.client.model.Attachment featuredMedia = findMedia(organizationId, featuredMediaId);
         if ((featuredMedia != null) && (featuredMedia.getMediaType() == MediaTypeEnum.IMAGE)) {
           return Collections.singletonList(translateAttachment(featuredMedia));
         }
@@ -103,7 +103,7 @@ public class MwpTileProvider extends AbstractMwpProvider implements TileProvider
 
   @Override
   public Attachment findTileImage(OrganizationId organizationId, TileId tileId, AttachmentId attachmentId) {
-    fi.otavanopisto.mwp.client.model.Tile tile = findTileByTileId(tileId);
+    fi.otavanopisto.mwp.client.model.Tile tile = findTileByTileId(organizationId, tileId);
     if (tile != null) {
       Integer featuredMediaId = tile.getFeaturedMedia();
       if (featuredMediaId != null) {
@@ -112,7 +112,7 @@ public class MwpTileProvider extends AbstractMwpProvider implements TileProvider
           return null;
         }
         
-        fi.otavanopisto.mwp.client.model.Attachment attachment = findMedia(featuredMediaId);
+        fi.otavanopisto.mwp.client.model.Attachment attachment = findMedia(organizationId, featuredMediaId);
         if (attachment != null) {
           return translateAttachment(attachment);
         }
@@ -131,7 +131,7 @@ public class MwpTileProvider extends AbstractMwpProvider implements TileProvider
       return null;
     }
     
-    fi.otavanopisto.mwp.client.model.Attachment featuredMedia = findMedia(mediaId);
+    fi.otavanopisto.mwp.client.model.Attachment featuredMedia = findMedia(organizationId, mediaId);
     if (featuredMedia.getMediaType() == MediaTypeEnum.IMAGE) {
       AttachmentData imageData = getImageData(featuredMedia.getSourceUrl());
       
@@ -146,14 +146,14 @@ public class MwpTileProvider extends AbstractMwpProvider implements TileProvider
     return null;
   }
 
-  private fi.otavanopisto.mwp.client.model.Tile findTileByTileId(TileId tileId) {
+  private fi.otavanopisto.mwp.client.model.Tile findTileByTileId(OrganizationId organizationId, TileId tileId) {
     TileId kuntaApiId = idController.translateTileId(tileId, MwpConsts.IDENTIFIER_NAME);
     if (kuntaApiId == null) {
       logger.severe(String.format("Failed to convert %s into MWP id", tileId.toString()));
       return null;
     }
     
-    ApiResponse<fi.otavanopisto.mwp.client.model.Tile> response = mwpApi.getApi().wpV2TileIdGet(kuntaApiId.getId(), null);
+    ApiResponse<fi.otavanopisto.mwp.client.model.Tile> response = mwpApi.getApi(organizationId).wpV2TileIdGet(kuntaApiId.getId(), null);
     if (!response.isOk()) {
       logger.severe(String.format("Finding tile failed on [%d] %s", response.getStatus(), response.getMessage()));
     } else {

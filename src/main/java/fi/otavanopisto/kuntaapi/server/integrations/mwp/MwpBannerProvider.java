@@ -63,7 +63,7 @@ public class MwpBannerProvider extends AbstractMwpProvider implements BannerProv
     String status = null;
     String filter = null;
 
-    ApiResponse<List<fi.otavanopisto.mwp.client.model.Banner>> response = mwpApi.getApi().wpV2BannerGet(context, page, perPage, search, after,
+    ApiResponse<List<fi.otavanopisto.mwp.client.model.Banner>> response = mwpApi.getApi(organizationId).wpV2BannerGet(context, page, perPage, search, after,
         before, exclude, include, offset, order, orderby, slug, status, filter);
 
     if (!response.isOk()) {
@@ -77,7 +77,7 @@ public class MwpBannerProvider extends AbstractMwpProvider implements BannerProv
 
   @Override
   public Banner findOrganizationBanner(OrganizationId organizationId, BannerId bannerId) {
-    fi.otavanopisto.mwp.client.model.Banner mwpBanner = findBannerByBannerId(bannerId);
+    fi.otavanopisto.mwp.client.model.Banner mwpBanner = findBannerByBannerId(organizationId, bannerId);
     if (mwpBanner != null) {
       return translateBanner(mwpBanner);
     }
@@ -87,11 +87,11 @@ public class MwpBannerProvider extends AbstractMwpProvider implements BannerProv
 
   @Override
   public List<Attachment> listOrganizationBannerImages(OrganizationId organizationId, BannerId bannerId) {
-    fi.otavanopisto.mwp.client.model.Banner mwpBanner = findBannerByBannerId(bannerId);
+    fi.otavanopisto.mwp.client.model.Banner mwpBanner = findBannerByBannerId(organizationId, bannerId);
     if (mwpBanner != null) {
       Integer featuredMediaId = mwpBanner.getFeaturedMedia();
       if (featuredMediaId != null) {
-        fi.otavanopisto.mwp.client.model.Attachment featuredMedia = findMedia(featuredMediaId);
+        fi.otavanopisto.mwp.client.model.Attachment featuredMedia = findMedia(organizationId, featuredMediaId);
         if ((featuredMedia != null) && (featuredMedia.getMediaType() == MediaTypeEnum.IMAGE)) {
           return Collections.singletonList(translateAttachment(featuredMedia));
         }
@@ -103,7 +103,7 @@ public class MwpBannerProvider extends AbstractMwpProvider implements BannerProv
 
   @Override
   public Attachment findBannerImage(OrganizationId organizationId, BannerId bannerId, AttachmentId attachmentId) {
-    fi.otavanopisto.mwp.client.model.Banner banner = findBannerByBannerId(bannerId);
+    fi.otavanopisto.mwp.client.model.Banner banner = findBannerByBannerId(organizationId, bannerId);
     if (banner != null) {
       Integer featuredMediaId = banner.getFeaturedMedia();
       if (featuredMediaId != null) {
@@ -112,7 +112,7 @@ public class MwpBannerProvider extends AbstractMwpProvider implements BannerProv
           return null;
         }
         
-        fi.otavanopisto.mwp.client.model.Attachment attachment = findMedia(featuredMediaId);
+        fi.otavanopisto.mwp.client.model.Attachment attachment = findMedia(organizationId, featuredMediaId);
         if (attachment != null) {
           return translateAttachment(attachment);
         }
@@ -131,7 +131,7 @@ public class MwpBannerProvider extends AbstractMwpProvider implements BannerProv
       return null;
     }
     
-    fi.otavanopisto.mwp.client.model.Attachment featuredMedia = findMedia(mediaId);
+    fi.otavanopisto.mwp.client.model.Attachment featuredMedia = findMedia(organizationId, mediaId);
     if (featuredMedia.getMediaType() == MediaTypeEnum.IMAGE) {
       AttachmentData imageData = getImageData(featuredMedia.getSourceUrl());
       
@@ -146,14 +146,14 @@ public class MwpBannerProvider extends AbstractMwpProvider implements BannerProv
     return null;
   }
 
-  private fi.otavanopisto.mwp.client.model.Banner findBannerByBannerId(BannerId bannerId) {
+  private fi.otavanopisto.mwp.client.model.Banner findBannerByBannerId(OrganizationId organizationId, BannerId bannerId) {
     BannerId kuntaApiId = idController.translateBannerId(bannerId, MwpConsts.IDENTIFIER_NAME);
     if (kuntaApiId == null) {
       logger.severe(String.format("Failed to convert %s into MWP id", bannerId.toString()));
       return null;
     }
     
-    ApiResponse<fi.otavanopisto.mwp.client.model.Banner> response = mwpApi.getApi().wpV2BannerIdGet(kuntaApiId.getId(), null);
+    ApiResponse<fi.otavanopisto.mwp.client.model.Banner> response = mwpApi.getApi(organizationId).wpV2BannerIdGet(kuntaApiId.getId(), null);
     if (!response.isOk()) {
       logger.severe(String.format("Finding banner failed on [%d] %s", response.getStatus(), response.getMessage()));
     } else {
