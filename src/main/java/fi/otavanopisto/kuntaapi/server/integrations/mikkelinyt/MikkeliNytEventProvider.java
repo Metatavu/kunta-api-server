@@ -15,7 +15,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.annotation.PostConstruct;
 import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 
@@ -43,7 +42,6 @@ import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
 import fi.otavanopisto.kuntaapi.server.rest.model.Event;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
-import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 import fi.otavanopisto.mikkelinyt.model.EventsResponse;
 
 /**
@@ -75,9 +73,6 @@ public class MikkeliNytEventProvider implements EventProvider {
   private GenericHttpCache httpCache;
   
   @Inject
-  private SystemSettingController systemSettingController;
-  
-  @Inject
   private OrganizationSettingController organizationSettingController;
 
   @Inject
@@ -89,25 +84,16 @@ public class MikkeliNytEventProvider implements EventProvider {
   @Inject
   private ImageScaler imageScaler;
   
-  private String apiKey;
-  
   private MikkeliNytEventProvider() {
   }
   
-  /**
-   * Bean initialization
-   */
-  @PostConstruct
-  public void init() {
-    apiKey = systemSettingController.getSettingValue(MikkeliNytConsts.SYSTEM_SETTING_APIKEY);
-  }
-
   @Override
   public List<Event> listOrganizationEvents(OrganizationId organizationId, OffsetDateTime startBefore,
       OffsetDateTime startAfter, OffsetDateTime endBefore, OffsetDateTime endAfter, EventOrder order,
       EventOrderDirection orderDirection, Integer firstResult, Integer maxResults) {
     
-   if (StringUtils.isBlank(apiKey)) {
+    String apiKey = getApiKey(organizationId);
+    if (StringUtils.isBlank(apiKey)) {
       logger.severe(API_KEY_NOT_CONFIGURED);
       return Collections.emptyList();
     }
@@ -130,6 +116,7 @@ public class MikkeliNytEventProvider implements EventProvider {
 
   @Override
   public Event findOrganizationEvent(OrganizationId organizationId, EventId eventId) {
+    String apiKey = getApiKey(organizationId);
     if (StringUtils.isBlank(apiKey)) {
       logger.severe(API_KEY_NOT_CONFIGURED);
       return null;
@@ -141,6 +128,7 @@ public class MikkeliNytEventProvider implements EventProvider {
 
   @Override
   public List<Attachment> listEventImages(OrganizationId organizationId, EventId eventId) {
+    String apiKey = getApiKey(organizationId);
     if (StringUtils.isBlank(apiKey)) {
       logger.severe(API_KEY_NOT_CONFIGURED);
       return Collections.emptyList();
@@ -160,6 +148,7 @@ public class MikkeliNytEventProvider implements EventProvider {
   
   @Override
   public Attachment findEventImage(OrganizationId organizationId, EventId eventId, AttachmentId attachmentId) {
+    String apiKey = getApiKey(organizationId);
     if (StringUtils.isBlank(apiKey)) {
       logger.severe(API_KEY_NOT_CONFIGURED);
       return null;
@@ -179,6 +168,7 @@ public class MikkeliNytEventProvider implements EventProvider {
 
   @Override
   public AttachmentData getEventImageData(OrganizationId organizationId, EventId eventId, AttachmentId attachmentId, Integer size) {
+    String apiKey = getApiKey(organizationId);
     if (StringUtils.isBlank(apiKey)) {
       logger.severe(API_KEY_NOT_CONFIGURED);
       return null;
@@ -320,6 +310,7 @@ public class MikkeliNytEventProvider implements EventProvider {
   private Response<EventsResponse> listEvents(OrganizationId organizationId) {
     String location = organizationSettingController.getSettingValue(organizationId, MikkeliNytConsts.ORGANIZATION_SETTING_LOCATION);
     String baseUrl = organizationSettingController.getSettingValue(organizationId, MikkeliNytConsts.ORGANIZATION_SETTING_BASEURL);
+    String apiKey = getApiKey(organizationId);
     
     URI uri;
     try {
@@ -531,5 +522,9 @@ public class MikkeliNytEventProvider implements EventProvider {
       return dateTime1.compareTo(dateTime2);
     }
     
+  }
+
+  private String getApiKey(OrganizationId organizationId) {
+    return organizationSettingController.getSettingValue(organizationId, MikkeliNytConsts.ORGANIZATION_SETTING_APIKEY);
   }
 }
