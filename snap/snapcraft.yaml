@@ -1,0 +1,31 @@
+name: kunta-api-server
+version: "0.0.1-SNAPSHOT"
+summary: Kunta API Serevr
+description: Kunta API Server 
+confinement: devmode
+
+apps:
+  wildfly:
+    command: bin/wrapper
+    daemon: simple
+parts:
+  wildfly:
+    plugin: dump
+    source: http://download.jboss.org/wildfly/10.1.0.Final/wildfly-10.1.0.Final.tar.gz
+    stage-packages:
+      - openjdk-8-jdk
+  wildfly-hibernate-ogm:
+    plugin: dump
+    source: https://repo1.maven.org/maven2/org/hibernate/ogm/hibernate-ogm-modules-wildfly10/5.0.1.Final/hibernate-ogm-modules-wildfly10-5.0.1.Final.zip      
+    organize:
+      org: modules/system/layers/base/org
+  webapp:
+    plugin: maven
+    source: https://github.com/otavanopisto/kunta-api-server.git
+    source-type: git
+  local-files:
+    plugin: make
+    source: .
+  data-files:
+    plugin: ant
+    source: .
