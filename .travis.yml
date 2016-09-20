@@ -14,3 +14,7 @@ script:
     
 notifications:
   email: false
+  
+notifications:
+  webhooks:
+    - $WEBHOOK_URL
