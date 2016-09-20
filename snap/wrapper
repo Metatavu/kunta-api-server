@@ -4,7 +4,7 @@ set -e
 set -x
 
 export JBOSS_HOME="$SNAP"
-export JBOSS_MODE=standalone
+export JBOSS_MODE=domain
 export JBOSS_LOG_DIR="$SNAP_COMMON/wildfly/$JBOSS_MODE/log/"
 
-$JBOSS_HOME/bin/$JBOSS_MODE.sh --properties=$JBOSS_HOME/jboss-standalone.properties
+$JBOSS_HOME/bin/$JBOSS_MODE.sh --properties=$JBOSS_HOME/jboss-$JBOSS_MODE.properties
