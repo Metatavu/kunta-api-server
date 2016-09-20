@@ -44,10 +44,12 @@ import fi.otavanopisto.kuntaapi.server.rest.model.Banner;
 import fi.otavanopisto.kuntaapi.server.rest.model.Event;
 import fi.otavanopisto.kuntaapi.server.rest.model.NewsArticle;
 import fi.otavanopisto.kuntaapi.server.rest.model.Organization;
+import fi.otavanopisto.kuntaapi.server.rest.model.OrganizationSetting;
 import fi.otavanopisto.kuntaapi.server.rest.model.Service;
 import fi.otavanopisto.kuntaapi.server.rest.model.ServiceClass;
 import fi.otavanopisto.kuntaapi.server.rest.model.ServiceElectronicChannel;
 import fi.otavanopisto.kuntaapi.server.rest.model.Tile;
+import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 
 /**
  * REST Service implementation
@@ -59,6 +61,8 @@ import fi.otavanopisto.kuntaapi.server.rest.model.Tile;
 @SuppressWarnings ("squid:S3306")
 public class OrganizationsApiImpl extends OrganizationsApi {
   
+  private static final String NOT_FOUND = "Not Found";
+
   private static final String NOT_IMPLEMENTED = "Not implemented";
 
   private static final String INTERNAL_SERVER_ERROR = "Internal Server Error";
@@ -67,6 +71,9 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   @Inject
   private Logger logger;
+  
+  @Inject
+  private OrganizationSettingController organizationSettingController;
   
   @Inject
   private Instance<OrganizationProvider> organizationProviders;
@@ -572,6 +579,125 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     return Response.status(Status.NOT_FOUND)
       .build();
   }
+
+  @Override
+  public Response createOrganizationSetting(String organizationIdParam, OrganizationSetting setting) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    if (StringUtils.isBlank(setting.getKey())) {
+      return createBadRequest("Key is required");
+    }
+
+    if (StringUtils.isBlank(setting.getValue())) {
+      return createBadRequest("Value is required");
+    }
+    
+    String value = organizationSettingController.getSettingValue(organizationId, setting.getKey());
+    if (value != null) {
+      return createBadRequest("Setting already exists");
+    }
+    
+    return Response.ok()
+        .entity(createOrganizationEntity(organizationSettingController.createOrganizationSetting(setting.getKey(), setting.getValue(), organizationId)))
+        .build();
+  }
+
+  @Override
+  public Response listOrganizationSettings(String organizationIdParam, String key) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    List<fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting> settings;
+    
+    if (StringUtils.isNotBlank(key)) {
+      fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting setting = organizationSettingController.findOrganizationSettingByKey(organizationId, key);
+      if (setting != null) {
+        settings = Collections.singletonList(setting);
+      } else {
+        settings = Collections.emptyList();
+      }
+    } else {
+      settings = organizationSettingController.listOrganizationSettings(organizationId);
+    }
+    
+    List<OrganizationSetting> result = new ArrayList<>(settings.size());
+    for (fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting setting : settings) {
+      result.add(createOrganizationEntity(setting));
+    }
+
+    return Response.ok()
+        .entity(result)
+        .build();
+  }
+  
+  @Override
+  public Response findOrganizationSetting(String organizationIdParam, String settingId) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting organizationSetting = findOrganizationSetting(organizationId, settingId);
+    
+    return Response.ok()
+        .entity(createOrganizationEntity(organizationSetting))
+        .build();
+  }
+  
+  @Override
+  @SuppressWarnings ("squid:MethodCyclomaticComplexity")
+  public Response updateOrganizationSetting(String organizationIdParam, String settingId, OrganizationSetting setting) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    if (StringUtils.isBlank(setting.getKey())) {
+      return createBadRequest("Key is required");
+    }
+
+    if (StringUtils.isBlank(setting.getValue())) {
+      return createBadRequest("Value is required");
+    }
+    
+    fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting organizationSetting = findOrganizationSetting(organizationId, settingId);
+    if (organizationSetting == null) {
+      return createNotFound(NOT_FOUND);
+    }
+
+    if (!StringUtils.equals(organizationSetting.getKey(), setting.getKey())) {
+      return createBadRequest("Cannot update setting key");
+    }
+    
+    fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting updatedSetting = organizationSettingController.updateOrganizationSetting(organizationSetting, setting.getValue());
+    
+    return Response.ok()
+        .entity(createOrganizationEntity(updatedSetting))
+        .build();
+  }
+
+  @Override
+  public Response deleteOrganizationSetting(String organizationIdParam, String settingId) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting organizationSetting = findOrganizationSetting(organizationId, settingId);
+    if (organizationSetting == null) {
+      return createNotFound(NOT_FOUND);
+    }
+
+    organizationSettingController.deleteOrganizationSetting(organizationSetting);
+    
+    return Response.noContent()
+        .build();
+  }
   
   private BannerId toBannerId(String id) {
     if (StringUtils.isNotBlank(id)) {
@@ -725,5 +851,27 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     return Collections.unmodifiableList(result);
   }
 
+  private fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting findOrganizationSetting(OrganizationId organizationId, String settingId) {
+    fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting organizationSetting = organizationSettingController.findOrganizationSetting(settingId);
+    if (organizationSetting == null) {
+      return null;
+    }
+    
+    if (!StringUtils.equals(organizationSetting.getOrganizationKuntaApiId(), organizationId.getId())) {
+      logger.severe(String.format("Tried to access organization setting %s with organization %s", settingId, organizationId.toString()));
+      return null;
+    }
+    
+    return organizationSetting;
+  }
+  
+  private OrganizationSetting createOrganizationEntity(fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting organizationSetting) {
+    OrganizationSetting result = new OrganizationSetting();
+    result.setId(organizationSetting.getId());
+    result.setKey(organizationSetting.getKey());
+    result.setValue(organizationSetting.getValue());
+    return result;
+  }
+  
 }
 

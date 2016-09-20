@@ -11,6 +11,7 @@ public class MwpConsts {
   public static final boolean SYNCHRONIZE = false;
   public static final String CACHE_NAME = "mwp";
   public static final boolean CACHE_RESPONSES = false;
+  public static final String ORGANIZATION_SETTING_BASEURL = "managementservice.baseUrl";
 
   private MwpConsts() {
   }

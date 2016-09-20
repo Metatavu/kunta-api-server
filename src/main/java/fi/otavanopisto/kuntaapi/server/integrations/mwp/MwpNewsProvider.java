@@ -72,7 +72,7 @@ public class MwpNewsProvider extends AbstractMwpProvider implements NewsProvider
     List<String> categories = null;
     List<String> tags = null;
 
-    ApiResponse<List<Post>> postResponse = mwpApi.getApi().wpV2PostsGet(context, page, perPage, search, after, author, authorExclude, before, exclude, include,
+    ApiResponse<List<Post>> postResponse = mwpApi.getApi(organizationId).wpV2PostsGet(context, page, perPage, search, after, author, authorExclude, before, exclude, include,
         offset, order, orderby, slug, status, filter, categories, tags);
     if (!postResponse.isOk()) {
       logger.severe(String.format("Post listing failed on [%d] %s", postResponse.getStatus(), postResponse.getMessage()));
@@ -85,7 +85,7 @@ public class MwpNewsProvider extends AbstractMwpProvider implements NewsProvider
 
   @Override
   public NewsArticle findOrganizationNewsArticle(OrganizationId organizationId, NewsArticleId newsArticleId) {
-    Post post = findPostByArticleId(newsArticleId);
+    Post post = findPostByArticleId(organizationId, newsArticleId);
     if (post != null) {
       return translateNewsArticle(post);
     }
@@ -95,11 +95,11 @@ public class MwpNewsProvider extends AbstractMwpProvider implements NewsProvider
 
   @Override
   public List<Attachment> listNewsArticleImages(OrganizationId organizationId, NewsArticleId newsArticleId) {
-    Post post = findPostByArticleId(newsArticleId);
+    Post post = findPostByArticleId(organizationId, newsArticleId);
     if (post != null) {
       Integer featuredMediaId = post.getFeaturedMedia();
       if (featuredMediaId != null) {
-        fi.otavanopisto.mwp.client.model.Attachment featuredMedia = findMedia(featuredMediaId);
+        fi.otavanopisto.mwp.client.model.Attachment featuredMedia = findMedia(organizationId, featuredMediaId);
         if ((featuredMedia != null) && (featuredMedia.getMediaType() == MediaTypeEnum.IMAGE)) {
           return Collections.singletonList(translateAttachment(featuredMedia));
         }
@@ -113,7 +113,7 @@ public class MwpNewsProvider extends AbstractMwpProvider implements NewsProvider
   public Attachment findNewsArticleImage(OrganizationId organizationId, NewsArticleId newsArticleId,
       AttachmentId attachmentId) {
     
-    Post post = findPostByArticleId(newsArticleId);
+    Post post = findPostByArticleId(organizationId, newsArticleId);
     if (post != null) {
       Integer featuredMediaId = post.getFeaturedMedia();
       if (featuredMediaId != null) {
@@ -122,7 +122,7 @@ public class MwpNewsProvider extends AbstractMwpProvider implements NewsProvider
           return null;
         }
         
-        fi.otavanopisto.mwp.client.model.Attachment attachment = findMedia(featuredMediaId);
+        fi.otavanopisto.mwp.client.model.Attachment attachment = findMedia(organizationId, featuredMediaId);
         if (attachment != null) {
           return translateAttachment(attachment);
         }
@@ -141,7 +141,7 @@ public class MwpNewsProvider extends AbstractMwpProvider implements NewsProvider
       return null;
     }
     
-    fi.otavanopisto.mwp.client.model.Attachment featuredMedia = findMedia(mediaId);
+    fi.otavanopisto.mwp.client.model.Attachment featuredMedia = findMedia(organizationId, mediaId);
     if (featuredMedia.getMediaType() == MediaTypeEnum.IMAGE) {
       AttachmentData imageData = getImageData(featuredMedia.getSourceUrl());
       
@@ -156,14 +156,14 @@ public class MwpNewsProvider extends AbstractMwpProvider implements NewsProvider
     return null;
   }
   
-  private Post findPostByArticleId(NewsArticleId newsArticleId) {
+  private Post findPostByArticleId(OrganizationId organizationId, NewsArticleId newsArticleId) {
     NewsArticleId kuntaApiId = idController.translateNewsArticleId(newsArticleId, MwpConsts.IDENTIFIER_NAME);
     if (kuntaApiId == null) {
       logger.severe(String.format("Failed to convert %s into MWP id", newsArticleId.toString()));
       return null;
     }
     
-    ApiResponse<Post> response = mwpApi.getApi().wpV2PostsIdGet(kuntaApiId.getId(), null);
+    ApiResponse<Post> response = mwpApi.getApi(organizationId).wpV2PostsIdGet(kuntaApiId.getId(), null);
     if (!response.isOk()) {
       logger.severe(String.format("Finding post failed on [%d] %s", response.getStatus(), response.getMessage()));
     } else {

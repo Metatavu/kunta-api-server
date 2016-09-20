@@ -33,7 +33,7 @@ public abstract class AbstractDAO<T> {
    * @return entity or null if non found
    */
   @SuppressWarnings("unchecked")
-  public T findById(Long id) {
+  public T findById(String id) {
     return (T) getEntityManager().find(getGenericTypeClass(), id);
   }
 
