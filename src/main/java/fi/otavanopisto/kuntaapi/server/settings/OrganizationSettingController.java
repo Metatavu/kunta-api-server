@@ -139,6 +139,23 @@ public class OrganizationSettingController {
   }
 
   /**
+   * Finds organization setting by key
+   * 
+   * @param organizationId organization id
+   * @param key key
+   * @return organization setting or null if not found
+   */
+  public OrganizationSetting findOrganizationSettingByKey(OrganizationId organizationId, String key) {
+    OrganizationId kuntaApiId = idController.translateOrganizationId(organizationId, KuntaApiConsts.IDENTIFIER_NAME);
+    if (kuntaApiId == null) {
+      logger.severe(String.format(FAILED_TO_TRANSLATE, organizationId.toString()));
+      return null;
+    } else {
+      return organizationSettingDAO.findByKeyAndOrganizationKuntaApiId(key, organizationId.getId());
+    }
+  }
+
+  /**
    * Deletes an organization setting
    * 
    * @param organizationSetting setting

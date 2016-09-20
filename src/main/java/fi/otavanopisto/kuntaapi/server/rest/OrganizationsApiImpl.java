@@ -612,7 +612,18 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createNotFound(NOT_FOUND);
     }
     
-    List<fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting> settings = organizationSettingController.listOrganizationSettings(organizationId);
+    List<fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting> settings;
+    
+    if (StringUtils.isNotBlank(key)) {
+      fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting setting = organizationSettingController.findOrganizationSettingByKey(organizationId, key);
+      if (setting != null) {
+        settings = Collections.singletonList(setting);
+      } else {
+        settings = Collections.emptyList();
+      }
+    } else {
+      settings = organizationSettingController.listOrganizationSettings(organizationId);
+    }
     
     List<OrganizationSetting> result = new ArrayList<>(settings.size());
     for (fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting setting : settings) {
