@@ -1,9 +1,8 @@
 <project name="install" default="install" basedir=".">
-	
-  <property name="SNAP_COMMON" value="/var/snap/kunta-api-server/common"/>
-  <property name="SNAP" value="/snap/kunta-api-server/current"/>
 
   <target name="install">
+  	<echoproperties/>
+  	
   	<mkdir dir="${SNAP_COMMON}/wildfly/standalone" />
     <mkdir dir="${SNAP_COMMON}/wildfly/standalone/configuration" />
   	<copy todir="${SNAP_COMMON}/wildfly/standalone/configuration">
