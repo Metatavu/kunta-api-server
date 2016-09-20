@@ -1,30 +1,31 @@
 <project name="install" default="install" basedir=".">
 	
-  <property environment="env"/>
+  <property name="SNAP_COMMON" value="/var/snap/kunta-api-server/common"/>
+  <property name="SNAP" value="/snap/kunta-api-server/current"/>
 
   <target name="install">
-  	<mkdir dir="${env.SNAP_DATA}/common/wildfly/standalone" />
-    <mkdir dir="${env.SNAP_DATA}/common/wildfly/standalone/configuration" />
-  	<copy todir="${env.SNAP_DATA}/common/wildfly/standalone/configuration">
-      <fileset dir="${env.SNAP}/standalone/configuration"/>
+  	<mkdir dir="${SNAP_COMMON}/wildfly/standalone" />
+    <mkdir dir="${SNAP_COMMON}/wildfly/standalone/configuration" />
+  	<copy todir="${SNAP_COMMON}/wildfly/standalone/configuration">
+      <fileset dir="${SNAP}/standalone/configuration"/>
   	</copy>
   	
     <delete includeemptydirs="true" dir="${env.SNAP_COMMON}/wildfly/standalone/deployments"/>
 
-  	<copy todir="${env.SNAP_COMMON}/wildfly/standalone/deployments">
-      <fileset dir="${env.SNAP}/war" includes="*.war"/>
+  	<copy todir="${SNAP_COMMON}/wildfly/standalone/deployments">
+      <fileset dir="${SNAP}/war" includes="*.war"/>
   	</copy>
   	
-    <mkdir dir="${env.SNAP_DATA}/common/wildfly/domain" />
-    <mkdir dir="${env.SNAP_DATA}/common/wildfly/domain/configuration" />
-  	<copy todir="${env.SNAP_DATA}/common/wildfly/domain/configuration">
-      <fileset dir="${env.SNAP}/domain/configuration"/>
+    <mkdir dir="${SNAP_COMMON}/wildfly/domain" />
+    <mkdir dir="${SNAP_COMMON}/wildfly/domain/configuration" />
+  	<copy todir="${SNAP_COMMON}/wildfly/domain/configuration">
+      <fileset dir="${SNAP}/domain/configuration"/>
   	</copy>
   	
     <delete includeemptydirs="true" dir="${env.SNAP_COMMON}/wildfly/domain/deployments"/>
 
-  	<copy todir="${env.SNAP_COMMON}/wildfly/domain/deployments">
-      <fileset dir="${env.SNAP}/war" includes="*.war"/>
+  	<copy todir="${SNAP_COMMON}/wildfly/domain/deployments">
+      <fileset dir="${SNAP}/war" includes="*.war"/>
   	</copy>
 
   </target>
