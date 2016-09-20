@@ -1,5 +1,7 @@
 package fi.otavanopisto.kuntaapi.server.persistence.dao;
 
+import java.util.List;
+
 import javax.enterprise.context.Dependent;
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -58,6 +60,26 @@ public class OrganizationSettingDAO extends AbstractDAO<OrganizationSetting> {
     );
     
     return getSingleResult(entityManager.createQuery(criteria));
+  }
+
+  /**
+   * Lists organization settings
+   * 
+   * @param organizationKuntaApiId organization's Kunta API id
+   * @return list of organization settings
+   */
+  public List<OrganizationSetting> listByOrganizationKuntaApiId(String organizationKuntaApiId) {
+    EntityManager entityManager = getEntityManager();
+
+    CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+    CriteriaQuery<OrganizationSetting> criteria = criteriaBuilder.createQuery(OrganizationSetting.class);
+    Root<OrganizationSetting> root = criteria.from(OrganizationSetting.class);
+    criteria.select(root);
+    criteria.where(
+      criteriaBuilder.equal(root.get(OrganizationSetting_.organizationKuntaApiId), organizationKuntaApiId)
+    );
+    
+    return entityManager.createQuery(criteria).getResultList();
   }
   
   /**

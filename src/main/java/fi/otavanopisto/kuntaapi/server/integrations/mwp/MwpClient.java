@@ -19,16 +19,14 @@ import fi.otavanopisto.mwp.client.ApiResponse;
 import fi.otavanopisto.mwp.client.ResultType;
 
 /**
- * API Client for management Wordpress
+ * API Client for management service
  * 
  * @author Antti Leppä
  */
 @Dependent
-public class MwpClient extends fi.otavanopisto.mwp.client.ApiClient {
+public class MwpClient implements fi.otavanopisto.mwp.client.ApiClient {
 
   private static final String INVALID_URI_SYNTAX = "Invalid uri syntax";
-
-  private static final String BASE_PATH = "http://manage.kunta-api.dev/wp-json";
 
   @Inject
   private Logger logger;
@@ -43,10 +41,10 @@ public class MwpClient extends fi.otavanopisto.mwp.client.ApiClient {
   }
   
   @Override
-  public <T> ApiResponse<T> doGETRequest(String path, ResultType<T> resultType, Map<String, Object> queryParams, Map<String, Object> postParams) {
+  public <T> ApiResponse<T> doGETRequest(String url, ResultType<T> resultType, Map<String, Object> queryParams, Map<String, Object> postParams) {
     URIBuilder uriBuilder;
     try {
-      uriBuilder = new URIBuilder(String.format("%s%s", BASE_PATH, path));
+      uriBuilder = new URIBuilder(url);
     } catch (URISyntaxException e) {
       logger.log(Level.SEVERE, INVALID_URI_SYNTAX, e);
       return new ApiResponse<>(500, INVALID_URI_SYNTAX, null);
@@ -78,24 +76,18 @@ public class MwpClient extends fi.otavanopisto.mwp.client.ApiClient {
   }
 
   @Override
-  public <T> ApiResponse<T> doPOSTRequest(String path, ResultType<T> resultType, Map<String, Object> queryParams,
-      Map<String, Object> postParams) {
-    // TODO Auto-generated method stub
-    return null;
+  public <T> ApiResponse<T> doPOSTRequest(String url, ResultType<T> resultType, Map<String, Object> queryParams, Map<String, Object> postParams) {
+    throw new UnsupportedOperationException();
   }
 
   @Override
-  public <T> ApiResponse<T> doPUTRequest(String path, ResultType<T> resultType, Map<String, Object> queryParams,
-      Map<String, Object> postParams) {
-    // TODO Auto-generated method stub
-    return null;
+  public <T> ApiResponse<T> doPUTRequest(String url, ResultType<T> resultType, Map<String, Object> queryParams, Map<String, Object> postParams) {
+    throw new UnsupportedOperationException();
   }
 
   @Override
-  public <T> ApiResponse<T> doDELETERequest(String path, ResultType<T> resultType, Map<String, Object> queryParams,
-      Map<String, Object> postParams) {
-    // TODO Auto-generated method stub
-    return null;
+  public <T> ApiResponse<T> doDELETERequest(String url, ResultType<T> resultType, Map<String, Object> queryParams, Map<String, Object> postParams) {
+    throw new UnsupportedOperationException();
   }
   
   private String parameterToString(Object value) {
