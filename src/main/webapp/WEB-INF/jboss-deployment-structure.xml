@@ -1,0 +1,15 @@
+<jboss-deployment-structure>
+    <deployment>
+        <dependencies>
+            <module name="org.hibernate.ogm" slot="5.0" services="export" />
+            <module name="org.hibernate.ogm.infinispan" slot="5.0" services="export"/>
+            <module name="org.hibernate.search.orm" services="import" />
+            <module name="org.infinispan" services="export" />
+            <module name="org.apache.httpcomponents"/>
+            <module name="org.apache.commons.io"/>
+            <module name="com.fasterxml.jackson.core.jackson-annotations"/>
+            <module name="com.fasterxml.jackson.core.jackson-databind"/>
+            <module name="com.fasterxml.jackson.datatype.jackson-datatype-jsr310"/>
+        </dependencies>
+    </deployment>
+</jboss-deployment-structure>

@@ -16,6 +16,7 @@ import javax.ejb.TimerService;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.metamodel.EntityType;
 import javax.persistence.metamodel.Metamodel;
 
@@ -31,7 +32,8 @@ import org.hibernate.search.jpa.Search;
 public class IndexStartup {
   
   private static final int TIMER_INITIAL = 1000;
-
+  private static final boolean MASS_INDEXER = false;
+  
   @Inject
   private Logger logger;
   
@@ -57,15 +59,30 @@ public class IndexStartup {
     reindexHibernateSearchObjects(getIndexedEntities());
   }
 
-  private void reindexHibernateSearchObjects(List<Class<?>> entities) {
-    FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(entityManager);
-    MassIndexer massIndexer = fullTextEntityManager.createIndexer(entities.toArray(new Class[0]));
-    massIndexer.cacheMode(CacheMode.IGNORE);
-    try {
-      massIndexer.startAndWait();
-    } catch (InterruptedException e) {
-      logger.log(Level.SEVERE, "Indexer interrupted", e);
-      Thread.currentThread().interrupt();
+  private void reindexHibernateSearchObjects(List<Class<?>> entityClasses) {
+    if (MASS_INDEXER) {
+      FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(entityManager);
+      MassIndexer massIndexer = fullTextEntityManager.createIndexer(entityClasses.toArray(new Class[0]));
+      massIndexer.cacheMode(CacheMode.IGNORE);
+      try {
+        massIndexer.startAndWait();
+      } catch (InterruptedException e) {
+        logger.log(Level.SEVERE, "Indexer interrupted", e);
+        Thread.currentThread().interrupt();
+      }
+    } else {
+      FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(entityManager);
+      
+      for (Class<?> entityClass : entityClasses) {
+        String entityName = entityClass.getSimpleName();
+        logger.info(String.format("Indexing %s", entityName));
+        
+        Query query = entityManager.createQuery(String.format("select o from %s o", entityName));
+        for (Object entity : query.getResultList()) {
+          fullTextEntityManager.index(entity);
+        }
+  
+      }
     }
   }
   
