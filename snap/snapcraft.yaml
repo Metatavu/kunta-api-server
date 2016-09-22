@@ -20,6 +20,12 @@ parts:
     source: https://repo1.maven.org/maven2/org/hibernate/ogm/hibernate-ogm-modules-wildfly10/5.0.1.Final/hibernate-ogm-modules-wildfly10-5.0.1.Final.zip      
     organize:
       org: modules/system/layers/base/org
+  wildfly-infinispan:
+    plugin: dump
+    source: https://repo1.maven.org/maven2/org/infinispan/infinispan-as-embedded-modules/8.2.4.Final/infinispan-as-embedded-modules-8.2.4.Final.zip    
+    organize:
+      org: modules/system/layers/base/org
+      javax: modules/system/layers/base/jaxax
   webapp:
     plugin: maven
     source: https://github.com/otavanopisto/kunta-api-server.git
