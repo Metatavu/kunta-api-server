@@ -1,0 +1,15 @@
+language: java
+sudo: false
+jdk: oraclejdk8
+
+install: true
+
+script:
+  - . travis.sh
+    
+notifications:
+  email: false
+  
+notifications:
+  webhooks:
+    - http://travis.metatavu.io:7333/travisping

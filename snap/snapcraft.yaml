@@ -1,7 +1,8 @@
 name: kunta-api-server
-version: "0.0.1-SNAPSHOT"
+version: "0.0.3-SNAPSHOT"
 summary: Kunta API Serevr
 description: Kunta API Server 
+grade: devel
 confinement: devmode
 
 apps:
@@ -19,13 +20,16 @@ parts:
     source: https://repo1.maven.org/maven2/org/hibernate/ogm/hibernate-ogm-modules-wildfly10/5.0.1.Final/hibernate-ogm-modules-wildfly10-5.0.1.Final.zip      
     organize:
       org: modules/system/layers/base/org
+  wildfly-infinispan:
+    plugin: dump
+    source: https://repo1.maven.org/maven2/org/infinispan/infinispan-as-embedded-modules/8.2.4.Final/infinispan-as-embedded-modules-8.2.4.Final.zip    
+    organize:
+      org: modules/system/layers/base/org
+      javax: modules/system/layers/base/jaxax
   webapp:
     plugin: maven
     source: https://github.com/otavanopisto/kunta-api-server.git
     source-type: git
   local-files:
     plugin: make
-    source: .
-  data-files:
-    plugin: ant
     source: .
