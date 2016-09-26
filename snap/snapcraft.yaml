@@ -16,6 +16,11 @@ parts:
     stage-packages:
       - openjdk-8-jdk
       - mariadb-server
+  wildfly-modules:
+    plugin: dump
+    source: wildfly-modules      
+    organize:
+      com: modules/system/layers/base/com
   webapp:
     plugin: maven
     source: https://github.com/otavanopisto/kunta-api-server.git
