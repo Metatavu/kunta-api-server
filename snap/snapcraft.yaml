@@ -15,7 +15,7 @@ parts:
     source: http://download.jboss.org/wildfly/10.1.0.Final/wildfly-10.1.0.Final.tar.gz
     stage-packages:
       - openjdk-8-jdk
-      - mariadb-server
+      - mysql-server-5.7
   wildfly-modules:
     plugin: dump
     source: wildfly-modules      
