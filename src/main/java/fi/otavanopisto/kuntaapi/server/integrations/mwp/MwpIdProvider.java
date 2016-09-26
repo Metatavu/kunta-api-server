@@ -195,21 +195,77 @@ public class MwpIdProvider implements IdProvider {
 
   @Override
   public PageId translate(PageId pageId, String target) {
+    Identifier identifier;
+    
+    if (MwpConsts.IDENTIFIER_NAME.equals(pageId.getSource())) {
+      identifier = identifierController.findIdentifierById(pageId);
+      if (identifier != null) {
+        return new PageId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
+      }
+    } else if (KuntaApiConsts.IDENTIFIER_NAME.equals(pageId.getSource())) {
+      identifier = identifierController.findIdentifierByTypeSourceAndKuntaApiId(IdType.TILE, MwpConsts.IDENTIFIER_NAME, pageId.getId());
+      if (identifier != null) {
+        return new PageId(MwpConsts.IDENTIFIER_NAME, identifier.getSourceId());
+      }
+    }
+    
     return null;
   }
 
   @Override
   public MenuId translate(MenuId menuId, String target) {
+    Identifier identifier;
+    
+    if (MwpConsts.IDENTIFIER_NAME.equals(menuId.getSource())) {
+      identifier = identifierController.findIdentifierById(menuId);
+      if (identifier != null) {
+        return new MenuId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
+      }
+    } else if (KuntaApiConsts.IDENTIFIER_NAME.equals(menuId.getSource())) {
+      identifier = identifierController.findIdentifierByTypeSourceAndKuntaApiId(IdType.TILE, MwpConsts.IDENTIFIER_NAME, menuId.getId());
+      if (identifier != null) {
+        return new MenuId(MwpConsts.IDENTIFIER_NAME, identifier.getSourceId());
+      }
+    }
+    
     return null;
   }
 
   @Override
   public FileId translate(FileId fileId, String target) {
+    Identifier identifier;
+    
+    if (MwpConsts.IDENTIFIER_NAME.equals(fileId.getSource())) {
+      identifier = identifierController.findIdentifierById(fileId);
+      if (identifier != null) {
+        return new FileId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
+      }
+    } else if (KuntaApiConsts.IDENTIFIER_NAME.equals(fileId.getSource())) {
+      identifier = identifierController.findIdentifierByTypeSourceAndKuntaApiId(IdType.TILE, MwpConsts.IDENTIFIER_NAME, fileId.getId());
+      if (identifier != null) {
+        return new FileId(MwpConsts.IDENTIFIER_NAME, identifier.getSourceId());
+      }
+    }
+    
     return null;
   }
 
   @Override
   public MenuItemId translate(MenuItemId menuItemId, String target) {
+    Identifier identifier;
+    
+    if (MwpConsts.IDENTIFIER_NAME.equals(menuItemId.getSource())) {
+      identifier = identifierController.findIdentifierById(menuItemId);
+      if (identifier != null) {
+        return new MenuItemId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
+      }
+    } else if (KuntaApiConsts.IDENTIFIER_NAME.equals(menuItemId.getSource())) {
+      identifier = identifierController.findIdentifierByTypeSourceAndKuntaApiId(IdType.TILE, MwpConsts.IDENTIFIER_NAME, menuItemId.getId());
+      if (identifier != null) {
+        return new MenuItemId(MwpConsts.IDENTIFIER_NAME, identifier.getSourceId());
+      }
+    }
+    
     return null;
   }
 
