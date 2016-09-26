@@ -867,7 +867,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   
   private OrganizationSetting createOrganizationEntity(fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting organizationSetting) {
     OrganizationSetting result = new OrganizationSetting();
-    result.setId(organizationSetting.getId());
+    result.setId(String.valueOf(organizationSetting.getId()));
     result.setKey(organizationSetting.getKey());
     result.setValue(organizationSetting.getValue());
     return result;
