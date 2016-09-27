@@ -201,7 +201,87 @@ public class IdController {
     
     return null;
   }
-
+  
+  /**
+   * Translates file id into into target id
+   * 
+   * @param fileId id to be translated
+   * @param target target
+   * @return translated id or null if translation has failed
+   */
+  public FileId translateFileId(FileId fileId, String target) {
+    if (StringUtils.equals(fileId.getSource(), target)) {
+      return fileId;
+    }
+    
+    IdProvider idProvider = getIdProvider(fileId.getSource(), target);
+    if (idProvider != null) {
+      return idProvider.translate(fileId, target);
+    }
+    
+    return null;
+  }
+  
+  /**
+   * Translates menu id into into target id
+   * 
+   * @param menuId id to be translated
+   * @param target target
+   * @return translated id or null if translation has failed
+   */
+  public MenuId translateMenuId(MenuId menuId, String target) {
+    if (StringUtils.equals(menuId.getSource(), target)) {
+      return menuId;
+    }
+    
+    IdProvider idProvider = getIdProvider(menuId.getSource(), target);
+    if (idProvider != null) {
+      return idProvider.translate(menuId, target);
+    }
+    
+    return null;
+  }
+  
+  /**
+   * Translates menuItem id into into target id
+   * 
+   * @param menuItemId id to be translated
+   * @param target target
+   * @return translated id or null if translation has failed
+   */
+  public MenuItemId translateMenuItemId(MenuItemId menuItemId, String target) {
+    if (StringUtils.equals(menuItemId.getSource(), target)) {
+      return menuItemId;
+    }
+    
+    IdProvider idProvider = getIdProvider(menuItemId.getSource(), target);
+    if (idProvider != null) {
+      return idProvider.translate(menuItemId, target);
+    }
+    
+    return null;
+  }
+  
+  /**
+   * Translates page id into into target id
+   * 
+   * @param pageId id to be translated
+   * @param target target
+   * @return translated id or null if translation has failed
+   */
+  public PageId translatePageId(PageId pageId, String target) {
+    if (StringUtils.equals(pageId.getSource(), target)) {
+      return pageId;
+    }
+    
+    IdProvider idProvider = getIdProvider(pageId.getSource(), target);
+    if (idProvider != null) {
+      return idProvider.translate(pageId, target);
+    }
+    
+    return null;
+  }
+  
   /**
    * Translates both ids into Kunta Api ids and check whether they match
    * 
@@ -356,6 +436,78 @@ public class IdController {
   public boolean idsEqual(TileId id1, TileId id2) {
     TileId kuntaApiId1 = translateTileId(id1, KuntaApiConsts.IDENTIFIER_NAME);
     TileId kuntaApiId2 = translateTileId(id2, KuntaApiConsts.IDENTIFIER_NAME);
+    
+    if (kuntaApiId1 == null || kuntaApiId2 == null) {
+      return false;
+    }
+    
+    return kuntaApiId1.equals(kuntaApiId2);
+  }
+  
+  /**
+   * Translates both ids into Kunta Api ids and check whether they match
+   * 
+   * @param id1 id1
+   * @param id2 id2
+   * @return whether ids match
+   */
+  public boolean idsEqual(FileId id1, FileId id2) {
+    FileId kuntaApiId1 = translateFileId(id1, KuntaApiConsts.IDENTIFIER_NAME);
+    FileId kuntaApiId2 = translateFileId(id2, KuntaApiConsts.IDENTIFIER_NAME);
+    
+    if (kuntaApiId1 == null || kuntaApiId2 == null) {
+      return false;
+    }
+    
+    return kuntaApiId1.equals(kuntaApiId2);
+  }
+  
+  /**
+   * Translates both ids into Kunta Api ids and check whether they match
+   * 
+   * @param id1 id1
+   * @param id2 id2
+   * @return whether ids match
+   */
+  public boolean idsEqual(MenuId id1, MenuId id2) {
+    MenuId kuntaApiId1 = translateMenuId(id1, KuntaApiConsts.IDENTIFIER_NAME);
+    MenuId kuntaApiId2 = translateMenuId(id2, KuntaApiConsts.IDENTIFIER_NAME);
+    
+    if (kuntaApiId1 == null || kuntaApiId2 == null) {
+      return false;
+    }
+    
+    return kuntaApiId1.equals(kuntaApiId2);
+  }
+  
+  /**
+   * Translates both ids into Kunta Api ids and check whether they match
+   * 
+   * @param id1 id1
+   * @param id2 id2
+   * @return whether ids match
+   */
+  public boolean idsEqual(MenuItemId id1, MenuItemId id2) {
+    MenuItemId kuntaApiId1 = translateMenuItemId(id1, KuntaApiConsts.IDENTIFIER_NAME);
+    MenuItemId kuntaApiId2 = translateMenuItemId(id2, KuntaApiConsts.IDENTIFIER_NAME);
+    
+    if (kuntaApiId1 == null || kuntaApiId2 == null) {
+      return false;
+    }
+    
+    return kuntaApiId1.equals(kuntaApiId2);
+  }
+  
+  /**
+   * Translates both ids into Kunta Api ids and check whether they match
+   * 
+   * @param id1 id1
+   * @param id2 id2
+   * @return whether ids match
+   */
+  public boolean idsEqual(PageId id1, PageId id2) {
+    PageId kuntaApiId1 = translatePageId(id1, KuntaApiConsts.IDENTIFIER_NAME);
+    PageId kuntaApiId2 = translatePageId(id2, KuntaApiConsts.IDENTIFIER_NAME);
     
     if (kuntaApiId1 == null || kuntaApiId2 == null) {
       return false;

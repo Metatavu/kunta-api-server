@@ -23,5 +23,14 @@ public enum IdType {
   
   BANNER,
   
-  TILE
+  TILE,
+  
+  PAGE,
+
+  FILE,
+
+  MENU,
+
+  MENU_ITEM,
+
 }

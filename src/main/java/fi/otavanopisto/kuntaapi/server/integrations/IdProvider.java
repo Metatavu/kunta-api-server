@@ -97,4 +97,41 @@ public interface IdProvider {
    */
   public AttachmentId translate(AttachmentId attachmentId, String target);
 
+  /**
+   * Translate page id
+   * 
+   * @param pageId original id
+   * @param target target type
+   * @return translated id
+   */
+  public PageId translate(PageId pageId, String target);
+
+
+  /**
+   * Translate menu id
+   * 
+   * @param menuId original id
+   * @param target target type
+   * @return translated id
+   */
+  public MenuId translate(MenuId menuId, String target);
+
+  /**
+   * Translate file id
+   * 
+   * @param fileId original id
+   * @param target target type
+   * @return translated id
+   */
+  public FileId translate(FileId fileId, String target);
+
+  /**
+   * Translate menuItem id
+   * 
+   * @param menuItemId original id
+   * @param target target type
+   * @return translated id
+   */
+  public MenuItemId translate(MenuItemId menuItemId, String target);
+
 }

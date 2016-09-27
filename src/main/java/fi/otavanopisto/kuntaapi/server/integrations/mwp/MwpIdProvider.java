@@ -7,11 +7,15 @@ import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.integrations.BannerId;
 import fi.otavanopisto.kuntaapi.server.integrations.EventId;
+import fi.otavanopisto.kuntaapi.server.integrations.FileId;
 import fi.otavanopisto.kuntaapi.server.integrations.IdProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.IdType;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
+import fi.otavanopisto.kuntaapi.server.integrations.MenuId;
+import fi.otavanopisto.kuntaapi.server.integrations.MenuItemId;
 import fi.otavanopisto.kuntaapi.server.integrations.NewsArticleId;
 import fi.otavanopisto.kuntaapi.server.integrations.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.integrations.PageId;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceClassId;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceId;
@@ -183,6 +187,82 @@ public class MwpIdProvider implements IdProvider {
       identifier = identifierController.findIdentifierByTypeSourceAndKuntaApiId(IdType.TILE, MwpConsts.IDENTIFIER_NAME, tileId.getId());
       if (identifier != null) {
         return new TileId(MwpConsts.IDENTIFIER_NAME, identifier.getSourceId());
+      }
+    }
+    
+    return null;
+  }
+
+  @Override
+  public PageId translate(PageId pageId, String target) {
+    Identifier identifier;
+    
+    if (MwpConsts.IDENTIFIER_NAME.equals(pageId.getSource())) {
+      identifier = identifierController.findIdentifierById(pageId);
+      if (identifier != null) {
+        return new PageId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
+      }
+    } else if (KuntaApiConsts.IDENTIFIER_NAME.equals(pageId.getSource())) {
+      identifier = identifierController.findIdentifierByTypeSourceAndKuntaApiId(IdType.PAGE, MwpConsts.IDENTIFIER_NAME, pageId.getId());
+      if (identifier != null) {
+        return new PageId(MwpConsts.IDENTIFIER_NAME, identifier.getSourceId());
+      }
+    }
+    
+    return null;
+  }
+
+  @Override
+  public MenuId translate(MenuId menuId, String target) {
+    Identifier identifier;
+    
+    if (MwpConsts.IDENTIFIER_NAME.equals(menuId.getSource())) {
+      identifier = identifierController.findIdentifierById(menuId);
+      if (identifier != null) {
+        return new MenuId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
+      }
+    } else if (KuntaApiConsts.IDENTIFIER_NAME.equals(menuId.getSource())) {
+      identifier = identifierController.findIdentifierByTypeSourceAndKuntaApiId(IdType.MENU, MwpConsts.IDENTIFIER_NAME, menuId.getId());
+      if (identifier != null) {
+        return new MenuId(MwpConsts.IDENTIFIER_NAME, identifier.getSourceId());
+      }
+    }
+    
+    return null;
+  }
+
+  @Override
+  public FileId translate(FileId fileId, String target) {
+    Identifier identifier;
+    
+    if (MwpConsts.IDENTIFIER_NAME.equals(fileId.getSource())) {
+      identifier = identifierController.findIdentifierById(fileId);
+      if (identifier != null) {
+        return new FileId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
+      }
+    } else if (KuntaApiConsts.IDENTIFIER_NAME.equals(fileId.getSource())) {
+      identifier = identifierController.findIdentifierByTypeSourceAndKuntaApiId(IdType.FILE, MwpConsts.IDENTIFIER_NAME, fileId.getId());
+      if (identifier != null) {
+        return new FileId(MwpConsts.IDENTIFIER_NAME, identifier.getSourceId());
+      }
+    }
+    
+    return null;
+  }
+
+  @Override
+  public MenuItemId translate(MenuItemId menuItemId, String target) {
+    Identifier identifier;
+    
+    if (MwpConsts.IDENTIFIER_NAME.equals(menuItemId.getSource())) {
+      identifier = identifierController.findIdentifierById(menuItemId);
+      if (identifier != null) {
+        return new MenuItemId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
+      }
+    } else if (KuntaApiConsts.IDENTIFIER_NAME.equals(menuItemId.getSource())) {
+      identifier = identifierController.findIdentifierByTypeSourceAndKuntaApiId(IdType.MENU_ITEM, MwpConsts.IDENTIFIER_NAME, menuItemId.getId());
+      if (identifier != null) {
+        return new MenuItemId(MwpConsts.IDENTIFIER_NAME, identifier.getSourceId());
       }
     }
     

@@ -3,11 +3,14 @@ package fi.otavanopisto.kuntaapi.server.integrations.mwp;
 import java.awt.image.BufferedImage;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.inject.Inject;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.apache.http.client.utils.URIBuilder;
 
@@ -18,13 +21,15 @@ import fi.otavanopisto.kuntaapi.server.images.ImageWriter;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.integrations.BinaryHttpClient;
+import fi.otavanopisto.kuntaapi.server.integrations.BinaryHttpClient.BinaryResponse;
+import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpClient.Response;
 import fi.otavanopisto.kuntaapi.server.integrations.IdController;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.OrganizationId;
-import fi.otavanopisto.kuntaapi.server.integrations.BinaryHttpClient.BinaryResponse;
-import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpClient.Response;
+import fi.otavanopisto.kuntaapi.server.integrations.PageId;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
+import fi.otavanopisto.kuntaapi.server.rest.model.LocalizedValue;
 import fi.otavanopisto.mwp.client.ApiResponse;
 
 /**
@@ -144,4 +149,35 @@ public abstract class AbstractMwpProvider {
     return attachment;
   }
   
+  protected List<LocalizedValue> translateLocalized(String value) {
+    // TODO: Support multiple locales 
+    
+    List<LocalizedValue> result = new ArrayList<>();
+    
+    if (StringUtils.isNotBlank(value)) {
+      LocalizedValue localizedValue = new LocalizedValue();
+      localizedValue.setLanguage(MwpConsts.DEFAULT_LOCALE);
+      localizedValue.setValue(value);
+      result.add(localizedValue);
+    }
+    
+    return result;
+  }
+  
+  protected PageId translatePageId(Long pageId) {
+    if (pageId == null) {
+      return null;
+    }
+    
+    return translatePageId(pageId.intValue());
+  }
+  
+  protected PageId translatePageId(Integer pageId) {
+    if (pageId == null) {
+      return null;
+    }
+    
+    PageId mwpId = new PageId(MwpConsts.IDENTIFIER_NAME, String.valueOf(pageId));
+    return idController.translatePageId(mwpId, KuntaApiConsts.IDENTIFIER_NAME);
+  }
 }

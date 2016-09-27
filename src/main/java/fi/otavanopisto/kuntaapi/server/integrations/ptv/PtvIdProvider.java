@@ -7,11 +7,15 @@ import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.integrations.BannerId;
 import fi.otavanopisto.kuntaapi.server.integrations.EventId;
+import fi.otavanopisto.kuntaapi.server.integrations.FileId;
 import fi.otavanopisto.kuntaapi.server.integrations.IdProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.IdType;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
+import fi.otavanopisto.kuntaapi.server.integrations.MenuId;
+import fi.otavanopisto.kuntaapi.server.integrations.MenuItemId;
 import fi.otavanopisto.kuntaapi.server.integrations.NewsArticleId;
 import fi.otavanopisto.kuntaapi.server.integrations.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.integrations.PageId;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceClassId;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceId;
@@ -143,6 +147,26 @@ public class PtvIdProvider implements IdProvider {
   
   @Override
   public TileId translate(TileId tileId, String target) {
+    return null;
+  }
+
+  @Override
+  public PageId translate(PageId pageId, String target) {
+    return null;
+  }
+
+  @Override
+  public MenuId translate(MenuId menuId, String target) {
+    return null;
+  }
+
+  @Override
+  public FileId translate(FileId fileId, String target) {
+    return null;
+  }
+
+  @Override
+  public MenuItemId translate(MenuItemId menuItemId, String target) {
     return null;
   }
 
