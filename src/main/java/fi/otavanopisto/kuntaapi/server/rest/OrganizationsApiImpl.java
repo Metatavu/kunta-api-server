@@ -27,11 +27,16 @@ import fi.otavanopisto.kuntaapi.server.integrations.BannerId;
 import fi.otavanopisto.kuntaapi.server.integrations.BannerProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.EventId;
 import fi.otavanopisto.kuntaapi.server.integrations.EventProvider;
+import fi.otavanopisto.kuntaapi.server.integrations.FileId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
+import fi.otavanopisto.kuntaapi.server.integrations.MenuId;
+import fi.otavanopisto.kuntaapi.server.integrations.MenuItemId;
 import fi.otavanopisto.kuntaapi.server.integrations.NewsArticleId;
 import fi.otavanopisto.kuntaapi.server.integrations.NewsProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.OrganizationProvider;
+import fi.otavanopisto.kuntaapi.server.integrations.PageId;
+import fi.otavanopisto.kuntaapi.server.integrations.PageProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceChannelProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceClassId;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceClassProvider;
@@ -45,6 +50,7 @@ import fi.otavanopisto.kuntaapi.server.rest.model.Event;
 import fi.otavanopisto.kuntaapi.server.rest.model.NewsArticle;
 import fi.otavanopisto.kuntaapi.server.rest.model.Organization;
 import fi.otavanopisto.kuntaapi.server.rest.model.OrganizationSetting;
+import fi.otavanopisto.kuntaapi.server.rest.model.Page;
 import fi.otavanopisto.kuntaapi.server.rest.model.Service;
 import fi.otavanopisto.kuntaapi.server.rest.model.ServiceClass;
 import fi.otavanopisto.kuntaapi.server.rest.model.ServiceElectronicChannel;
@@ -98,6 +104,9 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   @Inject
   private Instance<TileProvider> tileProviders;
+
+  @Inject
+  private Instance<PageProvider> pageProviders;
 
   @Override
   public Response listOrganizations(String businessName, String businessCode) {
@@ -698,6 +707,98 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     return Response.noContent()
         .build();
   }
+
+  
+  /* Pages */
+
+  @Override
+  public Response listOrganizationPages(String organizationIdParam, String parentIdParam) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    PageId parentId = toPageId(parentIdParam);
+    
+    List<Page> result = new ArrayList<>();
+    
+    for (PageProvider pageProvider : getPageProviders()) {
+      result.addAll(pageProvider.listOrganizationPages(organizationId, parentId));
+    }
+    
+    return Response.ok(result)
+      .build();
+  }
+
+  @Override
+  public Response findOrganizationPage(String organizationIdParam, String pageIdParam) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    PageId pageId = toPageId(pageIdParam);
+    if (pageId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    for (PageProvider pageProvider : getPageProviders()) {
+      Page page = pageProvider.findOrganizationPage(organizationId, pageId);
+      if (page != null) {
+        return Response.ok(page).build();
+      }
+    }
+    
+    return createNotFound(NOT_FOUND);
+  }
+  
+  /* Menus */
+
+  @Override
+  public Response listOrganizationMenus(String organizationId, String slug) {
+    // TODO Auto-generated method stub
+    return null;
+  }
+  
+  @Override
+  public Response findOrganizationMenu(String organizationId, String menuId) {
+    // TODO Auto-generated method stub
+    return null;
+  }
+  
+  /* Menu Items */
+
+  @Override
+  public Response listOrganizationMenuItems(String organizationId, String menuId) {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public Response findOrganizationMenuItem(String organizationId, String menuId, String menuItemId) {
+    // TODO Auto-generated method stub
+    return null;
+  }
+  
+  /* Files */
+
+  @Override
+  public Response listOrganizationFiles(String organizationId, String pageId) {
+    // TODO Auto-generated method stub
+    return null;
+  }
+  
+  @Override
+  public Response findOrganizationFile(String organizationId, String fileId) {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public Response getOrganizationFileData(String organizationId, String fileId) {
+    // TODO Auto-generated method stub
+    return null;
+  }
   
   private BannerId toBannerId(String id) {
     if (StringUtils.isNotBlank(id)) {
@@ -750,6 +851,38 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   private AttachmentId toAttachmentId(String id) {
     if (StringUtils.isNotBlank(id)) {
       return new AttachmentId(KuntaApiConsts.IDENTIFIER_NAME, id);
+    }
+    
+    return null;
+  }
+  
+  private FileId toFileId(String id) {
+    if (StringUtils.isNotBlank(id)) {
+      return new FileId(KuntaApiConsts.IDENTIFIER_NAME, id);
+    }
+    
+    return null;
+  }
+  
+  private PageId toPageId(String id) {
+    if (StringUtils.isNotBlank(id)) {
+      return new PageId(KuntaApiConsts.IDENTIFIER_NAME, id);
+    }
+    
+    return null;
+  }
+  
+  private MenuId toMenuId(String id) {
+    if (StringUtils.isNotBlank(id)) {
+      return new MenuId(KuntaApiConsts.IDENTIFIER_NAME, id);
+    }
+    
+    return null;
+  }
+  
+  private MenuItemId toMenuItemId(String id) {
+    if (StringUtils.isNotBlank(id)) {
+      return new MenuItemId(KuntaApiConsts.IDENTIFIER_NAME, id);
     }
     
     return null;
@@ -850,6 +983,17 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     
     return Collections.unmodifiableList(result);
   }
+  
+  private List<PageProvider> getPageProviders() {
+    List<PageProvider> result = new ArrayList<>();
+    
+    Iterator<PageProvider> iterator = pageProviders.iterator();
+    while (iterator.hasNext()) {
+      result.add(iterator.next());
+    }
+    
+    return Collections.unmodifiableList(result);
+  }
 
   private fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting findOrganizationSetting(OrganizationId organizationId, String settingId) {
     fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting organizationSetting = organizationSettingController.findOrganizationSetting(settingId);
@@ -872,6 +1016,5 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     result.setValue(organizationSetting.getValue());
     return result;
   }
-  
 }
 

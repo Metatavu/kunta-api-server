@@ -3,11 +3,14 @@ package fi.otavanopisto.kuntaapi.server.integrations.mwp;
 import java.awt.image.BufferedImage;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.inject.Inject;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.apache.http.client.utils.URIBuilder;
 
@@ -25,6 +28,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.BinaryHttpClient.BinaryRespo
 import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpClient.Response;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
+import fi.otavanopisto.kuntaapi.server.rest.model.LocalizedValue;
 import fi.otavanopisto.mwp.client.ApiResponse;
 
 /**
@@ -144,4 +148,18 @@ public abstract class AbstractMwpProvider {
     return attachment;
   }
   
+  protected List<LocalizedValue> translateLocalized(String value) {
+    // TODO: Support multiple locales 
+    
+    List<LocalizedValue> result = new ArrayList<>();
+    
+    if (StringUtils.isNotBlank(value)) {
+      LocalizedValue localizedValue = new LocalizedValue();
+      localizedValue.setLanguage(MwpConsts.DEFAULT_LOCALE);
+      localizedValue.setValue(value);
+      result.add(localizedValue);
+    }
+    
+    return result;
+  }
 }
