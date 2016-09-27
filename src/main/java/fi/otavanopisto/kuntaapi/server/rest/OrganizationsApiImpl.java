@@ -31,6 +31,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.FileId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.MenuId;
 import fi.otavanopisto.kuntaapi.server.integrations.MenuItemId;
+import fi.otavanopisto.kuntaapi.server.integrations.MenuProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.NewsArticleId;
 import fi.otavanopisto.kuntaapi.server.integrations.NewsProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.OrganizationId;
@@ -47,6 +48,8 @@ import fi.otavanopisto.kuntaapi.server.integrations.TileProvider;
 import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
 import fi.otavanopisto.kuntaapi.server.rest.model.Banner;
 import fi.otavanopisto.kuntaapi.server.rest.model.Event;
+import fi.otavanopisto.kuntaapi.server.rest.model.Menu;
+import fi.otavanopisto.kuntaapi.server.rest.model.MenuItem;
 import fi.otavanopisto.kuntaapi.server.rest.model.NewsArticle;
 import fi.otavanopisto.kuntaapi.server.rest.model.Organization;
 import fi.otavanopisto.kuntaapi.server.rest.model.OrganizationSetting;
@@ -107,6 +110,10 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   @Inject
   private Instance<PageProvider> pageProviders;
+
+  @Inject
+  private Instance<MenuProvider> menuProviders;
+
 
   @Override
   public Response listOrganizations(String businessName, String businessCode) {
@@ -755,29 +762,93 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   /* Menus */
 
   @Override
-  public Response listOrganizationMenus(String organizationId, String slug) {
-    // TODO Auto-generated method stub
-    return null;
+  public Response listOrganizationMenus(String organizationIdParam, String slug) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    List<Menu> result = new ArrayList<>();
+    
+    for (MenuProvider menuProvider : getMenuProviders()) {
+      result.addAll(menuProvider.listOrganizationMenus(organizationId, slug));
+    }
+    
+    return Response.ok(result)
+      .build();
   }
   
   @Override
-  public Response findOrganizationMenu(String organizationId, String menuId) {
-    // TODO Auto-generated method stub
-    return null;
+  public Response findOrganizationMenu(String organizationIdParam, String menuIdParam) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    MenuId menuId = toMenuId(menuIdParam);
+    if (menuId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    for (MenuProvider menuProvider : getMenuProviders()) {
+      Menu menu = menuProvider.findOrganizationMenu(organizationId, menuId);
+      if (menu != null) {
+        return Response.ok(menu).build();
+      }
+    }
+    
+    return createNotFound(NOT_FOUND);
   }
   
   /* Menu Items */
 
   @Override
-  public Response listOrganizationMenuItems(String organizationId, String menuId) {
-    // TODO Auto-generated method stub
-    return null;
+  public Response listOrganizationMenuItems(String organizationIdParam, String menuIdParam) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    MenuId menuId = toMenuId(menuIdParam);
+    if (menuId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    List<MenuItem> result = new ArrayList<>();
+    
+    for (MenuProvider menuProvider : getMenuProviders()) {
+      result.addAll(menuProvider.listOrganizationMenuItems(organizationId, menuId));
+    }
+    
+    return Response.ok(result)
+      .build();
   }
 
   @Override
-  public Response findOrganizationMenuItem(String organizationId, String menuId, String menuItemId) {
-    // TODO Auto-generated method stub
-    return null;
+  public Response findOrganizationMenuItem(String organizationIdParam, String menuIdParam, String menuItemIdParam) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    MenuId menuId = toMenuId(menuIdParam);
+    if (menuId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    MenuItemId menuItemId = toMenuItemId(menuItemIdParam);
+    if (menuItemId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    for (MenuProvider menuProvider : getMenuProviders()) {
+      MenuItem menuItem = menuProvider.findOrganizationMenuItem(organizationId, menuId, menuItemId);
+      if (menuItem != null) {
+        return Response.ok(menuItem).build();
+      }
+    }
+    
+    return createNotFound(NOT_FOUND);
   }
   
   /* Files */
@@ -994,6 +1065,18 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     
     return Collections.unmodifiableList(result);
   }
+  
+  private List<MenuProvider> getMenuProviders() {
+    List<MenuProvider> result = new ArrayList<>();
+    
+    Iterator<MenuProvider> iterator = menuProviders.iterator();
+    while (iterator.hasNext()) {
+      result.add(iterator.next());
+    }
+    
+    return Collections.unmodifiableList(result);
+  }
+
 
   private fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting findOrganizationSetting(OrganizationId organizationId, String settingId) {
     fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting organizationSetting = organizationSettingController.findOrganizationSetting(settingId);
