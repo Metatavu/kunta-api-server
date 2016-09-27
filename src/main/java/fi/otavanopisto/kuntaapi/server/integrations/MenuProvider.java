@@ -48,4 +48,20 @@ public interface MenuProvider {
    * @return Find single menu item
    */
   public MenuItem findOrganizationMenuItem(OrganizationId organizationId, MenuId menuId, MenuItemId menuItemId);
+  
+  /**
+   * Enumeration describing a menu item type
+   */
+  public enum MenuItemType {
+    
+    PAGE,
+    
+    NEWS_ARTICLE,
+    
+    FILE,
+    
+    LINK
+    
+  }
+  
 }

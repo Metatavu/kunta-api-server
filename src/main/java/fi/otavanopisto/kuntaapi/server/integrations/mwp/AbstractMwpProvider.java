@@ -21,11 +21,12 @@ import fi.otavanopisto.kuntaapi.server.images.ImageWriter;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.integrations.BinaryHttpClient;
+import fi.otavanopisto.kuntaapi.server.integrations.BinaryHttpClient.BinaryResponse;
+import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpClient.Response;
 import fi.otavanopisto.kuntaapi.server.integrations.IdController;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.OrganizationId;
-import fi.otavanopisto.kuntaapi.server.integrations.BinaryHttpClient.BinaryResponse;
-import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpClient.Response;
+import fi.otavanopisto.kuntaapi.server.integrations.PageId;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
 import fi.otavanopisto.kuntaapi.server.rest.model.LocalizedValue;
@@ -161,5 +162,22 @@ public abstract class AbstractMwpProvider {
     }
     
     return result;
+  }
+  
+  protected PageId translatePageId(Long pageId) {
+    if (pageId == null) {
+      return null;
+    }
+    
+    return translatePageId(pageId.intValue());
+  }
+  
+  protected PageId translatePageId(Integer pageId) {
+    if (pageId == null) {
+      return null;
+    }
+    
+    PageId mwpId = new PageId(MwpConsts.IDENTIFIER_NAME, String.valueOf(pageId));
+    return idController.translatePageId(mwpId, KuntaApiConsts.IDENTIFIER_NAME);
   }
 }

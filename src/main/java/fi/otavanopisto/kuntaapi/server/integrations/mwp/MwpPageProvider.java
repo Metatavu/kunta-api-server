@@ -50,7 +50,6 @@ public class MwpPageProvider extends AbstractMwpProvider implements PageProvider
     String search = null;
     LocalDateTime after = null;
     LocalDateTime before = null;
-    List<String> exclude = null;
     List<String> include = null;
     Integer offset = null;
     String order = null; 
@@ -63,7 +62,6 @@ public class MwpPageProvider extends AbstractMwpProvider implements PageProvider
     Integer menuOrder = null;
     List<String> parent = null;
     List<String> parentExclude = null;
-    List<String> categories = null;
     
     if (parentId != null) {
       PageId mwpParentId = idController.translatePageId(parentId, MwpConsts.IDENTIFIER_NAME);
@@ -76,9 +74,8 @@ public class MwpPageProvider extends AbstractMwpProvider implements PageProvider
     }
     
     ApiResponse<List<fi.otavanopisto.mwp.client.model.Page>> response = mwpApi.getApi(organizationId).wpV2PagesGet(
-        context, page, perPage, search, after, author, authorExclude, before, exclude, include, menuOrder, offset,
-        order, orderby, parent, parentExclude, slug, status, filter, categories);    
-
+        context, page, perPage, search, after, author, authorExclude, before, authorExclude, include, menuOrder, offset,
+        order, orderby, parent, parentExclude, slug, status, filter);
     if (!response.isOk()) {
       logger.severe(String.format("Page listing failed on [%d] %s", response.getStatus(), response.getMessage()));
     } else {
@@ -139,7 +136,7 @@ public class MwpPageProvider extends AbstractMwpProvider implements PageProvider
     PageId kuntaApiParentId = null;
     
     if (mwpPage.getParent() != null) {
-      PageId mwpParentId = new PageId(MwpConsts.IDENTIFIER_NAME, String.valueOf(mwpPage.getParent()));
+      PageId mwpParentId = translatePageId(mwpPage.getParent());
       kuntaApiParentId = idController.translatePageId(mwpParentId, KuntaApiConsts.IDENTIFIER_NAME);
       if (kuntaApiParentId == null) {
         logger.info(String.format("Found new page %s", mwpParentId.getId()));
