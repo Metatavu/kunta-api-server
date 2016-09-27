@@ -855,20 +855,17 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   @Override
   public Response listOrganizationFiles(String organizationId, String pageId) {
-    // TODO Auto-generated method stub
-    return null;
+    return createNotImplemented(NOT_IMPLEMENTED);
   }
   
   @Override
   public Response findOrganizationFile(String organizationId, String fileId) {
-    // TODO Auto-generated method stub
-    return null;
+    return createNotImplemented(NOT_IMPLEMENTED);
   }
 
   @Override
   public Response getOrganizationFileData(String organizationId, String fileId) {
-    // TODO Auto-generated method stub
-    return null;
+    return createNotImplemented(NOT_IMPLEMENTED);
   }
   
   private BannerId toBannerId(String id) {
@@ -927,6 +924,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     return null;
   }
   
+  @SuppressWarnings("unused")
   private FileId toFileId(String id) {
     if (StringUtils.isNotBlank(id)) {
       return new FileId(KuntaApiConsts.IDENTIFIER_NAME, id);
