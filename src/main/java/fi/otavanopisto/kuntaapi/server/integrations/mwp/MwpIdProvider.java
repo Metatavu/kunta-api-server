@@ -203,7 +203,7 @@ public class MwpIdProvider implements IdProvider {
         return new PageId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
       }
     } else if (KuntaApiConsts.IDENTIFIER_NAME.equals(pageId.getSource())) {
-      identifier = identifierController.findIdentifierByTypeSourceAndKuntaApiId(IdType.TILE, MwpConsts.IDENTIFIER_NAME, pageId.getId());
+      identifier = identifierController.findIdentifierByTypeSourceAndKuntaApiId(IdType.PAGE, MwpConsts.IDENTIFIER_NAME, pageId.getId());
       if (identifier != null) {
         return new PageId(MwpConsts.IDENTIFIER_NAME, identifier.getSourceId());
       }
@@ -222,7 +222,7 @@ public class MwpIdProvider implements IdProvider {
         return new MenuId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
       }
     } else if (KuntaApiConsts.IDENTIFIER_NAME.equals(menuId.getSource())) {
-      identifier = identifierController.findIdentifierByTypeSourceAndKuntaApiId(IdType.TILE, MwpConsts.IDENTIFIER_NAME, menuId.getId());
+      identifier = identifierController.findIdentifierByTypeSourceAndKuntaApiId(IdType.MENU, MwpConsts.IDENTIFIER_NAME, menuId.getId());
       if (identifier != null) {
         return new MenuId(MwpConsts.IDENTIFIER_NAME, identifier.getSourceId());
       }
@@ -241,7 +241,7 @@ public class MwpIdProvider implements IdProvider {
         return new FileId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
       }
     } else if (KuntaApiConsts.IDENTIFIER_NAME.equals(fileId.getSource())) {
-      identifier = identifierController.findIdentifierByTypeSourceAndKuntaApiId(IdType.TILE, MwpConsts.IDENTIFIER_NAME, fileId.getId());
+      identifier = identifierController.findIdentifierByTypeSourceAndKuntaApiId(IdType.FILE, MwpConsts.IDENTIFIER_NAME, fileId.getId());
       if (identifier != null) {
         return new FileId(MwpConsts.IDENTIFIER_NAME, identifier.getSourceId());
       }
@@ -260,7 +260,7 @@ public class MwpIdProvider implements IdProvider {
         return new MenuItemId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
       }
     } else if (KuntaApiConsts.IDENTIFIER_NAME.equals(menuItemId.getSource())) {
-      identifier = identifierController.findIdentifierByTypeSourceAndKuntaApiId(IdType.TILE, MwpConsts.IDENTIFIER_NAME, menuItemId.getId());
+      identifier = identifierController.findIdentifierByTypeSourceAndKuntaApiId(IdType.MENU_ITEM, MwpConsts.IDENTIFIER_NAME, menuItemId.getId());
       if (identifier != null) {
         return new MenuItemId(MwpConsts.IDENTIFIER_NAME, identifier.getSourceId());
       }
