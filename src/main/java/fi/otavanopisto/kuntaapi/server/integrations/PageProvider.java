@@ -16,9 +16,10 @@ public interface PageProvider {
    * 
    * @param organizationId organization id
    * @param filter results by parent id (optional)
+   * @param filter results by path (optional)
    * @return list of organization pages
    */
-  public List<Page> listOrganizationPages(OrganizationId organizationId, PageId parentId);
+  public List<Page> listOrganizationPages(OrganizationId organizationId, PageId parentId, String path);
   
   /**
    * Finds a single organization page

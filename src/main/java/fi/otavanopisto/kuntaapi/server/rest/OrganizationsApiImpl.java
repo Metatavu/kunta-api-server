@@ -719,7 +719,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   /* Pages */
 
   @Override
-  public Response listOrganizationPages(String organizationIdParam, String parentIdParam) {
+  public Response listOrganizationPages(String organizationIdParam, String parentIdParam, String path) {
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
@@ -730,7 +730,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     List<Page> result = new ArrayList<>();
     
     for (PageProvider pageProvider : getPageProviders()) {
-      result.addAll(pageProvider.listOrganizationPages(organizationId, parentId));
+      result.addAll(pageProvider.listOrganizationPages(organizationId, parentId, path));
     }
     
     return Response.ok(result)

@@ -9,6 +9,8 @@ import java.util.logging.Logger;
 import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 
+import org.apache.commons.lang3.StringUtils;
+
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.integrations.IdController;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
@@ -43,7 +45,104 @@ public class MwpPageProvider extends AbstractMwpProvider implements PageProvider
   }
   
   @Override
-  public List<Page> listOrganizationPages(OrganizationId organizationId, PageId parentId) {
+  public List<Page> listOrganizationPages(OrganizationId organizationId, PageId parentId, String path) {
+    if (StringUtils.isNotBlank(path)) {
+      fi.otavanopisto.mwp.client.model.Page mwpPage = findPageByPath(organizationId, path);
+      if (mwpPage == null) {
+        return Collections.emptyList();
+      }
+      
+      if (parentId != null && !idController.idsEqual(parentId, translatePageId(mwpPage.getParent()))) {
+        return Collections.emptyList();
+      }
+    
+      return Collections.singletonList(translatePage(mwpPage));
+    } else {
+      return listPages(organizationId, parentId);
+    }
+  }
+
+  @Override
+  public Page findOrganizationPage(OrganizationId organizationId, PageId pageId) {
+    fi.otavanopisto.mwp.client.model.Page mwpPage = findPageByPageId(organizationId, pageId);
+    if (mwpPage != null) {
+      return translatePage(mwpPage);
+    }
+  
+    return null;
+  }
+  
+  private fi.otavanopisto.mwp.client.model.Page findPageByPath(OrganizationId organizationId, String path) {
+    fi.otavanopisto.mwp.client.model.Page current = null;
+    
+    String[] slugs = StringUtils.split(path, "/");
+    for (String slug : slugs) {
+      if (current == null) {
+        current = findPageByParentAndSlug(organizationId, 0, slug);
+      } else {
+        current = findPageByParentAndSlug(organizationId, current.getId(), slug);
+      }
+      
+      if (current == null) {
+        return null;
+      }
+    }
+    
+    
+    return current;
+  }
+  
+  private fi.otavanopisto.mwp.client.model.Page findPageByParentAndSlug(OrganizationId organizationId, Integer parent, String slug) {
+    String context = null;
+    Integer page = null;
+    Integer perPage = null;
+    String search = null;
+    LocalDateTime after = null;
+    LocalDateTime before = null;
+    List<String> include = null;
+    Integer offset = null;
+    String order = null; 
+    String orderby = null;
+    String status = null;
+    String filter = null;
+    List<String> author = null;
+    List<String> authorExclude = null;
+    Integer menuOrder = null;
+    List<String> parentExclude = null;
+    
+    ApiResponse<List<fi.otavanopisto.mwp.client.model.Page>> response = mwpApi.getApi(organizationId).wpV2PagesGet(
+        context, page, perPage, search, after, author, authorExclude, before, authorExclude, include, menuOrder, offset,
+        order, orderby, Collections.singletonList(String.valueOf(parent)), parentExclude, slug, status, filter);
+    if (!response.isOk()) {
+      logger.severe(String.format("Page listing failed on [%d] %s", response.getStatus(), response.getMessage()));
+    } else {
+      List<fi.otavanopisto.mwp.client.model.Page> pages = response.getResponse();
+      if (!pages.isEmpty()) {
+        return pages.get(0);
+      }
+    }
+    
+    return null;
+  }
+  
+  private fi.otavanopisto.mwp.client.model.Page findPageByPageId(OrganizationId organizationId, PageId pageId) {
+    PageId mwpPageId = idController.translatePageId(pageId, MwpConsts.IDENTIFIER_NAME);
+    if (mwpPageId == null) {
+      logger.severe(String.format("Failed to convert %s into MWP id", pageId.toString()));
+      return null;
+    }
+    
+    ApiResponse<fi.otavanopisto.mwp.client.model.Page> response = mwpApi.getApi(organizationId).wpV2PagesIdGet(mwpPageId.getId(), null);
+    if (!response.isOk()) {
+      logger.severe(String.format("Finding page failed on [%d] %s", response.getStatus(), response.getMessage()));
+    } else {
+      return response.getResponse();
+    }
+    
+    return null;
+  }
+
+  private List<Page> listPages(OrganizationId organizationId, PageId parentId) {
     String context = null;
     Integer page = null;
     Integer perPage = null;
@@ -83,33 +182,6 @@ public class MwpPageProvider extends AbstractMwpProvider implements PageProvider
     }
     
     return Collections.emptyList();
-  }
-
-  @Override
-  public Page findOrganizationPage(OrganizationId organizationId, PageId pageId) {
-    fi.otavanopisto.mwp.client.model.Page mwpPage = findPageByPageId(organizationId, pageId);
-    if (mwpPage != null) {
-      return translatePage(mwpPage);
-    }
-  
-    return null;
-  }
-
-  private fi.otavanopisto.mwp.client.model.Page findPageByPageId(OrganizationId organizationId, PageId pageId) {
-    PageId mwpPageId = idController.translatePageId(pageId, MwpConsts.IDENTIFIER_NAME);
-    if (mwpPageId == null) {
-      logger.severe(String.format("Failed to convert %s into MWP id", pageId.toString()));
-      return null;
-    }
-    
-    ApiResponse<fi.otavanopisto.mwp.client.model.Page> response = mwpApi.getApi(organizationId).wpV2PagesIdGet(mwpPageId.getId(), null);
-    if (!response.isOk()) {
-      logger.severe(String.format("Finding page failed on [%d] %s", response.getStatus(), response.getMessage()));
-    } else {
-      return response.getResponse();
-    }
-    
-    return null;
   }
 
   private List<Page> translatePages(List<fi.otavanopisto.mwp.client.model.Page> mwpPages) {
