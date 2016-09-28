@@ -12,14 +12,18 @@ import javax.inject.Inject;
 import org.apache.commons.lang3.StringUtils;
 
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
+import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
+import fi.otavanopisto.kuntaapi.server.integrations.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.integrations.IdController;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.PageId;
 import fi.otavanopisto.kuntaapi.server.integrations.PageProvider;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
+import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
 import fi.otavanopisto.kuntaapi.server.rest.model.Page;
 import fi.otavanopisto.mwp.client.ApiResponse;
+import fi.otavanopisto.mwp.client.model.Attachment.MediaTypeEnum;
 
 /**
  * Page provider for management service
@@ -69,6 +73,67 @@ public class MwpPageProvider extends AbstractMwpProvider implements PageProvider
       return translatePage(mwpPage);
     }
   
+    return null;
+  }
+
+  @Override
+  public List<Attachment> listOrganizationPageImages(OrganizationId organizationId, PageId pageId) {
+    fi.otavanopisto.mwp.client.model.Page mwpPage = findPageByPageId(organizationId, pageId);
+    if (mwpPage != null) {
+      Integer featuredMediaId = mwpPage.getFeaturedMedia();
+      if (featuredMediaId != null) {
+        fi.otavanopisto.mwp.client.model.Attachment featuredMedia = findMedia(organizationId, featuredMediaId);
+        if ((featuredMedia != null) && (featuredMedia.getMediaType() == MediaTypeEnum.IMAGE)) {
+          return Collections.singletonList(translateAttachment(featuredMedia));
+        }
+      }
+    }
+  
+    return Collections.emptyList();
+  }
+
+  @Override
+  public Attachment findPageImage(OrganizationId organizationId, PageId pageId, AttachmentId attachmentId) {
+    fi.otavanopisto.mwp.client.model.Page page = findPageByPageId(organizationId, pageId);
+    if (page != null) {
+      Integer featuredMediaId = page.getFeaturedMedia();
+      if (featuredMediaId != null) {
+        AttachmentId mwpAttachmentId = getImageAttachmentId(featuredMediaId);
+        if (!idController.idsEqual(attachmentId, mwpAttachmentId)) {
+          return null;
+        }
+        
+        fi.otavanopisto.mwp.client.model.Attachment attachment = findMedia(organizationId, featuredMediaId);
+        if (attachment != null) {
+          return translateAttachment(attachment);
+        }
+      }
+    }
+  
+    return null;
+  }
+
+  @Override
+  public AttachmentData getPageImageData(OrganizationId organizationId, PageId pageId, AttachmentId attachmentId,
+      Integer size) {
+    
+    Integer mediaId = getMediaId(attachmentId);
+    if (mediaId == null) {
+      return null;
+    }
+    
+    fi.otavanopisto.mwp.client.model.Attachment featuredMedia = findMedia(organizationId, mediaId);
+    if (featuredMedia.getMediaType() == MediaTypeEnum.IMAGE) {
+      AttachmentData imageData = getImageData(featuredMedia.getSourceUrl());
+      
+      if (size != null) {
+        return scaleImage(imageData, size);
+      } else {
+        return imageData;
+      }
+      
+    }
+    
     return null;
   }
   
