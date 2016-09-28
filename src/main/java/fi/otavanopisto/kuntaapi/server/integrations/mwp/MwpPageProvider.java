@@ -21,6 +21,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.PageId;
 import fi.otavanopisto.kuntaapi.server.integrations.PageProvider;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
+import fi.otavanopisto.kuntaapi.server.rest.model.LocalizedValue;
 import fi.otavanopisto.kuntaapi.server.rest.model.Page;
 import fi.otavanopisto.mwp.client.ApiResponse;
 import fi.otavanopisto.mwp.client.model.Attachment.MediaTypeEnum;
@@ -73,6 +74,19 @@ public class MwpPageProvider extends AbstractMwpProvider implements PageProvider
       return translatePage(mwpPage);
     }
   
+    return null;
+  }
+  
+  @Override
+  @SuppressWarnings ("squid:S1168")
+  public List<LocalizedValue> findOrganizationPageContents(OrganizationId organizationId, PageId pageId) {
+    fi.otavanopisto.mwp.client.model.Page mwpPage = findPageByPageId(organizationId, pageId);
+    if (mwpPage != null) {
+      return translateLocalized(mwpPage.getContent().getRendered());
+    }
+  
+    // Returning null to indacate that this provider could not find contents for this page
+    
     return null;
   }
 
@@ -272,7 +286,7 @@ public class MwpPageProvider extends AbstractMwpProvider implements PageProvider
     
     PageId kuntaApiParentId = null;
     
-    if (mwpPage.getParent() != null) {
+    if (mwpPage.getParent() != null && mwpPage.getParent() > 0) {
       PageId mwpParentId = translatePageId(mwpPage.getParent());
       kuntaApiParentId = idController.translatePageId(mwpParentId, KuntaApiConsts.IDENTIFIER_NAME);
       if (kuntaApiParentId == null) {
@@ -282,7 +296,6 @@ public class MwpPageProvider extends AbstractMwpProvider implements PageProvider
       }
     }
     
-    page.setContents(translateLocalized(mwpPage.getContent().getRendered()));
     page.setTitles(translateLocalized(mwpPage.getTitle().getRendered()));
     
     page.setId(kuntaApiId.getId());

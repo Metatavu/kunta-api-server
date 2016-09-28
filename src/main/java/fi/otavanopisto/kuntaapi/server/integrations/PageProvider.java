@@ -3,6 +3,7 @@ package fi.otavanopisto.kuntaapi.server.integrations;
 import java.util.List;
 
 import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
+import fi.otavanopisto.kuntaapi.server.rest.model.LocalizedValue;
 import fi.otavanopisto.kuntaapi.server.rest.model.Page;
 
 /**
@@ -30,6 +31,15 @@ public interface PageProvider {
    * @return page or null of not found
    */
   public Page findOrganizationPage(OrganizationId organizationId, PageId pageId);
+
+  /**
+   * Finds organization page contents
+   * 
+   * @param organizationId organization id
+   * @param pageId page id
+   * @return page contents or null of not found
+   */
+  public List<LocalizedValue> findOrganizationPageContents(OrganizationId organizationId, PageId pageId);
 
   /**
    * Lists images attached to the page

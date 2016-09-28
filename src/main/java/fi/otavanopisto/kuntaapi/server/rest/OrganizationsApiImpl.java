@@ -48,6 +48,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.TileProvider;
 import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
 import fi.otavanopisto.kuntaapi.server.rest.model.Banner;
 import fi.otavanopisto.kuntaapi.server.rest.model.Event;
+import fi.otavanopisto.kuntaapi.server.rest.model.LocalizedValue;
 import fi.otavanopisto.kuntaapi.server.rest.model.Menu;
 import fi.otavanopisto.kuntaapi.server.rest.model.MenuItem;
 import fi.otavanopisto.kuntaapi.server.rest.model.NewsArticle;
@@ -753,6 +754,28 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       Page page = pageProvider.findOrganizationPage(organizationId, pageId);
       if (page != null) {
         return Response.ok(page).build();
+      }
+    }
+    
+    return createNotFound(NOT_FOUND);
+  }
+  
+  @Override
+  public Response findOrganizationPageContent(String organizationIdParam, String pageIdParam) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    PageId pageId = toPageId(pageIdParam);
+    if (pageId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    for (PageProvider pageProvider : getPageProviders()) {
+      List<LocalizedValue> pageContents = pageProvider.findOrganizationPageContents(organizationId, pageId);
+      if (pageContents != null) {
+        return Response.ok(pageContents).build();
       }
     }
     
