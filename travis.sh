@@ -9,7 +9,7 @@ if [ "$TRAVIS_PULL_REQUEST" != "false" ] && [ -n "${GITHUB_TOKEN}" ] && [ -n "${
     -Dsonar.analysis.mode=issues \
     -Dsonar.login=$SONAR_TOKEN \
     -Dsonar.projectKey=$SONAR_PROJECT_KEY \
-    -Dsonar.projectName=Kunta API Server \
+    -Dsonar.projectName=Kunta\ API\ Server \
     -Dsonar.projectVersion=$PROJECT_VERSION \
     -Dsonar.sources=edelphi/src,edelphi-persistence/src,itests/src,smvcj/src \
     -Dsonar.java.source=1.8 \
@@ -29,7 +29,7 @@ elif [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ $TRAVIS_BRANCH == "develop" ]; t
     -Dsonar.analysis.mode=publish \
     -Dsonar.login=$SONAR_TOKEN \
     -Dsonar.projectKey=$SONAR_PROJECT_KEY \
-    -Dsonar.projectName=Kunta API Server \
+    -Dsonar.projectName=Kunta\ API\ Server \
     -Dsonar.projectVersion=$PROJECT_VERSION \
     -Dsonar.sources=edelphi/src,edelphi-persistence/src,itests/src,smvcj/src \
     -Dsonar.java.source=1.8
