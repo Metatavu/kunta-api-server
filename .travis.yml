@@ -1,9 +1,20 @@
 language: java
 sudo: false
 jdk: oraclejdk8
+cache:
+  directories:
+  - $HOME/.sonar
+  - $HOME/.m2
+  - $HOME/.cargo
+addons:
+  hosts:
+    - api.kunta-api.test
 
 install: true
 
+before_script:
+  - . travis-before-script.sh
+  
 script:
   - . travis.sh
     
