@@ -48,6 +48,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.TileProvider;
 import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
 import fi.otavanopisto.kuntaapi.server.rest.model.Banner;
 import fi.otavanopisto.kuntaapi.server.rest.model.Event;
+import fi.otavanopisto.kuntaapi.server.rest.model.LocalizedValue;
 import fi.otavanopisto.kuntaapi.server.rest.model.Menu;
 import fi.otavanopisto.kuntaapi.server.rest.model.MenuItem;
 import fi.otavanopisto.kuntaapi.server.rest.model.NewsArticle;
@@ -719,18 +720,19 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   /* Pages */
 
   @Override
-  public Response listOrganizationPages(String organizationIdParam, String parentIdParam) {
+  public Response listOrganizationPages(String organizationIdParam, String parentIdParam, String path) {
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
     }
     
-    PageId parentId = toPageId(parentIdParam);
+    boolean onlyRootPages = StringUtils.equals("ROOT", parentIdParam);
+    PageId parentId = onlyRootPages ? null : toPageId(parentIdParam);
     
     List<Page> result = new ArrayList<>();
     
     for (PageProvider pageProvider : getPageProviders()) {
-      result.addAll(pageProvider.listOrganizationPages(organizationId, parentId));
+      result.addAll(pageProvider.listOrganizationPages(organizationId, parentId, onlyRootPages, path));
     }
     
     return Response.ok(result)
@@ -757,6 +759,86 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     }
     
     return createNotFound(NOT_FOUND);
+  }
+  
+  @Override
+  public Response findOrganizationPageContent(String organizationIdParam, String pageIdParam) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    PageId pageId = toPageId(pageIdParam);
+    if (pageId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    for (PageProvider pageProvider : getPageProviders()) {
+      List<LocalizedValue> pageContents = pageProvider.findOrganizationPageContents(organizationId, pageId);
+      if (pageContents != null) {
+        return Response.ok(pageContents).build();
+      }
+    }
+    
+    return createNotFound(NOT_FOUND);
+  }
+
+  @Override
+  public Response listOrganizationPageImages(String organizationIdParam, String pageIdParam) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    PageId pageId = toPageId(pageIdParam);
+    
+    List<Attachment> result = new ArrayList<>();
+   
+    for (PageProvider pageProvider : getPageProviders()) {
+      result.addAll(pageProvider.listOrganizationPageImages(organizationId, pageId));
+    }
+    
+    return Response.ok(result)
+      .build();
+  }
+
+  @Override
+  public Response findOrganizationPageImage(String organizationIdParam, String pageIdParam, String imageIdParam) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    PageId pageId = toPageId(pageIdParam);
+    AttachmentId attachmentId = toAttachmentId(imageIdParam);
+    
+    for (PageProvider pageProvider : getPageProviders()) {
+      Attachment attachment = pageProvider.findPageImage(organizationId, pageId, attachmentId);
+      if (attachment != null) {
+        return Response.ok(attachment)
+          .build();
+      }
+    }
+    
+    return Response.status(Status.NOT_FOUND)
+      .build();
+  }
+
+  @Override
+  public Response getOrganizationPageImageData(String organizationIdParam, String pageIdParam, String imageIdParam, Integer size) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    PageId pageId = toPageId(pageIdParam);
+    AttachmentId attachmentId = toAttachmentId(imageIdParam);
+    
+    for (PageProvider pageProvider : getPageProviders()) {
+      AttachmentData attachmentData = pageProvider.getPageImageData(organizationId, pageId, attachmentId, size);
+      if (attachmentData != null) {
+        try (InputStream stream = new ByteArrayInputStream(attachmentData.getData())) {
+          return Response.ok(stream, attachmentData.getType())
+              .build();
+        } catch (IOException e) {
+          logger.log(Level.SEVERE, FAILED_TO_STREAM_IMAGE_TO_CLIENT, e);
+          return Response.status(Status.INTERNAL_SERVER_ERROR)
+            .entity(INTERNAL_SERVER_ERROR)
+            .build();
+        }
+      }
+    }
+    
+    return Response.status(Status.NOT_FOUND)
+      .build();
   }
   
   /* Menus */

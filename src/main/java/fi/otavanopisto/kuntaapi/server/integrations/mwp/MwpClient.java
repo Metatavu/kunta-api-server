@@ -2,6 +2,7 @@ package fi.otavanopisto.kuntaapi.server.integrations.mwp;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.logging.Level;
@@ -52,7 +53,7 @@ public class MwpClient implements fi.otavanopisto.mwp.client.ApiClient {
     
     if (queryParams != null) {
       for (Entry<String, Object> entry : queryParams.entrySet()) {
-        uriBuilder.addParameter(entry.getKey(), parameterToString(entry.getValue()));
+        addQueryParam(uriBuilder, entry);
       }
     }
     
@@ -88,6 +89,16 @@ public class MwpClient implements fi.otavanopisto.mwp.client.ApiClient {
   @Override
   public <T> ApiResponse<T> doDELETERequest(String url, ResultType<T> resultType, Map<String, Object> queryParams, Map<String, Object> postParams) {
     throw new UnsupportedOperationException();
+  }
+
+  private void addQueryParam(URIBuilder uriBuilder, Entry<String, Object> entry) {
+    if (entry.getValue() instanceof List) {
+      for (Object value : (List<?>) entry.getValue()) {
+        uriBuilder.addParameter(entry.getKey(), parameterToString(value));
+      }
+    } else {
+      uriBuilder.addParameter(entry.getKey(), parameterToString(entry.getValue()));
+    }
   }
   
   private String parameterToString(Object value) {
