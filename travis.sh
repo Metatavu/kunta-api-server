@@ -11,7 +11,7 @@ if [ "$TRAVIS_PULL_REQUEST" != "false" ] && [ -n "${GITHUB_TOKEN}" ] && [ -n "${
     -Dsonar.projectKey=$SONAR_PROJECT_KEY \
     -Dsonar.projectName=Kunta\ API\ Server \
     -Dsonar.projectVersion=$PROJECT_VERSION \
-    -Dsonar.sources=edelphi/src,edelphi-persistence/src,itests/src,smvcj/src \
+    -Dsonar.sources=src \
     -Dsonar.java.source=1.8 \
     -Dsonar.github.oauth=$GITHUB_TOKEN \
     -Dsonar.github.repository=$TRAVIS_REPO_SLUG \
@@ -31,7 +31,7 @@ elif [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ $TRAVIS_BRANCH == "develop" ]; t
     -Dsonar.projectKey=$SONAR_PROJECT_KEY \
     -Dsonar.projectName=Kunta\ API\ Server \
     -Dsonar.projectVersion=$PROJECT_VERSION \
-    -Dsonar.sources=edelphi/src,edelphi-persistence/src,itests/src,smvcj/src \
+    -Dsonar.sources=src \
     -Dsonar.java.source=1.8
   set -e
   mvn clean verify jacoco:report coveralls:report -Pitests -DrepoToken=$COVERALLS_TOKEN
