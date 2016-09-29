@@ -726,12 +726,13 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createNotFound(NOT_FOUND);
     }
     
-    PageId parentId = toPageId(parentIdParam);
+    boolean onlyRootPages = StringUtils.equals("ROOT", parentIdParam);
+    PageId parentId = onlyRootPages ? null : toPageId(parentIdParam);
     
     List<Page> result = new ArrayList<>();
     
     for (PageProvider pageProvider : getPageProviders()) {
-      result.addAll(pageProvider.listOrganizationPages(organizationId, parentId, path));
+      result.addAll(pageProvider.listOrganizationPages(organizationId, parentId, onlyRootPages, path));
     }
     
     return Response.ok(result)

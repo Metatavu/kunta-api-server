@@ -50,7 +50,7 @@ public class MwpPageProvider extends AbstractMwpProvider implements PageProvider
   }
   
   @Override
-  public List<Page> listOrganizationPages(OrganizationId organizationId, PageId parentId, String path) {
+  public List<Page> listOrganizationPages(OrganizationId organizationId, PageId parentId, boolean onlyRootPages, String path) {
     if (StringUtils.isNotBlank(path)) {
       fi.otavanopisto.mwp.client.model.Page mwpPage = findPageByPath(organizationId, path);
       if (mwpPage == null) {
@@ -63,7 +63,7 @@ public class MwpPageProvider extends AbstractMwpProvider implements PageProvider
     
       return Collections.singletonList(translatePage(mwpPage));
     } else {
-      return listPages(organizationId, parentId);
+      return listPages(organizationId, parentId, onlyRootPages);
     }
   }
 
@@ -221,7 +221,7 @@ public class MwpPageProvider extends AbstractMwpProvider implements PageProvider
     return null;
   }
 
-  private List<Page> listPages(OrganizationId organizationId, PageId parentId) {
+  private List<Page> listPages(OrganizationId organizationId, PageId parentId, boolean onlyRootPages) {
     String context = null;
     Integer page = null;
     Integer perPage = null;
@@ -241,7 +241,9 @@ public class MwpPageProvider extends AbstractMwpProvider implements PageProvider
     List<String> parent = null;
     List<String> parentExclude = null;
     
-    if (parentId != null) {
+    if (onlyRootPages) {
+      parent = Collections.singletonList("0"); 
+    } else if (parentId != null) {
       PageId mwpParentId = idController.translatePageId(parentId, MwpConsts.IDENTIFIER_NAME);
       if (mwpParentId == null) {
         logger.severe(String.format("Could not translate %s into mwp service id", parentId.toString()));
