@@ -65,6 +65,7 @@
     <kunta-api-spec.version>0.0.33</kunta-api-spec.version>
     <ptv-rest-client.version>0.0.5</ptv-rest-client.version>
     <mwp-rest-client.version>0.0.18</mwp-rest-client.version>
+    <casem-rest-client.version>0.0.4</casem-rest-client.version>
     <mikkelinyt.rest-model.version>0.0.1</mikkelinyt.rest-model.version>
     
     <!-- Test -->
@@ -188,6 +189,18 @@
       <groupId>fi.otavanopisto.mwp.mwp-rest-client</groupId>
       <artifactId>mwp-rest-client</artifactId>
       <version>${mwp-rest-client.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>com.fasterxml.jackson.datatype</groupId>
+          <artifactId>jackson-datatype-jsr310</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <dependency>
+      <groupId>fi.otavanopisto.casem.casem-rest-client</groupId>
+      <artifactId>casem-rest-client</artifactId>
+      <version>${casem-rest-client.version}</version>
       <exclusions>
         <exclusion>
           <groupId>com.fasterxml.jackson.datatype</groupId>
