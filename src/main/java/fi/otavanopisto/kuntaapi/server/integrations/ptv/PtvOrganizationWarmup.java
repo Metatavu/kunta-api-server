@@ -57,43 +57,43 @@ public class PtvOrganizationWarmup {
   
   @Timeout
   public void timeout(Timer timer) {
-    int discoverCount = 0;
-    boolean hasMore = false;
-    
-    if (pageCount > 0) {
-      logger.info(String.format("Updating organizations page %d / %d", page + 1, pageCount));
-    } else {
-      logger.info(String.format("Updating organizations page %d", page + 1));
-    }
-    ApiResponse<VmOpenApiGuidPage> response = ptvApi.getOrganizationApi().apiOrganizationGet(null, page);
-    if (response.isOk()) {
-      VmOpenApiGuidPage pageData = response.getResponse();
-      
-      for (String guid : pageData.getGuidList()) {
-        Identifier identifier = identifierController.findIdentifierByTypeSourceAndId(IdType.ORGANIZATION, PtvConsts.IDENTIFIFER_NAME, guid);
-        if (identifier == null) {
-          identifierController.createIdentifier(new OrganizationId(PtvConsts.IDENTIFIFER_NAME, guid));
-          discoverCount++;
-        }
-      }
-      
-      pageCount = pageData.getPageCount();
-      hasMore = pageCount > page + 1;
-
-      if (discoverCount > 0) {
-        logger.info(String.format("Discovered %d new organizations", discoverCount));
-      }
-    } else {
-      logger.severe(String.format("Failed to update organizations from PTV (%d: %s)", response.getStatus(), response.getMessage()));
-    }
-    
-    if (hasMore) {
-      page++;
-    } else {
-      page = 0;
-    }
-    
-    startTimer(TIMER_INTERVAL);
+//    int discoverCount = 0;
+//    boolean hasMore = false;
+//    
+//    if (pageCount > 0) {
+//      logger.info(String.format("Updating organizations page %d / %d", page + 1, pageCount));
+//    } else {
+//      logger.info(String.format("Updating organizations page %d", page + 1));
+//    }
+//    ApiResponse<VmOpenApiGuidPage> response = ptvApi.getOrganizationApi().apiOrganizationGet(null, page);
+//    if (response.isOk()) {
+//      VmOpenApiGuidPage pageData = response.getResponse();
+//      
+//      for (String guid : pageData.getGuidList()) {
+//        Identifier identifier = identifierController.findIdentifierByTypeSourceAndId(IdType.ORGANIZATION, PtvConsts.IDENTIFIFER_NAME, guid);
+//        if (identifier == null) {
+//          identifierController.createIdentifier(new OrganizationId(PtvConsts.IDENTIFIFER_NAME, guid));
+//          discoverCount++;
+//        }
+//      }
+//      
+//      pageCount = pageData.getPageCount();
+//      hasMore = pageCount > page + 1;
+//
+//      if (discoverCount > 0) {
+//        logger.info(String.format("Discovered %d new organizations", discoverCount));
+//      }
+//    } else {
+//      logger.severe(String.format("Failed to update organizations from PTV (%d: %s)", response.getStatus(), response.getMessage()));
+//    }
+//    
+//    if (hasMore) {
+//      page++;
+//    } else {
+//      page = 0;
+//    }
+//    
+//    startTimer(TIMER_INTERVAL);
   }
   
   private int page;

@@ -4,6 +4,8 @@ import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
+import javax.ejb.ConcurrencyManagement;
+import javax.ejb.ConcurrencyManagementType;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
 import javax.ejb.Timeout;
@@ -21,6 +23,7 @@ import fi.otavanopisto.ptv.client.model.VmOpenApiGuidPage;
 
 @Startup
 @Singleton
+@ConcurrencyManagement(ConcurrencyManagementType.CONTAINER)
 public class PtvServiceWarmup {
   
   private static final int TIMER_INITIAL = 60000;
@@ -57,44 +60,44 @@ public class PtvServiceWarmup {
   
   @Timeout
   public void timeout(Timer timer) {
-    int discoverCount = 0;
-    boolean hasMore = false;
-    
-    if (pageCount > 0) {
-      logger.info(String.format("Updating services page %d / %d", page + 1, pageCount));
-    } else {
-      logger.info(String.format("Updating services page %d", page + 1));
-    }
-    
-    ApiResponse<VmOpenApiGuidPage> response = ptvApi.getServiceApi().apiServiceGet(null, page);
-    if (response.isOk()) {
-      VmOpenApiGuidPage pageData = response.getResponse();
-      
-      for (String guid : pageData.getGuidList()) {
-        Identifier identifier = identifierController.findIdentifierByTypeSourceAndId(IdType.SERVICE, PtvConsts.IDENTIFIFER_NAME, guid);
-        if (identifier == null) {
-          identifierController.createIdentifier(new ServiceId(PtvConsts.IDENTIFIFER_NAME, guid));
-          discoverCount++;
-        }
-      }
-      
-      pageCount = pageData.getPageCount();
-      hasMore = pageCount > page + 1;
-
-      if (discoverCount > 0) {
-        logger.severe(String.format("Discovered %d new services", discoverCount));
-      }
-    } else {
-      logger.severe(String.format("Failed to update services from PTV (%d: %s)", response.getStatus(), response.getMessage()));
-    }
-    
-    if (hasMore) {
-      page++;
-    } else {
-      page = 0;
-    }
-    
-    startTimer(TIMER_INTERVAL);
+//    int discoverCount = 0;
+//    boolean hasMore = false;
+//    
+//    if (pageCount > 0) {
+//      logger.info(String.format("Updating services page %d / %d", page + 1, pageCount));
+//    } else {
+//      logger.info(String.format("Updating services page %d", page + 1));
+//    }
+//    
+//    ApiResponse<VmOpenApiGuidPage> response = ptvApi.getServiceApi().apiServiceGet(null, page);
+//    if (response.isOk()) {
+//      VmOpenApiGuidPage pageData = response.getResponse();
+//      
+//      for (String guid : pageData.getGuidList()) {
+//        Identifier identifier = identifierController.findIdentifierByTypeSourceAndId(IdType.SERVICE, PtvConsts.IDENTIFIFER_NAME, guid);
+//        if (identifier == null) {
+//          identifierController.createIdentifier(new ServiceId(PtvConsts.IDENTIFIFER_NAME, guid));
+//          discoverCount++;
+//        }
+//      }
+//      
+//      pageCount = pageData.getPageCount();
+//      hasMore = pageCount > page + 1;
+//
+//      if (discoverCount > 0) {
+//        logger.severe(String.format("Discovered %d new services", discoverCount));
+//      }
+//    } else {
+//      logger.severe(String.format("Failed to update services from PTV (%d: %s)", response.getStatus(), response.getMessage()));
+//    }
+//    
+//    if (hasMore) {
+//      page++;
+//    } else {
+//      page = 0;
+//    }
+//    
+//    startTimer(TIMER_INTERVAL);
   }
   
   private int page;
