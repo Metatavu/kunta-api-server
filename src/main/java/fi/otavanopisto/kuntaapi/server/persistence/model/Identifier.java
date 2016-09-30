@@ -20,7 +20,10 @@ import org.hibernate.validator.constraints.NotEmpty;
  * @author Otavan Opisto
  */
 @Entity
-@Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "type", "source", "sourceId", "kuntaApiId" }) })
+@Table(uniqueConstraints = { 
+  @UniqueConstraint(columnNames = { "type", "source", "sourceId" }),
+  @UniqueConstraint(columnNames = { "type", "source", "kuntaApiId" }) 
+})
 @Cacheable(true)
 @Cache(usage = CacheConcurrencyStrategy.TRANSACTIONAL)
 public class Identifier {
