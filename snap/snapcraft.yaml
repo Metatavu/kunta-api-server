@@ -3,7 +3,6 @@ version: "0.0.3-SNAPSHOT"
 summary: Kunta API Serevr
 description: Kunta API Server 
 grade: devel
-confinement: devmode
 
 apps:
   wildfly:
@@ -16,6 +15,8 @@ parts:
     stage-packages:
       - openjdk-8-jdk
       - mysql-server-5.7
+    plugs:
+      - network-bind
   wildfly-modules:
     plugin: dump
     source: wildfly-modules      
