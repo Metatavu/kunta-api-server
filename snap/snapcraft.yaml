@@ -8,6 +8,8 @@ apps:
   wildfly:
     command: bin/wrapper
     daemon: simple
+    plugs:
+      - network-bind
 parts:
   wildfly:
     plugin: dump
@@ -15,8 +17,6 @@ parts:
     stage-packages:
       - openjdk-8-jdk
       - mysql-server-5.7
-    plugs:
-      - network-bind
   wildfly-modules:
     plugin: dump
     source: wildfly-modules      
