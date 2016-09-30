@@ -2,6 +2,7 @@ package fi.otavanopisto.kuntaapi.server.integrations.casem;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -64,9 +65,12 @@ public class CaseMClient implements fi.otavanopisto.casem.client.ApiClient {
       return new ApiResponse<>(500, INVALID_URI_SYNTAX, null);
     }
     
+    Map<String, String> headers = new HashMap<>();
+    headers.put("Accept", "application/json");
+    
     Response<T> response = httpCache.get(CaseMConsts.CACHE_NAME, uri, new GenericHttpClient.ResponseResultTypeWrapper<>(resultType.getType()));
     if (response == null) {
-      response = httpClient.doGETRequest(uri, new GenericHttpClient.ResultTypeWrapper<>(resultType.getType()));
+      response = httpClient.doGETRequest(uri, new GenericHttpClient.ResultTypeWrapper<>(resultType.getType()), headers);
       if (CaseMConsts.CACHE_RESPONSES) {
         httpCache.put(CaseMConsts.CACHE_NAME, uri, response);
       }
