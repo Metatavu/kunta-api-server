@@ -59,37 +59,37 @@ public class PtvServiceClassWarmup {
   
   @Timeout
   public void timeout(Timer timer) {
-    int discoverCount = 0;
-    
-    logger.info(String.format("Updating service classes from %d to %d", firstResult, firstResult +  MAX_RESULTS));
-    
-    List<Identifier> identifiers = identifierController.listIdentifiersByTypeAndSource(IdType.SERVICE, PtvConsts.IDENTIFIFER_NAME, firstResult, MAX_RESULTS);
-    for (Identifier serviceIdentifier : identifiers) {
-      ApiResponse<IVmOpenApiService> response = ptvApi.getServiceApi().apiServiceByIdGet(serviceIdentifier.getSourceId());
-      if (response.isOk()) {
-        for (VmOpenApiFintoItem serviceClass : response.getResponse().getServiceClasses()) {
-          Identifier serviceClassIdentifier = identifierController.findIdentifierByTypeSourceAndId(IdType.SERVICE_CLASS, PtvConsts.IDENTIFIFER_NAME, serviceClass.getId());
-          if (serviceClassIdentifier == null) {
-            identifierController.createIdentifier(new ServiceClassId(PtvConsts.IDENTIFIFER_NAME, serviceClass.getId()));
-            discoverCount++;
-          }          
-        }
-      } else {
-        logger.severe(String.format("Failed to load service %s from PTV", serviceIdentifier.getSourceId())); 
-      }
-    }
-    
-    if (identifiers.size() < MAX_RESULTS) {
-      firstResult = 0;
-    } else {
-      firstResult += MAX_RESULTS;
-    }
-    
-    if (discoverCount > 0) {
-      logger.severe(String.format("Discovered %d new service classes", discoverCount));
-    }
-    
-    startTimer(TIMER_INTERVAL);
+//    int discoverCount = 0;
+//    
+//    logger.info(String.format("Updating service classes from %d to %d", firstResult, firstResult +  MAX_RESULTS));
+//    
+//    List<Identifier> identifiers = identifierController.listIdentifiersByTypeAndSource(IdType.SERVICE, PtvConsts.IDENTIFIFER_NAME, firstResult, MAX_RESULTS);
+//    for (Identifier serviceIdentifier : identifiers) {
+//      ApiResponse<IVmOpenApiService> response = ptvApi.getServiceApi().apiServiceByIdGet(serviceIdentifier.getSourceId());
+//      if (response.isOk()) {
+//        for (VmOpenApiFintoItem serviceClass : response.getResponse().getServiceClasses()) {
+//          Identifier serviceClassIdentifier = identifierController.findIdentifierByTypeSourceAndId(IdType.SERVICE_CLASS, PtvConsts.IDENTIFIFER_NAME, serviceClass.getId());
+//          if (serviceClassIdentifier == null) {
+//            identifierController.createIdentifier(new ServiceClassId(PtvConsts.IDENTIFIFER_NAME, serviceClass.getId()));
+//            discoverCount++;
+//          }          
+//        }
+//      } else {
+//        logger.severe(String.format("Failed to load service %s from PTV", serviceIdentifier.getSourceId())); 
+//      }
+//    }
+//    
+//    if (identifiers.size() < MAX_RESULTS) {
+//      firstResult = 0;
+//    } else {
+//      firstResult += MAX_RESULTS;
+//    }
+//    
+//    if (discoverCount > 0) {
+//      logger.severe(String.format("Discovered %d new service classes", discoverCount));
+//    }
+//    
+//    startTimer(TIMER_INTERVAL);
   }
   
   private int firstResult;

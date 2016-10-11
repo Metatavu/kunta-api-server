@@ -1,14 +1,15 @@
 name: kunta-api-server
-version: "0.0.3-SNAPSHOT"
+version: "0.0.4-SNAPSHOT"
 summary: Kunta API Serevr
 description: Kunta API Server 
 grade: devel
-confinement: devmode
 
 apps:
   wildfly:
     command: bin/wrapper
     daemon: simple
+    plugs:
+      - network-bind
 parts:
   wildfly:
     plugin: dump
