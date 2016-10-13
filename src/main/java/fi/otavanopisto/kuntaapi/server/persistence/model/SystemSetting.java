@@ -16,15 +16,15 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.validator.constraints.NotEmpty;
 
 /**
- * JPA entity for storing organization wide settings
+ * JPA entity for storing system wide settings
  * 
  * @author Antti Leppä
  */
 @Entity
 @Cacheable(true)
-@Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "organizationKuntaApiId", "settingKey" }) })
+@Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "settingKey" }) })
 @Cache(usage = CacheConcurrencyStrategy.TRANSACTIONAL)
-public class OrganizationSetting {
+public class SystemSetting {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,11 +40,6 @@ public class OrganizationSetting {
   @NotEmpty
   @Lob
   private String value;
-  
-  @Column(nullable = false)
-  @NotNull
-  @NotEmpty
-  private String organizationKuntaApiId;
   
   public Long getId() {
     return id;
@@ -66,11 +61,4 @@ public class OrganizationSetting {
     this.value = value;
   }
   
-  public String getOrganizationKuntaApiId() {
-    return organizationKuntaApiId;
-  }
-  
-  public void setOrganizationKuntaApiId(String organizationKuntaApiId) {
-    this.organizationKuntaApiId = organizationKuntaApiId;
-  }
 }
