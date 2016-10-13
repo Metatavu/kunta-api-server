@@ -15,9 +15,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.OrganizationProvider;
 import fi.otavanopisto.kuntaapi.server.rest.model.Organization;
-import fi.otavanopisto.ptv.client.ApiResponse;
-import fi.otavanopisto.ptv.client.model.VmOpenApiGuidPage;
-import fi.otavanopisto.ptv.client.model.VmOpenApiOrganization;
+import fi.otavanopisto.restfulptv.client.ApiResponse;
 
 /**
  * Organization provider for PTV
@@ -47,7 +45,8 @@ public class PtvOrganizationProvider implements OrganizationProvider {
       return null;
     }
     
-    ApiResponse<VmOpenApiOrganization> ptvOrganizationResponse = ptvApi.getOrganizationApi().apiOrganizationByIdGet(ptvOrganization.getId());
+    ApiResponse<fi.otavanopisto.restfulptv.client.model.Organization> ptvOrganizationResponse = ptvApi.getOrganizationApi()
+        .findOrganization(ptvOrganization.getId());
     if (!ptvOrganizationResponse.isOk()) {
       logger.severe(String.format("Organization %s reported [%d] %s", ptvOrganization.getId(), ptvOrganizationResponse.getStatus(), ptvOrganizationResponse.getMessage()));
     } else {
@@ -56,43 +55,37 @@ public class PtvOrganizationProvider implements OrganizationProvider {
     
     return null;
   }
-
+  
   @Override
   @SuppressWarnings("squid:S135")
   public List<Organization> listOrganizations(String businessName, String businessCode) {
     List<Organization> result = new ArrayList<>();
     
-    ApiResponse<VmOpenApiGuidPage> apiOrganizationGet = ptvApi.getOrganizationApi().apiOrganizationGet(null, 0);
-    if (!apiOrganizationGet.isOk()) {
-      logger.severe(String.format("Organizations listing reported [%d] %s", apiOrganizationGet.getStatus(), apiOrganizationGet.getMessage()));
+    ApiResponse<List<fi.otavanopisto.restfulptv.client.model.Organization>> listResponse = ptvApi.getOrganizationApi().listOrganizations(null, null);
+    if (!listResponse.isOk()) {
+      logger.severe(String.format("Organizations listing reported [%d] %s", listResponse.getStatus(), listResponse.getMessage()));
       return Collections.emptyList();
     }
     
-    VmOpenApiGuidPage page = apiOrganizationGet.getResponse();
-   
-    for (String guid : page.getGuidList()) {
-      ApiResponse<VmOpenApiOrganization> organizationResponse = ptvApi.getOrganizationApi().apiOrganizationByIdGet(guid);
-      if (!organizationResponse.isOk()) {
-        logger.severe(String.format("Organization %s reported [%d] %s", guid, organizationResponse.getStatus(), organizationResponse.getMessage()));
-      } else {
-        VmOpenApiOrganization ptvOrganization = organizationResponse.getResponse();
-        
-        if (StringUtils.isNotBlank(businessCode) && !StringUtils.equals(businessCode, ptvOrganization.getBusinessCode())) {
-          continue;
-        }
+    for (fi.otavanopisto.restfulptv.client.model.Organization ptvOrganization : listResponse.getResponse()) {
+      if (StringUtils.isNotBlank(businessCode) && !StringUtils.equals(businessCode, ptvOrganization.getBusinessCode())) {
+        continue;
+      }
+    
+      if (StringUtils.isNotBlank(businessName) && !StringUtils.equals(businessName, ptvOrganization.getBusinessName())) {
+        continue;
+      } 
       
-        if (StringUtils.isNotBlank(businessName) && !StringUtils.equals(businessName, ptvOrganization.getBusinessName())) {
-          continue;
-        }
-      
-        result.add(transform(ptvOrganization));
+      Organization organization = transform(ptvOrganization);
+      if (organization != null) {
+        result.add(organization);
       }
     }
-
+    
     return result;
   }
   
-  private Organization transform(VmOpenApiOrganization ptvOrganiztion) {
+  private Organization transform(fi.otavanopisto.restfulptv.client.model.Organization ptvOrganiztion) {
     OrganizationId ptvId = new OrganizationId(PtvConsts.IDENTIFIFER_NAME, ptvOrganiztion.getId());
     OrganizationId kuntaApiId = idController.translateOrganizationId(ptvId, KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiId == null) {
