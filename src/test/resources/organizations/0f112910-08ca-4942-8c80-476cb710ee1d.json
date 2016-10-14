@@ -1,0 +1,24 @@
+  {
+    "id": "0f112910-08ca-4942-8c80-476cb710ee1d",
+    "descriptions": [],
+    "parentOrganization": null,
+    "emailAddresses": [],
+    "phoneNumbers": [],
+    "webPages": [],
+    "addresses": [],
+    "municipality": "Kokemäki",
+    "type": "Municipality",
+    "businessCode": "0203925-9",
+    "businessName": "Kokemäki",
+    "names": [
+      {
+        "language": "fi",
+        "value": "Kokemäen kaupunki",
+        "type": "Name"
+      }
+    ],
+    "publishingStatus": "Published",
+    "displayNameType": "Name",
+    "oid": "-1308970960",
+    "streetAddressAsPostalAddress": false
+  }
