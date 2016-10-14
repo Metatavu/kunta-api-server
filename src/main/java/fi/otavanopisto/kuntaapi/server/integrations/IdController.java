@@ -83,13 +83,93 @@ public class IdController {
   }
 
   /**
-   * Translates service channel id into into target id
+   * Translates electornic service channel id into into target id
    * 
    * @param serviceChannelId id to be translated
    * @param target target
    * @return translated id or null if translation has failed
    */
-  public ServiceChannelId translateServiceChannelId(ServiceChannelId serviceChannelId, String target) {
+  public ElectronicServiceChannelId translateElectronicServiceChannelId(ElectronicServiceChannelId serviceChannelId, String target) {
+    if (StringUtils.equals(serviceChannelId.getSource(), target)) {
+      return serviceChannelId;
+    }
+    
+    IdProvider idProvider = getIdProvider(serviceChannelId.getSource(), target);
+    if (idProvider != null) {
+      return idProvider.translate(serviceChannelId, target);
+    }
+    
+    return null;
+  }
+
+  /**
+   * Translates phone service channel id into into target id
+   * 
+   * @param serviceChannelId id to be translated
+   * @param target target
+   * @return translated id or null if translation has failed
+   */
+  public PhoneChannelId translatePhoneServiceChannelId(PhoneChannelId serviceChannelId, String target) {
+    if (StringUtils.equals(serviceChannelId.getSource(), target)) {
+      return serviceChannelId;
+    }
+    
+    IdProvider idProvider = getIdProvider(serviceChannelId.getSource(), target);
+    if (idProvider != null) {
+      return idProvider.translate(serviceChannelId, target);
+    }
+    
+    return null;
+  }
+
+  /**
+   * Translates printable form service channel id into into target id
+   * 
+   * @param serviceChannelId id to be translated
+   * @param target target
+   * @return translated id or null if translation has failed
+   */
+  public PrintableFormChannelId translatePrintableFormServiceChannelId(PrintableFormChannelId serviceChannelId, String target) {
+    if (StringUtils.equals(serviceChannelId.getSource(), target)) {
+      return serviceChannelId;
+    }
+    
+    IdProvider idProvider = getIdProvider(serviceChannelId.getSource(), target);
+    if (idProvider != null) {
+      return idProvider.translate(serviceChannelId, target);
+    }
+    
+    return null;
+  }
+
+  /**
+   * Translates service location channel id into into target id
+   * 
+   * @param serviceChannelId id to be translated
+   * @param target target
+   * @return translated id or null if translation has failed
+   */
+  public ServiceLocationChannelId translateServiceLocationChannelId(ServiceLocationChannelId serviceChannelId, String target) {
+    if (StringUtils.equals(serviceChannelId.getSource(), target)) {
+      return serviceChannelId;
+    }
+    
+    IdProvider idProvider = getIdProvider(serviceChannelId.getSource(), target);
+    if (idProvider != null) {
+      return idProvider.translate(serviceChannelId, target);
+    }
+    
+    return null;
+  }
+
+  /**
+   * Translates webpage service channel id into into target id
+   * 
+   * @param serviceChannelId id to be translated
+   * @param target target
+   * @return translated id or null if translation has failed
+   */
+  public WebPageChannelId translateWebPageServiceChannelId(WebPageChannelId serviceChannelId, String target) {
     if (StringUtils.equals(serviceChannelId.getSource(), target)) {
       return serviceChannelId;
     }
@@ -353,6 +433,24 @@ public class IdController {
     
     return kuntaApiId1.equals(kuntaApiId2);
   }
+  
+  /**
+   * Translates both ids into Kunta Api ids and check whether they match
+   * 
+   * @param id1 id1
+   * @param id2 id2
+   * @return whether ids match
+   */
+  public boolean idsEqual(ElectronicServiceChannelId id1, ElectronicServiceChannelId id2) {
+    ElectronicServiceChannelId kuntaApiId1 = translateElectronicServiceChannelId(id1, KuntaApiConsts.IDENTIFIER_NAME);
+    ElectronicServiceChannelId kuntaApiId2 = translateElectronicServiceChannelId(id2, KuntaApiConsts.IDENTIFIER_NAME);
+    
+    if (kuntaApiId1 == null || kuntaApiId2 == null) {
+      return false;
+    }
+    
+    return kuntaApiId1.equals(kuntaApiId2);
+  }
 
   /**
    * Translates both ids into Kunta Api ids and check whether they match
@@ -361,9 +459,63 @@ public class IdController {
    * @param id2 id2
    * @return whether ids match
    */
-  public boolean idsEqual(ServiceChannelId id1, ServiceChannelId id2) {
-    ServiceChannelId kuntaApiId1 = translateServiceChannelId(id1, KuntaApiConsts.IDENTIFIER_NAME);
-    ServiceChannelId kuntaApiId2 = translateServiceChannelId(id2, KuntaApiConsts.IDENTIFIER_NAME);
+  public boolean idsEqual(PhoneChannelId id1, PhoneChannelId id2) {
+    PhoneChannelId kuntaApiId1 = translatePhoneServiceChannelId(id1, KuntaApiConsts.IDENTIFIER_NAME);
+    PhoneChannelId kuntaApiId2 = translatePhoneServiceChannelId(id2, KuntaApiConsts.IDENTIFIER_NAME);
+    
+    if (kuntaApiId1 == null || kuntaApiId2 == null) {
+      return false;
+    }
+    
+    return kuntaApiId1.equals(kuntaApiId2);
+  }
+
+  /**
+   * Translates both ids into Kunta Api ids and check whether they match
+   * 
+   * @param id1 id1
+   * @param id2 id2
+   * @return whether ids match
+   */
+  public boolean idsEqual(PrintableFormChannelId id1, PrintableFormChannelId id2) {
+    PrintableFormChannelId kuntaApiId1 = translatePrintableFormServiceChannelId(id1, KuntaApiConsts.IDENTIFIER_NAME);
+    PrintableFormChannelId kuntaApiId2 = translatePrintableFormServiceChannelId(id2, KuntaApiConsts.IDENTIFIER_NAME);
+    
+    if (kuntaApiId1 == null || kuntaApiId2 == null) {
+      return false;
+    }
+    
+    return kuntaApiId1.equals(kuntaApiId2);
+  }
+
+  /**
+   * Translates both ids into Kunta Api ids and check whether they match
+   * 
+   * @param id1 id1
+   * @param id2 id2
+   * @return whether ids match
+   */
+  public boolean idsEqual(ServiceLocationChannelId id1, ServiceLocationChannelId id2) {
+    ServiceLocationChannelId kuntaApiId1 = translateServiceLocationChannelId(id1, KuntaApiConsts.IDENTIFIER_NAME);
+    ServiceLocationChannelId kuntaApiId2 = translateServiceLocationChannelId(id2, KuntaApiConsts.IDENTIFIER_NAME);
+    
+    if (kuntaApiId1 == null || kuntaApiId2 == null) {
+      return false;
+    }
+    
+    return kuntaApiId1.equals(kuntaApiId2);
+  }
+
+  /**
+   * Translates both ids into Kunta Api ids and check whether they match
+   * 
+   * @param id1 id1
+   * @param id2 id2
+   * @return whether ids match
+   */
+  public boolean idsEqual(WebPageChannelId id1, WebPageChannelId id2) {
+    WebPageChannelId kuntaApiId1 = translateWebPageServiceChannelId(id1, KuntaApiConsts.IDENTIFIER_NAME);
+    WebPageChannelId kuntaApiId2 = translateWebPageServiceChannelId(id2, KuntaApiConsts.IDENTIFIER_NAME);
     
     if (kuntaApiId1 == null || kuntaApiId2 == null) {
       return false;

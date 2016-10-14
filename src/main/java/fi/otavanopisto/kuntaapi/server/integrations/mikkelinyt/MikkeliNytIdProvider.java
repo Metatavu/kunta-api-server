@@ -6,6 +6,7 @@ import javax.inject.Inject;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.integrations.BannerId;
+import fi.otavanopisto.kuntaapi.server.integrations.ElectronicServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.integrations.EventId;
 import fi.otavanopisto.kuntaapi.server.integrations.FileId;
 import fi.otavanopisto.kuntaapi.server.integrations.IdProvider;
@@ -17,9 +18,12 @@ import fi.otavanopisto.kuntaapi.server.integrations.NewsArticleId;
 import fi.otavanopisto.kuntaapi.server.integrations.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.OrganizationServiceId;
 import fi.otavanopisto.kuntaapi.server.integrations.PageId;
-import fi.otavanopisto.kuntaapi.server.integrations.ServiceChannelId;
+import fi.otavanopisto.kuntaapi.server.integrations.PhoneChannelId;
+import fi.otavanopisto.kuntaapi.server.integrations.PrintableFormChannelId;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceId;
+import fi.otavanopisto.kuntaapi.server.integrations.ServiceLocationChannelId;
 import fi.otavanopisto.kuntaapi.server.integrations.TileId;
+import fi.otavanopisto.kuntaapi.server.integrations.WebPageChannelId;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 
 /**
@@ -60,10 +64,30 @@ public class MikkeliNytIdProvider implements IdProvider {
   }
   
   @Override
-  public ServiceChannelId translate(ServiceChannelId serviceChannelId, String target) {
+  public ElectronicServiceChannelId translate(ElectronicServiceChannelId serviceChannelId, String target) {
     return null;
   }
-
+  
+  @Override
+  public PhoneChannelId translate(PhoneChannelId serviceChannelId, String target) {
+    return null;
+  }
+  
+  @Override
+  public PrintableFormChannelId translate(PrintableFormChannelId serviceChannelId, String target) {
+    return null;
+  }
+  
+  @Override
+  public ServiceLocationChannelId translate(ServiceLocationChannelId serviceChannelId, String target) {
+    return null;
+  }
+  
+  @Override
+  public WebPageChannelId translate(WebPageChannelId serviceChannelId, String target) {
+    return null;
+  }
+  
   @Override
   public OrganizationServiceId translate(OrganizationServiceId organizationServiceId, String target) {
     return null;

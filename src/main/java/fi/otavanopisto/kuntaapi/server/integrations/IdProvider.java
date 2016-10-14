@@ -33,15 +33,51 @@ public interface IdProvider {
    * @return translated service id
    */
   public ServiceId translate(ServiceId serviceId, String target);
-
+  
   /**
-   * Translate service channel id
+   * Translate electronic service channel id
    * 
    * @param serviceChannelId original id
    * @param target target type
    * @return translated id
    */
-  public ServiceChannelId translate(ServiceChannelId serviceChannelId, String target);
+  public ElectronicServiceChannelId translate(ElectronicServiceChannelId serviceChannelId, String target);
+  
+  /**
+   * Translate phone service channel id
+   * 
+   * @param serviceChannelId original id
+   * @param target target type
+   * @return translated id
+   */
+  public PhoneChannelId translate(PhoneChannelId serviceChannelId, String target);
+  
+  /**
+   * Translate printable form service channel id
+   * 
+   * @param serviceChannelId original id
+   * @param target target type
+   * @return translated id
+   */
+  public PrintableFormChannelId translate(PrintableFormChannelId serviceChannelId, String target);
+  
+  /**
+   * Translate service location channel id
+   * 
+   * @param serviceChannelId original id
+   * @param target target type
+   * @return translated id
+   */
+  public ServiceLocationChannelId translate(ServiceLocationChannelId serviceChannelId, String target);
+  
+  /**
+   * Translate web page service channel id
+   * 
+   * @param serviceChannelId original id
+   * @param target target type
+   * @return translated id
+   */
+  public WebPageChannelId translate(WebPageChannelId serviceChannelId, String target);
   
   /**
    * Translate organization service id
