@@ -4,16 +4,16 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
- * Class representing service channel id
+ * Class representing phone service channel id
  * 
  * @author Antti Leppä
  */
-public class ServiceChannelId extends Id {
+public class PhoneChannelId extends Id {
 
   /**
-   * Zero-argument constructor for service channel id
+   * Zero-argument constructor for phone service channel id
    */
-  public ServiceChannelId() {
+  public PhoneChannelId() {
     super();
   }
 
@@ -22,7 +22,7 @@ public class ServiceChannelId extends Id {
    * 
    * @param id stringified id
    */
-  public ServiceChannelId(String id) {
+  public PhoneChannelId(String id) {
     super(id);
   }
   
@@ -32,19 +32,19 @@ public class ServiceChannelId extends Id {
    * @param source source
    * @param id id
    */
-  public ServiceChannelId(String source, String id) {
+  public PhoneChannelId(String source, String id) {
     super(source, id);
   }
   
   @Override
   public IdType getType() {
-    return IdType.SERVICE_CHANNEL;
+    return IdType.PHONE_CHANNEL;
   }
   
   @Override
   public boolean equals(Object obj) {
-    if (obj instanceof ServiceChannelId) {
-      ServiceChannelId another = (ServiceChannelId) obj;
+    if (obj instanceof PhoneChannelId) {
+      PhoneChannelId another = (PhoneChannelId) obj;
       return StringUtils.equals(this.getSource(), another.getSource()) &&  StringUtils.equals(this.getId(), another.getId());
     }
 
@@ -53,7 +53,7 @@ public class ServiceChannelId extends Id {
   
   @Override
   public int hashCode() {
-    return new HashCodeBuilder(131, 143)
+    return new HashCodeBuilder(171, 183)
       .append(getSource())
       .append(getId())
       .hashCode();
