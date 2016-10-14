@@ -139,10 +139,10 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     
     private <T> T readJSONFile(String file, Class <T> type){
       ObjectMapper ObjectMapper = new ObjectMapper();
-      try {
-        return ObjectMapper.readValue(new File(file), type);
+      try (InputStream stream = getClass().getClassLoader().getResourceAsStream(file)) {
+        return ObjectMapper.readValue(stream, type);
       } catch (IOException e) {
-        logger.log(Level.SEVERE, "Failed to mock JSON file", e);
+        logger.log(Level.SEVERE, "Failed to read mock file", e);
         fail(e.getMessage());
       }
       return null;
