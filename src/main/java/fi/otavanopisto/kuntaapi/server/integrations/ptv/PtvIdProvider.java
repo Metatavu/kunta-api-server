@@ -15,9 +15,9 @@ import fi.otavanopisto.kuntaapi.server.integrations.MenuId;
 import fi.otavanopisto.kuntaapi.server.integrations.MenuItemId;
 import fi.otavanopisto.kuntaapi.server.integrations.NewsArticleId;
 import fi.otavanopisto.kuntaapi.server.integrations.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.integrations.OrganizationServiceId;
 import fi.otavanopisto.kuntaapi.server.integrations.PageId;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceChannelId;
-import fi.otavanopisto.kuntaapi.server.integrations.ServiceClassId;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceId;
 import fi.otavanopisto.kuntaapi.server.integrations.TileId;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
@@ -107,18 +107,18 @@ public class PtvIdProvider implements IdProvider {
   }
 
   @Override
-  public ServiceClassId translate(ServiceClassId serviceClassId, String target) {
+  public OrganizationServiceId translate(OrganizationServiceId organizationServiceId, String target) {
     Identifier identifier;
     
-    if (PtvConsts.IDENTIFIFER_NAME.equals(serviceClassId.getSource())) {
-      identifier = identifierController.findIdentifierById(serviceClassId);
+    if (PtvConsts.IDENTIFIFER_NAME.equals(organizationServiceId.getSource())) {
+      identifier = identifierController.findIdentifierById(organizationServiceId);
       if (identifier != null) {
-        return new ServiceClassId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
+        return new OrganizationServiceId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
       }
-    } else if (KuntaApiConsts.IDENTIFIER_NAME.equals(serviceClassId.getSource())) {
-      identifier = identifierController.findIdentifierByTypeSourceAndKuntaApiId(IdType.SERVICE_CLASS, PtvConsts.IDENTIFIFER_NAME, serviceClassId.getId());
+    } else if (KuntaApiConsts.IDENTIFIER_NAME.equals(organizationServiceId.getSource())) {
+      identifier = identifierController.findIdentifierByTypeSourceAndKuntaApiId(IdType.ORGANIZATION_SERVICE, PtvConsts.IDENTIFIFER_NAME, organizationServiceId.getId());
       if (identifier != null) {
-        return new ServiceClassId(PtvConsts.IDENTIFIFER_NAME, identifier.getSourceId());
+        return new OrganizationServiceId(PtvConsts.IDENTIFIFER_NAME, identifier.getSourceId());
       }
     }
     

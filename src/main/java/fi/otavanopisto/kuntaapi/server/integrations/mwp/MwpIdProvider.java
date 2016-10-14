@@ -15,9 +15,9 @@ import fi.otavanopisto.kuntaapi.server.integrations.MenuId;
 import fi.otavanopisto.kuntaapi.server.integrations.MenuItemId;
 import fi.otavanopisto.kuntaapi.server.integrations.NewsArticleId;
 import fi.otavanopisto.kuntaapi.server.integrations.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.integrations.OrganizationServiceId;
 import fi.otavanopisto.kuntaapi.server.integrations.PageId;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceChannelId;
-import fi.otavanopisto.kuntaapi.server.integrations.ServiceClassId;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceId;
 import fi.otavanopisto.kuntaapi.server.integrations.TileId;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
@@ -94,24 +94,10 @@ public class MwpIdProvider implements IdProvider {
   }
 
   @Override
-  public ServiceClassId translate(ServiceClassId serviceClassId, String target) {
-    Identifier identifier;
-    
-    if (MwpConsts.IDENTIFIER_NAME.equals(serviceClassId.getSource())) {
-      identifier = identifierController.findIdentifierById(serviceClassId);
-      if (identifier != null) {
-        return new ServiceClassId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
-      }
-    } else if (KuntaApiConsts.IDENTIFIER_NAME.equals(serviceClassId.getSource())) {
-      identifier = identifierController.findIdentifierByTypeSourceAndKuntaApiId(IdType.SERVICE_CLASS, MwpConsts.IDENTIFIER_NAME, serviceClassId.getId());
-      if (identifier != null) {
-        return new ServiceClassId(MwpConsts.IDENTIFIER_NAME, identifier.getSourceId());
-      }
-    }
-    
+  public OrganizationServiceId translate(OrganizationServiceId organizationServiceId, String target) {
     return null;
   }
-
+  
   @Override
   public EventId translate(EventId eventId, String target) {
     return null;
