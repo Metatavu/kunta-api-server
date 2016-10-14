@@ -272,6 +272,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
       pageQuery.put("maxResults", "20");
 
       mockGetJSON(String.format("%s/organizations", BASE_URL), organizationsList, pageQuery);
+      mockGetJSON(String.format("%s/organizations", BASE_URL), organizationsList, null);
       
       super.startMock();
     }
@@ -279,7 +280,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   
   protected void waitApiListCount(String path, int count) throws InterruptedException {
     long timeout = System.currentTimeMillis() + (120 * 1000);
-    
+    System.out.print(getApiBasePath());
     while (true) {
       Thread.sleep(1000);
       

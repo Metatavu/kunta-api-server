@@ -324,6 +324,7 @@
         <it.jdbc.jndi>java:/jboss/datasources/kuntaapi</it.jdbc.jndi>
         <it.jdbc.username>sa</it.jdbc.username>
         <it.jdbc.password>sa</it.jdbc.password>
+        <it.skipdatabasedrop>true</it.skipdatabasedrop>
         <it.hibernate.dialect>org.hibernate.dialect.H2Dialect</it.hibernate.dialect>
         <jacoco.reportPath>${project.basedir}/target/jacoco.exec</jacoco.reportPath>
       </properties>
@@ -403,6 +404,7 @@
                   <goal>create</goal>
                 </goals>
                 <configuration>
+                  <show>true</show>
                   <type>CREATE</type>
                 </configuration>
               </execution>
