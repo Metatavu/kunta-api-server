@@ -140,7 +140,7 @@ public abstract class AbstractPtvProvider {
     result.setType(ptvService.getType());
     result.setWebPages(translateWebPages(ptvService.getWebPages()));
     
-    return null;
+    return result;
   }
   
   protected OntologyItem translateFintoItem(FintoItem ptvFintoItem) {
