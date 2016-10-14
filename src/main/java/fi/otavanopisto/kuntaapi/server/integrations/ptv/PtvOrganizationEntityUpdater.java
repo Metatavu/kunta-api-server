@@ -18,7 +18,7 @@ import javax.inject.Inject;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
 import fi.otavanopisto.kuntaapi.server.discover.OrganizationIdUpdateRequest;
-import fi.otavanopisto.kuntaapi.server.integrations.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.restfulptv.client.ApiResponse;
 import fi.otavanopisto.restfulptv.client.model.Organization;

@@ -1,19 +1,19 @@
-package fi.otavanopisto.kuntaapi.server.integrations;
+package fi.otavanopisto.kuntaapi.server.id;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
- * Class representing menu item id
+ * Class representing webpage service channel id
  * 
  * @author Antti Leppä
  */
-public class MenuItemId extends Id {
-  
+public class WebPageChannelId extends Id {
+
   /**
-   * Zero-argument constructor for menu item id
+   * Zero-argument constructor for webpage service channel id
    */
-  public MenuItemId() {
+  public WebPageChannelId() {
     super();
   }
 
@@ -22,7 +22,7 @@ public class MenuItemId extends Id {
    * 
    * @param id stringified id
    */
-  public MenuItemId(String id) {
+  public WebPageChannelId(String id) {
     super(id);
   }
   
@@ -32,19 +32,19 @@ public class MenuItemId extends Id {
    * @param source source
    * @param id id
    */
-  public MenuItemId(String source, String id) {
+  public WebPageChannelId(String source, String id) {
     super(source, id);
   }
   
   @Override
   public IdType getType() {
-    return IdType.MENU_ITEM;
+    return IdType.WEBPAGE_CHANNEL;
   }
   
   @Override
   public boolean equals(Object obj) {
-    if (obj instanceof MenuItemId) {
-      MenuItemId another = (MenuItemId) obj;
+    if (obj instanceof WebPageChannelId) {
+      WebPageChannelId another = (WebPageChannelId) obj;
       return StringUtils.equals(this.getSource(), another.getSource()) &&  StringUtils.equals(this.getId(), another.getId());
     }
 
@@ -53,7 +53,7 @@ public class MenuItemId extends Id {
   
   @Override
   public int hashCode() {
-    return new HashCodeBuilder(145, 157)
+    return new HashCodeBuilder(231, 243)
       .append(getSource())
       .append(getId())
       .hashCode();

@@ -19,7 +19,7 @@ import org.junit.Test;
 import com.github.tomakehurst.wiremock.junit.WireMockRule;
 import com.jayway.restassured.http.ContentType;
 
-import fi.otavanopisto.kuntaapi.server.integrations.IdType;
+import fi.otavanopisto.kuntaapi.server.id.IdType;
 import fi.otavanopisto.kuntaapi.server.integrations.mikkelinyt.MikkeliNytConsts;
 import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
 import fi.otavanopisto.kuntaapi.test.AbstractIntegrationTest;

@@ -14,8 +14,8 @@ import javax.ws.rs.core.Response.Status;
 
 import org.apache.commons.lang3.StringUtils;
 
+import fi.otavanopisto.kuntaapi.server.id.ServiceId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
-import fi.otavanopisto.kuntaapi.server.integrations.ServiceId;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceProvider;
 import fi.otavanopisto.kuntaapi.server.rest.model.ElectronicChannel;
 import fi.otavanopisto.kuntaapi.server.rest.model.PhoneChannel;

@@ -7,8 +7,8 @@ import java.util.logging.Logger;
 import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 
-import fi.otavanopisto.kuntaapi.server.integrations.IdController;
-import fi.otavanopisto.kuntaapi.server.integrations.ServiceId;
+import fi.otavanopisto.kuntaapi.server.id.IdController;
+import fi.otavanopisto.kuntaapi.server.id.ServiceId;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceProvider;
 import fi.otavanopisto.kuntaapi.server.rest.model.Service;
 import fi.otavanopisto.restfulptv.client.ApiResponse;

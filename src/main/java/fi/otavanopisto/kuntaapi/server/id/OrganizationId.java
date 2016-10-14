@@ -1,28 +1,28 @@
-package fi.otavanopisto.kuntaapi.server.integrations;
+package fi.otavanopisto.kuntaapi.server.id;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
- * Class representing service location channel id
+ * Class representing organization id
  * 
  * @author Antti Leppä
  */
-public class ServiceLocationChannelId extends Id {
-
+public class OrganizationId extends Id {
+  
   /**
-   * Zero-argument constructor for service location channel id
+   * Zero-argument constructor for organization id
    */
-  public ServiceLocationChannelId() {
+  public OrganizationId() {
     super();
   }
-
+  
   /**
    * Constructor that parses a stringified id into source and id 
    * 
    * @param id stringified id
    */
-  public ServiceLocationChannelId(String id) {
+  public OrganizationId(String id) {
     super(id);
   }
   
@@ -32,19 +32,19 @@ public class ServiceLocationChannelId extends Id {
    * @param source source
    * @param id id
    */
-  public ServiceLocationChannelId(String source, String id) {
+  public OrganizationId(String source, String id) {
     super(source, id);
   }
   
   @Override
   public IdType getType() {
-    return IdType.SERVICE_LOCATION_CHANNEL;
+    return IdType.ORGANIZATION;
   }
   
   @Override
   public boolean equals(Object obj) {
-    if (obj instanceof ServiceLocationChannelId) {
-      ServiceLocationChannelId another = (ServiceLocationChannelId) obj;
+    if (obj instanceof OrganizationId) {
+      OrganizationId another = (OrganizationId) obj;
       return StringUtils.equals(this.getSource(), another.getSource()) &&  StringUtils.equals(this.getId(), another.getId());
     }
 
@@ -53,7 +53,7 @@ public class ServiceLocationChannelId extends Id {
   
   @Override
   public int hashCode() {
-    return new HashCodeBuilder(211, 223)
+    return new HashCodeBuilder(127, 139)
       .append(getSource())
       .append(getId())
       .hashCode();

@@ -2,6 +2,9 @@ package fi.otavanopisto.kuntaapi.server.integrations;
 
 import java.util.List;
 
+import fi.otavanopisto.kuntaapi.server.id.MenuId;
+import fi.otavanopisto.kuntaapi.server.id.MenuItemId;
+import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.rest.model.Menu;
 import fi.otavanopisto.kuntaapi.server.rest.model.MenuItem;
 

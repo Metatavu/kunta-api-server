@@ -7,9 +7,9 @@ import java.util.logging.Logger;
 import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 
-import fi.otavanopisto.kuntaapi.server.integrations.IdController;
+import fi.otavanopisto.kuntaapi.server.id.IdController;
+import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
-import fi.otavanopisto.kuntaapi.server.integrations.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.persistence.dao.OrganizationSettingDAO;
 import fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting;
 

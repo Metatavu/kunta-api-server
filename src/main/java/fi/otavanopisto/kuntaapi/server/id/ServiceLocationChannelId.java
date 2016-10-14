@@ -1,19 +1,19 @@
-package fi.otavanopisto.kuntaapi.server.integrations;
+package fi.otavanopisto.kuntaapi.server.id;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
- * Class representing phone service channel id
+ * Class representing service location channel id
  * 
  * @author Antti Leppä
  */
-public class PhoneChannelId extends Id {
+public class ServiceLocationChannelId extends Id {
 
   /**
-   * Zero-argument constructor for phone service channel id
+   * Zero-argument constructor for service location channel id
    */
-  public PhoneChannelId() {
+  public ServiceLocationChannelId() {
     super();
   }
 
@@ -22,7 +22,7 @@ public class PhoneChannelId extends Id {
    * 
    * @param id stringified id
    */
-  public PhoneChannelId(String id) {
+  public ServiceLocationChannelId(String id) {
     super(id);
   }
   
@@ -32,19 +32,19 @@ public class PhoneChannelId extends Id {
    * @param source source
    * @param id id
    */
-  public PhoneChannelId(String source, String id) {
+  public ServiceLocationChannelId(String source, String id) {
     super(source, id);
   }
   
   @Override
   public IdType getType() {
-    return IdType.PHONE_CHANNEL;
+    return IdType.SERVICE_LOCATION_CHANNEL;
   }
   
   @Override
   public boolean equals(Object obj) {
-    if (obj instanceof PhoneChannelId) {
-      PhoneChannelId another = (PhoneChannelId) obj;
+    if (obj instanceof ServiceLocationChannelId) {
+      ServiceLocationChannelId another = (ServiceLocationChannelId) obj;
       return StringUtils.equals(this.getSource(), another.getSource()) &&  StringUtils.equals(this.getId(), another.getId());
     }
 
@@ -53,7 +53,7 @@ public class PhoneChannelId extends Id {
   
   @Override
   public int hashCode() {
-    return new HashCodeBuilder(171, 183)
+    return new HashCodeBuilder(211, 223)
       .append(getSource())
       .append(getId())
       .hashCode();

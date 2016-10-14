@@ -1,19 +1,19 @@
-package fi.otavanopisto.kuntaapi.server.integrations;
+package fi.otavanopisto.kuntaapi.server.id;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
- * Class representing event id
+ * Class representing service id
  * 
  * @author Antti Leppä
  */
-public class EventId extends Id {
-  
+public class ServiceId extends Id {
+
   /**
-   * Zero-argument constructor for event id
+   * Zero-argument constructor for service id
    */
-  public EventId() {
+  public ServiceId() {
     super();
   }
 
@@ -22,7 +22,7 @@ public class EventId extends Id {
    * 
    * @param id stringified id
    */
-  public EventId(String id) {
+  public ServiceId(String id) {
     super(id);
   }
   
@@ -32,19 +32,19 @@ public class EventId extends Id {
    * @param source source
    * @param id id
    */
-  public EventId(String source, String id) {
+  public ServiceId(String source, String id) {
     super(source, id);
   }
   
   @Override
   public IdType getType() {
-    return IdType.EVENT;
+    return IdType.SERVICE;
   }
   
   @Override
   public boolean equals(Object obj) {
-    if (obj instanceof EventId) {
-      EventId another = (EventId) obj;
+    if (obj instanceof ServiceId) {
+      ServiceId another = (ServiceId) obj;
       return StringUtils.equals(this.getSource(), another.getSource()) &&  StringUtils.equals(this.getId(), another.getId());
     }
 
@@ -53,7 +53,7 @@ public class EventId extends Id {
   
   @Override
   public int hashCode() {
-    return new HashCodeBuilder(123, 135)
+    return new HashCodeBuilder(133, 145)
       .append(getSource())
       .append(getId())
       .hashCode();

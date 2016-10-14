@@ -7,10 +7,10 @@ import java.util.logging.Logger;
 
 import javax.inject.Inject;
 
-import fi.otavanopisto.kuntaapi.server.integrations.IdController;
+import fi.otavanopisto.kuntaapi.server.id.IdController;
+import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.id.ServiceId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
-import fi.otavanopisto.kuntaapi.server.integrations.OrganizationId;
-import fi.otavanopisto.kuntaapi.server.integrations.ServiceId;
 import fi.otavanopisto.kuntaapi.server.rest.model.ElectronicChannel;
 import fi.otavanopisto.kuntaapi.server.rest.model.LocalizedValue;
 import fi.otavanopisto.kuntaapi.server.rest.model.OntologyItem;

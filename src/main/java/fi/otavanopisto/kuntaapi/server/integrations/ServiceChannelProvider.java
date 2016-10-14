@@ -2,6 +2,8 @@ package fi.otavanopisto.kuntaapi.server.integrations;
 
 import java.util.List;
 
+import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.id.ServiceId;
 import fi.otavanopisto.kuntaapi.server.rest.model.ElectronicChannel;
 import fi.otavanopisto.kuntaapi.server.rest.model.PhoneChannel;
 import fi.otavanopisto.kuntaapi.server.rest.model.PrintableFormChannel;

@@ -12,12 +12,12 @@ import javax.inject.Inject;
 import org.apache.commons.lang3.StringUtils;
 
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
+import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
+import fi.otavanopisto.kuntaapi.server.id.IdController;
+import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
-import fi.otavanopisto.kuntaapi.server.integrations.AttachmentId;
-import fi.otavanopisto.kuntaapi.server.integrations.IdController;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
-import fi.otavanopisto.kuntaapi.server.integrations.OrganizationId;
-import fi.otavanopisto.kuntaapi.server.integrations.PageId;
 import fi.otavanopisto.kuntaapi.server.integrations.PageProvider;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;

@@ -1,4 +1,4 @@
-package fi.otavanopisto.kuntaapi.server.integrations;
+package fi.otavanopisto.kuntaapi.server.id;
 
 import java.util.Iterator;
 
@@ -7,6 +7,9 @@ import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
 
 import org.apache.commons.lang3.StringUtils;
+
+import fi.otavanopisto.kuntaapi.server.integrations.FileId;
+import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 
 /**
  * Controller for ids

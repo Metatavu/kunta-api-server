@@ -1,4 +1,4 @@
-package fi.otavanopisto.kuntaapi.server.integrations;
+package fi.otavanopisto.kuntaapi.server.id;
 
 /**
  * Enum representing id type

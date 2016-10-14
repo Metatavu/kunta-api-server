@@ -1,19 +1,19 @@
-package fi.otavanopisto.kuntaapi.server.integrations;
+package fi.otavanopisto.kuntaapi.server.id;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
- * Class representing service id
+ * Class representing printable form service channel id
  * 
  * @author Antti Leppä
  */
-public class ServiceId extends Id {
+public class PrintableFormChannelId extends Id {
 
   /**
-   * Zero-argument constructor for service id
+   * Zero-argument constructor for printable form service channel id
    */
-  public ServiceId() {
+  public PrintableFormChannelId() {
     super();
   }
 
@@ -22,7 +22,7 @@ public class ServiceId extends Id {
    * 
    * @param id stringified id
    */
-  public ServiceId(String id) {
+  public PrintableFormChannelId(String id) {
     super(id);
   }
   
@@ -32,19 +32,19 @@ public class ServiceId extends Id {
    * @param source source
    * @param id id
    */
-  public ServiceId(String source, String id) {
+  public PrintableFormChannelId(String source, String id) {
     super(source, id);
   }
   
   @Override
   public IdType getType() {
-    return IdType.SERVICE;
+    return IdType.PRINTABLE_FORM_CHANNEL;
   }
   
   @Override
   public boolean equals(Object obj) {
-    if (obj instanceof ServiceId) {
-      ServiceId another = (ServiceId) obj;
+    if (obj instanceof PrintableFormChannelId) {
+      PrintableFormChannelId another = (PrintableFormChannelId) obj;
       return StringUtils.equals(this.getSource(), another.getSource()) &&  StringUtils.equals(this.getId(), another.getId());
     }
 
@@ -53,7 +53,7 @@ public class ServiceId extends Id {
   
   @Override
   public int hashCode() {
-    return new HashCodeBuilder(133, 145)
+    return new HashCodeBuilder(191, 203)
       .append(getSource())
       .append(getId())
       .hashCode();

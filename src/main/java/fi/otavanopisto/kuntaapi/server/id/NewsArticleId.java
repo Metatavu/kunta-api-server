@@ -1,28 +1,28 @@
-package fi.otavanopisto.kuntaapi.server.integrations;
+package fi.otavanopisto.kuntaapi.server.id;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
- * Class representing organization id
+ * Class representing event id
  * 
  * @author Antti Leppä
  */
-public class OrganizationId extends Id {
+public class NewsArticleId extends Id {
   
   /**
-   * Zero-argument constructor for organization id
+   * Zero-argument constructor for article id
    */
-  public OrganizationId() {
+  public NewsArticleId() {
     super();
   }
-  
+
   /**
    * Constructor that parses a stringified id into source and id 
    * 
    * @param id stringified id
    */
-  public OrganizationId(String id) {
+  public NewsArticleId(String id) {
     super(id);
   }
   
@@ -32,19 +32,19 @@ public class OrganizationId extends Id {
    * @param source source
    * @param id id
    */
-  public OrganizationId(String source, String id) {
+  public NewsArticleId(String source, String id) {
     super(source, id);
   }
   
   @Override
   public IdType getType() {
-    return IdType.ORGANIZATION;
+    return IdType.NEWS_ARTICLE;
   }
   
   @Override
   public boolean equals(Object obj) {
-    if (obj instanceof OrganizationId) {
-      OrganizationId another = (OrganizationId) obj;
+    if (obj instanceof NewsArticleId) {
+      NewsArticleId another = (NewsArticleId) obj;
       return StringUtils.equals(this.getSource(), another.getSource()) &&  StringUtils.equals(this.getId(), another.getId());
     }
 
@@ -53,7 +53,7 @@ public class OrganizationId extends Id {
   
   @Override
   public int hashCode() {
-    return new HashCodeBuilder(127, 139)
+    return new HashCodeBuilder(135, 147)
       .append(getSource())
       .append(getId())
       .hashCode();

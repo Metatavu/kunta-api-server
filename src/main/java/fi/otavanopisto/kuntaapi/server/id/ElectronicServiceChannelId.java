@@ -1,19 +1,19 @@
-package fi.otavanopisto.kuntaapi.server.integrations;
+package fi.otavanopisto.kuntaapi.server.id;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
- * Class representing webpage service channel id
+ * Class representing electronic service channel id
  * 
  * @author Antti Leppä
  */
-public class WebPageChannelId extends Id {
+public class ElectronicServiceChannelId extends Id {
 
   /**
-   * Zero-argument constructor for webpage service channel id
+   * Zero-argument constructor for electronic service channel id
    */
-  public WebPageChannelId() {
+  public ElectronicServiceChannelId() {
     super();
   }
 
@@ -22,7 +22,7 @@ public class WebPageChannelId extends Id {
    * 
    * @param id stringified id
    */
-  public WebPageChannelId(String id) {
+  public ElectronicServiceChannelId(String id) {
     super(id);
   }
   
@@ -32,19 +32,19 @@ public class WebPageChannelId extends Id {
    * @param source source
    * @param id id
    */
-  public WebPageChannelId(String source, String id) {
+  public ElectronicServiceChannelId(String source, String id) {
     super(source, id);
   }
   
   @Override
   public IdType getType() {
-    return IdType.WEBPAGE_CHANNEL;
+    return IdType.ELECTRONIC_SERVICE_CHANNEL;
   }
   
   @Override
   public boolean equals(Object obj) {
-    if (obj instanceof WebPageChannelId) {
-      WebPageChannelId another = (WebPageChannelId) obj;
+    if (obj instanceof ElectronicServiceChannelId) {
+      ElectronicServiceChannelId another = (ElectronicServiceChannelId) obj;
       return StringUtils.equals(this.getSource(), another.getSource()) &&  StringUtils.equals(this.getId(), another.getId());
     }
 
@@ -53,7 +53,7 @@ public class WebPageChannelId extends Id {
   
   @Override
   public int hashCode() {
-    return new HashCodeBuilder(231, 243)
+    return new HashCodeBuilder(151, 163)
       .append(getSource())
       .append(getId())
       .hashCode();

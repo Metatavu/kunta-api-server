@@ -1,19 +1,19 @@
-package fi.otavanopisto.kuntaapi.server.integrations;
+package fi.otavanopisto.kuntaapi.server.id;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
- * Class representing menu id
+ * Class representing tile id
  * 
  * @author Antti Leppä
  */
-public class MenuId extends Id {
+public class TileId extends Id {
   
   /**
-   * Zero-argument constructor for menu id
+   * Zero-argument constructor for tile id
    */
-  public MenuId() {
+  public TileId() {
     super();
   }
 
@@ -22,7 +22,7 @@ public class MenuId extends Id {
    * 
    * @param id stringified id
    */
-  public MenuId(String id) {
+  public TileId(String id) {
     super(id);
   }
   
@@ -32,19 +32,19 @@ public class MenuId extends Id {
    * @param source source
    * @param id id
    */
-  public MenuId(String source, String id) {
+  public TileId(String source, String id) {
     super(source, id);
   }
   
   @Override
   public IdType getType() {
-    return IdType.MENU;
+    return IdType.TILE;
   }
   
   @Override
   public boolean equals(Object obj) {
-    if (obj instanceof MenuId) {
-      MenuId another = (MenuId) obj;
+    if (obj instanceof TileId) {
+      TileId another = (TileId) obj;
       return StringUtils.equals(this.getSource(), another.getSource()) &&  StringUtils.equals(this.getId(), another.getId());
     }
 
@@ -53,7 +53,7 @@ public class MenuId extends Id {
   
   @Override
   public int hashCode() {
-    return new HashCodeBuilder(143, 155)
+    return new HashCodeBuilder(139, 151)
       .append(getSource())
       .append(getId())
       .hashCode();

@@ -2,6 +2,8 @@ package fi.otavanopisto.kuntaapi.server.integrations;
 
 import java.util.List;
 
+import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.id.OrganizationServiceId;
 import fi.otavanopisto.kuntaapi.server.rest.model.OrganizationService;
 
 public interface OrganizationServiceProvider {

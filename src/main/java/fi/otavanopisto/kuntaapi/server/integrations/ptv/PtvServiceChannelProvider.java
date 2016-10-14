@@ -7,10 +7,10 @@ import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
-import fi.otavanopisto.kuntaapi.server.integrations.IdController;
-import fi.otavanopisto.kuntaapi.server.integrations.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.id.IdController;
+import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.id.ServiceId;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceChannelProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.ServiceId;
 import fi.otavanopisto.kuntaapi.server.rest.model.ElectronicChannel;
 import fi.otavanopisto.kuntaapi.server.rest.model.PhoneChannel;
 import fi.otavanopisto.kuntaapi.server.rest.model.PrintableFormChannel;

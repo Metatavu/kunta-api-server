@@ -1,6 +1,6 @@
 package fi.otavanopisto.kuntaapi.server.discover;
 
-import fi.otavanopisto.kuntaapi.server.integrations.ServiceId;
+import fi.otavanopisto.kuntaapi.server.id.ServiceId;
 
 public class ServiceIdUpdateRequest extends AbstractIdUpdateRequest<ServiceId> {
 

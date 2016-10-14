@@ -1,4 +1,6 @@
-package fi.otavanopisto.kuntaapi.server.integrations;
+package fi.otavanopisto.kuntaapi.server.id;
+
+import fi.otavanopisto.kuntaapi.server.integrations.FileId;
 
 /**
  * Id translator provider interface

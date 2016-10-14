@@ -1,19 +1,19 @@
-package fi.otavanopisto.kuntaapi.server.integrations;
+package fi.otavanopisto.kuntaapi.server.id;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
- * Class representing electronic service channel id
+ * Class representing menu item id
  * 
  * @author Antti Leppä
  */
-public class ElectronicServiceChannelId extends Id {
-
+public class MenuItemId extends Id {
+  
   /**
-   * Zero-argument constructor for electronic service channel id
+   * Zero-argument constructor for menu item id
    */
-  public ElectronicServiceChannelId() {
+  public MenuItemId() {
     super();
   }
 
@@ -22,7 +22,7 @@ public class ElectronicServiceChannelId extends Id {
    * 
    * @param id stringified id
    */
-  public ElectronicServiceChannelId(String id) {
+  public MenuItemId(String id) {
     super(id);
   }
   
@@ -32,19 +32,19 @@ public class ElectronicServiceChannelId extends Id {
    * @param source source
    * @param id id
    */
-  public ElectronicServiceChannelId(String source, String id) {
+  public MenuItemId(String source, String id) {
     super(source, id);
   }
   
   @Override
   public IdType getType() {
-    return IdType.ELECTRONIC_SERVICE_CHANNEL;
+    return IdType.MENU_ITEM;
   }
   
   @Override
   public boolean equals(Object obj) {
-    if (obj instanceof ElectronicServiceChannelId) {
-      ElectronicServiceChannelId another = (ElectronicServiceChannelId) obj;
+    if (obj instanceof MenuItemId) {
+      MenuItemId another = (MenuItemId) obj;
       return StringUtils.equals(this.getSource(), another.getSource()) &&  StringUtils.equals(this.getId(), another.getId());
     }
 
@@ -53,7 +53,7 @@ public class ElectronicServiceChannelId extends Id {
   
   @Override
   public int hashCode() {
-    return new HashCodeBuilder(151, 163)
+    return new HashCodeBuilder(145, 157)
       .append(getSource())
       .append(getId())
       .hashCode();
