@@ -11,7 +11,7 @@ public enum IdType {
   
   SERVICE,
   
-  SERVICE_CLASS,
+  ORGANIZATION_SERVICE,
   
   SERVICE_CHANNEL,
   
