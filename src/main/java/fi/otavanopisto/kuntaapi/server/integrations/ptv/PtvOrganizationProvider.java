@@ -23,7 +23,7 @@ import fi.otavanopisto.restfulptv.client.ApiResponse;
  * @author Antti Leppä
  */
 @Dependent
-public class PtvOrganizationProvider implements OrganizationProvider {
+public class PtvOrganizationProvider extends AbstractPtvProvider implements OrganizationProvider {
   
   @Inject
   private Logger logger;
@@ -50,7 +50,7 @@ public class PtvOrganizationProvider implements OrganizationProvider {
     if (!ptvOrganizationResponse.isOk()) {
       logger.severe(String.format("Organization %s reported [%d] %s", ptvOrganization.getId(), ptvOrganizationResponse.getStatus(), ptvOrganizationResponse.getMessage()));
     } else {
-      return transform(ptvOrganizationResponse.getResponse());
+      return transformOrganization(ptvOrganizationResponse.getResponse());
     }
     
     return null;
@@ -76,29 +76,13 @@ public class PtvOrganizationProvider implements OrganizationProvider {
         continue;
       } 
       
-      Organization organization = transform(ptvOrganization);
+      Organization organization = transformOrganization(ptvOrganization);
       if (organization != null) {
         result.add(organization);
       }
     }
     
     return result;
-  }
-  
-  private Organization transform(fi.otavanopisto.restfulptv.client.model.Organization ptvOrganiztion) {
-    OrganizationId ptvId = new OrganizationId(PtvConsts.IDENTIFIFER_NAME, ptvOrganiztion.getId());
-    OrganizationId kuntaApiId = idController.translateOrganizationId(ptvId, KuntaApiConsts.IDENTIFIER_NAME);
-    if (kuntaApiId == null) {
-      logger.severe(String.format("Could not translate %s into Kunta API id", ptvId.getId()));
-      return null;
-    }
-    
-    Organization organization = new Organization();
-    organization.setId(kuntaApiId.getId());
-    organization.setBusinessCode(ptvOrganiztion.getBusinessCode());
-    organization.setBusinessName(ptvOrganiztion.getBusinessName());
-    
-    return organization;
   }
 
 }

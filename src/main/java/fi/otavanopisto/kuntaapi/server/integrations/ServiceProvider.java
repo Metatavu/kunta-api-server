@@ -6,8 +6,8 @@ import fi.otavanopisto.kuntaapi.server.rest.model.Service;
 
 public interface ServiceProvider {
   
-  public Service findOrganizationService(OrganizationId organizationId, ServiceId serviceId);
+  public Service findService(ServiceId serviceId);
   
-  public List<Service> listOrganizationServices(OrganizationId organizationId, ServiceClassId serviceClassId);
+  public List<Service> listServices(Long firstResult, Long maxResults);
   
 }

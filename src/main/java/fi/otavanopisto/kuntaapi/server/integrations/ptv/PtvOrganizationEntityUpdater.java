@@ -95,7 +95,7 @@ public class PtvOrganizationEntityUpdater extends EntityUpdater {
           if (response.isOk()) {
             Identifier identifier = identifierController.findIdentifierById(organizationId);
             if (identifier == null) {
-              identifier = identifierController.createIdentifier(organizationId);
+              identifierController.createIdentifier(organizationId);
             }
           } else {
             logger.warning(String.format("Organization %s processing failed on [%d] %s", organizationId.getId(), response.getStatus(), response.getMessage()));

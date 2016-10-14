@@ -63,20 +63,20 @@ public class IdController {
   }
   
   /**
-   * Translates service class id into into target id
+   * Translates organization service id into into target id
    * 
-   * @param serviceClassId id to be translated
+   * @param organizationServiceId id to be translated
    * @param target target
    * @return translated id or null if translation has failed
    */
-  public ServiceClassId translateServiceClassId(ServiceClassId serviceClassId, String target) {
-    if (StringUtils.equals(serviceClassId.getSource(), target)) {
-      return serviceClassId;
+  public OrganizationServiceId translateServiceClassId(OrganizationServiceId organizationServiceId, String target) {
+    if (StringUtils.equals(organizationServiceId.getSource(), target)) {
+      return organizationServiceId;
     }
     
-    IdProvider idProvider = getIdProvider(serviceClassId.getSource(), target);
+    IdProvider idProvider = getIdProvider(organizationServiceId.getSource(), target);
     if (idProvider != null) {
-      return idProvider.translate(serviceClassId, target);
+      return idProvider.translate(organizationServiceId, target);
     }
     
     return null;
@@ -379,9 +379,9 @@ public class IdController {
    * @param id2 id2
    * @return whether ids match
    */
-  public boolean idsEqual(ServiceClassId id1, ServiceClassId id2) {
-    ServiceClassId kuntaApiId1 = translateServiceClassId(id1, KuntaApiConsts.IDENTIFIER_NAME);
-    ServiceClassId kuntaApiId2 = translateServiceClassId(id2, KuntaApiConsts.IDENTIFIER_NAME);
+  public boolean idsEqual(OrganizationServiceId id1, OrganizationServiceId id2) {
+    OrganizationServiceId kuntaApiId1 = translateServiceClassId(id1, KuntaApiConsts.IDENTIFIER_NAME);
+    OrganizationServiceId kuntaApiId2 = translateServiceClassId(id2, KuntaApiConsts.IDENTIFIER_NAME);
     
     if (kuntaApiId1 == null || kuntaApiId2 == null) {
       return false;

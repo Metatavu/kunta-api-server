@@ -44,13 +44,13 @@ public interface IdProvider {
   public ServiceChannelId translate(ServiceChannelId serviceChannelId, String target);
   
   /**
-   * Translate service class id
+   * Translate organization service id
    * 
-   * @param serviceClassId original id
+   * @param organizationServiceId original id
    * @param target target type
    * @return translated id
    */
-  public ServiceClassId translate(ServiceClassId serviceClassId, String target);
+  public OrganizationServiceId translate(OrganizationServiceId organizationServiceId, String target);
   
   /**
    * Translate event id

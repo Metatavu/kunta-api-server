@@ -15,9 +15,9 @@ import fi.otavanopisto.kuntaapi.server.integrations.MenuId;
 import fi.otavanopisto.kuntaapi.server.integrations.MenuItemId;
 import fi.otavanopisto.kuntaapi.server.integrations.NewsArticleId;
 import fi.otavanopisto.kuntaapi.server.integrations.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.integrations.OrganizationServiceId;
 import fi.otavanopisto.kuntaapi.server.integrations.PageId;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceChannelId;
-import fi.otavanopisto.kuntaapi.server.integrations.ServiceClassId;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceId;
 import fi.otavanopisto.kuntaapi.server.integrations.TileId;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
@@ -65,7 +65,7 @@ public class MikkeliNytIdProvider implements IdProvider {
   }
 
   @Override
-  public ServiceClassId translate(ServiceClassId serviceClassId, String target) {
+  public OrganizationServiceId translate(OrganizationServiceId organizationServiceId, String target) {
     return null;
   }
 
