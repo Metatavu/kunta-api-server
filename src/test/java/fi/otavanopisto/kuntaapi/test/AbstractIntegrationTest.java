@@ -1,32 +1,60 @@
 package fi.otavanopisto.kuntaapi.test;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
+import static com.github.tomakehurst.wiremock.client.WireMock.equalTo;
 import static com.github.tomakehurst.wiremock.client.WireMock.get;
 import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
-import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
+import static com.github.tomakehurst.wiremock.client.WireMock.urlPathEqualTo;
+import static com.jayway.restassured.RestAssured.given;
+import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.fail;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.apache.commons.io.IOUtils;
+import org.junit.Rule;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.tomakehurst.wiremock.client.MappingBuilder;
 import com.github.tomakehurst.wiremock.client.WireMock;
+import com.github.tomakehurst.wiremock.junit.WireMockRule;
+import com.jayway.restassured.http.ContentType;
+
+import fi.otavanopisto.restfulptv.client.model.Organization;
 
 /**
  * Abstract base class for integration tests
  * 
+ * @author Heikki Kurhinen
  * @author Antti Leppä
  */
+@SuppressWarnings ("squid:S1192")
 public abstract class AbstractIntegrationTest extends AbstractTest {
 
+  public static final String BASE_URL = "/v1";
+  
   private static Logger logger = Logger.getLogger(AbstractTest.class.getName());
+
+  /**
+   * Starts WireMock
+   */
+  @Rule
+  public WireMockRule wireMockRule = new WireMockRule(getWireMockPort());
+  private RestFulPtvMocker ptvMocker = new RestFulPtvMocker();
+  
+  public RestFulPtvMocker getPtvMocker() {
+    return ptvMocker;
+  }
   
   /**
    * Abstract base class for all mockers
@@ -70,7 +98,19 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
      * @param content response content
      */
     public void mockGetString(String path, String type, String content) {
-      stringMocks.add(new StringGetMock(path, type, content));
+      stringMocks.add(new StringGetMock(path, type, content, null));
+    }
+    
+    /**
+     * Mocks string response for GET request on path
+     * 
+     * @param path path
+     * @param type response content type 
+     * @param queryParams query params for the reuqest
+     * @param content response content
+     */
+    public void mockGetString(String path, String type, String content, Map<String, String> queryParams) {
+      stringMocks.add(new StringGetMock(path, type, content, queryParams));
     }
     
     /**
@@ -79,9 +119,9 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
      * @param path path
      * @param object JSON object
      */
-    public void mockGetJSON(String path, Object object) {
+    public void mockGetJSON(String path, Object object, Map<String, String> queryParams) {
       try {
-        stringMocks.add(new StringGetMock(path, "application/json", new ObjectMapper().writeValueAsString(object)));
+        stringMocks.add(new StringGetMock(path, "application/json", new ObjectMapper().writeValueAsString(object), queryParams));
       } catch (JsonProcessingException e) {
         logger.log(Level.SEVERE, "Failed to serialize mock JSON object", e);
         fail(e.getMessage());
@@ -89,11 +129,31 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     }
     
     /**
+     * Reads JSON file as organization object
+     * 
+     * @param file path to JSON file
+     */    
+    public Organization readOrganizationFromJSONFile(String file) {
+      return readJSONFile(file, Organization.class);
+    }
+    
+    private <T> T readJSONFile(String file, Class <T> type){
+      ObjectMapper ObjectMapper = new ObjectMapper();
+      try {
+        return ObjectMapper.readValue(new File(file), type);
+      } catch (IOException e) {
+        logger.log(Level.SEVERE, "Failed to mock JSON file", e);
+        fail(e.getMessage());
+      }
+      return null;
+    }
+    
+    /**
      * Starts mocking requests
      */
     public void startMock() {
       for (StringGetMock stringMock : stringMocks) {
-        createStringMock(stringMock.getPath(), stringMock.getType(), stringMock.getContent());
+        createStringMock(stringMock.getPath(), stringMock.getType(), stringMock.getContent(), stringMock.getQueryParams());
       }
       
       for (BinaryGetMock binaryMock : binaryMocks) {
@@ -109,14 +169,22 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     }
     
     private void createBinaryMock(String path, String type, byte[] binary) {
-      stubFor(get(urlEqualTo(path))
+      stubFor(get(urlPathEqualTo(path))
         .willReturn(aResponse()
         .withHeader("Content-Type", type)
         .withBody(binary)));
     }
-    
-    private void createStringMock(String path, String type, String content) {
-      stubFor(get(urlEqualTo(path))
+
+    private void createStringMock(String path, String type, String content, Map<String, String> queryParams) {
+      MappingBuilder mappingBuilder = get(urlPathEqualTo(path));
+      
+      if (queryParams != null) {
+        for (Entry<String, String> queryParam : queryParams.entrySet()) {
+          mappingBuilder.withQueryParam(queryParam.getKey(), equalTo(queryParam.getValue()));
+        }
+      }
+      
+      stubFor(mappingBuilder
           .willReturn(aResponse()
           .withHeader("Content-Type", type)
           .withBody(content)));
@@ -127,11 +195,13 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
       private String path;
       private String type;
       private String content;
+      private Map<String, String> queryParams;
      
-      public StringGetMock(String path, String type, String content) {
+      public StringGetMock(String path, String type, String content, Map<String, String> queryParams) {
         this.path = path;
         this.type = type;
         this.content = content;
+        this.queryParams = queryParams;
       }
       
       public String getPath() {
@@ -144,6 +214,10 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
       
       public String getType() {
         return type;
+      }
+      
+      public Map<String, String> getQueryParams() {
+        return queryParams;
       }
     }
     
@@ -173,5 +247,194 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     }
 
   }
+
+  public class RestFulPtvMocker extends AbstractMocker {
+    
+    private List<Organization> organizationsList;
+    
+    public RestFulPtvMocker() {
+       organizationsList = new ArrayList<>();
+    }
+
+    public RestFulPtvMocker mockOrganizations(String... ids) {
+      for (String id : ids) {
+        Organization organization = readOrganizationFromJSONFile(String.format("organizations/%s.json", id));
+        mockGetJSON(String.format("%s/organizations/%s", BASE_URL, id), organization, null);
+        organizationsList.add(organization);
+      }     
+      return this;
+    }
+    
+    @Override
+    public void startMock() {
+      Map<String, String> pageQuery = new HashMap<>();
+      pageQuery.put("firstResult", "0");
+      pageQuery.put("maxResults", "20");
+
+      mockGetJSON(String.format("%s/organizations", BASE_URL), organizationsList, pageQuery);
+      
+      super.startMock();
+    }
+  }
   
+  protected void waitApiListCount(String path, int count) throws InterruptedException {
+    long timeout = System.currentTimeMillis() + (120 * 1000);
+    
+    while (true) {
+      Thread.sleep(1000);
+      
+      int listCount = countApiList(path);
+      if (listCount == count) {
+        return;
+      }
+      
+      if (System.currentTimeMillis() > timeout) {
+        fail(String.format("Timeout waiting for %s to have count %d", path, count));
+      }
+    }
+  }
+
+  protected int countApiList(String path) {
+    return given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get(path)
+      .andReturn()
+      .body()
+      .jsonPath()
+      .get("size()");
+  }
+  
+  protected void assertListLimits(String basePath, int maxResults) {
+    given() 
+    .baseUri(getApiBasePath())
+    .contentType(ContentType.JSON)
+    .get(String.format("%s?firstResult=1", basePath))
+    .then()
+    .assertThat()
+    .statusCode(200)
+    .body("id.size()", is(2));
+  
+  given() 
+    .baseUri(getApiBasePath())
+    .contentType(ContentType.JSON)
+    .get(String.format("%s?firstResult=2", basePath))
+    .then()
+    .assertThat()
+    .statusCode(200)
+    .body("id.size()", is(1));
+  
+  given() 
+    .baseUri(getApiBasePath())
+    .contentType(ContentType.JSON)
+    .get(String.format("%s?firstResult=666", basePath))
+    .then()
+    .assertThat()
+    .statusCode(200)
+    .body("id.size()", is(0));
+  
+  given() 
+    .baseUri(getApiBasePath())
+    .contentType(ContentType.JSON)
+    .get(String.format("%s?firstResult=-1", basePath))
+    .then()
+    .assertThat()
+    .statusCode(400);
+  
+  given() 
+    .baseUri(getApiBasePath())
+    .contentType(ContentType.JSON)
+    .get(String.format("%s?maxResults=2", basePath))
+    .then()
+    .assertThat()
+    .statusCode(200)
+    .body("id.size()", is(2));
+  
+  given() 
+    .baseUri(getApiBasePath())
+    .contentType(ContentType.JSON)
+    .get(String.format("%s?maxResults=0", basePath))
+    .then()
+    .assertThat()
+    .statusCode(200)
+    .body("id.size()", is(0));
+  
+  given() 
+    .baseUri(getApiBasePath())
+    .contentType(ContentType.JSON)
+    .get(String.format("%s?maxResults=-1", basePath))
+    .then()
+    .assertThat()
+    .statusCode(400);
+  
+  given() 
+    .baseUri(getApiBasePath())
+    .contentType(ContentType.JSON)
+    .get(String.format("%s?maxResults=666", basePath))
+    .then()
+    .assertThat()
+    .statusCode(200)
+    .body("id.size()", is(maxResults));
+  
+  given() 
+    .baseUri(getApiBasePath())
+    .contentType(ContentType.JSON)
+    .get(String.format("%s?firstResult=0&maxResults=2", basePath))
+    .then()
+    .assertThat()
+    .statusCode(200)
+    .body("id.size()", is(2));
+  
+  given() 
+    .baseUri(getApiBasePath())
+    .contentType(ContentType.JSON)
+    .get(String.format("%s?firstResult=1&maxResults=2", basePath))
+    .then()
+    .assertThat()
+    .statusCode(200)
+    .body("id.size()", is(2));
+  
+  given() 
+    .baseUri(getApiBasePath())
+    .contentType(ContentType.JSON)
+    .get(String.format("%s?firstResult=1&maxResults=1", basePath))
+    .then()
+    .assertThat()
+    .statusCode(200)
+    .body("id.size()", is(1));
+  
+  given() 
+    .baseUri(getApiBasePath())
+    .contentType(ContentType.JSON)
+    .get(String.format("%s?firstResult=-1&maxResults=1", basePath))
+    .then()
+    .assertThat()
+    .statusCode(400);
+  
+  given() 
+    .baseUri(getApiBasePath())
+    .contentType(ContentType.JSON)
+    .get(String.format("%s?firstResult=2&maxResults=-1", basePath))
+    .then()
+    .assertThat()
+    .statusCode(400);
+  
+  given() 
+    .baseUri(getApiBasePath())
+    .contentType(ContentType.JSON)
+    .get(String.format("%s?firstResult=1&maxResults=0", basePath))
+    .then()
+    .assertThat()
+    .statusCode(200)
+    .body("id.size()", is(0));
+  
+  given() 
+    .baseUri(getApiBasePath())
+    .contentType(ContentType.JSON)
+    .get(String.format("%s?firstResult=21&maxResults=20", basePath))
+    .then()
+    .assertThat()
+    .statusCode(200)
+    .body("id.size()", is(0));
+  }
 }
