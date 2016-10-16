@@ -122,6 +122,21 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   }
   
   @Override
+  public Response findOrganization(String organizationIdParam) {
+  	OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    for (OrganizationProvider organizationProvider : getOrganizationProviders()) {
+      Organization organization = organizationProvider.findOrganization(organizationId);
+      if(organization != null) {
+        return Response.ok(organization)
+          .build();
+      }
+    }
+    return Response
+      .status(Status.NOT_FOUND)
+      .build();
+  }
+  
+  @Override
   public Response createOrganizationService(String organizationId, OrganizationService body) {
     return createNotImplemented(NOT_IMPLEMENTED);
   }
