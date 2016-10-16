@@ -54,18 +54,10 @@ public class OrganizationsTestsIT extends AbstractIntegrationTest {
   
   @Test
   public void findOrganization() {
-    String id = given() 
-    .baseUri(getApiBasePath())
-    .contentType(ContentType.JSON)
-    .get("/organizations")
-    .body().jsonPath().getString("id[0]");
-    
-    assertNotNull(id);
-    
     given() 
       .baseUri(getApiBasePath())
       .contentType(ContentType.JSON)
-      .get("/organizations/{organizationId}", id)
+      .get("/organizations/{organizationId}", "0de268cf-1ea1-4719-8a6e-1150933b6b9e")
       .then()
       .assertThat()
       .statusCode(200)

@@ -23,6 +23,7 @@ import org.hamcrest.Matcher;
  * Abstract base class for all tests
  * 
  * @author Antti Leppä
+ * @author Heikki Kurhinen
  */
 public abstract class AbstractTest {
     
