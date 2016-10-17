@@ -16,6 +16,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import fi.otavanopisto.kuntaapi.server.id.ServiceId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
+import fi.otavanopisto.kuntaapi.server.integrations.ServiceChannelProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceProvider;
 import fi.otavanopisto.kuntaapi.server.rest.model.ElectronicChannel;
 import fi.otavanopisto.kuntaapi.server.rest.model.PhoneChannel;
@@ -34,10 +35,15 @@ import fi.otavanopisto.kuntaapi.server.rest.model.WebPageChannel;
 @SuppressWarnings ("squid:S3306")
 public class ServicesApiImpl extends ServicesApi {
   
+  private static final String INVALID_SERVICE_ID = "Invalid service id %s";
+
   private static final String NOT_IMPLEMENTED = "Not implemented";
   
   @Inject
   private Instance<ServiceProvider> serviceProviders;
+  
+  @Inject
+  private Instance<ServiceChannelProvider> serviceChannelProviders;
   
   @Override
   public Response createService(Service body) {
@@ -65,13 +71,15 @@ public class ServicesApiImpl extends ServicesApi {
   public Response listServices(Long firstResult, Long maxResults) {
     List<Service> result = new ArrayList<>();
     
-    // TODO: Filters
-    
     for (ServiceProvider serviceProvider : getServiceProviders()) {
       result.addAll(serviceProvider.listServices(null, null));
     }
     
-    return Response.ok(result)
+    int resultCount = result.size();
+    int firstIndex = firstResult == null ? 0 : Math.min(firstResult.intValue(), resultCount);
+    int toIndex = maxResults == null ? resultCount : Math.min(firstIndex + maxResults.intValue(), resultCount);
+    
+    return Response.ok(result.subList(firstIndex, toIndex))
       .build();
   }
   
@@ -131,28 +139,108 @@ public class ServicesApiImpl extends ServicesApi {
   }
 
   @Override
-  public Response listServiceElectronicChannels(String serviceId, Long firstResult, Long maxResults) {
-    return createNotImplemented(NOT_IMPLEMENTED);
+  public Response listServiceElectronicChannels(String serviceIdParam, Long firstResult, Long maxResults) {
+    ServiceId serviceId = toServiceId(serviceIdParam);
+    if (serviceId == null) {
+      return createBadRequest(String.format(INVALID_SERVICE_ID, serviceIdParam));
+    }
+    
+    List<ElectronicChannel> result = new ArrayList<>();
+    
+    for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
+      result.addAll(serviceChannelProvider.listElectronicChannels(serviceId));
+    }
+    
+    int resultCount = result.size();
+    int firstIndex = firstResult == null ? 0 : Math.min(firstResult.intValue(), resultCount);
+    int toIndex = maxResults == null ? resultCount : Math.min(firstIndex + maxResults.intValue(), resultCount);
+    
+    return Response.ok(result.subList(firstIndex, toIndex))
+      .build();
   }
 
   @Override
-  public Response listServicePhoneChannels(String serviceId, Long firstResult, Long maxResults) {
-    return createNotImplemented(NOT_IMPLEMENTED);
+  public Response listServicePhoneChannels(String serviceIdParam, Long firstResult, Long maxResults) {
+    ServiceId serviceId = toServiceId(serviceIdParam);
+    if (serviceId == null) {
+      return createBadRequest(String.format(INVALID_SERVICE_ID, serviceIdParam));
+    }
+    
+    List<PhoneChannel> result = new ArrayList<>();
+    
+    for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
+      result.addAll(serviceChannelProvider.listPhoneChannels(serviceId));
+    }
+    
+    int resultCount = result.size();
+    int firstIndex = firstResult == null ? 0 : Math.min(firstResult.intValue(), resultCount);
+    int toIndex = maxResults == null ? resultCount : Math.min(firstIndex + maxResults.intValue(), resultCount);
+    
+    return Response.ok(result.subList(firstIndex, toIndex))
+      .build();
   }
 
   @Override
-  public Response listServicePrintableFormChannels(String serviceId, Long firstResult, Long maxResults) {
-    return createNotImplemented(NOT_IMPLEMENTED);
+  public Response listServicePrintableFormChannels(String serviceIdParam, Long firstResult, Long maxResults) {
+    ServiceId serviceId = toServiceId(serviceIdParam);
+    if (serviceId == null) {
+      return createBadRequest(String.format(INVALID_SERVICE_ID, serviceIdParam));
+    }
+    
+    List<PrintableFormChannel> result = new ArrayList<>();
+    
+    for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
+      result.addAll(serviceChannelProvider.listPrintableFormChannels(serviceId));
+    }
+    
+    int resultCount = result.size();
+    int firstIndex = firstResult == null ? 0 : Math.min(firstResult.intValue(), resultCount);
+    int toIndex = maxResults == null ? resultCount : Math.min(firstIndex + maxResults.intValue(), resultCount);
+    
+    return Response.ok(result.subList(firstIndex, toIndex))
+      .build();
   }
 
   @Override
-  public Response listServiceServiceLocationChannels(String serviceId, Long firstResult, Long maxResults) {
-    return createNotImplemented(NOT_IMPLEMENTED);
+  public Response listServiceServiceLocationChannels(String serviceIdParam, Long firstResult, Long maxResults) {
+    ServiceId serviceId = toServiceId(serviceIdParam);
+    if (serviceId == null) {
+      return createBadRequest(String.format(INVALID_SERVICE_ID, serviceIdParam));
+    }
+    
+    List<ServiceLocationChannel> result = new ArrayList<>();
+    
+    for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
+      result.addAll(serviceChannelProvider.listServiceLocationChannels(serviceId));
+    }
+    
+    int resultCount = result.size();
+    int firstIndex = firstResult == null ? 0 : Math.min(firstResult.intValue(), resultCount);
+    int toIndex = maxResults == null ? resultCount : Math.min(firstIndex + maxResults.intValue(), resultCount);
+    
+    return Response.ok(result.subList(firstIndex, toIndex))
+      .build();
   }
 
   @Override
-  public Response listServiceWebPageChannels(String serviceId, Long firstResult, Long maxResults) {
-    return createNotImplemented(NOT_IMPLEMENTED);
+  public Response listServiceWebPageChannels(String serviceIdParam, Long firstResult, Long maxResults) {
+    ServiceId serviceId = toServiceId(serviceIdParam);
+    if (serviceId == null) {
+      return createBadRequest(String.format(INVALID_SERVICE_ID, serviceIdParam));
+    }
+    
+    List<WebPageChannel> result = new ArrayList<>();
+    
+    for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
+      result.addAll(serviceChannelProvider.listWebPageChannelsChannels(serviceId));
+    }
+    
+    int resultCount = result.size();
+    int firstIndex = firstResult == null ? 0 : Math.min(firstResult.intValue(), resultCount);
+    int toIndex = maxResults == null ? resultCount : Math.min(firstIndex + maxResults.intValue(), resultCount);
+    
+    return Response.ok(result.subList(firstIndex, toIndex))
+      .build();
   }
 
   @Override
@@ -194,6 +282,17 @@ public class ServicesApiImpl extends ServicesApi {
     List<ServiceProvider> result = new ArrayList<>();
     
     Iterator<ServiceProvider> iterator = serviceProviders.iterator();
+    while (iterator.hasNext()) {
+      result.add(iterator.next());
+    }
+    
+    return Collections.unmodifiableList(result);
+  }
+  
+  private List<ServiceChannelProvider> getServiceChannelProviders() {
+    List<ServiceChannelProvider> result = new ArrayList<>();
+    
+    Iterator<ServiceChannelProvider> iterator = serviceChannelProviders.iterator();
     while (iterator.hasNext()) {
       result.add(iterator.next());
     }

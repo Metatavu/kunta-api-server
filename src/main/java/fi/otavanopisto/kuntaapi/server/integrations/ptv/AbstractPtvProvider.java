@@ -7,19 +7,29 @@ import java.util.logging.Logger;
 
 import javax.inject.Inject;
 
+import fi.otavanopisto.kuntaapi.server.id.ElectronicServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.id.PhoneChannelId;
+import fi.otavanopisto.kuntaapi.server.id.PrintableFormChannelId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceId;
+import fi.otavanopisto.kuntaapi.server.id.ServiceLocationChannelId;
+import fi.otavanopisto.kuntaapi.server.id.WebPageChannelId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
+import fi.otavanopisto.kuntaapi.server.rest.model.Address;
 import fi.otavanopisto.kuntaapi.server.rest.model.ElectronicChannel;
 import fi.otavanopisto.kuntaapi.server.rest.model.LocalizedValue;
 import fi.otavanopisto.kuntaapi.server.rest.model.OntologyItem;
 import fi.otavanopisto.kuntaapi.server.rest.model.Organization;
+import fi.otavanopisto.kuntaapi.server.rest.model.PhoneChannel;
+import fi.otavanopisto.kuntaapi.server.rest.model.PrintableFormChannel;
 import fi.otavanopisto.kuntaapi.server.rest.model.Service;
 import fi.otavanopisto.kuntaapi.server.rest.model.ServiceChannelAttachment;
 import fi.otavanopisto.kuntaapi.server.rest.model.ServiceHour;
+import fi.otavanopisto.kuntaapi.server.rest.model.ServiceLocationChannel;
 import fi.otavanopisto.kuntaapi.server.rest.model.SupportContact;
 import fi.otavanopisto.kuntaapi.server.rest.model.WebPage;
+import fi.otavanopisto.kuntaapi.server.rest.model.WebPageChannel;
 import fi.otavanopisto.restfulptv.client.model.FintoItem;
 import fi.otavanopisto.restfulptv.client.model.LanguageItem;
 import fi.otavanopisto.restfulptv.client.model.LocalizedListItem;
@@ -75,10 +85,12 @@ public abstract class AbstractPtvProvider {
   }
     
   protected Organization transformOrganization(fi.otavanopisto.restfulptv.client.model.Organization ptvOrganiztion) {
-    OrganizationId ptvId = new OrganizationId(PtvConsts.IDENTIFIFER_NAME, ptvOrganiztion.getId());
-    OrganizationId kuntaApiId = idController.translateOrganizationId(ptvId, KuntaApiConsts.IDENTIFIER_NAME);
+    if (ptvOrganiztion == null) {
+      return null;
+    }
+    
+    OrganizationId kuntaApiId = translateOrganizationId(ptvOrganiztion.getId());
     if (kuntaApiId == null) {
-      logger.severe(String.format("Could not translate %s into Kunta API id", ptvId.getId()));
       return null;
     }
     
@@ -148,17 +160,12 @@ public abstract class AbstractPtvProvider {
       return null;
     }
     
-    // TODO: IDs
-    
-    String id = null;
-    String parentId = null;
-    
     OntologyItem result = new OntologyItem();
     result.setCode(ptvFintoItem.getCode());
-    result.setId(id);
+    result.setId(ptvFintoItem.getId());
     result.setName(ptvFintoItem.getName());
     result.setOntologyType(ptvFintoItem.getOntologyType());
-    result.setParentId(parentId);
+    result.setParentId(ptvFintoItem.getParentId());
     result.setParentUri(ptvFintoItem.getParentId());
     result.setSystem(ONTOLOGY_SYSTEM_FINTO);
     result.setUri(ptvFintoItem.getUri());
@@ -198,23 +205,95 @@ public abstract class AbstractPtvProvider {
 
     return result;
   }
+  
+  protected List<PhoneChannel> translatePhoneChannels(List<fi.otavanopisto.restfulptv.client.model.PhoneChannel> ptvPhoneChannels) {
+    if (ptvPhoneChannels == null) {
+      return Collections.emptyList();
+    }
+
+    List<PhoneChannel> result = new ArrayList<>();
+    for (fi.otavanopisto.restfulptv.client.model.PhoneChannel ptvPhoneChannel : ptvPhoneChannels) {
+      PhoneChannel phoneChannel = translatePhoneChannel(ptvPhoneChannel);
+      if (phoneChannel != null) {
+        result.add(phoneChannel);
+      }
+    }
+
+    return result;
+  }
+  
+  protected List<PrintableFormChannel> translatePrintableFormChannels(List<fi.otavanopisto.restfulptv.client.model.PrintableFormChannel> ptvPrintableFormChannels) {
+    if (ptvPrintableFormChannels == null) {
+      return Collections.emptyList();
+    }
+
+    List<PrintableFormChannel> result = new ArrayList<>();
+    for (fi.otavanopisto.restfulptv.client.model.PrintableFormChannel ptvPrintableFormChannel : ptvPrintableFormChannels) {
+      PrintableFormChannel printableFormChannel = translatePrintableFormChannel(ptvPrintableFormChannel);
+      if (printableFormChannel != null) {
+        result.add(printableFormChannel);
+      }
+    }
+
+    return result;
+  }
+  
+  protected List<ServiceLocationChannel> translateServiceLocationChannels(List<fi.otavanopisto.restfulptv.client.model.ServiceLocationChannel> ptvServiceLocationChannels) {
+    if (ptvServiceLocationChannels == null) {
+      return Collections.emptyList();
+    }
+
+    List<ServiceLocationChannel> result = new ArrayList<>();
+    for (fi.otavanopisto.restfulptv.client.model.ServiceLocationChannel ptvServiceLocationChannel : ptvServiceLocationChannels) {
+      ServiceLocationChannel serviceLocationChannel = translateServiceLocationChannel(ptvServiceLocationChannel);
+      if (serviceLocationChannel != null) {
+        result.add(serviceLocationChannel);
+      }
+    }
+
+    return result;
+  }
+  
+  protected List<WebPageChannel> translateWebPageChannels(List<fi.otavanopisto.restfulptv.client.model.WebPageChannel> ptvWebPageChannels) {
+    if (ptvWebPageChannels == null) {
+      return Collections.emptyList();
+    }
+
+    List<WebPageChannel> result = new ArrayList<>();
+    for (fi.otavanopisto.restfulptv.client.model.WebPageChannel ptvWebPageChannel : ptvWebPageChannels) {
+      WebPageChannel webPageChannel = translateWebPageChannel(ptvWebPageChannel);
+      if (webPageChannel != null) {
+        result.add(webPageChannel);
+      }
+    }
+
+    return result;
+  }
 
   private ElectronicChannel translateElectronicChannel(fi.otavanopisto.restfulptv.client.model.ElectronicChannel ptvElectronicChannel) {
     if (ptvElectronicChannel == null) {
       return null;
     }
     
-    // TODO: ids
-    String id = null;
-    String organizationId = null;
+    OrganizationId organizationKuntaApiId = translateOrganizationId(ptvElectronicChannel.getOrganizationId());
+    if (organizationKuntaApiId == null) {
+      return null;
+    }
+    
+    ElectronicServiceChannelId channelPtvId = new ElectronicServiceChannelId(PtvConsts.IDENTIFIFER_NAME, ptvElectronicChannel.getId());
+    ElectronicServiceChannelId channelKuntaApiId = idController.translateElectronicServiceChannelId(channelPtvId, KuntaApiConsts.IDENTIFIER_NAME);
+    if (channelKuntaApiId == null) {
+      logger.severe(String.format("Could not translate electronic channel id %s into Kunta API id", channelPtvId.getId()));
+      return null;
+    }
     
     ElectronicChannel result = new ElectronicChannel(); 
     result.setAttachments(translateAttachments(ptvElectronicChannel.getAttachments()));
     result.setDescriptions(translateLocalizedItems(ptvElectronicChannel.getDescriptions()));
-    result.setId(id);
+    result.setId(channelKuntaApiId.getId());
     result.setLanguages(ptvElectronicChannel.getLanguages());
     result.setNames(translateLocalizedItems(ptvElectronicChannel.getNames()));
-    result.setOrganizationId(organizationId);
+    result.setOrganizationId(organizationKuntaApiId.getId());
     result.setPublishingStatus(ptvElectronicChannel.getPublishingStatus());
     result.setRequiresAuthentication(ptvElectronicChannel.getRequiresAuthentication());
     result.setRequiresSignature(ptvElectronicChannel.getRequiresSignature());
@@ -225,6 +304,191 @@ public abstract class AbstractPtvProvider {
     result.setUrls(translateLanguageItems(ptvElectronicChannel.getUrls()));
     result.setWebPages(translateWebPages(ptvElectronicChannel.getWebPages()));
     
+    return result;
+  }
+
+  private OrganizationId translateOrganizationId(String ptvOrganizationId) {
+    OrganizationId organizationPtvId = new OrganizationId(PtvConsts.IDENTIFIFER_NAME, ptvOrganizationId);
+    OrganizationId organizationKuntaApiId = idController.translateOrganizationId(organizationPtvId, KuntaApiConsts.IDENTIFIER_NAME);
+    if (organizationKuntaApiId == null) {
+      logger.severe(String.format("Could not translate organization id %s into Kunta API id", organizationPtvId.getId()));
+      return null;
+    }
+    
+    return organizationKuntaApiId;
+  }
+
+  private PhoneChannel translatePhoneChannel(fi.otavanopisto.restfulptv.client.model.PhoneChannel ptvPhoneChannel) {
+    if (ptvPhoneChannel == null) {
+      return null;
+    }
+    
+    OrganizationId organizationKuntaApiId = translateOrganizationId(ptvPhoneChannel.getOrganizationId());
+    if (organizationKuntaApiId == null) {
+      return null;
+    }
+    
+    PhoneChannelId channelPtvId = new PhoneChannelId(PtvConsts.IDENTIFIFER_NAME, ptvPhoneChannel.getId());
+    PhoneChannelId channelKuntaApiId = idController.translatePhoneServiceChannelId(channelPtvId, KuntaApiConsts.IDENTIFIER_NAME);
+    if (channelKuntaApiId == null) {
+      logger.severe(String.format("Could not translate phone channel id %s into Kunta API id", channelPtvId.getId()));
+      return null;
+    }
+    
+    PhoneChannel result = new PhoneChannel(); 
+
+    result.setId(channelKuntaApiId.getId());
+    result.setType(ptvPhoneChannel.getType());
+    result.setOrganizationId(organizationKuntaApiId.getId());
+    result.setNames(translateLocalizedItems(ptvPhoneChannel.getNames()));
+    result.setDescriptions(translateLocalizedItems(ptvPhoneChannel.getDescriptions()));
+    result.setPhoneType(ptvPhoneChannel.getPhoneType());
+    result.setChargeTypes(ptvPhoneChannel.getChargeTypes());
+    result.setSupportContacts(translateSupportContacts(ptvPhoneChannel.getSupportContacts()));
+    result.setPhoneNumbers(translateLanguageItems(ptvPhoneChannel.getPhoneNumbers()));
+    result.setLanguages(ptvPhoneChannel.getLanguages());
+    result.setPhoneChargeDescriptions(translateLanguageItems(ptvPhoneChannel.getPhoneChargeDescriptions()));
+    result.setWebPages(translateWebPages(ptvPhoneChannel.getWebPages()));
+    result.setServiceHours(translateServiceHours(ptvPhoneChannel.getServiceHours()));
+    result.setPublishingStatus(ptvPhoneChannel.getPublishingStatus());
+
+    return result;
+  }
+
+  private PrintableFormChannel translatePrintableFormChannel(fi.otavanopisto.restfulptv.client.model.PrintableFormChannel ptvPrintableFormChannel) {
+    if (ptvPrintableFormChannel == null) {
+      return null;
+    }
+    
+    OrganizationId organizationKuntaApiId = translateOrganizationId(ptvPrintableFormChannel.getOrganizationId());
+    if (organizationKuntaApiId == null) {
+      return null;
+    }
+    
+    PrintableFormChannelId channelPtvId = new PrintableFormChannelId(PtvConsts.IDENTIFIFER_NAME, ptvPrintableFormChannel.getId());
+    PrintableFormChannelId channelKuntaApiId = idController.translatePrintableFormServiceChannelId(channelPtvId, KuntaApiConsts.IDENTIFIER_NAME);
+    if (channelKuntaApiId == null) {
+      logger.severe(String.format("Could not translate printableForm channel id %s into Kunta API id", channelPtvId.getId()));
+      return null;
+    }
+    
+    PrintableFormChannel result = new PrintableFormChannel(); 
+    
+    result.setId(channelKuntaApiId.getId());
+    result.setType(ptvPrintableFormChannel.getType());
+    result.setOrganizationId(organizationKuntaApiId.getId());
+    result.setNames(translateLocalizedItems(ptvPrintableFormChannel.getNames()));
+    result.setDescriptions(translateLocalizedItems(ptvPrintableFormChannel.getDescriptions()));
+    result.setFormIdentifier(ptvPrintableFormChannel.getFormIdentifier());
+    result.setFormReceiver(ptvPrintableFormChannel.getFormReceiver());
+    result.setSupportContacts(translateSupportContacts(ptvPrintableFormChannel.getSupportContacts()));
+    result.setDeliveryAddress(translateAddress(ptvPrintableFormChannel.getDeliveryAddress()));
+    result.setChannelUrls(translateLocalizedItems(ptvPrintableFormChannel.getChannelUrls()));
+    result.setLanguages(ptvPrintableFormChannel.getLanguages());
+    result.setDeliveryAddressDescriptions(translateLanguageItems(ptvPrintableFormChannel.getDeliveryAddressDescriptions()));
+    result.setAttachments(translateAttachments(ptvPrintableFormChannel.getAttachments()));
+    result.setWebPages(translateWebPages(ptvPrintableFormChannel.getWebPages()));
+    result.setServiceHours(translateServiceHours(ptvPrintableFormChannel.getServiceHours()));
+    result.setPublishingStatus(ptvPrintableFormChannel.getPublishingStatus());
+
+    return result;
+  }
+
+  private ServiceLocationChannel translateServiceLocationChannel(fi.otavanopisto.restfulptv.client.model.ServiceLocationChannel ptvServiceLocationChannel) {
+    if (ptvServiceLocationChannel == null) {
+      return null;
+    }
+    
+    OrganizationId organizationKuntaApiId = translateOrganizationId(ptvServiceLocationChannel.getOrganizationId());
+    if (organizationKuntaApiId == null) {
+      return null;
+    }
+    
+    ServiceLocationChannelId channelPtvId = new ServiceLocationChannelId(PtvConsts.IDENTIFIFER_NAME, ptvServiceLocationChannel.getId());
+    ServiceLocationChannelId channelKuntaApiId = idController.translateServiceLocationChannelId(channelPtvId, KuntaApiConsts.IDENTIFIER_NAME);
+    if (channelKuntaApiId == null) {
+      logger.severe(String.format("Could not translate serviceLocation channel id %s into Kunta API id", channelPtvId.getId()));
+      return null;
+    }
+    
+    ServiceLocationChannel result = new ServiceLocationChannel(); 
+    
+    result.setId(channelKuntaApiId.getId());
+    result.setType(ptvServiceLocationChannel.getType());
+    result.setOrganizationId(organizationKuntaApiId.getId());
+    result.setNames(translateLocalizedItems(ptvServiceLocationChannel.getNames()));
+    result.setDescriptions(translateLocalizedItems(ptvServiceLocationChannel.getDescriptions()));
+    result.setServiceAreaRestricted(ptvServiceLocationChannel.getServiceAreaRestricted());
+    result.setSupportContacts(translateSupportContacts(ptvServiceLocationChannel.getSupportContacts()));
+    result.setEmail(ptvServiceLocationChannel.getEmail());
+    result.setPhone(ptvServiceLocationChannel.getPhone());
+    result.setLanguages(ptvServiceLocationChannel.getLanguages());
+    result.setFax(ptvServiceLocationChannel.getFax());
+    result.setLatitude(ptvServiceLocationChannel.getLatitude());
+    result.setLongitude(ptvServiceLocationChannel.getLongitude());
+    result.setCoordinateSystem(ptvServiceLocationChannel.getCoordinateSystem());
+    result.setCoordinatesSetManually(ptvServiceLocationChannel.getCoordinatesSetManually());
+    result.setPhoneServiceCharge(ptvServiceLocationChannel.getPhoneServiceCharge());
+    result.setWebPages(translateWebPages(ptvServiceLocationChannel.getWebPages()));
+    result.setServiceAreas(ptvServiceLocationChannel.getServiceAreas());
+    result.setPhoneChargeDescriptions(translateLanguageItems(ptvServiceLocationChannel.getPhoneChargeDescriptions()));
+    result.setAddresses(translateAddresses(ptvServiceLocationChannel.getAddresses()));
+    result.setChargeTypes(ptvServiceLocationChannel.getChargeTypes());
+    result.setServiceHours(translateServiceHours(ptvServiceLocationChannel.getServiceHours()));
+    result.setPublishingStatus(ptvServiceLocationChannel.getPublishingStatus());
+
+    return result;
+  }
+
+  private WebPageChannel translateWebPageChannel(fi.otavanopisto.restfulptv.client.model.WebPageChannel ptvWebPageChannel) {
+    if (ptvWebPageChannel == null) {
+      return null;
+    }
+    
+    OrganizationId organizationKuntaApiId = translateOrganizationId(ptvWebPageChannel.getOrganizationId());
+    if (organizationKuntaApiId == null) {
+      return null;
+    }
+    
+    WebPageChannelId channelPtvId = new WebPageChannelId(PtvConsts.IDENTIFIFER_NAME, ptvWebPageChannel.getId());
+    WebPageChannelId channelKuntaApiId = idController.translateWebPageServiceChannelId(channelPtvId, KuntaApiConsts.IDENTIFIER_NAME);
+    if (channelKuntaApiId == null) {
+      logger.severe(String.format("Could not translate webPage channel id %s into Kunta API id", channelPtvId.getId()));
+      return null;
+    }
+    
+    WebPageChannel result = new WebPageChannel(); 
+    
+    result.setId(channelKuntaApiId.getId());
+    result.setType(ptvWebPageChannel.getType());
+    result.setOrganizationId(organizationKuntaApiId.getId());
+    result.setNames(translateLocalizedItems(ptvWebPageChannel.getNames()));
+    result.setDescriptions(translateLocalizedItems(ptvWebPageChannel.getDescriptions()));
+    result.setUrls(translateLanguageItems(ptvWebPageChannel.getUrls()));
+    result.setAttachments(translateAttachments(ptvWebPageChannel.getAttachments()));
+    result.setSupportContacts(translateSupportContacts(ptvWebPageChannel.getSupportContacts()));
+    result.setLanguages(ptvWebPageChannel.getLanguages());
+    result.setWebPages(translateWebPages(ptvWebPageChannel.getWebPages()));
+    result.setServiceHours(translateServiceHours(ptvWebPageChannel.getServiceHours()));
+    result.setPublishingStatus(ptvWebPageChannel.getPublishingStatus());
+    
+    return result;
+  }
+
+  private List<Address> translateAddresses(List<fi.otavanopisto.restfulptv.client.model.Address> ptvAddresses) {
+    if (ptvAddresses == null) {
+      return Collections.emptyList();
+    }
+
+    List<Address> result = new ArrayList<>(ptvAddresses.size());
+
+    for (fi.otavanopisto.restfulptv.client.model.Address ptvAddress : ptvAddresses) {
+      Address address = translateAddress(ptvAddress);
+      if (address != null) {
+        result.add(address);
+      }
+    }
+
     return result;
   }
 
@@ -341,6 +605,26 @@ public abstract class AbstractPtvProvider {
       }
     }
 
+    return result;
+  }
+
+  private Address translateAddress(fi.otavanopisto.restfulptv.client.model.Address address) {
+    if (address == null) {
+      return null;
+    }
+    
+    Address result = new Address();
+    
+    result.setType(address.getType());
+    result.setPostOfficeBox(address.getPostOfficeBox());
+    result.setPostalCode(address.getPostalCode());
+    result.setPostOffice(address.getPostOffice());
+    result.setStreetAddress(translateLanguageItems(address.getStreetAddress()));
+    result.setMunicipality(address.getMunicipality());
+    result.setCountry(address.getCountry());
+    result.setQualifier(address.getQualifier());
+    result.setAdditionalInformations(translateLanguageItems(address.getAdditionalInformations()));
+    
     return result;
   }
   
