@@ -91,6 +91,10 @@ public class ServicePhoneChannelIdUpdater extends EntityUpdater {
     if (!stopped) {
       if (!queue.isEmpty()) {
         ServiceId serviceId = queue.iterator().next();
+        if (!queue.remove(serviceId)) {
+          logger.warning(String.format("Could not remove %s from queue", serviceId));
+        }
+        
         if (PtvConsts.IDENTIFIFER_NAME.equals(serviceId.getSource())) {
           ApiResponse<List<PhoneChannel >> response = ptvApi.getServicesApi().listServicePhoneChannels(serviceId.getId(), null, null);
           if (response.isOk()) {
