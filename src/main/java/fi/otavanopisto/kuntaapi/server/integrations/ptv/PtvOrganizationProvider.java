@@ -12,7 +12,6 @@ import org.apache.commons.lang3.StringUtils;
 
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
-import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.OrganizationProvider;
 import fi.otavanopisto.kuntaapi.server.rest.model.Organization;
 import fi.otavanopisto.restfulptv.client.ApiResponse;
@@ -39,7 +38,7 @@ public class PtvOrganizationProvider extends AbstractPtvProvider implements Orga
 
   @Override
   public Organization findOrganization(OrganizationId organizationId) {
-    OrganizationId ptvOrganization = idController.translateOrganizationId(organizationId, KuntaApiConsts.IDENTIFIER_NAME);
+    OrganizationId ptvOrganization = idController.translateOrganizationId(organizationId, PtvConsts.IDENTIFIFER_NAME);
     if (ptvOrganization == null) {
       logger.severe(String.format("Failed to translate organizationId %s into PTV organizationId", organizationId.toString()));
       return null;
