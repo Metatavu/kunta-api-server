@@ -58,6 +58,7 @@ public abstract class AbstractPtvProvider {
         LocalizedValue localizedValue = new LocalizedValue();
         localizedValue.setLanguage(item.getLanguage());
         localizedValue.setValue(item.getValue());
+        localizedValue.setType(item.getType());
         result.add(localizedValue);
       }
     
@@ -166,7 +167,7 @@ public abstract class AbstractPtvProvider {
     result.setName(ptvFintoItem.getName());
     result.setOntologyType(ptvFintoItem.getOntologyType());
     result.setParentId(ptvFintoItem.getParentId());
-    result.setParentUri(ptvFintoItem.getParentId());
+    result.setParentUri(ptvFintoItem.getParentUri());
     result.setSystem(ONTOLOGY_SYSTEM_FINTO);
     result.setUri(ptvFintoItem.getUri());
     
