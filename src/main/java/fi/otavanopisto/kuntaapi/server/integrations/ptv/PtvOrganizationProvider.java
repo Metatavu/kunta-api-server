@@ -49,7 +49,7 @@ public class PtvOrganizationProvider extends AbstractPtvProvider implements Orga
     if (!ptvOrganizationResponse.isOk()) {
       logger.severe(String.format("Organization %s reported [%d] %s", ptvOrganization.getId(), ptvOrganizationResponse.getStatus(), ptvOrganizationResponse.getMessage()));
     } else {
-      return transformOrganization(ptvOrganizationResponse.getResponse());
+      return translateOrganization(ptvOrganizationResponse.getResponse());
     }
     
     return null;
@@ -75,7 +75,7 @@ public class PtvOrganizationProvider extends AbstractPtvProvider implements Orga
         continue;
       } 
       
-      Organization organization = transformOrganization(ptvOrganization);
+      Organization organization = translateOrganization(ptvOrganization);
       if (organization != null) {
         result.add(organization);
       }

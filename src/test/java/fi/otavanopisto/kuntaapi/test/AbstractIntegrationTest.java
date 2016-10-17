@@ -27,6 +27,7 @@ import com.github.tomakehurst.wiremock.client.MappingBuilder;
 import com.github.tomakehurst.wiremock.client.WireMock;
 import com.jayway.restassured.http.ContentType;
 
+import fi.otavanopisto.restfulptv.client.model.ElectronicChannel;
 import fi.otavanopisto.restfulptv.client.model.Organization;
 import fi.otavanopisto.restfulptv.client.model.Service;
 
@@ -146,6 +147,15 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
       return readJSONFile(file, Service.class);
     }
     
+    /**
+     * Reads JSON file as electronic service channel object
+     * 
+     * @param file path to JSON file
+     */    
+    public ElectronicChannel readElectronicChannelFromJSONFile(String file) {
+      return readJSONFile(file, ElectronicChannel.class);
+    }
+    
     private <T> T readJSONFile(String file, Class <T> type){
       ObjectMapper objectMapper = new ObjectMapper();
       try (InputStream stream = getClass().getClassLoader().getResourceAsStream(file)) {
@@ -261,10 +271,12 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     
     private List<Organization> organizationsList;
     private List<Service> servicesList;
+    private Map<String, List<ElectronicChannel>> servicesElectronicChannelsList;
     
     public RestFulPtvMocker() {
       organizationsList = new ArrayList<>();
       servicesList = new ArrayList<>();
+      servicesElectronicChannelsList = new HashMap<>();
     }
 
     public RestFulPtvMocker mockOrganizations(String... ids) {
@@ -273,6 +285,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
         mockGetJSON(String.format("%s/organizations/%s", BASE_URL, id), organization, null);
         organizationsList.add(organization);
       }     
+      
       return this;
     }
     
@@ -282,6 +295,24 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
         mockGetJSON(String.format("%s/services/%s", BASE_URL, id), service, null);
         servicesList.add(service);
       }     
+      
+      return this;
+    }
+    
+    public RestFulPtvMocker mockElectronicServiceChannels(String serviceId, String... ids) {
+      List<ElectronicChannel> channelList = servicesElectronicChannelsList.get(serviceId);
+      if (channelList == null) {
+        channelList = new ArrayList<>(ids.length);
+      }
+      
+      for (String id : ids) {
+        ElectronicChannel channel = readElectronicChannelFromJSONFile(String.format("electronicservicechannels/%s.json", id));
+        mockGetJSON(String.format("%s/services/%s/electronicChannels/%s", BASE_URL, serviceId, id), channel, null);
+        channelList.add(channel);
+      }     
+      
+      servicesElectronicChannelsList.put(serviceId, channelList);
+      
       return this;
     }
     
@@ -297,7 +328,10 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
       mockGetJSON(String.format("%s/services", BASE_URL), servicesList, pageQuery);
       mockGetJSON(String.format("%s/services", BASE_URL), servicesList, null);
       
-      
+      for (Entry<String, List<ElectronicChannel>> channelsEntry : servicesElectronicChannelsList.entrySet()) {
+        mockGetJSON(String.format("%s/services/%s/electronicChannels", BASE_URL, channelsEntry.getKey()), channelsEntry.getValue(), null);
+      }
+
       super.startMock();
     }
   }

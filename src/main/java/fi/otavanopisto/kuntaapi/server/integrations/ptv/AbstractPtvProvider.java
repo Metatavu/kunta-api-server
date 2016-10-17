@@ -85,7 +85,7 @@ public abstract class AbstractPtvProvider {
     return Collections.emptyList();
   }
     
-  protected Organization transformOrganization(fi.otavanopisto.restfulptv.client.model.Organization ptvOrganiztion) {
+  protected Organization translateOrganization(fi.otavanopisto.restfulptv.client.model.Organization ptvOrganiztion) {
     if (ptvOrganiztion == null) {
       return null;
     }
@@ -128,7 +128,7 @@ public abstract class AbstractPtvProvider {
     ServiceId ptvId = new ServiceId(PtvConsts.IDENTIFIFER_NAME, ptvService.getId());
     ServiceId kuntaApiId = idController.translateServiceId(ptvId, KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiId == null) {
-      logger.severe(String.format("Could not translate %s into Kunta API id", ptvId.getId()));
+      logger.severe(String.format("Could not translate service %s into Kunta API id", ptvId.getId()));
       return null;
     }
     
