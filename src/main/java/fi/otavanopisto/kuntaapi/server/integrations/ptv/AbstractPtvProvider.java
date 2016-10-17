@@ -270,7 +270,7 @@ public abstract class AbstractPtvProvider {
     return result;
   }
 
-  private ElectronicChannel translateElectronicChannel(fi.otavanopisto.restfulptv.client.model.ElectronicChannel ptvElectronicChannel) {
+  protected ElectronicChannel translateElectronicChannel(fi.otavanopisto.restfulptv.client.model.ElectronicChannel ptvElectronicChannel) {
     if (ptvElectronicChannel == null) {
       return null;
     }
@@ -318,7 +318,7 @@ public abstract class AbstractPtvProvider {
     return organizationKuntaApiId;
   }
 
-  private PhoneChannel translatePhoneChannel(fi.otavanopisto.restfulptv.client.model.PhoneChannel ptvPhoneChannel) {
+  protected PhoneChannel translatePhoneChannel(fi.otavanopisto.restfulptv.client.model.PhoneChannel ptvPhoneChannel) {
     if (ptvPhoneChannel == null) {
       return null;
     }
@@ -355,7 +355,7 @@ public abstract class AbstractPtvProvider {
     return result;
   }
 
-  private PrintableFormChannel translatePrintableFormChannel(fi.otavanopisto.restfulptv.client.model.PrintableFormChannel ptvPrintableFormChannel) {
+  protected PrintableFormChannel translatePrintableFormChannel(fi.otavanopisto.restfulptv.client.model.PrintableFormChannel ptvPrintableFormChannel) {
     if (ptvPrintableFormChannel == null) {
       return null;
     }
@@ -394,7 +394,7 @@ public abstract class AbstractPtvProvider {
     return result;
   }
 
-  private ServiceLocationChannel translateServiceLocationChannel(fi.otavanopisto.restfulptv.client.model.ServiceLocationChannel ptvServiceLocationChannel) {
+  protected ServiceLocationChannel translateServiceLocationChannel(fi.otavanopisto.restfulptv.client.model.ServiceLocationChannel ptvServiceLocationChannel) {
     if (ptvServiceLocationChannel == null) {
       return null;
     }
@@ -440,7 +440,7 @@ public abstract class AbstractPtvProvider {
     return result;
   }
 
-  private WebPageChannel translateWebPageChannel(fi.otavanopisto.restfulptv.client.model.WebPageChannel ptvWebPageChannel) {
+  protected WebPageChannel translateWebPageChannel(fi.otavanopisto.restfulptv.client.model.WebPageChannel ptvWebPageChannel) {
     if (ptvWebPageChannel == null) {
       return null;
     }
