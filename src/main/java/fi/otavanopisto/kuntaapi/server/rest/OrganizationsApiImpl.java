@@ -30,7 +30,6 @@ import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationServiceId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
-import fi.otavanopisto.kuntaapi.server.id.ServiceId;
 import fi.otavanopisto.kuntaapi.server.id.TileId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.BannerProvider;
@@ -42,7 +41,6 @@ import fi.otavanopisto.kuntaapi.server.integrations.NewsProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.OrganizationProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.OrganizationServiceProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.PageProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.ServiceChannelProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.TileProvider;
 import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
 import fi.otavanopisto.kuntaapi.server.rest.model.Banner;
@@ -87,10 +85,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   
   @Inject
   private Instance<OrganizationServiceProvider> organizationServiceProviders;
-
-  @Inject
-  private Instance<ServiceChannelProvider> serviceChannelProviders;
-
+  
   @Inject
   private Instance<EventProvider> eventProviders;
 
@@ -108,7 +103,6 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   @Inject
   private Instance<MenuProvider> menuProviders;
-
 
   @Override
   public Response listOrganizations(String businessName, String businessCode) {
@@ -967,14 +961,6 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     return null;
   }
 
-  private ServiceId toServiceId(String id) {
-    if (StringUtils.isNotBlank(id)) {
-      return new ServiceId(KuntaApiConsts.IDENTIFIER_NAME, id);
-    }
-    
-    return null;
-  }
-
   private EventId toEventId(String id) {
     if (StringUtils.isNotBlank(id)) {
       return new EventId(KuntaApiConsts.IDENTIFIER_NAME, id);
@@ -1047,17 +1033,6 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     List<OrganizationServiceProvider> result = new ArrayList<>();
     
     Iterator<OrganizationServiceProvider> iterator = organizationServiceProviders.iterator();
-    while (iterator.hasNext()) {
-      result.add(iterator.next());
-    }
-    
-    return Collections.unmodifiableList(result);
-  }
-  
-  private List<ServiceChannelProvider> getServiceChannelProviders() {
-    List<ServiceChannelProvider> result = new ArrayList<>();
-    
-    Iterator<ServiceChannelProvider> iterator = serviceChannelProviders.iterator();
     while (iterator.hasNext()) {
       result.add(iterator.next());
     }
