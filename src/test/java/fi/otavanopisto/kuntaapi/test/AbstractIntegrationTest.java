@@ -56,6 +56,13 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     return ptvMocker;
   }
   
+  protected void flushCache() {
+    given()
+      .baseUri(getApiBasePath())
+      .get("/system/jpa/cache/flush")
+      .then()
+      .statusCode(200);
+  }
   /**
    * Abstract base class for all mockers
    * 
