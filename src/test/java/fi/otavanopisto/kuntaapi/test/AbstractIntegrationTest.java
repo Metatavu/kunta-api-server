@@ -9,7 +9,6 @@ import static com.jayway.restassured.RestAssured.given;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.fail;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -21,16 +20,15 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.apache.commons.io.IOUtils;
-import org.junit.Rule;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.tomakehurst.wiremock.client.MappingBuilder;
 import com.github.tomakehurst.wiremock.client.WireMock;
-import com.github.tomakehurst.wiremock.junit.WireMockRule;
 import com.jayway.restassured.http.ContentType;
 
 import fi.otavanopisto.restfulptv.client.model.Organization;
+import fi.otavanopisto.restfulptv.client.model.Service;
 
 /**
  * Abstract base class for integration tests
@@ -45,11 +43,6 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   
   private static Logger logger = Logger.getLogger(AbstractTest.class.getName());
 
-  /**
-   * Starts WireMock
-   */
-  @Rule
-  public WireMockRule wireMockRule = new WireMockRule(getWireMockPort());
   private RestFulPtvMocker ptvMocker = new RestFulPtvMocker();
   
   public RestFulPtvMocker getPtvMocker() {
@@ -144,10 +137,19 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
       return readJSONFile(file, Organization.class);
     }
     
+    /**
+     * Reads JSON file as organization object
+     * 
+     * @param file path to JSON file
+     */    
+    public Service readServiceFromJSONFile(String file) {
+      return readJSONFile(file, Service.class);
+    }
+    
     private <T> T readJSONFile(String file, Class <T> type){
-      ObjectMapper ObjectMapper = new ObjectMapper();
+      ObjectMapper objectMapper = new ObjectMapper();
       try (InputStream stream = getClass().getClassLoader().getResourceAsStream(file)) {
-        return ObjectMapper.readValue(stream, type);
+        return objectMapper.readValue(stream, type);
       } catch (IOException e) {
         logger.log(Level.SEVERE, "Failed to read mock file", e);
         fail(e.getMessage());
@@ -258,9 +260,11 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   public class RestFulPtvMocker extends AbstractMocker {
     
     private List<Organization> organizationsList;
+    private List<Service> servicesList;
     
     public RestFulPtvMocker() {
-       organizationsList = new ArrayList<>();
+      organizationsList = new ArrayList<>();
+      servicesList = new ArrayList<>();
     }
 
     public RestFulPtvMocker mockOrganizations(String... ids) {
@@ -268,6 +272,15 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
         Organization organization = readOrganizationFromJSONFile(String.format("organizations/%s.json", id));
         mockGetJSON(String.format("%s/organizations/%s", BASE_URL, id), organization, null);
         organizationsList.add(organization);
+      }     
+      return this;
+    }
+    
+    public RestFulPtvMocker mockServices(String... ids) {
+      for (String id : ids) {
+        Service service = readServiceFromJSONFile(String.format("services/%s.json", id));
+        mockGetJSON(String.format("%s/services/%s", BASE_URL, id), service, null);
+        servicesList.add(service);
       }     
       return this;
     }
@@ -280,6 +293,10 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
 
       mockGetJSON(String.format("%s/organizations", BASE_URL), organizationsList, pageQuery);
       mockGetJSON(String.format("%s/organizations", BASE_URL), organizationsList, null);
+
+      mockGetJSON(String.format("%s/services", BASE_URL), servicesList, pageQuery);
+      mockGetJSON(String.format("%s/services", BASE_URL), servicesList, null);
+      
       
       super.startMock();
     }
