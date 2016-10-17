@@ -29,6 +29,7 @@ import com.jayway.restassured.http.ContentType;
 
 import fi.otavanopisto.restfulptv.client.model.ElectronicChannel;
 import fi.otavanopisto.restfulptv.client.model.Organization;
+import fi.otavanopisto.restfulptv.client.model.PhoneChannel;
 import fi.otavanopisto.restfulptv.client.model.Service;
 
 /**
@@ -156,6 +157,15 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
       return readJSONFile(file, ElectronicChannel.class);
     }
     
+    /**
+     * Reads JSON file as phone service channel object
+     * 
+     * @param file path to JSON file
+     */    
+    public PhoneChannel readPhoneChannelFromJSONFile(String file) {
+      return readJSONFile(file, PhoneChannel.class);
+    }
+    
     private <T> T readJSONFile(String file, Class <T> type){
       ObjectMapper objectMapper = new ObjectMapper();
       try (InputStream stream = getClass().getClassLoader().getResourceAsStream(file)) {
@@ -272,11 +282,13 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     private List<Organization> organizationsList;
     private List<Service> servicesList;
     private Map<String, List<ElectronicChannel>> servicesElectronicChannelsList;
+    private Map<String, List<PhoneChannel>> servicesPhoneChannelsList;
     
     public RestFulPtvMocker() {
       organizationsList = new ArrayList<>();
       servicesList = new ArrayList<>();
       servicesElectronicChannelsList = new HashMap<>();
+      servicesPhoneChannelsList = new HashMap<>();
     }
 
     public RestFulPtvMocker mockOrganizations(String... ids) {
@@ -316,6 +328,23 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
       return this;
     }
     
+    public RestFulPtvMocker mockPhoneServiceChannels(String serviceId, String... ids) {
+      List<PhoneChannel> channelList = servicesPhoneChannelsList.get(serviceId);
+      if (channelList == null) {
+        channelList = new ArrayList<>(ids.length);
+      }
+      
+      for (String id : ids) {
+        PhoneChannel channel = readPhoneChannelFromJSONFile(String.format("phonechannels/%s.json", id));
+        mockGetJSON(String.format("%s/services/%s/phoneChannels/%s", BASE_URL, serviceId, id), channel, null);
+        channelList.add(channel);
+      }     
+      
+      servicesPhoneChannelsList.put(serviceId, channelList);
+      
+      return this;
+    }
+    
     @Override
     public void startMock() {
       Map<String, String> pageQuery = new HashMap<>();
@@ -330,6 +359,10 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
       
       for (Entry<String, List<ElectronicChannel>> channelsEntry : servicesElectronicChannelsList.entrySet()) {
         mockGetJSON(String.format("%s/services/%s/electronicChannels", BASE_URL, channelsEntry.getKey()), channelsEntry.getValue(), null);
+      }
+      
+      for (Entry<String, List<PhoneChannel>> channelsEntry : servicesPhoneChannelsList.entrySet()) {
+        mockGetJSON(String.format("%s/services/%s/phoneChannels", BASE_URL, channelsEntry.getKey()), channelsEntry.getValue(), null);
       }
 
       super.startMock();
