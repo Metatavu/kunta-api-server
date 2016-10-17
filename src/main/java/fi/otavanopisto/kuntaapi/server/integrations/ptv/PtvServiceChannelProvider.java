@@ -7,8 +7,13 @@ import java.util.logging.Logger;
 import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 
+import fi.otavanopisto.kuntaapi.server.id.ElectronicServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
+import fi.otavanopisto.kuntaapi.server.id.PhoneChannelId;
+import fi.otavanopisto.kuntaapi.server.id.PrintableFormChannelId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceId;
+import fi.otavanopisto.kuntaapi.server.id.ServiceLocationChannelId;
+import fi.otavanopisto.kuntaapi.server.id.WebPageChannelId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceChannelProvider;
 import fi.otavanopisto.kuntaapi.server.rest.model.ElectronicChannel;
@@ -27,7 +32,12 @@ import fi.otavanopisto.restfulptv.client.ApiResponse;
 @Dependent
 public class PtvServiceChannelProvider extends AbstractPtvProvider implements ServiceChannelProvider {
 
-  private static final String SERVICE_TRANSLATE_FAILURE = "Failed to translate ptvServiceId %s into PTV service";
+  private static final String SERVICE_TRANSLATE_FAILURE = "Failed to translate service id %s into PTV id";
+  private static final String ELECTRONIC_SERVICE_CHANNEL_TRANSLATE_FAILURE = "Failed to translate electronic service channel %s into PTV id";
+  private static final String PHONE_SERVICE_CHANNEL_TRANSLATE_FAILURE = "Failed to translate phone service channel %s into PTV id";
+  private static final String PRINTABLE_FORM_SERVICE_CHANNEL_TRANSLATE_FAILURE = "Failed to translate printable form service channel %s into PTV id";
+  private static final String SERVICE_LOCATION_SERVICE_CHANNEL_TRANSLATE_FAILURE = "Failed to translate service location service channel %s into PTV id";
+  private static final String WEBPAGE_SERVICE_CHANNEL_TRANSLATE_FAILURE = "Failed to translate webpage service channel %s into PTV id";
 
   @Inject
   private Logger logger;
@@ -41,6 +51,121 @@ public class PtvServiceChannelProvider extends AbstractPtvProvider implements Se
   private PtvServiceChannelProvider() {
   }
 
+  @Override
+  public ElectronicChannel findElectronicChannel(ServiceId serviceId, ElectronicServiceChannelId electronicServiceChannelId) {
+    ServiceId ptvServiceId = idController.translateServiceId(serviceId, KuntaApiConsts.IDENTIFIER_NAME);
+    if (ptvServiceId == null) {
+      logger.severe(String.format(SERVICE_TRANSLATE_FAILURE, serviceId.toString()));
+      return null;
+    }
+    
+    ElectronicServiceChannelId ptvElectronicServiceChannelId = idController.translateElectronicServiceChannelId(electronicServiceChannelId, KuntaApiConsts.IDENTIFIER_NAME);
+    if (ptvElectronicServiceChannelId == null) {
+      logger.severe(String.format(ELECTRONIC_SERVICE_CHANNEL_TRANSLATE_FAILURE, serviceId.toString()));
+      return null;
+    }
+    
+    ApiResponse<fi.otavanopisto.restfulptv.client.model.ElectronicChannel> electronicChannelResponse = ptvApi.getElectronicChannelsApi().findServiceElectronicChannel(serviceId.getId(), ptvElectronicServiceChannelId.getId());
+    if (!electronicChannelResponse.isOk()) {
+      logger.severe(String.format("Electronic channels list of service %s reported [%d] %s", serviceId.toString(), electronicChannelResponse.getStatus(), electronicChannelResponse.getMessage()));
+      return null;
+    } else {
+      return translateElectronicChannel(electronicChannelResponse.getResponse());
+    }
+  }
+  
+  @Override
+  public PhoneChannel findPhoneChannel(ServiceId serviceId, PhoneChannelId phoneChannelId) {
+    ServiceId ptvServiceId = idController.translateServiceId(serviceId, KuntaApiConsts.IDENTIFIER_NAME);
+    if (ptvServiceId == null) {
+      logger.severe(String.format(SERVICE_TRANSLATE_FAILURE, serviceId.toString()));
+      return null;
+    }
+    
+    PhoneChannelId ptvPhoneChannelId = idController.translatePhoneServiceChannelId(phoneChannelId, KuntaApiConsts.IDENTIFIER_NAME);
+    if (ptvPhoneChannelId == null) {
+      logger.severe(String.format(PHONE_SERVICE_CHANNEL_TRANSLATE_FAILURE, serviceId.toString()));
+      return null;
+    }
+    
+    ApiResponse<fi.otavanopisto.restfulptv.client.model.PhoneChannel> phoneChannelResponse = ptvApi.getPhoneChannelsApi().findServicePhoneChannel(serviceId.getId(), ptvPhoneChannelId.getId());
+    if (!phoneChannelResponse.isOk()) {
+      logger.severe(String.format("Phone channels list of service %s reported [%d] %s", serviceId.toString(), phoneChannelResponse.getStatus(), phoneChannelResponse.getMessage()));
+      return null;
+    } else {
+      return translatePhoneChannel(phoneChannelResponse.getResponse());
+    }
+  }
+  
+  @Override
+  public PrintableFormChannel findPrintableFormChannel(ServiceId serviceId, PrintableFormChannelId printableFormChannelId) {
+    ServiceId ptvServiceId = idController.translateServiceId(serviceId, KuntaApiConsts.IDENTIFIER_NAME);
+    if (ptvServiceId == null) {
+      logger.severe(String.format(SERVICE_TRANSLATE_FAILURE, serviceId.toString()));
+      return null;
+    }
+    
+    PrintableFormChannelId ptvPrintableFormChannelId = idController.translatePrintableFormServiceChannelId(printableFormChannelId, KuntaApiConsts.IDENTIFIER_NAME);
+    if (ptvPrintableFormChannelId == null) {
+      logger.severe(String.format(PRINTABLE_FORM_SERVICE_CHANNEL_TRANSLATE_FAILURE, serviceId.toString()));
+      return null;
+    }
+    
+    ApiResponse<fi.otavanopisto.restfulptv.client.model.PrintableFormChannel> printableFormChannelResponse = ptvApi.getPrintableFormChannelsApi().findServicePrintableFormChannel(serviceId.getId(), ptvPrintableFormChannelId.getId());
+    if (!printableFormChannelResponse.isOk()) {
+      logger.severe(String.format("Printable form channels list of service %s reported [%d] %s", serviceId.toString(), printableFormChannelResponse.getStatus(), printableFormChannelResponse.getMessage()));
+      return null;
+    } else {
+      return translatePrintableFormChannel(printableFormChannelResponse.getResponse());
+    }
+  }
+  
+  @Override
+  public ServiceLocationChannel findServiceLocationChannel(ServiceId serviceId, ServiceLocationChannelId serviceLocationChannelId) {
+    ServiceId ptvServiceId = idController.translateServiceId(serviceId, KuntaApiConsts.IDENTIFIER_NAME);
+    if (ptvServiceId == null) {
+      logger.severe(String.format(SERVICE_TRANSLATE_FAILURE, serviceId.toString()));
+      return null;
+    }
+    
+    ServiceLocationChannelId ptvServiceLocationChannelId = idController.translateServiceLocationChannelId(serviceLocationChannelId, KuntaApiConsts.IDENTIFIER_NAME);
+    if (ptvServiceLocationChannelId == null) {
+      logger.severe(String.format(SERVICE_LOCATION_SERVICE_CHANNEL_TRANSLATE_FAILURE, serviceId.toString()));
+      return null;
+    }
+    
+    ApiResponse<fi.otavanopisto.restfulptv.client.model.ServiceLocationChannel> serviceLocationChannelResponse = ptvApi.getServiceLocationChannelsApi().findServiceServiceLocationChannel(serviceId.getId(), ptvServiceLocationChannelId.getId());
+    if (!serviceLocationChannelResponse.isOk()) {
+      logger.severe(String.format("Service location channels list of service %s reported [%d] %s", serviceId.toString(), serviceLocationChannelResponse.getStatus(), serviceLocationChannelResponse.getMessage()));
+      return null;
+    } else {
+      return translateServiceLocationChannel(serviceLocationChannelResponse.getResponse());
+    }
+  }
+  
+  @Override
+  public WebPageChannel findWebPageChannelChannel(ServiceId serviceId, WebPageChannelId webPageChannelId) {
+    ServiceId ptvServiceId = idController.translateServiceId(serviceId, KuntaApiConsts.IDENTIFIER_NAME);
+    if (ptvServiceId == null) {
+      logger.severe(String.format(SERVICE_TRANSLATE_FAILURE, serviceId.toString()));
+      return null;
+    }
+    
+    WebPageChannelId ptvWebPageChannelId = idController.translateWebPageServiceChannelId(webPageChannelId, KuntaApiConsts.IDENTIFIER_NAME);
+    if (ptvWebPageChannelId == null) {
+      logger.severe(String.format(WEBPAGE_SERVICE_CHANNEL_TRANSLATE_FAILURE, serviceId.toString()));
+      return null;
+    }
+    
+    ApiResponse<fi.otavanopisto.restfulptv.client.model.WebPageChannel> webPageChannelResponse = ptvApi.getWebPageChannelsApi().findServiceWebPageChannel(serviceId.getId(), ptvWebPageChannelId.getId());
+    if (!webPageChannelResponse.isOk()) {
+      logger.severe(String.format("Web page channels list of service %s reported [%d] %s", serviceId.toString(), webPageChannelResponse.getStatus(), webPageChannelResponse.getMessage()));
+      return null;
+    } else {
+      return translateWebPageChannel(webPageChannelResponse.getResponse());
+    }
+  }
+  
   @Override
   public List<ElectronicChannel> listElectronicChannels(ServiceId serviceId) {
     ServiceId ptvServiceId = idController.translateServiceId(serviceId, KuntaApiConsts.IDENTIFIER_NAME);

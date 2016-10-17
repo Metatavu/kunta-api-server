@@ -14,7 +14,12 @@ import javax.ws.rs.core.Response.Status;
 
 import org.apache.commons.lang3.StringUtils;
 
+import fi.otavanopisto.kuntaapi.server.id.ElectronicServiceChannelId;
+import fi.otavanopisto.kuntaapi.server.id.PhoneChannelId;
+import fi.otavanopisto.kuntaapi.server.id.PrintableFormChannelId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceId;
+import fi.otavanopisto.kuntaapi.server.id.ServiceLocationChannelId;
+import fi.otavanopisto.kuntaapi.server.id.WebPageChannelId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceChannelProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceProvider;
@@ -36,7 +41,12 @@ import fi.otavanopisto.kuntaapi.server.rest.model.WebPageChannel;
 public class ServicesApiImpl extends ServicesApi {
   
   private static final String INVALID_SERVICE_ID = "Invalid service id %s";
-
+  private static final String INVALID_ELECTRONIC_CHANNEL_ID = "Invalid electronic service channel id %s";
+  private static final String INVALID_PHONE_CHANNEL_ID = "Invalid electronic phone service channel id %s";
+  private static final String INVALID_SERVICE_LOCATION_CHANNEL_ID = "Invalid service location service channel id %s";
+  private static final String INVALID_PRINTABLE_FORM_CHANNEL_ID = "Invalid printable form service channel id %s";
+  private static final String INVALID_WEBPAGE_CHANNEL_ID = "Invalid webpage service channel id %s";
+  private static final String NOT_FOUND = "Not Found";
   private static final String NOT_IMPLEMENTED = "Not implemented";
   
   @Inject
@@ -64,6 +74,7 @@ public class ServicesApiImpl extends ServicesApi {
     
     return Response
         .status(Status.NOT_FOUND)
+        .entity(NOT_FOUND)
         .build();
   }
   
@@ -114,28 +125,133 @@ public class ServicesApiImpl extends ServicesApi {
   }
 
   @Override
-  public Response findServiceElectronicChannel(String serviceId, String electronicChannelId) {
-    return createNotImplemented(NOT_IMPLEMENTED);
+  public Response findServiceElectronicChannel(String serviceIdParam, String electronicChannelIdParam) {
+    ServiceId serviceId = toServiceId(serviceIdParam);
+    if (serviceId == null) {
+      return createBadRequest(String.format(INVALID_SERVICE_ID, serviceIdParam));
+    }
+    
+    ElectronicServiceChannelId electronicChannelId = toElectronicChannelId(electronicChannelIdParam);
+    if (electronicChannelId == null) {
+      return createBadRequest(String.format(INVALID_ELECTRONIC_CHANNEL_ID, serviceIdParam));
+    }
+    
+    for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
+      ElectronicChannel electronicChannel = serviceChannelProvider.findElectronicChannel(serviceId, electronicChannelId);
+      if (electronicChannel != null) {
+        return Response.ok(electronicChannel)
+            .build();
+      }
+    }
+    
+    return Response
+      .status(Status.NOT_FOUND)
+      .entity(NOT_FOUND)
+      .build();
   }
 
   @Override
-  public Response findServicePhoneChannel(String serviceId, String phoneChannelId) {
-    return createNotImplemented(NOT_IMPLEMENTED);
+  public Response findServicePhoneChannel(String serviceIdParam, String phoneChannelIdParam) {
+    ServiceId serviceId = toServiceId(serviceIdParam);
+    if (serviceId == null) {
+      return createBadRequest(String.format(INVALID_SERVICE_ID, serviceIdParam));
+    }
+    
+    PhoneChannelId phoneChannelId = toPhoneChannelId(phoneChannelIdParam);
+    if (phoneChannelId == null) {
+      return createBadRequest(String.format(INVALID_PHONE_CHANNEL_ID, serviceIdParam));
+    }
+    
+    for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
+      PhoneChannel phoneChannel = serviceChannelProvider.findPhoneChannel(serviceId, phoneChannelId);
+      if (phoneChannel != null) {
+        return Response.ok(phoneChannel)
+            .build();
+      }
+    }
+    
+    return Response
+      .status(Status.NOT_FOUND)
+      .entity(NOT_FOUND)
+      .build();
   }
 
   @Override
-  public Response findServicePrintableFormChannel(String serviceId, String printableFormChannelId) {
-    return createNotImplemented(NOT_IMPLEMENTED);
+  public Response findServicePrintableFormChannel(String serviceIdParam, String printableFormChannelIdParam) {
+    ServiceId serviceId = toServiceId(serviceIdParam);
+    if (serviceId == null) {
+      return createBadRequest(String.format(INVALID_SERVICE_ID, serviceIdParam));
+    }
+    
+    PrintableFormChannelId printableFormChannelId = toPrintableFormChannelId(printableFormChannelIdParam);
+    if (printableFormChannelId == null) {
+      return createBadRequest(String.format(INVALID_PRINTABLE_FORM_CHANNEL_ID, serviceIdParam));
+    }
+    
+    for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
+      PrintableFormChannel printableFormChannel = serviceChannelProvider.findPrintableFormChannel(serviceId, printableFormChannelId);
+      if (printableFormChannel != null) {
+        return Response.ok(printableFormChannel)
+            .build();
+      }
+    }
+
+    return Response
+      .status(Status.NOT_FOUND)
+      .entity(NOT_FOUND)
+      .build();
   }
 
   @Override
-  public Response findServiceServiceLocationChannel(String serviceId, String serviceLocationChannelId) {
-    return createNotImplemented(NOT_IMPLEMENTED);
+  public Response findServiceServiceLocationChannel(String serviceIdParam, String serviceLocationChannelIdParam) {
+    ServiceId serviceId = toServiceId(serviceIdParam);
+    if (serviceId == null) {
+      return createBadRequest(String.format(INVALID_SERVICE_ID, serviceIdParam));
+    }
+    
+    ServiceLocationChannelId serviceLocationChannelId = toServiceLocationChannelId(serviceLocationChannelIdParam);
+    if (serviceLocationChannelId == null) {
+      return createBadRequest(String.format(INVALID_SERVICE_LOCATION_CHANNEL_ID, serviceIdParam));
+    }
+    
+    for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
+      ServiceLocationChannel serviceLocationChannel = serviceChannelProvider.findServiceLocationChannel(serviceId, serviceLocationChannelId);
+      if (serviceLocationChannel != null) {
+        return Response.ok(serviceLocationChannel)
+            .build();
+      }
+    }
+    
+    return Response
+      .status(Status.NOT_FOUND)
+      .entity(NOT_FOUND)
+      .build();
   }
 
   @Override
-  public Response findServiceWebPageChannel(String serviceId, String webPageChannelId) {
-    return createNotImplemented(NOT_IMPLEMENTED);
+  public Response findServiceWebPageChannel(String serviceIdParam, String webPageChannelIdParam) {
+    ServiceId serviceId = toServiceId(serviceIdParam);
+    if (serviceId == null) {
+      return createBadRequest(String.format(INVALID_SERVICE_ID, serviceIdParam));
+    }
+    
+    WebPageChannelId webPageChannelId = toWebPageChannelId(webPageChannelIdParam);
+    if (webPageChannelId == null) {
+      return createBadRequest(String.format(INVALID_WEBPAGE_CHANNEL_ID, serviceIdParam));
+    }
+    
+    for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
+      WebPageChannel webPageChannel = serviceChannelProvider.findWebPageChannelChannel(serviceId, webPageChannelId);
+      if (webPageChannel != null) {
+        return Response.ok(webPageChannel)
+            .build();
+      }
+    }
+    
+    return Response
+      .status(Status.NOT_FOUND)
+      .entity(NOT_FOUND)
+      .build();
   }
 
   @Override
@@ -273,6 +389,46 @@ public class ServicesApiImpl extends ServicesApi {
   private ServiceId toServiceId(String id) {
     if (StringUtils.isNotBlank(id)) {
       return new ServiceId(KuntaApiConsts.IDENTIFIER_NAME, id);
+    }
+    
+    return null;
+  }
+
+  private ElectronicServiceChannelId toElectronicChannelId(String id) {
+    if (StringUtils.isNotBlank(id)) {
+      return new ElectronicServiceChannelId(KuntaApiConsts.IDENTIFIER_NAME, id);
+    }
+    
+    return null;
+  }
+
+  private PhoneChannelId toPhoneChannelId(String id) {
+    if (StringUtils.isNotBlank(id)) {
+      return new PhoneChannelId(KuntaApiConsts.IDENTIFIER_NAME, id);
+    }
+    
+    return null;
+  }
+
+  private PrintableFormChannelId toPrintableFormChannelId(String id) {
+    if (StringUtils.isNotBlank(id)) {
+      return new PrintableFormChannelId(KuntaApiConsts.IDENTIFIER_NAME, id);
+    }
+    
+    return null;
+  }
+
+  private ServiceLocationChannelId toServiceLocationChannelId(String id) {
+    if (StringUtils.isNotBlank(id)) {
+      return new ServiceLocationChannelId(KuntaApiConsts.IDENTIFIER_NAME, id);
+    }
+    
+    return null;
+  }
+
+  private WebPageChannelId toWebPageChannelId(String id) {
+    if (StringUtils.isNotBlank(id)) {
+      return new WebPageChannelId(KuntaApiConsts.IDENTIFIER_NAME, id);
     }
     
     return null;
