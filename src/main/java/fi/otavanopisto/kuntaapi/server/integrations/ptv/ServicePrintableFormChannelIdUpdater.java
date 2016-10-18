@@ -13,6 +13,7 @@ import javax.ejb.TimerConfig;
 import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Observes;
+import javax.enterprise.event.TransactionPhase;
 import javax.inject.Inject;
 
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
@@ -73,7 +74,7 @@ public class ServicePrintableFormChannelIdUpdater extends EntityUpdater {
     stopped = true;
   }
 
-  public void onServiceIdUpdateRequest(@Observes ServiceIdUpdateRequest event) {
+  public void onServiceIdUpdateRequest(@Observes (during = TransactionPhase.AFTER_COMPLETION) ServiceIdUpdateRequest event) {
     if (!stopped) {
       if (event.isPriority()) {
         queue.remove(event.getId());
