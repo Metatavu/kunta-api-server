@@ -6,6 +6,9 @@ import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
+import javax.ejb.Asynchronous;
+import javax.ejb.Lock;
+import javax.ejb.LockType;
 import javax.ejb.Singleton;
 import javax.ejb.Timeout;
 import javax.ejb.Timer;
@@ -13,7 +16,6 @@ import javax.ejb.TimerConfig;
 import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Observes;
-import javax.enterprise.event.TransactionPhase;
 import javax.inject.Inject;
 
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
@@ -74,7 +76,9 @@ public class ServiceWebPageChannelIdUpdater extends EntityUpdater {
     stopped = true;
   }
 
-  public void onServiceIdUpdateRequest(@Observes (during = TransactionPhase.AFTER_COMPLETION)  ServiceIdUpdateRequest event) {
+  @Asynchronous
+  @Lock(LockType.READ)
+  public void onServiceIdUpdateRequest(@Observes ServiceIdUpdateRequest event) {
     if (!stopped) {
       if (event.isPriority()) {
         queue.remove(event.getId());
