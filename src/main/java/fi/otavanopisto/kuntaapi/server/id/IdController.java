@@ -72,7 +72,7 @@ public class IdController {
    * @param target target
    * @return translated id or null if translation has failed
    */
-  public OrganizationServiceId translateServiceClassId(OrganizationServiceId organizationServiceId, String target) {
+  public OrganizationServiceId translateOrganizationServiceId(OrganizationServiceId organizationServiceId, String target) {
     if (StringUtils.equals(organizationServiceId.getSource(), target)) {
       return organizationServiceId;
     }
@@ -535,8 +535,8 @@ public class IdController {
    * @return whether ids match
    */
   public boolean idsEqual(OrganizationServiceId id1, OrganizationServiceId id2) {
-    OrganizationServiceId kuntaApiId1 = translateServiceClassId(id1, KuntaApiConsts.IDENTIFIER_NAME);
-    OrganizationServiceId kuntaApiId2 = translateServiceClassId(id2, KuntaApiConsts.IDENTIFIER_NAME);
+    OrganizationServiceId kuntaApiId1 = translateOrganizationServiceId(id1, KuntaApiConsts.IDENTIFIER_NAME);
+    OrganizationServiceId kuntaApiId2 = translateOrganizationServiceId(id2, KuntaApiConsts.IDENTIFIER_NAME);
     
     if (kuntaApiId1 == null || kuntaApiId2 == null) {
       return false;
