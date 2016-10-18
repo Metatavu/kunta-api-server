@@ -11,4 +11,4 @@ do
     sleep 50
   fi
 done
-$SNAP/bin/jboss-cli.sh --file=$SNAP/startup.cli --properties=/var/snap/restful-ptv-server/common/jboss-cli.properties
+$SNAP/bin/jboss-cli.sh --file=$SNAP/startup.cli --properties=/var/snap/kunta-api-server/common/jboss-cli.properties
