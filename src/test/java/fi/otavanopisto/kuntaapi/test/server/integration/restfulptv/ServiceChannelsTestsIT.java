@@ -33,6 +33,7 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
       .mockServices("6c9926b9-4aa0-4635-b66a-471af07dfec3")
       .mockElectronicServiceChannels("6c9926b9-4aa0-4635-b66a-471af07dfec3", "22472ece-95a0-4fef-a429-b4da689677b2", "44187ff9-71ed-40df-89f6-916be4f3baa6", "799e0e4f-4da7-4e7d-9e0e-f1370b80fc9a")
       .mockPhoneServiceChannels("6c9926b9-4aa0-4635-b66a-471af07dfec3", "108f0c61-bfba-4dd7-8f02-deb4e77c52d0", "626cdd7a-e205-42da-8ce5-82b3b7add258", "e9e86a9e-6593-469d-bc01-f1a59c28168d")
+      .mockPrintableFormServiceChannels("6c9926b9-4aa0-4635-b66a-471af07dfec3", "02256ce8-2879-47e4-a6f5-339872f0f758", "1a17f994-b924-46ae-8708-c09938125119", "6fb56241-1b43-4e42-8231-43ba8d86be36")
       .startMock();
 
     waitApiListCount("/organizations", 1);
@@ -300,6 +301,112 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
       .body("serviceHours[1][0].days[5]", is(6))
       .body("serviceHours[1][0].days[6]", is(0))
       .body("serviceHours[1][0].additionalInformation.size()", is(0))
+      .body("publishingStatus[1]", is("Published"));
+  }
+  
+  @Test
+  public void testFindPrintableFormChannel() throws InterruptedException {
+    String serviceId = given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get("/services")
+      .body().jsonPath().getString("id[0]");
+      
+    waitApiListCount(String.format("/services/%s/printableFormChannels", serviceId), 3);
+    
+    String channelId = given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get("/services/{serviceId}/printableFormChannels", serviceId)
+      .body().jsonPath().getString("id[0]");
+
+    given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get("/services/{serviceId}/printableFormChannels/{channelId}", serviceId, channelId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id", notNullValue())
+      .body("type", is("PrintableForm"))
+      .body("organizationId", notNullValue())
+      .body("names.size()", is(1))
+      .body("names[0].language", is("fi"))
+      .body("names[0].value", is("Hakemus muun kuin lähikoulun 7. luokalle"))
+      .body("names[0].type", is("Name"))
+      .body("descriptions.size()", is(2))
+      .body("descriptions[0].language", is("fi"))
+      .body("descriptions[0].value", is("Hakemus siirtymisestä 7. luokalle muuhun kuin osoitteenmukaiseen lähikouluun."))
+      .body("descriptions[0].type", is("ShortDescription"))
+      .body("formIdentifier", nullValue())
+      .body("formReceiver", nullValue())
+      .body("supportContacts.size()", is(1))
+      .body("supportContacts[0].email", nullValue())
+      .body("supportContacts[0].printableForm", nullValue())
+      .body("supportContacts[0].printableFormChargeDescription", nullValue())
+      .body("supportContacts[0].language", is("fi"))
+      .body("supportContacts[0].serviceChargeTypes.size()", is(0))
+      .body("deliveryAddress", nullValue())
+      .body("channelUrls.size()", is(1))
+      .body("channelUrls[0].language", is("fi"))
+      .body("channelUrls[0].value", is("http://www.mikkeli.fi/sites/mikkeli.fi/files/atoms/files/hakemus_muun_kuin_lahikoulun_7.luokalle_2014.pdf"))
+      .body("channelUrls[0].type", is("PDF"))
+      .body("languages.size()", is(1))
+      .body("languages[0]", is("fi"))
+      .body("deliveryAddressDescriptions.size()", is(0))
+      .body("attachments.size()", is(0))
+      .body("webPages.size()", is(0))
+      .body("serviceHours.size()", is(0))
+      .body("publishingStatus", is("Published"));
+  }
+  
+  @Test
+  public void testListPrintableFormChannels() throws InterruptedException {
+    String serviceId = given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get("/services")
+      .body().jsonPath().getString("id[0]");
+      
+    waitApiListCount(String.format("/services/%s/printableFormChannels", serviceId), 3);
+
+    given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get("/services/{serviceId}/printableFormChannels", serviceId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id[1]", notNullValue())
+      .body("type[1]", is("PrintableForm"))
+      .body("organizationId[1]", notNullValue())
+      .body("names[1].size()", is(1))
+      .body("names[1][0].language", is("fi"))
+      .body("names[1][0].value", is("Hakemus vieraan oppilasalueen kouluun"))
+      .body("names[1][0].type", is("Name"))
+      .body("descriptions[1].size()", is(2))
+      .body("descriptions[1][0].language", is("fi"))
+      .body("descriptions[1][0].value", is("Hakemus koulunkäyntiin muussa kuin omassa lähikoulussa."))
+      .body("descriptions[1][0].type", is("ShortDescription"))
+      .body("formIdentifier[1]", nullValue())
+      .body("formReceiver[1]", nullValue())
+      .body("supportContacts[1].size()", is(1))
+      .body("supportContacts[1][0].email", nullValue())
+      .body("supportContacts[1][0].printableForm", nullValue())
+      .body("supportContacts[1][0].printableFormChargeDescription", nullValue())
+      .body("supportContacts[1][0].language", is("fi"))
+      .body("supportContacts[1][0].serviceChargeTypes.size()", is(0))
+      .body("deliveryAddress[1]", nullValue())
+      .body("channelUrls[1].size()", is(1))
+      .body("channelUrls[1][0].language", is("fi"))
+      .body("channelUrls[1][0].value", is("http://www.mikkeli.fi/sites/mikkeli.fi/files/atoms/files/hakemus_vieraan_oppilasalueen_kouluun_2014.pdf"))
+      .body("channelUrls[1][0].type", is("PDF"))
+      .body("languages[1].size()", is(1))
+      .body("languages[1][0]", is("fi"))
+      .body("deliveryAddressDescriptions[1].size()", is(0))
+      .body("attachments[1].size()", is(0))
+      .body("webPages[1].size()", is(0))
+      .body("serviceHours[1].size()", is(0))
       .body("publishingStatus[1]", is("Published"));
   }
   
