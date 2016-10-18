@@ -921,6 +921,18 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     return createNotImplemented(NOT_IMPLEMENTED);
   }
   
+  /* Jobs */
+
+  @Override
+  public Response findOrganizationJob(String organizationId, String jobId) {
+    return createNotImplemented(NOT_IMPLEMENTED);
+  }
+
+  @Override
+  public Response listOrganizationJobs(String organizationId, String sortBy, String sortDir) {
+    return createNotImplemented(NOT_IMPLEMENTED);
+  }
+  
   private BannerId toBannerId(String id) {
     if (StringUtils.isNotBlank(id)) {
       return new BannerId(KuntaApiConsts.IDENTIFIER_NAME, id);
