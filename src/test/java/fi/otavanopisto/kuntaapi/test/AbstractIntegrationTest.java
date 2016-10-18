@@ -484,6 +484,26 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     }
   }
 
+  protected void assertFound(String url) {
+    given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get(url)
+      .then()
+      .assertThat()
+      .statusCode(200);
+  }
+
+  protected void assertNotFound(String url) {
+    given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get(url)
+      .then()
+      .assertThat()
+      .statusCode(404);
+  }
+  
   protected int countApiList(String path) {
     return given() 
       .baseUri(getApiBasePath())
@@ -503,7 +523,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     .then()
     .assertThat()
     .statusCode(200)
-    .body("id.size()", is(2));
+    .body("id.size()", is(maxResults - 1));
   
   given() 
     .baseUri(getApiBasePath())
@@ -512,7 +532,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     .then()
     .assertThat()
     .statusCode(200)
-    .body("id.size()", is(1));
+    .body("id.size()", is(maxResults - 2));
   
   given() 
     .baseUri(getApiBasePath())

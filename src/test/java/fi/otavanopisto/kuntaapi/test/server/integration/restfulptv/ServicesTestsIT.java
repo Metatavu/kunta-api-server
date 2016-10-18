@@ -6,24 +6,16 @@ import static org.hamcrest.core.IsNull.notNullValue;
 import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.Assert.assertNotNull;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.tomakehurst.wiremock.junit.WireMockRule;
 import com.jayway.restassured.http.ContentType;
 
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.PtvConsts;
 import fi.otavanopisto.kuntaapi.test.AbstractIntegrationTest;
-import fi.otavanopisto.restfulptv.client.model.FintoItem;
-import fi.otavanopisto.restfulptv.client.model.LanguageItem;
-import fi.otavanopisto.restfulptv.client.model.LocalizedListItem;
-import fi.otavanopisto.restfulptv.client.model.WebPage;
 
 @SuppressWarnings ("squid:S1192")
 public class ServicesTestsIT extends AbstractIntegrationTest {
@@ -171,5 +163,10 @@ public class ServicesTestsIT extends AbstractIntegrationTest {
       .body("additionalInformations[1][0].type", is("ChargeType"))
       .body("additionalInformations[1][0].language", is("fi"));
   } 
+  
+  @Test
+  public void testListServicesLimits() {
+    assertListLimits("/services", 3);
+  }
   
 }
