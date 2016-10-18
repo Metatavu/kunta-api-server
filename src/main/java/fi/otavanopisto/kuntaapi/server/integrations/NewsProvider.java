@@ -3,6 +3,9 @@ package fi.otavanopisto.kuntaapi.server.integrations;
 import java.time.OffsetDateTime;
 import java.util.List;
 
+import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
+import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
+import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
 import fi.otavanopisto.kuntaapi.server.rest.model.NewsArticle;
 

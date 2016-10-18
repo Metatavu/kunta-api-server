@@ -3,6 +3,9 @@ package fi.otavanopisto.kuntaapi.server.integrations;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+import fi.otavanopisto.kuntaapi.server.id.Id;
+import fi.otavanopisto.kuntaapi.server.id.IdType;
+
 /**
  * Class representing file id
  * 

@@ -6,8 +6,8 @@ import java.util.UUID;
 import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 
-import fi.otavanopisto.kuntaapi.server.integrations.Id;
-import fi.otavanopisto.kuntaapi.server.integrations.IdType;
+import fi.otavanopisto.kuntaapi.server.id.Id;
+import fi.otavanopisto.kuntaapi.server.id.IdType;
 import fi.otavanopisto.kuntaapi.server.persistence.dao.IdentifierDAO;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 

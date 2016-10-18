@@ -21,29 +21,26 @@ import javax.ws.rs.core.Response.Status;
 import org.apache.commons.lang3.EnumUtils;
 import org.apache.commons.lang3.StringUtils;
 
+import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
+import fi.otavanopisto.kuntaapi.server.id.BannerId;
+import fi.otavanopisto.kuntaapi.server.id.EventId;
+import fi.otavanopisto.kuntaapi.server.id.MenuId;
+import fi.otavanopisto.kuntaapi.server.id.MenuItemId;
+import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
+import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.id.OrganizationServiceId;
+import fi.otavanopisto.kuntaapi.server.id.PageId;
+import fi.otavanopisto.kuntaapi.server.id.TileId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
-import fi.otavanopisto.kuntaapi.server.integrations.AttachmentId;
-import fi.otavanopisto.kuntaapi.server.integrations.BannerId;
 import fi.otavanopisto.kuntaapi.server.integrations.BannerProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.EventId;
 import fi.otavanopisto.kuntaapi.server.integrations.EventProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.FileId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
-import fi.otavanopisto.kuntaapi.server.integrations.MenuId;
-import fi.otavanopisto.kuntaapi.server.integrations.MenuItemId;
 import fi.otavanopisto.kuntaapi.server.integrations.MenuProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.NewsArticleId;
 import fi.otavanopisto.kuntaapi.server.integrations.NewsProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.OrganizationProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.PageId;
+import fi.otavanopisto.kuntaapi.server.integrations.OrganizationServiceProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.PageProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.ServiceChannelProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.ServiceClassId;
-import fi.otavanopisto.kuntaapi.server.integrations.ServiceClassProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.ServiceId;
-import fi.otavanopisto.kuntaapi.server.integrations.ServiceProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.TileId;
 import fi.otavanopisto.kuntaapi.server.integrations.TileProvider;
 import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
 import fi.otavanopisto.kuntaapi.server.rest.model.Banner;
@@ -53,11 +50,9 @@ import fi.otavanopisto.kuntaapi.server.rest.model.Menu;
 import fi.otavanopisto.kuntaapi.server.rest.model.MenuItem;
 import fi.otavanopisto.kuntaapi.server.rest.model.NewsArticle;
 import fi.otavanopisto.kuntaapi.server.rest.model.Organization;
+import fi.otavanopisto.kuntaapi.server.rest.model.OrganizationService;
 import fi.otavanopisto.kuntaapi.server.rest.model.OrganizationSetting;
 import fi.otavanopisto.kuntaapi.server.rest.model.Page;
-import fi.otavanopisto.kuntaapi.server.rest.model.Service;
-import fi.otavanopisto.kuntaapi.server.rest.model.ServiceClass;
-import fi.otavanopisto.kuntaapi.server.rest.model.ServiceElectronicChannel;
 import fi.otavanopisto.kuntaapi.server.rest.model.Tile;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 
@@ -89,14 +84,8 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   private Instance<OrganizationProvider> organizationProviders;
   
   @Inject
-  private Instance<ServiceProvider> serviceProviders;
-
-  @Inject
-  private Instance<ServiceChannelProvider> serviceChannelProviders;
-
-  @Inject
-  private Instance<ServiceClassProvider> serviceClassProviders;
-
+  private Instance<OrganizationServiceProvider> organizationServiceProviders;
+  
   @Inject
   private Instance<EventProvider> eventProviders;
 
@@ -115,7 +104,6 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   @Inject
   private Instance<MenuProvider> menuProviders;
 
-
   @Override
   public Response listOrganizations(String businessName, String businessCode) {
     List<Organization> organizations = new ArrayList<>();
@@ -128,19 +116,34 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   }
   
   @Override
-  public Response createService(String organizationId, Service body) {
+  public Response findOrganization(String organizationIdParam) {
+  	OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    for (OrganizationProvider organizationProvider : getOrganizationProviders()) {
+      Organization organization = organizationProvider.findOrganization(organizationId);
+      if(organization != null) {
+        return Response.ok(organization)
+          .build();
+      }
+    }
+    return Response
+      .status(Status.NOT_FOUND)
+      .build();
+  }
+  
+  @Override
+  public Response createOrganizationService(String organizationId, OrganizationService body) {
     return createNotImplemented(NOT_IMPLEMENTED);
   }
   
   @Override
-  public Response findService(String organizationIdParam, String serviceIdParam) {
+  public Response findOrganizationService(String organizationIdParam, String organizationServiceIdParam) {
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
-    ServiceId serviceId = toServiceId(serviceIdParam);
+    OrganizationServiceId organizationServiceId = toOrganizationServiceId(organizationServiceIdParam);
     
-    for (ServiceProvider serviceProvider : getServiceProviders()) {
-      Service service = serviceProvider.findOrganizationService(organizationId, serviceId);
-      if (service != null) {
-        return Response.ok(service)
+    for (OrganizationServiceProvider organizationServiceProvider : getOrganizationServiceProviders()) {
+      OrganizationService organizationService = organizationServiceProvider.findOrganizationService(organizationId, organizationServiceId);
+      if (organizationService != null) {
+        return Response.ok(organizationService)
           .build();
       }
     }
@@ -149,45 +152,20 @@ public class OrganizationsApiImpl extends OrganizationsApi {
         .status(Status.NOT_FOUND)
         .build();
   }
-
+  
   @Override
-  public Response listServices(String organizationIdParam, String serviceClassIdParam) {
-    if (StringUtils.isBlank(organizationIdParam)) {
+  public Response listOrganizationOrganizationServices(String organizationIdParam, Long firstResult, Long maxResults) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
       return Response.status(Status.BAD_REQUEST)
         .entity("Organization parameter is mandatory")
         .build();
     }
     
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
-    ServiceClassId serviceClassId = StringUtils.isBlank(serviceClassIdParam) ? null : new ServiceClassId(KuntaApiConsts.IDENTIFIER_NAME, serviceClassIdParam);
+    List<OrganizationService> result = new ArrayList<>();
     
-    List<Service> services = new ArrayList<>();
-    for (ServiceProvider serviceProvider : getServiceProviders()) {
-      services.addAll(serviceProvider.listOrganizationServices(organizationId, serviceClassId));
-    }
-    
-    return Response.ok(services)
-      .build();
-  }
-
-  @Override
-  public Response updateService(String organizationId, String serviceId) {
-    return createNotImplemented(NOT_IMPLEMENTED);
-  }
-
-  @Override
-  public Response deleteService(String organizationId, String serviceId) {
-    return createNotImplemented(NOT_IMPLEMENTED);
-  }
-  
-  @Override
-  public Response listServiceElectornicChannels(String organizationIdParam, String serviceIdParam) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
-    ServiceId serviceId = toServiceId(serviceIdParam);
-    
-    List<ServiceElectronicChannel> result = new ArrayList<>();
-    for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
-      result.addAll(serviceChannelProvider.listElectronicChannels(organizationId, serviceId));
+    for (OrganizationServiceProvider organizationServiceProvider : getOrganizationServiceProviders()) {
+      result.addAll(organizationServiceProvider.listOrganizationServices(organizationId));
     }
     
     return Response.ok(result)
@@ -195,16 +173,9 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   }
   
   @Override
-  public Response listServiceClasses(String organizationIdParam) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
-
-    List<ServiceClass> result = new ArrayList<>();
-    for (ServiceClassProvider serviceClassProvider : getServiceClassProviders()) {
-      result.addAll(serviceClassProvider.listOrganizationServiceClasses(organizationId));
-    }
-    
-    return Response.ok(result)
-      .build();
+  public Response updateOrganizationService(String organizationId, String organizationServiceId,
+      OrganizationService body) {
+    return createNotImplemented(NOT_IMPLEMENTED);
   }
 
   @Override
@@ -982,9 +953,9 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     return null;
   }
 
-  private ServiceId toServiceId(String id) {
+  private OrganizationServiceId toOrganizationServiceId(String id) {
     if (StringUtils.isNotBlank(id)) {
-      return new ServiceId(KuntaApiConsts.IDENTIFIER_NAME, id);
+      return new OrganizationServiceId(KuntaApiConsts.IDENTIFIER_NAME, id);
     }
     
     return null;
@@ -1058,32 +1029,10 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     return Collections.unmodifiableList(result);
   }
   
-  private List<ServiceProvider> getServiceProviders() {
-    List<ServiceProvider> result = new ArrayList<>();
+  private List<OrganizationServiceProvider> getOrganizationServiceProviders() {
+    List<OrganizationServiceProvider> result = new ArrayList<>();
     
-    Iterator<ServiceProvider> iterator = serviceProviders.iterator();
-    while (iterator.hasNext()) {
-      result.add(iterator.next());
-    }
-    
-    return Collections.unmodifiableList(result);
-  }
-  
-  private List<ServiceChannelProvider> getServiceChannelProviders() {
-    List<ServiceChannelProvider> result = new ArrayList<>();
-    
-    Iterator<ServiceChannelProvider> iterator = serviceChannelProviders.iterator();
-    while (iterator.hasNext()) {
-      result.add(iterator.next());
-    }
-    
-    return Collections.unmodifiableList(result);
-  }
-  
-  private List<ServiceClassProvider> getServiceClassProviders() {
-    List<ServiceClassProvider> result = new ArrayList<>();
-    
-    Iterator<ServiceClassProvider> iterator = serviceClassProviders.iterator();
+    Iterator<OrganizationServiceProvider> iterator = organizationServiceProviders.iterator();
     while (iterator.hasNext()) {
       result.add(iterator.next());
     }

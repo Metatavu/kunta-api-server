@@ -1,13 +1,18 @@
 package fi.otavanopisto.kuntaapi.server.integrations.ptv;
 
-import fi.otavanopisto.ptv.client.OrganizationApi;
-
 import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 
-import fi.otavanopisto.ptv.client.GeneralDescriptionApi;
-import fi.otavanopisto.ptv.client.ServiceApi;
-import fi.otavanopisto.ptv.client.ServiceChannelApi;
+import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
+import fi.otavanopisto.restfulptv.client.ElectronicChannelsApi;
+import fi.otavanopisto.restfulptv.client.OrganizationServicesApi;
+import fi.otavanopisto.restfulptv.client.OrganizationsApi;
+import fi.otavanopisto.restfulptv.client.PhoneChannelsApi;
+import fi.otavanopisto.restfulptv.client.PrintableFormChannelsApi;
+import fi.otavanopisto.restfulptv.client.ServiceLocationChannelsApi;
+import fi.otavanopisto.restfulptv.client.ServicesApi;
+import fi.otavanopisto.restfulptv.client.StatutoryDescriptionsApi;
+import fi.otavanopisto.restfulptv.client.WebPageChannelsApi;
 
 @Dependent
 public class PtvApi {
@@ -15,19 +20,47 @@ public class PtvApi {
   @Inject
   private PtvClient client;
   
-  public OrganizationApi getOrganizationApi() {
-    return new OrganizationApi(client);
+  @Inject
+  private SystemSettingController systemSettingController;
+  
+  public OrganizationsApi getOrganizationApi() {
+    return new OrganizationsApi(getBaseUrl(), client);
   }
 
-  public GeneralDescriptionApi getGeneralDescriptionApi() {
-    return new GeneralDescriptionApi(client);
+  public StatutoryDescriptionsApi getStatutoryDescriptionsApi() {
+    return new StatutoryDescriptionsApi(getBaseUrl(), client);
   }
 
-  public ServiceApi getServiceApi() {
-    return new ServiceApi(client);
+  public ServicesApi getServicesApi() {
+    return new ServicesApi(getBaseUrl(), client);
   }
 
-  public ServiceChannelApi getServiceChannelApi() {
-    return new ServiceChannelApi(client);
+  public WebPageChannelsApi getWebPageChannelsApi() {
+    return new WebPageChannelsApi(getBaseUrl(), client);
   }
+
+  public ServiceLocationChannelsApi getServiceLocationChannelsApi() {
+    return new ServiceLocationChannelsApi(getBaseUrl(), client);
+  }
+
+  public PrintableFormChannelsApi getPrintableFormChannelsApi() {
+    return new PrintableFormChannelsApi(getBaseUrl(), client);
+  }
+
+  public PhoneChannelsApi getPhoneChannelsApi() {
+    return new PhoneChannelsApi(getBaseUrl(), client);
+  }
+
+  public OrganizationServicesApi getOrganizationServicesApi() {
+    return new OrganizationServicesApi(getBaseUrl(), client);
+  }
+
+  public ElectronicChannelsApi getElectronicChannelsApi() {
+    return new ElectronicChannelsApi(getBaseUrl(), client);
+  }
+  
+  private String getBaseUrl() {
+    return systemSettingController.getSettingValue(PtvConsts.SYSTEM_SETTING_BASEURL);
+  }
+  
 }

@@ -16,9 +16,9 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.validator.constraints.NotEmpty;
 
 /**
- * JPA entity for storing system wide settings
+ * JPA entity for storing organization wide settings
  * 
- * @author Otavan Opisto
+ * @author Antti Leppä
  */
 @Entity
 @Cacheable(true)
