@@ -308,17 +308,6 @@ public abstract class AbstractPtvProvider {
     return result;
   }
 
-  private OrganizationId translateOrganizationId(String ptvOrganizationId) {
-    OrganizationId organizationPtvId = new OrganizationId(PtvConsts.IDENTIFIFER_NAME, ptvOrganizationId);
-    OrganizationId organizationKuntaApiId = idController.translateOrganizationId(organizationPtvId, KuntaApiConsts.IDENTIFIER_NAME);
-    if (organizationKuntaApiId == null) {
-      logger.severe(String.format("Could not translate organization id %s into Kunta API id", organizationPtvId.getId()));
-      return null;
-    }
-    
-    return organizationKuntaApiId;
-  }
-
   protected PhoneChannel translatePhoneChannel(fi.otavanopisto.restfulptv.client.model.PhoneChannel ptvPhoneChannel) {
     if (ptvPhoneChannel == null) {
       return null;
@@ -476,23 +465,6 @@ public abstract class AbstractPtvProvider {
     return result;
   }
 
-  private List<Address> translateAddresses(List<fi.otavanopisto.restfulptv.client.model.Address> ptvAddresses) {
-    if (ptvAddresses == null) {
-      return Collections.emptyList();
-    }
-
-    List<Address> result = new ArrayList<>(ptvAddresses.size());
-
-    for (fi.otavanopisto.restfulptv.client.model.Address ptvAddress : ptvAddresses) {
-      Address address = translateAddress(ptvAddress);
-      if (address != null) {
-        result.add(address);
-      }
-    }
-
-    return result;
-  }
-
   protected List<WebPage> translateWebPages(List<fi.otavanopisto.restfulptv.client.model.WebPage> ptvWebPages) {
     if (ptvWebPages == null) {
       return Collections.emptyList();
@@ -523,6 +495,34 @@ public abstract class AbstractPtvProvider {
     webPage.setDescription(ptvWebPage.getDescription());
     
     return webPage;
+  }
+
+  private OrganizationId translateOrganizationId(String ptvOrganizationId) {
+    OrganizationId organizationPtvId = new OrganizationId(PtvConsts.IDENTIFIFER_NAME, ptvOrganizationId);
+    OrganizationId organizationKuntaApiId = idController.translateOrganizationId(organizationPtvId, KuntaApiConsts.IDENTIFIER_NAME);
+    if (organizationKuntaApiId == null) {
+      logger.severe(String.format("Could not translate organization id %s into Kunta API id", organizationPtvId.getId()));
+      return null;
+    }
+    
+    return organizationKuntaApiId;
+  }
+
+  private List<Address> translateAddresses(List<fi.otavanopisto.restfulptv.client.model.Address> ptvAddresses) {
+    if (ptvAddresses == null) {
+      return Collections.emptyList();
+    }
+
+    List<Address> result = new ArrayList<>(ptvAddresses.size());
+
+    for (fi.otavanopisto.restfulptv.client.model.Address ptvAddress : ptvAddresses) {
+      Address address = translateAddress(ptvAddress);
+      if (address != null) {
+        result.add(address);
+      }
+    }
+
+    return result;
   }
   
   private List<ServiceHour> translateServiceHours(List<fi.otavanopisto.restfulptv.client.model.ServiceHour> ptvServiceHours) {
