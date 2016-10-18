@@ -8,7 +8,9 @@ package fi.otavanopisto.kuntaapi.server.system;
  */
 public class SystemUtils {
   
-  private SystemUtils(){};
+  private SystemUtils() {
+    
+  }
   
   /**
    * Checks if application is running in test-mode

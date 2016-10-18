@@ -96,22 +96,26 @@ public class ServicePrintableFormChannelIdUpdater extends EntityUpdater {
         }
         
         if (PtvConsts.IDENTIFIFER_NAME.equals(serviceId.getSource())) {
-          ApiResponse<List<PrintableFormChannel >> response = ptvApi.getServicesApi().listServicePrintableFormChannels(serviceId.getId(), null, null);
-          if (response.isOk()) {
-            for (PrintableFormChannel printableFormChannel : response.getResponse()) {
-              PrintableFormChannelId channelId = new PrintableFormChannelId(PtvConsts.IDENTIFIFER_NAME, printableFormChannel.getId());
-              Identifier identifier = identifierController.findIdentifierById(channelId);
-              if (identifier == null) {
-                identifierController.createIdentifier(channelId);
-              }
-            }
-          } else {
-            logger.warning(String.format("Service channel %s processing failed on [%d] %s", serviceId.getId(), response.getStatus(), response.getMessage()));
-          }          
+          updateChannelIds(serviceId);          
         }        
       }
 
       startTimer(TIMER_INTERVAL);
+    }
+  }
+
+  private void updateChannelIds(ServiceId serviceId) {
+    ApiResponse<List<PrintableFormChannel >> response = ptvApi.getServicesApi().listServicePrintableFormChannels(serviceId.getId(), null, null);
+    if (response.isOk()) {
+      for (PrintableFormChannel printableFormChannel : response.getResponse()) {
+        PrintableFormChannelId channelId = new PrintableFormChannelId(PtvConsts.IDENTIFIFER_NAME, printableFormChannel.getId());
+        Identifier identifier = identifierController.findIdentifierById(channelId);
+        if (identifier == null) {
+          identifierController.createIdentifier(channelId);
+        }
+      }
+    } else {
+      logger.warning(String.format("Service channel %s processing failed on [%d] %s", serviceId.getId(), response.getStatus(), response.getMessage()));
     }
   }
 

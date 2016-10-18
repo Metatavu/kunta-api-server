@@ -96,22 +96,26 @@ public class PtvServiceElectronicChannelIdUpdater extends EntityUpdater {
         }
         
         if (PtvConsts.IDENTIFIFER_NAME.equals(serviceId.getSource())) {
-          ApiResponse<List<ElectronicChannel>> response = ptvApi.getServicesApi().listServiceElectronicChannels(serviceId.getId(), null, null);
-          if (response.isOk()) {
-            for (ElectronicChannel electronicChannel : response.getResponse()) {
-              ElectronicServiceChannelId channelId = new ElectronicServiceChannelId(PtvConsts.IDENTIFIFER_NAME, electronicChannel.getId());
-              Identifier identifier = identifierController.findIdentifierById(channelId);
-              if (identifier == null) {
-                identifierController.createIdentifier(channelId);
-              }
-            }
-          } else {
-            logger.warning(String.format("Service channel %s processing failed on [%d] %s", serviceId.getId(), response.getStatus(), response.getMessage()));
-          }          
+          updateChannelIds(serviceId);          
         }        
       }
 
       startTimer(TIMER_INTERVAL);
+    }
+  }
+
+  private void updateChannelIds(ServiceId serviceId) {
+    ApiResponse<List<ElectronicChannel>> response = ptvApi.getServicesApi().listServiceElectronicChannels(serviceId.getId(), null, null);
+    if (response.isOk()) {
+      for (ElectronicChannel electronicChannel : response.getResponse()) {
+        ElectronicServiceChannelId channelId = new ElectronicServiceChannelId(PtvConsts.IDENTIFIFER_NAME, electronicChannel.getId());
+        Identifier identifier = identifierController.findIdentifierById(channelId);
+        if (identifier == null) {
+          identifierController.createIdentifier(channelId);
+        }
+      }
+    } else {
+      logger.warning(String.format("Service channel %s processing failed on [%d] %s", serviceId.getId(), response.getStatus(), response.getMessage()));
     }
   }
 

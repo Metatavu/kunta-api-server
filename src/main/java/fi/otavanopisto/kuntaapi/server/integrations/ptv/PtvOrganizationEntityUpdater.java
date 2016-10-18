@@ -91,19 +91,23 @@ public class PtvOrganizationEntityUpdater extends EntityUpdater {
       if (!queue.isEmpty()) {
         OrganizationId organizationId = queue.iterator().next();
         if (PtvConsts.IDENTIFIFER_NAME.equals(organizationId.getSource())) {
-          ApiResponse<Organization> response = ptvApi.getOrganizationApi().findOrganization(organizationId.getId());
-          if (response.isOk()) {
-            Identifier identifier = identifierController.findIdentifierById(organizationId);
-            if (identifier == null) {
-              identifierController.createIdentifier(organizationId);
-            }
-          } else {
-            logger.warning(String.format("Organization %s processing failed on [%d] %s", organizationId.getId(), response.getStatus(), response.getMessage()));
-          }          
+          updateOrganization(organizationId);          
         }        
       }
 
       startTimer(TIMER_INTERVAL);
+    }
+  }
+
+  private void updateOrganization(OrganizationId organizationId) {
+    ApiResponse<Organization> response = ptvApi.getOrganizationApi().findOrganization(organizationId.getId());
+    if (response.isOk()) {
+      Identifier identifier = identifierController.findIdentifierById(organizationId);
+      if (identifier == null) {
+        identifierController.createIdentifier(organizationId);
+      }
+    } else {
+      logger.warning(String.format("Organization %s processing failed on [%d] %s", organizationId.getId(), response.getStatus(), response.getMessage()));
     }
   }
 

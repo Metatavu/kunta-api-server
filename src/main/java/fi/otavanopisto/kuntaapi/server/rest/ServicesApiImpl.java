@@ -82,13 +82,7 @@ public class ServicesApiImpl extends ServicesApi {
   
   @Override
   public Response listServices(Long firstResult, Long maxResults) {
-    if (firstResult != null && firstResult < 0) {
-      return createBadRequest(FIRST_RESULT_MUST_BY_A_POSITIVE_INTEGER);
-    }
-    
-    if (maxResults != null && maxResults < 0) {
-      return createBadRequest(MAX_RESULTS_MUST_BY_A_POSITIVE_INTEGER);
-    }
+    validateListLimitParams(firstResult, maxResults);
     
     List<Service> result = new ArrayList<>();
     
@@ -271,12 +265,9 @@ public class ServicesApiImpl extends ServicesApi {
       return createBadRequest(String.format(INVALID_SERVICE_ID, serviceIdParam));
     }
     
-    if (firstResult != null && firstResult < 0) {
-      return createBadRequest(FIRST_RESULT_MUST_BY_A_POSITIVE_INTEGER);
-    }
-    
-    if (maxResults != null && maxResults < 0) {
-      return createBadRequest(MAX_RESULTS_MUST_BY_A_POSITIVE_INTEGER);
+    Response validationResponse = validateListLimitParams(firstResult, maxResults);
+    if (validationResponse != null) {
+      return validationResponse;
     }
     
     List<ElectronicChannel> result = new ArrayList<>();
@@ -300,12 +291,9 @@ public class ServicesApiImpl extends ServicesApi {
       return createBadRequest(String.format(INVALID_SERVICE_ID, serviceIdParam));
     }
     
-    if (firstResult != null && firstResult < 0) {
-      return createBadRequest(FIRST_RESULT_MUST_BY_A_POSITIVE_INTEGER);
-    }
-    
-    if (maxResults != null && maxResults < 0) {
-      return createBadRequest(MAX_RESULTS_MUST_BY_A_POSITIVE_INTEGER);
+    Response validationResponse = validateListLimitParams(firstResult, maxResults);
+    if (validationResponse != null) {
+      return validationResponse;
     }
     
     List<PhoneChannel> result = new ArrayList<>();
@@ -329,12 +317,9 @@ public class ServicesApiImpl extends ServicesApi {
       return createBadRequest(String.format(INVALID_SERVICE_ID, serviceIdParam));
     }
     
-    if (firstResult != null && firstResult < 0) {
-      return createBadRequest(FIRST_RESULT_MUST_BY_A_POSITIVE_INTEGER);
-    }
-    
-    if (maxResults != null && maxResults < 0) {
-      return createBadRequest(MAX_RESULTS_MUST_BY_A_POSITIVE_INTEGER);
+    Response validationResponse = validateListLimitParams(firstResult, maxResults);
+    if (validationResponse != null) {
+      return validationResponse;
     }
     
     List<PrintableFormChannel> result = new ArrayList<>();
@@ -358,12 +343,9 @@ public class ServicesApiImpl extends ServicesApi {
       return createBadRequest(String.format(INVALID_SERVICE_ID, serviceIdParam));
     }
     
-    if (firstResult != null && firstResult < 0) {
-      return createBadRequest(FIRST_RESULT_MUST_BY_A_POSITIVE_INTEGER);
-    }
-    
-    if (maxResults != null && maxResults < 0) {
-      return createBadRequest(MAX_RESULTS_MUST_BY_A_POSITIVE_INTEGER);
+    Response validationResponse = validateListLimitParams(firstResult, maxResults);
+    if (validationResponse != null) {
+      return validationResponse;
     }
     
     List<ServiceLocationChannel> result = new ArrayList<>();
@@ -387,12 +369,9 @@ public class ServicesApiImpl extends ServicesApi {
       return createBadRequest(String.format(INVALID_SERVICE_ID, serviceIdParam));
     }
     
-    if (firstResult != null && firstResult < 0) {
-      return createBadRequest(FIRST_RESULT_MUST_BY_A_POSITIVE_INTEGER);
-    }
-    
-    if (maxResults != null && maxResults < 0) {
-      return createBadRequest(MAX_RESULTS_MUST_BY_A_POSITIVE_INTEGER);
+    Response validationResponse = validateListLimitParams(firstResult, maxResults);
+    if (validationResponse != null) {
+      return validationResponse;
     }
     
     List<WebPageChannel> result = new ArrayList<>();
@@ -434,6 +413,18 @@ public class ServicesApiImpl extends ServicesApi {
   @Override
   public Response updateWebPageChannel(String serviceId, String webPageChannelId, WebPageChannel body) {
     return createNotImplemented(NOT_IMPLEMENTED);
+  }
+
+  private Response validateListLimitParams(Long firstResult, Long maxResults) {
+    if (firstResult != null && firstResult < 0) {
+      return createBadRequest(FIRST_RESULT_MUST_BY_A_POSITIVE_INTEGER);
+    }
+    
+    if (maxResults != null && maxResults < 0) {
+      return createBadRequest(MAX_RESULTS_MUST_BY_A_POSITIVE_INTEGER);
+    }
+    
+    return null;
   }
   
   private ServiceId toServiceId(String id) {
@@ -505,6 +496,5 @@ public class ServicesApiImpl extends ServicesApi {
     
     return Collections.unmodifiableList(result);
   }
-
 }
 

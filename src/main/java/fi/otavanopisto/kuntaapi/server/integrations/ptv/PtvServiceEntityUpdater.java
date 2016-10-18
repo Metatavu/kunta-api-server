@@ -91,19 +91,23 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
       if (!queue.isEmpty()) {
         ServiceId serviceId = queue.iterator().next();
         if (PtvConsts.IDENTIFIFER_NAME.equals(serviceId.getSource())) {
-          ApiResponse<Service> response = ptvApi.getServicesApi().findService(serviceId.getId());
-          if (response.isOk()) {
-            Identifier identifier = identifierController.findIdentifierById(serviceId);
-            if (identifier == null) {
-              identifierController.createIdentifier(serviceId);
-            }
-          } else {
-            logger.warning(String.format("Service %s processing failed on [%d] %s", serviceId.getId(), response.getStatus(), response.getMessage()));
-          }          
+          updatePtvService(serviceId);          
         }        
       }
 
       startTimer(TIMER_INTERVAL);
+    }
+  }
+
+  private void updatePtvService(ServiceId serviceId) {
+    ApiResponse<Service> response = ptvApi.getServicesApi().findService(serviceId.getId());
+    if (response.isOk()) {
+      Identifier identifier = identifierController.findIdentifierById(serviceId);
+      if (identifier == null) {
+        identifierController.createIdentifier(serviceId);
+      }
+    } else {
+      logger.warning(String.format("Service %s processing failed on [%d] %s", serviceId.getId(), response.getStatus(), response.getMessage()));
     }
   }
 
