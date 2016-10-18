@@ -33,6 +33,7 @@ import fi.otavanopisto.restfulptv.client.model.PhoneChannel;
 import fi.otavanopisto.restfulptv.client.model.PrintableFormChannel;
 import fi.otavanopisto.restfulptv.client.model.Service;
 import fi.otavanopisto.restfulptv.client.model.ServiceLocationChannel;
+import fi.otavanopisto.restfulptv.client.model.WebPageChannel;
 
 /**
  * Abstract base class for integration tests
@@ -185,6 +186,15 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     public ServiceLocationChannel readServiceLocationChannelFromJSONFile(String file) {
       return readJSONFile(file, ServiceLocationChannel.class);
     }
+
+    /**
+     * Reads JSON file as printable form service channel object
+     * 
+     * @param file path to JSON file
+     */    
+    public WebPageChannel readWebPageChannelFromJSONFile(String file) {
+      return readJSONFile(file, WebPageChannel.class);
+    }
     
     private <T> T readJSONFile(String file, Class <T> type){
       ObjectMapper objectMapper = new ObjectMapper();
@@ -305,6 +315,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     private Map<String, List<PhoneChannel>> servicesPhoneChannelsList;
     private Map<String, List<PrintableFormChannel>> printableFormChannelsList;
     private Map<String, List<ServiceLocationChannel>> serviceLocationChannelsList;
+    private Map<String, List<WebPageChannel>> webPageChannelsList;
     
     public RestFulPtvMocker() {
       organizationsList = new ArrayList<>();
@@ -313,6 +324,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
       servicesPhoneChannelsList = new HashMap<>();
       printableFormChannelsList = new HashMap<>();
       serviceLocationChannelsList = new HashMap<>();
+      webPageChannelsList = new HashMap<>();
     }
 
     public RestFulPtvMocker mockOrganizations(String... ids) {
@@ -403,6 +415,23 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
       return this;
     }
     
+    public RestFulPtvMocker mockWebPageServiceChannels(String serviceId, String... ids) {
+      List<WebPageChannel> channelList = webPageChannelsList.get(serviceId);
+      if (channelList == null) {
+        channelList = new ArrayList<>(ids.length);
+      }
+      
+      for (String id : ids) {
+        WebPageChannel channel = readWebPageChannelFromJSONFile(String.format("webPagechannels/%s.json", id));
+        mockGetJSON(String.format("%s/services/%s/webPageChannels/%s", BASE_URL, serviceId, id), channel, null);
+        channelList.add(channel);
+      }     
+      
+      webPageChannelsList.put(serviceId, channelList);
+      
+      return this;
+    }
+    
     @Override
     public void startMock() {
       Map<String, String> pageQuery = new HashMap<>();
@@ -429,6 +458,10 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
 
       for (Entry<String, List<ServiceLocationChannel>> channelsEntry : serviceLocationChannelsList.entrySet()) {
         mockGetJSON(String.format("%s/services/%s/serviceLocationChannels", BASE_URL, channelsEntry.getKey()), channelsEntry.getValue(), null);
+      }
+
+      for (Entry<String, List<WebPageChannel>> channelsEntry : webPageChannelsList.entrySet()) {
+        mockGetJSON(String.format("%s/services/%s/webPageChannels", BASE_URL, channelsEntry.getKey()), channelsEntry.getValue(), null);
       }
 
       super.startMock();

@@ -35,6 +35,7 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
       .mockPhoneServiceChannels("6c9926b9-4aa0-4635-b66a-471af07dfec3", "108f0c61-bfba-4dd7-8f02-deb4e77c52d0", "626cdd7a-e205-42da-8ce5-82b3b7add258", "e9e86a9e-6593-469d-bc01-f1a59c28168d")
       .mockPrintableFormServiceChannels("6c9926b9-4aa0-4635-b66a-471af07dfec3", "02256ce8-2879-47e4-a6f5-339872f0f758", "1a17f994-b924-46ae-8708-c09938125119", "6fb56241-1b43-4e42-8231-43ba8d86be36")
       .mockServiceLocationServiceChannels("6c9926b9-4aa0-4635-b66a-471af07dfec3", "9a9f5def-92e4-4b79-a49a-ccf20a0f75b6", "c0681f51-d1b4-4a9b-bbbf-ddf9a5273cd1", "cf927001-8b45-4f08-b93b-c78fe8477928")
+      .mockWebPageServiceChannels("6c9926b9-4aa0-4635-b66a-471af07dfec3", "4b08ae17-75ae-4746-9382-1316c4ec02c5", "aedae320-a2b2-4fe6-b23b-2e1a025ba415", "e9ec256b-5ca2-4663-9da6-d8a2faff21a8")
       .startMock();
     
     waitApiListCount("/organizations", 1);
@@ -580,4 +581,102 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
       .body("serviceHours[1][0].additionalInformation.size()", is(0))
       .body("publishingStatus[1]", is("Published"));
   }
+  
+  @Test
+  public void testFindWebPageChannel() throws InterruptedException {
+    String serviceId = given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get("/services")
+      .body().jsonPath().getString("id[0]");
+      
+    waitApiListCount(String.format("/services/%s/webPageChannels", serviceId), 3);
+    
+    String channelId = given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get("/services/{serviceId}/webPageChannels", serviceId)
+      .body().jsonPath().getString("id[0]");
+    
+    given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get("/services/{serviceId}/webPageChannels/{channelId}", serviceId, channelId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id", notNullValue())
+      .body("type", is("WebPage"))
+      .body("organizationId", notNullValue())
+      .body("names.size()", is(1))
+      .body("names[0].language", is("fi"))
+      .body("names[0].value", is("Mikkelin kaupungin verkkosivut, asumisoikeusasunnot"))
+      .body("names[0].type", is("Name"))
+      .body("descriptions.size()", is(2))
+      .body("descriptions[1].language", is("fi"))
+      .body("descriptions[1].value", is("Mikkelin kaupungin sivuilla kerrotaan alueen asumisoikeusasunnoista ja järjestysnumeron hakumenettelystä."))
+      .body("descriptions[1].type", is("ShortDescription"))
+      .body("urls.size()", is(1))
+      .body("urls[0].language", is("fi"))
+      .body("urls[0].value", is("http://www.mikkeli.fi/palvelut/asumisoikeusasunnot"))
+      .body("attachments.size()", is(0))
+      .body("supportContacts.size()", is(1))
+      .body("supportContacts[0].email", nullValue())
+      .body("supportContacts[0].phone", nullValue())
+      .body("supportContacts[0].phoneChargeDescription", nullValue())
+      .body("supportContacts[0].language", is("fi"))
+      .body("supportContacts[0].serviceChargeTypes.size()", is(0))
+      .body("languages.size()", is(1))
+      .body("languages[0]", is("fi"))
+      .body("webPages.size()", is(0))
+      .body("serviceHours.size()", is(0))
+      .body("publishingStatus", is("Published"));
+  }
+
+  @Test
+  public void testListWebPageChannel() throws InterruptedException {
+    String serviceId = given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get("/services")
+      .body().jsonPath().getString("id[0]");
+      
+    waitApiListCount(String.format("/services/%s/webPageChannels", serviceId), 3);
+    
+    given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get("/services/{serviceId}/webPageChannels", serviceId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id[1]", notNullValue())
+      .body("type[1]", is("WebPage"))
+      .body("organizationId[1]", notNullValue())
+      .body("names[1].size()", is(1))
+      .body("names[1][0].language", is("fi"))
+      .body("names[1][0].value", is("Mikkelin kansalaisopiston Facebook-sivut"))
+      .body("names[1][0].type", is("Name"))
+      .body("descriptions[1].size()", is(2))
+      .body("descriptions[1][1].language", is("fi"))
+      .body("descriptions[1][1].value", is("Facebook-sivuille päivitetään Mikkelin kansalaisopiston kurssiesittelyjä ja ajankohtaisia tapahtumia."))
+      .body("descriptions[1][1].type", is("ShortDescription"))
+      .body("urls[1].size()", is(1))
+      .body("urls[1][0].language", is("fi"))
+      .body("urls[1][0].value", is("https://fi-fi.facebook.com/Mikkelin-kansalaisopisto-149624898432465/"))
+      .body("attachments[1].size()", is(0))
+      .body("supportContacts[1].size()", is(1))
+      .body("supportContacts[1][0].email", is(""))
+      .body("supportContacts[1][0].phone", is(""))
+      .body("supportContacts[1][0].phoneChargeDescription", is(""))
+      .body("supportContacts[1][0].language", is("fi"))
+      .body("supportContacts[1][0].serviceChargeTypes.size()", is(0))
+      .body("languages[1].size()", is(2))
+      .body("languages[1][0]", is("fi"))
+      .body("languages[1][1]", is("en"))
+      .body("webPages[1].size()", is(0))
+      .body("serviceHours[1].size()", is(0))
+      .body("publishingStatus[1]", is("Published"));
+  }
+  
 }
