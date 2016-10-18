@@ -95,7 +95,7 @@ public class RestFulPtvMocker extends AbstractMocker {
     }
     
     for (String id : ids) {
-      PrintableFormChannel channel = readPrintableFormChannelFromJSONFile(String.format("printableFormchannels/%s.json", id));
+      PrintableFormChannel channel = readPrintableFormChannelFromJSONFile(String.format("printableformchannels/%s.json", id));
       mockGetJSON(String.format("%s/services/%s/printableFormChannels/%s", AbstractIntegrationTest.BASE_URL, serviceId, id), channel, null);
       channelList.add(channel);
     }     
@@ -112,7 +112,7 @@ public class RestFulPtvMocker extends AbstractMocker {
     }
     
     for (String id : ids) {
-      ServiceLocationChannel channel = readServiceLocationChannelFromJSONFile(String.format("serviceLocationchannels/%s.json", id));
+      ServiceLocationChannel channel = readServiceLocationChannelFromJSONFile(String.format("servicelocationchannels/%s.json", id));
       mockGetJSON(String.format("%s/services/%s/serviceLocationChannels/%s", AbstractIntegrationTest.BASE_URL, serviceId, id), channel, null);
       channelList.add(channel);
     }     
@@ -129,7 +129,7 @@ public class RestFulPtvMocker extends AbstractMocker {
     }
     
     for (String id : ids) {
-      WebPageChannel channel = readWebPageChannelFromJSONFile(String.format("webPagechannels/%s.json", id));
+      WebPageChannel channel = readWebPageChannelFromJSONFile(String.format("webpagechannels/%s.json", id));
       mockGetJSON(String.format("%s/services/%s/webPageChannels/%s", AbstractIntegrationTest.BASE_URL, serviceId, id), channel, null);
       channelList.add(channel);
     }     

@@ -82,7 +82,10 @@ public class ServicesApiImpl extends ServicesApi {
   
   @Override
   public Response listServices(Long firstResult, Long maxResults) {
-    validateListLimitParams(firstResult, maxResults);
+    Response validationResponse = validateListLimitParams(firstResult, maxResults);
+    if (validationResponse != null) {
+      return validationResponse;
+    }
     
     List<Service> result = new ArrayList<>();
     
