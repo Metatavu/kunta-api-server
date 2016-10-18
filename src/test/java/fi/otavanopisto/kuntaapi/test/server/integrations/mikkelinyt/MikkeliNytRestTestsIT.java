@@ -23,6 +23,7 @@ import fi.otavanopisto.kuntaapi.server.id.IdType;
 import fi.otavanopisto.kuntaapi.server.integrations.mikkelinyt.MikkeliNytConsts;
 import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
 import fi.otavanopisto.kuntaapi.test.AbstractIntegrationTest;
+import fi.otavanopisto.kuntaapi.test.AbstractMocker;
 import fi.otavanopisto.mikkelinyt.model.Event;
 import fi.otavanopisto.mikkelinyt.model.EventsResponse;
 
