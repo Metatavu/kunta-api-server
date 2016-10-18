@@ -2,13 +2,12 @@ package fi.otavanopisto.kuntaapi.server.integrations.ptv;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
-import javax.ejb.Asynchronous;
-import javax.ejb.Lock;
-import javax.ejb.LockType;
+import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
 import javax.ejb.Timeout;
 import javax.ejb.Timer;
@@ -29,6 +28,7 @@ import fi.otavanopisto.restfulptv.client.model.ServiceLocationChannel ;
 
 @ApplicationScoped
 @Singleton
+@AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
 public class ServiceLocationChannelIdUpdater extends EntityUpdater {
 
@@ -76,8 +76,6 @@ public class ServiceLocationChannelIdUpdater extends EntityUpdater {
     stopped = true;
   }
   
-  @Asynchronous
-  @Lock(LockType.READ)
   public void onServiceIdUpdateRequest(@Observes ServiceIdUpdateRequest event) {
     if (!stopped) {
       if (event.isPriority()) {

@@ -40,7 +40,7 @@ public class PtvOrganizationIdUpdater implements IdUpdater {
   
   @Inject
   private Event<OrganizationIdUpdateRequest> idUpdateRequest;
-  
+
   private boolean stopped;
   private long offset;
   
@@ -73,8 +73,11 @@ public class PtvOrganizationIdUpdater implements IdUpdater {
   @Timeout
   public void timeout(Timer timer) {
     if (!stopped) {
-      discoverIds();
-      startTimer(TIMER_INTERVAL);
+      try {
+        discoverIds();
+      } finally {
+        startTimer(TIMER_INTERVAL);
+      }
     }
   }
 
