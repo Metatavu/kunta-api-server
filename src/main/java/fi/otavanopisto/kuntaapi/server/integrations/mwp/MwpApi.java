@@ -19,7 +19,7 @@ public class MwpApi {
   private MwpClient client;
   
   @Inject
-  private OrganizationSettingController  organizationSettingController;
+  private OrganizationSettingController organizationSettingController;
   
   private MwpApi() {
   }

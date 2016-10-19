@@ -1,5 +1,6 @@
 package fi.otavanopisto.kuntaapi.server.settings;
 
+import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
 import java.util.logging.Logger;
@@ -17,10 +18,13 @@ import fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting;
  * Controller for organization settings. Class does not handle concurrency so caller must take care of that
  * 
  * @author Antti Leppä
+ * @author Heikki Kurhinen
  */
 @Dependent
-public class OrganizationSettingController {
+public class OrganizationSettingController implements Serializable {
   
+  private static final long serialVersionUID = 2199544783912659348L;
+
   private static final String FAILED_TO_TRANSLATE = "Failed to translate %s into KuntaApiId id";
 
   @Inject
