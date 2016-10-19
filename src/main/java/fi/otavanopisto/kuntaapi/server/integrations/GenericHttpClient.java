@@ -15,6 +15,7 @@ import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 
 import org.apache.commons.io.IOUtils;
+import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.StatusLine;
@@ -30,6 +31,8 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 /**
  * Response aware HTTP client for integrations
@@ -147,15 +150,31 @@ public class GenericHttpClient {
 
   @SuppressWarnings("unchecked")
   private <T> Response<T> handleOkResponse(HttpResponse httpResponse, int statusCode, String message, TypeReference<T> typeReference) throws IOException {
-    ObjectMapper objectMapper = new ObjectMapper();
-    
     HttpEntity entity = httpResponse.getEntity();
     try {
       String httpResponseContent = IOUtils.toString(entity.getContent());
-      return new Response<>(statusCode, message, (T) objectMapper.readValue(httpResponseContent, typeReference));
+      String contentType = getContentType(httpResponse);
+      if ("text/xml".equals(contentType)) {
+        XmlMapper xmlMapper = new XmlMapper();
+        xmlMapper.registerModule(new JavaTimeModule());
+        return new Response<>(statusCode, message, (T) xmlMapper.readValue(httpResponseContent, typeReference));
+      } else {
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.registerModule(new JavaTimeModule());
+        return new Response<>(statusCode, message, (T) objectMapper.readValue(httpResponseContent, typeReference));
+      }
     } finally {
       EntityUtils.consume(entity);
     }
+  }
+  
+  private String getContentType(HttpResponse httpResponse) {
+    Header header = httpResponse.getFirstHeader("Content-Type");
+    if (header != null) {
+      return header.getValue();
+    }
+    
+    return null;
   }
 
   @SuppressWarnings("unchecked")
