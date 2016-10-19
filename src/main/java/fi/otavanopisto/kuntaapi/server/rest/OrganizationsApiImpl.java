@@ -24,6 +24,7 @@ import org.apache.commons.lang3.StringUtils;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.BannerId;
 import fi.otavanopisto.kuntaapi.server.id.EventId;
+import fi.otavanopisto.kuntaapi.server.id.JobId;
 import fi.otavanopisto.kuntaapi.server.id.MenuId;
 import fi.otavanopisto.kuntaapi.server.id.MenuItemId;
 import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
@@ -35,6 +36,9 @@ import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.BannerProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.EventProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.FileId;
+import fi.otavanopisto.kuntaapi.server.integrations.JobProvider;
+import fi.otavanopisto.kuntaapi.server.integrations.JobProvider.JobOrder;
+import fi.otavanopisto.kuntaapi.server.integrations.JobProvider.JobOrderDirection;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.MenuProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.NewsProvider;
@@ -45,6 +49,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.TileProvider;
 import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
 import fi.otavanopisto.kuntaapi.server.rest.model.Banner;
 import fi.otavanopisto.kuntaapi.server.rest.model.Event;
+import fi.otavanopisto.kuntaapi.server.rest.model.Job;
 import fi.otavanopisto.kuntaapi.server.rest.model.LocalizedValue;
 import fi.otavanopisto.kuntaapi.server.rest.model.Menu;
 import fi.otavanopisto.kuntaapi.server.rest.model.MenuItem;
@@ -102,6 +107,9 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   @Inject
   private Instance<MenuProvider> menuProviders;
+
+  @Inject
+  private Instance<JobProvider> jobProviders;
 
   @Override
   public Response listOrganizations(String businessName, String businessCode) {
@@ -932,13 +940,59 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   /* Jobs */
 
   @Override
-  public Response findOrganizationJob(String organizationId, String jobId) {
-    return createNotImplemented(NOT_IMPLEMENTED);
+  public Response findOrganizationJob(String organizationIdParam, String jobIdParam) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    JobId jobId = toJobId(jobIdParam);
+    if (jobId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    for (JobProvider jobProvider : getJobProviders()) {
+      Job job = jobProvider.findOrganizationJob(organizationId, jobId);
+      if (job != null) {
+        return Response.ok(job).build();
+      }
+    }
+    
+    return createNotFound(NOT_FOUND);
   }
 
   @Override
-  public Response listOrganizationJobs(String organizationId, String sortBy, String sortDir) {
-    return createNotImplemented(NOT_IMPLEMENTED);
+  public Response listOrganizationJobs(String organizationIdParam, String sortBy, String sortDir) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    List<Job> result = new ArrayList<>();
+    JobOrder order = JobOrder.PUBLICATION_END;
+    JobOrderDirection orderDirection = JobOrderDirection.DESCENDING;
+    
+    if (StringUtils.isNotBlank(sortBy)) {
+      order = EnumUtils.getEnum(JobProvider.JobOrder.class, sortBy);
+      if (order == null) {
+        return createBadRequest("Invalid value for sortBy");
+      }
+    }
+    
+    if (StringUtils.isNotBlank(sortDir)) {
+      orderDirection = EnumUtils.getEnum(JobOrderDirection.class, sortDir);
+      if (order == null) {
+        return createBadRequest("Invalid value for sortDir");
+      }
+    }
+    
+    
+    for (JobProvider jobProvider : getJobProviders()) {
+      result.addAll(jobProvider.listOrganizationJobs(organizationId, order, orderDirection));
+    }
+    
+    return Response.ok(result)
+      .build();
   }
   
   private Response validateListLimitParams(Long firstResult, Long maxResults) {
@@ -1042,6 +1096,14 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     return null;
   }
   
+  private JobId toJobId(String id) {
+    if (StringUtils.isNotBlank(id)) {
+      return new JobId(KuntaApiConsts.IDENTIFIER_NAME, id);
+    }
+    
+    return null;
+  }
+  
   private OffsetDateTime getDateTime(String timeString) {
     if (StringUtils.isNotBlank(timeString)) {
       return OffsetDateTime.parse(timeString);
@@ -1138,6 +1200,16 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     return Collections.unmodifiableList(result);
   }
 
+  private List<JobProvider> getJobProviders() {
+    List<JobProvider> result = new ArrayList<>();
+    
+    Iterator<JobProvider> iterator = jobProviders.iterator();
+    while (iterator.hasNext()) {
+      result.add(iterator.next());
+    }
+    
+    return Collections.unmodifiableList(result);
+  }
 
   private fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting findOrganizationSetting(OrganizationId organizationId, String settingId) {
     fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting organizationSetting = organizationSettingController.findOrganizationSetting(settingId);
