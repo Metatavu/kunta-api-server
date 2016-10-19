@@ -8,6 +8,7 @@ import java.util.Map.Entry;
 
 import fi.otavanopisto.restfulptv.client.model.ElectronicChannel;
 import fi.otavanopisto.restfulptv.client.model.Organization;
+import fi.otavanopisto.restfulptv.client.model.OrganizationService;
 import fi.otavanopisto.restfulptv.client.model.PhoneChannel;
 import fi.otavanopisto.restfulptv.client.model.PrintableFormChannel;
 import fi.otavanopisto.restfulptv.client.model.Service;
@@ -23,6 +24,7 @@ public class RestFulPtvMocker extends AbstractMocker {
   private Map<String, List<PrintableFormChannel>> printableFormChannelsList;
   private Map<String, List<ServiceLocationChannel>> serviceLocationChannelsList;
   private Map<String, List<WebPageChannel>> webPageChannelsList;
+  private Map<String, List<OrganizationService>> organizationServiceList;
   
   public RestFulPtvMocker() {
     organizationsList = new ArrayList<>();
@@ -32,6 +34,7 @@ public class RestFulPtvMocker extends AbstractMocker {
     printableFormChannelsList = new HashMap<>();
     serviceLocationChannelsList = new HashMap<>();
     webPageChannelsList = new HashMap<>();
+    organizationServiceList = new HashMap<>();
   }
 
   public RestFulPtvMocker mockOrganizations(String... ids) {
@@ -139,6 +142,23 @@ public class RestFulPtvMocker extends AbstractMocker {
     return this;
   }
   
+  public RestFulPtvMocker mockOrganizationServices(String organizationId, String... ids) {
+    List<OrganizationService> channelList = organizationServiceList.get(organizationId);
+    if (channelList == null) {
+      channelList = new ArrayList<>(ids.length);
+    }
+    
+    for (String id : ids) {
+      OrganizationService channel = readOrganizationServiceFromJSONFile(String.format("organizationservices/%s.json", id));
+      mockGetJSON(String.format("%s/organizations/%s/organizationServices/%s", AbstractIntegrationTest.BASE_URL, organizationId, id), channel, null);
+      channelList.add(channel);
+    }     
+    
+    organizationServiceList.put(organizationId, channelList);
+    
+    return this;
+  }
+  
   @Override
   public void startMock() {
     Map<String, String> pageQuery = new HashMap<>();
@@ -169,6 +189,10 @@ public class RestFulPtvMocker extends AbstractMocker {
 
     for (Entry<String, List<WebPageChannel>> channelsEntry : webPageChannelsList.entrySet()) {
       mockGetJSON(String.format("%s/services/%s/webPageChannels", AbstractIntegrationTest.BASE_URL, channelsEntry.getKey()), channelsEntry.getValue(), null);
+    }
+
+    for (Entry<String, List<OrganizationService>> organizationServiceEntry : organizationServiceList.entrySet()) {
+      mockGetJSON(String.format("%s/organizations/%s/organizationServices", AbstractIntegrationTest.BASE_URL, organizationServiceEntry.getKey()), organizationServiceEntry.getValue(), null);
     }
 
     super.startMock();
