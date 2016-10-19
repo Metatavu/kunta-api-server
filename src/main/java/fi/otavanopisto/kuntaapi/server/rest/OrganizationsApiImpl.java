@@ -3,6 +3,7 @@ package fi.otavanopisto.kuntaapi.server.rest;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Serializable;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -64,8 +65,10 @@ import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 @RequestScoped
 @Stateful
 @SuppressWarnings ("squid:S3306")
-public class OrganizationsApiImpl extends OrganizationsApi {
-  
+public class OrganizationsApiImpl extends OrganizationsApi implements Serializable {
+
+  private static final long serialVersionUID = -3906647680888607131L;
+
   private static final String NOT_FOUND = "Not Found";
 
   private static final String NOT_IMPLEMENTED = "Not implemented";
@@ -75,10 +78,10 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   private static final String FAILED_TO_STREAM_IMAGE_TO_CLIENT = "Failed to stream image to client";
 
   @Inject
-  private Logger logger;
+  private transient Logger logger;
   
   @Inject
-  private OrganizationSettingController organizationSettingController;
+  private transient OrganizationSettingController organizationSettingController;
   
   @Inject
   private Instance<OrganizationProvider> organizationProviders;
