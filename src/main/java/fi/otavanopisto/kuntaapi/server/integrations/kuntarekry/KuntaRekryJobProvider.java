@@ -34,7 +34,7 @@ public class KuntaRekryJobProvider implements JobProvider {
   }
 
   @Override
-  public List<Job> listOrganizationJobs(OrganizationId organizationId, JobOrder order, JobOrderDirection orderDirection) {
+  public List<Job> listOrganizationJobs(OrganizationId organizationId) {
     List<KuntaRekryJob> kuntaRekryJobs = kuntaRekryClient.listJobs(organizationId);
     return translateJobs(kuntaRekryJobs);
   }

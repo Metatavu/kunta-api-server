@@ -969,8 +969,8 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     }
     
     List<Job> result = new ArrayList<>();
-    JobOrder order = JobOrder.PUBLICATION_END;
-    JobOrderDirection orderDirection = JobOrderDirection.DESCENDING;
+    JobOrder order = null;
+    JobOrderDirection orderDirection = null;
     
     if (StringUtils.isNotBlank(sortBy)) {
       order = EnumUtils.getEnum(JobProvider.JobOrder.class, sortBy);
@@ -981,18 +981,43 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     
     if (StringUtils.isNotBlank(sortDir)) {
       orderDirection = EnumUtils.getEnum(JobOrderDirection.class, sortDir);
-      if (order == null) {
+      if (orderDirection == null) {
         return createBadRequest("Invalid value for sortDir");
       }
     }
     
-    
     for (JobProvider jobProvider : getJobProviders()) {
-      result.addAll(jobProvider.listOrganizationJobs(organizationId, order, orderDirection));
+      result.addAll(jobProvider.listOrganizationJobs(organizationId));
     }
     
-    return Response.ok(result)
+    return Response.ok(sortJobs(result, order, orderDirection))
       .build();
+  }
+  
+  private List<Job> sortJobs(List<Job> jobs, JobOrder order, JobOrderDirection orderDirection) {
+    if (order == null) {
+      return jobs;
+    }
+    
+    List<Job> sorted = new ArrayList<>(jobs);
+    
+    switch (order) {
+      case PUBLICATION_END:
+        Collections.sort(sorted, (Job o1, Job o2)
+          -> orderDirection != JobOrderDirection.ASCENDING 
+            ? o2.getPublicationEnd().compareTo(o1.getPublicationEnd())
+            : o1.getPublicationEnd().compareTo(o2.getPublicationEnd()));
+      break;
+      case PUBLICATION_START:
+        Collections.sort(sorted, (Job o1, Job o2)
+          -> orderDirection != JobOrderDirection.ASCENDING 
+            ? o2.getPublicationStart().compareTo(o1.getPublicationStart())
+            : o1.getPublicationStart().compareTo(o2.getPublicationStart()));
+      break;
+      default:
+    }
+
+    return sorted;
   }
   
   private Response validateListLimitParams(Long firstResult, Long maxResults) {

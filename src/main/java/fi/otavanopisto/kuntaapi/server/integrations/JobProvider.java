@@ -26,11 +26,9 @@ public interface JobProvider {
    * Lists jobs in an organization
    * 
    * @param organizationId organization id
-   * @param order order
-   * @param orderDirection ordering direction
    * @return organization jobs
    */
-  public List<Job> listOrganizationJobs(OrganizationId organizationId, JobOrder order, JobOrderDirection orderDirection);
+  public List<Job> listOrganizationJobs(OrganizationId organizationId);
 
   /**
    * Job order direction
