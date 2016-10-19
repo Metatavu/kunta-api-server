@@ -61,7 +61,7 @@ import fi.otavanopisto.kuntaapi.server.rest.model.Tile;
  * @author Antti Leppä
  */
 @RequestScoped
-@Stateful
+@Stateful(passivationCapable=false)
 @SuppressWarnings ("squid:S3306")
 public class OrganizationsApiImpl extends OrganizationsApi {
   
