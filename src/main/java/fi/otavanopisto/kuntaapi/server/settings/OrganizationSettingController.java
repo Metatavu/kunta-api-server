@@ -28,7 +28,7 @@ public class OrganizationSettingController implements Serializable {
   private static final String FAILED_TO_TRANSLATE = "Failed to translate %s into KuntaApiId id";
 
   @Inject
-  private Logger logger;
+  private transient Logger logger;
 
   @Inject
   private OrganizationSettingDAO organizationSettingDAO;
