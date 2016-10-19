@@ -36,9 +36,6 @@ public class OrganizationSettingController implements Serializable {
   @Inject
   private IdController idController;
   
-  private OrganizationSettingController() {
-  }
-  
   /**
    * Returns organization setting by key or null if setting is not defined
    * 
