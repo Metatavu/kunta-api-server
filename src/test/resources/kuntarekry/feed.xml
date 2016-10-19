@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<jobs>
+  <job>
+    <jobtitle>Työn 1 otsikko</jobtitle>
+    <employmenttype>Keikkatyö</employmenttype>
+    <jobdescription>Esimerkkityön 1 kuvaus</jobdescription>
+    <jobid>1234567890</jobid>
+    <location>Esimerkki</location>
+    <organisation>Esimerkin kaupunki</organisation>
+    <organisationalunit>Esimerkin yksikkö</organisationalunit>
+    <employmentduration>Vuorotyö</employmentduration>
+    <taskarea>Lähi- ja perushoitajat</taskarea>
+    <publicationtimestart>2010-01-02T00:00:00+02:00</publicationtimestart>
+    <publicationtimeend>2020-01-02T00:00:00+02:00</publicationtimeend>
+    <url>https://www.kuntarekry.fi/fi/tyopaikka/1234567890</url>
+  </job>
+  <job>
+    <jobtitle>Työn 2 otsikko</jobtitle>
+    <employmenttype>Keikkatyö</employmenttype>
+    <jobdescription>Esimerkkityön 2 kuvaus</jobdescription>
+    <jobid>2234567890</jobid>
+    <location>Esimerkki</location>
+    <organisation>Esimerkin kaupunki</organisation>
+    <organisationalunit>Esimerkin yksikkö</organisationalunit>
+    <employmentduration>Vuorotyö</employmentduration>
+    <taskarea>Lähi- ja perushoitajat</taskarea>
+    <publicationtimestart>2111-01-02T00:00:00+02:00</publicationtimestart>
+    <publicationtimeend>2121-01-02T00:00:00+02:00</publicationtimeend>
+    <url>https://www.kuntarekry.fi/fi/tyopaikka/2234567890</url>
+  </job>
+  <job>
+    <jobtitle>Työn 3 otsikko</jobtitle>
+    <employmenttype>Keikkatyö</employmenttype>
+    <jobdescription>Esimerkkityön 3 kuvaus</jobdescription>
+    <jobid>3234567890</jobid>
+    <location>Esimerkki</location>
+    <organisation>Esimerkin kaupunki</organisation>
+    <organisationalunit>Esimerkin yksikkö</organisationalunit>
+    <employmentduration>Vuorotyö</employmentduration>
+    <taskarea>Lähi- ja perushoitajat</taskarea>
+    <publicationtimestart>2012-01-02T00:00:00+02:00</publicationtimestart>
+    <publicationtimeend>2023-01-02T00:00:00+02:00</publicationtimeend>
+    <url>https://www.kuntarekry.fi/fi/tyopaikka/3234567890</url>
+  </job>
+</jobs>
