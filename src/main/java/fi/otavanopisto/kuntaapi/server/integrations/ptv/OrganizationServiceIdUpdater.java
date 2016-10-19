@@ -19,19 +19,19 @@ import javax.inject.Inject;
 
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
-import fi.otavanopisto.kuntaapi.server.discover.ServiceIdUpdateRequest;
-import fi.otavanopisto.kuntaapi.server.id.ServiceId;
-import fi.otavanopisto.kuntaapi.server.id.ServiceLocationChannelId;
+import fi.otavanopisto.kuntaapi.server.discover.OrganizationIdUpdateRequest;
+import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.id.OrganizationServiceId;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.system.SystemUtils;
 import fi.otavanopisto.restfulptv.client.ApiResponse;
-import fi.otavanopisto.restfulptv.client.model.ServiceLocationChannel ;
+import fi.otavanopisto.restfulptv.client.model.OrganizationService;
 
 @ApplicationScoped
 @Singleton
 @AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
-public class ServiceLocationChannelIdUpdater extends EntityUpdater {
+public class OrganizationServiceIdUpdater extends EntityUpdater {
 
   private static final int TIMER_INTERVAL = 5000;
 
@@ -48,7 +48,7 @@ public class ServiceLocationChannelIdUpdater extends EntityUpdater {
   private TimerService timerService;
 
   private boolean stopped;
-  private List<ServiceId> queue;
+  private List<OrganizationId> queue;
 
   @PostConstruct
   public void init() {
@@ -57,7 +57,7 @@ public class ServiceLocationChannelIdUpdater extends EntityUpdater {
 
   @Override
   public String getName() {
-    return "service-location-channels";
+    return "organization-services";
   }
 
   @Override
@@ -77,7 +77,7 @@ public class ServiceLocationChannelIdUpdater extends EntityUpdater {
     stopped = true;
   }
   
-  public void onServiceIdUpdateRequest(@Observes ServiceIdUpdateRequest event) {
+  public void onOrganizationIdUpdateRequest(@Observes OrganizationIdUpdateRequest event) {
     if (!stopped) {
       if (event.isPriority()) {
         queue.remove(event.getId());
@@ -94,13 +94,13 @@ public class ServiceLocationChannelIdUpdater extends EntityUpdater {
   public void timeout(Timer timer) {
     if (!stopped) {
       if (!queue.isEmpty()) {
-        ServiceId serviceId = queue.iterator().next();
-        if (!queue.remove(serviceId)) {
-          logger.warning(String.format("Could not remove %s from queue", serviceId));
+        OrganizationId organizationId = queue.iterator().next();
+        if (!queue.remove(organizationId)) {
+          logger.warning(String.format("Could not remove %s from queue", organizationId));
         }
         
-        if (PtvConsts.IDENTIFIFER_NAME.equals(serviceId.getSource())) {
-          updateChannelIds(serviceId);          
+        if (PtvConsts.IDENTIFIFER_NAME.equals(organizationId.getSource())) {
+          updateOrganizationServiceIds(organizationId);          
         }        
       }
 
@@ -108,18 +108,18 @@ public class ServiceLocationChannelIdUpdater extends EntityUpdater {
     }
   }
 
-  private void updateChannelIds(ServiceId serviceId) {
-    ApiResponse<List<ServiceLocationChannel>> response = ptvApi.getServicesApi().listServiceServiceLocationChannels(serviceId.getId(), null, null);
+  private void updateOrganizationServiceIds(OrganizationId organizationId)  {
+    ApiResponse<List<OrganizationService>> response = ptvApi.getOrganizationServicesApi().listOrganizationOrganizationServices(organizationId.getId(), null, null);
     if (response.isOk()) {
-      for (ServiceLocationChannel locationChannel : response.getResponse()) {
-        ServiceLocationChannelId channelId = new ServiceLocationChannelId(PtvConsts.IDENTIFIFER_NAME, locationChannel.getId());
-        Identifier identifier = identifierController.findIdentifierById(channelId);
+      for (OrganizationService organizationService : response.getResponse()) {
+        OrganizationServiceId organizationServiceId = new OrganizationServiceId(PtvConsts.IDENTIFIFER_NAME, organizationService.getId());
+        Identifier identifier = identifierController.findIdentifierById(organizationServiceId);
         if (identifier == null) {
-          identifierController.createIdentifier(channelId);
+          identifierController.createIdentifier(organizationServiceId);
         }
       }
     } else {
-      logger.warning(String.format("Service channel %s processing failed on [%d] %s", serviceId.getId(), response.getStatus(), response.getMessage()));
+      logger.warning(String.format("Organization %s services processing failed on [%d] %s", organizationId.getId(), response.getStatus(), response.getMessage()));
     }
   }
 

@@ -17,6 +17,7 @@ import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.IdUpdater;
 import fi.otavanopisto.kuntaapi.server.discover.OrganizationIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.system.SystemUtils;
 import fi.otavanopisto.restfulptv.client.ApiResponse;
 import fi.otavanopisto.restfulptv.client.model.Organization;
 
@@ -76,7 +77,7 @@ public class PtvOrganizationIdUpdater implements IdUpdater {
       try {
         discoverIds();
       } finally {
-        startTimer(TIMER_INTERVAL);
+        startTimer(SystemUtils.inTestMode() ? 1000 : TIMER_INTERVAL);
       }
     }
   }

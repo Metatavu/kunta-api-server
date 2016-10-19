@@ -68,6 +68,36 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
       .statusCode(404);
   }
   
+  protected String getOrganizationServiceId(String organizationId, int index) {
+    return given() 
+        .baseUri(getApiBasePath())
+        .contentType(ContentType.JSON)
+        .get(String.format("/organizations/%s/organizationServices", organizationId))
+        .body()
+        .jsonPath()
+        .getString(String.format("id[%d]", index));
+  }
+  
+  protected String getOrganizationId(int index) {
+    return given() 
+        .baseUri(getApiBasePath())
+        .contentType(ContentType.JSON)
+        .get("/organizations")
+        .body()
+        .jsonPath()
+        .getString(String.format("id[%d]", index));
+  }
+  
+  protected String getServiceId(int index) {
+    return given() 
+        .baseUri(getApiBasePath())
+        .contentType(ContentType.JSON)
+        .get("/services")
+        .body()
+        .jsonPath()
+        .getString(String.format("id[%d]", index));
+  }
+  
   protected int countApiList(String path) {
     return given() 
       .baseUri(getApiBasePath())
