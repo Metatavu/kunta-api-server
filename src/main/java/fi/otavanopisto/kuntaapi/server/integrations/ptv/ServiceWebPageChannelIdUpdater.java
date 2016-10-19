@@ -23,6 +23,7 @@ import fi.otavanopisto.kuntaapi.server.discover.ServiceIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.id.ServiceId;
 import fi.otavanopisto.kuntaapi.server.id.WebPageChannelId;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
+import fi.otavanopisto.kuntaapi.server.system.SystemUtils;
 import fi.otavanopisto.restfulptv.client.ApiResponse;
 import fi.otavanopisto.restfulptv.client.model.WebPageChannel ;
 
@@ -103,7 +104,7 @@ public class ServiceWebPageChannelIdUpdater extends EntityUpdater {
         }        
       }
 
-      startTimer(TIMER_INTERVAL);
+      startTimer(SystemUtils.inTestMode() ? 1000 : TIMER_INTERVAL);
     }
   }
 

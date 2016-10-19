@@ -23,6 +23,7 @@ import fi.otavanopisto.kuntaapi.server.discover.ServiceIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.id.ElectronicServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceId;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
+import fi.otavanopisto.kuntaapi.server.system.SystemUtils;
 import fi.otavanopisto.restfulptv.client.ApiResponse;
 import fi.otavanopisto.restfulptv.client.model.ElectronicChannel;
 
@@ -103,7 +104,7 @@ public class PtvServiceElectronicChannelIdUpdater extends EntityUpdater {
         }        
       }
 
-      startTimer(TIMER_INTERVAL);
+      startTimer(SystemUtils.inTestMode() ? 1000 : TIMER_INTERVAL);
     }
   }
 
