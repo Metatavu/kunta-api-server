@@ -3,7 +3,6 @@ package fi.otavanopisto.kuntaapi.server.rest;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.Serializable;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -55,7 +54,6 @@ import fi.otavanopisto.kuntaapi.server.rest.model.OrganizationService;
 import fi.otavanopisto.kuntaapi.server.rest.model.OrganizationSetting;
 import fi.otavanopisto.kuntaapi.server.rest.model.Page;
 import fi.otavanopisto.kuntaapi.server.rest.model.Tile;
-import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 
 /**
  * REST Service implementation
@@ -65,9 +63,7 @@ import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 @RequestScoped
 @Stateful
 @SuppressWarnings ("squid:S3306")
-public class OrganizationsApiImpl extends OrganizationsApi implements Serializable {
-
-  private static final long serialVersionUID = -3906647680888607131L;
+public class OrganizationsApiImpl extends OrganizationsApi {
   
   private static final String MAX_RESULTS_MUST_BY_A_POSITIVE_INTEGER = "maxResults must by a positive integer";
   private static final String FIRST_RESULT_MUST_BY_A_POSITIVE_INTEGER = "firstResult must by a positive integer";
@@ -77,10 +73,10 @@ public class OrganizationsApiImpl extends OrganizationsApi implements Serializab
   private static final String FAILED_TO_STREAM_IMAGE_TO_CLIENT = "Failed to stream image to client";
 
   @Inject
-  private transient Logger logger;
+  private Logger logger;
   
-  @Inject
-  private transient OrganizationSettingController organizationSettingController;
+  //@Inject
+  //private transient OrganizationSettingController organizationSettingController;
   
   @Inject
   private Instance<OrganizationProvider> organizationProviders;
@@ -581,7 +577,8 @@ public class OrganizationsApiImpl extends OrganizationsApi implements Serializab
 
   @Override
   public Response createOrganizationSetting(String organizationIdParam, OrganizationSetting setting) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    return createNotImplemented(NOT_IMPLEMENTED);
+    /*OrganizationId organizationId = toOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
     }
@@ -601,12 +598,13 @@ public class OrganizationsApiImpl extends OrganizationsApi implements Serializab
     
     return Response.ok()
         .entity(createOrganizationEntity(organizationSettingController.createOrganizationSetting(setting.getKey(), setting.getValue(), organizationId)))
-        .build();
+        .build();*/
   }
 
   @Override
   public Response listOrganizationSettings(String organizationIdParam, String key) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    return createNotImplemented(NOT_IMPLEMENTED);
+   /* OrganizationId organizationId = toOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
     }
@@ -631,7 +629,7 @@ public class OrganizationsApiImpl extends OrganizationsApi implements Serializab
 
     return Response.ok()
         .entity(result)
-        .build();
+        .build();*/
   }
   
   @Override
@@ -651,7 +649,8 @@ public class OrganizationsApiImpl extends OrganizationsApi implements Serializab
   @Override
   @SuppressWarnings ("squid:MethodCyclomaticComplexity")
   public Response updateOrganizationSetting(String organizationIdParam, String settingId, OrganizationSetting setting) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    return createNotImplemented(NOT_IMPLEMENTED);
+    /*OrganizationId organizationId = toOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
     }
@@ -677,11 +676,13 @@ public class OrganizationsApiImpl extends OrganizationsApi implements Serializab
     
     return Response.ok()
         .entity(createOrganizationEntity(updatedSetting))
-        .build();
+        .build();*/
   }
 
   @Override
   public Response deleteOrganizationSetting(String organizationIdParam, String settingId) {
+    return createNotImplemented(NOT_IMPLEMENTED);
+    /*
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
@@ -696,6 +697,7 @@ public class OrganizationsApiImpl extends OrganizationsApi implements Serializab
     
     return Response.noContent()
         .build();
+        */
   }
 
   
@@ -1143,7 +1145,7 @@ public class OrganizationsApiImpl extends OrganizationsApi implements Serializab
 
 
   private fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting findOrganizationSetting(OrganizationId organizationId, String settingId) {
-    fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting organizationSetting = organizationSettingController.findOrganizationSetting(settingId);
+    /*fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting organizationSetting = organizationSettingController.findOrganizationSetting(settingId);
     if (organizationSetting == null) {
       return null;
     }
@@ -1153,7 +1155,8 @@ public class OrganizationsApiImpl extends OrganizationsApi implements Serializab
       return null;
     }
     
-    return organizationSetting;
+    return organizationSetting;*/
+    return null;
   }
   
   private OrganizationSetting createOrganizationEntity(fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting organizationSetting) {
