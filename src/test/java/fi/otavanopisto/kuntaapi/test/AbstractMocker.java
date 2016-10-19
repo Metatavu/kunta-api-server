@@ -25,6 +25,7 @@ import com.github.tomakehurst.wiremock.client.WireMock;
 
 import fi.otavanopisto.restfulptv.client.model.ElectronicChannel;
 import fi.otavanopisto.restfulptv.client.model.Organization;
+import fi.otavanopisto.restfulptv.client.model.OrganizationService;
 import fi.otavanopisto.restfulptv.client.model.PhoneChannel;
 import fi.otavanopisto.restfulptv.client.model.PrintableFormChannel;
 import fi.otavanopisto.restfulptv.client.model.Service;
@@ -166,6 +167,10 @@ public class AbstractMocker {
    */    
   public WebPageChannel readWebPageChannelFromJSONFile(String file) {
     return readJSONFile(file, WebPageChannel.class);
+  }
+  
+  public OrganizationService readOrganizationServiceFromJSONFile(String file) {
+    return readJSONFile(file, OrganizationService.class);
   }
   
   private <T> T readJSONFile(String file, Class <T> type){

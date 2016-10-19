@@ -115,16 +115,6 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
       .jsonPath()
       .getString(String.format("id[%d]", index));
   }
-  
-  private String getServiceId(int index) {
-    return given() 
-        .baseUri(getApiBasePath())
-        .contentType(ContentType.JSON)
-        .get("/services")
-        .body()
-        .jsonPath()
-        .getString(String.format("id[%d]", index));
-  }
 
   @Test
   public void testFindElectronicChannel() throws InterruptedException {

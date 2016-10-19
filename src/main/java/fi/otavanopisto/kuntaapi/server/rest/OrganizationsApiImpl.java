@@ -68,13 +68,12 @@ import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 public class OrganizationsApiImpl extends OrganizationsApi implements Serializable {
 
   private static final long serialVersionUID = -3906647680888607131L;
-
+  
+  private static final String MAX_RESULTS_MUST_BY_A_POSITIVE_INTEGER = "maxResults must by a positive integer";
+  private static final String FIRST_RESULT_MUST_BY_A_POSITIVE_INTEGER = "firstResult must by a positive integer";
   private static final String NOT_FOUND = "Not Found";
-
   private static final String NOT_IMPLEMENTED = "Not implemented";
-
   private static final String INTERNAL_SERVER_ERROR = "Internal Server Error";
-
   private static final String FAILED_TO_STREAM_IMAGE_TO_CLIENT = "Failed to stream image to client";
 
   @Inject
@@ -165,13 +164,22 @@ public class OrganizationsApiImpl extends OrganizationsApi implements Serializab
         .build();
     }
     
+    Response validationResponse = validateListLimitParams(firstResult, maxResults);
+    if (validationResponse != null) {
+      return validationResponse;
+    }
+    
     List<OrganizationService> result = new ArrayList<>();
     
     for (OrganizationServiceProvider organizationServiceProvider : getOrganizationServiceProviders()) {
       result.addAll(organizationServiceProvider.listOrganizationServices(organizationId));
     }
     
-    return Response.ok(result)
+    int resultCount = result.size();
+    int firstIndex = firstResult == null ? 0 : Math.min(firstResult.intValue(), resultCount);
+    int toIndex = maxResults == null ? resultCount : Math.min(firstIndex + maxResults.intValue(), resultCount);
+    
+    return Response.ok(result.subList(firstIndex, toIndex))
       .build();
   }
   
@@ -922,6 +930,30 @@ public class OrganizationsApiImpl extends OrganizationsApi implements Serializab
   @Override
   public Response getOrganizationFileData(String organizationId, String fileId) {
     return createNotImplemented(NOT_IMPLEMENTED);
+  }
+  
+  /* Jobs */
+
+  @Override
+  public Response findOrganizationJob(String organizationId, String jobId) {
+    return createNotImplemented(NOT_IMPLEMENTED);
+  }
+
+  @Override
+  public Response listOrganizationJobs(String organizationId, String sortBy, String sortDir) {
+    return createNotImplemented(NOT_IMPLEMENTED);
+  }
+  
+  private Response validateListLimitParams(Long firstResult, Long maxResults) {
+    if (firstResult != null && firstResult < 0) {
+      return createBadRequest(FIRST_RESULT_MUST_BY_A_POSITIVE_INTEGER);
+    }
+    
+    if (maxResults != null && maxResults < 0) {
+      return createBadRequest(MAX_RESULTS_MUST_BY_A_POSITIVE_INTEGER);
+    }
+    
+    return null;
   }
   
   private BannerId toBannerId(String id) {
