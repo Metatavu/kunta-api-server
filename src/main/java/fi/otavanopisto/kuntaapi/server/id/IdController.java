@@ -22,9 +22,6 @@ public class IdController {
   @Inject
   private Instance<IdProvider> idProviders;
   
-  private IdController() {
-  }
-  
   /**
    * Translates organization id into into target id
    * 
