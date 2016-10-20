@@ -57,24 +57,6 @@ public class KuntaRekryTestsIT extends AbstractIntegrationTest {
     deletePtvSettings();
     deleteKuntaRekrySettings(organizationId);
   }
-   
-  private void createPtvSettings() {
-    insertSystemSetting(PtvConsts.SYSTEM_SETTING_BASEURL, String.format("%s%s", getWireMockBasePath(), BASE_URL));
-    flushCache();
-  }
-  
-  private void deletePtvSettings() {
-    deleteSystemSetting(PtvConsts.SYSTEM_SETTING_BASEURL);
-  }
-  
- private void createKuntaRekrySettings(String organizationId) {
-   insertOrganizationSetting(organizationId, KuntaRekryConsts.ORGANIZATION_SETTING_APIURI, String.format("%s/kuntarekry", getWireMockBasePath(), BASE_URL));
-   flushCache();
- }
- 
- private void deleteKuntaRekrySettings(String organizationId) {
-   deleteOrganizationSetting(organizationId, KuntaRekryConsts.ORGANIZATION_SETTING_APIURI);
- }
   
   @Test
   public void findListJob() {
@@ -186,6 +168,25 @@ public class KuntaRekryTestsIT extends AbstractIntegrationTest {
     
     assertNotFound(String.format("/organizations/%s/jobs/%s", incorrectOrganizationId, organizationJobId));
     assertEquals(0, countApiList(String.format("/organizations/%s/jobs", incorrectOrganizationId)));
+  }
+
+  
+  private void createPtvSettings() {
+    insertSystemSetting(PtvConsts.SYSTEM_SETTING_BASEURL, String.format("%s%s", getWireMockBasePath(), BASE_URL));
+    flushCache();
+  }
+  
+  private void deletePtvSettings() {
+    deleteSystemSetting(PtvConsts.SYSTEM_SETTING_BASEURL);
+  }
+    
+  private void createKuntaRekrySettings(String organizationId) {
+    insertOrganizationSetting(organizationId, KuntaRekryConsts.ORGANIZATION_SETTING_APIURI, String.format("%s/kuntarekry", getWireMockBasePath(), BASE_URL));
+    flushCache();
+  }
+   
+  private void deleteKuntaRekrySettings(String organizationId) {
+    deleteOrganizationSetting(organizationId, KuntaRekryConsts.ORGANIZATION_SETTING_APIURI);
   }
   
 }

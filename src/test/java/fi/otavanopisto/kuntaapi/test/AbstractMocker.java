@@ -33,6 +33,8 @@ import com.github.tomakehurst.wiremock.client.WireMock;
  */
 public class AbstractMocker {
 
+  private static final String FAILED_TO_READ_MOCK_FILE = "Failed to read mock file";
+
   private static Logger logger = Logger.getLogger(AbstractMocker.class.getName());
 
   private List<StringGetMock> stringMocks;
@@ -126,7 +128,7 @@ public class AbstractMocker {
     try (InputStream stream = getClass().getClassLoader().getResourceAsStream(file)) {
       return xmlMapper.readValue(stream, type);
     } catch (IOException e) {
-      logger.log(Level.SEVERE, "Failed to read mock file", e);
+      logger.log(Level.SEVERE, FAILED_TO_READ_MOCK_FILE, e);
       fail(e.getMessage());
     }
     
@@ -140,7 +142,7 @@ public class AbstractMocker {
     try (InputStream stream = getClass().getClassLoader().getResourceAsStream(file)) {
       return xmlMapper.readValue(stream, typeReference);
     } catch (IOException e) {
-      logger.log(Level.SEVERE, "Failed to read mock file", e);
+      logger.log(Level.SEVERE, FAILED_TO_READ_MOCK_FILE, e);
       fail(e.getMessage());
     }
     
@@ -154,7 +156,7 @@ public class AbstractMocker {
     try (InputStream stream = getClass().getClassLoader().getResourceAsStream(file)) {
       return objectMapper.readValue(stream, type);
     } catch (IOException e) {
-      logger.log(Level.SEVERE, "Failed to read mock file", e);
+      logger.log(Level.SEVERE, FAILED_TO_READ_MOCK_FILE, e);
       fail(e.getMessage());
     }
     return null;
