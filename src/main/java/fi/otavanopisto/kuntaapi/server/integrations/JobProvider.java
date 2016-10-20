@@ -7,7 +7,7 @@ import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.rest.model.Job;
 
 /**
- * Interafce that describes a single event provider
+ * Interface that describes a single job provider
  * 
  * @author Antti Leppä
  */

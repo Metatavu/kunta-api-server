@@ -994,6 +994,19 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       .build();
   }
   
+  /* Announcements */
+
+  @Override
+  public Response findOrganizationAnnouncement(String organizationId, String announcementId) {
+    return null;
+  }
+
+  @Override
+  public Response listOrganizationAnnouncements(String organizationId, Integer firstResult, Integer maxResults,
+      String sortBy, String sortDir) {
+    return null;
+  }
+  
   private List<Job> sortJobs(List<Job> jobs, JobOrder order, JobOrderDirection orderDirection) {
     if (order == null) {
       return jobs;
@@ -1257,5 +1270,6 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     result.setValue(organizationSetting.getValue());
     return result;
   }
+
 }
 

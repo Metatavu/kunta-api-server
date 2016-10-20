@@ -10,7 +10,7 @@ import fi.otavanopisto.kuntaapi.server.rest.model.LocalizedValue;
 import fi.otavanopisto.kuntaapi.server.rest.model.Page;
 
 /**
- * Interafce that describes a single page provider
+ * Interface that describes a single page provider
  * 
  * @author Antti Leppä
  */

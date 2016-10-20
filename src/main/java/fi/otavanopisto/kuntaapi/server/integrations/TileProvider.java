@@ -9,7 +9,7 @@ import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
 import fi.otavanopisto.kuntaapi.server.rest.model.Tile;
 
 /**
- * Interafce that describes a single tile provider
+ * Interface that describes a single tile provider
  * 
  * @author Antti Leppä
  */
