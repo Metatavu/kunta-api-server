@@ -34,9 +34,6 @@ public class PtvClient implements fi.otavanopisto.restfulptv.client.ApiClient {
   @Inject
   private GenericHttpClient httpClient;
 
-  private PtvClient() {
-  }
-
   @Override
   public <T> ApiResponse<T> doGETRequest(String url, ResultType<T> resultType, Map<String, Object> queryParams, Map<String, Object> postParams) {
     URIBuilder uriBuilder;

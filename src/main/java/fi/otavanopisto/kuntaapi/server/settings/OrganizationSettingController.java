@@ -17,10 +17,11 @@ import fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting;
  * Controller for organization settings. Class does not handle concurrency so caller must take care of that
  * 
  * @author Antti Leppä
+ * @author Heikki Kurhinen
  */
 @Dependent
 public class OrganizationSettingController {
-  
+
   private static final String FAILED_TO_TRANSLATE = "Failed to translate %s into KuntaApiId id";
 
   @Inject
@@ -31,9 +32,6 @@ public class OrganizationSettingController {
   
   @Inject
   private IdController idController;
-  
-  private OrganizationSettingController() {
-  }
   
   /**
    * Returns organization setting by key or null if setting is not defined

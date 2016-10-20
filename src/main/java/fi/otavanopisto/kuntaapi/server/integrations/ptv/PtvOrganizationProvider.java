@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.logging.Logger;
 
-import javax.enterprise.context.Dependent;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
 import org.apache.commons.lang3.StringUtils;
@@ -21,7 +21,7 @@ import fi.otavanopisto.restfulptv.client.ApiResponse;
  * 
  * @author Antti Leppä
  */
-@Dependent
+@RequestScoped
 public class PtvOrganizationProvider extends AbstractPtvProvider implements OrganizationProvider {
   
   @Inject
@@ -32,9 +32,6 @@ public class PtvOrganizationProvider extends AbstractPtvProvider implements Orga
   
   @Inject
   private IdController idController;
-
-  private PtvOrganizationProvider() {
-  }
 
   @Override
   public Organization findOrganization(OrganizationId organizationId) {

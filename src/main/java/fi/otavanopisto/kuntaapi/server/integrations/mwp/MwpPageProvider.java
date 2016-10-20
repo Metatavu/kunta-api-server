@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.logging.Logger;
 
-import javax.enterprise.context.Dependent;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
 import org.apache.commons.lang3.StringUtils;
@@ -31,7 +31,7 @@ import fi.otavanopisto.mwp.client.model.Attachment.MediaTypeEnum;
  * 
  * @author Antti Leppä
  */
-@Dependent
+@RequestScoped
 public class MwpPageProvider extends AbstractMwpProvider implements PageProvider {
   
   @Inject
@@ -45,9 +45,6 @@ public class MwpPageProvider extends AbstractMwpProvider implements PageProvider
   
   @Inject
   private IdentifierController identifierController;
-
-  private MwpPageProvider() {
-  }
   
   @Override
   public List<Page> listOrganizationPages(OrganizationId organizationId, PageId parentId, boolean onlyRootPages, String path) {

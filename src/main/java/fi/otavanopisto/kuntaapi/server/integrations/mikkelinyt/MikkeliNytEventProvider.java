@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.enterprise.context.Dependent;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
 import org.apache.commons.lang3.StringEscapeUtils;
@@ -48,8 +48,10 @@ import fi.otavanopisto.mikkelinyt.model.EventsResponse;
  * Event provider for Mikkeli Nyt
  * 
  * @author Antti Leppä
+ * @author Heikki Kurhinen
  */
-@Dependent
+
+@RequestScoped
 public class MikkeliNytEventProvider implements EventProvider {
   
   private static final String API_KEY_NOT_CONFIGURED = "Api key not configured";
@@ -83,9 +85,6 @@ public class MikkeliNytEventProvider implements EventProvider {
   
   @Inject
   private ImageScaler imageScaler;
-  
-  private MikkeliNytEventProvider() {
-  }
   
   @Override
   public List<Event> listOrganizationEvents(OrganizationId organizationId, OffsetDateTime startBefore,

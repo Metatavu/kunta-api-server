@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.logging.Logger;
 
-import javax.enterprise.context.Dependent;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
@@ -28,7 +28,7 @@ import fi.otavanopisto.mwp.client.model.Attachment.MediaTypeEnum;
  * 
  * @author Antti Leppä
  */
-@Dependent
+@RequestScoped
 public class MwpBannerProvider extends AbstractMwpProvider implements BannerProvider {
   
   @Inject
@@ -42,9 +42,6 @@ public class MwpBannerProvider extends AbstractMwpProvider implements BannerProv
   
   @Inject
   private IdentifierController identifierController;
-
-  private MwpBannerProvider() {
-  }
 
   @Override
   public List<Banner> listOrganizationBanners(OrganizationId organizationId) {

@@ -1,15 +1,21 @@
 name: kunta-api-server
-version: "0.0.4-SNAPSHOT"
-summary: Kunta API Serevr
+version: "{{ KUNTA_API_SERVER_VERSION }}"
+summary: Kunta API Server
 description: Kunta API Server 
 grade: devel
+confinement: devmode
 
 apps:
   wildfly:
     command: bin/wrapper
-    daemon: simple
+    daemon: forking
     plugs:
+      - network
       - network-bind
+      - network-observe
+      - log-observe
+      - process-control
+      - system-observe
 parts:
   wildfly:
     plugin: dump
@@ -24,8 +30,7 @@ parts:
       com: modules/system/layers/base/com
   webapp:
     plugin: maven
-    source: https://github.com/otavanopisto/kunta-api-server.git
-    source-type: git
+    source: ../
   local-files:
     plugin: make
     source: .
