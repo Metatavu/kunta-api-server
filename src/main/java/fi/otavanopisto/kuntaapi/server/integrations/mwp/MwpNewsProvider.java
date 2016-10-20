@@ -46,9 +46,6 @@ public class MwpNewsProvider extends AbstractMwpProvider implements NewsProvider
   @Inject
   private IdentifierController identifierController;
   
-  private MwpNewsProvider() {
-  }
-  
   @Override
   public List<NewsArticle> listOrganizationNews(OrganizationId organizationId, OffsetDateTime publishedBefore,
       OffsetDateTime publishedAfter, Integer firstResult, Integer maxResults) {

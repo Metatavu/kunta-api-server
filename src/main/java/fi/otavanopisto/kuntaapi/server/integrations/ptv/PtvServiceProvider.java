@@ -4,7 +4,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.logging.Logger;
 
-import javax.enterprise.context.Dependent;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
 import fi.otavanopisto.kuntaapi.server.id.IdController;
@@ -18,7 +18,7 @@ import fi.otavanopisto.restfulptv.client.ApiResponse;
  * 
  * @author Antti Leppä
  */
-@Dependent
+@RequestScoped
 public class PtvServiceProvider extends AbstractPtvProvider implements ServiceProvider {
 
   @Inject
@@ -29,9 +29,6 @@ public class PtvServiceProvider extends AbstractPtvProvider implements ServicePr
   
   @Inject
   private IdController idController;
-
-  private PtvServiceProvider() {
-  }
 
   @Override
   public Service findService(ServiceId serviceId) {

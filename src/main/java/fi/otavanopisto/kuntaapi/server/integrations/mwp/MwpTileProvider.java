@@ -43,9 +43,6 @@ public class MwpTileProvider extends AbstractMwpProvider implements TileProvider
   @Inject
   private IdentifierController identifierController;
 
-  private MwpTileProvider() {
-  }
-
   @Override
   public List<Tile> listOrganizationTiles(OrganizationId organizationId) {
     String context = null;

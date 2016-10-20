@@ -42,9 +42,6 @@ public class MwpMenuProvider extends AbstractMwpProvider implements MenuProvider
   
   @Inject
   private IdentifierController identifierController;
-
-  private MwpMenuProvider() {
-  }
   
   @Override
   public List<Menu> listOrganizationMenus(OrganizationId organizationId, String slug) {

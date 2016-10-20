@@ -45,9 +45,6 @@ public class MwpPageProvider extends AbstractMwpProvider implements PageProvider
   
   @Inject
   private IdentifierController identifierController;
-
-  private MwpPageProvider() {
-  }
   
   @Override
   public List<Page> listOrganizationPages(OrganizationId organizationId, PageId parentId, boolean onlyRootPages, String path) {

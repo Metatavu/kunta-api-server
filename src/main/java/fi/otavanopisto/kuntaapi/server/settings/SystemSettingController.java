@@ -22,9 +22,6 @@ public class SystemSettingController {
   @Inject
   private SystemSettingDAO systemSettingDAO;
   
-  private SystemSettingController() {
-  }
-  
   /**
    * Returns system setting by key or null if setting is not defined
    * 

@@ -4,7 +4,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.logging.Logger;
 
-import javax.enterprise.context.Dependent;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
 import fi.otavanopisto.kuntaapi.server.id.ElectronicServiceChannelId;
@@ -28,7 +28,7 @@ import fi.otavanopisto.restfulptv.client.ApiResponse;
  * @author Antti Leppä
  * @author Heikki Kurhinen
  */
-@Dependent
+@RequestScoped
 public class PtvServiceChannelProvider extends AbstractPtvProvider implements ServiceChannelProvider {
 
   private static final String SERVICE_TRANSLATE_FAILURE = "Failed to translate service id %s into PTV id";
@@ -47,9 +47,6 @@ public class PtvServiceChannelProvider extends AbstractPtvProvider implements Se
   @Inject
   private IdController idController;
   
-  private PtvServiceChannelProvider() {
-  }
-
   @Override
   public ElectronicChannel findElectronicChannel(ServiceId serviceId, ElectronicServiceChannelId electronicServiceChannelId) {
     ServiceId ptvServiceId = idController.translateServiceId(serviceId, PtvConsts.IDENTIFIFER_NAME);

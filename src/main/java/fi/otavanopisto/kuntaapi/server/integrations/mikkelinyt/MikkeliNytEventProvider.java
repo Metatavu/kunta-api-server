@@ -86,9 +86,6 @@ public class MikkeliNytEventProvider implements EventProvider {
   @Inject
   private ImageScaler imageScaler;
   
-  private MikkeliNytEventProvider() {
-  }
-  
   @Override
   public List<Event> listOrganizationEvents(OrganizationId organizationId, OffsetDateTime startBefore,
       OffsetDateTime startAfter, OffsetDateTime endBefore, OffsetDateTime endAfter, EventOrder order,

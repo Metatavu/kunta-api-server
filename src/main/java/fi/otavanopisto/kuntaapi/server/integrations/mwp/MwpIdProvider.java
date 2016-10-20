@@ -1,6 +1,6 @@
 package fi.otavanopisto.kuntaapi.server.integrations.mwp;
 
-import javax.enterprise.context.Dependent;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
@@ -31,15 +31,12 @@ import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
  * 
  * @author Antti Leppä
  */
-@Dependent
+@RequestScoped
 public class MwpIdProvider implements IdProvider {
   
   @Inject
   private IdentifierController identifierController;
 
-  private MwpIdProvider() {
-  }
-  
   @Override
   public boolean canTranslate(String source, String target) {
     if (MwpConsts.IDENTIFIER_NAME.equals(source) && KuntaApiConsts.IDENTIFIER_NAME.equals(target)) {

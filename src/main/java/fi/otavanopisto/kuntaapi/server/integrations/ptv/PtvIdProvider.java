@@ -36,9 +36,6 @@ public class PtvIdProvider implements IdProvider {
   
   @Inject
   private IdentifierController identifierController;
-
-  private PtvIdProvider() {
-  }
   
   @Override
   public boolean canTranslate(String source, String target) {

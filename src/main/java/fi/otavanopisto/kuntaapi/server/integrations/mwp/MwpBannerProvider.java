@@ -43,9 +43,6 @@ public class MwpBannerProvider extends AbstractMwpProvider implements BannerProv
   @Inject
   private IdentifierController identifierController;
 
-  private MwpBannerProvider() {
-  }
-
   @Override
   public List<Banner> listOrganizationBanners(OrganizationId organizationId) {
     String context = null;
