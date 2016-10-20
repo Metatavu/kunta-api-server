@@ -1,6 +1,6 @@
-package fi.otavanopisto.kuntaapi.server.integrations.mikkelinyt;
+package fi.otavanopisto.kuntaapi.server.integrations.kuntarekry;
 
-import javax.enterprise.context.Dependent;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
@@ -28,26 +28,23 @@ import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 
 /**
- * Id provider for Mikkeli Nyt
+ * Id provider for Kuntarekry
  * 
  * @author Antti Leppä
  */
-@Dependent
-public class MikkeliNytIdProvider implements IdProvider {
+@RequestScoped
+public class KuntaRekryIdProvider implements IdProvider {
   
   @Inject
   private IdentifierController identifierController;
-
-  private MikkeliNytIdProvider() {
-  }
   
   @Override
   public boolean canTranslate(String source, String target) {
-    if (MikkeliNytConsts.IDENTIFIER_NAME.equals(source) && KuntaApiConsts.IDENTIFIER_NAME.equals(target)) {
+    if (KuntaRekryConsts.IDENTIFIER_NAME.equals(source) && KuntaApiConsts.IDENTIFIER_NAME.equals(target)) {
       return true;
     }
     
-    if (MikkeliNytConsts.IDENTIFIER_NAME.equals(target) && KuntaApiConsts.IDENTIFIER_NAME.equals(source)) {
+    if (KuntaRekryConsts.IDENTIFIER_NAME.equals(target) && KuntaApiConsts.IDENTIFIER_NAME.equals(source)) {
       return true;
     }
     
@@ -93,42 +90,9 @@ public class MikkeliNytIdProvider implements IdProvider {
   public OrganizationServiceId translate(OrganizationServiceId organizationServiceId, String target) {
     return null;
   }
-
+  
   @Override
   public EventId translate(EventId eventId, String target) {
-    Identifier identifier;
-    
-    if (MikkeliNytConsts.IDENTIFIER_NAME.equals(eventId.getSource())) {
-      identifier = identifierController.findIdentifierById(eventId);
-      if (identifier != null) {
-        return new EventId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
-      }
-    } else if (KuntaApiConsts.IDENTIFIER_NAME.equals(eventId.getSource())) {
-      identifier = identifierController.findIdentifierByTypeSourceAndKuntaApiId(IdType.EVENT, MikkeliNytConsts.IDENTIFIER_NAME, eventId.getId());
-      if (identifier != null) {
-        return new EventId(MikkeliNytConsts.IDENTIFIER_NAME, identifier.getSourceId());
-      }
-    }
-    
-    return null;
-  }
-
-  @Override
-  public AttachmentId translate(AttachmentId attachmentId, String target) {
-    Identifier identifier;
-    
-    if (MikkeliNytConsts.IDENTIFIER_NAME.equals(attachmentId.getSource())) {
-      identifier = identifierController.findIdentifierById(attachmentId);
-      if (identifier != null) {
-        return new AttachmentId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
-      }
-    } else if (KuntaApiConsts.IDENTIFIER_NAME.equals(attachmentId.getSource())) {
-      identifier = identifierController.findIdentifierByTypeSourceAndKuntaApiId(IdType.ATTACHMENT, MikkeliNytConsts.IDENTIFIER_NAME, attachmentId.getId());
-      if (identifier != null) {
-        return new AttachmentId(MikkeliNytConsts.IDENTIFIER_NAME, identifier.getSourceId());
-      }
-    }
-    
     return null;
   }
 
@@ -138,10 +102,15 @@ public class MikkeliNytIdProvider implements IdProvider {
   }
 
   @Override
+  public AttachmentId translate(AttachmentId attachmentId, String target) {
+    return null;
+  }
+
+  @Override
   public BannerId translate(BannerId bannerId, String target) {
     return null;
   }
-  
+
   @Override
   public TileId translate(TileId tileId, String target) {
     return null;
@@ -164,11 +133,25 @@ public class MikkeliNytIdProvider implements IdProvider {
 
   @Override
   public MenuItemId translate(MenuItemId menuItemId, String target) {
-    return null;
+   return null;
   }
 
   @Override
   public JobId translate(JobId jobId, String target) {
+   Identifier identifier;
+    
+    if (KuntaRekryConsts.IDENTIFIER_NAME.equals(jobId.getSource())) {
+      identifier = identifierController.findIdentifierById(jobId);
+      if (identifier != null) {
+        return new JobId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
+      }
+    } else if (KuntaApiConsts.IDENTIFIER_NAME.equals(jobId.getSource())) {
+      identifier = identifierController.findIdentifierByTypeSourceAndKuntaApiId(IdType.JOB, KuntaRekryConsts.IDENTIFIER_NAME, jobId.getId());
+      if (identifier != null) {
+        return new JobId(KuntaRekryConsts.IDENTIFIER_NAME, identifier.getSourceId());
+      }
+    }
+    
     return null;
   }
 

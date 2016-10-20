@@ -18,9 +18,14 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   public static final String BASE_URL = "/v1";
   
   private RestFulPtvMocker ptvMocker = new RestFulPtvMocker();
+  private KuntarekryMocker kuntarekryMocker = new KuntarekryMocker();
   
   public RestFulPtvMocker getPtvMocker() {
     return ptvMocker;
+  }
+
+  public KuntarekryMocker getKuntarekryMocker() {
+    return kuntarekryMocker;
   }
   
   protected void flushCache() {
@@ -73,6 +78,16 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
         .baseUri(getApiBasePath())
         .contentType(ContentType.JSON)
         .get(String.format("/organizations/%s/organizationServices", organizationId))
+        .body()
+        .jsonPath()
+        .getString(String.format("id[%d]", index));
+  }
+  
+  protected String getOrganizationJobId(String organizationId, int index) {
+    return given() 
+        .baseUri(getApiBasePath())
+        .contentType(ContentType.JSON)
+        .get(String.format("/organizations/%s/jobs", organizationId))
         .body()
         .jsonPath()
         .getString(String.format("id[%d]", index));

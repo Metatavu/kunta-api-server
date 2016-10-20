@@ -343,6 +343,26 @@ public class IdController {
   }
   
   /**
+   * Translates job id into into target id
+   * 
+   * @param jobId id to be translated
+   * @param target target
+   * @return translated id or null if translation has failed
+   */
+  public JobId translateJobId(JobId jobId, String target) {
+    if (StringUtils.equals(jobId.getSource(), target)) {
+      return jobId;
+    }
+    
+    IdProvider idProvider = getIdProvider(jobId.getSource(), target);
+    if (idProvider != null) {
+      return idProvider.translate(jobId, target);
+    }
+    
+    return null;
+  }
+  
+  /**
    * Translates page id into into target id
    * 
    * @param pageId id to be translated
@@ -642,6 +662,24 @@ public class IdController {
   public boolean idsEqual(MenuItemId id1, MenuItemId id2) {
     MenuItemId kuntaApiId1 = translateMenuItemId(id1, KuntaApiConsts.IDENTIFIER_NAME);
     MenuItemId kuntaApiId2 = translateMenuItemId(id2, KuntaApiConsts.IDENTIFIER_NAME);
+    
+    if (kuntaApiId1 == null || kuntaApiId2 == null) {
+      return false;
+    }
+    
+    return kuntaApiId1.equals(kuntaApiId2);
+  }
+  
+  /**
+   * Translates both ids into Kunta Api ids and check whether they match
+   * 
+   * @param id1 id1
+   * @param id2 id2
+   * @return whether ids match
+   */
+  public boolean idsEqual(JobId id1, JobId id2) {
+    JobId kuntaApiId1 = translateJobId(id1, KuntaApiConsts.IDENTIFIER_NAME);
+    JobId kuntaApiId2 = translateJobId(id2, KuntaApiConsts.IDENTIFIER_NAME);
     
     if (kuntaApiId1 == null || kuntaApiId2 == null) {
       return false;

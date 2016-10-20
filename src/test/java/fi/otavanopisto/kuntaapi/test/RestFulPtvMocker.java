@@ -158,6 +158,86 @@ public class RestFulPtvMocker extends AbstractMocker {
     
     return this;
   }
+
+  /**
+   * Reads JSON file as organization object
+   * 
+   * @param file path to JSON file
+   * @return read object
+   */    
+  public Organization readOrganizationFromJSONFile(String file) {
+    return readJSONFile(file, Organization.class);
+  }
+  
+  /**
+   * Reads JSON file as organization object
+   * 
+   * @param file path to JSON file
+   * @return read object
+   */    
+  public Service readServiceFromJSONFile(String file) {
+    return readJSONFile(file, Service.class);
+  }
+  
+  /**
+   * Reads JSON file as electronic service channel object
+   * 
+   * @param file path to JSON file
+   * @return read object
+   */    
+  public ElectronicChannel readElectronicChannelFromJSONFile(String file) {
+    return readJSONFile(file, ElectronicChannel.class);
+  }
+  
+  /**
+   * Reads JSON file as phone service channel object
+   * 
+   * @param file path to JSON file
+   * @return read object
+   */    
+  public PhoneChannel readPhoneChannelFromJSONFile(String file) {
+    return readJSONFile(file, PhoneChannel.class);
+  }
+
+  /**
+   * Reads JSON file as printable form service channel object
+   * 
+   * @param file path to JSON file
+   * @return read object
+   */    
+  public PrintableFormChannel readPrintableFormChannelFromJSONFile(String file) {
+    return readJSONFile(file, PrintableFormChannel.class);
+  }
+
+  /**
+   * Reads JSON file as printable form service channel object
+   * 
+   * @param file path to JSON file
+   * @return read object
+   */    
+  public ServiceLocationChannel readServiceLocationChannelFromJSONFile(String file) {
+    return readJSONFile(file, ServiceLocationChannel.class);
+  }
+
+  /**
+   * Reads JSON file as printable form service channel object
+   * 
+   * @param file path to JSON file
+   * @return read object
+   */    
+  public WebPageChannel readWebPageChannelFromJSONFile(String file) {
+    return readJSONFile(file, WebPageChannel.class);
+  }
+  
+  /**
+   * Reads JSON file as organization service channel object
+   * 
+   * @param file path to JSON file
+   * @return read object
+   */
+  public OrganizationService readOrganizationServiceFromJSONFile(String file) {
+    return readJSONFile(file, OrganizationService.class);
+  }
   
   @Override
   public void startMock() {

@@ -19,18 +19,12 @@ import java.util.logging.Logger;
 import org.apache.commons.io.IOUtils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.github.tomakehurst.wiremock.client.MappingBuilder;
 import com.github.tomakehurst.wiremock.client.WireMock;
-
-import fi.otavanopisto.restfulptv.client.model.ElectronicChannel;
-import fi.otavanopisto.restfulptv.client.model.Organization;
-import fi.otavanopisto.restfulptv.client.model.OrganizationService;
-import fi.otavanopisto.restfulptv.client.model.PhoneChannel;
-import fi.otavanopisto.restfulptv.client.model.PrintableFormChannel;
-import fi.otavanopisto.restfulptv.client.model.Service;
-import fi.otavanopisto.restfulptv.client.model.ServiceLocationChannel;
-import fi.otavanopisto.restfulptv.client.model.WebPageChannel;
 
 /**
  * Abstract base class for all mockers
@@ -38,6 +32,8 @@ import fi.otavanopisto.restfulptv.client.model.WebPageChannel;
  * @author Antti Leppä
  */
 public class AbstractMocker {
+
+  private static final String FAILED_TO_READ_MOCK_FILE = "Failed to read mock file";
 
   private static Logger logger = Logger.getLogger(AbstractMocker.class.getName());
 
@@ -99,7 +95,9 @@ public class AbstractMocker {
    */
   public void mockGetJSON(String path, Object object, Map<String, String> queryParams) {
     try {
-      stringMocks.add(new StringGetMock(path, "application/json", new ObjectMapper().writeValueAsString(object), queryParams));
+      ObjectMapper objectMapper = new ObjectMapper();
+      objectMapper.registerModule(new JavaTimeModule());
+      stringMocks.add(new StringGetMock(path, "application/json", objectMapper.writeValueAsString(object), queryParams));
     } catch (JsonProcessingException e) {
       logger.log(Level.SEVERE, "Failed to serialize mock JSON object", e);
       fail(e.getMessage());
@@ -107,78 +105,58 @@ public class AbstractMocker {
   }
   
   /**
-   * Reads JSON file as organization object
+   * Mocks XML response for GET request on path
    * 
-   * @param file path to JSON file
-   */    
-  public Organization readOrganizationFromJSONFile(String file) {
-    return readJSONFile(file, Organization.class);
+   * @param path path
+   * @param object JSON object
+   */
+  public void mockGetXML(String path, Object object, Map<String, String> queryParams) {
+    try {
+      XmlMapper xmlMapper = new XmlMapper();
+      xmlMapper.registerModule(new JavaTimeModule());
+      stringMocks.add(new StringGetMock(path, "text/xml", xmlMapper.writeValueAsString(object), queryParams));
+    } catch (JsonProcessingException e) {
+      logger.log(Level.SEVERE, "Failed to serialize mock JSON object", e);
+      fail(e.getMessage());
+    }
   }
   
-  /**
-   * Reads JSON file as organization object
-   * 
-   * @param file path to JSON file
-   */    
-  public Service readServiceFromJSONFile(String file) {
-    return readJSONFile(file, Service.class);
+  protected <T> T readXMLFile(String file, Class <T> type){
+    XmlMapper xmlMapper = new XmlMapper();
+    xmlMapper.registerModule(new JavaTimeModule());
+    
+    try (InputStream stream = getClass().getClassLoader().getResourceAsStream(file)) {
+      return xmlMapper.readValue(stream, type);
+    } catch (IOException e) {
+      logger.log(Level.SEVERE, FAILED_TO_READ_MOCK_FILE, e);
+      fail(e.getMessage());
+    }
+    
+    return null;
   }
   
-  /**
-   * Reads JSON file as electronic service channel object
-   * 
-   * @param file path to JSON file
-   */    
-  public ElectronicChannel readElectronicChannelFromJSONFile(String file) {
-    return readJSONFile(file, ElectronicChannel.class);
+  protected <T> T readXMLFile(String file, TypeReference<T> typeReference){
+    XmlMapper xmlMapper = new XmlMapper();
+    xmlMapper.registerModule(new JavaTimeModule());
+    
+    try (InputStream stream = getClass().getClassLoader().getResourceAsStream(file)) {
+      return xmlMapper.readValue(stream, typeReference);
+    } catch (IOException e) {
+      logger.log(Level.SEVERE, FAILED_TO_READ_MOCK_FILE, e);
+      fail(e.getMessage());
+    }
+    
+    return null;
   }
   
-  /**
-   * Reads JSON file as phone service channel object
-   * 
-   * @param file path to JSON file
-   */    
-  public PhoneChannel readPhoneChannelFromJSONFile(String file) {
-    return readJSONFile(file, PhoneChannel.class);
-  }
-
-  /**
-   * Reads JSON file as printable form service channel object
-   * 
-   * @param file path to JSON file
-   */    
-  public PrintableFormChannel readPrintableFormChannelFromJSONFile(String file) {
-    return readJSONFile(file, PrintableFormChannel.class);
-  }
-
-  /**
-   * Reads JSON file as printable form service channel object
-   * 
-   * @param file path to JSON file
-   */    
-  public ServiceLocationChannel readServiceLocationChannelFromJSONFile(String file) {
-    return readJSONFile(file, ServiceLocationChannel.class);
-  }
-
-  /**
-   * Reads JSON file as printable form service channel object
-   * 
-   * @param file path to JSON file
-   */    
-  public WebPageChannel readWebPageChannelFromJSONFile(String file) {
-    return readJSONFile(file, WebPageChannel.class);
-  }
-  
-  public OrganizationService readOrganizationServiceFromJSONFile(String file) {
-    return readJSONFile(file, OrganizationService.class);
-  }
-  
-  private <T> T readJSONFile(String file, Class <T> type){
+  protected <T> T readJSONFile(String file, Class <T> type){
     ObjectMapper objectMapper = new ObjectMapper();
+    objectMapper.registerModule(new JavaTimeModule());
+    
     try (InputStream stream = getClass().getClassLoader().getResourceAsStream(file)) {
       return objectMapper.readValue(stream, type);
     } catch (IOException e) {
-      logger.log(Level.SEVERE, "Failed to read mock file", e);
+      logger.log(Level.SEVERE, FAILED_TO_READ_MOCK_FILE, e);
       fail(e.getMessage());
     }
     return null;
