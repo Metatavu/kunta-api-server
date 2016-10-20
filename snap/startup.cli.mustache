@@ -54,6 +54,11 @@ else
   /profile=full-ha/subsystem=datasources/data-source=kuntaapi:write-attribute(name=password,value=$datasourcePassword)
 end-if
 
+echo Setting up cache container
+if (outcome != success) of /profile=full-ha/subsystem=infinispan/cache-container=kunta-api:read-resource
+  /profile=full-ha/subsystem=infinispan/cache-container=kunta-api:add()
+  /profile=full-ha/subsystem=infinispan/cache-container=kunta-api/transport=TRANSPORT:add(lock-timeout=60000)
+end-if
 
 :reload-servers(blocking=true)
 deploy /snap/kunta-api-server/current/war/kunta-api-server-{{ KUNTA_API_SERVER_VERSION }}.war --all-server-groups
