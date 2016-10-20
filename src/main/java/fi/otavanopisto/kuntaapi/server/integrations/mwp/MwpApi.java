@@ -21,9 +21,6 @@ public class MwpApi {
   @Inject
   private OrganizationSettingController organizationSettingController;
   
-  private MwpApi() {
-  }
-  
   /**
    * Returns management service API
    * 
