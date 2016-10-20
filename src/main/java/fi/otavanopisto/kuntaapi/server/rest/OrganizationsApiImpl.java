@@ -59,12 +59,12 @@ import fi.otavanopisto.kuntaapi.server.rest.model.OrganizationService;
 import fi.otavanopisto.kuntaapi.server.rest.model.OrganizationSetting;
 import fi.otavanopisto.kuntaapi.server.rest.model.Page;
 import fi.otavanopisto.kuntaapi.server.rest.model.Tile;
-import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 
 /**
  * REST Service implementation
  * 
  * @author Antti Leppä
+ * @author Heikki Kurhinen
  */
 @RequestScoped
 @Stateful
@@ -81,8 +81,8 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   @Inject
   private Logger logger;
   
-  @Inject
-  private OrganizationSettingController organizationSettingController;
+  //@Inject
+  //private OrganizationSettingController organizationSettingController;
   
   @Inject
   private Instance<OrganizationProvider> organizationProviders;
@@ -586,7 +586,8 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   @Override
   public Response createOrganizationSetting(String organizationIdParam, OrganizationSetting setting) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    return createNotImplemented(NOT_IMPLEMENTED);
+    /*OrganizationId organizationId = toOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
     }
@@ -606,12 +607,13 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     
     return Response.ok()
         .entity(createOrganizationEntity(organizationSettingController.createOrganizationSetting(setting.getKey(), setting.getValue(), organizationId)))
-        .build();
+        .build();*/
   }
 
   @Override
   public Response listOrganizationSettings(String organizationIdParam, String key) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    return createNotImplemented(NOT_IMPLEMENTED);
+    /*OrganizationId organizationId = toOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
     }
@@ -636,7 +638,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
     return Response.ok()
         .entity(result)
-        .build();
+        .build();*/
   }
   
   @Override
@@ -656,7 +658,8 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   @Override
   @SuppressWarnings ("squid:MethodCyclomaticComplexity")
   public Response updateOrganizationSetting(String organizationIdParam, String settingId, OrganizationSetting setting) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    return createNotImplemented(NOT_IMPLEMENTED);
+    /*OrganizationId organizationId = toOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
     }
@@ -682,12 +685,13 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     
     return Response.ok()
         .entity(createOrganizationEntity(updatedSetting))
-        .build();
+        .build();*/
   }
 
   @Override
   public Response deleteOrganizationSetting(String organizationIdParam, String settingId) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    return createNotImplemented(NOT_IMPLEMENTED);
+    /*OrganizationId organizationId = toOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
     }
@@ -700,7 +704,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     organizationSettingController.deleteOrganizationSetting(organizationSetting);
     
     return Response.noContent()
-        .build();
+        .build();*/
   }
 
   
@@ -1237,7 +1241,8 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   }
 
   private fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting findOrganizationSetting(OrganizationId organizationId, String settingId) {
-    fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting organizationSetting = organizationSettingController.findOrganizationSetting(settingId);
+    return null;
+    /*fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting organizationSetting = organizationSettingController.findOrganizationSetting(settingId);
     if (organizationSetting == null) {
       return null;
     }
@@ -1247,7 +1252,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return null;
     }
     
-    return organizationSetting;
+    return organizationSetting;*/
   }
   
   private OrganizationSetting createOrganizationEntity(fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting organizationSetting) {

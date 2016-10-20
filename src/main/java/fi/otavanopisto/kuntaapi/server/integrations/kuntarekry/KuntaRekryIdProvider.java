@@ -1,7 +1,6 @@
 package fi.otavanopisto.kuntaapi.server.integrations.kuntarekry;
 
 import javax.enterprise.context.Dependent;
-import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
