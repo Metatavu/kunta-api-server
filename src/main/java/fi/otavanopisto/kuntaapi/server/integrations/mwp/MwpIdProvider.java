@@ -10,6 +10,7 @@ import fi.otavanopisto.kuntaapi.server.id.ElectronicServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.EventId;
 import fi.otavanopisto.kuntaapi.server.id.IdProvider;
 import fi.otavanopisto.kuntaapi.server.id.IdType;
+import fi.otavanopisto.kuntaapi.server.id.JobId;
 import fi.otavanopisto.kuntaapi.server.id.MenuId;
 import fi.otavanopisto.kuntaapi.server.id.MenuItemId;
 import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
@@ -276,6 +277,11 @@ public class MwpIdProvider implements IdProvider {
       }
     }
     
+    return null;
+  }
+
+  @Override
+  public JobId translate(JobId jobId, String target) {
     return null;
   }
 

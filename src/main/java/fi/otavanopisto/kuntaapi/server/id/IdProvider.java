@@ -172,4 +172,13 @@ public interface IdProvider {
    */
   public MenuItemId translate(MenuItemId menuItemId, String target);
 
+  /**
+   * Translate job id
+   * 
+   * @param jobId original id
+   * @param target target type
+   * @return translated id
+   */
+  public JobId translate(JobId jobId, String target);
+
 }
