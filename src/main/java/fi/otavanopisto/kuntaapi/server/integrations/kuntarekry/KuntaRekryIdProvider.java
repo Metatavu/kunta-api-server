@@ -1,6 +1,6 @@
 package fi.otavanopisto.kuntaapi.server.integrations.kuntarekry;
 
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
@@ -32,7 +32,7 @@ import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
  * 
  * @author Antti Leppä
  */
-@RequestScoped
+@Dependent
 public class KuntaRekryIdProvider implements IdProvider {
   
   @Inject
