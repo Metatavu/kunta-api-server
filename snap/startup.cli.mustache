@@ -1,6 +1,6 @@
 connect
 
-:start-servers(blocking=true)
+:stop-servers(blocking=true)
 
 set datasourceJNDI=${datasourceJNDI}
 set datasourceUser=${datasourceUser}
@@ -74,7 +74,6 @@ end-if
 
 echo Remove server-three
 if (outcome == success) of /host=master/server-config=server-three:read-resource
-  /host=master/server-config=server-three:stop(blocking=true)
   /host=master/server-config=server-three:remove()
 end-if
 
@@ -85,9 +84,11 @@ end-if
 
 echo Remove server-two
 if (outcome == success) of /host=master/server-config=server-two:read-resource
-  /host=master/server-config=server-two:stop(blocking=true)
   /host=master/server-config=server-two:remove()
 end-if
+
+reload --host=master
+connect
 
 echo Setup remote domain controller
 /host=slave:remove-local-domain-controller()
