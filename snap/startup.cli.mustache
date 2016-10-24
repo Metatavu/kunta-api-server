@@ -9,8 +9,15 @@ set datasourceURL=${datasourceURL}
 set hostname=${hostname}
 set clusterPassword=${clusterPassword}
 set clusterMaxHeap=${clusterMaxHeap}
+set masterHost=${masterHost}
+set slaveUser=${slaveUser}
+set slaveSecret=${slaveSecret}
+set managementAddress=${managementAddress}
+set publicAddress=${publicAddress}
+set unsecuredAddress=${unsecuredAddress}
 
 /server-group=main-server-group/jvm=default:write-attribute(name=max-heap-size,value=$clusterMaxHeap)
+/host=master:write-attribute(name=name,value=slave)
 
 if (outcome != success) of /system-property=jboss.messaging.cluster.password:read-resource
   /system-property=jboss.messaging.cluster.password:add(value=$clusterPassword)
@@ -66,19 +73,32 @@ if (outcome != success) of /profile=full-ha/subsystem=infinispan/cache-container
 end-if
 
 echo Remove server-three
-if (outcome == success) of /host=master/server=server-three:read-resource
-  /host=master/server=server-three:remove()
-end-if
-
-echo Remove server-three
-if (outcome == success) of /host=master/server=server-two:read-resource
-  /host=master/server=server-two:remove()
+if (outcome == success) of /host=master/server-config=server-three:read-resource
+  /host=master/server-config=server-three:stop(blocking=true)
+  /host=master/server-config=server-three:remove()
 end-if
 
 echo Remove other-server-group
 if (outcome == success) of /server-group=other-server-group:read-resource
   /server-group=other-server-group:remove()
 end-if
+
+echo Remove server-two
+if (outcome == success) of /host=master/server-config=server-two:read-resource
+  /host=master/server-config=server-two:stop(blocking=true)
+  /host=master/server-config=server-two:remove()
+end-if
+
+echo Setup remote domain controller
+/host=slave:remove-local-domain-controller()
+/host=slave:write-remote-domain-controller(protocol=remote,host=${masterHost},username=${slaveUser},security-realm=management-realm)
+if (outcome == success) of /host=slave/core-service=management/security-realm=ManagementRealm/server-identity=secret:read-resource
+  /host=slave/core-service=management/security-realm=ManagementRealm/server-identity=secret:add(value=${slaveSecret})
+end-if
+
+/interface=management:write-attribute(name=inet-address,value=${managementAddress})
+/interface=public:write-attribute(name=inet-address,value=${publicAddress})
+/interface=unsecured:write-attribute(name=inet-address,value=${unsecuredAddress})
 
 :reload-servers(blocking=true)
 deploy /snap/kunta-api-server/current/war/kunta-api-server-{{ KUNTA_API_SERVER_VERSION }}.war --all-server-groups
