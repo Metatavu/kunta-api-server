@@ -97,9 +97,9 @@ if (outcome == success) of /host=slave/core-service=management/security-realm=Ma
   /host=slave/core-service=management/security-realm=ManagementRealm/server-identity=secret:add(value=${slaveSecret})
 end-if
 
-/interface=management:write-attribute(name=inet-address,value=${managementAddress})
-/interface=public:write-attribute(name=inet-address,value=${publicAddress})
-/interface=unsecure:write-attribute(name=inet-address,value=${unsecureAddress})
+/interface=management:write-attribute(name=inet-address,value=$managementAddress)
+/interface=public:write-attribute(name=inet-address,value=$publicAddress)
+/interface=unsecure:write-attribute(name=inet-address,value=$unsecureAddress)
 
 :reload-servers(blocking=true)
 deploy /snap/kunta-api-server/current/war/kunta-api-server-{{ KUNTA_API_SERVER_VERSION }}.war --all-server-groups
