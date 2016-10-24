@@ -39,6 +39,11 @@ echo Remove profile ha
 if (outcome == success) of /profile=ha:read-resource
   /profile=ha:remove()
 end-if
+
+echo Remove profile load-balancer
+if (outcome == success) of /profile=load-balancer:read-resource
+  /profile=load-balancer:remove()
+end-if
  
 echo Setting up JDBC Driver
 if (outcome != success) of /profile=full-ha/subsystem=datasources/jdbc-driver=mysql:read-resource
@@ -58,6 +63,21 @@ echo Setting up cache container
 if (outcome != success) of /profile=full-ha/subsystem=infinispan/cache-container=kunta-api:read-resource
   /profile=full-ha/subsystem=infinispan/cache-container=kunta-api:add()
   /profile=full-ha/subsystem=infinispan/cache-container=kunta-api/transport=TRANSPORT:add(lock-timeout=60000)
+end-if
+
+echo Remove server-three
+if (outcome == success) of /host=master/server=server-three:read-resource
+  /host=master/server=server-three:remove()
+end-if
+
+echo Remove server-three
+if (outcome == success) of /host=master/server=server-two:read-resource
+  /host=master/server=server-two:remove()
+end-if
+
+echo Remove other-server-group
+if (outcome == success) of /server-group=other-server-group:read-resource
+  /server-group=other-server-group:remove()
 end-if
 
 :reload-servers(blocking=true)
