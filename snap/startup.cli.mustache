@@ -89,9 +89,9 @@ end-if
 
 echo Setup remote domain controller
 /host=master:remove-local-domain-controller()
-/host=master:write-remote-domain-controller(protocol=remote,host=${masterHost},username=${slaveUser},security-realm=management-realm)
+/host=master:write-remote-domain-controller(protocol=remote,host=$masterHost,username=$slaveUser,security-realm=management-realm)
 if (outcome == success) of /host=master/core-service=management/security-realm=ManagementRealm/server-identity=secret:read-resource
-  /host=master/core-service=management/security-realm=ManagementRealm/server-identity=secret:add(value=${slaveSecret})
+  /host=master/core-service=management/security-realm=ManagementRealm/server-identity=secret:add(value=$slaveSecret)
 end-if
 
 /interface=management:write-attribute(name=inet-address,value=$managementAddress)
