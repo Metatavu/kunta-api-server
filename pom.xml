@@ -60,13 +60,21 @@
     
     <wildfly-spec-api.version>10.1.0.Final</wildfly-spec-api.version>
     
+    <!-- Singleton Service -->
+    
+    <wildfly-singleton-service.version>1.1.0</wildfly-singleton-service.version>
+    
     <!-- Integrations -->
     
-    <kunta-api-spec.version>0.0.33</kunta-api-spec.version>
-    <ptv-rest-client.version>0.0.11</ptv-rest-client.version>
+    <kunta-api-spec.version>0.1.5</kunta-api-spec.version>
+    <restful-ptv-rest-client.version>1.2.5</restful-ptv-rest-client.version>
     <mwp-rest-client.version>0.0.18</mwp-rest-client.version>
     <casem-rest-client.version>0.0.6</casem-rest-client.version>
     <mikkelinyt.rest-model.version>0.0.1</mikkelinyt.rest-model.version>
+    
+    <!-- Jackson -->
+    
+    <jackson-dataformat-xml.version>2.6.3</jackson-dataformat-xml.version>
     
     <!-- Test -->
     
@@ -144,8 +152,44 @@
     </dependency>
     
     <dependency>
+      <groupId>com.bertoncelj.wildflysingletonservice</groupId>
+      <artifactId>wildfly-singleton-service</artifactId>
+      <version>${wildfly-singleton-service.version}</version>
+    </dependency>
+    
+    <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-core</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    
+    <dependency>
+      <groupId>com.fasterxml.jackson.dataformat</groupId>
+      <artifactId>jackson-dataformat-xml</artifactId>
+      <version>${jackson-dataformat-xml.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>com.fasterxml.jackson.core</groupId>
+          <artifactId>jackson-core</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>com.fasterxml.jackson.core</groupId>
+          <artifactId>jackson-databind</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>com.fasterxml.jackson.core</groupId>
+          <artifactId>jackson-annotations</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>com.fasterxml.jackson.module</groupId>
+          <artifactId>jackson-module-jaxb-annotations</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    
+    <dependency>
+      <groupId>com.fasterxml.jackson.module</groupId>
+      <artifactId>jackson-module-jaxb-annotations</artifactId>
       <scope>provided</scope>
     </dependency>
     
@@ -174,9 +218,9 @@
     </dependency>
     
     <dependency>
-      <groupId>fi.otavanopisto.ptv.rest-client</groupId>
-      <artifactId>ptv-rest-client</artifactId>
-      <version>${ptv-rest-client.version}</version>
+      <groupId>fi.otavanopisto.restful-ptv.restful-ptv-rest-client</groupId>
+      <artifactId>restful-ptv-rest-client</artifactId>
+      <version>${restful-ptv-rest-client.version}</version>
       <exclusions>
         <exclusion>
           <groupId>com.fasterxml.jackson.datatype</groupId>
@@ -327,6 +371,7 @@
         <it.jdbc.jndi>java:/jboss/datasources/kuntaapi</it.jdbc.jndi>
         <it.jdbc.username>sa</it.jdbc.username>
         <it.jdbc.password>sa</it.jdbc.password>
+        <it.skipdatabasedrop>true</it.skipdatabasedrop>
         <it.hibernate.dialect>org.hibernate.dialect.H2Dialect</it.hibernate.dialect>
         <jacoco.reportPath>${project.basedir}/target/jacoco.exec</jacoco.reportPath>
       </properties>
@@ -406,6 +451,7 @@
                   <goal>create</goal>
                 </goals>
                 <configuration>
+                  <show>true</show>
                   <type>CREATE</type>
                 </configuration>
               </execution>
@@ -535,6 +581,7 @@
                     <commands>
                       <command>/subsystem=infinispan/cache-container=kunta-api:add()</command>
                       <command>/subsystem=undertow/server=default-server/host=kunta-api:add(alias=["${it.host}"])</command>
+                      <command>/system-property=it-test:add(value="true")</command>
                     </commands>
                   </before-deployment>
                   <filename>${project.build.finalName}.${project.packaging}</filename>

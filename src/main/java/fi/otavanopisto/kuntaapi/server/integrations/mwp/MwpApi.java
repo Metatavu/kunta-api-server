@@ -3,7 +3,7 @@ package fi.otavanopisto.kuntaapi.server.integrations.mwp;
 import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 
-import fi.otavanopisto.kuntaapi.server.integrations.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 import fi.otavanopisto.mwp.client.DefaultApi;
 
@@ -19,10 +19,7 @@ public class MwpApi {
   private MwpClient client;
   
   @Inject
-  private OrganizationSettingController  organizationSettingController;
-  
-  private MwpApi() {
-  }
+  private OrganizationSettingController organizationSettingController;
   
   /**
    * Returns management service API

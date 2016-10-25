@@ -4,22 +4,27 @@ import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
-import fi.otavanopisto.kuntaapi.server.integrations.AttachmentId;
-import fi.otavanopisto.kuntaapi.server.integrations.BannerId;
-import fi.otavanopisto.kuntaapi.server.integrations.EventId;
+import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
+import fi.otavanopisto.kuntaapi.server.id.BannerId;
+import fi.otavanopisto.kuntaapi.server.id.ElectronicServiceChannelId;
+import fi.otavanopisto.kuntaapi.server.id.EventId;
+import fi.otavanopisto.kuntaapi.server.id.IdProvider;
+import fi.otavanopisto.kuntaapi.server.id.IdType;
+import fi.otavanopisto.kuntaapi.server.id.JobId;
+import fi.otavanopisto.kuntaapi.server.id.MenuId;
+import fi.otavanopisto.kuntaapi.server.id.MenuItemId;
+import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
+import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.id.OrganizationServiceId;
+import fi.otavanopisto.kuntaapi.server.id.PageId;
+import fi.otavanopisto.kuntaapi.server.id.PhoneChannelId;
+import fi.otavanopisto.kuntaapi.server.id.PrintableFormChannelId;
+import fi.otavanopisto.kuntaapi.server.id.ServiceId;
+import fi.otavanopisto.kuntaapi.server.id.ServiceLocationChannelId;
+import fi.otavanopisto.kuntaapi.server.id.TileId;
+import fi.otavanopisto.kuntaapi.server.id.WebPageChannelId;
 import fi.otavanopisto.kuntaapi.server.integrations.FileId;
-import fi.otavanopisto.kuntaapi.server.integrations.IdProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.IdType;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
-import fi.otavanopisto.kuntaapi.server.integrations.MenuId;
-import fi.otavanopisto.kuntaapi.server.integrations.MenuItemId;
-import fi.otavanopisto.kuntaapi.server.integrations.NewsArticleId;
-import fi.otavanopisto.kuntaapi.server.integrations.OrganizationId;
-import fi.otavanopisto.kuntaapi.server.integrations.PageId;
-import fi.otavanopisto.kuntaapi.server.integrations.ServiceChannelId;
-import fi.otavanopisto.kuntaapi.server.integrations.ServiceClassId;
-import fi.otavanopisto.kuntaapi.server.integrations.ServiceId;
-import fi.otavanopisto.kuntaapi.server.integrations.TileId;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 
 /**
@@ -32,9 +37,6 @@ public class PtvIdProvider implements IdProvider {
   
   @Inject
   private IdentifierController identifierController;
-
-  private PtvIdProvider() {
-  }
   
   @Override
   public boolean canTranslate(String source, String target) {
@@ -88,37 +90,113 @@ public class PtvIdProvider implements IdProvider {
   }
 
   @Override
-  public ServiceChannelId translate(ServiceChannelId serviceChannelId, String target) {
+  public ElectronicServiceChannelId translate(ElectronicServiceChannelId serviceChannelId, String target) {
     Identifier identifier;
     
     if (PtvConsts.IDENTIFIFER_NAME.equals(serviceChannelId.getSource())) {
       identifier = identifierController.findIdentifierById(serviceChannelId);
       if (identifier != null) {
-        return new ServiceChannelId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
+        return new ElectronicServiceChannelId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
       }
     } else if (KuntaApiConsts.IDENTIFIER_NAME.equals(serviceChannelId.getSource())) {
-      identifier = identifierController.findIdentifierByTypeSourceAndKuntaApiId(IdType.SERVICE_CHANNEL, PtvConsts.IDENTIFIFER_NAME, serviceChannelId.getId());
+      identifier = identifierController.findIdentifierByTypeSourceAndKuntaApiId(IdType.ELECTRONIC_SERVICE_CHANNEL, PtvConsts.IDENTIFIFER_NAME, serviceChannelId.getId());
       if (identifier != null) {
-        return new ServiceChannelId(PtvConsts.IDENTIFIFER_NAME, identifier.getSourceId());
+        return new ElectronicServiceChannelId(PtvConsts.IDENTIFIFER_NAME, identifier.getSourceId());
       }
     }
     
     return null;
   }
-
+  
   @Override
-  public ServiceClassId translate(ServiceClassId serviceClassId, String target) {
+  public PhoneChannelId translate(PhoneChannelId serviceChannelId, String target) {
     Identifier identifier;
     
-    if (PtvConsts.IDENTIFIFER_NAME.equals(serviceClassId.getSource())) {
-      identifier = identifierController.findIdentifierById(serviceClassId);
+    if (PtvConsts.IDENTIFIFER_NAME.equals(serviceChannelId.getSource())) {
+      identifier = identifierController.findIdentifierById(serviceChannelId);
       if (identifier != null) {
-        return new ServiceClassId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
+        return new PhoneChannelId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
       }
-    } else if (KuntaApiConsts.IDENTIFIER_NAME.equals(serviceClassId.getSource())) {
-      identifier = identifierController.findIdentifierByTypeSourceAndKuntaApiId(IdType.SERVICE_CLASS, PtvConsts.IDENTIFIFER_NAME, serviceClassId.getId());
+    } else if (KuntaApiConsts.IDENTIFIER_NAME.equals(serviceChannelId.getSource())) {
+      identifier = identifierController.findIdentifierByTypeSourceAndKuntaApiId(IdType.PHONE_CHANNEL, PtvConsts.IDENTIFIFER_NAME, serviceChannelId.getId());
       if (identifier != null) {
-        return new ServiceClassId(PtvConsts.IDENTIFIFER_NAME, identifier.getSourceId());
+        return new PhoneChannelId(PtvConsts.IDENTIFIFER_NAME, identifier.getSourceId());
+      }
+    }
+    
+    return null;
+  }
+  
+  @Override
+  public PrintableFormChannelId translate(PrintableFormChannelId serviceChannelId, String target) {
+    Identifier identifier;
+    
+    if (PtvConsts.IDENTIFIFER_NAME.equals(serviceChannelId.getSource())) {
+      identifier = identifierController.findIdentifierById(serviceChannelId);
+      if (identifier != null) {
+        return new PrintableFormChannelId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
+      }
+    } else if (KuntaApiConsts.IDENTIFIER_NAME.equals(serviceChannelId.getSource())) {
+      identifier = identifierController.findIdentifierByTypeSourceAndKuntaApiId(IdType.PRINTABLE_FORM_CHANNEL, PtvConsts.IDENTIFIFER_NAME, serviceChannelId.getId());
+      if (identifier != null) {
+        return new PrintableFormChannelId(PtvConsts.IDENTIFIFER_NAME, identifier.getSourceId());
+      }
+    }
+    
+    return null;
+  }
+  
+  @Override
+  public ServiceLocationChannelId translate(ServiceLocationChannelId serviceChannelId, String target) {
+    Identifier identifier;
+    
+    if (PtvConsts.IDENTIFIFER_NAME.equals(serviceChannelId.getSource())) {
+      identifier = identifierController.findIdentifierById(serviceChannelId);
+      if (identifier != null) {
+        return new ServiceLocationChannelId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
+      }
+    } else if (KuntaApiConsts.IDENTIFIER_NAME.equals(serviceChannelId.getSource())) {
+      identifier = identifierController.findIdentifierByTypeSourceAndKuntaApiId(IdType.SERVICE_LOCATION_CHANNEL, PtvConsts.IDENTIFIFER_NAME, serviceChannelId.getId());
+      if (identifier != null) {
+        return new ServiceLocationChannelId(PtvConsts.IDENTIFIFER_NAME, identifier.getSourceId());
+      }
+    }
+    
+    return null;
+  }
+  
+  @Override
+  public WebPageChannelId translate(WebPageChannelId serviceChannelId, String target) {
+    Identifier identifier;
+    
+    if (PtvConsts.IDENTIFIFER_NAME.equals(serviceChannelId.getSource())) {
+      identifier = identifierController.findIdentifierById(serviceChannelId);
+      if (identifier != null) {
+        return new WebPageChannelId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
+      }
+    } else if (KuntaApiConsts.IDENTIFIER_NAME.equals(serviceChannelId.getSource())) {
+      identifier = identifierController.findIdentifierByTypeSourceAndKuntaApiId(IdType.WEBPAGE_CHANNEL, PtvConsts.IDENTIFIFER_NAME, serviceChannelId.getId());
+      if (identifier != null) {
+        return new WebPageChannelId(PtvConsts.IDENTIFIFER_NAME, identifier.getSourceId());
+      }
+    }
+    
+    return null;
+  }
+  
+  @Override
+  public OrganizationServiceId translate(OrganizationServiceId organizationServiceId, String target) {
+    Identifier identifier;
+    
+    if (PtvConsts.IDENTIFIFER_NAME.equals(organizationServiceId.getSource())) {
+      identifier = identifierController.findIdentifierById(organizationServiceId);
+      if (identifier != null) {
+        return new OrganizationServiceId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
+      }
+    } else if (KuntaApiConsts.IDENTIFIER_NAME.equals(organizationServiceId.getSource())) {
+      identifier = identifierController.findIdentifierByTypeSourceAndKuntaApiId(IdType.ORGANIZATION_SERVICE, PtvConsts.IDENTIFIFER_NAME, organizationServiceId.getId());
+      if (identifier != null) {
+        return new OrganizationServiceId(PtvConsts.IDENTIFIFER_NAME, identifier.getSourceId());
       }
     }
     
@@ -167,6 +245,11 @@ public class PtvIdProvider implements IdProvider {
 
   @Override
   public MenuItemId translate(MenuItemId menuItemId, String target) {
+    return null;
+  }
+
+  @Override
+  public JobId translate(JobId jobId, String target) {
     return null;
   }
 

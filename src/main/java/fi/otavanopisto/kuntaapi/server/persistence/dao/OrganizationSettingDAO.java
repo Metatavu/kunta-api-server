@@ -14,7 +14,7 @@ import fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting_;
 /**
  * DAO class for OrganizationSetting entity
  * 
- * @author Otavan Opisto
+ * @author Antti Leppä
  */
 @Dependent
 public class OrganizationSettingDAO extends AbstractDAO<OrganizationSetting> {

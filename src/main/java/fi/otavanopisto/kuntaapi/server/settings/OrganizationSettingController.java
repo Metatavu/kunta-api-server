@@ -7,9 +7,9 @@ import java.util.logging.Logger;
 import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 
-import fi.otavanopisto.kuntaapi.server.integrations.IdController;
+import fi.otavanopisto.kuntaapi.server.id.IdController;
+import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
-import fi.otavanopisto.kuntaapi.server.integrations.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.persistence.dao.OrganizationSettingDAO;
 import fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting;
 
@@ -17,10 +17,11 @@ import fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting;
  * Controller for organization settings. Class does not handle concurrency so caller must take care of that
  * 
  * @author Antti Leppä
+ * @author Heikki Kurhinen
  */
 @Dependent
 public class OrganizationSettingController {
-  
+
   private static final String FAILED_TO_TRANSLATE = "Failed to translate %s into KuntaApiId id";
 
   @Inject
@@ -31,9 +32,6 @@ public class OrganizationSettingController {
   
   @Inject
   private IdController idController;
-  
-  private OrganizationSettingController() {
-  }
   
   /**
    * Returns organization setting by key or null if setting is not defined

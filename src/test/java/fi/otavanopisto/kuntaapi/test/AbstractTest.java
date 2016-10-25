@@ -23,6 +23,7 @@ import org.hamcrest.Matcher;
  * Abstract base class for all tests
  * 
  * @author Antti Leppä
+ * @author Heikki Kurhinen
  */
 public abstract class AbstractTest {
     
@@ -66,6 +67,14 @@ public abstract class AbstractTest {
   
   protected void deleteOrganizationSetting(String organizationId, String key) {
     executeDelete("delete from OrganizationSetting where settingKey = ? and organizationKuntaApiId = ?", key, organizationId);
+  }
+  
+  protected long insertSystemSetting(String key, String value) {
+    return executeInsert("insert into SystemSetting (settingKey, value) values (?, ?)", key, value);
+  }
+  
+  protected void deleteSystemSetting(String key) {
+    executeDelete("delete from SystemSetting where settingKey = ?", key);
   }
   
   protected long createIdentifier(String kuntaApiId, String source, String sourceId, String type) {

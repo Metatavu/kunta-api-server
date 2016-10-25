@@ -9,7 +9,9 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 import java.time.temporal.ChronoField;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -17,10 +19,11 @@ import org.junit.Test;
 import com.github.tomakehurst.wiremock.junit.WireMockRule;
 import com.jayway.restassured.http.ContentType;
 
-import fi.otavanopisto.kuntaapi.server.integrations.IdType;
+import fi.otavanopisto.kuntaapi.server.id.IdType;
 import fi.otavanopisto.kuntaapi.server.integrations.mikkelinyt.MikkeliNytConsts;
 import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
 import fi.otavanopisto.kuntaapi.test.AbstractIntegrationTest;
+import fi.otavanopisto.kuntaapi.test.AbstractMocker;
 import fi.otavanopisto.mikkelinyt.model.Event;
 import fi.otavanopisto.mikkelinyt.model.EventsResponse;
 
@@ -430,7 +433,11 @@ public class MikkeliNytRestTestsIT extends AbstractIntegrationTest {
       eventsResponse.setData(events);
       eventsResponse.setMessage(String.format("Löytyi %d tapahtumaa", events.size()));
       eventsResponse.setStatus(1);
-      mockGetJSON(String.format("/json.php?showall=1&apiKey=%s&location=%s", ORGANIZATION_SETTING_APIKEY, ORGANIZATION_SETTING_LOCATION), eventsResponse);
+      Map<String, String> queryParams = new HashMap<>();
+      queryParams.put("showall", "1");
+      queryParams.put("apiKey", ORGANIZATION_SETTING_APIKEY);
+      queryParams.put("location", ORGANIZATION_SETTING_LOCATION);
+      mockGetJSON("/json.php", eventsResponse, queryParams);
       super.startMock();
     }
   }

@@ -5,17 +5,17 @@ import java.util.Collections;
 import java.util.List;
 import java.util.logging.Logger;
 
-import javax.enterprise.context.Dependent;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
-import fi.otavanopisto.kuntaapi.server.integrations.IdController;
+import fi.otavanopisto.kuntaapi.server.id.IdController;
+import fi.otavanopisto.kuntaapi.server.id.MenuId;
+import fi.otavanopisto.kuntaapi.server.id.MenuItemId;
+import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
-import fi.otavanopisto.kuntaapi.server.integrations.MenuId;
-import fi.otavanopisto.kuntaapi.server.integrations.MenuItemId;
 import fi.otavanopisto.kuntaapi.server.integrations.MenuProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.OrganizationId;
-import fi.otavanopisto.kuntaapi.server.integrations.PageId;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.rest.model.Menu;
 import fi.otavanopisto.kuntaapi.server.rest.model.MenuItem;
@@ -26,7 +26,7 @@ import fi.otavanopisto.mwp.client.ApiResponse;
  * 
  * @author Antti Leppä
  */
-@Dependent
+@RequestScoped
 public class MwpMenuProvider extends AbstractMwpProvider implements MenuProvider {
   
   private static final String COULD_NOT_TRANSLATE_MENU_ID = "Could not translate menu id %s to MWP id";
@@ -42,9 +42,6 @@ public class MwpMenuProvider extends AbstractMwpProvider implements MenuProvider
   
   @Inject
   private IdentifierController identifierController;
-
-  private MwpMenuProvider() {
-  }
   
   @Override
   public List<Menu> listOrganizationMenus(OrganizationId organizationId, String slug) {

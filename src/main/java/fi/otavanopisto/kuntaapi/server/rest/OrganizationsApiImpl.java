@@ -21,82 +21,76 @@ import javax.ws.rs.core.Response.Status;
 import org.apache.commons.lang3.EnumUtils;
 import org.apache.commons.lang3.StringUtils;
 
+import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
+import fi.otavanopisto.kuntaapi.server.id.BannerId;
+import fi.otavanopisto.kuntaapi.server.id.EventId;
+import fi.otavanopisto.kuntaapi.server.id.JobId;
+import fi.otavanopisto.kuntaapi.server.id.MenuId;
+import fi.otavanopisto.kuntaapi.server.id.MenuItemId;
+import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
+import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.id.OrganizationServiceId;
+import fi.otavanopisto.kuntaapi.server.id.PageId;
+import fi.otavanopisto.kuntaapi.server.id.TileId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
-import fi.otavanopisto.kuntaapi.server.integrations.AttachmentId;
-import fi.otavanopisto.kuntaapi.server.integrations.BannerId;
 import fi.otavanopisto.kuntaapi.server.integrations.BannerProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.EventId;
 import fi.otavanopisto.kuntaapi.server.integrations.EventProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.FileId;
+import fi.otavanopisto.kuntaapi.server.integrations.JobProvider;
+import fi.otavanopisto.kuntaapi.server.integrations.JobProvider.JobOrder;
+import fi.otavanopisto.kuntaapi.server.integrations.JobProvider.JobOrderDirection;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
-import fi.otavanopisto.kuntaapi.server.integrations.MenuId;
-import fi.otavanopisto.kuntaapi.server.integrations.MenuItemId;
 import fi.otavanopisto.kuntaapi.server.integrations.MenuProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.NewsArticleId;
 import fi.otavanopisto.kuntaapi.server.integrations.NewsProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.OrganizationProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.PageId;
+import fi.otavanopisto.kuntaapi.server.integrations.OrganizationServiceProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.PageProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.ServiceChannelProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.ServiceClassId;
-import fi.otavanopisto.kuntaapi.server.integrations.ServiceClassProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.ServiceId;
-import fi.otavanopisto.kuntaapi.server.integrations.ServiceProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.TileId;
 import fi.otavanopisto.kuntaapi.server.integrations.TileProvider;
 import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
 import fi.otavanopisto.kuntaapi.server.rest.model.Banner;
 import fi.otavanopisto.kuntaapi.server.rest.model.Event;
+import fi.otavanopisto.kuntaapi.server.rest.model.Job;
 import fi.otavanopisto.kuntaapi.server.rest.model.LocalizedValue;
 import fi.otavanopisto.kuntaapi.server.rest.model.Menu;
 import fi.otavanopisto.kuntaapi.server.rest.model.MenuItem;
 import fi.otavanopisto.kuntaapi.server.rest.model.NewsArticle;
 import fi.otavanopisto.kuntaapi.server.rest.model.Organization;
+import fi.otavanopisto.kuntaapi.server.rest.model.OrganizationService;
 import fi.otavanopisto.kuntaapi.server.rest.model.OrganizationSetting;
 import fi.otavanopisto.kuntaapi.server.rest.model.Page;
-import fi.otavanopisto.kuntaapi.server.rest.model.Service;
-import fi.otavanopisto.kuntaapi.server.rest.model.ServiceClass;
-import fi.otavanopisto.kuntaapi.server.rest.model.ServiceElectronicChannel;
 import fi.otavanopisto.kuntaapi.server.rest.model.Tile;
-import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
+import fi.otavanopisto.kuntaapi.server.system.OrganizationSettingProvider;
 
 /**
  * REST Service implementation
  * 
  * @author Antti Leppä
+ * @author Heikki Kurhinen
  */
 @RequestScoped
 @Stateful
 @SuppressWarnings ("squid:S3306")
 public class OrganizationsApiImpl extends OrganizationsApi {
   
+  private static final String MAX_RESULTS_MUST_BY_A_POSITIVE_INTEGER = "maxResults must by a positive integer";
+  private static final String FIRST_RESULT_MUST_BY_A_POSITIVE_INTEGER = "firstResult must by a positive integer";
   private static final String NOT_FOUND = "Not Found";
-
   private static final String NOT_IMPLEMENTED = "Not implemented";
-
   private static final String INTERNAL_SERVER_ERROR = "Internal Server Error";
-
   private static final String FAILED_TO_STREAM_IMAGE_TO_CLIENT = "Failed to stream image to client";
 
   @Inject
   private Logger logger;
   
   @Inject
-  private OrganizationSettingController organizationSettingController;
+  private OrganizationSettingProvider organizationSettingProvider;
   
   @Inject
   private Instance<OrganizationProvider> organizationProviders;
   
   @Inject
-  private Instance<ServiceProvider> serviceProviders;
-
-  @Inject
-  private Instance<ServiceChannelProvider> serviceChannelProviders;
-
-  @Inject
-  private Instance<ServiceClassProvider> serviceClassProviders;
-
+  private Instance<OrganizationServiceProvider> organizationServiceProviders;
+  
   @Inject
   private Instance<EventProvider> eventProviders;
 
@@ -115,6 +109,8 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   @Inject
   private Instance<MenuProvider> menuProviders;
 
+  @Inject
+  private Instance<JobProvider> jobProviders;
 
   @Override
   public Response listOrganizations(String businessName, String businessCode) {
@@ -128,19 +124,34 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   }
   
   @Override
-  public Response createService(String organizationId, Service body) {
+  public Response findOrganization(String organizationIdParam) {
+  	OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    for (OrganizationProvider organizationProvider : getOrganizationProviders()) {
+      Organization organization = organizationProvider.findOrganization(organizationId);
+      if(organization != null) {
+        return Response.ok(organization)
+          .build();
+      }
+    }
+    return Response
+      .status(Status.NOT_FOUND)
+      .build();
+  }
+  
+  @Override
+  public Response createOrganizationService(String organizationId, OrganizationService body) {
     return createNotImplemented(NOT_IMPLEMENTED);
   }
   
   @Override
-  public Response findService(String organizationIdParam, String serviceIdParam) {
+  public Response findOrganizationService(String organizationIdParam, String organizationServiceIdParam) {
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
-    ServiceId serviceId = toServiceId(serviceIdParam);
+    OrganizationServiceId organizationServiceId = toOrganizationServiceId(organizationServiceIdParam);
     
-    for (ServiceProvider serviceProvider : getServiceProviders()) {
-      Service service = serviceProvider.findOrganizationService(organizationId, serviceId);
-      if (service != null) {
-        return Response.ok(service)
+    for (OrganizationServiceProvider organizationServiceProvider : getOrganizationServiceProviders()) {
+      OrganizationService organizationService = organizationServiceProvider.findOrganizationService(organizationId, organizationServiceId);
+      if (organizationService != null) {
+        return Response.ok(organizationService)
           .build();
       }
     }
@@ -149,62 +160,39 @@ public class OrganizationsApiImpl extends OrganizationsApi {
         .status(Status.NOT_FOUND)
         .build();
   }
-
+  
   @Override
-  public Response listServices(String organizationIdParam, String serviceClassIdParam) {
-    if (StringUtils.isBlank(organizationIdParam)) {
+  public Response listOrganizationOrganizationServices(String organizationIdParam, Long firstResult, Long maxResults) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
       return Response.status(Status.BAD_REQUEST)
         .entity("Organization parameter is mandatory")
         .build();
     }
     
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
-    ServiceClassId serviceClassId = StringUtils.isBlank(serviceClassIdParam) ? null : new ServiceClassId(KuntaApiConsts.IDENTIFIER_NAME, serviceClassIdParam);
-    
-    List<Service> services = new ArrayList<>();
-    for (ServiceProvider serviceProvider : getServiceProviders()) {
-      services.addAll(serviceProvider.listOrganizationServices(organizationId, serviceClassId));
+    Response validationResponse = validateListLimitParams(firstResult, maxResults);
+    if (validationResponse != null) {
+      return validationResponse;
     }
     
-    return Response.ok(services)
-      .build();
-  }
-
-  @Override
-  public Response updateService(String organizationId, String serviceId) {
-    return createNotImplemented(NOT_IMPLEMENTED);
-  }
-
-  @Override
-  public Response deleteService(String organizationId, String serviceId) {
-    return createNotImplemented(NOT_IMPLEMENTED);
-  }
-  
-  @Override
-  public Response listServiceElectornicChannels(String organizationIdParam, String serviceIdParam) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
-    ServiceId serviceId = toServiceId(serviceIdParam);
+    List<OrganizationService> result = new ArrayList<>();
     
-    List<ServiceElectronicChannel> result = new ArrayList<>();
-    for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
-      result.addAll(serviceChannelProvider.listElectronicChannels(organizationId, serviceId));
+    for (OrganizationServiceProvider organizationServiceProvider : getOrganizationServiceProviders()) {
+      result.addAll(organizationServiceProvider.listOrganizationServices(organizationId));
     }
     
-    return Response.ok(result)
+    int resultCount = result.size();
+    int firstIndex = firstResult == null ? 0 : Math.min(firstResult.intValue(), resultCount);
+    int toIndex = maxResults == null ? resultCount : Math.min(firstIndex + maxResults.intValue(), resultCount);
+    
+    return Response.ok(result.subList(firstIndex, toIndex))
       .build();
   }
   
   @Override
-  public Response listServiceClasses(String organizationIdParam) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
-
-    List<ServiceClass> result = new ArrayList<>();
-    for (ServiceClassProvider serviceClassProvider : getServiceClassProviders()) {
-      result.addAll(serviceClassProvider.listOrganizationServiceClasses(organizationId));
-    }
-    
-    return Response.ok(result)
-      .build();
+  public Response updateOrganizationService(String organizationId, String organizationServiceId,
+      OrganizationService body) {
+    return createNotImplemented(NOT_IMPLEMENTED);
   }
 
   @Override
@@ -426,7 +414,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     for (BannerProvider bannerProvider : getBannerProviders()) {
       result.addAll(bannerProvider.listOrganizationBanners(organizationId));
     }
-    
+
     return Response.ok(result)
       .build();
   }
@@ -598,6 +586,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   }
 
   @Override
+  @SuppressWarnings("squid:MethodCyclomaticComplexity")
   public Response createOrganizationSetting(String organizationIdParam, OrganizationSetting setting) {
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
     if (organizationId == null) {
@@ -612,13 +601,18 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createBadRequest("Value is required");
     }
     
-    String value = organizationSettingController.getSettingValue(organizationId, setting.getKey());
-    if (value != null) {
+    List<OrganizationSetting> organizationSettings = organizationSettingProvider.listOrganizationSettings(organizationId, setting.getKey());
+    if (!organizationSettings.isEmpty()) {
       return createBadRequest("Setting already exists");
     }
     
+    OrganizationSetting organizationSetting = organizationSettingProvider.createOrganizationSetting(organizationId, setting.getKey(), setting.getValue());
+    if (organizationSetting == null) {
+      return createInternalServerError(INTERNAL_SERVER_ERROR);
+    }
+    
     return Response.ok()
-        .entity(createOrganizationEntity(organizationSettingController.createOrganizationSetting(setting.getKey(), setting.getValue(), organizationId)))
+        .entity(organizationSetting)
         .build();
   }
 
@@ -629,23 +623,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createNotFound(NOT_FOUND);
     }
     
-    List<fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting> settings;
-    
-    if (StringUtils.isNotBlank(key)) {
-      fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting setting = organizationSettingController.findOrganizationSettingByKey(organizationId, key);
-      if (setting != null) {
-        settings = Collections.singletonList(setting);
-      } else {
-        settings = Collections.emptyList();
-      }
-    } else {
-      settings = organizationSettingController.listOrganizationSettings(organizationId);
-    }
-    
-    List<OrganizationSetting> result = new ArrayList<>(settings.size());
-    for (fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting setting : settings) {
-      result.add(createOrganizationEntity(setting));
-    }
+    List<OrganizationSetting> result = organizationSettingProvider.listOrganizationSettings(organizationId, key);
 
     return Response.ok()
         .entity(result)
@@ -659,10 +637,13 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createNotFound(NOT_FOUND);
     }
     
-    fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting organizationSetting = findOrganizationSetting(organizationId, settingId);
-    
+    OrganizationSetting organizationSetting = organizationSettingProvider.findOrganizationSetting(organizationId, settingId);
+    if (organizationSetting == null) {
+      return createNotFound(NOT_FOUND);
+    }
+
     return Response.ok()
-        .entity(createOrganizationEntity(organizationSetting))
+        .entity(organizationSetting)
         .build();
   }
   
@@ -682,7 +663,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createBadRequest("Value is required");
     }
     
-    fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting organizationSetting = findOrganizationSetting(organizationId, settingId);
+    OrganizationSetting organizationSetting = organizationSettingProvider.findOrganizationSetting(organizationId, settingId);
     if (organizationSetting == null) {
       return createNotFound(NOT_FOUND);
     }
@@ -691,10 +672,14 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createBadRequest("Cannot update setting key");
     }
     
-    fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting updatedSetting = organizationSettingController.updateOrganizationSetting(organizationSetting, setting.getValue());
+    OrganizationSetting updatedOrganizationSetting = organizationSettingProvider.updateOrganizationSetting(organizationSetting.getId(), setting.getValue());
+    
+    if (updatedOrganizationSetting == null) {
+      return createNotFound(NOT_FOUND);
+    }
     
     return Response.ok()
-        .entity(createOrganizationEntity(updatedSetting))
+        .entity(updatedOrganizationSetting)
         .build();
   }
 
@@ -705,12 +690,12 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createNotFound(NOT_FOUND);
     }
     
-    fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting organizationSetting = findOrganizationSetting(organizationId, settingId);
+    OrganizationSetting organizationSetting = organizationSettingProvider.findOrganizationSetting(organizationId, settingId);
     if (organizationSetting == null) {
       return createNotFound(NOT_FOUND);
     }
-
-    organizationSettingController.deleteOrganizationSetting(organizationSetting);
+    
+    organizationSettingProvider.deleteOrganizationSetting(organizationSetting.getId());
     
     return Response.noContent()
         .build();
@@ -950,6 +935,101 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     return createNotImplemented(NOT_IMPLEMENTED);
   }
   
+  /* Jobs */
+
+  @Override
+  public Response findOrganizationJob(String organizationIdParam, String jobIdParam) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    JobId jobId = toJobId(jobIdParam);
+    if (jobId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    for (JobProvider jobProvider : getJobProviders()) {
+      Job job = jobProvider.findOrganizationJob(organizationId, jobId);
+      if (job != null) {
+        return Response.ok(job).build();
+      }
+    }
+    
+    return createNotFound(NOT_FOUND);
+  }
+
+  @Override
+  public Response listOrganizationJobs(String organizationIdParam, String sortBy, String sortDir) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    List<Job> result = new ArrayList<>();
+    JobOrder order = null;
+    JobOrderDirection orderDirection = null;
+    
+    if (StringUtils.isNotBlank(sortBy)) {
+      order = EnumUtils.getEnum(JobProvider.JobOrder.class, sortBy);
+      if (order == null) {
+        return createBadRequest("Invalid value for sortBy");
+      }
+    }
+    
+    if (StringUtils.isNotBlank(sortDir)) {
+      orderDirection = EnumUtils.getEnum(JobOrderDirection.class, sortDir);
+      if (orderDirection == null) {
+        return createBadRequest("Invalid value for sortDir");
+      }
+    }
+    
+    for (JobProvider jobProvider : getJobProviders()) {
+      result.addAll(jobProvider.listOrganizationJobs(organizationId));
+    }
+    
+    return Response.ok(sortJobs(result, order, orderDirection))
+      .build();
+  }
+  
+  private List<Job> sortJobs(List<Job> jobs, JobOrder order, JobOrderDirection orderDirection) {
+    if (order == null) {
+      return jobs;
+    }
+    
+    List<Job> sorted = new ArrayList<>(jobs);
+    
+    switch (order) {
+      case PUBLICATION_END:
+        Collections.sort(sorted, (Job o1, Job o2)
+          -> orderDirection != JobOrderDirection.ASCENDING 
+            ? o2.getPublicationEnd().compareTo(o1.getPublicationEnd())
+            : o1.getPublicationEnd().compareTo(o2.getPublicationEnd()));
+      break;
+      case PUBLICATION_START:
+        Collections.sort(sorted, (Job o1, Job o2)
+          -> orderDirection != JobOrderDirection.ASCENDING 
+            ? o2.getPublicationStart().compareTo(o1.getPublicationStart())
+            : o1.getPublicationStart().compareTo(o2.getPublicationStart()));
+      break;
+      default:
+    }
+
+    return sorted;
+  }
+  
+  private Response validateListLimitParams(Long firstResult, Long maxResults) {
+    if (firstResult != null && firstResult < 0) {
+      return createBadRequest(FIRST_RESULT_MUST_BY_A_POSITIVE_INTEGER);
+    }
+    
+    if (maxResults != null && maxResults < 0) {
+      return createBadRequest(MAX_RESULTS_MUST_BY_A_POSITIVE_INTEGER);
+    }
+    
+    return null;
+  }
+  
   private BannerId toBannerId(String id) {
     if (StringUtils.isNotBlank(id)) {
       return new BannerId(KuntaApiConsts.IDENTIFIER_NAME, id);
@@ -982,9 +1062,9 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     return null;
   }
 
-  private ServiceId toServiceId(String id) {
+  private OrganizationServiceId toOrganizationServiceId(String id) {
     if (StringUtils.isNotBlank(id)) {
-      return new ServiceId(KuntaApiConsts.IDENTIFIER_NAME, id);
+      return new OrganizationServiceId(KuntaApiConsts.IDENTIFIER_NAME, id);
     }
     
     return null;
@@ -1039,6 +1119,14 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     return null;
   }
   
+  private JobId toJobId(String id) {
+    if (StringUtils.isNotBlank(id)) {
+      return new JobId(KuntaApiConsts.IDENTIFIER_NAME, id);
+    }
+    
+    return null;
+  }
+  
   private OffsetDateTime getDateTime(String timeString) {
     if (StringUtils.isNotBlank(timeString)) {
       return OffsetDateTime.parse(timeString);
@@ -1058,32 +1146,10 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     return Collections.unmodifiableList(result);
   }
   
-  private List<ServiceProvider> getServiceProviders() {
-    List<ServiceProvider> result = new ArrayList<>();
+  private List<OrganizationServiceProvider> getOrganizationServiceProviders() {
+    List<OrganizationServiceProvider> result = new ArrayList<>();
     
-    Iterator<ServiceProvider> iterator = serviceProviders.iterator();
-    while (iterator.hasNext()) {
-      result.add(iterator.next());
-    }
-    
-    return Collections.unmodifiableList(result);
-  }
-  
-  private List<ServiceChannelProvider> getServiceChannelProviders() {
-    List<ServiceChannelProvider> result = new ArrayList<>();
-    
-    Iterator<ServiceChannelProvider> iterator = serviceChannelProviders.iterator();
-    while (iterator.hasNext()) {
-      result.add(iterator.next());
-    }
-    
-    return Collections.unmodifiableList(result);
-  }
-  
-  private List<ServiceClassProvider> getServiceClassProviders() {
-    List<ServiceClassProvider> result = new ArrayList<>();
-    
-    Iterator<ServiceClassProvider> iterator = serviceClassProviders.iterator();
+    Iterator<OrganizationServiceProvider> iterator = organizationServiceProviders.iterator();
     while (iterator.hasNext()) {
       result.add(iterator.next());
     }
@@ -1157,27 +1223,15 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     return Collections.unmodifiableList(result);
   }
 
-
-  private fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting findOrganizationSetting(OrganizationId organizationId, String settingId) {
-    fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting organizationSetting = organizationSettingController.findOrganizationSetting(settingId);
-    if (organizationSetting == null) {
-      return null;
+  private List<JobProvider> getJobProviders() {
+    List<JobProvider> result = new ArrayList<>();
+    
+    Iterator<JobProvider> iterator = jobProviders.iterator();
+    while (iterator.hasNext()) {
+      result.add(iterator.next());
     }
     
-    if (!StringUtils.equals(organizationSetting.getOrganizationKuntaApiId(), organizationId.getId())) {
-      logger.severe(String.format("Tried to access organization setting %s with organization %s", settingId, organizationId.toString()));
-      return null;
-    }
-    
-    return organizationSetting;
+    return Collections.unmodifiableList(result);
   }
   
-  private OrganizationSetting createOrganizationEntity(fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting organizationSetting) {
-    OrganizationSetting result = new OrganizationSetting();
-    result.setId(String.valueOf(organizationSetting.getId()));
-    result.setKey(organizationSetting.getKey());
-    result.setValue(organizationSetting.getValue());
-    return result;
-  }
 }
-

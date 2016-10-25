@@ -1,0 +1,36 @@
+name: kunta-api-server
+version: "{{ KUNTA_API_SERVER_VERSION }}"
+summary: Kunta API Server
+description: Kunta API Server 
+grade: devel
+confinement: devmode
+
+apps:
+  wildfly:
+    command: bin/wrapper
+    daemon: forking
+    plugs:
+      - network
+      - network-bind
+      - network-observe
+      - log-observe
+      - process-control
+      - system-observe
+parts:
+  wildfly:
+    plugin: dump
+    source: http://download.jboss.org/wildfly/10.1.0.Final/wildfly-10.1.0.Final.tar.gz
+    stage-packages:
+      - openjdk-8-jdk
+      - mysql-server-5.7
+  wildfly-modules:
+    plugin: dump
+    source: wildfly-modules      
+    organize:
+      com: modules/system/layers/base/com
+  webapp:
+    plugin: maven
+    source: ../
+  local-files:
+    plugin: make
+    source: .

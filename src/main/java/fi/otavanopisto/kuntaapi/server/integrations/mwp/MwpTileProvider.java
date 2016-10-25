@@ -6,17 +6,17 @@ import java.util.Collections;
 import java.util.List;
 import java.util.logging.Logger;
 
-import javax.enterprise.context.Dependent;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
+import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
+import fi.otavanopisto.kuntaapi.server.id.IdController;
+import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.id.TileId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
-import fi.otavanopisto.kuntaapi.server.integrations.AttachmentId;
-import fi.otavanopisto.kuntaapi.server.integrations.TileId;
-import fi.otavanopisto.kuntaapi.server.integrations.TileProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.IdController;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
-import fi.otavanopisto.kuntaapi.server.integrations.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.integrations.TileProvider;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
 import fi.otavanopisto.kuntaapi.server.rest.model.Tile;
@@ -28,7 +28,7 @@ import fi.otavanopisto.mwp.client.model.Attachment.MediaTypeEnum;
  * 
  * @author Antti Leppä
  */
-@Dependent
+@RequestScoped
 public class MwpTileProvider extends AbstractMwpProvider implements TileProvider {
   
   @Inject
@@ -42,9 +42,6 @@ public class MwpTileProvider extends AbstractMwpProvider implements TileProvider
   
   @Inject
   private IdentifierController identifierController;
-
-  private MwpTileProvider() {
-  }
 
   @Override
   public List<Tile> listOrganizationTiles(OrganizationId organizationId) {
