@@ -159,13 +159,21 @@ public abstract class AbstractIdProvider implements IdProvider {
       return id;
     }
 
-    if (getSource().equals(id.getSource()) && KuntaApiConsts.IDENTIFIER_NAME.equals(target)) {
+    if (toKuntaApi(id, target)) {
       return translateToKuntaApiId(id, idClass);
-    } else if (target.equals(getSource()) && KuntaApiConsts.IDENTIFIER_NAME.equals(id.getSource())) {
+    } else if (toSourceId(id, target)) {
       return translateToSourceId(id, type, idClass);
     }
     
     return null;
+  }
+  
+  private boolean toKuntaApi(Id id, String target) {
+    return getSource().equals(id.getSource()) && KuntaApiConsts.IDENTIFIER_NAME.equals(target);
+  }
+  
+  private boolean toSourceId(Id id, String target) {
+    return target.equals(getSource()) && KuntaApiConsts.IDENTIFIER_NAME.equals(id.getSource());
   }
 
   private <T extends Id> T translateToSourceId(T id, IdType type, Class<T> idClass) {
