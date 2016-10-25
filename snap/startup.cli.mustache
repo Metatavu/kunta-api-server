@@ -10,6 +10,7 @@ set hostname=${hostname}
 set clusterPassword=${clusterPassword}
 set clusterMaxHeap=${clusterMaxHeap}
 set masterHost=${masterHost}
+set masterPort=${masterPort}
 set slaveUser=${slaveUser}
 set slaveSecret=${slaveSecret}
 set managementAddress=${managementAddress}
@@ -17,7 +18,6 @@ set publicAddress=${publicAddress}
 set unsecureAddress=${unsecureAddress}
 
 /server-group=main-server-group/jvm=default:write-attribute(name=max-heap-size,value=$clusterMaxHeap)
-/host=master:write-attribute(name=name,value=slave)
 
 if (outcome != success) of /system-property=jboss.messaging.cluster.password:read-resource
   /system-property=jboss.messaging.cluster.password:add(value=$clusterPassword)
@@ -89,7 +89,7 @@ end-if
 
 echo Setup remote domain controller
 /host=master:remove-local-domain-controller()
-/host=master:write-remote-domain-controller(protocol=remote,host=$masterHost,username=$slaveUser,security-realm=management-realm)
+/host=master:write-remote-domain-controller(protocol=remote,port=$masterPort,host=$masterHost,username=$slaveUser,security-realm=management-realm)
 if (outcome == success) of /host=master/core-service=management/security-realm=ManagementRealm/server-identity=secret:read-resource
   /host=master/core-service=management/security-realm=ManagementRealm/server-identity=secret:add(value=$slaveSecret)
 end-if
