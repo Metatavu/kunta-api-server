@@ -97,7 +97,3 @@ end-if
 /interface=management:write-attribute(name=inet-address,value=$managementAddress)
 /interface=public:write-attribute(name=inet-address,value=$publicAddress)
 /interface=unsecure:write-attribute(name=inet-address,value=$unsecureAddress)
-
-reload --host=master
-:reload-servers(blocking=true)
-deploy /snap/kunta-api-server/current/war/kunta-api-server-{{ KUNTA_API_SERVER_VERSION }}.war --all-server-groups
