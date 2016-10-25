@@ -10,7 +10,7 @@ import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
 import fi.otavanopisto.kuntaapi.server.rest.model.Event;
 
 /**
- * Interafce that describes a single event provider
+ * Interface that describes a single event provider
  * 
  * @author Antti Leppä
  */

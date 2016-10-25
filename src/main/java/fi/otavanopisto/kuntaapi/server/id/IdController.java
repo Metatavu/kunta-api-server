@@ -363,6 +363,26 @@ public class IdController {
   }
   
   /**
+   * Translates announcement id into into target id
+   * 
+   * @param announcementId id to be translated
+   * @param target target
+   * @return translated id or null if translation has failed
+   */
+  public AnnouncementId translateAnnouncementId(AnnouncementId announcementId, String target) {
+    if (StringUtils.equals(announcementId.getSource(), target)) {
+      return announcementId;
+    }
+    
+    IdProvider idProvider = getIdProvider(announcementId.getSource(), target);
+    if (idProvider != null) {
+      return idProvider.translate(announcementId, target);
+    }
+    
+    return null;
+  }
+  
+  /**
    * Translates page id into into target id
    * 
    * @param pageId id to be translated

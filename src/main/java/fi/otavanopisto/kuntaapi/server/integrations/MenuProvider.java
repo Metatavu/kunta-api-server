@@ -9,7 +9,7 @@ import fi.otavanopisto.kuntaapi.server.rest.model.Menu;
 import fi.otavanopisto.kuntaapi.server.rest.model.MenuItem;
 
 /**
- * Interafce that describes a menu provider
+ * Interface that describes a menu provider
  * 
  * @author Antti Leppä
  */

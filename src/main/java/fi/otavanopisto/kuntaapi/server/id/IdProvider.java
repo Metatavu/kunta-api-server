@@ -180,5 +180,14 @@ public interface IdProvider {
    * @return translated id
    */
   public JobId translate(JobId jobId, String target);
+  
+  /**
+   * Translate announcement id
+   * 
+   * @param announcementId original id
+   * @param target target type
+   * @return translated id
+   */
+  public AnnouncementId translate(AnnouncementId announcementId, String target);
 
 }
