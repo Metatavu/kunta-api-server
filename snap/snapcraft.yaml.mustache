@@ -8,7 +8,7 @@ confinement: devmode
 apps:
   wildfly:
     command: bin/wrapper
-    daemon: forking
+    daemon: simple
     plugs:
       - network
       - network-bind
@@ -22,7 +22,6 @@ parts:
     source: http://download.jboss.org/wildfly/10.1.0.Final/wildfly-10.1.0.Final.tar.gz
     stage-packages:
       - openjdk-8-jdk
-      - mysql-server-5.7
   wildfly-modules:
     plugin: dump
     source: wildfly-modules      
