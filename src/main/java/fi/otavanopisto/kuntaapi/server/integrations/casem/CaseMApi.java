@@ -8,7 +8,7 @@ import fi.otavanopisto.casem.client.ContentsApi;
 import fi.otavanopisto.casem.client.FilesApi;
 import fi.otavanopisto.casem.client.NodesApi;
 import fi.otavanopisto.casem.client.TemplatesApi;
-import fi.otavanopisto.kuntaapi.server.integrations.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 
 /**
