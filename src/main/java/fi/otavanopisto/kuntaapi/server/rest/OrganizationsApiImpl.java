@@ -59,12 +59,13 @@ import fi.otavanopisto.kuntaapi.server.rest.model.OrganizationService;
 import fi.otavanopisto.kuntaapi.server.rest.model.OrganizationSetting;
 import fi.otavanopisto.kuntaapi.server.rest.model.Page;
 import fi.otavanopisto.kuntaapi.server.rest.model.Tile;
-import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
+import fi.otavanopisto.kuntaapi.server.system.OrganizationSettingProvider;
 
 /**
  * REST Service implementation
  * 
  * @author Antti Leppä
+ * @author Heikki Kurhinen
  */
 @RequestScoped
 @Stateful
@@ -82,7 +83,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   private Logger logger;
   
   @Inject
-  private OrganizationSettingController organizationSettingController;
+  private OrganizationSettingProvider organizationSettingProvider;
   
   @Inject
   private Instance<OrganizationProvider> organizationProviders;
@@ -413,7 +414,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     for (BannerProvider bannerProvider : getBannerProviders()) {
       result.addAll(bannerProvider.listOrganizationBanners(organizationId));
     }
-    
+
     return Response.ok(result)
       .build();
   }
@@ -585,6 +586,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   }
 
   @Override
+  @SuppressWarnings("squid:MethodCyclomaticComplexity")
   public Response createOrganizationSetting(String organizationIdParam, OrganizationSetting setting) {
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
     if (organizationId == null) {
@@ -599,13 +601,18 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createBadRequest("Value is required");
     }
     
-    String value = organizationSettingController.getSettingValue(organizationId, setting.getKey());
-    if (value != null) {
+    List<OrganizationSetting> organizationSettings = organizationSettingProvider.listOrganizationSettings(organizationId, setting.getKey());
+    if (!organizationSettings.isEmpty()) {
       return createBadRequest("Setting already exists");
     }
     
+    OrganizationSetting organizationSetting = organizationSettingProvider.createOrganizationSetting(organizationId, setting.getKey(), setting.getValue());
+    if (organizationSetting == null) {
+      return createInternalServerError(INTERNAL_SERVER_ERROR);
+    }
+    
     return Response.ok()
-        .entity(createOrganizationEntity(organizationSettingController.createOrganizationSetting(setting.getKey(), setting.getValue(), organizationId)))
+        .entity(organizationSetting)
         .build();
   }
 
@@ -616,23 +623,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createNotFound(NOT_FOUND);
     }
     
-    List<fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting> settings;
-    
-    if (StringUtils.isNotBlank(key)) {
-      fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting setting = organizationSettingController.findOrganizationSettingByKey(organizationId, key);
-      if (setting != null) {
-        settings = Collections.singletonList(setting);
-      } else {
-        settings = Collections.emptyList();
-      }
-    } else {
-      settings = organizationSettingController.listOrganizationSettings(organizationId);
-    }
-    
-    List<OrganizationSetting> result = new ArrayList<>(settings.size());
-    for (fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting setting : settings) {
-      result.add(createOrganizationEntity(setting));
-    }
+    List<OrganizationSetting> result = organizationSettingProvider.listOrganizationSettings(organizationId, key);
 
     return Response.ok()
         .entity(result)
@@ -646,10 +637,13 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createNotFound(NOT_FOUND);
     }
     
-    fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting organizationSetting = findOrganizationSetting(organizationId, settingId);
-    
+    OrganizationSetting organizationSetting = organizationSettingProvider.findOrganizationSetting(organizationId, settingId);
+    if (organizationSetting == null) {
+      return createNotFound(NOT_FOUND);
+    }
+
     return Response.ok()
-        .entity(createOrganizationEntity(organizationSetting))
+        .entity(organizationSetting)
         .build();
   }
   
@@ -669,7 +663,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createBadRequest("Value is required");
     }
     
-    fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting organizationSetting = findOrganizationSetting(organizationId, settingId);
+    OrganizationSetting organizationSetting = organizationSettingProvider.findOrganizationSetting(organizationId, settingId);
     if (organizationSetting == null) {
       return createNotFound(NOT_FOUND);
     }
@@ -678,10 +672,14 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createBadRequest("Cannot update setting key");
     }
     
-    fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting updatedSetting = organizationSettingController.updateOrganizationSetting(organizationSetting, setting.getValue());
+    OrganizationSetting updatedOrganizationSetting = organizationSettingProvider.updateOrganizationSetting(organizationSetting.getId(), setting.getValue());
+    
+    if (updatedOrganizationSetting == null) {
+      return createNotFound(NOT_FOUND);
+    }
     
     return Response.ok()
-        .entity(createOrganizationEntity(updatedSetting))
+        .entity(updatedOrganizationSetting)
         .build();
   }
 
@@ -692,12 +690,12 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createNotFound(NOT_FOUND);
     }
     
-    fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting organizationSetting = findOrganizationSetting(organizationId, settingId);
+    OrganizationSetting organizationSetting = organizationSettingProvider.findOrganizationSetting(organizationId, settingId);
     if (organizationSetting == null) {
       return createNotFound(NOT_FOUND);
     }
-
-    organizationSettingController.deleteOrganizationSetting(organizationSetting);
+    
+    organizationSettingProvider.deleteOrganizationSetting(organizationSetting.getId());
     
     return Response.noContent()
         .build();
@@ -1248,28 +1246,5 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     
     return Collections.unmodifiableList(result);
   }
-
-  private fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting findOrganizationSetting(OrganizationId organizationId, String settingId) {
-    fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting organizationSetting = organizationSettingController.findOrganizationSetting(settingId);
-    if (organizationSetting == null) {
-      return null;
-    }
-    
-    if (!StringUtils.equals(organizationSetting.getOrganizationKuntaApiId(), organizationId.getId())) {
-      logger.severe(String.format("Tried to access organization setting %s with organization %s", settingId, organizationId.toString()));
-      return null;
-    }
-    
-    return organizationSetting;
-  }
   
-  private OrganizationSetting createOrganizationEntity(fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting organizationSetting) {
-    OrganizationSetting result = new OrganizationSetting();
-    result.setId(String.valueOf(organizationSetting.getId()));
-    result.setKey(organizationSetting.getKey());
-    result.setValue(organizationSetting.getValue());
-    return result;
-  }
-
 }
-
