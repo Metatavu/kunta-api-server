@@ -41,5 +41,7 @@ public enum IdType {
 
   MENU_ITEM,
 
-  JOB
+  JOB,
+
+  ANNOUNCEMENT
 }

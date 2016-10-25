@@ -10,7 +10,7 @@ import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
 import fi.otavanopisto.kuntaapi.server.rest.model.NewsArticle;
 
 /**
- * Interafce that describes a single news provider
+ * Interface that describes a single news provider
  * 
  * @author Antti Leppä
  */

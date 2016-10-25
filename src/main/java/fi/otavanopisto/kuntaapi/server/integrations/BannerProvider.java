@@ -9,7 +9,7 @@ import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
 import fi.otavanopisto.kuntaapi.server.rest.model.Banner;
 
 /**
- * Interafce that describes a single banner provider
+ * Interface that describes a single banner provider
  * 
  * @author Antti Leppä
  */
