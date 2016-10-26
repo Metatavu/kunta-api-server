@@ -33,7 +33,7 @@ public class CaseMOrganizationContentsEntityUpdater extends EntityUpdater {
   private static final int TIMER_INTERVAL = 100;
 
   @Inject
-  private CaseMCache caseMCache;
+  private CaseMCacheUpdater cacheUpdater;
   
   @Inject
   private OrganizationSettingController organizationSettingController;
@@ -101,7 +101,7 @@ public class CaseMOrganizationContentsEntityUpdater extends EntityUpdater {
   }
 
   private void updateOrganizationJobs(OrganizationId organizationId) {
-    caseMCache.refreshContents(organizationId);
+    cacheUpdater.refreshContents(organizationId);
   }
 
 }
