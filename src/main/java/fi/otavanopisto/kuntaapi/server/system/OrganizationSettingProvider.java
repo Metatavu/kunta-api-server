@@ -79,7 +79,7 @@ public class OrganizationSettingProvider {
    * @param settingId id of organizationSetting
    * @return OrganizationSetting
    */
-  public OrganizationSetting findOrganizationSetting(OrganizationId organizationId, String settingId) {
+  public OrganizationSetting findOrganizationSetting(OrganizationId organizationId, Long settingId) {
     fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting organizationSetting = organizationSettingController.findOrganizationSetting(settingId);
     if (organizationSetting == null) {
       return null;
@@ -100,7 +100,7 @@ public class OrganizationSettingProvider {
    * @param value new value for organization setting
    * @return updated organization setting
    */
-  public OrganizationSetting updateOrganizationSetting(String organizationSettingId, String value) {
+  public OrganizationSetting updateOrganizationSetting(Long organizationSettingId, String value) {
     fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting organizationSetting = organizationSettingController.findOrganizationSetting(organizationSettingId);
     if (organizationSetting == null) {
       logger.log(Level.SEVERE, String.format("Could not find organizationSetting by id %s", organizationSettingId));
@@ -115,7 +115,7 @@ public class OrganizationSettingProvider {
    * 
    * @param organizationSettingId of organization setting
    */
-  public void deleteOrganizationSetting(String organizationSettingId) {
+  public void deleteOrganizationSetting(Long organizationSettingId) {
     fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting organizationSetting = organizationSettingController.findOrganizationSetting(organizationSettingId);
     if (organizationSetting != null) {
       organizationSettingController.deleteOrganizationSetting(organizationSetting);
