@@ -76,6 +76,10 @@
     
     <jackson-dataformat-xml.version>2.6.3</jackson-dataformat-xml.version>
     
+    <!-- Freemarker -->
+    
+    <freemarker.version>2.3.23</freemarker.version>
+    
     <!-- Test -->
     
     <restassured.version>2.9.0</restassured.version> 
@@ -187,6 +191,12 @@
       </exclusions>
     </dependency>
     
+    <dependency>
+      <groupId>org.freemarker</groupId>
+      <artifactId>freemarker</artifactId>
+      <version>${freemarker.version}</version>
+    </dependency>
+
     <dependency>
       <groupId>com.fasterxml.jackson.module</groupId>
       <artifactId>jackson-module-jaxb-annotations</artifactId>
