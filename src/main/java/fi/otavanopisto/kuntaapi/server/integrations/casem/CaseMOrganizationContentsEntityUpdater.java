@@ -30,7 +30,7 @@ import fi.otavanopisto.kuntaapi.server.system.SystemUtils;
 @SuppressWarnings ("squid:S3306")
 public class CaseMOrganizationContentsEntityUpdater extends EntityUpdater {
 
-  private static final int TIMER_INTERVAL = 100;
+  private static final int TIMER_INTERVAL = 1000 * 60;
 
   @Inject
   private CaseMCacheUpdater cacheUpdater;
@@ -42,11 +42,15 @@ public class CaseMOrganizationContentsEntityUpdater extends EntityUpdater {
   private TimerService timerService;
 
   private boolean stopped;
-  private List<OrganizationId> queue;
-
+  private List<OrganizationId> nodesQueue;
+  private List<OrganizationId> contentsQueue;
+  private Queue queue;
+  
   @PostConstruct
   public void init() {
-    queue = new ArrayList<>();
+    queue = Queue.NODES;
+    nodesQueue = new ArrayList<>();
+    contentsQueue = new ArrayList<>();
   }
 
   @Override
@@ -79,11 +83,11 @@ public class CaseMOrganizationContentsEntityUpdater extends EntityUpdater {
       }
       
       if (event.isPriority()) {
-        queue.remove(event.getId());
-        queue.add(0, event.getId());
+        nodesQueue.remove(event.getId());
+        nodesQueue.add(0, event.getId());
       } else {
-        if (!queue.contains(event.getId())) {
-          queue.add(event.getId());
+        if (!nodesQueue.contains(event.getId())) {
+          nodesQueue.add(event.getId());
         }
       }      
     }
@@ -92,16 +96,40 @@ public class CaseMOrganizationContentsEntityUpdater extends EntityUpdater {
   @Timeout
   public void timeout(Timer timer) {
     if (!stopped) {
-      if (!queue.isEmpty()) {
-        updateOrganizationJobs(queue.iterator().next());          
+      if (queue == Queue.CONTENTS) {
+        if (!contentsQueue.isEmpty()) {
+          updateOrganizationContents(contentsQueue.iterator().next());          
+        }
+        
+        queue = Queue.NODES;
+      } else if (queue == Queue.NODES) {
+        if (!nodesQueue.isEmpty()) {
+          updateOrganizationNodes(nodesQueue.iterator().next());          
+        }
+        
+        queue = Queue.CONTENTS;
       }
-
+      
       startTimer(SystemUtils.inTestMode() ? 1000 : TIMER_INTERVAL);
     }
   }
 
-  private void updateOrganizationJobs(OrganizationId organizationId) {
+  private void updateOrganizationNodes(OrganizationId organizationId) {
+    cacheUpdater.refreshNodes(organizationId);
+    if (!contentsQueue.contains(organizationId)) {
+      contentsQueue.add(organizationId);
+    }
+  }
+  
+  private void updateOrganizationContents(OrganizationId organizationId) {
     cacheUpdater.refreshContents(organizationId);
   }
 
+  private enum Queue {
+    
+    NODES,
+    
+    CONTENTS
+    
+  }
 }

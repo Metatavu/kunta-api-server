@@ -57,7 +57,7 @@ public class CaseMPageProvider implements PageProvider {
   
   @Override
   public List<LocalizedValue> findOrganizationPageContents(OrganizationId organizationId, PageId pageId) {
-    return Collections.emptyList();
+    return caseMCache.getPageContent(organizationId, pageId);
   }
 
   @Override
