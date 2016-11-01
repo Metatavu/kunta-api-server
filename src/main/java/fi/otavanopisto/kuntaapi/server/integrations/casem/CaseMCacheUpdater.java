@@ -486,18 +486,26 @@ public class CaseMCacheUpdater {
       
       if (line.length == 3) {
         if (isDateField(line[2])) {
+          participant.setArrived(parseCSVDateTime(line[2]));
           group = GROUP_OTHER;
         }
       } else if (line.length == 4) {
-        participant.setArrived(parseCSVDateTime(line[2]));
+        if (isDateField(line[2])) {
+          participant.setArrived(parseCSVDateTime(line[2]));
+        }
         
         if (isDateField(line[3])) {
           participant.setLeft(parseCSVDateTime(line[3]));
           group = GROUP_OTHER;
         }
       } else if (line.length == 5) {
-        participant.setArrived(parseCSVDateTime(line[2]));
-        participant.setLeft(parseCSVDateTime(line[3]));
+        if (isDateField(line[2])) {
+          participant.setArrived(parseCSVDateTime(line[2]));
+        }
+        
+        if (isDateField(line[3])) {
+          participant.setLeft(parseCSVDateTime(line[3]));
+        }
       }
     }
 
