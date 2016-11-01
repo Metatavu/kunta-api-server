@@ -42,6 +42,10 @@ public abstract class Id {
     super();
     this.source = source;
     this.id = id;
+    
+    if (this.id == null) {
+      throw new MalformedIdException("Attempted to create null id");
+    }
   }
 
   public String getId() {

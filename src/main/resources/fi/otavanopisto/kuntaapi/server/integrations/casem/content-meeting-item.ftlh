@@ -3,7 +3,9 @@
 </#if>
 
 <#if memoApproved>
-  <p>Pöytäkirja on tarkastettu </p>
+  <p class="casem-memo-approved">Pöytäkirja on tarkastettu </p>
+<#else>
+  <p class="casem-memo-not-approved">Esityslista on tarkastamaton</p>
 </#if>
 
 <h2><#if article??>§ ${article}</#if> <#if name??>${name}</#if><#if additionalTopic> (jatkopykälä)</#if></h2>
