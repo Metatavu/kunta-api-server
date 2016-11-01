@@ -343,7 +343,7 @@ public class CaseMCacheUpdater {
         continue;
       }
       
-      mapSimpleMeetingItemProperty(downloadUrl, model, name, text);
+      mapMeetingItemProperty(downloadUrl, model, name, text);
     }          
     
     model.setMeetingTitle(meetingTitle);
@@ -353,7 +353,7 @@ public class CaseMCacheUpdater {
   }
 
   @SuppressWarnings ("squid:MethodCyclomaticComplexity")
-  private void mapSimpleMeetingItemProperty(String downloadUrl, MeetingItem model, String name, String text) {
+  private void mapMeetingItemProperty(String downloadUrl, MeetingItem model, String name, String text) {
     switch (name) {
       case EXTENDED_DRAFTING_NOTES:
         model.setDraftingNotes(text);
