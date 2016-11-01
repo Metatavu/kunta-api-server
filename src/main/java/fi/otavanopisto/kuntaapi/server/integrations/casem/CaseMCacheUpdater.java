@@ -233,7 +233,7 @@ public class CaseMCacheUpdater {
 
   private boolean isMeetingMemoApproved(List<ExtendedProperty> extendedProperties) {
     for (ExtendedProperty extendedProperty : extendedProperties) {
-      if (StringUtils.isNotBlank(extendedProperty.getText()) && (EXTENDED_AGENDA_ATTACHMENT.equals(extendedProperty.getName()))) {
+      if (StringUtils.isNotBlank(extendedProperty.getText()) && EXTENDED_ATTACHMENTS.equals(extendedProperty.getName())) {
         return true;
       }
     }
