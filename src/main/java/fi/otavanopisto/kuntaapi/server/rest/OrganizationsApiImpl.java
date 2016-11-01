@@ -20,6 +20,7 @@ import javax.ws.rs.core.Response.Status;
 
 import org.apache.commons.lang3.EnumUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.math.NumberUtils;
 
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.BannerId;
@@ -72,6 +73,7 @@ import fi.otavanopisto.kuntaapi.server.system.OrganizationSettingProvider;
 @SuppressWarnings ("squid:S3306")
 public class OrganizationsApiImpl extends OrganizationsApi {
   
+  private static final String INVALID_SETTING_ID = "Invalid setting id";
   private static final String MAX_RESULTS_MUST_BY_A_POSITIVE_INTEGER = "maxResults must by a positive integer";
   private static final String FIRST_RESULT_MUST_BY_A_POSITIVE_INTEGER = "firstResult must by a positive integer";
   private static final String NOT_FOUND = "Not Found";
@@ -631,11 +633,17 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   }
   
   @Override
-  public Response findOrganizationSetting(String organizationIdParam, String settingId) {
+  public Response findOrganizationSetting(String organizationIdParam, String settingIdParam) {
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
     }
+    
+    if (!StringUtils.isNumeric(settingIdParam)) {
+      return createBadRequest(INVALID_SETTING_ID);
+    }
+    
+    Long settingId = NumberUtils.createLong(settingIdParam); 
     
     OrganizationSetting organizationSetting = organizationSettingProvider.findOrganizationSetting(organizationId, settingId);
     if (organizationSetting == null) {
@@ -649,7 +657,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   
   @Override
   @SuppressWarnings ("squid:MethodCyclomaticComplexity")
-  public Response updateOrganizationSetting(String organizationIdParam, String settingId, OrganizationSetting setting) {
+  public Response updateOrganizationSetting(String organizationIdParam, String settingIdParam, OrganizationSetting setting) {
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
@@ -663,6 +671,12 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createBadRequest("Value is required");
     }
     
+    if (!StringUtils.isNumeric(settingIdParam)) {
+      return createBadRequest(INVALID_SETTING_ID);
+    }
+    
+    Long settingId = NumberUtils.createLong(settingIdParam); 
+
     OrganizationSetting organizationSetting = organizationSettingProvider.findOrganizationSetting(organizationId, settingId);
     if (organizationSetting == null) {
       return createNotFound(NOT_FOUND);
@@ -672,7 +686,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createBadRequest("Cannot update setting key");
     }
     
-    OrganizationSetting updatedOrganizationSetting = organizationSettingProvider.updateOrganizationSetting(organizationSetting.getId(), setting.getValue());
+    OrganizationSetting updatedOrganizationSetting = organizationSettingProvider.updateOrganizationSetting(settingId, setting.getValue());
     
     if (updatedOrganizationSetting == null) {
       return createNotFound(NOT_FOUND);
@@ -684,18 +698,24 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   }
 
   @Override
-  public Response deleteOrganizationSetting(String organizationIdParam, String settingId) {
+  public Response deleteOrganizationSetting(String organizationIdParam, String settingIdParam) {
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
     }
+    
+    if (!StringUtils.isNumeric(settingIdParam)) {
+      return createBadRequest(INVALID_SETTING_ID);
+    }
+    
+    Long settingId = NumberUtils.createLong(settingIdParam); 
     
     OrganizationSetting organizationSetting = organizationSettingProvider.findOrganizationSetting(organizationId, settingId);
     if (organizationSetting == null) {
       return createNotFound(NOT_FOUND);
     }
     
-    organizationSettingProvider.deleteOrganizationSetting(organizationSetting.getId());
+    organizationSettingProvider.deleteOrganizationSetting(settingId);
     
     return Response.noContent()
         .build();
@@ -717,7 +737,12 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     List<Page> result = new ArrayList<>();
     
     for (PageProvider pageProvider : getPageProviders()) {
-      result.addAll(pageProvider.listOrganizationPages(organizationId, parentId, onlyRootPages, path));
+      List<Page> pages = pageProvider.listOrganizationPages(organizationId, parentId, onlyRootPages, path);
+      if (pages != null) {
+        result.addAll(pages);
+      } else {
+        logger.severe(String.format("Page provider %s returned null when listing pages", pageProvider.getClass().getName())); 
+      }
     }
     
     return Response.ok(result)

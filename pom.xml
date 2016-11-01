@@ -69,11 +69,16 @@
     <kunta-api-spec.version>0.1.6</kunta-api-spec.version>
     <restful-ptv-rest-client.version>1.2.5</restful-ptv-rest-client.version>
     <mwp-rest-client.version>0.0.18</mwp-rest-client.version>
+    <casem-rest-client.version>0.0.9</casem-rest-client.version>
     <mikkelinyt.rest-model.version>0.0.1</mikkelinyt.rest-model.version>
     
     <!-- Jackson -->
     
     <jackson-dataformat-xml.version>2.6.3</jackson-dataformat-xml.version>
+    
+    <!-- Freemarker -->
+    
+    <freemarker.version>2.3.23</freemarker.version>
     
     <!-- Test -->
     
@@ -187,6 +192,12 @@
     </dependency>
     
     <dependency>
+      <groupId>org.freemarker</groupId>
+      <artifactId>freemarker</artifactId>
+      <version>${freemarker.version}</version>
+    </dependency>
+
+    <dependency>
       <groupId>com.fasterxml.jackson.module</groupId>
       <artifactId>jackson-module-jaxb-annotations</artifactId>
       <scope>provided</scope>
@@ -232,6 +243,18 @@
       <groupId>fi.otavanopisto.mwp.mwp-rest-client</groupId>
       <artifactId>mwp-rest-client</artifactId>
       <version>${mwp-rest-client.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>com.fasterxml.jackson.datatype</groupId>
+          <artifactId>jackson-datatype-jsr310</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <dependency>
+      <groupId>fi.otavanopisto.casem.casem-rest-client</groupId>
+      <artifactId>casem-rest-client</artifactId>
+      <version>${casem-rest-client.version}</version>
       <exclusions>
         <exclusion>
           <groupId>com.fasterxml.jackson.datatype</groupId>

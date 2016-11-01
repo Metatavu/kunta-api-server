@@ -77,13 +77,13 @@ public class GenericHttpClient {
     }
     
     try {
-      return doGETRequest(uriBuilder.build(), resultType);
+      return doGETRequest(uriBuilder.build(), resultType, null);
     } catch (URISyntaxException e) {
       logger.log(Level.SEVERE, INVALID_URI_SYNTAX, e);
       return new Response<>(500, INVALID_URI_SYNTAX, null);
     }
   }
-
+  
   /**
    * Executes a get request into a specified URI
    * 
@@ -93,18 +93,37 @@ public class GenericHttpClient {
    * @return the response
    */
   public <T> Response<T> doGETRequest(URI uri, ResultType<T> resultType) {
+    return doGETRequest(uri, resultType, null);
+  }
+
+  /**
+   * Executes a get request into a specified URI
+   * 
+   * @param uri request uri
+   * @param resultType type of request
+   * @param queryParams query params
+   * @param extraHeaders extra headers for the request
+   * @return the response
+   */
+  public <T> Response<T> doGETRequest(URI uri, ResultType<T> resultType, Map<String, String> extraHeaders) {
     CloseableHttpClient httpClient = HttpClients.createDefault();
     try {
-      return executeRequest(resultType, uri, httpClient);
+      return executeRequest(resultType, uri, httpClient, extraHeaders);
     } finally {
       closeClient(httpClient);
     }
   }
 
   private <T> Response<T> executeRequest(ResultType<T> resultType, URI uri,
-      CloseableHttpClient httpClient) {
+      CloseableHttpClient httpClient, Map<String, String> extraHeaders) {
     HttpGet httpGet = new HttpGet(uri);
    
+    if (extraHeaders != null) {
+      for (Entry<String, String> extraHeader : extraHeaders.entrySet()) {
+        httpGet.addHeader(extraHeader.getKey(), extraHeader.getValue());
+      }
+    }
+    
     try {
       CloseableHttpResponse response = httpClient.execute(httpGet);
       try {

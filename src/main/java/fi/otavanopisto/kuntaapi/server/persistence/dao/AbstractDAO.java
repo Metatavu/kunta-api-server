@@ -36,6 +36,17 @@ public abstract class AbstractDAO<T> {
   public T findById(String id) {
     return (T) getEntityManager().find(getGenericTypeClass(), id);
   }
+  
+  /**
+   * Returns entity by id
+   * 
+   * @param id entity id
+   * @return entity or null if non found
+   */
+  @SuppressWarnings("unchecked")
+  public T findById(Long id) {
+    return (T) getEntityManager().find(getGenericTypeClass(), id);
+  }
 
   /**
    * Lists all entities from database

@@ -132,7 +132,7 @@ public class OrganizationSettingController {
    * @param id organization setting id
    * @return organization setting or null if not found
    */
-  public OrganizationSetting findOrganizationSetting(String id) {
+  public OrganizationSetting findOrganizationSetting(Long id) {
     return organizationSettingDAO.findById(id);
   }
 
