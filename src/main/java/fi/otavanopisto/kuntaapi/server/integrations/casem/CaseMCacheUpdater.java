@@ -23,6 +23,7 @@ import javax.annotation.PostConstruct;
 import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
 import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.event.Event;
 import javax.inject.Inject;
 
 import org.apache.commons.lang3.ArrayUtils;
@@ -46,6 +47,8 @@ import fi.otavanopisto.kuntaapi.server.freemarker.FreemarkerRenderer;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
+import fi.otavanopisto.kuntaapi.server.index.IndexRequest;
+import fi.otavanopisto.kuntaapi.server.index.IndexablePage;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.casem.model.Councilmen;
 import fi.otavanopisto.kuntaapi.server.integrations.casem.model.HistoryTopic;
@@ -112,8 +115,11 @@ public class CaseMCacheUpdater {
   @Inject
   private IdentifierController identifierController;
   
+  @Inject
+  private Event<IndexRequest> indexRequest;
+  
   private Map<PageId, PageId> discoveredPageIds;
-
+  
   @PostConstruct
   public void init() {
     discoveredPageIds = new HashMap<>();
@@ -168,32 +174,47 @@ public class CaseMCacheUpdater {
         continue;
       }
       
-      Content meetingContent = meetingMap.get(meetingId);
-      List<Content> meetingItemContents = meetingEntry.getValue();
+      Content meetingContentNode = meetingMap.get(meetingId);
+      List<Content> meetingItemContentNodes = meetingEntry.getValue();
       
       String meetingTitle = String.format("%s, %s", getFirstTitle(meetingParentPage.getTitles()), StringUtils.uncapitalize(getFirstTitle(meetingPage.getTitles())));
 
-      List<ExtendedProperty> meetingExtendedProperties = listExtendedProperties(organizationId, meetingContent);
+      List<ExtendedProperty> meetingExtendedProperties = listExtendedProperties(organizationId, meetingContentNode);
       boolean memoApproved = isMeetingMemoApproved(meetingExtendedProperties);
       
-      List<MeetingItemLink> itemLinks = new ArrayList<>(meetingItemContents.size());
-      for (Content meetingItemContent : meetingItemContents) {
-        List<ExtendedProperty> itemExtendedProperties = listExtendedProperties(organizationId, meetingItemContent);
+      List<MeetingItemLink> itemLinks = new ArrayList<>(meetingItemContentNodes.size());
+      for (Content meetingItemContentNode : meetingItemContentNodes) {
+        List<ExtendedProperty> itemExtendedProperties = listExtendedProperties(organizationId, meetingItemContentNode);
         MeetingItemLink itemLink = createMeetingItemLink(itemExtendedProperties);
-        Page meetingItemPage = translateContent(organizationId, meetingPage, meetingItemContent, itemLink.getText(), itemLink.getSlug());
-        PageId meetingItemPageId = new PageId(KuntaApiConsts.IDENTIFIER_NAME, meetingItemPage.getId());
-        
-        caseMCache.cachePageContents(organizationId, meetingItemPageId, renderContentMeetingItem(createMeetingItemModel(downloadUrl, meetingTitle, memoApproved, itemExtendedProperties), locale));
-        caseMCache.cacheNode(organizationId, meetingItemPage);
-        
+        Page meetingItemPage = translateContent(organizationId, meetingPage, meetingItemContentNode, itemLink.getText(), itemLink.getSlug());
+        String meetingItemContent = renderContentMeetingItem(createMeetingItemModel(downloadUrl, meetingTitle, memoApproved, itemExtendedProperties), locale);
+        updateMeetingItem(organizationId, meetingItemPage, meetingItemContent, locale);
         itemLinks.add(itemLink);
       }
       
       Collections.sort(itemLinks, (MeetingItemLink o1, MeetingItemLink o2) -> o1.getArticle().compareTo(o2.getArticle()));
+      String meetingContent = renderContentMeeting(createMeetingModel(downloadUrl, meetingTitle, memoApproved, itemLinks, meetingExtendedProperties), locale);
       
-      Meeting meeting = createMeetingModel(downloadUrl, meetingTitle, memoApproved, itemLinks, meetingExtendedProperties);
-      caseMCache.cachePageContents(organizationId, meetingPageId, renderContentMeeting(meeting, locale));
+      caseMCache.cachePageContents(organizationId, meetingPageId, meetingContent);
     }
+  }
+
+  private void updateMeetingItem(OrganizationId organizationId, Page page, String meetingItemContent, Locale locale) {
+    String language = locale.getLanguage();
+    
+    PageId pageId = new PageId(KuntaApiConsts.IDENTIFIER_NAME, page.getId());
+    caseMCache.cachePageContents(organizationId, pageId, meetingItemContent);
+    caseMCache.cacheNode(organizationId, page);
+    
+    String title = null;
+    for (LocalizedValue localizedValue : page.getTitles()) {
+      if (localizedValue.getLanguage().equals(language)) {
+        title = localizedValue.getValue();
+      }
+    }
+    
+    IndexablePage indexablePage = createIndexablePage(organizationId, pageId, language, meetingItemContent, title);
+    indexRequest.fire(new IndexRequest(indexablePage));
   }
 
   private void mapContents(OrganizationId organizationId, Map<Long, Content> meetingMap, Map<Long, List<Content>> meetingItemMap) {
@@ -825,6 +846,29 @@ public class CaseMCacheUpdater {
     }
     
     return CaseMConsts.DEFAULT_LANGUAGE;
+  }
+
+  private IndexablePage createIndexablePage(OrganizationId organizationId, PageId pageId, String language, String content, String title) {
+    OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(organizationId, KuntaApiConsts.IDENTIFIER_NAME);
+    if (kuntaApiOrganizationId == null) {
+      logger.severe(String.format("Failed to translate organizationId %s into KuntaAPI id", organizationId.toString()));
+      return null;
+    }
+    
+    PageId kuntaApiPageId = translatePageId(pageId, false);
+    if (kuntaApiPageId == null) {
+      logger.severe(String.format("Failed to translate pageId %s into KuntaAPI id", pageId.toString()));
+      return null;
+    }
+    
+    IndexablePage indexablePage = new IndexablePage();
+    indexablePage.setContent(content);
+    indexablePage.setLanguage(language);
+    indexablePage.setOrganizationId(kuntaApiOrganizationId.getId());
+    indexablePage.setPageId(kuntaApiPageId.getId());
+    indexablePage.setTitle(title);
+    
+    return indexablePage;
   }
   
   private class NodeComparator implements Comparator<Node> {
