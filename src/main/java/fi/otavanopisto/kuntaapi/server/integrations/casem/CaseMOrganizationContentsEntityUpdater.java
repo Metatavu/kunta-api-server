@@ -115,14 +115,14 @@ public class CaseMOrganizationContentsEntityUpdater extends EntityUpdater {
   }
 
   private void updateOrganizationNodes(OrganizationId organizationId) {
-    cacheUpdater.refreshNodes(organizationId);
+    cacheUpdater.updateNodes(organizationId);
     if (!contentsQueue.contains(organizationId)) {
       contentsQueue.add(organizationId);
     }
   }
   
   private void updateOrganizationContents(OrganizationId organizationId) {
-    cacheUpdater.refreshContents(organizationId);
+    cacheUpdater.updateContents(organizationId);
   }
 
   private enum Queue {
