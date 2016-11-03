@@ -134,7 +134,7 @@ public class CaseMCacheUpdater {
     List<Node> nodes = getChildNodes(organizationId, caseMRootNodeId, Collections.emptyList());
     cacheNodeTree(organizationId, caseMRootNodeId, null, nodes, new ArrayList<>()); 
     
-    logger.info(String.format("Done updating CaseM meeting for organization %s", organizationId));
+    logger.info(String.format("Done updating CaseM nodes for organization %s", organizationId));
   }
   
   public void updateContents(OrganizationId organizationId) {
