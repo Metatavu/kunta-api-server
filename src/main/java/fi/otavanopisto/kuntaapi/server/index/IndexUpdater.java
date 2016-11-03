@@ -1,6 +1,5 @@
 package fi.otavanopisto.kuntaapi.server.index;
 
-import javax.ejb.Asynchronous;
 import javax.ejb.Lock;
 import javax.ejb.LockType;
 import javax.ejb.Singleton;
@@ -10,7 +9,6 @@ import javax.enterprise.context.ApplicationScoped;
 @Singleton
 public class IndexUpdater extends AbstractIndexHander {
  
-  @Asynchronous
   @Lock (LockType.READ)
   public void index(Indexable indexable) {
     getClient().prepareIndex(getIndex(), indexable.getType(), indexable.getId())

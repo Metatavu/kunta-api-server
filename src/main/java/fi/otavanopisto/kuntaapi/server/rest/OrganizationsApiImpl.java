@@ -22,6 +22,7 @@ import org.apache.commons.lang3.EnumUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 
+import fi.otavanopisto.kuntaapi.server.controllers.OrganizationController;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.BannerId;
 import fi.otavanopisto.kuntaapi.server.id.EventId;
@@ -43,7 +44,6 @@ import fi.otavanopisto.kuntaapi.server.integrations.JobProvider.JobOrderDirectio
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.MenuProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.NewsProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.OrganizationProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.OrganizationServiceProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.PageProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.TileProvider;
@@ -88,7 +88,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   private OrganizationSettingProvider organizationSettingProvider;
   
   @Inject
-  private Instance<OrganizationProvider> organizationProviders;
+  private OrganizationController organizationController;
   
   @Inject
   private Instance<OrganizationServiceProvider> organizationServiceProviders;
@@ -116,11 +116,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   @Override
   public Response listOrganizations(String businessName, String businessCode) {
-    List<Organization> organizations = new ArrayList<>();
-    for (OrganizationProvider organizationProvider : getOrganizationProviders()) {
-      organizations.addAll(organizationProvider.listOrganizations(businessName, businessCode));
-    }
-    
+    List<Organization> organizations = organizationController.listOrganizations(businessName, businessCode);
     return Response.ok(organizations)
       .build();
   }
@@ -128,13 +124,13 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   @Override
   public Response findOrganization(String organizationIdParam) {
   	OrganizationId organizationId = toOrganizationId(organizationIdParam);
-    for (OrganizationProvider organizationProvider : getOrganizationProviders()) {
-      Organization organization = organizationProvider.findOrganization(organizationId);
-      if(organization != null) {
-        return Response.ok(organization)
-          .build();
-      }
+  	Organization organization = organizationController.findOrganization(organizationId);
+  	
+  	if (organization != null) {
+      return Response.ok(organization)
+        .build();
     }
+    
     return Response
       .status(Status.NOT_FOUND)
       .build();
@@ -1171,17 +1167,6 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     }
     
     return null;
-  }
-  
-  private List<OrganizationProvider> getOrganizationProviders() {
-    List<OrganizationProvider> result = new ArrayList<>();
-    
-    Iterator<OrganizationProvider> iterator = organizationProviders.iterator();
-    while (iterator.hasNext()) {
-      result.add(iterator.next());
-    }
-    
-    return Collections.unmodifiableList(result);
   }
   
   private List<OrganizationServiceProvider> getOrganizationServiceProviders() {
