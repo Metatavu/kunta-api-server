@@ -79,7 +79,7 @@ public class CaseMMeetingEntityUpdater extends EntityUpdater {
   public void timeout(Timer timer) {
     if (!stopped) {
       if (!queue.isEmpty()) {
-        updater.updateMeeting(queue.iterator().next());
+        updater.updateMeeting(queue.remove(0));
       }
 
       startTimer(SystemUtils.inTestMode() ? 1000 : TIMER_INTERVAL);
