@@ -3,6 +3,7 @@ package fi.otavanopisto.kuntaapi.server.integrations.casem;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
@@ -33,6 +34,9 @@ public class CaseMMeetingEntityUpdater extends EntityUpdater {
   @Resource
   private TimerService timerService;
 
+  @Inject
+  private Logger logger;
+  
   private boolean stopped;
   
   private List<CaseMMeetingData> queue;
@@ -66,6 +70,7 @@ public class CaseMMeetingEntityUpdater extends EntityUpdater {
   
   public void onCaseMMeetingDataUpdateRequest(@Observes CaseMMeetingDataUpdateRequest event) {
     if (!stopped) {
+      logger.info(String.format(" < Scheduled update for %s", event.getMeetingData().getMeetingPageId().toString()));
       queue.add(event.getMeetingData());
     }
   }

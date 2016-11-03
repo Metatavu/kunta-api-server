@@ -206,6 +206,9 @@ public class CaseMCacheUpdater {
       PageId meetingPageId = toNodeId(organizationId, meetingId);
       List<Content> meetingItemContents = meetingEntry.getValue();
       Content meetingContent = meetingMap.get(meetingId);
+      
+      logger.info(String.format(" > Scheduling update for %s (%d)", meetingPageId.toString(), meetingId));
+      
       CaseMMeetingData meetingData = new CaseMMeetingData(organizationId, meetingPageId, meetingItemContents, meetingContent);
       meetingDataUpdateRequest.fire(new CaseMMeetingDataUpdateRequest(meetingData));
     }
