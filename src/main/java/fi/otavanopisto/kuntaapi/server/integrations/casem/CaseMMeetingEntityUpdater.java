@@ -1,6 +1,7 @@
 package fi.otavanopisto.kuntaapi.server.integrations.casem;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
@@ -8,6 +9,8 @@ import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.ejb.AccessTimeout;
+import javax.ejb.Lock;
+import javax.ejb.LockType;
 import javax.ejb.Singleton;
 import javax.ejb.Timeout;
 import javax.ejb.Timer;
@@ -43,7 +46,7 @@ public class CaseMMeetingEntityUpdater extends EntityUpdater {
 
   @PostConstruct
   public void init() {
-    queue = new ArrayList<>();
+    queue = Collections.synchronizedList(new ArrayList<>());
   }
 
   @Override
@@ -68,6 +71,7 @@ public class CaseMMeetingEntityUpdater extends EntityUpdater {
     stopped = true;
   }
   
+  @Lock (LockType.READ)
   public void onCaseMMeetingDataUpdateRequest(@Observes CaseMMeetingDataUpdateRequest event) {
     if (!stopped) {
       logger.info(String.format(" < Scheduled update for %s", event.getMeetingData().getMeetingPageId().toString()));
