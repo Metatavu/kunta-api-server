@@ -124,7 +124,7 @@ public class CaseMCacheUpdater {
   }
   
   public void updateNodes(OrganizationId organizationId) {
-    logger.info(String.format("Refreshing CaseM nodes for organization %s", organizationId));
+    logger.info(String.format("Updating CaseM nodes for organization %s", organizationId));
     
     Long caseMRootNodeId = getCaseMRootNodeId(organizationId);
     if (caseMRootNodeId == null) {
@@ -134,19 +134,19 @@ public class CaseMCacheUpdater {
     List<Node> nodes = getChildNodes(organizationId, caseMRootNodeId, Collections.emptyList());
     cacheNodeTree(organizationId, caseMRootNodeId, null, nodes, new ArrayList<>()); 
     
-    logger.info(String.format("Done refreshing CaseM nodes for organization %s", organizationId));
+    logger.info(String.format("Done updating CaseM meeting for organization %s", organizationId));
   }
   
   public void updateContents(OrganizationId organizationId) {
-    logger.info(String.format("Refreshing CaseM contents for organization %s", organizationId));
+    logger.info(String.format("Updating CaseM contents list for organization %s", organizationId));
     
     cacheContents(organizationId);
     
-    logger.info(String.format("Done refreshing CaseM contents for organization %s", organizationId));
+    logger.info(String.format("Done updating CaseM meeting list for organization %s", organizationId));
   }
   
   public void updateMeeting(CaseMMeetingData meetingData) {
-    logger.info(String.format("Refreshing CaseM meeting %s", meetingData.getMeetingPageId().toString()));
+    logger.info(String.format("Updating CaseM meeting %s", meetingData.getMeetingPageId().toString()));
     
     OrganizationId organizationId = meetingData.getOrganizationId();
     PageId meetingPageId = meetingData.getMeetingPageId();
@@ -191,7 +191,7 @@ public class CaseMCacheUpdater {
     Meeting meeting = createMeetingModel(downloadUrl, meetingTitle, memoApproved, itemLinks, meetingExtendedProperties);
     caseMCache.cachePageContents(organizationId, meetingPageId, renderContentMeeting(meeting, locale));
     
-    logger.info(String.format("Done refreshing CaseM meeting %s", meetingData.getMeetingPageId().toString()));
+    logger.info(String.format("Done updating CaseM meeting %s", meetingData.getMeetingPageId().toString()));
   }
   
   private void cacheContents(OrganizationId organizationId) {
