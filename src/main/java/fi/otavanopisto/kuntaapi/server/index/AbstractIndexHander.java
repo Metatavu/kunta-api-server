@@ -7,6 +7,8 @@ import java.util.logging.Logger;
 
 import javax.inject.Inject;
 
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.math.NumberUtils;
 import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.common.transport.InetSocketTransportAddress;
@@ -20,16 +22,26 @@ public abstract class AbstractIndexHander {
   @Inject
   private Logger logger;
 
-  @SuppressWarnings("resource")
-  protected TransportClient createClient() {
+  protected TransportClient createClient(String clusterName, String[] hosts) {
     TransportClient transportClient = null;
     
     try {
       Settings settings = Settings.builder()
+        .put("cluster.name", clusterName)
         .build();
       
-      transportClient = new PreBuiltTransportClient(settings)
-          .addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName("localhost"), 9300));
+      transportClient = new PreBuiltTransportClient(settings);
+      
+      for (String host : hosts) {
+        String[] parts = StringUtils.split(host, ':');
+        if (parts.length != 2 || !NumberUtils.isNumber(parts[1])) {
+          logger.severe(String.format("Invalid elastic search host %s, dropped", host));
+        }
+        
+        String name = parts[0];
+        Integer port = NumberUtils.createInteger(parts[1]);
+        transportClient.addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName(name), port));
+      }
       
     } catch (UnknownHostException e) {
       logger.log(Level.SEVERE, "Could not connect to elastic search cluster", e);

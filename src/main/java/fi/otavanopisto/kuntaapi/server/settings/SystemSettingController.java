@@ -5,6 +5,8 @@ import java.util.logging.Logger;
 import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 
+import org.apache.commons.lang3.StringUtils;
+
 import fi.otavanopisto.kuntaapi.server.persistence.dao.SystemSettingDAO;
 import fi.otavanopisto.kuntaapi.server.persistence.model.SystemSetting;
 
@@ -23,18 +25,54 @@ public class SystemSettingController {
   private SystemSettingDAO systemSettingDAO;
   
   /**
+   * Returns system setting by key or defaultValue if setting is not defined
+   * 
+   * @param key system setting key
+   * @return setting value
+   */
+  public String getSettingValue(String key, String defaultValue) {
+    SystemSetting systemSetting = systemSettingDAO.findByKey(key);
+    if (systemSetting != null) {
+      return systemSetting.getValue();
+    }
+    
+    return defaultValue;
+  }
+  
+  /**
    * Returns system setting by key or null if setting is not defined
    * 
    * @param key system setting key
    * @return setting value
    */
   public String getSettingValue(String key) {
-    SystemSetting systemSetting = systemSettingDAO.findByKey(key);
-    if (systemSetting != null) {
-      return systemSetting.getValue();
+    return getSettingValue(key, null);
+  }
+  
+  /**
+   * Returns comma delimitered system setting by key or defaultValue if setting is not defined
+   * 
+   * @param key system setting key
+   * @return setting value
+   */
+  public String[] getSettingValues(String key, String[] defaultValue) {
+    String value = getSettingValue(key);
+    String[] result = StringUtils.split(value, ',');
+    if (result == null) {
+      return defaultValue;
     }
     
-    return null;
+    return result;
+  }
+  
+  /**
+   * Returns comma delimitered system setting by key or null if setting is not defined
+   * 
+   * @param key system setting key
+   * @return setting value
+   */
+  public String[] getSettingValues(String key) {
+    return getSettingValues(key, null);
   }
   
   /**
