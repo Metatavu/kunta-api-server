@@ -110,6 +110,9 @@ public class CaseMCacheUpdater {
   private FreemarkerRenderer freemarkerRenderer;
   
   @Inject
+  private Event<CaseMMeetingDataUpdateRequest> meetingDataUpdateRequest;
+  
+  @Inject
   private IdController idController;
   
   @Inject
@@ -119,13 +122,13 @@ public class CaseMCacheUpdater {
   private Event<IndexRequest> indexRequest;
   
   private Map<PageId, PageId> discoveredPageIds;
-  
+
   @PostConstruct
   public void init() {
     discoveredPageIds = new HashMap<>();
   }
   
-  public void refreshNodes(OrganizationId organizationId) {
+  public void updateNodes(OrganizationId organizationId) {
     logger.info(String.format("Refreshing CaseM nodes for organization %s", organizationId));
     
     Long caseMRootNodeId = getCaseMRootNodeId(organizationId);
@@ -139,7 +142,7 @@ public class CaseMCacheUpdater {
     logger.info(String.format("Done refreshing CaseM nodes for organization %s", organizationId));
   }
   
-  public void refreshContents(OrganizationId organizationId) {
+  public void updateContents(OrganizationId organizationId) {
     logger.info(String.format("Refreshing CaseM contents for organization %s", organizationId));
     
     cacheContents(organizationId);
@@ -147,11 +150,59 @@ public class CaseMCacheUpdater {
     logger.info(String.format("Done refreshing CaseM contents for organization %s", organizationId));
   }
   
-  @SuppressWarnings ("squid:S135")
-  private void cacheContents(OrganizationId organizationId) {
-    Locale locale = new Locale(CaseMConsts.DEFAULT_LANGUAGE);
+  public void updateMeeting(CaseMMeetingData meetingData) {
+    logger.info(String.format("Refreshing CaseM meeting %s", meetingData.getMeetingPageId().toString()));
     
+    OrganizationId organizationId = meetingData.getOrganizationId();
+    PageId meetingPageId = meetingData.getMeetingPageId();
+    List<Content> meetingItemContents = meetingData.getMeetingItemContents();
+    
+    Locale locale = new Locale(CaseMConsts.DEFAULT_LANGUAGE);
     String downloadUrl = getCaseMDownloadUrl(organizationId);
+    
+    Page meetingPage = caseMCache.findPage(organizationId, meetingPageId);
+    if (meetingPage == null) {
+      logger.severe(String.format("Meeting page %s could not be found", meetingPageId.toString()));
+      return;
+    }
+    
+    PageId meetingParentPageId = new PageId(KuntaApiConsts.IDENTIFIER_NAME, meetingPage.getParentId());
+    Page meetingParentPage = caseMCache.findPage(organizationId, meetingParentPageId);
+    if (meetingParentPage == null) {
+      logger.severe(String.format("Meeting parent page %s could not be found", meetingParentPageId.toString()));
+      return;
+    }
+    
+    String meetingTitle = String.format("%s, %s", getFirstTitle(meetingParentPage.getTitles()), StringUtils.uncapitalize(getFirstTitle(meetingPage.getTitles())));
+    List<ExtendedProperty> meetingExtendedProperties = listExtendedProperties(organizationId, meetingData.getMeetingContent());
+    boolean memoApproved = isMeetingMemoApproved(meetingExtendedProperties);
+    
+    List<MeetingItemLink> itemLinks = new ArrayList<>(meetingItemContents.size());
+    for (Content meetingItemContent : meetingItemContents) {
+      List<ExtendedProperty> itemExtendedProperties = listExtendedProperties(organizationId, meetingItemContent);
+      MeetingItemLink itemLink = createMeetingItemLink(itemExtendedProperties);
+      Page meetingItemPage = translateContent(organizationId, meetingPage, meetingItemContent, itemLink.getText(), itemLink.getSlug());
+      PageId meetingItemPageId = new PageId(KuntaApiConsts.IDENTIFIER_NAME, meetingItemPage.getId());
+      String itemContents = renderContentMeetingItem(createMeetingItemModel(downloadUrl, meetingTitle, memoApproved, itemExtendedProperties), locale);
+      
+      caseMCache.cachePageContents(organizationId, meetingItemPageId, itemContents);
+      caseMCache.cacheNode(organizationId, meetingItemPage);
+      indexRequest.fire(new IndexRequest(createIndexablePage(organizationId, meetingItemPageId, locale.getLanguage(), itemContents, itemLink.getText())));
+      
+      itemLinks.add(itemLink);
+    }
+    
+    Collections.sort(itemLinks, (MeetingItemLink o1, MeetingItemLink o2) -> o1.getArticle().compareTo(o2.getArticle()));
+    
+    Meeting meeting = createMeetingModel(downloadUrl, meetingTitle, memoApproved, itemLinks, meetingExtendedProperties);
+    String meetingContent = renderContentMeeting(meeting, locale);
+    caseMCache.cachePageContents(organizationId, meetingPageId, meetingContent);
+    indexRequest.fire(new IndexRequest(createIndexablePage(organizationId, meetingPageId, locale.getLanguage(), meetingContent, meetingTitle)));
+    
+    logger.info(String.format("Done refreshing CaseM meeting %s", meetingData.getMeetingPageId().toString()));
+  }
+  
+  private void cacheContents(OrganizationId organizationId) {
     
     Map<Long, Content> meetingMap = new HashMap<>();
     Map<Long, List<Content>> meetingItemMap = new HashMap<>();
@@ -161,60 +212,11 @@ public class CaseMCacheUpdater {
     for (Entry<Long,List<Content>> meetingEntry : meetingItemMap.entrySet()) {
       Long meetingId = meetingEntry.getKey();
       PageId meetingPageId = toNodeId(organizationId, meetingId);
-      Page meetingPage = caseMCache.findPage(organizationId, meetingPageId);
-      if (meetingPage == null) {
-        logger.severe(String.format("Meeting page %s could not be found", meetingPageId.toString()));
-        continue;
-      }
-      
-      PageId meetingParentPageId = new PageId(KuntaApiConsts.IDENTIFIER_NAME, meetingPage.getParentId());
-      Page meetingParentPage = caseMCache.findPage(organizationId, meetingParentPageId);
-      if (meetingParentPage == null) {
-        logger.severe(String.format("Meeting parent page %s could not be found", meetingParentPageId.toString()));
-        continue;
-      }
-      
-      Content meetingContentNode = meetingMap.get(meetingId);
-      List<Content> meetingItemContentNodes = meetingEntry.getValue();
-      
-      String meetingTitle = String.format("%s, %s", getFirstTitle(meetingParentPage.getTitles()), StringUtils.uncapitalize(getFirstTitle(meetingPage.getTitles())));
-
-      List<ExtendedProperty> meetingExtendedProperties = listExtendedProperties(organizationId, meetingContentNode);
-      boolean memoApproved = isMeetingMemoApproved(meetingExtendedProperties);
-      
-      List<MeetingItemLink> itemLinks = new ArrayList<>(meetingItemContentNodes.size());
-      for (Content meetingItemContentNode : meetingItemContentNodes) {
-        List<ExtendedProperty> itemExtendedProperties = listExtendedProperties(organizationId, meetingItemContentNode);
-        MeetingItemLink itemLink = createMeetingItemLink(itemExtendedProperties);
-        Page meetingItemPage = translateContent(organizationId, meetingPage, meetingItemContentNode, itemLink.getText(), itemLink.getSlug());
-        String meetingItemContent = renderContentMeetingItem(createMeetingItemModel(downloadUrl, meetingTitle, memoApproved, itemExtendedProperties), locale);
-        updateMeetingItem(organizationId, meetingItemPage, meetingItemContent, locale);
-        itemLinks.add(itemLink);
-      }
-      
-      Collections.sort(itemLinks, (MeetingItemLink o1, MeetingItemLink o2) -> o1.getArticle().compareTo(o2.getArticle()));
-      String meetingContent = renderContentMeeting(createMeetingModel(downloadUrl, meetingTitle, memoApproved, itemLinks, meetingExtendedProperties), locale);
-      
-      caseMCache.cachePageContents(organizationId, meetingPageId, meetingContent);
+      List<Content> meetingItemContents = meetingEntry.getValue();
+      Content meetingContent = meetingMap.get(meetingId);
+      CaseMMeetingData meetingData = new CaseMMeetingData(organizationId, meetingPageId, meetingItemContents, meetingContent);
+      meetingDataUpdateRequest.fire(new CaseMMeetingDataUpdateRequest(meetingData));
     }
-  }
-
-  private void updateMeetingItem(OrganizationId organizationId, Page page, String meetingItemContent, Locale locale) {
-    String language = locale.getLanguage();
-    
-    PageId pageId = new PageId(KuntaApiConsts.IDENTIFIER_NAME, page.getId());
-    caseMCache.cachePageContents(organizationId, pageId, meetingItemContent);
-    caseMCache.cacheNode(organizationId, page);
-    
-    String title = null;
-    for (LocalizedValue localizedValue : page.getTitles()) {
-      if (localizedValue.getLanguage().equals(language)) {
-        title = localizedValue.getValue();
-      }
-    }
-    
-    IndexablePage indexablePage = createIndexablePage(organizationId, pageId, language, meetingItemContent, title);
-    indexRequest.fire(new IndexRequest(indexablePage));
   }
 
   private void mapContents(OrganizationId organizationId, Map<Long, Content> meetingMap, Map<Long, List<Content>> meetingItemMap) {
@@ -493,6 +495,7 @@ public class CaseMCacheUpdater {
     return result;
   }
 
+  @SuppressWarnings ("squid:MethodCyclomaticComplexity")
   private void parseCouncilman(Councilmen result, String[] line) {
     Participant participant = new Participant();
   
@@ -847,7 +850,7 @@ public class CaseMCacheUpdater {
     
     return CaseMConsts.DEFAULT_LANGUAGE;
   }
-
+  
   private IndexablePage createIndexablePage(OrganizationId organizationId, PageId pageId, String language, String content, String title) {
     OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(organizationId, KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiOrganizationId == null) {
