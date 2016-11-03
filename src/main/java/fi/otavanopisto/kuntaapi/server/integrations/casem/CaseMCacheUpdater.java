@@ -146,7 +146,7 @@ public class CaseMCacheUpdater {
   }
   
   public void updateMeeting(CaseMMeetingData meetingData) {
-    logger.info(String.format("Updating CaseM meeting %s", meetingData.getMeetingPageId().toString()));
+    logger.info(String.format("Updating CaseM meeting %s with %d items", meetingData.getMeetingPageId().toString(), meetingData.getMeetingItemContents().size()));
     
     OrganizationId organizationId = meetingData.getOrganizationId();
     PageId meetingPageId = translatePageId(meetingData.getMeetingPageId(), true);
