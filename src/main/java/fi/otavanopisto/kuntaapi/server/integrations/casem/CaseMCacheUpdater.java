@@ -203,7 +203,7 @@ public class CaseMCacheUpdater {
     
     for (Entry<Long,List<Content>> meetingEntry : meetingItemMap.entrySet()) {
       Long meetingId = meetingEntry.getKey();
-      PageId meetingPageId = toNodeId(organizationId, meetingId);
+      PageId meetingPageId = translatePageId(toNodeId(organizationId, meetingId), true);
       List<Content> meetingItemContents = meetingEntry.getValue();
       Content meetingContent = meetingMap.get(meetingId);
       CaseMMeetingData meetingData = new CaseMMeetingData(organizationId, meetingPageId, meetingItemContents, meetingContent);
