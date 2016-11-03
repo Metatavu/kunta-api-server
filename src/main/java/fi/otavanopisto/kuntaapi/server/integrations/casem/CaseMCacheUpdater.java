@@ -149,7 +149,7 @@ public class CaseMCacheUpdater {
     logger.info(String.format("Updating CaseM meeting %s", meetingData.getMeetingPageId().toString()));
     
     OrganizationId organizationId = meetingData.getOrganizationId();
-    PageId meetingPageId = meetingData.getMeetingPageId();
+    PageId meetingPageId = translatePageId(meetingData.getMeetingPageId(), true);
     Content meetingContent = meetingData.getMeetingContent();
     List<Content> meetingItemContents = meetingData.getMeetingItemContents();
     
@@ -191,7 +191,7 @@ public class CaseMCacheUpdater {
     Meeting meeting = createMeetingModel(downloadUrl, meetingTitle, memoApproved, itemLinks, meetingExtendedProperties);
     caseMCache.cachePageContents(organizationId, meetingPageId, renderContentMeeting(meeting, locale));
     
-    logger.info(String.format("Done updating CaseM meeting %s", meetingData.getMeetingPageId().toString()));
+    logger.info(String.format("Done updating CaseM meeting %s", meetingPageId.toString()));
   }
   
   private void cacheContents(OrganizationId organizationId) {
@@ -203,7 +203,7 @@ public class CaseMCacheUpdater {
     
     for (Entry<Long,List<Content>> meetingEntry : meetingItemMap.entrySet()) {
       Long meetingId = meetingEntry.getKey();
-      PageId meetingPageId = translatePageId(toNodeId(organizationId, meetingId), true);
+      PageId meetingPageId = toNodeId(organizationId, meetingId);
       List<Content> meetingItemContents = meetingEntry.getValue();
       Content meetingContent = meetingMap.get(meetingId);
       CaseMMeetingData meetingData = new CaseMMeetingData(organizationId, meetingPageId, meetingItemContents, meetingContent);
