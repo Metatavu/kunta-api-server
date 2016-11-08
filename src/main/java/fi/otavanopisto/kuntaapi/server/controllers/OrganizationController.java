@@ -27,15 +27,8 @@ public class OrganizationController {
   public List<Organization> listOrganizations(String businessName, String businessCode) {
     List<Organization> organizations = new ArrayList<>();
     
-    if (businessName == null && businessCode != null) {
-      SearchResult<OrganizationId> searchResult = organizationSearcher.searchOrganizationsByBusinessCode(businessCode);
-      
-      for (OrganizationId organizationId : searchResult.getResult()) {
-        Organization organization = findOrganization(organizationId);
-        if (organization != null) {
-          organizations.add(organization);
-        }
-      }
+    if (businessName != null || businessCode != null) {
+      organizations = searchOrganizations(businessName, businessCode);
     } else {
       for (OrganizationProvider organizationProvider : getOrganizationProviders()) {
         organizations.addAll(organizationProvider.listOrganizations(businessName, businessCode));
@@ -43,6 +36,28 @@ public class OrganizationController {
     }
     
     return organizations;
+  }
+
+  private List<Organization> searchOrganizations(String businessName, String businessCode) {
+    List<Organization> result = new ArrayList<>();
+    SearchResult<OrganizationId> searchResult;
+    
+    if (businessName == null && businessCode != null) {
+      searchResult = organizationSearcher.searchOrganizationsByBusinessCode(businessCode);
+    } else if (businessName != null && businessCode == null) {
+      searchResult = organizationSearcher.searchOrganizationsByBusinessName(businessName);
+    } else {
+      searchResult = organizationSearcher.searchOrganizationsByBusinessCodeAndBusinessName(businessCode, businessName);
+    }
+  
+    for (OrganizationId organizationId : searchResult.getResult()) {
+      Organization organization = findOrganization(organizationId);
+      if (organization != null) {
+        result.add(organization);
+      }
+    }
+    
+    return result;
   }
 
   public Organization findOrganization(OrganizationId organizationId) {

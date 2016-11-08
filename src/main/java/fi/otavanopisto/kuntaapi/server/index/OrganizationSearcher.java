@@ -1,5 +1,6 @@
 package fi.otavanopisto.kuntaapi.server.index;
 
+import static org.elasticsearch.index.query.QueryBuilders.boolQuery;
 import static org.elasticsearch.index.query.QueryBuilders.matchQuery;
 
 import java.util.ArrayList;
@@ -11,7 +12,7 @@ import javax.inject.Inject;
 
 import org.apache.commons.lang3.StringUtils;
 import org.elasticsearch.action.search.SearchRequestBuilder;
-import org.elasticsearch.index.query.MatchQueryBuilder;
+import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.SearchHitField;
 
@@ -25,11 +26,25 @@ public class OrganizationSearcher extends AbstractSearcher {
   private IndexReader indexReader;
 
   public SearchResult<OrganizationId> searchOrganizationsByBusinessCode(String businessCode) {
-    SearchRequestBuilder requestBuilder = indexReader.requestBuilder("organization");
-    
-    MatchQueryBuilder query = matchQuery("businessCode", businessCode);
-    requestBuilder.setQuery(query);
-    
+    return searchOrganizations(matchQuery("businessCode", businessCode));
+  }
+  
+  public SearchResult<OrganizationId> searchOrganizationsByBusinessName(String businessName) {
+    return searchOrganizations(matchQuery("businessName", businessName));
+  }
+  
+  public SearchResult<OrganizationId> searchOrganizationsByBusinessCodeAndBusinessName(String businessCode, String businessName) {
+    return searchOrganizations(boolQuery()
+      .must(matchQuery("businessCode", businessCode))
+      .must(matchQuery("businessName", businessName)));
+  }
+  
+  private SearchResult<OrganizationId> searchOrganizations(QueryBuilder queryBuilder) {
+    SearchRequestBuilder requestBuilder = indexReader
+        .requestBuilder("organization")
+        .storedFields("organizationId")
+        .setQuery(queryBuilder);
+      
     return new SearchResult<>(getOrganizationIds(indexReader.search(requestBuilder)));
   }
   
