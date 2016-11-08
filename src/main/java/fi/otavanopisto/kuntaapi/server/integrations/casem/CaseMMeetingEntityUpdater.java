@@ -1,12 +1,15 @@
 package fi.otavanopisto.kuntaapi.server.integrations.casem;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.ejb.AccessTimeout;
+import javax.ejb.Asynchronous;
 import javax.ejb.Singleton;
 import javax.ejb.Timeout;
 import javax.ejb.Timer;
@@ -33,13 +36,16 @@ public class CaseMMeetingEntityUpdater extends EntityUpdater {
   @Resource
   private TimerService timerService;
 
+  @Inject
+  private Logger logger;
+  
   private boolean stopped;
   
   private List<CaseMMeetingData> queue;
 
   @PostConstruct
   public void init() {
-    queue = new ArrayList<>();
+    queue = Collections.synchronizedList(new ArrayList<>());
   }
 
   @Override
@@ -64,8 +70,10 @@ public class CaseMMeetingEntityUpdater extends EntityUpdater {
     stopped = true;
   }
   
+  @Asynchronous
   public void onCaseMMeetingDataUpdateRequest(@Observes CaseMMeetingDataUpdateRequest event) {
     if (!stopped) {
+      logger.info(String.format(" < Scheduled update for %s", event.getMeetingData().getMeetingPageId().toString()));
       queue.add(event.getMeetingData());
     }
   }
@@ -74,7 +82,7 @@ public class CaseMMeetingEntityUpdater extends EntityUpdater {
   public void timeout(Timer timer) {
     if (!stopped) {
       if (!queue.isEmpty()) {
-        updater.updateMeeting(queue.iterator().next());
+        updater.updateMeeting(queue.remove(0));
       }
 
       startTimer(SystemUtils.inTestMode() ? 1000 : TIMER_INTERVAL);

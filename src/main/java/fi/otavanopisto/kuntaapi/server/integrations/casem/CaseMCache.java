@@ -83,7 +83,10 @@ public class CaseMCache {
       cacheChildIds.add(pageId);
       treeCache.put(parentCacheKey, cacheChildIds);
     } else {
-      cacheChildIds.add(pageId);
+      if (!cacheChildIds.contains(pageId)) {
+        cacheChildIds.add(pageId);
+      }
+      
       treeCache.put(parentCacheKey, cacheChildIds);
     }
     

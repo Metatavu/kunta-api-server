@@ -117,10 +117,10 @@ public class CaseMCacheUpdater {
   
   @Inject
   private IdentifierController identifierController;
-  
+
   @Inject
   private Event<IndexRequest> indexRequest;
-  
+
   private Map<PageId, PageId> discoveredPageIds;
 
   @PostConstruct
@@ -129,7 +129,7 @@ public class CaseMCacheUpdater {
   }
   
   public void updateNodes(OrganizationId organizationId) {
-    logger.info(String.format("Refreshing CaseM nodes for organization %s", organizationId));
+    logger.info(String.format("Updating CaseM nodes for organization %s", organizationId));
     
     Long caseMRootNodeId = getCaseMRootNodeId(organizationId);
     if (caseMRootNodeId == null) {
@@ -139,22 +139,23 @@ public class CaseMCacheUpdater {
     List<Node> nodes = getChildNodes(organizationId, caseMRootNodeId, Collections.emptyList());
     cacheNodeTree(organizationId, caseMRootNodeId, null, nodes, new ArrayList<>()); 
     
-    logger.info(String.format("Done refreshing CaseM nodes for organization %s", organizationId));
+    logger.info(String.format("Done updating CaseM nodes for organization %s", organizationId));
   }
   
   public void updateContents(OrganizationId organizationId) {
-    logger.info(String.format("Refreshing CaseM contents for organization %s", organizationId));
+    logger.info(String.format("Updating CaseM contents list for organization %s", organizationId));
     
     cacheContents(organizationId);
     
-    logger.info(String.format("Done refreshing CaseM contents for organization %s", organizationId));
+    logger.info(String.format("Done updating CaseM meeting list for organization %s", organizationId));
   }
   
   public void updateMeeting(CaseMMeetingData meetingData) {
-    logger.info(String.format("Refreshing CaseM meeting %s", meetingData.getMeetingPageId().toString()));
+    logger.info(String.format("Updating CaseM meeting %s with %d items", meetingData.getMeetingPageId().toString(), meetingData.getMeetingItemContents().size()));
     
     OrganizationId organizationId = meetingData.getOrganizationId();
-    PageId meetingPageId = meetingData.getMeetingPageId();
+    PageId meetingPageId = translatePageId(meetingData.getMeetingPageId(), true);
+    Content meetingContent = meetingData.getMeetingContent();
     List<Content> meetingItemContents = meetingData.getMeetingItemContents();
     
     Locale locale = new Locale(CaseMConsts.DEFAULT_LANGUAGE);
@@ -174,7 +175,7 @@ public class CaseMCacheUpdater {
     }
     
     String meetingTitle = String.format("%s, %s", getFirstTitle(meetingParentPage.getTitles()), StringUtils.uncapitalize(getFirstTitle(meetingPage.getTitles())));
-    List<ExtendedProperty> meetingExtendedProperties = listExtendedProperties(organizationId, meetingData.getMeetingContent());
+    List<ExtendedProperty> meetingExtendedProperties = listExtendedProperties(organizationId, meetingContent);
     boolean memoApproved = isMeetingMemoApproved(meetingExtendedProperties);
     
     List<MeetingItemLink> itemLinks = new ArrayList<>(meetingItemContents.size());
@@ -183,23 +184,23 @@ public class CaseMCacheUpdater {
       MeetingItemLink itemLink = createMeetingItemLink(itemExtendedProperties);
       Page meetingItemPage = translateContent(organizationId, meetingPage, meetingItemContent, itemLink.getText(), itemLink.getSlug());
       PageId meetingItemPageId = new PageId(KuntaApiConsts.IDENTIFIER_NAME, meetingItemPage.getId());
-      String itemContents = renderContentMeetingItem(createMeetingItemModel(downloadUrl, meetingTitle, memoApproved, itemExtendedProperties), locale);
       
-      caseMCache.cachePageContents(organizationId, meetingItemPageId, itemContents);
+      String meetingItemPageContents = renderContentMeetingItem(createMeetingItemModel(downloadUrl, meetingTitle, memoApproved, itemExtendedProperties), locale);
+      caseMCache.cachePageContents(organizationId, meetingItemPageId, meetingItemPageContents);
       caseMCache.cacheNode(organizationId, meetingItemPage);
-      indexRequest.fire(new IndexRequest(createIndexablePage(organizationId, meetingItemPageId, locale.getLanguage(), itemContents, itemLink.getText())));
-      
+      indexRequest.fire(new IndexRequest(createIndexablePage(organizationId, meetingItemPageId, locale.getLanguage(), meetingItemPageContents, itemLink.getText())));
+
       itemLinks.add(itemLink);
     }
     
     Collections.sort(itemLinks, (MeetingItemLink o1, MeetingItemLink o2) -> o1.getArticle().compareTo(o2.getArticle()));
     
     Meeting meeting = createMeetingModel(downloadUrl, meetingTitle, memoApproved, itemLinks, meetingExtendedProperties);
-    String meetingContent = renderContentMeeting(meeting, locale);
-    caseMCache.cachePageContents(organizationId, meetingPageId, meetingContent);
-    indexRequest.fire(new IndexRequest(createIndexablePage(organizationId, meetingPageId, locale.getLanguage(), meetingContent, meetingTitle)));
-    
-    logger.info(String.format("Done refreshing CaseM meeting %s", meetingData.getMeetingPageId().toString()));
+    String meetingPageContents = renderContentMeeting(meeting, locale);
+    caseMCache.cachePageContents(organizationId, meetingPageId, meetingPageContents);
+    indexRequest.fire(new IndexRequest(createIndexablePage(organizationId, meetingPageId, locale.getLanguage(), meetingPageContents, meetingTitle)));
+
+    logger.info(String.format("Done updating CaseM meeting %s", meetingPageId.toString()));
   }
   
   private void cacheContents(OrganizationId organizationId) {
@@ -214,6 +215,9 @@ public class CaseMCacheUpdater {
       PageId meetingPageId = toNodeId(organizationId, meetingId);
       List<Content> meetingItemContents = meetingEntry.getValue();
       Content meetingContent = meetingMap.get(meetingId);
+      
+      logger.info(String.format(" > Scheduling update for %s (%d)", meetingPageId.toString(), meetingId));
+      
       CaseMMeetingData meetingData = new CaseMMeetingData(organizationId, meetingPageId, meetingItemContents, meetingContent);
       meetingDataUpdateRequest.fire(new CaseMMeetingDataUpdateRequest(meetingData));
     }
@@ -892,3 +896,6 @@ public class CaseMCacheUpdater {
   }
   
 }
+
+  
+  
