@@ -49,7 +49,7 @@ public class OrganizationController {
     for (OrganizationProvider organizationProvider : getOrganizationProviders()) {
       Organization organization = organizationProvider.findOrganization(organizationId);
       if (organization != null) {
-        return null;
+        return organization;
       }
     }
     
