@@ -1,10 +1,13 @@
 package fi.otavanopisto.kuntaapi.server.index;
 
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+
+@Retention(RetentionPolicy.RUNTIME)
 public @interface Field {
 
   String type() default "string";
   String index() default "analyzed";
-  String analyzerFrom() default "";
-  boolean ignore() default false;
+  boolean store() default false;
   
 }

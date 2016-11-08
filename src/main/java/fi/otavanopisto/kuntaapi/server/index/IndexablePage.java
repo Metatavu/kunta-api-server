@@ -13,10 +13,10 @@ public class IndexablePage implements Indexable {
   @Field (index = "not_analyzed")
   private String language;
   
-  @Field (analyzerFrom = "languageAnalyzer")
+  @Field
   private String title;
 
-  @Field (analyzerFrom = "languageAnalyzer")
+  @Field
   private String content;
 
   @Override

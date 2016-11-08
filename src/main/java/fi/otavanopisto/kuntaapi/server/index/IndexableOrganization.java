@@ -2,7 +2,7 @@ package fi.otavanopisto.kuntaapi.server.index;
 
 public class IndexableOrganization implements Indexable {
 
-  @Field(index = "not_analyzed")
+  @Field(index = "not_analyzed", store = true)
   private String organizationId;
 
   @Field(index = "not_analyzed")
@@ -15,7 +15,7 @@ public class IndexableOrganization implements Indexable {
 
   @Override
   public String getId() {
-    return String.format("%s_%s", businessName, language);
+    return String.format("%s_%s", organizationId, language);
   }
 
   @Override
