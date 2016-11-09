@@ -31,6 +31,7 @@ public class IndexUpdater extends AbstractIndexHander {
   @PostConstruct
   public void initIndexables() {
     registerIndexable(IndexableOrganization.class);
+    registerIndexable(IndexableService.class);
   }
 
   @Lock (LockType.READ)
