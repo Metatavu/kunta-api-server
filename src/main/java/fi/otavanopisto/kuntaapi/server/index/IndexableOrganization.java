@@ -22,6 +22,11 @@ public class IndexableOrganization implements Indexable {
   public String getType() {
     return "organization";
   }
+  
+  @Field(index = "not_analyzed")
+  public String getBusinessNameUT() {
+    return getBusinessName();
+  }
 
   public String getOrganizationId() {
     return organizationId;
