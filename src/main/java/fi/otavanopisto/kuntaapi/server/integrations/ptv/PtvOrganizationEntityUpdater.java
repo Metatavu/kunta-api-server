@@ -84,6 +84,10 @@ public class PtvOrganizationEntityUpdater extends EntityUpdater {
   
   public void onOrganizationIdUpdateRequest(@Observes OrganizationIdUpdateRequest event) {
     if (!stopped) {
+      if (!PtvConsts.IDENTIFIFER_NAME.equals(event.getId().getSource())) {
+        return;
+      }
+      
       if (event.isPriority()) {
         queue.remove(event.getId());
         queue.add(0, event.getId());
@@ -99,10 +103,7 @@ public class PtvOrganizationEntityUpdater extends EntityUpdater {
   public void timeout(Timer timer) {
     if (!stopped) {
       if (!queue.isEmpty()) {
-        OrganizationId organizationId = queue.iterator().next();
-        if (PtvConsts.IDENTIFIFER_NAME.equals(organizationId.getSource())) {
-          updateOrganization(organizationId);          
-        }        
+        updateOrganization(queue.remove(0));
       }
 
       startTimer(SystemUtils.inTestMode() ? 1000 : TIMER_INTERVAL);
