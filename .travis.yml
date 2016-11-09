@@ -6,10 +6,14 @@ cache:
   - $HOME/.sonar
   - $HOME/.m2
   - $HOME/.cargo
+  
 addons:
   hosts:
     - api.kunta-api.test
-
+    
+services:
+  - elasticsearch
+  
 install: true
 
 before_script:
