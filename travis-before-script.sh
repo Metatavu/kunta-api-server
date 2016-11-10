@@ -12,4 +12,6 @@ if [ ! -f elasticsearch-5.0.0 ]; then
   curl -sS https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.0.0.tar.gz|tar -xz
 fi;
 
+echo Starting Elastic Search
+elasticsearch-5.0.0/bin/elasticsearch -V
 elasticsearch-5.0.0/bin/elasticsearch -d
