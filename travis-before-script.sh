@@ -12,4 +12,4 @@ if [ ! -f elasticsearch-5.0.0 ]; then
 fi;
 
 elasticsearch-5.0.0/bin/elasticsearch -V
-elasticsearch-5.0.0/bin/elasticsearch -E cluster.name=elasticsearch -E path.data: /tmp/ -d -v
+elasticsearch-5.0.0/bin/elasticsearch -E cluster.name=elasticsearch -E path.data=/tmp/ -d -v
