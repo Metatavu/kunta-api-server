@@ -32,6 +32,7 @@ public class IndexUpdater extends AbstractIndexHander {
   public void initIndexables() {
     registerIndexable(IndexableOrganization.class);
     registerIndexable(IndexableService.class);
+    registerIndexable(IndexablePage.class);
   }
 
   @Lock (LockType.READ)
@@ -68,10 +69,10 @@ public class IndexUpdater extends AbstractIndexHander {
     Field propertyField = getField(indexable, fieldName);
     Method readMethod = propertyDescriptor.getReadMethod();
     
-    if (propertyField != null && readMethod != null) {
+    if (propertyField != null || readMethod != null) {
       fi.otavanopisto.kuntaapi.server.index.Field fieldAnnotation = readMethod.getAnnotation(fi.otavanopisto.kuntaapi.server.index.Field.class);
       
-      if (fieldAnnotation == null) {
+      if (fieldAnnotation == null && propertyField != null) {
         fieldAnnotation = propertyField.getAnnotation(fi.otavanopisto.kuntaapi.server.index.Field.class);
       }
       
@@ -90,7 +91,6 @@ public class IndexUpdater extends AbstractIndexHander {
     try {
       Map<String, Map<String, Map<String, Object>>> mapping = new HashMap<>();
       mapping.put("properties", properties);
-      
       String source = objectMapper.writeValueAsString(mapping);
       
       getClient()

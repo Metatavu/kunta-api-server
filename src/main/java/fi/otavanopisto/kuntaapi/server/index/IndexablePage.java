@@ -4,10 +4,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class IndexablePage implements Indexable {
   
-  @Field (index = "not_analyzed")
+  @Field (index = "not_analyzed", store = true)
   private String pageId;
   
-  @Field (index = "not_analyzed")
+  @Field (index = "not_analyzed", store = true)
   private String organizationId;
   
   @Field (index = "not_analyzed")
