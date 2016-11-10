@@ -27,7 +27,7 @@ public abstract class AbstractIndexHander {
   private static final String DEFAULT_INDEX = "kunta-api";
   private static final String DEFAULT_CLUSTERNAME = "elasticsearch";
   private static final String[] DEFAULT_HOSTS = new String[] {
-    "127.0.0.1:9300"
+    "localhost:9300"
   };
 
   @Inject
@@ -72,34 +72,48 @@ public abstract class AbstractIndexHander {
   }
   
   private TransportClient createClient(String[] hosts, String clusterName) {
-    TransportClient transportClient = null;
+    TransportClient transportClient;
     
-    try {
-      Settings settings = Settings.builder()
-        .put("cluster.name", clusterName)
-        .build();
-      
-      transportClient = new PreBuiltTransportClient(settings);
-      
-      for (String host : hosts) {
-        String[] parts = StringUtils.split(host, ':');
-        if (parts.length != 2 || !NumberUtils.isNumber(parts[1])) {
-          logger.severe(String.format("Invalid elastic search host %s, dropped", host));
-        }
-        
-        String name = parts[0];
-        Integer port = NumberUtils.createInteger(parts[1]);
-        transportClient.addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName(name), port));
+    Settings settings = Settings.builder()
+      .put("cluster.name", clusterName)
+      .build();
+    
+    transportClient = new PreBuiltTransportClient(settings);
+    
+    for (String host : hosts) {
+      String[] parts = StringUtils.split(host, ':');
+      if (parts.length != 2 || !NumberUtils.isNumber(parts[1])) {
+        logger.severe(String.format("Invalid elastic search host %s, dropped", host));
       }
       
-    } catch (UnknownHostException e) {
-      logger.log(Level.SEVERE, "Could not connect to elastic search cluster", e);
-      return null;
+      String name = parts[0];
+      Integer port = NumberUtils.createInteger(parts[1]);
+      transportClient.addTransportAddress(resolveTransportAddress(name, port));
     }
 
     prepareIndex(transportClient);
     
     return transportClient;
+  }
+  
+  private InetSocketTransportAddress resolveTransportAddress(String name, int port) {
+    return new InetSocketTransportAddress(resolveInetAddress(name), port);
+  }
+  
+  private InetAddress resolveInetAddress(String name) {
+    try {
+      return InetAddress.getByName(name);
+    } catch (UnknownHostException e) {
+      logger.log(Level.SEVERE, String.format("Could resolve address %s, falling back to localhost", name), e);
+    }
+    
+    try {
+      return InetAddress.getLocalHost();
+    } catch (UnknownHostException e) {
+      logger.log(Level.SEVERE, "Could not resolve localhost either", e);
+    }
+    
+    return null;
   }
   
   private void closeClient(TransportClient transportClient) {
