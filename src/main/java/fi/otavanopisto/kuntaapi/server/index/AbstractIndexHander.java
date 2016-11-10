@@ -77,6 +77,8 @@ public abstract class AbstractIndexHander {
     System.out.println("Cluster: " + clusterName);
     
     Settings settings = Settings.builder()
+      .put("client.transport.ignore_cluster_name", true)
+      .put("client.transport.ping_timeout", "60s")
       .put("cluster.name", clusterName)
       .build();
     
