@@ -42,6 +42,11 @@ public class RestFulPtvMocker extends AbstractMocker {
       Organization organization = readOrganizationFromJSONFile(String.format("organizations/%s.json", id));
       mockGetJSON(String.format("%s/organizations/%s", AbstractIntegrationTest.BASE_URL, id), organization, null);
       organizationsList.add(organization);
+      
+      List<OrganizationService> channelList = organizationServiceList.get(id);
+      if (channelList == null) {
+        organizationServiceList.put(id, new ArrayList<>(ids.length));
+      }
     }     
     
     return this;
@@ -52,6 +57,27 @@ public class RestFulPtvMocker extends AbstractMocker {
       Service service = readServiceFromJSONFile(String.format("services/%s.json", id));
       mockGetJSON(String.format("%s/services/%s", AbstractIntegrationTest.BASE_URL, id), service, null);
       servicesList.add(service);
+      
+      if (!servicesElectronicChannelsList.containsKey(id)) {
+        servicesElectronicChannelsList.put(id, new ArrayList<>());
+      }
+      
+      if (!servicesPhoneChannelsList.containsKey(id)) {
+        servicesPhoneChannelsList.put(id, new ArrayList<>());
+      }
+      
+      if (!printableFormChannelsList.containsKey(id)) {
+        printableFormChannelsList.put(id, new ArrayList<>());
+      }
+      
+      if (!serviceLocationChannelsList.containsKey(id)) {
+        serviceLocationChannelsList.put(id, new ArrayList<>());
+      }
+      
+      if (!webPageChannelsList.containsKey(id)) {
+        webPageChannelsList.put(id, new ArrayList<>());
+      }
+      
     }     
     
     return this;
@@ -59,9 +85,6 @@ public class RestFulPtvMocker extends AbstractMocker {
   
   public RestFulPtvMocker mockElectronicServiceChannels(String serviceId, String... ids) {
     List<ElectronicChannel> channelList = servicesElectronicChannelsList.get(serviceId);
-    if (channelList == null) {
-      channelList = new ArrayList<>(ids.length);
-    }
     
     for (String id : ids) {
       ElectronicChannel channel = readElectronicChannelFromJSONFile(String.format("electronicservicechannels/%s.json", id));
@@ -76,9 +99,6 @@ public class RestFulPtvMocker extends AbstractMocker {
   
   public RestFulPtvMocker mockPhoneServiceChannels(String serviceId, String... ids) {
     List<PhoneChannel> channelList = servicesPhoneChannelsList.get(serviceId);
-    if (channelList == null) {
-      channelList = new ArrayList<>(ids.length);
-    }
     
     for (String id : ids) {
       PhoneChannel channel = readPhoneChannelFromJSONFile(String.format("phonechannels/%s.json", id));
@@ -93,10 +113,6 @@ public class RestFulPtvMocker extends AbstractMocker {
   
   public RestFulPtvMocker mockPrintableFormServiceChannels(String serviceId, String... ids) {
     List<PrintableFormChannel> channelList = printableFormChannelsList.get(serviceId);
-    if (channelList == null) {
-      channelList = new ArrayList<>(ids.length);
-    }
-    
     for (String id : ids) {
       PrintableFormChannel channel = readPrintableFormChannelFromJSONFile(String.format("printableformchannels/%s.json", id));
       mockGetJSON(String.format("%s/services/%s/printableFormChannels/%s", AbstractIntegrationTest.BASE_URL, serviceId, id), channel, null);
@@ -110,10 +126,6 @@ public class RestFulPtvMocker extends AbstractMocker {
   
   public RestFulPtvMocker mockServiceLocationServiceChannels(String serviceId, String... ids) {
     List<ServiceLocationChannel> channelList = serviceLocationChannelsList.get(serviceId);
-    if (channelList == null) {
-      channelList = new ArrayList<>(ids.length);
-    }
-    
     for (String id : ids) {
       ServiceLocationChannel channel = readServiceLocationChannelFromJSONFile(String.format("servicelocationchannels/%s.json", id));
       mockGetJSON(String.format("%s/services/%s/serviceLocationChannels/%s", AbstractIntegrationTest.BASE_URL, serviceId, id), channel, null);
@@ -127,10 +139,6 @@ public class RestFulPtvMocker extends AbstractMocker {
   
   public RestFulPtvMocker mockWebPageServiceChannels(String serviceId, String... ids) {
     List<WebPageChannel> channelList = webPageChannelsList.get(serviceId);
-    if (channelList == null) {
-      channelList = new ArrayList<>(ids.length);
-    }
-    
     for (String id : ids) {
       WebPageChannel channel = readWebPageChannelFromJSONFile(String.format("webpagechannels/%s.json", id));
       mockGetJSON(String.format("%s/services/%s/webPageChannels/%s", AbstractIntegrationTest.BASE_URL, serviceId, id), channel, null);
@@ -144,10 +152,6 @@ public class RestFulPtvMocker extends AbstractMocker {
   
   public RestFulPtvMocker mockOrganizationServices(String organizationId, String... ids) {
     List<OrganizationService> channelList = organizationServiceList.get(organizationId);
-    if (channelList == null) {
-      channelList = new ArrayList<>(ids.length);
-    }
-    
     for (String id : ids) {
       OrganizationService channel = readOrganizationServiceFromJSONFile(String.format("organizationservices/%s.json", id));
       mockGetJSON(String.format("%s/organizations/%s/organizationServices/%s", AbstractIntegrationTest.BASE_URL, organizationId, id), channel, null);

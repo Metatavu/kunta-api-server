@@ -39,6 +39,7 @@ public class AbstractMocker {
 
   private List<StringGetMock> stringMocks;
   private List<BinaryGetMock> binaryMocks;
+  private List<String> notFounds;
   
   /**
    * Constructor
@@ -46,6 +47,12 @@ public class AbstractMocker {
   public AbstractMocker() {
     stringMocks = new ArrayList<>();
     binaryMocks = new ArrayList<>();
+    notFounds = new ArrayList<>();
+  }
+  
+  public AbstractMocker mockNotFound(String path) {
+    notFounds.add(path);
+    return this;
   }
   
   /**
@@ -166,6 +173,10 @@ public class AbstractMocker {
    * Starts mocking requests
    */
   public void startMock() {
+    for (String path : notFounds) {
+      createNotFoundMock(path);
+    }
+    
     for (StringGetMock stringMock : stringMocks) {
       createStringMock(stringMock.getPath(), stringMock.getType(), stringMock.getContent(), stringMock.getQueryParams());
     }
@@ -202,6 +213,14 @@ public class AbstractMocker {
         .willReturn(aResponse()
         .withHeader("Content-Type", type)
         .withBody(content)));
+  }
+  
+  private void createNotFoundMock(String path) {
+    MappingBuilder mappingBuilder = get(urlPathEqualTo(path));
+    
+    stubFor(mappingBuilder
+        .willReturn(aResponse()
+        .withStatus(404)));
   }
   
   private class StringGetMock {
