@@ -20,7 +20,7 @@ import fi.otavanopisto.kuntaapi.server.id.ServiceId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 
 @ApplicationScoped
-public class ServiceSearcher extends AbstractSearcher {
+public class ServiceSearcher {
   
   @Inject
   private IndexReader indexReader;

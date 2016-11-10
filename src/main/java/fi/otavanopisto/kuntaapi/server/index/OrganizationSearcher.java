@@ -22,7 +22,7 @@ import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 
 @ApplicationScoped
-public class OrganizationSearcher extends AbstractSearcher {
+public class OrganizationSearcher {
   
   private static final String TYPE = "organization";
   private static final String ORGANIZATION_ID_FIELD = "organizationId";

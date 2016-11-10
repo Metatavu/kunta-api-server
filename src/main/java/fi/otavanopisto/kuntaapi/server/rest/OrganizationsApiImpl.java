@@ -738,7 +738,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createNotImplemented("Search parameter can not be combined with path or parentId parameters");
     }
     
-    List<Page> result = null;
+    List<Page> result;
     
     if (search != null) {
       result = pageController.searchPages(organizationId, search, firstResult, maxResults);

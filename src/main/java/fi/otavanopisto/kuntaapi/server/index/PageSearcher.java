@@ -22,7 +22,7 @@ import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 
 @ApplicationScoped
-public class PageSearcher extends AbstractSearcher {
+public class PageSearcher {
   
   private static final String TYPE = "page";
   private static final String PAGE_ID_FIELD = "pageId";
