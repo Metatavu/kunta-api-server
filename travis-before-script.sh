@@ -18,6 +18,6 @@ fi;
 echo Starting Elastic Search
 cd elasticsearch-5.0.0/bin
 ./elasticsearch -V
-./elasticsearch -E http.port=1234 -E cluster.name=elasticsearch -d -v
+./elasticsearch -E cluster.name=elasticsearch -d -v
 
 popd
