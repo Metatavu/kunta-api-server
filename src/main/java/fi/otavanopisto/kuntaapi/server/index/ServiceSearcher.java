@@ -5,6 +5,7 @@ import static org.elasticsearch.index.query.QueryBuilders.queryStringQuery;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -23,6 +24,9 @@ import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 public class ServiceSearcher {
   
   @Inject
+  private Logger logger;
+  
+  @Inject
   private IndexReader indexReader;
 
   public SearchResult<ServiceId> searchServices(String text, Long firstResult, Long maxResults) {
@@ -31,6 +35,11 @@ public class ServiceSearcher {
   }
   
   private SearchResult<ServiceId> searchServices(QueryBuilder queryBuilder, Long firstResult, Long maxResults) {
+    if (!indexReader.isEnabled()) {
+      logger.warning("Could not execute search. Search functions are disabled");
+      return null;
+    }
+    
     SearchRequestBuilder requestBuilder = indexReader
       .requestBuilder("service")
       .storedFields("serviceId")

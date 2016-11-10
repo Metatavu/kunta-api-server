@@ -12,6 +12,11 @@ import org.elasticsearch.search.SearchHit;
 @ApplicationScoped
 @Singleton
 public class IndexReader extends AbstractIndexHander {
+  
+  @Override
+  public void setup() {
+    // No setup needed for reader
+  }
  
   @Lock (LockType.READ)
   public SearchRequestBuilder requestBuilder(String... types) {

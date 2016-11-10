@@ -81,6 +81,15 @@ public class PageController {
     return null;
   }
 
+  /**
+   * Returns page contents as list of LocalizedValues. If the page is not provided by 
+   * this provider, null is returned instead
+   * 
+   * @param organizationId organization id
+   * @param pageId pageId
+   * @return Returns page contents as list of LocalizedValues or null if page is not found
+   */
+  @SuppressWarnings ("squid:S1168")
   public List<LocalizedValue> getPageContents(OrganizationId organizationId, PageId pageId) {
     for (PageProvider pageProvider : getPageProviders()) {
       List<LocalizedValue> pageContents = pageProvider.findOrganizationPageContents(organizationId, pageId);

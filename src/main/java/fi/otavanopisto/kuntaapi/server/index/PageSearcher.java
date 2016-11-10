@@ -7,6 +7,7 @@ import static org.elasticsearch.index.query.QueryBuilders.queryStringQuery;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -29,6 +30,9 @@ public class PageSearcher {
   private static final String ORGANIZATION_ID_FIELD = "organizationId";
   
   @Inject
+  private Logger logger;
+  
+  @Inject
   private IndexReader indexReader;
 
   public SearchResult<PageId> searchPages(String organizationId, String queryString, Long firstResult, Long maxResults) {
@@ -40,6 +44,11 @@ public class PageSearcher {
   }
   
   private SearchResult<PageId> searchPages(QueryBuilder queryBuilder, Long firstResult, Long maxResults) {
+    if (!indexReader.isEnabled()) {
+      logger.warning("Could not execute search. Search functions are disabled");
+      return null;
+    }
+    
     SearchRequestBuilder requestBuilder = indexReader
       .requestBuilder(TYPE)
       .storedFields(PAGE_ID_FIELD)

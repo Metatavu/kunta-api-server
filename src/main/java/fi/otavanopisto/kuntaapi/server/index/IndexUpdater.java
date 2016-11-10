@@ -11,7 +11,6 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.annotation.PostConstruct;
 import javax.ejb.Lock;
 import javax.ejb.LockType;
 import javax.ejb.Singleton;
@@ -27,9 +26,9 @@ public class IndexUpdater extends AbstractIndexHander {
   
   @Inject
   private Logger logger;
-  
-  @PostConstruct
-  public void initIndexables() {
+ 
+  @Override
+  public void setup() {
     registerIndexable(IndexableOrganization.class);
     registerIndexable(IndexableService.class);
     registerIndexable(IndexablePage.class);
@@ -37,6 +36,10 @@ public class IndexUpdater extends AbstractIndexHander {
 
   @Lock (LockType.READ)
   public void index(Indexable indexable) {
+    if (!isEnabled()) {
+      logger.warning("Could not index entity. Search functions are disabled");
+    }
+    
     getClient().prepareIndex(getIndex(), indexable.getType(), indexable.getId())
       .setSource(serialize(indexable))
       .execute()
@@ -87,6 +90,10 @@ public class IndexUpdater extends AbstractIndexHander {
   }
 
   private void updateTypeMapping(String type, Map<String, Map<String, Object>> properties) {
+    if (!isEnabled()) {
+      logger.warning("Could not update type mapping. Search functions are disabled");
+    }
+    
     ObjectMapper objectMapper = new ObjectMapper();
     try {
       Map<String, Map<String, Map<String, Object>>> mapping = new HashMap<>();

@@ -7,6 +7,7 @@ import static org.elasticsearch.index.query.QueryBuilders.queryStringQuery;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -28,6 +29,9 @@ public class OrganizationSearcher {
   private static final String ORGANIZATION_ID_FIELD = "organizationId";
   private static final String BUSINESS_NAME_UT_FIELD = "businessNameUT";
   private static final String BUSINESS_CODE_FIELD = "businessCode";
+  
+  @Inject
+  private Logger logger;
   
   @Inject
   private IndexReader indexReader;
@@ -64,6 +68,11 @@ public class OrganizationSearcher {
   }
   
   private SearchResult<OrganizationId> searchOrganizations(QueryBuilder queryBuilder, Long firstResult, Long maxResults) {
+    if (!indexReader.isEnabled()) {
+      logger.warning("Could not search organizations. Search functions are disabled");
+      return null;
+    }
+    
     SearchRequestBuilder requestBuilder = indexReader
         .requestBuilder(TYPE)
         .storedFields(ORGANIZATION_ID_FIELD)

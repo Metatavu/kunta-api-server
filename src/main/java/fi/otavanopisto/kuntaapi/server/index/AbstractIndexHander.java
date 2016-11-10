@@ -45,12 +45,21 @@ public abstract class AbstractIndexHander {
     String clusterName = systemSettingController.getSettingValue(KuntaApiConsts.SYSTEM_SETTING_ELASTIC_CLUSTER_NAME, DEFAULT_CLUSTERNAME);
     index = systemSettingController.getSettingValue(KuntaApiConsts.SYSTEM_SETTING_ELASTIC_INDEX, DEFAULT_INDEX);
     client = createClient(hosts, clusterName);
+    setup();
   }
   
   @PreDestroy
   public void deinit() {
-    closeClient(client);
+    if (client != null) {
+      closeClient(client);
+    }
   }
+  
+  public boolean isEnabled() {
+    return client != null;
+  }
+  
+  public abstract void setup();
   
   protected TransportClient getClient() {
     return client;
@@ -72,38 +81,36 @@ public abstract class AbstractIndexHander {
   }
   
   private TransportClient createClient(String[] hosts, String clusterName) {
-    TransportClient transportClient;
-    
-    System.out.println("Cluster: " + clusterName);
-    
-    Settings settings = Settings.builder()
-      .put("client.transport.ignore_cluster_name", true)
-      .put("client.transport.ping_timeout", "60s")
-      .put("cluster.name", clusterName)
-      .build();
-    
-    transportClient = new PreBuiltTransportClient(settings);
-    
-    for (String host : hosts) {
-      System.out.println("Adding host: " + host);
+    try {
+      TransportClient transportClient;
       
-      String[] parts = StringUtils.split(host, ':');
-      if (parts.length != 2 || !NumberUtils.isNumber(parts[1])) {
-        logger.severe(String.format("Invalid elastic search host %s, dropped", host));
+      Settings settings = Settings.builder()
+        .put("client.transport.ignore_cluster_name", true)
+        .put("client.transport.ping_timeout", "60s")
+        .put("cluster.name", clusterName)
+        .build();
+      
+      transportClient = new PreBuiltTransportClient(settings);
+      
+      for (String host : hosts) {
+        String[] parts = StringUtils.split(host, ':');
+        if (parts.length != 2 || !NumberUtils.isNumber(parts[1])) {
+          logger.severe(String.format("Invalid elastic search host %s, dropped", host));
+        }
+        
+        String name = parts[0];
+        Integer port = NumberUtils.createInteger(parts[1]);
+        transportClient.addTransportAddress(resolveTransportAddress(name, port));
       }
-      
-      String name = parts[0];
-      Integer port = NumberUtils.createInteger(parts[1]);
-      transportClient.addTransportAddress(resolveTransportAddress(name, port));
+  
+      prepareIndex(transportClient);
 
-      System.out.println("Added host: " + host);
+      return transportClient;
+    } catch (Exception e) {
+      logger.log(Level.SEVERE, "Elastic client creation failed. All search functions are disbled", e);
     }
 
-    System.out.println("Preparing index");
-    prepareIndex(transportClient);
-    System.out.println("Index prepared");
-    
-    return transportClient;
+    return null;
   }
   
   private InetSocketTransportAddress resolveTransportAddress(String name, int port) {

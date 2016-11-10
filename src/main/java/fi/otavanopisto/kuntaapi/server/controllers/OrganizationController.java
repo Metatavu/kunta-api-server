@@ -43,25 +43,46 @@ public class OrganizationController {
     SearchResult<OrganizationId> searchResult;
     
     if (search == null) {
-      if (businessName == null && businessCode != null) {
-        searchResult = organizationSearcher.searchOrganizationsByBusinessCode(businessCode, firstResult, maxResults);
-      } else if (businessName != null && businessCode == null) {
-        searchResult = organizationSearcher.searchOrganizationsByBusinessName(businessName, firstResult, maxResults);
-      } else {
-        searchResult = organizationSearcher.searchOrganizationsByBusinessCodeAndBusinessName(businessCode, businessName, firstResult, maxResults);
+      searchResult = searchByBusinessNameOrBusinessCode(businessName, businessCode, firstResult, maxResults);
+      if (searchResult == null) {
+        // Search has failed, fall back to listing
+        return listByBusinessNameOrBusinessCode(businessName, businessCode);
       }
     } else {
       searchResult = organizationSearcher.searchOrganizations(search, businessCode, businessName, firstResult, maxResults);
     }
-  
-    for (OrganizationId organizationId : searchResult.getResult()) {
-      Organization organization = findOrganization(organizationId);
-      if (organization != null) {
-        result.add(organization);
+    
+    if (searchResult != null) {
+      for (OrganizationId organizationId : searchResult.getResult()) {
+        Organization organization = findOrganization(organizationId);
+        if (organization != null) {
+          result.add(organization);
+        }
       }
     }
     
     return result;
+  }
+
+  private SearchResult<OrganizationId> searchByBusinessNameOrBusinessCode(String businessName, String businessCode, Long firstResult, Long maxResults) {
+    if (businessName == null && businessCode != null) {
+      return organizationSearcher.searchOrganizationsByBusinessCode(businessCode, firstResult, maxResults);
+    } else if (businessName != null && businessCode == null) {
+      return organizationSearcher.searchOrganizationsByBusinessName(businessName, firstResult, maxResults);
+    } else {
+      return organizationSearcher.searchOrganizationsByBusinessCodeAndBusinessName(businessCode, businessName, firstResult, maxResults);
+    }
+  }
+
+  private List<Organization> listByBusinessNameOrBusinessCode(String businessName, String businessCode) {
+    for (OrganizationProvider organizationProvider : getOrganizationProviders()) {
+      List<Organization> organizations = organizationProvider.listOrganizations(businessName, businessCode);
+      if (organizations != null) {
+        return organizations;
+      }
+    }
+    
+    return Collections.emptyList();
   }
 
   public Organization findOrganization(OrganizationId organizationId) {
