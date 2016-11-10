@@ -30,6 +30,10 @@ public class IdController {
    * @return translated id or null if translation has failed
    */
   public OrganizationId translateOrganizationId(OrganizationId organizationId, String target) {
+    if (organizationId == null) {
+      return null;
+    }
+    
     if (StringUtils.equals(organizationId.getSource(), target)) {
       return organizationId;
     }
@@ -50,6 +54,10 @@ public class IdController {
    * @return translated id or null if translation has failed
    */
   public ServiceId translateServiceId(ServiceId serviceId, String target) {
+    if (serviceId == null) {
+      return null;
+    }
+    
     if (StringUtils.equals(serviceId.getSource(), target)) {
       return serviceId;
     }
@@ -70,6 +78,10 @@ public class IdController {
    * @return translated id or null if translation has failed
    */
   public OrganizationServiceId translateOrganizationServiceId(OrganizationServiceId organizationServiceId, String target) {
+    if (organizationServiceId == null) {
+      return null;
+    }
+
     if (StringUtils.equals(organizationServiceId.getSource(), target)) {
       return organizationServiceId;
     }
@@ -90,6 +102,10 @@ public class IdController {
    * @return translated id or null if translation has failed
    */
   public ElectronicServiceChannelId translateElectronicServiceChannelId(ElectronicServiceChannelId serviceChannelId, String target) {
+    if (serviceChannelId == null) {
+      return null;
+    }
+
     if (StringUtils.equals(serviceChannelId.getSource(), target)) {
       return serviceChannelId;
     }
@@ -110,6 +126,10 @@ public class IdController {
    * @return translated id or null if translation has failed
    */
   public PhoneChannelId translatePhoneServiceChannelId(PhoneChannelId serviceChannelId, String target) {
+    if (serviceChannelId == null) {
+      return null;
+    }
+
     if (StringUtils.equals(serviceChannelId.getSource(), target)) {
       return serviceChannelId;
     }
@@ -130,6 +150,10 @@ public class IdController {
    * @return translated id or null if translation has failed
    */
   public PrintableFormChannelId translatePrintableFormServiceChannelId(PrintableFormChannelId serviceChannelId, String target) {
+    if (serviceChannelId == null) {
+      return null;
+    }
+
     if (StringUtils.equals(serviceChannelId.getSource(), target)) {
       return serviceChannelId;
     }
@@ -150,6 +174,10 @@ public class IdController {
    * @return translated id or null if translation has failed
    */
   public ServiceLocationChannelId translateServiceLocationChannelId(ServiceLocationChannelId serviceChannelId, String target) {
+    if (serviceChannelId == null) {
+      return null;
+    }
+
     if (StringUtils.equals(serviceChannelId.getSource(), target)) {
       return serviceChannelId;
     }
@@ -170,6 +198,10 @@ public class IdController {
    * @return translated id or null if translation has failed
    */
   public WebPageChannelId translateWebPageServiceChannelId(WebPageChannelId serviceChannelId, String target) {
+    if (serviceChannelId == null) {
+      return null;
+    }
+
     if (StringUtils.equals(serviceChannelId.getSource(), target)) {
       return serviceChannelId;
     }
@@ -190,6 +222,10 @@ public class IdController {
    * @return translated id or null if translation has failed
    */
   public EventId translateEventId(EventId eventId, String target) {
+    if (eventId == null) {
+      return null;
+    }
+
     if (StringUtils.equals(eventId.getSource(), target)) {
       return eventId;
     }
@@ -210,6 +246,10 @@ public class IdController {
    * @return translated id or null if translation has failed
    */
   public NewsArticleId translateNewsArticleId(NewsArticleId newsArticleId, String target) {
+    if (newsArticleId == null) {
+      return null;
+    }
+
     if (StringUtils.equals(newsArticleId.getSource(), target)) {
       return newsArticleId;
     }
@@ -230,6 +270,10 @@ public class IdController {
    * @return translated id or null if translation has failed
    */
   public AttachmentId translateAttachmentId(AttachmentId attachmentId, String target) {
+    if (attachmentId == null) {
+      return null;
+    }
+
     if (StringUtils.equals(attachmentId.getSource(), target)) {
       return attachmentId;
     }
@@ -250,6 +294,10 @@ public class IdController {
    * @return translated id or null if translation has failed
    */
   public BannerId translateBannerId(BannerId bannerId, String target) {
+    if (bannerId == null) {
+      return null;
+    }
+
     if (StringUtils.equals(bannerId.getSource(), target)) {
       return bannerId;
     }
@@ -270,6 +318,10 @@ public class IdController {
    * @return translated id or null if translation has failed
    */
   public TileId translateTileId(TileId tileId, String target) {
+    if (tileId == null) {
+      return null;
+    }
+
     if (StringUtils.equals(tileId.getSource(), target)) {
       return tileId;
     }
@@ -290,6 +342,10 @@ public class IdController {
    * @return translated id or null if translation has failed
    */
   public FileId translateFileId(FileId fileId, String target) {
+    if (fileId == null) {
+      return null;
+    }
+
     if (StringUtils.equals(fileId.getSource(), target)) {
       return fileId;
     }
@@ -310,6 +366,10 @@ public class IdController {
    * @return translated id or null if translation has failed
    */
   public MenuId translateMenuId(MenuId menuId, String target) {
+    if (menuId == null) {
+      return null;
+    }
+
     if (StringUtils.equals(menuId.getSource(), target)) {
       return menuId;
     }
@@ -330,6 +390,10 @@ public class IdController {
    * @return translated id or null if translation has failed
    */
   public MenuItemId translateMenuItemId(MenuItemId menuItemId, String target) {
+    if (menuItemId == null) {
+      return null;
+    }
+
     if (StringUtils.equals(menuItemId.getSource(), target)) {
       return menuItemId;
     }
@@ -350,6 +414,10 @@ public class IdController {
    * @return translated id or null if translation has failed
    */
   public JobId translateJobId(JobId jobId, String target) {
+    if (jobId == null) {
+      return null;
+    }
+
     if (StringUtils.equals(jobId.getSource(), target)) {
       return jobId;
     }
@@ -370,6 +438,10 @@ public class IdController {
    * @return translated id or null if translation has failed
    */
   public AnnouncementId translateAnnouncementId(AnnouncementId announcementId, String target) {
+    if (announcementId == null) {
+      return null;
+    }
+
     if (StringUtils.equals(announcementId.getSource(), target)) {
       return announcementId;
     }
@@ -390,6 +462,10 @@ public class IdController {
    * @return translated id or null if translation has failed
    */
   public PageId translatePageId(PageId pageId, String target) {
+    if (pageId == null) {
+      return null;
+    }
+
     if (StringUtils.equals(pageId.getSource(), target)) {
       return pageId;
     }
