@@ -7,4 +7,6 @@ if [ ! -f sonar-scanner/bin/sonar-scanner ]; then
   mv sonar-scanner-2.8 sonar-scanner
 fi;
 
-
+echo "Elastic seach:"
+elasticsearch -v
+elasticsearch &

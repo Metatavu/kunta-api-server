@@ -10,9 +10,6 @@ cache:
 addons:
   hosts:
     - api.kunta-api.test
-    
-services:
-  - elasticsearch
   
 install: true
 
