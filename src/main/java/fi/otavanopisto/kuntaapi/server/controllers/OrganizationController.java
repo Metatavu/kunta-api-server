@@ -24,11 +24,11 @@ public class OrganizationController {
   @Inject
   private Instance<OrganizationProvider> organizationProviders;
   
-  public List<Organization> listOrganizations(String businessName, String businessCode) {
+  public List<Organization> listOrganizations(String businessName, String businessCode, Long firstResult, Long maxResults) {
     List<Organization> organizations = new ArrayList<>();
     
     if (businessName != null || businessCode != null) {
-      organizations = searchOrganizations(businessName, businessCode);
+      organizations = searchOrganizations(null, businessName, businessCode, firstResult, maxResults);
     } else {
       for (OrganizationProvider organizationProvider : getOrganizationProviders()) {
         organizations.addAll(organizationProvider.listOrganizations(businessName, businessCode));
@@ -38,16 +38,20 @@ public class OrganizationController {
     return organizations;
   }
 
-  private List<Organization> searchOrganizations(String businessName, String businessCode) {
+  public List<Organization> searchOrganizations(String search, String businessName, String businessCode, Long firstResult, Long maxResults) {
     List<Organization> result = new ArrayList<>();
     SearchResult<OrganizationId> searchResult;
     
-    if (businessName == null && businessCode != null) {
-      searchResult = organizationSearcher.searchOrganizationsByBusinessCode(businessCode);
-    } else if (businessName != null && businessCode == null) {
-      searchResult = organizationSearcher.searchOrganizationsByBusinessName(businessName);
+    if (search == null) {
+      if (businessName == null && businessCode != null) {
+        searchResult = organizationSearcher.searchOrganizationsByBusinessCode(businessCode, firstResult, maxResults);
+      } else if (businessName != null && businessCode == null) {
+        searchResult = organizationSearcher.searchOrganizationsByBusinessName(businessName, firstResult, maxResults);
+      } else {
+        searchResult = organizationSearcher.searchOrganizationsByBusinessCodeAndBusinessName(businessCode, businessName, firstResult, maxResults);
+      }
     } else {
-      searchResult = organizationSearcher.searchOrganizationsByBusinessCodeAndBusinessName(businessCode, businessName);
+      searchResult = organizationSearcher.searchOrganizations(search, businessCode, businessName, firstResult, maxResults);
     }
   
     for (OrganizationId organizationId : searchResult.getResult()) {

@@ -49,7 +49,7 @@ public class ServiceController {
     return result.subList(firstIndex, toIndex);
   }
 
-  public List<Service> searchServices(Long firstResult, Long maxResults, String search) {
+  public List<Service> searchServices(String search, Long firstResult, Long maxResults) {
     SearchResult<ServiceId> searchResult = serviceSearcher.searchServices(search, firstResult, maxResults);
     if (searchResult != null) {
       List<Service> result = new ArrayList<>(searchResult.getResult().size());

@@ -23,6 +23,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 
 import fi.otavanopisto.kuntaapi.server.controllers.OrganizationController;
+import fi.otavanopisto.kuntaapi.server.controllers.PageController;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.BannerId;
 import fi.otavanopisto.kuntaapi.server.id.EventId;
@@ -45,7 +46,6 @@ import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.MenuProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.NewsProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.OrganizationServiceProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.PageProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.TileProvider;
 import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
 import fi.otavanopisto.kuntaapi.server.rest.model.Banner;
@@ -91,6 +91,9 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   private OrganizationController organizationController;
   
   @Inject
+  private PageController pageController;
+  
+  @Inject
   private Instance<OrganizationServiceProvider> organizationServiceProviders;
   
   @Inject
@@ -106,17 +109,21 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   private Instance<TileProvider> tileProviders;
 
   @Inject
-  private Instance<PageProvider> pageProviders;
-
-  @Inject
   private Instance<MenuProvider> menuProviders;
 
   @Inject
   private Instance<JobProvider> jobProviders;
-
+  
   @Override
-  public Response listOrganizations(String businessName, String businessCode) {
-    List<Organization> organizations = organizationController.listOrganizations(businessName, businessCode);
+  public Response listOrganizations(String businessName, String businessCode, String search, Long firstResult, Long maxResults) {
+    List<Organization> organizations;
+    
+    if (search != null) {
+      organizations = organizationController.searchOrganizations(search, businessName, businessCode, firstResult, maxResults);
+    } else {
+      organizations = organizationController.listOrganizations(businessName, businessCode, firstResult, maxResults);
+    }
+    
     return Response.ok(organizations)
       .build();
   }
@@ -719,26 +726,26 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   
   /* Pages */
-
+  
   @Override
-  public Response listOrganizationPages(String organizationIdParam, String parentIdParam, String path) {
+  public Response listOrganizationPages(String organizationIdParam, String parentIdParam, String path, String search, Long firstResult, Long maxResults) {
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
     }
     
-    boolean onlyRootPages = StringUtils.equals("ROOT", parentIdParam);
-    PageId parentId = onlyRootPages ? null : toPageId(parentIdParam);
+    if (search != null && (parentIdParam != null || path != null)) {
+      return createNotImplemented("Search parameter can not be combined with path or parentId parameters");
+    }
     
-    List<Page> result = new ArrayList<>();
+    List<Page> result = null;
     
-    for (PageProvider pageProvider : getPageProviders()) {
-      List<Page> pages = pageProvider.listOrganizationPages(organizationId, parentId, onlyRootPages, path);
-      if (pages != null) {
-        result.addAll(pages);
-      } else {
-        logger.severe(String.format("Page provider %s returned null when listing pages", pageProvider.getClass().getName())); 
-      }
+    if (search != null) {
+      result = pageController.searchPages(organizationId, search, firstResult, maxResults);
+    } else {
+      boolean onlyRootPages = StringUtils.equals("ROOT", parentIdParam);
+      PageId parentId = onlyRootPages ? null : toPageId(parentIdParam);
+      result = pageController.listPages(organizationId, path, onlyRootPages, parentId, firstResult, maxResults);
     }
     
     return Response.ok(result)
@@ -757,11 +764,9 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createNotFound(NOT_FOUND);
     }
     
-    for (PageProvider pageProvider : getPageProviders()) {
-      Page page = pageProvider.findOrganizationPage(organizationId, pageId);
-      if (page != null) {
-        return Response.ok(page).build();
-      }
+    Page page = pageController.findPage(organizationId, pageId);
+    if (page != null) {
+      return Response.ok(page).build();
     }
     
     return createNotFound(NOT_FOUND);
@@ -779,11 +784,9 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createNotFound(NOT_FOUND);
     }
     
-    for (PageProvider pageProvider : getPageProviders()) {
-      List<LocalizedValue> pageContents = pageProvider.findOrganizationPageContents(organizationId, pageId);
-      if (pageContents != null) {
-        return Response.ok(pageContents).build();
-      }
+    List<LocalizedValue> pageContents = pageController.getPageContents(organizationId, pageId);
+    if (pageContents != null) {
+      return Response.ok(pageContents).build();
     }
     
     return createNotFound(NOT_FOUND);
@@ -794,11 +797,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
     PageId pageId = toPageId(pageIdParam);
     
-    List<Attachment> result = new ArrayList<>();
-   
-    for (PageProvider pageProvider : getPageProviders()) {
-      result.addAll(pageProvider.listOrganizationPageImages(organizationId, pageId));
-    }
+    List<Attachment> result = pageController.listPages(organizationId, pageId);
     
     return Response.ok(result)
       .build();
@@ -810,12 +809,10 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     PageId pageId = toPageId(pageIdParam);
     AttachmentId attachmentId = toAttachmentId(imageIdParam);
     
-    for (PageProvider pageProvider : getPageProviders()) {
-      Attachment attachment = pageProvider.findPageImage(organizationId, pageId, attachmentId);
-      if (attachment != null) {
-        return Response.ok(attachment)
-          .build();
-      }
+    Attachment attachment = pageController.findPageImage(organizationId, pageId, attachmentId);
+    if (attachment != null) {
+      return Response.ok(attachment)
+        .build();
     }
     
     return Response.status(Status.NOT_FOUND)
@@ -828,18 +825,16 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     PageId pageId = toPageId(pageIdParam);
     AttachmentId attachmentId = toAttachmentId(imageIdParam);
     
-    for (PageProvider pageProvider : getPageProviders()) {
-      AttachmentData attachmentData = pageProvider.getPageImageData(organizationId, pageId, attachmentId, size);
-      if (attachmentData != null) {
-        try (InputStream stream = new ByteArrayInputStream(attachmentData.getData())) {
-          return Response.ok(stream, attachmentData.getType())
-              .build();
-        } catch (IOException e) {
-          logger.log(Level.SEVERE, FAILED_TO_STREAM_IMAGE_TO_CLIENT, e);
-          return Response.status(Status.INTERNAL_SERVER_ERROR)
-            .entity(INTERNAL_SERVER_ERROR)
+    AttachmentData attachmentData = pageController.getPageAttachmentData(organizationId, pageId, attachmentId, size);
+    if (attachmentData != null) {
+      try (InputStream stream = new ByteArrayInputStream(attachmentData.getData())) {
+        return Response.ok(stream, attachmentData.getType())
             .build();
-        }
+      } catch (IOException e) {
+        logger.log(Level.SEVERE, FAILED_TO_STREAM_IMAGE_TO_CLIENT, e);
+        return Response.status(Status.INTERNAL_SERVER_ERROR)
+          .entity(INTERNAL_SERVER_ERROR)
+          .build();
       }
     }
     
@@ -1217,17 +1212,6 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     List<TileProvider> result = new ArrayList<>();
     
     Iterator<TileProvider> iterator = tileProviders.iterator();
-    while (iterator.hasNext()) {
-      result.add(iterator.next());
-    }
-    
-    return Collections.unmodifiableList(result);
-  }
-  
-  private List<PageProvider> getPageProviders() {
-    List<PageProvider> result = new ArrayList<>();
-    
-    Iterator<PageProvider> iterator = pageProviders.iterator();
     while (iterator.hasNext()) {
       result.add(iterator.next());
     }

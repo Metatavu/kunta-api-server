@@ -79,7 +79,7 @@ public class ServicesApiImpl extends ServicesApi {
   }
   
   @Override
-  public Response listServices(Long firstResult, Long maxResults, String search) {
+  public Response listServices(String search, Long firstResult, Long maxResults) {
     Response validationResponse = validateListLimitParams(firstResult, maxResults);
     if (validationResponse != null) {
       return validationResponse;
@@ -88,7 +88,7 @@ public class ServicesApiImpl extends ServicesApi {
     if (search == null) {
       return Response.ok(serviceController.listServices(firstResult, maxResults)).build();
     } else {
-      return Response.ok(serviceController.searchServices(firstResult, maxResults, search)).build();
+      return Response.ok(serviceController.searchServices(search, firstResult, maxResults)).build();
     }
   }
   
