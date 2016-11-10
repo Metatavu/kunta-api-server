@@ -38,6 +38,7 @@ public class IndexUpdater extends AbstractIndexHander {
   public void index(Indexable indexable) {
     if (!isEnabled()) {
       logger.warning("Could not index entity. Search functions are disabled");
+      return;
     }
     
     getClient().prepareIndex(getIndex(), indexable.getType(), indexable.getId())
@@ -92,6 +93,7 @@ public class IndexUpdater extends AbstractIndexHander {
   private void updateTypeMapping(String type, Map<String, Map<String, Object>> properties) {
     if (!isEnabled()) {
       logger.warning("Could not update type mapping. Search functions are disabled");
+      return;
     }
     
     ObjectMapper objectMapper = new ObjectMapper();
