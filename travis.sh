@@ -17,6 +17,8 @@ if [ "$TRAVIS_PULL_REQUEST" != "false" ] && [ -n "${GITHUB_TOKEN}" ] && [ -n "${
     -Dsonar.github.repository=$TRAVIS_REPO_SLUG \
     -Dsonar.github.pullRequest=$TRAVIS_PULL_REQUEST
     
+  sleep 30 && cat elasticsearch-5.0.0/logs/elasticsearch.log &
+  sleep 220 && cat elasticsearch-5.0.0/logs/elasticsearch.log &
   sleep 240 && cat target/cargo/configurations/wildfly10x/log/server.log &
     
   set -e
