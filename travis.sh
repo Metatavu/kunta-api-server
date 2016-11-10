@@ -17,7 +17,7 @@ if [ "$TRAVIS_PULL_REQUEST" != "false" ] && [ -n "${GITHUB_TOKEN}" ] && [ -n "${
     -Dsonar.github.repository=$TRAVIS_REPO_SLUG \
     -Dsonar.github.pullRequest=$TRAVIS_PULL_REQUEST
     
-  tail -f target/cargo/configurations/wildfly10x/log/server.log &
+  sleep 120 && cat target/cargo/configurations/wildfly10x/log/server.log &
     
   set -e
   mvn clean verify jacoco:report coveralls:report -Pitests -DrepoToken=$COVERALLS_TOKEN
