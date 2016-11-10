@@ -17,13 +17,6 @@ if [ "$TRAVIS_PULL_REQUEST" != "false" ] && [ -n "${GITHUB_TOKEN}" ] && [ -n "${
     -Dsonar.github.repository=$TRAVIS_REPO_SLUG \
     -Dsonar.github.pullRequest=$TRAVIS_PULL_REQUEST
     
-  sleep 30 && cat elasticsearch-5.0.0/logs/elasticsearch.log &
-  sleep 35 && echo "Elastic search port status:" && curl 127.0.0.1:9200 &
-  sleep 40 && echo "Elastic search http status:" && curl 127.0.0.1:9300 &
-  
-  sleep 350 && cat elasticsearch-5.0.0/logs/elasticsearch.log &
-  sleep 360 && cat target/cargo/configurations/wildfly10x/log/server.log &
-    
   set -e
   mvn clean verify jacoco:report coveralls:report -Pitests -DrepoToken=$COVERALLS_TOKEN
   set +e
