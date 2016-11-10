@@ -83,6 +83,8 @@ public abstract class AbstractIndexHander {
     transportClient = new PreBuiltTransportClient(settings);
     
     for (String host : hosts) {
+      System.out.println("Adding host: " + host);
+      
       String[] parts = StringUtils.split(host, ':');
       if (parts.length != 2 || !NumberUtils.isNumber(parts[1])) {
         logger.severe(String.format("Invalid elastic search host %s, dropped", host));
@@ -91,9 +93,13 @@ public abstract class AbstractIndexHander {
       String name = parts[0];
       Integer port = NumberUtils.createInteger(parts[1]);
       transportClient.addTransportAddress(resolveTransportAddress(name, port));
+
+      System.out.println("Added host: " + host);
     }
 
+    System.out.println("Preparing index");
     prepareIndex(transportClient);
+    System.out.println("Index prepared");
     
     return transportClient;
   }
