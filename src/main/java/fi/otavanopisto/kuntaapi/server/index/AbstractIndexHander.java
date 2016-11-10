@@ -74,6 +74,8 @@ public abstract class AbstractIndexHander {
   private TransportClient createClient(String[] hosts, String clusterName) {
     TransportClient transportClient;
     
+    System.out.println("Cluster: " + clusterName);
+    
     Settings settings = Settings.builder()
       .put("cluster.name", clusterName)
       .build();

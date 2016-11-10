@@ -14,4 +14,4 @@ fi;
 
 echo Starting Elastic Search
 elasticsearch-5.0.0/bin/elasticsearch -V
-elasticsearch-5.0.0/bin/elasticsearch -E cluster.name=elasticsearch -d
+elasticsearch-5.0.0/bin/elasticsearch  -E http.port=1234 -E cluster.name=elasticsearch -d -v
