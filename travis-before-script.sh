@@ -14,4 +14,4 @@ fi;
 
 echo Starting Elastic Search
 elasticsearch-5.0.0/bin/elasticsearch -V
-elasticsearch-5.0.0/bin/elasticsearch -E network.host=0.0.0.0 -d
+elasticsearch-5.0.0/bin/elasticsearch -d
