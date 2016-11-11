@@ -1,13 +1,9 @@
 package fi.otavanopisto.kuntaapi.server.rest;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.ejb.Stateful;
 import javax.enterprise.context.RequestScoped;
-import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Request;
@@ -24,7 +20,6 @@ import fi.otavanopisto.kuntaapi.server.id.ServiceId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceLocationChannelId;
 import fi.otavanopisto.kuntaapi.server.id.WebPageChannelId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
-import fi.otavanopisto.kuntaapi.server.integrations.ServiceChannelProvider;
 import fi.otavanopisto.kuntaapi.server.rest.model.ElectronicChannel;
 import fi.otavanopisto.kuntaapi.server.rest.model.PhoneChannel;
 import fi.otavanopisto.kuntaapi.server.rest.model.PrintableFormChannel;
@@ -58,9 +53,6 @@ public class ServicesApiImpl extends ServicesApi {
 
   @Inject
   private HttpCacheController httpCacheController;
-  
-  @Inject
-  private Instance<ServiceChannelProvider> serviceChannelProviders;
   
   @Override
   public Response createService(Service body, @Context Request request) {
@@ -140,12 +132,10 @@ public class ServicesApiImpl extends ServicesApi {
       return createBadRequest(String.format(INVALID_ELECTRONIC_CHANNEL_ID, serviceIdParam));
     }
     
-    for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
-      ElectronicChannel electronicChannel = serviceChannelProvider.findElectronicChannel(serviceId, electronicChannelId);
-      if (electronicChannel != null) {
-        return Response.ok(electronicChannel)
-            .build();
-      }
+    ElectronicChannel electronicChannel = serviceController.findElectronicChannel(serviceId, electronicChannelId);
+    if (electronicChannel != null) {
+      return Response.ok(electronicChannel)
+        .build();
     }
     
     return Response
@@ -166,12 +156,10 @@ public class ServicesApiImpl extends ServicesApi {
       return createBadRequest(String.format(INVALID_PHONE_CHANNEL_ID, serviceIdParam));
     }
     
-    for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
-      PhoneChannel phoneChannel = serviceChannelProvider.findPhoneChannel(serviceId, phoneChannelId);
-      if (phoneChannel != null) {
-        return Response.ok(phoneChannel)
-            .build();
-      }
+    PhoneChannel phoneChannel = serviceController.findPhoneChannel(serviceId, phoneChannelId);
+    if (phoneChannel != null) {
+      return Response.ok(phoneChannel)
+          .build();
     }
     
     return Response
@@ -192,14 +180,12 @@ public class ServicesApiImpl extends ServicesApi {
       return createBadRequest(String.format(INVALID_PRINTABLE_FORM_CHANNEL_ID, serviceIdParam));
     }
     
-    for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
-      PrintableFormChannel printableFormChannel = serviceChannelProvider.findPrintableFormChannel(serviceId, printableFormChannelId);
-      if (printableFormChannel != null) {
-        return Response.ok(printableFormChannel)
-            .build();
-      }
+    PrintableFormChannel printableFormChannel = serviceController.findPrintableFormChannel(serviceId, printableFormChannelId);
+    if (printableFormChannel != null) {
+      return Response.ok(printableFormChannel)
+          .build();
     }
-
+    
     return Response
       .status(Status.NOT_FOUND)
       .entity(NOT_FOUND)
@@ -218,12 +204,10 @@ public class ServicesApiImpl extends ServicesApi {
       return createBadRequest(String.format(INVALID_SERVICE_LOCATION_CHANNEL_ID, serviceIdParam));
     }
     
-    for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
-      ServiceLocationChannel serviceLocationChannel = serviceChannelProvider.findServiceLocationChannel(serviceId, serviceLocationChannelId);
-      if (serviceLocationChannel != null) {
-        return Response.ok(serviceLocationChannel)
-            .build();
-      }
+    ServiceLocationChannel serviceLocationChannel = serviceController.findServiceLocationChannel(serviceId, serviceLocationChannelId);
+    if (serviceLocationChannel != null) {
+      return Response.ok(serviceLocationChannel)
+          .build();
     }
     
     return Response
@@ -244,12 +228,10 @@ public class ServicesApiImpl extends ServicesApi {
       return createBadRequest(String.format(INVALID_WEBPAGE_CHANNEL_ID, serviceIdParam));
     }
     
-    for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
-      WebPageChannel webPageChannel = serviceChannelProvider.findWebPageChannelChannel(serviceId, webPageChannelId);
-      if (webPageChannel != null) {
-        return Response.ok(webPageChannel)
-            .build();
-      }
+    WebPageChannel webPageChannel = serviceController.findWebPageChannel(serviceId, webPageChannelId);
+    if (webPageChannel != null) {
+      return Response.ok(webPageChannel)
+          .build();
     }
     
     return Response
@@ -270,18 +252,8 @@ public class ServicesApiImpl extends ServicesApi {
       return validationResponse;
     }
     
-    List<ElectronicChannel> result = new ArrayList<>();
-    
-    for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
-      result.addAll(serviceChannelProvider.listElectronicChannels(serviceId));
-    }
-    
-    int resultCount = result.size();
-    int firstIndex = firstResult == null ? 0 : Math.min(firstResult.intValue(), resultCount);
-    int toIndex = maxResults == null ? resultCount : Math.min(firstIndex + maxResults.intValue(), resultCount);
-    
-    return Response.ok(result.subList(firstIndex, toIndex))
-      .build();
+    List<ElectronicChannel> result = serviceController.listElectronicChannels(firstResult, maxResults, serviceId);
+    return Response.ok(result).build();
   }
 
   @Override
@@ -296,18 +268,8 @@ public class ServicesApiImpl extends ServicesApi {
       return validationResponse;
     }
     
-    List<PhoneChannel> result = new ArrayList<>();
-    
-    for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
-      result.addAll(serviceChannelProvider.listPhoneChannels(serviceId));
-    }
-    
-    int resultCount = result.size();
-    int firstIndex = firstResult == null ? 0 : Math.min(firstResult.intValue(), resultCount);
-    int toIndex = maxResults == null ? resultCount : Math.min(firstIndex + maxResults.intValue(), resultCount);
-    
-    return Response.ok(result.subList(firstIndex, toIndex))
-      .build();
+    List<PhoneChannel> result = serviceController.listPhoneChannels(firstResult, maxResults, serviceId);
+    return Response.ok(result).build();
   }
 
   @Override
@@ -322,18 +284,8 @@ public class ServicesApiImpl extends ServicesApi {
       return validationResponse;
     }
     
-    List<PrintableFormChannel> result = new ArrayList<>();
-    
-    for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
-      result.addAll(serviceChannelProvider.listPrintableFormChannels(serviceId));
-    }
-    
-    int resultCount = result.size();
-    int firstIndex = firstResult == null ? 0 : Math.min(firstResult.intValue(), resultCount);
-    int toIndex = maxResults == null ? resultCount : Math.min(firstIndex + maxResults.intValue(), resultCount);
-    
-    return Response.ok(result.subList(firstIndex, toIndex))
-      .build();
+    List<PrintableFormChannel> result = serviceController.listPrintableFormChannels(firstResult, maxResults, serviceId);
+    return Response.ok(result).build();
   }
 
   @Override
@@ -348,18 +300,9 @@ public class ServicesApiImpl extends ServicesApi {
       return validationResponse;
     }
     
-    List<ServiceLocationChannel> result = new ArrayList<>();
+    List<ServiceLocationChannel> result = serviceController.listServiceLocationChannels(firstResult, maxResults, serviceId);
     
-    for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
-      result.addAll(serviceChannelProvider.listServiceLocationChannels(serviceId));
-    }
-    
-    int resultCount = result.size();
-    int firstIndex = firstResult == null ? 0 : Math.min(firstResult.intValue(), resultCount);
-    int toIndex = maxResults == null ? resultCount : Math.min(firstIndex + maxResults.intValue(), resultCount);
-    
-    return Response.ok(result.subList(firstIndex, toIndex))
-      .build();
+    return Response.ok(result).build();
   }
 
   @Override
@@ -374,18 +317,8 @@ public class ServicesApiImpl extends ServicesApi {
       return validationResponse;
     }
     
-    List<WebPageChannel> result = new ArrayList<>();
-    
-    for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
-      result.addAll(serviceChannelProvider.listWebPageChannelsChannels(serviceId));
-    }
-    
-    int resultCount = result.size();
-    int firstIndex = firstResult == null ? 0 : Math.min(firstResult.intValue(), resultCount);
-    int toIndex = maxResults == null ? resultCount : Math.min(firstIndex + maxResults.intValue(), resultCount);
-    
-    return Response.ok(result.subList(firstIndex, toIndex))
-      .build();
+    List<WebPageChannel> result = serviceController.listWebPageChannels(firstResult, maxResults, serviceId);
+    return Response.ok(result).build();
   }
 
   @Override
@@ -473,17 +406,6 @@ public class ServicesApiImpl extends ServicesApi {
     }
     
     return null;
-  }
-  
-  private List<ServiceChannelProvider> getServiceChannelProviders() {
-    List<ServiceChannelProvider> result = new ArrayList<>();
-    
-    Iterator<ServiceChannelProvider> iterator = serviceChannelProviders.iterator();
-    while (iterator.hasNext()) {
-      result.add(iterator.next());
-    }
-    
-    return Collections.unmodifiableList(result);
   }
 }
 
