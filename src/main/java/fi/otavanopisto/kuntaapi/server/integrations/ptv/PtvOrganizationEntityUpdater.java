@@ -18,6 +18,7 @@ import javax.enterprise.event.Event;
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 
+import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
 import fi.otavanopisto.kuntaapi.server.discover.OrganizationIdUpdateRequest;
@@ -45,6 +46,9 @@ public class PtvOrganizationEntityUpdater extends EntityUpdater {
   
   @Inject
   private IdentifierController identifierController;
+  
+  @Inject
+  private ModificationHashCache modificationHashCache;
   
   @Inject
   private Event<IndexRequest> indexRequest;
@@ -118,12 +122,15 @@ public class PtvOrganizationEntityUpdater extends EntityUpdater {
         identifier = identifierController.createIdentifier(organizationId);
       }
       
-      index(identifier.getKuntaApiId(), response.getResponse());
+      Organization organization = response.getResponse();
+      modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(organization));
+      
+      index(identifier.getKuntaApiId(), organization);
     } else {
       logger.warning(String.format("Organization %s processing failed on [%d] %s", organizationId.getId(), response.getStatus(), response.getMessage()));
     }
   }
-
+  
   private void index(String organizationId, Organization organization) {
     IndexableOrganization indexableOrganization = new IndexableOrganization();
     indexableOrganization.setBusinessCode(organization.getBusinessCode());

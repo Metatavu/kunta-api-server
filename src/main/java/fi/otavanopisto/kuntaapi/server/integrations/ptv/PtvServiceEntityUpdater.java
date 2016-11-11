@@ -18,6 +18,7 @@ import javax.enterprise.event.Event;
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 
+import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
 import fi.otavanopisto.kuntaapi.server.discover.ServiceIdUpdateRequest;
@@ -48,6 +49,9 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
   @Inject
   private IdentifierController identifierController;
 
+  @Inject
+  private ModificationHashCache modificationHashCache;
+  
   @Resource
   private TimerService timerService;
 
@@ -120,7 +124,9 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
         identifier = identifierController.createIdentifier(serviceId);
       }
       
-      index(identifier.getKuntaApiId(), response.getResponse());
+      Service service = response.getResponse();
+      modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(service));
+      index(identifier.getKuntaApiId(), service);
     } else {
       logger.warning(String.format("Service %s processing failed on [%d] %s", serviceId.getId(), response.getStatus(), response.getMessage()));
     }

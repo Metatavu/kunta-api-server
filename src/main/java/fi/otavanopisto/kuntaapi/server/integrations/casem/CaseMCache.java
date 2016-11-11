@@ -11,8 +11,10 @@ import javax.ejb.Singleton;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
 
+import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
@@ -39,6 +41,9 @@ public class CaseMCache {
 
   @Inject
   private CaseMPageContentCache contentCache;
+  
+  @Inject
+  private ModificationHashCache modificationHashCache;
   
   public List<Page> listRootPages(OrganizationId organizationId) {
     return listCachedPages(organizationId, null);
@@ -94,7 +99,14 @@ public class CaseMCache {
   }
   
   public void cachePageContents(OrganizationId organizationId, PageId pageId, String content) {
-    contentCache.put(getPageCacheKey(organizationId, pageId), content);
+    PageId kuntaApiPageId = translatePageId(pageId);
+    if (kuntaApiPageId == null) {
+      logger.severe(String.format("PageId %s could not be translated into kunta api id", pageId.toString()));
+      return;
+    }
+    
+    contentCache.put(getPageCacheKey(organizationId, kuntaApiPageId), content);
+    modificationHashCache.put(kuntaApiPageId.getId(), DigestUtils.md5Hex(content));
   }
 
   public List<LocalizedValue> getPageContent(OrganizationId organizationId, PageId pageId) {

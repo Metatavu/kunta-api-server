@@ -17,6 +17,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 
+import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
 import fi.otavanopisto.kuntaapi.server.discover.ServiceIdUpdateRequest;
@@ -43,6 +44,9 @@ public class PtvServiceElectronicChannelIdUpdater extends EntityUpdater {
   
   @Inject
   private IdentifierController identifierController;
+
+  @Inject
+  private ModificationHashCache modificationHashCache;
 
   @Resource
   private TimerService timerService;
@@ -112,8 +116,10 @@ public class PtvServiceElectronicChannelIdUpdater extends EntityUpdater {
         ElectronicServiceChannelId channelId = new ElectronicServiceChannelId(PtvConsts.IDENTIFIFER_NAME, electronicChannel.getId());
         Identifier identifier = identifierController.findIdentifierById(channelId);
         if (identifier == null) {
-          identifierController.createIdentifier(channelId);
+          identifier = identifierController.createIdentifier(channelId);
         }
+        
+        modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(electronicChannel));
       }
     } else {
       logger.warning(String.format("Service channel %s processing failed on [%d] %s", serviceId.getId(), response.getStatus(), response.getMessage()));

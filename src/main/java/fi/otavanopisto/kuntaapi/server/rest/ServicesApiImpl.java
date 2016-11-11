@@ -1,19 +1,18 @@
 package fi.otavanopisto.kuntaapi.server.rest;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.ejb.Stateful;
 import javax.enterprise.context.RequestScoped;
-import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.Request;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
 import org.apache.commons.lang3.StringUtils;
 
+import fi.otavanopisto.kuntaapi.server.controllers.HttpCacheController;
 import fi.otavanopisto.kuntaapi.server.controllers.ServiceController;
 import fi.otavanopisto.kuntaapi.server.id.ElectronicServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.PhoneChannelId;
@@ -22,7 +21,6 @@ import fi.otavanopisto.kuntaapi.server.id.ServiceId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceLocationChannelId;
 import fi.otavanopisto.kuntaapi.server.id.WebPageChannelId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
-import fi.otavanopisto.kuntaapi.server.integrations.ServiceChannelProvider;
 import fi.otavanopisto.kuntaapi.server.rest.model.ElectronicChannel;
 import fi.otavanopisto.kuntaapi.server.rest.model.PhoneChannel;
 import fi.otavanopisto.kuntaapi.server.rest.model.PrintableFormChannel;
@@ -53,77 +51,87 @@ public class ServicesApiImpl extends ServicesApi {
   
   @Inject
   private ServiceController serviceController;
-  
+
   @Inject
-  private Instance<ServiceChannelProvider> serviceChannelProviders;
+  private HttpCacheController httpCacheController;
   
   @Override
-  public Response createService(Service body) {
+  public Response createService(Service body, @Context Request request) {
     return createNotImplemented(NOT_IMPLEMENTED);
   }
   
   @Override
-  public Response findService(String serviceIdParam) {
+  public Response findService(String serviceIdParam, @Context Request request) {
     ServiceId serviceId = toServiceId(serviceIdParam);
     
+    Response notModified = httpCacheController.getNotModified(request, serviceId);
+    if (notModified != null) {
+      return notModified;
+    }
+
     Service service = serviceController.findService(serviceId);
     if (service != null) {
-      return Response.ok(service)
-        .build();
+      return httpCacheController.sendModified(service, service.getId());
     }
     
-    return Response
-        .status(Status.NOT_FOUND)
-        .entity(NOT_FOUND)
-        .build();
+    return createNotFound(NOT_FOUND);
   }
   
   @Override
-  public Response listServices(String search, Long firstResult, Long maxResults) {
+  public Response listServices(String search, Long firstResult, Long maxResults, @Context Request request) {
     Response validationResponse = validateListLimitParams(firstResult, maxResults);
     if (validationResponse != null) {
       return validationResponse;
     }
     
+    List<Service> services;
     if (search == null) {
-      return Response.ok(serviceController.listServices(firstResult, maxResults)).build();
+      services = serviceController.listServices(firstResult, maxResults);
     } else {
-      return Response.ok(serviceController.searchServices(search, firstResult, maxResults)).build();
+      services = serviceController.searchServices(search, firstResult, maxResults);
     }
+    
+    List<String> ids = httpCacheController.getEntityIds(services);
+    Response notModified = httpCacheController.getNotModified(request, ids);
+    if (notModified != null) {
+      return notModified;
+    }
+
+    return httpCacheController.sendModified(services, ids);
   }
   
   @Override
-  public Response updateService(String serviceId, Service body) {
+  public Response updateService(String serviceId, Service body, @Context Request request) {
     return createNotImplemented(NOT_IMPLEMENTED);
   }
   
   @Override
-  public Response createServiceElectronicChannel(String serviceId, ElectronicChannel body) {
+  public Response createServiceElectronicChannel(String serviceId, ElectronicChannel body, @Context Request request) {
     return createNotImplemented(NOT_IMPLEMENTED);
   }
 
   @Override
-  public Response createServicePhoneChannel(String serviceId, PhoneChannel body) {
+  public Response createServicePhoneChannel(String serviceId, PhoneChannel body, @Context Request request) {
     return createNotImplemented(NOT_IMPLEMENTED);
   }
 
   @Override
-  public Response createServicePrintableFormChannel(String serviceId, PrintableFormChannel body) {
+  public Response createServicePrintableFormChannel(String serviceId, PrintableFormChannel body, @Context Request request) {
     return createNotImplemented(NOT_IMPLEMENTED);
   }
 
   @Override
-  public Response createServiceServiceLocationChannel(String serviceId, ServiceLocationChannel body) {
+  public Response createServiceServiceLocationChannel(String serviceId, ServiceLocationChannel body, @Context Request request) {
     return createNotImplemented(NOT_IMPLEMENTED);
   }
 
   @Override
-  public Response createServiceWebPageChannel(String serviceId, WebPageChannel body) {
+  public Response createServiceWebPageChannel(String serviceId, WebPageChannel body, @Context Request request) {
     return createNotImplemented(NOT_IMPLEMENTED);
   }
 
   @Override
-  public Response findServiceElectronicChannel(String serviceIdParam, String electronicChannelIdParam) {
+  public Response findServiceElectronicChannel(String serviceIdParam, String electronicChannelIdParam, @Context Request request) {
     ServiceId serviceId = toServiceId(serviceIdParam);
     if (serviceId == null) {
       return createBadRequest(String.format(INVALID_SERVICE_ID, serviceIdParam));
@@ -134,12 +142,14 @@ public class ServicesApiImpl extends ServicesApi {
       return createBadRequest(String.format(INVALID_ELECTRONIC_CHANNEL_ID, serviceIdParam));
     }
     
-    for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
-      ElectronicChannel electronicChannel = serviceChannelProvider.findElectronicChannel(serviceId, electronicChannelId);
-      if (electronicChannel != null) {
-        return Response.ok(electronicChannel)
-            .build();
-      }
+    Response notModified = httpCacheController.getNotModified(request, electronicChannelId);
+    if (notModified != null) {
+      return notModified;
+    }
+
+    ElectronicChannel electronicChannel = serviceController.findElectronicChannel(serviceId, electronicChannelId);
+    if (electronicChannel != null) {
+      return httpCacheController.sendModified(electronicChannel, electronicChannel.getId());
     }
     
     return Response
@@ -149,7 +159,7 @@ public class ServicesApiImpl extends ServicesApi {
   }
 
   @Override
-  public Response findServicePhoneChannel(String serviceIdParam, String phoneChannelIdParam) {
+  public Response findServicePhoneChannel(String serviceIdParam, String phoneChannelIdParam, @Context Request request) {
     ServiceId serviceId = toServiceId(serviceIdParam);
     if (serviceId == null) {
       return createBadRequest(String.format(INVALID_SERVICE_ID, serviceIdParam));
@@ -160,14 +170,16 @@ public class ServicesApiImpl extends ServicesApi {
       return createBadRequest(String.format(INVALID_PHONE_CHANNEL_ID, serviceIdParam));
     }
     
-    for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
-      PhoneChannel phoneChannel = serviceChannelProvider.findPhoneChannel(serviceId, phoneChannelId);
-      if (phoneChannel != null) {
-        return Response.ok(phoneChannel)
-            .build();
-      }
+    Response notModified = httpCacheController.getNotModified(request, phoneChannelId);
+    if (notModified != null) {
+      return notModified;
     }
-    
+
+    PhoneChannel phoneChannel = serviceController.findPhoneChannel(serviceId, phoneChannelId);
+    if (phoneChannel != null) {
+      return httpCacheController.sendModified(phoneChannel, phoneChannel.getId());
+    }
+
     return Response
       .status(Status.NOT_FOUND)
       .entity(NOT_FOUND)
@@ -175,7 +187,7 @@ public class ServicesApiImpl extends ServicesApi {
   }
 
   @Override
-  public Response findServicePrintableFormChannel(String serviceIdParam, String printableFormChannelIdParam) {
+  public Response findServicePrintableFormChannel(String serviceIdParam, String printableFormChannelIdParam, @Context Request request) {
     ServiceId serviceId = toServiceId(serviceIdParam);
     if (serviceId == null) {
       return createBadRequest(String.format(INVALID_SERVICE_ID, serviceIdParam));
@@ -185,15 +197,17 @@ public class ServicesApiImpl extends ServicesApi {
     if (printableFormChannelId == null) {
       return createBadRequest(String.format(INVALID_PRINTABLE_FORM_CHANNEL_ID, serviceIdParam));
     }
-    
-    for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
-      PrintableFormChannel printableFormChannel = serviceChannelProvider.findPrintableFormChannel(serviceId, printableFormChannelId);
-      if (printableFormChannel != null) {
-        return Response.ok(printableFormChannel)
-            .build();
-      }
+
+    Response notModified = httpCacheController.getNotModified(request, printableFormChannelId);
+    if (notModified != null) {
+      return notModified;
     }
 
+    PrintableFormChannel printableFormChannel = serviceController.findPrintableFormChannel(serviceId, printableFormChannelId);
+    if (printableFormChannel != null) {
+      return httpCacheController.sendModified(printableFormChannel, printableFormChannel.getId());
+    }
+    
     return Response
       .status(Status.NOT_FOUND)
       .entity(NOT_FOUND)
@@ -201,7 +215,7 @@ public class ServicesApiImpl extends ServicesApi {
   }
 
   @Override
-  public Response findServiceServiceLocationChannel(String serviceIdParam, String serviceLocationChannelIdParam) {
+  public Response findServiceServiceLocationChannel(String serviceIdParam, String serviceLocationChannelIdParam, @Context Request request) {
     ServiceId serviceId = toServiceId(serviceIdParam);
     if (serviceId == null) {
       return createBadRequest(String.format(INVALID_SERVICE_ID, serviceIdParam));
@@ -211,13 +225,15 @@ public class ServicesApiImpl extends ServicesApi {
     if (serviceLocationChannelId == null) {
       return createBadRequest(String.format(INVALID_SERVICE_LOCATION_CHANNEL_ID, serviceIdParam));
     }
-    
-    for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
-      ServiceLocationChannel serviceLocationChannel = serviceChannelProvider.findServiceLocationChannel(serviceId, serviceLocationChannelId);
-      if (serviceLocationChannel != null) {
-        return Response.ok(serviceLocationChannel)
-            .build();
-      }
+
+    Response notModified = httpCacheController.getNotModified(request, serviceLocationChannelId);
+    if (notModified != null) {
+      return notModified;
+    }
+
+    ServiceLocationChannel serviceLocationChannel = serviceController.findServiceLocationChannel(serviceId, serviceLocationChannelId);
+    if (serviceLocationChannel != null) {
+      return httpCacheController.sendModified(serviceLocationChannel, serviceLocationChannel.getId());
     }
     
     return Response
@@ -227,7 +243,7 @@ public class ServicesApiImpl extends ServicesApi {
   }
 
   @Override
-  public Response findServiceWebPageChannel(String serviceIdParam, String webPageChannelIdParam) {
+  public Response findServiceWebPageChannel(String serviceIdParam, String webPageChannelIdParam, @Context Request request) {
     ServiceId serviceId = toServiceId(serviceIdParam);
     if (serviceId == null) {
       return createBadRequest(String.format(INVALID_SERVICE_ID, serviceIdParam));
@@ -237,13 +253,15 @@ public class ServicesApiImpl extends ServicesApi {
     if (webPageChannelId == null) {
       return createBadRequest(String.format(INVALID_WEBPAGE_CHANNEL_ID, serviceIdParam));
     }
-    
-    for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
-      WebPageChannel webPageChannel = serviceChannelProvider.findWebPageChannelChannel(serviceId, webPageChannelId);
-      if (webPageChannel != null) {
-        return Response.ok(webPageChannel)
-            .build();
-      }
+
+    Response notModified = httpCacheController.getNotModified(request, webPageChannelId);
+    if (notModified != null) {
+      return notModified;
+    }
+
+    WebPageChannel webPageChannel = serviceController.findWebPageChannel(serviceId, webPageChannelId);
+    if (webPageChannel != null) {
+      return httpCacheController.sendModified(webPageChannel, webPageChannel.getId());
     }
     
     return Response
@@ -253,7 +271,7 @@ public class ServicesApiImpl extends ServicesApi {
   }
 
   @Override
-  public Response listServiceElectronicChannels(String serviceIdParam, Long firstResult, Long maxResults) {
+  public Response listServiceElectronicChannels(String serviceIdParam, Long firstResult, Long maxResults, @Context Request request) {
     ServiceId serviceId = toServiceId(serviceIdParam);
     if (serviceId == null) {
       return createBadRequest(String.format(INVALID_SERVICE_ID, serviceIdParam));
@@ -264,22 +282,19 @@ public class ServicesApiImpl extends ServicesApi {
       return validationResponse;
     }
     
-    List<ElectronicChannel> result = new ArrayList<>();
+    List<ElectronicChannel> result = serviceController.listElectronicChannels(firstResult, maxResults, serviceId);
     
-    for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
-      result.addAll(serviceChannelProvider.listElectronicChannels(serviceId));
+    List<String> ids = httpCacheController.getEntityIds(result);
+    Response notModified = httpCacheController.getNotModified(request, ids);
+    if (notModified != null) {
+      return notModified;
     }
-    
-    int resultCount = result.size();
-    int firstIndex = firstResult == null ? 0 : Math.min(firstResult.intValue(), resultCount);
-    int toIndex = maxResults == null ? resultCount : Math.min(firstIndex + maxResults.intValue(), resultCount);
-    
-    return Response.ok(result.subList(firstIndex, toIndex))
-      .build();
+
+    return httpCacheController.sendModified(result, ids);
   }
 
   @Override
-  public Response listServicePhoneChannels(String serviceIdParam, Long firstResult, Long maxResults) {
+  public Response listServicePhoneChannels(String serviceIdParam, Long firstResult, Long maxResults, @Context Request request) {
     ServiceId serviceId = toServiceId(serviceIdParam);
     if (serviceId == null) {
       return createBadRequest(String.format(INVALID_SERVICE_ID, serviceIdParam));
@@ -290,22 +305,12 @@ public class ServicesApiImpl extends ServicesApi {
       return validationResponse;
     }
     
-    List<PhoneChannel> result = new ArrayList<>();
-    
-    for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
-      result.addAll(serviceChannelProvider.listPhoneChannels(serviceId));
-    }
-    
-    int resultCount = result.size();
-    int firstIndex = firstResult == null ? 0 : Math.min(firstResult.intValue(), resultCount);
-    int toIndex = maxResults == null ? resultCount : Math.min(firstIndex + maxResults.intValue(), resultCount);
-    
-    return Response.ok(result.subList(firstIndex, toIndex))
-      .build();
+    List<PhoneChannel> result = serviceController.listPhoneChannels(firstResult, maxResults, serviceId);
+    return Response.ok(result).build();
   }
 
   @Override
-  public Response listServicePrintableFormChannels(String serviceIdParam, Long firstResult, Long maxResults) {
+  public Response listServicePrintableFormChannels(String serviceIdParam, Long firstResult, Long maxResults, @Context Request request) {
     ServiceId serviceId = toServiceId(serviceIdParam);
     if (serviceId == null) {
       return createBadRequest(String.format(INVALID_SERVICE_ID, serviceIdParam));
@@ -316,22 +321,19 @@ public class ServicesApiImpl extends ServicesApi {
       return validationResponse;
     }
     
-    List<PrintableFormChannel> result = new ArrayList<>();
+    List<PrintableFormChannel> result = serviceController.listPrintableFormChannels(firstResult, maxResults, serviceId);
     
-    for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
-      result.addAll(serviceChannelProvider.listPrintableFormChannels(serviceId));
+    List<String> ids = httpCacheController.getEntityIds(result);
+    Response notModified = httpCacheController.getNotModified(request, ids);
+    if (notModified != null) {
+      return notModified;
     }
-    
-    int resultCount = result.size();
-    int firstIndex = firstResult == null ? 0 : Math.min(firstResult.intValue(), resultCount);
-    int toIndex = maxResults == null ? resultCount : Math.min(firstIndex + maxResults.intValue(), resultCount);
-    
-    return Response.ok(result.subList(firstIndex, toIndex))
-      .build();
+
+    return httpCacheController.sendModified(result, ids);
   }
 
   @Override
-  public Response listServiceServiceLocationChannels(String serviceIdParam, Long firstResult, Long maxResults) {
+  public Response listServiceServiceLocationChannels(String serviceIdParam, Long firstResult, Long maxResults, @Context Request request) {
     ServiceId serviceId = toServiceId(serviceIdParam);
     if (serviceId == null) {
       return createBadRequest(String.format(INVALID_SERVICE_ID, serviceIdParam));
@@ -342,22 +344,19 @@ public class ServicesApiImpl extends ServicesApi {
       return validationResponse;
     }
     
-    List<ServiceLocationChannel> result = new ArrayList<>();
+    List<ServiceLocationChannel> result = serviceController.listServiceLocationChannels(firstResult, maxResults, serviceId);
     
-    for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
-      result.addAll(serviceChannelProvider.listServiceLocationChannels(serviceId));
+    List<String> ids = httpCacheController.getEntityIds(result);
+    Response notModified = httpCacheController.getNotModified(request, ids);
+    if (notModified != null) {
+      return notModified;
     }
-    
-    int resultCount = result.size();
-    int firstIndex = firstResult == null ? 0 : Math.min(firstResult.intValue(), resultCount);
-    int toIndex = maxResults == null ? resultCount : Math.min(firstIndex + maxResults.intValue(), resultCount);
-    
-    return Response.ok(result.subList(firstIndex, toIndex))
-      .build();
+
+    return httpCacheController.sendModified(result, ids);
   }
 
   @Override
-  public Response listServiceWebPageChannels(String serviceIdParam, Long firstResult, Long maxResults) {
+  public Response listServiceWebPageChannels(String serviceIdParam, Long firstResult, Long maxResults, @Context Request request) {
     ServiceId serviceId = toServiceId(serviceIdParam);
     if (serviceId == null) {
       return createBadRequest(String.format(INVALID_SERVICE_ID, serviceIdParam));
@@ -368,44 +367,41 @@ public class ServicesApiImpl extends ServicesApi {
       return validationResponse;
     }
     
-    List<WebPageChannel> result = new ArrayList<>();
+    List<WebPageChannel> result = serviceController.listWebPageChannels(firstResult, maxResults, serviceId);
     
-    for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
-      result.addAll(serviceChannelProvider.listWebPageChannelsChannels(serviceId));
+    List<String> ids = httpCacheController.getEntityIds(result);
+    Response notModified = httpCacheController.getNotModified(request, ids);
+    if (notModified != null) {
+      return notModified;
     }
-    
-    int resultCount = result.size();
-    int firstIndex = firstResult == null ? 0 : Math.min(firstResult.intValue(), resultCount);
-    int toIndex = maxResults == null ? resultCount : Math.min(firstIndex + maxResults.intValue(), resultCount);
-    
-    return Response.ok(result.subList(firstIndex, toIndex))
-      .build();
+
+    return httpCacheController.sendModified(result, ids);
   }
 
   @Override
-  public Response updatePhoneChannel(String serviceId, String phoneChannelId, PhoneChannel body) {
+  public Response updatePhoneChannel(String serviceId, String phoneChannelId, PhoneChannel body, @Context Request request) {
     return createNotImplemented(NOT_IMPLEMENTED);
   }
 
   @Override
   public Response updatePrintableFormChannel(String serviceId, String printableFormChannelId,
-      PrintableFormChannel body) {
+      PrintableFormChannel body, @Context Request request) {
     return createNotImplemented(NOT_IMPLEMENTED);
   }
 
   @Override
-  public Response updateServiceElectronicChannel(String serviceId, String electronicChannelId, ElectronicChannel body) {
+  public Response updateServiceElectronicChannel(String serviceId, String electronicChannelId, ElectronicChannel body, @Context Request request) {
     return createNotImplemented(NOT_IMPLEMENTED);
   }
 
   @Override
   public Response updateServiceLocationChannel(String serviceId, String serviceLocationChannelId,
-      ServiceLocationChannel body) {
+      ServiceLocationChannel body, @Context Request request) {
     return createNotImplemented(NOT_IMPLEMENTED);
   }
 
   @Override
-  public Response updateWebPageChannel(String serviceId, String webPageChannelId, WebPageChannel body) {
+  public Response updateWebPageChannel(String serviceId, String webPageChannelId, WebPageChannel body, @Context Request request) {
     return createNotImplemented(NOT_IMPLEMENTED);
   }
 
@@ -467,17 +463,6 @@ public class ServicesApiImpl extends ServicesApi {
     }
     
     return null;
-  }
-  
-  private List<ServiceChannelProvider> getServiceChannelProviders() {
-    List<ServiceChannelProvider> result = new ArrayList<>();
-    
-    Iterator<ServiceChannelProvider> iterator = serviceChannelProviders.iterator();
-    while (iterator.hasNext()) {
-      result.add(iterator.next());
-    }
-    
-    return Collections.unmodifiableList(result);
   }
 }
 
