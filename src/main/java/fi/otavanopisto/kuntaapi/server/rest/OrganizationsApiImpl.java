@@ -3,6 +3,7 @@ package fi.otavanopisto.kuntaapi.server.rest;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Method;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -129,8 +130,13 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       organizations = organizationController.listOrganizations(businessName, businessCode, firstResult, maxResults);
     }
     
-    return Response.ok(organizations)
-      .build();
+    List<String> ids = getEntityIds(organizations);
+    Response notModified = httpCacheController.getNotModified(request, ids);
+    if (notModified != null) {
+      return notModified;
+    }
+
+    return httpCacheController.sendModified(organizations, ids);
   }
   
   @Override
@@ -146,7 +152,6 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   	}
   	
   	Organization organization = organizationController.findOrganization(organizationId);
-  	
   	if (organization != null) {
   	  return httpCacheController.sendModified(organization, organization.getId());
     }
@@ -1250,6 +1255,28 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     }
     
     return Collections.unmodifiableList(result);
+  }
+  
+  private List<String> getEntityIds(List<?> entities) {
+    if (entities.isEmpty()) {
+      return Collections.emptyList();
+    }
+    
+    List<String> result = new ArrayList<>(entities.size());
+    Class<? extends Object> entityClass = entities.get(0).getClass();
+    
+    try {
+      Method getter = entityClass.getMethod("getId");
+      
+      for (Object entity : entities) {
+        result.add((String) getter.invoke(entity));
+      }
+      
+    } catch (Exception e) {
+      logger.log(Level.SEVERE, "Failed to invoke getter", e);
+    }
+    
+    return Collections.emptyList();
   }
   
 }
