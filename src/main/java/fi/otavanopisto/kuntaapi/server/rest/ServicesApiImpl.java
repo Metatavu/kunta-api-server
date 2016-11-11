@@ -132,10 +132,14 @@ public class ServicesApiImpl extends ServicesApi {
       return createBadRequest(String.format(INVALID_ELECTRONIC_CHANNEL_ID, serviceIdParam));
     }
     
+    Response notModified = httpCacheController.getNotModified(request, electronicChannelId);
+    if (notModified != null) {
+      return notModified;
+    }
+
     ElectronicChannel electronicChannel = serviceController.findElectronicChannel(serviceId, electronicChannelId);
     if (electronicChannel != null) {
-      return Response.ok(electronicChannel)
-        .build();
+      return httpCacheController.sendModified(electronicChannel, electronicChannel.getId());
     }
     
     return Response
@@ -156,12 +160,16 @@ public class ServicesApiImpl extends ServicesApi {
       return createBadRequest(String.format(INVALID_PHONE_CHANNEL_ID, serviceIdParam));
     }
     
+    Response notModified = httpCacheController.getNotModified(request, phoneChannelId);
+    if (notModified != null) {
+      return notModified;
+    }
+
     PhoneChannel phoneChannel = serviceController.findPhoneChannel(serviceId, phoneChannelId);
     if (phoneChannel != null) {
-      return Response.ok(phoneChannel)
-          .build();
+      return httpCacheController.sendModified(phoneChannel, phoneChannel.getId());
     }
-    
+
     return Response
       .status(Status.NOT_FOUND)
       .entity(NOT_FOUND)
@@ -179,11 +187,15 @@ public class ServicesApiImpl extends ServicesApi {
     if (printableFormChannelId == null) {
       return createBadRequest(String.format(INVALID_PRINTABLE_FORM_CHANNEL_ID, serviceIdParam));
     }
-    
+
+    Response notModified = httpCacheController.getNotModified(request, printableFormChannelId);
+    if (notModified != null) {
+      return notModified;
+    }
+
     PrintableFormChannel printableFormChannel = serviceController.findPrintableFormChannel(serviceId, printableFormChannelId);
     if (printableFormChannel != null) {
-      return Response.ok(printableFormChannel)
-          .build();
+      return httpCacheController.sendModified(printableFormChannel, printableFormChannel.getId());
     }
     
     return Response
@@ -203,11 +215,15 @@ public class ServicesApiImpl extends ServicesApi {
     if (serviceLocationChannelId == null) {
       return createBadRequest(String.format(INVALID_SERVICE_LOCATION_CHANNEL_ID, serviceIdParam));
     }
-    
+
+    Response notModified = httpCacheController.getNotModified(request, serviceLocationChannelId);
+    if (notModified != null) {
+      return notModified;
+    }
+
     ServiceLocationChannel serviceLocationChannel = serviceController.findServiceLocationChannel(serviceId, serviceLocationChannelId);
     if (serviceLocationChannel != null) {
-      return Response.ok(serviceLocationChannel)
-          .build();
+      return httpCacheController.sendModified(serviceLocationChannel, serviceLocationChannel.getId());
     }
     
     return Response
@@ -227,11 +243,15 @@ public class ServicesApiImpl extends ServicesApi {
     if (webPageChannelId == null) {
       return createBadRequest(String.format(INVALID_WEBPAGE_CHANNEL_ID, serviceIdParam));
     }
-    
+
+    Response notModified = httpCacheController.getNotModified(request, webPageChannelId);
+    if (notModified != null) {
+      return notModified;
+    }
+
     WebPageChannel webPageChannel = serviceController.findWebPageChannel(serviceId, webPageChannelId);
     if (webPageChannel != null) {
-      return Response.ok(webPageChannel)
-          .build();
+      return httpCacheController.sendModified(webPageChannel, webPageChannel.getId());
     }
     
     return Response
@@ -301,7 +321,6 @@ public class ServicesApiImpl extends ServicesApi {
     }
     
     List<ServiceLocationChannel> result = serviceController.listServiceLocationChannels(firstResult, maxResults, serviceId);
-    
     return Response.ok(result).build();
   }
 
