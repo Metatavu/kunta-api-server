@@ -55,6 +55,9 @@ public class ServicesApiImpl extends ServicesApi {
   
   @Inject
   private ServiceController serviceController;
+
+  @Inject
+  private HttpCacheController httpCacheController;
   
   @Inject
   private Instance<ServiceChannelProvider> serviceChannelProviders;
@@ -68,16 +71,17 @@ public class ServicesApiImpl extends ServicesApi {
   public Response findService(String serviceIdParam, @Context Request request) {
     ServiceId serviceId = toServiceId(serviceIdParam);
     
+    Response notModified = httpCacheController.getNotModified(request, serviceId);
+    if (notModified != null) {
+      return notModified;
+    }
+
     Service service = serviceController.findService(serviceId);
     if (service != null) {
-      return Response.ok(service)
-        .build();
+      return httpCacheController.sendModified(service, service.getId());
     }
     
-    return Response
-        .status(Status.NOT_FOUND)
-        .entity(NOT_FOUND)
-        .build();
+    return createNotFound(NOT_FOUND);
   }
   
   @Override

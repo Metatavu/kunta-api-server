@@ -3,6 +3,7 @@ package fi.otavanopisto.kuntaapi.server.integrations.ptv;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
@@ -18,6 +19,12 @@ import javax.enterprise.event.Event;
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 
+import org.apache.commons.codec.digest.DigestUtils;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
 import fi.otavanopisto.kuntaapi.server.discover.ServiceIdUpdateRequest;
@@ -48,6 +55,9 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
   @Inject
   private IdentifierController identifierController;
 
+  @Inject
+  private ModificationHashCache modificationHashCache;
+  
   @Resource
   private TimerService timerService;
 
@@ -120,10 +130,24 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
         identifier = identifierController.createIdentifier(serviceId);
       }
       
-      index(identifier.getKuntaApiId(), response.getResponse());
+      Service service = response.getResponse();
+      String hash = createHash(service);
+      modificationHashCache.put(identifier.getKuntaApiId(), hash);
+      
+      index(identifier.getKuntaApiId(), service);
     } else {
       logger.warning(String.format("Service %s processing failed on [%d] %s", serviceId.getId(), response.getStatus(), response.getMessage()));
     }
+  }
+  
+  private String createHash(Service service) {
+    try {
+      return DigestUtils.md5Hex(new ObjectMapper().writeValueAsBytes(service));
+    } catch (JsonProcessingException e) {
+      logger.log(Level.SEVERE, "Failed to create hash", e);
+    }
+    
+    return null;
   }
 
   private void index(String serviceId, Service service) {
