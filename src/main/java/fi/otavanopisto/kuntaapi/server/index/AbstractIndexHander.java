@@ -11,6 +11,7 @@ import javax.inject.Inject;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
+import org.elasticsearch.client.Client;
 import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.common.transport.InetSocketTransportAddress;
@@ -44,7 +45,7 @@ public abstract class AbstractIndexHander {
     String[] hosts = systemSettingController.getSettingValues(KuntaApiConsts.SYSTEM_SETTING_ELASTIC_SEARCH_HOSTS, DEFAULT_HOSTS);
     String clusterName = systemSettingController.getSettingValue(KuntaApiConsts.SYSTEM_SETTING_ELASTIC_CLUSTER_NAME, DEFAULT_CLUSTERNAME);
     index = systemSettingController.getSettingValue(KuntaApiConsts.SYSTEM_SETTING_ELASTIC_INDEX, DEFAULT_INDEX);
-    client = createClient(hosts, clusterName);
+    client = createTransportClient(hosts, clusterName);
     setup();
   }
   
@@ -61,7 +62,7 @@ public abstract class AbstractIndexHander {
   
   public abstract void setup();
   
-  protected TransportClient getClient() {
+  protected Client getClient() {
     return client;
   }
   
@@ -80,13 +81,11 @@ public abstract class AbstractIndexHander {
     return index;
   }
   
-  private TransportClient createClient(String[] hosts, String clusterName) {
+  private TransportClient createTransportClient(String[] hosts, String clusterName) {
     try {
       TransportClient transportClient;
       
       Settings settings = Settings.builder()
-        .put("client.transport.ignore_cluster_name", true)
-        .put("client.transport.ping_timeout", "60s")
         .put("cluster.name", clusterName)
         .build();
       
