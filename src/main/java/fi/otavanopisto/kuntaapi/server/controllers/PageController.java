@@ -11,11 +11,13 @@ import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
 
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
+import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.index.PageSearcher;
 import fi.otavanopisto.kuntaapi.server.index.SearchResult;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
+import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.PageProvider;
 import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
 import fi.otavanopisto.kuntaapi.server.rest.model.LocalizedValue;
@@ -26,6 +28,9 @@ public class PageController {
   
   @Inject
   private Logger logger;
+  
+  @Inject
+  private IdController idController;
   
   @Inject
   private PageSearcher pageSearcher;
@@ -53,7 +58,13 @@ public class PageController {
   }
 
   public List<Page> searchPages(OrganizationId organizationId, String queryString, Long firstResult, Long maxResults) {
-    SearchResult<PageId> searchResult = pageSearcher.searchPages(organizationId.getId(), queryString, firstResult, maxResults);
+    OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(organizationId, KuntaApiConsts.IDENTIFIER_NAME);
+    if (kuntaApiOrganizationId == null) {
+      logger.severe(String.format("Failed to translate organization %s into Kunta API id", organizationId.toString()));
+      return Collections.emptyList();
+    }
+    
+    SearchResult<PageId> searchResult = pageSearcher.searchPages(kuntaApiOrganizationId.getId(), queryString, firstResult, maxResults);
     if (searchResult != null) {
       List<Page> result = new ArrayList<>(searchResult.getResult().size());
       
