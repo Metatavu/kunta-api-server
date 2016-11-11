@@ -1,7 +1,5 @@
 package fi.otavanopisto.kuntaapi.server.index;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 public class IndexablePage implements Indexable {
   
   @Field (index = "not_analyzed", store = true)
@@ -27,11 +25,6 @@ public class IndexablePage implements Indexable {
   @Override
   public String getType() {
     return "page";
-  }
-  
-  @JsonIgnore
-  public String getLanguageAnalyzer() {
-    return AnalyzerMapper.getLanguageAnalyzer(language);
   }
 
   public String getPageId() {
