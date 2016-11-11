@@ -3,7 +3,6 @@ package fi.otavanopisto.kuntaapi.server.integrations.ptv;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
@@ -18,11 +17,6 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Event;
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
-
-import org.apache.commons.codec.digest.DigestUtils;
-
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
@@ -129,8 +123,7 @@ public class PtvOrganizationEntityUpdater extends EntityUpdater {
       }
       
       Organization organization = response.getResponse();
-      String hash = createHash(organization);
-      modificationHashCache.put(identifier.getKuntaApiId(), hash);
+      modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(organization));
       
       index(identifier.getKuntaApiId(), organization);
     } else {
@@ -138,16 +131,6 @@ public class PtvOrganizationEntityUpdater extends EntityUpdater {
     }
   }
   
-  private String createHash(Organization organization) {
-    try {
-      return DigestUtils.md5Hex(new ObjectMapper().writeValueAsBytes(organization));
-    } catch (JsonProcessingException e) {
-      logger.log(Level.SEVERE, "Failed to create hash", e);
-    }
-    
-    return null;
-  }
-
   private void index(String organizationId, Organization organization) {
     IndexableOrganization indexableOrganization = new IndexableOrganization();
     indexableOrganization.setBusinessCode(organization.getBusinessCode());
