@@ -1,4 +1,4 @@
-package fi.otavanopisto.kuntaapi.server.rest;
+package fi.otavanopisto.kuntaapi.server.controllers;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
