@@ -9,6 +9,8 @@ import javax.ejb.Stateful;
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.Request;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
@@ -58,12 +60,12 @@ public class ServicesApiImpl extends ServicesApi {
   private Instance<ServiceChannelProvider> serviceChannelProviders;
   
   @Override
-  public Response createService(Service body) {
+  public Response createService(Service body, @Context Request request) {
     return createNotImplemented(NOT_IMPLEMENTED);
   }
   
   @Override
-  public Response findService(String serviceIdParam) {
+  public Response findService(String serviceIdParam, @Context Request request) {
     ServiceId serviceId = toServiceId(serviceIdParam);
     
     Service service = serviceController.findService(serviceId);
@@ -79,7 +81,7 @@ public class ServicesApiImpl extends ServicesApi {
   }
   
   @Override
-  public Response listServices(String search, Long firstResult, Long maxResults) {
+  public Response listServices(String search, Long firstResult, Long maxResults, @Context Request request) {
     Response validationResponse = validateListLimitParams(firstResult, maxResults);
     if (validationResponse != null) {
       return validationResponse;
@@ -93,37 +95,37 @@ public class ServicesApiImpl extends ServicesApi {
   }
   
   @Override
-  public Response updateService(String serviceId, Service body) {
+  public Response updateService(String serviceId, Service body, @Context Request request) {
     return createNotImplemented(NOT_IMPLEMENTED);
   }
   
   @Override
-  public Response createServiceElectronicChannel(String serviceId, ElectronicChannel body) {
+  public Response createServiceElectronicChannel(String serviceId, ElectronicChannel body, @Context Request request) {
     return createNotImplemented(NOT_IMPLEMENTED);
   }
 
   @Override
-  public Response createServicePhoneChannel(String serviceId, PhoneChannel body) {
+  public Response createServicePhoneChannel(String serviceId, PhoneChannel body, @Context Request request) {
     return createNotImplemented(NOT_IMPLEMENTED);
   }
 
   @Override
-  public Response createServicePrintableFormChannel(String serviceId, PrintableFormChannel body) {
+  public Response createServicePrintableFormChannel(String serviceId, PrintableFormChannel body, @Context Request request) {
     return createNotImplemented(NOT_IMPLEMENTED);
   }
 
   @Override
-  public Response createServiceServiceLocationChannel(String serviceId, ServiceLocationChannel body) {
+  public Response createServiceServiceLocationChannel(String serviceId, ServiceLocationChannel body, @Context Request request) {
     return createNotImplemented(NOT_IMPLEMENTED);
   }
 
   @Override
-  public Response createServiceWebPageChannel(String serviceId, WebPageChannel body) {
+  public Response createServiceWebPageChannel(String serviceId, WebPageChannel body, @Context Request request) {
     return createNotImplemented(NOT_IMPLEMENTED);
   }
 
   @Override
-  public Response findServiceElectronicChannel(String serviceIdParam, String electronicChannelIdParam) {
+  public Response findServiceElectronicChannel(String serviceIdParam, String electronicChannelIdParam, @Context Request request) {
     ServiceId serviceId = toServiceId(serviceIdParam);
     if (serviceId == null) {
       return createBadRequest(String.format(INVALID_SERVICE_ID, serviceIdParam));
@@ -149,7 +151,7 @@ public class ServicesApiImpl extends ServicesApi {
   }
 
   @Override
-  public Response findServicePhoneChannel(String serviceIdParam, String phoneChannelIdParam) {
+  public Response findServicePhoneChannel(String serviceIdParam, String phoneChannelIdParam, @Context Request request) {
     ServiceId serviceId = toServiceId(serviceIdParam);
     if (serviceId == null) {
       return createBadRequest(String.format(INVALID_SERVICE_ID, serviceIdParam));
@@ -175,7 +177,7 @@ public class ServicesApiImpl extends ServicesApi {
   }
 
   @Override
-  public Response findServicePrintableFormChannel(String serviceIdParam, String printableFormChannelIdParam) {
+  public Response findServicePrintableFormChannel(String serviceIdParam, String printableFormChannelIdParam, @Context Request request) {
     ServiceId serviceId = toServiceId(serviceIdParam);
     if (serviceId == null) {
       return createBadRequest(String.format(INVALID_SERVICE_ID, serviceIdParam));
@@ -201,7 +203,7 @@ public class ServicesApiImpl extends ServicesApi {
   }
 
   @Override
-  public Response findServiceServiceLocationChannel(String serviceIdParam, String serviceLocationChannelIdParam) {
+  public Response findServiceServiceLocationChannel(String serviceIdParam, String serviceLocationChannelIdParam, @Context Request request) {
     ServiceId serviceId = toServiceId(serviceIdParam);
     if (serviceId == null) {
       return createBadRequest(String.format(INVALID_SERVICE_ID, serviceIdParam));
@@ -227,7 +229,7 @@ public class ServicesApiImpl extends ServicesApi {
   }
 
   @Override
-  public Response findServiceWebPageChannel(String serviceIdParam, String webPageChannelIdParam) {
+  public Response findServiceWebPageChannel(String serviceIdParam, String webPageChannelIdParam, @Context Request request) {
     ServiceId serviceId = toServiceId(serviceIdParam);
     if (serviceId == null) {
       return createBadRequest(String.format(INVALID_SERVICE_ID, serviceIdParam));
@@ -253,7 +255,7 @@ public class ServicesApiImpl extends ServicesApi {
   }
 
   @Override
-  public Response listServiceElectronicChannels(String serviceIdParam, Long firstResult, Long maxResults) {
+  public Response listServiceElectronicChannels(String serviceIdParam, Long firstResult, Long maxResults, @Context Request request) {
     ServiceId serviceId = toServiceId(serviceIdParam);
     if (serviceId == null) {
       return createBadRequest(String.format(INVALID_SERVICE_ID, serviceIdParam));
@@ -279,7 +281,7 @@ public class ServicesApiImpl extends ServicesApi {
   }
 
   @Override
-  public Response listServicePhoneChannels(String serviceIdParam, Long firstResult, Long maxResults) {
+  public Response listServicePhoneChannels(String serviceIdParam, Long firstResult, Long maxResults, @Context Request request) {
     ServiceId serviceId = toServiceId(serviceIdParam);
     if (serviceId == null) {
       return createBadRequest(String.format(INVALID_SERVICE_ID, serviceIdParam));
@@ -305,7 +307,7 @@ public class ServicesApiImpl extends ServicesApi {
   }
 
   @Override
-  public Response listServicePrintableFormChannels(String serviceIdParam, Long firstResult, Long maxResults) {
+  public Response listServicePrintableFormChannels(String serviceIdParam, Long firstResult, Long maxResults, @Context Request request) {
     ServiceId serviceId = toServiceId(serviceIdParam);
     if (serviceId == null) {
       return createBadRequest(String.format(INVALID_SERVICE_ID, serviceIdParam));
@@ -331,7 +333,7 @@ public class ServicesApiImpl extends ServicesApi {
   }
 
   @Override
-  public Response listServiceServiceLocationChannels(String serviceIdParam, Long firstResult, Long maxResults) {
+  public Response listServiceServiceLocationChannels(String serviceIdParam, Long firstResult, Long maxResults, @Context Request request) {
     ServiceId serviceId = toServiceId(serviceIdParam);
     if (serviceId == null) {
       return createBadRequest(String.format(INVALID_SERVICE_ID, serviceIdParam));
@@ -357,7 +359,7 @@ public class ServicesApiImpl extends ServicesApi {
   }
 
   @Override
-  public Response listServiceWebPageChannels(String serviceIdParam, Long firstResult, Long maxResults) {
+  public Response listServiceWebPageChannels(String serviceIdParam, Long firstResult, Long maxResults, @Context Request request) {
     ServiceId serviceId = toServiceId(serviceIdParam);
     if (serviceId == null) {
       return createBadRequest(String.format(INVALID_SERVICE_ID, serviceIdParam));
@@ -383,29 +385,29 @@ public class ServicesApiImpl extends ServicesApi {
   }
 
   @Override
-  public Response updatePhoneChannel(String serviceId, String phoneChannelId, PhoneChannel body) {
+  public Response updatePhoneChannel(String serviceId, String phoneChannelId, PhoneChannel body, @Context Request request) {
     return createNotImplemented(NOT_IMPLEMENTED);
   }
 
   @Override
   public Response updatePrintableFormChannel(String serviceId, String printableFormChannelId,
-      PrintableFormChannel body) {
+      PrintableFormChannel body, @Context Request request) {
     return createNotImplemented(NOT_IMPLEMENTED);
   }
 
   @Override
-  public Response updateServiceElectronicChannel(String serviceId, String electronicChannelId, ElectronicChannel body) {
+  public Response updateServiceElectronicChannel(String serviceId, String electronicChannelId, ElectronicChannel body, @Context Request request) {
     return createNotImplemented(NOT_IMPLEMENTED);
   }
 
   @Override
   public Response updateServiceLocationChannel(String serviceId, String serviceLocationChannelId,
-      ServiceLocationChannel body) {
+      ServiceLocationChannel body, @Context Request request) {
     return createNotImplemented(NOT_IMPLEMENTED);
   }
 
   @Override
-  public Response updateWebPageChannel(String serviceId, String webPageChannelId, WebPageChannel body) {
+  public Response updateWebPageChannel(String serviceId, String webPageChannelId, WebPageChannel body, @Context Request request) {
     return createNotImplemented(NOT_IMPLEMENTED);
   }
 

@@ -3,6 +3,7 @@ package fi.otavanopisto.kuntaapi.server.integrations.ptv;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
@@ -18,6 +19,12 @@ import javax.enterprise.event.Event;
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 
+import org.apache.commons.codec.digest.DigestUtils;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
 import fi.otavanopisto.kuntaapi.server.discover.OrganizationIdUpdateRequest;
@@ -45,6 +52,9 @@ public class PtvOrganizationEntityUpdater extends EntityUpdater {
   
   @Inject
   private IdentifierController identifierController;
+  
+  @Inject
+  private ModificationHashCache modificationHashCache;
   
   @Inject
   private Event<IndexRequest> indexRequest;
@@ -118,10 +128,24 @@ public class PtvOrganizationEntityUpdater extends EntityUpdater {
         identifier = identifierController.createIdentifier(organizationId);
       }
       
-      index(identifier.getKuntaApiId(), response.getResponse());
+      Organization organization = response.getResponse();
+      String hash = createHash(organization);
+      modificationHashCache.put(identifier.getKuntaApiId(), hash);
+      
+      index(identifier.getKuntaApiId(), organization);
     } else {
       logger.warning(String.format("Organization %s processing failed on [%d] %s", organizationId.getId(), response.getStatus(), response.getMessage()));
     }
+  }
+  
+  private String createHash(Organization organization) {
+    try {
+      return DigestUtils.md5Hex(new ObjectMapper().writeValueAsBytes(organization));
+    } catch (JsonProcessingException e) {
+      logger.log(Level.SEVERE, "Failed to create hash", e);
+    }
+    
+    return null;
   }
 
   private void index(String organizationId, Organization organization) {
