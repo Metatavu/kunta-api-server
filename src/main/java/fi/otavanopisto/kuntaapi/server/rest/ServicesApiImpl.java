@@ -83,11 +83,20 @@ public class ServicesApiImpl extends ServicesApi {
       return validationResponse;
     }
     
+    List<Service> services;
     if (search == null) {
-      return Response.ok(serviceController.listServices(firstResult, maxResults)).build();
+      services = serviceController.listServices(firstResult, maxResults);
     } else {
-      return Response.ok(serviceController.searchServices(search, firstResult, maxResults)).build();
+      services = serviceController.searchServices(search, firstResult, maxResults);
     }
+    
+    List<String> ids = httpCacheController.getEntityIds(services);
+    Response notModified = httpCacheController.getNotModified(request, ids);
+    if (notModified != null) {
+      return notModified;
+    }
+
+    return httpCacheController.sendModified(services, ids);
   }
   
   @Override
@@ -273,7 +282,14 @@ public class ServicesApiImpl extends ServicesApi {
     }
     
     List<ElectronicChannel> result = serviceController.listElectronicChannels(firstResult, maxResults, serviceId);
-    return Response.ok(result).build();
+    
+    List<String> ids = httpCacheController.getEntityIds(result);
+    Response notModified = httpCacheController.getNotModified(request, ids);
+    if (notModified != null) {
+      return notModified;
+    }
+
+    return httpCacheController.sendModified(result, ids);
   }
 
   @Override
@@ -305,7 +321,14 @@ public class ServicesApiImpl extends ServicesApi {
     }
     
     List<PrintableFormChannel> result = serviceController.listPrintableFormChannels(firstResult, maxResults, serviceId);
-    return Response.ok(result).build();
+    
+    List<String> ids = httpCacheController.getEntityIds(result);
+    Response notModified = httpCacheController.getNotModified(request, ids);
+    if (notModified != null) {
+      return notModified;
+    }
+
+    return httpCacheController.sendModified(result, ids);
   }
 
   @Override
@@ -321,7 +344,14 @@ public class ServicesApiImpl extends ServicesApi {
     }
     
     List<ServiceLocationChannel> result = serviceController.listServiceLocationChannels(firstResult, maxResults, serviceId);
-    return Response.ok(result).build();
+    
+    List<String> ids = httpCacheController.getEntityIds(result);
+    Response notModified = httpCacheController.getNotModified(request, ids);
+    if (notModified != null) {
+      return notModified;
+    }
+
+    return httpCacheController.sendModified(result, ids);
   }
 
   @Override
@@ -337,7 +367,14 @@ public class ServicesApiImpl extends ServicesApi {
     }
     
     List<WebPageChannel> result = serviceController.listWebPageChannels(firstResult, maxResults, serviceId);
-    return Response.ok(result).build();
+    
+    List<String> ids = httpCacheController.getEntityIds(result);
+    Response notModified = httpCacheController.getNotModified(request, ids);
+    if (notModified != null) {
+      return notModified;
+    }
+
+    return httpCacheController.sendModified(result, ids);
   }
 
   @Override

@@ -1,5 +1,8 @@
 package fi.otavanopisto.kuntaapi.server.rest;
 
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -97,6 +100,29 @@ public class HttpCacheController {
       .cacheControl(cacheControl)
       .tag(tag)
       .build();
+  }
+  
+  public List<String> getEntityIds(List<?> entities) {
+    if (entities.isEmpty()) {
+      return Collections.emptyList();
+    }
+    
+    List<String> result = new ArrayList<>(entities.size());
+    Class<? extends Object> entityClass = entities.get(0).getClass();
+    
+    try {
+      Method getter = entityClass.getMethod("getId");
+      
+      for (Object entity : entities) {
+        result.add((String) getter.invoke(entity));
+      }
+      
+      return result;
+    } catch (Exception e) {
+      logger.log(Level.SEVERE, "Failed to invoke getter", e);
+    }
+    
+    return Collections.emptyList();
   }
   
   private EntityTag getEntityTag(String id) {

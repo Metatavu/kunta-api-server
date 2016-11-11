@@ -3,7 +3,6 @@ package fi.otavanopisto.kuntaapi.server.rest;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.lang.reflect.Method;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -130,7 +129,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       organizations = organizationController.listOrganizations(businessName, businessCode, firstResult, maxResults);
     }
     
-    List<String> ids = getEntityIds(organizations);
+    List<String> ids = httpCacheController.getEntityIds(organizations);
     Response notModified = httpCacheController.getNotModified(request, ids);
     if (notModified != null) {
       return notModified;
@@ -758,7 +757,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     PageId parentId = onlyRootPages ? null : toPageId(parentIdParam);
     
     List<Page> result = listOrganizationPages(organizationId, onlyRootPages, parentId, path, search, firstResult, maxResults);
-    List<String> ids = getEntityIds(result);
+    List<String> ids = httpCacheController.getEntityIds(result);
     Response notModified = httpCacheController.getNotModified(request, ids);
     if (notModified != null) {
       return notModified;
@@ -1272,29 +1271,6 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     }
     
     return Collections.unmodifiableList(result);
-  }
-  
-  private List<String> getEntityIds(List<?> entities) {
-    if (entities.isEmpty()) {
-      return Collections.emptyList();
-    }
-    
-    List<String> result = new ArrayList<>(entities.size());
-    Class<? extends Object> entityClass = entities.get(0).getClass();
-    
-    try {
-      Method getter = entityClass.getMethod("getId");
-      
-      for (Object entity : entities) {
-        result.add((String) getter.invoke(entity));
-      }
-      
-      return result;
-    } catch (Exception e) {
-      logger.log(Level.SEVERE, "Failed to invoke getter", e);
-    }
-    
-    return Collections.emptyList();
   }
   
 }
