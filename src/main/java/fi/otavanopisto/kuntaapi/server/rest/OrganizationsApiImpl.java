@@ -763,7 +763,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       PageId parentId = onlyRootPages ? null : toPageId(parentIdParam);
       result = pageController.listPages(organizationId, path, onlyRootPages, parentId, firstResult, maxResults);
     }
-    
+   
     return Response.ok(result)
       .build();
   }
@@ -779,10 +779,15 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     if (pageId == null) {
       return createNotFound(NOT_FOUND);
     }
+
+    Response notModified = httpCacheController.getNotModified(request, pageId);
+    if (notModified != null) {
+      return notModified;
+    }
     
     Page page = pageController.findPage(organizationId, pageId);
     if (page != null) {
-      return Response.ok(page).build();
+      return httpCacheController.sendModified(page, page.getId());
     }
     
     return createNotFound(NOT_FOUND);
@@ -799,10 +804,15 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     if (pageId == null) {
       return createNotFound(NOT_FOUND);
     }
+
+    Response notModified = httpCacheController.getNotModified(request, pageId);
+    if (notModified != null) {
+      return notModified;
+    }
     
     List<LocalizedValue> pageContents = pageController.getPageContents(organizationId, pageId);
     if (pageContents != null) {
-      return Response.ok(pageContents).build();
+      return httpCacheController.sendModified(pageContents, pageId.getId());
     }
     
     return createNotFound(NOT_FOUND);

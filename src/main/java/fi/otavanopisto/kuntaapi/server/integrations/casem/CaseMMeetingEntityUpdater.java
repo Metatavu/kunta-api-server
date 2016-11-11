@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
@@ -35,9 +34,6 @@ public class CaseMMeetingEntityUpdater extends EntityUpdater {
 
   @Resource
   private TimerService timerService;
-
-  @Inject
-  private Logger logger;
   
   private boolean stopped;
   
@@ -73,7 +69,6 @@ public class CaseMMeetingEntityUpdater extends EntityUpdater {
   @Asynchronous
   public void onCaseMMeetingDataUpdateRequest(@Observes CaseMMeetingDataUpdateRequest event) {
     if (!stopped) {
-      logger.info(String.format(" < Scheduled update for %s", event.getMeetingData().getMeetingPageId().toString()));
       queue.add(event.getMeetingData());
     }
   }
