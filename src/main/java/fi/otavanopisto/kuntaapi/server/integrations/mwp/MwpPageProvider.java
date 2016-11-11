@@ -286,13 +286,13 @@ public class MwpPageProvider extends AbstractMwpProvider implements PageProvider
     PageId kuntaApiParentId = null;
     
     if (mwpPage.getParent() != null && mwpPage.getParent() > 0) {
-      PageId mwpParentId = translatePageId(mwpPage.getParent());
+      PageId mwpParentId = new PageId(MwpConsts.IDENTIFIER_NAME,String.valueOf(mwpPage.getParent()));
       kuntaApiParentId = idController.translatePageId(mwpParentId, KuntaApiConsts.IDENTIFIER_NAME);
       if (kuntaApiParentId == null) {
         logger.info(String.format("Found new page %s", mwpParentId.getId()));
         Identifier newIdentifier = identifierController.createIdentifier(mwpParentId);
         kuntaApiParentId = new PageId(KuntaApiConsts.IDENTIFIER_NAME, newIdentifier.getKuntaApiId());
-      }
+      } 
     }
     
     page.setTitles(translateLocalized(mwpPage.getTitle().getRendered()));

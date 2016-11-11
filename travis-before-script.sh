@@ -7,4 +7,9 @@ if [ ! -f sonar-scanner/bin/sonar-scanner ]; then
   mv sonar-scanner-2.8 sonar-scanner
 fi;
 
+if [ ! -f elasticsearch-5.0.0 ]; then
+  curl -sS https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.0.0.tar.gz|tar -xz
+fi;
 
+elasticsearch-5.0.0/bin/elasticsearch -V
+elasticsearch-5.0.0/bin/elasticsearch -E cluster.name=elasticsearch -E path.data=/tmp/ -d -v

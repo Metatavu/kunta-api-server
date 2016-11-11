@@ -47,6 +47,8 @@ import fi.otavanopisto.kuntaapi.server.freemarker.FreemarkerRenderer;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
+import fi.otavanopisto.kuntaapi.server.index.IndexRequest;
+import fi.otavanopisto.kuntaapi.server.index.IndexablePage;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.casem.model.Councilmen;
 import fi.otavanopisto.kuntaapi.server.integrations.casem.model.HistoryTopic;
@@ -115,7 +117,10 @@ public class CaseMCacheUpdater {
   
   @Inject
   private IdentifierController identifierController;
-  
+
+  @Inject
+  private Event<IndexRequest> indexRequest;
+
   private Map<PageId, PageId> discoveredPageIds;
 
   @PostConstruct
@@ -180,17 +185,21 @@ public class CaseMCacheUpdater {
       Page meetingItemPage = translateContent(organizationId, meetingPage, meetingItemContent, itemLink.getText(), itemLink.getSlug());
       PageId meetingItemPageId = new PageId(KuntaApiConsts.IDENTIFIER_NAME, meetingItemPage.getId());
       
-      caseMCache.cachePageContents(organizationId, meetingItemPageId, renderContentMeetingItem(createMeetingItemModel(downloadUrl, meetingTitle, memoApproved, itemExtendedProperties), locale));
+      String meetingItemPageContents = renderContentMeetingItem(createMeetingItemModel(downloadUrl, meetingTitle, memoApproved, itemExtendedProperties), locale);
+      caseMCache.cachePageContents(organizationId, meetingItemPageId, meetingItemPageContents);
       caseMCache.cacheNode(organizationId, meetingItemPage);
-      
+      indexRequest.fire(new IndexRequest(createIndexablePage(organizationId, meetingItemPageId, locale.getLanguage(), meetingItemPageContents, itemLink.getText())));
+
       itemLinks.add(itemLink);
     }
     
     Collections.sort(itemLinks, (MeetingItemLink o1, MeetingItemLink o2) -> o1.getArticle().compareTo(o2.getArticle()));
     
     Meeting meeting = createMeetingModel(downloadUrl, meetingTitle, memoApproved, itemLinks, meetingExtendedProperties);
-    caseMCache.cachePageContents(organizationId, meetingPageId, renderContentMeeting(meeting, locale));
-    
+    String meetingPageContents = renderContentMeeting(meeting, locale);
+    caseMCache.cachePageContents(organizationId, meetingPageId, meetingPageContents);
+    indexRequest.fire(new IndexRequest(createIndexablePage(organizationId, meetingPageId, locale.getLanguage(), meetingPageContents, meetingTitle)));
+
     logger.info(String.format("Done updating CaseM meeting %s", meetingPageId.toString()));
   }
   
@@ -490,6 +499,7 @@ public class CaseMCacheUpdater {
     return result;
   }
 
+  @SuppressWarnings ("squid:MethodCyclomaticComplexity")
   private void parseCouncilman(Councilmen result, String[] line) {
     Participant participant = new Participant();
   
@@ -845,6 +855,29 @@ public class CaseMCacheUpdater {
     return CaseMConsts.DEFAULT_LANGUAGE;
   }
   
+  private IndexablePage createIndexablePage(OrganizationId organizationId, PageId pageId, String language, String content, String title) {
+    OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(organizationId, KuntaApiConsts.IDENTIFIER_NAME);
+    if (kuntaApiOrganizationId == null) {
+      logger.severe(String.format("Failed to translate organizationId %s into KuntaAPI id", organizationId.toString()));
+      return null;
+    }
+    
+    PageId kuntaApiPageId = translatePageId(pageId, false);
+    if (kuntaApiPageId == null) {
+      logger.severe(String.format("Failed to translate pageId %s into KuntaAPI id", pageId.toString()));
+      return null;
+    }
+    
+    IndexablePage indexablePage = new IndexablePage();
+    indexablePage.setContent(content);
+    indexablePage.setLanguage(language);
+    indexablePage.setOrganizationId(kuntaApiOrganizationId.getId());
+    indexablePage.setPageId(kuntaApiPageId.getId());
+    indexablePage.setTitle(title);
+    
+    return indexablePage;
+  }
+  
   private class NodeComparator implements Comparator<Node> {
     @Override
     public int compare(Node node1, Node node2) {
@@ -863,3 +896,6 @@ public class CaseMCacheUpdater {
   }
   
 }
+
+  
+  

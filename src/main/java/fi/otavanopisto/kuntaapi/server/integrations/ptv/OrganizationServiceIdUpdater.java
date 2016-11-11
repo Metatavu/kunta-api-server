@@ -79,6 +79,10 @@ public class OrganizationServiceIdUpdater extends EntityUpdater {
   
   public void onOrganizationIdUpdateRequest(@Observes OrganizationIdUpdateRequest event) {
     if (!stopped) {
+      if (!PtvConsts.IDENTIFIFER_NAME.equals(event.getId().getSource())) {
+        return;
+      }
+      
       if (event.isPriority()) {
         queue.remove(event.getId());
         queue.add(0, event.getId());
@@ -94,14 +98,7 @@ public class OrganizationServiceIdUpdater extends EntityUpdater {
   public void timeout(Timer timer) {
     if (!stopped) {
       if (!queue.isEmpty()) {
-        OrganizationId organizationId = queue.iterator().next();
-        if (!queue.remove(organizationId)) {
-          logger.warning(String.format("Could not remove %s from queue", organizationId));
-        }
-        
-        if (PtvConsts.IDENTIFIFER_NAME.equals(organizationId.getSource())) {
-          updateOrganizationServiceIds(organizationId);          
-        }        
+        updateOrganizationServiceIds(queue.remove(0));          
       }
 
       startTimer(SystemUtils.inTestMode() ? 1000 : TIMER_INTERVAL);

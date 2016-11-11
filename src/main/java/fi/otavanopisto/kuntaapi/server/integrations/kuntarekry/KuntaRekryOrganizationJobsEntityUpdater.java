@@ -99,7 +99,7 @@ public class KuntaRekryOrganizationJobsEntityUpdater extends EntityUpdater {
   public void timeout(Timer timer) {
     if (!stopped) {
       if (!queue.isEmpty()) {
-        updateOrganizationJobs(queue.iterator().next());          
+        updateOrganizationJobs(queue.remove(0));          
       }
 
       startTimer(SystemUtils.inTestMode() ? 1000 : TIMER_INTERVAL);

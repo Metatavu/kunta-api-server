@@ -14,6 +14,7 @@ import javax.ejb.Timer;
 import javax.ejb.TimerConfig;
 import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.event.Event;
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 
@@ -21,6 +22,8 @@ import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
 import fi.otavanopisto.kuntaapi.server.discover.OrganizationIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.index.IndexRequest;
+import fi.otavanopisto.kuntaapi.server.index.IndexableOrganization;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.system.SystemUtils;
 import fi.otavanopisto.restfulptv.client.ApiResponse;
@@ -42,6 +45,9 @@ public class PtvOrganizationEntityUpdater extends EntityUpdater {
   
   @Inject
   private IdentifierController identifierController;
+  
+  @Inject
+  private Event<IndexRequest> indexRequest;
 
   @Resource
   private TimerService timerService;
@@ -78,6 +84,10 @@ public class PtvOrganizationEntityUpdater extends EntityUpdater {
   
   public void onOrganizationIdUpdateRequest(@Observes OrganizationIdUpdateRequest event) {
     if (!stopped) {
+      if (!PtvConsts.IDENTIFIFER_NAME.equals(event.getId().getSource())) {
+        return;
+      }
+      
       if (event.isPriority()) {
         queue.remove(event.getId());
         queue.add(0, event.getId());
@@ -93,10 +103,7 @@ public class PtvOrganizationEntityUpdater extends EntityUpdater {
   public void timeout(Timer timer) {
     if (!stopped) {
       if (!queue.isEmpty()) {
-        OrganizationId organizationId = queue.iterator().next();
-        if (PtvConsts.IDENTIFIFER_NAME.equals(organizationId.getSource())) {
-          updateOrganization(organizationId);          
-        }        
+        updateOrganization(queue.remove(0));
       }
 
       startTimer(SystemUtils.inTestMode() ? 1000 : TIMER_INTERVAL);
@@ -108,11 +115,23 @@ public class PtvOrganizationEntityUpdater extends EntityUpdater {
     if (response.isOk()) {
       Identifier identifier = identifierController.findIdentifierById(organizationId);
       if (identifier == null) {
-        identifierController.createIdentifier(organizationId);
+        identifier = identifierController.createIdentifier(organizationId);
       }
+      
+      index(identifier.getKuntaApiId(), response.getResponse());
     } else {
       logger.warning(String.format("Organization %s processing failed on [%d] %s", organizationId.getId(), response.getStatus(), response.getMessage()));
     }
+  }
+
+  private void index(String organizationId, Organization organization) {
+    IndexableOrganization indexableOrganization = new IndexableOrganization();
+    indexableOrganization.setBusinessCode(organization.getBusinessCode());
+    indexableOrganization.setBusinessName(organization.getBusinessName());
+    indexableOrganization.setLanguage("fi");
+    indexableOrganization.setOrganizationId(organizationId);
+    
+    indexRequest.fire(new IndexRequest(indexableOrganization));
   }
 
 }

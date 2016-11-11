@@ -6,10 +6,12 @@ cache:
   - $HOME/.sonar
   - $HOME/.m2
   - $HOME/.cargo
+  - $HOME/elasticsearch-5.0.0
+  
 addons:
   hosts:
     - api.kunta-api.test
-
+  
 install: true
 
 before_script:
@@ -17,6 +19,9 @@ before_script:
   
 script:
   - . travis.sh
+  
+after_failure:
+- . travis-after-failure.sh
     
 notifications:
   email: false

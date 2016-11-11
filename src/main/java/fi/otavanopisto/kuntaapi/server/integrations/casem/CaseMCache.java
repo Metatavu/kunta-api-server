@@ -93,10 +93,10 @@ public class CaseMCache {
     nodePageCache.put(pageCacheKey, page);
   }
   
-  public void cachePageContents(OrganizationId organizationId, PageId pageId, String contents) {
-    contentCache.put(getPageCacheKey(organizationId, pageId), contents);
+  public void cachePageContents(OrganizationId organizationId, PageId pageId, String content) {
+    contentCache.put(getPageCacheKey(organizationId, pageId), content);
   }
-  
+
   public List<LocalizedValue> getPageContent(OrganizationId organizationId, PageId pageId) {
     String content = contentCache.get(getPageCacheKey(organizationId, pageId));
     if (StringUtils.isBlank(content)) {

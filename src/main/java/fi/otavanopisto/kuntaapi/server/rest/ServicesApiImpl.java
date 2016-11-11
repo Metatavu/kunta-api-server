@@ -14,6 +14,7 @@ import javax.ws.rs.core.Response.Status;
 
 import org.apache.commons.lang3.StringUtils;
 
+import fi.otavanopisto.kuntaapi.server.controllers.ServiceController;
 import fi.otavanopisto.kuntaapi.server.id.ElectronicServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.PhoneChannelId;
 import fi.otavanopisto.kuntaapi.server.id.PrintableFormChannelId;
@@ -22,7 +23,6 @@ import fi.otavanopisto.kuntaapi.server.id.ServiceLocationChannelId;
 import fi.otavanopisto.kuntaapi.server.id.WebPageChannelId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceChannelProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.ServiceProvider;
 import fi.otavanopisto.kuntaapi.server.rest.model.ElectronicChannel;
 import fi.otavanopisto.kuntaapi.server.rest.model.PhoneChannel;
 import fi.otavanopisto.kuntaapi.server.rest.model.PrintableFormChannel;
@@ -52,7 +52,7 @@ public class ServicesApiImpl extends ServicesApi {
   private static final String NOT_IMPLEMENTED = "Not implemented";
   
   @Inject
-  private Instance<ServiceProvider> serviceProviders;
+  private ServiceController serviceController;
   
   @Inject
   private Instance<ServiceChannelProvider> serviceChannelProviders;
@@ -66,12 +66,10 @@ public class ServicesApiImpl extends ServicesApi {
   public Response findService(String serviceIdParam) {
     ServiceId serviceId = toServiceId(serviceIdParam);
     
-    for (ServiceProvider serviceProvider : getServiceProviders()) {
-      Service service = serviceProvider.findService(serviceId);
-      if (service != null) {
-        return Response.ok(service)
-          .build();
-      }
+    Service service = serviceController.findService(serviceId);
+    if (service != null) {
+      return Response.ok(service)
+        .build();
     }
     
     return Response
@@ -81,24 +79,17 @@ public class ServicesApiImpl extends ServicesApi {
   }
   
   @Override
-  public Response listServices(Long firstResult, Long maxResults) {
+  public Response listServices(String search, Long firstResult, Long maxResults) {
     Response validationResponse = validateListLimitParams(firstResult, maxResults);
     if (validationResponse != null) {
       return validationResponse;
     }
     
-    List<Service> result = new ArrayList<>();
-    
-    for (ServiceProvider serviceProvider : getServiceProviders()) {
-      result.addAll(serviceProvider.listServices(null, null));
+    if (search == null) {
+      return Response.ok(serviceController.listServices(firstResult, maxResults)).build();
+    } else {
+      return Response.ok(serviceController.searchServices(search, firstResult, maxResults)).build();
     }
-    
-    int resultCount = result.size();
-    int firstIndex = firstResult == null ? 0 : Math.min(firstResult.intValue(), resultCount);
-    int toIndex = maxResults == null ? resultCount : Math.min(firstIndex + maxResults.intValue(), resultCount);
-    
-    return Response.ok(result.subList(firstIndex, toIndex))
-      .build();
   }
   
   @Override
@@ -476,17 +467,6 @@ public class ServicesApiImpl extends ServicesApi {
     }
     
     return null;
-  }
-  
-  private List<ServiceProvider> getServiceProviders() {
-    List<ServiceProvider> result = new ArrayList<>();
-    
-    Iterator<ServiceProvider> iterator = serviceProviders.iterator();
-    while (iterator.hasNext()) {
-      result.add(iterator.next());
-    }
-    
-    return Collections.unmodifiableList(result);
   }
   
   private List<ServiceChannelProvider> getServiceChannelProviders() {

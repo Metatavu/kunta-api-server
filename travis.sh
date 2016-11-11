@@ -16,6 +16,7 @@ if [ "$TRAVIS_PULL_REQUEST" != "false" ] && [ -n "${GITHUB_TOKEN}" ] && [ -n "${
     -Dsonar.github.oauth=$GITHUB_TOKEN \
     -Dsonar.github.repository=$TRAVIS_REPO_SLUG \
     -Dsonar.github.pullRequest=$TRAVIS_PULL_REQUEST
+    
   set -e
   mvn clean verify jacoco:report coveralls:report -Pitests -DrepoToken=$COVERALLS_TOKEN
   set +e

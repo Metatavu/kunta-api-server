@@ -79,6 +79,10 @@ public class PtvServiceElectronicChannelIdUpdater extends EntityUpdater {
 
   public void onServiceIdUpdateRequest(@Observes ServiceIdUpdateRequest event) {
     if (!stopped) {
+      if (!PtvConsts.IDENTIFIFER_NAME.equals(event.getId().getSource())) {
+        return;      
+      }    
+      
       if (event.isPriority()) {
         queue.remove(event.getId());
         queue.add(0, event.getId());
@@ -94,14 +98,7 @@ public class PtvServiceElectronicChannelIdUpdater extends EntityUpdater {
   public void timeout(Timer timer) {
     if (!stopped) {
       if (!queue.isEmpty()) {
-        ServiceId serviceId = queue.iterator().next();
-        if (!queue.remove(serviceId)) {
-          logger.warning(String.format("Could not remove %s from queue", serviceId));
-        }
-        
-        if (PtvConsts.IDENTIFIFER_NAME.equals(serviceId.getSource())) {
-          updateChannelIds(serviceId);          
-        }        
+        updateChannelIds(queue.remove(0));
       }
 
       startTimer(SystemUtils.inTestMode() ? 1000 : TIMER_INTERVAL);

@@ -98,13 +98,13 @@ public class CaseMOrganizationContentsEntityUpdater extends EntityUpdater {
     if (!stopped) {
       if (queue == Queue.CONTENTS) {
         if (!contentsQueue.isEmpty()) {
-          updateOrganizationContents(contentsQueue.iterator().next());          
+          updateOrganizationContents(contentsQueue.remove(0));          
         }
         
         queue = Queue.NODES;
       } else if (queue == Queue.NODES) {
         if (!nodesQueue.isEmpty()) {
-          updateOrganizationNodes(nodesQueue.iterator().next());          
+          updateOrganizationNodes(nodesQueue.remove(0));          
         }
         
         queue = Queue.CONTENTS;
