@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-import javax.enterprise.context.Dependent;
+import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
 
@@ -15,7 +15,7 @@ import fi.otavanopisto.kuntaapi.server.index.ServiceSearcher;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceProvider;
 import fi.otavanopisto.kuntaapi.server.rest.model.Service;
 
-@Dependent
+@ApplicationScoped
 public class ServiceController {
   
   @Inject
