@@ -109,6 +109,12 @@ public class HttpCacheController {
   }
   
   private EntityTag getEntityTag(List<String> ids) {
+    for (String id : ids) {
+      if (modificationHashCache.get(id) == null) {
+        return null;
+      }
+    }
+    
     return new EntityTag(DigestUtils.md5Hex(StringUtils.join(ids, '-')), true);
   }
   

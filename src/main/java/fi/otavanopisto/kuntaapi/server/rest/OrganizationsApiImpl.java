@@ -754,18 +754,17 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createNotImplemented("Search parameter can not be combined with path or parentId parameters");
     }
     
-    List<Page> result;
+    boolean onlyRootPages = StringUtils.equals("ROOT", parentIdParam);
+    PageId parentId = onlyRootPages ? null : toPageId(parentIdParam);
     
-    if (search != null) {
-      result = pageController.searchPages(organizationId, search, firstResult, maxResults);
-    } else {
-      boolean onlyRootPages = StringUtils.equals("ROOT", parentIdParam);
-      PageId parentId = onlyRootPages ? null : toPageId(parentIdParam);
-      result = pageController.listPages(organizationId, path, onlyRootPages, parentId, firstResult, maxResults);
+    List<Page> result = listOrganizationPages(organizationId, onlyRootPages, parentId, path, search, firstResult, maxResults);
+    List<String> ids = getEntityIds(result);
+    Response notModified = httpCacheController.getNotModified(request, ids);
+    if (notModified != null) {
+      return notModified;
     }
-   
-    return Response.ok(result)
-      .build();
+
+    return httpCacheController.sendModified(result, ids);
   }
 
   @Override
@@ -1047,6 +1046,14 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     return null;
   }
   
+  private List<Page> listOrganizationPages(OrganizationId organizationId, boolean onlyRootPages, PageId parentId, String path, String search, Long firstResult, Long maxResults) {
+    if (search != null) {
+      return pageController.searchPages(organizationId, search, firstResult, maxResults);
+    } else {
+      return pageController.listPages(organizationId, path, onlyRootPages, parentId, firstResult, maxResults);
+    }
+  }
+  
   private List<Job> sortJobs(List<Job> jobs, JobOrder order, JobOrderDirection orderDirection) {
     if (order == null) {
       return jobs;
@@ -1282,6 +1289,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
         result.add((String) getter.invoke(entity));
       }
       
+      return result;
     } catch (Exception e) {
       logger.log(Level.SEVERE, "Failed to invoke getter", e);
     }
