@@ -519,8 +519,13 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
     
     List<Tile> result = tileController.listTiles(organizationId);
-    return Response.ok(result)
-      .build();
+    List<String> ids = httpCacheController.getEntityIds(result);
+    Response notModified = httpCacheController.getNotModified(request, ids);
+    if (notModified != null) {
+      return notModified;
+    }
+
+    return httpCacheController.sendModified(result, ids);
   }
 
   @Override
@@ -528,14 +533,17 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
     TileId tileId = toTileId(tileIdParam);
     
+    Response notModified = httpCacheController.getNotModified(request, tileId);
+    if (notModified != null) {
+      return notModified;
+    }
+
     Tile tile = tileController.findTile(organizationId, tileId);
     if (tile != null) {
-      return Response.ok(tile)
-        .build();
+      return httpCacheController.sendModified(tile, tile.getId());
     }
     
-    return Response.status(Status.NOT_FOUND)
-      .build();
+    return createNotFound(NOT_FOUND);
   }
 
   @Override
@@ -544,8 +552,13 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     TileId tileId = toTileId(tileIdParam);
     
     List<Attachment> result = tileController.listTileImages(organizationId, tileId);
-    return Response.ok(result)
-      .build();
+    List<String> ids = httpCacheController.getEntityIds(result);
+    Response notModified = httpCacheController.getNotModified(request, ids);
+    if (notModified != null) {
+      return notModified;
+    }
+
+    return httpCacheController.sendModified(result, ids);
   }
 
   @Override
@@ -554,14 +567,17 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     TileId tileId = toTileId(tileIdParam);
     AttachmentId attachmentId = toAttachmentId(imageIdParam);
     
+    Response notModified = httpCacheController.getNotModified(request, tileId);
+    if (notModified != null) {
+      return notModified;
+    }
+
     Attachment attachment = tileController.findTileImage(organizationId, tileId, attachmentId);
     if (attachment != null) {
-      return Response.ok(attachment)
-        .build();
+      return httpCacheController.sendModified(attachment, attachment.getId());
     }
     
-    return Response.status(Status.NOT_FOUND)
-      .build();
+    return createNotFound(NOT_FOUND);
   }
 
   @Override
@@ -570,17 +586,14 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     TileId tileId = toTileId(tileIdParam);
     AttachmentId attachmentId = toAttachmentId(imageIdParam);
     
+    Response notModified = httpCacheController.getNotModified(request, attachmentId);
+    if (notModified != null) {
+      return notModified;
+    }
+    
     AttachmentData attachmentData = tileController.getTileImageData(organizationId, tileId, attachmentId, size);
     if (attachmentData != null) {
-      try (InputStream stream = new ByteArrayInputStream(attachmentData.getData())) {
-        return Response.ok(stream, attachmentData.getType())
-            .build();
-      } catch (IOException e) {
-        logger.log(Level.SEVERE, FAILED_TO_STREAM_IMAGE_TO_CLIENT, e);
-        return Response.status(Status.INTERNAL_SERVER_ERROR)
-          .entity(INTERNAL_SERVER_ERROR)
-          .build();
-      }
+      return httpCacheController.streamModified(attachmentData.getData(), attachmentData.getType(), attachmentId);
     }
     
     return Response.status(Status.NOT_FOUND)
