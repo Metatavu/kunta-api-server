@@ -8,7 +8,6 @@ import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
-import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.MenuId;
 import fi.otavanopisto.kuntaapi.server.id.MenuItemId;
@@ -18,7 +17,6 @@ import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.MenuProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.mwp.AbstractMwpProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.mwp.MwpConsts;
-import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.rest.model.Menu;
 import fi.otavanopisto.kuntaapi.server.rest.model.MenuItem;
 import fi.otavanopisto.mwp.client.ApiResponse;
@@ -41,10 +39,7 @@ public class ManagementMenuProvider extends AbstractMwpProvider implements MenuP
 
   @Inject
   private IdController idController;
-  
-  @Inject
-  private IdentifierController identifierController;
-  
+
   @Override
   public List<Menu> listOrganizationMenus(OrganizationId organizationId, String slug) {
     ApiResponse<List<fi.otavanopisto.mwp.client.model.Menu>> response = 
@@ -161,9 +156,8 @@ public class ManagementMenuProvider extends AbstractMwpProvider implements MenuP
     MenuId managementMenuId = new MenuId(MwpConsts.IDENTIFIER_NAME, String.valueOf(managementMenu.getId()));
     MenuId kuntaApiMenuId = idController.translateMenuId(managementMenuId, KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiMenuId == null) {
-      logger.info(String.format("Found new menu %d", managementMenu.getId()));
-      Identifier newIdentifier = identifierController.createIdentifier(managementMenuId);
-      kuntaApiMenuId = new MenuId(KuntaApiConsts.IDENTIFIER_NAME, newIdentifier.getKuntaApiId());
+      logger.info(String.format("Could not translate management menu %d into kunta api id", managementMenu.getId()));
+      return null;
     }
     
     menu.setId(kuntaApiMenuId.getId());
@@ -188,9 +182,8 @@ public class ManagementMenuProvider extends AbstractMwpProvider implements MenuP
     MenuItemId managementMenuItemId = new MenuItemId(MwpConsts.IDENTIFIER_NAME, String.valueOf(managementMenuItem.getId()));
     MenuItemId kuntaApiMenuItemId = idController.translateMenuItemId(managementMenuItemId, KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiMenuItemId == null) {
-      logger.info(String.format("Found new menu item %d", managementMenuItem.getId()));
-      Identifier newIdentifier = identifierController.createIdentifier(managementMenuItemId);
-      kuntaApiMenuItemId = new MenuItemId(KuntaApiConsts.IDENTIFIER_NAME, newIdentifier.getKuntaApiId());
+      logger.info(String.format("Could not translate management menu item %d into kunta api id", managementMenuItem.getId()));
+      return null;
     }
     
     MenuItemType itemType = getItemType(managementMenuItem);
