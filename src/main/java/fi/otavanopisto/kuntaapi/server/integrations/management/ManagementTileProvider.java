@@ -1,4 +1,4 @@
-package fi.otavanopisto.kuntaapi.server.integrations.mwp;
+package fi.otavanopisto.kuntaapi.server.integrations.management;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -17,8 +17,8 @@ import fi.otavanopisto.kuntaapi.server.id.TileId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.TileProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.management.ManagementApi;
-import fi.otavanopisto.kuntaapi.server.integrations.management.ManagementImageLoader;
+import fi.otavanopisto.kuntaapi.server.integrations.mwp.AbstractMwpProvider;
+import fi.otavanopisto.kuntaapi.server.integrations.mwp.MwpConsts;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
 import fi.otavanopisto.kuntaapi.server.rest.model.Tile;
@@ -31,7 +31,7 @@ import fi.otavanopisto.mwp.client.model.Attachment.MediaTypeEnum;
  * @author Antti Leppä
  */
 @RequestScoped
-public class MwpTileProvider extends AbstractMwpProvider implements TileProvider {
+public class ManagementTileProvider extends AbstractMwpProvider implements TileProvider {
   
   @Inject
   private Logger logger;
@@ -79,9 +79,9 @@ public class MwpTileProvider extends AbstractMwpProvider implements TileProvider
 
   @Override
   public Tile findOrganizationTile(OrganizationId organizationId, TileId tileId) {
-    fi.otavanopisto.mwp.client.model.Tile mwpTile = findTileByTileId(organizationId, tileId);
-    if (mwpTile != null) {
-      return translateTile(mwpTile);
+    fi.otavanopisto.mwp.client.model.Tile managementTile = findTileByTileId(organizationId, tileId);
+    if (managementTile != null) {
+      return translateTile(managementTile);
     }
   
     return null;
@@ -89,9 +89,9 @@ public class MwpTileProvider extends AbstractMwpProvider implements TileProvider
 
   @Override
   public List<Attachment> listOrganizationTileImages(OrganizationId organizationId, TileId tileId) {
-    fi.otavanopisto.mwp.client.model.Tile mwpTile = findTileByTileId(organizationId, tileId);
-    if (mwpTile != null) {
-      Integer featuredMediaId = mwpTile.getFeaturedMedia();
+    fi.otavanopisto.mwp.client.model.Tile managementTile = findTileByTileId(organizationId, tileId);
+    if (managementTile != null) {
+      Integer featuredMediaId = managementTile.getFeaturedMedia();
       if (featuredMediaId != null) {
         fi.otavanopisto.mwp.client.model.Attachment featuredMedia = findMedia(organizationId, featuredMediaId);
         if ((featuredMedia != null) && (featuredMedia.getMediaType() == MediaTypeEnum.IMAGE)) {
@@ -109,8 +109,8 @@ public class MwpTileProvider extends AbstractMwpProvider implements TileProvider
     if (tile != null) {
       Integer featuredMediaId = tile.getFeaturedMedia();
       if (featuredMediaId != null) {
-        AttachmentId mwpAttachmentId = getImageAttachmentId(featuredMediaId);
-        if (!idController.idsEqual(attachmentId, mwpAttachmentId)) {
+        AttachmentId managementAttachmentId = getImageAttachmentId(featuredMediaId);
+        if (!idController.idsEqual(attachmentId, managementAttachmentId)) {
           return null;
         }
         
@@ -151,7 +151,7 @@ public class MwpTileProvider extends AbstractMwpProvider implements TileProvider
   private fi.otavanopisto.mwp.client.model.Tile findTileByTileId(OrganizationId organizationId, TileId tileId) {
     TileId kuntaApiId = idController.translateTileId(tileId, MwpConsts.IDENTIFIER_NAME);
     if (kuntaApiId == null) {
-      logger.severe(String.format("Failed to convert %s into MWP id", tileId.toString()));
+      logger.severe(String.format("Failed to convert %s into management tile id", tileId.toString()));
       return null;
     }
     
@@ -165,31 +165,31 @@ public class MwpTileProvider extends AbstractMwpProvider implements TileProvider
     return null;
   }
 
-  private List<Tile> translateTiles(List<fi.otavanopisto.mwp.client.model.Tile> mwpTiles) {
+  private List<Tile> translateTiles(List<fi.otavanopisto.mwp.client.model.Tile> managementTiles) {
     List<Tile> result = new ArrayList<>();
     
-    for (fi.otavanopisto.mwp.client.model.Tile mwpTile : mwpTiles) {
-      result.add(translateTile(mwpTile));
+    for (fi.otavanopisto.mwp.client.model.Tile managementTile : managementTiles) {
+      result.add(translateTile(managementTile));
     }
     
     return result;
   }
 
-  private Tile translateTile(fi.otavanopisto.mwp.client.model.Tile mwpTile) {
+  private Tile translateTile(fi.otavanopisto.mwp.client.model.Tile managementTile) {
     Tile tile = new Tile();
     
-    TileId mwpId = new TileId(MwpConsts.IDENTIFIER_NAME, String.valueOf(mwpTile.getId()));
-    TileId kuntaApiId = idController.translateTileId(mwpId, KuntaApiConsts.IDENTIFIER_NAME);
-    if (kuntaApiId == null) {
-      logger.info(String.format("Found new news article %d", mwpTile.getId()));
-      Identifier newIdentifier = identifierController.createIdentifier(mwpId);
-      kuntaApiId = new TileId(KuntaApiConsts.IDENTIFIER_NAME, newIdentifier.getKuntaApiId());
+    TileId managementTileId = new TileId(MwpConsts.IDENTIFIER_NAME, String.valueOf(managementTile.getId()));
+    TileId kuntaApiTileId = idController.translateTileId(managementTileId, KuntaApiConsts.IDENTIFIER_NAME);
+    if (kuntaApiTileId == null) {
+      logger.info(String.format("Found new news article %d", managementTile.getId()));
+      Identifier newIdentifier = identifierController.createIdentifier(managementTileId);
+      kuntaApiTileId = new TileId(KuntaApiConsts.IDENTIFIER_NAME, newIdentifier.getKuntaApiId());
     }
     
-    tile.setContents(mwpTile.getContent().getRendered());
-    tile.setId(kuntaApiId.getId());
-    tile.setLink(mwpTile.getTileLink());
-    tile.setTitle(mwpTile.getTitle().getRendered());
+    tile.setContents(managementTile.getContent().getRendered());
+    tile.setId(kuntaApiTileId.getId());
+    tile.setLink(managementTile.getTileLink());
+    tile.setTitle(managementTile.getTitle().getRendered());
     
     return tile;
   }
