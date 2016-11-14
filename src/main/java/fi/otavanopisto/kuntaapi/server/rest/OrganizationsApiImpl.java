@@ -431,9 +431,13 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
     
     List<Banner> result = bannerController.listBanners(organizationId);
+    List<String> ids = httpCacheController.getEntityIds(result);
+    Response notModified = httpCacheController.getNotModified(request, ids);
+    if (notModified != null) {
+      return notModified;
+    }
 
-    return Response.ok(result)
-      .build();
+    return httpCacheController.sendModified(result, ids);
   }
 
   @Override
@@ -441,14 +445,17 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
     BannerId bannerId = toBannerId(bannerIdParam);
     
+    Response notModified = httpCacheController.getNotModified(request, bannerId);
+    if (notModified != null) {
+      return notModified;
+    }
+
     Banner banner = bannerController.findBanner(organizationId, bannerId);
     if (banner != null) {
-      return Response.ok(banner)
-        .build();
+      return httpCacheController.sendModified(banner, banner.getId());
     }
     
-    return Response.status(Status.NOT_FOUND)
-      .build();
+    return createNotFound(NOT_FOUND);
   }
 
   @Override
@@ -457,9 +464,13 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     BannerId bannerId = toBannerId(bannerIdParam);
     
     List<Attachment> result = bannerController.listBannerImages(organizationId, bannerId);
-    
-    return Response.ok(result)
-      .build();
+    List<String> ids = httpCacheController.getEntityIds(result);
+    Response notModified = httpCacheController.getNotModified(request, ids);
+    if (notModified != null) {
+      return notModified;
+    }
+
+    return httpCacheController.sendModified(result, ids);
   }
 
   @Override
@@ -468,14 +479,17 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     BannerId bannerId = toBannerId(bannerIdParam);
     AttachmentId attachmentId = toAttachmentId(imageIdParam);
     
+    Response notModified = httpCacheController.getNotModified(request, attachmentId);
+    if (notModified != null) {
+      return notModified;
+    }
+
     Attachment attachment = bannerController.findBannerImage(organizationId, bannerId, attachmentId);
     if (attachment != null) {
-      return Response.ok(attachment)
-        .build();
+      return httpCacheController.sendModified(attachment, attachment.getId());
     }
     
-    return Response.status(Status.NOT_FOUND)
-      .build();
+    return createNotFound(NOT_FOUND);
   }
 
   @Override
@@ -484,19 +498,16 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     BannerId bannerId = toBannerId(bannerIdParam);
     AttachmentId attachmentId = toAttachmentId(imageIdParam);
     
-    AttachmentData attachmentData = bannerController.getBannerImageData(organizationId, bannerId, attachmentId, size);
-    if (attachmentData != null) {
-      try (InputStream stream = new ByteArrayInputStream(attachmentData.getData())) {
-        return Response.ok(stream, attachmentData.getType())
-            .build();
-      } catch (IOException e) {
-        logger.log(Level.SEVERE, FAILED_TO_STREAM_IMAGE_TO_CLIENT, e);
-        return Response.status(Status.INTERNAL_SERVER_ERROR)
-          .entity(INTERNAL_SERVER_ERROR)
-          .build();
-      }
+    Response notModified = httpCacheController.getNotModified(request, attachmentId);
+    if (notModified != null) {
+      return notModified;
     }
     
+    AttachmentData attachmentData = bannerController.getBannerImageData(organizationId, bannerId, attachmentId, size);
+    if (attachmentData != null) {
+      return httpCacheController.streamModified(attachmentData.getData(), attachmentData.getType(), attachmentId);
+    }
+
     return Response.status(Status.NOT_FOUND)
       .build();
   }
