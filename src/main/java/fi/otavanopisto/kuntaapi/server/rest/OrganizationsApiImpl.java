@@ -141,22 +141,22 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   
   @Override
   public Response findOrganization(String organizationIdParam, @Context Request request) {
-  	OrganizationId organizationId = toOrganizationId(organizationIdParam);
-  	if (organizationId == null) {
-  	  return createNotFound(NOT_FOUND);
-  	}
-  	
-  	Response notModified = httpCacheController.getNotModified(request, organizationId);
-  	if (notModified != null) {
-  	  return notModified;
-  	}
-  	
-  	Organization organization = organizationController.findOrganization(organizationId);
-  	if (organization != null) {
-  	  return httpCacheController.sendModified(organization, organization.getId());
+  	  OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    	if (organizationId == null) {
+    	  return createNotFound(NOT_FOUND);
+    	}
+    	
+    	Response notModified = httpCacheController.getNotModified(request, organizationId);
+    	if (notModified != null) {
+    	  return notModified;
+    	}
+    	
+    	Organization organization = organizationController.findOrganization(organizationId);
+    	if (organization != null) {
+      return httpCacheController.sendModified(organization, organization.getId());
     }
-    
-  	return createNotFound(NOT_FOUND);
+      
+    	return createNotFound(NOT_FOUND);
   }
 
   @Override
@@ -894,9 +894,14 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createNotFound(NOT_FOUND);
     }
     
+    Response notModified = httpCacheController.getNotModified(request, menuId);
+    if (notModified != null) {
+      return notModified;
+    }
+    
     Menu menu = menuController.findMenu(organizationId, menuId);
     if (menu != null) {
-      return Response.ok(menu).build();
+      return httpCacheController.sendModified(menu, menu.getId());
     }
     
     return createNotFound(NOT_FOUND);
