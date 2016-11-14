@@ -834,10 +834,14 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     PageId pageId = toPageId(pageIdParam);
     AttachmentId attachmentId = toAttachmentId(imageIdParam);
     
+    Response notModified = httpCacheController.getNotModified(request, attachmentId);
+    if (notModified != null) {
+      return notModified;
+    }
+    
     Attachment attachment = pageController.findPageImage(organizationId, pageId, attachmentId);
     if (attachment != null) {
-      return Response.ok(attachment)
-        .build();
+      return httpCacheController.sendModified(attachment, attachment.getId());
     }
     
     return Response.status(Status.NOT_FOUND)
@@ -850,17 +854,14 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     PageId pageId = toPageId(pageIdParam);
     AttachmentId attachmentId = toAttachmentId(imageIdParam);
     
+    Response notModified = httpCacheController.getNotModified(request, attachmentId);
+    if (notModified != null) {
+      return notModified;
+    }
+    
     AttachmentData attachmentData = pageController.getPageAttachmentData(organizationId, pageId, attachmentId, size);
     if (attachmentData != null) {
-      try (InputStream stream = new ByteArrayInputStream(attachmentData.getData())) {
-        return Response.ok(stream, attachmentData.getType())
-            .build();
-      } catch (IOException e) {
-        logger.log(Level.SEVERE, FAILED_TO_STREAM_IMAGE_TO_CLIENT, e);
-        return Response.status(Status.INTERNAL_SERVER_ERROR)
-          .entity(INTERNAL_SERVER_ERROR)
-          .build();
-      }
+      return httpCacheController.streamModified(attachmentData.getData(), attachmentData.getType(), attachmentId);
     }
     
     return Response.status(Status.NOT_FOUND)
