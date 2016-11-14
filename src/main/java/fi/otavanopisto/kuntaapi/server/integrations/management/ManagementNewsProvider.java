@@ -11,7 +11,6 @@ import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
-import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
@@ -19,7 +18,6 @@ import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.NewsProvider;
-import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
 import fi.otavanopisto.kuntaapi.server.rest.model.NewsArticle;
 import fi.otavanopisto.mwp.client.ApiResponse;
@@ -45,9 +43,6 @@ public class ManagementNewsProvider extends AbstractManagementProvider implement
   
   @Inject
   private IdController idController;
-  
-  @Inject
-  private IdentifierController identifierController;
   
   @Override
   public List<NewsArticle> listOrganizationNews(OrganizationId organizationId, OffsetDateTime publishedBefore,
@@ -189,9 +184,8 @@ public class ManagementNewsProvider extends AbstractManagementProvider implement
     NewsArticleId postId = new NewsArticleId(ManagementConsts.IDENTIFIER_NAME, String.valueOf(post.getId()));
     NewsArticleId kuntaApiId = idController.translateNewsArticleId(postId, KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiId == null) {
-      logger.info(String.format("Found new news article %d", post.getId()));
-      Identifier newIdentifier = identifierController.createIdentifier(postId);
-      kuntaApiId = new NewsArticleId(KuntaApiConsts.IDENTIFIER_NAME, newIdentifier.getKuntaApiId());
+      logger.info(String.format("Could not translate management news artcile %d into kunta api id", post.getId()));
+      return null;
     }
     
     newsArticle.setAbstract(post.getExcerpt().getRendered());
