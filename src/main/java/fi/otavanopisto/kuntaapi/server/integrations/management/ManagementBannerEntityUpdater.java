@@ -29,7 +29,6 @@ import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.BannerId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
-import fi.otavanopisto.kuntaapi.server.integrations.mwp.MwpConsts;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 import fi.otavanopisto.kuntaapi.server.system.SystemUtils;
@@ -102,7 +101,7 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
     if (!stopped) {
       OrganizationId organizationId = event.getId();
       
-      if (organizationSettingController.getSettingValue(organizationId, MwpConsts.ORGANIZATION_SETTING_BASEURL) == null) {
+      if (organizationSettingController.getSettingValue(organizationId, ManagementConsts.ORGANIZATION_SETTING_BASEURL) == null) {
         return;
       }
       
@@ -149,7 +148,7 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
   }
   
   private void updateManagementBanner(DefaultApi api, Banner managementBanner) {
-    BannerId bannerId = new BannerId(MwpConsts.IDENTIFIER_NAME, String.valueOf(managementBanner.getId()));
+    BannerId bannerId = new BannerId(ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementBanner.getId()));
 
     Identifier identifier = identifierController.findIdentifierById(bannerId);
     if (identifier == null) {
@@ -169,7 +168,7 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
       logger.severe(String.format("Finding media failed on [%d] %s", response.getStatus(), response.getMessage()));
     } else {
       Attachment attachment = response.getResponse();
-      AttachmentId attachmentId = new AttachmentId(MwpConsts.IDENTIFIER_NAME, String.valueOf(attachment.getId()));
+      AttachmentId attachmentId = new AttachmentId(ManagementConsts.IDENTIFIER_NAME, String.valueOf(attachment.getId()));
       
       Identifier identifier = identifierController.findIdentifierById(attachmentId);
       if (identifier == null) {

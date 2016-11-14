@@ -21,21 +21,21 @@ import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 
 import fi.otavanopisto.kuntaapi.server.discover.IdUpdater;
+import fi.otavanopisto.kuntaapi.server.discover.NewsArticleIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.discover.OrganizationIdUpdateRequest;
-import fi.otavanopisto.kuntaapi.server.discover.PageIdUpdateRequest;
+import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
-import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 import fi.otavanopisto.kuntaapi.server.system.SystemUtils;
 import fi.otavanopisto.mwp.client.ApiResponse;
 import fi.otavanopisto.mwp.client.DefaultApi;
-import fi.otavanopisto.mwp.client.model.Page;
+import fi.otavanopisto.mwp.client.model.Post;
 
 @ApplicationScoped
 @Singleton
 @AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
-public class ManagementPageIdUpdater extends IdUpdater {
+public class ManagementNewsArticleIdUpdater extends IdUpdater {
 
   private static final int WARMUP_TIME = 1000 * 10;
   private static final int TIMER_INTERVAL = 5000;
@@ -50,7 +50,7 @@ public class ManagementPageIdUpdater extends IdUpdater {
   private OrganizationSettingController organizationSettingController; 
   
   @Inject
-  private Event<PageIdUpdateRequest> idUpdateRequest;
+  private Event<NewsArticleIdUpdateRequest> idUpdateRequest;
 
   private boolean stopped;
   private List<OrganizationId> queue;
@@ -65,7 +65,7 @@ public class ManagementPageIdUpdater extends IdUpdater {
 
   @Override
   public String getName() {
-    return "management-page-ids";
+    return "management-news-article-ids";
   }
   
   @Override
@@ -109,29 +109,29 @@ public class ManagementPageIdUpdater extends IdUpdater {
   public void timeout(Timer timer) {
     if (!stopped) {
       if (!queue.isEmpty()) {
-        updateManagementPages(queue.remove(0));
+        updateManagementPosts(queue.remove(0));
       }
 
       startTimer(SystemUtils.inTestMode() ? 1000 : TIMER_INTERVAL);
     }
   }
   
-  private void updateManagementPages(OrganizationId organizationId) {
+  private void updateManagementPosts(OrganizationId organizationId) {
     DefaultApi api = managementApi.getApi(organizationId);
     
-    List<Page> managementPages = listManagementPages(api, organizationId);
-    for (Page managementPage : managementPages) {
-      PageId pageId = new PageId(ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementPage.getId()));
-      idUpdateRequest.fire(new PageIdUpdateRequest(organizationId, pageId, false));
+    List<Post> managementPosts = listManagementPosts(api, organizationId);
+    for (Post managementPost : managementPosts) {
+      NewsArticleId newsArticleId = new NewsArticleId(ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementPost.getId()));
+      idUpdateRequest.fire(new NewsArticleIdUpdateRequest(organizationId, newsArticleId, false));
     }
   }
   
-  private List<Page> listManagementPages(DefaultApi api, OrganizationId organizationId) {
-    ApiResponse<List<Page>> response = api.wpV2PagesGet(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+  private List<Post> listManagementPosts(DefaultApi api, OrganizationId organizationId) {
+    ApiResponse<List<Post>> response = api.wpV2PostsGet(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
     if (response.isOk()) {
       return response.getResponse();
     } else {
-      logger.warning(String.format("Listing organization %s pages failed on [%d] %s", organizationId.getId(), response.getStatus(), response.getMessage()));
+      logger.warning(String.format("Listing organization %s posts failed on [%d] %s", organizationId.getId(), response.getStatus(), response.getMessage()));
     }
     
     return Collections.emptyList();

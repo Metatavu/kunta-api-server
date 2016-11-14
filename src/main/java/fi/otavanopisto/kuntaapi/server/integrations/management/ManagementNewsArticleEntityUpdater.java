@@ -20,30 +20,30 @@ import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 
 import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
-import fi.otavanopisto.kuntaapi.server.discover.OrganizationIdUpdateRequest;
+import fi.otavanopisto.kuntaapi.server.discover.NewsArticleIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
-import fi.otavanopisto.kuntaapi.server.id.TileId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
-import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 import fi.otavanopisto.kuntaapi.server.system.SystemUtils;
 import fi.otavanopisto.mwp.client.ApiResponse;
 import fi.otavanopisto.mwp.client.DefaultApi;
 import fi.otavanopisto.mwp.client.model.Attachment;
-import fi.otavanopisto.mwp.client.model.Tile;
+import fi.otavanopisto.mwp.client.model.Post;
 
 @ApplicationScoped
 @Singleton
 @AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
-public class ManagementTileEntityUpdater extends EntityUpdater {
+public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
 
-  private static final int TIMER_INTERVAL = 5000;
+  private static final int TIMER_INTERVAL = 1000;
 
   @Inject
   private Logger logger;
@@ -55,9 +55,6 @@ public class ManagementTileEntityUpdater extends EntityUpdater {
   private ManagementImageLoader managementImageLoader;
   
   @Inject
-  private OrganizationSettingController organizationSettingController; 
-  
-  @Inject
   private IdentifierController identifierController;
   
   @Inject
@@ -67,7 +64,7 @@ public class ManagementTileEntityUpdater extends EntityUpdater {
   private TimerService timerService;
 
   private boolean stopped;
-  private List<OrganizationId> queue;
+  private List<NewsArticleIdUpdateRequest> queue;
 
   @PostConstruct
   public void init() {
@@ -76,7 +73,7 @@ public class ManagementTileEntityUpdater extends EntityUpdater {
 
   @Override
   public String getName() {
-    return "management-tiles";
+    return "management-news";
   }
 
   @Override
@@ -97,68 +94,60 @@ public class ManagementTileEntityUpdater extends EntityUpdater {
   }
   
   @Asynchronous
-  public void onOrganizationIdUpdateRequest(@Observes OrganizationIdUpdateRequest event) {
+  public void onOrganizationIdUpdateRequest(@Observes NewsArticleIdUpdateRequest event) {
     if (!stopped) {
-      OrganizationId organizationId = event.getId();
+      NewsArticleId newsArticleId = event.getId();
       
-      if (organizationSettingController.getSettingValue(organizationId, ManagementConsts.ORGANIZATION_SETTING_BASEURL) == null) {
+      if (!StringUtils.equals(newsArticleId.getSource(), ManagementConsts.IDENTIFIER_NAME)) {
         return;
       }
       
       if (event.isPriority()) {
-        queue.remove(organizationId);
-        queue.add(0, organizationId);
+        queue.remove(event);
+        queue.add(0, event);
       } else {
-        if (!queue.contains(organizationId)) {
-          queue.add(organizationId);
+        if (!queue.contains(event)) {
+          queue.add(event);
         }
       }
     }
   }
-
+  
   @Timeout
   public void timeout(Timer timer) {
     if (!stopped) {
       if (!queue.isEmpty()) {
-        updateManagementTiles(queue.remove(0));
+        NewsArticleIdUpdateRequest updateRequest = queue.remove(0);
+        updateManagementPost(updateRequest.getOrganizationId(), updateRequest.getId());
       }
 
       startTimer(SystemUtils.inTestMode() ? 1000 : TIMER_INTERVAL);
     }
   }
-
-  private void updateManagementTiles(OrganizationId organizationId) {
+  
+  private void updateManagementPost(OrganizationId organizationId, NewsArticleId newsArticleId) {
     DefaultApi api = managementApi.getApi(organizationId);
     
-    List<Tile> managementTiles = listManagementTiles(api, organizationId);
-    for (Tile managementTile : managementTiles) {
-      updateManagementTile(api, managementTile);
-    }
-  }
-
-  private List<Tile> listManagementTiles(DefaultApi api, OrganizationId organizationId) {
-    fi.otavanopisto.mwp.client.ApiResponse<List<Tile>> response = api.wpV2TileGet(null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    ApiResponse<Post> response = api.wpV2PostsIdGet(newsArticleId.getId(), null);
     if (response.isOk()) {
-      return response.getResponse();
+      updateManagementPost(api, response.getResponse());
     } else {
-      logger.warning(String.format("Listing organization %s tiles failed on [%d] %s", organizationId.getId(), response.getStatus(), response.getMessage()));
+      logger.warning(String.format("Find organization %s post %s failed on [%d] %s", organizationId.getId(), newsArticleId.toString(), response.getStatus(), response.getMessage()));
     }
-    
-    return Collections.emptyList();
   }
   
-  private void updateManagementTile(DefaultApi api, Tile managementTile) {
-    TileId tileId = new TileId(ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementTile.getId()));
+  private void updateManagementPost(DefaultApi api, Post managementPost) {
+    NewsArticleId newsArticleId = new NewsArticleId(ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementPost.getId()));
 
-    Identifier identifier = identifierController.findIdentifierById(tileId);
+    Identifier identifier = identifierController.findIdentifierById(newsArticleId);
     if (identifier == null) {
-      identifier = identifierController.createIdentifier(tileId);
+      identifier = identifierController.createIdentifier(newsArticleId);
     }
     
-    modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(managementTile));
+    modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(managementPost));
     
-    if (managementTile.getFeaturedMedia() != null && managementTile.getFeaturedMedia() > 0) {
-      updateFeaturedMedia(api, managementTile.getFeaturedMedia()); 
+    if (managementPost.getFeaturedMedia() != null && managementPost.getFeaturedMedia() > 0) {
+      updateFeaturedMedia(api, managementPost.getFeaturedMedia()); 
     }
   }
   

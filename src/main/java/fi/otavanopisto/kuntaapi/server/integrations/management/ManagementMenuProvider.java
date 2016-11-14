@@ -15,8 +15,6 @@ import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.MenuProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.mwp.AbstractMwpProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.mwp.MwpConsts;
 import fi.otavanopisto.kuntaapi.server.rest.model.Menu;
 import fi.otavanopisto.kuntaapi.server.rest.model.MenuItem;
 import fi.otavanopisto.mwp.client.ApiResponse;
@@ -27,7 +25,7 @@ import fi.otavanopisto.mwp.client.ApiResponse;
  * @author Antti Leppä
  */
 @RequestScoped
-public class ManagementMenuProvider extends AbstractMwpProvider implements MenuProvider {
+public class ManagementMenuProvider extends AbstractManagementProvider implements MenuProvider {
   
   private static final String COULD_NOT_TRANSLATE_MENU_ID = "Could not translate menu id %s to management id";
 
@@ -60,7 +58,7 @@ public class ManagementMenuProvider extends AbstractMwpProvider implements MenuP
       return null;
     }
     
-    MenuId managemenMenutId = idController.translateMenuId(menuId, MwpConsts.IDENTIFIER_NAME);
+    MenuId managemenMenutId = idController.translateMenuId(menuId, ManagementConsts.IDENTIFIER_NAME);
     if (managemenMenutId == null) {
       logger.severe(String.format(COULD_NOT_TRANSLATE_MENU_ID, menuId.toString()));
       return null;
@@ -84,7 +82,7 @@ public class ManagementMenuProvider extends AbstractMwpProvider implements MenuP
       return Collections.emptyList();
     }
     
-    MenuId managementMenuId = idController.translateMenuId(menuId, MwpConsts.IDENTIFIER_NAME);
+    MenuId managementMenuId = idController.translateMenuId(menuId, ManagementConsts.IDENTIFIER_NAME);
     if (managementMenuId == null) {
       logger.severe(String.format(COULD_NOT_TRANSLATE_MENU_ID, menuId.toString()));
       return Collections.emptyList();
@@ -108,13 +106,13 @@ public class ManagementMenuProvider extends AbstractMwpProvider implements MenuP
       return null;
     }
     
-    MenuId managementMenuId = idController.translateMenuId(menuId, MwpConsts.IDENTIFIER_NAME);
+    MenuId managementMenuId = idController.translateMenuId(menuId, ManagementConsts.IDENTIFIER_NAME);
     if (managementMenuId == null) {
       logger.severe(String.format(COULD_NOT_TRANSLATE_MENU_ID, menuId.toString()));
       return null;
     }
     
-    MenuItemId managementItemId = idController.translateMenuItemId(menuItemId, MwpConsts.IDENTIFIER_NAME);
+    MenuItemId managementItemId = idController.translateMenuItemId(menuItemId, ManagementConsts.IDENTIFIER_NAME);
     if (managementItemId == null) {
       logger.severe(String.format("Could not translate menu item id %s to management id", menuItemId.toString()));
       return null;
@@ -153,7 +151,7 @@ public class ManagementMenuProvider extends AbstractMwpProvider implements MenuP
   private Menu translateMenu(fi.otavanopisto.mwp.client.model.Menu managementMenu) {
     Menu menu = new Menu();
     
-    MenuId managementMenuId = new MenuId(MwpConsts.IDENTIFIER_NAME, String.valueOf(managementMenu.getId()));
+    MenuId managementMenuId = new MenuId(ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementMenu.getId()));
     MenuId kuntaApiMenuId = idController.translateMenuId(managementMenuId, KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiMenuId == null) {
       logger.info(String.format("Could not translate management menu %d into kunta api id", managementMenu.getId()));
@@ -179,7 +177,7 @@ public class ManagementMenuProvider extends AbstractMwpProvider implements MenuP
   private MenuItem translateMenuItem(fi.otavanopisto.mwp.client.model.Menuitem managementMenuItem) {
     MenuItem menuItem = new MenuItem();
     
-    MenuItemId managementMenuItemId = new MenuItemId(MwpConsts.IDENTIFIER_NAME, String.valueOf(managementMenuItem.getId()));
+    MenuItemId managementMenuItemId = new MenuItemId(ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementMenuItem.getId()));
     MenuItemId kuntaApiMenuItemId = idController.translateMenuItemId(managementMenuItemId, KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiMenuItemId == null) {
       logger.info(String.format("Could not translate management menu item %d into kunta api id", managementMenuItem.getId()));
@@ -211,7 +209,7 @@ public class ManagementMenuProvider extends AbstractMwpProvider implements MenuP
       return null;
     }
     
-    MenuItemId managementMenuItem = new MenuItemId(MwpConsts.IDENTIFIER_NAME, String.valueOf(parentItemId));
+    MenuItemId managementMenuItem = new MenuItemId(ManagementConsts.IDENTIFIER_NAME, String.valueOf(parentItemId));
 
     return idController.translateMenuItemId(managementMenuItem, KuntaApiConsts.IDENTIFIER_NAME);
   }

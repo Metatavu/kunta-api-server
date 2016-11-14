@@ -1,4 +1,4 @@
-package fi.otavanopisto.kuntaapi.server.integrations.mwp;
+package fi.otavanopisto.kuntaapi.server.integrations.management;
 
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
@@ -20,20 +20,18 @@ import fi.otavanopisto.kuntaapi.server.images.ImageScaler;
 import fi.otavanopisto.kuntaapi.server.images.ImageWriter;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
-import fi.otavanopisto.kuntaapi.server.integrations.management.ManagementApi;
-import fi.otavanopisto.kuntaapi.server.integrations.management.ManagementImageLoader;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
 import fi.otavanopisto.kuntaapi.server.rest.model.LocalizedValue;
 import fi.otavanopisto.mwp.client.ApiResponse;
 
 /**
- * Abstract base class for mwp providers
+ * Abstract base class for management providers
  * 
  * @author Antti Leppä
  */
 @SuppressWarnings ("squid:S3306")
-public abstract class AbstractMwpProvider {
+public abstract class AbstractManagementProvider {
   
   @Inject
   private Logger logger;
@@ -73,12 +71,12 @@ public abstract class AbstractMwpProvider {
   }
   
   protected AttachmentId getImageAttachmentId(Integer id) {
-    AttachmentId mwpId = new AttachmentId(MwpConsts.IDENTIFIER_NAME, String.valueOf(id));
-    AttachmentId kuntaApiId = idController.translateAttachmentId(mwpId, KuntaApiConsts.IDENTIFIER_NAME);
+    AttachmentId managementId = new AttachmentId(ManagementConsts.IDENTIFIER_NAME, String.valueOf(id));
+    AttachmentId kuntaApiId = idController.translateAttachmentId(managementId, KuntaApiConsts.IDENTIFIER_NAME);
     
     if (kuntaApiId == null) {
-      logger.info(String.format("Found new mwp attachment %d", id));
-      Identifier newIdentifier = identifierController.createIdentifier(mwpId);
+      logger.info(String.format("Found new management attachment %d", id));
+      Identifier newIdentifier = identifierController.createIdentifier(managementId);
       kuntaApiId = new AttachmentId(KuntaApiConsts.IDENTIFIER_NAME, newIdentifier.getKuntaApiId());
     }
     
@@ -86,13 +84,13 @@ public abstract class AbstractMwpProvider {
   }
   
   protected Integer getMediaId(AttachmentId attachmentId) {
-    AttachmentId mwpAttachmentId = idController.translateAttachmentId(attachmentId, MwpConsts.IDENTIFIER_NAME);
-    if (mwpAttachmentId == null) {
-      logger.info(String.format("Could not translate %s into mwp ", attachmentId.toString()));
+    AttachmentId managementAttachmentId = idController.translateAttachmentId(attachmentId, ManagementConsts.IDENTIFIER_NAME);
+    if (managementAttachmentId == null) {
+      logger.info(String.format("Could not translate %s into management id", attachmentId.toString()));
       return null;
     }
     
-    return NumberUtils.createInteger(mwpAttachmentId.getId());
+    return NumberUtils.createInteger(managementAttachmentId.getId());
   }
 
   protected fi.otavanopisto.mwp.client.model.Attachment findMedia(OrganizationId organizationId, Integer mediaId) {
@@ -127,7 +125,7 @@ public abstract class AbstractMwpProvider {
     
     if (StringUtils.isNotBlank(value)) {
       LocalizedValue localizedValue = new LocalizedValue();
-      localizedValue.setLanguage(MwpConsts.DEFAULT_LOCALE);
+      localizedValue.setLanguage(ManagementConsts.DEFAULT_LOCALE);
       localizedValue.setValue(value);
       result.add(localizedValue);
     }
@@ -148,7 +146,7 @@ public abstract class AbstractMwpProvider {
       return null;
     }
     
-    PageId mwpId = new PageId(MwpConsts.IDENTIFIER_NAME, String.valueOf(pageId));
-    return idController.translatePageId(mwpId, KuntaApiConsts.IDENTIFIER_NAME);
+    PageId managementId = new PageId(ManagementConsts.IDENTIFIER_NAME, String.valueOf(pageId));
+    return idController.translatePageId(managementId, KuntaApiConsts.IDENTIFIER_NAME);
   }
 }

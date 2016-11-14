@@ -17,8 +17,6 @@ import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.BannerProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
-import fi.otavanopisto.kuntaapi.server.integrations.mwp.AbstractMwpProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.mwp.MwpConsts;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
 import fi.otavanopisto.kuntaapi.server.rest.model.Banner;
@@ -31,7 +29,7 @@ import fi.otavanopisto.mwp.client.model.Attachment.MediaTypeEnum;
  * @author Antti Leppä
  */
 @RequestScoped
-public class ManagementBannerProvider extends AbstractMwpProvider implements BannerProvider {
+public class ManagementBannerProvider extends AbstractManagementProvider implements BannerProvider {
   
   @Inject
   private Logger logger;
@@ -148,7 +146,7 @@ public class ManagementBannerProvider extends AbstractMwpProvider implements Ban
   }
 
   private fi.otavanopisto.mwp.client.model.Banner findBannerByBannerId(OrganizationId organizationId, BannerId bannerId) {
-    BannerId kuntaApiId = idController.translateBannerId(bannerId, MwpConsts.IDENTIFIER_NAME);
+    BannerId kuntaApiId = idController.translateBannerId(bannerId, ManagementConsts.IDENTIFIER_NAME);
     if (kuntaApiId == null) {
       logger.severe(String.format("Failed to convert %s into MWP id", bannerId.toString()));
       return null;
@@ -177,7 +175,7 @@ public class ManagementBannerProvider extends AbstractMwpProvider implements Ban
   private Banner translateBanner(fi.otavanopisto.mwp.client.model.Banner managementBanner) {
     Banner banner = new Banner();
     
-    BannerId managementBannerId = new BannerId(MwpConsts.IDENTIFIER_NAME, String.valueOf(managementBanner.getId()));
+    BannerId managementBannerId = new BannerId(ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementBanner.getId()));
     BannerId kuntaApiBannerId = idController.translateBannerId(managementBannerId, KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiBannerId == null) {
       logger.info(String.format("Found new news article %d", managementBanner.getId()));
