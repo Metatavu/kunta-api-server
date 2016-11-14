@@ -1,18 +1,14 @@
 package fi.otavanopisto.kuntaapi.server.integrations.mwp;
 
 import java.awt.image.BufferedImage;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.inject.Inject;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
-import org.apache.http.client.utils.URIBuilder;
 
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
@@ -23,11 +19,9 @@ import fi.otavanopisto.kuntaapi.server.images.ImageReader;
 import fi.otavanopisto.kuntaapi.server.images.ImageScaler;
 import fi.otavanopisto.kuntaapi.server.images.ImageWriter;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
-import fi.otavanopisto.kuntaapi.server.integrations.BinaryHttpClient;
-import fi.otavanopisto.kuntaapi.server.integrations.BinaryHttpClient.BinaryResponse;
-import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpClient.Response;
-import fi.otavanopisto.kuntaapi.server.integrations.management.ManagementApi;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
+import fi.otavanopisto.kuntaapi.server.integrations.management.ManagementApi;
+import fi.otavanopisto.kuntaapi.server.integrations.management.ManagementImageLoader;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
 import fi.otavanopisto.kuntaapi.server.rest.model.LocalizedValue;
@@ -46,9 +40,6 @@ public abstract class AbstractMwpProvider {
   
   @Inject
   private ManagementApi managementApi;
-  
-  @Inject
-  private BinaryHttpClient binaryHttpClient;
 
   @Inject
   private IdController idController;
@@ -56,6 +47,9 @@ public abstract class AbstractMwpProvider {
   @Inject
   private IdentifierController identifierController;
 
+  @Inject
+  private ManagementImageLoader managementImageLoader;
+  
   @Inject
   private ImageReader imageReader;
 
@@ -73,30 +67,6 @@ public abstract class AbstractMwpProvider {
       if (scaledImageData != null) {
         return new AttachmentData("image/png", scaledImageData);
       }
-    }
-    
-    return null;
-  }
-  
-  protected AttachmentData getImageData(String imageUrl) {
-    URI uri;
-    
-    try {
-      uri = new URIBuilder(imageUrl).build();
-    } catch (URISyntaxException e) {
-      logger.log(Level.SEVERE, String.format("Invalid uri %s", imageUrl), e);
-      return null;
-    }
-    
-    return getImageData(uri);
-  }
-
-  protected AttachmentData getImageData(URI uri) {
-    Response<BinaryResponse> response = binaryHttpClient.downloadBinary(uri);
-    if (response.isOk()) {
-      return new AttachmentData(response.getResponseEntity().getType(), response.getResponseEntity().getData());
-    } else {
-      logger.severe(String.format("Image download failed on [%d] %s", response.getStatus(), response.getMessage()));
     }
     
     return null;
@@ -141,7 +111,7 @@ public abstract class AbstractMwpProvider {
   }
   
   protected Attachment translateAttachment(fi.otavanopisto.mwp.client.model.Attachment featuredMedia) {
-    Integer size = binaryHttpClient.getDownloadSize(featuredMedia.getSourceUrl());
+    Integer size = managementImageLoader.getImageSize(featuredMedia.getSourceUrl());
     AttachmentId id = getImageAttachmentId(featuredMedia.getId());
     Attachment attachment = new Attachment();
     attachment.setContentType(featuredMedia.getMimeType());

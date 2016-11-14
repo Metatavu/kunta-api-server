@@ -39,6 +39,9 @@ public class ManagementPageProvider extends AbstractMwpProvider implements PageP
   
   @Inject
   private ManagementApi managementApi;
+  
+  @Inject
+  private ManagementImageLoader managementImageLoader;
 
   @Inject
   private IdController idController;
@@ -132,7 +135,7 @@ public class ManagementPageProvider extends AbstractMwpProvider implements PageP
     
     fi.otavanopisto.mwp.client.model.Attachment featuredMedia = findMedia(organizationId, mediaId);
     if (featuredMedia.getMediaType() == MediaTypeEnum.IMAGE) {
-      AttachmentData imageData = getImageData(featuredMedia.getSourceUrl());
+      AttachmentData imageData = managementImageLoader.getImageData(featuredMedia.getSourceUrl());
       
       if (size != null) {
         return scaleImage(imageData, size);
