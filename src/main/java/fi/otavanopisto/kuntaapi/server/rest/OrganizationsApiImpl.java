@@ -27,6 +27,7 @@ import org.apache.commons.lang3.math.NumberUtils;
 import fi.otavanopisto.kuntaapi.server.controllers.BannerController;
 import fi.otavanopisto.kuntaapi.server.controllers.HttpCacheController;
 import fi.otavanopisto.kuntaapi.server.controllers.MenuController;
+import fi.otavanopisto.kuntaapi.server.controllers.NewsController;
 import fi.otavanopisto.kuntaapi.server.controllers.OrganizationController;
 import fi.otavanopisto.kuntaapi.server.controllers.PageController;
 import fi.otavanopisto.kuntaapi.server.controllers.TileController;
@@ -48,7 +49,6 @@ import fi.otavanopisto.kuntaapi.server.integrations.JobProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.JobProvider.JobOrder;
 import fi.otavanopisto.kuntaapi.server.integrations.JobProvider.JobOrderDirection;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
-import fi.otavanopisto.kuntaapi.server.integrations.NewsProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.OrganizationServiceProvider;
 import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
 import fi.otavanopisto.kuntaapi.server.rest.model.Banner;
@@ -104,6 +104,9 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   @Inject
   private TileController tileController;
+
+  @Inject
+  private NewsController newsController;
   
   @Inject
   private HttpCacheController httpCacheController;
@@ -113,9 +116,6 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   
   @Inject
   private Instance<EventProvider> eventProviders;
-
-  @Inject
-  private Instance<NewsProvider> newsProviders;
 
   @Inject
   private Instance<JobProvider> jobProviders;
@@ -338,12 +338,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
     
-    List<NewsArticle> result = new ArrayList<>();
-   
-    for (NewsProvider newsProvider : getNewsProviders()) {
-      result.addAll(newsProvider.listOrganizationNews(organizationId, getDateTime(publishedBefore), getDateTime(publishedAfter), firstResult, maxResults));
-    }
-    
+    List<NewsArticle> result = newsController.listNewsArticles(getDateTime(publishedBefore), getDateTime(publishedAfter), firstResult, maxResults, organizationId);
     return Response.ok(result)
       .build();
     
@@ -354,12 +349,10 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
     NewsArticleId newsArticleId = toNewsArticleId(newsArticleIdParam);
     
-    for (NewsProvider newsProvider : getNewsProviders()) {
-      NewsArticle newsArticle = newsProvider.findOrganizationNewsArticle(organizationId, newsArticleId);
-      if (newsArticle != null) {
-        return Response.ok(newsArticle)
-          .build();
-      }
+    NewsArticle newsArticle = newsController.findNewsArticle(organizationId, newsArticleId);
+    if (newsArticle != null) {
+      return Response.ok(newsArticle)
+        .build();
     }
     
     return Response.status(Status.NOT_FOUND)
@@ -372,12 +365,10 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     NewsArticleId newsArticleId = toNewsArticleId(newsArticleIdParam);
     AttachmentId attachmentId = toAttachmentId(imageIdParam);
     
-    for (NewsProvider newsProvider : getNewsProviders()) {
-      Attachment attachment = newsProvider.findNewsArticleImage(organizationId, newsArticleId, attachmentId);
-      if (attachment != null) {
-        return Response.ok(attachment)
-          .build();
-      }
+    Attachment attachment = newsController.findNewsArticleImage(organizationId, newsArticleId, attachmentId);
+    if (attachment != null) {
+      return Response.ok(attachment)
+        .build();
     }
     
     return Response.status(Status.NOT_FOUND)
@@ -390,18 +381,16 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     NewsArticleId newsArticleId = toNewsArticleId(newsArticleIdParam);
     AttachmentId attachmentId = toAttachmentId(imageIdParam);
     
-    for (NewsProvider newsProvider : getNewsProviders()) {
-      AttachmentData attachmentData = newsProvider.getNewsArticleImageData(organizationId, newsArticleId, attachmentId, size);
-      if (attachmentData != null) {
-        try (InputStream stream = new ByteArrayInputStream(attachmentData.getData())) {
-          return Response.ok(stream, attachmentData.getType())
-              .build();
-        } catch (IOException e) {
-          logger.log(Level.SEVERE, FAILED_TO_STREAM_IMAGE_TO_CLIENT, e);
-          return Response.status(Status.INTERNAL_SERVER_ERROR)
-            .entity(INTERNAL_SERVER_ERROR)
+    AttachmentData attachmentData = newsController.getNewsArticleImageData(organizationId, newsArticleId, attachmentId, size);
+    if (attachmentData != null) {
+      try (InputStream stream = new ByteArrayInputStream(attachmentData.getData())) {
+        return Response.ok(stream, attachmentData.getType())
             .build();
-        }
+      } catch (IOException e) {
+        logger.log(Level.SEVERE, FAILED_TO_STREAM_IMAGE_TO_CLIENT, e);
+        return Response.status(Status.INTERNAL_SERVER_ERROR)
+          .entity(INTERNAL_SERVER_ERROR)
+          .build();
       }
     }
     
@@ -414,12 +403,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
     NewsArticleId newsArticleId = toNewsArticleId(newsArticleIdParam);
     
-    List<Attachment> result = new ArrayList<>();
-   
-    for (NewsProvider newsProvider : getNewsProviders()) {
-      result.addAll(newsProvider.listNewsArticleImages(organizationId, newsArticleId));
-    }
-    
+    List<Attachment> result = newsController.listNewsArticleImages(organizationId, newsArticleId);
     return Response.ok(result)
       .build();
   }
@@ -1222,17 +1206,6 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     List<EventProvider> result = new ArrayList<>();
     
     Iterator<EventProvider> iterator = eventProviders.iterator();
-    while (iterator.hasNext()) {
-      result.add(iterator.next());
-    }
-    
-    return Collections.unmodifiableList(result);
-  }
-  
-  private List<NewsProvider> getNewsProviders() {
-    List<NewsProvider> result = new ArrayList<>();
-    
-    Iterator<NewsProvider> iterator = newsProviders.iterator();
     while (iterator.hasNext()) {
       result.add(iterator.next());
     }
