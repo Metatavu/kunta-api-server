@@ -25,6 +25,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 
 import fi.otavanopisto.kuntaapi.server.controllers.HttpCacheController;
+import fi.otavanopisto.kuntaapi.server.controllers.MenuController;
 import fi.otavanopisto.kuntaapi.server.controllers.OrganizationController;
 import fi.otavanopisto.kuntaapi.server.controllers.PageController;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
@@ -46,7 +47,6 @@ import fi.otavanopisto.kuntaapi.server.integrations.JobProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.JobProvider.JobOrder;
 import fi.otavanopisto.kuntaapi.server.integrations.JobProvider.JobOrderDirection;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
-import fi.otavanopisto.kuntaapi.server.integrations.MenuProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.NewsProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.OrganizationServiceProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.TileProvider;
@@ -95,6 +95,9 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   
   @Inject
   private PageController pageController;
+
+  @Inject
+  private MenuController menuController;
   
   @Inject
   private HttpCacheController httpCacheController;
@@ -113,9 +116,6 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   @Inject
   private Instance<TileProvider> tileProviders;
-
-  @Inject
-  private Instance<MenuProvider> menuProviders;
 
   @Inject
   private Instance<JobProvider> jobProviders;
@@ -876,11 +876,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createNotFound(NOT_FOUND);
     }
     
-    List<Menu> result = new ArrayList<>();
-    
-    for (MenuProvider menuProvider : getMenuProviders()) {
-      result.addAll(menuProvider.listOrganizationMenus(organizationId, slug));
-    }
+    List<Menu> result = menuController.listMenus(slug, organizationId);
     
     return Response.ok(result)
       .build();
@@ -898,11 +894,9 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createNotFound(NOT_FOUND);
     }
     
-    for (MenuProvider menuProvider : getMenuProviders()) {
-      Menu menu = menuProvider.findOrganizationMenu(organizationId, menuId);
-      if (menu != null) {
-        return Response.ok(menu).build();
-      }
+    Menu menu = menuController.findMenu(organizationId, menuId);
+    if (menu != null) {
+      return Response.ok(menu).build();
     }
     
     return createNotFound(NOT_FOUND);
@@ -922,11 +916,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createNotFound(NOT_FOUND);
     }
     
-    List<MenuItem> result = new ArrayList<>();
-    
-    for (MenuProvider menuProvider : getMenuProviders()) {
-      result.addAll(menuProvider.listOrganizationMenuItems(organizationId, menuId));
-    }
+    List<MenuItem> result = menuController.listMenuItems(organizationId, menuId);
     
     return Response.ok(result)
       .build();
@@ -949,11 +939,9 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createNotFound(NOT_FOUND);
     }
     
-    for (MenuProvider menuProvider : getMenuProviders()) {
-      MenuItem menuItem = menuProvider.findOrganizationMenuItem(organizationId, menuId, menuItemId);
-      if (menuItem != null) {
-        return Response.ok(menuItem).build();
-      }
+    MenuItem menuItem = menuController.findMenuItem(organizationId, menuId, menuItemId);
+    if (menuItem != null) {
+      return Response.ok(menuItem).build();
     }
     
     return createNotFound(NOT_FOUND);
@@ -1245,17 +1233,6 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     List<TileProvider> result = new ArrayList<>();
     
     Iterator<TileProvider> iterator = tileProviders.iterator();
-    while (iterator.hasNext()) {
-      result.add(iterator.next());
-    }
-    
-    return Collections.unmodifiableList(result);
-  }
-  
-  private List<MenuProvider> getMenuProviders() {
-    List<MenuProvider> result = new ArrayList<>();
-    
-    Iterator<MenuProvider> iterator = menuProviders.iterator();
     while (iterator.hasNext()) {
       result.add(iterator.next());
     }
