@@ -19,6 +19,7 @@ import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.NewsProvider;
+import fi.otavanopisto.kuntaapi.server.integrations.management.ManagementApi;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
 import fi.otavanopisto.kuntaapi.server.rest.model.NewsArticle;
@@ -38,7 +39,7 @@ public class MwpNewsProvider extends AbstractMwpProvider implements NewsProvider
   private Logger logger;
   
   @Inject
-  private MwpApi mwpApi;
+  private ManagementApi managementApi;
 
   @Inject
   private IdController idController;
@@ -69,7 +70,7 @@ public class MwpNewsProvider extends AbstractMwpProvider implements NewsProvider
     List<String> categories = null;
     List<String> tags = null;
 
-    ApiResponse<List<Post>> postResponse = mwpApi.getApi(organizationId).wpV2PostsGet(context, page, perPage, search, after, author, authorExclude, before, exclude, include,
+    ApiResponse<List<Post>> postResponse = managementApi.getApi(organizationId).wpV2PostsGet(context, page, perPage, search, after, author, authorExclude, before, exclude, include,
         offset, order, orderby, slug, status, filter, categories, tags);
     if (!postResponse.isOk()) {
       logger.severe(String.format("Post listing failed on [%d] %s", postResponse.getStatus(), postResponse.getMessage()));
@@ -160,7 +161,7 @@ public class MwpNewsProvider extends AbstractMwpProvider implements NewsProvider
       return null;
     }
     
-    ApiResponse<Post> response = mwpApi.getApi(organizationId).wpV2PostsIdGet(kuntaApiId.getId(), null);
+    ApiResponse<Post> response = managementApi.getApi(organizationId).wpV2PostsIdGet(kuntaApiId.getId(), null);
     if (!response.isOk()) {
       logger.severe(String.format("Finding post failed on [%d] %s", response.getStatus(), response.getMessage()));
     } else {

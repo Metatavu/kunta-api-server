@@ -16,6 +16,7 @@ import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.MenuProvider;
+import fi.otavanopisto.kuntaapi.server.integrations.management.ManagementApi;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.rest.model.Menu;
 import fi.otavanopisto.kuntaapi.server.rest.model.MenuItem;
@@ -35,7 +36,7 @@ public class MwpMenuProvider extends AbstractMwpProvider implements MenuProvider
   private Logger logger;
   
   @Inject
-  private MwpApi mwpApi;
+  private ManagementApi managementApi;
 
   @Inject
   private IdController idController;
@@ -46,7 +47,7 @@ public class MwpMenuProvider extends AbstractMwpProvider implements MenuProvider
   @Override
   public List<Menu> listOrganizationMenus(OrganizationId organizationId, String slug) {
     ApiResponse<List<fi.otavanopisto.mwp.client.model.Menu>> response = 
-        mwpApi.getApi(organizationId).kuntaApiMenusGet(slug);
+        managementApi.getApi(organizationId).kuntaApiMenusGet(slug);
     
     if (!response.isOk()) {
       logger.severe(String.format("Menu listing failed on [%d] %s", response.getStatus(), response.getMessage()));
@@ -70,7 +71,7 @@ public class MwpMenuProvider extends AbstractMwpProvider implements MenuProvider
     }
     
     ApiResponse<fi.otavanopisto.mwp.client.model.Menu> response = 
-        mwpApi.getApi(organizationId).kuntaApiMenusIdGet(mwpId.getId());
+        managementApi.getApi(organizationId).kuntaApiMenusIdGet(mwpId.getId());
     
     if (!response.isOk()) {
       logger.severe(String.format("Menu finding failed on [%d] %s", response.getStatus(), response.getMessage()));
@@ -93,7 +94,7 @@ public class MwpMenuProvider extends AbstractMwpProvider implements MenuProvider
       return Collections.emptyList();
     }
     
-    ApiResponse<List<fi.otavanopisto.mwp.client.model.Menuitem>> response = mwpApi.getApi(organizationId)
+    ApiResponse<List<fi.otavanopisto.mwp.client.model.Menuitem>> response = managementApi.getApi(organizationId)
         .kuntaApiMenusMenuIdItemsGet(mwpId.getId());
     
     if (!response.isOk()) {
@@ -128,7 +129,7 @@ public class MwpMenuProvider extends AbstractMwpProvider implements MenuProvider
 
   private MenuItem findMenuItem(OrganizationId organizationId, MenuId mwpMenuId, MenuItemId mwpItemId) {
     ApiResponse<List<fi.otavanopisto.mwp.client.model.Menuitem>> response =  
-        mwpApi.getApi(organizationId).kuntaApiMenusMenuIdItemsGet(mwpMenuId.getId());
+        managementApi.getApi(organizationId).kuntaApiMenusMenuIdItemsGet(mwpMenuId.getId());
     
     if (!response.isOk()) {
       logger.severe(String.format("Menu finding failed on [%d] %s", response.getStatus(), response.getMessage()));
