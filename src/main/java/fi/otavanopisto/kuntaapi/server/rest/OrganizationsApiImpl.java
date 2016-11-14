@@ -339,9 +339,14 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
     
     List<NewsArticle> result = newsController.listNewsArticles(getDateTime(publishedBefore), getDateTime(publishedAfter), firstResult, maxResults, organizationId);
-    return Response.ok(result)
-      .build();
     
+    List<String> ids = httpCacheController.getEntityIds(result);
+    Response notModified = httpCacheController.getNotModified(request, ids);
+    if (notModified != null) {
+      return notModified;
+    }
+
+    return httpCacheController.sendModified(result, ids);
   }
 
   @Override
@@ -349,11 +354,15 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
     NewsArticleId newsArticleId = toNewsArticleId(newsArticleIdParam);
     
+    Response notModified = httpCacheController.getNotModified(request, newsArticleId);
+    if (notModified != null) {
+      return notModified;
+    }
+    
     NewsArticle newsArticle = newsController.findNewsArticle(organizationId, newsArticleId);
     if (newsArticle != null) {
-      return Response.ok(newsArticle)
-        .build();
-    }
+      return httpCacheController.sendModified(newsArticle, newsArticle.getId());
+    }    
     
     return Response.status(Status.NOT_FOUND)
       .build();
@@ -365,10 +374,14 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     NewsArticleId newsArticleId = toNewsArticleId(newsArticleIdParam);
     AttachmentId attachmentId = toAttachmentId(imageIdParam);
     
+    Response notModified = httpCacheController.getNotModified(request, attachmentId);
+    if (notModified != null) {
+      return notModified;
+    }
+    
     Attachment attachment = newsController.findNewsArticleImage(organizationId, newsArticleId, attachmentId);
     if (attachment != null) {
-      return Response.ok(attachment)
-        .build();
+      return httpCacheController.sendModified(attachment, attachment.getId());
     }
     
     return Response.status(Status.NOT_FOUND)
@@ -380,20 +393,17 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
     NewsArticleId newsArticleId = toNewsArticleId(newsArticleIdParam);
     AttachmentId attachmentId = toAttachmentId(imageIdParam);
+   
+    Response notModified = httpCacheController.getNotModified(request, attachmentId);
+    if (notModified != null) {
+      return notModified;
+    }
     
     AttachmentData attachmentData = newsController.getNewsArticleImageData(organizationId, newsArticleId, attachmentId, size);
     if (attachmentData != null) {
-      try (InputStream stream = new ByteArrayInputStream(attachmentData.getData())) {
-        return Response.ok(stream, attachmentData.getType())
-            .build();
-      } catch (IOException e) {
-        logger.log(Level.SEVERE, FAILED_TO_STREAM_IMAGE_TO_CLIENT, e);
-        return Response.status(Status.INTERNAL_SERVER_ERROR)
-          .entity(INTERNAL_SERVER_ERROR)
-          .build();
-      }
+      return httpCacheController.streamModified(attachmentData.getData(), attachmentData.getType(), attachmentId);
     }
-    
+
     return Response.status(Status.NOT_FOUND)
       .build();
   }
@@ -404,8 +414,13 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     NewsArticleId newsArticleId = toNewsArticleId(newsArticleIdParam);
     
     List<Attachment> result = newsController.listNewsArticleImages(organizationId, newsArticleId);
-    return Response.ok(result)
-      .build();
+    List<String> ids = httpCacheController.getEntityIds(result);
+    Response notModified = httpCacheController.getNotModified(request, ids);
+    if (notModified != null) {
+      return notModified;
+    }
+
+    return httpCacheController.sendModified(result, ids);
   }
 
   /* Banners */
