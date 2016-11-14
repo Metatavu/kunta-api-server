@@ -822,7 +822,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
     PageId pageId = toPageId(pageIdParam);
     
-    List<Attachment> result = pageController.listPages(organizationId, pageId);
+    List<Attachment> result = pageController.listPageImages(organizationId, pageId);
     
     return Response.ok(result)
       .build();
