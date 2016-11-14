@@ -20,18 +20,18 @@ import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 
 import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
-import fi.otavanopisto.kuntaapi.server.discover.OrganizationIdUpdateRequest;
+import fi.otavanopisto.kuntaapi.server.discover.PageIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.mwp.MwpConsts;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
-import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 import fi.otavanopisto.kuntaapi.server.system.SystemUtils;
 import fi.otavanopisto.mwp.client.ApiResponse;
 import fi.otavanopisto.mwp.client.DefaultApi;
@@ -44,7 +44,7 @@ import fi.otavanopisto.mwp.client.model.Page;
 @SuppressWarnings ("squid:S3306")
 public class ManagementPageEntityUpdater extends EntityUpdater {
 
-  private static final int TIMER_INTERVAL = 5000;
+  private static final int TIMER_INTERVAL = 1000;
 
   @Inject
   private Logger logger;
@@ -56,9 +56,6 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
   private ManagementImageLoader managementImageLoader;
   
   @Inject
-  private OrganizationSettingController organizationSettingController; 
-  
-  @Inject
   private IdentifierController identifierController;
   
   @Inject
@@ -68,7 +65,7 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
   private TimerService timerService;
 
   private boolean stopped;
-  private List<OrganizationId> queue;
+  private List<PageIdUpdateRequest> queue;
 
   @PostConstruct
   public void init() {
@@ -98,54 +95,46 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
   }
   
   @Asynchronous
-  public void onOrganizationIdUpdateRequest(@Observes OrganizationIdUpdateRequest event) {
+  public void onOrganizationIdUpdateRequest(@Observes PageIdUpdateRequest event) {
     if (!stopped) {
-      OrganizationId organizationId = event.getId();
+      PageId pageId = event.getId();
       
-      if (organizationSettingController.getSettingValue(organizationId, MwpConsts.ORGANIZATION_SETTING_BASEURL) == null) {
+      if (!StringUtils.equals(pageId.getSource(), MwpConsts.IDENTIFIER_NAME)) {
         return;
       }
       
       if (event.isPriority()) {
-        queue.remove(organizationId);
-        queue.add(0, organizationId);
+        queue.remove(event);
+        queue.add(0, event);
       } else {
-        if (!queue.contains(organizationId)) {
-          queue.add(organizationId);
+        if (!queue.contains(event)) {
+          queue.add(event);
         }
       }
     }
   }
-
+  
   @Timeout
   public void timeout(Timer timer) {
     if (!stopped) {
       if (!queue.isEmpty()) {
-        updateManagementPages(queue.remove(0));
+        PageIdUpdateRequest updateRequest = queue.remove(0);
+        updateManagementPage(updateRequest.getOrganizationId(), updateRequest.getId());
       }
 
       startTimer(SystemUtils.inTestMode() ? 1000 : TIMER_INTERVAL);
     }
   }
-
-  private void updateManagementPages(OrganizationId organizationId) {
+  
+  private void updateManagementPage(OrganizationId organizationId, PageId pageId) {
     DefaultApi api = managementApi.getApi(organizationId);
     
-    List<Page> managementPages = listManagementPages(api, organizationId);
-    for (Page managementPage : managementPages) {
-      updateManagementPage(api, managementPage);
-    }
-  }
-
-  private List<Page> listManagementPages(DefaultApi api, OrganizationId organizationId) {
-    ApiResponse<List<Page>> response = api.wpV2PagesGet(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    ApiResponse<Page> response = api.wpV2PagesIdGet(pageId.getId(), null);
     if (response.isOk()) {
-      return response.getResponse();
+      updateManagementPage(api, response.getResponse());
     } else {
-      logger.warning(String.format("Listing organization %s pages failed on [%d] %s", organizationId.getId(), response.getStatus(), response.getMessage()));
+      logger.warning(String.format("Find organization %s page %s failed on [%d] %s", organizationId.getId(), pageId.toString(), response.getStatus(), response.getMessage()));
     }
-    
-    return Collections.emptyList();
   }
   
   private void updateManagementPage(DefaultApi api, Page managementPage) {

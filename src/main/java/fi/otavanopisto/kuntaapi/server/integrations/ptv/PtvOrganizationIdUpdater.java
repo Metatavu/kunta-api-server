@@ -24,7 +24,7 @@ import fi.otavanopisto.restfulptv.client.model.Organization;
 @ApplicationScoped
 @Singleton
 @SuppressWarnings ("squid:S3306")
-public class PtvOrganizationIdUpdater implements IdUpdater {
+public class PtvOrganizationIdUpdater extends IdUpdater {
 
   private static final int WARMUP_TIME = 1000 * 10;
   private static final int TIMER_INTERVAL = 5000;

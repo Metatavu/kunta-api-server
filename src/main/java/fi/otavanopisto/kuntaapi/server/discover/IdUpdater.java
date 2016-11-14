@@ -1,11 +1,12 @@
 package fi.otavanopisto.kuntaapi.server.discover;
 
-public interface IdUpdater {
+@SuppressWarnings ("squid:S1610")
+public abstract class IdUpdater {
   
-  public void startTimer();
+  public abstract void startTimer();
   
-  public void stopTimer();
+  public abstract void stopTimer();
   
-  public String getName();
+  public abstract String getName();
   
 }
