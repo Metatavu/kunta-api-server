@@ -877,9 +877,13 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     }
     
     List<Menu> result = menuController.listMenus(slug, organizationId);
-    
-    return Response.ok(result)
-      .build();
+    List<String> ids = httpCacheController.getEntityIds(result);
+    Response notModified = httpCacheController.getNotModified(request, ids);
+    if (notModified != null) {
+      return notModified;
+    }
+
+    return httpCacheController.sendModified(result, ids);
   }
   
   @Override
