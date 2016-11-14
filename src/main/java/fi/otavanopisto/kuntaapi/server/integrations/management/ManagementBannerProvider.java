@@ -1,4 +1,4 @@
-package fi.otavanopisto.kuntaapi.server.integrations.mwp;
+package fi.otavanopisto.kuntaapi.server.integrations.management;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -17,8 +17,8 @@ import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.BannerProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
-import fi.otavanopisto.kuntaapi.server.integrations.management.ManagementApi;
-import fi.otavanopisto.kuntaapi.server.integrations.management.ManagementImageLoader;
+import fi.otavanopisto.kuntaapi.server.integrations.mwp.AbstractMwpProvider;
+import fi.otavanopisto.kuntaapi.server.integrations.mwp.MwpConsts;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
 import fi.otavanopisto.kuntaapi.server.rest.model.Banner;
@@ -31,7 +31,7 @@ import fi.otavanopisto.mwp.client.model.Attachment.MediaTypeEnum;
  * @author Antti Leppä
  */
 @RequestScoped
-public class MwpBannerProvider extends AbstractMwpProvider implements BannerProvider {
+public class ManagementBannerProvider extends AbstractMwpProvider implements BannerProvider {
   
   @Inject
   private Logger logger;
@@ -79,9 +79,9 @@ public class MwpBannerProvider extends AbstractMwpProvider implements BannerProv
 
   @Override
   public Banner findOrganizationBanner(OrganizationId organizationId, BannerId bannerId) {
-    fi.otavanopisto.mwp.client.model.Banner mwpBanner = findBannerByBannerId(organizationId, bannerId);
-    if (mwpBanner != null) {
-      return translateBanner(mwpBanner);
+    fi.otavanopisto.mwp.client.model.Banner managementBanner = findBannerByBannerId(organizationId, bannerId);
+    if (managementBanner != null) {
+      return translateBanner(managementBanner);
     }
   
     return null;
@@ -89,9 +89,9 @@ public class MwpBannerProvider extends AbstractMwpProvider implements BannerProv
 
   @Override
   public List<Attachment> listOrganizationBannerImages(OrganizationId organizationId, BannerId bannerId) {
-    fi.otavanopisto.mwp.client.model.Banner mwpBanner = findBannerByBannerId(organizationId, bannerId);
-    if (mwpBanner != null) {
-      Integer featuredMediaId = mwpBanner.getFeaturedMedia();
+    fi.otavanopisto.mwp.client.model.Banner managementBanner = findBannerByBannerId(organizationId, bannerId);
+    if (managementBanner != null) {
+      Integer featuredMediaId = managementBanner.getFeaturedMedia();
       if (featuredMediaId != null) {
         fi.otavanopisto.mwp.client.model.Attachment featuredMedia = findMedia(organizationId, featuredMediaId);
         if ((featuredMedia != null) && (featuredMedia.getMediaType() == MediaTypeEnum.IMAGE)) {
@@ -105,12 +105,12 @@ public class MwpBannerProvider extends AbstractMwpProvider implements BannerProv
 
   @Override
   public Attachment findBannerImage(OrganizationId organizationId, BannerId bannerId, AttachmentId attachmentId) {
-    fi.otavanopisto.mwp.client.model.Banner banner = findBannerByBannerId(organizationId, bannerId);
-    if (banner != null) {
-      Integer featuredMediaId = banner.getFeaturedMedia();
+    fi.otavanopisto.mwp.client.model.Banner managementBanner = findBannerByBannerId(organizationId, bannerId);
+    if (managementBanner != null) {
+      Integer featuredMediaId = managementBanner.getFeaturedMedia();
       if (featuredMediaId != null) {
-        AttachmentId mwpAttachmentId = getImageAttachmentId(featuredMediaId);
-        if (!idController.idsEqual(attachmentId, mwpAttachmentId)) {
+        AttachmentId managementAttachmentId = getImageAttachmentId(featuredMediaId);
+        if (!idController.idsEqual(attachmentId, managementAttachmentId)) {
           return null;
         }
         
@@ -164,31 +164,31 @@ public class MwpBannerProvider extends AbstractMwpProvider implements BannerProv
     return null;
   }
 
-  private List<Banner> translateBanners(List<fi.otavanopisto.mwp.client.model.Banner> mwpBanners) {
+  private List<Banner> translateBanners(List<fi.otavanopisto.mwp.client.model.Banner> managementBanners) {
     List<Banner> result = new ArrayList<>();
     
-    for (fi.otavanopisto.mwp.client.model.Banner mwpBanner : mwpBanners) {
-      result.add(translateBanner(mwpBanner));
+    for (fi.otavanopisto.mwp.client.model.Banner managementBanner : managementBanners) {
+      result.add(translateBanner(managementBanner));
     }
     
     return result;
   }
 
-  private Banner translateBanner(fi.otavanopisto.mwp.client.model.Banner mwpBanner) {
+  private Banner translateBanner(fi.otavanopisto.mwp.client.model.Banner managementBanner) {
     Banner banner = new Banner();
     
-    BannerId mwpId = new BannerId(MwpConsts.IDENTIFIER_NAME, String.valueOf(mwpBanner.getId()));
-    BannerId kuntaApiId = idController.translateBannerId(mwpId, KuntaApiConsts.IDENTIFIER_NAME);
-    if (kuntaApiId == null) {
-      logger.info(String.format("Found new news article %d", mwpBanner.getId()));
-      Identifier newIdentifier = identifierController.createIdentifier(mwpId);
-      kuntaApiId = new BannerId(KuntaApiConsts.IDENTIFIER_NAME, newIdentifier.getKuntaApiId());
+    BannerId managementBannerId = new BannerId(MwpConsts.IDENTIFIER_NAME, String.valueOf(managementBanner.getId()));
+    BannerId kuntaApiBannerId = idController.translateBannerId(managementBannerId, KuntaApiConsts.IDENTIFIER_NAME);
+    if (kuntaApiBannerId == null) {
+      logger.info(String.format("Found new news article %d", managementBanner.getId()));
+      Identifier newIdentifier = identifierController.createIdentifier(managementBannerId);
+      kuntaApiBannerId = new BannerId(KuntaApiConsts.IDENTIFIER_NAME, newIdentifier.getKuntaApiId());
     }
     
-    banner.setContents(mwpBanner.getContent().getRendered());
-    banner.setId(kuntaApiId.getId());
-    banner.setLink(mwpBanner.getBannerLink());
-    banner.setTitle(mwpBanner.getTitle().getRendered());
+    banner.setContents(managementBanner.getContent().getRendered());
+    banner.setId(kuntaApiBannerId.getId());
+    banner.setLink(managementBanner.getBannerLink());
+    banner.setTitle(managementBanner.getTitle().getRendered());
     
     return banner;
   }
