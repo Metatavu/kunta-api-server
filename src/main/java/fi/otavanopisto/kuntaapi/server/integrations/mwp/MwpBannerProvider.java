@@ -18,6 +18,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.BannerProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.management.ManagementApi;
+import fi.otavanopisto.kuntaapi.server.integrations.management.ManagementImageLoader;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
 import fi.otavanopisto.kuntaapi.server.rest.model.Banner;
@@ -34,6 +35,9 @@ public class MwpBannerProvider extends AbstractMwpProvider implements BannerProv
   
   @Inject
   private Logger logger;
+  
+  @Inject
+  private ManagementImageLoader managementImageLoader;
   
   @Inject
   private ManagementApi managementApi;
@@ -131,8 +135,7 @@ public class MwpBannerProvider extends AbstractMwpProvider implements BannerProv
     
     fi.otavanopisto.mwp.client.model.Attachment featuredMedia = findMedia(organizationId, mediaId);
     if (featuredMedia.getMediaType() == MediaTypeEnum.IMAGE) {
-      AttachmentData imageData = getImageData(featuredMedia.getSourceUrl());
-      
+      AttachmentData imageData = managementImageLoader.getImageData(featuredMedia.getSourceUrl());
       if (size != null) {
         return scaleImage(imageData, size);
       } else {

@@ -112,7 +112,7 @@ public class PageController {
     return null;
   }
 
-  public List<Attachment> listPages(OrganizationId organizationId, PageId pageId) {
+  public List<Attachment> listPageImages(OrganizationId organizationId, PageId pageId) {
     List<Attachment> result = new ArrayList<>();
    
     for (PageProvider pageProvider : getPageProviders()) {

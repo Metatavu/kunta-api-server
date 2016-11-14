@@ -20,6 +20,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.NewsProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.management.ManagementApi;
+import fi.otavanopisto.kuntaapi.server.integrations.management.ManagementImageLoader;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
 import fi.otavanopisto.kuntaapi.server.rest.model.NewsArticle;
@@ -41,6 +42,9 @@ public class MwpNewsProvider extends AbstractMwpProvider implements NewsProvider
   @Inject
   private ManagementApi managementApi;
 
+  @Inject
+  private ManagementImageLoader managementImageLoader;
+  
   @Inject
   private IdController idController;
   
@@ -141,7 +145,7 @@ public class MwpNewsProvider extends AbstractMwpProvider implements NewsProvider
     
     fi.otavanopisto.mwp.client.model.Attachment featuredMedia = findMedia(organizationId, mediaId);
     if (featuredMedia.getMediaType() == MediaTypeEnum.IMAGE) {
-      AttachmentData imageData = getImageData(featuredMedia.getSourceUrl());
+      AttachmentData imageData = managementImageLoader.getImageData(featuredMedia.getSourceUrl());
       
       if (size != null) {
         return scaleImage(imageData, size);

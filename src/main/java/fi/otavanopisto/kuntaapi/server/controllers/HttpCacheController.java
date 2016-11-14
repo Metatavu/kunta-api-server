@@ -1,5 +1,9 @@
 package fi.otavanopisto.kuntaapi.server.controllers;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -14,6 +18,8 @@ import javax.ws.rs.core.EntityTag;
 import javax.ws.rs.core.Request;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.ResponseBuilder;
+import javax.ws.rs.core.Response.Status;
+import javax.ws.rs.core.StreamingOutput;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -25,6 +31,9 @@ import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 @ApplicationScoped
 public class HttpCacheController {
   
+  private static final String INTERNAL_SERVER_ERROR = "Internal Server Error";
+  private static final String FAILED_TO_STREAM_DATA_TO_CLIENT = "Failed to stream data to client";
+
   @Inject
   private Logger logger;
   
@@ -101,6 +110,31 @@ public class HttpCacheController {
       .tag(tag)
       .build();
   }
+
+  public Response streamModified(byte[] data, String type, Id id) {
+    ResponseBuilder responseBuilder;
+    
+    EntityTag tag = getEntityTag(id.getId());
+    
+    try (InputStream byteStream = new ByteArrayInputStream(data)) {
+      responseBuilder = Response.ok(new Stream(byteStream), type);
+    } catch (IOException e) {
+      logger.log(Level.SEVERE, FAILED_TO_STREAM_DATA_TO_CLIENT, e);
+      return Response.status(Status.INTERNAL_SERVER_ERROR)
+        .entity(INTERNAL_SERVER_ERROR)
+        .build();
+    }    
+    
+    if (tag != null) {
+      CacheControl cacheControl = new CacheControl();
+      cacheControl.setMustRevalidate(true);
+      responseBuilder
+        .cacheControl(cacheControl)
+        .tag(tag);
+    }
+    
+    return responseBuilder.build();
+  }
   
   public List<String> getEntityIds(List<?> entities) {
     if (entities.isEmpty()) {
@@ -142,6 +176,29 @@ public class HttpCacheController {
     }
     
     return new EntityTag(DigestUtils.md5Hex(StringUtils.join(ids, '-')), true);
+  }
+  
+  private class Stream implements StreamingOutput {
+    
+    private InputStream inputStream;
+    
+    public Stream(InputStream inputStream) {
+      this.inputStream = inputStream;
+    }
+
+    @Override
+    public void write(OutputStream output) throws IOException {
+      byte[] buffer = new byte[1024 * 100];
+      int bytesRead;
+      
+      while ((bytesRead = inputStream.read(buffer, 0, buffer.length)) != -1) {
+        output.write(buffer, 0, bytesRead);
+        output.flush();
+      }
+      
+      output.flush();
+    }
+    
   }
   
 }

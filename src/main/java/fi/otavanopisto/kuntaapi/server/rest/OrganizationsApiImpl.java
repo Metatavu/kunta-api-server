@@ -822,10 +822,15 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
     PageId pageId = toPageId(pageIdParam);
     
-    List<Attachment> result = pageController.listPages(organizationId, pageId);
+    List<Attachment> result = pageController.listPageImages(organizationId, pageId);
     
-    return Response.ok(result)
-      .build();
+    List<String> ids = httpCacheController.getEntityIds(result);
+    Response notModified = httpCacheController.getNotModified(request, ids);
+    if (notModified != null) {
+      return notModified;
+    }
+
+    return httpCacheController.sendModified(result, ids);
   }
 
   @Override
@@ -834,10 +839,14 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     PageId pageId = toPageId(pageIdParam);
     AttachmentId attachmentId = toAttachmentId(imageIdParam);
     
+    Response notModified = httpCacheController.getNotModified(request, attachmentId);
+    if (notModified != null) {
+      return notModified;
+    }
+    
     Attachment attachment = pageController.findPageImage(organizationId, pageId, attachmentId);
     if (attachment != null) {
-      return Response.ok(attachment)
-        .build();
+      return httpCacheController.sendModified(attachment, attachment.getId());
     }
     
     return Response.status(Status.NOT_FOUND)
@@ -850,17 +859,14 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     PageId pageId = toPageId(pageIdParam);
     AttachmentId attachmentId = toAttachmentId(imageIdParam);
     
+    Response notModified = httpCacheController.getNotModified(request, attachmentId);
+    if (notModified != null) {
+      return notModified;
+    }
+    
     AttachmentData attachmentData = pageController.getPageAttachmentData(organizationId, pageId, attachmentId, size);
     if (attachmentData != null) {
-      try (InputStream stream = new ByteArrayInputStream(attachmentData.getData())) {
-        return Response.ok(stream, attachmentData.getType())
-            .build();
-      } catch (IOException e) {
-        logger.log(Level.SEVERE, FAILED_TO_STREAM_IMAGE_TO_CLIENT, e);
-        return Response.status(Status.INTERNAL_SERVER_ERROR)
-          .entity(INTERNAL_SERVER_ERROR)
-          .build();
-      }
+      return httpCacheController.streamModified(attachmentData.getData(), attachmentData.getType(), attachmentId);
     }
     
     return Response.status(Status.NOT_FOUND)

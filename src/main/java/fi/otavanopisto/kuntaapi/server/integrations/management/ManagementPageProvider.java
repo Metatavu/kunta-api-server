@@ -1,4 +1,4 @@
-package fi.otavanopisto.kuntaapi.server.integrations.mwp;
+package fi.otavanopisto.kuntaapi.server.integrations.management;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -11,7 +11,6 @@ import javax.inject.Inject;
 
 import org.apache.commons.lang3.StringUtils;
 
-import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
@@ -19,8 +18,8 @@ import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.PageProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.management.ManagementApi;
-import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
+import fi.otavanopisto.kuntaapi.server.integrations.mwp.AbstractMwpProvider;
+import fi.otavanopisto.kuntaapi.server.integrations.mwp.MwpConsts;
 import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
 import fi.otavanopisto.kuntaapi.server.rest.model.LocalizedValue;
 import fi.otavanopisto.kuntaapi.server.rest.model.Page;
@@ -33,33 +32,33 @@ import fi.otavanopisto.mwp.client.model.Attachment.MediaTypeEnum;
  * @author Antti Leppä
  */
 @RequestScoped
-public class MwpPageProvider extends AbstractMwpProvider implements PageProvider {
+public class ManagementPageProvider extends AbstractMwpProvider implements PageProvider {
   
   @Inject
   private Logger logger;
   
   @Inject
   private ManagementApi managementApi;
+  
+  @Inject
+  private ManagementImageLoader managementImageLoader;
 
   @Inject
   private IdController idController;
   
-  @Inject
-  private IdentifierController identifierController;
-  
   @Override
   public List<Page> listOrganizationPages(OrganizationId organizationId, PageId parentId, boolean onlyRootPages, String path) {
     if (StringUtils.isNotBlank(path)) {
-      fi.otavanopisto.mwp.client.model.Page mwpPage = findPageByPath(organizationId, path);
-      if (mwpPage == null) {
+      fi.otavanopisto.mwp.client.model.Page managementPage = findPageByPath(organizationId, path);
+      if (managementPage == null) {
         return Collections.emptyList();
       }
       
-      if (parentId != null && !idController.idsEqual(parentId, translatePageId(mwpPage.getParent()))) {
+      if (parentId != null && !idController.idsEqual(parentId, translatePageId(managementPage.getParent()))) {
         return Collections.emptyList();
       }
     
-      return Collections.singletonList(translatePage(mwpPage));
+      return Collections.singletonList(translatePage(managementPage));
     } else {
       return listPages(organizationId, parentId, onlyRootPages);
     }
@@ -67,9 +66,9 @@ public class MwpPageProvider extends AbstractMwpProvider implements PageProvider
 
   @Override
   public Page findOrganizationPage(OrganizationId organizationId, PageId pageId) {
-    fi.otavanopisto.mwp.client.model.Page mwpPage = findPageByPageId(organizationId, pageId);
-    if (mwpPage != null) {
-      return translatePage(mwpPage);
+    fi.otavanopisto.mwp.client.model.Page managementPage = findPageByPageId(organizationId, pageId);
+    if (managementPage != null) {
+      return translatePage(managementPage);
     }
   
     return null;
@@ -78,9 +77,9 @@ public class MwpPageProvider extends AbstractMwpProvider implements PageProvider
   @Override
   @SuppressWarnings ("squid:S1168")
   public List<LocalizedValue> findOrganizationPageContents(OrganizationId organizationId, PageId pageId) {
-    fi.otavanopisto.mwp.client.model.Page mwpPage = findPageByPageId(organizationId, pageId);
-    if (mwpPage != null) {
-      return translateLocalized(mwpPage.getContent().getRendered());
+    fi.otavanopisto.mwp.client.model.Page managementPage = findPageByPageId(organizationId, pageId);
+    if (managementPage != null) {
+      return translateLocalized(managementPage.getContent().getRendered());
     }
   
     // Returning null to indacate that this provider could not find contents for this page
@@ -90,9 +89,9 @@ public class MwpPageProvider extends AbstractMwpProvider implements PageProvider
 
   @Override
   public List<Attachment> listOrganizationPageImages(OrganizationId organizationId, PageId pageId) {
-    fi.otavanopisto.mwp.client.model.Page mwpPage = findPageByPageId(organizationId, pageId);
-    if (mwpPage != null) {
-      Integer featuredMediaId = mwpPage.getFeaturedMedia();
+    fi.otavanopisto.mwp.client.model.Page managementPage = findPageByPageId(organizationId, pageId);
+    if (managementPage != null) {
+      Integer featuredMediaId = managementPage.getFeaturedMedia();
       if (featuredMediaId != null) {
         fi.otavanopisto.mwp.client.model.Attachment featuredMedia = findMedia(organizationId, featuredMediaId);
         if ((featuredMedia != null) && (featuredMedia.getMediaType() == MediaTypeEnum.IMAGE)) {
@@ -110,8 +109,8 @@ public class MwpPageProvider extends AbstractMwpProvider implements PageProvider
     if (page != null) {
       Integer featuredMediaId = page.getFeaturedMedia();
       if (featuredMediaId != null) {
-        AttachmentId mwpAttachmentId = getImageAttachmentId(featuredMediaId);
-        if (!idController.idsEqual(attachmentId, mwpAttachmentId)) {
+        AttachmentId managementAttachmentId = getImageAttachmentId(featuredMediaId);
+        if (!idController.idsEqual(attachmentId, managementAttachmentId)) {
           return null;
         }
         
@@ -136,7 +135,7 @@ public class MwpPageProvider extends AbstractMwpProvider implements PageProvider
     
     fi.otavanopisto.mwp.client.model.Attachment featuredMedia = findMedia(organizationId, mediaId);
     if (featuredMedia.getMediaType() == MediaTypeEnum.IMAGE) {
-      AttachmentData imageData = getImageData(featuredMedia.getSourceUrl());
+      AttachmentData imageData = managementImageLoader.getImageData(featuredMedia.getSourceUrl());
       
       if (size != null) {
         return scaleImage(imageData, size);
@@ -203,13 +202,13 @@ public class MwpPageProvider extends AbstractMwpProvider implements PageProvider
   }
   
   private fi.otavanopisto.mwp.client.model.Page findPageByPageId(OrganizationId organizationId, PageId pageId) {
-    PageId mwpPageId = idController.translatePageId(pageId, MwpConsts.IDENTIFIER_NAME);
-    if (mwpPageId == null) {
-      logger.severe(String.format("Failed to convert %s into MWP id", pageId.toString()));
+    PageId managementPageId = idController.translatePageId(pageId, MwpConsts.IDENTIFIER_NAME);
+    if (managementPageId == null) {
+      logger.severe(String.format("Failed to convert %s into management page id", pageId.toString()));
       return null;
     }
     
-    ApiResponse<fi.otavanopisto.mwp.client.model.Page> response = managementApi.getApi(organizationId).wpV2PagesIdGet(mwpPageId.getId(), null);
+    ApiResponse<fi.otavanopisto.mwp.client.model.Page> response = managementApi.getApi(organizationId).wpV2PagesIdGet(managementPageId.getId(), null);
     if (!response.isOk()) {
       logger.severe(String.format("Finding page failed on [%d] %s", response.getStatus(), response.getMessage()));
     } else {
@@ -242,13 +241,13 @@ public class MwpPageProvider extends AbstractMwpProvider implements PageProvider
     if (onlyRootPages) {
       parent = Collections.singletonList("0"); 
     } else if (parentId != null) {
-      PageId mwpParentId = idController.translatePageId(parentId, MwpConsts.IDENTIFIER_NAME);
-      if (mwpParentId == null) {
-        logger.severe(String.format("Could not translate %s into mwp service id", parentId.toString()));
+      PageId managementParentId = idController.translatePageId(parentId, MwpConsts.IDENTIFIER_NAME);
+      if (managementParentId == null) {
+        logger.severe(String.format("Could not translate %s into management service id", parentId.toString()));
         return Collections.emptyList();
       }
       
-      parent = Collections.singletonList(mwpParentId.getId()); 
+      parent = Collections.singletonList(managementParentId.getId()); 
     }
     
     ApiResponse<List<fi.otavanopisto.mwp.client.model.Page>> response = managementApi.getApi(organizationId).wpV2PagesGet(
@@ -263,48 +262,46 @@ public class MwpPageProvider extends AbstractMwpProvider implements PageProvider
     return Collections.emptyList();
   }
 
-  private List<Page> translatePages(List<fi.otavanopisto.mwp.client.model.Page> mwpPages) {
+  private List<Page> translatePages(List<fi.otavanopisto.mwp.client.model.Page> managementPages) {
     List<Page> result = new ArrayList<>();
     
-    for (fi.otavanopisto.mwp.client.model.Page mwpPage : mwpPages) {
-      result.add(translatePage(mwpPage));
+    for (fi.otavanopisto.mwp.client.model.Page managementPage : managementPages) {
+      result.add(translatePage(managementPage));
     }
     
     return result;
   }
 
-  private Page translatePage(fi.otavanopisto.mwp.client.model.Page mwpPage) {
+  private Page translatePage(fi.otavanopisto.mwp.client.model.Page managementPage) {
     Page page = new Page();
     
-    PageId mwpId = new PageId(MwpConsts.IDENTIFIER_NAME, String.valueOf(mwpPage.getId()));
-    PageId kuntaApiId = idController.translatePageId(mwpId, KuntaApiConsts.IDENTIFIER_NAME);
-    if (kuntaApiId == null) {
-      logger.info(String.format("Found new page %s", mwpPage.getId()));
-      Identifier newIdentifier = identifierController.createIdentifier(mwpId);
-      kuntaApiId = new PageId(KuntaApiConsts.IDENTIFIER_NAME, newIdentifier.getKuntaApiId());
+    PageId managementPageId = new PageId(MwpConsts.IDENTIFIER_NAME, String.valueOf(managementPage.getId()));
+    PageId kuntaApiPageId = idController.translatePageId(managementPageId, KuntaApiConsts.IDENTIFIER_NAME);
+    if (kuntaApiPageId == null) {
+      logger.severe(String.format("Could not translate page %d into management page id", managementPage.getId()));
+      return null;
     }
     
-    PageId kuntaApiParentId = null;
+    PageId kuntaApiParentPageId = null;
     
-    if (mwpPage.getParent() != null && mwpPage.getParent() > 0) {
-      PageId mwpParentId = new PageId(MwpConsts.IDENTIFIER_NAME,String.valueOf(mwpPage.getParent()));
-      kuntaApiParentId = idController.translatePageId(mwpParentId, KuntaApiConsts.IDENTIFIER_NAME);
-      if (kuntaApiParentId == null) {
-        logger.info(String.format("Found new page %s", mwpParentId.getId()));
-        Identifier newIdentifier = identifierController.createIdentifier(mwpParentId);
-        kuntaApiParentId = new PageId(KuntaApiConsts.IDENTIFIER_NAME, newIdentifier.getKuntaApiId());
+    if (managementPage.getParent() != null && managementPage.getParent() > 0) {
+      PageId managementParentPageId = new PageId(MwpConsts.IDENTIFIER_NAME,String.valueOf(managementPage.getParent()));
+      kuntaApiParentPageId = idController.translatePageId(managementParentPageId, KuntaApiConsts.IDENTIFIER_NAME);
+      if (kuntaApiParentPageId == null) {
+        logger.severe(String.format("Could not translate %d parent page %d into management page id", managementPage.getParent(), managementPage.getId()));
+        return null;
       } 
     }
     
-    page.setTitles(translateLocalized(mwpPage.getTitle().getRendered()));
+    page.setTitles(translateLocalized(managementPage.getTitle().getRendered()));
     
-    page.setId(kuntaApiId.getId());
+    page.setId(kuntaApiPageId.getId());
     
-    if (kuntaApiParentId != null) {
-      page.setParentId(kuntaApiParentId.getId());
+    if (kuntaApiParentPageId != null) {
+      page.setParentId(kuntaApiParentPageId.getId());
     }
     
-    page.setSlug(mwpPage.getSlug());
+    page.setSlug(managementPage.getSlug());
     
     return page;
   }
