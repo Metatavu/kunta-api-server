@@ -29,6 +29,7 @@ import fi.otavanopisto.kuntaapi.server.controllers.HttpCacheController;
 import fi.otavanopisto.kuntaapi.server.controllers.MenuController;
 import fi.otavanopisto.kuntaapi.server.controllers.OrganizationController;
 import fi.otavanopisto.kuntaapi.server.controllers.PageController;
+import fi.otavanopisto.kuntaapi.server.controllers.TileController;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.BannerId;
 import fi.otavanopisto.kuntaapi.server.id.EventId;
@@ -49,7 +50,6 @@ import fi.otavanopisto.kuntaapi.server.integrations.JobProvider.JobOrderDirectio
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.NewsProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.OrganizationServiceProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.TileProvider;
 import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
 import fi.otavanopisto.kuntaapi.server.rest.model.Banner;
 import fi.otavanopisto.kuntaapi.server.rest.model.Event;
@@ -101,6 +101,9 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   
   @Inject
   private BannerController bannerController;
+
+  @Inject
+  private TileController tileController;
   
   @Inject
   private HttpCacheController httpCacheController;
@@ -113,9 +116,6 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   @Inject
   private Instance<NewsProvider> newsProviders;
-
-  @Inject
-  private Instance<TileProvider> tileProviders;
 
   @Inject
   private Instance<JobProvider> jobProviders;
@@ -518,14 +518,14 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   public Response listOrganizationTiles(String organizationIdParam, @Context Request request) {
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
     
-    List<Tile> result = new ArrayList<>();
-   
-    for (TileProvider tileProvider : getTileProviders()) {
-      result.addAll(tileProvider.listOrganizationTiles(organizationId));
+    List<Tile> result = tileController.listTiles(organizationId);
+    List<String> ids = httpCacheController.getEntityIds(result);
+    Response notModified = httpCacheController.getNotModified(request, ids);
+    if (notModified != null) {
+      return notModified;
     }
-    
-    return Response.ok(result)
-      .build();
+
+    return httpCacheController.sendModified(result, ids);
   }
 
   @Override
@@ -533,16 +533,17 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
     TileId tileId = toTileId(tileIdParam);
     
-    for (TileProvider tileProvider : getTileProviders()) {
-      Tile tile = tileProvider.findOrganizationTile(organizationId, tileId);
-      if (tile != null) {
-        return Response.ok(tile)
-          .build();
-      }
+    Response notModified = httpCacheController.getNotModified(request, tileId);
+    if (notModified != null) {
+      return notModified;
+    }
+
+    Tile tile = tileController.findTile(organizationId, tileId);
+    if (tile != null) {
+      return httpCacheController.sendModified(tile, tile.getId());
     }
     
-    return Response.status(Status.NOT_FOUND)
-      .build();
+    return createNotFound(NOT_FOUND);
   }
 
   @Override
@@ -550,14 +551,14 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
     TileId tileId = toTileId(tileIdParam);
     
-    List<Attachment> result = new ArrayList<>();
-   
-    for (TileProvider tileProvider : getTileProviders()) {
-      result.addAll(tileProvider.listOrganizationTileImages(organizationId, tileId));
+    List<Attachment> result = tileController.listTileImages(organizationId, tileId);
+    List<String> ids = httpCacheController.getEntityIds(result);
+    Response notModified = httpCacheController.getNotModified(request, ids);
+    if (notModified != null) {
+      return notModified;
     }
-    
-    return Response.ok(result)
-      .build();
+
+    return httpCacheController.sendModified(result, ids);
   }
 
   @Override
@@ -566,16 +567,17 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     TileId tileId = toTileId(tileIdParam);
     AttachmentId attachmentId = toAttachmentId(imageIdParam);
     
-    for (TileProvider tileProvider : getTileProviders()) {
-      Attachment attachment = tileProvider.findTileImage(organizationId, tileId, attachmentId);
-      if (attachment != null) {
-        return Response.ok(attachment)
-          .build();
-      }
+    Response notModified = httpCacheController.getNotModified(request, attachmentId);
+    if (notModified != null) {
+      return notModified;
+    }
+
+    Attachment attachment = tileController.findTileImage(organizationId, tileId, attachmentId);
+    if (attachment != null) {
+      return httpCacheController.sendModified(attachment, attachment.getId());
     }
     
-    return Response.status(Status.NOT_FOUND)
-      .build();
+    return createNotFound(NOT_FOUND);
   }
 
   @Override
@@ -584,19 +586,14 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     TileId tileId = toTileId(tileIdParam);
     AttachmentId attachmentId = toAttachmentId(imageIdParam);
     
-    for (TileProvider tileProvider : getTileProviders()) {
-      AttachmentData attachmentData = tileProvider.getTileImageData(organizationId, tileId, attachmentId, size);
-      if (attachmentData != null) {
-        try (InputStream stream = new ByteArrayInputStream(attachmentData.getData())) {
-          return Response.ok(stream, attachmentData.getType())
-              .build();
-        } catch (IOException e) {
-          logger.log(Level.SEVERE, FAILED_TO_STREAM_IMAGE_TO_CLIENT, e);
-          return Response.status(Status.INTERNAL_SERVER_ERROR)
-            .entity(INTERNAL_SERVER_ERROR)
-            .build();
-        }
-      }
+    Response notModified = httpCacheController.getNotModified(request, attachmentId);
+    if (notModified != null) {
+      return notModified;
+    }
+    
+    AttachmentData attachmentData = tileController.getTileImageData(organizationId, tileId, attachmentId, size);
+    if (attachmentData != null) {
+      return httpCacheController.streamModified(attachmentData.getData(), attachmentData.getType(), attachmentId);
     }
     
     return Response.status(Status.NOT_FOUND)
@@ -1236,17 +1233,6 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     List<NewsProvider> result = new ArrayList<>();
     
     Iterator<NewsProvider> iterator = newsProviders.iterator();
-    while (iterator.hasNext()) {
-      result.add(iterator.next());
-    }
-    
-    return Collections.unmodifiableList(result);
-  }
-  
-  private List<TileProvider> getTileProviders() {
-    List<TileProvider> result = new ArrayList<>();
-    
-    Iterator<TileProvider> iterator = tileProviders.iterator();
     while (iterator.hasNext()) {
       result.add(iterator.next());
     }
