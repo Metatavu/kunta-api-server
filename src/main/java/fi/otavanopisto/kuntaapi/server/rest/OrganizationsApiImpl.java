@@ -567,7 +567,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     TileId tileId = toTileId(tileIdParam);
     AttachmentId attachmentId = toAttachmentId(imageIdParam);
     
-    Response notModified = httpCacheController.getNotModified(request, tileId);
+    Response notModified = httpCacheController.getNotModified(request, attachmentId);
     if (notModified != null) {
       return notModified;
     }
