@@ -24,6 +24,7 @@ import org.apache.commons.lang3.EnumUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 
+import fi.otavanopisto.kuntaapi.server.controllers.BannerController;
 import fi.otavanopisto.kuntaapi.server.controllers.HttpCacheController;
 import fi.otavanopisto.kuntaapi.server.controllers.MenuController;
 import fi.otavanopisto.kuntaapi.server.controllers.OrganizationController;
@@ -40,7 +41,6 @@ import fi.otavanopisto.kuntaapi.server.id.OrganizationServiceId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.id.TileId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
-import fi.otavanopisto.kuntaapi.server.integrations.BannerProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.EventProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.FileId;
 import fi.otavanopisto.kuntaapi.server.integrations.JobProvider;
@@ -100,6 +100,9 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   private MenuController menuController;
   
   @Inject
+  private BannerController bannerController;
+  
+  @Inject
   private HttpCacheController httpCacheController;
   
   @Inject
@@ -110,9 +113,6 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   @Inject
   private Instance<NewsProvider> newsProviders;
-
-  @Inject
-  private Instance<BannerProvider> bannerProviders;
 
   @Inject
   private Instance<TileProvider> tileProviders;
@@ -430,11 +430,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   public Response listOrganizationBanners(String organizationIdParam, @Context Request request) {
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
     
-    List<Banner> result = new ArrayList<>();
-   
-    for (BannerProvider bannerProvider : getBannerProviders()) {
-      result.addAll(bannerProvider.listOrganizationBanners(organizationId));
-    }
+    List<Banner> result = bannerController.listBanners(organizationId);
 
     return Response.ok(result)
       .build();
@@ -445,12 +441,10 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
     BannerId bannerId = toBannerId(bannerIdParam);
     
-    for (BannerProvider bannerProvider : getBannerProviders()) {
-      Banner banner = bannerProvider.findOrganizationBanner(organizationId, bannerId);
-      if (banner != null) {
-        return Response.ok(banner)
-          .build();
-      }
+    Banner banner = bannerController.findBanner(organizationId, bannerId);
+    if (banner != null) {
+      return Response.ok(banner)
+        .build();
     }
     
     return Response.status(Status.NOT_FOUND)
@@ -462,11 +456,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
     BannerId bannerId = toBannerId(bannerIdParam);
     
-    List<Attachment> result = new ArrayList<>();
-   
-    for (BannerProvider bannerProvider : getBannerProviders()) {
-      result.addAll(bannerProvider.listOrganizationBannerImages(organizationId, bannerId));
-    }
+    List<Attachment> result = bannerController.listBannerImages(organizationId, bannerId);
     
     return Response.ok(result)
       .build();
@@ -478,12 +468,10 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     BannerId bannerId = toBannerId(bannerIdParam);
     AttachmentId attachmentId = toAttachmentId(imageIdParam);
     
-    for (BannerProvider bannerProvider : getBannerProviders()) {
-      Attachment attachment = bannerProvider.findBannerImage(organizationId, bannerId, attachmentId);
-      if (attachment != null) {
-        return Response.ok(attachment)
-          .build();
-      }
+    Attachment attachment = bannerController.findBannerImage(organizationId, bannerId, attachmentId);
+    if (attachment != null) {
+      return Response.ok(attachment)
+        .build();
     }
     
     return Response.status(Status.NOT_FOUND)
@@ -496,18 +484,16 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     BannerId bannerId = toBannerId(bannerIdParam);
     AttachmentId attachmentId = toAttachmentId(imageIdParam);
     
-    for (BannerProvider bannerProvider : getBannerProviders()) {
-      AttachmentData attachmentData = bannerProvider.getBannerImageData(organizationId, bannerId, attachmentId, size);
-      if (attachmentData != null) {
-        try (InputStream stream = new ByteArrayInputStream(attachmentData.getData())) {
-          return Response.ok(stream, attachmentData.getType())
-              .build();
-        } catch (IOException e) {
-          logger.log(Level.SEVERE, FAILED_TO_STREAM_IMAGE_TO_CLIENT, e);
-          return Response.status(Status.INTERNAL_SERVER_ERROR)
-            .entity(INTERNAL_SERVER_ERROR)
+    AttachmentData attachmentData = bannerController.getBannerImageData(organizationId, bannerId, attachmentId, size);
+    if (attachmentData != null) {
+      try (InputStream stream = new ByteArrayInputStream(attachmentData.getData())) {
+        return Response.ok(stream, attachmentData.getType())
             .build();
-        }
+      } catch (IOException e) {
+        logger.log(Level.SEVERE, FAILED_TO_STREAM_IMAGE_TO_CLIENT, e);
+        return Response.status(Status.INTERNAL_SERVER_ERROR)
+          .entity(INTERNAL_SERVER_ERROR)
+          .build();
       }
     }
     
@@ -1239,17 +1225,6 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     List<NewsProvider> result = new ArrayList<>();
     
     Iterator<NewsProvider> iterator = newsProviders.iterator();
-    while (iterator.hasNext()) {
-      result.add(iterator.next());
-    }
-    
-    return Collections.unmodifiableList(result);
-  }
-  
-  private List<BannerProvider> getBannerProviders() {
-    List<BannerProvider> result = new ArrayList<>();
-    
-    Iterator<BannerProvider> iterator = bannerProviders.iterator();
     while (iterator.hasNext()) {
       result.add(iterator.next());
     }
