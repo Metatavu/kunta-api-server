@@ -1,4 +1,4 @@
-package fi.otavanopisto.kuntaapi.server.integrations.mwp;
+package fi.otavanopisto.kuntaapi.server.integrations.management;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -16,7 +16,8 @@ import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.MenuProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.management.ManagementApi;
+import fi.otavanopisto.kuntaapi.server.integrations.mwp.AbstractMwpProvider;
+import fi.otavanopisto.kuntaapi.server.integrations.mwp.MwpConsts;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.rest.model.Menu;
 import fi.otavanopisto.kuntaapi.server.rest.model.MenuItem;
@@ -28,9 +29,9 @@ import fi.otavanopisto.mwp.client.ApiResponse;
  * @author Antti Leppä
  */
 @RequestScoped
-public class MwpMenuProvider extends AbstractMwpProvider implements MenuProvider {
+public class ManagementMenuProvider extends AbstractMwpProvider implements MenuProvider {
   
-  private static final String COULD_NOT_TRANSLATE_MENU_ID = "Could not translate menu id %s to MWP id";
+  private static final String COULD_NOT_TRANSLATE_MENU_ID = "Could not translate menu id %s to management id";
 
   @Inject
   private Logger logger;
@@ -64,14 +65,14 @@ public class MwpMenuProvider extends AbstractMwpProvider implements MenuProvider
       return null;
     }
     
-    MenuId mwpId = idController.translateMenuId(menuId, MwpConsts.IDENTIFIER_NAME);
-    if (mwpId == null) {
+    MenuId managemenMenutId = idController.translateMenuId(menuId, MwpConsts.IDENTIFIER_NAME);
+    if (managemenMenutId == null) {
       logger.severe(String.format(COULD_NOT_TRANSLATE_MENU_ID, menuId.toString()));
       return null;
     }
     
     ApiResponse<fi.otavanopisto.mwp.client.model.Menu> response = 
-        managementApi.getApi(organizationId).kuntaApiMenusIdGet(mwpId.getId());
+        managementApi.getApi(organizationId).kuntaApiMenusIdGet(managemenMenutId.getId());
     
     if (!response.isOk()) {
       logger.severe(String.format("Menu finding failed on [%d] %s", response.getStatus(), response.getMessage()));
@@ -88,14 +89,14 @@ public class MwpMenuProvider extends AbstractMwpProvider implements MenuProvider
       return Collections.emptyList();
     }
     
-    MenuId mwpId = idController.translateMenuId(menuId, MwpConsts.IDENTIFIER_NAME);
-    if (mwpId == null) {
+    MenuId managementMenuId = idController.translateMenuId(menuId, MwpConsts.IDENTIFIER_NAME);
+    if (managementMenuId == null) {
       logger.severe(String.format(COULD_NOT_TRANSLATE_MENU_ID, menuId.toString()));
       return Collections.emptyList();
     }
     
     ApiResponse<List<fi.otavanopisto.mwp.client.model.Menuitem>> response = managementApi.getApi(organizationId)
-        .kuntaApiMenusMenuIdItemsGet(mwpId.getId());
+        .kuntaApiMenusMenuIdItemsGet(managementMenuId.getId());
     
     if (!response.isOk()) {
       logger.severe(String.format("Menu item listing failed on [%d] %s", response.getStatus(), response.getMessage()));
@@ -112,31 +113,31 @@ public class MwpMenuProvider extends AbstractMwpProvider implements MenuProvider
       return null;
     }
     
-    MenuId mwpMenuId = idController.translateMenuId(menuId, MwpConsts.IDENTIFIER_NAME);
-    if (mwpMenuId == null) {
+    MenuId managementMenuId = idController.translateMenuId(menuId, MwpConsts.IDENTIFIER_NAME);
+    if (managementMenuId == null) {
       logger.severe(String.format(COULD_NOT_TRANSLATE_MENU_ID, menuId.toString()));
       return null;
     }
     
-    MenuItemId mwpItemId = idController.translateMenuItemId(menuItemId, MwpConsts.IDENTIFIER_NAME);
-    if (mwpItemId == null) {
-      logger.severe(String.format("Could not translate menu item id %s to MWP id", menuItemId.toString()));
+    MenuItemId managementItemId = idController.translateMenuItemId(menuItemId, MwpConsts.IDENTIFIER_NAME);
+    if (managementItemId == null) {
+      logger.severe(String.format("Could not translate menu item id %s to management id", menuItemId.toString()));
       return null;
     }
     
-    return findMenuItem(organizationId, mwpMenuId, mwpItemId);
+    return findMenuItem(organizationId, managementMenuId, managementItemId);
   }
 
-  private MenuItem findMenuItem(OrganizationId organizationId, MenuId mwpMenuId, MenuItemId mwpItemId) {
+  private MenuItem findMenuItem(OrganizationId organizationId, MenuId managementMenuId, MenuItemId managementItemId) {
     ApiResponse<List<fi.otavanopisto.mwp.client.model.Menuitem>> response =  
-        managementApi.getApi(organizationId).kuntaApiMenusMenuIdItemsGet(mwpMenuId.getId());
+        managementApi.getApi(organizationId).kuntaApiMenusMenuIdItemsGet(managementMenuId.getId());
     
     if (!response.isOk()) {
       logger.severe(String.format("Menu finding failed on [%d] %s", response.getStatus(), response.getMessage()));
     } else {
-      for (fi.otavanopisto.mwp.client.model.Menuitem mwpItem : response.getResponse()) {
-        if (mwpItemId.getId().equals(String.valueOf(mwpItem.getId()))) {
-          return translateMenuItem(mwpItem);
+      for (fi.otavanopisto.mwp.client.model.Menuitem managementMenuItem : response.getResponse()) {
+        if (managementItemId.getId().equals(String.valueOf(managementMenuItem.getId()))) {
+          return translateMenuItem(managementMenuItem);
         }
       }
     }
@@ -144,67 +145,67 @@ public class MwpMenuProvider extends AbstractMwpProvider implements MenuProvider
     return null;
   }
   
-  private List<Menu> translateMenus(List<fi.otavanopisto.mwp.client.model.Menu> mwpMenus) {
+  private List<Menu> translateMenus(List<fi.otavanopisto.mwp.client.model.Menu> managementMenus) {
     List<Menu> result = new ArrayList<>();
     
-    for (fi.otavanopisto.mwp.client.model.Menu mwpMenu : mwpMenus) {
-      result.add(translateMenu(mwpMenu));
+    for (fi.otavanopisto.mwp.client.model.Menu managementMenu : managementMenus) {
+      result.add(translateMenu(managementMenu));
     }
     
     return result;
   }
 
-  private Menu translateMenu(fi.otavanopisto.mwp.client.model.Menu mwpMenu) {
+  private Menu translateMenu(fi.otavanopisto.mwp.client.model.Menu managementMenu) {
     Menu menu = new Menu();
     
-    MenuId mwpId = new MenuId(MwpConsts.IDENTIFIER_NAME, String.valueOf(mwpMenu.getId()));
-    MenuId kuntaApiId = idController.translateMenuId(mwpId, KuntaApiConsts.IDENTIFIER_NAME);
-    if (kuntaApiId == null) {
-      logger.info(String.format("Found new menu %d", mwpMenu.getId()));
-      Identifier newIdentifier = identifierController.createIdentifier(mwpId);
-      kuntaApiId = new MenuId(KuntaApiConsts.IDENTIFIER_NAME, newIdentifier.getKuntaApiId());
+    MenuId managementMenuId = new MenuId(MwpConsts.IDENTIFIER_NAME, String.valueOf(managementMenu.getId()));
+    MenuId kuntaApiMenuId = idController.translateMenuId(managementMenuId, KuntaApiConsts.IDENTIFIER_NAME);
+    if (kuntaApiMenuId == null) {
+      logger.info(String.format("Found new menu %d", managementMenu.getId()));
+      Identifier newIdentifier = identifierController.createIdentifier(managementMenuId);
+      kuntaApiMenuId = new MenuId(KuntaApiConsts.IDENTIFIER_NAME, newIdentifier.getKuntaApiId());
     }
     
-    menu.setId(kuntaApiId.getId());
-    menu.setSlug(mwpMenu.getSlug());
+    menu.setId(kuntaApiMenuId.getId());
+    menu.setSlug(managementMenu.getSlug());
     
     return menu;
   }
   
-  private List<MenuItem> translateMenuItems(List<fi.otavanopisto.mwp.client.model.Menuitem> mwpMenuItems) {
+  private List<MenuItem> translateMenuItems(List<fi.otavanopisto.mwp.client.model.Menuitem> managementMenuItems) {
     List<MenuItem> result = new ArrayList<>();
     
-    for (fi.otavanopisto.mwp.client.model.Menuitem mwpMenuItem : mwpMenuItems) {
-      result.add(translateMenuItem(mwpMenuItem));
+    for (fi.otavanopisto.mwp.client.model.Menuitem managementMenuItem : managementMenuItems) {
+      result.add(translateMenuItem(managementMenuItem));
     }
     
     return result;
   }
 
-  private MenuItem translateMenuItem(fi.otavanopisto.mwp.client.model.Menuitem mwpMenuItem) {
+  private MenuItem translateMenuItem(fi.otavanopisto.mwp.client.model.Menuitem managementMenuItem) {
     MenuItem menuItem = new MenuItem();
     
-    MenuItemId mwpId = new MenuItemId(MwpConsts.IDENTIFIER_NAME, String.valueOf(mwpMenuItem.getId()));
-    MenuItemId kuntaApiId = idController.translateMenuItemId(mwpId, KuntaApiConsts.IDENTIFIER_NAME);
-    if (kuntaApiId == null) {
-      logger.info(String.format("Found new menu item %d", mwpMenuItem.getId()));
-      Identifier newIdentifier = identifierController.createIdentifier(mwpId);
-      kuntaApiId = new MenuItemId(KuntaApiConsts.IDENTIFIER_NAME, newIdentifier.getKuntaApiId());
+    MenuItemId managementMenuItemId = new MenuItemId(MwpConsts.IDENTIFIER_NAME, String.valueOf(managementMenuItem.getId()));
+    MenuItemId kuntaApiMenuItemId = idController.translateMenuItemId(managementMenuItemId, KuntaApiConsts.IDENTIFIER_NAME);
+    if (kuntaApiMenuItemId == null) {
+      logger.info(String.format("Found new menu item %d", managementMenuItem.getId()));
+      Identifier newIdentifier = identifierController.createIdentifier(managementMenuItemId);
+      kuntaApiMenuItemId = new MenuItemId(KuntaApiConsts.IDENTIFIER_NAME, newIdentifier.getKuntaApiId());
     }
     
-    MenuItemType itemType = getItemType(mwpMenuItem);
+    MenuItemType itemType = getItemType(managementMenuItem);
     if (itemType == null) {
-      logger.severe(String.format("Could not determine item type for %d", mwpMenuItem.getId()));
+      logger.severe(String.format("Could not determine item type for %d", managementMenuItem.getId()));
       return null;
     }
     
-    PageId pageId = translatePageId(mwpMenuItem.getPageId());
-    MenuItemId parentMenuItemId = translateMenuItemId(mwpMenuItem.getParentItemId());
+    PageId pageId = translatePageId(managementMenuItem.getPageId());
+    MenuItemId parentMenuItemId = translateMenuItemId(managementMenuItem.getParentItemId());
     
-    menuItem.setId(kuntaApiId.getId());
-    menuItem.setLabel(mwpMenuItem.getTitle());
+    menuItem.setId(kuntaApiMenuItemId.getId());
+    menuItem.setLabel(managementMenuItem.getTitle());
     menuItem.setFileId(null);
-    menuItem.setExternalUrl(itemType == MenuItemType.LINK ? mwpMenuItem.getUrl() : null);
+    menuItem.setExternalUrl(itemType == MenuItemType.LINK ? managementMenuItem.getUrl() : null);
     menuItem.setPageId(pageId != null ? pageId.getId() : null);
     menuItem.setParentItemId(parentMenuItemId != null ? parentMenuItemId.getId() : null);
     menuItem.setType(itemType.toString());
@@ -217,13 +218,13 @@ public class MwpMenuProvider extends AbstractMwpProvider implements MenuProvider
       return null;
     }
     
-    MenuItemId mwpMenuItem = new MenuItemId(MwpConsts.IDENTIFIER_NAME, String.valueOf(parentItemId));
+    MenuItemId managementMenuItem = new MenuItemId(MwpConsts.IDENTIFIER_NAME, String.valueOf(parentItemId));
 
-    return idController.translateMenuItemId(mwpMenuItem, KuntaApiConsts.IDENTIFIER_NAME);
+    return idController.translateMenuItemId(managementMenuItem, KuntaApiConsts.IDENTIFIER_NAME);
   }
 
-  private MenuItemType getItemType(fi.otavanopisto.mwp.client.model.Menuitem mwpMenuItem) {
-    switch (mwpMenuItem.getType()) {
+  private MenuItemType getItemType(fi.otavanopisto.mwp.client.model.Menuitem managementMenuItem) {
+    switch (managementMenuItem.getType()) {
       case "page":
         return MenuItemType.PAGE;
       case "post":
