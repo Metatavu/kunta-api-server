@@ -11,7 +11,6 @@ import javax.inject.Inject;
 
 import org.apache.commons.lang3.StringUtils;
 
-import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
@@ -21,7 +20,6 @@ import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.PageProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.mwp.AbstractMwpProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.mwp.MwpConsts;
-import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
 import fi.otavanopisto.kuntaapi.server.rest.model.LocalizedValue;
 import fi.otavanopisto.kuntaapi.server.rest.model.Page;
@@ -44,9 +42,6 @@ public class ManagementPageProvider extends AbstractMwpProvider implements PageP
 
   @Inject
   private IdController idController;
-  
-  @Inject
-  private IdentifierController identifierController;
   
   @Override
   public List<Page> listOrganizationPages(OrganizationId organizationId, PageId parentId, boolean onlyRootPages, String path) {
@@ -280,9 +275,8 @@ public class ManagementPageProvider extends AbstractMwpProvider implements PageP
     PageId managementPageId = new PageId(MwpConsts.IDENTIFIER_NAME, String.valueOf(managementPage.getId()));
     PageId kuntaApiPageId = idController.translatePageId(managementPageId, KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiPageId == null) {
-      logger.info(String.format("Found new page %s", managementPage.getId()));
-      Identifier newIdentifier = identifierController.createIdentifier(managementPageId);
-      kuntaApiPageId = new PageId(KuntaApiConsts.IDENTIFIER_NAME, newIdentifier.getKuntaApiId());
+      logger.severe(String.format("Could not translate page %d into management page id", managementPage.getId()));
+      return null;
     }
     
     PageId kuntaApiParentPageId = null;
@@ -291,9 +285,8 @@ public class ManagementPageProvider extends AbstractMwpProvider implements PageP
       PageId managementParentPageId = new PageId(MwpConsts.IDENTIFIER_NAME,String.valueOf(managementPage.getParent()));
       kuntaApiParentPageId = idController.translatePageId(managementParentPageId, KuntaApiConsts.IDENTIFIER_NAME);
       if (kuntaApiParentPageId == null) {
-        logger.info(String.format("Found new page %s", managementParentPageId.getId()));
-        Identifier newIdentifier = identifierController.createIdentifier(managementParentPageId);
-        kuntaApiParentPageId = new PageId(KuntaApiConsts.IDENTIFIER_NAME, newIdentifier.getKuntaApiId());
+        logger.severe(String.format("Could not translate %d parent page %d into management page id", managementPage.getParent(), managementPage.getId()));
+        return null;
       } 
     }
     
