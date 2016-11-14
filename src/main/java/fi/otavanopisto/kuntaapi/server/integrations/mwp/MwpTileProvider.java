@@ -17,6 +17,7 @@ import fi.otavanopisto.kuntaapi.server.id.TileId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.TileProvider;
+import fi.otavanopisto.kuntaapi.server.integrations.management.ManagementApi;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
 import fi.otavanopisto.kuntaapi.server.rest.model.Tile;
@@ -35,7 +36,7 @@ public class MwpTileProvider extends AbstractMwpProvider implements TileProvider
   private Logger logger;
   
   @Inject
-  private MwpApi mwpApi;
+  private ManagementApi managementApi;
 
   @Inject
   private IdController idController;
@@ -60,7 +61,7 @@ public class MwpTileProvider extends AbstractMwpProvider implements TileProvider
     String status = null;
     String filter = null;
 
-    ApiResponse<List<fi.otavanopisto.mwp.client.model.Tile>> response = mwpApi.getApi(organizationId).wpV2TileGet(context, page, perPage, search, after,
+    ApiResponse<List<fi.otavanopisto.mwp.client.model.Tile>> response = managementApi.getApi(organizationId).wpV2TileGet(context, page, perPage, search, after,
         before, exclude, include, offset, order, orderby, slug, status, filter);
 
     if (!response.isOk()) {
@@ -150,7 +151,7 @@ public class MwpTileProvider extends AbstractMwpProvider implements TileProvider
       return null;
     }
     
-    ApiResponse<fi.otavanopisto.mwp.client.model.Tile> response = mwpApi.getApi(organizationId).wpV2TileIdGet(kuntaApiId.getId(), null);
+    ApiResponse<fi.otavanopisto.mwp.client.model.Tile> response = managementApi.getApi(organizationId).wpV2TileIdGet(kuntaApiId.getId(), null);
     if (!response.isOk()) {
       logger.severe(String.format("Finding tile failed on [%d] %s", response.getStatus(), response.getMessage()));
     } else {

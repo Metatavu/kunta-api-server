@@ -25,6 +25,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 
 import fi.otavanopisto.kuntaapi.server.controllers.HttpCacheController;
+import fi.otavanopisto.kuntaapi.server.controllers.MenuController;
 import fi.otavanopisto.kuntaapi.server.controllers.OrganizationController;
 import fi.otavanopisto.kuntaapi.server.controllers.PageController;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
@@ -46,7 +47,6 @@ import fi.otavanopisto.kuntaapi.server.integrations.JobProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.JobProvider.JobOrder;
 import fi.otavanopisto.kuntaapi.server.integrations.JobProvider.JobOrderDirection;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
-import fi.otavanopisto.kuntaapi.server.integrations.MenuProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.NewsProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.OrganizationServiceProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.TileProvider;
@@ -95,6 +95,9 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   
   @Inject
   private PageController pageController;
+
+  @Inject
+  private MenuController menuController;
   
   @Inject
   private HttpCacheController httpCacheController;
@@ -113,9 +116,6 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   @Inject
   private Instance<TileProvider> tileProviders;
-
-  @Inject
-  private Instance<MenuProvider> menuProviders;
 
   @Inject
   private Instance<JobProvider> jobProviders;
@@ -141,22 +141,22 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   
   @Override
   public Response findOrganization(String organizationIdParam, @Context Request request) {
-  	OrganizationId organizationId = toOrganizationId(organizationIdParam);
-  	if (organizationId == null) {
-  	  return createNotFound(NOT_FOUND);
-  	}
-  	
-  	Response notModified = httpCacheController.getNotModified(request, organizationId);
-  	if (notModified != null) {
-  	  return notModified;
-  	}
-  	
-  	Organization organization = organizationController.findOrganization(organizationId);
-  	if (organization != null) {
-  	  return httpCacheController.sendModified(organization, organization.getId());
+  	  OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    	if (organizationId == null) {
+    	  return createNotFound(NOT_FOUND);
+    	}
+    	
+    	Response notModified = httpCacheController.getNotModified(request, organizationId);
+    	if (notModified != null) {
+    	  return notModified;
+    	}
+    	
+    	Organization organization = organizationController.findOrganization(organizationId);
+    	if (organization != null) {
+      return httpCacheController.sendModified(organization, organization.getId());
     }
-    
-  	return createNotFound(NOT_FOUND);
+      
+    	return createNotFound(NOT_FOUND);
   }
 
   @Override
@@ -876,14 +876,14 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createNotFound(NOT_FOUND);
     }
     
-    List<Menu> result = new ArrayList<>();
-    
-    for (MenuProvider menuProvider : getMenuProviders()) {
-      result.addAll(menuProvider.listOrganizationMenus(organizationId, slug));
+    List<Menu> result = menuController.listMenus(slug, organizationId);
+    List<String> ids = httpCacheController.getEntityIds(result);
+    Response notModified = httpCacheController.getNotModified(request, ids);
+    if (notModified != null) {
+      return notModified;
     }
-    
-    return Response.ok(result)
-      .build();
+
+    return httpCacheController.sendModified(result, ids);
   }
   
   @Override
@@ -898,11 +898,14 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createNotFound(NOT_FOUND);
     }
     
-    for (MenuProvider menuProvider : getMenuProviders()) {
-      Menu menu = menuProvider.findOrganizationMenu(organizationId, menuId);
-      if (menu != null) {
-        return Response.ok(menu).build();
-      }
+    Response notModified = httpCacheController.getNotModified(request, menuId);
+    if (notModified != null) {
+      return notModified;
+    }
+    
+    Menu menu = menuController.findMenu(organizationId, menuId);
+    if (menu != null) {
+      return httpCacheController.sendModified(menu, menu.getId());
     }
     
     return createNotFound(NOT_FOUND);
@@ -922,14 +925,14 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createNotFound(NOT_FOUND);
     }
     
-    List<MenuItem> result = new ArrayList<>();
-    
-    for (MenuProvider menuProvider : getMenuProviders()) {
-      result.addAll(menuProvider.listOrganizationMenuItems(organizationId, menuId));
+    List<MenuItem> result = menuController.listMenuItems(organizationId, menuId);
+    List<String> ids = httpCacheController.getEntityIds(result);
+    Response notModified = httpCacheController.getNotModified(request, ids);
+    if (notModified != null) {
+      return notModified;
     }
-    
-    return Response.ok(result)
-      .build();
+
+    return httpCacheController.sendModified(result, ids);
   }
 
   @Override
@@ -949,11 +952,18 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createNotFound(NOT_FOUND);
     }
     
-    for (MenuProvider menuProvider : getMenuProviders()) {
-      MenuItem menuItem = menuProvider.findOrganizationMenuItem(organizationId, menuId, menuItemId);
-      if (menuItem != null) {
-        return Response.ok(menuItem).build();
-      }
+    return findOrganizationMenuItem(organizationId, menuId, menuItemId, request);
+  }
+
+  private Response findOrganizationMenuItem(OrganizationId organizationId, MenuId menuId, MenuItemId menuItemId, Request request) {
+    Response notModified = httpCacheController.getNotModified(request, menuItemId);
+    if (notModified != null) {
+      return notModified;
+    }
+    
+    MenuItem menuItem = menuController.findMenuItem(organizationId, menuId, menuItemId);
+    if (menuItem != null) {
+      return httpCacheController.sendModified(menuItem, menuItem.getId());
     }
     
     return createNotFound(NOT_FOUND);
@@ -1245,17 +1255,6 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     List<TileProvider> result = new ArrayList<>();
     
     Iterator<TileProvider> iterator = tileProviders.iterator();
-    while (iterator.hasNext()) {
-      result.add(iterator.next());
-    }
-    
-    return Collections.unmodifiableList(result);
-  }
-  
-  private List<MenuProvider> getMenuProviders() {
-    List<MenuProvider> result = new ArrayList<>();
-    
-    Iterator<MenuProvider> iterator = menuProviders.iterator();
     while (iterator.hasNext()) {
       result.add(iterator.next());
     }

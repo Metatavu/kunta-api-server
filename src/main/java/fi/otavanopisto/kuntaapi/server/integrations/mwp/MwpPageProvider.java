@@ -19,6 +19,7 @@ import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.PageProvider;
+import fi.otavanopisto.kuntaapi.server.integrations.management.ManagementApi;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
 import fi.otavanopisto.kuntaapi.server.rest.model.LocalizedValue;
@@ -38,7 +39,7 @@ public class MwpPageProvider extends AbstractMwpProvider implements PageProvider
   private Logger logger;
   
   @Inject
-  private MwpApi mwpApi;
+  private ManagementApi managementApi;
 
   @Inject
   private IdController idController;
@@ -186,7 +187,7 @@ public class MwpPageProvider extends AbstractMwpProvider implements PageProvider
     Integer menuOrder = null;
     List<String> parentExclude = null;
     
-    ApiResponse<List<fi.otavanopisto.mwp.client.model.Page>> response = mwpApi.getApi(organizationId).wpV2PagesGet(
+    ApiResponse<List<fi.otavanopisto.mwp.client.model.Page>> response = managementApi.getApi(organizationId).wpV2PagesGet(
         context, page, perPage, search, after, author, authorExclude, before, authorExclude, include, menuOrder, offset,
         order, orderby, Collections.singletonList(String.valueOf(parent)), parentExclude, slug, status, filter);
     if (!response.isOk()) {
@@ -208,7 +209,7 @@ public class MwpPageProvider extends AbstractMwpProvider implements PageProvider
       return null;
     }
     
-    ApiResponse<fi.otavanopisto.mwp.client.model.Page> response = mwpApi.getApi(organizationId).wpV2PagesIdGet(mwpPageId.getId(), null);
+    ApiResponse<fi.otavanopisto.mwp.client.model.Page> response = managementApi.getApi(organizationId).wpV2PagesIdGet(mwpPageId.getId(), null);
     if (!response.isOk()) {
       logger.severe(String.format("Finding page failed on [%d] %s", response.getStatus(), response.getMessage()));
     } else {
@@ -250,7 +251,7 @@ public class MwpPageProvider extends AbstractMwpProvider implements PageProvider
       parent = Collections.singletonList(mwpParentId.getId()); 
     }
     
-    ApiResponse<List<fi.otavanopisto.mwp.client.model.Page>> response = mwpApi.getApi(organizationId).wpV2PagesGet(
+    ApiResponse<List<fi.otavanopisto.mwp.client.model.Page>> response = managementApi.getApi(organizationId).wpV2PagesGet(
         context, page, perPage, search, after, author, authorExclude, before, authorExclude, include, menuOrder, offset,
         order, orderby, parent, parentExclude, slug, status, filter);
     if (!response.isOk()) {

@@ -1,9 +1,11 @@
-package fi.otavanopisto.kuntaapi.server.integrations.mwp;
+package fi.otavanopisto.kuntaapi.server.integrations.management;
 
-import javax.enterprise.context.Dependent;
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.integrations.mwp.MwpClient;
+import fi.otavanopisto.kuntaapi.server.integrations.mwp.MwpConsts;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 import fi.otavanopisto.mwp.client.DefaultApi;
 
@@ -12,8 +14,8 @@ import fi.otavanopisto.mwp.client.DefaultApi;
  * 
  * @author Antti Leppä
  */
-@Dependent
-public class MwpApi {
+@ApplicationScoped
+public class ManagementApi {
   
   @Inject
   private MwpClient client;

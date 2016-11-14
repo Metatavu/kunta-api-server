@@ -26,6 +26,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.BinaryHttpClient;
 import fi.otavanopisto.kuntaapi.server.integrations.BinaryHttpClient.BinaryResponse;
 import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpClient.Response;
+import fi.otavanopisto.kuntaapi.server.integrations.management.ManagementApi;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
@@ -44,7 +45,7 @@ public abstract class AbstractMwpProvider {
   private Logger logger;
   
   @Inject
-  private MwpApi mwpApi;
+  private ManagementApi managementApi;
   
   @Inject
   private BinaryHttpClient binaryHttpClient;
@@ -129,7 +130,7 @@ public abstract class AbstractMwpProvider {
       return null;
     }
     
-    ApiResponse<fi.otavanopisto.mwp.client.model.Attachment> response = mwpApi.getApi(organizationId).wpV2MediaIdGet(String.valueOf(mediaId), null);
+    ApiResponse<fi.otavanopisto.mwp.client.model.Attachment> response = managementApi.getApi(organizationId).wpV2MediaIdGet(String.valueOf(mediaId), null);
     if (!response.isOk()) {
       logger.severe(String.format("Finding media failed on [%d] %s", response.getStatus(), response.getMessage()));
     } else {

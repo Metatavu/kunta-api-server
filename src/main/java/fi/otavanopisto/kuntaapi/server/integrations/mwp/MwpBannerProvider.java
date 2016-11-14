@@ -17,6 +17,7 @@ import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.BannerProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
+import fi.otavanopisto.kuntaapi.server.integrations.management.ManagementApi;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
 import fi.otavanopisto.kuntaapi.server.rest.model.Banner;
@@ -35,7 +36,7 @@ public class MwpBannerProvider extends AbstractMwpProvider implements BannerProv
   private Logger logger;
   
   @Inject
-  private MwpApi mwpApi;
+  private ManagementApi managementApi;
 
   @Inject
   private IdController idController;
@@ -60,7 +61,7 @@ public class MwpBannerProvider extends AbstractMwpProvider implements BannerProv
     String status = null;
     String filter = null;
 
-    ApiResponse<List<fi.otavanopisto.mwp.client.model.Banner>> response = mwpApi.getApi(organizationId).wpV2BannerGet(context, page, perPage, search, after,
+    ApiResponse<List<fi.otavanopisto.mwp.client.model.Banner>> response = managementApi.getApi(organizationId).wpV2BannerGet(context, page, perPage, search, after,
         before, exclude, include, offset, order, orderby, slug, status, filter);
 
     if (!response.isOk()) {
@@ -150,7 +151,7 @@ public class MwpBannerProvider extends AbstractMwpProvider implements BannerProv
       return null;
     }
     
-    ApiResponse<fi.otavanopisto.mwp.client.model.Banner> response = mwpApi.getApi(organizationId).wpV2BannerIdGet(kuntaApiId.getId(), null);
+    ApiResponse<fi.otavanopisto.mwp.client.model.Banner> response = managementApi.getApi(organizationId).wpV2BannerIdGet(kuntaApiId.getId(), null);
     if (!response.isOk()) {
       logger.severe(String.format("Finding banner failed on [%d] %s", response.getStatus(), response.getMessage()));
     } else {
