@@ -944,9 +944,18 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createNotFound(NOT_FOUND);
     }
     
+    return findOrganizationMenuItem(organizationId, menuId, menuItemId, request);
+  }
+
+  private Response findOrganizationMenuItem(OrganizationId organizationId, MenuId menuId, MenuItemId menuItemId, Request request) {
+    Response notModified = httpCacheController.getNotModified(request, menuItemId);
+    if (notModified != null) {
+      return notModified;
+    }
+    
     MenuItem menuItem = menuController.findMenuItem(organizationId, menuId, menuItemId);
     if (menuItem != null) {
-      return Response.ok(menuItem).build();
+      return httpCacheController.sendModified(menuItem, menuItem.getId());
     }
     
     return createNotFound(NOT_FOUND);
