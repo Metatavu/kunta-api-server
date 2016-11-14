@@ -4,13 +4,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import java.util.logging.Logger;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
 
-import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.MenuId;
 import fi.otavanopisto.kuntaapi.server.id.MenuItemId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
@@ -21,12 +19,6 @@ import fi.otavanopisto.kuntaapi.server.rest.model.MenuItem;
 @ApplicationScoped
 public class MenuController {
   
-  @Inject
-  private Logger logger;
-  
-  @Inject
-  private IdController idController;
-
   @Inject
   private Instance<MenuProvider> menuProviders;
 
