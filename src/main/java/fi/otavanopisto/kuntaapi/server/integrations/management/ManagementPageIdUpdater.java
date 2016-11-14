@@ -25,7 +25,6 @@ import fi.otavanopisto.kuntaapi.server.discover.OrganizationIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.discover.PageIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
-import fi.otavanopisto.kuntaapi.server.integrations.mwp.MwpConsts;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 import fi.otavanopisto.kuntaapi.server.system.SystemUtils;
 import fi.otavanopisto.mwp.client.ApiResponse;
@@ -91,7 +90,7 @@ public class ManagementPageIdUpdater extends IdUpdater {
     if (!stopped) {
       OrganizationId organizationId = event.getId();
       
-      if (organizationSettingController.getSettingValue(organizationId, MwpConsts.ORGANIZATION_SETTING_BASEURL) == null) {
+      if (organizationSettingController.getSettingValue(organizationId, ManagementConsts.ORGANIZATION_SETTING_BASEURL) == null) {
         return;
       }
       
@@ -122,7 +121,7 @@ public class ManagementPageIdUpdater extends IdUpdater {
     
     List<Page> managementPages = listManagementPages(api, organizationId);
     for (Page managementPage : managementPages) {
-      PageId pageId = new PageId(MwpConsts.IDENTIFIER_NAME, String.valueOf(managementPage.getId()));
+      PageId pageId = new PageId(ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementPage.getId()));
       idUpdateRequest.fire(new PageIdUpdateRequest(organizationId, pageId, false));
     }
   }

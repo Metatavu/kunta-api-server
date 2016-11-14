@@ -1,4 +1,4 @@
-package fi.otavanopisto.kuntaapi.server.integrations.mwp;
+package fi.otavanopisto.kuntaapi.server.integrations.management;
 
 import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
@@ -19,8 +19,6 @@ import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.NewsProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.management.ManagementApi;
-import fi.otavanopisto.kuntaapi.server.integrations.management.ManagementImageLoader;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
 import fi.otavanopisto.kuntaapi.server.rest.model.NewsArticle;
@@ -34,7 +32,7 @@ import fi.otavanopisto.mwp.client.model.Post;
  * @author Antti Leppä
  */
 @RequestScoped
-public class MwpNewsProvider extends AbstractMwpProvider implements NewsProvider {
+public class ManagementNewsProvider extends AbstractManagementProvider implements NewsProvider {
   
   @Inject
   private Logger logger;
@@ -119,8 +117,8 @@ public class MwpNewsProvider extends AbstractMwpProvider implements NewsProvider
     if (post != null) {
       Integer featuredMediaId = post.getFeaturedMedia();
       if (featuredMediaId != null) {
-        AttachmentId mwpAttachmentId = getImageAttachmentId(featuredMediaId);
-        if (!idController.idsEqual(attachmentId, mwpAttachmentId)) {
+        AttachmentId managementAttachmentId = getImageAttachmentId(featuredMediaId);
+        if (!idController.idsEqual(attachmentId, managementAttachmentId)) {
           return null;
         }
         
@@ -159,7 +157,7 @@ public class MwpNewsProvider extends AbstractMwpProvider implements NewsProvider
   }
   
   private Post findPostByArticleId(OrganizationId organizationId, NewsArticleId newsArticleId) {
-    NewsArticleId kuntaApiId = idController.translateNewsArticleId(newsArticleId, MwpConsts.IDENTIFIER_NAME);
+    NewsArticleId kuntaApiId = idController.translateNewsArticleId(newsArticleId, ManagementConsts.IDENTIFIER_NAME);
     if (kuntaApiId == null) {
       logger.severe(String.format("Failed to convert %s into MWP id", newsArticleId.toString()));
       return null;
@@ -188,7 +186,7 @@ public class MwpNewsProvider extends AbstractMwpProvider implements NewsProvider
   private NewsArticle translateNewsArticle(Post post) {
     NewsArticle newsArticle = new NewsArticle();
     
-    NewsArticleId postId = new NewsArticleId(MwpConsts.IDENTIFIER_NAME, String.valueOf(post.getId()));
+    NewsArticleId postId = new NewsArticleId(ManagementConsts.IDENTIFIER_NAME, String.valueOf(post.getId()));
     NewsArticleId kuntaApiId = idController.translateNewsArticleId(postId, KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiId == null) {
       logger.info(String.format("Found new news article %d", post.getId()));

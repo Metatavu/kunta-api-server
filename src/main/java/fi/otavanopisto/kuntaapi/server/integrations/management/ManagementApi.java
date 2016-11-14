@@ -4,8 +4,6 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
-import fi.otavanopisto.kuntaapi.server.integrations.mwp.MwpClient;
-import fi.otavanopisto.kuntaapi.server.integrations.mwp.MwpConsts;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 import fi.otavanopisto.mwp.client.DefaultApi;
 
@@ -18,7 +16,7 @@ import fi.otavanopisto.mwp.client.DefaultApi;
 public class ManagementApi {
   
   @Inject
-  private MwpClient client;
+  private ManagementClient client;
   
   @Inject
   private OrganizationSettingController organizationSettingController;
@@ -30,7 +28,7 @@ public class ManagementApi {
    * @return management service API
    */
   public DefaultApi getApi(OrganizationId organizationId) {
-    String basePath = organizationSettingController.getSettingValue(organizationId, MwpConsts.ORGANIZATION_SETTING_BASEURL);
+    String basePath = organizationSettingController.getSettingValue(organizationId, ManagementConsts.ORGANIZATION_SETTING_BASEURL);
     return new DefaultApi(basePath, client);
   }
   

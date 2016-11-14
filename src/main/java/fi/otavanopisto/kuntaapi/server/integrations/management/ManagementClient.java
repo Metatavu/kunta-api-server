@@ -1,4 +1,4 @@
-package fi.otavanopisto.kuntaapi.server.integrations.mwp;
+package fi.otavanopisto.kuntaapi.server.integrations.management;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -25,7 +25,7 @@ import fi.otavanopisto.mwp.client.ResultType;
  * @author Antti Leppä
  */
 @Dependent
-public class MwpClient implements fi.otavanopisto.mwp.client.ApiClient {
+public class ManagementClient implements fi.otavanopisto.mwp.client.ApiClient {
 
   private static final String INVALID_URI_SYNTAX = "Invalid uri syntax";
 
@@ -38,7 +38,7 @@ public class MwpClient implements fi.otavanopisto.mwp.client.ApiClient {
   @Inject
   private GenericHttpCache httpCache;
   
-  private MwpClient() {
+  private ManagementClient() {
   }
   
   @Override
@@ -65,11 +65,11 @@ public class MwpClient implements fi.otavanopisto.mwp.client.ApiClient {
       return new ApiResponse<>(500, INVALID_URI_SYNTAX, null);
     }
     
-    Response<T> response = httpCache.get(MwpConsts.CACHE_NAME, uri, new GenericHttpClient.ResponseResultTypeWrapper<>(resultType.getType()));
+    Response<T> response = httpCache.get(ManagementConsts.CACHE_NAME, uri, new GenericHttpClient.ResponseResultTypeWrapper<>(resultType.getType()));
     if (response == null) {
       response = httpClient.doGETRequest(uri, new GenericHttpClient.ResultTypeWrapper<>(resultType.getType()));
-      if (MwpConsts.CACHE_RESPONSES) {
-        httpCache.put(MwpConsts.CACHE_NAME, uri, response);
+      if (ManagementConsts.CACHE_RESPONSES) {
+        httpCache.put(ManagementConsts.CACHE_NAME, uri, response);
       }
     }
     

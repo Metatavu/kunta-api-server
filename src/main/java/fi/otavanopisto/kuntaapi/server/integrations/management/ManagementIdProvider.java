@@ -1,4 +1,4 @@
-package fi.otavanopisto.kuntaapi.server.integrations.mwp;
+package fi.otavanopisto.kuntaapi.server.integrations.management;
 
 import javax.enterprise.context.Dependent;
 
@@ -13,7 +13,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.AbstractIdProvider;
  * @author Antti Leppä
  */
 @Dependent
-public class MwpIdProvider extends AbstractIdProvider {
+public class ManagementIdProvider extends AbstractIdProvider {
 
   private static final IdType[] SUPPORTED_TYPES = new IdType[] {
     IdType.NEWS_ARTICLE,
@@ -28,7 +28,7 @@ public class MwpIdProvider extends AbstractIdProvider {
   
   @Override
   public String getSource() {
-    return MwpConsts.IDENTIFIER_NAME;
+    return ManagementConsts.IDENTIFIER_NAME;
   }
 
   @Override

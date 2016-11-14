@@ -30,7 +30,6 @@ import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
-import fi.otavanopisto.kuntaapi.server.integrations.mwp.MwpConsts;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.system.SystemUtils;
 import fi.otavanopisto.mwp.client.ApiResponse;
@@ -99,7 +98,7 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
     if (!stopped) {
       PageId pageId = event.getId();
       
-      if (!StringUtils.equals(pageId.getSource(), MwpConsts.IDENTIFIER_NAME)) {
+      if (!StringUtils.equals(pageId.getSource(), ManagementConsts.IDENTIFIER_NAME)) {
         return;
       }
       
@@ -138,7 +137,7 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
   }
   
   private void updateManagementPage(DefaultApi api, Page managementPage) {
-    PageId pageId = new PageId(MwpConsts.IDENTIFIER_NAME, String.valueOf(managementPage.getId()));
+    PageId pageId = new PageId(ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementPage.getId()));
 
     Identifier identifier = identifierController.findIdentifierById(pageId);
     if (identifier == null) {
@@ -158,7 +157,7 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
       logger.severe(String.format("Finding media failed on [%d] %s", response.getStatus(), response.getMessage()));
     } else {
       Attachment attachment = response.getResponse();
-      AttachmentId attachmentId = new AttachmentId(MwpConsts.IDENTIFIER_NAME, String.valueOf(attachment.getId()));
+      AttachmentId attachmentId = new AttachmentId(ManagementConsts.IDENTIFIER_NAME, String.valueOf(attachment.getId()));
       
       Identifier identifier = identifierController.findIdentifierById(attachmentId);
       if (identifier == null) {

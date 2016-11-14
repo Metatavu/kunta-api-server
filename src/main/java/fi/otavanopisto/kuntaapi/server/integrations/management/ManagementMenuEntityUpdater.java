@@ -26,7 +26,6 @@ import fi.otavanopisto.kuntaapi.server.discover.OrganizationIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.id.MenuId;
 import fi.otavanopisto.kuntaapi.server.id.MenuItemId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
-import fi.otavanopisto.kuntaapi.server.integrations.mwp.MwpConsts;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 import fi.otavanopisto.kuntaapi.server.system.SystemUtils;
@@ -95,7 +94,7 @@ public class ManagementMenuEntityUpdater extends EntityUpdater {
     if (!stopped) {
       OrganizationId organizationId = event.getId();
       
-      if (organizationSettingController.getSettingValue(organizationId, MwpConsts.ORGANIZATION_SETTING_BASEURL) == null) {
+      if (organizationSettingController.getSettingValue(organizationId, ManagementConsts.ORGANIZATION_SETTING_BASEURL) == null) {
         return;
       }
       
@@ -164,7 +163,7 @@ public class ManagementMenuEntityUpdater extends EntityUpdater {
   }
   
   private void updateManagementMenu(Menu managementMenu) {
-    MenuId menuId = new MenuId(MwpConsts.IDENTIFIER_NAME, String.valueOf(managementMenu.getId()));
+    MenuId menuId = new MenuId(ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementMenu.getId()));
 
     Identifier identifier = identifierController.findIdentifierById(menuId);
     if (identifier == null) {
@@ -175,7 +174,7 @@ public class ManagementMenuEntityUpdater extends EntityUpdater {
   }
   
   private void updateManagementMenuItem(Menuitem managementMenuItem) {
-    MenuItemId menuItemId = new MenuItemId(MwpConsts.IDENTIFIER_NAME, String.valueOf(managementMenuItem.getId()));
+    MenuItemId menuItemId = new MenuItemId(ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementMenuItem.getId()));
 
     Identifier identifier = identifierController.findIdentifierById(menuItemId);
     if (identifier == null) {

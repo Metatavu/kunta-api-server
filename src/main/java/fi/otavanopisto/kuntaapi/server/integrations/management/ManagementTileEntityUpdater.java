@@ -29,7 +29,6 @@ import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.TileId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
-import fi.otavanopisto.kuntaapi.server.integrations.mwp.MwpConsts;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 import fi.otavanopisto.kuntaapi.server.system.SystemUtils;
@@ -102,7 +101,7 @@ public class ManagementTileEntityUpdater extends EntityUpdater {
     if (!stopped) {
       OrganizationId organizationId = event.getId();
       
-      if (organizationSettingController.getSettingValue(organizationId, MwpConsts.ORGANIZATION_SETTING_BASEURL) == null) {
+      if (organizationSettingController.getSettingValue(organizationId, ManagementConsts.ORGANIZATION_SETTING_BASEURL) == null) {
         return;
       }
       
@@ -149,7 +148,7 @@ public class ManagementTileEntityUpdater extends EntityUpdater {
   }
   
   private void updateManagementTile(DefaultApi api, Tile managementTile) {
-    TileId tileId = new TileId(MwpConsts.IDENTIFIER_NAME, String.valueOf(managementTile.getId()));
+    TileId tileId = new TileId(ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementTile.getId()));
 
     Identifier identifier = identifierController.findIdentifierById(tileId);
     if (identifier == null) {
@@ -169,7 +168,7 @@ public class ManagementTileEntityUpdater extends EntityUpdater {
       logger.severe(String.format("Finding media failed on [%d] %s", response.getStatus(), response.getMessage()));
     } else {
       Attachment attachment = response.getResponse();
-      AttachmentId attachmentId = new AttachmentId(MwpConsts.IDENTIFIER_NAME, String.valueOf(attachment.getId()));
+      AttachmentId attachmentId = new AttachmentId(ManagementConsts.IDENTIFIER_NAME, String.valueOf(attachment.getId()));
       
       Identifier identifier = identifierController.findIdentifierById(attachmentId);
       if (identifier == null) {

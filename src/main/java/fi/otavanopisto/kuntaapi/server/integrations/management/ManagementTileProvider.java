@@ -17,8 +17,6 @@ import fi.otavanopisto.kuntaapi.server.id.TileId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.TileProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.mwp.AbstractMwpProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.mwp.MwpConsts;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
 import fi.otavanopisto.kuntaapi.server.rest.model.Tile;
@@ -31,7 +29,7 @@ import fi.otavanopisto.mwp.client.model.Attachment.MediaTypeEnum;
  * @author Antti Leppä
  */
 @RequestScoped
-public class ManagementTileProvider extends AbstractMwpProvider implements TileProvider {
+public class ManagementTileProvider extends AbstractManagementProvider implements TileProvider {
   
   @Inject
   private Logger logger;
@@ -149,7 +147,7 @@ public class ManagementTileProvider extends AbstractMwpProvider implements TileP
   }
 
   private fi.otavanopisto.mwp.client.model.Tile findTileByTileId(OrganizationId organizationId, TileId tileId) {
-    TileId kuntaApiId = idController.translateTileId(tileId, MwpConsts.IDENTIFIER_NAME);
+    TileId kuntaApiId = idController.translateTileId(tileId, ManagementConsts.IDENTIFIER_NAME);
     if (kuntaApiId == null) {
       logger.severe(String.format("Failed to convert %s into management tile id", tileId.toString()));
       return null;
@@ -178,7 +176,7 @@ public class ManagementTileProvider extends AbstractMwpProvider implements TileP
   private Tile translateTile(fi.otavanopisto.mwp.client.model.Tile managementTile) {
     Tile tile = new Tile();
     
-    TileId managementTileId = new TileId(MwpConsts.IDENTIFIER_NAME, String.valueOf(managementTile.getId()));
+    TileId managementTileId = new TileId(ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementTile.getId()));
     TileId kuntaApiTileId = idController.translateTileId(managementTileId, KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiTileId == null) {
       logger.info(String.format("Found new news article %d", managementTile.getId()));

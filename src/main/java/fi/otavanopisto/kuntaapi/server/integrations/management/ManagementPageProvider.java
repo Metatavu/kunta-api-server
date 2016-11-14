@@ -18,8 +18,6 @@ import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.PageProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.mwp.AbstractMwpProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.mwp.MwpConsts;
 import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
 import fi.otavanopisto.kuntaapi.server.rest.model.LocalizedValue;
 import fi.otavanopisto.kuntaapi.server.rest.model.Page;
@@ -32,7 +30,7 @@ import fi.otavanopisto.mwp.client.model.Attachment.MediaTypeEnum;
  * @author Antti Leppä
  */
 @RequestScoped
-public class ManagementPageProvider extends AbstractMwpProvider implements PageProvider {
+public class ManagementPageProvider extends AbstractManagementProvider implements PageProvider {
   
   @Inject
   private Logger logger;
@@ -202,7 +200,7 @@ public class ManagementPageProvider extends AbstractMwpProvider implements PageP
   }
   
   private fi.otavanopisto.mwp.client.model.Page findPageByPageId(OrganizationId organizationId, PageId pageId) {
-    PageId managementPageId = idController.translatePageId(pageId, MwpConsts.IDENTIFIER_NAME);
+    PageId managementPageId = idController.translatePageId(pageId, ManagementConsts.IDENTIFIER_NAME);
     if (managementPageId == null) {
       logger.severe(String.format("Failed to convert %s into management page id", pageId.toString()));
       return null;
@@ -241,7 +239,7 @@ public class ManagementPageProvider extends AbstractMwpProvider implements PageP
     if (onlyRootPages) {
       parent = Collections.singletonList("0"); 
     } else if (parentId != null) {
-      PageId managementParentId = idController.translatePageId(parentId, MwpConsts.IDENTIFIER_NAME);
+      PageId managementParentId = idController.translatePageId(parentId, ManagementConsts.IDENTIFIER_NAME);
       if (managementParentId == null) {
         logger.severe(String.format("Could not translate %s into management service id", parentId.toString()));
         return Collections.emptyList();
@@ -275,7 +273,7 @@ public class ManagementPageProvider extends AbstractMwpProvider implements PageP
   private Page translatePage(fi.otavanopisto.mwp.client.model.Page managementPage) {
     Page page = new Page();
     
-    PageId managementPageId = new PageId(MwpConsts.IDENTIFIER_NAME, String.valueOf(managementPage.getId()));
+    PageId managementPageId = new PageId(ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementPage.getId()));
     PageId kuntaApiPageId = idController.translatePageId(managementPageId, KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiPageId == null) {
       logger.severe(String.format("Could not translate page %d into management page id", managementPage.getId()));
@@ -285,7 +283,7 @@ public class ManagementPageProvider extends AbstractMwpProvider implements PageP
     PageId kuntaApiParentPageId = null;
     
     if (managementPage.getParent() != null && managementPage.getParent() > 0) {
-      PageId managementParentPageId = new PageId(MwpConsts.IDENTIFIER_NAME,String.valueOf(managementPage.getParent()));
+      PageId managementParentPageId = new PageId(ManagementConsts.IDENTIFIER_NAME,String.valueOf(managementPage.getParent()));
       kuntaApiParentPageId = idController.translatePageId(managementParentPageId, KuntaApiConsts.IDENTIFIER_NAME);
       if (kuntaApiParentPageId == null) {
         logger.severe(String.format("Could not translate %d parent page %d into management page id", managementPage.getParent(), managementPage.getId()));

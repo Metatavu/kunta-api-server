@@ -1,11 +1,11 @@
-package fi.otavanopisto.kuntaapi.server.integrations.mwp;
+package fi.otavanopisto.kuntaapi.server.integrations.management;
 
 /**
  * Constants for management Wordpress integration
  * 
  * @author Antti Leppä
  */
-public class MwpConsts {
+public class ManagementConsts {
   
   public static final String IDENTIFIER_NAME = "MWP";
   public static final boolean SYNCHRONIZE = false;
@@ -14,7 +14,7 @@ public class MwpConsts {
   public static final String ORGANIZATION_SETTING_BASEURL = "managementservice.baseUrl";
   public static final String DEFAULT_LOCALE = "fi";
 
-  private MwpConsts() {
+  private ManagementConsts() {
   }
   
 }
