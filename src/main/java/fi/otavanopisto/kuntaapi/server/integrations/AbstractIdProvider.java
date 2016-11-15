@@ -14,13 +14,14 @@ import fi.otavanopisto.kuntaapi.server.id.BannerId;
 import fi.otavanopisto.kuntaapi.server.id.ElectronicServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.EventId;
 import fi.otavanopisto.kuntaapi.server.id.FileId;
-import fi.otavanopisto.kuntaapi.server.id.Id;
+import fi.otavanopisto.kuntaapi.server.id.BaseId;
 import fi.otavanopisto.kuntaapi.server.id.IdProvider;
 import fi.otavanopisto.kuntaapi.server.id.IdType;
 import fi.otavanopisto.kuntaapi.server.id.JobId;
 import fi.otavanopisto.kuntaapi.server.id.MenuId;
 import fi.otavanopisto.kuntaapi.server.id.MenuItemId;
 import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
+import fi.otavanopisto.kuntaapi.server.id.OrganizationBaseId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationServiceId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
@@ -151,7 +152,7 @@ public abstract class AbstractIdProvider implements IdProvider {
     return translateId(announcementId, IdType.ANNOUNCEMENT, AnnouncementId.class, target);
   }
 
-  private <T extends Id> T translateId(T id, IdType type, Class<T> idClass, String target) {
+  private <T extends BaseId> T translateId(T id, IdType type, Class<T> idClass, String target) {
     if (!isSupportedType(type)) {
       return null;
     }
@@ -169,35 +170,59 @@ public abstract class AbstractIdProvider implements IdProvider {
     return null;
   }
   
-  private boolean toKuntaApi(Id id, String target) {
-    return getSource().equals(id.getSource()) && KuntaApiConsts.IDENTIFIER_NAME.equals(target);
+  private boolean toKuntaApi(BaseId baseId, String target) {
+    return getSource().equals(baseId.getSource()) && KuntaApiConsts.IDENTIFIER_NAME.equals(target);
   }
   
-  private boolean toSourceId(Id id, String target) {
-    return target.equals(getSource()) && KuntaApiConsts.IDENTIFIER_NAME.equals(id.getSource());
+  private boolean toSourceId(BaseId baseId, String target) {
+    return target.equals(getSource()) && KuntaApiConsts.IDENTIFIER_NAME.equals(baseId.getSource());
   }
 
-  private <T extends Id> T translateToSourceId(T id, IdType type, Class<T> idClass) {
+  private <T extends BaseId> T translateToSourceId(T id, IdType type, Class<T> idClass) {
     Identifier identifier;
     identifier = identifierController.findIdentifierByTypeSourceAndKuntaApiId(type, getSource(), id.getId());
     if (identifier != null) {
-      return createId(idClass, getSource(), identifier.getSourceId());
+      if (isOrganizationBaseId(idClass)) {
+        return createOrganizationBaseId(idClass, getSource(), identifier.getSourceId(), identifier.getOrganizationKuntaApiId());
+      } else {
+        return createBaseId(idClass, getSource(), identifier.getSourceId());
+      }
     }
     
     return null;
   }
 
-  private <T extends Id> T translateToKuntaApiId(T id, Class<T> idClass) {
+  private <T extends BaseId> T translateToKuntaApiId(T id, Class<T> idClass) {
     Identifier identifier;
     identifier = identifierController.findIdentifierById(id);
     if (identifier != null) {
-      return createId(idClass, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
+      if (isOrganizationBaseId(idClass)) {
+        return createOrganizationBaseId(idClass, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId(), identifier.getOrganizationKuntaApiId()); 
+      } else {
+        return createBaseId(idClass, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
+      }
     }
     
     return null;
   }
   
-  private <T extends Id> T createId(Class<T> idClass, String source, String id) {
+  private boolean isOrganizationBaseId(Class<? extends BaseId> idClass) {
+    return OrganizationBaseId.class.isAssignableFrom(idClass);
+  }
+  private <T extends BaseId> T createOrganizationBaseId(Class<T> idClass, String source, String id, String organizationKuntaApiId) {
+    Constructor<T> idConstructor;
+    try {
+      OrganizationId organizationId = new OrganizationId(KuntaApiConsts.IDENTIFIER_NAME, organizationKuntaApiId);
+      idConstructor = idClass.getDeclaredConstructor(OrganizationId.class, String.class, String.class);
+      return idConstructor.newInstance(organizationId, source, id);
+    } catch (NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+      logger.log(Level.SEVERE, "Failed to construct id", e);
+    }
+    
+    return null;
+  }
+  
+  private <T extends BaseId> T createBaseId(Class<T> idClass, String source, String id) {
     Constructor<T> idConstructor;
     try {
       idConstructor = idClass.getDeclaredConstructor(String.class, String.class);

@@ -132,7 +132,7 @@ public class ManagementTileEntityUpdater extends EntityUpdater {
     
     List<Tile> managementTiles = listManagementTiles(api, organizationId);
     for (Tile managementTile : managementTiles) {
-      updateManagementTile(api, managementTile);
+      updateManagementTile(organizationId, api, managementTile);
     }
   }
 
@@ -147,8 +147,8 @@ public class ManagementTileEntityUpdater extends EntityUpdater {
     return Collections.emptyList();
   }
   
-  private void updateManagementTile(DefaultApi api, Tile managementTile) {
-    TileId tileId = new TileId(ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementTile.getId()));
+  private void updateManagementTile(OrganizationId organizationId, DefaultApi api, Tile managementTile) {
+    TileId tileId = new TileId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementTile.getId()));
 
     Identifier identifier = identifierController.findIdentifierById(tileId);
     if (identifier == null) {
@@ -158,17 +158,17 @@ public class ManagementTileEntityUpdater extends EntityUpdater {
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(managementTile));
     
     if (managementTile.getFeaturedMedia() != null && managementTile.getFeaturedMedia() > 0) {
-      updateFeaturedMedia(api, managementTile.getFeaturedMedia()); 
+      updateFeaturedMedia(organizationId, api, managementTile.getFeaturedMedia()); 
     }
   }
   
-  private void updateFeaturedMedia(DefaultApi api, Integer featuredMedia) {
+  private void updateFeaturedMedia(OrganizationId organizationId, DefaultApi api, Integer featuredMedia) {
     ApiResponse<fi.otavanopisto.mwp.client.model.Attachment> response = api.wpV2MediaIdGet(String.valueOf(featuredMedia), null);
     if (!response.isOk()) {
       logger.severe(String.format("Finding media failed on [%d] %s", response.getStatus(), response.getMessage()));
     } else {
       Attachment attachment = response.getResponse();
-      AttachmentId attachmentId = new AttachmentId(ManagementConsts.IDENTIFIER_NAME, String.valueOf(attachment.getId()));
+      AttachmentId attachmentId = new AttachmentId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(attachment.getId()));
       
       Identifier identifier = identifierController.findIdentifierById(attachmentId);
       if (identifier == null) {

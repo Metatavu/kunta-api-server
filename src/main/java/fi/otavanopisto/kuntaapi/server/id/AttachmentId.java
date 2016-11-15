@@ -1,14 +1,11 @@
 package fi.otavanopisto.kuntaapi.server.id;
 
-import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
-
 /**
  * Class representing attachment id
  * 
  * @author Antti Leppä
  */
-public class AttachmentId extends Id {
+public class AttachmentId extends OrganizationBaseId {
   
   /**
    * Zero-argument constructor for attachment id
@@ -23,8 +20,8 @@ public class AttachmentId extends Id {
    * @param source source
    * @param id id
    */
-  public AttachmentId(String source, String id) {
-    super(source, id);
+  public AttachmentId(OrganizationId organizationId, String source, String id) {
+    super(organizationId, source, id);
   }
   
   @Override
@@ -33,20 +30,13 @@ public class AttachmentId extends Id {
   }
   
   @Override
-  public boolean equals(Object obj) {
-    if (obj instanceof AttachmentId) {
-      AttachmentId another = (AttachmentId) obj;
-      return StringUtils.equals(this.getSource(), another.getSource()) &&  StringUtils.equals(this.getId(), another.getId());
-    }
-
-    return false;
+  protected int getHashInitial() {
+    return 125;
   }
   
   @Override
-  public int hashCode() {
-    return new HashCodeBuilder(125, 137)
-      .append(getSource())
-      .append(getId())
-      .hashCode();
+  protected int getHashMultiplier() {
+    return 137;
   }
+
 }

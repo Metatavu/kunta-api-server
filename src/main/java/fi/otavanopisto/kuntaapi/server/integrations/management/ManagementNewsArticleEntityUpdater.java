@@ -130,14 +130,14 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
     
     ApiResponse<Post> response = api.wpV2PostsIdGet(newsArticleId.getId(), null);
     if (response.isOk()) {
-      updateManagementPost(api, response.getResponse());
+      updateManagementPost(organizationId, api, response.getResponse());
     } else {
       logger.warning(String.format("Find organization %s post %s failed on [%d] %s", organizationId.getId(), newsArticleId.toString(), response.getStatus(), response.getMessage()));
     }
   }
   
-  private void updateManagementPost(DefaultApi api, Post managementPost) {
-    NewsArticleId newsArticleId = new NewsArticleId(ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementPost.getId()));
+  private void updateManagementPost(OrganizationId organizationId, DefaultApi api, Post managementPost) {
+    NewsArticleId newsArticleId = new NewsArticleId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementPost.getId()));
 
     Identifier identifier = identifierController.findIdentifierById(newsArticleId);
     if (identifier == null) {
@@ -147,17 +147,17 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(managementPost));
     
     if (managementPost.getFeaturedMedia() != null && managementPost.getFeaturedMedia() > 0) {
-      updateFeaturedMedia(api, managementPost.getFeaturedMedia()); 
+      updateFeaturedMedia(organizationId, api, managementPost.getFeaturedMedia()); 
     }
   }
   
-  private void updateFeaturedMedia(DefaultApi api, Integer featuredMedia) {
+  private void updateFeaturedMedia(OrganizationId organizationId, DefaultApi api, Integer featuredMedia) {
     ApiResponse<fi.otavanopisto.mwp.client.model.Attachment> response = api.wpV2MediaIdGet(String.valueOf(featuredMedia), null);
     if (!response.isOk()) {
       logger.severe(String.format("Finding media failed on [%d] %s", response.getStatus(), response.getMessage()));
     } else {
       Attachment attachment = response.getResponse();
-      AttachmentId attachmentId = new AttachmentId(ManagementConsts.IDENTIFIER_NAME, String.valueOf(attachment.getId()));
+      AttachmentId attachmentId = new AttachmentId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(attachment.getId()));
       
       Identifier identifier = identifierController.findIdentifierById(attachmentId);
       if (identifier == null) {

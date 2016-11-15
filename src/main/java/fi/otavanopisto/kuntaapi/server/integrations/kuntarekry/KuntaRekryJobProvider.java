@@ -30,34 +30,34 @@ public class KuntaRekryJobProvider implements JobProvider {
   @Override
   public Job findOrganizationJob(OrganizationId organizationId, JobId jobId) {
     KuntaRekryJob kuntaRekryJob = kuntaRekryClient.findJob(organizationId, jobId);
-    return translateJob(kuntaRekryJob);
+    return translateJob(organizationId, kuntaRekryJob);
   }
 
   @Override
   public List<Job> listOrganizationJobs(OrganizationId organizationId) {
     List<KuntaRekryJob> kuntaRekryJobs = kuntaRekryClient.listJobs(organizationId);
-    return translateJobs(kuntaRekryJobs);
+    return translateJobs(organizationId, kuntaRekryJobs);
   }
   
-  private List<Job> translateJobs(List<KuntaRekryJob> kuntaRekryJobs) {
+  private List<Job> translateJobs(OrganizationId organizationId, List<KuntaRekryJob> kuntaRekryJobs) {
     if (kuntaRekryJobs == null) {
       return Collections.emptyList();
     }
     
     List<Job> result = new ArrayList<>(kuntaRekryJobs.size());
     for (KuntaRekryJob kuntaRekryJob : kuntaRekryJobs) {
-      result.add(translateJob(kuntaRekryJob));
+      result.add(translateJob(organizationId, kuntaRekryJob));
     }
     
     return result;
   }
   
-  private Job translateJob(KuntaRekryJob kuntaRekryJob) {
+  private Job translateJob(OrganizationId organizationId, KuntaRekryJob kuntaRekryJob) {
     if (kuntaRekryJob == null) {
       return null;
     }
     
-    JobId kuntaRekry = new JobId(KuntaRekryConsts.IDENTIFIER_NAME, String.valueOf(kuntaRekryJob.getJobId()));
+    JobId kuntaRekry = new JobId(organizationId, KuntaRekryConsts.IDENTIFIER_NAME, String.valueOf(kuntaRekryJob.getJobId()));
     JobId kuntaApiId = idController.translateJobId(kuntaRekry, KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiId == null) {
       logger.severe(String.format("Failed to translate jobId %d into KuntaApiId", kuntaRekryJob.getJobId()));

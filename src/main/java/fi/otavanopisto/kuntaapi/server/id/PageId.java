@@ -1,14 +1,11 @@
 package fi.otavanopisto.kuntaapi.server.id;
 
-import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
-
 /**
  * Class representing page id
  * 
  * @author Antti Leppä
  */
-public class PageId extends Id {
+public class PageId extends OrganizationBaseId {
   
   /**
    * Zero-argument constructor for page id
@@ -23,8 +20,8 @@ public class PageId extends Id {
    * @param source source
    * @param id id
    */
-  public PageId(String source, String id) {
-    super(source, id);
+  public PageId(OrganizationId organizationId, String source, String id) {
+    super(organizationId, source, id);
   }
   
   @Override
@@ -33,21 +30,13 @@ public class PageId extends Id {
   }
   
   @Override
-  public boolean equals(Object obj) {
-    if (obj instanceof PageId) {
-      PageId another = (PageId) obj;
-      return StringUtils.equals(this.getSource(), another.getSource()) &&  StringUtils.equals(this.getId(), another.getId());
-    }
-
-    return false;
+  protected int getHashInitial() {
+    return 147;
   }
   
   @Override
-  public int hashCode() {
-    return new HashCodeBuilder(147, 159)
-      .append(getSource())
-      .append(getId())
-      .hashCode();
+  protected int getHashMultiplier() {
+    return 159;
   }
   
 }

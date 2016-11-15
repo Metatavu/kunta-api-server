@@ -52,11 +52,11 @@ public class ManagementPageProvider extends AbstractManagementProvider implement
         return Collections.emptyList();
       }
       
-      if (parentId != null && !idController.idsEqual(parentId, translatePageId(managementPage.getParent()))) {
+      if (parentId != null && !idController.idsEqual(parentId, translatePageId(organizationId, managementPage.getParent()))) {
         return Collections.emptyList();
       }
     
-      return Collections.singletonList(translatePage(managementPage));
+      return Collections.singletonList(translatePage(organizationId, managementPage));
     } else {
       return listPages(organizationId, parentId, onlyRootPages);
     }
@@ -66,7 +66,7 @@ public class ManagementPageProvider extends AbstractManagementProvider implement
   public Page findOrganizationPage(OrganizationId organizationId, PageId pageId) {
     fi.otavanopisto.mwp.client.model.Page managementPage = findPageByPageId(organizationId, pageId);
     if (managementPage != null) {
-      return translatePage(managementPage);
+      return translatePage(organizationId, managementPage);
     }
   
     return null;
@@ -93,7 +93,7 @@ public class ManagementPageProvider extends AbstractManagementProvider implement
       if (featuredMediaId != null) {
         fi.otavanopisto.mwp.client.model.Attachment featuredMedia = findMedia(organizationId, featuredMediaId);
         if ((featuredMedia != null) && (featuredMedia.getMediaType() == MediaTypeEnum.IMAGE)) {
-          return Collections.singletonList(translateAttachment(featuredMedia));
+          return Collections.singletonList(translateAttachment(organizationId, featuredMedia));
         }
       }
     }
@@ -107,14 +107,14 @@ public class ManagementPageProvider extends AbstractManagementProvider implement
     if (page != null) {
       Integer featuredMediaId = page.getFeaturedMedia();
       if (featuredMediaId != null) {
-        AttachmentId managementAttachmentId = getImageAttachmentId(featuredMediaId);
+        AttachmentId managementAttachmentId = getImageAttachmentId(organizationId, featuredMediaId);
         if (!idController.idsEqual(attachmentId, managementAttachmentId)) {
           return null;
         }
         
         fi.otavanopisto.mwp.client.model.Attachment attachment = findMedia(organizationId, featuredMediaId);
         if (attachment != null) {
-          return translateAttachment(attachment);
+          return translateAttachment(organizationId, attachment);
         }
       }
     }
@@ -254,26 +254,26 @@ public class ManagementPageProvider extends AbstractManagementProvider implement
     if (!response.isOk()) {
       logger.severe(String.format("Page listing failed on [%d] %s", response.getStatus(), response.getMessage()));
     } else {
-      return translatePages(response.getResponse());
+      return translatePages(organizationId, response.getResponse());
     }
     
     return Collections.emptyList();
   }
 
-  private List<Page> translatePages(List<fi.otavanopisto.mwp.client.model.Page> managementPages) {
+  private List<Page> translatePages(OrganizationId organizationId, List<fi.otavanopisto.mwp.client.model.Page> managementPages) {
     List<Page> result = new ArrayList<>();
     
     for (fi.otavanopisto.mwp.client.model.Page managementPage : managementPages) {
-      result.add(translatePage(managementPage));
+      result.add(translatePage(organizationId, managementPage));
     }
     
     return result;
   }
 
-  private Page translatePage(fi.otavanopisto.mwp.client.model.Page managementPage) {
+  private Page translatePage(OrganizationId organizationId, fi.otavanopisto.mwp.client.model.Page managementPage) {
     Page page = new Page();
     
-    PageId managementPageId = new PageId(ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementPage.getId()));
+    PageId managementPageId = new PageId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementPage.getId()));
     PageId kuntaApiPageId = idController.translatePageId(managementPageId, KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiPageId == null) {
       logger.severe(String.format("Could not translate page %d into management page id", managementPage.getId()));
@@ -283,7 +283,7 @@ public class ManagementPageProvider extends AbstractManagementProvider implement
     PageId kuntaApiParentPageId = null;
     
     if (managementPage.getParent() != null && managementPage.getParent() > 0) {
-      PageId managementParentPageId = new PageId(ManagementConsts.IDENTIFIER_NAME,String.valueOf(managementPage.getParent()));
+      PageId managementParentPageId = new PageId(organizationId, ManagementConsts.IDENTIFIER_NAME,String.valueOf(managementPage.getParent()));
       kuntaApiParentPageId = idController.translatePageId(managementParentPageId, KuntaApiConsts.IDENTIFIER_NAME);
       if (kuntaApiParentPageId == null) {
         logger.severe(String.format("Could not translate %d parent page %d into management page id", managementPage.getParent(), managementPage.getId()));

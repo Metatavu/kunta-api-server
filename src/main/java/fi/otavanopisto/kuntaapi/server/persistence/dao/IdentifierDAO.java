@@ -1,10 +1,7 @@
 package fi.otavanopisto.kuntaapi.server.persistence.dao;
 
-import java.util.List;
-
 import javax.enterprise.context.Dependent;
 import javax.persistence.EntityManager;
-import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
@@ -27,28 +24,30 @@ public class IdentifierDAO extends AbstractDAO<Identifier> {
    * @param kuntaApiId Kunta API id 
    * @param source source
    * @param sourceId id in source system
+   * @param organizationKuntaApiId 
    * @return created identifier
    */
-  public Identifier create(String type, String kuntaApiId, String source, String sourceId) {
+  public Identifier create(String type, String kuntaApiId, String source, String sourceId, String organizationKuntaApiId) {
     Identifier identifier = new Identifier();
     
     identifier.setType(type);
     identifier.setKuntaApiId(kuntaApiId);
     identifier.setSource(source);
     identifier.setSourceId(sourceId);
+    identifier.setOrganizationKuntaApiId(organizationKuntaApiId);
     
     return persist(identifier);
   }
 
   /**
-   * Finds identifier by source, type and source id
+   * Finds identifier by source, type, source id and organizationKuntaApiId
    * 
    * @param type identifier type
    * @param source source
    * @param sourceId id in source system
    * @return found identifier or null if non found
    */
-  public Identifier findByTypeSourceAndSourceId(String type, String source, String sourceId) {
+  public Identifier findByTypeSourceSourceIdAndOrganizationKuntaApiId(String type, String source, String sourceId, String organizationKuntaApiId) {
     EntityManager entityManager = getEntityManager();
 
     CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
@@ -59,7 +58,10 @@ public class IdentifierDAO extends AbstractDAO<Identifier> {
       criteriaBuilder.and(
           criteriaBuilder.equal(root.get(Identifier_.type), type),
           criteriaBuilder.equal(root.get(Identifier_.source), source),
-          criteriaBuilder.equal(root.get(Identifier_.sourceId), sourceId)          
+          criteriaBuilder.equal(root.get(Identifier_.sourceId), sourceId),
+          organizationKuntaApiId == null 
+            ? criteriaBuilder.isNull(root.get(Identifier_.organizationKuntaApiId)) 
+            : criteriaBuilder.equal(root.get(Identifier_.organizationKuntaApiId), organizationKuntaApiId)
       )
     );
     
@@ -92,38 +94,38 @@ public class IdentifierDAO extends AbstractDAO<Identifier> {
     return getSingleResult(entityManager.createQuery(criteria));
   }
 
-  /**
-   * Lists identifiers by type and source
-   * 
-   * @param type identifier type
-   * @param source source
-   * @param firstResult first result. Null is interpret as 0
-   * @param maxResults maximum number of results. Specifying null returns all identifiers
-   * @return
-   */
-  public List<Identifier> listByTypeAndSource(String type, String source, Integer firstResult, Integer maxResults) {
-    EntityManager entityManager = getEntityManager();
-
-    CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-    CriteriaQuery<Identifier> criteria = criteriaBuilder.createQuery(Identifier.class);
-    Root<Identifier> root = criteria.from(Identifier.class);
-    criteria.select(root);
-    criteria.where(
-      criteriaBuilder.and(
-        criteriaBuilder.equal(root.get(Identifier_.type), type),
-        criteriaBuilder.equal(root.get(Identifier_.source), source)     
-      )
-    );
-    
-    TypedQuery<Identifier> query = entityManager.createQuery(criteria);
-    if (firstResult != null) {
-      query.setFirstResult(firstResult);
-    }
-    
-    if (maxResults != null) {
-      query.setMaxResults(maxResults);
-    }
-    
-    return query.getResultList();
-  }
+//  /**
+//   * Lists identifiers by type and source
+//   * 
+//   * @param type identifier type
+//   * @param source source
+//   * @param firstResult first result. Null is interpret as 0
+//   * @param maxResults maximum number of results. Specifying null returns all identifiers
+//   * @return
+//   */
+//  public List<Identifier> listByTypeAndSource(String type, String source, Integer firstResult, Integer maxResults) {
+//    EntityManager entityManager = getEntityManager();
+//
+//    CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+//    CriteriaQuery<Identifier> criteria = criteriaBuilder.createQuery(Identifier.class);
+//    Root<Identifier> root = criteria.from(Identifier.class);
+//    criteria.select(root);
+//    criteria.where(
+//      criteriaBuilder.and(
+//        criteriaBuilder.equal(root.get(Identifier_.type), type),
+//        criteriaBuilder.equal(root.get(Identifier_.source), source)     
+//      )
+//    );
+//    
+//    TypedQuery<Identifier> query = entityManager.createQuery(criteria);
+//    if (firstResult != null) {
+//      query.setFirstResult(firstResult);
+//    }
+//    
+//    if (maxResults != null) {
+//      query.setMaxResults(maxResults);
+//    }
+//    
+//    return query.getResultList();
+//  }
 }

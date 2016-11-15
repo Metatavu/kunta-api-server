@@ -25,7 +25,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
-import fi.otavanopisto.kuntaapi.server.id.Id;
+import fi.otavanopisto.kuntaapi.server.id.BaseId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 
 @ApplicationScoped
@@ -40,17 +40,17 @@ public class HttpCacheController {
   @Inject
   private ModificationHashCache modificationHashCache;
   
-  public Response getNotModified(Request request, Id id) {
-    if (id == null) {
+  public Response getNotModified(Request request, BaseId baseId) {
+    if (baseId == null) {
       return null;
     }
     
-    if (!KuntaApiConsts.IDENTIFIER_NAME.equals(id.getSource())) {
-      logger.log(Level.WARNING, String.format("Refused to pass id with source %s to modificationHashCache", id.getSource()));
+    if (!KuntaApiConsts.IDENTIFIER_NAME.equals(baseId.getSource())) {
+      logger.log(Level.WARNING, String.format("Refused to pass id with source %s to modificationHashCache", baseId.getSource()));
       return null;
     }
     
-    return getNotModified(request, id.getId());
+    return getNotModified(request, baseId.getId());
   }
   
   public Response getNotModified(Request request, String id) {
@@ -111,10 +111,10 @@ public class HttpCacheController {
       .build();
   }
 
-  public Response streamModified(byte[] data, String type, Id id) {
+  public Response streamModified(byte[] data, String type, BaseId baseId) {
     ResponseBuilder responseBuilder;
     
-    EntityTag tag = getEntityTag(id.getId());
+    EntityTag tag = getEntityTag(baseId.getId());
     
     try (InputStream byteStream = new ByteArrayInputStream(data)) {
       responseBuilder = Response.ok(new Stream(byteStream), type);

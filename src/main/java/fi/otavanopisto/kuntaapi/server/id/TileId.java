@@ -1,14 +1,11 @@
 package fi.otavanopisto.kuntaapi.server.id;
 
-import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
-
 /**
  * Class representing tile id
  * 
  * @author Antti Leppä
  */
-public class TileId extends Id {
+public class TileId extends OrganizationBaseId {
   
   /**
    * Zero-argument constructor for tile id
@@ -23,8 +20,8 @@ public class TileId extends Id {
    * @param source source
    * @param id id
    */
-  public TileId(String source, String id) {
-    super(source, id);
+  public TileId(OrganizationId organizationId, String source, String id) {
+    super(organizationId, source, id);
   }
   
   @Override
@@ -33,21 +30,13 @@ public class TileId extends Id {
   }
   
   @Override
-  public boolean equals(Object obj) {
-    if (obj instanceof TileId) {
-      TileId another = (TileId) obj;
-      return StringUtils.equals(this.getSource(), another.getSource()) &&  StringUtils.equals(this.getId(), another.getId());
-    }
-
-    return false;
+  protected int getHashInitial() {
+    return 139;
   }
   
   @Override
-  public int hashCode() {
-    return new HashCodeBuilder(139, 151)
-      .append(getSource())
-      .append(getId())
-      .hashCode();
+  protected int getHashMultiplier() {
+    return 151;
   }
   
 }

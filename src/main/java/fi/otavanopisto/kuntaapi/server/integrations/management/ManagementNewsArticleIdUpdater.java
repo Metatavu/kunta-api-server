@@ -121,7 +121,7 @@ public class ManagementNewsArticleIdUpdater extends IdUpdater {
     
     List<Post> managementPosts = listManagementPosts(api, organizationId);
     for (Post managementPost : managementPosts) {
-      NewsArticleId newsArticleId = new NewsArticleId(ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementPost.getId()));
+      NewsArticleId newsArticleId = new NewsArticleId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementPost.getId()));
       idUpdateRequest.fire(new NewsArticleIdUpdateRequest(organizationId, newsArticleId, false));
     }
   }

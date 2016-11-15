@@ -19,6 +19,7 @@ import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.SearchHitField;
 
+import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 
@@ -51,7 +52,7 @@ public class PageSearcher {
     
     SearchRequestBuilder requestBuilder = indexReader
       .requestBuilder(TYPE)
-      .storedFields(PAGE_ID_FIELD)
+      .storedFields(PAGE_ID_FIELD, ORGANIZATION_ID_FIELD)
       .setQuery(queryBuilder);
     
     if (firstResult != null) {
@@ -70,10 +71,14 @@ public class PageSearcher {
     
     for (SearchHit hit : hits) {
       Map<String, SearchHitField> fields = hit.getFields(); 
-      SearchHitField searchHitField = fields.get(PAGE_ID_FIELD);
-      String pageId = searchHitField.getValue();
+      SearchHitField pageHitField = fields.get(PAGE_ID_FIELD);
+      SearchHitField organizationHitField = fields.get(ORGANIZATION_ID_FIELD);
+      
+      String pageId = pageHitField.getValue();
+      
       if (StringUtils.isNotBlank(pageId)) {
-        result.add(new PageId(KuntaApiConsts.IDENTIFIER_NAME, pageId));
+        OrganizationId organizationId = new OrganizationId(KuntaApiConsts.IDENTIFIER_NAME, organizationHitField.getValue());
+        result.add(new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, pageId));
       }
     }
     

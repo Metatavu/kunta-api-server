@@ -167,7 +167,7 @@ public class CaseMCacheUpdater {
       return;
     }
     
-    PageId meetingParentPageId = new PageId(KuntaApiConsts.IDENTIFIER_NAME, meetingPage.getParentId());
+    PageId meetingParentPageId = new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, meetingPage.getParentId());
     Page meetingParentPage = caseMCache.findPage(organizationId, meetingParentPageId);
     if (meetingParentPage == null) {
       logger.severe(String.format("Meeting parent page %s could not be found", meetingParentPageId.toString()));
@@ -183,7 +183,7 @@ public class CaseMCacheUpdater {
       List<ExtendedProperty> itemExtendedProperties = listExtendedProperties(organizationId, meetingItemContent);
       MeetingItemLink itemLink = createMeetingItemLink(itemExtendedProperties);
       Page meetingItemPage = translateContent(organizationId, meetingPage, meetingItemContent, itemLink.getText(), itemLink.getSlug());
-      PageId meetingItemPageId = new PageId(KuntaApiConsts.IDENTIFIER_NAME, meetingItemPage.getId());
+      PageId meetingItemPageId = new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, meetingItemPage.getId());
       
       String meetingItemPageContents = renderContentMeetingItem(createMeetingItemModel(downloadUrl, meetingTitle, memoApproved, itemExtendedProperties), locale);
       caseMCache.cachePageContents(organizationId, meetingItemPageId, meetingItemPageContents);
@@ -791,7 +791,7 @@ public class CaseMCacheUpdater {
     
     if (createMissing) {
       Identifier identifier = identifierController.createIdentifier(pageId);
-      result = new PageId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
+      result = new PageId(pageId.getOrganizationId(), KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
       discoveredPageIds.put(pageId, result);
     }
     
@@ -799,11 +799,11 @@ public class CaseMCacheUpdater {
   }
   
   private PageId toNodeId(OrganizationId organizationId, Long nodeId) {
-    return new PageId(CaseMConsts.IDENTIFIER_NAME, String.format("%s|NODE|%d", organizationId.getId(), nodeId));
+    return new PageId(organizationId, CaseMConsts.IDENTIFIER_NAME, String.format("NODE|%d", nodeId));
   }
   
   private PageId toContentId(OrganizationId organizationId, Long contentId) {
-    return new PageId(CaseMConsts.IDENTIFIER_NAME, String.format("%s|CONTENT|%d", organizationId.getId(), contentId));
+    return new PageId(organizationId, CaseMConsts.IDENTIFIER_NAME, String.format("CONTENT|%d", contentId));
   }
   
 

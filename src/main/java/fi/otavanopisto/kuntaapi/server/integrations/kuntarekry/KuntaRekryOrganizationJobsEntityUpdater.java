@@ -110,7 +110,7 @@ public class KuntaRekryOrganizationJobsEntityUpdater extends EntityUpdater {
     kuntaRekryClient.refreshJobs(organizationId);
     
     for (KuntaRekryJob kuntaRekryJob : kuntaRekryClient.listJobs(organizationId)) {
-      JobId kuntaRekryId = new JobId(KuntaRekryConsts.IDENTIFIER_NAME, String.valueOf(kuntaRekryJob.getJobId())); 
+      JobId kuntaRekryId = new JobId(organizationId, KuntaRekryConsts.IDENTIFIER_NAME, String.valueOf(kuntaRekryJob.getJobId())); 
       Identifier identifier = identifierController.findIdentifierById(kuntaRekryId);
       if (identifier == null) {
         identifierController.createIdentifier(kuntaRekryId);

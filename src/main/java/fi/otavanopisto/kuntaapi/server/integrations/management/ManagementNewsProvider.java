@@ -72,7 +72,7 @@ public class ManagementNewsProvider extends AbstractManagementProvider implement
     if (!postResponse.isOk()) {
       logger.severe(String.format("Post listing failed on [%d] %s", postResponse.getStatus(), postResponse.getMessage()));
     } else {
-      return translateNewsArticles(postResponse.getResponse());
+      return translateNewsArticles(organizationId, postResponse.getResponse());
     }
     
     return Collections.emptyList();
@@ -82,7 +82,7 @@ public class ManagementNewsProvider extends AbstractManagementProvider implement
   public NewsArticle findOrganizationNewsArticle(OrganizationId organizationId, NewsArticleId newsArticleId) {
     Post post = findPostByArticleId(organizationId, newsArticleId);
     if (post != null) {
-      return translateNewsArticle(post);
+      return translateNewsArticle(organizationId, post);
     }
 
     return null;
@@ -96,7 +96,7 @@ public class ManagementNewsProvider extends AbstractManagementProvider implement
       if (featuredMediaId != null) {
         fi.otavanopisto.mwp.client.model.Attachment featuredMedia = findMedia(organizationId, featuredMediaId);
         if ((featuredMedia != null) && (featuredMedia.getMediaType() == MediaTypeEnum.IMAGE)) {
-          return Collections.singletonList(translateAttachment(featuredMedia));
+          return Collections.singletonList(translateAttachment(organizationId, featuredMedia));
         }
       }
     }
@@ -112,14 +112,14 @@ public class ManagementNewsProvider extends AbstractManagementProvider implement
     if (post != null) {
       Integer featuredMediaId = post.getFeaturedMedia();
       if (featuredMediaId != null) {
-        AttachmentId managementAttachmentId = getImageAttachmentId(featuredMediaId);
+        AttachmentId managementAttachmentId = getImageAttachmentId(organizationId, featuredMediaId);
         if (!idController.idsEqual(attachmentId, managementAttachmentId)) {
           return null;
         }
         
         fi.otavanopisto.mwp.client.model.Attachment attachment = findMedia(organizationId, featuredMediaId);
         if (attachment != null) {
-          return translateAttachment(attachment);
+          return translateAttachment(organizationId, attachment);
         }
       }
     }
@@ -152,13 +152,13 @@ public class ManagementNewsProvider extends AbstractManagementProvider implement
   }
   
   private Post findPostByArticleId(OrganizationId organizationId, NewsArticleId newsArticleId) {
-    NewsArticleId kuntaApiId = idController.translateNewsArticleId(newsArticleId, ManagementConsts.IDENTIFIER_NAME);
-    if (kuntaApiId == null) {
+    NewsArticleId managementPostId = idController.translateNewsArticleId(newsArticleId, ManagementConsts.IDENTIFIER_NAME);
+    if (managementPostId == null) {
       logger.severe(String.format("Failed to convert %s into MWP id", newsArticleId.toString()));
       return null;
     }
     
-    ApiResponse<Post> response = managementApi.getApi(organizationId).wpV2PostsIdGet(kuntaApiId.getId(), null);
+    ApiResponse<Post> response = managementApi.getApi(organizationId).wpV2PostsIdGet(managementPostId.getId(), null);
     if (!response.isOk()) {
       logger.severe(String.format("Finding post failed on [%d] %s", response.getStatus(), response.getMessage()));
     } else {
@@ -168,20 +168,20 @@ public class ManagementNewsProvider extends AbstractManagementProvider implement
     return null;
   }
 
-  private List<NewsArticle> translateNewsArticles(List<Post> posts) {
+  private List<NewsArticle> translateNewsArticles(OrganizationId organizationId, List<Post> posts) {
     List<NewsArticle> result = new ArrayList<>();
     
     for (Post post : posts) {
-      result.add(translateNewsArticle(post));
+      result.add(translateNewsArticle(organizationId, post));
     }
     
     return result;
   }
 
-  private NewsArticle translateNewsArticle(Post post) {
+  private NewsArticle translateNewsArticle(OrganizationId organizationId, Post post) {
     NewsArticle newsArticle = new NewsArticle();
     
-    NewsArticleId postId = new NewsArticleId(ManagementConsts.IDENTIFIER_NAME, String.valueOf(post.getId()));
+    NewsArticleId postId = new NewsArticleId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(post.getId()));
     NewsArticleId kuntaApiId = idController.translateNewsArticleId(postId, KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiId == null) {
       logger.info(String.format("Could not translate management news artcile %d into kunta api id", post.getId()));

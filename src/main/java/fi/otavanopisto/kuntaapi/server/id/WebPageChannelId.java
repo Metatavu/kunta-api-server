@@ -1,14 +1,11 @@
 package fi.otavanopisto.kuntaapi.server.id;
 
-import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
-
 /**
  * Class representing webpage service channel id
  * 
  * @author Antti Leppä
  */
-public class WebPageChannelId extends Id {
+public class WebPageChannelId extends BaseId {
 
   /**
    * Zero-argument constructor for webpage service channel id
@@ -33,21 +30,13 @@ public class WebPageChannelId extends Id {
   }
   
   @Override
-  public boolean equals(Object obj) {
-    if (obj instanceof WebPageChannelId) {
-      WebPageChannelId another = (WebPageChannelId) obj;
-      return StringUtils.equals(this.getSource(), another.getSource()) &&  StringUtils.equals(this.getId(), another.getId());
-    }
-
-    return false;
+  protected int getHashInitial() {
+    return 231;
   }
   
   @Override
-  public int hashCode() {
-    return new HashCodeBuilder(231, 243)
-      .append(getSource())
-      .append(getId())
-      .hashCode();
+  protected int getHashMultiplier() {
+    return 243;
   }
-  
+
 }

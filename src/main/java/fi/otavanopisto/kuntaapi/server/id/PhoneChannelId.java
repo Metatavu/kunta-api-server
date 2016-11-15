@@ -1,14 +1,11 @@
 package fi.otavanopisto.kuntaapi.server.id;
 
-import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
-
 /**
  * Class representing phone service channel id
  * 
  * @author Antti Leppä
  */
-public class PhoneChannelId extends Id {
+public class PhoneChannelId extends BaseId {
 
   /**
    * Zero-argument constructor for phone service channel id
@@ -33,21 +30,13 @@ public class PhoneChannelId extends Id {
   }
   
   @Override
-  public boolean equals(Object obj) {
-    if (obj instanceof PhoneChannelId) {
-      PhoneChannelId another = (PhoneChannelId) obj;
-      return StringUtils.equals(this.getSource(), another.getSource()) &&  StringUtils.equals(this.getId(), another.getId());
-    }
-
-    return false;
+  protected int getHashInitial() {
+    return 171;
   }
   
   @Override
-  public int hashCode() {
-    return new HashCodeBuilder(171, 183)
-      .append(getSource())
-      .append(getId())
-      .hashCode();
+  protected int getHashMultiplier() {
+    return 183;
   }
   
 }

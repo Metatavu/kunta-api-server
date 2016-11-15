@@ -52,7 +52,7 @@ public class PtvOrganizationServiceProvider extends AbstractPtvProvider implemen
       logger.severe(String.format("Organization service %s reported [%d] %s", ptvOrganizationServiceId.getId(), ptvResponse.getStatus(), ptvResponse.getMessage()));
       return null;
     } else {
-      return translateOrganizationService(ptvResponse.getResponse());
+      return translateOrganizationService(organizationId, ptvResponse.getResponse());
     }
   }
 
@@ -71,7 +71,7 @@ public class PtvOrganizationServiceProvider extends AbstractPtvProvider implemen
       logger.severe(String.format("Organization service list %s reported [%d] %s", ptvOrganizationId.getId(), ptvResponse.getStatus(), ptvResponse.getMessage()));
       return Collections.emptyList();
     } else {
-      return translateOrganizationServices(ptvResponse.getResponse());
+      return translateOrganizationServices(organizationId, ptvResponse.getResponse());
     }
   }
 

@@ -69,7 +69,7 @@ public class ManagementTileProvider extends AbstractManagementProvider implement
     if (!response.isOk()) {
       logger.severe(String.format("Tile listing failed on [%d] %s", response.getStatus(), response.getMessage()));
     } else {
-      return translateTiles(response.getResponse());
+      return translateTiles(organizationId, response.getResponse());
     }
     
     return Collections.emptyList();
@@ -79,7 +79,7 @@ public class ManagementTileProvider extends AbstractManagementProvider implement
   public Tile findOrganizationTile(OrganizationId organizationId, TileId tileId) {
     fi.otavanopisto.mwp.client.model.Tile managementTile = findTileByTileId(organizationId, tileId);
     if (managementTile != null) {
-      return translateTile(managementTile);
+      return translateTile(organizationId, managementTile);
     }
   
     return null;
@@ -93,7 +93,7 @@ public class ManagementTileProvider extends AbstractManagementProvider implement
       if (featuredMediaId != null) {
         fi.otavanopisto.mwp.client.model.Attachment featuredMedia = findMedia(organizationId, featuredMediaId);
         if ((featuredMedia != null) && (featuredMedia.getMediaType() == MediaTypeEnum.IMAGE)) {
-          return Collections.singletonList(translateAttachment(featuredMedia));
+          return Collections.singletonList(translateAttachment(organizationId, featuredMedia));
         }
       }
     }
@@ -107,14 +107,14 @@ public class ManagementTileProvider extends AbstractManagementProvider implement
     if (tile != null) {
       Integer featuredMediaId = tile.getFeaturedMedia();
       if (featuredMediaId != null) {
-        AttachmentId managementAttachmentId = getImageAttachmentId(featuredMediaId);
+        AttachmentId managementAttachmentId = getImageAttachmentId(organizationId, featuredMediaId);
         if (!idController.idsEqual(attachmentId, managementAttachmentId)) {
           return null;
         }
         
         fi.otavanopisto.mwp.client.model.Attachment attachment = findMedia(organizationId, featuredMediaId);
         if (attachment != null) {
-          return translateAttachment(attachment);
+          return translateAttachment(organizationId, attachment);
         }
       }
     }
@@ -163,25 +163,25 @@ public class ManagementTileProvider extends AbstractManagementProvider implement
     return null;
   }
 
-  private List<Tile> translateTiles(List<fi.otavanopisto.mwp.client.model.Tile> managementTiles) {
+  private List<Tile> translateTiles(OrganizationId organizationId, List<fi.otavanopisto.mwp.client.model.Tile> managementTiles) {
     List<Tile> result = new ArrayList<>();
     
     for (fi.otavanopisto.mwp.client.model.Tile managementTile : managementTiles) {
-      result.add(translateTile(managementTile));
+      result.add(translateTile(organizationId, managementTile));
     }
     
     return result;
   }
 
-  private Tile translateTile(fi.otavanopisto.mwp.client.model.Tile managementTile) {
+  private Tile translateTile(OrganizationId organizationId, fi.otavanopisto.mwp.client.model.Tile managementTile) {
     Tile tile = new Tile();
     
-    TileId managementTileId = new TileId(ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementTile.getId()));
+    TileId managementTileId = new TileId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementTile.getId()));
     TileId kuntaApiTileId = idController.translateTileId(managementTileId, KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiTileId == null) {
       logger.info(String.format("Found new news article %d", managementTile.getId()));
       Identifier newIdentifier = identifierController.createIdentifier(managementTileId);
-      kuntaApiTileId = new TileId(KuntaApiConsts.IDENTIFIER_NAME, newIdentifier.getKuntaApiId());
+      kuntaApiTileId = new TileId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, newIdentifier.getKuntaApiId());
     }
     
     tile.setContents(managementTile.getContent().getRendered());

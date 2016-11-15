@@ -121,7 +121,7 @@ public class ManagementPageIdUpdater extends IdUpdater {
     
     List<Page> managementPages = listManagementPages(api, organizationId);
     for (Page managementPage : managementPages) {
-      PageId pageId = new PageId(ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementPage.getId()));
+      PageId pageId = new PageId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementPage.getId()));
       idUpdateRequest.fire(new PageIdUpdateRequest(organizationId, pageId, false));
     }
   }

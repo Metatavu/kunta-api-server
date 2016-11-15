@@ -1,14 +1,11 @@
 package fi.otavanopisto.kuntaapi.server.id;
 
-import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
-
 /**
  * Class representing menu id
  * 
  * @author Antti Leppä
  */
-public class MenuId extends Id {
+public class MenuId extends OrganizationBaseId {
   
   /**
    * Zero-argument constructor for menu id
@@ -23,8 +20,8 @@ public class MenuId extends Id {
    * @param source source
    * @param id id
    */
-  public MenuId(String source, String id) {
-    super(source, id);
+  public MenuId(OrganizationId organizationId, String source, String id) {
+    super(organizationId, source, id);
   }
   
   @Override
@@ -33,21 +30,13 @@ public class MenuId extends Id {
   }
   
   @Override
-  public boolean equals(Object obj) {
-    if (obj instanceof MenuId) {
-      MenuId another = (MenuId) obj;
-      return StringUtils.equals(this.getSource(), another.getSource()) &&  StringUtils.equals(this.getId(), another.getId());
-    }
-
-    return false;
+  protected int getHashInitial() {
+    return 143;
   }
   
   @Override
-  public int hashCode() {
-    return new HashCodeBuilder(143, 155)
-      .append(getSource())
-      .append(getId())
-      .hashCode();
+  protected int getHashMultiplier() {
+    return 155;
   }
-  
+
 }
