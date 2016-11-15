@@ -3,7 +3,7 @@ package fi.otavanopisto.kuntaapi.server.controllers;
 import java.util.List;
 import java.util.UUID;
 
-import javax.enterprise.context.Dependent;
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 import fi.otavanopisto.kuntaapi.server.id.Id;
@@ -16,15 +16,12 @@ import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
  * 
  * @author Antti Leppä
  */
-@Dependent
+@ApplicationScoped
 public class IdentifierController {
   
   @Inject
   private IdentifierDAO identifierDAO;
   
-  private IdentifierController() {
-  }
-
   /**
    * Creates new identifier.
    * 
