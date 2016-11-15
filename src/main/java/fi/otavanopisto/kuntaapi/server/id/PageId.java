@@ -16,15 +16,6 @@ public class PageId extends Id {
   public PageId() {
     super();
   }
-
-  /**
-   * Constructor that parses a stringified id into source and id 
-   * 
-   * @param id stringified id
-   */
-  public PageId(String id) {
-    super(id);
-  }
   
   /**
    * Constructor that accepts source and id

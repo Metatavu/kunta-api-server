@@ -16,15 +16,6 @@ public class WebPageChannelId extends Id {
   public WebPageChannelId() {
     super();
   }
-
-  /**
-   * Constructor that parses a stringified id into source and id 
-   * 
-   * @param id stringified id
-   */
-  public WebPageChannelId(String id) {
-    super(id);
-  }
   
   /**
    * Constructor that accepts source and id

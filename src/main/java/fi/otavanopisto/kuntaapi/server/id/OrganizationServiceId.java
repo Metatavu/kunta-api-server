@@ -16,15 +16,6 @@ public class OrganizationServiceId extends Id {
   public OrganizationServiceId() {
     super();
   }
-
-  /**
-   * Constructor that parses a stringified id into source and id 
-   * 
-   * @param id stringified id
-   */
-  public OrganizationServiceId(String id) {
-    super(id);
-  }
   
   /**
    * Constructor that accepts source and id

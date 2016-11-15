@@ -18,15 +18,6 @@ public class TileId extends Id {
   }
 
   /**
-   * Constructor that parses a stringified id into source and id 
-   * 
-   * @param id stringified id
-   */
-  public TileId(String id) {
-    super(id);
-  }
-  
-  /**
    * Constructor that accepts source and id
    * 
    * @param source source

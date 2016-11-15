@@ -19,15 +19,6 @@ public class FileId extends Id {
   public FileId() {
     super();
   }
-
-  /**
-   * Constructor that parses a stringified id into source and id 
-   * 
-   * @param id stringified id
-   */
-  public FileId(String id) {
-    super(id);
-  }
   
   /**
    * Constructor that accepts source and id

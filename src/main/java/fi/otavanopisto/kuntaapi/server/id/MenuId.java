@@ -16,15 +16,6 @@ public class MenuId extends Id {
   public MenuId() {
     super();
   }
-
-  /**
-   * Constructor that parses a stringified id into source and id 
-   * 
-   * @param id stringified id
-   */
-  public MenuId(String id) {
-    super(id);
-  }
   
   /**
    * Constructor that accepts source and id

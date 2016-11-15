@@ -16,16 +16,7 @@ public class AttachmentId extends Id {
   public AttachmentId() {
     super();
   }
-  
-  /**
-   * Constructor that parses a stringified id into source and id 
-   * 
-   * @param id stringified id
-   */
-  public AttachmentId(String id) {
-    super(id);
-  }
-  
+
   /**
    * Constructor that accepts source and id
    * 

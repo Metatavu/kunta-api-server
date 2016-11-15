@@ -1,7 +1,5 @@
 package fi.otavanopisto.kuntaapi.server.id;
 
-import org.apache.commons.lang3.StringUtils;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
@@ -15,21 +13,6 @@ public abstract class Id {
   private String id;
 
   protected Id() {
-  }
-  
-  /**
-   * Constructor that parses stringified id
-   * 
-   * @param id stringified id
-   */
-  public Id(String id) {
-    if (StringUtils.isNotBlank(id)) {
-      String[] parts = StringUtils.split(id, ':');
-      if (parts.length != 2) {
-        this.source = parts[0];
-        this.id = parts[1];
-      }
-    }
   }
 
   /**

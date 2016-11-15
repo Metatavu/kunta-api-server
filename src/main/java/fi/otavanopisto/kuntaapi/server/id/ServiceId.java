@@ -16,15 +16,6 @@ public class ServiceId extends Id {
   public ServiceId() {
     super();
   }
-
-  /**
-   * Constructor that parses a stringified id into source and id 
-   * 
-   * @param id stringified id
-   */
-  public ServiceId(String id) {
-    super(id);
-  }
   
   /**
    * Constructor that accepts source and id

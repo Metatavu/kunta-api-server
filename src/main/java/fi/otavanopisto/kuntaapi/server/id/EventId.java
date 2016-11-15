@@ -16,15 +16,6 @@ public class EventId extends Id {
   public EventId() {
     super();
   }
-
-  /**
-   * Constructor that parses a stringified id into source and id 
-   * 
-   * @param id stringified id
-   */
-  public EventId(String id) {
-    super(id);
-  }
   
   /**
    * Constructor that accepts source and id

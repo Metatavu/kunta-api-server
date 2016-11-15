@@ -16,15 +16,6 @@ public class ServiceLocationChannelId extends Id {
   public ServiceLocationChannelId() {
     super();
   }
-
-  /**
-   * Constructor that parses a stringified id into source and id 
-   * 
-   * @param id stringified id
-   */
-  public ServiceLocationChannelId(String id) {
-    super(id);
-  }
   
   /**
    * Constructor that accepts source and id

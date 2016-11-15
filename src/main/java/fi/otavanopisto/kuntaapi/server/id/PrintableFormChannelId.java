@@ -16,15 +16,6 @@ public class PrintableFormChannelId extends Id {
   public PrintableFormChannelId() {
     super();
   }
-
-  /**
-   * Constructor that parses a stringified id into source and id 
-   * 
-   * @param id stringified id
-   */
-  public PrintableFormChannelId(String id) {
-    super(id);
-  }
   
   /**
    * Constructor that accepts source and id

@@ -16,15 +16,6 @@ public class ElectronicServiceChannelId extends Id {
   public ElectronicServiceChannelId() {
     super();
   }
-
-  /**
-   * Constructor that parses a stringified id into source and id 
-   * 
-   * @param id stringified id
-   */
-  public ElectronicServiceChannelId(String id) {
-    super(id);
-  }
   
   /**
    * Constructor that accepts source and id

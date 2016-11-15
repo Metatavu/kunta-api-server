@@ -16,15 +16,6 @@ public class PhoneChannelId extends Id {
   public PhoneChannelId() {
     super();
   }
-
-  /**
-   * Constructor that parses a stringified id into source and id 
-   * 
-   * @param id stringified id
-   */
-  public PhoneChannelId(String id) {
-    super(id);
-  }
   
   /**
    * Constructor that accepts source and id
