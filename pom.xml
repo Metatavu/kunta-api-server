@@ -88,6 +88,10 @@
     
     <lucene.version>6.2.0</lucene.version>
     
+    <!-- Liquibase -->
+    
+    <liquibase.version>3.5.3</liquibase.version>
+    
     <!-- Test -->
     
     <restassured.version>2.9.0</restassured.version> 
@@ -517,6 +521,12 @@
       <groupId>org.apache.lucene</groupId>
       <artifactId>lucene-queryparser</artifactId>
       <version>${lucene.version}</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.liquibase</groupId>
+      <artifactId>liquibase-cdi</artifactId>
+      <version>${liquibase.version}</version>
     </dependency>
     
     <!-- Test -->
