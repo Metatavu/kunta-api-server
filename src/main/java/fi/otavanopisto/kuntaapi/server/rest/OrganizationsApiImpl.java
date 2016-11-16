@@ -25,6 +25,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 
 import fi.otavanopisto.kuntaapi.server.controllers.BannerController;
+import fi.otavanopisto.kuntaapi.server.controllers.EventController;
 import fi.otavanopisto.kuntaapi.server.controllers.HttpCacheController;
 import fi.otavanopisto.kuntaapi.server.controllers.MenuController;
 import fi.otavanopisto.kuntaapi.server.controllers.NewsController;
@@ -109,13 +110,13 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   private NewsController newsController;
   
   @Inject
+  private EventController eventController;
+  
+  @Inject
   private HttpCacheController httpCacheController;
   
   @Inject
   private Instance<OrganizationServiceProvider> organizationServiceProviders;
-  
-  @Inject
-  private Instance<EventProvider> eventProviders;
 
   @Inject
   private Instance<JobProvider> jobProviders;
@@ -221,12 +222,10 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
     EventId eventId = toEventId(organizationId, eventIdParam);
     
-    for (EventProvider eventProvider : getEventProviders()) {
-      Event event = eventProvider.findOrganizationEvent(organizationId, eventId);
-      if (event != null) {
-        return Response.ok(event)
-          .build();
-      }
+    Event event = eventController.findEvent(organizationId, eventId);
+    if (event != null) {
+      return Response.ok(event)
+        .build();
     }
     
     return Response.status(Status.NOT_FOUND)
@@ -239,12 +238,10 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     EventId eventId = toEventId(organizationId, eventIdParam);
     AttachmentId attachmentId = new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, imageIdParam);
     
-    for (EventProvider eventProvider : getEventProviders()) {
-      Attachment attachment = eventProvider.findEventImage(organizationId, eventId, attachmentId);
-      if (attachment != null) {
-        return Response.ok(attachment)
-          .build();
-      }
+    Attachment attachment = eventController.findEventImage(organizationId, eventId, attachmentId);
+    if (attachment != null) {
+      return Response.ok(attachment)
+        .build();
     }
     
     return Response.status(Status.NOT_FOUND)
@@ -257,18 +254,16 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     EventId eventId = toEventId(organizationId, eventIdParam);
     AttachmentId attachmentId = new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, imageIdParam);
     
-    for (EventProvider eventProvider : getEventProviders()) {
-      AttachmentData attachmentData = eventProvider.getEventImageData(organizationId, eventId, attachmentId, size);
-      if (attachmentData != null) {
-        try (InputStream stream = new ByteArrayInputStream(attachmentData.getData())) {
-          return Response.ok(stream, attachmentData.getType())
-              .build();
-        } catch (IOException e) {
-          logger.log(Level.SEVERE, FAILED_TO_STREAM_IMAGE_TO_CLIENT, e);
-          return Response.status(Status.INTERNAL_SERVER_ERROR)
-            .entity(INTERNAL_SERVER_ERROR)
+    AttachmentData attachmentData = eventController.getEventImageData(size, organizationId, eventId, attachmentId);
+    if (attachmentData != null) {
+      try (InputStream stream = new ByteArrayInputStream(attachmentData.getData())) {
+        return Response.ok(stream, attachmentData.getType())
             .build();
-        }
+      } catch (IOException e) {
+        logger.log(Level.SEVERE, FAILED_TO_STREAM_IMAGE_TO_CLIENT, e);
+        return Response.status(Status.INTERNAL_SERVER_ERROR)
+          .entity(INTERNAL_SERVER_ERROR)
+          .build();
       }
     }
     
@@ -278,13 +273,10 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   @Override
   public Response listOrganizationEventImages(String organizationIdParam, String eventIdParam, @Context Request request) {
-    List<Attachment> result = new ArrayList<>();
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
     EventId eventId = toEventId(organizationId, eventIdParam);
     
-    for (EventProvider eventProvider : getEventProviders()) {
-      result.addAll(eventProvider.listEventImages(organizationId, eventId));
-    }
+    List<Attachment> result = eventController.listEventImages(organizationId, eventId);
     
     return Response.ok(result)
       .build();
@@ -320,11 +312,8 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
     
-    List<Event> result = new ArrayList<>();
-   
-    for (EventProvider eventProvider : getEventProviders()) {
-      result.addAll(eventProvider.listOrganizationEvents(organizationId, getDateTime(startBefore), getDateTime(startAfter), getDateTime(endBefore), getDateTime(endAfter), order, orderDirection, firstResult, maxResults));
-    }
+    List<Event> result = eventController.listEvents(getDateTime(startBefore), getDateTime(startAfter), getDateTime(endBefore), getDateTime(endAfter), 
+        firstResult, maxResults, order, orderDirection, organizationId);
     
     return Response.ok(result)
       .build();
@@ -1210,17 +1199,6 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     List<OrganizationServiceProvider> result = new ArrayList<>();
     
     Iterator<OrganizationServiceProvider> iterator = organizationServiceProviders.iterator();
-    while (iterator.hasNext()) {
-      result.add(iterator.next());
-    }
-    
-    return Collections.unmodifiableList(result);
-  }
-  
-  private List<EventProvider> getEventProviders() {
-    List<EventProvider> result = new ArrayList<>();
-    
-    Iterator<EventProvider> iterator = eventProviders.iterator();
     while (iterator.hasNext()) {
       result.add(iterator.next());
     }
