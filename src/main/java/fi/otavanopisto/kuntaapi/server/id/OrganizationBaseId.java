@@ -3,6 +3,8 @@ package fi.otavanopisto.kuntaapi.server.id;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
+
 public abstract class OrganizationBaseId extends BaseId {
  
   private OrganizationId organizationId;
@@ -30,9 +32,15 @@ public abstract class OrganizationBaseId extends BaseId {
   
   @Override
   public boolean equals(Object obj) {
-    if (obj instanceof AttachmentId) {
-      AttachmentId another = (AttachmentId) obj;
-      return (getOrganizationId().equals(another.getOrganizationId())) && StringUtils.equals(this.getSource(), another.getSource()) &&  StringUtils.equals(this.getId(), another.getId());
+    if (obj instanceof OrganizationBaseId) {
+      OrganizationBaseId another = (OrganizationBaseId) obj;
+      if (StringUtils.equals(this.getSource(), another.getSource()) &&  StringUtils.equals(this.getId(), another.getId())) {
+        if (!this.getSource().equals(KuntaApiConsts.IDENTIFIER_NAME)) {
+          return getOrganizationId().equals(another.getOrganizationId());
+        } else {
+          return true;
+        }
+      }
     }
 
     return false;
