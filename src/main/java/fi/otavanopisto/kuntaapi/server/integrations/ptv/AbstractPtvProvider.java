@@ -105,12 +105,12 @@ public abstract class AbstractPtvProvider {
     return organization;
   }
   
-  protected OrganizationService translateOrganizationService(fi.otavanopisto.restfulptv.client.model.OrganizationService ptvOrganizationService) {
+  protected OrganizationService translateOrganizationService(OrganizationId organizationId, fi.otavanopisto.restfulptv.client.model.OrganizationService ptvOrganizationService) {
     if (ptvOrganizationService == null) {
       return null;
     }
     
-    OrganizationServiceId ptvId = new OrganizationServiceId(PtvConsts.IDENTIFIFER_NAME, ptvOrganizationService.getId());
+    OrganizationServiceId ptvId = new OrganizationServiceId(organizationId, PtvConsts.IDENTIFIFER_NAME, ptvOrganizationService.getId());
     OrganizationServiceId kuntaApiId = idController.translateOrganizationServiceId(ptvId, KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiId == null) {
       logger.severe(String.format("Could not translate organization service %s into Kunta API id", ptvId.getId()));
@@ -155,14 +155,14 @@ public abstract class AbstractPtvProvider {
     return result;
   }
   
-  protected List<OrganizationService> translateOrganizationServices(List<fi.otavanopisto.restfulptv.client.model.OrganizationService> ptvOrganizationServices) {
+  protected List<OrganizationService> translateOrganizationServices(OrganizationId organizationId, List<fi.otavanopisto.restfulptv.client.model.OrganizationService> ptvOrganizationServices) {
     if (ptvOrganizationServices == null) {
       return Collections.emptyList();
     }
 
     List<OrganizationService> result = new ArrayList<>(ptvOrganizationServices.size());
     for (fi.otavanopisto.restfulptv.client.model.OrganizationService ptvOrganizationService : ptvOrganizationServices) {
-      OrganizationService organizationService = translateOrganizationService(ptvOrganizationService);
+      OrganizationService organizationService = translateOrganizationService(organizationId, ptvOrganizationService);
       if (organizationService != null) {
         result.add(organizationService);
       }

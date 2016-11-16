@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+  <changeSet id="0" author="antti.leppa">
+    <preConditions onFail="MARK_RAN"> 
+      <not>
+        <tableExists tableName="Identifier"/>    
+      </not>
+    </preConditions>
+    
+    <createTable tableName="Identifier">
+      <column name="id" type="bigint(20)" autoIncrement="true">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="kuntaApiId" type="varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="source" type="varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="sourceId" type="varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="type" type="varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+    
+    <addUniqueConstraint constraintName="UK1js2b5xvk9obx1f7nf5fxmhlx" columnNames="type,source,sourceId" tableName="Identifier"/>
+    <addUniqueConstraint constraintName="UKo0se1m5aqhec7bvoynayxcw0s" columnNames="type,source,kuntaApiId" tableName="Identifier"/>
+    
+    <createTable tableName="OrganizationSetting">
+      <column name="id" type="bigint(20)" autoIncrement="true">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="settingKey" type="varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="organizationKuntaApiId" type="varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="value" type="longtext">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+    
+    <addUniqueConstraint constraintName="UKoe2i4hm4mi5e81td7v1kymq4b" columnNames="organizationKuntaApiId,settingKey" tableName="OrganizationSetting"/>
+    
+    <createTable tableName="SystemSetting">
+      <column name="id" type="bigint(20)" autoIncrement="true">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="settingKey" type="varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="value" type="longtext">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+    
+    <addUniqueConstraint constraintName="UK_2bxruoc4f804oo1i8hvn1lqff" columnNames="settingKey" tableName="SystemSetting"/>
+    <addUniqueConstraint constraintName="UK2bxruoc4f804oo1i8hvn1lqff" columnNames="settingKey" tableName="SystemSetting"/>    
+    
+    <sql dbms="mysql">alter table Identifier convert to character set utf8 collate utf8_unicode_ci</sql>
+    <sql dbms="mysql">alter table OrganizationSetting convert to character set utf8 collate utf8_unicode_ci</sql>
+    <sql dbms="mysql">alter table SystemSetting convert to character set utf8 collate utf8_unicode_ci</sql>
+  </changeSet>
+
+  <changeSet id="1" author="antti.leppa">
+    <delete tableName="Identifier">
+      <where>type not in ('SERVICE', 'ORGANIZATION')</where>
+    </delete>
+    <dropUniqueConstraint tableName="Identifier" constraintName="UK1js2b5xvk9obx1f7nf5fxmhlx"/>
+    <dropUniqueConstraint tableName="Identifier" constraintName="UKo0se1m5aqhec7bvoynayxcw0s"/>    
+    <addColumn tableName="Identifier">
+      <column name="organizationKuntaApiId" type="varchar(255)"></column>
+    </addColumn>
+    <addUniqueConstraint constraintName="UK_IDENTIFIER_SOURCE" tableName="Identifier" columnNames="organizationKuntaApiId,type,source,sourceId" />
+    <addUniqueConstraint constraintName="UK_IDENTIFIER_APIID" tableName="Identifier" columnNames="organizationKuntaApiId,type,source,kuntaApiId" />
+
+  </changeSet>
+
+</databaseChangeLog>

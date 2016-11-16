@@ -65,7 +65,7 @@ public class CaseMCache {
       if (current == null) {
         current = findPageByParentAndSlug(organizationId, null, slug);
       } else {
-        current = findPageByParentAndSlug(organizationId, new PageId(KuntaApiConsts.IDENTIFIER_NAME, current.getId()), slug);
+        current = findPageByParentAndSlug(organizationId, new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, current.getId()), slug);
       }
       
       if (current == null) {
@@ -77,8 +77,8 @@ public class CaseMCache {
   }
 
   public void cacheNode(OrganizationId organizationId, Page page) {
-    PageId pageId = page.getId() == null ? null : new PageId(KuntaApiConsts.IDENTIFIER_NAME, page.getId());
-    PageId parentId = page.getParentId() == null ? null : new PageId(KuntaApiConsts.IDENTIFIER_NAME, page.getParentId());
+    PageId pageId = page.getId() == null ? null : new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, page.getId());
+    PageId parentId = page.getParentId() == null ? null : new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, page.getParentId());
     String pageCacheKey = getPageCacheKey(organizationId, pageId);
     String parentCacheKey = getPageCacheKey(organizationId, parentId);
     

@@ -1,29 +1,17 @@
 package fi.otavanopisto.kuntaapi.server.id;
 
-import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
-
 /**
  * Class representing printable form service channel id
  * 
  * @author Antti Leppä
  */
-public class PrintableFormChannelId extends Id {
+public class PrintableFormChannelId extends BaseId {
 
   /**
    * Zero-argument constructor for printable form service channel id
    */
   public PrintableFormChannelId() {
     super();
-  }
-
-  /**
-   * Constructor that parses a stringified id into source and id 
-   * 
-   * @param id stringified id
-   */
-  public PrintableFormChannelId(String id) {
-    super(id);
   }
   
   /**
@@ -42,21 +30,13 @@ public class PrintableFormChannelId extends Id {
   }
   
   @Override
-  public boolean equals(Object obj) {
-    if (obj instanceof PrintableFormChannelId) {
-      PrintableFormChannelId another = (PrintableFormChannelId) obj;
-      return StringUtils.equals(this.getSource(), another.getSource()) &&  StringUtils.equals(this.getId(), another.getId());
-    }
-
-    return false;
+  protected int getHashInitial() {
+    return 191;
   }
   
   @Override
-  public int hashCode() {
-    return new HashCodeBuilder(191, 203)
-      .append(getSource())
-      .append(getId())
-      .hashCode();
+  protected int getHashMultiplier() {
+    return 203;
   }
   
 }

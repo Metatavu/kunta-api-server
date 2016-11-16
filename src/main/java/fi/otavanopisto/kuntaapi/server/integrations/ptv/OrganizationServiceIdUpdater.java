@@ -109,7 +109,7 @@ public class OrganizationServiceIdUpdater extends EntityUpdater {
     ApiResponse<List<OrganizationService>> response = ptvApi.getOrganizationServicesApi().listOrganizationOrganizationServices(organizationId.getId(), null, null);
     if (response.isOk()) {
       for (OrganizationService organizationService : response.getResponse()) {
-        OrganizationServiceId organizationServiceId = new OrganizationServiceId(PtvConsts.IDENTIFIFER_NAME, organizationService.getId());
+        OrganizationServiceId organizationServiceId = new OrganizationServiceId(organizationId, PtvConsts.IDENTIFIFER_NAME, organizationService.getId());
         Identifier identifier = identifierController.findIdentifierById(organizationServiceId);
         if (identifier == null) {
           identifierController.createIdentifier(organizationServiceId);

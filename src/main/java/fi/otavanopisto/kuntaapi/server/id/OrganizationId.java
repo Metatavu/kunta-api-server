@@ -1,29 +1,17 @@
 package fi.otavanopisto.kuntaapi.server.id;
 
-import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
-
 /**
  * Class representing organization id
  * 
  * @author Antti Leppä
  */
-public class OrganizationId extends Id {
+public class OrganizationId extends BaseId {
   
   /**
    * Zero-argument constructor for organization id
    */
   public OrganizationId() {
     super();
-  }
-  
-  /**
-   * Constructor that parses a stringified id into source and id 
-   * 
-   * @param id stringified id
-   */
-  public OrganizationId(String id) {
-    super(id);
   }
   
   /**
@@ -42,21 +30,13 @@ public class OrganizationId extends Id {
   }
   
   @Override
-  public boolean equals(Object obj) {
-    if (obj instanceof OrganizationId) {
-      OrganizationId another = (OrganizationId) obj;
-      return StringUtils.equals(this.getSource(), another.getSource()) &&  StringUtils.equals(this.getId(), another.getId());
-    }
-
-    return false;
+  protected int getHashInitial() {
+    return 127;
   }
   
   @Override
-  public int hashCode() {
-    return new HashCodeBuilder(127, 139)
-      .append(getSource())
-      .append(getId())
-      .hashCode();
+  protected int getHashMultiplier() {
+    return 139;
   }
   
 }

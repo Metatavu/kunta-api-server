@@ -69,7 +69,7 @@ public class ManagementBannerProvider extends AbstractManagementProvider impleme
     if (!response.isOk()) {
       logger.severe(String.format("Banner listing failed on [%d] %s", response.getStatus(), response.getMessage()));
     } else {
-      return translateBanners(response.getResponse());
+      return translateBanners(organizationId, response.getResponse());
     }
     
     return Collections.emptyList();
@@ -79,7 +79,7 @@ public class ManagementBannerProvider extends AbstractManagementProvider impleme
   public Banner findOrganizationBanner(OrganizationId organizationId, BannerId bannerId) {
     fi.otavanopisto.mwp.client.model.Banner managementBanner = findBannerByBannerId(organizationId, bannerId);
     if (managementBanner != null) {
-      return translateBanner(managementBanner);
+      return translateBanner(organizationId, managementBanner);
     }
   
     return null;
@@ -93,7 +93,7 @@ public class ManagementBannerProvider extends AbstractManagementProvider impleme
       if (featuredMediaId != null) {
         fi.otavanopisto.mwp.client.model.Attachment featuredMedia = findMedia(organizationId, featuredMediaId);
         if ((featuredMedia != null) && (featuredMedia.getMediaType() == MediaTypeEnum.IMAGE)) {
-          return Collections.singletonList(translateAttachment(featuredMedia));
+          return Collections.singletonList(translateAttachment(organizationId, featuredMedia));
         }
       }
     }
@@ -107,14 +107,14 @@ public class ManagementBannerProvider extends AbstractManagementProvider impleme
     if (managementBanner != null) {
       Integer featuredMediaId = managementBanner.getFeaturedMedia();
       if (featuredMediaId != null) {
-        AttachmentId managementAttachmentId = getImageAttachmentId(featuredMediaId);
+        AttachmentId managementAttachmentId = getImageAttachmentId(organizationId, featuredMediaId);
         if (!idController.idsEqual(attachmentId, managementAttachmentId)) {
           return null;
         }
         
         fi.otavanopisto.mwp.client.model.Attachment attachment = findMedia(organizationId, featuredMediaId);
         if (attachment != null) {
-          return translateAttachment(attachment);
+          return translateAttachment(organizationId, attachment);
         }
       }
     }
@@ -162,25 +162,25 @@ public class ManagementBannerProvider extends AbstractManagementProvider impleme
     return null;
   }
 
-  private List<Banner> translateBanners(List<fi.otavanopisto.mwp.client.model.Banner> managementBanners) {
+  private List<Banner> translateBanners(OrganizationId organizationId, List<fi.otavanopisto.mwp.client.model.Banner> managementBanners) {
     List<Banner> result = new ArrayList<>();
     
     for (fi.otavanopisto.mwp.client.model.Banner managementBanner : managementBanners) {
-      result.add(translateBanner(managementBanner));
+      result.add(translateBanner(organizationId, managementBanner));
     }
     
     return result;
   }
 
-  private Banner translateBanner(fi.otavanopisto.mwp.client.model.Banner managementBanner) {
+  private Banner translateBanner(OrganizationId organizationId, fi.otavanopisto.mwp.client.model.Banner managementBanner) {
     Banner banner = new Banner();
     
-    BannerId managementBannerId = new BannerId(ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementBanner.getId()));
+    BannerId managementBannerId = new BannerId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementBanner.getId()));
     BannerId kuntaApiBannerId = idController.translateBannerId(managementBannerId, KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiBannerId == null) {
       logger.info(String.format("Found new news article %d", managementBanner.getId()));
       Identifier newIdentifier = identifierController.createIdentifier(managementBannerId);
-      kuntaApiBannerId = new BannerId(KuntaApiConsts.IDENTIFIER_NAME, newIdentifier.getKuntaApiId());
+      kuntaApiBannerId = new BannerId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, newIdentifier.getKuntaApiId());
     }
     
     banner.setContents(managementBanner.getContent().getRendered());

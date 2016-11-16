@@ -70,14 +70,14 @@ public abstract class AbstractManagementProvider {
     return null;
   }
   
-  protected AttachmentId getImageAttachmentId(Integer id) {
-    AttachmentId managementId = new AttachmentId(ManagementConsts.IDENTIFIER_NAME, String.valueOf(id));
+  protected AttachmentId getImageAttachmentId(OrganizationId organizationId, Integer id) {
+    AttachmentId managementId = new AttachmentId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(id));
     AttachmentId kuntaApiId = idController.translateAttachmentId(managementId, KuntaApiConsts.IDENTIFIER_NAME);
     
     if (kuntaApiId == null) {
       logger.info(String.format("Found new management attachment %d", id));
       Identifier newIdentifier = identifierController.createIdentifier(managementId);
-      kuntaApiId = new AttachmentId(KuntaApiConsts.IDENTIFIER_NAME, newIdentifier.getKuntaApiId());
+      kuntaApiId = new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, newIdentifier.getKuntaApiId());
     }
     
     return kuntaApiId;
@@ -108,9 +108,9 @@ public abstract class AbstractManagementProvider {
     return null;
   }
   
-  protected Attachment translateAttachment(fi.otavanopisto.mwp.client.model.Attachment featuredMedia) {
+  protected Attachment translateAttachment(OrganizationId organizationId, fi.otavanopisto.mwp.client.model.Attachment featuredMedia) {
     Integer size = managementImageLoader.getImageSize(featuredMedia.getSourceUrl());
-    AttachmentId id = getImageAttachmentId(featuredMedia.getId());
+    AttachmentId id = getImageAttachmentId(organizationId, featuredMedia.getId());
     Attachment attachment = new Attachment();
     attachment.setContentType(featuredMedia.getMimeType());
     attachment.setId(id.getId());
@@ -133,20 +133,20 @@ public abstract class AbstractManagementProvider {
     return result;
   }
   
-  protected PageId translatePageId(Long pageId) {
+  protected PageId translatePageId(OrganizationId organizationId, Long pageId) {
     if (pageId == null) {
       return null;
     }
     
-    return translatePageId(pageId.intValue());
+    return translatePageId(organizationId, pageId.intValue());
   }
   
-  protected PageId translatePageId(Integer pageId) {
+  protected PageId translatePageId(OrganizationId organizationId, Integer pageId) {
     if (pageId == null) {
       return null;
     }
     
-    PageId managementId = new PageId(ManagementConsts.IDENTIFIER_NAME, String.valueOf(pageId));
+    PageId managementId = new PageId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(pageId));
     return idController.translatePageId(managementId, KuntaApiConsts.IDENTIFIER_NAME);
   }
 }

@@ -1,29 +1,17 @@
 package fi.otavanopisto.kuntaapi.server.id;
 
-import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
-
 /**
  * Class representing service location channel id
  * 
  * @author Antti Leppä
  */
-public class ServiceLocationChannelId extends Id {
+public class ServiceLocationChannelId extends BaseId {
 
   /**
    * Zero-argument constructor for service location channel id
    */
   public ServiceLocationChannelId() {
     super();
-  }
-
-  /**
-   * Constructor that parses a stringified id into source and id 
-   * 
-   * @param id stringified id
-   */
-  public ServiceLocationChannelId(String id) {
-    super(id);
   }
   
   /**
@@ -42,21 +30,13 @@ public class ServiceLocationChannelId extends Id {
   }
   
   @Override
-  public boolean equals(Object obj) {
-    if (obj instanceof ServiceLocationChannelId) {
-      ServiceLocationChannelId another = (ServiceLocationChannelId) obj;
-      return StringUtils.equals(this.getSource(), another.getSource()) &&  StringUtils.equals(this.getId(), another.getId());
-    }
-
-    return false;
+  protected int getHashInitial() {
+    return 211;
   }
   
   @Override
-  public int hashCode() {
-    return new HashCodeBuilder(211, 223)
-      .append(getSource())
-      .append(getId())
-      .hashCode();
+  protected int getHashMultiplier() {
+    return 223;
   }
   
 }

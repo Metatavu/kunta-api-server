@@ -46,7 +46,7 @@ public class ManagementMenuProvider extends AbstractManagementProvider implement
     if (!response.isOk()) {
       logger.severe(String.format("Menu listing failed on [%d] %s", response.getStatus(), response.getMessage()));
     } else {
-      return translateMenus(response.getResponse());
+      return translateMenus(organizationId, response.getResponse());
     }
     
     return Collections.emptyList();
@@ -70,7 +70,7 @@ public class ManagementMenuProvider extends AbstractManagementProvider implement
     if (!response.isOk()) {
       logger.severe(String.format("Menu finding failed on [%d] %s", response.getStatus(), response.getMessage()));
     } else {
-      return translateMenu(response.getResponse());
+      return translateMenu(organizationId, response.getResponse());
     }
     
     return null;
@@ -94,7 +94,7 @@ public class ManagementMenuProvider extends AbstractManagementProvider implement
     if (!response.isOk()) {
       logger.severe(String.format("Menu item listing failed on [%d] %s", response.getStatus(), response.getMessage()));
     } else {
-      return translateMenuItems(response.getResponse());
+      return translateMenuItems(organizationId, response.getResponse());
     }
     
     return Collections.emptyList();
@@ -130,7 +130,7 @@ public class ManagementMenuProvider extends AbstractManagementProvider implement
     } else {
       for (fi.otavanopisto.mwp.client.model.Menuitem managementMenuItem : response.getResponse()) {
         if (managementItemId.getId().equals(String.valueOf(managementMenuItem.getId()))) {
-          return translateMenuItem(managementMenuItem);
+          return translateMenuItem(organizationId, managementMenuItem);
         }
       }
     }
@@ -138,20 +138,20 @@ public class ManagementMenuProvider extends AbstractManagementProvider implement
     return null;
   }
   
-  private List<Menu> translateMenus(List<fi.otavanopisto.mwp.client.model.Menu> managementMenus) {
+  private List<Menu> translateMenus(OrganizationId organizationId, List<fi.otavanopisto.mwp.client.model.Menu> managementMenus) {
     List<Menu> result = new ArrayList<>();
     
     for (fi.otavanopisto.mwp.client.model.Menu managementMenu : managementMenus) {
-      result.add(translateMenu(managementMenu));
+      result.add(translateMenu(organizationId, managementMenu));
     }
     
     return result;
   }
 
-  private Menu translateMenu(fi.otavanopisto.mwp.client.model.Menu managementMenu) {
+  private Menu translateMenu(OrganizationId organizationId, fi.otavanopisto.mwp.client.model.Menu managementMenu) {
     Menu menu = new Menu();
     
-    MenuId managementMenuId = new MenuId(ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementMenu.getId()));
+    MenuId managementMenuId = new MenuId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementMenu.getId()));
     MenuId kuntaApiMenuId = idController.translateMenuId(managementMenuId, KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiMenuId == null) {
       logger.info(String.format("Could not translate management menu %d into kunta api id", managementMenu.getId()));
@@ -164,20 +164,20 @@ public class ManagementMenuProvider extends AbstractManagementProvider implement
     return menu;
   }
   
-  private List<MenuItem> translateMenuItems(List<fi.otavanopisto.mwp.client.model.Menuitem> managementMenuItems) {
+  private List<MenuItem> translateMenuItems(OrganizationId organizationId, List<fi.otavanopisto.mwp.client.model.Menuitem> managementMenuItems) {
     List<MenuItem> result = new ArrayList<>();
     
     for (fi.otavanopisto.mwp.client.model.Menuitem managementMenuItem : managementMenuItems) {
-      result.add(translateMenuItem(managementMenuItem));
+      result.add(translateMenuItem(organizationId, managementMenuItem));
     }
     
     return result;
   }
 
-  private MenuItem translateMenuItem(fi.otavanopisto.mwp.client.model.Menuitem managementMenuItem) {
+  private MenuItem translateMenuItem(OrganizationId organizationId, fi.otavanopisto.mwp.client.model.Menuitem managementMenuItem) {
     MenuItem menuItem = new MenuItem();
     
-    MenuItemId managementMenuItemId = new MenuItemId(ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementMenuItem.getId()));
+    MenuItemId managementMenuItemId = new MenuItemId(organizationId,ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementMenuItem.getId()));
     MenuItemId kuntaApiMenuItemId = idController.translateMenuItemId(managementMenuItemId, KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiMenuItemId == null) {
       logger.info(String.format("Could not translate management menu item %d into kunta api id", managementMenuItem.getId()));
@@ -190,8 +190,8 @@ public class ManagementMenuProvider extends AbstractManagementProvider implement
       return null;
     }
     
-    PageId pageId = translatePageId(managementMenuItem.getPageId());
-    MenuItemId parentMenuItemId = translateMenuItemId(managementMenuItem.getParentItemId());
+    PageId pageId = translatePageId(organizationId, managementMenuItem.getPageId());
+    MenuItemId parentMenuItemId = translateMenuItemId(organizationId, managementMenuItem.getParentItemId());
     
     menuItem.setId(kuntaApiMenuItemId.getId());
     menuItem.setLabel(managementMenuItem.getTitle());
@@ -204,12 +204,12 @@ public class ManagementMenuProvider extends AbstractManagementProvider implement
     return menuItem;
   }
 
-  private MenuItemId translateMenuItemId(Long parentItemId) {
+  private MenuItemId translateMenuItemId(OrganizationId organizationId, Long parentItemId) {
     if (parentItemId == null) {
       return null;
     }
     
-    MenuItemId managementMenuItem = new MenuItemId(ManagementConsts.IDENTIFIER_NAME, String.valueOf(parentItemId));
+    MenuItemId managementMenuItem = new MenuItemId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(parentItemId));
 
     return idController.translateMenuItemId(managementMenuItem, KuntaApiConsts.IDENTIFIER_NAME);
   }

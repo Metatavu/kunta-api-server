@@ -88,6 +88,10 @@
     
     <lucene.version>6.2.0</lucene.version>
     
+    <!-- Liquibase -->
+    
+    <liquibase.version>3.5.3</liquibase.version>
+    
     <!-- Test -->
     
     <restassured.version>2.9.0</restassured.version> 
@@ -519,6 +523,12 @@
       <version>${lucene.version}</version>
     </dependency>
     
+    <dependency>
+      <groupId>org.liquibase</groupId>
+      <artifactId>liquibase-cdi</artifactId>
+      <version>${liquibase.version}</version>
+    </dependency>
+    
     <!-- Test -->
     
     <dependency>
@@ -624,53 +634,7 @@
               </execution>
             </executions>
           </plugin>
-          
-          <plugin>
-            <groupId>de.juplo</groupId>
-            <artifactId>hibernate-maven-plugin</artifactId>
-            <version>2.0.0</version>
-            <dependencies>
-              <dependency>
-                <groupId>com.h2database</groupId>
-                <artifactId>h2</artifactId>
-                <version>${h2.version}</version>
-              </dependency>
-            </dependencies>
-            <configuration>
-              <driver>${it.jdbc.driver}</driver>
-              <hibernateDialect>${it.hibernate.dialect}</hibernateDialect> 
-              <url><![CDATA[${it.jdbc.url}]]></url>
-              <username>${it.jdbc.username}</username>
-              <password>${it.jdbc.password}</password>
-            </configuration>
-            <executions>
-              <execution> 
-                <id>create-schema</id>
-                <phase>pre-integration-test</phase>
-                <goals>
-                  <goal>create</goal>
-                </goals>
-                <configuration>
-                  <show>true</show>
-                  <type>CREATE</type>
-                </configuration>
-              </execution>
-              
-              <execution> 
-                <id>drop-db-after-test</id>
-                <phase>post-integration-test</phase>
-                <goals>
-                  <goal>drop</goal>
-                </goals>
-                <configuration>
-                  <type>DROP</type>
-                  <force>true</force>
-                  <skip>${it.skipdatabasedrop}</skip>
-                </configuration>
-              </execution>
-            </executions>
-          </plugin>
-          
+         
           <plugin>
             <groupId>org.jacoco</groupId>
             <artifactId>jacoco-maven-plugin</artifactId>

@@ -1,16 +1,16 @@
 package fi.otavanopisto.kuntaapi.server.id;
 
 /**
- * Class representing electronic service channel id
+ * Class representing file id
  * 
  * @author Antti Leppä
  */
-public class ElectronicServiceChannelId extends BaseId {
-
+public class FileId extends OrganizationBaseId {
+  
   /**
-   * Zero-argument constructor for electronic service channel id
+   * Zero-argument constructor for file id
    */
-  public ElectronicServiceChannelId() {
+  public FileId() {
     super();
   }
   
@@ -20,23 +20,23 @@ public class ElectronicServiceChannelId extends BaseId {
    * @param source source
    * @param id id
    */
-  public ElectronicServiceChannelId(String source, String id) {
-    super(source, id);
+  public FileId(OrganizationId organizationId, String source, String id) {
+    super(organizationId, source, id);
   }
   
   @Override
   public IdType getType() {
-    return IdType.ELECTRONIC_SERVICE_CHANNEL;
+    return IdType.FILE;
   }
   
   @Override
   protected int getHashInitial() {
-    return 151;
+    return 141;
   }
   
   @Override
   protected int getHashMultiplier() {
-    return 163;
+    return 153;
   }
   
 }

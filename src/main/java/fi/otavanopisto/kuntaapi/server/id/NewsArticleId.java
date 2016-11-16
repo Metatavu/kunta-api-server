@@ -1,14 +1,11 @@
 package fi.otavanopisto.kuntaapi.server.id;
 
-import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
-
 /**
  * Class representing event id
  * 
  * @author Antti Leppä
  */
-public class NewsArticleId extends Id {
+public class NewsArticleId extends OrganizationBaseId {
   
   /**
    * Zero-argument constructor for article id
@@ -18,22 +15,13 @@ public class NewsArticleId extends Id {
   }
 
   /**
-   * Constructor that parses a stringified id into source and id 
-   * 
-   * @param id stringified id
-   */
-  public NewsArticleId(String id) {
-    super(id);
-  }
-  
-  /**
    * Constructor that accepts source and id
    * 
    * @param source source
    * @param id id
    */
-  public NewsArticleId(String source, String id) {
-    super(source, id);
+  public NewsArticleId(OrganizationId organizationId, String source, String id) {
+    super(organizationId, source, id);
   }
   
   @Override
@@ -42,21 +30,13 @@ public class NewsArticleId extends Id {
   }
   
   @Override
-  public boolean equals(Object obj) {
-    if (obj instanceof NewsArticleId) {
-      NewsArticleId another = (NewsArticleId) obj;
-      return StringUtils.equals(this.getSource(), another.getSource()) &&  StringUtils.equals(this.getId(), another.getId());
-    }
-
-    return false;
+  protected int getHashInitial() {
+    return 135;
   }
   
   @Override
-  public int hashCode() {
-    return new HashCodeBuilder(135, 147)
-      .append(getSource())
-      .append(getId())
-      .hashCode();
+  protected int getHashMultiplier() {
+    return 147;
   }
   
 }

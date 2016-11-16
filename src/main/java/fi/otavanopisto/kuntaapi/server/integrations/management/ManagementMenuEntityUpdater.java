@@ -123,12 +123,12 @@ public class ManagementMenuEntityUpdater extends EntityUpdater {
   private void updateManagementMenus(OrganizationId organizationId) {
     List<Menu> managementMenus = listManagementMenus(organizationId);
     for (Menu managementMenu : managementMenus) {
-      updateManagementMenu(managementMenu);
+      updateManagementMenu(organizationId, managementMenu);
     }
     
     List<Menuitem> managementMenuItems = listManagementMenuItems(organizationId, managementMenus);
     for (Menuitem managementMenuItem : managementMenuItems) {
-      updateManagementMenuItem(managementMenuItem);
+      updateManagementMenuItem(organizationId, managementMenuItem);
     }
   }
 
@@ -162,8 +162,8 @@ public class ManagementMenuEntityUpdater extends EntityUpdater {
     return result;
   }
   
-  private void updateManagementMenu(Menu managementMenu) {
-    MenuId menuId = new MenuId(ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementMenu.getId()));
+  private void updateManagementMenu(OrganizationId organizationId, Menu managementMenu) {
+    MenuId menuId = new MenuId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementMenu.getId()));
 
     Identifier identifier = identifierController.findIdentifierById(menuId);
     if (identifier == null) {
@@ -173,8 +173,8 @@ public class ManagementMenuEntityUpdater extends EntityUpdater {
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(managementMenu));
   }
   
-  private void updateManagementMenuItem(Menuitem managementMenuItem) {
-    MenuItemId menuItemId = new MenuItemId(ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementMenuItem.getId()));
+  private void updateManagementMenuItem(OrganizationId organizationId, Menuitem managementMenuItem) {
+    MenuItemId menuItemId = new MenuItemId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementMenuItem.getId()));
 
     Identifier identifier = identifierController.findIdentifierById(menuItemId);
     if (identifier == null) {

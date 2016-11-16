@@ -77,15 +77,6 @@ public abstract class AbstractTest {
     executeDelete("delete from SystemSetting where settingKey = ?", key);
   }
   
-  protected long createIdentifier(String kuntaApiId, String source, String sourceId, String type) {
-    return executeInsert("insert into Identifier (kuntaApiId, source, sourceId, type) values (?, ?, ?, ?)", 
-      kuntaApiId, source, sourceId, type);
-  }
-
-  protected void deleteIndentifier(String key) {
-    executeDelete("delete from Identifier where kuntaApiId = ?", key);
-  }
-  
   protected long executeInsert(String sql, Object... params) {
     try (Connection connection = getConnection()) {
       connection.setAutoCommit(true);

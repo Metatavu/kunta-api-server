@@ -21,8 +21,8 @@ import org.hibernate.validator.constraints.NotEmpty;
  */
 @Entity
 @Table(uniqueConstraints = { 
-  @UniqueConstraint(columnNames = { "type", "source", "sourceId" }),
-  @UniqueConstraint(columnNames = { "type", "source", "kuntaApiId" }) 
+  @UniqueConstraint(columnNames = { "organizationKuntaApiId", "type", "source", "sourceId" }),
+  @UniqueConstraint(columnNames = { "organizationKuntaApiId", "type", "source", "kuntaApiId" }) 
 })
 @Cacheable(true)
 @Cache(usage = CacheConcurrencyStrategy.TRANSACTIONAL)
@@ -31,6 +31,9 @@ public class Identifier {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
+  
+  @Column
+  private String organizationKuntaApiId;
 
   @Column(nullable = false)
   @NotNull
@@ -87,4 +90,13 @@ public class Identifier {
   public void setType(String type) {
     this.type = type;
   }
+  
+  public String getOrganizationKuntaApiId() {
+    return organizationKuntaApiId;
+  }
+  
+  public void setOrganizationKuntaApiId(String organizationKuntaApiId) {
+    this.organizationKuntaApiId = organizationKuntaApiId;
+  }
+  
 }

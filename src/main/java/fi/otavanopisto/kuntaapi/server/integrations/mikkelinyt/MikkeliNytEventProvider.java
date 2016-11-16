@@ -105,7 +105,7 @@ public class MikkeliNytEventProvider implements EventProvider {
       mikkeliNytEvents = limitEventCount(firstResult, maxResults, mikkeliNytEvents);
       Collections.sort(mikkeliNytEvents, new EventComparator(order, orderDirection));
       
-      return transform(mikkeliNytEvents);
+      return transform(organizationId, mikkeliNytEvents);
     } else {
       logger.severe(String.format("Request list organization %s failed on [%d] %s", organizationId.toString(), response.getStatus(), response.getMessage()));
     }
@@ -122,7 +122,7 @@ public class MikkeliNytEventProvider implements EventProvider {
     }
     
     EventId kuntaApiEventId = idController.translateEventId(eventId,  KuntaApiConsts.IDENTIFIER_NAME);
-    return transform(findEvent(organizationId, kuntaApiEventId));
+    return transform(organizationId, findEvent(organizationId, kuntaApiEventId));
   }
 
   @Override
@@ -136,7 +136,7 @@ public class MikkeliNytEventProvider implements EventProvider {
     EventId kuntaApiEventId = idController.translateEventId(eventId,  KuntaApiConsts.IDENTIFIER_NAME);
     fi.otavanopisto.mikkelinyt.model.Event event = findEvent(organizationId, kuntaApiEventId);
     if ((event != null) && StringUtils.isNotBlank(event.getImage())) {
-      Attachment imageAttachment = loadEventImageAttachment(organizationId, getImageAttachmentId(event.getImage()));
+      Attachment imageAttachment = loadEventImageAttachment(organizationId, getImageAttachmentId(organizationId, event.getImage()));
       if (imageAttachment != null) {
         return Collections.singletonList(imageAttachment);
       }
@@ -156,7 +156,7 @@ public class MikkeliNytEventProvider implements EventProvider {
     EventId kuntaApiEventId = idController.translateEventId(eventId, KuntaApiConsts.IDENTIFIER_NAME);
     fi.otavanopisto.mikkelinyt.model.Event event = findEvent(organizationId, kuntaApiEventId);
     if ((event != null) && StringUtils.isNotBlank(event.getImage())) {
-      AttachmentId imageId = getImageAttachmentId(event.getImage());
+      AttachmentId imageId = getImageAttachmentId(organizationId, event.getImage());
       if (idController.idsEqual(attachmentId, imageId)) {
         return loadEventImageAttachment(organizationId, imageId);
       }
@@ -176,7 +176,7 @@ public class MikkeliNytEventProvider implements EventProvider {
     EventId kuntaApiEventId = idController.translateEventId(eventId,  KuntaApiConsts.IDENTIFIER_NAME);
     fi.otavanopisto.mikkelinyt.model.Event event = findEvent(organizationId, kuntaApiEventId);
     if ((event != null) && StringUtils.isNotBlank(event.getImage())) {
-      AttachmentId imageId = getImageAttachmentId(event.getImage());
+      AttachmentId imageId = getImageAttachmentId(organizationId, event.getImage());
       if (idController.idsEqual(attachmentId, imageId)) {
         AttachmentData imageData = getImageData(organizationId, imageId);
         if (size != null) {
@@ -297,7 +297,7 @@ public class MikkeliNytEventProvider implements EventProvider {
     }
     
     for (fi.otavanopisto.mikkelinyt.model.Event event : listResponse.getResponseEntity().getData()) {
-      EventId mikkeliNytEventId = new EventId(MikkeliNytConsts.IDENTIFIER_NAME, event.getId());
+      EventId mikkeliNytEventId = new EventId(kuntaApiOrganizationId,MikkeliNytConsts.IDENTIFIER_NAME, event.getId());
       if (idController.idsEqual(mikkeliNytEventId, kuntaApiEventId)) {
         return event;
       }
@@ -390,41 +390,41 @@ public class MikkeliNytEventProvider implements EventProvider {
     return attachmentResponse;
   }
   
-  private AttachmentId getImageAttachmentId(String url) {
+  private AttachmentId getImageAttachmentId(OrganizationId organizationId, String url) {
     String imageId = StringUtils.substringAfterLast(url, "/");
-    AttachmentId mikkeliNytId = new AttachmentId(MikkeliNytConsts.IDENTIFIER_NAME, imageId);
+    AttachmentId mikkeliNytId = new AttachmentId(organizationId, MikkeliNytConsts.IDENTIFIER_NAME, imageId);
     AttachmentId kuntaApiId = idController.translateAttachmentId(mikkeliNytId, KuntaApiConsts.IDENTIFIER_NAME);
     
     if (kuntaApiId == null) {
       logger.info(String.format("Found new MikkeliNyt attachment %s", imageId));
       Identifier newIdentifier = identifierController.createIdentifier(mikkeliNytId);
-      kuntaApiId = new AttachmentId(KuntaApiConsts.IDENTIFIER_NAME, newIdentifier.getKuntaApiId());
+      kuntaApiId = new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, newIdentifier.getKuntaApiId());
     }
     
     return kuntaApiId;
   }
 
-  private List<Event> transform(List<fi.otavanopisto.mikkelinyt.model.Event> nytEvents) {
+  private List<Event> transform(OrganizationId organizationId, List<fi.otavanopisto.mikkelinyt.model.Event> nytEvents) {
     List<Event> result = new ArrayList<>(nytEvents.size());
     
     for (fi.otavanopisto.mikkelinyt.model.Event nytEvent : nytEvents) {
-      result.add(transform(nytEvent));
+      result.add(transform(organizationId, nytEvent));
     }
     
     return result;
   }
   
-  private Event transform(fi.otavanopisto.mikkelinyt.model.Event nytEvent) {
+  private Event transform(OrganizationId organizationId, fi.otavanopisto.mikkelinyt.model.Event nytEvent) {
     if (nytEvent == null) {
       return null;
     }
     
-    EventId mikkeliNytId = new EventId(MikkeliNytConsts.IDENTIFIER_NAME, nytEvent.getId());
+    EventId mikkeliNytId = new EventId(organizationId, MikkeliNytConsts.IDENTIFIER_NAME, nytEvent.getId());
     EventId kuntaApiId = idController.translateEventId(mikkeliNytId, KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiId == null) {
       logger.info(String.format("Found new MikkeliNyt event %s", nytEvent.getId()));
       Identifier newIdentifier = identifierController.createIdentifier(mikkeliNytId);
-      kuntaApiId = new EventId(KuntaApiConsts.IDENTIFIER_NAME, newIdentifier.getKuntaApiId());
+      kuntaApiId = new EventId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, newIdentifier.getKuntaApiId());
     }
     
     Event result = new Event();
