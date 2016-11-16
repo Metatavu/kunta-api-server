@@ -77,8 +77,8 @@ public abstract class BaseId {
   
   @Override
   public boolean equals(Object obj) {
-    if (obj instanceof AttachmentId) {
-      AttachmentId another = (AttachmentId) obj;
+    if (obj instanceof BaseId) {
+      BaseId another = (BaseId) obj;
       return StringUtils.equals(this.getSource(), another.getSource()) &&  StringUtils.equals(this.getId(), another.getId());
     }
 
