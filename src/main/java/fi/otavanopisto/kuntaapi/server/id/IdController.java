@@ -2,7 +2,7 @@ package fi.otavanopisto.kuntaapi.server.id;
 
 import java.util.Iterator;
 
-import javax.enterprise.context.Dependent;
+import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
 
@@ -15,7 +15,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
  * 
  * @author Antti Leppä
  */
-@Dependent
+@ApplicationScoped
 public class IdController {
   
   @Inject
@@ -505,7 +505,7 @@ public class IdController {
   public boolean idsEqual(EventId id1, EventId id2) {
     EventId kuntaApiId1 = translateEventId(id1, KuntaApiConsts.IDENTIFIER_NAME);
     EventId kuntaApiId2 = translateEventId(id2, KuntaApiConsts.IDENTIFIER_NAME);
-    
+ 
     if (kuntaApiId1 == null || kuntaApiId2 == null) {
       return false;
     }
