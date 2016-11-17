@@ -1,15 +1,10 @@
 package fi.otavanopisto.kuntaapi.server.rest;
 
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import javax.ejb.Stateful;
 import javax.enterprise.context.RequestScoped;
@@ -83,10 +78,6 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   private static final String NOT_FOUND = "Not Found";
   private static final String NOT_IMPLEMENTED = "Not implemented";
   private static final String INTERNAL_SERVER_ERROR = "Internal Server Error";
-  private static final String FAILED_TO_STREAM_IMAGE_TO_CLIENT = "Failed to stream image to client";
-
-  @Inject
-  private Logger logger;
   
   @Inject
   private OrganizationSettingProvider organizationSettingProvider;
@@ -157,7 +148,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return httpCacheController.sendModified(organization, organization.getId());
     }
       
-    	return createNotFound(NOT_FOUND);
+    return createNotFound(NOT_FOUND);
   }
 
   @Override
@@ -222,14 +213,17 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
     EventId eventId = toEventId(organizationId, eventIdParam);
     
-    Event event = eventController.findEvent(organizationId, eventId);
-    if (event != null) {
-      return Response.ok(event)
-        .build();
+    Response notModified = httpCacheController.getNotModified(request, eventId);
+    if (notModified != null) {
+      return notModified;
     }
     
-    return Response.status(Status.NOT_FOUND)
-      .build();
+    Event event = eventController.findEvent(organizationId, eventId);
+    if (event != null) {
+      return httpCacheController.sendModified(event, event.getId());
+    }    
+    
+    return createNotFound(NOT_FOUND);
   }
 
   @Override
@@ -238,14 +232,17 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     EventId eventId = toEventId(organizationId, eventIdParam);
     AttachmentId attachmentId = new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, imageIdParam);
     
-    Attachment attachment = eventController.findEventImage(organizationId, eventId, attachmentId);
-    if (attachment != null) {
-      return Response.ok(attachment)
-        .build();
+    Response notModified = httpCacheController.getNotModified(request, attachmentId);
+    if (notModified != null) {
+      return notModified;
     }
     
-    return Response.status(Status.NOT_FOUND)
-      .build();
+    Attachment attachment = eventController.findEventImage(organizationId, eventId, attachmentId);
+    if (attachment != null) {
+      return httpCacheController.sendModified(attachment, attachment.getId());
+    }    
+    
+    return createNotFound(NOT_FOUND);
   }
 
   @Override
@@ -254,19 +251,17 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     EventId eventId = toEventId(organizationId, eventIdParam);
     AttachmentId attachmentId = new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, imageIdParam);
     
-    AttachmentData attachmentData = eventController.getEventImageData(size, organizationId, eventId, attachmentId);
-    if (attachmentData != null) {
-      try (InputStream stream = new ByteArrayInputStream(attachmentData.getData())) {
-        return Response.ok(stream, attachmentData.getType())
-            .build();
-      } catch (IOException e) {
-        logger.log(Level.SEVERE, FAILED_TO_STREAM_IMAGE_TO_CLIENT, e);
-        return Response.status(Status.INTERNAL_SERVER_ERROR)
-          .entity(INTERNAL_SERVER_ERROR)
-          .build();
-      }
+    
+    Response notModified = httpCacheController.getNotModified(request, attachmentId);
+    if (notModified != null) {
+      return notModified;
     }
     
+    AttachmentData attachmentData = eventController.getEventImageData(size, organizationId, eventId, attachmentId);
+    if (attachmentData != null) {
+      return httpCacheController.streamModified(attachmentData.getData(), attachmentData.getType(), attachmentId);
+    }
+
     return Response.status(Status.NOT_FOUND)
       .build();
   }
@@ -277,9 +272,13 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     EventId eventId = toEventId(organizationId, eventIdParam);
     
     List<Attachment> result = eventController.listEventImages(organizationId, eventId);
-    
-    return Response.ok(result)
-      .build();
+    List<String> ids = httpCacheController.getEntityIds(result);
+    Response notModified = httpCacheController.getNotModified(request, ids);
+    if (notModified != null) {
+      return notModified;
+    }
+
+    return httpCacheController.sendModified(result, ids);
   }
 
   @Override
@@ -314,9 +313,14 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     
     List<Event> result = eventController.listEvents(getDateTime(startBefore), getDateTime(startAfter), getDateTime(endBefore), getDateTime(endAfter), 
         firstResult, maxResults, order, orderDirection, organizationId);
-    
-    return Response.ok(result)
-      .build();
+
+    List<String> ids = httpCacheController.getEntityIds(result);
+    Response notModified = httpCacheController.getNotModified(request, ids);
+    if (notModified != null) {
+      return notModified;
+    }
+
+    return httpCacheController.sendModified(result, ids);
   }
   
   /* News */
