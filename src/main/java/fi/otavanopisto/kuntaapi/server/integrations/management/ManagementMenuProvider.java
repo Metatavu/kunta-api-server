@@ -19,6 +19,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.MenuProvider;
 import fi.otavanopisto.kuntaapi.server.rest.model.Menu;
 import fi.otavanopisto.kuntaapi.server.rest.model.MenuItem;
 import fi.otavanopisto.mwp.client.ApiResponse;
+import fi.otavanopisto.mwp.client.model.Menuitem;
 
 /**
  * Menu provider for management wordpress
@@ -47,10 +48,6 @@ public class ManagementMenuProvider extends AbstractManagementProvider implement
 
   @Override
   public List<Menu> listOrganizationMenus(OrganizationId organizationId, String slug) {
-    if (slug == null) {
-      return getCachedMenus(menuCache.getOragnizationIds(organizationId));
-    }
-    
     ApiResponse<List<fi.otavanopisto.mwp.client.model.Menu>> response = 
         managementApi.getApi(organizationId).kuntaApiMenusGet(slug);
     
@@ -98,7 +95,24 @@ public class ManagementMenuProvider extends AbstractManagementProvider implement
       return Collections.emptyList();
     }
     
-    return getCachedItems(menuItemCache.getChildIds(menuId));
+    ApiResponse<List<fi.otavanopisto.mwp.client.model.Menuitem>> response = managementApi.getApi(organizationId)
+        .kuntaApiMenusMenuIdItemsGet(managementMenuId.getId());
+
+    if (!response.isOk()) {
+      logger.severe(String.format("Menu item listing failed on [%d] %s", response.getStatus(), response.getMessage()));
+    } else {
+      List<Menuitem> managementMenuItems = response.getResponse();
+      List<IdPair<MenuId, MenuItemId>> menuItemIds = new ArrayList<>(managementMenuItems.size());
+      
+      for (fi.otavanopisto.mwp.client.model.Menuitem managementMenuItem : managementMenuItems) {
+        MenuItemId menuItemId = new MenuItemId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementMenuItem.getId()));
+        menuItemIds.add(new IdPair<MenuId, MenuItemId>(menuId, menuItemId));
+      }
+      
+      return getCachedItems(menuItemIds);
+    }
+    
+    return Collections.emptyList();
   }
 
   @Override
