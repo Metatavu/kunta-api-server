@@ -21,6 +21,61 @@ public class IdController {
   @Inject
   private Instance<IdProvider> idProviders;
   
+  @SuppressWarnings ("squid:MethodCyclomaticComplexity")
+  public BaseId translateId(BaseId id, String target) {
+    if (id == null) {
+      return id;
+    }
+    
+    if (id.getSource().equals(target)) {
+      return id;
+    }
+    
+    switch (id.getType()) {
+      case ORGANIZATION:
+        return translateOrganizationId((OrganizationId) id, target);
+      case SERVICE:
+        return translateServiceId((ServiceId) id, target);
+      case ORGANIZATION_SERVICE:
+        return translateOrganizationServiceId((OrganizationServiceId) id, target);
+      case ELECTRONIC_SERVICE_CHANNEL:
+        return translateElectronicServiceChannelId((ElectronicServiceChannelId) id, target);
+      case PHONE_CHANNEL:
+        return translatePhoneServiceChannelId((PhoneChannelId) id, target);
+      case PRINTABLE_FORM_CHANNEL:
+        return translatePrintableFormServiceChannelId((PrintableFormChannelId) id, target);
+      case SERVICE_LOCATION_CHANNEL:
+        return translateServiceLocationChannelId((ServiceLocationChannelId) id, target);
+      case WEBPAGE_CHANNEL:
+        return translateWebPageServiceChannelId((WebPageChannelId) id, target);
+      case EVENT:
+        return translateEventId((EventId) id, target);
+      case ATTACHMENT:
+        return translateAttachmentId((AttachmentId) id, target);
+      case NEWS_ARTICLE:
+        return translateNewsArticleId((NewsArticleId) id, target);
+      case BANNER:
+        return translateBannerId((BannerId) id, target);
+      case TILE:
+        return translateTileId((TileId) id, target);
+      case PAGE:
+        return translatePageId((PageId) id, target);
+      case FILE:
+        return translateFileId((FileId) id, target);
+      case MENU:
+        return translateMenuId((MenuId) id, target);
+      case MENU_ITEM:
+        return translateMenuItemId((MenuItemId) id, target);
+      case JOB:
+        return translateJobId((JobId) id, target);
+      case ANNOUNCEMENT:
+        return translateAnnouncementId((AnnouncementId) id, target);
+       default:
+        return null;
+    }
+    
+  }
+  
   /**
    * Translates organization id into into target id
    * 

@@ -1,121 +1,71 @@
 package fi.otavanopisto.kuntaapi.server.cache;
 
-import java.io.IOException;
-import java.io.Serializable;
-import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Set;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-import javax.annotation.Resource;
 import javax.inject.Inject;
 
-import org.infinispan.Cache;
-import org.infinispan.manager.CacheContainer;
+import fi.otavanopisto.kuntaapi.server.id.BaseId;
+import fi.otavanopisto.kuntaapi.server.id.IdController;
+import fi.otavanopisto.kuntaapi.server.id.OrganizationBaseId;
+import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-/**
- * Abstract base cache for all entity caches
- * 
- * @author Antti Leppä
- * @author Heikki Kurhinen
- */
-@SuppressWarnings ("squid:S3306")
-public abstract class AbstractEntityCache <T> implements Serializable {
+public abstract class AbstractEntityCache<K extends BaseId, V> extends AbstractCache<K, V> {
   
-  private static final long serialVersionUID = 4458370063943309700L;
-
+  private static final long serialVersionUID = 8192317559659671578L;
+  
   @Inject
-  private transient Logger logger;
-
-  @Resource (lookup = "java:jboss/infinispan/container/kunta-api")
-  private transient CacheContainer cacheContainer;
+  private IdController idController;
   
-  public abstract String getCacheName();
-
-  public Cache<String, String> getCache() {
-    return cacheContainer.getCache(getCacheName());
+  @Override
+  public void put(K id, V response) {
+    super.put(getCacheId(id), response);
   }
   
-  /**
-   * Returns cached entity by id
-   * 
-   * @param id entity id
-   * @return cached api reposponse or null if non found
-   */
-  public T get(String id) {
-    Cache<String, String> cache = getCache();
-    if (cache.containsKey(id)) {
-      String rawData = cache.get(id);
-      if (rawData == null) {
-        logger.log(Level.SEVERE, String.format("Could not find data for id %s", id));
-        return null;
-      }
-      
-      ObjectMapper objectMapper = new ObjectMapper();
-      try {
-        return objectMapper.readValue(rawData, getTypeReference());
-      } catch (IOException e) {
-        cache.remove(id);
-        logger.log(Level.SEVERE, "Invalid serizalized object found from the cache. Dropped object", e);
+  @Override
+  public V get(K id) {
+    return super.get(getCacheId(id));
+  }
+  
+  public List<K> getOragnizationIds(OrganizationId organizationId) {
+    if (!isOrganizationBaseType()) {
+      return Collections.emptyList();  
+    }
+    
+    Set<K> ids = getIds();
+    
+    OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(organizationId, KuntaApiConsts.IDENTIFIER_NAME);
+    
+    List<K> result = new ArrayList<>(ids.size());
+    for (K id : ids) {
+      OrganizationBaseId organizationBaseId = (OrganizationBaseId) id;
+      if (organizationBaseId.getOrganizationId().equals(kuntaApiOrganizationId)) {
+        result.add(id);
       }
     }
     
-    return null;
+    return result;
   }
   
-  /**
-   * Caches an entity
-   * 
-   * @param id entity id
-   * @param response
-   */
-  public void put(String id, T response) {
-    Cache<String, String> cache = getCache();
-    ObjectMapper objectMapper = new ObjectMapper();
-    try {
-      cache.put(id, objectMapper.writeValueAsString(response));
-    } catch (JsonProcessingException e) {
-      logger.log(Level.SEVERE, "Failed to serialize response into cache", e);
-    }
+  @SuppressWarnings("unchecked")
+  private K getCacheId(K id) {
+    K cacheId = (K) idController.translateId(id, KuntaApiConsts.IDENTIFIER_NAME);
+    
+    if (id instanceof OrganizationBaseId) {
+      OrganizationBaseId organizationBaseId = (OrganizationBaseId) cacheId;
+      organizationBaseId.setOrganizationId(idController.translateOrganizationId(organizationBaseId.getOrganizationId(), KuntaApiConsts.IDENTIFIER_NAME));
+    } 
+    
+    return cacheId;
   }
   
-  /**
-   * Returns all cached ids
-   * 
-   * @return  all cached ids
-   */
-  public Set<String> getIds() {
-    Cache<String, String> cache = getCache();
-    return cache.keySet();
-  }
-  
-  /**
-   * Removes elements from the cache
-   * 
-   * @param id entity id
-   */
-  public void clear(String id) {
-    Cache<String, String> cache = getCache();
-    cache.remove(id);
-  }
-  
-  private TypeReference<T> getTypeReference() {    
-    Type superClass = getClass().getGenericSuperclass();
-    if (superClass instanceof ParameterizedType) {
-      final Type parameterizedType = ((ParameterizedType) superClass).getActualTypeArguments()[0];
-      return new TypeReference<T>() {
-        @Override
-        public Type getType() {
-          return parameterizedType;
-        }
-      };
-    }
-    return null;
+  private boolean isOrganizationBaseType() {
+    Type[] parameterizedTypes = getParameterizedTypes();
+    return OrganizationBaseId.class.isAssignableFrom((Class<?>) parameterizedTypes[0]);
   }
   
 }
