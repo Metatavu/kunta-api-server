@@ -22,6 +22,7 @@ import org.apache.commons.lang3.math.NumberUtils;
 import fi.otavanopisto.kuntaapi.server.controllers.BannerController;
 import fi.otavanopisto.kuntaapi.server.controllers.EventController;
 import fi.otavanopisto.kuntaapi.server.controllers.HttpCacheController;
+import fi.otavanopisto.kuntaapi.server.controllers.JobController;
 import fi.otavanopisto.kuntaapi.server.controllers.MenuController;
 import fi.otavanopisto.kuntaapi.server.controllers.NewsController;
 import fi.otavanopisto.kuntaapi.server.controllers.OrganizationController;
@@ -104,13 +105,13 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   private EventController eventController;
   
   @Inject
+  private JobController jobController;
+  
+  @Inject
   private HttpCacheController httpCacheController;
   
   @Inject
   private Instance<OrganizationServiceProvider> organizationServiceProviders;
-
-  @Inject
-  private Instance<JobProvider> jobProviders;
   
   @Override
   public Response listOrganizations(String businessName, String businessCode, String search, Long firstResult, Long maxResults, @Context Request request) {
@@ -992,11 +993,9 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createNotFound(NOT_FOUND);
     }
     
-    for (JobProvider jobProvider : getJobProviders()) {
-      Job job = jobProvider.findOrganizationJob(organizationId, jobId);
-      if (job != null) {
-        return Response.ok(job).build();
-      }
+    Job job = jobController.findJob(organizationId, jobId);
+    if (job != null) {
+      return Response.ok(job).build();
     }
     
     return createNotFound(NOT_FOUND);
@@ -1009,7 +1008,6 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createNotFound(NOT_FOUND);
     }
     
-    List<Job> result = new ArrayList<>();
     JobOrder order = null;
     JobOrderDirection orderDirection = null;
     
@@ -1027,10 +1025,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       }
     }
     
-    for (JobProvider jobProvider : getJobProviders()) {
-      result.addAll(jobProvider.listOrganizationJobs(organizationId));
-    }
-    
+    List<Job> result = jobController.listJobs(organizationId);
     return Response.ok(sortJobs(result, order, orderDirection))
       .build();
   }
@@ -1203,17 +1198,6 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     List<OrganizationServiceProvider> result = new ArrayList<>();
     
     Iterator<OrganizationServiceProvider> iterator = organizationServiceProviders.iterator();
-    while (iterator.hasNext()) {
-      result.add(iterator.next());
-    }
-    
-    return Collections.unmodifiableList(result);
-  }
-
-  private List<JobProvider> getJobProviders() {
-    List<JobProvider> result = new ArrayList<>();
-    
-    Iterator<JobProvider> iterator = jobProviders.iterator();
     while (iterator.hasNext()) {
       result.add(iterator.next());
     }
