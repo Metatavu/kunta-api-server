@@ -36,7 +36,7 @@ import fi.otavanopisto.mikkelinyt.model.EventsResponse;
  */
 public class MikkeliNytRestTestsIT extends AbstractIntegrationTest {
   
-  private static final String IMAGES_BASE_PATH = "uploads/testevents";
+  private static final String IMAGES_BASE_PATH = "/uploads/testevents";
   private static final String ORGANIZATION_SETTING_APIKEY = "test-api-key";
   private static final String ORGANIZATION_SETTING_LOCATION = "test";
   private static final ZoneId TIMEZONE_ID = ZoneId.of("Europe/Helsinki");
@@ -243,9 +243,8 @@ public class MikkeliNytRestTestsIT extends AbstractIntegrationTest {
     OffsetDateTime start = getOffsetDateTime(2020, 5, 6, 17, 30, TIMEZONE_ID);
     OffsetDateTime end = getOffsetDateTime(2020, 5, 6, 19, 00, TIMEZONE_ID);
 
-    mocker.mockGetBinary("/" + eventThumbPath, TEST_EVENT_ATTACHMENT_TYPE, "test-image-480.jpg");
-    mocker.mockGetBinary("/" + eventImagePath, TEST_EVENT_ATTACHMENT_TYPE, "test-image-1000.jpg");
-
+    mocker.mockGetBinary(eventImagePath, TEST_EVENT_ATTACHMENT_TYPE, "test-image-1000.jpg");
+    
     return mocker.mockEvent(eventId, eventUrl, eventName, eventDescription, eventCity, eventAddres, eventZip, eventPlace, eventImage, eventThumb, start, end);
   }
 

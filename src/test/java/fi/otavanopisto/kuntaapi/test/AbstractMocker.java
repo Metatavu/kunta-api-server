@@ -3,6 +3,7 @@ package fi.otavanopisto.kuntaapi.test;
 import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
 import static com.github.tomakehurst.wiremock.client.WireMock.equalTo;
 import static com.github.tomakehurst.wiremock.client.WireMock.get;
+import static com.github.tomakehurst.wiremock.client.WireMock.head;
 import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlPathEqualTo;
 import static org.junit.Assert.fail;
@@ -32,6 +33,10 @@ import com.github.tomakehurst.wiremock.client.WireMock;
  * @author Antti Leppä
  */
 public class AbstractMocker {
+
+  private static final String CONTENT_SIZE = "Content-Size";
+
+  private static final String CONTENT_TYPE = "Content-Type";
 
   private static final String FAILED_TO_READ_MOCK_FILE = "Failed to read mock file";
 
@@ -194,10 +199,17 @@ public class AbstractMocker {
   }
   
   private void createBinaryMock(String path, String type, byte[] binary) {
+    stubFor(head(urlPathEqualTo(path))
+      .willReturn(aResponse()
+      .withHeader(CONTENT_TYPE, type)
+      .withHeader(CONTENT_SIZE, String.valueOf(binary.length))
+    ));
+    
     stubFor(get(urlPathEqualTo(path))
       .willReturn(aResponse()
-      .withHeader("Content-Type", type)
-      .withBody(binary)));
+      .withHeader(CONTENT_TYPE, type)
+      .withBody(binary)
+    ));
   }
 
   private void createStringMock(String path, String type, String content, Map<String, String> queryParams) {
@@ -211,7 +223,7 @@ public class AbstractMocker {
     
     stubFor(mappingBuilder
         .willReturn(aResponse()
-        .withHeader("Content-Type", type)
+        .withHeader(CONTENT_TYPE, type)
         .withBody(content)));
   }
   
