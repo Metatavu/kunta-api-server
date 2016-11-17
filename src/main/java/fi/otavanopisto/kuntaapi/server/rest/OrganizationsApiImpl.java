@@ -22,6 +22,7 @@ import org.apache.commons.lang3.math.NumberUtils;
 import fi.otavanopisto.kuntaapi.server.controllers.BannerController;
 import fi.otavanopisto.kuntaapi.server.controllers.EventController;
 import fi.otavanopisto.kuntaapi.server.controllers.HttpCacheController;
+import fi.otavanopisto.kuntaapi.server.controllers.JobController;
 import fi.otavanopisto.kuntaapi.server.controllers.MenuController;
 import fi.otavanopisto.kuntaapi.server.controllers.NewsController;
 import fi.otavanopisto.kuntaapi.server.controllers.OrganizationController;
@@ -104,13 +105,13 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   private EventController eventController;
   
   @Inject
+  private JobController jobController;
+  
+  @Inject
   private HttpCacheController httpCacheController;
   
   @Inject
   private Instance<OrganizationServiceProvider> organizationServiceProviders;
-
-  @Inject
-  private Instance<JobProvider> jobProviders;
   
   @Override
   public Response listOrganizations(String businessName, String businessCode, String search, Long firstResult, Long maxResults, @Context Request request) {
@@ -991,12 +992,15 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     if (jobId == null) {
       return createNotFound(NOT_FOUND);
     }
-    
-    for (JobProvider jobProvider : getJobProviders()) {
-      Job job = jobProvider.findOrganizationJob(organizationId, jobId);
-      if (job != null) {
-        return Response.ok(job).build();
-      }
+
+    Response notModified = httpCacheController.getNotModified(request, jobId);
+    if (notModified != null) {
+      return notModified;
+    }
+
+    Job job = jobController.findJob(organizationId, jobId);
+    if (job != null) {
+      return httpCacheController.sendModified(job, job.getId());
     }
     
     return createNotFound(NOT_FOUND);
@@ -1009,7 +1013,6 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createNotFound(NOT_FOUND);
     }
     
-    List<Job> result = new ArrayList<>();
     JobOrder order = null;
     JobOrderDirection orderDirection = null;
     
@@ -1027,12 +1030,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       }
     }
     
-    for (JobProvider jobProvider : getJobProviders()) {
-      result.addAll(jobProvider.listOrganizationJobs(organizationId));
-    }
-    
-    return Response.ok(sortJobs(result, order, orderDirection))
-      .build();
+    return listOrganizationJobs(request, organizationId, order, orderDirection);
   }
   
   /* Announcements */
@@ -1055,31 +1053,17 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return pageController.listPages(organizationId, path, onlyRootPages, parentId, firstResult, maxResults);
     }
   }
-  
-  private List<Job> sortJobs(List<Job> jobs, JobOrder order, JobOrderDirection orderDirection) {
-    if (order == null) {
-      return jobs;
-    }
+
+  private Response listOrganizationJobs(Request request, OrganizationId organizationId, JobOrder order, JobOrderDirection orderDirection) {
+    List<Job> result = jobController.listJobs(organizationId, order, orderDirection);
     
-    List<Job> sorted = new ArrayList<>(jobs);
-    
-    switch (order) {
-      case PUBLICATION_END:
-        Collections.sort(sorted, (Job o1, Job o2)
-          -> orderDirection != JobOrderDirection.ASCENDING 
-            ? o2.getPublicationEnd().compareTo(o1.getPublicationEnd())
-            : o1.getPublicationEnd().compareTo(o2.getPublicationEnd()));
-      break;
-      case PUBLICATION_START:
-        Collections.sort(sorted, (Job o1, Job o2)
-          -> orderDirection != JobOrderDirection.ASCENDING 
-            ? o2.getPublicationStart().compareTo(o1.getPublicationStart())
-            : o1.getPublicationStart().compareTo(o2.getPublicationStart()));
-      break;
-      default:
+    List<String> ids = httpCacheController.getEntityIds(result);
+    Response notModified = httpCacheController.getNotModified(request, ids);
+    if (notModified != null) {
+      return notModified;
     }
 
-    return sorted;
+    return httpCacheController.sendModified(result, ids);
   }
   
   private Response validateListLimitParams(Long firstResult, Long maxResults) {
@@ -1203,17 +1187,6 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     List<OrganizationServiceProvider> result = new ArrayList<>();
     
     Iterator<OrganizationServiceProvider> iterator = organizationServiceProviders.iterator();
-    while (iterator.hasNext()) {
-      result.add(iterator.next());
-    }
-    
-    return Collections.unmodifiableList(result);
-  }
-
-  private List<JobProvider> getJobProviders() {
-    List<JobProvider> result = new ArrayList<>();
-    
-    Iterator<JobProvider> iterator = jobProviders.iterator();
     while (iterator.hasNext()) {
       result.add(iterator.next());
     }
