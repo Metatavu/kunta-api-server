@@ -1,6 +1,6 @@
 package fi.otavanopisto.kuntaapi.server.integrations.kuntarekry;
 
-import javax.enterprise.context.Dependent;
+import javax.enterprise.context.ApplicationScoped;
 
 import org.apache.commons.lang3.ArrayUtils;
 
@@ -12,7 +12,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.AbstractIdProvider;
  * 
  * @author Antti Leppä
  */
-@Dependent
+@ApplicationScoped
 public class KuntaRekryIdProvider extends AbstractIdProvider {
 
   private static final IdType[] SUPPORTED_TYPES = new IdType[] {

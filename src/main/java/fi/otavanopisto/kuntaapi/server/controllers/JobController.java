@@ -12,6 +12,8 @@ import javax.inject.Inject;
 import fi.otavanopisto.kuntaapi.server.id.JobId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.JobProvider;
+import fi.otavanopisto.kuntaapi.server.integrations.JobProvider.JobOrder;
+import fi.otavanopisto.kuntaapi.server.integrations.JobProvider.JobOrderDirection;
 import fi.otavanopisto.kuntaapi.server.rest.model.Job;
 
 @ApplicationScoped
@@ -31,12 +33,39 @@ public class JobController {
     return null;
   }
   
-  public List<Job> listJobs(OrganizationId organizationId) {
+  public List<Job> listJobs(OrganizationId organizationId, JobOrder order, JobOrderDirection orderDirection) {
     List<Job> result = new ArrayList<>();
     for (JobProvider jobProvider : getJobProviders()) {
       result.addAll(jobProvider.listOrganizationJobs(organizationId));
     }
-    return result;
+    
+    return sortJobs(result, order, orderDirection);
+  }
+  
+  private List<Job> sortJobs(List<Job> jobs, JobOrder order, JobOrderDirection orderDirection) {
+    if (order == null) {
+      return jobs;
+    }
+    
+    List<Job> sorted = new ArrayList<>(jobs);
+    
+    switch (order) {
+      case PUBLICATION_END:
+        Collections.sort(sorted, (Job o1, Job o2)
+          -> orderDirection != JobOrderDirection.ASCENDING 
+            ? o2.getPublicationEnd().compareTo(o1.getPublicationEnd())
+            : o1.getPublicationEnd().compareTo(o2.getPublicationEnd()));
+      break;
+      case PUBLICATION_START:
+        Collections.sort(sorted, (Job o1, Job o2)
+          -> orderDirection != JobOrderDirection.ASCENDING 
+            ? o2.getPublicationStart().compareTo(o1.getPublicationStart())
+            : o1.getPublicationStart().compareTo(o2.getPublicationStart()));
+      break;
+      default:
+    }
+
+    return sorted;
   }
 
   private List<JobProvider> getJobProviders() {

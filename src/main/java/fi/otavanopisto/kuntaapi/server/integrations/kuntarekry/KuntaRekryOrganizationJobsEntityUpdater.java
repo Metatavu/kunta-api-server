@@ -18,6 +18,7 @@ import javax.inject.Inject;
 
 import org.apache.commons.lang3.StringUtils;
 
+import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
 import fi.otavanopisto.kuntaapi.server.discover.OrganizationIdUpdateRequest;
@@ -40,6 +41,9 @@ public class KuntaRekryOrganizationJobsEntityUpdater extends EntityUpdater {
 
   @Inject
   private IdentifierController identifierController;
+  
+  @Inject
+  private ModificationHashCache modificationHashCache;
   
   @Inject
   private OrganizationSettingController organizationSettingController;
@@ -113,8 +117,10 @@ public class KuntaRekryOrganizationJobsEntityUpdater extends EntityUpdater {
       JobId kuntaRekryId = new JobId(organizationId, KuntaRekryConsts.IDENTIFIER_NAME, String.valueOf(kuntaRekryJob.getJobId())); 
       Identifier identifier = identifierController.findIdentifierById(kuntaRekryId);
       if (identifier == null) {
-        identifierController.createIdentifier(kuntaRekryId);
+        identifier = identifierController.createIdentifier(kuntaRekryId);
       }
+      
+      modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(kuntaRekryJob));
     }
   }
 

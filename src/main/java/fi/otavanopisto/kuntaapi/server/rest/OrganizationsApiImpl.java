@@ -992,10 +992,15 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     if (jobId == null) {
       return createNotFound(NOT_FOUND);
     }
-    
+
+    Response notModified = httpCacheController.getNotModified(request, jobId);
+    if (notModified != null) {
+      return notModified;
+    }
+
     Job job = jobController.findJob(organizationId, jobId);
     if (job != null) {
-      return Response.ok(job).build();
+      return httpCacheController.sendModified(job, job.getId());
     }
     
     return createNotFound(NOT_FOUND);
@@ -1025,9 +1030,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       }
     }
     
-    List<Job> result = jobController.listJobs(organizationId);
-    return Response.ok(sortJobs(result, order, orderDirection))
-      .build();
+    return listOrganizationJobs(request, organizationId, order, orderDirection);
   }
   
   /* Announcements */
@@ -1050,31 +1053,17 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return pageController.listPages(organizationId, path, onlyRootPages, parentId, firstResult, maxResults);
     }
   }
-  
-  private List<Job> sortJobs(List<Job> jobs, JobOrder order, JobOrderDirection orderDirection) {
-    if (order == null) {
-      return jobs;
-    }
+
+  private Response listOrganizationJobs(Request request, OrganizationId organizationId, JobOrder order, JobOrderDirection orderDirection) {
+    List<Job> result = jobController.listJobs(organizationId, order, orderDirection);
     
-    List<Job> sorted = new ArrayList<>(jobs);
-    
-    switch (order) {
-      case PUBLICATION_END:
-        Collections.sort(sorted, (Job o1, Job o2)
-          -> orderDirection != JobOrderDirection.ASCENDING 
-            ? o2.getPublicationEnd().compareTo(o1.getPublicationEnd())
-            : o1.getPublicationEnd().compareTo(o2.getPublicationEnd()));
-      break;
-      case PUBLICATION_START:
-        Collections.sort(sorted, (Job o1, Job o2)
-          -> orderDirection != JobOrderDirection.ASCENDING 
-            ? o2.getPublicationStart().compareTo(o1.getPublicationStart())
-            : o1.getPublicationStart().compareTo(o2.getPublicationStart()));
-      break;
-      default:
+    List<String> ids = httpCacheController.getEntityIds(result);
+    Response notModified = httpCacheController.getNotModified(request, ids);
+    if (notModified != null) {
+      return notModified;
     }
 
-    return sorted;
+    return httpCacheController.sendModified(result, ids);
   }
   
   private Response validateListLimitParams(Long firstResult, Long maxResults) {
