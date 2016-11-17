@@ -90,7 +90,7 @@ public abstract class BaseId {
     return new HashCodeBuilder(getHashInitial(), getHashMultiplier())
       .append(getSource())
       .append(getId())
-      .hashCode();
+      .toHashCode();
   }
 
 }
