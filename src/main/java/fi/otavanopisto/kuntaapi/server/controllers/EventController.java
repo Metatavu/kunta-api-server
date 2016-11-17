@@ -65,6 +65,7 @@ public class EventController {
     return result;
   }
 
+  @SuppressWarnings ("squid:S00107")
   public List<Event> listEvents(OffsetDateTime startBefore, OffsetDateTime startAfter, OffsetDateTime endBefore, OffsetDateTime endAfter,
       Integer firstResult, Integer maxResults, EventProvider.EventOrder order,
       EventProvider.EventOrderDirection orderDirection, OrganizationId organizationId) {
