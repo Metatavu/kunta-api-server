@@ -53,7 +53,7 @@ public abstract class OrganizationBaseId extends BaseId {
       .append(getOrganizationId().getId())
       .append(getSource())
       .append(getId())
-      .hashCode();
+      .toHashCode();
   }
   
   

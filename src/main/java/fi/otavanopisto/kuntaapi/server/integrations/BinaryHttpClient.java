@@ -91,12 +91,12 @@ public class BinaryHttpClient {
   }
   
   /**
-   * Resolve download size
+   * Resolve download meta data
    * 
    * @param url URL
-   * @return content size or null on failure
+   * @return download meta data or null on failure
    */
-  public Integer getDownloadSize(String url) {
+  public DownloadMeta getDownloadMeta(String url) {
     URI uri;
     
     try {
@@ -106,16 +106,16 @@ public class BinaryHttpClient {
       return null;
     }
     
-    return getDownloadSize(uri);
+    return getDownloadMeta(uri);
   }
   
   /**
-   * Resolve download size
+   * Resolve download meta data
    * 
    * @param uri URI
-   * @return content size or null on failure
+   * @return download meta data or null on failure
    */
-  public Integer getDownloadSize(URI uri) {
+  public DownloadMeta getDownloadMeta(URI uri) {
     try {
       CloseableHttpClient client = HttpClients.createDefault();
       try {
@@ -123,7 +123,9 @@ public class BinaryHttpClient {
         
         CloseableHttpResponse httpResponse = client.execute(httpHead);
         try {
-          return getIntegerHeader(httpResponse, "Content-Length");
+          Integer size = getIntegerHeader(httpResponse, "Content-Length");
+          String contentType = getStringHeader(httpResponse, "Content-Type");
+          return new DownloadMeta(size, contentType);
         } finally {
           httpResponse.close();
         }
@@ -144,6 +146,15 @@ public class BinaryHttpClient {
       if (StringUtils.isNumeric(value)) {
         return NumberUtils.createInteger(value);
       }
+    }
+    
+    return null;
+  }
+  
+  private String getStringHeader(HttpResponse httpResponse, String name) {
+    Header header = httpResponse.getFirstHeader(name);
+    if (header != null) {
+      return header.getValue();
     }
     
     return null;
@@ -178,6 +189,25 @@ public class BinaryHttpClient {
       return type;
     }
     
+  }
+  
+  public class DownloadMeta {
+    
+    private Integer size;
+    private String contentType;
+    
+    public DownloadMeta(Integer size, String contentType) {
+      this.size = size;
+      this.contentType = contentType;
+    }
+    
+    public String getContentType() {
+      return contentType;
+    }
+    
+    public Integer getSize() {
+      return size;
+    }
     
   }
   

@@ -5,12 +5,12 @@ import java.util.List;
 import javax.ejb.Singleton;
 import javax.enterprise.context.ApplicationScoped;
 
-import fi.otavanopisto.kuntaapi.server.cache.AbstractEntityCache;
+import fi.otavanopisto.kuntaapi.server.cache.AbstractCache;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
 
 @ApplicationScoped
 @Singleton
-public class CaseMNodeTreeCache extends AbstractEntityCache<List<PageId>> {
+public class CaseMNodeTreeCache extends AbstractCache<String, List<PageId>> {
 
   private static final long serialVersionUID = -6823625136135832573L;
 

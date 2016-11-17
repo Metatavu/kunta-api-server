@@ -13,6 +13,7 @@ import org.apache.http.client.utils.URIBuilder;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.BinaryHttpClient;
 import fi.otavanopisto.kuntaapi.server.integrations.BinaryHttpClient.BinaryResponse;
+import fi.otavanopisto.kuntaapi.server.integrations.BinaryHttpClient.DownloadMeta;
 import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpClient.Response;
 
 @ApplicationScoped
@@ -49,7 +50,12 @@ public class ManagementImageLoader {
   }
   
   public Integer getImageSize(String url) {
-    return binaryHttpClient.getDownloadSize(url);
+    DownloadMeta downloadMeta = binaryHttpClient.getDownloadMeta(url);
+    if (downloadMeta != null) {
+      return downloadMeta.getSize();
+    }
+    
+    return null;
   }
   
 }
