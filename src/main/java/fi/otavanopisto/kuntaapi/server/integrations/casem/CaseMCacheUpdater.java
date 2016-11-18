@@ -44,6 +44,7 @@ import fi.otavanopisto.casem.client.model.NodeList;
 import fi.otavanopisto.casem.client.model.NodeName;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.freemarker.FreemarkerRenderer;
+import fi.otavanopisto.kuntaapi.server.id.FileId;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
@@ -111,6 +112,9 @@ public class CaseMCacheUpdater {
   
   @Inject
   private Event<CaseMMeetingDataUpdateRequest> meetingDataUpdateRequest;
+  
+  @Inject
+  private Event<FileUpdateRequest> fileUpdateRequest;
   
   @Inject
   private IdController idController;
@@ -199,6 +203,10 @@ public class CaseMCacheUpdater {
     String meetingPageContents = renderContentMeeting(meeting, locale);
     caseMCache.cachePageContents(organizationId, meetingPageId, meetingPageContents);
     indexRequest.fire(new IndexRequest(createIndexablePage(organizationId, meetingPageId, locale.getLanguage(), meetingPageContents, meetingTitle)));
+
+    for (FileId fileId : getAttachmentFileIds(organizationId, meetingExtendedProperties)) {
+      fileUpdateRequest.fire(new FileUpdateRequest(meetingPageId, fileId));
+    }
 
     logger.info(String.format("Done updating CaseM meeting %s", meetingPageId.toString()));
   }
@@ -294,6 +302,32 @@ public class CaseMCacheUpdater {
     }
     
     return null;
+  }
+  
+  private List<FileId> getAttachmentFileIds(OrganizationId organizationId, List<ExtendedProperty> extendedProperties) {
+    List<FileId> result = new ArrayList<>();
+    
+    for (ExtendedProperty extendedProperty : extendedProperties) {
+      if (EXTENDED_ATTACHMENTS.equals(extendedProperty.getName())) {
+        result.addAll(parseAttachmentFileIds(organizationId, extendedProperty.getText()));
+      }
+    }
+    
+    return result;
+  }
+  
+  private List<FileId> parseAttachmentFileIds(OrganizationId organizationId, String text) {
+    List<FileId> result = new ArrayList<>();
+    
+    Pattern pattern = Pattern.compile("(download.aspx\\?ID=)([0-9]*)\\&GUID=\\{([0-9a-zA-Z-]*)\\}");
+    Matcher matcher = pattern.matcher(text);
+    while (matcher.find()) {
+      Long id = NumberUtils.createLong(matcher.group(2));
+      String guid = matcher.group(3);
+      result.add(new FileId(organizationId, CaseMConsts.IDENTIFIER_NAME, String.format("{%s}/%d", guid, id)));
+    }
+    
+    return result;
   }
   
   private String renderContentMeeting(Meeting meeting, Locale locale) {
@@ -450,7 +484,7 @@ public class CaseMCacheUpdater {
     
     return result;
   }
-
+  
   private List<ExtendedProperty> listExtendedProperties(OrganizationId organizationId, Content content) {
     ApiResponse<ExtendedPropertyList> propertiesResult = caseMApi.getContentsApi(organizationId).listExtendedPropertiesByContent(content.getContentId(), null);
     if (!propertiesResult.isOk()) {
