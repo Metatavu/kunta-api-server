@@ -29,12 +29,12 @@ public abstract class AbstractEntityRelationCache <P extends BaseId, C extends B
     return super.get(createCacheKey(id));
   }
 
-  public List<IdPair<P, C>> getChildIds(P eventId) {
+  public List<IdPair<P, C>> getChildIds(P parentId) {
     Set<IdPair<P, C>> ids = getIds();
     List<IdPair<P, C>> result = new ArrayList<>();
     
     for (IdPair<P, C> id : ids) {
-      if (id.parentEquals(eventId)) {
+      if (id.parentEquals(parentId)) {
         result.add(id);
       }
     }
