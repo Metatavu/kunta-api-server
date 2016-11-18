@@ -3,10 +3,8 @@ package fi.otavanopisto.kuntaapi.server.integrations.casem;
 import java.util.Collections;
 import java.util.List;
 
-import javax.enterprise.context.Dependent;
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-
-import org.apache.commons.lang3.StringUtils;
 
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
@@ -23,33 +21,21 @@ import fi.otavanopisto.kuntaapi.server.rest.model.Page;
  * @author Antti Leppä
  * @author Heikki Kurhinen
  */
-@Dependent
+@ApplicationScoped
 public class CaseMPageProvider implements PageProvider {
   
   @Inject
   private CaseMCache caseMCache;
   
-  private CaseMPageProvider() {
-  }
-  
   @Override
-  public List<Page> listOrganizationPages(OrganizationId organizationId, PageId parentId, boolean onlyRootPages, String path) {
-    if (StringUtils.isNotBlank(path)) {
-      Page page = caseMCache.findPageByPath(organizationId, path);
-      if (page == null) {
-        return Collections.emptyList();
-      }
-      
-      return Collections.singletonList(page);
-    } else {
-      if (onlyRootPages) {
-        return caseMCache.listRootPages(organizationId);
-      } else {      
-        return caseMCache.listPages(organizationId, parentId);
-      }
+  public List<Page> listOrganizationPages(OrganizationId organizationId, PageId parentId, boolean onlyRootPages) {
+    if (onlyRootPages) {
+      return caseMCache.listRootPages(organizationId);
+    } else {      
+      return caseMCache.listPages(organizationId, parentId);
     }
   }
-
+  
   @Override
   public Page findOrganizationPage(OrganizationId organizationId, PageId pageId) {
     return caseMCache.findPage(organizationId, pageId);

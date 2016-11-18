@@ -43,6 +43,7 @@ import fi.otavanopisto.casem.client.model.Node;
 import fi.otavanopisto.casem.client.model.NodeList;
 import fi.otavanopisto.casem.client.model.NodeName;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
+import fi.otavanopisto.kuntaapi.server.controllers.PageController;
 import fi.otavanopisto.kuntaapi.server.freemarker.FreemarkerRenderer;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
@@ -117,6 +118,9 @@ public class CaseMCacheUpdater {
   
   @Inject
   private IdentifierController identifierController;
+  
+  @Inject
+  private PageController pageController;
 
   @Inject
   private Event<IndexRequest> indexRequest;
@@ -758,6 +762,10 @@ public class CaseMCacheUpdater {
       }
     }
     
+    if (kuntaApiParentId == null) {
+      kuntaApiParentId = resolveRootFolderId(organizationId);
+    }
+    
     List<LocalizedValue> titles = translateNodeNames(organizationId, node.getNames());
     page.setId(kuntaApiId.getId());
     page.setParentId(kuntaApiParentId != null ? kuntaApiParentId.getId() : null);
@@ -767,6 +775,18 @@ public class CaseMCacheUpdater {
     return page;
   }
   
+  private PageId resolveRootFolderId(OrganizationId organizationId) {
+    String path = organizationSettingController.getSettingValue(organizationId, CaseMConsts.ORGANIZATION_SETTING_ROOT_FOLDER);
+    if (StringUtils.isNotBlank(path)) {
+      List<Page> pages = pageController.listPages(organizationId, path, false, null, 0l, 1l);
+      if (!pages.isEmpty()) {
+        return new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, pages.get(0).getId());
+      }
+    }
+    
+    return null;
+  }
+
   private Page translateContent(OrganizationId organizationId, Page parentPage, Content content, String title, String slug) {
     Page page = new Page();
     
