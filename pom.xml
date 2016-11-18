@@ -82,7 +82,7 @@
     
     <!-- Elastic Search -->
     
-    <elasticsearch.version>5.0.0</elasticsearch.version>
+    <elasticsearch.version>5.0.1</elasticsearch.version>
     
     <!-- Lucene -->
     
