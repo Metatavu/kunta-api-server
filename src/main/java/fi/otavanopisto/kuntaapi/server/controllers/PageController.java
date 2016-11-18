@@ -10,6 +10,8 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
 
+import org.apache.commons.lang3.StringUtils;
+
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
@@ -41,12 +43,19 @@ public class PageController {
   public List<Page> listPages(OrganizationId organizationId, String path, boolean onlyRootPages, PageId parentId, Long firstResult, Long maxResults) {
     List<Page> result = new ArrayList<>();
     
-    for (PageProvider pageProvider : getPageProviders()) {
-      List<Page> pages = pageProvider.listOrganizationPages(organizationId, parentId, onlyRootPages, path);
-      if (pages != null) {
-        result.addAll(pages);
-      } else {
-        logger.severe(String.format("Page provider %s returned null when listing pages", pageProvider.getClass().getName())); 
+    if (path != null) {
+      Page page = findPageByPath(organizationId, path);
+      if (page != null) {
+        result.add(page);
+      }
+    } else {
+      for (PageProvider pageProvider : getPageProviders()) {
+        List<Page> pages = pageProvider.listOrganizationPages(organizationId, parentId, onlyRootPages);
+        if (pages != null) {
+          result.addAll(pages);
+        } else {
+          logger.severe(String.format("Page provider %s returned null when listing pages", pageProvider.getClass().getName())); 
+        }
       }
     }
     
@@ -55,6 +64,38 @@ public class PageController {
     int toIndex = maxResults == null ? resultCount : Math.min(firstIndex + maxResults.intValue(), resultCount);
     
     return result.subList(firstIndex, toIndex);
+  }
+
+  public Page findPageByPath(OrganizationId organizationId, String path) {
+    Page current = null;
+    
+    String[] slugs = StringUtils.split(path, "/");
+    for (String slug : slugs) {
+      if (current == null) {
+        current = findPageByParentAndSlug(organizationId, null, slug);
+      } else {
+        current = findPageByParentAndSlug(organizationId, new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, current.getId()), slug);
+      }
+      
+      if (current == null) {
+        return null;
+      }
+    }
+    
+    return current;
+  }
+
+  private Page findPageByParentAndSlug(OrganizationId organizationId, PageId parentId, String slug) {
+    for (PageProvider pageProvider : getPageProviders()) {
+      List<Page> childPages = pageProvider.listOrganizationPages(organizationId, parentId, parentId == null);
+      for (Page childPage : childPages) {
+        if (StringUtils.equals(slug, childPage.getSlug())) {
+          return childPage;
+        }
+      }
+    }
+    
+    return null;
   }
 
   public List<Page> searchPages(OrganizationId organizationId, String queryString, Long firstResult, Long maxResults) {
