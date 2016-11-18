@@ -21,6 +21,7 @@ import org.apache.commons.lang3.math.NumberUtils;
 
 import fi.otavanopisto.kuntaapi.server.controllers.BannerController;
 import fi.otavanopisto.kuntaapi.server.controllers.EventController;
+import fi.otavanopisto.kuntaapi.server.controllers.FileController;
 import fi.otavanopisto.kuntaapi.server.controllers.HttpCacheController;
 import fi.otavanopisto.kuntaapi.server.controllers.JobController;
 import fi.otavanopisto.kuntaapi.server.controllers.MenuController;
@@ -88,6 +89,9 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   
   @Inject
   private PageController pageController;
+
+  @Inject
+  private FileController fileController;
 
   @Inject
   private MenuController menuController;
@@ -963,12 +967,28 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   }
   
   /* Files */
-
-  @Override
-  public Response listOrganizationFiles(String organizationId, String pageId, @Context Request request) {
-    return createNotImplemented(NOT_IMPLEMENTED);
-  }
   
+  @Override
+  public Response listOrganizationFiles(String organizationIdParam, String pageIdParam, String search, Long firstResult,
+      Long maxResults, Request request) {
+    
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    PageId pageId = toPageId(organizationId, pageIdParam);
+    
+    List<Page> result = fileController.listOrganizationFiles(organizationId, pageId, search, firstResult, maxResults);
+    List<String> ids = httpCacheController.getEntityIds(result);
+    Response notModified = httpCacheController.getNotModified(request, ids);
+    if (notModified != null) {
+      return notModified;
+    }
+
+    return httpCacheController.sendModified(result, ids);
+  }
+
   @Override
   public Response findOrganizationFile(String organizationId, String fileId, @Context Request request) {
     return createNotImplemented(NOT_IMPLEMENTED);
