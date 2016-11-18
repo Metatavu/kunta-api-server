@@ -1027,7 +1027,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   }
 
   @Override
-  public Response listOrganizationJobs(String organizationIdParam, String sortBy, String sortDir, @Context Request request) {
+  public Response listOrganizationJobs(String organizationIdParam, String sortBy, String sortDir, Long firstResult, Long maxResults, @Context Request request) {
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
@@ -1050,7 +1050,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       }
     }
     
-    return listOrganizationJobs(request, organizationId, order, orderDirection);
+    return listOrganizationJobs(request, organizationId, order, orderDirection, firstResult, maxResults);
   }
   
   /* Announcements */
@@ -1074,8 +1074,8 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     }
   }
 
-  private Response listOrganizationJobs(Request request, OrganizationId organizationId, JobOrder order, JobOrderDirection orderDirection) {
-    List<Job> result = jobController.listJobs(organizationId, order, orderDirection);
+  private Response listOrganizationJobs(Request request, OrganizationId organizationId, JobOrder order, JobOrderDirection orderDirection, Long firstResult, Long maxResults) {
+    List<Job> result = jobController.listJobs(organizationId, order, orderDirection, firstResult, maxResults);
     
     List<String> ids = httpCacheController.getEntityIds(result);
     Response notModified = httpCacheController.getNotModified(request, ids);

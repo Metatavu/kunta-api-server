@@ -6,7 +6,6 @@ import java.net.URISyntaxException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -76,8 +75,7 @@ public class MikkeliNytEventProvider implements EventProvider {
   
   @Override
   public List<Event> listOrganizationEvents(OrganizationId organizationId, OffsetDateTime startBefore,
-      OffsetDateTime startAfter, OffsetDateTime endBefore, OffsetDateTime endAfter, EventOrder order,
-      EventOrderDirection orderDirection, Integer firstResult, Integer maxResults) {
+      OffsetDateTime startAfter, OffsetDateTime endBefore, OffsetDateTime endAfter) {
     
     List<EventId> eventIds = eventCache.getOragnizationIds(organizationId);
     List<Event> result = new ArrayList<>(eventIds.size());
@@ -88,8 +86,6 @@ public class MikkeliNytEventProvider implements EventProvider {
         result.add(event); 
       }
     }
-    
-    Collections.sort(result, new EventComparator(order, orderDirection));
     
     return result;
   }
@@ -224,63 +220,6 @@ public class MikkeliNytEventProvider implements EventProvider {
     
     return null;
   } 
-  
-  private class EventComparator implements Comparator<Event> {
-    
-    private EventOrder order;
-    private EventOrderDirection direction;
-    
-    public EventComparator(EventOrder order, EventOrderDirection direction) {
-      this.order = order;
-      this.direction = direction;
-    }
-    
-    @Override
-    public int compare(Event event1, Event event2) {
-      int result;
-      
-      switch (order) {
-        case END_DATE:
-          result = compareEndDates(event1, event2);
-        break;
-        case START_DATE:
-          result = compareStartDates(event1, event2);
-        break;
-        default:
-          result = 0;
-        break;
-      }
-      
-      if (direction == EventOrderDirection.ASCENDING) {
-        return -result;
-      } 
-      
-      return result;
-    }
-
-    private int compareStartDates(Event event1, Event event2) {
-      return compareDates(event1.getStart(), event2.getStart());
-    }
-
-    private int compareEndDates(Event event1, Event event2) {
-      return compareDates(event1.getEnd(), event2.getEnd());
-    }
-    
-    private int compareDates(OffsetDateTime dateTime1, OffsetDateTime dateTime2) {
-      if (dateTime1 == null && dateTime2 == null) {
-        return 0;
-      }
-      
-      if (dateTime1 == null) {
-        return 1;
-      } else if (dateTime2 == null) {
-        return -1;
-      }
-              
-      return dateTime1.compareTo(dateTime2);
-    }
-    
-  }
 
   
 }

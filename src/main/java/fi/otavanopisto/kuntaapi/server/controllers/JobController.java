@@ -33,13 +33,17 @@ public class JobController {
     return null;
   }
   
-  public List<Job> listJobs(OrganizationId organizationId, JobOrder order, JobOrderDirection orderDirection) {
+  public List<Job> listJobs(OrganizationId organizationId, JobOrder order, JobOrderDirection orderDirection, Long firstResult, Long maxResults) {
     List<Job> result = new ArrayList<>();
     for (JobProvider jobProvider : getJobProviders()) {
       result.addAll(jobProvider.listOrganizationJobs(organizationId));
     }
     
-    return sortJobs(result, order, orderDirection);
+    int resultCount = result.size();
+    int firstIndex = firstResult == null ? 0 : Math.min(firstResult.intValue(), resultCount);
+    int toIndex = maxResults == null ? resultCount : Math.min(firstIndex + maxResults.intValue(), resultCount);
+    
+    return sortJobs(result.subList(firstIndex, toIndex), order, orderDirection);
   }
   
   private List<Job> sortJobs(List<Job> jobs, JobOrder order, JobOrderDirection orderDirection) {
