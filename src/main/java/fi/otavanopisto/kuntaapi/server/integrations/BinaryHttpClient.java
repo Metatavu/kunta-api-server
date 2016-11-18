@@ -5,6 +5,8 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
@@ -77,7 +79,9 @@ public class BinaryHttpClient {
           byte[] data = IOUtils.toByteArray(httpResponse.getEntity().getContent());
           Header typeHeader = httpResponse.getEntity().getContentType();
           String type = typeHeader != null ? typeHeader.getValue() : null;
-          return new Response<>(statusCode, message, new BinaryResponse(type, data));
+          DownloadMeta meta = getDownloadMeta(httpResponse);
+          
+          return new Response<>(statusCode, message, new BinaryResponse(type, data, meta));
         } finally {
           httpResponse.close();
         }
@@ -123,9 +127,7 @@ public class BinaryHttpClient {
         
         CloseableHttpResponse httpResponse = client.execute(httpHead);
         try {
-          Integer size = getIntegerHeader(httpResponse, "Content-Length");
-          String contentType = getStringHeader(httpResponse, "Content-Type");
-          return new DownloadMeta(size, contentType);
+          return getDownloadMeta(httpResponse);
         } finally {
           httpResponse.close();
         }
@@ -134,6 +136,29 @@ public class BinaryHttpClient {
       }
     } catch (IOException e) {
       logger.log(Level.WARNING, String.format("Failed to from %s", uri.toString()), e);
+    }
+    
+    return null;
+  }
+
+  public DownloadMeta getDownloadMeta(CloseableHttpResponse httpResponse) {
+    Integer size = getIntegerHeader(httpResponse, "Content-Length");
+    String contentType = getStringHeader(httpResponse, "Content-Type");
+    String contentDisposition = getStringHeader(httpResponse, "Content-Disposition");
+    String filename = null;
+    
+    if (StringUtils.isNotBlank(contentDisposition)) {
+      filename = getFilename(contentDisposition);
+    }
+    
+    return new DownloadMeta(filename, size, contentType);
+  }
+  
+  private String getFilename(String contentDisposition) {
+    Pattern pattern = Pattern.compile("(.*filename=\")(.*)(\")");
+    Matcher matcher = pattern.matcher(contentDisposition);
+    if (matcher.find() && matcher.groupCount() > 1) {
+      return matcher.group(2);
     }
     
     return null;
@@ -169,6 +194,7 @@ public class BinaryHttpClient {
     
     private byte[] data;
     private String type;
+    private DownloadMeta meta;
     
     /**
      * Constructor for class
@@ -176,9 +202,10 @@ public class BinaryHttpClient {
      * @param type content type 
      * @param data data
      */
-    public BinaryResponse(String type, byte[] data) {
+    public BinaryResponse(String type, byte[] data, DownloadMeta meta) {
       this.data = data;
       this.type = type;
+      this.meta = meta;
     }
     
     public byte[] getData() {
@@ -189,16 +216,26 @@ public class BinaryHttpClient {
       return type;
     }
     
+    public DownloadMeta getMeta() {
+      return meta;
+    }
+    
   }
   
   public class DownloadMeta {
     
+    private String filename;
     private Integer size;
     private String contentType;
     
-    public DownloadMeta(Integer size, String contentType) {
+    public DownloadMeta(String filename, Integer size, String contentType) {
+      this.filename = filename;
       this.size = size;
       this.contentType = contentType;
+    }
+    
+    public String getFilename() {
+      return filename;
     }
     
     public String getContentType() {
