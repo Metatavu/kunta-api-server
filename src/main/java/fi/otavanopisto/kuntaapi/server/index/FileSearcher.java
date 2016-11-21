@@ -5,6 +5,7 @@ import static org.elasticsearch.index.query.QueryBuilders.matchQuery;
 import static org.elasticsearch.index.query.QueryBuilders.queryStringQuery;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
@@ -20,7 +21,9 @@ import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.SearchHitField;
 
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.id.FileId;
+import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 
 @ApplicationScoped
@@ -28,18 +31,38 @@ public class FileSearcher {
   
   private static final String TYPE = "file";
   private static final String FILE_ID_FIELD = "fileId";
+  private static final String PAGE_ID_FIELD = "pageId";
   private static final String ORGANIZATION_ID_FIELD = "organizationId";
   
   @Inject
   private Logger logger;
   
   @Inject
+  private IdController idController;
+  
+  @Inject
   private IndexReader indexReader;
 
-  public SearchResult<FileId> searchFiles(String organizationId, String queryString, Long firstResult, Long maxResults) {
+  public SearchResult<FileId> searchFiles(OrganizationId organizationId, PageId pageId, String queryString, Long firstResult, Long maxResults) {
+    OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(organizationId, KuntaApiConsts.IDENTIFIER_NAME);
+    if (kuntaApiOrganizationId == null) {
+      logger.severe(String.format("Failed to translate organization %s into Kunta API id", organizationId.toString()));
+      return new SearchResult<>(Collections.emptyList());
+    }
+
     BoolQueryBuilder query = boolQuery()
-      .must(matchQuery(ORGANIZATION_ID_FIELD, organizationId))
-      .must(queryStringQuery(queryString));
+        .must(queryStringQuery(queryString))
+        .must(matchQuery(ORGANIZATION_ID_FIELD, kuntaApiOrganizationId.getId()));
+
+    if (pageId != null) {
+      PageId kuntaApiPageId = idController.translatePageId(pageId, KuntaApiConsts.IDENTIFIER_NAME);
+      if (kuntaApiPageId == null) {
+        logger.severe(String.format("Failed to translate page %s into Kunta API id", pageId.toString()));
+        return new SearchResult<>(Collections.emptyList());
+      }
+      
+      query.must(matchQuery(PAGE_ID_FIELD, kuntaApiPageId.getId()));
+    }
     
     return searchFiles(query, firstResult, maxResults);
   }
