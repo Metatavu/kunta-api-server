@@ -32,6 +32,7 @@ public class IndexUpdater extends AbstractIndexHander {
     registerIndexable(IndexableOrganization.class);
     registerIndexable(IndexableService.class);
     registerIndexable(IndexablePage.class);
+    registerIndexable(IndexableFile.class);
   }
 
   @Lock (LockType.READ)
@@ -83,8 +84,12 @@ public class IndexUpdater extends AbstractIndexHander {
       if (fieldAnnotation != null) {
         Map<String, Object> fieldProperties = new HashMap<>();
         fieldProperties.put("type", fieldAnnotation.type());
-        fieldProperties.put("index", fieldAnnotation.index());
-        fieldProperties.put("store", fieldAnnotation.store());
+        
+        if (!"attachment".equals(fieldAnnotation.type())) {
+          fieldProperties.put("index", fieldAnnotation.index());
+          fieldProperties.put("store", fieldAnnotation.store());
+        }
+        
         properties.put(fieldName, fieldProperties);
       }
     }

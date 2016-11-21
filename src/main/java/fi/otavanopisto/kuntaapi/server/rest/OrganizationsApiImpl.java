@@ -21,6 +21,7 @@ import org.apache.commons.lang3.math.NumberUtils;
 
 import fi.otavanopisto.kuntaapi.server.controllers.BannerController;
 import fi.otavanopisto.kuntaapi.server.controllers.EventController;
+import fi.otavanopisto.kuntaapi.server.controllers.FileController;
 import fi.otavanopisto.kuntaapi.server.controllers.HttpCacheController;
 import fi.otavanopisto.kuntaapi.server.controllers.JobController;
 import fi.otavanopisto.kuntaapi.server.controllers.MenuController;
@@ -50,6 +51,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.OrganizationServiceProvider;
 import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
 import fi.otavanopisto.kuntaapi.server.rest.model.Banner;
 import fi.otavanopisto.kuntaapi.server.rest.model.Event;
+import fi.otavanopisto.kuntaapi.server.rest.model.FileDef;
 import fi.otavanopisto.kuntaapi.server.rest.model.Job;
 import fi.otavanopisto.kuntaapi.server.rest.model.LocalizedValue;
 import fi.otavanopisto.kuntaapi.server.rest.model.Menu;
@@ -88,6 +90,9 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   
   @Inject
   private PageController pageController;
+
+  @Inject
+  private FileController fileController;
 
   @Inject
   private MenuController menuController;
@@ -963,20 +968,81 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   }
   
   /* Files */
-
-  @Override
-  public Response listOrganizationFiles(String organizationId, String pageId, @Context Request request) {
-    return createNotImplemented(NOT_IMPLEMENTED);
-  }
   
   @Override
-  public Response findOrganizationFile(String organizationId, String fileId, @Context Request request) {
-    return createNotImplemented(NOT_IMPLEMENTED);
+  public Response listOrganizationFiles(String organizationIdParam, String pageIdParam, String search, Long firstResult, Long maxResults, Request request) {
+    
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    PageId pageId = toPageId(organizationId, pageIdParam);
+    List<FileDef> result;
+    
+    if (search != null) {
+      result = fileController.searchFiles(organizationId, pageId, search, firstResult, maxResults);
+    } else {
+      result = fileController.listFiles(organizationId, pageId, firstResult, maxResults);
+    }
+    
+    List<String> ids = httpCacheController.getEntityIds(result);
+    Response notModified = httpCacheController.getNotModified(request, ids);
+    if (notModified != null) {
+      return notModified;
+    }
+
+    return httpCacheController.sendModified(result, ids);
   }
 
   @Override
-  public Response getOrganizationFileData(String organizationId, String fileId, @Context Request request) {
-    return createNotImplemented(NOT_IMPLEMENTED);
+  public Response findOrganizationFile(String organizationIdParam, String fileIdParam, @Context Request request) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    FileId fileId = toFileId(organizationId, fileIdParam);
+    if (fileId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    Response notModified = httpCacheController.getNotModified(request, fileId);
+    if (notModified != null) {
+      return notModified;
+    }
+    
+    FileDef file = fileController.findFile(organizationId, fileId);
+    if (file != null) {
+      return httpCacheController.sendModified(file, file.getId());
+    }
+    
+    return createNotFound(NOT_FOUND);
+  }
+
+  @Override
+  public Response getOrganizationFileData(String organizationIdParam, String fileIdParam, @Context Request request) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    FileId fileId = toFileId(organizationId, fileIdParam);
+    if (fileId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    Response notModified = httpCacheController.getNotModified(request, fileId);
+    if (notModified != null) {
+      return notModified;
+    }
+    
+    AttachmentData data = fileController.getFileData(organizationId, fileId);
+    if (data != null) {
+      return httpCacheController.streamModified(data.getData(), data.getType(), fileId);
+    }
+    
+    return createNotFound(NOT_FOUND);
   }
   
   /* Jobs */
@@ -1134,7 +1200,6 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     return null;
   }
   
-  @SuppressWarnings("unused")
   private FileId toFileId(OrganizationId organizationId, String id) {
     if (StringUtils.isNotBlank(id)) {
       return new FileId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, id);
