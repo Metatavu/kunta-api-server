@@ -7,6 +7,8 @@ package fi.otavanopisto.kuntaapi.server.id;
  */
 public class EventId extends OrganizationBaseId {
   
+  private static final long serialVersionUID = -1583566805362578411L;
+
   /**
    * Zero-argument constructor for event id
    */

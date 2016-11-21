@@ -7,6 +7,8 @@ package fi.otavanopisto.kuntaapi.server.id;
  */
 public class JobId extends OrganizationBaseId {
   
+  private static final long serialVersionUID = 4430136965378549999L;
+
   /**
    * Zero-argument constructor for job id
    */

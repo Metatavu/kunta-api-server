@@ -7,6 +7,8 @@ package fi.otavanopisto.kuntaapi.server.id;
  */
 public class TileId extends OrganizationBaseId {
   
+  private static final long serialVersionUID = -3985567956293034832L;
+
   /**
    * Zero-argument constructor for tile id
    */

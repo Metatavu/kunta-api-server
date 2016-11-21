@@ -7,6 +7,8 @@ package fi.otavanopisto.kuntaapi.server.id;
  */
 public class ServiceLocationChannelId extends BaseId {
 
+  private static final long serialVersionUID = 3064775100960250396L;
+
   /**
    * Zero-argument constructor for service location channel id
    */

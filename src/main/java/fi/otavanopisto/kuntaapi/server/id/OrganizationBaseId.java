@@ -7,6 +7,8 @@ import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 
 public abstract class OrganizationBaseId extends BaseId {
  
+  private static final long serialVersionUID = -1661969737557834060L;
+ 
   private OrganizationId organizationId;
   
   public OrganizationBaseId() {

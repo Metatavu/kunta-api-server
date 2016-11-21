@@ -7,6 +7,8 @@ package fi.otavanopisto.kuntaapi.server.id;
  */
 public class BannerId extends OrganizationBaseId {
   
+  private static final long serialVersionUID = 2132259406536383457L;
+
   /**
    * Zero-argument constructor for banner id
    */
