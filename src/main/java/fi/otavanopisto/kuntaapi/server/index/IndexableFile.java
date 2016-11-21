@@ -4,6 +4,9 @@ public class IndexableFile implements Indexable {
   
   @Field (index = "not_analyzed", store = true)
   private String fileId;
+
+  @Field (index = "not_analyzed", store = true)
+  private String pageId;
   
   @Field (index = "not_analyzed", store = true)
   private String organizationId;
@@ -30,11 +33,11 @@ public class IndexableFile implements Indexable {
   }
 
   public String getPageId() {
-    return fileId;
+    return pageId;
   }
 
   public void setPageId(String pageId) {
-    this.fileId = pageId;
+    this.pageId = pageId;
   }
   
   public String getOrganizationId() {
