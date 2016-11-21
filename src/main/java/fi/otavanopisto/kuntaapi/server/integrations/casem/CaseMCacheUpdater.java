@@ -199,6 +199,10 @@ public class CaseMCacheUpdater {
       indexRequest.fire(new IndexRequest(createIndexablePage(organizationId, meetingItemPageId, locale.getLanguage(), meetingItemPageContents, itemLink.getText())));
 
       itemLinks.add(itemLink);
+      
+      for (FileId fileId : getAttachmentFileIds(organizationId, itemExtendedProperties)) {
+        fileUpdateRequest.fire(new FileUpdateRequest(meetingItemPageId, fileId));
+      }
     }
     
     Collections.sort(itemLinks, (MeetingItemLink o1, MeetingItemLink o2) -> o1.getArticle().compareTo(o2.getArticle()));
@@ -312,7 +316,9 @@ public class CaseMCacheUpdater {
     List<FileId> result = new ArrayList<>();
     
     for (ExtendedProperty extendedProperty : extendedProperties) {
-      if (EXTENDED_ATTACHMENTS.equals(extendedProperty.getName())) {
+      String name = extendedProperty.getName();
+      
+      if (EXTENDED_ATTACHMENTS.equals(name) || EXTENDED_AGENDA_ATTACHMENT.equals(name)) {
         result.addAll(parseAttachmentFileIds(organizationId, extendedProperty.getText()));
       }
     }
