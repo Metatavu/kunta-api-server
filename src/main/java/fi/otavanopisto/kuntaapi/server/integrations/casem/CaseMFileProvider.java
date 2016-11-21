@@ -9,6 +9,7 @@ import fi.otavanopisto.kuntaapi.server.id.FileId;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
+import fi.otavanopisto.kuntaapi.server.integrations.BinaryHttpClient.BinaryResponse;
 import fi.otavanopisto.kuntaapi.server.integrations.BinaryHttpClient.DownloadMeta;
 import fi.otavanopisto.kuntaapi.server.integrations.FileProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
@@ -49,8 +50,18 @@ public class CaseMFileProvider implements FileProvider {
 
   @Override
   public AttachmentData getOrganizationFileData(OrganizationId organizationId, FileId fileId) {
-    // TODO Auto-generated method stub
-    return null;
+    FileId caseMFileId = idController.translateFileId(fileId, CaseMConsts.IDENTIFIER_NAME);
+    if (caseMFileId == null) {
+      logger.severe(String.format("FileId %s could not be translated into CaseM id", fileId.toString()));
+      return null; 
+    }
+    
+    BinaryResponse response = caseMFileController.downloadFile(caseMFileId);
+    if (response == null) {
+      return null;
+    }
+    
+    return new AttachmentData(response.getType(), response.getData());
   }
   
   private FileDef translateFile(FileId fileId, DownloadMeta meta) {

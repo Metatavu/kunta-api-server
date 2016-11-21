@@ -1021,8 +1021,28 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   }
 
   @Override
-  public Response getOrganizationFileData(String organizationId, String fileId, @Context Request request) {
-    return createNotImplemented(NOT_IMPLEMENTED);
+  public Response getOrganizationFileData(String organizationIdParam, String fileIdParam, @Context Request request) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    FileId fileId = toFileId(organizationId, fileIdParam);
+    if (fileId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    Response notModified = httpCacheController.getNotModified(request, fileId);
+    if (notModified != null) {
+      return notModified;
+    }
+    
+    AttachmentData data = fileController.getFileData(organizationId, fileId);
+    if (data != null) {
+      return httpCacheController.streamModified(data.getData(), data.getType(), fileId);
+    }
+    
+    return createNotFound(NOT_FOUND);
   }
   
   /* Jobs */

@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import java.util.logging.Logger;
-
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
@@ -15,14 +13,12 @@ import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.index.FileSearcher;
 import fi.otavanopisto.kuntaapi.server.index.SearchResult;
+import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.FileProvider;
 import fi.otavanopisto.kuntaapi.server.rest.model.FileDef;
 
 @ApplicationScoped
 public class FileController {
-  
-  @Inject
-  private Logger logger;
   
   @Inject
   private FileSearcher fileSearcher;
@@ -45,6 +41,17 @@ public class FileController {
       FileDef file = fileProvider.findOrganizationFile(organizationId, fileId);
       if (file != null) {
         return file;
+      }
+    }
+    
+    return null;
+  }
+
+  public AttachmentData getFileData(OrganizationId organizationId, FileId fileId) {
+    for (FileProvider fileProvider : getFileProviders()) {
+      AttachmentData data = fileProvider.getOrganizationFileData(organizationId, fileId);
+      if (data != null) {
+        return data;
       }
     }
     
