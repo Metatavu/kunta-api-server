@@ -51,8 +51,11 @@ public class FileSearcher {
     }
 
     BoolQueryBuilder query = boolQuery()
-        .must(queryStringQuery(queryString))
         .must(matchQuery(ORGANIZATION_ID_FIELD, kuntaApiOrganizationId.getId()));
+    
+    if (queryString != null) {
+      query.must(queryStringQuery(queryString));
+    }
 
     if (pageId != null) {
       PageId kuntaApiPageId = idController.translatePageId(pageId, KuntaApiConsts.IDENTIFIER_NAME);

@@ -32,7 +32,26 @@ public class FileController {
 
   public List<FileDef> searchFiles(OrganizationId organizationId, PageId pageId, String queryString, Long firstResult, Long maxResults) {
     SearchResult<FileId> searchResult = fileSearcher.searchFiles(organizationId, pageId, queryString, firstResult, maxResults);
+    return processSearchResult(organizationId, searchResult);
+  }
+  
+  public List<FileDef> listFiles(OrganizationId organizationId, PageId pageId, Long firstResult, Long maxResults) {
+    SearchResult<FileId> searchResult = fileSearcher.searchFiles(organizationId, pageId, null, firstResult, maxResults);
+    return processSearchResult(organizationId, searchResult);
+  }
+  
+  public FileDef findFile(OrganizationId organizationId, FileId fileId) {
+    for (FileProvider fileProvider : getFileProviders()) {
+      FileDef file = fileProvider.findOrganizationFile(organizationId, fileId);
+      if (file != null) {
+        return file;
+      }
+    }
     
+    return null;
+  }
+
+  private List<FileDef> processSearchResult(OrganizationId organizationId, SearchResult<FileId> searchResult) {
     if (searchResult != null) {
       List<FileDef> result = new ArrayList<>(searchResult.getResult().size());
       
@@ -47,36 +66,6 @@ public class FileController {
     }
     
     return Collections.emptyList();
-  }
-  
-  public List<FileDef> listFiles(OrganizationId organizationId, PageId pageId, Long firstResult, Long maxResults) {
-    List<FileDef> result = new ArrayList<>();
-    
-    for (FileProvider fileProvider : getFileProviders()) {
-      List<FileDef> files = fileProvider.listOrganizationFiles(organizationId, pageId);
-      if (files != null) {
-        result.addAll(files);
-      } else {
-        logger.severe(String.format("File provider %s returned null when listing files", fileProvider.getClass().getName())); 
-      }
-    }
-    
-    int resultCount = result.size();
-    int firstIndex = firstResult == null ? 0 : Math.min(firstResult.intValue(), resultCount);
-    int toIndex = maxResults == null ? resultCount : Math.min(firstIndex + maxResults.intValue(), resultCount);
-    
-    return result.subList(firstIndex, toIndex);
-  }
-  
-  public FileDef findFile(OrganizationId organizationId, FileId fileId) {
-    for (FileProvider fileProvider : getFileProviders()) {
-      FileDef file = fileProvider.findOrganizationFile(organizationId, fileId);
-      if (file != null) {
-        return file;
-      }
-    }
-    
-    return null;
   }
   
   private List<FileProvider> getFileProviders() {

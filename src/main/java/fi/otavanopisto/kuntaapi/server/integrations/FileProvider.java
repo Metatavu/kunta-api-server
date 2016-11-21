@@ -1,10 +1,7 @@
 package fi.otavanopisto.kuntaapi.server.integrations;
 
-import java.util.List;
-
 import fi.otavanopisto.kuntaapi.server.id.FileId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
-import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.rest.model.FileDef;
 
 /**
@@ -13,15 +10,6 @@ import fi.otavanopisto.kuntaapi.server.rest.model.FileDef;
  * @author Antti Leppä
  */
 public interface FileProvider {
-
-  /**
-   * List files in an organization
-   * 
-   * @param organizationId organization id
-   * @param filter results by page id (optional)
-   * @return list of organization files
-   */
-  public List<FileDef> listOrganizationFiles(OrganizationId organizationId, PageId pageId);
   
   /**
    * Finds a single organization file

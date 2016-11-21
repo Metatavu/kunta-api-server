@@ -1,6 +1,5 @@
 package fi.otavanopisto.kuntaapi.server.integrations.casem;
 
-import java.util.List;
 import java.util.logging.Logger;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -9,11 +8,10 @@ import javax.inject.Inject;
 import fi.otavanopisto.kuntaapi.server.id.FileId;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
-import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
+import fi.otavanopisto.kuntaapi.server.integrations.BinaryHttpClient.DownloadMeta;
 import fi.otavanopisto.kuntaapi.server.integrations.FileProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
-import fi.otavanopisto.kuntaapi.server.integrations.BinaryHttpClient.DownloadMeta;
 import fi.otavanopisto.kuntaapi.server.rest.model.FileDef;
 
 /**
@@ -32,12 +30,6 @@ public class CaseMFileProvider implements FileProvider {
   
   @Inject
   private CaseMFileController caseMFileController;
-
-  @Override
-  public List<FileDef> listOrganizationFiles(OrganizationId organizationId, PageId pageId) {
-    // TODO Auto-generated method stub
-    return null;
-  }
 
   @Override
   public FileDef findOrganizationFile(OrganizationId organizationId, FileId fileId) {
