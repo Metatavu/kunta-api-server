@@ -1,12 +1,9 @@
 package fi.otavanopisto.kuntaapi.server.integrations.casem;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
@@ -24,6 +21,7 @@ import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 
 import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.lang3.StringUtils;
 
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
@@ -34,12 +32,9 @@ import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.index.IndexRequest;
 import fi.otavanopisto.kuntaapi.server.index.IndexableAttachment;
 import fi.otavanopisto.kuntaapi.server.index.IndexableFile;
-import fi.otavanopisto.kuntaapi.server.integrations.BinaryHttpClient;
-import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.BinaryHttpClient.BinaryResponse;
-import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpClient.Response;
+import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
-import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 import fi.otavanopisto.kuntaapi.server.system.SystemUtils;
 
 @ApplicationScoped
@@ -54,16 +49,13 @@ public class CaseMAttachmentEntityUpdater extends EntityUpdater {
   private Logger logger;
   
   @Inject
+  private CaseMFileController caseMFileController;
+  
+  @Inject
   private IdController idController;
   
   @Inject
   private IdentifierController identifierController; 
-
-  @Inject
-  private BinaryHttpClient binaryHttpClient;
-  
-  @Inject
-  private OrganizationSettingController organizationSettingController;
   
   @Inject
   private Event<IndexRequest> indexRequest;
@@ -105,7 +97,10 @@ public class CaseMAttachmentEntityUpdater extends EntityUpdater {
   @Asynchronous
   public void onCaseMMeetingDataUpdateRequest(@Observes FileUpdateRequest event) {
     if (!stopped) {
-      queue.add(event);
+      FileId fileId = event.getFileId();
+      if (StringUtils.equals(fileId.getSource(), CaseMConsts.IDENTIFIER_NAME)) {
+        queue.add(event);
+      }
     }
   }
 
@@ -128,7 +123,11 @@ public class CaseMAttachmentEntityUpdater extends EntityUpdater {
     }
 
     FileId caseMFileId = request.getFileId();
-    OrganizationId organizationId = caseMFileId.getOrganizationId();
+    OrganizationId organizationId = idController.translateOrganizationId(caseMFileId.getOrganizationId(), KuntaApiConsts.IDENTIFIER_NAME);
+    if (organizationId == null) {
+      logger.info(String.format("Could not translate organization %s into kunta api id", caseMFileId.getOrganizationId().toString()));
+      return;
+    }
     
     Identifier identifier = identifierController.findIdentifierById(caseMFileId);
     if (identifier == null) {
@@ -137,7 +136,7 @@ public class CaseMAttachmentEntityUpdater extends EntityUpdater {
     
     FileId kuntaApiFileId = new FileId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
     
-    BinaryResponse binaryResponse = downloadAttachment(caseMFileId);
+    BinaryResponse binaryResponse = caseMFileController.downloadFile(caseMFileId);
     if (binaryResponse != null) {
       indexFile(organizationId, kuntaApiFileId, kuntaApiPageId, binaryResponse);
     }
@@ -161,36 +160,6 @@ public class CaseMAttachmentEntityUpdater extends EntityUpdater {
     }
     
     indexRequest.fire(new IndexRequest(indexableFile));
-  }
-  
-  private BinaryResponse downloadAttachment(FileId caseMFileId) {
-    String downloadUrl = getDownloadUrl(caseMFileId);
-    Response<BinaryResponse> response = binaryHttpClient.downloadBinary(downloadUrl);
-    if (response.isOk()) {
-      return response.getResponseEntity();
-    } else {
-      logger.warning(String.format("Downloading attachment from %s failed on [%d] %s", downloadUrl, response.getStatus(), response.getMessage()));
-    }
-    
-    return null;
-  }
-  
-  private String getDownloadUrl(FileId caseMFileId) {
-    OrganizationId organizationId = caseMFileId.getOrganizationId();
-    String downloadUrl = getCaseMDownloadUrl(organizationId);
-    try {
-      return String.format("%s/%s", downloadUrl, URLEncoder.encode(caseMFileId.getId(), "UTF-8"));
-    } catch (UnsupportedEncodingException e) {
-      logger.log(Level.SEVERE, "Failed to encode url", e);
-    }
-    
-    return null;
-  }
-  
-  private String getCaseMDownloadUrl(OrganizationId organizationId) {
-    String baseUrl = organizationSettingController.getSettingValue(organizationId, CaseMConsts.ORGANIZATION_SETTING_BASEURL);
-    String path = organizationSettingController.getSettingValue(organizationId, CaseMConsts.ORGANIZATION_SETTING_DOWNLOAD_PATH);
-    return String.format("%s/%s", baseUrl, path);
   }
 
 }
