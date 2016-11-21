@@ -1,5 +1,7 @@
 package fi.otavanopisto.kuntaapi.server.id;
 
+import java.io.Serializable;
+
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
@@ -10,7 +12,9 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
  * @param <P> parent id type
  * @param <C> child id type
  */
-public class IdPair <P extends BaseId, C extends BaseId> {
+public class IdPair <P extends BaseId, C extends BaseId> implements Serializable {
+  
+  private static final long serialVersionUID = -7466669510105731272L;
   
   private P parent;
   private C child;

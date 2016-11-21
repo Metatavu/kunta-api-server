@@ -1,5 +1,7 @@
 package fi.otavanopisto.kuntaapi.server.id;
 
+import java.io.Serializable;
+
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
@@ -10,8 +12,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  * 
  * @author Antti Leppä
  */
-public abstract class BaseId {
+public abstract class BaseId implements Serializable {
 
+  private static final long serialVersionUID = 6734256027931210561L;
+  
   private String source;
   private String id;
   

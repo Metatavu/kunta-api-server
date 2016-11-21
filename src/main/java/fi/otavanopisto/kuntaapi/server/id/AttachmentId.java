@@ -7,6 +7,8 @@ package fi.otavanopisto.kuntaapi.server.id;
  */
 public class AttachmentId extends OrganizationBaseId {
   
+  private static final long serialVersionUID = -4920851211464070298L;
+
   /**
    * Zero-argument constructor for attachment id
    */

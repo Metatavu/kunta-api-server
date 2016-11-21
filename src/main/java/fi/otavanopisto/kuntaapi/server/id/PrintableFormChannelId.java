@@ -7,6 +7,8 @@ package fi.otavanopisto.kuntaapi.server.id;
  */
 public class PrintableFormChannelId extends BaseId {
 
+  private static final long serialVersionUID = 3556104745639774281L;
+
   /**
    * Zero-argument constructor for printable form service channel id
    */

@@ -7,6 +7,8 @@ package fi.otavanopisto.kuntaapi.server.id;
  */
 public class MenuId extends OrganizationBaseId {
   
+  private static final long serialVersionUID = 7527026541429916297L;
+
   /**
    * Zero-argument constructor for menu id
    */

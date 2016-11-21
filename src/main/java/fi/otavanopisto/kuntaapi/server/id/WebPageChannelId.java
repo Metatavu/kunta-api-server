@@ -7,6 +7,8 @@ package fi.otavanopisto.kuntaapi.server.id;
  */
 public class WebPageChannelId extends BaseId {
 
+  private static final long serialVersionUID = 4485290448691923574L;
+
   /**
    * Zero-argument constructor for webpage service channel id
    */

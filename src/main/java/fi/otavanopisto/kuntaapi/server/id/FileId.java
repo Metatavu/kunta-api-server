@@ -7,6 +7,8 @@ package fi.otavanopisto.kuntaapi.server.id;
  */
 public class FileId extends OrganizationBaseId {
   
+  private static final long serialVersionUID = 9045191573692430082L;
+
   /**
    * Zero-argument constructor for file id
    */

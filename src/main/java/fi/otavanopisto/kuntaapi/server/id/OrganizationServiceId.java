@@ -7,6 +7,8 @@ package fi.otavanopisto.kuntaapi.server.id;
  */
 public class OrganizationServiceId extends OrganizationBaseId {
 
+  private static final long serialVersionUID = -4986584144416684691L;
+
   /**
    * Zero-argument constructor for organization service id
    */
