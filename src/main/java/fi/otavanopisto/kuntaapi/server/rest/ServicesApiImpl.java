@@ -8,7 +8,6 @@ import javax.inject.Inject;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Request;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -152,10 +151,7 @@ public class ServicesApiImpl extends ServicesApi {
       return httpCacheController.sendModified(electronicChannel, electronicChannel.getId());
     }
     
-    return Response
-      .status(Status.NOT_FOUND)
-      .entity(NOT_FOUND)
-      .build();
+    return createNotFound(NOT_FOUND);
   }
 
   @Override
@@ -179,11 +175,8 @@ public class ServicesApiImpl extends ServicesApi {
     if (phoneChannel != null) {
       return httpCacheController.sendModified(phoneChannel, phoneChannel.getId());
     }
-
-    return Response
-      .status(Status.NOT_FOUND)
-      .entity(NOT_FOUND)
-      .build();
+    
+    return createNotFound(NOT_FOUND);
   }
 
   @Override
@@ -208,10 +201,7 @@ public class ServicesApiImpl extends ServicesApi {
       return httpCacheController.sendModified(printableFormChannel, printableFormChannel.getId());
     }
     
-    return Response
-      .status(Status.NOT_FOUND)
-      .entity(NOT_FOUND)
-      .build();
+    return createNotFound(NOT_FOUND);
   }
 
   @Override
@@ -236,10 +226,7 @@ public class ServicesApiImpl extends ServicesApi {
       return httpCacheController.sendModified(serviceLocationChannel, serviceLocationChannel.getId());
     }
     
-    return Response
-      .status(Status.NOT_FOUND)
-      .entity(NOT_FOUND)
-      .build();
+    return createNotFound(NOT_FOUND);
   }
 
   @Override
@@ -264,10 +251,7 @@ public class ServicesApiImpl extends ServicesApi {
       return httpCacheController.sendModified(webPageChannel, webPageChannel.getId());
     }
     
-    return Response
-      .status(Status.NOT_FOUND)
-      .entity(NOT_FOUND)
-      .build();
+    return createNotFound(NOT_FOUND);
   }
 
   @Override
