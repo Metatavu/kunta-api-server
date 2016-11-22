@@ -23,14 +23,19 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
+import fi.otavanopisto.kuntaapi.server.cache.PageCache;
+import fi.otavanopisto.kuntaapi.server.cache.PageContentCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
 import fi.otavanopisto.kuntaapi.server.discover.PageIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
+import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
+import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
+import fi.otavanopisto.kuntaapi.server.rest.model.LocalizedValue;
 import fi.otavanopisto.kuntaapi.server.system.SystemUtils;
 import fi.otavanopisto.mwp.client.ApiResponse;
 import fi.otavanopisto.mwp.client.DefaultApi;
@@ -49,6 +54,9 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
   private Logger logger;
   
   @Inject
+  private IdController idController;
+  
+  @Inject
   private ManagementApi managementApi;
   
   @Inject
@@ -56,6 +64,12 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
   
   @Inject
   private IdentifierController identifierController;
+
+  @Inject
+  private PageCache pageCache;
+  
+  @Inject
+  private PageContentCache pageContentCache;
   
   @Inject
   private ModificationHashCache modificationHashCache;
@@ -144,7 +158,13 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
       identifier = identifierController.createIdentifier(pageId);
     }
     
-    modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(managementPage));
+    PageId kuntaApiPageId = new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
+    fi.otavanopisto.kuntaapi.server.rest.model.Page page = translatePage(organizationId, kuntaApiPageId, managementPage);
+    List<LocalizedValue> pageContents = translateLocalized(managementPage.getContent().getRendered());
+    
+    modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(page));
+    pageCache.put(kuntaApiPageId, page);
+    pageContentCache.put(kuntaApiPageId, pageContents);
     
     if (managementPage.getFeaturedMedia() != null && managementPage.getFeaturedMedia() > 0) {
       updateFeaturedMedia(organizationId, api, managementPage.getFeaturedMedia()); 
@@ -171,5 +191,43 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
       }
     }
   }
-
+  
+  private fi.otavanopisto.kuntaapi.server.rest.model.Page translatePage(OrganizationId organizationId, PageId kuntaApiPageId, fi.otavanopisto.mwp.client.model.Page managementPage) {
+    fi.otavanopisto.kuntaapi.server.rest.model.Page page = new fi.otavanopisto.kuntaapi.server.rest.model.Page();
+    PageId kuntaApiParentPageId = null;
+    
+    if (managementPage.getParent() != null && managementPage.getParent() > 0) {
+      PageId managementParentPageId = new PageId(organizationId, ManagementConsts.IDENTIFIER_NAME,String.valueOf(managementPage.getParent()));
+      kuntaApiParentPageId = idController.translatePageId(managementParentPageId, KuntaApiConsts.IDENTIFIER_NAME);
+      if (kuntaApiParentPageId == null) {
+        logger.severe(String.format("Could not translate %d parent page %d into management page id", managementPage.getParent(), managementPage.getId()));
+        return null;
+      } 
+    }
+    
+    page.setTitles(translateLocalized(managementPage.getTitle().getRendered()));
+    
+    page.setId(kuntaApiPageId.getId());
+    
+    if (kuntaApiParentPageId != null) {
+      page.setParentId(kuntaApiParentPageId.getId());
+    }
+    
+    page.setSlug(managementPage.getSlug());
+    
+    return page;
+  }
+  
+  private List<LocalizedValue> translateLocalized(String value) {
+    List<LocalizedValue> result = new ArrayList<>();
+    
+    if (StringUtils.isNotBlank(value)) {
+      LocalizedValue localizedValue = new LocalizedValue();
+      localizedValue.setLanguage(ManagementConsts.DEFAULT_LOCALE);
+      localizedValue.setValue(value);
+      result.add(localizedValue);
+    }
+    
+    return result;
+  }
 }
