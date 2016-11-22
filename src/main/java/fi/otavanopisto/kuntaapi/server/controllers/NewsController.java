@@ -10,6 +10,8 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
 
+import org.apache.commons.lang3.StringUtils;
+
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
@@ -24,12 +26,20 @@ public class NewsController {
   @Inject
   private Instance<NewsProvider> newsProviders;
 
-  public List<NewsArticle> listNewsArticles(OffsetDateTime publishedBefore, OffsetDateTime publishedAfter, Integer firstResult, Integer maxResults, OrganizationId organizationId) {
+  public List<NewsArticle> listNewsArticles(String slug, OffsetDateTime publishedBefore, OffsetDateTime publishedAfter, Integer firstResult, Integer maxResults, OrganizationId organizationId) {
     List<NewsArticle> result = new ArrayList<>();
    
     for (NewsProvider newsProvider : getNewsProviders()) {
-      result.addAll(newsProvider.listOrganizationNews(organizationId, publishedBefore, publishedAfter, firstResult, maxResults));
+      List<NewsArticle> newArticles = newsProvider.listOrganizationNews(organizationId, publishedBefore, publishedAfter, firstResult, maxResults);
+      if (newArticles != null && !newArticles.isEmpty()) {
+        if (slug != null) {
+          result.addAll(filterBySlug(newArticles, slug));
+        } else {
+          result.addAll(newArticles);
+        }
+      }
     }
+    
     return result;
   }
 
@@ -71,6 +81,18 @@ public class NewsController {
     for (NewsProvider newsProvider : getNewsProviders()) {
       result.addAll(newsProvider.listNewsArticleImages(organizationId, newsArticleId));
     }
+    return result;
+  }
+  
+  private List<NewsArticle> filterBySlug(List<NewsArticle> newsArticles, String slug) {
+    List<NewsArticle> result = new ArrayList<>();
+   
+    for (NewsArticle newsArticle : newsArticles) {
+      if (StringUtils.equals(slug, newsArticle.getSlug())) {
+        result.add(newsArticle);
+      }
+    }
+    
     return result;
   }
   

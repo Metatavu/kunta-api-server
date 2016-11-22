@@ -193,6 +193,7 @@ public class ManagementNewsProvider extends AbstractManagementProvider implement
     newsArticle.setId(kuntaApiId.getId());
     newsArticle.setPublished(toOffsetDateTime(post.getDate()));
     newsArticle.setTitle(post.getTitle().getRendered());
+    newsArticle.setSlug(post.getSlug());
     
     return newsArticle;
   }
