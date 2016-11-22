@@ -13,7 +13,6 @@ import javax.inject.Inject;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Request;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
 
 import org.apache.commons.lang3.EnumUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -175,18 +174,14 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       }
     }
     
-    return Response
-        .status(Status.NOT_FOUND)
-        .build();
+    return createNotFound(NOT_FOUND);
   }
   
   @Override
   public Response listOrganizationOrganizationServices(String organizationIdParam, Long firstResult, Long maxResults, @Context Request request) {
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
     if (organizationId == null) {
-      return Response.status(Status.BAD_REQUEST)
-        .entity("Organization parameter is mandatory")
-        .build();
+      return createBadRequest("Organization parameter is mandatory");
     }
     
     Response validationResponse = validateListLimitParams(firstResult, maxResults);
@@ -267,9 +262,8 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     if (attachmentData != null) {
       return httpCacheController.streamModified(attachmentData.getData(), attachmentData.getType(), attachmentId);
     }
-
-    return Response.status(Status.NOT_FOUND)
-      .build();
+    
+    return createNotFound(NOT_FOUND);
   }
 
   @Override
@@ -300,18 +294,14 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     if (StringUtils.isNotBlank(orderBy)) {
       order = EnumUtils.getEnum(EventProvider.EventOrder.class, orderBy);
       if (order == null) {
-        return Response.status(Status.BAD_REQUEST)
-          .entity(String.format("Invalid event order %s", orderBy))
-          .build();
+        return createBadRequest(String.format("Invalid event order %s", orderBy));
       }
     }
     
     if (StringUtils.isNotBlank(orderDir)) {
       orderDirection = EnumUtils.getEnum(EventProvider.EventOrderDirection.class, orderDir);
       if (orderDirection == null) {
-        return Response.status(Status.BAD_REQUEST)
-          .entity(String.format("Invalid event order direction %s", orderDir))
-          .build();
+        return createBadRequest(String.format("Invalid event order direction %s", orderDir));
       }
     }
     
@@ -361,10 +351,9 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     NewsArticle newsArticle = newsController.findNewsArticle(organizationId, newsArticleId);
     if (newsArticle != null) {
       return httpCacheController.sendModified(newsArticle, newsArticle.getId());
-    }    
+    }
     
-    return Response.status(Status.NOT_FOUND)
-      .build();
+    return createNotFound(NOT_FOUND);
   }
 
   @Override
@@ -383,8 +372,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return httpCacheController.sendModified(attachment, attachment.getId());
     }
     
-    return Response.status(Status.NOT_FOUND)
-      .build();
+    return createNotFound(NOT_FOUND);
   }
 
   @Override
@@ -402,9 +390,8 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     if (attachmentData != null) {
       return httpCacheController.streamModified(attachmentData.getData(), attachmentData.getType(), attachmentId);
     }
-
-    return Response.status(Status.NOT_FOUND)
-      .build();
+    
+    return createNotFound(NOT_FOUND);
   }
 
   @Override
@@ -505,9 +492,8 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     if (attachmentData != null) {
       return httpCacheController.streamModified(attachmentData.getData(), attachmentData.getType(), attachmentId);
     }
-
-    return Response.status(Status.NOT_FOUND)
-      .build();
+    
+    return createNotFound(NOT_FOUND);
   }
   
   /* Tiles */
@@ -594,8 +580,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return httpCacheController.streamModified(attachmentData.getData(), attachmentData.getType(), attachmentId);
     }
     
-    return Response.status(Status.NOT_FOUND)
-      .build();
+    return createNotFound(NOT_FOUND);
   }
 
   @Override
@@ -841,8 +826,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return httpCacheController.sendModified(attachment, attachment.getId());
     }
     
-    return Response.status(Status.NOT_FOUND)
-      .build();
+    return createNotFound(NOT_FOUND);
   }
 
   @Override
@@ -861,8 +845,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return httpCacheController.streamModified(attachmentData.getData(), attachmentData.getType(), attachmentId);
     }
     
-    return Response.status(Status.NOT_FOUND)
-      .build();
+    return createNotFound(NOT_FOUND);
   }
   
   /* Menus */
