@@ -137,7 +137,7 @@ public class HttpCacheController {
   }
   
   public List<String> getEntityIds(List<?> entities) {
-    if (entities.isEmpty()) {
+    if ((entities == null) || entities.isEmpty()) {
       return Collections.emptyList();
     }
     
