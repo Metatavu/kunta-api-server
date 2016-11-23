@@ -46,11 +46,11 @@ public class ManagementNewsProvider extends AbstractManagementProvider implement
   
   @Override
   public List<NewsArticle> listOrganizationNews(OrganizationId organizationId, OffsetDateTime publishedBefore,
-      OffsetDateTime publishedAfter, Integer firstResult, Integer maxResults) {
+      OffsetDateTime publishedAfter) {
     
     String context = null;
     Integer page = null;
-    Integer perPage = maxResults;
+    Integer perPage = null;
     String search = null;
     LocalDateTime after = toLocalDateTime(publishedAfter);
     List<String> author = null;
@@ -58,7 +58,7 @@ public class ManagementNewsProvider extends AbstractManagementProvider implement
     LocalDateTime before = toLocalDateTime(publishedAfter); 
     List<String> exclude = null;
     List<String> include = null;
-    Integer offset = firstResult;
+    Integer offset = null;
     String order = null; 
     String orderby = null;
     String slug = null;

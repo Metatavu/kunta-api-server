@@ -30,7 +30,7 @@ public class NewsController {
     List<NewsArticle> result = new ArrayList<>();
    
     for (NewsProvider newsProvider : getNewsProviders()) {
-      List<NewsArticle> newArticles = newsProvider.listOrganizationNews(organizationId, publishedBefore, publishedAfter, firstResult, maxResults);
+      List<NewsArticle> newArticles = newsProvider.listOrganizationNews(organizationId, publishedBefore, publishedAfter);
       if (newArticles != null && !newArticles.isEmpty()) {
         if (slug != null) {
           result.addAll(filterBySlug(newArticles, slug));
@@ -40,7 +40,11 @@ public class NewsController {
       }
     }
     
-    return result;
+    int resultCount = result.size();
+    int firstIndex = firstResult == null ? 0 : Math.min(firstResult.intValue(), resultCount);
+    int toIndex = maxResults == null ? resultCount : Math.min(firstIndex + maxResults.intValue(), resultCount);
+    
+    return result.subList(firstIndex, toIndex);
   }
 
   public NewsArticle findNewsArticle(OrganizationId organizationId, NewsArticleId newsArticleId) {
