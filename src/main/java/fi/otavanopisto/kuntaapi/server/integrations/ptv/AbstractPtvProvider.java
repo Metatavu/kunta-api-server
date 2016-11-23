@@ -57,11 +57,13 @@ public abstract class AbstractPtvProvider {
       List<LocalizedValue> result = new ArrayList<>();
       
       for (LocalizedListItem item : items) {
-        LocalizedValue localizedValue = new LocalizedValue();
-        localizedValue.setLanguage(item.getLanguage());
-        localizedValue.setValue(item.getValue());
-        localizedValue.setType(item.getType());
-        result.add(localizedValue);
+        if (item != null) {
+          LocalizedValue localizedValue = new LocalizedValue();
+          localizedValue.setLanguage(item.getLanguage());
+          localizedValue.setValue(item.getValue());
+          localizedValue.setType(item.getType());
+          result.add(localizedValue);
+        }
       }
     
       return result;
