@@ -196,7 +196,10 @@ public class ManagementPageProvider extends AbstractManagementProvider implement
     List<Page> result = new ArrayList<>();
     
     for (fi.otavanopisto.mwp.client.model.Page managementPage : managementPages) {
-      result.add(translatePage(organizationId, managementPage));
+      Page page = translatePage(organizationId, managementPage);
+      if (page != null) {
+        result.add(page);
+      }
     }
     
     return result;
