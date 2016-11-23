@@ -10,8 +10,10 @@ import javax.inject.Inject;
 
 import fi.otavanopisto.kuntaapi.server.cache.PageCache;
 import fi.otavanopisto.kuntaapi.server.cache.PageContentCache;
+import fi.otavanopisto.kuntaapi.server.cache.PageImageCache;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
+import fi.otavanopisto.kuntaapi.server.id.IdPair;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
@@ -20,7 +22,6 @@ import fi.otavanopisto.kuntaapi.server.integrations.PageProvider;
 import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
 import fi.otavanopisto.kuntaapi.server.rest.model.LocalizedValue;
 import fi.otavanopisto.kuntaapi.server.rest.model.Page;
-import fi.otavanopisto.mwp.client.ApiResponse;
 import fi.otavanopisto.mwp.client.model.Attachment.MediaTypeEnum;
 
 /**
@@ -35,13 +36,13 @@ public class ManagementPageProvider extends AbstractManagementProvider implement
   private Logger logger;
   
   @Inject
-  private ManagementApi managementApi;
-  
-  @Inject
   private PageCache pageCache;
   
   @Inject
   private PageContentCache pageContentCache;
+  
+  @Inject
+  private PageImageCache pageImageCache;
   
   @Inject
   private ManagementImageLoader managementImageLoader;
@@ -67,39 +68,23 @@ public class ManagementPageProvider extends AbstractManagementProvider implement
 
   @Override
   public List<Attachment> listOrganizationPageImages(OrganizationId organizationId, PageId pageId) {
-    fi.otavanopisto.mwp.client.model.Page managementPage = findPageByPageId(organizationId, pageId);
-    if (managementPage != null) {
-      Integer featuredMediaId = managementPage.getFeaturedMedia();
-      if (featuredMediaId != null) {
-        fi.otavanopisto.mwp.client.model.Attachment featuredMedia = findMedia(organizationId, featuredMediaId);
-        if ((featuredMedia != null) && (featuredMedia.getMediaType() == MediaTypeEnum.IMAGE)) {
-          return Collections.singletonList(translateAttachment(organizationId, featuredMedia));
-        }
+    List<IdPair<PageId, AttachmentId>> childIds = pageImageCache.getChildIds(pageId);
+
+    List<Attachment> result = new ArrayList<>(childIds.size());
+    
+    for (IdPair<PageId, AttachmentId> childId : childIds) {
+      Attachment attachment = pageImageCache.get(childId);
+      if (attachment != null) {
+        result.add(attachment);
       }
     }
-  
-    return Collections.emptyList();
+    
+    return result;
   }
 
   @Override
   public Attachment findPageImage(OrganizationId organizationId, PageId pageId, AttachmentId attachmentId) {
-    fi.otavanopisto.mwp.client.model.Page page = findPageByPageId(organizationId, pageId);
-    if (page != null) {
-      Integer featuredMediaId = page.getFeaturedMedia();
-      if (featuredMediaId != null) {
-        AttachmentId managementAttachmentId = getImageAttachmentId(organizationId, featuredMediaId);
-        if (!idController.idsEqual(attachmentId, managementAttachmentId)) {
-          return null;
-        }
-        
-        fi.otavanopisto.mwp.client.model.Attachment attachment = findMedia(organizationId, featuredMediaId);
-        if (attachment != null) {
-          return translateAttachment(organizationId, attachment);
-        }
-      }
-    }
-  
-    return null;
+    return pageImageCache.get(new IdPair<PageId, AttachmentId>(pageId, attachmentId));
   }
 
   @Override
@@ -121,23 +106,6 @@ public class ManagementPageProvider extends AbstractManagementProvider implement
         return imageData;
       }
       
-    }
-    
-    return null;
-  }
-  
-  private fi.otavanopisto.mwp.client.model.Page findPageByPageId(OrganizationId organizationId, PageId pageId) {
-    PageId managementPageId = idController.translatePageId(pageId, ManagementConsts.IDENTIFIER_NAME);
-    if (managementPageId == null) {
-      logger.severe(String.format("Failed to convert %s into management page id", pageId.toString()));
-      return null;
-    }
-    
-    ApiResponse<fi.otavanopisto.mwp.client.model.Page> response = managementApi.getApi(organizationId).wpV2PagesIdGet(managementPageId.getId(), null);
-    if (!response.isOk()) {
-      logger.severe(String.format("Finding page failed on [%d] %s", response.getStatus(), response.getMessage()));
-    } else {
-      return response.getResponse();
     }
     
     return null;
