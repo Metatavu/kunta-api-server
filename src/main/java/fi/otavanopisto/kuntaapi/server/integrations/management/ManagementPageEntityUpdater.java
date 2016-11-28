@@ -23,18 +23,25 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
+import fi.otavanopisto.kuntaapi.server.cache.PageCache;
+import fi.otavanopisto.kuntaapi.server.cache.PageContentCache;
+import fi.otavanopisto.kuntaapi.server.cache.PageImageCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
+import fi.otavanopisto.kuntaapi.server.discover.PageIdRemoveRequest;
 import fi.otavanopisto.kuntaapi.server.discover.PageIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
+import fi.otavanopisto.kuntaapi.server.id.IdPair;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
+import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
+import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
+import fi.otavanopisto.kuntaapi.server.rest.model.LocalizedValue;
 import fi.otavanopisto.kuntaapi.server.system.SystemUtils;
 import fi.otavanopisto.mwp.client.ApiResponse;
 import fi.otavanopisto.mwp.client.DefaultApi;
-import fi.otavanopisto.mwp.client.model.Attachment;
 import fi.otavanopisto.mwp.client.model.Page;
 
 @ApplicationScoped
@@ -49,6 +56,9 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
   private Logger logger;
   
   @Inject
+  private ManagementTranslator managementTranslator;
+  
+  @Inject
   private ManagementApi managementApi;
   
   @Inject
@@ -56,6 +66,15 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
   
   @Inject
   private IdentifierController identifierController;
+
+  @Inject
+  private PageCache pageCache;
+  
+  @Inject
+  private PageContentCache pageContentCache;
+  
+  @Inject
+  private PageImageCache pageImageCache;
   
   @Inject
   private ModificationHashCache modificationHashCache;
@@ -94,7 +113,7 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
   }
   
   @Asynchronous
-  public void onOrganizationIdUpdateRequest(@Observes PageIdUpdateRequest event) {
+  public void onPageIdUpdateRequest(@Observes PageIdUpdateRequest event) {
     if (!stopped) {
       PageId pageId = event.getId();
       
@@ -110,6 +129,19 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
           queue.add(event);
         }
       }
+    }
+  }
+  
+  @Asynchronous
+  public void onPageIdRemoveRequest(@Observes PageIdRemoveRequest event) {
+    if (!stopped) {
+      PageId pageId = event.getId();
+      
+      if (!StringUtils.equals(pageId.getSource(), ManagementConsts.IDENTIFIER_NAME)) {
+        return;
+      }
+      
+      deletePage(event, pageId);
     }
   }
   
@@ -144,27 +176,37 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
       identifier = identifierController.createIdentifier(pageId);
     }
     
+    PageId kuntaApiPageId = new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
+    fi.otavanopisto.kuntaapi.server.rest.model.Page page = managementTranslator.translatePage(organizationId, kuntaApiPageId, managementPage);
+    List<LocalizedValue> pageContents = managementTranslator.translateLocalized(managementPage.getContent().getRendered());
+    
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(managementPage));
+    pageCache.put(kuntaApiPageId, page);
+    pageContentCache.put(kuntaApiPageId, pageContents);
     
     if (managementPage.getFeaturedMedia() != null && managementPage.getFeaturedMedia() > 0) {
-      updateFeaturedMedia(organizationId, api, managementPage.getFeaturedMedia()); 
+      updateFeaturedMedia(organizationId, kuntaApiPageId, api, managementPage.getFeaturedMedia()); 
     }
   }
   
-  private void updateFeaturedMedia(OrganizationId organizationId, DefaultApi api, Integer featuredMedia) {
+  private void updateFeaturedMedia(OrganizationId organizationId, PageId pageId, DefaultApi api, Integer featuredMedia) {
     ApiResponse<fi.otavanopisto.mwp.client.model.Attachment> response = api.wpV2MediaIdGet(String.valueOf(featuredMedia), null);
     if (!response.isOk()) {
       logger.severe(String.format("Finding media failed on [%d] %s", response.getStatus(), response.getMessage()));
     } else {
-      Attachment attachment = response.getResponse();
-      AttachmentId attachmentId = new AttachmentId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(attachment.getId()));
+      fi.otavanopisto.mwp.client.model.Attachment managementAttachment = response.getResponse();
+      AttachmentId managementAttachmentId = new AttachmentId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementAttachment.getId()));
       
-      Identifier identifier = identifierController.findIdentifierById(attachmentId);
+      Identifier identifier = identifierController.findIdentifierById(managementAttachmentId);
       if (identifier == null) {
-        identifier = identifierController.createIdentifier(attachmentId);
+        identifier = identifierController.createIdentifier(managementAttachmentId);
       }
       
-      AttachmentData imageData = managementImageLoader.getImageData(attachment.getSourceUrl());
+      AttachmentId kuntaApiAttachmentId = new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
+      Attachment kuntaApiAttachment = managementTranslator.translateAttachment(kuntaApiAttachmentId, managementAttachment);
+      pageImageCache.put(new IdPair<PageId, AttachmentId>(pageId, kuntaApiAttachmentId), kuntaApiAttachment);
+      
+      AttachmentData imageData = managementImageLoader.getImageData(managementAttachment.getSourceUrl());
       if (imageData != null) {
         String dataHash = DigestUtils.md5Hex(imageData.getData());
         modificationHashCache.put(identifier.getKuntaApiId(), dataHash);
@@ -172,4 +214,31 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
     }
   }
 
+  private void deletePage(PageIdRemoveRequest event, PageId pageId) {
+    OrganizationId organizationId = event.getOrganizationId();
+    
+    Identifier pageIdentifier = identifierController.findIdentifierById(pageId);
+    if (pageIdentifier != null) {
+      PageId kuntaApiPageId = new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, pageIdentifier.getKuntaApiId());
+      queue.remove(new PageIdUpdateRequest(organizationId, kuntaApiPageId, false));
+
+      modificationHashCache.clear(pageIdentifier.getKuntaApiId());
+      pageCache.clear(kuntaApiPageId);
+      pageContentCache.clear(kuntaApiPageId);
+      identifierController.deleteIdentifier(pageIdentifier);
+      
+      List<IdPair<PageId,AttachmentId>> pageImageIds = pageImageCache.getChildIds(kuntaApiPageId);
+      for (IdPair<PageId,AttachmentId> pageImageId : pageImageIds) {
+        AttachmentId attachmentId = pageImageId.getChild();
+        pageImageCache.clear(pageImageId);
+        modificationHashCache.clear(attachmentId.getId());
+        
+        Identifier imageIdentifier = identifierController.findIdentifierById(attachmentId);
+        if (imageIdentifier != null) {
+          identifierController.deleteIdentifier(imageIdentifier);
+        }
+      }
+    }
+    
+  }
 }

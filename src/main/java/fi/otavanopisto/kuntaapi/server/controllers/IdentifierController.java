@@ -66,6 +66,10 @@ public class IdentifierController {
     return findIdentifierByTypeSourceAndKuntaApiId(type.toString(), source, kuntaApiId);
   }
 
+  public void deleteIdentifier(Identifier identifier) {
+    identifierDAO.delete(identifier);
+  }
+
   private Identifier createIdentifier(String type, String kuntaApiId, String source, String sourceId, String organizationKuntaApiId) {
     return identifierDAO.create(type, kuntaApiId, source, sourceId, organizationKuntaApiId);
   }
