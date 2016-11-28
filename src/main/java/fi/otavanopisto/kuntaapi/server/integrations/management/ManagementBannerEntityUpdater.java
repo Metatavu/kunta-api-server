@@ -20,15 +20,21 @@ import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 
 import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.commons.lang3.StringUtils;
 
+import fi.otavanopisto.kuntaapi.server.cache.BannerCache;
+import fi.otavanopisto.kuntaapi.server.cache.BannerImageCache;
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
+import fi.otavanopisto.kuntaapi.server.discover.BannerIdRemoveRequest;
+import fi.otavanopisto.kuntaapi.server.discover.BannerIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
-import fi.otavanopisto.kuntaapi.server.discover.OrganizationIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.BannerId;
+import fi.otavanopisto.kuntaapi.server.id.IdPair;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
+import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 import fi.otavanopisto.kuntaapi.server.system.SystemUtils;
@@ -49,6 +55,15 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
   private Logger logger;
   
   @Inject
+  private ManagementTranslator managementTranslator;
+  
+  @Inject
+  private BannerCache bannerCache;
+  
+  @Inject
+  private BannerImageCache bannerImageCache;
+  
+  @Inject
   private ManagementApi managementApi;
   
   @Inject
@@ -67,7 +82,7 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
   private TimerService timerService;
 
   private boolean stopped;
-  private List<OrganizationId> queue;
+  private List<BannerIdUpdateRequest> queue;
 
   @PostConstruct
   public void init() {
@@ -97,22 +112,35 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
   }
   
   @Asynchronous
-  public void onOrganizationIdUpdateRequest(@Observes OrganizationIdUpdateRequest event) {
+  public void onBannerIdUpdateRequest(@Observes BannerIdUpdateRequest event) {
     if (!stopped) {
-      OrganizationId organizationId = event.getId();
+      OrganizationId organizationId = event.getOrganizationId();
       
       if (organizationSettingController.getSettingValue(organizationId, ManagementConsts.ORGANIZATION_SETTING_BASEURL) == null) {
         return;
       }
       
       if (event.isPriority()) {
-        queue.remove(organizationId);
-        queue.add(0, organizationId);
+        queue.remove(event);
+        queue.add(0, event);
       } else {
-        if (!queue.contains(organizationId)) {
-          queue.add(organizationId);
+        if (!queue.contains(event)) {
+          queue.add(event);
         }
       }
+    }
+  }
+  
+  @Asynchronous
+  public void onBannerIdRemoveRequest(@Observes BannerIdRemoveRequest event) {
+    if (!stopped) {
+      BannerId bannerId = event.getId();
+      
+      if (!StringUtils.equals(bannerId.getSource(), ManagementConsts.IDENTIFIER_NAME)) {
+        return;
+      }
+      
+      deleteBanner(event, bannerId);
     }
   }
 
@@ -120,34 +148,27 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
   public void timeout(Timer timer) {
     if (!stopped) {
       if (!queue.isEmpty()) {
-        updateManagementBanners(queue.remove(0));
+        BannerIdUpdateRequest updateRequest = queue.remove(0);
+        OrganizationId organizationId = updateRequest.getOrganizationId();
+        DefaultApi api = managementApi.getApi(organizationId);
+        
+        updateManagementBanner(api, organizationId, updateRequest.getId());
       }
 
       startTimer(SystemUtils.inTestMode() ? 1000 : TIMER_INTERVAL);
     }
   }
 
-  private void updateManagementBanners(OrganizationId organizationId) {
-    DefaultApi api = managementApi.getApi(organizationId);
-    
-    List<Banner> managementBanners = listManagementBanners(api, organizationId);
-    for (Banner managementBanner : managementBanners) {
-      updateManagementBanner(organizationId, api, managementBanner);
-    }
-  }
-
-  private List<Banner> listManagementBanners(DefaultApi api, OrganizationId organizationId) {
-    fi.otavanopisto.mwp.client.ApiResponse<List<Banner>> response = api.wpV2BannerGet(null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+  private void updateManagementBanner(DefaultApi api, OrganizationId organizationId, BannerId managementBannerId) {
+    fi.otavanopisto.mwp.client.ApiResponse<Banner> response = api.wpV2BannerIdGet(managementBannerId.getId(), null);
     if (response.isOk()) {
-      return response.getResponse();
+      updateManagementBanner(api, organizationId, response.getResponse());
     } else {
-      logger.warning(String.format("Listing organization %s banners failed on [%d] %s", organizationId.getId(), response.getStatus(), response.getMessage()));
+      logger.warning(String.format("Finding organization %s banner failed on [%d] %s", managementBannerId.getId(), response.getStatus(), response.getMessage()));
     }
-    
-    return Collections.emptyList();
   }
   
-  private void updateManagementBanner(OrganizationId organizationId, DefaultApi api, Banner managementBanner) {
+  private void updateManagementBanner(DefaultApi api, OrganizationId organizationId, Banner managementBanner) {
     BannerId bannerId = new BannerId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementBanner.getId()));
 
     Identifier identifier = identifierController.findIdentifierById(bannerId);
@@ -155,32 +176,74 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
       identifier = identifierController.createIdentifier(bannerId);
     }
     
-    modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(managementBanner));
+    BannerId bannerKuntaApiId = new BannerId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
+    
+    fi.otavanopisto.kuntaapi.server.rest.model.Banner banner = managementTranslator.translateBanner(bannerKuntaApiId, managementBanner);
+    if (banner == null) {
+      logger.severe(String.format("Could not translate banner %d into Kunta API banner", managementBanner.getId()));
+      return;
+    }
+    
+    bannerCache.put(bannerKuntaApiId, banner);
+    modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(banner));
     
     if (managementBanner.getFeaturedMedia() != null && managementBanner.getFeaturedMedia() > 0) {
-      updateFeaturedMedia(organizationId, api, managementBanner.getFeaturedMedia()); 
+      updateFeaturedMedia(organizationId, api, bannerKuntaApiId, managementBanner.getFeaturedMedia()); 
     }
+
   }
   
-  private void updateFeaturedMedia(OrganizationId organizationId, DefaultApi api, Integer featuredMedia) {
+  private void updateFeaturedMedia(OrganizationId organizationId, DefaultApi api, BannerId bannerId, Integer featuredMedia) {
     ApiResponse<fi.otavanopisto.mwp.client.model.Attachment> response = api.wpV2MediaIdGet(String.valueOf(featuredMedia), null);
     if (!response.isOk()) {
       logger.severe(String.format("Finding media failed on [%d] %s", response.getStatus(), response.getMessage()));
     } else {
-      Attachment attachment = response.getResponse();
-      AttachmentId attachmentId = new AttachmentId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(attachment.getId()));
+      Attachment managementAttachment = response.getResponse();
+      AttachmentId managementAttachmentId = new AttachmentId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementAttachment.getId()));
       
-      Identifier identifier = identifierController.findIdentifierById(attachmentId);
+      Identifier identifier = identifierController.findIdentifierById(managementAttachmentId);
       if (identifier == null) {
-        identifier = identifierController.createIdentifier(attachmentId);
+        identifier = identifierController.createIdentifier(managementAttachmentId);
       }
       
-      AttachmentData imageData = managementImageLoader.getImageData(attachment.getSourceUrl());
-      if (imageData != null) {
-        String dataHash = DigestUtils.md5Hex(imageData.getData());
-        modificationHashCache.put(identifier.getKuntaApiId(), dataHash);
+      AttachmentId kuntaApiAttachmentId = new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
+      fi.otavanopisto.kuntaapi.server.rest.model.Attachment attachment = managementTranslator.translateAttachment(kuntaApiAttachmentId, managementAttachment);
+      if (attachment != null) {
+        bannerImageCache.put(new IdPair<>(bannerId, kuntaApiAttachmentId), attachment);
+        
+        AttachmentData imageData = managementImageLoader.getImageData(managementAttachment.getSourceUrl());
+        if (imageData != null) {
+          String dataHash = DigestUtils.md5Hex(imageData.getData());
+          modificationHashCache.put(identifier.getKuntaApiId(), dataHash);
+        }
       }
     }
   }
 
+  private void deleteBanner(BannerIdRemoveRequest event, BannerId bannerId) {
+    OrganizationId organizationId = event.getOrganizationId();
+    
+    Identifier bannerIdentifier = identifierController.findIdentifierById(bannerId);
+    if (bannerIdentifier != null) {
+      BannerId kuntaApiBannerId = new BannerId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, bannerIdentifier.getKuntaApiId());
+      queue.remove(new BannerIdUpdateRequest(organizationId, kuntaApiBannerId, false));
+
+      modificationHashCache.clear(bannerIdentifier.getKuntaApiId());
+      bannerCache.clear(kuntaApiBannerId);
+      identifierController.deleteIdentifier(bannerIdentifier);
+      
+      List<IdPair<BannerId,AttachmentId>> bannerImageIds = bannerImageCache.getChildIds(kuntaApiBannerId);
+      for (IdPair<BannerId,AttachmentId> bannerImageId : bannerImageIds) {
+        AttachmentId attachmentId = bannerImageId.getChild();
+        bannerImageCache.clear(bannerImageId);
+        modificationHashCache.clear(attachmentId.getId());
+        
+        Identifier imageIdentifier = identifierController.findIdentifierById(attachmentId);
+        if (imageIdentifier != null) {
+          identifierController.deleteIdentifier(imageIdentifier);
+        }
+      }
+    }
+    
+  }
 }
