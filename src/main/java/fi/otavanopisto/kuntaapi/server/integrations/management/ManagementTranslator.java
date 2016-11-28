@@ -10,11 +10,13 @@ import javax.inject.Inject;
 import org.apache.commons.lang3.StringUtils;
 
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
+import fi.otavanopisto.kuntaapi.server.id.BannerId;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
+import fi.otavanopisto.kuntaapi.server.rest.model.Banner;
 import fi.otavanopisto.kuntaapi.server.rest.model.LocalizedValue;
 
 @ApplicationScoped
@@ -87,6 +89,17 @@ public class ManagementTranslator {
     page.setSlug(managementPage.getSlug());
     
     return page;
+  }
+
+  public Banner translateBanner(BannerId kuntaApiBannerId, fi.otavanopisto.mwp.client.model.Banner managementBanner) {
+    Banner banner = new Banner();
+    
+    banner.setContents(managementBanner.getContent().getRendered());
+    banner.setId(kuntaApiBannerId.getId());
+    banner.setLink(managementBanner.getBannerLink());
+    banner.setTitle(managementBanner.getTitle().getRendered());
+    
+    return banner;
   }
   
   private AttachmentId getImageAttachmentId(OrganizationId organizationId, Integer id) {

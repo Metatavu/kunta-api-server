@@ -21,6 +21,7 @@ import javax.inject.Inject;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
+import fi.otavanopisto.kuntaapi.server.cache.BannerCache;
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
@@ -29,6 +30,7 @@ import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.BannerId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
+import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 import fi.otavanopisto.kuntaapi.server.system.SystemUtils;
@@ -47,6 +49,12 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
 
   @Inject
   private Logger logger;
+  
+  @Inject
+  private ManagementTranslator managementTranslator;
+  
+  @Inject
+  private BannerCache bannerCache;
   
   @Inject
   private ManagementApi managementApi;
@@ -155,11 +163,21 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
       identifier = identifierController.createIdentifier(bannerId);
     }
     
-    modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(managementBanner));
+    BannerId bannerKuntaApiId = new BannerId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
+    
+    fi.otavanopisto.kuntaapi.server.rest.model.Banner banner = managementTranslator.translateBanner(bannerKuntaApiId, managementBanner);
+    if (banner == null) {
+      logger.severe(String.format("Could not translate banner %d into Kunta API banner", managementBanner.getId()));
+      return;
+    }
+    
+    bannerCache.put(bannerKuntaApiId, banner);
+    modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(banner));
     
     if (managementBanner.getFeaturedMedia() != null && managementBanner.getFeaturedMedia() > 0) {
       updateFeaturedMedia(organizationId, api, managementBanner.getFeaturedMedia()); 
     }
+
   }
   
   private void updateFeaturedMedia(OrganizationId organizationId, DefaultApi api, Integer featuredMedia) {

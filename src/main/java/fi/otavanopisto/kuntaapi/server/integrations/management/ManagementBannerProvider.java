@@ -1,6 +1,5 @@
 package fi.otavanopisto.kuntaapi.server.integrations.management;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -9,15 +8,13 @@ import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
-import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
+import fi.otavanopisto.kuntaapi.server.cache.BannerCache;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.BannerId;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.BannerProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
-import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
 import fi.otavanopisto.kuntaapi.server.rest.model.Banner;
 import fi.otavanopisto.mwp.client.ApiResponse;
@@ -35,6 +32,9 @@ public class ManagementBannerProvider extends AbstractManagementProvider impleme
   private Logger logger;
   
   @Inject
+  private BannerCache bannerCache;
+  
+  @Inject
   private ManagementImageLoader managementImageLoader;
   
   @Inject
@@ -42,47 +42,25 @@ public class ManagementBannerProvider extends AbstractManagementProvider impleme
 
   @Inject
   private IdController idController;
-  
-  @Inject
-  private IdentifierController identifierController;
 
   @Override
   public List<Banner> listOrganizationBanners(OrganizationId organizationId) {
-    String context = null;
-    Integer page = null;
-    Integer perPage = null;
-    String search = null;
-    LocalDateTime after = null;
-    LocalDateTime before = null;
-    List<String> exclude = null;
-    List<String> include = null;
-    Integer offset = null;
-    String order = null; 
-    String orderby = null;
-    String slug = null;
-    String status = null;
-    String filter = null;
-
-    ApiResponse<List<fi.otavanopisto.mwp.client.model.Banner>> response = managementApi.getApi(organizationId).wpV2BannerGet(context, page, perPage, search, after,
-        before, exclude, include, offset, order, orderby, slug, status, filter);
-
-    if (!response.isOk()) {
-      logger.severe(String.format("Banner listing failed on [%d] %s", response.getStatus(), response.getMessage()));
-    } else {
-      return translateBanners(organizationId, response.getResponse());
+    List<BannerId> bannerIds = bannerCache.getOragnizationIds(organizationId);
+    List<Banner> banners = new ArrayList<>(bannerIds.size());
+    
+    for (BannerId bannerId : bannerIds) {
+      Banner banner = bannerCache.get(bannerId);
+      if (banner != null) {
+        banners.add(banner);
+      }
     }
     
-    return Collections.emptyList();
+    return banners;
   }
 
   @Override
   public Banner findOrganizationBanner(OrganizationId organizationId, BannerId bannerId) {
-    fi.otavanopisto.mwp.client.model.Banner managementBanner = findBannerByBannerId(organizationId, bannerId);
-    if (managementBanner != null) {
-      return translateBanner(organizationId, managementBanner);
-    }
-  
-    return null;
+    return bannerCache.get(bannerId);
   }
 
   @Override
@@ -160,35 +138,6 @@ public class ManagementBannerProvider extends AbstractManagementProvider impleme
     }
     
     return null;
-  }
-
-  private List<Banner> translateBanners(OrganizationId organizationId, List<fi.otavanopisto.mwp.client.model.Banner> managementBanners) {
-    List<Banner> result = new ArrayList<>();
-    
-    for (fi.otavanopisto.mwp.client.model.Banner managementBanner : managementBanners) {
-      result.add(translateBanner(organizationId, managementBanner));
-    }
-    
-    return result;
-  }
-
-  private Banner translateBanner(OrganizationId organizationId, fi.otavanopisto.mwp.client.model.Banner managementBanner) {
-    Banner banner = new Banner();
-    
-    BannerId managementBannerId = new BannerId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementBanner.getId()));
-    BannerId kuntaApiBannerId = idController.translateBannerId(managementBannerId, KuntaApiConsts.IDENTIFIER_NAME);
-    if (kuntaApiBannerId == null) {
-      logger.info(String.format("Found new news article %d", managementBanner.getId()));
-      Identifier newIdentifier = identifierController.createIdentifier(managementBannerId);
-      kuntaApiBannerId = new BannerId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, newIdentifier.getKuntaApiId());
-    }
-    
-    banner.setContents(managementBanner.getContent().getRendered());
-    banner.setId(kuntaApiBannerId.getId());
-    banner.setLink(managementBanner.getBannerLink());
-    banner.setTitle(managementBanner.getTitle().getRendered());
-    
-    return banner;
   }
 
 }
