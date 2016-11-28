@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang3.StringUtils;
 
+import fi.otavanopisto.kuntaapi.server.discover.PageIdRemoveRequest;
 import fi.otavanopisto.kuntaapi.server.discover.PageIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
@@ -25,6 +26,9 @@ public class ManagementWebhookHandler implements WebhookHandler {
 
   @Inject
   private Event<PageIdUpdateRequest> pageIdUpdateRequest;
+
+  @Inject
+  private Event<PageIdRemoveRequest> pageIdRemoveRequest;
 
   @Override
   public String getType() {
@@ -42,7 +46,9 @@ public class ManagementWebhookHandler implements WebhookHandler {
     
     switch (payload.getHook()) {
       case "edit_post":
-        return handleEditPost(organizationId, payload);
+        if (validateEditPost(payload)) {
+          return handleEditPost(organizationId, payload);
+        }
       default:
     }
       
@@ -58,7 +64,7 @@ public class ManagementWebhookHandler implements WebhookHandler {
     return payload;
   }
 
-  private boolean handleEditPost(OrganizationId organizationId, Payload payload) {
+  private boolean validateEditPost(Payload payload) {
     if (StringUtils.isBlank(payload.getPostStatus())) {
       logger.log(Level.SEVERE, "Received a edit_post webhook without post_status");
       return false;
@@ -74,9 +80,13 @@ public class ManagementWebhookHandler implements WebhookHandler {
       return false;
     }
     
+    return true;
+  }
+
+  private boolean handleEditPost(OrganizationId organizationId, Payload payload) {
     switch (payload.getPostStatus()) {
       case "trash":
-      break;
+        return handleTrash(organizationId, payload);
       case "publish":
         return handlePublish(organizationId, payload);
       default:
@@ -90,6 +100,18 @@ public class ManagementWebhookHandler implements WebhookHandler {
       case "page":
         PageId pageId = new PageId(organizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
         pageIdUpdateRequest.fire(new PageIdUpdateRequest(organizationId, pageId, true));
+        return true;
+      default:
+    }
+    
+    return false;
+  }
+  
+  private boolean handleTrash(OrganizationId organizationId, Payload payload) {
+    switch (payload.getPostType()) {
+      case "page":
+        PageId pageId = new PageId(organizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
+        pageIdRemoveRequest.fire(new PageIdRemoveRequest(organizationId, pageId));
         return true;
       default:
     }

@@ -98,7 +98,7 @@ public abstract class AbstractCache <K, V> implements Serializable {
    * 
    * @param id entity id
    */
-  public void clear(String id) {
+  public void clear(K id) {
     Cache<K, String> cache = getCache();
     cache.remove(id);
   }

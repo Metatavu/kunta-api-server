@@ -28,6 +28,7 @@ import fi.otavanopisto.kuntaapi.server.cache.PageContentCache;
 import fi.otavanopisto.kuntaapi.server.cache.PageImageCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
+import fi.otavanopisto.kuntaapi.server.discover.PageIdRemoveRequest;
 import fi.otavanopisto.kuntaapi.server.discover.PageIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.IdPair;
@@ -112,7 +113,7 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
   }
   
   @Asynchronous
-  public void onOrganizationIdUpdateRequest(@Observes PageIdUpdateRequest event) {
+  public void onPageIdUpdateRequest(@Observes PageIdUpdateRequest event) {
     if (!stopped) {
       PageId pageId = event.getId();
       
@@ -128,6 +129,19 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
           queue.add(event);
         }
       }
+    }
+  }
+  
+  @Asynchronous
+  public void onPageIdRemoveRequest(@Observes PageIdRemoveRequest event) {
+    if (!stopped) {
+      PageId pageId = event.getId();
+      
+      if (!StringUtils.equals(pageId.getSource(), ManagementConsts.IDENTIFIER_NAME)) {
+        return;
+      }
+      
+      deletePage(event, pageId);
     }
   }
   
@@ -198,5 +212,33 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
         modificationHashCache.put(identifier.getKuntaApiId(), dataHash);
       }
     }
+  }
+
+  private void deletePage(PageIdRemoveRequest event, PageId pageId) {
+    OrganizationId organizationId = event.getOrganizationId();
+    
+    Identifier pageIdentifier = identifierController.findIdentifierById(pageId);
+    if (pageIdentifier != null) {
+      PageId kuntaApiPageId = new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, pageIdentifier.getKuntaApiId());
+      queue.remove(new PageIdUpdateRequest(organizationId, kuntaApiPageId, false));
+
+      modificationHashCache.clear(pageIdentifier.getKuntaApiId());
+      pageCache.clear(kuntaApiPageId);
+      pageContentCache.clear(kuntaApiPageId);
+      identifierController.deleteIdentifier(pageIdentifier);
+      
+      List<IdPair<PageId,AttachmentId>> pageImageIds = pageImageCache.getChildIds(kuntaApiPageId);
+      for (IdPair<PageId,AttachmentId> pageImageId : pageImageIds) {
+        AttachmentId attachmentId = pageImageId.getChild();
+        pageImageCache.clear(pageImageId);
+        modificationHashCache.clear(attachmentId.getId());
+        
+        Identifier imageIdentifier = identifierController.findIdentifierById(attachmentId);
+        if (imageIdentifier != null) {
+          identifierController.deleteIdentifier(imageIdentifier);
+        }
+      }
+    }
+    
   }
 }
