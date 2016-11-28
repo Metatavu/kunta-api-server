@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang3.StringUtils;
 
+import fi.otavanopisto.kuntaapi.server.discover.BannerIdRemoveRequest;
 import fi.otavanopisto.kuntaapi.server.discover.BannerIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.discover.PageIdRemoveRequest;
 import fi.otavanopisto.kuntaapi.server.discover.PageIdUpdateRequest;
@@ -34,6 +35,9 @@ public class ManagementWebhookHandler implements WebhookHandler {
 
   @Inject
   private Event<BannerIdUpdateRequest> bannerIdUpdateRequest;
+
+  @Inject
+  private Event<BannerIdRemoveRequest> bannerIdRemoveRequest;
 
   @Override
   public String getType() {
@@ -122,6 +126,10 @@ public class ManagementWebhookHandler implements WebhookHandler {
       case "page":
         PageId pageId = new PageId(organizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
         pageIdRemoveRequest.fire(new PageIdRemoveRequest(organizationId, pageId));
+        return true;
+      case "banner":
+        BannerId bannerId = new BannerId(organizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
+        bannerIdRemoveRequest.fire(new BannerIdRemoveRequest(organizationId, bannerId));
         return true;
       default:
     }

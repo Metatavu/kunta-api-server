@@ -20,11 +20,13 @@ import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 
 import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import fi.otavanopisto.kuntaapi.server.cache.BannerCache;
 import fi.otavanopisto.kuntaapi.server.cache.BannerImageCache;
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
+import fi.otavanopisto.kuntaapi.server.discover.BannerIdRemoveRequest;
 import fi.otavanopisto.kuntaapi.server.discover.BannerIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
@@ -128,6 +130,19 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
       }
     }
   }
+  
+  @Asynchronous
+  public void onBannerIdRemoveRequest(@Observes BannerIdRemoveRequest event) {
+    if (!stopped) {
+      BannerId bannerId = event.getId();
+      
+      if (!StringUtils.equals(bannerId.getSource(), ManagementConsts.IDENTIFIER_NAME)) {
+        return;
+      }
+      
+      deleteBanner(event, bannerId);
+    }
+  }
 
   @Timeout
   public void timeout(Timer timer) {
@@ -205,4 +220,30 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
     }
   }
 
+  private void deleteBanner(BannerIdRemoveRequest event, BannerId bannerId) {
+    OrganizationId organizationId = event.getOrganizationId();
+    
+    Identifier bannerIdentifier = identifierController.findIdentifierById(bannerId);
+    if (bannerIdentifier != null) {
+      BannerId kuntaApiBannerId = new BannerId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, bannerIdentifier.getKuntaApiId());
+      queue.remove(new BannerIdUpdateRequest(organizationId, kuntaApiBannerId, false));
+
+      modificationHashCache.clear(bannerIdentifier.getKuntaApiId());
+      bannerCache.clear(kuntaApiBannerId);
+      identifierController.deleteIdentifier(bannerIdentifier);
+      
+      List<IdPair<BannerId,AttachmentId>> bannerImageIds = bannerImageCache.getChildIds(kuntaApiBannerId);
+      for (IdPair<BannerId,AttachmentId> bannerImageId : bannerImageIds) {
+        AttachmentId attachmentId = bannerImageId.getChild();
+        bannerImageCache.clear(bannerImageId);
+        modificationHashCache.clear(attachmentId.getId());
+        
+        Identifier imageIdentifier = identifierController.findIdentifierById(attachmentId);
+        if (imageIdentifier != null) {
+          identifierController.deleteIdentifier(imageIdentifier);
+        }
+      }
+    }
+    
+  }
 }
