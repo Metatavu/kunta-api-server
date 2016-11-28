@@ -22,12 +22,9 @@ public interface NewsProvider {
    * @param organizationId organization id
    * @param publishedBefore return only news published before the date
    * @param publishedAfter return only news published after the date
-   * @param firstResult first index of results
-   * @param maxResults maximum number of results
    * @return organization news articles
    */
-  public List<NewsArticle> listOrganizationNews(OrganizationId organizationId, OffsetDateTime publishedBefore, OffsetDateTime publishedAfter, 
-      Integer firstResult, Integer maxResults);
+  public List<NewsArticle> listOrganizationNews(OrganizationId organizationId, OffsetDateTime publishedBefore, OffsetDateTime publishedAfter);
   
   /**
    * Finds a single news article

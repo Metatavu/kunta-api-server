@@ -129,7 +129,7 @@ public class ManagementPageProvider extends AbstractManagementProvider implement
         result.add(page);
       }
     }
-    
+      
     return result;
   }
   
