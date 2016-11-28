@@ -61,7 +61,6 @@ public class ManagementPageProvider extends AbstractManagementProvider implement
   }
   
   @Override
-  @SuppressWarnings ("squid:S1168")
   public List<LocalizedValue> findOrganizationPageContents(OrganizationId organizationId, PageId pageId) {
     return pageContentCache.get(pageId);
   }

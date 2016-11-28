@@ -786,9 +786,11 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return notModified;
     }
     
-    List<LocalizedValue> pageContents = pageController.getPageContents(organizationId, pageId);
-    if (pageContents != null) {
-      return httpCacheController.sendModified(pageContents, pageId.getId());
+    if (pageController.findPage(organizationId, pageId) != null) {
+      List<LocalizedValue> pageContents = pageController.getPageContents(organizationId, pageId);
+      if (pageContents != null) {
+        return httpCacheController.sendModified(pageContents, pageId.getId());
+      }
     }
     
     return createNotFound(NOT_FOUND);
@@ -807,6 +809,10 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return notModified;
     }
 
+    if (pageController.findPage(organizationId, pageId) == null) {
+      return createNotFound(NOT_FOUND); 
+    }
+    
     return httpCacheController.sendModified(result, ids);
   }
 
