@@ -27,11 +27,12 @@ import fi.otavanopisto.kuntaapi.server.cache.NewsArticleCache;
 import fi.otavanopisto.kuntaapi.server.cache.NewsArticleImageCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
+import fi.otavanopisto.kuntaapi.server.discover.NewsArticleIdRemoveRequest;
 import fi.otavanopisto.kuntaapi.server.discover.NewsArticleIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.IdPair;
-import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
+import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
@@ -127,6 +128,19 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
     }
   }
   
+  @Asynchronous
+  public void onNewsArticleIdRemoveRequest(@Observes NewsArticleIdRemoveRequest event) {
+    if (!stopped) {
+      NewsArticleId newsArticleId = event.getId();
+      
+      if (!StringUtils.equals(newsArticleId.getSource(), ManagementConsts.IDENTIFIER_NAME)) {
+        return;
+      }
+      
+      deleteNewsArticle(event, newsArticleId);
+    }
+  }
+  
   @Timeout
   public void timeout(Timer timer) {
     if (!stopped) {
@@ -199,6 +213,32 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
       if (imageData != null) {
         String dataHash = DigestUtils.md5Hex(imageData.getData());
         modificationHashCache.put(identifier.getKuntaApiId(), dataHash);
+      }
+    }
+  }
+
+  private void deleteNewsArticle(NewsArticleIdRemoveRequest event, NewsArticleId newsArticleId) {
+    OrganizationId organizationId = event.getOrganizationId();
+    
+    Identifier newsArticleIdentifier = identifierController.findIdentifierById(newsArticleId);
+    if (newsArticleIdentifier != null) {
+      NewsArticleId kuntaApiNewsArticleId = new NewsArticleId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, newsArticleIdentifier.getKuntaApiId());
+      queue.remove(new NewsArticleIdUpdateRequest(organizationId, kuntaApiNewsArticleId, false));
+
+      modificationHashCache.clear(newsArticleIdentifier.getKuntaApiId());
+      newsArticleCache.clear(kuntaApiNewsArticleId);
+      identifierController.deleteIdentifier(newsArticleIdentifier);
+      
+      List<IdPair<NewsArticleId,AttachmentId>> newsArticleImageIds = newsArticleImageCache.getChildIds(kuntaApiNewsArticleId);
+      for (IdPair<NewsArticleId,AttachmentId> newsArticleImageId : newsArticleImageIds) {
+        AttachmentId attachmentId = newsArticleImageId.getChild();
+        newsArticleImageCache.clear(newsArticleImageId);
+        modificationHashCache.clear(attachmentId.getId());
+        
+        Identifier imageIdentifier = identifierController.findIdentifierById(attachmentId);
+        if (imageIdentifier != null) {
+          identifierController.deleteIdentifier(imageIdentifier);
+        }
       }
     }
   }
