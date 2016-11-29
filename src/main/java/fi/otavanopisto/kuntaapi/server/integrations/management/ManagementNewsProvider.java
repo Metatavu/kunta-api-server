@@ -1,28 +1,24 @@
 package fi.otavanopisto.kuntaapi.server.integrations.management;
 
-import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
-import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.logging.Logger;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
+import fi.otavanopisto.kuntaapi.server.cache.NewsArticleCache;
+import fi.otavanopisto.kuntaapi.server.cache.NewsArticleImageCache;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
-import fi.otavanopisto.kuntaapi.server.id.IdController;
+import fi.otavanopisto.kuntaapi.server.id.IdPair;
 import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
-import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.NewsProvider;
 import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
 import fi.otavanopisto.kuntaapi.server.rest.model.NewsArticle;
-import fi.otavanopisto.mwp.client.ApiResponse;
 import fi.otavanopisto.mwp.client.model.Attachment.MediaTypeEnum;
-import fi.otavanopisto.mwp.client.model.Post;
 
 /**
  * News provider for management wordpress
@@ -33,98 +29,56 @@ import fi.otavanopisto.mwp.client.model.Post;
 public class ManagementNewsProvider extends AbstractManagementProvider implements NewsProvider {
   
   @Inject
-  private Logger logger;
-  
-  @Inject
-  private ManagementApi managementApi;
-
-  @Inject
   private ManagementImageLoader managementImageLoader;
   
   @Inject
-  private IdController idController;
+  private NewsArticleCache newsArticleCache;
+  
+  @Inject
+  private NewsArticleImageCache newsArticleImageCache;
   
   @Override
-  public List<NewsArticle> listOrganizationNews(OrganizationId organizationId, OffsetDateTime publishedBefore,
-      OffsetDateTime publishedAfter) {
-    
-    String context = null;
-    Integer page = null;
-    Integer perPage = null;
-    String search = null;
-    LocalDateTime after = toLocalDateTime(publishedAfter);
-    List<String> author = null;
-    List<String> authorExclude = null;
-    LocalDateTime before = toLocalDateTime(publishedAfter); 
-    List<String> exclude = null;
-    List<String> include = null;
-    Integer offset = null;
-    String order = null; 
-    String orderby = null;
-    String slug = null;
-    String status = null;
-    String filter = null;
-    List<String> categories = null;
-    List<String> tags = null;
-
-    ApiResponse<List<Post>> postResponse = managementApi.getApi(organizationId).wpV2PostsGet(context, page, perPage, search, after, author, authorExclude, before, exclude, include,
-        offset, order, orderby, slug, status, filter, categories, tags);
-    if (!postResponse.isOk()) {
-      logger.severe(String.format("Post listing failed on [%d] %s", postResponse.getStatus(), postResponse.getMessage()));
-    } else {
-      return translateNewsArticles(organizationId, postResponse.getResponse());
+  public List<NewsArticle> listOrganizationNews(OrganizationId organizationId, OffsetDateTime publishedBefore, OffsetDateTime publishedAfter) {
+    if (organizationId == null) {
+      return Collections.emptyList();
     }
     
-    return Collections.emptyList();
+    List<NewsArticleId> newsArticleIds = newsArticleCache.getOragnizationIds(organizationId);
+    
+    List<NewsArticle> result = new ArrayList<>(newsArticleIds.size());
+    for (NewsArticleId newsArticleId : newsArticleIds) {
+      NewsArticle newsArticle = newsArticleCache.get(newsArticleId);
+      if (newsArticle != null && isAccetable(newsArticle, publishedBefore, publishedAfter)) {
+        result.add(newsArticle);
+      }
+    }
+    
+    return result;
   }
 
   @Override
   public NewsArticle findOrganizationNewsArticle(OrganizationId organizationId, NewsArticleId newsArticleId) {
-    Post post = findPostByArticleId(organizationId, newsArticleId);
-    if (post != null) {
-      return translateNewsArticle(organizationId, post);
-    }
-
-    return null;
+    return newsArticleCache.get(newsArticleId);
   }
 
   @Override
   public List<Attachment> listNewsArticleImages(OrganizationId organizationId, NewsArticleId newsArticleId) {
-    Post post = findPostByArticleId(organizationId, newsArticleId);
-    if (post != null) {
-      Integer featuredMediaId = post.getFeaturedMedia();
-      if (featuredMediaId != null) {
-        fi.otavanopisto.mwp.client.model.Attachment featuredMedia = findMedia(organizationId, featuredMediaId);
-        if ((featuredMedia != null) && (featuredMedia.getMediaType() == MediaTypeEnum.IMAGE)) {
-          return Collections.singletonList(translateAttachment(organizationId, featuredMedia));
-        }
+    List<Attachment> result = new ArrayList<>();
+    
+    List<IdPair<NewsArticleId,AttachmentId>> childIds = newsArticleImageCache.getChildIds(newsArticleId);
+    for (IdPair<NewsArticleId,AttachmentId> childId : childIds) {
+      Attachment attachment = newsArticleImageCache.get(childId);
+      if (attachment != null) {
+        result.add(attachment);
       }
     }
-
-    return Collections.emptyList();
+    
+    return result;
   }
 
   @Override
-  public Attachment findNewsArticleImage(OrganizationId organizationId, NewsArticleId newsArticleId,
-      AttachmentId attachmentId) {
-    
-    Post post = findPostByArticleId(organizationId, newsArticleId);
-    if (post != null) {
-      Integer featuredMediaId = post.getFeaturedMedia();
-      if (featuredMediaId != null) {
-        AttachmentId managementAttachmentId = getImageAttachmentId(organizationId, featuredMediaId);
-        if (!idController.idsEqual(attachmentId, managementAttachmentId)) {
-          return null;
-        }
-        
-        fi.otavanopisto.mwp.client.model.Attachment attachment = findMedia(organizationId, featuredMediaId);
-        if (attachment != null) {
-          return translateAttachment(organizationId, attachment);
-        }
-      }
-    }
-
-    return null;
+  public Attachment findNewsArticleImage(OrganizationId organizationId, NewsArticleId newsArticleId, AttachmentId attachmentId) {
+    return newsArticleImageCache.get(new IdPair<>(newsArticleId, attachmentId));
   }
 
   @Override
@@ -151,67 +105,17 @@ public class ManagementNewsProvider extends AbstractManagementProvider implement
     return null;
   }
   
-  private Post findPostByArticleId(OrganizationId organizationId, NewsArticleId newsArticleId) {
-    NewsArticleId managementPostId = idController.translateNewsArticleId(newsArticleId, ManagementConsts.IDENTIFIER_NAME);
-    if (managementPostId == null) {
-      logger.severe(String.format("Failed to convert %s into MWP id", newsArticleId.toString()));
-      return null;
+  private boolean isAccetable(NewsArticle newsArticle, OffsetDateTime publishedBefore, OffsetDateTime publishedAfter) {
+    OffsetDateTime published = newsArticle.getPublished();
+    if (publishedBefore != null && (published == null || published.isAfter(publishedBefore))) {
+      return false;
     }
     
-    ApiResponse<Post> response = managementApi.getApi(organizationId).wpV2PostsIdGet(managementPostId.getId(), null);
-    if (!response.isOk()) {
-      logger.severe(String.format("Finding post failed on [%d] %s", response.getStatus(), response.getMessage()));
-    } else {
-      return response.getResponse();
+    if (publishedAfter != null && (published == null || published.isBefore(publishedAfter))) {
+      return false;
     }
     
-    return null;
-  }
-
-  private List<NewsArticle> translateNewsArticles(OrganizationId organizationId, List<Post> posts) {
-    List<NewsArticle> result = new ArrayList<>();
-    
-    for (Post post : posts) {
-      result.add(translateNewsArticle(organizationId, post));
-    }
-    
-    return result;
-  }
-
-  private NewsArticle translateNewsArticle(OrganizationId organizationId, Post post) {
-    NewsArticle newsArticle = new NewsArticle();
-    
-    NewsArticleId postId = new NewsArticleId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(post.getId()));
-    NewsArticleId kuntaApiId = idController.translateNewsArticleId(postId, KuntaApiConsts.IDENTIFIER_NAME);
-    if (kuntaApiId == null) {
-      logger.info(String.format("Could not translate management news artcile %d into kunta api id", post.getId()));
-      return null;
-    }
-    
-    newsArticle.setAbstract(post.getExcerpt().getRendered());
-    newsArticle.setContents(post.getContent().getRendered());
-    newsArticle.setId(kuntaApiId.getId());
-    newsArticle.setPublished(toOffsetDateTime(post.getDate()));
-    newsArticle.setTitle(post.getTitle().getRendered());
-    newsArticle.setSlug(post.getSlug());
-    
-    return newsArticle;
-  }
-  
-  private OffsetDateTime toOffsetDateTime(LocalDateTime date) {
-    if (date == null) {
-      return null;
-    }
-    
-    return date.atZone(ZoneId.systemDefault()).toOffsetDateTime();
-  }
-  
-  private LocalDateTime toLocalDateTime(OffsetDateTime dateTime) {
-    if (dateTime == null) {
-      return null;
-    }
-    
-    return dateTime.toLocalDateTime();   
+    return true;
   }
 
 }

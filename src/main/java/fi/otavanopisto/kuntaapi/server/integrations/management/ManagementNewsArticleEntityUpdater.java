@@ -23,14 +23,20 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
+import fi.otavanopisto.kuntaapi.server.cache.NewsArticleCache;
+import fi.otavanopisto.kuntaapi.server.cache.NewsArticleImageCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
+import fi.otavanopisto.kuntaapi.server.discover.NewsArticleIdRemoveRequest;
 import fi.otavanopisto.kuntaapi.server.discover.NewsArticleIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
-import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.id.IdPair;
 import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
+import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
+import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
+import fi.otavanopisto.kuntaapi.server.rest.model.NewsArticle;
 import fi.otavanopisto.kuntaapi.server.system.SystemUtils;
 import fi.otavanopisto.mwp.client.ApiResponse;
 import fi.otavanopisto.mwp.client.DefaultApi;
@@ -49,6 +55,9 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
   private Logger logger;
   
   @Inject
+  private ManagementTranslator managementTranslator;
+  
+  @Inject
   private ManagementApi managementApi;
   
   @Inject
@@ -56,6 +65,12 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
   
   @Inject
   private IdentifierController identifierController;
+  
+  @Inject
+  private NewsArticleCache newsArticleCache;
+  
+  @Inject
+  private NewsArticleImageCache newsArticleImageCache;
   
   @Inject
   private ModificationHashCache modificationHashCache;
@@ -113,6 +128,19 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
     }
   }
   
+  @Asynchronous
+  public void onNewsArticleIdRemoveRequest(@Observes NewsArticleIdRemoveRequest event) {
+    if (!stopped) {
+      NewsArticleId newsArticleId = event.getId();
+      
+      if (!StringUtils.equals(newsArticleId.getSource(), ManagementConsts.IDENTIFIER_NAME)) {
+        return;
+      }
+      
+      deleteNewsArticle(event, newsArticleId);
+    }
+  }
+  
   @Timeout
   public void timeout(Timer timer) {
     if (!stopped) {
@@ -144,30 +172,73 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
       identifier = identifierController.createIdentifier(newsArticleId);
     }
     
-    modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(managementPost));
+    NewsArticleId kuntaApiNewsArticleId = new NewsArticleId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
+    NewsArticle newsArticle = managementTranslator.translateNewsArticle(kuntaApiNewsArticleId, managementPost);
+    if (newsArticle == null) {
+      logger.severe(String.format("Failed to translate news article %d", managementPost.getId()));
+      return;
+    }
+    
+    newsArticleCache.put(kuntaApiNewsArticleId, newsArticle);
+    modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(newsArticle));
     
     if (managementPost.getFeaturedMedia() != null && managementPost.getFeaturedMedia() > 0) {
-      updateFeaturedMedia(organizationId, api, managementPost.getFeaturedMedia()); 
+      updateFeaturedMedia(organizationId, kuntaApiNewsArticleId, api, managementPost.getFeaturedMedia()); 
     }
   }
   
-  private void updateFeaturedMedia(OrganizationId organizationId, DefaultApi api, Integer featuredMedia) {
+  private void updateFeaturedMedia(OrganizationId organizationId, NewsArticleId newsArticleId, DefaultApi api, Integer featuredMedia) {
     ApiResponse<fi.otavanopisto.mwp.client.model.Attachment> response = api.wpV2MediaIdGet(String.valueOf(featuredMedia), null);
     if (!response.isOk()) {
       logger.severe(String.format("Finding media failed on [%d] %s", response.getStatus(), response.getMessage()));
     } else {
-      Attachment attachment = response.getResponse();
-      AttachmentId attachmentId = new AttachmentId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(attachment.getId()));
+      Attachment managementAttachment = response.getResponse();
+      AttachmentId managementAttachmentId = new AttachmentId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementAttachment.getId()));
       
-      Identifier identifier = identifierController.findIdentifierById(attachmentId);
+      Identifier identifier = identifierController.findIdentifierById(managementAttachmentId);
       if (identifier == null) {
-        identifier = identifierController.createIdentifier(attachmentId);
+        identifier = identifierController.createIdentifier(managementAttachmentId);
       }
       
-      AttachmentData imageData = managementImageLoader.getImageData(attachment.getSourceUrl());
+      AttachmentId kuntaApiAttachmentId = new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
+      fi.otavanopisto.kuntaapi.server.rest.model.Attachment attachment = managementTranslator.translateAttachment(kuntaApiAttachmentId, managementAttachment);
+      if (attachment == null) {
+        logger.severe(String.format("Failed to translate news article attachment %d", featuredMedia));
+        return;
+      }
+      
+      newsArticleImageCache.put(new IdPair<>(newsArticleId, kuntaApiAttachmentId), attachment);
+      
+      AttachmentData imageData = managementImageLoader.getImageData(managementAttachment.getSourceUrl());
       if (imageData != null) {
         String dataHash = DigestUtils.md5Hex(imageData.getData());
         modificationHashCache.put(identifier.getKuntaApiId(), dataHash);
+      }
+    }
+  }
+
+  private void deleteNewsArticle(NewsArticleIdRemoveRequest event, NewsArticleId newsArticleId) {
+    OrganizationId organizationId = event.getOrganizationId();
+    
+    Identifier newsArticleIdentifier = identifierController.findIdentifierById(newsArticleId);
+    if (newsArticleIdentifier != null) {
+      NewsArticleId kuntaApiNewsArticleId = new NewsArticleId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, newsArticleIdentifier.getKuntaApiId());
+      queue.remove(new NewsArticleIdUpdateRequest(organizationId, kuntaApiNewsArticleId, false));
+
+      modificationHashCache.clear(newsArticleIdentifier.getKuntaApiId());
+      newsArticleCache.clear(kuntaApiNewsArticleId);
+      identifierController.deleteIdentifier(newsArticleIdentifier);
+      
+      List<IdPair<NewsArticleId,AttachmentId>> newsArticleImageIds = newsArticleImageCache.getChildIds(kuntaApiNewsArticleId);
+      for (IdPair<NewsArticleId,AttachmentId> newsArticleImageId : newsArticleImageIds) {
+        AttachmentId attachmentId = newsArticleImageId.getChild();
+        newsArticleImageCache.clear(newsArticleImageId);
+        modificationHashCache.clear(attachmentId.getId());
+        
+        Identifier imageIdentifier = identifierController.findIdentifierById(attachmentId);
+        if (imageIdentifier != null) {
+          identifierController.deleteIdentifier(imageIdentifier);
+        }
       }
     }
   }

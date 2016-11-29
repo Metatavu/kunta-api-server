@@ -137,7 +137,7 @@ public class CaseMCacheUpdater {
   }
   
   public void updateNodes(OrganizationId organizationId) {
-    logger.info(String.format("Updating CaseM nodes for organization %s", organizationId));
+    logger.fine(String.format("Updating CaseM nodes for organization %s", organizationId));
     
     Long caseMRootNodeId = getCaseMRootNodeId(organizationId);
     if (caseMRootNodeId == null) {
@@ -147,19 +147,19 @@ public class CaseMCacheUpdater {
     List<Node> nodes = getChildNodes(organizationId, caseMRootNodeId, Collections.emptyList());
     cacheNodeTree(organizationId, caseMRootNodeId, null, nodes, new ArrayList<>()); 
     
-    logger.info(String.format("Done updating CaseM nodes for organization %s", organizationId));
+    logger.fine(String.format("Done updating CaseM nodes for organization %s", organizationId));
   }
   
   public void updateContents(OrganizationId organizationId) {
-    logger.info(String.format("Updating CaseM contents list for organization %s", organizationId));
+    logger.fine(String.format("Updating CaseM contents list for organization %s", organizationId));
     
     cacheContents(organizationId);
     
-    logger.info(String.format("Done updating CaseM meeting list for organization %s", organizationId));
+    logger.fine(String.format("Done updating CaseM meeting list for organization %s", organizationId));
   }
   
   public void updateMeeting(CaseMMeetingData meetingData) {
-    logger.info(String.format("Updating CaseM meeting %s with %d items", meetingData.getMeetingPageId().toString(), meetingData.getMeetingItemContents().size()));
+    logger.fine(String.format("Updating CaseM meeting %s with %d items", meetingData.getMeetingPageId().toString(), meetingData.getMeetingItemContents().size()));
     
     OrganizationId organizationId = meetingData.getOrganizationId();
     PageId meetingPageId = translatePageId(meetingData.getMeetingPageId(), true);
@@ -216,7 +216,7 @@ public class CaseMCacheUpdater {
       fileUpdateRequest.fire(new FileUpdateRequest(meetingPageId, fileId));
     }
 
-    logger.info(String.format("Done updating CaseM meeting %s", meetingPageId.toString()));
+    logger.fine(String.format("Done updating CaseM meeting %s", meetingPageId.toString()));
   }
   
   private void cacheContents(OrganizationId organizationId) {
