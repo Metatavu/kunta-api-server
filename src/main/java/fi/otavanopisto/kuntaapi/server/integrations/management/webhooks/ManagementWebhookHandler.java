@@ -12,9 +12,12 @@ import org.apache.commons.lang3.StringUtils;
 
 import fi.otavanopisto.kuntaapi.server.discover.BannerIdRemoveRequest;
 import fi.otavanopisto.kuntaapi.server.discover.BannerIdUpdateRequest;
+import fi.otavanopisto.kuntaapi.server.discover.NewsArticleIdRemoveRequest;
+import fi.otavanopisto.kuntaapi.server.discover.NewsArticleIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.discover.PageIdRemoveRequest;
 import fi.otavanopisto.kuntaapi.server.discover.PageIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.id.BannerId;
+import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.integrations.management.ManagementConsts;
@@ -38,6 +41,12 @@ public class ManagementWebhookHandler implements WebhookHandler {
 
   @Inject
   private Event<BannerIdRemoveRequest> bannerIdRemoveRequest;
+
+  @Inject
+  private Event<NewsArticleIdUpdateRequest> newsArticleIdUpdateRequest;
+
+  @Inject
+  private Event<NewsArticleIdRemoveRequest> newsArticleIdRemoveRequest;
 
   @Override
   public String getType() {
@@ -114,6 +123,10 @@ public class ManagementWebhookHandler implements WebhookHandler {
         BannerId bannerId = new BannerId(organizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
         bannerIdUpdateRequest.fire(new BannerIdUpdateRequest(organizationId, bannerId, true));
         return true;
+      case "post":
+        NewsArticleId newsArticleId = new NewsArticleId(organizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
+        newsArticleIdUpdateRequest.fire(new NewsArticleIdUpdateRequest(organizationId, newsArticleId, true));
+        return true;
       default:
         
     }
@@ -130,6 +143,10 @@ public class ManagementWebhookHandler implements WebhookHandler {
       case "banner":
         BannerId bannerId = new BannerId(organizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
         bannerIdRemoveRequest.fire(new BannerIdRemoveRequest(organizationId, bannerId));
+        return true;
+      case "post":
+        NewsArticleId newsArticleId = new NewsArticleId(organizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
+        newsArticleIdRemoveRequest.fire(new NewsArticleIdRemoveRequest(organizationId, newsArticleId));
         return true;
       default:
     }
