@@ -1,8 +1,11 @@
 package fi.otavanopisto.kuntaapi.server.index;
 
+import static org.elasticsearch.index.query.QueryBuilders.boolQuery;
 import static org.elasticsearch.index.query.QueryBuilders.queryStringQuery;
+import static org.elasticsearch.index.query.QueryBuilders.termQuery;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
@@ -12,25 +15,44 @@ import javax.inject.Inject;
 
 import org.apache.commons.lang3.StringUtils;
 import org.elasticsearch.action.search.SearchRequestBuilder;
+import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilder;
-import org.elasticsearch.index.query.QueryStringQueryBuilder;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.SearchHitField;
 
+import fi.otavanopisto.kuntaapi.server.id.IdController;
+import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 
 @ApplicationScoped
 public class ServiceSearcher {
   
+  private static final String ORGANIZATION_IDS_FIELD = "organizationIds";
+  
   @Inject
   private Logger logger;
   
   @Inject
+  private IdController idController;
+  
+  @Inject
   private IndexReader indexReader;
 
-  public SearchResult<ServiceId> searchServices(String text, Long firstResult, Long maxResults) {
-    QueryStringQueryBuilder query = queryStringQuery(text);
+  public SearchResult<ServiceId> searchServices(OrganizationId organizationId, String text, Long firstResult, Long maxResults) {
+    BoolQueryBuilder query = boolQuery()
+      .must(queryStringQuery(text));
+    
+    if (organizationId != null) {
+      OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(organizationId, KuntaApiConsts.IDENTIFIER_NAME);
+      if (kuntaApiOrganizationId == null) {
+        logger.warning(String.format("Could not translate organization id %s into Kunta API id", organizationId));
+        return new SearchResult<>(Collections.emptyList());
+      }
+      
+      query.must(termQuery(ORGANIZATION_IDS_FIELD, kuntaApiOrganizationId.getId()));
+    }
+    
     return searchServices(query, firstResult, maxResults);
   }
   

@@ -6,6 +6,9 @@ public class IndexableService implements Indexable {
 
   @Field(index = "not_analyzed", store = true)
   private String serviceId;
+  
+  @Field(index = "not_analyzed", store = true)
+  private List<String> organizationIds;
 
   private String name;
 
@@ -38,6 +41,14 @@ public class IndexableService implements Indexable {
 
   public void setServiceId(String serviceId) {
     this.serviceId = serviceId;
+  }
+  
+  public List<String> getOrganizationIds() {
+    return organizationIds;
+  }
+  
+  public void setOrganizationIds(List<String> organizationIds) {
+    this.organizationIds = organizationIds;
   }
 
   public String getName() {

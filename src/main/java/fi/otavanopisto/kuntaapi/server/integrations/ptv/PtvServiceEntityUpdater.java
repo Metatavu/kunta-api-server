@@ -22,9 +22,12 @@ import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
 import fi.otavanopisto.kuntaapi.server.discover.ServiceIdUpdateRequest;
+import fi.otavanopisto.kuntaapi.server.id.IdController;
+import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceId;
 import fi.otavanopisto.kuntaapi.server.index.IndexRequest;
 import fi.otavanopisto.kuntaapi.server.index.IndexableService;
+import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.system.SystemUtils;
 import fi.otavanopisto.kuntaapi.server.utils.LocalizationUtils;
@@ -45,6 +48,9 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
 
   @Inject
   private PtvApi ptvApi;
+  
+  @Inject
+  private IdController idController;
   
   @Inject
   private IdentifierController identifierController;
@@ -125,16 +131,28 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
       }
       
       Service service = response.getResponse();
+
       modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(service));
       index(identifier.getKuntaApiId(), service);
     } else {
       logger.warning(String.format("Service %s processing failed on [%d] %s", serviceId.getId(), response.getStatus(), response.getMessage()));
     }
   }
-
+  
   private void index(String serviceId, Service service) {
     List<LocalizedListItem> descriptions = service.getDescriptions();
     List<LocalizedListItem> names = service.getNames();
+    List<String> ptvOrganizationIds = service.getOrganizationIds();
+    List<String> organizationIds = new ArrayList<>(ptvOrganizationIds.size());
+    
+    for (String ptvOrganizationId : ptvOrganizationIds) {
+      OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(new OrganizationId(PtvConsts.IDENTIFIFER_NAME, ptvOrganizationId), KuntaApiConsts.IDENTIFIER_NAME);
+      if (kuntaApiOrganizationId != null) {
+        organizationIds.add(kuntaApiOrganizationId.getId());
+      } else {
+        logger.warning(String.format("Could not translate organization %s into Kunta API id", ptvOrganizationId));
+      }
+    }
     
     for (String language : LocalizationUtils.getListsLanguages(names, descriptions)) {
       IndexableService indexableService = new IndexableService();
@@ -146,6 +164,8 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
       indexableService.setName(LocalizationUtils.getBestMatchingValue("Name", names, language, PtvConsts.DEFAULT_LANGUAGE));
       indexableService.setAlternativeName(LocalizationUtils.getBestMatchingValue("AlternativeName", names, language, PtvConsts.DEFAULT_LANGUAGE));
       indexableService.setServiceId(serviceId);
+      indexableService.setOrganizationIds(organizationIds);
+      
       indexRequest.fire(new IndexRequest(indexableService));
     }
     

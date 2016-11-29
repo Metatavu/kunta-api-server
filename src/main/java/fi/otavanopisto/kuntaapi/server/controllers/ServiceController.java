@@ -10,6 +10,7 @@ import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
 
 import fi.otavanopisto.kuntaapi.server.id.ElectronicServiceChannelId;
+import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PhoneChannelId;
 import fi.otavanopisto.kuntaapi.server.id.PrintableFormChannelId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceId;
@@ -49,11 +50,11 @@ public class ServiceController {
     return null;
   }
   
-  public List<Service> listServices(Long firstResult, Long maxResults) {
+  public List<Service> listServices(OrganizationId organizationId, Long firstResult, Long maxResults) {
     List<Service> result = new ArrayList<>();
     
     for (ServiceProvider serviceProvider : getServiceProviders()) {
-      result.addAll(serviceProvider.listServices(null, null));
+      result.addAll(serviceProvider.listServices(organizationId));
     }
     
     int resultCount = result.size();
@@ -63,8 +64,8 @@ public class ServiceController {
     return result.subList(firstIndex, toIndex);
   }
 
-  public List<Service> searchServices(String search, Long firstResult, Long maxResults) {
-    SearchResult<ServiceId> searchResult = serviceSearcher.searchServices(search, firstResult, maxResults);
+  public List<Service> searchServices(OrganizationId organizationId, String search, Long firstResult, Long maxResults) {
+    SearchResult<ServiceId> searchResult = serviceSearcher.searchServices(organizationId, search, firstResult, maxResults);
     if (searchResult != null) {
       List<Service> result = new ArrayList<>(searchResult.getResult().size());
       

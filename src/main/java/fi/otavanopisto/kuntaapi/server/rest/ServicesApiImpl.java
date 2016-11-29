@@ -14,6 +14,7 @@ import org.apache.commons.lang3.StringUtils;
 import fi.otavanopisto.kuntaapi.server.controllers.HttpCacheController;
 import fi.otavanopisto.kuntaapi.server.controllers.ServiceController;
 import fi.otavanopisto.kuntaapi.server.id.ElectronicServiceChannelId;
+import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PhoneChannelId;
 import fi.otavanopisto.kuntaapi.server.id.PrintableFormChannelId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceId;
@@ -77,17 +78,19 @@ public class ServicesApiImpl extends ServicesApi {
   }
   
   @Override
-  public Response listServices(String search, Long firstResult, Long maxResults, @Context Request request) {
+  public Response listServices(String organizationIdParam, String search, Long firstResult, Long maxResults, @Context Request request) {
     Response validationResponse = validateListLimitParams(firstResult, maxResults);
     if (validationResponse != null) {
       return validationResponse;
     }
     
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    
     List<Service> services;
     if (search == null) {
-      services = serviceController.listServices(firstResult, maxResults);
+      services = serviceController.listServices(organizationId, firstResult, maxResults);
     } else {
-      services = serviceController.searchServices(search, firstResult, maxResults);
+      services = serviceController.searchServices(organizationId, search, firstResult, maxResults);
     }
     
     List<String> ids = httpCacheController.getEntityIds(services);
@@ -396,6 +399,14 @@ public class ServicesApiImpl extends ServicesApi {
     
     if (maxResults != null && maxResults < 0) {
       return createBadRequest(MAX_RESULTS_MUST_BY_A_POSITIVE_INTEGER);
+    }
+    
+    return null;
+  }
+  
+  private OrganizationId toOrganizationId(String id) {
+    if (StringUtils.isNotBlank(id)) {
+      return new OrganizationId(KuntaApiConsts.IDENTIFIER_NAME, id);
     }
     
     return null;
