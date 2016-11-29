@@ -4,6 +4,8 @@ import static com.jayway.restassured.RestAssured.given;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.fail;
 
+import java.util.logging.Logger;
+
 import com.jayway.restassured.http.ContentType;
 
 /**
@@ -17,6 +19,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
 
   public static final String BASE_URL = "/v1";
   
+  private static Logger logger = Logger.getLogger(AbstractTest.class.getName());
   private RestFulPtvMocker ptvMocker = new RestFulPtvMocker();
   private KuntarekryMocker kuntarekryMocker = new KuntarekryMocker();
   
@@ -38,8 +41,10 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
 
   
   protected void waitApiListCount(String path, int count) throws InterruptedException {
+    int counter = 0;
     long timeout = System.currentTimeMillis() + (120 * 1000);
     while (true) {
+      counter++;
       Thread.sleep(1000);
       
       int listCount = countApiList(path);
@@ -50,6 +55,11 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
       if (System.currentTimeMillis() > timeout) {
         fail(String.format("Timeout waiting for %s to have count %d", path, count));
       }
+      
+      if ((counter % 30) == 0) {
+        logger.info(String.format("... still waiting %d items, current count %d", count, listCount));
+      }
+      
     }
   }
 
