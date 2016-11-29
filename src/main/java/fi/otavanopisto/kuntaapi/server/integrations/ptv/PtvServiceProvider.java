@@ -8,6 +8,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
 import fi.otavanopisto.kuntaapi.server.id.IdController;
+import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceId;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceProvider;
 import fi.otavanopisto.kuntaapi.server.rest.model.Service;
@@ -49,9 +50,19 @@ public class PtvServiceProvider extends AbstractPtvProvider implements ServicePr
   }
 
   @Override
-  public List<Service> listServices(Long firstResult, Long maxResults) {
+  public List<Service> listServices(OrganizationId organizationId) {
+    OrganizationId ptvOrganizationId = null;
+    if (organizationId != null) {
+      ptvOrganizationId = idController.translateOrganizationId(organizationId, PtvConsts.IDENTIFIFER_NAME);
+      if (ptvOrganizationId == null) {
+        logger.severe(String.format("Failed to translate organizationId %s into PTV id", organizationId.toString()));
+        return Collections.emptyList();
+      }
+    }
+    
     ApiResponse<List<fi.otavanopisto.restfulptv.client.model.Service>> servicesResponse = ptvApi.getServicesApi()
-      .listServices(firstResult, maxResults);
+      .listServices(ptvOrganizationId != null ? ptvOrganizationId.getId() : null, null, null);
+    
     if (!servicesResponse.isOk()) {
       logger.severe(String.format("Failed to list services [%d] %s", servicesResponse.getStatus(), servicesResponse.getMessage()));
       return Collections.emptyList();

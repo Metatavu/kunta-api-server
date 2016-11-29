@@ -83,7 +83,7 @@ public class PtvServiceIdUpdater extends IdUpdater {
   }
 
   private void discoverIds() {
-    ApiResponse<List<Service>> servicesResponse = ptvApi.getServicesApi().listServices(offset, BATCH_SIZE);
+    ApiResponse<List<Service>> servicesResponse = ptvApi.getServicesApi().listServices(null, offset, BATCH_SIZE);
     if (!servicesResponse.isOk()) {
       logger.severe(String.format("Service list reported [%d] %s", servicesResponse.getStatus(), servicesResponse.getMessage()));
     } else {
