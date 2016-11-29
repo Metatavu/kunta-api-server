@@ -1,5 +1,8 @@
 package fi.otavanopisto.kuntaapi.server.integrations.management;
 
+import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
@@ -12,12 +15,15 @@ import org.apache.commons.lang3.StringUtils;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.BannerId;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
+import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
 import fi.otavanopisto.kuntaapi.server.rest.model.Banner;
 import fi.otavanopisto.kuntaapi.server.rest.model.LocalizedValue;
+import fi.otavanopisto.kuntaapi.server.rest.model.NewsArticle;
+import fi.otavanopisto.mwp.client.model.Post;
 
 @ApplicationScoped
 public class ManagementTranslator {
@@ -102,6 +108,19 @@ public class ManagementTranslator {
     return banner;
   }
   
+  public  NewsArticle translateNewsArticle(NewsArticleId kuntaApiNewsArticleId, Post post) {
+    NewsArticle newsArticle = new NewsArticle();
+    
+    newsArticle.setAbstract(post.getExcerpt().getRendered());
+    newsArticle.setContents(post.getContent().getRendered());
+    newsArticle.setId(kuntaApiNewsArticleId.getId());
+    newsArticle.setPublished(toOffsetDateTime(post.getDate()));
+    newsArticle.setTitle(post.getTitle().getRendered());
+    newsArticle.setSlug(post.getSlug());
+    
+    return newsArticle;
+  }
+  
   private AttachmentId getImageAttachmentId(OrganizationId organizationId, Integer id) {
     AttachmentId managementId = new AttachmentId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(id));
     AttachmentId kuntaApiId = idController.translateAttachmentId(managementId, KuntaApiConsts.IDENTIFIER_NAME);
@@ -112,6 +131,14 @@ public class ManagementTranslator {
     }
     
     return kuntaApiId;
+  }
+  
+  private OffsetDateTime toOffsetDateTime(LocalDateTime date) {
+    if (date == null) {
+      return null;
+    }
+    
+    return date.atZone(ZoneId.systemDefault()).toOffsetDateTime();
   }
   
 }
