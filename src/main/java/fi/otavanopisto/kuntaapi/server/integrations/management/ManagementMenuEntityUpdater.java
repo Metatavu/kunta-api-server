@@ -24,7 +24,7 @@ import fi.otavanopisto.kuntaapi.server.cache.MenuItemCache;
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
-import fi.otavanopisto.kuntaapi.server.discover.OrganizationIdUpdateRequest;
+import fi.otavanopisto.kuntaapi.server.discover.MenuIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.IdPair;
 import fi.otavanopisto.kuntaapi.server.id.MenuId;
@@ -38,6 +38,7 @@ import fi.otavanopisto.kuntaapi.server.rest.model.Menu;
 import fi.otavanopisto.kuntaapi.server.rest.model.MenuItem;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 import fi.otavanopisto.kuntaapi.server.system.SystemUtils;
+import fi.otavanopisto.mwp.client.ApiResponse;
 import fi.otavanopisto.mwp.client.DefaultApi;
 import fi.otavanopisto.mwp.client.model.Menuitem;
 
@@ -77,7 +78,7 @@ public class ManagementMenuEntityUpdater extends EntityUpdater {
   private TimerService timerService;
 
   private boolean stopped;
-  private List<OrganizationId> queue;
+  private List<MenuIdUpdateRequest> queue;
 
   @PostConstruct
   public void init() {
@@ -107,20 +108,20 @@ public class ManagementMenuEntityUpdater extends EntityUpdater {
   }
   
   @Asynchronous
-  public void onOrganizationIdUpdateRequest(@Observes OrganizationIdUpdateRequest event) {
+  public void onMenuIdUpdateRequest(@Observes MenuIdUpdateRequest event) {
     if (!stopped) {
-      OrganizationId organizationId = event.getId();
+      OrganizationId organizationId = event.getOrganizationId();
       
       if (organizationSettingController.getSettingValue(organizationId, ManagementConsts.ORGANIZATION_SETTING_BASEURL) == null) {
         return;
       }
       
       if (event.isPriority()) {
-        queue.remove(organizationId);
-        queue.add(0, organizationId);
+        queue.remove(event);
+        queue.add(0, event);
       } else {
-        if (!queue.contains(organizationId)) {
-          queue.add(organizationId);
+        if (!queue.contains(event)) {
+          queue.add(event);
         }
       }
     }
@@ -130,43 +131,36 @@ public class ManagementMenuEntityUpdater extends EntityUpdater {
   public void timeout(Timer timer) {
     if (!stopped) {
       if (!queue.isEmpty()) {
-        updateManagementMenus(queue.remove(0));
+        MenuIdUpdateRequest updateRequest = queue.remove(0);
+        DefaultApi api = managementApi.getApi(updateRequest.getOrganizationId());
+        updateManagementMenu(api, updateRequest.getOrganizationId(), updateRequest.getId());
       }
 
       startTimer(SystemUtils.inTestMode() ? 1000 : TIMER_INTERVAL);
     }
   }
 
-  private void updateManagementMenus(OrganizationId organizationId) {
-    List<fi.otavanopisto.mwp.client.model.Menu> managementMenus = listManagementMenus(organizationId);
-    for (fi.otavanopisto.mwp.client.model.Menu managementMenu : managementMenus) {
-      Menu menu = updateManagementMenu(organizationId, managementMenu);
-      MenuId menuId = new MenuId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, menu.getId());
-      
-      List<Menuitem> managementMenuItems = listManagementMenuItems(organizationId, managementMenu);
-      for (Menuitem managementMenuItem : managementMenuItems) {
-        updateManagementMenuItem(organizationId, menuId, managementMenuItem);
-      }
+  private void updateManagementMenu(DefaultApi api, OrganizationId organizationId, MenuId managementMenuId) {
+    ApiResponse<fi.otavanopisto.mwp.client.model.Menu> response = api.kuntaApiMenusIdGet(managementMenuId.getId());
+    if (response.isOk()) {
+      updateManagementMenu(api, organizationId, response.getResponse());
+    } else {
+      logger.warning(String.format("Finding organization %s menu failed on [%d] %s", managementMenuId.getId(), response.getStatus(), response.getMessage()));
     }
   }
 
-  private List<fi.otavanopisto.mwp.client.model.Menu> listManagementMenus(OrganizationId organizationId) {
-    DefaultApi api = managementApi.getApi(organizationId);
+  private void updateManagementMenu(DefaultApi api, OrganizationId organizationId, fi.otavanopisto.mwp.client.model.Menu managementMenu) {
+    Menu menu = updateManagementMenu(organizationId, managementMenu);
+    MenuId menuId = new MenuId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, menu.getId());
     
-    fi.otavanopisto.mwp.client.ApiResponse<List<fi.otavanopisto.mwp.client.model.Menu>> response = api.kuntaApiMenusGet(null);
-    if (response.isOk()) {
-      return response.getResponse();
-    } else {
-      logger.warning(String.format("Listing organization %s menus failed on [%d] %s", organizationId.getId(), response.getStatus(), response.getMessage()));
+    List<Menuitem> managementMenuItems = listManagementMenuItems(api, managementMenu);
+    for (Menuitem managementMenuItem : managementMenuItems) {
+      updateManagementMenuItem(organizationId, menuId, managementMenuItem);
     }
-    
-    return Collections.emptyList();
   }
-  
-  private List<Menuitem> listManagementMenuItems(OrganizationId organizationId, fi.otavanopisto.mwp.client.model.Menu menu) {
+
+  private List<Menuitem> listManagementMenuItems(DefaultApi api, fi.otavanopisto.mwp.client.model.Menu menu) {
     List<Menuitem> result = new ArrayList<>();
-    
-    DefaultApi api = managementApi.getApi(organizationId);
     String menuId = String.valueOf(menu.getId());
     fi.otavanopisto.mwp.client.ApiResponse<List<Menuitem>> response = api.kuntaApiMenusMenuIdItemsGet(menuId);
     if (response.isOk()) {
