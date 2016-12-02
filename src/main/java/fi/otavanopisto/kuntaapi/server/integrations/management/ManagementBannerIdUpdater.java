@@ -27,8 +27,8 @@ import fi.otavanopisto.kuntaapi.server.id.BannerId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 import fi.otavanopisto.kuntaapi.server.system.SystemUtils;
-import fi.otavanopisto.mwp.client.DefaultApi;
-import fi.otavanopisto.mwp.client.model.Banner;
+import fi.metatavu.management.client.DefaultApi;
+import fi.metatavu.management.client.model.Banner;
 
 @ApplicationScoped
 @Singleton
@@ -126,7 +126,7 @@ public class ManagementBannerIdUpdater extends IdUpdater {
   }
 
   private List<Banner> listManagementBanners(DefaultApi api, OrganizationId organizationId) {
-    fi.otavanopisto.mwp.client.ApiResponse<List<Banner>> response = api.wpV2BannerGet(null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    fi.metatavu.management.client.ApiResponse<List<Banner>> response = api.wpV2BannerGet(null, null, null, null, null, null, null, null, null, null, null, null, null, null);
     if (response.isOk()) {
       return response.getResponse();
     } else {

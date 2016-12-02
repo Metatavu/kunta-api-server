@@ -19,7 +19,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
 import fi.otavanopisto.kuntaapi.server.rest.model.LocalizedValue;
-import fi.otavanopisto.mwp.client.ApiResponse;
+import fi.metatavu.management.client.ApiResponse;
 
 /**
  * Abstract base class for management providers
@@ -73,12 +73,12 @@ public abstract class AbstractManagementProvider {
     return NumberUtils.createInteger(managementAttachmentId.getId());
   }
 
-  protected fi.otavanopisto.mwp.client.model.Attachment findMedia(OrganizationId organizationId, Integer mediaId) {
+  protected fi.metatavu.management.client.model.Attachment findMedia(OrganizationId organizationId, Integer mediaId) {
     if (mediaId == null) {
       return null;
     }
     
-    ApiResponse<fi.otavanopisto.mwp.client.model.Attachment> response = managementApi.getApi(organizationId).wpV2MediaIdGet(String.valueOf(mediaId), null);
+    ApiResponse<fi.metatavu.management.client.model.Attachment> response = managementApi.getApi(organizationId).wpV2MediaIdGet(String.valueOf(mediaId), null);
     if (!response.isOk()) {
       logger.severe(String.format("Finding media failed on [%d] %s", response.getStatus(), response.getMessage()));
     } else {
@@ -88,7 +88,7 @@ public abstract class AbstractManagementProvider {
     return null;
   }
   
-  protected Attachment translateAttachment(OrganizationId organizationId, fi.otavanopisto.mwp.client.model.Attachment featuredMedia) {
+  protected Attachment translateAttachment(OrganizationId organizationId, fi.metatavu.management.client.model.Attachment featuredMedia) {
     return managementTranslator.translateAttachment(organizationId, featuredMedia);
   }
   

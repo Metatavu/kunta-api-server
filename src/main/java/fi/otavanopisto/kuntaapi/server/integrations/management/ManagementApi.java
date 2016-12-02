@@ -5,7 +5,7 @@ import javax.inject.Inject;
 
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
-import fi.otavanopisto.mwp.client.DefaultApi;
+import fi.metatavu.management.client.DefaultApi;
 
 /**
  * Api client for management service

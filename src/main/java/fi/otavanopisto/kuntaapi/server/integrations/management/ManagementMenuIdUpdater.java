@@ -27,8 +27,8 @@ import fi.otavanopisto.kuntaapi.server.id.MenuId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 import fi.otavanopisto.kuntaapi.server.system.SystemUtils;
-import fi.otavanopisto.mwp.client.DefaultApi;
-import fi.otavanopisto.mwp.client.model.Menu;
+import fi.metatavu.management.client.DefaultApi;
+import fi.metatavu.management.client.model.Menu;
 
 @ApplicationScoped
 @Singleton
@@ -126,7 +126,7 @@ public class ManagementMenuIdUpdater extends IdUpdater {
   }
 
   private List<Menu> listManagementMenus(DefaultApi api, OrganizationId organizationId) {
-    fi.otavanopisto.mwp.client.ApiResponse<List<Menu>> response = api.kuntaApiMenusGet(null);
+    fi.metatavu.management.client.ApiResponse<List<Menu>> response = api.kuntaApiMenusGet(null);
     if (response.isOk()) {
       return response.getResponse();
     } else {

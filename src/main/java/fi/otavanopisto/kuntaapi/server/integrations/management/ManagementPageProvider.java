@@ -22,7 +22,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.PageProvider;
 import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
 import fi.otavanopisto.kuntaapi.server.rest.model.LocalizedValue;
 import fi.otavanopisto.kuntaapi.server.rest.model.Page;
-import fi.otavanopisto.mwp.client.model.Attachment.MediaTypeEnum;
+import fi.metatavu.management.client.model.Attachment.MediaTypeEnum;
 
 /**
  * Page provider for management service
@@ -95,7 +95,7 @@ public class ManagementPageProvider extends AbstractManagementProvider implement
       return null;
     }
     
-    fi.otavanopisto.mwp.client.model.Attachment featuredMedia = findMedia(organizationId, mediaId);
+    fi.metatavu.management.client.model.Attachment featuredMedia = findMedia(organizationId, mediaId);
     if (featuredMedia.getMediaType() == MediaTypeEnum.IMAGE) {
       AttachmentData imageData = managementImageLoader.getImageData(featuredMedia.getSourceUrl());
       

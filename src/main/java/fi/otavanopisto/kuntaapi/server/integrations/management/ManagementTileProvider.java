@@ -20,8 +20,8 @@ import fi.otavanopisto.kuntaapi.server.integrations.TileProvider;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
 import fi.otavanopisto.kuntaapi.server.rest.model.Tile;
-import fi.otavanopisto.mwp.client.ApiResponse;
-import fi.otavanopisto.mwp.client.model.Attachment.MediaTypeEnum;
+import fi.metatavu.management.client.ApiResponse;
+import fi.metatavu.management.client.model.Attachment.MediaTypeEnum;
 
 /**
  * Tile provider for management wordpress
@@ -63,7 +63,7 @@ public class ManagementTileProvider extends AbstractManagementProvider implement
     String status = null;
     String filter = null;
 
-    ApiResponse<List<fi.otavanopisto.mwp.client.model.Tile>> response = managementApi.getApi(organizationId).wpV2TileGet(context, page, perPage, search, after,
+    ApiResponse<List<fi.metatavu.management.client.model.Tile>> response = managementApi.getApi(organizationId).wpV2TileGet(context, page, perPage, search, after,
         before, exclude, include, offset, order, orderby, slug, status, filter);
 
     if (!response.isOk()) {
@@ -77,7 +77,7 @@ public class ManagementTileProvider extends AbstractManagementProvider implement
 
   @Override
   public Tile findOrganizationTile(OrganizationId organizationId, TileId tileId) {
-    fi.otavanopisto.mwp.client.model.Tile managementTile = findTileByTileId(organizationId, tileId);
+    fi.metatavu.management.client.model.Tile managementTile = findTileByTileId(organizationId, tileId);
     if (managementTile != null) {
       return translateTile(organizationId, managementTile);
     }
@@ -87,11 +87,11 @@ public class ManagementTileProvider extends AbstractManagementProvider implement
 
   @Override
   public List<Attachment> listOrganizationTileImages(OrganizationId organizationId, TileId tileId) {
-    fi.otavanopisto.mwp.client.model.Tile managementTile = findTileByTileId(organizationId, tileId);
+    fi.metatavu.management.client.model.Tile managementTile = findTileByTileId(organizationId, tileId);
     if (managementTile != null) {
       Integer featuredMediaId = managementTile.getFeaturedMedia();
       if (featuredMediaId != null) {
-        fi.otavanopisto.mwp.client.model.Attachment featuredMedia = findMedia(organizationId, featuredMediaId);
+        fi.metatavu.management.client.model.Attachment featuredMedia = findMedia(organizationId, featuredMediaId);
         if ((featuredMedia != null) && (featuredMedia.getMediaType() == MediaTypeEnum.IMAGE)) {
           return Collections.singletonList(translateAttachment(organizationId, featuredMedia));
         }
@@ -103,7 +103,7 @@ public class ManagementTileProvider extends AbstractManagementProvider implement
 
   @Override
   public Attachment findTileImage(OrganizationId organizationId, TileId tileId, AttachmentId attachmentId) {
-    fi.otavanopisto.mwp.client.model.Tile tile = findTileByTileId(organizationId, tileId);
+    fi.metatavu.management.client.model.Tile tile = findTileByTileId(organizationId, tileId);
     if (tile != null) {
       Integer featuredMediaId = tile.getFeaturedMedia();
       if (featuredMediaId != null) {
@@ -112,7 +112,7 @@ public class ManagementTileProvider extends AbstractManagementProvider implement
           return null;
         }
         
-        fi.otavanopisto.mwp.client.model.Attachment attachment = findMedia(organizationId, featuredMediaId);
+        fi.metatavu.management.client.model.Attachment attachment = findMedia(organizationId, featuredMediaId);
         if (attachment != null) {
           return translateAttachment(organizationId, attachment);
         }
@@ -131,7 +131,7 @@ public class ManagementTileProvider extends AbstractManagementProvider implement
       return null;
     }
     
-    fi.otavanopisto.mwp.client.model.Attachment featuredMedia = findMedia(organizationId, mediaId);
+    fi.metatavu.management.client.model.Attachment featuredMedia = findMedia(organizationId, mediaId);
     if (featuredMedia.getMediaType() == MediaTypeEnum.IMAGE) {
       AttachmentData imageData = managementImageLoader.getImageData(featuredMedia.getSourceUrl());
       
@@ -146,14 +146,14 @@ public class ManagementTileProvider extends AbstractManagementProvider implement
     return null;
   }
 
-  private fi.otavanopisto.mwp.client.model.Tile findTileByTileId(OrganizationId organizationId, TileId tileId) {
+  private fi.metatavu.management.client.model.Tile findTileByTileId(OrganizationId organizationId, TileId tileId) {
     TileId kuntaApiId = idController.translateTileId(tileId, ManagementConsts.IDENTIFIER_NAME);
     if (kuntaApiId == null) {
       logger.severe(String.format("Failed to convert %s into management tile id", tileId.toString()));
       return null;
     }
     
-    ApiResponse<fi.otavanopisto.mwp.client.model.Tile> response = managementApi.getApi(organizationId).wpV2TileIdGet(kuntaApiId.getId(), null);
+    ApiResponse<fi.metatavu.management.client.model.Tile> response = managementApi.getApi(organizationId).wpV2TileIdGet(kuntaApiId.getId(), null);
     if (!response.isOk()) {
       logger.severe(String.format("Finding tile failed on [%d] %s", response.getStatus(), response.getMessage()));
     } else {
@@ -163,17 +163,17 @@ public class ManagementTileProvider extends AbstractManagementProvider implement
     return null;
   }
 
-  private List<Tile> translateTiles(OrganizationId organizationId, List<fi.otavanopisto.mwp.client.model.Tile> managementTiles) {
+  private List<Tile> translateTiles(OrganizationId organizationId, List<fi.metatavu.management.client.model.Tile> managementTiles) {
     List<Tile> result = new ArrayList<>();
     
-    for (fi.otavanopisto.mwp.client.model.Tile managementTile : managementTiles) {
+    for (fi.metatavu.management.client.model.Tile managementTile : managementTiles) {
       result.add(translateTile(organizationId, managementTile));
     }
     
     return result;
   }
 
-  private Tile translateTile(OrganizationId organizationId, fi.otavanopisto.mwp.client.model.Tile managementTile) {
+  private Tile translateTile(OrganizationId organizationId, fi.metatavu.management.client.model.Tile managementTile) {
     Tile tile = new Tile();
     
     TileId managementTileId = new TileId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementTile.getId()));
