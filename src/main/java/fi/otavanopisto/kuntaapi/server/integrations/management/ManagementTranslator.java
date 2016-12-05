@@ -39,7 +39,7 @@ public class ManagementTranslator {
   @Inject
   private IdController idController;
 
-  public Attachment translateAttachment(OrganizationId organizationId, fi.metatavu.management.client.model. Attachment featuredMedia) {
+  public Attachment translateAttachment(OrganizationId organizationId, fi.metatavu.management.client.model.Attachment featuredMedia) {
     Integer size = managementImageLoader.getImageSize(featuredMedia.getSourceUrl());
     AttachmentId id = getImageAttachmentId(organizationId, featuredMedia.getId());
     Attachment attachment = new Attachment();
@@ -131,7 +131,7 @@ public class ManagementTranslator {
     result.setPublished(toOffsetDateTime(managementAnnouncement.getDate()));
     result.setTitle(managementAnnouncement.getTitle().getRendered());
     
-    return null;
+    return result;
   }
   
   private AttachmentId getImageAttachmentId(OrganizationId organizationId, Integer id) {
