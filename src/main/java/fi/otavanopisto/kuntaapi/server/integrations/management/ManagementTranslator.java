@@ -28,6 +28,7 @@ import fi.metatavu.management.client.model.Announcement;
 import fi.metatavu.management.client.model.Post;
 
 @ApplicationScoped
+@SuppressWarnings ("squid:S3306")
 public class ManagementTranslator {
   
   @Inject

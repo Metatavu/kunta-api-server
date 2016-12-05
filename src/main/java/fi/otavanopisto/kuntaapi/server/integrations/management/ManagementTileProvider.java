@@ -29,6 +29,7 @@ import fi.metatavu.management.client.model.Attachment.MediaTypeEnum;
  * @author Antti Leppä
  */
 @RequestScoped
+@SuppressWarnings ("squid:S3306")
 public class ManagementTileProvider extends AbstractManagementProvider implements TileProvider {
   
   @Inject
@@ -91,17 +92,23 @@ public class ManagementTileProvider extends AbstractManagementProvider implement
     if (managementTile != null) {
       Integer featuredMediaId = managementTile.getFeaturedMedia();
       if (featuredMediaId != null) {
-        fi.metatavu.management.client.model.Attachment featuredMedia = findMedia(organizationId, featuredMediaId);
-        if ((featuredMedia != null) && (featuredMedia.getMediaType() == MediaTypeEnum.IMAGE)) {
-          Attachment attachment = translateAttachment(organizationId, featuredMedia);
-          if (attachment != null) {
-            return Collections.singletonList(attachment);
-          }
+        Attachment attachment = findManagementAttachment(organizationId, featuredMediaId);
+        if (attachment != null) {
+          return Collections.singletonList(attachment);  
         }
       }
     }
   
     return Collections.emptyList();
+  }
+
+  public Attachment findManagementAttachment(OrganizationId organizationId, Integer featuredMediaId) {
+    fi.metatavu.management.client.model.Attachment featuredMedia = findMedia(organizationId, featuredMediaId);
+    if ((featuredMedia != null) && (featuredMedia.getMediaType() == MediaTypeEnum.IMAGE)) {
+      return translateAttachment(organizationId, featuredMedia);
+    }
+    
+    return null;
   }
 
   @Override
