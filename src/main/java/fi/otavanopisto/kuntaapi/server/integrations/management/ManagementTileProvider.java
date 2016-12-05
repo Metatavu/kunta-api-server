@@ -93,7 +93,10 @@ public class ManagementTileProvider extends AbstractManagementProvider implement
       if (featuredMediaId != null) {
         fi.metatavu.management.client.model.Attachment featuredMedia = findMedia(organizationId, featuredMediaId);
         if ((featuredMedia != null) && (featuredMedia.getMediaType() == MediaTypeEnum.IMAGE)) {
-          return Collections.singletonList(translateAttachment(organizationId, featuredMedia));
+          Attachment attachment = translateAttachment(organizationId, featuredMedia);
+          if (attachment != null) {
+            return Collections.singletonList(attachment);
+          }
         }
       }
     }
