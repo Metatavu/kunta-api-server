@@ -16,8 +16,8 @@ import org.apache.http.client.utils.URIBuilder;
 import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpCache;
 import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpClient;
 import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpClient.Response;
-import fi.otavanopisto.mwp.client.ApiResponse;
-import fi.otavanopisto.mwp.client.ResultType;
+import fi.metatavu.management.client.ApiResponse;
+import fi.metatavu.management.client.ResultType;
 
 /**
  * API Client for management service
@@ -25,7 +25,7 @@ import fi.otavanopisto.mwp.client.ResultType;
  * @author Antti Leppä
  */
 @Dependent
-public class ManagementClient implements fi.otavanopisto.mwp.client.ApiClient {
+public class ManagementClient implements fi.metatavu.management.client.ApiClient {
 
   private static final String INVALID_URI_SYNTAX = "Invalid uri syntax";
 

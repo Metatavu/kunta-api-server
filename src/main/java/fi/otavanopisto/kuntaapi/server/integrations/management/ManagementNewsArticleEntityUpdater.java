@@ -38,10 +38,10 @@ import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.rest.model.NewsArticle;
 import fi.otavanopisto.kuntaapi.server.system.SystemUtils;
-import fi.otavanopisto.mwp.client.ApiResponse;
-import fi.otavanopisto.mwp.client.DefaultApi;
-import fi.otavanopisto.mwp.client.model.Attachment;
-import fi.otavanopisto.mwp.client.model.Post;
+import fi.metatavu.management.client.ApiResponse;
+import fi.metatavu.management.client.DefaultApi;
+import fi.metatavu.management.client.model.Attachment;
+import fi.metatavu.management.client.model.Post;
 
 @ApplicationScoped
 @Singleton
@@ -188,7 +188,7 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
   }
   
   private void updateFeaturedMedia(OrganizationId organizationId, NewsArticleId newsArticleId, DefaultApi api, Integer featuredMedia) {
-    ApiResponse<fi.otavanopisto.mwp.client.model.Attachment> response = api.wpV2MediaIdGet(String.valueOf(featuredMedia), null);
+    ApiResponse<fi.metatavu.management.client.model.Attachment> response = api.wpV2MediaIdGet(String.valueOf(featuredMedia), null);
     if (!response.isOk()) {
       logger.severe(String.format("Finding media failed on [%d] %s", response.getStatus(), response.getMessage()));
     } else {

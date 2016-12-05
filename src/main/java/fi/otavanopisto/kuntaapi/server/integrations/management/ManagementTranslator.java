@@ -12,6 +12,7 @@ import javax.inject.Inject;
 
 import org.apache.commons.lang3.StringUtils;
 
+import fi.otavanopisto.kuntaapi.server.id.AnnouncementId;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.BannerId;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
@@ -23,7 +24,8 @@ import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
 import fi.otavanopisto.kuntaapi.server.rest.model.Banner;
 import fi.otavanopisto.kuntaapi.server.rest.model.LocalizedValue;
 import fi.otavanopisto.kuntaapi.server.rest.model.NewsArticle;
-import fi.otavanopisto.mwp.client.model.Post;
+import fi.metatavu.management.client.model.Announcement;
+import fi.metatavu.management.client.model.Post;
 
 @ApplicationScoped
 public class ManagementTranslator {
@@ -37,7 +39,7 @@ public class ManagementTranslator {
   @Inject
   private IdController idController;
 
-  public Attachment translateAttachment(OrganizationId organizationId, fi.otavanopisto.mwp.client.model.Attachment featuredMedia) {
+  public Attachment translateAttachment(OrganizationId organizationId, fi.metatavu.management.client.model.Attachment featuredMedia) {
     Integer size = managementImageLoader.getImageSize(featuredMedia.getSourceUrl());
     AttachmentId id = getImageAttachmentId(organizationId, featuredMedia.getId());
     Attachment attachment = new Attachment();
@@ -62,7 +64,7 @@ public class ManagementTranslator {
     return result;
   }
   
-  public Attachment translateAttachment(AttachmentId kuntaApiAttachmentId, fi.otavanopisto.mwp.client.model.Attachment featuredMedia) {
+  public Attachment translateAttachment(AttachmentId kuntaApiAttachmentId, fi.metatavu.management.client.model.Attachment featuredMedia) {
     Integer size = managementImageLoader.getImageSize(featuredMedia.getSourceUrl());
     Attachment attachment = new Attachment();
     attachment.setContentType(featuredMedia.getMimeType());
@@ -71,7 +73,7 @@ public class ManagementTranslator {
     return attachment;
   }
   
-  public fi.otavanopisto.kuntaapi.server.rest.model.Page translatePage(OrganizationId organizationId, PageId kuntaApiPageId, fi.otavanopisto.mwp.client.model.Page managementPage) {
+  public fi.otavanopisto.kuntaapi.server.rest.model.Page translatePage(OrganizationId organizationId, PageId kuntaApiPageId, fi.metatavu.management.client.model.Page managementPage) {
     fi.otavanopisto.kuntaapi.server.rest.model.Page page = new fi.otavanopisto.kuntaapi.server.rest.model.Page();
     PageId kuntaApiParentPageId = null;
     
@@ -97,7 +99,7 @@ public class ManagementTranslator {
     return page;
   }
 
-  public Banner translateBanner(BannerId kuntaApiBannerId, fi.otavanopisto.mwp.client.model.Banner managementBanner) {
+  public Banner translateBanner(BannerId kuntaApiBannerId, fi.metatavu.management.client.model.Banner managementBanner) {
     Banner banner = new Banner();
     
     banner.setContents(managementBanner.getContent().getRendered());
@@ -108,7 +110,7 @@ public class ManagementTranslator {
     return banner;
   }
   
-  public  NewsArticle translateNewsArticle(NewsArticleId kuntaApiNewsArticleId, Post post) {
+  public NewsArticle translateNewsArticle(NewsArticleId kuntaApiNewsArticleId, Post post) {
     NewsArticle newsArticle = new NewsArticle();
     
     newsArticle.setAbstract(post.getExcerpt().getRendered());
@@ -119,6 +121,17 @@ public class ManagementTranslator {
     newsArticle.setSlug(post.getSlug());
     
     return newsArticle;
+  }
+
+  public fi.otavanopisto.kuntaapi.server.rest.model.Announcement translateAnnouncement(AnnouncementId kuntaApiAnnouncementId, Announcement managementAnnouncement) {
+    fi.otavanopisto.kuntaapi.server.rest.model.Announcement result = new fi.otavanopisto.kuntaapi.server.rest.model.Announcement();
+      
+    result.setContents(managementAnnouncement.getContent().getRendered());
+    result.setId(kuntaApiAnnouncementId.getId());
+    result.setPublished(toOffsetDateTime(managementAnnouncement.getDate()));
+    result.setTitle(managementAnnouncement.getTitle().getRendered());
+    
+    return result;
   }
   
   private AttachmentId getImageAttachmentId(OrganizationId organizationId, Integer id) {

@@ -16,7 +16,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.BannerProvider;
 import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
 import fi.otavanopisto.kuntaapi.server.rest.model.Banner;
-import fi.otavanopisto.mwp.client.model.Attachment.MediaTypeEnum;
+import fi.metatavu.management.client.model.Attachment.MediaTypeEnum;
 
 /**
  * Banner provider for management wordpress
@@ -84,7 +84,7 @@ public class ManagementBannerProvider extends AbstractManagementProvider impleme
       return null;
     }
     
-    fi.otavanopisto.mwp.client.model.Attachment featuredMedia = findMedia(organizationId, mediaId);
+    fi.metatavu.management.client.model.Attachment featuredMedia = findMedia(organizationId, mediaId);
     if (featuredMedia.getMediaType() == MediaTypeEnum.IMAGE) {
       AttachmentData imageData = managementImageLoader.getImageData(featuredMedia.getSourceUrl());
       if (size != null) {

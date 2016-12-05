@@ -38,10 +38,10 @@ import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 import fi.otavanopisto.kuntaapi.server.system.SystemUtils;
-import fi.otavanopisto.mwp.client.ApiResponse;
-import fi.otavanopisto.mwp.client.DefaultApi;
-import fi.otavanopisto.mwp.client.model.Attachment;
-import fi.otavanopisto.mwp.client.model.Banner;
+import fi.metatavu.management.client.ApiResponse;
+import fi.metatavu.management.client.DefaultApi;
+import fi.metatavu.management.client.model.Attachment;
+import fi.metatavu.management.client.model.Banner;
 
 @ApplicationScoped
 @Singleton
@@ -160,7 +160,7 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
   }
 
   private void updateManagementBanner(DefaultApi api, OrganizationId organizationId, BannerId managementBannerId) {
-    fi.otavanopisto.mwp.client.ApiResponse<Banner> response = api.wpV2BannerIdGet(managementBannerId.getId(), null);
+    fi.metatavu.management.client.ApiResponse<Banner> response = api.wpV2BannerIdGet(managementBannerId.getId(), null);
     if (response.isOk()) {
       updateManagementBanner(api, organizationId, response.getResponse());
     } else {
@@ -194,7 +194,7 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
   }
   
   private void updateFeaturedMedia(OrganizationId organizationId, DefaultApi api, BannerId bannerId, Integer featuredMedia) {
-    ApiResponse<fi.otavanopisto.mwp.client.model.Attachment> response = api.wpV2MediaIdGet(String.valueOf(featuredMedia), null);
+    ApiResponse<fi.metatavu.management.client.model.Attachment> response = api.wpV2MediaIdGet(String.valueOf(featuredMedia), null);
     if (!response.isOk()) {
       logger.severe(String.format("Finding media failed on [%d] %s", response.getStatus(), response.getMessage()));
     } else {
