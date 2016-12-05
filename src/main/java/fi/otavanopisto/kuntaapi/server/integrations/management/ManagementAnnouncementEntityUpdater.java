@@ -145,13 +145,13 @@ public class ManagementAnnouncementEntityUpdater extends EntityUpdater {
     
     ApiResponse<Announcement> response = api.wpV2AnnouncementIdGet(announcementId.getId(), null);
     if (response.isOk()) {
-      updateManagementAnnouncement(organizationId, api, response.getResponse());
+      updateManagementAnnouncement(organizationId, response.getResponse());
     } else {
       logger.warning(String.format("Find organization %s announcement %s failed on [%d] %s", organizationId.getId(), announcementId.toString(), response.getStatus(), response.getMessage()));
     }
   }
   
-  private void updateManagementAnnouncement(OrganizationId organizationId, DefaultApi api, Announcement managementAnnouncement) {
+  private void updateManagementAnnouncement(OrganizationId organizationId, Announcement managementAnnouncement) {
     AnnouncementId announcementId = new AnnouncementId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementAnnouncement.getId()));
 
     Identifier identifier = identifierController.findIdentifierById(announcementId);
