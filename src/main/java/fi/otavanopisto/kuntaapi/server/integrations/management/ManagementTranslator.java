@@ -28,6 +28,7 @@ import fi.metatavu.management.client.model.Announcement;
 import fi.metatavu.management.client.model.Post;
 
 @ApplicationScoped
+@SuppressWarnings ("squid:S3306")
 public class ManagementTranslator {
   
   @Inject
@@ -42,6 +43,11 @@ public class ManagementTranslator {
   public Attachment translateAttachment(OrganizationId organizationId, fi.metatavu.management.client.model.Attachment featuredMedia) {
     Integer size = managementImageLoader.getImageSize(featuredMedia.getSourceUrl());
     AttachmentId id = getImageAttachmentId(organizationId, featuredMedia.getId());
+    if (id == null) {
+      logger.severe(String.format("Could not translate featured media %d into Kunta API id", featuredMedia.getId()));
+      return null;
+    }
+    
     Attachment attachment = new Attachment();
     attachment.setContentType(featuredMedia.getMimeType());
     attachment.setId(id.getId());
