@@ -3,11 +3,14 @@ package fi.otavanopisto.kuntaapi.server.integrations;
 import java.time.OffsetDateTime;
 import java.util.List;
 
+import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
+import fi.otavanopisto.kuntaapi.server.id.EventId;
+import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
 import fi.otavanopisto.kuntaapi.server.rest.model.Event;
 
 /**
- * Interafce that describes a single event provider
+ * Interface that describes a single event provider
  * 
  * @author Antti Leppä
  */
@@ -21,15 +24,10 @@ public interface EventProvider {
    * @param startAfter return only events starting after the date
    * @param endBefore return only events ending before the date
    * @param endAfter return only events ending after the date
-   * @param order order
-   * @param orderDirection ordering direction
-   * @param firstResult first index of results
-   * @param maxResults maximum number of results
    * @return events organization events
    */
   public List<Event> listOrganizationEvents(OrganizationId organizationId, OffsetDateTime startBefore, OffsetDateTime startAfter, 
-      OffsetDateTime endBefore, OffsetDateTime endAfter, EventOrder order, EventOrderDirection orderDirection, 
-      Integer firstResult, Integer maxResults);
+      OffsetDateTime endBefore, OffsetDateTime endAfter);
   
   /**
    * Finds a single organization event

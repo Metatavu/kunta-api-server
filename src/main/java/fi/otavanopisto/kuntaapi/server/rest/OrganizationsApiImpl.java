@@ -1,260 +1,293 @@
 package fi.otavanopisto.kuntaapi.server.rest;
 
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import javax.ejb.Stateful;
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.Request;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
 
 import org.apache.commons.lang3.EnumUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.math.NumberUtils;
 
+import fi.otavanopisto.kuntaapi.server.controllers.AnnouncementController;
+import fi.otavanopisto.kuntaapi.server.controllers.BannerController;
+import fi.otavanopisto.kuntaapi.server.controllers.EventController;
+import fi.otavanopisto.kuntaapi.server.controllers.FileController;
+import fi.otavanopisto.kuntaapi.server.controllers.HttpCacheController;
+import fi.otavanopisto.kuntaapi.server.controllers.JobController;
+import fi.otavanopisto.kuntaapi.server.controllers.MenuController;
+import fi.otavanopisto.kuntaapi.server.controllers.NewsController;
+import fi.otavanopisto.kuntaapi.server.controllers.OrganizationController;
+import fi.otavanopisto.kuntaapi.server.controllers.PageController;
+import fi.otavanopisto.kuntaapi.server.controllers.TileController;
+import fi.otavanopisto.kuntaapi.server.id.AnnouncementId;
+import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
+import fi.otavanopisto.kuntaapi.server.id.BannerId;
+import fi.otavanopisto.kuntaapi.server.id.EventId;
+import fi.otavanopisto.kuntaapi.server.id.FileId;
+import fi.otavanopisto.kuntaapi.server.id.JobId;
+import fi.otavanopisto.kuntaapi.server.id.MenuId;
+import fi.otavanopisto.kuntaapi.server.id.MenuItemId;
+import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
+import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.id.OrganizationServiceId;
+import fi.otavanopisto.kuntaapi.server.id.PageId;
+import fi.otavanopisto.kuntaapi.server.id.TileId;
+import fi.otavanopisto.kuntaapi.server.integrations.AnnouncementProvider;
+import fi.otavanopisto.kuntaapi.server.integrations.AnnouncementProvider.AnnouncementOrder;
+import fi.otavanopisto.kuntaapi.server.integrations.AnnouncementProvider.AnnouncementOrderDirection;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
-import fi.otavanopisto.kuntaapi.server.integrations.AttachmentId;
-import fi.otavanopisto.kuntaapi.server.integrations.BannerId;
-import fi.otavanopisto.kuntaapi.server.integrations.BannerProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.EventId;
 import fi.otavanopisto.kuntaapi.server.integrations.EventProvider;
+import fi.otavanopisto.kuntaapi.server.integrations.JobProvider;
+import fi.otavanopisto.kuntaapi.server.integrations.JobProvider.JobOrder;
+import fi.otavanopisto.kuntaapi.server.integrations.JobProvider.JobOrderDirection;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
-import fi.otavanopisto.kuntaapi.server.integrations.NewsArticleId;
-import fi.otavanopisto.kuntaapi.server.integrations.NewsProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.OrganizationId;
-import fi.otavanopisto.kuntaapi.server.integrations.OrganizationProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.ServiceChannelProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.ServiceClassId;
-import fi.otavanopisto.kuntaapi.server.integrations.ServiceClassProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.ServiceId;
-import fi.otavanopisto.kuntaapi.server.integrations.ServiceProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.TileId;
-import fi.otavanopisto.kuntaapi.server.integrations.TileProvider;
+import fi.otavanopisto.kuntaapi.server.integrations.OrganizationServiceProvider;
+import fi.otavanopisto.kuntaapi.server.rest.model.Announcement;
 import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
 import fi.otavanopisto.kuntaapi.server.rest.model.Banner;
 import fi.otavanopisto.kuntaapi.server.rest.model.Event;
+import fi.otavanopisto.kuntaapi.server.rest.model.FileDef;
+import fi.otavanopisto.kuntaapi.server.rest.model.Job;
+import fi.otavanopisto.kuntaapi.server.rest.model.LocalizedValue;
+import fi.otavanopisto.kuntaapi.server.rest.model.Menu;
+import fi.otavanopisto.kuntaapi.server.rest.model.MenuItem;
 import fi.otavanopisto.kuntaapi.server.rest.model.NewsArticle;
 import fi.otavanopisto.kuntaapi.server.rest.model.Organization;
-import fi.otavanopisto.kuntaapi.server.rest.model.Service;
-import fi.otavanopisto.kuntaapi.server.rest.model.ServiceClass;
-import fi.otavanopisto.kuntaapi.server.rest.model.ServiceElectronicChannel;
+import fi.otavanopisto.kuntaapi.server.rest.model.OrganizationService;
+import fi.otavanopisto.kuntaapi.server.rest.model.OrganizationSetting;
+import fi.otavanopisto.kuntaapi.server.rest.model.Page;
 import fi.otavanopisto.kuntaapi.server.rest.model.Tile;
+import fi.otavanopisto.kuntaapi.server.system.OrganizationSettingProvider;
 
 /**
  * REST Service implementation
  * 
  * @author Antti Leppä
+ * @author Heikki Kurhinen
  */
 @RequestScoped
 @Stateful
 @SuppressWarnings ("squid:S3306")
 public class OrganizationsApiImpl extends OrganizationsApi {
   
+  private static final String INVALID_SETTING_ID = "Invalid setting id";
+  private static final String MAX_RESULTS_MUST_BY_A_POSITIVE_INTEGER = "maxResults must by a positive integer";
+  private static final String FIRST_RESULT_MUST_BY_A_POSITIVE_INTEGER = "firstResult must by a positive integer";
+  private static final String NOT_FOUND = "Not Found";
   private static final String NOT_IMPLEMENTED = "Not implemented";
-
   private static final String INTERNAL_SERVER_ERROR = "Internal Server Error";
-
-  private static final String FAILED_TO_STREAM_IMAGE_TO_CLIENT = "Failed to stream image to client";
-
-  @Inject
-  private Logger logger;
   
   @Inject
-  private Instance<OrganizationProvider> organizationProviders;
+  private OrganizationSettingProvider organizationSettingProvider;
   
   @Inject
-  private Instance<ServiceProvider> serviceProviders;
+  private OrganizationController organizationController;
+  
+  @Inject
+  private PageController pageController;
 
   @Inject
-  private Instance<ServiceChannelProvider> serviceChannelProviders;
+  private FileController fileController;
 
   @Inject
-  private Instance<ServiceClassProvider> serviceClassProviders;
+  private MenuController menuController;
+  
+  @Inject
+  private BannerController bannerController;
+  
+  @Inject
+  private AnnouncementController announcementController;
 
   @Inject
-  private Instance<EventProvider> eventProviders;
+  private TileController tileController;
 
   @Inject
-  private Instance<NewsProvider> newsProviders;
-
+  private NewsController newsController;
+  
   @Inject
-  private Instance<BannerProvider> bannerProviders;
-
+  private EventController eventController;
+  
   @Inject
-  private Instance<TileProvider> tileProviders;
-
+  private JobController jobController;
+  
+  @Inject
+  private HttpCacheController httpCacheController;
+  
+  @Inject
+  private Instance<OrganizationServiceProvider> organizationServiceProviders;
+  
   @Override
-  public Response listOrganizations(String businessName, String businessCode) {
-    List<Organization> organizations = new ArrayList<>();
-    for (OrganizationProvider organizationProvider : getOrganizationProviders()) {
-      organizations.addAll(organizationProvider.listOrganizations(businessName, businessCode));
+  public Response listOrganizations(String businessName, String businessCode, String search, Long firstResult, Long maxResults, @Context Request request) {
+    List<Organization> organizations;
+    
+    if (search != null) {
+      organizations = organizationController.searchOrganizations(search, businessName, businessCode, firstResult, maxResults);
+    } else {
+      organizations = organizationController.listOrganizations(businessName, businessCode, firstResult, maxResults);
     }
     
-    return Response.ok(organizations)
-      .build();
+    List<String> ids = httpCacheController.getEntityIds(organizations);
+    Response notModified = httpCacheController.getNotModified(request, ids);
+    if (notModified != null) {
+      return notModified;
+    }
+
+    return httpCacheController.sendModified(organizations, ids);
   }
   
   @Override
-  public Response createService(String organizationId, Service body) {
+  public Response findOrganization(String organizationIdParam, @Context Request request) {
+  	  OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    	if (organizationId == null) {
+    	  return createNotFound(NOT_FOUND);
+    	}
+    	
+    	Response notModified = httpCacheController.getNotModified(request, organizationId);
+    	if (notModified != null) {
+    	  return notModified;
+    	}
+    	
+    	Organization organization = organizationController.findOrganization(organizationId);
+    	if (organization != null) {
+      return httpCacheController.sendModified(organization, organization.getId());
+    }
+      
+    return createNotFound(NOT_FOUND);
+  }
+
+  @Override
+  public Response createOrganizationService(String organizationId, OrganizationService body, @Context Request request) {
     return createNotImplemented(NOT_IMPLEMENTED);
   }
   
   @Override
-  public Response findService(String organizationIdParam, String serviceIdParam) {
+  public Response findOrganizationService(String organizationIdParam, String organizationServiceIdParam, @Context Request request) {
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
-    ServiceId serviceId = toServiceId(serviceIdParam);
+    OrganizationServiceId organizationServiceId = toOrganizationServiceId(organizationId, organizationServiceIdParam);
     
-    for (ServiceProvider serviceProvider : getServiceProviders()) {
-      Service service = serviceProvider.findOrganizationService(organizationId, serviceId);
-      if (service != null) {
-        return Response.ok(service)
+    for (OrganizationServiceProvider organizationServiceProvider : getOrganizationServiceProviders()) {
+      OrganizationService organizationService = organizationServiceProvider.findOrganizationService(organizationId, organizationServiceId);
+      if (organizationService != null) {
+        return Response.ok(organizationService)
           .build();
       }
     }
     
-    return Response
-        .status(Status.NOT_FOUND)
-        .build();
-  }
-
-  @Override
-  public Response listServices(String organizationIdParam, String serviceClassIdParam) {
-    if (StringUtils.isBlank(organizationIdParam)) {
-      return Response.status(Status.BAD_REQUEST)
-        .entity("Organization parameter is mandatory")
-        .build();
-    }
-    
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
-    ServiceClassId serviceClassId = StringUtils.isBlank(serviceClassIdParam) ? null : new ServiceClassId(KuntaApiConsts.IDENTIFIER_NAME, serviceClassIdParam);
-    
-    List<Service> services = new ArrayList<>();
-    for (ServiceProvider serviceProvider : getServiceProviders()) {
-      services.addAll(serviceProvider.listOrganizationServices(organizationId, serviceClassId));
-    }
-    
-    return Response.ok(services)
-      .build();
-  }
-
-  @Override
-  public Response updateService(String organizationId, String serviceId) {
-    return createNotImplemented(NOT_IMPLEMENTED);
-  }
-
-  @Override
-  public Response deleteService(String organizationId, String serviceId) {
-    return createNotImplemented(NOT_IMPLEMENTED);
+    return createNotFound(NOT_FOUND);
   }
   
   @Override
-  public Response listServiceElectornicChannels(String organizationIdParam, String serviceIdParam) {
+  public Response listOrganizationOrganizationServices(String organizationIdParam, Long firstResult, Long maxResults, @Context Request request) {
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
-    ServiceId serviceId = toServiceId(serviceIdParam);
-    
-    List<ServiceElectronicChannel> result = new ArrayList<>();
-    for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
-      result.addAll(serviceChannelProvider.listElectronicChannels(organizationId, serviceId));
+    if (organizationId == null) {
+      return createBadRequest("Organization parameter is mandatory");
     }
     
-    return Response.ok(result)
+    Response validationResponse = validateListLimitParams(firstResult, maxResults);
+    if (validationResponse != null) {
+      return validationResponse;
+    }
+    
+    List<OrganizationService> result = new ArrayList<>();
+    
+    for (OrganizationServiceProvider organizationServiceProvider : getOrganizationServiceProviders()) {
+      result.addAll(organizationServiceProvider.listOrganizationServices(organizationId));
+    }
+    
+    int resultCount = result.size();
+    int firstIndex = firstResult == null ? 0 : Math.min(firstResult.intValue(), resultCount);
+    int toIndex = maxResults == null ? resultCount : Math.min(firstIndex + maxResults.intValue(), resultCount);
+    
+    return Response.ok(result.subList(firstIndex, toIndex))
       .build();
   }
   
   @Override
-  public Response listServiceClasses(String organizationIdParam) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
-
-    List<ServiceClass> result = new ArrayList<>();
-    for (ServiceClassProvider serviceClassProvider : getServiceClassProviders()) {
-      result.addAll(serviceClassProvider.listOrganizationServiceClasses(organizationId));
-    }
-    
-    return Response.ok(result)
-      .build();
+  public Response updateOrganizationService(String organizationId, String organizationServiceId,
+      OrganizationService body, @Context Request request) {
+    return createNotImplemented(NOT_IMPLEMENTED);
   }
 
   @Override
-  public Response findOrganizationEvent(String organizationIdParam, String eventIdParam) {
+  public Response findOrganizationEvent(String organizationIdParam, String eventIdParam, @Context Request request) {
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
-    EventId eventId = toEventId(eventIdParam);
+    EventId eventId = toEventId(organizationId, eventIdParam);
     
-    for (EventProvider eventProvider : getEventProviders()) {
-      Event event = eventProvider.findOrganizationEvent(organizationId, eventId);
-      if (event != null) {
-        return Response.ok(event)
-          .build();
-      }
+    Response notModified = httpCacheController.getNotModified(request, eventId);
+    if (notModified != null) {
+      return notModified;
     }
     
-    return Response.status(Status.NOT_FOUND)
-      .build();
+    Event event = eventController.findEvent(organizationId, eventId);
+    if (event != null) {
+      return httpCacheController.sendModified(event, event.getId());
+    }    
+    
+    return createNotFound(NOT_FOUND);
   }
 
   @Override
-  public Response findOrganizationEventImage(String organizationIdParam, String eventIdParam, String imageIdParam) {
+  public Response findOrganizationEventImage(String organizationIdParam, String eventIdParam, String imageIdParam, @Context Request request) {
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
-    EventId eventId = toEventId(eventIdParam);
-    AttachmentId attachmentId = new AttachmentId(KuntaApiConsts.IDENTIFIER_NAME, imageIdParam);
+    EventId eventId = toEventId(organizationId, eventIdParam);
+    AttachmentId attachmentId = new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, imageIdParam);
     
-    for (EventProvider eventProvider : getEventProviders()) {
-      Attachment attachment = eventProvider.findEventImage(organizationId, eventId, attachmentId);
-      if (attachment != null) {
-        return Response.ok(attachment)
-          .build();
-      }
+    Response notModified = httpCacheController.getNotModified(request, attachmentId);
+    if (notModified != null) {
+      return notModified;
     }
     
-    return Response.status(Status.NOT_FOUND)
-      .build();
+    Attachment attachment = eventController.findEventImage(organizationId, eventId, attachmentId);
+    if (attachment != null) {
+      return httpCacheController.sendModified(attachment, attachment.getId());
+    }    
+    
+    return createNotFound(NOT_FOUND);
   }
 
   @Override
-  public Response getOrganizationEventImageData(String organizationIdParam, String eventIdParam, String imageIdParam, Integer size) {
+  public Response getOrganizationEventImageData(String organizationIdParam, String eventIdParam, String imageIdParam, Integer size, @Context Request request) {
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
-    EventId eventId = toEventId(eventIdParam);
-    AttachmentId attachmentId = new AttachmentId(KuntaApiConsts.IDENTIFIER_NAME, imageIdParam);
+    EventId eventId = toEventId(organizationId, eventIdParam);
+    AttachmentId attachmentId = new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, imageIdParam);
     
-    for (EventProvider eventProvider : getEventProviders()) {
-      AttachmentData attachmentData = eventProvider.getEventImageData(organizationId, eventId, attachmentId, size);
-      if (attachmentData != null) {
-        try (InputStream stream = new ByteArrayInputStream(attachmentData.getData())) {
-          return Response.ok(stream, attachmentData.getType())
-              .build();
-        } catch (IOException e) {
-          logger.log(Level.SEVERE, FAILED_TO_STREAM_IMAGE_TO_CLIENT, e);
-          return Response.status(Status.INTERNAL_SERVER_ERROR)
-            .entity(INTERNAL_SERVER_ERROR)
-            .build();
-        }
-      }
+    
+    Response notModified = httpCacheController.getNotModified(request, attachmentId);
+    if (notModified != null) {
+      return notModified;
     }
     
-    return Response.status(Status.NOT_FOUND)
-      .build();
+    AttachmentData attachmentData = eventController.getEventImageData(size, organizationId, eventId, attachmentId);
+    if (attachmentData != null) {
+      return httpCacheController.streamModified(attachmentData.getData(), attachmentData.getType(), attachmentId);
+    }
+    
+    return createNotFound(NOT_FOUND);
   }
 
   @Override
-  public Response listOrganizationEventImages(String organizationIdParam, String eventIdParam) {
-    List<Attachment> result = new ArrayList<>();
+  public Response listOrganizationEventImages(String organizationIdParam, String eventIdParam, @Context Request request) {
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
-    EventId eventId = toEventId(eventIdParam);
+    EventId eventId = toEventId(organizationId, eventIdParam);
     
-    for (EventProvider eventProvider : getEventProviders()) {
-      result.addAll(eventProvider.listEventImages(organizationId, eventId));
+    List<Attachment> result = eventController.listEventImages(organizationId, eventId);
+    List<String> ids = httpCacheController.getEntityIds(result);
+    Response notModified = httpCacheController.getNotModified(request, ids);
+    if (notModified != null) {
+      return notModified;
     }
-    
-    return Response.ok(result)
-      .build();
+
+    return httpCacheController.sendModified(result, ids);
   }
 
   @Override
@@ -262,7 +295,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       String startBefore, String startAfter,
       String endBefore, String endAfter,
       Integer firstResult, Integer maxResults,
-      String orderBy, String orderDir) {
+      String orderBy, String orderDir, @Context Request request) {
     
     EventProvider.EventOrder order = EventProvider.EventOrder.START_DATE;
     EventProvider.EventOrderDirection orderDirection = EventProvider.EventOrderDirection.DESCENDING;
@@ -270,328 +303,917 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     if (StringUtils.isNotBlank(orderBy)) {
       order = EnumUtils.getEnum(EventProvider.EventOrder.class, orderBy);
       if (order == null) {
-        return Response.status(Status.BAD_REQUEST)
-          .entity(String.format("Invalid event order %s", orderBy))
-          .build();
+        return createBadRequest(String.format("Invalid event order %s", orderBy));
       }
     }
     
     if (StringUtils.isNotBlank(orderDir)) {
       orderDirection = EnumUtils.getEnum(EventProvider.EventOrderDirection.class, orderDir);
       if (orderDirection == null) {
-        return Response.status(Status.BAD_REQUEST)
-          .entity(String.format("Invalid event order direction %s", orderDir))
-          .build();
+        return createBadRequest(String.format("Invalid event order direction %s", orderDir));
       }
     }
     
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
     
-    List<Event> result = new ArrayList<>();
-   
-    for (EventProvider eventProvider : getEventProviders()) {
-      result.addAll(eventProvider.listOrganizationEvents(organizationId, getDateTime(startBefore), getDateTime(startAfter), getDateTime(endBefore), getDateTime(endAfter), order, orderDirection, firstResult, maxResults));
+    List<Event> result = eventController.listEvents(getDateTime(startBefore), getDateTime(startAfter), getDateTime(endBefore), getDateTime(endAfter), 
+        firstResult, maxResults, order, orderDirection, organizationId);
+
+    List<String> ids = httpCacheController.getEntityIds(result);
+    Response notModified = httpCacheController.getNotModified(request, ids);
+    if (notModified != null) {
+      return notModified;
     }
-    
-    return Response.ok(result)
-      .build();
+
+    return httpCacheController.sendModified(result, ids);
   }
   
   /* News */
-
+  
   @Override
-  public Response listOrganizationNews(String organizationIdParam, String publishedBefore, String publishedAfter,
-      Integer firstResult, Integer maxResults) {
+  public Response listOrganizationNews(String organizationIdParam, String slug, String publishedBefore,
+      String publishedAfter, Integer firstResult, Integer maxResults, Request request) {
     
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
     
-    List<NewsArticle> result = new ArrayList<>();
+    List<NewsArticle> result = newsController.listNewsArticles(slug, getDateTime(publishedBefore), getDateTime(publishedAfter), firstResult, maxResults, organizationId);
+    
+    List<String> ids = httpCacheController.getEntityIds(result);
+    Response notModified = httpCacheController.getNotModified(request, ids);
+    if (notModified != null) {
+      return notModified;
+    }
+
+    return httpCacheController.sendModified(result, ids);
+  }
+
+  @Override
+  public Response findOrganizationNewsArticle(String organizationIdParam, String newsArticleIdParam, @Context Request request) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    NewsArticleId newsArticleId = toNewsArticleId(organizationId, newsArticleIdParam);
+    
+    Response notModified = httpCacheController.getNotModified(request, newsArticleId);
+    if (notModified != null) {
+      return notModified;
+    }
+    
+    NewsArticle newsArticle = newsController.findNewsArticle(organizationId, newsArticleId);
+    if (newsArticle != null) {
+      return httpCacheController.sendModified(newsArticle, newsArticle.getId());
+    }
+    
+    return createNotFound(NOT_FOUND);
+  }
+
+  @Override
+  public Response findOrganizationNewsArticleImage(String organizationIdParam, String newsArticleIdParam, String imageIdParam, @Context Request request) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    NewsArticleId newsArticleId = toNewsArticleId(organizationId, newsArticleIdParam);
+    AttachmentId attachmentId = toAttachmentId(organizationId, imageIdParam);
+    
+    Response notModified = httpCacheController.getNotModified(request, attachmentId);
+    if (notModified != null) {
+      return notModified;
+    }
+    
+    Attachment attachment = newsController.findNewsArticleImage(organizationId, newsArticleId, attachmentId);
+    if (attachment != null) {
+      return httpCacheController.sendModified(attachment, attachment.getId());
+    }
+    
+    return createNotFound(NOT_FOUND);
+  }
+
+  @Override
+  public Response getOrganizationNewsArticleImageData(String organizationIdParam, String newsArticleIdParam, String imageIdParam, Integer size, @Context Request request) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    NewsArticleId newsArticleId = toNewsArticleId(organizationId, newsArticleIdParam);
+    AttachmentId attachmentId = toAttachmentId(organizationId, imageIdParam);
    
-    for (NewsProvider newsProvider : getNewsProviders()) {
-      result.addAll(newsProvider.listOrganizationNews(organizationId, getDateTime(publishedBefore), getDateTime(publishedAfter), firstResult, maxResults));
+    Response notModified = httpCacheController.getNotModified(request, attachmentId);
+    if (notModified != null) {
+      return notModified;
     }
     
-    return Response.ok(result)
-      .build();
+    AttachmentData attachmentData = newsController.getNewsArticleImageData(organizationId, newsArticleId, attachmentId, size);
+    if (attachmentData != null) {
+      return httpCacheController.streamModified(attachmentData.getData(), attachmentData.getType(), attachmentId);
+    }
     
+    return createNotFound(NOT_FOUND);
   }
 
   @Override
-  public Response findOrganizationNewsArticle(String organizationIdParam, String newsArticleIdParam) {
+  public Response listOrganizationNewsArticleImages(String organizationIdParam, String newsArticleIdParam, @Context Request request) {
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
-    NewsArticleId newsArticleId = toNewsArticleId(newsArticleIdParam);
+    NewsArticleId newsArticleId = toNewsArticleId(organizationId, newsArticleIdParam);
     
-    for (NewsProvider newsProvider : getNewsProviders()) {
-      NewsArticle newsArticle = newsProvider.findOrganizationNewsArticle(organizationId, newsArticleId);
-      if (newsArticle != null) {
-        return Response.ok(newsArticle)
-          .build();
-      }
+    List<Attachment> result = newsController.listNewsArticleImages(organizationId, newsArticleId);
+    List<String> ids = httpCacheController.getEntityIds(result);
+    Response notModified = httpCacheController.getNotModified(request, ids);
+    if (notModified != null) {
+      return notModified;
     }
-    
-    return Response.status(Status.NOT_FOUND)
-      .build();
-  }
 
-  @Override
-  public Response findOrganizationNewsArticleImage(String organizationIdParam, String newsArticleIdParam, String imageIdParam) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
-    NewsArticleId newsArticleId = toNewsArticleId(newsArticleIdParam);
-    AttachmentId attachmentId = toAttachmentId(imageIdParam);
-    
-    for (NewsProvider newsProvider : getNewsProviders()) {
-      Attachment attachment = newsProvider.findNewsArticleImage(organizationId, newsArticleId, attachmentId);
-      if (attachment != null) {
-        return Response.ok(attachment)
-          .build();
-      }
-    }
-    
-    return Response.status(Status.NOT_FOUND)
-      .build();
-  }
-
-  @Override
-  public Response getOrganizationNewsArticleImageData(String organizationIdParam, String newsArticleIdParam, String imageIdParam, Integer size) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
-    NewsArticleId newsArticleId = toNewsArticleId(newsArticleIdParam);
-    AttachmentId attachmentId = toAttachmentId(imageIdParam);
-    
-    for (NewsProvider newsProvider : getNewsProviders()) {
-      AttachmentData attachmentData = newsProvider.getNewsArticleImageData(organizationId, newsArticleId, attachmentId, size);
-      if (attachmentData != null) {
-        try (InputStream stream = new ByteArrayInputStream(attachmentData.getData())) {
-          return Response.ok(stream, attachmentData.getType())
-              .build();
-        } catch (IOException e) {
-          logger.log(Level.SEVERE, FAILED_TO_STREAM_IMAGE_TO_CLIENT, e);
-          return Response.status(Status.INTERNAL_SERVER_ERROR)
-            .entity(INTERNAL_SERVER_ERROR)
-            .build();
-        }
-      }
-    }
-    
-    return Response.status(Status.NOT_FOUND)
-      .build();
-  }
-
-  @Override
-  public Response listOrganizationNewsArticleImages(String organizationIdParam, String newsArticleIdParam) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
-    NewsArticleId newsArticleId = toNewsArticleId(newsArticleIdParam);
-    
-    List<Attachment> result = new ArrayList<>();
-   
-    for (NewsProvider newsProvider : getNewsProviders()) {
-      result.addAll(newsProvider.listNewsArticleImages(organizationId, newsArticleId));
-    }
-    
-    return Response.ok(result)
-      .build();
+    return httpCacheController.sendModified(result, ids);
   }
 
   /* Banners */
   
   @Override
-  public Response listOrganizationBanners(String organizationIdParam) {
+  public Response listOrganizationBanners(String organizationIdParam, @Context Request request) {
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
     
-    List<Banner> result = new ArrayList<>();
-   
-    for (BannerProvider bannerProvider : getBannerProviders()) {
-      result.addAll(bannerProvider.listOrganizationBanners(organizationId));
+    List<Banner> result = bannerController.listBanners(organizationId);
+    List<String> ids = httpCacheController.getEntityIds(result);
+    Response notModified = httpCacheController.getNotModified(request, ids);
+    if (notModified != null) {
+      return notModified;
     }
-    
-    return Response.ok(result)
-      .build();
+
+    return httpCacheController.sendModified(result, ids);
   }
 
   @Override
-  public Response findOrganizationBanner(String organizationIdParam, String bannerIdParam) {
+  public Response findOrganizationBanner(String organizationIdParam, String bannerIdParam, @Context Request request) {
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
-    BannerId bannerId = toBannerId(bannerIdParam);
+    BannerId bannerId = toBannerId(organizationId, bannerIdParam);
     
-    for (BannerProvider bannerProvider : getBannerProviders()) {
-      Banner banner = bannerProvider.findOrganizationBanner(organizationId, bannerId);
-      if (banner != null) {
-        return Response.ok(banner)
-          .build();
-      }
+    Response notModified = httpCacheController.getNotModified(request, bannerId);
+    if (notModified != null) {
+      return notModified;
+    }
+
+    Banner banner = bannerController.findBanner(organizationId, bannerId);
+    if (banner != null) {
+      return httpCacheController.sendModified(banner, banner.getId());
     }
     
-    return Response.status(Status.NOT_FOUND)
-      .build();
+    return createNotFound(NOT_FOUND);
   }
 
   @Override
-  public Response listOrganizationBannerImages(String organizationIdParam, String bannerIdParam) {
+  public Response listOrganizationBannerImages(String organizationIdParam, String bannerIdParam, @Context Request request) {
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
-    BannerId bannerId = toBannerId(bannerIdParam);
+    BannerId bannerId = toBannerId(organizationId, bannerIdParam);
     
-    List<Attachment> result = new ArrayList<>();
-   
-    for (BannerProvider bannerProvider : getBannerProviders()) {
-      result.addAll(bannerProvider.listOrganizationBannerImages(organizationId, bannerId));
+    List<Attachment> result = bannerController.listBannerImages(organizationId, bannerId);
+    List<String> ids = httpCacheController.getEntityIds(result);
+    Response notModified = httpCacheController.getNotModified(request, ids);
+    if (notModified != null) {
+      return notModified;
     }
-    
-    return Response.ok(result)
-      .build();
+
+    return httpCacheController.sendModified(result, ids);
   }
 
   @Override
-  public Response findOrganizationBannerImage(String organizationIdParam, String bannerIdParam, String imageIdParam) {
+  public Response findOrganizationBannerImage(String organizationIdParam, String bannerIdParam, String imageIdParam, @Context Request request) {
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
-    BannerId bannerId = toBannerId(bannerIdParam);
-    AttachmentId attachmentId = toAttachmentId(imageIdParam);
+    BannerId bannerId = toBannerId(organizationId, bannerIdParam);
+    AttachmentId attachmentId = toAttachmentId(organizationId, imageIdParam);
     
-    for (BannerProvider bannerProvider : getBannerProviders()) {
-      Attachment attachment = bannerProvider.findBannerImage(organizationId, bannerId, attachmentId);
-      if (attachment != null) {
-        return Response.ok(attachment)
-          .build();
-      }
+    Response notModified = httpCacheController.getNotModified(request, attachmentId);
+    if (notModified != null) {
+      return notModified;
+    }
+
+    Attachment attachment = bannerController.findBannerImage(organizationId, bannerId, attachmentId);
+    if (attachment != null) {
+      return httpCacheController.sendModified(attachment, attachment.getId());
     }
     
-    return Response.status(Status.NOT_FOUND)
-      .build();
+    return createNotFound(NOT_FOUND);
   }
 
   @Override
-  public Response getOrganizationBannerImageData(String organizationIdParam, String bannerIdParam, String imageIdParam, Integer size) {
+  public Response getOrganizationBannerImageData(String organizationIdParam, String bannerIdParam, String imageIdParam, Integer size, @Context Request request) {
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
-    BannerId bannerId = toBannerId(bannerIdParam);
-    AttachmentId attachmentId = toAttachmentId(imageIdParam);
+    BannerId bannerId = toBannerId(organizationId, bannerIdParam);
+    AttachmentId attachmentId = toAttachmentId(organizationId, imageIdParam);
     
-    for (BannerProvider bannerProvider : getBannerProviders()) {
-      AttachmentData attachmentData = bannerProvider.getBannerImageData(organizationId, bannerId, attachmentId, size);
-      if (attachmentData != null) {
-        try (InputStream stream = new ByteArrayInputStream(attachmentData.getData())) {
-          return Response.ok(stream, attachmentData.getType())
-              .build();
-        } catch (IOException e) {
-          logger.log(Level.SEVERE, FAILED_TO_STREAM_IMAGE_TO_CLIENT, e);
-          return Response.status(Status.INTERNAL_SERVER_ERROR)
-            .entity(INTERNAL_SERVER_ERROR)
-            .build();
-        }
-      }
+    Response notModified = httpCacheController.getNotModified(request, attachmentId);
+    if (notModified != null) {
+      return notModified;
     }
     
-    return Response.status(Status.NOT_FOUND)
-      .build();
+    AttachmentData attachmentData = bannerController.getBannerImageData(organizationId, bannerId, attachmentId, size);
+    if (attachmentData != null) {
+      return httpCacheController.streamModified(attachmentData.getData(), attachmentData.getType(), attachmentId);
+    }
+    
+    return createNotFound(NOT_FOUND);
   }
   
   /* Tiles */
   
   @Override
-  public Response listOrganizationTiles(String organizationIdParam) {
+  public Response listOrganizationTiles(String organizationIdParam, @Context Request request) {
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
     
-    List<Tile> result = new ArrayList<>();
-   
-    for (TileProvider tileProvider : getTileProviders()) {
-      result.addAll(tileProvider.listOrganizationTiles(organizationId));
+    List<Tile> result = tileController.listTiles(organizationId);
+    List<String> ids = httpCacheController.getEntityIds(result);
+    Response notModified = httpCacheController.getNotModified(request, ids);
+    if (notModified != null) {
+      return notModified;
     }
-    
-    return Response.ok(result)
-      .build();
+
+    return httpCacheController.sendModified(result, ids);
   }
 
   @Override
-  public Response findOrganizationTile(String organizationIdParam, String tileIdParam) {
+  public Response findOrganizationTile(String organizationIdParam, String tileIdParam, @Context Request request) {
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
-    TileId tileId = toTileId(tileIdParam);
+    TileId tileId = toTileId(organizationId, tileIdParam);
     
-    for (TileProvider tileProvider : getTileProviders()) {
-      Tile tile = tileProvider.findOrganizationTile(organizationId, tileId);
-      if (tile != null) {
-        return Response.ok(tile)
-          .build();
-      }
+    Response notModified = httpCacheController.getNotModified(request, tileId);
+    if (notModified != null) {
+      return notModified;
+    }
+
+    Tile tile = tileController.findTile(organizationId, tileId);
+    if (tile != null) {
+      return httpCacheController.sendModified(tile, tile.getId());
     }
     
-    return Response.status(Status.NOT_FOUND)
-      .build();
+    return createNotFound(NOT_FOUND);
   }
 
   @Override
-  public Response listOrganizationTileImages(String organizationIdParam, String tileIdParam) {
+  public Response listOrganizationTileImages(String organizationIdParam, String tileIdParam, @Context Request request) {
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
-    TileId tileId = toTileId(tileIdParam);
+    TileId tileId = toTileId(organizationId, tileIdParam);
     
-    List<Attachment> result = new ArrayList<>();
-   
-    for (TileProvider tileProvider : getTileProviders()) {
-      result.addAll(tileProvider.listOrganizationTileImages(organizationId, tileId));
+    List<Attachment> result = tileController.listTileImages(organizationId, tileId);
+    List<String> ids = httpCacheController.getEntityIds(result);
+    Response notModified = httpCacheController.getNotModified(request, ids);
+    if (notModified != null) {
+      return notModified;
     }
-    
-    return Response.ok(result)
-      .build();
+
+    return httpCacheController.sendModified(result, ids);
   }
 
   @Override
-  public Response findOrganizationTileImage(String organizationIdParam, String tileIdParam, String imageIdParam) {
+  public Response findOrganizationTileImage(String organizationIdParam, String tileIdParam, String imageIdParam, @Context Request request) {
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
-    TileId tileId = toTileId(tileIdParam);
-    AttachmentId attachmentId = toAttachmentId(imageIdParam);
+    TileId tileId = toTileId(organizationId, tileIdParam);
+    AttachmentId attachmentId = toAttachmentId(organizationId, imageIdParam);
     
-    for (TileProvider tileProvider : getTileProviders()) {
-      Attachment attachment = tileProvider.findTileImage(organizationId, tileId, attachmentId);
-      if (attachment != null) {
-        return Response.ok(attachment)
-          .build();
-      }
+    Response notModified = httpCacheController.getNotModified(request, attachmentId);
+    if (notModified != null) {
+      return notModified;
+    }
+
+    Attachment attachment = tileController.findTileImage(organizationId, tileId, attachmentId);
+    if (attachment != null) {
+      return httpCacheController.sendModified(attachment, attachment.getId());
     }
     
-    return Response.status(Status.NOT_FOUND)
-      .build();
+    return createNotFound(NOT_FOUND);
   }
 
   @Override
-  public Response getOrganizationTileImageData(String organizationIdParam, String tileIdParam, String imageIdParam, Integer size) {
+  public Response getOrganizationTileImageData(String organizationIdParam, String tileIdParam, String imageIdParam, Integer size, @Context Request request) {
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
-    TileId tileId = toTileId(tileIdParam);
-    AttachmentId attachmentId = toAttachmentId(imageIdParam);
+    TileId tileId = toTileId(organizationId, tileIdParam);
+    AttachmentId attachmentId = toAttachmentId(organizationId, imageIdParam);
     
-    for (TileProvider tileProvider : getTileProviders()) {
-      AttachmentData attachmentData = tileProvider.getTileImageData(organizationId, tileId, attachmentId, size);
-      if (attachmentData != null) {
-        try (InputStream stream = new ByteArrayInputStream(attachmentData.getData())) {
-          return Response.ok(stream, attachmentData.getType())
-              .build();
-        } catch (IOException e) {
-          logger.log(Level.SEVERE, FAILED_TO_STREAM_IMAGE_TO_CLIENT, e);
-          return Response.status(Status.INTERNAL_SERVER_ERROR)
-            .entity(INTERNAL_SERVER_ERROR)
-            .build();
-        }
-      }
+    Response notModified = httpCacheController.getNotModified(request, attachmentId);
+    if (notModified != null) {
+      return notModified;
     }
     
-    return Response.status(Status.NOT_FOUND)
-      .build();
+    AttachmentData attachmentData = tileController.getTileImageData(organizationId, tileId, attachmentId, size);
+    if (attachmentData != null) {
+      return httpCacheController.streamModified(attachmentData.getData(), attachmentData.getType(), attachmentId);
+    }
+    
+    return createNotFound(NOT_FOUND);
+  }
+
+  @Override
+  @SuppressWarnings("squid:MethodCyclomaticComplexity")
+  public Response createOrganizationSetting(String organizationIdParam, OrganizationSetting setting, @Context Request request) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    if (StringUtils.isBlank(setting.getKey())) {
+      return createBadRequest("Key is required");
+    }
+
+    if (StringUtils.isBlank(setting.getValue())) {
+      return createBadRequest("Value is required");
+    }
+    
+    List<OrganizationSetting> organizationSettings = organizationSettingProvider.listOrganizationSettings(organizationId, setting.getKey());
+    if (!organizationSettings.isEmpty()) {
+      return createBadRequest("Setting already exists");
+    }
+    
+    OrganizationSetting organizationSetting = organizationSettingProvider.createOrganizationSetting(organizationId, setting.getKey(), setting.getValue());
+    if (organizationSetting == null) {
+      return createInternalServerError(INTERNAL_SERVER_ERROR);
+    }
+    
+    return Response.ok()
+        .entity(organizationSetting)
+        .build();
+  }
+
+  @Override
+  public Response listOrganizationSettings(String organizationIdParam, String key, @Context Request request) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    List<OrganizationSetting> result = organizationSettingProvider.listOrganizationSettings(organizationId, key);
+
+    return Response.ok()
+        .entity(result)
+        .build();
   }
   
-  private BannerId toBannerId(String id) {
-    if (StringUtils.isNotBlank(id)) {
-      return new BannerId(KuntaApiConsts.IDENTIFIER_NAME, id);
+  @Override
+  public Response findOrganizationSetting(String organizationIdParam, String settingIdParam, @Context Request request) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    if (!StringUtils.isNumeric(settingIdParam)) {
+      return createBadRequest(INVALID_SETTING_ID);
+    }
+    
+    Long settingId = NumberUtils.createLong(settingIdParam); 
+    
+    OrganizationSetting organizationSetting = organizationSettingProvider.findOrganizationSetting(organizationId, settingId);
+    if (organizationSetting == null) {
+      return createNotFound(NOT_FOUND);
+    }
+
+    return Response.ok()
+        .entity(organizationSetting)
+        .build();
+  }
+  
+  @Override
+  @SuppressWarnings ("squid:MethodCyclomaticComplexity")
+  public Response updateOrganizationSetting(String organizationIdParam, String settingIdParam, OrganizationSetting setting, @Context Request request) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    if (StringUtils.isBlank(setting.getKey())) {
+      return createBadRequest("Key is required");
+    }
+
+    if (StringUtils.isBlank(setting.getValue())) {
+      return createBadRequest("Value is required");
+    }
+    
+    if (!StringUtils.isNumeric(settingIdParam)) {
+      return createBadRequest(INVALID_SETTING_ID);
+    }
+    
+    Long settingId = NumberUtils.createLong(settingIdParam); 
+
+    OrganizationSetting organizationSetting = organizationSettingProvider.findOrganizationSetting(organizationId, settingId);
+    if (organizationSetting == null) {
+      return createNotFound(NOT_FOUND);
+    }
+
+    if (!StringUtils.equals(organizationSetting.getKey(), setting.getKey())) {
+      return createBadRequest("Cannot update setting key");
+    }
+    
+    OrganizationSetting updatedOrganizationSetting = organizationSettingProvider.updateOrganizationSetting(settingId, setting.getValue());
+    
+    if (updatedOrganizationSetting == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    return Response.ok()
+        .entity(updatedOrganizationSetting)
+        .build();
+  }
+
+  @Override
+  public Response deleteOrganizationSetting(String organizationIdParam, String settingIdParam, @Context Request request) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    if (!StringUtils.isNumeric(settingIdParam)) {
+      return createBadRequest(INVALID_SETTING_ID);
+    }
+    
+    Long settingId = NumberUtils.createLong(settingIdParam); 
+    
+    OrganizationSetting organizationSetting = organizationSettingProvider.findOrganizationSetting(organizationId, settingId);
+    if (organizationSetting == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    organizationSettingProvider.deleteOrganizationSetting(settingId);
+    
+    return Response.noContent()
+        .build();
+  }
+
+  
+  /* Pages */
+  
+  @Override
+  public Response listOrganizationPages(String organizationIdParam, String parentIdParam, String path, String search, Long firstResult, Long maxResults, @Context Request request) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    if (search != null && (parentIdParam != null || path != null)) {
+      return createNotImplemented("Search parameter can not be combined with path or parentId parameters");
+    }
+    
+    boolean onlyRootPages = StringUtils.equals("ROOT", parentIdParam);
+    PageId parentId = onlyRootPages ? null : toPageId(organizationId, parentIdParam);
+    
+    List<Page> result = listOrganizationPages(organizationId, onlyRootPages, parentId, path, search, firstResult, maxResults);
+    List<String> ids = httpCacheController.getEntityIds(result);
+    Response notModified = httpCacheController.getNotModified(request, ids);
+    if (notModified != null) {
+      return notModified;
+    }
+
+    return httpCacheController.sendModified(result, ids);
+  }
+
+  @Override
+  public Response findOrganizationPage(String organizationIdParam, String pageIdParam, @Context Request request) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    PageId pageId = toPageId(organizationId, pageIdParam);
+    if (pageId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+
+    Response notModified = httpCacheController.getNotModified(request, pageId);
+    if (notModified != null) {
+      return notModified;
+    }
+    
+    Page page = pageController.findPage(organizationId, pageId);
+    if (page != null) {
+      return httpCacheController.sendModified(page, page.getId());
+    }
+    
+    return createNotFound(NOT_FOUND);
+  }
+  
+  @Override
+  public Response findOrganizationPageContent(String organizationIdParam, String pageIdParam, @Context Request request) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    PageId pageId = toPageId(organizationId, pageIdParam);
+    if (pageId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+
+    Response notModified = httpCacheController.getNotModified(request, pageId);
+    if (notModified != null) {
+      return notModified;
+    }
+    
+    if (pageController.findPage(organizationId, pageId) != null) {
+      List<LocalizedValue> pageContents = pageController.getPageContents(organizationId, pageId);
+      if (pageContents != null) {
+        return httpCacheController.sendModified(pageContents, pageId.getId());
+      }
+    }
+    
+    return createNotFound(NOT_FOUND);
+  }
+
+  @Override
+  public Response listOrganizationPageImages(String organizationIdParam, String pageIdParam, @Context Request request) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    PageId pageId = toPageId(organizationId, pageIdParam);
+    
+    List<Attachment> result = pageController.listPageImages(organizationId, pageId);
+    
+    List<String> ids = httpCacheController.getEntityIds(result);
+    Response notModified = httpCacheController.getNotModified(request, ids);
+    if (notModified != null) {
+      return notModified;
+    }
+
+    if (pageController.findPage(organizationId, pageId) == null) {
+      return createNotFound(NOT_FOUND); 
+    }
+    
+    return httpCacheController.sendModified(result, ids);
+  }
+
+  @Override
+  public Response findOrganizationPageImage(String organizationIdParam, String pageIdParam, String imageIdParam, @Context Request request) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    PageId pageId = toPageId(organizationId, pageIdParam);
+    AttachmentId attachmentId = toAttachmentId(organizationId, imageIdParam);
+    
+    Response notModified = httpCacheController.getNotModified(request, attachmentId);
+    if (notModified != null) {
+      return notModified;
+    }
+    
+    Attachment attachment = pageController.findPageImage(organizationId, pageId, attachmentId);
+    if (attachment != null) {
+      return httpCacheController.sendModified(attachment, attachment.getId());
+    }
+    
+    return createNotFound(NOT_FOUND);
+  }
+
+  @Override
+  public Response getOrganizationPageImageData(String organizationIdParam, String pageIdParam, String imageIdParam, Integer size, @Context Request request) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    PageId pageId = toPageId(organizationId, pageIdParam);
+    AttachmentId attachmentId = toAttachmentId(organizationId, imageIdParam);
+    
+    Response notModified = httpCacheController.getNotModified(request, attachmentId);
+    if (notModified != null) {
+      return notModified;
+    }
+    
+    AttachmentData attachmentData = pageController.getPageAttachmentData(organizationId, pageId, attachmentId, size);
+    if (attachmentData != null) {
+      return httpCacheController.streamModified(attachmentData.getData(), attachmentData.getType(), attachmentId);
+    }
+    
+    return createNotFound(NOT_FOUND);
+  }
+  
+  /* Menus */
+
+  @Override
+  public Response listOrganizationMenus(String organizationIdParam, String slug, @Context Request request) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    List<Menu> result = menuController.listMenus(slug, organizationId);
+    List<String> ids = httpCacheController.getEntityIds(result);
+    Response notModified = httpCacheController.getNotModified(request, ids);
+    if (notModified != null) {
+      return notModified;
+    }
+
+    return httpCacheController.sendModified(result, ids);
+  }
+  
+  @Override
+  public Response findOrganizationMenu(String organizationIdParam, String menuIdParam, @Context Request request) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    MenuId menuId = toMenuId(organizationId, menuIdParam);
+    if (menuId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    Response notModified = httpCacheController.getNotModified(request, menuId);
+    if (notModified != null) {
+      return notModified;
+    }
+    
+    Menu menu = menuController.findMenu(organizationId, menuId);
+    if (menu != null) {
+      return httpCacheController.sendModified(menu, menu.getId());
+    }
+    
+    return createNotFound(NOT_FOUND);
+  }
+  
+  /* Menu Items */
+
+  @Override
+  public Response listOrganizationMenuItems(String organizationIdParam, String menuIdParam, @Context Request request) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    MenuId menuId = toMenuId(organizationId, menuIdParam);
+    if (menuId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    List<MenuItem> result = menuController.listMenuItems(organizationId, menuId);
+    List<String> ids = httpCacheController.getEntityIds(result);
+    Response notModified = httpCacheController.getNotModified(request, ids);
+    if (notModified != null) {
+      return notModified;
+    }
+
+    return httpCacheController.sendModified(result, ids);
+  }
+
+  @Override
+  public Response findOrganizationMenuItem(String organizationIdParam, String menuIdParam, String menuItemIdParam, @Context Request request) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    MenuId menuId = toMenuId(organizationId, menuIdParam);
+    if (menuId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    MenuItemId menuItemId = toMenuItemId(organizationId, menuItemIdParam);
+    if (menuItemId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    return findOrganizationMenuItem(organizationId, menuId, menuItemId, request);
+  }
+
+  private Response findOrganizationMenuItem(OrganizationId organizationId, MenuId menuId, MenuItemId menuItemId, Request request) {
+    Response notModified = httpCacheController.getNotModified(request, menuItemId);
+    if (notModified != null) {
+      return notModified;
+    }
+    
+    MenuItem menuItem = menuController.findMenuItem(organizationId, menuId, menuItemId);
+    if (menuItem != null) {
+      return httpCacheController.sendModified(menuItem, menuItem.getId());
+    }
+    
+    return createNotFound(NOT_FOUND);
+  }
+  
+  /* Files */
+  
+  @Override
+  public Response listOrganizationFiles(String organizationIdParam, String pageIdParam, String search, Long firstResult, Long maxResults, Request request) {
+    
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    PageId pageId = toPageId(organizationId, pageIdParam);
+    List<FileDef> result;
+    
+    if (search != null) {
+      result = fileController.searchFiles(organizationId, pageId, search, firstResult, maxResults);
+    } else {
+      result = fileController.listFiles(organizationId, pageId, firstResult, maxResults);
+    }
+    
+    List<String> ids = httpCacheController.getEntityIds(result);
+    Response notModified = httpCacheController.getNotModified(request, ids);
+    if (notModified != null) {
+      return notModified;
+    }
+
+    return httpCacheController.sendModified(result, ids);
+  }
+
+  @Override
+  public Response findOrganizationFile(String organizationIdParam, String fileIdParam, @Context Request request) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    FileId fileId = toFileId(organizationId, fileIdParam);
+    if (fileId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    Response notModified = httpCacheController.getNotModified(request, fileId);
+    if (notModified != null) {
+      return notModified;
+    }
+    
+    FileDef file = fileController.findFile(organizationId, fileId);
+    if (file != null) {
+      return httpCacheController.sendModified(file, file.getId());
+    }
+    
+    return createNotFound(NOT_FOUND);
+  }
+
+  @Override
+  public Response getOrganizationFileData(String organizationIdParam, String fileIdParam, @Context Request request) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    FileId fileId = toFileId(organizationId, fileIdParam);
+    if (fileId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    Response notModified = httpCacheController.getNotModified(request, fileId);
+    if (notModified != null) {
+      return notModified;
+    }
+    
+    AttachmentData data = fileController.getFileData(organizationId, fileId);
+    if (data != null) {
+      return httpCacheController.streamModified(data.getData(), data.getType(), fileId);
+    }
+    
+    return createNotFound(NOT_FOUND);
+  }
+  
+  /* Jobs */
+
+  @Override
+  public Response findOrganizationJob(String organizationIdParam, String jobIdParam, @Context Request request) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    JobId jobId = toJobId(organizationId, jobIdParam);
+    if (jobId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+
+    Response notModified = httpCacheController.getNotModified(request, jobId);
+    if (notModified != null) {
+      return notModified;
+    }
+
+    Job job = jobController.findJob(organizationId, jobId);
+    if (job != null) {
+      return httpCacheController.sendModified(job, job.getId());
+    }
+    
+    return createNotFound(NOT_FOUND);
+  }
+
+  @Override
+  public Response listOrganizationJobs(String organizationIdParam, String sortBy, String sortDir, Long firstResult, Long maxResults, @Context Request request) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    JobOrder order = null;
+    JobOrderDirection orderDirection = null;
+    
+    if (StringUtils.isNotBlank(sortBy)) {
+      order = EnumUtils.getEnum(JobProvider.JobOrder.class, sortBy);
+      if (order == null) {
+        return createBadRequest("Invalid value for sortBy");
+      }
+    }
+    
+    if (StringUtils.isNotBlank(sortDir)) {
+      orderDirection = EnumUtils.getEnum(JobOrderDirection.class, sortDir);
+      if (orderDirection == null) {
+        return createBadRequest("Invalid value for sortDir");
+      }
+    }
+    
+    return listOrganizationJobs(request, organizationId, order, orderDirection, firstResult, maxResults);
+  }
+  
+  /* Announcements */
+
+  @Override
+  public Response findOrganizationAnnouncement(String organizationIdParam, String announcementIdParam, @Context Request request) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    AnnouncementId announcementId = toAnnouncementId(organizationId, announcementIdParam);
+    if (announcementId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+
+    Response notModified = httpCacheController.getNotModified(request, announcementId);
+    if (notModified != null) {
+      return notModified;
+    }
+    
+    Announcement announcement = announcementController.findAnnouncement(organizationId, announcementId);
+    if (announcement != null) {
+      return httpCacheController.sendModified(announcement, announcement.getId());
+    }
+    
+    return createNotFound(NOT_FOUND);
+  }
+
+  @Override
+  public Response listOrganizationAnnouncements(String organizationIdParam, Integer firstResult, Integer maxResults, String sortBy, String sortDir, @Context Request request) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    AnnouncementProvider.AnnouncementOrder order = null;
+    AnnouncementProvider.AnnouncementOrderDirection orderDirection = null;
+    
+    if (StringUtils.isNotBlank(sortBy)) {
+      order = EnumUtils.getEnum(AnnouncementProvider.AnnouncementOrder.class, sortBy);
+      if (order == null) {
+        return createBadRequest("Invalid value for sortBy");
+      }
+    }
+    
+    if (StringUtils.isNotBlank(sortDir)) {
+      orderDirection = EnumUtils.getEnum(AnnouncementProvider.AnnouncementOrderDirection.class, sortDir);
+      if (orderDirection == null) {
+        return createBadRequest("Invalid value for sortDir");
+      }
+    }
+    
+    return listOrganizationAnnouncements(request, organizationId, order, orderDirection, firstResult, maxResults);
+  }
+
+  private List<Page> listOrganizationPages(OrganizationId organizationId, boolean onlyRootPages, PageId parentId, String path, String search, Long firstResult, Long maxResults) {
+    if (search != null) {
+      return pageController.searchPages(organizationId, search, firstResult, maxResults);
+    } else {
+      return pageController.listPages(organizationId, path, onlyRootPages, parentId, firstResult, maxResults);
+    }
+  }
+
+  private Response listOrganizationJobs(Request request, OrganizationId organizationId, JobOrder order, JobOrderDirection orderDirection, Long firstResult, Long maxResults) {
+    List<Job> result = jobController.listJobs(organizationId, order, orderDirection, firstResult, maxResults);
+    
+    List<String> ids = httpCacheController.getEntityIds(result);
+    Response notModified = httpCacheController.getNotModified(request, ids);
+    if (notModified != null) {
+      return notModified;
+    }
+
+    return httpCacheController.sendModified(result, ids);
+  }
+
+  private Response listOrganizationAnnouncements(Request request, OrganizationId organizationId, AnnouncementOrder order, AnnouncementOrderDirection orderDirection, Integer firstResult, Integer maxResults) {
+    List<Announcement> result = announcementController.listAnnouncements(organizationId, order, orderDirection, firstResult, maxResults);
+    
+    List<String> ids = httpCacheController.getEntityIds(result);
+    Response notModified = httpCacheController.getNotModified(request, ids);
+    if (notModified != null) {
+      return notModified;
+    }
+
+    return httpCacheController.sendModified(result, ids);
+  }
+  
+  private Response validateListLimitParams(Long firstResult, Long maxResults) {
+    if (firstResult != null && firstResult < 0) {
+      return createBadRequest(FIRST_RESULT_MUST_BY_A_POSITIVE_INTEGER);
+    }
+    
+    if (maxResults != null && maxResults < 0) {
+      return createBadRequest(MAX_RESULTS_MUST_BY_A_POSITIVE_INTEGER);
     }
     
     return null;
   }
   
-  private TileId toTileId(String id) {
+  private BannerId toBannerId(OrganizationId organizationId, String id) {
     if (StringUtils.isNotBlank(id)) {
-      return new TileId(KuntaApiConsts.IDENTIFIER_NAME, id);
+      return new BannerId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, id);
     }
     
     return null;
   }
   
-  private NewsArticleId toNewsArticleId(String id) {
+  private TileId toTileId(OrganizationId organizationId, String id) {
     if (StringUtils.isNotBlank(id)) {
-      return new NewsArticleId(KuntaApiConsts.IDENTIFIER_NAME, id);
+      return new TileId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, id);
+    }
+    
+    return null;
+  }
+  
+  private NewsArticleId toNewsArticleId(OrganizationId organizationId, String id) {
+    if (StringUtils.isNotBlank(id)) {
+      return new NewsArticleId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, id);
     }
     
     return null;
@@ -605,25 +1227,73 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     return null;
   }
 
-  private ServiceId toServiceId(String id) {
+  private OrganizationServiceId toOrganizationServiceId(OrganizationId organizationId, String id) {
     if (StringUtils.isNotBlank(id)) {
-      return new ServiceId(KuntaApiConsts.IDENTIFIER_NAME, id);
+      return new OrganizationServiceId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, id);
     }
     
     return null;
   }
 
-  private EventId toEventId(String id) {
+  private EventId toEventId(OrganizationId organizationId, String id) {
     if (StringUtils.isNotBlank(id)) {
-      return new EventId(KuntaApiConsts.IDENTIFIER_NAME, id);
+      return new EventId(organizationId,KuntaApiConsts.IDENTIFIER_NAME, id);
     }
     
     return null;
   }
 
-  private AttachmentId toAttachmentId(String id) {
+  private AttachmentId toAttachmentId(OrganizationId organizationId, String id) {
     if (StringUtils.isNotBlank(id)) {
-      return new AttachmentId(KuntaApiConsts.IDENTIFIER_NAME, id);
+      return new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, id);
+    }
+    
+    return null;
+  }
+  
+  private FileId toFileId(OrganizationId organizationId, String id) {
+    if (StringUtils.isNotBlank(id)) {
+      return new FileId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, id);
+    }
+    
+    return null;
+  }
+  
+  private PageId toPageId(OrganizationId organizationId, String id) {
+    if (StringUtils.isNotBlank(id)) {
+      return new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, id);
+    }
+    
+    return null;
+  }
+  
+  private MenuId toMenuId(OrganizationId organizationId, String id) {
+    if (StringUtils.isNotBlank(id)) {
+      return new MenuId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, id);
+    }
+    
+    return null;
+  }
+  
+  private MenuItemId toMenuItemId(OrganizationId organizationId, String id) {
+    if (StringUtils.isNotBlank(id)) {
+      return new MenuItemId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, id);
+    }
+    
+    return null;
+  }
+  
+  private JobId toJobId(OrganizationId organizationId, String id) {
+    if (StringUtils.isNotBlank(id)) {
+      return new JobId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, id);
+    }
+    
+    return null;
+  }
+  
+  private AnnouncementId toAnnouncementId(OrganizationId organizationId, String id) {
+    if (StringUtils.isNotBlank(id)) {
+      return new AnnouncementId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, id);
     }
     
     return null;
@@ -637,10 +1307,10 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     return null;
   }
   
-  private List<OrganizationProvider> getOrganizationProviders() {
-    List<OrganizationProvider> result = new ArrayList<>();
+  private List<OrganizationServiceProvider> getOrganizationServiceProviders() {
+    List<OrganizationServiceProvider> result = new ArrayList<>();
     
-    Iterator<OrganizationProvider> iterator = organizationProviders.iterator();
+    Iterator<OrganizationServiceProvider> iterator = organizationServiceProviders.iterator();
     while (iterator.hasNext()) {
       result.add(iterator.next());
     }
@@ -648,82 +1318,4 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     return Collections.unmodifiableList(result);
   }
   
-  private List<ServiceProvider> getServiceProviders() {
-    List<ServiceProvider> result = new ArrayList<>();
-    
-    Iterator<ServiceProvider> iterator = serviceProviders.iterator();
-    while (iterator.hasNext()) {
-      result.add(iterator.next());
-    }
-    
-    return Collections.unmodifiableList(result);
-  }
-  
-  private List<ServiceChannelProvider> getServiceChannelProviders() {
-    List<ServiceChannelProvider> result = new ArrayList<>();
-    
-    Iterator<ServiceChannelProvider> iterator = serviceChannelProviders.iterator();
-    while (iterator.hasNext()) {
-      result.add(iterator.next());
-    }
-    
-    return Collections.unmodifiableList(result);
-  }
-  
-  private List<ServiceClassProvider> getServiceClassProviders() {
-    List<ServiceClassProvider> result = new ArrayList<>();
-    
-    Iterator<ServiceClassProvider> iterator = serviceClassProviders.iterator();
-    while (iterator.hasNext()) {
-      result.add(iterator.next());
-    }
-    
-    return Collections.unmodifiableList(result);
-  }
-  
-  private List<EventProvider> getEventProviders() {
-    List<EventProvider> result = new ArrayList<>();
-    
-    Iterator<EventProvider> iterator = eventProviders.iterator();
-    while (iterator.hasNext()) {
-      result.add(iterator.next());
-    }
-    
-    return Collections.unmodifiableList(result);
-  }
-  
-  private List<NewsProvider> getNewsProviders() {
-    List<NewsProvider> result = new ArrayList<>();
-    
-    Iterator<NewsProvider> iterator = newsProviders.iterator();
-    while (iterator.hasNext()) {
-      result.add(iterator.next());
-    }
-    
-    return Collections.unmodifiableList(result);
-  }
-  
-  private List<BannerProvider> getBannerProviders() {
-    List<BannerProvider> result = new ArrayList<>();
-    
-    Iterator<BannerProvider> iterator = bannerProviders.iterator();
-    while (iterator.hasNext()) {
-      result.add(iterator.next());
-    }
-    
-    return Collections.unmodifiableList(result);
-  }
-  
-  private List<TileProvider> getTileProviders() {
-    List<TileProvider> result = new ArrayList<>();
-    
-    Iterator<TileProvider> iterator = tileProviders.iterator();
-    while (iterator.hasNext()) {
-      result.add(iterator.next());
-    }
-    
-    return Collections.unmodifiableList(result);
-  }
-
 }
-

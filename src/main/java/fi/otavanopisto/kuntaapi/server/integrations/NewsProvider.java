@@ -3,11 +3,14 @@ package fi.otavanopisto.kuntaapi.server.integrations;
 import java.time.OffsetDateTime;
 import java.util.List;
 
+import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
+import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
+import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
 import fi.otavanopisto.kuntaapi.server.rest.model.NewsArticle;
 
 /**
- * Interafce that describes a single news provider
+ * Interface that describes a single news provider
  * 
  * @author Antti Leppä
  */
@@ -19,12 +22,9 @@ public interface NewsProvider {
    * @param organizationId organization id
    * @param publishedBefore return only news published before the date
    * @param publishedAfter return only news published after the date
-   * @param firstResult first index of results
-   * @param maxResults maximum number of results
    * @return organization news articles
    */
-  public List<NewsArticle> listOrganizationNews(OrganizationId organizationId, OffsetDateTime publishedBefore, OffsetDateTime publishedAfter, 
-      Integer firstResult, Integer maxResults);
+  public List<NewsArticle> listOrganizationNews(OrganizationId organizationId, OffsetDateTime publishedBefore, OffsetDateTime publishedAfter);
   
   /**
    * Finds a single news article

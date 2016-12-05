@@ -3,9 +3,10 @@ package fi.otavanopisto.kuntaapi.server.persistence.dao;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.List;
+import java.util.logging.Logger;
 
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import javax.persistence.NonUniqueResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
@@ -16,10 +17,25 @@ import javax.persistence.Query;
  *
  * @param <T> entity type
  */
+@SuppressWarnings ("squid:S3306")
 public abstract class AbstractDAO<T> {
 
+  @Inject
+  private Logger logger;
+  
   @PersistenceContext
   private EntityManager entityManager;
+  
+  /**
+   * Returns entity by id
+   * 
+   * @param id entity id
+   * @return entity or null if non found
+   */
+  @SuppressWarnings("unchecked")
+  public T findById(String id) {
+    return (T) getEntityManager().find(getGenericTypeClass(), id);
+  }
   
   /**
    * Returns entity by id
@@ -105,11 +121,12 @@ public abstract class AbstractDAO<T> {
 
     if (list.isEmpty())
       return null;
+    
+    if (list.size() > 1) {
+      logger.severe(String.format("SingleResult query returned %d elements from %s", list.size(), getGenericTypeClass().getName()));
+    }
 
-    if (list.size() == 1)
-      return list.get(0);
-
-    throw new NonUniqueResultException("SingleResult query returned " + list.size() + " elements");
+    return list.get(list.size() - 1);
   }
 
   private Class<?> getFirstTypeArgument(ParameterizedType parameterizedType) {

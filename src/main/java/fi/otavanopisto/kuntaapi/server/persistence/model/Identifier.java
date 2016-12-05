@@ -12,11 +12,6 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.search.annotations.Analyze;
-import org.hibernate.search.annotations.DocumentId;
-import org.hibernate.search.annotations.Field;
-import org.hibernate.search.annotations.Indexed;
 import org.hibernate.validator.constraints.NotEmpty;
 
 /**
@@ -25,43 +20,42 @@ import org.hibernate.validator.constraints.NotEmpty;
  * @author Otavan Opisto
  */
 @Entity
-@Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "type", "source", "sourceId", "kuntaApiId" }) })
+@Table(uniqueConstraints = { 
+  @UniqueConstraint(columnNames = { "organizationKuntaApiId", "type", "source", "sourceId" }),
+  @UniqueConstraint(columnNames = { "organizationKuntaApiId", "type", "source", "kuntaApiId" }) 
+})
 @Cacheable(true)
 @Cache(usage = CacheConcurrencyStrategy.TRANSACTIONAL)
-@Indexed
 public class Identifier {
 
   @Id
-  @GeneratedValue (strategy = GenerationType.TABLE, generator="identifier-uuid")
-  @GenericGenerator (name="identifier-uuid", strategy = "org.hibernate.id.UUIDGenerator")
-  @DocumentId
-  private String id;
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
   
+  @Column
+  private String organizationKuntaApiId;
+
   @Column(nullable = false)
   @NotNull
   @NotEmpty
-  @Field (analyze = Analyze.NO)
   private String kuntaApiId;
 
   @Column(nullable = false)
   @NotNull
   @NotEmpty
-  @Field (analyze = Analyze.NO)
   private String type;
 
   @Column(nullable = false)
   @NotNull
   @NotEmpty
-  @Field (analyze = Analyze.NO)
   private String source;
 
   @Column(nullable = false)
   @NotNull
   @NotEmpty
-  @Field (analyze = Analyze.NO)
   private String sourceId;
   
-  public String getId() {
+  public Long getId() {
     return id;
   }
 
@@ -96,4 +90,13 @@ public class Identifier {
   public void setType(String type) {
     this.type = type;
   }
+  
+  public String getOrganizationKuntaApiId() {
+    return organizationKuntaApiId;
+  }
+  
+  public void setOrganizationKuntaApiId(String organizationKuntaApiId) {
+    this.organizationKuntaApiId = organizationKuntaApiId;
+  }
+  
 }

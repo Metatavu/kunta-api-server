@@ -12,18 +12,18 @@ import fi.otavanopisto.kuntaapi.server.persistence.model.SystemSetting_;
 /**
  * DAO class for SystemSetting entity
  * 
- * @author Otavan Opisto
+ * @author Antti Leppä
  */
 @Dependent
 public class SystemSettingDAO extends AbstractDAO<SystemSetting> {
 
   /**
-   * Creates new system setting entity
+   * Creates new SystemSetting entity
    * 
-   * @param key key of setting. Must by unique.
+   * @param key key of setting. Must by unique among the system
    * @param value setting value. Not nullable.
    * 
-   * @return created system setting entity
+   * @return created SystemSetting entity
    */
   public SystemSetting create(String key, String value) {
     SystemSetting systemSetting = new SystemSetting();
@@ -48,9 +48,7 @@ public class SystemSettingDAO extends AbstractDAO<SystemSetting> {
     Root<SystemSetting> root = criteria.from(SystemSetting.class);
     criteria.select(root);
     criteria.where(
-      criteriaBuilder.and(
-        criteriaBuilder.equal(root.get(SystemSetting_.key), key)
-      )
+      criteriaBuilder.equal(root.get(SystemSetting_.key), key)
     );
     
     return getSingleResult(entityManager.createQuery(criteria));

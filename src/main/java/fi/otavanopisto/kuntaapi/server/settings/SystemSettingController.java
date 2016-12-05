@@ -1,7 +1,11 @@
 package fi.otavanopisto.kuntaapi.server.settings;
 
+import java.util.logging.Logger;
+
 import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
+
+import org.apache.commons.lang3.StringUtils;
 
 import fi.otavanopisto.kuntaapi.server.persistence.dao.SystemSettingDAO;
 import fi.otavanopisto.kuntaapi.server.persistence.model.SystemSetting;
@@ -9,15 +13,30 @@ import fi.otavanopisto.kuntaapi.server.persistence.model.SystemSetting;
 /**
  * Controller for system settings. Class does not handle concurrency so caller must take care of that
  * 
- * @author Otavan Opisto
+ * @author Antti Leppä
  */
 @Dependent
 public class SystemSettingController {
+  
+  @Inject
+  private Logger logger;
 
   @Inject
   private SystemSettingDAO systemSettingDAO;
   
-  private SystemSettingController() {
+  /**
+   * Returns system setting by key or defaultValue if setting is not defined
+   * 
+   * @param key system setting key
+   * @return setting value
+   */
+  public String getSettingValue(String key, String defaultValue) {
+    SystemSetting systemSetting = systemSettingDAO.findByKey(key);
+    if (systemSetting != null) {
+      return systemSetting.getValue();
+    }
+    
+    return defaultValue;
   }
   
   /**
@@ -27,12 +46,33 @@ public class SystemSettingController {
    * @return setting value
    */
   public String getSettingValue(String key) {
-    SystemSetting systemSetting = systemSettingDAO.findByKey(key);
-    if (systemSetting != null) {
-      return systemSetting.getValue();
+    return getSettingValue(key, null);
+  }
+  
+  /**
+   * Returns comma delimitered system setting by key or defaultValue if setting is not defined
+   * 
+   * @param key system setting key
+   * @return setting value
+   */
+  public String[] getSettingValues(String key, String[] defaultValue) {
+    String value = getSettingValue(key);
+    String[] result = StringUtils.split(value, ',');
+    if (result == null) {
+      return defaultValue;
     }
     
-    return null;
+    return result;
+  }
+  
+  /**
+   * Returns comma delimitered system setting by key or null if setting is not defined
+   * 
+   * @param key system setting key
+   * @return setting value
+   */
+  public String[] getSettingValues(String key) {
+    return getSettingValues(key, null);
   }
   
   /**
@@ -46,8 +86,64 @@ public class SystemSettingController {
     if (systemSetting != null) {
       systemSettingDAO.updateValue(systemSetting, value);
     } else {
-      systemSettingDAO.create(key, value);
+      createSystemSetting(key, value);
     }
+  }
+  
+  /**
+   * Creates a new system setting
+   * 
+   * @param key key
+   * @param value value 
+   * @return SystemSetting
+   */
+  public SystemSetting createSystemSetting(String key, String value) {
+    return systemSettingDAO.create(key, value);
+  }
+  
+  /**
+   * Updates an system setting
+   * 
+   * @param systemSetting setting
+   * @param value value 
+   * @return SystemSetting
+   */
+  public SystemSetting updateSystemSetting(SystemSetting systemSetting, String value) {
+    if (systemSetting == null) {
+      logger.severe("Unable to update null setting");
+      return null;
+    }
+    
+    return systemSettingDAO.updateValue(systemSetting, value);
+  }
+  
+  /**
+   * Finds system setting by id
+   * 
+   * @param id system setting id
+   * @return system setting or null if not found
+   */
+  public SystemSetting findSystemSetting(String id) {
+    return systemSettingDAO.findById(id);
+  }
+
+  /**
+   * Finds system setting by key
+   * 
+   * @param key key
+   * @return system setting or null if not found
+   */
+  public SystemSetting findSystemSettingByKey(String key) {
+    return systemSettingDAO.findByKey(key);
+  }
+
+  /**
+   * Deletes an system setting
+   * 
+   * @param systemSetting setting
+   */
+  public void deleteSystemSetting(SystemSetting systemSetting) {
+    systemSettingDAO.delete(systemSetting);
   }
   
 }

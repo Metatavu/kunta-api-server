@@ -2,11 +2,14 @@ package fi.otavanopisto.kuntaapi.server.integrations;
 
 import java.util.List;
 
+import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
+import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.id.TileId;
 import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
 import fi.otavanopisto.kuntaapi.server.rest.model.Tile;
 
 /**
- * Interafce that describes a single tile provider
+ * Interface that describes a single tile provider
  * 
  * @author Antti Leppä
  */

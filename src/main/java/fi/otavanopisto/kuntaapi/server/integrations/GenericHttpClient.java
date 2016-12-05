@@ -15,6 +15,7 @@ import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 
 import org.apache.commons.io.IOUtils;
+import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.StatusLine;
@@ -30,6 +31,8 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 /**
  * Response aware HTTP client for integrations
@@ -74,13 +77,13 @@ public class GenericHttpClient {
     }
     
     try {
-      return doGETRequest(uriBuilder.build(), resultType);
+      return doGETRequest(uriBuilder.build(), resultType, null);
     } catch (URISyntaxException e) {
       logger.log(Level.SEVERE, INVALID_URI_SYNTAX, e);
       return new Response<>(500, INVALID_URI_SYNTAX, null);
     }
   }
-
+  
   /**
    * Executes a get request into a specified URI
    * 
@@ -90,18 +93,37 @@ public class GenericHttpClient {
    * @return the response
    */
   public <T> Response<T> doGETRequest(URI uri, ResultType<T> resultType) {
+    return doGETRequest(uri, resultType, null);
+  }
+
+  /**
+   * Executes a get request into a specified URI
+   * 
+   * @param uri request uri
+   * @param resultType type of request
+   * @param queryParams query params
+   * @param extraHeaders extra headers for the request
+   * @return the response
+   */
+  public <T> Response<T> doGETRequest(URI uri, ResultType<T> resultType, Map<String, String> extraHeaders) {
     CloseableHttpClient httpClient = HttpClients.createDefault();
     try {
-      return executeRequest(resultType, uri, httpClient);
+      return executeRequest(resultType, uri, httpClient, extraHeaders);
     } finally {
       closeClient(httpClient);
     }
   }
 
   private <T> Response<T> executeRequest(ResultType<T> resultType, URI uri,
-      CloseableHttpClient httpClient) {
+      CloseableHttpClient httpClient, Map<String, String> extraHeaders) {
     HttpGet httpGet = new HttpGet(uri);
    
+    if (extraHeaders != null) {
+      for (Entry<String, String> extraHeader : extraHeaders.entrySet()) {
+        httpGet.addHeader(extraHeader.getKey(), extraHeader.getValue());
+      }
+    }
+    
     try {
       CloseableHttpResponse response = httpClient.execute(httpGet);
       try {
@@ -147,15 +169,31 @@ public class GenericHttpClient {
 
   @SuppressWarnings("unchecked")
   private <T> Response<T> handleOkResponse(HttpResponse httpResponse, int statusCode, String message, TypeReference<T> typeReference) throws IOException {
-    ObjectMapper objectMapper = new ObjectMapper();
-    
     HttpEntity entity = httpResponse.getEntity();
     try {
       String httpResponseContent = IOUtils.toString(entity.getContent());
-      return new Response<>(statusCode, message, (T) objectMapper.readValue(httpResponseContent, typeReference));
+      String contentType = getContentType(httpResponse);
+      if ("text/xml".equals(contentType)) {
+        XmlMapper xmlMapper = new XmlMapper();
+        xmlMapper.registerModule(new JavaTimeModule());
+        return new Response<>(statusCode, message, (T) xmlMapper.readValue(httpResponseContent, typeReference));
+      } else {
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.registerModule(new JavaTimeModule());
+        return new Response<>(statusCode, message, (T) objectMapper.readValue(httpResponseContent, typeReference));
+      }
     } finally {
       EntityUtils.consume(entity);
     }
+  }
+  
+  private String getContentType(HttpResponse httpResponse) {
+    Header header = httpResponse.getFirstHeader("Content-Type");
+    if (header != null) {
+      return header.getValue();
+    }
+    
+    return null;
   }
 
   @SuppressWarnings("unchecked")

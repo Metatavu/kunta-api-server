@@ -1,13 +1,16 @@
 package fi.otavanopisto.kuntaapi.server.controllers;
 
-import java.util.List;
 import java.util.UUID;
 
-import javax.enterprise.context.Dependent;
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
-import fi.otavanopisto.kuntaapi.server.integrations.Id;
-import fi.otavanopisto.kuntaapi.server.integrations.IdType;
+import fi.otavanopisto.kuntaapi.server.id.BaseId;
+import fi.otavanopisto.kuntaapi.server.id.IdType;
+import fi.otavanopisto.kuntaapi.server.id.MissingOrganizationIdException;
+import fi.otavanopisto.kuntaapi.server.id.OrganizationBaseId;
+import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.persistence.dao.IdentifierDAO;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 
@@ -16,51 +19,43 @@ import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
  * 
  * @author Antti Leppä
  */
-@Dependent
+@ApplicationScoped
 public class IdentifierController {
   
   @Inject
   private IdentifierDAO identifierDAO;
   
-  private IdentifierController() {
-  }
-
   /**
    * Creates new identifier.
    * 
    * @param id identifier
    * @return created identifier
    */
-  public Identifier createIdentifier(Id id) {
+  public Identifier createIdentifier(BaseId id) {
+    String organizationKuntaApiId = null;
+    if (id instanceof OrganizationBaseId) {
+      OrganizationBaseId organizationBaseId = (OrganizationBaseId) id;
+      if (organizationBaseId.getOrganizationId() == null) {
+        throw new MissingOrganizationIdException("Attempted to create organizationBaseId without organization");
+      }
+
+      organizationKuntaApiId = getOrganizationKuntaApiId(organizationBaseId);
+      if (organizationKuntaApiId == null) {
+        throw new MissingOrganizationIdException(String.format("Could not find organiztion %s for id %s", organizationBaseId.getOrganizationId().toString(), organizationBaseId.toString()));
+      }
+    }
+    
     String kuntaApiId = UUID.randomUUID().toString();
-    return createIdentifier(id.getType().toString(), kuntaApiId, id.getSource(), id.getId());
+    return createIdentifier(id.getType().toString(), kuntaApiId, id.getSource(), id.getId(), organizationKuntaApiId);
   }
   
-  /**
-   * Creates new identifier and assigns a Kunta API id for it
-   * 
-   * @param id identifier
-   * @param kuntaApiId Kunta API id to be assigned
-   * @return created identifier
-   */
-  public Identifier createIdentifier(Id id, String kuntaApiId) {
-    return createIdentifier(id.getType().toString(), kuntaApiId, id.getSource(), id.getId());
-  }
-
-  private Identifier createIdentifier(String type, String kuntaApiId, String source, String sourceId) {
-    return identifierDAO.create(type, kuntaApiId, source, sourceId);
-  }
-
-  public Identifier findIdentifierByTypeSourceAndId(String type, String source, String sourceId) {
-    return identifierDAO.findByTypeSourceAndSourceId(type, source, sourceId);
-  }
-
-  public Identifier findIdentifierByTypeSourceAndId(IdType type, String source, String sourceId) {
-    return findIdentifierByTypeSourceAndId(type.toString(), source, sourceId);
-  }
-  
-  public Identifier findIdentifierById(Id id) {
-    return findIdentifierByTypeSourceAndId(id.getType().toString(), id.getSource(), id.getId());
+  public Identifier findIdentifierById(BaseId id) {
+    String organizationKuntaApiId = null;
+    if (id instanceof OrganizationBaseId) {
+      organizationKuntaApiId = getOrganizationKuntaApiId((OrganizationBaseId) id);
+    }
+    
+    return findIdentifierByTypeSourceAndIdOrganizationId(id.getType(), id.getSource(), id.getId(), organizationKuntaApiId);
   }
 
   public Identifier findIdentifierByTypeSourceAndKuntaApiId(String type, String source, String kuntaApiId) {
@@ -71,9 +66,33 @@ public class IdentifierController {
     return findIdentifierByTypeSourceAndKuntaApiId(type.toString(), source, kuntaApiId);
   }
 
-  public List<Identifier> listIdentifiersByTypeAndSource(IdType type, String source, Integer firstResult, Integer maxResults) {
-    return identifierDAO.listByTypeAndSource(type.toString(), source, firstResult, maxResults);
+  public void deleteIdentifier(Identifier identifier) {
+    identifierDAO.delete(identifier);
   }
 
+  private Identifier createIdentifier(String type, String kuntaApiId, String source, String sourceId, String organizationKuntaApiId) {
+    return identifierDAO.create(type, kuntaApiId, source, sourceId, organizationKuntaApiId);
+  }
 
+  private Identifier findIdentifierByTypeSourceIdAndOrganizationId(String type, String source, String sourceId, String organizationKuntaApiId) {
+    return identifierDAO.findByTypeSourceSourceIdAndOrganizationKuntaApiId(type, source, sourceId, organizationKuntaApiId);
+  }
+
+  private Identifier findIdentifierByTypeSourceAndIdOrganizationId(IdType type, String source, String sourceId, String organizationKuntaApiId) {
+    return findIdentifierByTypeSourceIdAndOrganizationId(type.toString(), source, sourceId, organizationKuntaApiId);
+  }
+  
+  private String getOrganizationKuntaApiId(OrganizationBaseId organizationBaseId) {
+    OrganizationId organizationId = organizationBaseId.getOrganizationId();
+    if (KuntaApiConsts.IDENTIFIER_NAME.equals(organizationId.getSource())) {
+      return organizationId.getId();
+    }
+    
+    Identifier organizationIdentifier = findIdentifierByTypeSourceAndIdOrganizationId(organizationId.getType(), organizationId.getSource(), organizationId.getId(), null);
+    if (organizationIdentifier != null) {
+      return organizationIdentifier.getKuntaApiId();
+    }
+    
+    return null;
+  }
 }

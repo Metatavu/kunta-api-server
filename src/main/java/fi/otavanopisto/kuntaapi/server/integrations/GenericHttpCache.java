@@ -14,6 +14,7 @@ import org.infinispan.manager.EmbeddedCacheManager;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpClient.Response;
 import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpClient.ResultType;
@@ -59,6 +60,7 @@ public class GenericHttpCache {
     Cache<String, String> cache = cacheManager.getCache(cacheName);
     if (cache.containsKey(url)) {
       ObjectMapper objectMapper = new ObjectMapper();
+      objectMapper.registerModule(new JavaTimeModule());
       try {
         return objectMapper.readValue(cache.get(url), type.getTypeReference());
       } catch (IOException e) {
@@ -91,6 +93,7 @@ public class GenericHttpCache {
   public void put(String cacheName, String url, Response<?> response) {
     Cache<String, String> cache = cacheManager.getCache(cacheName);
     ObjectMapper objectMapper = new ObjectMapper();
+    objectMapper.registerModule(new JavaTimeModule());
     try {
       cache.put(url, objectMapper.writeValueAsString(response));
     } catch (JsonProcessingException e) {
