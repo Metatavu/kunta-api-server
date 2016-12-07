@@ -1,5 +1,7 @@
 package fi.otavanopisto.kuntaapi.server.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -64,6 +66,17 @@ public class IdentifierController {
 
   public Identifier findIdentifierByTypeSourceAndKuntaApiId(IdType type, String source, String kuntaApiId) {
     return findIdentifierByTypeSourceAndKuntaApiId(type.toString(), source, kuntaApiId);
+  }
+  
+  public List<String> listSourceIdsBySource(String source) {
+    List<Identifier> identifiers = identifierDAO.listBySource(source);
+    List<String> result = new ArrayList<>(identifiers.size());
+    
+    for (Identifier identifier : identifiers) {
+      result.add(identifier.getSourceId());
+    }
+    
+    return result;
   }
 
   public void deleteIdentifier(Identifier identifier) {
