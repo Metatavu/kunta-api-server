@@ -242,6 +242,6 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
         }
       }
     }
-    
   }
+  
 }

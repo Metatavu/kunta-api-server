@@ -27,8 +27,8 @@ import fi.otavanopisto.kuntaapi.server.cache.TileCache;
 import fi.otavanopisto.kuntaapi.server.cache.TileImageCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
-import fi.otavanopisto.kuntaapi.server.discover.OrganizationIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.discover.TileIdRemoveRequest;
+import fi.otavanopisto.kuntaapi.server.discover.TileIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.IdPair;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
@@ -82,7 +82,7 @@ public class ManagementTileEntityUpdater extends EntityUpdater {
   private TimerService timerService;
 
   private boolean stopped;
-  private List<OrganizationId> queue;
+  private List<TileIdUpdateRequest> queue;
 
   @PostConstruct
   public void init() {
@@ -112,25 +112,25 @@ public class ManagementTileEntityUpdater extends EntityUpdater {
   }
   
   @Asynchronous
-  public void onOrganizationIdUpdateRequest(@Observes OrganizationIdUpdateRequest event) {
+  public void onTileIdUpdateRequest(@Observes TileIdUpdateRequest event) {
     if (!stopped) {
-      OrganizationId organizationId = event.getId();
+      OrganizationId organizationId = event.getOrganizationId();
       
       if (organizationSettingController.getSettingValue(organizationId, ManagementConsts.ORGANIZATION_SETTING_BASEURL) == null) {
         return;
       }
       
       if (event.isPriority()) {
-        queue.remove(organizationId);
-        queue.add(0, organizationId);
+        queue.remove(event);
+        queue.add(0, event);
       } else {
-        if (!queue.contains(organizationId)) {
-          queue.add(organizationId);
+        if (!queue.contains(event)) {
+          queue.add(event);
         }
       }
     }
   }
-
+  
   @Asynchronous
   public void onTileIdRemoveRequest(@Observes TileIdRemoveRequest event) {
     if (!stopped) {
@@ -148,34 +148,27 @@ public class ManagementTileEntityUpdater extends EntityUpdater {
   public void timeout(Timer timer) {
     if (!stopped) {
       if (!queue.isEmpty()) {
-        updateManagementTiles(queue.remove(0));
+        TileIdUpdateRequest updateRequest = queue.remove(0);
+        OrganizationId organizationId = updateRequest.getOrganizationId();
+        DefaultApi api = managementApi.getApi(organizationId);
+        
+        updateManagementTile(api, organizationId, updateRequest.getId());
       }
 
       startTimer(SystemUtils.inTestMode() ? 1000 : TIMER_INTERVAL);
     }
   }
 
-  private void updateManagementTiles(OrganizationId organizationId) {
-    DefaultApi api = managementApi.getApi(organizationId);
-    
-    List<Tile> managementTiles = listManagementTiles(api, organizationId);
-    for (Tile managementTile : managementTiles) {
-      updateManagementTile(organizationId, api, managementTile);
-    }
-  }
-
-  private List<Tile> listManagementTiles(DefaultApi api, OrganizationId organizationId) {
-    fi.otavanopisto.mwp.client.ApiResponse<List<Tile>> response = api.wpV2TileGet(null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+  private void updateManagementTile(DefaultApi api, OrganizationId organizationId, TileId managementTileId) {
+    fi.otavanopisto.mwp.client.ApiResponse<Tile> response = api.wpV2TileIdGet(managementTileId.getId(), null);
     if (response.isOk()) {
-      return response.getResponse();
+      updateManagementTile(api, organizationId, response.getResponse());
     } else {
-      logger.warning(String.format("Listing organization %s tiles failed on [%d] %s", organizationId.getId(), response.getStatus(), response.getMessage()));
+      logger.warning(String.format("Finding organization %s tile failed on [%d] %s", managementTileId.getId(), response.getStatus(), response.getMessage()));
     }
-    
-    return Collections.emptyList();
   }
   
-  private void updateManagementTile(OrganizationId organizationId, DefaultApi api, Tile managementTile) {
+  private void updateManagementTile(DefaultApi api, OrganizationId organizationId, Tile managementTile) {
     TileId tileId = new TileId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementTile.getId()));
 
     Identifier identifier = identifierController.findIdentifierById(tileId);
@@ -227,13 +220,30 @@ public class ManagementTileEntityUpdater extends EntityUpdater {
       }
     }
   }
-
+  
   private void deleteTile(OrganizationId organizationId, TileId tileId) {
     Identifier tileIdentifier = identifierController.findIdentifierById(tileId);
     if (tileIdentifier != null) {
+      TileId kuntaApiTileId = new TileId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, tileIdentifier.getKuntaApiId());
+      queue.remove(new TileIdUpdateRequest(organizationId, kuntaApiTileId, false));
+
       modificationHashCache.clear(tileIdentifier.getKuntaApiId());
+      tileCache.clear(kuntaApiTileId);
       identifierController.deleteIdentifier(tileIdentifier);
+      
+      List<IdPair<TileId,AttachmentId>> tileImageIds = tileImageCache.getChildIds(kuntaApiTileId);
+      for (IdPair<TileId,AttachmentId> tileImageId : tileImageIds) {
+        AttachmentId attachmentId = tileImageId.getChild();
+        tileImageCache.clear(tileImageId);
+        modificationHashCache.clear(attachmentId.getId());
+        
+        Identifier imageIdentifier = identifierController.findIdentifierById(attachmentId);
+        if (imageIdentifier != null) {
+          identifierController.deleteIdentifier(imageIdentifier);
+        }
+      }
     }
   }
+  
   
 }
