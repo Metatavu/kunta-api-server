@@ -79,10 +79,8 @@ public class PtvOrganizationEntityEvictor extends EntityUpdater {
   public void timeout(Timer timer) {
     if (!stopped) {
       if (queue.isEmpty()) {
-        List<String> sourceIds = identifierController.listSourceIdsBySource(PtvConsts.IDENTIFIFER_NAME);
-        for (String sourceId : sourceIds) {
-          queue.add(new OrganizationId(PtvConsts.IDENTIFIFER_NAME, sourceId));
-        }
+        List<OrganizationId> organizationIds = identifierController.listOrganizationsBySource(PtvConsts.IDENTIFIFER_NAME);
+        queue.addAll(organizationIds);
       } else {
         checkOrganization(queue.remove(0));
       }
