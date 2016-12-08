@@ -52,7 +52,7 @@ public class IdentifierController {
         throw new MissingOrganizationIdException("Attempted to create organizationBaseId without organization");
       }
 
-      organizationKuntaApiId = getOrganizationBaseIdKuntaApiId(organizationBaseId);
+      organizationKuntaApiId = getOrganizationBaseIdOrganizationKuntaApiId(organizationBaseId);
       if (organizationKuntaApiId == null) {
         throw new MissingOrganizationIdException(String.format("Could not find organiztion %s for id %s", organizationBaseId.getOrganizationId().toString(), organizationBaseId.toString()));
       }
@@ -65,7 +65,7 @@ public class IdentifierController {
   public Identifier findIdentifierById(BaseId id) {
     String organizationKuntaApiId = null;
     if (id instanceof OrganizationBaseId) {
-      organizationKuntaApiId = getOrganizationBaseIdKuntaApiId((OrganizationBaseId) id);
+      organizationKuntaApiId = getOrganizationBaseIdOrganizationKuntaApiId((OrganizationBaseId) id);
     }
     
     return findIdentifierByTypeSourceAndIdOrganizationId(id.getType(), id.getSource(), id.getId(), organizationKuntaApiId);
@@ -195,7 +195,7 @@ public class IdentifierController {
     return findIdentifierByTypeSourceIdAndOrganizationId(type.toString(), source, sourceId, organizationKuntaApiId);
   }
   
-  private String getOrganizationBaseIdKuntaApiId(OrganizationBaseId organizationBaseId) {
+  private String getOrganizationBaseIdOrganizationKuntaApiId(OrganizationBaseId organizationBaseId) {
     OrganizationId organizationId = organizationBaseId.getOrganizationId();
     if (KuntaApiConsts.IDENTIFIER_NAME.equals(organizationId.getSource())) {
       return organizationId.getId();
