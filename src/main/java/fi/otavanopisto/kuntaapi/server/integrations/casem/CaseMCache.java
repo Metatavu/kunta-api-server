@@ -109,6 +109,13 @@ public class CaseMCache {
     modificationHashCache.put(kuntaApiPageId.getId(), DigestUtils.md5Hex(content));
   }
 
+  public void removePage(PageId pageId) {
+    String cacheKey = getPageCacheKey(pageId.getOrganizationId(), pageId);
+    treeCache.clear(cacheKey);
+    contentCache.clear(cacheKey);
+    nodePageCache.clear(cacheKey);
+  }
+
   public List<LocalizedValue> getPageContent(OrganizationId organizationId, PageId pageId) {
     String content = contentCache.get(getPageCacheKey(organizationId, pageId));
     if (StringUtils.isBlank(content)) {
@@ -120,6 +127,10 @@ public class CaseMCache {
     localizedValue.setValue(content);
     
     return Collections.singletonList(localizedValue);
+  }
+  
+  public List<PageId> listOrganizationPageIds(OrganizationId organizationId) {
+    return listAllPageIds(organizationId, null);
   }
   
   private Page findPageByParentAndSlug(OrganizationId organizationId, PageId parentId, String slug) {
@@ -134,10 +145,7 @@ public class CaseMCache {
   }
 
   private List<Page> listCachedPages(OrganizationId organizationId, PageId parentId) {
-    List<PageId> pageIds = treeCache.get(getPageCacheKey(organizationId, parentId));
-    if (pageIds == null) {
-      return Collections.emptyList();
-    }
+    List<PageId> pageIds = listPageIds(organizationId, parentId);
     
     List<Page> pages = new ArrayList<>(pageIds.size());
     
@@ -149,6 +157,28 @@ public class CaseMCache {
     }
     
     return pages;
+  }
+  
+  private List<PageId> listAllPageIds(OrganizationId organizationId, PageId parentId) {
+    List<PageId> result = new ArrayList<>();
+    
+    List<PageId> pageIds = listPageIds(organizationId, parentId);
+    for (PageId pageId : pageIds) {
+      result.addAll(listAllPageIds(organizationId, pageId));
+    }
+    
+    result.addAll(pageIds);
+    
+    return result;
+  }
+
+  private List<PageId> listPageIds(OrganizationId organizationId, PageId parentId) {
+    List<PageId> pageIds = treeCache.get(getPageCacheKey(organizationId, parentId));
+    if (pageIds == null) {
+      return Collections.emptyList();
+    }
+    
+    return pageIds;
   }
   
   private String getPageCacheKey(OrganizationId organizationId, PageId pageId) {
