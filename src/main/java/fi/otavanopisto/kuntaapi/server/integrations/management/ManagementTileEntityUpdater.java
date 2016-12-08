@@ -20,14 +20,16 @@ import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 
 import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
 import fi.otavanopisto.kuntaapi.server.discover.OrganizationIdUpdateRequest;
+import fi.otavanopisto.kuntaapi.server.discover.TileIdRemoveRequest;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
-import fi.otavanopisto.kuntaapi.server.id.TileId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.id.TileId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
@@ -116,6 +118,19 @@ public class ManagementTileEntityUpdater extends EntityUpdater {
     }
   }
 
+  @Asynchronous
+  public void onTileIdRemoveRequest(@Observes TileIdRemoveRequest event) {
+    if (!stopped) {
+      TileId tileId = event.getId();
+      
+      if (!StringUtils.equals(tileId.getSource(), ManagementConsts.IDENTIFIER_NAME)) {
+        return;
+      }
+      
+      deleteTile(event.getOrganizationId(), tileId);
+    }
+  }
+
   @Timeout
   public void timeout(Timer timer) {
     if (!stopped) {
@@ -183,4 +198,12 @@ public class ManagementTileEntityUpdater extends EntityUpdater {
     }
   }
 
+  private void deleteTile(OrganizationId organizationId, TileId tileId) {
+    Identifier tileIdentifier = identifierController.findIdentifierById(tileId);
+    if (tileIdentifier != null) {
+      modificationHashCache.clear(tileIdentifier.getKuntaApiId());
+      identifierController.deleteIdentifier(tileIdentifier);
+    }
+  }
+  
 }
