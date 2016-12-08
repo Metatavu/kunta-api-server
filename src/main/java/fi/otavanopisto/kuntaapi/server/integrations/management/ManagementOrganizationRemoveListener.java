@@ -10,13 +10,17 @@ import javax.inject.Inject;
 
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.BannerIdRemoveRequest;
+import fi.otavanopisto.kuntaapi.server.discover.MenuIdRemoveRequest;
 import fi.otavanopisto.kuntaapi.server.discover.NewsArticleIdRemoveRequest;
 import fi.otavanopisto.kuntaapi.server.discover.OrganizationIdRemoveRequest;
 import fi.otavanopisto.kuntaapi.server.discover.PageIdRemoveRequest;
+import fi.otavanopisto.kuntaapi.server.discover.TileIdRemoveRequest;
 import fi.otavanopisto.kuntaapi.server.id.BannerId;
+import fi.otavanopisto.kuntaapi.server.id.MenuId;
 import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
+import fi.otavanopisto.kuntaapi.server.id.TileId;
 
 @ApplicationScoped
 public class ManagementOrganizationRemoveListener {
@@ -32,6 +36,12 @@ public class ManagementOrganizationRemoveListener {
 
   @Inject
   private Event<NewsArticleIdRemoveRequest> newsArticleIdRemoveRequest;
+
+  @Inject
+  private Event<TileIdRemoveRequest> tileIdRemoveRequest;
+
+  @Inject
+  private Event<MenuIdRemoveRequest> menuIdRemoveRequest;
 
   @Asynchronous
   public void onOrganizationIdRemoveRequest(@Observes OrganizationIdRemoveRequest event) {
@@ -50,6 +60,16 @@ public class ManagementOrganizationRemoveListener {
     List<NewsArticleId> newsArticleIds = identifierController.listOrganizationNewsArticleIdsBySource(organizationId, ManagementConsts.IDENTIFIER_NAME);
     for (NewsArticleId newsArticleId : newsArticleIds) {
       newsArticleIdRemoveRequest.fire(new NewsArticleIdRemoveRequest(organizationId, newsArticleId));
+    }
+
+    List<TileId> tileIds = identifierController.listOrganizationTileIdsBySource(organizationId, ManagementConsts.IDENTIFIER_NAME);
+    for (TileId tileId : tileIds) {
+      tileIdRemoveRequest.fire(new TileIdRemoveRequest(organizationId, tileId));
+    }
+    
+    List<MenuId> menuIds = identifierController.listOrganizationMenuIdsBySource(organizationId, ManagementConsts.IDENTIFIER_NAME);
+    for (MenuId menuId : menuIds) {
+      menuIdRemoveRequest.fire(new MenuIdRemoveRequest(organizationId, menuId));
     }
   }
   

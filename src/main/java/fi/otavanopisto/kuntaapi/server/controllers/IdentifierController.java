@@ -13,11 +13,13 @@ import javax.inject.Inject;
 import fi.otavanopisto.kuntaapi.server.id.BannerId;
 import fi.otavanopisto.kuntaapi.server.id.BaseId;
 import fi.otavanopisto.kuntaapi.server.id.IdType;
+import fi.otavanopisto.kuntaapi.server.id.MenuId;
 import fi.otavanopisto.kuntaapi.server.id.MissingOrganizationIdException;
 import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationBaseId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
+import fi.otavanopisto.kuntaapi.server.id.TileId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.persistence.dao.IdentifierDAO;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
@@ -122,6 +124,28 @@ public class IdentifierController {
     
     for (String newsArticleId : newsArticleIds) {
       result.add(new NewsArticleId(organizationId, source, newsArticleId));
+    }
+    
+    return result;
+  }
+
+  public List<MenuId> listOrganizationMenuIdsBySource(OrganizationId organizationId, String source) {
+    List<String> menuIds = listSourceIdsByOrganizationIdAndSourceAndType(organizationId, source, IdType.MENU.toString());
+    List<MenuId> result = new ArrayList<>(menuIds.size());
+    
+    for (String menuId : menuIds) {
+      result.add(new MenuId(organizationId, source, menuId));
+    }
+    
+    return result;
+  }
+
+  public List<TileId> listOrganizationTileIdsBySource(OrganizationId organizationId, String source) {
+    List<String> tileIds = listSourceIdsByOrganizationIdAndSourceAndType(organizationId, source, IdType.TILE.toString());
+    List<TileId> result = new ArrayList<>(tileIds.size());
+    
+    for (String tileId : tileIds) {
+      result.add(new TileId(organizationId, source, tileId));
     }
     
     return result;
