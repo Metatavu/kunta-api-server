@@ -6,6 +6,7 @@ import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
+import fi.metatavu.management.client.model.Attachment.MediaTypeEnum;
 import fi.otavanopisto.kuntaapi.server.cache.TileCache;
 import fi.otavanopisto.kuntaapi.server.cache.TileImageCache;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
@@ -16,7 +17,6 @@ import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.TileProvider;
 import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
 import fi.otavanopisto.kuntaapi.server.rest.model.Tile;
-import fi.otavanopisto.mwp.client.model.Attachment.MediaTypeEnum;
 
 /**
  * Tile provider for management wordpress
@@ -84,7 +84,7 @@ public class ManagementTileProvider extends AbstractManagementProvider implement
       return null;
     }
     
-    fi.otavanopisto.mwp.client.model.Attachment featuredMedia = findMedia(organizationId, mediaId);
+    fi.metatavu.management.client.model.Attachment featuredMedia = findMedia(organizationId, mediaId);
     if (featuredMedia.getMediaType() == MediaTypeEnum.IMAGE) {
       AttachmentData imageData = managementImageLoader.getImageData(featuredMedia.getSourceUrl());
       

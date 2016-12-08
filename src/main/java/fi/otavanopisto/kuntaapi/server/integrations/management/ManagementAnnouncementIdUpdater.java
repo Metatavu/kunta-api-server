@@ -20,21 +20,22 @@ import javax.enterprise.event.Event;
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 
-import fi.otavanopisto.kuntaapi.server.discover.MenuIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.discover.IdUpdater;
 import fi.otavanopisto.kuntaapi.server.discover.OrganizationIdUpdateRequest;
-import fi.otavanopisto.kuntaapi.server.id.MenuId;
+import fi.otavanopisto.kuntaapi.server.discover.AnnouncementIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.id.AnnouncementId;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 import fi.otavanopisto.kuntaapi.server.system.SystemUtils;
+import fi.metatavu.management.client.ApiResponse;
 import fi.metatavu.management.client.DefaultApi;
-import fi.metatavu.management.client.model.Menu;
+import fi.metatavu.management.client.model.Announcement;
 
 @ApplicationScoped
 @Singleton
 @AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
-public class ManagementMenuIdUpdater extends IdUpdater {
+public class ManagementAnnouncementIdUpdater extends IdUpdater {
 
   private static final int WARMUP_TIME = 1000 * 10;
   private static final int TIMER_INTERVAL = 5000;
@@ -49,7 +50,7 @@ public class ManagementMenuIdUpdater extends IdUpdater {
   private OrganizationSettingController organizationSettingController; 
   
   @Inject
-  private Event<MenuIdUpdateRequest> idUpdateRequest;
+  private Event<AnnouncementIdUpdateRequest> idUpdateRequest;
 
   private boolean stopped;
   private List<OrganizationId> queue;
@@ -64,7 +65,7 @@ public class ManagementMenuIdUpdater extends IdUpdater {
 
   @Override
   public String getName() {
-    return "management-menu-ids";
+    return "management-announcement-ids";
   }
   
   @Override
@@ -108,32 +109,32 @@ public class ManagementMenuIdUpdater extends IdUpdater {
   public void timeout(Timer timer) {
     if (!stopped) {
       if (!queue.isEmpty()) {
-        updateManagementMenus(queue.remove(0));
+        updateManagementAnnouncements(queue.remove(0));
       }
 
       startTimer(SystemUtils.inTestMode() ? 1000 : TIMER_INTERVAL);
     }
   }
   
-  private void updateManagementMenus(OrganizationId organizationId) {
+  private void updateManagementAnnouncements(OrganizationId organizationId) {
     DefaultApi api = managementApi.getApi(organizationId);
     
-    List<Menu> managementMenus = listManagementMenus(api, organizationId);
-    for (Menu managementMenu : managementMenus) {
-      MenuId menuId = new MenuId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementMenu.getId()));
-      idUpdateRequest.fire(new MenuIdUpdateRequest(organizationId, menuId, false));
+    List<Announcement> managementAnnouncements = listManagementAnnouncements(api, organizationId);
+    for (Announcement managementAnnouncement : managementAnnouncements) {
+      AnnouncementId announcementId = new AnnouncementId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementAnnouncement.getId()));
+      idUpdateRequest.fire(new AnnouncementIdUpdateRequest(organizationId, announcementId, false));
     }
   }
-
-  private List<Menu> listManagementMenus(DefaultApi api, OrganizationId organizationId) {
-    fi.metatavu.management.client.ApiResponse<List<Menu>> response = api.kuntaApiMenusGet(null);
+  
+  private List<Announcement> listManagementAnnouncements(DefaultApi api, OrganizationId organizationId) {
+    ApiResponse<List<Announcement>> response = api.wpV2AnnouncementGet(null, null, null, null, null, null, null, null, null, null, null, null, null, null);
     if (response.isOk()) {
       return response.getResponse();
     } else {
-      logger.warning(String.format("Listing organization %s menus failed on [%d] %s", organizationId.getId(), response.getStatus(), response.getMessage()));
+      logger.warning(String.format("Listing organization %s announcements failed on [%d] %s", organizationId.getId(), response.getStatus(), response.getMessage()));
     }
     
     return Collections.emptyList();
   }
-  
+
 }

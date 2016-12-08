@@ -18,6 +18,7 @@ import org.apache.commons.lang3.EnumUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 
+import fi.otavanopisto.kuntaapi.server.controllers.AnnouncementController;
 import fi.otavanopisto.kuntaapi.server.controllers.BannerController;
 import fi.otavanopisto.kuntaapi.server.controllers.EventController;
 import fi.otavanopisto.kuntaapi.server.controllers.FileController;
@@ -28,6 +29,7 @@ import fi.otavanopisto.kuntaapi.server.controllers.NewsController;
 import fi.otavanopisto.kuntaapi.server.controllers.OrganizationController;
 import fi.otavanopisto.kuntaapi.server.controllers.PageController;
 import fi.otavanopisto.kuntaapi.server.controllers.TileController;
+import fi.otavanopisto.kuntaapi.server.id.AnnouncementId;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.BannerId;
 import fi.otavanopisto.kuntaapi.server.id.EventId;
@@ -40,6 +42,9 @@ import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationServiceId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.id.TileId;
+import fi.otavanopisto.kuntaapi.server.integrations.AnnouncementProvider;
+import fi.otavanopisto.kuntaapi.server.integrations.AnnouncementProvider.AnnouncementOrder;
+import fi.otavanopisto.kuntaapi.server.integrations.AnnouncementProvider.AnnouncementOrderDirection;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.EventProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.JobProvider;
@@ -47,6 +52,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.JobProvider.JobOrder;
 import fi.otavanopisto.kuntaapi.server.integrations.JobProvider.JobOrderDirection;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.OrganizationServiceProvider;
+import fi.otavanopisto.kuntaapi.server.rest.model.Announcement;
 import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
 import fi.otavanopisto.kuntaapi.server.rest.model.Banner;
 import fi.otavanopisto.kuntaapi.server.rest.model.Event;
@@ -98,6 +104,9 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   
   @Inject
   private BannerController bannerController;
+  
+  @Inject
+  private AnnouncementController announcementController;
 
   @Inject
   private TileController tileController;
@@ -1091,16 +1100,57 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   /* Announcements */
 
   @Override
-  public Response findOrganizationAnnouncement(String organizationId, String announcementId, @Context Request request) {
-    return null;
+  public Response findOrganizationAnnouncement(String organizationIdParam, String announcementIdParam, @Context Request request) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    AnnouncementId announcementId = toAnnouncementId(organizationId, announcementIdParam);
+    if (announcementId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+
+    Response notModified = httpCacheController.getNotModified(request, announcementId);
+    if (notModified != null) {
+      return notModified;
+    }
+    
+    Announcement announcement = announcementController.findAnnouncement(organizationId, announcementId);
+    if (announcement != null) {
+      return httpCacheController.sendModified(announcement, announcement.getId());
+    }
+    
+    return createNotFound(NOT_FOUND);
   }
 
   @Override
-  public Response listOrganizationAnnouncements(String organizationId, Integer firstResult, Integer maxResults,
-      String sortBy, String sortDir, @Context Request request) {
-    return null;
+  public Response listOrganizationAnnouncements(String organizationIdParam, Integer firstResult, Integer maxResults, String sortBy, String sortDir, @Context Request request) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    AnnouncementProvider.AnnouncementOrder order = null;
+    AnnouncementProvider.AnnouncementOrderDirection orderDirection = null;
+    
+    if (StringUtils.isNotBlank(sortBy)) {
+      order = EnumUtils.getEnum(AnnouncementProvider.AnnouncementOrder.class, sortBy);
+      if (order == null) {
+        return createBadRequest("Invalid value for sortBy");
+      }
+    }
+    
+    if (StringUtils.isNotBlank(sortDir)) {
+      orderDirection = EnumUtils.getEnum(AnnouncementProvider.AnnouncementOrderDirection.class, sortDir);
+      if (orderDirection == null) {
+        return createBadRequest("Invalid value for sortDir");
+      }
+    }
+    
+    return listOrganizationAnnouncements(request, organizationId, order, orderDirection, firstResult, maxResults);
   }
-  
+
   private List<Page> listOrganizationPages(OrganizationId organizationId, boolean onlyRootPages, PageId parentId, String path, String search, Long firstResult, Long maxResults) {
     if (search != null) {
       return pageController.searchPages(organizationId, search, firstResult, maxResults);
@@ -1111,6 +1161,18 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   private Response listOrganizationJobs(Request request, OrganizationId organizationId, JobOrder order, JobOrderDirection orderDirection, Long firstResult, Long maxResults) {
     List<Job> result = jobController.listJobs(organizationId, order, orderDirection, firstResult, maxResults);
+    
+    List<String> ids = httpCacheController.getEntityIds(result);
+    Response notModified = httpCacheController.getNotModified(request, ids);
+    if (notModified != null) {
+      return notModified;
+    }
+
+    return httpCacheController.sendModified(result, ids);
+  }
+
+  private Response listOrganizationAnnouncements(Request request, OrganizationId organizationId, AnnouncementOrder order, AnnouncementOrderDirection orderDirection, Integer firstResult, Integer maxResults) {
+    List<Announcement> result = announcementController.listAnnouncements(organizationId, order, orderDirection, firstResult, maxResults);
     
     List<String> ids = httpCacheController.getEntityIds(result);
     Response notModified = httpCacheController.getNotModified(request, ids);
@@ -1224,6 +1286,14 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   private JobId toJobId(OrganizationId organizationId, String id) {
     if (StringUtils.isNotBlank(id)) {
       return new JobId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, id);
+    }
+    
+    return null;
+  }
+  
+  private AnnouncementId toAnnouncementId(OrganizationId organizationId, String id) {
+    if (StringUtils.isNotBlank(id)) {
+      return new AnnouncementId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, id);
     }
     
     return null;

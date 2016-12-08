@@ -41,9 +41,9 @@ import fi.otavanopisto.kuntaapi.server.rest.model.Menu;
 import fi.otavanopisto.kuntaapi.server.rest.model.MenuItem;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 import fi.otavanopisto.kuntaapi.server.system.SystemUtils;
-import fi.otavanopisto.mwp.client.ApiResponse;
-import fi.otavanopisto.mwp.client.DefaultApi;
-import fi.otavanopisto.mwp.client.model.Menuitem;
+import fi.metatavu.management.client.ApiResponse;
+import fi.metatavu.management.client.DefaultApi;
+import fi.metatavu.management.client.model.Menuitem;
 
 @ApplicationScoped
 @Singleton
@@ -158,7 +158,7 @@ public class ManagementMenuEntityUpdater extends EntityUpdater {
   }
 
   private void updateManagementMenu(DefaultApi api, OrganizationId organizationId, MenuId managementMenuId) {
-    ApiResponse<fi.otavanopisto.mwp.client.model.Menu> response = api.kuntaApiMenusIdGet(managementMenuId.getId());
+    ApiResponse<fi.metatavu.management.client.model.Menu> response = api.kuntaApiMenusIdGet(managementMenuId.getId());
     if (response.isOk()) {
       updateManagementMenu(api, organizationId, response.getResponse());
     } else {
@@ -166,7 +166,7 @@ public class ManagementMenuEntityUpdater extends EntityUpdater {
     }
   }
 
-  private void updateManagementMenu(DefaultApi api, OrganizationId organizationId, fi.otavanopisto.mwp.client.model.Menu managementMenu) {
+  private void updateManagementMenu(DefaultApi api, OrganizationId organizationId, fi.metatavu.management.client.model.Menu managementMenu) {
     Menu menu = updateManagementMenu(organizationId, managementMenu);
     MenuId menuId = new MenuId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, menu.getId());
     
@@ -176,10 +176,10 @@ public class ManagementMenuEntityUpdater extends EntityUpdater {
     }
   }
 
-  private List<Menuitem> listManagementMenuItems(DefaultApi api, fi.otavanopisto.mwp.client.model.Menu menu) {
+  private List<Menuitem> listManagementMenuItems(DefaultApi api, fi.metatavu.management.client.model.Menu menu) {
     List<Menuitem> result = new ArrayList<>();
     String menuId = String.valueOf(menu.getId());
-    fi.otavanopisto.mwp.client.ApiResponse<List<Menuitem>> response = api.kuntaApiMenusMenuIdItemsGet(menuId);
+    fi.metatavu.management.client.ApiResponse<List<Menuitem>> response = api.kuntaApiMenusMenuIdItemsGet(menuId);
     if (response.isOk()) {
       result.addAll(response.getResponse());
     } else {
@@ -189,7 +189,7 @@ public class ManagementMenuEntityUpdater extends EntityUpdater {
     return result;
   }
   
-  private Menu updateManagementMenu(OrganizationId organizationId, fi.otavanopisto.mwp.client.model.Menu managementMenu) {
+  private Menu updateManagementMenu(OrganizationId organizationId, fi.metatavu.management.client.model.Menu managementMenu) {
     MenuId managementMenuId = new MenuId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementMenu.getId()));
 
     Identifier identifier = identifierController.findIdentifierById(managementMenuId);
@@ -220,7 +220,7 @@ public class ManagementMenuEntityUpdater extends EntityUpdater {
     menuItemCache.put(new IdPair<MenuId, MenuItemId>(menuId,kuntaApiMenuItemId), menuItem);
   }
 
-  private Menu translateMenu(OrganizationId organizationId, fi.otavanopisto.mwp.client.model.Menu managementMenu) {
+  private Menu translateMenu(OrganizationId organizationId, fi.metatavu.management.client.model.Menu managementMenu) {
     Menu menu = new Menu();
     
     MenuId managementMenuId = new MenuId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementMenu.getId()));
@@ -236,7 +236,7 @@ public class ManagementMenuEntityUpdater extends EntityUpdater {
     return menu;
   }
   
-  private MenuItem translateMenuItem(OrganizationId organizationId, fi.otavanopisto.mwp.client.model.Menuitem managementMenuItem) {
+  private MenuItem translateMenuItem(OrganizationId organizationId, fi.metatavu.management.client.model.Menuitem managementMenuItem) {
     MenuItem menuItem = new MenuItem();
     
     MenuItemId managementMenuItemId = new MenuItemId(organizationId,ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementMenuItem.getId()));
@@ -276,7 +276,7 @@ public class ManagementMenuEntityUpdater extends EntityUpdater {
     return idController.translateMenuItemId(managementMenuItem, KuntaApiConsts.IDENTIFIER_NAME);
   }
 
-  private MenuItemType getItemType(fi.otavanopisto.mwp.client.model.Menuitem managementMenuItem) {
+  private MenuItemType getItemType(fi.metatavu.management.client.model.Menuitem managementMenuItem) {
     switch (managementMenuItem.getType()) {
       case "page":
         return MenuItemType.PAGE;

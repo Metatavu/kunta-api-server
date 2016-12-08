@@ -22,6 +22,10 @@ import javax.inject.Inject;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
 
+import fi.metatavu.management.client.ApiResponse;
+import fi.metatavu.management.client.DefaultApi;
+import fi.metatavu.management.client.model.Attachment;
+import fi.metatavu.management.client.model.Tile;
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.cache.TileCache;
 import fi.otavanopisto.kuntaapi.server.cache.TileImageCache;
@@ -38,10 +42,6 @@ import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 import fi.otavanopisto.kuntaapi.server.system.SystemUtils;
-import fi.otavanopisto.mwp.client.ApiResponse;
-import fi.otavanopisto.mwp.client.DefaultApi;
-import fi.otavanopisto.mwp.client.model.Attachment;
-import fi.otavanopisto.mwp.client.model.Tile;
 
 @ApplicationScoped
 @Singleton
@@ -160,7 +160,7 @@ public class ManagementTileEntityUpdater extends EntityUpdater {
   }
 
   private void updateManagementTile(DefaultApi api, OrganizationId organizationId, TileId managementTileId) {
-    fi.otavanopisto.mwp.client.ApiResponse<Tile> response = api.wpV2TileIdGet(managementTileId.getId(), null);
+    ApiResponse<Tile> response = api.wpV2TileIdGet(managementTileId.getId(), null);
     if (response.isOk()) {
       updateManagementTile(api, organizationId, response.getResponse());
     } else {
@@ -192,7 +192,7 @@ public class ManagementTileEntityUpdater extends EntityUpdater {
   }
   
   private void updateFeaturedMedia(OrganizationId organizationId, TileId kuntaApiId, DefaultApi api, Integer featuredMedia) {
-    ApiResponse<fi.otavanopisto.mwp.client.model.Attachment> response = api.wpV2MediaIdGet(String.valueOf(featuredMedia), null);
+    ApiResponse<Attachment> response = api.wpV2MediaIdGet(String.valueOf(featuredMedia), null);
     if (!response.isOk()) {
       logger.severe(String.format("Finding media failed on [%d] %s", response.getStatus(), response.getMessage()));
     } else {

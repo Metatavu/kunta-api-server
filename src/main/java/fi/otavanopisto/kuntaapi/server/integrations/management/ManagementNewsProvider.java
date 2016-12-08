@@ -18,7 +18,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.NewsProvider;
 import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
 import fi.otavanopisto.kuntaapi.server.rest.model.NewsArticle;
-import fi.otavanopisto.mwp.client.model.Attachment.MediaTypeEnum;
+import fi.metatavu.management.client.model.Attachment.MediaTypeEnum;
 
 /**
  * News provider for management wordpress
@@ -90,7 +90,7 @@ public class ManagementNewsProvider extends AbstractManagementProvider implement
       return null;
     }
     
-    fi.otavanopisto.mwp.client.model.Attachment featuredMedia = findMedia(organizationId, mediaId);
+    fi.metatavu.management.client.model.Attachment featuredMedia = findMedia(organizationId, mediaId);
     if (featuredMedia.getMediaType() == MediaTypeEnum.IMAGE) {
       AttachmentData imageData = managementImageLoader.getImageData(featuredMedia.getSourceUrl());
       
