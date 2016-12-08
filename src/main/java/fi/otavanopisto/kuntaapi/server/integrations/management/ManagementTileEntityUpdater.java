@@ -23,14 +23,18 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
+import fi.otavanopisto.kuntaapi.server.cache.TileCache;
+import fi.otavanopisto.kuntaapi.server.cache.TileImageCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
 import fi.otavanopisto.kuntaapi.server.discover.OrganizationIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.discover.TileIdRemoveRequest;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
+import fi.otavanopisto.kuntaapi.server.id.IdPair;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.TileId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
+import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 import fi.otavanopisto.kuntaapi.server.system.SystemUtils;
@@ -57,10 +61,19 @@ public class ManagementTileEntityUpdater extends EntityUpdater {
   private ManagementImageLoader managementImageLoader;
   
   @Inject
+  private ManagementTranslator managementTranslator;
+  
+  @Inject
   private OrganizationSettingController organizationSettingController; 
   
   @Inject
   private IdentifierController identifierController;
+  
+  @Inject
+  private TileCache tileCache;
+  
+  @Inject
+  private TileImageCache tileImageCache;
   
   @Inject
   private ModificationHashCache modificationHashCache;
@@ -170,27 +183,44 @@ public class ManagementTileEntityUpdater extends EntityUpdater {
       identifier = identifierController.createIdentifier(tileId);
     }
     
-    modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(managementTile));
+    TileId kuntaApiTileId = new TileId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
+    fi.otavanopisto.kuntaapi.server.rest.model.Tile tile = managementTranslator.translateTile(kuntaApiTileId, managementTile);
+    if (tile == null) {
+      logger.severe(String.format("Could not translate management tile %s", identifier.getKuntaApiId()));
+      return;
+    }
+    
+    tileCache.put(kuntaApiTileId, tile);
+    modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(tile));
     
     if (managementTile.getFeaturedMedia() != null && managementTile.getFeaturedMedia() > 0) {
-      updateFeaturedMedia(organizationId, api, managementTile.getFeaturedMedia()); 
+      updateFeaturedMedia(organizationId, kuntaApiTileId, api, managementTile.getFeaturedMedia()); 
     }
   }
   
-  private void updateFeaturedMedia(OrganizationId organizationId, DefaultApi api, Integer featuredMedia) {
+  private void updateFeaturedMedia(OrganizationId organizationId, TileId kuntaApiId, DefaultApi api, Integer featuredMedia) {
     ApiResponse<fi.otavanopisto.mwp.client.model.Attachment> response = api.wpV2MediaIdGet(String.valueOf(featuredMedia), null);
     if (!response.isOk()) {
       logger.severe(String.format("Finding media failed on [%d] %s", response.getStatus(), response.getMessage()));
     } else {
-      Attachment attachment = response.getResponse();
-      AttachmentId attachmentId = new AttachmentId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(attachment.getId()));
+      Attachment managementAttachment = response.getResponse();
+      AttachmentId managementAttachmentId = new AttachmentId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementAttachment.getId()));
       
-      Identifier identifier = identifierController.findIdentifierById(attachmentId);
+      Identifier identifier = identifierController.findIdentifierById(managementAttachmentId);
       if (identifier == null) {
-        identifier = identifierController.createIdentifier(attachmentId);
+        identifier = identifierController.createIdentifier(managementAttachmentId);
       }
       
-      AttachmentData imageData = managementImageLoader.getImageData(attachment.getSourceUrl());
+      AttachmentId kuntaApiAttachmentId = new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
+      fi.otavanopisto.kuntaapi.server.rest.model.Attachment attachment = managementTranslator.translateAttachment(kuntaApiAttachmentId, managementAttachment);
+      if (attachment == null) {
+        logger.severe(String.format("Could not translate management attachment %s", identifier.getKuntaApiId()));
+        return;
+      }
+      
+      tileImageCache.put(new IdPair<>(kuntaApiId, kuntaApiAttachmentId), attachment);
+      
+      AttachmentData imageData = managementImageLoader.getImageData(managementAttachment.getSourceUrl());
       if (imageData != null) {
         String dataHash = DigestUtils.md5Hex(imageData.getData());
         modificationHashCache.put(identifier.getKuntaApiId(), dataHash);

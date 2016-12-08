@@ -18,11 +18,13 @@ import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
+import fi.otavanopisto.kuntaapi.server.id.TileId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
 import fi.otavanopisto.kuntaapi.server.rest.model.Banner;
 import fi.otavanopisto.kuntaapi.server.rest.model.LocalizedValue;
 import fi.otavanopisto.kuntaapi.server.rest.model.NewsArticle;
+import fi.otavanopisto.kuntaapi.server.rest.model.Tile;
 import fi.otavanopisto.mwp.client.model.Post;
 
 @ApplicationScoped
@@ -108,7 +110,7 @@ public class ManagementTranslator {
     return banner;
   }
   
-  public  NewsArticle translateNewsArticle(NewsArticleId kuntaApiNewsArticleId, Post post) {
+  public NewsArticle translateNewsArticle(NewsArticleId kuntaApiNewsArticleId, Post post) {
     NewsArticle newsArticle = new NewsArticle();
     
     newsArticle.setAbstract(post.getExcerpt().getRendered());
@@ -119,6 +121,16 @@ public class ManagementTranslator {
     newsArticle.setSlug(post.getSlug());
     
     return newsArticle;
+  }
+  
+  public Tile translateTile(TileId kuntaApiTileId, fi.otavanopisto.mwp.client.model.Tile managementTile) {
+    Tile tile = new Tile();
+    tile.setContents(managementTile.getContent().getRendered());
+    tile.setId(kuntaApiTileId.getId());
+    tile.setLink(managementTile.getTileLink());
+    tile.setTitle(managementTile.getTitle().getRendered());
+    
+    return tile;
   }
   
   private AttachmentId getImageAttachmentId(OrganizationId organizationId, Integer id) {
