@@ -18,6 +18,7 @@ import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Event;
 import javax.enterprise.event.Observes;
+import javax.enterprise.event.TransactionPhase;
 import javax.inject.Inject;
 
 import org.apache.commons.lang3.StringUtils;
@@ -120,7 +121,7 @@ public class PtvOrganizationEntityUpdater extends EntityUpdater {
   }
   
   @Asynchronous
-  public void onOrganizationIdRemoveRequest(@Observes OrganizationIdRemoveRequest event) {
+  public void onOrganizationIdRemoveRequest(@Observes (during = TransactionPhase.BEFORE_COMPLETION) OrganizationIdRemoveRequest event) {
     if (!stopped) {
       OrganizationId organizationId = event.getId();
       
