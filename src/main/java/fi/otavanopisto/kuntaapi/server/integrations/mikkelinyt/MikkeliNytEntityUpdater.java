@@ -36,6 +36,7 @@ import fi.otavanopisto.kuntaapi.server.cache.EventImageCache;
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
+import fi.otavanopisto.kuntaapi.server.discover.OrganizationIdRemoveRequest;
 import fi.otavanopisto.kuntaapi.server.discover.OrganizationIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.EventId;
@@ -136,6 +137,14 @@ public class MikkeliNytEntityUpdater extends EntityUpdater {
       }
     }
   }
+  
+  @Asynchronous
+  public void onOrganizationIdRemoveRequest(@Observes OrganizationIdRemoveRequest event) {
+    OrganizationId organizationId = event.getId();
+    queue.remove(organizationId);
+    
+    deleteEvents(organizationId);
+  }
 
   @Timeout
   public void timeout(Timer timer) {
@@ -191,6 +200,36 @@ public class MikkeliNytEntityUpdater extends EntityUpdater {
 
     modificationHashCache.put(kuntaApiId.getId(), createPojoHash(attachment));
     eventImageCache.put(new IdPair<EventId, AttachmentId>(eventId, kuntaApiId), attachment);
+  }
+  
+  private void deleteEvents(OrganizationId organizationId) {
+    List<EventId> eventIds = eventCache.getOragnizationIds(organizationId);
+    for (EventId eventId : eventIds) {
+      deleteEvent(organizationId, eventId);
+    }
+  }
+   
+  private void deleteEvent(OrganizationId organizationId, EventId eventId) {
+    Identifier eventIdentifier = identifierController.findIdentifierById(eventId);
+    if (eventIdentifier != null) {
+      EventId kuntaApiEventId = new EventId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, eventIdentifier.getKuntaApiId());
+
+      modificationHashCache.clear(eventIdentifier.getKuntaApiId());
+      eventCache.clear(kuntaApiEventId);
+      identifierController.deleteIdentifier(eventIdentifier);
+      
+      List<IdPair<EventId,AttachmentId>> eventImageIds = eventImageCache.getChildIds(kuntaApiEventId);
+      for (IdPair<EventId,AttachmentId> eventImageId : eventImageIds) {
+        AttachmentId attachmentId = eventImageId.getChild();
+        eventImageCache.clear(eventImageId);
+        modificationHashCache.clear(attachmentId.getId());
+        
+        Identifier imageIdentifier = identifierController.findIdentifierById(attachmentId);
+        if (imageIdentifier != null) {
+          identifierController.deleteIdentifier(imageIdentifier);
+        }
+      }
+    }
   }
 
   private Response<EventsResponse> listEvents(OrganizationId organizationId) {
