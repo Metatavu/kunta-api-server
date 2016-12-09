@@ -1,5 +1,6 @@
 package fi.otavanopisto.kuntaapi.server.discover;
 
+@SuppressWarnings ("squid:S1610")
 public abstract class EntityEvictor {
   
   public abstract void startTimer();
