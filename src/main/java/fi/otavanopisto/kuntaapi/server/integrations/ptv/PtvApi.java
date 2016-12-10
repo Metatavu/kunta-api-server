@@ -1,6 +1,6 @@
 package fi.otavanopisto.kuntaapi.server.integrations.ptv;
 
-import javax.enterprise.context.Dependent;
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
@@ -14,7 +14,7 @@ import fi.otavanopisto.restfulptv.client.ServicesApi;
 import fi.otavanopisto.restfulptv.client.StatutoryDescriptionsApi;
 import fi.otavanopisto.restfulptv.client.WebPageChannelsApi;
 
-@Dependent
+@ApplicationScoped
 public class PtvApi {
   
   @Inject

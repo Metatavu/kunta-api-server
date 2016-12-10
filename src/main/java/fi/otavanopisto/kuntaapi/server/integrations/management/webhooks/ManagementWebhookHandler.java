@@ -16,10 +16,13 @@ import fi.otavanopisto.kuntaapi.server.discover.NewsArticleIdRemoveRequest;
 import fi.otavanopisto.kuntaapi.server.discover.NewsArticleIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.discover.PageIdRemoveRequest;
 import fi.otavanopisto.kuntaapi.server.discover.PageIdUpdateRequest;
+import fi.otavanopisto.kuntaapi.server.discover.TileIdRemoveRequest;
+import fi.otavanopisto.kuntaapi.server.discover.TileIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.id.BannerId;
 import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
+import fi.otavanopisto.kuntaapi.server.id.TileId;
 import fi.otavanopisto.kuntaapi.server.integrations.management.ManagementConsts;
 import fi.otavanopisto.kuntaapi.server.webhooks.WebhookHandler;
 
@@ -47,6 +50,12 @@ public class ManagementWebhookHandler implements WebhookHandler {
 
   @Inject
   private Event<NewsArticleIdRemoveRequest> newsArticleIdRemoveRequest;
+
+  @Inject
+  private Event<TileIdUpdateRequest> tileIdUpdateRequest;
+
+  @Inject
+  private Event<TileIdRemoveRequest> tileIdRemoveRequest;
 
   @Override
   public String getType() {
@@ -127,8 +136,11 @@ public class ManagementWebhookHandler implements WebhookHandler {
         NewsArticleId newsArticleId = new NewsArticleId(organizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
         newsArticleIdUpdateRequest.fire(new NewsArticleIdUpdateRequest(organizationId, newsArticleId, true));
         return true;
+      case "tile":
+        TileId tileId = new TileId(organizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
+        tileIdUpdateRequest.fire(new TileIdUpdateRequest(organizationId, tileId, true));
+        return true;
       default:
-        
     }
     
     return false;
@@ -147,6 +159,10 @@ public class ManagementWebhookHandler implements WebhookHandler {
       case "post":
         NewsArticleId newsArticleId = new NewsArticleId(organizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
         newsArticleIdRemoveRequest.fire(new NewsArticleIdRemoveRequest(organizationId, newsArticleId));
+        return true;
+      case "tile":
+        TileId tileId = new TileId(organizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
+        tileIdRemoveRequest.fire(new TileIdRemoveRequest(organizationId, tileId));
         return true;
       default:
     }

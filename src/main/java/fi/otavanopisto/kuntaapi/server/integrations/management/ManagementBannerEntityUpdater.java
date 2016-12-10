@@ -140,7 +140,7 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
         return;
       }
       
-      deleteBanner(event, bannerId);
+      deleteBanner(event.getOrganizationId(), bannerId);
     }
   }
 
@@ -220,9 +220,7 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
     }
   }
 
-  private void deleteBanner(BannerIdRemoveRequest event, BannerId bannerId) {
-    OrganizationId organizationId = event.getOrganizationId();
-    
+  private void deleteBanner(OrganizationId organizationId, BannerId bannerId) {
     Identifier bannerIdentifier = identifierController.findIdentifierById(bannerId);
     if (bannerIdentifier != null) {
       BannerId kuntaApiBannerId = new BannerId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, bannerIdentifier.getKuntaApiId());
@@ -244,6 +242,6 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
         }
       }
     }
-    
   }
+  
 }
