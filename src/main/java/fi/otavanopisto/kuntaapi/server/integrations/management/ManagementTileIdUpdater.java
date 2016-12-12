@@ -127,7 +127,7 @@ public class ManagementTileIdUpdater extends IdUpdater {
   }
 
   private List<Tile> listManagementTiles(DefaultApi api, OrganizationId organizationId) {
-    ApiResponse<List<Tile>> response = api.wpV2TileGet(null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    ApiResponse<List<Tile>> response = api.wpV2TileGet(null, null, null, null, null, null, null, null, null, null, null, null, null);
     if (response.isOk()) {
       return response.getResponse();
     } else {

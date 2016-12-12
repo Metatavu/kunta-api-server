@@ -126,7 +126,7 @@ public class ManagementBannerIdUpdater extends IdUpdater {
   }
 
   private List<Banner> listManagementBanners(DefaultApi api, OrganizationId organizationId) {
-    fi.metatavu.management.client.ApiResponse<List<Banner>> response = api.wpV2BannerGet(null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    fi.metatavu.management.client.ApiResponse<List<Banner>> response = api.wpV2BannerGet(null, null, null, null, null, null, null, null, null, null, null, null, null);
     if (response.isOk()) {
       return response.getResponse();
     } else {

@@ -160,7 +160,7 @@ public class ManagementTileEntityUpdater extends EntityUpdater {
   }
 
   private void updateManagementTile(DefaultApi api, OrganizationId organizationId, TileId managementTileId) {
-    ApiResponse<Tile> response = api.wpV2TileIdGet(managementTileId.getId(), null);
+    ApiResponse<Tile> response = api.wpV2TileIdGet(managementTileId.getId(), null, null);
     if (response.isOk()) {
       updateManagementTile(api, organizationId, response.getResponse());
     } else {
@@ -192,7 +192,7 @@ public class ManagementTileEntityUpdater extends EntityUpdater {
   }
   
   private void updateFeaturedMedia(OrganizationId organizationId, TileId kuntaApiId, DefaultApi api, Integer featuredMedia) {
-    ApiResponse<Attachment> response = api.wpV2MediaIdGet(String.valueOf(featuredMedia), null);
+    ApiResponse<Attachment> response = api.wpV2MediaIdGet(String.valueOf(featuredMedia), null, null);
     if (!response.isOk()) {
       logger.severe(String.format("Finding media failed on [%d] %s", response.getStatus(), response.getMessage()));
     } else {

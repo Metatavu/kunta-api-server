@@ -127,7 +127,7 @@ public class ManagementAnnouncementIdUpdater extends IdUpdater {
   }
   
   private List<Announcement> listManagementAnnouncements(DefaultApi api, OrganizationId organizationId) {
-    ApiResponse<List<Announcement>> response = api.wpV2AnnouncementGet(null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    ApiResponse<List<Announcement>> response = api.wpV2AnnouncementGet(null, null, null, null, null, null, null, null, null, null, null, null, null);
     if (response.isOk()) {
       return response.getResponse();
     } else {
