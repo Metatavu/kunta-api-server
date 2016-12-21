@@ -143,7 +143,7 @@ public class ManagementAnnouncementEntityUpdater extends EntityUpdater {
   private void updateManagementAnnouncement(OrganizationId organizationId, AnnouncementId announcementId) {
     DefaultApi api = managementApi.getApi(organizationId);
     
-    ApiResponse<Announcement> response = api.wpV2AnnouncementIdGet(announcementId.getId(), null);
+    ApiResponse<Announcement> response = api.wpV2AnnouncementIdGet(announcementId.getId(), null, null);
     if (response.isOk()) {
       updateManagementAnnouncement(organizationId, response.getResponse());
     } else {

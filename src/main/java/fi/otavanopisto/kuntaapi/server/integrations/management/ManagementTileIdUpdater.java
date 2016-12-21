@@ -20,22 +20,22 @@ import javax.enterprise.event.Event;
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 
+import fi.otavanopisto.kuntaapi.server.discover.TileIdUpdateRequest;
+import fi.metatavu.management.client.ApiResponse;
+import fi.metatavu.management.client.DefaultApi;
+import fi.metatavu.management.client.model.Tile;
 import fi.otavanopisto.kuntaapi.server.discover.IdUpdater;
-import fi.otavanopisto.kuntaapi.server.discover.NewsArticleIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.discover.OrganizationIdUpdateRequest;
-import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
+import fi.otavanopisto.kuntaapi.server.id.TileId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 import fi.otavanopisto.kuntaapi.server.system.SystemUtils;
-import fi.metatavu.management.client.ApiResponse;
-import fi.metatavu.management.client.DefaultApi;
-import fi.metatavu.management.client.model.Post;
 
 @ApplicationScoped
 @Singleton
 @AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
-public class ManagementNewsArticleIdUpdater extends IdUpdater {
+public class ManagementTileIdUpdater extends IdUpdater {
 
   private static final int WARMUP_TIME = 1000 * 10;
   private static final int TIMER_INTERVAL = 5000;
@@ -50,7 +50,7 @@ public class ManagementNewsArticleIdUpdater extends IdUpdater {
   private OrganizationSettingController organizationSettingController; 
   
   @Inject
-  private Event<NewsArticleIdUpdateRequest> idUpdateRequest;
+  private Event<TileIdUpdateRequest> idUpdateRequest;
 
   private boolean stopped;
   private List<OrganizationId> queue;
@@ -65,7 +65,7 @@ public class ManagementNewsArticleIdUpdater extends IdUpdater {
 
   @Override
   public String getName() {
-    return "management-news-article-ids";
+    return "management-tile-ids";
   }
   
   @Override
@@ -109,32 +109,32 @@ public class ManagementNewsArticleIdUpdater extends IdUpdater {
   public void timeout(Timer timer) {
     if (!stopped) {
       if (!queue.isEmpty()) {
-        updateManagementPosts(queue.remove(0));
+        updateManagementTiles(queue.remove(0));
       }
 
       startTimer(SystemUtils.inTestMode() ? 1000 : TIMER_INTERVAL);
     }
   }
   
-  private void updateManagementPosts(OrganizationId organizationId) {
+  private void updateManagementTiles(OrganizationId organizationId) {
     DefaultApi api = managementApi.getApi(organizationId);
     
-    List<Post> managementPosts = listManagementPosts(api, organizationId);
-    for (Post managementPost : managementPosts) {
-      NewsArticleId newsArticleId = new NewsArticleId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementPost.getId()));
-      idUpdateRequest.fire(new NewsArticleIdUpdateRequest(organizationId, newsArticleId, false));
+    List<Tile> managementTiles = listManagementTiles(api, organizationId);
+    for (Tile managementTile : managementTiles) {
+      TileId tileId = new TileId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementTile.getId()));
+      idUpdateRequest.fire(new TileIdUpdateRequest(organizationId, tileId, false));
     }
   }
-  
-  private List<Post> listManagementPosts(DefaultApi api, OrganizationId organizationId) {
-    ApiResponse<List<Post>> response = api.wpV2PostsGet(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+
+  private List<Tile> listManagementTiles(DefaultApi api, OrganizationId organizationId) {
+    ApiResponse<List<Tile>> response = api.wpV2TileGet(null, null, null, null, null, null, null, null, null, null, null, null, null);
     if (response.isOk()) {
       return response.getResponse();
     } else {
-      logger.warning(String.format("Listing organization %s posts failed on [%d] %s", organizationId.getId(), response.getStatus(), response.getMessage()));
+      logger.warning(String.format("Listing organization %s tiles failed on [%d] %s", organizationId.getId(), response.getStatus(), response.getMessage()));
     }
     
     return Collections.emptyList();
   }
-
+  
 }

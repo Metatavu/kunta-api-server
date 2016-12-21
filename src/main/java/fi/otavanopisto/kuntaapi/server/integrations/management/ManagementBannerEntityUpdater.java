@@ -140,7 +140,7 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
         return;
       }
       
-      deleteBanner(event, bannerId);
+      deleteBanner(event.getOrganizationId(), bannerId);
     }
   }
 
@@ -160,7 +160,7 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
   }
 
   private void updateManagementBanner(DefaultApi api, OrganizationId organizationId, BannerId managementBannerId) {
-    fi.metatavu.management.client.ApiResponse<Banner> response = api.wpV2BannerIdGet(managementBannerId.getId(), null);
+    fi.metatavu.management.client.ApiResponse<Banner> response = api.wpV2BannerIdGet(managementBannerId.getId(), null, null);
     if (response.isOk()) {
       updateManagementBanner(api, organizationId, response.getResponse());
     } else {
@@ -194,7 +194,7 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
   }
   
   private void updateFeaturedMedia(OrganizationId organizationId, DefaultApi api, BannerId bannerId, Integer featuredMedia) {
-    ApiResponse<fi.metatavu.management.client.model.Attachment> response = api.wpV2MediaIdGet(String.valueOf(featuredMedia), null);
+    ApiResponse<fi.metatavu.management.client.model.Attachment> response = api.wpV2MediaIdGet(String.valueOf(featuredMedia), null, null);
     if (!response.isOk()) {
       logger.severe(String.format("Finding media failed on [%d] %s", response.getStatus(), response.getMessage()));
     } else {
@@ -220,9 +220,7 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
     }
   }
 
-  private void deleteBanner(BannerIdRemoveRequest event, BannerId bannerId) {
-    OrganizationId organizationId = event.getOrganizationId();
-    
+  private void deleteBanner(OrganizationId organizationId, BannerId bannerId) {
     Identifier bannerIdentifier = identifierController.findIdentifierById(bannerId);
     if (bannerIdentifier != null) {
       BannerId kuntaApiBannerId = new BannerId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, bannerIdentifier.getKuntaApiId());
@@ -244,6 +242,6 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
         }
       }
     }
-    
   }
+  
 }

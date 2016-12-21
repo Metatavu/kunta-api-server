@@ -19,11 +19,14 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 
+import org.apache.commons.lang3.StringUtils;
+
 import fi.otavanopisto.kuntaapi.server.cache.MenuCache;
 import fi.otavanopisto.kuntaapi.server.cache.MenuItemCache;
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
+import fi.otavanopisto.kuntaapi.server.discover.MenuIdRemoveRequest;
 import fi.otavanopisto.kuntaapi.server.discover.MenuIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.IdPair;
@@ -126,6 +129,20 @@ public class ManagementMenuEntityUpdater extends EntityUpdater {
       }
     }
   }
+  
+  @Asynchronous
+  public void onMenuIdRemoveRequest(@Observes MenuIdRemoveRequest event) {
+    if (!stopped) {
+      MenuId menuId = event.getId();
+      
+      if (!StringUtils.equals(menuId.getSource(), ManagementConsts.IDENTIFIER_NAME)) {
+        return;
+      }
+      
+      deleteMenu(event.getOrganizationId(), menuId);
+    }
+  }
+
 
   @Timeout
   public void timeout(Timer timer) {
@@ -287,6 +304,17 @@ public class ManagementMenuEntityUpdater extends EntityUpdater {
     
     PageId managementId = new PageId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(pageId));
     return idController.translatePageId(managementId, KuntaApiConsts.IDENTIFIER_NAME);
+  }
+  
+  private void deleteMenu(OrganizationId organizationId, MenuId menuId) {
+    Identifier menuIdentifier = identifierController.findIdentifierById(menuId);
+    if (menuIdentifier != null) {
+      MenuId kuntaApiMenuId = new MenuId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, menuIdentifier.getKuntaApiId());
+      queue.remove(new MenuIdUpdateRequest(organizationId, kuntaApiMenuId, false));
+      modificationHashCache.clear(menuIdentifier.getKuntaApiId());
+      menuCache.clear(kuntaApiMenuId);
+      identifierController.deleteIdentifier(menuIdentifier);
+    }
   }
   
 }

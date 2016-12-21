@@ -1,6 +1,7 @@
 package fi.otavanopisto.kuntaapi.server.integrations.ptv;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
@@ -31,7 +32,7 @@ import fi.otavanopisto.restfulptv.client.model.OrganizationService;
 @Singleton
 @AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
-public class OrganizationServiceIdUpdater extends EntityUpdater {
+public class PtvOrganizationServiceIdUpdater extends EntityUpdater {
 
   private static final int TIMER_INTERVAL = 5000;
 
@@ -52,7 +53,7 @@ public class OrganizationServiceIdUpdater extends EntityUpdater {
 
   @PostConstruct
   public void init() {
-    queue = new ArrayList<>();
+    queue = Collections.synchronizedList(new ArrayList<>());
   }
 
   @Override

@@ -12,6 +12,8 @@ import javax.inject.Inject;
 
 import org.apache.commons.lang3.StringUtils;
 
+import fi.metatavu.management.client.model.Announcement;
+import fi.metatavu.management.client.model.Post;
 import fi.otavanopisto.kuntaapi.server.id.AnnouncementId;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.BannerId;
@@ -19,13 +21,13 @@ import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
+import fi.otavanopisto.kuntaapi.server.id.TileId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
 import fi.otavanopisto.kuntaapi.server.rest.model.Banner;
 import fi.otavanopisto.kuntaapi.server.rest.model.LocalizedValue;
 import fi.otavanopisto.kuntaapi.server.rest.model.NewsArticle;
-import fi.metatavu.management.client.model.Announcement;
-import fi.metatavu.management.client.model.Post;
+import fi.otavanopisto.kuntaapi.server.rest.model.Tile;
 
 @ApplicationScoped
 @SuppressWarnings ("squid:S3306")
@@ -138,6 +140,16 @@ public class ManagementTranslator {
     result.setTitle(managementAnnouncement.getTitle().getRendered());
     
     return result;
+  }
+  
+  public Tile translateTile(TileId kuntaApiTileId, fi.metatavu.management.client.model.Tile managementTile) {
+    Tile tile = new Tile();
+    tile.setContents(managementTile.getContent().getRendered());
+    tile.setId(kuntaApiTileId.getId());
+    tile.setLink(managementTile.getTileLink());
+    tile.setTitle(managementTile.getTitle().getRendered());
+    
+    return tile;
   }
   
   private AttachmentId getImageAttachmentId(OrganizationId organizationId, Integer id) {

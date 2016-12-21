@@ -48,6 +48,14 @@ public class IndexUpdater extends AbstractIndexHander {
       .actionGet();
   }
   
+  @Lock (LockType.READ)
+  public void remove(IndexRemove indexRemove) {
+    getClient()
+      .prepareDelete(getIndex(), indexRemove.getType(), indexRemove.getId())
+      .execute()
+      .actionGet();
+  }
+  
   private void registerIndexable(Class<? extends Indexable> indexable) {
     Map<String, Map<String, Object>> properties = new HashMap<>();
     

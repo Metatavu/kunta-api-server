@@ -127,7 +127,7 @@ public class ManagementPageIdUpdater extends IdUpdater {
   }
   
   private List<Page> listManagementPages(DefaultApi api, OrganizationId organizationId) {
-    ApiResponse<List<Page>> response = api.wpV2PagesGet(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    ApiResponse<List<Page>> response = api.wpV2PagesGet(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
     if (response.isOk()) {
       return response.getResponse();
     } else {
