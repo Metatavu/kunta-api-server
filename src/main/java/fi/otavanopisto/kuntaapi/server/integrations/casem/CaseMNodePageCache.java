@@ -4,7 +4,7 @@ import javax.ejb.Singleton;
 import javax.enterprise.context.ApplicationScoped;
 
 import fi.otavanopisto.kuntaapi.server.cache.AbstractCache;
-import fi.otavanopisto.kuntaapi.server.rest.model.Page;
+import fi.metatavu.kuntaapi.server.rest.model.Page;
 
 @ApplicationScoped
 @Singleton

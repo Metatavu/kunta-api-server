@@ -6,8 +6,8 @@ import java.util.List;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.EventId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
-import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
-import fi.otavanopisto.kuntaapi.server.rest.model.Event;
+import fi.metatavu.kuntaapi.server.rest.model.Attachment;
+import fi.metatavu.kuntaapi.server.rest.model.Event;
 
 /**
  * Interface that describes a single event provider

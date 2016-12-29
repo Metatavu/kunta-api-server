@@ -4,7 +4,7 @@ import javax.enterprise.context.ApplicationScoped;
 
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.BannerId;
-import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
+import fi.metatavu.kuntaapi.server.rest.model.Attachment;
 
 @ApplicationScoped
 public class BannerImageCache extends AbstractEntityRelationCache<BannerId, AttachmentId, Attachment> {

@@ -36,7 +36,7 @@ import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
-import fi.otavanopisto.kuntaapi.server.rest.model.NewsArticle;
+import fi.metatavu.kuntaapi.server.rest.model.NewsArticle;
 import fi.otavanopisto.kuntaapi.server.system.SystemUtils;
 import fi.metatavu.management.client.ApiResponse;
 import fi.metatavu.management.client.DefaultApi;
@@ -201,7 +201,7 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
       }
       
       AttachmentId kuntaApiAttachmentId = new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
-      fi.otavanopisto.kuntaapi.server.rest.model.Attachment attachment = managementTranslator.translateAttachment(kuntaApiAttachmentId, managementAttachment);
+      fi.metatavu.kuntaapi.server.rest.model.Attachment attachment = managementTranslator.translateAttachment(kuntaApiAttachmentId, managementAttachment);
       if (attachment == null) {
         logger.severe(String.format("Failed to translate news article attachment %d", featuredMedia));
         return;

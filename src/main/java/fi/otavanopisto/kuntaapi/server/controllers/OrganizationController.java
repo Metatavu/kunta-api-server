@@ -13,7 +13,7 @@ import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.index.OrganizationSearcher;
 import fi.otavanopisto.kuntaapi.server.index.SearchResult;
 import fi.otavanopisto.kuntaapi.server.integrations.OrganizationProvider;
-import fi.otavanopisto.kuntaapi.server.rest.model.Organization;
+import fi.metatavu.kuntaapi.server.rest.model.Organization;
 
 @ApplicationScoped
 public class OrganizationController {

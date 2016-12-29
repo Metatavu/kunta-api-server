@@ -15,8 +15,8 @@ import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.TileId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.TileProvider;
-import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
-import fi.otavanopisto.kuntaapi.server.rest.model.Tile;
+import fi.metatavu.kuntaapi.server.rest.model.Attachment;
+import fi.metatavu.kuntaapi.server.rest.model.Tile;
 
 /**
  * Tile provider for management wordpress

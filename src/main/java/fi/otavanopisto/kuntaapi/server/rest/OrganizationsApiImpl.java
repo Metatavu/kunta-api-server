@@ -52,21 +52,22 @@ import fi.otavanopisto.kuntaapi.server.integrations.JobProvider.JobOrder;
 import fi.otavanopisto.kuntaapi.server.integrations.JobProvider.JobOrderDirection;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.OrganizationServiceProvider;
-import fi.otavanopisto.kuntaapi.server.rest.model.Announcement;
-import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
-import fi.otavanopisto.kuntaapi.server.rest.model.Banner;
-import fi.otavanopisto.kuntaapi.server.rest.model.Event;
-import fi.otavanopisto.kuntaapi.server.rest.model.FileDef;
-import fi.otavanopisto.kuntaapi.server.rest.model.Job;
-import fi.otavanopisto.kuntaapi.server.rest.model.LocalizedValue;
-import fi.otavanopisto.kuntaapi.server.rest.model.Menu;
-import fi.otavanopisto.kuntaapi.server.rest.model.MenuItem;
-import fi.otavanopisto.kuntaapi.server.rest.model.NewsArticle;
-import fi.otavanopisto.kuntaapi.server.rest.model.Organization;
-import fi.otavanopisto.kuntaapi.server.rest.model.OrganizationService;
-import fi.otavanopisto.kuntaapi.server.rest.model.OrganizationSetting;
-import fi.otavanopisto.kuntaapi.server.rest.model.Page;
-import fi.otavanopisto.kuntaapi.server.rest.model.Tile;
+import fi.metatavu.kuntaapi.server.rest.OrganizationsApi;
+import fi.metatavu.kuntaapi.server.rest.model.Announcement;
+import fi.metatavu.kuntaapi.server.rest.model.Attachment;
+import fi.metatavu.kuntaapi.server.rest.model.Banner;
+import fi.metatavu.kuntaapi.server.rest.model.Event;
+import fi.metatavu.kuntaapi.server.rest.model.FileDef;
+import fi.metatavu.kuntaapi.server.rest.model.Job;
+import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
+import fi.metatavu.kuntaapi.server.rest.model.Menu;
+import fi.metatavu.kuntaapi.server.rest.model.MenuItem;
+import fi.metatavu.kuntaapi.server.rest.model.NewsArticle;
+import fi.metatavu.kuntaapi.server.rest.model.Organization;
+import fi.metatavu.kuntaapi.server.rest.model.OrganizationService;
+import fi.metatavu.kuntaapi.server.rest.model.OrganizationSetting;
+import fi.metatavu.kuntaapi.server.rest.model.Page;
+import fi.metatavu.kuntaapi.server.rest.model.Tile;
 import fi.otavanopisto.kuntaapi.server.system.OrganizationSettingProvider;
 
 /**
@@ -1149,6 +1150,18 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     }
     
     return listOrganizationAnnouncements(request, organizationId, order, orderDirection, firstResult, maxResults);
+  }
+  
+  @Override
+  public Response findOrganizationContact(String organizationId, String contactId, Request request) {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public Response listOrganizationContacts(String organizationId, Request request) {
+    // TODO Auto-generated method stub
+    return null;
   }
 
   private List<Page> listOrganizationPages(OrganizationId organizationId, boolean onlyRootPages, PageId parentId, String path, String search, Long firstResult, Long maxResults) {

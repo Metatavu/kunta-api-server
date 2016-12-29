@@ -178,7 +178,7 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
     
     BannerId bannerKuntaApiId = new BannerId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
     
-    fi.otavanopisto.kuntaapi.server.rest.model.Banner banner = managementTranslator.translateBanner(bannerKuntaApiId, managementBanner);
+    fi.metatavu.kuntaapi.server.rest.model.Banner banner = managementTranslator.translateBanner(bannerKuntaApiId, managementBanner);
     if (banner == null) {
       logger.severe(String.format("Could not translate banner %d into Kunta API banner", managementBanner.getId()));
       return;
@@ -207,7 +207,7 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
       }
       
       AttachmentId kuntaApiAttachmentId = new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
-      fi.otavanopisto.kuntaapi.server.rest.model.Attachment attachment = managementTranslator.translateAttachment(kuntaApiAttachmentId, managementAttachment);
+      fi.metatavu.kuntaapi.server.rest.model.Attachment attachment = managementTranslator.translateAttachment(kuntaApiAttachmentId, managementAttachment);
       if (attachment != null) {
         bannerImageCache.put(new IdPair<>(bannerId, kuntaApiAttachmentId), attachment);
         

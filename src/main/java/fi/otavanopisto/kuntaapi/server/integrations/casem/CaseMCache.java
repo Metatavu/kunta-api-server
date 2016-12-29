@@ -19,8 +19,8 @@ import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
-import fi.otavanopisto.kuntaapi.server.rest.model.LocalizedValue;
-import fi.otavanopisto.kuntaapi.server.rest.model.Page;
+import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
+import fi.metatavu.kuntaapi.server.rest.model.Page;
 
 @ApplicationScoped
 @Singleton

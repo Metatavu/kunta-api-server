@@ -60,8 +60,8 @@ import fi.otavanopisto.kuntaapi.server.integrations.casem.model.MeetingItemLink;
 import fi.otavanopisto.kuntaapi.server.integrations.casem.model.Participant;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting;
-import fi.otavanopisto.kuntaapi.server.rest.model.LocalizedValue;
-import fi.otavanopisto.kuntaapi.server.rest.model.Page;
+import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
+import fi.metatavu.kuntaapi.server.rest.model.Page;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 
 @ApplicationScoped

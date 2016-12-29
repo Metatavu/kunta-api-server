@@ -17,8 +17,8 @@ import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.NewsProvider;
-import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
-import fi.otavanopisto.kuntaapi.server.rest.model.NewsArticle;
+import fi.metatavu.kuntaapi.server.rest.model.Attachment;
+import fi.metatavu.kuntaapi.server.rest.model.NewsArticle;
 
 @ApplicationScoped
 public class NewsController {

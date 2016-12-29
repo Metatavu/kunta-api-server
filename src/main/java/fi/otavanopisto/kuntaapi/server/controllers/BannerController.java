@@ -14,8 +14,8 @@ import fi.otavanopisto.kuntaapi.server.id.BannerId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.BannerProvider;
-import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
-import fi.otavanopisto.kuntaapi.server.rest.model.Banner;
+import fi.metatavu.kuntaapi.server.rest.model.Attachment;
+import fi.metatavu.kuntaapi.server.rest.model.Banner;
 
 @ApplicationScoped
 public class BannerController {

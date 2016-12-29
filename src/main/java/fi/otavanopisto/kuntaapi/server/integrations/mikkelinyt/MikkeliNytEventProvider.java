@@ -32,8 +32,8 @@ import fi.otavanopisto.kuntaapi.server.integrations.BinaryHttpClient.BinaryRespo
 import fi.otavanopisto.kuntaapi.server.integrations.EventProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpClient.Response;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
-import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
-import fi.otavanopisto.kuntaapi.server.rest.model.Event;
+import fi.metatavu.kuntaapi.server.rest.model.Attachment;
+import fi.metatavu.kuntaapi.server.rest.model.Event;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 
 /**
