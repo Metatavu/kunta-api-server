@@ -43,5 +43,7 @@ public enum IdType {
 
   JOB,
 
-  ANNOUNCEMENT
+  ANNOUNCEMENT,
+  
+  CONTACT
 }
