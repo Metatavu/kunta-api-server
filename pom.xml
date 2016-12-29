@@ -92,6 +92,10 @@
     
     <liquibase.version>3.5.3</liquibase.version>
     
+    <!-- VCard -->
+    
+    <ez-vcard.version>0.10.0</ez-vcard.version>
+    
     <!-- Test -->
     
     <restassured.version>2.9.0</restassured.version> 
@@ -527,6 +531,12 @@
       <groupId>org.liquibase</groupId>
       <artifactId>liquibase-cdi</artifactId>
       <version>${liquibase.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.googlecode.ez-vcard</groupId>
+      <artifactId>ez-vcard</artifactId>
+      <version>${ez-vcard.version}</version>
     </dependency>
     
     <!-- Test -->
