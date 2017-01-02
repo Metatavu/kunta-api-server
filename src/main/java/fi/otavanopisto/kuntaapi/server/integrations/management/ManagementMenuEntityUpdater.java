@@ -37,8 +37,8 @@ import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.MenuProvider.MenuItemType;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
-import fi.otavanopisto.kuntaapi.server.rest.model.Menu;
-import fi.otavanopisto.kuntaapi.server.rest.model.MenuItem;
+import fi.metatavu.kuntaapi.server.rest.model.Menu;
+import fi.metatavu.kuntaapi.server.rest.model.MenuItem;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 import fi.otavanopisto.kuntaapi.server.system.SystemUtils;
 import fi.metatavu.management.client.ApiResponse;
@@ -168,6 +168,11 @@ public class ManagementMenuEntityUpdater extends EntityUpdater {
 
   private void updateManagementMenu(DefaultApi api, OrganizationId organizationId, fi.metatavu.management.client.model.Menu managementMenu) {
     Menu menu = updateManagementMenu(organizationId, managementMenu);
+    if (menu == null) {
+      logger.warning(String.format("Failed to update menu %d on organization %s", managementMenu.getId(), organizationId.getId()));
+      return;
+    }
+    
     MenuId menuId = new MenuId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, menu.getId());
     
     List<Menuitem> managementMenuItems = listManagementMenuItems(api, managementMenu);

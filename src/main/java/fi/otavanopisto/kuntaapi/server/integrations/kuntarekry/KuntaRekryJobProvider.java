@@ -13,7 +13,7 @@ import fi.otavanopisto.kuntaapi.server.id.JobId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.JobProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
-import fi.otavanopisto.kuntaapi.server.rest.model.Job;
+import fi.metatavu.kuntaapi.server.rest.model.Job;
 
 @Dependent
 public class KuntaRekryJobProvider implements JobProvider {

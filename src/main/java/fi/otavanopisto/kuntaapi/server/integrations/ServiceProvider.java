@@ -4,7 +4,7 @@ import java.util.List;
 
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceId;
-import fi.otavanopisto.kuntaapi.server.rest.model.Service;
+import fi.metatavu.kuntaapi.server.rest.model.Service;
 
 /**
  * Interface that describes a single service provider

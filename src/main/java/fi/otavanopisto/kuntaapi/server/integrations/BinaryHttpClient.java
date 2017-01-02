@@ -17,10 +17,14 @@ import org.apache.commons.lang3.math.NumberUtils;
 import org.apache.http.Header;
 import org.apache.http.HttpResponse;
 import org.apache.http.StatusLine;
+import org.apache.http.auth.AuthScope;
+import org.apache.http.auth.UsernamePasswordCredentials;
+import org.apache.http.client.CredentialsProvider;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpHead;
 import org.apache.http.client.utils.URIBuilder;
+import org.apache.http.impl.client.BasicCredentialsProvider;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 
@@ -47,6 +51,18 @@ public class BinaryHttpClient {
    * @return binary response with http status
    */
   public Response<BinaryResponse> downloadBinary(String url) {
+    return downloadBinary(url, null, null);
+  }
+  
+  /**
+   * Downloads binary data
+   * 
+   * @param url url
+   * @param username username
+   * @param password password
+   * @return binary response with http status
+   */
+  public Response<BinaryResponse> downloadBinary(String url, String username, String password) {
     URI uri;
     
     try {
@@ -56,9 +72,9 @@ public class BinaryHttpClient {
       return new Response<>(400, String.format("Malformed url address %s", url), null);
     }
     
-    return downloadBinary(uri);
+    return downloadBinary(uri, username, password);
   }
-
+  
   /**
    * Downloads binary data
    * 
@@ -66,11 +82,23 @@ public class BinaryHttpClient {
    * @return binary response with http status
    */
   public Response<BinaryResponse> downloadBinary(URI uri) {
+    return downloadBinary(uri, null, null);
+  }
+  
+  /**
+   * Downloads binary data
+   * 
+   * @param uri uri
+   * @param username username
+   * @param password password
+   * @return binary response with http status
+   */
+  public Response<BinaryResponse> downloadBinary(URI uri, String username, String password) {
     try {
-      CloseableHttpClient client = HttpClients.createDefault();
+      CloseableHttpClient client = createClient(uri, username, password);
+      
       try {
         HttpGet httpGet = new HttpGet(uri);
-        
         CloseableHttpResponse httpResponse = client.execute(httpGet);
         try {
           StatusLine statusLine = httpResponse.getStatusLine();
@@ -80,7 +108,6 @@ public class BinaryHttpClient {
           Header typeHeader = httpResponse.getEntity().getContentType();
           String type = typeHeader != null ? typeHeader.getValue() : null;
           DownloadMeta meta = getDownloadMeta(httpResponse);
-          
           return new Response<>(statusCode, message, new BinaryResponse(type, data, meta));
         } finally {
           httpResponse.close();
@@ -152,6 +179,16 @@ public class BinaryHttpClient {
     }
     
     return new DownloadMeta(filename, size, contentType);
+  }
+  
+  private CloseableHttpClient createClient(URI uri, String username, String password) {
+    if (StringUtils.isNotBlank(username) && StringUtils.isNotBlank(password)) {
+      CredentialsProvider credentialsProvider = new BasicCredentialsProvider();
+      credentialsProvider.setCredentials(new AuthScope(uri.getHost(), uri.getPort(), AuthScope.ANY_REALM), new UsernamePasswordCredentials(username, password));
+      return HttpClients.custom().setDefaultCredentialsProvider(credentialsProvider).build();
+    }
+    
+    return HttpClients.createDefault();
   }
   
   private String getFilename(String contentDisposition) {

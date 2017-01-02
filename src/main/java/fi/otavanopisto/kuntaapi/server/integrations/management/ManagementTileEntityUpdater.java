@@ -177,7 +177,7 @@ public class ManagementTileEntityUpdater extends EntityUpdater {
     }
     
     TileId kuntaApiTileId = new TileId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
-    fi.otavanopisto.kuntaapi.server.rest.model.Tile tile = managementTranslator.translateTile(kuntaApiTileId, managementTile);
+    fi.metatavu.kuntaapi.server.rest.model.Tile tile = managementTranslator.translateTile(kuntaApiTileId, managementTile);
     if (tile == null) {
       logger.severe(String.format("Could not translate management tile %s", identifier.getKuntaApiId()));
       return;
@@ -205,7 +205,7 @@ public class ManagementTileEntityUpdater extends EntityUpdater {
       }
       
       AttachmentId kuntaApiAttachmentId = new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
-      fi.otavanopisto.kuntaapi.server.rest.model.Attachment attachment = managementTranslator.translateAttachment(kuntaApiAttachmentId, managementAttachment);
+      fi.metatavu.kuntaapi.server.rest.model.Attachment attachment = managementTranslator.translateAttachment(kuntaApiAttachmentId, managementAttachment);
       if (attachment == null) {
         logger.severe(String.format("Could not translate management attachment %s", identifier.getKuntaApiId()));
         return;

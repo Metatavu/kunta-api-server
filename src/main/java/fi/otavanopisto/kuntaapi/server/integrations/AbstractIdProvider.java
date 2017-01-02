@@ -15,6 +15,7 @@ import fi.otavanopisto.kuntaapi.server.id.ElectronicServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.EventId;
 import fi.otavanopisto.kuntaapi.server.id.FileId;
 import fi.otavanopisto.kuntaapi.server.id.BaseId;
+import fi.otavanopisto.kuntaapi.server.id.ContactId;
 import fi.otavanopisto.kuntaapi.server.id.IdProvider;
 import fi.otavanopisto.kuntaapi.server.id.IdType;
 import fi.otavanopisto.kuntaapi.server.id.JobId;
@@ -33,6 +34,7 @@ import fi.otavanopisto.kuntaapi.server.id.TileId;
 import fi.otavanopisto.kuntaapi.server.id.WebPageChannelId;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 
+@SuppressWarnings ("squid:S3306")
 public abstract class AbstractIdProvider implements IdProvider {
 
   @Inject
@@ -150,6 +152,11 @@ public abstract class AbstractIdProvider implements IdProvider {
   @Override
   public AnnouncementId translate(AnnouncementId announcementId, String target) {
     return translateId(announcementId, IdType.ANNOUNCEMENT, AnnouncementId.class, target);
+  }
+
+  @Override
+  public ContactId translate(ContactId contactId, String target) {
+    return translateId(contactId, IdType.CONTACT, ContactId.class, target);
   }
 
   private <T extends BaseId> T translateId(T id, IdType type, Class<T> idClass, String target) {

@@ -60,13 +60,14 @@ import fi.otavanopisto.kuntaapi.server.integrations.casem.model.MeetingItemLink;
 import fi.otavanopisto.kuntaapi.server.integrations.casem.model.Participant;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting;
-import fi.otavanopisto.kuntaapi.server.rest.model.LocalizedValue;
-import fi.otavanopisto.kuntaapi.server.rest.model.Page;
+import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
+import fi.metatavu.kuntaapi.server.rest.model.Page;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 
 @ApplicationScoped
 @Singleton
 @AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
+@SuppressWarnings ("squid:S3306")
 public class CaseMCacheUpdater {
 
   private static final String EXTENDED_HISTORY_TOPICS = "HistoryTopics";
@@ -540,7 +541,6 @@ public class CaseMCacheUpdater {
     return result;
   }
 
-  @SuppressWarnings ("squid:MethodCyclomaticComplexity")
   private void parseCouncilman(Councilmen result, String[] line) {
     Participant participant = new Participant();
   
@@ -549,36 +549,44 @@ public class CaseMCacheUpdater {
     
     if (line.length > 1) {
       participant.setTitle(line[1]);
-      if (line.length > 2) {
-        group = line[line.length - 1];
-      }        
-      
-      if (line.length == 3) {
-        if (isDateField(line[2])) {
-          participant.setArrived(parseCSVDateTime(line[2]));
-          group = GROUP_OTHER;
-        }
-      } else if (line.length == 4) {
-        if (isDateField(line[2])) {
-          participant.setArrived(parseCSVDateTime(line[2]));
-        }
-        
-        if (isDateField(line[3])) {
-          participant.setLeft(parseCSVDateTime(line[3]));
-          group = GROUP_OTHER;
-        }
-      } else if (line.length == 5) {
-        if (isDateField(line[2])) {
-          participant.setArrived(parseCSVDateTime(line[2]));
-        }
-        
-        if (isDateField(line[3])) {
-          participant.setLeft(parseCSVDateTime(line[3]));
-        }
-      }
+      group = resolveCouncilmanAttributes(line, participant);
     }
 
     addCouncilman(result, participant, group);
+  }
+
+  private String resolveCouncilmanAttributes(String[] line, Participant participant) {
+    String group = GROUP_OTHER;
+    
+    if (line.length > 2) {
+      group = line[line.length - 1];
+    }        
+    
+    if (line.length == 3) {
+      if (isDateField(line[2])) {
+        participant.setArrived(parseCSVDateTime(line[2]));
+        group = GROUP_OTHER;
+      }
+    } else if (line.length == 4) {
+      if (isDateField(line[2])) {
+        participant.setArrived(parseCSVDateTime(line[2]));
+      }
+      
+      if (isDateField(line[3])) {
+        participant.setLeft(parseCSVDateTime(line[3]));
+        group = GROUP_OTHER;
+      }
+    } else if (line.length == 5) {
+      if (isDateField(line[2])) {
+        participant.setArrived(parseCSVDateTime(line[2]));
+      }
+      
+      if (isDateField(line[3])) {
+        participant.setLeft(parseCSVDateTime(line[3]));
+      }
+    }
+    
+    return group;
   }
 
   private void addCouncilman(Councilmen result, Participant participant, String group) {

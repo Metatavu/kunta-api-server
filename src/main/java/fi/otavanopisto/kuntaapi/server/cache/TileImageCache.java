@@ -4,7 +4,7 @@ import javax.enterprise.context.ApplicationScoped;
 
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.TileId;
-import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
+import fi.metatavu.kuntaapi.server.rest.model.Attachment;
 
 @ApplicationScoped
 public class TileImageCache extends AbstractEntityRelationCache<TileId, AttachmentId, Attachment> {

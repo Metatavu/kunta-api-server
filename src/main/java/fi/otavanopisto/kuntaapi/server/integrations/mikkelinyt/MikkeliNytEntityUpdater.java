@@ -48,7 +48,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpClient;
 import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpClient.Response;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
-import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
+import fi.metatavu.kuntaapi.server.rest.model.Attachment;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 import fi.otavanopisto.kuntaapi.server.system.SystemUtils;
 import fi.otavanopisto.mikkelinyt.model.Event;
@@ -177,7 +177,7 @@ public class MikkeliNytEntityUpdater extends EntityUpdater {
     }
     
     EventId kuntaApiId = new EventId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
-    fi.otavanopisto.kuntaapi.server.rest.model.Event event = translate(kuntaApiId, mikkeliNytEvent);
+    fi.metatavu.kuntaapi.server.rest.model.Event event = translate(kuntaApiId, mikkeliNytEvent);
     
     if (StringUtils.isNotBlank(mikkeliNytEvent.getImage())) {
       updateAttachment(organizationId, kuntaApiId, mikkeliNytEvent.getImage());
@@ -261,12 +261,12 @@ public class MikkeliNytEntityUpdater extends EntityUpdater {
     return organizationSettingController.getSettingValue(organizationId, MikkeliNytConsts.ORGANIZATION_SETTING_APIKEY);
   }
   
-  private fi.otavanopisto.kuntaapi.server.rest.model.Event translate(EventId kuntaApiId, fi.otavanopisto.mikkelinyt.model.Event nytEvent) {
+  private fi.metatavu.kuntaapi.server.rest.model.Event translate(EventId kuntaApiId, fi.otavanopisto.mikkelinyt.model.Event nytEvent) {
     if (nytEvent == null) {
       return null;
     }
     
-    fi.otavanopisto.kuntaapi.server.rest.model.Event result = new fi.otavanopisto.kuntaapi.server.rest.model.Event();
+    fi.metatavu.kuntaapi.server.rest.model.Event result = new fi.metatavu.kuntaapi.server.rest.model.Event();
     
     result.setAddress(stripHtml(nytEvent.getAddress()));
     result.setCity(stripHtml(nytEvent.getCity()));

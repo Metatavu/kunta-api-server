@@ -20,6 +20,7 @@ import org.apache.commons.lang3.math.NumberUtils;
 
 import fi.otavanopisto.kuntaapi.server.controllers.AnnouncementController;
 import fi.otavanopisto.kuntaapi.server.controllers.BannerController;
+import fi.otavanopisto.kuntaapi.server.controllers.ContactController;
 import fi.otavanopisto.kuntaapi.server.controllers.EventController;
 import fi.otavanopisto.kuntaapi.server.controllers.FileController;
 import fi.otavanopisto.kuntaapi.server.controllers.HttpCacheController;
@@ -32,6 +33,7 @@ import fi.otavanopisto.kuntaapi.server.controllers.TileController;
 import fi.otavanopisto.kuntaapi.server.id.AnnouncementId;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.BannerId;
+import fi.otavanopisto.kuntaapi.server.id.ContactId;
 import fi.otavanopisto.kuntaapi.server.id.EventId;
 import fi.otavanopisto.kuntaapi.server.id.FileId;
 import fi.otavanopisto.kuntaapi.server.id.JobId;
@@ -52,21 +54,23 @@ import fi.otavanopisto.kuntaapi.server.integrations.JobProvider.JobOrder;
 import fi.otavanopisto.kuntaapi.server.integrations.JobProvider.JobOrderDirection;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.OrganizationServiceProvider;
-import fi.otavanopisto.kuntaapi.server.rest.model.Announcement;
-import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
-import fi.otavanopisto.kuntaapi.server.rest.model.Banner;
-import fi.otavanopisto.kuntaapi.server.rest.model.Event;
-import fi.otavanopisto.kuntaapi.server.rest.model.FileDef;
-import fi.otavanopisto.kuntaapi.server.rest.model.Job;
-import fi.otavanopisto.kuntaapi.server.rest.model.LocalizedValue;
-import fi.otavanopisto.kuntaapi.server.rest.model.Menu;
-import fi.otavanopisto.kuntaapi.server.rest.model.MenuItem;
-import fi.otavanopisto.kuntaapi.server.rest.model.NewsArticle;
-import fi.otavanopisto.kuntaapi.server.rest.model.Organization;
-import fi.otavanopisto.kuntaapi.server.rest.model.OrganizationService;
-import fi.otavanopisto.kuntaapi.server.rest.model.OrganizationSetting;
-import fi.otavanopisto.kuntaapi.server.rest.model.Page;
-import fi.otavanopisto.kuntaapi.server.rest.model.Tile;
+import fi.metatavu.kuntaapi.server.rest.OrganizationsApi;
+import fi.metatavu.kuntaapi.server.rest.model.Announcement;
+import fi.metatavu.kuntaapi.server.rest.model.Attachment;
+import fi.metatavu.kuntaapi.server.rest.model.Banner;
+import fi.metatavu.kuntaapi.server.rest.model.Contact;
+import fi.metatavu.kuntaapi.server.rest.model.Event;
+import fi.metatavu.kuntaapi.server.rest.model.FileDef;
+import fi.metatavu.kuntaapi.server.rest.model.Job;
+import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
+import fi.metatavu.kuntaapi.server.rest.model.Menu;
+import fi.metatavu.kuntaapi.server.rest.model.MenuItem;
+import fi.metatavu.kuntaapi.server.rest.model.NewsArticle;
+import fi.metatavu.kuntaapi.server.rest.model.Organization;
+import fi.metatavu.kuntaapi.server.rest.model.OrganizationService;
+import fi.metatavu.kuntaapi.server.rest.model.OrganizationSetting;
+import fi.metatavu.kuntaapi.server.rest.model.Page;
+import fi.metatavu.kuntaapi.server.rest.model.Tile;
 import fi.otavanopisto.kuntaapi.server.system.OrganizationSettingProvider;
 
 /**
@@ -116,9 +120,12 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   
   @Inject
   private EventController eventController;
-  
+
   @Inject
   private JobController jobController;
+
+  @Inject
+  private ContactController contactController;
   
   @Inject
   private HttpCacheController httpCacheController;
@@ -1150,6 +1157,43 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     
     return listOrganizationAnnouncements(request, organizationId, order, orderDirection, firstResult, maxResults);
   }
+  
+  /* Contacts */
+  
+  @Override
+  public Response findOrganizationContact(String organizationIdParam, String contactIdParam, Request request) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    ContactId contactId = toContactId(organizationId, contactIdParam);
+    if (contactId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+
+    Response notModified = httpCacheController.getNotModified(request, contactId);
+    if (notModified != null) {
+      return notModified;
+    }
+    
+    Contact contact = contactController.findContact(organizationId, contactId);
+    if (contact != null) {
+      return httpCacheController.sendModified(contact, contact.getId());
+    }
+    
+    return createNotFound(NOT_FOUND);
+  }
+
+  @Override
+  public Response listOrganizationContacts(String organizationIdParam, Request request) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    return listOrganizationContacts(request, organizationId, null, null);
+  }
 
   private List<Page> listOrganizationPages(OrganizationId organizationId, boolean onlyRootPages, PageId parentId, String path, String search, Long firstResult, Long maxResults) {
     if (search != null) {
@@ -1173,6 +1217,18 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   private Response listOrganizationAnnouncements(Request request, OrganizationId organizationId, AnnouncementOrder order, AnnouncementOrderDirection orderDirection, Integer firstResult, Integer maxResults) {
     List<Announcement> result = announcementController.listAnnouncements(organizationId, order, orderDirection, firstResult, maxResults);
+    
+    List<String> ids = httpCacheController.getEntityIds(result);
+    Response notModified = httpCacheController.getNotModified(request, ids);
+    if (notModified != null) {
+      return notModified;
+    }
+
+    return httpCacheController.sendModified(result, ids);
+  }
+
+  private Response listOrganizationContacts(Request request, OrganizationId organizationId, Integer firstResult, Integer maxResults) {
+    List<Contact> result = contactController.listContacts(organizationId, firstResult, maxResults);
     
     List<String> ids = httpCacheController.getEntityIds(result);
     Response notModified = httpCacheController.getNotModified(request, ids);
@@ -1290,10 +1346,18 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     
     return null;
   }
-  
+
   private AnnouncementId toAnnouncementId(OrganizationId organizationId, String id) {
     if (StringUtils.isNotBlank(id)) {
       return new AnnouncementId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, id);
+    }
+    
+    return null;
+  }
+
+  private ContactId toContactId(OrganizationId organizationId, String id) {
+    if (StringUtils.isNotBlank(id)) {
+      return new ContactId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, id);
     }
     
     return null;

@@ -13,7 +13,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.BinaryHttpClient.BinaryRespo
 import fi.otavanopisto.kuntaapi.server.integrations.BinaryHttpClient.DownloadMeta;
 import fi.otavanopisto.kuntaapi.server.integrations.FileProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
-import fi.otavanopisto.kuntaapi.server.rest.model.FileDef;
+import fi.metatavu.kuntaapi.server.rest.model.FileDef;
 
 /**
  * File provider for CaseM

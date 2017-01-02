@@ -16,6 +16,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
  * @author Antti Leppä
  */
 @ApplicationScoped
+@SuppressWarnings ("squid:S3306")
 public class IdController {
   
   @Inject
@@ -70,6 +71,8 @@ public class IdController {
         return translateJobId((JobId) id, target);
       case ANNOUNCEMENT:
         return translateAnnouncementId((AnnouncementId) id, target);
+      case CONTACT:
+        return translateContactId((ContactId) id, target);
        default:
         return null;
     }
@@ -503,6 +506,30 @@ public class IdController {
     IdProvider idProvider = getIdProvider(announcementId.getSource(), target);
     if (idProvider != null) {
       return idProvider.translate(announcementId, target);
+    }
+    
+    return null;
+  }
+  
+  /**
+   * Translates contact id into into target id
+   * 
+   * @param contactId id to be translated
+   * @param target target
+   * @return translated id or null if translation has failed
+   */
+  public ContactId translateContactId(ContactId contactId, String target) {
+    if (contactId == null) {
+      return null;
+    }
+
+    if (StringUtils.equals(contactId.getSource(), target)) {
+      return contactId;
+    }
+    
+    IdProvider idProvider = getIdProvider(contactId.getSource(), target);
+    if (idProvider != null) {
+      return idProvider.translate(contactId, target);
     }
     
     return null;

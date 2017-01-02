@@ -4,7 +4,7 @@ import javax.enterprise.context.ApplicationScoped;
 
 import fi.otavanopisto.kuntaapi.server.id.MenuId;
 import fi.otavanopisto.kuntaapi.server.id.MenuItemId;
-import fi.otavanopisto.kuntaapi.server.rest.model.MenuItem;
+import fi.metatavu.kuntaapi.server.rest.model.MenuItem;
 
 @ApplicationScoped
 public class MenuItemCache extends AbstractEntityRelationCache<MenuId, MenuItemId, MenuItem> {

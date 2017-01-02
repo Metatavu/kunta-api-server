@@ -2,7 +2,7 @@ package fi.otavanopisto.kuntaapi.server.integrations;
 
 import fi.otavanopisto.kuntaapi.server.id.FileId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
-import fi.otavanopisto.kuntaapi.server.rest.model.FileDef;
+import fi.metatavu.kuntaapi.server.rest.model.FileDef;
 
 /**
  * Interface that describes a single file provider

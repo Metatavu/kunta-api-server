@@ -20,12 +20,12 @@ import fi.otavanopisto.kuntaapi.server.index.SearchResult;
 import fi.otavanopisto.kuntaapi.server.index.ServiceSearcher;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceChannelProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceProvider;
-import fi.otavanopisto.kuntaapi.server.rest.model.ElectronicChannel;
-import fi.otavanopisto.kuntaapi.server.rest.model.PhoneChannel;
-import fi.otavanopisto.kuntaapi.server.rest.model.PrintableFormChannel;
-import fi.otavanopisto.kuntaapi.server.rest.model.Service;
-import fi.otavanopisto.kuntaapi.server.rest.model.ServiceLocationChannel;
-import fi.otavanopisto.kuntaapi.server.rest.model.WebPageChannel;
+import fi.metatavu.kuntaapi.server.rest.model.ElectronicChannel;
+import fi.metatavu.kuntaapi.server.rest.model.PhoneChannel;
+import fi.metatavu.kuntaapi.server.rest.model.PrintableFormChannel;
+import fi.metatavu.kuntaapi.server.rest.model.Service;
+import fi.metatavu.kuntaapi.server.rest.model.ServiceLocationChannel;
+import fi.metatavu.kuntaapi.server.rest.model.WebPageChannel;
 
 @ApplicationScoped
 public class ServiceController {

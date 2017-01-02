@@ -14,7 +14,7 @@ import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.JobProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.JobProvider.JobOrder;
 import fi.otavanopisto.kuntaapi.server.integrations.JobProvider.JobOrderDirection;
-import fi.otavanopisto.kuntaapi.server.rest.model.Job;
+import fi.metatavu.kuntaapi.server.rest.model.Job;
 
 @ApplicationScoped
 public class JobController {

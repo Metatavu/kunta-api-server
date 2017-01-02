@@ -5,7 +5,7 @@ import java.util.List;
 import javax.enterprise.context.ApplicationScoped;
 
 import fi.otavanopisto.kuntaapi.server.id.PageId;
-import fi.otavanopisto.kuntaapi.server.rest.model.LocalizedValue;
+import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
 
 @ApplicationScoped
 public class PageContentCache extends AbstractEntityCache<PageId, List<LocalizedValue>> {

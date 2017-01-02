@@ -37,8 +37,8 @@ import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
-import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
-import fi.otavanopisto.kuntaapi.server.rest.model.LocalizedValue;
+import fi.metatavu.kuntaapi.server.rest.model.Attachment;
+import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
 import fi.otavanopisto.kuntaapi.server.system.SystemUtils;
 import fi.metatavu.management.client.ApiResponse;
 import fi.metatavu.management.client.DefaultApi;
@@ -177,7 +177,7 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
     }
     
     PageId kuntaApiPageId = new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
-    fi.otavanopisto.kuntaapi.server.rest.model.Page page = managementTranslator.translatePage(organizationId, kuntaApiPageId, managementPage);
+    fi.metatavu.kuntaapi.server.rest.model.Page page = managementTranslator.translatePage(organizationId, kuntaApiPageId, managementPage);
     List<LocalizedValue> pageContents = managementTranslator.translateLocalized(managementPage.getContent().getRendered());
     
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(managementPage));

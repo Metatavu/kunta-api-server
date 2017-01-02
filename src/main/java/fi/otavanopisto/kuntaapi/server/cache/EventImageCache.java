@@ -4,7 +4,7 @@ import javax.enterprise.context.ApplicationScoped;
 
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.EventId;
-import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
+import fi.metatavu.kuntaapi.server.rest.model.Attachment;
 
 @ApplicationScoped
 public class EventImageCache extends AbstractEntityRelationCache<EventId, AttachmentId, Attachment> {

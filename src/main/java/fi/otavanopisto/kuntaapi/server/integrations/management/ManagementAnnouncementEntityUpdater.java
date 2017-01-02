@@ -160,7 +160,7 @@ public class ManagementAnnouncementEntityUpdater extends EntityUpdater {
     }
     
     AnnouncementId kuntaApiAnnouncementId = new AnnouncementId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
-    fi.otavanopisto.kuntaapi.server.rest.model.Announcement announcement = managementTranslator.translateAnnouncement(kuntaApiAnnouncementId, managementAnnouncement);
+    fi.metatavu.kuntaapi.server.rest.model.Announcement announcement = managementTranslator.translateAnnouncement(kuntaApiAnnouncementId, managementAnnouncement);
     
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(announcement));
     announcementCache.put(kuntaApiAnnouncementId, announcement);

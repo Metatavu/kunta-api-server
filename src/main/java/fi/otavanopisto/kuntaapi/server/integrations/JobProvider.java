@@ -4,7 +4,7 @@ import java.util.List;
 
 import fi.otavanopisto.kuntaapi.server.id.JobId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
-import fi.otavanopisto.kuntaapi.server.rest.model.Job;
+import fi.metatavu.kuntaapi.server.rest.model.Job;
 
 /**
  * Interface that describes a single job provider
