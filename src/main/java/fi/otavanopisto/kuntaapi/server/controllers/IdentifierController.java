@@ -12,6 +12,7 @@ import javax.inject.Inject;
 
 import fi.otavanopisto.kuntaapi.server.id.BannerId;
 import fi.otavanopisto.kuntaapi.server.id.BaseId;
+import fi.otavanopisto.kuntaapi.server.id.ContactId;
 import fi.otavanopisto.kuntaapi.server.id.IdType;
 import fi.otavanopisto.kuntaapi.server.id.MenuId;
 import fi.otavanopisto.kuntaapi.server.id.MissingOrganizationIdException;
@@ -113,6 +114,17 @@ public class IdentifierController {
     
     for (String bannerId : bannerIds) {
       result.add(new BannerId(organizationId, source, bannerId));
+    }
+    
+    return result;
+  }
+  
+  public List<ContactId> listOrganizationContactIdsBySource(OrganizationId organizationId, String source) {
+    List<String> contactIds = listSourceIdsByOrganizationIdAndSourceAndType(organizationId, source, IdType.CONTACT.toString());
+    List<ContactId> result = new ArrayList<>(contactIds.size());
+    
+    for (String contactId : contactIds) {
+      result.add(new ContactId(organizationId, source, contactId));
     }
     
     return result;

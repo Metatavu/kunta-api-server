@@ -157,15 +157,27 @@ public class VCardEntityUpdater extends EntityUpdater {
     if (response.isOk()) {
       BinaryResponse responseEntity = response.getResponseEntity();
       try {
-        List<VCard> vCards = parseVCards(responseEntity);
-        for (VCard vCard : vCards) {
-          updateContact(organizationId, vCard);
-        }
+        updateContacts(organizationId, parseVCards(responseEntity));
       } catch (IOException e) {
         logger.log(Level.SEVERE, String.format("Failed to read VCard stream for organization %s", organizationId.toString()), e);
       }
     } else {
       logger.severe(String.format("Organization %s vcard contact list download failed on [%d] %s", organizationId.toString(), response.getStatus(), response.getMessage()));
+    }
+  }
+
+  private void updateContacts(OrganizationId organizationId, List<VCard> vCards) {
+    List<ContactId> removedIds = identifierController.listOrganizationContactIdsBySource(organizationId, VCardConsts.IDENTIFIER_NAME);
+    
+    for (VCard vCard : vCards) {
+      ContactId contactId = updateContact(organizationId, vCard);
+      if (contactId != null) {
+        removedIds.remove(contactId);
+      }
+    }
+    
+    for (ContactId removedId : removedIds) {
+      deleteContact(organizationId, removedId);
     }
   }
 
@@ -185,11 +197,11 @@ public class VCardEntityUpdater extends EntityUpdater {
   }
   
 
-  private void updateContact(OrganizationId organizationId, VCard vCard) {
+  private ContactId updateContact(OrganizationId organizationId, VCard vCard) {
     String vCardUid = vCard.getUid().getValue();
     if (StringUtils.isBlank(vCardUid)) {
       logger.severe(String.format("Skipped VCard without uid in organization %s", organizationId));
-      return;
+      return null;
     }
     
     ContactId contactId = new ContactId(organizationId, VCardConsts.IDENTIFIER_NAME, vCardUid);
@@ -203,6 +215,8 @@ public class VCardEntityUpdater extends EntityUpdater {
     
     modificationHashCache.put(kuntaApiContactId.getId(), createPojoHash(contact));
     contactCache.put(kuntaApiContactId, contact);
+    
+    return contactId;
   }
   
   private void deleteContacts(OrganizationId organizationId) {
