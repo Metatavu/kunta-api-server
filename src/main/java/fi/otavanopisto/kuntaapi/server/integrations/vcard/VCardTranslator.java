@@ -12,7 +12,6 @@ import javax.inject.Inject;
 
 import org.apache.commons.lang3.StringUtils;
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
@@ -52,7 +51,7 @@ public class VCardTranslator {
     result.setId(kuntaApiContactId.getId());
     result.setLastName(getLastName(vCard.getStructuredName()));
     result.setOrganization(getOrganization(vCard.getOrganization()));
-    result.setOrganizationUnits(getOrganizationUnits(vCard.getOrganization()));
+    result.setOrganizationUnits(getOrganizationUnits(vCard.getOrganizations()));
     result.setPhones(translatePhones(vCard.getTelephoneNumbers()));
     result.setStatuses(translateStatuses(vCard));
     result.setTitle(getFirst(vCard.getTitles()));
@@ -63,36 +62,37 @@ public class VCardTranslator {
   private List<ContactStatus> translateStatuses(VCard vCard) {
     // Statuses are currenctly supported only in MECM flavoured vCards
     
-    RawProperty mecmStatusJSON = vCard.getExtendedProperty(MECM_ADDITIONAL_STATUS_JSON);
-    if (mecmStatusJSON != null && StringUtils.isNotBlank(mecmStatusJSON.getValue())) {
-      return translateMecmStatuses(mecmStatusJSON.getValue());  
+    List<RawProperty> properties = vCard.getExtendedProperties(MECM_ADDITIONAL_STATUS_JSON);
+    if (properties != null) {
+      List<ContactStatus> translateMecmStatuses = new ArrayList<>(properties.size());
+      for (RawProperty property : properties) {
+        translateMecmStatuses.add(translateMecmStatus(property.getValue()));
+      }
+      
+      return translateMecmStatuses;
     }
     
     return Collections.emptyList();
   }
 
-  private List<ContactStatus> translateMecmStatuses(String value) {
+  private ContactStatus translateMecmStatus(String value) {
     ObjectMapper objectMapper = new ObjectMapper();
     objectMapper.registerModule(new JavaTimeModule());
     
     try {
-      List<Status> mecmStatuses = objectMapper.readValue(value, new TypeReference<List<Status>>() {});
-      List<ContactStatus> result = new ArrayList<>(mecmStatuses.size());
+      Status mecmStatus = objectMapper.readValue(value, Status.class);
       
-      for (Status mecmStatus : mecmStatuses) {
-        ContactStatus contactStatus = new ContactStatus();
-        contactStatus.setEnd(mecmStatus.getArrival());
-        contactStatus.setStart(mecmStatus.getDeparture());
-        contactStatus.setText(mecmStatus.getReason());
-        result.add(contactStatus);
-      }
+      ContactStatus contactStatus = new ContactStatus();
+      contactStatus.setEnd(mecmStatus.getArrival());
+      contactStatus.setStart(mecmStatus.getDeparture());
+      contactStatus.setText(mecmStatus.getReason());
       
-      return result;
+      return contactStatus;
     } catch (IOException e) {
       logger.log(Level.SEVERE, "Failed to parse MECM statuses", e);
     }
     
-    return Collections.emptyList();
+    return null;
   }
 
   private List<ContactPhone> translatePhones(List<Telephone> vCardNumbers) {
@@ -141,7 +141,7 @@ public class VCardTranslator {
     result.setPostOffice(getString(vCardAddress.getRegion()));
     result.setStreetAddress(getLocalizedString(vCardAddress.getStreetAddress()));
     result.setMunicipality(null);
-    result.setCountry(getString(vCardAddress.getCountry()));
+    result.setCountry(getString(vCardAddress.getCountry(), VCardConsts.DEFAULT_COUNTRY));
     result.setQualifier(null);
 
     return result;
@@ -187,13 +187,15 @@ public class VCardTranslator {
     return null;
   }
   
-  private List<String> getOrganizationUnits(Organization organization) {
-    if (organization != null && organization.getValues() != null && organization.getValues().size() > 1) {
-      List<String> values = organization.getValues();
-      
-      List<String> result = new ArrayList<>(values.size() - 1);
-      for (int i = 1, l = values.size(); i < l; i++) {
-        result.add(values.get(i));
+  private List<String> getOrganizationUnits(List<Organization> organizations) {
+    if (organizations != null && organizations.size() > 1) {
+      List<String> result = new ArrayList<>(organizations.size() - 1);
+      for (int i = 1, l = organizations.size(); i < l; i++) {
+        Organization organization = organizations.get(i);
+        String value = organization.getValues().isEmpty() ? null : organization.getValues().get(0);
+        if (StringUtils.isNotBlank(value)) {
+          result.add(value);
+        }
       }
       
       return result;
@@ -203,36 +205,40 @@ public class VCardTranslator {
   }
 
   private String getFirstName(StructuredName structuredName) {
-    if (structuredName != null) {
-      if (StringUtils.isNotBlank(structuredName.getGiven())) {
-        return structuredName.getGiven();
-      }
+    if (structuredName != null && StringUtils.isNotBlank(structuredName.getGiven())) {
+      return structuredName.getGiven();
     }
     
     return null;
   }
   
   private String getLastName(StructuredName structuredName) {
-    if (structuredName != null) {
-      if (StringUtils.isNotBlank(structuredName.getFamily())) {
-        return structuredName.getFamily();
-      }
+    if (structuredName != null && StringUtils.isNotBlank(structuredName.getFamily())) {
+      return structuredName.getFamily();
     }
     
     return null;
   }
-  
+
   private String getString(String value) {
+    return getString(value, null);
+  }
+  
+  private String getString(String value, String defaultValue) {
     if (StringUtils.isNotBlank(value)) {
       return value;
     }
     
-    return null;
+    return defaultValue;
   }
   
   private String getString(TextProperty textProperty) {
+    return getString(textProperty, null);
+  }
+  
+  private String getString(TextProperty textProperty, String defaultValue) {
     if (textProperty != null) {
-      return getString(textProperty.getValue());
+      return getString(textProperty.getValue(), defaultValue);
     }
     
     return null;
@@ -255,6 +261,8 @@ public class VCardTranslator {
           result.add(value);
         }
       }
+      
+      return result;
     }
     
     return Collections.emptyList();

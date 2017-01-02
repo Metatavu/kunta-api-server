@@ -13,6 +13,7 @@ public class VCardConsts {
   public static final String ORGANIZATION_SETTING_USERNAME = "vcard.username";
   public static final String ORGANIZATION_SETTING_PASSWORD = "vcard.password";
   public static final String DEFAULT_LANGUAGE = "fi";
+  public static final String DEFAULT_COUNTRY = "Suomi";
   
   private VCardConsts() {
   }
