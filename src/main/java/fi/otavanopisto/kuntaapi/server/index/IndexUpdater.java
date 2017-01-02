@@ -50,6 +50,11 @@ public class IndexUpdater extends AbstractIndexHander {
   
   @Lock (LockType.READ)
   public void remove(IndexRemove indexRemove) {
+    if (!isEnabled()) {
+      logger.warning("Could not remove entity. Search functions are disabled");
+      return;
+    }
+    
     getClient()
       .prepareDelete(getIndex(), indexRemove.getType(), indexRemove.getId())
       .execute()
