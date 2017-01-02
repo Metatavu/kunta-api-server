@@ -168,6 +168,11 @@ public class ManagementMenuEntityUpdater extends EntityUpdater {
 
   private void updateManagementMenu(DefaultApi api, OrganizationId organizationId, fi.metatavu.management.client.model.Menu managementMenu) {
     Menu menu = updateManagementMenu(organizationId, managementMenu);
+    if (menu == null) {
+      logger.warning(String.format("Failed to update menu %d on organization %s", managementMenu.getId(), organizationId.getId()));
+      return;
+    }
+    
     MenuId menuId = new MenuId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, menu.getId());
     
     List<Menuitem> managementMenuItems = listManagementMenuItems(api, managementMenu);

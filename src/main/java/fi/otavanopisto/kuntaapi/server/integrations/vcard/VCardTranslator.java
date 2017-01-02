@@ -32,7 +32,7 @@ import fi.otavanopisto.kuntaapi.server.id.ContactId;
 import fi.otavanopisto.kuntaapi.server.integrations.vcard.mecm.Status;
 
 @ApplicationScoped
-@SuppressWarnings ("squid:S3306")
+@SuppressWarnings ({"squid:S3306", "squid:S1450"})
 public class VCardTranslator {
   
   private static final String MECM_ADDITIONAL_STATUS_JSON = "mecm-status-json";
