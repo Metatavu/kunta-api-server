@@ -150,7 +150,10 @@ public class VCardEntityUpdater extends EntityUpdater {
       return;
     }
     
-    Response<BinaryResponse> response = binaryHttpClient.downloadBinary(url);
+    String username = getUsername(organizationId);
+    String password = getPassword(organizationId);
+    
+    Response<BinaryResponse> response = binaryHttpClient.downloadBinary(url, username, password);
     if (response.isOk()) {
       BinaryResponse responseEntity = response.getResponseEntity();
       try {
@@ -165,7 +168,7 @@ public class VCardEntityUpdater extends EntityUpdater {
       logger.severe(String.format("Organization %s vcard contact list download failed on [%d] %s", organizationId.toString(), response.getStatus(), response.getMessage()));
     }
   }
-  
+
   private List<VCard> parseVCards(BinaryResponse responseEntity) throws IOException {
     try (InputStream inputStream = new ByteArrayInputStream(responseEntity.getData())) {
       return parseVCards(inputStream);
@@ -221,6 +224,14 @@ public class VCardEntityUpdater extends EntityUpdater {
 
   private String getUrl(OrganizationId organizationId) {
     return organizationSettingController.getSettingValue(organizationId, VCardConsts.ORGANIZATION_SETTING_URL);
+  }
+
+  private String getUsername(OrganizationId organizationId) {
+    return organizationSettingController.getSettingValue(organizationId, VCardConsts.ORGANIZATION_SETTING_USERNAME);
+  }
+
+  private String getPassword(OrganizationId organizationId) {
+    return organizationSettingController.getSettingValue(organizationId, VCardConsts.ORGANIZATION_SETTING_PASSWORD);
   }
   
 }
