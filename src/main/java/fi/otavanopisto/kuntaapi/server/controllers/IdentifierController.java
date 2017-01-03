@@ -80,6 +80,10 @@ public class IdentifierController {
   public Identifier findIdentifierByTypeSourceAndKuntaApiId(IdType type, String source, String kuntaApiId) {
     return findIdentifierByTypeSourceAndKuntaApiId(type.toString(), source, kuntaApiId);
   }
+
+  public Long getIdentifierOrderIndex(String kuntaApiIdentifier) {
+    return identifierDAO.findOrderIndexByKuntaApiIdentifier(kuntaApiIdentifier);
+  }
   
   /**
    * Lists organization ids by source. Returned ids are not coverted into KuntaAPI ids

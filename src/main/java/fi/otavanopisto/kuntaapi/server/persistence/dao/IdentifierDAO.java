@@ -137,4 +137,19 @@ public class IdentifierDAO extends AbstractDAO<Identifier> {
     return persist(identifier);
   }
 
+  public Long findOrderIndexByKuntaApiIdentifier(String kuntaApiIdentifier) {
+    EntityManager entityManager = getEntityManager();
+
+    CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+    CriteriaQuery<Long> criteria = criteriaBuilder.createQuery(Long.class);
+    Root<Identifier> root = criteria.from(Identifier.class);
+    criteria.select(root.get(Identifier_.orderIndex));
+    criteria.where(
+      criteriaBuilder.equal(root.get(Identifier_.kuntaApiId), kuntaApiIdentifier)
+    );
+    
+    return entityManager.createQuery(criteria).getSingleResult();
+  }
+
+  
 }

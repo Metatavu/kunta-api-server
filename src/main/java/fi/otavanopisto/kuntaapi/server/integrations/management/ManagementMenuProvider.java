@@ -25,6 +25,7 @@ import fi.metatavu.kuntaapi.server.rest.model.MenuItem;
  * @author Antti Leppä
  */
 @RequestScoped
+@SuppressWarnings ("squid:S3306")
 public class ManagementMenuProvider extends AbstractManagementProvider implements MenuProvider {
   
   @Inject
@@ -36,7 +37,6 @@ public class ManagementMenuProvider extends AbstractManagementProvider implement
   @Override
   public List<Menu> listOrganizationMenus(OrganizationId organizationId, String slug) {
     List<MenuId> menuIds = menuCache.getOragnizationIds(organizationId);
-    
     List<Menu> menus = new ArrayList<>(menuIds.size());
     
     for (MenuId menuId : menuIds) {
