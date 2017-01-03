@@ -17,18 +17,24 @@ import fi.metatavu.kuntaapi.server.rest.model.Menu;
 import fi.metatavu.kuntaapi.server.rest.model.MenuItem;
 
 @ApplicationScoped
+@SuppressWarnings ("squid:S3306")
 public class MenuController {
   
   @Inject
   private Instance<MenuProvider> menuProviders;
+  
+  @Inject
+  private EntityController entityController;
 
+  @SuppressWarnings("unchecked")
   public List<Menu> listMenus(String slug, OrganizationId organizationId) {
     List<Menu> result = new ArrayList<>();
     
     for (MenuProvider menuProvider : getMenuProviders()) {
       result.addAll(menuProvider.listOrganizationMenus(organizationId, slug));
     }
-    return result;
+    
+    return entityController.sortEntitiesInNaturalOrder(result);
   }
 
   public Menu findMenu(OrganizationId organizationId, MenuId menuId) {
