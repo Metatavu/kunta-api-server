@@ -19,13 +19,13 @@ import fi.metatavu.kuntaapi.server.rest.model.MenuItem;
 @ApplicationScoped
 @SuppressWarnings ("squid:S3306")
 public class MenuController {
-  
-  @Inject
-  private Instance<MenuProvider> menuProviders;
-  
+
   @Inject
   private EntityController entityController;
 
+  @Inject
+  private Instance<MenuProvider> menuProviders;
+  
   @SuppressWarnings("unchecked")
   public List<Menu> listMenus(String slug, OrganizationId organizationId) {
     List<Menu> result = new ArrayList<>();

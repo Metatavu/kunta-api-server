@@ -18,8 +18,12 @@ import fi.otavanopisto.kuntaapi.server.integrations.FileProvider;
 import fi.metatavu.kuntaapi.server.rest.model.FileDef;
 
 @ApplicationScoped
+@SuppressWarnings ("squid:S3306")
 public class FileController {
-  
+
+  @Inject
+  private EntityController entityController;
+
   @Inject
   private FileSearcher fileSearcher;
 
@@ -69,7 +73,7 @@ public class FileController {
         }
       }
       
-      return result;
+      return entityController.sortEntitiesInNaturalOrder(result);
     }
     
     return Collections.emptyList();

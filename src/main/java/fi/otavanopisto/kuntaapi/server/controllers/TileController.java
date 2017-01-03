@@ -18,7 +18,11 @@ import fi.metatavu.kuntaapi.server.rest.model.Attachment;
 import fi.metatavu.kuntaapi.server.rest.model.Tile;
 
 @ApplicationScoped
+@SuppressWarnings ("squid:S3306")
 public class TileController {
+
+  @Inject
+  private EntityController entityController;
 
   @Inject
   private Instance<TileProvider> tileProviders;
@@ -28,7 +32,8 @@ public class TileController {
     for (TileProvider tileProvider : getTileProviders()) {
       result.addAll(tileProvider.listOrganizationTiles(organizationId));
     }
-    return result;
+    
+    return entityController.sortEntitiesInNaturalOrder(result);
   }
 
   public Tile findTile(OrganizationId organizationId, TileId tileId) {
@@ -48,8 +53,8 @@ public class TileController {
     for (TileProvider tileProvider : getTileProviders()) {
       result.addAll(tileProvider.listOrganizationTileImages(organizationId, tileId));
     }
-    
-    return result;
+
+    return entityController.sortEntitiesInNaturalOrder(result);
   }
 
   public Attachment findTileImage(OrganizationId organizationId, TileId tileId, AttachmentId attachmentId) {
