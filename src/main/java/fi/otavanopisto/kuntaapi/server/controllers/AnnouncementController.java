@@ -21,6 +21,9 @@ import fi.metatavu.kuntaapi.server.rest.model.Announcement;
 public class AnnouncementController {
   
   @Inject
+  private EntityController entityController;
+  
+  @Inject
   private Instance<AnnouncementProvider> announcementProviders;
   
   public List<Announcement> listAnnouncements(OrganizationId organizationId, AnnouncementOrder order, AnnouncementOrderDirection orderDirection, Integer firstResult, Integer maxResults) {
@@ -40,7 +43,7 @@ public class AnnouncementController {
   @SuppressWarnings ("squid:S1301")
   private List<Announcement> sortAnnouncements(List<Announcement> announcements, AnnouncementOrder order, AnnouncementOrderDirection orderDirection) {
     if (order == null) {
-      return announcements;
+      return entityController.sortEntitiesInNaturalOrder(announcements);
     }
     
     List<Announcement> sorted = new ArrayList<>(announcements);
