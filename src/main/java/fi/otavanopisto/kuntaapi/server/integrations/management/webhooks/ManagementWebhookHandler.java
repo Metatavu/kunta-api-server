@@ -27,7 +27,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.management.ManagementConsts;
 import fi.otavanopisto.kuntaapi.server.webhooks.WebhookHandler;
 
 @RequestScoped
-@SuppressWarnings ("squid:S1301")
+@SuppressWarnings ({"squid:S1301", "squid:S3306"})
 public class ManagementWebhookHandler implements WebhookHandler {
   
   @Inject
@@ -123,22 +123,25 @@ public class ManagementWebhookHandler implements WebhookHandler {
   }
 
   private boolean handlePublish(OrganizationId organizationId, Payload payload) {
+    // TODO: FIXME!
+    Long orderIndex = null;
+    
     switch (payload.getPostType()) {
       case "page":
         PageId pageId = new PageId(organizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
-        pageIdUpdateRequest.fire(new PageIdUpdateRequest(organizationId, pageId, true));
+        pageIdUpdateRequest.fire(new PageIdUpdateRequest(organizationId, pageId, orderIndex, true));
         return true;
       case "banner":
         BannerId bannerId = new BannerId(organizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
-        bannerIdUpdateRequest.fire(new BannerIdUpdateRequest(organizationId, bannerId, true));
+        bannerIdUpdateRequest.fire(new BannerIdUpdateRequest(organizationId, bannerId, orderIndex, true));
         return true;
       case "post":
         NewsArticleId newsArticleId = new NewsArticleId(organizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
-        newsArticleIdUpdateRequest.fire(new NewsArticleIdUpdateRequest(organizationId, newsArticleId, true));
+        newsArticleIdUpdateRequest.fire(new NewsArticleIdUpdateRequest(organizationId, newsArticleId, orderIndex, true));
         return true;
       case "tile":
         TileId tileId = new TileId(organizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
-        tileIdUpdateRequest.fire(new TileIdUpdateRequest(organizationId, tileId, true));
+        tileIdUpdateRequest.fire(new TileIdUpdateRequest(organizationId, tileId, orderIndex, true));
         return true;
       default:
     }

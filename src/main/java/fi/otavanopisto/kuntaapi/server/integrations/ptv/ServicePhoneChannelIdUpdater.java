@@ -112,11 +112,16 @@ public class ServicePhoneChannelIdUpdater extends EntityUpdater {
   private void updateChannelIds(ServiceId serviceId) {
     ApiResponse<List<PhoneChannel >> response = ptvApi.getServicesApi().listServicePhoneChannels(serviceId.getId(), null, null);
     if (response.isOk()) {
-      for (PhoneChannel phoneChannel : response.getResponse()) {
+      List<PhoneChannel> phoneChannels = response.getResponse();
+      for (int i = 0; i < phoneChannels.size(); i++) {
+        PhoneChannel phoneChannel = phoneChannels.get(i);
+        Long orderIndex = (long) i;
         PhoneChannelId channelId = new PhoneChannelId(PtvConsts.IDENTIFIFER_NAME, phoneChannel.getId());
         Identifier identifier = identifierController.findIdentifierById(channelId);
         if (identifier == null) {
-          identifier = identifierController.createIdentifier(channelId);
+          identifier = identifierController.createIdentifier(orderIndex, channelId);
+        } else {
+          identifierController.updateIdentifierOrderIndex(identifier, orderIndex);
         }
         
         modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(phoneChannel));

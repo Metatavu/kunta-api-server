@@ -169,8 +169,10 @@ public class VCardEntityUpdater extends EntityUpdater {
   private void updateContacts(OrganizationId organizationId, List<VCard> vCards) {
     List<ContactId> removedIds = identifierController.listOrganizationContactIdsBySource(organizationId, VCardConsts.IDENTIFIER_NAME);
     
-    for (VCard vCard : vCards) {
-      ContactId contactId = updateContact(organizationId, vCard);
+    for (int i = 0; i < vCards.size(); i++) {
+      VCard vCard = vCards.get(i);
+      Long orderIndex = (long) i;
+      ContactId contactId = updateContact(organizationId, vCard, orderIndex);
       if (contactId != null) {
         removedIds.remove(contactId);
       }
@@ -197,7 +199,7 @@ public class VCardEntityUpdater extends EntityUpdater {
   }
   
 
-  private ContactId updateContact(OrganizationId organizationId, VCard vCard) {
+  private ContactId updateContact(OrganizationId organizationId, VCard vCard, Long orderIndex) {
     String vCardUid = vCard.getUid().getValue();
     if (StringUtils.isBlank(vCardUid)) {
       logger.severe(String.format("Skipped VCard without uid in organization %s", organizationId));
@@ -207,7 +209,9 @@ public class VCardEntityUpdater extends EntityUpdater {
     ContactId contactId = new ContactId(organizationId, VCardConsts.IDENTIFIER_NAME, vCardUid);
     Identifier identifier = identifierController.findIdentifierById(contactId);
     if (identifier == null) {
-      identifier = identifierController.createIdentifier(contactId);
+      identifier = identifierController.createIdentifier(orderIndex, contactId);
+    } else {
+      identifierController.updateIdentifierOrderIndex(identifier, orderIndex);
     }
     
     ContactId kuntaApiContactId = new ContactId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());

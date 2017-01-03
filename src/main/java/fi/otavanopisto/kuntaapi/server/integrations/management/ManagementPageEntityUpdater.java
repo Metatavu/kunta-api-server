@@ -1,7 +1,5 @@
 package fi.otavanopisto.kuntaapi.server.integrations.management;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
@@ -22,12 +20,18 @@ import javax.inject.Inject;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
 
+import fi.metatavu.kuntaapi.server.rest.model.Attachment;
+import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
+import fi.metatavu.management.client.ApiResponse;
+import fi.metatavu.management.client.DefaultApi;
+import fi.metatavu.management.client.model.Page;
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.cache.PageCache;
 import fi.otavanopisto.kuntaapi.server.cache.PageContentCache;
 import fi.otavanopisto.kuntaapi.server.cache.PageImageCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
+import fi.otavanopisto.kuntaapi.server.discover.IdUpdateRequestQueue;
 import fi.otavanopisto.kuntaapi.server.discover.PageIdRemoveRequest;
 import fi.otavanopisto.kuntaapi.server.discover.PageIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
@@ -37,12 +41,7 @@ import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
-import fi.metatavu.kuntaapi.server.rest.model.Attachment;
-import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
 import fi.otavanopisto.kuntaapi.server.system.SystemUtils;
-import fi.metatavu.management.client.ApiResponse;
-import fi.metatavu.management.client.DefaultApi;
-import fi.metatavu.management.client.model.Page;
 
 @ApplicationScoped
 @Singleton
@@ -83,11 +82,11 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
   private TimerService timerService;
 
   private boolean stopped;
-  private List<PageIdUpdateRequest> queue;
+  private IdUpdateRequestQueue<PageIdUpdateRequest> queue;
 
   @PostConstruct
   public void init() {
-    queue = Collections.synchronizedList(new ArrayList<>());
+    queue = new IdUpdateRequestQueue<>(ManagementConsts.IDENTIFIER_NAME);
   }
 
   @Override
@@ -121,14 +120,7 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
         return;
       }
       
-      if (event.isPriority()) {
-        queue.remove(event);
-        queue.add(0, event);
-      } else {
-        if (!queue.contains(event)) {
-          queue.add(event);
-        }
-      }
+      queue.add(event);
     }
   }
   
@@ -148,32 +140,37 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
   @Timeout
   public void timeout(Timer timer) {
     if (!stopped) {
-      if (!queue.isEmpty()) {
-        PageIdUpdateRequest updateRequest = queue.remove(0);
-        updateManagementPage(updateRequest.getOrganizationId(), updateRequest.getId());
+      PageIdUpdateRequest updateRequest = queue.next();
+      if (updateRequest != null) {
+        updateManagementPage(updateRequest);
       }
 
       startTimer(SystemUtils.inTestMode() ? 1000 : TIMER_INTERVAL);
     }
   }
   
-  private void updateManagementPage(OrganizationId organizationId, PageId pageId) {
+  private void updateManagementPage(PageIdUpdateRequest updateRequest) {
+    OrganizationId organizationId = updateRequest.getOrganizationId();
+    PageId pageId = updateRequest.getId();
     DefaultApi api = managementApi.getApi(organizationId);
+    Long orderIndex = updateRequest.getOrderIndex();
     
     ApiResponse<Page> response = api.wpV2PagesIdGet(pageId.getId(), null, null);
     if (response.isOk()) {
-      updateManagementPage(organizationId, api, response.getResponse());
+      updateManagementPage(organizationId, api, response.getResponse(), orderIndex);
     } else {
       logger.warning(String.format("Find organization %s page %s failed on [%d] %s", organizationId.getId(), pageId.toString(), response.getStatus(), response.getMessage()));
     }
   }
   
-  private void updateManagementPage(OrganizationId organizationId, DefaultApi api, Page managementPage) {
+  private void updateManagementPage(OrganizationId organizationId, DefaultApi api, Page managementPage, Long orderIndex) {
     PageId pageId = new PageId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementPage.getId()));
 
     Identifier identifier = identifierController.findIdentifierById(pageId);
     if (identifier == null) {
-      identifier = identifierController.createIdentifier(pageId);
+      identifier = identifierController.createIdentifier(orderIndex, pageId);
+    } else {
+      identifierController.updateIdentifierOrderIndex(identifier, orderIndex);
     }
     
     PageId kuntaApiPageId = new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
@@ -199,7 +196,7 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
       
       Identifier identifier = identifierController.findIdentifierById(managementAttachmentId);
       if (identifier == null) {
-        identifier = identifierController.createIdentifier(managementAttachmentId);
+        identifier = identifierController.createIdentifier(0l, managementAttachmentId);
       }
       
       AttachmentId kuntaApiAttachmentId = new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
@@ -214,14 +211,13 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
     }
   }
 
-  private void deletePage(PageIdRemoveRequest event, PageId pageId) {
+  private void deletePage(PageIdRemoveRequest event, PageId managementPageId) {
     OrganizationId organizationId = event.getOrganizationId();
     
-    Identifier pageIdentifier = identifierController.findIdentifierById(pageId);
+    Identifier pageIdentifier = identifierController.findIdentifierById(managementPageId);
     if (pageIdentifier != null) {
       PageId kuntaApiPageId = new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, pageIdentifier.getKuntaApiId());
-      queue.remove(new PageIdUpdateRequest(organizationId, kuntaApiPageId, false));
-
+      queue.remove(managementPageId);
       modificationHashCache.clear(pageIdentifier.getKuntaApiId());
       pageCache.clear(kuntaApiPageId);
       pageContentCache.clear(kuntaApiPageId);

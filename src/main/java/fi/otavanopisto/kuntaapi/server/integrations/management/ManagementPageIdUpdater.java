@@ -118,11 +118,11 @@ public class ManagementPageIdUpdater extends IdUpdater {
   
   private void updateManagementPages(OrganizationId organizationId) {
     DefaultApi api = managementApi.getApi(organizationId);
-    
     List<Page> managementPages = listManagementPages(api, organizationId);
-    for (Page managementPage : managementPages) {
+    for (int i = 0; i < managementPages.size(); i++) {
+      Page managementPage = managementPages.get(i);
       PageId pageId = new PageId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementPage.getId()));
-      idUpdateRequest.fire(new PageIdUpdateRequest(organizationId, pageId, false));
+      idUpdateRequest.fire(new PageIdUpdateRequest(organizationId, pageId, (long) i, false));
     }
   }
   

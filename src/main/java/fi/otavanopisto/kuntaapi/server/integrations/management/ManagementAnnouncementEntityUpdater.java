@@ -1,8 +1,5 @@
 package fi.otavanopisto.kuntaapi.server.integrations.management;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
@@ -30,6 +27,7 @@ import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.AnnouncementIdRemoveRequest;
 import fi.otavanopisto.kuntaapi.server.discover.AnnouncementIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
+import fi.otavanopisto.kuntaapi.server.discover.IdUpdateRequestQueue;
 import fi.otavanopisto.kuntaapi.server.id.AnnouncementId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
@@ -66,11 +64,11 @@ public class ManagementAnnouncementEntityUpdater extends EntityUpdater {
   private TimerService timerService;
 
   private boolean stopped;
-  private List<AnnouncementIdUpdateRequest> queue;
+  private IdUpdateRequestQueue<AnnouncementIdUpdateRequest> queue;
 
   @PostConstruct
   public void init() {
-    queue = Collections.synchronizedList(new ArrayList<>());
+    queue = new IdUpdateRequestQueue<>(ManagementConsts.IDENTIFIER_NAME);
   }
 
   @Override
@@ -104,14 +102,7 @@ public class ManagementAnnouncementEntityUpdater extends EntityUpdater {
         return;
       }
       
-      if (event.isPriority()) {
-        queue.remove(event);
-        queue.add(0, event);
-      } else {
-        if (!queue.contains(event)) {
-          queue.add(event);
-        }
-      }
+      queue.add(event);
     }
   }
   
@@ -131,32 +122,34 @@ public class ManagementAnnouncementEntityUpdater extends EntityUpdater {
   @Timeout
   public void timeout(Timer timer) {
     if (!stopped) {
-      if (!queue.isEmpty()) {
-        AnnouncementIdUpdateRequest updateRequest = queue.remove(0);
-        updateManagementAnnouncement(updateRequest.getOrganizationId(), updateRequest.getId());
+      AnnouncementIdUpdateRequest updateRequest = queue.next();
+      if (updateRequest != null) {
+        updateManagementAnnouncement(updateRequest.getOrganizationId(), updateRequest.getId(), updateRequest.getOrderIndex());
       }
 
       startTimer(SystemUtils.inTestMode() ? 1000 : TIMER_INTERVAL);
     }
   }
   
-  private void updateManagementAnnouncement(OrganizationId organizationId, AnnouncementId announcementId) {
+  private void updateManagementAnnouncement(OrganizationId organizationId, AnnouncementId announcementId, Long orderIndex) {
     DefaultApi api = managementApi.getApi(organizationId);
     
     ApiResponse<Announcement> response = api.wpV2AnnouncementIdGet(announcementId.getId(), null, null);
     if (response.isOk()) {
-      updateManagementAnnouncement(organizationId, response.getResponse());
+      updateManagementAnnouncement(organizationId, response.getResponse(), orderIndex);
     } else {
       logger.warning(String.format("Find organization %s announcement %s failed on [%d] %s", organizationId.getId(), announcementId.toString(), response.getStatus(), response.getMessage()));
     }
   }
   
-  private void updateManagementAnnouncement(OrganizationId organizationId, Announcement managementAnnouncement) {
+  private void updateManagementAnnouncement(OrganizationId organizationId, Announcement managementAnnouncement, Long orderIndex) {
     AnnouncementId announcementId = new AnnouncementId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementAnnouncement.getId()));
 
     Identifier identifier = identifierController.findIdentifierById(announcementId);
     if (identifier == null) {
-      identifier = identifierController.createIdentifier(announcementId);
+      identifier = identifierController.createIdentifier(orderIndex, announcementId);
+    } else {
+      identifierController.updateIdentifierOrderIndex(identifier, orderIndex);
     }
     
     AnnouncementId kuntaApiAnnouncementId = new AnnouncementId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
@@ -166,14 +159,13 @@ public class ManagementAnnouncementEntityUpdater extends EntityUpdater {
     announcementCache.put(kuntaApiAnnouncementId, announcement);
   }
 
-  private void deleteAnnouncement(AnnouncementIdRemoveRequest event, AnnouncementId announcementId) {
+  private void deleteAnnouncement(AnnouncementIdRemoveRequest event, AnnouncementId managementAnnouncementId) {
     OrganizationId organizationId = event.getOrganizationId();
     
-    Identifier announcementIdentifier = identifierController.findIdentifierById(announcementId);
+    Identifier announcementIdentifier = identifierController.findIdentifierById(managementAnnouncementId);
     if (announcementIdentifier != null) {
       AnnouncementId kuntaApiAnnouncementId = new AnnouncementId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, announcementIdentifier.getKuntaApiId());
-      queue.remove(new AnnouncementIdUpdateRequest(organizationId, kuntaApiAnnouncementId, false));
-
+      queue.remove(managementAnnouncementId);
       modificationHashCache.clear(announcementIdentifier.getKuntaApiId());
       announcementCache.clear(kuntaApiAnnouncementId);
       identifierController.deleteIdentifier(announcementIdentifier);

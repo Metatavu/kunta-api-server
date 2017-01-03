@@ -9,8 +9,8 @@ public class AnnouncementIdUpdateRequest extends AbstractIdUpdateRequest<Announc
 
   private OrganizationId organizationId;
   
-  public AnnouncementIdUpdateRequest(OrganizationId organizationId, AnnouncementId id, boolean priority) {
-    super(id, priority);
+  public AnnouncementIdUpdateRequest(OrganizationId organizationId, AnnouncementId id, Long orderIndex, boolean priority) {
+    super(id, orderIndex, priority);
     this.organizationId = organizationId;
   }
   

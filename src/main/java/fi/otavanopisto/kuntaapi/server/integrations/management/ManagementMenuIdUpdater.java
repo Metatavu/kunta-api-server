@@ -119,9 +119,10 @@ public class ManagementMenuIdUpdater extends IdUpdater {
     DefaultApi api = managementApi.getApi(organizationId);
     
     List<Menu> managementMenus = listManagementMenus(api, organizationId);
-    for (Menu managementMenu : managementMenus) {
+    for (int i = 0, l = managementMenus.size(); i < l; i++) {
+      Menu managementMenu = managementMenus.get(i);
       MenuId menuId = new MenuId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementMenu.getId()));
-      idUpdateRequest.fire(new MenuIdUpdateRequest(organizationId, menuId, false));
+      idUpdateRequest.fire(new MenuIdUpdateRequest(organizationId, menuId, (long) i, false));
     }
   }
 

@@ -120,9 +120,10 @@ public class ManagementAnnouncementIdUpdater extends IdUpdater {
     DefaultApi api = managementApi.getApi(organizationId);
     
     List<Announcement> managementAnnouncements = listManagementAnnouncements(api, organizationId);
-    for (Announcement managementAnnouncement : managementAnnouncements) {
+    for (int i = 0, l = managementAnnouncements.size(); i < l; i++) {
+      Announcement managementAnnouncement = managementAnnouncements.get(i);
       AnnouncementId announcementId = new AnnouncementId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementAnnouncement.getId()));
-      idUpdateRequest.fire(new AnnouncementIdUpdateRequest(organizationId, announcementId, false));
+      idUpdateRequest.fire(new AnnouncementIdUpdateRequest(organizationId, announcementId, (long) i, false));
     }
   }
   

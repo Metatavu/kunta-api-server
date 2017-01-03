@@ -88,10 +88,12 @@ public class PtvServiceIdUpdater extends IdUpdater {
       logger.severe(String.format("Service list reported [%d] %s", servicesResponse.getStatus(), servicesResponse.getMessage()));
     } else {
       List<Service> services = servicesResponse.getResponse();
-      for (Service service : services) {
+      for (int i = 0; i < services.size(); i++) {
+        Service service = services.get(i);
+        Long orderIndex = (long) i + offset;
         ServiceId serviceId = new ServiceId(PtvConsts.IDENTIFIFER_NAME, service.getId());
         boolean priority = identifierController.findIdentifierById(serviceId) == null;
-        idUpdateRequest.fire(new ServiceIdUpdateRequest(serviceId, priority));
+        idUpdateRequest.fire(new ServiceIdUpdateRequest(serviceId, orderIndex, priority));
       }
       
       if (services.size() == BATCH_SIZE) {
