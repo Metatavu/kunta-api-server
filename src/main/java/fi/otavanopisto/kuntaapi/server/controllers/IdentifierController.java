@@ -15,6 +15,7 @@ import fi.otavanopisto.kuntaapi.server.id.BaseId;
 import fi.otavanopisto.kuntaapi.server.id.ContactId;
 import fi.otavanopisto.kuntaapi.server.id.IdType;
 import fi.otavanopisto.kuntaapi.server.id.MenuId;
+import fi.otavanopisto.kuntaapi.server.id.MenuItemId;
 import fi.otavanopisto.kuntaapi.server.id.MissingOrganizationIdException;
 import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationBaseId;
@@ -152,6 +153,17 @@ public class IdentifierController {
     
     for (String menuId : menuIds) {
       result.add(new MenuId(organizationId, source, menuId));
+    }
+    
+    return result;
+  }
+
+  public List<MenuItemId> listOrganizationMenuItemIdsBySource(OrganizationId organizationId, String source) {
+    List<String> menuItemIds = listSourceIdsByOrganizationIdAndSourceAndType(organizationId, source, IdType.MENU_ITEM.toString());
+    List<MenuItemId> result = new ArrayList<>(menuItemIds.size());
+    
+    for (String menuItemId : menuItemIds) {
+      result.add(new MenuItemId(organizationId, source, menuItemId));
     }
     
     return result;
