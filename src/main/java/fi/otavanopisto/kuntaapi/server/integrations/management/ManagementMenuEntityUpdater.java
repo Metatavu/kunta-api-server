@@ -334,7 +334,8 @@ public class ManagementMenuEntityUpdater extends EntityUpdater {
   private void deleteMenuItem(MenuId kuntaApiMenuId, MenuItemId kuntaApiMenuItemId) {
     Identifier menuItemIdentifier = identifierController.findIdentifierById(kuntaApiMenuItemId);
     if (menuItemIdentifier != null) {
-      queue.remove(kuntaApiMenuItemId);
+      MenuItemId managementMenuItemId = idController.translateMenuItemId(kuntaApiMenuItemId, ManagementConsts.IDENTIFIER_NAME);
+      queue.remove(managementMenuItemId);
       modificationHashCache.clear(menuItemIdentifier.getKuntaApiId());
       menuItemCache.clear(new IdPair<MenuId, MenuItemId>(kuntaApiMenuId, kuntaApiMenuItemId));
       identifierController.deleteIdentifier(menuItemIdentifier);
