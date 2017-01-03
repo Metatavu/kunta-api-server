@@ -33,8 +33,10 @@ public class EntityController {
     
     for (Object entity : entities) {
       String id = getId(entity);
-      Long orderIndex = identifierController.getIdentifierOrderIndex(id);
-      orderIds.put(id, orderIndex);
+      if (id != null) {
+        Long orderIndex = identifierController.getIdentifierOrderIndex(id);
+        orderIds.put(id, orderIndex);
+      }
     }
     
     entities.sort(new IdentifierComparator(orderIds));
