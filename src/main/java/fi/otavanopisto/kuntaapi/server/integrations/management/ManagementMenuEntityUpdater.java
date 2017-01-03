@@ -1,7 +1,6 @@
 package fi.otavanopisto.kuntaapi.server.integrations.management;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
@@ -21,11 +20,17 @@ import javax.inject.Inject;
 
 import org.apache.commons.lang3.StringUtils;
 
+import fi.metatavu.kuntaapi.server.rest.model.Menu;
+import fi.metatavu.kuntaapi.server.rest.model.MenuItem;
+import fi.metatavu.management.client.ApiResponse;
+import fi.metatavu.management.client.DefaultApi;
+import fi.metatavu.management.client.model.Menuitem;
 import fi.otavanopisto.kuntaapi.server.cache.MenuCache;
 import fi.otavanopisto.kuntaapi.server.cache.MenuItemCache;
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
+import fi.otavanopisto.kuntaapi.server.discover.IdUpdateRequestQueue;
 import fi.otavanopisto.kuntaapi.server.discover.MenuIdRemoveRequest;
 import fi.otavanopisto.kuntaapi.server.discover.MenuIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
@@ -37,13 +42,8 @@ import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.MenuProvider.MenuItemType;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
-import fi.otavanopisto.kuntaapi.server.rest.model.Menu;
-import fi.otavanopisto.kuntaapi.server.rest.model.MenuItem;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 import fi.otavanopisto.kuntaapi.server.system.SystemUtils;
-import fi.metatavu.management.client.ApiResponse;
-import fi.metatavu.management.client.DefaultApi;
-import fi.metatavu.management.client.model.Menuitem;
 
 @ApplicationScoped
 @Singleton
@@ -81,11 +81,11 @@ public class ManagementMenuEntityUpdater extends EntityUpdater {
   private TimerService timerService;
 
   private boolean stopped;
-  private List<MenuIdUpdateRequest> queue;
+  private IdUpdateRequestQueue<MenuIdUpdateRequest> queue;
 
   @PostConstruct
   public void init() {
-    queue = Collections.synchronizedList(new ArrayList<>());
+    queue = new IdUpdateRequestQueue<>(ManagementConsts.IDENTIFIER_NAME);
   }
 
   @Override
@@ -119,14 +119,7 @@ public class ManagementMenuEntityUpdater extends EntityUpdater {
         return;
       }
       
-      if (event.isPriority()) {
-        queue.remove(event);
-        queue.add(0, event);
-      } else {
-        if (!queue.contains(event)) {
-          queue.add(event);
-        }
-      }
+      queue.add(event);
     }
   }
   
@@ -147,32 +140,47 @@ public class ManagementMenuEntityUpdater extends EntityUpdater {
   @Timeout
   public void timeout(Timer timer) {
     if (!stopped) {
-      if (!queue.isEmpty()) {
-        MenuIdUpdateRequest updateRequest = queue.remove(0);
-        DefaultApi api = managementApi.getApi(updateRequest.getOrganizationId());
-        updateManagementMenu(api, updateRequest.getOrganizationId(), updateRequest.getId());
+      MenuIdUpdateRequest updateRequest = queue.next();
+      if (updateRequest != null) {
+        updateManagementMenu(updateRequest);
       }
 
       startTimer(SystemUtils.inTestMode() ? 1000 : TIMER_INTERVAL);
     }
   }
 
-  private void updateManagementMenu(DefaultApi api, OrganizationId organizationId, MenuId managementMenuId) {
+  private void updateManagementMenu(MenuIdUpdateRequest updateRequest) {
+    OrganizationId organizationId = updateRequest.getOrganizationId();
+    DefaultApi api = managementApi.getApi(organizationId);
+    MenuId managementMenuId = updateRequest.getId();
+    Long orderIndex = updateRequest.getOrderIndex();
+    
     ApiResponse<fi.metatavu.management.client.model.Menu> response = api.kuntaApiMenusIdGet(managementMenuId.getId());
     if (response.isOk()) {
-      updateManagementMenu(api, organizationId, response.getResponse());
+      updateManagementMenu(api, organizationId, response.getResponse(), orderIndex);
     } else {
       logger.warning(String.format("Finding organization %s menu failed on [%d] %s", managementMenuId.getId(), response.getStatus(), response.getMessage()));
     }
   }
 
-  private void updateManagementMenu(DefaultApi api, OrganizationId organizationId, fi.metatavu.management.client.model.Menu managementMenu) {
-    Menu menu = updateManagementMenu(organizationId, managementMenu);
-    MenuId menuId = new MenuId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, menu.getId());
+  private void updateManagementMenu(DefaultApi api, OrganizationId organizationId, fi.metatavu.management.client.model.Menu managementMenu, Long orderIndex) {
+    Menu menu = updateManagementMenu(organizationId, managementMenu, orderIndex);
+    if (menu == null) {
+      logger.warning(String.format("Failed to update menu %d on organization %s", managementMenu.getId(), organizationId.getId()));
+      return;
+    }
     
+    MenuId menuId = new MenuId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, menu.getId());
+    List<MenuItemId> existingKuntaApiMenuItemIds = menuItemCache.getBareChildIds(menuId);
     List<Menuitem> managementMenuItems = listManagementMenuItems(api, managementMenu);
-    for (Menuitem managementMenuItem : managementMenuItems) {
-      updateManagementMenuItem(organizationId, menuId, managementMenuItem);
+    for (int i = 0, l = managementMenuItems.size(); i < l; i++) {
+      Menuitem managementMenuItem = managementMenuItems.get(i);
+      MenuItemId menuItemId = updateManagementMenuItem(organizationId, menuId, managementMenuItem, (long) i);
+      existingKuntaApiMenuItemIds.remove(menuItemId);
+    }
+    
+    for (MenuItemId existingKuntaApiMenuItemId : existingKuntaApiMenuItemIds) {
+      deleteMenuItem(menuId, existingKuntaApiMenuItemId);
     }
   }
 
@@ -189,12 +197,14 @@ public class ManagementMenuEntityUpdater extends EntityUpdater {
     return result;
   }
   
-  private Menu updateManagementMenu(OrganizationId organizationId, fi.metatavu.management.client.model.Menu managementMenu) {
+  private Menu updateManagementMenu(OrganizationId organizationId, fi.metatavu.management.client.model.Menu managementMenu, Long orderIndex) {
     MenuId managementMenuId = new MenuId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementMenu.getId()));
 
     Identifier identifier = identifierController.findIdentifierById(managementMenuId);
     if (identifier == null) {
-      identifier = identifierController.createIdentifier(managementMenuId);
+      identifier = identifierController.createIdentifier(orderIndex, managementMenuId);
+    } else {
+      identifierController.updateIdentifierOrderIndex(identifier, orderIndex);
     }
     
     MenuId kuntaApiMenuId = new MenuId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
@@ -205,12 +215,14 @@ public class ManagementMenuEntityUpdater extends EntityUpdater {
     return menu;
   }
   
-  private void updateManagementMenuItem(OrganizationId organizationId, MenuId menuId, Menuitem managementMenuItem) {
+  private MenuItemId updateManagementMenuItem(OrganizationId organizationId, MenuId menuId, Menuitem managementMenuItem, Long orderIndex) {
     MenuItemId managementMenuItemId = new MenuItemId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementMenuItem.getId()));
 
     Identifier identifier = identifierController.findIdentifierById(managementMenuItemId);
     if (identifier == null) {
-      identifier = identifierController.createIdentifier(managementMenuItemId);
+      identifier = identifierController.createIdentifier(orderIndex, managementMenuItemId);
+    } else {
+      identifierController.updateIdentifierOrderIndex(identifier, orderIndex);
     }
     
     MenuItem menuItem = translateMenuItem(organizationId, managementMenuItem);
@@ -218,6 +230,8 @@ public class ManagementMenuEntityUpdater extends EntityUpdater {
         
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(menuItem));
     menuItemCache.put(new IdPair<MenuId, MenuItemId>(menuId,kuntaApiMenuItemId), menuItem);
+    
+    return kuntaApiMenuItemId;
   }
 
   private Menu translateMenu(OrganizationId organizationId, fi.metatavu.management.client.model.Menu managementMenu) {
@@ -306,14 +320,25 @@ public class ManagementMenuEntityUpdater extends EntityUpdater {
     return idController.translatePageId(managementId, KuntaApiConsts.IDENTIFIER_NAME);
   }
   
-  private void deleteMenu(OrganizationId organizationId, MenuId menuId) {
-    Identifier menuIdentifier = identifierController.findIdentifierById(menuId);
+  private void deleteMenu(OrganizationId organizationId, MenuId managementMenuId) {
+    Identifier menuIdentifier = identifierController.findIdentifierById(managementMenuId);
     if (menuIdentifier != null) {
       MenuId kuntaApiMenuId = new MenuId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, menuIdentifier.getKuntaApiId());
-      queue.remove(new MenuIdUpdateRequest(organizationId, kuntaApiMenuId, false));
+      queue.remove(managementMenuId);
       modificationHashCache.clear(menuIdentifier.getKuntaApiId());
       menuCache.clear(kuntaApiMenuId);
       identifierController.deleteIdentifier(menuIdentifier);
+    }
+  }
+  
+  private void deleteMenuItem(MenuId kuntaApiMenuId, MenuItemId kuntaApiMenuItemId) {
+    Identifier menuItemIdentifier = identifierController.findIdentifierById(kuntaApiMenuItemId);
+    if (menuItemIdentifier != null) {
+      MenuItemId managementMenuItemId = idController.translateMenuItemId(kuntaApiMenuItemId, ManagementConsts.IDENTIFIER_NAME);
+      queue.remove(managementMenuItemId);
+      modificationHashCache.clear(menuItemIdentifier.getKuntaApiId());
+      menuItemCache.clear(new IdPair<MenuId, MenuItemId>(kuntaApiMenuId, kuntaApiMenuItemId));
+      identifierController.deleteIdentifier(menuItemIdentifier);
     }
   }
   

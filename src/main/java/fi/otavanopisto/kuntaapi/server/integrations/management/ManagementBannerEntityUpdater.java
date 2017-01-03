@@ -1,7 +1,5 @@
 package fi.otavanopisto.kuntaapi.server.integrations.management;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
@@ -22,6 +20,10 @@ import javax.inject.Inject;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
 
+import fi.metatavu.management.client.ApiResponse;
+import fi.metatavu.management.client.DefaultApi;
+import fi.metatavu.management.client.model.Attachment;
+import fi.metatavu.management.client.model.Banner;
 import fi.otavanopisto.kuntaapi.server.cache.BannerCache;
 import fi.otavanopisto.kuntaapi.server.cache.BannerImageCache;
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
@@ -29,6 +31,7 @@ import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.BannerIdRemoveRequest;
 import fi.otavanopisto.kuntaapi.server.discover.BannerIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
+import fi.otavanopisto.kuntaapi.server.discover.IdUpdateRequestQueue;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.BannerId;
 import fi.otavanopisto.kuntaapi.server.id.IdPair;
@@ -38,10 +41,6 @@ import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 import fi.otavanopisto.kuntaapi.server.system.SystemUtils;
-import fi.metatavu.management.client.ApiResponse;
-import fi.metatavu.management.client.DefaultApi;
-import fi.metatavu.management.client.model.Attachment;
-import fi.metatavu.management.client.model.Banner;
 
 @ApplicationScoped
 @Singleton
@@ -82,11 +81,11 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
   private TimerService timerService;
 
   private boolean stopped;
-  private List<BannerIdUpdateRequest> queue;
+  private IdUpdateRequestQueue<BannerIdUpdateRequest> queue;
 
   @PostConstruct
   public void init() {
-    queue = Collections.synchronizedList(new ArrayList<>());
+    queue = new IdUpdateRequestQueue<>(ManagementConsts.IDENTIFIER_NAME);
   }
 
   @Override
@@ -119,15 +118,8 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
       if (organizationSettingController.getSettingValue(organizationId, ManagementConsts.ORGANIZATION_SETTING_BASEURL) == null) {
         return;
       }
-      
-      if (event.isPriority()) {
-        queue.remove(event);
-        queue.add(0, event);
-      } else {
-        if (!queue.contains(event)) {
-          queue.add(event);
-        }
-      }
+
+      queue.add(event);
     }
   }
   
@@ -147,38 +139,41 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
   @Timeout
   public void timeout(Timer timer) {
     if (!stopped) {
-      if (!queue.isEmpty()) {
-        BannerIdUpdateRequest updateRequest = queue.remove(0);
-        OrganizationId organizationId = updateRequest.getOrganizationId();
-        DefaultApi api = managementApi.getApi(organizationId);
-        
-        updateManagementBanner(api, organizationId, updateRequest.getId());
+      BannerIdUpdateRequest updateRequest = queue.next();
+      if (updateRequest != null) {
+        updateManagementBanner(updateRequest);
       }
 
       startTimer(SystemUtils.inTestMode() ? 1000 : TIMER_INTERVAL);
     }
   }
 
-  private void updateManagementBanner(DefaultApi api, OrganizationId organizationId, BannerId managementBannerId) {
+  private void updateManagementBanner(BannerIdUpdateRequest updateRequest) {
+    OrganizationId organizationId = updateRequest.getOrganizationId();
+    DefaultApi api = managementApi.getApi(organizationId);
+    BannerId managementBannerId = updateRequest.getId();
+    
     fi.metatavu.management.client.ApiResponse<Banner> response = api.wpV2BannerIdGet(managementBannerId.getId(), null, null);
     if (response.isOk()) {
-      updateManagementBanner(api, organizationId, response.getResponse());
+      updateManagementBanner(api, organizationId, response.getResponse(), updateRequest.getOrderIndex());
     } else {
       logger.warning(String.format("Finding organization %s banner failed on [%d] %s", managementBannerId.getId(), response.getStatus(), response.getMessage()));
     }
   }
   
-  private void updateManagementBanner(DefaultApi api, OrganizationId organizationId, Banner managementBanner) {
+  private void updateManagementBanner(DefaultApi api, OrganizationId organizationId, Banner managementBanner, Long orderIndex) {
     BannerId bannerId = new BannerId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementBanner.getId()));
 
     Identifier identifier = identifierController.findIdentifierById(bannerId);
     if (identifier == null) {
-      identifier = identifierController.createIdentifier(bannerId);
+      identifier = identifierController.createIdentifier(orderIndex, bannerId);
+    } else {
+      identifierController.updateIdentifierOrderIndex(identifier, orderIndex);
     }
     
     BannerId bannerKuntaApiId = new BannerId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
     
-    fi.otavanopisto.kuntaapi.server.rest.model.Banner banner = managementTranslator.translateBanner(bannerKuntaApiId, managementBanner);
+    fi.metatavu.kuntaapi.server.rest.model.Banner banner = managementTranslator.translateBanner(bannerKuntaApiId, managementBanner);
     if (banner == null) {
       logger.severe(String.format("Could not translate banner %d into Kunta API banner", managementBanner.getId()));
       return;
@@ -203,11 +198,11 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
       
       Identifier identifier = identifierController.findIdentifierById(managementAttachmentId);
       if (identifier == null) {
-        identifier = identifierController.createIdentifier(managementAttachmentId);
+        identifier = identifierController.createIdentifier(0l, managementAttachmentId);
       }
       
       AttachmentId kuntaApiAttachmentId = new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
-      fi.otavanopisto.kuntaapi.server.rest.model.Attachment attachment = managementTranslator.translateAttachment(kuntaApiAttachmentId, managementAttachment);
+      fi.metatavu.kuntaapi.server.rest.model.Attachment attachment = managementTranslator.translateAttachment(kuntaApiAttachmentId, managementAttachment);
       if (attachment != null) {
         bannerImageCache.put(new IdPair<>(bannerId, kuntaApiAttachmentId), attachment);
         
@@ -220,11 +215,11 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
     }
   }
 
-  private void deleteBanner(OrganizationId organizationId, BannerId bannerId) {
-    Identifier bannerIdentifier = identifierController.findIdentifierById(bannerId);
+  private void deleteBanner(OrganizationId organizationId, BannerId managementBannerId) {
+    Identifier bannerIdentifier = identifierController.findIdentifierById(managementBannerId);
     if (bannerIdentifier != null) {
       BannerId kuntaApiBannerId = new BannerId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, bannerIdentifier.getKuntaApiId());
-      queue.remove(new BannerIdUpdateRequest(organizationId, kuntaApiBannerId, false));
+      queue.remove(managementBannerId);
 
       modificationHashCache.clear(bannerIdentifier.getKuntaApiId());
       bannerCache.clear(kuntaApiBannerId);

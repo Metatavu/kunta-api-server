@@ -3,7 +3,7 @@ package fi.otavanopisto.kuntaapi.server.cache;
 import javax.enterprise.context.ApplicationScoped;
 
 import fi.otavanopisto.kuntaapi.server.id.AnnouncementId;
-import fi.otavanopisto.kuntaapi.server.rest.model.Announcement;
+import fi.metatavu.kuntaapi.server.rest.model.Announcement;
 
 @ApplicationScoped
 public class AnnouncementCache extends AbstractEntityCache<AnnouncementId, Announcement> {

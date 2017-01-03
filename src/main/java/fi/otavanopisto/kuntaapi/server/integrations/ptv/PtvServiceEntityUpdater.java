@@ -21,6 +21,7 @@ import javax.inject.Inject;
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
+import fi.otavanopisto.kuntaapi.server.discover.IdUpdateRequestQueue;
 import fi.otavanopisto.kuntaapi.server.discover.ServiceIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
@@ -65,11 +66,11 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
   private Event<IndexRequest> indexRequest;
 
   private boolean stopped;
-  private List<ServiceId> queue;
+  private IdUpdateRequestQueue<ServiceIdUpdateRequest> queue;
 
   @PostConstruct
   public void init() {
-    queue = new ArrayList<>();
+    queue = new IdUpdateRequestQueue<>(PtvConsts.IDENTIFIFER_NAME);
   }
 
   @Override
@@ -100,34 +101,34 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
         return;
       }
       
-      if (event.isPriority()) {
-        queue.remove(event.getId());
-        queue.add(0, event.getId());
-      } else {
-        if (!queue.contains(event.getId())) {
-          queue.add(event.getId());
-        }
-      }
+      queue.add(event);
     }
   }
 
   @Timeout
   public void timeout(Timer timer) {
     if (!stopped) {
-      if (!queue.isEmpty()) {
-        updatePtvService(queue.remove(0));          
+      ServiceIdUpdateRequest updateRequest = queue.next();
+      if (updateRequest != null) {
+        updatePtvService(updateRequest);
       }
 
       startTimer(SystemUtils.inTestMode() ? 1000 : TIMER_INTERVAL);
     }
   }
 
-  private void updatePtvService(ServiceId serviceId) {
+  private void updatePtvService(ServiceIdUpdateRequest updateRequest) {
+    updatePtvService(updateRequest.getId(), updateRequest.getOrderIndex());
+  }
+  
+  private void updatePtvService(ServiceId serviceId, Long orderIndex) {
     ApiResponse<Service> response = ptvApi.getServicesApi().findService(serviceId.getId());
     if (response.isOk()) {
       Identifier identifier = identifierController.findIdentifierById(serviceId);
       if (identifier == null) {
-        identifier = identifierController.createIdentifier(serviceId);
+        identifier = identifierController.createIdentifier(orderIndex, serviceId);
+      } else {
+        identifierController.updateIdentifierOrderIndex(identifier, orderIndex);
       }
       
       Service service = response.getResponse();

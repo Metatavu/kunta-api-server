@@ -120,9 +120,10 @@ public class ManagementTileIdUpdater extends IdUpdater {
     DefaultApi api = managementApi.getApi(organizationId);
     
     List<Tile> managementTiles = listManagementTiles(api, organizationId);
-    for (Tile managementTile : managementTiles) {
+    for (int i = 0, l = managementTiles.size(); i < l; i++) {
+      Tile managementTile = managementTiles.get(i);
       TileId tileId = new TileId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementTile.getId()));
-      idUpdateRequest.fire(new TileIdUpdateRequest(organizationId, tileId, false));
+      idUpdateRequest.fire(new TileIdUpdateRequest(organizationId, tileId, (long) i, false));
     }
   }
 

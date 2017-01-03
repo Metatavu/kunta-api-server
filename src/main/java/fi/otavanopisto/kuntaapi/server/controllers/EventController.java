@@ -18,11 +18,15 @@ import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.EventProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.EventProvider.EventOrder;
 import fi.otavanopisto.kuntaapi.server.integrations.EventProvider.EventOrderDirection;
-import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
-import fi.otavanopisto.kuntaapi.server.rest.model.Event;
+import fi.metatavu.kuntaapi.server.rest.model.Attachment;
+import fi.metatavu.kuntaapi.server.rest.model.Event;
 
 @ApplicationScoped
+@SuppressWarnings ("squid:S3306")
 public class EventController {
+
+  @Inject
+  private EntityController entityController;
   
   @Inject
   private Instance<EventProvider> eventProviders;
@@ -62,10 +66,12 @@ public class EventController {
   
   public List<Attachment> listEventImages(OrganizationId organizationId, EventId eventId) {
     List<Attachment> result = new ArrayList<>();
+    
     for (EventProvider eventProvider : getEventProviders()) {
       result.addAll(eventProvider.listEventImages(organizationId, eventId));
     }
-    return result;
+    
+    return entityController.sortEntitiesInNaturalOrder(result);
   }
 
   @SuppressWarnings ("squid:S00107")
@@ -86,6 +92,10 @@ public class EventController {
   }
   
   private List<Event> sortEvents(List<Event> result, EventProvider.EventOrder order, EventProvider.EventOrderDirection orderDirection) {
+    if (order == null) {
+      return entityController.sortEntitiesInNaturalOrder(result);
+    }
+    
     Collections.sort(result, new EventComparator(order, orderDirection));
     return result;
   }

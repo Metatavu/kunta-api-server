@@ -9,8 +9,8 @@ public class MenuIdUpdateRequest extends AbstractIdUpdateRequest<MenuId> {
 
   private OrganizationId organizationId;
   
-  public MenuIdUpdateRequest(OrganizationId organizationId, MenuId id, boolean priority) {
-    super(id, priority);
+  public MenuIdUpdateRequest(OrganizationId organizationId, MenuId id, Long orderIndex, boolean priority) {
+    super(id, orderIndex, priority);
     this.organizationId = organizationId;
   }
   

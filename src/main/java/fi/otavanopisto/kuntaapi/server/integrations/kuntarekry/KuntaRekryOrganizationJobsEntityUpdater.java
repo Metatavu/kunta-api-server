@@ -112,12 +112,18 @@ public class KuntaRekryOrganizationJobsEntityUpdater extends EntityUpdater {
 
   private void updateOrganizationJobs(OrganizationId organizationId) {
     kuntaRekryClient.refreshJobs(organizationId);
+    List<KuntaRekryJob> kuntaRekryJobs = kuntaRekryClient.listJobs(organizationId);
     
-    for (KuntaRekryJob kuntaRekryJob : kuntaRekryClient.listJobs(organizationId)) {
+    for (int i = 0; i < kuntaRekryJobs.size(); i++) {
+      KuntaRekryJob kuntaRekryJob = kuntaRekryJobs.get(i);
+      Long orderIndex = (long) i;
+      
       JobId kuntaRekryId = new JobId(organizationId, KuntaRekryConsts.IDENTIFIER_NAME, String.valueOf(kuntaRekryJob.getJobId())); 
       Identifier identifier = identifierController.findIdentifierById(kuntaRekryId);
       if (identifier == null) {
-        identifier = identifierController.createIdentifier(kuntaRekryId);
+        identifier = identifierController.createIdentifier(orderIndex, kuntaRekryId);
+      } else {
+        identifierController.updateIdentifierOrderIndex(identifier, orderIndex);
       }
       
       modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(kuntaRekryJob));

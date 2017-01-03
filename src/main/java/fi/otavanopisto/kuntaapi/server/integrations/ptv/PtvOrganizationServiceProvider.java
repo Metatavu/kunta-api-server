@@ -11,7 +11,7 @@ import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationServiceId;
 import fi.otavanopisto.kuntaapi.server.integrations.OrganizationServiceProvider;
-import fi.otavanopisto.kuntaapi.server.rest.model.OrganizationService;
+import fi.metatavu.kuntaapi.server.rest.model.OrganizationService;
 import fi.otavanopisto.restfulptv.client.ApiResponse;
 
 /**

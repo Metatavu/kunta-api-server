@@ -10,7 +10,7 @@ import fi.otavanopisto.kuntaapi.server.cache.AnnouncementCache;
 import fi.otavanopisto.kuntaapi.server.id.AnnouncementId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.AnnouncementProvider;
-import fi.otavanopisto.kuntaapi.server.rest.model.Announcement;
+import fi.metatavu.kuntaapi.server.rest.model.Announcement;
 
 /**
  * Announcement provider for management wordpress

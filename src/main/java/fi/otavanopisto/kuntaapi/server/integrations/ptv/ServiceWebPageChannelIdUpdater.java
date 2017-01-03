@@ -112,11 +112,16 @@ public class ServiceWebPageChannelIdUpdater extends EntityUpdater {
   private void updateChannelIds(ServiceId serviceId) {
     ApiResponse<List<WebPageChannel >> response = ptvApi.getServicesApi().listServiceWebPageChannels(serviceId.getId(), null, null);
     if (response.isOk()) {
-      for (WebPageChannel webPageChannel : response.getResponse()) {
+      List<WebPageChannel> webPageChannels = response.getResponse();
+      for (int i = 0; i < webPageChannels.size(); i++) {
+        WebPageChannel webPageChannel = webPageChannels.get(i);
         WebPageChannelId channelId = new WebPageChannelId(PtvConsts.IDENTIFIFER_NAME, webPageChannel.getId());
+        Long orderIndex = (long) i;
         Identifier identifier = identifierController.findIdentifierById(channelId);
         if (identifier == null) {
-          identifier = identifierController.createIdentifier(channelId);
+          identifier = identifierController.createIdentifier(orderIndex, channelId);
+        } else {
+          identifierController.updateIdentifierOrderIndex(identifier, orderIndex);
         }
         
         modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(webPageChannel));

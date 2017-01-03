@@ -112,11 +112,16 @@ public class ServicePrintableFormChannelIdUpdater extends EntityUpdater {
   private void updateChannelIds(ServiceId serviceId) {
     ApiResponse<List<PrintableFormChannel >> response = ptvApi.getServicesApi().listServicePrintableFormChannels(serviceId.getId(), null, null);
     if (response.isOk()) {
-      for (PrintableFormChannel printableFormChannel : response.getResponse()) {
+      List<PrintableFormChannel> printableFormChannels = response.getResponse();
+      for (int i = 0; i < printableFormChannels.size(); i++) {
+        PrintableFormChannel printableFormChannel = printableFormChannels.get(i);
         PrintableFormChannelId channelId = new PrintableFormChannelId(PtvConsts.IDENTIFIFER_NAME, printableFormChannel.getId());
+        Long orderIndex = (long) i;
         Identifier identifier = identifierController.findIdentifierById(channelId);
         if (identifier == null) {
-          identifier = identifierController.createIdentifier(channelId);
+          identifier = identifierController.createIdentifier(orderIndex, channelId);
+        } else {
+          identifierController.updateIdentifierOrderIndex(identifier, orderIndex);
         }
         
         modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(printableFormChannel));

@@ -20,15 +20,19 @@ import fi.otavanopisto.kuntaapi.server.index.SearchResult;
 import fi.otavanopisto.kuntaapi.server.index.ServiceSearcher;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceChannelProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceProvider;
-import fi.otavanopisto.kuntaapi.server.rest.model.ElectronicChannel;
-import fi.otavanopisto.kuntaapi.server.rest.model.PhoneChannel;
-import fi.otavanopisto.kuntaapi.server.rest.model.PrintableFormChannel;
-import fi.otavanopisto.kuntaapi.server.rest.model.Service;
-import fi.otavanopisto.kuntaapi.server.rest.model.ServiceLocationChannel;
-import fi.otavanopisto.kuntaapi.server.rest.model.WebPageChannel;
+import fi.metatavu.kuntaapi.server.rest.model.ElectronicChannel;
+import fi.metatavu.kuntaapi.server.rest.model.PhoneChannel;
+import fi.metatavu.kuntaapi.server.rest.model.PrintableFormChannel;
+import fi.metatavu.kuntaapi.server.rest.model.Service;
+import fi.metatavu.kuntaapi.server.rest.model.ServiceLocationChannel;
+import fi.metatavu.kuntaapi.server.rest.model.WebPageChannel;
 
 @ApplicationScoped
+@SuppressWarnings ("squid:S3306")
 public class ServiceController {
+
+  @Inject
+  private EntityController entityController;
   
   @Inject
   private ServiceSearcher serviceSearcher;
@@ -61,7 +65,7 @@ public class ServiceController {
     int firstIndex = firstResult == null ? 0 : Math.min(firstResult.intValue(), resultCount);
     int toIndex = maxResults == null ? resultCount : Math.min(firstIndex + maxResults.intValue(), resultCount);
     
-    return result.subList(firstIndex, toIndex);
+    return entityController.sortEntitiesInNaturalOrder(result.subList(firstIndex, toIndex));
   }
 
   public List<Service> searchServices(OrganizationId organizationId, String search, Long firstResult, Long maxResults) {
@@ -76,7 +80,7 @@ public class ServiceController {
         }
       }
       
-      return result;
+      return entityController.sortEntitiesInNaturalOrder(result);
     }
     
     return Collections.emptyList();
@@ -148,7 +152,7 @@ public class ServiceController {
     int firstIndex = firstResult == null ? 0 : Math.min(firstResult.intValue(), resultCount);
     int toIndex = maxResults == null ? resultCount : Math.min(firstIndex + maxResults.intValue(), resultCount);
     
-    return result.subList(firstIndex, toIndex);
+    return entityController.sortEntitiesInNaturalOrder(result.subList(firstIndex, toIndex));
   }
 
   public List<PhoneChannel> listPhoneChannels(Long firstResult, Long maxResults, ServiceId serviceId) {
@@ -162,7 +166,7 @@ public class ServiceController {
     int firstIndex = firstResult == null ? 0 : Math.min(firstResult.intValue(), resultCount);
     int toIndex = maxResults == null ? resultCount : Math.min(firstIndex + maxResults.intValue(), resultCount);
     
-    return result.subList(firstIndex, toIndex);
+    return entityController.sortEntitiesInNaturalOrder(result.subList(firstIndex, toIndex));
   }
 
   public List<PrintableFormChannel> listPrintableFormChannels(Long firstResult, Long maxResults, ServiceId serviceId) {
@@ -176,7 +180,7 @@ public class ServiceController {
     int firstIndex = firstResult == null ? 0 : Math.min(firstResult.intValue(), resultCount);
     int toIndex = maxResults == null ? resultCount : Math.min(firstIndex + maxResults.intValue(), resultCount);
     
-    return result.subList(firstIndex, toIndex);
+    return entityController.sortEntitiesInNaturalOrder(result.subList(firstIndex, toIndex));
   }
 
   public List<ServiceLocationChannel> listServiceLocationChannels(Long firstResult, Long maxResults, ServiceId serviceId) {
@@ -190,7 +194,7 @@ public class ServiceController {
     int firstIndex = firstResult == null ? 0 : Math.min(firstResult.intValue(), resultCount);
     int toIndex = maxResults == null ? resultCount : Math.min(firstIndex + maxResults.intValue(), resultCount);
     
-    return result.subList(firstIndex, toIndex);
+    return entityController.sortEntitiesInNaturalOrder(result.subList(firstIndex, toIndex));
   }
 
   public List<WebPageChannel> listWebPageChannels(Long firstResult, Long maxResults, ServiceId serviceId) {
@@ -204,7 +208,7 @@ public class ServiceController {
     int firstIndex = firstResult == null ? 0 : Math.min(firstResult.intValue(), resultCount);
     int toIndex = maxResults == null ? resultCount : Math.min(firstIndex + maxResults.intValue(), resultCount);
     
-    return result.subList(firstIndex, toIndex);
+    return entityController.sortEntitiesInNaturalOrder(result.subList(firstIndex, toIndex));
   }
   
   private List<ServiceProvider> getServiceProviders() {

@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
@@ -33,6 +34,8 @@ import org.apache.commons.lang3.math.NumberUtils;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
+import fi.metatavu.kuntaapi.server.rest.model.Page;
 import fi.otavanopisto.casem.client.ApiResponse;
 import fi.otavanopisto.casem.client.model.Content;
 import fi.otavanopisto.casem.client.model.ContentClassification;
@@ -60,13 +63,12 @@ import fi.otavanopisto.kuntaapi.server.integrations.casem.model.MeetingItemLink;
 import fi.otavanopisto.kuntaapi.server.integrations.casem.model.Participant;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting;
-import fi.otavanopisto.kuntaapi.server.rest.model.LocalizedValue;
-import fi.otavanopisto.kuntaapi.server.rest.model.Page;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 
 @ApplicationScoped
 @Singleton
 @AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
+@SuppressWarnings ("squid:S3306")
 public class CaseMCacheUpdater {
 
   private static final String EXTENDED_HISTORY_TOPICS = "HistoryTopics";
@@ -158,11 +160,11 @@ public class CaseMCacheUpdater {
     logger.fine(String.format("Done updating CaseM meeting list for organization %s", organizationId));
   }
   
-  public void updateMeeting(CaseMMeetingData meetingData) {
+  public void updateMeeting(Long orderIndex, CaseMMeetingData meetingData) {
     logger.fine(String.format("Updating CaseM meeting %s with %d items", meetingData.getMeetingPageId().toString(), meetingData.getMeetingItemContents().size()));
     
     OrganizationId organizationId = meetingData.getOrganizationId();
-    PageId meetingPageId = translatePageId(meetingData.getMeetingPageId(), true);
+    PageId meetingPageId = translatePageId(orderIndex, meetingData.getMeetingPageId(), true);
     Content meetingContent = meetingData.getMeetingContent();
     List<Content> meetingItemContents = meetingData.getMeetingItemContents();
     
@@ -187,10 +189,12 @@ public class CaseMCacheUpdater {
     boolean memoApproved = isMeetingMemoApproved(meetingExtendedProperties);
     
     List<MeetingItemLink> itemLinks = new ArrayList<>(meetingItemContents.size());
-    for (Content meetingItemContent : meetingItemContents) {
+    for (int i = 0; i < meetingItemContents.size(); i++) {
+      Content meetingItemContent = meetingItemContents.get(i);
+      Long orderNumber = (long) i;
       List<ExtendedProperty> itemExtendedProperties = listExtendedProperties(organizationId, meetingItemContent);
       MeetingItemLink itemLink = createMeetingItemLink(itemExtendedProperties);
-      Page meetingItemPage = translateContent(organizationId, meetingPage, meetingItemContent, itemLink.getText(), itemLink.getSlug());
+      Page meetingItemPage = translateContent(orderNumber, organizationId, meetingPage, meetingItemContent, itemLink.getText(), itemLink.getSlug());
       PageId meetingItemPageId = new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, meetingItemPage.getId());
       
       String meetingItemPageContents = renderContentMeetingItem(createMeetingItemModel(downloadUrl, meetingTitle, memoApproved, itemExtendedProperties), locale);
@@ -223,22 +227,28 @@ public class CaseMCacheUpdater {
     
     Map<Long, Content> meetingMap = new HashMap<>();
     Map<Long, List<Content>> meetingItemMap = new HashMap<>();
+    Map<Long, Long> meetingOrderMap = new HashMap<>();
 
-    mapContents(organizationId, meetingMap, meetingItemMap);
+    mapContents(organizationId, meetingMap, meetingItemMap, meetingOrderMap);
+    Set<Entry<Long, List<Content>>> meetingEntries = meetingItemMap.entrySet();
     
-    for (Entry<Long,List<Content>> meetingEntry : meetingItemMap.entrySet()) {
+    for (Entry<Long,List<Content>> meetingEntry : meetingEntries) {
       Long meetingId = meetingEntry.getKey();
+      Long orderIndex = meetingOrderMap.get(meetingId);
       PageId meetingPageId = toNodeId(organizationId, meetingId);
       List<Content> meetingItemContents = meetingEntry.getValue();
       Content meetingContent = meetingMap.get(meetingId);
       CaseMMeetingData meetingData = new CaseMMeetingData(organizationId, meetingPageId, meetingItemContents, meetingContent);
-      meetingDataUpdateRequest.fire(new CaseMMeetingDataUpdateRequest(meetingData));
+      meetingDataUpdateRequest.fire(new CaseMMeetingDataUpdateRequest(orderIndex, meetingData));
     }
   }
 
-  private void mapContents(OrganizationId organizationId, Map<Long, Content> meetingMap, Map<Long, List<Content>> meetingItemMap) {
+  private void mapContents(OrganizationId organizationId, Map<Long, Content> meetingMap, Map<Long, List<Content>> meetingItemMap, Map<Long, Long> meetingOrderMap) {
     List<Content> contents = getContents(organizationId);
-    for (Content content : contents) {
+    for (int i = 0; i < contents.size(); i++) {
+      Content content = contents.get(i);
+      Long orderIndex = (long) i;
+      
       Long nodeId = getContentNodeId(content);
       if (nodeId == null) {
         continue;
@@ -246,6 +256,7 @@ public class CaseMCacheUpdater {
       
       if (isMeetingPage(content)) {
         meetingMap.put(nodeId, content);
+        meetingOrderMap.put(orderIndex, orderIndex);
       } else {
         List<Content> meetingItems = meetingItemMap.get(nodeId);
         if (meetingItems == null) {
@@ -540,7 +551,6 @@ public class CaseMCacheUpdater {
     return result;
   }
 
-  @SuppressWarnings ("squid:MethodCyclomaticComplexity")
   private void parseCouncilman(Councilmen result, String[] line) {
     Participant participant = new Participant();
   
@@ -549,36 +559,44 @@ public class CaseMCacheUpdater {
     
     if (line.length > 1) {
       participant.setTitle(line[1]);
-      if (line.length > 2) {
-        group = line[line.length - 1];
-      }        
-      
-      if (line.length == 3) {
-        if (isDateField(line[2])) {
-          participant.setArrived(parseCSVDateTime(line[2]));
-          group = GROUP_OTHER;
-        }
-      } else if (line.length == 4) {
-        if (isDateField(line[2])) {
-          participant.setArrived(parseCSVDateTime(line[2]));
-        }
-        
-        if (isDateField(line[3])) {
-          participant.setLeft(parseCSVDateTime(line[3]));
-          group = GROUP_OTHER;
-        }
-      } else if (line.length == 5) {
-        if (isDateField(line[2])) {
-          participant.setArrived(parseCSVDateTime(line[2]));
-        }
-        
-        if (isDateField(line[3])) {
-          participant.setLeft(parseCSVDateTime(line[3]));
-        }
-      }
+      group = resolveCouncilmanAttributes(line, participant);
     }
 
     addCouncilman(result, participant, group);
+  }
+
+  private String resolveCouncilmanAttributes(String[] line, Participant participant) {
+    String group = GROUP_OTHER;
+    
+    if (line.length > 2) {
+      group = line[line.length - 1];
+    }        
+    
+    if (line.length == 3) {
+      if (isDateField(line[2])) {
+        participant.setArrived(parseCSVDateTime(line[2]));
+        group = GROUP_OTHER;
+      }
+    } else if (line.length == 4) {
+      if (isDateField(line[2])) {
+        participant.setArrived(parseCSVDateTime(line[2]));
+      }
+      
+      if (isDateField(line[3])) {
+        participant.setLeft(parseCSVDateTime(line[3]));
+        group = GROUP_OTHER;
+      }
+    } else if (line.length == 5) {
+      if (isDateField(line[2])) {
+        participant.setArrived(parseCSVDateTime(line[2]));
+      }
+      
+      if (isDateField(line[3])) {
+        participant.setLeft(parseCSVDateTime(line[3]));
+      }
+    }
+    
+    return group;
   }
 
   private void addCouncilman(Councilmen result, Participant participant, String group) {
@@ -696,14 +714,17 @@ public class CaseMCacheUpdater {
   }
 
   private void cacheNodeTree(OrganizationId organizationId, Long caseMRootNodeId, Node parentNode, List<Node> nodes, List<Long> caseMParentIds) {
-    for (Node node : nodes) {
+    for (int i = 0; i < nodes.size(); i++) {
+      Node node = nodes.get(i);
+      Long orderIndex = (long) i;
+      
       List<Long> childCaseMParentIds = new ArrayList<>(caseMParentIds);
       childCaseMParentIds.add(node.getNodeId());
       
       if (node.getType().equals(0l)) {
         // Type 0 pages are hidden levels that should be flatted out
       } else {
-        Page page = translateNode(organizationId, caseMRootNodeId, parentNode, node);
+        Page page = translateNode(orderIndex, organizationId, caseMRootNodeId, parentNode, node);
         caseMCache.cacheNode(organizationId, page);
       }
       
@@ -786,16 +807,16 @@ public class CaseMCacheUpdater {
     return null;
   }
   
-  private Page translateNode(OrganizationId organizationId, Long caseMRootNodeId, Node parentNode, Node node) {
+  private Page translateNode(Long orderIndex, OrganizationId organizationId, Long caseMRootNodeId, Node parentNode, Node node) {
     Page page = new Page();
-    PageId kuntaApiId = translatePageId(toNodeId(organizationId, node.getNodeId()), true);
+    PageId kuntaApiId = translatePageId(orderIndex, toNodeId(organizationId, node.getNodeId()), true);
     PageId kuntaApiParentId = null;
     
     if (parentNode != null && !parentNode.getNodeId().equals(caseMRootNodeId)) {
       if (parentNode.getType().equals(0l)) {
-        kuntaApiParentId = parentNode.getParentId() != null ? translatePageId(toNodeId(organizationId, parentNode.getParentId()), false) : null;
+        kuntaApiParentId = parentNode.getParentId() != null ? translatePageId(toNodeId(organizationId, parentNode.getParentId())) : null;
       } else {
-        kuntaApiParentId = translatePageId(toNodeId(organizationId, parentNode.getNodeId()), false);
+        kuntaApiParentId = translatePageId(toNodeId(organizationId, parentNode.getNodeId()));
       }
     }
     
@@ -824,18 +845,22 @@ public class CaseMCacheUpdater {
     return null;
   }
 
-  private Page translateContent(OrganizationId organizationId, Page parentPage, Content content, String title, String slug) {
+  private Page translateContent(Long orderIndex, OrganizationId organizationId, Page parentPage, Content content, String title, String slug) {
     Page page = new Page();
     
-    page.setId(translatePageId(toContentId(organizationId, content.getContentId()), true).getId());
+    page.setId(translatePageId(orderIndex, toContentId(organizationId, content.getContentId()), true).getId());
     page.setParentId(parentPage.getId());
     page.setTitles(toTitles(title));
     page.setSlug(slug);
 
     return page;
   }
+
+  private PageId translatePageId(PageId pageId) {
+    return translatePageId(null, pageId, false);
+  }
   
-  private PageId translatePageId(PageId pageId, boolean createMissing) {
+  private PageId translatePageId(Long orderIndex, PageId pageId, boolean createMissing) {
     PageId result = discoveredPageIds.get(pageId);
     if (result != null) {
       return result;
@@ -847,7 +872,7 @@ public class CaseMCacheUpdater {
     }
     
     if (createMissing) {
-      Identifier identifier = identifierController.createIdentifier(pageId);
+      Identifier identifier = identifierController.createIdentifier(orderIndex, pageId);
       result = new PageId(pageId.getOrganizationId(), KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
       discoveredPageIds.put(pageId, result);
     }
@@ -919,7 +944,7 @@ public class CaseMCacheUpdater {
       return null;
     }
     
-    PageId kuntaApiPageId = translatePageId(pageId, false);
+    PageId kuntaApiPageId = translatePageId(pageId);
     if (kuntaApiPageId == null) {
       logger.severe(String.format("Failed to translate pageId %s into KuntaAPI id", pageId.toString()));
       return null;

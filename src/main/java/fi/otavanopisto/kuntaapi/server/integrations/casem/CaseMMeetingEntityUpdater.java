@@ -37,7 +37,7 @@ public class CaseMMeetingEntityUpdater extends EntityUpdater {
   
   private boolean stopped;
   
-  private List<CaseMMeetingData> queue;
+  private List<CaseMMeetingDataUpdateRequest> queue;
 
   @PostConstruct
   public void init() {
@@ -69,7 +69,7 @@ public class CaseMMeetingEntityUpdater extends EntityUpdater {
   @Asynchronous
   public void onCaseMMeetingDataUpdateRequest(@Observes CaseMMeetingDataUpdateRequest event) {
     if (!stopped) {
-      queue.add(event.getMeetingData());
+      queue.add(event);
     }
   }
 
@@ -77,7 +77,8 @@ public class CaseMMeetingEntityUpdater extends EntityUpdater {
   public void timeout(Timer timer) {
     if (!stopped) {
       if (!queue.isEmpty()) {
-        updater.updateMeeting(queue.remove(0));
+        CaseMMeetingDataUpdateRequest updateRequest = queue.remove(0);
+        updater.updateMeeting(updateRequest.getOrderIndex(), updateRequest.getMeetingData());
       }
 
       startTimer(SystemUtils.inTestMode() ? 1000 : TIMER_INTERVAL);

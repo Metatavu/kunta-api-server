@@ -13,22 +13,28 @@ import fi.otavanopisto.kuntaapi.server.id.MenuId;
 import fi.otavanopisto.kuntaapi.server.id.MenuItemId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.MenuProvider;
-import fi.otavanopisto.kuntaapi.server.rest.model.Menu;
-import fi.otavanopisto.kuntaapi.server.rest.model.MenuItem;
+import fi.metatavu.kuntaapi.server.rest.model.Menu;
+import fi.metatavu.kuntaapi.server.rest.model.MenuItem;
 
 @ApplicationScoped
+@SuppressWarnings ("squid:S3306")
 public class MenuController {
-  
+
+  @Inject
+  private EntityController entityController;
+
   @Inject
   private Instance<MenuProvider> menuProviders;
-
+  
+  @SuppressWarnings("unchecked")
   public List<Menu> listMenus(String slug, OrganizationId organizationId) {
     List<Menu> result = new ArrayList<>();
     
     for (MenuProvider menuProvider : getMenuProviders()) {
       result.addAll(menuProvider.listOrganizationMenus(organizationId, slug));
     }
-    return result;
+    
+    return entityController.sortEntitiesInNaturalOrder(result);
   }
 
   public Menu findMenu(OrganizationId organizationId, MenuId menuId) {

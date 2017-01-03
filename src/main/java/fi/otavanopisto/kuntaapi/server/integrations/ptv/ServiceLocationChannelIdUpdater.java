@@ -112,11 +112,17 @@ public class ServiceLocationChannelIdUpdater extends EntityUpdater {
   private void updateChannelIds(ServiceId serviceId) {
     ApiResponse<List<ServiceLocationChannel>> response = ptvApi.getServicesApi().listServiceServiceLocationChannels(serviceId.getId(), null, null);
     if (response.isOk()) {
-      for (ServiceLocationChannel locationChannel : response.getResponse()) {
+      List<ServiceLocationChannel> locationChannels = response.getResponse();
+      for (int i = 0; i < locationChannels.size(); i++) {
+        ServiceLocationChannel locationChannel = locationChannels.get(i);
         ServiceLocationChannelId channelId = new ServiceLocationChannelId(PtvConsts.IDENTIFIFER_NAME, locationChannel.getId());
+        Long orderIndex = (long) i;
+        
         Identifier identifier = identifierController.findIdentifierById(channelId);
         if (identifier == null) {
-          identifier = identifierController.createIdentifier(channelId);
+          identifier = identifierController.createIdentifier(orderIndex, channelId);
+        } else {
+          identifierController.updateIdentifierOrderIndex(identifier, orderIndex);
         }
         
         modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(locationChannel));

@@ -13,7 +13,7 @@ import org.apache.commons.lang3.StringUtils;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.OrganizationProvider;
-import fi.otavanopisto.kuntaapi.server.rest.model.Organization;
+import fi.metatavu.kuntaapi.server.rest.model.Organization;
 import fi.otavanopisto.restfulptv.client.ApiResponse;
 
 /**

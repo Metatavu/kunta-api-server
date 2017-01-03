@@ -21,12 +21,13 @@ import fi.otavanopisto.kuntaapi.server.id.ServiceId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceLocationChannelId;
 import fi.otavanopisto.kuntaapi.server.id.WebPageChannelId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
-import fi.otavanopisto.kuntaapi.server.rest.model.ElectronicChannel;
-import fi.otavanopisto.kuntaapi.server.rest.model.PhoneChannel;
-import fi.otavanopisto.kuntaapi.server.rest.model.PrintableFormChannel;
-import fi.otavanopisto.kuntaapi.server.rest.model.Service;
-import fi.otavanopisto.kuntaapi.server.rest.model.ServiceLocationChannel;
-import fi.otavanopisto.kuntaapi.server.rest.model.WebPageChannel;
+import fi.metatavu.kuntaapi.server.rest.ServicesApi;
+import fi.metatavu.kuntaapi.server.rest.model.ElectronicChannel;
+import fi.metatavu.kuntaapi.server.rest.model.PhoneChannel;
+import fi.metatavu.kuntaapi.server.rest.model.PrintableFormChannel;
+import fi.metatavu.kuntaapi.server.rest.model.Service;
+import fi.metatavu.kuntaapi.server.rest.model.ServiceLocationChannel;
+import fi.metatavu.kuntaapi.server.rest.model.WebPageChannel;
 
 /**
  * REST Service implementation

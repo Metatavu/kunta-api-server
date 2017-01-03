@@ -4,7 +4,7 @@ import java.util.List;
 
 import fi.otavanopisto.kuntaapi.server.id.AnnouncementId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
-import fi.otavanopisto.kuntaapi.server.rest.model.Announcement;
+import fi.metatavu.kuntaapi.server.rest.model.Announcement;
 
 /**
  * Interface that describes a single announcement provider

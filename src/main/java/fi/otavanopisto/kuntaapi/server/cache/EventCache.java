@@ -3,7 +3,7 @@ package fi.otavanopisto.kuntaapi.server.cache;
 import javax.enterprise.context.ApplicationScoped;
 
 import fi.otavanopisto.kuntaapi.server.id.EventId;
-import fi.otavanopisto.kuntaapi.server.rest.model.Event;
+import fi.metatavu.kuntaapi.server.rest.model.Event;
 
 @ApplicationScoped
 public class EventCache extends AbstractEntityCache<EventId, Event> {

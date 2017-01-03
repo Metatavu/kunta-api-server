@@ -23,11 +23,11 @@ import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.id.TileId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
-import fi.otavanopisto.kuntaapi.server.rest.model.Attachment;
-import fi.otavanopisto.kuntaapi.server.rest.model.Banner;
-import fi.otavanopisto.kuntaapi.server.rest.model.LocalizedValue;
-import fi.otavanopisto.kuntaapi.server.rest.model.NewsArticle;
-import fi.otavanopisto.kuntaapi.server.rest.model.Tile;
+import fi.metatavu.kuntaapi.server.rest.model.Attachment;
+import fi.metatavu.kuntaapi.server.rest.model.Banner;
+import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
+import fi.metatavu.kuntaapi.server.rest.model.NewsArticle;
+import fi.metatavu.kuntaapi.server.rest.model.Tile;
 
 @ApplicationScoped
 @SuppressWarnings ("squid:S3306")
@@ -81,8 +81,8 @@ public class ManagementTranslator {
     return attachment;
   }
   
-  public fi.otavanopisto.kuntaapi.server.rest.model.Page translatePage(OrganizationId organizationId, PageId kuntaApiPageId, fi.metatavu.management.client.model.Page managementPage) {
-    fi.otavanopisto.kuntaapi.server.rest.model.Page page = new fi.otavanopisto.kuntaapi.server.rest.model.Page();
+  public fi.metatavu.kuntaapi.server.rest.model.Page translatePage(OrganizationId organizationId, PageId kuntaApiPageId, fi.metatavu.management.client.model.Page managementPage) {
+    fi.metatavu.kuntaapi.server.rest.model.Page page = new fi.metatavu.kuntaapi.server.rest.model.Page();
     PageId kuntaApiParentPageId = null;
     
     if (managementPage.getParent() != null && managementPage.getParent() > 0) {
@@ -131,8 +131,8 @@ public class ManagementTranslator {
     return newsArticle;
   }
 
-  public fi.otavanopisto.kuntaapi.server.rest.model.Announcement translateAnnouncement(AnnouncementId kuntaApiAnnouncementId, Announcement managementAnnouncement) {
-    fi.otavanopisto.kuntaapi.server.rest.model.Announcement result = new fi.otavanopisto.kuntaapi.server.rest.model.Announcement();
+  public fi.metatavu.kuntaapi.server.rest.model.Announcement translateAnnouncement(AnnouncementId kuntaApiAnnouncementId, Announcement managementAnnouncement) {
+    fi.metatavu.kuntaapi.server.rest.model.Announcement result = new fi.metatavu.kuntaapi.server.rest.model.Announcement();
       
     result.setContents(managementAnnouncement.getContent().getRendered());
     result.setId(kuntaApiAnnouncementId.getId());

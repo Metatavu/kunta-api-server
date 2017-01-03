@@ -13,10 +13,14 @@ import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.index.OrganizationSearcher;
 import fi.otavanopisto.kuntaapi.server.index.SearchResult;
 import fi.otavanopisto.kuntaapi.server.integrations.OrganizationProvider;
-import fi.otavanopisto.kuntaapi.server.rest.model.Organization;
+import fi.metatavu.kuntaapi.server.rest.model.Organization;
 
 @ApplicationScoped
+@SuppressWarnings ("squid:S3306")
 public class OrganizationController {
+
+  @Inject
+  private EntityController entityController;
   
   @Inject
   private OrganizationSearcher organizationSearcher;
@@ -35,7 +39,7 @@ public class OrganizationController {
       }
     }
     
-    return organizations;
+    return entityController.sortEntitiesInNaturalOrder(organizations);
   }
 
   public List<Organization> searchOrganizations(String search, String businessName, String businessCode, Long firstResult, Long maxResults) {
@@ -61,7 +65,7 @@ public class OrganizationController {
       }
     }
     
-    return result;
+    return entityController.sortEntitiesInNaturalOrder(result);
   }
 
   private SearchResult<OrganizationId> searchByBusinessNameOrBusinessCode(String businessName, String businessCode, Long firstResult, Long maxResults) {

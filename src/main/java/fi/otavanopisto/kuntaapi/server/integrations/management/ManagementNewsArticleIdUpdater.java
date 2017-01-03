@@ -120,9 +120,10 @@ public class ManagementNewsArticleIdUpdater extends IdUpdater {
     DefaultApi api = managementApi.getApi(organizationId);
     
     List<Post> managementPosts = listManagementPosts(api, organizationId);
-    for (Post managementPost : managementPosts) {
+    for (int i = 0; i < managementPosts.size(); i++) {
+      Post managementPost = managementPosts.get(i);
       NewsArticleId newsArticleId = new NewsArticleId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementPost.getId()));
-      idUpdateRequest.fire(new NewsArticleIdUpdateRequest(organizationId, newsArticleId, false));
+      idUpdateRequest.fire(new NewsArticleIdUpdateRequest(organizationId, newsArticleId, (long) i, false));
     }
   }
   

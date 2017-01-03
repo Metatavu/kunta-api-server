@@ -3,7 +3,7 @@ package fi.otavanopisto.kuntaapi.server.integrations;
 import java.util.List;
 
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
-import fi.otavanopisto.kuntaapi.server.rest.model.Organization;
+import fi.metatavu.kuntaapi.server.rest.model.Organization;
 
 /**
  * Provider interface for organizations
