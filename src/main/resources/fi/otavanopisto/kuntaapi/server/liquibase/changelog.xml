@@ -77,7 +77,16 @@
     </addColumn>
     <addUniqueConstraint constraintName="UK_IDENTIFIER_SOURCE" tableName="Identifier" columnNames="organizationKuntaApiId,type,source,sourceId" />
     <addUniqueConstraint constraintName="UK_IDENTIFIER_APIID" tableName="Identifier" columnNames="organizationKuntaApiId,type,source,kuntaApiId" />
+  </changeSet>
 
+  <changeSet id="2" author="antti.leppa">
+    <addColumn tableName="Identifier">
+      <column name="orderIndex" type="bigint(20)">
+        <constraints nullable="false"/>
+      </column>
+    </addColumn>
+    
+    <sql>update Identifier set orderIndex = id</sql>
   </changeSet>
 
 </databaseChangeLog>

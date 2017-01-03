@@ -29,9 +29,10 @@ public class IdentifierDAO extends AbstractDAO<Identifier> {
    * @param organizationKuntaApiId 
    * @return created identifier
    */
-  public Identifier create(String type, String kuntaApiId, String source, String sourceId, String organizationKuntaApiId) {
+  public Identifier create(Long orderIndex, String type, String kuntaApiId, String source, String sourceId, String organizationKuntaApiId) {
     Identifier identifier = new Identifier();
     
+    identifier.setOrderIndex(orderIndex);
     identifier.setType(type);
     identifier.setKuntaApiId(kuntaApiId);
     identifier.setSource(source);
@@ -129,6 +130,11 @@ public class IdentifierDAO extends AbstractDAO<Identifier> {
     );
     
     return entityManager.createQuery(criteria).getResultList();
+  }
+
+  public Identifier updateOrderIndex(Identifier identifier, Long orderIndex) {
+    identifier.setOrderIndex(orderIndex);
+    return persist(identifier);
   }
 
 }

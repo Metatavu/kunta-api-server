@@ -31,6 +31,7 @@ import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
  * @author Antti Leppä
  */
 @ApplicationScoped
+@SuppressWarnings ("squid:S3306")
 public class IdentifierController {
   
   @Inject
@@ -45,7 +46,7 @@ public class IdentifierController {
    * @param id identifier
    * @return created identifier
    */
-  public Identifier createIdentifier(BaseId id) {
+  public Identifier createIdentifier(Long orderIndex, BaseId id) {
     String organizationKuntaApiId = null;
     if (id instanceof OrganizationBaseId) {
       OrganizationBaseId organizationBaseId = (OrganizationBaseId) id;
@@ -60,7 +61,7 @@ public class IdentifierController {
     }
     
     String kuntaApiId = UUID.randomUUID().toString();
-    return createIdentifier(id.getType().toString(), kuntaApiId, id.getSource(), id.getId(), organizationKuntaApiId);
+    return createIdentifier(orderIndex, id.getType().toString(), kuntaApiId, id.getSource(), id.getId(), organizationKuntaApiId);
   }
   
   public Identifier findIdentifierById(BaseId id) {
@@ -195,8 +196,12 @@ public class IdentifierController {
     identifierDAO.delete(identifier);
   }
 
-  private Identifier createIdentifier(String type, String kuntaApiId, String source, String sourceId, String organizationKuntaApiId) {
-    return identifierDAO.create(type, kuntaApiId, source, sourceId, organizationKuntaApiId);
+  private Identifier createIdentifier(Long orderIndex, String type, String kuntaApiId, String source, String sourceId, String organizationKuntaApiId) {
+    return identifierDAO.create(orderIndex, type, kuntaApiId, source, sourceId, organizationKuntaApiId);
+  }
+
+  public Identifier updateIdentifierOrderIndex(Identifier identifier, Long orderIndex) {
+    return identifierDAO.updateOrderIndex(identifier, orderIndex);
   }
 
   private Identifier findIdentifierByTypeSourceIdAndOrganizationId(String type, String source, String sourceId, String organizationKuntaApiId) {
