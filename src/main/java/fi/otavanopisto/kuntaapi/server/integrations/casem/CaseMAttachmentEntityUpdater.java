@@ -118,6 +118,8 @@ public class CaseMAttachmentEntityUpdater extends EntityUpdater {
   private void updateFile(FileUpdateRequest request) {
     PageId caseMPageId = request.getPageId();
     PageId kuntaApiPageId = null;
+    Long orderIndex = 0l;
+    
     if (caseMPageId != null) {
       kuntaApiPageId = idController.translatePageId(caseMPageId, KuntaApiConsts.IDENTIFIER_NAME);
     }
@@ -131,7 +133,9 @@ public class CaseMAttachmentEntityUpdater extends EntityUpdater {
     
     Identifier identifier = identifierController.findIdentifierById(caseMFileId);
     if (identifier == null) {
-      identifier = identifierController.createIdentifier(caseMFileId);
+      identifier = identifierController.createIdentifier(orderIndex, caseMFileId);
+    } else {
+      identifierController.updateIdentifierOrderIndex(identifier, orderIndex);
     }
     
     FileId kuntaApiFileId = new FileId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());

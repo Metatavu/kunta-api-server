@@ -119,9 +119,10 @@ public class ManagementBannerIdUpdater extends IdUpdater {
     DefaultApi api = managementApi.getApi(organizationId);
     
     List<Banner> managementBanners = listManagementBanners(api, organizationId);
-    for (Banner managementBanner : managementBanners) {
+    for (int i = 0, l = managementBanners.size(); i < l; i++) {
+      Banner managementBanner = managementBanners.get(i);
       BannerId bannerId = new BannerId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementBanner.getId()));
-      idUpdateRequest.fire(new BannerIdUpdateRequest(organizationId, bannerId, false));
+      idUpdateRequest.fire(new BannerIdUpdateRequest(organizationId, bannerId, (long) i, false));
     }
   }
 

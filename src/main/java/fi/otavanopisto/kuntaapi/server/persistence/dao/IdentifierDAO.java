@@ -29,9 +29,10 @@ public class IdentifierDAO extends AbstractDAO<Identifier> {
    * @param organizationKuntaApiId 
    * @return created identifier
    */
-  public Identifier create(String type, String kuntaApiId, String source, String sourceId, String organizationKuntaApiId) {
+  public Identifier create(Long orderIndex, String type, String kuntaApiId, String source, String sourceId, String organizationKuntaApiId) {
     Identifier identifier = new Identifier();
     
+    identifier.setOrderIndex(orderIndex);
     identifier.setType(type);
     identifier.setKuntaApiId(kuntaApiId);
     identifier.setSource(source);
@@ -69,6 +70,36 @@ public class IdentifierDAO extends AbstractDAO<Identifier> {
     
     return getSingleResult(entityManager.createQuery(criteria));
   }
+  
+  /**
+   * Finds identifier by type, kuntaApiId and organizationKuntaApiId
+   * 
+   * @param type identifier type
+   * @param source source
+   * @param sourceId id in source system
+   * @return found identifier or null if non found
+   */
+  public Identifier findByTypeAndKuntaApiIdAndOrganizationKuntaApiId(String type, String kuntaApiId, String organizationKuntaApiId) {
+    EntityManager entityManager = getEntityManager();
+
+    CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+    CriteriaQuery<Identifier> criteria = criteriaBuilder.createQuery(Identifier.class);
+    Root<Identifier> root = criteria.from(Identifier.class);
+    criteria.select(root);
+    criteria.where(
+      criteriaBuilder.and(
+          criteriaBuilder.equal(root.get(Identifier_.type), type),
+          criteriaBuilder.equal(root.get(Identifier_.kuntaApiId), kuntaApiId),
+          organizationKuntaApiId == null 
+            ? criteriaBuilder.isNull(root.get(Identifier_.organizationKuntaApiId)) 
+            : criteriaBuilder.equal(root.get(Identifier_.organizationKuntaApiId), organizationKuntaApiId)
+      )
+    );
+    
+    return getSingleResult(entityManager.createQuery(criteria));
+  }
+  
+  
 
   /**
    * Finds identifier by type, source and Kunta API id
@@ -131,4 +162,24 @@ public class IdentifierDAO extends AbstractDAO<Identifier> {
     return entityManager.createQuery(criteria).getResultList();
   }
 
+  public Identifier updateOrderIndex(Identifier identifier, Long orderIndex) {
+    identifier.setOrderIndex(orderIndex);
+    return persist(identifier);
+  }
+
+  public Long findOrderIndexByKuntaApiIdentifier(String kuntaApiIdentifier) {
+    EntityManager entityManager = getEntityManager();
+
+    CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+    CriteriaQuery<Long> criteria = criteriaBuilder.createQuery(Long.class);
+    Root<Identifier> root = criteria.from(Identifier.class);
+    criteria.select(root.get(Identifier_.orderIndex));
+    criteria.where(
+      criteriaBuilder.equal(root.get(Identifier_.kuntaApiId), kuntaApiIdentifier)
+    );
+    
+    return entityManager.createQuery(criteria).getSingleResult();
+  }
+
+  
 }

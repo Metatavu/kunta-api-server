@@ -26,11 +26,15 @@ import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
 import fi.metatavu.kuntaapi.server.rest.model.Page;
 
 @ApplicationScoped
+@SuppressWarnings ("squid:S3306")
 public class PageController {
   
   @Inject
   private Logger logger;
-  
+
+  @Inject
+  private EntityController entityController;
+
   @Inject
   private IdController idController;
   
@@ -63,7 +67,7 @@ public class PageController {
     int firstIndex = firstResult == null ? 0 : Math.min(firstResult.intValue(), resultCount);
     int toIndex = maxResults == null ? resultCount : Math.min(firstIndex + maxResults.intValue(), resultCount);
     
-    return result.subList(firstIndex, toIndex);
+    return entityController.sortEntitiesInNaturalOrder(result.subList(firstIndex, toIndex));
   }
 
   public Page findPageByPath(OrganizationId organizationId, String path) {
@@ -116,7 +120,7 @@ public class PageController {
         }
       }
       
-      return result;
+      return entityController.sortEntitiesInNaturalOrder(result);
     }
     
     return Collections.emptyList();
@@ -160,7 +164,7 @@ public class PageController {
       result.addAll(pageProvider.listOrganizationPageImages(organizationId, pageId));
     }
     
-    return result;
+    return entityController.sortEntitiesInNaturalOrder(result);
   }
   
   public Attachment findPageImage(OrganizationId organizationId, PageId pageId, AttachmentId attachmentId) {

@@ -160,20 +160,25 @@ public class MikkeliNytEntityUpdater extends EntityUpdater {
   private void updateEvents(OrganizationId organizationId) {
     Response<EventsResponse> response = listEvents(organizationId);
     if (response.isOk()) {
-      for (fi.otavanopisto.mikkelinyt.model.Event event : response.getResponseEntity().getData()) {
-        updateEvent(organizationId, event);
+      List<Event> events = response.getResponseEntity().getData();
+      for (int i = 0; i < events.size(); i++) {
+        Event event = events.get(i);
+        Long orderIndex = (long) i;
+        updateEvent(organizationId, event, orderIndex);
       }
     } else {
       logger.severe(String.format("Request list organization %s failed on [%d] %s", organizationId.toString(), response.getStatus(), response.getMessage()));
     }
   }
 
-  private void updateEvent(OrganizationId organizationId, Event mikkeliNytEvent) {
+  private void updateEvent(OrganizationId organizationId, Event mikkeliNytEvent, Long orderIndex) {
     EventId mikkeliNytEventId = new EventId(organizationId, MikkeliNytConsts.IDENTIFIER_NAME, mikkeliNytEvent.getId());
     
     Identifier identifier = identifierController.findIdentifierById(mikkeliNytEventId);
     if (identifier == null) {
-      identifier = identifierController.createIdentifier(mikkeliNytEventId);
+      identifier = identifierController.createIdentifier(orderIndex, mikkeliNytEventId);
+    } else {
+      identifierController.updateIdentifierOrderIndex(identifier, orderIndex);
     }
     
     EventId kuntaApiId = new EventId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
@@ -192,7 +197,7 @@ public class MikkeliNytEntityUpdater extends EntityUpdater {
     
     Identifier identifier = identifierController.findIdentifierById(mikkeliNytAttachmentId);
     if (identifier == null) {
-      identifier = identifierController.createIdentifier(mikkeliNytAttachmentId);
+      identifier = identifierController.createIdentifier(0l, mikkeliNytAttachmentId);
     }
     
     AttachmentId kuntaApiId = new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());

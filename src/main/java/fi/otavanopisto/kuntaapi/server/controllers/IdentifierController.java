@@ -10,11 +10,14 @@ import java.util.logging.Logger;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
+import org.apache.commons.codec.binary.StringUtils;
+
 import fi.otavanopisto.kuntaapi.server.id.BannerId;
 import fi.otavanopisto.kuntaapi.server.id.BaseId;
 import fi.otavanopisto.kuntaapi.server.id.ContactId;
 import fi.otavanopisto.kuntaapi.server.id.IdType;
 import fi.otavanopisto.kuntaapi.server.id.MenuId;
+import fi.otavanopisto.kuntaapi.server.id.MenuItemId;
 import fi.otavanopisto.kuntaapi.server.id.MissingOrganizationIdException;
 import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationBaseId;
@@ -31,6 +34,7 @@ import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
  * @author Antti Leppä
  */
 @ApplicationScoped
+@SuppressWarnings ("squid:S3306")
 public class IdentifierController {
   
   @Inject
@@ -45,7 +49,7 @@ public class IdentifierController {
    * @param id identifier
    * @return created identifier
    */
-  public Identifier createIdentifier(BaseId id) {
+  public Identifier createIdentifier(Long orderIndex, BaseId id) {
     String organizationKuntaApiId = null;
     if (id instanceof OrganizationBaseId) {
       OrganizationBaseId organizationBaseId = (OrganizationBaseId) id;
@@ -60,7 +64,7 @@ public class IdentifierController {
     }
     
     String kuntaApiId = UUID.randomUUID().toString();
-    return createIdentifier(id.getType().toString(), kuntaApiId, id.getSource(), id.getId(), organizationKuntaApiId);
+    return createIdentifier(orderIndex, id.getType().toString(), kuntaApiId, id.getSource(), id.getId(), organizationKuntaApiId);
   }
   
   public Identifier findIdentifierById(BaseId id) {
@@ -78,6 +82,10 @@ public class IdentifierController {
 
   public Identifier findIdentifierByTypeSourceAndKuntaApiId(IdType type, String source, String kuntaApiId) {
     return findIdentifierByTypeSourceAndKuntaApiId(type.toString(), source, kuntaApiId);
+  }
+
+  public Long getIdentifierOrderIndex(String kuntaApiIdentifier) {
+    return identifierDAO.findOrderIndexByKuntaApiIdentifier(kuntaApiIdentifier);
   }
   
   /**
@@ -152,6 +160,17 @@ public class IdentifierController {
     return result;
   }
 
+  public List<MenuItemId> listOrganizationMenuItemIdsBySource(OrganizationId organizationId, String source) {
+    List<String> menuItemIds = listSourceIdsByOrganizationIdAndSourceAndType(organizationId, source, IdType.MENU_ITEM.toString());
+    List<MenuItemId> result = new ArrayList<>(menuItemIds.size());
+    
+    for (String menuItemId : menuItemIds) {
+      result.add(new MenuItemId(organizationId, source, menuItemId));
+    }
+    
+    return result;
+  }
+
   public List<TileId> listOrganizationTileIdsBySource(OrganizationId organizationId, String source) {
     List<String> tileIds = listSourceIdsByOrganizationIdAndSourceAndType(organizationId, source, IdType.TILE.toString());
     List<TileId> result = new ArrayList<>(tileIds.size());
@@ -195,12 +214,20 @@ public class IdentifierController {
     identifierDAO.delete(identifier);
   }
 
-  private Identifier createIdentifier(String type, String kuntaApiId, String source, String sourceId, String organizationKuntaApiId) {
-    return identifierDAO.create(type, kuntaApiId, source, sourceId, organizationKuntaApiId);
+  private Identifier createIdentifier(Long orderIndex, String type, String kuntaApiId, String source, String sourceId, String organizationKuntaApiId) {
+    return identifierDAO.create(orderIndex, type, kuntaApiId, source, sourceId, organizationKuntaApiId);
+  }
+
+  public Identifier updateIdentifierOrderIndex(Identifier identifier, Long orderIndex) {
+    return identifierDAO.updateOrderIndex(identifier, orderIndex);
   }
 
   private Identifier findIdentifierByTypeSourceIdAndOrganizationId(String type, String source, String sourceId, String organizationKuntaApiId) {
-    return identifierDAO.findByTypeSourceSourceIdAndOrganizationKuntaApiId(type, source, sourceId, organizationKuntaApiId);
+    if (StringUtils.equals(source, KuntaApiConsts.IDENTIFIER_NAME)) {
+      return identifierDAO.findByTypeAndKuntaApiIdAndOrganizationKuntaApiId(type, sourceId, organizationKuntaApiId);
+    } else {
+      return identifierDAO.findByTypeSourceSourceIdAndOrganizationKuntaApiId(type, source, sourceId, organizationKuntaApiId);
+    }
   }
 
   private Identifier findIdentifierByTypeSourceAndIdOrganizationId(IdType type, String source, String sourceId, String organizationKuntaApiId) {

@@ -1,6 +1,8 @@
 package fi.otavanopisto.kuntaapi.server.id;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Instance;
@@ -76,7 +78,17 @@ public class IdController {
        default:
         return null;
     }
+  }
+  
+  @SuppressWarnings("unchecked")
+  public <T extends BaseId> List<T> translateIds(List<T> ids, String target) {
+    List<T> result = new ArrayList<>(ids.size());
     
+    for (BaseId id : ids) {
+      result.add((T) translateId(id, target));
+    }
+    
+    return result;
   }
   
   /**

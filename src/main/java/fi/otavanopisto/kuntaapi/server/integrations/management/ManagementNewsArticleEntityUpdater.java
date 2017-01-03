@@ -1,7 +1,5 @@
 package fi.otavanopisto.kuntaapi.server.integrations.management;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
@@ -22,11 +20,17 @@ import javax.inject.Inject;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
 
+import fi.metatavu.kuntaapi.server.rest.model.NewsArticle;
+import fi.metatavu.management.client.ApiResponse;
+import fi.metatavu.management.client.DefaultApi;
+import fi.metatavu.management.client.model.Attachment;
+import fi.metatavu.management.client.model.Post;
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.cache.NewsArticleCache;
 import fi.otavanopisto.kuntaapi.server.cache.NewsArticleImageCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
+import fi.otavanopisto.kuntaapi.server.discover.IdUpdateRequestQueue;
 import fi.otavanopisto.kuntaapi.server.discover.NewsArticleIdRemoveRequest;
 import fi.otavanopisto.kuntaapi.server.discover.NewsArticleIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
@@ -36,12 +40,7 @@ import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
-import fi.metatavu.kuntaapi.server.rest.model.NewsArticle;
 import fi.otavanopisto.kuntaapi.server.system.SystemUtils;
-import fi.metatavu.management.client.ApiResponse;
-import fi.metatavu.management.client.DefaultApi;
-import fi.metatavu.management.client.model.Attachment;
-import fi.metatavu.management.client.model.Post;
 
 @ApplicationScoped
 @Singleton
@@ -79,11 +78,11 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
   private TimerService timerService;
 
   private boolean stopped;
-  private List<NewsArticleIdUpdateRequest> queue;
+  private IdUpdateRequestQueue<NewsArticleIdUpdateRequest> queue;
 
   @PostConstruct
   public void init() {
-    queue = Collections.synchronizedList(new ArrayList<>());
+    queue = new IdUpdateRequestQueue<>(ManagementConsts.IDENTIFIER_NAME);
   }
 
   @Override
@@ -117,14 +116,7 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
         return;
       }
       
-      if (event.isPriority()) {
-        queue.remove(event);
-        queue.add(0, event);
-      } else {
-        if (!queue.contains(event)) {
-          queue.add(event);
-        }
-      }
+      queue.add(event);
     }
   }
   
@@ -144,32 +136,37 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
   @Timeout
   public void timeout(Timer timer) {
     if (!stopped) {
-      if (!queue.isEmpty()) {
-        NewsArticleIdUpdateRequest updateRequest = queue.remove(0);
-        updateManagementPost(updateRequest.getOrganizationId(), updateRequest.getId());
+      NewsArticleIdUpdateRequest updateRequest = queue.next();
+      if (updateRequest != null) {
+        updateManagementPost(updateRequest);
       }
 
       startTimer(SystemUtils.inTestMode() ? 1000 : TIMER_INTERVAL);
     }
   }
   
-  private void updateManagementPost(OrganizationId organizationId, NewsArticleId newsArticleId) {
+  private void updateManagementPost(NewsArticleIdUpdateRequest updateRequest) {
+    OrganizationId organizationId = updateRequest.getOrganizationId();
+    NewsArticleId newsArticleId = updateRequest.getId();
     DefaultApi api = managementApi.getApi(organizationId);
+    Long orderIndex = updateRequest.getOrderIndex();
     
     ApiResponse<Post> response = api.wpV2PostsIdGet(newsArticleId.getId(), null, null);
     if (response.isOk()) {
-      updateManagementPost(organizationId, api, response.getResponse());
+      updateManagementPost(organizationId, api, response.getResponse(), orderIndex);
     } else {
       logger.warning(String.format("Find organization %s post %s failed on [%d] %s", organizationId.getId(), newsArticleId.toString(), response.getStatus(), response.getMessage()));
     }
   }
   
-  private void updateManagementPost(OrganizationId organizationId, DefaultApi api, Post managementPost) {
+  private void updateManagementPost(OrganizationId organizationId, DefaultApi api, Post managementPost, Long orderIndex) {
     NewsArticleId newsArticleId = new NewsArticleId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementPost.getId()));
 
     Identifier identifier = identifierController.findIdentifierById(newsArticleId);
     if (identifier == null) {
-      identifier = identifierController.createIdentifier(newsArticleId);
+      identifier = identifierController.createIdentifier(orderIndex, newsArticleId);
+    } else {
+      identifierController.updateIdentifierOrderIndex(identifier, orderIndex);
     }
     
     NewsArticleId kuntaApiNewsArticleId = new NewsArticleId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
@@ -197,7 +194,7 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
       
       Identifier identifier = identifierController.findIdentifierById(managementAttachmentId);
       if (identifier == null) {
-        identifier = identifierController.createIdentifier(managementAttachmentId);
+        identifier = identifierController.createIdentifier(0l, managementAttachmentId);
       }
       
       AttachmentId kuntaApiAttachmentId = new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
@@ -217,13 +214,13 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
     }
   }
 
-  private void deleteNewsArticle(NewsArticleIdRemoveRequest event, NewsArticleId newsArticleId) {
+  private void deleteNewsArticle(NewsArticleIdRemoveRequest event, NewsArticleId managementNewsArticleId) {
     OrganizationId organizationId = event.getOrganizationId();
     
-    Identifier newsArticleIdentifier = identifierController.findIdentifierById(newsArticleId);
+    Identifier newsArticleIdentifier = identifierController.findIdentifierById(managementNewsArticleId);
     if (newsArticleIdentifier != null) {
       NewsArticleId kuntaApiNewsArticleId = new NewsArticleId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, newsArticleIdentifier.getKuntaApiId());
-      queue.remove(new NewsArticleIdUpdateRequest(organizationId, kuntaApiNewsArticleId, false));
+      queue.remove(managementNewsArticleId);
 
       modificationHashCache.clear(newsArticleIdentifier.getKuntaApiId());
       newsArticleCache.clear(kuntaApiNewsArticleId);

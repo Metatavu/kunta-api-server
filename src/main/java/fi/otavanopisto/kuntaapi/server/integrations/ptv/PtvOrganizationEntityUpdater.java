@@ -1,8 +1,5 @@
 package fi.otavanopisto.kuntaapi.server.integrations.ptv;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
@@ -26,6 +23,7 @@ import org.apache.commons.lang3.StringUtils;
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
+import fi.otavanopisto.kuntaapi.server.discover.IdUpdateRequestQueue;
 import fi.otavanopisto.kuntaapi.server.discover.OrganizationIdRemoveRequest;
 import fi.otavanopisto.kuntaapi.server.discover.OrganizationIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
@@ -73,11 +71,11 @@ public class PtvOrganizationEntityUpdater extends EntityUpdater {
   private TimerService timerService;
 
   private boolean stopped;
-  private List<OrganizationId> queue;
+  private IdUpdateRequestQueue<OrganizationIdUpdateRequest> queue;
 
   @PostConstruct
   public void init() {
-    queue = Collections.synchronizedList(new ArrayList<>());
+    queue = new IdUpdateRequestQueue<>(PtvConsts.IDENTIFIFER_NAME);
   }
 
   @Override
@@ -109,14 +107,7 @@ public class PtvOrganizationEntityUpdater extends EntityUpdater {
         return;
       }
       
-      if (event.isPriority()) {
-        queue.remove(event.getId());
-        queue.add(0, event.getId());
-      } else {
-        if (!queue.contains(event.getId())) {
-          queue.add(event.getId());
-        }
-      }
+      queue.add(event);
     }
   }
   
@@ -136,20 +127,27 @@ public class PtvOrganizationEntityUpdater extends EntityUpdater {
   @Timeout
   public void timeout(Timer timer) {
     if (!stopped) {
-      if (!queue.isEmpty()) {
-        updateOrganization(queue.remove(0));
+      OrganizationIdUpdateRequest updateRequest = queue.next();
+      if (updateRequest != null) {
+        updateOrganization(updateRequest);
       }
 
       startTimer(SystemUtils.inTestMode() ? 1000 : TIMER_INTERVAL);
     }
   }
 
-  private void updateOrganization(OrganizationId organizationId) {
+  private void updateOrganization(OrganizationIdUpdateRequest updateRequest) {
+    updateOrganization(updateRequest.getId(), updateRequest.getOrderIndex());
+  }
+
+  private void updateOrganization(OrganizationId organizationId, Long orderIndex) {
     ApiResponse<Organization> response = ptvApi.getOrganizationApi().findOrganization(organizationId.getId());
     if (response.isOk()) {
       Identifier identifier = identifierController.findIdentifierById(organizationId);
       if (identifier == null) {
-        identifier = identifierController.createIdentifier(organizationId);
+        identifier = identifierController.createIdentifier(orderIndex, organizationId);
+      } else {
+        identifierController.updateIdentifierOrderIndex(identifier, orderIndex);
       }
       
       Organization organization = response.getResponse();

@@ -19,6 +19,9 @@ import fi.metatavu.kuntaapi.server.rest.model.Contact;
 public class ContactController {
   
   @Inject
+  private EntityController entityController;
+  
+  @Inject
   private Instance<ContactProvider> contactProviders;
   
   public List<Contact> listContacts(OrganizationId organizationId, Integer firstResult, Integer maxResults) {
@@ -32,7 +35,7 @@ public class ContactController {
     int firstIndex = firstResult == null ? 0 : Math.min(firstResult.intValue(), resultCount);
     int toIndex = maxResults == null ? resultCount : Math.min(firstIndex + maxResults.intValue(), resultCount);
     
-    return result.subList(firstIndex, toIndex);
+    return entityController.sortEntitiesInNaturalOrder(result.subList(firstIndex, toIndex));
   }
 
   public Contact findContact(OrganizationId organizationId, ContactId contactId) {

@@ -1,7 +1,5 @@
 package fi.otavanopisto.kuntaapi.server.integrations.management;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
@@ -31,6 +29,7 @@ import fi.otavanopisto.kuntaapi.server.cache.TileCache;
 import fi.otavanopisto.kuntaapi.server.cache.TileImageCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
+import fi.otavanopisto.kuntaapi.server.discover.IdUpdateRequestQueue;
 import fi.otavanopisto.kuntaapi.server.discover.TileIdRemoveRequest;
 import fi.otavanopisto.kuntaapi.server.discover.TileIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
@@ -82,11 +81,11 @@ public class ManagementTileEntityUpdater extends EntityUpdater {
   private TimerService timerService;
 
   private boolean stopped;
-  private List<TileIdUpdateRequest> queue;
+  private IdUpdateRequestQueue<TileIdUpdateRequest> queue;
 
   @PostConstruct
   public void init() {
-    queue = Collections.synchronizedList(new ArrayList<>());
+    queue = new IdUpdateRequestQueue<>(ManagementConsts.IDENTIFIER_NAME);
   }
 
   @Override
@@ -120,14 +119,7 @@ public class ManagementTileEntityUpdater extends EntityUpdater {
         return;
       }
       
-      if (event.isPriority()) {
-        queue.remove(event);
-        queue.add(0, event);
-      } else {
-        if (!queue.contains(event)) {
-          queue.add(event);
-        }
-      }
+      queue.add(event);
     }
   }
   
@@ -147,33 +139,37 @@ public class ManagementTileEntityUpdater extends EntityUpdater {
   @Timeout
   public void timeout(Timer timer) {
     if (!stopped) {
-      if (!queue.isEmpty()) {
-        TileIdUpdateRequest updateRequest = queue.remove(0);
-        OrganizationId organizationId = updateRequest.getOrganizationId();
-        DefaultApi api = managementApi.getApi(organizationId);
-        
-        updateManagementTile(api, organizationId, updateRequest.getId());
+      TileIdUpdateRequest updateRequest = queue.next();
+      if (updateRequest != null) {
+        updateManagementTile(updateRequest);
       }
 
       startTimer(SystemUtils.inTestMode() ? 1000 : TIMER_INTERVAL);
     }
   }
 
-  private void updateManagementTile(DefaultApi api, OrganizationId organizationId, TileId managementTileId) {
+  private void updateManagementTile(TileIdUpdateRequest updateRequest) {
+    OrganizationId organizationId = updateRequest.getOrganizationId();
+    DefaultApi api = managementApi.getApi(organizationId);
+    TileId managementTileId = updateRequest.getId();
+    Long orderIndex = updateRequest.getOrderIndex();
+    
     ApiResponse<Tile> response = api.wpV2TileIdGet(managementTileId.getId(), null, null);
     if (response.isOk()) {
-      updateManagementTile(api, organizationId, response.getResponse());
+      updateManagementTile(api, organizationId, response.getResponse(), orderIndex);
     } else {
       logger.warning(String.format("Finding organization %s tile failed on [%d] %s", managementTileId.getId(), response.getStatus(), response.getMessage()));
     }
   }
   
-  private void updateManagementTile(DefaultApi api, OrganizationId organizationId, Tile managementTile) {
+  private void updateManagementTile(DefaultApi api, OrganizationId organizationId, Tile managementTile, Long orderIndex) {
     TileId tileId = new TileId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementTile.getId()));
 
     Identifier identifier = identifierController.findIdentifierById(tileId);
     if (identifier == null) {
-      identifier = identifierController.createIdentifier(tileId);
+      identifier = identifierController.createIdentifier(orderIndex, tileId);
+    } else {
+      identifierController.updateIdentifierOrderIndex(identifier, orderIndex);
     }
     
     TileId kuntaApiTileId = new TileId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
@@ -201,7 +197,7 @@ public class ManagementTileEntityUpdater extends EntityUpdater {
       
       Identifier identifier = identifierController.findIdentifierById(managementAttachmentId);
       if (identifier == null) {
-        identifier = identifierController.createIdentifier(managementAttachmentId);
+        identifier = identifierController.createIdentifier(0l, managementAttachmentId);
       }
       
       AttachmentId kuntaApiAttachmentId = new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
@@ -221,12 +217,11 @@ public class ManagementTileEntityUpdater extends EntityUpdater {
     }
   }
   
-  private void deleteTile(OrganizationId organizationId, TileId tileId) {
-    Identifier tileIdentifier = identifierController.findIdentifierById(tileId);
+  private void deleteTile(OrganizationId organizationId, TileId managementTileId) {
+    Identifier tileIdentifier = identifierController.findIdentifierById(managementTileId);
     if (tileIdentifier != null) {
       TileId kuntaApiTileId = new TileId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, tileIdentifier.getKuntaApiId());
-      queue.remove(new TileIdUpdateRequest(organizationId, kuntaApiTileId, false));
-
+      queue.remove(managementTileId);
       modificationHashCache.clear(tileIdentifier.getKuntaApiId());
       tileCache.clear(kuntaApiTileId);
       identifierController.deleteIdentifier(tileIdentifier);

@@ -9,8 +9,8 @@ public class TileIdUpdateRequest extends AbstractIdUpdateRequest<TileId> {
 
   private OrganizationId organizationId;
   
-  public TileIdUpdateRequest(OrganizationId organizationId, TileId id, boolean priority) {
-    super(id, priority);
+  public TileIdUpdateRequest(OrganizationId organizationId, TileId id, Long orderIndex, boolean priority) {
+    super(id, orderIndex, priority);
     this.organizationId = organizationId;
   }
   

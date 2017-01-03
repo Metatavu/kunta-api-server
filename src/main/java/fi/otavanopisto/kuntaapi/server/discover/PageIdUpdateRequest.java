@@ -9,8 +9,8 @@ public class PageIdUpdateRequest extends AbstractIdUpdateRequest<PageId> {
 
   private OrganizationId organizationId;
   
-  public PageIdUpdateRequest(OrganizationId organizationId, PageId id, boolean priority) {
-    super(id, priority);
+  public PageIdUpdateRequest(OrganizationId organizationId, PageId id, Long orderIndex, boolean priority) {
+    super(id, orderIndex, priority);
     this.organizationId = organizationId;
   }
   

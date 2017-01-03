@@ -88,10 +88,12 @@ public class PtvOrganizationIdUpdater extends IdUpdater {
       logger.severe(String.format("Organization list reported [%d] %s", organizationsResponse.getStatus(), organizationsResponse.getMessage()));
     } else {
       List<Organization> organizations = organizationsResponse.getResponse();
-      for (Organization organization : organizations) {
+      for (int i = 0; i < organizations.size(); i++) {
+        Organization organization = organizations.get(i);
+        Long orderIndex = (long) i + offset;
         OrganizationId organizationId = new OrganizationId(PtvConsts.IDENTIFIFER_NAME, organization.getId());
         boolean priority = identifierController.findIdentifierById(organizationId) == null;
-        idUpdateRequest.fire(new OrganizationIdUpdateRequest(organizationId, priority));
+        idUpdateRequest.fire(new OrganizationIdUpdateRequest(organizationId, orderIndex, priority));
       }
       
       if (organizations.size() == BATCH_SIZE) {

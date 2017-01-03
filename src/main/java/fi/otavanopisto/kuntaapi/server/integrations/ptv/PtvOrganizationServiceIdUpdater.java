@@ -1,7 +1,5 @@
 package fi.otavanopisto.kuntaapi.server.integrations.ptv;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
@@ -20,6 +18,7 @@ import javax.inject.Inject;
 
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
+import fi.otavanopisto.kuntaapi.server.discover.IdUpdateRequestQueue;
 import fi.otavanopisto.kuntaapi.server.discover.OrganizationIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationServiceId;
@@ -49,11 +48,11 @@ public class PtvOrganizationServiceIdUpdater extends EntityUpdater {
   private TimerService timerService;
 
   private boolean stopped;
-  private List<OrganizationId> queue;
+  private IdUpdateRequestQueue<OrganizationIdUpdateRequest> queue;
 
   @PostConstruct
   public void init() {
-    queue = Collections.synchronizedList(new ArrayList<>());
+    queue = new IdUpdateRequestQueue<>(PtvConsts.IDENTIFIFER_NAME);
   }
 
   @Override
@@ -84,22 +83,16 @@ public class PtvOrganizationServiceIdUpdater extends EntityUpdater {
         return;
       }
       
-      if (event.isPriority()) {
-        queue.remove(event.getId());
-        queue.add(0, event.getId());
-      } else {
-        if (!queue.contains(event.getId())) {
-          queue.add(event.getId());
-        }
-      }
+      queue.add(event);
     }
   }
 
   @Timeout
   public void timeout(Timer timer) {
     if (!stopped) {
-      if (!queue.isEmpty()) {
-        updateOrganizationServiceIds(queue.remove(0));          
+      OrganizationIdUpdateRequest next = queue.next();
+      if (next != null) {
+        updateOrganizationServiceIds(next.getId());          
       }
 
       startTimer(SystemUtils.inTestMode() ? 1000 : TIMER_INTERVAL);
@@ -109,11 +102,16 @@ public class PtvOrganizationServiceIdUpdater extends EntityUpdater {
   private void updateOrganizationServiceIds(OrganizationId organizationId)  {
     ApiResponse<List<OrganizationService>> response = ptvApi.getOrganizationServicesApi().listOrganizationOrganizationServices(organizationId.getId(), null, null);
     if (response.isOk()) {
-      for (OrganizationService organizationService : response.getResponse()) {
+      List<OrganizationService> organizationServices = response.getResponse();
+      for (int i = 0; i < organizationServices.size(); i++) {
+        Long orderIndex = (long) i;
+        OrganizationService organizationService = organizationServices.get(i);
         OrganizationServiceId organizationServiceId = new OrganizationServiceId(organizationId, PtvConsts.IDENTIFIFER_NAME, organizationService.getId());
         Identifier identifier = identifierController.findIdentifierById(organizationServiceId);
         if (identifier == null) {
-          identifierController.createIdentifier(organizationServiceId);
+          identifierController.createIdentifier(orderIndex, organizationServiceId);
+        } else {
+          identifierController.updateIdentifierOrderIndex(identifier, orderIndex);
         }
       }
     } else {

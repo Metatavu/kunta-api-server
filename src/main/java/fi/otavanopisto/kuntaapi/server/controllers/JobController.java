@@ -17,7 +17,11 @@ import fi.otavanopisto.kuntaapi.server.integrations.JobProvider.JobOrderDirectio
 import fi.metatavu.kuntaapi.server.rest.model.Job;
 
 @ApplicationScoped
+@SuppressWarnings ("squid:S3306")
 public class JobController {
+
+  @Inject
+  private EntityController entityController;
   
   @Inject
   private Instance<JobProvider> jobProviders;
@@ -48,7 +52,7 @@ public class JobController {
   
   private List<Job> sortJobs(List<Job> jobs, JobOrder order, JobOrderDirection orderDirection) {
     if (order == null) {
-      return jobs;
+      return entityController.sortEntitiesInNaturalOrder(jobs);
     }
     
     List<Job> sorted = new ArrayList<>(jobs);

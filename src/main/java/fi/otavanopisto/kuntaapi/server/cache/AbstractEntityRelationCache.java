@@ -42,6 +42,17 @@ public abstract class AbstractEntityRelationCache <P extends BaseId, C extends B
     return result;
   }
   
+  public List<C> getBareChildIds(P parentId) {
+    List<IdPair<P,C>> childIdPairs = getChildIds(parentId);
+    
+    List<C> result = new ArrayList<>(childIdPairs.size());
+    for (IdPair<P,C> childIdPair : childIdPairs) {
+      result.add(childIdPair.getChild());
+    }
+    
+    return result;
+  }
+  
   @SuppressWarnings("unchecked")
   private IdPair<P, C> createCacheKey(IdPair<P, C> pair) {
     return new IdPair<>((P) translateId((BaseId) pair.getParent()), (C) translateId((BaseId) pair.getChild()));

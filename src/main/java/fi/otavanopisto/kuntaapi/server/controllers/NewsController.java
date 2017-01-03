@@ -21,7 +21,11 @@ import fi.metatavu.kuntaapi.server.rest.model.Attachment;
 import fi.metatavu.kuntaapi.server.rest.model.NewsArticle;
 
 @ApplicationScoped
+@SuppressWarnings ("squid:S3306")
 public class NewsController {
+
+  @Inject
+  private EntityController entityController;
 
   @Inject
   private Instance<NewsProvider> newsProviders;
@@ -44,7 +48,7 @@ public class NewsController {
     int firstIndex = firstResult == null ? 0 : Math.min(firstResult.intValue(), resultCount);
     int toIndex = maxResults == null ? resultCount : Math.min(firstIndex + maxResults.intValue(), resultCount);
     
-    return result.subList(firstIndex, toIndex);
+    return entityController.sortEntitiesInNaturalOrder(result.subList(firstIndex, toIndex));
   }
 
   public NewsArticle findNewsArticle(OrganizationId organizationId, NewsArticleId newsArticleId) {
@@ -85,7 +89,8 @@ public class NewsController {
     for (NewsProvider newsProvider : getNewsProviders()) {
       result.addAll(newsProvider.listNewsArticleImages(organizationId, newsArticleId));
     }
-    return result;
+    
+    return entityController.sortEntitiesInNaturalOrder(result);
   }
   
   private List<NewsArticle> filterBySlug(List<NewsArticle> newsArticles, String slug) {
