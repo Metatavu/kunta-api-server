@@ -171,11 +171,16 @@ public class ManagementMenuEntityUpdater extends EntityUpdater {
     }
     
     MenuId menuId = new MenuId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, menu.getId());
-    
+    List<MenuItemId> existingKuntaApiMenuItemIds = menuItemCache.getBareChildIds(menuId);
     List<Menuitem> managementMenuItems = listManagementMenuItems(api, managementMenu);
     for (int i = 0, l = managementMenuItems.size(); i < l; i++) {
       Menuitem managementMenuItem = managementMenuItems.get(i);
-      updateManagementMenuItem(organizationId, menuId, managementMenuItem, (long) i);
+      MenuItemId menuItemId = updateManagementMenuItem(organizationId, menuId, managementMenuItem, (long) i);
+      existingKuntaApiMenuItemIds.remove(menuItemId);
+    }
+    
+    for (MenuItemId existingKuntaApiMenuItemId : existingKuntaApiMenuItemIds) {
+      deleteMenuItem(menuId, existingKuntaApiMenuItemId);
     }
   }
 
@@ -210,7 +215,7 @@ public class ManagementMenuEntityUpdater extends EntityUpdater {
     return menu;
   }
   
-  private void updateManagementMenuItem(OrganizationId organizationId, MenuId menuId, Menuitem managementMenuItem, Long orderIndex) {
+  private MenuItemId updateManagementMenuItem(OrganizationId organizationId, MenuId menuId, Menuitem managementMenuItem, Long orderIndex) {
     MenuItemId managementMenuItemId = new MenuItemId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementMenuItem.getId()));
 
     Identifier identifier = identifierController.findIdentifierById(managementMenuItemId);
@@ -225,6 +230,8 @@ public class ManagementMenuEntityUpdater extends EntityUpdater {
         
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(menuItem));
     menuItemCache.put(new IdPair<MenuId, MenuItemId>(menuId,kuntaApiMenuItemId), menuItem);
+    
+    return kuntaApiMenuItemId;
   }
 
   private Menu translateMenu(OrganizationId organizationId, fi.metatavu.management.client.model.Menu managementMenu) {
@@ -321,6 +328,16 @@ public class ManagementMenuEntityUpdater extends EntityUpdater {
       modificationHashCache.clear(menuIdentifier.getKuntaApiId());
       menuCache.clear(kuntaApiMenuId);
       identifierController.deleteIdentifier(menuIdentifier);
+    }
+  }
+  
+  private void deleteMenuItem(MenuId kuntaApiMenuId, MenuItemId kuntaApiMenuItemId) {
+    Identifier menuItemIdentifier = identifierController.findIdentifierById(kuntaApiMenuItemId);
+    if (menuItemIdentifier != null) {
+      queue.remove(kuntaApiMenuItemId);
+      modificationHashCache.clear(menuItemIdentifier.getKuntaApiId());
+      menuItemCache.clear(new IdPair<MenuId, MenuItemId>(kuntaApiMenuId, kuntaApiMenuItemId));
+      identifierController.deleteIdentifier(menuItemIdentifier);
     }
   }
   
