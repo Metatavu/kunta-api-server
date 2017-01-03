@@ -9,16 +9,20 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
 
+import fi.metatavu.kuntaapi.server.rest.model.Attachment;
+import fi.metatavu.kuntaapi.server.rest.model.Banner;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.BannerId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.BannerProvider;
-import fi.metatavu.kuntaapi.server.rest.model.Attachment;
-import fi.metatavu.kuntaapi.server.rest.model.Banner;
 
 @ApplicationScoped
+@SuppressWarnings ("squid:S3306")
 public class BannerController {
+
+  @Inject
+  private EntityController entityController;
   
   @Inject
   private Instance<BannerProvider> bannerProviders;
@@ -29,7 +33,8 @@ public class BannerController {
     for (BannerProvider bannerProvider : getBannerProviders()) {
       result.addAll(bannerProvider.listOrganizationBanners(organizationId));
     }
-    return result;
+    
+    return entityController.sortEntitiesInNaturalOrder(result);
   }
 
   public Banner findBanner(OrganizationId organizationId, BannerId bannerId) {
@@ -49,7 +54,8 @@ public class BannerController {
     for (BannerProvider bannerProvider : getBannerProviders()) {
       result.addAll(bannerProvider.listOrganizationBannerImages(organizationId, bannerId));
     }
-    return result;
+    
+    return entityController.sortEntitiesInNaturalOrder(result);
   }
 
   public Attachment findBannerImage(OrganizationId organizationId, BannerId bannerId, AttachmentId attachmentId) {
