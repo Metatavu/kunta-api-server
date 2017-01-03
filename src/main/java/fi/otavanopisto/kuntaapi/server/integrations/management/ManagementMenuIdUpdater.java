@@ -20,15 +20,15 @@ import javax.enterprise.event.Event;
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 
-import fi.otavanopisto.kuntaapi.server.discover.MenuIdUpdateRequest;
+import fi.metatavu.management.client.DefaultApi;
+import fi.metatavu.management.client.model.Menu;
 import fi.otavanopisto.kuntaapi.server.discover.IdUpdater;
+import fi.otavanopisto.kuntaapi.server.discover.MenuIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.discover.OrganizationIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.id.MenuId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 import fi.otavanopisto.kuntaapi.server.system.SystemUtils;
-import fi.metatavu.management.client.DefaultApi;
-import fi.metatavu.management.client.model.Menu;
 
 @ApplicationScoped
 @Singleton
@@ -124,6 +124,8 @@ public class ManagementMenuIdUpdater extends IdUpdater {
       MenuId menuId = new MenuId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementMenu.getId()));
       idUpdateRequest.fire(new MenuIdUpdateRequest(organizationId, menuId, (long) i, false));
     }
+    
+    
   }
 
   private List<Menu> listManagementMenus(DefaultApi api, OrganizationId organizationId) {
