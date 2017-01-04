@@ -26,9 +26,6 @@ import fi.metatavu.management.client.ApiResponse;
 import fi.metatavu.management.client.DefaultApi;
 import fi.metatavu.management.client.model.Page;
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
-import fi.otavanopisto.kuntaapi.server.cache.PageCache;
-import fi.otavanopisto.kuntaapi.server.cache.PageContentCache;
-import fi.otavanopisto.kuntaapi.server.cache.PageImageCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
 import fi.otavanopisto.kuntaapi.server.discover.IdUpdateRequestQueue;
@@ -40,6 +37,9 @@ import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
+import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementPageCache;
+import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementPageContentCache;
+import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementPageImageCache;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.system.SystemUtils;
 
@@ -67,13 +67,13 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
   private IdentifierController identifierController;
 
   @Inject
-  private PageCache pageCache;
+  private ManagementPageCache pageCache;
   
   @Inject
-  private PageContentCache pageContentCache;
+  private ManagementPageContentCache pageContentCache;
   
   @Inject
-  private PageImageCache pageImageCache;
+  private ManagementPageImageCache pageImageCache;
   
   @Inject
   private ModificationHashCache modificationHashCache;
