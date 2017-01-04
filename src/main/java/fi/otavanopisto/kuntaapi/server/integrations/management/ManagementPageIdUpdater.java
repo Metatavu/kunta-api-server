@@ -39,6 +39,7 @@ public class ManagementPageIdUpdater extends IdUpdater {
 
   private static final int WARMUP_TIME = 1000 * 10;
   private static final int TIMER_INTERVAL = 5000;
+  private static final int BATCH_SIZE = 100;
   
   @Inject
   private Logger logger;
@@ -127,7 +128,7 @@ public class ManagementPageIdUpdater extends IdUpdater {
   }
   
   private List<Page> listManagementPages(DefaultApi api, OrganizationId organizationId) {
-    ApiResponse<List<Page>> response = api.wpV2PagesGet(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    ApiResponse<List<Page>> response = api.wpV2PagesGet(null, null, BATCH_SIZE, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
     if (response.isOk()) {
       return response.getResponse();
     } else {
