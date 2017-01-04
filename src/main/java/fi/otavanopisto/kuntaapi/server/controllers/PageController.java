@@ -12,6 +12,9 @@ import javax.inject.Inject;
 
 import org.apache.commons.lang3.StringUtils;
 
+import fi.metatavu.kuntaapi.server.rest.model.Attachment;
+import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
+import fi.metatavu.kuntaapi.server.rest.model.Page;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
@@ -21,9 +24,6 @@ import fi.otavanopisto.kuntaapi.server.index.SearchResult;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.PageProvider;
-import fi.metatavu.kuntaapi.server.rest.model.Attachment;
-import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
-import fi.metatavu.kuntaapi.server.rest.model.Page;
 
 @ApplicationScoped
 @SuppressWarnings ("squid:S3306")
@@ -148,9 +148,11 @@ public class PageController {
   @SuppressWarnings ("squid:S1168")
   public List<LocalizedValue> getPageContents(OrganizationId organizationId, PageId pageId) {
     for (PageProvider pageProvider : getPageProviders()) {
-      List<LocalizedValue> pageContents = pageProvider.findOrganizationPageContents(organizationId, pageId);
-      if (pageContents != null) {
-        return pageContents;
+      if (pageProvider.findOrganizationPage(organizationId, pageId) != null) {
+        List<LocalizedValue> pageContents = pageProvider.findOrganizationPageContents(organizationId, pageId);
+        if (pageContents != null) {
+          return pageContents;
+        }
       }
     }
     
@@ -199,4 +201,5 @@ public class PageController {
     
     return Collections.unmodifiableList(result);
   }
+  
 }

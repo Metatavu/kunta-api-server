@@ -32,7 +32,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementP
 @RequestScoped
 @SuppressWarnings ("squid:S3306")
 public class ManagementPageProvider extends AbstractManagementProvider implements PageProvider {
-  
+
   @Inject
   private Logger logger;
   
@@ -63,7 +63,12 @@ public class ManagementPageProvider extends AbstractManagementProvider implement
   
   @Override
   public List<LocalizedValue> findOrganizationPageContents(OrganizationId organizationId, PageId pageId) {
-    return pageContentCache.get(pageId);
+    List<LocalizedValue> contents = pageContentCache.get(pageId);
+    if (contents != null) {
+      return contents;
+    }
+    
+    return Collections.emptyList();
   }
 
   @Override
