@@ -51,6 +51,10 @@ public abstract class AbstractManagementProvider {
   private ManagementTranslator managementTranslator;
   
   protected AttachmentData scaleImage(AttachmentData imageData, Integer size) {
+    if (imageData == null || imageData.getData() == null) {
+      return null;
+    }
+    
     BufferedImage bufferedImage = imageReader.readBufferedImage(imageData.getData());
     if (bufferedImage != null) {
       BufferedImage scaledImage = imageScaler.scaleMaxSize(bufferedImage, size);

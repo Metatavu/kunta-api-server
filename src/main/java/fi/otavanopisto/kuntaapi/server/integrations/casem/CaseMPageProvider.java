@@ -28,7 +28,7 @@ import fi.metatavu.kuntaapi.server.rest.model.Page;
 @ApplicationScoped
 @SuppressWarnings ("squid:S3306")
 public class CaseMPageProvider implements PageProvider {
-  
+
   @Inject
   private Logger logger;
   
@@ -85,7 +85,12 @@ public class CaseMPageProvider implements PageProvider {
   
   @Override
   public List<LocalizedValue> findOrganizationPageContents(OrganizationId organizationId, PageId pageId) {
-    return caseMCache.getPageContent(pageId);
+    List<LocalizedValue> content = caseMCache.getPageContent(pageId);
+    if (content != null) {
+      return content;
+    }
+    
+    return Collections.emptyList();
   }
 
   @Override

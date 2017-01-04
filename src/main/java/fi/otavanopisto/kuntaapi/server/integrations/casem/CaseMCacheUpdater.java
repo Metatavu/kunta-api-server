@@ -198,8 +198,7 @@ public class CaseMCacheUpdater {
       PageId meetingItemPageId = new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, meetingItemPage.getId());
       
       String meetingItemPageContents = renderContentMeetingItem(createMeetingItemModel(downloadUrl, meetingTitle, memoApproved, itemExtendedProperties), locale);
-      caseMCache.cachePageContents(meetingItemPageId, meetingItemPageContents);
-      caseMCache.cacheNode(organizationId, meetingItemPage);
+      caseMCache.cachePage(organizationId, meetingItemPage, translateLocalized(meetingItemPageContents));
       indexRequest.fire(new IndexRequest(createIndexablePage(organizationId, meetingItemPageId, locale.getLanguage(), meetingItemPageContents, itemLink.getText())));
 
       itemLinks.add(itemLink);
@@ -213,7 +212,7 @@ public class CaseMCacheUpdater {
     
     Meeting meeting = createMeetingModel(downloadUrl, meetingTitle, memoApproved, itemLinks, meetingExtendedProperties);
     String meetingPageContents = renderContentMeeting(meeting, locale);
-    caseMCache.cachePageContents(meetingPageId, meetingPageContents);
+    caseMCache.cachePage(organizationId, meetingPage, translateLocalized(meetingPageContents));
     indexRequest.fire(new IndexRequest(createIndexablePage(organizationId, meetingPageId, locale.getLanguage(), meetingPageContents, meetingTitle)));
 
     for (FileId fileId : getAttachmentFileIds(organizationId, meetingExtendedProperties)) {
@@ -725,7 +724,7 @@ public class CaseMCacheUpdater {
         // Type 0 pages are hidden levels that should be flatted out
       } else {
         Page page = translateNode(orderIndex, organizationId, caseMRootNodeId, parentNode, node);
-        caseMCache.cacheNode(organizationId, page);
+        caseMCache.cachePage(organizationId, page, null);
       }
       
       cacheNodeTree(organizationId, caseMRootNodeId, node, getChildNodes(organizationId, caseMRootNodeId, childCaseMParentIds), childCaseMParentIds);
@@ -958,6 +957,14 @@ public class CaseMCacheUpdater {
     indexablePage.setTitle(title);
     
     return indexablePage;
+  }
+  
+  private List<LocalizedValue> translateLocalized(String content) {
+    LocalizedValue localizedValue = new LocalizedValue();
+    localizedValue.setLanguage(CaseMConsts.DEFAULT_LANGUAGE);
+    localizedValue.setValue(content);
+    
+    return Collections.singletonList(localizedValue);
   }
   
   private class NodeComparator implements Comparator<Node> {
