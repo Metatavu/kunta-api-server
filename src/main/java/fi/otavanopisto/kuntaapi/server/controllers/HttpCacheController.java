@@ -29,6 +29,7 @@ import fi.otavanopisto.kuntaapi.server.id.BaseId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 
 @ApplicationScoped
+@SuppressWarnings ("squid:S3306")
 public class HttpCacheController {
   
   private static final String INTERNAL_SERVER_ERROR = "Internal Server Error";
