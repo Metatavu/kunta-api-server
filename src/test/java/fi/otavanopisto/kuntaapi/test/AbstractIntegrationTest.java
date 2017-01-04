@@ -7,6 +7,7 @@ import static org.junit.Assert.fail;
 import java.util.logging.Logger;
 
 import com.jayway.restassured.http.ContentType;
+import com.jayway.restassured.path.json.exception.JsonPathException;
 
 /**
  * Abstract base class for integration tests
@@ -46,20 +47,22 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     while (true) {
       counter++;
       Thread.sleep(1000);
-      
-      int listCount = countApiList(path);
-      if (listCount == count) {
-        return;
+      try {
+        int listCount = countApiList(path);
+        if (listCount == count) {
+          return;
+        }
+        
+        if (System.currentTimeMillis() > timeout) {
+          fail(String.format("Timeout waiting for %s to have count %d", path, count));
+        }
+        
+        if ((counter % 30) == 0) {
+          logger.info(String.format("... still waiting %d items, current count %d", count, listCount));
+        }
+      } catch (JsonPathException e) {
+        
       }
-      
-      if (System.currentTimeMillis() > timeout) {
-        fail(String.format("Timeout waiting for %s to have count %d", path, count));
-      }
-      
-      if ((counter % 30) == 0) {
-        logger.info(String.format("... still waiting %d items, current count %d", count, listCount));
-      }
-      
     }
   }
 
