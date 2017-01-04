@@ -171,14 +171,14 @@ public class CaseMCacheUpdater {
     Locale locale = new Locale(CaseMConsts.DEFAULT_LANGUAGE);
     String downloadUrl = getCaseMDownloadUrl(organizationId);
     
-    Page meetingPage = caseMCache.findPage(organizationId, meetingPageId);
+    Page meetingPage = caseMCache.findPage(meetingPageId);
     if (meetingPage == null) {
       logger.severe(String.format("Meeting page %s could not be found", meetingPageId.toString()));
       return;
     }
     
     PageId meetingParentPageId = new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, meetingPage.getParentId());
-    Page meetingParentPage = caseMCache.findPage(organizationId, meetingParentPageId);
+    Page meetingParentPage = caseMCache.findPage(meetingParentPageId);
     if (meetingParentPage == null) {
       logger.severe(String.format("Meeting parent page %s could not be found", meetingParentPageId.toString()));
       return;
@@ -198,7 +198,7 @@ public class CaseMCacheUpdater {
       PageId meetingItemPageId = new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, meetingItemPage.getId());
       
       String meetingItemPageContents = renderContentMeetingItem(createMeetingItemModel(downloadUrl, meetingTitle, memoApproved, itemExtendedProperties), locale);
-      caseMCache.cachePageContents(organizationId, meetingItemPageId, meetingItemPageContents);
+      caseMCache.cachePageContents(meetingItemPageId, meetingItemPageContents);
       caseMCache.cacheNode(organizationId, meetingItemPage);
       indexRequest.fire(new IndexRequest(createIndexablePage(organizationId, meetingItemPageId, locale.getLanguage(), meetingItemPageContents, itemLink.getText())));
 
@@ -213,7 +213,7 @@ public class CaseMCacheUpdater {
     
     Meeting meeting = createMeetingModel(downloadUrl, meetingTitle, memoApproved, itemLinks, meetingExtendedProperties);
     String meetingPageContents = renderContentMeeting(meeting, locale);
-    caseMCache.cachePageContents(organizationId, meetingPageId, meetingPageContents);
+    caseMCache.cachePageContents(meetingPageId, meetingPageContents);
     indexRequest.fire(new IndexRequest(createIndexablePage(organizationId, meetingPageId, locale.getLanguage(), meetingPageContents, meetingTitle)));
 
     for (FileId fileId : getAttachmentFileIds(organizationId, meetingExtendedProperties)) {
