@@ -64,8 +64,8 @@ public abstract class AbstractEntityCache<K extends BaseId, V> extends AbstractC
   }
   
   private boolean isOrganizationBaseType() {
-    Type[] parameterizedTypes = getParameterizedTypes();
-    return OrganizationBaseId.class.isAssignableFrom((Class<?>) parameterizedTypes[0]);
+    Type[] parameterizedTypeArguments = getParameterizedTypeArguments();
+    return OrganizationBaseId.class.isAssignableFrom((Class<?>) parameterizedTypeArguments[0]);
   }
   
 }

@@ -103,13 +103,26 @@ public abstract class AbstractCache <K, V> implements Serializable {
     cache.remove(id);
   }
   
-  protected Type[] getParameterizedTypes() {
-    Type superClass = getClass().getGenericSuperclass();
-    if (superClass instanceof ParameterizedType) {
-      return ((ParameterizedType) superClass).getActualTypeArguments();
+  protected Type[] getParameterizedTypeArguments() {
+    ParameterizedType parameterizedTypeClass = getParameterizedType();
+    if (parameterizedTypeClass != null) {
+      return parameterizedTypeClass.getActualTypeArguments();
     }
     
     return new Type[0];
+  }
+  
+  private ParameterizedType getParameterizedType() {
+    Class<?> currentClass = getClass();
+    while (currentClass != null && !currentClass.equals(Object.class))  {
+      if (currentClass.getGenericSuperclass() instanceof ParameterizedType) {
+        return (ParameterizedType) currentClass.getGenericSuperclass();
+      }
+      
+      currentClass = currentClass.getSuperclass();
+    }
+    
+    return null;
   }
   
   private ObjectMapper getObjectMapper() {
@@ -119,12 +132,12 @@ public abstract class AbstractCache <K, V> implements Serializable {
   }
   
   private TypeReference<V> getTypeReference() {    
-    final Type[] parameterizedTypes = getParameterizedTypes();
+    final Type[] parameterizedTypeArguments = getParameterizedTypeArguments();
     
     return new TypeReference<V>() {
       @Override
       public Type getType() {
-        return parameterizedTypes[parameterizedTypes.length - 1];
+        return parameterizedTypeArguments[parameterizedTypeArguments.length - 1];
       }
     };
   }
