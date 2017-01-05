@@ -178,7 +178,7 @@ public class IdentifierDAO extends AbstractDAO<Identifier> {
       criteriaBuilder.equal(root.get(Identifier_.kuntaApiId), kuntaApiIdentifier)
     );
     
-    return entityManager.createQuery(criteria).getSingleResult();
+    return getSingleResult(entityManager.createQuery(criteria));
   }
 
   
