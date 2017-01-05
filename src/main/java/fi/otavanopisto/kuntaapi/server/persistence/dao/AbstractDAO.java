@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 /**
  * Abstract base class for all DAO classes
@@ -115,9 +116,9 @@ public abstract class AbstractDAO<T> {
     return object;
   }
 
-  protected T getSingleResult(Query query) {
+  protected <X> X getSingleResult(TypedQuery<X> query) {
     @SuppressWarnings("unchecked")
-    List<T> list = query.getResultList();
+    List<X> list = query.getResultList();
 
     if (list.isEmpty())
       return null;
