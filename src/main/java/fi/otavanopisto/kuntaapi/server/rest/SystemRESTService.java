@@ -1,6 +1,7 @@
 package fi.otavanopisto.kuntaapi.server.rest;
 
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
 import javax.ws.rs.Consumes;
@@ -11,6 +12,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import fi.otavanopisto.kuntaapi.server.cache.SystemController;
 import fi.otavanopisto.kuntaapi.server.system.SystemUtils;
 
 /**
@@ -28,6 +30,9 @@ public class SystemRESTService {
   @PersistenceUnit
   private EntityManagerFactory entityManagerFactory;
   
+  @Inject
+  private SystemController systemController; 
+  
   /**
    * Returns pong
    * 
@@ -37,6 +42,10 @@ public class SystemRESTService {
   @Path ("/ping")
   @Produces (MediaType.TEXT_PLAIN)
   public Response getPing() {
+    if (!systemController.isCacheContainerOk()) {
+      return Response.status(Status.SERVICE_UNAVAILABLE).build();
+    }
+    
     return Response.ok("pong").build();
   }
   
