@@ -23,6 +23,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   private static Logger logger = Logger.getLogger(AbstractTest.class.getName());
   private RestFulPtvMocker ptvMocker = new RestFulPtvMocker();
   private KuntarekryMocker kuntarekryMocker = new KuntarekryMocker();
+  private ManagementMocker managementMocker = new ManagementMocker();
   
   public RestFulPtvMocker getPtvMocker() {
     return ptvMocker;
@@ -30,6 +31,10 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
 
   public KuntarekryMocker getKuntarekryMocker() {
     return kuntarekryMocker;
+  }
+  
+  public ManagementMocker getManagementMocker() {
+    return managementMocker;
   }
   
   protected void flushCache() {
@@ -101,6 +106,16 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
         .baseUri(getApiBasePath())
         .contentType(ContentType.JSON)
         .get(String.format("/organizations/%s/jobs", organizationId))
+        .body()
+        .jsonPath()
+        .getString(String.format("id[%d]", index));
+  }
+  
+  protected String getOrganizationAnnouncementId(String organizationId, int index) {
+    return given() 
+        .baseUri(getApiBasePath())
+        .contentType(ContentType.JSON)
+        .get(String.format("/organizations/%s/announcements", organizationId))
         .body()
         .jsonPath()
         .getString(String.format("id[%d]", index));
