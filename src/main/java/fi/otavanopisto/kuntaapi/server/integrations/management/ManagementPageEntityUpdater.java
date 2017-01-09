@@ -32,6 +32,7 @@ import fi.otavanopisto.kuntaapi.server.discover.IdUpdateRequestQueue;
 import fi.otavanopisto.kuntaapi.server.discover.PageIdRemoveRequest;
 import fi.otavanopisto.kuntaapi.server.discover.PageIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
+import fi.otavanopisto.kuntaapi.server.id.BaseId;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.IdPair;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
@@ -180,11 +181,12 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
       } 
     }
     
+    BaseId identifierParentId = kuntaApiParentPageId == null ? organizationId : kuntaApiParentPageId;
     Identifier identifier = identifierController.findIdentifierById(managementPageId);
     if (identifier == null) {
-      identifier = identifierController.createIdentifier(kuntaApiParentPageId, orderIndex, managementPageId);
+      identifier = identifierController.createIdentifier(identifierParentId, orderIndex, managementPageId);
     } else {
-      identifier = identifierController.updateIdentifier(identifier, kuntaApiParentPageId, orderIndex);
+      identifier = identifierController.updateIdentifier(identifier, identifierParentId, orderIndex);
     }
     
     PageId kuntaApiPageId = new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
