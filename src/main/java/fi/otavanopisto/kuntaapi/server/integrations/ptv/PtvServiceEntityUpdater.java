@@ -126,9 +126,9 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
     if (response.isOk()) {
       Identifier identifier = identifierController.findIdentifierById(serviceId);
       if (identifier == null) {
-        identifier = identifierController.createIdentifier(serviceId, orderIndex, serviceId);
+        identifier = identifierController.createIdentifier(null, orderIndex, serviceId);
       } else {
-        identifier = identifierController.updateIdentifier(identifier, serviceId, orderIndex);
+        identifier = identifierController.updateIdentifier(identifier, null, orderIndex);
       }
       
       Service service = response.getResponse();
