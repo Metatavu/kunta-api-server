@@ -47,6 +47,7 @@ import fi.otavanopisto.casem.client.model.NodeName;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.controllers.PageController;
 import fi.otavanopisto.kuntaapi.server.freemarker.FreemarkerRenderer;
+import fi.otavanopisto.kuntaapi.server.id.BaseId;
 import fi.otavanopisto.kuntaapi.server.id.FileId;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
@@ -731,12 +732,13 @@ public class CaseMCacheUpdater {
       } else {
         PageId casemPageId = getNodePageId(organizationId, node);
         PageId kuntaApiParentPageId = idController.translatePageId(getNodePageId(organizationId, parentNode), KuntaApiConsts.IDENTIFIER_NAME);
+        BaseId identifierParentId = kuntaApiParentPageId == null ? organizationId : kuntaApiParentPageId;
         
         Identifier identifier = identifierController.findIdentifierById(casemPageId);
         if (identifier == null) {
-          identifier = identifierController.createIdentifier(kuntaApiParentPageId, orderIndex, casemPageId);
+          identifier = identifierController.createIdentifier(identifierParentId, orderIndex, casemPageId);
         } else {
-          identifier = identifierController.updateIdentifier(identifier, kuntaApiParentPageId, orderIndex);
+          identifier = identifierController.updateIdentifier(identifier, identifierParentId, orderIndex);
         }
         
         PageId kuntaApiPageId = new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
