@@ -20,6 +20,7 @@ public class ManagementMocker extends AbstractMocker {
   private static final String POSTS = "/wp-json/wp/v2/posts";
   private static final String TILES = "/wp-json/wp/v2/tile";
   private static final String ANNOUNCEMENTS = "/wp-json/wp/v2/announcement";
+  private static final String PATH_TEMPLATE = "%s/%s";
 
   private List<Banner> bannerList = new ArrayList<>();
   private List<Menu> menuList = new ArrayList<>();
@@ -31,7 +32,7 @@ public class ManagementMocker extends AbstractMocker {
   public ManagementMocker mockBanners(String... ids) {
     for (String id : ids) {
       Banner banner = readBannerFromJSONFile(String.format("management/banners/%s.json", id));
-      mockGetJSON(String.format("%s/%s", BANNERS, id), banner, null);
+      mockGetJSON(String.format(PATH_TEMPLATE, BANNERS, id), banner, null);
       bannerList.add(banner);
     }     
     
@@ -41,7 +42,7 @@ public class ManagementMocker extends AbstractMocker {
   public ManagementMocker mockMenus(String... ids) {
     for (String id : ids) {
       Menu menu = readMenuFromJSONFile(String.format("management/menus/%s.json", id));
-      mockGetJSON(String.format("%s/%s", MENUS, id), menu, null);
+      mockGetJSON(String.format(PATH_TEMPLATE, MENUS, id), menu, null);
       menuList.add(menu);
     }     
     
@@ -51,7 +52,7 @@ public class ManagementMocker extends AbstractMocker {
   public ManagementMocker mockPages(String... ids) {
     for (String id : ids) {
       Page page = readPageFromJSONFile(String.format("management/pages/%s.json", id));
-      mockGetJSON(String.format("%s/%s", POSTS, id), page, null);
+      mockGetJSON(String.format(PATH_TEMPLATE, POSTS, id), page, null);
       pageList.add(page);
     }     
     
@@ -61,7 +62,7 @@ public class ManagementMocker extends AbstractMocker {
   public ManagementMocker mockPosts(String... ids) {
     for (String id : ids) {
       Post post = readPostFromJSONFile(String.format("management/posts/%s.json", id));
-      mockGetJSON(String.format("%s/%s", POSTS, id), post, null);
+      mockGetJSON(String.format(PATH_TEMPLATE, POSTS, id), post, null);
       postList.add(post);
     }     
     
@@ -71,7 +72,7 @@ public class ManagementMocker extends AbstractMocker {
   public ManagementMocker mockTiles(String... ids) {
     for (String id : ids) {
       Tile tile = readTileFromJSONFile(String.format("management/tiles/%s.json", id));
-      mockGetJSON(String.format("%s/%s", TILES, id), tile, null);
+      mockGetJSON(String.format(PATH_TEMPLATE, TILES, id), tile, null);
       tileList.add(tile);
     }     
     
@@ -81,7 +82,7 @@ public class ManagementMocker extends AbstractMocker {
   public ManagementMocker mockAnnouncements(String... ids) {
     for (String id : ids) {
       Announcement announcement = readAnnouncementFromJSONFile(String.format("management/announcements/%s.json", id));
-      mockGetJSON(String.format("%s/%s", ANNOUNCEMENTS, id), announcement, null);
+      mockGetJSON(String.format(PATH_TEMPLATE, ANNOUNCEMENTS, id), announcement, null);
       announcementList.add(announcement);
     }     
     
