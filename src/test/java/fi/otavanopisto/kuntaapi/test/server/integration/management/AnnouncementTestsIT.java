@@ -23,7 +23,7 @@ import fi.otavanopisto.kuntaapi.test.AbstractIntegrationTest;
 @SuppressWarnings ("squid:S1192")
 public class AnnouncementTestsIT extends AbstractIntegrationTest {
   
-  private static final ZoneId TIMEZONE_ID = ZoneId.of("Europe/Helsinki");
+  private static final ZoneId TIMEZONE_ID = ZoneId.systemDefault();
   
   /**
    * Starts WireMock
