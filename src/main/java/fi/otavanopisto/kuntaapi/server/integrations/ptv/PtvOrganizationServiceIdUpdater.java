@@ -109,9 +109,9 @@ public class PtvOrganizationServiceIdUpdater extends EntityUpdater {
         OrganizationServiceId organizationServiceId = new OrganizationServiceId(organizationId, PtvConsts.IDENTIFIFER_NAME, organizationService.getId());
         Identifier identifier = identifierController.findIdentifierById(organizationServiceId);
         if (identifier == null) {
-          identifierController.createIdentifier(orderIndex, organizationServiceId);
+          identifierController.createIdentifier(organizationId, orderIndex, organizationServiceId);
         } else {
-          identifierController.updateIdentifierOrderIndex(identifier, orderIndex);
+          identifierController.updateIdentifier(identifier, organizationId, orderIndex);
         }
       }
     } else {

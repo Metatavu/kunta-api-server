@@ -32,6 +32,7 @@ import fi.otavanopisto.kuntaapi.server.discover.IdUpdateRequestQueue;
 import fi.otavanopisto.kuntaapi.server.discover.PageIdRemoveRequest;
 import fi.otavanopisto.kuntaapi.server.discover.PageIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
+import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.IdPair;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
@@ -62,7 +63,10 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
   
   @Inject
   private ManagementImageLoader managementImageLoader;
-  
+
+  @Inject
+  private IdController idController;
+
   @Inject
   private IdentifierController identifierController;
 
@@ -164,17 +168,27 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
   }
   
   private void updateManagementPage(OrganizationId organizationId, DefaultApi api, Page managementPage, Long orderIndex) {
-    PageId pageId = new PageId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementPage.getId()));
-
-    Identifier identifier = identifierController.findIdentifierById(pageId);
+    PageId managementPageId = new PageId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementPage.getId()));
+    PageId kuntaApiParentPageId = null;
+    
+    if (managementPage.getParent() != null && managementPage.getParent() > 0) {
+      PageId managementParentPageId = new PageId(organizationId, ManagementConsts.IDENTIFIER_NAME,String.valueOf(managementPage.getParent()));
+      kuntaApiParentPageId = idController.translatePageId(managementParentPageId, KuntaApiConsts.IDENTIFIER_NAME);
+      if (kuntaApiParentPageId == null) {
+        logger.severe(String.format("Could not translate %d parent page %d into management page id", managementPage.getParent(), managementPage.getId()));
+        return;
+      } 
+    }
+    
+    Identifier identifier = identifierController.findIdentifierById(managementPageId);
     if (identifier == null) {
-      identifier = identifierController.createIdentifier(orderIndex, pageId);
+      identifier = identifierController.createIdentifier(kuntaApiParentPageId, orderIndex, managementPageId);
     } else {
-      identifierController.updateIdentifierOrderIndex(identifier, orderIndex);
+      identifier = identifierController.updateIdentifier(identifier, kuntaApiParentPageId, orderIndex);
     }
     
     PageId kuntaApiPageId = new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
-    fi.metatavu.kuntaapi.server.rest.model.Page page = managementTranslator.translatePage(organizationId, kuntaApiPageId, managementPage);
+    fi.metatavu.kuntaapi.server.rest.model.Page page = managementTranslator.translatePage(kuntaApiPageId, kuntaApiParentPageId, managementPage);
     List<LocalizedValue> pageContents = managementTranslator.translateLocalized(managementPage.getContent().getRendered());
     
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(managementPage));
@@ -193,10 +207,13 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
     } else {
       fi.metatavu.management.client.model.Attachment managementAttachment = response.getResponse();
       AttachmentId managementAttachmentId = new AttachmentId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementAttachment.getId()));
+      Long orderIndex = 0l;
       
       Identifier identifier = identifierController.findIdentifierById(managementAttachmentId);
       if (identifier == null) {
-        identifier = identifierController.createIdentifier(0l, managementAttachmentId);
+        identifier = identifierController.createIdentifier(pageId, orderIndex, managementAttachmentId);
+      } else {
+        identifier = identifierController.updateIdentifier(identifier, pageId, orderIndex);
       }
       
       AttachmentId kuntaApiAttachmentId = new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());

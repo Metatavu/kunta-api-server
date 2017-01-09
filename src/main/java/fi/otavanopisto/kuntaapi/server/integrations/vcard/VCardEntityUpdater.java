@@ -209,9 +209,9 @@ public class VCardEntityUpdater extends EntityUpdater {
     ContactId contactId = new ContactId(organizationId, VCardConsts.IDENTIFIER_NAME, vCardUid);
     Identifier identifier = identifierController.findIdentifierById(contactId);
     if (identifier == null) {
-      identifier = identifierController.createIdentifier(orderIndex, contactId);
+      identifier = identifierController.createIdentifier(organizationId, orderIndex, contactId);
     } else {
-      identifierController.updateIdentifierOrderIndex(identifier, orderIndex);
+      identifier = identifierController.updateIdentifier(identifier, organizationId, orderIndex);
     }
     
     ContactId kuntaApiContactId = new ContactId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());

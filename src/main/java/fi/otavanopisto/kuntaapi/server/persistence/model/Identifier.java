@@ -1,11 +1,14 @@
 package fi.otavanopisto.kuntaapi.server.persistence.model;
 
+import java.time.OffsetDateTime;
+
 import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
@@ -17,7 +20,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 /**
  * JPA entity representing mapping for external source id to Kunta API Id
  * 
- * @author Otavan Opisto
+ * @author Metatavu
  */
 @Entity
 @Table(uniqueConstraints = { 
@@ -31,6 +34,9 @@ public class Identifier {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
+  
+  @ManyToOne 
+  private Identifier parent;
   
   @Column(nullable = false)
   @NotNull
@@ -59,8 +65,19 @@ public class Identifier {
   @NotEmpty
   private String sourceId;
   
+  @Column(nullable = false)
+  private OffsetDateTime modified;
+  
   public Long getId() {
     return id;
+  }
+  
+  public Identifier getParent() {
+    return parent;
+  }
+  
+  public void setParent(Identifier parent) {
+    this.parent = parent;
   }
   
   public Long getOrderIndex() {
@@ -109,6 +126,14 @@ public class Identifier {
   
   public void setOrganizationKuntaApiId(String organizationKuntaApiId) {
     this.organizationKuntaApiId = organizationKuntaApiId;
+  }
+  
+  public OffsetDateTime getModified() {
+    return modified;
+  }
+  
+  public void setModified(OffsetDateTime modified) {
+    this.modified = modified;
   }
   
 }

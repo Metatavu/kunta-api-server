@@ -145,9 +145,9 @@ public class PtvOrganizationEntityUpdater extends EntityUpdater {
     if (response.isOk()) {
       Identifier identifier = identifierController.findIdentifierById(organizationId);
       if (identifier == null) {
-        identifier = identifierController.createIdentifier(orderIndex, organizationId);
+        identifier = identifierController.createIdentifier(null, orderIndex, organizationId);
       } else {
-        identifierController.updateIdentifierOrderIndex(identifier, orderIndex);
+        identifier = identifierController.updateIdentifier(identifier, null, orderIndex);
       }
       
       Organization organization = response.getResponse();

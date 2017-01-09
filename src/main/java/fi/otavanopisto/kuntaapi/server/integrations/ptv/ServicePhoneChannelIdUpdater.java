@@ -119,9 +119,9 @@ public class ServicePhoneChannelIdUpdater extends EntityUpdater {
         PhoneChannelId channelId = new PhoneChannelId(PtvConsts.IDENTIFIFER_NAME, phoneChannel.getId());
         Identifier identifier = identifierController.findIdentifierById(channelId);
         if (identifier == null) {
-          identifier = identifierController.createIdentifier(orderIndex, channelId);
+          identifier = identifierController.createIdentifier(serviceId, orderIndex, channelId);
         } else {
-          identifierController.updateIdentifierOrderIndex(identifier, orderIndex);
+          identifier = identifierController.updateIdentifier(identifier, serviceId, orderIndex);
         }
         
         modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(phoneChannel));

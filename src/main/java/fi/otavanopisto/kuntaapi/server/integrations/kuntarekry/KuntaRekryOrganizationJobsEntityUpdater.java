@@ -121,9 +121,9 @@ public class KuntaRekryOrganizationJobsEntityUpdater extends EntityUpdater {
       JobId kuntaRekryId = new JobId(organizationId, KuntaRekryConsts.IDENTIFIER_NAME, String.valueOf(kuntaRekryJob.getJobId())); 
       Identifier identifier = identifierController.findIdentifierById(kuntaRekryId);
       if (identifier == null) {
-        identifier = identifierController.createIdentifier(orderIndex, kuntaRekryId);
+        identifier = identifierController.createIdentifier(organizationId, orderIndex, kuntaRekryId);
       } else {
-        identifierController.updateIdentifierOrderIndex(identifier, orderIndex);
+        identifier = identifierController.updateIdentifier(identifier, organizationId, orderIndex);
       }
       
       modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(kuntaRekryJob));
