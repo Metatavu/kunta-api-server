@@ -147,9 +147,9 @@ public class ManagementAnnouncementEntityUpdater extends EntityUpdater {
 
     Identifier identifier = identifierController.findIdentifierById(announcementId);
     if (identifier == null) {
-      identifier = identifierController.createIdentifier(orderIndex, announcementId);
+      identifier = identifierController.createIdentifier(organizationId, orderIndex, announcementId);
     } else {
-      identifierController.updateIdentifierOrderIndex(identifier, orderIndex);
+      identifier = identifierController.updateIdentifier(identifier, organizationId, orderIndex);
     }
     
     AnnouncementId kuntaApiAnnouncementId = new AnnouncementId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());

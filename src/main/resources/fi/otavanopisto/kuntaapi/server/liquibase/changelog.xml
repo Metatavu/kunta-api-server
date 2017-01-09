@@ -78,7 +78,7 @@
     <addUniqueConstraint constraintName="UK_IDENTIFIER_SOURCE" tableName="Identifier" columnNames="organizationKuntaApiId,type,source,sourceId" />
     <addUniqueConstraint constraintName="UK_IDENTIFIER_APIID" tableName="Identifier" columnNames="organizationKuntaApiId,type,source,kuntaApiId" />
   </changeSet>
-
+  
   <changeSet id="2" author="antti.leppa">
     <addColumn tableName="Identifier">
       <column name="orderIndex" type="bigint(20)">
@@ -87,6 +87,19 @@
     </addColumn>
     
     <sql>update Identifier set orderIndex = id</sql>
+  </changeSet>
+
+  <changeSet id="identifier-parent" author="antti.leppa">
+    <addColumn tableName="Identifier">
+      <column name="parent_id" type="bigint(20)">
+        <constraints referencedTableName="Identifier" referencedColumnNames="id" foreignKeyName="FK_IDENTIFIER_PARENT_ID"/>
+      </column>
+      <column name="modified" type="timestamp">
+        <constraints nullable="true"/>
+      </column>
+    </addColumn>
+    
+    <sql>update Identifier set modified = NOW()</sql>
   </changeSet>
 
 </databaseChangeLog>

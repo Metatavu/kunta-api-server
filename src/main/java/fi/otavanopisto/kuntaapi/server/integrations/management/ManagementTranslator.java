@@ -81,21 +81,9 @@ public class ManagementTranslator {
     return attachment;
   }
   
-  public fi.metatavu.kuntaapi.server.rest.model.Page translatePage(OrganizationId organizationId, PageId kuntaApiPageId, fi.metatavu.management.client.model.Page managementPage) {
+  public fi.metatavu.kuntaapi.server.rest.model.Page translatePage(PageId kuntaApiPageId, PageId kuntaApiParentPageId, fi.metatavu.management.client.model.Page managementPage) {
     fi.metatavu.kuntaapi.server.rest.model.Page page = new fi.metatavu.kuntaapi.server.rest.model.Page();
-    PageId kuntaApiParentPageId = null;
-    
-    if (managementPage.getParent() != null && managementPage.getParent() > 0) {
-      PageId managementParentPageId = new PageId(organizationId, ManagementConsts.IDENTIFIER_NAME,String.valueOf(managementPage.getParent()));
-      kuntaApiParentPageId = idController.translatePageId(managementParentPageId, KuntaApiConsts.IDENTIFIER_NAME);
-      if (kuntaApiParentPageId == null) {
-        logger.severe(String.format("Could not translate %d parent page %d into management page id", managementPage.getParent(), managementPage.getId()));
-        return null;
-      } 
-    }
-    
     page.setTitles(translateLocalized(managementPage.getTitle().getRendered()));
-    
     page.setId(kuntaApiPageId.getId());
     
     if (kuntaApiParentPageId != null) {

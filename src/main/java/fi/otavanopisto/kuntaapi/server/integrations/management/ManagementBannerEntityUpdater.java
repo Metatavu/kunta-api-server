@@ -166,9 +166,9 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
 
     Identifier identifier = identifierController.findIdentifierById(bannerId);
     if (identifier == null) {
-      identifier = identifierController.createIdentifier(orderIndex, bannerId);
+      identifier = identifierController.createIdentifier(organizationId, orderIndex, bannerId);
     } else {
-      identifierController.updateIdentifierOrderIndex(identifier, orderIndex);
+      identifier = identifierController.updateIdentifier(identifier, organizationId, orderIndex);
     }
     
     BannerId bannerKuntaApiId = new BannerId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
@@ -195,10 +195,13 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
     } else {
       Attachment managementAttachment = response.getResponse();
       AttachmentId managementAttachmentId = new AttachmentId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementAttachment.getId()));
+      Long orderIndex = 0l;
       
       Identifier identifier = identifierController.findIdentifierById(managementAttachmentId);
       if (identifier == null) {
-        identifier = identifierController.createIdentifier(0l, managementAttachmentId);
+        identifier = identifierController.createIdentifier(bannerId, orderIndex, managementAttachmentId);
+      } else {
+        identifier = identifierController.updateIdentifier(identifier, bannerId, orderIndex);
       }
       
       AttachmentId kuntaApiAttachmentId = new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
