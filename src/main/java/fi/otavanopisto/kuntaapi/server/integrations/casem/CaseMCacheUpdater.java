@@ -20,7 +20,6 @@ import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.annotation.PostConstruct;
 import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
 import javax.enterprise.context.ApplicationScoped;
@@ -131,13 +130,6 @@ public class CaseMCacheUpdater {
   @Inject
   private Event<IndexRequest> indexRequest;
 
-  private Map<PageId, PageId> discoveredPageIds;
-
-  @PostConstruct
-  public void init() {
-    discoveredPageIds = new HashMap<>();
-  }
-  
   public void updateNodes(OrganizationId organizationId) {
     logger.fine(String.format("Updating CaseM nodes for organization %s", organizationId));
     
@@ -147,7 +139,7 @@ public class CaseMCacheUpdater {
     }
     
     List<Node> nodes = getChildNodes(organizationId, caseMRootNodeId, Collections.emptyList());
-    cacheNodeTree(organizationId, caseMRootNodeId, null, nodes, new ArrayList<>()); 
+    updateNodeTree(organizationId, caseMRootNodeId, null, nodes, new ArrayList<>()); 
     
     logger.fine(String.format("Done updating CaseM nodes for organization %s", organizationId));
   }
@@ -160,16 +152,21 @@ public class CaseMCacheUpdater {
     logger.fine(String.format("Done updating CaseM meeting list for organization %s", organizationId));
   }
   
-  public void updateMeeting(Long orderIndex, CaseMMeetingData meetingData) {
+  public void updateMeeting(CaseMMeetingData meetingData) {
     logger.fine(String.format("Updating CaseM meeting %s with %d items", meetingData.getMeetingPageId().toString(), meetingData.getMeetingItemContents().size()));
     
     OrganizationId organizationId = meetingData.getOrganizationId();
-    PageId meetingPageId = translatePageId(orderIndex, meetingData.getMeetingPageId(), true);
     Content meetingContent = meetingData.getMeetingContent();
     List<Content> meetingItemContents = meetingData.getMeetingItemContents();
     
     Locale locale = new Locale(CaseMConsts.DEFAULT_LANGUAGE);
     String downloadUrl = getCaseMDownloadUrl(organizationId);
+
+    PageId meetingPageId = idController.translatePageId(meetingData.getMeetingPageId(), KuntaApiConsts.IDENTIFIER_NAME);
+    if (meetingPageId == null) {
+      logger.severe(String.format("Meeting with id %s could not be found", meetingData.getMeetingPageId()));
+      return;
+    }
     
     Page meetingPage = caseMCache.findPage(meetingPageId);
     if (meetingPage == null) {
@@ -191,20 +188,29 @@ public class CaseMCacheUpdater {
     List<MeetingItemLink> itemLinks = new ArrayList<>(meetingItemContents.size());
     for (int i = 0; i < meetingItemContents.size(); i++) {
       Content meetingItemContent = meetingItemContents.get(i);
-      Long orderNumber = (long) i;
+      Long orderIndex = (long) i;
       List<ExtendedProperty> itemExtendedProperties = listExtendedProperties(organizationId, meetingItemContent);
       MeetingItemLink itemLink = createMeetingItemLink(itemExtendedProperties);
-      Page meetingItemPage = translateContent(orderNumber, organizationId, meetingPage, meetingItemContent, itemLink.getText(), itemLink.getSlug());
-      PageId meetingItemPageId = new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, meetingItemPage.getId());
+      PageId casemItemPageId = toContentId(organizationId, meetingItemContent.getContentId());
+      
+      Identifier identifier = identifierController.findIdentifierById(casemItemPageId);
+      if (identifier == null) {
+        identifier = identifierController.createIdentifier(meetingPageId, orderIndex, casemItemPageId);
+      } else {
+        identifier = identifierController.updateIdentifier(identifier, meetingPageId, orderIndex);
+      }
+      
+      PageId kuntaApiPageId = new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
+      Page meetingItemPage = translateContent(kuntaApiPageId, meetingPageId, itemLink.getText(), itemLink.getSlug());
       
       String meetingItemPageContents = renderContentMeetingItem(createMeetingItemModel(downloadUrl, meetingTitle, memoApproved, itemExtendedProperties), locale);
       caseMCache.cachePage(organizationId, meetingItemPage, translateLocalized(meetingItemPageContents));
-      indexRequest.fire(new IndexRequest(createIndexablePage(organizationId, meetingItemPageId, locale.getLanguage(), meetingItemPageContents, itemLink.getText())));
+      indexRequest.fire(new IndexRequest(createIndexablePage(organizationId, kuntaApiPageId, locale.getLanguage(), meetingItemPageContents, itemLink.getText())));
 
       itemLinks.add(itemLink);
       
       for (FileId fileId : getAttachmentFileIds(organizationId, itemExtendedProperties)) {
-        fileUpdateRequest.fire(new FileUpdateRequest(meetingItemPageId, fileId));
+        fileUpdateRequest.fire(new FileUpdateRequest(kuntaApiPageId, fileId));
       }
     }
     
@@ -712,7 +718,7 @@ public class CaseMCacheUpdater {
     }
   }
 
-  private void cacheNodeTree(OrganizationId organizationId, Long caseMRootNodeId, Node parentNode, List<Node> nodes, List<Long> caseMParentIds) {
+  private void updateNodeTree(OrganizationId organizationId, Long caseMRootNodeId, Node parentNode, List<Node> nodes, List<Long> caseMParentIds) {
     for (int i = 0; i < nodes.size(); i++) {
       Node node = nodes.get(i);
       Long orderIndex = (long) i;
@@ -723,14 +729,45 @@ public class CaseMCacheUpdater {
       if (node.getType().equals(0l)) {
         // Type 0 pages are hidden levels that should be flatted out
       } else {
-        Page page = translateNode(orderIndex, organizationId, caseMRootNodeId, parentNode, node);
+        PageId casemPageId = getNodePageId(organizationId, node);
+        PageId kuntaApiParentPageId = idController.translatePageId(getNodePageId(organizationId, parentNode), KuntaApiConsts.IDENTIFIER_NAME);
+        
+        Identifier identifier = identifierController.findIdentifierById(casemPageId);
+        if (identifier == null) {
+          identifier = identifierController.createIdentifier(kuntaApiParentPageId, orderIndex, casemPageId);
+        } else {
+          identifier = identifierController.updateIdentifier(identifier, kuntaApiParentPageId, orderIndex);
+        }
+        
+        PageId kuntaApiPageId = new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
+        
+        Page page = translateNode(kuntaApiPageId, kuntaApiParentPageId, node);
         caseMCache.cachePage(organizationId, page, null);
       }
       
-      cacheNodeTree(organizationId, caseMRootNodeId, node, getChildNodes(organizationId, caseMRootNodeId, childCaseMParentIds), childCaseMParentIds);
+      updateNodeTree(organizationId, caseMRootNodeId, node, getChildNodes(organizationId, caseMRootNodeId, childCaseMParentIds), childCaseMParentIds);
     }
   }
   
+  private PageId getNodePageId(OrganizationId organizationId, Node node) {
+    Long caseMRootNodeId = getCaseMRootNodeId(organizationId);
+    PageId pageId = null;
+    
+    if (node != null && !node.getNodeId().equals(caseMRootNodeId)) {
+      if (node.getType().equals(0l)) {
+        pageId = node.getParentId() != null ? toNodeId(organizationId, node.getParentId()) : null;
+      } else {
+        pageId = toNodeId(organizationId, node.getNodeId());
+      }
+    }
+    
+    if (pageId == null) {
+      pageId = resolveRootFolderId(organizationId);
+    }
+    
+    return pageId;
+  }
+
   private Long getCaseMRootNodeId(OrganizationId organizationId) {
     String rootNode = organizationSettingController.getSettingValue(organizationId, CaseMConsts.ORGANIZATION_SETTING_ROOT_NODE);
     if (StringUtils.isNumeric(rootNode)) {
@@ -806,28 +843,13 @@ public class CaseMCacheUpdater {
     return null;
   }
   
-  private Page translateNode(Long orderIndex, OrganizationId organizationId, Long caseMRootNodeId, Node parentNode, Node node) {
+  private Page translateNode(PageId kuntaApiPageId, PageId kuntaApiParentPageId, Node node) {
     Page page = new Page();
-    PageId kuntaApiId = translatePageId(orderIndex, toNodeId(organizationId, node.getNodeId()), true);
-    PageId kuntaApiParentId = null;
-    
-    if (parentNode != null && !parentNode.getNodeId().equals(caseMRootNodeId)) {
-      if (parentNode.getType().equals(0l)) {
-        kuntaApiParentId = parentNode.getParentId() != null ? translatePageId(toNodeId(organizationId, parentNode.getParentId())) : null;
-      } else {
-        kuntaApiParentId = translatePageId(toNodeId(organizationId, parentNode.getNodeId()));
-      }
-    }
-    
-    if (kuntaApiParentId == null) {
-      kuntaApiParentId = resolveRootFolderId(organizationId);
-    }
-    
-    List<LocalizedValue> titles = translateNodeNames(organizationId, node.getNames());
-    page.setId(kuntaApiId.getId());
-    page.setParentId(kuntaApiParentId != null ? kuntaApiParentId.getId() : null);
+    List<LocalizedValue> titles = translateNodeNames(kuntaApiPageId.getOrganizationId(), node.getNames());
+    page.setId(kuntaApiPageId.getId());
+    page.setParentId(kuntaApiParentPageId != null ? kuntaApiParentPageId.getId() : null);
     page.setTitles(titles);
-    page.setSlug(slugify(titles.isEmpty() ? kuntaApiId.getId() : titles.get(0).getValue()));
+    page.setSlug(slugify(titles.isEmpty() ? kuntaApiPageId.getId() : titles.get(0).getValue()));
     
     return page;
   }
@@ -844,41 +866,19 @@ public class CaseMCacheUpdater {
     return null;
   }
 
-  private Page translateContent(Long orderIndex, OrganizationId organizationId, Page parentPage, Content content, String title, String slug) {
+  private Page translateContent(PageId kuntaApiPageId, PageId kuntaApiParentPageId, String title, String slug) {
     Page page = new Page();
-    
-    page.setId(translatePageId(orderIndex, toContentId(organizationId, content.getContentId()), true).getId());
-    page.setParentId(parentPage.getId());
+    page.setId(kuntaApiPageId.getId());
     page.setTitles(toTitles(title));
     page.setSlug(slug);
-
+    
+    if (kuntaApiParentPageId != null) {
+      page.setParentId(kuntaApiParentPageId.getId());
+    }
+      
     return page;
   }
 
-  private PageId translatePageId(PageId pageId) {
-    return translatePageId(null, pageId, false);
-  }
-  
-  private PageId translatePageId(Long orderIndex, PageId pageId, boolean createMissing) {
-    PageId result = discoveredPageIds.get(pageId);
-    if (result != null) {
-      return result;
-    }
-    
-    result = idController.translatePageId(pageId, KuntaApiConsts.IDENTIFIER_NAME);
-    if (result != null) {
-      return result;
-    }
-    
-    if (createMissing) {
-      Identifier identifier = identifierController.createIdentifier(orderIndex, pageId);
-      result = new PageId(pageId.getOrganizationId(), KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
-      discoveredPageIds.put(pageId, result);
-    }
-    
-    return result;
-  }
-  
   private PageId toNodeId(OrganizationId organizationId, Long nodeId) {
     return new PageId(organizationId, CaseMConsts.IDENTIFIER_NAME, String.format("NODE|%d", nodeId));
   }
@@ -943,7 +943,7 @@ public class CaseMCacheUpdater {
       return null;
     }
     
-    PageId kuntaApiPageId = translatePageId(pageId);
+    PageId kuntaApiPageId = idController.translatePageId(pageId, KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiPageId == null) {
       logger.severe(String.format("Failed to translate pageId %s into KuntaAPI id", pageId.toString()));
       return null;

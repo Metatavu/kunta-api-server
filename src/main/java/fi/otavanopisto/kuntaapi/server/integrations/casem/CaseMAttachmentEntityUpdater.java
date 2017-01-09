@@ -133,9 +133,9 @@ public class CaseMAttachmentEntityUpdater extends EntityUpdater {
     
     Identifier identifier = identifierController.findIdentifierById(caseMFileId);
     if (identifier == null) {
-      identifier = identifierController.createIdentifier(orderIndex, caseMFileId);
+      identifier = identifierController.createIdentifier(kuntaApiPageId, orderIndex, caseMFileId);
     } else {
-      identifierController.updateIdentifierOrderIndex(identifier, orderIndex);
+      identifier = identifierController.updateIdentifier(identifier, kuntaApiPageId, orderIndex);
     }
     
     FileId kuntaApiFileId = new FileId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
