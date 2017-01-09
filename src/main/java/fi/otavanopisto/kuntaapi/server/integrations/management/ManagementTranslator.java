@@ -126,6 +126,7 @@ public class ManagementTranslator {
     result.setId(kuntaApiAnnouncementId.getId());
     result.setPublished(toOffsetDateTime(managementAnnouncement.getDate()));
     result.setTitle(managementAnnouncement.getTitle().getRendered());
+    result.setSlug(managementAnnouncement.getSlug());
     
     return result;
   }

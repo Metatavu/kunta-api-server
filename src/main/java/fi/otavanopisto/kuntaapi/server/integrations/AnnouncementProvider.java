@@ -26,9 +26,10 @@ public interface AnnouncementProvider {
    * Lists announcements in an organization
    * 
    * @param organizationId organization id
+   * @param slug filter by slug
    * @return organization announcements
    */
-  public List<Announcement> listOrganizationAnnouncements(OrganizationId organizationId);
+  public List<Announcement> listOrganizationAnnouncements(OrganizationId organizationId, String slug);
 
   /**
    * Announcement order direction

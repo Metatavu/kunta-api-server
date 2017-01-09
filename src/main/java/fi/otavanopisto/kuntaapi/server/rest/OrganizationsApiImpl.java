@@ -1130,9 +1130,9 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     
     return createNotFound(NOT_FOUND);
   }
-
+  
   @Override
-  public Response listOrganizationAnnouncements(String organizationIdParam, Integer firstResult, Integer maxResults, String sortBy, String sortDir, @Context Request request) {
+  public Response listOrganizationAnnouncements(String organizationIdParam, String slug, Integer firstResult, Integer maxResults, String sortBy, String sortDir, @Context Request request) {
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
@@ -1155,7 +1155,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       }
     }
     
-    return listOrganizationAnnouncements(request, organizationId, order, orderDirection, firstResult, maxResults);
+    return listOrganizationAnnouncements(request, organizationId, slug, order, orderDirection, firstResult, maxResults);
   }
   
   /* Contacts */
@@ -1215,8 +1215,8 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     return httpCacheController.sendModified(result, ids);
   }
 
-  private Response listOrganizationAnnouncements(Request request, OrganizationId organizationId, AnnouncementOrder order, AnnouncementOrderDirection orderDirection, Integer firstResult, Integer maxResults) {
-    List<Announcement> result = announcementController.listAnnouncements(organizationId, order, orderDirection, firstResult, maxResults);
+  private Response listOrganizationAnnouncements(Request request, OrganizationId organizationId, String slug, AnnouncementOrder order, AnnouncementOrderDirection orderDirection, Integer firstResult, Integer maxResults) {
+    List<Announcement> result = announcementController.listAnnouncements(organizationId, slug, order, orderDirection, firstResult, maxResults);
     
     List<String> ids = httpCacheController.getEntityIds(result);
     Response notModified = httpCacheController.getNotModified(request, ids);

@@ -6,6 +6,8 @@ import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
+import org.apache.commons.lang3.StringUtils;
+
 import fi.otavanopisto.kuntaapi.server.cache.AnnouncementCache;
 import fi.otavanopisto.kuntaapi.server.id.AnnouncementId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
@@ -25,13 +27,13 @@ public class ManagementAnnouncementProvider extends AbstractManagementProvider i
   private AnnouncementCache announcementCache;
   
   @Override
-  public List<Announcement> listOrganizationAnnouncements(OrganizationId organizationId) {
+  public List<Announcement> listOrganizationAnnouncements(OrganizationId organizationId, String slug) {
     List<AnnouncementId> announcementIds = announcementCache.getOragnizationIds(organizationId);
     List<Announcement> announcements = new ArrayList<>(announcementIds.size());
     
     for (AnnouncementId announcementId : announcementIds) {
       Announcement announcement = announcementCache.get(announcementId);
-      if (announcement != null) {
+      if (announcement != null && isAcceptable(announcement, slug)) {
         announcements.add(announcement);
       }
     }
@@ -44,4 +46,12 @@ public class ManagementAnnouncementProvider extends AbstractManagementProvider i
     return announcementCache.get(announcementId);
   }
 
+  private boolean isAcceptable(Announcement announcement, String slug) {
+    if (slug == null) {
+      return true;
+    }
+    
+    return StringUtils.equals(slug, announcement.getSlug());
+  }
+  
 }

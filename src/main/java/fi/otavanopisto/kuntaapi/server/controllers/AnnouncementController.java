@@ -26,11 +26,11 @@ public class AnnouncementController {
   @Inject
   private Instance<AnnouncementProvider> announcementProviders;
   
-  public List<Announcement> listAnnouncements(OrganizationId organizationId, AnnouncementOrder order, AnnouncementOrderDirection orderDirection, Integer firstResult, Integer maxResults) {
+  public List<Announcement> listAnnouncements(OrganizationId organizationId, String slug, AnnouncementOrder order, AnnouncementOrderDirection orderDirection, Integer firstResult, Integer maxResults) {
     List<Announcement> result = new ArrayList<>();
    
     for (AnnouncementProvider announcementProvider : getAnnouncementProviders()) {
-      result.addAll(announcementProvider.listOrganizationAnnouncements(organizationId));
+      result.addAll(announcementProvider.listOrganizationAnnouncements(organizationId, slug));
     }
     
     int resultCount = result.size();
