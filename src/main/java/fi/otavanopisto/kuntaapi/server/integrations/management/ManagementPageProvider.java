@@ -12,6 +12,7 @@ import fi.metatavu.kuntaapi.server.rest.model.Attachment;
 import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
 import fi.metatavu.kuntaapi.server.rest.model.Page;
 import fi.metatavu.management.client.model.Attachment.MediaTypeEnum;
+import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.IdPair;
@@ -35,6 +36,9 @@ public class ManagementPageProvider extends AbstractManagementProvider implement
 
   @Inject
   private Logger logger;
+  
+  @Inject
+  private IdentifierController identifierController;
   
   @Inject
   private ManagementPageCache pageCache;
@@ -117,8 +121,6 @@ public class ManagementPageProvider extends AbstractManagementProvider implement
   }
 
   private List<Page> listPages(OrganizationId organizationId, PageId parentId, boolean onlyRootPages) {
-    List<PageId> pageIds = pageCache.getOragnizationIds(organizationId);
-    List<Page> result = new ArrayList<>(pageIds.size());
     PageId kuntaApiParentId = null;
     if (parentId != null) {
       kuntaApiParentId = idController.translatePageId(parentId, KuntaApiConsts.IDENTIFIER_NAME);
@@ -128,27 +130,25 @@ public class ManagementPageProvider extends AbstractManagementProvider implement
       }
     }
     
+    List<PageId> pageIds;
+    
+    if (onlyRootPages) {
+      pageIds = identifierController.listPageIdsParentId(organizationId);
+    } else if (kuntaApiParentId != null) {
+      pageIds = identifierController.listPageIdsParentId(kuntaApiParentId);
+    } else {
+      pageIds = pageCache.getOragnizationIds(organizationId);
+    }
+    
+    List<Page> result = new ArrayList<>(pageIds.size());
     for (PageId pageId : pageIds) {
       Page page = pageCache.get(pageId);
-      if ((page != null) && isAcceptablePage(organizationId, page, onlyRootPages, kuntaApiParentId)) {
+      if (page != null) {
         result.add(page);
       }
     }
-      
-    return result;
-  }
-  
-  private boolean isAcceptablePage(OrganizationId organizationId, Page page, boolean onlyRootPages, PageId kuntaApiParentId) {
-    PageId pageParentId = page.getParentId() != null ? new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, page.getParentId()) : null;
-    if (onlyRootPages) {
-      return pageParentId == null;
-    } else {
-      if (kuntaApiParentId != null) {
-        return idController.idsEqual(kuntaApiParentId, pageParentId);
-      }      
-    }
     
-    return true;
+    return result;
   }
 
 }
