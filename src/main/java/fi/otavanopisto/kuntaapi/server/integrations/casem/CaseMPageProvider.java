@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
+import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
@@ -38,14 +39,15 @@ public class CaseMPageProvider implements PageProvider {
   @Inject
   private IdController idController;
   
+  @Inject
+  private IdentifierController identifierController;
+  
   @Override
   public List<Page> listOrganizationPages(OrganizationId organizationId, PageId parentId, boolean onlyRootPages) {
     return listPages(organizationId, parentId, onlyRootPages);
   }
   
   private List<Page> listPages(OrganizationId organizationId, PageId parentId, boolean onlyRootPages) {
-    List<PageId> pageIds = caseMCache.listOrganizationPageIds(organizationId);
-    List<Page> result = new ArrayList<>(pageIds.size());
     PageId kuntaApiParentId = null;
     if (parentId != null) {
       kuntaApiParentId = idController.translatePageId(parentId, KuntaApiConsts.IDENTIFIER_NAME);
@@ -55,27 +57,25 @@ public class CaseMPageProvider implements PageProvider {
       }
     }
     
+    List<PageId> pageIds;
+    
+    if (onlyRootPages) {
+      pageIds = identifierController.listPageIdsParentId(organizationId);
+    } else if (kuntaApiParentId != null) {
+      pageIds = identifierController.listPageIdsParentId(kuntaApiParentId);
+    } else {
+      pageIds = caseMCache.listOrganizationPageIds(organizationId);
+    }
+    
+    List<Page> result = new ArrayList<>(pageIds.size());
     for (PageId pageId : pageIds) {
       Page page = caseMCache.findPage(pageId);
-      if ((page != null) && isAcceptablePage(organizationId, page, onlyRootPages, kuntaApiParentId)) {
+      if (page != null) {
         result.add(page);
       }
     }
       
     return result;
-  }
-  
-  private boolean isAcceptablePage(OrganizationId organizationId, Page page, boolean onlyRootPages, PageId kuntaApiParentId) {
-    PageId pageParentId = page.getParentId() != null ? new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, page.getParentId()) : null;
-    if (onlyRootPages) {
-      return pageParentId == null;
-    } else {
-      if (kuntaApiParentId != null) {
-        return idController.idsEqual(kuntaApiParentId, pageParentId);
-      }      
-    }
-    
-    return true;
   }
   
   @Override
