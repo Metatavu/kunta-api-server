@@ -120,9 +120,9 @@ public class PtvServiceElectronicChannelIdUpdater extends EntityUpdater {
         ElectronicServiceChannelId channelId = new ElectronicServiceChannelId(PtvConsts.IDENTIFIFER_NAME, electronicChannel.getId());
         Identifier identifier = identifierController.findIdentifierById(channelId);
         if (identifier == null) {
-          identifier = identifierController.createIdentifier(orderIndex, channelId);
+          identifier = identifierController.createIdentifier(serviceId, orderIndex, channelId);
         } else {
-          identifierController.updateIdentifierOrderIndex(identifier, orderIndex);
+          identifier = identifierController.updateIdentifier(identifier, serviceId, orderIndex);
         }
         
         modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(electronicChannel));

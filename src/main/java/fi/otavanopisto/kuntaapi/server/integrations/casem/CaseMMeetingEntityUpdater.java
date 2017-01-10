@@ -78,7 +78,7 @@ public class CaseMMeetingEntityUpdater extends EntityUpdater {
     if (!stopped) {
       if (!queue.isEmpty()) {
         CaseMMeetingDataUpdateRequest updateRequest = queue.remove(0);
-        updater.updateMeeting(updateRequest.getOrderIndex(), updateRequest.getMeetingData());
+        updater.updateMeeting(updateRequest.getMeetingData());
       }
 
       startTimer(SystemUtils.inTestMode() ? 1000 : TIMER_INTERVAL);

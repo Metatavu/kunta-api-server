@@ -202,9 +202,9 @@ public class ManagementMenuEntityUpdater extends EntityUpdater {
 
     Identifier identifier = identifierController.findIdentifierById(managementMenuId);
     if (identifier == null) {
-      identifier = identifierController.createIdentifier(orderIndex, managementMenuId);
+      identifier = identifierController.createIdentifier(organizationId, orderIndex, managementMenuId);
     } else {
-      identifierController.updateIdentifierOrderIndex(identifier, orderIndex);
+      identifier = identifierController.updateIdentifier(identifier, organizationId, orderIndex);
     }
     
     MenuId kuntaApiMenuId = new MenuId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
@@ -220,9 +220,9 @@ public class ManagementMenuEntityUpdater extends EntityUpdater {
 
     Identifier identifier = identifierController.findIdentifierById(managementMenuItemId);
     if (identifier == null) {
-      identifier = identifierController.createIdentifier(orderIndex, managementMenuItemId);
+      identifier = identifierController.createIdentifier(menuId, orderIndex, managementMenuItemId);
     } else {
-      identifierController.updateIdentifierOrderIndex(identifier, orderIndex);
+      identifier = identifierController.updateIdentifier(identifier, menuId, orderIndex);
     }
     
     MenuItem menuItem = translateMenuItem(organizationId, managementMenuItem);

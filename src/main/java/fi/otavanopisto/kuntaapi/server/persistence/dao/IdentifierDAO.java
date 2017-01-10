@@ -1,8 +1,9 @@
 package fi.otavanopisto.kuntaapi.server.persistence.dao;
 
+import java.time.OffsetDateTime;
 import java.util.List;
 
-import javax.enterprise.context.Dependent;
+import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -16,7 +17,7 @@ import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier_;
  * 
  * @author Otavan Opisto
  */
-@Dependent
+@ApplicationScoped
 public class IdentifierDAO extends AbstractDAO<Identifier> {
   
   /**
@@ -29,9 +30,10 @@ public class IdentifierDAO extends AbstractDAO<Identifier> {
    * @param organizationKuntaApiId 
    * @return created identifier
    */
-  public Identifier create(Long orderIndex, String type, String kuntaApiId, String source, String sourceId, String organizationKuntaApiId) {
+  public Identifier create(Identifier parent, Long orderIndex, String type, String kuntaApiId, String source, String sourceId, String organizationKuntaApiId) {
     Identifier identifier = new Identifier();
     
+    identifier.setParent(parent);
     identifier.setOrderIndex(orderIndex);
     identifier.setType(type);
     identifier.setKuntaApiId(kuntaApiId);
@@ -164,6 +166,16 @@ public class IdentifierDAO extends AbstractDAO<Identifier> {
 
   public Identifier updateOrderIndex(Identifier identifier, Long orderIndex) {
     identifier.setOrderIndex(orderIndex);
+    return persist(identifier);
+  }
+  
+  public Identifier updateParent(Identifier identifier, Identifier parent) {
+    identifier.setParent(parent);
+    return persist(identifier);
+  }
+  
+  public Identifier updateModified(Identifier identifier, OffsetDateTime modified) {
+    identifier.setModified(modified);
     return persist(identifier);
   }
 

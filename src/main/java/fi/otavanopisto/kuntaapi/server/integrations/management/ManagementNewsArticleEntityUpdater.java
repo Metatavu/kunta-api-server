@@ -164,9 +164,9 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
 
     Identifier identifier = identifierController.findIdentifierById(newsArticleId);
     if (identifier == null) {
-      identifier = identifierController.createIdentifier(orderIndex, newsArticleId);
+      identifier = identifierController.createIdentifier(organizationId, orderIndex, newsArticleId);
     } else {
-      identifierController.updateIdentifierOrderIndex(identifier, orderIndex);
+      identifier = identifierController.updateIdentifier(identifier, organizationId, orderIndex);
     }
     
     NewsArticleId kuntaApiNewsArticleId = new NewsArticleId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
@@ -191,10 +191,13 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
     } else {
       Attachment managementAttachment = response.getResponse();
       AttachmentId managementAttachmentId = new AttachmentId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementAttachment.getId()));
+      Long orderIndex = 0l;
       
       Identifier identifier = identifierController.findIdentifierById(managementAttachmentId);
       if (identifier == null) {
-        identifier = identifierController.createIdentifier(0l, managementAttachmentId);
+        identifier = identifierController.createIdentifier(newsArticleId, orderIndex, managementAttachmentId);
+      } else {
+        identifier = identifierController.updateIdentifier(identifier, newsArticleId, orderIndex);
       }
       
       AttachmentId kuntaApiAttachmentId = new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());

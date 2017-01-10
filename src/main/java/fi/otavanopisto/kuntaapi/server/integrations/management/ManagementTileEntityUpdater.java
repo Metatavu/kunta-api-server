@@ -167,9 +167,9 @@ public class ManagementTileEntityUpdater extends EntityUpdater {
 
     Identifier identifier = identifierController.findIdentifierById(tileId);
     if (identifier == null) {
-      identifier = identifierController.createIdentifier(orderIndex, tileId);
+      identifier = identifierController.createIdentifier(organizationId, orderIndex, tileId);
     } else {
-      identifierController.updateIdentifierOrderIndex(identifier, orderIndex);
+      identifier = identifierController.updateIdentifier(identifier, organizationId, orderIndex);
     }
     
     TileId kuntaApiTileId = new TileId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
@@ -187,17 +187,20 @@ public class ManagementTileEntityUpdater extends EntityUpdater {
     }
   }
   
-  private void updateFeaturedMedia(OrganizationId organizationId, TileId kuntaApiId, DefaultApi api, Integer featuredMedia) {
+  private void updateFeaturedMedia(OrganizationId organizationId, TileId kuntaApiTileId, DefaultApi api, Integer featuredMedia) {
     ApiResponse<Attachment> response = api.wpV2MediaIdGet(String.valueOf(featuredMedia), null, null);
     if (!response.isOk()) {
       logger.severe(String.format("Finding media failed on [%d] %s", response.getStatus(), response.getMessage()));
     } else {
       Attachment managementAttachment = response.getResponse();
       AttachmentId managementAttachmentId = new AttachmentId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementAttachment.getId()));
+      Long orderIndex = 0l;
       
       Identifier identifier = identifierController.findIdentifierById(managementAttachmentId);
       if (identifier == null) {
-        identifier = identifierController.createIdentifier(0l, managementAttachmentId);
+        identifier = identifierController.createIdentifier(kuntaApiTileId, orderIndex, managementAttachmentId);
+      } else {
+        identifier = identifierController.updateIdentifier(identifier, kuntaApiTileId, orderIndex);
       }
       
       AttachmentId kuntaApiAttachmentId = new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
@@ -207,7 +210,7 @@ public class ManagementTileEntityUpdater extends EntityUpdater {
         return;
       }
       
-      tileImageCache.put(new IdPair<>(kuntaApiId, kuntaApiAttachmentId), attachment);
+      tileImageCache.put(new IdPair<>(kuntaApiTileId, kuntaApiAttachmentId), attachment);
       
       AttachmentData imageData = managementImageLoader.getImageData(managementAttachment.getSourceUrl());
       if (imageData != null) {
