@@ -218,6 +218,22 @@ public class IdentifierController {
     
     return result;
   }
+  
+  public List<PageId> listPageIdsParentId(BaseId parentId) {
+    Identifier parentIdentifier = findIdentifierById(parentId);
+    if (parentIdentifier == null) {
+      return Collections.emptyList();
+    }
+    
+    List<Identifier> identifiers = identifierDAO.listByParentAndType(parentIdentifier, IdType.PAGE.name());
+    List<PageId> result = new ArrayList<>(identifiers.size());
+    for (Identifier identifier : identifiers) {
+      OrganizationId organizationId = new OrganizationId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getOrganizationKuntaApiId());
+      result.add(new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId()));
+    }
+    
+    return result;
+  }
 
   public void deleteIdentifier(Identifier identifier) {
     identifierDAO.delete(identifier);
