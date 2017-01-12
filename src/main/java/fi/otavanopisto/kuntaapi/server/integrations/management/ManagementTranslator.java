@@ -14,6 +14,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import fi.metatavu.management.client.model.Announcement;
 import fi.metatavu.management.client.model.Post;
+import fi.metatavu.management.client.model.PostExcerpt;
 import fi.otavanopisto.kuntaapi.server.id.AnnouncementId;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.BannerId;
@@ -109,7 +110,7 @@ public class ManagementTranslator {
   public NewsArticle translateNewsArticle(NewsArticleId kuntaApiNewsArticleId, Post post) {
     NewsArticle newsArticle = new NewsArticle();
     
-    newsArticle.setAbstract(post.getExcerpt().getRendered());
+    newsArticle.setAbstract(cleanExcerpt(post.getExcerpt()));
     newsArticle.setContents(post.getContent().getRendered());
     newsArticle.setId(kuntaApiNewsArticleId.getId());
     newsArticle.setPublished(toOffsetDateTime(post.getDate()));
@@ -118,7 +119,7 @@ public class ManagementTranslator {
     
     return newsArticle;
   }
-
+  
   public fi.metatavu.kuntaapi.server.rest.model.Announcement translateAnnouncement(AnnouncementId kuntaApiAnnouncementId, Announcement managementAnnouncement) {
     fi.metatavu.kuntaapi.server.rest.model.Announcement result = new fi.metatavu.kuntaapi.server.rest.model.Announcement();
       
@@ -160,5 +161,13 @@ public class ManagementTranslator {
     
     return date.atZone(ZoneId.systemDefault()).toOffsetDateTime();
   }
-  
+
+  private String cleanExcerpt(PostExcerpt postExcerpt) {
+    if (postExcerpt != null && StringUtils.isNotBlank(postExcerpt.getRendered())) {
+      return postExcerpt.getRendered().replaceAll("<a.*more-link.*a>", "");
+    }
+    
+    return null;
+  }
+
 }
