@@ -52,7 +52,7 @@ public class ManagementMocker extends AbstractMocker {
   public ManagementMocker mockPages(String... ids) {
     for (String id : ids) {
       Page page = readPageFromJSONFile(String.format("management/pages/%s.json", id));
-      mockGetJSON(String.format(PATH_TEMPLATE, POSTS, id), page, null);
+      mockGetJSON(String.format(PATH_TEMPLATE, PAGES, id), page, null);
       pageList.add(page);
     }     
     
