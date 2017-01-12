@@ -2,6 +2,7 @@ package fi.otavanopisto.kuntaapi.server.integrations.management;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
@@ -120,10 +121,14 @@ public class ManagementPageIdUpdater extends IdUpdater {
   private void updateManagementPages(OrganizationId organizationId) {
     DefaultApi api = managementApi.getApi(organizationId);
     List<Page> managementPages = listManagementPages(api, organizationId);
+    
+    Collections.sort(managementPages, new PageComparator());
+    
     for (int i = 0; i < managementPages.size(); i++) {
       Page managementPage = managementPages.get(i);
+      Long orderIndex = (long) i;
       PageId pageId = new PageId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementPage.getId()));
-      idUpdateRequest.fire(new PageIdUpdateRequest(organizationId, pageId, (long) i, false));
+      idUpdateRequest.fire(new PageIdUpdateRequest(organizationId, pageId, orderIndex, false));
     }
   }
   
@@ -136,6 +141,54 @@ public class ManagementPageIdUpdater extends IdUpdater {
     }
     
     return Collections.emptyList();
+  }
+  
+  private class PageComparator implements Comparator<Page> {
+
+    @Override
+    public int compare(Page page1, Page page2) {
+      Integer order1 = page1.getMenuOrder();
+      Integer order2 = page2.getMenuOrder();
+      
+      if (order1 == null) {
+        order1 = 0;
+      }
+      
+      if (order2 == null) {
+        order2 = 0;
+      }
+      
+      int result = order1.compareTo(order2);
+      if (result == 0) {
+        String title1 = getTitle(page1);
+        String title2 = getTitle(page2);
+        
+        if (title1 == title2) {
+          return 0;
+        }
+        
+        if (title1 == null) {
+          return -1;
+        }
+        
+        if (title2 == null) {
+          return 1;
+        }
+        
+        return title1.compareToIgnoreCase(title2);
+      }
+
+      return result;
+    }
+    
+    private String getTitle(Page page) {
+      if (page.getTitle() == null) {
+        return null;
+      }
+      
+      return page.getTitle().getRendered();
+    }
+
   }
 
 }
