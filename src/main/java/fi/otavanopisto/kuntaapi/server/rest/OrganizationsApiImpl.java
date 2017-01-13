@@ -910,7 +910,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createNotFound(NOT_FOUND);
     }
     
-    List<Menu> result = menuController.listMenus(slug, organizationId);
+    List<Fragment> result = fragmentController.listFragments(organizationId, slug, null, null);
     List<String> ids = httpCacheController.getEntityIds(result);
     Response notModified = httpCacheController.getNotModified(request, ids);
     if (notModified != null) {
