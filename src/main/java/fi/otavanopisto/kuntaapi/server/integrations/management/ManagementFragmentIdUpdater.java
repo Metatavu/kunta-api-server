@@ -39,7 +39,8 @@ public class ManagementFragmentIdUpdater extends IdUpdater {
 
   private static final int WARMUP_TIME = 1000 * 10;
   private static final int TIMER_INTERVAL = 5000;
-  private static final int PER_PAGE = 4;
+  private static final int PER_PAGE = 100;
+  private static final int MAX_PAGES = 10;
   
   @Inject
   private Logger logger;
@@ -130,7 +131,7 @@ public class ManagementFragmentIdUpdater extends IdUpdater {
       } else {
         page++;
       }
-    } while (true);
+    } while (page < MAX_PAGES);
     
     for (int i = 0, l = managementFragments.size(); i < l; i++) {
       Fragment managementFragment = managementFragments.get(i);
