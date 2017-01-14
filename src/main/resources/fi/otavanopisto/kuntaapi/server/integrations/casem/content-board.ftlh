@@ -2,10 +2,12 @@
 
 <#if meetings??>
   <#list meetings>
-    <#items as meeting>
-      <li>
-        <a href="${meeting.slug}">${meeting.title}</a>
-      </li>
-    </#items>
+    <ul class="subpage-list">
+      <#items as meeting>
+        <li class="subpage-list-item">
+          <a href="${meeting.slug}">${meeting.title}</a>
+        </li>
+      </#items>
+    </ul>
   </#list>
 </#if>
