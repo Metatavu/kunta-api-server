@@ -42,20 +42,22 @@ public class CaseMOrganizationContentsEntityUpdater extends EntityUpdater {
   private TimerService timerService;
 
   private boolean stopped;
-  private List<OrganizationId> nodesQueue;
-  private List<OrganizationId> contentsQueue;
+  private List<OrganizationId> nodeQueue;
+  private List<OrganizationId> boardQueue;
+  private List<OrganizationId> meetingQueue;
   private Queue queue;
   
   @PostConstruct
   public void init() {
     queue = Queue.NODES;
-    nodesQueue = new ArrayList<>();
-    contentsQueue = new ArrayList<>();
+    nodeQueue = new ArrayList<>();
+    boardQueue = new ArrayList<>();
+    meetingQueue = new ArrayList<>();
   }
 
   @Override
   public String getName() {
-    return "organization-contents";
+    return "organization-casem";
   }
 
   @Override
@@ -83,11 +85,11 @@ public class CaseMOrganizationContentsEntityUpdater extends EntityUpdater {
       }
       
       if (event.isPriority()) {
-        nodesQueue.remove(event.getId());
-        nodesQueue.add(0, event.getId());
+        nodeQueue.remove(event.getId());
+        nodeQueue.add(0, event.getId());
       } else {
-        if (!nodesQueue.contains(event.getId())) {
-          nodesQueue.add(event.getId());
+        if (!nodeQueue.contains(event.getId())) {
+          nodeQueue.add(event.getId());
         }
       }      
     }
@@ -96,40 +98,57 @@ public class CaseMOrganizationContentsEntityUpdater extends EntityUpdater {
   @Timeout
   public void timeout(Timer timer) {
     if (!stopped) {
-      if (queue == Queue.CONTENTS) {
-        if (!contentsQueue.isEmpty()) {
-          updateOrganizationContents(contentsQueue.remove(0));          
-        }
-        
-        queue = Queue.NODES;
-      } else if (queue == Queue.NODES) {
-        if (!nodesQueue.isEmpty()) {
-          updateOrganizationNodes(nodesQueue.remove(0));          
-        }
-        
-        queue = Queue.CONTENTS;
+      switch (queue) {
+        case NODES:
+          if (!nodeQueue.isEmpty()) {
+            boardQueue.add(updateOrganizationNodes(nodeQueue.remove(0)));
+            queue = queue.next();
+          }
+        break;
+        case BOARDS:
+          if (!boardQueue.isEmpty()) {
+            meetingQueue.add(updateOrganizationBoards(boardQueue.remove(0)));
+            queue = queue.next();
+          }
+        break;
+        case MEETINGS:
+          if (!meetingQueue.isEmpty()) {
+            updateOrganizationMeetings(meetingQueue.remove(0));          
+            queue = queue.next();
+          }
+        break;
       }
       
       startTimer(SystemUtils.inTestMode() ? 1000 : TIMER_INTERVAL);
     }
   }
 
-  private void updateOrganizationNodes(OrganizationId organizationId) {
+  private OrganizationId updateOrganizationNodes(OrganizationId organizationId) {
     cacheUpdater.updateNodes(organizationId);
-    if (!contentsQueue.contains(organizationId)) {
-      contentsQueue.add(organizationId);
-    }
+    return organizationId;
   }
   
-  private void updateOrganizationContents(OrganizationId organizationId) {
-    cacheUpdater.updateContents(organizationId);
+  private OrganizationId updateOrganizationBoards(OrganizationId organizationId) {
+    cacheUpdater.updateBoards(organizationId);
+    return organizationId;
+  }
+  
+  private OrganizationId updateOrganizationMeetings(OrganizationId organizationId) {
+    cacheUpdater.updateMeetings(organizationId);
+    return organizationId;
   }
 
   private enum Queue {
     
     NODES,
     
-    CONTENTS
+    BOARDS,
+    
+    MEETINGS;
+    
+    public Queue next() {
+      return values()[(ordinal() + 1) % values().length];
+    }
     
   }
 }

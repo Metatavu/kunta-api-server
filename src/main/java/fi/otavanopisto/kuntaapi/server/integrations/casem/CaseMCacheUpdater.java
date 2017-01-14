@@ -53,6 +53,8 @@ import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.index.IndexRequest;
 import fi.otavanopisto.kuntaapi.server.index.IndexablePage;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
+import fi.otavanopisto.kuntaapi.server.integrations.casem.model.Board;
+import fi.otavanopisto.kuntaapi.server.integrations.casem.model.BoardMeeting;
 import fi.otavanopisto.kuntaapi.server.integrations.casem.model.Councilmen;
 import fi.otavanopisto.kuntaapi.server.integrations.casem.model.HistoryTopic;
 import fi.otavanopisto.kuntaapi.server.integrations.casem.model.Meeting;
@@ -145,11 +147,38 @@ public class CaseMCacheUpdater {
     logger.fine(String.format("Done updating CaseM nodes for organization %s", organizationId));
   }
   
-  public void updateContents(OrganizationId organizationId) {
+  public void updateBoards(OrganizationId organizationId) {
+    logger.fine(String.format("Updating casem boards for organization %s", organizationId));
+    
+    PageId rootFolderId = resolveRootFolderId(organizationId);
+    List<PageId> kuntaApiBoardPageIds = identifierController.listPageIdsParentId(CaseMConsts.IDENTIFIER_NAME, rootFolderId);
+    for (PageId kuntaApiBoardPageId : kuntaApiBoardPageIds) {
+      updateBoardPage(kuntaApiBoardPageId);
+    }
+    
+    logger.fine(String.format("Updated casem boards for organization %s", organizationId));
+  }
+
+  public void updateMeetings(OrganizationId organizationId) {
     logger.fine(String.format("Updating CaseM contents list for organization %s", organizationId));
     
-    cacheContents(organizationId);
+    Map<Long, Content> meetingMap = new HashMap<>();
+    Map<Long, List<Content>> meetingItemMap = new HashMap<>();
+    Map<Long, Long> meetingOrderMap = new HashMap<>();
+
+    mapContents(organizationId, meetingMap, meetingItemMap, meetingOrderMap);
+    Set<Entry<Long, List<Content>>> meetingEntries = meetingItemMap.entrySet();
     
+    for (Entry<Long,List<Content>> meetingEntry : meetingEntries) {
+      Long meetingId = meetingEntry.getKey();
+      Long orderIndex = meetingOrderMap.get(meetingId);
+      PageId meetingPageId = toNodeId(organizationId, meetingId);
+      List<Content> meetingItemContents = meetingEntry.getValue();
+      Content meetingContent = meetingMap.get(meetingId);
+      CaseMMeetingData meetingData = new CaseMMeetingData(organizationId, meetingPageId, meetingItemContents, meetingContent);
+      meetingDataUpdateRequest.fire(new CaseMMeetingDataUpdateRequest(orderIndex, meetingData));
+    }
+
     logger.fine(String.format("Done updating CaseM meeting list for organization %s", organizationId));
   }
   
@@ -229,24 +258,44 @@ public class CaseMCacheUpdater {
     logger.fine(String.format("Done updating CaseM meeting %s", meetingPageId.toString()));
   }
   
-  private void cacheContents(OrganizationId organizationId) {
+  private void updateBoardPage(PageId kuntaApiBoardPageId) {
+    Locale locale = new Locale(CaseMConsts.DEFAULT_LANGUAGE);
     
-    Map<Long, Content> meetingMap = new HashMap<>();
-    Map<Long, List<Content>> meetingItemMap = new HashMap<>();
-    Map<Long, Long> meetingOrderMap = new HashMap<>();
-
-    mapContents(organizationId, meetingMap, meetingItemMap, meetingOrderMap);
-    Set<Entry<Long, List<Content>>> meetingEntries = meetingItemMap.entrySet();
-    
-    for (Entry<Long,List<Content>> meetingEntry : meetingEntries) {
-      Long meetingId = meetingEntry.getKey();
-      Long orderIndex = meetingOrderMap.get(meetingId);
-      PageId meetingPageId = toNodeId(organizationId, meetingId);
-      List<Content> meetingItemContents = meetingEntry.getValue();
-      Content meetingContent = meetingMap.get(meetingId);
-      CaseMMeetingData meetingData = new CaseMMeetingData(organizationId, meetingPageId, meetingItemContents, meetingContent);
-      meetingDataUpdateRequest.fire(new CaseMMeetingDataUpdateRequest(orderIndex, meetingData));
+    Page boardPage = caseMCache.findPage(kuntaApiBoardPageId);
+    if (boardPage == null) {
+      logger.warning(String.format("Could not find board page %s", kuntaApiBoardPageId));
+      return;
     }
+    
+    OrganizationId organizationId = kuntaApiBoardPageId.getOrganizationId();
+    String boardTitle = getFirstTitle(boardPage.getTitles());
+    Board board = createBoardModel(kuntaApiBoardPageId, boardTitle);
+    String boardContent = renderContentBoard(board, locale);
+
+    caseMCache.cachePage(organizationId, boardPage, translateLocalized(boardContent));
+    indexRequest.fire(new IndexRequest(createIndexablePage(organizationId, kuntaApiBoardPageId, locale.getLanguage(), boardContent, boardTitle)));
+  }
+
+  private Board createBoardModel(PageId boardPageKuntaApiId, String boardTitle) {
+    Board board = new Board();
+    List<BoardMeeting> meetings = new ArrayList<>();
+    
+    List<PageId> meetingPageKuntaApiIds = identifierController.listPageIdsParentId(boardPageKuntaApiId);
+    for (PageId meetingPageKuntaApiId : meetingPageKuntaApiIds) {
+      Page meetingPage = caseMCache.findPage(meetingPageKuntaApiId);
+      if (meetingPage != null) {
+        BoardMeeting meeting = new BoardMeeting();
+        String title = getFirstTitle(meetingPage.getTitles());
+        meeting.setSlug(meetingPage.getSlug());
+        meeting.setTitle(title);
+        meetings.add(meeting);
+      }
+    }
+    
+    board.setBoardTitle(boardTitle);
+    board.setMeetings(meetings);
+    
+    return board;
   }
 
   private void mapContents(OrganizationId organizationId, Map<Long, Content> meetingMap, Map<Long, List<Content>> meetingItemMap, Map<Long, Long> meetingOrderMap) {
@@ -352,6 +401,10 @@ public class CaseMCacheUpdater {
     }
     
     return result;
+  }
+  
+  private String renderContentBoard(Board board, Locale locale) {
+    return freemarkerRenderer.render("integrations/casem/content-board.ftlh", board, locale);
   }
   
   private String renderContentMeeting(Meeting meeting, Locale locale) {
