@@ -12,6 +12,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
 import fi.metatavu.kuntaapi.server.rest.model.Page;
+import fi.metatavu.kuntaapi.server.rest.model.PageMeta;
 import fi.otavanopisto.casem.client.model.Node;
 import fi.otavanopisto.casem.client.model.NodeName;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
@@ -27,23 +28,26 @@ public class CaseMTranslator {
   @Inject
   private OrganizationSettingController organizationSettingController;
   
-  public Page translateNode(PageId kuntaApiPageId, PageId kuntaApiParentPageId, Node node) {
-    Page page = new Page();
+  public Page translatePage(PageId kuntaApiPageId, PageId kuntaApiParentPageId, Node node, boolean hideMenuChildren) {
     List<LocalizedValue> titles = translateNodeNames(kuntaApiPageId.getOrganizationId(), node.getNames());
-    page.setId(kuntaApiPageId.getId());
-    page.setParentId(kuntaApiParentPageId != null ? kuntaApiParentPageId.getId() : null);
-    page.setTitles(titles);
-    page.setSlug(slugify(titles.isEmpty() ? kuntaApiPageId.getId() : titles.get(0).getValue()));
-    
-    return page;
+    String slug = slugify(titles.isEmpty() ? kuntaApiPageId.getId() : titles.get(0).getValue());
+    return translatePage(kuntaApiPageId, kuntaApiParentPageId, slug, titles, hideMenuChildren);
   }
 
-  public Page translateContent(PageId kuntaApiPageId, PageId kuntaApiParentPageId, String title, String slug) {
+  public Page translatePage(PageId kuntaApiPageId, PageId kuntaApiParentPageId, String title, String slug, boolean hideMenuChildren) {
+    return translatePage(kuntaApiPageId, kuntaApiParentPageId, slug, toTitles(title), hideMenuChildren);
+  }
+  
+  private Page translatePage(PageId kuntaApiPageId, PageId kuntaApiParentPageId, String slug, List<LocalizedValue> titles, boolean hideMenuChildren) {
+    PageMeta meta = new PageMeta();
+    meta.setHideMenuChildren(hideMenuChildren);
+    
     Page page = new Page();
     page.setId(kuntaApiPageId.getId());
-    page.setTitles(toTitles(title));
+    page.setTitles(titles);
     page.setSlug(slug);
     page.setParentId(kuntaApiParentPageId != null ? kuntaApiParentPageId.getId() : null);
+    page.setMeta(meta);
       
     return page;
   }

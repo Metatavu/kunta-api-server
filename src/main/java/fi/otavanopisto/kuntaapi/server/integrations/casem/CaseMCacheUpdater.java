@@ -202,7 +202,7 @@ public class CaseMCacheUpdater {
       }
       
       PageId kuntaApiPageId = new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
-      Page meetingItemPage = casemTranslator.translateContent(kuntaApiPageId, meetingPageId, itemLink.getText(), itemLink.getSlug());
+      Page meetingItemPage = casemTranslator.translatePage(kuntaApiPageId, meetingPageId, itemLink.getText(), itemLink.getSlug(), true);
       
       String meetingItemPageContents = renderContentMeetingItem(createMeetingItemModel(downloadUrl, meetingTitle, memoApproved, itemExtendedProperties), locale);
       caseMCache.cachePage(organizationId, meetingItemPage, translateLocalized(meetingItemPageContents));
@@ -723,6 +723,7 @@ public class CaseMCacheUpdater {
     for (int i = 0; i < nodes.size(); i++) {
       Node node = nodes.get(i);
       Long orderIndex = (long) i;
+      boolean boardNode = caseMRootNodeId != null && caseMRootNodeId.equals(node.getParentId()) || caseMRootNodeId == node.getParentId();
       
       List<Long> childCaseMParentIds = new ArrayList<>(caseMParentIds);
       childCaseMParentIds.add(node.getNodeId());
@@ -742,8 +743,7 @@ public class CaseMCacheUpdater {
         }
         
         PageId kuntaApiPageId = new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
-        
-        Page page = casemTranslator.translateNode(kuntaApiPageId, kuntaApiParentPageId, node);
+        Page page = casemTranslator.translatePage(kuntaApiPageId, kuntaApiParentPageId, node, !boardNode);
         caseMCache.cachePage(organizationId, page, null);
       }
       
