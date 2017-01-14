@@ -30,6 +30,7 @@ import fi.metatavu.kuntaapi.server.rest.model.Banner;
 import fi.metatavu.kuntaapi.server.rest.model.Fragment;
 import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
 import fi.metatavu.kuntaapi.server.rest.model.NewsArticle;
+import fi.metatavu.kuntaapi.server.rest.model.PageMeta;
 import fi.metatavu.kuntaapi.server.rest.model.Tile;
 
 @ApplicationScoped
@@ -85,9 +86,13 @@ public class ManagementTranslator {
   }
   
   public fi.metatavu.kuntaapi.server.rest.model.Page translatePage(PageId kuntaApiPageId, PageId kuntaApiParentPageId, fi.metatavu.management.client.model.Page managementPage) {
+    PageMeta meta = new PageMeta();
+    meta.setHideMenuChildren(false);
+    
     fi.metatavu.kuntaapi.server.rest.model.Page page = new fi.metatavu.kuntaapi.server.rest.model.Page();
     page.setTitles(translateLocalized(managementPage.getTitle().getRendered()));
     page.setId(kuntaApiPageId.getId());
+    page.setMeta(meta);
     
     if (kuntaApiParentPageId != null) {
       page.setParentId(kuntaApiParentPageId.getId());
