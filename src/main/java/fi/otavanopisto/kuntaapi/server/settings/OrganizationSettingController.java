@@ -4,7 +4,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.logging.Logger;
 
-import javax.enterprise.context.Dependent;
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 import fi.otavanopisto.kuntaapi.server.id.IdController;
@@ -19,7 +19,7 @@ import fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting;
  * @author Antti Leppä
  * @author Heikki Kurhinen
  */
-@Dependent
+@ApplicationScoped
 public class OrganizationSettingController {
 
   private static final String FAILED_TO_TRANSLATE = "Failed to translate %s into KuntaApiId id";
