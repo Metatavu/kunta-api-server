@@ -28,19 +28,19 @@ public class CaseMTranslator {
   @Inject
   private OrganizationSettingController organizationSettingController;
   
-  public Page translatePage(PageId kuntaApiPageId, PageId kuntaApiParentPageId, Node node, boolean hideMenuChildren) {
+  public Page translatePage(PageId kuntaApiPageId, PageId kuntaApiParentPageId, Node node) {
     List<LocalizedValue> titles = translateNodeNames(kuntaApiPageId.getOrganizationId(), node.getNames());
     String slug = slugify(titles.isEmpty() ? kuntaApiPageId.getId() : titles.get(0).getValue());
-    return translatePage(kuntaApiPageId, kuntaApiParentPageId, slug, titles, hideMenuChildren);
+    return translatePage(kuntaApiPageId, kuntaApiParentPageId, slug, titles);
   }
 
-  public Page translatePage(PageId kuntaApiPageId, PageId kuntaApiParentPageId, String title, String slug, boolean hideMenuChildren) {
-    return translatePage(kuntaApiPageId, kuntaApiParentPageId, slug, toTitles(title), hideMenuChildren);
+  public Page translatePage(PageId kuntaApiPageId, PageId kuntaApiParentPageId, String title, String slug) {
+    return translatePage(kuntaApiPageId, kuntaApiParentPageId, slug, toTitles(title));
   }
   
-  private Page translatePage(PageId kuntaApiPageId, PageId kuntaApiParentPageId, String slug, List<LocalizedValue> titles, boolean hideMenuChildren) {
+  private Page translatePage(PageId kuntaApiPageId, PageId kuntaApiParentPageId, String slug, List<LocalizedValue> titles) {
     PageMeta meta = new PageMeta();
-    meta.setHideMenuChildren(hideMenuChildren);
+    meta.setHideMenuChildren(true);
     
     Page page = new Page();
     page.setId(kuntaApiPageId.getId());
