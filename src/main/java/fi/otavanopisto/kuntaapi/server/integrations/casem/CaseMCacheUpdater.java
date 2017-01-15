@@ -6,7 +6,6 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -904,7 +903,7 @@ public class CaseMCacheUpdater {
       skipToken = getSkipToken(nodeList.getOdataNextLink());
     } while (skipToken != null);
     
-    Collections.sort(result, new NodeComparator());
+    Collections.sort(result, new CasemNodeComparator());
     
     return result;
   }
@@ -1002,23 +1001,6 @@ public class CaseMCacheUpdater {
     localizedValue.setValue(content);
     
     return Collections.singletonList(localizedValue);
-  }
-  
-  private class NodeComparator implements Comparator<Node> {
-    @Override
-    public int compare(Node node1, Node node2) {
-      Integer sortOrder1 = node1.getSortOrder();
-      if (sortOrder1 == null) {
-        sortOrder1 = 0;
-      }
-      
-      Integer sortOrder2 = node2.getSortOrder();
-      if (sortOrder2 == null) {
-        sortOrder2 = 0;
-      }
-
-      return sortOrder1.compareTo(sortOrder2);
-    }
   }
   
 }
