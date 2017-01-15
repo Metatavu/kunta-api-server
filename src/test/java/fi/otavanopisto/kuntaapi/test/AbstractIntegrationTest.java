@@ -4,6 +4,8 @@ import static com.jayway.restassured.RestAssured.given;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.fail;
 
+import java.util.logging.Logger;
+
 import com.jayway.restassured.http.ContentType;
 import com.jayway.restassured.path.json.exception.JsonPathException;
 
@@ -16,6 +18,8 @@ import com.jayway.restassured.path.json.exception.JsonPathException;
 @SuppressWarnings ("squid:S1192")
 public abstract class AbstractIntegrationTest extends AbstractTest {
 
+  private static Logger logger = Logger.getLogger(AbstractIntegrationTest.class.getName());
+  
   public static final String BASE_URL = "/v1";
   
   private RestFulPtvMocker ptvMocker = new RestFulPtvMocker();
@@ -64,9 +68,8 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
           fail(String.format("Timeout waiting for %s to have count %d", path, count));
         }
         
-        if ((counter % 5) == 0) {
-          System.out.println(String.format("... still waiting %d items, current count %d", count, listCount));
-          // logger.info(String.format("... still waiting %d items, current count %d", count, listCount));
+        if ((counter % 10) == 0) {
+          logger.info(String.format("... still waiting %d items, current count %d", count, listCount));
         }
       } catch (JsonPathException e) {
         
