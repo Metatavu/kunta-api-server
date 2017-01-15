@@ -18,12 +18,14 @@ import com.jayway.restassured.path.json.exception.JsonPathException;
 @SuppressWarnings ("squid:S1192")
 public abstract class AbstractIntegrationTest extends AbstractTest {
 
+  private static Logger logger = Logger.getLogger(AbstractIntegrationTest.class.getName());
+  
   public static final String BASE_URL = "/v1";
   
-  private static Logger logger = Logger.getLogger(AbstractTest.class.getName());
   private RestFulPtvMocker ptvMocker = new RestFulPtvMocker();
   private KuntarekryMocker kuntarekryMocker = new KuntarekryMocker();
   private ManagementMocker managementMocker = new ManagementMocker();
+  private CasemMocker casemMocker = new CasemMocker();
   
   public RestFulPtvMocker getPtvMocker() {
     return ptvMocker;
@@ -35,6 +37,10 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   
   public ManagementMocker getManagementMocker() {
     return managementMocker;
+  }
+  
+  public CasemMocker getCasemMocker() {
+    return casemMocker;
   }
   
   protected void flushCache() {
@@ -62,7 +68,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
           fail(String.format("Timeout waiting for %s to have count %d", path, count));
         }
         
-        if ((counter % 30) == 0) {
+        if ((counter % 10) == 0) {
           logger.info(String.format("... still waiting %d items, current count %d", count, listCount));
         }
       } catch (JsonPathException e) {

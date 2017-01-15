@@ -1,0 +1,61 @@
+{
+   "odata.metadata":"http://mikkeli.cloudnc.fi/api/opennc/v1/$metadata#ExtendedProperties",
+   "value":[
+      {
+         "Id":1234,
+         "Name":"Name",
+         "Text":"Test 1",
+         "Number":null,
+         "Date":null
+      },
+      {
+         "Id":1235,
+         "Name":"Article",
+         "Text":"1",
+         "Number":null,
+         "Date":null
+      },
+      {
+         "Id":1236,
+         "Name":"CaseNativeId",
+         "Text":"1234",
+         "Number":null,
+         "Date":null
+      },
+      {
+         "Id":1237,
+         "Name":"IsAdditionalTopic",
+         "Text":"False",
+         "Number":null,
+         "Date":null
+      },
+      {
+         "Id":1238,
+         "Name":"Description",
+         "Text":"<p>Test description</p>\n",
+         "Number":null,
+         "Date":null
+      },
+      {
+         "Id":1239,
+         "Name":"Decisionproposal",
+         "Text":"<p>Test proposal</p>\n",
+         "Number":null,
+         "Date":null
+      },
+      {
+         "Id":1240,
+         "Name":"Decision",
+         "Text":"<p>Passed</p>\n",
+         "Number":null,
+         "Date":null
+      },
+      {
+         "Id":1241,
+         "Name":"Presenters",
+         "Text":"Test Presenter;#Tester;#;#;#",
+         "Number":null,
+         "Date":null
+      }
+   ]
+}

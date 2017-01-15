@@ -164,7 +164,7 @@ public class IdentifierDAO extends AbstractDAO<Identifier> {
     return entityManager.createQuery(criteria).getResultList();
   }
 
-  public List<Identifier> listByParentAndType(Identifier parent, String type) {
+  public List<Identifier> listByParentAndTypeOrderByOrderIndex(Identifier parent, String type) {
     EntityManager entityManager = getEntityManager();
 
     CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
@@ -177,6 +177,28 @@ public class IdentifierDAO extends AbstractDAO<Identifier> {
         criteriaBuilder.equal(root.get(Identifier_.type), type)
       )
     );
+    
+    criteria.orderBy(criteriaBuilder.desc(root.get(Identifier_.orderIndex)));
+    
+    return entityManager.createQuery(criteria).getResultList();
+  }
+
+  public List<Identifier> listBySourceParentAndTypeOrderByOrderIndex(String source, Identifier parent, String type) {
+    EntityManager entityManager = getEntityManager();
+
+    CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+    CriteriaQuery<Identifier> criteria = criteriaBuilder.createQuery(Identifier.class);
+    Root<Identifier> root = criteria.from(Identifier.class);
+    criteria.select(root);
+    criteria.where(
+      criteriaBuilder.and(
+        criteriaBuilder.equal(root.get(Identifier_.source), source),
+        criteriaBuilder.equal(root.get(Identifier_.parent), parent),
+        criteriaBuilder.equal(root.get(Identifier_.type), type)
+      )
+    );
+    
+    criteria.orderBy(criteriaBuilder.desc(root.get(Identifier_.orderIndex)));
     
     return entityManager.createQuery(criteria).getResultList();
   }

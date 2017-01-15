@@ -177,9 +177,9 @@ public class ManagementMocker extends AbstractMocker {
   public void startMock() {
     Map<String, String> pageQuery100 = new HashMap<>();
     pageQuery100.put("per_page", "100");
-    Map<String, String> pageQuery100_1 = new HashMap<>();
-    pageQuery100_1.put("per_page", "100");
-    pageQuery100_1.put("page", "1");
+    Map<String, String> pageQuery1001 = new HashMap<>();
+    pageQuery1001.put("per_page", "100");
+    pageQuery1001.put("page", "1");
     
     mockGetJSON(BANNERS, bannerList, pageQuery100);
     mockGetJSON(MENUS, menuList, pageQuery100);
@@ -187,7 +187,7 @@ public class ManagementMocker extends AbstractMocker {
     mockGetJSON(POSTS, postList, pageQuery100);
     mockGetJSON(TILES, tileList, pageQuery100);
     mockGetJSON(ANNOUNCEMENTS, announcementList, pageQuery100);
-    mockGetJSON(FRAGMENTS, fragmentList, pageQuery100_1);
+    mockGetJSON(FRAGMENTS, fragmentList, pageQuery1001);
 
     mockGetJSON(BANNERS, bannerList, null);
     mockGetJSON(MENUS, menuList, null);

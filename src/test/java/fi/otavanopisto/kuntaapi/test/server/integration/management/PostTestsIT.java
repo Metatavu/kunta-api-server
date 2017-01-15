@@ -54,12 +54,13 @@ public class PostTestsIT extends AbstractIntegrationTest {
   @After
   public void afterClass() {
     String organizationId = getOrganizationId(0);
-    getPtvMocker().endMock();
-    getManagementMocker().endMock();
     deletePtvSettings();
     deleteManagementSettings(organizationId);
+    getPtvMocker().endMock();
+    getManagementMocker().endMock();
+    deleteAllPages();
   }
-  
+
   @Test
   public void testFindPosts() {
     String organizationId = getOrganizationId(0);

@@ -66,7 +66,7 @@
     
     <!-- Integrations -->
     
-    <kunta-api-spec.version>0.1.23</kunta-api-spec.version>
+    <kunta-api-spec.version>0.1.24</kunta-api-spec.version>
     <restful-ptv-rest-client.version>1.2.7</restful-ptv-rest-client.version>
     <management-rest-client.version>0.0.25</management-rest-client.version>
     <casem-rest-client.version>0.0.9</casem-rest-client.version>
@@ -613,6 +613,7 @@
             <version>2.19.1</version>
             <configuration>
               <failIfNoTests>true</failIfNoTests>
+              <argLine>-Xms1024m -Xmx2048m</argLine>
               <includes>
                 <include>**/*IT.java</include>
               </includes>
@@ -756,6 +757,7 @@
                       <command>/subsystem=infinispan/cache-container=kunta-api:add()</command>
                       <command>/subsystem=undertow/server=default-server/host=kunta-api:add(alias=["${it.host}"])</command>
                       <command>/system-property=it-test:add(value="true")</command>
+                      <command>/subsystem=logging/logger=fi.otavanopisto.kuntaapi.server.index.AbstractIndexHander:add(level=FATAL)</command>
                     </commands>
                   </before-deployment>
                   <filename>${project.build.finalName}.${project.packaging}</filename>

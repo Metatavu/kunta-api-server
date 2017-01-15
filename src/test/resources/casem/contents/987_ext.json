@@ -1,0 +1,14 @@
+{
+   "odata.metadata":"http://casem-example.com/v1/$metadata#ExtendedProperties",
+   "odata.nextLink":null,
+   "value":[
+      {
+         "odata.metadata":null,
+         "Id":1001,
+         "Name":"Participant_councilman",
+         "Text":"John Doe;#puheenjohtaja;#2017-10-09 08:00:00;#2017-10-09 10:00:00;#member;#!#",
+         "Number":null,
+         "Date":null
+      }
+   ]
+}
