@@ -78,6 +78,11 @@ public class IdentifierController {
   }
   
   public Identifier findIdentifierById(BaseId id) {
+    if (id == null) {
+      logger.severe("Passed null id to findIdentifierById method");
+      return null;
+    }
+    
     String organizationKuntaApiId = null;
     if (id instanceof OrganizationBaseId) {
       organizationKuntaApiId = getOrganizationBaseIdOrganizationKuntaApiId((OrganizationBaseId) id);
