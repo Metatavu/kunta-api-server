@@ -613,6 +613,7 @@
             <version>2.19.1</version>
             <configuration>
               <failIfNoTests>true</failIfNoTests>
+              <argLine>-Xmx2g</argLine>
               <includes>
                 <include>**/*IT.java</include>
               </includes>
