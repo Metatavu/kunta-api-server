@@ -4,8 +4,6 @@ import static com.jayway.restassured.RestAssured.given;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.fail;
 
-import java.util.logging.Logger;
-
 import com.jayway.restassured.http.ContentType;
 import com.jayway.restassured.path.json.exception.JsonPathException;
 
@@ -20,10 +18,10 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
 
   public static final String BASE_URL = "/v1";
   
-  private static Logger logger = Logger.getLogger(AbstractTest.class.getName());
   private RestFulPtvMocker ptvMocker = new RestFulPtvMocker();
   private KuntarekryMocker kuntarekryMocker = new KuntarekryMocker();
   private ManagementMocker managementMocker = new ManagementMocker();
+  private CasemMocker casemMocker = new CasemMocker();
   
   public RestFulPtvMocker getPtvMocker() {
     return ptvMocker;
@@ -35,6 +33,10 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   
   public ManagementMocker getManagementMocker() {
     return managementMocker;
+  }
+  
+  public CasemMocker getCasemMocker() {
+    return casemMocker;
   }
   
   protected void flushCache() {
@@ -62,8 +64,9 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
           fail(String.format("Timeout waiting for %s to have count %d", path, count));
         }
         
-        if ((counter % 30) == 0) {
-          logger.info(String.format("... still waiting %d items, current count %d", count, listCount));
+        if ((counter % 5) == 0) {
+          System.out.println(String.format("... still waiting %d items, current count %d", count, listCount));
+          // logger.info(String.format("... still waiting %d items, current count %d", count, listCount));
         }
       } catch (JsonPathException e) {
         
