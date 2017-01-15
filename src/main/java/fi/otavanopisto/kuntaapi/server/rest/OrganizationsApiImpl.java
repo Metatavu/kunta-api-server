@@ -23,6 +23,7 @@ import fi.otavanopisto.kuntaapi.server.controllers.BannerController;
 import fi.otavanopisto.kuntaapi.server.controllers.ContactController;
 import fi.otavanopisto.kuntaapi.server.controllers.EventController;
 import fi.otavanopisto.kuntaapi.server.controllers.FileController;
+import fi.otavanopisto.kuntaapi.server.controllers.FragmentController;
 import fi.otavanopisto.kuntaapi.server.controllers.HttpCacheController;
 import fi.otavanopisto.kuntaapi.server.controllers.JobController;
 import fi.otavanopisto.kuntaapi.server.controllers.MenuController;
@@ -36,6 +37,7 @@ import fi.otavanopisto.kuntaapi.server.id.BannerId;
 import fi.otavanopisto.kuntaapi.server.id.ContactId;
 import fi.otavanopisto.kuntaapi.server.id.EventId;
 import fi.otavanopisto.kuntaapi.server.id.FileId;
+import fi.otavanopisto.kuntaapi.server.id.FragmentId;
 import fi.otavanopisto.kuntaapi.server.id.JobId;
 import fi.otavanopisto.kuntaapi.server.id.MenuId;
 import fi.otavanopisto.kuntaapi.server.id.MenuItemId;
@@ -61,6 +63,7 @@ import fi.metatavu.kuntaapi.server.rest.model.Banner;
 import fi.metatavu.kuntaapi.server.rest.model.Contact;
 import fi.metatavu.kuntaapi.server.rest.model.Event;
 import fi.metatavu.kuntaapi.server.rest.model.FileDef;
+import fi.metatavu.kuntaapi.server.rest.model.Fragment;
 import fi.metatavu.kuntaapi.server.rest.model.Job;
 import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
 import fi.metatavu.kuntaapi.server.rest.model.Menu;
@@ -102,6 +105,9 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   @Inject
   private FileController fileController;
+
+  @Inject
+  private FragmentController fragmentController;
 
   @Inject
   private MenuController menuController;
@@ -869,6 +875,50 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     
     return createNotFound(NOT_FOUND);
   }
+    
+  /* Fragments */
+  
+  @Override
+  public Response findOrganizationFragment(String organizationIdParam, String fragmentIdParam, Request request) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    FragmentId fragmentId = toFragmentId(organizationId, fragmentIdParam);
+    if (fragmentId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+
+    Response notModified = httpCacheController.getNotModified(request, fragmentId);
+    if (notModified != null) {
+      return notModified;
+    }
+    
+    Fragment fragment = fragmentController.findFragment(organizationId, fragmentId);
+    if (fragment != null) {
+      return httpCacheController.sendModified(fragment, fragment.getId());
+    }
+    
+    return createNotFound(NOT_FOUND);
+  }
+  
+  @Override
+  public Response listOrganizationFragments(String organizationIdParam, String slug, Request request) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    List<Fragment> result = fragmentController.listFragments(organizationId, slug, null, null);
+    List<String> ids = httpCacheController.getEntityIds(result);
+    Response notModified = httpCacheController.getNotModified(request, ids);
+    if (notModified != null) {
+      return notModified;
+    }
+
+    return httpCacheController.sendModified(result, ids);
+  }
   
   /* Menus */
 
@@ -1318,6 +1368,14 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   private PageId toPageId(OrganizationId organizationId, String id) {
     if (StringUtils.isNotBlank(id)) {
       return new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, id);
+    }
+    
+    return null;
+  }
+
+  private FragmentId toFragmentId(OrganizationId organizationId, String id) {
+    if (StringUtils.isNotBlank(id)) {
+      return new FragmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, id);
     }
     
     return null;

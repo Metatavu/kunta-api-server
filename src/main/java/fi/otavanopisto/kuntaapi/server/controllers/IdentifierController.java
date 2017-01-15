@@ -16,6 +16,7 @@ import org.apache.commons.codec.binary.StringUtils;
 import fi.otavanopisto.kuntaapi.server.id.BannerId;
 import fi.otavanopisto.kuntaapi.server.id.BaseId;
 import fi.otavanopisto.kuntaapi.server.id.ContactId;
+import fi.otavanopisto.kuntaapi.server.id.FragmentId;
 import fi.otavanopisto.kuntaapi.server.id.IdType;
 import fi.otavanopisto.kuntaapi.server.id.MenuId;
 import fi.otavanopisto.kuntaapi.server.id.MenuItemId;
@@ -218,7 +219,13 @@ public class IdentifierController {
     
     return result;
   }
-  
+
+  /**
+   * Lists page ids by parent id
+   * 
+   * @param parentId parent id
+   * @return page ids by parent id
+   */
   public List<PageId> listPageIdsParentId(BaseId parentId) {
     Identifier parentIdentifier = findIdentifierById(parentId);
     if (parentIdentifier == null) {
@@ -230,6 +237,28 @@ public class IdentifierController {
     for (Identifier identifier : identifiers) {
       OrganizationId organizationId = new OrganizationId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getOrganizationKuntaApiId());
       result.add(new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId()));
+    }
+    
+    return result;
+  }
+  
+  /**
+   * Lists fragment ids by parent id
+   * 
+   * @param parentId parent id
+   * @return fragment ids by parent id
+   */
+  public List<FragmentId> listFragmentIdsParentId(BaseId parentId) {
+    Identifier parentIdentifier = findIdentifierById(parentId);
+    if (parentIdentifier == null) {
+      return Collections.emptyList();
+    }
+    
+    List<Identifier> identifiers = identifierDAO.listByParentAndType(parentIdentifier, IdType.FRAGMENT.name());
+    List<FragmentId> result = new ArrayList<>(identifiers.size());
+    for (Identifier identifier : identifiers) {
+      OrganizationId organizationId = new OrganizationId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getOrganizationKuntaApiId());
+      result.add(new FragmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId()));
     }
     
     return result;

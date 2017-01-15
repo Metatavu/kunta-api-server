@@ -18,6 +18,7 @@ import fi.metatavu.management.client.model.PostExcerpt;
 import fi.otavanopisto.kuntaapi.server.id.AnnouncementId;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.BannerId;
+import fi.otavanopisto.kuntaapi.server.id.FragmentId;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
@@ -26,6 +27,7 @@ import fi.otavanopisto.kuntaapi.server.id.TileId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.metatavu.kuntaapi.server.rest.model.Attachment;
 import fi.metatavu.kuntaapi.server.rest.model.Banner;
+import fi.metatavu.kuntaapi.server.rest.model.Fragment;
 import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
 import fi.metatavu.kuntaapi.server.rest.model.NewsArticle;
 import fi.metatavu.kuntaapi.server.rest.model.Tile;
@@ -140,6 +142,14 @@ public class ManagementTranslator {
     tile.setTitle(managementTile.getTitle().getRendered());
     
     return tile;
+  }
+  
+  public Fragment translateFragment(FragmentId kuntaApiFragmentId, fi.metatavu.management.client.model.Fragment managementFragment) {
+    Fragment fragment = new Fragment();
+    fragment.setContents(managementFragment.getContent().getRendered());
+    fragment.setId(kuntaApiFragmentId.getId());
+    fragment.setSlug(managementFragment.getSlug());
+    return fragment;
   }
   
   private AttachmentId getImageAttachmentId(OrganizationId organizationId, Integer id) {

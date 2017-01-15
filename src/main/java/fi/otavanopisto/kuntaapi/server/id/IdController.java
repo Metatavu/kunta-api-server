@@ -75,6 +75,8 @@ public class IdController {
         return translateAnnouncementId((AnnouncementId) id, target);
       case CONTACT:
         return translateContactId((ContactId) id, target);
+      case FRAGMENT:
+        return translateFragmentId((FragmentId) id, target);
        default:
         return null;
     }
@@ -542,6 +544,30 @@ public class IdController {
     IdProvider idProvider = getIdProvider(contactId.getSource(), target);
     if (idProvider != null) {
       return idProvider.translate(contactId, target);
+    }
+    
+    return null;
+  }
+
+  /**
+   * Translates fragment id into into target id
+   * 
+   * @param fragmentId id to be translated
+   * @param target target
+   * @return translated id or null if translation has failed
+   */
+  public FragmentId translateFragmentId(FragmentId fragmentId, String target) {
+    if (fragmentId == null) {
+      return null;
+    }
+
+    if (StringUtils.equals(fragmentId.getSource(), target)) {
+      return fragmentId;
+    }
+    
+    IdProvider idProvider = getIdProvider(fragmentId.getSource(), target);
+    if (idProvider != null) {
+      return idProvider.translate(fragmentId, target);
     }
     
     return null;

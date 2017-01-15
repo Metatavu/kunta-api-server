@@ -36,6 +36,8 @@ public enum IdType {
   PAGE,
 
   FILE,
+  
+  FRAGMENT,
 
   MENU,
 
