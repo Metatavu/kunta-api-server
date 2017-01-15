@@ -56,6 +56,14 @@ public class CaseMTranslator {
     return slugify(title, MAX_SLUG_LENGTH );
   }
   
+  public List<LocalizedValue> translateLocalized(String content) {
+    LocalizedValue localizedValue = new LocalizedValue();
+    localizedValue.setLanguage(CaseMConsts.DEFAULT_LANGUAGE);
+    localizedValue.setValue(content);
+    
+    return Collections.singletonList(localizedValue);
+  }
+  
   private List<LocalizedValue> toTitles(String title) {
     LocalizedValue localizedValue = new LocalizedValue();
     localizedValue.setLanguage(CaseMConsts.DEFAULT_LANGUAGE);

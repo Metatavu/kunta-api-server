@@ -263,7 +263,7 @@ public class CaseMCacheUpdater {
     
     Meeting meeting = createMeetingModel(downloadUrl, meetingTitle, memoApproved, itemLinks, meetingExtendedProperties);
     String meetingPageContents = renderContentMeeting(meeting, locale);
-    caseMCache.cachePage(organizationId, meetingPage, translateLocalized(meetingPageContents));
+    caseMCache.cachePage(organizationId, meetingPage, casemTranslator.translateLocalized(meetingPageContents));
     indexRequest.fire(new IndexRequest(createIndexablePage(organizationId, meetingPageId, locale.getLanguage(), meetingPageContents, meetingTitle)));
 
     for (FileId fileId : getAttachmentFileIds(organizationId, meetingExtendedProperties)) {
@@ -296,7 +296,7 @@ public class CaseMCacheUpdater {
     Page meetingItemPage = casemTranslator.translatePage(kuntaApiPageId, meetingPageId, itemLink.getText(), itemLink.getSlug());
     
     String meetingItemPageContents = renderContentMeetingItem(createMeetingItemModel(downloadUrl, meetingTitle, memoApproved, itemExtendedProperties), locale);
-    caseMCache.cachePage(organizationId, meetingItemPage, translateLocalized(meetingItemPageContents));
+    caseMCache.cachePage(organizationId, meetingItemPage, casemTranslator.translateLocalized(meetingItemPageContents));
     indexRequest.fire(new IndexRequest(createIndexablePage(organizationId, kuntaApiPageId, locale.getLanguage(), meetingItemPageContents, itemLink.getText())));
     
     for (FileId fileId : getAttachmentFileIds(organizationId, itemExtendedProperties)) {
@@ -320,7 +320,7 @@ public class CaseMCacheUpdater {
     Board board = createBoardModel(kuntaApiBoardPageId, boardTitle);
     String boardContent = renderContentBoard(board, locale);
 
-    caseMCache.cachePage(organizationId, boardPage, translateLocalized(boardContent));
+    caseMCache.cachePage(organizationId, boardPage, casemTranslator.translateLocalized(boardContent));
     indexRequest.fire(new IndexRequest(createIndexablePage(organizationId, kuntaApiBoardPageId, locale.getLanguage(), boardContent, boardTitle)));
   }
 
@@ -995,15 +995,4 @@ public class CaseMCacheUpdater {
     return organizationSettingController.getSettingValue(organizationId, CaseMConsts.ORGANIZATION_SETTING_BASEURL) != null;
   }
   
-  private List<LocalizedValue> translateLocalized(String content) {
-    LocalizedValue localizedValue = new LocalizedValue();
-    localizedValue.setLanguage(CaseMConsts.DEFAULT_LANGUAGE);
-    localizedValue.setValue(content);
-    
-    return Collections.singletonList(localizedValue);
-  }
-  
 }
-
-  
-  
