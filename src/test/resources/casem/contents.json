@@ -1,0 +1,103 @@
+{
+   "odata.metadata":"http://casem-example.com/v1/$metadata#Contents",
+   "value":[
+      {
+         "ContentId":987,
+         "Subject":"",
+         "LanguageId":1,
+         "PublicDate":"2015-08-14T08:05:56.53",
+         "ExpiryDate":"2025-08-14T08:05:56.53",
+         "CreatedDate":"2015-08-14T08:05:56.53",
+         "EditedDate":"2015-09-07T11:06:50.32",
+         "TemplateId":1,
+         "Version":1,
+         "CreatorId":1234,
+         "Editor":1234,
+         "EventStartDate":null,
+         "EventEndDate":null,
+         "Classifications":[
+            {
+               "NodeId":50,
+               "NodeName":"Internet",
+               "Type":12
+            },
+            {
+               "NodeId":75,
+               "NodeName":"N\u00e4yt\u00e4 tason esittelyn\u00e4",
+               "Type":43
+            },
+            {
+               "NodeId":345,
+               "NodeName":"Meeting 16.1.2017",
+               "Type":7
+            }
+         ],
+         "FileLinks":[
+            {
+               "FileId":1000
+            }
+         ]
+      },
+      {
+         "ContentId":876,
+         "Subject":"List item 1",
+         "LanguageId":1,
+         "PublicDate":"2015-08-14T08:05:56.687",
+         "ExpiryDate":"2025-08-14T08:05:56.687",
+         "CreatedDate":"2015-08-14T08:05:56.687",
+         "EditedDate":"2015-09-07T11:06:55.29",
+         "TemplateId":2,
+         "Version":1,
+         "CreatorId":1234,
+         "Editor":1234,
+         "EventStartDate":null,
+         "EventEndDate":null,
+         "Classifications":[
+            {
+               "NodeId":50,
+               "NodeName":"Internet",
+               "Type":12
+            },
+            {
+               "NodeId":345,
+               "NodeName":"Meeting 16.1.2017",
+               "Type":7
+            }
+         ],
+         "FileLinks":[
+
+         ]
+      },
+      {
+         "ContentId":765,
+         "Subject":"List Item 2",
+         "LanguageId":1,
+         "PublicDate":"2015-08-14T08:05:56.86",
+         "ExpiryDate":"2025-08-14T08:05:56.86",
+         "CreatedDate":"2015-08-14T08:05:56.86",
+         "EditedDate":"2015-09-07T11:06:50.667",
+         "TemplateId":2,
+         "Version":1,
+         "CreatorId":1234,
+         "Editor":1234,
+         "EventStartDate":null,
+         "EventEndDate":null,
+         "Classifications":[
+            {
+               "NodeId":50,
+               "NodeName":"Internet",
+               "Type":12
+            },
+            {
+               "NodeId":345,
+               "NodeName":"Meeting 16.1.2017",
+               "Type":7
+            }
+         ],
+         "FileLinks":[
+
+         ]
+      }
+   ],
+   "odata.nextLink":null
+}
