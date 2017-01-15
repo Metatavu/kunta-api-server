@@ -90,6 +90,9 @@ public class CaseMCacheUpdater {
   private static final String GROUP_VARAJASEN = "varajäsenet";
   private static final String GROUP_MEMBER = "member";
   private static final String GROUP_OTHER = "other";
+  private static final long SORT_LEVEL_GAP = 10000;
+  private static final long MEETING_SORT_LEVEL_BASE = 1 * SORT_LEVEL_GAP;
+  private static final long MEETING_ITEM_SORT_LEVEL_BASE = 2 * SORT_LEVEL_GAP;
   
   private static final DateTimeFormatter CSV_DATE_TIME = new DateTimeFormatterBuilder()
     .parseCaseInsensitive()
@@ -132,26 +135,41 @@ public class CaseMCacheUpdater {
 
   @Inject
   private Event<IndexRequest> indexRequest;
-
+  
   public void updateNodes(OrganizationId organizationId) {
-    logger.fine(String.format("Updating CaseM nodes for organization %s", organizationId));
+    if (!isCasemEnabled(organizationId)) {
+      logger.severe(String.format("Casem disabled for organization %s", organizationId));
+      return;
+    }
     
+    logger.fine(String.format("Updating CaseM nodes for organization %s", organizationId));
     Long caseMRootNodeId = getCaseMRootNodeId(organizationId);
     if (caseMRootNodeId == null) {
       logger.severe(String.format("Organization %s CaseM root node is not defined", organizationId.toString()));
     }
-    
+
     List<Node> nodes = getChildNodes(organizationId, caseMRootNodeId, Collections.emptyList());
-    updateNodeTree(organizationId, caseMRootNodeId, null, nodes, new ArrayList<>()); 
-    
+    if (!nodes.isEmpty()) {
+      updateNodeTree(organizationId, caseMRootNodeId, null, nodes, new ArrayList<>(), 0); 
+    }
+       
     logger.fine(String.format("Done updating CaseM nodes for organization %s", organizationId));
   }
   
   public void updateBoards(OrganizationId organizationId) {
+    if (!isCasemEnabled(organizationId)) {
+      logger.severe(String.format("Casem disabled for organization %s", organizationId));
+      return;
+    }
+    
     logger.fine(String.format("Updating casem boards for organization %s", organizationId));
     
-    PageId rootFolderId = resolveRootFolderId(organizationId);
-    List<PageId> kuntaApiBoardPageIds = identifierController.listPageIdsParentId(CaseMConsts.IDENTIFIER_NAME, rootFolderId);
+    BaseId parentId = resolveRootFolderId(organizationId);
+    if (parentId == null) {
+      parentId = organizationId;
+    }
+    
+    List<PageId> kuntaApiBoardPageIds = identifierController.listPageIdsParentId(CaseMConsts.IDENTIFIER_NAME, parentId);
     for (PageId kuntaApiBoardPageId : kuntaApiBoardPageIds) {
       updateBoardPage(kuntaApiBoardPageId);
     }
@@ -160,6 +178,11 @@ public class CaseMCacheUpdater {
   }
 
   public void updateMeetings(OrganizationId organizationId) {
+    if (!isCasemEnabled(organizationId)) {
+      logger.severe(String.format("Casem disabled for organization %s", organizationId));
+      return;
+    }
+    
     logger.fine(String.format("Updating CaseM contents list for organization %s", organizationId));
     
     Map<Long, Content> meetingMap = new HashMap<>();
@@ -171,7 +194,7 @@ public class CaseMCacheUpdater {
     
     for (Entry<Long,List<Content>> meetingEntry : meetingEntries) {
       Long meetingId = meetingEntry.getKey();
-      Long orderIndex = meetingOrderMap.get(meetingId);
+      Long orderIndex = MEETING_SORT_LEVEL_BASE + meetingOrderMap.get(meetingId);
       PageId meetingPageId = toNodeId(organizationId, meetingId);
       List<Content> meetingItemContents = meetingEntry.getValue();
       Content meetingContent = meetingMap.get(meetingId);
@@ -183,9 +206,15 @@ public class CaseMCacheUpdater {
   }
   
   public void updateMeeting(CaseMMeetingData meetingData) {
+    OrganizationId organizationId = meetingData.getOrganizationId();
+
+    if (!isCasemEnabled(organizationId)) {
+      logger.severe(String.format("Casem disabled for organization %s", organizationId));
+      return;
+    }
+    
     logger.fine(String.format("Updating CaseM meeting %s with %d items", meetingData.getMeetingPageId().toString(), meetingData.getMeetingItemContents().size()));
     
-    OrganizationId organizationId = meetingData.getOrganizationId();
     Content meetingContent = meetingData.getMeetingContent();
     List<Content> meetingItemContents = meetingData.getMeetingItemContents();
     
@@ -213,15 +242,26 @@ public class CaseMCacheUpdater {
     
     String meetingTitle = String.format("%s, %s", getFirstTitle(meetingParentPage.getTitles()), StringUtils.uncapitalize(getFirstTitle(meetingPage.getTitles())));
     List<ExtendedProperty> meetingExtendedProperties = listExtendedProperties(organizationId, meetingContent);
+    if (meetingExtendedProperties.isEmpty()) {
+      logger.severe(String.format("Could not resolve extended properties for %s, skipping update", meetingPageId.toString()));
+      return;
+    }
+    
     boolean memoApproved = isMeetingMemoApproved(meetingExtendedProperties);
     
     List<MeetingItemLink> itemLinks = new ArrayList<>(meetingItemContents.size());
     for (int i = 0; i < meetingItemContents.size(); i++) {
       Content meetingItemContent = meetingItemContents.get(i);
-      Long orderIndex = (long) i;
-      List<ExtendedProperty> itemExtendedProperties = listExtendedProperties(organizationId, meetingItemContent);
-      MeetingItemLink itemLink = createMeetingItemLink(itemExtendedProperties);
+      Long orderIndex = MEETING_ITEM_SORT_LEVEL_BASE + i;
       PageId casemItemPageId = toContentId(organizationId, meetingItemContent.getContentId());
+
+      List<ExtendedProperty> itemExtendedProperties = listExtendedProperties(organizationId, meetingItemContent);
+      if (itemExtendedProperties.isEmpty()) {
+        logger.severe(String.format("Could not resolve extended properties for item %s, skipping update", casemItemPageId.toString()));
+        continue;
+      }
+      
+      MeetingItemLink itemLink = createMeetingItemLink(itemExtendedProperties);
       
       Identifier identifier = identifierController.findIdentifierById(casemItemPageId);
       if (identifier == null) {
@@ -311,7 +351,7 @@ public class CaseMCacheUpdater {
       
       if (isMeetingPage(content)) {
         meetingMap.put(nodeId, content);
-        meetingOrderMap.put(orderIndex, orderIndex);
+        meetingOrderMap.put(nodeId, orderIndex);
       } else {
         List<Content> meetingItems = meetingItemMap.get(nodeId);
         if (meetingItems == null) {
@@ -772,13 +812,14 @@ public class CaseMCacheUpdater {
     }
   }
 
-  private void updateNodeTree(OrganizationId organizationId, Long caseMRootNodeId, Node parentNode, List<Node> nodes, List<Long> caseMParentIds) {
+  private void updateNodeTree(OrganizationId organizationId, Long caseMRootNodeId, Node parentNode, List<Node> nodes, List<Long> caseMParentIds, int level) {
     for (int i = 0; i < nodes.size(); i++) {
       Node node = nodes.get(i);
-      Long orderIndex = (long) i;
       
       List<Long> childCaseMParentIds = new ArrayList<>(caseMParentIds);
       childCaseMParentIds.add(node.getNodeId());
+      Long orderIndex = (SORT_LEVEL_GAP * level) + i;
+      int nextLevel = level;
       
       if (node.getType().equals(0l)) {
         // Type 0 pages are hidden levels that should be flatted out
@@ -786,7 +827,7 @@ public class CaseMCacheUpdater {
         PageId casemPageId = getNodePageId(organizationId, node);
         PageId kuntaApiParentPageId = idController.translatePageId(getNodePageId(organizationId, parentNode), KuntaApiConsts.IDENTIFIER_NAME);
         BaseId identifierParentId = kuntaApiParentPageId == null ? organizationId : kuntaApiParentPageId;
-        
+
         Identifier identifier = identifierController.findIdentifierById(casemPageId);
         if (identifier == null) {
           identifier = identifierController.createIdentifier(identifierParentId, orderIndex, casemPageId);
@@ -797,9 +838,11 @@ public class CaseMCacheUpdater {
         PageId kuntaApiPageId = new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
         Page page = casemTranslator.translatePage(kuntaApiPageId, kuntaApiParentPageId, node);
         caseMCache.cachePage(organizationId, page, null);
+        
+        nextLevel++;
       }
       
-      updateNodeTree(organizationId, caseMRootNodeId, node, getChildNodes(organizationId, caseMRootNodeId, childCaseMParentIds), childCaseMParentIds);
+      updateNodeTree(organizationId, caseMRootNodeId, node, getChildNodes(organizationId, caseMRootNodeId, childCaseMParentIds), childCaseMParentIds, nextLevel);
     }
   }
   
@@ -938,6 +981,10 @@ public class CaseMCacheUpdater {
     indexablePage.setTitle(title);
     
     return indexablePage;
+  }
+
+  private boolean isCasemEnabled(OrganizationId organizationId) {
+    return organizationSettingController.getSettingValue(organizationId, CaseMConsts.ORGANIZATION_SETTING_BASEURL) != null;
   }
   
   private List<LocalizedValue> translateLocalized(String content) {
