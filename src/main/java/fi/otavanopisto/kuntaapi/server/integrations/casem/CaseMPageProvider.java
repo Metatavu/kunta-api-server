@@ -64,7 +64,7 @@ public class CaseMPageProvider implements PageProvider {
     } else if (kuntaApiParentId != null) {
       pageIds = identifierController.listPageIdsParentId(kuntaApiParentId);
     } else {
-      pageIds = caseMCache.listOrganizationPageIds(organizationId);
+      pageIds = identifierController.listOrganizationPageIdsBySource(organizationId, CaseMConsts.IDENTIFIER_NAME);
     }
     
     List<Page> result = new ArrayList<>(pageIds.size());
