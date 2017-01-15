@@ -58,6 +58,7 @@ public class CasemPageTestsIT extends AbstractIntegrationTest {
     deletePtvSettings();
     getPtvMocker().endMock();
     getManagementMocker().endMock();
+    deleteAllPages();
   }
   
   @Test
