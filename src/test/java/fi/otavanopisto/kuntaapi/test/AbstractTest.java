@@ -77,6 +77,10 @@ public abstract class AbstractTest {
     executeDelete("delete from SystemSetting where settingKey = ?", key);
   }
   
+  protected void deleteAllPages() {
+    executeDelete("delete from Identifier where type = 'PAGE'");
+  }
+  
   protected long executeInsert(String sql, Object... params) {
     try (Connection connection = getConnection()) {
       connection.setAutoCommit(true);

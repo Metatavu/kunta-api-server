@@ -196,5 +196,14 @@ public interface IdProvider {
    * @return translated id
    */
   public ContactId translate(ContactId contactId, String target);
+  
+  /**
+   * Translate fragment id
+   * 
+   * @param fragmentId original id
+   * @param target target type
+   * @return translated id
+   */
+  public FragmentId translate(FragmentId fragmentId, String target);
 
 }

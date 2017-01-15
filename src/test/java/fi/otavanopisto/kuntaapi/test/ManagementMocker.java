@@ -7,6 +7,7 @@ import java.util.Map;
 
 import fi.metatavu.management.client.model.Announcement;
 import fi.metatavu.management.client.model.Banner;
+import fi.metatavu.management.client.model.Fragment;
 import fi.metatavu.management.client.model.Menu;
 import fi.metatavu.management.client.model.Page;
 import fi.metatavu.management.client.model.Post;
@@ -19,6 +20,7 @@ public class ManagementMocker extends AbstractMocker {
   private static final String PAGES = "/wp-json/wp/v2/pages";
   private static final String POSTS = "/wp-json/wp/v2/posts";
   private static final String TILES = "/wp-json/wp/v2/tile";
+  private static final String FRAGMENTS = "/wp-json/wp/v2/fragment";
   private static final String ANNOUNCEMENTS = "/wp-json/wp/v2/announcement";
   private static final String PATH_TEMPLATE = "%s/%s";
 
@@ -28,6 +30,7 @@ public class ManagementMocker extends AbstractMocker {
   private List<Post> postList = new ArrayList<>();
   private List<Tile> tileList = new ArrayList<>();
   private List<Announcement> announcementList = new ArrayList<>();
+  private List<Fragment> fragmentList = new ArrayList<>();
   
   public ManagementMocker mockBanners(String... ids) {
     for (String id : ids) {
@@ -52,7 +55,7 @@ public class ManagementMocker extends AbstractMocker {
   public ManagementMocker mockPages(String... ids) {
     for (String id : ids) {
       Page page = readPageFromJSONFile(String.format("management/pages/%s.json", id));
-      mockGetJSON(String.format(PATH_TEMPLATE, POSTS, id), page, null);
+      mockGetJSON(String.format(PATH_TEMPLATE, PAGES, id), page, null);
       pageList.add(page);
     }     
     
@@ -84,6 +87,16 @@ public class ManagementMocker extends AbstractMocker {
       Announcement announcement = readAnnouncementFromJSONFile(String.format("management/announcements/%s.json", id));
       mockGetJSON(String.format(PATH_TEMPLATE, ANNOUNCEMENTS, id), announcement, null);
       announcementList.add(announcement);
+    }     
+    
+    return this;
+  }
+  
+  public ManagementMocker mockFragments(String... ids) {
+    for (String id : ids) {
+      Fragment fragment = readFragmentFromJSONFile(String.format("management/fragments/%s.json", id));
+      mockGetJSON(String.format(PATH_TEMPLATE, FRAGMENTS, id), fragment, null);
+      fragmentList.add(fragment);
     }     
     
     return this;
@@ -150,17 +163,31 @@ public class ManagementMocker extends AbstractMocker {
     return readJSONFile(file, Announcement.class);
   }
   
+  /**
+   * Reads JSON file as fragment object
+   * 
+   * @param file path to JSON file
+   * @return read object
+   */    
+  private Fragment readFragmentFromJSONFile(String file) {
+    return readJSONFile(file, Fragment.class);
+  }
+
   @Override
   public void startMock() {
-    Map<String, String> pageQuery = new HashMap<>();
-    pageQuery.put("per_page", "100");
+    Map<String, String> pageQuery100 = new HashMap<>();
+    pageQuery100.put("per_page", "100");
+    Map<String, String> pageQuery1001 = new HashMap<>();
+    pageQuery1001.put("per_page", "100");
+    pageQuery1001.put("page", "1");
     
-    mockGetJSON(BANNERS, bannerList, pageQuery);
-    mockGetJSON(MENUS, menuList, pageQuery);
-    mockGetJSON(PAGES, pageList, pageQuery);
-    mockGetJSON(POSTS, postList, pageQuery);
-    mockGetJSON(TILES, tileList, pageQuery);
-    mockGetJSON(ANNOUNCEMENTS, announcementList, pageQuery);
+    mockGetJSON(BANNERS, bannerList, pageQuery100);
+    mockGetJSON(MENUS, menuList, pageQuery100);
+    mockGetJSON(PAGES, pageList, pageQuery100);
+    mockGetJSON(POSTS, postList, pageQuery100);
+    mockGetJSON(TILES, tileList, pageQuery100);
+    mockGetJSON(ANNOUNCEMENTS, announcementList, pageQuery100);
+    mockGetJSON(FRAGMENTS, fragmentList, pageQuery1001);
 
     mockGetJSON(BANNERS, bannerList, null);
     mockGetJSON(MENUS, menuList, null);
@@ -168,6 +195,7 @@ public class ManagementMocker extends AbstractMocker {
     mockGetJSON(POSTS, postList, null);
     mockGetJSON(TILES, tileList, null);
     mockGetJSON(ANNOUNCEMENTS, announcementList, null);
+    mockGetJSON(FRAGMENTS, fragmentList, null);
 
     super.startMock();
   }

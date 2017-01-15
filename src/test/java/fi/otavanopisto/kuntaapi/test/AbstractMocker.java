@@ -133,6 +133,17 @@ public class AbstractMocker {
     }
   }
   
+  protected String readFile(String file) {
+    try (InputStream stream = getClass().getClassLoader().getResourceAsStream(file)) {
+      return IOUtils.toString(stream);
+    } catch (IOException e) {
+      logger.log(Level.SEVERE, FAILED_TO_READ_MOCK_FILE, e);
+      fail(e.getMessage());
+    }
+    
+    return null;
+  }
+  
   protected <T> T readXMLFile(String file, Class <T> type){
     XmlMapper xmlMapper = new XmlMapper();
     xmlMapper.registerModule(new JavaTimeModule());
