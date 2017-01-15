@@ -70,6 +70,7 @@ import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 @SuppressWarnings ("squid:S3306")
 public class CaseMCacheUpdater {
 
+  private static final String CASEM_DISABLED_FOR_ORGANIZATION = "Casem disabled for organization %s";
   private static final String EXTENDED_HISTORY_TOPICS = "HistoryTopics";
   private static final String EXTENDED_IS_ADDITIONAL_TOPIC = "IsAdditionalTopic";
   private static final String EXTENDED_CORRECTIONINSTRUCTIONS = "Correctioninstructions";
@@ -138,7 +139,7 @@ public class CaseMCacheUpdater {
   
   public void updateNodes(OrganizationId organizationId) {
     if (!isCasemEnabled(organizationId)) {
-      logger.severe(String.format("Casem disabled for organization %s", organizationId));
+      logger.severe(String.format(CASEM_DISABLED_FOR_ORGANIZATION, organizationId));
       return;
     }
     
@@ -158,7 +159,7 @@ public class CaseMCacheUpdater {
   
   public void updateBoards(OrganizationId organizationId) {
     if (!isCasemEnabled(organizationId)) {
-      logger.severe(String.format("Casem disabled for organization %s", organizationId));
+      logger.severe(String.format(CASEM_DISABLED_FOR_ORGANIZATION, organizationId));
       return;
     }
     
@@ -179,7 +180,7 @@ public class CaseMCacheUpdater {
 
   public void updateMeetings(OrganizationId organizationId) {
     if (!isCasemEnabled(organizationId)) {
-      logger.severe(String.format("Casem disabled for organization %s", organizationId));
+      logger.severe(String.format(CASEM_DISABLED_FOR_ORGANIZATION, organizationId));
       return;
     }
     
@@ -209,7 +210,7 @@ public class CaseMCacheUpdater {
     OrganizationId organizationId = meetingData.getOrganizationId();
 
     if (!isCasemEnabled(organizationId)) {
-      logger.severe(String.format("Casem disabled for organization %s", organizationId));
+      logger.severe(String.format(CASEM_DISABLED_FOR_ORGANIZATION, organizationId));
       return;
     }
     
@@ -253,34 +254,9 @@ public class CaseMCacheUpdater {
     for (int i = 0; i < meetingItemContents.size(); i++) {
       Content meetingItemContent = meetingItemContents.get(i);
       Long orderIndex = MEETING_ITEM_SORT_LEVEL_BASE + i;
-      PageId casemItemPageId = toContentId(organizationId, meetingItemContent.getContentId());
-
-      List<ExtendedProperty> itemExtendedProperties = listExtendedProperties(organizationId, meetingItemContent);
-      if (itemExtendedProperties.isEmpty()) {
-        logger.severe(String.format("Could not resolve extended properties for item %s, skipping update", casemItemPageId.toString()));
-        continue;
-      }
-      
-      MeetingItemLink itemLink = createMeetingItemLink(itemExtendedProperties);
-      
-      Identifier identifier = identifierController.findIdentifierById(casemItemPageId);
-      if (identifier == null) {
-        identifier = identifierController.createIdentifier(meetingPageId, orderIndex, casemItemPageId);
-      } else {
-        identifier = identifierController.updateIdentifier(identifier, meetingPageId, orderIndex);
-      }
-      
-      PageId kuntaApiPageId = new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
-      Page meetingItemPage = casemTranslator.translatePage(kuntaApiPageId, meetingPageId, itemLink.getText(), itemLink.getSlug());
-      
-      String meetingItemPageContents = renderContentMeetingItem(createMeetingItemModel(downloadUrl, meetingTitle, memoApproved, itemExtendedProperties), locale);
-      caseMCache.cachePage(organizationId, meetingItemPage, translateLocalized(meetingItemPageContents));
-      indexRequest.fire(new IndexRequest(createIndexablePage(organizationId, kuntaApiPageId, locale.getLanguage(), meetingItemPageContents, itemLink.getText())));
-
-      itemLinks.add(itemLink);
-      
-      for (FileId fileId : getAttachmentFileIds(organizationId, itemExtendedProperties)) {
-        fileUpdateRequest.fire(new FileUpdateRequest(kuntaApiPageId, fileId));
+      MeetingItemLink itemLink = updateMeetingItem(meetingPageId, orderIndex, downloadUrl, meetingTitle, memoApproved, meetingItemContent, locale);
+      if (itemLink != null) {
+        itemLinks.add(itemLink);
       }
     }
     
@@ -296,6 +272,39 @@ public class CaseMCacheUpdater {
     }
 
     logger.fine(String.format("Done updating CaseM meeting %s", meetingPageId.toString()));
+  }
+  
+  private MeetingItemLink updateMeetingItem(PageId meetingPageId, Long orderIndex,  String downloadUrl, String meetingTitle, boolean memoApproved, Content meetingItemContent, Locale locale) {
+    OrganizationId organizationId = meetingPageId.getOrganizationId();
+    PageId casemItemPageId = toContentId(organizationId, meetingItemContent.getContentId());
+
+    List<ExtendedProperty> itemExtendedProperties = listExtendedProperties(organizationId, meetingItemContent);
+    if (itemExtendedProperties.isEmpty()) {
+      logger.severe(String.format("Could not resolve extended properties for item %s, skipping update", casemItemPageId.toString()));
+      return null;
+    }
+    
+    MeetingItemLink itemLink = createMeetingItemLink(itemExtendedProperties);
+    
+    Identifier identifier = identifierController.findIdentifierById(casemItemPageId);
+    if (identifier == null) {
+      identifier = identifierController.createIdentifier(meetingPageId, orderIndex, casemItemPageId);
+    } else {
+      identifier = identifierController.updateIdentifier(identifier, meetingPageId, orderIndex);
+    }
+    
+    PageId kuntaApiPageId = new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
+    Page meetingItemPage = casemTranslator.translatePage(kuntaApiPageId, meetingPageId, itemLink.getText(), itemLink.getSlug());
+    
+    String meetingItemPageContents = renderContentMeetingItem(createMeetingItemModel(downloadUrl, meetingTitle, memoApproved, itemExtendedProperties), locale);
+    caseMCache.cachePage(organizationId, meetingItemPage, translateLocalized(meetingItemPageContents));
+    indexRequest.fire(new IndexRequest(createIndexablePage(organizationId, kuntaApiPageId, locale.getLanguage(), meetingItemPageContents, itemLink.getText())));
+    
+    for (FileId fileId : getAttachmentFileIds(organizationId, itemExtendedProperties)) {
+      fileUpdateRequest.fire(new FileUpdateRequest(kuntaApiPageId, fileId));
+    }
+    
+    return itemLink;
   }
   
   private void updateBoardPage(PageId kuntaApiBoardPageId) {
