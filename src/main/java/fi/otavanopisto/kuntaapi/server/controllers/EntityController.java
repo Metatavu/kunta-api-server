@@ -21,7 +21,7 @@ import org.apache.commons.codec.binary.StringUtils;
 import fi.otavanopisto.kuntaapi.server.debug.Timed;
 
 @ApplicationScoped
-@SuppressWarnings ("squid:S3306")
+@SuppressWarnings ({"squid:S3306", "squid:S1948", "squid:UnusedPrivateMethod"})
 public class EntityController {
   
   @Inject
