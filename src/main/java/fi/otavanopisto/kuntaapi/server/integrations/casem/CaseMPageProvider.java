@@ -9,6 +9,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
+import fi.otavanopisto.kuntaapi.server.debug.Timed;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
@@ -43,6 +44,7 @@ public class CaseMPageProvider implements PageProvider {
   private IdentifierController identifierController;
   
   @Override
+  @Timed (infoThreshold = 50, warningThreshold = 100, severeThreshold = 200)
   public List<Page> listOrganizationPages(OrganizationId organizationId, PageId parentId, boolean onlyRootPages) {
     return listPages(organizationId, parentId, onlyRootPages);
   }
@@ -79,6 +81,7 @@ public class CaseMPageProvider implements PageProvider {
   }
   
   @Override
+  @Timed (infoThreshold = 25, warningThreshold = 50, severeThreshold = 100)
   public Page findOrganizationPage(OrganizationId organizationId, PageId pageId) {
     return caseMCache.findPage(pageId);
   }

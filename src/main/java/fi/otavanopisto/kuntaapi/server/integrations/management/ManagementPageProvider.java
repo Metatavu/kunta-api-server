@@ -13,6 +13,7 @@ import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
 import fi.metatavu.kuntaapi.server.rest.model.Page;
 import fi.metatavu.management.client.model.Attachment.MediaTypeEnum;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
+import fi.otavanopisto.kuntaapi.server.debug.Timed;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.IdPair;
@@ -56,11 +57,13 @@ public class ManagementPageProvider extends AbstractManagementProvider implement
   private IdController idController;
   
   @Override
+  @Timed (infoThreshold = 50, warningThreshold = 100, severeThreshold = 200)
   public List<Page> listOrganizationPages(OrganizationId organizationId, PageId parentId, boolean onlyRootPages) {
     return listPages(organizationId, parentId, onlyRootPages);
   }
 
   @Override
+  @Timed (infoThreshold = 25, warningThreshold = 50, severeThreshold = 100)
   public Page findOrganizationPage(OrganizationId organizationId, PageId pageId) {
     return pageCache.get(pageId);
   }
