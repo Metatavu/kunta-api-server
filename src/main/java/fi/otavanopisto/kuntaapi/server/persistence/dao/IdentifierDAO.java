@@ -10,6 +10,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
+import fi.otavanopisto.kuntaapi.server.persistence.model.IdentifierOrderIndex;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier_;
 
 /**
@@ -218,7 +219,7 @@ public class IdentifierDAO extends AbstractDAO<Identifier> {
     return persist(identifier);
   }
 
-  public Long findOrderIndexByKuntaApiIdentifier(String kuntaApiIdentifier) {
+  public Long findOrderIndexByKuntaApiIds(String kuntaApiIdentifier) {
     EntityManager entityManager = getEntityManager();
 
     CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
@@ -230,6 +231,18 @@ public class IdentifierDAO extends AbstractDAO<Identifier> {
     );
     
     return getSingleResult(entityManager.createQuery(criteria));
+  }
+
+  public List<IdentifierOrderIndex> listOrderIndicesByKuntaApiIds(List<String> kuntaApiIds) {
+    EntityManager entityManager = getEntityManager();
+
+    CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+    CriteriaQuery<IdentifierOrderIndex> criteria = criteriaBuilder.createQuery(IdentifierOrderIndex.class);
+    Root<Identifier> root = criteria.from(Identifier.class);
+    criteria.multiselect(root.get(Identifier_.kuntaApiId), root.get(Identifier_.orderIndex));
+    criteria.where(root.get(Identifier_.kuntaApiId).in(kuntaApiIds));
+    
+    return entityManager.createQuery(criteria).getResultList();
   }
 
   

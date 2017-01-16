@@ -101,5 +101,20 @@
     
     <sql>update Identifier set modified = NOW()</sql>
   </changeSet>
+  
+  <changeSet id="identifier-parent-index" author="antti.leppa">
+    <createIndex tableName="Identifier" indexName="IDENTIFIER_SOURCE_PARENT_TYPE_ORDER">
+      <column name="source"/>
+      <column name="parent_id"/>
+      <column name="type"/>
+      <column name="orderIndex"/>
+    </createIndex>
+  </changeSet>
+  
+  <changeSet id="identifier-kuntaapiid-index" author="antti.leppa">
+    <createIndex tableName="Identifier" indexName="IDENTIFIER_KUNTAAPIID" unique="true">
+      <column name="kuntaApiId"/>
+    </createIndex>
+  </changeSet>
 
 </databaseChangeLog>
