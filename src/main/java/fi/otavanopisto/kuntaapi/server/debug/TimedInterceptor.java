@@ -25,7 +25,8 @@ public class TimedInterceptor implements Serializable {
   private Logger logger;
 
   @AroundInvoke
-  public Object aroundInvoke(InvocationContext invocationContext) throws Exception {
+  @SuppressWarnings ("squid:S00112")
+  public Object aroundInvoke(InvocationContext invocationContext) throws Exception{
     Method method = invocationContext.getMethod();
     Timed timed = method.getAnnotation(Timed.class);
     long startTime = System.currentTimeMillis();
