@@ -3,7 +3,9 @@ package fi.otavanopisto.kuntaapi.server.controllers;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,6 +31,7 @@ import fi.otavanopisto.kuntaapi.server.id.TileId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.persistence.dao.IdentifierDAO;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
+import fi.otavanopisto.kuntaapi.server.persistence.model.IdentifierOrderIndex;
 
 /**
  * Identifier controller
@@ -99,8 +102,29 @@ public class IdentifierController {
     return findIdentifierByTypeSourceAndKuntaApiId(type.toString(), source, kuntaApiId);
   }
 
-  public Long getIdentifierOrderIndex(String kuntaApiIdentifier) {
-    return identifierDAO.findOrderIndexByKuntaApiIdentifier(kuntaApiIdentifier);
+  public Long getIdentifierOrderIndex(String kuntaApiId) {
+    return identifierDAO.findOrderIndexByKuntaApiIds(kuntaApiId);
+  }
+  
+  public Map<String, Long> getIdentifierOrderIndices(List<String> kuntaApiIds) {
+    if (kuntaApiIds == null || kuntaApiIds.isEmpty()) {
+      return Collections.emptyMap();
+    }
+
+    Map<String, Long> result = new HashMap<>(kuntaApiIds.size());
+    
+    List<IdentifierOrderIndex> orderIndices = identifierDAO.listOrderIndicesByKuntaApiIds(kuntaApiIds);
+    for (IdentifierOrderIndex orderIndex : orderIndices) {
+      result.put(orderIndex.getKuntaApiId(), orderIndex.getOrderIndex());
+    }
+    
+    for (String kuntaApiIdentifier : kuntaApiIds) {
+      if (!result.containsKey(kuntaApiIdentifier)) {
+        result.put(kuntaApiIdentifier, Long.MAX_VALUE);
+      }
+    }
+    
+    return result;
   }
   
   /**
@@ -226,27 +250,20 @@ public class IdentifierController {
   }
 
   /**
-   * Lists page ids by parent id
+   * Lists page ids by source and parent id
    * 
    * Results are sorted by orderIndex column
    * 
    * @param parentId parent id
    * @return page ids by parent id
    */
-  public List<PageId> listPageIdsParentId(BaseId parentId) {
-    return listPageIdsParentId(null, parentId);
-  }
-  
-  public List<PageId> listPageIdsParentId(String source, BaseId parentId) {
+  public List<PageId> listPageIdsBySourceAndParentId(String source, BaseId parentId) {
     Identifier parentIdentifier = findIdentifierById(parentId);
     if (parentIdentifier == null) {
       return Collections.emptyList();
     }
 
-    List<Identifier> identifiers = source == null
-        ? identifierDAO.listByParentAndTypeOrderByOrderIndex(parentIdentifier, IdType.PAGE.name())
-        : identifierDAO.listBySourceParentAndTypeOrderByOrderIndex(source, parentIdentifier, IdType.PAGE.name());
-    
+    List<Identifier> identifiers = identifierDAO.listBySourceParentAndTypeOrderByOrderIndex(source, parentIdentifier, IdType.PAGE.name());
     List<PageId> result = new ArrayList<>(identifiers.size());
     for (Identifier identifier : identifiers) {
       OrganizationId organizationId = new OrganizationId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getOrganizationKuntaApiId());
