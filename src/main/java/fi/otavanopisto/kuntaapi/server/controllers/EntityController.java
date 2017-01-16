@@ -6,8 +6,8 @@ import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
@@ -32,16 +32,16 @@ public class EntityController {
 
   @Timed (infoThreshold = 30, warningThreshold = 60, severeThreshold = 120)
   public <T> List<T> sortEntitiesInNaturalOrder(List<T> entities) {
-    Map<String, Long> orderIds = new HashMap<>(entities.size());
     
+    List<String> kuntaApiIds = new ArrayList<>(entities.size());
     for (Object entity : entities) {
       String id = getId(entity);
       if (id != null) {
-        Long orderIndex = identifierController.getIdentifierOrderIndex(id);
-        orderIds.put(id, orderIndex);
+        kuntaApiIds.add(id);
       }
     }
     
+    Map<String, Long> orderIds = identifierController.getIdentifierOrderIndices(kuntaApiIds);
     entities.sort(new IdentifierComparator(orderIds));
     
     return entities;

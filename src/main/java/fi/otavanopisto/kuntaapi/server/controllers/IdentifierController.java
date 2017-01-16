@@ -3,7 +3,9 @@ package fi.otavanopisto.kuntaapi.server.controllers;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,6 +31,7 @@ import fi.otavanopisto.kuntaapi.server.id.TileId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.persistence.dao.IdentifierDAO;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
+import fi.otavanopisto.kuntaapi.server.persistence.model.IdentifierOrderIndex;
 
 /**
  * Identifier controller
@@ -99,8 +102,29 @@ public class IdentifierController {
     return findIdentifierByTypeSourceAndKuntaApiId(type.toString(), source, kuntaApiId);
   }
 
-  public Long getIdentifierOrderIndex(String kuntaApiIdentifier) {
-    return identifierDAO.findOrderIndexByKuntaApiIdentifier(kuntaApiIdentifier);
+  public Long getIdentifierOrderIndex(String kuntaApiId) {
+    return identifierDAO.findOrderIndexByKuntaApiIds(kuntaApiId);
+  }
+  
+  public Map<String, Long> getIdentifierOrderIndices(List<String> kuntaApiIds) {
+    if (kuntaApiIds == null || kuntaApiIds.isEmpty()) {
+      return Collections.emptyMap();
+    }
+
+    Map<String, Long> result = new HashMap<>(kuntaApiIds.size());
+    
+    List<IdentifierOrderIndex> orderIndices = identifierDAO.listOrderIndicesByKuntaApiIds(kuntaApiIds);
+    for (IdentifierOrderIndex orderIndex : orderIndices) {
+      result.put(orderIndex.getKuntaApiId(), orderIndex.getOrderIndex());
+    }
+    
+    for (String kuntaApiIdentifier : kuntaApiIds) {
+      if (!result.containsKey(kuntaApiIdentifier)) {
+        result.put(kuntaApiIdentifier, Long.MAX_VALUE);
+      }
+    }
+    
+    return result;
   }
   
   /**
