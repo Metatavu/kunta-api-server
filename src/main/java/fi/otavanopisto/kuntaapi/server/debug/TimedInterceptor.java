@@ -15,6 +15,7 @@ import org.apache.commons.lang3.StringUtils;
 
 @Interceptor
 @Timed
+@SuppressWarnings ("squid:S2629")
 public class TimedInterceptor implements Serializable {
   
   private static final long serialVersionUID = 5589726291615678816L;
