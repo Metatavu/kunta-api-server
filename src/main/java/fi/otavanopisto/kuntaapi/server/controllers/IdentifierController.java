@@ -226,27 +226,20 @@ public class IdentifierController {
   }
 
   /**
-   * Lists page ids by parent id
+   * Lists page ids by source and parent id
    * 
    * Results are sorted by orderIndex column
    * 
    * @param parentId parent id
    * @return page ids by parent id
    */
-  public List<PageId> listPageIdsParentId(BaseId parentId) {
-    return listPageIdsParentId(null, parentId);
-  }
-  
-  public List<PageId> listPageIdsParentId(String source, BaseId parentId) {
+  public List<PageId> listPageIdsBySourceAndParentId(String source, BaseId parentId) {
     Identifier parentIdentifier = findIdentifierById(parentId);
     if (parentIdentifier == null) {
       return Collections.emptyList();
     }
 
-    List<Identifier> identifiers = source == null
-        ? identifierDAO.listByParentAndTypeOrderByOrderIndex(parentIdentifier, IdType.PAGE.name())
-        : identifierDAO.listBySourceParentAndTypeOrderByOrderIndex(source, parentIdentifier, IdType.PAGE.name());
-    
+    List<Identifier> identifiers = identifierDAO.listBySourceParentAndTypeOrderByOrderIndex(source, parentIdentifier, IdType.PAGE.name());
     List<PageId> result = new ArrayList<>(identifiers.size());
     for (Identifier identifier : identifiers) {
       OrganizationId organizationId = new OrganizationId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getOrganizationKuntaApiId());

@@ -133,9 +133,9 @@ public class ManagementPageProvider extends AbstractManagementProvider implement
     List<PageId> pageIds;
     
     if (onlyRootPages) {
-      pageIds = identifierController.listPageIdsParentId(organizationId);
+      pageIds = identifierController.listPageIdsBySourceAndParentId(ManagementConsts.IDENTIFIER_NAME, organizationId);
     } else if (kuntaApiParentId != null) {
-      pageIds = identifierController.listPageIdsParentId(kuntaApiParentId);
+      pageIds = identifierController.listPageIdsBySourceAndParentId(ManagementConsts.IDENTIFIER_NAME, kuntaApiParentId);
     } else {
       pageIds = identifierController.listOrganizationPageIdsBySource(organizationId, ManagementConsts.IDENTIFIER_NAME);
     }

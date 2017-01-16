@@ -60,9 +60,9 @@ public class CaseMPageProvider implements PageProvider {
     List<PageId> pageIds;
     
     if (onlyRootPages) {
-      pageIds = identifierController.listPageIdsParentId(organizationId);
+      pageIds = identifierController.listPageIdsBySourceAndParentId(CaseMConsts.IDENTIFIER_NAME, organizationId);
     } else if (kuntaApiParentId != null) {
-      pageIds = identifierController.listPageIdsParentId(kuntaApiParentId);
+      pageIds = identifierController.listPageIdsBySourceAndParentId(CaseMConsts.IDENTIFIER_NAME, kuntaApiParentId);
     } else {
       pageIds = identifierController.listOrganizationPageIdsBySource(organizationId, CaseMConsts.IDENTIFIER_NAME);
     }
