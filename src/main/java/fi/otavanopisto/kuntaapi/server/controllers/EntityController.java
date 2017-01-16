@@ -30,7 +30,7 @@ public class EntityController {
   @Inject
   private IdentifierController identifierController;
 
-  @Timed (infoThreshold = 30, warningThreshold = 60, severeThreshold = 120)
+  @Timed (infoThreshold = 200, warningThreshold = 400, severeThreshold = 800)
   public <T> List<T> sortEntitiesInNaturalOrder(List<T> entities) {
     
     List<String> kuntaApiIds = new ArrayList<>(entities.size());

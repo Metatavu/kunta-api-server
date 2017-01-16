@@ -44,7 +44,7 @@ public class CaseMPageProvider implements PageProvider {
   private IdentifierController identifierController;
   
   @Override
-  @Timed (infoThreshold = 50, warningThreshold = 100, severeThreshold = 200)
+  @Timed (infoThreshold = 100, warningThreshold = 200, severeThreshold = 400)
   public List<Page> listOrganizationPages(OrganizationId organizationId, PageId parentId, boolean onlyRootPages) {
     return listPages(organizationId, parentId, onlyRootPages);
   }
