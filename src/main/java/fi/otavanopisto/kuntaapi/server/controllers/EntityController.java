@@ -18,6 +18,8 @@ import javax.inject.Inject;
 
 import org.apache.commons.codec.binary.StringUtils;
 
+import fi.otavanopisto.kuntaapi.server.debug.Timed;
+
 @ApplicationScoped
 @SuppressWarnings ("squid:S3306")
 public class EntityController {
@@ -28,6 +30,7 @@ public class EntityController {
   @Inject
   private IdentifierController identifierController;
 
+  @Timed (infoThreshold = 30, warningThreshold = 60, severeThreshold = 120)
   public <T> List<T> sortEntitiesInNaturalOrder(List<T> entities) {
     Map<String, Long> orderIds = new HashMap<>(entities.size());
     
