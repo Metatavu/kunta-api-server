@@ -28,6 +28,7 @@ import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
 import fi.otavanopisto.kuntaapi.server.discover.FileIdRemoveRequest;
 import fi.otavanopisto.kuntaapi.server.discover.FileIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.discover.IdUpdateRequestQueue;
+import fi.otavanopisto.kuntaapi.server.id.BaseId;
 import fi.otavanopisto.kuntaapi.server.id.FileId;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
@@ -166,14 +167,7 @@ public class CasemFileEntityUpdater extends EntityUpdater {
   private void updateCasemFile(FileId casemFileId, PageId casemPageId, DownloadMeta downloadMeta, Long orderIndex) {
     OrganizationId organizationId = casemFileId.getOrganizationId();
     PageId kuntaApiPageId = null;
-       
-    Identifier identifier = identifierController.findIdentifierById(casemFileId);
-    if (identifier == null) {
-      identifier = identifierController.createIdentifier(kuntaApiPageId, orderIndex, casemFileId);
-    } else {
-      identifier = identifierController.updateIdentifier(identifier, kuntaApiPageId, orderIndex);
-    }
-    
+
     if (casemPageId != null) {
       kuntaApiPageId = idController.translatePageId(casemPageId, KuntaApiConsts.IDENTIFIER_NAME);
       if (kuntaApiPageId == null) {
@@ -181,11 +175,21 @@ public class CasemFileEntityUpdater extends EntityUpdater {
       }
     }
 
+    BaseId parentId = kuntaApiPageId != null ? kuntaApiPageId : organizationId;
+    Identifier identifier = identifierController.findIdentifierById(casemFileId);
+    if (identifier == null) {
+      identifier = identifierController.createIdentifier(parentId, orderIndex, casemFileId);
+    } else {
+      identifier = identifierController.updateIdentifier(identifier, parentId, orderIndex);
+    }
+    
     FileId kuntaApiFileId = new FileId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
     
     FileDef fileDef = casemTranslator.translateFile(kuntaApiPageId, kuntaApiFileId, downloadMeta);
     if (fileDef != null) {
       fileCache.put(kuntaApiFileId, fileDef);
+      modificationHashCache.put(kuntaApiFileId.getId(), createPojoHash(fileDef));
+      
       BinaryResponse binaryResponse = casemFileController.downloadFile(casemFileId);
       if (binaryResponse != null) {
         indexFile(organizationId, kuntaApiFileId, kuntaApiPageId, binaryResponse);
