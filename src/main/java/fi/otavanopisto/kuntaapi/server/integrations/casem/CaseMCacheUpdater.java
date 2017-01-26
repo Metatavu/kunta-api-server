@@ -43,6 +43,7 @@ import fi.otavanopisto.casem.client.model.Node;
 import fi.otavanopisto.casem.client.model.NodeList;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.controllers.PageController;
+import fi.otavanopisto.kuntaapi.server.discover.FileIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.freemarker.FreemarkerRenderer;
 import fi.otavanopisto.kuntaapi.server.id.BaseId;
 import fi.otavanopisto.kuntaapi.server.id.FileId;
@@ -119,7 +120,7 @@ public class CaseMCacheUpdater {
   private Event<CaseMMeetingDataUpdateRequest> meetingDataUpdateRequest;
   
   @Inject
-  private Event<FileUpdateRequest> fileUpdateRequest;
+  private Event<FileIdUpdateRequest> fileIdUpdateRequest;
   
   @Inject
   private IdController idController;
@@ -266,8 +267,11 @@ public class CaseMCacheUpdater {
     caseMCache.cachePage(organizationId, meetingPage, casemTranslator.translateLocalized(meetingPageContents));
     indexRequest.fire(new IndexRequest(createIndexablePage(organizationId, meetingPageId, locale.getLanguage(), meetingPageContents, meetingTitle)));
 
-    for (FileId fileId : getAttachmentFileIds(organizationId, meetingExtendedProperties)) {
-      fileUpdateRequest.fire(new FileUpdateRequest(meetingPageId, fileId));
+    List<FileId> attachmentFileIds = getAttachmentFileIds(organizationId, meetingExtendedProperties);
+    for (int i = 0; i < attachmentFileIds.size(); i++) {
+      FileId attachmentFileId = attachmentFileIds.get(i);
+      Long fileOrderIndex = (long) i;
+      fileIdUpdateRequest.fire(new FileIdUpdateRequest(organizationId, attachmentFileId, meetingPageId, fileOrderIndex, false));
     }
 
     logger.fine(String.format("Done updating CaseM meeting %s", meetingPageId.toString()));
@@ -299,8 +303,11 @@ public class CaseMCacheUpdater {
     caseMCache.cachePage(organizationId, meetingItemPage, casemTranslator.translateLocalized(meetingItemPageContents));
     indexRequest.fire(new IndexRequest(createIndexablePage(organizationId, kuntaApiPageId, locale.getLanguage(), meetingItemPageContents, itemLink.getText())));
     
-    for (FileId fileId : getAttachmentFileIds(organizationId, itemExtendedProperties)) {
-      fileUpdateRequest.fire(new FileUpdateRequest(kuntaApiPageId, fileId));
+    List<FileId> attachmentFileIds = getAttachmentFileIds(organizationId, itemExtendedProperties);
+    for (int i = 0; i < attachmentFileIds.size(); i++) {
+      FileId attachmentFileId = attachmentFileIds.get(i);
+      Long fileOrderIndex = (long) i;
+      fileIdUpdateRequest.fire(new FileIdUpdateRequest(organizationId, attachmentFileId, kuntaApiPageId, fileOrderIndex, false));
     }
     
     return itemLink;
