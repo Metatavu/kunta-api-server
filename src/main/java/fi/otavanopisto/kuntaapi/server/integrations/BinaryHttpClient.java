@@ -169,16 +169,21 @@ public class BinaryHttpClient {
   }
 
   public DownloadMeta getDownloadMeta(CloseableHttpResponse httpResponse) {
-    Integer size = getIntegerHeader(httpResponse, "Content-Length");
-    String contentType = getStringHeader(httpResponse, "Content-Type");
-    String contentDisposition = getStringHeader(httpResponse, "Content-Disposition");
-    String filename = null;
-    
-    if (StringUtils.isNotBlank(contentDisposition)) {
-      filename = getFilename(contentDisposition);
+    int statusCode = httpResponse.getStatusLine().getStatusCode();
+    if (statusCode >= 200 && statusCode <= 299) {
+      Integer size = getIntegerHeader(httpResponse, "Content-Length");
+      String contentType = getStringHeader(httpResponse, "Content-Type");
+      String contentDisposition = getStringHeader(httpResponse, "Content-Disposition");
+      String filename = null;
+      
+      if (StringUtils.isNotBlank(contentDisposition)) {
+        filename = getFilename(contentDisposition);
+      }
+      
+      return new DownloadMeta(filename, size, contentType);
     }
     
-    return new DownloadMeta(filename, size, contentType);
+    return null;
   }
   
   private CloseableHttpClient createClient(URI uri, String username, String password) {

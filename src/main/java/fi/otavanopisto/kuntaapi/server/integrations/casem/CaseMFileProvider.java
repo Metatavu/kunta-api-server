@@ -5,15 +5,14 @@ import java.util.logging.Logger;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
+import fi.metatavu.kuntaapi.server.rest.model.FileDef;
 import fi.otavanopisto.kuntaapi.server.id.FileId;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.BinaryHttpClient.BinaryResponse;
-import fi.otavanopisto.kuntaapi.server.integrations.BinaryHttpClient.DownloadMeta;
 import fi.otavanopisto.kuntaapi.server.integrations.FileProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
-import fi.metatavu.kuntaapi.server.rest.model.FileDef;
+import fi.otavanopisto.kuntaapi.server.integrations.casem.cache.CasemFileCache;
 
 /**
  * File provider for CaseM
@@ -30,22 +29,14 @@ public class CaseMFileProvider implements FileProvider {
   private IdController idController;
   
   @Inject
+  private CasemFileCache casemFileCache;
+  
+  @Inject
   private CaseMFileController caseMFileController;
 
   @Override
   public FileDef findOrganizationFile(OrganizationId organizationId, FileId fileId) {
-    FileId caseMFileId = idController.translateFileId(fileId, CaseMConsts.IDENTIFIER_NAME);
-    if (caseMFileId == null) {
-      logger.severe(String.format("FileId %s could not be translated into CaseM id", fileId.toString()));
-      return null; 
-    }
-    
-    DownloadMeta meta = caseMFileController.getDownloadMeta(caseMFileId);
-    if (meta == null) {
-      return null;
-    }
-    
-    return translateFile(caseMFileId, meta);
+    return casemFileCache.get(fileId);
   }
 
   @Override
@@ -64,20 +55,4 @@ public class CaseMFileProvider implements FileProvider {
     return new AttachmentData(response.getType(), response.getData());
   }
   
-  private FileDef translateFile(FileId fileId, DownloadMeta meta) {
-    FileId kuntaApiFileId = idController.translateFileId(fileId, KuntaApiConsts.IDENTIFIER_NAME);
-    if (kuntaApiFileId == null) {
-      logger.severe(String.format("FileId %s could not be translated into Kunta API id", fileId.toString()));
-      return null; 
-    }
-    
-    FileDef file = new FileDef();
-    file.setContentType(meta.getContentType());
-    file.setId(kuntaApiFileId.getId());
-    file.setSize(meta.getSize() != null ? meta.getSize().longValue() : null);
-    file.setSlug(meta.getFilename());
-    file.setTitle(meta.getFilename());
-    
-    return file;
-  }
 }
