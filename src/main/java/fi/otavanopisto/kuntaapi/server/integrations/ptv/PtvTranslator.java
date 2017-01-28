@@ -8,6 +8,8 @@ import java.util.logging.Logger;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
+import org.apache.commons.lang3.StringUtils;
+
 import fi.metatavu.kuntaapi.server.rest.model.Address;
 import fi.metatavu.kuntaapi.server.rest.model.ElectronicChannel;
 import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
@@ -36,6 +38,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.restfulptv.client.model.FintoItem;
 import fi.otavanopisto.restfulptv.client.model.LanguageItem;
 import fi.otavanopisto.restfulptv.client.model.LocalizedListItem;
+import fi.otavanopisto.restfulptv.client.model.StatutoryDescription;
 import fi.otavanopisto.restfulptv.client.model.Support;
 
 @ApplicationScoped
@@ -154,16 +157,19 @@ public class PtvTranslator {
     return result;
   }
 
-  public Service translateService(ServiceId serviceKuntaApiId, fi.otavanopisto.restfulptv.client.model.Service ptvService) {
+  public Service translateService(ServiceId serviceKuntaApiId, fi.otavanopisto.restfulptv.client.model.Service ptvService, StatutoryDescription ptvStatutoryDescription) {
     if (ptvService == null) {
       return null;
     }
+    
+    List<LocalizedValue> statutoryDescription = translateLocalizedItems(ptvStatutoryDescription.getDescriptions());
+    List<LocalizedValue> descriptions = translateLocalizedItems(ptvService.getDescriptions());
     
     Service result = new Service();
     result.setAdditionalInformations(translateLocalizedItems(ptvService.getAdditionalInformations()));
     result.setChargeType(ptvService.getChargeType());
     result.setCoverageType(ptvService.getCoverageType());
-    result.setDescriptions(translateLocalizedItems(ptvService.getDescriptions()));
+    result.setDescriptions(mergeDescriptions(statutoryDescription, descriptions));
     result.setId(serviceKuntaApiId.getId());
     result.setIndustrialClasses(translateFintoItems(ptvService.getIndustrialClasses()));
     result.setKeywords(ptvService.getKeywords());
@@ -182,7 +188,7 @@ public class PtvTranslator {
     
     return result;
   }
-  
+
   public OntologyItem translateFintoItem(FintoItem ptvFintoItem) {
     if (ptvFintoItem == null) {
       return null;
@@ -681,4 +687,45 @@ public class PtvTranslator {
     
     return result;
   }
+  
+  private List<LocalizedValue> mergeDescriptions(List<LocalizedValue> statutoryDescriptions, List<LocalizedValue> descriptions) {
+    if (statutoryDescriptions == null && descriptions == null) {
+      return Collections.emptyList();
+    }
+    
+    if (statutoryDescriptions == null) {
+      return descriptions;
+    }
+    
+    if (descriptions == null) {
+      return statutoryDescriptions;
+    }
+    
+    List<LocalizedValue> result = new ArrayList<>(descriptions);
+    
+    for (LocalizedValue statutoryDescription : statutoryDescriptions) {
+      if (StringUtils.isNotBlank(statutoryDescription.getValue())) {
+        int valueIndex = findLocalizedValueIndex(result, statutoryDescription.getType(), statutoryDescription.getLanguage());
+        if (valueIndex == -1) {
+          result.add(statutoryDescription);
+        } else {
+          LocalizedValue localizedValue = result.get(valueIndex);
+          localizedValue.setValue(String.format("%s%n%n%s", statutoryDescription.getValue(), localizedValue.getValue()));
+        }
+      }
+    }
+
+    return result;
+  }
+  
+  private int findLocalizedValueIndex(List<LocalizedValue> localizedValues, String type, String language) {
+    for (int i = 0; i < localizedValues.size(); i++) {
+      if (StringUtils.equals(type, localizedValues.get(i).getType()) && StringUtils.equals(language, localizedValues.get(i).getLanguage())) {
+        return i;
+      }
+    }
+    
+    return -1;
+  }
+  
 }
