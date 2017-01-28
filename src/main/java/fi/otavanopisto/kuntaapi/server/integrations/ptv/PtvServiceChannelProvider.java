@@ -29,7 +29,7 @@ import fi.otavanopisto.restfulptv.client.ApiResponse;
  * @author Heikki Kurhinen
  */
 @RequestScoped
-public class PtvServiceChannelProvider extends AbstractPtvProvider implements ServiceChannelProvider {
+public class PtvServiceChannelProvider implements ServiceChannelProvider {
 
   private static final String SERVICE_TRANSLATE_FAILURE = "Failed to translate service id %s into PTV id";
   private static final String ELECTRONIC_SERVICE_CHANNEL_TRANSLATE_FAILURE = "Failed to translate electronic service channel %s into PTV id";
@@ -43,6 +43,9 @@ public class PtvServiceChannelProvider extends AbstractPtvProvider implements Se
   
   @Inject
   private PtvApi ptvApi;
+
+  @Inject
+  private PtvTranslator ptvTranslator;
   
   @Inject
   private IdController idController;
@@ -66,7 +69,7 @@ public class PtvServiceChannelProvider extends AbstractPtvProvider implements Se
       logger.severe(String.format("Electronic channels list of service %s reported [%d] %s", serviceId.toString(), electronicChannelResponse.getStatus(), electronicChannelResponse.getMessage()));
       return null;
     } else {
-      return translateElectronicChannel(electronicChannelResponse.getResponse());
+      return ptvTranslator.translateElectronicChannel(electronicChannelResponse.getResponse());
     }
   }
   
@@ -89,7 +92,7 @@ public class PtvServiceChannelProvider extends AbstractPtvProvider implements Se
       logger.severe(String.format("Phone channels list of service %s reported [%d] %s", serviceId.toString(), phoneChannelResponse.getStatus(), phoneChannelResponse.getMessage()));
       return null;
     } else {
-      return translatePhoneChannel(phoneChannelResponse.getResponse());
+      return ptvTranslator.translatePhoneChannel(phoneChannelResponse.getResponse());
     }
   }
   
@@ -112,7 +115,7 @@ public class PtvServiceChannelProvider extends AbstractPtvProvider implements Se
       logger.severe(String.format("Printable form channels list of service %s reported [%d] %s", serviceId.toString(), printableFormChannelResponse.getStatus(), printableFormChannelResponse.getMessage()));
       return null;
     } else {
-      return translatePrintableFormChannel(printableFormChannelResponse.getResponse());
+      return ptvTranslator.translatePrintableFormChannel(printableFormChannelResponse.getResponse());
     }
   }
   
@@ -135,7 +138,7 @@ public class PtvServiceChannelProvider extends AbstractPtvProvider implements Se
       logger.severe(String.format("Service location channels list of service %s reported [%d] %s", serviceId.toString(), serviceLocationChannelResponse.getStatus(), serviceLocationChannelResponse.getMessage()));
       return null;
     } else {
-      return translateServiceLocationChannel(serviceLocationChannelResponse.getResponse());
+      return ptvTranslator.translateServiceLocationChannel(serviceLocationChannelResponse.getResponse());
     }
   }
   
@@ -158,7 +161,7 @@ public class PtvServiceChannelProvider extends AbstractPtvProvider implements Se
       logger.severe(String.format("Web page channels list of service %s reported [%d] %s", serviceId.toString(), webPageChannelResponse.getStatus(), webPageChannelResponse.getMessage()));
       return null;
     } else {
-      return translateWebPageChannel(webPageChannelResponse.getResponse());
+      return ptvTranslator.translateWebPageChannel(webPageChannelResponse.getResponse());
     }
   }
   
@@ -175,7 +178,7 @@ public class PtvServiceChannelProvider extends AbstractPtvProvider implements Se
       logger.severe(String.format("Electronic channels list of service %s reported [%d] %s", serviceId.toString(), electronicChannelsResponse.getStatus(), electronicChannelsResponse.getMessage()));
       return Collections.emptyList();
     } else {
-      return translateElectronicChannels(electronicChannelsResponse.getResponse());
+      return ptvTranslator.translateElectronicChannels(electronicChannelsResponse.getResponse());
     }
   }
 
@@ -192,7 +195,7 @@ public class PtvServiceChannelProvider extends AbstractPtvProvider implements Se
       logger.severe(String.format("Phone channels list of service %s reported [%d] %s", serviceId.toString(), phoneChannelsResponse.getStatus(), phoneChannelsResponse.getMessage()));
       return Collections.emptyList();
     } else {
-      return translatePhoneChannels(phoneChannelsResponse.getResponse());
+      return ptvTranslator.translatePhoneChannels(phoneChannelsResponse.getResponse());
     }
   }
 
@@ -209,7 +212,7 @@ public class PtvServiceChannelProvider extends AbstractPtvProvider implements Se
       logger.severe(String.format("PrintableForm channels list of service %s reported [%d] %s", serviceId.toString(), printableFormChannelsResponse.getStatus(), printableFormChannelsResponse.getMessage()));
       return Collections.emptyList();
     } else {
-      return translatePrintableFormChannels(printableFormChannelsResponse.getResponse());
+      return ptvTranslator.translatePrintableFormChannels(printableFormChannelsResponse.getResponse());
     }
   }
 
@@ -226,7 +229,7 @@ public class PtvServiceChannelProvider extends AbstractPtvProvider implements Se
       logger.severe(String.format("ServiceLocation channels list of service %s reported [%d] %s", serviceId.toString(), serviceLocationChannelsResponse.getStatus(), serviceLocationChannelsResponse.getMessage()));
       return Collections.emptyList();
     } else {
-      return translateServiceLocationChannels(serviceLocationChannelsResponse.getResponse());
+      return ptvTranslator.translateServiceLocationChannels(serviceLocationChannelsResponse.getResponse());
     }
   }
 
@@ -243,7 +246,7 @@ public class PtvServiceChannelProvider extends AbstractPtvProvider implements Se
       logger.severe(String.format("WebPage channels list of service %s reported [%d] %s", serviceId.toString(), webPageChannelsResponse.getStatus(), webPageChannelsResponse.getMessage()));
       return Collections.emptyList();
     } else {
-      return translateWebPageChannels(webPageChannelsResponse.getResponse());
+      return ptvTranslator.translateWebPageChannels(webPageChannelsResponse.getResponse());
     }
   }
   

@@ -5,18 +5,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.logging.Logger;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
-import fi.otavanopisto.kuntaapi.server.id.ElectronicServiceChannelId;
-import fi.otavanopisto.kuntaapi.server.id.IdController;
-import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
-import fi.otavanopisto.kuntaapi.server.id.OrganizationServiceId;
-import fi.otavanopisto.kuntaapi.server.id.PhoneChannelId;
-import fi.otavanopisto.kuntaapi.server.id.PrintableFormChannelId;
-import fi.otavanopisto.kuntaapi.server.id.ServiceId;
-import fi.otavanopisto.kuntaapi.server.id.ServiceLocationChannelId;
-import fi.otavanopisto.kuntaapi.server.id.WebPageChannelId;
-import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.metatavu.kuntaapi.server.rest.model.Address;
 import fi.metatavu.kuntaapi.server.rest.model.ElectronicChannel;
 import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
@@ -32,17 +23,23 @@ import fi.metatavu.kuntaapi.server.rest.model.ServiceLocationChannel;
 import fi.metatavu.kuntaapi.server.rest.model.SupportContact;
 import fi.metatavu.kuntaapi.server.rest.model.WebPage;
 import fi.metatavu.kuntaapi.server.rest.model.WebPageChannel;
+import fi.otavanopisto.kuntaapi.server.id.ElectronicServiceChannelId;
+import fi.otavanopisto.kuntaapi.server.id.IdController;
+import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.id.OrganizationServiceId;
+import fi.otavanopisto.kuntaapi.server.id.PhoneChannelId;
+import fi.otavanopisto.kuntaapi.server.id.PrintableFormChannelId;
+import fi.otavanopisto.kuntaapi.server.id.ServiceId;
+import fi.otavanopisto.kuntaapi.server.id.ServiceLocationChannelId;
+import fi.otavanopisto.kuntaapi.server.id.WebPageChannelId;
+import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.restfulptv.client.model.FintoItem;
 import fi.otavanopisto.restfulptv.client.model.LanguageItem;
 import fi.otavanopisto.restfulptv.client.model.LocalizedListItem;
 import fi.otavanopisto.restfulptv.client.model.Support;
 
-/**
- * Abstract base class for all PTV providers
- * 
- * @author Antti Leppä
- */
-public abstract class AbstractPtvProvider {
+@ApplicationScoped
+public class PtvTranslator {
 
   private static final String ONTOLOGY_SYSTEM_FINTO = "FINTO";
 
@@ -52,7 +49,7 @@ public abstract class AbstractPtvProvider {
   @Inject
   private IdController idController;
 
-  protected List<LocalizedValue> translateLocalizedItems(List<LocalizedListItem> items) {
+  public List<LocalizedValue> translateLocalizedItems(List<LocalizedListItem> items) {
     if (items != null && !items.isEmpty()) {
       List<LocalizedValue> result = new ArrayList<>();
       
@@ -72,7 +69,7 @@ public abstract class AbstractPtvProvider {
     return Collections.emptyList();
   }
   
-  protected List<LocalizedValue> translateLanguageItems(List<LanguageItem> items) {
+  public List<LocalizedValue> translateLanguageItems(List<LanguageItem> items) {
     if (items != null && !items.isEmpty()) {
       List<LocalizedValue> result = new ArrayList<>();
       
@@ -89,7 +86,7 @@ public abstract class AbstractPtvProvider {
     return Collections.emptyList();
   }
     
-  protected Organization translateOrganization(fi.otavanopisto.restfulptv.client.model.Organization ptvOrganiztion) {
+  public Organization translateOrganization(fi.otavanopisto.restfulptv.client.model.Organization ptvOrganiztion) {
     if (ptvOrganiztion == null) {
       return null;
     }
@@ -107,7 +104,7 @@ public abstract class AbstractPtvProvider {
     return organization;
   }
   
-  protected OrganizationService translateOrganizationService(OrganizationId organizationId, fi.otavanopisto.restfulptv.client.model.OrganizationService ptvOrganizationService) {
+  public OrganizationService translateOrganizationService(OrganizationId organizationId, fi.otavanopisto.restfulptv.client.model.OrganizationService ptvOrganizationService) {
     if (ptvOrganizationService == null) {
       return null;
     }
@@ -141,23 +138,7 @@ public abstract class AbstractPtvProvider {
     return result;
   }
   
-  protected List<Service> translateServices(List<fi.otavanopisto.restfulptv.client.model.Service> ptvServices) {
-    if (ptvServices == null) {
-      return Collections.emptyList();
-    }
-
-    List<Service> result = new ArrayList<>(ptvServices.size());
-    for (fi.otavanopisto.restfulptv.client.model.Service ptvElectronicChannel : ptvServices) {
-      Service service = translateService(ptvElectronicChannel);
-      if (service != null) {
-        result.add(service);
-      }
-    }
-
-    return result;
-  }
-  
-  protected List<OrganizationService> translateOrganizationServices(OrganizationId organizationId, List<fi.otavanopisto.restfulptv.client.model.OrganizationService> ptvOrganizationServices) {
+  public List<OrganizationService> translateOrganizationServices(OrganizationId organizationId, List<fi.otavanopisto.restfulptv.client.model.OrganizationService> ptvOrganizationServices) {
     if (ptvOrganizationServices == null) {
       return Collections.emptyList();
     }
@@ -173,15 +154,8 @@ public abstract class AbstractPtvProvider {
     return result;
   }
 
-  protected Service translateService(fi.otavanopisto.restfulptv.client.model.Service ptvService) {
+  public Service translateService(ServiceId serviceKuntaApiId, fi.otavanopisto.restfulptv.client.model.Service ptvService) {
     if (ptvService == null) {
-      return null;
-    }
-    
-    ServiceId ptvId = new ServiceId(PtvConsts.IDENTIFIFER_NAME, ptvService.getId());
-    ServiceId kuntaApiId = idController.translateServiceId(ptvId, KuntaApiConsts.IDENTIFIER_NAME);
-    if (kuntaApiId == null) {
-      logger.severe(String.format("Could not translate service %s into Kunta API id", ptvId.getId()));
       return null;
     }
     
@@ -190,7 +164,7 @@ public abstract class AbstractPtvProvider {
     result.setChargeType(ptvService.getChargeType());
     result.setCoverageType(ptvService.getCoverageType());
     result.setDescriptions(translateLocalizedItems(ptvService.getDescriptions()));
-    result.setId(kuntaApiId.getId());
+    result.setId(serviceKuntaApiId.getId());
     result.setIndustrialClasses(translateFintoItems(ptvService.getIndustrialClasses()));
     result.setKeywords(ptvService.getKeywords());
     result.setLanguages(ptvService.getLanguages());
@@ -209,7 +183,7 @@ public abstract class AbstractPtvProvider {
     return result;
   }
   
-  protected OntologyItem translateFintoItem(FintoItem ptvFintoItem) {
+  public OntologyItem translateFintoItem(FintoItem ptvFintoItem) {
     if (ptvFintoItem == null) {
       return null;
     }
@@ -227,7 +201,7 @@ public abstract class AbstractPtvProvider {
     return result;
   }
 
-  protected List<OntologyItem> translateFintoItems(List<FintoItem> ptvFintoItems) {
+  public List<OntologyItem> translateFintoItems(List<FintoItem> ptvFintoItems) {
     if (ptvFintoItems == null) {
       return Collections.emptyList();
     }
@@ -244,7 +218,7 @@ public abstract class AbstractPtvProvider {
     return result;
   }
   
-  protected List<ElectronicChannel> translateElectronicChannels(List<fi.otavanopisto.restfulptv.client.model.ElectronicChannel> ptvElectronicChannels) {
+  public List<ElectronicChannel> translateElectronicChannels(List<fi.otavanopisto.restfulptv.client.model.ElectronicChannel> ptvElectronicChannels) {
     if (ptvElectronicChannels == null) {
       return Collections.emptyList();
     }
@@ -260,7 +234,7 @@ public abstract class AbstractPtvProvider {
     return result;
   }
   
-  protected List<PhoneChannel> translatePhoneChannels(List<fi.otavanopisto.restfulptv.client.model.PhoneChannel> ptvPhoneChannels) {
+  public List<PhoneChannel> translatePhoneChannels(List<fi.otavanopisto.restfulptv.client.model.PhoneChannel> ptvPhoneChannels) {
     if (ptvPhoneChannels == null) {
       return Collections.emptyList();
     }
@@ -276,7 +250,7 @@ public abstract class AbstractPtvProvider {
     return result;
   }
   
-  protected List<PrintableFormChannel> translatePrintableFormChannels(List<fi.otavanopisto.restfulptv.client.model.PrintableFormChannel> ptvPrintableFormChannels) {
+  public List<PrintableFormChannel> translatePrintableFormChannels(List<fi.otavanopisto.restfulptv.client.model.PrintableFormChannel> ptvPrintableFormChannels) {
     if (ptvPrintableFormChannels == null) {
       return Collections.emptyList();
     }
@@ -292,7 +266,7 @@ public abstract class AbstractPtvProvider {
     return result;
   }
   
-  protected List<ServiceLocationChannel> translateServiceLocationChannels(List<fi.otavanopisto.restfulptv.client.model.ServiceLocationChannel> ptvServiceLocationChannels) {
+  public List<ServiceLocationChannel> translateServiceLocationChannels(List<fi.otavanopisto.restfulptv.client.model.ServiceLocationChannel> ptvServiceLocationChannels) {
     if (ptvServiceLocationChannels == null) {
       return Collections.emptyList();
     }
@@ -308,7 +282,7 @@ public abstract class AbstractPtvProvider {
     return result;
   }
   
-  protected List<WebPageChannel> translateWebPageChannels(List<fi.otavanopisto.restfulptv.client.model.WebPageChannel> ptvWebPageChannels) {
+  public List<WebPageChannel> translateWebPageChannels(List<fi.otavanopisto.restfulptv.client.model.WebPageChannel> ptvWebPageChannels) {
     if (ptvWebPageChannels == null) {
       return Collections.emptyList();
     }
@@ -324,7 +298,7 @@ public abstract class AbstractPtvProvider {
     return result;
   }
 
-  protected ElectronicChannel translateElectronicChannel(fi.otavanopisto.restfulptv.client.model.ElectronicChannel ptvElectronicChannel) {
+  public ElectronicChannel translateElectronicChannel(fi.otavanopisto.restfulptv.client.model.ElectronicChannel ptvElectronicChannel) {
     if (ptvElectronicChannel == null) {
       return null;
     }
@@ -361,7 +335,7 @@ public abstract class AbstractPtvProvider {
     return result;
   }
 
-  protected PhoneChannel translatePhoneChannel(fi.otavanopisto.restfulptv.client.model.PhoneChannel ptvPhoneChannel) {
+  public PhoneChannel translatePhoneChannel(fi.otavanopisto.restfulptv.client.model.PhoneChannel ptvPhoneChannel) {
     if (ptvPhoneChannel == null) {
       return null;
     }
@@ -398,7 +372,7 @@ public abstract class AbstractPtvProvider {
     return result;
   }
 
-  protected PrintableFormChannel translatePrintableFormChannel(fi.otavanopisto.restfulptv.client.model.PrintableFormChannel ptvPrintableFormChannel) {
+  public PrintableFormChannel translatePrintableFormChannel(fi.otavanopisto.restfulptv.client.model.PrintableFormChannel ptvPrintableFormChannel) {
     if (ptvPrintableFormChannel == null) {
       return null;
     }
@@ -437,7 +411,7 @@ public abstract class AbstractPtvProvider {
     return result;
   }
 
-  protected ServiceLocationChannel translateServiceLocationChannel(fi.otavanopisto.restfulptv.client.model.ServiceLocationChannel ptvServiceLocationChannel) {
+  public ServiceLocationChannel translateServiceLocationChannel(fi.otavanopisto.restfulptv.client.model.ServiceLocationChannel ptvServiceLocationChannel) {
     if (ptvServiceLocationChannel == null) {
       return null;
     }
@@ -483,7 +457,7 @@ public abstract class AbstractPtvProvider {
     return result;
   }
 
-  protected WebPageChannel translateWebPageChannel(fi.otavanopisto.restfulptv.client.model.WebPageChannel ptvWebPageChannel) {
+  public WebPageChannel translateWebPageChannel(fi.otavanopisto.restfulptv.client.model.WebPageChannel ptvWebPageChannel) {
     if (ptvWebPageChannel == null) {
       return null;
     }
@@ -518,7 +492,7 @@ public abstract class AbstractPtvProvider {
     return result;
   }
 
-  protected List<WebPage> translateWebPages(List<fi.otavanopisto.restfulptv.client.model.WebPage> ptvWebPages) {
+  public List<WebPage> translateWebPages(List<fi.otavanopisto.restfulptv.client.model.WebPage> ptvWebPages) {
     if (ptvWebPages == null) {
       return Collections.emptyList();
     }
@@ -535,7 +509,7 @@ public abstract class AbstractPtvProvider {
     return result;
   }
   
-  protected WebPage translateWebPage(fi.otavanopisto.restfulptv.client.model.WebPage ptvWebPage) {
+  public WebPage translateWebPage(fi.otavanopisto.restfulptv.client.model.WebPage ptvWebPage) {
     if (ptvWebPage == null) {
       return null;
     }
@@ -707,6 +681,4 @@ public abstract class AbstractPtvProvider {
     
     return result;
   }
-  
-  
 }

@@ -51,10 +51,16 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
   private PtvApi ptvApi;
   
   @Inject
+  private PtvTranslator ptvTranslator;
+  
+  @Inject
   private IdController idController;
   
   @Inject
   private IdentifierController identifierController;
+  
+  @Inject
+  private PtvServiceCache ptvServiceCache;
 
   @Inject
   private ModificationHashCache modificationHashCache;
@@ -75,7 +81,7 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
 
   @Override
   public String getName() {
-    return "services";
+    return "ptv-services";
   }
 
   @Override
@@ -131,10 +137,12 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
         identifier = identifierController.updateIdentifier(identifier, null, orderIndex);
       }
       
-      Service service = response.getResponse();
-
+      Service ptvService = response.getResponse();
+      ServiceId kuntaApiServiceId = new ServiceId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
+      fi.metatavu.kuntaapi.server.rest.model.Service service = ptvTranslator.translateService(kuntaApiServiceId, ptvService);
+      ptvServiceCache.put(kuntaApiServiceId, service);
       modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(service));
-      index(identifier.getKuntaApiId(), service);
+      index(identifier.getKuntaApiId(), ptvService);
     } else {
       logger.warning(String.format("Service %s processing failed on [%d] %s", serviceId.getId(), response.getStatus(), response.getMessage()));
     }

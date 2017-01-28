@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -91,6 +92,22 @@ public abstract class AbstractCache <K, V> implements Serializable {
   public Set<K> getIds() {
     Cache<K, String> cache = getCache();
     return cache.keySet();
+  }
+  
+  /**
+   * Returns all cached entities
+   * 
+   * @return all cached entities
+   */
+  public Set<V> getEntities() {
+    Set<K> ids = getIds();
+    Set<V> result = new HashSet<>(ids.size());
+    
+    for (K id : ids) {
+      result.add(get(id));
+    }
+    
+    return result;
   }
   
   /**
