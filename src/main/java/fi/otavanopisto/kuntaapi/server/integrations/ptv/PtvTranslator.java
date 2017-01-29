@@ -710,7 +710,7 @@ public class PtvTranslator {
           result.add(statutoryDescription);
         } else {
           LocalizedValue localizedValue = result.get(valueIndex);
-          localizedValue.setValue(String.format("%s%n%n%s", statutoryDescription.getValue(), localizedValue.getValue()));
+          localizedValue.setValue(String.format("%s%n%s", statutoryDescription.getValue(), localizedValue.getValue()));
         }
       }
     }
