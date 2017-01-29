@@ -162,7 +162,7 @@ public class PtvTranslator {
       return null;
     }
     
-    List<LocalizedValue> statutoryDescription = translateLocalizedItems(ptvStatutoryDescription.getDescriptions());
+    List<LocalizedValue> statutoryDescription = ptvStatutoryDescription != null ? translateLocalizedItems(ptvStatutoryDescription.getDescriptions()) : null;
     List<LocalizedValue> descriptions = translateLocalizedItems(ptvService.getDescriptions());
     
     Service result = new Service();
