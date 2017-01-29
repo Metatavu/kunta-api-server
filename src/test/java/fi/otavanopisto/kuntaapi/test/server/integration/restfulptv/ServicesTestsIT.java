@@ -20,6 +20,9 @@ import fi.otavanopisto.kuntaapi.test.AbstractIntegrationTest;
 @SuppressWarnings ("squid:S1192")
 public class ServicesTestsIT extends AbstractIntegrationTest {
   
+  private static final String STATUTORY_DESCRIPTION = "Lapset ja perheet voivat saada hyvinvointinsa tueksi monenlaista toimintaa avoimissa päiväkodeissa.";
+  private static final String STATUTORY_SHORT_DESCRIPTION = "Lapsen hyvinvointia tuetaan kunnan varhaiskasvatuspalveluilla.";
+  
   /**
    * Starts WireMock
    */
@@ -30,6 +33,7 @@ public class ServicesTestsIT extends AbstractIntegrationTest {
   public void beforeTest() throws InterruptedException {
     createSettings();
     getPtvMocker()
+      .mockStatutoryDescriptions("2ddfcd49-b0a8-4221-8d8f-4c4d3c5c0ab8")
       .mockServices("6c9926b9-4aa0-4635-b66a-471af07dfec3", "822d5347-8398-4866-bb9d-9cdc60b38fba", "ef66b7c2-e938-4a30-ad57-475fc40abf27")
       .startMock();
     
@@ -40,6 +44,7 @@ public class ServicesTestsIT extends AbstractIntegrationTest {
   public void afterClass() {
     getPtvMocker().endMock();
     deleteSettings();
+    deleteAllServices();
   }
    
   private void createSettings() {
@@ -92,8 +97,11 @@ public class ServicesTestsIT extends AbstractIntegrationTest {
       .body("names[1].type", is("Name"))
       .body("descriptions.size()", is(3))
       .body("descriptions[0].language", is("fi"))
-      .body("descriptions[0].value", is("Varhaiskasvatus tukee lapsen elinikäistä oppimista, jossa leikillä on tärkeä merkitys. "))
+      .body("descriptions[0].value", is(String.format("%s%n%n%s", STATUTORY_SHORT_DESCRIPTION, "Varhaiskasvatus tukee lapsen elinikäistä oppimista, jossa leikillä on tärkeä merkitys. ")))
       .body("descriptions[0].type", is("ShortDescription"))
+      .body("descriptions[1].language", is("fi"))
+      .body("descriptions[1].value", is(String.format("%s%n%n%s", STATUTORY_DESCRIPTION, "Lapsiperheille tarjotaan vaihtoehtoisia palveluja erilaisiin elämäntilan-teisiin.")))
+      .body("descriptions[1].type", is("Description"))
       .body("languages.size()", is(1))
       .body("languages[0]", is("fi"))
       .body("keywords.size()", is(0))
@@ -120,7 +128,7 @@ public class ServicesTestsIT extends AbstractIntegrationTest {
       .statusCode(200)
       .body("id.size()", is(3))
       .body("id[1]", notNullValue())
-      .body("statutoryDescriptionId[1]", notNullValue())
+      .body("statutoryDescriptionId[1]", nullValue())
       .body("serviceClasses[1].size()", is(1))
       .body("serviceClasses[1][0].id", is("afc6b0aa-c63c-45e5-9169-138a1c4b593b"))
       .body("serviceClasses[1][0].name", is("Aamu- ja iltapäiväkerhotoiminta"))
