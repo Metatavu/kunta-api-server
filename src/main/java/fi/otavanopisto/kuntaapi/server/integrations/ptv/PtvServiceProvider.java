@@ -9,6 +9,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
 import fi.metatavu.kuntaapi.server.rest.model.Service;
+import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceId;
@@ -33,6 +34,9 @@ public class PtvServiceProvider implements ServiceProvider {
   private PtvServiceCache ptvServiceCache;
   
   @Inject
+  private IdentifierController identifierController;
+  
+  @Inject
   private IdController idController;
 
   @Override
@@ -42,34 +46,47 @@ public class PtvServiceProvider implements ServiceProvider {
 
   @Override
   public List<Service> listServices(OrganizationId organizationId) {
-    OrganizationId ptvOrganizationId = null;
+    List<ServiceId> serviceIds;
+    
     if (organizationId != null) {
-      ptvOrganizationId = idController.translateOrganizationId(organizationId, PtvConsts.IDENTIFIFER_NAME);
-      if (ptvOrganizationId == null) {
-        logger.severe(String.format("Failed to translate organizationId %s into PTV id", organizationId.toString()));
-        return Collections.emptyList();
-      }
-      
-      ApiResponse<List<fi.otavanopisto.restfulptv.client.model.Service>> servicesResponse = ptvApi.getServicesApi()
-        .listServices(ptvOrganizationId.getId(), null, null);
-      
-      if (!servicesResponse.isOk()) {
-        logger.severe(String.format("Failed to list services [%d] %s", servicesResponse.getStatus(), servicesResponse.getMessage()));
-        return Collections.emptyList();
-      }
-      
-      List<fi.otavanopisto.restfulptv.client.model.Service> ptvServices = servicesResponse.getResponse();
-      List<Service> result = new ArrayList<>(ptvServices.size());
-      for (fi.otavanopisto.restfulptv.client.model.Service ptvService : ptvServices) {
-        ServiceId ptvServiceId = new ServiceId(PtvConsts.IDENTIFIFER_NAME, ptvService.getId());
-        result.add(ptvServiceCache.get(ptvServiceId));
-      }
-      
-      return result;
+      serviceIds = listOrganizationServiceIds(organizationId);
     } else {
-      return new ArrayList<>(ptvServiceCache.getEntities());
+      serviceIds = identifierController.listServiceIdsBySource(PtvConsts.IDENTIFIFER_NAME);
     }
+    
+    List<Service> result = new ArrayList<>(serviceIds.size());
+    for (ServiceId serviceId : serviceIds) {
+      Service service = ptvServiceCache.get(serviceId);
+      if (service != null) {
+        result.add(service);
+      }
+    }
+    
+    return result;
   }
   
-
+  private List<ServiceId> listOrganizationServiceIds(OrganizationId organizationId) {
+    OrganizationId ptvOrganizationId = idController.translateOrganizationId(organizationId, PtvConsts.IDENTIFIFER_NAME);
+    if (ptvOrganizationId == null) {
+      logger.severe(String.format("Failed to translate organizationId %s into PTV id", organizationId.toString()));
+      return Collections.emptyList();
+    }
+    
+    ApiResponse<List<fi.otavanopisto.restfulptv.client.model.Service>> servicesResponse = ptvApi.getServicesApi()
+        .listServices(ptvOrganizationId.getId(), null, null);
+    
+    if (!servicesResponse.isOk()) {
+      logger.severe(String.format("Failed to list services [%d] %s", servicesResponse.getStatus(), servicesResponse.getMessage()));
+      return Collections.emptyList();
+    }
+    
+    List<fi.otavanopisto.restfulptv.client.model.Service> ptvServices = servicesResponse.getResponse();
+    List<ServiceId> result = new ArrayList<>(ptvServices.size());
+    for (fi.otavanopisto.restfulptv.client.model.Service ptvService : ptvServices) {
+      result.add(new ServiceId(PtvConsts.IDENTIFIFER_NAME, ptvService.getId()));
+    }
+    
+    return result;
+  }
+  
 }
