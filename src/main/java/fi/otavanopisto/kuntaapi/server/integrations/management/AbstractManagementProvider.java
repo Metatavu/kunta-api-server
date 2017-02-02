@@ -82,7 +82,7 @@ public abstract class AbstractManagementProvider {
       return null;
     }
     
-    ApiResponse<fi.metatavu.management.client.model.Attachment> response = managementApi.getApi(organizationId).wpV2MediaIdGet(String.valueOf(mediaId), null);
+    ApiResponse<fi.metatavu.management.client.model.Attachment> response = managementApi.getApi(organizationId).wpV2MediaIdGet(String.valueOf(mediaId), null, null);
     if (!response.isOk()) {
       logger.severe(String.format("Finding media failed on [%d] %s", response.getStatus(), response.getMessage()));
     } else {
