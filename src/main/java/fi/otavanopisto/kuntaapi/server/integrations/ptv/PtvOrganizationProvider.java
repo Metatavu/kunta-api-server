@@ -10,10 +10,10 @@ import javax.inject.Inject;
 
 import org.apache.commons.lang3.StringUtils;
 
+import fi.metatavu.kuntaapi.server.rest.model.Organization;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.OrganizationProvider;
-import fi.metatavu.kuntaapi.server.rest.model.Organization;
 import fi.otavanopisto.restfulptv.client.ApiResponse;
 
 /**
@@ -22,10 +22,13 @@ import fi.otavanopisto.restfulptv.client.ApiResponse;
  * @author Antti Leppä
  */
 @RequestScoped
-public class PtvOrganizationProvider extends AbstractPtvProvider implements OrganizationProvider {
+public class PtvOrganizationProvider implements OrganizationProvider {
   
   @Inject
   private Logger logger;
+  
+  @Inject
+  private PtvTranslator ptvTranslator;
   
   @Inject
   private PtvApi ptvApi;
@@ -46,7 +49,7 @@ public class PtvOrganizationProvider extends AbstractPtvProvider implements Orga
     if (!ptvOrganizationResponse.isOk()) {
       logger.severe(String.format("Organization %s reported [%d] %s", ptvOrganization.getId(), ptvOrganizationResponse.getStatus(), ptvOrganizationResponse.getMessage()));
     } else {
-      return translateOrganization(ptvOrganizationResponse.getResponse());
+      return ptvTranslator.translateOrganization(ptvOrganizationResponse.getResponse());
     }
     
     return null;
@@ -72,7 +75,7 @@ public class PtvOrganizationProvider extends AbstractPtvProvider implements Orga
         continue;
       } 
       
-      Organization organization = translateOrganization(ptvOrganization);
+      Organization organization = ptvTranslator.translateOrganization(ptvOrganization);
       if (organization != null) {
         result.add(organization);
       }

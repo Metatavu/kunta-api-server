@@ -81,6 +81,18 @@ public abstract class AbstractTest {
     executeDelete("delete from Identifier where type = 'PAGE'");
   }
   
+  protected void deleteAllOrganizationServices() {
+    executeDelete("delete from Identifier where type = 'ORGANIZATION_SERVICE'");
+  }
+
+  protected void deleteAllServiceChannels() {
+    executeDelete("delete from Identifier where type in ('ELECTRONIC_SERVICE_CHANNEL','PHONE_CHANNEL','PRINTABLE_FORM_CHANNEL','SERVICE_LOCATION_CHANNEL','WEBPAGE_CHANNEL')");
+  }
+   
+  protected void deleteAllServices() {
+    executeDelete("delete from Identifier where type = 'SERVICE'");
+  }
+  
   protected long executeInsert(String sql, Object... params) {
     try (Connection connection = getConnection()) {
       connection.setAutoCommit(true);

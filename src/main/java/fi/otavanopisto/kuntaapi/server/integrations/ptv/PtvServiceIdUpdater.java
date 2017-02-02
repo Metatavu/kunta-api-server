@@ -50,7 +50,7 @@ public class PtvServiceIdUpdater extends IdUpdater {
 
   @Override
   public String getName() {
-    return "services";
+    return "ptv-service-ids";
   }
   
   @Override
