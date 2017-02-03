@@ -30,6 +30,7 @@ public class OrganizationsServiceTestsIT extends AbstractIntegrationTest {
     createSettings();
     getPtvMocker()
       .mockOrganizations("0de268cf-1ea1-4719-8a6e-1150933b6b9e", "0f112910-08ca-4942-8c80-476cb710ee1d")
+      .mockStatutoryDescriptions("2ddfcd49-b0a8-4221-8d8f-4c4d3c5c0ab8")
       .mockServices("6c9926b9-4aa0-4635-b66a-471af07dfec3", "822d5347-8398-4866-bb9d-9cdc60b38fba", "ef66b7c2-e938-4a30-ad57-475fc40abf27")
       .mockOrganizationServices("0de268cf-1ea1-4719-8a6e-1150933b6b9e", "0de268cf-1ea1-4719-8a6e-1150933b6b9e+6c9926b9-4aa0-4635-b66a-471af07dfec3", "0de268cf-1ea1-4719-8a6e-1150933b6b9e+822d5347-8398-4866-bb9d-9cdc60b38fba", "0de268cf-1ea1-4719-8a6e-1150933b6b9e+ef66b7c2-e938-4a30-ad57-475fc40abf27")
       .mockNotFound("/v1/organizations/0f112910-08ca-4942-8c80-476cb710ee1d/organizationServices/0de268cf-1ea1-4719-8a6e-1150933b6b9e+6c9926b9-4aa0-4635-b66a-471af07dfec3")
@@ -46,6 +47,9 @@ public class OrganizationsServiceTestsIT extends AbstractIntegrationTest {
   public void afterClass() {
     getPtvMocker().endMock();
     deleteSettings();
+    deleteAllOrganizationServices();
+    deleteAllServiceChannels();
+    deleteAllServices();
   }
    
   private void createSettings() {

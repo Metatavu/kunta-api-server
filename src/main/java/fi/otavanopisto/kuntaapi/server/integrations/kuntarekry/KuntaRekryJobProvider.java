@@ -5,17 +5,17 @@ import java.util.Collections;
 import java.util.List;
 import java.util.logging.Logger;
 
-import javax.enterprise.context.Dependent;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
+import fi.metatavu.kuntaapi.server.rest.model.Job;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.JobId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.JobProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
-import fi.metatavu.kuntaapi.server.rest.model.Job;
 
-@Dependent
+@RequestScoped
 public class KuntaRekryJobProvider implements JobProvider {
   
   @Inject
@@ -46,7 +46,10 @@ public class KuntaRekryJobProvider implements JobProvider {
     
     List<Job> result = new ArrayList<>(kuntaRekryJobs.size());
     for (KuntaRekryJob kuntaRekryJob : kuntaRekryJobs) {
-      result.add(translateJob(organizationId, kuntaRekryJob));
+      Job job = translateJob(organizationId, kuntaRekryJob);
+      if (job != null) {
+        result.add(job);
+      }
     }
     
     return result;

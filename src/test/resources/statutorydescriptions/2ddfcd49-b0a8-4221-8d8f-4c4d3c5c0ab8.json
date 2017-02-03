@@ -1,0 +1,79 @@
+{
+  "id":"2ddfcd49-b0a8-4221-8d8f-4c4d3c5c0ab8",
+  "names":[
+    {
+      "language":"fi",
+      "value":"Avoin varhaiskasvatuspalvelu",
+      "type":"Name"
+    }
+  ],
+  "descriptions":[
+    {
+      "language":"fi",
+      "value":"Lapset ja perheet voivat saada hyvinvointinsa tueksi monenlaista toimintaa avoimissa päiväkodeissa.",
+      "type":"Description"
+    },
+    {
+      "language":"fi",
+      "value":"Lapsen hyvinvointia tuetaan kunnan varhaiskasvatuspalveluilla.",
+      "type":"ShortDescription"
+    }
+  ],
+  "languages":[
+    "fi"
+  ],
+  "serviceClasses":[
+    {
+      "id":"d9bb03c1-293a-4bcd-a97e-24934c44cbae",
+      "name":"Lasten päivähoito",
+      "code":"P3.4",
+      "ontologyType":null,
+      "uri":"http://urn.fi/URN:NBN:fi:au:ptvl:P3.4",
+      "parentId":"85d66b1d-a8a1-4eca-823e-8701a6b3d452",
+      "parentUri":null
+    }
+  ],
+  "ontologyTerms":[
+    {
+      "id":"d9c65c69-1e2c-42f7-aa66-69aa34da052b",
+      "name":"leikkitoiminta",
+      "code":"",
+      "ontologyType":null,
+      "uri":"http://www.yso.fi/onto/yso/p5514",
+      "parentId":null,
+      "parentUri":null
+    },
+    {
+      "id":"42430a70-a553-41e7-97a2-9dc93c24d159",
+      "name":"avoin varhaiskasvatus",
+      "code":"",
+      "ontologyType":"All",
+      "uri":"http://www.yso.fi/onto/koko/p54786",
+      "parentId":null,
+      "parentUri":null
+    }
+  ],
+  "targetGroups":[
+    {
+      "id":"bf7e1aed-a2a0-484b-ba05-004db883bd71",
+      "name":"Kansalaiset",
+      "code":"KR1",
+      "ontologyType":null,
+      "uri":"http://urn.fi/URN:NBN:fi:au:ptvl:KR1",
+      "parentId":null,
+      "parentUri":null
+    },
+    {
+      "id":"eaa41431-d4f9-4fb1-9af5-923b360785a6",
+      "name":"Lapset ja lapsiperheet",
+      "code":"KR1.2",
+      "ontologyType":null,
+      "uri":"http://urn.fi/URN:NBN:fi:au:ptvl:KR1.2",
+      "parentId":"bf7e1aed-a2a0-484b-ba05-004db883bd71",
+      "parentUri":null
+    }
+  ],
+  "lifeEvents":[
+
+  ]
+}

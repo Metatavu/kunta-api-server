@@ -151,7 +151,7 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
     DefaultApi api = managementApi.getApi(organizationId);
     Long orderIndex = updateRequest.getOrderIndex();
     
-    ApiResponse<Post> response = api.wpV2PostsIdGet(newsArticleId.getId(), null, null);
+    ApiResponse<Post> response = api.wpV2PostsIdGet(newsArticleId.getId(), null, null, null);
     if (response.isOk()) {
       updateManagementPost(organizationId, api, response.getResponse(), orderIndex);
     } else {
@@ -185,7 +185,7 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
   }
   
   private void updateFeaturedMedia(OrganizationId organizationId, NewsArticleId newsArticleId, DefaultApi api, Integer featuredMedia) {
-    ApiResponse<fi.metatavu.management.client.model.Attachment> response = api.wpV2MediaIdGet(String.valueOf(featuredMedia), null);
+    ApiResponse<fi.metatavu.management.client.model.Attachment> response = api.wpV2MediaIdGet(String.valueOf(featuredMedia), null, null);
     if (!response.isOk()) {
       logger.severe(String.format("Finding media failed on [%d] %s", response.getStatus(), response.getMessage()));
     } else {
