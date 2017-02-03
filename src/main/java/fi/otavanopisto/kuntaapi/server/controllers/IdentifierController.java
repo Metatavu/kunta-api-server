@@ -27,6 +27,7 @@ import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationBaseId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
+import fi.otavanopisto.kuntaapi.server.id.ServiceId;
 import fi.otavanopisto.kuntaapi.server.id.TileId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.persistence.dao.IdentifierDAO;
@@ -296,6 +297,17 @@ public class IdentifierController {
     
     return result;
   }
+  
+  public List<ServiceId> listServiceIdsBySource(String source) {
+    List<Identifier> identifiers = identifierDAO.listBySourceAndType(source, IdType.SERVICE.name());
+    List<ServiceId> result = new ArrayList<>(identifiers.size());
+
+    for (Identifier identifier : identifiers) {
+      result.add(new ServiceId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId()));
+    }
+ 
+    return result;
+  }
 
   public void deleteIdentifier(Identifier identifier) {
     identifierDAO.delete(identifier);
@@ -354,4 +366,5 @@ public class IdentifierController {
     
     return null;
   }
+
 }

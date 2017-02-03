@@ -35,6 +35,7 @@ import fi.otavanopisto.kuntaapi.server.utils.LocalizationUtils;
 import fi.otavanopisto.restfulptv.client.ApiResponse;
 import fi.otavanopisto.restfulptv.client.model.LocalizedListItem;
 import fi.otavanopisto.restfulptv.client.model.Service;
+import fi.otavanopisto.restfulptv.client.model.StatutoryDescription;
 
 @ApplicationScoped
 @Singleton
@@ -51,10 +52,16 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
   private PtvApi ptvApi;
   
   @Inject
+  private PtvTranslator ptvTranslator;
+  
+  @Inject
   private IdController idController;
   
   @Inject
   private IdentifierController identifierController;
+  
+  @Inject
+  private PtvServiceCache ptvServiceCache;
 
   @Inject
   private ModificationHashCache modificationHashCache;
@@ -75,7 +82,7 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
 
   @Override
   public String getName() {
-    return "services";
+    return "ptv-services";
   }
 
   @Override
@@ -131,13 +138,27 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
         identifier = identifierController.updateIdentifier(identifier, null, orderIndex);
       }
       
-      Service service = response.getResponse();
-
+      Service ptvService = response.getResponse();
+      ServiceId kuntaApiServiceId = new ServiceId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
+      StatutoryDescription ptvStatutoryDescription = ptvService.getStatutoryDescriptionId() != null ? getStatutoryDescription(ptvService.getStatutoryDescriptionId()) : null;
+      
+      fi.metatavu.kuntaapi.server.rest.model.Service service = ptvTranslator.translateService(kuntaApiServiceId, ptvService, ptvStatutoryDescription);
+      ptvServiceCache.put(kuntaApiServiceId, service);
       modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(service));
-      index(identifier.getKuntaApiId(), service);
+      index(identifier.getKuntaApiId(), ptvService);
     } else {
       logger.warning(String.format("Service %s processing failed on [%d] %s", serviceId.getId(), response.getStatus(), response.getMessage()));
     }
+  }
+  
+  private StatutoryDescription getStatutoryDescription(String statutoryDescriptionId) {
+    ApiResponse<StatutoryDescription> response = ptvApi.getStatutoryDescriptionsApi().findStatutoryDescription(statutoryDescriptionId);
+    if (response.isOk()) {
+      return response.getResponse();
+    } 
+    
+    logger.warning(String.format("StatutoryDescription %s could not be loaded [%d] %s", statutoryDescriptionId, response.getStatus(), response.getMessage()));
+    return null;
   }
   
   private void index(String serviceId, Service service) {

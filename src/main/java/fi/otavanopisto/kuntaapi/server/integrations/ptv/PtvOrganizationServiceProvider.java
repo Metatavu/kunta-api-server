@@ -20,10 +20,13 @@ import fi.otavanopisto.restfulptv.client.ApiResponse;
  * @author Antti Leppä
  */
 @RequestScoped
-public class PtvOrganizationServiceProvider extends AbstractPtvProvider implements OrganizationServiceProvider {
+public class PtvOrganizationServiceProvider implements OrganizationServiceProvider {
   
   @Inject
   private Logger logger;
+
+  @Inject
+  private PtvTranslator ptvTranslator;
   
   @Inject
   private PtvApi ptvApi;
@@ -52,7 +55,7 @@ public class PtvOrganizationServiceProvider extends AbstractPtvProvider implemen
       logger.severe(String.format("Organization service %s reported [%d] %s", ptvOrganizationServiceId.getId(), ptvResponse.getStatus(), ptvResponse.getMessage()));
       return null;
     } else {
-      return translateOrganizationService(organizationId, ptvResponse.getResponse());
+      return ptvTranslator.translateOrganizationService(organizationId, ptvResponse.getResponse());
     }
   }
 
@@ -71,7 +74,7 @@ public class PtvOrganizationServiceProvider extends AbstractPtvProvider implemen
       logger.severe(String.format("Organization service list %s reported [%d] %s", ptvOrganizationId.getId(), ptvResponse.getStatus(), ptvResponse.getMessage()));
       return Collections.emptyList();
     } else {
-      return translateOrganizationServices(organizationId, ptvResponse.getResponse());
+      return ptvTranslator.translateOrganizationServices(organizationId, ptvResponse.getResponse());
     }
   }
 

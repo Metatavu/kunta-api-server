@@ -4,6 +4,7 @@ import static com.jayway.restassured.RestAssured.given;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.fail;
 
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.jayway.restassured.http.ContentType;
@@ -64,13 +65,18 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
           return;
         }
         
+        if (listCount > count) {
+          fail(String.format("listCount %d > %d when waiting for path %s", listCount, count, path));
+        }
+        
         if (System.currentTimeMillis() > timeout) {
           fail(String.format("Timeout waiting for %s to have count %d", path, count));
         }
         
         if ((counter % 10) == 0) {
-          logger.info(String.format("... still waiting %d items, current count %d", count, listCount));
+          logger.log(Level.WARNING, () -> String.format("... still waiting %d items in %s, current count %d", count, path, listCount));
         }
+        
       } catch (JsonPathException e) {
         
       }
