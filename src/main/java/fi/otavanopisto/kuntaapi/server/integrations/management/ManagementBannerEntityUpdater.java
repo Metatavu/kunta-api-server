@@ -153,7 +153,7 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
     DefaultApi api = managementApi.getApi(organizationId);
     BannerId managementBannerId = updateRequest.getId();
     
-    fi.metatavu.management.client.ApiResponse<Banner> response = api.wpV2BannerIdGet(managementBannerId.getId(), null, null);
+    fi.metatavu.management.client.ApiResponse<Banner> response = api.wpV2BannerIdGet(managementBannerId.getId(), null, null, null);
     if (response.isOk()) {
       updateManagementBanner(api, organizationId, response.getResponse(), updateRequest.getOrderIndex());
     } else {
@@ -189,7 +189,7 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
   }
   
   private void updateFeaturedMedia(OrganizationId organizationId, DefaultApi api, BannerId bannerId, Integer featuredMedia) {
-    ApiResponse<fi.metatavu.management.client.model.Attachment> response = api.wpV2MediaIdGet(String.valueOf(featuredMedia), null);
+    ApiResponse<fi.metatavu.management.client.model.Attachment> response = api.wpV2MediaIdGet(String.valueOf(featuredMedia), null, null);
     if (!response.isOk()) {
       logger.severe(String.format("Finding media failed on [%d] %s", response.getStatus(), response.getMessage()));
     } else {

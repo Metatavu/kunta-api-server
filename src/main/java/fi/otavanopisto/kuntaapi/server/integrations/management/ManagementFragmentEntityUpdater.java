@@ -134,7 +134,7 @@ public class ManagementFragmentEntityUpdater extends EntityUpdater {
   private void updateManagementFragment(OrganizationId organizationId, FragmentId fragmentId, Long orderIndex) {
     DefaultApi api = managementApi.getApi(organizationId);
     
-    ApiResponse<Fragment> response = api.wpV2FragmentIdGet(fragmentId.getId(), null, null);
+    ApiResponse<Fragment> response = api.wpV2FragmentIdGet(fragmentId.getId(), null, null, null);
     if (response.isOk()) {
       updateManagementFragment(organizationId, response.getResponse(), orderIndex);
     } else {
