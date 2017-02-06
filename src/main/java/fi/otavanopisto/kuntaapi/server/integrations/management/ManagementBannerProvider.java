@@ -6,17 +6,18 @@ import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
+import fi.metatavu.kuntaapi.server.rest.model.Attachment;
+import fi.metatavu.kuntaapi.server.rest.model.Banner;
+import fi.metatavu.management.client.model.Attachment.MediaTypeEnum;
 import fi.otavanopisto.kuntaapi.server.cache.BannerCache;
 import fi.otavanopisto.kuntaapi.server.cache.BannerImageCache;
+import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.BannerId;
 import fi.otavanopisto.kuntaapi.server.id.IdPair;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.BannerProvider;
-import fi.metatavu.kuntaapi.server.rest.model.Attachment;
-import fi.metatavu.kuntaapi.server.rest.model.Banner;
-import fi.metatavu.management.client.model.Attachment.MediaTypeEnum;
 
 /**
  * Banner provider for management wordpress
@@ -25,6 +26,9 @@ import fi.metatavu.management.client.model.Attachment.MediaTypeEnum;
  */
 @RequestScoped
 public class ManagementBannerProvider extends AbstractManagementProvider implements BannerProvider {
+  
+  @Inject
+  private IdentifierController identifierController;
   
   @Inject
   private BannerCache bannerCache;
@@ -37,7 +41,7 @@ public class ManagementBannerProvider extends AbstractManagementProvider impleme
   
   @Override
   public List<Banner> listOrganizationBanners(OrganizationId organizationId) {
-    List<BannerId> bannerIds = bannerCache.getOragnizationIds(organizationId);
+    List<BannerId> bannerIds = identifierController.listBannerIdsParentId(organizationId);
     List<Banner> banners = new ArrayList<>(bannerIds.size());
     
     for (BannerId bannerId : bannerIds) {

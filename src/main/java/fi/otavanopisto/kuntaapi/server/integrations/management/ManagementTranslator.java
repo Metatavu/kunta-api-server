@@ -109,9 +109,12 @@ public class ManagementTranslator {
     banner.setContents(managementBanner.getContent().getRendered());
     banner.setId(kuntaApiBannerId.getId());
     banner.setLink(managementBanner.getBannerLink());
-    banner.setTitle(managementBanner.getTitle().getRendered());
     banner.setBackgroundColor(managementBanner.getBannerBackgroundColor());
     banner.setTextColor(managementBanner.getBannerTextColor());
+
+    if (!Boolean.TRUE.equals(managementBanner.getBannerHideTitle())) {
+      banner.setTitle(managementBanner.getTitle().getRendered());
+    }
     
     return banner;
   }
