@@ -14,6 +14,7 @@ import javax.ejb.Timer;
 import javax.ejb.TimerConfig;
 import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.event.Event;
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 
@@ -37,6 +38,10 @@ import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.IdPair;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
+import fi.otavanopisto.kuntaapi.server.index.IndexRemovePage;
+import fi.otavanopisto.kuntaapi.server.index.IndexRemoveRequest;
+import fi.otavanopisto.kuntaapi.server.index.IndexRequest;
+import fi.otavanopisto.kuntaapi.server.index.IndexablePage;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementPageCache;
@@ -82,7 +87,13 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
   
   @Inject
   private ModificationHashCache modificationHashCache;
-  
+
+  @Inject
+  private Event<IndexRequest> indexRequest;
+
+  @Inject
+  private Event<IndexRemoveRequest> indexRemoveRequest;
+
   @Resource
   private TimerService timerService;
 
@@ -191,12 +202,15 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
     
     PageId kuntaApiPageId = new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
     fi.metatavu.kuntaapi.server.rest.model.Page page = managementTranslator.translatePage(kuntaApiPageId, kuntaApiParentPageId, managementPage);
-    List<LocalizedValue> pageContents = managementTranslator.translateLocalized(managementPage.getContent().getRendered());
+    String contents = managementPage.getContent().getRendered();
+    String title = managementPage.getTitle().getRendered();
+    List<LocalizedValue> pageContents = managementTranslator.translateLocalized(contents);
     
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(managementPage));
     pageCache.put(kuntaApiPageId, page);
     pageContentCache.put(kuntaApiPageId, pageContents);
-    
+    indexRequest.fire(new IndexRequest(createIndexablePage(organizationId, kuntaApiPageId, ManagementConsts.DEFAULT_LOCALE, contents, title)));
+
     if (managementPage.getFeaturedMedia() != null && managementPage.getFeaturedMedia() > 0) {
       updateFeaturedMedia(organizationId, kuntaApiPageId, api, managementPage.getFeaturedMedia()); 
     }
@@ -242,6 +256,11 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
       pageContentCache.clear(kuntaApiPageId);
       identifierController.deleteIdentifier(pageIdentifier);
       
+      IndexRemovePage indexRemove = new IndexRemovePage();
+      indexRemove.setPageId(kuntaApiPageId.getId());
+      indexRemove.setLanguage(ManagementConsts.DEFAULT_LOCALE);
+      indexRemoveRequest.fire(new IndexRemoveRequest(indexRemove));
+      
       List<IdPair<PageId,AttachmentId>> pageImageIds = pageImageCache.getChildIds(kuntaApiPageId);
       for (IdPair<PageId,AttachmentId> pageImageId : pageImageIds) {
         AttachmentId attachmentId = pageImageId.getChild();
@@ -254,6 +273,23 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
         }
       }
     }
-    
   }
+
+  private IndexablePage createIndexablePage(OrganizationId organizationId, PageId kuntaApiPageId, String language, String content, String title) {
+    OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(kuntaApiPageId.getOrganizationId(), KuntaApiConsts.IDENTIFIER_NAME);
+    if (kuntaApiOrganizationId == null) {
+      logger.severe(String.format("Failed to translate organizationId %s into KuntaAPI id", organizationId.toString()));
+      return null;
+    }
+    
+    IndexablePage indexablePage = new IndexablePage();
+    indexablePage.setContent(content);
+    indexablePage.setLanguage(language);
+    indexablePage.setOrganizationId(kuntaApiOrganizationId.getId());
+    indexablePage.setPageId(kuntaApiPageId.getId());
+    indexablePage.setTitle(title);
+    
+    return indexablePage;
+  }
+  
 }
