@@ -81,6 +81,10 @@ public abstract class AbstractTest {
     executeDelete("delete from Identifier where type = 'PAGE'");
   }
   
+  protected void deleteAllBanners() {
+    executeDelete("delete from Identifier where type = 'BANNER'");
+  }
+  
   protected void deleteAllOrganizationServices() {
     executeDelete("delete from Identifier where type = 'ORGANIZATION_SERVICE'");
   }
