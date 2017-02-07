@@ -212,12 +212,16 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
     indexRequest.fire(new IndexRequest(createIndexablePage(organizationId, kuntaApiPageId, ManagementConsts.DEFAULT_LOCALE, contents, title)));
 
     if (managementPage.getFeaturedMedia() != null && managementPage.getFeaturedMedia() > 0) {
-      updateFeaturedMedia(organizationId, kuntaApiPageId, api, managementPage.getFeaturedMedia()); 
+      updateAttachment(organizationId, kuntaApiPageId, api, managementPage.getFeaturedMedia().longValue(), ManagementConsts.ATTACHMENT_TYPE_PAGE_FEATURED); 
+    }
+    
+    if (managementPage.getBannerImage() != null && managementPage.getBannerImage() > 0) {
+      updateAttachment(organizationId, kuntaApiPageId, api, managementPage.getBannerImage(), ManagementConsts.ATTACHMENT_TYPE_PAGE_FEATURED); 
     }
   }
   
-  private void updateFeaturedMedia(OrganizationId organizationId, PageId pageId, DefaultApi api, Integer featuredMedia) {
-    ApiResponse<fi.metatavu.management.client.model.Attachment> response = api.wpV2MediaIdGet(String.valueOf(featuredMedia), null, null);
+  private void updateAttachment(OrganizationId organizationId, PageId pageId, DefaultApi api, Long managementMediaId, String type) {
+    ApiResponse<fi.metatavu.management.client.model.Attachment> response = api.wpV2MediaIdGet(String.valueOf(managementMediaId), null, null);
     if (!response.isOk()) {
       logger.severe(String.format("Finding media failed on [%d] %s", response.getStatus(), response.getMessage()));
     } else {
@@ -233,7 +237,7 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
       }
       
       AttachmentId kuntaApiAttachmentId = new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
-      Attachment kuntaApiAttachment = managementTranslator.translateAttachment(kuntaApiAttachmentId, managementAttachment);
+      Attachment kuntaApiAttachment = managementTranslator.translateAttachment(kuntaApiAttachmentId, managementAttachment, type);
       pageImageCache.put(new IdPair<PageId, AttachmentId>(pageId, kuntaApiAttachmentId), kuntaApiAttachment);
       
       AttachmentData imageData = managementImageLoader.getImageData(managementAttachment.getSourceUrl());

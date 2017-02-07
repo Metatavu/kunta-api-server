@@ -8,6 +8,8 @@ import javax.inject.Inject;
 
 import org.apache.commons.lang3.math.NumberUtils;
 
+import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
+import fi.metatavu.management.client.ApiResponse;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
@@ -17,9 +19,6 @@ import fi.otavanopisto.kuntaapi.server.images.ImageScaler;
 import fi.otavanopisto.kuntaapi.server.images.ImageWriter;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
-import fi.metatavu.kuntaapi.server.rest.model.Attachment;
-import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
-import fi.metatavu.management.client.ApiResponse;
 
 /**
  * Abstract base class for management providers
@@ -90,10 +89,6 @@ public abstract class AbstractManagementProvider {
     }
     
     return null;
-  }
-  
-  protected Attachment translateAttachment(OrganizationId organizationId, fi.metatavu.management.client.model.Attachment featuredMedia) {
-    return managementTranslator.translateAttachment(organizationId, featuredMedia);
   }
   
   protected List<LocalizedValue> translateLocalized(String value) {

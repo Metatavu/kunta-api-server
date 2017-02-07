@@ -13,6 +13,11 @@ public class ManagementConsts {
   public static final boolean CACHE_RESPONSES = false;
   public static final String ORGANIZATION_SETTING_BASEURL = "managementservice.baseUrl";
   public static final String DEFAULT_LOCALE = "fi";
+  public static final String ATTACHMENT_TYPE_BANNER = "banner";
+  public static final String ATTACHMENT_TYPE_TILE = "tile";
+  public static final String ATTACHMENT_TYPE_NEWS = "news";
+  public static final String ATTACHMENT_TYPE_PAGE_FEATURED = "featured";
+  public static final String ATTACHMENT_TYPE_PAGE_BANNER = "banner";
 
   private ManagementConsts() {
   }

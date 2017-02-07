@@ -49,9 +49,10 @@ public interface PageProvider {
    * 
    * @param organizationId organization id
    * @param pageId page id
+   * @param type image type
    * @return list of images attached to the page
    */
-  public List<Attachment> listOrganizationPageImages(OrganizationId organizationId, PageId pageId);
+  public List<Attachment> listOrganizationPageImages(OrganizationId organizationId, PageId pageId, String type);
   
   /**
    * Finds a page image

@@ -97,7 +97,7 @@ public class CaseMPageProvider implements PageProvider {
   }
 
   @Override
-  public List<Attachment> listOrganizationPageImages(OrganizationId organizationId, PageId pageId) {
+  public List<Attachment> listOrganizationPageImages(OrganizationId organizationId, PageId pageId, String type) {
     return Collections.emptyList();
   }
 
