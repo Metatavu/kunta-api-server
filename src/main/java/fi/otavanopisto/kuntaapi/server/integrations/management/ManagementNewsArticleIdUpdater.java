@@ -20,16 +20,19 @@ import javax.enterprise.event.Event;
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 
+import fi.metatavu.management.client.ApiResponse;
+import fi.metatavu.management.client.DefaultApi;
+import fi.metatavu.management.client.model.Post;
+import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.IdUpdater;
+import fi.otavanopisto.kuntaapi.server.discover.NewsArticleIdRemoveRequest;
 import fi.otavanopisto.kuntaapi.server.discover.NewsArticleIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.discover.OrganizationIdUpdateRequest;
+import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 import fi.otavanopisto.kuntaapi.server.system.SystemUtils;
-import fi.metatavu.management.client.ApiResponse;
-import fi.metatavu.management.client.DefaultApi;
-import fi.metatavu.management.client.model.Post;
 
 @ApplicationScoped
 @Singleton
@@ -39,6 +42,8 @@ public class ManagementNewsArticleIdUpdater extends IdUpdater {
 
   private static final int WARMUP_TIME = 1000 * 10;
   private static final int TIMER_INTERVAL = 5000;
+  private static final int PER_PAGE = 100;
+  private static final int MAX_PAGES = 10;
   
   @Inject
   private Logger logger;
@@ -48,9 +53,18 @@ public class ManagementNewsArticleIdUpdater extends IdUpdater {
   
   @Inject
   private OrganizationSettingController organizationSettingController; 
+
+  @Inject
+  private IdentifierController identifierController;
+  
+  @Inject
+  private IdController idController;
   
   @Inject
   private Event<NewsArticleIdUpdateRequest> idUpdateRequest;
+
+  @Inject
+  private Event<NewsArticleIdRemoveRequest> idRemoveRequest;
 
   private boolean stopped;
   private List<OrganizationId> queue;
@@ -118,17 +132,43 @@ public class ManagementNewsArticleIdUpdater extends IdUpdater {
   
   private void updateManagementPosts(OrganizationId organizationId) {
     DefaultApi api = managementApi.getApi(organizationId);
+    List<Post> managementPosts = new ArrayList<>();
     
-    List<Post> managementPosts = listManagementPosts(api, organizationId);
-    for (int i = 0; i < managementPosts.size(); i++) {
+    int page = 1;
+    do {
+      List<Post> pagePosts = listManagementPosts(api, organizationId, page);
+      managementPosts.addAll(pagePosts);
+      if (pagePosts.isEmpty() || pagePosts.size() < PER_PAGE) {
+        break;
+      } else {
+        page++;
+      }
+    } while (page < MAX_PAGES);
+    
+    for (int i = 0, l = managementPosts.size(); i < l; i++) {
       Post managementPost = managementPosts.get(i);
       NewsArticleId newsArticleId = new NewsArticleId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementPost.getId()));
       idUpdateRequest.fire(new NewsArticleIdUpdateRequest(organizationId, newsArticleId, (long) i, false));
     }
+    
+    checkRemovedManagementPosts(api, organizationId);
   }
   
-  private List<Post> listManagementPosts(DefaultApi api, OrganizationId organizationId) {
-    ApiResponse<List<Post>> response = api.wpV2PostsGet(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+  private void checkRemovedManagementPosts(DefaultApi api, OrganizationId organizationId) {
+    List<NewsArticleId> newsArticleIds = identifierController.listOrganizationNewsArticleIdsBySource(organizationId, ManagementConsts.IDENTIFIER_NAME);
+    for (NewsArticleId newsArticleId : newsArticleIds) {
+      NewsArticleId managementArticleId = idController.translateNewsArticleId(newsArticleId, ManagementConsts.IDENTIFIER_NAME);
+      if (managementArticleId != null) {
+        ApiResponse<Post> response = api.wpV2PostsIdGet(managementArticleId.getId(), null, null, null);
+        if (response.getStatus() == 404) {
+          idRemoveRequest.fire(new NewsArticleIdRemoveRequest(organizationId, managementArticleId));
+        }
+      }
+    }
+  }
+  
+  private List<Post> listManagementPosts(DefaultApi api, OrganizationId organizationId, Integer page) {
+    ApiResponse<List<Post>> response = api.wpV2PostsGet(null, page, PER_PAGE, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
     if (response.isOk()) {
       return response.getResponse();
     } else {
