@@ -82,12 +82,11 @@ public class ManagementPageProvider extends AbstractManagementProvider implement
 
   @Override
   public List<Attachment> listOrganizationPageImages(OrganizationId organizationId, PageId pageId, String type) {
-    List<IdPair<PageId, AttachmentId>> childIds = pageImageCache.getChildIds(pageId);
-
-    List<Attachment> result = new ArrayList<>(childIds.size());
+    List<AttachmentId> attachmentIds = identifierController.listAttachmentIdsBySourceAndParentId(ManagementConsts.IDENTIFIER_NAME, pageId);
+    List<Attachment> result = new ArrayList<>(attachmentIds.size());
     
-    for (IdPair<PageId, AttachmentId> childId : childIds) {
-      Attachment attachment = pageImageCache.get(childId);
+    for (AttachmentId attachmentId : attachmentIds) {
+      Attachment attachment = pageImageCache.get(new IdPair<PageId, AttachmentId>(pageId, attachmentId));
       if (attachment != null && (type == null || StringUtils.equals(attachment.getType(), type))) {
         result.add(attachment);
       }
