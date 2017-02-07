@@ -216,7 +216,7 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
     }
     
     if (managementPage.getBannerImage() != null && managementPage.getBannerImage() > 0) {
-      updateAttachment(organizationId, kuntaApiPageId, api, managementPage.getBannerImage(), ManagementConsts.ATTACHMENT_TYPE_PAGE_FEATURED); 
+      updateAttachment(organizationId, kuntaApiPageId, api, managementPage.getBannerImage(), ManagementConsts.ATTACHMENT_TYPE_PAGE_BANNER); 
     }
   }
   
