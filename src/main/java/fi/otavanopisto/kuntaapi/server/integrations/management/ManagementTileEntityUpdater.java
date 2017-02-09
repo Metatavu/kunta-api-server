@@ -40,7 +40,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
-import fi.otavanopisto.kuntaapi.server.system.SystemUtils;
+import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 
 @ApplicationScoped
 @Singleton
@@ -52,7 +52,10 @@ public class ManagementTileEntityUpdater extends EntityUpdater {
 
   @Inject
   private Logger logger;
-  
+
+  @Inject
+  private SystemSettingController systemSettingController;
+
   @Inject
   private ManagementApi managementApi;
   
@@ -139,12 +142,14 @@ public class ManagementTileEntityUpdater extends EntityUpdater {
   @Timeout
   public void timeout(Timer timer) {
     if (!stopped) {
-      TileIdUpdateRequest updateRequest = queue.next();
-      if (updateRequest != null) {
-        updateManagementTile(updateRequest);
+      if (systemSettingController.isNotTestingOrTestRunning()) {
+        TileIdUpdateRequest updateRequest = queue.next();
+        if (updateRequest != null) {
+          updateManagementTile(updateRequest);
+        }
       }
 
-      startTimer(SystemUtils.inTestMode() ? 1000 : TIMER_INTERVAL);
+      startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
     }
   }
 

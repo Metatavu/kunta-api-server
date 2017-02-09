@@ -50,7 +50,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.metatavu.kuntaapi.server.rest.model.Attachment;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
-import fi.otavanopisto.kuntaapi.server.system.SystemUtils;
+import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 import fi.otavanopisto.mikkelinyt.model.Event;
 import fi.otavanopisto.mikkelinyt.model.EventsResponse;
 
@@ -64,7 +64,10 @@ public class MikkeliNytEntityUpdater extends EntityUpdater {
 
   @Inject
   private Logger logger;
-  
+
+  @Inject
+  private SystemSettingController systemSettingController;
+
   @Inject
   private GenericHttpClient httpClient;
   
@@ -149,11 +152,11 @@ public class MikkeliNytEntityUpdater extends EntityUpdater {
   @Timeout
   public void timeout(Timer timer) {
     if (!stopped) {
-      if (!queue.isEmpty()) {
+      if (systemSettingController.isNotTestingOrTestRunning() && !queue.isEmpty()) {
         updateEvents(queue.remove(0));
       }
 
-      startTimer(SystemUtils.inTestMode() ? 1000 : TIMER_INTERVAL);
+      startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
     }
   }
 

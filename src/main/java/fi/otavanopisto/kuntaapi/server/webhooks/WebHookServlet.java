@@ -40,6 +40,8 @@ public class WebHookServlet extends HttpServlet {
       return;
     }
     
+    logger.log(Level.INFO, () -> String.format("Received webhook for %s", type));
+    
     String organizationIdParam = request.getParameter("organizationId");
     if (StringUtils.isBlank(organizationIdParam)) {
       sendResponse(response, HttpServletResponse.SC_BAD_REQUEST, "Missing organizationId");

@@ -22,7 +22,7 @@ import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
 import fi.otavanopisto.kuntaapi.server.discover.OrganizationIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
-import fi.otavanopisto.kuntaapi.server.system.SystemUtils;
+import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 
 @ApplicationScoped
 @Singleton
@@ -30,10 +30,13 @@ import fi.otavanopisto.kuntaapi.server.system.SystemUtils;
 @SuppressWarnings ("squid:S3306")
 public class CaseMOrganizationContentsEntityUpdater extends EntityUpdater {
 
-  private static final int TIMER_INTERVAL = SystemUtils.inTestMode() ? 1000 : 1000 * 60 * 10;
+  private static final int TIMER_INTERVAL = 1000 * 60 * 10;
 
   @Inject
   private CaseMCacheUpdater cacheUpdater;
+  
+  @Inject
+  private SystemSettingController systemSettingController;
   
   @Inject
   private OrganizationSettingController organizationSettingController;
@@ -62,7 +65,7 @@ public class CaseMOrganizationContentsEntityUpdater extends EntityUpdater {
 
   @Override
   public void startTimer() {
-    startTimer(TIMER_INTERVAL);
+    startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
   }
 
   private void startTimer(int duration) {
@@ -98,28 +101,34 @@ public class CaseMOrganizationContentsEntityUpdater extends EntityUpdater {
   @Timeout
   public void timeout(Timer timer) {
     if (!stopped) {
-      switch (queue) {
-        case NODES:
-          if (!nodeQueue.isEmpty()) {
-            boardQueue.add(updateOrganizationNodes(nodeQueue.remove(0)));
-            queue = queue.next();
-          }
-        break;
-        case BOARDS:
-          if (!boardQueue.isEmpty()) {
-            meetingQueue.add(updateOrganizationBoards(boardQueue.remove(0)));
-            queue = queue.next();
-          }
-        break;
-        case MEETINGS:
-          if (!meetingQueue.isEmpty()) {
-            updateOrganizationMeetings(meetingQueue.remove(0));          
-            queue = queue.next();
-          }
-        break;
+      if (systemSettingController.isNotTestingOrTestRunning()) {
+        updateNext();
       }
       
-      startTimer(SystemUtils.inTestMode() ? 1000 : TIMER_INTERVAL);
+      startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
+    }
+  }
+
+  private void updateNext() {
+    switch (queue) {
+      case NODES:
+        if (!nodeQueue.isEmpty()) {
+          boardQueue.add(updateOrganizationNodes(nodeQueue.remove(0)));
+          queue = queue.next();
+        }
+      break;
+      case BOARDS:
+        if (!boardQueue.isEmpty()) {
+          meetingQueue.add(updateOrganizationBoards(boardQueue.remove(0)));
+          queue = queue.next();
+        }
+      break;
+      case MEETINGS:
+        if (!meetingQueue.isEmpty()) {
+          updateOrganizationMeetings(meetingQueue.remove(0));          
+          queue = queue.next();
+        }
+      break;
     }
   }
 

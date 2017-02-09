@@ -17,7 +17,7 @@ import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.IdUpdater;
 import fi.otavanopisto.kuntaapi.server.discover.ServiceIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.id.ServiceId;
-import fi.otavanopisto.kuntaapi.server.system.SystemUtils;
+import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 import fi.otavanopisto.restfulptv.client.ApiResponse;
 import fi.otavanopisto.restfulptv.client.model.Service;
 
@@ -32,7 +32,10 @@ public class PtvServiceIdUpdater extends IdUpdater {
   
   @Inject
   private Logger logger;
-  
+
+  @Inject
+  private SystemSettingController systemSettingController;
+
   @Inject
   private PtvApi ptvApi;
   
@@ -75,9 +78,11 @@ public class PtvServiceIdUpdater extends IdUpdater {
   public void timeout(Timer timer) {
     if (!stopped) {
       try {
-        discoverIds();
+        if (systemSettingController.isNotTestingOrTestRunning()) {
+          discoverIds();
+        }
       } finally {
-        startTimer(SystemUtils.inTestMode() ? 1000 : TIMER_INTERVAL);
+        startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
       }
     }
   }
