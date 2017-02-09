@@ -27,6 +27,7 @@ import fi.metatavu.management.client.ApiResponse;
 import fi.metatavu.management.client.DefaultApi;
 import fi.metatavu.management.client.model.Page;
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
+import fi.otavanopisto.kuntaapi.server.controllers.IdMapController;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
 import fi.otavanopisto.kuntaapi.server.discover.IdUpdateRequestQueue;
@@ -78,6 +79,9 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
 
   @Inject
   private IdentifierController identifierController;
+  
+  @Inject
+  private IdMapController idMapController;
 
   @Inject
   private ManagementPageCache pageCache;
@@ -186,18 +190,22 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
   
   private void updateManagementPage(OrganizationId organizationId, DefaultApi api, Page managementPage, Long orderIndex) {
     PageId managementPageId = new PageId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementPage.getId()));
-    PageId kuntaApiParentPageId = null;
     
-    if (managementPage.getParent() != null && managementPage.getParent() > 0) {
+    BaseId identifierParentId = idMapController.findMappedPageParentId(organizationId, managementPageId);
+
+    if (identifierParentId == null && managementPage.getParent() != null && managementPage.getParent() > 0) {
       PageId managementParentPageId = new PageId(organizationId, ManagementConsts.IDENTIFIER_NAME,String.valueOf(managementPage.getParent()));
-      kuntaApiParentPageId = idController.translatePageId(managementParentPageId, KuntaApiConsts.IDENTIFIER_NAME);
-      if (kuntaApiParentPageId == null) {
+      identifierParentId = idController.translatePageId(managementParentPageId, KuntaApiConsts.IDENTIFIER_NAME);
+      if (identifierParentId == null) {
         logger.severe(String.format("Could not translate %d parent page %d into management page id", managementPage.getParent(), managementPage.getId()));
         return;
       } 
     }
     
-    BaseId identifierParentId = kuntaApiParentPageId == null ? organizationId : kuntaApiParentPageId;
+    if (identifierParentId == null) {
+      identifierParentId = organizationId;
+    }
+    
     Identifier identifier = identifierController.findIdentifierById(managementPageId);
     if (identifier == null) {
       identifier = identifierController.createIdentifier(identifierParentId, orderIndex, managementPageId);
@@ -205,8 +213,9 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
       identifier = identifierController.updateIdentifier(identifier, identifierParentId, orderIndex);
     }
     
+    PageId pageParentId = identifierParentId instanceof PageId ? (PageId) identifierParentId : null;
     PageId kuntaApiPageId = new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
-    fi.metatavu.kuntaapi.server.rest.model.Page page = managementTranslator.translatePage(kuntaApiPageId, kuntaApiParentPageId, managementPage);
+    fi.metatavu.kuntaapi.server.rest.model.Page page = managementTranslator.translatePage(kuntaApiPageId, pageParentId, managementPage);
     String contents = managementPage.getContent().getRendered();
     String title = managementPage.getTitle().getRendered();
     List<LocalizedValue> pageContents = managementTranslator.translateLocalized(contents);
@@ -216,6 +225,11 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
     pageContentCache.put(kuntaApiPageId, pageContents);
     indexRequest.fire(new IndexRequest(createIndexablePage(organizationId, kuntaApiPageId, ManagementConsts.DEFAULT_LOCALE, contents, title)));
 
+    updateAttachments(organizationId, api, managementPage, kuntaApiPageId);
+  }
+
+  private void updateAttachments(OrganizationId organizationId, DefaultApi api, Page managementPage,
+      PageId kuntaApiPageId) {
     if (managementPage.getFeaturedMedia() != null && managementPage.getFeaturedMedia() > 0) {
       updateAttachment(organizationId, kuntaApiPageId, api, managementPage.getFeaturedMedia().longValue(), ManagementConsts.ATTACHMENT_TYPE_PAGE_FEATURED); 
     }
