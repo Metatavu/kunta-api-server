@@ -817,13 +817,14 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     
     return createNotFound(NOT_FOUND);
   }
+  
 
   @Override
-  public Response listOrganizationPageImages(String organizationIdParam, String pageIdParam, @Context Request request) {
+  public Response listOrganizationPageImages(String organizationIdParam, String pageIdParam, String type, Request request) {
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
     PageId pageId = toPageId(organizationId, pageIdParam);
     
-    List<Attachment> result = pageController.listPageImages(organizationId, pageId);
+    List<Attachment> result = pageController.listPageImages(organizationId, pageId, type);
     
     List<String> ids = httpCacheController.getEntityIds(result);
     Response notModified = httpCacheController.getNotModified(request, ids);

@@ -5,26 +5,12 @@ import java.time.OffsetDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 import org.apache.commons.lang3.StringUtils;
 
-import fi.metatavu.management.client.model.Announcement;
-import fi.metatavu.management.client.model.Post;
-import fi.metatavu.management.client.model.PostExcerpt;
-import fi.otavanopisto.kuntaapi.server.id.AnnouncementId;
-import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
-import fi.otavanopisto.kuntaapi.server.id.BannerId;
-import fi.otavanopisto.kuntaapi.server.id.FragmentId;
-import fi.otavanopisto.kuntaapi.server.id.IdController;
-import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
-import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
-import fi.otavanopisto.kuntaapi.server.id.PageId;
-import fi.otavanopisto.kuntaapi.server.id.TileId;
-import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.metatavu.kuntaapi.server.rest.model.Attachment;
 import fi.metatavu.kuntaapi.server.rest.model.Banner;
 import fi.metatavu.kuntaapi.server.rest.model.Fragment;
@@ -32,38 +18,25 @@ import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
 import fi.metatavu.kuntaapi.server.rest.model.NewsArticle;
 import fi.metatavu.kuntaapi.server.rest.model.PageMeta;
 import fi.metatavu.kuntaapi.server.rest.model.Tile;
+import fi.metatavu.management.client.model.Announcement;
+import fi.metatavu.management.client.model.Post;
+import fi.metatavu.management.client.model.PostExcerpt;
+import fi.otavanopisto.kuntaapi.server.id.AnnouncementId;
+import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
+import fi.otavanopisto.kuntaapi.server.id.BannerId;
+import fi.otavanopisto.kuntaapi.server.id.FragmentId;
+import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
+import fi.otavanopisto.kuntaapi.server.id.PageId;
+import fi.otavanopisto.kuntaapi.server.id.TileId;
 
 @ApplicationScoped
 @SuppressWarnings ("squid:S3306")
 public class ManagementTranslator {
   
   @Inject
-  private Logger logger;
-  
-  @Inject
   private ManagementImageLoader managementImageLoader;
   
-  @Inject
-  private IdController idController;
-
-  public Attachment translateAttachment(OrganizationId organizationId, fi.metatavu.management.client.model.Attachment featuredMedia) {
-    Integer size = managementImageLoader.getImageSize(featuredMedia.getSourceUrl());
-    AttachmentId id = getImageAttachmentId(organizationId, featuredMedia.getId());
-    if (id == null) {
-      logger.severe(String.format("Could not translate featured media %d into Kunta API id", featuredMedia.getId()));
-      return null;
-    }
-    
-    Attachment attachment = new Attachment();
-    attachment.setContentType(featuredMedia.getMimeType());
-    attachment.setId(id.getId());
-    attachment.setSize(size != null ? size.longValue() : null);
-    return attachment;
-  }
-  
   public List<LocalizedValue> translateLocalized(String value) {
-    // TODO: Support multiple locales 
-    
     List<LocalizedValue> result = new ArrayList<>();
     
     if (StringUtils.isNotBlank(value)) {
@@ -76,12 +49,13 @@ public class ManagementTranslator {
     return result;
   }
   
-  public Attachment translateAttachment(AttachmentId kuntaApiAttachmentId, fi.metatavu.management.client.model.Attachment featuredMedia) {
+  public Attachment translateAttachment(AttachmentId kuntaApiAttachmentId, fi.metatavu.management.client.model.Attachment featuredMedia, String type) {
     Integer size = managementImageLoader.getImageSize(featuredMedia.getSourceUrl());
     Attachment attachment = new Attachment();
     attachment.setContentType(featuredMedia.getMimeType());
     attachment.setId(kuntaApiAttachmentId.getId());
     attachment.setSize(size != null ? size.longValue() : null);
+    attachment.setType(type);
     return attachment;
   }
   
@@ -160,18 +134,6 @@ public class ManagementTranslator {
     fragment.setId(kuntaApiFragmentId.getId());
     fragment.setSlug(managementFragment.getSlug());
     return fragment;
-  }
-  
-  private AttachmentId getImageAttachmentId(OrganizationId organizationId, Integer id) {
-    AttachmentId managementId = new AttachmentId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(id));
-    AttachmentId kuntaApiId = idController.translateAttachmentId(managementId, KuntaApiConsts.IDENTIFIER_NAME);
-    
-    if (kuntaApiId == null) {
-      logger.info(String.format("Could not translate management attachment %s into Kunta API Id", managementId));
-      return null;
-    }
-    
-    return kuntaApiId;
   }
   
   private OffsetDateTime toOffsetDateTime(LocalDateTime date) {

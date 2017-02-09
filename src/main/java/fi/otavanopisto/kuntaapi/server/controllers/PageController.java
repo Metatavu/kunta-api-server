@@ -159,11 +159,11 @@ public class PageController {
     return null;
   }
 
-  public List<Attachment> listPageImages(OrganizationId organizationId, PageId pageId) {
+  public List<Attachment> listPageImages(OrganizationId organizationId, PageId pageId, String type) {
     List<Attachment> result = new ArrayList<>();
    
     for (PageProvider pageProvider : getPageProviders()) {
-      result.addAll(pageProvider.listOrganizationPageImages(organizationId, pageId));
+      result.addAll(pageProvider.listOrganizationPageImages(organizationId, pageId, type));
     }
     
     return entityController.sortEntitiesInNaturalOrder(result);

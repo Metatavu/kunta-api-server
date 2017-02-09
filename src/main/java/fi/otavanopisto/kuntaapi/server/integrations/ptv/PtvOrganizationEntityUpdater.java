@@ -34,7 +34,7 @@ import fi.otavanopisto.kuntaapi.server.index.IndexRequest;
 import fi.otavanopisto.kuntaapi.server.index.IndexableOrganization;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
-import fi.otavanopisto.kuntaapi.server.system.SystemUtils;
+import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 import fi.otavanopisto.restfulptv.client.ApiResponse;
 import fi.otavanopisto.restfulptv.client.model.Organization;
 
@@ -48,6 +48,9 @@ public class PtvOrganizationEntityUpdater extends EntityUpdater {
 
   @Inject
   private Logger logger;
+
+  @Inject
+  private SystemSettingController systemSettingController;
 
   @Inject
   private PtvApi ptvApi;
@@ -127,12 +130,14 @@ public class PtvOrganizationEntityUpdater extends EntityUpdater {
   @Timeout
   public void timeout(Timer timer) {
     if (!stopped) {
-      OrganizationIdUpdateRequest updateRequest = queue.next();
-      if (updateRequest != null) {
-        updateOrganization(updateRequest);
+      if (systemSettingController.isNotTestingOrTestRunning()) {
+        OrganizationIdUpdateRequest updateRequest = queue.next();
+        if (updateRequest != null) {
+          updateOrganization(updateRequest);
+        }
       }
 
-      startTimer(SystemUtils.inTestMode() ? 1000 : TIMER_INTERVAL);
+      startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
     }
   }
 

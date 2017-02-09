@@ -30,7 +30,7 @@ import fi.otavanopisto.kuntaapi.server.index.IndexRequest;
 import fi.otavanopisto.kuntaapi.server.index.IndexableService;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
-import fi.otavanopisto.kuntaapi.server.system.SystemUtils;
+import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 import fi.otavanopisto.kuntaapi.server.utils.LocalizationUtils;
 import fi.otavanopisto.restfulptv.client.ApiResponse;
 import fi.otavanopisto.restfulptv.client.model.LocalizedListItem;
@@ -47,6 +47,9 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
 
   @Inject
   private Logger logger;
+
+  @Inject
+  private SystemSettingController systemSettingController;
 
   @Inject
   private PtvApi ptvApi;
@@ -115,12 +118,14 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
   @Timeout
   public void timeout(Timer timer) {
     if (!stopped) {
-      ServiceIdUpdateRequest updateRequest = queue.next();
-      if (updateRequest != null) {
-        updatePtvService(updateRequest);
+      if (systemSettingController.isNotTestingOrTestRunning()) {
+        ServiceIdUpdateRequest updateRequest = queue.next();
+        if (updateRequest != null) {
+          updatePtvService(updateRequest);
+        }
       }
 
-      startTimer(SystemUtils.inTestMode() ? 1000 : TIMER_INTERVAL);
+      startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
     }
   }
 

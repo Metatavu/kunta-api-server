@@ -19,7 +19,7 @@ import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
-import fi.otavanopisto.kuntaapi.server.system.SystemUtils;
+import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 
 @ApplicationScoped
 @Singleton
@@ -28,6 +28,9 @@ import fi.otavanopisto.kuntaapi.server.system.SystemUtils;
 public class CaseMMeetingEntityUpdater extends EntityUpdater {
 
   private static final int TIMER_INTERVAL = 1000;
+  
+  @Inject
+  private SystemSettingController systemSettingController;
   
   @Inject
   private CaseMCacheUpdater updater;
@@ -76,12 +79,12 @@ public class CaseMMeetingEntityUpdater extends EntityUpdater {
   @Timeout
   public void timeout(Timer timer) {
     if (!stopped) {
-      if (!queue.isEmpty()) {
+      if (systemSettingController.isNotTestingOrTestRunning() && !queue.isEmpty()) {
         CaseMMeetingDataUpdateRequest updateRequest = queue.remove(0);
         updater.updateMeeting(updateRequest.getMeetingData());
       }
-
-      startTimer(SystemUtils.inTestMode() ? 1000 : TIMER_INTERVAL);
+      
+      startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
     }
   }
 

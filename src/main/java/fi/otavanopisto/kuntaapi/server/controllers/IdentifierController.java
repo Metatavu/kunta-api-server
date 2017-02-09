@@ -15,6 +15,7 @@ import javax.inject.Inject;
 
 import org.apache.commons.codec.binary.StringUtils;
 
+import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.BannerId;
 import fi.otavanopisto.kuntaapi.server.id.BaseId;
 import fi.otavanopisto.kuntaapi.server.id.ContactId;
@@ -269,6 +270,30 @@ public class IdentifierController {
     for (Identifier identifier : identifiers) {
       OrganizationId organizationId = new OrganizationId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getOrganizationKuntaApiId());
       result.add(new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId()));
+    }
+    
+    return result;
+  }
+  
+  /**
+   * Lists attachment ids by source and parent id
+   * 
+   * Results are sorted by orderIndex column
+   * 
+   * @param parentId parent id
+   * @return attachment ids by parent id
+   */
+  public List<AttachmentId> listAttachmentIdsBySourceAndParentId(String source, BaseId parentId) {
+    Identifier parentIdentifier = findIdentifierById(parentId);
+    if (parentIdentifier == null) {
+      return Collections.emptyList();
+    }
+
+    List<Identifier> identifiers = identifierDAO.listBySourceParentAndTypeOrderByOrderIndex(source, parentIdentifier, IdType.ATTACHMENT.name());
+    List<AttachmentId> result = new ArrayList<>(identifiers.size());
+    for (Identifier identifier : identifiers) {
+      OrganizationId organizationId = new OrganizationId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getOrganizationKuntaApiId());
+      result.add(new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId()));
     }
     
     return result;

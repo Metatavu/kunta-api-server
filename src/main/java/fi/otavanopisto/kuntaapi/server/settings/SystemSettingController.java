@@ -2,11 +2,12 @@ package fi.otavanopisto.kuntaapi.server.settings;
 
 import java.util.logging.Logger;
 
-import javax.enterprise.context.Dependent;
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 import org.apache.commons.lang3.StringUtils;
 
+import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.persistence.dao.SystemSettingDAO;
 import fi.otavanopisto.kuntaapi.server.persistence.model.SystemSetting;
 
@@ -15,7 +16,7 @@ import fi.otavanopisto.kuntaapi.server.persistence.model.SystemSetting;
  * 
  * @author Antti Leppä
  */
-@Dependent
+@ApplicationScoped
 public class SystemSettingController {
   
   @Inject
@@ -144,6 +145,33 @@ public class SystemSettingController {
    */
   public void deleteSystemSetting(SystemSetting systemSetting) {
     systemSettingDAO.delete(systemSetting);
+  }
+  
+  /**
+   * Checks if application is running in test-mode
+   * 
+   * @return true if application is running in test-mode. Otherwise false
+   */
+  public boolean inTestMode(){
+    return "true".equals(System.getProperty("it-test"));
+  }
+
+  /**
+   * Returns true when test is running
+   * 
+   * @return true
+   */
+  public boolean isTestRunning() {
+    return "true".equalsIgnoreCase(getSettingValue(KuntaApiConsts.SYSTEM_SETTING_TESTS_RUNNING));
+  }
+  
+  /**
+   * Returns true if application is not in test mode or test is currently running
+   * 
+   * @return true if application is not in test mode or test is currently running
+   */
+  public boolean isNotTestingOrTestRunning() {
+    return !inTestMode() || isTestRunning();
   }
   
 }

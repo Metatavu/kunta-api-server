@@ -40,7 +40,7 @@ import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
-import fi.otavanopisto.kuntaapi.server.system.SystemUtils;
+import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 
 @ApplicationScoped
 @Singleton
@@ -52,6 +52,9 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
 
   @Inject
   private Logger logger;
+  
+  @Inject
+  private SystemSettingController systemSettingController;
   
   @Inject
   private ManagementTranslator managementTranslator;
@@ -136,12 +139,14 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
   @Timeout
   public void timeout(Timer timer) {
     if (!stopped) {
-      NewsArticleIdUpdateRequest updateRequest = queue.next();
-      if (updateRequest != null) {
-        updateManagementPost(updateRequest);
+      if (systemSettingController.isNotTestingOrTestRunning()) {
+        NewsArticleIdUpdateRequest updateRequest = queue.next();
+        if (updateRequest != null) {
+          updateManagementPost(updateRequest);
+        }
       }
 
-      startTimer(SystemUtils.inTestMode() ? 1000 : TIMER_INTERVAL);
+      startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
     }
   }
   
@@ -201,7 +206,7 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
       }
       
       AttachmentId kuntaApiAttachmentId = new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
-      fi.metatavu.kuntaapi.server.rest.model.Attachment attachment = managementTranslator.translateAttachment(kuntaApiAttachmentId, managementAttachment);
+      fi.metatavu.kuntaapi.server.rest.model.Attachment attachment = managementTranslator.translateAttachment(kuntaApiAttachmentId, managementAttachment, ManagementConsts.ATTACHMENT_TYPE_NEWS);
       if (attachment == null) {
         logger.severe(String.format("Failed to translate news article attachment %d", featuredMedia));
         return;

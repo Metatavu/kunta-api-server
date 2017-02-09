@@ -8,6 +8,8 @@ import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
+import org.apache.commons.codec.binary.StringUtils;
+
 import fi.metatavu.kuntaapi.server.rest.model.Attachment;
 import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
 import fi.metatavu.kuntaapi.server.rest.model.Page;
@@ -79,14 +81,13 @@ public class ManagementPageProvider extends AbstractManagementProvider implement
   }
 
   @Override
-  public List<Attachment> listOrganizationPageImages(OrganizationId organizationId, PageId pageId) {
-    List<IdPair<PageId, AttachmentId>> childIds = pageImageCache.getChildIds(pageId);
-
-    List<Attachment> result = new ArrayList<>(childIds.size());
+  public List<Attachment> listOrganizationPageImages(OrganizationId organizationId, PageId pageId, String type) {
+    List<AttachmentId> attachmentIds = identifierController.listAttachmentIdsBySourceAndParentId(ManagementConsts.IDENTIFIER_NAME, pageId);
+    List<Attachment> result = new ArrayList<>(attachmentIds.size());
     
-    for (IdPair<PageId, AttachmentId> childId : childIds) {
-      Attachment attachment = pageImageCache.get(childId);
-      if (attachment != null) {
+    for (AttachmentId attachmentId : attachmentIds) {
+      Attachment attachment = pageImageCache.get(new IdPair<PageId, AttachmentId>(pageId, attachmentId));
+      if (attachment != null && (type == null || StringUtils.equals(attachment.getType(), type))) {
         result.add(attachment);
       }
     }

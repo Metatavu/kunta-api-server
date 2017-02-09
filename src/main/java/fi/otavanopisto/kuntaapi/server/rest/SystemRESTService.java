@@ -13,7 +13,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
 import fi.otavanopisto.kuntaapi.server.cache.SystemController;
-import fi.otavanopisto.kuntaapi.server.system.SystemUtils;
+import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 
 /**
  * System REST Services
@@ -32,7 +32,10 @@ public class SystemRESTService {
   
   @Inject
   private SystemController systemController; 
-  
+
+  @Inject  
+  private SystemSettingController systemSettingController;
+
   /**
    * Returns pong
    * 
@@ -58,7 +61,7 @@ public class SystemRESTService {
   @Path ("/jpa/cache/flush")
   @Produces (MediaType.TEXT_PLAIN)
   public Response flushCaches() {
-    if (SystemUtils.inTestMode()) {
+    if (systemSettingController.inTestMode()) {
       entityManagerFactory.getCache().evictAll();
       return Response.ok("ok").build();
     }
