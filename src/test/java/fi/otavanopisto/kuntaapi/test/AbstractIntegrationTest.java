@@ -7,8 +7,13 @@ import static org.junit.Assert.fail;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.junit.After;
+import org.junit.Before;
+
 import com.jayway.restassured.http.ContentType;
 import com.jayway.restassured.path.json.exception.JsonPathException;
+
+import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 
 /**
  * Abstract base class for integration tests
@@ -27,6 +32,16 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   private KuntarekryMocker kuntarekryMocker = new KuntarekryMocker();
   private ManagementMocker managementMocker = new ManagementMocker();
   private CasemMocker casemMocker = new CasemMocker();
+  
+  @Before
+  public void beforeEveryTest() {
+    insertSystemSetting(KuntaApiConsts.SYSTEM_SETTING_TESTS_RUNNING, "true");
+  }
+  
+  @After
+  public void afterEveryTest() {
+    deleteSystemSetting(KuntaApiConsts.SYSTEM_SETTING_TESTS_RUNNING);
+  }
   
   public RestFulPtvMocker getPtvMocker() {
     return ptvMocker;

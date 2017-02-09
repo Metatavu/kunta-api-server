@@ -21,7 +21,7 @@ import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
 import fi.otavanopisto.kuntaapi.server.discover.OrganizationIdRemoveRequest;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
-import fi.otavanopisto.kuntaapi.server.system.SystemUtils;
+import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 import fi.otavanopisto.restfulptv.client.ApiResponse;
 import fi.otavanopisto.restfulptv.client.model.Organization;
 
@@ -35,6 +35,9 @@ public class PtvOrganizationEntityEvictor extends EntityUpdater {
 
   @Inject
   private IdentifierController identifierController;
+
+  @Inject
+  private SystemSettingController systemSettingController;
 
   @Inject
   private PtvApi ptvApi;
@@ -78,14 +81,16 @@ public class PtvOrganizationEntityEvictor extends EntityUpdater {
   @Timeout
   public void timeout(Timer timer) {
     if (!stopped) {
-      if (queue.isEmpty()) {
-        List<OrganizationId> organizationIds = identifierController.listOrganizationsBySource(PtvConsts.IDENTIFIFER_NAME);
-        queue.addAll(organizationIds);
-      } else {
-        checkOrganization(queue.remove(0));
+      if (systemSettingController.isNotTestingOrTestRunning()) {
+        if (queue.isEmpty()) {
+          List<OrganizationId> organizationIds = identifierController.listOrganizationsBySource(PtvConsts.IDENTIFIFER_NAME);
+          queue.addAll(organizationIds);
+        } else {
+          checkOrganization(queue.remove(0));
+        }
       }
 
-      startTimer(SystemUtils.inTestMode() ? 1000 : TIMER_INTERVAL);
+      startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
     }
   }
 

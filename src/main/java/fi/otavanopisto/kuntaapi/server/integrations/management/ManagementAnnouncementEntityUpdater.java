@@ -32,7 +32,7 @@ import fi.otavanopisto.kuntaapi.server.id.AnnouncementId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
-import fi.otavanopisto.kuntaapi.server.system.SystemUtils;
+import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 
 @ApplicationScoped
 @Singleton
@@ -44,6 +44,9 @@ public class ManagementAnnouncementEntityUpdater extends EntityUpdater {
 
   @Inject
   private Logger logger;
+
+  @Inject
+  private SystemSettingController systemSettingController;
   
   @Inject
   private ManagementTranslator managementTranslator;
@@ -122,12 +125,14 @@ public class ManagementAnnouncementEntityUpdater extends EntityUpdater {
   @Timeout
   public void timeout(Timer timer) {
     if (!stopped) {
-      AnnouncementIdUpdateRequest updateRequest = queue.next();
-      if (updateRequest != null) {
-        updateManagementAnnouncement(updateRequest.getOrganizationId(), updateRequest.getId(), updateRequest.getOrderIndex());
+      if (systemSettingController.isNotTestingOrTestRunning()) {
+        AnnouncementIdUpdateRequest updateRequest = queue.next();
+        if (updateRequest != null) {
+          updateManagementAnnouncement(updateRequest.getOrganizationId(), updateRequest.getId(), updateRequest.getOrderIndex());
+        }
       }
 
-      startTimer(SystemUtils.inTestMode() ? 1000 : TIMER_INTERVAL);
+      startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
     }
   }
   

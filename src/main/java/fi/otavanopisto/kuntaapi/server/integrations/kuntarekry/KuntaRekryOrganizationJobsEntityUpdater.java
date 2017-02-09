@@ -26,7 +26,7 @@ import fi.otavanopisto.kuntaapi.server.id.JobId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
-import fi.otavanopisto.kuntaapi.server.system.SystemUtils;
+import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 
 @ApplicationScoped
 @Singleton
@@ -34,7 +34,10 @@ import fi.otavanopisto.kuntaapi.server.system.SystemUtils;
 @SuppressWarnings ("squid:S3306")
 public class KuntaRekryOrganizationJobsEntityUpdater extends EntityUpdater {
 
-  private static final int TIMER_INTERVAL = 100;
+  private static final int TIMER_INTERVAL = 1000 * 60;
+
+  @Inject
+  private SystemSettingController systemSettingController;
 
   @Inject
   private KuntaRekryClient kuntaRekryClient; 
@@ -102,11 +105,11 @@ public class KuntaRekryOrganizationJobsEntityUpdater extends EntityUpdater {
   @Timeout
   public void timeout(Timer timer) {
     if (!stopped) {
-      if (!queue.isEmpty()) {
+      if (systemSettingController.isNotTestingOrTestRunning() && !queue.isEmpty()) {
         updateOrganizationJobs(queue.remove(0));          
       }
 
-      startTimer(SystemUtils.inTestMode() ? 1000 : TIMER_INTERVAL);
+      startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
     }
   }
 

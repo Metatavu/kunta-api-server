@@ -43,7 +43,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.MenuProvider.MenuItemType;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
-import fi.otavanopisto.kuntaapi.server.system.SystemUtils;
+import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 
 @ApplicationScoped
 @Singleton
@@ -55,7 +55,10 @@ public class ManagementMenuEntityUpdater extends EntityUpdater {
 
   @Inject
   private Logger logger;
-  
+
+  @Inject
+  private SystemSettingController systemSettingController;
+
   @Inject
   private ManagementApi managementApi;
   
@@ -140,12 +143,14 @@ public class ManagementMenuEntityUpdater extends EntityUpdater {
   @Timeout
   public void timeout(Timer timer) {
     if (!stopped) {
-      MenuIdUpdateRequest updateRequest = queue.next();
-      if (updateRequest != null) {
-        updateManagementMenu(updateRequest);
+      if (systemSettingController.isNotTestingOrTestRunning()) {
+        MenuIdUpdateRequest updateRequest = queue.next();
+        if (updateRequest != null) {
+          updateManagementMenu(updateRequest);
+        }
       }
 
-      startTimer(SystemUtils.inTestMode() ? 1000 : TIMER_INTERVAL);
+      startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
     }
   }
 

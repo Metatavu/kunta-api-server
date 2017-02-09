@@ -32,7 +32,7 @@ import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
-import fi.otavanopisto.kuntaapi.server.system.SystemUtils;
+import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 
 @ApplicationScoped
 @Singleton
@@ -47,6 +47,9 @@ public class ManagementNewsArticleIdUpdater extends IdUpdater {
   
   @Inject
   private Logger logger;
+  
+  @Inject
+  private SystemSettingController systemSettingController;
 
   @Inject
   private ManagementApi managementApi;
@@ -122,16 +125,19 @@ public class ManagementNewsArticleIdUpdater extends IdUpdater {
   @Timeout
   public void timeout(Timer timer) {
     if (!stopped) {
-      if (!queue.isEmpty()) {
+      if (systemSettingController.isNotTestingOrTestRunning() && !queue.isEmpty()) {
         updateManagementPosts(queue.remove(0));
       }
 
-      startTimer(SystemUtils.inTestMode() ? 1000 : TIMER_INTERVAL);
+      startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
     }
   }
   
   private void updateManagementPosts(OrganizationId organizationId) {
-    DefaultApi api = managementApi.getApi(organizationId);
+    DefaultApi api = managementApi.getApi(organizationId);    
+
+    checkRemovedManagementPosts(api, organizationId);
+
     List<Post> managementPosts = new ArrayList<>();
     
     int page = 1;
@@ -150,8 +156,6 @@ public class ManagementNewsArticleIdUpdater extends IdUpdater {
       NewsArticleId newsArticleId = new NewsArticleId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementPost.getId()));
       idUpdateRequest.fire(new NewsArticleIdUpdateRequest(organizationId, newsArticleId, (long) i, false));
     }
-    
-    checkRemovedManagementPosts(api, organizationId);
   }
   
   private void checkRemovedManagementPosts(DefaultApi api, OrganizationId organizationId) {

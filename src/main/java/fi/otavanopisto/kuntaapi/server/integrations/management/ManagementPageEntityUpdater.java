@@ -48,7 +48,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementP
 import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementPageContentCache;
 import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementPageImageCache;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
-import fi.otavanopisto.kuntaapi.server.system.SystemUtils;
+import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 
 @ApplicationScoped
 @Singleton
@@ -60,6 +60,9 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
 
   @Inject
   private Logger logger;
+  
+  @Inject
+  private SystemSettingController systemSettingController;
   
   @Inject
   private ManagementTranslator managementTranslator;
@@ -156,12 +159,14 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
   @Timeout
   public void timeout(Timer timer) {
     if (!stopped) {
-      PageIdUpdateRequest updateRequest = queue.next();
-      if (updateRequest != null) {
-        updateManagementPage(updateRequest);
+      if (systemSettingController.isNotTestingOrTestRunning()) {
+        PageIdUpdateRequest updateRequest = queue.next();
+        if (updateRequest != null) {
+          updateManagementPage(updateRequest);
+        }
       }
 
-      startTimer(SystemUtils.inTestMode() ? 1000 : TIMER_INTERVAL);
+      startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
     }
   }
   
