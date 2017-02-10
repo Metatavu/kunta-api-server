@@ -93,6 +93,10 @@ public class CaseMTranslator {
   }
   
   private String sanitizeFilename(String filename) {
+    if (StringUtils.isBlank(filename)) {
+      return "noname";
+    }
+    
     try {
       InputStream latinStream = IOUtils.toInputStream(filename, "ISO-8859-1");
       String unicodeString = IOUtils.toString(latinStream, "UTF-8");
