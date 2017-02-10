@@ -863,7 +863,7 @@ public class CaseMCacheUpdater {
     if (identifierParentId != null) {
       kuntaApiParentPageId = identifierParentId instanceof PageId ? (PageId) identifierParentId : null;
     } else {
-      identifierParentId = organizationId;
+      identifierParentId = kuntaApiParentPageId != null ? kuntaApiParentPageId : organizationId;
     }
     
     Identifier identifier = identifierController.findIdentifierById(casemPageId);
