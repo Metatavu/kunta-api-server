@@ -300,6 +300,28 @@ public class IdentifierController {
   }
   
   /**
+   * Lists attachment ids by parent id
+   * 
+   * @param parentId parent id
+   * @return attachment ids by parent id
+   */
+  public List<AttachmentId> listAttachmentIdsByParentId(BaseId parentId) {
+    Identifier parentIdentifier = findIdentifierById(parentId);
+    if (parentIdentifier == null) {
+      return Collections.emptyList();
+    }
+
+    List<Identifier> identifiers = identifierDAO.listByParentAndType(parentIdentifier, IdType.ATTACHMENT.name());
+    List<AttachmentId> result = new ArrayList<>(identifiers.size());
+    for (Identifier identifier : identifiers) {
+      OrganizationId organizationId = new OrganizationId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getOrganizationKuntaApiId());
+      result.add(new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId()));
+    }
+    
+    return result;
+  }
+  
+  /**
    * Lists fragment ids by parent id. 
    * 
    * Results are sorted by orderIndex column
