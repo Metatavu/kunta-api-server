@@ -91,6 +91,10 @@ public class ManagementNewsProvider extends AbstractManagementProvider implement
     }
     
     fi.metatavu.management.client.model.Attachment featuredMedia = findMedia(organizationId, mediaId);
+    if (featuredMedia == null) {
+      return null;
+    }
+    
     if (featuredMedia.getMediaType() == MediaTypeEnum.IMAGE) {
       AttachmentData imageData = managementImageLoader.getImageData(featuredMedia.getSourceUrl());
       
