@@ -187,7 +187,7 @@ public class ManagementPageIdMapEntityUpdater extends EntityUpdater {
   }
   
   private BaseId resolvePageIdByPath(OrganizationId organizationId, String path) {
-    if (StringUtils.equals("/", path)) {
+    if (StringUtils.isBlank(path)) {
       return organizationId;
     }
     
