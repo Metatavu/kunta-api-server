@@ -848,31 +848,34 @@ public class CaseMCacheUpdater {
       if (node.getType().equals(0l)) {
         // Type 0 pages are hidden levels that should be flatted out
       } else {
-        PageId casemPageId = getNodePageId(organizationId, node);
-        PageId kuntaApiParentPageId = idController.translatePageId(getNodePageId(organizationId, parentNode), KuntaApiConsts.IDENTIFIER_NAME);
-        BaseId identifierParentId = idMapController.findMappedPageParentId(organizationId, casemPageId);
-        if (identifierParentId != null) {
-          kuntaApiParentPageId = identifierParentId instanceof PageId ? (PageId) identifierParentId : null;
-        } else {
-          identifierParentId = organizationId;
-        }
-        
-        Identifier identifier = identifierController.findIdentifierById(casemPageId);
-        if (identifier == null) {
-          identifier = identifierController.createIdentifier(identifierParentId, orderIndex, casemPageId);
-        } else {
-          identifier = identifierController.updateIdentifier(identifier, identifierParentId, orderIndex);
-        }
-        
-        PageId kuntaApiPageId = new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
-        Page page = casemTranslator.translatePage(kuntaApiPageId, kuntaApiParentPageId, node);
-        caseMCache.cachePage(organizationId, page, null);
-        
+        updateTreeNode(organizationId, parentNode, node, orderIndex);
         nextLevel++;
       }
       
       updateNodeTree(organizationId, caseMRootNodeId, node, getChildNodes(organizationId, caseMRootNodeId, childCaseMParentIds), childCaseMParentIds, nextLevel);
     }
+  }
+
+  private void updateTreeNode(OrganizationId organizationId, Node parentNode, Node node, Long orderIndex) {
+    PageId casemPageId = getNodePageId(organizationId, node);
+    PageId kuntaApiParentPageId = idController.translatePageId(getNodePageId(organizationId, parentNode), KuntaApiConsts.IDENTIFIER_NAME);
+    BaseId identifierParentId = idMapController.findMappedPageParentId(organizationId, casemPageId);
+    if (identifierParentId != null) {
+      kuntaApiParentPageId = identifierParentId instanceof PageId ? (PageId) identifierParentId : null;
+    } else {
+      identifierParentId = organizationId;
+    }
+    
+    Identifier identifier = identifierController.findIdentifierById(casemPageId);
+    if (identifier == null) {
+      identifier = identifierController.createIdentifier(identifierParentId, orderIndex, casemPageId);
+    } else {
+      identifier = identifierController.updateIdentifier(identifier, identifierParentId, orderIndex);
+    }
+    
+    PageId kuntaApiPageId = new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
+    Page page = casemTranslator.translatePage(kuntaApiPageId, kuntaApiParentPageId, node);
+    caseMCache.cachePage(organizationId, page, null);
   }
   
   private PageId getNodePageId(OrganizationId organizationId, Node node) {
