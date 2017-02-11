@@ -32,8 +32,10 @@ import fi.otavanopisto.kuntaapi.server.id.ServiceId;
 import fi.otavanopisto.kuntaapi.server.id.TileId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.persistence.dao.IdentifierDAO;
+import fi.otavanopisto.kuntaapi.server.persistence.dao.IdentifierRelationDAO;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.persistence.model.IdentifierOrderIndex;
+import fi.otavanopisto.kuntaapi.server.persistence.model.IdentifierRelation;
 
 /**
  * Identifier controller
@@ -49,6 +51,9 @@ public class IdentifierController {
   
   @Inject
   private IdentifierDAO identifierDAO;
+  
+  @Inject
+  private IdentifierRelationDAO identifierRelationDAO;
   
   /**
    * Creates new identifier.
@@ -381,6 +386,11 @@ public class IdentifierController {
   }
 
   public void deleteIdentifier(Identifier identifier) {
+    List<IdentifierRelation> identifierRelations = identifierRelationDAO.listByParentOrChild(identifier);
+    for (IdentifierRelation identifierRelation : identifierRelations) {
+      identifierRelationDAO.delete(identifierRelation);
+    }
+    
     identifierDAO.delete(identifier);
   }
 
