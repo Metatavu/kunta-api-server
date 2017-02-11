@@ -34,6 +34,7 @@ import fi.otavanopisto.kuntaapi.server.discover.IdUpdateRequestQueue;
 import fi.otavanopisto.kuntaapi.server.discover.NewsArticleIdRemoveRequest;
 import fi.otavanopisto.kuntaapi.server.discover.NewsArticleIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
+import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.IdPair;
 import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
@@ -64,6 +65,9 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
   
   @Inject
   private ManagementImageLoader managementImageLoader;
+  
+  @Inject
+  private IdController idController;
   
   @Inject
   private IdentifierController identifierController;
@@ -229,22 +233,30 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
     if (newsArticleIdentifier != null) {
       NewsArticleId kuntaApiNewsArticleId = new NewsArticleId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, newsArticleIdentifier.getKuntaApiId());
       queue.remove(managementNewsArticleId);
+      
+      List<AttachmentId> attachmentIds = identifierController.listAttachmentIdsByParentId(managementNewsArticleId);
+      for (AttachmentId attachmentId : attachmentIds) {
+        deleteAttachment(kuntaApiNewsArticleId, attachmentId);
+      }
 
       modificationHashCache.clear(newsArticleIdentifier.getKuntaApiId());
       newsArticleCache.clear(kuntaApiNewsArticleId);
       identifierController.deleteIdentifier(newsArticleIdentifier);
-      
-      List<IdPair<NewsArticleId,AttachmentId>> newsArticleImageIds = newsArticleImageCache.getChildIds(kuntaApiNewsArticleId);
-      for (IdPair<NewsArticleId,AttachmentId> newsArticleImageId : newsArticleImageIds) {
-        AttachmentId attachmentId = newsArticleImageId.getChild();
-        newsArticleImageCache.clear(newsArticleImageId);
-        modificationHashCache.clear(attachmentId.getId());
-        
-        Identifier imageIdentifier = identifierController.findIdentifierById(attachmentId);
-        if (imageIdentifier != null) {
-          identifierController.deleteIdentifier(imageIdentifier);
-        }
+    }
+  }
+
+  private void deleteAttachment(NewsArticleId kuntaApiNewsArticleId, AttachmentId attachmentId) {
+    AttachmentId kuntaApiAttachmentId = idController.translateAttachmentId(attachmentId, KuntaApiConsts.IDENTIFIER_NAME);
+    if (kuntaApiAttachmentId != null) {
+      newsArticleImageCache.clear(new IdPair<NewsArticleId, AttachmentId>(kuntaApiNewsArticleId, kuntaApiAttachmentId));
+      modificationHashCache.clear(kuntaApiAttachmentId.getId());
+      Identifier attachmentIdentifier = identifierController.findIdentifierById(kuntaApiAttachmentId);
+      if (attachmentIdentifier != null) {
+        identifierController.deleteIdentifier(attachmentIdentifier);
       }
+
+    } else {
+      logger.severe(String.format("Failed to translate news article attachment %s into Kunta API Id", attachmentId));
     }
   }
 

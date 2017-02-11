@@ -204,6 +204,23 @@ public class IdentifierDAO extends AbstractDAO<Identifier> {
     return entityManager.createQuery(criteria).getResultList();
   }
 
+  public List<Identifier> listByParentAndType(Identifier parent, String type) {
+    EntityManager entityManager = getEntityManager();
+
+    CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+    CriteriaQuery<Identifier> criteria = criteriaBuilder.createQuery(Identifier.class);
+    Root<Identifier> root = criteria.from(Identifier.class);
+    criteria.select(root);
+    criteria.where(
+      criteriaBuilder.and(
+        criteriaBuilder.equal(root.get(Identifier_.parent), parent),
+        criteriaBuilder.equal(root.get(Identifier_.type), type)
+      )
+    );
+    
+    return entityManager.createQuery(criteria).getResultList();
+  }
+
   public Identifier updateOrderIndex(Identifier identifier, Long orderIndex) {
     identifier.setOrderIndex(orderIndex);
     return persist(identifier);
