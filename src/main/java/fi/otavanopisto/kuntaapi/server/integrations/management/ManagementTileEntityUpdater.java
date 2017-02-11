@@ -203,9 +203,9 @@ public class ManagementTileEntityUpdater extends EntityUpdater {
       
       Identifier identifier = identifierController.findIdentifierById(managementAttachmentId);
       if (identifier == null) {
-        identifier = identifierController.createIdentifier(kuntaApiTileId, orderIndex, managementAttachmentId);
+        identifier = identifierController.createIdentifier(organizationId, orderIndex, managementAttachmentId);
       } else {
-        identifier = identifierController.updateIdentifier(identifier, kuntaApiTileId, orderIndex);
+        identifier = identifierController.updateIdentifier(identifier, organizationId, orderIndex);
       }
       
       AttachmentId kuntaApiAttachmentId = new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());

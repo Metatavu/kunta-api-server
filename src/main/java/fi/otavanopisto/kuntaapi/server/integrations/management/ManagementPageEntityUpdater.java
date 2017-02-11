@@ -250,9 +250,9 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
       
       Identifier identifier = identifierController.findIdentifierById(managementAttachmentId);
       if (identifier == null) {
-        identifier = identifierController.createIdentifier(pageId, orderIndex, managementAttachmentId);
+        identifier = identifierController.createIdentifier(organizationId, orderIndex, managementAttachmentId);
       } else {
-        identifier = identifierController.updateIdentifier(identifier, pageId, orderIndex);
+        identifier = identifierController.updateIdentifier(identifier, organizationId, orderIndex);
       }
       
       AttachmentId kuntaApiAttachmentId = new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());

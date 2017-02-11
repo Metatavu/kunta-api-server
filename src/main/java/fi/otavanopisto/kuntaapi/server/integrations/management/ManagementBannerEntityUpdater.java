@@ -204,9 +204,9 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
       
       Identifier identifier = identifierController.findIdentifierById(managementAttachmentId);
       if (identifier == null) {
-        identifier = identifierController.createIdentifier(bannerId, orderIndex, managementAttachmentId);
+        identifier = identifierController.createIdentifier(organizationId, orderIndex, managementAttachmentId);
       } else {
-        identifier = identifierController.updateIdentifier(identifier, bannerId, orderIndex);
+        identifier = identifierController.updateIdentifier(identifier, organizationId, orderIndex);
       }
       
       AttachmentId kuntaApiAttachmentId = new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());

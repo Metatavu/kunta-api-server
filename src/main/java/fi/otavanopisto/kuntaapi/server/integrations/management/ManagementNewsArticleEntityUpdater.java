@@ -204,9 +204,9 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
       
       Identifier identifier = identifierController.findIdentifierById(managementAttachmentId);
       if (identifier == null) {
-        identifier = identifierController.createIdentifier(newsArticleId, orderIndex, managementAttachmentId);
+        identifier = identifierController.createIdentifier(organizationId, orderIndex, managementAttachmentId);
       } else {
-        identifier = identifierController.updateIdentifier(identifier, newsArticleId, orderIndex);
+        identifier = identifierController.updateIdentifier(identifier, organizationId, orderIndex);
       }
       
       AttachmentId kuntaApiAttachmentId = new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
@@ -236,7 +236,7 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
       
       List<AttachmentId> attachmentIds = identifierController.listAttachmentIdsByParentId(managementNewsArticleId);
       for (AttachmentId attachmentId : attachmentIds) {
-        deleteAttachment(kuntaApiNewsArticleId, attachmentId);
+        purgeAttachment(kuntaApiNewsArticleId, attachmentId);
       }
 
       modificationHashCache.clear(newsArticleIdentifier.getKuntaApiId());
@@ -245,16 +245,10 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
     }
   }
 
-  private void deleteAttachment(NewsArticleId kuntaApiNewsArticleId, AttachmentId attachmentId) {
+  private void purgeAttachment(NewsArticleId kuntaApiNewsArticleId, AttachmentId attachmentId) {
     AttachmentId kuntaApiAttachmentId = idController.translateAttachmentId(attachmentId, KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiAttachmentId != null) {
       newsArticleImageCache.clear(new IdPair<NewsArticleId, AttachmentId>(kuntaApiNewsArticleId, kuntaApiAttachmentId));
-      modificationHashCache.clear(kuntaApiAttachmentId.getId());
-      Identifier attachmentIdentifier = identifierController.findIdentifierById(kuntaApiAttachmentId);
-      if (attachmentIdentifier != null) {
-        identifierController.deleteIdentifier(attachmentIdentifier);
-      }
-
     } else {
       logger.severe(String.format("Failed to translate news article attachment %s into Kunta API Id", attachmentId));
     }
