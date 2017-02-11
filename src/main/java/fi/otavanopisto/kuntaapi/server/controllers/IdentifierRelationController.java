@@ -33,6 +33,7 @@ public class IdentifierRelationController {
   @Inject
   private IdentifierRelationDAO identifierRelationDAO;
   
+  @Inject
   private IdentifierController identifierController;
   
   public void addChild(BaseId parentId, BaseId childId) {
@@ -44,12 +45,12 @@ public class IdentifierRelationController {
     
     Identifier childIdentifier = identifierController.findIdentifierById(childId);
     if (childIdentifier == null) {
-      logger.log(Level.SEVERE, String.format("Could not find identifier for child id %s when adding a child relation", parentId));
+      logger.log(Level.SEVERE, String.format("Could not find identifier for child id %s when adding a child relation", childId));
       return;
     }
     
     if (identifierRelationDAO.findByParentAndChild(parentIdentifier, childIdentifier) == null) {
-      identifierRelationDAO.create(parentIdentifier, parentIdentifier);
+      identifierRelationDAO.create(parentIdentifier, childIdentifier);
     }
   }
   
