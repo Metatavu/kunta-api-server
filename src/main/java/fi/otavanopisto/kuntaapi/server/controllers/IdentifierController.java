@@ -374,6 +374,30 @@ public class IdentifierController {
     return result;
   }
   
+  /**
+   * Lists tile ids by parent id. 
+   * 
+   * Results are sorted by orderIndex column
+   * 
+   * @param parentId parent id
+   * @return tile ids by parent id
+   */
+  public List<TileId> listTileIdsParentId(BaseId parentId) {
+    Identifier parentIdentifier = findIdentifierById(parentId);
+    if (parentIdentifier == null) {
+      return Collections.emptyList();
+    }
+    
+    List<Identifier> identifiers = identifierDAO.listByParentAndTypeOrderByOrderIndex(parentIdentifier, IdType.TILE.name());
+    List<TileId> result = new ArrayList<>(identifiers.size());
+    for (Identifier identifier : identifiers) {
+      OrganizationId organizationId = new OrganizationId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getOrganizationKuntaApiId());
+      result.add(new TileId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId()));
+    }
+    
+    return result;
+  }
+  
   public List<ServiceId> listServiceIdsBySource(String source) {
     List<Identifier> identifiers = identifierDAO.listBySourceAndType(source, IdType.SERVICE.name());
     List<ServiceId> result = new ArrayList<>(identifiers.size());
