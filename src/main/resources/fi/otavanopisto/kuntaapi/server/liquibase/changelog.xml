@@ -116,5 +116,21 @@
       <column name="kuntaApiId"/>
     </createIndex>
   </changeSet>
+  
+  <changeSet id="identifier-relation" author="antti.leppa">
+    <createTable tableName="IdentifierRelation">
+      <column name="id" type="bigint(20)" autoIncrement="true">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="parent_id" type="bigint(20)">
+        <constraints referencedTableName="Identifier" referencedColumnNames="id" foreignKeyName="FK_IDENTIFIER_RELATION_PARENT_ID"/>
+      </column>
+      <column name="child_id" type="bigint(20)">
+        <constraints referencedTableName="Identifier" referencedColumnNames="id" foreignKeyName="FK_IDENTIFIER_RELATION_CHILD_ID"/>
+      </column>
+    </createTable>
+    
+    <addUniqueConstraint constraintName="UK_IDENTIFIER_RELATION_PARENT_CHILD" columnNames="parent_id,child_id" tableName="IdentifierRelation"/>
+  </changeSet>
 
 </databaseChangeLog>
