@@ -12,14 +12,14 @@ import fi.metatavu.kuntaapi.server.rest.model.Attachment;
 import fi.metatavu.kuntaapi.server.rest.model.NewsArticle;
 import fi.metatavu.management.client.model.Attachment.MediaTypeEnum;
 import fi.otavanopisto.kuntaapi.server.cache.NewsArticleCache;
-import fi.otavanopisto.kuntaapi.server.cache.NewsArticleImageCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
+import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
-import fi.otavanopisto.kuntaapi.server.id.IdPair;
 import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.NewsProvider;
+import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementAttachmentCache;
 
 /**
  * News provider for management wordpress
@@ -31,6 +31,9 @@ public class ManagementNewsProvider extends AbstractManagementProvider implement
   
   @Inject
   private IdentifierController identifierController;
+
+  @Inject
+  private IdentifierRelationController identifierRelationController;
   
   @Inject
   private ManagementImageLoader managementImageLoader;
@@ -39,7 +42,7 @@ public class ManagementNewsProvider extends AbstractManagementProvider implement
   private NewsArticleCache newsArticleCache;
   
   @Inject
-  private NewsArticleImageCache newsArticleImageCache;
+  private ManagementAttachmentCache managementAttachmentCache;
   
   @Override
   public List<NewsArticle> listOrganizationNews(OrganizationId organizationId, OffsetDateTime publishedBefore, OffsetDateTime publishedAfter) {
@@ -67,10 +70,10 @@ public class ManagementNewsProvider extends AbstractManagementProvider implement
   @Override
   public List<Attachment> listNewsArticleImages(OrganizationId organizationId, NewsArticleId newsArticleId) {
     List<Attachment> result = new ArrayList<>();
+    List<AttachmentId> attachmentIds = identifierRelationController.listAttachmentIdsByParentId(organizationId, newsArticleId);
     
-    List<AttachmentId> attachmentIds = identifierController.listAttachmentIdsBySourceAndParentId(ManagementConsts.IDENTIFIER_NAME, newsArticleId);
     for (AttachmentId attachmentId : attachmentIds) {
-      Attachment attachment = newsArticleImageCache.get(new IdPair<NewsArticleId, AttachmentId>(newsArticleId, attachmentId));
+      Attachment attachment = managementAttachmentCache.get(attachmentId);
       if (attachment != null) {
         result.add(attachment);
       }
@@ -81,12 +84,18 @@ public class ManagementNewsProvider extends AbstractManagementProvider implement
 
   @Override
   public Attachment findNewsArticleImage(OrganizationId organizationId, NewsArticleId newsArticleId, AttachmentId attachmentId) {
-    return newsArticleImageCache.get(new IdPair<>(newsArticleId, attachmentId));
+    if (!identifierRelationController.isChildOf(newsArticleId, attachmentId)) {
+      return null;
+    }
+    
+    return managementAttachmentCache.get(attachmentId);
   }
 
   @Override
-  public AttachmentData getNewsArticleImageData(OrganizationId organizationId, NewsArticleId newsArticleId,
-      AttachmentId attachmentId, Integer size) {
+  public AttachmentData getNewsArticleImageData(OrganizationId organizationId, NewsArticleId newsArticleId, AttachmentId attachmentId, Integer size) {
+    if (!identifierRelationController.isChildOf(newsArticleId, attachmentId)) {
+      return null;
+    }
     
     Integer mediaId = getMediaId(attachmentId);
     if (mediaId == null) {

@@ -1,6 +1,5 @@
 package fi.otavanopisto.kuntaapi.server.integrations.management;
 
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
@@ -27,19 +26,18 @@ import fi.metatavu.management.client.model.Attachment;
 import fi.metatavu.management.client.model.Post;
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.cache.NewsArticleCache;
-import fi.otavanopisto.kuntaapi.server.cache.NewsArticleImageCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
+import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
 import fi.otavanopisto.kuntaapi.server.discover.IdUpdateRequestQueue;
 import fi.otavanopisto.kuntaapi.server.discover.NewsArticleIdRemoveRequest;
 import fi.otavanopisto.kuntaapi.server.discover.NewsArticleIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
-import fi.otavanopisto.kuntaapi.server.id.IdController;
-import fi.otavanopisto.kuntaapi.server.id.IdPair;
 import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
+import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementAttachmentCache;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 
@@ -67,16 +65,16 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
   private ManagementImageLoader managementImageLoader;
   
   @Inject
-  private IdController idController;
+  private IdentifierController identifierController;
   
   @Inject
-  private IdentifierController identifierController;
+  private IdentifierRelationController identifierRelationController;
   
   @Inject
   private NewsArticleCache newsArticleCache;
   
   @Inject
-  private NewsArticleImageCache newsArticleImageCache;
+  private ManagementAttachmentCache managementAttachmentCache;
   
   @Inject
   private ModificationHashCache modificationHashCache;
@@ -216,7 +214,8 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
         return;
       }
       
-      newsArticleImageCache.put(new IdPair<>(newsArticleId, kuntaApiAttachmentId), attachment);
+      identifierRelationController.addChild(newsArticleId, kuntaApiAttachmentId);
+      managementAttachmentCache.put(kuntaApiAttachmentId, attachment);
       
       AttachmentData imageData = managementImageLoader.getImageData(managementAttachment.getSourceUrl());
       if (imageData != null) {
@@ -233,24 +232,9 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
     if (newsArticleIdentifier != null) {
       NewsArticleId kuntaApiNewsArticleId = new NewsArticleId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, newsArticleIdentifier.getKuntaApiId());
       queue.remove(managementNewsArticleId);
-      
-      List<AttachmentId> attachmentIds = identifierController.listAttachmentIdsByParentId(managementNewsArticleId);
-      for (AttachmentId attachmentId : attachmentIds) {
-        purgeAttachment(kuntaApiNewsArticleId, attachmentId);
-      }
-
       modificationHashCache.clear(newsArticleIdentifier.getKuntaApiId());
       newsArticleCache.clear(kuntaApiNewsArticleId);
       identifierController.deleteIdentifier(newsArticleIdentifier);
-    }
-  }
-
-  private void purgeAttachment(NewsArticleId kuntaApiNewsArticleId, AttachmentId attachmentId) {
-    AttachmentId kuntaApiAttachmentId = idController.translateAttachmentId(attachmentId, KuntaApiConsts.IDENTIFIER_NAME);
-    if (kuntaApiAttachmentId != null) {
-      newsArticleImageCache.clear(new IdPair<NewsArticleId, AttachmentId>(kuntaApiNewsArticleId, kuntaApiAttachmentId));
-    } else {
-      logger.severe(String.format("Failed to translate news article attachment %s into Kunta API Id", attachmentId));
     }
   }
 
