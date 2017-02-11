@@ -204,6 +204,9 @@ public class ManagementPageIdMapEntityUpdater extends EntityUpdater {
     ApiResponse<List<Pagemappings>> response = api.kuntaApiPagemappingsGet();
     if (response.isOk()) {
       List<Pagemappings> mappings = response.getResponse();
+      if (mappings == null) {
+        return null;
+      }
       
       Map<String, String> result = new HashMap<>(mappings.size());
       for (Pagemappings mappping : mappings) {
