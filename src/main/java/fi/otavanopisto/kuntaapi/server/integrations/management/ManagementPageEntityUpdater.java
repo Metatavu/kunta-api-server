@@ -37,7 +37,6 @@ import fi.otavanopisto.kuntaapi.server.discover.PageIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.BaseId;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
-import fi.otavanopisto.kuntaapi.server.id.IdPair;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.index.IndexRemovePage;
@@ -46,9 +45,9 @@ import fi.otavanopisto.kuntaapi.server.index.IndexRequest;
 import fi.otavanopisto.kuntaapi.server.index.IndexablePage;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
+import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementAttachmentCache;
 import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementPageCache;
 import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementPageContentCache;
-import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementPageImageCache;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 
@@ -94,7 +93,7 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
   private ManagementPageContentCache pageContentCache;
   
   @Inject
-  private ManagementPageImageCache pageImageCache;
+  private ManagementAttachmentCache managementAttachmentCache;
   
   @Inject
   private ModificationHashCache modificationHashCache;
@@ -264,11 +263,9 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
       
       identifierRelationController.addChild(pageId, identifier);
       
-      // FIXME: Remove page image cache
-      
       AttachmentId kuntaApiAttachmentId = new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
       Attachment kuntaApiAttachment = managementTranslator.translateAttachment(kuntaApiAttachmentId, managementAttachment, type);
-      pageImageCache.put(new IdPair<PageId, AttachmentId>(pageId, kuntaApiAttachmentId), kuntaApiAttachment);
+      managementAttachmentCache.put(kuntaApiAttachmentId, kuntaApiAttachment);
       
       AttachmentData imageData = managementImageLoader.getImageData(managementAttachment.getSourceUrl());
       if (imageData != null) {
@@ -294,18 +291,6 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
       indexRemove.setPageId(kuntaApiPageId.getId());
       indexRemove.setLanguage(ManagementConsts.DEFAULT_LOCALE);
       indexRemoveRequest.fire(new IndexRemoveRequest(indexRemove));
-      
-      List<IdPair<PageId,AttachmentId>> pageImageIds = pageImageCache.getChildIds(kuntaApiPageId);
-      for (IdPair<PageId,AttachmentId> pageImageId : pageImageIds) {
-        AttachmentId attachmentId = pageImageId.getChild();
-        pageImageCache.clear(pageImageId);
-        modificationHashCache.clear(attachmentId.getId());
-        
-        Identifier imageIdentifier = identifierController.findIdentifierById(attachmentId);
-        if (imageIdentifier != null) {
-          identifierController.deleteIdentifier(imageIdentifier);
-        }
-      }
     }
   }
 
