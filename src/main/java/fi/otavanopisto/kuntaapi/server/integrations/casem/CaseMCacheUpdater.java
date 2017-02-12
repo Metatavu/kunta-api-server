@@ -178,7 +178,7 @@ public class CaseMCacheUpdater {
       parentId = organizationId;
     }
     
-    List<PageId> kuntaApiBoardPageIds = identifierController.listPageIdsBySourceAndParentId(CaseMConsts.IDENTIFIER_NAME, parentId);
+    List<PageId> kuntaApiBoardPageIds = identifierRelationController.listPageIdsBySourceAndParentId(CaseMConsts.IDENTIFIER_NAME, parentId);
     for (PageId kuntaApiBoardPageId : kuntaApiBoardPageIds) {
       updateBoardPage(kuntaApiBoardPageId);
     }
@@ -350,7 +350,7 @@ public class CaseMCacheUpdater {
     Board board = new Board();
     List<BoardMeeting> meetings = new ArrayList<>();
     
-    List<PageId> meetingPageKuntaApiIds = identifierController.listPageIdsBySourceAndParentId(CaseMConsts.IDENTIFIER_NAME, boardPageKuntaApiId);
+    List<PageId> meetingPageKuntaApiIds = identifierRelationController.listPageIdsBySourceAndParentId(CaseMConsts.IDENTIFIER_NAME, boardPageKuntaApiId);
     for (PageId meetingPageKuntaApiId : meetingPageKuntaApiIds) {
       Page meetingPage = caseMCache.findPage(meetingPageKuntaApiId);
       if (meetingPage != null) {

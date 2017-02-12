@@ -15,12 +15,9 @@ import javax.inject.Inject;
 
 import org.apache.commons.codec.binary.StringUtils;
 
-import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.BannerId;
 import fi.otavanopisto.kuntaapi.server.id.BaseId;
 import fi.otavanopisto.kuntaapi.server.id.ContactId;
-import fi.otavanopisto.kuntaapi.server.id.EventId;
-import fi.otavanopisto.kuntaapi.server.id.FragmentId;
 import fi.otavanopisto.kuntaapi.server.id.IdType;
 import fi.otavanopisto.kuntaapi.server.id.MenuId;
 import fi.otavanopisto.kuntaapi.server.id.MenuItemId;
@@ -248,150 +245,6 @@ public class IdentifierController {
     
     return result;
   }
-
-  /**
-   * Lists page ids by source and parent id
-   * 
-   * Results are sorted by orderIndex column
-   * 
-   * @param parentId parent id
-   * @return page ids by parent id
-   */
-  public List<PageId> listPageIdsBySourceAndParentId(String source, BaseId parentId) {
-    Identifier parentIdentifier = findIdentifierById(parentId);
-    if (parentIdentifier == null) {
-      return Collections.emptyList();
-    }
-
-    List<Identifier> identifiers = identifierDAO.listBySourceParentAndTypeOrderByOrderIndex(source, parentIdentifier, IdType.PAGE.name());
-    List<PageId> result = new ArrayList<>(identifiers.size());
-    for (Identifier identifier : identifiers) {
-      OrganizationId organizationId = new OrganizationId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getOrganizationKuntaApiId());
-      result.add(new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId()));
-    }
-    
-    return result;
-  }
-  
-  /**
-   * Lists attachment ids by source and parent id
-   * 
-   * Results are sorted by orderIndex column
-   * 
-   * @param parentId parent id
-   * @return attachment ids by parent id
-   */
-  public List<AttachmentId> listAttachmentIdsBySourceAndParentId(String source, BaseId parentId) {
-    Identifier parentIdentifier = findIdentifierById(parentId);
-    if (parentIdentifier == null) {
-      return Collections.emptyList();
-    }
-
-    List<Identifier> identifiers = identifierDAO.listBySourceParentAndTypeOrderByOrderIndex(source, parentIdentifier, IdType.ATTACHMENT.name());
-    List<AttachmentId> result = new ArrayList<>(identifiers.size());
-    for (Identifier identifier : identifiers) {
-      OrganizationId organizationId = new OrganizationId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getOrganizationKuntaApiId());
-      result.add(new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId()));
-    }
-    
-    return result;
-  }
-  
-  /**
-   * Lists fragment ids by parent id. 
-   * 
-   * Results are sorted by orderIndex column
-   * 
-   * @param parentId parent id
-   * @return fragment ids by parent id
-   */
-  public List<FragmentId> listFragmentIdsParentId(BaseId parentId) {
-    Identifier parentIdentifier = findIdentifierById(parentId);
-    if (parentIdentifier == null) {
-      return Collections.emptyList();
-    }
-    
-    List<Identifier> identifiers = identifierDAO.listByParentAndTypeOrderByOrderIndex(parentIdentifier, IdType.FRAGMENT.name());
-    List<FragmentId> result = new ArrayList<>(identifiers.size());
-    for (Identifier identifier : identifiers) {
-      OrganizationId organizationId = new OrganizationId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getOrganizationKuntaApiId());
-      result.add(new FragmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId()));
-    }
-    
-    return result;
-  }
-  
-  /**
-   * Lists banner ids by parent id. 
-   * 
-   * Results are sorted by orderIndex column
-   * 
-   * @param parentId parent id
-   * @return banner ids by parent id
-   */
-  public List<BannerId> listBannerIdsParentId(BaseId parentId) {
-    Identifier parentIdentifier = findIdentifierById(parentId);
-    if (parentIdentifier == null) {
-      return Collections.emptyList();
-    }
-    
-    List<Identifier> identifiers = identifierDAO.listByParentAndTypeOrderByOrderIndex(parentIdentifier, IdType.BANNER.name());
-    List<BannerId> result = new ArrayList<>(identifiers.size());
-    for (Identifier identifier : identifiers) {
-      OrganizationId organizationId = new OrganizationId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getOrganizationKuntaApiId());
-      result.add(new BannerId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId()));
-    }
-    
-    return result;
-  }
-  
-  /**
-   * Lists tile ids by parent id. 
-   * 
-   * Results are sorted by orderIndex column
-   * 
-   * @param parentId parent id
-   * @return tile ids by parent id
-   */
-  public List<TileId> listTileIdsParentId(BaseId parentId) {
-    Identifier parentIdentifier = findIdentifierById(parentId);
-    if (parentIdentifier == null) {
-      return Collections.emptyList();
-    }
-    
-    List<Identifier> identifiers = identifierDAO.listByParentAndTypeOrderByOrderIndex(parentIdentifier, IdType.TILE.name());
-    List<TileId> result = new ArrayList<>(identifiers.size());
-    for (Identifier identifier : identifiers) {
-      OrganizationId organizationId = new OrganizationId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getOrganizationKuntaApiId());
-      result.add(new TileId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId()));
-    }
-    
-    return result;
-  }
-  
-  /**
-   * Lists event ids by parent id. 
-   * 
-   * Results are sorted by orderIndex column
-   * 
-   * @param parentId parent id
-   * @return event ids by parent id
-   */
-  public List<EventId> listEventIdsParentId(BaseId parentId) {
-    Identifier parentIdentifier = findIdentifierById(parentId);
-    if (parentIdentifier == null) {
-      return Collections.emptyList();
-    }
-    
-    List<Identifier> identifiers = identifierDAO.listByParentAndTypeOrderByOrderIndex(parentIdentifier, IdType.EVENT.name());
-    List<EventId> result = new ArrayList<>(identifiers.size());
-    for (Identifier identifier : identifiers) {
-      OrganizationId organizationId = new OrganizationId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getOrganizationKuntaApiId());
-      result.add(new EventId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId()));
-    }
-    
-    return result;
-  }
   
   public List<ServiceId> listServiceIdsBySource(String source) {
     List<Identifier> identifiers = identifierDAO.listBySourceAndType(source, IdType.SERVICE.name());
@@ -414,7 +267,7 @@ public class IdentifierController {
   }
 
   private Identifier createIdentifier(Long orderIndex, String type, String kuntaApiId, String source, String sourceId, String organizationKuntaApiId) {
-    return identifierDAO.create(null, orderIndex, type, kuntaApiId, source, sourceId, organizationKuntaApiId);
+    return identifierDAO.create(orderIndex, type, kuntaApiId, source, sourceId, organizationKuntaApiId);
   }
   
   public Identifier updateIdentifier(Identifier identifier, Long orderIndex) {

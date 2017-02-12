@@ -6,9 +6,10 @@ import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
+import fi.metatavu.kuntaapi.server.rest.model.Attachment;
+import fi.metatavu.kuntaapi.server.rest.model.Tile;
 import fi.metatavu.management.client.model.Attachment.MediaTypeEnum;
 import fi.otavanopisto.kuntaapi.server.cache.TileCache;
-import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
@@ -16,8 +17,6 @@ import fi.otavanopisto.kuntaapi.server.id.TileId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.TileProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementAttachmentCache;
-import fi.metatavu.kuntaapi.server.rest.model.Attachment;
-import fi.metatavu.kuntaapi.server.rest.model.Tile;
 
 /**
  * Tile provider for management wordpress
@@ -27,9 +26,6 @@ import fi.metatavu.kuntaapi.server.rest.model.Tile;
 @RequestScoped
 public class ManagementTileProvider extends AbstractManagementProvider implements TileProvider {
   
-  @Inject
-  private IdentifierController identifierController;
-
   @Inject
   private IdentifierRelationController identifierRelationController;
   
@@ -44,7 +40,7 @@ public class ManagementTileProvider extends AbstractManagementProvider implement
 
   @Override
   public List<Tile> listOrganizationTiles(OrganizationId organizationId) {
-    List<TileId> tileIds = identifierController.listTileIdsParentId(organizationId);
+    List<TileId> tileIds = identifierRelationController.listTileIdsBySourceAndParentId(ManagementConsts.IDENTIFIER_NAME, organizationId);
     List<Tile> result = new ArrayList<>(tileIds.size());
     
     for (TileId tileId : tileIds) {
@@ -64,7 +60,7 @@ public class ManagementTileProvider extends AbstractManagementProvider implement
 
   @Override
   public List<Attachment> listOrganizationTileImages(OrganizationId organizationId, TileId tileId) {
-    List<AttachmentId> attachmentIds = identifierRelationController.listAttachmentIdsByParentId(organizationId, tileId);
+    List<AttachmentId> attachmentIds = identifierRelationController.listAttachmentIdsBySourceAndParentId(ManagementConsts.IDENTIFIER_NAME, tileId);
     List<Attachment> result = new ArrayList<>(attachmentIds.size());
     
     for (AttachmentId attachmentId : attachmentIds) {

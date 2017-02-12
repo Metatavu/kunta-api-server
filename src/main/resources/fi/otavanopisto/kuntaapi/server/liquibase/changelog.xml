@@ -132,5 +132,11 @@
     
     <addUniqueConstraint constraintName="UK_IDENTIFIER_RELATION_PARENT_CHILD" columnNames="parent_id,child_id" tableName="IdentifierRelation"/>
   </changeSet>
-
+  
+  <changeSet id="identifier-relation-migrate" author="antti.leppa">
+    <sql>INSERT INTO IdentifierRelation (child_id, parent_id) SELECT id, parent_id FROM Identifier</sql>
+    <dropForeignKeyConstraint baseTableName="Identifier" constraintName="FK_IDENTIFIER_PARENT_ID"/>
+    <dropColumn tableName="Identifier" columnName="parent_id"/>
+  </changeSet>
+  
 </databaseChangeLog>

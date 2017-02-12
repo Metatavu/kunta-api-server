@@ -10,9 +10,14 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
+import fi.otavanopisto.kuntaapi.server.id.BannerId;
 import fi.otavanopisto.kuntaapi.server.id.BaseId;
+import fi.otavanopisto.kuntaapi.server.id.EventId;
+import fi.otavanopisto.kuntaapi.server.id.FragmentId;
 import fi.otavanopisto.kuntaapi.server.id.IdType;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.id.PageId;
+import fi.otavanopisto.kuntaapi.server.id.TileId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.persistence.dao.IdentifierRelationDAO;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
@@ -103,25 +108,118 @@ public class IdentifierRelationController {
     }
   }
   
-  public List<AttachmentId> listAttachmentIdsByParentId(OrganizationId organizationId, BaseId parentId) {
-    List<Identifier> identifiers = listChildIdentifiersByType(parentId, IdType.ATTACHMENT);
+
+  /**
+   * Lists page ids by source and parent id
+   * 
+   * @param parentId parent id
+   * @return page ids by parent id
+   */
+  public List<PageId> listPageIdsBySourceAndParentId(String source, BaseId parentId) {
+    List<Identifier> identifiers = listChildIdentifiersByParentSourceAndType(parentId, source, IdType.PAGE);
+    List<PageId> result = new ArrayList<>(identifiers.size());
+    for (Identifier identifier : identifiers) {
+      OrganizationId organizationId = new OrganizationId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getOrganizationKuntaApiId());
+      result.add(new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId()));
+    }
+    
+    return result;
+  }
+  
+  /**
+   * Lists fragment ids by source and parent id. 
+   * 
+   * @param parentId parent id
+   * @return fragment ids by parent id
+   */
+  public List<FragmentId> listFragmentIdsBySourceAndParentId(String source, BaseId parentId) {
+    List<Identifier> identifiers = listChildIdentifiersByParentSourceAndType(parentId, source, IdType.FRAGMENT);
+    List<FragmentId> result = new ArrayList<>(identifiers.size());
+    for (Identifier identifier : identifiers) {
+      OrganizationId organizationId = new OrganizationId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getOrganizationKuntaApiId());
+      result.add(new FragmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId()));
+    }
+    
+    return result;
+  }
+  
+  /**
+   * Lists banner ids by source and parent id. 
+   * 
+   * @param parentId parent id
+   * @return banner ids by parent id
+   */
+  public List<BannerId> listBannerIdsBySourceAndParentId(String source, BaseId parentId) {
+    List<Identifier> identifiers = listChildIdentifiersByParentSourceAndType(parentId, source, IdType.BANNER);
+    List<BannerId> result = new ArrayList<>(identifiers.size());
+    for (Identifier identifier : identifiers) {
+      OrganizationId organizationId = new OrganizationId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getOrganizationKuntaApiId());
+      result.add(new BannerId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId()));
+    }
+    
+    return result;
+  }
+  
+  /**
+   * Lists tile ids by source and parent id. 
+   * 
+   * @param parentId parent id
+   * @return tile ids by parent id
+   */
+  public List<TileId> listTileIdsBySourceAndParentId(String source, BaseId parentId) {
+    List<Identifier> identifiers = listChildIdentifiersByParentSourceAndType(parentId, source, IdType.TILE);
+    List<TileId> result = new ArrayList<>(identifiers.size());
+    for (Identifier identifier : identifiers) {
+      OrganizationId organizationId = new OrganizationId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getOrganizationKuntaApiId());
+      result.add(new TileId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId()));
+    }
+    
+    return result;
+  }
+  
+  /**
+   * Lists event ids by source and parent id. 
+   * 
+   * @param parentId parent id
+   * @return event ids by parent id
+   */
+  public List<EventId> listEventIdsBySourceAndParentId(String source, BaseId parentId) {
+    List<Identifier> identifiers = listChildIdentifiersByParentSourceAndType(parentId, source, IdType.EVENT);
+    List<EventId> result = new ArrayList<>(identifiers.size());
+    for (Identifier identifier : identifiers) {
+      OrganizationId organizationId = new OrganizationId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getOrganizationKuntaApiId());
+      result.add(new EventId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId()));
+    }
+    
+    return result;
+  }
+
+  /**
+   * Lists attachment ids by parent id. 
+   * 
+   * @param parentId parent id
+   * @return event ids by parent id
+   */
+  public List<AttachmentId> listAttachmentIdsBySourceAndParentId(String source, BaseId parentId) {
+    List<Identifier> identifiers = listChildIdentifiersByParentSourceAndType(parentId, source, IdType.ATTACHMENT);
     List<AttachmentId> result = new ArrayList<>(identifiers.size());
     
     for (Identifier identifier : identifiers) {
+      OrganizationId organizationId = new OrganizationId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getOrganizationKuntaApiId());
       result.add(new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId()));
     }
     
     return result;
   }
   
-  private List<Identifier> listChildIdentifiersByType(BaseId parentId, IdType type) {
+  private List<Identifier> listChildIdentifiersByParentSourceAndType(BaseId parentId, String source, IdType type) {
     Identifier parentIdentifier = identifierController.findIdentifierById(parentId);
     if (parentIdentifier == null) {
       logger.log(Level.WARNING, String.format("Could not find identifier for parent id %s when listing a child ids", parentId));
       return Collections.emptyList();
     }
     
-    return identifierRelationDAO.listChildIdentifiersByParentAndType(parentIdentifier, type.name());    
+    return identifierRelationDAO.listChildIdentifiersByParentSourceAndType(parentIdentifier, source, type.name());    
   }
 
   public boolean isChildOf(BaseId parentId, BaseId childId) {

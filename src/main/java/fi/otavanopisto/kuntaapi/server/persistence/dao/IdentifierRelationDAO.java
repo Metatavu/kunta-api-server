@@ -109,10 +109,10 @@ public class IdentifierRelationDAO extends AbstractDAO<IdentifierRelation> {
   /**
    * Lists child identifiers by parent
    * 
-   * @param parent parent
+   * @param parent parent identifier
    * @return child identifiers by parent
    */
-  public List<Identifier> listChildIdentifiersByParentAndType(Identifier parent, String type) {
+  public List<Identifier> listChildIdentifiersByParentSourceAndType(Identifier parent, String source, String type) {
     EntityManager entityManager = getEntityManager();
 
     CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
@@ -124,7 +124,8 @@ public class IdentifierRelationDAO extends AbstractDAO<IdentifierRelation> {
     criteria.where(
       criteriaBuilder.and(
         criteriaBuilder.equal(root.get(IdentifierRelation_.parent), parent),
-        criteriaBuilder.equal(identifierJoin.get(Identifier_.type), type)
+        criteriaBuilder.equal(identifierJoin.get(Identifier_.type), type),
+        criteriaBuilder.equal(identifierJoin.get(Identifier_.source), source)
       )
     );
     

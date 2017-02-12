@@ -9,6 +9,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
+import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.debug.Timed;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
@@ -42,6 +43,9 @@ public class CaseMPageProvider implements PageProvider {
   
   @Inject
   private IdentifierController identifierController;
+
+  @Inject
+  private IdentifierRelationController identifierRelationController;
   
   @Override
   @Timed (infoThreshold = 100, warningThreshold = 200, severeThreshold = 400)
@@ -62,9 +66,9 @@ public class CaseMPageProvider implements PageProvider {
     List<PageId> pageIds;
     
     if (onlyRootPages) {
-      pageIds = identifierController.listPageIdsBySourceAndParentId(CaseMConsts.IDENTIFIER_NAME, organizationId);
+      pageIds = identifierRelationController.listPageIdsBySourceAndParentId(CaseMConsts.IDENTIFIER_NAME, organizationId);
     } else if (kuntaApiParentId != null) {
-      pageIds = identifierController.listPageIdsBySourceAndParentId(CaseMConsts.IDENTIFIER_NAME, kuntaApiParentId);
+      pageIds = identifierRelationController.listPageIdsBySourceAndParentId(CaseMConsts.IDENTIFIER_NAME, kuntaApiParentId);
     } else {
       pageIds = identifierController.listOrganizationPageIdsBySource(organizationId, CaseMConsts.IDENTIFIER_NAME);
     }

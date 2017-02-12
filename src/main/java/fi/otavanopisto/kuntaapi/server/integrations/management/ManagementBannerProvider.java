@@ -10,7 +10,6 @@ import fi.metatavu.kuntaapi.server.rest.model.Attachment;
 import fi.metatavu.kuntaapi.server.rest.model.Banner;
 import fi.metatavu.management.client.model.Attachment.MediaTypeEnum;
 import fi.otavanopisto.kuntaapi.server.cache.BannerCache;
-import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.BannerId;
@@ -28,9 +27,6 @@ import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementA
 public class ManagementBannerProvider extends AbstractManagementProvider implements BannerProvider {
   
   @Inject
-  private IdentifierController identifierController;
-  
-  @Inject
   private IdentifierRelationController identifierRelationController;
   
   @Inject
@@ -44,7 +40,7 @@ public class ManagementBannerProvider extends AbstractManagementProvider impleme
   
   @Override
   public List<Banner> listOrganizationBanners(OrganizationId organizationId) {
-    List<BannerId> bannerIds = identifierController.listBannerIdsParentId(organizationId);
+    List<BannerId> bannerIds = identifierRelationController.listBannerIdsBySourceAndParentId(ManagementConsts.IDENTIFIER_NAME, organizationId);
     List<Banner> banners = new ArrayList<>(bannerIds.size());
     
     for (BannerId bannerId : bannerIds) {
@@ -68,7 +64,7 @@ public class ManagementBannerProvider extends AbstractManagementProvider impleme
 
   @Override
   public List<Attachment> listOrganizationBannerImages(OrganizationId organizationId, BannerId bannerId) {
-    List<AttachmentId> attachmentIds = identifierRelationController.listAttachmentIdsByParentId(organizationId, bannerId);
+    List<AttachmentId> attachmentIds = identifierRelationController.listAttachmentIdsBySourceAndParentId(ManagementConsts.IDENTIFIER_NAME, bannerId);
     List<Attachment> result = new ArrayList<>(attachmentIds.size());
     
     for (AttachmentId attachmentId : attachmentIds) {

@@ -18,7 +18,6 @@ import org.apache.http.client.utils.URIBuilder;
 import fi.metatavu.kuntaapi.server.rest.model.Attachment;
 import fi.metatavu.kuntaapi.server.rest.model.Event;
 import fi.otavanopisto.kuntaapi.server.cache.EventCache;
-import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.EventId;
@@ -32,6 +31,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.BinaryHttpClient;
 import fi.otavanopisto.kuntaapi.server.integrations.BinaryHttpClient.BinaryResponse;
 import fi.otavanopisto.kuntaapi.server.integrations.EventProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpClient.Response;
+import fi.otavanopisto.kuntaapi.server.integrations.management.ManagementConsts;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 
 /**
@@ -49,9 +49,6 @@ public class MikkeliNytEventProvider implements EventProvider {
   
   @Inject
   private IdController idController;
-
-  @Inject
-  private IdentifierController identifierController;
   
   @Inject
   private IdentifierRelationController identifierRelationController;
@@ -81,7 +78,7 @@ public class MikkeliNytEventProvider implements EventProvider {
   public List<Event> listOrganizationEvents(OrganizationId organizationId, OffsetDateTime startBefore,
       OffsetDateTime startAfter, OffsetDateTime endBefore, OffsetDateTime endAfter) {
     
-    List<EventId> eventIds = identifierController.listEventIdsParentId(organizationId);
+    List<EventId> eventIds = identifierRelationController.listEventIdsBySourceAndParentId(MikkeliNytConsts.IDENTIFIER_NAME, organizationId);
     List<Event> result = new ArrayList<>(eventIds.size());
     
     for (EventId eventId : eventIds) {
@@ -105,7 +102,7 @@ public class MikkeliNytEventProvider implements EventProvider {
 
   @Override
   public List<Attachment> listEventImages(OrganizationId organizationId, EventId eventId) {
-    List<AttachmentId> attachmentIds = identifierRelationController.listAttachmentIdsByParentId(organizationId, eventId);
+    List<AttachmentId> attachmentIds = identifierRelationController.listAttachmentIdsBySourceAndParentId(ManagementConsts.IDENTIFIER_NAME, eventId);
     List<Attachment> result = new ArrayList<>(attachmentIds.size());
     
     for (AttachmentId attachmentId : attachmentIds) {

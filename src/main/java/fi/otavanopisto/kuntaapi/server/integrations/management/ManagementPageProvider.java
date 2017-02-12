@@ -83,7 +83,7 @@ public class ManagementPageProvider extends AbstractManagementProvider implement
 
   @Override
   public List<Attachment> listOrganizationPageImages(OrganizationId organizationId, PageId pageId, String type) {
-    List<AttachmentId> attachmentIds = identifierRelationController.listAttachmentIdsByParentId(organizationId, pageId);
+    List<AttachmentId> attachmentIds = identifierRelationController.listAttachmentIdsBySourceAndParentId(ManagementConsts.IDENTIFIER_NAME, pageId);
     List<Attachment> result = new ArrayList<>(attachmentIds.size());
     
     for (AttachmentId attachmentId : attachmentIds) {
@@ -142,9 +142,9 @@ public class ManagementPageProvider extends AbstractManagementProvider implement
     List<PageId> pageIds;
     
     if (onlyRootPages) {
-      pageIds = identifierController.listPageIdsBySourceAndParentId(ManagementConsts.IDENTIFIER_NAME, organizationId);
+      pageIds = identifierRelationController.listPageIdsBySourceAndParentId(ManagementConsts.IDENTIFIER_NAME, organizationId);
     } else if (kuntaApiParentId != null) {
-      pageIds = identifierController.listPageIdsBySourceAndParentId(ManagementConsts.IDENTIFIER_NAME, kuntaApiParentId);
+      pageIds = identifierRelationController.listPageIdsBySourceAndParentId(ManagementConsts.IDENTIFIER_NAME, kuntaApiParentId);
     } else {
       pageIds = identifierController.listOrganizationPageIdsBySource(organizationId, ManagementConsts.IDENTIFIER_NAME);
     }

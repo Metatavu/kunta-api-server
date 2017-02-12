@@ -70,7 +70,7 @@ public class ManagementNewsProvider extends AbstractManagementProvider implement
   @Override
   public List<Attachment> listNewsArticleImages(OrganizationId organizationId, NewsArticleId newsArticleId) {
     List<Attachment> result = new ArrayList<>();
-    List<AttachmentId> attachmentIds = identifierRelationController.listAttachmentIdsByParentId(organizationId, newsArticleId);
+    List<AttachmentId> attachmentIds = identifierRelationController.listAttachmentIdsBySourceAndParentId(ManagementConsts.IDENTIFIER_NAME, newsArticleId);
     
     for (AttachmentId attachmentId : attachmentIds) {
       Attachment attachment = managementAttachmentCache.get(attachmentId);
