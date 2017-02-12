@@ -87,6 +87,26 @@ public class IdentifierRelationDAO extends AbstractDAO<IdentifierRelation> {
   }
   
   /**
+   * Lists identifier relations by child identifier
+   * 
+   * @param childIdentifier child identifier
+   * @return identifier relations by child identifier
+   */
+  public List<IdentifierRelation> listByChild(Identifier childIdentifier) {
+    EntityManager entityManager = getEntityManager();
+
+    CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+    CriteriaQuery<IdentifierRelation> criteria = criteriaBuilder.createQuery(IdentifierRelation.class);
+    Root<IdentifierRelation> root = criteria.from(IdentifierRelation.class);
+    criteria.select(root);
+    criteria.where(
+      criteriaBuilder.equal(root.get(IdentifierRelation_.child), childIdentifier)
+    );
+    
+    return entityManager.createQuery(criteria).getResultList();
+  }
+  
+  /**
    * Lists child identifiers by parent
    * 
    * @param parent parent

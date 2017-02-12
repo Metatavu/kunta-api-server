@@ -43,6 +43,7 @@ import fi.otavanopisto.casem.client.model.Node;
 import fi.otavanopisto.casem.client.model.NodeList;
 import fi.otavanopisto.kuntaapi.server.controllers.IdMapController;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
+import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.controllers.PageController;
 import fi.otavanopisto.kuntaapi.server.discover.FileIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.freemarker.FreemarkerRenderer;
@@ -131,7 +132,10 @@ public class CaseMCacheUpdater {
   
   @Inject
   private IdentifierController identifierController;
-  
+
+  @Inject
+  private IdentifierRelationController identifierRelationController;
+
   @Inject
   private PageController pageController;
 
@@ -299,13 +303,15 @@ public class CaseMCacheUpdater {
     
     Identifier identifier = identifierController.findIdentifierById(casemItemPageId);
     if (identifier == null) {
-      identifier = identifierController.createIdentifier(parentId, orderIndex, casemItemPageId);
+      identifier = identifierController.createIdentifier(orderIndex, casemItemPageId);
     } else {
-      identifier = identifierController.updateIdentifier(identifier, parentId, orderIndex);
+      identifier = identifierController.updateIdentifier(identifier, orderIndex);
     }
+
+    identifierRelationController.setParentId(identifier, parentId);
     
-    PageId parentPageId = parentId instanceof PageId ? (PageId) parentId : null;
     PageId kuntaApiPageId = new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
+    PageId parentPageId = parentId instanceof PageId ? (PageId) parentId : null;
     Page meetingItemPage = casemTranslator.translatePage(kuntaApiPageId, parentPageId, itemLink.getText(), itemLink.getSlug());
     
     String meetingItemPageContents = renderContentMeetingItem(createMeetingItemModel(downloadUrl, meetingTitle, memoApproved, itemExtendedProperties), locale);
@@ -868,11 +874,13 @@ public class CaseMCacheUpdater {
     
     Identifier identifier = identifierController.findIdentifierById(casemPageId);
     if (identifier == null) {
-      identifier = identifierController.createIdentifier(identifierParentId, orderIndex, casemPageId);
+      identifier = identifierController.createIdentifier(orderIndex, casemPageId);
     } else {
-      identifier = identifierController.updateIdentifier(identifier, identifierParentId, orderIndex);
+      identifier = identifierController.updateIdentifier(identifier, orderIndex);
     }
-    
+
+    identifierRelationController.setParentId(identifier, identifierParentId);
+
     PageId kuntaApiPageId = new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
     Page page = casemTranslator.translatePage(kuntaApiPageId, kuntaApiParentPageId, node);
     caseMCache.cachePage(organizationId, page, null);

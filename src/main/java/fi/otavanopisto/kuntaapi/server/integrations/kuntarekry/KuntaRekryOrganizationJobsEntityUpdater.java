@@ -20,6 +20,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
+import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
 import fi.otavanopisto.kuntaapi.server.discover.OrganizationIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.id.JobId;
@@ -44,6 +45,9 @@ public class KuntaRekryOrganizationJobsEntityUpdater extends EntityUpdater {
 
   @Inject
   private IdentifierController identifierController;
+  
+  @Inject
+  private IdentifierRelationController identifierRelationController;
   
   @Inject
   private ModificationHashCache modificationHashCache;
@@ -124,10 +128,12 @@ public class KuntaRekryOrganizationJobsEntityUpdater extends EntityUpdater {
       JobId kuntaRekryId = new JobId(organizationId, KuntaRekryConsts.IDENTIFIER_NAME, String.valueOf(kuntaRekryJob.getJobId())); 
       Identifier identifier = identifierController.findIdentifierById(kuntaRekryId);
       if (identifier == null) {
-        identifier = identifierController.createIdentifier(organizationId, orderIndex, kuntaRekryId);
+        identifier = identifierController.createIdentifier(orderIndex, kuntaRekryId);
       } else {
-        identifier = identifierController.updateIdentifier(identifier, organizationId, orderIndex);
+        identifier = identifierController.updateIdentifier(identifier, orderIndex);
       }
+      
+      identifierRelationController.setParentId(identifier, organizationId);
       
       modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(kuntaRekryJob));
     }

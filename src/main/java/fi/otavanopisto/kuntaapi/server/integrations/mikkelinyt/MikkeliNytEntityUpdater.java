@@ -35,6 +35,7 @@ import fi.otavanopisto.kuntaapi.server.cache.EventCache;
 import fi.otavanopisto.kuntaapi.server.cache.EventImageCache;
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
+import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
 import fi.otavanopisto.kuntaapi.server.discover.OrganizationIdRemoveRequest;
 import fi.otavanopisto.kuntaapi.server.discover.OrganizationIdUpdateRequest;
@@ -85,7 +86,10 @@ public class MikkeliNytEntityUpdater extends EntityUpdater {
   
   @Inject
   private IdentifierController identifierController;
-  
+
+  @Inject
+  private IdentifierRelationController identifierRelationController;
+
   @Inject
   private ModificationHashCache modificationHashCache;
   
@@ -179,10 +183,12 @@ public class MikkeliNytEntityUpdater extends EntityUpdater {
     
     Identifier identifier = identifierController.findIdentifierById(mikkeliNytEventId);
     if (identifier == null) {
-      identifier = identifierController.createIdentifier(organizationId, orderIndex, mikkeliNytEventId);
+      identifier = identifierController.createIdentifier(orderIndex, mikkeliNytEventId);
     } else {
-      identifier = identifierController.updateIdentifier(identifier, organizationId, orderIndex);
+      identifier = identifierController.updateIdentifier(identifier, orderIndex);
     }
+    
+    identifierRelationController.setParentId(identifier, organizationId);
     
     EventId kuntaApiId = new EventId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
     fi.metatavu.kuntaapi.server.rest.model.Event event = translate(kuntaApiId, mikkeliNytEvent);
@@ -201,11 +207,15 @@ public class MikkeliNytEntityUpdater extends EntityUpdater {
     
     Identifier identifier = identifierController.findIdentifierById(mikkeliNytAttachmentId);
     if (identifier == null) {
-      identifier = identifierController.createIdentifier(eventId, orderIndex, mikkeliNytAttachmentId);
+      identifier = identifierController.createIdentifier(orderIndex, mikkeliNytAttachmentId);
     } else {
-      identifier = identifierController.updateIdentifier(identifier, eventId, orderIndex);
+      identifier = identifierController.updateIdentifier(identifier, orderIndex);
     }
+
+    identifierRelationController.addChild(eventId, identifier);
     
+    // FIXME: Remove event image cache
+
     AttachmentId kuntaApiId = new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
     Attachment attachment = translate(kuntaApiId, imageUrl);
 

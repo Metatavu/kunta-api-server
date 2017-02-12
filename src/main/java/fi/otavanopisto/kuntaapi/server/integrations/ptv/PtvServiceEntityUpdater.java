@@ -62,7 +62,7 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
   
   @Inject
   private IdentifierController identifierController;
-  
+
   @Inject
   private PtvServiceCache ptvServiceCache;
 
@@ -138,9 +138,9 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
     if (response.isOk()) {
       Identifier identifier = identifierController.findIdentifierById(serviceId);
       if (identifier == null) {
-        identifier = identifierController.createIdentifier(null, orderIndex, serviceId);
+        identifier = identifierController.createIdentifier(orderIndex, serviceId);
       } else {
-        identifier = identifierController.updateIdentifier(identifier, null, orderIndex);
+        identifier = identifierController.updateIdentifier(identifier, orderIndex);
       }
       
       Service ptvService = response.getResponse();

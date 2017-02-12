@@ -171,10 +171,12 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
 
     Identifier identifier = identifierController.findIdentifierById(newsArticleId);
     if (identifier == null) {
-      identifier = identifierController.createIdentifier(organizationId, orderIndex, newsArticleId);
+      identifier = identifierController.createIdentifier(orderIndex, newsArticleId);
     } else {
-      identifier = identifierController.updateIdentifier(identifier, organizationId, orderIndex);
+      identifier = identifierController.updateIdentifier(identifier, orderIndex);
     }
+    
+    identifierRelationController.setParentId(identifier, organizationId);
     
     NewsArticleId kuntaApiNewsArticleId = new NewsArticleId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
     NewsArticle newsArticle = managementTranslator.translateNewsArticle(kuntaApiNewsArticleId, managementPost);
@@ -202,11 +204,13 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
       
       Identifier identifier = identifierController.findIdentifierById(managementAttachmentId);
       if (identifier == null) {
-        identifier = identifierController.createIdentifier(organizationId, orderIndex, managementAttachmentId);
+        identifier = identifierController.createIdentifier(orderIndex, managementAttachmentId);
       } else {
-        identifier = identifierController.updateIdentifier(identifier, organizationId, orderIndex);
+        identifier = identifierController.updateIdentifier(identifier, orderIndex);
       }
       
+      identifierRelationController.addChild(newsArticleId, identifier);
+
       AttachmentId kuntaApiAttachmentId = new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
       fi.metatavu.kuntaapi.server.rest.model.Attachment attachment = managementTranslator.translateAttachment(kuntaApiAttachmentId, managementAttachment, ManagementConsts.ATTACHMENT_TYPE_NEWS);
       if (attachment == null) {
@@ -214,7 +218,6 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
         return;
       }
       
-      identifierRelationController.addChild(newsArticleId, kuntaApiAttachmentId);
       managementAttachmentCache.put(kuntaApiAttachmentId, attachment);
       
       AttachmentData imageData = managementImageLoader.getImageData(managementAttachment.getSourceUrl());

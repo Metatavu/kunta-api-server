@@ -24,6 +24,7 @@ import org.apache.commons.lang3.StringUtils;
 import fi.metatavu.kuntaapi.server.rest.model.FileDef;
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
+import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
 import fi.otavanopisto.kuntaapi.server.discover.FileIdRemoveRequest;
 import fi.otavanopisto.kuntaapi.server.discover.FileIdUpdateRequest;
@@ -67,6 +68,9 @@ public class CasemFileEntityUpdater extends EntityUpdater {
 
   @Inject
   private IdentifierController identifierController;
+
+  @Inject
+  private IdentifierRelationController identifierRelationController;
 
   @Inject
   private CasemFileCache fileCache;
@@ -183,13 +187,14 @@ public class CasemFileEntityUpdater extends EntityUpdater {
     BaseId parentId = kuntaApiPageId != null ? kuntaApiPageId : organizationId;
     Identifier identifier = identifierController.findIdentifierById(casemFileId);
     if (identifier == null) {
-      identifier = identifierController.createIdentifier(parentId, orderIndex, casemFileId);
+      identifier = identifierController.createIdentifier(orderIndex, casemFileId);
     } else {
-      identifier = identifierController.updateIdentifier(identifier, parentId, orderIndex);
+      identifier = identifierController.updateIdentifier(identifier, orderIndex);
     }
+
+    identifierRelationController.setParentId(identifier, parentId);
     
     FileId kuntaApiFileId = new FileId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
-    
     FileDef fileDef = casemTranslator.translateFile(kuntaApiPageId, kuntaApiFileId, downloadMeta);
     if (fileDef != null) {
       fileCache.put(kuntaApiFileId, fileDef);

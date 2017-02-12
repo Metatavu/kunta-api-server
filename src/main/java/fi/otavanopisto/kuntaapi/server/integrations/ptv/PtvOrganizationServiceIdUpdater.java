@@ -17,6 +17,7 @@ import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
+import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
 import fi.otavanopisto.kuntaapi.server.discover.IdUpdateRequestQueue;
 import fi.otavanopisto.kuntaapi.server.discover.OrganizationIdUpdateRequest;
@@ -46,6 +47,9 @@ public class PtvOrganizationServiceIdUpdater extends EntityUpdater {
   
   @Inject
   private IdentifierController identifierController;
+
+  @Inject
+  private IdentifierRelationController identifierRelationController;
 
   @Resource
   private TimerService timerService;
@@ -114,10 +118,12 @@ public class PtvOrganizationServiceIdUpdater extends EntityUpdater {
         OrganizationServiceId organizationServiceId = new OrganizationServiceId(organizationId, PtvConsts.IDENTIFIFER_NAME, organizationService.getId());
         Identifier identifier = identifierController.findIdentifierById(organizationServiceId);
         if (identifier == null) {
-          identifierController.createIdentifier(organizationId, orderIndex, organizationServiceId);
+          identifierController.createIdentifier(orderIndex, organizationServiceId);
         } else {
-          identifierController.updateIdentifier(identifier, organizationId, orderIndex);
+          identifierController.updateIdentifier(identifier, orderIndex);
         }
+        
+        identifierRelationController.setParentId(identifier, organizationId);
       }
     } else {
       logger.warning(String.format("Organization %s services processing failed on [%d] %s", organizationId.getId(), response.getStatus(), response.getMessage()));

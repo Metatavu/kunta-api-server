@@ -36,16 +36,10 @@ public class IdentifierRelationController {
   @Inject
   private IdentifierController identifierController;
   
-  public void addChild(BaseId parentId, BaseId childId) {
+  public void addChild(BaseId parentId, Identifier childIdentifier) {
     Identifier parentIdentifier = identifierController.findIdentifierById(parentId);
     if (parentIdentifier == null) {
       logger.log(Level.SEVERE, String.format("Could not find identifier for parent id %s when adding a child relation", parentId));
-      return;
-    }
-    
-    Identifier childIdentifier = identifierController.findIdentifierById(childId);
-    if (childIdentifier == null) {
-      logger.log(Level.SEVERE, String.format("Could not find identifier for child id %s when adding a child relation", childId));
       return;
     }
     
@@ -58,6 +52,54 @@ public class IdentifierRelationController {
     IdentifierRelation identifierRelation = findIdentifierRelation(parentId, childId);
     if (identifierRelation != null) {
       identifierRelationDAO.delete(identifierRelation);
+    }
+  }
+  
+  /**
+   * Sets a parent for given identifier. 
+   * 
+   * All existing parent relations are removed in this process. 
+   * 
+   * @param childIdentifier identifier
+   * @param parentId id of new parent or null to remove all parent relations
+   */
+  public void setParentId(Identifier childIdentifier, BaseId parentId) {
+    Identifier parentIdentifier = null;
+    
+    if (parentId != null) {
+      parentIdentifier = identifierController.findIdentifierById(parentId);
+      if (parentIdentifier == null) {
+        logger.log(Level.SEVERE, String.format("Could not find identifier for parent id %s when setting parents", parentId));
+        return;
+      }
+    }
+    
+    if (parentIdentifier == null) {
+      removeParentIdentifierRelations(childIdentifier);
+    } else {
+      setParentIdentifierRelation(parentIdentifier, childIdentifier);
+    }
+  }
+
+  private void removeParentIdentifierRelations(Identifier childIdentifier) {
+    for (IdentifierRelation identifierRelation : identifierRelationDAO.listByChild(childIdentifier)) {
+      identifierRelationDAO.delete(identifierRelation);
+    }
+  }
+
+  private void setParentIdentifierRelation(Identifier parentIdentifier, Identifier childIdentifier) {
+    boolean parentFound = false;
+    
+    for (IdentifierRelation identifierRelation : identifierRelationDAO.listByChild(childIdentifier)) {
+      if (identifierRelation.getParent().getId().equals(parentIdentifier.getId())) {
+        parentFound = true;
+      } else {
+        identifierRelationDAO.delete(identifierRelation);
+      }
+    }
+ 
+    if (!parentFound) {
+      identifierRelationDAO.create(parentIdentifier, childIdentifier);
     }
   }
   

@@ -24,6 +24,7 @@ import fi.metatavu.management.client.model.Announcement;
 import fi.otavanopisto.kuntaapi.server.cache.AnnouncementCache;
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
+import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.discover.AnnouncementIdRemoveRequest;
 import fi.otavanopisto.kuntaapi.server.discover.AnnouncementIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
@@ -56,6 +57,9 @@ public class ManagementAnnouncementEntityUpdater extends EntityUpdater {
   
   @Inject
   private IdentifierController identifierController;
+
+  @Inject
+  private IdentifierRelationController identifierRelationController;
 
   @Inject
   private AnnouncementCache announcementCache;
@@ -152,10 +156,12 @@ public class ManagementAnnouncementEntityUpdater extends EntityUpdater {
 
     Identifier identifier = identifierController.findIdentifierById(announcementId);
     if (identifier == null) {
-      identifier = identifierController.createIdentifier(organizationId, orderIndex, announcementId);
+      identifier = identifierController.createIdentifier(orderIndex, announcementId);
     } else {
-      identifier = identifierController.updateIdentifier(identifier, organizationId, orderIndex);
+      identifier = identifierController.updateIdentifier(identifier, orderIndex);
     }
+
+    identifierRelationController.setParentId(identifier, organizationId);
     
     AnnouncementId kuntaApiAnnouncementId = new AnnouncementId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
     fi.metatavu.kuntaapi.server.rest.model.Announcement announcement = managementTranslator.translateAnnouncement(kuntaApiAnnouncementId, managementAnnouncement);

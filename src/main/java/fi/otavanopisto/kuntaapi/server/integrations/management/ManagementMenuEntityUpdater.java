@@ -29,6 +29,7 @@ import fi.otavanopisto.kuntaapi.server.cache.MenuCache;
 import fi.otavanopisto.kuntaapi.server.cache.MenuItemCache;
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
+import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
 import fi.otavanopisto.kuntaapi.server.discover.IdUpdateRequestQueue;
 import fi.otavanopisto.kuntaapi.server.discover.MenuIdRemoveRequest;
@@ -67,7 +68,10 @@ public class ManagementMenuEntityUpdater extends EntityUpdater {
   
   @Inject
   private IdentifierController identifierController;
-  
+
+  @Inject
+  private IdentifierRelationController identifierRelationController;
+
   @Inject
   private ModificationHashCache modificationHashCache;
   
@@ -207,10 +211,12 @@ public class ManagementMenuEntityUpdater extends EntityUpdater {
 
     Identifier identifier = identifierController.findIdentifierById(managementMenuId);
     if (identifier == null) {
-      identifier = identifierController.createIdentifier(organizationId, orderIndex, managementMenuId);
+      identifier = identifierController.createIdentifier(orderIndex, managementMenuId);
     } else {
-      identifier = identifierController.updateIdentifier(identifier, organizationId, orderIndex);
+      identifier = identifierController.updateIdentifier(identifier, orderIndex);
     }
+    
+    identifierRelationController.setParentId(identifier, organizationId);
     
     MenuId kuntaApiMenuId = new MenuId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
     Menu menu = translateMenu(organizationId, managementMenu);
@@ -225,13 +231,15 @@ public class ManagementMenuEntityUpdater extends EntityUpdater {
 
     Identifier identifier = identifierController.findIdentifierById(managementMenuItemId);
     if (identifier == null) {
-      identifier = identifierController.createIdentifier(menuId, orderIndex, managementMenuItemId);
+      identifier = identifierController.createIdentifier(orderIndex, managementMenuItemId);
     } else {
-      identifier = identifierController.updateIdentifier(identifier, menuId, orderIndex);
+      identifier = identifierController.updateIdentifier(identifier, orderIndex);
     }
     
-    MenuItem menuItem = translateMenuItem(organizationId, managementMenuItem);
+    identifierRelationController.setParentId(identifier, menuId);
+
     MenuItemId kuntaApiMenuItemId = new MenuItemId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
+    MenuItem menuItem = translateMenuItem(organizationId, managementMenuItem);
         
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(menuItem));
     menuItemCache.put(new IdPair<MenuId, MenuItemId>(menuId,kuntaApiMenuItemId), menuItem);

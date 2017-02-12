@@ -61,7 +61,7 @@ public class IdentifierController {
    * @param id identifier
    * @return created identifier
    */
-  public Identifier createIdentifier(BaseId parentId, Long orderIndex, BaseId id) {
+  public Identifier createIdentifier(Long orderIndex, BaseId id) {
     String organizationKuntaApiId = null;
     if (id instanceof OrganizationBaseId) {
       OrganizationBaseId organizationBaseId = (OrganizationBaseId) id;
@@ -75,16 +75,8 @@ public class IdentifierController {
       }
     }
     
-    Identifier parent = null;
-    if (parentId != null) {
-      parent = findIdentifierById(parentId);
-      if (parent == null) {
-        logger.severe(String.format("Could not find parent %s for id %s", parentId, id));
-      }
-    }
-    
     String kuntaApiId = UUID.randomUUID().toString();
-    return createIdentifier(parent, orderIndex, id.getType().toString(), kuntaApiId, id.getSource(), id.getId(), organizationKuntaApiId);
+    return createIdentifier(orderIndex, id.getType().toString(), kuntaApiId, id.getSource(), id.getId(), organizationKuntaApiId);
   }
   
   public Identifier findIdentifierById(BaseId id) {
@@ -396,26 +388,13 @@ public class IdentifierController {
     identifierDAO.delete(identifier);
   }
 
-  private Identifier createIdentifier(Identifier parent, Long orderIndex, String type, String kuntaApiId, String source, String sourceId, String organizationKuntaApiId) {
-    return identifierDAO.create(parent, orderIndex, type, kuntaApiId, source, sourceId, organizationKuntaApiId);
+  private Identifier createIdentifier(Long orderIndex, String type, String kuntaApiId, String source, String sourceId, String organizationKuntaApiId) {
+    return identifierDAO.create(null, orderIndex, type, kuntaApiId, source, sourceId, organizationKuntaApiId);
   }
   
-  public Identifier updateIdentifier(Identifier identifier, BaseId parentId, Long orderIndex) {
-    Identifier parent = null;
-    if (parentId != null) {
-      parent = findIdentifierById(parentId);
-      if (parent == null) {
-        logger.severe(String.format("Could not find parent %s for identifier %s", parentId, identifier.getKuntaApiId()));
-      }
-    }
-    
-    return updateIdentifier(identifier, parent, orderIndex);
-  }
-  
-  private Identifier updateIdentifier(Identifier identifier, Identifier parent, Long orderIndex) {
+  public Identifier updateIdentifier(Identifier identifier, Long orderIndex) {
     Identifier result = identifier;
     result = identifierDAO.updateOrderIndex(result, orderIndex);
-    result = identifierDAO.updateParent(result, parent);
     result = identifierDAO.updateModified(result, OffsetDateTime.now());
     return result;
   }

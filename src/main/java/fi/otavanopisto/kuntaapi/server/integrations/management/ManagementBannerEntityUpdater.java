@@ -173,13 +173,14 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
 
     Identifier identifier = identifierController.findIdentifierById(bannerId);
     if (identifier == null) {
-      identifier = identifierController.createIdentifier(organizationId, orderIndex, bannerId);
+      identifier = identifierController.createIdentifier(orderIndex, bannerId);
     } else {
-      identifier = identifierController.updateIdentifier(identifier, organizationId, orderIndex);
+      identifier = identifierController.updateIdentifier(identifier, orderIndex);
     }
     
-    BannerId bannerKuntaApiId = new BannerId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
+    identifierRelationController.setParentId(identifier, organizationId);
     
+    BannerId bannerKuntaApiId = new BannerId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
     fi.metatavu.kuntaapi.server.rest.model.Banner banner = managementTranslator.translateBanner(bannerKuntaApiId, managementBanner);
     if (banner == null) {
       logger.severe(String.format("Could not translate banner %d into Kunta API banner", managementBanner.getId()));
@@ -206,15 +207,14 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
       
       Identifier identifier = identifierController.findIdentifierById(managementAttachmentId);
       if (identifier == null) {
-        identifier = identifierController.createIdentifier(organizationId, orderIndex, managementAttachmentId);
+        identifier = identifierController.createIdentifier(orderIndex, managementAttachmentId);
       } else {
-        identifier = identifierController.updateIdentifier(identifier, organizationId, orderIndex);
+        identifier = identifierController.updateIdentifier(identifier, orderIndex);
       }
+
+      identifierRelationController.addChild(bannerId, identifier);
       
       AttachmentId kuntaApiAttachmentId = new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
-
-      identifierRelationController.addChild(bannerId, kuntaApiAttachmentId);
-      
       fi.metatavu.kuntaapi.server.rest.model.Attachment attachment = managementTranslator.translateAttachment(kuntaApiAttachmentId, managementAttachment, ManagementConsts.ATTACHMENT_TYPE_BANNER);
       
       if (attachment != null) {
