@@ -192,11 +192,11 @@ public class ManagementTileEntityUpdater extends EntityUpdater {
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(tile));
     
     if (managementTile.getFeaturedMedia() != null && managementTile.getFeaturedMedia() > 0) {
-      updateFeaturedMedia(organizationId, kuntaApiTileId, api, managementTile.getFeaturedMedia()); 
+      updateFeaturedMedia(organizationId, identifier, api, managementTile.getFeaturedMedia()); 
     }
   }
   
-  private void updateFeaturedMedia(OrganizationId organizationId, TileId kuntaApiTileId, DefaultApi api, Integer featuredMedia) {
+  private void updateFeaturedMedia(OrganizationId organizationId, Identifier tileIdentifier, DefaultApi api, Integer featuredMedia) {
     ApiResponse<Attachment> response = api.wpV2MediaIdGet(String.valueOf(featuredMedia), null, null);
     if (!response.isOk()) {
       logger.severe(String.format("Finding media failed on [%d] %s", response.getStatus(), response.getMessage()));
@@ -212,7 +212,7 @@ public class ManagementTileEntityUpdater extends EntityUpdater {
         identifier = identifierController.updateIdentifier(identifier, orderIndex);
       }
       
-      identifierRelationController.addChild(kuntaApiTileId, identifier);
+      identifierRelationController.addChild(tileIdentifier, identifier);
 
       AttachmentId kuntaApiAttachmentId = new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
       fi.metatavu.kuntaapi.server.rest.model.Attachment attachment = managementTranslator.translateAttachment(kuntaApiAttachmentId, managementAttachment, ManagementConsts.ATTACHMENT_TYPE_TILE);

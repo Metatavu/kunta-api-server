@@ -231,21 +231,20 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
     pageContentCache.put(kuntaApiPageId, pageContents);
     indexRequest.fire(new IndexRequest(createIndexablePage(organizationId, kuntaApiPageId, ManagementConsts.DEFAULT_LOCALE, contents, title)));
 
-    updateAttachments(organizationId, api, managementPage, kuntaApiPageId);
+    updateAttachments(organizationId, api, managementPage, identifier);
   }
 
-  private void updateAttachments(OrganizationId organizationId, DefaultApi api, Page managementPage,
-      PageId kuntaApiPageId) {
+  private void updateAttachments(OrganizationId organizationId, DefaultApi api, Page managementPage, Identifier pageIdentifier) {
     if (managementPage.getFeaturedMedia() != null && managementPage.getFeaturedMedia() > 0) {
-      updateAttachment(organizationId, kuntaApiPageId, api, managementPage.getFeaturedMedia().longValue(), ManagementConsts.ATTACHMENT_TYPE_PAGE_FEATURED); 
+      updateAttachment(organizationId, pageIdentifier, api, managementPage.getFeaturedMedia().longValue(), ManagementConsts.ATTACHMENT_TYPE_PAGE_FEATURED); 
     }
     
     if (managementPage.getBannerImage() != null && managementPage.getBannerImage() > 0) {
-      updateAttachment(organizationId, kuntaApiPageId, api, managementPage.getBannerImage(), ManagementConsts.ATTACHMENT_TYPE_PAGE_BANNER); 
+      updateAttachment(organizationId, pageIdentifier, api, managementPage.getBannerImage(), ManagementConsts.ATTACHMENT_TYPE_PAGE_BANNER); 
     }
   }
   
-  private void updateAttachment(OrganizationId organizationId, PageId pageId, DefaultApi api, Long managementMediaId, String type) {
+  private void updateAttachment(OrganizationId organizationId, Identifier pageIdentifier, DefaultApi api, Long managementMediaId, String type) {
     ApiResponse<fi.metatavu.management.client.model.Attachment> response = api.wpV2MediaIdGet(String.valueOf(managementMediaId), null, null);
     if (!response.isOk()) {
       logger.severe(String.format("Finding media failed on [%d] %s", response.getStatus(), response.getMessage()));
@@ -261,7 +260,7 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
         identifier = identifierController.updateIdentifier(identifier, orderIndex);
       }
       
-      identifierRelationController.addChild(pageId, identifier);
+      identifierRelationController.addChild(pageIdentifier, identifier);
       
       AttachmentId kuntaApiAttachmentId = new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
       Attachment kuntaApiAttachment = managementTranslator.translateAttachment(kuntaApiAttachmentId, managementAttachment, type);

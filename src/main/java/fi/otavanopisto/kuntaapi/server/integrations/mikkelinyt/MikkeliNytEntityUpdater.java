@@ -193,14 +193,14 @@ public class MikkeliNytEntityUpdater extends EntityUpdater {
     fi.metatavu.kuntaapi.server.rest.model.Event event = translate(kuntaApiId, mikkeliNytEvent);
     
     if (StringUtils.isNotBlank(mikkeliNytEvent.getImage())) {
-      updateAttachment(organizationId, kuntaApiId, mikkeliNytEvent.getImage());
+      updateAttachment(organizationId, identifier, mikkeliNytEvent.getImage());
     }
     
     modificationHashCache.put(kuntaApiId.getId(), createPojoHash(event));
     eventCache.put(kuntaApiId, event);
   }
 
-  private void updateAttachment(OrganizationId organizationId, EventId eventId, String imageUrl) {
+  private void updateAttachment(OrganizationId organizationId, Identifier eventIdentifier, String imageUrl) {
     AttachmentId mikkeliNytAttachmentId = getImageAttachmentId(organizationId, imageUrl);
     Long orderIndex = 0l;
     
@@ -210,8 +210,8 @@ public class MikkeliNytEntityUpdater extends EntityUpdater {
     } else {
       identifier = identifierController.updateIdentifier(identifier, orderIndex);
     }
-
-    identifierRelationController.setParentId(identifier, eventId);
+    
+    identifierRelationController.setParentIdentifier(identifier, eventIdentifier);
     
     AttachmentId kuntaApiId = new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
     Attachment attachment = translate(kuntaApiId, imageUrl);

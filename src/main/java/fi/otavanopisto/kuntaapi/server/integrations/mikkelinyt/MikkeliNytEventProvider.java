@@ -31,7 +31,6 @@ import fi.otavanopisto.kuntaapi.server.integrations.BinaryHttpClient;
 import fi.otavanopisto.kuntaapi.server.integrations.BinaryHttpClient.BinaryResponse;
 import fi.otavanopisto.kuntaapi.server.integrations.EventProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpClient.Response;
-import fi.otavanopisto.kuntaapi.server.integrations.management.ManagementConsts;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 
 /**
@@ -102,7 +101,7 @@ public class MikkeliNytEventProvider implements EventProvider {
 
   @Override
   public List<Attachment> listEventImages(OrganizationId organizationId, EventId eventId) {
-    List<AttachmentId> attachmentIds = identifierRelationController.listAttachmentIdsBySourceAndParentId(ManagementConsts.IDENTIFIER_NAME, eventId);
+    List<AttachmentId> attachmentIds = identifierRelationController.listAttachmentIdsBySourceAndParentId(MikkeliNytConsts.IDENTIFIER_NAME, eventId);
     List<Attachment> result = new ArrayList<>(attachmentIds.size());
     
     for (AttachmentId attachmentId : attachmentIds) {

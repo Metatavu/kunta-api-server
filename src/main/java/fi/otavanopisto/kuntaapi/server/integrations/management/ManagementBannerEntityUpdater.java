@@ -191,12 +191,12 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(banner));
     
     if (managementBanner.getFeaturedMedia() != null && managementBanner.getFeaturedMedia() > 0) {
-      updateFeaturedMedia(organizationId, api, bannerKuntaApiId, managementBanner.getFeaturedMedia()); 
+      updateFeaturedMedia(organizationId, api, identifier, managementBanner.getFeaturedMedia()); 
     }
 
   }
   
-  private void updateFeaturedMedia(OrganizationId organizationId, DefaultApi api, BannerId bannerId, Integer featuredMedia) {
+  private void updateFeaturedMedia(OrganizationId organizationId, DefaultApi api, Identifier bannerIdentifier, Integer featuredMedia) {
     ApiResponse<fi.metatavu.management.client.model.Attachment> response = api.wpV2MediaIdGet(String.valueOf(featuredMedia), null, null);
     if (!response.isOk()) {
       logger.severe(String.format("Finding media failed on [%d] %s", response.getStatus(), response.getMessage()));
@@ -212,7 +212,7 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
         identifier = identifierController.updateIdentifier(identifier, orderIndex);
       }
 
-      identifierRelationController.addChild(bannerId, identifier);
+      identifierRelationController.addChild(bannerIdentifier, identifier);
       
       AttachmentId kuntaApiAttachmentId = new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
       fi.metatavu.kuntaapi.server.rest.model.Attachment attachment = managementTranslator.translateAttachment(kuntaApiAttachmentId, managementAttachment, ManagementConsts.ATTACHMENT_TYPE_BANNER);
