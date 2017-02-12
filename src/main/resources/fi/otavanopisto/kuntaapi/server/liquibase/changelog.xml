@@ -134,7 +134,8 @@
   </changeSet>
   
   <changeSet id="identifier-relation-migrate" author="antti.leppa">
-    <sql>INSERT INTO IdentifierRelation (child_id, parent_id) SELECT id, parent_id FROM Identifier</sql>
+    <sql dbms="mysql">INSERT INTO IdentifierRelation (child_id, parent_id) SELECT id, parent_id FROM Identifier</sql>
+    <dropIndex tableName="Identifier" indexName="IDENTIFIER_SOURCE_PARENT_TYPE_ORDER"/>
     <dropForeignKeyConstraint baseTableName="Identifier" constraintName="FK_IDENTIFIER_PARENT_ID"/>
     <dropColumn tableName="Identifier" columnName="parent_id"/>
   </changeSet>
