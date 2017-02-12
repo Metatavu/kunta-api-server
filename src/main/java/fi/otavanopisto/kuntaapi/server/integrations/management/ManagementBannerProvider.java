@@ -59,6 +59,10 @@ public class ManagementBannerProvider extends AbstractManagementProvider impleme
 
   @Override
   public Banner findOrganizationBanner(OrganizationId organizationId, BannerId bannerId) {
+    if (!identifierRelationController.isChildOf(organizationId, bannerId)) {
+      return null;
+    }
+    
     return bannerCache.get(bannerId);
   }
 
