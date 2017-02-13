@@ -9,15 +9,15 @@ import javax.inject.Inject;
 
 import org.apache.commons.codec.binary.StringUtils;
 
+import fi.metatavu.kuntaapi.server.rest.model.Menu;
+import fi.metatavu.kuntaapi.server.rest.model.MenuItem;
 import fi.otavanopisto.kuntaapi.server.cache.MenuCache;
-import fi.otavanopisto.kuntaapi.server.cache.MenuItemCache;
-import fi.otavanopisto.kuntaapi.server.id.IdPair;
+import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.id.MenuId;
 import fi.otavanopisto.kuntaapi.server.id.MenuItemId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.MenuProvider;
-import fi.metatavu.kuntaapi.server.rest.model.Menu;
-import fi.metatavu.kuntaapi.server.rest.model.MenuItem;
+import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementMenuItemCache;
 
 /**
  * Menu provider for management wordpress
@@ -29,10 +29,13 @@ import fi.metatavu.kuntaapi.server.rest.model.MenuItem;
 public class ManagementMenuProvider extends AbstractManagementProvider implements MenuProvider {
   
   @Inject
+  private IdentifierRelationController identifierRelationController;
+  
+  @Inject
   private MenuCache menuCache;
   
   @Inject
-  private MenuItemCache menuItemCache;
+  private ManagementMenuItemCache managementMenuItemCache;
 
   @Override
   public List<Menu> listOrganizationMenus(OrganizationId organizationId, String slug) {
@@ -60,11 +63,11 @@ public class ManagementMenuProvider extends AbstractManagementProvider implement
       return Collections.emptyList();
     }
     
-    List<IdPair<MenuId,MenuItemId>> childIds = menuItemCache.getChildIds(menuId);
-    List<MenuItem> result = new ArrayList<>(childIds.size());
+    List<MenuItemId> menuItemIds = identifierRelationController.listMenuItemIdsBySourceAndParentId(ManagementConsts.IDENTIFIER_NAME, menuId);
+    List<MenuItem> result = new ArrayList<>(menuItemIds.size());
     
-    for (IdPair<MenuId,MenuItemId> childId : childIds) {
-      MenuItem menuItem = menuItemCache.get(childId);
+    for (MenuItemId menuItemId : menuItemIds) {
+      MenuItem menuItem = managementMenuItemCache.get(menuItemId);
       if (menuItem != null) {
         result.add(menuItem);
       }
@@ -79,7 +82,11 @@ public class ManagementMenuProvider extends AbstractManagementProvider implement
       return null;
     }
     
-    return menuItemCache.get(new IdPair<MenuId, MenuItemId>(menuId, menuItemId));
+    if (!identifierRelationController.isChildOf(menuId, menuItemId)) {
+      return null;
+    }
+    
+    return managementMenuItemCache.get(menuItemId);
   }
 
 }
