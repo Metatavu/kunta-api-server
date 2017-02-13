@@ -5,25 +5,34 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang3.StringUtils;
+
 import fi.metatavu.management.client.model.Announcement;
+import fi.metatavu.management.client.model.Attachment;
 import fi.metatavu.management.client.model.Banner;
 import fi.metatavu.management.client.model.Fragment;
 import fi.metatavu.management.client.model.Menu;
 import fi.metatavu.management.client.model.Page;
+import fi.metatavu.management.client.model.Pagemappings;
 import fi.metatavu.management.client.model.Post;
 import fi.metatavu.management.client.model.Tile;
 
 public class ManagementMocker extends AbstractMocker {
   
+  private static final String MEDIAS = "/wp-json/wp/v2/media";
   private static final String BANNERS = "/wp-json/wp/v2/banner";
   private static final String MENUS = "/wp-json/kunta-api/menus";
   private static final String PAGES = "/wp-json/wp/v2/pages";
   private static final String POSTS = "/wp-json/wp/v2/posts";
-  private static final String TILES = "/wp-json/wp/v2/tile";
+  private static final String TILES = "/wp-json/wp/v2/tile";;
   private static final String FRAGMENTS = "/wp-json/wp/v2/fragment";
   private static final String ANNOUNCEMENTS = "/wp-json/wp/v2/announcement";
+  private static final String PAGEMAPPINGS = "/wp-json/kunta-api/pagemappings";
   private static final String PATH_TEMPLATE = "%s/%s";
 
+  
+  private Pagemappings pagemappings = null;
+  private List<Attachment> mediaList = new ArrayList<>();
   private List<Banner> bannerList = new ArrayList<>();
   private List<Menu> menuList = new ArrayList<>();
   private List<Page> pageList = new ArrayList<>();
@@ -31,6 +40,22 @@ public class ManagementMocker extends AbstractMocker {
   private List<Tile> tileList = new ArrayList<>();
   private List<Announcement> announcementList = new ArrayList<>();
   private List<Fragment> fragmentList = new ArrayList<>();
+    
+  public ManagementMocker mockMedia(String... ids) {
+    for (String id : ids) {
+      Attachment media = readAttachmentFromJSONFile(String.format("management/medias/%s.json", id));
+      
+      String sourceUrl = String.format("/wp-content/%s", StringUtils.substringAfter(media.getSourceUrl(), "/wp-content/"));
+      String fileName = StringUtils.substringAfterLast(sourceUrl, "/");
+      
+      mockGetBinary(sourceUrl, "image/jpeg", fileName);
+      
+      mockGetJSON(String.format(PATH_TEMPLATE, MEDIAS, id), media, null);
+      mediaList.add(media);
+    }     
+    
+    return this;
+  }
   
   public ManagementMocker mockBanners(String... ids) {
     for (String id : ids) {
@@ -114,6 +139,16 @@ public class ManagementMocker extends AbstractMocker {
   }
   
   /**
+   * Reads JSON file as media object
+   * 
+   * @param file path to JSON file
+   * @return read object
+   */
+  private Attachment readAttachmentFromJSONFile(String file) {
+    return readJSONFile(file, Attachment.class);
+  }
+  
+  /**
    * Reads JSON file as menu object
    * 
    * @param file path to JSON file
@@ -181,6 +216,7 @@ public class ManagementMocker extends AbstractMocker {
     pageQuery1001.put("per_page", "100");
     pageQuery1001.put("page", "1");
     
+    mockGetJSON(MEDIAS, mediaList, pageQuery100);
     mockGetJSON(BANNERS, bannerList, pageQuery100);
     mockGetJSON(MENUS, menuList, pageQuery100);
     mockGetJSON(PAGES, pageList, pageQuery100);
@@ -189,6 +225,7 @@ public class ManagementMocker extends AbstractMocker {
     mockGetJSON(ANNOUNCEMENTS, announcementList, pageQuery100);
     mockGetJSON(FRAGMENTS, fragmentList, pageQuery1001);
 
+    mockGetJSON(MEDIAS, mediaList, null);
     mockGetJSON(BANNERS, bannerList, null);
     mockGetJSON(MENUS, menuList, null);
     mockGetJSON(PAGES, pageList, null);
@@ -196,6 +233,8 @@ public class ManagementMocker extends AbstractMocker {
     mockGetJSON(TILES, tileList, null);
     mockGetJSON(ANNOUNCEMENTS, announcementList, null);
     mockGetJSON(FRAGMENTS, fragmentList, null);
+    
+    mockGetJSON(PAGEMAPPINGS, pagemappings, null);
 
     super.startMock();
   }

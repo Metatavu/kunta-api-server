@@ -158,11 +158,21 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
         .getString(String.format("id[%d]", index));
   }
   
-  protected String getOrganizationBannerId(String organizationId, int index) {
+  protected String getBannerId(String organizationId, int index) {
     return given() 
         .baseUri(getApiBasePath())
         .contentType(ContentType.JSON)
         .get(String.format("/organizations/%s/banners", organizationId))
+        .body()
+        .jsonPath()
+        .getString(String.format("id[%d]", index));
+  }
+  
+  protected String getBannerImageId(String organizatinoId, String bannerId, int index) {
+    return given() 
+        .baseUri(getApiBasePath())
+        .contentType(ContentType.JSON)
+        .get("/organizations/{organizationId}/banners/{bannerId}/images", organizatinoId, bannerId)
         .body()
         .jsonPath()
         .getString(String.format("id[%d]", index));
