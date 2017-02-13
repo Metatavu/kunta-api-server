@@ -87,6 +87,10 @@ public abstract class AbstractTest {
     deleteAllIdentifiers("BANNER");
   }
   
+  protected void deleteAllTiles() {
+    deleteAllIdentifiers("TILE");
+  }
+  
   protected void deleteAllOrganizationServices() {
     deleteAllIdentifiers("ORGANIZATION_SERVICE");
   }

@@ -8,7 +8,6 @@ import javax.inject.Inject;
 
 import fi.metatavu.kuntaapi.server.rest.model.Attachment;
 import fi.metatavu.kuntaapi.server.rest.model.Tile;
-import fi.metatavu.management.client.model.Attachment.MediaTypeEnum;
 import fi.otavanopisto.kuntaapi.server.cache.TileCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
@@ -83,27 +82,20 @@ public class ManagementTileProvider extends AbstractManagementProvider implement
   }
 
   @Override
-  public AttachmentData getTileImageData(OrganizationId organizationId, TileId tileId, AttachmentId attachmentId,
-      Integer size) {
-    
+  public AttachmentData getTileImageData(OrganizationId organizationId, TileId tileId, AttachmentId attachmentId, Integer size) {
     Integer mediaId = getMediaId(attachmentId);
     if (mediaId == null) {
       return null;
     }
     
     fi.metatavu.management.client.model.Attachment featuredMedia = findMedia(organizationId, mediaId);
-    if (featuredMedia.getMediaType() == MediaTypeEnum.IMAGE) {
-      AttachmentData imageData = managementImageLoader.getImageData(featuredMedia.getSourceUrl());
-      
-      if (size != null) {
-        return scaleImage(imageData, size);
-      } else {
-        return imageData;
-      }
-      
-    }
+    AttachmentData imageData = managementImageLoader.getImageData(featuredMedia.getSourceUrl());
     
-    return null;
+    if (size != null) {
+      return scaleImage(imageData, size);
+    } else {
+      return imageData;
+    }
   }
 
 }
