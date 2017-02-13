@@ -10,7 +10,6 @@ import javax.inject.Inject;
 
 import fi.metatavu.kuntaapi.server.rest.model.Attachment;
 import fi.metatavu.kuntaapi.server.rest.model.NewsArticle;
-import fi.metatavu.management.client.model.Attachment.MediaTypeEnum;
 import fi.otavanopisto.kuntaapi.server.cache.NewsArticleCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
@@ -64,6 +63,10 @@ public class ManagementNewsProvider extends AbstractManagementProvider implement
 
   @Override
   public NewsArticle findOrganizationNewsArticle(OrganizationId organizationId, NewsArticleId newsArticleId) {
+    if (!identifierRelationController.isChildOf(organizationId, newsArticleId)) {
+      return null;
+    }
+    
     return newsArticleCache.get(newsArticleId);
   }
 
@@ -107,18 +110,13 @@ public class ManagementNewsProvider extends AbstractManagementProvider implement
       return null;
     }
     
-    if (featuredMedia.getMediaType() == MediaTypeEnum.IMAGE) {
-      AttachmentData imageData = managementImageLoader.getImageData(featuredMedia.getSourceUrl());
-      
-      if (size != null) {
-        return scaleImage(imageData, size);
-      } else {
-        return imageData;
-      }
-      
-    }
+    AttachmentData imageData = managementImageLoader.getImageData(featuredMedia.getSourceUrl());
     
-    return null;
+    if (size != null) {
+      return scaleImage(imageData, size);
+    } else {
+      return imageData;
+    }
   }
   
   private boolean isAccetable(NewsArticle newsArticle, OffsetDateTime publishedBefore, OffsetDateTime publishedAfter) {
