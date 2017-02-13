@@ -8,10 +8,11 @@ import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
+import org.apache.commons.lang3.StringUtils;
+
 import fi.metatavu.kuntaapi.server.rest.model.Attachment;
 import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
 import fi.metatavu.kuntaapi.server.rest.model.Page;
-import fi.metatavu.management.client.model.Attachment.MediaTypeEnum;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.debug.Timed;
@@ -88,11 +89,11 @@ public class ManagementPageProvider extends AbstractManagementProvider implement
     
     for (AttachmentId attachmentId : attachmentIds) {
       Attachment attachment = managementAttachmentCache.get(attachmentId);
-      if (attachment != null) {
+      if (attachment != null && (type == null || StringUtils.equals(attachment.getType(), type))) {
         result.add(attachment);
       }
     }
-    
+
     return result;
   }
 
@@ -115,18 +116,13 @@ public class ManagementPageProvider extends AbstractManagementProvider implement
     }
     
     fi.metatavu.management.client.model.Attachment featuredMedia = findMedia(organizationId, mediaId);
-    if (featuredMedia.getMediaType() == MediaTypeEnum.IMAGE) {
-      AttachmentData imageData = managementImageLoader.getImageData(featuredMedia.getSourceUrl());
-      
-      if (size != null) {
-        return scaleImage(imageData, size);
-      } else {
-        return imageData;
-      }
-      
+   
+    AttachmentData imageData = managementImageLoader.getImageData(featuredMedia.getSourceUrl());
+    if (size != null) {
+      return scaleImage(imageData, size);
+    } else {
+      return imageData;
     }
-    
-    return null;
   }
 
   private List<Page> listPages(OrganizationId organizationId, PageId parentId, boolean onlyRootPages) {

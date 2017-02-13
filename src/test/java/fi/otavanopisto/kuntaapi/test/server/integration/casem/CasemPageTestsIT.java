@@ -67,7 +67,7 @@ public class CasemPageTestsIT extends AbstractIntegrationTest {
     given() 
       .baseUri(getApiBasePath())
       .contentType(ContentType.JSON)
-      .get("/organizations/{organizationId}/pages/{pageId}", organizationId, getOrganizationPageId(organizationId, 0))
+      .get("/organizations/{organizationId}/pages/{pageId}", organizationId, getPageId(organizationId, 0))
       .then()
       .assertThat()
       .statusCode(200)
@@ -161,7 +161,7 @@ public class CasemPageTestsIT extends AbstractIntegrationTest {
   public void testOrganizationPagesNotFound() throws InterruptedException {
     String organizationId = getOrganizationId(0);
     String incorrectOrganizationId = getOrganizationId(1);
-    String organizationAnnouncecmentId = getOrganizationPageId(organizationId, 0);
+    String organizationAnnouncecmentId = getPageId(organizationId, 0);
     
     String[] malformedIds = new String[] {"evil", "*", "/", "1", "-1", "~"};
     assertFound(String.format("/organizations/%s/pages/%s", organizationId, organizationAnnouncecmentId));
