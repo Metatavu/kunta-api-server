@@ -8,7 +8,6 @@ import javax.inject.Inject;
 
 import fi.metatavu.kuntaapi.server.rest.model.Attachment;
 import fi.metatavu.kuntaapi.server.rest.model.Banner;
-import fi.metatavu.management.client.model.Attachment.MediaTypeEnum;
 import fi.otavanopisto.kuntaapi.server.cache.BannerCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
@@ -91,24 +90,23 @@ public class ManagementBannerProvider extends AbstractManagementProvider impleme
     if (!identifierRelationController.isChildOf(bannerId, attachmentId)) {
       return null;
     }
-    
+
     Integer mediaId = getMediaId(attachmentId);
     if (mediaId == null) {
       return null;
     }
     
     fi.metatavu.management.client.model.Attachment featuredMedia = findMedia(organizationId, mediaId);
-    if (featuredMedia.getMediaType() == MediaTypeEnum.IMAGE) {
-      AttachmentData imageData = managementImageLoader.getImageData(featuredMedia.getSourceUrl());
-      if (size != null) {
-        return scaleImage(imageData, size);
-      } else {
-        return imageData;
-      }
-      
+    if (featuredMedia == null) {
+      return null;
     }
-    
-    return null;
+
+    AttachmentData imageData = managementImageLoader.getImageData(featuredMedia.getSourceUrl());
+    if (size != null) {
+      return scaleImage(imageData, size);
+    } else {
+      return imageData;
+    }
   }
 
 }
