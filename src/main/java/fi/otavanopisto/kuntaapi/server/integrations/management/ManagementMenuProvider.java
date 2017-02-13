@@ -39,7 +39,7 @@ public class ManagementMenuProvider extends AbstractManagementProvider implement
 
   @Override
   public List<Menu> listOrganizationMenus(OrganizationId organizationId, String slug) {
-    List<MenuId> menuIds = menuCache.getOragnizationIds(organizationId);
+    List<MenuId> menuIds = identifierRelationController.listMenuIdsBySourceAndParentId(ManagementConsts.IDENTIFIER_NAME, organizationId);
     List<Menu> menus = new ArrayList<>(menuIds.size());
     
     for (MenuId menuId : menuIds) {
