@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -12,6 +13,7 @@ import fi.metatavu.management.client.model.Attachment;
 import fi.metatavu.management.client.model.Banner;
 import fi.metatavu.management.client.model.Fragment;
 import fi.metatavu.management.client.model.Menu;
+import fi.metatavu.management.client.model.Menuitem;
 import fi.metatavu.management.client.model.Page;
 import fi.metatavu.management.client.model.Pagemappings;
 import fi.metatavu.management.client.model.Post;
@@ -22,6 +24,7 @@ public class ManagementMocker extends AbstractMocker {
   private static final String MEDIAS = "/wp-json/wp/v2/media";
   private static final String BANNERS = "/wp-json/wp/v2/banner";
   private static final String MENUS = "/wp-json/kunta-api/menus";
+  private static final String MENU_ITEMS = "/wp-json/kunta-api/menus/%s/items";
   private static final String PAGES = "/wp-json/wp/v2/pages";
   private static final String POSTS = "/wp-json/wp/v2/posts";
   private static final String TILES = "/wp-json/wp/v2/tile";;
@@ -29,12 +32,12 @@ public class ManagementMocker extends AbstractMocker {
   private static final String ANNOUNCEMENTS = "/wp-json/wp/v2/announcement";
   private static final String PAGEMAPPINGS = "/wp-json/kunta-api/pagemappings";
   private static final String PATH_TEMPLATE = "%s/%s";
-
   
   private Pagemappings pagemappings = null;
   private List<Attachment> mediaList = new ArrayList<>();
   private List<Banner> bannerList = new ArrayList<>();
   private List<Menu> menuList = new ArrayList<>();
+  private Map<String, List<Menuitem>> menuItems = new HashMap<>();
   private List<Page> pageList = new ArrayList<>();
   private List<Post> postList = new ArrayList<>();
   private List<Tile> tileList = new ArrayList<>();
@@ -72,6 +75,20 @@ public class ManagementMocker extends AbstractMocker {
       Menu menu = readMenuFromJSONFile(String.format("management/menus/%s.json", id));
       mockGetJSON(String.format(PATH_TEMPLATE, MENUS, id), menu, null);
       menuList.add(menu);
+    }     
+    
+    return this;
+  }
+  
+  public ManagementMocker mockMenuItems(String menuId, String... ids) {
+    for (String id : ids) {
+      Menuitem menuItem = readMenuItemFromJSONFile(String.format("management/menuitems/%s.json", id));
+      mockGetJSON(String.format(PATH_TEMPLATE, MENUS, id), menuItem, null);
+      if (!menuItems.containsKey(menuId)) {
+        menuItems.put(menuId, new ArrayList<>());
+      }
+      
+      menuItems.get(menuId).add(menuItem);
     }     
     
     return this;
@@ -159,6 +176,16 @@ public class ManagementMocker extends AbstractMocker {
   }
   
   /**
+   * Reads JSON file as menu item object
+   * 
+   * @param file path to JSON file
+   * @return read object
+   */    
+  private Menuitem readMenuItemFromJSONFile(String file) {
+    return readJSONFile(file, Menuitem.class);
+  }
+  
+  /**
    * Reads JSON file as page object
    * 
    * @param file path to JSON file
@@ -224,7 +251,7 @@ public class ManagementMocker extends AbstractMocker {
     mockGetJSON(TILES, tileList, pageQuery100);
     mockGetJSON(ANNOUNCEMENTS, announcementList, pageQuery100);
     mockGetJSON(FRAGMENTS, fragmentList, pageQuery1001);
-
+    
     mockGetJSON(MEDIAS, mediaList, null);
     mockGetJSON(BANNERS, bannerList, null);
     mockGetJSON(MENUS, menuList, null);
@@ -235,6 +262,11 @@ public class ManagementMocker extends AbstractMocker {
     mockGetJSON(FRAGMENTS, fragmentList, null);
     
     mockGetJSON(PAGEMAPPINGS, pagemappings, null);
+    
+    for (Entry<String, List<Menuitem>> entry : menuItems.entrySet()) {
+      String menuId = entry.getKey();
+      mockGetJSON(String.format(MENU_ITEMS, menuId), entry.getValue(), null); 
+    }
 
     super.startMock();
   }

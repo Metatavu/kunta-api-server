@@ -95,6 +95,14 @@ public abstract class AbstractTest {
     deleteAllIdentifiers("ORGANIZATION_SERVICE");
   }
 
+  protected void deleteAllMenus() {
+    deleteAllIdentifiers("MENU");
+  }
+  
+  protected void deleteAllMenuItems() {
+    deleteAllIdentifiers("MENU_ITEM");
+  }
+  
   protected void deleteAllServiceChannels() {
     deleteAllIdentifiers(Arrays.asList(new String[] { "ELECTRONIC_SERVICE_CHANNEL","PHONE_CHANNEL","PRINTABLE_FORM_CHANNEL","SERVICE_LOCATION_CHANNEL","WEBPAGE_CHANNEL" }));
   }
