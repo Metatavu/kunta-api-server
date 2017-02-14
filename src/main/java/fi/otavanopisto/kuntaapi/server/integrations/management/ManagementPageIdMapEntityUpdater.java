@@ -33,6 +33,7 @@ import fi.otavanopisto.kuntaapi.server.id.BaseId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
+import fi.otavanopisto.kuntaapi.server.integrations.IdMapProvider.OrganizationPageMap;
 import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementPageIdMapCache;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
@@ -127,19 +128,19 @@ public class ManagementPageIdMapEntityUpdater extends EntityUpdater {
   }
 
   private void updatePageIdMap(OrganizationId organizationId) {
-    Map<PageId, BaseId> pageIdMap = loadPageIdMap(organizationId);
+    OrganizationPageMap pageIdMap = loadPageIdMap(organizationId);
     if (pageIdMap != null) {
       managementPageIdMapCache.put(organizationId, pageIdMap);
     }
   }
   
-  private Map<PageId, BaseId> loadPageIdMap(OrganizationId organizationId) {
+  private OrganizationPageMap loadPageIdMap(OrganizationId organizationId) {
     Map<String, String> pathMap = loadPagePathMap(organizationId);
     if (pathMap == null) {
       return null;
     }
     
-    Map<PageId, BaseId> result  = new HashMap<>(pathMap.size());
+    OrganizationPageMap result = new OrganizationPageMap();
     
     for (Map.Entry<String, String> pathEntry : pathMap.entrySet()) {
       String pagePath = pathEntry.getKey();

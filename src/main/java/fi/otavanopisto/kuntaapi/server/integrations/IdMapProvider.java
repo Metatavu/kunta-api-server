@@ -1,5 +1,7 @@
 package fi.otavanopisto.kuntaapi.server.integrations;
 
+import java.util.HashMap;
+
 import fi.otavanopisto.kuntaapi.server.id.BaseId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
@@ -21,5 +23,10 @@ public interface IdMapProvider {
    */
   public BaseId findMappedPageParentId(OrganizationId organizationId, PageId pageId);
   
+  public static class OrganizationPageMap extends HashMap<PageId, BaseId> {
+
+    private static final long serialVersionUID = 6317362026173577227L;
+    
+  }
   
 }
