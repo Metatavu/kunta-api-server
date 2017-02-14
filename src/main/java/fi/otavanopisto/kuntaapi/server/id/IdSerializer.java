@@ -31,7 +31,7 @@ public class IdSerializer {
       if (idParts.length == 2) {
         return createId(idParts[0], idParts[1]);
       } else {
-        logger.severe(String.format("Could not parse id %s expected 2 parts", string));
+        logger.log(Level.SEVERE, () -> String.format("Could not parse id %s expected 2 parts", string));
         return null;
       }
     } else if (compositeParts.length == 2) {
@@ -39,7 +39,7 @@ public class IdSerializer {
       id.setOrganizationId((OrganizationId) parseId(compositeParts[1]));
       return id;
     } else {
-      logger.severe(String.format("Could not parse id %s expected 1 or 2 parts", string));
+      logger.log(Level.SEVERE, () -> String.format("Could not parse id %s expected 1 or 2 parts", string));
       return null;
     }
   }
