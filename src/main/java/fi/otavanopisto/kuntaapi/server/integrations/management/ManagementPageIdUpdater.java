@@ -21,6 +21,9 @@ import javax.enterprise.event.Event;
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 
+import fi.metatavu.management.client.ApiResponse;
+import fi.metatavu.management.client.DefaultApi;
+import fi.metatavu.management.client.model.Page;
 import fi.otavanopisto.kuntaapi.server.discover.IdUpdater;
 import fi.otavanopisto.kuntaapi.server.discover.OrganizationIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.discover.PageIdUpdateRequest;
@@ -28,9 +31,6 @@ import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
-import fi.metatavu.management.client.ApiResponse;
-import fi.metatavu.management.client.DefaultApi;
-import fi.metatavu.management.client.model.Page;
 
 @ApplicationScoped
 @Singleton
@@ -40,7 +40,8 @@ public class ManagementPageIdUpdater extends IdUpdater {
 
   private static final int WARMUP_TIME = 1000 * 10;
   private static final int TIMER_INTERVAL = 5000;
-  private static final int BATCH_SIZE = 100;
+  private static final int PER_PAGE = 50;
+  private static final int MAX_PAGES = 100;
   
   @Inject
   private Logger logger;
@@ -120,23 +121,33 @@ public class ManagementPageIdUpdater extends IdUpdater {
       startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
     }
   }
-  
+    
   private void updateManagementPages(OrganizationId organizationId) {
     DefaultApi api = managementApi.getApi(organizationId);
-    List<Page> managementPages = listManagementPages(api, organizationId);
+    List<Page> managementPages = new ArrayList<>();
+    
+    int page = 1;
+    do {
+      List<Page> pagePages = listManagementPages(api, organizationId, page);
+      managementPages.addAll(pagePages);
+      if (pagePages.isEmpty() || pagePages.size() < PER_PAGE) {
+        break;
+      } else {
+        page++;
+      }
+    } while (page < MAX_PAGES);
     
     Collections.sort(managementPages, new PageComparator());
     
-    for (int i = 0; i < managementPages.size(); i++) {
+    for (int i = 0, l = managementPages.size(); i < l; i++) {
       Page managementPage = managementPages.get(i);
-      Long orderIndex = (long) i;
       PageId pageId = new PageId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementPage.getId()));
-      idUpdateRequest.fire(new PageIdUpdateRequest(organizationId, pageId, orderIndex, false));
+      idUpdateRequest.fire(new PageIdUpdateRequest(organizationId, pageId, (long) i, false));
     }
   }
   
-  private List<Page> listManagementPages(DefaultApi api, OrganizationId organizationId) {
-    ApiResponse<List<Page>> response = api.wpV2PagesGet(null, null, BATCH_SIZE, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+  private List<Page> listManagementPages(DefaultApi api, OrganizationId organizationId, Integer page) {
+    ApiResponse<List<Page>> response = api.wpV2PagesGet(null, page, PER_PAGE, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
     if (response.isOk()) {
       return response.getResponse();
     } else {
