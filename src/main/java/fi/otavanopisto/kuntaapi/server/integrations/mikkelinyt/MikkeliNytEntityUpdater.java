@@ -46,7 +46,6 @@ import fi.otavanopisto.kuntaapi.server.integrations.BinaryHttpClient;
 import fi.otavanopisto.kuntaapi.server.integrations.BinaryHttpClient.DownloadMeta;
 import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpClient;
 import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpClient.Response;
-import fi.otavanopisto.kuntaapi.server.integrations.management.ManagementConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
@@ -149,7 +148,10 @@ public class MikkeliNytEntityUpdater extends EntityUpdater {
     OrganizationId organizationId = event.getId();
     queue.remove(organizationId);
     
-    deleteEvents(organizationId);
+    List<EventId> existingEventIds = identifierRelationController.listEventIdsBySourceAndParentId(MikkeliNytConsts.IDENTIFIER_NAME, organizationId);
+    for (EventId existingEventId : existingEventIds) {
+      deleteEvent(organizationId, existingEventId);
+    }
   }
 
   @Timeout
@@ -167,17 +169,23 @@ public class MikkeliNytEntityUpdater extends EntityUpdater {
     Response<EventsResponse> response = listEvents(organizationId);
     if (response.isOk()) {
       List<Event> events = response.getResponseEntity().getData();
+      
+      List<EventId> existingEventIds = identifierRelationController.listEventIdsBySourceAndParentId(MikkeliNytConsts.IDENTIFIER_NAME, organizationId);
       for (int i = 0; i < events.size(); i++) {
         Event event = events.get(i);
         Long orderIndex = (long) i;
-        updateEvent(organizationId, event, orderIndex);
+        EventId updatedEventId = updateEvent(organizationId, event, orderIndex);
+        existingEventIds.remove(updatedEventId);
       }
-    } else {
-      logger.severe(String.format("Request list organization %s failed on [%d] %s", organizationId.toString(), response.getStatus(), response.getMessage()));
+      
+      for (EventId existingEventId : existingEventIds) {
+        deleteEvent(organizationId, existingEventId);
+      }
+      
     }
   }
 
-  private void updateEvent(OrganizationId organizationId, Event mikkeliNytEvent, Long orderIndex) {
+  private EventId updateEvent(OrganizationId organizationId, Event mikkeliNytEvent, Long orderIndex) {
     EventId mikkeliNytEventId = new EventId(organizationId, MikkeliNytConsts.IDENTIFIER_NAME, mikkeliNytEvent.getId());
     
     Identifier identifier = identifierController.findIdentifierById(mikkeliNytEventId);
@@ -198,6 +206,8 @@ public class MikkeliNytEntityUpdater extends EntityUpdater {
     
     modificationHashCache.put(kuntaApiId.getId(), createPojoHash(event));
     eventCache.put(kuntaApiId, event);
+    
+    return kuntaApiId;
   }
 
   private void updateAttachment(OrganizationId organizationId, Identifier eventIdentifier, String imageUrl) {
@@ -211,36 +221,18 @@ public class MikkeliNytEntityUpdater extends EntityUpdater {
       identifier = identifierController.updateIdentifier(identifier, orderIndex);
     }
     
-    identifierRelationController.setParentIdentifier(identifier, eventIdentifier);
-    
+    identifierRelationController.addChild(eventIdentifier, identifier);
     AttachmentId kuntaApiId = new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
     Attachment attachment = translate(kuntaApiId, imageUrl);
 
     modificationHashCache.put(kuntaApiId.getId(), createPojoHash(attachment));
     mikkeliNytAttachmentCache.put(kuntaApiId, attachment);
   }
-  
-  private void deleteEvents(OrganizationId organizationId) {
-    List<EventId> eventIds = eventCache.getOragnizationIds(organizationId);
-    for (EventId eventId : eventIds) {
-      deleteEvent(organizationId, eventId);
-    }
-  }
    
   private void deleteEvent(OrganizationId organizationId, EventId eventId) {
     Identifier eventIdentifier = identifierController.findIdentifierById(eventId);
     if (eventIdentifier != null) {
       EventId kuntaApiEventId = new EventId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, eventIdentifier.getKuntaApiId());
-      
-      for (AttachmentId attachmentId : identifierRelationController.listAttachmentIdsBySourceAndParentId(ManagementConsts.IDENTIFIER_NAME, eventId)) {
-        mikkeliNytAttachmentCache.clear(attachmentId);
-        modificationHashCache.clear(attachmentId.getId());
-        Identifier imageIdentifier = identifierController.findIdentifierById(attachmentId);
-        if (imageIdentifier != null) {
-          identifierController.deleteIdentifier(imageIdentifier);
-        }
-      }
-
       modificationHashCache.clear(eventIdentifier.getKuntaApiId());
       eventCache.clear(kuntaApiEventId);
       identifierController.deleteIdentifier(eventIdentifier);
