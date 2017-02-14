@@ -166,7 +166,7 @@ public class ManagementPageIdMapEntityUpdater extends EntityUpdater {
     return result;
   }
 
-  private void applyMappings(Map<PageId, BaseId> result, boolean wildcard, BaseId parentId, PageId pageId) {
+  private void applyMappings(Map<BaseId, BaseId> result, boolean wildcard, BaseId parentId, PageId pageId) {
     if (wildcard) {
       for (PageId childPageId : listChildPageIds((PageId) pageId)) {
         result.put(childPageId, parentId);

@@ -23,6 +23,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
+import fi.otavanopisto.kuntaapi.server.jackson.IdModule;
+
 /**
  * Abstract base cache for all entity caches
  * 
@@ -168,6 +170,7 @@ public abstract class AbstractCache <K, V> implements Serializable {
   private ObjectMapper getObjectMapper() {
     ObjectMapper objectMapper = new ObjectMapper();
     objectMapper.registerModule(new JavaTimeModule());
+    objectMapper.registerModule(new IdModule());
     return objectMapper;
   }
   

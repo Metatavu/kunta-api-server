@@ -41,7 +41,7 @@ public class ManagementIdMapProvider implements IdMapProvider {
       return null;  
     }
     
-    Map<PageId, BaseId> pageIdMap = managementPageIdMapCache.get(kuntaApiOrganizationId);
+    Map<BaseId, BaseId> pageIdMap = managementPageIdMapCache.get(kuntaApiOrganizationId);
     if (pageIdMap == null) {
       return null;
     }

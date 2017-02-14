@@ -22,8 +22,8 @@ public interface IdMapProvider {
    * @return mapped id or null if page is not mapped
    */
   public BaseId findMappedPageParentId(OrganizationId organizationId, PageId pageId);
-  
-  public static class OrganizationPageMap extends HashMap<PageId, BaseId> {
+
+  public static class OrganizationPageMap extends HashMap<BaseId, BaseId> {
 
     private static final long serialVersionUID = 6317362026173577227L;
     
