@@ -125,7 +125,7 @@ public abstract class AbstractTest {
       connection.setAutoCommit(true);
       PreparedStatement statement = connection.prepareStatement(sql);
       try {
-        applyStatementParams(connection, statement, params);
+        applyStatementParams(statement, params);
         statement.execute();
         
         try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
@@ -142,7 +142,7 @@ public abstract class AbstractTest {
     return -1;
   }
 
-  private void applyStatementParams(Connection connection, PreparedStatement statement, Object... params)
+  private void applyStatementParams(PreparedStatement statement, Object... params)
       throws SQLException {
     for (int i = 0, l = params.length; i < l; i++) {
       Object param = params[i];
@@ -167,7 +167,7 @@ public abstract class AbstractTest {
       connection.setAutoCommit(true);
       PreparedStatement statement = connection.prepareStatement(sql);
       try {
-        applyStatementParams(connection, statement, params);
+        applyStatementParams(statement, params);
         statement.execute();
       } finally {
         statement.close();

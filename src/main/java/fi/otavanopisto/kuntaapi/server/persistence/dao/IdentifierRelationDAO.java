@@ -41,10 +41,9 @@ public class IdentifierRelationDAO extends AbstractDAO<IdentifierRelation> {
   /**
    * Finds identifier relation by parent and child
    * 
-   * @param type identifier type
-   * @param source source
-   * @param sourceId id in source system
-   * @return found identifier or null if non found
+   * @param parent parent identifier
+   * @param child child identifier
+   * @return found identifier relation or null if not found
    */
   public IdentifierRelation findByParentAndChild(Identifier parent, Identifier child) {
     EntityManager entityManager = getEntityManager();
