@@ -12,4 +12,9 @@ public class ModificationHashCache extends AbstractCache<String, String> {
     return "modificationhash";
   }
   
+  @Override
+  public boolean isStored() {
+    return false;
+  }
+  
 }
