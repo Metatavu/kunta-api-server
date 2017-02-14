@@ -12,6 +12,8 @@ import java.time.OffsetDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -78,23 +80,44 @@ public abstract class AbstractTest {
   }
   
   protected void deleteAllPages() {
-    executeDelete("delete from Identifier where type = 'PAGE'");
+    deleteAllIdentifiers("PAGE");
   }
   
   protected void deleteAllBanners() {
-    executeDelete("delete from Identifier where type = 'BANNER'");
+    deleteAllIdentifiers("BANNER");
+  }
+  
+  protected void deleteAllTiles() {
+    deleteAllIdentifiers("TILE");
   }
   
   protected void deleteAllOrganizationServices() {
-    executeDelete("delete from Identifier where type = 'ORGANIZATION_SERVICE'");
+    deleteAllIdentifiers("ORGANIZATION_SERVICE");
   }
 
+  protected void deleteAllMenus() {
+    deleteAllIdentifiers("MENU");
+  }
+  
+  protected void deleteAllMenuItems() {
+    deleteAllIdentifiers("MENU_ITEM");
+  }
+  
   protected void deleteAllServiceChannels() {
-    executeDelete("delete from Identifier where type in ('ELECTRONIC_SERVICE_CHANNEL','PHONE_CHANNEL','PRINTABLE_FORM_CHANNEL','SERVICE_LOCATION_CHANNEL','WEBPAGE_CHANNEL')");
+    deleteAllIdentifiers(Arrays.asList(new String[] { "ELECTRONIC_SERVICE_CHANNEL","PHONE_CHANNEL","PRINTABLE_FORM_CHANNEL","SERVICE_LOCATION_CHANNEL","WEBPAGE_CHANNEL" }));
   }
    
   protected void deleteAllServices() {
-    executeDelete("delete from Identifier where type = 'SERVICE'");
+    deleteAllIdentifiers("SERVICE");
+  }
+
+  private void deleteAllIdentifiers(String type) {
+    deleteAllIdentifiers(Arrays.asList( type ));
+  }
+  
+  private void deleteAllIdentifiers(List<String> types) {
+    executeDelete("delete from IdentifierRelation where child_id in (SELECT id FROM Identifier where type in (?)) or parent_id in (SELECT id FROM Identifier where type in (?))", types, types);
+    executeDelete("delete from Identifier where type in (?)", types);
   }
   
   protected long executeInsert(String sql, Object... params) {
@@ -102,10 +125,7 @@ public abstract class AbstractTest {
       connection.setAutoCommit(true);
       PreparedStatement statement = connection.prepareStatement(sql);
       try {
-        for (int i = 0, l = params.length; i < l; i++) {
-          statement.setObject(i + 1, params[i]);
-        }
-
+        applyStatementParams(statement, params);
         statement.execute();
         
         try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
@@ -121,6 +141,18 @@ public abstract class AbstractTest {
     
     return -1;
   }
+
+  private void applyStatementParams(PreparedStatement statement, Object... params)
+      throws SQLException {
+    for (int i = 0, l = params.length; i < l; i++) {
+      Object param = params[i];
+      if (param instanceof List) {
+        statement.setObject(i + 1, ((List<?>) param).toArray());
+      } else {
+        statement.setObject(i + 1, params[i]);
+      }
+    }
+  }
   
   private long getGeneratedKey(ResultSet generatedKeys) throws SQLException {
     if (generatedKeys.next()) {
@@ -135,10 +167,7 @@ public abstract class AbstractTest {
       connection.setAutoCommit(true);
       PreparedStatement statement = connection.prepareStatement(sql);
       try {
-        for (int i = 0, l = params.length; i < l; i++) {
-          statement.setObject(i + 1, params[i]);
-        }
-
+        applyStatementParams(statement, params);
         statement.execute();
       } finally {
         statement.close();

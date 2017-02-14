@@ -2,11 +2,11 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>fi.otavanopisto.kunta-api</groupId>
   <artifactId>kunta-api-server</artifactId>
-  <version>0.0.4-SNAPSHOT</version>
+  <version>0.1.1-SNAPSHOT</version>
   <packaging>war</packaging>
   <name>Kunta API</name>
   <description>Kunta API server</description>
-  <url>https://github.com/otavanopisto/kunta-api</url>
+  <url>https://github.com/Metatavu/kunta-api-server</url>
 
   <licenses>
     <license>
@@ -18,32 +18,32 @@
   
   <developers>
     <developer>
-      <id>otavanopisto</id>
-      <email>ratkaisutiimi@otavanopisto.fi</email>
-      <name>Otavan Opisto</name>
-      <organization>Otavan Opisto</organization>
-      <organizationUrl>http://www.otavanopisto.fi/</organizationUrl>
-      <roles>
-        <role>Owner</role>
-      </roles>
+      <name>Metatavu Oy</name>
+      <organization>Metatavu Oy</organization>
+      <organizationUrl>http://www.metatavu.fi</organizationUrl>
+    </developer>
+    <developer>
+      <name>City of Mikkeli</name>
+      <organization>City of Mikkeli</organization>
+      <organizationUrl>http://www.mikkeli.fi/</organizationUrl>
     </developer>
   </developers>
-
+  
   <issueManagement>
     <system>GitHub</system>
-    <url>https://github.com/otavanopisto/kunta-api/issues</url>
+    <url>https://github.com/Metatavu/kunta-api-server/issues</url>
   </issueManagement>
 
   <scm>
-    <developerConnection>scm:git:git@github.com:otavanopisto/kunta-api.git</developerConnection>
-    <url>git@github.com:otavanopisto/kunta-api.git</url>
-    <connection>scm:git:git@github.com:otavanopisto/kunta-api.git</connection>
+    <developerConnection>scm:git:git@github.com:Metatavu/kunta-api-server.git</developerConnection>
+    <url>git@github.com:Metatavu/kunta-api-server.git</url>
+    <connection>scm:git:git@github.com:Metatavu/kunta-api-server.git</connection>
     <tag>HEAD</tag>
   </scm>
 
   <organization>
-    <name>Otava Folk High School</name>
-    <url>http://www.otavanopisto.fi</url>
+    <name>Metatavu Oy</name>
+    <url>http://www.metatavu.fi</url>
   </organization>
 
   <properties>
@@ -68,7 +68,7 @@
     
     <kunta-api-spec.version>0.1.27</kunta-api-spec.version>
     <restful-ptv-rest-client.version>1.2.7</restful-ptv-rest-client.version>
-    <management-rest-client.version>0.0.26</management-rest-client.version>
+    <management-rest-client.version>0.0.27</management-rest-client.version>
     <casem-rest-client.version>0.0.9</casem-rest-client.version>
     <mikkelinyt.rest-model.version>0.0.1</mikkelinyt.rest-model.version>
     

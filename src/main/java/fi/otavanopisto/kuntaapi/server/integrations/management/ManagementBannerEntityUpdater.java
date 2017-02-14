@@ -1,6 +1,5 @@
 package fi.otavanopisto.kuntaapi.server.integrations.management;
 
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
@@ -25,19 +24,19 @@ import fi.metatavu.management.client.DefaultApi;
 import fi.metatavu.management.client.model.Attachment;
 import fi.metatavu.management.client.model.Banner;
 import fi.otavanopisto.kuntaapi.server.cache.BannerCache;
-import fi.otavanopisto.kuntaapi.server.cache.BannerImageCache;
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
+import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.discover.BannerIdRemoveRequest;
 import fi.otavanopisto.kuntaapi.server.discover.BannerIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
 import fi.otavanopisto.kuntaapi.server.discover.IdUpdateRequestQueue;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.BannerId;
-import fi.otavanopisto.kuntaapi.server.id.IdPair;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
+import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementAttachmentCache;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
@@ -63,7 +62,7 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
   private BannerCache bannerCache;
   
   @Inject
-  private BannerImageCache bannerImageCache;
+  private ManagementAttachmentCache managementAttachmentCache;
   
   @Inject
   private ManagementApi managementApi;
@@ -76,6 +75,9 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
   
   @Inject
   private IdentifierController identifierController;
+
+  @Inject
+  private IdentifierRelationController identifierRelationController;
   
   @Inject
   private ModificationHashCache modificationHashCache;
@@ -171,13 +173,14 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
 
     Identifier identifier = identifierController.findIdentifierById(bannerId);
     if (identifier == null) {
-      identifier = identifierController.createIdentifier(organizationId, orderIndex, bannerId);
+      identifier = identifierController.createIdentifier(orderIndex, bannerId);
     } else {
-      identifier = identifierController.updateIdentifier(identifier, organizationId, orderIndex);
+      identifier = identifierController.updateIdentifier(identifier, orderIndex);
     }
     
-    BannerId bannerKuntaApiId = new BannerId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
+    identifierRelationController.setParentId(identifier, organizationId);
     
+    BannerId bannerKuntaApiId = new BannerId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
     fi.metatavu.kuntaapi.server.rest.model.Banner banner = managementTranslator.translateBanner(bannerKuntaApiId, managementBanner);
     if (banner == null) {
       logger.severe(String.format("Could not translate banner %d into Kunta API banner", managementBanner.getId()));
@@ -188,12 +191,12 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(banner));
     
     if (managementBanner.getFeaturedMedia() != null && managementBanner.getFeaturedMedia() > 0) {
-      updateFeaturedMedia(organizationId, api, bannerKuntaApiId, managementBanner.getFeaturedMedia()); 
+      updateFeaturedMedia(organizationId, api, identifier, managementBanner.getFeaturedMedia()); 
     }
 
   }
   
-  private void updateFeaturedMedia(OrganizationId organizationId, DefaultApi api, BannerId bannerId, Integer featuredMedia) {
+  private void updateFeaturedMedia(OrganizationId organizationId, DefaultApi api, Identifier bannerIdentifier, Integer featuredMedia) {
     ApiResponse<fi.metatavu.management.client.model.Attachment> response = api.wpV2MediaIdGet(String.valueOf(featuredMedia), null, null);
     if (!response.isOk()) {
       logger.severe(String.format("Finding media failed on [%d] %s", response.getStatus(), response.getMessage()));
@@ -204,16 +207,18 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
       
       Identifier identifier = identifierController.findIdentifierById(managementAttachmentId);
       if (identifier == null) {
-        identifier = identifierController.createIdentifier(bannerId, orderIndex, managementAttachmentId);
+        identifier = identifierController.createIdentifier(orderIndex, managementAttachmentId);
       } else {
-        identifier = identifierController.updateIdentifier(identifier, bannerId, orderIndex);
+        identifier = identifierController.updateIdentifier(identifier, orderIndex);
       }
+
+      identifierRelationController.addChild(bannerIdentifier, identifier);
       
       AttachmentId kuntaApiAttachmentId = new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
       fi.metatavu.kuntaapi.server.rest.model.Attachment attachment = managementTranslator.translateAttachment(kuntaApiAttachmentId, managementAttachment, ManagementConsts.ATTACHMENT_TYPE_BANNER);
       
       if (attachment != null) {
-        bannerImageCache.put(new IdPair<>(bannerId, kuntaApiAttachmentId), attachment);
+        managementAttachmentCache.put(kuntaApiAttachmentId, attachment);
         
         AttachmentData imageData = managementImageLoader.getImageData(managementAttachment.getSourceUrl());
         if (imageData != null) {
@@ -233,18 +238,6 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
       modificationHashCache.clear(bannerIdentifier.getKuntaApiId());
       bannerCache.clear(kuntaApiBannerId);
       identifierController.deleteIdentifier(bannerIdentifier);
-      
-      List<IdPair<BannerId,AttachmentId>> bannerImageIds = bannerImageCache.getChildIds(kuntaApiBannerId);
-      for (IdPair<BannerId,AttachmentId> bannerImageId : bannerImageIds) {
-        AttachmentId attachmentId = bannerImageId.getChild();
-        bannerImageCache.clear(bannerImageId);
-        modificationHashCache.clear(attachmentId.getId());
-        
-        Identifier imageIdentifier = identifierController.findIdentifierById(attachmentId);
-        if (imageIdentifier != null) {
-          identifierController.deleteIdentifier(imageIdentifier);
-        }
-      }
     }
   }
   

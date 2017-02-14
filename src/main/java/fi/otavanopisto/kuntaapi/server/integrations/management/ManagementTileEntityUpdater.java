@@ -1,6 +1,5 @@
 package fi.otavanopisto.kuntaapi.server.integrations.management;
 
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
@@ -26,18 +25,18 @@ import fi.metatavu.management.client.model.Attachment;
 import fi.metatavu.management.client.model.Tile;
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.cache.TileCache;
-import fi.otavanopisto.kuntaapi.server.cache.TileImageCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
+import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
 import fi.otavanopisto.kuntaapi.server.discover.IdUpdateRequestQueue;
 import fi.otavanopisto.kuntaapi.server.discover.TileIdRemoveRequest;
 import fi.otavanopisto.kuntaapi.server.discover.TileIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
-import fi.otavanopisto.kuntaapi.server.id.IdPair;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.TileId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
+import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementAttachmentCache;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
@@ -70,12 +69,15 @@ public class ManagementTileEntityUpdater extends EntityUpdater {
   
   @Inject
   private IdentifierController identifierController;
-  
+
+  @Inject
+  private IdentifierRelationController identifierRelationController;
+
   @Inject
   private TileCache tileCache;
   
   @Inject
-  private TileImageCache tileImageCache;
+  private ManagementAttachmentCache managementAttachmentCache;
   
   @Inject
   private ModificationHashCache modificationHashCache;
@@ -172,10 +174,12 @@ public class ManagementTileEntityUpdater extends EntityUpdater {
 
     Identifier identifier = identifierController.findIdentifierById(tileId);
     if (identifier == null) {
-      identifier = identifierController.createIdentifier(organizationId, orderIndex, tileId);
+      identifier = identifierController.createIdentifier(orderIndex, tileId);
     } else {
-      identifier = identifierController.updateIdentifier(identifier, organizationId, orderIndex);
+      identifier = identifierController.updateIdentifier(identifier, orderIndex);
     }
+    
+    identifierRelationController.setParentId(identifier, organizationId);
     
     TileId kuntaApiTileId = new TileId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
     fi.metatavu.kuntaapi.server.rest.model.Tile tile = managementTranslator.translateTile(kuntaApiTileId, managementTile);
@@ -188,11 +192,11 @@ public class ManagementTileEntityUpdater extends EntityUpdater {
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(tile));
     
     if (managementTile.getFeaturedMedia() != null && managementTile.getFeaturedMedia() > 0) {
-      updateFeaturedMedia(organizationId, kuntaApiTileId, api, managementTile.getFeaturedMedia()); 
+      updateFeaturedMedia(organizationId, identifier, api, managementTile.getFeaturedMedia()); 
     }
   }
   
-  private void updateFeaturedMedia(OrganizationId organizationId, TileId kuntaApiTileId, DefaultApi api, Integer featuredMedia) {
+  private void updateFeaturedMedia(OrganizationId organizationId, Identifier tileIdentifier, DefaultApi api, Integer featuredMedia) {
     ApiResponse<Attachment> response = api.wpV2MediaIdGet(String.valueOf(featuredMedia), null, null);
     if (!response.isOk()) {
       logger.severe(String.format("Finding media failed on [%d] %s", response.getStatus(), response.getMessage()));
@@ -203,11 +207,13 @@ public class ManagementTileEntityUpdater extends EntityUpdater {
       
       Identifier identifier = identifierController.findIdentifierById(managementAttachmentId);
       if (identifier == null) {
-        identifier = identifierController.createIdentifier(kuntaApiTileId, orderIndex, managementAttachmentId);
+        identifier = identifierController.createIdentifier(orderIndex, managementAttachmentId);
       } else {
-        identifier = identifierController.updateIdentifier(identifier, kuntaApiTileId, orderIndex);
+        identifier = identifierController.updateIdentifier(identifier, orderIndex);
       }
       
+      identifierRelationController.addChild(tileIdentifier, identifier);
+
       AttachmentId kuntaApiAttachmentId = new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
       fi.metatavu.kuntaapi.server.rest.model.Attachment attachment = managementTranslator.translateAttachment(kuntaApiAttachmentId, managementAttachment, ManagementConsts.ATTACHMENT_TYPE_TILE);
       if (attachment == null) {
@@ -215,8 +221,7 @@ public class ManagementTileEntityUpdater extends EntityUpdater {
         return;
       }
       
-      tileImageCache.put(new IdPair<>(kuntaApiTileId, kuntaApiAttachmentId), attachment);
-      
+      managementAttachmentCache.put(kuntaApiAttachmentId, attachment);
       AttachmentData imageData = managementImageLoader.getImageData(managementAttachment.getSourceUrl());
       if (imageData != null) {
         String dataHash = DigestUtils.md5Hex(imageData.getData());
@@ -233,18 +238,6 @@ public class ManagementTileEntityUpdater extends EntityUpdater {
       modificationHashCache.clear(tileIdentifier.getKuntaApiId());
       tileCache.clear(kuntaApiTileId);
       identifierController.deleteIdentifier(tileIdentifier);
-      
-      List<IdPair<TileId,AttachmentId>> tileImageIds = tileImageCache.getChildIds(kuntaApiTileId);
-      for (IdPair<TileId,AttachmentId> tileImageId : tileImageIds) {
-        AttachmentId attachmentId = tileImageId.getChild();
-        tileImageCache.clear(tileImageId);
-        modificationHashCache.clear(attachmentId.getId());
-        
-        Identifier imageIdentifier = identifierController.findIdentifierById(attachmentId);
-        if (imageIdentifier != null) {
-          identifierController.deleteIdentifier(imageIdentifier);
-        }
-      }
     }
   }
   

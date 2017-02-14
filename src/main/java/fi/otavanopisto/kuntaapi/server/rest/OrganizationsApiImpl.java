@@ -13,6 +13,7 @@ import javax.inject.Inject;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Request;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 
 import org.apache.commons.lang3.EnumUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -285,7 +286,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return httpCacheController.streamModified(attachmentData.getData(), attachmentData.getType(), attachmentId);
     }
     
-    return createNotFound(NOT_FOUND);
+    return Response.status(Status.NOT_FOUND).build();
   }
 
   @Override
@@ -413,7 +414,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return httpCacheController.streamModified(attachmentData.getData(), attachmentData.getType(), attachmentId);
     }
     
-    return createNotFound(NOT_FOUND);
+    return Response.status(Status.NOT_FOUND).build();
   }
 
   @Override
@@ -515,7 +516,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return httpCacheController.streamModified(attachmentData.getData(), attachmentData.getType(), attachmentId);
     }
     
-    return createNotFound(NOT_FOUND);
+    return Response.status(Status.NOT_FOUND).build();
   }
   
   /* Tiles */
@@ -602,7 +603,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return httpCacheController.streamModified(attachmentData.getData(), attachmentData.getType(), attachmentId);
     }
     
-    return createNotFound(NOT_FOUND);
+    return Response.status(Status.NOT_FOUND).build();
   }
 
   @Override
@@ -874,7 +875,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return httpCacheController.streamModified(attachmentData.getData(), attachmentData.getType(), attachmentId);
     }
     
-    return createNotFound(NOT_FOUND);
+    return Response.status(Status.NOT_FOUND).build();
   }
     
   /* Fragments */
@@ -1098,7 +1099,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return httpCacheController.streamModified(data.getData(), data.getType(), fileId);
     }
     
-    return createNotFound(NOT_FOUND);
+    return Response.status(Status.NOT_FOUND).build();
   }
   
   /* Jobs */

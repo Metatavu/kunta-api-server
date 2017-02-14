@@ -118,7 +118,9 @@ public class HttpCacheController {
     EntityTag tag = getEntityTag(baseId.getId());
     
     try (InputStream byteStream = new ByteArrayInputStream(data)) {
-      responseBuilder = Response.ok(new Stream(byteStream), type);
+      responseBuilder = Response.ok(new Stream(byteStream), type)
+          .header("Content-Length", data.length);
+      
     } catch (IOException e) {
       logger.log(Level.SEVERE, FAILED_TO_STREAM_DATA_TO_CLIENT, e);
       return Response.status(Status.INTERNAL_SERVER_ERROR)

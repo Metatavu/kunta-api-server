@@ -57,7 +57,7 @@ public class PtvOrganizationEntityUpdater extends EntityUpdater {
   
   @Inject
   private IdentifierController identifierController;
-  
+
   @Inject
   private IdController idController;
   
@@ -150,9 +150,9 @@ public class PtvOrganizationEntityUpdater extends EntityUpdater {
     if (response.isOk()) {
       Identifier identifier = identifierController.findIdentifierById(organizationId);
       if (identifier == null) {
-        identifier = identifierController.createIdentifier(null, orderIndex, organizationId);
+        identifier = identifierController.createIdentifier(orderIndex, organizationId);
       } else {
-        identifier = identifierController.updateIdentifier(identifier, null, orderIndex);
+        identifier = identifierController.updateIdentifier(identifier, orderIndex);
       }
       
       Organization organization = response.getResponse();

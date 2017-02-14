@@ -24,6 +24,7 @@ import fi.metatavu.management.client.model.Fragment;
 import fi.otavanopisto.kuntaapi.server.cache.FragmentCache;
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
+import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.discover.FragmentIdRemoveRequest;
 import fi.otavanopisto.kuntaapi.server.discover.FragmentIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
@@ -56,6 +57,9 @@ public class ManagementFragmentEntityUpdater extends EntityUpdater {
   
   @Inject
   private IdentifierController identifierController;
+
+  @Inject
+  private IdentifierRelationController identifierRelationController;
 
   @Inject
   private FragmentCache fragmentCache;
@@ -152,10 +156,12 @@ public class ManagementFragmentEntityUpdater extends EntityUpdater {
 
     Identifier identifier = identifierController.findIdentifierById(fragmentId);
     if (identifier == null) {
-      identifier = identifierController.createIdentifier(organizationId, orderIndex, fragmentId);
+      identifier = identifierController.createIdentifier(orderIndex, fragmentId);
     } else {
-      identifier = identifierController.updateIdentifier(identifier, organizationId, orderIndex);
+      identifier = identifierController.updateIdentifier(identifier, orderIndex);
     }
+
+    identifierRelationController.setParentId(identifier, organizationId);
     
     FragmentId kuntaApiFragmentId = new FragmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
     fi.metatavu.kuntaapi.server.rest.model.Fragment fragment = managementTranslator.translateFragment(kuntaApiFragmentId, managementFragment);

@@ -25,7 +25,9 @@ import fi.otavanopisto.kuntaapi.test.AbstractIntegrationTest;
 public class PostTestsIT extends AbstractIntegrationTest {
   
   private static final ZoneId TIMEZONE_ID = ZoneId.systemDefault();
-
+  private static final String IMAGE_JPEG = "image/jpeg";
+  private static final String IMAGE_PNG = "image/png";
+  
   /**
    * Starts WireMock
    */
@@ -41,6 +43,7 @@ public class PostTestsIT extends AbstractIntegrationTest {
       .startMock();
     
     getManagementMocker()
+      .mockMedia("3001", "3002")
       .mockPosts("789", "890", "901")
       .startMock();
 
@@ -67,7 +70,7 @@ public class PostTestsIT extends AbstractIntegrationTest {
     given() 
       .baseUri(getApiBasePath())
       .contentType(ContentType.JSON)
-      .get("/organizations/{organizationId}/news/{newsArticleId}", organizationId, getOrganizationNewsArticleId(organizationId, 0))
+      .get("/organizations/{organizationId}/news/{newsArticleId}", organizationId, getNewsArticleId(organizationId, 0))
       .then()
       .assertThat()
       .statusCode(200)
@@ -85,7 +88,7 @@ public class PostTestsIT extends AbstractIntegrationTest {
     given() 
       .baseUri(getApiBasePath())
       .contentType(ContentType.JSON)
-      .get("/organizations/{organizationId}/news/{newsArticleId}", organizationId, getOrganizationNewsArticleId(organizationId, 0))
+      .get("/organizations/{organizationId}/news/{newsArticleId}", organizationId, getNewsArticleId(organizationId, 0))
       .then()
       .assertThat()
       .statusCode(200)
@@ -137,7 +140,7 @@ public class PostTestsIT extends AbstractIntegrationTest {
   public void testOrganizationPostsNotFound() throws InterruptedException {
     String organizationId = getOrganizationId(0);
     String incorrectOrganizationId = getOrganizationId(1);
-    String organizationNewsArticleId = getOrganizationNewsArticleId(organizationId, 0);
+    String organizationNewsArticleId = getNewsArticleId(organizationId, 0);
     
     String[] malformedIds = new String[] {"evil", "*", "/", "1", "-1", "~"};
     assertFound(String.format("/organizations/%s/news/%s", organizationId, organizationNewsArticleId));
@@ -149,6 +152,76 @@ public class PostTestsIT extends AbstractIntegrationTest {
     
     assertNotFound(String.format("/organizations/%s/news/%s", incorrectOrganizationId, organizationNewsArticleId));
     assertEquals(0, countApiList(String.format("/organizations/%s/news", incorrectOrganizationId)));
+  }
+  
+  @Test
+  public void testNewsArticleImage() {
+    String organizationId = getOrganizationId(0);
+    String newsArticleId = getNewsArticleId(organizationId, 0);
+    String imageId = getNewsArticleImageId(organizationId, newsArticleId, 0);
+    
+    given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get("/organizations/{ORGANIZATIONID}/news/{NEWSARTICLEID}/images/{IMAGEID}", organizationId, newsArticleId, imageId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id", is(imageId))
+      .body("contentType", is(IMAGE_JPEG));
+  }
+  
+  @Test
+  public void testNewsArticleImageNotFound() {
+    String organizationId = getOrganizationId(0);
+    String newsArticleId = getNewsArticleId(organizationId, 0);
+    String incorrectNewsArticleId = getNewsArticleId(organizationId, 2);
+    String imageId = getNewsArticleImageId(organizationId, newsArticleId, 0);
+    
+    String[] malformedIds = new String[] {"evil", "*", "/", "1", "-1", "~"};
+    assertFound(String.format("/organizations/%s/news/%s/images/%s", organizationId, newsArticleId, imageId));
+    assertEquals(1, countApiList(String.format("/organizations/%s/news/%s/images", organizationId, newsArticleId)));
+    
+    for (String malformedId : malformedIds) {
+      assertNotFound(String.format("/organizations/%s/news/%s/images/%s", organizationId, newsArticleId, malformedId));
+    }
+
+    assertNotFound(String.format("/organizations/%s/news/%s/images/%s", organizationId, incorrectNewsArticleId, imageId));
+    assertEquals(0, countApiList(String.format("/organizations/%s/news/%s/images", organizationId, incorrectNewsArticleId)));
+  }
+
+  @Test
+  public void testNewsArticleImageData() {
+    String organizationId = getOrganizationId(0);
+    String newsArticleId = getNewsArticleId(organizationId, 0);
+    String imageId = getNewsArticleImageId(organizationId, newsArticleId, 0);
+
+    given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get("/organizations/{ORGANIZATIONID}/news/{NEWSARTICLEID}/images/{IMAGEID}/data", organizationId, newsArticleId, imageId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .header("Content-Length", "21621")
+      .header("Content-Type", IMAGE_JPEG);
+  }
+  
+  @Test
+  public void testNewsArticleImageDataScaled() {
+    String organizationId = getOrganizationId(0);
+    String newsArticleId = getNewsArticleId(organizationId, 0);
+    String imageId = getNewsArticleImageId(organizationId, newsArticleId, 0);
+
+    given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get("/organizations/{ORGANIZATIONID}/news/{EVENTID}/images/{IMAGEID}/data?size=100", organizationId, newsArticleId, imageId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .header("Content-Length", "13701")
+      .header("Content-Type", IMAGE_PNG);
   }
   
   private void createPtvSettings() {

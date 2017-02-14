@@ -15,11 +15,9 @@ import javax.inject.Inject;
 
 import org.apache.commons.codec.binary.StringUtils;
 
-import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.BannerId;
 import fi.otavanopisto.kuntaapi.server.id.BaseId;
 import fi.otavanopisto.kuntaapi.server.id.ContactId;
-import fi.otavanopisto.kuntaapi.server.id.FragmentId;
 import fi.otavanopisto.kuntaapi.server.id.IdType;
 import fi.otavanopisto.kuntaapi.server.id.MenuId;
 import fi.otavanopisto.kuntaapi.server.id.MenuItemId;
@@ -32,8 +30,10 @@ import fi.otavanopisto.kuntaapi.server.id.ServiceId;
 import fi.otavanopisto.kuntaapi.server.id.TileId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.persistence.dao.IdentifierDAO;
+import fi.otavanopisto.kuntaapi.server.persistence.dao.IdentifierRelationDAO;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.persistence.model.IdentifierOrderIndex;
+import fi.otavanopisto.kuntaapi.server.persistence.model.IdentifierRelation;
 
 /**
  * Identifier controller
@@ -50,13 +50,16 @@ public class IdentifierController {
   @Inject
   private IdentifierDAO identifierDAO;
   
+  @Inject
+  private IdentifierRelationDAO identifierRelationDAO;
+  
   /**
    * Creates new identifier.
    * 
    * @param id identifier
    * @return created identifier
    */
-  public Identifier createIdentifier(BaseId parentId, Long orderIndex, BaseId id) {
+  public Identifier createIdentifier(Long orderIndex, BaseId id) {
     String organizationKuntaApiId = null;
     if (id instanceof OrganizationBaseId) {
       OrganizationBaseId organizationBaseId = (OrganizationBaseId) id;
@@ -70,16 +73,8 @@ public class IdentifierController {
       }
     }
     
-    Identifier parent = null;
-    if (parentId != null) {
-      parent = findIdentifierById(parentId);
-      if (parent == null) {
-        logger.severe(String.format("Could not find parent %s for id %s", parentId, id));
-      }
-    }
-    
     String kuntaApiId = UUID.randomUUID().toString();
-    return createIdentifier(parent, orderIndex, id.getType().toString(), kuntaApiId, id.getSource(), id.getId(), organizationKuntaApiId);
+    return createIdentifier(orderIndex, id.getType().toString(), kuntaApiId, id.getSource(), id.getId(), organizationKuntaApiId);
   }
   
   public Identifier findIdentifierById(BaseId id) {
@@ -250,102 +245,6 @@ public class IdentifierController {
     
     return result;
   }
-
-  /**
-   * Lists page ids by source and parent id
-   * 
-   * Results are sorted by orderIndex column
-   * 
-   * @param parentId parent id
-   * @return page ids by parent id
-   */
-  public List<PageId> listPageIdsBySourceAndParentId(String source, BaseId parentId) {
-    Identifier parentIdentifier = findIdentifierById(parentId);
-    if (parentIdentifier == null) {
-      return Collections.emptyList();
-    }
-
-    List<Identifier> identifiers = identifierDAO.listBySourceParentAndTypeOrderByOrderIndex(source, parentIdentifier, IdType.PAGE.name());
-    List<PageId> result = new ArrayList<>(identifiers.size());
-    for (Identifier identifier : identifiers) {
-      OrganizationId organizationId = new OrganizationId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getOrganizationKuntaApiId());
-      result.add(new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId()));
-    }
-    
-    return result;
-  }
-  
-  /**
-   * Lists attachment ids by source and parent id
-   * 
-   * Results are sorted by orderIndex column
-   * 
-   * @param parentId parent id
-   * @return attachment ids by parent id
-   */
-  public List<AttachmentId> listAttachmentIdsBySourceAndParentId(String source, BaseId parentId) {
-    Identifier parentIdentifier = findIdentifierById(parentId);
-    if (parentIdentifier == null) {
-      return Collections.emptyList();
-    }
-
-    List<Identifier> identifiers = identifierDAO.listBySourceParentAndTypeOrderByOrderIndex(source, parentIdentifier, IdType.ATTACHMENT.name());
-    List<AttachmentId> result = new ArrayList<>(identifiers.size());
-    for (Identifier identifier : identifiers) {
-      OrganizationId organizationId = new OrganizationId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getOrganizationKuntaApiId());
-      result.add(new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId()));
-    }
-    
-    return result;
-  }
-  
-  /**
-   * Lists fragment ids by parent id. 
-   * 
-   * Results are sorted by orderIndex column
-   * 
-   * @param parentId parent id
-   * @return fragment ids by parent id
-   */
-  public List<FragmentId> listFragmentIdsParentId(BaseId parentId) {
-    Identifier parentIdentifier = findIdentifierById(parentId);
-    if (parentIdentifier == null) {
-      return Collections.emptyList();
-    }
-    
-    List<Identifier> identifiers = identifierDAO.listByParentAndTypeOrderByOrderIndex(parentIdentifier, IdType.FRAGMENT.name());
-    List<FragmentId> result = new ArrayList<>(identifiers.size());
-    for (Identifier identifier : identifiers) {
-      OrganizationId organizationId = new OrganizationId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getOrganizationKuntaApiId());
-      result.add(new FragmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId()));
-    }
-    
-    return result;
-  }
-  
-  /**
-   * Lists banner ids by parent id. 
-   * 
-   * Results are sorted by orderIndex column
-   * 
-   * @param parentId parent id
-   * @return banner ids by parent id
-   */
-  public List<BannerId> listBannerIdsParentId(BaseId parentId) {
-    Identifier parentIdentifier = findIdentifierById(parentId);
-    if (parentIdentifier == null) {
-      return Collections.emptyList();
-    }
-    
-    List<Identifier> identifiers = identifierDAO.listByParentAndTypeOrderByOrderIndex(parentIdentifier, IdType.BANNER.name());
-    List<BannerId> result = new ArrayList<>(identifiers.size());
-    for (Identifier identifier : identifiers) {
-      OrganizationId organizationId = new OrganizationId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getOrganizationKuntaApiId());
-      result.add(new BannerId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId()));
-    }
-    
-    return result;
-  }
   
   public List<ServiceId> listServiceIdsBySource(String source) {
     List<Identifier> identifiers = identifierDAO.listBySourceAndType(source, IdType.SERVICE.name());
@@ -359,29 +258,21 @@ public class IdentifierController {
   }
 
   public void deleteIdentifier(Identifier identifier) {
+    List<IdentifierRelation> identifierRelations = identifierRelationDAO.listByParentOrChild(identifier);
+    for (IdentifierRelation identifierRelation : identifierRelations) {
+      identifierRelationDAO.delete(identifierRelation);
+    }
+    
     identifierDAO.delete(identifier);
   }
 
-  private Identifier createIdentifier(Identifier parent, Long orderIndex, String type, String kuntaApiId, String source, String sourceId, String organizationKuntaApiId) {
-    return identifierDAO.create(parent, orderIndex, type, kuntaApiId, source, sourceId, organizationKuntaApiId);
+  private Identifier createIdentifier(Long orderIndex, String type, String kuntaApiId, String source, String sourceId, String organizationKuntaApiId) {
+    return identifierDAO.create(orderIndex, type, kuntaApiId, source, sourceId, organizationKuntaApiId);
   }
   
-  public Identifier updateIdentifier(Identifier identifier, BaseId parentId, Long orderIndex) {
-    Identifier parent = null;
-    if (parentId != null) {
-      parent = findIdentifierById(parentId);
-      if (parent == null) {
-        logger.severe(String.format("Could not find parent %s for identifier %s", parentId, identifier.getKuntaApiId()));
-      }
-    }
-    
-    return updateIdentifier(identifier, parent, orderIndex);
-  }
-  
-  private Identifier updateIdentifier(Identifier identifier, Identifier parent, Long orderIndex) {
+  public Identifier updateIdentifier(Identifier identifier, Long orderIndex) {
     Identifier result = identifier;
     result = identifierDAO.updateOrderIndex(result, orderIndex);
-    result = identifierDAO.updateParent(result, parent);
     result = identifierDAO.updateModified(result, OffsetDateTime.now());
     return result;
   }
