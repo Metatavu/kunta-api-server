@@ -20,7 +20,10 @@ import fi.otavanopisto.kuntaapi.test.AbstractIntegrationTest;
 
 @SuppressWarnings ("squid:S1192")
 public class PageTestsIT extends AbstractIntegrationTest {
-  
+
+  private static final String IMAGE_JPEG = "image/jpeg";
+  private static final String IMAGE_PNG = "image/png";
+
   /**
    * Starts WireMock
    */
@@ -36,6 +39,7 @@ public class PageTestsIT extends AbstractIntegrationTest {
       .startMock();
     
     getManagementMocker()
+      .mockMedia("3001", "3002")
       .mockPages("456", "567", "678")
       .startMock();
 
@@ -61,7 +65,7 @@ public class PageTestsIT extends AbstractIntegrationTest {
     given() 
       .baseUri(getApiBasePath())
       .contentType(ContentType.JSON)
-      .get("/organizations/{organizationId}/pages/{pageId}", organizationId, getOrganizationPageId(organizationId, 0))
+      .get("/organizations/{organizationId}/pages/{pageId}", organizationId, getPageId(organizationId, 0))
       .then()
       .assertThat()
       .statusCode(200)
@@ -118,18 +122,153 @@ public class PageTestsIT extends AbstractIntegrationTest {
   public void testOrganizationPagesNotFound() throws InterruptedException {
     String organizationId = getOrganizationId(0);
     String incorrectOrganizationId = getOrganizationId(1);
-    String organizationAnnouncecmentId = getOrganizationPageId(organizationId, 0);
+    String pageId = getPageId(organizationId, 0);
     
     String[] malformedIds = new String[] {"evil", "*", "/", "1", "-1", "~"};
-    assertFound(String.format("/organizations/%s/pages/%s", organizationId, organizationAnnouncecmentId));
+    assertFound(String.format("/organizations/%s/pages/%s", organizationId, pageId));
     assertEquals(3, countApiList(String.format("/organizations/%s/pages", organizationId)));
     
     for (String malformedId : malformedIds) {
       assertNotFound(String.format("/organizations/%s/pages/%s", organizationId, malformedId));
     }
     
-    assertNotFound(String.format("/organizations/%s/pages/%s", incorrectOrganizationId, organizationAnnouncecmentId));
+    assertNotFound(String.format("/organizations/%s/pages/%s", incorrectOrganizationId, pageId));
     assertEquals(0, countApiList(String.format("/organizations/%s/pages", incorrectOrganizationId)));
+  }
+  
+  @Test
+  public void testPageImage() {
+    String organizationId = getOrganizationId(0);
+    String pageId = getPageId(organizationId, 0);
+    String imageId = getPageImageId(organizationId, pageId, 0);
+    
+    given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get("/organizations/{ORGANIZATIONID}/pages/{PAGEID}/images/{IMAGEID}", organizationId, pageId, imageId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id", is(imageId))
+      .body("contentType", is(IMAGE_JPEG));
+  }
+  
+  @Test
+  public void testPageMultipleImages() {
+    String organizationId = getOrganizationId(0);
+    String pageId = getPageId(organizationId, 1);
+    String featuredImageId = getPageImageId(organizationId, pageId, 0);
+    String bannerImageId = getPageImageId(organizationId, pageId, 1);
+    
+    given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get("/organizations/{ORGANIZATIONID}/pages/{PAGEID}/images/{IMAGEID}", organizationId, pageId, featuredImageId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id", is(featuredImageId))
+      .body("type", is("featured"));
+    
+    given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get("/organizations/{ORGANIZATIONID}/pages/{PAGEID}/images/{IMAGEID}", organizationId, pageId, bannerImageId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id", is(bannerImageId))
+      .body("type", is("banner"));
+  }
+  
+  @Test
+  public void testPageListImagesByType() {
+    String organizationId = getOrganizationId(0);
+    String pageId = getPageId(organizationId, 1);
+    
+    assertEquals(2, countApiList(String.format("/organizations/%s/pages/%s/images", organizationId, pageId)));
+    
+    given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get("/organizations/{ORGANIZATIONID}/pages/{PAGEID}/images?type=banner", organizationId, pageId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(1))
+      .body("type[0]", is("banner"));
+    
+    given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get("/organizations/{ORGANIZATIONID}/pages/{PAGEID}/images?type=featured", organizationId, pageId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(1))
+      .body("type[0]", is("featured"));
+    
+    given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get("/organizations/{ORGANIZATIONID}/pages/{PAGEID}/images?type=invalid", organizationId, pageId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(0));
+  }
+  
+  @Test
+  public void testPageImageNotFound() {
+    String organizationId = getOrganizationId(0);
+    String pageId = getPageId(organizationId, 0);
+    String incorrectPageId = getPageId(organizationId, 2);
+    String imageId = getPageImageId(organizationId, pageId, 0);
+    
+    String[] malformedIds = new String[] {"evil", "*", "/", "1", "-1", "~"};
+    assertFound(String.format("/organizations/%s/pages/%s/images/%s", organizationId, pageId, imageId));
+    assertEquals(1, countApiList(String.format("/organizations/%s/pages/%s/images", organizationId, pageId)));
+    
+    for (String malformedId : malformedIds) {
+      assertNotFound(String.format("/organizations/%s/pages/%s/images/%s", organizationId, pageId, malformedId));
+    }
+
+    assertNotFound(String.format("/organizations/%s/pages/%s/images/%s", organizationId, incorrectPageId, imageId));
+    assertEquals(0, countApiList(String.format("/organizations/%s/pages/%s/images", organizationId, incorrectPageId)));
+  }
+
+  @Test
+  public void testPageImageData() {
+    String organizationId = getOrganizationId(0);
+    String pageId = getPageId(organizationId, 0);
+    String imageId = getPageImageId(organizationId, pageId, 0);
+
+    given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get("/organizations/{ORGANIZATIONID}/pages/{PAGEID}/images/{IMAGEID}/data", organizationId, pageId, imageId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .header("Content-Length", "21621")
+      .header("Content-Type", IMAGE_JPEG);
+  }
+  
+  @Test
+  public void testPageImageDataScaled() {
+    String organizationId = getOrganizationId(0);
+    String pageId = getPageId(organizationId, 0);
+    String imageId = getPageImageId(organizationId, pageId, 0);
+
+    given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get("/organizations/{ORGANIZATIONID}/pages/{EVENTID}/images/{IMAGEID}/data?size=100", organizationId, pageId, imageId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .header("Content-Length", "13701")
+      .header("Content-Type", IMAGE_PNG);
   }
   
   private void createPtvSettings() {

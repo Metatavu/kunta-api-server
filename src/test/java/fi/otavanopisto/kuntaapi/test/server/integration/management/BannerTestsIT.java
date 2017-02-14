@@ -22,6 +22,9 @@ import fi.otavanopisto.kuntaapi.test.AbstractIntegrationTest;
 @SuppressWarnings ("squid:S1192")
 public class BannerTestsIT extends AbstractIntegrationTest {
   
+  private static final String IMAGE_JPEG = "image/jpeg";
+  private static final String IMAGE_PNG = "image/png";
+  
   /**
    * Starts WireMock
    */
@@ -37,6 +40,7 @@ public class BannerTestsIT extends AbstractIntegrationTest {
       .startMock();
     
     getManagementMocker()
+      .mockMedia("3001", "3002")
       .mockBanners("2001", "2002", "2003")
       .startMock();
 
@@ -63,7 +67,7 @@ public class BannerTestsIT extends AbstractIntegrationTest {
     given() 
       .baseUri(getApiBasePath())
       .contentType(ContentType.JSON)
-      .get("/organizations/{organizationId}/banners/{bannerId}", organizationId, getOrganizationBannerId(organizationId, 0))
+      .get("/organizations/{organizationId}/banners/{bannerId}", organizationId, getBannerId(organizationId, 0))
       .then()
       .assertThat()
       .statusCode(200)
@@ -99,7 +103,7 @@ public class BannerTestsIT extends AbstractIntegrationTest {
     given() 
       .baseUri(getApiBasePath())
       .contentType(ContentType.JSON)
-      .get("/organizations/{organizationId}/banners/{bannerId}", organizationId, getOrganizationBannerId(organizationId, 1))
+      .get("/organizations/{organizationId}/banners/{bannerId}", organizationId, getBannerId(organizationId, 1))
       .then()
       .assertThat()
       .statusCode(200)
@@ -115,18 +119,88 @@ public class BannerTestsIT extends AbstractIntegrationTest {
   public void testOrganizationBannersNotFound() throws InterruptedException {
     String organizationId = getOrganizationId(0);
     String incorrectOrganizationId = getOrganizationId(1);
-    String organizationAnnouncecmentId = getOrganizationBannerId(organizationId, 0);
+    String organizationBannerId = getBannerId(organizationId, 0);
     
     String[] malformedIds = new String[] {"evil", "*", "/", "1", "-1", "~"};
-    assertFound(String.format("/organizations/%s/banners/%s", organizationId, organizationAnnouncecmentId));
+    assertFound(String.format("/organizations/%s/banners/%s", organizationId, organizationBannerId));
     assertEquals(3, countApiList(String.format("/organizations/%s/banners", organizationId)));
     
     for (String malformedId : malformedIds) {
       assertNotFound(String.format("/organizations/%s/banners/%s", organizationId, malformedId));
     }
     
-    assertNotFound(String.format("/organizations/%s/banners/%s", incorrectOrganizationId, organizationAnnouncecmentId));
+    assertNotFound(String.format("/organizations/%s/banners/%s", incorrectOrganizationId, organizationBannerId));
     assertEquals(0, countApiList(String.format("/organizations/%s/banners", incorrectOrganizationId)));
+  }
+  
+  @Test
+  public void testBannerImage() {
+    String organizationId = getOrganizationId(0);
+    String bannerId = getBannerId(organizationId, 0);
+    String imageId = getBannerImageId(organizationId, bannerId, 0);
+    
+    given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get("/organizations/{ORGANIZATIONID}/banners/{BANNERID}/images/{IMAGEID}", organizationId, bannerId, imageId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id", is(imageId))
+      .body("contentType", is(IMAGE_JPEG));
+  }
+  
+  @Test
+  public void testBannerImageNotFound() {
+    String organizationId = getOrganizationId(0);
+    String bannerId = getBannerId(organizationId, 0);
+    String incorrectBannerId = getBannerId(organizationId, 2);
+    String imageId = getBannerImageId(organizationId, bannerId, 0);
+    
+    String[] malformedIds = new String[] {"evil", "*", "/", "1", "-1", "~"};
+    assertFound(String.format("/organizations/%s/banners/%s/images/%s", organizationId, bannerId, imageId));
+    assertEquals(1, countApiList(String.format("/organizations/%s/banners/%s/images", organizationId, bannerId)));
+    
+    for (String malformedId : malformedIds) {
+      assertNotFound(String.format("/organizations/%s/banners/%s/images/%s", organizationId, bannerId, malformedId));
+    }
+
+    assertNotFound(String.format("/organizations/%s/banners/%s/images/%s", organizationId, incorrectBannerId, imageId));
+    assertEquals(0, countApiList(String.format("/organizations/%s/banners/%s/images", organizationId, incorrectBannerId)));
+  }
+
+  @Test
+  public void testBannerImageData() {
+    String organizationId = getOrganizationId(0);
+    String bannerId = getBannerId(organizationId, 0);
+    String imageId = getBannerImageId(organizationId, bannerId, 0);
+
+    given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get("/organizations/{ORGANIZATIONID}/banners/{EVENTID}/images/{IMAGEID}/data", organizationId, bannerId, imageId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .header("Content-Length", "21621")
+      .header("Content-Type", IMAGE_JPEG);
+  }
+  
+  @Test
+  public void testBannerImageDataScaled() {
+    String organizationId = getOrganizationId(0);
+    String bannerId = getBannerId(organizationId, 0);
+    String imageId = getBannerImageId(organizationId, bannerId, 0);
+
+    given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get("/organizations/{ORGANIZATIONID}/banners/{EVENTID}/images/{IMAGEID}/data?size=100", organizationId, bannerId, imageId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .header("Content-Length", "13701")
+      .header("Content-Type", IMAGE_PNG);
   }
 
   private void createPtvSettings() {

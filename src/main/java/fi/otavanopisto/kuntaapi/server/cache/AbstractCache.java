@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.util.List;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -12,6 +13,9 @@ import javax.annotation.Resource;
 import javax.inject.Inject;
 
 import org.infinispan.Cache;
+import org.infinispan.configuration.cache.Configuration;
+import org.infinispan.configuration.cache.PersistenceConfiguration;
+import org.infinispan.configuration.cache.StoreConfiguration;
 import org.infinispan.manager.CacheContainer;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -36,10 +40,46 @@ public abstract class AbstractCache <K, V> implements Serializable {
   @Resource (lookup = "java:jboss/infinispan/container/kunta-api")
   private CacheContainer cacheContainer;
   
+  /**
+   * Returns cache's name
+   * 
+   * @return cache's name
+   */
   public abstract String getCacheName();
+  
+  /**
+   * Returns whether cache is expected to be stored
+   * 
+   * @return whether cache is expected to be stored
+   */
+  public abstract boolean isStored();
 
   public Cache<K, String> getCache() {
     return cacheContainer.getCache(getCacheName());
+  }
+  
+  public boolean isHealthy() {
+    Configuration configuration = getCache().getCacheConfiguration();
+    if (configuration == null) {
+      logger.log(Level.WARNING, "Cache %s is not configured");
+      return false;
+    }
+    
+    if (isStored()) {
+      PersistenceConfiguration persistence = configuration.persistence();
+      if (persistence == null) {
+        logger.log(Level.WARNING, "Cache %s has no persistence configured");
+        return false;
+      }
+      
+      List<StoreConfiguration> stores = persistence.stores();
+      if (stores.isEmpty()) {
+        logger.log(Level.WARNING, () -> String.format("Cache %s has no stored configured", getCacheName()));
+        return false;
+      }
+    }
+    
+    return true;
   }
   
   /**

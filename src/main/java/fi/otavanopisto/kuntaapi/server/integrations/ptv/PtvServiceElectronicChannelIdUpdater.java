@@ -19,6 +19,7 @@ import javax.inject.Inject;
 
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
+import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
 import fi.otavanopisto.kuntaapi.server.discover.ServiceIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.id.ElectronicServiceChannelId;
@@ -47,6 +48,9 @@ public class PtvServiceElectronicChannelIdUpdater extends EntityUpdater {
   
   @Inject
   private IdentifierController identifierController;
+
+  @Inject
+  private IdentifierRelationController identifierRelationController;
 
   @Inject
   private ModificationHashCache modificationHashCache;
@@ -123,10 +127,12 @@ public class PtvServiceElectronicChannelIdUpdater extends EntityUpdater {
         ElectronicServiceChannelId channelId = new ElectronicServiceChannelId(PtvConsts.IDENTIFIFER_NAME, electronicChannel.getId());
         Identifier identifier = identifierController.findIdentifierById(channelId);
         if (identifier == null) {
-          identifier = identifierController.createIdentifier(serviceId, orderIndex, channelId);
+          identifier = identifierController.createIdentifier(orderIndex, channelId);
         } else {
-          identifier = identifierController.updateIdentifier(identifier, serviceId, orderIndex);
+          identifier = identifierController.updateIdentifier(identifier, orderIndex);
         }
+        
+        identifierRelationController.setParentId(identifier, serviceId);
         
         modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(electronicChannel));
       }

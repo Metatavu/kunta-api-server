@@ -22,7 +22,8 @@
        "protected":false
     },
     "author":1,
-    "featured_media":0,
+    "featured_media":3001,
+    "banner-image": 3002,
     "parent":0,
     "menu_order":0,
     "comment_status":"closed",

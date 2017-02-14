@@ -8,25 +8,24 @@ import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
-import org.apache.commons.codec.binary.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import fi.metatavu.kuntaapi.server.rest.model.Attachment;
 import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
 import fi.metatavu.kuntaapi.server.rest.model.Page;
-import fi.metatavu.management.client.model.Attachment.MediaTypeEnum;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
+import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.debug.Timed;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
-import fi.otavanopisto.kuntaapi.server.id.IdPair;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.PageProvider;
+import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementAttachmentCache;
 import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementPageCache;
 import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementPageContentCache;
-import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementPageImageCache;
 
 /**
  * Page provider for management service
@@ -44,13 +43,16 @@ public class ManagementPageProvider extends AbstractManagementProvider implement
   private IdentifierController identifierController;
   
   @Inject
+  private IdentifierRelationController identifierRelationController;
+  
+  @Inject
   private ManagementPageCache pageCache;
   
   @Inject
   private ManagementPageContentCache pageContentCache;
   
   @Inject
-  private ManagementPageImageCache pageImageCache;
+  private ManagementAttachmentCache managementAttachmentCache;
   
   @Inject
   private ManagementImageLoader managementImageLoader;
@@ -82,22 +84,26 @@ public class ManagementPageProvider extends AbstractManagementProvider implement
 
   @Override
   public List<Attachment> listOrganizationPageImages(OrganizationId organizationId, PageId pageId, String type) {
-    List<AttachmentId> attachmentIds = identifierController.listAttachmentIdsBySourceAndParentId(ManagementConsts.IDENTIFIER_NAME, pageId);
+    List<AttachmentId> attachmentIds = identifierRelationController.listAttachmentIdsBySourceAndParentId(ManagementConsts.IDENTIFIER_NAME, pageId);
     List<Attachment> result = new ArrayList<>(attachmentIds.size());
     
     for (AttachmentId attachmentId : attachmentIds) {
-      Attachment attachment = pageImageCache.get(new IdPair<PageId, AttachmentId>(pageId, attachmentId));
+      Attachment attachment = managementAttachmentCache.get(attachmentId);
       if (attachment != null && (type == null || StringUtils.equals(attachment.getType(), type))) {
         result.add(attachment);
       }
     }
-    
+
     return result;
   }
 
   @Override
   public Attachment findPageImage(OrganizationId organizationId, PageId pageId, AttachmentId attachmentId) {
-    return pageImageCache.get(new IdPair<PageId, AttachmentId>(pageId, attachmentId));
+    if (!identifierRelationController.isChildOf(pageId, attachmentId)) {
+      return null;
+    }
+    
+    return managementAttachmentCache.get(attachmentId);
   }
 
   @Override
@@ -110,18 +116,13 @@ public class ManagementPageProvider extends AbstractManagementProvider implement
     }
     
     fi.metatavu.management.client.model.Attachment featuredMedia = findMedia(organizationId, mediaId);
-    if (featuredMedia.getMediaType() == MediaTypeEnum.IMAGE) {
-      AttachmentData imageData = managementImageLoader.getImageData(featuredMedia.getSourceUrl());
-      
-      if (size != null) {
-        return scaleImage(imageData, size);
-      } else {
-        return imageData;
-      }
-      
+   
+    AttachmentData imageData = managementImageLoader.getImageData(featuredMedia.getSourceUrl());
+    if (size != null) {
+      return scaleImage(imageData, size);
+    } else {
+      return imageData;
     }
-    
-    return null;
   }
 
   private List<Page> listPages(OrganizationId organizationId, PageId parentId, boolean onlyRootPages) {
@@ -137,9 +138,9 @@ public class ManagementPageProvider extends AbstractManagementProvider implement
     List<PageId> pageIds;
     
     if (onlyRootPages) {
-      pageIds = identifierController.listPageIdsBySourceAndParentId(ManagementConsts.IDENTIFIER_NAME, organizationId);
+      pageIds = identifierRelationController.listPageIdsBySourceAndParentId(ManagementConsts.IDENTIFIER_NAME, organizationId);
     } else if (kuntaApiParentId != null) {
-      pageIds = identifierController.listPageIdsBySourceAndParentId(ManagementConsts.IDENTIFIER_NAME, kuntaApiParentId);
+      pageIds = identifierRelationController.listPageIdsBySourceAndParentId(ManagementConsts.IDENTIFIER_NAME, kuntaApiParentId);
     } else {
       pageIds = identifierController.listOrganizationPageIdsBySource(organizationId, ManagementConsts.IDENTIFIER_NAME);
     }

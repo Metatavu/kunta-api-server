@@ -32,6 +32,7 @@ import fi.metatavu.kuntaapi.server.rest.model.Contact;
 import fi.otavanopisto.kuntaapi.server.cache.ContactCache;
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
+import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
 import fi.otavanopisto.kuntaapi.server.discover.OrganizationIdRemoveRequest;
 import fi.otavanopisto.kuntaapi.server.discover.OrganizationIdUpdateRequest;
@@ -73,7 +74,10 @@ public class VCardEntityUpdater extends EntityUpdater {
   
   @Inject
   private IdentifierController identifierController;
-  
+
+  @Inject
+  private IdentifierRelationController identifierRelationController;
+
   @Inject
   private ModificationHashCache modificationHashCache;
   
@@ -212,10 +216,12 @@ public class VCardEntityUpdater extends EntityUpdater {
     ContactId contactId = new ContactId(organizationId, VCardConsts.IDENTIFIER_NAME, vCardUid);
     Identifier identifier = identifierController.findIdentifierById(contactId);
     if (identifier == null) {
-      identifier = identifierController.createIdentifier(organizationId, orderIndex, contactId);
+      identifier = identifierController.createIdentifier(orderIndex, contactId);
     } else {
-      identifier = identifierController.updateIdentifier(identifier, organizationId, orderIndex);
+      identifier = identifierController.updateIdentifier(identifier, orderIndex);
     }
+
+    identifierRelationController.setParentId(identifier, organizationId);
     
     ContactId kuntaApiContactId = new ContactId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
     Contact contact = vCardTranslator.translateVCard(kuntaApiContactId, vCard);
