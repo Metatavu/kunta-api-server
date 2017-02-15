@@ -31,6 +31,7 @@ import fi.otavanopisto.kuntaapi.server.controllers.MenuController;
 import fi.otavanopisto.kuntaapi.server.controllers.NewsController;
 import fi.otavanopisto.kuntaapi.server.controllers.OrganizationController;
 import fi.otavanopisto.kuntaapi.server.controllers.PageController;
+import fi.otavanopisto.kuntaapi.server.controllers.PublicTransportController;
 import fi.otavanopisto.kuntaapi.server.controllers.TileController;
 import fi.otavanopisto.kuntaapi.server.id.AnnouncementId;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
@@ -46,6 +47,7 @@ import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationServiceId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
+import fi.otavanopisto.kuntaapi.server.id.PublicTransportAgencyId;
 import fi.otavanopisto.kuntaapi.server.id.TileId;
 import fi.otavanopisto.kuntaapi.server.integrations.AnnouncementProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.AnnouncementProvider.AnnouncementOrder;
@@ -58,6 +60,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.JobProvider.JobOrderDirectio
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.OrganizationServiceProvider;
 import fi.metatavu.kuntaapi.server.rest.OrganizationsApi;
+import fi.metatavu.kuntaapi.server.rest.model.Agency;
 import fi.metatavu.kuntaapi.server.rest.model.Announcement;
 import fi.metatavu.kuntaapi.server.rest.model.Attachment;
 import fi.metatavu.kuntaapi.server.rest.model.Banner;
@@ -136,6 +139,9 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   
   @Inject
   private HttpCacheController httpCacheController;
+  
+  @Inject
+  private PublicTransportController publicTransportController;
   
   @Inject
   private Instance<OrganizationServiceProvider> organizationServiceProviders;
@@ -1251,9 +1257,28 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   /* Public transport */
   
   @Override
-  public Response findOrganizationPublicTransportAgency(String organizationId, String agencyId, Request request) {
-    // TODO Auto-generated method stub
-    return null;
+  public Response findOrganizationPublicTransportAgency(String organizationIdParam, String agencyIdParam, Request request) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    PublicTransportAgencyId agencyId = toPublicTransportAgencyId(organizationId, agencyIdParam);
+    if (agencyId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+
+    Response notModified = httpCacheController.getNotModified(request, agencyId);
+    if (notModified != null) {
+      return notModified;
+    }
+    
+    Agency agency = publicTransportController.findAgency(organizationId, agencyId);
+    if (agency != null) {
+      return httpCacheController.sendModified(agency, agency.getId());
+    }
+    
+    return createNotFound(NOT_FOUND);
   }
 
   @Override
@@ -1276,9 +1301,20 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   }
 
   @Override
-  public Response listOrganizationPublicTransportAgencies(String organizationId, Request request) {
-    // TODO Auto-generated method stub
-    return null;
+  public Response listOrganizationPublicTransportAgencies(String organizationIdParam, Request request) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    List<Agency> result = publicTransportController.listAgencies(organizationId, null, null);
+    List<String> ids = httpCacheController.getEntityIds(result);
+    Response notModified = httpCacheController.getNotModified(request, ids);
+    if (notModified != null) {
+      return notModified;
+    }
+
+    return httpCacheController.sendModified(result, ids);
   }
 
   @Override
@@ -1431,6 +1467,14 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   private FragmentId toFragmentId(OrganizationId organizationId, String id) {
     if (StringUtils.isNotBlank(id)) {
       return new FragmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, id);
+    }
+    
+    return null;
+  }
+  
+  private PublicTransportAgencyId toPublicTransportAgencyId(OrganizationId organizationId, String id) {
+    if (StringUtils.isNotBlank(id)) {
+      return new PublicTransportAgencyId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, id);
     }
     
     return null;
