@@ -29,6 +29,7 @@ import fi.metatavu.management.client.model.Page;
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdMapController;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
+import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
 import fi.otavanopisto.kuntaapi.server.discover.IdUpdateRequestQueue;
 import fi.otavanopisto.kuntaapi.server.discover.PageIdRemoveRequest;
@@ -36,7 +37,6 @@ import fi.otavanopisto.kuntaapi.server.discover.PageIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.BaseId;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
-import fi.otavanopisto.kuntaapi.server.id.IdPair;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.index.IndexRemovePage;
@@ -45,9 +45,9 @@ import fi.otavanopisto.kuntaapi.server.index.IndexRequest;
 import fi.otavanopisto.kuntaapi.server.index.IndexablePage;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
+import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementAttachmentCache;
 import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementPageCache;
 import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementPageContentCache;
-import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementPageImageCache;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 
@@ -79,7 +79,10 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
 
   @Inject
   private IdentifierController identifierController;
-  
+
+  @Inject
+  private IdentifierRelationController identifierRelationController;
+
   @Inject
   private IdMapController idMapController;
 
@@ -90,7 +93,7 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
   private ManagementPageContentCache pageContentCache;
   
   @Inject
-  private ManagementPageImageCache pageImageCache;
+  private ManagementAttachmentCache managementAttachmentCache;
   
   @Inject
   private ModificationHashCache modificationHashCache;
@@ -208,13 +211,16 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
     
     Identifier identifier = identifierController.findIdentifierById(managementPageId);
     if (identifier == null) {
-      identifier = identifierController.createIdentifier(identifierParentId, orderIndex, managementPageId);
+      identifier = identifierController.createIdentifier(orderIndex, managementPageId);
     } else {
-      identifier = identifierController.updateIdentifier(identifier, identifierParentId, orderIndex);
+      identifier = identifierController.updateIdentifier(identifier, orderIndex);
     }
+    
+    identifierRelationController.setParentId(identifier, identifierParentId);
     
     PageId pageParentId = identifierParentId instanceof PageId ? (PageId) identifierParentId : null;
     PageId kuntaApiPageId = new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
+    
     fi.metatavu.kuntaapi.server.rest.model.Page page = managementTranslator.translatePage(kuntaApiPageId, pageParentId, managementPage);
     String contents = managementPage.getContent().getRendered();
     String title = managementPage.getTitle().getRendered();
@@ -225,39 +231,39 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
     pageContentCache.put(kuntaApiPageId, pageContents);
     indexRequest.fire(new IndexRequest(createIndexablePage(organizationId, kuntaApiPageId, ManagementConsts.DEFAULT_LOCALE, contents, title)));
 
-    updateAttachments(organizationId, api, managementPage, kuntaApiPageId);
+    updateAttachments(organizationId, api, managementPage, identifier);
   }
 
-  private void updateAttachments(OrganizationId organizationId, DefaultApi api, Page managementPage,
-      PageId kuntaApiPageId) {
+  private void updateAttachments(OrganizationId organizationId, DefaultApi api, Page managementPage, Identifier pageIdentifier) {
     if (managementPage.getFeaturedMedia() != null && managementPage.getFeaturedMedia() > 0) {
-      updateAttachment(organizationId, kuntaApiPageId, api, managementPage.getFeaturedMedia().longValue(), ManagementConsts.ATTACHMENT_TYPE_PAGE_FEATURED); 
+      updateAttachment(organizationId, pageIdentifier, api, managementPage.getFeaturedMedia().longValue(), ManagementConsts.ATTACHMENT_TYPE_PAGE_FEATURED, 0l); 
     }
     
     if (managementPage.getBannerImage() != null && managementPage.getBannerImage() > 0) {
-      updateAttachment(organizationId, kuntaApiPageId, api, managementPage.getBannerImage(), ManagementConsts.ATTACHMENT_TYPE_PAGE_BANNER); 
+      updateAttachment(organizationId, pageIdentifier, api, managementPage.getBannerImage(), ManagementConsts.ATTACHMENT_TYPE_PAGE_BANNER, 1l); 
     }
   }
   
-  private void updateAttachment(OrganizationId organizationId, PageId pageId, DefaultApi api, Long managementMediaId, String type) {
+  private void updateAttachment(OrganizationId organizationId, Identifier pageIdentifier, DefaultApi api, Long managementMediaId, String type, Long orderIndex) {
     ApiResponse<fi.metatavu.management.client.model.Attachment> response = api.wpV2MediaIdGet(String.valueOf(managementMediaId), null, null);
     if (!response.isOk()) {
       logger.severe(String.format("Finding media failed on [%d] %s", response.getStatus(), response.getMessage()));
     } else {
       fi.metatavu.management.client.model.Attachment managementAttachment = response.getResponse();
       AttachmentId managementAttachmentId = new AttachmentId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementAttachment.getId()));
-      Long orderIndex = 0l;
       
       Identifier identifier = identifierController.findIdentifierById(managementAttachmentId);
       if (identifier == null) {
-        identifier = identifierController.createIdentifier(pageId, orderIndex, managementAttachmentId);
+        identifier = identifierController.createIdentifier(orderIndex, managementAttachmentId);
       } else {
-        identifier = identifierController.updateIdentifier(identifier, pageId, orderIndex);
+        identifier = identifierController.updateIdentifier(identifier, orderIndex);
       }
+      
+      identifierRelationController.addChild(pageIdentifier, identifier);
       
       AttachmentId kuntaApiAttachmentId = new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
       Attachment kuntaApiAttachment = managementTranslator.translateAttachment(kuntaApiAttachmentId, managementAttachment, type);
-      pageImageCache.put(new IdPair<PageId, AttachmentId>(pageId, kuntaApiAttachmentId), kuntaApiAttachment);
+      managementAttachmentCache.put(kuntaApiAttachmentId, kuntaApiAttachment);
       
       AttachmentData imageData = managementImageLoader.getImageData(managementAttachment.getSourceUrl());
       if (imageData != null) {
@@ -283,18 +289,6 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
       indexRemove.setPageId(kuntaApiPageId.getId());
       indexRemove.setLanguage(ManagementConsts.DEFAULT_LOCALE);
       indexRemoveRequest.fire(new IndexRemoveRequest(indexRemove));
-      
-      List<IdPair<PageId,AttachmentId>> pageImageIds = pageImageCache.getChildIds(kuntaApiPageId);
-      for (IdPair<PageId,AttachmentId> pageImageId : pageImageIds) {
-        AttachmentId attachmentId = pageImageId.getChild();
-        pageImageCache.clear(pageImageId);
-        modificationHashCache.clear(attachmentId.getId());
-        
-        Identifier imageIdentifier = identifierController.findIdentifierById(attachmentId);
-        if (imageIdentifier != null) {
-          identifierController.deleteIdentifier(imageIdentifier);
-        }
-      }
     }
   }
 

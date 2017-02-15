@@ -22,6 +22,11 @@ public abstract class AbstractEntityCache<K extends BaseId, V> extends AbstractC
   private IdController idController;
   
   @Override
+  public boolean isStored() {
+    return true;
+  }
+  
+  @Override
   public void put(K id, V response) {
     super.put(getCacheId(id), response);
   }

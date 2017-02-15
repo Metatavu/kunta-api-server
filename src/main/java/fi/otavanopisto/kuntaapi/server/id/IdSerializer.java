@@ -1,31 +1,22 @@
-package fi.otavanopisto.kuntaapi.server.infinispan;
+package fi.otavanopisto.kuntaapi.server.id;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.apache.commons.lang3.StringUtils;
-import org.infinispan.persistence.keymappers.TwoWayKey2StringMapper;
 
-import fi.otavanopisto.kuntaapi.server.id.BaseId;
-import fi.otavanopisto.kuntaapi.server.id.OrganizationBaseId;
-import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 
-public abstract class AbstractIdKey2StringMapper implements TwoWayKey2StringMapper {
-
-  private static final String ID_PACKAGE = BaseId.class.getPackage().getName();
-
-  private static final Logger logger = Logger.getLogger(AbstractIdKey2StringMapper.class.getName());
-
-  protected String stringifyOrganizationBaseId(OrganizationBaseId id) {
-    return String.format("%s@%s", stringifyBaseId(id), stringifyBaseId(id.getOrganizationId()));
-  }
+public class IdSerializer {
   
-  protected String stringifyBaseId(BaseId id) {
-    return String.format("%s:%s", id.getClass().getSimpleName(), id.getId());
+  private static final Logger logger = Logger.getLogger(IdSerializer.class.getName());
+  
+  private static final String ID_PACKAGE = BaseId.class.getPackage().getName();
+  
+  private IdSerializer() {
   }
 
-  protected String stringifyId(Object key) {
+  public static String stringifyId(Object key) {
     if (key instanceof OrganizationBaseId) {
       return stringifyOrganizationBaseId((OrganizationBaseId) key);
     }
@@ -33,14 +24,14 @@ public abstract class AbstractIdKey2StringMapper implements TwoWayKey2StringMapp
     return stringifyBaseId((BaseId) key);
   }
   
-  protected BaseId parseId(String string) {
+  public static BaseId parseId(String string) {
     String[] compositeParts = StringUtils.split(string, '@');
     if (compositeParts.length == 1) {
       String[] idParts = StringUtils.split(compositeParts[0], ':');
       if (idParts.length == 2) {
         return createId(idParts[0], idParts[1]);
       } else {
-        logger.severe(String.format("Could not parse id %s expected 2 parts", string));
+        logger.log(Level.SEVERE, () -> String.format("Could not parse id %s expected 2 parts", string));
         return null;
       }
     } else if (compositeParts.length == 2) {
@@ -48,12 +39,20 @@ public abstract class AbstractIdKey2StringMapper implements TwoWayKey2StringMapp
       id.setOrganizationId((OrganizationId) parseId(compositeParts[1]));
       return id;
     } else {
-      logger.severe(String.format("Could not parse id %s expected 1 or 2 parts", string));
+      logger.log(Level.SEVERE, () -> String.format("Could not parse id %s expected 1 or 2 parts", string));
       return null;
     }
   }
+
+  private static String stringifyOrganizationBaseId(OrganizationBaseId id) {
+    return String.format("%s@%s", stringifyBaseId(id), stringifyBaseId(id.getOrganizationId()));
+  }
   
-  protected BaseId createId(String className, String id) {
+  private static String stringifyBaseId(BaseId id) {
+    return String.format("%s:%s", id.getClass().getSimpleName(), id.getId());
+  }
+  
+  private static BaseId createId(String className, String id) {
     try {
       @SuppressWarnings("unchecked")
       Class<? extends BaseId> idClass = (Class<? extends BaseId>) Class.forName(String.format("%s.%s", ID_PACKAGE, className));

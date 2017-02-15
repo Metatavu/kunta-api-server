@@ -1,6 +1,5 @@
 package fi.otavanopisto.kuntaapi.server.integrations.management;
 
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
@@ -27,18 +26,18 @@ import fi.metatavu.management.client.model.Attachment;
 import fi.metatavu.management.client.model.Post;
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.cache.NewsArticleCache;
-import fi.otavanopisto.kuntaapi.server.cache.NewsArticleImageCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
+import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
 import fi.otavanopisto.kuntaapi.server.discover.IdUpdateRequestQueue;
 import fi.otavanopisto.kuntaapi.server.discover.NewsArticleIdRemoveRequest;
 import fi.otavanopisto.kuntaapi.server.discover.NewsArticleIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
-import fi.otavanopisto.kuntaapi.server.id.IdPair;
 import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
+import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementAttachmentCache;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 
@@ -69,10 +68,13 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
   private IdentifierController identifierController;
   
   @Inject
+  private IdentifierRelationController identifierRelationController;
+  
+  @Inject
   private NewsArticleCache newsArticleCache;
   
   @Inject
-  private NewsArticleImageCache newsArticleImageCache;
+  private ManagementAttachmentCache managementAttachmentCache;
   
   @Inject
   private ModificationHashCache modificationHashCache;
@@ -169,10 +171,12 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
 
     Identifier identifier = identifierController.findIdentifierById(newsArticleId);
     if (identifier == null) {
-      identifier = identifierController.createIdentifier(organizationId, orderIndex, newsArticleId);
+      identifier = identifierController.createIdentifier(orderIndex, newsArticleId);
     } else {
-      identifier = identifierController.updateIdentifier(identifier, organizationId, orderIndex);
+      identifier = identifierController.updateIdentifier(identifier, orderIndex);
     }
+    
+    identifierRelationController.setParentId(identifier, organizationId);
     
     NewsArticleId kuntaApiNewsArticleId = new NewsArticleId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
     NewsArticle newsArticle = managementTranslator.translateNewsArticle(kuntaApiNewsArticleId, managementPost);
@@ -185,11 +189,11 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(newsArticle));
     
     if (managementPost.getFeaturedMedia() != null && managementPost.getFeaturedMedia() > 0) {
-      updateFeaturedMedia(organizationId, kuntaApiNewsArticleId, api, managementPost.getFeaturedMedia()); 
+      updateFeaturedMedia(organizationId, identifier, api, managementPost.getFeaturedMedia()); 
     }
   }
   
-  private void updateFeaturedMedia(OrganizationId organizationId, NewsArticleId newsArticleId, DefaultApi api, Integer featuredMedia) {
+  private void updateFeaturedMedia(OrganizationId organizationId, Identifier newsArticleIdentifier, DefaultApi api, Integer featuredMedia) {
     ApiResponse<fi.metatavu.management.client.model.Attachment> response = api.wpV2MediaIdGet(String.valueOf(featuredMedia), null, null);
     if (!response.isOk()) {
       logger.severe(String.format("Finding media failed on [%d] %s", response.getStatus(), response.getMessage()));
@@ -200,11 +204,13 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
       
       Identifier identifier = identifierController.findIdentifierById(managementAttachmentId);
       if (identifier == null) {
-        identifier = identifierController.createIdentifier(newsArticleId, orderIndex, managementAttachmentId);
+        identifier = identifierController.createIdentifier(orderIndex, managementAttachmentId);
       } else {
-        identifier = identifierController.updateIdentifier(identifier, newsArticleId, orderIndex);
+        identifier = identifierController.updateIdentifier(identifier, orderIndex);
       }
       
+      identifierRelationController.addChild(newsArticleIdentifier, identifier);
+
       AttachmentId kuntaApiAttachmentId = new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
       fi.metatavu.kuntaapi.server.rest.model.Attachment attachment = managementTranslator.translateAttachment(kuntaApiAttachmentId, managementAttachment, ManagementConsts.ATTACHMENT_TYPE_NEWS);
       if (attachment == null) {
@@ -212,7 +218,7 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
         return;
       }
       
-      newsArticleImageCache.put(new IdPair<>(newsArticleId, kuntaApiAttachmentId), attachment);
+      managementAttachmentCache.put(kuntaApiAttachmentId, attachment);
       
       AttachmentData imageData = managementImageLoader.getImageData(managementAttachment.getSourceUrl());
       if (imageData != null) {
@@ -229,22 +235,9 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
     if (newsArticleIdentifier != null) {
       NewsArticleId kuntaApiNewsArticleId = new NewsArticleId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, newsArticleIdentifier.getKuntaApiId());
       queue.remove(managementNewsArticleId);
-
       modificationHashCache.clear(newsArticleIdentifier.getKuntaApiId());
       newsArticleCache.clear(kuntaApiNewsArticleId);
       identifierController.deleteIdentifier(newsArticleIdentifier);
-      
-      List<IdPair<NewsArticleId,AttachmentId>> newsArticleImageIds = newsArticleImageCache.getChildIds(kuntaApiNewsArticleId);
-      for (IdPair<NewsArticleId,AttachmentId> newsArticleImageId : newsArticleImageIds) {
-        AttachmentId attachmentId = newsArticleImageId.getChild();
-        newsArticleImageCache.clear(newsArticleImageId);
-        modificationHashCache.clear(attachmentId.getId());
-        
-        Identifier imageIdentifier = identifierController.findIdentifierById(attachmentId);
-        if (imageIdentifier != null) {
-          identifierController.deleteIdentifier(imageIdentifier);
-        }
-      }
     }
   }
 

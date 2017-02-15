@@ -8,16 +8,14 @@ import javax.inject.Inject;
 
 import fi.metatavu.kuntaapi.server.rest.model.Attachment;
 import fi.metatavu.kuntaapi.server.rest.model.Banner;
-import fi.metatavu.management.client.model.Attachment.MediaTypeEnum;
 import fi.otavanopisto.kuntaapi.server.cache.BannerCache;
-import fi.otavanopisto.kuntaapi.server.cache.BannerImageCache;
-import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
+import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.BannerId;
-import fi.otavanopisto.kuntaapi.server.id.IdPair;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.BannerProvider;
+import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementAttachmentCache;
 
 /**
  * Banner provider for management wordpress
@@ -28,20 +26,20 @@ import fi.otavanopisto.kuntaapi.server.integrations.BannerProvider;
 public class ManagementBannerProvider extends AbstractManagementProvider implements BannerProvider {
   
   @Inject
-  private IdentifierController identifierController;
+  private IdentifierRelationController identifierRelationController;
   
   @Inject
   private BannerCache bannerCache;
   
   @Inject
-  private BannerImageCache bannerImageCache;
+  private ManagementAttachmentCache managementAttachmentCache;
   
   @Inject
   private ManagementImageLoader managementImageLoader;
   
   @Override
   public List<Banner> listOrganizationBanners(OrganizationId organizationId) {
-    List<BannerId> bannerIds = identifierController.listBannerIdsParentId(organizationId);
+    List<BannerId> bannerIds = identifierRelationController.listBannerIdsBySourceAndParentId(ManagementConsts.IDENTIFIER_NAME, organizationId);
     List<Banner> banners = new ArrayList<>(bannerIds.size());
     
     for (BannerId bannerId : bannerIds) {
@@ -56,16 +54,20 @@ public class ManagementBannerProvider extends AbstractManagementProvider impleme
 
   @Override
   public Banner findOrganizationBanner(OrganizationId organizationId, BannerId bannerId) {
+    if (!identifierRelationController.isChildOf(organizationId, bannerId)) {
+      return null;
+    }
+    
     return bannerCache.get(bannerId);
   }
 
   @Override
   public List<Attachment> listOrganizationBannerImages(OrganizationId organizationId, BannerId bannerId) {
-    List<IdPair<BannerId,AttachmentId>> childIds = bannerImageCache.getChildIds(bannerId);
-    List<Attachment> result = new ArrayList<>(childIds.size());
+    List<AttachmentId> attachmentIds = identifierRelationController.listAttachmentIdsBySourceAndParentId(ManagementConsts.IDENTIFIER_NAME, bannerId);
+    List<Attachment> result = new ArrayList<>(attachmentIds.size());
     
-    for (IdPair<BannerId, AttachmentId> childId : childIds) {
-      Attachment attachment = bannerImageCache.get(childId);
+    for (AttachmentId attachmentId : attachmentIds) {
+      Attachment attachment = managementAttachmentCache.get(attachmentId);
       if (attachment != null) {
         result.add(attachment);
       }
@@ -76,30 +78,35 @@ public class ManagementBannerProvider extends AbstractManagementProvider impleme
 
   @Override
   public Attachment findBannerImage(OrganizationId organizationId, BannerId bannerId, AttachmentId attachmentId) {
-    return bannerImageCache.get(new IdPair<BannerId, AttachmentId>(bannerId, attachmentId));
+    if (!identifierRelationController.isChildOf(bannerId, attachmentId)) {
+      return null;
+    }
+    
+    return managementAttachmentCache.get(attachmentId);
   }
 
   @Override
-  public AttachmentData getBannerImageData(OrganizationId organizationId, BannerId bannerId, AttachmentId attachmentId,
-      Integer size) {
-    
+  public AttachmentData getBannerImageData(OrganizationId organizationId, BannerId bannerId, AttachmentId attachmentId, Integer size) {
+    if (!identifierRelationController.isChildOf(bannerId, attachmentId)) {
+      return null;
+    }
+
     Integer mediaId = getMediaId(attachmentId);
     if (mediaId == null) {
       return null;
     }
     
     fi.metatavu.management.client.model.Attachment featuredMedia = findMedia(organizationId, mediaId);
-    if (featuredMedia.getMediaType() == MediaTypeEnum.IMAGE) {
-      AttachmentData imageData = managementImageLoader.getImageData(featuredMedia.getSourceUrl());
-      if (size != null) {
-        return scaleImage(imageData, size);
-      } else {
-        return imageData;
-      }
-      
+    if (featuredMedia == null) {
+      return null;
     }
-    
-    return null;
+
+    AttachmentData imageData = managementImageLoader.getImageData(featuredMedia.getSourceUrl());
+    if (size != null) {
+      return scaleImage(imageData, size);
+    } else {
+      return imageData;
+    }
   }
 
 }

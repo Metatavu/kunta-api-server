@@ -10,7 +10,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import fi.metatavu.kuntaapi.server.rest.model.Fragment;
 import fi.otavanopisto.kuntaapi.server.cache.FragmentCache;
-import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
+import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.id.FragmentId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.FragmentProvider;
@@ -28,11 +28,11 @@ public class ManagementFragmentProvider extends AbstractManagementProvider imple
   private FragmentCache fragmentCache;
   
   @Inject
-  private IdentifierController identifierController;
+  private IdentifierRelationController identifierRelationController;
   
   @Override
   public List<Fragment> listOrganizationFragments(OrganizationId organizationId, String slug) {
-    List<FragmentId> fragmentIds = identifierController.listFragmentIdsParentId(organizationId);
+    List<FragmentId> fragmentIds = identifierRelationController.listFragmentIdsBySourceAndParentId(ManagementConsts.IDENTIFIER_NAME, organizationId);
     List<Fragment> fragments = new ArrayList<>(fragmentIds.size());
     
     for (FragmentId fragmentId : fragmentIds) {

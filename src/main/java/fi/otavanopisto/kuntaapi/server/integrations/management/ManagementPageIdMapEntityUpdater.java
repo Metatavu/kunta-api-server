@@ -33,6 +33,7 @@ import fi.otavanopisto.kuntaapi.server.id.BaseId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
+import fi.otavanopisto.kuntaapi.server.integrations.IdMapProvider.OrganizationPageMap;
 import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementPageIdMapCache;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
@@ -127,19 +128,19 @@ public class ManagementPageIdMapEntityUpdater extends EntityUpdater {
   }
 
   private void updatePageIdMap(OrganizationId organizationId) {
-    Map<PageId, BaseId> pageIdMap = loadPageIdMap(organizationId);
+    OrganizationPageMap pageIdMap = loadPageIdMap(organizationId);
     if (pageIdMap != null) {
       managementPageIdMapCache.put(organizationId, pageIdMap);
     }
   }
   
-  private Map<PageId, BaseId> loadPageIdMap(OrganizationId organizationId) {
+  private OrganizationPageMap loadPageIdMap(OrganizationId organizationId) {
     Map<String, String> pathMap = loadPagePathMap(organizationId);
     if (pathMap == null) {
       return null;
     }
     
-    Map<PageId, BaseId> result  = new HashMap<>(pathMap.size());
+    OrganizationPageMap result = new OrganizationPageMap();
     
     for (Map.Entry<String, String> pathEntry : pathMap.entrySet()) {
       String pagePath = pathEntry.getKey();
@@ -165,7 +166,7 @@ public class ManagementPageIdMapEntityUpdater extends EntityUpdater {
     return result;
   }
 
-  private void applyMappings(Map<PageId, BaseId> result, boolean wildcard, BaseId parentId, PageId pageId) {
+  private void applyMappings(Map<BaseId, BaseId> result, boolean wildcard, BaseId parentId, PageId pageId) {
     if (wildcard) {
       for (PageId childPageId : listChildPageIds((PageId) pageId)) {
         result.put(childPageId, parentId);
@@ -204,6 +205,9 @@ public class ManagementPageIdMapEntityUpdater extends EntityUpdater {
     ApiResponse<List<Pagemappings>> response = api.kuntaApiPagemappingsGet();
     if (response.isOk()) {
       List<Pagemappings> mappings = response.getResponse();
+      if (mappings == null) {
+        return null;
+      }
       
       Map<String, String> result = new HashMap<>(mappings.size());
       for (Pagemappings mappping : mappings) {

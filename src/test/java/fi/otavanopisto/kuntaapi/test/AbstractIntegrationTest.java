@@ -158,7 +158,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
         .getString(String.format("id[%d]", index));
   }
   
-  protected String getOrganizationBannerId(String organizationId, int index) {
+  protected String getBannerId(String organizationId, int index) {
     return given() 
         .baseUri(getApiBasePath())
         .contentType(ContentType.JSON)
@@ -168,7 +168,37 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
         .getString(String.format("id[%d]", index));
   }
   
-  protected String getOrganizationPageId(String organizationId, int index) {
+  protected String getBannerImageId(String organizatinoId, String bannerId, int index) {
+    return given() 
+        .baseUri(getApiBasePath())
+        .contentType(ContentType.JSON)
+        .get("/organizations/{organizationId}/banners/{bannerId}/images", organizatinoId, bannerId)
+        .body()
+        .jsonPath()
+        .getString(String.format("id[%d]", index));
+  }
+  
+  protected String getTileId(String organizationId, int index) {
+    return given() 
+        .baseUri(getApiBasePath())
+        .contentType(ContentType.JSON)
+        .get(String.format("/organizations/%s/tiles", organizationId))
+        .body()
+        .jsonPath()
+        .getString(String.format("id[%d]", index));
+  }
+  
+  protected String getTileImageId(String organizatinoId, String tileId, int index) {
+    return given() 
+        .baseUri(getApiBasePath())
+        .contentType(ContentType.JSON)
+        .get("/organizations/{organizationId}/tiles/{tileId}/images", organizatinoId, tileId)
+        .body()
+        .jsonPath()
+        .getString(String.format("id[%d]", index));
+  }
+  
+  protected String getPageId(String organizationId, int index) {
     return given() 
         .baseUri(getApiBasePath())
         .contentType(ContentType.JSON)
@@ -178,11 +208,31 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
         .getString(String.format("id[%d]", index));
   }
   
-  protected String getOrganizationNewsArticleId(String organizationId, int index) {
+  protected String getPageImageId(String organizatinoId, String pageId, int index) {
+    return given() 
+        .baseUri(getApiBasePath())
+        .contentType(ContentType.JSON)
+        .get("/organizations/{organizationId}/pages/{pageId}/images", organizatinoId, pageId)
+        .body()
+        .jsonPath()
+        .getString(String.format("id[%d]", index));
+  }
+  
+  protected String getNewsArticleId(String organizationId, int index) {
     return given() 
         .baseUri(getApiBasePath())
         .contentType(ContentType.JSON)
         .get(String.format("/organizations/%s/news", organizationId))
+        .body()
+        .jsonPath()
+        .getString(String.format("id[%d]", index));
+  }
+  
+  protected String getNewsArticleImageId(String organizatinoId, String newsArticleId, int index) {
+    return given() 
+        .baseUri(getApiBasePath())
+        .contentType(ContentType.JSON)
+        .get("/organizations/{organizationId}/news/{newsArticleId}/images", organizatinoId, newsArticleId)
         .body()
         .jsonPath()
         .getString(String.format("id[%d]", index));
@@ -223,6 +273,26 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
         .baseUri(getApiBasePath())
         .contentType(ContentType.JSON)
         .get("/organizations/{organizationId}/events/{eventId}/images", organizatinoId, eventId)
+        .body()
+        .jsonPath()
+        .getString(String.format("id[%d]", index));
+  }
+  
+  protected String getMenuId(String organizatinoId, int index) {
+    return given() 
+        .baseUri(getApiBasePath())
+        .contentType(ContentType.JSON)
+        .get("/organizations/{organizationId}/menus", organizatinoId)
+        .body()
+        .jsonPath()
+        .getString(String.format("id[%d]", index));
+  }
+  
+  protected String getMenuItemId(String organizatinoId, String menuId, int index) {
+    return given() 
+        .baseUri(getApiBasePath())
+        .contentType(ContentType.JSON)
+        .get("/organizations/{organizationId}/menus/{menuId}/items", organizatinoId, menuId)
         .body()
         .jsonPath()
         .getString(String.format("id[%d]", index));
