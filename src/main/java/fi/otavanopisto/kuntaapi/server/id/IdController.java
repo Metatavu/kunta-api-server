@@ -77,6 +77,8 @@ public class IdController {
         return translateContactId((ContactId) id, target);
       case FRAGMENT:
         return translateFragmentId((FragmentId) id, target);
+      case PUBLIC_TRANSPORT_AGENCY:
+        return translatePublicTransportAgencyId((PublicTransportAgencyId) id, target);
        default:
         return null;
     }
@@ -573,6 +575,32 @@ public class IdController {
     return null;
   }
   
+  
+  /**
+   * Translates publicTransportAgencyId id into into target id
+   * 
+   * @param publicTransportAgencyId id to be translated
+   * @param target target
+   * @return translated id or null if translation has failed
+   */
+  public PublicTransportAgencyId translatePublicTransportAgencyId(PublicTransportAgencyId publicTransportAgencyId, String target) {
+    if (publicTransportAgencyId == null) {
+      return null;
+    }
+
+    if (StringUtils.equals(publicTransportAgencyId.getSource(), target)) {
+      return publicTransportAgencyId;
+    }
+    
+    IdProvider idProvider = getIdProvider(publicTransportAgencyId.getSource(), target);
+    if (idProvider != null) {
+      return idProvider.translate(publicTransportAgencyId, target);
+    }
+    
+    return null;
+  }
+  
+  
   /**
    * Translates page id into into target id
    * 
@@ -895,6 +923,24 @@ public class IdController {
   public boolean idsEqual(JobId id1, JobId id2) {
     JobId kuntaApiId1 = translateJobId(id1, KuntaApiConsts.IDENTIFIER_NAME);
     JobId kuntaApiId2 = translateJobId(id2, KuntaApiConsts.IDENTIFIER_NAME);
+    
+    if (kuntaApiId1 == null || kuntaApiId2 == null) {
+      return false;
+    }
+    
+    return kuntaApiId1.equals(kuntaApiId2);
+  }
+  
+  /**
+   * Translates both ids into Kunta Api ids and check whether they match
+   * 
+   * @param id1 id1
+   * @param id2 id2
+   * @return whether ids match
+   */
+  public boolean idsEqual(PublicTransportAgencyId id1, PublicTransportAgencyId id2) {
+    PublicTransportAgencyId kuntaApiId1 = translatePublicTransportAgencyId(id1, KuntaApiConsts.IDENTIFIER_NAME);
+    PublicTransportAgencyId kuntaApiId2 = translatePublicTransportAgencyId(id2, KuntaApiConsts.IDENTIFIER_NAME);
     
     if (kuntaApiId1 == null || kuntaApiId2 == null) {
       return false;

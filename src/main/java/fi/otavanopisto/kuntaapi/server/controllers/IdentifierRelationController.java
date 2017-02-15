@@ -19,6 +19,7 @@ import fi.otavanopisto.kuntaapi.server.id.MenuId;
 import fi.otavanopisto.kuntaapi.server.id.MenuItemId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
+import fi.otavanopisto.kuntaapi.server.id.PublicTransportAgencyId;
 import fi.otavanopisto.kuntaapi.server.id.TileId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.persistence.dao.IdentifierRelationDAO;
@@ -268,6 +269,24 @@ public class IdentifierRelationController {
     return result;
   }
   
+  /**
+   * Lists Public transport agencies ids by parent id. 
+   * 
+   * @param parentId parent id
+   * @return transport agencies ids by parent id
+   */
+  public List<PublicTransportAgencyId> listPublicTransportAgencyIdsBySourceAndParentId(String source, BaseId parentId) {
+    List<Identifier> identifiers = listChildIdentifiersByParentSourceAndType(parentId, source, IdType.PUBLIC_TRANSPORT_AGENCY);
+    List<PublicTransportAgencyId> result = new ArrayList<>(identifiers.size());
+    
+    for (Identifier identifier : identifiers) {
+      OrganizationId organizationId = new OrganizationId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getOrganizationKuntaApiId());
+      result.add(new PublicTransportAgencyId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId()));
+    }
+    
+    return result;
+  }
+  
   private List<Identifier> listChildIdentifiersByParentSourceAndType(BaseId parentId, String source, IdType type) {
     Identifier parentIdentifier = identifierController.findIdentifierById(parentId);
     if (parentIdentifier == null) {
@@ -297,5 +316,6 @@ public class IdentifierRelationController {
     
     return identifierRelationDAO.findByParentAndChild(parentIdentifier, childIdentifier);
   }
+
   
 }
