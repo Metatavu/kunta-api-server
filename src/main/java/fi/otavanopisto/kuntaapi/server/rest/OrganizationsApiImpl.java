@@ -1247,6 +1247,59 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     return listOrganizationContacts(request, organizationId, null, null);
   }
 
+  
+  /* Public transport */
+  
+  @Override
+  public Response findOrganizationPublicTransportAgency(String organizationId, String agencyId, Request request) {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public Response findOrganizationPublicTransportRoute(String organizationId, String routeId, Request request) {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public Response findOrganizationPublicTransportRouteStop(String organizationId, String routeId, String stopId,
+      Request request) {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public Response findOrganizationPublicTransportSchedule(String organizationId, String scheduleId, Request request) {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public Response listOrganizationPublicTransportAgencies(String organizationId, Request request) {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public Response listOrganizationPublicTransportRouteStops(String organizationId, String routeId, Request request) {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public Response listOrganizationPublicTransportRoutes(String organizationId, Request request) {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public Response listOrganizationPublicTransportSchedules(String organizationId, Request request) {
+    // TODO Auto-generated method stub
+    return null;
+  }
+  
+  
   private List<Page> listOrganizationPages(OrganizationId organizationId, boolean onlyRootPages, PageId parentId, String path, String search, Long firstResult, Long maxResults) {
     if (search != null) {
       return pageController.searchPages(organizationId, search, firstResult, maxResults);

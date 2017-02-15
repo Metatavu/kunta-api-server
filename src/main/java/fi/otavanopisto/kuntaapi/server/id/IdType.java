@@ -47,5 +47,7 @@ public enum IdType {
 
   ANNOUNCEMENT,
   
-  CONTACT
+  CONTACT,
+  
+  PUBLIC_TRANSPORT_AGENCY
 }

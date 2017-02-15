@@ -205,5 +205,14 @@ public interface IdProvider {
    * @return translated id
    */
   public FragmentId translate(FragmentId fragmentId, String target);
+  
+  /**
+   * Translate public transport agency id
+   * 
+   * @param publicTransportAgengyId original id
+   * @param target target type
+   * @return translated id
+   */
+  public PublicTransportAgencyId translate(PublicTransportAgencyId publicTransportAgengyId, String target);
 
 }
