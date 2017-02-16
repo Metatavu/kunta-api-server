@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 
 import javax.inject.Inject;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 
 import fi.metatavu.management.client.ApiResponse;
@@ -66,7 +67,7 @@ public abstract class AbstractManagementProvider {
       return null;
     }
     
-    return NumberUtils.createInteger(managementAttachmentId.getId());
+    return NumberUtils.createInteger(StringUtils.substringBefore(managementAttachmentId.getId(), "-"));
   }
 
   protected fi.metatavu.management.client.model.Attachment findMedia(OrganizationId organizationId, Integer mediaId) {
