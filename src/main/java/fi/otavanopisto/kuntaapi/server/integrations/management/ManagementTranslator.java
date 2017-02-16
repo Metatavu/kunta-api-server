@@ -26,6 +26,7 @@ import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.BannerId;
 import fi.otavanopisto.kuntaapi.server.id.FragmentId;
 import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
+import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.id.TileId;
 
@@ -134,6 +135,10 @@ public class ManagementTranslator {
     fragment.setId(kuntaApiFragmentId.getId());
     fragment.setSlug(managementFragment.getSlug());
     return fragment;
+  }
+  
+  public AttachmentId createManagementAttachmentId(OrganizationId organizationId, Integer attachmentId, String type) {
+    return new AttachmentId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.format("%d-%s", attachmentId, type));
   }
   
   private OffsetDateTime toOffsetDateTime(LocalDateTime date) {
