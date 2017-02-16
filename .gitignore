@@ -6,3 +6,5 @@
 /.cargo/
 /bin/
 /.tern-project
+/nb-configuration.xml
+/nbactions.xml
