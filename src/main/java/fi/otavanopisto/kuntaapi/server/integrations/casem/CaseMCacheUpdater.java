@@ -895,7 +895,7 @@ public class CaseMCacheUpdater {
 
     PageId kuntaApiPageId = new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
     
-    if (kuntaApiPageId != null && kuntaApiParentPageId != null) {
+    if (kuntaApiParentPageId != null) {
       originalParentMap.put(kuntaApiPageId.getId(), kuntaApiParentPageId);
     }
     
