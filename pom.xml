@@ -96,6 +96,10 @@
     
     <ez-vcard.version>0.10.0</ez-vcard.version>
     
+    <!--  slf4j-api -->
+    
+    <slf4j-api.version>1.7.7</slf4j-api.version>
+    
     <!-- Test -->
     
     <restassured.version>2.9.0</restassured.version> 
@@ -153,12 +157,12 @@
       <scope>provided</scope>
     </dependency>
 
-<dependency>
-<groupId>org.slf4j</groupId>
-<artifactId>slf4j-api</artifactId>
-<version>1.7.7</version>
-<scope>provided</scope>
-</dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>${slf4j-api.version}</version>
+      <scope>provided</scope>
+    </dependency>
     
     <dependency>
       <groupId>org.jboss.resteasy</groupId>
