@@ -1,6 +1,5 @@
 package fi.otavanopisto.kuntaapi.server.integrations.gtfs;
 
-import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 import java.util.ArrayList;
@@ -55,7 +54,7 @@ public class GtfsTranslator {
   
   private ScheduleException parseScheduleException(ServiceCalendarDate exception) {
     ScheduleException result = new ScheduleException();
-    result.setDate(parseServiceDate(exception.getDate()));
+    result.setDate(parseServiceDateTime(exception.getDate()));
     result.setType(parseScheduleExceptionType(exception.getExceptionType()));
     return result;
   }
@@ -68,15 +67,6 @@ public class GtfsTranslator {
     }
     
     return null;
-  }
-  
-  private LocalDate parseServiceDate(ServiceDate serviceDate) {
-    OffsetDateTime dateTime = parseServiceDateTime(serviceDate);
-    if (dateTime == null) {
-      return null;
-    }
-    
-    return dateTime.toLocalDate();
   }
   
   private OffsetDateTime parseServiceDateTime(ServiceDate serviceDate) {
