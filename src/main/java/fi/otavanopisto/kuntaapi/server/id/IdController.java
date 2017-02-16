@@ -79,6 +79,8 @@ public class IdController {
         return translateFragmentId((FragmentId) id, target);
       case PUBLIC_TRANSPORT_AGENCY:
         return translatePublicTransportAgencyId((PublicTransportAgencyId) id, target);
+      case PUBLIC_TRANSPORT_SCHEDULE:
+        return translatePublicTransportScheduleId((PublicTransportScheduleId) id, target);
        default:
         return null;
     }
@@ -600,6 +602,29 @@ public class IdController {
     return null;
   }
   
+  /**
+   * Translates publicTransportScheduleId id into into target id
+   * 
+   * @param publicTransportScheduleId id to be translated
+   * @param target target
+   * @return translated id or null if translation has failed
+   */
+  public PublicTransportScheduleId translatePublicTransportScheduleId(PublicTransportScheduleId publicTransportScheduleId, String target) {
+    if (publicTransportScheduleId == null) {
+      return null;
+    }
+
+    if (StringUtils.equals(publicTransportScheduleId.getSource(), target)) {
+      return publicTransportScheduleId;
+    }
+    
+    IdProvider idProvider = getIdProvider(publicTransportScheduleId.getSource(), target);
+    if (idProvider != null) {
+      return idProvider.translate(publicTransportScheduleId, target);
+    }
+    
+    return null;
+  }
   
   /**
    * Translates page id into into target id
@@ -941,6 +966,24 @@ public class IdController {
   public boolean idsEqual(PublicTransportAgencyId id1, PublicTransportAgencyId id2) {
     PublicTransportAgencyId kuntaApiId1 = translatePublicTransportAgencyId(id1, KuntaApiConsts.IDENTIFIER_NAME);
     PublicTransportAgencyId kuntaApiId2 = translatePublicTransportAgencyId(id2, KuntaApiConsts.IDENTIFIER_NAME);
+    
+    if (kuntaApiId1 == null || kuntaApiId2 == null) {
+      return false;
+    }
+    
+    return kuntaApiId1.equals(kuntaApiId2);
+  }
+  
+  /**
+   * Translates both ids into Kunta Api ids and check whether they match
+   * 
+   * @param id1 id1
+   * @param id2 id2
+   * @return whether ids match
+   */
+  public boolean idsEqual(PublicTransportScheduleId id1, PublicTransportScheduleId id2) {
+    PublicTransportScheduleId kuntaApiId1 = translatePublicTransportScheduleId(id1, KuntaApiConsts.IDENTIFIER_NAME);
+    PublicTransportScheduleId kuntaApiId2 = translatePublicTransportScheduleId(id2, KuntaApiConsts.IDENTIFIER_NAME);
     
     if (kuntaApiId1 == null || kuntaApiId2 == null) {
       return false;

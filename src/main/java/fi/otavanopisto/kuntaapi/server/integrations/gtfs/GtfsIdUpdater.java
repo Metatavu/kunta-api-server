@@ -26,6 +26,8 @@ import javax.inject.Inject;
 
 import org.onebusaway.gtfs.impl.GtfsDaoImpl;
 import org.onebusaway.gtfs.model.Agency;
+import org.onebusaway.gtfs.model.ServiceCalendar;
+import org.onebusaway.gtfs.model.ServiceCalendarDate;
 import org.onebusaway.gtfs.serialization.GtfsReader;
 
 import fi.otavanopisto.kuntaapi.server.discover.IdUpdater;
@@ -52,6 +54,9 @@ public class GtfsIdUpdater extends IdUpdater {
   
   @Inject
   private Event<GtfsAgencyEntityUpdateRequest> agencyUpdateRequest;
+  
+  @Inject
+  private Event<GtfsScheduleEntityUpdateRequest> scheduleUpdateRequest;
   
   @Inject
   private OrganizationSettingController organizationSettingController;
@@ -140,6 +145,7 @@ public class GtfsIdUpdater extends IdUpdater {
       reader.run();
       
       handleAgencies(organizationId, store);
+      handleSchedules(organizationId, store);
       
     } catch (IOException e) {
       if (logger.isLoggable(Level.WARNING)) {
@@ -156,4 +162,27 @@ public class GtfsIdUpdater extends IdUpdater {
       agencyUpdateRequest.fire(new GtfsAgencyEntityUpdateRequest(organizationId, agency, (long) i, false));
     }
   }
+  
+  private void handleSchedules(OrganizationId organizationId, GtfsDaoImpl store) {
+    Collection<ServiceCalendar> serviceCalendars = store.getAllCalendars();
+    List<ServiceCalendar> serviceCalendarList = new ArrayList<>(serviceCalendars);
+    for (int i = 0; i < serviceCalendarList.size(); i++) {
+      ServiceCalendar serviceCalendar = serviceCalendarList.get(i);
+      List<ServiceCalendarDate> exceptions = getExectionsByServiceCalendar(store, serviceCalendar);
+      scheduleUpdateRequest.fire(new GtfsScheduleEntityUpdateRequest(organizationId, serviceCalendar, exceptions,(long) i, false));
+    }
+  }
+  
+  private List<ServiceCalendarDate> getExectionsByServiceCalendar(GtfsDaoImpl store, ServiceCalendar serviceCalendar) {
+    List<ServiceCalendarDate> results = new ArrayList<>();
+    Collection<ServiceCalendarDate> serviceCalendarDates = store.getAllCalendarDates();
+    for (ServiceCalendarDate serviceCalendarDate : serviceCalendarDates) {
+      if(serviceCalendar.getServiceId().equals(serviceCalendarDate.getServiceId())) {
+        results.add(serviceCalendarDate);
+      }
+    }
+    
+    return results;
+  }
+  
 }

@@ -17,7 +17,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 
-import org.onebusaway.gtfs.model.Agency;
+import org.onebusaway.gtfs.model.ServiceCalendar;
 
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
@@ -26,9 +26,9 @@ import fi.otavanopisto.kuntaapi.server.discover.EntityUpdateRequestQueue;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
-import fi.otavanopisto.kuntaapi.server.id.PublicTransportAgencyId;
+import fi.otavanopisto.kuntaapi.server.id.PublicTransportScheduleId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
-import fi.otavanopisto.kuntaapi.server.integrations.gtfs.cache.GtfsPublicTransportAgencyCache;
+import fi.otavanopisto.kuntaapi.server.integrations.gtfs.cache.GtfsPublicTransportScheduleCache;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 
@@ -36,7 +36,7 @@ import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 @Singleton
 @AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
-public class GtfsAgencyEntityUpdater extends EntityUpdater {
+public class GtfsScheduleEntityUpdater extends EntityUpdater {
 
   private static final int TIMER_INTERVAL = 1000;
 
@@ -59,7 +59,7 @@ public class GtfsAgencyEntityUpdater extends EntityUpdater {
   private IdentifierRelationController identifierRelationController;
 
   @Inject
-  private GtfsPublicTransportAgencyCache gtfsPublicTransportAgencyCache;
+  private GtfsPublicTransportScheduleCache gtfsPublicTransportScheduleCache;
   
   @Inject
   private ModificationHashCache modificationHashCache;
@@ -68,7 +68,7 @@ public class GtfsAgencyEntityUpdater extends EntityUpdater {
   private TimerService timerService;
 
   private boolean stopped;
-  private EntityUpdateRequestQueue<GtfsAgencyEntityUpdateRequest> queue;
+  private EntityUpdateRequestQueue<GtfsScheduleEntityUpdateRequest> queue;
 
   @PostConstruct
   public void init() {
@@ -98,7 +98,7 @@ public class GtfsAgencyEntityUpdater extends EntityUpdater {
   }
   
   @Asynchronous
-  public void onFragmentIdUpdateRequest(@Observes GtfsAgencyEntityUpdateRequest event) {
+  public void onFragmentIdUpdateRequest(@Observes GtfsScheduleEntityUpdateRequest event) {
     if (!stopped) {
       queue.add(event);
     }
@@ -108,9 +108,9 @@ public class GtfsAgencyEntityUpdater extends EntityUpdater {
   public void timeout(Timer timer) {
     if (!stopped) {
       if (systemSettingController.isNotTestingOrTestRunning()) {
-        GtfsAgencyEntityUpdateRequest updateRequest = queue.next();
+        GtfsScheduleEntityUpdateRequest updateRequest = queue.next();
         if (updateRequest != null) {
-          updateGtfsAgency(updateRequest);
+          updateGtfsSchedule(updateRequest);
         }
       }
       
@@ -118,8 +118,8 @@ public class GtfsAgencyEntityUpdater extends EntityUpdater {
     }
   }
   
-  private void updateGtfsAgency(GtfsAgencyEntityUpdateRequest updateRequest) {
-    Agency gtfsAgency = updateRequest.getEntity();
+  private void updateGtfsSchedule(GtfsScheduleEntityUpdateRequest updateRequest) {
+    ServiceCalendar gtfsServiceCalendar = updateRequest.getEntity();
     OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(updateRequest.getOrganizationId(), KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiOrganizationId == null) {
       logger.log(Level.SEVERE, "Could not translate organization %s into Kunta API id", updateRequest.getOrganizationId());
@@ -127,22 +127,22 @@ public class GtfsAgencyEntityUpdater extends EntityUpdater {
     }
     
     Long orderIndex = updateRequest.getOrderIndex();
-    PublicTransportAgencyId gtfsAgencyId = new PublicTransportAgencyId(kuntaApiOrganizationId, GtfsConsts.IDENTIFIER_NAME, String.format("%s-%s", kuntaApiOrganizationId.getId(), gtfsAgency.getId()));
+    PublicTransportScheduleId gtfsScheduleId = new PublicTransportScheduleId(kuntaApiOrganizationId, GtfsConsts.IDENTIFIER_NAME, String.format("%s-%s", kuntaApiOrganizationId.getId(), gtfsServiceCalendar.getId()));
 
-    Identifier identifier = identifierController.findIdentifierById(gtfsAgencyId);
+    Identifier identifier = identifierController.findIdentifierById(gtfsScheduleId);
     if (identifier == null) {
-      identifier = identifierController.createIdentifier(orderIndex, gtfsAgencyId);
+      identifier = identifierController.createIdentifier(orderIndex, gtfsScheduleId);
     } else {
       identifier = identifierController.updateIdentifier(identifier, orderIndex);
     }
 
     identifierRelationController.setParentId(identifier, kuntaApiOrganizationId);
     
-    PublicTransportAgencyId kuntaApiAgencyId = new PublicTransportAgencyId(kuntaApiOrganizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
-    fi.metatavu.kuntaapi.server.rest.model.Agency agency = gtfsTranslator.translateAgency(kuntaApiAgencyId, gtfsAgency);
+    PublicTransportScheduleId kuntaApiScheduleId = new PublicTransportScheduleId(kuntaApiOrganizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
+    fi.metatavu.kuntaapi.server.rest.model.Schedule shedule = gtfsTranslator.translateSchedule(kuntaApiScheduleId, gtfsServiceCalendar, updateRequest.getExceptions());
     
-    modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(agency));
-    gtfsPublicTransportAgencyCache.put(kuntaApiAgencyId, agency);
+    modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(shedule));
+    gtfsPublicTransportScheduleCache.put(kuntaApiScheduleId, shedule);
   }
 
 }

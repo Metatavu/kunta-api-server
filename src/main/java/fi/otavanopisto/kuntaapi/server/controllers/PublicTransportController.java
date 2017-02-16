@@ -10,8 +10,10 @@ import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
 
 import fi.metatavu.kuntaapi.server.rest.model.Agency;
+import fi.metatavu.kuntaapi.server.rest.model.Schedule;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportAgencyId;
+import fi.otavanopisto.kuntaapi.server.id.PublicTransportScheduleId;
 import fi.otavanopisto.kuntaapi.server.integrations.PublicTransportProvider;
 
 @ApplicationScoped
@@ -43,6 +45,31 @@ public class PublicTransportController {
       Agency agency = publicTransportProvider.findAgency(organizationId, agencyId);
       if (agency != null) {
         return agency;
+      }
+    }
+    
+    return null;
+  }
+  
+  public List<Schedule> listSchedules(OrganizationId organizationId, Integer firstResult, Integer maxResults) {
+    List<Schedule> result = new ArrayList<>();
+   
+    for (PublicTransportProvider publicTransportProvider : getPublicTransportProviders()) {
+      result.addAll(publicTransportProvider.listSchedules(organizationId));
+    }
+    
+    int resultCount = result.size();
+    int firstIndex = firstResult == null ? 0 : Math.min(firstResult.intValue(), resultCount);
+    int toIndex = maxResults == null ? resultCount : Math.min(firstIndex + maxResults.intValue(), resultCount);
+    
+    return entityController.sortEntitiesInNaturalOrder(result.subList(firstIndex, toIndex));
+  }
+  
+  public Schedule findSchedule(OrganizationId organizationId, PublicTransportScheduleId scheduleId) {
+    for (PublicTransportProvider publicTransportProvider : getPublicTransportProviders()) {
+      Schedule schedule = publicTransportProvider.findSchedule(organizationId, scheduleId);
+      if (schedule != null) {
+        return schedule;
       }
     }
     

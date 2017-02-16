@@ -48,6 +48,7 @@ import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationServiceId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportAgencyId;
+import fi.otavanopisto.kuntaapi.server.id.PublicTransportScheduleId;
 import fi.otavanopisto.kuntaapi.server.id.TileId;
 import fi.otavanopisto.kuntaapi.server.integrations.AnnouncementProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.AnnouncementProvider.AnnouncementOrder;
@@ -77,6 +78,7 @@ import fi.metatavu.kuntaapi.server.rest.model.Organization;
 import fi.metatavu.kuntaapi.server.rest.model.OrganizationService;
 import fi.metatavu.kuntaapi.server.rest.model.OrganizationSetting;
 import fi.metatavu.kuntaapi.server.rest.model.Page;
+import fi.metatavu.kuntaapi.server.rest.model.Schedule;
 import fi.metatavu.kuntaapi.server.rest.model.Tile;
 import fi.otavanopisto.kuntaapi.server.system.OrganizationSettingProvider;
 
@@ -1295,9 +1297,28 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   }
 
   @Override
-  public Response findOrganizationPublicTransportSchedule(String organizationId, String scheduleId, Request request) {
-    // TODO Auto-generated method stub
-    return null;
+  public Response findOrganizationPublicTransportSchedule(String organizationIdParam, String scheduleIdParam, Request request) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    PublicTransportScheduleId scheduleId = toPublicTransportScheduleId(organizationId, scheduleIdParam);
+    if (scheduleId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+
+    Response notModified = httpCacheController.getNotModified(request, scheduleId);
+    if (notModified != null) {
+      return notModified;
+    }
+    
+    Schedule schedule = publicTransportController.findSchedule(organizationId, scheduleId);
+    if (schedule != null) {
+      return httpCacheController.sendModified(schedule, schedule.getId());
+    }
+    
+    return createNotFound(NOT_FOUND);
   }
 
   @Override
@@ -1330,9 +1351,20 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   }
 
   @Override
-  public Response listOrganizationPublicTransportSchedules(String organizationId, Request request) {
-    // TODO Auto-generated method stub
-    return null;
+  public Response listOrganizationPublicTransportSchedules(String organizationIdParam, Request request) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    List<Schedule> result = publicTransportController.listSchedules(organizationId, null, null);
+    List<String> ids = httpCacheController.getEntityIds(result);
+    Response notModified = httpCacheController.getNotModified(request, ids);
+    if (notModified != null) {
+      return notModified;
+    }
+
+    return httpCacheController.sendModified(result, ids);
   }
   
   
@@ -1475,6 +1507,14 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   private PublicTransportAgencyId toPublicTransportAgencyId(OrganizationId organizationId, String id) {
     if (StringUtils.isNotBlank(id)) {
       return new PublicTransportAgencyId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, id);
+    }
+    
+    return null;
+  }
+  
+  private PublicTransportScheduleId toPublicTransportScheduleId(OrganizationId organizationId, String id) {
+    if (StringUtils.isNotBlank(id)) {
+      return new PublicTransportScheduleId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, id);
     }
     
     return null;
