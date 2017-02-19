@@ -3,20 +3,15 @@ package fi.otavanopisto.kuntaapi.server.integrations.management;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
-import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.ejb.AccessTimeout;
-import javax.ejb.Asynchronous;
 import javax.ejb.Singleton;
 import javax.ejb.Timeout;
 import javax.ejb.Timer;
 import javax.ejb.TimerConfig;
 import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.event.Observes;
 import javax.inject.Inject;
-
-import org.apache.commons.lang3.StringUtils;
 
 import fi.metatavu.management.client.ApiResponse;
 import fi.metatavu.management.client.DefaultApi;
@@ -25,15 +20,15 @@ import fi.otavanopisto.kuntaapi.server.cache.AnnouncementCache;
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
-import fi.otavanopisto.kuntaapi.server.discover.AnnouncementIdRemoveRequest;
-import fi.otavanopisto.kuntaapi.server.discover.AnnouncementIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
-import fi.otavanopisto.kuntaapi.server.discover.IdUpdateRequestQueue;
 import fi.otavanopisto.kuntaapi.server.id.AnnouncementId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
+import fi.otavanopisto.kuntaapi.server.integrations.management.tasks.AttachmentIdTaskQueue;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
+import fi.otavanopisto.kuntaapi.server.tasks.IdTask;
+import fi.otavanopisto.kuntaapi.server.tasks.IdTask.Operation;
 
 @ApplicationScoped
 @Singleton
@@ -67,16 +62,13 @@ public class ManagementAnnouncementEntityUpdater extends EntityUpdater {
   @Inject
   private ModificationHashCache modificationHashCache;
   
+  @Inject
+  private AttachmentIdTaskQueue attachmentIdTaskQueue;
+  
   @Resource
   private TimerService timerService;
 
   private boolean stopped;
-  private IdUpdateRequestQueue<AnnouncementIdUpdateRequest> queue;
-
-  @PostConstruct
-  public void init() {
-    queue = new IdUpdateRequestQueue<>(ManagementConsts.IDENTIFIER_NAME);
-  }
 
   @Override
   public String getName() {
@@ -100,47 +92,33 @@ public class ManagementAnnouncementEntityUpdater extends EntityUpdater {
     stopped = true;
   }
   
-  @Asynchronous
-  public void onAnnouncementIdUpdateRequest(@Observes AnnouncementIdUpdateRequest event) {
-    if (!stopped) {
-      AnnouncementId announcementId = event.getId();
-      
-      if (!StringUtils.equals(announcementId.getSource(), ManagementConsts.IDENTIFIER_NAME)) {
-        return;
-      }
-      
-      queue.add(event);
-    }
-  }
-  
-  @Asynchronous
-  public void onAnnouncementIdRemoveRequest(@Observes AnnouncementIdRemoveRequest event) {
-    if (!stopped) {
-      AnnouncementId announcementId = event.getId();
-      
-      if (!StringUtils.equals(announcementId.getSource(), ManagementConsts.IDENTIFIER_NAME)) {
-        return;
-      }
-      
-      deleteAnnouncement(event, announcementId);
-    }
-  }
   
   @Timeout
   public void timeout(Timer timer) {
     if (!stopped) {
       if (systemSettingController.isNotTestingOrTestRunning()) {
-        AnnouncementIdUpdateRequest updateRequest = queue.next();
-        if (updateRequest != null) {
-          updateManagementAnnouncement(updateRequest.getOrganizationId(), updateRequest.getId(), updateRequest.getOrderIndex());
-        }
+        executeNextTask();
       }
 
       startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
     }
   }
+
+  private void executeNextTask() {
+    IdTask<AnnouncementId> task = attachmentIdTaskQueue.next();
+    if (task != null) {
+      AnnouncementId announcementId = task.getId();
+      
+      if (task.getOperation() == Operation.UPDATE) {
+        updateManagementAnnouncement(announcementId, task.getOrderIndex());
+      } else if (task.getOperation() == Operation.REMOVE) {
+        deleteAnnouncement(announcementId);
+      }
+    }
+  }
   
-  private void updateManagementAnnouncement(OrganizationId organizationId, AnnouncementId announcementId, Long orderIndex) {
+  private void updateManagementAnnouncement(AnnouncementId announcementId, Long orderIndex) {
+    OrganizationId organizationId = announcementId.getOrganizationId();
     DefaultApi api = managementApi.getApi(organizationId);
     
     ApiResponse<Announcement> response = api.wpV2AnnouncementIdGet(announcementId.getId(), null, null, null);
@@ -170,13 +148,12 @@ public class ManagementAnnouncementEntityUpdater extends EntityUpdater {
     announcementCache.put(kuntaApiAnnouncementId, announcement);
   }
 
-  private void deleteAnnouncement(AnnouncementIdRemoveRequest event, AnnouncementId managementAnnouncementId) {
-    OrganizationId organizationId = event.getOrganizationId();
+  private void deleteAnnouncement(AnnouncementId managementAnnouncementId) {
+    OrganizationId organizationId = managementAnnouncementId.getOrganizationId();
     
     Identifier announcementIdentifier = identifierController.findIdentifierById(managementAnnouncementId);
     if (announcementIdentifier != null) {
       AnnouncementId kuntaApiAnnouncementId = new AnnouncementId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, announcementIdentifier.getKuntaApiId());
-      queue.remove(managementAnnouncementId);
       modificationHashCache.clear(announcementIdentifier.getKuntaApiId());
       announcementCache.clear(kuntaApiAnnouncementId);
       identifierController.deleteIdentifier(announcementIdentifier);

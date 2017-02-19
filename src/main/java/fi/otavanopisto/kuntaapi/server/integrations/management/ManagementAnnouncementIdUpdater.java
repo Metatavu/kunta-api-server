@@ -20,16 +20,18 @@ import javax.enterprise.event.Event;
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 
-import fi.otavanopisto.kuntaapi.server.discover.IdUpdater;
-import fi.otavanopisto.kuntaapi.server.discover.OrganizationIdUpdateRequest;
-import fi.otavanopisto.kuntaapi.server.discover.AnnouncementIdUpdateRequest;
-import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
-import fi.otavanopisto.kuntaapi.server.id.AnnouncementId;
-import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
-import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 import fi.metatavu.management.client.ApiResponse;
 import fi.metatavu.management.client.DefaultApi;
 import fi.metatavu.management.client.model.Announcement;
+import fi.otavanopisto.kuntaapi.server.discover.IdUpdater;
+import fi.otavanopisto.kuntaapi.server.discover.OrganizationIdUpdateRequest;
+import fi.otavanopisto.kuntaapi.server.id.AnnouncementId;
+import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
+import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
+import fi.otavanopisto.kuntaapi.server.tasks.IdTask;
+import fi.otavanopisto.kuntaapi.server.tasks.IdTask.Operation;
+import fi.otavanopisto.kuntaapi.server.tasks.TaskRequest;
 
 @ApplicationScoped
 @Singleton
@@ -51,11 +53,12 @@ public class ManagementAnnouncementIdUpdater extends IdUpdater {
   
   @Inject
   private OrganizationSettingController organizationSettingController; 
-  
+
   @Inject
-  private Event<AnnouncementIdUpdateRequest> idUpdateRequest;
+  private Event<TaskRequest> taskRequest;
 
   private boolean stopped;
+
   private List<OrganizationId> queue;
   
   @Resource
@@ -126,7 +129,7 @@ public class ManagementAnnouncementIdUpdater extends IdUpdater {
     for (int i = 0, l = managementAnnouncements.size(); i < l; i++) {
       Announcement managementAnnouncement = managementAnnouncements.get(i);
       AnnouncementId announcementId = new AnnouncementId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementAnnouncement.getId()));
-      idUpdateRequest.fire(new AnnouncementIdUpdateRequest(organizationId, announcementId, (long) i, false));
+      taskRequest.fire(new TaskRequest(false, new IdTask<AnnouncementId>(Operation.UPDATE, announcementId, (long) i)));
     }
   }
   
