@@ -140,4 +140,37 @@
     <dropColumn tableName="Identifier" columnName="parent_id"/>
   </changeSet>
   
+  
+  <changeSet id="client" author="antti.leppa">
+    <createTable tableName="Client">
+      <column name="id" type="bigint(20)" autoIncrement="true">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="name" type="varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="clientId" type="varchar(255)">
+        <constraints nullable="false" unique="true"/>
+      </column>
+      <column name="clientSecret" type="varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="accessType" type="varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+    
+    <createTable tableName="ClientOrganization">
+      <column name="id" type="bigint(20)" autoIncrement="true">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="client_id" type="bigint(20)">
+        <constraints referencedTableName="Identifier" referencedColumnNames="id" foreignKeyName="FK_CLIENT_ORGANIZATION_CLIENT_ID"/>
+      </column>
+      <column name="organizationIdentifier_id" type="bigint(20)">
+        <constraints referencedTableName="Identifier" referencedColumnNames="id" foreignKeyName="FK_CLIENT_ORGANIZATION_IDENTIFIER_ID"/>
+      </column>
+    </createTable>
+  </changeSet>
+  
 </databaseChangeLog>

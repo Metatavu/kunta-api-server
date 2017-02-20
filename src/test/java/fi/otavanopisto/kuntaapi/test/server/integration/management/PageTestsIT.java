@@ -182,11 +182,11 @@ public class PageTestsIT extends AbstractIntegrationTest {
   }
   
   @Test
-  public void testPageListImagesByType() {
+  public void testPageListImagesByType() throws InterruptedException {
     String organizationId = getOrganizationId(0);
     String pageId = getPageId(organizationId, 1);
     
-    assertEquals(2, countApiList(String.format("/organizations/%s/pages/%s/images", organizationId, pageId)));
+    waitApiListCount(String.format("/organizations/%s/pages/%s/images", organizationId, pageId), 2);
     
     given() 
       .baseUri(getApiBasePath())

@@ -99,6 +99,11 @@ public class IdentifierRelationController {
    * @param parentIdentifier identifier of new parent or null to remove all parent relations
    */
   public void setParentIdentifier(Identifier childIdentifier, Identifier parentIdentifier) {
+    if (childIdentifier == null) {
+      logger.log(Level.SEVERE, () -> String.format("Attempted to set parent (%s) identifier for null childIdentifier", parentIdentifier != null ? parentIdentifier.getKuntaApiId() : null));
+      return;
+    }
+    
     if (parentIdentifier == null) {
       removeParentIdentifierRelations(childIdentifier);
     } else {

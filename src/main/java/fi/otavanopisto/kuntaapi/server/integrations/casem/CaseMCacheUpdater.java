@@ -18,6 +18,7 @@ import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
 import javax.enterprise.context.ApplicationScoped;
@@ -145,6 +146,13 @@ public class CaseMCacheUpdater {
   @Inject
   private Event<IndexRequest> indexRequest;
   
+  private Map<String, PageId> originalParentMap;
+  
+  @PostConstruct
+  public void init() {
+    originalParentMap = new HashMap<>();
+  }
+  
   public void updateNodes(OrganizationId organizationId) {
     if (!isCasemEnabled(organizationId)) {
       logger.severe(String.format(CASEM_DISABLED_FOR_ORGANIZATION, organizationId));
@@ -242,13 +250,17 @@ public class CaseMCacheUpdater {
       return;
     }
     
-    PageId meetingParentPageId = new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, meetingPage.getParentId());
+    PageId meetingParentPageId = originalParentMap.get(meetingPageId.getId());
+    if (meetingParentPageId == null) {
+      meetingParentPageId = new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, meetingPage.getParentId());
+    }
+
     Page meetingParentPage = caseMCache.findPage(meetingParentPageId);
     if (meetingParentPage == null) {
       logger.severe(String.format("Meeting parent page %s could not be found", meetingParentPageId.toString()));
       return;
     }
-    
+
     String meetingTitle = String.format("%s, %s", getFirstTitle(meetingParentPage.getTitles()), StringUtils.uncapitalize(getFirstTitle(meetingPage.getTitles())));
     List<ExtendedProperty> meetingExtendedProperties = listExtendedProperties(organizationId, meetingContent);
     if (meetingExtendedProperties.isEmpty()) {
@@ -882,6 +894,11 @@ public class CaseMCacheUpdater {
     identifierRelationController.setParentId(identifier, identifierParentId);
 
     PageId kuntaApiPageId = new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
+    
+    if (kuntaApiParentPageId != null) {
+      originalParentMap.put(kuntaApiPageId.getId(), kuntaApiParentPageId);
+    }
+    
     Page page = casemTranslator.translatePage(kuntaApiPageId, kuntaApiParentPageId, node);
     caseMCache.cachePage(organizationId, page, null);
   }
