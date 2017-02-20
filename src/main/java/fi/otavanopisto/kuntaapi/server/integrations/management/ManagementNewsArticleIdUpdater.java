@@ -25,14 +25,15 @@ import fi.metatavu.management.client.DefaultApi;
 import fi.metatavu.management.client.model.Post;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.IdUpdater;
-import fi.otavanopisto.kuntaapi.server.discover.NewsArticleIdRemoveRequest;
-import fi.otavanopisto.kuntaapi.server.discover.NewsArticleIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.discover.OrganizationIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
+import fi.otavanopisto.kuntaapi.server.tasks.IdTask;
+import fi.otavanopisto.kuntaapi.server.tasks.IdTask.Operation;
+import fi.otavanopisto.kuntaapi.server.tasks.TaskRequest;
 
 @ApplicationScoped
 @Singleton
@@ -64,10 +65,7 @@ public class ManagementNewsArticleIdUpdater extends IdUpdater {
   private IdController idController;
   
   @Inject
-  private Event<NewsArticleIdUpdateRequest> idUpdateRequest;
-
-  @Inject
-  private Event<NewsArticleIdRemoveRequest> idRemoveRequest;
+  private Event<TaskRequest> taskRequest;
 
   private boolean stopped;
   private List<OrganizationId> queue;
@@ -154,7 +152,7 @@ public class ManagementNewsArticleIdUpdater extends IdUpdater {
     for (int i = 0, l = managementPosts.size(); i < l; i++) {
       Post managementPost = managementPosts.get(i);
       NewsArticleId newsArticleId = new NewsArticleId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementPost.getId()));
-      idUpdateRequest.fire(new NewsArticleIdUpdateRequest(organizationId, newsArticleId, (long) i, false));
+      taskRequest.fire(new TaskRequest(false, new IdTask<NewsArticleId>(Operation.UPDATE, newsArticleId, (long) i)));
     }
   }
   
@@ -168,7 +166,7 @@ public class ManagementNewsArticleIdUpdater extends IdUpdater {
         // If status is 404 the post has been removed and if its a 403 its either trashed or unpublished.
         // In both cases the post should not longer be available throught API
         if (status == 404 || status == 403) {
-          idRemoveRequest.fire(new NewsArticleIdRemoveRequest(organizationId, managementArticleId));
+          taskRequest.fire(new TaskRequest(false, new IdTask<NewsArticleId>(Operation.REMOVE, managementArticleId)));
         }
       }
     }
