@@ -64,6 +64,9 @@ public class GtfsAgencyEntityUpdater extends EntityUpdater {
   @Inject
   private ModificationHashCache modificationHashCache;
   
+  @Inject
+  private GtfsIdFactory gtfsIdFactory;
+  
   @Resource
   private TimerService timerService;
 
@@ -98,7 +101,7 @@ public class GtfsAgencyEntityUpdater extends EntityUpdater {
   }
   
   @Asynchronous
-  public void onFragmentIdUpdateRequest(@Observes GtfsAgencyEntityUpdateRequest event) {
+  public void onAgencyUpdateRequest(@Observes GtfsAgencyEntityUpdateRequest event) {
     if (!stopped) {
       queue.add(event);
     }
@@ -127,7 +130,7 @@ public class GtfsAgencyEntityUpdater extends EntityUpdater {
     }
     
     Long orderIndex = updateRequest.getOrderIndex();
-    PublicTransportAgencyId gtfsAgencyId = new PublicTransportAgencyId(kuntaApiOrganizationId, GtfsConsts.IDENTIFIER_NAME, String.format("%s-%s", kuntaApiOrganizationId.getId(), gtfsAgency.getId()));
+    PublicTransportAgencyId gtfsAgencyId = gtfsIdFactory.createAgencyId(kuntaApiOrganizationId, gtfsAgency.getId());
 
     Identifier identifier = identifierController.findIdentifierById(gtfsAgencyId);
     if (identifier == null) {
@@ -138,7 +141,7 @@ public class GtfsAgencyEntityUpdater extends EntityUpdater {
 
     identifierRelationController.setParentId(identifier, kuntaApiOrganizationId);
     
-    PublicTransportAgencyId kuntaApiAgencyId = new PublicTransportAgencyId(kuntaApiOrganizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
+    PublicTransportAgencyId kuntaApiAgencyId = gtfsIdFactory.createKuntaApiId(PublicTransportAgencyId.class, kuntaApiOrganizationId, identifier);
     fi.metatavu.kuntaapi.server.rest.model.Agency agency = gtfsTranslator.translateAgency(kuntaApiAgencyId, gtfsAgency);
     
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(agency));

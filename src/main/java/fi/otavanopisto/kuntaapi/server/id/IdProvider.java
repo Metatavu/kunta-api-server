@@ -209,19 +209,55 @@ public interface IdProvider {
   /**
    * Translate public transport agency id
    * 
-   * @param publicTransportAgengyId original id
+   * @param publicTransportAgencyId original id
    * @param target target type
    * @return translated id
    */
-  public PublicTransportAgencyId translate(PublicTransportAgencyId publicTransportAgengyId, String target);
+  public PublicTransportAgencyId translate(PublicTransportAgencyId publicTransportAgencyId, String target);
   
   /**
    * Translate public transport schedule id
    * 
-   * @param publicTransportAgengyId original id
+   * @param publicTransportScheduleId original id
    * @param target target type
    * @return translated id
    */
-  public PublicTransportScheduleId translate(PublicTransportScheduleId publicTransportAgengyId, String target);
+  public PublicTransportScheduleId translate(PublicTransportScheduleId publicTransportScheduleId, String target);
+  
+  /**
+   * Translate public transport route id
+   * 
+   * @param publicTransportRouteId original id
+   * @param target target type
+   * @return translated id
+   */
+  public PublicTransportRouteId translate(PublicTransportRouteId publicTransportRouteId, String target);
+  
+  /**
+   * Translate public transport stop id
+   * 
+   * @param publicTransportStopId original id
+   * @param target target type
+   * @return translated id
+   */
+  public PublicTransportStopId translate(PublicTransportStopId publicTransportStopId, String target);
+  
+  /**
+   * Translate public transport stopTime id
+   * 
+   * @param publicTransportStopTimeId original id
+   * @param target target type
+   * @return translated id
+   */
+  public PublicTransportStopTimeId translate(PublicTransportStopTimeId publicTransportStopTimeId, String target);
+  
+  /**
+   * Translate public transport trip id
+   * 
+   * @param publicTransportTripId original id
+   * @param target target type
+   * @return translated id
+   */
+  public PublicTransportTripId translate(PublicTransportTripId publicTransportTripId, String target);
 
 }
