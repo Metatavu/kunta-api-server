@@ -19,6 +19,7 @@ import fi.otavanopisto.kuntaapi.server.id.AnnouncementId;
 import fi.otavanopisto.kuntaapi.server.id.BannerId;
 import fi.otavanopisto.kuntaapi.server.id.BaseId;
 import fi.otavanopisto.kuntaapi.server.id.ContactId;
+import fi.otavanopisto.kuntaapi.server.id.FragmentId;
 import fi.otavanopisto.kuntaapi.server.id.IdType;
 import fi.otavanopisto.kuntaapi.server.id.MenuId;
 import fi.otavanopisto.kuntaapi.server.id.MenuItemId;
@@ -170,6 +171,17 @@ public class IdentifierController {
     
     for (String bannerId : bannerIds) {
       result.add(new BannerId(organizationId, source, bannerId));
+    }
+    
+    return result;
+  }
+  
+  public List<FragmentId> listOrganizationFragmentIdsBySource(OrganizationId organizationId, String source) {
+    List<String> fragmentIds = listSourceIdsByOrganizationIdAndSourceAndType(organizationId, source, IdType.FRAGMENT.toString());
+    List<FragmentId> result = new ArrayList<>(fragmentIds.size());
+    
+    for (String fragmentId : fragmentIds) {
+      result.add(new FragmentId(organizationId, source, fragmentId));
     }
     
     return result;

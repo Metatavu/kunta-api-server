@@ -20,16 +20,20 @@ import javax.enterprise.event.Event;
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 
-import fi.otavanopisto.kuntaapi.server.discover.IdUpdater;
-import fi.otavanopisto.kuntaapi.server.discover.OrganizationIdUpdateRequest;
-import fi.otavanopisto.kuntaapi.server.discover.FragmentIdUpdateRequest;
-import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
-import fi.otavanopisto.kuntaapi.server.id.FragmentId;
-import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
-import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 import fi.metatavu.management.client.ApiResponse;
 import fi.metatavu.management.client.DefaultApi;
 import fi.metatavu.management.client.model.Fragment;
+import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
+import fi.otavanopisto.kuntaapi.server.discover.IdUpdater;
+import fi.otavanopisto.kuntaapi.server.discover.OrganizationIdUpdateRequest;
+import fi.otavanopisto.kuntaapi.server.id.FragmentId;
+import fi.otavanopisto.kuntaapi.server.id.IdController;
+import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
+import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
+import fi.otavanopisto.kuntaapi.server.tasks.IdTask;
+import fi.otavanopisto.kuntaapi.server.tasks.IdTask.Operation;
+import fi.otavanopisto.kuntaapi.server.tasks.TaskRequest;
 
 @ApplicationScoped
 @Singleton
@@ -44,7 +48,13 @@ public class ManagementFragmentIdUpdater extends IdUpdater {
   
   @Inject
   private Logger logger;
-
+  
+  @Inject
+  private IdentifierController identifierController;
+  
+  @Inject
+  private IdController idController;
+  
   @Inject
   private SystemSettingController systemSettingController;
 
@@ -55,7 +65,7 @@ public class ManagementFragmentIdUpdater extends IdUpdater {
   private OrganizationSettingController organizationSettingController; 
   
   @Inject
-  private Event<FragmentIdUpdateRequest> idUpdateRequest;
+  private Event<TaskRequest> taskRequest;
 
   private boolean stopped;
   private List<OrganizationId> queue;
@@ -123,6 +133,9 @@ public class ManagementFragmentIdUpdater extends IdUpdater {
   
   private void updateManagementFragments(OrganizationId organizationId) {
     DefaultApi api = managementApi.getApi(organizationId);
+    
+    checkRemovedManagementFragments(api, organizationId);
+
     List<Fragment> managementFragments = new ArrayList<>();
     
     int page = 1;
@@ -139,7 +152,7 @@ public class ManagementFragmentIdUpdater extends IdUpdater {
     for (int i = 0, l = managementFragments.size(); i < l; i++) {
       Fragment managementFragment = managementFragments.get(i);
       FragmentId fragmentId = new FragmentId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementFragment.getId()));
-      idUpdateRequest.fire(new FragmentIdUpdateRequest(organizationId, fragmentId, (long) i, false));
+      taskRequest.fire(new TaskRequest(false, new IdTask<FragmentId>(Operation.UPDATE, fragmentId, (long) i)));
     }
   }
   
@@ -152,6 +165,22 @@ public class ManagementFragmentIdUpdater extends IdUpdater {
     }
     
     return Collections.emptyList();
+  }
+  
+  private void checkRemovedManagementFragments(DefaultApi api, OrganizationId organizationId) {
+    List<FragmentId> fragmentIds = identifierController.listOrganizationFragmentIdsBySource(organizationId, ManagementConsts.IDENTIFIER_NAME);
+    for (FragmentId fragmentId : fragmentIds) {
+      FragmentId managementFragmentId = idController.translateFragmentId(fragmentId, ManagementConsts.IDENTIFIER_NAME);
+      if (managementFragmentId != null) {
+        ApiResponse<Fragment> response = api.wpV2FragmentIdGet(managementFragmentId.getId(), null, null, null);
+        int status = response.getStatus();
+        // If status is 404 the fragment has been removed and if its a 403 its either trashed or unpublished.
+        // In both cases the fragment should not longer be available throught API
+        if (status == 404 || status == 403) {
+          taskRequest.fire(new TaskRequest(false, new IdTask<FragmentId>(Operation.REMOVE, fragmentId)));
+        }
+      }
+    }
   }
 
 }
