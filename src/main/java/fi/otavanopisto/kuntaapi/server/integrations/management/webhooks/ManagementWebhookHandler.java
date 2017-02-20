@@ -19,8 +19,6 @@ import fi.metatavu.management.client.model.Post;
 import fi.metatavu.management.client.model.Tile;
 import fi.otavanopisto.kuntaapi.server.discover.PageIdRemoveRequest;
 import fi.otavanopisto.kuntaapi.server.discover.PageIdUpdateRequest;
-import fi.otavanopisto.kuntaapi.server.discover.TileIdRemoveRequest;
-import fi.otavanopisto.kuntaapi.server.discover.TileIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.id.BannerId;
 import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
@@ -51,12 +49,6 @@ public class ManagementWebhookHandler implements WebhookHandler {
 
   @Inject
   private Event<PageIdRemoveRequest> pageIdRemoveRequest;
-
-  @Inject
-  private Event<TileIdUpdateRequest> tileIdUpdateRequest;
-
-  @Inject
-  private Event<TileIdRemoveRequest> tileIdRemoveRequest;
 
   @Override
   public String getType() {
@@ -155,7 +147,7 @@ public class ManagementWebhookHandler implements WebhookHandler {
         return true;
       case "tile":
         TileId tileId = new TileId(organizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
-        tileIdRemoveRequest.fire(new TileIdRemoveRequest(organizationId, tileId));
+        taskRequest.fire(new TaskRequest(false, new IdTask<TileId>(Operation.REMOVE, tileId)));
         return true;
       default:
     }
@@ -203,7 +195,7 @@ public class ManagementWebhookHandler implements WebhookHandler {
     TileId tileId = new TileId(organizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
     Long orderIndex = getTileOrderIndex(tileId);
     if (orderIndex != null) {
-      tileIdUpdateRequest.fire(new TileIdUpdateRequest(organizationId, tileId, orderIndex, true));
+      taskRequest.fire(new TaskRequest(true, new IdTask<TileId>(Operation.UPDATE, tileId, orderIndex)));
     } else {
       logger.warning(String.format("Failed to resolve order index for tile %s", tileId));
     }
