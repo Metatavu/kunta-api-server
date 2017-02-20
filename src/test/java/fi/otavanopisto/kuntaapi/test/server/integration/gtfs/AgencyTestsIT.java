@@ -17,6 +17,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.gtfs.GtfsConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.PtvConsts;
 import fi.otavanopisto.kuntaapi.test.AbstractIntegrationTest;
 
+@SuppressWarnings ("squid:S1192")
 public class AgencyTestsIT extends AbstractIntegrationTest{
   
   /**
