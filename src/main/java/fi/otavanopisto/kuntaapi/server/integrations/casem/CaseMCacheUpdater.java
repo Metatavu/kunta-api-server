@@ -45,7 +45,6 @@ import fi.otavanopisto.kuntaapi.server.controllers.IdMapController;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.controllers.PageController;
-import fi.otavanopisto.kuntaapi.server.discover.FileIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.freemarker.FreemarkerRenderer;
 import fi.otavanopisto.kuntaapi.server.id.BaseId;
 import fi.otavanopisto.kuntaapi.server.id.FileId;
@@ -65,6 +64,9 @@ import fi.otavanopisto.kuntaapi.server.integrations.casem.model.MeetingItemLink;
 import fi.otavanopisto.kuntaapi.server.integrations.casem.model.Participant;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
+import fi.otavanopisto.kuntaapi.server.tasks.IdTask;
+import fi.otavanopisto.kuntaapi.server.tasks.IdTask.Operation;
+import fi.otavanopisto.kuntaapi.server.tasks.TaskRequest;
 
 @ApplicationScoped
 @Singleton
@@ -125,7 +127,7 @@ public class CaseMCacheUpdater {
   private Event<CaseMMeetingDataUpdateRequest> meetingDataUpdateRequest;
   
   @Inject
-  private Event<FileIdUpdateRequest> fileIdUpdateRequest;
+  private Event<TaskRequest> taskRequest;
   
   @Inject
   private IdController idController;
@@ -279,7 +281,7 @@ public class CaseMCacheUpdater {
     for (int i = 0; i < attachmentFileIds.size(); i++) {
       FileId attachmentFileId = attachmentFileIds.get(i);
       Long fileOrderIndex = (long) i;
-      fileIdUpdateRequest.fire(new FileIdUpdateRequest(organizationId, attachmentFileId, meetingPageId, fileOrderIndex, false));
+      taskRequest.fire(new TaskRequest(false, new IdTask<FileId>(Operation.UPDATE, meetingPageId, attachmentFileId, fileOrderIndex)));
     }
 
     logger.fine(String.format("Done updating CaseM meeting %s", meetingPageId.toString()));
@@ -322,7 +324,7 @@ public class CaseMCacheUpdater {
     for (int i = 0; i < attachmentFileIds.size(); i++) {
       FileId attachmentFileId = attachmentFileIds.get(i);
       Long fileOrderIndex = (long) i;
-      fileIdUpdateRequest.fire(new FileIdUpdateRequest(organizationId, attachmentFileId, kuntaApiPageId, fileOrderIndex, false));
+      taskRequest.fire(new TaskRequest(false, new IdTask<FileId>(Operation.UPDATE, kuntaApiPageId, attachmentFileId, fileOrderIndex)));
     }
     
     return itemLink;

@@ -16,6 +16,7 @@ public class IdTask <I extends BaseId> extends AbstractTask {
   private I id;
   private Long orderIndex;
   private Operation operation;
+  private BaseId parentId;
   
   /**
    * Zero-argument constructor of id taks
@@ -28,13 +29,26 @@ public class IdTask <I extends BaseId> extends AbstractTask {
    * Constructor for id task
    * 
    * @param operation operation
+   * @param parentId parent id
+   * @param id id
+   * @param orderIndex order index
+   */
+  public IdTask(Operation operation, BaseId parentId, I id, Long orderIndex) {
+    this.parentId = parentId;
+    this.id = id;
+    this.operation = operation;
+    this.orderIndex = orderIndex;
+  }
+  
+  /**
+   * Constructor for id task
+   * 
+   * @param operation operation
    * @param id id
    * @param orderIndex order index
    */
   public IdTask(Operation operation, I id, Long orderIndex) {
-    this.id = id;
-    this.operation = operation;
-    this.orderIndex = orderIndex;
+    this(operation, null, id, orderIndex);
   }
   
   /**
@@ -63,6 +77,24 @@ public class IdTask <I extends BaseId> extends AbstractTask {
    */
   public void setId(I id) {
     this.id = id;
+  }
+  
+  /**
+   * Returns parent id or null if not set
+   * 
+   * @return parent id or null if not set
+   */
+  public BaseId getParentId() {
+    return parentId;
+  }
+  
+  /**
+   * Sets a parent id
+   * 
+   * @param parentId a parent id
+   */
+  public void setParentId(BaseId parentId) {
+    this.parentId = parentId;
   }
   
   /**
