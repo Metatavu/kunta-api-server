@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.apache.commons.lang3.StringUtils;
 import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
@@ -199,6 +200,25 @@ public abstract class AbstractTest {
     return null;
   }
 
+  protected static int getSecondsFromMidnight(String timeString) {
+    int totalSeconds = 0;
+    String[] timeParts = timeString.split(":");
+    if(timeParts[0] != null && StringUtils.isNumeric(timeParts[0])) {
+      int hours = Integer.parseInt(timeParts[0]);
+      totalSeconds += hours * 3600;
+    }
+    if(timeParts[1] != null && StringUtils.isNumeric(timeParts[1])) {
+      int minutes = Integer.parseInt(timeParts[1]);
+      totalSeconds += minutes * 60;
+    }
+    if(timeParts[2] != null && StringUtils.isNumeric(timeParts[2])) {
+      int seconds = Integer.parseInt(timeParts[2]);
+      totalSeconds += seconds;
+    }
+    
+    return totalSeconds;
+  }
+  
   @SuppressWarnings ({"squid:S1188", "squid:MethodCyclomaticComplexity"})
   protected static Matcher<Instant> sameInstant(final Instant instant) {
     

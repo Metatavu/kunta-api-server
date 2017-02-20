@@ -30,6 +30,11 @@ import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.id.PhoneChannelId;
 import fi.otavanopisto.kuntaapi.server.id.PrintableFormChannelId;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportAgencyId;
+import fi.otavanopisto.kuntaapi.server.id.PublicTransportRouteId;
+import fi.otavanopisto.kuntaapi.server.id.PublicTransportScheduleId;
+import fi.otavanopisto.kuntaapi.server.id.PublicTransportStopId;
+import fi.otavanopisto.kuntaapi.server.id.PublicTransportStopTimeId;
+import fi.otavanopisto.kuntaapi.server.id.PublicTransportTripId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceLocationChannelId;
 import fi.otavanopisto.kuntaapi.server.id.TileId;
@@ -169,6 +174,31 @@ public abstract class AbstractIdProvider implements IdProvider {
   @Override
   public PublicTransportAgencyId translate(PublicTransportAgencyId publicTransportAgencyId, String target) {
     return translateId(publicTransportAgencyId, IdType.PUBLIC_TRANSPORT_AGENCY, PublicTransportAgencyId.class, target);
+  }
+  
+  @Override
+  public PublicTransportScheduleId translate(PublicTransportScheduleId publicTransportScheduleId, String target) {
+    return translateId(publicTransportScheduleId, IdType.PUBLIC_TRANSPORT_SCHEDULE, PublicTransportScheduleId.class, target);
+  }
+  
+  @Override
+  public PublicTransportRouteId translate(PublicTransportRouteId publicTransportRouteId, String target) {
+    return translateId(publicTransportRouteId, IdType.PUBLIC_TRANSPORT_ROUTE, PublicTransportRouteId.class, target);
+  }
+  
+  @Override
+  public PublicTransportStopId translate(PublicTransportStopId publicTransportStopId, String target) {
+    return translateId(publicTransportStopId, IdType.PUBLIC_TRANSPORT_STOP, PublicTransportStopId.class, target);
+  }
+  
+  @Override
+  public PublicTransportStopTimeId translate(PublicTransportStopTimeId publicTransportStopTimeId, String target) {
+    return translateId(publicTransportStopTimeId, IdType.PUBLIC_TRANSPORT_STOPTIME, PublicTransportStopTimeId.class, target);
+  }
+  
+  @Override
+  public PublicTransportTripId translate(PublicTransportTripId publicTransportTripId, String target) {
+    return translateId(publicTransportTripId, IdType.PUBLIC_TRANSPORT_TRIP, PublicTransportTripId.class, target);
   }
   
   private <T extends BaseId> T translateId(T id, IdType type, Class<T> idClass, String target) {

@@ -79,6 +79,16 @@ public class IdController {
         return translateFragmentId((FragmentId) id, target);
       case PUBLIC_TRANSPORT_AGENCY:
         return translatePublicTransportAgencyId((PublicTransportAgencyId) id, target);
+      case PUBLIC_TRANSPORT_SCHEDULE:
+        return translatePublicTransportScheduleId((PublicTransportScheduleId) id, target);
+      case PUBLIC_TRANSPORT_ROUTE:
+        return translatePublicTransportRouteId((PublicTransportRouteId) id, target);
+      case PUBLIC_TRANSPORT_STOP:
+        return translatePublicTransportStopId((PublicTransportStopId) id, target);
+      case PUBLIC_TRANSPORT_STOPTIME:
+        return translatePublicTransportStopTimeId((PublicTransportStopTimeId) id, target);
+      case PUBLIC_TRANSPORT_TRIP:
+        return translatePublicTransportTripId((PublicTransportTripId) id, target);
        default:
         return null;
     }
@@ -600,6 +610,125 @@ public class IdController {
     return null;
   }
   
+  /**
+   * Translates publicTransportScheduleId id into into target id
+   * 
+   * @param publicTransportScheduleId id to be translated
+   * @param target target
+   * @return translated id or null if translation has failed
+   */
+  public PublicTransportScheduleId translatePublicTransportScheduleId(PublicTransportScheduleId publicTransportScheduleId, String target) {
+    if (publicTransportScheduleId == null) {
+      return null;
+    }
+
+    if (StringUtils.equals(publicTransportScheduleId.getSource(), target)) {
+      return publicTransportScheduleId;
+    }
+    
+    IdProvider idProvider = getIdProvider(publicTransportScheduleId.getSource(), target);
+    if (idProvider != null) {
+      return idProvider.translate(publicTransportScheduleId, target);
+    }
+    
+    return null;
+  }
+  
+  /**
+   * Translates publicTransportRouteId id into into target id
+   * 
+   * @param publicTransportRouteId id to be translated
+   * @param target target
+   * @return translated id or null if translation has failed
+   */
+  public PublicTransportRouteId translatePublicTransportRouteId(PublicTransportRouteId publicTransportRouteId, String target) {
+    if (publicTransportRouteId == null) {
+      return null;
+    }
+
+    if (StringUtils.equals(publicTransportRouteId.getSource(), target)) {
+      return publicTransportRouteId;
+    }
+    
+    IdProvider idProvider = getIdProvider(publicTransportRouteId.getSource(), target);
+    if (idProvider != null) {
+      return idProvider.translate(publicTransportRouteId, target);
+    }
+    
+    return null;
+  }
+  
+  /**
+   * Translates publicTransportStopId id into into target id
+   * 
+   * @param publicTransportStopId id to be translated
+   * @param target target
+   * @return translated id or null if translation has failed
+   */
+  public PublicTransportStopId translatePublicTransportStopId(PublicTransportStopId publicTransportStopId, String target) {
+    if (publicTransportStopId == null) {
+      return null;
+    }
+
+    if (StringUtils.equals(publicTransportStopId.getSource(), target)) {
+      return publicTransportStopId;
+    }
+    
+    IdProvider idProvider = getIdProvider(publicTransportStopId.getSource(), target);
+    if (idProvider != null) {
+      return idProvider.translate(publicTransportStopId, target);
+    }
+    
+    return null;
+  }
+
+  /**
+   * Translates publicTransportStopTimeId id into into target id
+   * 
+   * @param publicTransportStopTimeId id to be translated
+   * @param target target
+   * @return translated id or null if translation has failed
+   */
+  public PublicTransportStopTimeId translatePublicTransportStopTimeId(PublicTransportStopTimeId publicTransportStopTimeId, String target) {
+    if (publicTransportStopTimeId == null) {
+      return null;
+    }
+
+    if (StringUtils.equals(publicTransportStopTimeId.getSource(), target)) {
+      return publicTransportStopTimeId;
+    }
+    
+    IdProvider idProvider = getIdProvider(publicTransportStopTimeId.getSource(), target);
+    if (idProvider != null) {
+      return idProvider.translate(publicTransportStopTimeId, target);
+    }
+    
+    return null;
+  }
+  
+  /**
+   * Translates publicTransportTripId id into into target id
+   * 
+   * @param publicTransportTripId id to be translated
+   * @param target target
+   * @return translated id or null if translation has failed
+   */
+  public PublicTransportTripId translatePublicTransportTripId(PublicTransportTripId publicTransportTripId, String target) {
+    if (publicTransportTripId == null) {
+      return null;
+    }
+
+    if (StringUtils.equals(publicTransportTripId.getSource(), target)) {
+      return publicTransportTripId;
+    }
+    
+    IdProvider idProvider = getIdProvider(publicTransportTripId.getSource(), target);
+    if (idProvider != null) {
+      return idProvider.translate(publicTransportTripId, target);
+    }
+    
+    return null;
+  }
   
   /**
    * Translates page id into into target id
@@ -941,6 +1070,96 @@ public class IdController {
   public boolean idsEqual(PublicTransportAgencyId id1, PublicTransportAgencyId id2) {
     PublicTransportAgencyId kuntaApiId1 = translatePublicTransportAgencyId(id1, KuntaApiConsts.IDENTIFIER_NAME);
     PublicTransportAgencyId kuntaApiId2 = translatePublicTransportAgencyId(id2, KuntaApiConsts.IDENTIFIER_NAME);
+    
+    if (kuntaApiId1 == null || kuntaApiId2 == null) {
+      return false;
+    }
+    
+    return kuntaApiId1.equals(kuntaApiId2);
+  }
+  
+  /**
+   * Translates both ids into Kunta Api ids and check whether they match
+   * 
+   * @param id1 id1
+   * @param id2 id2
+   * @return whether ids match
+   */
+  public boolean idsEqual(PublicTransportScheduleId id1, PublicTransportScheduleId id2) {
+    PublicTransportScheduleId kuntaApiId1 = translatePublicTransportScheduleId(id1, KuntaApiConsts.IDENTIFIER_NAME);
+    PublicTransportScheduleId kuntaApiId2 = translatePublicTransportScheduleId(id2, KuntaApiConsts.IDENTIFIER_NAME);
+    
+    if (kuntaApiId1 == null || kuntaApiId2 == null) {
+      return false;
+    }
+    
+    return kuntaApiId1.equals(kuntaApiId2);
+  }
+  
+  /**
+   * Translates both ids into Kunta Api ids and check whether they match
+   * 
+   * @param id1 id1
+   * @param id2 id2
+   * @return whether ids match
+   */
+  public boolean idsEqual(PublicTransportRouteId id1, PublicTransportRouteId id2) {
+    PublicTransportRouteId kuntaApiId1 = translatePublicTransportRouteId(id1, KuntaApiConsts.IDENTIFIER_NAME);
+    PublicTransportRouteId kuntaApiId2 = translatePublicTransportRouteId(id2, KuntaApiConsts.IDENTIFIER_NAME);
+    
+    if (kuntaApiId1 == null || kuntaApiId2 == null) {
+      return false;
+    }
+    
+    return kuntaApiId1.equals(kuntaApiId2);
+  }
+  
+  /**
+   * Translates both ids into Kunta Api ids and check whether they match
+   * 
+   * @param id1 id1
+   * @param id2 id2
+   * @return whether ids match
+   */
+  public boolean idsEqual(PublicTransportStopId id1, PublicTransportStopId id2) {
+    PublicTransportStopId kuntaApiId1 = translatePublicTransportStopId(id1, KuntaApiConsts.IDENTIFIER_NAME);
+    PublicTransportStopId kuntaApiId2 = translatePublicTransportStopId(id2, KuntaApiConsts.IDENTIFIER_NAME);
+    
+    if (kuntaApiId1 == null || kuntaApiId2 == null) {
+      return false;
+    }
+    
+    return kuntaApiId1.equals(kuntaApiId2);
+  }
+  
+  /**
+   * Translates both ids into Kunta Api ids and check whether they match
+   * 
+   * @param id1 id1
+   * @param id2 id2
+   * @return whether ids match
+   */
+  public boolean idsEqual(PublicTransportStopTimeId id1, PublicTransportStopTimeId id2) {
+    PublicTransportStopTimeId kuntaApiId1 = translatePublicTransportStopTimeId(id1, KuntaApiConsts.IDENTIFIER_NAME);
+    PublicTransportStopTimeId kuntaApiId2 = translatePublicTransportStopTimeId(id2, KuntaApiConsts.IDENTIFIER_NAME);
+    
+    if (kuntaApiId1 == null || kuntaApiId2 == null) {
+      return false;
+    }
+    
+    return kuntaApiId1.equals(kuntaApiId2);
+  }
+  
+  /**
+   * Translates both ids into Kunta Api ids and check whether they match
+   * 
+   * @param id1 id1
+   * @param id2 id2
+   * @return whether ids match
+   */
+  public boolean idsEqual(PublicTransportTripId id1, PublicTransportTripId id2) {
+    PublicTransportTripId kuntaApiId1 = translatePublicTransportTripId(id1, KuntaApiConsts.IDENTIFIER_NAME);
+    PublicTransportTripId kuntaApiId2 = translatePublicTransportTripId(id2, KuntaApiConsts.IDENTIFIER_NAME);
     
     if (kuntaApiId1 == null || kuntaApiId2 == null) {
       return false;
