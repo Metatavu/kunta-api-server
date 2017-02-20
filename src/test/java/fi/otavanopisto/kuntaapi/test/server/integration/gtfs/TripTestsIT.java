@@ -12,6 +12,7 @@ import org.junit.Test;
 
 import com.github.tomakehurst.wiremock.junit.WireMockRule;
 import com.jayway.restassured.http.ContentType;
+import com.jayway.restassured.response.Response;
 
 import fi.otavanopisto.kuntaapi.server.integrations.gtfs.GtfsConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.PtvConsts;
@@ -50,10 +51,14 @@ public class TripTestsIT extends AbstractIntegrationTest {
 
   @Test
   public void testListTrips() {
-    given() 
+    String organizationId = getOrganizationId(0);
+    
+    Response response = given() 
       .baseUri(getApiBasePath())
       .contentType(ContentType.JSON)
-      .get("/organizations/{organizationId}/transportTrips", getOrganizationId(0))
+      .get("/organizations/{organizationId}/transportTrips", organizationId);
+    
+    response
       .then()
       .assertThat()
       .statusCode(200)
@@ -62,15 +67,24 @@ public class TripTestsIT extends AbstractIntegrationTest {
       .body("routeId[1]", notNullValue())
       .body("scheduleId[1]", notNullValue())
       .body("headsign[1]", is("Mikkeli matkakeskus"));
+    
+    String routeId = response.body().jsonPath().getString("routeId[1]");
+    String ScheduleId = response.body().jsonPath().getString("scheduleId[1]");
+    
+    assertFound(String.format("/organizations/%s/transportRoutes/%s", organizationId, routeId));
+    assertFound(String.format("/organizations/%s/transportSchedules/%s", organizationId, ScheduleId));
+    
   }
   
   @Test
   public void testFindTrip() {
     String organizationId = getOrganizationId(0);
-    given() 
+    Response response = given() 
       .baseUri(getApiBasePath())
       .contentType(ContentType.JSON)
-      .get("/organizations/{organizationId}/transportTrips/{tripId}", organizationId, getOrganizationTripId(organizationId, 2))
+      .get("/organizations/{organizationId}/transportTrips/{tripId}", organizationId, getOrganizationTripId(organizationId, 2));
+    
+    response
       .then()
       .assertThat()
       .statusCode(200)
@@ -78,6 +92,12 @@ public class TripTestsIT extends AbstractIntegrationTest {
       .body("routeId", notNullValue())
       .body("scheduleId", notNullValue())
       .body("headsign", is("Pajulankylä"));
+    
+    String routeId = response.body().jsonPath().getString("routeId");
+    String ScheduleId = response.body().jsonPath().getString("scheduleId");
+    
+    assertFound(String.format("/organizations/%s/transportRoutes/%s", organizationId, routeId));
+    assertFound(String.format("/organizations/%s/transportSchedules/%s", organizationId, ScheduleId));
   }
   
   @Test

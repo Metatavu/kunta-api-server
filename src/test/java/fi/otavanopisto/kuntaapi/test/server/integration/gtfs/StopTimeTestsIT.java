@@ -12,6 +12,7 @@ import org.junit.Test;
 
 import com.github.tomakehurst.wiremock.junit.WireMockRule;
 import com.jayway.restassured.http.ContentType;
+import com.jayway.restassured.response.Response;
 
 import fi.otavanopisto.kuntaapi.server.integrations.gtfs.GtfsConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.PtvConsts;
@@ -50,10 +51,14 @@ public class StopTimeTestsIT extends AbstractIntegrationTest {
   
   @Test
   public void testListStopTimes() {
-    given() 
+    String organizationId = getOrganizationId(0);
+    
+    Response response = given() 
       .baseUri(getApiBasePath())
       .contentType(ContentType.JSON)
-      .get("/organizations/{organizationId}/transportStopTimes", getOrganizationId(0))
+      .get("/organizations/{organizationId}/transportStopTimes", organizationId);
+    
+    response
       .then()
       .assertThat()
       .statusCode(200)
@@ -63,15 +68,24 @@ public class StopTimeTestsIT extends AbstractIntegrationTest {
       .body("arrivalTime[1]", is(getSecondsFromMidnight("15:06:00")))
       .body("departureTime[1]", is(getSecondsFromMidnight("15:06:00")))
       .body("sequency[1]", is(2));
+    
+    String tripId = response.body().jsonPath().getString("tripId[1]");
+    String stopId = response.body().jsonPath().getString("stopId[1]");
+    
+    assertFound(String.format("/organizations/%s/transportTrips/%s", organizationId, tripId));
+    assertFound(String.format("/organizations/%s/transportStops/%s", organizationId, stopId));
   }
   
   @Test
   public void testFindStopTime() {
     String organizationId = getOrganizationId(0);
-    given() 
+    
+    Response response = given() 
       .baseUri(getApiBasePath())
       .contentType(ContentType.JSON)
-      .get("/organizations/{organizationId}/transportStopTimes/{stopTimeId}", organizationId, getOrganizationStopTimeId(organizationId, 2))
+      .get("/organizations/{organizationId}/transportStopTimes/{stopTimeId}", organizationId, getOrganizationStopTimeId(organizationId, 2));
+    
+    response
       .then()
       .assertThat()
       .statusCode(200)
@@ -81,6 +95,12 @@ public class StopTimeTestsIT extends AbstractIntegrationTest {
       .body("arrivalTime", is(getSecondsFromMidnight("15:07:00")))
       .body("departureTime", is(getSecondsFromMidnight("15:07:00")))
       .body("sequency", is(3));
+    
+    String tripId = response.body().jsonPath().getString("tripId");
+    String stopId = response.body().jsonPath().getString("stopId");
+    
+    assertFound(String.format("/organizations/%s/transportTrips/%s", organizationId, tripId));
+    assertFound(String.format("/organizations/%s/transportStops/%s", organizationId, stopId));
   }
   
   @Test

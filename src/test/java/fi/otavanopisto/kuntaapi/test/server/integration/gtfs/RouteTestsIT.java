@@ -12,6 +12,7 @@ import org.junit.Test;
 
 import com.github.tomakehurst.wiremock.junit.WireMockRule;
 import com.jayway.restassured.http.ContentType;
+import com.jayway.restassured.response.Response;
 
 import fi.otavanopisto.kuntaapi.server.integrations.gtfs.GtfsConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.PtvConsts;
@@ -50,10 +51,14 @@ public class RouteTestsIT extends AbstractIntegrationTest {
 
   @Test
   public void testListRoutes() {
-    given() 
+    String organizationId = getOrganizationId(0);
+    
+    Response response = given() 
       .baseUri(getApiBasePath())
       .contentType(ContentType.JSON)
-      .get("/organizations/{organizationId}/transportRoutes", getOrganizationId(0))
+      .get("/organizations/{organizationId}/transportRoutes", organizationId);
+    
+    response
       .then()
       .assertThat()
       .statusCode(200)
@@ -62,15 +67,20 @@ public class RouteTestsIT extends AbstractIntegrationTest {
       .body("shortName[1]", is("1 A"))
       .body("longName[1]", is("Tori-Tuppurala-Tori"))
       .body("agencyId[1]", notNullValue());
+    
+    String agencyId = response.body().jsonPath().getString("agencyId[1]");
+    assertFound(String.format("/organizations/%s/transportAgencies/%s", organizationId, agencyId));
   }
   
   @Test
   public void testFindRoute() {
     String organizationId = getOrganizationId(0);
-    given() 
+    Response response = given() 
       .baseUri(getApiBasePath())
       .contentType(ContentType.JSON)
-      .get("/organizations/{organizationId}/transportRoutes/{routeId}", organizationId, getOrganizationRouteId(organizationId, 2))
+      .get("/organizations/{organizationId}/transportRoutes/{routeId}", organizationId, getOrganizationRouteId(organizationId, 2));
+    
+    response
       .then()
       .assertThat()
       .statusCode(200)
@@ -78,6 +88,9 @@ public class RouteTestsIT extends AbstractIntegrationTest {
       .body("shortName", is("1 AB"))
       .body("longName", is("Tori-Tuppurala-Tori"))
       .body("agencyId", notNullValue());
+    
+    String agencyId = response.body().jsonPath().getString("agencyId");
+    assertFound(String.format("/organizations/%s/transportAgencies/%s", organizationId, agencyId));
   }
   
   @Test
