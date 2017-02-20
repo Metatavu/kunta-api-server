@@ -5,8 +5,6 @@ import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.Assert.assertEquals;
 
-import java.time.ZoneId;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
