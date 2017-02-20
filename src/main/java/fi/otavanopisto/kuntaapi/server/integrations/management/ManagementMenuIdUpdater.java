@@ -20,15 +20,20 @@ import javax.enterprise.event.Event;
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 
+import fi.metatavu.management.client.ApiResponse;
 import fi.metatavu.management.client.DefaultApi;
 import fi.metatavu.management.client.model.Menu;
+import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.IdUpdater;
-import fi.otavanopisto.kuntaapi.server.discover.MenuIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.discover.OrganizationIdUpdateRequest;
+import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.MenuId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
+import fi.otavanopisto.kuntaapi.server.tasks.IdTask;
+import fi.otavanopisto.kuntaapi.server.tasks.IdTask.Operation;
+import fi.otavanopisto.kuntaapi.server.tasks.TaskRequest;
 
 @ApplicationScoped
 @Singleton
@@ -41,6 +46,12 @@ public class ManagementMenuIdUpdater extends IdUpdater {
   
   @Inject
   private Logger logger;
+  
+  @Inject
+  private IdentifierController identifierController;
+  
+  @Inject
+  private IdController idController;
 
   @Inject
   private SystemSettingController systemSettingController;
@@ -52,7 +63,7 @@ public class ManagementMenuIdUpdater extends IdUpdater {
   private OrganizationSettingController organizationSettingController; 
   
   @Inject
-  private Event<MenuIdUpdateRequest> idUpdateRequest;
+  private Event<TaskRequest> taskRequest;
 
   private boolean stopped;
   private List<OrganizationId> queue;
@@ -121,14 +132,14 @@ public class ManagementMenuIdUpdater extends IdUpdater {
   private void updateManagementMenus(OrganizationId organizationId) {
     DefaultApi api = managementApi.getApi(organizationId);
     
+    checkRemovedManagementMenus(api, organizationId);
+    
     List<Menu> managementMenus = listManagementMenus(api, organizationId);
     for (int i = 0, l = managementMenus.size(); i < l; i++) {
       Menu managementMenu = managementMenus.get(i);
       MenuId menuId = new MenuId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementMenu.getId()));
-      idUpdateRequest.fire(new MenuIdUpdateRequest(organizationId, menuId, (long) i, false));
+      taskRequest.fire(new TaskRequest(false, new IdTask<MenuId>(Operation.UPDATE, menuId, (long) i)));
     }
-    
-    
   }
 
   private List<Menu> listManagementMenus(DefaultApi api, OrganizationId organizationId) {
@@ -140,6 +151,22 @@ public class ManagementMenuIdUpdater extends IdUpdater {
     }
     
     return Collections.emptyList();
+  }
+    
+  private void checkRemovedManagementMenus(DefaultApi api, OrganizationId organizationId) {
+    List<MenuId> menuIds = identifierController.listOrganizationMenuIdsBySource(organizationId, ManagementConsts.IDENTIFIER_NAME);
+    for (MenuId menuId : menuIds) {
+      MenuId managementMenuId = idController.translateMenuId(menuId, ManagementConsts.IDENTIFIER_NAME);
+      if (managementMenuId != null) {
+        ApiResponse<Menu> response = api.kuntaApiMenusIdGet(managementMenuId.getId());
+        int status = response.getStatus();
+        // If status is 404 the menu has been removed and if its a 403 its either trashed or unpublished.
+        // In both cases the menu should not longer be available throught API
+        if (status == 404 || status == 403) {
+          taskRequest.fire(new TaskRequest(false, new IdTask<MenuId>(Operation.REMOVE, menuId)));
+        }
+      }
+    }
   }
   
 }
