@@ -1,24 +1,21 @@
 package fi.otavanopisto.kuntaapi.server.integrations.management;
 
 import java.awt.image.BufferedImage;
-import java.util.List;
 import java.util.logging.Logger;
 
 import javax.inject.Inject;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 
-import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
 import fi.metatavu.management.client.ApiResponse;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
-import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.images.ImageReader;
 import fi.otavanopisto.kuntaapi.server.images.ImageScaler;
 import fi.otavanopisto.kuntaapi.server.images.ImageWriter;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
-import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 
 /**
  * Abstract base class for management providers
@@ -45,10 +42,7 @@ public abstract class AbstractManagementProvider {
   
   @Inject
   private ImageScaler imageScaler;
-  
-  @Inject
-  private ManagementTranslator managementTranslator;
-  
+
   protected AttachmentData scaleImage(AttachmentData imageData, Integer size) {
     if (imageData == null || imageData.getData() == null) {
       return null;
@@ -73,7 +67,7 @@ public abstract class AbstractManagementProvider {
       return null;
     }
     
-    return NumberUtils.createInteger(managementAttachmentId.getId());
+    return NumberUtils.createInteger(StringUtils.substringBefore(managementAttachmentId.getId(), "-"));
   }
 
   protected fi.metatavu.management.client.model.Attachment findMedia(OrganizationId organizationId, Integer mediaId) {
@@ -91,36 +85,4 @@ public abstract class AbstractManagementProvider {
     return null;
   }
   
-  protected List<LocalizedValue> translateLocalized(String value) {
-    return managementTranslator.translateLocalized(value);
-  }
-  
-  protected PageId translatePageId(OrganizationId organizationId, Long pageId) {
-    if (pageId == null) {
-      return null;
-    }
-    
-    return translatePageId(organizationId, pageId.intValue());
-  }
-  
-  protected PageId translatePageId(OrganizationId organizationId, Integer pageId) {
-    if (pageId == null) {
-      return null;
-    }
-    
-    PageId managementId = new PageId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(pageId));
-    return idController.translatePageId(managementId, KuntaApiConsts.IDENTIFIER_NAME);
-  }
-  
-  protected AttachmentId getImageAttachmentId(OrganizationId organizationId, Integer id) {
-    AttachmentId managementId = new AttachmentId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(id));
-    AttachmentId kuntaApiId = idController.translateAttachmentId(managementId, KuntaApiConsts.IDENTIFIER_NAME);
-    
-    if (kuntaApiId == null) {
-      logger.info(String.format("Could not translate management attachment %s into Kunta API Id", managementId));
-      return null;
-    }
-    
-    return kuntaApiId;
-  }
 }

@@ -19,8 +19,27 @@ import org.apache.commons.lang3.EnumUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 
+import fi.metatavu.kuntaapi.server.rest.OrganizationsApi;
+import fi.metatavu.kuntaapi.server.rest.model.Announcement;
+import fi.metatavu.kuntaapi.server.rest.model.Attachment;
+import fi.metatavu.kuntaapi.server.rest.model.Banner;
+import fi.metatavu.kuntaapi.server.rest.model.Contact;
+import fi.metatavu.kuntaapi.server.rest.model.Event;
+import fi.metatavu.kuntaapi.server.rest.model.FileDef;
+import fi.metatavu.kuntaapi.server.rest.model.Fragment;
+import fi.metatavu.kuntaapi.server.rest.model.Job;
+import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
+import fi.metatavu.kuntaapi.server.rest.model.Menu;
+import fi.metatavu.kuntaapi.server.rest.model.MenuItem;
+import fi.metatavu.kuntaapi.server.rest.model.NewsArticle;
+import fi.metatavu.kuntaapi.server.rest.model.Organization;
+import fi.metatavu.kuntaapi.server.rest.model.OrganizationService;
+import fi.metatavu.kuntaapi.server.rest.model.OrganizationSetting;
+import fi.metatavu.kuntaapi.server.rest.model.Page;
+import fi.metatavu.kuntaapi.server.rest.model.Tile;
 import fi.otavanopisto.kuntaapi.server.controllers.AnnouncementController;
 import fi.otavanopisto.kuntaapi.server.controllers.BannerController;
+import fi.otavanopisto.kuntaapi.server.controllers.ClientContainer;
 import fi.otavanopisto.kuntaapi.server.controllers.ContactController;
 import fi.otavanopisto.kuntaapi.server.controllers.EventController;
 import fi.otavanopisto.kuntaapi.server.controllers.FileController;
@@ -32,6 +51,7 @@ import fi.otavanopisto.kuntaapi.server.controllers.NewsController;
 import fi.otavanopisto.kuntaapi.server.controllers.OrganizationController;
 import fi.otavanopisto.kuntaapi.server.controllers.PageController;
 import fi.otavanopisto.kuntaapi.server.controllers.PublicTransportController;
+import fi.otavanopisto.kuntaapi.server.controllers.SecurityController;
 import fi.otavanopisto.kuntaapi.server.controllers.TileController;
 import fi.otavanopisto.kuntaapi.server.id.AnnouncementId;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
@@ -95,6 +115,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   private static final String MAX_RESULTS_MUST_BY_A_POSITIVE_INTEGER = "maxResults must by a positive integer";
   private static final String FIRST_RESULT_MUST_BY_A_POSITIVE_INTEGER = "firstResult must by a positive integer";
   private static final String NOT_FOUND = "Not Found";
+  private static final String FORBIDDEN = "Forbidden";
   private static final String NOT_IMPLEMENTED = "Not implemented";
   private static final String INTERNAL_SERVER_ERROR = "Internal Server Error";
   
@@ -133,9 +154,15 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   @Inject
   private JobController jobController;
+  
+  @Inject
+  private SecurityController securityController;
 
   @Inject
   private ContactController contactController;
+  
+  @Inject
+  private ClientContainer clientContainer;
   
   @Inject
   private HttpCacheController httpCacheController;
@@ -615,6 +642,10 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   @Override
   @SuppressWarnings("squid:MethodCyclomaticComplexity")
   public Response createOrganizationSetting(String organizationIdParam, OrganizationSetting setting, @Context Request request) {
+    if (!securityController.isUnrestrictedClient(clientContainer.getClient())) {
+      return createForbidden(FORBIDDEN);
+    }
+    
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
@@ -645,6 +676,10 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   @Override
   public Response listOrganizationSettings(String organizationIdParam, String key, @Context Request request) {
+    if (!securityController.isUnrestrictedClient(clientContainer.getClient())) {
+      return createForbidden(FORBIDDEN);
+    }
+    
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
@@ -659,6 +694,10 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   
   @Override
   public Response findOrganizationSetting(String organizationIdParam, String settingIdParam, @Context Request request) {
+    if (!securityController.isUnrestrictedClient(clientContainer.getClient())) {
+      return createForbidden(FORBIDDEN);
+    }
+    
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
@@ -683,6 +722,10 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   @Override
   @SuppressWarnings ("squid:MethodCyclomaticComplexity")
   public Response updateOrganizationSetting(String organizationIdParam, String settingIdParam, OrganizationSetting setting, @Context Request request) {
+    if (!securityController.isUnrestrictedClient(clientContainer.getClient())) {
+      return createForbidden(FORBIDDEN);
+    }
+    
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
@@ -724,6 +767,10 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   @Override
   public Response deleteOrganizationSetting(String organizationIdParam, String settingIdParam, @Context Request request) {
+    if (!securityController.isUnrestrictedClient(clientContainer.getClient())) {
+      return createForbidden(FORBIDDEN);
+    }
+    
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
