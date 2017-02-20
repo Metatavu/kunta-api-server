@@ -70,10 +70,10 @@ public class TripTestsIT extends AbstractIntegrationTest {
       .body("headsign[1]", is("Mikkeli matkakeskus"));
     
     String routeId = response.body().jsonPath().getString("routeId[1]");
-    String ScheduleId = response.body().jsonPath().getString("scheduleId[1]");
+    String scheduleId = response.body().jsonPath().getString("scheduleId[1]");
     
     assertFound(String.format("/organizations/%s/transportRoutes/%s", organizationId, routeId));
-    assertFound(String.format("/organizations/%s/transportSchedules/%s", organizationId, ScheduleId));
+    assertFound(String.format("/organizations/%s/transportSchedules/%s", organizationId, scheduleId));
     
   }
   
@@ -95,10 +95,10 @@ public class TripTestsIT extends AbstractIntegrationTest {
       .body("headsign", is("Pajulankylä"));
     
     String routeId = response.body().jsonPath().getString("routeId");
-    String ScheduleId = response.body().jsonPath().getString("scheduleId");
+    String scheduleId = response.body().jsonPath().getString("scheduleId");
     
     assertFound(String.format("/organizations/%s/transportRoutes/%s", organizationId, routeId));
-    assertFound(String.format("/organizations/%s/transportSchedules/%s", organizationId, ScheduleId));
+    assertFound(String.format("/organizations/%s/transportSchedules/%s", organizationId, scheduleId));
   }
   
   @Test
