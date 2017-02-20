@@ -15,6 +15,7 @@ import javax.inject.Inject;
 
 import org.apache.commons.codec.binary.StringUtils;
 
+import fi.otavanopisto.kuntaapi.server.id.AnnouncementId;
 import fi.otavanopisto.kuntaapi.server.id.BannerId;
 import fi.otavanopisto.kuntaapi.server.id.BaseId;
 import fi.otavanopisto.kuntaapi.server.id.ContactId;
@@ -147,6 +148,17 @@ public class IdentifierController {
     
     for (String pageId : pageIds) {
       result.add(new PageId(organizationId, source, pageId));
+    }
+    
+    return result;
+  }
+  
+  public List<AnnouncementId> listOrganizationAnnouncementIdsBySource(OrganizationId organizationId, String source) {
+    List<String> announcementIds = listSourceIdsByOrganizationIdAndSourceAndType(organizationId, source, IdType.ANNOUNCEMENT.toString());
+    List<AnnouncementId> result = new ArrayList<>(announcementIds.size());
+    
+    for (String announcementId : announcementIds) {
+      result.add(new AnnouncementId(organizationId, source, announcementId));
     }
     
     return result;
