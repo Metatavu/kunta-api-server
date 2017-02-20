@@ -38,6 +38,16 @@ public class IdTask <I extends BaseId> extends AbstractTask {
   }
   
   /**
+   * Constructor for id task
+   * 
+   * @param operation operation
+   * @param id id
+   */
+  public IdTask(Operation operation, I id) {
+    this(operation, id, null);
+  }
+  
+  /**
    * Returns id
    * 
    * @return id

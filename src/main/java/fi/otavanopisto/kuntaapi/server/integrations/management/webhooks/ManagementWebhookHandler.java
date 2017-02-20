@@ -17,8 +17,6 @@ import fi.metatavu.management.client.model.Banner;
 import fi.metatavu.management.client.model.Page;
 import fi.metatavu.management.client.model.Post;
 import fi.metatavu.management.client.model.Tile;
-import fi.otavanopisto.kuntaapi.server.discover.BannerIdRemoveRequest;
-import fi.otavanopisto.kuntaapi.server.discover.BannerIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.discover.NewsArticleIdRemoveRequest;
 import fi.otavanopisto.kuntaapi.server.discover.NewsArticleIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.discover.PageIdRemoveRequest;
@@ -32,6 +30,9 @@ import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.id.TileId;
 import fi.otavanopisto.kuntaapi.server.integrations.management.ManagementApi;
 import fi.otavanopisto.kuntaapi.server.integrations.management.ManagementConsts;
+import fi.otavanopisto.kuntaapi.server.tasks.IdTask;
+import fi.otavanopisto.kuntaapi.server.tasks.IdTask.Operation;
+import fi.otavanopisto.kuntaapi.server.tasks.TaskRequest;
 import fi.otavanopisto.kuntaapi.server.webhooks.WebhookHandler;
 
 @RequestScoped
@@ -43,18 +44,15 @@ public class ManagementWebhookHandler implements WebhookHandler {
 
   @Inject
   private ManagementApi managementApi;
+
+  @Inject
+  private Event<TaskRequest> taskRequest;
   
   @Inject
   private Event<PageIdUpdateRequest> pageIdUpdateRequest;
 
   @Inject
   private Event<PageIdRemoveRequest> pageIdRemoveRequest;
-
-  @Inject
-  private Event<BannerIdUpdateRequest> bannerIdUpdateRequest;
-
-  @Inject
-  private Event<BannerIdRemoveRequest> bannerIdRemoveRequest;
 
   @Inject
   private Event<NewsArticleIdUpdateRequest> newsArticleIdUpdateRequest;
@@ -157,7 +155,7 @@ public class ManagementWebhookHandler implements WebhookHandler {
         return true;
       case "banner":
         BannerId bannerId = new BannerId(organizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
-        bannerIdRemoveRequest.fire(new BannerIdRemoveRequest(organizationId, bannerId));
+        taskRequest.fire(new TaskRequest(false, new IdTask<BannerId>(Operation.REMOVE, bannerId)));
         return true;
       case "post":
         NewsArticleId newsArticleId = new NewsArticleId(organizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
@@ -189,7 +187,7 @@ public class ManagementWebhookHandler implements WebhookHandler {
     BannerId bannerId = new BannerId(organizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
     Long orderIndex = getBannerOrderIndex(bannerId);
     if (orderIndex != null) {
-      bannerIdUpdateRequest.fire(new BannerIdUpdateRequest(organizationId, bannerId, orderIndex, true));
+      taskRequest.fire(new TaskRequest(false, new IdTask<BannerId>(Operation.UPDATE, bannerId, orderIndex)));
     } else {
       logger.warning(String.format("Failed to resolve order index for banner %s", bannerId));
     }
