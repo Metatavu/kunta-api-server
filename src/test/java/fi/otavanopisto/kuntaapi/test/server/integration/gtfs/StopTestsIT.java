@@ -52,7 +52,7 @@ public class StopTestsIT extends AbstractIntegrationTest {
     getPtvMocker().endMock();
     deletePtvSettings();
     deleteGtfsSettings(organizationId);
-    deleteAllStops();
+    deleteAllGtfsDatas();
   }
 
   @Test

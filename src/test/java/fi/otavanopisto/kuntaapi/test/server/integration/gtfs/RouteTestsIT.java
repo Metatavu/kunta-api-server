@@ -50,7 +50,7 @@ public class RouteTestsIT extends AbstractIntegrationTest {
     getPtvMocker().endMock();
     deletePtvSettings();
     deleteGtfsSettings(organizationId);
-    deleteAllRoutes();
+    deleteAllGtfsDatas();
   }
 
   @Test

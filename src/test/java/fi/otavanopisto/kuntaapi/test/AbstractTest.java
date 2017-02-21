@@ -112,6 +112,15 @@ public abstract class AbstractTest {
     deleteAllIdentifiers("SERVICE");
   }
   
+  protected void deleteAllGtfsDatas(){
+    deleteAllAgencies();
+    deleteAllSchedules();
+    deleteAllRoutes();
+    deleteAllTrips();
+    deleteAllStops();
+    deleteAllStopTimes();
+  }
+  
   protected void deleteAllAgencies() {
     deleteAllIdentifiers("PUBLIC_TRANSPORT_AGENCY");
   }
