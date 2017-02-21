@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
+import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
@@ -68,8 +69,6 @@ public class ManagementNewsArticleIdUpdater extends IdUpdater {
   @Inject
   private OrganizationNewsArticlesTaskQueue organizationNewsArticlesTaskQueue;
   
-  private boolean stopped;
-  
   @Resource
   private TimerService timerService;
   
@@ -78,15 +77,9 @@ public class ManagementNewsArticleIdUpdater extends IdUpdater {
     return "management-news-article-ids";
   }
   
-  @Override
+  @PostConstruct
   public void startTimer() {
-    stopped = false;
     startTimer(WARMUP_TIME);
-  }
-
-  @Override
-  public void stopTimer() {
-    stopped = true;
   }
   
   private void startTimer(int duration) {
@@ -97,18 +90,16 @@ public class ManagementNewsArticleIdUpdater extends IdUpdater {
   
   @Timeout
   public void timeout(Timer timer) {
-    if (!stopped) {
-      if (systemSettingController.isNotTestingOrTestRunning()) {
-        OrganizationEntityUpdateTask task = organizationNewsArticlesTaskQueue.next();
-        if (task != null) {
-          updateManagementPosts(task.getOrganizationId());
-        } else {
-          organizationNewsArticlesTaskQueue.enqueueTasks(organizationSettingController.listOrganizationIdsWithSetting(ManagementConsts.ORGANIZATION_SETTING_BASEURL));
-        }
+    if (systemSettingController.isNotTestingOrTestRunning()) {
+      OrganizationEntityUpdateTask task = organizationNewsArticlesTaskQueue.next();
+      if (task != null) {
+        updateManagementPosts(task.getOrganizationId());
+      } else {
+        organizationNewsArticlesTaskQueue.enqueueTasks(organizationSettingController.listOrganizationIdsWithSetting(ManagementConsts.ORGANIZATION_SETTING_BASEURL));
       }
-      
-      startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
     }
+    
+    startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
   }
   
   private void updateManagementPosts(OrganizationId organizationId) {

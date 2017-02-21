@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
+import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
@@ -67,8 +68,6 @@ public class ManagementFragmentIdUpdater extends IdUpdater {
   
   @Inject
   private Event<TaskRequest> taskRequest;
-
-  private boolean stopped;
   
   @Resource
   private TimerService timerService;
@@ -78,17 +77,11 @@ public class ManagementFragmentIdUpdater extends IdUpdater {
     return "management-fragment-ids";
   }
   
-  @Override
+  @PostConstruct
   public void startTimer() {
-    stopped = false;
     startTimer(WARMUP_TIME);
   }
 
-  @Override
-  public void stopTimer() {
-    stopped = true;
-  }
-  
   private void startTimer(int duration) {
     TimerConfig timerConfig = new TimerConfig();
     timerConfig.setPersistent(false);
@@ -97,18 +90,16 @@ public class ManagementFragmentIdUpdater extends IdUpdater {
   
   @Timeout
   public void timeout(Timer timer) {
-    if (!stopped) {
-      if (systemSettingController.isNotTestingOrTestRunning()) {
-        OrganizationEntityUpdateTask task = organizationFragmentsTaskQueue.next();
-        if (task != null) {
-          updateManagementFragments(task.getOrganizationId());
-        } else {
-          organizationFragmentsTaskQueue.enqueueTasks(organizationSettingController.listOrganizationIdsWithSetting(ManagementConsts.ORGANIZATION_SETTING_BASEURL));
-        }
+    if (systemSettingController.isNotTestingOrTestRunning()) {
+      OrganizationEntityUpdateTask task = organizationFragmentsTaskQueue.next();
+      if (task != null) {
+        updateManagementFragments(task.getOrganizationId());
+      } else {
+        organizationFragmentsTaskQueue.enqueueTasks(organizationSettingController.listOrganizationIdsWithSetting(ManagementConsts.ORGANIZATION_SETTING_BASEURL));
       }
-      
-      startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
     }
+    
+    startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
   }
   
   private void updateManagementFragments(OrganizationId organizationId) {

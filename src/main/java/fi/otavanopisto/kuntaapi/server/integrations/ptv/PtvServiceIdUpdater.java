@@ -3,6 +3,7 @@ package fi.otavanopisto.kuntaapi.server.integrations.ptv;
 import java.util.List;
 import java.util.logging.Logger;
 
+import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.ejb.Singleton;
 import javax.ejb.Timeout;
@@ -47,7 +48,6 @@ public class PtvServiceIdUpdater extends IdUpdater {
   @Inject
   private Event<TaskRequest> taskRequest;
 
-  private boolean stopped;
   private long offset;
   
   @Resource
@@ -58,16 +58,10 @@ public class PtvServiceIdUpdater extends IdUpdater {
     return "ptv-service-ids";
   }
   
-  @Override
+  @PostConstruct
   public void startTimer() {
-    stopped = false;
     offset = 0l;
     startTimer(WARMUP_TIME);
-  }
-
-  @Override
-  public void stopTimer() {
-    stopped = true;
   }
   
   private void startTimer(int duration) {
@@ -78,14 +72,12 @@ public class PtvServiceIdUpdater extends IdUpdater {
   
   @Timeout
   public void timeout(Timer timer) {
-    if (!stopped) {
-      try {
-        if (systemSettingController.isNotTestingOrTestRunning()) {
-          discoverIds();
-        }
-      } finally {
-        startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
+    try {
+      if (systemSettingController.isNotTestingOrTestRunning()) {
+        discoverIds();
       }
+    } finally {
+      startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
     }
   }
 

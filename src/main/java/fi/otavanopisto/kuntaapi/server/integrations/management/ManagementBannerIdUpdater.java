@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
+import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
@@ -68,8 +69,6 @@ public class ManagementBannerIdUpdater extends IdUpdater {
   @Inject
   private OrganizationBannersTaskQueue organizationBannersTaskQueue;
   
-  private boolean stopped;
-  
   @Resource
   private TimerService timerService;
   
@@ -78,15 +77,9 @@ public class ManagementBannerIdUpdater extends IdUpdater {
     return "management-banner-ids";
   }
   
-  @Override
+  @PostConstruct
   public void startTimer() {
-    stopped = false;
     startTimer(WARMUP_TIME);
-  }
-
-  @Override
-  public void stopTimer() {
-    stopped = true;
   }
   
   private void startTimer(int duration) {
@@ -97,18 +90,16 @@ public class ManagementBannerIdUpdater extends IdUpdater {
   
   @Timeout
   public void timeout(Timer timer) {
-    if (!stopped) {
-      if (systemSettingController.isNotTestingOrTestRunning()) {
-        OrganizationEntityUpdateTask task = organizationBannersTaskQueue.next();
-        if (task != null) {
-          updateManagementBanners(task.getOrganizationId());
-        } else {
-          organizationBannersTaskQueue.enqueueTasks(organizationSettingController.listOrganizationIdsWithSetting(ManagementConsts.ORGANIZATION_SETTING_BASEURL));
-        }
+    if (systemSettingController.isNotTestingOrTestRunning()) {
+      OrganizationEntityUpdateTask task = organizationBannersTaskQueue.next();
+      if (task != null) {
+        updateManagementBanners(task.getOrganizationId());
+      } else {
+        organizationBannersTaskQueue.enqueueTasks(organizationSettingController.listOrganizationIdsWithSetting(ManagementConsts.ORGANIZATION_SETTING_BASEURL));
       }
-
-      startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
     }
+
+    startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
   }
   
   private void updateManagementBanners(OrganizationId organizationId) {
