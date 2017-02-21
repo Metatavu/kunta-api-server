@@ -1,6 +1,10 @@
 package fi.otavanopisto.kuntaapi.server.rest;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
@@ -14,6 +18,8 @@ import javax.ws.rs.core.Response.Status;
 
 import fi.otavanopisto.kuntaapi.server.cache.SystemController;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
+import fi.otavanopisto.kuntaapi.server.tasks.AbstractTaskQueue;
+import fi.otavanopisto.kuntaapi.server.tasks.TaskQueueStatistics;
 
 /**
  * System REST Services
@@ -35,6 +41,9 @@ public class SystemRESTService {
 
   @Inject  
   private SystemSettingController systemSettingController;
+  
+  @Inject  
+  private Instance<AbstractTaskQueue<?>> taskQueues;
 
   /**
    * Returns pong
@@ -67,6 +76,26 @@ public class SystemRESTService {
     }
     
     return Response.status(Status.FORBIDDEN).build();
+  }
+  
+  /**
+   * Returns statistics for task queue
+   * 
+   * @return "ok"
+   */
+  @GET
+  @Path ("/tasks/statistics")
+  public Response getTaskQueueStatistics() {
+    List<TaskQueueStatistics> statistics = new ArrayList<>();
+    
+    for (AbstractTaskQueue<?> taskQueue : taskQueues) {
+      statistics.add(taskQueue.getStatistics());
+    }
+    
+    return Response
+      .ok()
+      .entity(statistics)
+      .build();
   }
   
 }

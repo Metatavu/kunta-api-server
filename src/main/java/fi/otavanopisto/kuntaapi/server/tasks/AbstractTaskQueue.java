@@ -31,12 +31,24 @@ public abstract class AbstractTaskQueue <T extends AbstractTask> {
   @Resource (lookup = "java:jboss/infinispan/container/kunta-api")
   private CacheContainer cacheContainer;
   
+  private long tasksExecuted;
+  private long duplicatedTasks;
+  
   /**
    * Returns unique name for task queue
    * 
    * @return unique name for task queue
    */
   public abstract String getName();
+  
+  /**
+   * Returns statistics for the queue
+   * 
+   * @return statistics for the queue
+   */
+  public TaskQueueStatistics getStatistics() {
+    return new TaskQueueStatistics(getName(), tasksExecuted, duplicatedTasks, getPriorities().size());
+  }
 
   /**
    * Returns next task or null if queue is empty
@@ -56,6 +68,7 @@ public abstract class AbstractTaskQueue <T extends AbstractTask> {
       
       return popTask(taskHashId);
     } finally {
+      tasksExecuted++;
       endBatch();
     }
   }
@@ -71,12 +84,13 @@ public abstract class AbstractTaskQueue <T extends AbstractTask> {
     startBatch();
     try {
       byte[] rawData = serialize(task);
-      Cache<Integer,byte[]> tasksCache = getTasksCache();
+      Cache<String, byte[]> tasksCache = getTasksCache();
       List<Integer> priorities = getPriorities();
       
       Integer taskHashId = task.getTaskHash();
       if (priority) {
         if (priorities.contains(taskHashId)) {
+          duplicatedTasks++;
           priorities.remove(taskHashId);
         }
         
@@ -88,10 +102,14 @@ public abstract class AbstractTaskQueue <T extends AbstractTask> {
       }
       
       setPriorities(priorities);
-      tasksCache.put(taskHashId, rawData);
+      tasksCache.put(createTaskId(taskHashId), rawData);
     } finally {
       endBatch();
     }
+  }
+
+  private String createTaskId(Integer taskHashId) {
+    return String.format("%s-%d", getName(), taskHashId);
   }
 
   private void startBatch() {
@@ -105,8 +123,8 @@ public abstract class AbstractTaskQueue <T extends AbstractTask> {
   }
 
   private T popTask(Integer id) {
-    Cache<Integer, byte[]> tasksCache = getTasksCache();
-    byte[] rawData = tasksCache.remove(id);
+    Cache<String, byte[]> tasksCache = getTasksCache();
+    byte[] rawData = tasksCache.remove(createTaskId(id));
     if (rawData == null) {
       return null;
     }
@@ -129,7 +147,7 @@ public abstract class AbstractTaskQueue <T extends AbstractTask> {
     getPrioritiesCache().put(getName(), priorities);
   }
   
-  private Cache<Integer, byte[]> getTasksCache() {
+  private Cache<String, byte[]> getTasksCache() {
     return cacheContainer.getCache("tasks");
   }
   
