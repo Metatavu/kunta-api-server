@@ -39,4 +39,22 @@ public class ServiceEntityUpdateTask extends AbstractTask {
     this.serviceId = serviceId;
   }
   
+  @Override
+  public Object[] getHashParts() {
+    return new Object[] {
+      serviceId.getSource(), 
+      serviceId.getId()
+    };
+  }
+  
+  @Override
+  public int getMultiplierOddNumber() {
+    return 1333;
+  }
+  
+  @Override
+  public int getTaskHashInitialOddNumber() {
+    return 2333;
+  }
+  
 }

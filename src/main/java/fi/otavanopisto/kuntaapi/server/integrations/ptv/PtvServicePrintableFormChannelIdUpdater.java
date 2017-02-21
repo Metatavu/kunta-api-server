@@ -101,7 +101,7 @@ public class PtvServicePrintableFormChannelIdUpdater extends EntityUpdater {
       return;
     }
     
-    ApiResponse<List<PrintableFormChannel >> response = ptvApi.getServicesApi().listServicePrintableFormChannels(kuntaApiServiceId.getId(), null, null);
+    ApiResponse<List<PrintableFormChannel >> response = ptvApi.getServicesApi().listServicePrintableFormChannels(ptvServiceId.getId(), null, null);
     if (response.isOk()) {
       List<PrintableFormChannel> printableFormChannels = response.getResponse();
       for (int i = 0; i < printableFormChannels.size(); i++) {

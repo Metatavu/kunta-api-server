@@ -210,7 +210,7 @@ public class CaseMCacheUpdater {
         PageId meetingPageId = toNodeId(organizationId, meetingId);
         String meetingItemContents = objectMapper.writeValueAsString(meetingEntry.getValue());
         String meetingContent = objectMapper.writeValueAsString(meetingMap.get(meetingId));
-        taskRequest.fire(new TaskRequest(false, new MeetingDataUpdateTask(organizationId, meetingPageId, meetingItemContents, meetingContent, orderIndex)));
+        taskRequest.fire(new TaskRequest(false, new MeetingDataUpdateTask(meetingPageId, meetingItemContents, meetingContent, orderIndex)));
       } catch (IOException e) {
         logger.log(Level.SEVERE, "Failed to create task request for meeting update", e);
       }

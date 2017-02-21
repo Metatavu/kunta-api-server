@@ -2,6 +2,7 @@ package fi.otavanopisto.kuntaapi.server.integrations.ptv;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.annotation.Resource;
@@ -17,6 +18,7 @@ import javax.inject.Inject;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
+import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationServiceId;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.OrganizationServicesTaskQueue;
@@ -42,7 +44,10 @@ public class PtvOrganizationServiceIdUpdater extends EntityUpdater {
 
   @Inject
   private PtvApi ptvApi;
-  
+
+  @Inject
+  private IdController idController;
+
   @Inject
   private IdentifierController identifierController;
 
@@ -85,14 +90,20 @@ public class PtvOrganizationServiceIdUpdater extends EntityUpdater {
     startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
   }
 
-  private void updateOrganizationServiceIds(OrganizationId organizationId)  {
-    ApiResponse<List<OrganizationService>> response = ptvApi.getOrganizationServicesApi().listOrganizationOrganizationServices(organizationId.getId(), null, null);
+  private void updateOrganizationServiceIds(OrganizationId kuntaApiOrganizationId)  {
+    OrganizationId ptvOrganizationId = idController.translateOrganizationId(kuntaApiOrganizationId, PtvConsts.IDENTIFIER_NAME);
+    if (ptvOrganizationId == null) {
+      logger.log(Level.SEVERE, () -> String.format("Failed to translate %s into PTV organizationId", kuntaApiOrganizationId));
+      return;
+    }
+    
+    ApiResponse<List<OrganizationService>> response = ptvApi.getOrganizationServicesApi().listOrganizationOrganizationServices(ptvOrganizationId.getId(), null, null);
     if (response.isOk()) {
       List<OrganizationService> organizationServices = response.getResponse();
       for (int i = 0; i < organizationServices.size(); i++) {
         Long orderIndex = (long) i;
         OrganizationService organizationService = organizationServices.get(i);
-        OrganizationServiceId organizationServiceId = new OrganizationServiceId(organizationId, PtvConsts.IDENTIFIER_NAME, organizationService.getId());
+        OrganizationServiceId organizationServiceId = new OrganizationServiceId(kuntaApiOrganizationId, PtvConsts.IDENTIFIER_NAME, organizationService.getId());
         Identifier identifier = identifierController.findIdentifierById(organizationServiceId);
         if (identifier == null) {
           identifierController.createIdentifier(orderIndex, organizationServiceId);
@@ -100,10 +111,10 @@ public class PtvOrganizationServiceIdUpdater extends EntityUpdater {
           identifierController.updateIdentifier(identifier, orderIndex);
         }
         
-        identifierRelationController.setParentId(identifier, organizationId);
+        identifierRelationController.setParentId(identifier, kuntaApiOrganizationId);
       }
     } else {
-      logger.warning(String.format("Organization %s services processing failed on [%d] %s", organizationId.getId(), response.getStatus(), response.getMessage()));
+      logger.warning(String.format("Organization %s services processing failed on [%d] %s", kuntaApiOrganizationId.getId(), response.getStatus(), response.getMessage()));
     }
   }
 

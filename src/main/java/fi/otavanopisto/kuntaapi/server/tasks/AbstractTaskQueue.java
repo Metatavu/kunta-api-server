@@ -7,14 +7,12 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.annotation.Resource;
 import javax.inject.Inject;
 
-import org.apache.commons.codec.binary.Base64;
 import org.infinispan.Cache;
 import org.infinispan.manager.CacheContainer;
 
@@ -48,15 +46,15 @@ public abstract class AbstractTaskQueue <T extends AbstractTask> {
   public T next() {
     startBatch();
     try {
-      List<String> priorities = getPriorities();
+      List<Integer> priorities = getPriorities();
       if (priorities.isEmpty()) {
         return null;
       }
       
-      String id = priorities.remove(0);
+      Integer taskHashId = priorities.remove(0);
       setPriorities(priorities);
       
-      return popTask(id);
+      return popTask(taskHashId);
     } finally {
       endBatch();
     }
@@ -73,18 +71,24 @@ public abstract class AbstractTaskQueue <T extends AbstractTask> {
     startBatch();
     try {
       byte[] rawData = serialize(task);
-      Cache<String,byte[]> tasksCache = getTasksCache();
-      List<String> priorities = getPriorities();
+      Cache<Integer,byte[]> tasksCache = getTasksCache();
+      List<Integer> priorities = getPriorities();
       
-      String id = createUniqueTaskId();
+      Integer taskHashId = task.getTaskHash();
       if (priority) {
-        priorities.add(0, id);
+        if (priorities.contains(taskHashId)) {
+          priorities.remove(taskHashId);
+        }
+        
+        priorities.add(0, taskHashId);
       } else {
-        priorities.add(id);
+        if (!priorities.contains(taskHashId)) {
+          priorities.add(taskHashId);
+        }
       }
       
       setPriorities(priorities);
-      tasksCache.put(id, rawData);
+      tasksCache.put(taskHashId, rawData);
     } finally {
       endBatch();
     }
@@ -100,25 +104,8 @@ public abstract class AbstractTaskQueue <T extends AbstractTask> {
     getTasksCache().getAdvancedCache().endBatch(true);
   }
 
-  private String createTaskId() {
-    Random random = new Random();
-    byte[] bytes = new byte[6];
-    random.nextBytes(bytes);
-    return Base64.encodeBase64String(bytes);
-  }
-  
-  private String createUniqueTaskId() {
-    Cache<String,byte[]> tasksCache = getTasksCache();
-    while (true) {
-      String id = createTaskId();
-      if (!tasksCache.containsKey(id)) {
-        return id;
-      }
-    }
-  }
-  
-  private T popTask(String id) {
-    Cache<String, byte[]> tasksCache = getTasksCache();
+  private T popTask(Integer id) {
+    Cache<Integer, byte[]> tasksCache = getTasksCache();
     byte[] rawData = tasksCache.remove(id);
     if (rawData == null) {
       return null;
@@ -127,9 +114,9 @@ public abstract class AbstractTaskQueue <T extends AbstractTask> {
     return unserialize(rawData);
   }
   
-  private List<String> getPriorities() {
-    Cache<String,List<String>> prioritiesCache = getPrioritiesCache();
-    List<String> result = prioritiesCache.get(getName());
+  private List<Integer> getPriorities() {
+    Cache<String,List<Integer>> prioritiesCache = getPrioritiesCache();
+    List<Integer> result = prioritiesCache.get(getName());
     
     if (result == null) {
       return new ArrayList<>();
@@ -138,15 +125,15 @@ public abstract class AbstractTaskQueue <T extends AbstractTask> {
     return result;
   }
   
-  private void setPriorities(List<String> priorities) {
+  private void setPriorities(List<Integer> priorities) {
     getPrioritiesCache().put(getName(), priorities);
   }
   
-  private Cache<String, byte[]> getTasksCache() {
+  private Cache<Integer, byte[]> getTasksCache() {
     return cacheContainer.getCache("tasks");
   }
   
-  private Cache<String, List<String>> getPrioritiesCache() {
+  private Cache<String, List<Integer>> getPrioritiesCache() {
     return cacheContainer.getCache("task-priorities");
   }
   

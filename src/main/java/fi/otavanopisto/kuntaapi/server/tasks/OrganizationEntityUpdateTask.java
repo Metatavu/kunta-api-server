@@ -39,4 +39,22 @@ public class OrganizationEntityUpdateTask extends AbstractTask {
     this.organizationId = organizationId;
   }
   
+  @Override
+  public Object[] getHashParts() {
+    return new Object[] {
+      organizationId.getSource(), 
+      organizationId.getId()
+    };
+  }
+  
+  @Override
+  public int getMultiplierOddNumber() {
+    return 1233;
+  }
+  
+  @Override
+  public int getTaskHashInitialOddNumber() {
+    return 2233;
+  }
+  
 }

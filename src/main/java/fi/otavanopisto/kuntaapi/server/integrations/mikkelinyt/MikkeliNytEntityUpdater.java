@@ -40,7 +40,6 @@ import fi.otavanopisto.kuntaapi.server.integrations.BinaryHttpClient.DownloadMet
 import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpClient;
 import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpClient.Response;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
-import fi.otavanopisto.kuntaapi.server.integrations.management.ManagementConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.mikkelinyt.tasks.OrganizationEventsTaskQueue;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
@@ -116,7 +115,7 @@ public class MikkeliNytEntityUpdater extends EntityUpdater {
       if (task != null) {
         updateEvents(task.getOrganizationId());
       } else {
-        organizationEventsTaskQueue.enqueueTasks(organizationSettingController.listOrganizationIdsWithSetting(ManagementConsts.ORGANIZATION_SETTING_BASEURL));
+        organizationEventsTaskQueue.enqueueTasks(organizationSettingController.listOrganizationIdsWithSetting(MikkeliNytConsts.ORGANIZATION_SETTING_BASEURL));
       }
     }
 

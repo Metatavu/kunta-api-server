@@ -1,6 +1,5 @@
 package fi.otavanopisto.kuntaapi.server.integrations.casem.tasks;
 
-import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.tasks.AbstractTask;
 
@@ -8,7 +7,6 @@ public class MeetingDataUpdateTask extends AbstractTask {
 
   private static final long serialVersionUID = -8254737854730680377L;
   
-  private OrganizationId organizationId;
   private PageId meetingPageId;
   private String meetingItemContents;
   private String meetingContent;
@@ -18,21 +16,12 @@ public class MeetingDataUpdateTask extends AbstractTask {
     // Zero-argument constructor
   }
 
-  public MeetingDataUpdateTask(OrganizationId organizationId, PageId meetingPageId, String meetingItemContents, String meetingContent, Long orderIndex) {
+  public MeetingDataUpdateTask(PageId meetingPageId, String meetingItemContents, String meetingContent, Long orderIndex) {
     super();
-    this.organizationId = organizationId;
     this.meetingPageId = meetingPageId;
     this.meetingItemContents = meetingItemContents;
     this.meetingContent = meetingContent;
     this.orderIndex = orderIndex;
-  }
-
-  public OrganizationId getOrganizationId() {
-    return organizationId;
-  }
-
-  public void setOrganizationId(OrganizationId organizationId) {
-    this.organizationId = organizationId;
   }
 
   public PageId getMeetingPageId() {
@@ -65,6 +54,27 @@ public class MeetingDataUpdateTask extends AbstractTask {
   
   public void setOrderIndex(Long orderIndex) {
     this.orderIndex = orderIndex;
+  }
+    
+  @Override
+  public Object[] getHashParts() {
+    return new Object[] {
+      meetingPageId.getOrganizationId().getSource(), 
+      meetingPageId.getOrganizationId().getId(), 
+      meetingPageId.getSource(), 
+      meetingPageId.getId(), 
+      orderIndex
+    };
+  }
+  
+  @Override
+  public int getMultiplierOddNumber() {
+    return 1133;
+  }
+  
+  @Override
+  public int getTaskHashInitialOddNumber() {
+    return 2133;
   }
 
 }
