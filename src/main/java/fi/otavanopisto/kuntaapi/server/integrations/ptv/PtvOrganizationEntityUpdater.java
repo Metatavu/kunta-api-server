@@ -1,12 +1,11 @@
 package fi.otavanopisto.kuntaapi.server.integrations.ptv;
 
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.ejb.AccessTimeout;
-import javax.ejb.Asynchronous;
 import javax.ejb.Singleton;
 import javax.ejb.Timeout;
 import javax.ejb.Timer;
@@ -14,19 +13,19 @@ import javax.ejb.TimerConfig;
 import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Event;
-import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
-import fi.otavanopisto.kuntaapi.server.discover.IdUpdateRequestQueue;
-import fi.otavanopisto.kuntaapi.server.discover.OrganizationIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.index.IndexRequest;
 import fi.otavanopisto.kuntaapi.server.index.IndexableOrganization;
+import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.OrganizationIdTaskQueue;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
+import fi.otavanopisto.kuntaapi.server.tasks.IdTask;
+import fi.otavanopisto.kuntaapi.server.tasks.IdTask.Operation;
 import fi.otavanopisto.restfulptv.client.ApiResponse;
 import fi.otavanopisto.restfulptv.client.model.Organization;
 
@@ -56,17 +55,14 @@ public class PtvOrganizationEntityUpdater extends EntityUpdater {
   @Inject
   private Event<IndexRequest> indexRequest;
   
+  @Inject
+  private OrganizationIdTaskQueue organizationIdTaskQueue;
+  
   @Resource
   private TimerService timerService;
 
   private boolean stopped;
-  private IdUpdateRequestQueue<OrganizationIdUpdateRequest> queue;
-
-  @PostConstruct
-  public void init() {
-    queue = new IdUpdateRequestQueue<>(PtvConsts.IDENTIFIER_NAME);
-  }
-
+  
   @Override
   public String getName() {
     return "organizations";
@@ -89,35 +85,30 @@ public class PtvOrganizationEntityUpdater extends EntityUpdater {
     stopped = true;
   }
   
-  @Asynchronous
-  public void onOrganizationIdUpdateRequest(@Observes OrganizationIdUpdateRequest event) {
-    if (!stopped) {
-      if (!PtvConsts.IDENTIFIER_NAME.equals(event.getId().getSource())) {
-        return;
-      }
-      
-      queue.add(event);
-    }
-  }
-  
   @Timeout
   public void timeout(Timer timer) {
     if (!stopped) {
       if (systemSettingController.isNotTestingOrTestRunning()) {
-        OrganizationIdUpdateRequest updateRequest = queue.next();
-        if (updateRequest != null) {
-          updateOrganization(updateRequest);
-        }
+        executeNextTask();
       }
 
       startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
     }
   }
-
-  private void updateOrganization(OrganizationIdUpdateRequest updateRequest) {
-    updateOrganization(updateRequest.getId(), updateRequest.getOrderIndex());
+  
+  private void executeNextTask() {
+    IdTask<OrganizationId> task = organizationIdTaskQueue.next();
+    if (task != null) {
+      OrganizationId organizationId = task.getId();
+      
+      if (task.getOperation() == Operation.UPDATE) {
+        updateOrganization(organizationId, task.getOrderIndex());
+      } else if (task.getOperation() == Operation.REMOVE) {
+        logger.log(Level.SEVERE, "PTV Organization removal is not implemented");
+      }
+    }
   }
-
+  
   private void updateOrganization(OrganizationId organizationId, Long orderIndex) {
     ApiResponse<Organization> response = ptvApi.getOrganizationApi().findOrganization(organizationId.getId());
     if (response.isOk()) {

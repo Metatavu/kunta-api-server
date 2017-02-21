@@ -15,9 +15,11 @@ import javax.inject.Inject;
 
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.IdUpdater;
-import fi.otavanopisto.kuntaapi.server.discover.OrganizationIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
+import fi.otavanopisto.kuntaapi.server.tasks.IdTask;
+import fi.otavanopisto.kuntaapi.server.tasks.IdTask.Operation;
+import fi.otavanopisto.kuntaapi.server.tasks.TaskRequest;
 import fi.otavanopisto.restfulptv.client.ApiResponse;
 import fi.otavanopisto.restfulptv.client.model.Organization;
 
@@ -41,10 +43,10 @@ public class PtvOrganizationIdUpdater extends IdUpdater {
   
   @Inject
   private IdentifierController identifierController;
-  
-  @Inject
-  private Event<OrganizationIdUpdateRequest> idUpdateRequest;
 
+  @Inject
+  private Event<TaskRequest> taskRequest;
+  
   private boolean stopped;
   private long offset;
   
@@ -98,7 +100,7 @@ public class PtvOrganizationIdUpdater extends IdUpdater {
         Long orderIndex = (long) i + offset;
         OrganizationId organizationId = new OrganizationId(PtvConsts.IDENTIFIER_NAME, organization.getId());
         boolean priority = identifierController.findIdentifierById(organizationId) == null;
-        idUpdateRequest.fire(new OrganizationIdUpdateRequest(organizationId, orderIndex, priority));
+        taskRequest.fire(new TaskRequest(priority, new IdTask<OrganizationId>(Operation.UPDATE, organizationId, orderIndex)));
       }
       
       if (organizations.size() == BATCH_SIZE) {
