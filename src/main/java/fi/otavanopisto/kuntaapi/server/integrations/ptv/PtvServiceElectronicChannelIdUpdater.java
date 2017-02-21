@@ -1,11 +1,9 @@
 package fi.otavanopisto.kuntaapi.server.integrations.ptv;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
-import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
@@ -14,18 +12,18 @@ import javax.ejb.Timer;
 import javax.ejb.TimerConfig;
 import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
-import fi.otavanopisto.kuntaapi.server.discover.ServiceIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.id.ElectronicServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceId;
+import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.ServiceElectronicChannelsTaskQueue;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
+import fi.otavanopisto.kuntaapi.server.tasks.ServiceEntityUpdateTask;
 import fi.otavanopisto.restfulptv.client.ApiResponse;
 import fi.otavanopisto.restfulptv.client.model.ElectronicChannel;
 
@@ -54,17 +52,14 @@ public class PtvServiceElectronicChannelIdUpdater extends EntityUpdater {
 
   @Inject
   private ModificationHashCache modificationHashCache;
+  
+  @Inject
+  private ServiceElectronicChannelsTaskQueue serviceElectronicChannelsTaskQueue;
 
   @Resource
   private TimerService timerService;
 
   private boolean stopped;
-  private List<ServiceId> queue;
-
-  @PostConstruct
-  public void init() {
-    queue = new ArrayList<>();
-  }
 
   @Override
   public String getName() {
@@ -88,28 +83,16 @@ public class PtvServiceElectronicChannelIdUpdater extends EntityUpdater {
     stopped = true;
   }
 
-  public void onServiceIdUpdateRequest(@Observes ServiceIdUpdateRequest event) {
-    if (!stopped) {
-      if (!PtvConsts.IDENTIFIFER_NAME.equals(event.getId().getSource())) {
-        return;      
-      }    
-      
-      if (event.isPriority()) {
-        queue.remove(event.getId());
-        queue.add(0, event.getId());
-      } else {
-        if (!queue.contains(event.getId())) {
-          queue.add(event.getId());
-        }
-      }
-    }
-  }
-
   @Timeout
   public void timeout(Timer timer) {
     if (!stopped) {
-      if (systemSettingController.isNotTestingOrTestRunning() && !queue.isEmpty()) {
-        updateChannelIds(queue.remove(0));
+      if (systemSettingController.isNotTestingOrTestRunning()) {
+        ServiceEntityUpdateTask task = serviceElectronicChannelsTaskQueue.next();
+        if (task != null) {
+          updateChannelIds(task.getServiceId());
+        } else {
+          serviceElectronicChannelsTaskQueue.enqueueTasks(identifierController.listServiceIdsBySource(PtvConsts.IDENTIFIER_NAME));
+        }
       }
 
       startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
@@ -124,7 +107,7 @@ public class PtvServiceElectronicChannelIdUpdater extends EntityUpdater {
         Long orderIndex = (long) i;
         
         ElectronicChannel electronicChannel = electronicChannels.get(i);
-        ElectronicServiceChannelId channelId = new ElectronicServiceChannelId(PtvConsts.IDENTIFIFER_NAME, electronicChannel.getId());
+        ElectronicServiceChannelId channelId = new ElectronicServiceChannelId(PtvConsts.IDENTIFIER_NAME, electronicChannel.getId());
         Identifier identifier = identifierController.findIdentifierById(channelId);
         if (identifier == null) {
           identifier = identifierController.createIdentifier(orderIndex, channelId);
