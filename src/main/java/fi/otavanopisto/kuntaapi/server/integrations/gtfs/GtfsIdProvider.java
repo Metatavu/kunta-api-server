@@ -1,18 +1,17 @@
 package fi.otavanopisto.kuntaapi.server.integrations.gtfs;
 
-import javax.enterprise.context.Dependent;
-
 import org.apache.commons.lang3.ArrayUtils;
 
 import fi.otavanopisto.kuntaapi.server.id.IdType;
 import fi.otavanopisto.kuntaapi.server.integrations.AbstractIdProvider;
+import javax.enterprise.context.ApplicationScoped;
 
 /**
  * Id provider for GTFS integration
  * 
  * @author Heikki Kurhinen
  */
-@Dependent
+@ApplicationScoped
 public class GtfsIdProvider extends AbstractIdProvider {
 
   private static final IdType[] SUPPORTED_TYPES = new IdType[] {

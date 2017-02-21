@@ -100,6 +100,9 @@
     
     <slf4j-api.version>1.7.7</slf4j-api.version>
     
+    <!-- onebusaway-gtfs -->
+    
+    <onebusaway-gtfs.version>1.3.4</onebusaway-gtfs.version>    
     <!-- Test -->
     
     <restassured.version>2.9.0</restassured.version> 
@@ -227,7 +230,7 @@
     <dependency>
       <groupId>org.onebusaway</groupId>
       <artifactId>onebusaway-gtfs</artifactId>
-      <version>1.3.4</version>
+      <version>${onebusaway-gtfs.version}</version>
     </dependency>
     
     <dependency>

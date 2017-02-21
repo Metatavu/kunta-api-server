@@ -20,6 +20,7 @@ import fi.metatavu.kuntaapi.server.rest.model.ScheduleException;
 import fi.metatavu.kuntaapi.server.rest.model.Stop;
 import fi.metatavu.kuntaapi.server.rest.model.StopTime;
 import fi.metatavu.kuntaapi.server.rest.model.Trip;
+import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportAgencyId;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportRouteId;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportScheduleId;
@@ -27,10 +28,20 @@ import fi.otavanopisto.kuntaapi.server.id.PublicTransportStopId;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportStopTimeId;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportTripId;
 import fi.otavanopisto.kuntaapi.server.integrations.PublicTransportScheduleExceptionType;
+import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.inject.Inject;
 
 @ApplicationScoped
 public class GtfsTranslator {
 
+  @Inject
+  private Logger logger;
+  
+  @Inject
+  private OrganizationSettingController organizationSettingController;
+  
   public Agency translateAgency(PublicTransportAgencyId kuntaApiId, org.onebusaway.gtfs.model.Agency agency) {
     Agency result = new Agency();
     result.setId(kuntaApiId.getId());
@@ -42,13 +53,18 @@ public class GtfsTranslator {
   }
   
   public Schedule translateSchedule(PublicTransportScheduleId kuntaApiId, ServiceCalendar serviceCalendar, List<ServiceCalendarDate> exceptions) {
+    TimeZone organizationGtfsTimeZone = getOrganizationTimeZone(kuntaApiId.getOrganizationId());
+    if(organizationGtfsTimeZone == null) {
+      return null;
+    }
+    
     Schedule result = new Schedule();
     result.setId(kuntaApiId.getId());
     result.setName(serviceCalendar.getServiceId().getId());
     result.setDays(parseScheduleDays(serviceCalendar));
-    result.setStartDate(parseServiceDateTime(serviceCalendar.getStartDate()));
-    result.setEndDate(parseServiceDateTime(serviceCalendar.getEndDate()));
-    result.setExceptions(parseScheduleExceptions(exceptions));
+    result.setStartDate(parseServiceDateTime(serviceCalendar.getStartDate(), organizationGtfsTimeZone));
+    result.setEndDate(parseServiceDateTime(serviceCalendar.getEndDate(), organizationGtfsTimeZone));
+    result.setExceptions(parseScheduleExceptions(exceptions, organizationGtfsTimeZone));
     
     return result;
     
@@ -97,18 +113,34 @@ public class GtfsTranslator {
     return result;
   }
   
-  private List<ScheduleException> parseScheduleExceptions(List<ServiceCalendarDate> exceptions) {
+  private TimeZone getOrganizationTimeZone(OrganizationId organizationId) {
+    String timeZoneString = organizationSettingController.getSettingValue(organizationId, GtfsConsts.ORGANIZATION_SETTING_GTFS_TIMEZONE);
+    if(timeZoneString == null) {
+      logger.log(Level.SEVERE, String.format("Missing organization gtfs timezone setting for organization %s", organizationId));
+      return null;
+    }
+    
+    TimeZone result = TimeZone.getTimeZone(timeZoneString);
+    if(result == null) {
+      logger.log(Level.SEVERE, String.format("Malformed organization gtfs timezone setting for organization %s", organizationId));
+      return null;
+    }
+    
+    return result;
+  }
+  
+  private List<ScheduleException> parseScheduleExceptions(List<ServiceCalendarDate> exceptions, TimeZone organizationGtfsTimeZone) {
     List<ScheduleException> results = new ArrayList<>(exceptions.size());
     for(ServiceCalendarDate exception : exceptions) {
-      results.add(parseScheduleException(exception));
+      results.add(parseScheduleException(exception, organizationGtfsTimeZone));
     }
     
     return results;
   }
   
-  private ScheduleException parseScheduleException(ServiceCalendarDate exception) {
+  private ScheduleException parseScheduleException(ServiceCalendarDate exception, TimeZone organizationGtfsTimeZone) {
     ScheduleException result = new ScheduleException();
-    result.setDate(parseServiceDateTime(exception.getDate()));
+    result.setDate(parseServiceDateTime(exception.getDate(), organizationGtfsTimeZone));
     result.setType(parseScheduleExceptionType(exception.getExceptionType()));
     return result;
   }
@@ -123,12 +155,12 @@ public class GtfsTranslator {
     return null;
   }
   
-  private OffsetDateTime parseServiceDateTime(ServiceDate serviceDate) {
+  private OffsetDateTime parseServiceDateTime(ServiceDate serviceDate, TimeZone timeZone) {
     if(serviceDate == null) {
       return null;
     }
     
-    Calendar serviceCalendar = serviceDate.getAsCalendar(TimeZone.getDefault());
+    Calendar serviceCalendar = serviceDate.getAsCalendar(timeZone);
     
     if(serviceCalendar == null) {
       return null;

@@ -111,6 +111,30 @@ public abstract class AbstractTest {
   protected void deleteAllServices() {
     deleteAllIdentifiers("SERVICE");
   }
+  
+  protected void deleteAllAgencies() {
+    deleteAllIdentifiers("PUBLIC_TRANSPORT_AGENCY");
+  }
+  
+  protected void deleteAllSchedules() {
+    deleteAllIdentifiers("PUBLIC_TRANSPORT_SCHEDULE");
+  }
+  
+  protected void deleteAllRoutes() {
+    deleteAllIdentifiers("PUBLIC_TRANSPORT_ROUTE");
+  }
+  
+  protected void deleteAllTrips() {
+    deleteAllIdentifiers("PUBLIC_TRANSPORT_TRIP");
+  }
+  
+  protected void deleteAllStops() {
+    deleteAllIdentifiers("PUBLIC_TRANSPORT_STOP");
+  }
+  
+  protected void deleteAllStopTimes() {
+    deleteAllIdentifiers("PUBLIC_TRANSPORT_STOPTIME");
+  }
 
   private void deleteAllIdentifiers(String type) {
     deleteAllIdentifiers(Arrays.asList( type ));

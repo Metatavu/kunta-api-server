@@ -22,6 +22,8 @@ import fi.otavanopisto.kuntaapi.test.AbstractIntegrationTest;
 @SuppressWarnings ("squid:S1192")
 public class ScheduleTestsIT extends AbstractIntegrationTest{
 
+  private static final String TIMEZONE = "Europe/Helsinki";
+  
   /**
    * Starts WireMock
    */
@@ -49,6 +51,7 @@ public class ScheduleTestsIT extends AbstractIntegrationTest{
     getPtvMocker().endMock();
     deletePtvSettings();
     deleteGtfsSettings(organizationId);
+    deleteAllSchedules();
   }
   
   @Test
@@ -67,9 +70,9 @@ public class ScheduleTestsIT extends AbstractIntegrationTest{
       .body("days[1][0]", is(6))
       .body("exceptions[1].size()", is(10))
       .body("exceptions[1][1].type", is("REMOVE"))
-      .body("exceptions[1][1].date",sameInstant(getInstant(2016, 7, 30, 0, 0, ZoneId.systemDefault())))
-      .body("startDate[1]", sameInstant(getInstant(2016, 5, 1, 0, 0, ZoneId.systemDefault())))
-      .body("endDate[1]", sameInstant(getInstant(2024, 4, 30, 0, 0, ZoneId.systemDefault())));
+      .body("exceptions[1][1].date",sameInstant(getInstant(2016, 7, 30, 0, 0, ZoneId.of(TIMEZONE))))
+      .body("startDate[1]", sameInstant(getInstant(2016, 5, 1, 0, 0, ZoneId.of(TIMEZONE))))
+      .body("endDate[1]", sameInstant(getInstant(2024, 4, 30, 0, 0, ZoneId.of(TIMEZONE))));
   }
   
   @Test
@@ -88,9 +91,9 @@ public class ScheduleTestsIT extends AbstractIntegrationTest{
       .body("days[0]", is(1))
       .body("exceptions.size()", is(22))
       .body("exceptions[1].type", is("REMOVE"))
-      .body("exceptions[1].date",sameInstant(getInstant(2017, 1, 23, 0, 0, ZoneId.systemDefault())))
-      .body("startDate", sameInstant(getInstant(2016, 5, 1, 0, 0, ZoneId.systemDefault())))
-      .body("endDate", sameInstant(getInstant(2024, 4, 30, 0, 0, ZoneId.systemDefault())));
+      .body("exceptions[1].date",sameInstant(getInstant(2017, 1, 23, 0, 0, ZoneId.of(TIMEZONE))))
+      .body("startDate", sameInstant(getInstant(2016, 5, 1, 0, 0, ZoneId.of(TIMEZONE))))
+      .body("endDate", sameInstant(getInstant(2024, 4, 30, 0, 0, ZoneId.of(TIMEZONE))));
   }
   
   @Test
@@ -123,10 +126,12 @@ public class ScheduleTestsIT extends AbstractIntegrationTest{
   
   private void createGtfsSettings(String organizationId) {
     insertOrganizationSetting(organizationId, GtfsConsts.ORGANIZATION_SETTING_GTFS_PATH, getClass().getClassLoader().getResource("gtfs").getFile());
+    insertOrganizationSetting(organizationId, GtfsConsts.ORGANIZATION_SETTING_GTFS_TIMEZONE, TIMEZONE);
     flushCache();
   }
    
   private void deleteGtfsSettings(String organizationId) {
     deleteOrganizationSetting(organizationId, GtfsConsts.ORGANIZATION_SETTING_GTFS_PATH);
+    deleteOrganizationSetting(organizationId, GtfsConsts.ORGANIZATION_SETTING_GTFS_TIMEZONE);
   }
 }

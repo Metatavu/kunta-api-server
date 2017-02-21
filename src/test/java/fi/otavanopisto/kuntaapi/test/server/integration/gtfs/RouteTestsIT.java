@@ -21,6 +21,8 @@ import fi.otavanopisto.kuntaapi.test.AbstractIntegrationTest;
 @SuppressWarnings ("squid:S1192")
 public class RouteTestsIT extends AbstractIntegrationTest {
   
+  private static final String TIMEZONE = "Europe/Helsinki";
+  
   /**
    * Starts WireMock
    */
@@ -48,6 +50,7 @@ public class RouteTestsIT extends AbstractIntegrationTest {
     getPtvMocker().endMock();
     deletePtvSettings();
     deleteGtfsSettings(organizationId);
+    deleteAllRoutes();
   }
 
   @Test
@@ -123,10 +126,12 @@ public class RouteTestsIT extends AbstractIntegrationTest {
   
   private void createGtfsSettings(String organizationId) {
     insertOrganizationSetting(organizationId, GtfsConsts.ORGANIZATION_SETTING_GTFS_PATH, getClass().getClassLoader().getResource("gtfs").getFile());
+    insertOrganizationSetting(organizationId, GtfsConsts.ORGANIZATION_SETTING_GTFS_TIMEZONE, TIMEZONE);
     flushCache();
   }
    
   private void deleteGtfsSettings(String organizationId) {
     deleteOrganizationSetting(organizationId, GtfsConsts.ORGANIZATION_SETTING_GTFS_PATH);
+    deleteOrganizationSetting(organizationId, GtfsConsts.ORGANIZATION_SETTING_GTFS_TIMEZONE);
   }
 }

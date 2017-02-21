@@ -143,12 +143,18 @@ public class GtfsIdUpdater extends IdUpdater {
   }
   
   private void updateGtfsEntities(OrganizationId organizationId) {
+    if(organizationSettingController.getSettingValue(organizationId, GtfsConsts.ORGANIZATION_SETTING_GTFS_TIMEZONE) == null) {
+      logger.log(Level.WARNING, () -> String.format("Tried to update organization: %s GTFS - data without gtfs timezone", organizationId.getId()));
+      return;
+    }
+    
     GtfsReader reader = new GtfsReader();
     String gtfsFolderPath = organizationSettingController.getSettingValue(organizationId, GtfsConsts.ORGANIZATION_SETTING_GTFS_PATH);
     if(gtfsFolderPath == null) {
       logger.log(Level.WARNING, () -> String.format("Tried to update organization: %s GTFS - data for without folder path", organizationId.getId()));
       return;
     }
+    
     File organizationGtfsFolder = new File(gtfsFolderPath);
     if(!organizationGtfsFolder.exists() || !organizationGtfsFolder.isDirectory()) {
       logger.log(Level.WARNING, () -> String.format("gtfs folder with path %s for organization %s doesnt exist", gtfsFolderPath, organizationId.getId()));
