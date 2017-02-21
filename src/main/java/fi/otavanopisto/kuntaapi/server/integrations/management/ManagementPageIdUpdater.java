@@ -22,13 +22,15 @@ import fi.metatavu.management.client.ApiResponse;
 import fi.metatavu.management.client.DefaultApi;
 import fi.metatavu.management.client.model.Page;
 import fi.otavanopisto.kuntaapi.server.discover.IdUpdater;
-import fi.otavanopisto.kuntaapi.server.discover.PageIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.integrations.management.tasks.OrganizationPagesTaskQueue;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
+import fi.otavanopisto.kuntaapi.server.tasks.IdTask;
+import fi.otavanopisto.kuntaapi.server.tasks.IdTask.Operation;
 import fi.otavanopisto.kuntaapi.server.tasks.OrganizationEntityUpdateTask;
+import fi.otavanopisto.kuntaapi.server.tasks.TaskRequest;
 
 @ApplicationScoped
 @Singleton
@@ -54,7 +56,7 @@ public class ManagementPageIdUpdater extends IdUpdater {
   private OrganizationSettingController organizationSettingController; 
   
   @Inject
-  private Event<PageIdUpdateRequest> idUpdateRequest;
+  private Event<TaskRequest> taskRequest;
   
   @Inject
   private OrganizationPagesTaskQueue organizationPagesTaskQueue;
@@ -122,7 +124,7 @@ public class ManagementPageIdUpdater extends IdUpdater {
     for (int i = 0, l = managementPages.size(); i < l; i++) {
       Page managementPage = managementPages.get(i);
       PageId pageId = new PageId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementPage.getId()));
-      idUpdateRequest.fire(new PageIdUpdateRequest(organizationId, pageId, (long) i, false));
+      taskRequest.fire(new TaskRequest(false, new IdTask<PageId>(Operation.UPDATE, pageId, (long) i)));
     }
   }
   

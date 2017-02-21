@@ -17,8 +17,6 @@ import fi.metatavu.management.client.model.Banner;
 import fi.metatavu.management.client.model.Page;
 import fi.metatavu.management.client.model.Post;
 import fi.metatavu.management.client.model.Tile;
-import fi.otavanopisto.kuntaapi.server.discover.PageIdRemoveRequest;
-import fi.otavanopisto.kuntaapi.server.discover.PageIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.id.BannerId;
 import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
@@ -44,12 +42,6 @@ public class ManagementWebhookHandler implements WebhookHandler {
   @Inject
   private Event<TaskRequest> taskRequest;
   
-  @Inject
-  private Event<PageIdUpdateRequest> pageIdUpdateRequest;
-
-  @Inject
-  private Event<PageIdRemoveRequest> pageIdRemoveRequest;
-
   @Override
   public String getType() {
     return "management";
@@ -135,7 +127,7 @@ public class ManagementWebhookHandler implements WebhookHandler {
     switch (payload.getPostType()) {
       case "page":
         PageId pageId = new PageId(organizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
-        pageIdRemoveRequest.fire(new PageIdRemoveRequest(organizationId, pageId));
+        taskRequest.fire(new TaskRequest(false, new IdTask<PageId>(Operation.REMOVE, pageId)));
         return true;
       case "banner":
         BannerId bannerId = new BannerId(organizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
@@ -159,7 +151,7 @@ public class ManagementWebhookHandler implements WebhookHandler {
     PageId pageId = new PageId(organizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
     Long orderIndex = getPageOrderIndex(pageId);
     if (orderIndex != null) {
-      pageIdUpdateRequest.fire(new PageIdUpdateRequest(organizationId, pageId, orderIndex, true));
+      taskRequest.fire(new TaskRequest(true, new IdTask<PageId>(Operation.UPDATE, pageId, orderIndex)));
     } else {
       logger.warning(String.format("Failed to resolve order index for page %s", pageId));
     }
