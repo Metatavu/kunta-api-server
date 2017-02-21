@@ -154,7 +154,7 @@ public class GtfsRouteEntityUpdater extends EntityUpdater {
 
     identifierRelationController.setParentId(identifier, kuntaApiOrganizationId);
     
-    PublicTransportRouteId kuntaApiRouteId = gtfsIdFactory.createKuntaApiId(PublicTransportRouteId.class, kuntaApiOrganizationId, identifier);
+    PublicTransportRouteId kuntaApiRouteId = gtfsIdFactory.createKuntaApiId(PublicTransportRouteId.class, identifier);
     fi.metatavu.kuntaapi.server.rest.model.Route kuntaApiRoute = gtfsTranslator.translateRoute(kuntaApiRouteId, gtfsRoute, kuntaApiAgencyId);
     
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(kuntaApiRoute));

@@ -163,7 +163,7 @@ public class GtfsTripEntityUpdater extends EntityUpdater {
 
     identifierRelationController.setParentId(identifier, kuntaApiOrganizationId);
     
-    PublicTransportTripId kuntaApiTripId = gtfsIdFactory.createKuntaApiId(PublicTransportTripId.class, kuntaApiOrganizationId, identifier);
+    PublicTransportTripId kuntaApiTripId = gtfsIdFactory.createKuntaApiId(PublicTransportTripId.class, identifier);
     fi.metatavu.kuntaapi.server.rest.model.Trip kuntaApiTrip = gtfsTranslator.translateTrip(kuntaApiTripId, gtfsTrip, kuntaApiRouteId, kuntaApiScheduleId);
     
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(kuntaApiTrip));

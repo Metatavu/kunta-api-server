@@ -162,7 +162,7 @@ public class GtfsStopTimeEntityUpdater extends EntityUpdater {
 
     identifierRelationController.setParentId(identifier, kuntaApiOrganizationId);
     
-    PublicTransportStopTimeId kuntaApiStopTimeId = gtfsIdFactory.createKuntaApiId(PublicTransportStopTimeId.class, kuntaApiOrganizationId, identifier);
+    PublicTransportStopTimeId kuntaApiStopTimeId = gtfsIdFactory.createKuntaApiId(PublicTransportStopTimeId.class, identifier);
     fi.metatavu.kuntaapi.server.rest.model.StopTime kuntaApiStopTime = gtfsTranslator.translateStopTime(kuntaApiStopTimeId, gtfsStopTime, kuntaApiStopId, kuntaApiTripId);
     
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(kuntaApiStopTime));

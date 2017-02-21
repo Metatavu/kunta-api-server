@@ -141,7 +141,7 @@ public class GtfsAgencyEntityUpdater extends EntityUpdater {
 
     identifierRelationController.setParentId(identifier, kuntaApiOrganizationId);
     
-    PublicTransportAgencyId kuntaApiAgencyId = gtfsIdFactory.createKuntaApiId(PublicTransportAgencyId.class, kuntaApiOrganizationId, identifier);
+    PublicTransportAgencyId kuntaApiAgencyId = gtfsIdFactory.createKuntaApiId(PublicTransportAgencyId.class, identifier);
     fi.metatavu.kuntaapi.server.rest.model.Agency agency = gtfsTranslator.translateAgency(kuntaApiAgencyId, gtfsAgency);
     
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(agency));

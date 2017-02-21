@@ -142,7 +142,7 @@ public class GtfsStopEntityUpdater extends EntityUpdater {
 
     identifierRelationController.setParentId(identifier, kuntaApiOrganizationId);
     
-    PublicTransportStopId kuntaApiStopId = gtfsIdFactory.createKuntaApiId(PublicTransportStopId.class, kuntaApiOrganizationId, identifier);
+    PublicTransportStopId kuntaApiStopId = gtfsIdFactory.createKuntaApiId(PublicTransportStopId.class, identifier);
     fi.metatavu.kuntaapi.server.rest.model.Stop kuntaApiStop = gtfsTranslator.translateStop(kuntaApiStopId, gtfsStop);
     
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(kuntaApiStop));

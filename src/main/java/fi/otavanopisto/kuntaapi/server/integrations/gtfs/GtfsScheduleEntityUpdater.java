@@ -141,7 +141,7 @@ public class GtfsScheduleEntityUpdater extends EntityUpdater {
 
     identifierRelationController.setParentId(identifier, kuntaApiOrganizationId);
     
-    PublicTransportScheduleId kuntaApiScheduleId = gtfsIdFactory.createKuntaApiId(PublicTransportScheduleId.class, kuntaApiOrganizationId, identifier);
+    PublicTransportScheduleId kuntaApiScheduleId = gtfsIdFactory.createKuntaApiId(PublicTransportScheduleId.class, identifier);
     fi.metatavu.kuntaapi.server.rest.model.Schedule shedule = gtfsTranslator.translateSchedule(kuntaApiScheduleId, gtfsServiceCalendar, updateRequest.getExceptions());
     
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(shedule));
