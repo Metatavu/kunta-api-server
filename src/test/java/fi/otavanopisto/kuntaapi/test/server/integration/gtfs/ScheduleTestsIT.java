@@ -21,9 +21,7 @@ import fi.otavanopisto.kuntaapi.test.AbstractIntegrationTest;
 
 @SuppressWarnings ("squid:S1192")
 public class ScheduleTestsIT extends AbstractIntegrationTest{
-  
-  private static final ZoneId TIMEZONE_ID = ZoneId.of("Europe/Helsinki");
-  
+
   /**
    * Starts WireMock
    */
@@ -69,9 +67,9 @@ public class ScheduleTestsIT extends AbstractIntegrationTest{
       .body("days[1][0]", is(6))
       .body("exceptions[1].size()", is(10))
       .body("exceptions[1][1].type", is("REMOVE"))
-      .body("exceptions[1][1].date",sameInstant(getInstant(2016, 7, 30, 0, 0, TIMEZONE_ID)))
-      .body("startDate[1]", sameInstant(getInstant(2016, 5, 1, 0, 0, TIMEZONE_ID)))
-      .body("endDate[1]", sameInstant(getInstant(2024, 4, 30, 0, 0, TIMEZONE_ID)));
+      .body("exceptions[1][1].date",sameInstant(getInstant(2016, 7, 30, 0, 0, ZoneId.systemDefault())))
+      .body("startDate[1]", sameInstant(getInstant(2016, 5, 1, 0, 0, ZoneId.systemDefault())))
+      .body("endDate[1]", sameInstant(getInstant(2024, 4, 30, 0, 0, ZoneId.systemDefault())));
   }
   
   @Test
@@ -90,9 +88,9 @@ public class ScheduleTestsIT extends AbstractIntegrationTest{
       .body("days[0]", is(1))
       .body("exceptions.size()", is(22))
       .body("exceptions[1].type", is("REMOVE"))
-      .body("exceptions[1].date",sameInstant(getInstant(2017, 1, 23, 0, 0, TIMEZONE_ID)))
-      .body("startDate", sameInstant(getInstant(2016, 5, 1, 0, 0, TIMEZONE_ID)))
-      .body("endDate", sameInstant(getInstant(2024, 4, 30, 0, 0, TIMEZONE_ID)));
+      .body("exceptions[1].date",sameInstant(getInstant(2017, 1, 23, 0, 0, ZoneId.systemDefault())))
+      .body("startDate", sameInstant(getInstant(2016, 5, 1, 0, 0, ZoneId.systemDefault())))
+      .body("endDate", sameInstant(getInstant(2024, 4, 30, 0, 0, ZoneId.systemDefault())));
   }
   
   @Test
