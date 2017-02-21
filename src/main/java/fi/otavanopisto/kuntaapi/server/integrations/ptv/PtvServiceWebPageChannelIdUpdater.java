@@ -2,6 +2,7 @@ package fi.otavanopisto.kuntaapi.server.integrations.ptv;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.annotation.Resource;
@@ -18,6 +19,7 @@ import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
+import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.ServiceId;
 import fi.otavanopisto.kuntaapi.server.id.WebPageChannelId;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.ServiceWebPageChannelsTaskQueue;
@@ -43,6 +45,9 @@ public class PtvServiceWebPageChannelIdUpdater extends EntityUpdater {
 
   @Inject
   private PtvApi ptvApi;
+  
+  @Inject
+  private IdController idController;
   
   @Inject
   private IdentifierController identifierController;
@@ -89,8 +94,14 @@ public class PtvServiceWebPageChannelIdUpdater extends EntityUpdater {
     startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
   }
 
-  private void updateChannelIds(ServiceId serviceId) {
-    ApiResponse<List<WebPageChannel >> response = ptvApi.getServicesApi().listServiceWebPageChannels(serviceId.getId(), null, null);
+  private void updateChannelIds(ServiceId kuntaApiServiceId) {
+    ServiceId ptvServiceId = idController.translateServiceId(kuntaApiServiceId, PtvConsts.IDENTIFIER_NAME);
+    if (ptvServiceId == null) {
+      logger.log(Level.SEVERE, () -> String.format("Failed to translate %s into PTV serviceId", kuntaApiServiceId));
+      return;
+    }
+
+    ApiResponse<List<WebPageChannel >> response = ptvApi.getServicesApi().listServiceWebPageChannels(ptvServiceId.getId(), null, null);
     if (response.isOk()) {
       List<WebPageChannel> webPageChannels = response.getResponse();
       for (int i = 0; i < webPageChannels.size(); i++) {
@@ -104,11 +115,11 @@ public class PtvServiceWebPageChannelIdUpdater extends EntityUpdater {
           identifier = identifierController.updateIdentifier(identifier, orderIndex);
         }
         
-        identifierRelationController.setParentId(identifier, serviceId);
+        identifierRelationController.setParentId(identifier, kuntaApiServiceId);
         modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(webPageChannel));
       }
     } else {
-      logger.warning(String.format("Service channel %s processing failed on [%d] %s", serviceId.getId(), response.getStatus(), response.getMessage()));
+      logger.warning(String.format("Service channel %s processing failed on [%d] %s", kuntaApiServiceId.getId(), response.getStatus(), response.getMessage()));
     }
   }
 
