@@ -4,10 +4,8 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
-import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.ejb.AccessTimeout;
-import javax.ejb.Asynchronous;
 import javax.ejb.Singleton;
 import javax.ejb.Timeout;
 import javax.ejb.Timer;
@@ -15,11 +13,9 @@ import javax.ejb.TimerConfig;
 import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Event;
-import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 
 import org.apache.commons.codec.digest.DigestUtils;
-import org.apache.commons.lang3.StringUtils;
 
 import fi.metatavu.kuntaapi.server.rest.model.Attachment;
 import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
@@ -31,9 +27,6 @@ import fi.otavanopisto.kuntaapi.server.controllers.IdMapController;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
-import fi.otavanopisto.kuntaapi.server.discover.IdUpdateRequestQueue;
-import fi.otavanopisto.kuntaapi.server.discover.PageIdRemoveRequest;
-import fi.otavanopisto.kuntaapi.server.discover.PageIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.BaseId;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
@@ -48,8 +41,11 @@ import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementAttachmentCache;
 import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementPageCache;
 import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementPageContentCache;
+import fi.otavanopisto.kuntaapi.server.integrations.management.tasks.PageIdTaskQueue;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
+import fi.otavanopisto.kuntaapi.server.tasks.IdTask;
+import fi.otavanopisto.kuntaapi.server.tasks.IdTask.Operation;
 
 @ApplicationScoped
 @Singleton
@@ -103,17 +99,14 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
 
   @Inject
   private Event<IndexRemoveRequest> indexRemoveRequest;
-
+  
+  @Inject
+  private PageIdTaskQueue pageIdTaskQueue;
+  
   @Resource
   private TimerService timerService;
 
   private boolean stopped;
-  private IdUpdateRequestQueue<PageIdUpdateRequest> queue;
-
-  @PostConstruct
-  public void init() {
-    queue = new IdUpdateRequestQueue<>(ManagementConsts.IDENTIFIER_NAME);
-  }
 
   @Override
   public String getName() {
@@ -137,57 +130,37 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
     stopped = true;
   }
   
-  @Asynchronous
-  public void onPageIdUpdateRequest(@Observes PageIdUpdateRequest event) {
-    if (!stopped) {
-      PageId pageId = event.getId();
-      
-      if (!StringUtils.equals(pageId.getSource(), ManagementConsts.IDENTIFIER_NAME)) {
-        return;
-      }
-      
-      queue.add(event);
-    }
-  }
-  
-  @Asynchronous
-  public void onPageIdRemoveRequest(@Observes PageIdRemoveRequest event) {
-    if (!stopped) {
-      PageId pageId = event.getId();
-      
-      if (!StringUtils.equals(pageId.getSource(), ManagementConsts.IDENTIFIER_NAME)) {
-        return;
-      }
-      
-      deletePage(event, pageId);
-    }
-  }
-  
   @Timeout
   public void timeout(Timer timer) {
     if (!stopped) {
       if (systemSettingController.isNotTestingOrTestRunning()) {
-        PageIdUpdateRequest updateRequest = queue.next();
-        if (updateRequest != null) {
-          updateManagementPage(updateRequest);
-        }
+        executeNextTask();
       }
 
       startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
     }
   }
   
-  private void updateManagementPage(PageIdUpdateRequest updateRequest) {
-    OrganizationId organizationId = updateRequest.getOrganizationId();
-    PageId pageId = updateRequest.getId();
+  private void executeNextTask() {
+    IdTask<PageId> task = pageIdTaskQueue.next();
+    if (task != null) {
+      if (task.getOperation() == Operation.UPDATE) {
+        updateManagementPage(task.getId(), task.getOrderIndex()); 
+      } else if (task.getOperation() == Operation.REMOVE) {
+        deleteManagementPage(task.getId());
+      }
+    }
+  }
+  
+  private void updateManagementPage(PageId managementPageId, Long orderIndex) {
+    OrganizationId organizationId = managementPageId.getOrganizationId();
     DefaultApi api = managementApi.getApi(organizationId);
-    Long orderIndex = updateRequest.getOrderIndex();
     
-    ApiResponse<Page> response = api.wpV2PagesIdGet(pageId.getId(), null, null, null);
+    ApiResponse<Page> response = api.wpV2PagesIdGet(managementPageId.getId(), null, null, null);
     if (response.isOk()) {
       updateManagementPage(organizationId, api, response.getResponse(), orderIndex);
     } else {
-      logger.warning(String.format("Find organization %s page %s failed on [%d] %s", organizationId.getId(), pageId.toString(), response.getStatus(), response.getMessage()));
+      logger.warning(String.format("Find organization %s page %s failed on [%d] %s", organizationId.getId(), managementPageId.toString(), response.getStatus(), response.getMessage()));
     }
   }
   
@@ -273,13 +246,12 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
     }
   }
 
-  private void deletePage(PageIdRemoveRequest event, PageId managementPageId) {
-    OrganizationId organizationId = event.getOrganizationId();
+  private void deleteManagementPage(PageId managementPageId) {
+    OrganizationId organizationId = managementPageId.getOrganizationId();
     
     Identifier pageIdentifier = identifierController.findIdentifierById(managementPageId);
     if (pageIdentifier != null) {
       PageId kuntaApiPageId = new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, pageIdentifier.getKuntaApiId());
-      queue.remove(managementPageId);
       modificationHashCache.clear(pageIdentifier.getKuntaApiId());
       pageCache.clear(kuntaApiPageId);
       pageContentCache.clear(kuntaApiPageId);
