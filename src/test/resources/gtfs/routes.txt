@@ -1,0 +1,4 @@
+"route_id","agency_id","route_short_name","route_long_name","route_type"
+"1 AC","6949","1 AC","Tori-Tuppurala-Tori","3"
+"1 A","6714","1 A","Tori-Tuppurala-Tori","3"
+"1 AB","6743","1 AB","Tori-Tuppurala-Tori","3"

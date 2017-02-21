@@ -19,6 +19,12 @@ import fi.otavanopisto.kuntaapi.server.id.MenuId;
 import fi.otavanopisto.kuntaapi.server.id.MenuItemId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
+import fi.otavanopisto.kuntaapi.server.id.PublicTransportAgencyId;
+import fi.otavanopisto.kuntaapi.server.id.PublicTransportRouteId;
+import fi.otavanopisto.kuntaapi.server.id.PublicTransportScheduleId;
+import fi.otavanopisto.kuntaapi.server.id.PublicTransportStopId;
+import fi.otavanopisto.kuntaapi.server.id.PublicTransportStopTimeId;
+import fi.otavanopisto.kuntaapi.server.id.PublicTransportTripId;
 import fi.otavanopisto.kuntaapi.server.id.TileId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.persistence.dao.IdentifierRelationDAO;
@@ -46,7 +52,7 @@ public class IdentifierRelationController {
   /**
    * Adds a child reference for parent identifier
    * 
-   * @param parentId parent identifier
+   * @param parentIdentifier
    * @param childIdentifier child identifier
    */
   public void addChild(Identifier parentIdentifier, Identifier childIdentifier) {
@@ -273,6 +279,118 @@ public class IdentifierRelationController {
     return result;
   }
   
+  /**
+   * Lists Public transport agencies ids by parent id. 
+   * 
+   * @param parentId parent id
+   * @return transport agencies ids by parent id
+   */
+  public List<PublicTransportAgencyId> listPublicTransportAgencyIdsBySourceAndParentId(String source, BaseId parentId) {
+    List<Identifier> identifiers = listChildIdentifiersByParentSourceAndType(parentId, source, IdType.PUBLIC_TRANSPORT_AGENCY);
+    List<PublicTransportAgencyId> result = new ArrayList<>(identifiers.size());
+    
+    for (Identifier identifier : identifiers) {
+      OrganizationId organizationId = new OrganizationId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getOrganizationKuntaApiId());
+      result.add(new PublicTransportAgencyId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId()));
+    }
+    
+    return result;
+  }
+  
+  /**
+   * Lists Public transport schedules ids by parent id. 
+   * 
+   * @param parentId parent id
+   * @return transport agencies ids by parent id
+   */
+  public List<PublicTransportScheduleId> listPublicTransportScheduleIdsBySourceAndParentId(String source, BaseId parentId) {
+    List<Identifier> identifiers = listChildIdentifiersByParentSourceAndType(parentId, source, IdType.PUBLIC_TRANSPORT_SCHEDULE);
+    List<PublicTransportScheduleId> result = new ArrayList<>(identifiers.size());
+    
+    for (Identifier identifier : identifiers) {
+      OrganizationId organizationId = new OrganizationId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getOrganizationKuntaApiId());
+      result.add(new PublicTransportScheduleId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId()));
+    }
+    
+    return result;
+  }
+  
+  /**
+   * Lists Public transport route ids by parent id and source. 
+   * 
+   * @param source source type
+   * @param parentId parent id
+   * @return transport routes ids by parent id
+   */
+  public List<PublicTransportRouteId> listPublicTransportRouteIdsBySourceAndParentId(String source, BaseId parentId) {
+    List<Identifier> identifiers = listChildIdentifiersByParentSourceAndType(parentId, source, IdType.PUBLIC_TRANSPORT_ROUTE);
+    List<PublicTransportRouteId> result = new ArrayList<>(identifiers.size());
+    
+    for (Identifier identifier : identifiers) {
+      OrganizationId organizationId = new OrganizationId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getOrganizationKuntaApiId());
+      result.add(new PublicTransportRouteId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId()));
+    }
+    
+    return result;
+  }
+  
+  /**
+   * Lists Public transport stop ids by parent id and source. 
+   * 
+   * @param source source type
+   * @param parentId parent id
+   * @return transport stops ids by parent id
+   */
+  public List<PublicTransportStopId> listPublicTransportStopIdsBySourceAndParentId(String source, BaseId parentId) {
+    List<Identifier> identifiers = listChildIdentifiersByParentSourceAndType(parentId, source, IdType.PUBLIC_TRANSPORT_STOP);
+    List<PublicTransportStopId> result = new ArrayList<>(identifiers.size());
+    
+    for (Identifier identifier : identifiers) {
+      OrganizationId organizationId = new OrganizationId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getOrganizationKuntaApiId());
+      result.add(new PublicTransportStopId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId()));
+    }
+    
+    return result;
+  }
+  
+  /**
+   * Lists Public transport stopTime ids by parent id and source. 
+   * 
+   * @param source source type
+   * @param parentId parent id
+   * @return transport stopTimes ids by parent id
+   */
+  public List<PublicTransportStopTimeId> listPublicTransportStopTimeIdsBySourceAndParentId(String source, BaseId parentId) {
+    List<Identifier> identifiers = listChildIdentifiersByParentSourceAndType(parentId, source, IdType.PUBLIC_TRANSPORT_STOPTIME);
+    List<PublicTransportStopTimeId> result = new ArrayList<>(identifiers.size());
+    
+    for (Identifier identifier : identifiers) {
+      OrganizationId organizationId = new OrganizationId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getOrganizationKuntaApiId());
+      result.add(new PublicTransportStopTimeId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId()));
+    }
+    
+    return result;
+  }
+  
+  /**
+   * Lists Public transport trip ids by parent id and source. 
+   * 
+   * @param source source type
+   * @param parentId parent id
+   * @return transport trips ids by parent id
+   */
+  public List<PublicTransportTripId> listPublicTransportTripIdsBySourceAndParentId(String source, BaseId parentId) {
+    List<Identifier> identifiers = listChildIdentifiersByParentSourceAndType(parentId, source, IdType.PUBLIC_TRANSPORT_TRIP);
+    List<PublicTransportTripId> result = new ArrayList<>(identifiers.size());
+    
+    for (Identifier identifier : identifiers) {
+      OrganizationId organizationId = new OrganizationId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getOrganizationKuntaApiId());
+      result.add(new PublicTransportTripId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId()));
+    }
+    
+    return result;
+  }
+  
   private List<Identifier> listChildIdentifiersByParentSourceAndType(BaseId parentId, String source, IdType type) {
     Identifier parentIdentifier = identifierController.findIdentifierById(parentId);
     if (parentIdentifier == null) {
@@ -302,5 +420,6 @@ public class IdentifierRelationController {
     
     return identifierRelationDAO.findByParentAndChild(parentIdentifier, childIdentifier);
   }
+
   
 }

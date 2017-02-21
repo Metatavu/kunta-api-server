@@ -20,6 +20,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 
 import fi.metatavu.kuntaapi.server.rest.OrganizationsApi;
+import fi.metatavu.kuntaapi.server.rest.model.Agency;
 import fi.metatavu.kuntaapi.server.rest.model.Announcement;
 import fi.metatavu.kuntaapi.server.rest.model.Attachment;
 import fi.metatavu.kuntaapi.server.rest.model.Banner;
@@ -36,7 +37,12 @@ import fi.metatavu.kuntaapi.server.rest.model.Organization;
 import fi.metatavu.kuntaapi.server.rest.model.OrganizationService;
 import fi.metatavu.kuntaapi.server.rest.model.OrganizationSetting;
 import fi.metatavu.kuntaapi.server.rest.model.Page;
+import fi.metatavu.kuntaapi.server.rest.model.Route;
+import fi.metatavu.kuntaapi.server.rest.model.Schedule;
+import fi.metatavu.kuntaapi.server.rest.model.Stop;
+import fi.metatavu.kuntaapi.server.rest.model.StopTime;
 import fi.metatavu.kuntaapi.server.rest.model.Tile;
+import fi.metatavu.kuntaapi.server.rest.model.Trip;
 import fi.otavanopisto.kuntaapi.server.controllers.AnnouncementController;
 import fi.otavanopisto.kuntaapi.server.controllers.BannerController;
 import fi.otavanopisto.kuntaapi.server.controllers.ClientContainer;
@@ -50,6 +56,7 @@ import fi.otavanopisto.kuntaapi.server.controllers.MenuController;
 import fi.otavanopisto.kuntaapi.server.controllers.NewsController;
 import fi.otavanopisto.kuntaapi.server.controllers.OrganizationController;
 import fi.otavanopisto.kuntaapi.server.controllers.PageController;
+import fi.otavanopisto.kuntaapi.server.controllers.PublicTransportController;
 import fi.otavanopisto.kuntaapi.server.controllers.SecurityController;
 import fi.otavanopisto.kuntaapi.server.controllers.TileController;
 import fi.otavanopisto.kuntaapi.server.id.AnnouncementId;
@@ -66,6 +73,12 @@ import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationServiceId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
+import fi.otavanopisto.kuntaapi.server.id.PublicTransportAgencyId;
+import fi.otavanopisto.kuntaapi.server.id.PublicTransportRouteId;
+import fi.otavanopisto.kuntaapi.server.id.PublicTransportScheduleId;
+import fi.otavanopisto.kuntaapi.server.id.PublicTransportStopId;
+import fi.otavanopisto.kuntaapi.server.id.PublicTransportStopTimeId;
+import fi.otavanopisto.kuntaapi.server.id.PublicTransportTripId;
 import fi.otavanopisto.kuntaapi.server.id.TileId;
 import fi.otavanopisto.kuntaapi.server.integrations.AnnouncementProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.AnnouncementProvider.AnnouncementOrder;
@@ -145,6 +158,9 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   
   @Inject
   private HttpCacheController httpCacheController;
+  
+  @Inject
+  private PublicTransportController publicTransportController;
   
   @Inject
   private Instance<OrganizationServiceProvider> organizationServiceProviders;
@@ -1276,6 +1292,262 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     return listOrganizationContacts(request, organizationId, null, null);
   }
 
+  
+  /* Public transport */
+  
+  @Override
+  public Response findOrganizationPublicTransportAgency(String organizationIdParam, String agencyIdParam, Request request) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    PublicTransportAgencyId agencyId = toPublicTransportAgencyId(organizationId, agencyIdParam);
+    if (agencyId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+
+    Response notModified = httpCacheController.getNotModified(request, agencyId);
+    if (notModified != null) {
+      return notModified;
+    }
+    
+    Agency agency = publicTransportController.findAgency(organizationId, agencyId);
+    if (agency != null) {
+      return httpCacheController.sendModified(agency, agency.getId());
+    }
+    
+    return createNotFound(NOT_FOUND);
+  }
+
+  @Override
+  public Response findOrganizationPublicTransportRoute(String organizationIdParam, String routeIdParam, Request request) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    PublicTransportRouteId routeId = toPublicTransportRouteId(organizationId, routeIdParam);
+    if (routeId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+
+    Response notModified = httpCacheController.getNotModified(request, routeId);
+    if (notModified != null) {
+      return notModified;
+    }
+    
+    Route route = publicTransportController.findRoute(organizationId, routeId);
+    if (route != null) {
+      return httpCacheController.sendModified(route, route.getId());
+    }
+    
+    return createNotFound(NOT_FOUND);
+  }
+
+  @Override
+  public Response findOrganizationPublicTransportSchedule(String organizationIdParam, String scheduleIdParam, Request request) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    PublicTransportScheduleId scheduleId = toPublicTransportScheduleId(organizationId, scheduleIdParam);
+    if (scheduleId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+
+    Response notModified = httpCacheController.getNotModified(request, scheduleId);
+    if (notModified != null) {
+      return notModified;
+    }
+    
+    Schedule schedule = publicTransportController.findSchedule(organizationId, scheduleId);
+    if (schedule != null) {
+      return httpCacheController.sendModified(schedule, schedule.getId());
+    }
+    
+    return createNotFound(NOT_FOUND);
+  }
+
+  @Override
+  public Response listOrganizationPublicTransportAgencies(String organizationIdParam, Request request) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    List<Agency> result = publicTransportController.listAgencies(organizationId, null, null);
+    List<String> ids = httpCacheController.getEntityIds(result);
+    Response notModified = httpCacheController.getNotModified(request, ids);
+    if (notModified != null) {
+      return notModified;
+    }
+
+    return httpCacheController.sendModified(result, ids);
+  }
+  
+  @Override
+  public Response findOrganizationPublicTransportStop(String organizationIdParam, String stopIdParam, Request request) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    PublicTransportStopId stopId = toPublicTransportStopId(organizationId, stopIdParam);
+    if (stopId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+
+    Response notModified = httpCacheController.getNotModified(request, stopId);
+    if (notModified != null) {
+      return notModified;
+    }
+    
+    Stop stop = publicTransportController.findStop(organizationId, stopId);
+    if (stop != null) {
+      return httpCacheController.sendModified(stop, stop.getId());
+    }
+    
+    return createNotFound(NOT_FOUND);
+  }
+
+  @Override
+  public Response findOrganizationPublicTransportStopTime(String organizationIdParam, String stopTimeIdParam, Request request) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    PublicTransportStopTimeId stopTimeId = toPublicTransportStopTimeId(organizationId, stopTimeIdParam);
+    if (stopTimeId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+
+    Response notModified = httpCacheController.getNotModified(request, stopTimeId);
+    if (notModified != null) {
+      return notModified;
+    }
+    
+    StopTime stopTime = publicTransportController.findStopTime(organizationId, stopTimeId);
+    if (stopTime != null) {
+      return httpCacheController.sendModified(stopTime, stopTime.getId());
+    }
+    
+    return createNotFound(NOT_FOUND);
+  }
+
+  @Override
+  public Response findOrganizationPublicTransportTrip(String organizationIdParam, String tripIdParam, Request request) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    PublicTransportTripId tripId = toPublicTransportTripId(organizationId, tripIdParam);
+    if (tripId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+
+    Response notModified = httpCacheController.getNotModified(request, tripId);
+    if (notModified != null) {
+      return notModified;
+    }
+    
+    Trip trip = publicTransportController.findTrip(organizationId, tripId);
+    if (trip != null) {
+      return httpCacheController.sendModified(trip, trip.getId());
+    }
+    
+    return createNotFound(NOT_FOUND);
+  }
+
+  @Override
+  public Response listOrganizationPublicTransportStopTimes(String organizationIdParam, Request request) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    List<StopTime> result = publicTransportController.listStopTimes(organizationId, null, null);
+    List<String> ids = httpCacheController.getEntityIds(result);
+    Response notModified = httpCacheController.getNotModified(request, ids);
+    if (notModified != null) {
+      return notModified;
+    }
+
+    return httpCacheController.sendModified(result, ids);
+  }
+
+  @Override
+  public Response listOrganizationPublicTransportStops(String organizationIdParam, Request request) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    List<Stop> result = publicTransportController.listStops(organizationId, null, null);
+    List<String> ids = httpCacheController.getEntityIds(result);
+    Response notModified = httpCacheController.getNotModified(request, ids);
+    if (notModified != null) {
+      return notModified;
+    }
+
+    return httpCacheController.sendModified(result, ids);
+  }
+
+  @Override
+  public Response listOrganizationPublicTransportTrips(String organizationIdParam, Request request) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    List<Trip> result = publicTransportController.listTrips(organizationId, null, null);
+    List<String> ids = httpCacheController.getEntityIds(result);
+    Response notModified = httpCacheController.getNotModified(request, ids);
+    if (notModified != null) {
+      return notModified;
+    }
+
+    return httpCacheController.sendModified(result, ids);
+  }
+
+  @Override
+  public Response listOrganizationPublicTransportRoutes(String organizationIdParam, Request request) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    List<Route> result = publicTransportController.listRoutes(organizationId, null, null);
+    List<String> ids = httpCacheController.getEntityIds(result);
+    Response notModified = httpCacheController.getNotModified(request, ids);
+    if (notModified != null) {
+      return notModified;
+    }
+
+    return httpCacheController.sendModified(result, ids);
+  }
+
+  @Override
+  public Response listOrganizationPublicTransportSchedules(String organizationIdParam, Request request) {
+    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    List<Schedule> result = publicTransportController.listSchedules(organizationId, null, null);
+    List<String> ids = httpCacheController.getEntityIds(result);
+    Response notModified = httpCacheController.getNotModified(request, ids);
+    if (notModified != null) {
+      return notModified;
+    }
+
+    return httpCacheController.sendModified(result, ids);
+  }
+  
+  
   private List<Page> listOrganizationPages(OrganizationId organizationId, boolean onlyRootPages, PageId parentId, String path, String search, Long firstResult, Long maxResults) {
     if (search != null) {
       return pageController.searchPages(organizationId, search, firstResult, maxResults);
@@ -1407,6 +1679,54 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   private FragmentId toFragmentId(OrganizationId organizationId, String id) {
     if (StringUtils.isNotBlank(id)) {
       return new FragmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, id);
+    }
+    
+    return null;
+  }
+  
+  private PublicTransportAgencyId toPublicTransportAgencyId(OrganizationId organizationId, String id) {
+    if (StringUtils.isNotBlank(id)) {
+      return new PublicTransportAgencyId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, id);
+    }
+    
+    return null;
+  }
+  
+  private PublicTransportScheduleId toPublicTransportScheduleId(OrganizationId organizationId, String id) {
+    if (StringUtils.isNotBlank(id)) {
+      return new PublicTransportScheduleId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, id);
+    }
+    
+    return null;
+  }
+  
+  private PublicTransportRouteId toPublicTransportRouteId(OrganizationId organizationId, String id) {
+    if (StringUtils.isNotBlank(id)) {
+      return new PublicTransportRouteId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, id);
+    }
+    
+    return null;
+  }
+
+  private PublicTransportStopId toPublicTransportStopId(OrganizationId organizationId, String id) {
+    if (StringUtils.isNotBlank(id)) {
+      return new PublicTransportStopId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, id);
+    }
+    
+    return null;
+  }
+  
+  private PublicTransportStopTimeId toPublicTransportStopTimeId(OrganizationId organizationId, String id) {
+    if (StringUtils.isNotBlank(id)) {
+      return new PublicTransportStopTimeId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, id);
+    }
+    
+    return null;
+  }
+    
+  private PublicTransportTripId toPublicTransportTripId(OrganizationId organizationId, String id) {
+    if (StringUtils.isNotBlank(id)) {
+      return new PublicTransportTripId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, id);
     }
     
     return null;
