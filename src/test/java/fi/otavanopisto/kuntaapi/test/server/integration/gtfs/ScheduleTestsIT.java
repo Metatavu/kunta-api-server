@@ -100,6 +100,7 @@ public class ScheduleTestsIT extends AbstractIntegrationTest{
     String organizationScheduleId = getOrganizationScheduleId(organizationId, 0);
     
     String[] malformedIds = new String[] {"evil", "*", "/", "1", "-1", "~"};
+    
     assertFound(String.format("/organizations/%s/transportSchedules/%s", organizationId, organizationScheduleId));
     assertEquals(17, countApiList(String.format("/organizations/%s/transportSchedules", organizationId)));
     
