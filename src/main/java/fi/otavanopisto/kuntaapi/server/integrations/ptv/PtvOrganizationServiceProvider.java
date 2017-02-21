@@ -36,13 +36,13 @@ public class PtvOrganizationServiceProvider implements OrganizationServiceProvid
   
   @Override
   public OrganizationService findOrganizationService(OrganizationId organizationId, OrganizationServiceId organizationServiceId) {
-    OrganizationId ptvOrganizationId = idController.translateOrganizationId(organizationId, PtvConsts.IDENTIFIFER_NAME);
+    OrganizationId ptvOrganizationId = idController.translateOrganizationId(organizationId, PtvConsts.IDENTIFIER_NAME);
     if (ptvOrganizationId == null) {
       logger.severe(String.format("Failed to translate organizationId %s into PTV organizationId", organizationId.toString()));
       return null;
     }
     
-    OrganizationServiceId ptvOrganizationServiceId = idController.translateOrganizationServiceId(organizationServiceId, PtvConsts.IDENTIFIFER_NAME);
+    OrganizationServiceId ptvOrganizationServiceId = idController.translateOrganizationServiceId(organizationServiceId, PtvConsts.IDENTIFIER_NAME);
     if (ptvOrganizationServiceId == null) {
       logger.severe(String.format("Failed to translate organizationServiceId %s into PTV organizationServiceId", organizationServiceId.toString()));
       return null;
@@ -61,7 +61,7 @@ public class PtvOrganizationServiceProvider implements OrganizationServiceProvid
 
   @Override
   public List<OrganizationService> listOrganizationServices(OrganizationId organizationId) {
-    OrganizationId ptvOrganizationId = idController.translateOrganizationId(organizationId, PtvConsts.IDENTIFIFER_NAME);
+    OrganizationId ptvOrganizationId = idController.translateOrganizationId(organizationId, PtvConsts.IDENTIFIER_NAME);
     if (ptvOrganizationId == null) {
       logger.severe(String.format("Failed to translate organizationId %s into PTV organizationId", organizationId.toString()));
       return Collections.emptyList();

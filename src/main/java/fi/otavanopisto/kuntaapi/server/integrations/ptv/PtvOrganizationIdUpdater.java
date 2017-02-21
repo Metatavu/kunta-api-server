@@ -96,7 +96,7 @@ public class PtvOrganizationIdUpdater extends IdUpdater {
       for (int i = 0; i < organizations.size(); i++) {
         Organization organization = organizations.get(i);
         Long orderIndex = (long) i + offset;
-        OrganizationId organizationId = new OrganizationId(PtvConsts.IDENTIFIFER_NAME, organization.getId());
+        OrganizationId organizationId = new OrganizationId(PtvConsts.IDENTIFIER_NAME, organization.getId());
         boolean priority = identifierController.findIdentifierById(organizationId) == null;
         idUpdateRequest.fire(new OrganizationIdUpdateRequest(organizationId, orderIndex, priority));
       }

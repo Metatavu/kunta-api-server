@@ -83,7 +83,7 @@ public class PtvOrganizationEntityEvictor extends EntityUpdater {
     if (!stopped) {
       if (systemSettingController.isNotTestingOrTestRunning()) {
         if (queue.isEmpty()) {
-          List<OrganizationId> organizationIds = identifierController.listOrganizationsBySource(PtvConsts.IDENTIFIFER_NAME);
+          List<OrganizationId> organizationIds = identifierController.listOrganizationsBySource(PtvConsts.IDENTIFIER_NAME);
           queue.addAll(organizationIds);
         } else {
           checkOrganization(queue.remove(0));

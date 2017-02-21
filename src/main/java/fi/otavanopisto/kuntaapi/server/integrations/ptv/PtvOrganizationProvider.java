@@ -38,7 +38,7 @@ public class PtvOrganizationProvider implements OrganizationProvider {
 
   @Override
   public Organization findOrganization(OrganizationId organizationId) {
-    OrganizationId ptvOrganization = idController.translateOrganizationId(organizationId, PtvConsts.IDENTIFIFER_NAME);
+    OrganizationId ptvOrganization = idController.translateOrganizationId(organizationId, PtvConsts.IDENTIFIER_NAME);
     if (ptvOrganization == null) {
       logger.severe(String.format("Failed to translate organizationId %s into PTV organizationId", organizationId.toString()));
       return null;

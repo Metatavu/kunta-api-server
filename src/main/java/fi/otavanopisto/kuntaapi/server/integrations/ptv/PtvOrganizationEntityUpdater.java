@@ -78,7 +78,7 @@ public class PtvOrganizationEntityUpdater extends EntityUpdater {
 
   @PostConstruct
   public void init() {
-    queue = new IdUpdateRequestQueue<>(PtvConsts.IDENTIFIFER_NAME);
+    queue = new IdUpdateRequestQueue<>(PtvConsts.IDENTIFIER_NAME);
   }
 
   @Override
@@ -106,7 +106,7 @@ public class PtvOrganizationEntityUpdater extends EntityUpdater {
   @Asynchronous
   public void onOrganizationIdUpdateRequest(@Observes OrganizationIdUpdateRequest event) {
     if (!stopped) {
-      if (!PtvConsts.IDENTIFIFER_NAME.equals(event.getId().getSource())) {
+      if (!PtvConsts.IDENTIFIER_NAME.equals(event.getId().getSource())) {
         return;
       }
       
@@ -119,7 +119,7 @@ public class PtvOrganizationEntityUpdater extends EntityUpdater {
     if (!stopped) {
       OrganizationId organizationId = event.getId();
       
-      if (!StringUtils.equals(organizationId.getSource(), PtvConsts.IDENTIFIFER_NAME)) {
+      if (!StringUtils.equals(organizationId.getSource(), PtvConsts.IDENTIFIER_NAME)) {
         return;
       }
       

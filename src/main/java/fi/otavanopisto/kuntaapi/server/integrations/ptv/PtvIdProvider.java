@@ -28,7 +28,7 @@ public class PtvIdProvider extends AbstractIdProvider {
   
   @Override
   public String getSource() {
-    return PtvConsts.IDENTIFIFER_NAME;
+    return PtvConsts.IDENTIFIER_NAME;
   }
 
   @Override

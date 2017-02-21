@@ -112,7 +112,7 @@ public class PtvTranslator {
       return null;
     }
     
-    OrganizationServiceId ptvId = new OrganizationServiceId(organizationId, PtvConsts.IDENTIFIFER_NAME, ptvOrganizationService.getId());
+    OrganizationServiceId ptvId = new OrganizationServiceId(organizationId, PtvConsts.IDENTIFIER_NAME, ptvOrganizationService.getId());
     OrganizationServiceId kuntaApiId = idController.translateOrganizationServiceId(ptvId, KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiId == null) {
       logger.severe(String.format("Could not translate organization service %s into Kunta API id", ptvId.getId()));
@@ -314,7 +314,7 @@ public class PtvTranslator {
       return null;
     }
     
-    ElectronicServiceChannelId channelPtvId = new ElectronicServiceChannelId(PtvConsts.IDENTIFIFER_NAME, ptvElectronicChannel.getId());
+    ElectronicServiceChannelId channelPtvId = new ElectronicServiceChannelId(PtvConsts.IDENTIFIER_NAME, ptvElectronicChannel.getId());
     ElectronicServiceChannelId channelKuntaApiId = idController.translateElectronicServiceChannelId(channelPtvId, KuntaApiConsts.IDENTIFIER_NAME);
     if (channelKuntaApiId == null) {
       logger.severe(String.format("Could not translate electronic channel id %s into Kunta API id", channelPtvId.getId()));
@@ -351,7 +351,7 @@ public class PtvTranslator {
       return null;
     }
     
-    PhoneChannelId channelPtvId = new PhoneChannelId(PtvConsts.IDENTIFIFER_NAME, ptvPhoneChannel.getId());
+    PhoneChannelId channelPtvId = new PhoneChannelId(PtvConsts.IDENTIFIER_NAME, ptvPhoneChannel.getId());
     PhoneChannelId channelKuntaApiId = idController.translatePhoneServiceChannelId(channelPtvId, KuntaApiConsts.IDENTIFIER_NAME);
     if (channelKuntaApiId == null) {
       logger.severe(String.format("Could not translate phone channel id %s into Kunta API id", channelPtvId.getId()));
@@ -388,7 +388,7 @@ public class PtvTranslator {
       return null;
     }
     
-    PrintableFormChannelId channelPtvId = new PrintableFormChannelId(PtvConsts.IDENTIFIFER_NAME, ptvPrintableFormChannel.getId());
+    PrintableFormChannelId channelPtvId = new PrintableFormChannelId(PtvConsts.IDENTIFIER_NAME, ptvPrintableFormChannel.getId());
     PrintableFormChannelId channelKuntaApiId = idController.translatePrintableFormServiceChannelId(channelPtvId, KuntaApiConsts.IDENTIFIER_NAME);
     if (channelKuntaApiId == null) {
       logger.severe(String.format("Could not translate printableForm channel id %s into Kunta API id", channelPtvId.getId()));
@@ -427,7 +427,7 @@ public class PtvTranslator {
       return null;
     }
     
-    ServiceLocationChannelId channelPtvId = new ServiceLocationChannelId(PtvConsts.IDENTIFIFER_NAME, ptvServiceLocationChannel.getId());
+    ServiceLocationChannelId channelPtvId = new ServiceLocationChannelId(PtvConsts.IDENTIFIER_NAME, ptvServiceLocationChannel.getId());
     ServiceLocationChannelId channelKuntaApiId = idController.translateServiceLocationChannelId(channelPtvId, KuntaApiConsts.IDENTIFIER_NAME);
     if (channelKuntaApiId == null) {
       logger.severe(String.format("Could not translate serviceLocation channel id %s into Kunta API id", channelPtvId.getId()));
@@ -473,7 +473,7 @@ public class PtvTranslator {
       return null;
     }
     
-    WebPageChannelId channelPtvId = new WebPageChannelId(PtvConsts.IDENTIFIFER_NAME, ptvWebPageChannel.getId());
+    WebPageChannelId channelPtvId = new WebPageChannelId(PtvConsts.IDENTIFIER_NAME, ptvWebPageChannel.getId());
     WebPageChannelId channelKuntaApiId = idController.translateWebPageServiceChannelId(channelPtvId, KuntaApiConsts.IDENTIFIER_NAME);
     if (channelKuntaApiId == null) {
       logger.severe(String.format("Could not translate webPage channel id %s into Kunta API id", channelPtvId.getId()));
@@ -531,7 +531,7 @@ public class PtvTranslator {
   }
 
   private OrganizationId translateOrganizationId(String ptvOrganizationId) {
-    OrganizationId organizationPtvId = new OrganizationId(PtvConsts.IDENTIFIFER_NAME, ptvOrganizationId);
+    OrganizationId organizationPtvId = new OrganizationId(PtvConsts.IDENTIFIER_NAME, ptvOrganizationId);
     OrganizationId organizationKuntaApiId = idController.translateOrganizationId(organizationPtvId, KuntaApiConsts.IDENTIFIER_NAME);
     if (organizationKuntaApiId == null) {
       logger.severe(String.format("Could not translate organization id %s into Kunta API id", organizationPtvId.getId()));
@@ -542,7 +542,7 @@ public class PtvTranslator {
   }
   
   private ServiceId translateServiceId(String ptvServiceId) {
-    ServiceId ptvId = new ServiceId(PtvConsts.IDENTIFIFER_NAME, ptvServiceId);
+    ServiceId ptvId = new ServiceId(PtvConsts.IDENTIFIER_NAME, ptvServiceId);
     ServiceId kuntaApiId = idController.translateServiceId(ptvId, KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiId == null) {
       logger.severe(String.format("Could not translate service %s into Kunta API id", ptvId.getId()));

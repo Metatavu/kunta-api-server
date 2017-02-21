@@ -59,7 +59,7 @@ public class PtvOrganizationServiceIdUpdater extends EntityUpdater {
 
   @PostConstruct
   public void init() {
-    queue = new IdUpdateRequestQueue<>(PtvConsts.IDENTIFIFER_NAME);
+    queue = new IdUpdateRequestQueue<>(PtvConsts.IDENTIFIER_NAME);
   }
 
   @Override
@@ -86,7 +86,7 @@ public class PtvOrganizationServiceIdUpdater extends EntityUpdater {
   
   public void onOrganizationIdUpdateRequest(@Observes OrganizationIdUpdateRequest event) {
     if (!stopped) {
-      if (!PtvConsts.IDENTIFIFER_NAME.equals(event.getId().getSource())) {
+      if (!PtvConsts.IDENTIFIER_NAME.equals(event.getId().getSource())) {
         return;
       }
       
@@ -115,7 +115,7 @@ public class PtvOrganizationServiceIdUpdater extends EntityUpdater {
       for (int i = 0; i < organizationServices.size(); i++) {
         Long orderIndex = (long) i;
         OrganizationService organizationService = organizationServices.get(i);
-        OrganizationServiceId organizationServiceId = new OrganizationServiceId(organizationId, PtvConsts.IDENTIFIFER_NAME, organizationService.getId());
+        OrganizationServiceId organizationServiceId = new OrganizationServiceId(organizationId, PtvConsts.IDENTIFIER_NAME, organizationService.getId());
         Identifier identifier = identifierController.findIdentifierById(organizationServiceId);
         if (identifier == null) {
           identifierController.createIdentifier(orderIndex, organizationServiceId);

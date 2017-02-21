@@ -51,7 +51,7 @@ public class PtvServiceProvider implements ServiceProvider {
     if (organizationId != null) {
       serviceIds = listOrganizationServiceIds(organizationId);
     } else {
-      serviceIds = identifierController.listServiceIdsBySource(PtvConsts.IDENTIFIFER_NAME);
+      serviceIds = identifierController.listServiceIdsBySource(PtvConsts.IDENTIFIER_NAME);
     }
     
     List<Service> result = new ArrayList<>(serviceIds.size());
@@ -66,7 +66,7 @@ public class PtvServiceProvider implements ServiceProvider {
   }
   
   private List<ServiceId> listOrganizationServiceIds(OrganizationId organizationId) {
-    OrganizationId ptvOrganizationId = idController.translateOrganizationId(organizationId, PtvConsts.IDENTIFIFER_NAME);
+    OrganizationId ptvOrganizationId = idController.translateOrganizationId(organizationId, PtvConsts.IDENTIFIER_NAME);
     if (ptvOrganizationId == null) {
       logger.severe(String.format("Failed to translate organizationId %s into PTV id", organizationId.toString()));
       return Collections.emptyList();
@@ -83,7 +83,7 @@ public class PtvServiceProvider implements ServiceProvider {
     List<fi.otavanopisto.restfulptv.client.model.Service> ptvServices = servicesResponse.getResponse();
     List<ServiceId> result = new ArrayList<>(ptvServices.size());
     for (fi.otavanopisto.restfulptv.client.model.Service ptvService : ptvServices) {
-      result.add(new ServiceId(PtvConsts.IDENTIFIFER_NAME, ptvService.getId()));
+      result.add(new ServiceId(PtvConsts.IDENTIFIER_NAME, ptvService.getId()));
     }
     
     return result;
