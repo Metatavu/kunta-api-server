@@ -37,7 +37,6 @@ import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
-import fi.otavanopisto.kuntaapi.server.discover.OrganizationIdRemoveRequest;
 import fi.otavanopisto.kuntaapi.server.discover.OrganizationIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.EventId;
@@ -143,17 +142,6 @@ public class MikkeliNytEntityUpdater extends EntityUpdater {
     }
   }
   
-  @Asynchronous
-  public void onOrganizationIdRemoveRequest(@Observes OrganizationIdRemoveRequest event) {
-    OrganizationId organizationId = event.getId();
-    queue.remove(organizationId);
-    
-    List<EventId> existingEventIds = identifierRelationController.listEventIdsBySourceAndParentId(MikkeliNytConsts.IDENTIFIER_NAME, organizationId);
-    for (EventId existingEventId : existingEventIds) {
-      deleteEvent(organizationId, existingEventId);
-    }
-  }
-
   @Timeout
   public void timeout(Timer timer) {
     if (!stopped) {

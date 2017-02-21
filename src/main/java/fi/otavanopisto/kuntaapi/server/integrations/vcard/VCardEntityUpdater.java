@@ -34,7 +34,6 @@ import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
-import fi.otavanopisto.kuntaapi.server.discover.OrganizationIdRemoveRequest;
 import fi.otavanopisto.kuntaapi.server.discover.OrganizationIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.id.ContactId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
@@ -133,13 +132,6 @@ public class VCardEntityUpdater extends EntityUpdater {
     }
   }
   
-  @Asynchronous
-  public void onOrganizationIdRemoveRequest(@Observes OrganizationIdRemoveRequest event) {
-    OrganizationId organizationId = event.getId();
-    queue.remove(organizationId);
-    deleteContacts(organizationId);
-  }
-
   @Timeout
   public void timeout(Timer timer) {
     if (!stopped) {

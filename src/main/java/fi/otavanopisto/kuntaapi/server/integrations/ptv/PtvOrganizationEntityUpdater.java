@@ -15,24 +15,16 @@ import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Event;
 import javax.enterprise.event.Observes;
-import javax.enterprise.event.TransactionPhase;
 import javax.inject.Inject;
-
-import org.apache.commons.lang3.StringUtils;
 
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
 import fi.otavanopisto.kuntaapi.server.discover.IdUpdateRequestQueue;
-import fi.otavanopisto.kuntaapi.server.discover.OrganizationIdRemoveRequest;
 import fi.otavanopisto.kuntaapi.server.discover.OrganizationIdUpdateRequest;
-import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
-import fi.otavanopisto.kuntaapi.server.index.IndexRemoveOrganization;
-import fi.otavanopisto.kuntaapi.server.index.IndexRemoveRequest;
 import fi.otavanopisto.kuntaapi.server.index.IndexRequest;
 import fi.otavanopisto.kuntaapi.server.index.IndexableOrganization;
-import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 import fi.otavanopisto.restfulptv.client.ApiResponse;
@@ -59,17 +51,11 @@ public class PtvOrganizationEntityUpdater extends EntityUpdater {
   private IdentifierController identifierController;
 
   @Inject
-  private IdController idController;
-  
-  @Inject
   private ModificationHashCache modificationHashCache;
   
   @Inject
   private Event<IndexRequest> indexRequest;
   
-  @Inject
-  private Event<IndexRemoveRequest> indexRemoveRequest;
-
   @Resource
   private TimerService timerService;
 
@@ -114,19 +100,6 @@ public class PtvOrganizationEntityUpdater extends EntityUpdater {
     }
   }
   
-  @Asynchronous
-  public void onOrganizationIdRemoveRequest(@Observes (during = TransactionPhase.BEFORE_COMPLETION) OrganizationIdRemoveRequest event) {
-    if (!stopped) {
-      OrganizationId organizationId = event.getId();
-      
-      if (!StringUtils.equals(organizationId.getSource(), PtvConsts.IDENTIFIER_NAME)) {
-        return;
-      }
-      
-      deleteOrganization(organizationId);
-    }
-  }
-
   @Timeout
   public void timeout(Timer timer) {
     if (!stopped) {
@@ -162,30 +135,6 @@ public class PtvOrganizationEntityUpdater extends EntityUpdater {
     } else {
       logger.warning(String.format("Organization %s processing failed on [%d] %s", organizationId.getId(), response.getStatus(), response.getMessage()));
     }
-  }
-  
-  private void deleteOrganization(OrganizationId organizationId) {
-    OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(organizationId, KuntaApiConsts.IDENTIFIER_NAME);
-
-    // Remove from index
-    removeFromIndex(kuntaApiOrganizationId);
-    
-    // Remove from modification cache
-    modificationHashCache.clear(kuntaApiOrganizationId.getId());
-    
-    Identifier identifier = identifierController.findIdentifierById(kuntaApiOrganizationId);
-    if (identifier != null) {
-      identifierController.deleteIdentifier(identifier);
-    }
-  }
-
-  private void removeFromIndex(OrganizationId kuntaApiOrganizationId) {
-    
-    IndexRemoveOrganization indexRemoveOrganization = new IndexRemoveOrganization();
-    indexRemoveOrganization.setLanguage("fi");
-    indexRemoveOrganization.setOrganizationId(kuntaApiOrganizationId.getId());
-    
-    indexRemoveRequest.fire(new IndexRemoveRequest(indexRemoveOrganization));
   }
   
   private void index(String organizationId, Organization organization) {
