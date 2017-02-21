@@ -112,8 +112,8 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
     if (task != null) {
       if (task.getOperation() == Operation.UPDATE) {
         updateManagementPost(task.getId(), task.getOrderIndex()); 
-      } else {
-        deleteNewsArticle(task.getId());
+      } else if (task.getOperation() == Operation.REMOVE) {
+        deleteManagementPost(task.getId());
       }
     }
   }
@@ -192,7 +192,7 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
     }
   }
 
-  private void deleteNewsArticle(NewsArticleId managementNewsArticleId) {
+  private void deleteManagementPost(NewsArticleId managementNewsArticleId) {
     OrganizationId organizationId = managementNewsArticleId.getOrganizationId();
     
     Identifier newsArticleIdentifier = identifierController.findIdentifierById(managementNewsArticleId);

@@ -99,8 +99,8 @@ public class ManagementFragmentEntityUpdater extends EntityUpdater {
     if (task != null) {
       if (task.getOperation() == Operation.UPDATE) {
         updateManagementFragment(task.getId(), task.getOrderIndex()); 
-      } else {
-        deleteFragment(task.getId());
+      } else if (task.getOperation() == Operation.REMOVE) {
+        deleteManagementFragment(task.getId());
       }
     }
   }
@@ -136,7 +136,7 @@ public class ManagementFragmentEntityUpdater extends EntityUpdater {
     fragmentCache.put(kuntaApiFragmentId, fragment);
   }
 
-  private void deleteFragment(FragmentId managementFragmentId) {
+  private void deleteManagementFragment(FragmentId managementFragmentId) {
     OrganizationId organizationId = managementFragmentId.getOrganizationId();
     
     Identifier fragmentIdentifier = identifierController.findIdentifierById(managementFragmentId);

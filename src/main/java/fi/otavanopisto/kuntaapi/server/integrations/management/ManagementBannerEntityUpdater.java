@@ -111,8 +111,8 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
     if (task != null) {
       if (task.getOperation() == Operation.UPDATE) {
         updateManagementBanner(task.getId(), task.getOrderIndex()); 
-      } else {
-        deleteBanner(task.getId());
+      } else if (task.getOperation() == Operation.REMOVE) {
+        deleteManagementBanner(task.getId());
       }
     }
   }
@@ -190,7 +190,7 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
     }
   }
 
-  private void deleteBanner(BannerId managementBannerId) {
+  private void deleteManagementBanner(BannerId managementBannerId) {
     OrganizationId organizationId = managementBannerId.getOrganizationId();
     Identifier bannerIdentifier = identifierController.findIdentifierById(managementBannerId);
     if (bannerIdentifier != null) {

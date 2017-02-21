@@ -111,8 +111,8 @@ public class ManagementTileEntityUpdater extends EntityUpdater {
     if (task != null) {
       if (task.getOperation() == Operation.UPDATE) {
         updateManagementTile(task.getId(), task.getOrderIndex()); 
-      } else {
-        deleteTile(task.getId());
+      } else if (task.getOperation() == Operation.REMOVE) {
+        deleteManagementTile(task.getId());
       }
     }
   }
@@ -190,7 +190,7 @@ public class ManagementTileEntityUpdater extends EntityUpdater {
     }
   }
   
-  private void deleteTile(TileId managementTileId) {
+  private void deleteManagementTile(TileId managementTileId) {
     OrganizationId organizationId = managementTileId.getOrganizationId();
     Identifier tileIdentifier = identifierController.findIdentifierById(managementTileId);
     if (tileIdentifier != null) {

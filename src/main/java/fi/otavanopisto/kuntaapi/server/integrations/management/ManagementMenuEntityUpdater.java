@@ -111,8 +111,8 @@ public class ManagementMenuEntityUpdater extends EntityUpdater {
     if (task != null) {
       if (task.getOperation() == Operation.UPDATE) {
         updateManagementMenu(task.getId(), task.getOrderIndex()); 
-      } else {
-        deleteMenu(task.getId());
+      } else if (task.getOperation() == Operation.REMOVE) {
+        deleteManagementMenu(task.getId());
       }
     }
   }
@@ -285,7 +285,7 @@ public class ManagementMenuEntityUpdater extends EntityUpdater {
     return idController.translatePageId(managementId, KuntaApiConsts.IDENTIFIER_NAME);
   }
   
-  private void deleteMenu(MenuId managementMenuId) {
+  private void deleteManagementMenu(MenuId managementMenuId) {
     OrganizationId organizationId = managementMenuId.getOrganizationId();
     
     List<MenuItemId> menuItemIds = identifierRelationController.listMenuItemIdsBySourceAndParentId(ManagementConsts.IDENTIFIER_NAME, managementMenuId);
