@@ -18,20 +18,20 @@ import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
-import fi.otavanopisto.kuntaapi.server.id.PrintableFormChannelId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceId;
-import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.ServicePrintableFormChannelsTaskQueue;
+import fi.otavanopisto.kuntaapi.server.id.WebPageChannelId;
+import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.ServiceWebPageChannelsTaskQueue;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 import fi.otavanopisto.kuntaapi.server.tasks.ServiceEntityUpdateTask;
 import fi.otavanopisto.restfulptv.client.ApiResponse;
-import fi.otavanopisto.restfulptv.client.model.PrintableFormChannel ;
+import fi.otavanopisto.restfulptv.client.model.WebPageChannel ;
 
 @ApplicationScoped
 @Singleton
 @AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
-public class ServicePrintableFormChannelIdUpdater extends EntityUpdater {
+public class PtvServiceWebPageChannelIdUpdater extends EntityUpdater {
 
   private static final int TIMER_INTERVAL = 5000;
 
@@ -54,14 +54,14 @@ public class ServicePrintableFormChannelIdUpdater extends EntityUpdater {
   private ModificationHashCache modificationHashCache;
 
   @Inject
-  private ServicePrintableFormChannelsTaskQueue servicePrintableFormChannelsTaskQueue;
+  private ServiceWebPageChannelsTaskQueue serviceWebPageChannelsTaskQueue;
 
   @Resource
   private TimerService timerService;
 
   @Override
   public String getName() {
-    return "service-printable-form-channels";
+    return "service-webpage-channels";
   }
 
   @Override
@@ -74,15 +74,15 @@ public class ServicePrintableFormChannelIdUpdater extends EntityUpdater {
     timerConfig.setPersistent(false);
     timerService.createSingleActionTimer(duration, timerConfig);
   }
-  
+
   @Timeout
   public void timeout(Timer timer) {
     if (systemSettingController.isNotTestingOrTestRunning()) {
-      ServiceEntityUpdateTask task = servicePrintableFormChannelsTaskQueue.next();
+      ServiceEntityUpdateTask task = serviceWebPageChannelsTaskQueue.next();
       if (task != null) {
         updateChannelIds(task.getServiceId());
       } else {
-        servicePrintableFormChannelsTaskQueue.enqueueTasks(identifierController.listServiceIdsBySource(PtvConsts.IDENTIFIER_NAME));
+        serviceWebPageChannelsTaskQueue.enqueueTasks(identifierController.listServiceIdsBySource(PtvConsts.IDENTIFIER_NAME));
       }
     }
 
@@ -90,12 +90,12 @@ public class ServicePrintableFormChannelIdUpdater extends EntityUpdater {
   }
 
   private void updateChannelIds(ServiceId serviceId) {
-    ApiResponse<List<PrintableFormChannel >> response = ptvApi.getServicesApi().listServicePrintableFormChannels(serviceId.getId(), null, null);
+    ApiResponse<List<WebPageChannel >> response = ptvApi.getServicesApi().listServiceWebPageChannels(serviceId.getId(), null, null);
     if (response.isOk()) {
-      List<PrintableFormChannel> printableFormChannels = response.getResponse();
-      for (int i = 0; i < printableFormChannels.size(); i++) {
-        PrintableFormChannel printableFormChannel = printableFormChannels.get(i);
-        PrintableFormChannelId channelId = new PrintableFormChannelId(PtvConsts.IDENTIFIER_NAME, printableFormChannel.getId());
+      List<WebPageChannel> webPageChannels = response.getResponse();
+      for (int i = 0; i < webPageChannels.size(); i++) {
+        WebPageChannel webPageChannel = webPageChannels.get(i);
+        WebPageChannelId channelId = new WebPageChannelId(PtvConsts.IDENTIFIER_NAME, webPageChannel.getId());
         Long orderIndex = (long) i;
         Identifier identifier = identifierController.findIdentifierById(channelId);
         if (identifier == null) {
@@ -105,7 +105,7 @@ public class ServicePrintableFormChannelIdUpdater extends EntityUpdater {
         }
         
         identifierRelationController.setParentId(identifier, serviceId);
-        modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(printableFormChannel));
+        modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(webPageChannel));
       }
     } else {
       logger.warning(String.format("Service channel %s processing failed on [%d] %s", serviceId.getId(), response.getStatus(), response.getMessage()));

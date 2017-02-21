@@ -31,7 +31,7 @@ import fi.otavanopisto.restfulptv.client.model.ServiceLocationChannel ;
 @Singleton
 @AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
-public class ServiceLocationChannelIdUpdater extends EntityUpdater {
+public class PtvServiceLocationChannelIdUpdater extends EntityUpdater {
 
   private static final int TIMER_INTERVAL = 5000;
 

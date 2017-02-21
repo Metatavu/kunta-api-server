@@ -18,26 +18,26 @@ import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
+import fi.otavanopisto.kuntaapi.server.id.PhoneChannelId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceId;
-import fi.otavanopisto.kuntaapi.server.id.WebPageChannelId;
-import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.ServiceWebPageChannelsTaskQueue;
+import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.ServicePhoneChannelsTaskQueue;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 import fi.otavanopisto.kuntaapi.server.tasks.ServiceEntityUpdateTask;
 import fi.otavanopisto.restfulptv.client.ApiResponse;
-import fi.otavanopisto.restfulptv.client.model.WebPageChannel ;
+import fi.otavanopisto.restfulptv.client.model.PhoneChannel ;
 
 @ApplicationScoped
 @Singleton
 @AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
-public class ServiceWebPageChannelIdUpdater extends EntityUpdater {
+public class PtvServicePhoneChannelIdUpdater extends EntityUpdater {
 
   private static final int TIMER_INTERVAL = 5000;
 
   @Inject
   private Logger logger;
-
+  
   @Inject  
   private SystemSettingController systemSettingController;
 
@@ -52,16 +52,16 @@ public class ServiceWebPageChannelIdUpdater extends EntityUpdater {
 
   @Inject
   private ModificationHashCache modificationHashCache;
-
+  
   @Inject
-  private ServiceWebPageChannelsTaskQueue serviceWebPageChannelsTaskQueue;
+  private ServicePhoneChannelsTaskQueue servicePhoneChannelsTaskQueue;
 
   @Resource
   private TimerService timerService;
 
   @Override
   public String getName() {
-    return "service-webpage-channels";
+    return "service-phone-channels";
   }
 
   @Override
@@ -78,11 +78,11 @@ public class ServiceWebPageChannelIdUpdater extends EntityUpdater {
   @Timeout
   public void timeout(Timer timer) {
     if (systemSettingController.isNotTestingOrTestRunning()) {
-      ServiceEntityUpdateTask task = serviceWebPageChannelsTaskQueue.next();
+      ServiceEntityUpdateTask task = servicePhoneChannelsTaskQueue.next();
       if (task != null) {
         updateChannelIds(task.getServiceId());
       } else {
-        serviceWebPageChannelsTaskQueue.enqueueTasks(identifierController.listServiceIdsBySource(PtvConsts.IDENTIFIER_NAME));
+        servicePhoneChannelsTaskQueue.enqueueTasks(identifierController.listServiceIdsBySource(PtvConsts.IDENTIFIER_NAME));
       }
     }
 
@@ -90,13 +90,13 @@ public class ServiceWebPageChannelIdUpdater extends EntityUpdater {
   }
 
   private void updateChannelIds(ServiceId serviceId) {
-    ApiResponse<List<WebPageChannel >> response = ptvApi.getServicesApi().listServiceWebPageChannels(serviceId.getId(), null, null);
+    ApiResponse<List<PhoneChannel >> response = ptvApi.getServicesApi().listServicePhoneChannels(serviceId.getId(), null, null);
     if (response.isOk()) {
-      List<WebPageChannel> webPageChannels = response.getResponse();
-      for (int i = 0; i < webPageChannels.size(); i++) {
-        WebPageChannel webPageChannel = webPageChannels.get(i);
-        WebPageChannelId channelId = new WebPageChannelId(PtvConsts.IDENTIFIER_NAME, webPageChannel.getId());
+      List<PhoneChannel> phoneChannels = response.getResponse();
+      for (int i = 0; i < phoneChannels.size(); i++) {
+        PhoneChannel phoneChannel = phoneChannels.get(i);
         Long orderIndex = (long) i;
+        PhoneChannelId channelId = new PhoneChannelId(PtvConsts.IDENTIFIER_NAME, phoneChannel.getId());
         Identifier identifier = identifierController.findIdentifierById(channelId);
         if (identifier == null) {
           identifier = identifierController.createIdentifier(orderIndex, channelId);
@@ -105,7 +105,7 @@ public class ServiceWebPageChannelIdUpdater extends EntityUpdater {
         }
         
         identifierRelationController.setParentId(identifier, serviceId);
-        modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(webPageChannel));
+        modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(phoneChannel));
       }
     } else {
       logger.warning(String.format("Service channel %s processing failed on [%d] %s", serviceId.getId(), response.getStatus(), response.getMessage()));

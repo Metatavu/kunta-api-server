@@ -18,26 +18,26 @@ import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
-import fi.otavanopisto.kuntaapi.server.id.PhoneChannelId;
+import fi.otavanopisto.kuntaapi.server.id.PrintableFormChannelId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceId;
-import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.ServicePhoneChannelsTaskQueue;
+import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.ServicePrintableFormChannelsTaskQueue;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 import fi.otavanopisto.kuntaapi.server.tasks.ServiceEntityUpdateTask;
 import fi.otavanopisto.restfulptv.client.ApiResponse;
-import fi.otavanopisto.restfulptv.client.model.PhoneChannel ;
+import fi.otavanopisto.restfulptv.client.model.PrintableFormChannel ;
 
 @ApplicationScoped
 @Singleton
 @AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
-public class ServicePhoneChannelIdUpdater extends EntityUpdater {
+public class PtvServicePrintableFormChannelIdUpdater extends EntityUpdater {
 
   private static final int TIMER_INTERVAL = 5000;
 
   @Inject
   private Logger logger;
-  
+
   @Inject  
   private SystemSettingController systemSettingController;
 
@@ -52,16 +52,16 @@ public class ServicePhoneChannelIdUpdater extends EntityUpdater {
 
   @Inject
   private ModificationHashCache modificationHashCache;
-  
+
   @Inject
-  private ServicePhoneChannelsTaskQueue servicePhoneChannelsTaskQueue;
+  private ServicePrintableFormChannelsTaskQueue servicePrintableFormChannelsTaskQueue;
 
   @Resource
   private TimerService timerService;
 
   @Override
   public String getName() {
-    return "service-phone-channels";
+    return "service-printable-form-channels";
   }
 
   @Override
@@ -74,15 +74,15 @@ public class ServicePhoneChannelIdUpdater extends EntityUpdater {
     timerConfig.setPersistent(false);
     timerService.createSingleActionTimer(duration, timerConfig);
   }
-
+  
   @Timeout
   public void timeout(Timer timer) {
     if (systemSettingController.isNotTestingOrTestRunning()) {
-      ServiceEntityUpdateTask task = servicePhoneChannelsTaskQueue.next();
+      ServiceEntityUpdateTask task = servicePrintableFormChannelsTaskQueue.next();
       if (task != null) {
         updateChannelIds(task.getServiceId());
       } else {
-        servicePhoneChannelsTaskQueue.enqueueTasks(identifierController.listServiceIdsBySource(PtvConsts.IDENTIFIER_NAME));
+        servicePrintableFormChannelsTaskQueue.enqueueTasks(identifierController.listServiceIdsBySource(PtvConsts.IDENTIFIER_NAME));
       }
     }
 
@@ -90,13 +90,13 @@ public class ServicePhoneChannelIdUpdater extends EntityUpdater {
   }
 
   private void updateChannelIds(ServiceId serviceId) {
-    ApiResponse<List<PhoneChannel >> response = ptvApi.getServicesApi().listServicePhoneChannels(serviceId.getId(), null, null);
+    ApiResponse<List<PrintableFormChannel >> response = ptvApi.getServicesApi().listServicePrintableFormChannels(serviceId.getId(), null, null);
     if (response.isOk()) {
-      List<PhoneChannel> phoneChannels = response.getResponse();
-      for (int i = 0; i < phoneChannels.size(); i++) {
-        PhoneChannel phoneChannel = phoneChannels.get(i);
+      List<PrintableFormChannel> printableFormChannels = response.getResponse();
+      for (int i = 0; i < printableFormChannels.size(); i++) {
+        PrintableFormChannel printableFormChannel = printableFormChannels.get(i);
+        PrintableFormChannelId channelId = new PrintableFormChannelId(PtvConsts.IDENTIFIER_NAME, printableFormChannel.getId());
         Long orderIndex = (long) i;
-        PhoneChannelId channelId = new PhoneChannelId(PtvConsts.IDENTIFIER_NAME, phoneChannel.getId());
         Identifier identifier = identifierController.findIdentifierById(channelId);
         if (identifier == null) {
           identifier = identifierController.createIdentifier(orderIndex, channelId);
@@ -105,7 +105,7 @@ public class ServicePhoneChannelIdUpdater extends EntityUpdater {
         }
         
         identifierRelationController.setParentId(identifier, serviceId);
-        modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(phoneChannel));
+        modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(printableFormChannel));
       }
     } else {
       logger.warning(String.format("Service channel %s processing failed on [%d] %s", serviceId.getId(), response.getStatus(), response.getMessage()));
