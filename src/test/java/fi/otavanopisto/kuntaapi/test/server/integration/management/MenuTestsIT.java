@@ -44,6 +44,7 @@ public class MenuTestsIT extends AbstractIntegrationTest {
     waitApiListCount("/organizations", 1);
     String organizationId = getOrganizationId(0);
     createManagementSettings(organizationId);
+    waitApiListCount(String.format("/organizations/%s/pages", organizationId), 3);
     waitApiListCount(String.format("/organizations/%s/menus", organizationId), 1); 
     String menuId = getMenuId(organizationId, 0);
     waitApiListCount(String.format("/organizations/%s/menus/%s/items", organizationId, menuId), 3); 

@@ -1,5 +1,6 @@
 package fi.otavanopisto.kuntaapi.server.integrations.management;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
@@ -141,28 +142,37 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
     
     identifierRelationController.setParentId(identifier, organizationId);
     
-    NewsArticleId kuntaApiNewsArticleId = new NewsArticleId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
-    NewsArticle newsArticle = managementTranslator.translateNewsArticle(kuntaApiNewsArticleId, managementPost);
+    NewsArticleId newsArticleKuntaApiId = new NewsArticleId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
+    NewsArticle newsArticle = managementTranslator.translateNewsArticle(newsArticleKuntaApiId, managementPost);
     if (newsArticle == null) {
       logger.severe(String.format("Failed to translate news article %d", managementPost.getId()));
       return;
     }
     
-    newsArticleCache.put(kuntaApiNewsArticleId, newsArticle);
+    newsArticleCache.put(newsArticleKuntaApiId, newsArticle);
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(newsArticle));
     
+    List<AttachmentId> existingAttachmentIds = identifierRelationController.listAttachmentIdsBySourceAndParentId(ManagementConsts.IDENTIFIER_NAME, newsArticleKuntaApiId);
     if (managementPost.getFeaturedMedia() != null && managementPost.getFeaturedMedia() > 0) {
-      updateFeaturedMedia(organizationId, identifier, api, managementPost.getFeaturedMedia()); 
+      AttachmentId attachmentId = updateFeaturedMedia(organizationId, identifier, api, managementPost.getFeaturedMedia()); 
+      if (attachmentId != null) {
+        existingAttachmentIds.remove(attachmentId);
+      }
+    }
+    
+    for (AttachmentId existingAttachmentId : existingAttachmentIds) {
+      identifierRelationController.removeChild(newsArticleKuntaApiId, existingAttachmentId);
     }
   }
   
-  private void updateFeaturedMedia(OrganizationId organizationId, Identifier newsArticleIdentifier, DefaultApi api, Integer featuredMedia) {
+  private AttachmentId updateFeaturedMedia(OrganizationId organizationId, Identifier newsArticleIdentifier, DefaultApi api, Integer featuredMedia) {
     ApiResponse<fi.metatavu.management.client.model.Attachment> response = api.wpV2MediaIdGet(String.valueOf(featuredMedia), null, null);
     if (!response.isOk()) {
       logger.severe(String.format("Finding media failed on [%d] %s", response.getStatus(), response.getMessage()));
+      return null;
     } else {
       Attachment managementAttachment = response.getResponse();
-      AttachmentId managementAttachmentId = new AttachmentId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementAttachment.getId()));
+      AttachmentId managementAttachmentId = managementTranslator.createManagementAttachmentId(organizationId, managementAttachment.getId(), ManagementConsts.ATTACHMENT_TYPE_NEWS);
       Long orderIndex = 0l;
       
       Identifier identifier = identifierController.findIdentifierById(managementAttachmentId);
@@ -178,7 +188,7 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
       fi.metatavu.kuntaapi.server.rest.model.Attachment attachment = managementTranslator.translateAttachment(kuntaApiAttachmentId, managementAttachment, ManagementConsts.ATTACHMENT_TYPE_NEWS);
       if (attachment == null) {
         logger.severe(String.format("Failed to translate news article attachment %d", featuredMedia));
-        return;
+        return null;
       }
       
       managementAttachmentCache.put(kuntaApiAttachmentId, attachment);
@@ -188,6 +198,8 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
         String dataHash = DigestUtils.md5Hex(imageData.getData());
         modificationHashCache.put(identifier.getKuntaApiId(), dataHash);
       }
+      
+      return kuntaApiAttachmentId;
     }
   }
 

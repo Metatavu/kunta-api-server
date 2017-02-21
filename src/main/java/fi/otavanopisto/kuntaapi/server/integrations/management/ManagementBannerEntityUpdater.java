@@ -1,5 +1,6 @@
 package fi.otavanopisto.kuntaapi.server.integrations.management;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
@@ -150,19 +151,28 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
     bannerCache.put(bannerKuntaApiId, banner);
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(banner));
     
+    List<AttachmentId> existingAttachmentIds = identifierRelationController.listAttachmentIdsBySourceAndParentId(ManagementConsts.IDENTIFIER_NAME, bannerKuntaApiId);
+
     if (managementBanner.getFeaturedMedia() != null && managementBanner.getFeaturedMedia() > 0) {
-      updateFeaturedMedia(organizationId, api, identifier, managementBanner.getFeaturedMedia()); 
+      AttachmentId attachmentId = updateFeaturedMedia(organizationId, api, identifier, managementBanner.getFeaturedMedia());
+      if (attachmentId != null) {
+        existingAttachmentIds.remove(attachmentId);
+      }
     }
 
+    for (AttachmentId existingAttachmentId : existingAttachmentIds) {
+      identifierRelationController.removeChild(bannerKuntaApiId, existingAttachmentId);
+    }
   }
   
-  private void updateFeaturedMedia(OrganizationId organizationId, DefaultApi api, Identifier bannerIdentifier, Integer featuredMedia) {
+  private AttachmentId updateFeaturedMedia(OrganizationId organizationId, DefaultApi api, Identifier bannerIdentifier, Integer featuredMedia) {
     ApiResponse<fi.metatavu.management.client.model.Attachment> response = api.wpV2MediaIdGet(String.valueOf(featuredMedia), null, null);
     if (!response.isOk()) {
       logger.severe(String.format("Finding media failed on [%d] %s", response.getStatus(), response.getMessage()));
+      return null;
     } else {
       Attachment managementAttachment = response.getResponse();
-      AttachmentId managementAttachmentId = new AttachmentId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementAttachment.getId()));
+      AttachmentId managementAttachmentId = managementTranslator.createManagementAttachmentId(organizationId, managementAttachment.getId(), ManagementConsts.ATTACHMENT_TYPE_BANNER);
       Long orderIndex = 0l;
       
       Identifier identifier = identifierController.findIdentifierById(managementAttachmentId);
@@ -186,6 +196,8 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
           modificationHashCache.put(identifier.getKuntaApiId(), dataHash);
         }
       }
+      
+      return kuntaApiAttachmentId;
     }
   }
 
