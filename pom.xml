@@ -60,10 +60,6 @@
     
     <wildfly-spec-api.version>10.1.0.Final</wildfly-spec-api.version>
     
-    <!-- Singleton Service -->
-    
-    <wildfly-singleton-service.version>1.1.0</wildfly-singleton-service.version>
-    
     <!-- Integrations -->
     
     <kunta-api-spec.version>0.1.27</kunta-api-spec.version>
@@ -175,12 +171,6 @@
       <groupId>org.jboss.resteasy</groupId>
       <artifactId>resteasy-jackson2-provider</artifactId>
       <scope>provided</scope>
-    </dependency>
-    
-    <dependency>
-      <groupId>com.bertoncelj.wildflysingletonservice</groupId>
-      <artifactId>wildfly-singleton-service</artifactId>
-      <version>${wildfly-singleton-service.version}</version>
     </dependency>
     
     <dependency>
