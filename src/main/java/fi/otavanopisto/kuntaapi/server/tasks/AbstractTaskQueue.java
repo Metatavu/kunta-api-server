@@ -16,6 +16,8 @@ import javax.inject.Inject;
 import org.infinispan.Cache;
 import org.infinispan.manager.CacheContainer;
 
+import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
+
 /**
  * Abstract base class for all task queues
  * 
@@ -27,6 +29,9 @@ public abstract class AbstractTaskQueue <T extends AbstractTask> {
   
   @Inject
   private Logger logger;
+  
+  @Inject
+  private SystemSettingController systemSettingController;
 
   @Resource (lookup = "java:jboss/infinispan/container/kunta-api")
   private CacheContainer cacheContainer;
@@ -56,20 +61,24 @@ public abstract class AbstractTaskQueue <T extends AbstractTask> {
    * @return next task or null if queue is empty
    */
   public T next() {
-    startBatch();
-    try {
-      List<Integer> priorities = getPriorities();
-      if (priorities.isEmpty()) {
-        return null;
+    if (systemSettingController.isNotTestingOrTestRunning()) {
+      startBatch();
+      try {
+        List<Integer> priorities = getPriorities();
+        if (priorities.isEmpty()) {
+          return null;
+        }
+        
+        Integer taskHashId = priorities.remove(0);
+        setPriorities(priorities);
+        
+        return popTask(taskHashId);
+      } finally {
+        tasksExecuted++;
+        endBatch();
       }
-      
-      Integer taskHashId = priorities.remove(0);
-      setPriorities(priorities);
-      
-      return popTask(taskHashId);
-    } finally {
-      tasksExecuted++;
-      endBatch();
+    } else {
+      return null;
     }
   }
   
@@ -108,6 +117,19 @@ public abstract class AbstractTaskQueue <T extends AbstractTask> {
     }
   }
 
+  /**
+   * Clears all tasks from the queue
+   */
+  public void clear() {
+    Cache<String, byte[]> tasksCache = getTasksCache();
+    List<Integer> hashIds = getPrioritiesCache().remove(getName());
+    if (hashIds != null) {
+      for (Integer hashId : hashIds) {
+        tasksCache.remove(createTaskId(hashId));
+      }
+    }
+  }
+  
   private String createTaskId(Integer taskHashId) {
     return String.format("%s-%d", getName(), taskHashId);
   }

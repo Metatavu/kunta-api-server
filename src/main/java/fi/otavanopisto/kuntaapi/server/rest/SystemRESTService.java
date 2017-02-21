@@ -98,4 +98,24 @@ public class SystemRESTService {
       .build();
   }
   
+  /**
+   * Flushes all tasks
+   * 
+   * @return "ok"
+   */
+  @GET
+  @Path ("/tasks/clear")
+  @Produces (MediaType.TEXT_PLAIN)
+  public Response flushTasks() {
+    if (systemSettingController.inTestMode()) {
+      for (AbstractTaskQueue<?> taskQueue : taskQueues) {
+        taskQueue.clear();
+      }
+      
+      return Response.ok("ok").build();
+    }
+    
+    return Response.status(Status.FORBIDDEN).build();
+  }
+  
 }

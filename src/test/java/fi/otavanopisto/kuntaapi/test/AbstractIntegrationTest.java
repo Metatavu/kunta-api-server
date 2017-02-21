@@ -36,6 +36,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   @After
   public void afterEveryTest() {
     deleteSystemSetting(KuntaApiConsts.SYSTEM_SETTING_TESTS_RUNNING);
+    clearTasks();
   }
   
   public RestFulPtvMocker getPtvMocker() {
@@ -58,6 +59,14 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     given()
       .baseUri(getApiBasePath())
       .get("/system/jpa/cache/flush")
+      .then()
+      .statusCode(200);
+  }
+  
+  protected void clearTasks() {
+    given()
+      .baseUri(getApiBasePath())
+      .get("/system/tasks/clear")
       .then()
       .statusCode(200);
   }
