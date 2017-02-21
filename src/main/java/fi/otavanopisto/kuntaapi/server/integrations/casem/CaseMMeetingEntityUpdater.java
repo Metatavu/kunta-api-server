@@ -66,17 +66,15 @@ public class CaseMMeetingEntityUpdater extends EntityUpdater {
 
   @Timeout
   public void timeout(Timer timer) {
-    if (systemSettingController.isNotTestingOrTestRunning()) {
-      MeetingDataUpdateTask task = meetingDataUpdateTaskQueue.next();
-      if (task != null) {
-        try {
-          ObjectMapper objectMapper = new ObjectMapper();
-          Content meetingContent = objectMapper.readValue(task.getMeetingContent(), Content.class);
-          List<Content> meetingItemContents  = objectMapper.readValue(task.getMeetingItemContents(), new TypeReference<List<Content>>() { });
-          updater.updateMeeting(task.getMeetingPageId(), meetingContent, meetingItemContents);
-        } catch (IOException e) {
-          logger.log(Level.SEVERE, "Failed to process casem meeting update request", e); 
-        }
+    MeetingDataUpdateTask task = meetingDataUpdateTaskQueue.next();
+    if (task != null) {
+      try {
+        ObjectMapper objectMapper = new ObjectMapper();
+        Content meetingContent = objectMapper.readValue(task.getMeetingContent(), Content.class);
+        List<Content> meetingItemContents  = objectMapper.readValue(task.getMeetingItemContents(), new TypeReference<List<Content>>() { });
+        updater.updateMeeting(task.getMeetingPageId(), meetingContent, meetingItemContents);
+      } catch (IOException e) {
+        logger.log(Level.SEVERE, "Failed to process casem meeting update request", e); 
       }
     }
     

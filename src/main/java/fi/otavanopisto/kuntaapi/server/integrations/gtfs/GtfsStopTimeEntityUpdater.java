@@ -91,11 +91,9 @@ public class GtfsStopTimeEntityUpdater extends EntityUpdater {
 
   @Timeout
   public void timeout(Timer timer) {
-    if (systemSettingController.isNotTestingOrTestRunning()) {
-      GtfsStopTimeEntityTask task = gtfsStopTimeTaskQueue.next();
-      if (task != null) {
-        updateGtfsStopTime(task);
-      }
+    GtfsStopTimeEntityTask task = gtfsStopTimeTaskQueue.next();
+    if (task != null) {
+      updateGtfsStopTime(task);
     }
     
     startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);

@@ -91,11 +91,9 @@ public class GtfsTripEntityUpdater extends EntityUpdater {
 
   @Timeout
   public void timeout(Timer timer) {
-    if (systemSettingController.isNotTestingOrTestRunning()) {
-      GtfsTripEntityTask task = gtfsTripTaskQueue.next();
-      if (task != null) {
-        updateGtfsTrip(task);
-      }
+    GtfsTripEntityTask task = gtfsTripTaskQueue.next();
+    if (task != null) {
+      updateGtfsTrip(task);
     }
     
     startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);

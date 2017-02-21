@@ -86,10 +86,7 @@ public class ManagementFragmentEntityUpdater extends EntityUpdater {
 
   @Timeout
   public void timeout(Timer timer) {
-    if (systemSettingController.isNotTestingOrTestRunning()) {
-      executeNextTask();
-    }
-    
+    executeNextTask();
     startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
   }
 

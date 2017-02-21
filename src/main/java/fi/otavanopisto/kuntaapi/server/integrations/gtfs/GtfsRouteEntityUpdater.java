@@ -90,11 +90,9 @@ public class GtfsRouteEntityUpdater extends EntityUpdater {
   
   @Timeout
   public void timeout(Timer timer) {
-    if (systemSettingController.isNotTestingOrTestRunning()) {
-      GtfsRouteEntityTask task = gtfsRouteTaskQueue.next();
-      if (task != null) {
-        updateGtfsRoute(task);
-      }
+    GtfsRouteEntityTask task = gtfsRouteTaskQueue.next();
+    if (task != null) {
+      updateGtfsRoute(task);
     }
     
     startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);

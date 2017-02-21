@@ -113,12 +113,14 @@ public abstract class AbstractTest {
   }
   
   protected void deleteAllGtfsDatas(){
-    deleteAllAgencies();
-    deleteAllSchedules();
-    deleteAllRoutes();
-    deleteAllTrips();
-    deleteAllStops();
-    deleteAllStopTimes();
+    deleteAllIdentifiers(Arrays.asList(new String[] {
+      "PUBLIC_TRANSPORT_AGENCY",
+      "PUBLIC_TRANSPORT_SCHEDULE",
+      "PUBLIC_TRANSPORT_ROUTE",
+      "PUBLIC_TRANSPORT_TRIP",
+      "PUBLIC_TRANSPORT_STOP",
+      "PUBLIC_TRANSPORT_STOPTIME"
+    }));
   }
   
   protected void deleteAllAgencies() {
