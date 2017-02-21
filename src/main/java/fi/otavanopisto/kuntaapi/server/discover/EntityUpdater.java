@@ -16,6 +16,7 @@ public abstract class EntityUpdater {
   private Logger logger;
   
   public abstract String getName();
+  public abstract void startTimer();
   
   protected String createPojoHash(Object entity) {
     try {
@@ -26,5 +27,6 @@ public abstract class EntityUpdater {
     
     return null;
   }
+
   
 }

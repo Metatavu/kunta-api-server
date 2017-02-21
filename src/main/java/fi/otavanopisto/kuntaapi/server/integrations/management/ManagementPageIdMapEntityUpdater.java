@@ -8,7 +8,6 @@ import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
@@ -75,7 +74,7 @@ public class ManagementPageIdMapEntityUpdater extends EntityUpdater {
     return "management-page-id-map";
   }
 
-  @PostConstruct
+  @Override
   public void startTimer() {
     startTimer(TIMER_INTERVAL);
   }

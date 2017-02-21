@@ -3,7 +3,6 @@ package fi.otavanopisto.kuntaapi.server.integrations.ptv;
 import java.util.List;
 import java.util.logging.Logger;
 
-import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.ejb.Singleton;
 import javax.ejb.Timeout;
@@ -58,7 +57,7 @@ public class PtvServiceIdUpdater extends IdUpdater {
     return "ptv-service-ids";
   }
   
-  @PostConstruct
+  @Override
   public void startTimer() {
     offset = 0l;
     startTimer(WARMUP_TIME);

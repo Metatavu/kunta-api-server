@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
-import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
@@ -65,7 +64,7 @@ public class ServicePhoneChannelIdUpdater extends EntityUpdater {
     return "service-phone-channels";
   }
 
-  @PostConstruct
+  @Override
   public void startTimer() {
     startTimer(TIMER_INTERVAL);
   }

@@ -3,7 +3,6 @@ package fi.otavanopisto.kuntaapi.server.integrations.casem;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
@@ -57,7 +56,7 @@ public class CaseMOrganizationContentsEntityUpdater extends EntityUpdater {
     return "organization-casem";
   }
 
-  @PostConstruct
+  @Override
   public void startTimer() {
     startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
   }

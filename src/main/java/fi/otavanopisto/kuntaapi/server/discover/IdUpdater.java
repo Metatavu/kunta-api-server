@@ -4,5 +4,6 @@ package fi.otavanopisto.kuntaapi.server.discover;
 public abstract class IdUpdater {
   
   public abstract String getName();
+  public abstract void startTimer();
   
 }

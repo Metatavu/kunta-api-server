@@ -3,7 +3,6 @@ package fi.otavanopisto.kuntaapi.server.integrations.kuntarekry;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
@@ -63,7 +62,7 @@ public class KuntaRekryOrganizationJobsEntityUpdater extends EntityUpdater {
     return "organization-jobs";
   }
 
-  @PostConstruct
+  @Override
   public void startTimer() {
     startTimer(TIMER_INTERVAL);
   }

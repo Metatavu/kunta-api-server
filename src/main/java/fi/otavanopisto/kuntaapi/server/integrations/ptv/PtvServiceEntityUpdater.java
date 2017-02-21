@@ -6,7 +6,6 @@ import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
@@ -84,7 +83,7 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
     return "ptv-services";
   }
 
-  @PostConstruct
+  @Override
   public void startTimer() {
     startTimer(TIMER_INTERVAL);
   }

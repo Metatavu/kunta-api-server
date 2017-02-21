@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
-import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
@@ -77,7 +76,7 @@ public class ManagementNewsArticleIdUpdater extends IdUpdater {
     return "management-news-article-ids";
   }
   
-  @PostConstruct
+  @Override
   public void startTimer() {
     startTimer(WARMUP_TIME);
   }
