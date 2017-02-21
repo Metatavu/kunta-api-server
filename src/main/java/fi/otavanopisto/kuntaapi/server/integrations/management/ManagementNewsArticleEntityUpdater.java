@@ -3,6 +3,7 @@ package fi.otavanopisto.kuntaapi.server.integrations.management;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
+import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
@@ -81,39 +82,29 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
   @Resource
   private TimerService timerService;
 
-  private boolean stopped;
-
   @Override
   public String getName() {
     return "management-news";
   }
 
-  @Override
+  @PostConstruct
   public void startTimer() {
     startTimer(TIMER_INTERVAL);
   }
 
   private void startTimer(int duration) {
-    stopped = false;
     TimerConfig timerConfig = new TimerConfig();
     timerConfig.setPersistent(false);
     timerService.createSingleActionTimer(duration, timerConfig);
   }
-
-  @Override
-  public void stopTimer() {
-    stopped = true;
-  }
   
   @Timeout
   public void timeout(Timer timer) {
-    if (!stopped) {
-      if (systemSettingController.isNotTestingOrTestRunning()) {
-        executeNextTask();
-      }
-
-      startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
+    if (systemSettingController.isNotTestingOrTestRunning()) {
+      executeNextTask();
     }
+
+    startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
   }
   
   private void executeNextTask() {

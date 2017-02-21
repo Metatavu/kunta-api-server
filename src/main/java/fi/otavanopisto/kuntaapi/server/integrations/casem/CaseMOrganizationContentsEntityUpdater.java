@@ -3,6 +3,7 @@ package fi.otavanopisto.kuntaapi.server.integrations.casem;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
@@ -50,40 +51,30 @@ public class CaseMOrganizationContentsEntityUpdater extends EntityUpdater {
   
   @Resource
   private TimerService timerService;
-
-  private boolean stopped;
   
   @Override
   public String getName() {
     return "organization-casem";
   }
 
-  @Override
+  @PostConstruct
   public void startTimer() {
     startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
   }
 
   private void startTimer(int duration) {
-    stopped = false;
     TimerConfig timerConfig = new TimerConfig();
     timerConfig.setPersistent(false);
     timerService.createSingleActionTimer(duration, timerConfig);
   }
 
-  @Override
-  public void stopTimer() {
-    stopped = true;
-  }
-
   @Timeout
   public void timeout(Timer timer) {
-    if (!stopped) {
-      if (systemSettingController.isNotTestingOrTestRunning()) {
-        updateNext();
-      }
-      
-      startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
+    if (systemSettingController.isNotTestingOrTestRunning()) {
+      updateNext();
     }
+    
+    startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
   }
 
   private void updateNext() {

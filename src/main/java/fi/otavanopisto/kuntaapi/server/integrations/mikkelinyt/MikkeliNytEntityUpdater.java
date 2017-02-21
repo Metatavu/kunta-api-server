@@ -12,6 +12,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
@@ -93,44 +94,34 @@ public class MikkeliNytEntityUpdater extends EntityUpdater {
   @Resource
   private TimerService timerService;
 
-  private boolean stopped;
-
   @Override
   public String getName() {
     return "mikkeli-nyt-events";
   }
 
-  @Override
+  @PostConstruct
   public void startTimer() {
     startTimer(TIMER_INTERVAL);
   }
 
   private void startTimer(int duration) {
-    stopped = false;
     TimerConfig timerConfig = new TimerConfig();
     timerConfig.setPersistent(false);
     timerService.createSingleActionTimer(duration, timerConfig);
   }
 
-  @Override
-  public void stopTimer() {
-    stopped = true;
-  }
-
   @Timeout
   public void timeout(Timer timer) {
-    if (!stopped) {
-      if (systemSettingController.isNotTestingOrTestRunning()) {
-        OrganizationEntityUpdateTask task = organizationEventsTaskQueue.next();
-        if (task != null) {
-          updateEvents(task.getOrganizationId());
-        } else {
-          organizationEventsTaskQueue.enqueueTasks(organizationSettingController.listOrganizationIdsWithSetting(ManagementConsts.ORGANIZATION_SETTING_BASEURL));
-        }
+    if (systemSettingController.isNotTestingOrTestRunning()) {
+      OrganizationEntityUpdateTask task = organizationEventsTaskQueue.next();
+      if (task != null) {
+        updateEvents(task.getOrganizationId());
+      } else {
+        organizationEventsTaskQueue.enqueueTasks(organizationSettingController.listOrganizationIdsWithSetting(ManagementConsts.ORGANIZATION_SETTING_BASEURL));
       }
-
-      startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
     }
+
+    startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
   }
 
   private void updateEvents(OrganizationId organizationId) {

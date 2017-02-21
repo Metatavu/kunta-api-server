@@ -15,10 +15,6 @@ public abstract class EntityUpdater {
   @Inject
   private Logger logger;
   
-  public abstract void startTimer();
-  
-  public abstract void stopTimer();
-  
   public abstract String getName();
   
   protected String createPojoHash(Object entity) {
