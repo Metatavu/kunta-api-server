@@ -252,7 +252,7 @@ public class CaseMCacheUpdater {
       return;
     }
     
-    PageId meetingParentPageId = originalParentMap.get(meetingPageId.getId());
+    PageId meetingParentPageId = originalParentMap.get(kuntaApiMeetingPageId.getId());
     if (meetingParentPageId == null) {
       meetingParentPageId = new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, meetingPage.getParentId());
     }

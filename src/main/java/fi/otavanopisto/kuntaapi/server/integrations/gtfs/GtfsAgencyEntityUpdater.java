@@ -4,17 +4,14 @@ import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.ejb.AccessTimeout;
-import javax.ejb.Asynchronous;
 import javax.ejb.Singleton;
 import javax.ejb.Timeout;
 import javax.ejb.Timer;
 import javax.ejb.TimerConfig;
 import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 
 import org.onebusaway.gtfs.model.Agency;
@@ -22,13 +19,14 @@ import org.onebusaway.gtfs.model.Agency;
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
-import fi.otavanopisto.kuntaapi.server.discover.EntityUpdateRequestQueue;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportAgencyId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.gtfs.cache.GtfsPublicTransportAgencyCache;
+import fi.otavanopisto.kuntaapi.server.integrations.gtfs.tasks.GtfsAgencyEntityTask;
+import fi.otavanopisto.kuntaapi.server.integrations.gtfs.tasks.GtfsAgencyTaskQueue;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 
@@ -66,17 +64,12 @@ public class GtfsAgencyEntityUpdater extends EntityUpdater {
   
   @Inject
   private GtfsIdFactory gtfsIdFactory;
-  
+
+  @Inject
+  private GtfsAgencyTaskQueue gtfsAgencyTaskQueue;
+
   @Resource
   private TimerService timerService;
-
-  private boolean stopped;
-  private EntityUpdateRequestQueue<GtfsAgencyEntityUpdateRequest> queue;
-
-  @PostConstruct
-  public void init() {
-    queue = new EntityUpdateRequestQueue<>();
-  }
 
   @Override
   public String getName() {
@@ -89,47 +82,32 @@ public class GtfsAgencyEntityUpdater extends EntityUpdater {
   }
 
   private void startTimer(int duration) {
-    stopped = false;
     TimerConfig timerConfig = new TimerConfig();
     timerConfig.setPersistent(false);
     timerService.createSingleActionTimer(duration, timerConfig);
   }
-
-  @Override
-  public void stopTimer() {
-    stopped = true;
-  }
-  
-  @Asynchronous
-  public void onAgencyUpdateRequest(@Observes GtfsAgencyEntityUpdateRequest event) {
-    if (!stopped) {
-      queue.add(event);
-    }
-  }
   
   @Timeout
   public void timeout(Timer timer) {
-    if (!stopped) {
-      if (systemSettingController.isNotTestingOrTestRunning()) {
-        GtfsAgencyEntityUpdateRequest updateRequest = queue.next();
-        if (updateRequest != null) {
-          updateGtfsAgency(updateRequest);
-        }
+    if (systemSettingController.isNotTestingOrTestRunning()) {
+      GtfsAgencyEntityTask task = gtfsAgencyTaskQueue.next();
+      if (task != null) {
+        updateGtfsAgency(task);
       }
-      
-      startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
     }
+    
+    startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
   }
   
-  private void updateGtfsAgency(GtfsAgencyEntityUpdateRequest updateRequest) {
-    Agency gtfsAgency = updateRequest.getEntity();
-    OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(updateRequest.getOrganizationId(), KuntaApiConsts.IDENTIFIER_NAME);
+  private void updateGtfsAgency(GtfsAgencyEntityTask task) {
+    Agency gtfsAgency = task.getEntity();
+    OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(task.getOrganizationId(), KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiOrganizationId == null) {
-      logger.log(Level.SEVERE, "Could not translate organization %s into Kunta API id", updateRequest.getOrganizationId());
+      logger.log(Level.SEVERE, "Could not translate organization %s into Kunta API id", task.getOrganizationId());
       return;
     }
     
-    Long orderIndex = updateRequest.getOrderIndex();
+    Long orderIndex = task.getOrderIndex();
     PublicTransportAgencyId gtfsAgencyId = gtfsIdFactory.createAgencyId(kuntaApiOrganizationId, gtfsAgency.getId());
 
     Identifier identifier = identifierController.findIdentifierById(gtfsAgencyId);
