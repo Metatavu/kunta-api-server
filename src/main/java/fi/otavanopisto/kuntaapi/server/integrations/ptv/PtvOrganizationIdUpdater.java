@@ -29,7 +29,7 @@ import fi.otavanopisto.restfulptv.client.model.Organization;
 public class PtvOrganizationIdUpdater extends IdUpdater {
 
   private static final int WARMUP_TIME = 1000 * 10;
-  private static final int TIMER_INTERVAL = 5000;
+  private static final int TIMER_INTERVAL = 1000 * 60 * 5;
   private static final long BATCH_SIZE = 20;
   
   @Inject

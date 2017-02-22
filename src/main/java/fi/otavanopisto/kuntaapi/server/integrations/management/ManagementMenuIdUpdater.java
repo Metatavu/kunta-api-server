@@ -39,7 +39,7 @@ import fi.otavanopisto.kuntaapi.server.tasks.TaskRequest;
 public class ManagementMenuIdUpdater extends IdUpdater {
 
   private static final int WARMUP_TIME = 1000 * 10;
-  private static final int TIMER_INTERVAL = 5000;
+  private static final int TIMER_INTERVAL = 1000 * 60 * 10;
   
   @Inject
   private Logger logger;

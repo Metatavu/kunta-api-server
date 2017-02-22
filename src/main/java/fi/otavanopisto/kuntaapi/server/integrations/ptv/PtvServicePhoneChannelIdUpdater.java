@@ -35,7 +35,7 @@ import fi.otavanopisto.restfulptv.client.model.PhoneChannel ;
 @SuppressWarnings ("squid:S3306")
 public class PtvServicePhoneChannelIdUpdater extends EntityUpdater {
 
-  private static final int TIMER_INTERVAL = 5000;
+  private static final int TIMER_INTERVAL = 1000 * 10;
 
   @Inject
   private Logger logger;

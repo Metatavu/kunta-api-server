@@ -28,7 +28,7 @@ import fi.otavanopisto.kuntaapi.server.tasks.OrganizationEntityUpdateTask;
 @SuppressWarnings ("squid:S3306")
 public class CaseMOrganizationContentsEntityUpdater extends EntityUpdater {
 
-  private static final int TIMER_INTERVAL = 1000 * 60 * 5;
+  private static final int TIMER_INTERVAL = 1000 * 60 * 15;
 
   @Inject
   private CaseMCacheUpdater cacheUpdater;

@@ -17,7 +17,7 @@ import javax.enterprise.event.Event;
 import javax.inject.Inject;
 
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
-import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
+import fi.otavanopisto.kuntaapi.server.discover.IdUpdater;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationServiceId;
@@ -34,9 +34,9 @@ import fi.otavanopisto.restfulptv.client.model.OrganizationService;
 @Singleton
 @AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
-public class PtvOrganizationServiceIdUpdater extends EntityUpdater {
+public class PtvOrganizationServiceIdUpdater extends IdUpdater {
 
-  private static final int TIMER_INTERVAL = 5000;
+  private static final int TIMER_INTERVAL = 1000 * 60 * 5;
 
   @Inject
   private Logger logger;

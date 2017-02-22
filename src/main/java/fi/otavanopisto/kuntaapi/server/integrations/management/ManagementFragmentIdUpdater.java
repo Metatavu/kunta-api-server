@@ -40,7 +40,7 @@ import fi.otavanopisto.kuntaapi.server.tasks.TaskRequest;
 public class ManagementFragmentIdUpdater extends IdUpdater {
 
   private static final int WARMUP_TIME = 1000 * 10;
-  private static final int TIMER_INTERVAL = 5000;
+  private static final int TIMER_INTERVAL = 1000 * 60 * 5;
   private static final int PER_PAGE = 100;
   private static final int MAX_PAGES = 10;
   

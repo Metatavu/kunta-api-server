@@ -31,7 +31,7 @@ import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 @SuppressWarnings ("squid:S3306")
 public class CaseMMeetingEntityUpdater extends EntityUpdater {
 
-  private static final int TIMER_INTERVAL = 1000;
+  private static final int TIMER_INTERVAL = 1000 * 10;
   
   @Inject
   private Logger logger;

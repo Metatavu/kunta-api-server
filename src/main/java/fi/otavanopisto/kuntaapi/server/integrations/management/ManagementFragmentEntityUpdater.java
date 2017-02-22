@@ -36,7 +36,7 @@ import fi.otavanopisto.kuntaapi.server.tasks.IdTask.Operation;
 @SuppressWarnings ("squid:S3306")
 public class ManagementFragmentEntityUpdater extends EntityUpdater {
 
-  private static final int TIMER_INTERVAL = 1000;
+  private static final int TIMER_INTERVAL = 1000 * 5;
 
   @Inject
   private Logger logger;
