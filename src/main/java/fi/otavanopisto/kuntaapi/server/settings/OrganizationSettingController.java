@@ -1,5 +1,6 @@
 package fi.otavanopisto.kuntaapi.server.settings;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.logging.Logger;
@@ -160,6 +161,23 @@ public class OrganizationSettingController {
    */
   public void deleteOrganizationSetting(OrganizationSetting organizationSetting) {
     organizationSettingDAO.delete(organizationSetting);
+  }
+
+  /**
+   * Lists organization ids which has specified key sets
+   * 
+   * @param key key
+   * @return organization ids which has specified key sets
+   */
+  public List<OrganizationId> listOrganizationIdsWithSetting(String key) {
+    List<String> organizationKuntaApiIds = organizationSettingDAO.listOrganizationKuntaApiIdsByKey(key);
+    List<OrganizationId> result = new ArrayList<>(organizationKuntaApiIds.size());
+    
+    for (String organizationKuntaApiId : organizationKuntaApiIds) {
+      result.add(new OrganizationId(KuntaApiConsts.IDENTIFIER_NAME, organizationKuntaApiId));
+    }
+    
+    return result;
   }
   
 }

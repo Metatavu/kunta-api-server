@@ -7,24 +7,19 @@ import java.time.OffsetDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.ejb.AccessTimeout;
-import javax.ejb.Asynchronous;
 import javax.ejb.Singleton;
 import javax.ejb.Timeout;
 import javax.ejb.Timer;
 import javax.ejb.TimerConfig;
 import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 
 import org.apache.commons.lang3.StringEscapeUtils;
@@ -37,8 +32,6 @@ import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
-import fi.otavanopisto.kuntaapi.server.discover.OrganizationIdRemoveRequest;
-import fi.otavanopisto.kuntaapi.server.discover.OrganizationIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.EventId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
@@ -47,9 +40,11 @@ import fi.otavanopisto.kuntaapi.server.integrations.BinaryHttpClient.DownloadMet
 import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpClient;
 import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpClient.Response;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
+import fi.otavanopisto.kuntaapi.server.integrations.mikkelinyt.tasks.OrganizationEventsTaskQueue;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
+import fi.otavanopisto.kuntaapi.server.tasks.OrganizationEntityUpdateTask;
 import fi.otavanopisto.mikkelinyt.model.Event;
 import fi.otavanopisto.mikkelinyt.model.EventsResponse;
 
@@ -91,16 +86,11 @@ public class MikkeliNytEntityUpdater extends EntityUpdater {
   @Inject
   private ModificationHashCache modificationHashCache;
   
+  @Inject
+  private OrganizationEventsTaskQueue organizationEventsTaskQueue;
+  
   @Resource
   private TimerService timerService;
-
-  private boolean stopped;
-  private List<OrganizationId> queue;
-
-  @PostConstruct
-  public void init() {
-    queue = Collections.synchronizedList(new ArrayList<>());
-  }
 
   @Override
   public String getName() {
@@ -113,56 +103,23 @@ public class MikkeliNytEntityUpdater extends EntityUpdater {
   }
 
   private void startTimer(int duration) {
-    stopped = false;
     TimerConfig timerConfig = new TimerConfig();
     timerConfig.setPersistent(false);
     timerService.createSingleActionTimer(duration, timerConfig);
   }
 
-  @Override
-  public void stopTimer() {
-    stopped = true;
-  }
-  
-  @Asynchronous
-  public void onOrganizationIdUpdateRequest(@Observes OrganizationIdUpdateRequest event) {
-    if (!stopped) {
-      OrganizationId organizationId = event.getId();
-      if (getApiKey(organizationId) == null)  {
-        return;
-      }
-      
-      if (event.isPriority()) {
-        queue.remove(organizationId);
-        queue.add(0, organizationId);
-      } else {
-        if (!queue.contains(organizationId)) {
-          queue.add(organizationId);
-        }
-      }
-    }
-  }
-  
-  @Asynchronous
-  public void onOrganizationIdRemoveRequest(@Observes OrganizationIdRemoveRequest event) {
-    OrganizationId organizationId = event.getId();
-    queue.remove(organizationId);
-    
-    List<EventId> existingEventIds = identifierRelationController.listEventIdsBySourceAndParentId(MikkeliNytConsts.IDENTIFIER_NAME, organizationId);
-    for (EventId existingEventId : existingEventIds) {
-      deleteEvent(organizationId, existingEventId);
-    }
-  }
-
   @Timeout
   public void timeout(Timer timer) {
-    if (!stopped) {
-      if (systemSettingController.isNotTestingOrTestRunning() && !queue.isEmpty()) {
-        updateEvents(queue.remove(0));
+    if (systemSettingController.isNotTestingOrTestRunning()) {
+      OrganizationEntityUpdateTask task = organizationEventsTaskQueue.next();
+      if (task != null) {
+        updateEvents(task.getOrganizationId());
+      } else {
+        organizationEventsTaskQueue.enqueueTasks(organizationSettingController.listOrganizationIdsWithSetting(MikkeliNytConsts.ORGANIZATION_SETTING_BASEURL));
       }
-
-      startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
     }
+
+    startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
   }
 
   private void updateEvents(OrganizationId organizationId) {

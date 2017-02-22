@@ -17,14 +17,6 @@ import fi.metatavu.management.client.model.Banner;
 import fi.metatavu.management.client.model.Page;
 import fi.metatavu.management.client.model.Post;
 import fi.metatavu.management.client.model.Tile;
-import fi.otavanopisto.kuntaapi.server.discover.BannerIdRemoveRequest;
-import fi.otavanopisto.kuntaapi.server.discover.BannerIdUpdateRequest;
-import fi.otavanopisto.kuntaapi.server.discover.NewsArticleIdRemoveRequest;
-import fi.otavanopisto.kuntaapi.server.discover.NewsArticleIdUpdateRequest;
-import fi.otavanopisto.kuntaapi.server.discover.PageIdRemoveRequest;
-import fi.otavanopisto.kuntaapi.server.discover.PageIdUpdateRequest;
-import fi.otavanopisto.kuntaapi.server.discover.TileIdRemoveRequest;
-import fi.otavanopisto.kuntaapi.server.discover.TileIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.id.BannerId;
 import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
@@ -32,6 +24,9 @@ import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.id.TileId;
 import fi.otavanopisto.kuntaapi.server.integrations.management.ManagementApi;
 import fi.otavanopisto.kuntaapi.server.integrations.management.ManagementConsts;
+import fi.otavanopisto.kuntaapi.server.tasks.IdTask;
+import fi.otavanopisto.kuntaapi.server.tasks.IdTask.Operation;
+import fi.otavanopisto.kuntaapi.server.tasks.TaskRequest;
 import fi.otavanopisto.kuntaapi.server.webhooks.WebhookHandler;
 
 @RequestScoped
@@ -43,31 +38,10 @@ public class ManagementWebhookHandler implements WebhookHandler {
 
   @Inject
   private ManagementApi managementApi;
+
+  @Inject
+  private Event<TaskRequest> taskRequest;
   
-  @Inject
-  private Event<PageIdUpdateRequest> pageIdUpdateRequest;
-
-  @Inject
-  private Event<PageIdRemoveRequest> pageIdRemoveRequest;
-
-  @Inject
-  private Event<BannerIdUpdateRequest> bannerIdUpdateRequest;
-
-  @Inject
-  private Event<BannerIdRemoveRequest> bannerIdRemoveRequest;
-
-  @Inject
-  private Event<NewsArticleIdUpdateRequest> newsArticleIdUpdateRequest;
-
-  @Inject
-  private Event<NewsArticleIdRemoveRequest> newsArticleIdRemoveRequest;
-
-  @Inject
-  private Event<TileIdUpdateRequest> tileIdUpdateRequest;
-
-  @Inject
-  private Event<TileIdRemoveRequest> tileIdRemoveRequest;
-
   @Override
   public String getType() {
     return "management";
@@ -153,19 +127,19 @@ public class ManagementWebhookHandler implements WebhookHandler {
     switch (payload.getPostType()) {
       case "page":
         PageId pageId = new PageId(organizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
-        pageIdRemoveRequest.fire(new PageIdRemoveRequest(organizationId, pageId));
+        taskRequest.fire(new TaskRequest(false, new IdTask<PageId>(Operation.REMOVE, pageId)));
         return true;
       case "banner":
         BannerId bannerId = new BannerId(organizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
-        bannerIdRemoveRequest.fire(new BannerIdRemoveRequest(organizationId, bannerId));
+        taskRequest.fire(new TaskRequest(false, new IdTask<BannerId>(Operation.REMOVE, bannerId)));
         return true;
       case "post":
         NewsArticleId newsArticleId = new NewsArticleId(organizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
-        newsArticleIdRemoveRequest.fire(new NewsArticleIdRemoveRequest(organizationId, newsArticleId));
+        taskRequest.fire(new TaskRequest(false, new IdTask<NewsArticleId>(Operation.REMOVE, newsArticleId)));
         return true;
       case "tile":
         TileId tileId = new TileId(organizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
-        tileIdRemoveRequest.fire(new TileIdRemoveRequest(organizationId, tileId));
+        taskRequest.fire(new TaskRequest(false, new IdTask<TileId>(Operation.REMOVE, tileId)));
         return true;
       default:
     }
@@ -177,7 +151,7 @@ public class ManagementWebhookHandler implements WebhookHandler {
     PageId pageId = new PageId(organizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
     Long orderIndex = getPageOrderIndex(pageId);
     if (orderIndex != null) {
-      pageIdUpdateRequest.fire(new PageIdUpdateRequest(organizationId, pageId, orderIndex, true));
+      taskRequest.fire(new TaskRequest(true, new IdTask<PageId>(Operation.UPDATE, pageId, orderIndex)));
     } else {
       logger.warning(String.format("Failed to resolve order index for page %s", pageId));
     }
@@ -189,7 +163,7 @@ public class ManagementWebhookHandler implements WebhookHandler {
     BannerId bannerId = new BannerId(organizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
     Long orderIndex = getBannerOrderIndex(bannerId);
     if (orderIndex != null) {
-      bannerIdUpdateRequest.fire(new BannerIdUpdateRequest(organizationId, bannerId, orderIndex, true));
+      taskRequest.fire(new TaskRequest(true, new IdTask<BannerId>(Operation.UPDATE, bannerId, orderIndex)));
     } else {
       logger.warning(String.format("Failed to resolve order index for banner %s", bannerId));
     }
@@ -201,7 +175,7 @@ public class ManagementWebhookHandler implements WebhookHandler {
     NewsArticleId newsArticleId = new NewsArticleId(organizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
     Long orderIndex = getPostOrderIndex(newsArticleId);
     if (orderIndex != null) {
-      newsArticleIdUpdateRequest.fire(new NewsArticleIdUpdateRequest(organizationId, newsArticleId, orderIndex, true));
+      taskRequest.fire(new TaskRequest(true, new IdTask<NewsArticleId>(Operation.UPDATE, newsArticleId, orderIndex)));
     } else {
       logger.warning(String.format("Failed to resolve order index for news article %s", newsArticleId));
     }
@@ -213,7 +187,7 @@ public class ManagementWebhookHandler implements WebhookHandler {
     TileId tileId = new TileId(organizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
     Long orderIndex = getTileOrderIndex(tileId);
     if (orderIndex != null) {
-      tileIdUpdateRequest.fire(new TileIdUpdateRequest(organizationId, tileId, orderIndex, true));
+      taskRequest.fire(new TaskRequest(true, new IdTask<TileId>(Operation.UPDATE, tileId, orderIndex)));
     } else {
       logger.warning(String.format("Failed to resolve order index for tile %s", tileId));
     }

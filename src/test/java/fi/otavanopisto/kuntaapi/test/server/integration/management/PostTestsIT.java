@@ -61,7 +61,6 @@ public class PostTestsIT extends AbstractIntegrationTest {
     deleteManagementSettings(organizationId);
     getPtvMocker().endMock();
     getManagementMocker().endMock();
-    deleteAllPages();
   }
 
   @Test

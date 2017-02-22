@@ -47,7 +47,11 @@ public class ManagementFragmentProvider extends AbstractManagementProvider imple
 
   @Override
   public Fragment findOrganizationFragment(OrganizationId organizationId, FragmentId fragmentId) {
-    return fragmentCache.get(fragmentId);
+    if (identifierRelationController.isChildOf(organizationId, fragmentId)) {
+      return fragmentCache.get(fragmentId);
+    }
+    
+    return null;
   }
 
   private boolean isAcceptable(Fragment fragment, String slug) {

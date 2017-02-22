@@ -3,24 +3,20 @@ package fi.otavanopisto.kuntaapi.server.integrations.vcard;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.ejb.AccessTimeout;
-import javax.ejb.Asynchronous;
 import javax.ejb.Singleton;
 import javax.ejb.Timeout;
 import javax.ejb.Timer;
 import javax.ejb.TimerConfig;
 import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 
 import org.apache.commons.lang3.StringUtils;
@@ -34,17 +30,17 @@ import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
-import fi.otavanopisto.kuntaapi.server.discover.OrganizationIdRemoveRequest;
-import fi.otavanopisto.kuntaapi.server.discover.OrganizationIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.id.ContactId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.BinaryHttpClient;
 import fi.otavanopisto.kuntaapi.server.integrations.BinaryHttpClient.BinaryResponse;
 import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpClient.Response;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
+import fi.otavanopisto.kuntaapi.server.integrations.vcard.tasks.OrganizationVCardsTaskQueue;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
+import fi.otavanopisto.kuntaapi.server.tasks.OrganizationEntityUpdateTask;
 
 @ApplicationScoped
 @Singleton
@@ -81,17 +77,12 @@ public class VCardEntityUpdater extends EntityUpdater {
   @Inject
   private ModificationHashCache modificationHashCache;
   
+  @Inject
+  private OrganizationVCardsTaskQueue organizationVCardsTaskQueue;
+  
   @Resource
   private TimerService timerService;
-
-  private boolean stopped;
-  private List<OrganizationId> queue;
-
-  @PostConstruct
-  public void init() {
-    queue = Collections.synchronizedList(new ArrayList<>());
-  }
-
+  
   @Override
   public String getName() {
     return "vcard-contacts";
@@ -103,54 +94,25 @@ public class VCardEntityUpdater extends EntityUpdater {
   }
 
   private void startTimer(int duration) {
-    stopped = false;
     TimerConfig timerConfig = new TimerConfig();
     timerConfig.setPersistent(false);
     timerService.createSingleActionTimer(duration, timerConfig);
   }
-
-  @Override
-  public void stopTimer() {
-    stopped = true;
-  }
   
-  @Asynchronous
-  public void onOrganizationIdUpdateRequest(@Observes OrganizationIdUpdateRequest event) {
-    if (!stopped) {
-      OrganizationId organizationId = event.getId();
-      if (getUrl(organizationId) == null)  {
-        return;
-      }
-      
-      if (event.isPriority()) {
-        queue.remove(organizationId);
-        queue.add(0, organizationId);
-      } else {
-        if (!queue.contains(organizationId)) {
-          queue.add(organizationId);
-        }
-      }
-    }
-  }
-  
-  @Asynchronous
-  public void onOrganizationIdRemoveRequest(@Observes OrganizationIdRemoveRequest event) {
-    OrganizationId organizationId = event.getId();
-    queue.remove(organizationId);
-    deleteContacts(organizationId);
-  }
-
   @Timeout
   public void timeout(Timer timer) {
-    if (!stopped) {
-      if (systemSettingController.isNotTestingOrTestRunning() && !queue.isEmpty()) {
-        updateContacts(queue.remove(0));
+    if (systemSettingController.isNotTestingOrTestRunning()) {
+      OrganizationEntityUpdateTask task = organizationVCardsTaskQueue.next();
+      if (task != null) {
+        updateContacts(task.getOrganizationId());
+      } else {
+        organizationVCardsTaskQueue.enqueueTasks(organizationSettingController.listOrganizationIdsWithSetting(VCardConsts.ORGANIZATION_SETTING_URL));
       }
-
-      startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
     }
+
+    startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
   }
-  
+
   private void updateContacts(OrganizationId organizationId) {
     String url = getUrl(organizationId);
     if (StringUtils.isBlank(url)) {
@@ -232,13 +194,6 @@ public class VCardEntityUpdater extends EntityUpdater {
     return contactId;
   }
   
-  private void deleteContacts(OrganizationId organizationId) {
-    List<ContactId> contactIds = contactCache.getOragnizationIds(organizationId);
-    for (ContactId contactId : contactIds) {
-      deleteContact(organizationId, contactId);
-    }
-  }
-   
   private void deleteContact(OrganizationId organizationId, ContactId contactId) {
     Identifier contactIdentifier = identifierController.findIdentifierById(contactId);
     if (contactIdentifier != null) {

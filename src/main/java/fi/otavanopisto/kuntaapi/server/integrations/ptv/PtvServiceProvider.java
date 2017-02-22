@@ -1,20 +1,21 @@
 package fi.otavanopisto.kuntaapi.server.integrations.ptv;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.logging.Logger;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
+import fi.metatavu.kuntaapi.server.rest.model.OrganizationService;
 import fi.metatavu.kuntaapi.server.rest.model.Service;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
-import fi.otavanopisto.kuntaapi.server.id.IdController;
+import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.id.OrganizationServiceId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceId;
+import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceProvider;
-import fi.otavanopisto.restfulptv.client.ApiResponse;
+import fi.otavanopisto.kuntaapi.server.integrations.ptv.cache.PtvOrganizationServiceCache;
 
 /**
  * PTV Service provider
@@ -23,22 +24,19 @@ import fi.otavanopisto.restfulptv.client.ApiResponse;
  */
 @RequestScoped
 public class PtvServiceProvider implements ServiceProvider {
-
-  @Inject
-  private Logger logger;
-  
-  @Inject
-  private PtvApi ptvApi;
   
   @Inject
   private PtvServiceCache ptvServiceCache;
   
   @Inject
-  private IdentifierController identifierController;
+  private PtvOrganizationServiceCache ptvOrganizationServiceCache;
   
   @Inject
-  private IdController idController;
+  private IdentifierController identifierController;
 
+  @Inject
+  private IdentifierRelationController identifierRelationController;
+  
   @Override
   public Service findService(ServiceId serviceId) {
     return ptvServiceCache.get(serviceId);
@@ -51,7 +49,7 @@ public class PtvServiceProvider implements ServiceProvider {
     if (organizationId != null) {
       serviceIds = listOrganizationServiceIds(organizationId);
     } else {
-      serviceIds = identifierController.listServiceIdsBySource(PtvConsts.IDENTIFIFER_NAME);
+      serviceIds = identifierController.listServiceIdsBySource(PtvConsts.IDENTIFIER_NAME);
     }
     
     List<Service> result = new ArrayList<>(serviceIds.size());
@@ -66,24 +64,15 @@ public class PtvServiceProvider implements ServiceProvider {
   }
   
   private List<ServiceId> listOrganizationServiceIds(OrganizationId organizationId) {
-    OrganizationId ptvOrganizationId = idController.translateOrganizationId(organizationId, PtvConsts.IDENTIFIFER_NAME);
-    if (ptvOrganizationId == null) {
-      logger.severe(String.format("Failed to translate organizationId %s into PTV id", organizationId.toString()));
-      return Collections.emptyList();
-    }
+    List<OrganizationServiceId> organizationServiceIds = identifierRelationController.listOrganizationServiceIdsBySourceAndParentId(PtvConsts.IDENTIFIER_NAME, organizationId);
     
-    ApiResponse<List<fi.otavanopisto.restfulptv.client.model.Service>> servicesResponse = ptvApi.getServicesApi()
-        .listServices(ptvOrganizationId.getId(), null, null);
+    List<ServiceId> result = new ArrayList<>(organizationServiceIds.size());
     
-    if (!servicesResponse.isOk()) {
-      logger.severe(String.format("Failed to list services [%d] %s", servicesResponse.getStatus(), servicesResponse.getMessage()));
-      return Collections.emptyList();
-    }
-    
-    List<fi.otavanopisto.restfulptv.client.model.Service> ptvServices = servicesResponse.getResponse();
-    List<ServiceId> result = new ArrayList<>(ptvServices.size());
-    for (fi.otavanopisto.restfulptv.client.model.Service ptvService : ptvServices) {
-      result.add(new ServiceId(PtvConsts.IDENTIFIFER_NAME, ptvService.getId()));
+    for (OrganizationServiceId organizationServiceId : organizationServiceIds) {
+      OrganizationService organizationService = ptvOrganizationServiceCache.get(organizationServiceId);
+      if (organizationService != null) {
+        result.add(new ServiceId(KuntaApiConsts.IDENTIFIER_NAME, organizationService.getServiceId()));
+      }
     }
     
     return result;

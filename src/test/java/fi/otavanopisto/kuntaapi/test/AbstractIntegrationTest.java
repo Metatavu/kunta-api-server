@@ -4,9 +4,6 @@ import static com.jayway.restassured.RestAssured.given;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.fail;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import org.junit.After;
 import org.junit.Before;
 
@@ -23,8 +20,6 @@ import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
  */
 @SuppressWarnings ("squid:S1192")
 public abstract class AbstractIntegrationTest extends AbstractTest {
-
-  private static Logger logger = Logger.getLogger(AbstractIntegrationTest.class.getName());
   
   public static final String BASE_URL = "/v1";
   
@@ -41,6 +36,8 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   @After
   public void afterEveryTest() {
     deleteSystemSetting(KuntaApiConsts.SYSTEM_SETTING_TESTS_RUNNING);
+    clearTasks();
+    deleteIdentifiers();
   }
   
   public RestFulPtvMocker getPtvMocker() {
@@ -66,8 +63,16 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
       .then()
       .statusCode(200);
   }
+  
+  protected void clearTasks() {
+    given()
+      .baseUri(getApiBasePath())
+      .get("/system/tasks/clear")
+      .then()
+      .statusCode(200);
+  }
 
-  @SuppressWarnings ({"squid:S1166", "squid:S00108", "squid:S2925"})
+  @SuppressWarnings ({"squid:S1166", "squid:S00108", "squid:S2925", "squid:S106"})
   protected void waitApiListCount(String path, int count) throws InterruptedException {
     int counter = 0;
     long timeout = System.currentTimeMillis() + (120 * 1000);
@@ -89,7 +94,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
         }
         
         if ((counter % 10) == 0) {
-          logger.log(Level.WARNING, () -> String.format("... still waiting %d items in %s, current count %d", count, path, listCount));
+          System.out.println(String.format("... still waiting %d items in %s, current count %d", count, path, listCount));
         }
         
       } catch (JsonPathException e) {

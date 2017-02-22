@@ -50,7 +50,6 @@ public class StopTimeTestsIT extends AbstractIntegrationTest {
     getPtvMocker().endMock();
     deletePtvSettings();
     deleteGtfsSettings(organizationId);
-    deleteAllGtfsDatas();
   }
   
   @Test

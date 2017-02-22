@@ -3,9 +3,9 @@ package fi.otavanopisto.kuntaapi.server.integrations.ptv;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
@@ -15,22 +15,22 @@ import javax.ejb.TimerConfig;
 import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Event;
-import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
-import fi.otavanopisto.kuntaapi.server.discover.IdUpdateRequestQueue;
-import fi.otavanopisto.kuntaapi.server.discover.ServiceIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceId;
 import fi.otavanopisto.kuntaapi.server.index.IndexRequest;
 import fi.otavanopisto.kuntaapi.server.index.IndexableService;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
+import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.ServiceIdTaskQueue;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
+import fi.otavanopisto.kuntaapi.server.tasks.IdTask;
+import fi.otavanopisto.kuntaapi.server.tasks.IdTask.Operation;
 import fi.otavanopisto.kuntaapi.server.utils.LocalizationUtils;
 import fi.otavanopisto.restfulptv.client.ApiResponse;
 import fi.otavanopisto.restfulptv.client.model.LocalizedListItem;
@@ -69,20 +69,15 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
   @Inject
   private ModificationHashCache modificationHashCache;
   
+  @Inject
+  private ServiceIdTaskQueue serviceIdTaskQueue;
+
   @Resource
   private TimerService timerService;
 
   @Inject
   private Event<IndexRequest> indexRequest;
-
-  private boolean stopped;
-  private IdUpdateRequestQueue<ServiceIdUpdateRequest> queue;
-
-  @PostConstruct
-  public void init() {
-    queue = new IdUpdateRequestQueue<>(PtvConsts.IDENTIFIFER_NAME);
-  }
-
+  
   @Override
   public String getName() {
     return "ptv-services";
@@ -94,43 +89,26 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
   }
 
   private void startTimer(int duration) {
-    stopped = false;
     TimerConfig timerConfig = new TimerConfig();
     timerConfig.setPersistent(false);
     timerService.createSingleActionTimer(duration, timerConfig);
   }
 
-  @Override
-  public void stopTimer() {
-    stopped = true;
-  }
-  
-  public void onServiceIdUpdateRequest(@Observes ServiceIdUpdateRequest event) {
-    if (!stopped) {
-      if (!PtvConsts.IDENTIFIFER_NAME.equals(event.getId().getSource())) {
-        return;
-      }
-      
-      queue.add(event);
-    }
-  }
-
   @Timeout
   public void timeout(Timer timer) {
-    if (!stopped) {
-      if (systemSettingController.isNotTestingOrTestRunning()) {
-        ServiceIdUpdateRequest updateRequest = queue.next();
-        if (updateRequest != null) {
-          updatePtvService(updateRequest);
-        }
-      }
-
-      startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
-    }
+    executeNextTask();
+    startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
   }
-
-  private void updatePtvService(ServiceIdUpdateRequest updateRequest) {
-    updatePtvService(updateRequest.getId(), updateRequest.getOrderIndex());
+  
+  private void executeNextTask() {
+    IdTask<ServiceId> task = serviceIdTaskQueue.next();
+    if (task != null) {
+      if (task.getOperation() == Operation.UPDATE) {
+        updatePtvService(task.getId(), task.getOrderIndex()); 
+      } else if (task.getOperation() == Operation.REMOVE) {
+        logger.log(Level.SEVERE, "PTV Service removal is not implemented");
+      }
+    }
   }
   
   private void updatePtvService(ServiceId serviceId, Long orderIndex) {
@@ -173,7 +151,7 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
     List<String> organizationIds = new ArrayList<>(ptvOrganizationIds.size());
     
     for (String ptvOrganizationId : ptvOrganizationIds) {
-      OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(new OrganizationId(PtvConsts.IDENTIFIFER_NAME, ptvOrganizationId), KuntaApiConsts.IDENTIFIER_NAME);
+      OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(new OrganizationId(PtvConsts.IDENTIFIER_NAME, ptvOrganizationId), KuntaApiConsts.IDENTIFIER_NAME);
       if (kuntaApiOrganizationId != null) {
         organizationIds.add(kuntaApiOrganizationId.getId());
       } else {

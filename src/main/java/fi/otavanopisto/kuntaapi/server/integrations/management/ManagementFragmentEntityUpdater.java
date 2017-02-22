@@ -3,20 +3,15 @@ package fi.otavanopisto.kuntaapi.server.integrations.management;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
-import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.ejb.AccessTimeout;
-import javax.ejb.Asynchronous;
 import javax.ejb.Singleton;
 import javax.ejb.Timeout;
 import javax.ejb.Timer;
 import javax.ejb.TimerConfig;
 import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.event.Observes;
 import javax.inject.Inject;
-
-import org.apache.commons.lang3.StringUtils;
 
 import fi.metatavu.management.client.ApiResponse;
 import fi.metatavu.management.client.DefaultApi;
@@ -25,15 +20,15 @@ import fi.otavanopisto.kuntaapi.server.cache.FragmentCache;
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
-import fi.otavanopisto.kuntaapi.server.discover.FragmentIdRemoveRequest;
-import fi.otavanopisto.kuntaapi.server.discover.FragmentIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
-import fi.otavanopisto.kuntaapi.server.discover.IdUpdateRequestQueue;
 import fi.otavanopisto.kuntaapi.server.id.FragmentId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
+import fi.otavanopisto.kuntaapi.server.integrations.management.tasks.FragmentIdTaskQueue;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
+import fi.otavanopisto.kuntaapi.server.tasks.IdTask;
+import fi.otavanopisto.kuntaapi.server.tasks.IdTask.Operation;
 
 @ApplicationScoped
 @Singleton
@@ -66,17 +61,12 @@ public class ManagementFragmentEntityUpdater extends EntityUpdater {
   
   @Inject
   private ModificationHashCache modificationHashCache;
+
+  @Inject
+  private FragmentIdTaskQueue fragmentIdTaskQueue;
   
   @Resource
   private TimerService timerService;
-
-  private boolean stopped;
-  private IdUpdateRequestQueue<FragmentIdUpdateRequest> queue;
-
-  @PostConstruct
-  public void init() {
-    queue = new IdUpdateRequestQueue<>(ManagementConsts.IDENTIFIER_NAME);
-  }
 
   @Override
   public String getName() {
@@ -89,58 +79,30 @@ public class ManagementFragmentEntityUpdater extends EntityUpdater {
   }
 
   private void startTimer(int duration) {
-    stopped = false;
     TimerConfig timerConfig = new TimerConfig();
     timerConfig.setPersistent(false);
     timerService.createSingleActionTimer(duration, timerConfig);
   }
 
-  @Override
-  public void stopTimer() {
-    stopped = true;
-  }
-  
-  @Asynchronous
-  public void onFragmentIdUpdateRequest(@Observes FragmentIdUpdateRequest event) {
-    if (!stopped) {
-      FragmentId fragmentId = event.getId();
-      
-      if (!StringUtils.equals(fragmentId.getSource(), ManagementConsts.IDENTIFIER_NAME)) {
-        return;
-      }
-      
-      queue.add(event);
-    }
-  }
-  
-  @Asynchronous
-  public void onFragmentIdRemoveRequest(@Observes FragmentIdRemoveRequest event) {
-    if (!stopped) {
-      FragmentId fragmentId = event.getId();
-      
-      if (!StringUtils.equals(fragmentId.getSource(), ManagementConsts.IDENTIFIER_NAME)) {
-        return;
-      }
-      
-      deleteFragment(event, fragmentId);
-    }
-  }
-  
   @Timeout
   public void timeout(Timer timer) {
-    if (!stopped) {
-      if (systemSettingController.isNotTestingOrTestRunning()) {
-        FragmentIdUpdateRequest updateRequest = queue.next();
-        if (updateRequest != null) {
-          updateManagementFragment(updateRequest.getOrganizationId(), updateRequest.getId(), updateRequest.getOrderIndex());
-        }
+    executeNextTask();
+    startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
+  }
+
+  private void executeNextTask() {
+    IdTask<FragmentId> task = fragmentIdTaskQueue.next();
+    if (task != null) {
+      if (task.getOperation() == Operation.UPDATE) {
+        updateManagementFragment(task.getId(), task.getOrderIndex()); 
+      } else if (task.getOperation() == Operation.REMOVE) {
+        deleteManagementFragment(task.getId());
       }
-      
-      startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
     }
   }
   
-  private void updateManagementFragment(OrganizationId organizationId, FragmentId fragmentId, Long orderIndex) {
+  private void updateManagementFragment(FragmentId fragmentId, Long orderIndex) {
+    OrganizationId organizationId = fragmentId.getOrganizationId();
     DefaultApi api = managementApi.getApi(organizationId);
     
     ApiResponse<Fragment> response = api.wpV2FragmentIdGet(fragmentId.getId(), null, null, null);
@@ -170,13 +132,12 @@ public class ManagementFragmentEntityUpdater extends EntityUpdater {
     fragmentCache.put(kuntaApiFragmentId, fragment);
   }
 
-  private void deleteFragment(FragmentIdRemoveRequest event, FragmentId managementFragmentId) {
-    OrganizationId organizationId = event.getOrganizationId();
+  private void deleteManagementFragment(FragmentId managementFragmentId) {
+    OrganizationId organizationId = managementFragmentId.getOrganizationId();
     
     Identifier fragmentIdentifier = identifierController.findIdentifierById(managementFragmentId);
     if (fragmentIdentifier != null) {
       FragmentId kuntaApiFragmentId = new FragmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, fragmentIdentifier.getKuntaApiId());
-      queue.remove(managementFragmentId);
       modificationHashCache.clear(fragmentIdentifier.getKuntaApiId());
       fragmentCache.clear(kuntaApiFragmentId);
       identifierController.deleteIdentifier(fragmentIdentifier);

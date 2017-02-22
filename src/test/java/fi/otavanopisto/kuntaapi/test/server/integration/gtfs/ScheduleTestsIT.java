@@ -51,7 +51,6 @@ public class ScheduleTestsIT extends AbstractIntegrationTest{
     getPtvMocker().endMock();
     deletePtvSettings();
     deleteGtfsSettings(organizationId);
-    deleteAllGtfsDatas();
   }
   
   @Test

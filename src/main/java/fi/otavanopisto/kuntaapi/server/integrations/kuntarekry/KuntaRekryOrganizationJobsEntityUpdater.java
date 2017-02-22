@@ -1,10 +1,8 @@
 package fi.otavanopisto.kuntaapi.server.integrations.kuntarekry;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
@@ -13,21 +11,19 @@ import javax.ejb.Timer;
 import javax.ejb.TimerConfig;
 import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.event.Observes;
 import javax.inject.Inject;
-
-import org.apache.commons.lang3.StringUtils;
 
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
-import fi.otavanopisto.kuntaapi.server.discover.OrganizationIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.id.JobId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.integrations.kuntarekry.tasks.OrganizationJobsTaskQueue;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
+import fi.otavanopisto.kuntaapi.server.tasks.OrganizationEntityUpdateTask;
 
 @ApplicationScoped
 @Singleton
@@ -54,17 +50,12 @@ public class KuntaRekryOrganizationJobsEntityUpdater extends EntityUpdater {
   
   @Inject
   private OrganizationSettingController organizationSettingController;
+  
+  @Inject
+  private OrganizationJobsTaskQueue organizationJobsTaskQueue;
 
   @Resource
   private TimerService timerService;
-
-  private boolean stopped;
-  private List<OrganizationId> queue;
-
-  @PostConstruct
-  public void init() {
-    queue = new ArrayList<>();
-  }
 
   @Override
   public String getName() {
@@ -77,44 +68,23 @@ public class KuntaRekryOrganizationJobsEntityUpdater extends EntityUpdater {
   }
 
   private void startTimer(int duration) {
-    stopped = false;
     TimerConfig timerConfig = new TimerConfig();
     timerConfig.setPersistent(false);
     timerService.createSingleActionTimer(duration, timerConfig);
   }
 
-  @Override
-  public void stopTimer() {
-    stopped = true;
-  }
-  
-  public void onOrganizationIdUpdateRequest(@Observes OrganizationIdUpdateRequest event) {
-    if (!stopped) {
-      String apiUri = organizationSettingController.getSettingValue(event.getId(), KuntaRekryConsts.ORGANIZATION_SETTING_APIURI);
-      if (StringUtils.isBlank(apiUri)) {
-        return;
-      }
-      
-      if (event.isPriority()) {
-        queue.remove(event.getId());
-        queue.add(0, event.getId());
-      } else {
-        if (!queue.contains(event.getId())) {
-          queue.add(event.getId());
-        }
-      }      
-    }
-  }
-
   @Timeout
   public void timeout(Timer timer) {
-    if (!stopped) {
-      if (systemSettingController.isNotTestingOrTestRunning() && !queue.isEmpty()) {
-        updateOrganizationJobs(queue.remove(0));          
+    if (systemSettingController.isNotTestingOrTestRunning()) {
+      OrganizationEntityUpdateTask task = organizationJobsTaskQueue.next();
+      if (task != null) {
+        updateOrganizationJobs(task.getOrganizationId());
+      } else {
+        organizationJobsTaskQueue.enqueueTasks(organizationSettingController.listOrganizationIdsWithSetting(KuntaRekryConsts.ORGANIZATION_SETTING_APIURI));
       }
-
-      startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
     }
+
+    startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
   }
 
   private void updateOrganizationJobs(OrganizationId organizationId) {

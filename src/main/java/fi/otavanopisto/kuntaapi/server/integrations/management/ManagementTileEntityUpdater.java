@@ -4,21 +4,17 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
-import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.ejb.AccessTimeout;
-import javax.ejb.Asynchronous;
 import javax.ejb.Singleton;
 import javax.ejb.Timeout;
 import javax.ejb.Timer;
 import javax.ejb.TimerConfig;
 import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 
 import org.apache.commons.codec.digest.DigestUtils;
-import org.apache.commons.lang3.StringUtils;
 
 import fi.metatavu.management.client.ApiResponse;
 import fi.metatavu.management.client.DefaultApi;
@@ -29,18 +25,17 @@ import fi.otavanopisto.kuntaapi.server.cache.TileCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
-import fi.otavanopisto.kuntaapi.server.discover.IdUpdateRequestQueue;
-import fi.otavanopisto.kuntaapi.server.discover.TileIdRemoveRequest;
-import fi.otavanopisto.kuntaapi.server.discover.TileIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.TileId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementAttachmentCache;
+import fi.otavanopisto.kuntaapi.server.integrations.management.tasks.TileIdTaskQueue;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
-import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
+import fi.otavanopisto.kuntaapi.server.tasks.IdTask;
+import fi.otavanopisto.kuntaapi.server.tasks.IdTask.Operation;
 
 @ApplicationScoped
 @Singleton
@@ -66,9 +61,6 @@ public class ManagementTileEntityUpdater extends EntityUpdater {
   private ManagementTranslator managementTranslator;
   
   @Inject
-  private OrganizationSettingController organizationSettingController; 
-  
-  @Inject
   private IdentifierController identifierController;
 
   @Inject
@@ -82,17 +74,12 @@ public class ManagementTileEntityUpdater extends EntityUpdater {
   
   @Inject
   private ModificationHashCache modificationHashCache;
+
+  @Inject
+  private TileIdTaskQueue tileIdTaskQueue;
   
   @Resource
   private TimerService timerService;
-
-  private boolean stopped;
-  private IdUpdateRequestQueue<TileIdUpdateRequest> queue;
-
-  @PostConstruct
-  public void init() {
-    queue = new IdUpdateRequestQueue<>(ManagementConsts.IDENTIFIER_NAME);
-  }
 
   @Override
   public String getName() {
@@ -105,62 +92,31 @@ public class ManagementTileEntityUpdater extends EntityUpdater {
   }
 
   private void startTimer(int duration) {
-    stopped = false;
     TimerConfig timerConfig = new TimerConfig();
     timerConfig.setPersistent(false);
     timerService.createSingleActionTimer(duration, timerConfig);
   }
 
-  @Override
-  public void stopTimer() {
-    stopped = true;
-  }
-  
-  @Asynchronous
-  public void onTileIdUpdateRequest(@Observes TileIdUpdateRequest event) {
-    if (!stopped) {
-      OrganizationId organizationId = event.getOrganizationId();
-      
-      if (organizationSettingController.getSettingValue(organizationId, ManagementConsts.ORGANIZATION_SETTING_BASEURL) == null) {
-        return;
-      }
-      
-      queue.add(event);
-    }
-  }
-  
-  @Asynchronous
-  public void onTileIdRemoveRequest(@Observes TileIdRemoveRequest event) {
-    if (!stopped) {
-      TileId tileId = event.getId();
-      
-      if (!StringUtils.equals(tileId.getSource(), ManagementConsts.IDENTIFIER_NAME)) {
-        return;
-      }
-      
-      deleteTile(event.getOrganizationId(), tileId);
-    }
-  }
-
   @Timeout
   public void timeout(Timer timer) {
-    if (!stopped) {
-      if (systemSettingController.isNotTestingOrTestRunning()) {
-        TileIdUpdateRequest updateRequest = queue.next();
-        if (updateRequest != null) {
-          updateManagementTile(updateRequest);
-        }
+    executeNextTask();
+    startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
+  }
+  
+  private void executeNextTask() {
+    IdTask<TileId> task = tileIdTaskQueue.next();
+    if (task != null) {
+      if (task.getOperation() == Operation.UPDATE) {
+        updateManagementTile(task.getId(), task.getOrderIndex()); 
+      } else if (task.getOperation() == Operation.REMOVE) {
+        deleteManagementTile(task.getId());
       }
-
-      startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
     }
   }
 
-  private void updateManagementTile(TileIdUpdateRequest updateRequest) {
-    OrganizationId organizationId = updateRequest.getOrganizationId();
+  private void updateManagementTile(TileId managementTileId, Long orderIndex) {
+    OrganizationId organizationId = managementTileId.getOrganizationId();
     DefaultApi api = managementApi.getApi(organizationId);
-    TileId managementTileId = updateRequest.getId();
-    Long orderIndex = updateRequest.getOrderIndex();
     
     ApiResponse<Tile> response = api.wpV2TileIdGet(managementTileId.getId(), null, null, null);
     if (response.isOk()) {
@@ -243,11 +199,11 @@ public class ManagementTileEntityUpdater extends EntityUpdater {
     }
   }
   
-  private void deleteTile(OrganizationId organizationId, TileId managementTileId) {
+  private void deleteManagementTile(TileId managementTileId) {
+    OrganizationId organizationId = managementTileId.getOrganizationId();
     Identifier tileIdentifier = identifierController.findIdentifierById(managementTileId);
     if (tileIdentifier != null) {
       TileId kuntaApiTileId = new TileId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, tileIdentifier.getKuntaApiId());
-      queue.remove(managementTileId);
       modificationHashCache.clear(tileIdentifier.getKuntaApiId());
       tileCache.clear(kuntaApiTileId);
       identifierController.deleteIdentifier(tileIdentifier);
