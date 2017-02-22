@@ -8,11 +8,12 @@ import javax.inject.Inject;
 
 import org.apache.commons.lang3.StringUtils;
 
+import fi.metatavu.kuntaapi.server.rest.model.Announcement;
 import fi.otavanopisto.kuntaapi.server.cache.AnnouncementCache;
+import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.id.AnnouncementId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.AnnouncementProvider;
-import fi.metatavu.kuntaapi.server.rest.model.Announcement;
 
 /**
  * Announcement provider for management wordpress
@@ -24,11 +25,14 @@ import fi.metatavu.kuntaapi.server.rest.model.Announcement;
 public class ManagementAnnouncementProvider extends AbstractManagementProvider implements AnnouncementProvider {
   
   @Inject
+  private IdentifierRelationController identifierRelationController;
+  
+  @Inject
   private AnnouncementCache announcementCache;
   
   @Override
   public List<Announcement> listOrganizationAnnouncements(OrganizationId organizationId, String slug) {
-    List<AnnouncementId> announcementIds = announcementCache.getOragnizationIds(organizationId);
+    List<AnnouncementId> announcementIds = identifierRelationController.listAnnouncementIdsBySourceAndParentId(ManagementConsts.IDENTIFIER_NAME, organizationId);
     List<Announcement> announcements = new ArrayList<>(announcementIds.size());
     
     for (AnnouncementId announcementId : announcementIds) {
@@ -43,7 +47,11 @@ public class ManagementAnnouncementProvider extends AbstractManagementProvider i
 
   @Override
   public Announcement findOrganizationAnnouncement(OrganizationId organizationId, AnnouncementId announcementId) {
-    return announcementCache.get(announcementId);
+    if (identifierRelationController.isChildOf(organizationId, announcementId)) {
+      return announcementCache.get(announcementId);
+    }
+    
+    return null;
   }
 
   private boolean isAcceptable(Announcement announcement, String slug) {

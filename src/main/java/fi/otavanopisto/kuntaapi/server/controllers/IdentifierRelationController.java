@@ -9,9 +9,11 @@ import java.util.logging.Logger;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
+import fi.otavanopisto.kuntaapi.server.id.AnnouncementId;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.BannerId;
 import fi.otavanopisto.kuntaapi.server.id.BaseId;
+import fi.otavanopisto.kuntaapi.server.id.ContactId;
 import fi.otavanopisto.kuntaapi.server.id.EventId;
 import fi.otavanopisto.kuntaapi.server.id.FragmentId;
 import fi.otavanopisto.kuntaapi.server.id.IdType;
@@ -175,6 +177,23 @@ public class IdentifierRelationController {
   }
   
   /**
+   * Lists announcement ids by source and parent id. 
+   * 
+   * @param parentId parent id
+   * @return announcement ids by parent id
+   */
+  public List<AnnouncementId> listAnnouncementIdsBySourceAndParentId(String source, BaseId parentId) {
+    List<Identifier> identifiers = listChildIdentifiersByParentSourceAndType(parentId, source, IdType.ANNOUNCEMENT);
+    List<AnnouncementId> result = new ArrayList<>(identifiers.size());
+    for (Identifier identifier : identifiers) {
+      OrganizationId organizationId = new OrganizationId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getOrganizationKuntaApiId());
+      result.add(new AnnouncementId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId()));
+    }
+    
+    return result;
+  }
+  
+  /**
    * Lists fragment ids by source and parent id. 
    * 
    * @param parentId parent id
@@ -237,6 +256,23 @@ public class IdentifierRelationController {
     for (Identifier identifier : identifiers) {
       OrganizationId organizationId = new OrganizationId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getOrganizationKuntaApiId());
       result.add(new EventId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId()));
+    }
+    
+    return result;
+  }
+  
+  /**
+   * Lists contact ids by source and parent id. 
+   * 
+   * @param parentId parent id
+   * @return contact ids by parent id
+   */
+  public List<ContactId> listContactIdsBySourceAndParentId(String source, BaseId parentId) {
+    List<Identifier> identifiers = listChildIdentifiersByParentSourceAndType(parentId, source, IdType.CONTACT);
+    List<ContactId> result = new ArrayList<>(identifiers.size());
+    for (Identifier identifier : identifiers) {
+      OrganizationId organizationId = new OrganizationId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getOrganizationKuntaApiId());
+      result.add(new ContactId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId()));
     }
     
     return result;

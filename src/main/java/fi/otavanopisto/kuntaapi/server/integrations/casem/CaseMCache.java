@@ -81,8 +81,4 @@ public class CaseMCache {
     return pageContentCache.get(pageId);
   }
   
-  public List<PageId> listOrganizationPageIds(OrganizationId organizationId) {
-    return pageCache.getOragnizationIds(organizationId);
-  }
-
 }
