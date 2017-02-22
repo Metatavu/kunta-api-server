@@ -3,7 +3,7 @@
 if [ "$TRAVIS_PULL_REQUEST" != "false" ] && [ $TRAVIS_BRANCH != "master" ] && [ -n "${GITHUB_TOKEN}" ] && [ -n "${SONAR_TOKEN}" ]; then
   echo "Pull request"
   
-  PROJECT_VERSION=`mvn -f pom.xml -q -Dexec.executable='echo' -Dexec.args='${project.version}' --non-recursive org.codehaus.mojo:exec-maven-plugin:1.3.1:exec`
+  PROJECT_VERSION=`cat pom.xml|grep version -m 1|sed -e \'s/.*<version>//\'|sed -e \'s/<.*//\'`
   
   sh sonar-scanner/bin/sonar-scanner -Dsonar.host.url=$SONAR_HOST_URL \
     -Dsonar.analysis.mode=issues \
