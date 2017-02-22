@@ -59,6 +59,8 @@ public class MeetingDataUpdateTask extends AbstractTask {
   @Override
   public Object[] getHashParts() {
     return new Object[] {
+      getMeetingContent(),
+      getMeetingItemContents(),
       meetingPageId.getOrganizationId().getSource(), 
       meetingPageId.getOrganizationId().getId(), 
       meetingPageId.getSource(), 
