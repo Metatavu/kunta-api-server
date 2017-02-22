@@ -12,7 +12,6 @@ import java.time.OffsetDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -79,81 +78,10 @@ public abstract class AbstractTest {
   protected void deleteSystemSetting(String key) {
     executeDelete("delete from SystemSetting where settingKey = ?", key);
   }
-  
-  protected void deleteAllPages() {
-    deleteAllIdentifiers("PAGE");
-  }
-  
-  protected void deleteAllBanners() {
-    deleteAllIdentifiers("BANNER");
-  }
-  
-  protected void deleteAllTiles() {
-    deleteAllIdentifiers("TILE");
-  }
-  
-  protected void deleteAllOrganizationServices() {
-    deleteAllIdentifiers("ORGANIZATION_SERVICE");
-  }
-
-  protected void deleteAllMenus() {
-    deleteAllIdentifiers("MENU");
-  }
-  
-  protected void deleteAllMenuItems() {
-    deleteAllIdentifiers("MENU_ITEM");
-  }
-  
-  protected void deleteAllServiceChannels() {
-    deleteAllIdentifiers(Arrays.asList(new String[] { "ELECTRONIC_SERVICE_CHANNEL","PHONE_CHANNEL","PRINTABLE_FORM_CHANNEL","SERVICE_LOCATION_CHANNEL","WEBPAGE_CHANNEL" }));
-  }
-   
-  protected void deleteAllServices() {
-    deleteAllIdentifiers("SERVICE");
-  }
-  
-  protected void deleteAllGtfsDatas(){
-    deleteAllIdentifiers(Arrays.asList(new String[] {
-      "PUBLIC_TRANSPORT_AGENCY",
-      "PUBLIC_TRANSPORT_SCHEDULE",
-      "PUBLIC_TRANSPORT_ROUTE",
-      "PUBLIC_TRANSPORT_TRIP",
-      "PUBLIC_TRANSPORT_STOP",
-      "PUBLIC_TRANSPORT_STOPTIME"
-    }));
-  }
-  
-  protected void deleteAllAgencies() {
-    deleteAllIdentifiers("PUBLIC_TRANSPORT_AGENCY");
-  }
-  
-  protected void deleteAllSchedules() {
-    deleteAllIdentifiers("PUBLIC_TRANSPORT_SCHEDULE");
-  }
-  
-  protected void deleteAllRoutes() {
-    deleteAllIdentifiers("PUBLIC_TRANSPORT_ROUTE");
-  }
-  
-  protected void deleteAllTrips() {
-    deleteAllIdentifiers("PUBLIC_TRANSPORT_TRIP");
-  }
-  
-  protected void deleteAllStops() {
-    deleteAllIdentifiers("PUBLIC_TRANSPORT_STOP");
-  }
-  
-  protected void deleteAllStopTimes() {
-    deleteAllIdentifiers("PUBLIC_TRANSPORT_STOPTIME");
-  }
-
-  private void deleteAllIdentifiers(String type) {
-    deleteAllIdentifiers(Arrays.asList( type ));
-  }
-  
-  private void deleteAllIdentifiers(List<String> types) {
-    executeDelete("delete from IdentifierRelation where child_id in (SELECT id FROM Identifier where type in (?)) or parent_id in (SELECT id FROM Identifier where type in (?))", types, types);
-    executeDelete("delete from Identifier where type in (?)", types);
+ 
+  protected void deleteIdentifiers() {
+    executeDelete("delete from IdentifierRelation");
+    executeDelete("delete from Identifier");
   }
   
   protected long executeInsert(String sql, Object... params) {

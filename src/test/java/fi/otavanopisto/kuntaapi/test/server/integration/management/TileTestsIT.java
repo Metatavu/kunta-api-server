@@ -57,7 +57,6 @@ public class TileTestsIT extends AbstractIntegrationTest {
     getManagementMocker().endMock();
     deletePtvSettings();
     deleteManagementSettings(organizationId);
-    deleteAllTiles();
   }
   
   @Test

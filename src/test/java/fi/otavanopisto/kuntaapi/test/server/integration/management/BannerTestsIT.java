@@ -58,7 +58,6 @@ public class BannerTestsIT extends AbstractIntegrationTest {
     getManagementMocker().endMock();
     deletePtvSettings();
     deleteManagementSettings(organizationId);
-    deleteAllBanners();
   }
   
   @Test

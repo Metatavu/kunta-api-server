@@ -47,9 +47,6 @@ public class OrganizationsServiceTestsIT extends AbstractIntegrationTest {
   public void afterClass() {
     getPtvMocker().endMock();
     deleteSettings();
-    deleteAllOrganizationServices();
-    deleteAllServiceChannels();
-    deleteAllServices();
   }
    
   private void createSettings() {

@@ -37,6 +37,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   public void afterEveryTest() {
     deleteSystemSetting(KuntaApiConsts.SYSTEM_SETTING_TESTS_RUNNING);
     clearTasks();
+    deleteIdentifiers();
   }
   
   public RestFulPtvMocker getPtvMocker() {

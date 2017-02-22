@@ -57,8 +57,6 @@ public class MenuTestsIT extends AbstractIntegrationTest {
     getManagementMocker().endMock();
     deletePtvSettings();
     deleteManagementSettings(organizationId);
-    deleteAllMenuItems();
-    deleteAllMenus();
   }
   
   @Test
