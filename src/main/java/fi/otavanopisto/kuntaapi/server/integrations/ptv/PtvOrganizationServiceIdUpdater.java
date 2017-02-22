@@ -13,18 +13,20 @@ import javax.ejb.Timer;
 import javax.ejb.TimerConfig;
 import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.event.Event;
 import javax.inject.Inject;
 
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
-import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationServiceId;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.OrganizationServicesTaskQueue;
-import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
+import fi.otavanopisto.kuntaapi.server.tasks.IdTask;
+import fi.otavanopisto.kuntaapi.server.tasks.IdTask.Operation;
 import fi.otavanopisto.kuntaapi.server.tasks.OrganizationEntityUpdateTask;
+import fi.otavanopisto.kuntaapi.server.tasks.TaskRequest;
 import fi.otavanopisto.restfulptv.client.ApiResponse;
 import fi.otavanopisto.restfulptv.client.model.OrganizationService;
 
@@ -50,12 +52,12 @@ public class PtvOrganizationServiceIdUpdater extends EntityUpdater {
 
   @Inject
   private IdentifierController identifierController;
-
-  @Inject
-  private IdentifierRelationController identifierRelationController;
   
   @Inject
   private OrganizationServicesTaskQueue organizationServicesTaskQueue;
+
+  @Inject
+  private Event<TaskRequest> taskRequest;
 
   @Resource
   private TimerService timerService;
@@ -104,14 +106,7 @@ public class PtvOrganizationServiceIdUpdater extends EntityUpdater {
         Long orderIndex = (long) i;
         OrganizationService organizationService = organizationServices.get(i);
         OrganizationServiceId organizationServiceId = new OrganizationServiceId(kuntaApiOrganizationId, PtvConsts.IDENTIFIER_NAME, organizationService.getId());
-        Identifier identifier = identifierController.findIdentifierById(organizationServiceId);
-        if (identifier == null) {
-          identifierController.createIdentifier(orderIndex, organizationServiceId);
-        } else {
-          identifierController.updateIdentifier(identifier, orderIndex);
-        }
-        
-        identifierRelationController.setParentId(identifier, kuntaApiOrganizationId);
+        taskRequest.fire(new TaskRequest(false, new IdTask<OrganizationServiceId>(Operation.UPDATE, organizationServiceId, orderIndex)));
       }
     } else {
       logger.warning(String.format("Organization %s services processing failed on [%d] %s", kuntaApiOrganizationId.getId(), response.getStatus(), response.getMessage()));
