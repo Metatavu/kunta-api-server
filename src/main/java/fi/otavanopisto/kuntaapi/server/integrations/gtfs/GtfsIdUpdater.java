@@ -56,8 +56,8 @@ import fi.otavanopisto.kuntaapi.server.tasks.OrganizationEntityUpdateTask;
 public class GtfsIdUpdater extends IdUpdater {
 
 
-  private static final int WARMUP_TIME = 100 * 10;
-  private static final int TIMER_INTERVAL = 1000;
+  private static final int WARMUP_TIME = 1000 * 60;
+  private static final int TIMER_INTERVAL = 1000 * 60 * 60;
   
   @Inject
   private Logger logger;
