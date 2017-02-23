@@ -14,6 +14,10 @@ public class GtfsRouteEntityTask extends AbstractGtfsEntityTask<Route> {
   private OrganizationId organizationId;
   private List<ServiceCalendar> serviceCalendars;
   
+  public GtfsRouteEntityTask() {
+    // Zero-argument constructor
+  }
+  
   public GtfsRouteEntityTask(OrganizationId organizationId, Route route, List<ServiceCalendar> serviceCalendars, Long orderIndex) {
     super(route, orderIndex);
     this.organizationId = organizationId;

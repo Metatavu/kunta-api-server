@@ -12,6 +12,10 @@ public class KuntaRekryJobEntityTask extends AbstractTask {
   private KuntaRekryJob entity;  
   private Long orderIndex;
   
+  public KuntaRekryJobEntityTask() {
+    // Zero-argument constructor
+  }
+  
   public KuntaRekryJobEntityTask(OrganizationId organizationId, KuntaRekryJob entity, Long orderIndex) {
     this.organizationId = organizationId;
     this.entity = entity;
@@ -49,12 +53,12 @@ public class KuntaRekryJobEntityTask extends AbstractTask {
 
   @Override
   public int getTaskHashInitialOddNumber() {
-    return 1193;
+    return 1593;
   }
 
   @Override
   public int getMultiplierOddNumber() {
-    return 1195;
+    return 1595;
   }
   
 }

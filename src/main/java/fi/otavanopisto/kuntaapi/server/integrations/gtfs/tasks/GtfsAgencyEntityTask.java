@@ -10,6 +10,10 @@ public class GtfsAgencyEntityTask extends AbstractGtfsEntityTask<Agency> {
   
   private OrganizationId organizationId;
   
+  public GtfsAgencyEntityTask() {
+    // Zero-argument constructor
+  }
+  
   public GtfsAgencyEntityTask(OrganizationId organizationId, Agency agency, Long orderIndex) {
     super(agency, orderIndex);
     this.organizationId = organizationId;
