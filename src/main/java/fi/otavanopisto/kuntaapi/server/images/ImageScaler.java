@@ -7,7 +7,7 @@ import java.lang.reflect.Method;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.enterprise.context.Dependent;
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 /**
@@ -16,14 +16,11 @@ import javax.inject.Inject;
  * @author Antti Leppä
  * @author Heikki Kurhinen
  */
-@Dependent
+@ApplicationScoped
 public class ImageScaler {
  
   @Inject
   private Logger logger;
-
-  private ImageScaler() {
-  }
   
   /**
    * Down scales image into max width / height
