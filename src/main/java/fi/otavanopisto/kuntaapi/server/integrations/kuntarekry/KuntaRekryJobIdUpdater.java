@@ -1,7 +1,11 @@
 package fi.otavanopisto.kuntaapi.server.integrations.kuntarekry;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.annotation.Resource;
 import javax.ejb.AccessTimeout;
@@ -13,14 +17,15 @@ import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
-import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
-import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
-import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
-import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
-import fi.otavanopisto.kuntaapi.server.id.JobId;
+import org.apache.commons.lang3.StringUtils;
+
+import fi.otavanopisto.kuntaapi.server.discover.IdUpdater;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpClient;
+import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpClient.Response;
+import fi.otavanopisto.kuntaapi.server.integrations.kuntarekry.tasks.KuntaRekryJobEntityTask;
+import fi.otavanopisto.kuntaapi.server.integrations.kuntarekry.tasks.KuntaRekryJobTaskQueue;
 import fi.otavanopisto.kuntaapi.server.integrations.kuntarekry.tasks.OrganizationJobsTaskQueue;
-import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 import fi.otavanopisto.kuntaapi.server.tasks.OrganizationEntityUpdateTask;
@@ -29,31 +34,28 @@ import fi.otavanopisto.kuntaapi.server.tasks.OrganizationEntityUpdateTask;
 @Singleton
 @AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
-public class KuntaRekryOrganizationJobsEntityUpdater extends EntityUpdater {
+public class KuntaRekryJobIdUpdater extends IdUpdater {
 
   private static final int TIMER_INTERVAL = 1000 * 60 * 15;
-
+  
+  @Inject
+  private Logger logger;
+  
+  @Inject
+  private GenericHttpClient httpClient;
+  
   @Inject
   private SystemSettingController systemSettingController;
 
-  @Inject
-  private KuntaRekryClient kuntaRekryClient; 
-
-  @Inject
-  private IdentifierController identifierController;
-  
-  @Inject
-  private IdentifierRelationController identifierRelationController;
-  
-  @Inject
-  private ModificationHashCache modificationHashCache;
-  
   @Inject
   private OrganizationSettingController organizationSettingController;
   
   @Inject
   private OrganizationJobsTaskQueue organizationJobsTaskQueue;
-
+  
+  @Inject
+  private KuntaRekryJobTaskQueue kuntaRekryJobTaskQueue;
+  
   @Resource
   private TimerService timerService;
 
@@ -64,7 +66,7 @@ public class KuntaRekryOrganizationJobsEntityUpdater extends EntityUpdater {
 
   @Override
   public void startTimer() {
-    startTimer(TIMER_INTERVAL);
+    startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
   }
 
   private void startTimer(int duration) {
@@ -88,24 +90,32 @@ public class KuntaRekryOrganizationJobsEntityUpdater extends EntityUpdater {
   }
 
   private void updateOrganizationJobs(OrganizationId organizationId) {
-    kuntaRekryClient.refreshJobs(organizationId);
-    List<KuntaRekryJob> kuntaRekryJobs = kuntaRekryClient.listJobs(organizationId);
+    String apiUri = organizationSettingController.getSettingValue(organizationId, KuntaRekryConsts.ORGANIZATION_SETTING_APIURI);
+    if (StringUtils.isBlank(apiUri)) {
+      return;
+    }
     
-    for (int i = 0; i < kuntaRekryJobs.size(); i++) {
-      KuntaRekryJob kuntaRekryJob = kuntaRekryJobs.get(i);
-      Long orderIndex = (long) i;
-      
-      JobId kuntaRekryId = new JobId(organizationId, KuntaRekryConsts.IDENTIFIER_NAME, String.valueOf(kuntaRekryJob.getJobId())); 
-      Identifier identifier = identifierController.findIdentifierById(kuntaRekryId);
-      if (identifier == null) {
-        identifier = identifierController.createIdentifier(orderIndex, kuntaRekryId);
-      } else {
-        identifier = identifierController.updateIdentifier(identifier, orderIndex);
+    URI uri;
+    try {
+      uri = new URI(apiUri);
+    } catch (URISyntaxException e) {
+      if (logger.isLoggable(Level.SEVERE)) {
+        logger.log(Level.SEVERE, String.format("Malformed URI %s", apiUri), e);
       }
       
-      identifierRelationController.setParentId(identifier, organizationId);
-      
-      modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(kuntaRekryJob));
+      return;
+    }
+    
+    Response<List<KuntaRekryJob>> jobsResponse = httpClient.doGETRequest(uri, new GenericHttpClient.ResultType<List<KuntaRekryJob>>() {});
+    if (jobsResponse.isOk()) {
+      List<KuntaRekryJob> kuntaRekryJobs = jobsResponse.getResponseEntity();
+      for (int i = 0; i < kuntaRekryJobs.size(); i++) {
+        KuntaRekryJob kuntaRekryJob = kuntaRekryJobs.get(i);
+        Long orderIndex = (long) i;
+        kuntaRekryJobTaskQueue.enqueueTask(false, new KuntaRekryJobEntityTask(organizationId, kuntaRekryJob, orderIndex));
+      }
+    } else {
+      logger.log(Level.SEVERE, () -> String.format("Failed to list jobs from Kuntarekry. API Returned [%d] %s", jobsResponse.getStatus(), jobsResponse.getMessage()));
     }
   }
 

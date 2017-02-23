@@ -17,6 +17,7 @@ import fi.otavanopisto.kuntaapi.server.id.ContactId;
 import fi.otavanopisto.kuntaapi.server.id.EventId;
 import fi.otavanopisto.kuntaapi.server.id.FragmentId;
 import fi.otavanopisto.kuntaapi.server.id.IdType;
+import fi.otavanopisto.kuntaapi.server.id.JobId;
 import fi.otavanopisto.kuntaapi.server.id.MenuId;
 import fi.otavanopisto.kuntaapi.server.id.MenuItemId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
@@ -205,6 +206,23 @@ public class IdentifierRelationController {
     for (Identifier identifier : identifiers) {
       OrganizationId organizationId = new OrganizationId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getOrganizationKuntaApiId());
       result.add(new FragmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId()));
+    }
+    
+    return result;
+  }
+  
+  /**
+   * Lists job ids by source and parent id. 
+   * 
+   * @param parentId parent id
+   * @return job ids by parent id
+   */
+  public List<JobId> listJobIdsBySourceAndParentId(String source, BaseId parentId) {
+    List<Identifier> identifiers = listChildIdentifiersByParentSourceAndType(parentId, source, IdType.JOB);
+    List<JobId> result = new ArrayList<>(identifiers.size());
+    for (Identifier identifier : identifiers) {
+      OrganizationId organizationId = new OrganizationId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getOrganizationKuntaApiId());
+      result.add(new JobId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId()));
     }
     
     return result;
