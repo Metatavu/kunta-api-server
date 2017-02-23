@@ -14,6 +14,10 @@ public class GtfsScheduleEntityTask extends AbstractGtfsEntityTask<ServiceCalend
   private OrganizationId organizationId;
   private List<ServiceCalendarDate> exceptions;
   
+  public GtfsScheduleEntityTask() {
+    // Zero-argument constructor
+  }
+  
   public GtfsScheduleEntityTask(OrganizationId organizationId, ServiceCalendar serviceCalendar, List<ServiceCalendarDate> exceptions, Long orderIndex) {
     super(serviceCalendar, orderIndex);
     this.organizationId = organizationId;

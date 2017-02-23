@@ -10,6 +10,10 @@ public class GtfsTripEntityTask extends AbstractGtfsEntityTask<Trip> {
   
   private OrganizationId organizationId;
   
+  public GtfsTripEntityTask() {
+    // Zero-argument constructor
+  }
+  
   public GtfsTripEntityTask(OrganizationId organizationId, Trip trip, Long orderIndex) {
     super(trip, orderIndex);
     this.organizationId = organizationId;

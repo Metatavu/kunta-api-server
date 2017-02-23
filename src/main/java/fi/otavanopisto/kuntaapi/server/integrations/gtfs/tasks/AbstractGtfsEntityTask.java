@@ -11,6 +11,10 @@ public abstract class AbstractGtfsEntityTask <E extends Serializable> extends Ab
   private E entity;  
   private Long orderIndex;
   
+  public AbstractGtfsEntityTask() {
+    // Zero-argument constructor
+  }
+  
   public AbstractGtfsEntityTask(E entity, Long orderIndex) {
     this.entity = entity;
     this.orderIndex = orderIndex;

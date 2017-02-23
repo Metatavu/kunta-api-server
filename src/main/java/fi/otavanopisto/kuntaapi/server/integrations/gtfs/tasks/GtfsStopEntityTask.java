@@ -9,6 +9,10 @@ public class GtfsStopEntityTask extends AbstractGtfsEntityTask<Stop> {
   private static final long serialVersionUID = -4602895757755872694L;
   private OrganizationId organizationId;
   
+  public GtfsStopEntityTask() {
+    // Zero-argument constructor
+  }
+  
   public GtfsStopEntityTask(OrganizationId organizationId, Stop stop, Long orderIndex) {
     super(stop, orderIndex);
     this.organizationId = organizationId;

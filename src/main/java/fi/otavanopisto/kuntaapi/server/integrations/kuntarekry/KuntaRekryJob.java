@@ -1,10 +1,14 @@
 package fi.otavanopisto.kuntaapi.server.integrations.kuntarekry;
 
+import java.io.Serializable;
 import java.time.OffsetDateTime;
 
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
-public class KuntaRekryJob {
+@SuppressWarnings ("squid:S3437")
+public class KuntaRekryJob implements Serializable {
+
+  private static final long serialVersionUID = -7272380834345432920L;
 
   @JacksonXmlProperty (localName = "jobtitle")
   private String jobTitle;

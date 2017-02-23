@@ -11,6 +11,8 @@ import javax.enterprise.inject.Any;
 import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
 
+import org.apache.commons.lang3.StringUtils;
+
 import fi.otavanopisto.kuntaapi.server.cache.AbstractCache;
 
 @ApplicationScoped
@@ -26,6 +28,10 @@ public class SystemHealthCheck {
   private Instance<AbstractCache<?, ?>> caches;
    
   public void init(@Observes @Initialized(ApplicationScoped.class) Object init) {
+    if (StringUtils.equalsIgnoreCase("true", System.getProperty("kuntaApi.skipHealthCheck"))) { 
+      return;
+    }
+    
     List<String> problems = new ArrayList<>();
     checkCacheHealth(problems);
     

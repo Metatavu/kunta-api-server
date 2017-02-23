@@ -10,6 +10,10 @@ public class GtfsStopTimeEntityTask extends AbstractGtfsEntityTask<StopTime> {
   
   private OrganizationId organizationId;
   
+  public GtfsStopTimeEntityTask() {
+    // Zero-argument constructor
+  }
+  
   public GtfsStopTimeEntityTask(OrganizationId organizationId, StopTime stopTime, Long orderIndex) {
     super(stopTime, orderIndex);
     this.organizationId = organizationId;

@@ -5,7 +5,6 @@ import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.List;
-import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -123,16 +122,6 @@ public abstract class AbstractCache <K, V> implements Serializable {
     } catch (JsonProcessingException e) {
       logger.log(Level.SEVERE, "Failed to serialize response into cache", e);
     }
-  }
-  
-  /**
-   * Returns all cached ids
-   * 
-   * @return  all cached ids
-   */
-  public Set<K> getIds() {
-    Cache<K, String> cache = getCache();
-    return cache.keySet();
   }
   
   /**
