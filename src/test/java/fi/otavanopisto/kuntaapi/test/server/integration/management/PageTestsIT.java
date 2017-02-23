@@ -44,10 +44,13 @@ public class PageTestsIT extends AbstractIntegrationTest {
       .startMock();
 
     waitApiListCount("/organizations", 1);
-    
-    createManagementSettings(getOrganizationId(0));
+    String organizationId = getOrganizationId(0);
+    createManagementSettings(organizationId);
 
-    waitApiListCount(String.format("/organizations/%s/pages", getOrganizationId(0)), 3); 
+    waitApiListCount(String.format("/organizations/%s/pages", organizationId), 3);
+    
+    String pageId = getPageId(organizationId, 0);
+    waitApiListCount(String.format("/organizations/%s/pages/%s/images/", organizationId, pageId), 1);
   }
 
   @After

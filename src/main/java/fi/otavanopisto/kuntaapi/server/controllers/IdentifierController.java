@@ -15,9 +15,11 @@ import javax.inject.Inject;
 
 import org.apache.commons.codec.binary.StringUtils;
 
+import fi.otavanopisto.kuntaapi.server.id.AnnouncementId;
 import fi.otavanopisto.kuntaapi.server.id.BannerId;
 import fi.otavanopisto.kuntaapi.server.id.BaseId;
 import fi.otavanopisto.kuntaapi.server.id.ContactId;
+import fi.otavanopisto.kuntaapi.server.id.FragmentId;
 import fi.otavanopisto.kuntaapi.server.id.IdType;
 import fi.otavanopisto.kuntaapi.server.id.MenuId;
 import fi.otavanopisto.kuntaapi.server.id.MenuItemId;
@@ -152,12 +154,34 @@ public class IdentifierController {
     return result;
   }
   
+  public List<AnnouncementId> listOrganizationAnnouncementIdsBySource(OrganizationId organizationId, String source) {
+    List<String> announcementIds = listSourceIdsByOrganizationIdAndSourceAndType(organizationId, source, IdType.ANNOUNCEMENT.toString());
+    List<AnnouncementId> result = new ArrayList<>(announcementIds.size());
+    
+    for (String announcementId : announcementIds) {
+      result.add(new AnnouncementId(organizationId, source, announcementId));
+    }
+    
+    return result;
+  }
+  
   public List<BannerId> listOrganizationBannerIdsBySource(OrganizationId organizationId, String source) {
     List<String> bannerIds = listSourceIdsByOrganizationIdAndSourceAndType(organizationId, source, IdType.BANNER.toString());
     List<BannerId> result = new ArrayList<>(bannerIds.size());
     
     for (String bannerId : bannerIds) {
       result.add(new BannerId(organizationId, source, bannerId));
+    }
+    
+    return result;
+  }
+  
+  public List<FragmentId> listOrganizationFragmentIdsBySource(OrganizationId organizationId, String source) {
+    List<String> fragmentIds = listSourceIdsByOrganizationIdAndSourceAndType(organizationId, source, IdType.FRAGMENT.toString());
+    List<FragmentId> result = new ArrayList<>(fragmentIds.size());
+    
+    for (String fragmentId : fragmentIds) {
+      result.add(new FragmentId(organizationId, source, fragmentId));
     }
     
     return result;

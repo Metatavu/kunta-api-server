@@ -52,13 +52,13 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
   
   @Override
   public ElectronicChannel findElectronicChannel(ServiceId serviceId, ElectronicServiceChannelId electronicServiceChannelId) {
-    ServiceId ptvServiceId = idController.translateServiceId(serviceId, PtvConsts.IDENTIFIFER_NAME);
+    ServiceId ptvServiceId = idController.translateServiceId(serviceId, PtvConsts.IDENTIFIER_NAME);
     if (ptvServiceId == null) {
       logger.severe(String.format(SERVICE_TRANSLATE_FAILURE, serviceId.toString()));
       return null;
     }
     
-    ElectronicServiceChannelId ptvElectronicServiceChannelId = idController.translateElectronicServiceChannelId(electronicServiceChannelId, PtvConsts.IDENTIFIFER_NAME);
+    ElectronicServiceChannelId ptvElectronicServiceChannelId = idController.translateElectronicServiceChannelId(electronicServiceChannelId, PtvConsts.IDENTIFIER_NAME);
     if (ptvElectronicServiceChannelId == null) {
       logger.severe(String.format(ELECTRONIC_SERVICE_CHANNEL_TRANSLATE_FAILURE, serviceId.toString()));
       return null;
@@ -75,13 +75,13 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
   
   @Override
   public PhoneChannel findPhoneChannel(ServiceId serviceId, PhoneChannelId phoneChannelId) {
-    ServiceId ptvServiceId = idController.translateServiceId(serviceId, PtvConsts.IDENTIFIFER_NAME);
+    ServiceId ptvServiceId = idController.translateServiceId(serviceId, PtvConsts.IDENTIFIER_NAME);
     if (ptvServiceId == null) {
       logger.severe(String.format(SERVICE_TRANSLATE_FAILURE, serviceId.toString()));
       return null;
     }
     
-    PhoneChannelId ptvPhoneChannelId = idController.translatePhoneServiceChannelId(phoneChannelId, PtvConsts.IDENTIFIFER_NAME);
+    PhoneChannelId ptvPhoneChannelId = idController.translatePhoneServiceChannelId(phoneChannelId, PtvConsts.IDENTIFIER_NAME);
     if (ptvPhoneChannelId == null) {
       logger.severe(String.format(PHONE_SERVICE_CHANNEL_TRANSLATE_FAILURE, serviceId.toString()));
       return null;
@@ -98,13 +98,13 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
   
   @Override
   public PrintableFormChannel findPrintableFormChannel(ServiceId serviceId, PrintableFormChannelId printableFormChannelId) {
-    ServiceId ptvServiceId = idController.translateServiceId(serviceId, PtvConsts.IDENTIFIFER_NAME);
+    ServiceId ptvServiceId = idController.translateServiceId(serviceId, PtvConsts.IDENTIFIER_NAME);
     if (ptvServiceId == null) {
       logger.severe(String.format(SERVICE_TRANSLATE_FAILURE, serviceId.toString()));
       return null;
     }
     
-    PrintableFormChannelId ptvPrintableFormChannelId = idController.translatePrintableFormServiceChannelId(printableFormChannelId, PtvConsts.IDENTIFIFER_NAME);
+    PrintableFormChannelId ptvPrintableFormChannelId = idController.translatePrintableFormServiceChannelId(printableFormChannelId, PtvConsts.IDENTIFIER_NAME);
     if (ptvPrintableFormChannelId == null) {
       logger.severe(String.format(PRINTABLE_FORM_SERVICE_CHANNEL_TRANSLATE_FAILURE, serviceId.toString()));
       return null;
@@ -121,13 +121,13 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
   
   @Override
   public ServiceLocationChannel findServiceLocationChannel(ServiceId serviceId, ServiceLocationChannelId serviceLocationChannelId) {
-    ServiceId ptvServiceId = idController.translateServiceId(serviceId, PtvConsts.IDENTIFIFER_NAME);
+    ServiceId ptvServiceId = idController.translateServiceId(serviceId, PtvConsts.IDENTIFIER_NAME);
     if (ptvServiceId == null) {
       logger.severe(String.format(SERVICE_TRANSLATE_FAILURE, serviceId.toString()));
       return null;
     }
     
-    ServiceLocationChannelId ptvServiceLocationChannelId = idController.translateServiceLocationChannelId(serviceLocationChannelId, PtvConsts.IDENTIFIFER_NAME);
+    ServiceLocationChannelId ptvServiceLocationChannelId = idController.translateServiceLocationChannelId(serviceLocationChannelId, PtvConsts.IDENTIFIER_NAME);
     if (ptvServiceLocationChannelId == null) {
       logger.severe(String.format(SERVICE_LOCATION_SERVICE_CHANNEL_TRANSLATE_FAILURE, serviceId.toString()));
       return null;
@@ -144,13 +144,13 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
   
   @Override
   public WebPageChannel findWebPageChannelChannel(ServiceId serviceId, WebPageChannelId webPageChannelId) {
-    ServiceId ptvServiceId = idController.translateServiceId(serviceId, PtvConsts.IDENTIFIFER_NAME);
+    ServiceId ptvServiceId = idController.translateServiceId(serviceId, PtvConsts.IDENTIFIER_NAME);
     if (ptvServiceId == null) {
       logger.severe(String.format(SERVICE_TRANSLATE_FAILURE, serviceId.toString()));
       return null;
     }
     
-    WebPageChannelId ptvWebPageChannelId = idController.translateWebPageServiceChannelId(webPageChannelId, PtvConsts.IDENTIFIFER_NAME);
+    WebPageChannelId ptvWebPageChannelId = idController.translateWebPageServiceChannelId(webPageChannelId, PtvConsts.IDENTIFIER_NAME);
     if (ptvWebPageChannelId == null) {
       logger.severe(String.format(WEBPAGE_SERVICE_CHANNEL_TRANSLATE_FAILURE, serviceId.toString()));
       return null;
@@ -167,7 +167,7 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
   
   @Override
   public List<ElectronicChannel> listElectronicChannels(ServiceId serviceId) {
-    ServiceId ptvServiceId = idController.translateServiceId(serviceId, PtvConsts.IDENTIFIFER_NAME);
+    ServiceId ptvServiceId = idController.translateServiceId(serviceId, PtvConsts.IDENTIFIER_NAME);
     if (ptvServiceId == null) {
       logger.severe(String.format(SERVICE_TRANSLATE_FAILURE, serviceId.toString()));
       return Collections.emptyList();
@@ -184,7 +184,7 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
 
   @Override
   public List<PhoneChannel> listPhoneChannels(ServiceId serviceId) {
-    ServiceId ptvServiceId = idController.translateServiceId(serviceId, PtvConsts.IDENTIFIFER_NAME);
+    ServiceId ptvServiceId = idController.translateServiceId(serviceId, PtvConsts.IDENTIFIER_NAME);
     if (ptvServiceId == null) {
       logger.severe(String.format(SERVICE_TRANSLATE_FAILURE, serviceId.toString()));
       return Collections.emptyList();
@@ -201,7 +201,7 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
 
   @Override
   public List<PrintableFormChannel> listPrintableFormChannels(ServiceId serviceId) {
-    ServiceId ptvServiceId = idController.translateServiceId(serviceId, PtvConsts.IDENTIFIFER_NAME);
+    ServiceId ptvServiceId = idController.translateServiceId(serviceId, PtvConsts.IDENTIFIER_NAME);
     if (ptvServiceId == null) {
       logger.severe(String.format(SERVICE_TRANSLATE_FAILURE, serviceId.toString()));
       return Collections.emptyList();
@@ -218,7 +218,7 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
 
   @Override
   public List<ServiceLocationChannel> listServiceLocationChannels(ServiceId serviceId) {
-    ServiceId ptvServiceId = idController.translateServiceId(serviceId, PtvConsts.IDENTIFIFER_NAME);
+    ServiceId ptvServiceId = idController.translateServiceId(serviceId, PtvConsts.IDENTIFIER_NAME);
     if (ptvServiceId == null) {
       logger.severe(String.format(SERVICE_TRANSLATE_FAILURE, serviceId.toString()));
       return Collections.emptyList();
@@ -235,7 +235,7 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
 
   @Override
   public List<WebPageChannel> listWebPageChannelsChannels(ServiceId serviceId) {
-    ServiceId ptvServiceId = idController.translateServiceId(serviceId, PtvConsts.IDENTIFIFER_NAME);
+    ServiceId ptvServiceId = idController.translateServiceId(serviceId, PtvConsts.IDENTIFIER_NAME);
     if (ptvServiceId == null) {
       logger.severe(String.format(SERVICE_TRANSLATE_FAILURE, serviceId.toString()));
       return Collections.emptyList();

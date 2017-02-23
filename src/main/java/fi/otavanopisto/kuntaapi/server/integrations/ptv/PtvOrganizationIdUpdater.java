@@ -15,9 +15,11 @@ import javax.inject.Inject;
 
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.IdUpdater;
-import fi.otavanopisto.kuntaapi.server.discover.OrganizationIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
+import fi.otavanopisto.kuntaapi.server.tasks.IdTask;
+import fi.otavanopisto.kuntaapi.server.tasks.IdTask.Operation;
+import fi.otavanopisto.kuntaapi.server.tasks.TaskRequest;
 import fi.otavanopisto.restfulptv.client.ApiResponse;
 import fi.otavanopisto.restfulptv.client.model.Organization;
 
@@ -27,7 +29,7 @@ import fi.otavanopisto.restfulptv.client.model.Organization;
 public class PtvOrganizationIdUpdater extends IdUpdater {
 
   private static final int WARMUP_TIME = 1000 * 10;
-  private static final int TIMER_INTERVAL = 5000;
+  private static final int TIMER_INTERVAL = 1000 * 60 * 5;
   private static final long BATCH_SIZE = 20;
   
   @Inject
@@ -41,11 +43,10 @@ public class PtvOrganizationIdUpdater extends IdUpdater {
   
   @Inject
   private IdentifierController identifierController;
-  
-  @Inject
-  private Event<OrganizationIdUpdateRequest> idUpdateRequest;
 
-  private boolean stopped;
+  @Inject
+  private Event<TaskRequest> taskRequest;
+  
   private long offset;
   
   @Resource
@@ -58,14 +59,8 @@ public class PtvOrganizationIdUpdater extends IdUpdater {
   
   @Override
   public void startTimer() {
-    stopped = false;
     offset = 0l;
     startTimer(WARMUP_TIME);
-  }
-
-  @Override
-  public void stopTimer() {
-    stopped = true;
   }
   
   private void startTimer(int duration) {
@@ -76,14 +71,12 @@ public class PtvOrganizationIdUpdater extends IdUpdater {
   
   @Timeout
   public void timeout(Timer timer) {
-    if (!stopped) {
-      try {
-        if (systemSettingController.isNotTestingOrTestRunning()) {
-          discoverIds();
-        }
-      } finally {
-        startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
+    try {
+      if (systemSettingController.isNotTestingOrTestRunning()) {
+        discoverIds();
       }
+    } finally {
+      startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
     }
   }
 
@@ -96,9 +89,9 @@ public class PtvOrganizationIdUpdater extends IdUpdater {
       for (int i = 0; i < organizations.size(); i++) {
         Organization organization = organizations.get(i);
         Long orderIndex = (long) i + offset;
-        OrganizationId organizationId = new OrganizationId(PtvConsts.IDENTIFIFER_NAME, organization.getId());
+        OrganizationId organizationId = new OrganizationId(PtvConsts.IDENTIFIER_NAME, organization.getId());
         boolean priority = identifierController.findIdentifierById(organizationId) == null;
-        idUpdateRequest.fire(new OrganizationIdUpdateRequest(organizationId, orderIndex, priority));
+        taskRequest.fire(new TaskRequest(priority, new IdTask<OrganizationId>(Operation.UPDATE, organizationId, orderIndex)));
       }
       
       if (organizations.size() == BATCH_SIZE) {

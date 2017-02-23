@@ -4,21 +4,17 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
-import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.ejb.AccessTimeout;
-import javax.ejb.Asynchronous;
 import javax.ejb.Singleton;
 import javax.ejb.Timeout;
 import javax.ejb.Timer;
 import javax.ejb.TimerConfig;
 import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 
 import org.apache.commons.codec.digest.DigestUtils;
-import org.apache.commons.lang3.StringUtils;
 
 import fi.metatavu.kuntaapi.server.rest.model.NewsArticle;
 import fi.metatavu.management.client.ApiResponse;
@@ -30,17 +26,17 @@ import fi.otavanopisto.kuntaapi.server.cache.NewsArticleCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
-import fi.otavanopisto.kuntaapi.server.discover.IdUpdateRequestQueue;
-import fi.otavanopisto.kuntaapi.server.discover.NewsArticleIdRemoveRequest;
-import fi.otavanopisto.kuntaapi.server.discover.NewsArticleIdUpdateRequest;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementAttachmentCache;
+import fi.otavanopisto.kuntaapi.server.integrations.management.tasks.NewsArticleIdTaskQueue;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
+import fi.otavanopisto.kuntaapi.server.tasks.IdTask;
+import fi.otavanopisto.kuntaapi.server.tasks.IdTask.Operation;
 
 @ApplicationScoped
 @Singleton
@@ -48,7 +44,7 @@ import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 @SuppressWarnings ("squid:S3306")
 public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
 
-  private static final int TIMER_INTERVAL = 1000;
+  private static final int TIMER_INTERVAL = 1000 * 5;
 
   @Inject
   private Logger logger;
@@ -80,16 +76,11 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
   @Inject
   private ModificationHashCache modificationHashCache;
   
+  @Inject
+  private NewsArticleIdTaskQueue newsArticleIdTaskQueue;
+  
   @Resource
   private TimerService timerService;
-
-  private boolean stopped;
-  private IdUpdateRequestQueue<NewsArticleIdUpdateRequest> queue;
-
-  @PostConstruct
-  public void init() {
-    queue = new IdUpdateRequestQueue<>(ManagementConsts.IDENTIFIER_NAME);
-  }
 
   @Override
   public String getName() {
@@ -102,62 +93,31 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
   }
 
   private void startTimer(int duration) {
-    stopped = false;
     TimerConfig timerConfig = new TimerConfig();
     timerConfig.setPersistent(false);
     timerService.createSingleActionTimer(duration, timerConfig);
   }
-
-  @Override
-  public void stopTimer() {
-    stopped = true;
-  }
-  
-  @Asynchronous
-  public void onOrganizationIdUpdateRequest(@Observes NewsArticleIdUpdateRequest event) {
-    if (!stopped) {
-      NewsArticleId newsArticleId = event.getId();
-      
-      if (!StringUtils.equals(newsArticleId.getSource(), ManagementConsts.IDENTIFIER_NAME)) {
-        return;
-      }
-      
-      queue.add(event);
-    }
-  }
-  
-  @Asynchronous
-  public void onNewsArticleIdRemoveRequest(@Observes NewsArticleIdRemoveRequest event) {
-    if (!stopped) {
-      NewsArticleId newsArticleId = event.getId();
-      
-      if (!StringUtils.equals(newsArticleId.getSource(), ManagementConsts.IDENTIFIER_NAME)) {
-        return;
-      }
-      
-      deleteNewsArticle(event, newsArticleId);
-    }
-  }
   
   @Timeout
   public void timeout(Timer timer) {
-    if (!stopped) {
-      if (systemSettingController.isNotTestingOrTestRunning()) {
-        NewsArticleIdUpdateRequest updateRequest = queue.next();
-        if (updateRequest != null) {
-          updateManagementPost(updateRequest);
-        }
+    executeNextTask();
+    startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
+  }
+  
+  private void executeNextTask() {
+    IdTask<NewsArticleId> task = newsArticleIdTaskQueue.next();
+    if (task != null) {
+      if (task.getOperation() == Operation.UPDATE) {
+        updateManagementPost(task.getId(), task.getOrderIndex()); 
+      } else if (task.getOperation() == Operation.REMOVE) {
+        deleteManagementPost(task.getId());
       }
-
-      startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
     }
   }
   
-  private void updateManagementPost(NewsArticleIdUpdateRequest updateRequest) {
-    OrganizationId organizationId = updateRequest.getOrganizationId();
-    NewsArticleId newsArticleId = updateRequest.getId();
+  private void updateManagementPost(NewsArticleId newsArticleId, Long orderIndex) {
+    OrganizationId organizationId = newsArticleId.getOrganizationId();
     DefaultApi api = managementApi.getApi(organizationId);
-    Long orderIndex = updateRequest.getOrderIndex();
     
     ApiResponse<Post> response = api.wpV2PostsIdGet(newsArticleId.getId(), null, null, null);
     if (response.isOk()) {
@@ -240,13 +200,12 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
     }
   }
 
-  private void deleteNewsArticle(NewsArticleIdRemoveRequest event, NewsArticleId managementNewsArticleId) {
-    OrganizationId organizationId = event.getOrganizationId();
+  private void deleteManagementPost(NewsArticleId managementNewsArticleId) {
+    OrganizationId organizationId = managementNewsArticleId.getOrganizationId();
     
     Identifier newsArticleIdentifier = identifierController.findIdentifierById(managementNewsArticleId);
     if (newsArticleIdentifier != null) {
       NewsArticleId kuntaApiNewsArticleId = new NewsArticleId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, newsArticleIdentifier.getKuntaApiId());
-      queue.remove(managementNewsArticleId);
       modificationHashCache.clear(newsArticleIdentifier.getKuntaApiId());
       newsArticleCache.clear(kuntaApiNewsArticleId);
       identifierController.deleteIdentifier(newsArticleIdentifier);

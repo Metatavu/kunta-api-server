@@ -47,8 +47,6 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
   public void afterClass() {
     getPtvMocker().endMock();
     deleteSettings();
-    deleteAllServiceChannels();
-    deleteAllServices();
   }
    
   private void createSettings() {

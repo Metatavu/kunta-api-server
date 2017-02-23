@@ -4,10 +4,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.ejb.AccessTimeout;
-import javax.ejb.Asynchronous;
 import javax.ejb.Singleton;
 import javax.ejb.Timeout;
 import javax.ejb.Timer;
@@ -15,20 +13,15 @@ import javax.ejb.TimerConfig;
 import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Event;
-import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 
 import org.apache.commons.codec.binary.Base64;
-import org.apache.commons.lang3.StringUtils;
 
 import fi.metatavu.kuntaapi.server.rest.model.FileDef;
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
-import fi.otavanopisto.kuntaapi.server.discover.FileIdRemoveRequest;
-import fi.otavanopisto.kuntaapi.server.discover.FileIdUpdateRequest;
-import fi.otavanopisto.kuntaapi.server.discover.IdUpdateRequestQueue;
 import fi.otavanopisto.kuntaapi.server.id.BaseId;
 import fi.otavanopisto.kuntaapi.server.id.FileId;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
@@ -43,8 +36,11 @@ import fi.otavanopisto.kuntaapi.server.integrations.BinaryHttpClient.BinaryRespo
 import fi.otavanopisto.kuntaapi.server.integrations.BinaryHttpClient.DownloadMeta;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.casem.cache.CasemFileCache;
+import fi.otavanopisto.kuntaapi.server.integrations.casem.tasks.FileIdTaskQueue;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
+import fi.otavanopisto.kuntaapi.server.tasks.IdTask;
+import fi.otavanopisto.kuntaapi.server.tasks.IdTask.Operation;
 
 @ApplicationScoped
 @Singleton
@@ -52,7 +48,7 @@ import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 @SuppressWarnings ("squid:S3306")
 public class CasemFileEntityUpdater extends EntityUpdater {
 
-  private static final int TIMER_INTERVAL = 1000;
+  private static final int TIMER_INTERVAL = 1000 * 10;
 
   @Inject
   private Logger logger;
@@ -86,17 +82,12 @@ public class CasemFileEntityUpdater extends EntityUpdater {
 
   @Inject
   private Event<IndexRemoveRequest> indexRemoveRequest;
-  
+
+  @Inject
+  private FileIdTaskQueue fileIdTaskQueue;
+
   @Resource
   private TimerService timerService;
-
-  private boolean stopped;
-  private IdUpdateRequestQueue<FileIdUpdateRequest> queue;
-
-  @PostConstruct
-  public void init() {
-    queue = new IdUpdateRequestQueue<>(CaseMConsts.IDENTIFIER_NAME);
-  }
 
   @Override
   public String getName() {
@@ -109,65 +100,34 @@ public class CasemFileEntityUpdater extends EntityUpdater {
   }
 
   private void startTimer(int duration) {
-    stopped = false;
     TimerConfig timerConfig = new TimerConfig();
     timerConfig.setPersistent(false);
     timerService.createSingleActionTimer(duration, timerConfig);
   }
 
-  @Override
-  public void stopTimer() {
-    stopped = true;
-  }
-  
-  @Asynchronous
-  public void onPageIdUpdateRequest(@Observes FileIdUpdateRequest event) {
-    if (!stopped) {
-      FileId fileId = event.getId();
-      
-      if (!StringUtils.equals(fileId.getSource(), CaseMConsts.IDENTIFIER_NAME)) {
-        return;
-      }
-      
-      queue.add(event);
-    }
-  }
-  
-  @Asynchronous
-  public void onPageIdRemoveRequest(@Observes FileIdRemoveRequest event) {
-    if (!stopped) {
-      FileId fileId = event.getId();
-      
-      if (!StringUtils.equals(fileId.getSource(), CaseMConsts.IDENTIFIER_NAME)) {
-        return;
-      }
-      
-      deleteFile(event, fileId);
-    }
-  }
-  
   @Timeout
   public void timeout(Timer timer) {
-    if (!stopped) {
-      if (systemSettingController.isNotTestingOrTestRunning()) {
-        FileIdUpdateRequest updateRequest = queue.next();
-        if (updateRequest != null) {
-          updateCasemFile(updateRequest);
-        }
+    executeNextTask();
+    startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
+  }
+  
+  private void executeNextTask() {
+    IdTask<FileId> task = fileIdTaskQueue.next();
+    if (task != null) {
+      if (task.getOperation() == Operation.UPDATE) {
+        updateCasemFile((PageId) task.getParentId(), task.getId(), task.getOrderIndex()); 
+      } else {
+        deleteFile(task.getId());
       }
-      
-      startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
     }
   }
   
-  private void updateCasemFile(FileIdUpdateRequest updateRequest) {
-    OrganizationId organizationId = updateRequest.getOrganizationId();
-    FileId casemFileId = updateRequest.getId();
-    PageId casemPageId = updateRequest.getPageId();
+  private void updateCasemFile(PageId casemPageId, FileId casemFileId, Long orderIndex) {
+    OrganizationId organizationId = casemFileId.getOrganizationId();
     
     DownloadMeta downloadMeta = casemFileController.getDownloadMeta(casemFileId);
     if (downloadMeta != null) {
-      updateCasemFile(casemFileId, casemPageId, downloadMeta, updateRequest.getOrderIndex());
+      updateCasemFile(casemFileId, casemPageId, downloadMeta, orderIndex);
     } else {
       logger.log(Level.SEVERE, () -> String.format("Organization %s file %s meta could not be downloaded", organizationId.getId(), casemFileId.toString()));
     }
@@ -229,12 +189,11 @@ public class CasemFileEntityUpdater extends EntityUpdater {
     indexRequest.fire(new IndexRequest(indexableFile));
   }
 
-  private void deleteFile(FileIdRemoveRequest event, FileId casemFileId) {
-    OrganizationId organizationId = event.getOrganizationId();
+  private void deleteFile(FileId casemFileId) {
+    OrganizationId organizationId = casemFileId.getOrganizationId();
     Identifier fileIdentifier = identifierController.findIdentifierById(casemFileId);
     if (fileIdentifier != null) {
       FileId kuntaApiFileId = new FileId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, fileIdentifier.getKuntaApiId());
-      queue.remove(casemFileId);
       modificationHashCache.clear(fileIdentifier.getKuntaApiId());
       fileCache.clear(kuntaApiFileId);
       identifierController.deleteIdentifier(fileIdentifier);

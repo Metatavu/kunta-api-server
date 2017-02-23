@@ -12,11 +12,11 @@ import java.time.OffsetDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.apache.commons.lang3.StringUtils;
 import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
@@ -78,46 +78,10 @@ public abstract class AbstractTest {
   protected void deleteSystemSetting(String key) {
     executeDelete("delete from SystemSetting where settingKey = ?", key);
   }
-  
-  protected void deleteAllPages() {
-    deleteAllIdentifiers("PAGE");
-  }
-  
-  protected void deleteAllBanners() {
-    deleteAllIdentifiers("BANNER");
-  }
-  
-  protected void deleteAllTiles() {
-    deleteAllIdentifiers("TILE");
-  }
-  
-  protected void deleteAllOrganizationServices() {
-    deleteAllIdentifiers("ORGANIZATION_SERVICE");
-  }
-
-  protected void deleteAllMenus() {
-    deleteAllIdentifiers("MENU");
-  }
-  
-  protected void deleteAllMenuItems() {
-    deleteAllIdentifiers("MENU_ITEM");
-  }
-  
-  protected void deleteAllServiceChannels() {
-    deleteAllIdentifiers(Arrays.asList(new String[] { "ELECTRONIC_SERVICE_CHANNEL","PHONE_CHANNEL","PRINTABLE_FORM_CHANNEL","SERVICE_LOCATION_CHANNEL","WEBPAGE_CHANNEL" }));
-  }
-   
-  protected void deleteAllServices() {
-    deleteAllIdentifiers("SERVICE");
-  }
-
-  private void deleteAllIdentifiers(String type) {
-    deleteAllIdentifiers(Arrays.asList( type ));
-  }
-  
-  private void deleteAllIdentifiers(List<String> types) {
-    executeDelete("delete from IdentifierRelation where child_id in (SELECT id FROM Identifier where type in (?)) or parent_id in (SELECT id FROM Identifier where type in (?))", types, types);
-    executeDelete("delete from Identifier where type in (?)", types);
+ 
+  protected void deleteIdentifiers() {
+    executeDelete("delete from IdentifierRelation");
+    executeDelete("delete from Identifier");
   }
   
   protected long executeInsert(String sql, Object... params) {
@@ -199,6 +163,25 @@ public abstract class AbstractTest {
     return null;
   }
 
+  protected static int getSecondsFromMidnight(String timeString) {
+    int totalSeconds = 0;
+    String[] timeParts = timeString.split(":");
+    if(timeParts[0] != null && StringUtils.isNumeric(timeParts[0])) {
+      int hours = Integer.parseInt(timeParts[0]);
+      totalSeconds += hours * 3600;
+    }
+    if(timeParts[1] != null && StringUtils.isNumeric(timeParts[1])) {
+      int minutes = Integer.parseInt(timeParts[1]);
+      totalSeconds += minutes * 60;
+    }
+    if(timeParts[2] != null && StringUtils.isNumeric(timeParts[2])) {
+      int seconds = Integer.parseInt(timeParts[2]);
+      totalSeconds += seconds;
+    }
+    
+    return totalSeconds;
+  }
+  
   @SuppressWarnings ({"squid:S1188", "squid:MethodCyclomaticComplexity"})
   protected static Matcher<Instant> sameInstant(final Instant instant) {
     

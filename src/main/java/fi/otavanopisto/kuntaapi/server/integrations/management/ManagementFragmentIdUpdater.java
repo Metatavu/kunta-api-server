@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
-import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.ejb.AccessTimeout;
-import javax.ejb.Asynchronous;
 import javax.ejb.Singleton;
 import javax.ejb.Timeout;
 import javax.ejb.Timer;
@@ -17,19 +15,23 @@ import javax.ejb.TimerConfig;
 import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Event;
-import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 
-import fi.otavanopisto.kuntaapi.server.discover.IdUpdater;
-import fi.otavanopisto.kuntaapi.server.discover.OrganizationIdUpdateRequest;
-import fi.otavanopisto.kuntaapi.server.discover.FragmentIdUpdateRequest;
-import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
-import fi.otavanopisto.kuntaapi.server.id.FragmentId;
-import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
-import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 import fi.metatavu.management.client.ApiResponse;
 import fi.metatavu.management.client.DefaultApi;
 import fi.metatavu.management.client.model.Fragment;
+import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
+import fi.otavanopisto.kuntaapi.server.discover.IdUpdater;
+import fi.otavanopisto.kuntaapi.server.id.FragmentId;
+import fi.otavanopisto.kuntaapi.server.id.IdController;
+import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.integrations.management.tasks.OrganizationFragmentsTaskQueue;
+import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
+import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
+import fi.otavanopisto.kuntaapi.server.tasks.IdTask;
+import fi.otavanopisto.kuntaapi.server.tasks.IdTask.Operation;
+import fi.otavanopisto.kuntaapi.server.tasks.OrganizationEntityUpdateTask;
+import fi.otavanopisto.kuntaapi.server.tasks.TaskRequest;
 
 @ApplicationScoped
 @Singleton
@@ -38,13 +40,19 @@ import fi.metatavu.management.client.model.Fragment;
 public class ManagementFragmentIdUpdater extends IdUpdater {
 
   private static final int WARMUP_TIME = 1000 * 10;
-  private static final int TIMER_INTERVAL = 5000;
+  private static final int TIMER_INTERVAL = 1000 * 60 * 5;
   private static final int PER_PAGE = 100;
   private static final int MAX_PAGES = 10;
   
   @Inject
   private Logger logger;
-
+  
+  @Inject
+  private IdentifierController identifierController;
+  
+  @Inject
+  private IdController idController;
+  
   @Inject
   private SystemSettingController systemSettingController;
 
@@ -55,19 +63,14 @@ public class ManagementFragmentIdUpdater extends IdUpdater {
   private OrganizationSettingController organizationSettingController; 
   
   @Inject
-  private Event<FragmentIdUpdateRequest> idUpdateRequest;
-
-  private boolean stopped;
-  private List<OrganizationId> queue;
+  private OrganizationFragmentsTaskQueue organizationFragmentsTaskQueue;
+  
+  @Inject
+  private Event<TaskRequest> taskRequest;
   
   @Resource
   private TimerService timerService;
   
-  @PostConstruct
-  public void init() {
-    queue = Collections.synchronizedList(new ArrayList<>());
-  }
-
   @Override
   public String getName() {
     return "management-fragment-ids";
@@ -75,54 +78,34 @@ public class ManagementFragmentIdUpdater extends IdUpdater {
   
   @Override
   public void startTimer() {
-    stopped = false;
     startTimer(WARMUP_TIME);
   }
 
-  @Override
-  public void stopTimer() {
-    stopped = true;
-  }
-  
   private void startTimer(int duration) {
     TimerConfig timerConfig = new TimerConfig();
     timerConfig.setPersistent(false);
     timerService.createSingleActionTimer(duration, timerConfig);
   }
   
-  @Asynchronous
-  public void onOrganizationIdUpdateRequest(@Observes OrganizationIdUpdateRequest event) {
-    if (!stopped) {
-      OrganizationId organizationId = event.getId();
-      
-      if (organizationSettingController.getSettingValue(organizationId, ManagementConsts.ORGANIZATION_SETTING_BASEURL) == null) {
-        return;
-      }
-      
-      if (event.isPriority()) {
-        queue.remove(organizationId);
-        queue.add(0, organizationId);
-      } else {
-        if (!queue.contains(organizationId)) {
-          queue.add(organizationId);
-        }
-      }
-    }
-  }
-
   @Timeout
   public void timeout(Timer timer) {
-    if (!stopped) {
-      if (systemSettingController.isNotTestingOrTestRunning() && !queue.isEmpty()) {
-        updateManagementFragments(queue.remove(0));
+    if (systemSettingController.isNotTestingOrTestRunning()) {
+      OrganizationEntityUpdateTask task = organizationFragmentsTaskQueue.next();
+      if (task != null) {
+        updateManagementFragments(task.getOrganizationId());
+      } else {
+        organizationFragmentsTaskQueue.enqueueTasks(organizationSettingController.listOrganizationIdsWithSetting(ManagementConsts.ORGANIZATION_SETTING_BASEURL));
       }
-
-      startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
     }
+    
+    startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
   }
   
   private void updateManagementFragments(OrganizationId organizationId) {
     DefaultApi api = managementApi.getApi(organizationId);
+    
+    checkRemovedManagementFragments(api, organizationId);
+
     List<Fragment> managementFragments = new ArrayList<>();
     
     int page = 1;
@@ -139,7 +122,7 @@ public class ManagementFragmentIdUpdater extends IdUpdater {
     for (int i = 0, l = managementFragments.size(); i < l; i++) {
       Fragment managementFragment = managementFragments.get(i);
       FragmentId fragmentId = new FragmentId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementFragment.getId()));
-      idUpdateRequest.fire(new FragmentIdUpdateRequest(organizationId, fragmentId, (long) i, false));
+      taskRequest.fire(new TaskRequest(false, new IdTask<FragmentId>(Operation.UPDATE, fragmentId, (long) i)));
     }
   }
   
@@ -152,6 +135,22 @@ public class ManagementFragmentIdUpdater extends IdUpdater {
     }
     
     return Collections.emptyList();
+  }
+  
+  private void checkRemovedManagementFragments(DefaultApi api, OrganizationId organizationId) {
+    List<FragmentId> fragmentIds = identifierController.listOrganizationFragmentIdsBySource(organizationId, ManagementConsts.IDENTIFIER_NAME);
+    for (FragmentId fragmentId : fragmentIds) {
+      FragmentId managementFragmentId = idController.translateFragmentId(fragmentId, ManagementConsts.IDENTIFIER_NAME);
+      if (managementFragmentId != null) {
+        ApiResponse<Fragment> response = api.wpV2FragmentIdGet(managementFragmentId.getId(), null, null, null);
+        int status = response.getStatus();
+        // If status is 404 the fragment has been removed and if its a 403 its either trashed or unpublished.
+        // In both cases the fragment should not longer be available throught API
+        if (status == 404 || status == 403) {
+          taskRequest.fire(new TaskRequest(false, new IdTask<FragmentId>(Operation.REMOVE, fragmentId)));
+        }
+      }
+    }
   }
 
 }
