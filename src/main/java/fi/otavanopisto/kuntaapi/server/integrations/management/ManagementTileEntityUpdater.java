@@ -131,9 +131,11 @@ public class ManagementTileEntityUpdater extends EntityUpdater {
 
     Identifier identifier = identifierController.findIdentifierById(tileId);
     if (identifier == null) {
-      identifier = identifierController.createIdentifier(orderIndex, tileId);
+      identifier = identifierController.createIdentifier(orderIndex != null ? orderIndex : Long.MAX_VALUE, tileId);
     } else {
-      identifier = identifierController.updateIdentifier(identifier, orderIndex);
+      if (orderIndex != null) {
+        identifier = identifierController.updateIdentifier(identifier, orderIndex);
+      }
     }
     
     identifierRelationController.setParentId(identifier, organizationId);
