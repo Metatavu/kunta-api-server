@@ -132,9 +132,11 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
 
     Identifier identifier = identifierController.findIdentifierById(newsArticleId);
     if (identifier == null) {
-      identifier = identifierController.createIdentifier(orderIndex, newsArticleId);
+      identifier = identifierController.createIdentifier(orderIndex != null ? orderIndex : Long.MAX_VALUE, newsArticleId);
     } else {
-      identifier = identifierController.updateIdentifier(identifier, orderIndex);
+      if (orderIndex != null) {
+        identifier = identifierController.updateIdentifier(identifier, orderIndex);
+      }
     }
     
     identifierRelationController.setParentId(identifier, organizationId);

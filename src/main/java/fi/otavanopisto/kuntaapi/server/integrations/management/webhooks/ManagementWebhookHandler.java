@@ -1,6 +1,5 @@
 package fi.otavanopisto.kuntaapi.server.integrations.management.webhooks;
 
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -11,18 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang3.StringUtils;
 
-import fi.metatavu.management.client.ApiResponse;
-import fi.metatavu.management.client.DefaultApi;
-import fi.metatavu.management.client.model.Banner;
-import fi.metatavu.management.client.model.Page;
-import fi.metatavu.management.client.model.Post;
-import fi.metatavu.management.client.model.Tile;
 import fi.otavanopisto.kuntaapi.server.id.BannerId;
 import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.id.TileId;
-import fi.otavanopisto.kuntaapi.server.integrations.management.ManagementApi;
 import fi.otavanopisto.kuntaapi.server.integrations.management.ManagementConsts;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask.Operation;
@@ -37,9 +29,6 @@ public class ManagementWebhookHandler implements WebhookHandler {
   private Logger logger;
 
   @Inject
-  private ManagementApi managementApi;
-
-  @Inject
   private Event<TaskRequest> taskRequest;
   
   @Override
@@ -48,6 +37,7 @@ public class ManagementWebhookHandler implements WebhookHandler {
   }
 
   @Override
+  @SuppressWarnings ("squid:S128")
   public boolean handle(OrganizationId organizationId, HttpServletRequest request) {
     Payload payload = parsePayload(request);
 
@@ -149,127 +139,26 @@ public class ManagementWebhookHandler implements WebhookHandler {
 
   private boolean handlePublishPage(OrganizationId organizationId, Payload payload) {
     PageId pageId = new PageId(organizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
-    Long orderIndex = getPageOrderIndex(pageId);
-    if (orderIndex != null) {
-      taskRequest.fire(new TaskRequest(true, new IdTask<PageId>(Operation.UPDATE, pageId, orderIndex)));
-    } else {
-      logger.warning(String.format("Failed to resolve order index for page %s", pageId));
-    }
-    
+    taskRequest.fire(new TaskRequest(true, new IdTask<PageId>(Operation.UPDATE, pageId, null)));
     return true;
   }
 
   private boolean handlePublishBanner(OrganizationId organizationId, Payload payload) {
     BannerId bannerId = new BannerId(organizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
-    Long orderIndex = getBannerOrderIndex(bannerId);
-    if (orderIndex != null) {
-      taskRequest.fire(new TaskRequest(true, new IdTask<BannerId>(Operation.UPDATE, bannerId, orderIndex)));
-    } else {
-      logger.warning(String.format("Failed to resolve order index for banner %s", bannerId));
-    }
-    
+    taskRequest.fire(new TaskRequest(true, new IdTask<BannerId>(Operation.UPDATE, bannerId, null)));
     return true;
   }
 
   private boolean handlePublishPost(OrganizationId organizationId, Payload payload) {
     NewsArticleId newsArticleId = new NewsArticleId(organizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
-    Long orderIndex = getPostOrderIndex(newsArticleId);
-    if (orderIndex != null) {
-      taskRequest.fire(new TaskRequest(true, new IdTask<NewsArticleId>(Operation.UPDATE, newsArticleId, orderIndex)));
-    } else {
-      logger.warning(String.format("Failed to resolve order index for news article %s", newsArticleId));
-    }
-    
+    taskRequest.fire(new TaskRequest(true, new IdTask<NewsArticleId>(Operation.UPDATE, newsArticleId, null)));
     return true;
   }
 
   private boolean handleTilePublish(OrganizationId organizationId, Payload payload) {
     TileId tileId = new TileId(organizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
-    Long orderIndex = getTileOrderIndex(tileId);
-    if (orderIndex != null) {
-      taskRequest.fire(new TaskRequest(true, new IdTask<TileId>(Operation.UPDATE, tileId, orderIndex)));
-    } else {
-      logger.warning(String.format("Failed to resolve order index for tile %s", tileId));
-    }
-    
+    taskRequest.fire(new TaskRequest(true, new IdTask<TileId>(Operation.UPDATE, tileId, null)));
     return true;
   }
-  
-  private Long getPageOrderIndex(PageId managementPageId) {
-    OrganizationId organizationId = managementPageId.getOrganizationId();
-    DefaultApi api = managementApi.getApi(organizationId);
-    
-    ApiResponse<List<Page>> response = api.wpV2PagesGet(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
-    if (response.isOk()) {
-      List<Page> pages = response.getResponse();
-      for (int i = 0; i < pages.size(); i++) {
-        if (StringUtils.equals(String.valueOf(pages.get(i).getId()), managementPageId.getId())) {
-          return (long) i;
-        }
-      }
-    } else {
-      logger.warning(String.format("Listing organization %s pages failed on [%d] %s", organizationId.getId(), response.getStatus(), response.getMessage()));
-    }
-    
-    return null;
-  }
-  
-  private Long getBannerOrderIndex(BannerId managementBannerId) {
-    OrganizationId organizationId = managementBannerId.getOrganizationId();
-    DefaultApi api = managementApi.getApi(organizationId);
-    
-    fi.metatavu.management.client.ApiResponse<List<Banner>> response = api.wpV2BannerGet(null, null, null, null, null, null, null, null, null, null, null, null, null);
-    if (response.isOk()) {
-      List<Banner> banners = response.getResponse();
-      for (int i = 0; i < banners.size(); i++) {
-        if (StringUtils.equals(String.valueOf(banners.get(i).getId()), managementBannerId.getId())) {
-          return (long) i;
-        }
-      }
-    } else {
-      logger.warning(String.format("Listing organization %s banners failed on [%d] %s", organizationId.getId(), response.getStatus(), response.getMessage()));
-    }
-    
-    return null;
-  }
-  
-  private Long getPostOrderIndex(NewsArticleId managementNewsArticleId) {
-    OrganizationId organizationId = managementNewsArticleId.getOrganizationId();
-    DefaultApi api = managementApi.getApi(organizationId);
-    
-    ApiResponse<List<Post>> response = api.wpV2PostsGet(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
-    if (response.isOk()) {
-      List<Post> posts = response.getResponse();
-      for (int i = 0; i < posts.size(); i++) {
-        if (StringUtils.equals(String.valueOf(posts.get(i).getId()), managementNewsArticleId.getId())) {
-          return (long) i;
-        }
-      }
-    } else {
-      logger.warning(String.format("Listing organization %s posts failed on [%d] %s", organizationId.getId(), response.getStatus(), response.getMessage()));
-    }
-    
-    return null;
-  }
-  
-  private Long getTileOrderIndex(TileId managementTileId) {
-    OrganizationId organizationId = managementTileId.getOrganizationId();
-    DefaultApi api = managementApi.getApi(organizationId);
-    
-    ApiResponse<List<Tile>> response = api.wpV2TileGet(null, null, null, null, null, null, null, null, null, null, null, null, null);
-    if (response.isOk()) {
-      List<Tile> tiles = response.getResponse();
-      for (int i = 0; i < tiles.size(); i++) {
-        if (StringUtils.equals(String.valueOf(tiles.get(i).getId()), managementTileId.getId())) {
-          return (long) i;
-        }
-      }
-    } else {
-      logger.warning(String.format("Listing organization %s tiles failed on [%d] %s", organizationId.getId(), response.getStatus(), response.getMessage()));
-    }
-    
-    return null;
-  }
-
 
 }

@@ -171,9 +171,11 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
     
     Identifier identifier = identifierController.findIdentifierById(managementPageId);
     if (identifier == null) {
-      identifier = identifierController.createIdentifier(orderIndex, managementPageId);
+      identifier = identifierController.createIdentifier(orderIndex != null ? orderIndex : Long.MAX_VALUE, managementPageId);
     } else {
-      identifier = identifierController.updateIdentifier(identifier, orderIndex);
+      if (orderIndex != null) {
+        identifier = identifierController.updateIdentifier(identifier, orderIndex);
+      }
     }
     
     identifierRelationController.setParentId(identifier, identifierParentId);

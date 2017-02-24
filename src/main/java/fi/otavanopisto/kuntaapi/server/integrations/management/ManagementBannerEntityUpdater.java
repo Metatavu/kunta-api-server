@@ -131,9 +131,11 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
 
     Identifier identifier = identifierController.findIdentifierById(managementBannerId);
     if (identifier == null) {
-      identifier = identifierController.createIdentifier(orderIndex, managementBannerId);
+      identifier = identifierController.createIdentifier(orderIndex != null ? orderIndex : Long.MAX_VALUE, managementBannerId);
     } else {
-      identifier = identifierController.updateIdentifier(identifier, orderIndex);
+      if (orderIndex != null) {
+        identifier = identifierController.updateIdentifier(identifier, orderIndex);
+      }
     }
     
     identifierRelationController.setParentId(identifier, organizationId);
