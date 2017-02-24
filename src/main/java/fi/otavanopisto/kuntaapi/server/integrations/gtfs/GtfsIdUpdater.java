@@ -57,7 +57,7 @@ public class GtfsIdUpdater extends IdUpdater {
 
 
   private static final int WARMUP_TIME = 1000 * 60;
-  private static final int TIMER_INTERVAL = 1000 * 60 * 60;
+  private static final int TIMER_INTERVAL = 1000 * 60 * 60 * 4;
   
   @Inject
   private Logger logger;
