@@ -136,12 +136,10 @@ public abstract class AbstractTaskQueue <T extends AbstractTask> {
 
   private void startBatch() {
     getPrioritiesCache().getAdvancedCache().startBatch();
-    getTasksCache().getAdvancedCache().startBatch();
   }
 
   private void endBatch() {
     getPrioritiesCache().getAdvancedCache().endBatch(true);
-    getTasksCache().getAdvancedCache().endBatch(true);
   }
 
   private T popTask(Integer id) {
