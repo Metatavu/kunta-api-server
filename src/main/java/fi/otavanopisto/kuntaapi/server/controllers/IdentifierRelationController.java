@@ -131,7 +131,8 @@ public class IdentifierRelationController {
     boolean parentFound = false;
     
     for (IdentifierRelation identifierRelation : identifierRelationDAO.listByChild(childIdentifier)) {
-      if (identifierRelation.getParent().getId().equals(parentIdentifier.getId())) {
+      Identifier relationParentIdentifier = identifierRelation.getParent();
+      if ((relationParentIdentifier != null) && relationParentIdentifier.getId().equals(relationParentIdentifier.getId())) {
         parentFound = true;
       } else {
         identifierRelationDAO.delete(identifierRelation);
