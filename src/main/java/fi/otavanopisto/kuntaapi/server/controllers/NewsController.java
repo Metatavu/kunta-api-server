@@ -17,6 +17,7 @@ import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.NewsProvider;
+import fi.otavanopisto.kuntaapi.server.utils.ListUtils;
 import fi.metatavu.kuntaapi.server.rest.model.Attachment;
 import fi.metatavu.kuntaapi.server.rest.model.NewsArticle;
 
@@ -44,11 +45,7 @@ public class NewsController {
       }
     }
     
-    int resultCount = result.size();
-    int firstIndex = firstResult == null ? 0 : Math.min(firstResult.intValue(), resultCount);
-    int toIndex = maxResults == null ? resultCount : Math.min(firstIndex + maxResults.intValue(), resultCount);
-    
-    return entityController.sortEntitiesInNaturalOrder(result.subList(firstIndex, toIndex));
+    return ListUtils.limit(entityController.sortEntitiesInNaturalOrder(result), firstResult, maxResults);
   }
 
   public NewsArticle findNewsArticle(OrganizationId organizationId, NewsArticleId newsArticleId) {

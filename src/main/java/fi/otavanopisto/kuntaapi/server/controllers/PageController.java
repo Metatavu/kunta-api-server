@@ -24,6 +24,7 @@ import fi.otavanopisto.kuntaapi.server.index.SearchResult;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.PageProvider;
+import fi.otavanopisto.kuntaapi.server.utils.ListUtils;
 
 @ApplicationScoped
 @SuppressWarnings ("squid:S3306")
@@ -63,11 +64,7 @@ public class PageController {
       }
     }
     
-    int resultCount = result.size();
-    int firstIndex = firstResult == null ? 0 : Math.min(firstResult.intValue(), resultCount);
-    int toIndex = maxResults == null ? resultCount : Math.min(firstIndex + maxResults.intValue(), resultCount);
-    
-    return entityController.sortEntitiesInNaturalOrder(result.subList(firstIndex, toIndex));
+    return ListUtils.limit(entityController.sortEntitiesInNaturalOrder(result), firstResult, maxResults);
   }
 
   public Page findPageByPath(OrganizationId organizationId, String path) {

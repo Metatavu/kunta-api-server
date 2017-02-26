@@ -14,6 +14,7 @@ import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.AnnouncementProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.AnnouncementProvider.AnnouncementOrder;
 import fi.otavanopisto.kuntaapi.server.integrations.AnnouncementProvider.AnnouncementOrderDirection;
+import fi.otavanopisto.kuntaapi.server.utils.ListUtils;
 import fi.metatavu.kuntaapi.server.rest.model.Announcement;
 
 @ApplicationScoped
@@ -33,11 +34,7 @@ public class AnnouncementController {
       result.addAll(announcementProvider.listOrganizationAnnouncements(organizationId, slug));
     }
     
-    int resultCount = result.size();
-    int firstIndex = firstResult == null ? 0 : Math.min(firstResult.intValue(), resultCount);
-    int toIndex = maxResults == null ? resultCount : Math.min(firstIndex + maxResults.intValue(), resultCount);
-    
-    return sortAnnouncements(result.subList(firstIndex, toIndex), order, orderDirection);
+    return ListUtils.limit(sortAnnouncements(result, order, orderDirection), firstResult, maxResults);
   }
   
   @SuppressWarnings ("squid:S1301")

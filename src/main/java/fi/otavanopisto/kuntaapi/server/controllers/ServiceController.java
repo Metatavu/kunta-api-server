@@ -20,6 +20,7 @@ import fi.otavanopisto.kuntaapi.server.index.SearchResult;
 import fi.otavanopisto.kuntaapi.server.index.ServiceSearcher;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceChannelProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceProvider;
+import fi.otavanopisto.kuntaapi.server.utils.ListUtils;
 import fi.metatavu.kuntaapi.server.rest.model.ElectronicChannel;
 import fi.metatavu.kuntaapi.server.rest.model.PhoneChannel;
 import fi.metatavu.kuntaapi.server.rest.model.PrintableFormChannel;
@@ -61,11 +62,7 @@ public class ServiceController {
       result.addAll(serviceProvider.listServices(organizationId));
     }
     
-    int resultCount = result.size();
-    int firstIndex = firstResult == null ? 0 : Math.min(firstResult.intValue(), resultCount);
-    int toIndex = maxResults == null ? resultCount : Math.min(firstIndex + maxResults.intValue(), resultCount);
-    
-    return entityController.sortEntitiesInNaturalOrder(result.subList(firstIndex, toIndex));
+    return ListUtils.limit(entityController.sortEntitiesInNaturalOrder(result), firstResult, maxResults);
   }
 
   public List<Service> searchServices(OrganizationId organizationId, String search, Long firstResult, Long maxResults) {

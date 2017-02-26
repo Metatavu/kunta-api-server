@@ -23,6 +23,7 @@ import fi.otavanopisto.kuntaapi.server.id.PublicTransportStopId;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportStopTimeId;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportTripId;
 import fi.otavanopisto.kuntaapi.server.integrations.PublicTransportProvider;
+import fi.otavanopisto.kuntaapi.server.utils.ListUtils;
 
 @ApplicationScoped
 @SuppressWarnings ("squid:S3306")
@@ -41,11 +42,7 @@ public class PublicTransportController {
       result.addAll(publicTransportProvider.listRoutes(organizationId));
     }
     
-    int resultCount = result.size();
-    int firstIndex = firstResult == null ? 0 : Math.min(firstResult.intValue(), resultCount);
-    int toIndex = maxResults == null ? resultCount : Math.min(firstIndex + maxResults.intValue(), resultCount);
-    
-    return entityController.sortEntitiesInNaturalOrder(result.subList(firstIndex, toIndex));
+    return ListUtils.limit(entityController.sortEntitiesInNaturalOrder(result), firstResult, maxResults);
   }
   
   public Route findRoute(OrganizationId organizationId, PublicTransportRouteId routeId) {
