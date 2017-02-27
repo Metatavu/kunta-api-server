@@ -14,6 +14,7 @@ import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.JobProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.JobProvider.JobOrder;
 import fi.otavanopisto.kuntaapi.server.integrations.JobProvider.JobOrderDirection;
+import fi.otavanopisto.kuntaapi.server.utils.ListUtils;
 import fi.metatavu.kuntaapi.server.rest.model.Job;
 
 @ApplicationScoped
@@ -43,11 +44,7 @@ public class JobController {
       result.addAll(jobProvider.listOrganizationJobs(organizationId));
     }
     
-    int resultCount = result.size();
-    int firstIndex = firstResult == null ? 0 : Math.min(firstResult.intValue(), resultCount);
-    int toIndex = maxResults == null ? resultCount : Math.min(firstIndex + maxResults.intValue(), resultCount);
-    
-    return sortJobs(result.subList(firstIndex, toIndex), order, orderDirection);
+    return ListUtils.limit(sortJobs(result, order, orderDirection), firstResult, maxResults);
   }
   
   private List<Job> sortJobs(List<Job> jobs, JobOrder order, JobOrderDirection orderDirection) {

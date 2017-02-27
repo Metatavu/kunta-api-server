@@ -13,6 +13,7 @@ import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.index.OrganizationSearcher;
 import fi.otavanopisto.kuntaapi.server.index.SearchResult;
 import fi.otavanopisto.kuntaapi.server.integrations.OrganizationProvider;
+import fi.otavanopisto.kuntaapi.server.utils.ListUtils;
 import fi.metatavu.kuntaapi.server.rest.model.Organization;
 
 @ApplicationScoped
@@ -32,14 +33,14 @@ public class OrganizationController {
     List<Organization> organizations = new ArrayList<>();
     
     if (businessName != null || businessCode != null) {
-      organizations = searchOrganizations(null, businessName, businessCode, firstResult, maxResults);
+      organizations = searchOrganizations(null, businessName, businessCode, null, null);
     } else {
       for (OrganizationProvider organizationProvider : getOrganizationProviders()) {
         organizations.addAll(organizationProvider.listOrganizations(businessName, businessCode));
       }
     }
     
-    return entityController.sortEntitiesInNaturalOrder(organizations);
+    return ListUtils.limit(entityController.sortEntitiesInNaturalOrder(organizations), firstResult, maxResults);
   }
 
   public List<Organization> searchOrganizations(String search, String businessName, String businessCode, Long firstResult, Long maxResults) {
