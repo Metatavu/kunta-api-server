@@ -12,6 +12,7 @@ import javax.inject.Inject;
 import fi.otavanopisto.kuntaapi.server.id.ContactId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.ContactProvider;
+import fi.otavanopisto.kuntaapi.server.utils.ListUtils;
 import fi.metatavu.kuntaapi.server.rest.model.Contact;
 
 @ApplicationScoped
@@ -31,11 +32,7 @@ public class ContactController {
       result.addAll(contactProvider.listOrganizationContacts(organizationId));
     }
     
-    int resultCount = result.size();
-    int firstIndex = firstResult == null ? 0 : Math.min(firstResult.intValue(), resultCount);
-    int toIndex = maxResults == null ? resultCount : Math.min(firstIndex + maxResults.intValue(), resultCount);
-    
-    return entityController.sortEntitiesInNaturalOrder(result.subList(firstIndex, toIndex));
+    return ListUtils.limit(entityController.sortEntitiesInNaturalOrder(result), firstResult, maxResults);
   }
 
   public Contact findContact(OrganizationId organizationId, ContactId contactId) {

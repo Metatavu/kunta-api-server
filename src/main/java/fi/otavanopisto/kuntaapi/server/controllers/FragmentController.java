@@ -12,6 +12,7 @@ import javax.inject.Inject;
 import fi.otavanopisto.kuntaapi.server.id.FragmentId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.FragmentProvider;
+import fi.otavanopisto.kuntaapi.server.utils.ListUtils;
 import fi.metatavu.kuntaapi.server.rest.model.Fragment;
 
 @ApplicationScoped
@@ -35,7 +36,7 @@ public class FragmentController {
     int firstIndex = firstResult == null ? 0 : Math.min(firstResult.intValue(), resultCount);
     int toIndex = maxResults == null ? resultCount : Math.min(firstIndex + maxResults.intValue(), resultCount);
     
-    return entityController.sortEntitiesInNaturalOrder(result.subList(firstIndex, toIndex));
+    return ListUtils.limit(entityController.sortEntitiesInNaturalOrder(result), firstIndex, toIndex);
   }
 
   public Fragment findFragment(OrganizationId organizationId, FragmentId fragmentId) {
