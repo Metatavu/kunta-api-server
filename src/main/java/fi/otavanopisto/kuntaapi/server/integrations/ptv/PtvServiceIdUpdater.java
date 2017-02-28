@@ -15,6 +15,7 @@ import javax.inject.Inject;
 
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.IdUpdater;
+import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.ServiceId;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask;
@@ -30,10 +31,12 @@ public class PtvServiceIdUpdater extends IdUpdater {
 
   private static final int WARMUP_TIME = 1000 * 10;
   private static final int TIMER_INTERVAL = 1000 * 60 * 10;
-  private static final long BATCH_SIZE = 20;
   
   @Inject
   private Logger logger;
+  
+  @Inject
+  private IdController idController;
 
   @Inject
   private SystemSettingController systemSettingController;
@@ -43,11 +46,9 @@ public class PtvServiceIdUpdater extends IdUpdater {
   
   @Inject
   private IdentifierController identifierController;
-  
+
   @Inject
   private Event<TaskRequest> taskRequest;
-
-  private long offset;
   
   @Resource
   private TimerService timerService;
@@ -59,7 +60,6 @@ public class PtvServiceIdUpdater extends IdUpdater {
   
   @Override
   public void startTimer() {
-    offset = 0l;
     startTimer(WARMUP_TIME);
   }
   
@@ -81,25 +81,28 @@ public class PtvServiceIdUpdater extends IdUpdater {
   }
 
   private void discoverIds() {
-    ApiResponse<List<Service>> servicesResponse = ptvApi.getServicesApi().listServices(null, offset, BATCH_SIZE);
+    List<ServiceId> existingServiceIds = idController.translateIds(identifierController.listServiceIdsBySource(PtvConsts.IDENTIFIER_NAME), PtvConsts.IDENTIFIER_NAME);
+
+    ApiResponse<List<Service>> servicesResponse = ptvApi.getServicesApi().listServices(null, null, null);
     if (!servicesResponse.isOk()) {
       logger.severe(String.format("Service list reported [%d] %s", servicesResponse.getStatus(), servicesResponse.getMessage()));
     } else {
       List<Service> services = servicesResponse.getResponse();
       for (int i = 0; i < services.size(); i++) {
         Service service = services.get(i);
-        Long orderIndex = (long) i + offset;
+        Long orderIndex = (long) i;
         ServiceId serviceId = new ServiceId(PtvConsts.IDENTIFIER_NAME, service.getId());
+        existingServiceIds.remove(serviceId);
+        
         boolean priority = identifierController.findIdentifierById(serviceId) == null;
         taskRequest.fire(new TaskRequest(priority, new IdTask<ServiceId>(Operation.UPDATE, serviceId, orderIndex)));
       }
-      
-      if (services.size() == BATCH_SIZE) {
-        offset += BATCH_SIZE;
-      } else {
-        offset = 0;
-      }
     }
+    
+    for (ServiceId existingServiceId : existingServiceIds) {
+      taskRequest.fire(new TaskRequest(false, new IdTask<ServiceId>(Operation.REMOVE, existingServiceId)));
+    }
+    
   }
 
 }

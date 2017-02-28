@@ -3,7 +3,6 @@ package fi.otavanopisto.kuntaapi.server.integrations.ptv;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.annotation.Resource;
@@ -23,9 +22,12 @@ import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceId;
+import fi.otavanopisto.kuntaapi.server.index.IndexRemoveRequest;
+import fi.otavanopisto.kuntaapi.server.index.IndexRemoveService;
 import fi.otavanopisto.kuntaapi.server.index.IndexRequest;
 import fi.otavanopisto.kuntaapi.server.index.IndexableService;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
+import fi.otavanopisto.kuntaapi.server.integrations.management.ManagementConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.ServiceIdTaskQueue;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
@@ -78,6 +80,9 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
   @Inject
   private Event<IndexRequest> indexRequest;
   
+  @Inject
+  private Event<IndexRemoveRequest> indexRemoveRequest;
+  
   @Override
   public String getName() {
     return "ptv-services";
@@ -106,20 +111,15 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
       if (task.getOperation() == Operation.UPDATE) {
         updatePtvService(task.getId(), task.getOrderIndex()); 
       } else if (task.getOperation() == Operation.REMOVE) {
-        logger.log(Level.SEVERE, "PTV Service removal is not implemented");
+        deletePtvService(task.getId());
       }
     }
   }
-  
+
   private void updatePtvService(ServiceId serviceId, Long orderIndex) {
     ApiResponse<Service> response = ptvApi.getServicesApi().findService(serviceId.getId());
     if (response.isOk()) {
-      Identifier identifier = identifierController.findIdentifierById(serviceId);
-      if (identifier == null) {
-        identifier = identifierController.createIdentifier(orderIndex, serviceId);
-      } else {
-        identifier = identifierController.updateIdentifier(identifier, orderIndex);
-      }
+      Identifier identifier = identifierController.acquireIdentifier(orderIndex, serviceId);
       
       Service ptvService = response.getResponse();
       ServiceId kuntaApiServiceId = new ServiceId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
@@ -174,6 +174,21 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
       indexRequest.fire(new IndexRequest(indexableService));
     }
     
+  }
+  
+  private void deletePtvService(ServiceId ptvServiceId) {
+    Identifier serviceIdentifier = identifierController.findIdentifierById(ptvServiceId);
+    if (serviceIdentifier != null) {
+      ServiceId kuntaApiServiceId = new ServiceId(KuntaApiConsts.IDENTIFIER_NAME, serviceIdentifier.getKuntaApiId());
+      modificationHashCache.clear(serviceIdentifier.getKuntaApiId());
+      ptvServiceCache.clear(kuntaApiServiceId);
+      identifierController.deleteIdentifier(serviceIdentifier);
+      
+      IndexRemoveService indexRemove = new IndexRemoveService();
+      indexRemove.setServiceId(kuntaApiServiceId.getId());
+      indexRemove.setLanguage(ManagementConsts.DEFAULT_LOCALE);
+      indexRemoveRequest.fire(new IndexRemoveRequest(indexRemove));
+    }
   }
   
 
