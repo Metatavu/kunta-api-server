@@ -173,4 +173,35 @@
     </createTable>
   </changeSet>
   
+  <changeSet id="archived-identifier" author="antti.leppa">
+    
+    <createTable tableName="ArchivedIdentifier">
+      <column name="id" type="bigint(20)" autoIncrement="true">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="kuntaApiId" type="varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="source" type="varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="sourceId" type="varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="type" type="varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="organizationKuntaApiId" type="varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="archived" type="timestamp">
+        <constraints nullable="true"/>
+      </column>
+    </createTable>
+  
+    <addUniqueConstraint constraintName="UK_ARCHIVED_IDENTIFIER_SOURCE" tableName="ArchivedIdentifier" columnNames="organizationKuntaApiId,type,source,sourceId" />
+    <addUniqueConstraint constraintName="UK_ARCHIVED_IDENTIFIER_APIID" tableName="ArchivedIdentifier" columnNames="organizationKuntaApiId,type,source,kuntaApiId" />
+  
+  </changeSet>
+  
 </databaseChangeLog>
