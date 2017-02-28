@@ -3,6 +3,7 @@ package fi.otavanopisto.kuntaapi.test.server.integration.gtfs;
 import static com.jayway.restassured.RestAssured.given;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.notNullValue;
+import static org.hamcrest.Matchers.greaterThanOrEqualTo;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.After;
@@ -13,6 +14,7 @@ import org.junit.Test;
 import com.github.tomakehurst.wiremock.junit.WireMockRule;
 import com.jayway.restassured.http.ContentType;
 import com.jayway.restassured.response.Response;
+import com.jayway.restassured.response.ValidatableResponse;
 
 import fi.otavanopisto.kuntaapi.server.integrations.gtfs.GtfsConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.PtvConsts;
@@ -77,6 +79,87 @@ public class StopTimeTestsIT extends AbstractIntegrationTest {
     
     assertFound(String.format("/organizations/%s/transportTrips/%s", organizationId, tripId));
     assertFound(String.format("/organizations/%s/transportStops/%s", organizationId, stopId));
+  }
+  
+  @Test
+  public void testListStopTimesDepartureTime() {
+    String organizationId = getOrganizationId(0);
+    int departureTime = getSecondsFromMidnight("15:34:00");
+    
+    Response response = given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get(String.format("/organizations/{organizationId}/transportStopTimes?departureTime=%d", departureTime), organizationId);
+    
+    ValidatableResponse validatableResponse = response
+      .then()
+      .assertThat()
+      .statusCode(200);
+    
+    validatableResponse.body("id.size()", is(9));
+
+    int count = response
+      .body()
+      .jsonPath()
+      .getInt("id.size()");
+
+    for (int i = 0; i < count; i++) {
+      validatableResponse.body(String.format("departureTime[%d]", i), greaterThanOrEqualTo(departureTime));
+    }
+  }
+  
+  @Test
+  public void testListStopTimesStopId() throws InterruptedException {
+    String organizationId = getOrganizationId(0);
+    waitApiListCount(String.format("/organizations/%s/transportStops", organizationId), 5); 
+    
+    String stopId = getOrganizationStopId(organizationId, 0);
+    
+    Response response = given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get(String.format("/organizations/{organizationId}/transportStopTimes?stopId=%s", stopId), organizationId);
+    
+    ValidatableResponse validatableResponse = response
+      .then()
+      .assertThat()
+      .statusCode(200);
+    
+    validatableResponse.body("id.size()", is(7));
+
+    int count = response
+      .body()
+      .jsonPath()
+      .getInt("id.size()");
+
+    for (int i = 0; i < count; i++) {
+      validatableResponse.body(String.format("stopId[%d]", i), is(stopId));
+    }
+  }
+  
+  @Test
+  public void testListStopTimesSortByDepartureTime() {
+    String organizationId = getOrganizationId(0);
+    
+    given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get("/organizations/{organizationId}/transportStopTimes?sortBy=DEPARTURE_TIME", organizationId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(19))
+      .body("departureTime[1]", is(getSecondsFromMidnight("15:06:00"))); 
+    
+    given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get("/organizations/{organizationId}/transportStopTimes?sortBy=DEPARTURE_TIME&sortDir=DESC", organizationId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(19))
+      .body("departureTime[1]", is(getSecondsFromMidnight("15:41:00"))); 
   }
   
   @Test

@@ -147,13 +147,13 @@ public class GtfsPublicTransportProvider implements PublicTransportProvider {
   }
   
   @Override
-  public List<StopTime> listStopTimes(OrganizationId organizationId) {
+  public List<StopTime> listStopTimes(OrganizationId organizationId, PublicTransportStopId stopId, Integer departureTime) {
     List<PublicTransportStopTimeId> stopTimeIds = identifierRelationController.listPublicTransportStopTimeIdsBySourceAndParentId(GtfsConsts.IDENTIFIER_NAME, organizationId);
     List<StopTime> stopTimes = new ArrayList<>(stopTimeIds.size());
     
     for (PublicTransportStopTimeId stopTimeId : stopTimeIds) {
       StopTime stopTime = gtfsPublicTransportStopTimeCache.get(stopTimeId);
-      if (stopTime != null) {
+      if (stopTime != null && isAcceptableStopTime(stopTime, stopId, departureTime)) {
         stopTimes.add(stopTime);
       }
     }
@@ -192,6 +192,18 @@ public class GtfsPublicTransportProvider implements PublicTransportProvider {
     }
     
     return gtfsPublicTransportTripCache.get(tripId);
+  }
+
+  private boolean isAcceptableStopTime(StopTime stopTime, PublicTransportStopId stopId, Integer departureTime) {
+    if (stopId != null && !stopId.getId().equals(stopTime.getStopId())) {
+      return false;
+    }
+    
+    if (departureTime != null && stopTime.getDepartureTime() < departureTime) {
+      return false;
+    }
+    
+    return true;
   }
 
 }

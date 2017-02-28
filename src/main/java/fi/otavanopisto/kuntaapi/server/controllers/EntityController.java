@@ -19,6 +19,7 @@ import javax.inject.Inject;
 import org.apache.commons.codec.binary.StringUtils;
 
 import fi.otavanopisto.kuntaapi.server.debug.Timed;
+import fi.otavanopisto.kuntaapi.server.integrations.SortDir;
 
 @ApplicationScoped
 @SuppressWarnings ({"squid:S3306", "squid:S1948", "squid:UnusedPrivateMethod"})
@@ -30,8 +31,12 @@ public class EntityController {
   @Inject
   private IdentifierController identifierController;
 
-  @Timed (infoThreshold = 200, warningThreshold = 400, severeThreshold = 800)
   public <T> List<T> sortEntitiesInNaturalOrder(List<T> entities) {
+    return sortEntitiesInNaturalOrder(entities, SortDir.ASC);
+  }
+  
+  @Timed (infoThreshold = 200, warningThreshold = 400, severeThreshold = 800)
+  public <T> List<T> sortEntitiesInNaturalOrder(List<T> entities, SortDir sortDir) {
     
     List<String> kuntaApiIds = new ArrayList<>(entities.size());
     for (Object entity : entities) {
@@ -42,7 +47,7 @@ public class EntityController {
     }
     
     Map<String, Long> orderIds = identifierController.getIdentifierOrderIndices(kuntaApiIds);
-    entities.sort(new IdentifierComparator(orderIds));
+    entities.sort(new IdentifierComparator(orderIds, sortDir == null ? SortDir.ASC : sortDir));
     
     return entities;
   }
@@ -76,10 +81,12 @@ public class EntityController {
   }
   private class IdentifierComparator implements Comparator<Object> {
     
+    private SortDir sortDir;
     private Map<String, Long> orderIds;
     
-    public IdentifierComparator(Map<String, Long> orderIds) {
+    public IdentifierComparator(Map<String, Long> orderIds, SortDir sortDir) {
       this.orderIds = orderIds;
+      this.sortDir = sortDir;
     }
 
     @Override
@@ -96,6 +103,10 @@ public class EntityController {
 
       if (orderNumber2 == null) {
         orderNumber2 = Long.MAX_VALUE;
+      }
+      
+      if (sortDir == SortDir.DESC) {
+        return orderNumber2.compareTo(orderNumber1);
       }
       
       return orderNumber1.compareTo(orderNumber2);
