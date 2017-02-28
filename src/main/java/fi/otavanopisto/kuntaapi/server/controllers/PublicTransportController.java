@@ -2,6 +2,7 @@ package fi.otavanopisto.kuntaapi.server.controllers;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
@@ -23,6 +24,8 @@ import fi.otavanopisto.kuntaapi.server.id.PublicTransportStopId;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportStopTimeId;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportTripId;
 import fi.otavanopisto.kuntaapi.server.integrations.PublicTransportProvider;
+import fi.otavanopisto.kuntaapi.server.integrations.PublicTransportStopTimeSortBy;
+import fi.otavanopisto.kuntaapi.server.integrations.SortDir;
 import fi.otavanopisto.kuntaapi.server.utils.ListUtils;
 
 @ApplicationScoped
@@ -63,11 +66,7 @@ public class PublicTransportController {
       result.addAll(publicTransportProvider.listStops(organizationId));
     }
     
-    int resultCount = result.size();
-    int firstIndex = firstResult == null ? 0 : Math.min(firstResult.intValue(), resultCount);
-    int toIndex = maxResults == null ? resultCount : Math.min(firstIndex + maxResults.intValue(), resultCount);
-    
-    return entityController.sortEntitiesInNaturalOrder(result.subList(firstIndex, toIndex));
+    return ListUtils.limit(entityController.sortEntitiesInNaturalOrder(result), firstResult, maxResults);
   }
   
   public Stop findStop(OrganizationId organizationId, PublicTransportStopId stopId) {
@@ -81,18 +80,14 @@ public class PublicTransportController {
     return null;
   }
   
-  public List<StopTime> listStopTimes(OrganizationId organizationId, Integer firstResult, Integer maxResults) {
+  public List<StopTime> listStopTimes(OrganizationId organizationId, PublicTransportStopId stopId, Integer departureTime, PublicTransportStopTimeSortBy sortBy, SortDir sortDir, Integer firstResult, Integer maxResults) {
     List<StopTime> result = new ArrayList<>();
    
     for (PublicTransportProvider publicTransportProvider : getPublicTransportProviders()) {
-      result.addAll(publicTransportProvider.listStopTimes(organizationId));
+      result.addAll(publicTransportProvider.listStopTimes(organizationId, stopId, departureTime));
     }
     
-    int resultCount = result.size();
-    int firstIndex = firstResult == null ? 0 : Math.min(firstResult.intValue(), resultCount);
-    int toIndex = maxResults == null ? resultCount : Math.min(firstIndex + maxResults.intValue(), resultCount);
-    
-    return entityController.sortEntitiesInNaturalOrder(result.subList(firstIndex, toIndex));
+    return ListUtils.limit(sortStopTimes(result, sortBy, sortDir), firstResult, maxResults);
   }
   
   public StopTime findStopTime(OrganizationId organizationId, PublicTransportStopTimeId stopTimeId) {
@@ -112,12 +107,8 @@ public class PublicTransportController {
     for (PublicTransportProvider publicTransportProvider : getPublicTransportProviders()) {
       result.addAll(publicTransportProvider.listTrips(organizationId));
     }
-    
-    int resultCount = result.size();
-    int firstIndex = firstResult == null ? 0 : Math.min(firstResult.intValue(), resultCount);
-    int toIndex = maxResults == null ? resultCount : Math.min(firstIndex + maxResults.intValue(), resultCount);
-    
-    return entityController.sortEntitiesInNaturalOrder(result.subList(firstIndex, toIndex));
+
+    return ListUtils.limit(entityController.sortEntitiesInNaturalOrder(result), firstResult, maxResults);
   }
   
   public Trip findTrip(OrganizationId organizationId, PublicTransportTripId tripId) {
@@ -138,11 +129,7 @@ public class PublicTransportController {
       result.addAll(publicTransportProvider.listAgencies(organizationId));
     }
     
-    int resultCount = result.size();
-    int firstIndex = firstResult == null ? 0 : Math.min(firstResult.intValue(), resultCount);
-    int toIndex = maxResults == null ? resultCount : Math.min(firstIndex + maxResults.intValue(), resultCount);
-    
-    return entityController.sortEntitiesInNaturalOrder(result.subList(firstIndex, toIndex));
+    return ListUtils.limit(entityController.sortEntitiesInNaturalOrder(result), firstResult, maxResults);
   }
 
   public Agency findAgency(OrganizationId organizationId, PublicTransportAgencyId agencyId) {
@@ -163,11 +150,7 @@ public class PublicTransportController {
       result.addAll(publicTransportProvider.listSchedules(organizationId));
     }
     
-    int resultCount = result.size();
-    int firstIndex = firstResult == null ? 0 : Math.min(firstResult.intValue(), resultCount);
-    int toIndex = maxResults == null ? resultCount : Math.min(firstIndex + maxResults.intValue(), resultCount);
-    
-    return entityController.sortEntitiesInNaturalOrder(result.subList(firstIndex, toIndex));
+    return ListUtils.limit(entityController.sortEntitiesInNaturalOrder(result), firstResult, maxResults);
   }
   
   public Schedule findSchedule(OrganizationId organizationId, PublicTransportScheduleId scheduleId) {
@@ -181,6 +164,18 @@ public class PublicTransportController {
     return null;
   }
   
+  private List<StopTime> sortStopTimes(List<StopTime> stopTimes, PublicTransportStopTimeSortBy sortBy, SortDir sortDir) {
+    if (sortBy == null) {
+      return entityController.sortEntitiesInNaturalOrder(stopTimes, sortDir);
+    }
+    
+    if (sortBy == PublicTransportStopTimeSortBy.DEPARTURE_TIME) {
+      Collections.sort(stopTimes, new DepartureTimeComparator(sortDir));
+    }
+    
+    return stopTimes;
+  }
+  
   private List<PublicTransportProvider> getPublicTransportProviders() {
     List<PublicTransportProvider> result = new ArrayList<>();
     
@@ -192,4 +187,41 @@ public class PublicTransportController {
     return Collections.unmodifiableList(result);
   }
   
+  private class DepartureTimeComparator implements Comparator<StopTime> {
+
+    private SortDir sortDir;
+    
+    public DepartureTimeComparator(SortDir sortDir) {
+      this.sortDir = sortDir;
+    }
+
+    @Override
+    public int compare(StopTime o1, StopTime o2) {
+      int result = compareDepartureTimes(o1.getDepartureTime(), o2.getDepartureTime());
+      if (sortDir == SortDir.DESC) {
+        return -result;
+      } 
+      
+      return result;
+    }
+    
+    private int compareDepartureTimes(Integer departureTime1, Integer departureTime2) {
+      if (departureTime1 == departureTime2) {
+        return 0;
+      }
+      
+      if (departureTime1 == null) {
+        return -1;
+      }
+
+      if (departureTime2 == null) {
+        return 1;
+      }
+      
+      return departureTime1.compareTo(departureTime2);
+    }
+    
+    
+  }
+
 }

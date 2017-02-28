@@ -90,6 +90,8 @@ import fi.otavanopisto.kuntaapi.server.integrations.JobProvider.JobOrder;
 import fi.otavanopisto.kuntaapi.server.integrations.JobProvider.JobOrderDirection;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.OrganizationServiceProvider;
+import fi.otavanopisto.kuntaapi.server.integrations.PublicTransportStopTimeSortBy;
+import fi.otavanopisto.kuntaapi.server.integrations.SortDir;
 import fi.otavanopisto.kuntaapi.server.system.OrganizationSettingProvider;
 
 /**
@@ -1463,13 +1465,34 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   }
 
   @Override
-  public Response listOrganizationPublicTransportStopTimes(String organizationIdParam, Request request) {
+  public Response listOrganizationPublicTransportStopTimes(String organizationIdParam, String stopIdParam, Integer departureTime, 
+      String sortByParam, String sortDirParam, Request request) {
+    
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
     }
     
-    List<StopTime> result = publicTransportController.listStopTimes(organizationId, null, null);
+    PublicTransportStopId stopId = null;
+    SortDir sortDir = null;
+    PublicTransportStopTimeSortBy sortBy = null;
+    
+    if (StringUtils.isNotBlank(stopIdParam)) {
+      stopId = toPublicTransportStopId(organizationId, stopIdParam);
+      if (stopId == null) {
+        return createBadRequest(String.format("Malformed stopId %s", stopIdParam));
+      }
+    }
+
+    if (StringUtils.isNotBlank(sortByParam)) {
+      sortBy = EnumUtils.getEnum(PublicTransportStopTimeSortBy.class, sortByParam);
+    }
+    
+    if (StringUtils.isNotBlank(sortDirParam)) {
+      sortDir = EnumUtils.getEnum(SortDir.class, sortDirParam);
+    }
+    
+    List<StopTime> result = publicTransportController.listStopTimes(organizationId, stopId, departureTime, sortBy, sortDir, null, null);
     List<String> ids = httpCacheController.getEntityIds(result);
     Response notModified = httpCacheController.getNotModified(request, ids);
     if (notModified != null) {
