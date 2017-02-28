@@ -118,13 +118,7 @@ public class ManagementAnnouncementEntityUpdater extends EntityUpdater {
   private void updateManagementAnnouncement(OrganizationId organizationId, Announcement managementAnnouncement, Long orderIndex) {
     AnnouncementId announcementId = new AnnouncementId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementAnnouncement.getId()));
 
-    Identifier identifier = identifierController.findIdentifierById(announcementId);
-    if (identifier == null) {
-      identifier = identifierController.createIdentifier(orderIndex, announcementId);
-    } else {
-      identifier = identifierController.updateIdentifier(identifier, orderIndex);
-    }
-
+    Identifier identifier = identifierController.acquireIdentifier(orderIndex, announcementId);
     identifierRelationController.setParentId(identifier, organizationId);
     
     AnnouncementId kuntaApiAnnouncementId = new AnnouncementId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());

@@ -108,13 +108,7 @@ public class PtvServicePrintableFormChannelIdUpdater extends EntityUpdater {
         PrintableFormChannel printableFormChannel = printableFormChannels.get(i);
         PrintableFormChannelId channelId = new PrintableFormChannelId(PtvConsts.IDENTIFIER_NAME, printableFormChannel.getId());
         Long orderIndex = (long) i;
-        Identifier identifier = identifierController.findIdentifierById(channelId);
-        if (identifier == null) {
-          identifier = identifierController.createIdentifier(orderIndex, channelId);
-        } else {
-          identifier = identifierController.updateIdentifier(identifier, orderIndex);
-        }
-        
+        Identifier identifier = identifierController.acquireIdentifier(orderIndex, channelId);
         identifierRelationController.setParentId(identifier, kuntaApiServiceId);
         modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(printableFormChannel));
       }

@@ -169,15 +169,7 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
       identifierParentId = organizationId;
     }
     
-    Identifier identifier = identifierController.findIdentifierById(managementPageId);
-    if (identifier == null) {
-      identifier = identifierController.createIdentifier(orderIndex != null ? orderIndex : Long.MAX_VALUE, managementPageId);
-    } else {
-      if (orderIndex != null) {
-        identifier = identifierController.updateIdentifier(identifier, orderIndex);
-      }
-    }
-    
+    Identifier identifier = identifierController.acquireIdentifier(orderIndex, managementPageId);
     identifierRelationController.setParentId(identifier, identifierParentId);
     
     PageId pageParentId = identifierParentId instanceof PageId ? (PageId) identifierParentId : null;
@@ -228,13 +220,7 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
       fi.metatavu.management.client.model.Attachment managementAttachment = response.getResponse();
       AttachmentId managementAttachmentId = managementTranslator.createManagementAttachmentId(organizationId, managementAttachment.getId(), type);
       
-      Identifier identifier = identifierController.findIdentifierById(managementAttachmentId);
-      if (identifier == null) {
-        identifier = identifierController.createIdentifier(orderIndex, managementAttachmentId);
-      } else {
-        identifier = identifierController.updateIdentifier(identifier, orderIndex);
-      }
-      
+      Identifier identifier = identifierController.acquireIdentifier(orderIndex, managementAttachmentId);
       identifierRelationController.addChild(pageIdentifier, identifier);
       
       AttachmentId kuntaApiAttachmentId = new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());

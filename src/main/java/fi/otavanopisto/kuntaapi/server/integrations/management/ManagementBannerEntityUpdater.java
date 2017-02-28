@@ -129,15 +129,7 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
   private void updateManagementBanner(DefaultApi api, OrganizationId organizationId, Banner managementBanner, Long orderIndex) {
     BannerId managementBannerId = new BannerId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementBanner.getId()));
 
-    Identifier identifier = identifierController.findIdentifierById(managementBannerId);
-    if (identifier == null) {
-      identifier = identifierController.createIdentifier(orderIndex != null ? orderIndex : Long.MAX_VALUE, managementBannerId);
-    } else {
-      if (orderIndex != null) {
-        identifier = identifierController.updateIdentifier(identifier, orderIndex);
-      }
-    }
-    
+    Identifier identifier = identifierController.acquireIdentifier(orderIndex, managementBannerId);
     identifierRelationController.setParentId(identifier, organizationId);
     
     BannerId bannerKuntaApiId = new BannerId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
@@ -174,13 +166,7 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
       AttachmentId managementAttachmentId = managementTranslator.createManagementAttachmentId(organizationId, managementAttachment.getId(), ManagementConsts.ATTACHMENT_TYPE_BANNER);
       Long orderIndex = 0l;
       
-      Identifier identifier = identifierController.findIdentifierById(managementAttachmentId);
-      if (identifier == null) {
-        identifier = identifierController.createIdentifier(orderIndex, managementAttachmentId);
-      } else {
-        identifier = identifierController.updateIdentifier(identifier, orderIndex);
-      }
-
+      Identifier identifier = identifierController.acquireIdentifier(orderIndex, managementAttachmentId);
       identifierRelationController.addChild(bannerIdentifier, identifier);
       
       AttachmentId kuntaApiAttachmentId = new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());

@@ -108,13 +108,7 @@ public class GtfsScheduleEntityUpdater extends EntityUpdater {
     Long orderIndex = task.getOrderIndex();
     PublicTransportScheduleId gtfsScheduleId = gtfsIdFactory.createScheduleId(kuntaApiOrganizationId, gtfsServiceCalendar.getServiceId().getId());
 
-    Identifier identifier = identifierController.findIdentifierById(gtfsScheduleId);
-    if (identifier == null) {
-      identifier = identifierController.createIdentifier(orderIndex, gtfsScheduleId);
-    } else {
-      identifier = identifierController.updateIdentifier(identifier, orderIndex);
-    }
-
+    Identifier identifier = identifierController.acquireIdentifier(orderIndex, gtfsScheduleId);
     identifierRelationController.setParentId(identifier, kuntaApiOrganizationId);
     
     PublicTransportScheduleId kuntaApiScheduleId = gtfsIdFactory.createKuntaApiId(PublicTransportScheduleId.class, identifier);

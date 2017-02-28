@@ -145,13 +145,7 @@ public class CasemFileEntityUpdater extends EntityUpdater {
     }
 
     BaseId parentId = kuntaApiPageId != null ? kuntaApiPageId : organizationId;
-    Identifier identifier = identifierController.findIdentifierById(casemFileId);
-    if (identifier == null) {
-      identifier = identifierController.createIdentifier(orderIndex, casemFileId);
-    } else {
-      identifier = identifierController.updateIdentifier(identifier, orderIndex);
-    }
-
+    Identifier identifier = identifierController.acquireIdentifier(orderIndex, casemFileId);
     identifierRelationController.setParentId(identifier, parentId);
     
     FileId kuntaApiFileId = new FileId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
