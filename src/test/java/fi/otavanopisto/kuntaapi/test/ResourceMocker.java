@@ -48,8 +48,8 @@ public class ResourceMocker<I, R> {
       stubFor(mapping);
     }
     
-    for (List<ResourceMocker<?, ?>> subMockers : subMockers.values()) {
-      for (ResourceMocker<?, ?> subMocker : subMockers) {
+    for (List<ResourceMocker<?, ?>> subMockerList : subMockers.values()) {
+      for (ResourceMocker<?, ?> subMocker : subMockerList) {
         subMocker.start();
       }
     }
@@ -62,8 +62,8 @@ public class ResourceMocker<I, R> {
     
     started = false;
     
-    for (List<ResourceMocker<?, ?>> subMockers : subMockers.values()) {
-      for (ResourceMocker<?, ?> subMocker : subMockers) {
+    for (List<ResourceMocker<?, ?>> subMockerList : subMockers.values()) {
+      for (ResourceMocker<?, ?> subMocker : subMockerList) {
         subMocker.stop();
       }
     }
