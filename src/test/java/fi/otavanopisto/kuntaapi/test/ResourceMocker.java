@@ -18,6 +18,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.github.tomakehurst.wiremock.client.MappingBuilder;
+import com.github.tomakehurst.wiremock.matching.StringValuePattern;
 import com.github.tomakehurst.wiremock.matching.UrlPattern;
 
 @SuppressWarnings ("squid:S1166")
@@ -152,9 +153,21 @@ public class ResourceMocker<I, R> {
       }
     }
   }
-
+  
   public void addStatusList(MockedResourceStatus status, UrlPattern urlPattern) {
-    statusLists.put(status, get(urlPattern));
+    addStatusList(status, urlPattern, null);
+  }  
+
+  public void addStatusList(MockedResourceStatus status, UrlPattern urlPattern, Map<String, StringValuePattern> queryParams) {
+    MappingBuilder mapping = get(urlPattern);
+    
+    if (queryParams != null) {
+      for (Entry<String, StringValuePattern> queryParam : queryParams.entrySet()) {
+        mapping.withQueryParam(queryParam.getKey(), queryParam.getValue());
+      }
+    }
+    
+    statusLists.put(status, mapping);
   }
 
   public void addSubMocker(I id, ResourceMocker<?, ?> subMocker) {

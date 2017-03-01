@@ -1,9 +1,14 @@
 package fi.otavanopisto.kuntaapi.test;
 
+import static com.github.tomakehurst.wiremock.client.WireMock.containing;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlPathEqualTo;
 import static org.junit.Assert.fail;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.github.tomakehurst.wiremock.matching.StringValuePattern;
 
 import fi.metatavu.management.client.model.Page;
 
@@ -16,7 +21,7 @@ public class ManagementPageMocker extends AbstractBaseMocker {
   private ResourceMocker<Integer, Page> pageMocker = new ResourceMocker<>();
 
   public ManagementPageMocker() {
-    mockList();
+    mockLists();
   }
   
   @Override
@@ -68,8 +73,14 @@ public class ManagementPageMocker extends AbstractBaseMocker {
     return this;
   }
   
-  public ManagementPageMocker mockList() {
+  public ManagementPageMocker mockLists() {
+    Map<String, StringValuePattern> queryParams = new HashMap<>();
+    queryParams.put("per_page", containing("50"));
+    queryParams.put("page", containing("1"));
+    
     pageMocker.addStatusList(MockedResourceStatus.OK, urlPathEqualTo(PAGES_PATH));
+    pageMocker.addStatusList(MockedResourceStatus.OK, urlPathEqualTo(PAGES_PATH), queryParams);
+
     return this;
   }
   
