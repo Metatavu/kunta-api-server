@@ -27,6 +27,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   private KuntarekryMocker kuntarekryMocker = new KuntarekryMocker();
   private ManagementMocker managementMocker = new ManagementMocker();
   private CasemMocker casemMocker = new CasemMocker();
+  private ManagementPageMocker managementPageMocker = new ManagementPageMocker();
   
   @Before
   public void beforeEveryTest() {
@@ -35,6 +36,8 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   
   @After
   public void afterEveryTest() {
+    managementPageMocker.endMock();
+    
     deleteSystemSetting(KuntaApiConsts.SYSTEM_SETTING_TESTS_RUNNING);
     clearTasks();
     deleteIdentifiers();
@@ -54,6 +57,10 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   
   public CasemMocker getCasemMocker() {
     return casemMocker;
+  }
+  
+  public ManagementPageMocker getManagementPageMocker() {
+    return managementPageMocker;
   }
   
   protected void flushCache() {
@@ -83,10 +90,6 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
         int listCount = countApiList(path);
         if (listCount == count) {
           return;
-        }
-        
-        if (listCount > count) {
-          fail(String.format("listCount %d > %d when waiting for path %s", listCount, count, path));
         }
         
         if (System.currentTimeMillis() > timeout) {
