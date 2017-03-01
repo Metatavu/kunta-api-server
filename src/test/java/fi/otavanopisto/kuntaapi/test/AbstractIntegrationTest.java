@@ -28,6 +28,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   private ManagementMocker managementMocker = new ManagementMocker();
   private CasemMocker casemMocker = new CasemMocker();
   private ManagementPageMocker managementPageMocker = new ManagementPageMocker();
+  private RestfulPtvServiceMocker restfulPtvServiceMocker = new RestfulPtvServiceMocker();
   
   @Before
   public void beforeEveryTest() {
@@ -37,6 +38,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   @After
   public void afterEveryTest() {
     managementPageMocker.endMock();
+    restfulPtvServiceMocker.endMock();
     
     deleteSystemSetting(KuntaApiConsts.SYSTEM_SETTING_TESTS_RUNNING);
     clearTasks();
@@ -61,6 +63,10 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   
   public ManagementPageMocker getManagementPageMocker() {
     return managementPageMocker;
+  }
+  
+  public RestfulPtvServiceMocker getRestfulPtvServiceMocker() {
+    return restfulPtvServiceMocker;
   }
   
   protected void flushCache() {

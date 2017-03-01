@@ -4,7 +4,9 @@ import static com.jayway.restassured.RestAssured.given;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.hamcrest.core.IsNull.nullValue;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 import org.junit.After;
 import org.junit.Before;
@@ -34,9 +36,12 @@ public class ServicesTestsIT extends AbstractIntegrationTest {
     createSettings();
     getPtvMocker()
       .mockStatutoryDescriptions("2ddfcd49-b0a8-4221-8d8f-4c4d3c5c0ab8")
-      .mockServices("6c9926b9-4aa0-4635-b66a-471af07dfec3", "822d5347-8398-4866-bb9d-9cdc60b38fba", "ef66b7c2-e938-4a30-ad57-475fc40abf27")
       .startMock();
     
+    getRestfulPtvServiceMocker()
+      .mockServices("6c9926b9-4aa0-4635-b66a-471af07dfec3", "822d5347-8398-4866-bb9d-9cdc60b38fba", "ef66b7c2-e938-4a30-ad57-475fc40abf27")
+      .startMock();
+     
     waitApiListCount("/services", 3);
   }
 
@@ -175,5 +180,22 @@ public class ServicesTestsIT extends AbstractIntegrationTest {
   public void testListServicesLimits() {
     assertListLimits("/services", 3);
   }
+  
+  @Test
+  public void testServiceUnarchive() throws InterruptedException {
+    String serviceId = getServiceId(2);
+    assertNotNull(serviceId);
+    
+    getRestfulPtvServiceMocker().unmockServices("ef66b7c2-e938-4a30-ad57-475fc40abf27");
+    
+    waitApiListCount("/services", 2);
+    assertNull(getServiceId(2));
+    
+    getRestfulPtvServiceMocker().mockServices("ef66b7c2-e938-4a30-ad57-475fc40abf27");
+    waitApiListCount("/services", 3);
+    
+    assertEquals(serviceId, getServiceId(2));
+  }
+  
   
 }
