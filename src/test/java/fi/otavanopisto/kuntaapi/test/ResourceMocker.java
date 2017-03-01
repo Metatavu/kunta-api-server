@@ -20,6 +20,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.github.tomakehurst.wiremock.client.MappingBuilder;
 import com.github.tomakehurst.wiremock.matching.UrlPattern;
 
+@SuppressWarnings ("squid:S1166")
 public class ResourceMocker<I, R> {
 
   private static final String APPLICATION_JSON = "application/json";
@@ -46,8 +47,8 @@ public class ResourceMocker<I, R> {
       stubFor(mapping);
     }
     
-    for (I id : subMockers.keySet()) {
-      for (ResourceMocker<?, ?> subMocker : subMockers.get(id)) {
+    for (List<ResourceMocker<?, ?>> subMockers : subMockers.values()) {
+      for (ResourceMocker<?, ?> subMocker : subMockers) {
         subMocker.start();
       }
     }
@@ -56,8 +57,8 @@ public class ResourceMocker<I, R> {
   public void stop() {
     started = false;
     
-    for (I id : subMockers.keySet()) {
-      for (ResourceMocker<?, ?> subMocker : subMockers.get(id)) {
+    for (List<ResourceMocker<?, ?>> subMockers : subMockers.values()) {
+      for (ResourceMocker<?, ?> subMocker : subMockers) {
         subMocker.stop();
       }
     }
@@ -124,10 +125,8 @@ public class ResourceMocker<I, R> {
       return;
     }
     
-    if (started) {
-      if (resource.getCurrentMapping() != null) {
-        removeStub(resource.getCurrentMapping());
-      }
+    if (started && resource.getCurrentMapping() != null) {
+      removeStub(resource.getCurrentMapping());
     }
         
     resource.setStatus(status);
@@ -135,14 +134,17 @@ public class ResourceMocker<I, R> {
     if (started) {
       stubFor(resource.getCurrentMapping());
       updateStatusLists();
-      
-      if (subMockers.containsKey(id)) {
-        for (ResourceMocker<?, ?> subMocker : subMockers.get(id)) {
-          if (status == MockedResourceStatus.OK) {
-            subMocker.start();
-          } else {
-            subMocker.stop();
-          }
+      updateSubMockerStatuses(id, status);
+    }
+  }
+
+  private void updateSubMockerStatuses(I id, MockedResourceStatus status) {
+    if (subMockers.containsKey(id)) {
+      for (ResourceMocker<?, ?> subMocker : subMockers.get(id)) {
+        if (status == MockedResourceStatus.OK) {
+          subMocker.start();
+        } else {
+          subMocker.stop();
         }
       }
     }
@@ -159,7 +161,8 @@ public class ResourceMocker<I, R> {
     
     subMockers.get(id).add(subMocker);
   }
-
+  
+  @SuppressWarnings ("squid:S1452")
   public ResourceMocker<?, ?> getSubMocker(I id, int index) {
     return subMockers.get(id).get(index);
   }

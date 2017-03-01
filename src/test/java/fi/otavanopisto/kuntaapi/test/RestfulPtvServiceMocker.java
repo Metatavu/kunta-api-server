@@ -12,6 +12,7 @@ import fi.otavanopisto.restfulptv.client.model.Service;
 import fi.otavanopisto.restfulptv.client.model.ServiceLocationChannel;
 import fi.otavanopisto.restfulptv.client.model.WebPageChannel;
 
+@SuppressWarnings ("squid:S1166")
 public class RestfulPtvServiceMocker extends AbstractBaseMocker {
 
   private static final String SERVICES_PATH = String.format("%s/services", AbstractIntegrationTest.BASE_URL);
@@ -20,6 +21,7 @@ public class RestfulPtvServiceMocker extends AbstractBaseMocker {
   private static final String PRINTABLE_FORM_CHANNELS_PATH = String.format("%s/%%s/printableFormChannels", SERVICES_PATH);
   private static final String LOCATION_CHANNELS_PATH = String.format("%s/%%s/serviceLocationChannels", SERVICES_PATH);
   private static final String WEBPAGE_CHANNELS_PATH = String.format("%s/%%s/webPageChannels", SERVICES_PATH);
+  private static final String CHANNEL_TEMPLATE = "%s/%s";
   
   private ResourceMocker<String, Service> serviceMocker = new ResourceMocker<>();
 
@@ -92,7 +94,7 @@ public class RestfulPtvServiceMocker extends AbstractBaseMocker {
       @SuppressWarnings("unchecked")
       ResourceMocker<String, ElectronicChannel> channelMocker = (ResourceMocker<String, ElectronicChannel>) serviceMocker.getSubMocker(serviceId, 0);
       if (!channelMocker.isMocked(id)) {
-        channelMocker.add(id, readElectronicChannelFromJSONFile(String.format("electronicservicechannels/%s.json", id)), urlPathEqualTo(String.format("%s/%s", String.format(ELECTRONIC_CHANNELS_PATH, serviceId), id)));
+        channelMocker.add(id, readElectronicChannelFromJSONFile(String.format("electronicservicechannels/%s.json", id)), urlPathEqualTo(String.format(CHANNEL_TEMPLATE, String.format(ELECTRONIC_CHANNELS_PATH, serviceId), id)));
       } else {
         channelMocker.setStatus(id, MockedResourceStatus.OK);
       }
@@ -112,7 +114,7 @@ public class RestfulPtvServiceMocker extends AbstractBaseMocker {
       @SuppressWarnings("unchecked")
       ResourceMocker<String, PhoneChannel> channelMocker = (ResourceMocker<String, PhoneChannel>) serviceMocker.getSubMocker(serviceId, 1);
       if (!channelMocker.isMocked(id)) {
-        channelMocker.add(id, readPhoneChannelFromJSONFile(String.format("phonechannels/%s.json", id)), urlPathEqualTo(String.format("%s/%s", String.format(PHONE_CHANNELS_PATH, serviceId), id)));
+        channelMocker.add(id, readPhoneChannelFromJSONFile(String.format("phonechannels/%s.json", id)), urlPathEqualTo(String.format(CHANNEL_TEMPLATE, String.format(PHONE_CHANNELS_PATH, serviceId), id)));
       } else {
         channelMocker.setStatus(id, MockedResourceStatus.OK);
       }
@@ -132,7 +134,7 @@ public class RestfulPtvServiceMocker extends AbstractBaseMocker {
       @SuppressWarnings("unchecked")
       ResourceMocker<String, PrintableFormChannel> channelMocker = (ResourceMocker<String, PrintableFormChannel>) serviceMocker.getSubMocker(serviceId, 2);
       if (!channelMocker.isMocked(id)) {
-        channelMocker.add(id, readPrintableFormChannelFromJSONFile(String.format("printableformchannels/%s.json", id)), urlPathEqualTo(String.format("%s/%s", String.format(PRINTABLE_FORM_CHANNELS_PATH, serviceId), id)));
+        channelMocker.add(id, readPrintableFormChannelFromJSONFile(String.format("printableformchannels/%s.json", id)), urlPathEqualTo(String.format(CHANNEL_TEMPLATE, String.format(PRINTABLE_FORM_CHANNELS_PATH, serviceId), id)));
       } else {
         channelMocker.setStatus(id, MockedResourceStatus.OK);
       }
@@ -152,7 +154,7 @@ public class RestfulPtvServiceMocker extends AbstractBaseMocker {
       @SuppressWarnings("unchecked")
       ResourceMocker<String, ServiceLocationChannel> channelMocker = (ResourceMocker<String, ServiceLocationChannel>) serviceMocker.getSubMocker(serviceId, 3);
       if (!channelMocker.isMocked(id)) {
-        channelMocker.add(id, readServiceLocationChannelFromJSONFile(String.format("servicelocationchannels/%s.json", id)), urlPathEqualTo(String.format("%s/%s", String.format(LOCATION_CHANNELS_PATH, serviceId), id)));
+        channelMocker.add(id, readServiceLocationChannelFromJSONFile(String.format("servicelocationchannels/%s.json", id)), urlPathEqualTo(String.format(CHANNEL_TEMPLATE, String.format(LOCATION_CHANNELS_PATH, serviceId), id)));
       } else {
         channelMocker.setStatus(id, MockedResourceStatus.OK);
       }
@@ -172,7 +174,7 @@ public class RestfulPtvServiceMocker extends AbstractBaseMocker {
       @SuppressWarnings("unchecked")
       ResourceMocker<String, WebPageChannel> channelMocker = (ResourceMocker<String, WebPageChannel>) serviceMocker.getSubMocker(serviceId, 4);
       if (!channelMocker.isMocked(id)) {
-        channelMocker.add(id, readWebPageChannelFromJSONFile(String.format("webpagechannels/%s.json", id)), urlPathEqualTo(String.format("%s/%s", String.format(WEBPAGE_CHANNELS_PATH, serviceId), id)));
+        channelMocker.add(id, readWebPageChannelFromJSONFile(String.format("webpagechannels/%s.json", id)), urlPathEqualTo(String.format(CHANNEL_TEMPLATE, String.format(WEBPAGE_CHANNELS_PATH, serviceId), id)));
       } else {
         channelMocker.setStatus(id, MockedResourceStatus.OK);
       }
@@ -197,7 +199,7 @@ public class RestfulPtvServiceMocker extends AbstractBaseMocker {
   
   private void mockService(Service resource) throws JsonProcessingException {
     String id = resource.getId();
-    String path = String.format("%s/%s", SERVICES_PATH, id);
+    String path = String.format(CHANNEL_TEMPLATE, SERVICES_PATH, id);
     serviceMocker.add(id, resource, urlPathEqualTo(path));
   }
   

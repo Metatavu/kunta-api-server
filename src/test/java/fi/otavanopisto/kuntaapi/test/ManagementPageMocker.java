@@ -7,6 +7,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 
 import fi.metatavu.management.client.model.Page;
 
+@SuppressWarnings ("squid:S1166")
 public class ManagementPageMocker extends AbstractBaseMocker {
 
   private static final String PATH_TEMPLATE = "%s/%s";
