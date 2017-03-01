@@ -55,6 +55,10 @@ public class ResourceMocker<I, R> {
   }
   
   public void stop() {
+    if (!started) {
+      return;
+    }
+    
     started = false;
     
     for (List<ResourceMocker<?, ?>> subMockers : subMockers.values()) {
@@ -62,13 +66,12 @@ public class ResourceMocker<I, R> {
         subMocker.stop();
       }
     }
-    
+
     for (MockedResource<R> resource : resources.values()) {
       for (MappingBuilder mapping : resource.getMappings()) {
         removeStub(mapping);
       }
     }
-    
     for (MappingBuilder list : statusLists.values()) {
       removeStub(list);
     }
