@@ -14,7 +14,6 @@ import fi.metatavu.management.client.model.Banner;
 import fi.metatavu.management.client.model.Fragment;
 import fi.metatavu.management.client.model.Menu;
 import fi.metatavu.management.client.model.Menuitem;
-import fi.metatavu.management.client.model.Page;
 import fi.metatavu.management.client.model.Pagemappings;
 import fi.metatavu.management.client.model.Post;
 import fi.metatavu.management.client.model.Tile;
@@ -25,7 +24,6 @@ public class ManagementMocker extends AbstractMocker {
   private static final String BANNERS_PATH = "/wp-json/wp/v2/banner";
   private static final String MENUS_PATH = "/wp-json/kunta-api/menus";
   private static final String MENU_ITEMS_PATH = "/wp-json/kunta-api/menus/%s/items";
-  private static final String PAGES_PATH = "/wp-json/wp/v2/pages";
   private static final String POSTS_PATH = "/wp-json/wp/v2/posts";
   private static final String TILES_PATH = "/wp-json/wp/v2/tile";
   private static final String FRAGMENTS_PATH = "/wp-json/wp/v2/fragment";
@@ -38,7 +36,6 @@ public class ManagementMocker extends AbstractMocker {
   private List<Banner> bannerList = new ArrayList<>();
   private List<Menu> menuList = new ArrayList<>();
   private Map<String, List<Menuitem>> menuItems = new HashMap<>();
-  private List<Page> pageList = new ArrayList<>();
   private List<Post> postList = new ArrayList<>();
   private List<Tile> tileList = new ArrayList<>();
   private List<Announcement> announcementList = new ArrayList<>();
@@ -89,16 +86,6 @@ public class ManagementMocker extends AbstractMocker {
       }
       
       menuItems.get(menuId).add(menuItem);
-    }     
-    
-    return this;
-  }
-  
-  public ManagementMocker mockPages(String... ids) {
-    for (String id : ids) {
-      Page page = readPageFromJSONFile(String.format("management/pages/%s.json", id));
-      mockGetJSON(String.format(PATH_TEMPLATE, PAGES_PATH, id), page, null);
-      pageList.add(page);
     }     
     
     return this;
@@ -186,16 +173,6 @@ public class ManagementMocker extends AbstractMocker {
   }
   
   /**
-   * Reads JSON file as page object
-   * 
-   * @param file path to JSON file
-   * @return read object
-   */    
-  private Page readPageFromJSONFile(String file) {
-    return readJSONFile(file, Page.class);
-  }
-  
-  /**
    * Reads JSON file as post object
    * 
    * @param file path to JSON file
@@ -246,7 +223,6 @@ public class ManagementMocker extends AbstractMocker {
     mockGetJSON(MEDIAS_PATH, mediaList, pageQuery100);
     mockGetJSON(BANNERS_PATH, bannerList, pageQuery100);
     mockGetJSON(MENUS_PATH, menuList, pageQuery100);
-    mockGetJSON(PAGES_PATH, pageList, pageQuery100);
     mockGetJSON(POSTS_PATH, postList, pageQuery100);
     mockGetJSON(TILES_PATH, tileList, pageQuery100);
     mockGetJSON(ANNOUNCEMENTS_PATH, announcementList, pageQuery100);
@@ -255,7 +231,6 @@ public class ManagementMocker extends AbstractMocker {
     mockGetJSON(MEDIAS_PATH, mediaList, null);
     mockGetJSON(BANNERS_PATH, bannerList, null);
     mockGetJSON(MENUS_PATH, menuList, null);
-    mockGetJSON(PAGES_PATH, pageList, null);
     mockGetJSON(POSTS_PATH, postList, null);
     mockGetJSON(TILES_PATH, tileList, null);
     mockGetJSON(ANNOUNCEMENTS_PATH, announcementList, null);

@@ -5,6 +5,8 @@ import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertNotNull;
 
 import org.junit.After;
 import org.junit.Before;
@@ -40,7 +42,10 @@ public class PageTestsIT extends AbstractIntegrationTest {
     
     getManagementMocker()
       .mockMedia("3001", "3002")
-      .mockPages("456", "567", "678")
+      .startMock();
+    
+    getManagementPageMocker()
+      .mockPages(456, 567, 678)
       .startMock();
 
     waitApiListCount("/organizations", 1);
@@ -96,7 +101,7 @@ public class PageTestsIT extends AbstractIntegrationTest {
       .body("slug[0]", is("zeus"))
       .body("slug[1]", is("abraham"))
       .body("slug[2]", is("bertha"));
-  } 
+  }
   
   @Test
   public void testListPagesByPath() {
@@ -272,6 +277,24 @@ public class PageTestsIT extends AbstractIntegrationTest {
       .statusCode(200)
       .header("Content-Length", "13701")
       .header("Content-Type", IMAGE_PNG);
+  }
+  
+  @Test
+  public void testPageUnarchive() throws InterruptedException {
+    String organizationId = getOrganizationId(0);
+    
+    String pageId = getPageId(organizationId, 2);
+    assertNotNull(pageId);
+    
+    getManagementPageMocker().unmockPages(678);
+    waitApiListCount(String.format("/organizations/%s/pages", organizationId), 2);
+    
+    assertNull(getPageId(organizationId, 2));
+    
+    getManagementPageMocker().mockPages(678);
+    waitApiListCount(String.format("/organizations/%s/pages", organizationId), 3);
+    
+    assertEquals(pageId, getPageId(organizationId, 2));
   }
   
   private void createPtvSettings() {

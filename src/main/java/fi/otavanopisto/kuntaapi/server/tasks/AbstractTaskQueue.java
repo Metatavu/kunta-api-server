@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.annotation.Resource;
 import javax.inject.Inject;
 
@@ -38,7 +40,18 @@ public abstract class AbstractTaskQueue <T extends AbstractTask> {
   
   private long tasksExecuted;
   private long duplicatedTasks;
+  private boolean running;
   
+  @PostConstruct
+  public void postConstruct() {
+    running = true;
+  }
+
+  @PreDestroy
+  public void preDestroy() {
+    running = false;
+  }
+
   /**
    * Returns unique name for task queue
    * 
@@ -61,6 +74,10 @@ public abstract class AbstractTaskQueue <T extends AbstractTask> {
    * @return next task or null if queue is empty
    */
   public T next() {
+    if (!running) {
+      return null;
+    }
+    
     if (systemSettingController.isNotTestingOrTestRunning()) {
       startBatch();
       try {
@@ -90,6 +107,10 @@ public abstract class AbstractTaskQueue <T extends AbstractTask> {
    * @param task taks
    */
   public void enqueueTask(boolean priority, T task) {
+    if (!running) {
+      return;
+    }
+    
     startBatch();
     try {
       byte[] rawData = serialize(task);

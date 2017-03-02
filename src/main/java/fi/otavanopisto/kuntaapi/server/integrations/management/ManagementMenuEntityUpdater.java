@@ -157,13 +157,7 @@ public class ManagementMenuEntityUpdater extends EntityUpdater {
   private Identifier updateManagementMenu(OrganizationId organizationId, fi.metatavu.management.client.model.Menu managementMenu, Long orderIndex) {
     MenuId managementMenuId = new MenuId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementMenu.getId()));
 
-    Identifier identifier = identifierController.findIdentifierById(managementMenuId);
-    if (identifier == null) {
-      identifier = identifierController.createIdentifier(orderIndex, managementMenuId);
-    } else {
-      identifier = identifierController.updateIdentifier(identifier, orderIndex);
-    }
-    
+    Identifier identifier = identifierController.acquireIdentifier(orderIndex, managementMenuId);
     identifierRelationController.setParentId(identifier, organizationId);
     
     MenuId kuntaApiMenuId = new MenuId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
@@ -177,13 +171,7 @@ public class ManagementMenuEntityUpdater extends EntityUpdater {
   private MenuItemId updateManagementMenuItem(OrganizationId organizationId, Identifier menuIdentifier, Menuitem managementMenuItem, Long orderIndex) {
     MenuItemId managementMenuItemId = new MenuItemId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementMenuItem.getId()));
 
-    Identifier identifier = identifierController.findIdentifierById(managementMenuItemId);
-    if (identifier == null) {
-      identifier = identifierController.createIdentifier(orderIndex, managementMenuItemId);
-    } else {
-      identifier = identifierController.updateIdentifier(identifier, orderIndex);
-    }
-    
+    Identifier identifier = identifierController.acquireIdentifier(orderIndex, managementMenuItemId);
     identifierRelationController.setParentIdentifier(identifier, menuIdentifier);
 
     MenuItemId kuntaApiMenuItemId = new MenuItemId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());

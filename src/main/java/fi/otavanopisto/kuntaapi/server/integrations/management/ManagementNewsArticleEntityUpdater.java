@@ -130,15 +130,7 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
   private void updateManagementPost(OrganizationId organizationId, DefaultApi api, Post managementPost, Long orderIndex) {
     NewsArticleId newsArticleId = new NewsArticleId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementPost.getId()));
 
-    Identifier identifier = identifierController.findIdentifierById(newsArticleId);
-    if (identifier == null) {
-      identifier = identifierController.createIdentifier(orderIndex != null ? orderIndex : Long.MAX_VALUE, newsArticleId);
-    } else {
-      if (orderIndex != null) {
-        identifier = identifierController.updateIdentifier(identifier, orderIndex);
-      }
-    }
-    
+    Identifier identifier = identifierController.acquireIdentifier(orderIndex, newsArticleId);
     identifierRelationController.setParentId(identifier, organizationId);
     
     NewsArticleId newsArticleKuntaApiId = new NewsArticleId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
@@ -174,13 +166,7 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
       AttachmentId managementAttachmentId = managementTranslator.createManagementAttachmentId(organizationId, managementAttachment.getId(), ManagementConsts.ATTACHMENT_TYPE_NEWS);
       Long orderIndex = 0l;
       
-      Identifier identifier = identifierController.findIdentifierById(managementAttachmentId);
-      if (identifier == null) {
-        identifier = identifierController.createIdentifier(orderIndex, managementAttachmentId);
-      } else {
-        identifier = identifierController.updateIdentifier(identifier, orderIndex);
-      }
-      
+      Identifier identifier = identifierController.acquireIdentifier(orderIndex, managementAttachmentId);
       identifierRelationController.addChild(newsArticleIdentifier, identifier);
 
       AttachmentId kuntaApiAttachmentId = new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());

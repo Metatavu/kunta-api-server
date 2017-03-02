@@ -97,9 +97,11 @@ public interface PublicTransportProvider {
    * Lists stopTime in an organization
    * 
    * @param organizationId organization id
+   * @param stopId return only stop times related to stopId (optional)
+   * @param departureTime Filter stop times that depart in or after specified time. Value is defined in seconds since midnight (optional)
    * @return organization stopTimes
    */
-  public List<StopTime> listStopTimes(OrganizationId organizationId);
+  public List<StopTime> listStopTimes(OrganizationId organizationId, PublicTransportStopId stopId, Integer departureTime);
   
   /**
    * Finds single stopTime in an organization by id

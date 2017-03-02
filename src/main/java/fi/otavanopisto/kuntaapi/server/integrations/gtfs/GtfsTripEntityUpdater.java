@@ -126,13 +126,7 @@ public class GtfsTripEntityUpdater extends EntityUpdater {
     
     PublicTransportTripId gtfsTripId = gtfsIdFactory.createTripId(kuntaApiOrganizationId, gtfsTrip.getId().getId());
 
-    Identifier identifier = identifierController.findIdentifierById(gtfsTripId);
-    if (identifier == null) {
-      identifier = identifierController.createIdentifier(orderIndex, gtfsTripId);
-    } else {
-      identifier = identifierController.updateIdentifier(identifier, orderIndex);
-    }
-
+    Identifier identifier = identifierController.acquireIdentifier(orderIndex, gtfsTripId);
     identifierRelationController.setParentId(identifier, kuntaApiOrganizationId);
     
     PublicTransportTripId kuntaApiTripId = gtfsIdFactory.createKuntaApiId(PublicTransportTripId.class, identifier);

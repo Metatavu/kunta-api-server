@@ -117,13 +117,7 @@ public class GtfsRouteEntityUpdater extends EntityUpdater {
     
     PublicTransportRouteId gtfsRouteId = gtfsIdFactory.createRouteId(kuntaApiOrganizationId, gtfsRoute.getId().getId());
 
-    Identifier identifier = identifierController.findIdentifierById(gtfsRouteId);
-    if (identifier == null) {
-      identifier = identifierController.createIdentifier(orderIndex, gtfsRouteId);
-    } else {
-      identifier = identifierController.updateIdentifier(identifier, orderIndex);
-    }
-
+    Identifier identifier = identifierController.acquireIdentifier(orderIndex, gtfsRouteId);
     identifierRelationController.setParentId(identifier, kuntaApiOrganizationId);
     
     PublicTransportRouteId kuntaApiRouteId = gtfsIdFactory.createKuntaApiId(PublicTransportRouteId.class, identifier);

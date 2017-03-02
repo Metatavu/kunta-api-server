@@ -116,13 +116,7 @@ public class ManagementFragmentEntityUpdater extends EntityUpdater {
   private void updateManagementFragment(OrganizationId organizationId, Fragment managementFragment, Long orderIndex) {
     FragmentId fragmentId = new FragmentId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementFragment.getId()));
 
-    Identifier identifier = identifierController.findIdentifierById(fragmentId);
-    if (identifier == null) {
-      identifier = identifierController.createIdentifier(orderIndex, fragmentId);
-    } else {
-      identifier = identifierController.updateIdentifier(identifier, orderIndex);
-    }
-
+    Identifier identifier = identifierController.acquireIdentifier(orderIndex, fragmentId);
     identifierRelationController.setParentId(identifier, organizationId);
     
     FragmentId kuntaApiFragmentId = new FragmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());

@@ -16,7 +16,7 @@ import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier_;
 /**
  * DAO class for Identififer entity
  * 
- * @author Otavan Opisto
+ * @author Antti Leppä
  */
 @ApplicationScoped
 public class IdentifierDAO extends AbstractDAO<Identifier> {
@@ -29,9 +29,10 @@ public class IdentifierDAO extends AbstractDAO<Identifier> {
    * @param source source
    * @param sourceId id in source system
    * @param organizationKuntaApiId 
+   * @param modified last modification time of identifier
    * @return created identifier
    */
-  public Identifier create(Long orderIndex, String type, String kuntaApiId, String source, String sourceId, String organizationKuntaApiId) {
+  public Identifier create(Long orderIndex, String type, String kuntaApiId, String source, String sourceId, String organizationKuntaApiId, OffsetDateTime modified) {
     Identifier identifier = new Identifier();
     
     identifier.setOrderIndex(orderIndex);
@@ -40,6 +41,7 @@ public class IdentifierDAO extends AbstractDAO<Identifier> {
     identifier.setSource(source);
     identifier.setSourceId(sourceId);
     identifier.setOrganizationKuntaApiId(organizationKuntaApiId);
+    identifier.setModified(modified);
     
     return persist(identifier);
   }

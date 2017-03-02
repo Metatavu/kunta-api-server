@@ -34,9 +34,9 @@ import com.github.tomakehurst.wiremock.client.WireMock;
  */
 public class AbstractMocker {
 
-  private static final String CONTENT_SIZE = "Content-Size";
-
-  private static final String CONTENT_TYPE = "Content-Type";
+  protected static final String APPLICATION_JSON = "application/json";
+  protected static final String CONTENT_SIZE = "Content-Size";
+  protected static final String CONTENT_TYPE = "Content-Type";
 
   private static final String FAILED_TO_READ_MOCK_FILE = "Failed to read mock file";
 
@@ -107,9 +107,7 @@ public class AbstractMocker {
    */
   public void mockGetJSON(String path, Object object, Map<String, String> queryParams) {
     try {
-      ObjectMapper objectMapper = new ObjectMapper();
-      objectMapper.registerModule(new JavaTimeModule());
-      stringMocks.add(new StringGetMock(path, "application/json", objectMapper.writeValueAsString(object), queryParams));
+      stringMocks.add(new StringGetMock(path, APPLICATION_JSON, toJSON(object), queryParams));
     } catch (JsonProcessingException e) {
       logger.log(Level.SEVERE, "Failed to serialize mock JSON object", e);
       fail(e.getMessage());
@@ -131,6 +129,12 @@ public class AbstractMocker {
       logger.log(Level.SEVERE, "Failed to serialize mock JSON object", e);
       fail(e.getMessage());
     }
+  }
+  
+  protected String toJSON(Object object) throws JsonProcessingException {
+    ObjectMapper objectMapper = new ObjectMapper();
+    objectMapper.registerModule(new JavaTimeModule());
+    return objectMapper.writeValueAsString(object);
   }
   
   protected String readFile(String file) {

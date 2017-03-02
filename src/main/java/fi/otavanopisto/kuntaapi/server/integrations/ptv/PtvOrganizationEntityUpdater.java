@@ -99,12 +99,7 @@ public class PtvOrganizationEntityUpdater extends EntityUpdater {
   private void updateOrganization(OrganizationId organizationId, Long orderIndex) {
     ApiResponse<Organization> response = ptvApi.getOrganizationApi().findOrganization(organizationId.getId());
     if (response.isOk()) {
-      Identifier identifier = identifierController.findIdentifierById(organizationId);
-      if (identifier == null) {
-        identifier = identifierController.createIdentifier(orderIndex, organizationId);
-      } else {
-        identifier = identifierController.updateIdentifier(identifier, orderIndex);
-      }
+      Identifier identifier = identifierController.acquireIdentifier(orderIndex, organizationId);
       
       Organization organization = response.getResponse();
       modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(organization));

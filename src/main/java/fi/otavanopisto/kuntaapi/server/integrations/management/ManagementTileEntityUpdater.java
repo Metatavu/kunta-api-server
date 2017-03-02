@@ -129,15 +129,7 @@ public class ManagementTileEntityUpdater extends EntityUpdater {
   private void updateManagementTile(DefaultApi api, OrganizationId organizationId, Tile managementTile, Long orderIndex) {
     TileId tileId = new TileId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementTile.getId()));
 
-    Identifier identifier = identifierController.findIdentifierById(tileId);
-    if (identifier == null) {
-      identifier = identifierController.createIdentifier(orderIndex != null ? orderIndex : Long.MAX_VALUE, tileId);
-    } else {
-      if (orderIndex != null) {
-        identifier = identifierController.updateIdentifier(identifier, orderIndex);
-      }
-    }
-    
+    Identifier identifier = identifierController.acquireIdentifier(orderIndex, tileId);
     identifierRelationController.setParentId(identifier, organizationId);
     
     TileId tileKuntaApiId = new TileId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
@@ -174,13 +166,7 @@ public class ManagementTileEntityUpdater extends EntityUpdater {
       AttachmentId managementAttachmentId = managementTranslator.createManagementAttachmentId(organizationId, managementAttachment.getId(), ManagementConsts.ATTACHMENT_TYPE_TILE);
       Long orderIndex = 0l;
       
-      Identifier identifier = identifierController.findIdentifierById(managementAttachmentId);
-      if (identifier == null) {
-        identifier = identifierController.createIdentifier(orderIndex, managementAttachmentId);
-      } else {
-        identifier = identifierController.updateIdentifier(identifier, orderIndex);
-      }
-      
+      Identifier identifier = identifierController.acquireIdentifier(orderIndex, managementAttachmentId);
       identifierRelationController.addChild(tileIdentifier, identifier);
 
       AttachmentId kuntaApiAttachmentId = new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
