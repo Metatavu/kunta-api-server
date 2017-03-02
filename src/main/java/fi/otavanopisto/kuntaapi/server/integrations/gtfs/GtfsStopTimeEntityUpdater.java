@@ -125,13 +125,7 @@ public class GtfsStopTimeEntityUpdater extends EntityUpdater {
     
     PublicTransportStopTimeId gtfsStopTimeId = gtfsIdFactory.createStopTimeId(kuntaApiOrganizationId, String.valueOf(gtfsStopTime.getId()));
 
-    Identifier identifier = identifierController.findIdentifierById(gtfsStopTimeId);
-    if (identifier == null) {
-      identifier = identifierController.createIdentifier(orderIndex, gtfsStopTimeId);
-    } else {
-      identifier = identifierController.updateIdentifier(identifier, orderIndex);
-    }
-
+    Identifier identifier = identifierController.acquireIdentifier(orderIndex, gtfsStopTimeId);
     identifierRelationController.setParentId(identifier, kuntaApiOrganizationId);
     
     PublicTransportStopTimeId kuntaApiStopTimeId = gtfsIdFactory.createKuntaApiId(PublicTransportStopTimeId.class, identifier);

@@ -315,13 +315,7 @@ public class CaseMCacheUpdater {
     
     MeetingItemLink itemLink = createMeetingItemLink(itemExtendedProperties);
     
-    Identifier identifier = identifierController.findIdentifierById(casemItemPageId);
-    if (identifier == null) {
-      identifier = identifierController.createIdentifier(orderIndex, casemItemPageId);
-    } else {
-      identifier = identifierController.updateIdentifier(identifier, orderIndex);
-    }
-
+    Identifier identifier = identifierController.acquireIdentifier(orderIndex, casemItemPageId);
     identifierRelationController.setParentId(identifier, parentId);
     
     PageId kuntaApiPageId = new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
@@ -886,13 +880,7 @@ public class CaseMCacheUpdater {
       identifierParentId = kuntaApiParentPageId != null ? kuntaApiParentPageId : organizationId;
     }
     
-    Identifier identifier = identifierController.findIdentifierById(casemPageId);
-    if (identifier == null) {
-      identifier = identifierController.createIdentifier(orderIndex, casemPageId);
-    } else {
-      identifier = identifierController.updateIdentifier(identifier, orderIndex);
-    }
-
+    Identifier identifier = identifierController.acquireIdentifier(orderIndex, casemPageId);
     identifierRelationController.setParentId(identifier, identifierParentId);
 
     PageId kuntaApiPageId = new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());

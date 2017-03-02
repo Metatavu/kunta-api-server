@@ -31,6 +31,9 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
     getPtvMocker()
       .mockOrganizations("0de268cf-1ea1-4719-8a6e-1150933b6b9e")
       .mockStatutoryDescriptions("2ddfcd49-b0a8-4221-8d8f-4c4d3c5c0ab8")
+      .startMock();
+    
+    getRestfulPtvServiceMocker()
       .mockServices("6c9926b9-4aa0-4635-b66a-471af07dfec3", "822d5347-8398-4866-bb9d-9cdc60b38fba")
       .mockElectronicServiceChannels("6c9926b9-4aa0-4635-b66a-471af07dfec3", "22472ece-95a0-4fef-a429-b4da689677b2", "44187ff9-71ed-40df-89f6-916be4f3baa6", "799e0e4f-4da7-4e7d-9e0e-f1370b80fc9a")
       .mockPhoneServiceChannels("6c9926b9-4aa0-4635-b66a-471af07dfec3", "108f0c61-bfba-4dd7-8f02-deb4e77c52d0", "626cdd7a-e205-42da-8ce5-82b3b7add258", "e9e86a9e-6593-469d-bc01-f1a59c28168d")
@@ -38,6 +41,7 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
       .mockServiceLocationServiceChannels("6c9926b9-4aa0-4635-b66a-471af07dfec3", "9a9f5def-92e4-4b79-a49a-ccf20a0f75b6", "c0681f51-d1b4-4a9b-bbbf-ddf9a5273cd1", "cf927001-8b45-4f08-b93b-c78fe8477928")
       .mockWebPageServiceChannels("6c9926b9-4aa0-4635-b66a-471af07dfec3", "4b08ae17-75ae-4746-9382-1316c4ec02c5", "aedae320-a2b2-4fe6-b23b-2e1a025ba415", "e9ec256b-5ca2-4663-9da6-d8a2faff21a8")
       .startMock();
+    
     
     waitApiListCount("/organizations", 1);
     waitApiListCount("/services", 2);

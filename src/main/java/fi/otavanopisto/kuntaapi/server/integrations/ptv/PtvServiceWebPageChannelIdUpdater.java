@@ -108,13 +108,7 @@ public class PtvServiceWebPageChannelIdUpdater extends EntityUpdater {
         WebPageChannel webPageChannel = webPageChannels.get(i);
         WebPageChannelId channelId = new WebPageChannelId(PtvConsts.IDENTIFIER_NAME, webPageChannel.getId());
         Long orderIndex = (long) i;
-        Identifier identifier = identifierController.findIdentifierById(channelId);
-        if (identifier == null) {
-          identifier = identifierController.createIdentifier(orderIndex, channelId);
-        } else {
-          identifier = identifierController.updateIdentifier(identifier, orderIndex);
-        }
-        
+        Identifier identifier = identifierController.acquireIdentifier(orderIndex, channelId);
         identifierRelationController.setParentId(identifier, kuntaApiServiceId);
         modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(webPageChannel));
       }

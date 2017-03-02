@@ -145,13 +145,7 @@ public class MikkeliNytEntityUpdater extends EntityUpdater {
   private EventId updateEvent(OrganizationId organizationId, Event mikkeliNytEvent, Long orderIndex) {
     EventId mikkeliNytEventId = new EventId(organizationId, MikkeliNytConsts.IDENTIFIER_NAME, mikkeliNytEvent.getId());
     
-    Identifier identifier = identifierController.findIdentifierById(mikkeliNytEventId);
-    if (identifier == null) {
-      identifier = identifierController.createIdentifier(orderIndex, mikkeliNytEventId);
-    } else {
-      identifier = identifierController.updateIdentifier(identifier, orderIndex);
-    }
-    
+    Identifier identifier = identifierController.acquireIdentifier(orderIndex, mikkeliNytEventId);
     identifierRelationController.setParentId(identifier, organizationId);
     
     EventId kuntaApiId = new EventId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
@@ -171,13 +165,7 @@ public class MikkeliNytEntityUpdater extends EntityUpdater {
     AttachmentId mikkeliNytAttachmentId = getImageAttachmentId(organizationId, imageUrl);
     Long orderIndex = 0l;
     
-    Identifier identifier = identifierController.findIdentifierById(mikkeliNytAttachmentId);
-    if (identifier == null) {
-      identifier = identifierController.createIdentifier(orderIndex, mikkeliNytAttachmentId);
-    } else {
-      identifier = identifierController.updateIdentifier(identifier, orderIndex);
-    }
-    
+    Identifier identifier = identifierController.acquireIdentifier(orderIndex, mikkeliNytAttachmentId);
     identifierRelationController.addChild(eventIdentifier, identifier);
     AttachmentId kuntaApiId = new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
     Attachment attachment = translate(kuntaApiId, imageUrl);

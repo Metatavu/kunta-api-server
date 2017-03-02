@@ -108,13 +108,7 @@ public class GtfsAgencyEntityUpdater extends EntityUpdater {
     Long orderIndex = task.getOrderIndex();
     PublicTransportAgencyId gtfsAgencyId = gtfsIdFactory.createAgencyId(kuntaApiOrganizationId, gtfsAgency.getId());
 
-    Identifier identifier = identifierController.findIdentifierById(gtfsAgencyId);
-    if (identifier == null) {
-      identifier = identifierController.createIdentifier(orderIndex, gtfsAgencyId);
-    } else {
-      identifier = identifierController.updateIdentifier(identifier, orderIndex);
-    }
-
+    Identifier identifier = identifierController.acquireIdentifier(orderIndex, gtfsAgencyId);
     identifierRelationController.setParentId(identifier, kuntaApiOrganizationId);
     
     PublicTransportAgencyId kuntaApiAgencyId = gtfsIdFactory.createKuntaApiId(PublicTransportAgencyId.class, identifier);

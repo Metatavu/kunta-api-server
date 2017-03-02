@@ -108,14 +108,7 @@ public class PtvServiceLocationChannelIdUpdater extends EntityUpdater {
         ServiceLocationChannel locationChannel = locationChannels.get(i);
         ServiceLocationChannelId channelId = new ServiceLocationChannelId(PtvConsts.IDENTIFIER_NAME, locationChannel.getId());
         Long orderIndex = (long) i;
-        
-        Identifier identifier = identifierController.findIdentifierById(channelId);
-        if (identifier == null) {
-          identifier = identifierController.createIdentifier(orderIndex, channelId);
-        } else {
-          identifier = identifierController.updateIdentifier(identifier, orderIndex);
-        }
-
+        Identifier identifier = identifierController.acquireIdentifier(orderIndex, channelId);
         identifierRelationController.setParentId(identifier, kuntaApiServiceId);
         modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(locationChannel));
       }

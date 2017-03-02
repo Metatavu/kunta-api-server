@@ -93,13 +93,8 @@ public class KuntaRekryJobEntityUpdater extends EntityUpdater {
     Long orderIndex = task.getOrderIndex();
     
     JobId kuntaRekryId = new JobId(organizationId, KuntaRekryConsts.IDENTIFIER_NAME, String.valueOf(kuntaRekryJob.getJobId())); 
-    Identifier identifier = identifierController.findIdentifierById(kuntaRekryId);
-    if (identifier == null) {
-      identifier = identifierController.createIdentifier(orderIndex, kuntaRekryId);
-    } else {
-      identifier = identifierController.updateIdentifier(identifier, orderIndex);
-    }
-    
+
+    Identifier identifier = identifierController.acquireIdentifier(orderIndex, kuntaRekryId);
     identifierRelationController.setParentId(identifier, organizationId);
     
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(kuntaRekryJob));

@@ -129,12 +129,7 @@ public class PtvOrganizationServiceEntityUpdater extends EntityUpdater {
         return;
       }
       
-      Identifier identifier = identifierController.findIdentifierById(ptvOrganizationServiceId);
-      if (identifier == null) {
-        identifier = identifierController.createIdentifier(orderIndex, ptvOrganizationServiceId);
-      } else {
-        identifier = identifierController.updateIdentifier(identifier, orderIndex);
-      }
+      Identifier identifier = identifierController.acquireIdentifier(orderIndex, ptvOrganizationServiceId);
       
       OrganizationServiceId kuntaApiOrganizationServiceId = new OrganizationServiceId(kuntaApiOrganizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
       OrganizationService organizationService = ptvTranslator.translateOrganizationService(kuntaApiOrganizationServiceId, kuntaApiOrganizationId, kuntaApiServiceId, ptvOrganizationService);

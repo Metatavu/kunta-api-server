@@ -109,13 +109,7 @@ public class GtfsStopEntityUpdater extends EntityUpdater {
     
     PublicTransportStopId gtfsStopId = gtfsIdFactory.createStopId(kuntaApiOrganizationId, gtfsStop.getId().getId());
 
-    Identifier identifier = identifierController.findIdentifierById(gtfsStopId);
-    if (identifier == null) {
-      identifier = identifierController.createIdentifier(orderIndex, gtfsStopId);
-    } else {
-      identifier = identifierController.updateIdentifier(identifier, orderIndex);
-    }
-
+    Identifier identifier = identifierController.acquireIdentifier(orderIndex, gtfsStopId);
     identifierRelationController.setParentId(identifier, kuntaApiOrganizationId);
     
     PublicTransportStopId kuntaApiStopId = gtfsIdFactory.createKuntaApiId(PublicTransportStopId.class, identifier);
