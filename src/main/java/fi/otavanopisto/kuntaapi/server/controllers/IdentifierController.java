@@ -90,7 +90,7 @@ public class IdentifierController {
     if (identifier == null) {
       ArchivedIdentifier archivedIdentifier = findArchivedIdentifierById(id);
       if (archivedIdentifier != null) {
-        identifier = createIdentifier(orderIndex, archivedIdentifier.getType(), archivedIdentifier.getKuntaApiId(), archivedIdentifier.getSource(), archivedIdentifier.getSourceId(), archivedIdentifier.getOrganizationKuntaApiId());
+        identifier = createIdentifier(orderIndex == null ? 0l : orderIndex, archivedIdentifier.getType(), archivedIdentifier.getKuntaApiId(), archivedIdentifier.getSource(), archivedIdentifier.getSourceId(), archivedIdentifier.getOrganizationKuntaApiId());
         archivedIdentifierDAO.delete(archivedIdentifier);
       } else {
         identifier = createIdentifier(orderIndex == null ? 0l : orderIndex, id);
