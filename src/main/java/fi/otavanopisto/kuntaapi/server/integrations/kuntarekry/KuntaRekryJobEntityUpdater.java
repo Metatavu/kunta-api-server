@@ -5,9 +5,6 @@ import java.util.concurrent.TimeUnit;
 import javax.annotation.Resource;
 import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
-import javax.ejb.Timeout;
-import javax.ejb.Timer;
-import javax.ejb.TimerConfig;
 import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -24,18 +21,12 @@ import fi.otavanopisto.kuntaapi.server.integrations.kuntarekry.cache.KuntaRekryJ
 import fi.otavanopisto.kuntaapi.server.integrations.kuntarekry.tasks.KuntaRekryJobEntityTask;
 import fi.otavanopisto.kuntaapi.server.integrations.kuntarekry.tasks.KuntaRekryJobTaskQueue;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
-import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 
 @ApplicationScoped
 @Singleton
 @AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
 public class KuntaRekryJobEntityUpdater extends EntityUpdater {
-
-  private static final int TIMER_INTERVAL = 1000 * 10;
-  
-  @Inject
-  private SystemSettingController systemSettingController;
 
   @Inject
   private KuntaRekryTranslator kuntaRekryTranslator;
@@ -64,20 +55,8 @@ public class KuntaRekryJobEntityUpdater extends EntityUpdater {
   }
 
   @Override
-  public void startTimer() {
-    startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
-  }
-
-  private void startTimer(int duration) {
-    TimerConfig timerConfig = new TimerConfig();
-    timerConfig.setPersistent(false);
-    timerService.createSingleActionTimer(duration, timerConfig);
-  }
-
-  @Timeout
-  public void timeout(Timer timer) {
+  public void timeout() {
     executeNextTask();
-    startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
   }
   
   private void executeNextTask() {

@@ -7,9 +7,6 @@ import java.util.logging.Logger;
 import javax.annotation.Resource;
 import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
-import javax.ejb.Timeout;
-import javax.ejb.Timer;
-import javax.ejb.TimerConfig;
 import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Event;
@@ -23,7 +20,6 @@ import fi.otavanopisto.kuntaapi.server.index.IndexRequest;
 import fi.otavanopisto.kuntaapi.server.index.IndexableOrganization;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.OrganizationIdTaskQueue;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
-import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask.Operation;
 import fi.otavanopisto.restfulptv.client.ApiResponse;
@@ -35,13 +31,8 @@ import fi.otavanopisto.restfulptv.client.model.Organization;
 @SuppressWarnings ("squid:S3306")
 public class PtvOrganizationEntityUpdater extends EntityUpdater {
 
-  private static final int TIMER_INTERVAL = 1000 * 5;
-
   @Inject
   private Logger logger;
-
-  @Inject
-  private SystemSettingController systemSettingController;
 
   @Inject
   private PtvApi ptvApi;
@@ -67,20 +58,8 @@ public class PtvOrganizationEntityUpdater extends EntityUpdater {
   }
 
   @Override
-  public void startTimer() {
-    startTimer(TIMER_INTERVAL);
-  }
-
-  private void startTimer(int duration) {
-    TimerConfig timerConfig = new TimerConfig();
-    timerConfig.setPersistent(false);
-    timerService.createSingleActionTimer(duration, timerConfig);
-  }
-
-  @Timeout
-  public void timeout(Timer timer) {
+  public void timeout() {
     executeNextTask();
-    startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
   }
   
   private void executeNextTask() {

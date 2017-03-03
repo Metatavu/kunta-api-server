@@ -8,9 +8,6 @@ import java.util.logging.Logger;
 import javax.annotation.Resource;
 import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
-import javax.ejb.Timeout;
-import javax.ejb.Timer;
-import javax.ejb.TimerConfig;
 import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Event;
@@ -26,7 +23,6 @@ import fi.otavanopisto.kuntaapi.server.id.MenuId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.management.tasks.OrganizationMenusTaskQueue;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
-import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask.Operation;
 import fi.otavanopisto.kuntaapi.server.tasks.OrganizationEntityUpdateTask;
@@ -37,9 +33,6 @@ import fi.otavanopisto.kuntaapi.server.tasks.TaskRequest;
 @AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
 public class ManagementMenuIdUpdater extends IdUpdater {
-
-  private static final int WARMUP_TIME = 1000 * 10;
-  private static final int TIMER_INTERVAL = 1000 * 60 * 10;
   
   @Inject
   private Logger logger;
@@ -49,9 +42,6 @@ public class ManagementMenuIdUpdater extends IdUpdater {
   
   @Inject
   private IdController idController;
-
-  @Inject
-  private SystemSettingController systemSettingController;
 
   @Inject
   private ManagementApi managementApi;
@@ -74,28 +64,13 @@ public class ManagementMenuIdUpdater extends IdUpdater {
   }
   
   @Override
-  public void startTimer() {
-    startTimer(WARMUP_TIME);
-  }
-  
-  private void startTimer(int duration) {
-    TimerConfig timerConfig = new TimerConfig();
-    timerConfig.setPersistent(false);
-    timerService.createSingleActionTimer(duration, timerConfig);
-  }
-  
-  @Timeout
-  public void timeout(Timer timer) {
-    if (systemSettingController.isNotTestingOrTestRunning()) {
-      OrganizationEntityUpdateTask task = organizationMenusTaskQueue.next();
-      if (task != null) {
-        updateManagementMenus(task.getOrganizationId());
-      } else {
-        organizationMenusTaskQueue.enqueueTasks(organizationSettingController.listOrganizationIdsWithSetting(ManagementConsts.ORGANIZATION_SETTING_BASEURL));
-      }
+  public void timeout() {
+    OrganizationEntityUpdateTask task = organizationMenusTaskQueue.next();
+    if (task != null) {
+      updateManagementMenus(task.getOrganizationId());
+    } else {
+      organizationMenusTaskQueue.enqueueTasks(organizationSettingController.listOrganizationIdsWithSetting(ManagementConsts.ORGANIZATION_SETTING_BASEURL));
     }
-    
-    startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
   }
   
   private void updateManagementMenus(OrganizationId organizationId) {

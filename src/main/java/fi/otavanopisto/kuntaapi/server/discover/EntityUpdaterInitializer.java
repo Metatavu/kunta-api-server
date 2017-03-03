@@ -26,8 +26,7 @@ public class EntityUpdaterInitializer {
     Iterator<EntityUpdater> updaters = entityUpdaters.iterator();
     while (updaters.hasNext()) {
       EntityUpdater updater = updaters.next();
-      logger.info(String.format("Starting entity updater %s", updater.getName()));
-      updater.startTimer();
+      logger.info(String.format("Registering entity updater %s", updater.getName()));
     }
   }
    

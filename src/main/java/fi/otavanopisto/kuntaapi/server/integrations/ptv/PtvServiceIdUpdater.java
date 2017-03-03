@@ -5,9 +5,6 @@ import java.util.logging.Logger;
 
 import javax.annotation.Resource;
 import javax.ejb.Singleton;
-import javax.ejb.Timeout;
-import javax.ejb.Timer;
-import javax.ejb.TimerConfig;
 import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Event;
@@ -17,7 +14,6 @@ import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.IdUpdater;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.ServiceId;
-import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask.Operation;
 import fi.otavanopisto.kuntaapi.server.tasks.TaskRequest;
@@ -29,17 +25,11 @@ import fi.otavanopisto.restfulptv.client.model.Service;
 @SuppressWarnings ("squid:S3306")
 public class PtvServiceIdUpdater extends IdUpdater {
 
-  private static final int WARMUP_TIME = 1000 * 10;
-  private static final int TIMER_INTERVAL = 1000 * 60 * 10;
-  
   @Inject
   private Logger logger;
   
   @Inject
   private IdController idController;
-
-  @Inject
-  private SystemSettingController systemSettingController;
 
   @Inject
   private PtvApi ptvApi;
@@ -59,25 +49,8 @@ public class PtvServiceIdUpdater extends IdUpdater {
   }
   
   @Override
-  public void startTimer() {
-    startTimer(WARMUP_TIME);
-  }
-  
-  private void startTimer(int duration) {
-    TimerConfig timerConfig = new TimerConfig();
-    timerConfig.setPersistent(false);
-    timerService.createSingleActionTimer(duration, timerConfig);
-  }
-  
-  @Timeout
-  public void timeout(Timer timer) {
-    try {
-      if (systemSettingController.isNotTestingOrTestRunning()) {
-        discoverIds();
-      }
-    } finally {
-      startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
-    }
+  public void timeout() {
+    discoverIds();
   }
 
   private void discoverIds() {

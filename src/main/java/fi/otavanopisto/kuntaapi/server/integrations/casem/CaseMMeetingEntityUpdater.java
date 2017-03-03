@@ -9,9 +9,6 @@ import java.util.logging.Logger;
 import javax.annotation.Resource;
 import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
-import javax.ejb.Timeout;
-import javax.ejb.Timer;
-import javax.ejb.TimerConfig;
 import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -23,7 +20,6 @@ import fi.otavanopisto.casem.client.model.Content;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
 import fi.otavanopisto.kuntaapi.server.integrations.casem.tasks.MeetingDataUpdateTask;
 import fi.otavanopisto.kuntaapi.server.integrations.casem.tasks.MeetingDataUpdateTaskQueue;
-import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 
 @ApplicationScoped
 @Singleton
@@ -31,13 +27,8 @@ import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 @SuppressWarnings ("squid:S3306")
 public class CaseMMeetingEntityUpdater extends EntityUpdater {
 
-  private static final int TIMER_INTERVAL = 1000 * 60;
-  
   @Inject
   private Logger logger;
-  
-  @Inject
-  private SystemSettingController systemSettingController;
   
   @Inject
   private CaseMCacheUpdater updater;
@@ -54,18 +45,7 @@ public class CaseMMeetingEntityUpdater extends EntityUpdater {
   }
 
   @Override
-  public void startTimer() {
-    startTimer(TIMER_INTERVAL);
-  }
-
-  private void startTimer(int duration) {
-    TimerConfig timerConfig = new TimerConfig();
-    timerConfig.setPersistent(false);
-    timerService.createSingleActionTimer(duration, timerConfig);
-  }
-
-  @Timeout
-  public void timeout(Timer timer) {
+  public void timeout() {
     MeetingDataUpdateTask task = meetingDataUpdateTaskQueue.next();
     if (task != null) {
       try {
@@ -77,8 +57,6 @@ public class CaseMMeetingEntityUpdater extends EntityUpdater {
         logger.log(Level.SEVERE, "Failed to process casem meeting update request", e); 
       }
     }
-    
-    startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
   }
 
 }
