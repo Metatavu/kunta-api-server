@@ -16,7 +16,6 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
-import fi.otavanopisto.kuntaapi.server.cache.SystemController;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 import fi.otavanopisto.kuntaapi.server.tasks.AbstractTaskQueue;
 import fi.otavanopisto.kuntaapi.server.tasks.TaskQueueStatistics;
@@ -36,9 +35,6 @@ public class SystemRESTService {
   @PersistenceUnit
   private EntityManagerFactory entityManagerFactory;
   
-  @Inject
-  private SystemController systemController; 
-
   @Inject  
   private SystemSettingController systemSettingController;
   
@@ -54,10 +50,6 @@ public class SystemRESTService {
   @Path ("/ping")
   @Produces (MediaType.TEXT_PLAIN)
   public Response getPing() {
-    if (!systemController.isCacheContainerOk()) {
-      return Response.status(Status.SERVICE_UNAVAILABLE).build();
-    }
-    
     return Response.ok("pong").build();
   }
   

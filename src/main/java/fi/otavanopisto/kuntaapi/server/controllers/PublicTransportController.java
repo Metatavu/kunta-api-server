@@ -23,6 +23,8 @@ import fi.otavanopisto.kuntaapi.server.id.PublicTransportScheduleId;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportStopId;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportStopTimeId;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportTripId;
+import fi.otavanopisto.kuntaapi.server.index.SearchResult;
+import fi.otavanopisto.kuntaapi.server.index.StopTimeSearcher;
 import fi.otavanopisto.kuntaapi.server.integrations.PublicTransportProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.PublicTransportStopTimeSortBy;
 import fi.otavanopisto.kuntaapi.server.integrations.SortDir;
@@ -34,6 +36,9 @@ public class PublicTransportController {
   
   @Inject
   private EntityController entityController;
+  
+  @Inject
+  private StopTimeSearcher stopTimeSearcher;
   
   @Inject
   private Instance<PublicTransportProvider> publicTransportProviders;
@@ -80,13 +85,8 @@ public class PublicTransportController {
     return null;
   }
   
-  public List<StopTime> listStopTimes(OrganizationId organizationId, PublicTransportStopId stopId, Integer departureTime, PublicTransportStopTimeSortBy sortBy, SortDir sortDir, Integer firstResult, Integer maxResults) {
-    List<StopTime> result = new ArrayList<>();
-   
-    for (PublicTransportProvider publicTransportProvider : getPublicTransportProviders()) {
-      result.addAll(publicTransportProvider.listStopTimes(organizationId, stopId, departureTime));
-    }
-    
+  public List<StopTime> listStopTimes(OrganizationId organizationId, PublicTransportStopId stopId, Integer departureTime, PublicTransportStopTimeSortBy sortBy, SortDir sortDir, Long firstResult, Long maxResults) {
+    List<StopTime> result = searchStopTimes(organizationId, null, stopId, departureTime, sortBy, sortDir, firstResult, maxResults);
     return ListUtils.limit(sortStopTimes(result, sortBy, sortDir), firstResult, maxResults);
   }
   
@@ -162,6 +162,36 @@ public class PublicTransportController {
     }
     
     return null;
+  }
+  
+  @SuppressWarnings ("squid:S00107")
+  private List<StopTime> searchStopTimes(OrganizationId organizationId, PublicTransportTripId tripId, PublicTransportStopId stopId, Integer depratureTimeOnOrAfter, PublicTransportStopTimeSortBy sortBy, SortDir sortDir, Long firstResult, Long maxResults) {
+    List<StopTime> result = new ArrayList<>();
+    
+    SearchResult<PublicTransportStopTimeId> searchResult = stopTimeSearcher.searchStopTimes(
+      organizationId != null ? organizationId.getId() : null, 
+      tripId != null ? tripId.getId() : null, 
+      stopId != null ? stopId.getId() : null, 
+      depratureTimeOnOrAfter, 
+      sortBy,
+      sortDir,
+      firstResult, 
+      maxResults);
+    
+    if (searchResult != null) {
+      for (PublicTransportStopTimeId stopTimeId : searchResult.getResult()) {
+        StopTime stopTime = findStopTime(organizationId, stopTimeId);
+        if (stopTime != null) {
+          result.add(stopTime);
+        }
+      }
+    } else {
+      for (PublicTransportProvider publicTransportProvider : getPublicTransportProviders()) {
+        result.addAll(publicTransportProvider.listStopTimes(organizationId, stopId, depratureTimeOnOrAfter));
+      }
+    }
+    
+    return result; 
   }
   
   private List<StopTime> sortStopTimes(List<StopTime> stopTimes, PublicTransportStopTimeSortBy sortBy, SortDir sortDir) {

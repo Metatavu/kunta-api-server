@@ -204,4 +204,13 @@
   
   </changeSet>
   
+  <changeSet id="archieved-identifier-order-index" author="heikki.kurhinen">
+    <addColumn tableName="ArchivedIdentifier">
+      <column name="orderIndex" type="bigint(20)">
+        <constraints nullable="false"/>
+      </column>
+    </addColumn>
+    <sql dbms="mysql">UPDATE ArchivedIdentifier SET orderIndex = 0</sql>
+  </changeSet>
+  
 </databaseChangeLog>

@@ -6,9 +6,6 @@ import java.util.concurrent.TimeUnit;
 import javax.annotation.Resource;
 import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
-import javax.ejb.Timeout;
-import javax.ejb.Timer;
-import javax.ejb.TimerConfig;
 import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -27,8 +24,6 @@ import fi.otavanopisto.kuntaapi.server.tasks.OrganizationEntityUpdateTask;
 @AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
 public class CaseMOrganizationContentsEntityUpdater extends EntityUpdater {
-
-  private static final int TIMER_INTERVAL = 1000 * 60 * 30;
 
   @Inject
   private CaseMCacheUpdater cacheUpdater;
@@ -57,23 +52,10 @@ public class CaseMOrganizationContentsEntityUpdater extends EntityUpdater {
   }
 
   @Override
-  public void startTimer() {
-    startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
-  }
-
-  private void startTimer(int duration) {
-    TimerConfig timerConfig = new TimerConfig();
-    timerConfig.setPersistent(false);
-    timerService.createSingleActionTimer(duration, timerConfig);
-  }
-
-  @Timeout
-  public void timeout(Timer timer) {
+  public void timeout() {
     if (systemSettingController.isNotTestingOrTestRunning()) {
       updateNext();
     }
-    
-    startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
   }
 
   private void updateNext() {

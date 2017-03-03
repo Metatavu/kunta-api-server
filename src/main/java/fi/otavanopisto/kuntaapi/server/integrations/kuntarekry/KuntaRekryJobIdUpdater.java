@@ -10,9 +10,6 @@ import java.util.logging.Logger;
 import javax.annotation.Resource;
 import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
-import javax.ejb.Timeout;
-import javax.ejb.Timer;
-import javax.ejb.TimerConfig;
 import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -27,7 +24,6 @@ import fi.otavanopisto.kuntaapi.server.integrations.kuntarekry.tasks.KuntaRekryJ
 import fi.otavanopisto.kuntaapi.server.integrations.kuntarekry.tasks.KuntaRekryJobTaskQueue;
 import fi.otavanopisto.kuntaapi.server.integrations.kuntarekry.tasks.OrganizationJobsTaskQueue;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
-import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 import fi.otavanopisto.kuntaapi.server.tasks.OrganizationEntityUpdateTask;
 
 @ApplicationScoped
@@ -35,8 +31,6 @@ import fi.otavanopisto.kuntaapi.server.tasks.OrganizationEntityUpdateTask;
 @AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
 public class KuntaRekryJobIdUpdater extends IdUpdater {
-
-  private static final int TIMER_INTERVAL = 1000 * 60 * 15;
   
   @Inject
   private Logger logger;
@@ -44,9 +38,6 @@ public class KuntaRekryJobIdUpdater extends IdUpdater {
   @Inject
   private GenericHttpClient httpClient;
   
-  @Inject
-  private SystemSettingController systemSettingController;
-
   @Inject
   private OrganizationSettingController organizationSettingController;
   
@@ -65,28 +56,13 @@ public class KuntaRekryJobIdUpdater extends IdUpdater {
   }
 
   @Override
-  public void startTimer() {
-    startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
-  }
-
-  private void startTimer(int duration) {
-    TimerConfig timerConfig = new TimerConfig();
-    timerConfig.setPersistent(false);
-    timerService.createSingleActionTimer(duration, timerConfig);
-  }
-
-  @Timeout
-  public void timeout(Timer timer) {
-    if (systemSettingController.isNotTestingOrTestRunning()) {
-      OrganizationEntityUpdateTask task = organizationJobsTaskQueue.next();
-      if (task != null) {
-        updateOrganizationJobs(task.getOrganizationId());
-      } else {
-        organizationJobsTaskQueue.enqueueTasks(organizationSettingController.listOrganizationIdsWithSetting(KuntaRekryConsts.ORGANIZATION_SETTING_APIURI));
-      }
+  public void timeout() {
+    OrganizationEntityUpdateTask task = organizationJobsTaskQueue.next();
+    if (task != null) {
+      updateOrganizationJobs(task.getOrganizationId());
+    } else {
+      organizationJobsTaskQueue.enqueueTasks(organizationSettingController.listOrganizationIdsWithSetting(KuntaRekryConsts.ORGANIZATION_SETTING_APIURI));
     }
-
-    startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
   }
 
   private void updateOrganizationJobs(OrganizationId organizationId) {

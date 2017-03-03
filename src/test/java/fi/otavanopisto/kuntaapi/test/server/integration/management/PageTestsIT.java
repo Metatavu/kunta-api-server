@@ -293,7 +293,7 @@ public class PageTestsIT extends AbstractIntegrationTest {
     
     getManagementPageMocker().mockPages(678);
     waitApiListCount(String.format("/organizations/%s/pages", organizationId), 3);
-    
+
     assertEquals(pageId, getPageId(organizationId, 2));
   }
   
