@@ -9,6 +9,7 @@ import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
 import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.event.Event;
 import javax.inject.Inject;
 
 import org.onebusaway.gtfs.model.StopTime;
@@ -22,6 +23,8 @@ import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportStopId;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportStopTimeId;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportTripId;
+import fi.otavanopisto.kuntaapi.server.index.IndexRequest;
+import fi.otavanopisto.kuntaapi.server.index.IndexableStopTime;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.gtfs.cache.GtfsPublicTransportStopTimeCache;
 import fi.otavanopisto.kuntaapi.server.integrations.gtfs.tasks.GtfsStopTimeEntityTask;
@@ -60,6 +63,9 @@ public class GtfsStopTimeEntityUpdater extends EntityUpdater {
   
   @Inject
   private GtfsStopTimeTaskQueue gtfsStopTimeTaskQueue;
+
+  @Inject
+  private Event<IndexRequest> indexRequest;
   
   @Resource
   private TimerService timerService;
@@ -111,5 +117,17 @@ public class GtfsStopTimeEntityUpdater extends EntityUpdater {
     
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(kuntaApiStopTime));
     gtfsPublicTransportStopTimeCache.put(kuntaApiStopTimeId, kuntaApiStopTime);
+
+    indexStopTime(kuntaApiStopTime);
+  }
+
+  private void indexStopTime(fi.metatavu.kuntaapi.server.rest.model.StopTime kuntaApiStopTime) {
+    IndexableStopTime indexableStopTime = new IndexableStopTime();
+    indexableStopTime.setArrivalTime(kuntaApiStopTime.getArrivalTime());
+    indexableStopTime.setDepartureTime(kuntaApiStopTime.getDepartureTime());
+    indexableStopTime.setId(kuntaApiStopTime.getId());
+    indexableStopTime.setStopId(kuntaApiStopTime.getStopId());
+    indexableStopTime.setTripId(kuntaApiStopTime.getTripId());
+    indexRequest.fire(new IndexRequest(indexableStopTime));
   }
 }
