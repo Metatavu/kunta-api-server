@@ -43,6 +43,10 @@ public abstract class IdUpdater {
   public abstract void timeout();
   
   public int getTimerWarmup() {
+    if (systemSettingController.inTestMode()) {
+      return 200;
+    }
+    
     String key = String.format("id-updater.%s.warmup", getName());
     Integer warmup = NumberUtils.createInteger(systemSettingController.getSettingValue(key));
     if (warmup == null) {
@@ -54,6 +58,10 @@ public abstract class IdUpdater {
   }
   
   public int getTimerInterval() {
+    if (systemSettingController.inTestMode()) {
+      return 100;
+    }
+    
     String key = String.format("id-updater.%s.interval", getName());
     Integer interval = NumberUtils.createInteger(systemSettingController.getSettingValue(key));
     if (interval == null) {

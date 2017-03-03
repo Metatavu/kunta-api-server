@@ -47,7 +47,7 @@ public abstract class EntityUpdater {
   
   public int getTimerWarmup() {
     if (systemSettingController.inTestMode()) {
-      return 1000;
+      return 200;
     }
     
     String key = String.format("entity-updater.%s.warmup", getName());
@@ -62,7 +62,7 @@ public abstract class EntityUpdater {
   
   public int getTimerInterval() {
     if (systemSettingController.inTestMode()) {
-      return 500;
+      return 100;
     }
     
     String key = String.format("entity-updater.%s.interval", getName());
