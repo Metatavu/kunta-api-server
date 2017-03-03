@@ -20,6 +20,9 @@ import org.apache.commons.lang3.StringUtils;
 import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
+import org.junit.Before;
+import org.junit.Rule;
+import org.junit.rules.TestName;
 
 /**
  * Abstract base class for all tests
@@ -30,6 +33,15 @@ import org.hamcrest.Matcher;
 public abstract class AbstractTest {
     
   private static Logger logger = Logger.getLogger(AbstractTest.class.getName());
+  
+  @Rule
+  public TestName testName = new TestName();
+  
+  @Before
+  @SuppressWarnings ("squid:S106")
+  public void printName() {
+    System.out.println(String.format("> %s", testName.getMethodName()));
+  }
   
   protected ZonedDateTime getZonedDateTime(int year, int month, int dayOfMonth, int hour, int minute, ZoneId zone) {
     return ZonedDateTime.of(year, month, dayOfMonth, hour, minute, 0, 0, zone);
@@ -82,6 +94,7 @@ public abstract class AbstractTest {
   protected void deleteIdentifiers() {
     executeDelete("delete from IdentifierRelation");
     executeDelete("delete from Identifier");
+    executeDelete("delete from ArchievedIdentifier");
   }
   
   protected long executeInsert(String sql, Object... params) {
