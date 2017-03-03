@@ -83,7 +83,7 @@ public class GtfsIdUpdater extends IdUpdater {
 
   @Override
   public String getName() {
-    return "gtfs-public-transport-agency-ids";
+    return "gtfs-ids";
   }
   
   @Override
