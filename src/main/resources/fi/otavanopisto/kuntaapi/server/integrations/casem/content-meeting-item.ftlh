@@ -15,44 +15,46 @@
 
 <#if historyTopics??>
   <#list historyTopics>
-    <div>
+    <div class="casem-history-topic">
       <h3>Aikaisempi käsittely</h3>
-      <#items as historyTopic>
-        <h4><#if historyTopic.party??>${historyTopic.party}</#if><#if historyTopic.partySv??>, ${historyTopic.partySv}</#if><#if historyTopic.meetingDate??>${formatDateTime(historyTopic.meetingDate, "SHORT")}</#if></h4>
-        <#if historyTopic.draftsmen??>
-          <#list historyTopic.draftsmen>
-            <p>Valmistelija(t)</p>
-            <#items as draftsman>
-              <p>${draftsman.name}<#if draftsman.title??>, ${draftsman.title}</#if><#if draftsman.email??>, ${draftsman.email}</#if></p>
-            </#items>
-          </#list>
-        </#if>
-        
-        <#if historyTopic.description??>
-          <h5>Kuvaus</h5>
-          <p>${historyTopic.description}</p>
-        </#if>
-        
-        <#if historyTopic.decisionProposal??>
-          <h5>Päätösehdotus</h5>
-          <p>${historyTopic.decisionProposal}</p>
-        </#if>
-        
-        <#if historyTopic.decision??>
-          <h5>Päätös</h5>
-  
-          <#if historyTopic.presenters??>
-            <#list historyTopic.presenters>
-              <p>Esittelijä(t)</p>
-              <#items as presentter>
-                <p>${presentter.name}<#if presentter.title??>, ${presentter.title}</#if><#if presentter.email??>, ${presentter.email}</#if></p>
+      <div class="casem-history-topic-contents">
+        <#items as historyTopic>
+          <h4><#if historyTopic.party??>${historyTopic.party}</#if><#if historyTopic.partySv??>, ${historyTopic.partySv}</#if><#if historyTopic.meetingDate??>${formatDateTime(historyTopic.meetingDate, "SHORT")}</#if></h4>
+          <#if historyTopic.draftsmen??>
+            <#list historyTopic.draftsmen>
+              <p>Valmistelija(t)</p>
+              <#items as draftsman>
+                <p>${draftsman.name}<#if draftsman.title??>, ${draftsman.title}</#if><#if draftsman.email??>, ${draftsman.email}</#if></p>
               </#items>
             </#list>
           </#if>
           
-          <p>${historyTopic.decision}</p>
-        </#if>
-      </#items>
+          <#if historyTopic.description??>
+            <h5>Kuvaus</h5>
+            <p>${historyTopic.description}</p>
+          </#if>
+          
+          <#if historyTopic.decisionProposal??>
+            <h5>Päätösehdotus</h5>
+            <p>${historyTopic.decisionProposal}</p>
+          </#if>
+          
+          <#if historyTopic.decision??>
+            <h5>Päätös</h5>
+    
+            <#if historyTopic.presenters??>
+              <#list historyTopic.presenters>
+                <p>Esittelijä(t)</p>
+                <#items as presentter>
+                  <p>${presentter.name}<#if presentter.title??>, ${presentter.title}</#if><#if presentter.email??>, ${presentter.email}</#if></p>
+                </#items>
+              </#list>
+            </#if>
+            
+            <p>${historyTopic.decision}</p>
+          </#if>
+        </#items>
+      </div>
     </div>
     
   </#list>
