@@ -34,6 +34,10 @@ public class ArchivedIdentifier {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
   
+  @Column(nullable = false)
+  @NotNull
+  private Long orderIndex;
+  
   @Column
   private String organizationKuntaApiId;
 
@@ -62,6 +66,14 @@ public class ArchivedIdentifier {
   
   public Long getId() {
     return id;
+  }
+  
+  public Long getOrderIndex() {
+    return orderIndex;
+  }
+  
+  public void setOrderIndex(Long orderIndex) {
+    this.orderIndex = orderIndex;
   }
   
   public String getKuntaApiId() {
