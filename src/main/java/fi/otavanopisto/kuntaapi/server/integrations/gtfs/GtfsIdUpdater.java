@@ -12,9 +12,6 @@ import java.util.logging.Logger;
 import javax.annotation.Resource;
 import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
-import javax.ejb.Timeout;
-import javax.ejb.Timer;
-import javax.ejb.TimerConfig;
 import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -46,7 +43,6 @@ import fi.otavanopisto.kuntaapi.server.integrations.gtfs.tasks.GtfsTripEntityTas
 import fi.otavanopisto.kuntaapi.server.integrations.gtfs.tasks.GtfsTripTaskQueue;
 import fi.otavanopisto.kuntaapi.server.integrations.gtfs.tasks.OrganizationGtfsTaskQueue;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
-import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 import fi.otavanopisto.kuntaapi.server.tasks.OrganizationEntityUpdateTask;
 
 @ApplicationScoped
@@ -54,16 +50,9 @@ import fi.otavanopisto.kuntaapi.server.tasks.OrganizationEntityUpdateTask;
 @AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
 public class GtfsIdUpdater extends IdUpdater {
-
-
-  private static final int WARMUP_TIME = 1000 * 60;
-  private static final int TIMER_INTERVAL = 1000 * 60 * 60 * 4;
   
   @Inject
   private Logger logger;
-
-  @Inject
-  private SystemSettingController systemSettingController;
   
   @Inject
   private OrganizationGtfsTaskQueue organizationGtfsTaskQueue;
@@ -94,32 +83,17 @@ public class GtfsIdUpdater extends IdUpdater {
 
   @Override
   public String getName() {
-    return "gtfs-public-transport-agency-ids";
+    return "gtfs-ids";
   }
   
   @Override
-  public void startTimer() {
-    startTimer(WARMUP_TIME);
-  }
-
-  private void startTimer(int duration) {
-    TimerConfig timerConfig = new TimerConfig();
-    timerConfig.setPersistent(false);
-    timerService.createSingleActionTimer(duration, timerConfig);
-  }
-
-  @Timeout
-  public void timeout(Timer timer) {
-    if (systemSettingController.isNotTestingOrTestRunning()) {
-      OrganizationEntityUpdateTask task = organizationGtfsTaskQueue.next();
-      if (task != null) {
-        updateGtfsEntities(task.getOrganizationId());
-      } else {
-        organizationGtfsTaskQueue.enqueueTasks(organizationSettingController.listOrganizationIdsWithSetting(GtfsConsts.ORGANIZATION_SETTING_GTFS_PATH));
-      }
+  public void timeout() {
+    OrganizationEntityUpdateTask task = organizationGtfsTaskQueue.next();
+    if (task != null) {
+      updateGtfsEntities(task.getOrganizationId());
+    } else {
+      organizationGtfsTaskQueue.enqueueTasks(organizationSettingController.listOrganizationIdsWithSetting(GtfsConsts.ORGANIZATION_SETTING_GTFS_PATH));
     }
-
-    startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
   }
   
   private void updateGtfsEntities(OrganizationId organizationId) {

@@ -4,13 +4,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.annotation.Resource;
 import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
-import javax.ejb.Timeout;
-import javax.ejb.Timer;
-import javax.ejb.TimerConfig;
-import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
@@ -28,21 +23,15 @@ import fi.otavanopisto.kuntaapi.server.integrations.gtfs.cache.GtfsPublicTranspo
 import fi.otavanopisto.kuntaapi.server.integrations.gtfs.tasks.GtfsAgencyEntityTask;
 import fi.otavanopisto.kuntaapi.server.integrations.gtfs.tasks.GtfsAgencyTaskQueue;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
-import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 
 @ApplicationScoped
 @Singleton
 @AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
 public class GtfsAgencyEntityUpdater extends EntityUpdater {
-
-  private static final int TIMER_INTERVAL = 1000;
-
+  
   @Inject
   private Logger logger;
-
-  @Inject
-  private SystemSettingController systemSettingController;
   
   @Inject
   private IdController idController;
@@ -68,33 +57,17 @@ public class GtfsAgencyEntityUpdater extends EntityUpdater {
   @Inject
   private GtfsAgencyTaskQueue gtfsAgencyTaskQueue;
 
-  @Resource
-  private TimerService timerService;
-
   @Override
   public String getName() {
     return "gtfs-public-transport-agencies";
   }
-
-  @Override
-  public void startTimer() {
-    startTimer(TIMER_INTERVAL);
-  }
-
-  private void startTimer(int duration) {
-    TimerConfig timerConfig = new TimerConfig();
-    timerConfig.setPersistent(false);
-    timerService.createSingleActionTimer(duration, timerConfig);
-  }
   
-  @Timeout
-  public void timeout(Timer timer) {
+  @Override
+  public void timeout() {
     GtfsAgencyEntityTask task = gtfsAgencyTaskQueue.next();
     if (task != null) {
       updateGtfsAgency(task);
     }
-    
-    startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
   }
   
   private void updateGtfsAgency(GtfsAgencyEntityTask task) {

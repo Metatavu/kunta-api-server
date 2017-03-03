@@ -26,8 +26,7 @@ public class IdUpdaterInitializer {
     Iterator<IdUpdater> updaters = idUpdaters.iterator();
     while (updaters.hasNext()) {
       IdUpdater updater = updaters.next();
-      logger.info(String.format("Starting id updater %s", updater.getName()));
-      updater.startTimer();
+      logger.info(String.format("Registering id updater %s", updater.getName()));
     }
   }
    

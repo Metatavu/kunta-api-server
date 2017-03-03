@@ -7,11 +7,9 @@ import java.util.logging.Logger;
 import javax.annotation.Resource;
 import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
-import javax.ejb.Timeout;
-import javax.ejb.Timer;
-import javax.ejb.TimerConfig;
 import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.event.Event;
 import javax.inject.Inject;
 
 import org.onebusaway.gtfs.model.StopTime;
@@ -25,12 +23,13 @@ import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportStopId;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportStopTimeId;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportTripId;
+import fi.otavanopisto.kuntaapi.server.index.IndexRequest;
+import fi.otavanopisto.kuntaapi.server.index.IndexableStopTime;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.gtfs.cache.GtfsPublicTransportStopTimeCache;
 import fi.otavanopisto.kuntaapi.server.integrations.gtfs.tasks.GtfsStopTimeEntityTask;
 import fi.otavanopisto.kuntaapi.server.integrations.gtfs.tasks.GtfsStopTimeTaskQueue;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
-import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 
 @ApplicationScoped
 @Singleton
@@ -38,13 +37,8 @@ import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 @SuppressWarnings ("squid:S3306")
 public class GtfsStopTimeEntityUpdater extends EntityUpdater {
 
-  private static final int TIMER_INTERVAL = 1000;
-
   @Inject
   private Logger logger;
-
-  @Inject
-  private SystemSettingController systemSettingController;
   
   @Inject
   private IdController idController;
@@ -69,6 +63,9 @@ public class GtfsStopTimeEntityUpdater extends EntityUpdater {
   
   @Inject
   private GtfsStopTimeTaskQueue gtfsStopTimeTaskQueue;
+
+  @Inject
+  private Event<IndexRequest> indexRequest;
   
   @Resource
   private TimerService timerService;
@@ -79,24 +76,11 @@ public class GtfsStopTimeEntityUpdater extends EntityUpdater {
   }
 
   @Override
-  public void startTimer() {
-    startTimer(TIMER_INTERVAL);
-  }
-
-  private void startTimer(int duration) {
-    TimerConfig timerConfig = new TimerConfig();
-    timerConfig.setPersistent(false);
-    timerService.createSingleActionTimer(duration, timerConfig);
-  }
-
-  @Timeout
-  public void timeout(Timer timer) {
+  public void timeout() {
     GtfsStopTimeEntityTask task = gtfsStopTimeTaskQueue.next();
     if (task != null) {
       updateGtfsStopTime(task);
     }
-    
-    startTimer(systemSettingController.inTestMode() ? 1000 : TIMER_INTERVAL);
   }
   
   private void updateGtfsStopTime(GtfsStopTimeEntityTask task) {
@@ -133,5 +117,17 @@ public class GtfsStopTimeEntityUpdater extends EntityUpdater {
     
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(kuntaApiStopTime));
     gtfsPublicTransportStopTimeCache.put(kuntaApiStopTimeId, kuntaApiStopTime);
+
+    indexStopTime(kuntaApiStopTime);
+  }
+
+  private void indexStopTime(fi.metatavu.kuntaapi.server.rest.model.StopTime kuntaApiStopTime) {
+    IndexableStopTime indexableStopTime = new IndexableStopTime();
+    indexableStopTime.setArrivalTime(kuntaApiStopTime.getArrivalTime());
+    indexableStopTime.setDepartureTime(kuntaApiStopTime.getDepartureTime());
+    indexableStopTime.setId(kuntaApiStopTime.getId());
+    indexableStopTime.setStopId(kuntaApiStopTime.getStopId());
+    indexableStopTime.setTripId(kuntaApiStopTime.getTripId());
+    indexRequest.fire(new IndexRequest(indexableStopTime));
   }
 }

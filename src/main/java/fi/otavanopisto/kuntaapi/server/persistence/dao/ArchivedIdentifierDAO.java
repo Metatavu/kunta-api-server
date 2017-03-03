@@ -30,11 +30,12 @@ public class ArchivedIdentifierDAO extends AbstractDAO<ArchivedIdentifier> {
    * @param archived time when identifier was archived
    * @return created archived identifier
    */
-  public ArchivedIdentifier create(String type, String kuntaApiId, String source, String sourceId, String organizationKuntaApiId, OffsetDateTime archived) {
+  public ArchivedIdentifier create(String type, String kuntaApiId, String source, String sourceId, String organizationKuntaApiId, Long orderIndex, OffsetDateTime archived) {
     ArchivedIdentifier archivedIdentifier = new ArchivedIdentifier();
     
     archivedIdentifier.setType(type);
     archivedIdentifier.setKuntaApiId(kuntaApiId);
+    archivedIdentifier.setOrderIndex(orderIndex);
     archivedIdentifier.setSource(source);
     archivedIdentifier.setSourceId(sourceId);
     archivedIdentifier.setOrganizationKuntaApiId(organizationKuntaApiId);

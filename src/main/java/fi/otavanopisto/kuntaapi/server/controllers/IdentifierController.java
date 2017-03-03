@@ -90,7 +90,7 @@ public class IdentifierController {
     if (identifier == null) {
       ArchivedIdentifier archivedIdentifier = findArchivedIdentifierById(id);
       if (archivedIdentifier != null) {
-        identifier = createIdentifier(orderIndex == null ? 0l : orderIndex, archivedIdentifier.getType(), archivedIdentifier.getKuntaApiId(), archivedIdentifier.getSource(), archivedIdentifier.getSourceId(), archivedIdentifier.getOrganizationKuntaApiId());
+        identifier = createIdentifier(orderIndex == null ? archivedIdentifier.getOrderIndex() : orderIndex, archivedIdentifier.getType(), archivedIdentifier.getKuntaApiId(), archivedIdentifier.getSource(), archivedIdentifier.getSourceId(), archivedIdentifier.getOrganizationKuntaApiId());
         archivedIdentifierDAO.delete(archivedIdentifier);
       } else {
         identifier = createIdentifier(orderIndex == null ? 0l : orderIndex, id);
@@ -110,7 +110,7 @@ public class IdentifierController {
       identifierRelationDAO.delete(identifierRelation);
     }
     
-    archivedIdentifierDAO.create(identifier.getType(), identifier.getKuntaApiId(), identifier.getSource(), identifier.getSourceId(), identifier.getOrganizationKuntaApiId(), OffsetDateTime.now());
+    archivedIdentifierDAO.create(identifier.getType(), identifier.getKuntaApiId(), identifier.getSource(), identifier.getSourceId(), identifier.getOrganizationKuntaApiId(), identifier.getOrderIndex(), OffsetDateTime.now());
     identifierDAO.delete(identifier);
   }
 
