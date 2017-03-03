@@ -94,7 +94,7 @@ public abstract class AbstractTest {
   protected void deleteIdentifiers() {
     executeDelete("delete from IdentifierRelation");
     executeDelete("delete from Identifier");
-    executeDelete("delete from ArchievedIdentifier");
+    executeDelete("delete from ArchivedIdentifier");
   }
   
   protected long executeInsert(String sql, Object... params) {
