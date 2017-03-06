@@ -118,16 +118,18 @@ public class GtfsStopTimeEntityUpdater extends EntityUpdater {
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(kuntaApiStopTime));
     gtfsPublicTransportStopTimeCache.put(kuntaApiStopTimeId, kuntaApiStopTime);
 
-    indexStopTime(kuntaApiStopTime);
+    indexStopTime(kuntaApiOrganizationId, kuntaApiStopTime);
   }
 
-  private void indexStopTime(fi.metatavu.kuntaapi.server.rest.model.StopTime kuntaApiStopTime) {
+  private void indexStopTime(OrganizationId kuntaApiOrganizationId, fi.metatavu.kuntaapi.server.rest.model.StopTime kuntaApiStopTime) {
     IndexableStopTime indexableStopTime = new IndexableStopTime();
     indexableStopTime.setArrivalTime(kuntaApiStopTime.getArrivalTime());
     indexableStopTime.setDepartureTime(kuntaApiStopTime.getDepartureTime());
     indexableStopTime.setId(kuntaApiStopTime.getId());
     indexableStopTime.setStopId(kuntaApiStopTime.getStopId());
     indexableStopTime.setTripId(kuntaApiStopTime.getTripId());
+    indexableStopTime.setOrganizationId(kuntaApiOrganizationId.getId());
+    
     indexRequest.fire(new IndexRequest(indexableStopTime));
   }
 }
