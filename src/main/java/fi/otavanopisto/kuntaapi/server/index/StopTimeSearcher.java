@@ -7,6 +7,7 @@ import static org.elasticsearch.index.query.QueryBuilders.termQuery;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -30,7 +31,6 @@ import fi.otavanopisto.kuntaapi.server.integrations.SortDir;
 public class StopTimeSearcher {
   
   private static final String TYPE = "stoptime";
-  private static final String ID_FIELD = "id";
   private static final String ORGANIZATION_ID_FIELD = "organizationId";
   private static final String TRIP_ID_FIELD = "tripId";
   private static final String STOP_ID_FIELD = "stopId";
@@ -92,7 +92,7 @@ public class StopTimeSearcher {
     
     SearchRequestBuilder requestBuilder = indexReader
         .requestBuilder(TYPE)
-        .storedFields(ORGANIZATION_ID_FIELD, ID_FIELD)
+        .storedFields(ORGANIZATION_ID_FIELD)
         .setQuery(queryBuilder);
     
     if (firstResult != null) {
@@ -115,15 +115,16 @@ public class StopTimeSearcher {
     
     for (SearchHit hit : hits) {
       Map<String, SearchHitField> fields = hit.getFields(); 
-      
-      SearchHitField idField = fields.get(ID_FIELD);
-      String stopTimeId = idField.getValue();
+      String stopTimeId = hit.getId();
       
       SearchHitField organizationIdField = fields.get(ORGANIZATION_ID_FIELD);
-      String organizationId = organizationIdField.getValue();
-      
-      if (StringUtils.isNotBlank(organizationId)) {
-        result.add(new PublicTransportStopTimeId(new OrganizationId(KuntaApiConsts.IDENTIFIER_NAME, organizationId), KuntaApiConsts.IDENTIFIER_NAME, stopTimeId));
+      if (organizationIdField != null) {
+        String organizationId = organizationIdField.getValue();
+        if (StringUtils.isNotBlank(organizationId)) {
+          result.add(new PublicTransportStopTimeId(new OrganizationId(KuntaApiConsts.IDENTIFIER_NAME, organizationId), KuntaApiConsts.IDENTIFIER_NAME, stopTimeId));
+        }
+      } else {
+        logger.log(Level.SEVERE, () -> String.format("Could not find organization from stop time %s", stopTimeId));
       }
     }
     
