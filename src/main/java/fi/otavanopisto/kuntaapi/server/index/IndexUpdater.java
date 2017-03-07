@@ -33,6 +33,7 @@ public class IndexUpdater extends AbstractIndexHander {
     registerIndexable(IndexableService.class);
     registerIndexable(IndexablePage.class);
     registerIndexable(IndexableFile.class);
+    registerIndexable(IndexableStopTime.class);
   }
 
   @Lock (LockType.READ)
