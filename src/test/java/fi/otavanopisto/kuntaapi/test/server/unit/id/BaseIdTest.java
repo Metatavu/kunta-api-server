@@ -1,8 +1,8 @@
-package fi.otavanopisto.kuntaapi.test.server.unit.tasks;
+package fi.otavanopisto.kuntaapi.test.server.unit.id;
 
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
+import static org.junit.Assert.assertTrue;
 
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
@@ -13,35 +13,35 @@ import java.util.Map;
 import org.junit.Test;
 import org.reflections.Reflections;
 
-import fi.otavanopisto.kuntaapi.server.tasks.AbstractTask;
+import fi.otavanopisto.kuntaapi.server.id.BaseId;
 
-public class AbstractTaskTest {
+public class BaseIdTest {
 
   @Test
   public void testTestUniqueHashSeeds() {
     Reflections reflections = new Reflections("fi.otavanopisto.kuntaapi.server");
     
-    List<AbstractTask> abstractTasks = new ArrayList<>();
+    List<BaseId> ids = new ArrayList<>();
     
-    for (Class<? extends AbstractTask> abstractTypeClass : reflections.getSubTypesOf(AbstractTask.class)) {
+    for (Class<? extends BaseId> idClass : reflections.getSubTypesOf(BaseId.class)) {
       try {
-        if (!Modifier.isAbstract(abstractTypeClass.getModifiers())) {
-          abstractTasks.add(abstractTypeClass.newInstance());
+        if (!Modifier.isAbstract(idClass.getModifiers())) {
+          ids.add(idClass.newInstance());
         }
       } catch (InstantiationException | IllegalAccessException e) {
-        fail(String.format("Failed to construct %s with message %s", abstractTypeClass.getName(), e.getMessage()));
+        fail(String.format("Failed to construct %s with message %s", idClass.getName(), e.getMessage()));
       }
     }
     
-    assertFalse(abstractTasks.isEmpty());
+    assertFalse(ids.isEmpty());
     Map<Integer, String> multiplierOddNumbers = new HashMap<>();
     Map<Integer, String> initialOddNumbers = new HashMap<>();
     
-    for (AbstractTask abstractTask : abstractTasks) {
-      String className = abstractTask.getClass().getName();
+    for (BaseId id : ids) {
+      String className = id.getClass().getName();
       
-      int initialOddNumber = abstractTask.getTaskHashInitialOddNumber();
-      int multiplierOddNumber = abstractTask.getMultiplierOddNumber();
+      int initialOddNumber = id.getHashInitial();
+      int multiplierOddNumber = id.getHashMultiplier();
       
       assertFalse(String.format("Initial odd number %d used several times (%s, %s)", initialOddNumber, initialOddNumbers.get(initialOddNumber), className), initialOddNumbers.containsKey(initialOddNumber));
       assertFalse(String.format("Multiplier odd number %d used several times (%s, %s)", multiplierOddNumber, multiplierOddNumbers.get(multiplierOddNumber), className), multiplierOddNumbers.containsKey(multiplierOddNumber));

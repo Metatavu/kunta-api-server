@@ -32,12 +32,12 @@ public class FragmentId extends OrganizationBaseId {
   }
   
   @Override
-  protected int getHashInitial() {
+  public int getHashInitial() {
     return 335;
   }
   
   @Override
-  protected int getHashMultiplier() {
+  public int getHashMultiplier() {
     return 347;
   }
   
