@@ -109,7 +109,7 @@ public abstract class IdUpdater {
       } catch (Exception e) {
         logger.log(Level.SEVERE, "Timer throw an exception", e);
       } finally {
-        startTimer(systemSettingController.inTestMode() ? 1000 : getTimerInterval());
+        startTimer(getTimerInterval());
       }
     }
   }
