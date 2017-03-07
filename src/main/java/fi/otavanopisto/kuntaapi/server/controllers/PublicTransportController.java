@@ -86,8 +86,7 @@ public class PublicTransportController {
   }
   
   public List<StopTime> listStopTimes(OrganizationId organizationId, PublicTransportStopId stopId, Integer departureTime, PublicTransportStopTimeSortBy sortBy, SortDir sortDir, Long firstResult, Long maxResults) {
-    List<StopTime> result = searchStopTimes(organizationId, null, stopId, departureTime, sortBy, sortDir, firstResult, maxResults);
-    return ListUtils.limit(sortStopTimes(result, sortBy, sortDir), firstResult, maxResults);
+    return searchStopTimes(organizationId, null, stopId, departureTime, sortBy, sortDir, firstResult, maxResults);
   }
   
   public StopTime findStopTime(OrganizationId organizationId, PublicTransportStopTimeId stopTimeId) {
@@ -185,13 +184,15 @@ public class PublicTransportController {
           result.add(stopTime);
         }
       }
+      
+      return result; 
     } else {
       for (PublicTransportProvider publicTransportProvider : getPublicTransportProviders()) {
         result.addAll(publicTransportProvider.listStopTimes(organizationId, stopId, depratureTimeOnOrAfter));
       }
+      
+      return ListUtils.limit(sortStopTimes(result, sortBy, sortDir), firstResult, maxResults);
     }
-    
-    return result; 
   }
   
   private List<StopTime> sortStopTimes(List<StopTime> stopTimes, PublicTransportStopTimeSortBy sortBy, SortDir sortDir) {
