@@ -1465,8 +1465,8 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   }
 
   @Override
-  public Response listOrganizationPublicTransportStopTimes(String organizationIdParam, String stopIdParam, Integer departureTime, 
-      String sortByParam, String sortDirParam, Request request) {
+  public Response listOrganizationPublicTransportStopTimes(String organizationIdParam, String stopIdParam, Integer departureTime,
+      String sortByParam, String sortDirParam, Long firstResult, Long maxResults, Request request) {
     
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
     if (organizationId == null) {
@@ -1492,7 +1492,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       sortDir = EnumUtils.getEnum(SortDir.class, sortDirParam);
     }
     
-    List<StopTime> result = publicTransportController.listStopTimes(organizationId, stopId, departureTime, sortBy, sortDir, null, null);
+    List<StopTime> result = publicTransportController.listStopTimes(organizationId, stopId, departureTime, sortBy, sortDir, firstResult, maxResults);
     List<String> ids = httpCacheController.getEntityIds(result);
     Response notModified = httpCacheController.getNotModified(request, ids);
     if (notModified != null) {
@@ -1570,6 +1570,15 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     return httpCacheController.sendModified(result, ids);
   }
   
+  @Override
+  public Response findOrganizationShortlink(String organizationId, String shortlinkId, Request request) {
+    return createNotImplemented("Not implemented");
+  }
+  
+  @Override
+  public Response listOrganizationShortlinks(String organizationId, String path, Long firstResult, Long maxResults, Request request) {
+    return createNotImplemented("Not implemented");
+  }
   
   private List<Page> listOrganizationPages(OrganizationId organizationId, boolean onlyRootPages, PageId parentId, String path, String search, Long firstResult, Long maxResults) {
     if (search != null) {
