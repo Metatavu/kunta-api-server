@@ -1,5 +1,6 @@
 package fi.otavanopisto.kuntaapi.server.discover;
 
+import java.util.Collection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -7,6 +8,7 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.annotation.Resource;
 import javax.ejb.Timeout;
+import javax.ejb.Timer;
 import javax.ejb.TimerConfig;
 import javax.ejb.TimerService;
 import javax.inject.Inject;
@@ -41,6 +43,25 @@ public abstract class IdUpdater {
   }
   
   public abstract void timeout();
+  
+  /**
+   * Stops id updater
+   * 
+   * @param cancelTimers if true all assiciated timers are also canceled
+   */
+  public void stop(boolean cancelTimers) {
+    stopped = true;
+    if (cancelTimers) {
+      try {
+        Collection<Timer> timers = timerService.getTimers();
+        for (Timer timer : timers) {
+          timer.cancel();
+        }
+      } catch (Exception e) {
+        logger.log(Level.SEVERE, "Failed to cancel timer", e);
+      }
+    }
+  }
   
   public int getTimerWarmup() {
     if (systemSettingController.inTestMode()) {
@@ -88,7 +109,7 @@ public abstract class IdUpdater {
       } catch (Exception e) {
         logger.log(Level.SEVERE, "Timer throw an exception", e);
       } finally {
-        startTimer(systemSettingController.inTestMode() ? 1000 : getTimerInterval());
+        startTimer(getTimerInterval());
       }
     }
   }

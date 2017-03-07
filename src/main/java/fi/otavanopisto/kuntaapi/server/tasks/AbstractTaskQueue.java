@@ -151,6 +151,13 @@ public abstract class AbstractTaskQueue <T extends AbstractTask> {
     }
   }
   
+  /**
+   * Stops task queue
+   */
+  public void stop() {
+    running = false;
+  }
+  
   private String createTaskId(Integer taskHashId) {
     return String.format("%s-%d", getName(), taskHashId);
   }
