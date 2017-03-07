@@ -37,6 +37,7 @@ import fi.otavanopisto.kuntaapi.server.id.PublicTransportStopTimeId;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportTripId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceLocationChannelId;
+import fi.otavanopisto.kuntaapi.server.id.ShortlinkId;
 import fi.otavanopisto.kuntaapi.server.id.TileId;
 import fi.otavanopisto.kuntaapi.server.id.WebPageChannelId;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
@@ -199,6 +200,11 @@ public abstract class AbstractIdProvider implements IdProvider {
   @Override
   public PublicTransportTripId translate(PublicTransportTripId publicTransportTripId, String target) {
     return translateId(publicTransportTripId, IdType.PUBLIC_TRANSPORT_TRIP, PublicTransportTripId.class, target);
+  }
+  
+  @Override
+  public ShortlinkId translate(ShortlinkId shortlinkId, String target) {
+    return translateId(shortlinkId, IdType.SHORTLINK, ShortlinkId.class, target);
   }
   
   private <T extends BaseId> T translateId(T id, IdType type, Class<T> idClass, String target) {
