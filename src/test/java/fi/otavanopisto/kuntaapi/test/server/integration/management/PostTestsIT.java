@@ -41,9 +41,11 @@ public class PostTestsIT extends AbstractIntegrationTest {
     getRestfulPtvOrganizationMocker()
       .mockOrganizations("0de268cf-1ea1-4719-8a6e-1150933b6b9e");
     
+    getManagementPostMocker()
+      .mockPosts(789, 890, 901);
+    
     getManagementMocker()
       .mockMedia("3001", "3002")
-      .mockPosts("789", "890", "901")
       .startMock();
     
     startMocks();

@@ -79,6 +79,10 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     return managementPageMocker;
   }
   
+  public ManagementPostMocker getManagementPostMocker() {
+    return managementPostMocker;
+  }
+  
   public ManagementShortlinkMocker getManagementShortlinkMocker() {
     return managementShortlinkMocker;
   }
