@@ -80,23 +80,28 @@ public abstract class AbstractTaskQueue <T extends AbstractTask> {
     
     if (systemSettingController.isNotTestingOrTestRunning()) {
       startBatch();
+      
+      Integer taskHashId;
+      
       try {
         List<Integer> priorities = getPriorities();
         if (priorities.isEmpty()) {
           return null;
         }
         
-        Integer taskHashId = priorities.remove(0);
+        taskHashId = priorities.remove(0);
         setPriorities(priorities);
         
-        return popTask(taskHashId);
       } finally {
         tasksExecuted++;
         endBatch();
       }
-    } else {
-      return null;
+      if (taskHashId != null) {
+        return popTask(taskHashId);
+      }
     }
+    
+    return null;
   }
   
   /**
@@ -111,13 +116,15 @@ public abstract class AbstractTaskQueue <T extends AbstractTask> {
       return;
     }
     
+    byte[] rawData = serialize(task);
+    Cache<String, byte[]> tasksCache = getTasksCache();
+    Integer taskHashId;
     startBatch();
     try {
-      byte[] rawData = serialize(task);
-      Cache<String, byte[]> tasksCache = getTasksCache();
       List<Integer> priorities = getPriorities();
+      boolean modified = false;
+      taskHashId = task.getTaskHash();
       
-      Integer taskHashId = task.getTaskHash();
       if (priority) {
         if (priorities.contains(taskHashId)) {
           duplicatedTasks++;
@@ -125,16 +132,24 @@ public abstract class AbstractTaskQueue <T extends AbstractTask> {
         }
         
         priorities.add(0, taskHashId);
+        modified = true;
       } else {
         if (!priorities.contains(taskHashId)) {
           priorities.add(taskHashId);
+          modified = true;
         }
       }
       
-      setPriorities(priorities);
-      tasksCache.put(createTaskId(taskHashId), rawData);
+      if (modified) {
+        setPriorities(priorities); 
+      }
+      
     } finally {
       endBatch();
+    }
+    
+    if(taskHashId != null) {
+      tasksCache.put(createTaskId(taskHashId), rawData);
     }
   }
 
