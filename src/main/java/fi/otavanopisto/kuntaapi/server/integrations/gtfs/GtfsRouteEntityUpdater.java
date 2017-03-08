@@ -22,6 +22,7 @@ import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportAgencyId;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportRouteId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
+import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
 import fi.otavanopisto.kuntaapi.server.integrations.gtfs.cache.GtfsPublicTransportRouteCache;
 import fi.otavanopisto.kuntaapi.server.integrations.gtfs.tasks.GtfsRouteEntityTask;
 import fi.otavanopisto.kuntaapi.server.integrations.gtfs.tasks.GtfsRouteTaskQueue;
@@ -53,7 +54,10 @@ public class GtfsRouteEntityUpdater extends EntityUpdater {
   
   @Inject
   private ModificationHashCache modificationHashCache;
-  
+
+  @Inject
+  private KuntaApiIdFactory kuntaApiIdFactory; 
+
   @Inject
   private GtfsIdFactory gtfsIdFactory;
   
@@ -98,7 +102,7 @@ public class GtfsRouteEntityUpdater extends EntityUpdater {
     Identifier identifier = identifierController.acquireIdentifier(orderIndex, gtfsRouteId);
     identifierRelationController.setParentId(identifier, kuntaApiOrganizationId);
     
-    PublicTransportRouteId kuntaApiRouteId = gtfsIdFactory.createKuntaApiId(PublicTransportRouteId.class, identifier);
+    PublicTransportRouteId kuntaApiRouteId = kuntaApiIdFactory.createFromIdentifier(PublicTransportRouteId.class, identifier);
     fi.metatavu.kuntaapi.server.rest.model.Route kuntaApiRoute = gtfsTranslator.translateRoute(kuntaApiRouteId, gtfsRoute, kuntaApiAgencyId);
     
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(kuntaApiRoute));
