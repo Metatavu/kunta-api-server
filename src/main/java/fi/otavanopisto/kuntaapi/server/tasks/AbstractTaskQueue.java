@@ -148,7 +148,7 @@ public abstract class AbstractTaskQueue <T extends AbstractTask> {
       endBatch();
     }
     
-    if(taskHashId != null) {
+    if (taskHashId != null) {
       tasksCache.put(createTaskId(taskHashId), rawData);
     }
   }
