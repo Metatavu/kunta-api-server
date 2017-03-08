@@ -122,11 +122,11 @@ public class GtfsIdUpdater extends IdUpdater {
       reader.run();
       
       handleAgencies(organizationId, store);
+      handleStops(organizationId, store);
       handleSchedules(organizationId, store);
       handleRoutes(organizationId, store);
-      handleStops(organizationId, store);
-      handleStopTimes(organizationId, store);
       handleTrips(organizationId, store);
+      handleStopTimes(organizationId, store);
       
     } catch (IOException e) {
       if (logger.isLoggable(Level.WARNING)) {
