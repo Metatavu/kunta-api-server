@@ -31,13 +31,13 @@ public class ManagementShortlinkProvider extends AbstractManagementProvider impl
   private IdentifierRelationController identifierRelationController;
   
   @Override
-  public List<Shortlink> listOrganizationShortlinks(OrganizationId organizationId, String slug) {
+  public List<Shortlink> listOrganizationShortlinks(OrganizationId organizationId, String path) {
     List<ShortlinkId> shortlinkIds = identifierRelationController.listShortlinkIdsBySourceAndParentId(ManagementConsts.IDENTIFIER_NAME, organizationId);
     List<Shortlink> shortlinks = new ArrayList<>(shortlinkIds.size());
     
     for (ShortlinkId shortlinkId : shortlinkIds) {
       Shortlink shortlink = managementShortlinkCache.get(shortlinkId);
-      if (shortlink != null && isAcceptable(shortlink, slug)) {
+      if (shortlink != null && isAcceptable(shortlink, path)) {
         shortlinks.add(shortlink);
       }
     }

@@ -35,10 +35,9 @@ public class PageTestsIT extends AbstractIntegrationTest {
   @Before
   public void beforeTest() throws InterruptedException {
     createPtvSettings();
-    
-    getPtvMocker()
-      .mockOrganizations("0de268cf-1ea1-4719-8a6e-1150933b6b9e")
-      .startMock();
+
+    getRestfulPtvOrganizationMocker()
+      .mockOrganizations("0de268cf-1ea1-4719-8a6e-1150933b6b9e");
     
     getManagementMocker()
       .mockMedia("3001", "3002")
@@ -48,6 +47,8 @@ public class PageTestsIT extends AbstractIntegrationTest {
       .mockPages(456, 567, 678)
       .startMock();
 
+    startMocks();
+    
     waitApiListCount("/organizations", 1);
     String organizationId = getOrganizationId(0);
     createManagementSettings(organizationId);

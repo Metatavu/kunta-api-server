@@ -65,10 +65,11 @@ public class MikkeliNytRestTestsIT extends AbstractIntegrationTest {
     
     createSystemSettings();
     
-    getPtvMocker()
-      .mockOrganizations("0de268cf-1ea1-4719-8a6e-1150933b6b9e")
-      .startMock();
+    getRestfulPtvOrganizationMocker()
+      .mockOrganizations("0de268cf-1ea1-4719-8a6e-1150933b6b9e");
     
+    startMocks();
+
     waitApiListCount("/organizations", 1);
     
     String organizationId = getOrganizationId(0);
