@@ -18,6 +18,7 @@ import fi.otavanopisto.kuntaapi.server.id.BaseId;
 public class BaseIdTest {
 
   @Test
+  @SuppressWarnings ("squid:S1166")
   public void testTestUniqueHashSeeds() {
     Reflections reflections = new Reflections("fi.otavanopisto.kuntaapi.server");
     
