@@ -116,9 +116,39 @@ public abstract class AbstractTaskQueue <T extends AbstractTask> {
       return;
     }
     
-    byte[] rawData = serialize(task);
+    Integer taskHashId = obtainTaskHash(task, priority);
+    
+    if (taskHashId != null) {
+      byte[] rawData = serialize(task);
+      Cache<String, byte[]> tasksCache = getTasksCache();
+      tasksCache.put(createTaskId(taskHashId), rawData);
+    }
+    
+  }
+
+  /**
+   * Clears all tasks from the queue
+   */
+  public void clear() {
     Cache<String, byte[]> tasksCache = getTasksCache();
+    List<Integer> hashIds = getPrioritiesCache().remove(getName());
+    if (hashIds != null) {
+      for (Integer hashId : hashIds) {
+        tasksCache.remove(createTaskId(hashId));
+      }
+    }
+  }
+  
+  /**
+   * Stops task queue
+   */
+  public void stop() {
+    running = false;
+  }
+  
+  private Integer obtainTaskHash(T task, boolean priority) {
     Integer taskHashId;
+    
     startBatch();
     try {
       List<Integer> priorities = getPriorities();
@@ -142,35 +172,12 @@ public abstract class AbstractTaskQueue <T extends AbstractTask> {
       
       if (modified) {
         setPriorities(priorities); 
-      }
-      
+      }  
     } finally {
       endBatch();
     }
     
-    if (taskHashId != null) {
-      tasksCache.put(createTaskId(taskHashId), rawData);
-    }
-  }
-
-  /**
-   * Clears all tasks from the queue
-   */
-  public void clear() {
-    Cache<String, byte[]> tasksCache = getTasksCache();
-    List<Integer> hashIds = getPrioritiesCache().remove(getName());
-    if (hashIds != null) {
-      for (Integer hashId : hashIds) {
-        tasksCache.remove(createTaskId(hashId));
-      }
-    }
-  }
-  
-  /**
-   * Stops task queue
-   */
-  public void stop() {
-    running = false;
+    return taskHashId;
   }
   
   private String createTaskId(Integer taskHashId) {
