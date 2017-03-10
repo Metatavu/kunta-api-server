@@ -26,7 +26,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.OrganizationServic
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask.Operation;
-import fi.otavanopisto.restfulptv.client.ApiResponse;
+import fi.metatavu.restfulptv.client.ApiResponse;
 
 @ApplicationScoped
 @Singleton
@@ -98,9 +98,9 @@ public class PtvOrganizationServiceEntityUpdater extends EntityUpdater {
       return;
     }
     
-    ApiResponse<fi.otavanopisto.restfulptv.client.model.OrganizationService> response = ptvApi.getOrganizationApi().findOrganizationService(ptvOrganizationId.getId(), ptvOrganizationServiceId.getId());
+    ApiResponse<fi.metatavu.restfulptv.client.model.OrganizationService> response = ptvApi.getOrganizationApi().findOrganizationService(ptvOrganizationId.getId(), ptvOrganizationServiceId.getId());
     if (response.isOk()) {
-      fi.otavanopisto.restfulptv.client.model.OrganizationService ptvOrganizationService = response.getResponse();
+      fi.metatavu.restfulptv.client.model.OrganizationService ptvOrganizationService = response.getResponse();
       ServiceId ptvServiceId = new ServiceId(PtvConsts.IDENTIFIER_NAME, ptvOrganizationService.getServiceId());
       ServiceId kuntaApiServiceId = idController.translateServiceId(ptvServiceId, KuntaApiConsts.IDENTIFIER_NAME);
       if (kuntaApiServiceId == null) {

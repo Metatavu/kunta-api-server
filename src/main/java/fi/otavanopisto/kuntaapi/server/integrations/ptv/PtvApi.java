@@ -4,15 +4,15 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
-import fi.otavanopisto.restfulptv.client.ElectronicChannelsApi;
-import fi.otavanopisto.restfulptv.client.OrganizationServicesApi;
-import fi.otavanopisto.restfulptv.client.OrganizationsApi;
-import fi.otavanopisto.restfulptv.client.PhoneChannelsApi;
-import fi.otavanopisto.restfulptv.client.PrintableFormChannelsApi;
-import fi.otavanopisto.restfulptv.client.ServiceLocationChannelsApi;
-import fi.otavanopisto.restfulptv.client.ServicesApi;
-import fi.otavanopisto.restfulptv.client.StatutoryDescriptionsApi;
-import fi.otavanopisto.restfulptv.client.WebPageChannelsApi;
+import fi.metatavu.restfulptv.client.ElectronicChannelsApi;
+import fi.metatavu.restfulptv.client.OrganizationServicesApi;
+import fi.metatavu.restfulptv.client.OrganizationsApi;
+import fi.metatavu.restfulptv.client.PhoneChannelsApi;
+import fi.metatavu.restfulptv.client.PrintableFormChannelsApi;
+import fi.metatavu.restfulptv.client.ServiceLocationChannelsApi;
+import fi.metatavu.restfulptv.client.ServicesApi;
+import fi.metatavu.restfulptv.client.StatutoryDescriptionsApi;
+import fi.metatavu.restfulptv.client.WebPageChannelsApi;
 
 @ApplicationScoped
 public class PtvApi {

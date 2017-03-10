@@ -8,23 +8,23 @@ import java.util.Map.Entry;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.enterprise.context.Dependent;
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 import org.apache.http.client.utils.URIBuilder;
 
+import fi.metatavu.restfulptv.client.ApiResponse;
+import fi.metatavu.restfulptv.client.ResultType;
 import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpClient;
 import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpClient.Response;
-import fi.otavanopisto.restfulptv.client.ApiResponse;
-import fi.otavanopisto.restfulptv.client.ResultType;
 
 /**
  * API Client for RESTful PTV Server
  * 
  * @author Antti Leppä
  */
-@Dependent
-public class PtvClient implements fi.otavanopisto.restfulptv.client.ApiClient {
+@ApplicationScoped
+public class PtvClient implements fi.metatavu.restfulptv.client.ApiClient {
 
   private static final String INVALID_URI_SYNTAX = "Invalid uri syntax";
   

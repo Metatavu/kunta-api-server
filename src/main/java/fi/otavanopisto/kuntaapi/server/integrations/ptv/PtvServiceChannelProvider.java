@@ -20,7 +20,7 @@ import fi.metatavu.kuntaapi.server.rest.model.PhoneChannel;
 import fi.metatavu.kuntaapi.server.rest.model.PrintableFormChannel;
 import fi.metatavu.kuntaapi.server.rest.model.ServiceLocationChannel;
 import fi.metatavu.kuntaapi.server.rest.model.WebPageChannel;
-import fi.otavanopisto.restfulptv.client.ApiResponse;
+import fi.metatavu.restfulptv.client.ApiResponse;
 
 /**
  * Service channel provider for PTV
@@ -64,7 +64,7 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
       return null;
     }
     
-    ApiResponse<fi.otavanopisto.restfulptv.client.model.ElectronicChannel> electronicChannelResponse = ptvApi.getElectronicChannelsApi().findServiceElectronicChannel(ptvServiceId.getId(), ptvElectronicServiceChannelId.getId());
+    ApiResponse<fi.metatavu.restfulptv.client.model.ElectronicChannel> electronicChannelResponse = ptvApi.getElectronicChannelsApi().findServiceElectronicChannel(ptvServiceId.getId(), ptvElectronicServiceChannelId.getId());
     if (!electronicChannelResponse.isOk()) {
       logger.severe(String.format("Electronic channels list of service %s reported [%d] %s", serviceId.toString(), electronicChannelResponse.getStatus(), electronicChannelResponse.getMessage()));
       return null;
@@ -87,7 +87,7 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
       return null;
     }
     
-    ApiResponse<fi.otavanopisto.restfulptv.client.model.PhoneChannel> phoneChannelResponse = ptvApi.getPhoneChannelsApi().findServicePhoneChannel(ptvServiceId.getId(), ptvPhoneChannelId.getId());
+    ApiResponse<fi.metatavu.restfulptv.client.model.PhoneChannel> phoneChannelResponse = ptvApi.getPhoneChannelsApi().findServicePhoneChannel(ptvServiceId.getId(), ptvPhoneChannelId.getId());
     if (!phoneChannelResponse.isOk()) {
       logger.severe(String.format("Phone channels list of service %s reported [%d] %s", serviceId.toString(), phoneChannelResponse.getStatus(), phoneChannelResponse.getMessage()));
       return null;
@@ -110,7 +110,7 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
       return null;
     }
     
-    ApiResponse<fi.otavanopisto.restfulptv.client.model.PrintableFormChannel> printableFormChannelResponse = ptvApi.getPrintableFormChannelsApi().findServicePrintableFormChannel(ptvServiceId.getId(), ptvPrintableFormChannelId.getId());
+    ApiResponse<fi.metatavu.restfulptv.client.model.PrintableFormChannel> printableFormChannelResponse = ptvApi.getPrintableFormChannelsApi().findServicePrintableFormChannel(ptvServiceId.getId(), ptvPrintableFormChannelId.getId());
     if (!printableFormChannelResponse.isOk()) {
       logger.severe(String.format("Printable form channels list of service %s reported [%d] %s", serviceId.toString(), printableFormChannelResponse.getStatus(), printableFormChannelResponse.getMessage()));
       return null;
@@ -133,7 +133,7 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
       return null;
     }
     
-    ApiResponse<fi.otavanopisto.restfulptv.client.model.ServiceLocationChannel> serviceLocationChannelResponse = ptvApi.getServiceLocationChannelsApi().findServiceServiceLocationChannel(ptvServiceId.getId(), ptvServiceLocationChannelId.getId());
+    ApiResponse<fi.metatavu.restfulptv.client.model.ServiceLocationChannel> serviceLocationChannelResponse = ptvApi.getServiceLocationChannelsApi().findServiceServiceLocationChannel(ptvServiceId.getId(), ptvServiceLocationChannelId.getId());
     if (!serviceLocationChannelResponse.isOk()) {
       logger.severe(String.format("Service location channels list of service %s reported [%d] %s", serviceId.toString(), serviceLocationChannelResponse.getStatus(), serviceLocationChannelResponse.getMessage()));
       return null;
@@ -156,7 +156,7 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
       return null;
     }
     
-    ApiResponse<fi.otavanopisto.restfulptv.client.model.WebPageChannel> webPageChannelResponse = ptvApi.getWebPageChannelsApi().findServiceWebPageChannel(ptvServiceId.getId(), ptvWebPageChannelId.getId());
+    ApiResponse<fi.metatavu.restfulptv.client.model.WebPageChannel> webPageChannelResponse = ptvApi.getWebPageChannelsApi().findServiceWebPageChannel(ptvServiceId.getId(), ptvWebPageChannelId.getId());
     if (!webPageChannelResponse.isOk()) {
       logger.severe(String.format("Web page channels list of service %s reported [%d] %s", serviceId.toString(), webPageChannelResponse.getStatus(), webPageChannelResponse.getMessage()));
       return null;
@@ -173,7 +173,7 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
       return Collections.emptyList();
     }
     
-    ApiResponse<List<fi.otavanopisto.restfulptv.client.model.ElectronicChannel>> electronicChannelsResponse = ptvApi.getElectronicChannelsApi().listServiceElectronicChannels(ptvServiceId.getId(), null, null);
+    ApiResponse<List<fi.metatavu.restfulptv.client.model.ElectronicChannel>> electronicChannelsResponse = ptvApi.getElectronicChannelsApi().listServiceElectronicChannels(ptvServiceId.getId(), null, null);
     if (!electronicChannelsResponse.isOk()) {
       logger.severe(String.format("Electronic channels list of service %s reported [%d] %s", serviceId.toString(), electronicChannelsResponse.getStatus(), electronicChannelsResponse.getMessage()));
       return Collections.emptyList();
@@ -190,7 +190,7 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
       return Collections.emptyList();
     }
     
-    ApiResponse<List<fi.otavanopisto.restfulptv.client.model.PhoneChannel>> phoneChannelsResponse = ptvApi.getPhoneChannelsApi().listServicePhoneChannels(ptvServiceId.getId(), null, null);
+    ApiResponse<List<fi.metatavu.restfulptv.client.model.PhoneChannel>> phoneChannelsResponse = ptvApi.getPhoneChannelsApi().listServicePhoneChannels(ptvServiceId.getId(), null, null);
     if (!phoneChannelsResponse.isOk()) {
       logger.severe(String.format("Phone channels list of service %s reported [%d] %s", serviceId.toString(), phoneChannelsResponse.getStatus(), phoneChannelsResponse.getMessage()));
       return Collections.emptyList();
@@ -207,7 +207,7 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
       return Collections.emptyList();
     }
     
-    ApiResponse<List<fi.otavanopisto.restfulptv.client.model.PrintableFormChannel>> printableFormChannelsResponse = ptvApi.getPrintableFormChannelsApi().listServicePrintableFormChannels(ptvServiceId.getId(), null, null);
+    ApiResponse<List<fi.metatavu.restfulptv.client.model.PrintableFormChannel>> printableFormChannelsResponse = ptvApi.getPrintableFormChannelsApi().listServicePrintableFormChannels(ptvServiceId.getId(), null, null);
     if (!printableFormChannelsResponse.isOk()) {
       logger.severe(String.format("PrintableForm channels list of service %s reported [%d] %s", serviceId.toString(), printableFormChannelsResponse.getStatus(), printableFormChannelsResponse.getMessage()));
       return Collections.emptyList();
@@ -224,7 +224,7 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
       return Collections.emptyList();
     }
     
-    ApiResponse<List<fi.otavanopisto.restfulptv.client.model.ServiceLocationChannel>> serviceLocationChannelsResponse = ptvApi.getServiceLocationChannelsApi().listServiceServiceLocationChannels(ptvServiceId.getId(), null, null);
+    ApiResponse<List<fi.metatavu.restfulptv.client.model.ServiceLocationChannel>> serviceLocationChannelsResponse = ptvApi.getServiceLocationChannelsApi().listServiceServiceLocationChannels(ptvServiceId.getId(), null, null);
     if (!serviceLocationChannelsResponse.isOk()) {
       logger.severe(String.format("ServiceLocation channels list of service %s reported [%d] %s", serviceId.toString(), serviceLocationChannelsResponse.getStatus(), serviceLocationChannelsResponse.getMessage()));
       return Collections.emptyList();
@@ -241,7 +241,7 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
       return Collections.emptyList();
     }
     
-    ApiResponse<List<fi.otavanopisto.restfulptv.client.model.WebPageChannel>> webPageChannelsResponse = ptvApi.getWebPageChannelsApi().listServiceWebPageChannels(ptvServiceId.getId(), null, null);
+    ApiResponse<List<fi.metatavu.restfulptv.client.model.WebPageChannel>> webPageChannelsResponse = ptvApi.getWebPageChannelsApi().listServiceWebPageChannels(ptvServiceId.getId(), null, null);
     if (!webPageChannelsResponse.isOk()) {
       logger.severe(String.format("WebPage channels list of service %s reported [%d] %s", serviceId.toString(), webPageChannelsResponse.getStatus(), webPageChannelsResponse.getMessage()));
       return Collections.emptyList();

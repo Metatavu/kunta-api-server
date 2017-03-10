@@ -30,10 +30,10 @@ import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask.Operation;
 import fi.otavanopisto.kuntaapi.server.utils.LocalizationUtils;
-import fi.otavanopisto.restfulptv.client.ApiResponse;
-import fi.otavanopisto.restfulptv.client.model.LocalizedListItem;
-import fi.otavanopisto.restfulptv.client.model.Service;
-import fi.otavanopisto.restfulptv.client.model.StatutoryDescription;
+import fi.metatavu.restfulptv.client.ApiResponse;
+import fi.metatavu.restfulptv.client.model.LocalizedListItem;
+import fi.metatavu.restfulptv.client.model.Service;
+import fi.metatavu.restfulptv.client.model.StatutoryDescription;
 
 @ApplicationScoped
 @Singleton
