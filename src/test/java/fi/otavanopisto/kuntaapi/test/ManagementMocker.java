@@ -15,7 +15,6 @@ import fi.metatavu.management.client.model.Fragment;
 import fi.metatavu.management.client.model.Menu;
 import fi.metatavu.management.client.model.Menuitem;
 import fi.metatavu.management.client.model.Pagemappings;
-import fi.metatavu.management.client.model.Post;
 import fi.metatavu.management.client.model.Tile;
 
 public class ManagementMocker extends AbstractMocker {
@@ -24,7 +23,6 @@ public class ManagementMocker extends AbstractMocker {
   private static final String BANNERS_PATH = "/wp-json/wp/v2/banner";
   private static final String MENUS_PATH = "/wp-json/kunta-api/menus";
   private static final String MENU_ITEMS_PATH = "/wp-json/kunta-api/menus/%s/items";
-  private static final String POSTS_PATH = "/wp-json/wp/v2/posts";
   private static final String TILES_PATH = "/wp-json/wp/v2/tile";
   private static final String FRAGMENTS_PATH = "/wp-json/wp/v2/fragment";
   private static final String ANNOUNCEMENTS_PATH = "/wp-json/wp/v2/announcement";
@@ -36,7 +34,6 @@ public class ManagementMocker extends AbstractMocker {
   private List<Banner> bannerList = new ArrayList<>();
   private List<Menu> menuList = new ArrayList<>();
   private Map<String, List<Menuitem>> menuItems = new HashMap<>();
-  private List<Post> postList = new ArrayList<>();
   private List<Tile> tileList = new ArrayList<>();
   private List<Announcement> announcementList = new ArrayList<>();
   private List<Fragment> fragmentList = new ArrayList<>();
@@ -86,16 +83,6 @@ public class ManagementMocker extends AbstractMocker {
       }
       
       menuItems.get(menuId).add(menuItem);
-    }     
-    
-    return this;
-  }
-  
-  public ManagementMocker mockPosts(String... ids) {
-    for (String id : ids) {
-      Post post = readPostFromJSONFile(String.format("management/posts/%s.json", id));
-      mockGetJSON(String.format(PATH_TEMPLATE, POSTS_PATH, id), post, null);
-      postList.add(post);
     }     
     
     return this;
@@ -173,16 +160,6 @@ public class ManagementMocker extends AbstractMocker {
   }
   
   /**
-   * Reads JSON file as post object
-   * 
-   * @param file path to JSON file
-   * @return read object
-   */    
-  private Post readPostFromJSONFile(String file) {
-    return readJSONFile(file, Post.class);
-  }
-  
-  /**
    * Reads JSON file as tile object
    * 
    * @param file path to JSON file
@@ -223,7 +200,6 @@ public class ManagementMocker extends AbstractMocker {
     mockGetJSON(MEDIAS_PATH, mediaList, pageQuery100);
     mockGetJSON(BANNERS_PATH, bannerList, pageQuery100);
     mockGetJSON(MENUS_PATH, menuList, pageQuery100);
-    mockGetJSON(POSTS_PATH, postList, pageQuery100);
     mockGetJSON(TILES_PATH, tileList, pageQuery100);
     mockGetJSON(ANNOUNCEMENTS_PATH, announcementList, pageQuery100);
     mockGetJSON(FRAGMENTS_PATH, fragmentList, pageQuery1001);
@@ -231,7 +207,6 @@ public class ManagementMocker extends AbstractMocker {
     mockGetJSON(MEDIAS_PATH, mediaList, null);
     mockGetJSON(BANNERS_PATH, bannerList, null);
     mockGetJSON(MENUS_PATH, menuList, null);
-    mockGetJSON(POSTS_PATH, postList, null);
     mockGetJSON(TILES_PATH, tileList, null);
     mockGetJSON(ANNOUNCEMENTS_PATH, announcementList, null);
     mockGetJSON(FRAGMENTS_PATH, fragmentList, null);

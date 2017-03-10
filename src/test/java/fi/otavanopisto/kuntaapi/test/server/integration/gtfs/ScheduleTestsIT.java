@@ -34,9 +34,10 @@ public class ScheduleTestsIT extends AbstractIntegrationTest{
   public void beforeTest() throws InterruptedException {
     createPtvSettings();
     
-    getPtvMocker()
-      .mockOrganizations("0de268cf-1ea1-4719-8a6e-1150933b6b9e")
-      .startMock();
+    getRestfulPtvOrganizationMocker()
+      .mockOrganizations("0de268cf-1ea1-4719-8a6e-1150933b6b9e");
+    
+    startMocks();
 
     waitApiListCount("/organizations", 1);
     

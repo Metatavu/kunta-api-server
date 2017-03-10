@@ -70,14 +70,14 @@ public abstract class BaseId implements Serializable {
    *   
    * @return a hard coded odd number used as the initial value when calculating the hash value
    */
-  protected abstract int getHashInitial();
+  public abstract int getHashInitial();
   
   /**
    * Returns a hard coded odd number used as the multiplier when calculating the hash value
    * 
    * @return a hard coded odd number used as the multiplier when calculating the hash value
    */
-  protected abstract int getHashMultiplier();
+  public abstract int getHashMultiplier();
   
   @Override
   public boolean equals(Object obj) {
