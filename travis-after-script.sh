@@ -1,4 +1,4 @@
 #!/bin/bash
 
-echo "After build"
+echo "Build failed"
 cat target/cargo/configurations/wildfly10x/log/server.log
