@@ -34,6 +34,8 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   
   @After
   public void afterEveryTest() {
+    addServerLogEntry(String.format("### Test %s end ###", testName.getMethodName()));
+
     clearTasks();
     deleteSystemSetting(KuntaApiConsts.SYSTEM_SETTING_TESTS_RUNNING);
     
@@ -43,7 +45,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     restfulPtvServiceMocker.endMock();
     restfulPtvOrganizationMocker.endMock();
     
-    deleteIdentifiers();
+    deleteIdentifiers();    
   }
   
   public void startMocks() {
@@ -58,7 +60,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
 
     insertSystemSetting(KuntaApiConsts.SYSTEM_SETTING_TESTS_RUNNING, "true");
     
-    addServerLogEntry(String.format("### Running test %s ###", testName.getMethodName()));
+    addServerLogEntry(String.format("### Test %s start ###", testName.getMethodName()));
   }
   
   public RestFulPtvMocker getPtvMocker() {

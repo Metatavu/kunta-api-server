@@ -834,6 +834,8 @@
                       <command>/subsystem=undertow/server=default-server/host=kunta-api:add(alias=["${it.host}"])</command>
                       <command>/system-property=it-test:add(value="true")</command>
                       <command>/subsystem=logging/logger=fi.otavanopisto.kuntaapi.server.index.AbstractIndexHander:add(level=FATAL)</command>
+                      <command>/subsystem=logging/logger=fi.otavanopisto.kuntaapi.server.security.SecurityFilter:add(level=FATAL)</command>
+                      <command>/subsystem=logging/logger=fi.otavanopisto.kuntaapi.server.index.IndexUpdater:add(level=SEVERE)</command>
                     </commands>
                   </before-deployment>
                   <filename>${project.build.finalName}.${project.packaging}</filename>
