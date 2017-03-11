@@ -28,7 +28,12 @@ after_failure:
 
 after_script:
   - . travis-after-script.sh
-    
+  
+addons:
+  artifacts:
+    paths:
+      - target/cargo/configurations/wildfly10x/log/server.log
+      
 notifications:
   email: false
   
