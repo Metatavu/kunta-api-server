@@ -17,12 +17,15 @@ if [ "$TRAVIS_PULL_REQUEST" != "false" ] && [ $TRAVIS_BRANCH != "master" ] && [ 
     -Dsonar.github.repository=$TRAVIS_REPO_SLUG \
     -Dsonar.github.pullRequest=$TRAVIS_PULL_REQUEST
     
-  set -e
   mvn clean verify jacoco:report coveralls:report -Pitests -DrepoToken=$COVERALLS_TOKEN
-  echo "Build done. Uploading logs"
+  TEST_STATUS=$?
+  echo $TEST_STATUS
+  
   export S3_PATH=s3://$AWS_BUCKET/$TRAVIS_REPO_SLUG/$TRAVIS_BUILD_NUMBER
   aws s3 cp target/cargo/configurations/wildfly10x/log $S3_PATH --recursive
-  set +e
+  
+  exit $TEST_STATUS
+  
 elif [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ $TRAVIS_BRANCH == "develop" ]; then
 
   echo "Develop build"
