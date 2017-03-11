@@ -11,10 +11,6 @@ cache:
 addons:
   hosts:
     - api.kunta-api.test
-       
-before_install:
-  - pip install --user awscli
-  - export PATH=$PATH:$HOME/.local/bin
    
 install: true
 
@@ -24,9 +20,6 @@ before_script:
 script:
   - . travis.sh
 
-after_script:
-  - . travis-after-script.sh
-  
 notifications:
   email: false
   webhooks:

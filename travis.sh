@@ -21,8 +21,12 @@ if [ "$TRAVIS_PULL_REQUEST" != "false" ] && [ $TRAVIS_BRANCH != "master" ] && [ 
   TEST_STATUS=$?
   echo $TEST_STATUS
   
-  export S3_PATH=s3://$AWS_BUCKET/$TRAVIS_REPO_SLUG/$TRAVIS_BUILD_NUMBER
-  aws s3 cp target/cargo/configurations/wildfly10x/log $S3_PATH --recursive
+  if [ "$TEST_STATUS" != "0" ]; then
+    pip install --user awscli
+    export PATH=$PATH:$HOME/.local/bin
+    export S3_PATH=s3://$AWS_BUCKET/$TRAVIS_REPO_SLUG/$TRAVIS_BUILD_NUMBER
+    aws s3 cp target/cargo/configurations/wildfly10x/log $S3_PATH --recursive
+  fi
   
   exit $TEST_STATUS
   
