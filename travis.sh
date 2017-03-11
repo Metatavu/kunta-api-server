@@ -19,6 +19,9 @@ if [ "$TRAVIS_PULL_REQUEST" != "false" ] && [ $TRAVIS_BRANCH != "master" ] && [ 
     
   set -e
   mvn clean verify jacoco:report coveralls:report -Pitests -DrepoToken=$COVERALLS_TOKEN
+  echo "Build done. Uploading logs"
+  export S3_PATH=s3://$AWS_BUCKET/$TRAVIS_REPO_SLUG/$TRAVIS_BUILD_NUMBER
+  aws s3 cp target/cargo/configurations/wildfly10x/log $S3_PATH --recursive
   set +e
 elif [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ $TRAVIS_BRANCH == "develop" ]; then
 

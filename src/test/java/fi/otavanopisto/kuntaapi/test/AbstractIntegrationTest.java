@@ -57,6 +57,8 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     managementShortlinkMocker.startMock();
 
     insertSystemSetting(KuntaApiConsts.SYSTEM_SETTING_TESTS_RUNNING, "true");
+    
+    addServerLogEntry(String.format("### Running test %s ###", testName.getMethodName()));
   }
   
   public RestFulPtvMocker getPtvMocker() {
@@ -94,7 +96,15 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   public RestfulPtvServiceMocker getRestfulPtvServiceMocker() {
     return restfulPtvServiceMocker;
   }
-  
+
+  protected void addServerLogEntry(String text) {
+    given()
+      .baseUri(getApiBasePath())
+      .get(String.format("/system/log?text=%s", text))
+      .then()
+      .statusCode(200);
+  }
+
   protected void flushCache() {
     given()
       .baseUri(getApiBasePath())
