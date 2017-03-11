@@ -11,10 +11,11 @@ cache:
 addons:
   hosts:
     - api.kunta-api.test
-  artifacts:
-    paths:
-      - target/cargo/configurations/wildfly10x/log/server.log
-        
+       
+before_install:
+  - pip install --user awscli
+  - export PATH=$PATH:$HOME/.local/bin
+   
 install: true
 
 before_script:
