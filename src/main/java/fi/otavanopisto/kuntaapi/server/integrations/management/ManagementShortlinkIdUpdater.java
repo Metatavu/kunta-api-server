@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.annotation.Resource;
@@ -78,6 +79,11 @@ public class ManagementShortlinkIdUpdater extends IdUpdater {
   }
   
   private void updateManagementShortlinks(OrganizationId organizationId) {
+    if (!organizationSettingController.hasSettingValue(organizationId, ManagementConsts.ORGANIZATION_SETTING_BASEURL)) {
+      logger.log(Level.INFO, "Organization management baseUrl not set, skipping update"); 
+      return;
+    }
+    
     DefaultApi api = managementApi.getApi(organizationId);
     
     checkRemovedManagementShortlinks(api, organizationId);

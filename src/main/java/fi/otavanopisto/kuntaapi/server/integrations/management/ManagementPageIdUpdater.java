@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.annotation.Resource;
@@ -79,6 +80,11 @@ public class ManagementPageIdUpdater extends IdUpdater {
   }
     
   private void updateManagementPages(OrganizationId organizationId) {
+    if (!organizationSettingController.hasSettingValue(organizationId, ManagementConsts.ORGANIZATION_SETTING_BASEURL)) {
+      logger.log(Level.INFO, "Organization management baseUrl not set, skipping update"); 
+      return;
+    }
+    
     DefaultApi api = managementApi.getApi(organizationId);
     checkRemovedManagementPages(api, organizationId);
     

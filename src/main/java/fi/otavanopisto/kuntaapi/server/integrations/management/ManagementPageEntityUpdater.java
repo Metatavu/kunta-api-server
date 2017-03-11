@@ -2,6 +2,7 @@ package fi.otavanopisto.kuntaapi.server.integrations.management;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.annotation.Resource;
@@ -40,6 +41,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementP
 import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementPageContentCache;
 import fi.otavanopisto.kuntaapi.server.integrations.management.tasks.PageIdTaskQueue;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
+import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask.Operation;
 
@@ -51,6 +53,9 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
 
   @Inject
   private Logger logger;
+
+  @Inject
+  private OrganizationSettingController organizationSettingController; 
   
   @Inject
   private ManagementTranslator managementTranslator;
@@ -120,6 +125,11 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
   
   private void updateManagementPage(PageId managementPageId, Long orderIndex) {
     OrganizationId organizationId = managementPageId.getOrganizationId();
+    if (!organizationSettingController.hasSettingValue(organizationId, ManagementConsts.ORGANIZATION_SETTING_BASEURL)) {
+      logger.log(Level.INFO, "Organization management baseUrl not set, skipping update"); 
+      return;
+    }
+    
     DefaultApi api = managementApi.getApi(organizationId);
     
     ApiResponse<Page> response = api.wpV2PagesIdGet(managementPageId.getId(), null, null, null);

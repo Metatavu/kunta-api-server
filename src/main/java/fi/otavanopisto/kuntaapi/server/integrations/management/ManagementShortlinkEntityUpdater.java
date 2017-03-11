@@ -1,6 +1,7 @@
 package fi.otavanopisto.kuntaapi.server.integrations.management;
 
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.annotation.Resource;
@@ -23,6 +24,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementShortlinkCache;
 import fi.otavanopisto.kuntaapi.server.integrations.management.tasks.ShortlinkIdTaskQueue;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
+import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask.Operation;
 
@@ -35,6 +37,9 @@ public class ManagementShortlinkEntityUpdater extends EntityUpdater {
   @Inject
   private Logger logger;
 
+  @Inject
+  private OrganizationSettingController organizationSettingController; 
+  
   @Inject
   private ManagementTranslator managementTranslator;
   
@@ -82,6 +87,11 @@ public class ManagementShortlinkEntityUpdater extends EntityUpdater {
   
   private void updateManagementShortlink(ShortlinkId shortlinkId, Long orderIndex) {
     OrganizationId organizationId = shortlinkId.getOrganizationId();
+    if (!organizationSettingController.hasSettingValue(organizationId, ManagementConsts.ORGANIZATION_SETTING_BASEURL)) {
+      logger.log(Level.INFO, "Organization management baseUrl not set, skipping update"); 
+      return;
+    }
+    
     DefaultApi api = managementApi.getApi(organizationId);
     
     ApiResponse<Shortlink> response = api.wpV2ShortlinkIdGet(shortlinkId.getId(), null, null, null);

@@ -82,6 +82,11 @@ public class ManagementPageIdMapEntityUpdater extends EntityUpdater {
   }
   
   private void updatePageIdMap(OrganizationId organizationId) {
+    if (!organizationSettingController.hasSettingValue(organizationId, ManagementConsts.ORGANIZATION_SETTING_BASEURL)) {
+      logger.log(Level.INFO, "Organization management baseUrl not set, skipping update"); 
+      return;
+    }
+    
     OrganizationPageMap pageIdMap = loadPageIdMap(organizationId);
     if (pageIdMap != null) {
       managementPageIdMapCache.put(organizationId, pageIdMap);

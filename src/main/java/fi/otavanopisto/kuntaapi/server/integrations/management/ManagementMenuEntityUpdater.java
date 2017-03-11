@@ -3,6 +3,7 @@ package fi.otavanopisto.kuntaapi.server.integrations.management;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.annotation.Resource;
@@ -32,6 +33,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.MenuProvider.MenuItemType;
 import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementMenuItemCache;
 import fi.otavanopisto.kuntaapi.server.integrations.management.tasks.MenuIdTaskQueue;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
+import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask.Operation;
 
@@ -43,7 +45,10 @@ public class ManagementMenuEntityUpdater extends EntityUpdater {
 
   @Inject
   private Logger logger;
-
+  
+  @Inject
+  private OrganizationSettingController organizationSettingController; 
+  
   @Inject
   private ManagementApi managementApi;
   
@@ -94,6 +99,11 @@ public class ManagementMenuEntityUpdater extends EntityUpdater {
 
   private void updateManagementMenu(MenuId managementMenuId, Long orderIndex) {
     OrganizationId organizationId = managementMenuId.getOrganizationId();
+    if (!organizationSettingController.hasSettingValue(organizationId, ManagementConsts.ORGANIZATION_SETTING_BASEURL)) {
+      logger.log(Level.INFO, "Organization management baseUrl not set, skipping update"); 
+      return;
+    }
+    
     DefaultApi api = managementApi.getApi(organizationId);
     
     ApiResponse<fi.metatavu.management.client.model.Menu> response = api.kuntaApiMenusIdGet(managementMenuId.getId());
