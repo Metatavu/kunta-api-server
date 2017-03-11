@@ -19,6 +19,7 @@ import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationServiceId;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.OrganizationServicesTaskQueue;
+import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask.Operation;
 import fi.otavanopisto.kuntaapi.server.tasks.OrganizationEntityUpdateTask;
@@ -34,6 +35,9 @@ public class PtvOrganizationServiceIdUpdater extends IdUpdater {
 
   @Inject
   private Logger logger;
+
+  @Inject  
+  private SystemSettingController systemSettingController;
 
   @Inject
   private PtvApi ptvApi;
@@ -69,6 +73,11 @@ public class PtvOrganizationServiceIdUpdater extends IdUpdater {
   }
 
   private void updateOrganizationServiceIds(OrganizationId kuntaApiOrganizationId)  {
+    if (!systemSettingController.hasSettingValue(PtvConsts.SYSTEM_SETTING_BASEURL)) {
+      logger.log(Level.INFO, "Organization management baseUrl not set, skipping update"); 
+      return;
+    }
+    
     OrganizationId ptvOrganizationId = idController.translateOrganizationId(kuntaApiOrganizationId, PtvConsts.IDENTIFIER_NAME);
     if (ptvOrganizationId == null) {
       logger.log(Level.SEVERE, () -> String.format("Failed to translate %s into PTV organizationId", kuntaApiOrganizationId));

@@ -77,6 +77,11 @@ public class PtvServiceLocationChannelIdUpdater extends EntityUpdater {
   }
 
   private void updateChannelIds(ServiceId kuntaApiServiceId) {
+    if (!systemSettingController.hasSettingValue(PtvConsts.SYSTEM_SETTING_BASEURL)) {
+      logger.log(Level.INFO, "Organization management baseUrl not set, skipping update"); 
+      return;
+    }
+    
     ServiceId ptvServiceId = idController.translateServiceId(kuntaApiServiceId, PtvConsts.IDENTIFIER_NAME);
     if (ptvServiceId == null) {
       logger.log(Level.SEVERE, () -> String.format("Failed to translate %s into PTV serviceId", kuntaApiServiceId));
