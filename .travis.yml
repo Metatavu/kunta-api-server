@@ -24,18 +24,10 @@ before_script:
 script:
   - . travis.sh
 
-after_success:
-  - . travis-after-success.sh
-
-after_failure:
-  - . travis-after-failure.sh
-
 after_script:
   - . travis-after-script.sh
   
 notifications:
   email: false
-  
-notifications:
   webhooks:
     - http://travis.metatavu.io:7333/travisping
