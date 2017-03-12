@@ -4,6 +4,11 @@ import static com.jayway.restassured.RestAssured.given;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.fail;
 
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.core.LoggerContext;
+import org.apache.logging.log4j.core.config.Configuration;
+import org.apache.logging.log4j.core.config.LoggerConfig;
 import org.junit.After;
 
 import com.jayway.restassured.http.ContentType;
@@ -34,8 +39,10 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   
   @After
   public void afterEveryTest() {
+    setLog4jLevel(Level.OFF);
+    
     addServerLogEntry(String.format("### Test %s end ###", testName.getMethodName()));
-
+    
     clearTasks();
     deleteSystemSetting(KuntaApiConsts.SYSTEM_SETTING_TESTS_RUNNING);
     
@@ -61,6 +68,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     insertSystemSetting(KuntaApiConsts.SYSTEM_SETTING_TESTS_RUNNING, "true");
     
     addServerLogEntry(String.format("### Test %s start ###", testName.getMethodName()));
+    setLog4jLevel(Level.WARN);
   }
   
   public RestFulPtvMocker getPtvMocker() {
@@ -562,6 +570,14 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     .assertThat()
     .statusCode(200)
     .body("id.size()", is(0));
+  }
+  
+  private void setLog4jLevel(Level level) {
+    LoggerContext loggerContext = (LoggerContext) LogManager.getContext(false);
+    Configuration config = loggerContext.getConfiguration();
+    LoggerConfig loggerConfig = config.getLoggerConfig(LogManager.ROOT_LOGGER_NAME); 
+    loggerConfig.setLevel(level);
+    loggerContext.updateLoggers();
   }
   
 }
