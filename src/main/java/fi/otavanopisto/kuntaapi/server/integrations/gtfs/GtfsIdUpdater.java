@@ -5,12 +5,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.annotation.Resource;
-import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
 import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
@@ -47,7 +45,6 @@ import fi.otavanopisto.kuntaapi.server.tasks.OrganizationEntityUpdateTask;
 
 @ApplicationScoped
 @Singleton
-@AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
 public class GtfsIdUpdater extends IdUpdater {
   

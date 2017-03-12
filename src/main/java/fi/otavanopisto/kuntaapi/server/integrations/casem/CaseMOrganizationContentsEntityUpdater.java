@@ -1,10 +1,7 @@
 package fi.otavanopisto.kuntaapi.server.integrations.casem;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
-
 import javax.annotation.Resource;
-import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
 import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
@@ -21,7 +18,6 @@ import fi.otavanopisto.kuntaapi.server.tasks.OrganizationEntityUpdateTask;
 
 @ApplicationScoped
 @Singleton
-@AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
 public class CaseMOrganizationContentsEntityUpdater extends EntityUpdater {
 

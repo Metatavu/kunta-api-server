@@ -1,11 +1,9 @@
 package fi.otavanopisto.kuntaapi.server.integrations.management;
 
-import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.annotation.Resource;
-import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
 import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
@@ -30,7 +28,6 @@ import fi.otavanopisto.kuntaapi.server.tasks.IdTask.Operation;
 
 @ApplicationScoped
 @Singleton
-@AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
 public class ManagementFragmentEntityUpdater extends EntityUpdater {
 
