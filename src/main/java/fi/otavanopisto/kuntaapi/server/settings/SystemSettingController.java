@@ -173,5 +173,13 @@ public class SystemSettingController {
   public boolean isNotTestingOrTestRunning() {
     return !inTestMode() || isTestRunning();
   }
-  
+
+  /**
+   * Returns true if system is running in fail-safe mode
+   * 
+   * @return whether system is running in fail-safe mode or nor
+   */
+  public boolean inFailsafeMode() {
+    return "true".equalsIgnoreCase(System.getProperty("kuntaApi.failsafeMode"));
+  }
 }
