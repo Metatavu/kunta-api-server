@@ -1,10 +1,13 @@
 package fi.otavanopisto.kuntaapi.server.integrations;
 
+import javax.enterprise.context.ApplicationScoped;
+
 import fi.otavanopisto.kuntaapi.server.id.AbstractIdFactory;
 import fi.otavanopisto.kuntaapi.server.id.BaseId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 
+@ApplicationScoped
 public class KuntaApiIdFactory extends AbstractIdFactory {
 
   @Override
