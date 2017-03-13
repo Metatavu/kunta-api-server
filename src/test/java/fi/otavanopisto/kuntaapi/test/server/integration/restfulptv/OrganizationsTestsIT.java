@@ -28,11 +28,13 @@ public class OrganizationsTestsIT extends AbstractIntegrationTest {
   @Before
   public void beforeTest() throws InterruptedException {
     createSettings();
-    getPtvMocker()
-      .mockOrganizations("0de268cf-1ea1-4719-8a6e-1150933b6b9e", "0f112910-08ca-4942-8c80-476cb710ee1d", "18bb8d7c-1dc7-4188-9149-7d89fdeac75e")
-      .startMock();
+    
+    getRestfulPtvOrganizationMocker()
+      .mockOrganizations("0de268cf-1ea1-4719-8a6e-1150933b6b9e", "0f112910-08ca-4942-8c80-476cb710ee1d", "18bb8d7c-1dc7-4188-9149-7d89fdeac75e");
     
     flushCache();
+    startMocks();
+
     waitApiListCount("/organizations", 3);
   }
 

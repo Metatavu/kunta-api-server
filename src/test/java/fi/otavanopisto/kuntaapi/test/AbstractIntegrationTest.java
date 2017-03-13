@@ -4,8 +4,12 @@ import static com.jayway.restassured.RestAssured.given;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.fail;
 
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.core.LoggerContext;
+import org.apache.logging.log4j.core.config.Configuration;
+import org.apache.logging.log4j.core.config.LoggerConfig;
 import org.junit.After;
-import org.junit.Before;
 
 import com.jayway.restassured.http.ContentType;
 import com.jayway.restassured.path.json.exception.JsonPathException;
@@ -28,21 +32,43 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   private ManagementMocker managementMocker = new ManagementMocker();
   private CasemMocker casemMocker = new CasemMocker();
   private ManagementPageMocker managementPageMocker = new ManagementPageMocker();
+  private ManagementPostMocker managementPostMocker = new ManagementPostMocker();
+  private ManagementShortlinkMocker managementShortlinkMocker = new ManagementShortlinkMocker();
   private RestfulPtvServiceMocker restfulPtvServiceMocker = new RestfulPtvServiceMocker();
-  
-  @Before
-  public void beforeEveryTest() {
-    insertSystemSetting(KuntaApiConsts.SYSTEM_SETTING_TESTS_RUNNING, "true");
-  }
+  private RestfulPtvOrganizationMocker restfulPtvOrganizationMocker = new RestfulPtvOrganizationMocker();
   
   @After
   public void afterEveryTest() {
-    managementPageMocker.endMock();
-    restfulPtvServiceMocker.endMock();
+    setLog4jLevel(Level.OFF);
     
-    deleteSystemSetting(KuntaApiConsts.SYSTEM_SETTING_TESTS_RUNNING);
+    addServerLogEntry(String.format("### Test %s end ###", testName.getMethodName()));
+    
     clearTasks();
-    deleteIdentifiers();
+    deleteSystemSetting(KuntaApiConsts.SYSTEM_SETTING_TESTS_RUNNING);
+    
+    managementPageMocker.endMock();
+    managementPostMocker.endMock();
+    managementShortlinkMocker.endMock();
+    restfulPtvServiceMocker.endMock();
+    restfulPtvOrganizationMocker.endMock();
+    
+    deleteIdentifiers();    
+  }
+  
+  public void startMocks() {
+    restfulPtvOrganizationMocker.startMock();
+    restfulPtvServiceMocker.startMock();
+    kuntarekryMocker.startMock();
+    managementMocker.startMock();
+    casemMocker.startMock();
+    managementPageMocker.startMock();
+    managementPostMocker.startMock();
+    managementShortlinkMocker.startMock();
+
+    insertSystemSetting(KuntaApiConsts.SYSTEM_SETTING_TESTS_RUNNING, "true");
+    
+    addServerLogEntry(String.format("### Test %s start ###", testName.getMethodName()));
+    setLog4jLevel(Level.WARN);
   }
   
   public RestFulPtvMocker getPtvMocker() {
@@ -65,10 +91,30 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     return managementPageMocker;
   }
   
+  public ManagementPostMocker getManagementPostMocker() {
+    return managementPostMocker;
+  }
+  
+  public ManagementShortlinkMocker getManagementShortlinkMocker() {
+    return managementShortlinkMocker;
+  }
+  
+  public RestfulPtvOrganizationMocker getRestfulPtvOrganizationMocker() {
+    return restfulPtvOrganizationMocker;
+  }
+  
   public RestfulPtvServiceMocker getRestfulPtvServiceMocker() {
     return restfulPtvServiceMocker;
   }
-  
+
+  protected void addServerLogEntry(String text) {
+    given()
+      .baseUri(getApiBasePath())
+      .get(String.format("/system/log?text=%s", text))
+      .then()
+      .statusCode(200);
+  }
+
   protected void flushCache() {
     given()
       .baseUri(getApiBasePath())
@@ -227,6 +273,16 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
         .baseUri(getApiBasePath())
         .contentType(ContentType.JSON)
         .get(String.format("/organizations/%s/fragments", organizationId))
+        .body()
+        .jsonPath()
+        .getString(String.format("id[%d]", index));
+  }
+  
+  protected String getOrganizationShortlinkId(String organizationId, int index) {
+    return given() 
+        .baseUri(getApiBasePath())
+        .contentType(ContentType.JSON)
+        .get(String.format("/organizations/%s/shortlinks", organizationId))
         .body()
         .jsonPath()
         .getString(String.format("id[%d]", index));
@@ -514,6 +570,14 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     .assertThat()
     .statusCode(200)
     .body("id.size()", is(0));
+  }
+  
+  private void setLog4jLevel(Level level) {
+    LoggerContext loggerContext = (LoggerContext) LogManager.getContext(false);
+    Configuration config = loggerContext.getConfiguration();
+    LoggerConfig loggerConfig = config.getLoggerConfig(LogManager.ROOT_LOGGER_NAME); 
+    loggerConfig.setLevel(level);
+    loggerContext.updateLoggers();
   }
   
 }

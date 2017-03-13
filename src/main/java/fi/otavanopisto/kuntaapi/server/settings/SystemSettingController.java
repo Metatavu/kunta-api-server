@@ -173,5 +173,15 @@ public class SystemSettingController {
   public boolean isNotTestingOrTestRunning() {
     return !inTestMode() || isTestRunning();
   }
-  
+
+  /**
+   * Returns whether system setting has a value set or not
+   * 
+   * @param key key
+   * @return whether system setting has a value set or not
+   */
+  public boolean hasSettingValue(String key) {
+    return StringUtils.isNotBlank(getSettingValue(key));
+  }
+    
 }

@@ -2,6 +2,8 @@ package fi.otavanopisto.kuntaapi.server.rest;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Instance;
@@ -39,6 +41,9 @@ public class SystemRESTService {
 
   @PersistenceUnit
   private EntityManagerFactory entityManagerFactory;
+  
+  @Inject  
+  private Logger logger;
   
   @Inject  
   private SystemSettingController systemSettingController;
@@ -170,6 +175,19 @@ public class SystemRESTService {
     }
     
     return Response.status(Status.FORBIDDEN).build();
+  }
+  
+  @GET
+  @Path ("/log")
+  @Produces (MediaType.TEXT_PLAIN)
+  public Response log(@QueryParam ("text") String text) {
+    if (!inTestModeOrUnrestrictedClient()) {
+      return Response.status(Status.FORBIDDEN).build();
+    }
+    
+    logger.log(Level.INFO, text);
+    
+    return Response.ok("ok").build();
   }
   
   private boolean inTestModeOrUnrestrictedClient() {

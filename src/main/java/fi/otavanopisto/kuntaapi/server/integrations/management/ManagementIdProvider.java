@@ -1,6 +1,6 @@
 package fi.otavanopisto.kuntaapi.server.integrations.management;
 
-import javax.enterprise.context.Dependent;
+import javax.enterprise.context.ApplicationScoped;
 
 import org.apache.commons.lang3.ArrayUtils;
 
@@ -12,7 +12,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.AbstractIdProvider;
  * 
  * @author Antti Leppä
  */
-@Dependent
+@ApplicationScoped
 public class ManagementIdProvider extends AbstractIdProvider {
 
   private static final IdType[] SUPPORTED_TYPES = new IdType[] {
@@ -23,7 +23,8 @@ public class ManagementIdProvider extends AbstractIdProvider {
     IdType.PAGE, 
     IdType.MENU, 
     IdType.FILE, 
-    IdType.MENU_ITEM
+    IdType.MENU_ITEM,
+    IdType.SHORTLINK
   };
   
   @Override

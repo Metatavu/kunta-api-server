@@ -1,12 +1,10 @@
 package fi.otavanopisto.kuntaapi.server.integrations.ptv;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.annotation.Resource;
-import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
 import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
@@ -28,7 +26,6 @@ import fi.otavanopisto.restfulptv.client.model.ElectronicChannel;
 
 @ApplicationScoped
 @Singleton
-@AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
 public class PtvServiceElectronicChannelIdUpdater extends EntityUpdater {
 
@@ -77,6 +74,11 @@ public class PtvServiceElectronicChannelIdUpdater extends EntityUpdater {
   }
 
   private void updateChannelIds(ServiceId kuntaApiServiceId) {
+    if (!systemSettingController.hasSettingValue(PtvConsts.SYSTEM_SETTING_BASEURL)) {
+      logger.log(Level.INFO, "Organization management baseUrl not set, skipping update"); 
+      return;
+    }
+    
     ServiceId ptvServiceId = idController.translateServiceId(kuntaApiServiceId, PtvConsts.IDENTIFIER_NAME);
     if (ptvServiceId == null) {
       logger.log(Level.SEVERE, () -> String.format("Failed to translate %s into PTV serviceId", kuntaApiServiceId));

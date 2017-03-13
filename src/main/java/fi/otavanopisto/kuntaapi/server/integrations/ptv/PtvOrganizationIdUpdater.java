@@ -1,6 +1,7 @@
 package fi.otavanopisto.kuntaapi.server.integrations.ptv;
 
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.annotation.Resource;
@@ -13,6 +14,7 @@ import javax.inject.Inject;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.IdUpdater;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask.Operation;
 import fi.otavanopisto.kuntaapi.server.tasks.TaskRequest;
@@ -28,6 +30,9 @@ public class PtvOrganizationIdUpdater extends IdUpdater {
   
   @Inject
   private Logger logger;
+
+  @Inject  
+  private SystemSettingController systemSettingController;
 
   @Inject
   private PtvApi ptvApi;
@@ -54,6 +59,11 @@ public class PtvOrganizationIdUpdater extends IdUpdater {
   }
 
   private void discoverIds() {
+    if (!systemSettingController.hasSettingValue(PtvConsts.SYSTEM_SETTING_BASEURL)) {
+      logger.log(Level.INFO, "Organization management baseUrl not set, skipping update"); 
+      return;
+    }
+    
     ApiResponse<List<Organization>> organizationsResponse = ptvApi.getOrganizationApi().listOrganizations(offset, BATCH_SIZE);
     if (!organizationsResponse.isOk()) {
       logger.severe(String.format("Organization list reported [%d] %s", organizationsResponse.getStatus(), organizationsResponse.getMessage()));

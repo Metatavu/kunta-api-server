@@ -1,6 +1,6 @@
 package fi.otavanopisto.kuntaapi.server.integrations.casem;
 
-import javax.enterprise.context.Dependent;
+import javax.enterprise.context.ApplicationScoped;
 
 import org.apache.commons.lang3.ArrayUtils;
 
@@ -14,7 +14,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.AbstractIdProvider;
  * @author Antti Leppä
  * @author Heikki Kurhinen
  */
-@Dependent
+@ApplicationScoped
 public class CaseMIdProvider extends AbstractIdProvider {
   
   private static final IdType[] SUPPORTED_TYPES = new IdType[] {

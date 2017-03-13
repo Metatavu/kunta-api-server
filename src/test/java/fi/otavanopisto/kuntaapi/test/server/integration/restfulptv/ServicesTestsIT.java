@@ -39,8 +39,9 @@ public class ServicesTestsIT extends AbstractIntegrationTest {
       .startMock();
     
     getRestfulPtvServiceMocker()
-      .mockServices("6c9926b9-4aa0-4635-b66a-471af07dfec3", "822d5347-8398-4866-bb9d-9cdc60b38fba", "ef66b7c2-e938-4a30-ad57-475fc40abf27")
-      .startMock();
+      .mockServices("6c9926b9-4aa0-4635-b66a-471af07dfec3", "822d5347-8398-4866-bb9d-9cdc60b38fba", "ef66b7c2-e938-4a30-ad57-475fc40abf27");
+    
+    startMocks();
      
     waitApiListCount("/services", 3);
   }
