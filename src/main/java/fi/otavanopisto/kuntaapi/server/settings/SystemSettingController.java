@@ -175,13 +175,22 @@ public class SystemSettingController {
   }
 
   /**
+   * Returns true if system is running in fail-safe mode
+   * 
+   * @return whether system is running in fail-safe mode or nor
+   */
+  public boolean inFailsafeMode() {
+    return "true".equalsIgnoreCase(System.getProperty("kuntaApi.failsafeMode"));
+  }
+
+  /**
    * Returns whether system setting has a value set or not
    * 
    * @param key key
    * @return whether system setting has a value set or not
-   */
+   **/
   public boolean hasSettingValue(String key) {
     return StringUtils.isNotBlank(getSettingValue(key));
   }
-    
+
 }

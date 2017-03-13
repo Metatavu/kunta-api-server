@@ -109,7 +109,7 @@ public abstract class EntityUpdater {
   public void onTimeout() {
     if (!isStopped()) {
       try {
-        if (systemSettingController.isNotTestingOrTestRunning()) {
+        if (isEligibleToRun()) {
           timeout();
         }
       } catch (Exception e) {
@@ -124,6 +124,18 @@ public abstract class EntityUpdater {
   
   public boolean isStopped() {
     return stopped;
+  }
+  
+  private boolean isEligibleToRun() {
+    if (systemSettingController.inFailsafeMode()) {
+      return false;
+    }
+    
+    if (!systemSettingController.isNotTestingOrTestRunning()) {
+      return false;
+    }
+    
+    return true;
   }
   
   protected String createPojoHash(Object entity) {

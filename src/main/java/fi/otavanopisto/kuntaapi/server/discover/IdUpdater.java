@@ -106,7 +106,7 @@ public abstract class IdUpdater {
   public void onTimeout() {
     if (!isStopped()) {
       try {
-        if (systemSettingController.isNotTestingOrTestRunning()) {
+        if (isEligibleToRun()) {
           timeout();
         }
       } catch (Exception e) {
@@ -121,6 +121,18 @@ public abstract class IdUpdater {
   
   public boolean isStopped() {
     return stopped;
+  }
+  
+  private boolean isEligibleToRun() {
+    if (systemSettingController.inFailsafeMode()) {
+      return false;
+    }
+    
+    if (!systemSettingController.isNotTestingOrTestRunning()) {
+      return false;
+    }
+    
+    return true;
   }
   
 }
