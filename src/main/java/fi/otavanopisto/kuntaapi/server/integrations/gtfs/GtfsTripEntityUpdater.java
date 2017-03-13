@@ -23,6 +23,7 @@ import fi.otavanopisto.kuntaapi.server.id.PublicTransportRouteId;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportScheduleId;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportTripId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
+import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
 import fi.otavanopisto.kuntaapi.server.integrations.gtfs.cache.GtfsPublicTransportTripCache;
 import fi.otavanopisto.kuntaapi.server.integrations.gtfs.tasks.GtfsTripEntityTask;
 import fi.otavanopisto.kuntaapi.server.integrations.gtfs.tasks.GtfsTripTaskQueue;
@@ -54,7 +55,10 @@ public class GtfsTripEntityUpdater extends EntityUpdater {
   
   @Inject
   private ModificationHashCache modificationHashCache;
-  
+
+  @Inject
+  private KuntaApiIdFactory kuntaApiIdFactory; 
+
   @Inject
   private GtfsIdFactory gtfsIdFactory;
   
@@ -107,7 +111,7 @@ public class GtfsTripEntityUpdater extends EntityUpdater {
     Identifier identifier = identifierController.acquireIdentifier(orderIndex, gtfsTripId);
     identifierRelationController.setParentId(identifier, kuntaApiOrganizationId);
     
-    PublicTransportTripId kuntaApiTripId = gtfsIdFactory.createKuntaApiId(PublicTransportTripId.class, identifier);
+    PublicTransportTripId kuntaApiTripId = kuntaApiIdFactory.createFromIdentifier(PublicTransportTripId.class, identifier);
     fi.metatavu.kuntaapi.server.rest.model.Trip kuntaApiTrip = gtfsTranslator.translateTrip(kuntaApiTripId, gtfsTrip, kuntaApiRouteId, kuntaApiScheduleId);
     
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(kuntaApiTrip));

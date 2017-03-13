@@ -89,7 +89,9 @@ public class IdController {
         return translatePublicTransportStopTimeId((PublicTransportStopTimeId) id, target);
       case PUBLIC_TRANSPORT_TRIP:
         return translatePublicTransportTripId((PublicTransportTripId) id, target);
-       default:
+      case SHORTLINK:
+        return translateShortlinkId((ShortlinkId) id, target);
+      default:
         return null;
     }
   }
@@ -755,75 +757,27 @@ public class IdController {
   }
   
   /**
-   * Translates both ids into Kunta Api ids and check whether they match
+   * Translates shortlink id into into target id
    * 
-   * @param id1 id1
-   * @param id2 id2
-   * @return whether ids match
+   * @param shortlinkId id to be translated
+   * @param target target
+   * @return translated id or null if translation has failed
    */
-  public boolean idsEqual(AttachmentId id1, AttachmentId id2) {
-    AttachmentId kuntaApiId1 = translateAttachmentId(id1, KuntaApiConsts.IDENTIFIER_NAME);
-    AttachmentId kuntaApiId2 = translateAttachmentId(id2, KuntaApiConsts.IDENTIFIER_NAME);
-    
-    if (kuntaApiId1 == null || kuntaApiId2 == null) {
-      return false;
+  public ShortlinkId translateShortlinkId(ShortlinkId shortlinkId, String target) {
+    if (shortlinkId == null) {
+      return null;
     }
-    
-    return kuntaApiId1.equals(kuntaApiId2);
-  }
 
-  /**
-   * Translates both ids into Kunta Api ids and check whether they match
-   * 
-   * @param id1 id1
-   * @param id2 id2
-   * @return whether ids match
-   */
-  public boolean idsEqual(EventId id1, EventId id2) {
-    EventId kuntaApiId1 = translateEventId(id1, KuntaApiConsts.IDENTIFIER_NAME);
-    EventId kuntaApiId2 = translateEventId(id2, KuntaApiConsts.IDENTIFIER_NAME);
- 
-    if (kuntaApiId1 == null || kuntaApiId2 == null) {
-      return false;
+    if (StringUtils.equals(shortlinkId.getSource(), target)) {
+      return shortlinkId;
     }
     
-    return kuntaApiId1.equals(kuntaApiId2);
-  }
-
-  /**
-   * Translates both ids into Kunta Api ids and check whether they match
-   * 
-   * @param id1 id1
-   * @param id2 id2
-   * @return whether ids match
-   */
-  public boolean idsEqual(NewsArticleId id1, NewsArticleId id2) {
-    NewsArticleId kuntaApiId1 = translateNewsArticleId(id1, KuntaApiConsts.IDENTIFIER_NAME);
-    NewsArticleId kuntaApiId2 = translateNewsArticleId(id2, KuntaApiConsts.IDENTIFIER_NAME);
-    
-    if (kuntaApiId1 == null || kuntaApiId2 == null) {
-      return false;
+    IdProvider idProvider = getIdProvider(shortlinkId.getSource(), target);
+    if (idProvider != null) {
+      return idProvider.translate(shortlinkId, target);
     }
     
-    return kuntaApiId1.equals(kuntaApiId2);
-  }
-
-  /**
-   * Translates both ids into Kunta Api ids and check whether they match
-   * 
-   * @param id1 id1
-   * @param id2 id2
-   * @return whether ids match
-   */
-  public boolean idsEqual(OrganizationId id1, OrganizationId id2) {
-    OrganizationId kuntaApiId1 = translateOrganizationId(id1, KuntaApiConsts.IDENTIFIER_NAME);
-    OrganizationId kuntaApiId2 = translateOrganizationId(id2, KuntaApiConsts.IDENTIFIER_NAME);
-    
-    if (kuntaApiId1 == null || kuntaApiId2 == null) {
-      return false;
-    }
-    
-    return kuntaApiId1.equals(kuntaApiId2);
+    return null;
   }
   
   /**
@@ -833,351 +787,9 @@ public class IdController {
    * @param id2 id2
    * @return whether ids match
    */
-  public boolean idsEqual(ElectronicServiceChannelId id1, ElectronicServiceChannelId id2) {
-    ElectronicServiceChannelId kuntaApiId1 = translateElectronicServiceChannelId(id1, KuntaApiConsts.IDENTIFIER_NAME);
-    ElectronicServiceChannelId kuntaApiId2 = translateElectronicServiceChannelId(id2, KuntaApiConsts.IDENTIFIER_NAME);
-    
-    if (kuntaApiId1 == null || kuntaApiId2 == null) {
-      return false;
-    }
-    
-    return kuntaApiId1.equals(kuntaApiId2);
-  }
-
-  /**
-   * Translates both ids into Kunta Api ids and check whether they match
-   * 
-   * @param id1 id1
-   * @param id2 id2
-   * @return whether ids match
-   */
-  public boolean idsEqual(PhoneChannelId id1, PhoneChannelId id2) {
-    PhoneChannelId kuntaApiId1 = translatePhoneServiceChannelId(id1, KuntaApiConsts.IDENTIFIER_NAME);
-    PhoneChannelId kuntaApiId2 = translatePhoneServiceChannelId(id2, KuntaApiConsts.IDENTIFIER_NAME);
-    
-    if (kuntaApiId1 == null || kuntaApiId2 == null) {
-      return false;
-    }
-    
-    return kuntaApiId1.equals(kuntaApiId2);
-  }
-
-  /**
-   * Translates both ids into Kunta Api ids and check whether they match
-   * 
-   * @param id1 id1
-   * @param id2 id2
-   * @return whether ids match
-   */
-  public boolean idsEqual(PrintableFormChannelId id1, PrintableFormChannelId id2) {
-    PrintableFormChannelId kuntaApiId1 = translatePrintableFormServiceChannelId(id1, KuntaApiConsts.IDENTIFIER_NAME);
-    PrintableFormChannelId kuntaApiId2 = translatePrintableFormServiceChannelId(id2, KuntaApiConsts.IDENTIFIER_NAME);
-    
-    if (kuntaApiId1 == null || kuntaApiId2 == null) {
-      return false;
-    }
-    
-    return kuntaApiId1.equals(kuntaApiId2);
-  }
-
-  /**
-   * Translates both ids into Kunta Api ids and check whether they match
-   * 
-   * @param id1 id1
-   * @param id2 id2
-   * @return whether ids match
-   */
-  public boolean idsEqual(ServiceLocationChannelId id1, ServiceLocationChannelId id2) {
-    ServiceLocationChannelId kuntaApiId1 = translateServiceLocationChannelId(id1, KuntaApiConsts.IDENTIFIER_NAME);
-    ServiceLocationChannelId kuntaApiId2 = translateServiceLocationChannelId(id2, KuntaApiConsts.IDENTIFIER_NAME);
-    
-    if (kuntaApiId1 == null || kuntaApiId2 == null) {
-      return false;
-    }
-    
-    return kuntaApiId1.equals(kuntaApiId2);
-  }
-
-  /**
-   * Translates both ids into Kunta Api ids and check whether they match
-   * 
-   * @param id1 id1
-   * @param id2 id2
-   * @return whether ids match
-   */
-  public boolean idsEqual(WebPageChannelId id1, WebPageChannelId id2) {
-    WebPageChannelId kuntaApiId1 = translateWebPageServiceChannelId(id1, KuntaApiConsts.IDENTIFIER_NAME);
-    WebPageChannelId kuntaApiId2 = translateWebPageServiceChannelId(id2, KuntaApiConsts.IDENTIFIER_NAME);
-    
-    if (kuntaApiId1 == null || kuntaApiId2 == null) {
-      return false;
-    }
-    
-    return kuntaApiId1.equals(kuntaApiId2);
-  }
-
-  /**
-   * Translates both ids into Kunta Api ids and check whether they match
-   * 
-   * @param id1 id1
-   * @param id2 id2
-   * @return whether ids match
-   */
-  public boolean idsEqual(OrganizationServiceId id1, OrganizationServiceId id2) {
-    OrganizationServiceId kuntaApiId1 = translateOrganizationServiceId(id1, KuntaApiConsts.IDENTIFIER_NAME);
-    OrganizationServiceId kuntaApiId2 = translateOrganizationServiceId(id2, KuntaApiConsts.IDENTIFIER_NAME);
-    
-    if (kuntaApiId1 == null || kuntaApiId2 == null) {
-      return false;
-    }
-    
-    return kuntaApiId1.equals(kuntaApiId2);
-  }
-
-  /**
-   * Translates both ids into Kunta Api ids and check whether they match
-   * 
-   * @param id1 id1
-   * @param id2 id2
-   * @return whether ids match
-   */
-  public boolean idsEqual(ServiceId id1, ServiceId id2) {
-    ServiceId kuntaApiId1 = translateServiceId(id1, KuntaApiConsts.IDENTIFIER_NAME);
-    ServiceId kuntaApiId2 = translateServiceId(id2, KuntaApiConsts.IDENTIFIER_NAME);
-    
-    if (kuntaApiId1 == null || kuntaApiId2 == null) {
-      return false;
-    }
-    
-    return kuntaApiId1.equals(kuntaApiId2);
-  }
-
-  /**
-   * Translates both ids into Kunta Api ids and check whether they match
-   * 
-   * @param id1 id1
-   * @param id2 id2
-   * @return whether ids match
-   */
-  public boolean idsEqual(BannerId id1, BannerId id2) {
-    BannerId kuntaApiId1 = translateBannerId(id1, KuntaApiConsts.IDENTIFIER_NAME);
-    BannerId kuntaApiId2 = translateBannerId(id2, KuntaApiConsts.IDENTIFIER_NAME);
-    
-    if (kuntaApiId1 == null || kuntaApiId2 == null) {
-      return false;
-    }
-    
-    return kuntaApiId1.equals(kuntaApiId2);
-  }
-
-  /**
-   * Translates both ids into Kunta Api ids and check whether they match
-   * 
-   * @param id1 id1
-   * @param id2 id2
-   * @return whether ids match
-   */
-  public boolean idsEqual(TileId id1, TileId id2) {
-    TileId kuntaApiId1 = translateTileId(id1, KuntaApiConsts.IDENTIFIER_NAME);
-    TileId kuntaApiId2 = translateTileId(id2, KuntaApiConsts.IDENTIFIER_NAME);
-    
-    if (kuntaApiId1 == null || kuntaApiId2 == null) {
-      return false;
-    }
-    
-    return kuntaApiId1.equals(kuntaApiId2);
-  }
-  
-  /**
-   * Translates both ids into Kunta Api ids and check whether they match
-   * 
-   * @param id1 id1
-   * @param id2 id2
-   * @return whether ids match
-   */
-  public boolean idsEqual(FileId id1, FileId id2) {
-    FileId kuntaApiId1 = translateFileId(id1, KuntaApiConsts.IDENTIFIER_NAME);
-    FileId kuntaApiId2 = translateFileId(id2, KuntaApiConsts.IDENTIFIER_NAME);
-    
-    if (kuntaApiId1 == null || kuntaApiId2 == null) {
-      return false;
-    }
-    
-    return kuntaApiId1.equals(kuntaApiId2);
-  }
-  
-  /**
-   * Translates both ids into Kunta Api ids and check whether they match
-   * 
-   * @param id1 id1
-   * @param id2 id2
-   * @return whether ids match
-   */
-  public boolean idsEqual(MenuId id1, MenuId id2) {
-    MenuId kuntaApiId1 = translateMenuId(id1, KuntaApiConsts.IDENTIFIER_NAME);
-    MenuId kuntaApiId2 = translateMenuId(id2, KuntaApiConsts.IDENTIFIER_NAME);
-    
-    if (kuntaApiId1 == null || kuntaApiId2 == null) {
-      return false;
-    }
-    
-    return kuntaApiId1.equals(kuntaApiId2);
-  }
-  
-  /**
-   * Translates both ids into Kunta Api ids and check whether they match
-   * 
-   * @param id1 id1
-   * @param id2 id2
-   * @return whether ids match
-   */
-  public boolean idsEqual(MenuItemId id1, MenuItemId id2) {
-    MenuItemId kuntaApiId1 = translateMenuItemId(id1, KuntaApiConsts.IDENTIFIER_NAME);
-    MenuItemId kuntaApiId2 = translateMenuItemId(id2, KuntaApiConsts.IDENTIFIER_NAME);
-    
-    if (kuntaApiId1 == null || kuntaApiId2 == null) {
-      return false;
-    }
-    
-    return kuntaApiId1.equals(kuntaApiId2);
-  }
-  
-  /**
-   * Translates both ids into Kunta Api ids and check whether they match
-   * 
-   * @param id1 id1
-   * @param id2 id2
-   * @return whether ids match
-   */
-  public boolean idsEqual(JobId id1, JobId id2) {
-    JobId kuntaApiId1 = translateJobId(id1, KuntaApiConsts.IDENTIFIER_NAME);
-    JobId kuntaApiId2 = translateJobId(id2, KuntaApiConsts.IDENTIFIER_NAME);
-    
-    if (kuntaApiId1 == null || kuntaApiId2 == null) {
-      return false;
-    }
-    
-    return kuntaApiId1.equals(kuntaApiId2);
-  }
-  
-  /**
-   * Translates both ids into Kunta Api ids and check whether they match
-   * 
-   * @param id1 id1
-   * @param id2 id2
-   * @return whether ids match
-   */
-  public boolean idsEqual(PublicTransportAgencyId id1, PublicTransportAgencyId id2) {
-    PublicTransportAgencyId kuntaApiId1 = translatePublicTransportAgencyId(id1, KuntaApiConsts.IDENTIFIER_NAME);
-    PublicTransportAgencyId kuntaApiId2 = translatePublicTransportAgencyId(id2, KuntaApiConsts.IDENTIFIER_NAME);
-    
-    if (kuntaApiId1 == null || kuntaApiId2 == null) {
-      return false;
-    }
-    
-    return kuntaApiId1.equals(kuntaApiId2);
-  }
-  
-  /**
-   * Translates both ids into Kunta Api ids and check whether they match
-   * 
-   * @param id1 id1
-   * @param id2 id2
-   * @return whether ids match
-   */
-  public boolean idsEqual(PublicTransportScheduleId id1, PublicTransportScheduleId id2) {
-    PublicTransportScheduleId kuntaApiId1 = translatePublicTransportScheduleId(id1, KuntaApiConsts.IDENTIFIER_NAME);
-    PublicTransportScheduleId kuntaApiId2 = translatePublicTransportScheduleId(id2, KuntaApiConsts.IDENTIFIER_NAME);
-    
-    if (kuntaApiId1 == null || kuntaApiId2 == null) {
-      return false;
-    }
-    
-    return kuntaApiId1.equals(kuntaApiId2);
-  }
-  
-  /**
-   * Translates both ids into Kunta Api ids and check whether they match
-   * 
-   * @param id1 id1
-   * @param id2 id2
-   * @return whether ids match
-   */
-  public boolean idsEqual(PublicTransportRouteId id1, PublicTransportRouteId id2) {
-    PublicTransportRouteId kuntaApiId1 = translatePublicTransportRouteId(id1, KuntaApiConsts.IDENTIFIER_NAME);
-    PublicTransportRouteId kuntaApiId2 = translatePublicTransportRouteId(id2, KuntaApiConsts.IDENTIFIER_NAME);
-    
-    if (kuntaApiId1 == null || kuntaApiId2 == null) {
-      return false;
-    }
-    
-    return kuntaApiId1.equals(kuntaApiId2);
-  }
-  
-  /**
-   * Translates both ids into Kunta Api ids and check whether they match
-   * 
-   * @param id1 id1
-   * @param id2 id2
-   * @return whether ids match
-   */
-  public boolean idsEqual(PublicTransportStopId id1, PublicTransportStopId id2) {
-    PublicTransportStopId kuntaApiId1 = translatePublicTransportStopId(id1, KuntaApiConsts.IDENTIFIER_NAME);
-    PublicTransportStopId kuntaApiId2 = translatePublicTransportStopId(id2, KuntaApiConsts.IDENTIFIER_NAME);
-    
-    if (kuntaApiId1 == null || kuntaApiId2 == null) {
-      return false;
-    }
-    
-    return kuntaApiId1.equals(kuntaApiId2);
-  }
-  
-  /**
-   * Translates both ids into Kunta Api ids and check whether they match
-   * 
-   * @param id1 id1
-   * @param id2 id2
-   * @return whether ids match
-   */
-  public boolean idsEqual(PublicTransportStopTimeId id1, PublicTransportStopTimeId id2) {
-    PublicTransportStopTimeId kuntaApiId1 = translatePublicTransportStopTimeId(id1, KuntaApiConsts.IDENTIFIER_NAME);
-    PublicTransportStopTimeId kuntaApiId2 = translatePublicTransportStopTimeId(id2, KuntaApiConsts.IDENTIFIER_NAME);
-    
-    if (kuntaApiId1 == null || kuntaApiId2 == null) {
-      return false;
-    }
-    
-    return kuntaApiId1.equals(kuntaApiId2);
-  }
-  
-  /**
-   * Translates both ids into Kunta Api ids and check whether they match
-   * 
-   * @param id1 id1
-   * @param id2 id2
-   * @return whether ids match
-   */
-  public boolean idsEqual(PublicTransportTripId id1, PublicTransportTripId id2) {
-    PublicTransportTripId kuntaApiId1 = translatePublicTransportTripId(id1, KuntaApiConsts.IDENTIFIER_NAME);
-    PublicTransportTripId kuntaApiId2 = translatePublicTransportTripId(id2, KuntaApiConsts.IDENTIFIER_NAME);
-    
-    if (kuntaApiId1 == null || kuntaApiId2 == null) {
-      return false;
-    }
-    
-    return kuntaApiId1.equals(kuntaApiId2);
-  }
-  
-  /**
-   * Translates both ids into Kunta Api ids and check whether they match
-   * 
-   * @param id1 id1
-   * @param id2 id2
-   * @return whether ids match
-   */
-  public boolean idsEqual(PageId id1, PageId id2) {
-    PageId kuntaApiId1 = translatePageId(id1, KuntaApiConsts.IDENTIFIER_NAME);
-    PageId kuntaApiId2 = translatePageId(id2, KuntaApiConsts.IDENTIFIER_NAME);
+  public boolean idsEqual(BaseId id1, BaseId id2) {
+    BaseId kuntaApiId1 = translateId(id1, KuntaApiConsts.IDENTIFIER_NAME);
+    BaseId kuntaApiId2 = translateId(id2, KuntaApiConsts.IDENTIFIER_NAME);
     
     if (kuntaApiId1 == null || kuntaApiId2 == null) {
       return false;

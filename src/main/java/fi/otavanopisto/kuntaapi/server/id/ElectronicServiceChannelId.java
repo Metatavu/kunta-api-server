@@ -32,12 +32,12 @@ public class ElectronicServiceChannelId extends BaseId {
   }
   
   @Override
-  protected int getHashInitial() {
+  public int getHashInitial() {
     return 151;
   }
   
   @Override
-  protected int getHashMultiplier() {
+  public int getHashMultiplier() {
     return 163;
   }
   
