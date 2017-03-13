@@ -1,11 +1,9 @@
 package fi.otavanopisto.kuntaapi.server.integrations.gtfs;
 
-import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.annotation.Resource;
-import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
 import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
@@ -23,6 +21,7 @@ import fi.otavanopisto.kuntaapi.server.id.PublicTransportRouteId;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportScheduleId;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportTripId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
+import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
 import fi.otavanopisto.kuntaapi.server.integrations.gtfs.cache.GtfsPublicTransportTripCache;
 import fi.otavanopisto.kuntaapi.server.integrations.gtfs.tasks.GtfsTripEntityTask;
 import fi.otavanopisto.kuntaapi.server.integrations.gtfs.tasks.GtfsTripTaskQueue;
@@ -30,7 +29,6 @@ import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 
 @ApplicationScoped
 @Singleton
-@AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
 public class GtfsTripEntityUpdater extends EntityUpdater {
 
@@ -54,7 +52,10 @@ public class GtfsTripEntityUpdater extends EntityUpdater {
   
   @Inject
   private ModificationHashCache modificationHashCache;
-  
+
+  @Inject
+  private KuntaApiIdFactory kuntaApiIdFactory; 
+
   @Inject
   private GtfsIdFactory gtfsIdFactory;
   
@@ -107,7 +108,7 @@ public class GtfsTripEntityUpdater extends EntityUpdater {
     Identifier identifier = identifierController.acquireIdentifier(orderIndex, gtfsTripId);
     identifierRelationController.setParentId(identifier, kuntaApiOrganizationId);
     
-    PublicTransportTripId kuntaApiTripId = gtfsIdFactory.createKuntaApiId(PublicTransportTripId.class, identifier);
+    PublicTransportTripId kuntaApiTripId = kuntaApiIdFactory.createFromIdentifier(PublicTransportTripId.class, identifier);
     fi.metatavu.kuntaapi.server.rest.model.Trip kuntaApiTrip = gtfsTranslator.translateTrip(kuntaApiTripId, gtfsTrip, kuntaApiRouteId, kuntaApiScheduleId);
     
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(kuntaApiTrip));

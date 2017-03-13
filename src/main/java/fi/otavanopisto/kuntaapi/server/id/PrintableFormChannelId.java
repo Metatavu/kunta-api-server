@@ -32,12 +32,12 @@ public class PrintableFormChannelId extends BaseId {
   }
   
   @Override
-  protected int getHashInitial() {
+  public int getHashInitial() {
     return 191;
   }
   
   @Override
-  protected int getHashMultiplier() {
+  public int getHashMultiplier() {
     return 203;
   }
   

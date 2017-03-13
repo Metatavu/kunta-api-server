@@ -32,12 +32,12 @@ public class BannerId extends OrganizationBaseId {
   }
   
   @Override
-  protected int getHashInitial() {
+  public int getHashInitial() {
     return 137;
   }
   
   @Override
-  protected int getHashMultiplier() {
+  public int getHashMultiplier() {
     return 149;
   }
   

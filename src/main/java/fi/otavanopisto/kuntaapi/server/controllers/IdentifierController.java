@@ -29,6 +29,7 @@ import fi.otavanopisto.kuntaapi.server.id.OrganizationBaseId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceId;
+import fi.otavanopisto.kuntaapi.server.id.ShortlinkId;
 import fi.otavanopisto.kuntaapi.server.id.TileId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.persistence.dao.ArchivedIdentifierDAO;
@@ -203,6 +204,17 @@ public class IdentifierController {
     
     for (String fragmentId : fragmentIds) {
       result.add(new FragmentId(organizationId, source, fragmentId));
+    }
+    
+    return result;
+  }
+
+  public List<ShortlinkId> listOrganizationShortlinkIdsBySource(OrganizationId organizationId, String source) {
+    List<String> shortlinkIds = listSourceIdsByOrganizationIdAndSourceAndType(organizationId, source, IdType.SHORTLINK.toString());
+    List<ShortlinkId> result = new ArrayList<>(shortlinkIds.size());
+    
+    for (String shortlinkId : shortlinkIds) {
+      result.add(new ShortlinkId(organizationId, source, shortlinkId));
     }
     
     return result;

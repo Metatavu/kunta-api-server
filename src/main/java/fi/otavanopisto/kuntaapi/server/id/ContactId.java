@@ -32,12 +32,12 @@ public class ContactId extends OrganizationBaseId {
   }
   
   @Override
-  protected int getHashInitial() {
+  public int getHashInitial() {
     return 333;
   }
   
   @Override
-  protected int getHashMultiplier() {
+  public int getHashMultiplier() {
     return 345;
   }
   

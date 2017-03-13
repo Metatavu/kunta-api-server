@@ -1,11 +1,9 @@
 package fi.otavanopisto.kuntaapi.server.integrations.gtfs;
 
-import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.annotation.Resource;
-import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
 import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
@@ -21,6 +19,7 @@ import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportScheduleId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
+import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
 import fi.otavanopisto.kuntaapi.server.integrations.gtfs.cache.GtfsPublicTransportScheduleCache;
 import fi.otavanopisto.kuntaapi.server.integrations.gtfs.tasks.GtfsScheduleEntityTask;
 import fi.otavanopisto.kuntaapi.server.integrations.gtfs.tasks.GtfsScheduleTaskQueue;
@@ -28,7 +27,6 @@ import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 
 @ApplicationScoped
 @Singleton
-@AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
 public class GtfsScheduleEntityUpdater extends EntityUpdater {
 
@@ -52,7 +50,10 @@ public class GtfsScheduleEntityUpdater extends EntityUpdater {
   
   @Inject
   private ModificationHashCache modificationHashCache;
-  
+
+  @Inject
+  private KuntaApiIdFactory kuntaApiIdFactory; 
+
   @Inject
   private GtfsIdFactory gtfsIdFactory;
   
@@ -89,7 +90,7 @@ public class GtfsScheduleEntityUpdater extends EntityUpdater {
     Identifier identifier = identifierController.acquireIdentifier(orderIndex, gtfsScheduleId);
     identifierRelationController.setParentId(identifier, kuntaApiOrganizationId);
     
-    PublicTransportScheduleId kuntaApiScheduleId = gtfsIdFactory.createKuntaApiId(PublicTransportScheduleId.class, identifier);
+    PublicTransportScheduleId kuntaApiScheduleId = kuntaApiIdFactory.createFromIdentifier(PublicTransportScheduleId.class, identifier);
     fi.metatavu.kuntaapi.server.rest.model.Schedule shedule = gtfsTranslator.translateSchedule(kuntaApiScheduleId, gtfsServiceCalendar, task.getExceptions());
     
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(shedule));

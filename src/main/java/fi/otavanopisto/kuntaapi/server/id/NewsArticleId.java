@@ -32,12 +32,12 @@ public class NewsArticleId extends OrganizationBaseId {
   }
   
   @Override
-  protected int getHashInitial() {
+  public int getHashInitial() {
     return 135;
   }
   
   @Override
-  protected int getHashMultiplier() {
+  public int getHashMultiplier() {
     return 147;
   }
   

@@ -1,6 +1,7 @@
 package fi.otavanopisto.kuntaapi.test.server.unit.tasks;
 
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.lang.reflect.Modifier;
@@ -44,6 +45,8 @@ public class AbstractTaskTest {
       
       assertFalse(String.format("Initial odd number %d used several times (%s, %s)", initialOddNumber, initialOddNumbers.get(initialOddNumber), className), initialOddNumbers.containsKey(initialOddNumber));
       assertFalse(String.format("Multiplier odd number %d used several times (%s, %s)", multiplierOddNumber, multiplierOddNumbers.get(multiplierOddNumber), className), multiplierOddNumbers.containsKey(multiplierOddNumber));
+      assertTrue(initialOddNumber % 2 == 1);
+      assertTrue(multiplierOddNumber % 2 == 1);
       
       initialOddNumbers.put(initialOddNumber, className);
       multiplierOddNumbers.put(multiplierOddNumber, className);

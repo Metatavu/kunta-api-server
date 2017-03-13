@@ -1,11 +1,10 @@
 package fi.otavanopisto.kuntaapi.server.integrations.management;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.annotation.Resource;
-import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
 import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
@@ -30,17 +29,20 @@ import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementAttachmentCache;
 import fi.otavanopisto.kuntaapi.server.integrations.management.tasks.BannerIdTaskQueue;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
+import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask.Operation;
 
 @ApplicationScoped
 @Singleton
-@AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
 public class ManagementBannerEntityUpdater extends EntityUpdater {
 
   @Inject
   private Logger logger;
+
+  @Inject
+  private OrganizationSettingController organizationSettingController; 
 
   @Inject
   private ManagementTranslator managementTranslator;
@@ -95,6 +97,11 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
 
   private void updateManagementBanner(BannerId managementBannerId, Long orderIndex) {
     OrganizationId organizationId = managementBannerId.getOrganizationId();
+    if (!organizationSettingController.hasSettingValue(organizationId, ManagementConsts.ORGANIZATION_SETTING_BASEURL)) {
+      logger.log(Level.INFO, "Organization management baseUrl not set, skipping update"); 
+      return;
+    }
+    
     DefaultApi api = managementApi.getApi(organizationId);
     
     fi.metatavu.management.client.ApiResponse<Banner> response = api.wpV2BannerIdGet(managementBannerId.getId(), null, null, null);

@@ -33,12 +33,12 @@ public class PublicTransportScheduleId extends OrganizationBaseId {
   }
   
   @Override
-  protected int getHashInitial() {
+  public int getHashInitial() {
     return 339;
   }
   
   @Override
-  protected int getHashMultiplier() {
+  public int getHashMultiplier() {
     return 351;
   }
   

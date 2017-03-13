@@ -1,10 +1,8 @@
 package fi.otavanopisto.kuntaapi.server.integrations.gtfs;
 
-import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -19,6 +17,7 @@ import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportAgencyId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
+import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
 import fi.otavanopisto.kuntaapi.server.integrations.gtfs.cache.GtfsPublicTransportAgencyCache;
 import fi.otavanopisto.kuntaapi.server.integrations.gtfs.tasks.GtfsAgencyEntityTask;
 import fi.otavanopisto.kuntaapi.server.integrations.gtfs.tasks.GtfsAgencyTaskQueue;
@@ -26,7 +25,6 @@ import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 
 @ApplicationScoped
 @Singleton
-@AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
 public class GtfsAgencyEntityUpdater extends EntityUpdater {
   
@@ -53,6 +51,9 @@ public class GtfsAgencyEntityUpdater extends EntityUpdater {
   
   @Inject
   private GtfsIdFactory gtfsIdFactory;
+
+  @Inject
+  private KuntaApiIdFactory kuntaApiIdFactory; 
 
   @Inject
   private GtfsAgencyTaskQueue gtfsAgencyTaskQueue;
@@ -84,7 +85,7 @@ public class GtfsAgencyEntityUpdater extends EntityUpdater {
     Identifier identifier = identifierController.acquireIdentifier(orderIndex, gtfsAgencyId);
     identifierRelationController.setParentId(identifier, kuntaApiOrganizationId);
     
-    PublicTransportAgencyId kuntaApiAgencyId = gtfsIdFactory.createKuntaApiId(PublicTransportAgencyId.class, identifier);
+    PublicTransportAgencyId kuntaApiAgencyId = kuntaApiIdFactory.createFromIdentifier(PublicTransportAgencyId.class, identifier);
     fi.metatavu.kuntaapi.server.rest.model.Agency agency = gtfsTranslator.translateAgency(kuntaApiAgencyId, gtfsAgency);
     
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(agency));
