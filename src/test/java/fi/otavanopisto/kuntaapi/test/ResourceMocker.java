@@ -27,7 +27,7 @@ public class ResourceMocker<I, R> {
   private static final String APPLICATION_JSON = "application/json";
   private static final String CONTENT_TYPE = "Content-Type";
 
-  private EnumMap<MockedResourceStatus, MappingBuilder> statusLists = new EnumMap<>(MockedResourceStatus.class);
+  private EnumMap<MockedResourceStatus, List<MappingBuilder>> statusLists = new EnumMap<>(MockedResourceStatus.class);
   private boolean started = false;
   private Map<I, MockedResource<R>> resources = new LinkedHashMap<>();
   private Map<I, List<ResourceMocker<?, ?>>> subMockers = new LinkedHashMap<>();
@@ -39,13 +39,15 @@ public class ResourceMocker<I, R> {
       stubFor(resource.getCurrentMapping());
     }
     
-    for (Entry<MockedResourceStatus, MappingBuilder> statusListEntry : statusLists.entrySet()) {
-      MappingBuilder mapping = statusListEntry.getValue();  
-      MockedResourceStatus status = statusListEntry.getKey();
-      mapping.willReturn(aResponse()
-        .withHeader(CONTENT_TYPE, APPLICATION_JSON)
-        .withBody(toJSON(getResources(status))));
-      stubFor(mapping);
+    for (Entry<MockedResourceStatus, List<MappingBuilder>> statusListEntry : statusLists.entrySet()) {
+      List<MappingBuilder> mappings = statusListEntry.getValue();  
+      for (MappingBuilder mapping : mappings) {
+        MockedResourceStatus status = statusListEntry.getKey();
+        mapping.willReturn(aResponse()
+          .withHeader(CONTENT_TYPE, APPLICATION_JSON)
+          .withBody(toJSON(getResources(status))));
+        stubFor(mapping);
+      }
     }
     
     for (List<ResourceMocker<?, ?>> subMockerList : subMockers.values()) {
@@ -73,8 +75,11 @@ public class ResourceMocker<I, R> {
         removeStub(mapping);
       }
     }
-    for (MappingBuilder list : statusLists.values()) {
-      removeStub(list);
+    
+    for (List<MappingBuilder> mappings : statusLists.values()) {
+      for (MappingBuilder mapping : mappings) {
+        removeStub(mapping);
+      }
     }
   }
   
@@ -167,7 +172,11 @@ public class ResourceMocker<I, R> {
       }
     }
     
-    statusLists.put(status, mapping);
+    if (!statusLists.containsKey(status)) {
+      statusLists.put(status, new ArrayList<>());
+    }
+    
+    statusLists.get(status).add(mapping);
   }
 
   public void addSubMocker(I id, ResourceMocker<?, ?> subMocker) {
@@ -184,17 +193,19 @@ public class ResourceMocker<I, R> {
   }
   
   private void updateStatusLists() {
-    for (Entry<MockedResourceStatus, MappingBuilder> statusListEntry : statusLists.entrySet()) {
-      MappingBuilder mapping = statusListEntry.getValue();  
-      MockedResourceStatus status = statusListEntry.getKey();
-      
-      removeStub(mapping);
-      
-      mapping.willReturn(aResponse()
-        .withHeader(CONTENT_TYPE, APPLICATION_JSON)
-        .withBody(toJSON(getResources(status))));
-      
-      stubFor(mapping);
+    for (Entry<MockedResourceStatus, List<MappingBuilder>> statusListEntry : statusLists.entrySet()) {
+      List<MappingBuilder> mappings = statusListEntry.getValue();  
+      for (MappingBuilder mapping : mappings) {
+        MockedResourceStatus status = statusListEntry.getKey();
+        
+        removeStub(mapping);
+        
+        mapping.willReturn(aResponse()
+          .withHeader(CONTENT_TYPE, APPLICATION_JSON)
+          .withBody(toJSON(getResources(status))));
+        
+        stubFor(mapping);
+      }
     }
   }
   

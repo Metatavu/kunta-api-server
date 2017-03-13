@@ -39,6 +39,7 @@ import fi.metatavu.kuntaapi.server.rest.model.OrganizationSetting;
 import fi.metatavu.kuntaapi.server.rest.model.Page;
 import fi.metatavu.kuntaapi.server.rest.model.Route;
 import fi.metatavu.kuntaapi.server.rest.model.Schedule;
+import fi.metatavu.kuntaapi.server.rest.model.Shortlink;
 import fi.metatavu.kuntaapi.server.rest.model.Stop;
 import fi.metatavu.kuntaapi.server.rest.model.StopTime;
 import fi.metatavu.kuntaapi.server.rest.model.Tile;
@@ -58,6 +59,7 @@ import fi.otavanopisto.kuntaapi.server.controllers.OrganizationController;
 import fi.otavanopisto.kuntaapi.server.controllers.PageController;
 import fi.otavanopisto.kuntaapi.server.controllers.PublicTransportController;
 import fi.otavanopisto.kuntaapi.server.controllers.SecurityController;
+import fi.otavanopisto.kuntaapi.server.controllers.ShortlinkController;
 import fi.otavanopisto.kuntaapi.server.controllers.TileController;
 import fi.otavanopisto.kuntaapi.server.id.AnnouncementId;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
@@ -79,6 +81,7 @@ import fi.otavanopisto.kuntaapi.server.id.PublicTransportScheduleId;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportStopId;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportStopTimeId;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportTripId;
+import fi.otavanopisto.kuntaapi.server.id.ShortlinkId;
 import fi.otavanopisto.kuntaapi.server.id.TileId;
 import fi.otavanopisto.kuntaapi.server.integrations.AnnouncementProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.AnnouncementProvider.AnnouncementOrder;
@@ -89,6 +92,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.JobProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.JobProvider.JobOrder;
 import fi.otavanopisto.kuntaapi.server.integrations.JobProvider.JobOrderDirection;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
+import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
 import fi.otavanopisto.kuntaapi.server.integrations.OrganizationServiceProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.PublicTransportStopTimeSortBy;
 import fi.otavanopisto.kuntaapi.server.integrations.SortDir;
@@ -156,6 +160,12 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   private ContactController contactController;
   
   @Inject
+  private ShortlinkController shortlinkController;
+  
+  @Inject
+  private KuntaApiIdFactory kuntaApiIdFactory;
+  
+  @Inject
   private ClientContainer clientContainer;
   
   @Inject
@@ -188,7 +198,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   
   @Override
   public Response findOrganization(String organizationIdParam, @Context Request request) {
-  	  OrganizationId organizationId = toOrganizationId(organizationIdParam);
+  	  OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     	if (organizationId == null) {
     	  return createNotFound(NOT_FOUND);
     	}
@@ -213,7 +223,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   
   @Override
   public Response findOrganizationService(String organizationIdParam, String organizationServiceIdParam, @Context Request request) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     OrganizationServiceId organizationServiceId = toOrganizationServiceId(organizationId, organizationServiceIdParam);
     
     for (OrganizationServiceProvider organizationServiceProvider : getOrganizationServiceProviders()) {
@@ -229,7 +239,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   
   @Override
   public Response listOrganizationOrganizationServices(String organizationIdParam, Long firstResult, Long maxResults, @Context Request request) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createBadRequest("Organization parameter is mandatory");
     }
@@ -261,7 +271,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   @Override
   public Response findOrganizationEvent(String organizationIdParam, String eventIdParam, @Context Request request) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     EventId eventId = toEventId(organizationId, eventIdParam);
     
     Response notModified = httpCacheController.getNotModified(request, eventId);
@@ -279,7 +289,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   @Override
   public Response findOrganizationEventImage(String organizationIdParam, String eventIdParam, String imageIdParam, @Context Request request) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     EventId eventId = toEventId(organizationId, eventIdParam);
     AttachmentId attachmentId = new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, imageIdParam);
     
@@ -298,7 +308,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   @Override
   public Response getOrganizationEventImageData(String organizationIdParam, String eventIdParam, String imageIdParam, Integer size, @Context Request request) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     EventId eventId = toEventId(organizationId, eventIdParam);
     AttachmentId attachmentId = new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, imageIdParam);
     
@@ -318,7 +328,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   @Override
   public Response listOrganizationEventImages(String organizationIdParam, String eventIdParam, @Context Request request) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     EventId eventId = toEventId(organizationId, eventIdParam);
     
     List<Attachment> result = eventController.listEventImages(organizationId, eventId);
@@ -355,7 +365,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       }
     }
     
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     
     List<Event> result = eventController.listEvents(getDateTime(startBefore), getDateTime(startAfter), getDateTime(endBefore), getDateTime(endAfter), 
         firstResult, maxResults, order, orderDirection, organizationId);
@@ -375,7 +385,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   public Response listOrganizationNews(String organizationIdParam, String slug, String publishedBefore,
       String publishedAfter, Integer firstResult, Integer maxResults, Request request) {
     
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     
     List<NewsArticle> result = newsController.listNewsArticles(slug, getDateTime(publishedBefore), getDateTime(publishedAfter), firstResult, maxResults, organizationId);
     
@@ -390,7 +400,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   @Override
   public Response findOrganizationNewsArticle(String organizationIdParam, String newsArticleIdParam, @Context Request request) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     NewsArticleId newsArticleId = toNewsArticleId(organizationId, newsArticleIdParam);
     
     Response notModified = httpCacheController.getNotModified(request, newsArticleId);
@@ -408,7 +418,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   @Override
   public Response findOrganizationNewsArticleImage(String organizationIdParam, String newsArticleIdParam, String imageIdParam, @Context Request request) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     NewsArticleId newsArticleId = toNewsArticleId(organizationId, newsArticleIdParam);
     AttachmentId attachmentId = toAttachmentId(organizationId, imageIdParam);
     
@@ -427,7 +437,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   @Override
   public Response getOrganizationNewsArticleImageData(String organizationIdParam, String newsArticleIdParam, String imageIdParam, Integer size, @Context Request request) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     NewsArticleId newsArticleId = toNewsArticleId(organizationId, newsArticleIdParam);
     AttachmentId attachmentId = toAttachmentId(organizationId, imageIdParam);
    
@@ -446,7 +456,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   @Override
   public Response listOrganizationNewsArticleImages(String organizationIdParam, String newsArticleIdParam, @Context Request request) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     NewsArticleId newsArticleId = toNewsArticleId(organizationId, newsArticleIdParam);
     
     List<Attachment> result = newsController.listNewsArticleImages(organizationId, newsArticleId);
@@ -463,7 +473,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   
   @Override
   public Response listOrganizationBanners(String organizationIdParam, @Context Request request) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     
     List<Banner> result = bannerController.listBanners(organizationId);
     List<String> ids = httpCacheController.getEntityIds(result);
@@ -477,7 +487,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   @Override
   public Response findOrganizationBanner(String organizationIdParam, String bannerIdParam, @Context Request request) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     BannerId bannerId = toBannerId(organizationId, bannerIdParam);
     
     Response notModified = httpCacheController.getNotModified(request, bannerId);
@@ -495,7 +505,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   @Override
   public Response listOrganizationBannerImages(String organizationIdParam, String bannerIdParam, @Context Request request) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     BannerId bannerId = toBannerId(organizationId, bannerIdParam);
     
     List<Attachment> result = bannerController.listBannerImages(organizationId, bannerId);
@@ -510,7 +520,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   @Override
   public Response findOrganizationBannerImage(String organizationIdParam, String bannerIdParam, String imageIdParam, @Context Request request) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     BannerId bannerId = toBannerId(organizationId, bannerIdParam);
     AttachmentId attachmentId = toAttachmentId(organizationId, imageIdParam);
     
@@ -529,7 +539,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   @Override
   public Response getOrganizationBannerImageData(String organizationIdParam, String bannerIdParam, String imageIdParam, Integer size, @Context Request request) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     BannerId bannerId = toBannerId(organizationId, bannerIdParam);
     AttachmentId attachmentId = toAttachmentId(organizationId, imageIdParam);
     
@@ -550,7 +560,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   
   @Override
   public Response listOrganizationTiles(String organizationIdParam, @Context Request request) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     
     List<Tile> result = tileController.listTiles(organizationId);
     List<String> ids = httpCacheController.getEntityIds(result);
@@ -564,7 +574,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   @Override
   public Response findOrganizationTile(String organizationIdParam, String tileIdParam, @Context Request request) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     TileId tileId = toTileId(organizationId, tileIdParam);
     
     Response notModified = httpCacheController.getNotModified(request, tileId);
@@ -582,7 +592,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   @Override
   public Response listOrganizationTileImages(String organizationIdParam, String tileIdParam, @Context Request request) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     TileId tileId = toTileId(organizationId, tileIdParam);
     
     List<Attachment> result = tileController.listTileImages(organizationId, tileId);
@@ -597,7 +607,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   @Override
   public Response findOrganizationTileImage(String organizationIdParam, String tileIdParam, String imageIdParam, @Context Request request) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     TileId tileId = toTileId(organizationId, tileIdParam);
     AttachmentId attachmentId = toAttachmentId(organizationId, imageIdParam);
     
@@ -616,7 +626,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   @Override
   public Response getOrganizationTileImageData(String organizationIdParam, String tileIdParam, String imageIdParam, Integer size, @Context Request request) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     TileId tileId = toTileId(organizationId, tileIdParam);
     AttachmentId attachmentId = toAttachmentId(organizationId, imageIdParam);
     
@@ -640,7 +650,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createForbidden(FORBIDDEN);
     }
     
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
     }
@@ -674,7 +684,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createForbidden(FORBIDDEN);
     }
     
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
     }
@@ -692,7 +702,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createForbidden(FORBIDDEN);
     }
     
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
     }
@@ -720,7 +730,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createForbidden(FORBIDDEN);
     }
     
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
     }
@@ -765,7 +775,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createForbidden(FORBIDDEN);
     }
     
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
     }
@@ -792,7 +802,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   
   @Override
   public Response listOrganizationPages(String organizationIdParam, String parentIdParam, String path, String search, Long firstResult, Long maxResults, @Context Request request) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
     }
@@ -816,7 +826,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   @Override
   public Response findOrganizationPage(String organizationIdParam, String pageIdParam, @Context Request request) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
     }
@@ -841,7 +851,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   
   @Override
   public Response findOrganizationPageContent(String organizationIdParam, String pageIdParam, @Context Request request) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
     }
@@ -869,7 +879,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   @Override
   public Response listOrganizationPageImages(String organizationIdParam, String pageIdParam, String type, Request request) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     PageId pageId = toPageId(organizationId, pageIdParam);
     
     List<Attachment> result = pageController.listPageImages(organizationId, pageId, type);
@@ -889,7 +899,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   @Override
   public Response findOrganizationPageImage(String organizationIdParam, String pageIdParam, String imageIdParam, @Context Request request) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     PageId pageId = toPageId(organizationId, pageIdParam);
     AttachmentId attachmentId = toAttachmentId(organizationId, imageIdParam);
     
@@ -908,7 +918,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   @Override
   public Response getOrganizationPageImageData(String organizationIdParam, String pageIdParam, String imageIdParam, Integer size, @Context Request request) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     PageId pageId = toPageId(organizationId, pageIdParam);
     AttachmentId attachmentId = toAttachmentId(organizationId, imageIdParam);
     
@@ -929,7 +939,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   
   @Override
   public Response findOrganizationFragment(String organizationIdParam, String fragmentIdParam, Request request) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
     }
@@ -954,7 +964,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   
   @Override
   public Response listOrganizationFragments(String organizationIdParam, String slug, Request request) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
     }
@@ -973,7 +983,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   @Override
   public Response listOrganizationMenus(String organizationIdParam, String slug, @Context Request request) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
     }
@@ -990,7 +1000,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   
   @Override
   public Response findOrganizationMenu(String organizationIdParam, String menuIdParam, @Context Request request) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
     }
@@ -1017,7 +1027,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   @Override
   public Response listOrganizationMenuItems(String organizationIdParam, String menuIdParam, @Context Request request) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
     }
@@ -1039,7 +1049,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   @Override
   public Response findOrganizationMenuItem(String organizationIdParam, String menuIdParam, String menuItemIdParam, @Context Request request) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
     }
@@ -1076,7 +1086,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   @Override
   public Response listOrganizationFiles(String organizationIdParam, String pageIdParam, String search, Long firstResult, Long maxResults, Request request) {
     
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
     }
@@ -1101,7 +1111,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   @Override
   public Response findOrganizationFile(String organizationIdParam, String fileIdParam, @Context Request request) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
     }
@@ -1126,7 +1136,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   @Override
   public Response getOrganizationFileData(String organizationIdParam, String fileIdParam, @Context Request request) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
     }
@@ -1153,7 +1163,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   @Override
   public Response findOrganizationJob(String organizationIdParam, String jobIdParam, @Context Request request) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
     }
@@ -1178,7 +1188,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   @Override
   public Response listOrganizationJobs(String organizationIdParam, String sortBy, String sortDir, Long firstResult, Long maxResults, @Context Request request) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
     }
@@ -1207,7 +1217,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   @Override
   public Response findOrganizationAnnouncement(String organizationIdParam, String announcementIdParam, @Context Request request) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
     }
@@ -1232,7 +1242,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   
   @Override
   public Response listOrganizationAnnouncements(String organizationIdParam, String slug, Integer firstResult, Integer maxResults, String sortBy, String sortDir, @Context Request request) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
     }
@@ -1261,7 +1271,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   
   @Override
   public Response findOrganizationContact(String organizationIdParam, String contactIdParam, Request request) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
     }
@@ -1286,7 +1296,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   @Override
   public Response listOrganizationContacts(String organizationIdParam, Request request) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
     }
@@ -1299,7 +1309,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   
   @Override
   public Response findOrganizationPublicTransportAgency(String organizationIdParam, String agencyIdParam, Request request) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
     }
@@ -1324,7 +1334,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   @Override
   public Response findOrganizationPublicTransportRoute(String organizationIdParam, String routeIdParam, Request request) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
     }
@@ -1349,7 +1359,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   @Override
   public Response findOrganizationPublicTransportSchedule(String organizationIdParam, String scheduleIdParam, Request request) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
     }
@@ -1374,7 +1384,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   @Override
   public Response listOrganizationPublicTransportAgencies(String organizationIdParam, Request request) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
     }
@@ -1391,7 +1401,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   
   @Override
   public Response findOrganizationPublicTransportStop(String organizationIdParam, String stopIdParam, Request request) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
     }
@@ -1416,7 +1426,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   @Override
   public Response findOrganizationPublicTransportStopTime(String organizationIdParam, String stopTimeIdParam, Request request) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
     }
@@ -1441,7 +1451,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   @Override
   public Response findOrganizationPublicTransportTrip(String organizationIdParam, String tripIdParam, Request request) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
     }
@@ -1468,7 +1478,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   public Response listOrganizationPublicTransportStopTimes(String organizationIdParam, String stopIdParam, Integer departureTime,
       String sortByParam, String sortDirParam, Long firstResult, Long maxResults, Request request) {
     
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
     }
@@ -1504,7 +1514,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   @Override
   public Response listOrganizationPublicTransportStops(String organizationIdParam, Request request) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
     }
@@ -1521,7 +1531,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   @Override
   public Response listOrganizationPublicTransportTrips(String organizationIdParam, Request request) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
     }
@@ -1538,7 +1548,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   @Override
   public Response listOrganizationPublicTransportRoutes(String organizationIdParam, Request request) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
     }
@@ -1555,7 +1565,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   @Override
   public Response listOrganizationPublicTransportSchedules(String organizationIdParam, Request request) {
-    OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
     }
@@ -1570,14 +1580,48 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     return httpCacheController.sendModified(result, ids);
   }
   
+  /* Shortlinks */
+  
   @Override
-  public Response findOrganizationShortlink(String organizationId, String shortlinkId, Request request) {
-    return createNotImplemented("Not implemented");
+  public Response findOrganizationShortlink(String organizationIdParam, String shortlinkIdParam, Request request) {
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    ShortlinkId shortlinkId = kuntaApiIdFactory.createShortlinkId(organizationId, shortlinkIdParam);
+    if (shortlinkId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+
+    Response notModified = httpCacheController.getNotModified(request, shortlinkId);
+    if (notModified != null) {
+      return notModified;
+    }
+    
+    Shortlink shortlink = shortlinkController.findShortlink(organizationId, shortlinkId);
+    if (shortlink != null) {
+      return httpCacheController.sendModified(shortlink, shortlink.getId());
+    }
+    
+    return createNotFound(NOT_FOUND);
   }
   
   @Override
-  public Response listOrganizationShortlinks(String organizationId, String path, Long firstResult, Long maxResults, Request request) {
-    return createNotImplemented("Not implemented");
+  public Response listOrganizationShortlinks(String organizationIdParam, String path, Long firstResult, Long maxResults, Request request) {
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    List<Shortlink> result = shortlinkController.listShortlinks(organizationId, path, null, null);
+    List<String> ids = httpCacheController.getEntityIds(result);
+    Response notModified = httpCacheController.getNotModified(request, ids);
+    if (notModified != null) {
+      return notModified;
+    }
+
+    return httpCacheController.sendModified(result, ids);
   }
   
   private List<Page> listOrganizationPages(OrganizationId organizationId, boolean onlyRootPages, PageId parentId, String path, String search, Long firstResult, Long maxResults) {
@@ -1655,14 +1699,6 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   private NewsArticleId toNewsArticleId(OrganizationId organizationId, String id) {
     if (StringUtils.isNotBlank(id)) {
       return new NewsArticleId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, id);
-    }
-    
-    return null;
-  }
-
-  private OrganizationId toOrganizationId(String id) {
-    if (StringUtils.isNotBlank(id)) {
-      return new OrganizationId(KuntaApiConsts.IDENTIFIER_NAME, id);
     }
     
     return null;

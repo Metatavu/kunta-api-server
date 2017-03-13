@@ -14,6 +14,7 @@ import javax.inject.Inject;
 import org.apache.commons.lang3.StringUtils;
 
 import fi.otavanopisto.kuntaapi.server.cache.AbstractCache;
+import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 
 @ApplicationScoped
 public class SystemHealthCheck {
@@ -22,6 +23,9 @@ public class SystemHealthCheck {
   
   @Inject
   private Logger logger;
+
+  @Inject
+  private SystemSettingController systemSettingController;
 
   @Inject
   @Any
@@ -33,11 +37,19 @@ public class SystemHealthCheck {
     }
     
     List<String> problems = new ArrayList<>();
+    
+    if (systemSettingController.inFailsafeMode()) {
+      problems.add("System is running in failsafe mode");
+    }
+    
+    if (systemSettingController.inTestMode()) {
+      problems.add("System is running in test mode");
+    }
+    
     checkCacheHealth(problems);
     
     logger.info(LINE);
     logger.info("System health check");
-    logger.info(LINE);
     
     if (!problems.isEmpty()) {
       logger.warning("Following system health problems detected:");

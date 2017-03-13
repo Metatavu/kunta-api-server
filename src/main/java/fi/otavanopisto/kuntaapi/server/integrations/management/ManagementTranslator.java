@@ -21,6 +21,7 @@ import fi.metatavu.kuntaapi.server.rest.model.Tile;
 import fi.metatavu.management.client.model.Announcement;
 import fi.metatavu.management.client.model.Post;
 import fi.metatavu.management.client.model.PostExcerpt;
+import fi.metatavu.management.client.model.Shortlink;
 import fi.otavanopisto.kuntaapi.server.id.AnnouncementId;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.BannerId;
@@ -28,6 +29,7 @@ import fi.otavanopisto.kuntaapi.server.id.FragmentId;
 import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
+import fi.otavanopisto.kuntaapi.server.id.ShortlinkId;
 import fi.otavanopisto.kuntaapi.server.id.TileId;
 
 @ApplicationScoped
@@ -139,6 +141,15 @@ public class ManagementTranslator {
   
   public AttachmentId createManagementAttachmentId(OrganizationId organizationId, Integer attachmentId, String type) {
     return new AttachmentId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.format("%d-%s", attachmentId, type));
+  }
+
+  public fi.metatavu.kuntaapi.server.rest.model.Shortlink translateShortlink(ShortlinkId kuntaApiShortlinkId, Shortlink managementShortlink) {
+    fi.metatavu.kuntaapi.server.rest.model.Shortlink result = new fi.metatavu.kuntaapi.server.rest.model.Shortlink();
+    result.setId(kuntaApiShortlinkId.getId());
+    result.setName(managementShortlink.getTitle().getRendered());
+    result.setPath(managementShortlink.getPath());
+    result.setUrl(managementShortlink.getUrl());
+    return result;
   }
   
   private OffsetDateTime toOffsetDateTime(LocalDateTime date) {

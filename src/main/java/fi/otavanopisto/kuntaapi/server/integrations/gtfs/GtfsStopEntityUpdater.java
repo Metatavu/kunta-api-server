@@ -1,11 +1,9 @@
 package fi.otavanopisto.kuntaapi.server.integrations.gtfs;
 
-import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.annotation.Resource;
-import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
 import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
@@ -21,6 +19,7 @@ import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportStopId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
+import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
 import fi.otavanopisto.kuntaapi.server.integrations.gtfs.cache.GtfsPublicTransportStopCache;
 import fi.otavanopisto.kuntaapi.server.integrations.gtfs.tasks.GtfsStopEntityTask;
 import fi.otavanopisto.kuntaapi.server.integrations.gtfs.tasks.GtfsStopTaskQueue;
@@ -28,7 +27,6 @@ import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 
 @ApplicationScoped
 @Singleton
-@AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
 public class GtfsStopEntityUpdater extends EntityUpdater {
 
@@ -52,7 +50,10 @@ public class GtfsStopEntityUpdater extends EntityUpdater {
   
   @Inject
   private ModificationHashCache modificationHashCache;
-  
+
+  @Inject
+  private KuntaApiIdFactory kuntaApiIdFactory; 
+
   @Inject
   private GtfsIdFactory gtfsIdFactory;
   
@@ -90,7 +91,7 @@ public class GtfsStopEntityUpdater extends EntityUpdater {
     Identifier identifier = identifierController.acquireIdentifier(orderIndex, gtfsStopId);
     identifierRelationController.setParentId(identifier, kuntaApiOrganizationId);
     
-    PublicTransportStopId kuntaApiStopId = gtfsIdFactory.createKuntaApiId(PublicTransportStopId.class, identifier);
+    PublicTransportStopId kuntaApiStopId = kuntaApiIdFactory.createFromIdentifier(PublicTransportStopId.class, identifier);
     fi.metatavu.kuntaapi.server.rest.model.Stop kuntaApiStop = gtfsTranslator.translateStop(kuntaApiStopId, gtfsStop);
     
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(kuntaApiStop));

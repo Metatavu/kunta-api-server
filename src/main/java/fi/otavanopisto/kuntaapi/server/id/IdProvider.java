@@ -260,4 +260,13 @@ public interface IdProvider {
    */
   public PublicTransportTripId translate(PublicTransportTripId publicTransportTripId, String target);
 
+  /**
+   * Translate shortlink id
+   * 
+   * @param shortlinkId original id
+   * @param target target type
+   * @return translated id
+   */
+  public ShortlinkId translate(ShortlinkId shortlinkId, String target);
+
 }

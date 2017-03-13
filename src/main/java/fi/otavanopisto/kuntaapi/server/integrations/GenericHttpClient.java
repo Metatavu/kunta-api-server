@@ -15,6 +15,7 @@ import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -106,6 +107,10 @@ public class GenericHttpClient {
    * @return the response
    */
   public <T> Response<T> doGETRequest(URI uri, ResultType<T> resultType, Map<String, String> extraHeaders) {
+    if (StringUtils.isBlank(uri.getHost())) {
+      return new Response<>(400, String.format("Malformed address %s", uri), null);
+    }
+    
     CloseableHttpClient httpClient = HttpClients.createDefault();
     try {
       return executeRequest(resultType, uri, httpClient, extraHeaders);

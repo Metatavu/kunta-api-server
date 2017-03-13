@@ -49,6 +49,8 @@ public enum IdType {
   
   CONTACT,
   
+  SHORTLINK,
+
   PUBLIC_TRANSPORT_AGENCY,
   
   PUBLIC_TRANSPORT_SCHEDULE,

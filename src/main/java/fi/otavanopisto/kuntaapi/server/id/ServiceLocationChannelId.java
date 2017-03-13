@@ -32,12 +32,12 @@ public class ServiceLocationChannelId extends BaseId {
   }
   
   @Override
-  protected int getHashInitial() {
+  public int getHashInitial() {
     return 211;
   }
   
   @Override
-  protected int getHashMultiplier() {
+  public int getHashMultiplier() {
     return 223;
   }
   

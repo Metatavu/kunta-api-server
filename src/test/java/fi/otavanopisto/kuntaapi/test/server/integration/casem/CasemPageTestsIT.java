@@ -31,9 +31,8 @@ public class CasemPageTestsIT extends AbstractIntegrationTest {
   public void beforeTest() throws InterruptedException {
     createPtvSettings();
     
-    getPtvMocker()
-      .mockOrganizations("0de268cf-1ea1-4719-8a6e-1150933b6b9e")
-      .startMock();
+    getRestfulPtvOrganizationMocker()
+      .mockOrganizations("0de268cf-1ea1-4719-8a6e-1150933b6b9e");
     
     getCasemMocker()
       .mockSubnodes(100)
@@ -43,6 +42,8 @@ public class CasemPageTestsIT extends AbstractIntegrationTest {
       .mockContentList()
       .mockContent(987, 876, 765)
       .startMock();
+    
+    startMocks();
 
     waitApiListCount("/organizations", 1);
     
