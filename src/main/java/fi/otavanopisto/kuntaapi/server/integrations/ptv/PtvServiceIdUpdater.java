@@ -1,6 +1,7 @@
 package fi.otavanopisto.kuntaapi.server.integrations.ptv;
 
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.annotation.Resource;
@@ -14,6 +15,7 @@ import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.IdUpdater;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.ServiceId;
+import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask.Operation;
 import fi.otavanopisto.kuntaapi.server.tasks.TaskRequest;
@@ -27,7 +29,10 @@ public class PtvServiceIdUpdater extends IdUpdater {
 
   @Inject
   private Logger logger;
-  
+
+  @Inject  
+  private SystemSettingController systemSettingController;
+
   @Inject
   private IdController idController;
 
@@ -54,6 +59,11 @@ public class PtvServiceIdUpdater extends IdUpdater {
   }
 
   private void discoverIds() {
+    if (!systemSettingController.hasSettingValue(PtvConsts.SYSTEM_SETTING_BASEURL)) {
+      logger.log(Level.INFO, "Organization management baseUrl not set, skipping update"); 
+      return;
+    }
+    
     List<ServiceId> existingServiceIds = idController.translateIds(identifierController.listServiceIdsBySource(PtvConsts.IDENTIFIER_NAME), PtvConsts.IDENTIFIER_NAME);
 
     ApiResponse<List<Service>> servicesResponse = ptvApi.getServicesApi().listServices(null, null, null);

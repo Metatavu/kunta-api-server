@@ -80,23 +80,28 @@ public abstract class AbstractTaskQueue <T extends AbstractTask> {
     
     if (systemSettingController.isNotTestingOrTestRunning()) {
       startBatch();
+      
+      Integer taskHashId;
+      
       try {
         List<Integer> priorities = getPriorities();
         if (priorities.isEmpty()) {
           return null;
         }
         
-        Integer taskHashId = priorities.remove(0);
+        taskHashId = priorities.remove(0);
         setPriorities(priorities);
         
-        return popTask(taskHashId);
       } finally {
         tasksExecuted++;
         endBatch();
       }
-    } else {
-      return null;
+      if (taskHashId != null) {
+        return popTask(taskHashId);
+      }
     }
+    
+    return null;
   }
   
   /**
@@ -111,31 +116,14 @@ public abstract class AbstractTaskQueue <T extends AbstractTask> {
       return;
     }
     
-    startBatch();
-    try {
+    Integer taskHashId = obtainTaskHash(task, priority);
+    
+    if (taskHashId != null) {
       byte[] rawData = serialize(task);
       Cache<String, byte[]> tasksCache = getTasksCache();
-      List<Integer> priorities = getPriorities();
-      
-      Integer taskHashId = task.getTaskHash();
-      if (priority) {
-        if (priorities.contains(taskHashId)) {
-          duplicatedTasks++;
-          priorities.remove(taskHashId);
-        }
-        
-        priorities.add(0, taskHashId);
-      } else {
-        if (!priorities.contains(taskHashId)) {
-          priorities.add(taskHashId);
-        }
-      }
-      
-      setPriorities(priorities);
       tasksCache.put(createTaskId(taskHashId), rawData);
-    } finally {
-      endBatch();
     }
+    
   }
 
   /**
@@ -156,6 +144,40 @@ public abstract class AbstractTaskQueue <T extends AbstractTask> {
    */
   public void stop() {
     running = false;
+  }
+  
+  private Integer obtainTaskHash(T task, boolean priority) {
+    Integer taskHashId;
+    
+    startBatch();
+    try {
+      List<Integer> priorities = getPriorities();
+      boolean modified = false;
+      taskHashId = task.getTaskHash();
+      
+      if (priority) {
+        if (priorities.contains(taskHashId)) {
+          duplicatedTasks++;
+          priorities.remove(taskHashId);
+        }
+        
+        priorities.add(0, taskHashId);
+        modified = true;
+      } else {
+        if (!priorities.contains(taskHashId)) {
+          priorities.add(taskHashId);
+          modified = true;
+        }
+      }
+      
+      if (modified) {
+        setPriorities(priorities); 
+      }  
+    } finally {
+      endBatch();
+    }
+    
+    return taskHashId;
   }
   
   private String createTaskId(Integer taskHashId) {

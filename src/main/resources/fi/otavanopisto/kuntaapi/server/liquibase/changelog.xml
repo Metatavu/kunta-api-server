@@ -213,4 +213,9 @@
     <sql dbms="mysql">UPDATE ArchivedIdentifier SET orderIndex = 0</sql>
   </changeSet>
   
+  <changeSet id="identifier-organization-ids-nullable" author="antti.leppa">
+    <dropNotNullConstraint tableName="Identifier" columnName="organizationKuntaApiId" columnDataType="varchar(255)"/> 
+    <dropNotNullConstraint tableName="ArchivedIdentifier" columnName="organizationKuntaApiId" columnDataType="varchar(255)"/> 
+  </changeSet>
+  
 </databaseChangeLog>

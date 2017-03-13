@@ -8,6 +8,8 @@ import java.util.logging.Logger;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
+import org.apache.commons.lang3.StringUtils;
+
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
@@ -178,6 +180,17 @@ public class OrganizationSettingController {
     }
     
     return result;
+  }
+
+  /**
+   * Returns whether organization setting has a value set or not
+   * 
+   * @param organizationId organizationId
+   * @param key key
+   * @return whether organization setting has a value set or not
+   */
+  public boolean hasSettingValue(OrganizationId organizationId, String key) {
+    return StringUtils.isNotBlank(getSettingValue(organizationId, key));
   }
   
 }

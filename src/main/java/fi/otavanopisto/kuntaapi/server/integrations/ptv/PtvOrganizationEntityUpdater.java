@@ -1,11 +1,9 @@
 package fi.otavanopisto.kuntaapi.server.integrations.ptv;
 
-import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.annotation.Resource;
-import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
 import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
@@ -20,6 +18,7 @@ import fi.otavanopisto.kuntaapi.server.index.IndexRequest;
 import fi.otavanopisto.kuntaapi.server.index.IndexableOrganization;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.OrganizationIdTaskQueue;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
+import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask.Operation;
 import fi.metatavu.restfulptv.client.ApiResponse;
@@ -27,12 +26,14 @@ import fi.metatavu.restfulptv.client.model.Organization;
 
 @ApplicationScoped
 @Singleton
-@AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
 public class PtvOrganizationEntityUpdater extends EntityUpdater {
 
   @Inject
   private Logger logger;
+
+  @Inject
+  private SystemSettingController systemSettingController;
 
   @Inject
   private PtvApi ptvApi;
@@ -76,6 +77,11 @@ public class PtvOrganizationEntityUpdater extends EntityUpdater {
   }
   
   private void updateOrganization(OrganizationId organizationId, Long orderIndex) {
+    if (!systemSettingController.hasSettingValue(PtvConsts.SYSTEM_SETTING_BASEURL)) {
+      logger.log(Level.INFO, "Organization management baseUrl not set, skipping update"); 
+      return;
+    }
+    
     ApiResponse<Organization> response = ptvApi.getOrganizationApi().findOrganization(organizationId.getId());
     if (response.isOk()) {
       Identifier identifier = identifierController.acquireIdentifier(orderIndex, organizationId);

@@ -688,6 +688,7 @@
             <version>2.19.1</version>
             <configuration>
               <failIfNoTests>true</failIfNoTests>
+              <skipAfterFailureCount>1</skipAfterFailureCount>
               <argLine>-Xms1024m -Xmx2048m</argLine>
               <includes>
                 <include>**/*IT.java</include>
@@ -833,6 +834,9 @@
                       <command>/subsystem=undertow/server=default-server/host=kunta-api:add(alias=["${it.host}"])</command>
                       <command>/system-property=it-test:add(value="true")</command>
                       <command>/subsystem=logging/logger=fi.otavanopisto.kuntaapi.server.index.AbstractIndexHander:add(level=FATAL)</command>
+                      <command>/subsystem=logging/logger=fi.otavanopisto.kuntaapi.server.security.SecurityFilter:add(level=FATAL)</command>
+                      <command>/subsystem=logging/logger=fi.otavanopisto.kuntaapi.server.index.IndexUpdater:add(level=SEVERE)</command>
+                      <command>/subsystem=logging/logger=org.onebusaway.gtfs.serialization.GtfsReader:add(level=WARN)</command>
                     </commands>
                   </before-deployment>
                   <filename>${project.build.finalName}.${project.packaging}</filename>

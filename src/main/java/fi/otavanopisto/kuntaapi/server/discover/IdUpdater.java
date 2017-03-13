@@ -1,12 +1,14 @@
 package fi.otavanopisto.kuntaapi.server.discover;
 
 import java.util.Collection;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.annotation.Resource;
+import javax.ejb.AccessTimeout;
 import javax.ejb.Timeout;
 import javax.ejb.Timer;
 import javax.ejb.TimerConfig;
@@ -18,6 +20,7 @@ import org.apache.commons.lang3.math.NumberUtils;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 
 @SuppressWarnings ("squid:S1610")
+@AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 public abstract class IdUpdater {
 
   @Inject
@@ -103,7 +106,7 @@ public abstract class IdUpdater {
   public void onTimeout() {
     if (!isStopped()) {
       try {
-        if (systemSettingController.isNotTestingOrTestRunning()) {
+        if (isEligibleToRun()) {
           timeout();
         }
       } catch (Exception e) {
@@ -118,6 +121,18 @@ public abstract class IdUpdater {
   
   public boolean isStopped() {
     return stopped;
+  }
+  
+  private boolean isEligibleToRun() {
+    if (systemSettingController.inFailsafeMode()) {
+      return false;
+    }
+    
+    if (!systemSettingController.isNotTestingOrTestRunning()) {
+      return false;
+    }
+    
+    return true;
   }
   
 }

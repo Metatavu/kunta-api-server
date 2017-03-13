@@ -39,6 +39,7 @@ public class MenuTestsIT extends AbstractIntegrationTest {
       .startMock();
     
     getManagementMocker()
+      .mockMedia("3001", "3002")
       .mockMenus("5001")
       .mockMenuItems("5001", "6001", "6002", "6003")
       .startMock();
