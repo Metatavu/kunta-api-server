@@ -141,7 +141,7 @@ public class IdentifierRelationController {
         } catch (Exception e) {
           
           if (logger.isLoggable(Level.SEVERE)) {
-            logger.log(Level.SEVERE, "Failed to remove identifier relation %d", identifierRelation.getId());
+            logger.log(Level.SEVERE, String.format("Failed to remove identifier relation %d", identifierRelation.getId()), e);
           }
           
           throw e;
