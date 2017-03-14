@@ -94,7 +94,12 @@ public class GtfsStopEntityUpdater extends EntityUpdater {
     PublicTransportStopId kuntaApiStopId = kuntaApiIdFactory.createFromIdentifier(PublicTransportStopId.class, identifier);
     fi.metatavu.kuntaapi.server.rest.model.Stop kuntaApiStop = gtfsTranslator.translateStop(kuntaApiStopId, gtfsStop);
     
-    modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(kuntaApiStop));
-    gtfsPublicTransportStopCache.put(kuntaApiStopId, kuntaApiStop);
+    if (kuntaApiStop != null) {
+      modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(kuntaApiStop));
+      gtfsPublicTransportStopCache.put(kuntaApiStopId, kuntaApiStop);
+    } else {
+      logger.severe(String.format("Failed to translate gtfs stop %s", identifier.getKuntaApiId()));
+    }
+
   }
 }
