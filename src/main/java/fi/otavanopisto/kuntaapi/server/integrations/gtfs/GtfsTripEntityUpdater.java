@@ -110,8 +110,11 @@ public class GtfsTripEntityUpdater extends EntityUpdater {
     
     PublicTransportTripId kuntaApiTripId = kuntaApiIdFactory.createFromIdentifier(PublicTransportTripId.class, identifier);
     fi.metatavu.kuntaapi.server.rest.model.Trip kuntaApiTrip = gtfsTranslator.translateTrip(kuntaApiTripId, gtfsTrip, kuntaApiRouteId, kuntaApiScheduleId);
-    
-    modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(kuntaApiTrip));
-    gtfsPublicTransportTripCache.put(kuntaApiTripId, kuntaApiTrip);
+    if (kuntaApiTrip != null) {
+      modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(kuntaApiTrip));
+      gtfsPublicTransportTripCache.put(kuntaApiTripId, kuntaApiTrip);
+    } else {
+      logger.severe(String.format("Failed to translate gtfs trip %s", identifier.getKuntaApiId()));
+    }
   }
 }

@@ -91,10 +91,13 @@ public class GtfsScheduleEntityUpdater extends EntityUpdater {
     identifierRelationController.setParentId(identifier, kuntaApiOrganizationId);
     
     PublicTransportScheduleId kuntaApiScheduleId = kuntaApiIdFactory.createFromIdentifier(PublicTransportScheduleId.class, identifier);
-    fi.metatavu.kuntaapi.server.rest.model.Schedule shedule = gtfsTranslator.translateSchedule(kuntaApiScheduleId, gtfsServiceCalendar, task.getExceptions());
-    
-    modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(shedule));
-    gtfsPublicTransportScheduleCache.put(kuntaApiScheduleId, shedule);
+    fi.metatavu.kuntaapi.server.rest.model.Schedule kuntaApiSchedule = gtfsTranslator.translateSchedule(kuntaApiScheduleId, gtfsServiceCalendar, task.getExceptions());
+    if (kuntaApiSchedule != null) {
+      modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(kuntaApiSchedule));
+      gtfsPublicTransportScheduleCache.put(kuntaApiScheduleId, kuntaApiSchedule);
+    } else {
+      logger.severe(String.format("Failed to translate gtfs schedule %s", identifier.getKuntaApiId()));
+    }
   }
 
 }
