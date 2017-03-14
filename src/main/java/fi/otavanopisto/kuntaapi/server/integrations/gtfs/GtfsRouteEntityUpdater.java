@@ -101,8 +101,11 @@ public class GtfsRouteEntityUpdater extends EntityUpdater {
     
     PublicTransportRouteId kuntaApiRouteId = kuntaApiIdFactory.createFromIdentifier(PublicTransportRouteId.class, identifier);
     fi.metatavu.kuntaapi.server.rest.model.Route kuntaApiRoute = gtfsTranslator.translateRoute(kuntaApiRouteId, gtfsRoute, kuntaApiAgencyId);
-    
-    modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(kuntaApiRoute));
-    gtfsPublicTransportRouteCache.put(kuntaApiRouteId, kuntaApiRoute);
+    if (kuntaApiRoute != null) {
+      modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(kuntaApiRoute));
+      gtfsPublicTransportRouteCache.put(kuntaApiRouteId, kuntaApiRoute);
+    } else {
+      logger.severe(String.format("Failed to translate gtfs route %s", identifier.getKuntaApiId()));
+    }
   }
 }

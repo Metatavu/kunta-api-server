@@ -136,7 +136,16 @@ public class IdentifierRelationController {
       if ((relationParentIdentifier != null) && relationParentIdentifier.getId().equals(parentIdentifier.getId())) {
         parentFound = true;
       } else {
-        identifierRelationDAO.delete(identifierRelation);
+        try {
+          identifierRelationDAO.delete(identifierRelation);
+        } catch (Exception e) {
+          
+          if (logger.isLoggable(Level.SEVERE)) {
+            logger.log(Level.SEVERE, String.format("Failed to remove identifier relation %d", identifierRelation.getId()), e);
+          }
+          
+          throw e;
+        }
       }
     }
  
