@@ -46,5 +46,13 @@ public class MockedResource<T> {
   public T getResource() {
     return resource;
   }
+
+  public void setResource(T resource) {
+    this.resource = resource;
+  }
+  
+  public void updateStatusMapping(MockedResourceStatus mockedStatus, MappingBuilder mapping) {
+    this.mappings.put(mockedStatus, mapping);
+  }
   
 }
