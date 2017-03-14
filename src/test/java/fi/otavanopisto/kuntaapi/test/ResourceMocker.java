@@ -18,6 +18,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.github.tomakehurst.wiremock.client.MappingBuilder;
+import com.github.tomakehurst.wiremock.client.ResponseDefinitionBuilder;
 import com.github.tomakehurst.wiremock.matching.StringValuePattern;
 import com.github.tomakehurst.wiremock.matching.UrlPattern;
 
@@ -84,16 +85,8 @@ public class ResourceMocker<I, R> {
   }
   
   public void add(I id, R resource, UrlPattern urlPattern) {
-    MappingBuilder mappingBuilder = get(urlPattern);
-    
-    MappingBuilder okMapping = mappingBuilder
-      .willReturn(aResponse()
-      .withHeader(CONTENT_TYPE, APPLICATION_JSON)
-      .withBody(toJSON(resource)));
-    
-    MappingBuilder notFoundMapping = get(urlPattern)
-      .willReturn(aResponse()
-      .withStatus(404));
+    MappingBuilder okMapping = createOkMapping(urlPattern, resource);
+    MappingBuilder notFoundMapping = createNotFoundMapping(urlPattern);
     
     resources.put(id, new MockedResource<>(resource, okMapping, notFoundMapping));
   }
@@ -146,6 +139,22 @@ public class ResourceMocker<I, R> {
       updateSubMockerStatuses(id, status);
     }
   }
+  
+  public void mockAlternative(I id, R alternative) {
+    MockedResource<R> resource = resources.get(id);
+    
+    MappingBuilder okMapping = resource.getMapping(MockedResourceStatus.OK)
+      .willReturn(createOkReturn(alternative));
+    
+    resource.setResource(alternative);
+    
+    if (started) {
+      removeStub(resource.getMapping(MockedResourceStatus.OK));
+      stubFor(okMapping);
+    } 
+
+    resource.updateStatusMapping(MockedResourceStatus.OK, okMapping);
+  }
 
   private void updateSubMockerStatuses(I id, MockedResourceStatus status) {
     if (subMockers.containsKey(id)) {
@@ -190,6 +199,23 @@ public class ResourceMocker<I, R> {
   @SuppressWarnings ("squid:S1452")
   public ResourceMocker<?, ?> getSubMocker(I id, int index) {
     return subMockers.get(id).get(index);
+  }
+  
+  private MappingBuilder createOkMapping(UrlPattern urlPattern, R resource) {
+    return get(urlPattern)
+      .willReturn(createOkReturn(resource));
+  }
+  
+  private MappingBuilder createNotFoundMapping(UrlPattern urlPattern) {
+    return get(urlPattern)
+      .willReturn(aResponse()
+      .withStatus(404));
+  }
+  
+  private ResponseDefinitionBuilder createOkReturn(R resource) {
+    return aResponse()
+      .withHeader(CONTENT_TYPE, APPLICATION_JSON)
+      .withBody(toJSON(resource));
   }
   
   private void updateStatusLists() {

@@ -58,6 +58,20 @@ public class ManagementPageMocker extends AbstractBaseMocker {
     
     return this;
   }
+
+  /**
+   * Mocks resource with alternative contents
+   * 
+   * @param id id
+   * @param alternative alternative postfix
+   * @return mocker
+   */
+  public ManagementPageMocker mockAlternative(Integer id, String alternative) {
+    Page page = readPageFromJSONFile(String.format("management/pages/%d_%s.json", id, alternative));
+    pageMocker.mockAlternative(id, page);
+  
+    return this;
+  }
   
   /**
    * Unmocks management pages

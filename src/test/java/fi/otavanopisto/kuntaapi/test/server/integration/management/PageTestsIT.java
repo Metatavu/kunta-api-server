@@ -5,8 +5,8 @@ import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 import org.junit.After;
 import org.junit.Before;
@@ -44,8 +44,7 @@ public class PageTestsIT extends AbstractIntegrationTest {
       .startMock();
     
     getManagementPageMocker()
-      .mockPages(456, 567, 678)
-      .startMock();
+      .mockPages(456, 567, 678);
 
     startMocks();
     
@@ -66,6 +65,55 @@ public class PageTestsIT extends AbstractIntegrationTest {
     getManagementMocker().endMock();
     deletePtvSettings();
     deleteManagementSettings(organizationId);
+  }
+  
+  @Test
+  public void testPageMove() throws InterruptedException {
+    String organizationId = getOrganizationId(0);
+    
+    String pageId = getPageId(organizationId, 0);
+    String newParentId = getPageId(organizationId, 1);
+    String firstParentId = getPageId(organizationId, 2);
+    String firstParentPath = String.format("/organizations/%s/pages/?parentId=%s", organizationId, firstParentId);
+    String newParentPath = String.format("/organizations/%s/pages/?parentId=%s", organizationId, newParentId);
+    
+    assertEquals(0, countApiList(firstParentPath));
+    
+    given()
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get("/organizations/{organizationId}/pages/{pageId}", organizationId, pageId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("parentId", nullValue());
+    
+    getManagementPageMocker().mockAlternative(678, "parent_456");
+    
+    waitApiListCount(firstParentPath, 1);
+    
+    given()
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get("/organizations/{organizationId}/pages/{pageId}", organizationId, pageId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("parentId", is(firstParentId));
+    
+    getManagementPageMocker().mockAlternative(678, "parent_567");
+    
+    waitApiListCount(firstParentPath, 0);
+    waitApiListCount(newParentPath, 1);
+    
+    given()
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get("/organizations/{organizationId}/pages/{pageId}", organizationId, pageId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("parentId", is(newParentId));
   }
   
   @Test
