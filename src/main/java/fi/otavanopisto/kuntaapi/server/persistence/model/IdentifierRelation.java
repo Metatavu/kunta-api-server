@@ -35,6 +35,14 @@ public class IdentifierRelation {
   @ManyToOne 
   private Identifier parent;
   
+  public Long getId() {
+    return id;
+  }
+  
+  public void setId(Long id) {
+    this.id = id;
+  }
+  
   public void setChild(Identifier child) {
     this.child = child;
   }
