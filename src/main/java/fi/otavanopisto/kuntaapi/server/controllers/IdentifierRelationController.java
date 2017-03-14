@@ -133,7 +133,7 @@ public class IdentifierRelationController {
     
     for (IdentifierRelation identifierRelation : identifierRelationDAO.listByChild(childIdentifier)) {
       Identifier relationParentIdentifier = identifierRelation.getParent();
-      if ((relationParentIdentifier != null) && relationParentIdentifier.getId().equals(relationParentIdentifier.getId())) {
+      if ((relationParentIdentifier != null) && relationParentIdentifier.getId().equals(parentIdentifier.getId())) {
         parentFound = true;
       } else {
         identifierRelationDAO.delete(identifierRelation);
@@ -144,7 +144,7 @@ public class IdentifierRelationController {
       identifierRelationDAO.create(parentIdentifier, childIdentifier);
     }
   }
-  
+
   /**
    * Lists page ids by source and parent id
    * 
