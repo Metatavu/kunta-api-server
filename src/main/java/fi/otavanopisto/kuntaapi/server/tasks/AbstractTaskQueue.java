@@ -79,8 +79,6 @@ public abstract class AbstractTaskQueue <T extends AbstractTask> {
     }
     
     if (systemSettingController.isNotTestingOrTestRunning()) {
-      startBatch();
-      
       Integer taskHashId;
       
       try {
@@ -94,7 +92,6 @@ public abstract class AbstractTaskQueue <T extends AbstractTask> {
         
       } finally {
         tasksExecuted++;
-        endBatch();
       }
       if (taskHashId != null) {
         return popTask(taskHashId);
@@ -149,47 +146,34 @@ public abstract class AbstractTaskQueue <T extends AbstractTask> {
   private Integer obtainTaskHash(T task, boolean priority) {
     Integer taskHashId;
     
-    startBatch();
-    try {
-      List<Integer> priorities = getPriorities();
-      boolean modified = false;
-      taskHashId = task.getTaskHash();
-      
-      if (priority) {
-        if (priorities.contains(taskHashId)) {
-          duplicatedTasks++;
-          priorities.remove(taskHashId);
-        }
-        
-        priorities.add(0, taskHashId);
-        modified = true;
-      } else {
-        if (!priorities.contains(taskHashId)) {
-          priorities.add(taskHashId);
-          modified = true;
-        }
+    List<Integer> priorities = getPriorities();
+    boolean modified = false;
+    taskHashId = task.getTaskHash();
+    
+    if (priority) {
+      if (priorities.contains(taskHashId)) {
+        duplicatedTasks++;
+        priorities.remove(taskHashId);
       }
       
-      if (modified) {
-        setPriorities(priorities); 
-      }  
-    } finally {
-      endBatch();
+      priorities.add(0, taskHashId);
+      modified = true;
+    } else {
+      if (!priorities.contains(taskHashId)) {
+        priorities.add(taskHashId);
+        modified = true;
+      }
     }
+    
+    if (modified) {
+      setPriorities(priorities); 
+    }  
     
     return taskHashId;
   }
   
   private String createTaskId(Integer taskHashId) {
     return String.format("%s-%d", getName(), taskHashId);
-  }
-
-  private void startBatch() {
-    getPrioritiesCache().getAdvancedCache().startBatch();
-  }
-
-  private void endBatch() {
-    getPrioritiesCache().getAdvancedCache().endBatch(true);
   }
 
   private T popTask(Integer id) {
