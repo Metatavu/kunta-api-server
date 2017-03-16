@@ -49,7 +49,7 @@ public class TaskController {
    * @return next tasks in queue
    */
   public <T extends AbstractTask> T getNextTask(String queue) {
-    Task task = taskDAO.findByNextInQueue(queue);
+    Task task = taskDAO.findNextInQueue(queue);
     
     if (task != null) {
       byte[] data = task.getData();

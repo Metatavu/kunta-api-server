@@ -45,7 +45,7 @@ public class TaskDAO extends AbstractDAO<Task> {
    * @param queue queue
    * @return Next scheduled task for the specified queue
    */
-  public Task findByNextInQueue(String queue) {
+  public Task findNextInQueue(String queue) {
     EntityManager entityManager = getEntityManager();
 
     CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
