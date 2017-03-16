@@ -277,4 +277,8 @@
     
   </changeSet>
   
+  <changeSet id="stored-resource-drop-old-index" author="antti-leppa">
+    <dropUniqueConstraint tableName="StoredResource" uniqueColumns="identifier_id" constraintName="identifier_id"/>
+  </changeSet>
+  
 </databaseChangeLog>
