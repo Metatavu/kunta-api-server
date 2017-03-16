@@ -49,15 +49,15 @@ public class TaskController {
    * @return next tasks in queue
    */
   public <T extends AbstractTask> T getNextTask(String queue) {
-    T result = null;
     Task task = taskDAO.findByNextInQueue(queue);
     
     if (task != null) {
-      result = unserialize(task.getData());
+      byte[] data = task.getData();
       taskDAO.delete(task);
+      return unserialize(data);
     }
     
-    return result;
+    return null;
   }
 
   @SuppressWarnings ("squid:S1168")
