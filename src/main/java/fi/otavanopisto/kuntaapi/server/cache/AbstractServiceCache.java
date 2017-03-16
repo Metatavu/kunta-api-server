@@ -9,5 +9,10 @@ import fi.otavanopisto.kuntaapi.server.id.ServiceId;
 public abstract class AbstractServiceCache extends AbstractEntityCache<ServiceId, Service> {
 
   private static final long serialVersionUID = 1893149790953443553L;
+
+  @Override
+  public String getEntityType() {
+    return "resource";
+  }
   
 }

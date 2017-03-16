@@ -15,4 +15,9 @@ public class BannerCache extends AbstractEntityCache<BannerId, Banner> {
     return "banners";
   }
   
+  @Override
+  public String getEntityType() {
+    return "resource";
+  }
+  
 }

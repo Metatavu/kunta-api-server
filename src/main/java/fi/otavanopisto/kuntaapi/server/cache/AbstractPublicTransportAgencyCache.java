@@ -9,4 +9,10 @@ import fi.otavanopisto.kuntaapi.server.id.PublicTransportAgencyId;
 public abstract class AbstractPublicTransportAgencyCache extends AbstractEntityCache<PublicTransportAgencyId, Agency> {
 
   private static final long serialVersionUID = -3896497752201194064L;
+
+  @Override
+  public String getEntityType() {
+    return "resource";
+  }
+  
 }

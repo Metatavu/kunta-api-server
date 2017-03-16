@@ -11,6 +11,7 @@ import java.util.logging.Logger;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import javax.persistence.OptimisticLockException;
 
 import fi.otavanopisto.kuntaapi.server.persistence.dao.TaskDAO;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Task;
@@ -53,8 +54,16 @@ public class TaskController {
     
     if (task != null) {
       byte[] data = task.getData();
-      taskDAO.delete(task);
-      return unserialize(data);
+      try {
+        taskDAO.delete(task);
+        return unserialize(data);
+      } catch (OptimisticLockException ole) {
+        if (logger.isLoggable(Level.FINE)) {
+          logger.log(Level.FINE, "Failed to delete task, skipping execution", ole);
+        } else if (logger.isLoggable(Level.SEVERE)) {
+          logger.log(Level.WARNING, "Failed to delete task, skipping execution");
+        }
+      }
     }
     
     return null;

@@ -10,4 +10,9 @@ public abstract class AbstractPublicTransportScheduleCache extends AbstractEntit
 
   private static final long serialVersionUID = 522366384310662042L;
 
+  @Override
+  public String getEntityType() {
+    return "resource";
+  }
+  
 }

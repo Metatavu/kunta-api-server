@@ -15,4 +15,9 @@ public class FragmentCache extends AbstractEntityCache<FragmentId, Fragment> {
     return "fragments";
   }
   
+  @Override
+  public String getEntityType() {
+    return "resource";
+  }
+
 }

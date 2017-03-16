@@ -15,4 +15,9 @@ public class EventCache extends AbstractEntityCache<EventId, Event> {
     return "events";
   }
   
+  @Override
+  public String getEntityType() {
+    return "resource";
+  }
+
 }

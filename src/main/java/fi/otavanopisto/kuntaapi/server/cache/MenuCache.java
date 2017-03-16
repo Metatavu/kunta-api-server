@@ -15,4 +15,9 @@ public class MenuCache extends AbstractEntityCache<MenuId, Menu> {
     return "menus";
   }
   
+  @Override
+  public String getEntityType() {
+    return "resource";
+  }
+
 }

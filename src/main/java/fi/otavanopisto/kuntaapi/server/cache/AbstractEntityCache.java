@@ -2,6 +2,7 @@ package fi.otavanopisto.kuntaapi.server.cache;
 
 import javax.inject.Inject;
 
+import fi.otavanopisto.kuntaapi.server.controllers.StoredResourceController;
 import fi.otavanopisto.kuntaapi.server.id.BaseId;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationBaseId;
@@ -14,19 +15,39 @@ public abstract class AbstractEntityCache<K extends BaseId, V> extends AbstractC
   @Inject
   private IdController idController;
   
+  @Inject
+  private StoredResourceController storedResourceController;
+  
   @Override
   public boolean isStored() {
     return true;
   }
   
+  public abstract String getEntityType();
+  
   @Override
   public void put(K id, V response) {
+    String json = toJSON(response);
+    if (json != null) {
+      storedResourceController.updateData(getEntityType(), id, json);
+    }
+    
     super.put(getCacheId(id), response);
   }
   
   @Override
   public V get(K id) {
-    return super.get(getCacheId(id));
+    V result = super.get(getCacheId(id));
+    if (result != null) {
+      return result;
+    }
+    
+    String storedData = storedResourceController.getData(getEntityType(), id);
+    if (storedData != null) {
+      return fromJSON(storedData);
+    }
+    
+    return null;
   }
 
   @SuppressWarnings("unchecked")
@@ -40,5 +61,12 @@ public abstract class AbstractEntityCache<K extends BaseId, V> extends AbstractC
     
     return cacheId;
   }
+  
+  @Override
+  public void clear(K id) {
+    storedResourceController.updateData(getEntityType(), id, null);
+    super.clear(id);
+  }
+  
   
 }

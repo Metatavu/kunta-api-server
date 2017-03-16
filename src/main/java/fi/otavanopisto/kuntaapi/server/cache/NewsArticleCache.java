@@ -15,4 +15,9 @@ public class NewsArticleCache extends AbstractEntityCache<NewsArticleId, NewsArt
     return "news-articles";
   }
   
+  @Override
+  public String getEntityType() {
+    return "resource";
+  }
+
 }
