@@ -35,7 +35,11 @@ public class TaskController {
    */
   public <T extends AbstractTask> Task createTask(String queue, Boolean priority, T task) {
     byte[] data = serialize(task);
-    return taskDAO.create(queue, priority, data, OffsetDateTime.now());
+    if (data != null) {
+      return taskDAO.create(queue, priority, data, OffsetDateTime.now());
+    }
+    
+    return null;
   }
   
   /**
