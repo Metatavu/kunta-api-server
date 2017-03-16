@@ -40,7 +40,12 @@ public abstract class AbstractEntityCache<K extends BaseId, V> extends AbstractC
       return result;
     }
     
-    return fromJSON(storedResourceController.getData(id));
+    String storedData = storedResourceController.getData(id);
+    if (storedData != null) {
+      return fromJSON(storedData);
+    }
+    
+    return null;
   }
 
   @SuppressWarnings("unchecked")
