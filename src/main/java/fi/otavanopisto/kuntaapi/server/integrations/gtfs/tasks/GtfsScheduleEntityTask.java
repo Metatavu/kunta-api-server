@@ -31,20 +31,5 @@ public class GtfsScheduleEntityTask extends AbstractGtfsEntityTask<ServiceCalend
   public List<ServiceCalendarDate> getExceptions() {
     return exceptions;
   }
-  
-  @Override
-  public Object[] getHashParts() {
-    return new Object[] { organizationId, getEntity().getId() };
-  }
-  
-  @Override
-  public int getTaskHashInitialOddNumber() {
-    return 1197;
-  }
-  
-  @Override
-  public int getMultiplierOddNumber() {
-    return 1199;
-  }
 
 }

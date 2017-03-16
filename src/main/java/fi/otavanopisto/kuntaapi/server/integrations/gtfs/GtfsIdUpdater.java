@@ -8,9 +8,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.annotation.Resource;
 import javax.ejb.Singleton;
-import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
@@ -75,9 +73,6 @@ public class GtfsIdUpdater extends IdUpdater {
   @Inject
   private OrganizationSettingController organizationSettingController;
   
-  @Resource
-  private TimerService timerService;
-
   @Override
   public String getName() {
     return "gtfs-ids";

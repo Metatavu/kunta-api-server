@@ -83,7 +83,7 @@ public abstract class IdUpdater {
   
   public int getTimerInterval() {
     if (systemSettingController.inTestMode()) {
-      return 100;
+      return 1000;
     }
     
     String key = String.format("id-updater.%s.interval", getName());

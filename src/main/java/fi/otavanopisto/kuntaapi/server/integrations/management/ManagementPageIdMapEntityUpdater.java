@@ -7,9 +7,7 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.annotation.Resource;
 import javax.ejb.Singleton;
-import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
@@ -57,9 +55,6 @@ public class ManagementPageIdMapEntityUpdater extends EntityUpdater {
   
   @Inject
   private OrganizationPageMapsTaskQueue organizationPageMapsTaskQueue;
-  
-  @Resource
-  private TimerService timerService;
   
   @Override
   public String getName() {

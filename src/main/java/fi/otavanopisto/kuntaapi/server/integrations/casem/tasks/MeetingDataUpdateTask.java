@@ -55,28 +55,5 @@ public class MeetingDataUpdateTask extends AbstractTask {
   public void setOrderIndex(Long orderIndex) {
     this.orderIndex = orderIndex;
   }
-    
-  @Override
-  public Object[] getHashParts() {
-    return new Object[] {
-      getMeetingContent(),
-      getMeetingItemContents(),
-      meetingPageId.getOrganizationId().getSource(), 
-      meetingPageId.getOrganizationId().getId(), 
-      meetingPageId.getSource(), 
-      meetingPageId.getId(), 
-      orderIndex
-    };
-  }
-  
-  @Override
-  public int getMultiplierOddNumber() {
-    return 1133;
-  }
-  
-  @Override
-  public int getTaskHashInitialOddNumber() {
-    return 2133;
-  }
 
 }

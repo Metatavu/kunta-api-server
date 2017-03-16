@@ -23,19 +23,4 @@ public class GtfsStopTimeEntityTask extends AbstractGtfsEntityTask<StopTime> {
     return organizationId;
   }
   
-  @Override
-  public Object[] getHashParts() {
-    return new Object[] { organizationId, getEntity().getId() };
-  }
-  
-  @Override
-  public int getTaskHashInitialOddNumber() {
-    return 1209;
-  }
-  
-  @Override
-  public int getMultiplierOddNumber() {
-    return 1301;
-  }
-  
 }
