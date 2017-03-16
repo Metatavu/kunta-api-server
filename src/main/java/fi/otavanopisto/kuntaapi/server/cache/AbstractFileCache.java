@@ -7,4 +7,9 @@ public abstract class AbstractFileCache extends AbstractEntityCache<FileId, File
 
   private static final long serialVersionUID = -2414990078298246580L;
 
+  @Override
+  public String getEntityType() {
+    return "resource";
+  }
+  
 }

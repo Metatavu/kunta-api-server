@@ -7,4 +7,9 @@ public abstract class AbstractShortlinkCache extends AbstractEntityCache<Shortli
 
   private static final long serialVersionUID = -1374010201093698629L;
 
+  @Override
+  public String getEntityType() {
+    return "resource";
+  }
+  
 }

@@ -32,6 +32,11 @@ public class StoredResource {
   @Column(nullable = false)
   @NotNull
   @NotEmpty
+  private String type;
+  
+  @Column(nullable = false)
+  @NotNull
+  @NotEmpty
   @Lob
   private String data;
   
@@ -57,6 +62,14 @@ public class StoredResource {
   
   public void setIdentifier(Identifier identifier) {
     this.identifier = identifier;
+  }
+  
+  public String getType() {
+    return type;
+  }
+  
+  public void setType(String type) {
+    this.type = type;
   }
   
 }

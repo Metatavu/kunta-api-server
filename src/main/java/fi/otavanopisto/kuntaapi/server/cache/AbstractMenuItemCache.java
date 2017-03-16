@@ -9,5 +9,10 @@ import fi.otavanopisto.kuntaapi.server.id.MenuItemId;
 public abstract class AbstractMenuItemCache extends AbstractEntityCache<MenuItemId, MenuItem> {
 
   private static final long serialVersionUID = -1830491083897405955L;
+
+  @Override
+  public String getEntityType() {
+    return "resource";
+  }
   
 }

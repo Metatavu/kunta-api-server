@@ -14,5 +14,10 @@ public class TileCache extends AbstractEntityCache<TileId, Tile> {
   public String getCacheName() {
     return "tiles";
   }
+  
+  @Override
+  public String getEntityType() {
+    return "resource";
+  }
 
 }

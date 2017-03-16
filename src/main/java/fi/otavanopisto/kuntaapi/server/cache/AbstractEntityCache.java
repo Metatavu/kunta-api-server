@@ -23,11 +23,13 @@ public abstract class AbstractEntityCache<K extends BaseId, V> extends AbstractC
     return true;
   }
   
+  public abstract String getEntityType();
+  
   @Override
   public void put(K id, V response) {
     String json = toJSON(response);
     if (json != null) {
-      storedResourceController.updateData(id, json);
+      storedResourceController.updateData(getEntityType(), id, json);
     }
     
     super.put(getCacheId(id), response);
@@ -40,7 +42,7 @@ public abstract class AbstractEntityCache<K extends BaseId, V> extends AbstractC
       return result;
     }
     
-    String storedData = storedResourceController.getData(id);
+    String storedData = storedResourceController.getData(getEntityType(), id);
     if (storedData != null) {
       return fromJSON(storedData);
     }
@@ -62,7 +64,7 @@ public abstract class AbstractEntityCache<K extends BaseId, V> extends AbstractC
   
   @Override
   public void clear(K id) {
-    storedResourceController.updateData(id, null);
+    storedResourceController.updateData(getEntityType(), id, null);
     super.clear(id);
   }
   

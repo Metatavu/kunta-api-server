@@ -17,18 +17,18 @@ public class StoredResourceController {
   @Inject
   private IdentifierController identifierController;
 
-  public void updateData(BaseId id, String data) {
+  public void updateData(String type, BaseId id, String data) {
     Identifier identifier = identifierController.findIdentifierById(id);
     if (identifier != null) {
-      updateData(identifier, data);
+      updateData(type, identifier, data);
     }
   }
   
-  public void updateData(Identifier identifier, String data) {
-    StoredResource storedResource = findStoredResource(identifier);
+  public void updateData(String type, Identifier identifier, String data) {
+    StoredResource storedResource = findStoredResource(type, identifier);
     if (storedResource == null) {
       if (data != null) {
-        createStoredResource(identifier, data);
+        createStoredResource(type, identifier, data);
       }
     } else {
       if (data == null) {
@@ -39,17 +39,17 @@ public class StoredResourceController {
     }
   }
   
-  public String getData(BaseId id) {
+  public String getData(String type, BaseId id) {
     Identifier identifier = identifierController.findIdentifierById(id);
     if (identifier != null) {
-      return getData(identifier);
+      return getData(type, identifier);
     }
     
     return null;
   }
   
-  public String getData(Identifier identifier) {
-    StoredResource storedResource = findStoredResource(identifier);
+  public String getData(String type, Identifier identifier) {
+    StoredResource storedResource = findStoredResource(type, identifier);
     if (storedResource == null) {
       return null;
     }
@@ -57,12 +57,12 @@ public class StoredResourceController {
     return storedResource.getData();
   }
   
-  private StoredResource findStoredResource(Identifier identifier) {
-    return storedResourceDAO.findByIdentifier(identifier);
+  private StoredResource findStoredResource(String type, Identifier identifier) {
+    return storedResourceDAO.findByIdentifier(type, identifier);
   }
   
-  private StoredResource createStoredResource(Identifier identifier, String data) {
-    return storedResourceDAO.create(identifier, data);
+  private StoredResource createStoredResource(String type, Identifier identifier, String data) {
+    return storedResourceDAO.create(identifier, type, data);
   }
   
   private StoredResource updateStoredResource(StoredResource storedResource, String data) {

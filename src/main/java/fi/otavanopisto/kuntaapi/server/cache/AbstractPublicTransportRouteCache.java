@@ -10,4 +10,9 @@ public abstract class AbstractPublicTransportRouteCache extends AbstractEntityCa
 
   private static final long serialVersionUID = -4071835963236525677L;
 
+  @Override
+  public String getEntityType() {
+    return "resource";
+  }
+  
 }

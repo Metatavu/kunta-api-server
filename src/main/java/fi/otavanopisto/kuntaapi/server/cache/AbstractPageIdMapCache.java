@@ -9,5 +9,10 @@ import fi.otavanopisto.kuntaapi.server.integrations.IdMapProvider.OrganizationPa
 public abstract class AbstractPageIdMapCache extends AbstractEntityCache<OrganizationId, OrganizationPageMap> {
 
   private static final long serialVersionUID = -5473625018941962975L;
+
+  @Override
+  public String getEntityType() {
+    return "resource";
+  }
   
 }

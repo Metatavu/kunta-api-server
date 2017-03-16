@@ -7,4 +7,9 @@ public abstract class AbstractPageCache extends AbstractEntityCache<PageId, Page
 
   private static final long serialVersionUID = -4215756782113486241L;
 
+  @Override
+  public String getEntityType() {
+    return "resource";
+  }
+  
 }

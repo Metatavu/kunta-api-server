@@ -262,4 +262,19 @@
     
   </changeSet>
   
+  <changeSet id="stored-resource-type" author="antti-leppa">
+    <addColumn tableName="StoredResource">
+      <column name="type" type="varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+    </addColumn>
+    <sql dbms="mysql">DELETE FROM StoredResource</sql>
+    
+    <createIndex tableName="StoredResource" indexName="STORED_RESOURCE_IDENTIFIER_TYPE" unique="true">
+      <column name="identifier_id"/>
+      <column name="type"/>
+    </createIndex>
+    
+  </changeSet>
+  
 </databaseChangeLog>

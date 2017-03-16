@@ -15,4 +15,9 @@ public class ContactCache extends AbstractEntityCache<ContactId, Contact> {
     return "contacts";
   }
   
+  @Override
+  public String getEntityType() {
+    return "resource";
+  }
+
 }

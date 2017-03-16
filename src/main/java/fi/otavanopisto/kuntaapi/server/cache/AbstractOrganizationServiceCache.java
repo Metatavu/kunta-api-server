@@ -7,4 +7,9 @@ public abstract class AbstractOrganizationServiceCache extends AbstractEntityCac
 
   private static final long serialVersionUID = -5629361755545994677L;
 
+  @Override
+  public String getEntityType() {
+    return "resource";
+  }
+  
 }

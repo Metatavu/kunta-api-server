@@ -15,4 +15,9 @@ public class AnnouncementCache extends AbstractEntityCache<AnnouncementId, Annou
     return "announcements";
   }
   
+  @Override
+  public String getEntityType() {
+    return "resource";
+  }
+
 }

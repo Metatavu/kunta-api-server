@@ -10,4 +10,9 @@ public abstract class AbstractAttachmentCache extends AbstractEntityCache<Attach
 
   private static final long serialVersionUID = 8007965764944109964L;
   
+  @Override
+  public String getEntityType() {
+    return "resource";
+  }
+  
 }
