@@ -55,5 +55,11 @@ public abstract class AbstractEntityCache<K extends BaseId, V> extends AbstractC
     return cacheId;
   }
   
+  @Override
+  public void clear(K id) {
+    storedResourceController.updateData(id, null);
+    super.clear(id);
+  }
+  
   
 }

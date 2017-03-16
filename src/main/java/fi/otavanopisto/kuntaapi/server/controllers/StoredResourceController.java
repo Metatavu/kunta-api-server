@@ -27,9 +27,15 @@ public class StoredResourceController {
   public void updateData(Identifier identifier, String data) {
     StoredResource storedResource = findStoredResource(identifier);
     if (storedResource == null) {
-      createStoredResource(identifier, data);
+      if (data != null) {
+        createStoredResource(identifier, data);
+      }
     } else {
-      updateStoredResource(storedResource, data);
+      if (data == null) {
+        deleteStoredResource(storedResource);
+      } else {
+        updateStoredResource(storedResource, data);
+      }
     }
   }
   
@@ -63,5 +69,8 @@ public class StoredResourceController {
     return storedResourceDAO.updateData(storedResource, data);
   }
   
+  private void deleteStoredResource(StoredResource storedResource) {
+    storedResourceDAO.delete(storedResource);
+  }
   
 }
