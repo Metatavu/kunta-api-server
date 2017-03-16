@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.time.OffsetDateTime;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -57,16 +56,6 @@ public class TaskController {
     return result;
   }
 
-  /**
-   * Removes all tasks from the database
-   */
-  public void removeTasks() {
-    List<Task> tasks = taskDAO.listAll();
-    for (Task task : tasks) {
-      taskDAO.delete(task);
-    }
-  }
- 
   @SuppressWarnings ("squid:S1168")
   private <T extends AbstractTask> byte[] serialize(T task) {
     try (ByteArrayOutputStream resultStream = new ByteArrayOutputStream()) {
