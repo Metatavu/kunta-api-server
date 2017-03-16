@@ -2,7 +2,6 @@ package fi.otavanopisto.kuntaapi.server.persistence.model;
 
 import java.time.OffsetDateTime;
 
-import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,8 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.validator.constraints.NotEmpty;
 
 /**
@@ -20,8 +17,6 @@ import org.hibernate.validator.constraints.NotEmpty;
  * @author Antti Leppä
  */
 @Entity
-@Cacheable(true)
-@Cache(usage = CacheConcurrencyStrategy.TRANSACTIONAL)
 public class Task {
 
   @Id
