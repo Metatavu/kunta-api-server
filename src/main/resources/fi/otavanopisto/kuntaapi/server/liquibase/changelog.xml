@@ -246,4 +246,20 @@
     
   </changeSet>
   
+  <changeSet id="stored-resources" author="antti.leppa">
+    
+    <createTable tableName="StoredResource">
+      <column name="id" type="bigint(20)" autoIncrement="true">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="identifier_id" type="bigint(20)">
+        <constraints referencedTableName="Identifier" referencedColumnNames="id" foreignKeyName="FK_STORED_RESOURCE_IDENTIFIER_ID" unique="true"/>
+      </column>
+      <column name="data" type="longtext">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+    
+  </changeSet>
+  
 </databaseChangeLog>
