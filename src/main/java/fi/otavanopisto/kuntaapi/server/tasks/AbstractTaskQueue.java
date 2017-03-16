@@ -74,13 +74,6 @@ public abstract class AbstractTaskQueue <T extends AbstractTask> {
   }
 
   /**
-   * Clears all tasks from the queue
-   */
-  public void clear() {
-    taskController.removeTasks();
-  }
-  
-  /**
    * Stops task queue
    */
   public void stop() {
