@@ -1,7 +1,5 @@
 package fi.otavanopisto.kuntaapi.server.rest;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -25,7 +23,6 @@ import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
 import fi.otavanopisto.kuntaapi.server.discover.IdUpdater;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 import fi.otavanopisto.kuntaapi.server.tasks.AbstractTaskQueue;
-import fi.otavanopisto.kuntaapi.server.tasks.TaskQueueStatistics;
 
 /**
  * System REST Services
@@ -90,26 +87,6 @@ public class SystemRESTService {
     }
     
     return Response.status(Status.FORBIDDEN).build();
-  }
-  
-  /**
-   * Returns statistics for task queue
-   * 
-   * @return "ok"
-   */
-  @GET
-  @Path ("/tasks/statistics")
-  public Response getTaskQueueStatistics() {
-    List<TaskQueueStatistics> statistics = new ArrayList<>();
-    
-    for (AbstractTaskQueue<?> taskQueue : taskQueues) {
-      statistics.add(taskQueue.getStatistics());
-    }
-    
-    return Response
-      .ok()
-      .entity(statistics)
-      .build();
   }
   
   /**
