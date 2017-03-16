@@ -218,4 +218,32 @@
     <dropNotNullConstraint tableName="ArchivedIdentifier" columnName="organizationKuntaApiId" columnDataType="varchar(255)"/> 
   </changeSet>
   
+  <changeSet id="tasks" author="antti.leppa">
+    
+    <createTable tableName="Task">
+      <column name="id" type="bigint(20)" autoIncrement="true">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="priority" type="boolean">
+        <constraints nullable="false"/>
+      </column>
+      <column name="queue" type="varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="data" type="longblob">
+        <constraints nullable="false"/>
+      </column>
+      <column name="created" type="timestamp">
+        <constraints nullable="true"/>
+      </column>
+    </createTable>
+    
+    <createIndex tableName="Task" indexName="TASK_QUEUE_PRIORITY_CREATED">
+      <column name="queue"/>
+      <column name="priority"/>
+      <column name="created"/>
+    </createIndex>
+    
+  </changeSet>
+  
 </databaseChangeLog>

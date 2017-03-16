@@ -1,7 +1,6 @@
 package fi.otavanopisto.kuntaapi.server.tasks;
 
 import fi.otavanopisto.kuntaapi.server.id.BaseId;
-import fi.otavanopisto.kuntaapi.server.id.OrganizationBaseId;
 
 /**
  * Id task
@@ -60,36 +59,6 @@ public class IdTask <I extends BaseId> extends AbstractTask {
    */
   public IdTask(Operation operation, I id) {
     this(operation, id, null);
-  }
-  
-  @Override
-  public Object[] getHashParts() {
-    if (id instanceof OrganizationBaseId) {
-      OrganizationBaseId organizationBaseId = (OrganizationBaseId) id;
-      return new Object[] {
-        organizationBaseId.getOrganizationId().getSource(), 
-        organizationBaseId.getOrganizationId().getId(), 
-        organizationBaseId.getSource(), 
-        organizationBaseId.getId(), 
-        getOperation()
-      };
-    } else {
-      return new Object[] {
-        id.getSource(), 
-        id.getId(), 
-        getOperation()
-      };
-    }
-  }
-  
-  @Override
-  public int getMultiplierOddNumber() {
-    return 1033;
-  }
-  
-  @Override
-  public int getTaskHashInitialOddNumber() {
-    return 2033;
   }
   
   /**

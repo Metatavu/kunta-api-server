@@ -31,20 +31,5 @@ public class GtfsRouteEntityTask extends AbstractGtfsEntityTask<Route> {
   public List<ServiceCalendar> getServiceCalendars() {
     return serviceCalendars;
   }
-  
-  @Override
-  public Object[] getHashParts() {
-    return new Object[] { organizationId, getEntity().getId() };
-  }
-  
-  @Override
-  public int getTaskHashInitialOddNumber() {
-    return 1201;
-  }
-  
-  @Override
-  public int getMultiplierOddNumber() {
-    return 1203;
-  }
 
 }

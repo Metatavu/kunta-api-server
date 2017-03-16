@@ -22,19 +22,4 @@ public class GtfsAgencyEntityTask extends AbstractGtfsEntityTask<Agency> {
   public OrganizationId getOrganizationId() {
     return organizationId;
   }
-
-  @Override
-  public Object[] getHashParts() {
-    return new Object[] { organizationId, getEntity().getId() };
-  }
-
-  @Override
-  public int getTaskHashInitialOddNumber() {
-    return 1193;
-  }
-
-  @Override
-  public int getMultiplierOddNumber() {
-    return 1195;
-  }
 }

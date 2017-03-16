@@ -43,8 +43,8 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     
     addServerLogEntry(String.format("### Test %s end ###", testName.getMethodName()));
     
-    clearTasks();
     deleteSystemSetting(KuntaApiConsts.SYSTEM_SETTING_TESTS_RUNNING);
+    clearTasks();
     
     managementPageMocker.endMock();
     managementPostMocker.endMock();
@@ -124,11 +124,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   }
   
   protected void clearTasks() {
-    given()
-      .baseUri(getApiBasePath())
-      .get("/system/tasks/clear")
-      .then()
-      .statusCode(200);
+    executeDelete("delete from Task");
   }
 
   @SuppressWarnings ({"squid:S1166", "squid:S00108", "squid:S2925", "squid:S106"})

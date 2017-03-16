@@ -45,20 +45,5 @@ public class KuntaRekryJobEntityTask extends AbstractTask {
   public void setOrderIndex(Long orderIndex) {
     this.orderIndex = orderIndex;
   }
-
-  @Override
-  public Object[] getHashParts() {
-    return new Object[] { organizationId, getEntity().getJobId() };
-  }
-
-  @Override
-  public int getTaskHashInitialOddNumber() {
-    return 1593;
-  }
-
-  @Override
-  public int getMultiplierOddNumber() {
-    return 1595;
-  }
   
 }

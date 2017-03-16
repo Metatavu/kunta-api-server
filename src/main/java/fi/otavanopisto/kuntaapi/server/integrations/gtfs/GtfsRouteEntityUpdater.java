@@ -3,9 +3,7 @@ package fi.otavanopisto.kuntaapi.server.integrations.gtfs;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.annotation.Resource;
 import javax.ejb.Singleton;
-import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
@@ -61,9 +59,6 @@ public class GtfsRouteEntityUpdater extends EntityUpdater {
   @Inject
   private GtfsRouteTaskQueue gtfsRouteTaskQueue;
   
-  @Resource
-  private TimerService timerService;
-
   @Override
   public String getName() {
     return "gtfs-public-transport-routes";
