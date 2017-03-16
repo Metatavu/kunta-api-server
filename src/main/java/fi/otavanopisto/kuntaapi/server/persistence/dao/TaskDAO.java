@@ -38,7 +38,7 @@ public class TaskDAO extends AbstractDAO<Task> {
     Root<Task> root = criteria.from(Task.class);
     criteria.select(root);
     criteria.where(criteriaBuilder.equal(root.get(Task_.queue), queue));
-    criteria.orderBy(criteriaBuilder.desc(root.get(Task_.priority)), criteriaBuilder.asc(root.get(Task_.created)));
+    criteria.orderBy(criteriaBuilder.desc(root.get(Task_.priority)), criteriaBuilder.asc(root.get(Task_.created)), criteriaBuilder.asc(root.get(Task_.id)));
     TypedQuery<Task> query = entityManager.createQuery(criteria);
     query.setMaxResults(1);
     
