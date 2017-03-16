@@ -20,6 +20,15 @@ import fi.otavanopisto.kuntaapi.server.persistence.model.Task_;
 @ApplicationScoped
 public class TaskDAO extends AbstractDAO<Task> {
   
+  /**
+   * Creates new task entity
+   * 
+   * @param queue queue the task belongs to
+   * @param priority whether the task is a priority task or not
+   * @param data serialized task data
+   * @param created creation time
+   * @return created task
+   */
   public Task create(String queue, Boolean priority, byte[] data, OffsetDateTime created) {
     Task task = new Task();
     task.setCreated(created);
@@ -30,6 +39,12 @@ public class TaskDAO extends AbstractDAO<Task> {
     return persist(task);
   }
   
+  /**
+   * Returns next scheduled task for the specified queue
+   * 
+   * @param queue queue
+   * @return Next scheduled task for the specified queue
+   */
   public Task findByNextInQueue(String queue) {
     EntityManager entityManager = getEntityManager();
 
