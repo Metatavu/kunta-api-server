@@ -117,10 +117,9 @@ public abstract class AbstractCache <K, V> implements Serializable {
    */
   public void put(K id, V response) {
     Cache<K, String> cache = getCache();
-    try {
-      cache.put(id, getObjectMapper().writeValueAsString(response));
-    } catch (JsonProcessingException e) {
-      logger.log(Level.SEVERE, "Failed to serialize response into cache", e);
+    String json = toJSON(response);
+    if (json != null) {
+      cache.put(id, json);
     }
   }
   
@@ -151,6 +150,26 @@ public abstract class AbstractCache <K, V> implements Serializable {
       }
       
       currentClass = currentClass.getSuperclass();
+    }
+    
+    return null;
+  }
+  
+  protected V fromJSON(String rawData) {
+    try {
+      return getObjectMapper().readValue(rawData, getTypeReference());
+    } catch (IOException e) {
+      logger.log(Level.SEVERE, "Could not unserialize data", e);
+    }
+    
+    return null;
+  }
+  
+  protected String toJSON(V value) {
+    try {
+      return getObjectMapper().writeValueAsString(value);
+    } catch (JsonProcessingException e) {
+      logger.log(Level.SEVERE, "Failed to serialize entity", e);
     }
     
     return null;
