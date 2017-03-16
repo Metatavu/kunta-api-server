@@ -121,7 +121,10 @@ public abstract class AbstractCache <K, V> implements Serializable {
     } else {
       Cache<K, String> cache = getCache();
       try {
-        cache.put(id, getObjectMapper().writeValueAsString(response));
+        String data = getObjectMapper().writeValueAsString(response);
+        if (data != null) {
+          cache.put(id, data);
+        }
       } catch (JsonProcessingException e) {
         logger.log(Level.SEVERE, "Failed to serialize response into cache", e);
       }
