@@ -250,11 +250,11 @@ public class CaseMCacheUpdater {
     }
     
     PageId meetingParentPageId = originalParentMap.get(kuntaApiMeetingPageId.getId());
-    if (meetingParentPageId == null) {
+    if (meetingParentPageId == null && meetingPage.getParentId() != null) {
       meetingParentPageId = new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, meetingPage.getParentId());
     }
 
-    Page meetingParentPage = caseMCache.findPage(meetingParentPageId);
+    Page meetingParentPage = meetingParentPageId != null ? caseMCache.findPage(meetingParentPageId) : null;
     if (meetingParentPage == null) {
       logger.severe(String.format("Meeting parent page %s could not be found", meetingParentPageId.toString()));
       return;
