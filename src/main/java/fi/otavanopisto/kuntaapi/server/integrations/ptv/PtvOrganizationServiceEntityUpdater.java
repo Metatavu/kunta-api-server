@@ -17,7 +17,7 @@ import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationServiceId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
-import fi.otavanopisto.kuntaapi.server.integrations.ptv.cache.PtvOrganizationServiceCache;
+import fi.otavanopisto.kuntaapi.server.integrations.ptv.resources.PtvOrganizationServiceResourceContainer;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.OrganizationServiceIdTaskQueue;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
@@ -55,7 +55,7 @@ public class PtvOrganizationServiceEntityUpdater extends EntityUpdater {
   private OrganizationServiceIdTaskQueue organizationServiceIdTaskQueue;
   
   @Inject
-  private PtvOrganizationServiceCache organizationServiceCache;
+  private PtvOrganizationServiceResourceContainer organizationServiceCache;
   
   @Inject
   private PtvTranslator ptvTranslator;

@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.time.OffsetDateTime;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -14,7 +15,9 @@ import javax.inject.Inject;
 import javax.persistence.OptimisticLockException;
 
 import fi.otavanopisto.kuntaapi.server.persistence.dao.TaskDAO;
+import fi.otavanopisto.kuntaapi.server.persistence.dao.TaskQueueDAO;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Task;
+import fi.otavanopisto.kuntaapi.server.persistence.model.TaskQueue;
 import fi.otavanopisto.kuntaapi.server.tasks.AbstractTask;
 
 @ApplicationScoped
@@ -22,7 +25,10 @@ public class TaskController {
   
   @Inject
   private Logger logger;
-  
+
+  @Inject
+  private TaskQueueDAO taskQueueDAO;
+
   @Inject
   private TaskDAO taskDAO;
 
@@ -34,10 +40,15 @@ public class TaskController {
    * @param task task data
    * @return created task entity
    */
-  public <T extends AbstractTask> Task createTask(String queue, Boolean priority, T task) {
+  public <T extends AbstractTask> Task createTask(String queueName, Boolean priority, T task) {
+    TaskQueue taskQueue = taskQueueDAO.findByName(queueName);
+    if (taskQueue == null) {
+      taskQueue = taskQueueDAO.create(queueName, "UNKNOWN");
+    }
+
     byte[] data = serialize(task);
     if (data != null) {
-      return taskDAO.create(queue, priority, data, OffsetDateTime.now());
+      return taskDAO.create(taskQueue, priority, data, OffsetDateTime.now());
     }
     
     return null;
@@ -46,11 +57,17 @@ public class TaskController {
   /**
    * Returns next tasks in queue
    * 
-   * @param queue queue
+   * @param queueName queue name
+   * @param responsibleNode node that is requesting the task
    * @return next tasks in queue
    */
-  public <T extends AbstractTask> T getNextTask(String queue) {
-    Task task = taskDAO.findNextInQueue(queue);
+  public <T extends AbstractTask> T getNextTask(String queueName, String responsibleNode) {
+    TaskQueue taskQueue = taskQueueDAO.findByNameAndResponsibleNode(queueName, responsibleNode);
+    if (taskQueue == null) {
+      return null;
+    }
+    
+    Task task = taskDAO.findNextInQueue(taskQueue);
     
     if (task != null) {
       byte[] data = task.getData();
@@ -67,6 +84,26 @@ public class TaskController {
     }
     
     return null;
+  }
+  
+  /**
+   * Lists all task queues
+   * 
+   * @return all task queues
+   */
+  public List<TaskQueue> listTaskQueues() {
+    return taskQueueDAO.listAll();
+  }
+  
+  /**
+   * Updates a node that is responsible of the task queue
+   * 
+   * @param taskQueue queue name
+   * @param responsibleNode node name
+   * @return updated task queue
+   */
+  public TaskQueue updateTaskQueueResponsibleNode(TaskQueue taskQueue, String responsibleNode) {
+    return taskQueueDAO.updateResponsibleNode(taskQueue, responsibleNode);
   }
 
   @SuppressWarnings ("squid:S1168")
@@ -124,4 +161,5 @@ public class TaskController {
     
     return null;
   }
+
 }

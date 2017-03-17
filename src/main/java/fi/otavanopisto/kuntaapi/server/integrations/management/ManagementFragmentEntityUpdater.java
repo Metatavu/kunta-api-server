@@ -10,7 +10,6 @@ import javax.inject.Inject;
 import fi.metatavu.management.client.ApiResponse;
 import fi.metatavu.management.client.DefaultApi;
 import fi.metatavu.management.client.model.Fragment;
-import fi.otavanopisto.kuntaapi.server.cache.FragmentCache;
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
@@ -20,6 +19,7 @@ import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.management.tasks.FragmentIdTaskQueue;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
+import fi.otavanopisto.kuntaapi.server.resources.FragmentResourceContainer;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask.Operation;
@@ -48,7 +48,7 @@ public class ManagementFragmentEntityUpdater extends EntityUpdater {
   private IdentifierRelationController identifierRelationController;
 
   @Inject
-  private FragmentCache fragmentCache;
+  private FragmentResourceContainer fragmentResourceContainer;
   
   @Inject
   private ModificationHashCache modificationHashCache;
@@ -104,7 +104,7 @@ public class ManagementFragmentEntityUpdater extends EntityUpdater {
     fi.metatavu.kuntaapi.server.rest.model.Fragment fragment = managementTranslator.translateFragment(kuntaApiFragmentId, managementFragment);
     
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(fragment));
-    fragmentCache.put(kuntaApiFragmentId, fragment);
+    fragmentResourceContainer.put(kuntaApiFragmentId, fragment);
   }
 
   private void deleteManagementFragment(FragmentId managementFragmentId) {
@@ -114,7 +114,7 @@ public class ManagementFragmentEntityUpdater extends EntityUpdater {
     if (fragmentIdentifier != null) {
       FragmentId kuntaApiFragmentId = new FragmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, fragmentIdentifier.getKuntaApiId());
       modificationHashCache.clear(fragmentIdentifier.getKuntaApiId());
-      fragmentCache.clear(kuntaApiFragmentId);
+      fragmentResourceContainer.clear(kuntaApiFragmentId);
       identifierController.deleteIdentifier(fragmentIdentifier);
     }
     

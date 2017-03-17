@@ -10,7 +10,6 @@ import javax.inject.Inject;
 
 import fi.metatavu.kuntaapi.server.rest.model.Attachment;
 import fi.metatavu.kuntaapi.server.rest.model.NewsArticle;
-import fi.otavanopisto.kuntaapi.server.cache.NewsArticleCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
@@ -18,7 +17,8 @@ import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.NewsProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementAttachmentCache;
+import fi.otavanopisto.kuntaapi.server.integrations.management.resources.ManagementAttachmentResourceContainer;
+import fi.otavanopisto.kuntaapi.server.resources.NewsArticleResourceContainer;
 
 /**
  * News provider for management wordpress
@@ -38,10 +38,10 @@ public class ManagementNewsProvider extends AbstractManagementProvider implement
   private ManagementImageLoader managementImageLoader;
   
   @Inject
-  private NewsArticleCache newsArticleCache;
+  private NewsArticleResourceContainer newsArticleResourceContainer;
   
   @Inject
-  private ManagementAttachmentCache managementAttachmentCache;
+  private ManagementAttachmentResourceContainer managementAttachmentResourceContainer;
   
   @Override
   public List<NewsArticle> listOrganizationNews(OrganizationId organizationId, OffsetDateTime publishedBefore, OffsetDateTime publishedAfter) {
@@ -52,7 +52,7 @@ public class ManagementNewsProvider extends AbstractManagementProvider implement
     List<NewsArticleId> newsArticleIds = identifierController.listOrganizationNewsArticleIdsBySource(organizationId, ManagementConsts.IDENTIFIER_NAME);
     List<NewsArticle> result = new ArrayList<>(newsArticleIds.size());
     for (NewsArticleId newsArticleId : newsArticleIds) {
-      NewsArticle newsArticle = newsArticleCache.get(newsArticleId);
+      NewsArticle newsArticle = newsArticleResourceContainer.get(newsArticleId);
       if (newsArticle != null && isAccetable(newsArticle, publishedBefore, publishedAfter)) {
         result.add(newsArticle);
       }
@@ -67,7 +67,7 @@ public class ManagementNewsProvider extends AbstractManagementProvider implement
       return null;
     }
     
-    return newsArticleCache.get(newsArticleId);
+    return newsArticleResourceContainer.get(newsArticleId);
   }
 
   @Override
@@ -76,7 +76,7 @@ public class ManagementNewsProvider extends AbstractManagementProvider implement
     List<AttachmentId> attachmentIds = identifierRelationController.listAttachmentIdsBySourceAndParentId(ManagementConsts.IDENTIFIER_NAME, newsArticleId);
     
     for (AttachmentId attachmentId : attachmentIds) {
-      Attachment attachment = managementAttachmentCache.get(attachmentId);
+      Attachment attachment = managementAttachmentResourceContainer.get(attachmentId);
       if (attachment != null) {
         result.add(attachment);
       }
@@ -91,7 +91,7 @@ public class ManagementNewsProvider extends AbstractManagementProvider implement
       return null;
     }
     
-    return managementAttachmentCache.get(attachmentId);
+    return managementAttachmentResourceContainer.get(attachmentId);
   }
 
   @Override

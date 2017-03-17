@@ -17,6 +17,13 @@ public class StoredResourceController {
   @Inject
   private IdentifierController identifierController;
 
+  /**
+   * Updates stored resource data
+   * 
+   * @param type type of stored resource
+   * @param id id
+   * @param data data
+   */
   public void updateData(String type, BaseId id, String data) {
     Identifier identifier = identifierController.findIdentifierById(id);
     if (identifier != null) {
@@ -24,6 +31,13 @@ public class StoredResourceController {
     }
   }
   
+  /**
+   * Updates stored resource data
+   * 
+   * @param type type of stored resource
+   * @param identifier identifier
+   * @param data data
+   */
   public void updateData(String type, Identifier identifier, String data) {
     StoredResource storedResource = findStoredResource(type, identifier);
     if (storedResource == null) {
@@ -39,6 +53,13 @@ public class StoredResourceController {
     }
   }
   
+  /**
+   * Retrieves data from stored resource
+   * 
+   * @param type type of resource
+   * @param id id
+   * @return data
+   */
   public String getData(String type, BaseId id) {
     Identifier identifier = identifierController.findIdentifierById(id);
     if (identifier != null) {
@@ -47,7 +68,14 @@ public class StoredResourceController {
     
     return null;
   }
-  
+
+  /**
+   * Retrieves data from stored resource
+   * 
+   * @param type type of resource
+   * @param identifier identifier
+   * @return data
+   */
   public String getData(String type, Identifier identifier) {
     StoredResource storedResource = findStoredResource(type, identifier);
     if (storedResource == null) {

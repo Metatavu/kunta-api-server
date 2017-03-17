@@ -20,12 +20,12 @@ import fi.otavanopisto.kuntaapi.server.id.PublicTransportStopId;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportStopTimeId;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportTripId;
 import fi.otavanopisto.kuntaapi.server.integrations.PublicTransportProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.gtfs.cache.GtfsPublicTransportAgencyCache;
-import fi.otavanopisto.kuntaapi.server.integrations.gtfs.cache.GtfsPublicTransportRouteCache;
-import fi.otavanopisto.kuntaapi.server.integrations.gtfs.cache.GtfsPublicTransportScheduleCache;
-import fi.otavanopisto.kuntaapi.server.integrations.gtfs.cache.GtfsPublicTransportStopCache;
-import fi.otavanopisto.kuntaapi.server.integrations.gtfs.cache.GtfsPublicTransportStopTimeCache;
-import fi.otavanopisto.kuntaapi.server.integrations.gtfs.cache.GtfsPublicTransportTripCache;
+import fi.otavanopisto.kuntaapi.server.integrations.gtfs.resources.GtfsPublicTransportAgencyResourceContainer;
+import fi.otavanopisto.kuntaapi.server.integrations.gtfs.resources.GtfsPublicTransportRouteResourceContainer;
+import fi.otavanopisto.kuntaapi.server.integrations.gtfs.resources.GtfsPublicTransportScheduleResourceContainer;
+import fi.otavanopisto.kuntaapi.server.integrations.gtfs.resources.GtfsPublicTransportStopResourceContainer;
+import fi.otavanopisto.kuntaapi.server.integrations.gtfs.resources.GtfsPublicTransportStopTimeResourceContainer;
+import fi.otavanopisto.kuntaapi.server.integrations.gtfs.resources.GtfsPublicTransportTripResourceContainer;
 
 public class GtfsPublicTransportProvider implements PublicTransportProvider {
   
@@ -33,22 +33,22 @@ public class GtfsPublicTransportProvider implements PublicTransportProvider {
   private IdentifierRelationController identifierRelationController;
   
   @Inject
-  private GtfsPublicTransportAgencyCache gtfsPublicTransportAgencyCache;
+  private GtfsPublicTransportAgencyResourceContainer gtfsPublicTransportAgencyCache;
   
   @Inject
-  private GtfsPublicTransportScheduleCache gtfsPublicTransportScheduleCache;
+  private GtfsPublicTransportScheduleResourceContainer gtfsPublicTransportScheduleCache;
   
   @Inject
-  private GtfsPublicTransportRouteCache gtfsPublicTransportRouteCache;
+  private GtfsPublicTransportRouteResourceContainer gtfsPublicTransportRouteCache;
   
   @Inject
-  private GtfsPublicTransportStopCache gtfsPublicTransportStopCache;
+  private GtfsPublicTransportStopResourceContainer gtfsPublicTransportStopCache;
     
   @Inject
-  private GtfsPublicTransportStopTimeCache gtfsPublicTransportStopTimeCache;
+  private GtfsPublicTransportStopTimeResourceContainer gtfsPublicTransportStopTimeCache;
       
   @Inject
-  private GtfsPublicTransportTripCache gtfsPublicTransportTripCache;
+  private GtfsPublicTransportTripResourceContainer gtfsPublicTransportTripCache;
   
   @Override
   public List<Agency> listAgencies(OrganizationId organizationId) {

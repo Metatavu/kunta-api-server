@@ -20,7 +20,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.http.client.utils.URIBuilder;
 
 import fi.metatavu.kuntaapi.server.rest.model.Attachment;
-import fi.otavanopisto.kuntaapi.server.cache.EventCache;
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
@@ -35,6 +34,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpClient.Response;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.mikkelinyt.tasks.OrganizationEventsTaskQueue;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
+import fi.otavanopisto.kuntaapi.server.resources.EventResourceContainer;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 import fi.otavanopisto.kuntaapi.server.tasks.OrganizationEntityUpdateTask;
@@ -59,7 +59,7 @@ public class MikkeliNytEntityUpdater extends EntityUpdater {
   private BinaryHttpClient binaryHttpClient;
   
   @Inject
-  private EventCache eventCache;
+  private EventResourceContainer eventCache;
   
   @Inject
   private MikkeliNytAttachmentCache mikkeliNytAttachmentCache;

@@ -8,14 +8,14 @@ import javax.inject.Inject;
 
 import fi.metatavu.kuntaapi.server.rest.model.Attachment;
 import fi.metatavu.kuntaapi.server.rest.model.Tile;
-import fi.otavanopisto.kuntaapi.server.cache.TileCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.TileId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.TileProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementAttachmentCache;
+import fi.otavanopisto.kuntaapi.server.integrations.management.resources.ManagementAttachmentResourceContainer;
+import fi.otavanopisto.kuntaapi.server.resources.TileResourceContainer;
 
 /**
  * Tile provider for management wordpress
@@ -29,10 +29,10 @@ public class ManagementTileProvider extends AbstractManagementProvider implement
   private IdentifierRelationController identifierRelationController;
   
   @Inject
-  private TileCache tileCache;
+  private TileResourceContainer tileCache;
   
   @Inject
-  private ManagementAttachmentCache managementAttachmentCache;
+  private ManagementAttachmentResourceContainer managementAttachmentCache;
   
   @Inject
   private ManagementImageLoader managementImageLoader;

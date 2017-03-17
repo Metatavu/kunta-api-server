@@ -17,7 +17,6 @@ import org.apache.http.client.utils.URIBuilder;
 
 import fi.metatavu.kuntaapi.server.rest.model.Attachment;
 import fi.metatavu.kuntaapi.server.rest.model.Event;
-import fi.otavanopisto.kuntaapi.server.cache.EventCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.EventId;
@@ -31,6 +30,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.BinaryHttpClient;
 import fi.otavanopisto.kuntaapi.server.integrations.BinaryHttpClient.BinaryResponse;
 import fi.otavanopisto.kuntaapi.server.integrations.EventProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpClient.Response;
+import fi.otavanopisto.kuntaapi.server.resources.EventResourceContainer;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 
 /**
@@ -56,7 +56,7 @@ public class MikkeliNytEventProvider implements EventProvider {
   private BinaryHttpClient binaryHttpClient;
 
   @Inject
-  private EventCache eventCache;
+  private EventResourceContainer eventCache;
   
   @Inject
   private MikkeliNytAttachmentCache mikkeliNytAttachmentCache;

@@ -16,7 +16,6 @@ import fi.metatavu.management.client.DefaultApi;
 import fi.metatavu.management.client.model.Attachment;
 import fi.metatavu.management.client.model.Post;
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
-import fi.otavanopisto.kuntaapi.server.cache.NewsArticleCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
@@ -25,9 +24,10 @@ import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
-import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementAttachmentCache;
+import fi.otavanopisto.kuntaapi.server.integrations.management.resources.ManagementAttachmentResourceContainer;
 import fi.otavanopisto.kuntaapi.server.integrations.management.tasks.NewsArticleIdTaskQueue;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
+import fi.otavanopisto.kuntaapi.server.resources.NewsArticleResourceContainer;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask.Operation;
@@ -59,10 +59,10 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
   private IdentifierRelationController identifierRelationController;
   
   @Inject
-  private NewsArticleCache newsArticleCache;
+  private NewsArticleResourceContainer newsArticleResourceContainer;
   
   @Inject
-  private ManagementAttachmentCache managementAttachmentCache;
+  private ManagementAttachmentResourceContainer managementAttachmentResourceContainer;
   
   @Inject
   private ModificationHashCache modificationHashCache;
@@ -121,7 +121,7 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
       return;
     }
     
-    newsArticleCache.put(newsArticleKuntaApiId, newsArticle);
+    newsArticleResourceContainer.put(newsArticleKuntaApiId, newsArticle);
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(newsArticle));
     
     List<AttachmentId> existingAttachmentIds = identifierRelationController.listAttachmentIdsBySourceAndParentId(ManagementConsts.IDENTIFIER_NAME, newsArticleKuntaApiId);
@@ -157,7 +157,7 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
         return null;
       }
       
-      managementAttachmentCache.put(kuntaApiAttachmentId, attachment);
+      managementAttachmentResourceContainer.put(kuntaApiAttachmentId, attachment);
       
       AttachmentData imageData = managementImageLoader.getImageData(managementAttachment.getSourceUrl());
       if (imageData != null) {
@@ -176,7 +176,7 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
     if (newsArticleIdentifier != null) {
       NewsArticleId kuntaApiNewsArticleId = new NewsArticleId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, newsArticleIdentifier.getKuntaApiId());
       modificationHashCache.clear(newsArticleIdentifier.getKuntaApiId());
-      newsArticleCache.clear(kuntaApiNewsArticleId);
+      newsArticleResourceContainer.clear(kuntaApiNewsArticleId);
       identifierController.deleteIdentifier(newsArticleIdentifier);
     }
   }

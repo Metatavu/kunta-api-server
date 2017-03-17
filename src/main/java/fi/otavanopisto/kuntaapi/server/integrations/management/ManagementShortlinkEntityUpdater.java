@@ -17,7 +17,7 @@ import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
 import fi.otavanopisto.kuntaapi.server.id.ShortlinkId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
-import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementShortlinkCache;
+import fi.otavanopisto.kuntaapi.server.integrations.management.resources.ManagementShortlinkResourceContainer;
 import fi.otavanopisto.kuntaapi.server.integrations.management.tasks.ShortlinkIdTaskQueue;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
@@ -48,7 +48,7 @@ public class ManagementShortlinkEntityUpdater extends EntityUpdater {
   private IdentifierRelationController identifierRelationController;
 
   @Inject
-  private ManagementShortlinkCache managementShortlinkCache;
+  private ManagementShortlinkResourceContainer managementShortlinkCache;
   
   @Inject
   private ModificationHashCache modificationHashCache;

@@ -21,8 +21,8 @@ import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
-import fi.otavanopisto.kuntaapi.server.integrations.casem.cache.CaseMPageCache;
-import fi.otavanopisto.kuntaapi.server.integrations.casem.cache.CaseMPageContentCache;
+import fi.otavanopisto.kuntaapi.server.integrations.casem.resources.CaseMPageResourceContainer;
+import fi.otavanopisto.kuntaapi.server.integrations.casem.resources.CaseMPageContentResourceContainer;
 
 @ApplicationScoped
 @Singleton
@@ -33,10 +33,10 @@ public class CaseMCache {
   private Logger logger;
 
   @Inject
-  private CaseMPageCache pageCache;
+  private CaseMPageResourceContainer pageCache;
   
   @Inject
-  private CaseMPageContentCache pageContentCache;
+  private CaseMPageContentResourceContainer pageContentCache;
   
   @Inject
   private ModificationHashCache modificationHashCache;

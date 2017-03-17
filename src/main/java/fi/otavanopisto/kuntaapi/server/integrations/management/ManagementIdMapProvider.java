@@ -13,7 +13,7 @@ import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.integrations.IdMapProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
-import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementPageIdMapCache;
+import fi.otavanopisto.kuntaapi.server.integrations.management.resources.ManagementPageIdMapResourceContainer;
 
 @ApplicationScoped
 public class ManagementIdMapProvider implements IdMapProvider {
@@ -25,7 +25,7 @@ public class ManagementIdMapProvider implements IdMapProvider {
   private IdController idController;
   
   @Inject
-  private ManagementPageIdMapCache managementPageIdMapCache;
+  private ManagementPageIdMapResourceContainer managementPageIdMapCache;
   
   @Override
   public BaseId findMappedPageParentId(OrganizationId organizationId, PageId pageId) {
