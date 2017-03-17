@@ -10,6 +10,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
 import fi.otavanopisto.kuntaapi.server.persistence.model.Task;
+import fi.otavanopisto.kuntaapi.server.persistence.model.TaskQueue;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Task_;
 
 /**
@@ -29,7 +30,7 @@ public class TaskDAO extends AbstractDAO<Task> {
    * @param created creation time
    * @return created task
    */
-  public Task create(String queue, Boolean priority, byte[] data, OffsetDateTime created) {
+  public Task create(TaskQueue queue, Boolean priority, byte[] data, OffsetDateTime created) {
     Task task = new Task();
     task.setCreated(created);
     task.setData(data);
@@ -45,7 +46,7 @@ public class TaskDAO extends AbstractDAO<Task> {
    * @param queue queue
    * @return Next scheduled task for the specified queue
    */
-  public Task findNextInQueue(String queue) {
+  public Task findNextInQueue(TaskQueue queue) {
     EntityManager entityManager = getEntityManager();
 
     CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();

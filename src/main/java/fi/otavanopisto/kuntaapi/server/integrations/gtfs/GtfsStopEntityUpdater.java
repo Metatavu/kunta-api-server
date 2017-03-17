@@ -18,7 +18,7 @@ import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportStopId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
-import fi.otavanopisto.kuntaapi.server.integrations.gtfs.cache.GtfsPublicTransportStopCache;
+import fi.otavanopisto.kuntaapi.server.integrations.gtfs.resources.GtfsPublicTransportStopResourceContainer;
 import fi.otavanopisto.kuntaapi.server.integrations.gtfs.tasks.GtfsStopEntityTask;
 import fi.otavanopisto.kuntaapi.server.integrations.gtfs.tasks.GtfsStopTaskQueue;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
@@ -44,7 +44,7 @@ public class GtfsStopEntityUpdater extends EntityUpdater {
   private IdentifierRelationController identifierRelationController;
 
   @Inject
-  private GtfsPublicTransportStopCache gtfsPublicTransportStopCache;
+  private GtfsPublicTransportStopResourceContainer gtfsPublicTransportStopCache;
   
   @Inject
   private ModificationHashCache modificationHashCache;

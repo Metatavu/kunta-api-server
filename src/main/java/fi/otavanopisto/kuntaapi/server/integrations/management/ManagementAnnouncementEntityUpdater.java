@@ -10,7 +10,6 @@ import javax.inject.Inject;
 import fi.metatavu.management.client.ApiResponse;
 import fi.metatavu.management.client.DefaultApi;
 import fi.metatavu.management.client.model.Announcement;
-import fi.otavanopisto.kuntaapi.server.cache.AnnouncementCache;
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
@@ -20,6 +19,7 @@ import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.management.tasks.AttachmentIdTaskQueue;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
+import fi.otavanopisto.kuntaapi.server.resources.AnnouncementResourceContainer;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask.Operation;
@@ -48,7 +48,7 @@ public class ManagementAnnouncementEntityUpdater extends EntityUpdater {
   private IdentifierRelationController identifierRelationController;
 
   @Inject
-  private AnnouncementCache announcementCache;
+  private AnnouncementResourceContainer announcementResourceContainer;
   
   @Inject
   private ModificationHashCache modificationHashCache;
@@ -106,7 +106,7 @@ public class ManagementAnnouncementEntityUpdater extends EntityUpdater {
     fi.metatavu.kuntaapi.server.rest.model.Announcement announcement = managementTranslator.translateAnnouncement(kuntaApiAnnouncementId, managementAnnouncement);
     
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(announcement));
-    announcementCache.put(kuntaApiAnnouncementId, announcement);
+    announcementResourceContainer.put(kuntaApiAnnouncementId, announcement);
   }
 
   private void deleteAnnouncement(AnnouncementId managementAnnouncementId) {
@@ -116,7 +116,7 @@ public class ManagementAnnouncementEntityUpdater extends EntityUpdater {
     if (announcementIdentifier != null) {
       AnnouncementId kuntaApiAnnouncementId = new AnnouncementId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, announcementIdentifier.getKuntaApiId());
       modificationHashCache.clear(announcementIdentifier.getKuntaApiId());
-      announcementCache.clear(kuntaApiAnnouncementId);
+      announcementResourceContainer.clear(kuntaApiAnnouncementId);
       identifierController.deleteIdentifier(announcementIdentifier);
     }
     

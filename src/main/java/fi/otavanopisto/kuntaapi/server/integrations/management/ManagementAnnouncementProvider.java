@@ -9,11 +9,11 @@ import javax.inject.Inject;
 import org.apache.commons.lang3.StringUtils;
 
 import fi.metatavu.kuntaapi.server.rest.model.Announcement;
-import fi.otavanopisto.kuntaapi.server.cache.AnnouncementCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.id.AnnouncementId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.AnnouncementProvider;
+import fi.otavanopisto.kuntaapi.server.resources.AnnouncementResourceContainer;
 
 /**
  * Announcement provider for management wordpress
@@ -28,7 +28,7 @@ public class ManagementAnnouncementProvider extends AbstractManagementProvider i
   private IdentifierRelationController identifierRelationController;
   
   @Inject
-  private AnnouncementCache announcementCache;
+  private AnnouncementResourceContainer announcementResourceContainer;
   
   @Override
   public List<Announcement> listOrganizationAnnouncements(OrganizationId organizationId, String slug) {
@@ -36,7 +36,7 @@ public class ManagementAnnouncementProvider extends AbstractManagementProvider i
     List<Announcement> announcements = new ArrayList<>(announcementIds.size());
     
     for (AnnouncementId announcementId : announcementIds) {
-      Announcement announcement = announcementCache.get(announcementId);
+      Announcement announcement = announcementResourceContainer.get(announcementId);
       if (announcement != null && isAcceptable(announcement, slug)) {
         announcements.add(announcement);
       }
@@ -48,7 +48,7 @@ public class ManagementAnnouncementProvider extends AbstractManagementProvider i
   @Override
   public Announcement findOrganizationAnnouncement(OrganizationId organizationId, AnnouncementId announcementId) {
     if (identifierRelationController.isChildOf(organizationId, announcementId)) {
-      return announcementCache.get(announcementId);
+      return announcementResourceContainer.get(announcementId);
     }
     
     return null;

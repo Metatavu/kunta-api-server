@@ -11,7 +11,7 @@ import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationServiceId;
 import fi.otavanopisto.kuntaapi.server.integrations.OrganizationServiceProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.ptv.cache.PtvOrganizationServiceCache;
+import fi.otavanopisto.kuntaapi.server.integrations.ptv.resources.PtvOrganizationServiceResourceContainer;
 
 /**
  * Organization service  provider for PTV
@@ -22,7 +22,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.ptv.cache.PtvOrganizationSer
 public class PtvOrganizationServiceProvider implements OrganizationServiceProvider {
   
   @Inject
-  private PtvOrganizationServiceCache ptvOrganizationServiceCache;
+  private PtvOrganizationServiceResourceContainer ptvOrganizationServiceCache;
   
   @Inject
   private IdentifierRelationController identifierRelationController;

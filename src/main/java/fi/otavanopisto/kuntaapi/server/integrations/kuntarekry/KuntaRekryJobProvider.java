@@ -11,13 +11,13 @@ import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.id.JobId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.JobProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.kuntarekry.cache.KuntaRekryJobCache;
+import fi.otavanopisto.kuntaapi.server.integrations.kuntarekry.resources.KuntaRekryJobResourceContainer;
 
 @RequestScoped
 public class KuntaRekryJobProvider implements JobProvider {
   
   @Inject
-  private KuntaRekryJobCache kuntaRekryJobCache;
+  private KuntaRekryJobResourceContainer kuntaRekryJobCache;
 
   @Inject
   private IdentifierRelationController identifierRelationController;

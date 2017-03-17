@@ -11,8 +11,8 @@ import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.BinaryHttpClient.BinaryResponse;
+import fi.otavanopisto.kuntaapi.server.integrations.casem.resources.CasemFileResourceContainer;
 import fi.otavanopisto.kuntaapi.server.integrations.FileProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.casem.cache.CasemFileCache;
 
 /**
  * File provider for CaseM
@@ -29,7 +29,7 @@ public class CaseMFileProvider implements FileProvider {
   private IdController idController;
   
   @Inject
-  private CasemFileCache casemFileCache;
+  private CasemFileResourceContainer casemFileCache;
   
   @Inject
   private CaseMFileController caseMFileController;

@@ -18,7 +18,7 @@ import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportScheduleId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
-import fi.otavanopisto.kuntaapi.server.integrations.gtfs.cache.GtfsPublicTransportScheduleCache;
+import fi.otavanopisto.kuntaapi.server.integrations.gtfs.resources.GtfsPublicTransportScheduleResourceContainer;
 import fi.otavanopisto.kuntaapi.server.integrations.gtfs.tasks.GtfsScheduleEntityTask;
 import fi.otavanopisto.kuntaapi.server.integrations.gtfs.tasks.GtfsScheduleTaskQueue;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
@@ -44,7 +44,7 @@ public class GtfsScheduleEntityUpdater extends EntityUpdater {
   private IdentifierRelationController identifierRelationController;
 
   @Inject
-  private GtfsPublicTransportScheduleCache gtfsPublicTransportScheduleCache;
+  private GtfsPublicTransportScheduleResourceContainer gtfsPublicTransportScheduleCache;
   
   @Inject
   private ModificationHashCache modificationHashCache;

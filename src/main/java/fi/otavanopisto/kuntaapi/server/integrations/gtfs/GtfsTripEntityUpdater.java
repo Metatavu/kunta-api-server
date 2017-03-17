@@ -20,7 +20,7 @@ import fi.otavanopisto.kuntaapi.server.id.PublicTransportScheduleId;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportTripId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
-import fi.otavanopisto.kuntaapi.server.integrations.gtfs.cache.GtfsPublicTransportTripCache;
+import fi.otavanopisto.kuntaapi.server.integrations.gtfs.resources.GtfsPublicTransportTripResourceContainer;
 import fi.otavanopisto.kuntaapi.server.integrations.gtfs.tasks.GtfsTripEntityTask;
 import fi.otavanopisto.kuntaapi.server.integrations.gtfs.tasks.GtfsTripTaskQueue;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
@@ -46,7 +46,7 @@ public class GtfsTripEntityUpdater extends EntityUpdater {
   private IdentifierRelationController identifierRelationController;
 
   @Inject
-  private GtfsPublicTransportTripCache gtfsPublicTransportTripCache;
+  private GtfsPublicTransportTripResourceContainer gtfsPublicTransportTripCache;
   
   @Inject
   private ModificationHashCache modificationHashCache;

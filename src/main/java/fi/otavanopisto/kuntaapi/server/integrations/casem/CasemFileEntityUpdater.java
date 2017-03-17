@@ -28,7 +28,7 @@ import fi.otavanopisto.kuntaapi.server.index.IndexableFile;
 import fi.otavanopisto.kuntaapi.server.integrations.BinaryHttpClient.BinaryResponse;
 import fi.otavanopisto.kuntaapi.server.integrations.BinaryHttpClient.DownloadMeta;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
-import fi.otavanopisto.kuntaapi.server.integrations.casem.cache.CasemFileCache;
+import fi.otavanopisto.kuntaapi.server.integrations.casem.resources.CasemFileResourceContainer;
 import fi.otavanopisto.kuntaapi.server.integrations.casem.tasks.FileIdTaskQueue;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask;
@@ -55,7 +55,7 @@ public class CasemFileEntityUpdater extends EntityUpdater {
   private IdentifierRelationController identifierRelationController;
 
   @Inject
-  private CasemFileCache fileCache;
+  private CasemFileResourceContainer fileCache;
   
   @Inject
   private ModificationHashCache modificationHashCache;

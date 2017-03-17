@@ -23,7 +23,7 @@ import fi.otavanopisto.kuntaapi.server.index.IndexRequest;
 import fi.otavanopisto.kuntaapi.server.index.IndexableStopTime;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
-import fi.otavanopisto.kuntaapi.server.integrations.gtfs.cache.GtfsPublicTransportStopTimeCache;
+import fi.otavanopisto.kuntaapi.server.integrations.gtfs.resources.GtfsPublicTransportStopTimeResourceContainer;
 import fi.otavanopisto.kuntaapi.server.integrations.gtfs.tasks.GtfsStopTimeEntityTask;
 import fi.otavanopisto.kuntaapi.server.integrations.gtfs.tasks.GtfsStopTimeTaskQueue;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
@@ -49,7 +49,7 @@ public class GtfsStopTimeEntityUpdater extends EntityUpdater {
   private IdentifierRelationController identifierRelationController;
 
   @Inject
-  private GtfsPublicTransportStopTimeCache gtfsPublicTransportStopTimeCache;
+  private GtfsPublicTransportStopTimeResourceContainer gtfsPublicTransportStopTimeCache;
   
   @Inject
   private ModificationHashCache modificationHashCache;

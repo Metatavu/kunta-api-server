@@ -8,14 +8,14 @@ import javax.inject.Inject;
 
 import fi.metatavu.kuntaapi.server.rest.model.Attachment;
 import fi.metatavu.kuntaapi.server.rest.model.Banner;
-import fi.otavanopisto.kuntaapi.server.cache.BannerCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.BannerId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.BannerProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementAttachmentCache;
+import fi.otavanopisto.kuntaapi.server.integrations.management.resources.ManagementAttachmentResourceContainer;
+import fi.otavanopisto.kuntaapi.server.resources.BannerResourceContainer;
 
 /**
  * Banner provider for management wordpress
@@ -29,10 +29,10 @@ public class ManagementBannerProvider extends AbstractManagementProvider impleme
   private IdentifierRelationController identifierRelationController;
   
   @Inject
-  private BannerCache bannerCache;
+  private BannerResourceContainer bannerResourceContainer;
   
   @Inject
-  private ManagementAttachmentCache managementAttachmentCache;
+  private ManagementAttachmentResourceContainer managementAttachmentResourceContainer;
   
   @Inject
   private ManagementImageLoader managementImageLoader;
@@ -43,7 +43,7 @@ public class ManagementBannerProvider extends AbstractManagementProvider impleme
     List<Banner> banners = new ArrayList<>(bannerIds.size());
     
     for (BannerId bannerId : bannerIds) {
-      Banner banner = bannerCache.get(bannerId);
+      Banner banner = bannerResourceContainer.get(bannerId);
       if (banner != null) {
         banners.add(banner);
       }
@@ -58,7 +58,7 @@ public class ManagementBannerProvider extends AbstractManagementProvider impleme
       return null;
     }
     
-    return bannerCache.get(bannerId);
+    return bannerResourceContainer.get(bannerId);
   }
 
   @Override
@@ -67,7 +67,7 @@ public class ManagementBannerProvider extends AbstractManagementProvider impleme
     List<Attachment> result = new ArrayList<>(attachmentIds.size());
     
     for (AttachmentId attachmentId : attachmentIds) {
-      Attachment attachment = managementAttachmentCache.get(attachmentId);
+      Attachment attachment = managementAttachmentResourceContainer.get(attachmentId);
       if (attachment != null) {
         result.add(attachment);
       }
@@ -82,7 +82,7 @@ public class ManagementBannerProvider extends AbstractManagementProvider impleme
       return null;
     }
     
-    return managementAttachmentCache.get(attachmentId);
+    return managementAttachmentResourceContainer.get(attachmentId);
   }
 
   @Override

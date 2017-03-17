@@ -163,26 +163,6 @@ public abstract class AbstractCache <K, V> implements Serializable {
     return null;
   }
   
-  protected V fromJSON(String rawData) {
-    try {
-      return getObjectMapper().readValue(rawData, getTypeReference());
-    } catch (IOException e) {
-      logger.log(Level.SEVERE, "Could not unserialize data", e);
-    }
-    
-    return null;
-  }
-  
-  protected String toJSON(V value) {
-    try {
-      return getObjectMapper().writeValueAsString(value);
-    } catch (JsonProcessingException e) {
-      logger.log(Level.SEVERE, "Failed to serialize entity", e);
-    }
-    
-    return null;
-  }
-  
   private ObjectMapper getObjectMapper() {
     ObjectMapper objectMapper = new ObjectMapper();
     objectMapper.registerModule(new JavaTimeModule());

@@ -7,11 +7,11 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 import fi.metatavu.kuntaapi.server.rest.model.Contact;
-import fi.otavanopisto.kuntaapi.server.cache.ContactCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.id.ContactId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.ContactProvider;
+import fi.otavanopisto.kuntaapi.server.resources.ContactResourceContainer;
 
 @ApplicationScoped
 @SuppressWarnings ("squid:S3306")
@@ -21,7 +21,7 @@ public class VCardContactProvider implements ContactProvider {
   private IdentifierRelationController identifierRelationController;
   
   @Inject
-  private ContactCache contactCache;
+  private ContactResourceContainer contactCache;
   
   @Override
   public Contact findOrganizationContact(OrganizationId organizationId, ContactId contactId) {

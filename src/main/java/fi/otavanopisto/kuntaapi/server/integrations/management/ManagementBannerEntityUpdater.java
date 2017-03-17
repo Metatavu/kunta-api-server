@@ -14,7 +14,6 @@ import fi.metatavu.management.client.ApiResponse;
 import fi.metatavu.management.client.DefaultApi;
 import fi.metatavu.management.client.model.Attachment;
 import fi.metatavu.management.client.model.Banner;
-import fi.otavanopisto.kuntaapi.server.cache.BannerCache;
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
@@ -24,9 +23,10 @@ import fi.otavanopisto.kuntaapi.server.id.BannerId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
-import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementAttachmentCache;
+import fi.otavanopisto.kuntaapi.server.integrations.management.resources.ManagementAttachmentResourceContainer;
 import fi.otavanopisto.kuntaapi.server.integrations.management.tasks.BannerIdTaskQueue;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
+import fi.otavanopisto.kuntaapi.server.resources.BannerResourceContainer;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask.Operation;
@@ -46,10 +46,10 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
   private ManagementTranslator managementTranslator;
   
   @Inject
-  private BannerCache bannerCache;
+  private BannerResourceContainer bannerResourceContainer;
   
   @Inject
-  private ManagementAttachmentCache managementAttachmentCache;
+  private ManagementAttachmentResourceContainer managementAttachmentResourceContainer;
   
   @Inject
   private ManagementApi managementApi;
@@ -120,7 +120,7 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
       return;
     }
     
-    bannerCache.put(bannerKuntaApiId, banner);
+    bannerResourceContainer.put(bannerKuntaApiId, banner);
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(banner));
     
     List<AttachmentId> existingAttachmentIds = identifierRelationController.listAttachmentIdsBySourceAndParentId(ManagementConsts.IDENTIFIER_NAME, bannerKuntaApiId);
@@ -154,7 +154,7 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
       fi.metatavu.kuntaapi.server.rest.model.Attachment attachment = managementTranslator.translateAttachment(kuntaApiAttachmentId, managementAttachment, ManagementConsts.ATTACHMENT_TYPE_BANNER);
       
       if (attachment != null) {
-        managementAttachmentCache.put(kuntaApiAttachmentId, attachment);
+        managementAttachmentResourceContainer.put(kuntaApiAttachmentId, attachment);
         
         AttachmentData imageData = managementImageLoader.getImageData(managementAttachment.getSourceUrl());
         if (imageData != null) {
@@ -173,7 +173,7 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
     if (bannerIdentifier != null) {
       BannerId kuntaApiBannerId = new BannerId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, bannerIdentifier.getKuntaApiId());
       modificationHashCache.clear(bannerIdentifier.getKuntaApiId());
-      bannerCache.clear(kuntaApiBannerId);
+      bannerResourceContainer.clear(kuntaApiBannerId);
       identifierController.deleteIdentifier(bannerIdentifier);
     }
   }

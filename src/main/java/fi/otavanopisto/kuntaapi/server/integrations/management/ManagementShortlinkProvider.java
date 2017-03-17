@@ -13,7 +13,7 @@ import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.id.ShortlinkId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.ShortlinkProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementShortlinkCache;
+import fi.otavanopisto.kuntaapi.server.integrations.management.resources.ManagementShortlinkResourceContainer;
 
 /**
  * Shortlink provider for management wordpress
@@ -25,7 +25,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementS
 public class ManagementShortlinkProvider extends AbstractManagementProvider implements ShortlinkProvider {
   
   @Inject
-  private ManagementShortlinkCache managementShortlinkCache;
+  private ManagementShortlinkResourceContainer managementShortlinkCache;
   
   @Inject
   private IdentifierRelationController identifierRelationController;

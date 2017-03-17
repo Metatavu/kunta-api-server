@@ -1,5 +1,6 @@
 package fi.otavanopisto.kuntaapi.server.persistence.model;
 
+import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,6 +12,8 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.validator.constraints.NotEmpty;
 
 /**
@@ -19,7 +22,9 @@ import org.hibernate.validator.constraints.NotEmpty;
  * @author Antti Leppä
  */
 @Entity
-@Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "identifier_id" }) })
+@Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "identifier_id", "type" }) })
+@Cacheable(true)
+@Cache(usage = CacheConcurrencyStrategy.TRANSACTIONAL)
 public class StoredResource {
 
   @Id

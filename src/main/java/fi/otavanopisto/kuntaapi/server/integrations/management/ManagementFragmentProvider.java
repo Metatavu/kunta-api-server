@@ -9,11 +9,11 @@ import javax.inject.Inject;
 import org.apache.commons.lang3.StringUtils;
 
 import fi.metatavu.kuntaapi.server.rest.model.Fragment;
-import fi.otavanopisto.kuntaapi.server.cache.FragmentCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.id.FragmentId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.FragmentProvider;
+import fi.otavanopisto.kuntaapi.server.resources.FragmentResourceContainer;
 
 /**
  * Fragment provider for management wordpress
@@ -25,7 +25,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.FragmentProvider;
 public class ManagementFragmentProvider extends AbstractManagementProvider implements FragmentProvider {
   
   @Inject
-  private FragmentCache fragmentCache;
+  private FragmentResourceContainer fragmentResourceContainer;
   
   @Inject
   private IdentifierRelationController identifierRelationController;
@@ -36,7 +36,7 @@ public class ManagementFragmentProvider extends AbstractManagementProvider imple
     List<Fragment> fragments = new ArrayList<>(fragmentIds.size());
     
     for (FragmentId fragmentId : fragmentIds) {
-      Fragment fragment = fragmentCache.get(fragmentId);
+      Fragment fragment = fragmentResourceContainer.get(fragmentId);
       if (fragment != null && isAcceptable(fragment, slug)) {
         fragments.add(fragment);
       }
@@ -48,7 +48,7 @@ public class ManagementFragmentProvider extends AbstractManagementProvider imple
   @Override
   public Fragment findOrganizationFragment(OrganizationId organizationId, FragmentId fragmentId) {
     if (identifierRelationController.isChildOf(organizationId, fragmentId)) {
-      return fragmentCache.get(fragmentId);
+      return fragmentResourceContainer.get(fragmentId);
     }
     
     return null;
