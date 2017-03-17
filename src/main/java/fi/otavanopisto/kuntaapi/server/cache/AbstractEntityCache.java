@@ -1,5 +1,8 @@
 package fi.otavanopisto.kuntaapi.server.cache;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javax.inject.Inject;
 
 import fi.otavanopisto.kuntaapi.server.controllers.StoredResourceController;
@@ -12,6 +15,9 @@ import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 public abstract class AbstractEntityCache<K extends BaseId, V> extends AbstractCache<K, V> {
   
   private static final long serialVersionUID = 8192317559659671578L;
+  
+  @Inject
+  private Logger logger;
   
   @Inject
   private SystemSettingController systemSettingController;
@@ -38,6 +44,8 @@ public abstract class AbstractEntityCache<K extends BaseId, V> extends AbstractC
     
     if (!systemSettingController.isEntityCacheWritesDisabled()) {
       super.put(getCacheId(id), response);
+    } else {
+      logger.log(Level.INFO, "Entity cache writes are disabled");
     }
   }
   
@@ -75,6 +83,8 @@ public abstract class AbstractEntityCache<K extends BaseId, V> extends AbstractC
     storedResourceController.updateData(getEntityType(), id, null);
     if (!systemSettingController.isEntityCacheWritesDisabled()) {
       super.clear(id);
+    } else {
+      logger.log(Level.INFO, "Entity cache writes are disabled");
     }
   }
   
