@@ -1,5 +1,7 @@
 package fi.otavanopisto.kuntaapi.server.persistence.dao;
 
+import java.util.List;
+
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -72,7 +74,31 @@ public class TaskQueueDAO extends AbstractDAO<TaskQueue> {
     
     return getSingleResult(entityManager.createQuery(criteria));
   }
+  
+  /**
+   * Returns all task queues in id order
+   * 
+   * @return all task queues
+   */
+  public List<TaskQueue> listAllTaskQueues() {
+    EntityManager entityManager = getEntityManager();
 
+    CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+    CriteriaQuery<TaskQueue> criteria = criteriaBuilder.createQuery(TaskQueue.class);
+    Root<TaskQueue> root = criteria.from(TaskQueue.class);
+    criteria.select(root);
+    criteria.orderBy(criteriaBuilder.asc(root.get(TaskQueue_.id)));
+    
+    return entityManager.createQuery(criteria).getResultList();
+  }
+
+  /**
+   * Updates a task queue responsible node
+   * 
+   * @param taskQueue task queue
+   * @param responsibleNode responsible node
+   * @return updated task queue
+   */
   public TaskQueue updateResponsibleNode(TaskQueue taskQueue, String responsibleNode) {
     taskQueue.setResponsibleNode(responsibleNode);
     return persist(taskQueue);

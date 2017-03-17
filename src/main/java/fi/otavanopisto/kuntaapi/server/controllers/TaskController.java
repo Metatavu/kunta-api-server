@@ -92,7 +92,7 @@ public class TaskController {
    * @return all task queues
    */
   public List<TaskQueue> listTaskQueues() {
-    return taskQueueDAO.listAll();
+    return taskQueueDAO.listAllTaskQueues();
   }
   
   /**
