@@ -1,8 +1,8 @@
-package fi.otavanopisto.kuntaapi.server.integrations.kuntarekry.cache;
+package fi.otavanopisto.kuntaapi.server.integrations.kuntarekry.resources;
 
 import fi.otavanopisto.kuntaapi.server.resources.AbstractJobResourceContainer;
 
-public class KuntaRekryJobCache extends AbstractJobResourceContainer {
+public class KuntaRekryJobResourceContainer extends AbstractJobResourceContainer {
 
   private static final long serialVersionUID = -3909462228089482785L;
 

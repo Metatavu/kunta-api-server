@@ -12,7 +12,7 @@ import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
 import fi.otavanopisto.kuntaapi.server.id.JobId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
-import fi.otavanopisto.kuntaapi.server.integrations.kuntarekry.cache.KuntaRekryJobCache;
+import fi.otavanopisto.kuntaapi.server.integrations.kuntarekry.resources.KuntaRekryJobResourceContainer;
 import fi.otavanopisto.kuntaapi.server.integrations.kuntarekry.tasks.KuntaRekryJobEntityTask;
 import fi.otavanopisto.kuntaapi.server.integrations.kuntarekry.tasks.KuntaRekryJobTaskQueue;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
@@ -38,7 +38,7 @@ public class KuntaRekryJobEntityUpdater extends EntityUpdater {
   private KuntaRekryJobTaskQueue kuntaRekryJobTaskQueue;
 
   @Inject
-  private KuntaRekryJobCache kuntaRekryJobCache;
+  private KuntaRekryJobResourceContainer kuntaRekryJobCache;
 
   @Override
   public String getName() {
