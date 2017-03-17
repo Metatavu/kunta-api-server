@@ -10,7 +10,7 @@ public class ManagementShortlinkCache extends AbstractShortlinkCache {
   private static final long serialVersionUID = -5315510394261705312L;
 
   @Override
-  public String getCacheName() {
+  public String getName() {
     return "management-shortlinks";
   }
 

@@ -10,7 +10,7 @@ public class ManagementPageContentCache extends AbstractPageContentCache {
   private static final long serialVersionUID = 4103968741744421851L;
 
   @Override
-  public String getCacheName() {
+  public String getName() {
     return "management-page-contents";
   }
 

@@ -10,7 +10,7 @@ public class CasemFileCache extends AbstractFileCache {
   private static final long serialVersionUID = 4993959656647694079L;
 
   @Override
-  public String getCacheName() {
+  public String getName() {
     return "casem-files";
   }
 

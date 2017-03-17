@@ -1,4 +1,4 @@
-package fi.otavanopisto.kuntaapi.server.cache;
+package fi.otavanopisto.kuntaapi.server.resources;
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -18,7 +18,7 @@ import fi.otavanopisto.kuntaapi.server.controllers.StoredResourceController;
 import fi.otavanopisto.kuntaapi.server.id.BaseId;
 import fi.otavanopisto.kuntaapi.server.jackson.IdModule;
 
-public abstract class AbstractEntityCache<K extends BaseId, V> implements Serializable {
+public abstract class AbstractResourceContainer<K extends BaseId, V> implements Serializable {
   
   private static final long serialVersionUID = 1744385470271720259L;
 
@@ -29,7 +29,7 @@ public abstract class AbstractEntityCache<K extends BaseId, V> implements Serial
   private StoredResourceController storedResourceController;
   
   public abstract String getEntityType();
-  public abstract String getCacheName();
+  public abstract String getName();
   
   public void put(K id, V response) {
     if (response == null) {

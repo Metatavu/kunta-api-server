@@ -10,7 +10,7 @@ public class GtfsPublicTransportTripCache extends AbstractPublicTransportTripCac
   private static final long serialVersionUID = 8900780864580591473L;
 
   @Override
-  public String getCacheName() {
+  public String getName() {
     return "gtfs-public-transport-trips";
   }
 

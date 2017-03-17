@@ -10,7 +10,7 @@ public class GtfsPublicTransportRouteCache extends AbstractPublicTransportRouteC
   private static final long serialVersionUID = -1804472147095708248L;
 
   @Override
-  public String getCacheName() {
+  public String getName() {
     return "gtfs-public-transport-routes";
   }
 

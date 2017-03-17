@@ -10,7 +10,7 @@ public class ManagementPageIdMapCache extends AbstractPageIdMapCache {
   private static final long serialVersionUID = 6300784323817741857L;
 
   @Override
-  public String getCacheName() {
+  public String getName() {
     return "management-page-map-cache";
   }
 

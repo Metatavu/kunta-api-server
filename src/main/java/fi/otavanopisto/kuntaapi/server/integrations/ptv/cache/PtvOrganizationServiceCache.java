@@ -10,7 +10,7 @@ public class PtvOrganizationServiceCache extends AbstractOrganizationServiceCach
   private static final long serialVersionUID = 6100260276077235996L;
 
   @Override
-  public String getCacheName() {
+  public String getName() {
     return "ptv-organization-services";
   }
 

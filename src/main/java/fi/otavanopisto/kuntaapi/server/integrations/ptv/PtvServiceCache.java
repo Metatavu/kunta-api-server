@@ -7,7 +7,7 @@ public class PtvServiceCache extends AbstractServiceCache {
   private static final long serialVersionUID = 7520071744540725295L;
 
   @Override
-  public String getCacheName() {
+  public String getName() {
     return "ptv-services";
   }
 

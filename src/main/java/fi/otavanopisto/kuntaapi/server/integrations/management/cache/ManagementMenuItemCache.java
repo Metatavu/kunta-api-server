@@ -10,7 +10,7 @@ public class ManagementMenuItemCache extends AbstractMenuItemCache {
   private static final long serialVersionUID = -4416805402225855726L;
 
   @Override
-  public String getCacheName() {
+  public String getName() {
     return "management-menu-items";
   }
   

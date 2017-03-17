@@ -10,7 +10,7 @@ public class CaseMPageContentCache extends AbstractPageContentCache {
   private static final long serialVersionUID = 5074106733901932323L;
 
   @Override
-  public String getCacheName() {
+  public String getName() {
     return "casem-page-contents";
   }
 

@@ -7,7 +7,7 @@ public class KuntaRekryJobCache extends AbstractJobCache {
   private static final long serialVersionUID = -3909462228089482785L;
 
   @Override
-  public String getCacheName() {
+  public String getName() {
     return "kunta-rekry-jobs";
   }
 

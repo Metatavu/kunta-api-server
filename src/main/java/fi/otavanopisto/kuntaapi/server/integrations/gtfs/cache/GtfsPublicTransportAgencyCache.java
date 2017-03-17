@@ -10,7 +10,7 @@ public class GtfsPublicTransportAgencyCache extends AbstractPublicTransportAgenc
   private static final long serialVersionUID = 5885760951047040901L;
 
   @Override
-  public String getCacheName() {
+  public String getName() {
     return "gtfs-public-transport-agencies";
   }
 

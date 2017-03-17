@@ -10,7 +10,7 @@ public class ManagementAttachmentCache extends AbstractAttachmentCache {
   private static final long serialVersionUID = -4688810253543996810L;
 
   @Override
-  public String getCacheName() {
+  public String getName() {
     return "management-attachments";
   }
 

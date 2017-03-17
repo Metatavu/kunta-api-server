@@ -10,7 +10,7 @@ public class GtfsPublicTransportStopCache extends AbstractPublicTransportStopCac
   private static final long serialVersionUID = 1195621948823629420L;
   
   @Override
-  public String getCacheName() {
+  public String getName() {
     return "gtfs-public-transport-stops";
   }
 
