@@ -38,7 +38,7 @@ public class TaskQueueDistributor {
 
   @PostConstruct
   public void postConstruct() {
-    selfAssignQueues();
+    startTimer();
   }
   
   @Timeout
@@ -47,19 +47,21 @@ public class TaskQueueDistributor {
   }
   
   private void selfAssignQueues() {
-    String localNodeName = clusterController.getLocalNodeName();
-    List<String> nodeNames = clusterController.getNodeNames();
-    int myIndex = nodeNames.indexOf(localNodeName);
-    int nodeCount = nodeNames.size();
-    List<TaskQueue> taskQueues = taskController.listTaskQueues();
-    
-    for (int i = 0; i < taskQueues.size(); i++) {
-      if ((i % nodeCount) == myIndex) {
-        taskController.updateTaskQueueResponsibleNode(taskQueues.get(i), localNodeName);
+    try {
+      String localNodeName = clusterController.getLocalNodeName();
+      List<String> nodeNames = clusterController.getNodeNames();
+      int myIndex = nodeNames.indexOf(localNodeName);
+      int nodeCount = nodeNames.size();
+      List<TaskQueue> taskQueues = taskController.listTaskQueues();
+      
+      for (int i = 0; i < taskQueues.size(); i++) {
+        if ((i % nodeCount) == myIndex) {
+          taskController.updateTaskQueueResponsibleNode(taskQueues.get(i), localNodeName);
+        }
       }
+    } finally {
+      startTimer();
     }
-    
-    startTimer();
   }
   
   private void startTimer() {
