@@ -184,6 +184,33 @@ public class SystemSettingController {
   }
 
   /**
+   * Returns true if entity cache is disabled
+   * 
+   * @return true if entity cache is disabled
+   */
+  public boolean isEntityCacheDisabled() {
+    return "true".equalsIgnoreCase(System.getProperty("kuntaApi.entityCacheDisabled"));
+  }
+  
+  /**
+   * Returns true if entity cache writes are disabled
+   * 
+   * @return true if entity cache writes are disabled
+   */
+  public boolean isEntityCacheWritesDisabled() {
+    return isEntityCacheDisabled() || "true".equalsIgnoreCase(System.getProperty("kuntaApi.entityCacheWritesDisabled"));
+  }
+  
+  /**
+   * Returns true if entity cache reads are disabled
+   * 
+   * @return true if entity cache reads are disabled
+   */
+  public boolean isEntityCacheReadsDisabled() {
+    return isEntityCacheDisabled() || "true".equalsIgnoreCase(System.getProperty("kuntaApi.entityCacheReadsDisabled"));
+  }
+
+  /**
    * Returns whether system setting has a value set or not
    * 
    * @param key key

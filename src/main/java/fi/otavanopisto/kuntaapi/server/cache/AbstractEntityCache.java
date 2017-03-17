@@ -7,10 +7,14 @@ import fi.otavanopisto.kuntaapi.server.id.BaseId;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationBaseId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
+import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 
 public abstract class AbstractEntityCache<K extends BaseId, V> extends AbstractCache<K, V> {
   
   private static final long serialVersionUID = 8192317559659671578L;
+  
+  @Inject
+  private SystemSettingController systemSettingController;
   
   @Inject
   private IdController idController;
@@ -32,14 +36,18 @@ public abstract class AbstractEntityCache<K extends BaseId, V> extends AbstractC
       storedResourceController.updateData(getEntityType(), id, json);
     }
     
-    super.put(getCacheId(id), response);
+    if (!systemSettingController.isEntityCacheWritesDisabled()) {
+      super.put(getCacheId(id), response);
+    }
   }
   
   @Override
   public V get(K id) {
-    V result = super.get(getCacheId(id));
-    if (result != null) {
-      return result;
+    if (!systemSettingController.isEntityCacheReadsDisabled()) {
+      V result = super.get(getCacheId(id));
+      if (result != null) {
+        return result;
+      }
     }
     
     String storedData = storedResourceController.getData(getEntityType(), id);
@@ -65,8 +73,9 @@ public abstract class AbstractEntityCache<K extends BaseId, V> extends AbstractC
   @Override
   public void clear(K id) {
     storedResourceController.updateData(getEntityType(), id, null);
-    super.clear(id);
+    if (!systemSettingController.isEntityCacheWritesDisabled()) {
+      super.clear(id);
+    }
   }
-  
   
 }
