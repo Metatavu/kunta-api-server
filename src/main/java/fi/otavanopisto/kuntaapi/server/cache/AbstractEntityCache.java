@@ -1,63 +1,52 @@
 package fi.otavanopisto.kuntaapi.server.cache;
 
+import java.io.IOException;
+import java.io.Serializable;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.inject.Inject;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+
 import fi.otavanopisto.kuntaapi.server.controllers.StoredResourceController;
 import fi.otavanopisto.kuntaapi.server.id.BaseId;
-import fi.otavanopisto.kuntaapi.server.id.IdController;
-import fi.otavanopisto.kuntaapi.server.id.OrganizationBaseId;
-import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
-import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
+import fi.otavanopisto.kuntaapi.server.jackson.IdModule;
 
-public abstract class AbstractEntityCache<K extends BaseId, V> extends AbstractCache<K, V> {
+public abstract class AbstractEntityCache<K extends BaseId, V> implements Serializable {
   
-  private static final long serialVersionUID = 8192317559659671578L;
-  
+  private static final long serialVersionUID = 1744385470271720259L;
+
   @Inject
   private Logger logger;
   
   @Inject
-  private SystemSettingController systemSettingController;
-  
-  @Inject
-  private IdController idController;
-  
-  @Inject
   private StoredResourceController storedResourceController;
   
-  @Override
-  public boolean isStored() {
-    return true;
-  }
-  
   public abstract String getEntityType();
+  public abstract String getCacheName();
   
-  @Override
   public void put(K id, V response) {
-    String json = toJSON(response);
-    if (json != null) {
-      storedResourceController.updateData(getEntityType(), id, json);
-    }
-    
-    if (!systemSettingController.isEntityCacheWritesDisabled()) {
-      super.put(getCacheId(id), response);
+    if (response == null) {
+      clear(id);
     } else {
-      logger.log(Level.INFO, "Entity cache writes are disabled");
-    }
-  }
-  
-  @Override
-  public V get(K id) {
-    if (!systemSettingController.isEntityCacheReadsDisabled()) {
-      V result = super.get(getCacheId(id));
-      if (result != null) {
-        return result;
+      String json = toJSON(response);
+      if (json != null) {
+        storedResourceController.updateData(getEntityType(), id, json);
+      } else {
+        if (logger.isLoggable(Level.SEVERE)) {
+          logger.log(Level.SEVERE, String.format("Failed to serialize resource with id %s", id));
+        }
       }
     }
-    
+  }
+  
+  public V get(K id) {
     String storedData = storedResourceController.getData(getEntityType(), id);
     if (storedData != null) {
       return fromJSON(storedData);
@@ -66,26 +55,68 @@ public abstract class AbstractEntityCache<K extends BaseId, V> extends AbstractC
     return null;
   }
 
-  @SuppressWarnings("unchecked")
-  private K getCacheId(K id) {
-    K cacheId = (K) idController.translateId(id, KuntaApiConsts.IDENTIFIER_NAME);
-    
-    if (id instanceof OrganizationBaseId) {
-      OrganizationBaseId organizationBaseId = (OrganizationBaseId) cacheId;
-      organizationBaseId.setOrganizationId(idController.translateOrganizationId(organizationBaseId.getOrganizationId(), KuntaApiConsts.IDENTIFIER_NAME));
-    } 
-    
-    return cacheId;
-  }
-  
-  @Override
   public void clear(K id) {
     storedResourceController.updateData(getEntityType(), id, null);
-    if (!systemSettingController.isEntityCacheWritesDisabled()) {
-      super.clear(id);
-    } else {
-      logger.log(Level.INFO, "Entity cache writes are disabled");
+  }
+
+  protected V fromJSON(String rawData) {
+    try {
+      return getObjectMapper().readValue(rawData, getTypeReference());
+    } catch (IOException e) {
+      logger.log(Level.SEVERE, "Could not unserialize data", e);
     }
+    
+    return null;
+  }
+  
+  protected String toJSON(V value) {
+    try {
+      return getObjectMapper().writeValueAsString(value);
+    } catch (JsonProcessingException e) {
+      logger.log(Level.SEVERE, "Failed to serialize entity", e);
+    }
+    
+    return null;
+  }
+  
+  private ObjectMapper getObjectMapper() {
+    ObjectMapper objectMapper = new ObjectMapper();
+    objectMapper.registerModule(new JavaTimeModule());
+    objectMapper.registerModule(new IdModule());
+    return objectMapper;
+  }
+
+  private TypeReference<V> getTypeReference() {    
+    final Type[] parameterizedTypeArguments = getParameterizedTypeArguments();
+    
+    return new TypeReference<V>() {
+      @Override
+      public Type getType() {
+        return parameterizedTypeArguments[parameterizedTypeArguments.length - 1];
+      }
+    };
+  }
+  
+  protected Type[] getParameterizedTypeArguments() {
+    ParameterizedType parameterizedTypeClass = getParameterizedType();
+    if (parameterizedTypeClass != null) {
+      return parameterizedTypeClass.getActualTypeArguments();
+    }
+    
+    return new Type[0];
+  }
+  
+  private ParameterizedType getParameterizedType() {
+    Class<?> currentClass = getClass();
+    while (currentClass != null && !currentClass.equals(Object.class))  {
+      if (currentClass.getGenericSuperclass() instanceof ParameterizedType) {
+        return (ParameterizedType) currentClass.getGenericSuperclass();
+      }
+      
+      currentClass = currentClass.getSuperclass();
+    }
+    
+    return null;
   }
   
 }
