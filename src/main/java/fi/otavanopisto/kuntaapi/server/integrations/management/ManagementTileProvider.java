@@ -14,7 +14,7 @@ import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.TileId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.TileProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementAttachmentCache;
+import fi.otavanopisto.kuntaapi.server.integrations.management.resources.ManagementAttachmentResourceContainer;
 import fi.otavanopisto.kuntaapi.server.resources.TileResourceContainer;
 
 /**
@@ -32,7 +32,7 @@ public class ManagementTileProvider extends AbstractManagementProvider implement
   private TileResourceContainer tileCache;
   
   @Inject
-  private ManagementAttachmentCache managementAttachmentCache;
+  private ManagementAttachmentResourceContainer managementAttachmentCache;
   
   @Inject
   private ManagementImageLoader managementImageLoader;

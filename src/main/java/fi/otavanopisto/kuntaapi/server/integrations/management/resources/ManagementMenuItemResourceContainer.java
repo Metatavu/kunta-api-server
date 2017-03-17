@@ -1,11 +1,11 @@
-package fi.otavanopisto.kuntaapi.server.integrations.management.cache;
+package fi.otavanopisto.kuntaapi.server.integrations.management.resources;
 
 import javax.enterprise.context.ApplicationScoped;
 
 import fi.otavanopisto.kuntaapi.server.resources.AbstractMenuItemResourceContainer;
 
 @ApplicationScoped
-public class ManagementMenuItemCache extends AbstractMenuItemResourceContainer {
+public class ManagementMenuItemResourceContainer extends AbstractMenuItemResourceContainer {
 
   private static final long serialVersionUID = -4416805402225855726L;
 

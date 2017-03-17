@@ -14,7 +14,7 @@ import fi.otavanopisto.kuntaapi.server.id.BannerId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.BannerProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementAttachmentCache;
+import fi.otavanopisto.kuntaapi.server.integrations.management.resources.ManagementAttachmentResourceContainer;
 import fi.otavanopisto.kuntaapi.server.resources.BannerResourceContainer;
 
 /**
@@ -32,7 +32,7 @@ public class ManagementBannerProvider extends AbstractManagementProvider impleme
   private BannerResourceContainer bannerCache;
   
   @Inject
-  private ManagementAttachmentCache managementAttachmentCache;
+  private ManagementAttachmentResourceContainer managementAttachmentCache;
   
   @Inject
   private ManagementImageLoader managementImageLoader;

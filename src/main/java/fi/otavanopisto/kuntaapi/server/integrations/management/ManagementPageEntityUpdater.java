@@ -32,9 +32,9 @@ import fi.otavanopisto.kuntaapi.server.index.IndexRequest;
 import fi.otavanopisto.kuntaapi.server.index.IndexablePage;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
-import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementAttachmentCache;
-import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementPageCache;
-import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementPageContentCache;
+import fi.otavanopisto.kuntaapi.server.integrations.management.resources.ManagementAttachmentResourceContainer;
+import fi.otavanopisto.kuntaapi.server.integrations.management.resources.ManagementPageResourceContainer;
+import fi.otavanopisto.kuntaapi.server.integrations.management.resources.ManagementPageContentResourceContainer;
 import fi.otavanopisto.kuntaapi.server.integrations.management.tasks.PageIdTaskQueue;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
@@ -74,13 +74,13 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
   private IdMapController idMapController;
 
   @Inject
-  private ManagementPageCache pageCache;
+  private ManagementPageResourceContainer pageCache;
   
   @Inject
-  private ManagementPageContentCache pageContentCache;
+  private ManagementPageContentResourceContainer pageContentCache;
   
   @Inject
-  private ManagementAttachmentCache managementAttachmentCache;
+  private ManagementAttachmentResourceContainer managementAttachmentCache;
   
   @Inject
   private ModificationHashCache modificationHashCache;

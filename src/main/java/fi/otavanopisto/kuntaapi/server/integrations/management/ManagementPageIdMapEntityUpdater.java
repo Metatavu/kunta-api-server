@@ -24,7 +24,7 @@ import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.integrations.IdMapProvider.OrganizationPageMap;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
-import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementPageIdMapCache;
+import fi.otavanopisto.kuntaapi.server.integrations.management.resources.ManagementPageIdMapResourceContainer;
 import fi.otavanopisto.kuntaapi.server.integrations.management.tasks.OrganizationPageMapsTaskQueue;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
@@ -51,7 +51,7 @@ public class ManagementPageIdMapEntityUpdater extends EntityUpdater {
   private PageController pageController;
 
   @Inject
-  private ManagementPageIdMapCache managementPageIdMapCache;
+  private ManagementPageIdMapResourceContainer managementPageIdMapCache;
   
   @Inject
   private OrganizationPageMapsTaskQueue organizationPageMapsTaskQueue;

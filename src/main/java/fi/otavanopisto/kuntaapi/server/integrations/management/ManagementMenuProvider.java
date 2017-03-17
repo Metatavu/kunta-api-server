@@ -16,7 +16,7 @@ import fi.otavanopisto.kuntaapi.server.id.MenuId;
 import fi.otavanopisto.kuntaapi.server.id.MenuItemId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.MenuProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementMenuItemCache;
+import fi.otavanopisto.kuntaapi.server.integrations.management.resources.ManagementMenuItemResourceContainer;
 import fi.otavanopisto.kuntaapi.server.resources.MenuResourceContainer;
 
 /**
@@ -35,7 +35,7 @@ public class ManagementMenuProvider extends AbstractManagementProvider implement
   private MenuResourceContainer menuCache;
   
   @Inject
-  private ManagementMenuItemCache managementMenuItemCache;
+  private ManagementMenuItemResourceContainer managementMenuItemCache;
 
   @Override
   public List<Menu> listOrganizationMenus(OrganizationId organizationId, String slug) {

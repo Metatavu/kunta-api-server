@@ -1,11 +1,11 @@
-package fi.otavanopisto.kuntaapi.server.integrations.management.cache;
+package fi.otavanopisto.kuntaapi.server.integrations.management.resources;
 
 import javax.enterprise.context.ApplicationScoped;
 
 import fi.otavanopisto.kuntaapi.server.resources.AbstractPageContentCache;
 
 @ApplicationScoped
-public class ManagementPageContentCache extends AbstractPageContentCache {
+public class ManagementPageContentResourceContainer extends AbstractPageContentCache {
 
   private static final long serialVersionUID = 4103968741744421851L;
 

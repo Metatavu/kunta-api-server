@@ -25,7 +25,7 @@ import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.MenuProvider.MenuItemType;
-import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementMenuItemCache;
+import fi.otavanopisto.kuntaapi.server.integrations.management.resources.ManagementMenuItemResourceContainer;
 import fi.otavanopisto.kuntaapi.server.integrations.management.tasks.MenuIdTaskQueue;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.resources.MenuResourceContainer;
@@ -66,7 +66,7 @@ public class ManagementMenuEntityUpdater extends EntityUpdater {
   private MenuResourceContainer menuCache;
 
   @Inject
-  private ManagementMenuItemCache menuItemCache;
+  private ManagementMenuItemResourceContainer menuItemCache;
   
   @Override
   public String getName() {

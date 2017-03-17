@@ -23,9 +23,9 @@ import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.PageProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementAttachmentCache;
-import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementPageCache;
-import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementPageContentCache;
+import fi.otavanopisto.kuntaapi.server.integrations.management.resources.ManagementAttachmentResourceContainer;
+import fi.otavanopisto.kuntaapi.server.integrations.management.resources.ManagementPageResourceContainer;
+import fi.otavanopisto.kuntaapi.server.integrations.management.resources.ManagementPageContentResourceContainer;
 
 /**
  * Page provider for management service
@@ -46,13 +46,13 @@ public class ManagementPageProvider extends AbstractManagementProvider implement
   private IdentifierRelationController identifierRelationController;
   
   @Inject
-  private ManagementPageCache pageCache;
+  private ManagementPageResourceContainer pageCache;
   
   @Inject
-  private ManagementPageContentCache pageContentCache;
+  private ManagementPageContentResourceContainer pageContentCache;
   
   @Inject
-  private ManagementAttachmentCache managementAttachmentCache;
+  private ManagementAttachmentResourceContainer managementAttachmentCache;
   
   @Inject
   private ManagementImageLoader managementImageLoader;
