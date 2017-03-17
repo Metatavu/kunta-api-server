@@ -281,4 +281,37 @@
     <dropUniqueConstraint tableName="StoredResource" uniqueColumns="identifier_id" constraintName="identifier_id"/>
   </changeSet>
   
+  <changeSet id="task-queues" author="antti.leppa">
+    
+    <createTable tableName="TaskQueue">
+      <column name="id" type="bigint(20)" autoIncrement="true">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="name" type="varchar(255)">
+        <constraints nullable="false" unique="true"/>
+      </column>
+      <column name="responsibleNode" type="varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+    
+    <createIndex tableName="TaskQueue" indexName="TASK_QUEUE_NAME_RESPONSIBLE_NODE" unique="true">
+      <column name="name"/>
+      <column name="responsibleNode"/>
+    </createIndex>
+    
+    <sql dbms="mysql">INSERT INTO TaskQueue (name, responsibleNode) SELECT queue, 'UNKNOWN' from Task group by queue</sql>
+    
+    <addColumn tableName="Task">
+      <column name="queue_id" type="bigint(20)">
+        <constraints referencedTableName="TaskQueue" referencedColumnNames="id" foreignKeyName="FK_TASK_TASK_QUEUE_ID"/>
+      </column>
+    </addColumn>
+    
+    <sql dbms="mysql">UPDATE Task t set queue_id = (SELECT id FROM TaskQueue q where q.name = t.queue)</sql>
+    
+    <dropColumn tableName="Task" columnName="queue"/>
+    
+  </changeSet>
+  
 </databaseChangeLog>

@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -26,10 +27,8 @@ public class Task {
   @Column(nullable = false)
   private Boolean priority;
   
-  @Column(nullable = false)
-  @NotNull
-  @NotEmpty
-  private String queue;
+  @ManyToOne 
+  private TaskQueue queue;
   
   @Column(nullable = false)
   @NotNull
@@ -55,11 +54,11 @@ public class Task {
     this.priority = priority;
   }
 
-  public String getQueue() {
+  public TaskQueue getQueue() {
     return queue;
   }
-
-  public void setQueue(String queue) {
+  
+  public void setQueue(TaskQueue queue) {
     this.queue = queue;
   }
 
