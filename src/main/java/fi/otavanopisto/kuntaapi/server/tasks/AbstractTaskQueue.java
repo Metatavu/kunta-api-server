@@ -4,6 +4,7 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.inject.Inject;
 
+import fi.otavanopisto.kuntaapi.server.controllers.ClusterController;
 import fi.otavanopisto.kuntaapi.server.controllers.TaskController;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 
@@ -15,6 +16,9 @@ import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
  * @param <T> task type
  */
 public abstract class AbstractTaskQueue <T extends AbstractTask> {
+  
+  @Inject
+  private ClusterController clusterController;
   
   @Inject
   private SystemSettingController systemSettingController;
@@ -52,12 +56,12 @@ public abstract class AbstractTaskQueue <T extends AbstractTask> {
     }
     
     if (systemSettingController.isNotTestingOrTestRunning()) {
-      return taskController.getNextTask(getName());
+      return taskController.getNextTask(getName(), clusterController.getLocalNodeName());
     }
     
     return null;
   }
-  
+
   /**
    * Enqueus new task to the queue. If priority flag is true, the task will be prepended to 
    * the front of the queue otherwise the task will be appened to the end of the queue
