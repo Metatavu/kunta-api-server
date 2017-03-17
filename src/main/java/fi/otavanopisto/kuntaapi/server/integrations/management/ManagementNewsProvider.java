@@ -38,10 +38,10 @@ public class ManagementNewsProvider extends AbstractManagementProvider implement
   private ManagementImageLoader managementImageLoader;
   
   @Inject
-  private NewsArticleResourceContainer newsArticleCache;
+  private NewsArticleResourceContainer newsArticleResourceContainer;
   
   @Inject
-  private ManagementAttachmentResourceContainer managementAttachmentCache;
+  private ManagementAttachmentResourceContainer managementAttachmentResourceContainer;
   
   @Override
   public List<NewsArticle> listOrganizationNews(OrganizationId organizationId, OffsetDateTime publishedBefore, OffsetDateTime publishedAfter) {
@@ -52,7 +52,7 @@ public class ManagementNewsProvider extends AbstractManagementProvider implement
     List<NewsArticleId> newsArticleIds = identifierController.listOrganizationNewsArticleIdsBySource(organizationId, ManagementConsts.IDENTIFIER_NAME);
     List<NewsArticle> result = new ArrayList<>(newsArticleIds.size());
     for (NewsArticleId newsArticleId : newsArticleIds) {
-      NewsArticle newsArticle = newsArticleCache.get(newsArticleId);
+      NewsArticle newsArticle = newsArticleResourceContainer.get(newsArticleId);
       if (newsArticle != null && isAccetable(newsArticle, publishedBefore, publishedAfter)) {
         result.add(newsArticle);
       }
@@ -67,7 +67,7 @@ public class ManagementNewsProvider extends AbstractManagementProvider implement
       return null;
     }
     
-    return newsArticleCache.get(newsArticleId);
+    return newsArticleResourceContainer.get(newsArticleId);
   }
 
   @Override
@@ -76,7 +76,7 @@ public class ManagementNewsProvider extends AbstractManagementProvider implement
     List<AttachmentId> attachmentIds = identifierRelationController.listAttachmentIdsBySourceAndParentId(ManagementConsts.IDENTIFIER_NAME, newsArticleId);
     
     for (AttachmentId attachmentId : attachmentIds) {
-      Attachment attachment = managementAttachmentCache.get(attachmentId);
+      Attachment attachment = managementAttachmentResourceContainer.get(attachmentId);
       if (attachment != null) {
         result.add(attachment);
       }
@@ -91,7 +91,7 @@ public class ManagementNewsProvider extends AbstractManagementProvider implement
       return null;
     }
     
-    return managementAttachmentCache.get(attachmentId);
+    return managementAttachmentResourceContainer.get(attachmentId);
   }
 
   @Override

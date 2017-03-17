@@ -46,10 +46,10 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
   private ManagementTranslator managementTranslator;
   
   @Inject
-  private BannerResourceContainer bannerCache;
+  private BannerResourceContainer bannerResourceContainer;
   
   @Inject
-  private ManagementAttachmentResourceContainer managementAttachmentCache;
+  private ManagementAttachmentResourceContainer managementAttachmentResourceContainer;
   
   @Inject
   private ManagementApi managementApi;
@@ -120,7 +120,7 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
       return;
     }
     
-    bannerCache.put(bannerKuntaApiId, banner);
+    bannerResourceContainer.put(bannerKuntaApiId, banner);
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(banner));
     
     List<AttachmentId> existingAttachmentIds = identifierRelationController.listAttachmentIdsBySourceAndParentId(ManagementConsts.IDENTIFIER_NAME, bannerKuntaApiId);
@@ -154,7 +154,7 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
       fi.metatavu.kuntaapi.server.rest.model.Attachment attachment = managementTranslator.translateAttachment(kuntaApiAttachmentId, managementAttachment, ManagementConsts.ATTACHMENT_TYPE_BANNER);
       
       if (attachment != null) {
-        managementAttachmentCache.put(kuntaApiAttachmentId, attachment);
+        managementAttachmentResourceContainer.put(kuntaApiAttachmentId, attachment);
         
         AttachmentData imageData = managementImageLoader.getImageData(managementAttachment.getSourceUrl());
         if (imageData != null) {
@@ -173,7 +173,7 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
     if (bannerIdentifier != null) {
       BannerId kuntaApiBannerId = new BannerId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, bannerIdentifier.getKuntaApiId());
       modificationHashCache.clear(bannerIdentifier.getKuntaApiId());
-      bannerCache.clear(kuntaApiBannerId);
+      bannerResourceContainer.clear(kuntaApiBannerId);
       identifierController.deleteIdentifier(bannerIdentifier);
     }
   }

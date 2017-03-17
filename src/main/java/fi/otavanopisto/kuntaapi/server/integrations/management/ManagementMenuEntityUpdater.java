@@ -63,10 +63,10 @@ public class ManagementMenuEntityUpdater extends EntityUpdater {
   private IdController idController;
   
   @Inject
-  private MenuResourceContainer menuCache;
+  private MenuResourceContainer menuResourceContainer;
 
   @Inject
-  private ManagementMenuItemResourceContainer menuItemCache;
+  private ManagementMenuItemResourceContainer managementMenuItemResourceContainer;
   
   @Override
   public String getName() {
@@ -144,7 +144,7 @@ public class ManagementMenuEntityUpdater extends EntityUpdater {
     MenuId kuntaApiMenuId = new MenuId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
     Menu menu = translateMenu(organizationId, managementMenu);
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(menu));
-    menuCache.put(kuntaApiMenuId, menu);
+    menuResourceContainer.put(kuntaApiMenuId, menu);
     
     return identifier;
   }
@@ -159,7 +159,7 @@ public class ManagementMenuEntityUpdater extends EntityUpdater {
     MenuItem menuItem = translateMenuItem(organizationId, managementMenuItem);
         
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(menuItem));
-    menuItemCache.put(kuntaApiMenuItemId, menuItem);
+    managementMenuItemResourceContainer.put(kuntaApiMenuItemId, menuItem);
     
     return kuntaApiMenuItemId;
   }
@@ -262,7 +262,7 @@ public class ManagementMenuEntityUpdater extends EntityUpdater {
     if (menuIdentifier != null) {
       MenuId kuntaApiMenuId = new MenuId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, menuIdentifier.getKuntaApiId());
       modificationHashCache.clear(menuIdentifier.getKuntaApiId());
-      menuCache.clear(kuntaApiMenuId);
+      menuResourceContainer.clear(kuntaApiMenuId);
       identifierController.deleteIdentifier(menuIdentifier);
     }
   }
@@ -271,7 +271,7 @@ public class ManagementMenuEntityUpdater extends EntityUpdater {
     Identifier menuItemIdentifier = identifierController.findIdentifierById(kuntaApiMenuItemId);
     if (menuItemIdentifier != null) {
       modificationHashCache.clear(menuItemIdentifier.getKuntaApiId());
-      menuItemCache.clear(kuntaApiMenuItemId);
+      managementMenuItemResourceContainer.clear(kuntaApiMenuItemId);
       identifierController.deleteIdentifier(menuItemIdentifier);
     }
   }

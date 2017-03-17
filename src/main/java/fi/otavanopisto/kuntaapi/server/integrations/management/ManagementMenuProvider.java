@@ -35,7 +35,7 @@ public class ManagementMenuProvider extends AbstractManagementProvider implement
   private MenuResourceContainer menuCache;
   
   @Inject
-  private ManagementMenuItemResourceContainer managementMenuItemCache;
+  private ManagementMenuItemResourceContainer managementMenuItemResourceContainer;
 
   @Override
   public List<Menu> listOrganizationMenus(OrganizationId organizationId, String slug) {
@@ -67,7 +67,7 @@ public class ManagementMenuProvider extends AbstractManagementProvider implement
     List<MenuItem> result = new ArrayList<>(menuItemIds.size());
     
     for (MenuItemId menuItemId : menuItemIds) {
-      MenuItem menuItem = managementMenuItemCache.get(menuItemId);
+      MenuItem menuItem = managementMenuItemResourceContainer.get(menuItemId);
       if (menuItem != null) {
         result.add(menuItem);
       }
@@ -86,7 +86,7 @@ public class ManagementMenuProvider extends AbstractManagementProvider implement
       return null;
     }
     
-    return managementMenuItemCache.get(menuItemId);
+    return managementMenuItemResourceContainer.get(menuItemId);
   }
 
 }

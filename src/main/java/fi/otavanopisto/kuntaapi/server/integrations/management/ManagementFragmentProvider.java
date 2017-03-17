@@ -25,7 +25,7 @@ import fi.otavanopisto.kuntaapi.server.resources.FragmentResourceContainer;
 public class ManagementFragmentProvider extends AbstractManagementProvider implements FragmentProvider {
   
   @Inject
-  private FragmentResourceContainer fragmentCache;
+  private FragmentResourceContainer fragmentResourceContainer;
   
   @Inject
   private IdentifierRelationController identifierRelationController;
@@ -36,7 +36,7 @@ public class ManagementFragmentProvider extends AbstractManagementProvider imple
     List<Fragment> fragments = new ArrayList<>(fragmentIds.size());
     
     for (FragmentId fragmentId : fragmentIds) {
-      Fragment fragment = fragmentCache.get(fragmentId);
+      Fragment fragment = fragmentResourceContainer.get(fragmentId);
       if (fragment != null && isAcceptable(fragment, slug)) {
         fragments.add(fragment);
       }
@@ -48,7 +48,7 @@ public class ManagementFragmentProvider extends AbstractManagementProvider imple
   @Override
   public Fragment findOrganizationFragment(OrganizationId organizationId, FragmentId fragmentId) {
     if (identifierRelationController.isChildOf(organizationId, fragmentId)) {
-      return fragmentCache.get(fragmentId);
+      return fragmentResourceContainer.get(fragmentId);
     }
     
     return null;

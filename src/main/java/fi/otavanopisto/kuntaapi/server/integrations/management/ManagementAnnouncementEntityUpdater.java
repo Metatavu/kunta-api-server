@@ -48,7 +48,7 @@ public class ManagementAnnouncementEntityUpdater extends EntityUpdater {
   private IdentifierRelationController identifierRelationController;
 
   @Inject
-  private AnnouncementResourceContainer announcementCache;
+  private AnnouncementResourceContainer announcementResourceContainer;
   
   @Inject
   private ModificationHashCache modificationHashCache;
@@ -106,7 +106,7 @@ public class ManagementAnnouncementEntityUpdater extends EntityUpdater {
     fi.metatavu.kuntaapi.server.rest.model.Announcement announcement = managementTranslator.translateAnnouncement(kuntaApiAnnouncementId, managementAnnouncement);
     
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(announcement));
-    announcementCache.put(kuntaApiAnnouncementId, announcement);
+    announcementResourceContainer.put(kuntaApiAnnouncementId, announcement);
   }
 
   private void deleteAnnouncement(AnnouncementId managementAnnouncementId) {
@@ -116,7 +116,7 @@ public class ManagementAnnouncementEntityUpdater extends EntityUpdater {
     if (announcementIdentifier != null) {
       AnnouncementId kuntaApiAnnouncementId = new AnnouncementId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, announcementIdentifier.getKuntaApiId());
       modificationHashCache.clear(announcementIdentifier.getKuntaApiId());
-      announcementCache.clear(kuntaApiAnnouncementId);
+      announcementResourceContainer.clear(kuntaApiAnnouncementId);
       identifierController.deleteIdentifier(announcementIdentifier);
     }
     

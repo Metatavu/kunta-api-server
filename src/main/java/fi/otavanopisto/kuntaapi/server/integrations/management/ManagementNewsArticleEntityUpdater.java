@@ -59,10 +59,10 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
   private IdentifierRelationController identifierRelationController;
   
   @Inject
-  private NewsArticleResourceContainer newsArticleCache;
+  private NewsArticleResourceContainer newsArticleResourceContainer;
   
   @Inject
-  private ManagementAttachmentResourceContainer managementAttachmentCache;
+  private ManagementAttachmentResourceContainer managementAttachmentResourceContainer;
   
   @Inject
   private ModificationHashCache modificationHashCache;
@@ -121,7 +121,7 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
       return;
     }
     
-    newsArticleCache.put(newsArticleKuntaApiId, newsArticle);
+    newsArticleResourceContainer.put(newsArticleKuntaApiId, newsArticle);
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(newsArticle));
     
     List<AttachmentId> existingAttachmentIds = identifierRelationController.listAttachmentIdsBySourceAndParentId(ManagementConsts.IDENTIFIER_NAME, newsArticleKuntaApiId);
@@ -157,7 +157,7 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
         return null;
       }
       
-      managementAttachmentCache.put(kuntaApiAttachmentId, attachment);
+      managementAttachmentResourceContainer.put(kuntaApiAttachmentId, attachment);
       
       AttachmentData imageData = managementImageLoader.getImageData(managementAttachment.getSourceUrl());
       if (imageData != null) {
@@ -176,7 +176,7 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
     if (newsArticleIdentifier != null) {
       NewsArticleId kuntaApiNewsArticleId = new NewsArticleId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, newsArticleIdentifier.getKuntaApiId());
       modificationHashCache.clear(newsArticleIdentifier.getKuntaApiId());
-      newsArticleCache.clear(kuntaApiNewsArticleId);
+      newsArticleResourceContainer.clear(kuntaApiNewsArticleId);
       identifierController.deleteIdentifier(newsArticleIdentifier);
     }
   }

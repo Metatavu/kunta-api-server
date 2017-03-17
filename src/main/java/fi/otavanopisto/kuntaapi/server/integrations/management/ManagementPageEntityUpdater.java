@@ -74,13 +74,13 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
   private IdMapController idMapController;
 
   @Inject
-  private ManagementPageResourceContainer pageCache;
+  private ManagementPageResourceContainer managementPageResourceContainer;
   
   @Inject
-  private ManagementPageContentResourceContainer pageContentCache;
+  private ManagementPageContentResourceContainer managementPageContentResourceContainer;
   
   @Inject
-  private ManagementAttachmentResourceContainer managementAttachmentCache;
+  private ManagementAttachmentResourceContainer managementAttachmentResourceContainer;
   
   @Inject
   private ModificationHashCache modificationHashCache;
@@ -162,8 +162,8 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
     List<LocalizedValue> pageContents = managementTranslator.translateLocalized(contents);
     
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(managementPage));
-    pageCache.put(kuntaApiPageId, page);
-    pageContentCache.put(kuntaApiPageId, pageContents);
+    managementPageResourceContainer.put(kuntaApiPageId, page);
+    managementPageContentResourceContainer.put(kuntaApiPageId, pageContents);
     indexRequest.fire(new IndexRequest(createIndexablePage(organizationId, kuntaApiPageId, ManagementConsts.DEFAULT_LOCALE, contents, title)));
 
     updateAttachments(organizationId, api, managementPage, identifier);
@@ -206,7 +206,7 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
       
       AttachmentId kuntaApiAttachmentId = new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
       Attachment kuntaApiAttachment = managementTranslator.translateAttachment(kuntaApiAttachmentId, managementAttachment, type);
-      managementAttachmentCache.put(kuntaApiAttachmentId, kuntaApiAttachment);
+      managementAttachmentResourceContainer.put(kuntaApiAttachmentId, kuntaApiAttachment);
       
       AttachmentData imageData = managementImageLoader.getImageData(managementAttachment.getSourceUrl());
       if (imageData != null) {
@@ -225,8 +225,8 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
     if (pageIdentifier != null) {
       PageId kuntaApiPageId = new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, pageIdentifier.getKuntaApiId());
       modificationHashCache.clear(pageIdentifier.getKuntaApiId());
-      pageCache.clear(kuntaApiPageId);
-      pageContentCache.clear(kuntaApiPageId);
+      managementPageResourceContainer.clear(kuntaApiPageId);
+      managementPageContentResourceContainer.clear(kuntaApiPageId);
       identifierController.deleteIdentifier(pageIdentifier);
       
       IndexRemovePage indexRemove = new IndexRemovePage();

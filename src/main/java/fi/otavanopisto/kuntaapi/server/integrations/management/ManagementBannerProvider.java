@@ -29,10 +29,10 @@ public class ManagementBannerProvider extends AbstractManagementProvider impleme
   private IdentifierRelationController identifierRelationController;
   
   @Inject
-  private BannerResourceContainer bannerCache;
+  private BannerResourceContainer bannerResourceContainer;
   
   @Inject
-  private ManagementAttachmentResourceContainer managementAttachmentCache;
+  private ManagementAttachmentResourceContainer managementAttachmentResourceContainer;
   
   @Inject
   private ManagementImageLoader managementImageLoader;
@@ -43,7 +43,7 @@ public class ManagementBannerProvider extends AbstractManagementProvider impleme
     List<Banner> banners = new ArrayList<>(bannerIds.size());
     
     for (BannerId bannerId : bannerIds) {
-      Banner banner = bannerCache.get(bannerId);
+      Banner banner = bannerResourceContainer.get(bannerId);
       if (banner != null) {
         banners.add(banner);
       }
@@ -58,7 +58,7 @@ public class ManagementBannerProvider extends AbstractManagementProvider impleme
       return null;
     }
     
-    return bannerCache.get(bannerId);
+    return bannerResourceContainer.get(bannerId);
   }
 
   @Override
@@ -67,7 +67,7 @@ public class ManagementBannerProvider extends AbstractManagementProvider impleme
     List<Attachment> result = new ArrayList<>(attachmentIds.size());
     
     for (AttachmentId attachmentId : attachmentIds) {
-      Attachment attachment = managementAttachmentCache.get(attachmentId);
+      Attachment attachment = managementAttachmentResourceContainer.get(attachmentId);
       if (attachment != null) {
         result.add(attachment);
       }
@@ -82,7 +82,7 @@ public class ManagementBannerProvider extends AbstractManagementProvider impleme
       return null;
     }
     
-    return managementAttachmentCache.get(attachmentId);
+    return managementAttachmentResourceContainer.get(attachmentId);
   }
 
   @Override

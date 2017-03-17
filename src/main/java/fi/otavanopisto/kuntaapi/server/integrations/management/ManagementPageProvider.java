@@ -46,13 +46,13 @@ public class ManagementPageProvider extends AbstractManagementProvider implement
   private IdentifierRelationController identifierRelationController;
   
   @Inject
-  private ManagementPageResourceContainer pageCache;
+  private ManagementPageResourceContainer managementPageResourceContainer;
   
   @Inject
-  private ManagementPageContentResourceContainer pageContentCache;
+  private ManagementPageContentResourceContainer managementPageContentResourceContainer;
   
   @Inject
-  private ManagementAttachmentResourceContainer managementAttachmentCache;
+  private ManagementAttachmentResourceContainer managementAttachmentResourceContainer;
   
   @Inject
   private ManagementImageLoader managementImageLoader;
@@ -69,12 +69,12 @@ public class ManagementPageProvider extends AbstractManagementProvider implement
   @Override
   @Timed (infoThreshold = 25, warningThreshold = 50, severeThreshold = 100)
   public Page findOrganizationPage(OrganizationId organizationId, PageId pageId) {
-    return pageCache.get(pageId);
+    return managementPageResourceContainer.get(pageId);
   }
   
   @Override
   public List<LocalizedValue> findOrganizationPageContents(OrganizationId organizationId, PageId pageId) {
-    List<LocalizedValue> contents = pageContentCache.get(pageId);
+    List<LocalizedValue> contents = managementPageContentResourceContainer.get(pageId);
     if (contents != null) {
       return contents;
     }
@@ -88,7 +88,7 @@ public class ManagementPageProvider extends AbstractManagementProvider implement
     List<Attachment> result = new ArrayList<>(attachmentIds.size());
     
     for (AttachmentId attachmentId : attachmentIds) {
-      Attachment attachment = managementAttachmentCache.get(attachmentId);
+      Attachment attachment = managementAttachmentResourceContainer.get(attachmentId);
       if (attachment != null && (type == null || StringUtils.equals(attachment.getType(), type))) {
         result.add(attachment);
       }
@@ -103,7 +103,7 @@ public class ManagementPageProvider extends AbstractManagementProvider implement
       return null;
     }
     
-    return managementAttachmentCache.get(attachmentId);
+    return managementAttachmentResourceContainer.get(attachmentId);
   }
 
   @Override
@@ -147,7 +147,7 @@ public class ManagementPageProvider extends AbstractManagementProvider implement
     
     List<Page> result = new ArrayList<>(pageIds.size());
     for (PageId pageId : pageIds) {
-      Page page = pageCache.get(pageId);
+      Page page = managementPageResourceContainer.get(pageId);
       if (page != null) {
         result.add(page);
       }

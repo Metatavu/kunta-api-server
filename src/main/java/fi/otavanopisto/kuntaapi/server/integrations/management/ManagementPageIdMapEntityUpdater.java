@@ -51,7 +51,7 @@ public class ManagementPageIdMapEntityUpdater extends EntityUpdater {
   private PageController pageController;
 
   @Inject
-  private ManagementPageIdMapResourceContainer managementPageIdMapCache;
+  private ManagementPageIdMapResourceContainer managementPageIdMapResourceContainer;
   
   @Inject
   private OrganizationPageMapsTaskQueue organizationPageMapsTaskQueue;
@@ -81,7 +81,7 @@ public class ManagementPageIdMapEntityUpdater extends EntityUpdater {
     
     OrganizationPageMap pageIdMap = loadPageIdMap(organizationId);
     if (pageIdMap != null) {
-      managementPageIdMapCache.put(organizationId, pageIdMap);
+      managementPageIdMapResourceContainer.put(organizationId, pageIdMap);
     }
   }
   

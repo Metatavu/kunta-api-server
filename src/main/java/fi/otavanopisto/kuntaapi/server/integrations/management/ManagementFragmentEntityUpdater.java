@@ -48,7 +48,7 @@ public class ManagementFragmentEntityUpdater extends EntityUpdater {
   private IdentifierRelationController identifierRelationController;
 
   @Inject
-  private FragmentResourceContainer fragmentCache;
+  private FragmentResourceContainer fragmentResourceContainer;
   
   @Inject
   private ModificationHashCache modificationHashCache;
@@ -104,7 +104,7 @@ public class ManagementFragmentEntityUpdater extends EntityUpdater {
     fi.metatavu.kuntaapi.server.rest.model.Fragment fragment = managementTranslator.translateFragment(kuntaApiFragmentId, managementFragment);
     
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(fragment));
-    fragmentCache.put(kuntaApiFragmentId, fragment);
+    fragmentResourceContainer.put(kuntaApiFragmentId, fragment);
   }
 
   private void deleteManagementFragment(FragmentId managementFragmentId) {
@@ -114,7 +114,7 @@ public class ManagementFragmentEntityUpdater extends EntityUpdater {
     if (fragmentIdentifier != null) {
       FragmentId kuntaApiFragmentId = new FragmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, fragmentIdentifier.getKuntaApiId());
       modificationHashCache.clear(fragmentIdentifier.getKuntaApiId());
-      fragmentCache.clear(kuntaApiFragmentId);
+      fragmentResourceContainer.clear(kuntaApiFragmentId);
       identifierController.deleteIdentifier(fragmentIdentifier);
     }
     
