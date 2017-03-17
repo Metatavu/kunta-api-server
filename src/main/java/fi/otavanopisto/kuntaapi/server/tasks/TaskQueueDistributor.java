@@ -15,6 +15,7 @@ import javax.inject.Inject;
 import fi.otavanopisto.kuntaapi.server.controllers.ClusterController;
 import fi.otavanopisto.kuntaapi.server.controllers.TaskController;
 import fi.otavanopisto.kuntaapi.server.persistence.model.TaskQueue;
+import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 
 @Startup
 @Singleton
@@ -29,6 +30,9 @@ public class TaskQueueDistributor {
   @Inject
   private ClusterController clusterController;
 
+  @Inject
+  private SystemSettingController systemSettingController;
+  
   @Resource
   private TimerService timerService;
 
@@ -61,7 +65,7 @@ public class TaskQueueDistributor {
   private void startTimer() {
     TimerConfig timerConfig = new TimerConfig();
     timerConfig.setPersistent(false);
-    timerService.createSingleActionTimer(UPDATE_INTERVAL, timerConfig);
+    timerService.createSingleActionTimer(systemSettingController.inTestMode() ? 1000 : UPDATE_INTERVAL, timerConfig);
   }
   
 }
