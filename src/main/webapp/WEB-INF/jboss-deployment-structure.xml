@@ -9,6 +9,7 @@
             <module name="com.fasterxml.jackson.datatype.jackson-datatype-jsr310"/>
             <module name="com.fasterxml.jackson.jaxrs.jackson-jaxrs-json-provider"/>
             <module name="org.slf4j"/>
+            <module name="org.wildfly.clustering.api" services="export" />
         </dependencies>
     </deployment>
 </jboss-deployment-structure>
