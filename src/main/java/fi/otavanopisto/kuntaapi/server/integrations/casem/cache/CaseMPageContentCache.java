@@ -2,7 +2,7 @@ package fi.otavanopisto.kuntaapi.server.integrations.casem.cache;
 
 import javax.enterprise.context.ApplicationScoped;
 
-import fi.otavanopisto.kuntaapi.server.cache.AbstractPageContentCache;
+import fi.otavanopisto.kuntaapi.server.resources.AbstractPageContentCache;
 
 @ApplicationScoped
 public class CaseMPageContentCache extends AbstractPageContentCache {

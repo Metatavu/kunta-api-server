@@ -15,7 +15,6 @@ import fi.metatavu.management.client.DefaultApi;
 import fi.metatavu.management.client.model.Attachment;
 import fi.metatavu.management.client.model.Tile;
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
-import fi.otavanopisto.kuntaapi.server.cache.TileCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
@@ -27,6 +26,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementAttachmentCache;
 import fi.otavanopisto.kuntaapi.server.integrations.management.tasks.TileIdTaskQueue;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
+import fi.otavanopisto.kuntaapi.server.resources.TileResourceContainer;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask.Operation;
@@ -58,7 +58,7 @@ public class ManagementTileEntityUpdater extends EntityUpdater {
   private IdentifierRelationController identifierRelationController;
 
   @Inject
-  private TileCache tileCache;
+  private TileResourceContainer tileCache;
   
   @Inject
   private ManagementAttachmentCache managementAttachmentCache;

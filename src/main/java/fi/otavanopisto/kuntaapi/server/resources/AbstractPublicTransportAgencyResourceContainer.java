@@ -1,13 +1,12 @@
-package fi.otavanopisto.kuntaapi.server.cache;
+package fi.otavanopisto.kuntaapi.server.resources;
 
 import javax.enterprise.context.ApplicationScoped;
 
 import fi.metatavu.kuntaapi.server.rest.model.Agency;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportAgencyId;
-import fi.otavanopisto.kuntaapi.server.resources.AbstractResourceContainer;
 
 @ApplicationScoped
-public abstract class AbstractPublicTransportAgencyCache extends AbstractResourceContainer<PublicTransportAgencyId, Agency> {
+public abstract class AbstractPublicTransportAgencyResourceContainer extends AbstractResourceContainer<PublicTransportAgencyId, Agency> {
 
   private static final long serialVersionUID = -3896497752201194064L;
 

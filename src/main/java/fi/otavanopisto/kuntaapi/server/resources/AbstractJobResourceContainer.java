@@ -1,10 +1,9 @@
-package fi.otavanopisto.kuntaapi.server.cache;
+package fi.otavanopisto.kuntaapi.server.resources;
 
 import fi.metatavu.kuntaapi.server.rest.model.Job;
 import fi.otavanopisto.kuntaapi.server.id.JobId;
-import fi.otavanopisto.kuntaapi.server.resources.AbstractResourceContainer;
 
-public abstract class AbstractJobCache extends AbstractResourceContainer<JobId, Job> {
+public abstract class AbstractJobResourceContainer extends AbstractResourceContainer<JobId, Job> {
 
   private static final long serialVersionUID = -6572380742687259874L;
 

@@ -14,7 +14,6 @@ import fi.metatavu.kuntaapi.server.rest.model.MenuItem;
 import fi.metatavu.management.client.ApiResponse;
 import fi.metatavu.management.client.DefaultApi;
 import fi.metatavu.management.client.model.Menuitem;
-import fi.otavanopisto.kuntaapi.server.cache.MenuCache;
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
@@ -29,6 +28,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.MenuProvider.MenuItemType;
 import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementMenuItemCache;
 import fi.otavanopisto.kuntaapi.server.integrations.management.tasks.MenuIdTaskQueue;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
+import fi.otavanopisto.kuntaapi.server.resources.MenuResourceContainer;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask.Operation;
@@ -63,7 +63,7 @@ public class ManagementMenuEntityUpdater extends EntityUpdater {
   private IdController idController;
   
   @Inject
-  private MenuCache menuCache;
+  private MenuResourceContainer menuCache;
 
   @Inject
   private ManagementMenuItemCache menuItemCache;

@@ -10,7 +10,6 @@ import javax.inject.Inject;
 
 import fi.metatavu.kuntaapi.server.rest.model.Attachment;
 import fi.metatavu.kuntaapi.server.rest.model.NewsArticle;
-import fi.otavanopisto.kuntaapi.server.cache.NewsArticleCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
@@ -19,6 +18,7 @@ import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.NewsProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementAttachmentCache;
+import fi.otavanopisto.kuntaapi.server.resources.NewsArticleResourceContainer;
 
 /**
  * News provider for management wordpress
@@ -38,7 +38,7 @@ public class ManagementNewsProvider extends AbstractManagementProvider implement
   private ManagementImageLoader managementImageLoader;
   
   @Inject
-  private NewsArticleCache newsArticleCache;
+  private NewsArticleResourceContainer newsArticleCache;
   
   @Inject
   private ManagementAttachmentCache managementAttachmentCache;

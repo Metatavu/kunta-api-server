@@ -2,7 +2,7 @@ package fi.otavanopisto.kuntaapi.server.integrations.management.cache;
 
 import javax.enterprise.context.ApplicationScoped;
 
-import fi.otavanopisto.kuntaapi.server.cache.AbstractPageIdMapCache;
+import fi.otavanopisto.kuntaapi.server.resources.AbstractPageIdMapCache;
 
 @ApplicationScoped
 public class ManagementPageIdMapCache extends AbstractPageIdMapCache {

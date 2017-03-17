@@ -9,11 +9,11 @@ import javax.inject.Inject;
 import org.apache.commons.lang3.StringUtils;
 
 import fi.metatavu.kuntaapi.server.rest.model.Fragment;
-import fi.otavanopisto.kuntaapi.server.cache.FragmentCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.id.FragmentId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.FragmentProvider;
+import fi.otavanopisto.kuntaapi.server.resources.FragmentResourceContainer;
 
 /**
  * Fragment provider for management wordpress
@@ -25,7 +25,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.FragmentProvider;
 public class ManagementFragmentProvider extends AbstractManagementProvider implements FragmentProvider {
   
   @Inject
-  private FragmentCache fragmentCache;
+  private FragmentResourceContainer fragmentCache;
   
   @Inject
   private IdentifierRelationController identifierRelationController;

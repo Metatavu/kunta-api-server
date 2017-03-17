@@ -1,13 +1,12 @@
-package fi.otavanopisto.kuntaapi.server.cache;
+package fi.otavanopisto.kuntaapi.server.resources;
 
 import javax.enterprise.context.ApplicationScoped;
 
 import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
-import fi.otavanopisto.kuntaapi.server.resources.AbstractResourceContainer;
 import fi.metatavu.kuntaapi.server.rest.model.NewsArticle;
 
 @ApplicationScoped
-public class NewsArticleCache extends AbstractResourceContainer<NewsArticleId, NewsArticle> {
+public class NewsArticleResourceContainer extends AbstractResourceContainer<NewsArticleId, NewsArticle> {
 
   private static final long serialVersionUID = 1251806281893865654L;
 

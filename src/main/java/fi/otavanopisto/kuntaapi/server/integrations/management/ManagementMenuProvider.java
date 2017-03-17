@@ -11,13 +11,13 @@ import org.apache.commons.codec.binary.StringUtils;
 
 import fi.metatavu.kuntaapi.server.rest.model.Menu;
 import fi.metatavu.kuntaapi.server.rest.model.MenuItem;
-import fi.otavanopisto.kuntaapi.server.cache.MenuCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.id.MenuId;
 import fi.otavanopisto.kuntaapi.server.id.MenuItemId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.MenuProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementMenuItemCache;
+import fi.otavanopisto.kuntaapi.server.resources.MenuResourceContainer;
 
 /**
  * Menu provider for management wordpress
@@ -32,7 +32,7 @@ public class ManagementMenuProvider extends AbstractManagementProvider implement
   private IdentifierRelationController identifierRelationController;
   
   @Inject
-  private MenuCache menuCache;
+  private MenuResourceContainer menuCache;
   
   @Inject
   private ManagementMenuItemCache managementMenuItemCache;

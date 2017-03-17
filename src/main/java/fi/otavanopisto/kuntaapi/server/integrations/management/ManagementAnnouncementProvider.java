@@ -9,11 +9,11 @@ import javax.inject.Inject;
 import org.apache.commons.lang3.StringUtils;
 
 import fi.metatavu.kuntaapi.server.rest.model.Announcement;
-import fi.otavanopisto.kuntaapi.server.cache.AnnouncementCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.id.AnnouncementId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.AnnouncementProvider;
+import fi.otavanopisto.kuntaapi.server.resources.AnnouncementResourceContainer;
 
 /**
  * Announcement provider for management wordpress
@@ -28,7 +28,7 @@ public class ManagementAnnouncementProvider extends AbstractManagementProvider i
   private IdentifierRelationController identifierRelationController;
   
   @Inject
-  private AnnouncementCache announcementCache;
+  private AnnouncementResourceContainer announcementCache;
   
   @Override
   public List<Announcement> listOrganizationAnnouncements(OrganizationId organizationId, String slug) {

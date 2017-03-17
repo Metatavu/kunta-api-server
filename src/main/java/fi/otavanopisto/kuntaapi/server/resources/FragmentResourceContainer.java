@@ -1,13 +1,12 @@
-package fi.otavanopisto.kuntaapi.server.cache;
+package fi.otavanopisto.kuntaapi.server.resources;
 
 import javax.enterprise.context.ApplicationScoped;
 
 import fi.otavanopisto.kuntaapi.server.id.FragmentId;
-import fi.otavanopisto.kuntaapi.server.resources.AbstractResourceContainer;
 import fi.metatavu.kuntaapi.server.rest.model.Fragment;
 
 @ApplicationScoped
-public class FragmentCache extends AbstractResourceContainer<FragmentId, Fragment> {
+public class FragmentResourceContainer extends AbstractResourceContainer<FragmentId, Fragment> {
 
   private static final long serialVersionUID = -9054454730058146125L;
 

@@ -8,7 +8,6 @@ import javax.inject.Inject;
 
 import fi.metatavu.kuntaapi.server.rest.model.Attachment;
 import fi.metatavu.kuntaapi.server.rest.model.Banner;
-import fi.otavanopisto.kuntaapi.server.cache.BannerCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.BannerId;
@@ -16,6 +15,7 @@ import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.BannerProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.management.cache.ManagementAttachmentCache;
+import fi.otavanopisto.kuntaapi.server.resources.BannerResourceContainer;
 
 /**
  * Banner provider for management wordpress
@@ -29,7 +29,7 @@ public class ManagementBannerProvider extends AbstractManagementProvider impleme
   private IdentifierRelationController identifierRelationController;
   
   @Inject
-  private BannerCache bannerCache;
+  private BannerResourceContainer bannerCache;
   
   @Inject
   private ManagementAttachmentCache managementAttachmentCache;

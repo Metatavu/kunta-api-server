@@ -18,7 +18,6 @@ import ezvcard.Ezvcard;
 import ezvcard.VCard;
 import ezvcard.io.chain.ChainingTextParser;
 import fi.metatavu.kuntaapi.server.rest.model.Contact;
-import fi.otavanopisto.kuntaapi.server.cache.ContactCache;
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
@@ -31,6 +30,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpClient.Response;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.vcard.tasks.OrganizationVCardsTaskQueue;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
+import fi.otavanopisto.kuntaapi.server.resources.ContactResourceContainer;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 import fi.otavanopisto.kuntaapi.server.tasks.OrganizationEntityUpdateTask;
@@ -53,7 +53,7 @@ public class VCardEntityUpdater extends EntityUpdater {
   private VCardTranslator vCardTranslator;
   
   @Inject
-  private ContactCache contactCache;
+  private ContactResourceContainer contactCache;
   
   @Inject
   private OrganizationSettingController organizationSettingController; 

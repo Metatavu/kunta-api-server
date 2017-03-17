@@ -1,13 +1,12 @@
-package fi.otavanopisto.kuntaapi.server.cache;
+package fi.otavanopisto.kuntaapi.server.resources;
 
 import javax.enterprise.context.ApplicationScoped;
 
 import fi.metatavu.kuntaapi.server.rest.model.StopTime;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportStopTimeId;
-import fi.otavanopisto.kuntaapi.server.resources.AbstractResourceContainer;
 
 @ApplicationScoped
-public abstract class AbstractPublicTransportStopTimeCache extends AbstractResourceContainer<PublicTransportStopTimeId, StopTime> {
+public abstract class AbstractPublicTransportStopTimeResourceContainer extends AbstractResourceContainer<PublicTransportStopTimeId, StopTime> {
 
   private static final long serialVersionUID = 8435491545447129703L;
 
