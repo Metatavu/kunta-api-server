@@ -253,7 +253,7 @@
         <constraints nullable="false" primaryKey="true"/>
       </column>
       <column name="identifier_id" type="bigint(20)">
-        <constraints referencedTableName="Identifier" referencedColumnNames="id" foreignKeyName="FK_STORED_RESOURCE_IDENTIFIER_ID" unique="true"/>
+        <constraints referencedTableName="Identifier" referencedColumnNames="id" foreignKeyName="FK_STORED_RESOURCE_IDENTIFIER_ID" unique="true" uniqueConstraintName="identifier_id" />
       </column>
       <column name="data" type="longtext">
         <constraints nullable="false"/>
@@ -310,8 +310,16 @@
     
     <sql dbms="mysql">UPDATE Task t set queue_id = (SELECT id FROM TaskQueue q where q.name = t.queue)</sql>
     
+    <dropIndex tableName="Task" indexName="TASK_QUEUE_PRIORITY_CREATED" />
     <dropColumn tableName="Task" columnName="queue"/>
     
+  </changeSet>
+  
+  <changeSet id="task-priority-index" author="heikki.kurhinen">
+    <createIndex tableName="Task" indexName="TASK__PRIORITY_CREATED">
+      <column name="priority"/>
+      <column name="created"/>
+    </createIndex>
   </changeSet>
   
 </databaseChangeLog>
