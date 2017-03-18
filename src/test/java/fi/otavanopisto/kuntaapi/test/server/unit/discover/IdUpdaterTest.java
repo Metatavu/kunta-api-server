@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.Iterator;
 
 import javax.ejb.Singleton;
+import javax.ejb.Timeout;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
@@ -33,14 +34,15 @@ public class IdUpdaterTest {
     assertTrue(iterator.hasNext());
     
     while (iterator.hasNext()) {
-      IdUpdater entityUpdater = iterator.next();
-      assertNotNull(entityUpdater);
-      String className = StringUtils.substringBefore(entityUpdater.getClass().getName(), "$");
-      Class<? extends IdUpdater> entityUpdaterClass = (Class<? extends IdUpdater>) Class.forName(className);
-      assertNotNull(entityUpdaterClass);
+      IdUpdater idUpdater = iterator.next();
+      assertNotNull(idUpdater);
+      String className = StringUtils.substringBefore(idUpdater.getClass().getName(), "$");
+      Class<? extends IdUpdater> idUpdaterClass = (Class<? extends IdUpdater>) Class.forName(className);
+      assertNotNull(idUpdaterClass);
       
-      assertTrue(String.format("Singleton not present in %s", entityUpdaterClass.getName()), entityUpdaterClass.isAnnotationPresent(Singleton.class));
-      assertTrue(String.format("ApplicationScoped not present in %s", entityUpdaterClass.getName()), entityUpdaterClass.isAnnotationPresent(ApplicationScoped.class));
+      assertTrue(String.format("Singleton not present in %s", idUpdaterClass.getName()), idUpdaterClass.isAnnotationPresent(Singleton.class));
+      assertTrue(String.format("ApplicationScoped not present in %s", idUpdaterClass.getName()), idUpdaterClass.isAnnotationPresent(ApplicationScoped.class));
+      assertTrue(String.format("Timeout not present in %s", idUpdaterClass.getName()), idUpdaterClass.isAnnotationPresent(Timeout.class));
     }
   }
 
