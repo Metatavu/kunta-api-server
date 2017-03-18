@@ -1,14 +1,11 @@
 package fi.otavanopisto.kuntaapi.server.discover;
 
 import java.util.Collection;
-import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-import javax.annotation.Resource;
-import javax.ejb.AccessTimeout;
 import javax.ejb.Timeout;
 import javax.ejb.Timer;
 import javax.ejb.TimerConfig;
@@ -20,7 +17,6 @@ import org.apache.commons.lang3.math.NumberUtils;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 
 @SuppressWarnings ("squid:S1610")
-@AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 public abstract class IdUpdater {
 
   @Inject
@@ -28,9 +24,6 @@ public abstract class IdUpdater {
 
   @Inject
   private SystemSettingController systemSettingController;
-
-  @Resource
-  private TimerService timerService;
 
   private boolean stopped;
   
@@ -46,7 +39,7 @@ public abstract class IdUpdater {
   }
   
   public abstract void timeout();
-  public abstract TimerService geTimerService();
+  public abstract TimerService getTimerService();
   
   /**
    * Stops id updater
@@ -57,7 +50,7 @@ public abstract class IdUpdater {
     stopped = true;
     if (cancelTimers) {
       try {
-        Collection<Timer> timers = timerService.getTimers();
+        Collection<Timer> timers = getTimerService().getTimers();
         for (Timer timer : timers) {
           timer.cancel();
         }
@@ -71,15 +64,22 @@ public abstract class IdUpdater {
     if (systemSettingController.inTestMode()) {
       return 200;
     }
-    
-    String key = String.format("id-updater.%s.warmup", getName());
-    Integer warmup = NumberUtils.createInteger(systemSettingController.getSettingValue(key));
-    if (warmup == null) {
+
+    try {
+      String key = String.format("id-updater.%s.warmup", getName());
+      Integer warmup = NumberUtils.createInteger(systemSettingController.getSettingValue(key));
+      if (warmup != null) {
+        return warmup;
+      }
+      
       logger.log(Level.WARNING, () -> String.format("Warmup for id updater %s is undefied", key));
-      return 1000 * 60;
+    } catch (Exception e) {
+      if (logger.isLoggable(Level.SEVERE)) {
+        logger.log(Level.SEVERE, "Failed to retrieve warmup", e);
+      }
     }
-    
-    return warmup;
+
+    return 1000 * 60;
   }
   
   public int getTimerInterval() {
@@ -87,20 +87,27 @@ public abstract class IdUpdater {
       return 1000;
     }
     
-    String key = String.format("id-updater.%s.interval", getName());
-    Integer interval = NumberUtils.createInteger(systemSettingController.getSettingValue(key));
-    if (interval == null) {
+    try {
+      String key = String.format("id-updater.%s.interval", getName());
+      Integer interval = NumberUtils.createInteger(systemSettingController.getSettingValue(key));
+      if (interval != null) {
+        return interval;
+      }
+      
       logger.log(Level.WARNING, () -> String.format("Interval for id updater %s is undefied", key));
-      return 1000 * 60;
+    } catch (Exception e) {
+      if (logger.isLoggable(Level.SEVERE)) {
+        logger.log(Level.SEVERE, "Failed to retrieve timer interval", e);
+      }
     }
     
-    return interval;
+    return 1000 * 60;
   }
 
   private void startTimer(int duration) {
     TimerConfig timerConfig = new TimerConfig();
     timerConfig.setPersistent(false);
-    timerService.createSingleActionTimer(duration, timerConfig);
+    getTimerService().createSingleActionTimer(duration, timerConfig);
   }
   
   @Timeout
