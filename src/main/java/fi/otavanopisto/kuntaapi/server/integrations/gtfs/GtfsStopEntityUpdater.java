@@ -3,7 +3,9 @@ package fi.otavanopisto.kuntaapi.server.integrations.gtfs;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.annotation.Resource;
 import javax.ejb.Singleton;
+import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
@@ -58,6 +60,9 @@ public class GtfsStopEntityUpdater extends EntityUpdater {
   @Inject
   private GtfsStopTaskQueue gtfsStopTaskQueue;
 
+  @Resource
+  private TimerService timerService;
+
   @Override
   public String getName() {
     return "gtfs-public-transport-stops";
@@ -69,6 +74,11 @@ public class GtfsStopEntityUpdater extends EntityUpdater {
     if (task != null) {
       updateGtfsStop(task);
     }
+  }
+  
+  @Override
+  public TimerService geTimerService() {
+    return timerService;
   }
   
   private void updateGtfsStop(GtfsStopEntityTask task) {
