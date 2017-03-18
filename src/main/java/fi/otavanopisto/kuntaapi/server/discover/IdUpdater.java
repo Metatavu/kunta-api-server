@@ -99,7 +99,7 @@ public abstract class IdUpdater {
 
   private void startTimer(int duration) {
     TimerConfig timerConfig = new TimerConfig();
-    timerConfig.setPersistent(false);
+    timerConfig.setPersistent(true);
     timerService.createSingleActionTimer(duration, timerConfig);
   }
   

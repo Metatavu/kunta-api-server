@@ -98,7 +98,7 @@ public abstract class EntityUpdater {
 
   private void startTimer(int duration) {
     TimerConfig timerConfig = new TimerConfig();
-    timerConfig.setPersistent(false);
+    timerConfig.setPersistent(true);
     geTimerService().createSingleActionTimer(duration, timerConfig);
   }
   
