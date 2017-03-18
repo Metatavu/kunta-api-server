@@ -78,11 +78,15 @@ public abstract class AbstractTaskQueue <T extends AbstractTask> {
   }
 
   /**
-   * Returns whether current node is responsible from this queue
+   * Returns whether current node is allowed to add tasks to this queue
    * 
-   * @return true if node is responsible from queue, false otherwise
+   * @return true if node is allowed to add tasks, false otherwise
    */
-  public boolean isResponsibleNode() {
+  public boolean isAllowedToEnqueTasks() {
+    if (!taskController.isQueueExisting(getName())) {
+      return true;
+    }
+    
     return taskController.isNodeResponsibleFromQueue(getName(), clusterController.getLocalNodeName());
   }
   

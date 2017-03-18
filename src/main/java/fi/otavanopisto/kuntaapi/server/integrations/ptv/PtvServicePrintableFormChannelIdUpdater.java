@@ -67,7 +67,7 @@ public class PtvServicePrintableFormChannelIdUpdater extends EntityUpdater {
       ServiceEntityUpdateTask task = servicePrintableFormChannelsTaskQueue.next();
       if (task != null) {
         updateChannelIds(task.getServiceId());
-      } else if (servicePrintableFormChannelsTaskQueue.isResponsibleNode()) {
+      } else if (servicePrintableFormChannelsTaskQueue.isAllowedToEnqueTasks()) {
         servicePrintableFormChannelsTaskQueue.enqueueTasks(identifierController.listServiceIdsBySource(PtvConsts.IDENTIFIER_NAME));
       }
     }

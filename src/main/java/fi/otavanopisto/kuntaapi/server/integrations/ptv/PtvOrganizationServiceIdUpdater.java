@@ -64,7 +64,7 @@ public class PtvOrganizationServiceIdUpdater extends IdUpdater {
     OrganizationEntityUpdateTask task = organizationServicesTaskQueue.next();
     if (task != null) {
       updateOrganizationServiceIds(task.getOrganizationId());
-    } else if (organizationServicesTaskQueue.isResponsibleNode()) {
+    } else if (organizationServicesTaskQueue.isAllowedToEnqueTasks()) {
       organizationServicesTaskQueue.enqueueTasks(identifierController.listOrganizationsBySource(PtvConsts.IDENTIFIER_NAME));
     }
   }
