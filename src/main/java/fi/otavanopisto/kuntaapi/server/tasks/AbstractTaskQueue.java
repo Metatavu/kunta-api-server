@@ -78,6 +78,15 @@ public abstract class AbstractTaskQueue <T extends AbstractTask> {
   }
 
   /**
+   * Returns whether current node is responsible from this queue
+   * 
+   * @return true if node is responsible from queue, false otherwise
+   */
+  public boolean isResponsibleNode() {
+    return taskController.isNodeResponsibleFromQueue(getName(), clusterController.getLocalNodeName());
+  }
+  
+  /**
    * Stops task queue
    */
   public void stop() {
