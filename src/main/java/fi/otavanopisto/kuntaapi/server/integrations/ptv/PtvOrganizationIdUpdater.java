@@ -4,7 +4,9 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.annotation.Resource;
 import javax.ejb.Singleton;
+import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Event;
 import javax.inject.Inject;
@@ -40,7 +42,10 @@ public class PtvOrganizationIdUpdater extends IdUpdater {
 
   @Inject
   private Event<TaskRequest> taskRequest;
-  
+
+  @Resource
+  private TimerService timerService;
+
   private long offset;
   
   @Override
@@ -51,6 +56,11 @@ public class PtvOrganizationIdUpdater extends IdUpdater {
   @Override
   public void timeout() {
     discoverIds();
+  }
+  
+  @Override
+  public TimerService geTimerService() {
+    return timerService;
   }
 
   private void discoverIds() {

@@ -3,9 +3,11 @@ package fi.otavanopisto.kuntaapi.server.integrations.casem.model;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
+@JsonIgnoreProperties (ignoreUnknown = true)
 public class HistoryTopic {
 
   @JsonProperty("Description")
@@ -22,7 +24,7 @@ public class HistoryTopic {
 
   @JsonProperty("PartySv")
   private String partySv;
-
+  
   @JsonProperty("Article")
   private Integer article;
 
@@ -75,7 +77,7 @@ public class HistoryTopic {
   public void setPartySv(String partySv) {
     this.partySv = partySv;
   }
-
+ 
   public Integer getArticle() {
     return article;
   }

@@ -46,6 +46,7 @@ public abstract class IdUpdater {
   }
   
   public abstract void timeout();
+  public abstract TimerService geTimerService();
   
   /**
    * Stops id updater

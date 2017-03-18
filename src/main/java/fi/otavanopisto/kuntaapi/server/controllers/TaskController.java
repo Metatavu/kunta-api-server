@@ -106,6 +106,30 @@ public class TaskController {
     return taskQueueDAO.updateResponsibleNode(taskQueue, responsibleNode);
   }
 
+  /**
+   * Return whether node is responsible from queue
+   * 
+   * @param queueName queue name
+   * @param responsibleNode node name
+   * @return true if node is responsible from queue otherwise false
+   */
+  public boolean isNodeResponsibleFromQueue(String queueName, String responsibleNode) {
+    TaskQueue taskQueue = taskQueueDAO.findByNameAndResponsibleNode(queueName, responsibleNode);
+    return taskQueue != null;
+  }
+  
+  /**
+   * Return whether queue exists
+   * 
+   * @param queueName queue name
+   * @param responsibleNode node name
+   * @return true if queue exists otherwise false
+   */
+  public boolean isQueueExisting(String queueName) {
+    TaskQueue taskQueue = taskQueueDAO.findByName(queueName);
+    return taskQueue != null;
+  }
+  
   @SuppressWarnings ("squid:S1168")
   private <T extends AbstractTask> byte[] serialize(T task) {
     try (ByteArrayOutputStream resultStream = new ByteArrayOutputStream()) {

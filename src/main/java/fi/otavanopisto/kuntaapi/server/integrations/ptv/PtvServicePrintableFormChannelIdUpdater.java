@@ -4,7 +4,9 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.annotation.Resource;
 import javax.ejb.Singleton;
+import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
@@ -51,6 +53,9 @@ public class PtvServicePrintableFormChannelIdUpdater extends EntityUpdater {
   @Inject
   private ServicePrintableFormChannelsTaskQueue servicePrintableFormChannelsTaskQueue;
 
+  @Resource
+  private TimerService timerService;
+
   @Override
   public String getName() {
     return "service-printable-form-channels";
@@ -62,10 +67,15 @@ public class PtvServicePrintableFormChannelIdUpdater extends EntityUpdater {
       ServiceEntityUpdateTask task = servicePrintableFormChannelsTaskQueue.next();
       if (task != null) {
         updateChannelIds(task.getServiceId());
-      } else {
+      } else if (servicePrintableFormChannelsTaskQueue.isAllowedToEnqueTasks()) {
         servicePrintableFormChannelsTaskQueue.enqueueTasks(identifierController.listServiceIdsBySource(PtvConsts.IDENTIFIER_NAME));
       }
     }
+  }
+  
+  @Override
+  public TimerService geTimerService() {
+    return timerService;
   }
 
   private void updateChannelIds(ServiceId kuntaApiServiceId) {
