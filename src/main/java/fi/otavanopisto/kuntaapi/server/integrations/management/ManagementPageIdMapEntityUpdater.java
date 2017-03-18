@@ -82,7 +82,7 @@ public class ManagementPageIdMapEntityUpdater extends EntityUpdater {
   }
   
   @Override
-  public TimerService geTimerService() {
+  public TimerService getTimerService() {
     return timerService;
   }
   

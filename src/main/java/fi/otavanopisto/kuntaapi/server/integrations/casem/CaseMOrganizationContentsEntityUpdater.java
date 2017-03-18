@@ -59,7 +59,7 @@ public class CaseMOrganizationContentsEntityUpdater extends EntityUpdater {
   }
   
   @Override
-  public TimerService geTimerService() {
+  public TimerService getTimerService() {
     return timerService;
   }
 

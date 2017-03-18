@@ -76,7 +76,7 @@ public class ManagementFragmentIdUpdater extends IdUpdater {
   }
   
   @Override
-  public TimerService geTimerService() {
+  public TimerService getTimerService() {
     return timerService;
   }
   

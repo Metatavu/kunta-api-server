@@ -62,7 +62,7 @@ public class PtvOrganizationIdUpdater extends IdUpdater {
   }
   
   @Override
-  public TimerService geTimerService() {
+  public TimerService getTimerService() {
     return timerService;
   }
 

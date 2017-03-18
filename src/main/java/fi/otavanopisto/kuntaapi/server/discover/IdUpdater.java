@@ -39,7 +39,7 @@ public abstract class IdUpdater {
   }
   
   public abstract void timeout();
-  public abstract TimerService geTimerService();
+  public abstract TimerService getTimerService();
   
   /**
    * Stops id updater
@@ -50,7 +50,7 @@ public abstract class IdUpdater {
     stopped = true;
     if (cancelTimers) {
       try {
-        Collection<Timer> timers = geTimerService().getTimers();
+        Collection<Timer> timers = getTimerService().getTimers();
         for (Timer timer : timers) {
           timer.cancel();
         }
@@ -93,7 +93,7 @@ public abstract class IdUpdater {
   private void startTimer(int duration) {
     TimerConfig timerConfig = new TimerConfig();
     timerConfig.setPersistent(false);
-    geTimerService().createSingleActionTimer(duration, timerConfig);
+    getTimerService().createSingleActionTimer(duration, timerConfig);
   }
   
   @Timeout

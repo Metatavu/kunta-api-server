@@ -79,7 +79,7 @@ public class ManagementNewsArticleIdUpdater extends IdUpdater {
   }
   
   @Override
-  public TimerService geTimerService() {
+  public TimerService getTimerService() {
     return timerService;
   }
   

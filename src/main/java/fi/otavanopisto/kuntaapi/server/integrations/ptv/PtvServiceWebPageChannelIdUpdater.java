@@ -77,7 +77,7 @@ public class PtvServiceWebPageChannelIdUpdater extends EntityUpdater {
   }
   
   @Override
-  public TimerService geTimerService() {
+  public TimerService getTimerService() {
     return timerService;
   }
 
