@@ -64,15 +64,22 @@ public abstract class IdUpdater {
     if (systemSettingController.inTestMode()) {
       return 200;
     }
-    
-    String key = String.format("id-updater.%s.warmup", getName());
-    Integer warmup = NumberUtils.createInteger(systemSettingController.getSettingValue(key));
-    if (warmup == null) {
+
+    try {
+      String key = String.format("id-updater.%s.warmup", getName());
+      Integer warmup = NumberUtils.createInteger(systemSettingController.getSettingValue(key));
+      if (warmup != null) {
+        return warmup;
+      }
+      
       logger.log(Level.WARNING, () -> String.format("Warmup for id updater %s is undefied", key));
-      return 1000 * 60;
+    } catch (Exception e) {
+      if (logger.isLoggable(Level.SEVERE)) {
+        logger.log(Level.SEVERE, "Failed to retrieve warmup", e);
+      }
     }
-    
-    return warmup;
+
+    return 1000 * 60;
   }
   
   public int getTimerInterval() {
@@ -80,14 +87,21 @@ public abstract class IdUpdater {
       return 1000;
     }
     
-    String key = String.format("id-updater.%s.interval", getName());
-    Integer interval = NumberUtils.createInteger(systemSettingController.getSettingValue(key));
-    if (interval == null) {
+    try {
+      String key = String.format("id-updater.%s.interval", getName());
+      Integer interval = NumberUtils.createInteger(systemSettingController.getSettingValue(key));
+      if (interval != null) {
+        return interval;
+      }
+      
       logger.log(Level.WARNING, () -> String.format("Interval for id updater %s is undefied", key));
-      return 1000 * 60;
+    } catch (Exception e) {
+      if (logger.isLoggable(Level.SEVERE)) {
+        logger.log(Level.SEVERE, "Failed to retrieve timer interval", e);
+      }
     }
     
-    return interval;
+    return 1000 * 60;
   }
 
   private void startTimer(int duration) {
