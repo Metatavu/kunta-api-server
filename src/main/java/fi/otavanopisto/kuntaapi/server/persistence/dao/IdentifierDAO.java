@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
@@ -131,7 +132,7 @@ public class IdentifierDAO extends AbstractDAO<Identifier> {
     return getSingleResult(entityManager.createQuery(criteria));
   }
 
-  public List<Identifier> listBySourceAndType(String source, String type) {
+  public List<Identifier> listBySourceAndType(String source, String type, Integer firstResult, Integer maxResults) {
     EntityManager entityManager = getEntityManager();
 
     CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
@@ -145,7 +146,16 @@ public class IdentifierDAO extends AbstractDAO<Identifier> {
       )
     );
     
-    return entityManager.createQuery(criteria).getResultList();
+    TypedQuery<Identifier> query = entityManager.createQuery(criteria);
+    if (firstResult != null) {
+      query.setFirstResult(firstResult);
+    }
+    
+    if (maxResults != null) {
+      query.setMaxResults(maxResults);
+    }
+    
+    return query.getResultList();
   }
 
   public List<Identifier> listByOrganizationIdAndSourceAndType(String organizationKuntaApiId, String source, String type) {

@@ -155,7 +155,19 @@ public class IdentifierController {
    * @return Lists of organization ids
    */
   public List<OrganizationId> listOrganizationsBySource(String source) {
-    List<String> organizationIds = listSourceIdsBySource(source, IdType.ORGANIZATION.toString());
+    return listOrganizationsBySource(source, null, null);
+  }
+  
+  /**
+   * Lists organization ids by source. Returned ids are not coverted into KuntaAPI ids
+   * 
+   * @param source source
+   * @param firstResult first result
+   * @param maxResults max results
+   * @return Lists of organization ids
+   */
+  public List<OrganizationId> listOrganizationsBySource(String source, Integer firstResult, Integer maxResults) {
+    List<String> organizationIds = listSourceIdsBySource(source, IdType.ORGANIZATION.toString(), firstResult, maxResults);
     List<OrganizationId> result = new ArrayList<>(organizationIds.size());
     
     for (String organizationId : organizationIds) {
@@ -275,8 +287,8 @@ public class IdentifierController {
     return result;
   }
   
-  private List<String> listSourceIdsBySource(String source, String type) {
-    List<Identifier> identifiers = identifierDAO.listBySourceAndType(source, type);
+  private List<String> listSourceIdsBySource(String source, String type, Integer firstResult, Integer maxResults) {
+    List<Identifier> identifiers = identifierDAO.listBySourceAndType(source, type, firstResult, maxResults);
     List<String> result = new ArrayList<>(identifiers.size());
     
     for (Identifier identifier : identifiers) {
@@ -304,7 +316,15 @@ public class IdentifierController {
   }
   
   public List<ServiceId> listServiceIdsBySource(String source) {
-    List<Identifier> identifiers = identifierDAO.listBySourceAndType(source, IdType.SERVICE.name());
+    return listServiceIdsBySource(source, (Integer) null, (Integer) null);
+  }
+  
+  public List<ServiceId> listServiceIdsBySource(String source, Long firstResult, Long maxResults) {
+    return listServiceIdsBySource(source, firstResult != null ? firstResult.intValue() : null, maxResults != null ? maxResults.intValue() : null);
+  }
+  
+  public List<ServiceId> listServiceIdsBySource(String source, Integer firstResult, Integer maxResults) {
+    List<Identifier> identifiers = identifierDAO.listBySourceAndType(source, IdType.SERVICE.name(), firstResult, maxResults);
     List<ServiceId> result = new ArrayList<>(identifiers.size());
 
     for (Identifier identifier : identifiers) {

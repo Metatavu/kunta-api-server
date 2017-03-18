@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.ejb.Singleton;
 import javax.ejb.TimerService;
@@ -47,6 +48,11 @@ public class PtvOrganizationIdUpdater extends IdUpdater {
   private TimerService timerService;
 
   private long offset;
+  
+  @PostConstruct
+  public void init() {
+    offset = 0;
+  }
   
   @Override
   public String getName() {
