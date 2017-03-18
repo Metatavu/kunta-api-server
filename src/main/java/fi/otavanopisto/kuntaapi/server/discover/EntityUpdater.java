@@ -1,13 +1,11 @@
 package fi.otavanopisto.kuntaapi.server.discover;
 
 import java.util.Collection;
-import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-import javax.ejb.AccessTimeout;
 import javax.ejb.Timeout;
 import javax.ejb.Timer;
 import javax.ejb.TimerConfig;
@@ -22,7 +20,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 
-@AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 public abstract class EntityUpdater {
   
   @Inject
@@ -98,7 +95,7 @@ public abstract class EntityUpdater {
 
   private void startTimer(int duration) {
     TimerConfig timerConfig = new TimerConfig();
-    timerConfig.setPersistent(true);
+    timerConfig.setPersistent(false);
     geTimerService().createSingleActionTimer(duration, timerConfig);
   }
   
