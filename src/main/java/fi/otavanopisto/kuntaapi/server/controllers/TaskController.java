@@ -118,6 +118,18 @@ public class TaskController {
     return taskQueue != null;
   }
   
+  /**
+   * Return whether queue exists
+   * 
+   * @param queueName queue name
+   * @param responsibleNode node name
+   * @return true if queue exists otherwise false
+   */
+  public boolean isQueueExisting(String queueName) {
+    TaskQueue taskQueue = taskQueueDAO.findByName(queueName);
+    return taskQueue != null;
+  }
+  
   @SuppressWarnings ("squid:S1168")
   private <T extends AbstractTask> byte[] serialize(T task) {
     try (ByteArrayOutputStream resultStream = new ByteArrayOutputStream()) {
