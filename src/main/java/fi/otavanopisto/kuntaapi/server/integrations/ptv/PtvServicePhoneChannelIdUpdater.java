@@ -4,7 +4,9 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.annotation.Resource;
 import javax.ejb.Singleton;
+import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
@@ -51,6 +53,9 @@ public class PtvServicePhoneChannelIdUpdater extends EntityUpdater {
   @Inject
   private ServicePhoneChannelsTaskQueue servicePhoneChannelsTaskQueue;
 
+  @Resource
+  private TimerService timerService;
+
   @Override
   public String getName() {
     return "service-phone-channels";
@@ -66,6 +71,11 @@ public class PtvServicePhoneChannelIdUpdater extends EntityUpdater {
         servicePhoneChannelsTaskQueue.enqueueTasks(identifierController.listServiceIdsBySource(PtvConsts.IDENTIFIER_NAME));
       }
     }
+  }
+  
+  @Override
+  public TimerService geTimerService() {
+    return timerService;
   }
 
   private void updateChannelIds(ServiceId kuntaApiServiceId) {

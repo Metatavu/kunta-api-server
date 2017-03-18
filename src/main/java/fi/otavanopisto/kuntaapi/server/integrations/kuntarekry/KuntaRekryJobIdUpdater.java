@@ -6,7 +6,9 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.annotation.Resource;
 import javax.ejb.Singleton;
+import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
@@ -41,7 +43,10 @@ public class KuntaRekryJobIdUpdater extends IdUpdater {
   
   @Inject
   private KuntaRekryJobTaskQueue kuntaRekryJobTaskQueue;
-  
+
+  @Resource
+  private TimerService timerService;
+
   @Override
   public String getName() {
     return "organization-jobs";
@@ -55,6 +60,11 @@ public class KuntaRekryJobIdUpdater extends IdUpdater {
     } else {
       organizationJobsTaskQueue.enqueueTasks(organizationSettingController.listOrganizationIdsWithSetting(KuntaRekryConsts.ORGANIZATION_SETTING_APIURI));
     }
+  }
+  
+  @Override
+  public TimerService geTimerService() {
+    return timerService;
   }
 
   private void updateOrganizationJobs(OrganizationId organizationId) {

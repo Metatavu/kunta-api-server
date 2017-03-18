@@ -3,7 +3,9 @@ package fi.otavanopisto.kuntaapi.server.integrations.gtfs;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.annotation.Resource;
 import javax.ejb.Singleton;
+import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
@@ -60,6 +62,9 @@ public class GtfsTripEntityUpdater extends EntityUpdater {
   @Inject
   private GtfsTripTaskQueue gtfsTripTaskQueue;
 
+  @Resource
+  private TimerService timerService;
+
   @Override
   public String getName() {
     return "gtfs-public-transport-trips";
@@ -71,6 +76,11 @@ public class GtfsTripEntityUpdater extends EntityUpdater {
     if (task != null) {
       updateGtfsTrip(task);
     }
+  }
+  
+  @Override
+  public TimerService geTimerService() {
+    return timerService;
   }
   
   private void updateGtfsTrip(GtfsTripEntityTask task) {

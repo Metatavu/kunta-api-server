@@ -1,7 +1,10 @@
 package fi.otavanopisto.kuntaapi.server.integrations.casem;
 
 import java.util.List;
+
+import javax.annotation.Resource;
 import javax.ejb.Singleton;
+import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
@@ -36,7 +39,10 @@ public class CaseMOrganizationContentsEntityUpdater extends EntityUpdater {
   
   @Inject
   private OrganizationMeetingsTaskQueue organizationMeetingsTaskQueue;
-  
+
+  @Resource
+  private TimerService timerService;
+
   @Override
   public String getName() {
     return "organization-casem";
@@ -47,6 +53,11 @@ public class CaseMOrganizationContentsEntityUpdater extends EntityUpdater {
     if (systemSettingController.isNotTestingOrTestRunning()) {
       updateNext();
     }
+  }
+  
+  @Override
+  public TimerService geTimerService() {
+    return timerService;
   }
 
   private void updateNext() {

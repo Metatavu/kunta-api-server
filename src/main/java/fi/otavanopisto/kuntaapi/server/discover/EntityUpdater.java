@@ -7,7 +7,6 @@ import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-import javax.annotation.Resource;
 import javax.ejb.AccessTimeout;
 import javax.ejb.Timeout;
 import javax.ejb.Timer;
@@ -32,9 +31,6 @@ public abstract class EntityUpdater {
   @Inject
   private SystemSettingController systemSettingController;
 
-  @Resource
-  private TimerService timerService;
-
   private boolean stopped;
   
   @PostConstruct
@@ -49,6 +45,7 @@ public abstract class EntityUpdater {
   }
   
   public abstract void timeout();
+  public abstract TimerService geTimerService();
   
   /**
    * Stops entity updater
@@ -59,7 +56,7 @@ public abstract class EntityUpdater {
     stopped = true;
     if (cancelTimers) {
       try {
-        Collection<Timer> timers = timerService.getTimers();
+        Collection<Timer> timers = geTimerService().getTimers();
         for (Timer timer : timers) {
           timer.cancel();
         }
@@ -102,7 +99,7 @@ public abstract class EntityUpdater {
   private void startTimer(int duration) {
     TimerConfig timerConfig = new TimerConfig();
     timerConfig.setPersistent(false);
-    timerService.createSingleActionTimer(duration, timerConfig);
+    geTimerService().createSingleActionTimer(duration, timerConfig);
   }
   
   @Timeout
