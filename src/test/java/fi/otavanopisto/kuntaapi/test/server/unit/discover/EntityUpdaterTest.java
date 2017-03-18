@@ -25,7 +25,7 @@ public class EntityUpdaterTest {
   private Instance<EntityUpdater> entityUpdaters;
   
   @Test
-  @SuppressWarnings("unchecked")
+  @SuppressWarnings({"unchecked", "squid:S1160"})
   public void testBeanAnnotations() throws IOException, ClassNotFoundException {
     assertNotNull(entityUpdaters);
     

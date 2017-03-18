@@ -25,7 +25,7 @@ public class IdUpdaterTest {
   private Instance<IdUpdater> idUpdaters;
   
   @Test
-  @SuppressWarnings("unchecked")
+  @SuppressWarnings({"unchecked", "squid:S1160"})
   public void testBeanAnnotations() throws IOException, ClassNotFoundException {
     assertNotNull(idUpdaters);
     
