@@ -6,8 +6,8 @@ import static org.junit.Assert.assertTrue;
 import java.io.IOException;
 import java.util.Iterator;
 
+import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
-import javax.ejb.Timeout;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
@@ -42,7 +42,7 @@ public class EntityUpdaterTest {
       
       assertTrue(String.format("Singleton not present in %s", entityUpdaterClass.getName()), entityUpdaterClass.isAnnotationPresent(Singleton.class));
       assertTrue(String.format("ApplicationScoped not present in %s", entityUpdaterClass.getName()), entityUpdaterClass.isAnnotationPresent(ApplicationScoped.class));
-      assertTrue(String.format("Timeout not present in %s", entityUpdaterClass.getName()), entityUpdaterClass.isAnnotationPresent(Timeout.class));
+      assertTrue(String.format("AccessTimeout not present in %s", entityUpdaterClass.getName()), entityUpdaterClass.isAnnotationPresent(AccessTimeout.class));
     }
   }
 
