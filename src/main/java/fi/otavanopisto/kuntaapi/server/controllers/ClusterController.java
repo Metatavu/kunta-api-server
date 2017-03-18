@@ -5,6 +5,8 @@ import java.util.Collections;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.ejb.Lock;
+import javax.ejb.LockType;
 import javax.ejb.Singleton;
 import javax.enterprise.context.ApplicationScoped;
 
@@ -18,6 +20,7 @@ public class ClusterController {
   @Resource(lookup = "java:jboss/clustering/group/web")  
   private Group channelGroup;  
 
+  @Lock(LockType.READ)
   public String getLocalNodeName() {
     Node localNode = channelGroup.getLocalNode();
     if (localNode != null) {
@@ -27,6 +30,7 @@ public class ClusterController {
     return "UNKNOWN";
   }
   
+  @Lock(LockType.READ)
   public List<String> getNodeNames() {
     List<Node> nodes = channelGroup.getNodes();
     

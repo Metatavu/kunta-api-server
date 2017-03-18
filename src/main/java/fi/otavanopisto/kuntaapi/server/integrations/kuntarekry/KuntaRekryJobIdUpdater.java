@@ -3,10 +3,12 @@ package fi.otavanopisto.kuntaapi.server.integrations.kuntarekry;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.annotation.Resource;
+import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
 import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
@@ -26,6 +28,7 @@ import fi.otavanopisto.kuntaapi.server.tasks.OrganizationEntityUpdateTask;
 
 @ApplicationScoped
 @Singleton
+@AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
 public class KuntaRekryJobIdUpdater extends IdUpdater {
   
@@ -63,7 +66,7 @@ public class KuntaRekryJobIdUpdater extends IdUpdater {
   }
   
   @Override
-  public TimerService geTimerService() {
+  public TimerService getTimerService() {
     return timerService;
   }
 
