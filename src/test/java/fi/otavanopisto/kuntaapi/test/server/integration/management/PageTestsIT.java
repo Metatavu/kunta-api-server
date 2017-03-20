@@ -335,12 +335,12 @@ public class PageTestsIT extends AbstractIntegrationTest {
     String pageId = getPageId(organizationId, 2);
     assertNotNull(pageId);
     
-    getManagementPageMocker().unmockPages(678);
+    getManagementPageMocker().unmockPages(456);
     waitApiListCount(String.format("/organizations/%s/pages", organizationId), 2);
     
     assertNull(getPageId(organizationId, 2));
     
-    getManagementPageMocker().mockPages(678);
+    getManagementPageMocker().mockPages(456);
     waitApiListCount(String.format("/organizations/%s/pages", organizationId), 3);
 
     assertEquals(pageId, getPageId(organizationId, 2));
