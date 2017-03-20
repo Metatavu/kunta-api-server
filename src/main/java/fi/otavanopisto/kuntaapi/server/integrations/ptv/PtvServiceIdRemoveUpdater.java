@@ -16,6 +16,7 @@ import javax.inject.Inject;
 
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.IdUpdater;
+import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.ServiceId;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask;
@@ -28,7 +29,7 @@ import fi.otavanopisto.restfulptv.client.model.Service;
 @Singleton
 @AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
-public class PtvServiceIdUpdater extends IdUpdater {
+public class PtvServiceIdRemoveUpdater extends IdUpdater {
 
   private static final long BATCH_SIZE = 50;
   
@@ -37,6 +38,9 @@ public class PtvServiceIdUpdater extends IdUpdater {
 
   @Inject  
   private SystemSettingController systemSettingController;
+
+  @Inject
+  private IdController idController;
 
   @Inject
   private PtvApi ptvApi;
@@ -59,46 +63,44 @@ public class PtvServiceIdUpdater extends IdUpdater {
   
   @Override
   public String getName() {
-    return "ptv-service-ids";
+    return "ptv-service-removed-ids";
   }
   
   @Override
   public void timeout() {
-    discoverIds();
+    checkRemovedIds();
   }
-  
+
   @Override
   public TimerService getTimerService() {
     return timerService;
   }
 
-  private void discoverIds() {
+  private void checkRemovedIds() {
     if (!systemSettingController.hasSettingValue(PtvConsts.SYSTEM_SETTING_BASEURL)) {
       logger.log(Level.INFO, "Organization management baseUrl not set, skipping update"); 
       return;
     }
 
-    ApiResponse<List<Service>> servicesResponse = ptvApi.getServicesApi().listServices(null, offset, BATCH_SIZE);
-    if (!servicesResponse.isOk()) {
-      logger.severe(String.format("Service list reported [%d] %s", servicesResponse.getStatus(), servicesResponse.getMessage()));
-    } else {
-      List<Service> services = servicesResponse.getResponse();
-      for (int i = 0; i < services.size(); i++) {
-        Service service = services.get(i);
-        Long orderIndex = (long) i + offset;
-        ServiceId serviceId = new ServiceId(PtvConsts.IDENTIFIER_NAME, service.getId());
-        
-        boolean priority = identifierController.findIdentifierById(serviceId) == null;
-        taskRequest.fire(new TaskRequest(priority, new IdTask<ServiceId>(Operation.UPDATE, serviceId, orderIndex)));
+    List<ServiceId> existingServiceIds = idController.translateIds(identifierController.listServiceIdsBySource(PtvConsts.IDENTIFIER_NAME, offset, BATCH_SIZE), PtvConsts.IDENTIFIER_NAME);
+    for (ServiceId existingServiceId : existingServiceIds) {
+      ServiceId ptvServiceId = idController.translateServiceId(existingServiceId, PtvConsts.IDENTIFIER_NAME);
+      if (ptvServiceId == null) {
+        logger.log(Level.INFO, () -> String.format("Failed to translate service %s into PTV service", existingServiceId)); 
+        continue;
       }
-
-      if (services.size() == BATCH_SIZE) {
-        offset += BATCH_SIZE;
-      } else {
-        offset = 0;
+      
+      ApiResponse<Service> serviceResponse = ptvApi.getServicesApi().findService(ptvServiceId.getId());
+      if (serviceResponse.getStatus() == 404) {
+        taskRequest.fire(new TaskRequest(false, new IdTask<ServiceId>(Operation.REMOVE, ptvServiceId))); 
       }
     }
     
+    if (existingServiceIds.size() == BATCH_SIZE) {
+      offset += BATCH_SIZE;
+    } else {
+      offset = 0;
+    }
   }
 
 }
