@@ -67,9 +67,9 @@ public class PtvServiceIdRemoveUpdater extends IdUpdater {
   public void timeout() {
     checkRemovedIds();
   }
-  
+
   @Override
-  public TimerService geTimerService() {
+  public TimerService getTimerService() {
     return timerService;
   }
 
