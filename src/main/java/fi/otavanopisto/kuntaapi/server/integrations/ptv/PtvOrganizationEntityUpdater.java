@@ -23,8 +23,8 @@ import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask.Operation;
-import fi.otavanopisto.restfulptv.client.ApiResponse;
-import fi.otavanopisto.restfulptv.client.model.Organization;
+import fi.metatavu.restfulptv.client.ApiResponse;
+import fi.metatavu.restfulptv.client.model.Organization;
 
 @ApplicationScoped
 @Singleton

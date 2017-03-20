@@ -5,12 +5,12 @@ import static org.junit.Assert.fail;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
-import fi.otavanopisto.restfulptv.client.model.ElectronicChannel;
-import fi.otavanopisto.restfulptv.client.model.PhoneChannel;
-import fi.otavanopisto.restfulptv.client.model.PrintableFormChannel;
-import fi.otavanopisto.restfulptv.client.model.Service;
-import fi.otavanopisto.restfulptv.client.model.ServiceLocationChannel;
-import fi.otavanopisto.restfulptv.client.model.WebPageChannel;
+import fi.metatavu.restfulptv.client.model.ElectronicChannel;
+import fi.metatavu.restfulptv.client.model.PhoneChannel;
+import fi.metatavu.restfulptv.client.model.PrintableFormChannel;
+import fi.metatavu.restfulptv.client.model.Service;
+import fi.metatavu.restfulptv.client.model.ServiceLocationChannel;
+import fi.metatavu.restfulptv.client.model.WebPageChannel;
 
 @SuppressWarnings ("squid:S1166")
 public class RestfulPtvServiceMocker extends AbstractBaseMocker {

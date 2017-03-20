@@ -7,7 +7,7 @@ import java.util.Map;
 
 import org.apache.commons.codec.binary.StringUtils;
 
-import fi.otavanopisto.restfulptv.client.model.LocalizedListItem;
+import fi.metatavu.restfulptv.client.model.LocalizedListItem;
 
 public class LocalizationUtils {
   

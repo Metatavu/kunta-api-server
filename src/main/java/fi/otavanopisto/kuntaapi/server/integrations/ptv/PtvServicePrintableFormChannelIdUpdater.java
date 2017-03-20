@@ -23,8 +23,8 @@ import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.ServicePrintableFo
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 import fi.otavanopisto.kuntaapi.server.tasks.ServiceEntityUpdateTask;
-import fi.otavanopisto.restfulptv.client.ApiResponse;
-import fi.otavanopisto.restfulptv.client.model.PrintableFormChannel ;
+import fi.metatavu.restfulptv.client.ApiResponse;
+import fi.metatavu.restfulptv.client.model.PrintableFormChannel ;
 
 @ApplicationScoped
 @Singleton

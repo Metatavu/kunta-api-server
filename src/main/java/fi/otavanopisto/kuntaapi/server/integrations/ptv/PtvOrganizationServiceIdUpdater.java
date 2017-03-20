@@ -24,8 +24,8 @@ import fi.otavanopisto.kuntaapi.server.tasks.IdTask;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask.Operation;
 import fi.otavanopisto.kuntaapi.server.tasks.OrganizationEntityUpdateTask;
 import fi.otavanopisto.kuntaapi.server.tasks.TaskRequest;
-import fi.otavanopisto.restfulptv.client.ApiResponse;
-import fi.otavanopisto.restfulptv.client.model.OrganizationService;
+import fi.metatavu.restfulptv.client.ApiResponse;
+import fi.metatavu.restfulptv.client.model.OrganizationService;
 
 @ApplicationScoped
 @Singleton
