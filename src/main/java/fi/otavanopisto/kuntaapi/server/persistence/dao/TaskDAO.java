@@ -61,4 +61,16 @@ public class TaskDAO extends AbstractDAO<Task> {
     return getSingleResult(query);
   }
   
+  public Long countByQueue(TaskQueue queue) {
+    EntityManager entityManager = getEntityManager();
+
+    CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+    CriteriaQuery<Long> criteria = criteriaBuilder.createQuery(Long.class);
+    Root<Task> root = criteria.from(Task.class);
+    criteria.select(criteriaBuilder.count(root));
+    criteria.where(criteriaBuilder.equal(root.get(Task_.queue), queue));
+    
+    return getSingleResult(entityManager.createQuery(criteria));
+  }
+  
 }

@@ -69,7 +69,7 @@ public class ManagementMenuIdUpdater extends IdUpdater {
     OrganizationEntityUpdateTask task = organizationMenusTaskQueue.next();
     if (task != null) {
       updateManagementMenus(task.getOrganizationId());
-    } else {
+    } else if (organizationMenusTaskQueue.isEmpty()) {
       organizationMenusTaskQueue.enqueueTasks(organizationSettingController.listOrganizationIdsWithSetting(ManagementConsts.ORGANIZATION_SETTING_BASEURL));
     }
   }
