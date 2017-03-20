@@ -1,13 +1,11 @@
 package fi.otavanopisto.kuntaapi.server.discover;
 
 import java.util.Collection;
-import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-import javax.ejb.AccessTimeout;
 import javax.ejb.Timeout;
 import javax.ejb.Timer;
 import javax.ejb.TimerConfig;
@@ -22,7 +20,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 
-@AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 public abstract class EntityUpdater {
   
   @Inject
@@ -45,7 +42,7 @@ public abstract class EntityUpdater {
   }
   
   public abstract void timeout();
-  public abstract TimerService geTimerService();
+  public abstract TimerService getTimerService();
   
   /**
    * Stops entity updater
@@ -56,7 +53,7 @@ public abstract class EntityUpdater {
     stopped = true;
     if (cancelTimers) {
       try {
-        Collection<Timer> timers = geTimerService().getTimers();
+        Collection<Timer> timers = getTimerService().getTimers();
         for (Timer timer : timers) {
           timer.cancel();
         }
@@ -67,39 +64,53 @@ public abstract class EntityUpdater {
   }
   
   public int getTimerWarmup() {
-    if (systemSettingController.inTestMode()) {
-      return 200;
-    }
-    
-    String key = String.format("entity-updater.%s.warmup", getName());
-    Integer warmup = NumberUtils.createInteger(systemSettingController.getSettingValue(key));
-    if (warmup == null) {
+    try {
+      if (systemSettingController.inTestMode()) {
+        return 200;
+      }
+      
+      String key = String.format("entity-updater.%s.warmup", getName());
+      Integer warmup = NumberUtils.createInteger(systemSettingController.getSettingValue(key));
+      if (warmup != null) {
+        return warmup;
+      }
+      
       logger.log(Level.WARNING, () -> String.format("Warmup for entity updater %s is undefied", key));
-      return 1000 * 60;
+    } catch (Exception e) {
+      if (logger.isLoggable(Level.SEVERE)) {
+        logger.log(Level.SEVERE, "Failed to retrieve warmup", e);
+      }
     }
     
-    return warmup;
+    return 1000 * 60;
   }
   
   public int getTimerInterval() {
-    if (systemSettingController.inTestMode()) {
-      return 100;
-    }
-    
-    String key = String.format("entity-updater.%s.interval", getName());
-    Integer interval = NumberUtils.createInteger(systemSettingController.getSettingValue(key));
-    if (interval == null) {
+    try {
+      if (systemSettingController.inTestMode()) {
+        return 100;
+      }
+      
+      String key = String.format("entity-updater.%s.interval", getName());
+      Integer interval = NumberUtils.createInteger(systemSettingController.getSettingValue(key));
+      if (interval != null) {
+        return interval;
+      }
+
       logger.log(Level.WARNING, () -> String.format("Interval for entity updater %s is undefied", key));
-      return 1000 * 60;
+    } catch (Exception e) {
+      if (logger.isLoggable(Level.SEVERE)) {
+        logger.log(Level.SEVERE, "Failed to retrieve timer interval", e);
+      }
     }
     
-    return interval;
+    return 1000 * 60;
   }
 
   private void startTimer(int duration) {
     TimerConfig timerConfig = new TimerConfig();
     timerConfig.setPersistent(false);
-    geTimerService().createSingleActionTimer(duration, timerConfig);
+    getTimerService().createSingleActionTimer(duration, timerConfig);
   }
   
   @Timeout
