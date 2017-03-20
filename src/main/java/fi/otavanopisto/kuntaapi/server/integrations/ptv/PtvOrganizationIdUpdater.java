@@ -5,6 +5,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
@@ -50,6 +51,11 @@ public class PtvOrganizationIdUpdater extends IdUpdater {
   private TimerService timerService;
 
   private long offset;
+  
+  @PostConstruct
+  public void init() {
+    offset = 0;
+  }
   
   @Override
   public String getName() {
