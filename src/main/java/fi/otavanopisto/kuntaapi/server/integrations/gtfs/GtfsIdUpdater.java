@@ -91,7 +91,7 @@ public class GtfsIdUpdater extends IdUpdater {
     OrganizationEntityUpdateTask task = organizationGtfsTaskQueue.next();
     if (task != null) {
       updateGtfsEntities(task.getOrganizationId());
-    } else {
+    } else if (organizationGtfsTaskQueue.isEmpty()) {
       organizationGtfsTaskQueue.enqueueTasks(organizationSettingController.listOrganizationIdsWithSetting(GtfsConsts.ORGANIZATION_SETTING_GTFS_PATH));
     }
   }

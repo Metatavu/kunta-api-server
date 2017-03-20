@@ -60,7 +60,7 @@ public class KuntaRekryJobIdUpdater extends IdUpdater {
     OrganizationEntityUpdateTask task = organizationJobsTaskQueue.next();
     if (task != null) {
       updateOrganizationJobs(task.getOrganizationId());
-    } else {
+    } else if (organizationJobsTaskQueue.isEmpty()) {
       organizationJobsTaskQueue.enqueueTasks(organizationSettingController.listOrganizationIdsWithSetting(KuntaRekryConsts.ORGANIZATION_SETTING_APIURI));
     }
   }

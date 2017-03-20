@@ -78,16 +78,12 @@ public abstract class AbstractTaskQueue <T extends AbstractTask> {
   }
 
   /**
-   * Returns whether current node is allowed to add tasks to this queue
+   * Returns whether current queue is empty
    * 
-   * @return true if node is allowed to add tasks, false otherwise
+   * @return true if current queue is empty, false otherwise
    */
-  public boolean isAllowedToEnqueTasks() {
-    if (!taskController.isQueueExisting(getName())) {
-      return true;
-    }
-    
-    return taskController.isNodeResponsibleFromQueue(getName(), clusterController.getLocalNodeName());
+  public boolean isEmpty() {
+    return taskController.isQueueEmpty(getName());
   }
   
   /**
