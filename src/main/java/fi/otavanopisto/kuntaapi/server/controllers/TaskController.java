@@ -34,7 +34,8 @@ public class TaskController {
   /**
    * Creates new task
    * 
-   * @param queue queue the task belongs to
+   * @param <T> task type
+   * @param queueName queue the task belongs to
    * @param priority whether the task is a priority task or not
    * @param task task data
    * @return created task entity
@@ -56,6 +57,7 @@ public class TaskController {
   /**
    * Returns next tasks in queue
    * 
+   * @param <T> Task type
    * @param queueName queue name
    * @param responsibleNode node that is requesting the task
    * @return next tasks in queue
@@ -110,10 +112,25 @@ public class TaskController {
   }
   
   /**
+   * Return whether queue is empty
+   * 
+   * @param queueName queue name
+   * @return true if queue is empty otherwise false
+   */
+  public boolean isQueueEmpty(String queueName) {
+    TaskQueue taskQueue = taskQueueDAO.findByName(queueName);
+    
+    if (taskQueue == null) {
+      return true;
+    }
+    
+    return taskDAO.countByQueue(taskQueue) == 0;
+  }
+  
+  /**
    * Return whether queue exists
    * 
    * @param queueName queue name
-   * @param responsibleNode node name
    * @return true if queue exists otherwise false
    */
   public boolean isQueueExisting(String queueName) {

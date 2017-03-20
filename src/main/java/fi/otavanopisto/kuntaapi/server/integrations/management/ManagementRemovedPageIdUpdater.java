@@ -63,7 +63,7 @@ public class ManagementRemovedPageIdUpdater extends IdUpdater {
     OrganizationEntityUpdateTask task = organizationPageRemovesTaskQueue.next();
     if (task != null) {
       checkRemovedManagementPages(task.getOrganizationId());
-    } else {
+    } else if (organizationPageRemovesTaskQueue.isEmpty()) {
       organizationPageRemovesTaskQueue.enqueueTasks(organizationSettingController.listOrganizationIdsWithSetting(ManagementConsts.ORGANIZATION_SETTING_BASEURL));
     }
   }

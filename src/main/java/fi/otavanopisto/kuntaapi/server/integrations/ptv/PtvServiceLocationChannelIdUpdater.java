@@ -70,7 +70,7 @@ public class PtvServiceLocationChannelIdUpdater extends EntityUpdater {
       ServiceEntityUpdateTask task = serviceLocarionChannelsTaskQueue.next();
       if (task != null) {
         updateChannelIds(task.getServiceId());
-      } else if (serviceLocarionChannelsTaskQueue.isAllowedToEnqueTasks()) {
+      } else if (serviceLocarionChannelsTaskQueue.isEmpty()) {
         serviceLocarionChannelsTaskQueue.enqueueTasks(identifierController.listServiceIdsBySource(PtvConsts.IDENTIFIER_NAME));
       }
     }

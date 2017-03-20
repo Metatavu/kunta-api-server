@@ -98,7 +98,7 @@ public class MikkeliNytEntityUpdater extends EntityUpdater {
       OrganizationEntityUpdateTask task = organizationEventsTaskQueue.next();
       if (task != null) {
         updateEvents(task.getOrganizationId());
-      } else if (organizationEventsTaskQueue.isAllowedToEnqueTasks()) {
+      } else if (organizationEventsTaskQueue.isEmpty()) {
         organizationEventsTaskQueue.enqueueTasks(organizationSettingController.listOrganizationIdsWithSetting(MikkeliNytConsts.ORGANIZATION_SETTING_BASEURL));
       }
     }
