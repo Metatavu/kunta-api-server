@@ -19,6 +19,7 @@ import fi.otavanopisto.kuntaapi.server.id.AnnouncementId;
 import fi.otavanopisto.kuntaapi.server.id.BannerId;
 import fi.otavanopisto.kuntaapi.server.id.BaseId;
 import fi.otavanopisto.kuntaapi.server.id.ContactId;
+import fi.otavanopisto.kuntaapi.server.id.ElectronicServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.FragmentId;
 import fi.otavanopisto.kuntaapi.server.id.IdType;
 import fi.otavanopisto.kuntaapi.server.id.MenuId;
@@ -32,6 +33,7 @@ import fi.otavanopisto.kuntaapi.server.id.ServiceId;
 import fi.otavanopisto.kuntaapi.server.id.ShortlinkId;
 import fi.otavanopisto.kuntaapi.server.id.TileId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
+import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
 import fi.otavanopisto.kuntaapi.server.persistence.dao.ArchivedIdentifierDAO;
 import fi.otavanopisto.kuntaapi.server.persistence.dao.IdentifierDAO;
 import fi.otavanopisto.kuntaapi.server.persistence.dao.IdentifierRelationDAO;
@@ -60,6 +62,9 @@ public class IdentifierController {
   
   @Inject
   private IdentifierRelationDAO identifierRelationDAO;
+  
+  @Inject
+  private KuntaApiIdFactory kuntaApiIdFactory;
   
   public Identifier findIdentifierById(BaseId id) {
     if (id == null) {
@@ -329,6 +334,17 @@ public class IdentifierController {
 
     for (Identifier identifier : identifiers) {
       result.add(new ServiceId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId()));
+    }
+ 
+    return result;
+  }
+  
+  public List<ElectronicServiceChannelId> listElectronicServiceChannelIdsBySource(String source, Integer firstResult, Integer maxResults) {
+    List<Identifier> identifiers = identifierDAO.listBySourceAndType(source, IdType.ELECTRONIC_SERVICE_CHANNEL.name(), firstResult, maxResults);
+    List<ElectronicServiceChannelId> result = new ArrayList<>(identifiers.size());
+
+    for (Identifier identifier : identifiers) {
+      result.add(kuntaApiIdFactory.createFromIdentifier(ElectronicServiceChannelId.class, identifier));
     }
  
     return result;
