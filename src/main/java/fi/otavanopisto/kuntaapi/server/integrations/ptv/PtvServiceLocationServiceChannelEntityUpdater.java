@@ -105,7 +105,7 @@ public class PtvServiceLocationServiceChannelEntityUpdater extends EntityUpdater
         modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(kuntaApiServiceLocationServiceChannelId));
       }
     } else {
-      logger.warning(String.format("ServiceLocation service channel %s processing failed on [%d] %s", ptvServiceLocationServiceChannelId, response.getStatus(), response.getMessage()));
+      logger.warning(String.format("Service location service channel %s processing failed on [%d] %s", ptvServiceLocationServiceChannelId, response.getStatus(), response.getMessage()));
     }
   }
   
