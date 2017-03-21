@@ -48,7 +48,7 @@ public class IdController {
       case PRINTABLE_FORM_SERVICE_CHANNEL:
         return translatePrintableFormServiceChannelId((PrintableFormServiceChannelId) id, target);
       case SERVICE_LOCATION_SERVICE_CHANNEL:
-        return translateServiceLocationChannelId((ServiceLocationServiceChannelId) id, target);
+        return translateServiceLocationServiceChannelId((ServiceLocationServiceChannelId) id, target);
       case WEBPAGE_SERVICE_CHANNEL:
         return translateWebPageServiceChannelId((WebPageServiceChannelId) id, target);
       case EVENT:
@@ -258,7 +258,7 @@ public class IdController {
    * @param target target
    * @return translated id or null if translation has failed
    */
-  public ServiceLocationServiceChannelId translateServiceLocationChannelId(ServiceLocationServiceChannelId serviceChannelId, String target) {
+  public ServiceLocationServiceChannelId translateServiceLocationServiceChannelId(ServiceLocationServiceChannelId serviceChannelId, String target) {
     if (serviceChannelId == null) {
       return null;
     }

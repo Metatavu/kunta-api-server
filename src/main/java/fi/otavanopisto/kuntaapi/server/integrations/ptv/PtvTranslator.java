@@ -550,12 +550,13 @@ public class PtvTranslator {
     ServiceHour result = new ServiceHour();
     result.setAdditionalInformation(translateLanguageItems(ptvServiceHour.getAdditionalInformation()));
     result.setCloses(ptvServiceHour.getCloses());
-    result.setDays(ptvServiceHour.getDays());
+    result.setDays(parseServiceHourDays(ptvServiceHour));
     result.setOpens(ptvServiceHour.getOpens());
-    result.setStatus(ptvServiceHour.getStatus());
     result.setType(ptvServiceHour.getType());
     result.setValidFrom(ptvServiceHour.getValidFrom());
     result.setValidTo(ptvServiceHour.getValidTo());
+    result.setExceptionHourType(ptvServiceHour.getExceptionHourType());
+    result.setTimezone(PtvConsts.TIMEZONE);
 
     return result;
   }
@@ -682,6 +683,44 @@ public class PtvTranslator {
     }
     
     return -1;
+  }
+  
+  private List<Integer> parseServiceHourDays(fi.metatavu.restfulptv.client.model.ServiceHour serviceHour) {
+    if (serviceHour == null) {
+      return Collections.emptyList();
+    }
+    
+    List<Integer> days = new ArrayList<>(7);
+    
+    if (Boolean.TRUE.equals(serviceHour.getMonday())) {
+      days.add(1);
+    }
+    
+    if (Boolean.TRUE.equals(serviceHour.getTuesday())) {
+      days.add(2);
+    }
+    
+    if (Boolean.TRUE.equals(serviceHour.getWednesday())) {
+      days.add(3);
+    }
+    
+    if (Boolean.TRUE.equals(serviceHour.getThursday())) {
+      days.add(4);
+    }
+    
+    if (Boolean.TRUE.equals(serviceHour.getFriday())) {
+      days.add(5);
+    }
+    
+    if (Boolean.TRUE.equals(serviceHour.getSaturday())) {
+      days.add(6);
+    }
+    
+    if (Boolean.TRUE.equals(serviceHour.getSunday())) {
+      days.add(0);
+    }
+    
+    return days;
   }
   
 }
