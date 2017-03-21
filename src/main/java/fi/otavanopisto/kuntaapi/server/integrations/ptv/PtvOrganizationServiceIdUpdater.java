@@ -79,7 +79,7 @@ public class PtvOrganizationServiceIdUpdater extends IdUpdater {
 
   private void updateOrganizationServiceIds(OrganizationId kuntaApiOrganizationId)  {
     if (!systemSettingController.hasSettingValue(PtvConsts.SYSTEM_SETTING_BASEURL)) {
-      logger.log(Level.INFO, "Organization management baseUrl not set, skipping update"); 
+      logger.log(Level.INFO, "Ptv system setting not defined, skipping update."); 
       return;
     }
     
