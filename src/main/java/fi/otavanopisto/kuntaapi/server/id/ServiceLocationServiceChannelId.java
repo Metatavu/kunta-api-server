@@ -5,14 +5,14 @@ package fi.otavanopisto.kuntaapi.server.id;
  * 
  * @author Antti Leppä
  */
-public class ServiceLocationChannelId extends BaseId {
+public class ServiceLocationServiceChannelId extends BaseId {
 
   private static final long serialVersionUID = 3064775100960250396L;
 
   /**
    * Zero-argument constructor for service location channel id
    */
-  public ServiceLocationChannelId() {
+  public ServiceLocationServiceChannelId() {
     super();
   }
   
@@ -22,13 +22,13 @@ public class ServiceLocationChannelId extends BaseId {
    * @param source source
    * @param id id
    */
-  public ServiceLocationChannelId(String source, String id) {
+  public ServiceLocationServiceChannelId(String source, String id) {
     super(source, id);
   }
   
   @Override
   public IdType getType() {
-    return IdType.SERVICE_LOCATION_CHANNEL;
+    return IdType.SERVICE_LOCATION_SERVICE_CHANNEL;
   }
   
   @Override

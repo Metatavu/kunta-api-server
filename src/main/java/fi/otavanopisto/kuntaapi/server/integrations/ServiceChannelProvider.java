@@ -3,16 +3,16 @@ package fi.otavanopisto.kuntaapi.server.integrations;
 import java.util.List;
 
 import fi.otavanopisto.kuntaapi.server.id.ElectronicServiceChannelId;
-import fi.otavanopisto.kuntaapi.server.id.PhoneChannelId;
-import fi.otavanopisto.kuntaapi.server.id.PrintableFormChannelId;
+import fi.otavanopisto.kuntaapi.server.id.PhoneServiceChannelId;
+import fi.otavanopisto.kuntaapi.server.id.PrintableFormServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceId;
-import fi.otavanopisto.kuntaapi.server.id.ServiceLocationChannelId;
-import fi.otavanopisto.kuntaapi.server.id.WebPageChannelId;
-import fi.metatavu.kuntaapi.server.rest.model.ElectronicChannel;
-import fi.metatavu.kuntaapi.server.rest.model.PhoneChannel;
-import fi.metatavu.kuntaapi.server.rest.model.PrintableFormChannel;
-import fi.metatavu.kuntaapi.server.rest.model.ServiceLocationChannel;
-import fi.metatavu.kuntaapi.server.rest.model.WebPageChannel;
+import fi.otavanopisto.kuntaapi.server.id.ServiceLocationServiceChannelId;
+import fi.otavanopisto.kuntaapi.server.id.WebPageServiceChannelId;
+import fi.metatavu.kuntaapi.server.rest.model.ElectronicServiceChannel;
+import fi.metatavu.kuntaapi.server.rest.model.PhoneServiceChannel;
+import fi.metatavu.kuntaapi.server.rest.model.PrintableFormServiceChannel;
+import fi.metatavu.kuntaapi.server.rest.model.ServiceLocationServiceChannel;
+import fi.metatavu.kuntaapi.server.rest.model.WebPageServiceChannel;
 
 /**
  * Provider for service channels
@@ -22,57 +22,51 @@ import fi.metatavu.kuntaapi.server.rest.model.WebPageChannel;
 public interface ServiceChannelProvider {
 
   /**
-   * Finds service electronic channel
+   * Finds electronic service channel
    * 
-   * @param serviceId serviceId
    * @param electronicServiceChannelId electronic service channel id
-   * @return Returns a service electronic channel
+   * @return Returns a electronic service channel
    */
-  public ElectronicChannel findElectronicChannel(ServiceId serviceId, ElectronicServiceChannelId electronicServiceChannelId);
+  public ElectronicServiceChannel findElectronicServiceChannel(ElectronicServiceChannelId electronicServiceChannelId);
   
   /**
-   * Finds service phone channel
+   * Finds phone service channel
    * 
-   * @param serviceId serviceId
-   * @param phoneChannelId phone service channel id
-   * @return Returns a service phone channel
+   * @param phoneChannelserviceId phone service channel id
+   * @return Returns a phone service channel
    */
-  public PhoneChannel findPhoneChannel(ServiceId serviceId, PhoneChannelId phoneChannelId);
+  public PhoneServiceChannel findPhoneServiceChannel(PhoneServiceChannelId phoneChannelserviceId);
   
   /**
-   * Finds service printable form channel
+   * Finds a printable form service channel
    * 
-   * @param serviceId serviceId
-   * @param printableFormChannelId printable form channel id
-   * @return Returns a service printable form channel
+   * @param printableFormServiceChannelId printable form service channel id
+   * @return Returns a printable form service channel
    */
-  public PrintableFormChannel findPrintableFormChannel(ServiceId serviceId, PrintableFormChannelId printableFormChannelId);
+  public PrintableFormServiceChannel findPrintableFormServiceChannel(PrintableFormServiceChannelId printableFormServiceChannelId);
   
   /**
-   * Finds service location channel
+   * Finds service location service channel
    * 
-   * @param serviceId serviceId
-   * @param serviceLocationChannelId service location channel id
-   * @return Returns a service location channel
+   * @param serviceLocationServiceChannelId service location service channel id
+   * @return Returns a location service channel
    */
-  public ServiceLocationChannel findServiceLocationChannel(ServiceId serviceId, ServiceLocationChannelId serviceLocationChannelId);
+  public ServiceLocationServiceChannel findServiceLocationServiceChannel(ServiceLocationServiceChannelId serviceLocationServiceChannelId);
   
   /**
    * Finds service webpage channel
    * 
-   * @param serviceId serviceId
-   * @param webPageChannelId web page channel id
-   * @return Returns a service webpage channel
+   * @param webPageServiceChannelId web page service channel id
+   * @return Returns a webpage service channel
    */
-  public WebPageChannel findWebPageChannelChannel(ServiceId serviceId, WebPageChannelId webPageChannelId);
+  public WebPageServiceChannel findWebPageServiceChannelChannel(WebPageServiceChannelId webPageServiceChannelId);
 
   /**
-   * Lists service electronic channels  
+   * Lists electronic service channels  
    * 
-   * @param serviceId serviceId
-   * @return List of service electronic channels
+   * @return List of electronic service channels
    */
-  public List<ElectronicChannel> listElectronicChannels(ServiceId serviceId);
+  public List<ElectronicServiceChannel> listElectronicServiceChannels();
   
   /**
    * Lists service phone channels
@@ -80,30 +74,27 @@ public interface ServiceChannelProvider {
    * @param serviceId serviceId
    * @return List of service phone channels
    */
-  public List<PhoneChannel> listPhoneChannels(ServiceId serviceId);
+  public List<PhoneServiceChannel> listPhoneServiceChannels();
   
   /**
-   * Lists service printable form channels
+   * Lists printable form service channels
    * 
-   * @param serviceId serviceId
-   * @return List of service printable form channels
+   * @return List of printable form service channels
    */
-  public List<PrintableFormChannel> listPrintableFormChannels(ServiceId serviceId);
+  public List<PrintableFormServiceChannel> listPrintableFormServiceChannels();
   
   /**
-   * Lists service location channels
+   * Lists location service channels
    * 
-   * @param serviceId serviceId
-   * @return List of service location channels
+   * @return List of location service channels
    */
-  public List<ServiceLocationChannel> listServiceLocationChannels(ServiceId serviceId);
+  public List<ServiceLocationServiceChannel> listServiceLocationServiceChannels();
   
   /**
-   * Lists service webpage channels
+   * Lists webpage service channels
    * 
-   * @param serviceId serviceId
-   * @return List of service webpage channels
+   * @return List of webpage service channels
    */
-  public List<WebPageChannel> listWebPageChannelsChannels(ServiceId serviceId);
+  public List<WebPageServiceChannel> listWebPageServiceChannelsChannels();
   
 }

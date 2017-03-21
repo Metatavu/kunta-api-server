@@ -43,14 +43,14 @@ public class IdController {
         return translateOrganizationServiceId((OrganizationServiceId) id, target);
       case ELECTRONIC_SERVICE_CHANNEL:
         return translateElectronicServiceChannelId((ElectronicServiceChannelId) id, target);
-      case PHONE_CHANNEL:
-        return translatePhoneServiceChannelId((PhoneChannelId) id, target);
-      case PRINTABLE_FORM_CHANNEL:
-        return translatePrintableFormServiceChannelId((PrintableFormChannelId) id, target);
-      case SERVICE_LOCATION_CHANNEL:
-        return translateServiceLocationChannelId((ServiceLocationChannelId) id, target);
-      case WEBPAGE_CHANNEL:
-        return translateWebPageServiceChannelId((WebPageChannelId) id, target);
+      case PHONE_SERVICE_CHANNEL:
+        return translatePhoneServiceChannelId((PhoneServiceChannelId) id, target);
+      case PRINTABLE_FORM_SERVICE_CHANNEL:
+        return translatePrintableFormServiceChannelId((PrintableFormServiceChannelId) id, target);
+      case SERVICE_LOCATION_SERVICE_CHANNEL:
+        return translateServiceLocationChannelId((ServiceLocationServiceChannelId) id, target);
+      case WEBPAGE_SERVICE_CHANNEL:
+        return translateWebPageServiceChannelId((WebPageServiceChannelId) id, target);
       case EVENT:
         return translateEventId((EventId) id, target);
       case ATTACHMENT:
@@ -210,7 +210,7 @@ public class IdController {
    * @param target target
    * @return translated id or null if translation has failed
    */
-  public PhoneChannelId translatePhoneServiceChannelId(PhoneChannelId serviceChannelId, String target) {
+  public PhoneServiceChannelId translatePhoneServiceChannelId(PhoneServiceChannelId serviceChannelId, String target) {
     if (serviceChannelId == null) {
       return null;
     }
@@ -234,7 +234,7 @@ public class IdController {
    * @param target target
    * @return translated id or null if translation has failed
    */
-  public PrintableFormChannelId translatePrintableFormServiceChannelId(PrintableFormChannelId serviceChannelId, String target) {
+  public PrintableFormServiceChannelId translatePrintableFormServiceChannelId(PrintableFormServiceChannelId serviceChannelId, String target) {
     if (serviceChannelId == null) {
       return null;
     }
@@ -258,7 +258,7 @@ public class IdController {
    * @param target target
    * @return translated id or null if translation has failed
    */
-  public ServiceLocationChannelId translateServiceLocationChannelId(ServiceLocationChannelId serviceChannelId, String target) {
+  public ServiceLocationServiceChannelId translateServiceLocationChannelId(ServiceLocationServiceChannelId serviceChannelId, String target) {
     if (serviceChannelId == null) {
       return null;
     }
@@ -282,7 +282,7 @@ public class IdController {
    * @param target target
    * @return translated id or null if translation has failed
    */
-  public WebPageChannelId translateWebPageServiceChannelId(WebPageChannelId serviceChannelId, String target) {
+  public WebPageServiceChannelId translateWebPageServiceChannelId(WebPageServiceChannelId serviceChannelId, String target) {
     if (serviceChannelId == null) {
       return null;
     }

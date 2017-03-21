@@ -1,6 +1,6 @@
 package fi.otavanopisto.kuntaapi.server.integrations.ptv;
 
-import javax.enterprise.context.Dependent;
+import javax.enterprise.context.ApplicationScoped;
 
 import org.apache.commons.lang3.ArrayUtils;
 
@@ -10,19 +10,19 @@ import fi.otavanopisto.kuntaapi.server.integrations.AbstractIdProvider;
 /**
  * Id provider for palvelu tieto varanto
  * 
- * @author Otavan Opisto
+ * @author Antti Leppä
  */
-@Dependent
+@ApplicationScoped
 public class PtvIdProvider extends AbstractIdProvider {
 
   private static final IdType[] SUPPORTED_TYPES = new IdType[] {
     IdType.ORGANIZATION, 
     IdType.SERVICE,
     IdType.ELECTRONIC_SERVICE_CHANNEL,
-    IdType.PHONE_CHANNEL, 
-    IdType.PRINTABLE_FORM_CHANNEL, 
-    IdType.SERVICE_LOCATION_CHANNEL, 
-    IdType.WEBPAGE_CHANNEL, 
+    IdType.PHONE_SERVICE_CHANNEL, 
+    IdType.PRINTABLE_FORM_SERVICE_CHANNEL, 
+    IdType.SERVICE_LOCATION_SERVICE_CHANNEL, 
+    IdType.WEBPAGE_SERVICE_CHANNEL, 
     IdType.ORGANIZATION_SERVICE
   };
   

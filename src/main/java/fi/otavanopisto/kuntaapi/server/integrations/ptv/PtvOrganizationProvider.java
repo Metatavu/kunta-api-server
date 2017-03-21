@@ -14,7 +14,7 @@ import fi.metatavu.kuntaapi.server.rest.model.Organization;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.OrganizationProvider;
-import fi.otavanopisto.restfulptv.client.ApiResponse;
+import fi.metatavu.restfulptv.client.ApiResponse;
 
 /**
  * Organization provider for PTV
@@ -44,7 +44,7 @@ public class PtvOrganizationProvider implements OrganizationProvider {
       return null;
     }
     
-    ApiResponse<fi.otavanopisto.restfulptv.client.model.Organization> ptvOrganizationResponse = ptvApi.getOrganizationApi()
+    ApiResponse<fi.metatavu.restfulptv.client.model.Organization> ptvOrganizationResponse = ptvApi.getOrganizationApi()
         .findOrganization(ptvOrganization.getId());
     if (!ptvOrganizationResponse.isOk()) {
       logger.severe(String.format("Organization %s reported [%d] %s", ptvOrganization.getId(), ptvOrganizationResponse.getStatus(), ptvOrganizationResponse.getMessage()));
@@ -60,13 +60,13 @@ public class PtvOrganizationProvider implements OrganizationProvider {
   public List<Organization> listOrganizations(String businessName, String businessCode) {
     List<Organization> result = new ArrayList<>();
     
-    ApiResponse<List<fi.otavanopisto.restfulptv.client.model.Organization>> listResponse = ptvApi.getOrganizationApi().listOrganizations(null, null);
+    ApiResponse<List<fi.metatavu.restfulptv.client.model.Organization>> listResponse = ptvApi.getOrganizationApi().listOrganizations(null, null);
     if (!listResponse.isOk()) {
       logger.severe(String.format("Organizations listing reported [%d] %s", listResponse.getStatus(), listResponse.getMessage()));
       return Collections.emptyList();
     }
     
-    for (fi.otavanopisto.restfulptv.client.model.Organization ptvOrganization : listResponse.getResponse()) {
+    for (fi.metatavu.restfulptv.client.model.Organization ptvOrganization : listResponse.getResponse()) {
       if (StringUtils.isNotBlank(businessCode) && !StringUtils.equals(businessCode, ptvOrganization.getBusinessCode())) {
         continue;
       }
