@@ -1,6 +1,7 @@
 package fi.otavanopisto.kuntaapi.server.rest;
 
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateful;
@@ -121,28 +122,49 @@ public class ServicesApiImpl extends ServicesApi {
 
   @Override
   public Response listServiceElectronicChannels(String serviceIdParam, Long firstResult, Long maxResults, @Context Request request) {
-    return redirect(String.format("/electronicServiceChannels?firstResult=%d&maxResults=%d", firstResult, maxResults));
+    return redirectServiceChannelList("/electronicServiceChannels", firstResult, maxResults);
   }
 
   @Override
   public Response listServicePhoneChannels(String serviceIdParam, Long firstResult, Long maxResults, @Context Request request) {
-    return redirect(String.format("/phoneServiceChannels?firstResult=%d&maxResults=%d", firstResult, maxResults));
+    return redirectServiceChannelList("/phoneServiceChannels", firstResult, maxResults);
   }
   
   @Override
   public Response listServicePrintableFormChannels(String serviceIdParam, Long firstResult, Long maxResults, @Context Request request) {
-    return redirect(String.format("/printableFormServiceChannels?firstResult=%d&maxResults=%d", firstResult, maxResults));
+    return redirectServiceChannelList("/printableFormServiceChannels", firstResult, maxResults);
   }
 
   @Override
   public Response listServiceServiceLocationChannels(String serviceIdParam, Long firstResult, Long maxResults, @Context Request request) {
-    return redirect(String.format("/serviceLocationServiceChannels?firstResult=%d&maxResults=%d", firstResult, maxResults));
+    return redirectServiceChannelList("/serviceLocationServiceChannels", firstResult, maxResults);
   }
 
   @Override
   public Response listServiceWebPageChannels(String serviceIdParam, Long firstResult, Long maxResults, @Context Request request) {
-    return redirect(String.format("/webPageServiceChannels?firstResult=%d&maxResults=%d", firstResult, maxResults));
+    return redirectServiceChannelList("/webPageServiceChannels", firstResult, maxResults);
   }
+  
+  private Response redirectServiceChannelList(String path, Long firstResult, Long maxResults) {
+    StringBuilder pathBuilder = new StringBuilder(path);
+    
+    List<String> query = new ArrayList<>(2);
+    
+    if (firstResult != null) {
+      query.add(String.format("firstResult=%d", firstResult));
+    }
+    
+    if (maxResults != null) {
+      query.add(String.format("maxResults=%d", maxResults));
+    }
+    
+    if (!query.isEmpty()) {
+      pathBuilder.append('?').append(StringUtils.join(query, '&'));
+    }
+    
+    return redirect(pathBuilder.toString());
+  }
+
 
   private Response redirect(String path) {
     return Response.temporaryRedirect(URI.create(path)).build();
