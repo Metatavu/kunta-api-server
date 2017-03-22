@@ -152,7 +152,7 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
     for (String ptvElectronicServiceChannelId : ptvService.getElectronicServiceChannelIds()) {
       ElectronicServiceChannelId kuntaApiElectronicServiceChannelId = idController.translateElectronicServiceChannelId(ptvIdFactory.createElectronicServiceChannelId(ptvElectronicServiceChannelId), KuntaApiConsts.IDENTIFIER_NAME);
       if (kuntaApiElectronicServiceChannelId == null) {
-        logger.log(Level.INFO, String.format("Could not translate electronic channel id %s into KuntaAPI id.", ptvElectronicServiceChannelId)); 
+        logger.log(Level.INFO, () -> String.format("Could not translate electronic channel id %s into KuntaAPI id.", ptvElectronicServiceChannelId)); 
         return null;
       } 
       
@@ -162,7 +162,7 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
     for (String ptvPhoneServiceChannelId : ptvService.getPhoneServiceChannelIds()) {
       PhoneServiceChannelId kuntaApiPhoneServiceChannelId = idController.translatePhoneServiceChannelId(ptvIdFactory.createPhoneServiceChannelId(ptvPhoneServiceChannelId), KuntaApiConsts.IDENTIFIER_NAME);
       if (kuntaApiPhoneServiceChannelId == null) {
-        logger.log(Level.INFO, String.format("Could not translate phone channel id %s into KuntaAPI id.", ptvPhoneServiceChannelId)); 
+        logger.log(Level.INFO, () -> String.format("Could not translate phone channel id %s into KuntaAPI id.", ptvPhoneServiceChannelId)); 
         return null;
       } 
       
@@ -172,7 +172,7 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
     for (String ptvServiceLocationServiceChannelId : ptvService.getServiceLocationServiceChannelIds()) {
       ServiceLocationServiceChannelId kuntaApiServiceLocationServiceChannelId = idController.translateServiceLocationServiceChannelId(ptvIdFactory.createServiceLocationServiceChannelId(ptvServiceLocationServiceChannelId), KuntaApiConsts.IDENTIFIER_NAME);
       if (kuntaApiServiceLocationServiceChannelId == null) {
-        logger.log(Level.INFO, String.format("Could not translate serviceLocation channel id %s into KuntaAPI id.", ptvServiceLocationServiceChannelId)); 
+        logger.log(Level.INFO, () -> String.format("Could not translate serviceLocation channel id %s into KuntaAPI id.", ptvServiceLocationServiceChannelId)); 
         return null;
       } 
       
@@ -182,7 +182,7 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
     for (String ptvPrintableFormServiceChannelId : ptvService.getPrintableFormServiceChannelIds()) {
       PrintableFormServiceChannelId kuntaApiPrintableFormServiceChannelId = idController.translatePrintableFormServiceChannelId(ptvIdFactory.createPrintableFormServiceChannelId(ptvPrintableFormServiceChannelId), KuntaApiConsts.IDENTIFIER_NAME);
       if (kuntaApiPrintableFormServiceChannelId == null) {
-        logger.log(Level.INFO, String.format("Could not translate printable form channel id %s into KuntaAPI id.", ptvPrintableFormServiceChannelId)); 
+        logger.log(Level.INFO, () -> String.format("Could not translate printable form channel id %s into KuntaAPI id.", ptvPrintableFormServiceChannelId)); 
         return null;
       } 
       
@@ -192,7 +192,7 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
     for (String ptvWebPageServiceChannelId : ptvService.getWebPageServiceChannelIds()) {
       WebPageServiceChannelId kuntaApiWebPageServiceChannelId = idController.translateWebPageServiceChannelId(ptvIdFactory.createWebPageServiceChannelId(ptvWebPageServiceChannelId), KuntaApiConsts.IDENTIFIER_NAME);
       if (kuntaApiWebPageServiceChannelId == null) {
-        logger.log(Level.INFO, String.format("Could not translate web page channel id %s into KuntaAPI id.", ptvWebPageServiceChannelId)); 
+        logger.log(Level.INFO, () -> String.format("Could not translate web page channel id %s into KuntaAPI id.", ptvWebPageServiceChannelId)); 
         return null;
       } 
       

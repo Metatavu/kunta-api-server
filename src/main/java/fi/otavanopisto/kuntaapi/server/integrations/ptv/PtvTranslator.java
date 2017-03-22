@@ -110,6 +110,7 @@ public class PtvTranslator {
     return result;
   }
 
+  @SuppressWarnings ("squid:S00107")
   public Service translateService(ServiceId serviceKuntaApiId, 
       List<ElectronicServiceChannelId> kuntaApiElectronicServiceChannelIds, 
       List<PhoneServiceChannelId> kuntaApiPhoneServiceChannelIds, 
