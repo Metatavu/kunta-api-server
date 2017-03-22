@@ -79,15 +79,15 @@ public class PtvTranslator {
     return Collections.emptyList();
   }
     
-  public Organization translateOrganization(OrganizationId kuntaApiOrganizationId, fi.metatavu.restfulptv.client.model.Organization ptvOrganiztion) {
-    if (ptvOrganiztion == null) {
+  public Organization translateOrganization(OrganizationId kuntaApiOrganizationId, fi.metatavu.restfulptv.client.model.Organization ptvOrganization) {
+    if (ptvOrganization == null) {
       return null;
     }
 
     Organization organization = new Organization();
     organization.setId(kuntaApiOrganizationId.getId());
-    organization.setBusinessCode(ptvOrganiztion.getBusinessCode());
-    organization.setBusinessName(ptvOrganiztion.getBusinessName());
+    organization.setBusinessCode(ptvOrganization.getBusinessCode());
+    organization.setBusinessName(ptvOrganization.getBusinessName());
     
     return organization;
   }
