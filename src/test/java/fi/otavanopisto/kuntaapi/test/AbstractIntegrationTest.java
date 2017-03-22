@@ -36,6 +36,12 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   private ManagementShortlinkMocker managementShortlinkMocker = new ManagementShortlinkMocker();
   private RestfulPtvServiceMocker restfulPtvServiceMocker = new RestfulPtvServiceMocker();
   private RestfulPtvOrganizationMocker restfulPtvOrganizationMocker = new RestfulPtvOrganizationMocker();
+  private RestfulPtvElectronicServiceChannelMocker restfulPtvElectronicServiceChannelMocker = new RestfulPtvElectronicServiceChannelMocker();
+  private RestfulPtvPhoneServiceChannelMocker restfulPtvPhoneServiceChannelMocker = new RestfulPtvPhoneServiceChannelMocker();
+  private RestfulPtvPrintableFormServiceChannelMocker restfulPtvPrintableFormServiceChannelMocker = new RestfulPtvPrintableFormServiceChannelMocker();
+  private RestfulPtvServiceLocationServiceChannelMocker restfulPtvServiceLocationServiceChannelMocker = new RestfulPtvServiceLocationServiceChannelMocker();
+  private RestfulPtvWebPageServiceChannelMocker restfulPtvWebPageServiceChannelMocker = new RestfulPtvWebPageServiceChannelMocker();
+  
   
   @After
   public void afterEveryTest() {
@@ -51,11 +57,21 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     managementShortlinkMocker.endMock();
     restfulPtvServiceMocker.endMock();
     restfulPtvOrganizationMocker.endMock();
+    restfulPtvElectronicServiceChannelMocker.endMock();
+    restfulPtvPhoneServiceChannelMocker.endMock();
+    restfulPtvPrintableFormServiceChannelMocker.endMock();
+    restfulPtvServiceLocationServiceChannelMocker.endMock();
+    restfulPtvWebPageServiceChannelMocker.endMock();
     
     deleteIdentifiers();    
   }
   
   public void startMocks() {
+    restfulPtvElectronicServiceChannelMocker.startMock();
+    restfulPtvPhoneServiceChannelMocker.startMock();
+    restfulPtvPrintableFormServiceChannelMocker.startMock();
+    restfulPtvServiceLocationServiceChannelMocker.startMock();
+    restfulPtvWebPageServiceChannelMocker.startMock();
     restfulPtvOrganizationMocker.startMock();
     restfulPtvServiceMocker.startMock();
     kuntarekryMocker.startMock();
@@ -105,6 +121,26 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   
   public RestfulPtvServiceMocker getRestfulPtvServiceMocker() {
     return restfulPtvServiceMocker;
+  }
+  
+  public RestfulPtvElectronicServiceChannelMocker getRestfulPtvElectronicServiceChannelMocker() {
+    return restfulPtvElectronicServiceChannelMocker;
+  }
+  
+  public RestfulPtvPhoneServiceChannelMocker getRestfulPtvPhoneServiceChannelMocker() {
+    return restfulPtvPhoneServiceChannelMocker;
+  }
+  
+  public RestfulPtvPrintableFormServiceChannelMocker getRestfulPtvPrintableFormServiceChannelMocker() {
+    return restfulPtvPrintableFormServiceChannelMocker;
+  }
+  
+  public RestfulPtvServiceLocationServiceChannelMocker getRestfulPtvServiceLocationServiceChannelMocker() {
+    return restfulPtvServiceLocationServiceChannelMocker;
+  }
+  
+  public RestfulPtvWebPageServiceChannelMocker getRestfulPtvWebPageServiceChannelMocker() {
+    return restfulPtvWebPageServiceChannelMocker;
   }
 
   protected void addServerLogEntry(String text) {
