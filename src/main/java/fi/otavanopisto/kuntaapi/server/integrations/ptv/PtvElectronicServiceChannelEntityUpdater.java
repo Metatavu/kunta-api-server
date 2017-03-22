@@ -17,6 +17,9 @@ import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
 import fi.otavanopisto.kuntaapi.server.id.ElectronicServiceChannelId;
+import fi.otavanopisto.kuntaapi.server.id.IdController;
+import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.resources.PtvElectronicServiceChannelResourceContainer;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.ElectronicServiceChannelIdTaskQueue;
@@ -45,6 +48,12 @@ public class PtvElectronicServiceChannelEntityUpdater extends EntityUpdater {
   
   @Inject
   private PtvTranslator ptvTranslator;
+
+  @Inject
+  private PtvIdFactory ptvIdFactory;
+
+  @Inject
+  private IdController idController;
 
   @Inject
   private IdentifierController identifierController;
@@ -98,9 +107,18 @@ public class PtvElectronicServiceChannelEntityUpdater extends EntityUpdater {
     ApiResponse<ElectronicServiceChannel> response = ptvApi.getElectronicServiceChannelsApi().findElectronicServiceChannel(ptvElectronicServiceChannelId.getId());
     if (response.isOk()) {
       Identifier identifier = identifierController.acquireIdentifier(orderIndex, ptvElectronicServiceChannelId);
-      fi.metatavu.kuntaapi.server.rest.model.ElectronicServiceChannel electronicServiceChannel = ptvTranslator.translateElectronicServiceChannel(response.getResponse());
+      ElectronicServiceChannel ptvElectronicServiceChannel = response.getResponse();
+      
+      ElectronicServiceChannelId kuntaApiElectronicServiceChannelId = kuntaApiIdFactory.createFromIdentifier(ElectronicServiceChannelId.class, identifier);
+      OrganizationId ptvOrganizationId = ptvIdFactory.createOrganizationId(ptvElectronicServiceChannel.getOrganizationId());
+      OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(ptvOrganizationId, KuntaApiConsts.IDENTIFIER_NAME);
+      if (kuntaApiOrganizationId == null) {
+        logger.log(Level.WARNING, () -> String.format("Could not translate organization %s into kunta api id", ptvOrganizationId));
+        return;
+      }
+      
+      fi.metatavu.kuntaapi.server.rest.model.ElectronicServiceChannel electronicServiceChannel = ptvTranslator.translateElectronicServiceChannel(kuntaApiElectronicServiceChannelId, kuntaApiOrganizationId, ptvElectronicServiceChannel);
       if (electronicServiceChannel != null) {
-        ElectronicServiceChannelId kuntaApiElectronicServiceChannelId = kuntaApiIdFactory.createFromIdentifier(ElectronicServiceChannelId.class, identifier);
         ptvElectronicServiceChannelResourceContainer.put(kuntaApiElectronicServiceChannelId, electronicServiceChannel);
         modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(kuntaApiElectronicServiceChannelId));
       }

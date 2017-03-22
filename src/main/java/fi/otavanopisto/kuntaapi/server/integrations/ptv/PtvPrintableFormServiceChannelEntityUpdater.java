@@ -16,7 +16,10 @@ import fi.metatavu.restfulptv.client.model.PrintableFormServiceChannel;
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
+import fi.otavanopisto.kuntaapi.server.id.IdController;
+import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PrintableFormServiceChannelId;
+import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.resources.PtvPrintableFormServiceChannelResourceContainer;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.PrintableFormServiceChannelIdTaskQueue;
@@ -45,6 +48,12 @@ public class PtvPrintableFormServiceChannelEntityUpdater extends EntityUpdater {
   
   @Inject
   private PtvTranslator ptvTranslator;
+
+  @Inject
+  private PtvIdFactory ptvIdFactory;
+
+  @Inject
+  private IdController idController;
 
   @Inject
   private IdentifierController identifierController;
@@ -97,13 +106,25 @@ public class PtvPrintableFormServiceChannelEntityUpdater extends EntityUpdater {
     
     ApiResponse<PrintableFormServiceChannel> response = ptvApi.getPrintableFormServiceChannelsApi().findPrintableFormServiceChannel(ptvPrintableFormServiceChannelId.getId());
     if (response.isOk()) {
+      PrintableFormServiceChannel ptvPrintableFormServiceChannel = response.getResponse();
+      
       Identifier identifier = identifierController.acquireIdentifier(orderIndex, ptvPrintableFormServiceChannelId);
-      fi.metatavu.kuntaapi.server.rest.model.PrintableFormServiceChannel printableFormServiceChannel = ptvTranslator.translatePrintableFormServiceChannel(response.getResponse());
+      PrintableFormServiceChannelId kuntaApiPrintableFormServiceChannelId = kuntaApiIdFactory.createFromIdentifier(PrintableFormServiceChannelId.class, identifier);
+      OrganizationId ptvOrganizationId = ptvIdFactory.createOrganizationId(ptvPrintableFormServiceChannel.getOrganizationId());
+      OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(ptvOrganizationId, KuntaApiConsts.IDENTIFIER_NAME);
+      if (kuntaApiOrganizationId == null) {
+        logger.log(Level.WARNING, () -> String.format("Could not translate organization %s into kunta api id", ptvOrganizationId));
+        return;
+      }
+      
+      fi.metatavu.kuntaapi.server.rest.model.PrintableFormServiceChannel printableFormServiceChannel = ptvTranslator.translatePrintableFormServiceChannel(kuntaApiPrintableFormServiceChannelId, kuntaApiOrganizationId, ptvPrintableFormServiceChannel);
       if (printableFormServiceChannel != null) {
-        PrintableFormServiceChannelId kuntaApiPrintableFormServiceChannelId = kuntaApiIdFactory.createFromIdentifier(PrintableFormServiceChannelId.class, identifier);
         ptvPrintableFormServiceChannelResourceContainer.put(kuntaApiPrintableFormServiceChannelId, printableFormServiceChannel);
         modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(kuntaApiPrintableFormServiceChannelId));
+      } else {
+        logger.log(Level.SEVERE, () -> String.format("Failed to translate printable form service channel %s", ptvPrintableFormServiceChannelId));
       }
+      
     } else {
       logger.warning(String.format("Printable form service channel %s processing failed on [%d] %s", ptvPrintableFormServiceChannelId, response.getStatus(), response.getMessage()));
     }

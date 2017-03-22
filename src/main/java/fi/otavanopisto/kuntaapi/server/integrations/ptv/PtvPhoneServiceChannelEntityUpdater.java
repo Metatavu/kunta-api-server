@@ -16,7 +16,10 @@ import fi.metatavu.restfulptv.client.model.PhoneServiceChannel;
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
+import fi.otavanopisto.kuntaapi.server.id.IdController;
+import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PhoneServiceChannelId;
+import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.resources.PtvPhoneServiceChannelResourceContainer;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.PhoneServiceChannelIdTaskQueue;
@@ -45,6 +48,12 @@ public class PtvPhoneServiceChannelEntityUpdater extends EntityUpdater {
   
   @Inject
   private PtvTranslator ptvTranslator;
+
+  @Inject
+  private PtvIdFactory ptvIdFactory;
+
+  @Inject
+  private IdController idController;
 
   @Inject
   private IdentifierController identifierController;
@@ -97,12 +106,23 @@ public class PtvPhoneServiceChannelEntityUpdater extends EntityUpdater {
     
     ApiResponse<PhoneServiceChannel> response = ptvApi.getPhoneServiceChannelsApi().findPhoneServiceChannel(ptvPhoneServiceChannelId.getId());
     if (response.isOk()) {
+      PhoneServiceChannel ptvPhoneServiceChannel = response.getResponse();
       Identifier identifier = identifierController.acquireIdentifier(orderIndex, ptvPhoneServiceChannelId);
-      fi.metatavu.kuntaapi.server.rest.model.PhoneServiceChannel phoneServiceChannel = ptvTranslator.translatePhoneServiceChannel(response.getResponse());
+      
+      PhoneServiceChannelId kuntaApiPhoneServiceChannelId = kuntaApiIdFactory.createFromIdentifier(PhoneServiceChannelId.class, identifier);
+      OrganizationId ptvOrganizationId = ptvIdFactory.createOrganizationId(ptvPhoneServiceChannel.getOrganizationId());
+      OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(ptvOrganizationId, KuntaApiConsts.IDENTIFIER_NAME);
+      if (kuntaApiOrganizationId == null) {
+        logger.log(Level.WARNING, () -> String.format("Could not translate organization %s into kunta api id", ptvOrganizationId));
+        return;
+      }
+      
+      fi.metatavu.kuntaapi.server.rest.model.PhoneServiceChannel phoneServiceChannel = ptvTranslator.translatePhoneServiceChannel(kuntaApiPhoneServiceChannelId, kuntaApiOrganizationId, ptvPhoneServiceChannel);
       if (phoneServiceChannel != null) {
-        PhoneServiceChannelId kuntaApiPhoneServiceChannelId = kuntaApiIdFactory.createFromIdentifier(PhoneServiceChannelId.class, identifier);
         ptvPhoneServiceChannelResourceContainer.put(kuntaApiPhoneServiceChannelId, phoneServiceChannel);
         modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(kuntaApiPhoneServiceChannelId));
+      } else {
+        logger.log(Level.SEVERE, () -> String.format("Failed to translate phone service channel %s", ptvPhoneServiceChannelId));
       }
     } else {
       logger.warning(String.format("Phone service channel %s processing failed on [%d] %s", ptvPhoneServiceChannelId, response.getStatus(), response.getMessage()));

@@ -16,7 +16,10 @@ import fi.metatavu.restfulptv.client.model.ServiceLocationServiceChannel;
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
+import fi.otavanopisto.kuntaapi.server.id.IdController;
+import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceLocationServiceChannelId;
+import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.resources.PtvServiceLocationServiceChannelResourceContainer;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.ServiceLocationServiceChannelIdTaskQueue;
@@ -39,12 +42,18 @@ public class PtvServiceLocationServiceChannelEntityUpdater extends EntityUpdater
 
   @Inject
   private PtvApi ptvApi;
-
+  
   @Inject
   private KuntaApiIdFactory kuntaApiIdFactory;
+
+  @Inject
+  private PtvIdFactory ptvIdFactory;
   
   @Inject
   private PtvTranslator ptvTranslator;
+
+  @Inject
+  private IdController idController;
 
   @Inject
   private IdentifierController identifierController;
@@ -97,13 +106,25 @@ public class PtvServiceLocationServiceChannelEntityUpdater extends EntityUpdater
     
     ApiResponse<ServiceLocationServiceChannel> response = ptvApi.getServiceLocationServiceChannelsApi().findServiceLocationServiceChannel(ptvServiceLocationServiceChannelId.getId());
     if (response.isOk()) {
+      ServiceLocationServiceChannel ptvServiceLocationServiceChannel = response.getResponse();
+      
       Identifier identifier = identifierController.acquireIdentifier(orderIndex, ptvServiceLocationServiceChannelId);
-      fi.metatavu.kuntaapi.server.rest.model.ServiceLocationServiceChannel serviceLocationServiceChannel = ptvTranslator.translateServiceLocationServiceChannel(response.getResponse());
+      ServiceLocationServiceChannelId kuntaApiServiceLocationServiceChannelId = kuntaApiIdFactory.createFromIdentifier(ServiceLocationServiceChannelId.class, identifier);
+      OrganizationId ptvOrganizationId = ptvIdFactory.createOrganizationId(ptvServiceLocationServiceChannel.getOrganizationId());
+      OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(ptvOrganizationId, KuntaApiConsts.IDENTIFIER_NAME);
+      if (kuntaApiOrganizationId == null) {
+        logger.log(Level.WARNING, () -> String.format("Could not translate organization %s into kunta api id", ptvOrganizationId));
+        return;
+      }
+      
+      fi.metatavu.kuntaapi.server.rest.model.ServiceLocationServiceChannel serviceLocationServiceChannel = ptvTranslator.translateServiceLocationServiceChannel(kuntaApiServiceLocationServiceChannelId, kuntaApiOrganizationId, ptvServiceLocationServiceChannel);
       if (serviceLocationServiceChannel != null) {
-        ServiceLocationServiceChannelId kuntaApiServiceLocationServiceChannelId = kuntaApiIdFactory.createFromIdentifier(ServiceLocationServiceChannelId.class, identifier);
         ptvServiceLocationServiceChannelResourceContainer.put(kuntaApiServiceLocationServiceChannelId, serviceLocationServiceChannel);
         modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(kuntaApiServiceLocationServiceChannelId));
+      } else {
+        logger.log(Level.SEVERE, () -> String.format("Failed to translate service location service channel %s", ptvServiceLocationServiceChannelId));
       }
+      
     } else {
       logger.warning(String.format("Service location service channel %s processing failed on [%d] %s", ptvServiceLocationServiceChannelId, response.getStatus(), response.getMessage()));
     }

@@ -13,6 +13,7 @@ import org.apache.commons.lang3.StringUtils;
 import fi.metatavu.kuntaapi.server.rest.model.Organization;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.OrganizationProvider;
 import fi.metatavu.restfulptv.client.ApiResponse;
 
@@ -34,6 +35,9 @@ public class PtvOrganizationProvider implements OrganizationProvider {
   private PtvApi ptvApi;
   
   @Inject
+  private PtvIdFactory ptvIdFactory;
+  
+  @Inject
   private IdController idController;
 
   @Override
@@ -49,7 +53,7 @@ public class PtvOrganizationProvider implements OrganizationProvider {
     if (!ptvOrganizationResponse.isOk()) {
       logger.severe(String.format("Organization %s reported [%d] %s", ptvOrganization.getId(), ptvOrganizationResponse.getStatus(), ptvOrganizationResponse.getMessage()));
     } else {
-      return ptvTranslator.translateOrganization(ptvOrganizationResponse.getResponse());
+      return ptvTranslator.translateOrganization(organizationId, ptvOrganizationResponse.getResponse());
     }
     
     return null;
@@ -73,11 +77,15 @@ public class PtvOrganizationProvider implements OrganizationProvider {
     
       if (StringUtils.isNotBlank(businessName) && !StringUtils.equals(businessName, ptvOrganization.getBusinessName())) {
         continue;
-      } 
+      }
       
-      Organization organization = ptvTranslator.translateOrganization(ptvOrganization);
-      if (organization != null) {
-        result.add(organization);
+      OrganizationId organizationId = ptvIdFactory.createOrganizationId(ptvOrganization.getId());
+      OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(organizationId, KuntaApiConsts.IDENTIFIER_NAME);
+      if (kuntaApiOrganizationId != null) {
+        Organization organization = ptvTranslator.translateOrganization(kuntaApiOrganizationId, ptvOrganization);
+        if (organization != null) {
+          result.add(organization);
+        }
       }
     }
     

@@ -16,7 +16,10 @@ import fi.metatavu.restfulptv.client.model.WebPageServiceChannel;
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
+import fi.otavanopisto.kuntaapi.server.id.IdController;
+import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.WebPageServiceChannelId;
+import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.resources.PtvWebPageServiceChannelResourceContainer;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.WebPageServiceChannelIdTaskQueue;
@@ -42,9 +45,15 @@ public class PtvWebPageServiceChannelEntityUpdater extends EntityUpdater {
 
   @Inject
   private KuntaApiIdFactory kuntaApiIdFactory;
+
+  @Inject
+  private PtvIdFactory ptvIdFactory;
   
   @Inject
   private PtvTranslator ptvTranslator;
+
+  @Inject
+  private IdController idController;
 
   @Inject
   private IdentifierController identifierController;
@@ -98,11 +107,21 @@ public class PtvWebPageServiceChannelEntityUpdater extends EntityUpdater {
     ApiResponse<WebPageServiceChannel> response = ptvApi.getWebPageServiceChannelsApi().findWebPageServiceChannel(ptvWebPageServiceChannelId.getId());
     if (response.isOk()) {
       Identifier identifier = identifierController.acquireIdentifier(orderIndex, ptvWebPageServiceChannelId);
-      fi.metatavu.kuntaapi.server.rest.model.WebPageServiceChannel webPageServiceChannel = ptvTranslator.translateWebPageServiceChannel(response.getResponse());
+      WebPageServiceChannelId kuntaApiWebPageServiceChannelId = kuntaApiIdFactory.createFromIdentifier(WebPageServiceChannelId.class, identifier);
+      WebPageServiceChannel ptvWebPageServiceChannel = response.getResponse();
+      OrganizationId ptvOrganizationId = ptvIdFactory.createOrganizationId(ptvWebPageServiceChannel.getOrganizationId());
+      OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(ptvOrganizationId, KuntaApiConsts.IDENTIFIER_NAME);
+      if (kuntaApiOrganizationId == null) {
+        logger.log(Level.WARNING, () -> String.format("Could not translate organization %s into kunta api id", ptvOrganizationId));
+        return;
+      }
+        
+      fi.metatavu.kuntaapi.server.rest.model.WebPageServiceChannel webPageServiceChannel = ptvTranslator.translateWebPageServiceChannel(kuntaApiWebPageServiceChannelId, kuntaApiOrganizationId, ptvWebPageServiceChannel);
       if (webPageServiceChannel != null) {
-        WebPageServiceChannelId kuntaApiWebPageServiceChannelId = kuntaApiIdFactory.createFromIdentifier(WebPageServiceChannelId.class, identifier);
         ptvWebPageServiceChannelResourceContainer.put(kuntaApiWebPageServiceChannelId, webPageServiceChannel);
         modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(kuntaApiWebPageServiceChannelId));
+      } else {
+        logger.log(Level.SEVERE, () -> String.format("Failed to translate web page service channel %s", ptvWebPageServiceChannelId));
       }
     } else {
       logger.warning(String.format("WebPage service channel %s processing failed on [%d] %s", ptvWebPageServiceChannelId, response.getStatus(), response.getMessage()));
