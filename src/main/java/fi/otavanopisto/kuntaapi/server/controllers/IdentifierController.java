@@ -343,6 +343,17 @@ public class IdentifierController {
     return result;
   }
   
+  public List<OrganizationId> listOrganizationIdsBySource(String source, Integer firstResult, Integer maxResults) {
+    List<Identifier> identifiers = identifierDAO.listBySourceAndType(source, IdType.ORGANIZATION.name(), firstResult, maxResults);
+    List<OrganizationId> result = new ArrayList<>(identifiers.size());
+
+    for (Identifier identifier : identifiers) {
+      result.add(kuntaApiIdFactory.createFromIdentifier(OrganizationId.class, identifier));
+    }
+ 
+    return result;
+  }
+  
   public List<ElectronicServiceChannelId> listElectronicServiceChannelIdsBySource(String source, Integer firstResult, Integer maxResults) {
     List<Identifier> identifiers = identifierDAO.listBySourceAndType(source, IdType.ELECTRONIC_SERVICE_CHANNEL.name(), firstResult, maxResults);
     List<ElectronicServiceChannelId> result = new ArrayList<>(identifiers.size());
