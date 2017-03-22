@@ -121,6 +121,8 @@ public class PtvElectronicServiceChannelEntityUpdater extends EntityUpdater {
       if (electronicServiceChannel != null) {
         ptvElectronicServiceChannelResourceContainer.put(kuntaApiElectronicServiceChannelId, electronicServiceChannel);
         modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(kuntaApiElectronicServiceChannelId));
+      } else {
+        logger.log(Level.SEVERE, () -> String.format("Failed to translate electronic service channel %s", ptvElectronicServiceChannelId));
       }
     } else {
       logger.warning(String.format("Electronic service channel %s processing failed on [%d] %s", ptvElectronicServiceChannelId, response.getStatus(), response.getMessage()));
