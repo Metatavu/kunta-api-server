@@ -2,17 +2,16 @@ package fi.otavanopisto.kuntaapi.server.integrations;
 
 import java.util.List;
 
-import fi.otavanopisto.kuntaapi.server.id.ElectronicServiceChannelId;
-import fi.otavanopisto.kuntaapi.server.id.PhoneServiceChannelId;
-import fi.otavanopisto.kuntaapi.server.id.PrintableFormServiceChannelId;
-import fi.otavanopisto.kuntaapi.server.id.ServiceId;
-import fi.otavanopisto.kuntaapi.server.id.ServiceLocationServiceChannelId;
-import fi.otavanopisto.kuntaapi.server.id.WebPageServiceChannelId;
 import fi.metatavu.kuntaapi.server.rest.model.ElectronicServiceChannel;
 import fi.metatavu.kuntaapi.server.rest.model.PhoneServiceChannel;
 import fi.metatavu.kuntaapi.server.rest.model.PrintableFormServiceChannel;
 import fi.metatavu.kuntaapi.server.rest.model.ServiceLocationServiceChannel;
 import fi.metatavu.kuntaapi.server.rest.model.WebPageServiceChannel;
+import fi.otavanopisto.kuntaapi.server.id.ElectronicServiceChannelId;
+import fi.otavanopisto.kuntaapi.server.id.PhoneServiceChannelId;
+import fi.otavanopisto.kuntaapi.server.id.PrintableFormServiceChannelId;
+import fi.otavanopisto.kuntaapi.server.id.ServiceLocationServiceChannelId;
+import fi.otavanopisto.kuntaapi.server.id.WebPageServiceChannelId;
 
 /**
  * Provider for service channels
