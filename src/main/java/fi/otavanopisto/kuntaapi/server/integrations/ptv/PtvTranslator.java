@@ -28,6 +28,7 @@ import fi.metatavu.restfulptv.client.model.LanguageItem;
 import fi.metatavu.restfulptv.client.model.LocalizedListItem;
 import fi.metatavu.restfulptv.client.model.StatutoryDescription;
 import fi.metatavu.restfulptv.client.model.Support;
+import fi.otavanopisto.kuntaapi.server.id.BaseId;
 import fi.otavanopisto.kuntaapi.server.id.ElectronicServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationServiceId;
@@ -109,7 +110,15 @@ public class PtvTranslator {
     return result;
   }
 
-  public Service translateService(ServiceId serviceKuntaApiId, fi.metatavu.restfulptv.client.model.Service ptvService, StatutoryDescription ptvStatutoryDescription) {
+  public Service translateService(ServiceId serviceKuntaApiId, 
+      List<ElectronicServiceChannelId> kuntaApiElectronicServiceChannelIds, 
+      List<PhoneServiceChannelId> kuntaApiPhoneServiceChannelIds, 
+      List<PrintableFormServiceChannelId> kuntaApiPrintableFormServiceChannelIds, 
+      List<ServiceLocationServiceChannelId> kuntaApiServiceLocationServiceChannelIds, 
+      List<WebPageServiceChannelId> kuntaApiWebPageServiceChannelIds, 
+      fi.metatavu.restfulptv.client.model.Service ptvService, 
+      StatutoryDescription ptvStatutoryDescription) {
+    
     if (ptvService == null) {
       return null;
     }
@@ -137,6 +146,12 @@ public class PtvTranslator {
     result.setTargetGroups(translateFintoItems(ptvService.getTargetGroups()));
     result.setType(ptvService.getType());
     result.setWebPages(translateWebPages(ptvService.getWebPages()));
+    
+    result.setElectronicServiceChannelIds(extractIds(kuntaApiElectronicServiceChannelIds));
+    result.setPhoneServiceChannelIds(extractIds(kuntaApiPhoneServiceChannelIds));
+    result.setPrintableFormServiceChannelIds(extractIds(kuntaApiPrintableFormServiceChannelIds));
+    result.setServiceLocationServiceChannelIds(extractIds(kuntaApiServiceLocationServiceChannelIds));
+    result.setWebPageServiceChannelIds(extractIds(kuntaApiWebPageServiceChannelIds));
     
     return result;
   }
@@ -556,5 +571,14 @@ public class PtvTranslator {
     
     return days;
   }
-  
+
+  private List<String> extractIds(List<? extends BaseId> kuntaApiIds) {
+    List<String> result = new ArrayList<>(kuntaApiIds.size());
+    
+    for (BaseId kuntaApiId : kuntaApiIds) {
+      result.add(kuntaApiId.getId());
+    }
+    
+    return result;
+  }
 }

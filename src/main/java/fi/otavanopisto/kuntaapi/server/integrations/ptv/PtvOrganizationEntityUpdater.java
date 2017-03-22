@@ -83,8 +83,6 @@ public class PtvOrganizationEntityUpdater extends EntityUpdater {
   }
   
   private void executeNextTask() {
-    System.out.println("NEEEXT!");
-    
     IdTask<OrganizationId> task = organizationIdTaskQueue.next();
     if (task != null) {
       OrganizationId organizationId = task.getId();
@@ -99,7 +97,7 @@ public class PtvOrganizationEntityUpdater extends EntityUpdater {
   
   private void updateOrganization(OrganizationId organizationId, Long orderIndex) {
     if (!systemSettingController.hasSettingValue(PtvConsts.SYSTEM_SETTING_BASEURL)) {
-      logger.log(Level.INFO, "Organization management baseUrl not set, skipping update"); 
+      logger.log(Level.INFO, "Ptv system setting not defined, skipping update."); 
       return;
     }
     
@@ -116,7 +114,6 @@ public class PtvOrganizationEntityUpdater extends EntityUpdater {
       } else {
         logger.log(Level.SEVERE, () -> String.format("Failed to translate organization %s", kuntaApiOrganizationId));
       }
-      
     } else {
       logger.warning(String.format("Organization %s processing failed on [%d] %s", organizationId.getId(), response.getStatus(), response.getMessage()));
     }
