@@ -83,7 +83,7 @@ public class PtvServiceLocationServiceChannelIdUpdater extends IdUpdater {
     
     ApiResponse<List<ServiceLocationServiceChannel>> response = ptvApi.getServiceLocationServiceChannelsApi().listServiceLocationServiceChannels(offset, BATCH_SIZE);
     if (!response.isOk()) {
-      logger.severe(String.format("ServiceLocation service channel list reported [%d] %s", response.getStatus(), response.getMessage()));
+      logger.severe(String.format("Service location service channel list reported [%d] %s", response.getStatus(), response.getMessage()));
     } else {
       List<ServiceLocationServiceChannel> serviceLocationServiceChannels = response.getResponse();
       for (int i = 0; i < serviceLocationServiceChannels.size(); i++) {

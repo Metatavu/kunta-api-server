@@ -86,7 +86,7 @@ public class PtvServiceLocationServiceChannelIdRemoveUpdater extends IdUpdater {
     for (ServiceLocationServiceChannelId serviceLocationServiceChannelId : serviceLocationServiceChannelIds) {
       ServiceLocationServiceChannelId ptvServiceLocationServiceChannelId = idController.translateServiceLocationServiceChannelId(serviceLocationServiceChannelId, PtvConsts.IDENTIFIER_NAME);
       if (ptvServiceLocationServiceChannelId == null) {
-        logger.log(Level.INFO, () -> String.format("Failed to translate serviceLocation service channel id %s into PTV service", serviceLocationServiceChannelId)); 
+        logger.log(Level.INFO, () -> String.format("Failed to translate service location service channel id %s into PTV service", serviceLocationServiceChannelId)); 
         continue;
       }
       
