@@ -62,7 +62,7 @@ public class PtvPrintableFormServiceChannelIdUpdater extends IdUpdater {
   
   @Override
   public String getName() {
-    return "printableForm-service-channels";
+    return "printable-form-service-channels";
   }
   
   @Override
