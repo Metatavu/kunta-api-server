@@ -144,12 +144,8 @@ public class ServiceController {
     for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
       result.addAll(serviceChannelProvider.listElectronicServiceChannels());
     }
-    
-    int resultCount = result.size();
-    int firstIndex = firstResult == null ? 0 : Math.min(firstResult.intValue(), resultCount);
-    int toIndex = maxResults == null ? resultCount : Math.min(firstIndex + maxResults.intValue(), resultCount);
-    
-    return ListUtils.limit(entityController.sortEntitiesInNaturalOrder(result), firstIndex, toIndex);
+
+    return ListUtils.limit(entityController.sortEntitiesInNaturalOrder(result), firstResult, maxResults);
   }
 
   public List<PhoneServiceChannel> listPhoneServiceChannels(Long firstResult, Long maxResults) {
@@ -158,12 +154,8 @@ public class ServiceController {
     for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
       result.addAll(serviceChannelProvider.listPhoneServiceChannels());
     }
-    
-    int resultCount = result.size();
-    int firstIndex = firstResult == null ? 0 : Math.min(firstResult.intValue(), resultCount);
-    int toIndex = maxResults == null ? resultCount : Math.min(firstIndex + maxResults.intValue(), resultCount);
 
-    return ListUtils.limit(entityController.sortEntitiesInNaturalOrder(result), firstIndex, toIndex);
+    return ListUtils.limit(entityController.sortEntitiesInNaturalOrder(result), firstResult, maxResults);
   }
 
   public List<PrintableFormServiceChannel> listPrintableFormServiceChannels(Long firstResult, Long maxResults) {
@@ -172,12 +164,8 @@ public class ServiceController {
     for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
       result.addAll(serviceChannelProvider.listPrintableFormServiceChannels());
     }
-    
-    int resultCount = result.size();
-    int firstIndex = firstResult == null ? 0 : Math.min(firstResult.intValue(), resultCount);
-    int toIndex = maxResults == null ? resultCount : Math.min(firstIndex + maxResults.intValue(), resultCount);
-    
-    return ListUtils.limit(entityController.sortEntitiesInNaturalOrder(result), firstIndex, toIndex);
+
+    return ListUtils.limit(entityController.sortEntitiesInNaturalOrder(result), firstResult, maxResults);
   }
 
   public List<ServiceLocationServiceChannel> listServiceLocationServiceChannels(Long firstResult, Long maxResults) {
@@ -186,12 +174,8 @@ public class ServiceController {
     for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
       result.addAll(serviceChannelProvider.listServiceLocationServiceChannels());
     }
-    
-    int resultCount = result.size();
-    int firstIndex = firstResult == null ? 0 : Math.min(firstResult.intValue(), resultCount);
-    int toIndex = maxResults == null ? resultCount : Math.min(firstIndex + maxResults.intValue(), resultCount);
-    
-    return ListUtils.limit(entityController.sortEntitiesInNaturalOrder(result), firstIndex, toIndex);
+
+    return ListUtils.limit(entityController.sortEntitiesInNaturalOrder(result), firstResult, maxResults);
   }
 
   public List<WebPageServiceChannel> listWebPageServiceChannels(Long firstResult, Long maxResults) {
@@ -200,12 +184,8 @@ public class ServiceController {
     for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
       result.addAll(serviceChannelProvider.listWebPageServiceChannelsChannels());
     }
-    
-    int resultCount = result.size();
-    int firstIndex = firstResult == null ? 0 : Math.min(firstResult.intValue(), resultCount);
-    int toIndex = maxResults == null ? resultCount : Math.min(firstIndex + maxResults.intValue(), resultCount);
-    
-    return ListUtils.limit(entityController.sortEntitiesInNaturalOrder(result), firstIndex, toIndex);
+
+    return ListUtils.limit(entityController.sortEntitiesInNaturalOrder(result), firstResult, maxResults);
   }
   
   private List<ServiceProvider> getServiceProviders() {
