@@ -119,7 +119,7 @@ public class PtvWebPageServiceChannelEntityUpdater extends EntityUpdater {
       fi.metatavu.kuntaapi.server.rest.model.WebPageServiceChannel webPageServiceChannel = ptvTranslator.translateWebPageServiceChannel(kuntaApiWebPageServiceChannelId, kuntaApiOrganizationId, ptvWebPageServiceChannel);
       if (webPageServiceChannel != null) {
         ptvWebPageServiceChannelResourceContainer.put(kuntaApiWebPageServiceChannelId, webPageServiceChannel);
-        modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(kuntaApiWebPageServiceChannelId));
+        modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(webPageServiceChannel));
       } else {
         logger.log(Level.SEVERE, () -> String.format("Failed to translate web page service channel %s", ptvWebPageServiceChannelId));
       }

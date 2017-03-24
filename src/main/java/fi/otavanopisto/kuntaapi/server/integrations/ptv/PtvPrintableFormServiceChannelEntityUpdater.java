@@ -120,7 +120,7 @@ public class PtvPrintableFormServiceChannelEntityUpdater extends EntityUpdater {
       fi.metatavu.kuntaapi.server.rest.model.PrintableFormServiceChannel printableFormServiceChannel = ptvTranslator.translatePrintableFormServiceChannel(kuntaApiPrintableFormServiceChannelId, kuntaApiOrganizationId, ptvPrintableFormServiceChannel);
       if (printableFormServiceChannel != null) {
         ptvPrintableFormServiceChannelResourceContainer.put(kuntaApiPrintableFormServiceChannelId, printableFormServiceChannel);
-        modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(kuntaApiPrintableFormServiceChannelId));
+        modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(printableFormServiceChannel));
       } else {
         logger.log(Level.SEVERE, () -> String.format("Failed to translate printable form service channel %s", ptvPrintableFormServiceChannelId));
       }

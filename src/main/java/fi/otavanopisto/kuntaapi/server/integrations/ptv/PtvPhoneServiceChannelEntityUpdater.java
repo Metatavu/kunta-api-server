@@ -120,7 +120,7 @@ public class PtvPhoneServiceChannelEntityUpdater extends EntityUpdater {
       fi.metatavu.kuntaapi.server.rest.model.PhoneServiceChannel phoneServiceChannel = ptvTranslator.translatePhoneServiceChannel(kuntaApiPhoneServiceChannelId, kuntaApiOrganizationId, ptvPhoneServiceChannel);
       if (phoneServiceChannel != null) {
         ptvPhoneServiceChannelResourceContainer.put(kuntaApiPhoneServiceChannelId, phoneServiceChannel);
-        modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(kuntaApiPhoneServiceChannelId));
+        modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(phoneServiceChannel));
       } else {
         logger.log(Level.SEVERE, () -> String.format("Failed to translate phone service channel %s", ptvPhoneServiceChannelId));
       }

@@ -120,7 +120,7 @@ public class PtvServiceLocationServiceChannelEntityUpdater extends EntityUpdater
       fi.metatavu.kuntaapi.server.rest.model.ServiceLocationServiceChannel serviceLocationServiceChannel = ptvTranslator.translateServiceLocationServiceChannel(kuntaApiServiceLocationServiceChannelId, kuntaApiOrganizationId, ptvServiceLocationServiceChannel);
       if (serviceLocationServiceChannel != null) {
         ptvServiceLocationServiceChannelResourceContainer.put(kuntaApiServiceLocationServiceChannelId, serviceLocationServiceChannel);
-        modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(kuntaApiServiceLocationServiceChannelId));
+        modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(serviceLocationServiceChannel));
       } else {
         logger.log(Level.SEVERE, () -> String.format("Failed to translate service location service channel %s", ptvServiceLocationServiceChannelId));
       }

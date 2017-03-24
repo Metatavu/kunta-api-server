@@ -108,7 +108,7 @@ public class PtvOrganizationEntityUpdater extends EntityUpdater {
       Organization ptvOrganization = response.getResponse();
       fi.metatavu.kuntaapi.server.rest.model.Organization organization = ptvTranslator.translateOrganization(kuntaApiOrganizationId, ptvOrganization);
       if (organization != null) {
-        modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(ptvOrganization));
+        modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(organization));
         ptvOrganizationResourceContainer.put(kuntaApiOrganizationId, organization);
         index(identifier.getKuntaApiId(), organization);
       } else {

@@ -120,7 +120,7 @@ public class PtvElectronicServiceChannelEntityUpdater extends EntityUpdater {
       fi.metatavu.kuntaapi.server.rest.model.ElectronicServiceChannel electronicServiceChannel = ptvTranslator.translateElectronicServiceChannel(kuntaApiElectronicServiceChannelId, kuntaApiOrganizationId, ptvElectronicServiceChannel);
       if (electronicServiceChannel != null) {
         ptvElectronicServiceChannelResourceContainer.put(kuntaApiElectronicServiceChannelId, electronicServiceChannel);
-        modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(kuntaApiElectronicServiceChannelId));
+        modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(electronicServiceChannel));
       } else {
         logger.log(Level.SEVERE, () -> String.format("Failed to translate electronic service channel %s", ptvElectronicServiceChannelId));
       }
