@@ -27,8 +27,8 @@ import fi.otavanopisto.kuntaapi.server.id.OrganizationBaseId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationServiceId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
-import fi.otavanopisto.kuntaapi.server.id.PhoneChannelId;
-import fi.otavanopisto.kuntaapi.server.id.PrintableFormChannelId;
+import fi.otavanopisto.kuntaapi.server.id.PhoneServiceChannelId;
+import fi.otavanopisto.kuntaapi.server.id.PrintableFormServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportAgencyId;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportRouteId;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportScheduleId;
@@ -36,10 +36,10 @@ import fi.otavanopisto.kuntaapi.server.id.PublicTransportStopId;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportStopTimeId;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportTripId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceId;
-import fi.otavanopisto.kuntaapi.server.id.ServiceLocationChannelId;
+import fi.otavanopisto.kuntaapi.server.id.ServiceLocationServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.ShortlinkId;
 import fi.otavanopisto.kuntaapi.server.id.TileId;
-import fi.otavanopisto.kuntaapi.server.id.WebPageChannelId;
+import fi.otavanopisto.kuntaapi.server.id.WebPageServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 
 @SuppressWarnings ("squid:S3306")
@@ -83,23 +83,23 @@ public abstract class AbstractIdProvider implements IdProvider {
   }
   
   @Override
-  public PhoneChannelId translate(PhoneChannelId serviceChannelId, String target) {
-    return translateId(serviceChannelId, IdType.PHONE_CHANNEL, PhoneChannelId.class, target);
+  public PhoneServiceChannelId translate(PhoneServiceChannelId serviceChannelId, String target) {
+    return translateId(serviceChannelId, IdType.PHONE_SERVICE_CHANNEL, PhoneServiceChannelId.class, target);
   }
   
   @Override
-  public PrintableFormChannelId translate(PrintableFormChannelId serviceChannelId, String target) {
-    return translateId(serviceChannelId, IdType.PRINTABLE_FORM_CHANNEL, PrintableFormChannelId.class, target);
+  public PrintableFormServiceChannelId translate(PrintableFormServiceChannelId serviceChannelId, String target) {
+    return translateId(serviceChannelId, IdType.PRINTABLE_FORM_SERVICE_CHANNEL, PrintableFormServiceChannelId.class, target);
   }
   
   @Override
-  public ServiceLocationChannelId translate(ServiceLocationChannelId serviceChannelId, String target) {
-    return translateId(serviceChannelId, IdType.SERVICE_LOCATION_CHANNEL, ServiceLocationChannelId.class, target);
+  public ServiceLocationServiceChannelId translate(ServiceLocationServiceChannelId serviceChannelId, String target) {
+    return translateId(serviceChannelId, IdType.SERVICE_LOCATION_SERVICE_CHANNEL, ServiceLocationServiceChannelId.class, target);
   }
   
   @Override
-  public WebPageChannelId translate(WebPageChannelId serviceChannelId, String target) {
-    return translateId(serviceChannelId, IdType.WEBPAGE_CHANNEL, WebPageChannelId.class, target);
+  public WebPageServiceChannelId translate(WebPageServiceChannelId serviceChannelId, String target) {
+    return translateId(serviceChannelId, IdType.WEBPAGE_SERVICE_CHANNEL, WebPageServiceChannelId.class, target);
   }
   
   @Override

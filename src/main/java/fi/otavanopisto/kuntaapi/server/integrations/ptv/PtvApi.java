@@ -4,15 +4,15 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
-import fi.otavanopisto.restfulptv.client.ElectronicChannelsApi;
-import fi.otavanopisto.restfulptv.client.OrganizationServicesApi;
-import fi.otavanopisto.restfulptv.client.OrganizationsApi;
-import fi.otavanopisto.restfulptv.client.PhoneChannelsApi;
-import fi.otavanopisto.restfulptv.client.PrintableFormChannelsApi;
-import fi.otavanopisto.restfulptv.client.ServiceLocationChannelsApi;
-import fi.otavanopisto.restfulptv.client.ServicesApi;
-import fi.otavanopisto.restfulptv.client.StatutoryDescriptionsApi;
-import fi.otavanopisto.restfulptv.client.WebPageChannelsApi;
+import fi.metatavu.restfulptv.client.ElectronicServiceChannelsApi;
+import fi.metatavu.restfulptv.client.OrganizationServicesApi;
+import fi.metatavu.restfulptv.client.OrganizationsApi;
+import fi.metatavu.restfulptv.client.PhoneServiceChannelsApi;
+import fi.metatavu.restfulptv.client.PrintableFormServiceChannelsApi;
+import fi.metatavu.restfulptv.client.ServiceLocationServiceChannelsApi;
+import fi.metatavu.restfulptv.client.ServicesApi;
+import fi.metatavu.restfulptv.client.StatutoryDescriptionsApi;
+import fi.metatavu.restfulptv.client.WebPageServiceChannelsApi;
 
 @ApplicationScoped
 public class PtvApi {
@@ -35,28 +35,28 @@ public class PtvApi {
     return new ServicesApi(getBaseUrl(), client);
   }
 
-  public WebPageChannelsApi getWebPageChannelsApi() {
-    return new WebPageChannelsApi(getBaseUrl(), client);
+  public WebPageServiceChannelsApi getWebPageServiceChannelsApi() {
+    return new WebPageServiceChannelsApi(getBaseUrl(), client);
   }
 
-  public ServiceLocationChannelsApi getServiceLocationChannelsApi() {
-    return new ServiceLocationChannelsApi(getBaseUrl(), client);
+  public ServiceLocationServiceChannelsApi getServiceLocationServiceChannelsApi() {
+    return new ServiceLocationServiceChannelsApi(getBaseUrl(), client);
   }
 
-  public PrintableFormChannelsApi getPrintableFormChannelsApi() {
-    return new PrintableFormChannelsApi(getBaseUrl(), client);
+  public PrintableFormServiceChannelsApi getPrintableFormServiceChannelsApi() {
+    return new PrintableFormServiceChannelsApi(getBaseUrl(), client);
   }
 
-  public PhoneChannelsApi getPhoneChannelsApi() {
-    return new PhoneChannelsApi(getBaseUrl(), client);
+  public PhoneServiceChannelsApi getPhoneServiceChannelsApi() {
+    return new PhoneServiceChannelsApi(getBaseUrl(), client);
   }
 
   public OrganizationServicesApi getOrganizationServicesApi() {
     return new OrganizationServicesApi(getBaseUrl(), client);
   }
 
-  public ElectronicChannelsApi getElectronicChannelsApi() {
-    return new ElectronicChannelsApi(getBaseUrl(), client);
+  public ElectronicServiceChannelsApi getElectronicServiceChannelsApi() {
+    return new ElectronicServiceChannelsApi(getBaseUrl(), client);
   }
   
   private String getBaseUrl() {

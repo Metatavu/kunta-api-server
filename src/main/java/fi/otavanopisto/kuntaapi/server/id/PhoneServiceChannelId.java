@@ -1,18 +1,18 @@
 package fi.otavanopisto.kuntaapi.server.id;
 
 /**
- * Class representing webpage service channel id
+ * Class representing phone service channel id
  * 
  * @author Antti Leppä
  */
-public class WebPageChannelId extends BaseId {
+public class PhoneServiceChannelId extends BaseId {
 
-  private static final long serialVersionUID = 4485290448691923574L;
+  private static final long serialVersionUID = -6439252801891529427L;
 
   /**
-   * Zero-argument constructor for webpage service channel id
+   * Zero-argument constructor for phone service channel id
    */
-  public WebPageChannelId() {
+  public PhoneServiceChannelId() {
     super();
   }
   
@@ -22,23 +22,23 @@ public class WebPageChannelId extends BaseId {
    * @param source source
    * @param id id
    */
-  public WebPageChannelId(String source, String id) {
+  public PhoneServiceChannelId(String source, String id) {
     super(source, id);
   }
   
   @Override
   public IdType getType() {
-    return IdType.WEBPAGE_CHANNEL;
+    return IdType.PHONE_SERVICE_CHANNEL;
   }
   
   @Override
   public int getHashInitial() {
-    return 231;
+    return 171;
   }
   
   @Override
   public int getHashMultiplier() {
-    return 243;
+    return 183;
   }
-
+  
 }

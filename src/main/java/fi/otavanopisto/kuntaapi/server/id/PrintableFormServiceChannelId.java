@@ -5,14 +5,14 @@ package fi.otavanopisto.kuntaapi.server.id;
  * 
  * @author Antti Leppä
  */
-public class PrintableFormChannelId extends BaseId {
+public class PrintableFormServiceChannelId extends BaseId {
 
   private static final long serialVersionUID = 3556104745639774281L;
 
   /**
    * Zero-argument constructor for printable form service channel id
    */
-  public PrintableFormChannelId() {
+  public PrintableFormServiceChannelId() {
     super();
   }
   
@@ -22,13 +22,13 @@ public class PrintableFormChannelId extends BaseId {
    * @param source source
    * @param id id
    */
-  public PrintableFormChannelId(String source, String id) {
+  public PrintableFormServiceChannelId(String source, String id) {
     super(source, id);
   }
   
   @Override
   public IdType getType() {
-    return IdType.PRINTABLE_FORM_CHANNEL;
+    return IdType.PRINTABLE_FORM_SERVICE_CHANNEL;
   }
   
   @Override

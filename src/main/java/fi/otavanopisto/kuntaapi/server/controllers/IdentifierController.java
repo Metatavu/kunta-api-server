@@ -19,6 +19,7 @@ import fi.otavanopisto.kuntaapi.server.id.AnnouncementId;
 import fi.otavanopisto.kuntaapi.server.id.BannerId;
 import fi.otavanopisto.kuntaapi.server.id.BaseId;
 import fi.otavanopisto.kuntaapi.server.id.ContactId;
+import fi.otavanopisto.kuntaapi.server.id.ElectronicServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.FragmentId;
 import fi.otavanopisto.kuntaapi.server.id.IdType;
 import fi.otavanopisto.kuntaapi.server.id.MenuId;
@@ -28,10 +29,15 @@ import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationBaseId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
+import fi.otavanopisto.kuntaapi.server.id.PhoneServiceChannelId;
+import fi.otavanopisto.kuntaapi.server.id.PrintableFormServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceId;
+import fi.otavanopisto.kuntaapi.server.id.ServiceLocationServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.ShortlinkId;
 import fi.otavanopisto.kuntaapi.server.id.TileId;
+import fi.otavanopisto.kuntaapi.server.id.WebPageServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
+import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
 import fi.otavanopisto.kuntaapi.server.persistence.dao.ArchivedIdentifierDAO;
 import fi.otavanopisto.kuntaapi.server.persistence.dao.IdentifierDAO;
 import fi.otavanopisto.kuntaapi.server.persistence.dao.IdentifierRelationDAO;
@@ -60,6 +66,9 @@ public class IdentifierController {
   
   @Inject
   private IdentifierRelationDAO identifierRelationDAO;
+  
+  @Inject
+  private KuntaApiIdFactory kuntaApiIdFactory;
   
   public Identifier findIdentifierById(BaseId id) {
     if (id == null) {
@@ -329,6 +338,72 @@ public class IdentifierController {
 
     for (Identifier identifier : identifiers) {
       result.add(new ServiceId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId()));
+    }
+ 
+    return result;
+  }
+  
+  public List<OrganizationId> listOrganizationIdsBySource(String source, Integer firstResult, Integer maxResults) {
+    List<Identifier> identifiers = identifierDAO.listBySourceAndType(source, IdType.ORGANIZATION.name(), firstResult, maxResults);
+    List<OrganizationId> result = new ArrayList<>(identifiers.size());
+
+    for (Identifier identifier : identifiers) {
+      result.add(kuntaApiIdFactory.createFromIdentifier(OrganizationId.class, identifier));
+    }
+ 
+    return result;
+  }
+  
+  public List<ElectronicServiceChannelId> listElectronicServiceChannelIdsBySource(String source, Integer firstResult, Integer maxResults) {
+    List<Identifier> identifiers = identifierDAO.listBySourceAndType(source, IdType.ELECTRONIC_SERVICE_CHANNEL.name(), firstResult, maxResults);
+    List<ElectronicServiceChannelId> result = new ArrayList<>(identifiers.size());
+
+    for (Identifier identifier : identifiers) {
+      result.add(kuntaApiIdFactory.createFromIdentifier(ElectronicServiceChannelId.class, identifier));
+    }
+ 
+    return result;
+  }
+  
+  public List<ServiceLocationServiceChannelId> listServiceLocationServiceChannelIdsBySource(String source, Integer firstResult, Integer maxResults) {
+    List<Identifier> identifiers = identifierDAO.listBySourceAndType(source, IdType.SERVICE_LOCATION_SERVICE_CHANNEL.name(), firstResult, maxResults);
+    List<ServiceLocationServiceChannelId> result = new ArrayList<>(identifiers.size());
+
+    for (Identifier identifier : identifiers) {
+      result.add(kuntaApiIdFactory.createFromIdentifier(ServiceLocationServiceChannelId.class, identifier));
+    }
+ 
+    return result;
+  }
+  
+  public List<PhoneServiceChannelId> listPhoneServiceChannelIdsBySource(String source, Integer firstResult, Integer maxResults) {
+    List<Identifier> identifiers = identifierDAO.listBySourceAndType(source, IdType.PHONE_SERVICE_CHANNEL.name(), firstResult, maxResults);
+    List<PhoneServiceChannelId> result = new ArrayList<>(identifiers.size());
+
+    for (Identifier identifier : identifiers) {
+      result.add(kuntaApiIdFactory.createFromIdentifier(PhoneServiceChannelId.class, identifier));
+    }
+ 
+    return result;
+  }
+  
+  public List<PrintableFormServiceChannelId> listPrintableFormServiceChannelIdsBySource(String source, Integer firstResult, Integer maxResults) {
+    List<Identifier> identifiers = identifierDAO.listBySourceAndType(source, IdType.PRINTABLE_FORM_SERVICE_CHANNEL.name(), firstResult, maxResults);
+    List<PrintableFormServiceChannelId> result = new ArrayList<>(identifiers.size());
+
+    for (Identifier identifier : identifiers) {
+      result.add(kuntaApiIdFactory.createFromIdentifier(PrintableFormServiceChannelId.class, identifier));
+    }
+ 
+    return result;
+  }
+  
+  public List<WebPageServiceChannelId> listWebPageServiceChannelIdsBySource(String source, Integer firstResult, Integer maxResults) {
+    List<Identifier> identifiers = identifierDAO.listBySourceAndType(source, IdType.WEBPAGE_SERVICE_CHANNEL.name(), firstResult, maxResults);
+    List<WebPageServiceChannelId> result = new ArrayList<>(identifiers.size());
+
+    for (Identifier identifier : identifiers) {
+      result.add(kuntaApiIdFactory.createFromIdentifier(WebPageServiceChannelId.class, identifier));
     }
  
     return result;

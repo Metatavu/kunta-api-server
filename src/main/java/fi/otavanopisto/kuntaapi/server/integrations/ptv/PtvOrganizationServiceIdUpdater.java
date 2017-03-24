@@ -24,8 +24,8 @@ import fi.otavanopisto.kuntaapi.server.tasks.IdTask;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask.Operation;
 import fi.otavanopisto.kuntaapi.server.tasks.OrganizationEntityUpdateTask;
 import fi.otavanopisto.kuntaapi.server.tasks.TaskRequest;
-import fi.otavanopisto.restfulptv.client.ApiResponse;
-import fi.otavanopisto.restfulptv.client.model.OrganizationService;
+import fi.metatavu.restfulptv.client.ApiResponse;
+import fi.metatavu.restfulptv.client.model.OrganizationService;
 
 @ApplicationScoped
 @Singleton
@@ -79,7 +79,7 @@ public class PtvOrganizationServiceIdUpdater extends IdUpdater {
 
   private void updateOrganizationServiceIds(OrganizationId kuntaApiOrganizationId)  {
     if (!systemSettingController.hasSettingValue(PtvConsts.SYSTEM_SETTING_BASEURL)) {
-      logger.log(Level.INFO, "Organization management baseUrl not set, skipping update"); 
+      logger.log(Level.INFO, "Ptv system setting not defined, skipping update."); 
       return;
     }
     

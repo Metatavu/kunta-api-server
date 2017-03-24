@@ -50,7 +50,7 @@ public interface IdProvider {
    * @param target target type
    * @return translated id
    */
-  public PhoneChannelId translate(PhoneChannelId serviceChannelId, String target);
+  public PhoneServiceChannelId translate(PhoneServiceChannelId serviceChannelId, String target);
   
   /**
    * Translate printable form service channel id
@@ -59,7 +59,7 @@ public interface IdProvider {
    * @param target target type
    * @return translated id
    */
-  public PrintableFormChannelId translate(PrintableFormChannelId serviceChannelId, String target);
+  public PrintableFormServiceChannelId translate(PrintableFormServiceChannelId serviceChannelId, String target);
   
   /**
    * Translate service location channel id
@@ -68,7 +68,7 @@ public interface IdProvider {
    * @param target target type
    * @return translated id
    */
-  public ServiceLocationChannelId translate(ServiceLocationChannelId serviceChannelId, String target);
+  public ServiceLocationServiceChannelId translate(ServiceLocationServiceChannelId serviceChannelId, String target);
   
   /**
    * Translate web page service channel id
@@ -77,7 +77,7 @@ public interface IdProvider {
    * @param target target type
    * @return translated id
    */
-  public WebPageChannelId translate(WebPageChannelId serviceChannelId, String target);
+  public WebPageServiceChannelId translate(WebPageServiceChannelId serviceChannelId, String target);
   
   /**
    * Translate organization service id

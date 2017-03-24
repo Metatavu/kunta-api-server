@@ -5,9 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import fi.otavanopisto.restfulptv.client.model.Organization;
-import fi.otavanopisto.restfulptv.client.model.Service;
-import fi.otavanopisto.restfulptv.client.model.StatutoryDescription;
+import fi.metatavu.restfulptv.client.model.Organization;
+import fi.metatavu.restfulptv.client.model.Service;
+import fi.metatavu.restfulptv.client.model.StatutoryDescription;
 
 public class RestFulPtvMocker extends AbstractMocker {
   
