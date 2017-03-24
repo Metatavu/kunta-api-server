@@ -10,8 +10,8 @@ import java.util.Map;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.github.tomakehurst.wiremock.matching.StringValuePattern;
 
-import fi.otavanopisto.restfulptv.client.model.Organization;
-import fi.otavanopisto.restfulptv.client.model.OrganizationService;
+import fi.metatavu.restfulptv.client.model.Organization;
+import fi.metatavu.restfulptv.client.model.OrganizationService;
 
 @SuppressWarnings ("squid:S1166")
 public class RestfulPtvOrganizationMocker extends AbstractBaseMocker {

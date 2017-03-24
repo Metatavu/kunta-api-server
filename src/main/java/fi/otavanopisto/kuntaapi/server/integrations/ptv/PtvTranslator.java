@@ -3,54 +3,45 @@ package fi.otavanopisto.kuntaapi.server.integrations.ptv;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.logging.Logger;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
 
 import org.apache.commons.lang3.StringUtils;
 
 import fi.metatavu.kuntaapi.server.rest.model.Address;
-import fi.metatavu.kuntaapi.server.rest.model.ElectronicChannel;
+import fi.metatavu.kuntaapi.server.rest.model.ElectronicServiceChannel;
 import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
 import fi.metatavu.kuntaapi.server.rest.model.OntologyItem;
 import fi.metatavu.kuntaapi.server.rest.model.Organization;
 import fi.metatavu.kuntaapi.server.rest.model.OrganizationService;
-import fi.metatavu.kuntaapi.server.rest.model.PhoneChannel;
-import fi.metatavu.kuntaapi.server.rest.model.PrintableFormChannel;
+import fi.metatavu.kuntaapi.server.rest.model.PhoneServiceChannel;
+import fi.metatavu.kuntaapi.server.rest.model.PrintableFormServiceChannel;
 import fi.metatavu.kuntaapi.server.rest.model.Service;
 import fi.metatavu.kuntaapi.server.rest.model.ServiceChannelAttachment;
 import fi.metatavu.kuntaapi.server.rest.model.ServiceHour;
-import fi.metatavu.kuntaapi.server.rest.model.ServiceLocationChannel;
+import fi.metatavu.kuntaapi.server.rest.model.ServiceLocationServiceChannel;
 import fi.metatavu.kuntaapi.server.rest.model.SupportContact;
 import fi.metatavu.kuntaapi.server.rest.model.WebPage;
-import fi.metatavu.kuntaapi.server.rest.model.WebPageChannel;
+import fi.metatavu.kuntaapi.server.rest.model.WebPageServiceChannel;
+import fi.metatavu.restfulptv.client.model.FintoItem;
+import fi.metatavu.restfulptv.client.model.LanguageItem;
+import fi.metatavu.restfulptv.client.model.LocalizedListItem;
+import fi.metatavu.restfulptv.client.model.StatutoryDescription;
+import fi.metatavu.restfulptv.client.model.Support;
+import fi.otavanopisto.kuntaapi.server.id.BaseId;
 import fi.otavanopisto.kuntaapi.server.id.ElectronicServiceChannelId;
-import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationServiceId;
-import fi.otavanopisto.kuntaapi.server.id.PhoneChannelId;
-import fi.otavanopisto.kuntaapi.server.id.PrintableFormChannelId;
+import fi.otavanopisto.kuntaapi.server.id.PhoneServiceChannelId;
+import fi.otavanopisto.kuntaapi.server.id.PrintableFormServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceId;
-import fi.otavanopisto.kuntaapi.server.id.ServiceLocationChannelId;
-import fi.otavanopisto.kuntaapi.server.id.WebPageChannelId;
-import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
-import fi.otavanopisto.restfulptv.client.model.FintoItem;
-import fi.otavanopisto.restfulptv.client.model.LanguageItem;
-import fi.otavanopisto.restfulptv.client.model.LocalizedListItem;
-import fi.otavanopisto.restfulptv.client.model.StatutoryDescription;
-import fi.otavanopisto.restfulptv.client.model.Support;
+import fi.otavanopisto.kuntaapi.server.id.ServiceLocationServiceChannelId;
+import fi.otavanopisto.kuntaapi.server.id.WebPageServiceChannelId;
 
 @ApplicationScoped
 public class PtvTranslator {
 
   private static final String ONTOLOGY_SYSTEM_FINTO = "FINTO";
-
-  @Inject
-  private Logger logger;
-  
-  @Inject
-  private IdController idController;
 
   public List<LocalizedValue> translateLocalizedItems(List<LocalizedListItem> items) {
     if (items != null && !items.isEmpty()) {
@@ -89,25 +80,20 @@ public class PtvTranslator {
     return Collections.emptyList();
   }
     
-  public Organization translateOrganization(fi.otavanopisto.restfulptv.client.model.Organization ptvOrganiztion) {
-    if (ptvOrganiztion == null) {
+  public Organization translateOrganization(OrganizationId kuntaApiOrganizationId, fi.metatavu.restfulptv.client.model.Organization ptvOrganization) {
+    if (ptvOrganization == null) {
       return null;
     }
-    
-    OrganizationId kuntaApiId = translateOrganizationId(ptvOrganiztion.getId());
-    if (kuntaApiId == null) {
-      return null;
-    }
-    
+
     Organization organization = new Organization();
-    organization.setId(kuntaApiId.getId());
-    organization.setBusinessCode(ptvOrganiztion.getBusinessCode());
-    organization.setBusinessName(ptvOrganiztion.getBusinessName());
+    organization.setId(kuntaApiOrganizationId.getId());
+    organization.setBusinessCode(ptvOrganization.getBusinessCode());
+    organization.setBusinessName(ptvOrganization.getBusinessName());
     
     return organization;
   }
   
-  public OrganizationService translateOrganizationService(OrganizationServiceId kuntaApiOrganizationServiceId, OrganizationId kuntaApiOrganizationId, ServiceId kuntaApiServiceId, fi.otavanopisto.restfulptv.client.model.OrganizationService ptvOrganizationService) {
+  public OrganizationService translateOrganizationService(OrganizationServiceId kuntaApiOrganizationServiceId, OrganizationId kuntaApiOrganizationId, ServiceId kuntaApiServiceId, fi.metatavu.restfulptv.client.model.OrganizationService ptvOrganizationService) {
     if (ptvOrganizationService == null) {
       return null;
     }
@@ -124,7 +110,16 @@ public class PtvTranslator {
     return result;
   }
 
-  public Service translateService(ServiceId serviceKuntaApiId, fi.otavanopisto.restfulptv.client.model.Service ptvService, StatutoryDescription ptvStatutoryDescription) {
+  @SuppressWarnings ("squid:S00107")
+  public Service translateService(ServiceId serviceKuntaApiId, 
+      List<ElectronicServiceChannelId> kuntaApiElectronicServiceChannelIds, 
+      List<PhoneServiceChannelId> kuntaApiPhoneServiceChannelIds, 
+      List<PrintableFormServiceChannelId> kuntaApiPrintableFormServiceChannelIds, 
+      List<ServiceLocationServiceChannelId> kuntaApiServiceLocationServiceChannelIds, 
+      List<WebPageServiceChannelId> kuntaApiWebPageServiceChannelIds, 
+      fi.metatavu.restfulptv.client.model.Service ptvService, 
+      StatutoryDescription ptvStatutoryDescription) {
+    
     if (ptvService == null) {
       return null;
     }
@@ -152,6 +147,12 @@ public class PtvTranslator {
     result.setTargetGroups(translateFintoItems(ptvService.getTargetGroups()));
     result.setType(ptvService.getType());
     result.setWebPages(translateWebPages(ptvService.getWebPages()));
+    
+    result.setElectronicServiceChannelIds(extractIds(kuntaApiElectronicServiceChannelIds));
+    result.setPhoneServiceChannelIds(extractIds(kuntaApiPhoneServiceChannelIds));
+    result.setPrintableFormServiceChannelIds(extractIds(kuntaApiPrintableFormServiceChannelIds));
+    result.setServiceLocationServiceChannelIds(extractIds(kuntaApiServiceLocationServiceChannelIds));
+    result.setWebPageServiceChannelIds(extractIds(kuntaApiWebPageServiceChannelIds));
     
     return result;
   }
@@ -190,289 +191,149 @@ public class PtvTranslator {
     
     return result;
   }
-  
-  public List<ElectronicChannel> translateElectronicChannels(List<fi.otavanopisto.restfulptv.client.model.ElectronicChannel> ptvElectronicChannels) {
-    if (ptvElectronicChannels == null) {
-      return Collections.emptyList();
-    }
 
-    List<ElectronicChannel> result = new ArrayList<>();
-    for (fi.otavanopisto.restfulptv.client.model.ElectronicChannel ptvElectronicChannel : ptvElectronicChannels) {
-      ElectronicChannel electronicChannel = translateElectronicChannel(ptvElectronicChannel);
-      if (electronicChannel != null) {
-        result.add(electronicChannel);
-      }
-    }
-
-    return result;
-  }
-  
-  public List<PhoneChannel> translatePhoneChannels(List<fi.otavanopisto.restfulptv.client.model.PhoneChannel> ptvPhoneChannels) {
-    if (ptvPhoneChannels == null) {
-      return Collections.emptyList();
-    }
-
-    List<PhoneChannel> result = new ArrayList<>();
-    for (fi.otavanopisto.restfulptv.client.model.PhoneChannel ptvPhoneChannel : ptvPhoneChannels) {
-      PhoneChannel phoneChannel = translatePhoneChannel(ptvPhoneChannel);
-      if (phoneChannel != null) {
-        result.add(phoneChannel);
-      }
-    }
-
-    return result;
-  }
-  
-  public List<PrintableFormChannel> translatePrintableFormChannels(List<fi.otavanopisto.restfulptv.client.model.PrintableFormChannel> ptvPrintableFormChannels) {
-    if (ptvPrintableFormChannels == null) {
-      return Collections.emptyList();
-    }
-
-    List<PrintableFormChannel> result = new ArrayList<>();
-    for (fi.otavanopisto.restfulptv.client.model.PrintableFormChannel ptvPrintableFormChannel : ptvPrintableFormChannels) {
-      PrintableFormChannel printableFormChannel = translatePrintableFormChannel(ptvPrintableFormChannel);
-      if (printableFormChannel != null) {
-        result.add(printableFormChannel);
-      }
-    }
-
-    return result;
-  }
-  
-  public List<ServiceLocationChannel> translateServiceLocationChannels(List<fi.otavanopisto.restfulptv.client.model.ServiceLocationChannel> ptvServiceLocationChannels) {
-    if (ptvServiceLocationChannels == null) {
-      return Collections.emptyList();
-    }
-
-    List<ServiceLocationChannel> result = new ArrayList<>();
-    for (fi.otavanopisto.restfulptv.client.model.ServiceLocationChannel ptvServiceLocationChannel : ptvServiceLocationChannels) {
-      ServiceLocationChannel serviceLocationChannel = translateServiceLocationChannel(ptvServiceLocationChannel);
-      if (serviceLocationChannel != null) {
-        result.add(serviceLocationChannel);
-      }
-    }
-
-    return result;
-  }
-  
-  public List<WebPageChannel> translateWebPageChannels(List<fi.otavanopisto.restfulptv.client.model.WebPageChannel> ptvWebPageChannels) {
-    if (ptvWebPageChannels == null) {
-      return Collections.emptyList();
-    }
-
-    List<WebPageChannel> result = new ArrayList<>();
-    for (fi.otavanopisto.restfulptv.client.model.WebPageChannel ptvWebPageChannel : ptvWebPageChannels) {
-      WebPageChannel webPageChannel = translateWebPageChannel(ptvWebPageChannel);
-      if (webPageChannel != null) {
-        result.add(webPageChannel);
-      }
-    }
-
-    return result;
-  }
-
-  public ElectronicChannel translateElectronicChannel(fi.otavanopisto.restfulptv.client.model.ElectronicChannel ptvElectronicChannel) {
-    if (ptvElectronicChannel == null) {
+  public ElectronicServiceChannel translateElectronicServiceChannel(ElectronicServiceChannelId kuntaApiElectronicServiceChannelId, OrganizationId organizationKuntaApiId, fi.metatavu.restfulptv.client.model.ElectronicServiceChannel ptvElectronicServiceChannel) {
+    if (ptvElectronicServiceChannel == null) {
       return null;
     }
-    
-    OrganizationId organizationKuntaApiId = translateOrganizationId(ptvElectronicChannel.getOrganizationId());
-    if (organizationKuntaApiId == null) {
-      return null;
-    }
-    
-    ElectronicServiceChannelId channelPtvId = new ElectronicServiceChannelId(PtvConsts.IDENTIFIER_NAME, ptvElectronicChannel.getId());
-    ElectronicServiceChannelId channelKuntaApiId = idController.translateElectronicServiceChannelId(channelPtvId, KuntaApiConsts.IDENTIFIER_NAME);
-    if (channelKuntaApiId == null) {
-      logger.severe(String.format("Could not translate electronic channel id %s into Kunta API id", channelPtvId.getId()));
-      return null;
-    }
-    
-    ElectronicChannel result = new ElectronicChannel(); 
-    result.setAttachments(translateAttachments(ptvElectronicChannel.getAttachments()));
-    result.setDescriptions(translateLocalizedItems(ptvElectronicChannel.getDescriptions()));
-    result.setId(channelKuntaApiId.getId());
-    result.setLanguages(ptvElectronicChannel.getLanguages());
-    result.setNames(translateLocalizedItems(ptvElectronicChannel.getNames()));
+
+    ElectronicServiceChannel result = new ElectronicServiceChannel(); 
+    result.setAttachments(translateAttachments(ptvElectronicServiceChannel.getAttachments()));
+    result.setDescriptions(translateLocalizedItems(ptvElectronicServiceChannel.getDescriptions()));
+    result.setId(kuntaApiElectronicServiceChannelId.getId());
+    result.setLanguages(ptvElectronicServiceChannel.getLanguages());
+    result.setNames(translateLocalizedItems(ptvElectronicServiceChannel.getNames()));
     result.setOrganizationId(organizationKuntaApiId.getId());
-    result.setPublishingStatus(ptvElectronicChannel.getPublishingStatus());
-    result.setRequiresAuthentication(ptvElectronicChannel.getRequiresAuthentication());
-    result.setRequiresSignature(ptvElectronicChannel.getRequiresSignature());
-    result.setServiceHours(translateServiceHours(ptvElectronicChannel.getServiceHours()));
-    result.setSignatureQuantity(ptvElectronicChannel.getSignatureQuantity());
-    result.setSupportContacts(translateSupportContacts(ptvElectronicChannel.getSupportContacts()));
-    result.setType(ptvElectronicChannel.getType());
-    result.setUrls(translateLanguageItems(ptvElectronicChannel.getUrls()));
-    result.setWebPages(translateWebPages(ptvElectronicChannel.getWebPages()));
+    result.setPublishingStatus(ptvElectronicServiceChannel.getPublishingStatus());
+    result.setRequiresAuthentication(ptvElectronicServiceChannel.getRequiresAuthentication());
+    result.setRequiresSignature(ptvElectronicServiceChannel.getRequiresSignature());
+    result.setServiceHours(translateServiceHours(ptvElectronicServiceChannel.getServiceHours()));
+    result.setSignatureQuantity(ptvElectronicServiceChannel.getSignatureQuantity());
+    result.setSupportContacts(translateSupportContacts(ptvElectronicServiceChannel.getSupportContacts()));
+    result.setType(ptvElectronicServiceChannel.getType());
+    result.setUrls(translateLanguageItems(ptvElectronicServiceChannel.getUrls()));
+    result.setWebPages(translateWebPages(ptvElectronicServiceChannel.getWebPages()));
     
     return result;
   }
 
-  public PhoneChannel translatePhoneChannel(fi.otavanopisto.restfulptv.client.model.PhoneChannel ptvPhoneChannel) {
-    if (ptvPhoneChannel == null) {
+  public PhoneServiceChannel translatePhoneServiceChannel(PhoneServiceChannelId kuntaApiPhoneServiceChannelId, OrganizationId organizationKuntaApiId, fi.metatavu.restfulptv.client.model.PhoneServiceChannel ptvPhoneServiceChannel) {
+    if (ptvPhoneServiceChannel == null) {
       return null;
     }
     
-    OrganizationId organizationKuntaApiId = translateOrganizationId(ptvPhoneChannel.getOrganizationId());
-    if (organizationKuntaApiId == null) {
-      return null;
-    }
-    
-    PhoneChannelId channelPtvId = new PhoneChannelId(PtvConsts.IDENTIFIER_NAME, ptvPhoneChannel.getId());
-    PhoneChannelId channelKuntaApiId = idController.translatePhoneServiceChannelId(channelPtvId, KuntaApiConsts.IDENTIFIER_NAME);
-    if (channelKuntaApiId == null) {
-      logger.severe(String.format("Could not translate phone channel id %s into Kunta API id", channelPtvId.getId()));
-      return null;
-    }
-    
-    PhoneChannel result = new PhoneChannel(); 
+    PhoneServiceChannel result = new PhoneServiceChannel(); 
 
-    result.setId(channelKuntaApiId.getId());
-    result.setType(ptvPhoneChannel.getType());
+    result.setId(kuntaApiPhoneServiceChannelId.getId());
+    result.setType(ptvPhoneServiceChannel.getType());
     result.setOrganizationId(organizationKuntaApiId.getId());
-    result.setNames(translateLocalizedItems(ptvPhoneChannel.getNames()));
-    result.setDescriptions(translateLocalizedItems(ptvPhoneChannel.getDescriptions()));
-    result.setPhoneType(ptvPhoneChannel.getPhoneType());
-    result.setChargeTypes(ptvPhoneChannel.getChargeTypes());
-    result.setSupportContacts(translateSupportContacts(ptvPhoneChannel.getSupportContacts()));
-    result.setPhoneNumbers(translateLanguageItems(ptvPhoneChannel.getPhoneNumbers()));
-    result.setLanguages(ptvPhoneChannel.getLanguages());
-    result.setPhoneChargeDescriptions(translateLanguageItems(ptvPhoneChannel.getPhoneChargeDescriptions()));
-    result.setWebPages(translateWebPages(ptvPhoneChannel.getWebPages()));
-    result.setServiceHours(translateServiceHours(ptvPhoneChannel.getServiceHours()));
-    result.setPublishingStatus(ptvPhoneChannel.getPublishingStatus());
+    result.setNames(translateLocalizedItems(ptvPhoneServiceChannel.getNames()));
+    result.setDescriptions(translateLocalizedItems(ptvPhoneServiceChannel.getDescriptions()));
+    result.setPhoneType(ptvPhoneServiceChannel.getPhoneType());
+    result.setChargeTypes(ptvPhoneServiceChannel.getChargeTypes());
+    result.setSupportContacts(translateSupportContacts(ptvPhoneServiceChannel.getSupportContacts()));
+    result.setPhoneNumbers(translateLanguageItems(ptvPhoneServiceChannel.getPhoneNumbers()));
+    result.setLanguages(ptvPhoneServiceChannel.getLanguages());
+    result.setPhoneChargeDescriptions(translateLanguageItems(ptvPhoneServiceChannel.getPhoneChargeDescriptions()));
+    result.setWebPages(translateWebPages(ptvPhoneServiceChannel.getWebPages()));
+    result.setServiceHours(translateServiceHours(ptvPhoneServiceChannel.getServiceHours()));
+    result.setPublishingStatus(ptvPhoneServiceChannel.getPublishingStatus());
 
     return result;
   }
 
-  public PrintableFormChannel translatePrintableFormChannel(fi.otavanopisto.restfulptv.client.model.PrintableFormChannel ptvPrintableFormChannel) {
-    if (ptvPrintableFormChannel == null) {
+  public PrintableFormServiceChannel translatePrintableFormServiceChannel(PrintableFormServiceChannelId kuntaApiPrintableFormServiceChannelId, OrganizationId kuntaApiOrganizationId, fi.metatavu.restfulptv.client.model.PrintableFormServiceChannel ptvPrintableFormServiceChannel) {
+    if (ptvPrintableFormServiceChannel == null) {
       return null;
     }
     
-    OrganizationId organizationKuntaApiId = translateOrganizationId(ptvPrintableFormChannel.getOrganizationId());
-    if (organizationKuntaApiId == null) {
-      return null;
-    }
+    PrintableFormServiceChannel result = new PrintableFormServiceChannel(); 
     
-    PrintableFormChannelId channelPtvId = new PrintableFormChannelId(PtvConsts.IDENTIFIER_NAME, ptvPrintableFormChannel.getId());
-    PrintableFormChannelId channelKuntaApiId = idController.translatePrintableFormServiceChannelId(channelPtvId, KuntaApiConsts.IDENTIFIER_NAME);
-    if (channelKuntaApiId == null) {
-      logger.severe(String.format("Could not translate printableForm channel id %s into Kunta API id", channelPtvId.getId()));
-      return null;
-    }
-    
-    PrintableFormChannel result = new PrintableFormChannel(); 
-    
-    result.setId(channelKuntaApiId.getId());
-    result.setType(ptvPrintableFormChannel.getType());
-    result.setOrganizationId(organizationKuntaApiId.getId());
-    result.setNames(translateLocalizedItems(ptvPrintableFormChannel.getNames()));
-    result.setDescriptions(translateLocalizedItems(ptvPrintableFormChannel.getDescriptions()));
-    result.setFormIdentifier(ptvPrintableFormChannel.getFormIdentifier());
-    result.setFormReceiver(ptvPrintableFormChannel.getFormReceiver());
-    result.setSupportContacts(translateSupportContacts(ptvPrintableFormChannel.getSupportContacts()));
-    result.setDeliveryAddress(translateAddress(ptvPrintableFormChannel.getDeliveryAddress()));
-    result.setChannelUrls(translateLocalizedItems(ptvPrintableFormChannel.getChannelUrls()));
-    result.setLanguages(ptvPrintableFormChannel.getLanguages());
-    result.setDeliveryAddressDescriptions(translateLanguageItems(ptvPrintableFormChannel.getDeliveryAddressDescriptions()));
-    result.setAttachments(translateAttachments(ptvPrintableFormChannel.getAttachments()));
-    result.setWebPages(translateWebPages(ptvPrintableFormChannel.getWebPages()));
-    result.setServiceHours(translateServiceHours(ptvPrintableFormChannel.getServiceHours()));
-    result.setPublishingStatus(ptvPrintableFormChannel.getPublishingStatus());
+    result.setId(kuntaApiPrintableFormServiceChannelId.getId());
+    result.setType(ptvPrintableFormServiceChannel.getType());
+    result.setOrganizationId(kuntaApiOrganizationId.getId());
+    result.setNames(translateLocalizedItems(ptvPrintableFormServiceChannel.getNames()));
+    result.setDescriptions(translateLocalizedItems(ptvPrintableFormServiceChannel.getDescriptions()));
+    result.setFormIdentifier(ptvPrintableFormServiceChannel.getFormIdentifier());
+    result.setFormReceiver(ptvPrintableFormServiceChannel.getFormReceiver());
+    result.setSupportContacts(translateSupportContacts(ptvPrintableFormServiceChannel.getSupportContacts()));
+    result.setDeliveryAddress(translateAddress(ptvPrintableFormServiceChannel.getDeliveryAddress()));
+    result.setChannelUrls(translateLocalizedItems(ptvPrintableFormServiceChannel.getChannelUrls()));
+    result.setLanguages(ptvPrintableFormServiceChannel.getLanguages());
+    result.setDeliveryAddressDescriptions(translateLanguageItems(ptvPrintableFormServiceChannel.getDeliveryAddressDescriptions()));
+    result.setAttachments(translateAttachments(ptvPrintableFormServiceChannel.getAttachments()));
+    result.setWebPages(translateWebPages(ptvPrintableFormServiceChannel.getWebPages()));
+    result.setServiceHours(translateServiceHours(ptvPrintableFormServiceChannel.getServiceHours()));
+    result.setPublishingStatus(ptvPrintableFormServiceChannel.getPublishingStatus());
 
     return result;
   }
 
-  public ServiceLocationChannel translateServiceLocationChannel(fi.otavanopisto.restfulptv.client.model.ServiceLocationChannel ptvServiceLocationChannel) {
-    if (ptvServiceLocationChannel == null) {
+  public ServiceLocationServiceChannel translateServiceLocationServiceChannel(ServiceLocationServiceChannelId kuntaApiServiceLocationServiceChannelId, OrganizationId kuntaApiOrganizationId, fi.metatavu.restfulptv.client.model.ServiceLocationServiceChannel ptvServiceLocationServiceChannel) {
+    if (ptvServiceLocationServiceChannel == null) {
       return null;
     }
+
+    ServiceLocationServiceChannel result = new ServiceLocationServiceChannel(); 
     
-    OrganizationId organizationKuntaApiId = translateOrganizationId(ptvServiceLocationChannel.getOrganizationId());
-    if (organizationKuntaApiId == null) {
-      return null;
-    }
-    
-    ServiceLocationChannelId channelPtvId = new ServiceLocationChannelId(PtvConsts.IDENTIFIER_NAME, ptvServiceLocationChannel.getId());
-    ServiceLocationChannelId channelKuntaApiId = idController.translateServiceLocationChannelId(channelPtvId, KuntaApiConsts.IDENTIFIER_NAME);
-    if (channelKuntaApiId == null) {
-      logger.severe(String.format("Could not translate serviceLocation channel id %s into Kunta API id", channelPtvId.getId()));
-      return null;
-    }
-    
-    ServiceLocationChannel result = new ServiceLocationChannel(); 
-    
-    result.setId(channelKuntaApiId.getId());
-    result.setType(ptvServiceLocationChannel.getType());
-    result.setOrganizationId(organizationKuntaApiId.getId());
-    result.setNames(translateLocalizedItems(ptvServiceLocationChannel.getNames()));
-    result.setDescriptions(translateLocalizedItems(ptvServiceLocationChannel.getDescriptions()));
-    result.setServiceAreaRestricted(ptvServiceLocationChannel.getServiceAreaRestricted());
-    result.setSupportContacts(translateSupportContacts(ptvServiceLocationChannel.getSupportContacts()));
-    result.setEmail(ptvServiceLocationChannel.getEmail());
-    result.setPhone(ptvServiceLocationChannel.getPhone());
-    result.setLanguages(ptvServiceLocationChannel.getLanguages());
-    result.setFax(ptvServiceLocationChannel.getFax());
-    result.setLatitude(ptvServiceLocationChannel.getLatitude());
-    result.setLongitude(ptvServiceLocationChannel.getLongitude());
-    result.setCoordinateSystem(ptvServiceLocationChannel.getCoordinateSystem());
-    result.setCoordinatesSetManually(ptvServiceLocationChannel.getCoordinatesSetManually());
-    result.setPhoneServiceCharge(ptvServiceLocationChannel.getPhoneServiceCharge());
-    result.setWebPages(translateWebPages(ptvServiceLocationChannel.getWebPages()));
-    result.setServiceAreas(ptvServiceLocationChannel.getServiceAreas());
-    result.setPhoneChargeDescriptions(translateLanguageItems(ptvServiceLocationChannel.getPhoneChargeDescriptions()));
-    result.setAddresses(translateAddresses(ptvServiceLocationChannel.getAddresses()));
-    result.setChargeTypes(ptvServiceLocationChannel.getChargeTypes());
-    result.setServiceHours(translateServiceHours(ptvServiceLocationChannel.getServiceHours()));
-    result.setPublishingStatus(ptvServiceLocationChannel.getPublishingStatus());
+    result.setId(kuntaApiServiceLocationServiceChannelId.getId());
+    result.setType(ptvServiceLocationServiceChannel.getType());
+    result.setOrganizationId(kuntaApiOrganizationId.getId());
+    result.setNames(translateLocalizedItems(ptvServiceLocationServiceChannel.getNames()));
+    result.setDescriptions(translateLocalizedItems(ptvServiceLocationServiceChannel.getDescriptions()));
+    result.setServiceAreaRestricted(ptvServiceLocationServiceChannel.getServiceAreaRestricted());
+    result.setSupportContacts(translateSupportContacts(ptvServiceLocationServiceChannel.getSupportContacts()));
+    result.setEmail(ptvServiceLocationServiceChannel.getEmail());
+    result.setPhone(ptvServiceLocationServiceChannel.getPhone());
+    result.setLanguages(ptvServiceLocationServiceChannel.getLanguages());
+    result.setFax(ptvServiceLocationServiceChannel.getFax());
+    result.setLatitude(ptvServiceLocationServiceChannel.getLatitude());
+    result.setLongitude(ptvServiceLocationServiceChannel.getLongitude());
+    result.setCoordinateSystem(ptvServiceLocationServiceChannel.getCoordinateSystem());
+    result.setCoordinatesSetManually(ptvServiceLocationServiceChannel.getCoordinatesSetManually());
+    result.setPhoneServiceCharge(ptvServiceLocationServiceChannel.getPhoneServiceCharge());
+    result.setWebPages(translateWebPages(ptvServiceLocationServiceChannel.getWebPages()));
+    result.setServiceAreas(ptvServiceLocationServiceChannel.getServiceAreas());
+    result.setPhoneChargeDescriptions(translateLanguageItems(ptvServiceLocationServiceChannel.getPhoneChargeDescriptions()));
+    result.setAddresses(translateAddresses(ptvServiceLocationServiceChannel.getAddresses()));
+    result.setChargeTypes(ptvServiceLocationServiceChannel.getChargeTypes());
+    result.setServiceHours(translateServiceHours(ptvServiceLocationServiceChannel.getServiceHours()));
+    result.setPublishingStatus(ptvServiceLocationServiceChannel.getPublishingStatus());
 
     return result;
   }
 
-  public WebPageChannel translateWebPageChannel(fi.otavanopisto.restfulptv.client.model.WebPageChannel ptvWebPageChannel) {
-    if (ptvWebPageChannel == null) {
+  public WebPageServiceChannel translateWebPageServiceChannel(WebPageServiceChannelId kuntaApiWebPageServiceChannelId, OrganizationId kuntaApIorganizationId, fi.metatavu.restfulptv.client.model.WebPageServiceChannel ptvWebPageServiceChannel) {
+    if (ptvWebPageServiceChannel == null) {
       return null;
     }
     
-    OrganizationId organizationKuntaApiId = translateOrganizationId(ptvWebPageChannel.getOrganizationId());
-    if (organizationKuntaApiId == null) {
-      return null;
-    }
+    WebPageServiceChannel result = new WebPageServiceChannel(); 
     
-    WebPageChannelId channelPtvId = new WebPageChannelId(PtvConsts.IDENTIFIER_NAME, ptvWebPageChannel.getId());
-    WebPageChannelId channelKuntaApiId = idController.translateWebPageServiceChannelId(channelPtvId, KuntaApiConsts.IDENTIFIER_NAME);
-    if (channelKuntaApiId == null) {
-      logger.severe(String.format("Could not translate webPage channel id %s into Kunta API id", channelPtvId.getId()));
-      return null;
-    }
-    
-    WebPageChannel result = new WebPageChannel(); 
-    
-    result.setId(channelKuntaApiId.getId());
-    result.setType(ptvWebPageChannel.getType());
-    result.setOrganizationId(organizationKuntaApiId.getId());
-    result.setNames(translateLocalizedItems(ptvWebPageChannel.getNames()));
-    result.setDescriptions(translateLocalizedItems(ptvWebPageChannel.getDescriptions()));
-    result.setUrls(translateLanguageItems(ptvWebPageChannel.getUrls()));
-    result.setAttachments(translateAttachments(ptvWebPageChannel.getAttachments()));
-    result.setSupportContacts(translateSupportContacts(ptvWebPageChannel.getSupportContacts()));
-    result.setLanguages(ptvWebPageChannel.getLanguages());
-    result.setWebPages(translateWebPages(ptvWebPageChannel.getWebPages()));
-    result.setServiceHours(translateServiceHours(ptvWebPageChannel.getServiceHours()));
-    result.setPublishingStatus(ptvWebPageChannel.getPublishingStatus());
+    result.setId(kuntaApiWebPageServiceChannelId.getId());
+    result.setType(ptvWebPageServiceChannel.getType());
+    result.setOrganizationId(kuntaApIorganizationId.getId());
+    result.setNames(translateLocalizedItems(ptvWebPageServiceChannel.getNames()));
+    result.setDescriptions(translateLocalizedItems(ptvWebPageServiceChannel.getDescriptions()));
+    result.setUrls(translateLanguageItems(ptvWebPageServiceChannel.getUrls()));
+    result.setAttachments(translateAttachments(ptvWebPageServiceChannel.getAttachments()));
+    result.setSupportContacts(translateSupportContacts(ptvWebPageServiceChannel.getSupportContacts()));
+    result.setLanguages(ptvWebPageServiceChannel.getLanguages());
+    result.setWebPages(translateWebPages(ptvWebPageServiceChannel.getWebPages()));
+    result.setServiceHours(translateServiceHours(ptvWebPageServiceChannel.getServiceHours()));
+    result.setPublishingStatus(ptvWebPageServiceChannel.getPublishingStatus());
     
     return result;
   }
 
-  public List<WebPage> translateWebPages(List<fi.otavanopisto.restfulptv.client.model.WebPage> ptvWebPages) {
+  public List<WebPage> translateWebPages(List<fi.metatavu.restfulptv.client.model.WebPage> ptvWebPages) {
     if (ptvWebPages == null) {
       return Collections.emptyList();
     }
 
     List<WebPage> result = new ArrayList<>(ptvWebPages.size());
 
-    for (fi.otavanopisto.restfulptv.client.model.WebPage ptvWebPage : ptvWebPages) {
+    for (fi.metatavu.restfulptv.client.model.WebPage ptvWebPage : ptvWebPages) {
       WebPage webPage = translateWebPage(ptvWebPage);
       if (webPage != null) {
         result.add(webPage);
@@ -482,7 +343,7 @@ public class PtvTranslator {
     return result;
   }
   
-  public WebPage translateWebPage(fi.otavanopisto.restfulptv.client.model.WebPage ptvWebPage) {
+  public WebPage translateWebPage(fi.metatavu.restfulptv.client.model.WebPage ptvWebPage) {
     if (ptvWebPage == null) {
       return null;
     }
@@ -497,25 +358,14 @@ public class PtvTranslator {
     return webPage;
   }
 
-  private OrganizationId translateOrganizationId(String ptvOrganizationId) {
-    OrganizationId organizationPtvId = new OrganizationId(PtvConsts.IDENTIFIER_NAME, ptvOrganizationId);
-    OrganizationId organizationKuntaApiId = idController.translateOrganizationId(organizationPtvId, KuntaApiConsts.IDENTIFIER_NAME);
-    if (organizationKuntaApiId == null) {
-      logger.severe(String.format("Could not translate organization id %s into Kunta API id", organizationPtvId.getId()));
-      return null;
-    }
-    
-    return organizationKuntaApiId;
-  }
-  
-  private List<Address> translateAddresses(List<fi.otavanopisto.restfulptv.client.model.Address> ptvAddresses) {
+  private List<Address> translateAddresses(List<fi.metatavu.restfulptv.client.model.Address> ptvAddresses) {
     if (ptvAddresses == null) {
       return Collections.emptyList();
     }
 
     List<Address> result = new ArrayList<>(ptvAddresses.size());
 
-    for (fi.otavanopisto.restfulptv.client.model.Address ptvAddress : ptvAddresses) {
+    for (fi.metatavu.restfulptv.client.model.Address ptvAddress : ptvAddresses) {
       Address address = translateAddress(ptvAddress);
       if (address != null) {
         result.add(address);
@@ -525,14 +375,14 @@ public class PtvTranslator {
     return result;
   }
   
-  private List<ServiceHour> translateServiceHours(List<fi.otavanopisto.restfulptv.client.model.ServiceHour> ptvServiceHours) {
+  private List<ServiceHour> translateServiceHours(List<fi.metatavu.restfulptv.client.model.ServiceHour> ptvServiceHours) {
     if (ptvServiceHours == null) {
       return Collections.emptyList();
     }
 
     List<ServiceHour> result = new ArrayList<>(ptvServiceHours.size());
 
-    for (fi.otavanopisto.restfulptv.client.model.ServiceHour ptvServiceHour : ptvServiceHours) {
+    for (fi.metatavu.restfulptv.client.model.ServiceHour ptvServiceHour : ptvServiceHours) {
       ServiceHour serviceHour = translateServiceHour(ptvServiceHour);
       if (serviceHour != null) {
         result.add(serviceHour);
@@ -542,7 +392,7 @@ public class PtvTranslator {
     return result;
   }
   
-  private ServiceHour translateServiceHour(fi.otavanopisto.restfulptv.client.model.ServiceHour ptvServiceHour) {
+  private ServiceHour translateServiceHour(fi.metatavu.restfulptv.client.model.ServiceHour ptvServiceHour) {
     if (ptvServiceHour == null) {
       return null;
     }
@@ -550,12 +400,13 @@ public class PtvTranslator {
     ServiceHour result = new ServiceHour();
     result.setAdditionalInformation(translateLanguageItems(ptvServiceHour.getAdditionalInformation()));
     result.setCloses(ptvServiceHour.getCloses());
-    result.setDays(ptvServiceHour.getDays());
+    result.setDays(parseServiceHourDays(ptvServiceHour));
     result.setOpens(ptvServiceHour.getOpens());
-    result.setStatus(ptvServiceHour.getStatus());
     result.setType(ptvServiceHour.getType());
     result.setValidFrom(ptvServiceHour.getValidFrom());
     result.setValidTo(ptvServiceHour.getValidTo());
+    result.setExceptionHourType(ptvServiceHour.getExceptionHourType());
+    result.setTimezone(PtvConsts.TIMEZONE);
 
     return result;
   }
@@ -593,13 +444,13 @@ public class PtvTranslator {
   }
   
 
-  private List<ServiceChannelAttachment> translateAttachments(List<fi.otavanopisto.restfulptv.client.model.Attachment> ptvAttachments) {
+  private List<ServiceChannelAttachment> translateAttachments(List<fi.metatavu.restfulptv.client.model.Attachment> ptvAttachments) {
     if (ptvAttachments == null) {
       return Collections.emptyList();
     }
 
     List<ServiceChannelAttachment> result = new ArrayList<>(ptvAttachments.size());
-    for (fi.otavanopisto.restfulptv.client.model.Attachment ptvAttachment : ptvAttachments) {
+    for (fi.metatavu.restfulptv.client.model.Attachment ptvAttachment : ptvAttachments) {
       ServiceChannelAttachment attachment = translateAttachment(ptvAttachment);
       if (attachment != null) {
         result.add(attachment);
@@ -609,7 +460,7 @@ public class PtvTranslator {
     return result;
   }
 
-  private Address translateAddress(fi.otavanopisto.restfulptv.client.model.Address address) {
+  private Address translateAddress(fi.metatavu.restfulptv.client.model.Address address) {
     if (address == null) {
       return null;
     }
@@ -629,7 +480,7 @@ public class PtvTranslator {
     return result;
   }
   
-  private ServiceChannelAttachment translateAttachment(fi.otavanopisto.restfulptv.client.model.Attachment ptvAttachment) {
+  private ServiceChannelAttachment translateAttachment(fi.metatavu.restfulptv.client.model.Attachment ptvAttachment) {
     if (ptvAttachment == null) {
       return null;
     }
@@ -684,4 +535,51 @@ public class PtvTranslator {
     return -1;
   }
   
+  private List<Integer> parseServiceHourDays(fi.metatavu.restfulptv.client.model.ServiceHour serviceHour) {
+    if (serviceHour == null) {
+      return Collections.emptyList();
+    }
+    
+    List<Integer> days = new ArrayList<>(7);
+    
+    if (Boolean.TRUE.equals(serviceHour.getMonday())) {
+      days.add(1);
+    }
+    
+    if (Boolean.TRUE.equals(serviceHour.getTuesday())) {
+      days.add(2);
+    }
+    
+    if (Boolean.TRUE.equals(serviceHour.getWednesday())) {
+      days.add(3);
+    }
+    
+    if (Boolean.TRUE.equals(serviceHour.getThursday())) {
+      days.add(4);
+    }
+    
+    if (Boolean.TRUE.equals(serviceHour.getFriday())) {
+      days.add(5);
+    }
+    
+    if (Boolean.TRUE.equals(serviceHour.getSaturday())) {
+      days.add(6);
+    }
+    
+    if (Boolean.TRUE.equals(serviceHour.getSunday())) {
+      days.add(0);
+    }
+    
+    return days;
+  }
+
+  private List<String> extractIds(List<? extends BaseId> kuntaApiIds) {
+    List<String> result = new ArrayList<>(kuntaApiIds.size());
+    
+    for (BaseId kuntaApiId : kuntaApiIds) {
+      result.add(kuntaApiId.getId());
+    }
+    
+    return result;
+  }
 }

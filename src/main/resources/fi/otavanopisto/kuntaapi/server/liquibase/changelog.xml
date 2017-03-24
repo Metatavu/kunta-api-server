@@ -322,4 +322,15 @@
     </createIndex>
   </changeSet>
   
+  <changeSet id="service-channel-types" author="antti.leppa">
+    <sql dbms="mysql">UPDATE ArchivedIdentifier SET type = 'PHONE_SERVICE_CHANNEL' where type = 'PHONE_CHANNEL'</sql>
+    <sql dbms="mysql">UPDATE Identifier SET type = 'PHONE_SERVICE_CHANNEL' where type = 'PHONE_CHANNEL'</sql>
+    <sql dbms="mysql">UPDATE ArchivedIdentifier SET type = 'PRINTABLE_FORM_SERVICE_CHANNEL' where type = 'PRINTABLE_FORM_CHANNEL'</sql>
+    <sql dbms="mysql">UPDATE Identifier SET type = 'PRINTABLE_FORM_SERVICE_CHANNEL' where type = 'PRINTABLE_FORM_CHANNEL'</sql>
+    <sql dbms="mysql">UPDATE ArchivedIdentifier SET type = 'SERVICE_LOCATION_SERVICE_CHANNEL' where type = 'SERVICE_LOCATION_CHANNEL'</sql>
+    <sql dbms="mysql">UPDATE Identifier SET type = 'SERVICE_LOCATION_SERVICE_CHANNEL' where type = 'SERVICE_LOCATION_CHANNEL'</sql>
+    <sql dbms="mysql">UPDATE ArchivedIdentifier SET type = 'WEBPAGE_SERVICE_CHANNEL' where type = 'WEBPAGE_CHANNEL'</sql>
+    <sql dbms="mysql">UPDATE Identifier SET type = 'WEBPAGE_SERVICE_CHANNEL' where type = 'WEBPAGE_CHANNEL'</sql>
+  </changeSet>
+  
 </databaseChangeLog>

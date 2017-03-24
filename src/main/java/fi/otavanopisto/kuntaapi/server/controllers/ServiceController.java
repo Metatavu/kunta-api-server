@@ -11,22 +11,22 @@ import javax.inject.Inject;
 
 import fi.otavanopisto.kuntaapi.server.id.ElectronicServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
-import fi.otavanopisto.kuntaapi.server.id.PhoneChannelId;
-import fi.otavanopisto.kuntaapi.server.id.PrintableFormChannelId;
+import fi.otavanopisto.kuntaapi.server.id.PhoneServiceChannelId;
+import fi.otavanopisto.kuntaapi.server.id.PrintableFormServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceId;
-import fi.otavanopisto.kuntaapi.server.id.ServiceLocationChannelId;
-import fi.otavanopisto.kuntaapi.server.id.WebPageChannelId;
+import fi.otavanopisto.kuntaapi.server.id.ServiceLocationServiceChannelId;
+import fi.otavanopisto.kuntaapi.server.id.WebPageServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.index.SearchResult;
 import fi.otavanopisto.kuntaapi.server.index.ServiceSearcher;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceChannelProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceProvider;
 import fi.otavanopisto.kuntaapi.server.utils.ListUtils;
-import fi.metatavu.kuntaapi.server.rest.model.ElectronicChannel;
-import fi.metatavu.kuntaapi.server.rest.model.PhoneChannel;
-import fi.metatavu.kuntaapi.server.rest.model.PrintableFormChannel;
+import fi.metatavu.kuntaapi.server.rest.model.ElectronicServiceChannel;
+import fi.metatavu.kuntaapi.server.rest.model.PhoneServiceChannel;
+import fi.metatavu.kuntaapi.server.rest.model.PrintableFormServiceChannel;
 import fi.metatavu.kuntaapi.server.rest.model.Service;
-import fi.metatavu.kuntaapi.server.rest.model.ServiceLocationChannel;
-import fi.metatavu.kuntaapi.server.rest.model.WebPageChannel;
+import fi.metatavu.kuntaapi.server.rest.model.ServiceLocationServiceChannel;
+import fi.metatavu.kuntaapi.server.rest.model.WebPageServiceChannel;
 
 @ApplicationScoped
 @SuppressWarnings ("squid:S3306")
@@ -83,9 +83,9 @@ public class ServiceController {
     return Collections.emptyList();
   }
   
-  public ElectronicChannel findElectronicChannel(ServiceId serviceId, ElectronicServiceChannelId electronicChannelId) {
+  public ElectronicServiceChannel findElectronicServiceChannel(ElectronicServiceChannelId electronicChannelId) {
     for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
-      ElectronicChannel electronicChannel = serviceChannelProvider.findElectronicChannel(serviceId, electronicChannelId);
+      ElectronicServiceChannel electronicChannel = serviceChannelProvider.findElectronicServiceChannel(electronicChannelId);
       if (electronicChannel != null) {
         return electronicChannel;
       }
@@ -94,9 +94,9 @@ public class ServiceController {
     return null;
   }
 
-  public PhoneChannel findPhoneChannel(ServiceId serviceId, PhoneChannelId phoneChannelId) {
+  public PhoneServiceChannel findPhoneServiceChannel(PhoneServiceChannelId phoneChannelId) {
     for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
-      PhoneChannel phoneChannel = serviceChannelProvider.findPhoneChannel(serviceId, phoneChannelId);
+      PhoneServiceChannel phoneChannel = serviceChannelProvider.findPhoneServiceChannel(phoneChannelId);
       if (phoneChannel != null) {
         return phoneChannel;
       }
@@ -105,9 +105,9 @@ public class ServiceController {
     return null;
   }
 
-  public PrintableFormChannel findPrintableFormChannel(ServiceId serviceId, PrintableFormChannelId printableFormChannelId) {
+  public PrintableFormServiceChannel findPrintableFormServiceChannel(PrintableFormServiceChannelId printableFormChannelId) {
     for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
-      PrintableFormChannel printableFormChannel = serviceChannelProvider.findPrintableFormChannel(serviceId, printableFormChannelId);
+      PrintableFormServiceChannel printableFormChannel = serviceChannelProvider.findPrintableFormServiceChannel(printableFormChannelId);
       if (printableFormChannel != null) {
         return printableFormChannel;
       }
@@ -116,9 +116,9 @@ public class ServiceController {
     return null;
   }
 
-  public ServiceLocationChannel findServiceLocationChannel(ServiceId serviceId, ServiceLocationChannelId serviceLocationChannelId) {
+  public ServiceLocationServiceChannel findServiceLocationServiceChannel(ServiceLocationServiceChannelId serviceLocationChannelId) {
     for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
-      ServiceLocationChannel serviceLocationChannel = serviceChannelProvider.findServiceLocationChannel(serviceId, serviceLocationChannelId);
+      ServiceLocationServiceChannel serviceLocationChannel = serviceChannelProvider.findServiceLocationServiceChannel(serviceLocationChannelId);
       if (serviceLocationChannel != null) {
         return serviceLocationChannel;
       }
@@ -127,9 +127,9 @@ public class ServiceController {
     return null;
   }
 
-  public WebPageChannel findWebPageChannel(ServiceId serviceId, WebPageChannelId webPageChannelId) {
+  public WebPageServiceChannel findWebPageServiceChannel(WebPageServiceChannelId webPageChannelId) {
     for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
-      WebPageChannel webPageChannel = serviceChannelProvider.findWebPageChannelChannel(serviceId, webPageChannelId);
+      WebPageServiceChannel webPageChannel = serviceChannelProvider.findWebPageServiceChannelChannel(webPageChannelId);
       if (webPageChannel != null) {
         return webPageChannel;
       }
@@ -138,74 +138,54 @@ public class ServiceController {
     return null;
   }
 
-  public List<ElectronicChannel> listElectronicChannels(Long firstResult, Long maxResults, ServiceId serviceId) {
-    List<ElectronicChannel> result = new ArrayList<>();
+  public List<ElectronicServiceChannel> listElectronicServiceChannels(Long firstResult, Long maxResults) {
+    List<ElectronicServiceChannel> result = new ArrayList<>();
     
     for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
-      result.addAll(serviceChannelProvider.listElectronicChannels(serviceId));
+      result.addAll(serviceChannelProvider.listElectronicServiceChannels());
     }
-    
-    int resultCount = result.size();
-    int firstIndex = firstResult == null ? 0 : Math.min(firstResult.intValue(), resultCount);
-    int toIndex = maxResults == null ? resultCount : Math.min(firstIndex + maxResults.intValue(), resultCount);
-    
-    return entityController.sortEntitiesInNaturalOrder(result.subList(firstIndex, toIndex));
+
+    return ListUtils.limit(entityController.sortEntitiesInNaturalOrder(result), firstResult, maxResults);
   }
 
-  public List<PhoneChannel> listPhoneChannels(Long firstResult, Long maxResults, ServiceId serviceId) {
-    List<PhoneChannel> result = new ArrayList<>();
+  public List<PhoneServiceChannel> listPhoneServiceChannels(Long firstResult, Long maxResults) {
+    List<PhoneServiceChannel> result = new ArrayList<>();
     
     for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
-      result.addAll(serviceChannelProvider.listPhoneChannels(serviceId));
+      result.addAll(serviceChannelProvider.listPhoneServiceChannels());
     }
-    
-    int resultCount = result.size();
-    int firstIndex = firstResult == null ? 0 : Math.min(firstResult.intValue(), resultCount);
-    int toIndex = maxResults == null ? resultCount : Math.min(firstIndex + maxResults.intValue(), resultCount);
-    
-    return entityController.sortEntitiesInNaturalOrder(result.subList(firstIndex, toIndex));
+
+    return ListUtils.limit(entityController.sortEntitiesInNaturalOrder(result), firstResult, maxResults);
   }
 
-  public List<PrintableFormChannel> listPrintableFormChannels(Long firstResult, Long maxResults, ServiceId serviceId) {
-    List<PrintableFormChannel> result = new ArrayList<>();
+  public List<PrintableFormServiceChannel> listPrintableFormServiceChannels(Long firstResult, Long maxResults) {
+    List<PrintableFormServiceChannel> result = new ArrayList<>();
     
     for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
-      result.addAll(serviceChannelProvider.listPrintableFormChannels(serviceId));
+      result.addAll(serviceChannelProvider.listPrintableFormServiceChannels());
     }
-    
-    int resultCount = result.size();
-    int firstIndex = firstResult == null ? 0 : Math.min(firstResult.intValue(), resultCount);
-    int toIndex = maxResults == null ? resultCount : Math.min(firstIndex + maxResults.intValue(), resultCount);
-    
-    return entityController.sortEntitiesInNaturalOrder(result.subList(firstIndex, toIndex));
+
+    return ListUtils.limit(entityController.sortEntitiesInNaturalOrder(result), firstResult, maxResults);
   }
 
-  public List<ServiceLocationChannel> listServiceLocationChannels(Long firstResult, Long maxResults, ServiceId serviceId) {
-    List<ServiceLocationChannel> result = new ArrayList<>();
+  public List<ServiceLocationServiceChannel> listServiceLocationServiceChannels(Long firstResult, Long maxResults) {
+    List<ServiceLocationServiceChannel> result = new ArrayList<>();
     
     for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
-      result.addAll(serviceChannelProvider.listServiceLocationChannels(serviceId));
+      result.addAll(serviceChannelProvider.listServiceLocationServiceChannels());
     }
-    
-    int resultCount = result.size();
-    int firstIndex = firstResult == null ? 0 : Math.min(firstResult.intValue(), resultCount);
-    int toIndex = maxResults == null ? resultCount : Math.min(firstIndex + maxResults.intValue(), resultCount);
-    
-    return entityController.sortEntitiesInNaturalOrder(result.subList(firstIndex, toIndex));
+
+    return ListUtils.limit(entityController.sortEntitiesInNaturalOrder(result), firstResult, maxResults);
   }
 
-  public List<WebPageChannel> listWebPageChannels(Long firstResult, Long maxResults, ServiceId serviceId) {
-    List<WebPageChannel> result = new ArrayList<>();
+  public List<WebPageServiceChannel> listWebPageServiceChannels(Long firstResult, Long maxResults) {
+    List<WebPageServiceChannel> result = new ArrayList<>();
     
     for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
-      result.addAll(serviceChannelProvider.listWebPageChannelsChannels(serviceId));
+      result.addAll(serviceChannelProvider.listWebPageServiceChannelsChannels());
     }
-    
-    int resultCount = result.size();
-    int firstIndex = firstResult == null ? 0 : Math.min(firstResult.intValue(), resultCount);
-    int toIndex = maxResults == null ? resultCount : Math.min(firstIndex + maxResults.intValue(), resultCount);
-    
-    return entityController.sortEntitiesInNaturalOrder(result.subList(firstIndex, toIndex));
+
+    return ListUtils.limit(entityController.sortEntitiesInNaturalOrder(result), firstResult, maxResults);
   }
   
   private List<ServiceProvider> getServiceProviders() {

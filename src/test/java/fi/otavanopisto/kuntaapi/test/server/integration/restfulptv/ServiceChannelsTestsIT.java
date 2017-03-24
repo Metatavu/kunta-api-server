@@ -37,15 +37,26 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
       .startMock();
     
     getRestfulPtvServiceMocker()
-      .mockServices("6c9926b9-4aa0-4635-b66a-471af07dfec3", "822d5347-8398-4866-bb9d-9cdc60b38fba")
-      .mockElectronicServiceChannels("6c9926b9-4aa0-4635-b66a-471af07dfec3", "22472ece-95a0-4fef-a429-b4da689677b2", "44187ff9-71ed-40df-89f6-916be4f3baa6", "799e0e4f-4da7-4e7d-9e0e-f1370b80fc9a")
-      .mockPhoneServiceChannels("6c9926b9-4aa0-4635-b66a-471af07dfec3", "108f0c61-bfba-4dd7-8f02-deb4e77c52d0", "626cdd7a-e205-42da-8ce5-82b3b7add258", "e9e86a9e-6593-469d-bc01-f1a59c28168d")
-      .mockPrintableFormServiceChannels("6c9926b9-4aa0-4635-b66a-471af07dfec3", "02256ce8-2879-47e4-a6f5-339872f0f758", "1a17f994-b924-46ae-8708-c09938125119", "6fb56241-1b43-4e42-8231-43ba8d86be36")
-      .mockServiceLocationServiceChannels("6c9926b9-4aa0-4635-b66a-471af07dfec3", "9a9f5def-92e4-4b79-a49a-ccf20a0f75b6", "c0681f51-d1b4-4a9b-bbbf-ddf9a5273cd1", "cf927001-8b45-4f08-b93b-c78fe8477928")
-      .mockWebPageServiceChannels("6c9926b9-4aa0-4635-b66a-471af07dfec3", "4b08ae17-75ae-4746-9382-1316c4ec02c5", "aedae320-a2b2-4fe6-b23b-2e1a025ba415", "e9ec256b-5ca2-4663-9da6-d8a2faff21a8");
+      .mockServices("6c9926b9-4aa0-4635-b66a-471af07dfec3", "822d5347-8398-4866-bb9d-9cdc60b38fba");
+    
+    getRestfulPtvElectronicServiceChannelMocker()
+      .mockElectronicServiceChannels("22472ece-95a0-4fef-a429-b4da689677b2", "44187ff9-71ed-40df-89f6-916be4f3baa6", "799e0e4f-4da7-4e7d-9e0e-f1370b80fc9a");
+    
+    getRestfulPtvPhoneServiceChannelMocker()
+      .mockPhoneServiceChannels("108f0c61-bfba-4dd7-8f02-deb4e77c52d0", "626cdd7a-e205-42da-8ce5-82b3b7add258", "e9e86a9e-6593-469d-bc01-f1a59c28168d");
+      
+    getRestfulPtvPrintableFormServiceChannelMocker()
+      .mockPrintableFormServiceChannels("02256ce8-2879-47e4-a6f5-339872f0f758", "1a17f994-b924-46ae-8708-c09938125119", "6fb56241-1b43-4e42-8231-43ba8d86be36");
+      
+    getRestfulPtvServiceLocationServiceChannelMocker()
+      .mockServiceLocationServiceChannels("9a9f5def-92e4-4b79-a49a-ccf20a0f75b6", "c0681f51-d1b4-4a9b-bbbf-ddf9a5273cd1", "cf927001-8b45-4f08-b93b-c78fe8477928");
+      
+    getRestfulPtvWebPageServiceChannelMocker()
+      .mockWebPageServiceChannels("4b08ae17-75ae-4746-9382-1316c4ec02c5", "aedae320-a2b2-4fe6-b23b-2e1a025ba415", "e9ec256b-5ca2-4663-9da6-d8a2faff21a8");
     
     startMocks();
 
+    
     waitApiListCount("/organizations", 1);
     waitApiListCount("/services", 2);
   }
@@ -64,61 +75,61 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
     deleteSystemSetting(PtvConsts.SYSTEM_SETTING_BASEURL);
   }
   
-  private String getElectronicChannelId(String serviceId, int index) throws InterruptedException {
-    waitApiListCount(String.format("/services/%s/electronicChannels", serviceId), 3);
+  private String getElectronicChannelId(int index) throws InterruptedException {
+    waitApiListCount("/electronicServiceChannels", 3);
     
     return given() 
       .baseUri(getApiBasePath())
       .contentType(ContentType.JSON)
-      .get("/services/{serviceId}/electronicChannels", serviceId)
+      .get("/electronicServiceChannels")
       .body()
       .jsonPath()
       .getString(String.format("id[%d]", index));
   }
   
-  private String getPhoneChannelId(String serviceId, int index) throws InterruptedException {
-    waitApiListCount(String.format("/services/%s/phoneChannels", serviceId), 3);
+  private String getPhoneChannelId(int index) throws InterruptedException {
+    waitApiListCount("/phoneServiceChannels", 3);
     
     return given() 
       .baseUri(getApiBasePath())
       .contentType(ContentType.JSON)
-      .get("/services/{serviceId}/phoneChannels", serviceId)
+      .get("/phoneServiceChannels")
       .body()
       .jsonPath()
       .getString(String.format("id[%d]", index));
   }
   
-  private String getPrintableFormChannelId(String serviceId, int index) throws InterruptedException {
-    waitApiListCount(String.format("/services/%s/printableFormChannels", serviceId), 3);
+  private String getPrintableFormChannelId(int index) throws InterruptedException {
+    waitApiListCount("/printableFormServiceChannels", 3);
     
     return given() 
       .baseUri(getApiBasePath())
       .contentType(ContentType.JSON)
-      .get("/services/{serviceId}/printableFormChannels", serviceId)
+      .get("/printableFormServiceChannels")
       .body()
       .jsonPath()
       .getString(String.format("id[%d]", index));
   }
   
-  private String getServiceLocationChannelId(String serviceId, int index) throws InterruptedException {
-    waitApiListCount(String.format("/services/%s/serviceLocationChannels", serviceId), 3);
+  private String getServiceLocationChannelId(int index) throws InterruptedException {
+    waitApiListCount("/serviceLocationServiceChannels", 3);
     
     return given() 
       .baseUri(getApiBasePath())
       .contentType(ContentType.JSON)
-      .get("/services/{serviceId}/serviceLocationChannels", serviceId)
+      .get("/serviceLocationServiceChannels")
       .body()
       .jsonPath()
       .getString(String.format("id[%d]", index));
   }
   
-  private String getWebPageChannelId(String serviceId, int index) throws InterruptedException {
-    waitApiListCount(String.format("/services/%s/webPageChannels", serviceId), 3);
+  private String getWebPageChannelId(int index) throws InterruptedException {
+    waitApiListCount("/webPageServiceChannels", 3);
     
     return given() 
       .baseUri(getApiBasePath())
       .contentType(ContentType.JSON)
-      .get("/services/{serviceId}/webPageChannels", serviceId)
+      .get("/webPageServiceChannels")
       .body()
       .jsonPath()
       .getString(String.format("id[%d]", index));
@@ -126,20 +137,18 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
 
   @Test
   public void testFindElectronicChannel() throws InterruptedException {
-    String serviceId = getServiceId(0);
-      
-    waitApiListCount(String.format("/services/%s/electronicChannels", serviceId), 3);
+    waitApiListCount("/electronicServiceChannels", 3);
     
     String channelId = given() 
       .baseUri(getApiBasePath())
       .contentType(ContentType.JSON)
-      .get("/services/{serviceId}/electronicChannels", serviceId)
+      .get("/electronicServiceChannels")
       .body().jsonPath().getString("id[0]");
 
     given() 
       .baseUri(getApiBasePath())
       .contentType(ContentType.JSON)
-      .get("/services/{serviceId}/electronicChannels/{channelId}", serviceId, channelId)
+      .get("/electronicServiceChannels/{channelId}", channelId)
       .then()
       .assertThat()
       .statusCode(200)
@@ -176,14 +185,12 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
   
   @Test
   public void testListElectronicChannels() throws InterruptedException {
-    String serviceId = getServiceId(0);
-    
-    waitApiListCount(String.format("/services/%s/electronicChannels", serviceId), 3);
+    waitApiListCount("/electronicServiceChannels", 3);
     
     given() 
       .baseUri(getApiBasePath())
       .contentType(ContentType.JSON)
-      .get("/services/{serviceId}/electronicChannels", serviceId)
+      .get("/electronicServiceChannels")
       .then()
       .assertThat()
       .statusCode(200)
@@ -222,20 +229,18 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
   
   @Test
   public void testFindPhoneChannel() throws InterruptedException {
-    String serviceId = getServiceId(0);
-      
-    waitApiListCount(String.format("/services/%s/phoneChannels", serviceId), 3);
+    waitApiListCount("/phoneServiceChannels", 3);
     
     String channelId = given() 
       .baseUri(getApiBasePath())
       .contentType(ContentType.JSON)
-      .get("/services/{serviceId}/phoneChannels", serviceId)
+      .get("/phoneServiceChannels")
       .body().jsonPath().getString("id[0]");
 
     given() 
       .baseUri(getApiBasePath())
       .contentType(ContentType.JSON)
-      .get("/services/{serviceId}/phoneChannels/{channelId}", serviceId, channelId)
+      .get("/phoneServiceChannels/{channelId}", channelId)
       .then()
       .assertThat()
       .statusCode(200)
@@ -272,13 +277,12 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
       .body("webPages[0].language", is("fi"))
       .body("webPages[0].value", is("Mikkelin kansalaisopisto kotisivu"))
       .body("webPages[0].type", is("HomePage"))
-      .body("serviceHours.size()", is(2))
+      .body("serviceHours.size()", is(1))
       .body("serviceHours[0].type", is("Standard"))
-      .body("serviceHours[0].validFrom", is((String) null))
-      .body("serviceHours[0].validTo", is((String) null))
+      .body("serviceHours[0].validFrom", nullValue())
+      .body("serviceHours[0].validTo", nullValue())
       .body("serviceHours[0].opens", is("09:00"))
       .body("serviceHours[0].closes", is("16:00"))
-      .body("serviceHours[0].status", is("OPEN"))
       .body("serviceHours[0].days.size()", is(4))
       .body("serviceHours[0].days[0]", is(1))
       .body("serviceHours[0].days[1]", is(2))
@@ -286,31 +290,18 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
       .body("serviceHours[0].days[3]", is(4))
       .body("serviceHours[0].additionalInformation.size()", is(1))
       .body("serviceHours[0].additionalInformation[0].value", is("Suljettu klo 12.00-12.30 välisenä aikana."))
-      .body("serviceHours[0].additionalInformation[0].language", is("fi"))
-      .body("serviceHours[1].type", is("Standard"))
-      .body("serviceHours[1].validFrom", nullValue())
-      .body("serviceHours[1].validTo", nullValue())
-      .body("serviceHours[1].opens", nullValue())
-      .body("serviceHours[1].closes", nullValue())
-      .body("serviceHours[1].status", is("CLOSED"))
-      .body("serviceHours[1].days.size()", is(3))
-      .body("serviceHours[1].days[0]", is(5))
-      .body("serviceHours[1].days[1]", is(6))
-      .body("serviceHours[1].days[2]", is(0))
-      .body("serviceHours[1].additionalInformation.size()", is(0))
+      .body("serviceHours[0].additionalInformation[0].language", is("fi"))     
       .body("publishingStatus", is("Published"));
   }
   
   @Test
   public void testListPhoneChannels() throws InterruptedException {
-    String serviceId = getServiceId(0);
-      
-    waitApiListCount(String.format("/services/%s/phoneChannels", serviceId), 3);
+    waitApiListCount("/phoneServiceChannels", 3);
 
     given() 
       .baseUri(getApiBasePath())
       .contentType(ContentType.JSON)
-      .get("/services/{serviceId}/phoneChannels", serviceId)
+      .get("/phoneServiceChannels")
       .then()
       .assertThat()
       .statusCode(200)
@@ -345,7 +336,6 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
       .body("serviceHours[1][0].validTo", is((String) null))
       .body("serviceHours[1][0].opens", is("08:00"))
       .body("serviceHours[1][0].closes", is("22:00"))
-      .body("serviceHours[1][0].status", is("OPEN"))
       .body("serviceHours[1][0].days.size()", is(7))
       .body("serviceHours[1][0].days[0]", is(1))
       .body("serviceHours[1][0].days[1]", is(2))
@@ -360,20 +350,18 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
   
   @Test
   public void testFindPrintableFormChannel() throws InterruptedException {
-    String serviceId = getServiceId(0);
-      
-    waitApiListCount(String.format("/services/%s/printableFormChannels", serviceId), 3);
+    waitApiListCount("/printableFormServiceChannels", 3);
     
     String channelId = given() 
       .baseUri(getApiBasePath())
       .contentType(ContentType.JSON)
-      .get("/services/{serviceId}/printableFormChannels", serviceId)
+      .get("/printableFormServiceChannels")
       .body().jsonPath().getString("id[0]");
 
     given() 
       .baseUri(getApiBasePath())
       .contentType(ContentType.JSON)
-      .get("/services/{serviceId}/printableFormChannels/{channelId}", serviceId, channelId)
+      .get("/printableFormServiceChannels/{channelId}", channelId)
       .then()
       .assertThat()
       .statusCode(200)
@@ -412,14 +400,12 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
 
   @Test
   public void testListPrintableFormChannels() throws InterruptedException {
-    String serviceId = getServiceId(0);
-      
-    waitApiListCount(String.format("/services/%s/printableFormChannels", serviceId), 3);
+    waitApiListCount("/printableFormServiceChannels", 3);
 
     given() 
       .baseUri(getApiBasePath())
       .contentType(ContentType.JSON)
-      .get("/services/{serviceId}/printableFormChannels", serviceId)
+      .get("/printableFormServiceChannels")
       .then()
       .assertThat()
       .statusCode(200)
@@ -458,20 +444,18 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
   
   @Test
   public void testFindServiceLocationChannel() throws InterruptedException {
-    String serviceId = getServiceId(0);
-      
-    waitApiListCount(String.format("/services/%s/serviceLocationChannels", serviceId), 3);
+    waitApiListCount("/serviceLocationServiceChannels", 3);
     
     String channelId = given() 
       .baseUri(getApiBasePath())
       .contentType(ContentType.JSON)
-      .get("/services/{serviceId}/serviceLocationChannels", serviceId)
+      .get("/serviceLocationServiceChannels")
       .body().jsonPath().getString("id[0]");
     
     given() 
       .baseUri(getApiBasePath())
       .contentType(ContentType.JSON)
-      .get("/services/{serviceId}/serviceLocationChannels/{channelId}", serviceId, channelId)
+      .get("/serviceLocationServiceChannels/{channelId}", channelId)
       .then()
       .assertThat()
       .statusCode(200)
@@ -528,7 +512,6 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
       .body("serviceHours[0].validTo", is((String) null))
       .body("serviceHours[0].opens", is("06:30"))
       .body("serviceHours[0].closes", is("17:00"))
-      .body("serviceHours[0].status", is("OPEN"))
       .body("serviceHours[0].days.size()", is(7))
       .body("serviceHours[0].days[0]", is(1))
       .body("serviceHours[0].days[1]", is(2))
@@ -543,14 +526,12 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
 
   @Test
   public void testListServiceLocationChannel() throws InterruptedException {
-    String serviceId = getServiceId(0);
-      
-    waitApiListCount(String.format("/services/%s/serviceLocationChannels", serviceId), 3);
+    waitApiListCount("/serviceLocationServiceChannels", 3);
     
     given() 
       .baseUri(getApiBasePath())
       .contentType(ContentType.JSON)
-      .get("/services/{serviceId}/serviceLocationChannels", serviceId)
+      .get("/serviceLocationServiceChannels")
       .then()
       .assertThat()
       .statusCode(200)
@@ -601,13 +582,12 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
       .body("addresses[1][0].qualifier", nullValue())
       .body("addresses[1][0].additionalInformations.size()", is(0))
       .body("chargeTypes[1].size()", is(0))
-      .body("serviceHours[1].size()", is(2))
+      .body("serviceHours[1].size()", is(1))
       .body("serviceHours[1][0].type", is("Standard"))
       .body("serviceHours[1][0].validFrom", is((String) null))
       .body("serviceHours[1][0].validTo", is((String) null))
-      .body("serviceHours[1][0].opens", is("05:00"))
-      .body("serviceHours[1][0].closes", is("23:00"))
-      .body("serviceHours[1][0].status", is("OPEN"))
+      .body("serviceHours[1][0].opens", is("05:30"))
+      .body("serviceHours[1][0].closes", is("18:30"))
       .body("serviceHours[1][0].days.size()", is(5))
       .body("serviceHours[1][0].days[0]", is(1))
       .body("serviceHours[1][0].days[1]", is(2))
@@ -620,20 +600,18 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
 
   @Test
   public void testFindWebPageChannel() throws InterruptedException {
-    String serviceId = getServiceId(0);
-      
-    waitApiListCount(String.format("/services/%s/webPageChannels", serviceId), 3);
+    waitApiListCount("/webPageServiceChannels", 3);
     
     String channelId = given() 
       .baseUri(getApiBasePath())
       .contentType(ContentType.JSON)
-      .get("/services/{serviceId}/webPageChannels", serviceId)
+      .get("/webPageServiceChannels")
       .body().jsonPath().getString("id[0]");
     
     given() 
       .baseUri(getApiBasePath())
       .contentType(ContentType.JSON)
-      .get("/services/{serviceId}/webPageChannels/{channelId}", serviceId, channelId)
+      .get("/webPageServiceChannels/{channelId}", channelId)
       .then()
       .assertThat()
       .statusCode(200)
@@ -667,14 +645,12 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
 
   @Test
   public void testListWebPageChannel() throws InterruptedException {
-    String serviceId = getServiceId(0);
-      
-    waitApiListCount(String.format("/services/%s/webPageChannels", serviceId), 3);
+    waitApiListCount("/webPageServiceChannels", 3);
     
     given() 
       .baseUri(getApiBasePath())
       .contentType(ContentType.JSON)
-      .get("/services/{serviceId}/webPageChannels", serviceId)
+      .get("/webPageServiceChannels")
       .then()
       .assertThat()
       .statusCode(200)
@@ -709,132 +685,112 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
 
   @Test
   public void testListElectronicChannelsLimits() throws InterruptedException {
-    String serviceId = getServiceId(0);
-    String channelsUrl = String.format("/services/%s/electronicChannels", serviceId);
+    String channelsUrl = "/electronicServiceChannels";
     waitApiListCount(channelsUrl, 3);
     assertListLimits(channelsUrl, 3);
   }
   
   @Test
   public void testListPhoneChannelsLimits() throws InterruptedException {
-    String serviceId = getServiceId(0);
-    String channelsUrl = String.format("/services/%s/phoneChannels", serviceId);
+    String channelsUrl = "/phoneServiceChannels";
     waitApiListCount(channelsUrl, 3);
     assertListLimits(channelsUrl, 3);
   }
   
   @Test
   public void testListPrintableFormChannelsLimits() throws InterruptedException {
-    String serviceId = getServiceId(0);
-    String channelsUrl = String.format("/services/%s/printableFormChannels", serviceId);
+    String channelsUrl = "/printableFormServiceChannels";
     waitApiListCount(channelsUrl, 3);
     assertListLimits(channelsUrl, 3);
   }
   
   @Test
   public void testListServiceLocationChannelLimits() throws InterruptedException {
-    String serviceId = getServiceId(0);
-    String channelsUrl = String.format("/services/%s/serviceLocationChannels", serviceId);
+    String channelsUrl = "/serviceLocationServiceChannels";
     waitApiListCount(channelsUrl, 3);
     assertListLimits(channelsUrl, 3);
   }
   
   @Test
   public void testListWebPageChannelsLimits() throws InterruptedException {
-    String serviceId = getServiceId(0);
-    String channelsUrl = String.format("/services/%s/webPageChannels", serviceId);
+    String channelsUrl = "/webPageServiceChannels";
     waitApiListCount(channelsUrl, 3);
     assertListLimits(channelsUrl, 3);
   }
   
   @Test
   public void testElectronicChannelNotFound() throws InterruptedException {
-    String serviceId = getServiceId(0);
-    String incorrectServiceId = getServiceId(1);
-    String electronicChannelId = getElectronicChannelId(serviceId, 0);
-    String phoneChannelId = getPhoneChannelId(serviceId, 0);
+    String electronicChannelId = getElectronicChannelId(0);
+    String phoneChannelId = getPhoneChannelId(0);
     String[] malformedIds = new String[] {"evil", "*", "/", "1", "-1", "~"};
     
-    assertFound(String.format("/services/%s/electronicChannels/%s", serviceId, electronicChannelId));
+    assertFound(String.format("/electronicServiceChannels/%s", electronicChannelId));
     
     for (String malformedId : malformedIds) {
-      assertNotFound(String.format("/services/%s/electronicChannels/%s", serviceId, malformedId));
+      assertNotFound(String.format("/electronicServiceChannels/%s", malformedId));
     }
     
-    assertNotFound(String.format("/services/%s/electronicChannels/%s", incorrectServiceId, electronicChannelId));
-    assertNotFound(String.format("/services/%s/electronicChannels/%s", serviceId, phoneChannelId));
+    assertNotFound(String.format("/electronicServiceChannels/%s", phoneChannelId));
   }
   
   @Test
   public void testPhoneChannelNotFound() throws InterruptedException {
-    String serviceId = getServiceId(0);
-    String incorrectServiceId = getServiceId(1);
-    String electronicChannelId = getElectronicChannelId(serviceId, 0);
-    String phoneChannelId = getPhoneChannelId(serviceId, 0);
+    String electronicChannelId = getElectronicChannelId(0);
+    String phoneChannelId = getPhoneChannelId(0);
     String[] malformedIds = new String[] {"evil", "*", "/", "1", "-1", "~"};
     
-    assertFound(String.format("/services/%s/phoneChannels/%s", serviceId, phoneChannelId));
+    assertFound(String.format("/phoneServiceChannels/%s", phoneChannelId));
     
     for (String malformedId : malformedIds) {
-      assertNotFound(String.format("/services/%s/phoneChannels/%s", serviceId, malformedId));
+      assertNotFound(String.format("/phoneServiceChannels/%s", malformedId));
     }
     
-    assertNotFound(String.format("/services/%s/phoneChannels/%s", incorrectServiceId, phoneChannelId));
-    assertNotFound(String.format("/services/%s/phoneChannels/%s", serviceId, electronicChannelId));
+    assertNotFound(String.format("/phoneServiceChannels/%s", electronicChannelId));
   }
   
   @Test
   public void testPrintableFormChannelNotFound() throws InterruptedException {
-    String serviceId = getServiceId(0);
-    String incorrectServiceId = getServiceId(1);
-    String electronicChannelId = getElectronicChannelId(serviceId, 0);
-    String printableFormChannelId = getPrintableFormChannelId(serviceId, 0);
+    String electronicChannelId = getElectronicChannelId(0);
+    String printableFormChannelId = getPrintableFormChannelId(0);
     String[] malformedIds = new String[] {"evil", "*", "/", "1", "-1", "~"};
     
-    assertFound(String.format("/services/%s/printableFormChannels/%s", serviceId, printableFormChannelId));
+    assertFound(String.format("/printableFormServiceChannels/%s", printableFormChannelId));
     
     for (String malformedId : malformedIds) {
-      assertNotFound(String.format("/services/%s/printableFormChannels/%s", serviceId, malformedId));
+      assertNotFound(String.format("/printableFormServiceChannels/%s", malformedId));
     }
     
-    assertNotFound(String.format("/services/%s/printableFormChannels/%s", incorrectServiceId, printableFormChannelId));
-    assertNotFound(String.format("/services/%s/printableFormChannels/%s", serviceId, electronicChannelId));
+    assertNotFound(String.format("/printableFormServiceChannels/%s", electronicChannelId));
   }
 
   @Test
   public void testServiceLocationChannelNotFound() throws InterruptedException {
-    String serviceId = getServiceId(0);
-    String incorrectServiceId = getServiceId(1);
-    String electronicChannelId = getElectronicChannelId(serviceId, 0);
-    String serviceLocationChannelId = getServiceLocationChannelId(serviceId, 0);
+    String electronicChannelId = getElectronicChannelId(0);
+    String serviceLocationChannelId = getServiceLocationChannelId(0);
     String[] malformedIds = new String[] {"evil", "*", "/", "1", "-1", "~"};
     
-    assertFound(String.format("/services/%s/serviceLocationChannels/%s", serviceId, serviceLocationChannelId));
+    assertFound(String.format("/serviceLocationServiceChannels/%s", serviceLocationChannelId));
     
     for (String malformedId : malformedIds) {
-      assertNotFound(String.format("/services/%s/serviceLocationChannels/%s", serviceId, malformedId));
+      assertNotFound(String.format("/serviceLocationServiceChannels/%s", malformedId));
     }
     
-    assertNotFound(String.format("/services/%s/serviceLocationChannels/%s", incorrectServiceId, serviceLocationChannelId));
-    assertNotFound(String.format("/services/%s/serviceLocationChannels/%s", serviceId, electronicChannelId));
+    assertNotFound(String.format("/serviceLocationServiceChannels/%s", electronicChannelId));
   }
 
   @Test
   public void testWebPageChannelNotFound() throws InterruptedException {
-    String serviceId = getServiceId(0);
-    String incorrectServiceId = getServiceId(1);
-    String electronicChannelId = getElectronicChannelId(serviceId, 0);
-    String webPageChannelId = getWebPageChannelId(serviceId, 0);
+    String electronicChannelId = getElectronicChannelId(0);
+    String webPageChannelId = getWebPageChannelId(0);
     String[] malformedIds = new String[] {"evil", "*", "/", "1", "-1", "~"};
     
-    assertFound(String.format("/services/%s/webPageChannels/%s", serviceId, webPageChannelId));
+    assertFound(String.format("/webPageServiceChannels/%s", webPageChannelId));
     
     for (String malformedId : malformedIds) {
-      assertNotFound(String.format("/services/%s/webPageChannels/%s", serviceId, malformedId));
+      assertNotFound(String.format("/webPageServiceChannels/%s", malformedId));
     }
     
-    assertNotFound(String.format("/services/%s/webPageChannels/%s", incorrectServiceId, webPageChannelId));
-    assertNotFound(String.format("/services/%s/webPageChannels/%s", serviceId, electronicChannelId));
+    assertNotFound(String.format("/webPageServiceChannels/%s", electronicChannelId));
   }
   
 }

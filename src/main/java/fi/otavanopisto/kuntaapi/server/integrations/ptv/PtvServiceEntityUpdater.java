@@ -17,9 +17,14 @@ import javax.inject.Inject;
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
+import fi.otavanopisto.kuntaapi.server.id.ElectronicServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.id.PhoneServiceChannelId;
+import fi.otavanopisto.kuntaapi.server.id.PrintableFormServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceId;
+import fi.otavanopisto.kuntaapi.server.id.ServiceLocationServiceChannelId;
+import fi.otavanopisto.kuntaapi.server.id.WebPageServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.index.IndexRemoveRequest;
 import fi.otavanopisto.kuntaapi.server.index.IndexRemoveService;
 import fi.otavanopisto.kuntaapi.server.index.IndexRequest;
@@ -32,10 +37,10 @@ import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask.Operation;
 import fi.otavanopisto.kuntaapi.server.utils.LocalizationUtils;
-import fi.otavanopisto.restfulptv.client.ApiResponse;
-import fi.otavanopisto.restfulptv.client.model.LocalizedListItem;
-import fi.otavanopisto.restfulptv.client.model.Service;
-import fi.otavanopisto.restfulptv.client.model.StatutoryDescription;
+import fi.metatavu.restfulptv.client.ApiResponse;
+import fi.metatavu.restfulptv.client.model.LocalizedListItem;
+import fi.metatavu.restfulptv.client.model.Service;
+import fi.metatavu.restfulptv.client.model.StatutoryDescription;
 
 @ApplicationScoped
 @Singleton
@@ -51,6 +56,9 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
 
   @Inject
   private PtvApi ptvApi;
+  
+  @Inject
+  private PtvIdFactory ptvIdFactory;
   
   @Inject
   private PtvTranslator ptvTranslator;
@@ -107,7 +115,7 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
 
   private void updatePtvService(ServiceId serviceId, Long orderIndex) {
     if (!systemSettingController.hasSettingValue(PtvConsts.SYSTEM_SETTING_BASEURL)) {
-      logger.log(Level.INFO, "Organization management baseUrl not set, skipping update"); 
+      logger.log(Level.INFO, "Ptv system setting not defined, skipping update."); 
       return;
     }
     
@@ -119,13 +127,86 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
       ServiceId kuntaApiServiceId = new ServiceId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
       StatutoryDescription ptvStatutoryDescription = ptvService.getStatutoryDescriptionId() != null ? getStatutoryDescription(ptvService.getStatutoryDescriptionId()) : null;
       
-      fi.metatavu.kuntaapi.server.rest.model.Service service = ptvTranslator.translateService(kuntaApiServiceId, ptvService, ptvStatutoryDescription);
-      ptvServiceCache.put(kuntaApiServiceId, service);
-      modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(service));
-      index(identifier.getKuntaApiId(), ptvService);
+      fi.metatavu.kuntaapi.server.rest.model.Service service = translateService(ptvService, kuntaApiServiceId, ptvStatutoryDescription);
+      if (service != null) {
+        ptvServiceCache.put(kuntaApiServiceId, service);
+        modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(service));
+        index(identifier.getKuntaApiId(), ptvService);
+      }
+      
     } else {
       logger.warning(String.format("Service %s processing failed on [%d] %s", serviceId.getId(), response.getStatus(), response.getMessage()));
     }
+  }
+
+  @SuppressWarnings ("squid:MethodCyclomaticComplexity")
+  private fi.metatavu.kuntaapi.server.rest.model.Service translateService(Service ptvService,
+      ServiceId kuntaApiServiceId, StatutoryDescription ptvStatutoryDescription) {
+    
+    List<ElectronicServiceChannelId> kuntaApiElectronicServiceChannelIds = new ArrayList<>(ptvService.getElectronicServiceChannelIds().size()); 
+    List<PhoneServiceChannelId> kuntaApiPhoneServiceChannelIds = new ArrayList<>(ptvService.getPhoneServiceChannelIds().size());
+    List<PrintableFormServiceChannelId> kuntaApiPrintableFormServiceChannelIds = new ArrayList<>(ptvService.getPrintableFormServiceChannelIds().size());
+    List<ServiceLocationServiceChannelId> kuntaApiServiceLocationServiceChannelIds = new ArrayList<>(ptvService.getServiceLocationServiceChannelIds().size());
+    List<WebPageServiceChannelId> kuntaApiWebPageServiceChannelIds = new ArrayList<>(ptvService.getWebPageServiceChannelIds().size());
+    
+    for (String ptvElectronicServiceChannelId : ptvService.getElectronicServiceChannelIds()) {
+      ElectronicServiceChannelId kuntaApiElectronicServiceChannelId = idController.translateElectronicServiceChannelId(ptvIdFactory.createElectronicServiceChannelId(ptvElectronicServiceChannelId), KuntaApiConsts.IDENTIFIER_NAME);
+      if (kuntaApiElectronicServiceChannelId == null) {
+        logger.log(Level.INFO, () -> String.format("Could not translate electronic channel id %s into KuntaAPI id.", ptvElectronicServiceChannelId)); 
+        return null;
+      } 
+      
+      kuntaApiElectronicServiceChannelIds.add(kuntaApiElectronicServiceChannelId);
+    }
+
+    for (String ptvPhoneServiceChannelId : ptvService.getPhoneServiceChannelIds()) {
+      PhoneServiceChannelId kuntaApiPhoneServiceChannelId = idController.translatePhoneServiceChannelId(ptvIdFactory.createPhoneServiceChannelId(ptvPhoneServiceChannelId), KuntaApiConsts.IDENTIFIER_NAME);
+      if (kuntaApiPhoneServiceChannelId == null) {
+        logger.log(Level.INFO, () -> String.format("Could not translate phone channel id %s into KuntaAPI id.", ptvPhoneServiceChannelId)); 
+        return null;
+      } 
+      
+      kuntaApiPhoneServiceChannelIds.add(kuntaApiPhoneServiceChannelId);
+    }
+    
+    for (String ptvServiceLocationServiceChannelId : ptvService.getServiceLocationServiceChannelIds()) {
+      ServiceLocationServiceChannelId kuntaApiServiceLocationServiceChannelId = idController.translateServiceLocationServiceChannelId(ptvIdFactory.createServiceLocationServiceChannelId(ptvServiceLocationServiceChannelId), KuntaApiConsts.IDENTIFIER_NAME);
+      if (kuntaApiServiceLocationServiceChannelId == null) {
+        logger.log(Level.INFO, () -> String.format("Could not translate service location channel id %s into KuntaAPI id.", ptvServiceLocationServiceChannelId)); 
+        return null;
+      } 
+      
+      kuntaApiServiceLocationServiceChannelIds.add(kuntaApiServiceLocationServiceChannelId);
+    }
+    
+    for (String ptvPrintableFormServiceChannelId : ptvService.getPrintableFormServiceChannelIds()) {
+      PrintableFormServiceChannelId kuntaApiPrintableFormServiceChannelId = idController.translatePrintableFormServiceChannelId(ptvIdFactory.createPrintableFormServiceChannelId(ptvPrintableFormServiceChannelId), KuntaApiConsts.IDENTIFIER_NAME);
+      if (kuntaApiPrintableFormServiceChannelId == null) {
+        logger.log(Level.INFO, () -> String.format("Could not translate printable form channel id %s into KuntaAPI id.", ptvPrintableFormServiceChannelId)); 
+        return null;
+      } 
+      
+      kuntaApiPrintableFormServiceChannelIds.add(kuntaApiPrintableFormServiceChannelId);
+    }
+    
+    for (String ptvWebPageServiceChannelId : ptvService.getWebPageServiceChannelIds()) {
+      WebPageServiceChannelId kuntaApiWebPageServiceChannelId = idController.translateWebPageServiceChannelId(ptvIdFactory.createWebPageServiceChannelId(ptvWebPageServiceChannelId), KuntaApiConsts.IDENTIFIER_NAME);
+      if (kuntaApiWebPageServiceChannelId == null) {
+        logger.log(Level.INFO, () -> String.format("Could not translate web page channel id %s into KuntaAPI id.", ptvWebPageServiceChannelId)); 
+        return null;
+      } 
+      
+      kuntaApiWebPageServiceChannelIds.add(kuntaApiWebPageServiceChannelId);
+    }
+    
+    return ptvTranslator.translateService(kuntaApiServiceId,
+        kuntaApiElectronicServiceChannelIds,
+        kuntaApiPhoneServiceChannelIds,
+        kuntaApiPrintableFormServiceChannelIds,
+        kuntaApiServiceLocationServiceChannelIds,
+        kuntaApiWebPageServiceChannelIds,
+        ptvService, 
+        ptvStatutoryDescription);
   }
   
   private StatutoryDescription getStatutoryDescription(String statutoryDescriptionId) {

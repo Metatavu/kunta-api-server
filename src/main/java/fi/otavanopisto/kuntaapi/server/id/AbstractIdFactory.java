@@ -33,6 +33,26 @@ public abstract class AbstractIdFactory {
   public ShortlinkId createShortlinkId(OrganizationId kuntaApiOrganizationId, String id) {
     return createId(ShortlinkId.class, kuntaApiOrganizationId, id);
   }
+  
+  public ElectronicServiceChannelId createElectronicServiceChannelId(String id) {
+    return createId(ElectronicServiceChannelId.class, null, id);
+  }
+  
+  public PrintableFormServiceChannelId createPrintableFormServiceChannelId(String id) {
+    return createId(PrintableFormServiceChannelId.class, null, id);
+  }
+  
+  public PhoneServiceChannelId createPhoneServiceChannelId(String id) {
+    return createId(PhoneServiceChannelId.class, null, id);
+  }
+  
+  public ServiceLocationServiceChannelId createServiceLocationServiceChannelId(String id) {
+    return createId(ServiceLocationServiceChannelId.class, null, id);
+  }
+  
+  public WebPageServiceChannelId createWebPageServiceChannelId(String id) {
+    return createId(WebPageServiceChannelId.class, null, id);
+  }
 
   public PublicTransportAgencyId createAgencyId(OrganizationId kuntaApiOrganizationId, String id) {
     return createId(PublicTransportAgencyId.class, kuntaApiOrganizationId, id);
