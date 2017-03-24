@@ -83,7 +83,7 @@ public class PtvPrintableFormServiceChannelIdUpdater extends IdUpdater {
     
     ApiResponse<List<PrintableFormServiceChannel>> response = ptvApi.getPrintableFormServiceChannelsApi().listPrintableFormServiceChannels(offset, BATCH_SIZE);
     if (!response.isOk()) {
-      logger.severe(String.format("PrintableForm service channel list reported [%d] %s", response.getStatus(), response.getMessage()));
+      logger.severe(String.format("Printable form service channel list reported [%d] %s", response.getStatus(), response.getMessage()));
     } else {
       List<PrintableFormServiceChannel> printableFormServiceChannels = response.getResponse();
       for (int i = 0; i < printableFormServiceChannels.size(); i++) {

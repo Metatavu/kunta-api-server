@@ -86,7 +86,7 @@ public class PtvPrintableFormServiceChannelIdRemoveUpdater extends IdUpdater {
     for (PrintableFormServiceChannelId printableFormServiceChannelId : printableFormServiceChannelIds) {
       PrintableFormServiceChannelId ptvPrintableFormServiceChannelId = idController.translatePrintableFormServiceChannelId(printableFormServiceChannelId, PtvConsts.IDENTIFIER_NAME);
       if (ptvPrintableFormServiceChannelId == null) {
-        logger.log(Level.INFO, () -> String.format("Failed to translate printableForm service channel id %s into PTV service", printableFormServiceChannelId)); 
+        logger.log(Level.INFO, () -> String.format("Failed to translate printable form service channel id %s into PTV service", printableFormServiceChannelId)); 
         continue;
       }
       
