@@ -72,7 +72,7 @@ public class PtvWebPageServiceChannelEntityUpdater extends EntityUpdater {
 
   @Override
   public String getName() {
-    return "ptv-webPage-channels";
+    return "ptv-web-page-channels";
   }
 
   @Override

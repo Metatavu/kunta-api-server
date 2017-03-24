@@ -62,7 +62,7 @@ public class PtvWebPageServiceChannelIdUpdater extends IdUpdater {
   
   @Override
   public String getName() {
-    return "webPage-service-channels";
+    return "web-page-service-channels";
   }
   
   @Override
@@ -83,7 +83,7 @@ public class PtvWebPageServiceChannelIdUpdater extends IdUpdater {
     
     ApiResponse<List<WebPageServiceChannel>> response = ptvApi.getWebPageServiceChannelsApi().listWebPageServiceChannels(offset, BATCH_SIZE);
     if (!response.isOk()) {
-      logger.severe(String.format("WebPage service channel list reported [%d] %s", response.getStatus(), response.getMessage()));
+      logger.severe(String.format("Web page service channel list reported [%d] %s", response.getStatus(), response.getMessage()));
     } else {
       List<WebPageServiceChannel> webPageServiceChannels = response.getResponse();
       for (int i = 0; i < webPageServiceChannels.size(); i++) {

@@ -63,7 +63,7 @@ public class PtvWebPageServiceChannelIdRemoveUpdater extends IdUpdater {
   
   @Override
   public String getName() {
-    return "ptv-webPage-service-channel-removed-ids";
+    return "ptv-web-page-service-channel-removed-ids";
   }
   
   @Override
@@ -86,7 +86,7 @@ public class PtvWebPageServiceChannelIdRemoveUpdater extends IdUpdater {
     for (WebPageServiceChannelId webPageServiceChannelId : webPageServiceChannelIds) {
       WebPageServiceChannelId ptvWebPageServiceChannelId = idController.translateWebPageServiceChannelId(webPageServiceChannelId, PtvConsts.IDENTIFIER_NAME);
       if (ptvWebPageServiceChannelId == null) {
-        logger.log(Level.INFO, () -> String.format("Failed to translate webPage service channel id %s into PTV service", webPageServiceChannelId)); 
+        logger.log(Level.INFO, () -> String.format("Failed to translate web page service channel id %s into PTV service", webPageServiceChannelId)); 
         continue;
       }
       
