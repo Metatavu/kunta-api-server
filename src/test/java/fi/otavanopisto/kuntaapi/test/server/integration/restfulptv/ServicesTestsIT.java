@@ -251,9 +251,9 @@ public class ServicesTestsIT extends AbstractIntegrationTest {
   
   private void testServiceChannelRedirect(String from, String to) {
     String fromListPath = String.format("/services/SERVICE_ID/%s", from);
-    String fromFindPath = String.format("%sCHANNEL_ID", fromListPath);
+    String fromFindPath = String.format("%s/CHANNEL_ID", fromListPath);
     String toListPath = String.format("/%s", to);
-    String toFindPath = String.format("%s%s", toListPath, "SERVICE_ID");
+    String toFindPath = String.format("%s/%s", toListPath, "CHANNEL_ID");
 
     given() 
       .baseUri(getApiBasePath())
