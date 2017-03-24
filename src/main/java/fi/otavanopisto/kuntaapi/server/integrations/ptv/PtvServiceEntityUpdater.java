@@ -172,7 +172,7 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
     for (String ptvServiceLocationServiceChannelId : ptvService.getServiceLocationServiceChannelIds()) {
       ServiceLocationServiceChannelId kuntaApiServiceLocationServiceChannelId = idController.translateServiceLocationServiceChannelId(ptvIdFactory.createServiceLocationServiceChannelId(ptvServiceLocationServiceChannelId), KuntaApiConsts.IDENTIFIER_NAME);
       if (kuntaApiServiceLocationServiceChannelId == null) {
-        logger.log(Level.INFO, () -> String.format("Could not translate serviceLocation channel id %s into KuntaAPI id.", ptvServiceLocationServiceChannelId)); 
+        logger.log(Level.INFO, () -> String.format("Could not translate service location channel id %s into KuntaAPI id.", ptvServiceLocationServiceChannelId)); 
         return null;
       } 
       
