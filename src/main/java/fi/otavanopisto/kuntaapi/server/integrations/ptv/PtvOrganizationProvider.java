@@ -41,7 +41,7 @@ public class PtvOrganizationProvider implements OrganizationProvider {
     
     for (OrganizationId organizationId : organizationIds) {
       Organization organization = ptvOrganizationResourceContainer.get(organizationId);
-      if (organization != null && isAccetable(organization, businessCode, businessName)) {
+      if (organization != null && isAcceptable(organization, businessCode, businessName)) {
         result.add(organization);
       }
     }
@@ -49,7 +49,7 @@ public class PtvOrganizationProvider implements OrganizationProvider {
     return result;
   }
 
-  private boolean isAccetable(Organization organization, String businessCode, String businessName) {
+  private boolean isAcceptable(Organization organization, String businessCode, String businessName) {
     if (StringUtils.isNotBlank(businessCode) && !StringUtils.equals(businessCode, organization.getBusinessCode())) {
       return false;
     }
