@@ -2,10 +2,15 @@ package fi.otavanopisto.kuntaapi.test;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
 import static com.github.tomakehurst.wiremock.client.WireMock.get;
+import static com.github.tomakehurst.wiremock.client.WireMock.head;
 import static com.github.tomakehurst.wiremock.client.WireMock.removeStub;
 import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
 import static org.junit.Assert.fail;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.EnumMap;
@@ -21,12 +26,14 @@ import com.github.tomakehurst.wiremock.client.MappingBuilder;
 import com.github.tomakehurst.wiremock.client.ResponseDefinitionBuilder;
 import com.github.tomakehurst.wiremock.matching.StringValuePattern;
 import com.github.tomakehurst.wiremock.matching.UrlPattern;
+import ezvcard.util.IOUtils;
 
 @SuppressWarnings ("squid:S1166")
 public class ResourceMocker<I, R> {
 
   private static final String APPLICATION_JSON = "application/json";
   private static final String CONTENT_TYPE = "Content-Type";
+  private static final String CONTENT_LENGTH = "Content-Length";
 
   private EnumMap<MockedResourceStatus, List<MappingBuilder>> statusLists = new EnumMap<>(MockedResourceStatus.class);
   private boolean started = false;
@@ -37,7 +44,9 @@ public class ResourceMocker<I, R> {
     started = true;
     
     for (MockedResource<R> resource : resources.values()) {
-      stubFor(resource.getCurrentMapping());
+      for (MappingBuilder mapping : resource.getCurrentMappings()) {
+        stubFor(mapping);
+      }
     }
     
     for (Entry<MockedResourceStatus, List<MappingBuilder>> statusListEntry : statusLists.entrySet()) {
@@ -85,10 +94,12 @@ public class ResourceMocker<I, R> {
   }
   
   public void add(I id, R resource, UrlPattern urlPattern) {
-    MappingBuilder okMapping = createOkMapping(urlPattern, resource);
+    MappingBuilder okGetMapping = createOkGetMapping(urlPattern, resource);
+    MappingBuilder okHeadMapping = createOkHeadMapping(urlPattern, resource);
+    
     MappingBuilder notFoundMapping = createNotFoundMapping(urlPattern);
     
-    resources.put(id, new MockedResource<>(resource, okMapping, notFoundMapping));
+    resources.put(id, new MockedResource<>(resource, okGetMapping, okHeadMapping, notFoundMapping));
   }
   
   public Collection<MockedResource<R>> getMockedResources() {
@@ -127,33 +138,55 @@ public class ResourceMocker<I, R> {
       return;
     }
     
-    if (started && resource.getCurrentMapping() != null) {
-      removeStub(resource.getCurrentMapping());
+    if (started && resource.getCurrentMappings() != null) {
+      for (MappingBuilder mapping : resource.getCurrentMappings()) {
+        removeStub(mapping);
+      }
     }
         
     resource.setStatus(status);
     
     if (started) {
-      stubFor(resource.getCurrentMapping());
+      for (MappingBuilder mapping : resource.getCurrentMappings()) {
+        stubFor(mapping);
+      }
+      
       updateStatusLists();
       updateSubMockerStatuses(id, status);
     }
   }
   
   public void mockAlternative(I id, R alternative) {
+    List<MappingBuilder> alternativeMappings = new ArrayList<>();
     MockedResource<R> resource = resources.get(id);
     
-    MappingBuilder okMapping = resource.getMapping(MockedResourceStatus.OK)
-      .willReturn(createOkReturn(alternative));
+    List<MappingBuilder> okMappings = resource.getMappings(MockedResourceStatus.OK);
+    for (MappingBuilder okMapping : okMappings) {
+
+      if (started) {
+        removeStub(okMapping);
+      }
+      
+      MappingBuilder alternativeMapping = null;
+      
+      switch (okMapping.build().getRequest().getMethod().getName()) {
+        case "GET":
+          alternativeMapping = okMapping.willReturn(createOkGetReturn(alternative));
+        break;
+        case "HEAD":
+          alternativeMapping = okMapping.willReturn(createOkHeadReturn(alternative));
+        break;
+      }
+      
+      if (started) {
+        stubFor(alternativeMapping);
+      } 
+      
+      alternativeMappings.add(alternativeMapping);
+    }
     
     resource.setResource(alternative);
-    
-    if (started) {
-      removeStub(resource.getMapping(MockedResourceStatus.OK));
-      stubFor(okMapping);
-    } 
-
-    resource.updateStatusMapping(MockedResourceStatus.OK, okMapping);
+    resource.updateStatusMappings(MockedResourceStatus.OK, alternativeMappings);
   }
 
   private void updateSubMockerStatuses(I id, MockedResourceStatus status) {
@@ -200,10 +233,15 @@ public class ResourceMocker<I, R> {
   public ResourceMocker<?, ?> getSubMocker(I id, int index) {
     return subMockers.get(id).get(index);
   }
+
+  private MappingBuilder createOkHeadMapping(UrlPattern urlPattern, R resource) {
+    return head(urlPattern)
+      .willReturn(createOkHeadReturn(resource));
+  }
   
-  private MappingBuilder createOkMapping(UrlPattern urlPattern, R resource) {
+  private MappingBuilder createOkGetMapping(UrlPattern urlPattern, R resource) {
     return get(urlPattern)
-      .willReturn(createOkReturn(resource));
+      .willReturn(createOkGetReturn(resource));
   }
   
   private MappingBuilder createNotFoundMapping(UrlPattern urlPattern) {
@@ -212,10 +250,48 @@ public class ResourceMocker<I, R> {
       .withStatus(404));
   }
   
-  private ResponseDefinitionBuilder createOkReturn(R resource) {
-    return aResponse()
-      .withHeader(CONTENT_TYPE, APPLICATION_JSON)
-      .withBody(toJSON(resource));
+  private ResponseDefinitionBuilder createOkHeadReturn(R resource) {
+    if (resource instanceof File) {
+      File file = (File) resource;
+      
+      try (FileInputStream fileInputStream = new FileInputStream(file)) {
+        String contentType = Files.probeContentType(file.toPath());
+        byte[] data = IOUtils.toByteArray(fileInputStream);
+        return aResponse()
+          .withHeader(CONTENT_TYPE, contentType)
+          .withHeader(CONTENT_LENGTH, String.valueOf(data.length));
+      } catch (IOException e) {
+        fail(e.getMessage());
+        return null;
+      }
+      
+    } else {
+      return aResponse()
+        .withHeader(CONTENT_TYPE, APPLICATION_JSON);
+    }
+  }
+  
+  private ResponseDefinitionBuilder createOkGetReturn(R resource) {
+    if (resource instanceof File) {
+      File file = (File) resource;
+      
+      try (FileInputStream fileInputStream = new FileInputStream(file)) {
+        String contentType = Files.probeContentType(file.toPath());
+        byte[] data = IOUtils.toByteArray(fileInputStream);
+        return aResponse()
+          .withHeader(CONTENT_TYPE, contentType)
+          .withHeader(CONTENT_LENGTH, String.valueOf(data.length))
+          .withBody(data);
+      } catch (IOException e) {
+        fail(e.getMessage());
+        return null;
+      }
+      
+    } else {
+      return aResponse()
+        .withHeader(CONTENT_TYPE, APPLICATION_JSON)
+        .withBody(toJSON(resource));
+    }
   }
   
   private void updateStatusLists() {
