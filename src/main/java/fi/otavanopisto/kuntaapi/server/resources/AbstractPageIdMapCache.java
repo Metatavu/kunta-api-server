@@ -12,7 +12,7 @@ public abstract class AbstractPageIdMapCache extends AbstractResourceContainer<O
 
   @Override
   public String getEntityType() {
-    return "resource";
+    return "page-id-map";
   }
   
 }
