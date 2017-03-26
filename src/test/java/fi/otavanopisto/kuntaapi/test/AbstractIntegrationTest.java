@@ -31,6 +31,8 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   private KuntarekryMocker kuntarekryMocker = new KuntarekryMocker();
   private ManagementMocker managementMocker = new ManagementMocker();
   private CasemMocker casemMocker = new CasemMocker();
+  
+  private ManagementPageMappingMocker managementPageMappingMocker = new ManagementPageMappingMocker();
   private ManagementPageMocker managementPageMocker = new ManagementPageMocker();
   private ManagementPostMocker managementPostMocker = new ManagementPostMocker();
   private ManagementShortlinkMocker managementShortlinkMocker = new ManagementShortlinkMocker();
@@ -57,6 +59,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     deleteSystemSetting(KuntaApiConsts.SYSTEM_SETTING_TESTS_RUNNING);
     clearTasks();
     
+    managementPageMappingMocker.endMock();
     managementPageMocker.endMock();
     managementPostMocker.endMock();
     managementShortlinkMocker.endMock();
@@ -96,7 +99,8 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     managementFragmentMocker.startMock();
     managementMediaMocker.startMock();
     managementTileMocker.startMock();
-
+    managementPageMappingMocker.startMock();
+    
     insertSystemSetting(KuntaApiConsts.SYSTEM_SETTING_TESTS_RUNNING, "true");
     
     addServerLogEntry(String.format("### Test %s start ###", testName.getMethodName()));
@@ -117,6 +121,10 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   
   public CasemMocker getCasemMocker() {
     return casemMocker;
+  }
+  
+  public ManagementPageMappingMocker getManagementPageMappingMocker() {
+    return managementPageMappingMocker;
   }
   
   public ManagementPageMocker getManagementPageMocker() {

@@ -56,7 +56,7 @@ public class PageTestsIT extends AbstractIntegrationTest {
     String pageId = getPageId(organizationId, 0);
     waitApiListCount(String.format("/organizations/%s/pages/%s/images/", organizationId, pageId), 1);
   }
-
+  
   @After
   public void afterClass() {
     String organizationId = getOrganizationId(0);
@@ -64,6 +64,30 @@ public class PageTestsIT extends AbstractIntegrationTest {
     getManagementMocker().endMock();
     deletePtvSettings();
     deleteManagementSettings(organizationId);
+  }
+  
+  @Test
+  public void testPageRelocate() throws InterruptedException {
+    String organizationId = getOrganizationId(0);
+    
+    String newParent = getPageId(organizationId, 0);
+    String originalPath = String.format("/organizations/%s/pages?path=/bertha", organizationId);
+    String newPath = String.format("/organizations/%s/pages?path=/zeus/bertha", organizationId);
+    
+    assertPageInPath(originalPath, "bertha", null);
+    assertPageNotInPath(newPath);
+    
+    getManagementPageMappingMocker().addMapping("/bertha", "/zeus");
+    
+    waitApiListCount(newPath, 1);
+    assertPageInPath(newPath, "bertha", newParent);
+    assertPageNotInPath(originalPath);
+    
+    getManagementPageMappingMocker().removeMapping("/bertha");
+    
+    waitApiListCount(originalPath, 1);
+    assertPageInPath(originalPath, "bertha", null);
+    assertPageNotInPath(newPath);
   }
   
   @Test
@@ -361,6 +385,30 @@ public class PageTestsIT extends AbstractIntegrationTest {
    
   private void deleteManagementSettings(String organizationId) {
     deleteOrganizationSetting(organizationId, ManagementConsts.ORGANIZATION_SETTING_BASEURL);
+  }
+  
+  private void assertPageInPath(String path, String expectedSlug, String expectedParentId) {
+    given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get(path)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(1))
+      .body("slug[0]", is(expectedSlug))
+      .body("parentId[0]", is(expectedParentId)); 
+  }
+  
+  private void assertPageNotInPath(String path) {
+    given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get(path)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(0));
   }
   
 }
