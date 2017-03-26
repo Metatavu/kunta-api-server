@@ -34,6 +34,11 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   private ManagementPageMocker managementPageMocker = new ManagementPageMocker();
   private ManagementPostMocker managementPostMocker = new ManagementPostMocker();
   private ManagementShortlinkMocker managementShortlinkMocker = new ManagementShortlinkMocker();
+  private ManagementAnnouncementMocker managementAnnouncementMocker = new ManagementAnnouncementMocker();
+  private ManagementBannerMocker managementBannerMocker = new ManagementBannerMocker();
+  private ManagementFragmentMocker managementFragmentMocker = new ManagementFragmentMocker();
+  private ManagementMediaMocker managementMediaMocker = new ManagementMediaMocker();
+  private ManagementTileMocker managementTileMocker = new ManagementTileMocker();
   private RestfulPtvServiceMocker restfulPtvServiceMocker = new RestfulPtvServiceMocker();
   private RestfulPtvOrganizationMocker restfulPtvOrganizationMocker = new RestfulPtvOrganizationMocker();
   private RestfulPtvElectronicServiceChannelMocker restfulPtvElectronicServiceChannelMocker = new RestfulPtvElectronicServiceChannelMocker();
@@ -55,6 +60,12 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     managementPageMocker.endMock();
     managementPostMocker.endMock();
     managementShortlinkMocker.endMock();
+    managementAnnouncementMocker.endMock();
+    managementBannerMocker.endMock();
+    managementFragmentMocker.endMock();
+    managementMediaMocker.endMock();
+    managementTileMocker.endMock();
+    
     restfulPtvServiceMocker.endMock();
     restfulPtvOrganizationMocker.endMock();
     restfulPtvElectronicServiceChannelMocker.endMock();
@@ -80,6 +91,11 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     managementPageMocker.startMock();
     managementPostMocker.startMock();
     managementShortlinkMocker.startMock();
+    managementAnnouncementMocker.startMock();
+    managementBannerMocker.startMock();
+    managementFragmentMocker.startMock();
+    managementMediaMocker.startMock();
+    managementTileMocker.startMock();
 
     insertSystemSetting(KuntaApiConsts.SYSTEM_SETTING_TESTS_RUNNING, "true");
     
@@ -113,6 +129,26 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   
   public ManagementShortlinkMocker getManagementShortlinkMocker() {
     return managementShortlinkMocker;
+  }
+  
+  public ManagementAnnouncementMocker getManagementAnnouncementMocker() {
+    return managementAnnouncementMocker;
+  }
+  
+  public ManagementMediaMocker getManagementMediaMocker() {
+    return managementMediaMocker;
+  }
+  
+  public ManagementBannerMocker getManagementBannerMocker() {
+    return managementBannerMocker;
+  }
+  
+  public ManagementFragmentMocker getManagementFragmentMocker() {
+    return managementFragmentMocker;
+  }
+  
+  public ManagementTileMocker getManagementTileMocker() {
+    return managementTileMocker;
   }
   
   public RestfulPtvOrganizationMocker getRestfulPtvOrganizationMocker() {

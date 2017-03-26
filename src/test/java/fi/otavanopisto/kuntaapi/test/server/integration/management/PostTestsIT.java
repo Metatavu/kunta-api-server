@@ -44,9 +44,8 @@ public class PostTestsIT extends AbstractIntegrationTest {
     getManagementPostMocker()
       .mockPosts(789, 890, 901);
     
-    getManagementMocker()
-      .mockMedia("3001", "3002")
-      .startMock();
+    getManagementMediaMocker()
+      .mockMedias(3001, 3002);
     
     startMocks();
 

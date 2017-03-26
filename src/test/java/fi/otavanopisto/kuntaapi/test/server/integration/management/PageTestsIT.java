@@ -39,9 +39,8 @@ public class PageTestsIT extends AbstractIntegrationTest {
     getRestfulPtvOrganizationMocker()
       .mockOrganizations("0de268cf-1ea1-4719-8a6e-1150933b6b9e");
     
-    getManagementMocker()
-      .mockMedia("3001", "3002")
-      .startMock();
+    getManagementMediaMocker()
+      .mockMedias(3001, 3002);;
     
     getManagementPageMocker()
       .mockPages(456, 567, 678);
