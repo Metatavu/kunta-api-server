@@ -301,12 +301,16 @@ public class CaseMCacheUpdater {
     logger.fine(String.format("Done updating CaseM meeting %s", kuntaApiMeetingPageId.toString()));
   }
   
-  private MeetingItemLink updateMeetingItem(PageId meetingPageId, Long orderIndex,  String downloadUrl, String meetingTitle, boolean memoApproved, Content meetingItemContent, Locale locale) {
-    OrganizationId organizationId = meetingPageId.getOrganizationId();
+  private MeetingItemLink updateMeetingItem(PageId kuntaApiMeetingPageId, Long orderIndex,  String downloadUrl, String meetingTitle, boolean memoApproved, Content meetingItemContent, Locale locale) {
+    OrganizationId organizationId = kuntaApiMeetingPageId.getOrganizationId();
     PageId casemItemPageId = toContentId(organizationId, meetingItemContent.getContentId());
     BaseId parentId = idMapController.findMappedPageParentId(organizationId, casemItemPageId);
+    String unmappedParentId = null;
+    
     if (parentId == null) {
-      parentId = meetingPageId;
+      parentId = kuntaApiMeetingPageId;
+    } else {
+      unmappedParentId = kuntaApiMeetingPageId.getId();
     }
     
     List<ExtendedProperty> itemExtendedProperties = listExtendedProperties(organizationId, meetingItemContent);
@@ -322,7 +326,7 @@ public class CaseMCacheUpdater {
     
     PageId kuntaApiPageId = new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
     PageId parentPageId = parentId instanceof PageId ? (PageId) parentId : null;
-    Page meetingItemPage = casemTranslator.translatePage(kuntaApiPageId, parentPageId, itemLink.getText(), itemLink.getSlug());
+    Page meetingItemPage = casemTranslator.translatePage(kuntaApiPageId, parentPageId, unmappedParentId, itemLink.getText(), itemLink.getSlug());
     
     String meetingItemPageContents = renderContentMeetingItem(createMeetingItemModel(downloadUrl, meetingTitle, memoApproved, itemExtendedProperties), locale);
     caseMCache.cachePage(organizationId, meetingItemPage, casemTranslator.translateLocalized(meetingItemPageContents));
@@ -876,7 +880,10 @@ public class CaseMCacheUpdater {
     PageId casemPageId = getNodePageId(organizationId, node);
     PageId kuntaApiParentPageId = idController.translatePageId(getNodePageId(organizationId, parentNode), KuntaApiConsts.IDENTIFIER_NAME);
     BaseId identifierParentId = idMapController.findMappedPageParentId(organizationId, casemPageId);
-    if (identifierParentId != null) {
+    String unmappedParentId = null;
+    
+    if (identifierParentId != null) {      
+      unmappedParentId = kuntaApiParentPageId == null ? "ROOT" : kuntaApiParentPageId.getId();
       kuntaApiParentPageId = identifierParentId instanceof PageId ? (PageId) identifierParentId : null;
     } else {
       identifierParentId = kuntaApiParentPageId != null ? kuntaApiParentPageId : organizationId;
@@ -891,7 +898,7 @@ public class CaseMCacheUpdater {
       originalParentMap.put(kuntaApiPageId.getId(), kuntaApiParentPageId);
     }
     
-    Page page = casemTranslator.translatePage(kuntaApiPageId, kuntaApiParentPageId, node);
+    Page page = casemTranslator.translatePage(kuntaApiPageId, kuntaApiParentPageId, unmappedParentId, node);
     caseMCache.cachePage(organizationId, page, null);
   }
   

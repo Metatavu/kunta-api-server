@@ -22,9 +22,10 @@ public interface PageProvider {
    * @param organizationId organization id
    * @param filter results by parent id (optional)
    * @param return only root pages. When this is set to true, parentId parameter is ignored
+   * @param includeUnmappedParentIds whether provider should accept original unmapped parentIds as parentId match
    * @return list of organization pages
    */
-  public List<Page> listOrganizationPages(OrganizationId organizationId, PageId parentId, boolean onlyRootPages);
+  public List<Page> listOrganizationPages(OrganizationId organizationId, PageId parentId, boolean onlyRootPages, boolean includeUnmappedParentIds);
   
   /**
    * Finds a single organization page

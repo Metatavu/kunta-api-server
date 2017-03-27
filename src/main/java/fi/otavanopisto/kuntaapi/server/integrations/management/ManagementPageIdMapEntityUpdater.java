@@ -141,7 +141,7 @@ public class ManagementPageIdMapEntityUpdater extends EntityUpdater {
   }
   
   private List<PageId> listChildPageIds(PageId parentId) {
-    List<Page> childPages = pageController.listPages(parentId.getOrganizationId(), null, false, parentId, null, null);
+    List<Page> childPages = pageController.listPages(parentId.getOrganizationId(), null, false, parentId, true, null, null);
     
     List<PageId> result = new ArrayList<>(childPages.size());
     for (Page childPage : childPages) {
@@ -156,7 +156,7 @@ public class ManagementPageIdMapEntityUpdater extends EntityUpdater {
       return organizationId;
     }
     
-    Page page = pageController.findPageByPath(organizationId, path);
+    Page page = pageController.findPageByPath(organizationId, path, true);
     if (page != null) {
       return new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, page.getId());
     }

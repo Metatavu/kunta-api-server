@@ -46,6 +46,10 @@ public class PageController {
   private Instance<PageProvider> pageProviders;
 
   public List<Page> listPages(OrganizationId organizationId, String path, boolean onlyRootPages, PageId parentId, Long firstResult, Long maxResults) {
+    return listPages(organizationId, path, onlyRootPages, parentId, false, firstResult, maxResults);
+  }
+  
+  public List<Page> listPages(OrganizationId organizationId, String path, boolean onlyRootPages, PageId parentId, boolean includeUnmappedParentIds, Long firstResult, Long maxResults) {
     List<Page> result = new ArrayList<>();
     
     if (path != null) {
@@ -55,7 +59,7 @@ public class PageController {
       }
     } else {
       for (PageProvider pageProvider : getPageProviders()) {
-        List<Page> pages = pageProvider.listOrganizationPages(organizationId, parentId, onlyRootPages);
+        List<Page> pages = pageProvider.listOrganizationPages(organizationId, parentId, onlyRootPages, includeUnmappedParentIds);
         if (pages != null) {
           result.addAll(pages);
         } else {
@@ -68,14 +72,18 @@ public class PageController {
   }
 
   public Page findPageByPath(OrganizationId organizationId, String path) {
+    return findPageByPath(organizationId, path, false);
+  }
+  
+  public Page findPageByPath(OrganizationId organizationId, String path, boolean includeUnmappedParentIds) {
     Page current = null;
     
     String[] slugs = StringUtils.split(path, "/");
     for (String slug : slugs) {
       if (current == null) {
-        current = findPageByParentAndSlug(organizationId, null, slug);
+        current = findPageByParentAndSlug(organizationId, null, slug, includeUnmappedParentIds);
       } else {
-        current = findPageByParentAndSlug(organizationId, new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, current.getId()), slug);
+        current = findPageByParentAndSlug(organizationId, new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, current.getId()), slug, includeUnmappedParentIds);
       }
       
       if (current == null) {
@@ -86,9 +94,9 @@ public class PageController {
     return current;
   }
 
-  private Page findPageByParentAndSlug(OrganizationId organizationId, PageId parentId, String slug) {
+  private Page findPageByParentAndSlug(OrganizationId organizationId, PageId parentId, String slug, boolean includeUnmappedParentIds) {
     for (PageProvider pageProvider : getPageProviders()) {
-      List<Page> childPages = pageProvider.listOrganizationPages(organizationId, parentId, parentId == null);
+      List<Page> childPages = pageProvider.listOrganizationPages(organizationId, parentId, parentId == null, includeUnmappedParentIds);
       for (Page childPage : childPages) {
         if (StringUtils.equals(slug, childPage.getSlug())) {
           return childPage;
