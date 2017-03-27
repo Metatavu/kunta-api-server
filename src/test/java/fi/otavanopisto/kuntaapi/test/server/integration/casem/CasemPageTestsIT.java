@@ -45,9 +45,6 @@ public class CasemPageTestsIT extends AbstractIntegrationTest {
       .mockContent(987, 876, 765)
       .startMock();
     
-    getManagementPageMocker()
-      .mockPages(456);
-
     startMocks();
 
     waitApiListCount("/organizations", 1);
@@ -56,7 +53,7 @@ public class CasemPageTestsIT extends AbstractIntegrationTest {
     createCasemSettings(organizationId);
     createManagementSettings(organizationId);
 
-    waitApiListCount(String.format("/organizations/%s/pages", getOrganizationId(0)), 5); 
+    waitApiListCount(String.format("/organizations/%s/pages", organizationId), 4); 
   }
 
   @After
@@ -71,6 +68,9 @@ public class CasemPageTestsIT extends AbstractIntegrationTest {
   @Test
   public void testPageRelocate() throws InterruptedException {
     String organizationId = getOrganizationId(0);
+    
+    getManagementPageMocker().mockPages(456).startMock();
+    waitApiListCount(String.format("/organizations/%s/pages", organizationId), 5); 
     
     String newParent = getPageIdByPath(organizationId, "/bertha");
     String originalPath = String.format("/organizations/%s/pages?path=/test_board", organizationId);
@@ -101,6 +101,9 @@ public class CasemPageTestsIT extends AbstractIntegrationTest {
   public void testPageRelocateWildcard() throws InterruptedException {
     String organizationId = getOrganizationId(0);
     
+    getManagementPageMocker().mockPages(456).startMock();
+    waitApiListCount(String.format("/organizations/%s/pages", organizationId), 5); 
+    
     Page originalPage = getPageByPath(organizationId, "/test_board/meeting_16.1.2017");
     String originalParent = getPageIdByPath(organizationId, "/test_board");
     String newParent = getPageIdByPath(organizationId, "/bertha");
@@ -109,8 +112,6 @@ public class CasemPageTestsIT extends AbstractIntegrationTest {
     
     assertPageInPath(originalPath, "meeting_16.1.2017", originalParent);
     assertPageNotInPath(newPath);
-
-    addServerLogEntry("!!!!!!!!!!!!!! Mappaus päälle.");
 
     getManagementPageMappingMocker().addMapping("/test_board/*", "/bertha");
     
@@ -123,7 +124,6 @@ public class CasemPageTestsIT extends AbstractIntegrationTest {
     assertEquals(originalPage.getTitles(), relocatedPage.getTitles());
 
     getManagementPageMappingMocker().removeMapping("/test_board/*");
-    addServerLogEntry("!!!!!!!!!!!!!! Mappaus pois.");
     
     waitApiListCount(originalPath, 1);
     assertPageInPath(originalPath, "meeting_16.1.2017", originalParent);
