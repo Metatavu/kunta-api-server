@@ -43,7 +43,7 @@ public class ManagementPageMappingMocker extends AbstractBaseMocker {
     removeMappingStub();
     
     for (int i = mappings.size() - 1; i >= 0; i--) {
-      if ((StringUtils.equals(pagePath, mappings.get(i).getPagePath()))) {
+      if (StringUtils.equals(pagePath, mappings.get(i).getPagePath())) {
         mappings.remove(i);
       }
     }

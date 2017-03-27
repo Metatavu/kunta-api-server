@@ -38,7 +38,7 @@ public class MenuTestsIT extends AbstractIntegrationTest {
       .mockPages(456, 567, 678);
     
     getManagementMediaMocker()
-      .mockMedias(3001, 3002);;
+      .mockMedias(3001, 3002);
   
     getManagementMocker()
       .mockMenus("5001")

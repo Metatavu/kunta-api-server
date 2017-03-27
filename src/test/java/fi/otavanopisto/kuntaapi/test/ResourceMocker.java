@@ -156,6 +156,7 @@ public class ResourceMocker<I, R> {
     }
   }
   
+  @SuppressWarnings ("squid:S1301")
   public void mockAlternative(I id, R alternative) {
     List<MappingBuilder> alternativeMappings = new ArrayList<>();
     MockedResource<R> resource = resources.get(id);
@@ -168,13 +169,17 @@ public class ResourceMocker<I, R> {
       }
       
       MappingBuilder alternativeMapping = null;
+      String method = okMapping.build().getRequest().getMethod().getName();
       
-      switch (okMapping.build().getRequest().getMethod().getName()) {
+      switch (method) {
         case "GET":
           alternativeMapping = okMapping.willReturn(createOkGetReturn(alternative));
         break;
         case "HEAD":
           alternativeMapping = okMapping.willReturn(createOkHeadReturn(alternative));
+        break;
+        default:
+          fail(String.format("Unknown method %s", method));
         break;
       }
       
