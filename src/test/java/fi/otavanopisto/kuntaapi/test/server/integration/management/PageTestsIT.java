@@ -16,6 +16,7 @@ import org.junit.Test;
 import com.github.tomakehurst.wiremock.junit.WireMockRule;
 import com.jayway.restassured.http.ContentType;
 
+import fi.metatavu.kuntaapi.server.rest.model.Page;
 import fi.otavanopisto.kuntaapi.server.integrations.management.ManagementConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.PtvConsts;
 import fi.otavanopisto.kuntaapi.test.AbstractIntegrationTest;
@@ -40,7 +41,7 @@ public class PageTestsIT extends AbstractIntegrationTest {
       .mockOrganizations("0de268cf-1ea1-4719-8a6e-1150933b6b9e");
     
     getManagementMediaMocker()
-      .mockMedias(3001, 3002);;
+      .mockMedias(3001, 3002);
     
     getManagementPageMocker()
       .mockPages(456, 567, 678);
@@ -73,6 +74,7 @@ public class PageTestsIT extends AbstractIntegrationTest {
     String newParent = getPageId(organizationId, 0);
     String originalPath = String.format("/organizations/%s/pages?path=/bertha", organizationId);
     String newPath = String.format("/organizations/%s/pages?path=/zeus/bertha", organizationId);
+    Page originalPage = getPageByPath(organizationId, "/bertha");
     
     assertPageInPath(originalPath, "bertha", null);
     assertPageNotInPath(newPath);
@@ -82,6 +84,10 @@ public class PageTestsIT extends AbstractIntegrationTest {
     waitApiListCount(newPath, 1);
     assertPageInPath(newPath, "bertha", newParent);
     assertPageNotInPath(originalPath);
+
+    Page relocatedPage = getPageByPath(organizationId, "/zeus/bertha");
+    assertEquals(originalPage.getId(), relocatedPage.getId());
+    assertEquals(originalPage.getTitles(), relocatedPage.getTitles());
     
     getManagementPageMappingMocker().removeMapping("/bertha");
     
@@ -385,30 +391,6 @@ public class PageTestsIT extends AbstractIntegrationTest {
    
   private void deleteManagementSettings(String organizationId) {
     deleteOrganizationSetting(organizationId, ManagementConsts.ORGANIZATION_SETTING_BASEURL);
-  }
-  
-  private void assertPageInPath(String path, String expectedSlug, String expectedParentId) {
-    given() 
-      .baseUri(getApiBasePath())
-      .contentType(ContentType.JSON)
-      .get(path)
-      .then()
-      .assertThat()
-      .statusCode(200)
-      .body("id.size()", is(1))
-      .body("slug[0]", is(expectedSlug))
-      .body("parentId[0]", is(expectedParentId)); 
-  }
-  
-  private void assertPageNotInPath(String path) {
-    given() 
-      .baseUri(getApiBasePath())
-      .contentType(ContentType.JSON)
-      .get(path)
-      .then()
-      .assertThat()
-      .statusCode(200)
-      .body("id.size()", is(0));
   }
   
 }

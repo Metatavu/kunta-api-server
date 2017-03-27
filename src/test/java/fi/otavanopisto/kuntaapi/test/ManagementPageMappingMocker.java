@@ -10,8 +10,6 @@ import static org.junit.Assert.fail;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.collections4.CollectionUtils;
-import org.apache.commons.collections4.Predicate;
 import org.apache.commons.lang3.StringUtils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -43,14 +41,13 @@ public class ManagementPageMappingMocker extends AbstractBaseMocker {
   
   public ManagementPageMappingMocker removeMapping(String pagePath) {
     removeMappingStub();
-
-    CollectionUtils.filter(mappings, new Predicate<Pagemappings>() {
-      @Override
-      public boolean evaluate(Pagemappings pagemapping) {
-        return StringUtils.equals(pagePath, pagemapping.getPagePath());
+    
+    for (int i = mappings.size() - 1; i >= 0; i--) {
+      if ((StringUtils.equals(pagePath, mappings.get(i).getPagePath()))) {
+        mappings.remove(i);
       }
-    });
-
+    }
+    
     applyMappingStub();
 
     return this;

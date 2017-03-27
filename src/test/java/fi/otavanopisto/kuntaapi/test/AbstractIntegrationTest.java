@@ -14,6 +14,7 @@ import org.junit.After;
 import com.jayway.restassured.http.ContentType;
 import com.jayway.restassured.path.json.exception.JsonPathException;
 
+import fi.metatavu.kuntaapi.server.rest.model.Page;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 
 /**
@@ -413,6 +414,26 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
         .jsonPath()
         .getString(String.format("id[%d]", index));
   }
+
+  protected String getPageIdByPath(String organizationId, String path) {
+    return given() 
+        .baseUri(getApiBasePath())
+        .contentType(ContentType.JSON)
+        .get(String.format("/organizations/%s/pages?path=%s", organizationId, path))
+        .body()
+        .jsonPath()
+        .getString(String.format("id[%d]", 0));
+  }
+
+  protected Page getPageByPath(String organizationId, String path) {
+    return given() 
+        .baseUri(getApiBasePath())
+        .contentType(ContentType.JSON)
+        .get(String.format("/organizations/%s/pages?path=%s", organizationId, path))
+        .body()
+        .jsonPath()
+        .getObject("[0]", Page.class);
+  }
   
   protected String getPageImageId(String organizatinoId, String pageId, int index) {
     return given() 
@@ -646,6 +667,30 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     .assertThat()
     .statusCode(200)
     .body("id.size()", is(0));
+  }
+  
+  protected void assertPageInPath(String path, String expectedSlug, String expectedParentId) {
+    given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get(path)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(1))
+      .body("slug[0]", is(expectedSlug))
+      .body("parentId[0]", is(expectedParentId)); 
+  }
+  
+  protected void assertPageNotInPath(String path) {
+    given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get(path)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(0));
   }
   
   private void setLog4jLevel(Level level) {
