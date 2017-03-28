@@ -1,5 +1,6 @@
 package fi.otavanopisto.kuntaapi.server.integrations.management;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
@@ -18,6 +19,7 @@ import fi.metatavu.kuntaapi.server.rest.model.NewsArticle;
 import fi.metatavu.management.client.ApiResponse;
 import fi.metatavu.management.client.DefaultApi;
 import fi.metatavu.management.client.model.Attachment;
+import fi.metatavu.management.client.model.Category;
 import fi.metatavu.management.client.model.Post;
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
@@ -122,13 +124,23 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
   }
   
   private void updateManagementPost(OrganizationId organizationId, DefaultApi api, Post managementPost, Long orderIndex) {
+    List<String> categories = new ArrayList<>(managementPost.getCategories().size());
+    for (String managementCategoryId : managementPost.getCategories()) {
+      ApiResponse<Category> managementCategory = api.wpV2CategoriesIdGet(managementCategoryId, null, null);
+      if (managementCategory.isOk()) {
+        categories.add(managementCategory.getResponse().getName());
+      } else {
+        logger.log(Level.WARNING, String.format("Failed to retrieve category %s from management service", managementCategoryId));
+      }
+    }
+    
     NewsArticleId newsArticleId = new NewsArticleId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementPost.getId()));
 
     Identifier identifier = identifierController.acquireIdentifier(orderIndex, newsArticleId);
     identifierRelationController.setParentId(identifier, organizationId);
     
     NewsArticleId newsArticleKuntaApiId = new NewsArticleId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
-    NewsArticle newsArticle = managementTranslator.translateNewsArticle(newsArticleKuntaApiId, managementPost);
+    NewsArticle newsArticle = managementTranslator.translateNewsArticle(newsArticleKuntaApiId, categories, managementPost);
     if (newsArticle == null) {
       logger.severe(String.format("Failed to translate news article %d", managementPost.getId()));
       return;
