@@ -14,7 +14,9 @@ import org.junit.Test;
 import com.github.tomakehurst.wiremock.junit.WireMockRule;
 import com.jayway.restassured.http.ContentType;
 
+import fi.metatavu.kuntaapi.server.rest.model.Page;
 import fi.otavanopisto.kuntaapi.server.integrations.casem.CaseMConsts;
+import fi.otavanopisto.kuntaapi.server.integrations.management.ManagementConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.PtvConsts;
 import fi.otavanopisto.kuntaapi.test.AbstractIntegrationTest;
 
@@ -47,20 +49,87 @@ public class CasemPageTestsIT extends AbstractIntegrationTest {
 
     waitApiListCount("/organizations", 1);
     
-    createCasemSettings(getOrganizationId(0));
+    String organizationId = getOrganizationId(0);
+    createCasemSettings(organizationId);
+    createManagementSettings(organizationId);
 
-    waitApiListCount(String.format("/organizations/%s/pages", getOrganizationId(0)), 4); 
+    waitApiListCount(String.format("/organizations/%s/pages", organizationId), 4); 
   }
 
   @After
   public void afterTest() {
     String organizationId = getOrganizationId(0);
     deleteCasemSettings(organizationId);
+    deleteManagementSettings(organizationId);
     deletePtvSettings();
     getPtvMocker().endMock();
-    getManagementMocker().endMock();
   }
   
+  @Test
+  public void testPageRelocate() throws InterruptedException {
+    String organizationId = getOrganizationId(0);
+    
+    getManagementPageMocker().mockPages(456).startMock();
+    waitApiListCount(String.format("/organizations/%s/pages", organizationId), 5); 
+    
+    String newParent = getPageIdByPath(organizationId, "/bertha");
+    String originalPath = String.format("/organizations/%s/pages?path=/test_board", organizationId);
+    String newPath = String.format("/organizations/%s/pages?path=/bertha/test_board", organizationId);
+    Page originalPage = getPageByPath(organizationId, "/test_board");
+    
+    assertPageInPath(originalPath, "test_board", null);
+    assertPageNotInPath(newPath);
+    
+    getManagementPageMappingMocker().addMapping("/test_board", "/bertha");
+    
+    waitApiListCount(newPath, 1);
+    assertPageInPath(newPath, "test_board", newParent);
+    assertPageNotInPath(originalPath);
+
+    Page relocatedPage = getPageByPath(organizationId, "/bertha/test_board");
+    assertEquals(originalPage.getId(), relocatedPage.getId());
+    assertEquals(originalPage.getTitles(), relocatedPage.getTitles());
+
+    getManagementPageMappingMocker().removeMapping("/test_board");
+    
+    waitApiListCount(originalPath, 1);
+    assertPageInPath(originalPath, "test_board", null);
+    assertPageNotInPath(newPath);
+  }
+  
+  @Test
+  public void testPageRelocateWildcard() throws InterruptedException {
+    String organizationId = getOrganizationId(0);
+    
+    getManagementPageMocker().mockPages(456).startMock();
+    waitApiListCount(String.format("/organizations/%s/pages", organizationId), 5); 
+    
+    Page originalPage = getPageByPath(organizationId, "/test_board/meeting_16.1.2017");
+    String originalParent = getPageIdByPath(organizationId, "/test_board");
+    String newParent = getPageIdByPath(organizationId, "/bertha");
+    String originalPath = String.format("/organizations/%s/pages?path=/test_board/meeting_16.1.2017", organizationId);
+    String newPath = String.format("/organizations/%s/pages?path=/bertha/meeting_16.1.2017", organizationId);
+    
+    assertPageInPath(originalPath, "meeting_16.1.2017", originalParent);
+    assertPageNotInPath(newPath);
+
+    getManagementPageMappingMocker().addMapping("/test_board/*", "/bertha");
+    
+    waitApiListCount(newPath, 1);
+    assertPageInPath(newPath, "meeting_16.1.2017", newParent);
+    assertPageNotInPath(originalPath);
+
+    Page relocatedPage = getPageByPath(organizationId, "/bertha/meeting_16.1.2017");
+    assertEquals(originalPage.getId(), relocatedPage.getId());
+    assertEquals(originalPage.getTitles(), relocatedPage.getTitles());
+
+    getManagementPageMappingMocker().removeMapping("/test_board/*");
+    
+    waitApiListCount(originalPath, 1);
+    assertPageInPath(originalPath, "meeting_16.1.2017", originalParent);
+    assertPageNotInPath(newPath);
+  }
+
   @Test
   public void testFindPage() {
     String organizationId = getOrganizationId(0);
@@ -196,5 +265,13 @@ public class CasemPageTestsIT extends AbstractIntegrationTest {
     deleteOrganizationSetting(organizationId, CaseMConsts.ORGANIZATION_SETTING_ROOT_NODE);
     deleteOrganizationSetting(organizationId, CaseMConsts.ORGANIZATION_SETTING_DOWNLOAD_PATH);
   }
-  
+
+  private void createManagementSettings(String organizationId) {
+    insertOrganizationSetting(organizationId, ManagementConsts.ORGANIZATION_SETTING_BASEURL, String.format("%s/wp-json", getWireMockBasePath(), BASE_URL));
+    flushCache();
+  }
+   
+  private void deleteManagementSettings(String organizationId) {
+    deleteOrganizationSetting(organizationId, ManagementConsts.ORGANIZATION_SETTING_BASEURL);
+  }
 }

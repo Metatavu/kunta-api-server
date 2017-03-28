@@ -38,10 +38,9 @@ public class AnnouncementTestsIT extends AbstractIntegrationTest {
     getRestfulPtvOrganizationMocker()
       .mockOrganizations("0de268cf-1ea1-4719-8a6e-1150933b6b9e");
     
-    getManagementMocker()
-      .mockAnnouncements("123", "234", "345")
-      .startMock();
-    
+    getManagementAnnouncementMocker()
+      .mockAnnouncements(123, 234, 345);
+
     startMocks();
 
     waitApiListCount("/organizations", 1);

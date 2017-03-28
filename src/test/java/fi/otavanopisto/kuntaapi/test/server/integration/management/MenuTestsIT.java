@@ -35,11 +35,12 @@ public class MenuTestsIT extends AbstractIntegrationTest {
       .mockOrganizations("0de268cf-1ea1-4719-8a6e-1150933b6b9e");
     
     getManagementPageMocker()
-      .mockPages(456, 567, 678)
-      .startMock();
+      .mockPages(456, 567, 678);
     
+    getManagementMediaMocker()
+      .mockMedias(3001, 3002);
+  
     getManagementMocker()
-      .mockMedia("3001", "3002")
       .mockMenus("5001")
       .mockMenuItems("5001", "6001", "6002", "6003")
       .startMock();

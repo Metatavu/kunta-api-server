@@ -16,6 +16,7 @@ import org.junit.Test;
 import com.github.tomakehurst.wiremock.junit.WireMockRule;
 import com.jayway.restassured.http.ContentType;
 
+import fi.metatavu.kuntaapi.server.rest.model.Page;
 import fi.otavanopisto.kuntaapi.server.integrations.management.ManagementConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.PtvConsts;
 import fi.otavanopisto.kuntaapi.test.AbstractIntegrationTest;
@@ -39,9 +40,8 @@ public class PageTestsIT extends AbstractIntegrationTest {
     getRestfulPtvOrganizationMocker()
       .mockOrganizations("0de268cf-1ea1-4719-8a6e-1150933b6b9e");
     
-    getManagementMocker()
-      .mockMedia("3001", "3002")
-      .startMock();
+    getManagementMediaMocker()
+      .mockMedias(3001, 3002);
     
     getManagementPageMocker()
       .mockPages(456, 567, 678);
@@ -57,7 +57,7 @@ public class PageTestsIT extends AbstractIntegrationTest {
     String pageId = getPageId(organizationId, 0);
     waitApiListCount(String.format("/organizations/%s/pages/%s/images/", organizationId, pageId), 1);
   }
-
+  
   @After
   public void afterClass() {
     String organizationId = getOrganizationId(0);
@@ -65,6 +65,35 @@ public class PageTestsIT extends AbstractIntegrationTest {
     getManagementMocker().endMock();
     deletePtvSettings();
     deleteManagementSettings(organizationId);
+  }
+  
+  @Test
+  public void testPageRelocate() throws InterruptedException {
+    String organizationId = getOrganizationId(0);
+    
+    String newParent = getPageId(organizationId, 0);
+    String originalPath = String.format("/organizations/%s/pages?path=/bertha", organizationId);
+    String newPath = String.format("/organizations/%s/pages?path=/zeus/bertha", organizationId);
+    Page originalPage = getPageByPath(organizationId, "/bertha");
+    
+    assertPageInPath(originalPath, "bertha", null);
+    assertPageNotInPath(newPath);
+    
+    getManagementPageMappingMocker().addMapping("/bertha", "/zeus");
+    
+    waitApiListCount(newPath, 1);
+    assertPageInPath(newPath, "bertha", newParent);
+    assertPageNotInPath(originalPath);
+
+    Page relocatedPage = getPageByPath(organizationId, "/zeus/bertha");
+    assertEquals(originalPage.getId(), relocatedPage.getId());
+    assertEquals(originalPage.getTitles(), relocatedPage.getTitles());
+    
+    getManagementPageMappingMocker().removeMapping("/bertha");
+    
+    waitApiListCount(originalPath, 1);
+    assertPageInPath(originalPath, "bertha", null);
+    assertPageNotInPath(newPath);
   }
   
   @Test

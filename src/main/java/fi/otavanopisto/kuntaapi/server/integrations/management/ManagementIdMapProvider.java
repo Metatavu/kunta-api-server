@@ -25,7 +25,7 @@ public class ManagementIdMapProvider implements IdMapProvider {
   private IdController idController;
   
   @Inject
-  private ManagementPageIdMapResourceContainer managementPageIdMapCache;
+  private ManagementPageIdMapResourceContainer managementPageIdMapResourceContainer;
   
   @Override
   public BaseId findMappedPageParentId(OrganizationId organizationId, PageId pageId) {
@@ -41,7 +41,7 @@ public class ManagementIdMapProvider implements IdMapProvider {
       return null;  
     }
     
-    Map<BaseId, BaseId> pageIdMap = managementPageIdMapCache.get(kuntaApiOrganizationId);
+    Map<BaseId, BaseId> pageIdMap = managementPageIdMapResourceContainer.get(kuntaApiOrganizationId);
     if (pageIdMap == null) {
       return null;
     }
