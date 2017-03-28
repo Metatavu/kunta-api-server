@@ -382,12 +382,12 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   /* News */
   
   @Override
-  public Response listOrganizationNews(String organizationIdParam, String slug, String publishedBefore,
+  public Response listOrganizationNews(String organizationIdParam, String slug, String tag, String publishedBefore,
       String publishedAfter, Integer firstResult, Integer maxResults, Request request) {
     
     OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     
-    List<NewsArticle> result = newsController.listNewsArticles(slug, getDateTime(publishedBefore), getDateTime(publishedAfter), firstResult, maxResults, organizationId);
+    List<NewsArticle> result = newsController.listNewsArticles(slug, tag, getDateTime(publishedBefore), getDateTime(publishedAfter), firstResult, maxResults, organizationId);
     
     List<String> ids = httpCacheController.getEntityIds(result);
     Response notModified = httpCacheController.getNotModified(request, ids);

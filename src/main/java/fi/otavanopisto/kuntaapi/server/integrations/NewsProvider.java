@@ -20,11 +20,12 @@ public interface NewsProvider {
    * List news in an organization
    * 
    * @param organizationId organization id
+   * @param tag return only news articles containing specified tag
    * @param publishedBefore return only news published before the date
    * @param publishedAfter return only news published after the date
    * @return organization news articles
    */
-  public List<NewsArticle> listOrganizationNews(OrganizationId organizationId, OffsetDateTime publishedBefore, OffsetDateTime publishedAfter);
+  public List<NewsArticle> listOrganizationNews(OrganizationId organizationId, String tag, OffsetDateTime publishedBefore, OffsetDateTime publishedAfter);
   
   /**
    * Finds a single news article

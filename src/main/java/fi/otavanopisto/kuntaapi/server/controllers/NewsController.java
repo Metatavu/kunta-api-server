@@ -31,11 +31,11 @@ public class NewsController {
   @Inject
   private Instance<NewsProvider> newsProviders;
 
-  public List<NewsArticle> listNewsArticles(String slug, OffsetDateTime publishedBefore, OffsetDateTime publishedAfter, Integer firstResult, Integer maxResults, OrganizationId organizationId) {
+  public List<NewsArticle> listNewsArticles(String slug, String tag, OffsetDateTime publishedBefore, OffsetDateTime publishedAfter, Integer firstResult, Integer maxResults, OrganizationId organizationId) {
     List<NewsArticle> result = new ArrayList<>();
    
     for (NewsProvider newsProvider : getNewsProviders()) {
-      List<NewsArticle> newArticles = newsProvider.listOrganizationNews(organizationId, publishedBefore, publishedAfter);
+      List<NewsArticle> newArticles = newsProvider.listOrganizationNews(organizationId, tag, publishedBefore, publishedAfter);
       if (newArticles != null && !newArticles.isEmpty()) {
         if (slug != null) {
           result.addAll(filterBySlug(newArticles, slug));

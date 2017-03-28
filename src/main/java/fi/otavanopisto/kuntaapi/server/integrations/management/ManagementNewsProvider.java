@@ -44,7 +44,7 @@ public class ManagementNewsProvider extends AbstractManagementProvider implement
   private ManagementAttachmentResourceContainer managementAttachmentResourceContainer;
   
   @Override
-  public List<NewsArticle> listOrganizationNews(OrganizationId organizationId, OffsetDateTime publishedBefore, OffsetDateTime publishedAfter) {
+  public List<NewsArticle> listOrganizationNews(OrganizationId organizationId, String tag, OffsetDateTime publishedBefore, OffsetDateTime publishedAfter) {
     if (organizationId == null) {
       return Collections.emptyList();
     }
@@ -53,7 +53,7 @@ public class ManagementNewsProvider extends AbstractManagementProvider implement
     List<NewsArticle> result = new ArrayList<>(newsArticleIds.size());
     for (NewsArticleId newsArticleId : newsArticleIds) {
       NewsArticle newsArticle = newsArticleResourceContainer.get(newsArticleId);
-      if (newsArticle != null && isAccetable(newsArticle, publishedBefore, publishedAfter)) {
+      if (newsArticle != null && isAcceptable(newsArticle, tag, publishedBefore, publishedAfter)) {
         result.add(newsArticle);
       }
     }
@@ -119,7 +119,7 @@ public class ManagementNewsProvider extends AbstractManagementProvider implement
     }
   }
   
-  private boolean isAccetable(NewsArticle newsArticle, OffsetDateTime publishedBefore, OffsetDateTime publishedAfter) {
+  private boolean isAcceptable(NewsArticle newsArticle, String tag, OffsetDateTime publishedBefore, OffsetDateTime publishedAfter) {
     OffsetDateTime published = newsArticle.getPublished();
     if (publishedBefore != null && (published == null || published.isAfter(publishedBefore))) {
       return false;
@@ -127,6 +127,10 @@ public class ManagementNewsProvider extends AbstractManagementProvider implement
     
     if (publishedAfter != null && (published == null || published.isBefore(publishedAfter))) {
       return false;
+    }
+    
+    if (tag != null) {
+      return newsArticle.getTags() != null && newsArticle.getTags().contains(tag);
     }
     
     return true;
