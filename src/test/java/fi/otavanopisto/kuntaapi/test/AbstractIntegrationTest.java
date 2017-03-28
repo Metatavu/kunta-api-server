@@ -14,6 +14,7 @@ import org.junit.After;
 import com.jayway.restassured.http.ContentType;
 import com.jayway.restassured.path.json.exception.JsonPathException;
 
+import fi.metatavu.kuntaapi.server.rest.model.Page;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 
 /**
@@ -31,9 +32,16 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   private KuntarekryMocker kuntarekryMocker = new KuntarekryMocker();
   private ManagementMocker managementMocker = new ManagementMocker();
   private CasemMocker casemMocker = new CasemMocker();
+  
+  private ManagementPageMappingMocker managementPageMappingMocker = new ManagementPageMappingMocker();
   private ManagementPageMocker managementPageMocker = new ManagementPageMocker();
   private ManagementPostMocker managementPostMocker = new ManagementPostMocker();
   private ManagementShortlinkMocker managementShortlinkMocker = new ManagementShortlinkMocker();
+  private ManagementAnnouncementMocker managementAnnouncementMocker = new ManagementAnnouncementMocker();
+  private ManagementBannerMocker managementBannerMocker = new ManagementBannerMocker();
+  private ManagementFragmentMocker managementFragmentMocker = new ManagementFragmentMocker();
+  private ManagementMediaMocker managementMediaMocker = new ManagementMediaMocker();
+  private ManagementTileMocker managementTileMocker = new ManagementTileMocker();
   private RestfulPtvServiceMocker restfulPtvServiceMocker = new RestfulPtvServiceMocker();
   private RestfulPtvOrganizationMocker restfulPtvOrganizationMocker = new RestfulPtvOrganizationMocker();
   private RestfulPtvElectronicServiceChannelMocker restfulPtvElectronicServiceChannelMocker = new RestfulPtvElectronicServiceChannelMocker();
@@ -52,9 +60,16 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     deleteSystemSetting(KuntaApiConsts.SYSTEM_SETTING_TESTS_RUNNING);
     clearTasks();
     
+    managementPageMappingMocker.endMock();
     managementPageMocker.endMock();
     managementPostMocker.endMock();
     managementShortlinkMocker.endMock();
+    managementAnnouncementMocker.endMock();
+    managementBannerMocker.endMock();
+    managementFragmentMocker.endMock();
+    managementMediaMocker.endMock();
+    managementTileMocker.endMock();
+    
     restfulPtvServiceMocker.endMock();
     restfulPtvOrganizationMocker.endMock();
     restfulPtvElectronicServiceChannelMocker.endMock();
@@ -80,7 +95,13 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     managementPageMocker.startMock();
     managementPostMocker.startMock();
     managementShortlinkMocker.startMock();
-
+    managementAnnouncementMocker.startMock();
+    managementBannerMocker.startMock();
+    managementFragmentMocker.startMock();
+    managementMediaMocker.startMock();
+    managementTileMocker.startMock();
+    managementPageMappingMocker.startMock();
+    
     insertSystemSetting(KuntaApiConsts.SYSTEM_SETTING_TESTS_RUNNING, "true");
     
     addServerLogEntry(String.format("### Test %s start ###", testName.getMethodName()));
@@ -103,6 +124,10 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     return casemMocker;
   }
   
+  public ManagementPageMappingMocker getManagementPageMappingMocker() {
+    return managementPageMappingMocker;
+  }
+  
   public ManagementPageMocker getManagementPageMocker() {
     return managementPageMocker;
   }
@@ -113,6 +138,26 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   
   public ManagementShortlinkMocker getManagementShortlinkMocker() {
     return managementShortlinkMocker;
+  }
+  
+  public ManagementAnnouncementMocker getManagementAnnouncementMocker() {
+    return managementAnnouncementMocker;
+  }
+  
+  public ManagementMediaMocker getManagementMediaMocker() {
+    return managementMediaMocker;
+  }
+  
+  public ManagementBannerMocker getManagementBannerMocker() {
+    return managementBannerMocker;
+  }
+  
+  public ManagementFragmentMocker getManagementFragmentMocker() {
+    return managementFragmentMocker;
+  }
+  
+  public ManagementTileMocker getManagementTileMocker() {
+    return managementTileMocker;
   }
   
   public RestfulPtvOrganizationMocker getRestfulPtvOrganizationMocker() {
@@ -369,6 +414,26 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
         .jsonPath()
         .getString(String.format("id[%d]", index));
   }
+
+  protected String getPageIdByPath(String organizationId, String path) {
+    return given() 
+        .baseUri(getApiBasePath())
+        .contentType(ContentType.JSON)
+        .get(String.format("/organizations/%s/pages?path=%s", organizationId, path))
+        .body()
+        .jsonPath()
+        .getString(String.format("id[%d]", 0));
+  }
+
+  protected Page getPageByPath(String organizationId, String path) {
+    return given() 
+        .baseUri(getApiBasePath())
+        .contentType(ContentType.JSON)
+        .get(String.format("/organizations/%s/pages?path=%s", organizationId, path))
+        .body()
+        .jsonPath()
+        .getObject("[0]", Page.class);
+  }
   
   protected String getPageImageId(String organizatinoId, String pageId, int index) {
     return given() 
@@ -602,6 +667,30 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     .assertThat()
     .statusCode(200)
     .body("id.size()", is(0));
+  }
+  
+  protected void assertPageInPath(String path, String expectedSlug, String expectedParentId) {
+    given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get(path)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(1))
+      .body("slug[0]", is(expectedSlug))
+      .body("parentId[0]", is(expectedParentId)); 
+  }
+  
+  protected void assertPageNotInPath(String path) {
+    given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get(path)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(0));
   }
   
   private void setLog4jLevel(Level level) {

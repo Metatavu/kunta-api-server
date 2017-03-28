@@ -37,10 +37,11 @@ public class TileTestsIT extends AbstractIntegrationTest {
     getRestfulPtvOrganizationMocker()
       .mockOrganizations("0de268cf-1ea1-4719-8a6e-1150933b6b9e");
     
-    getManagementMocker()
-      .mockMedia("3001", "3002")
-      .mockTiles("4001", "4002", "4003")
-      .startMock();
+    getManagementMediaMocker()
+      .mockMedias(3001, 3002);
+  
+    getManagementTileMocker()
+      .mockTiles(4001, 4002, 4003);
     
     startMocks();
 
@@ -55,7 +56,6 @@ public class TileTestsIT extends AbstractIntegrationTest {
   public void afterClass() {
     String organizationId = getOrganizationId(0);
     getPtvMocker().endMock();
-    getManagementMocker().endMock();
     deletePtvSettings();
     deleteManagementSettings(organizationId);
   }

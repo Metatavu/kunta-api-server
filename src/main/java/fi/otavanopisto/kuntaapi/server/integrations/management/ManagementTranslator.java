@@ -62,9 +62,10 @@ public class ManagementTranslator {
     return attachment;
   }
   
-  public fi.metatavu.kuntaapi.server.rest.model.Page translatePage(PageId kuntaApiPageId, PageId kuntaApiParentPageId, fi.metatavu.management.client.model.Page managementPage) {
+  public fi.metatavu.kuntaapi.server.rest.model.Page translatePage(PageId kuntaApiPageId, PageId kuntaApiParentPageId, String unmappedParentId, fi.metatavu.management.client.model.Page managementPage) {
     PageMeta meta = new PageMeta();
     meta.setHideMenuChildren(false);
+    meta.setUnmappedParentId(unmappedParentId);
     
     fi.metatavu.kuntaapi.server.rest.model.Page page = new fi.metatavu.kuntaapi.server.rest.model.Page();
     page.setTitles(translateLocalized(managementPage.getTitle().getRendered()));

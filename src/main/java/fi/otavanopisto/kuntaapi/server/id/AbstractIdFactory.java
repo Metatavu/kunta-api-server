@@ -29,6 +29,10 @@ public abstract class AbstractIdFactory {
   public OrganizationId createOrganizationId(String id) {
     return createId(OrganizationId.class, null, id);
   }
+
+  public PageId createPageId(OrganizationId kuntaApiOrganizationId, String id) {
+    return createId(PageId.class, kuntaApiOrganizationId, id);
+  }
   
   public ShortlinkId createShortlinkId(OrganizationId kuntaApiOrganizationId, String id) {
     return createId(ShortlinkId.class, kuntaApiOrganizationId, id);

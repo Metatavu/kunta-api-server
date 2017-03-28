@@ -56,7 +56,7 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
 
   @Inject
   private OrganizationSettingController organizationSettingController; 
-  
+
   @Inject
   private ManagementTranslator managementTranslator;
   
@@ -148,28 +148,35 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
   private void updateManagementPage(OrganizationId organizationId, DefaultApi api, Page managementPage, Long orderIndex) {
     PageId managementPageId = new PageId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementPage.getId()));
     
-    BaseId identifierParentId = idMapController.findMappedPageParentId(organizationId, managementPageId);
-
-    if (identifierParentId == null && managementPage.getParent() != null && managementPage.getParent() > 0) {
-      PageId managementParentPageId = new PageId(organizationId, ManagementConsts.IDENTIFIER_NAME,String.valueOf(managementPage.getParent()));
-      identifierParentId = idController.translatePageId(managementParentPageId, KuntaApiConsts.IDENTIFIER_NAME);
-      if (identifierParentId == null) {
+    BaseId mappedParentId = idMapController.findMappedPageParentId(organizationId, managementPageId);
+    String unmappedParentId = null;
+    boolean hasParent = managementPage.getParent() != null && managementPage.getParent() > 0;
+    BaseId kuntaApiParentId = null;
+    
+    if (hasParent) {
+      PageId managementParentPageId = new PageId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementPage.getParent()));
+      kuntaApiParentId = idController.translatePageId(managementParentPageId, KuntaApiConsts.IDENTIFIER_NAME);
+      if (kuntaApiParentId == null) {
         logger.severe(String.format("Could not translate %d parent page %d into management page id", managementPage.getParent(), managementPage.getId()));
         return;
-      } 
+      }
     }
     
-    if (identifierParentId == null) {
-      identifierParentId = organizationId;
+    BaseId identifierParentId;
+    if (mappedParentId != null) {
+      unmappedParentId = kuntaApiParentId != null ? kuntaApiParentId.getId() : "ROOT";
+      identifierParentId = mappedParentId;
+    } else {
+      identifierParentId = kuntaApiParentId == null ? organizationId : kuntaApiParentId;
     }
-    
+
     Identifier identifier = identifierController.acquireIdentifier(orderIndex, managementPageId);
     identifierRelationController.setParentId(identifier, identifierParentId);
     
     PageId pageParentId = identifierParentId instanceof PageId ? (PageId) identifierParentId : null;
     PageId kuntaApiPageId = new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
     
-    fi.metatavu.kuntaapi.server.rest.model.Page page = managementTranslator.translatePage(kuntaApiPageId, pageParentId, managementPage);
+    fi.metatavu.kuntaapi.server.rest.model.Page page = managementTranslator.translatePage(kuntaApiPageId, pageParentId, unmappedParentId, managementPage);
     String contents = managementPage.getContent().getRendered();
     String title = managementPage.getTitle().getRendered();
     List<LocalizedValue> pageContents = managementTranslator.translateLocalized(contents);
