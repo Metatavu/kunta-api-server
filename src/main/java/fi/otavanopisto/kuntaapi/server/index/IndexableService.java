@@ -4,6 +4,9 @@ import java.util.List;
 
 public class IndexableService implements Indexable {
 
+  @Field (index = "not_analyzed", store = true, type = "long")
+  private Long orderIndex;
+  
   @Field(index = "not_analyzed", store = true)
   private String serviceId;
   
@@ -35,6 +38,15 @@ public class IndexableService implements Indexable {
     return "service";
   }
 
+  @Override
+  public Long getOrderIndex() {
+    return orderIndex;
+  }
+  
+  public void setOrderIndex(Long orderIndex) {
+    this.orderIndex = orderIndex;
+  }
+  
   public String getServiceId() {
     return serviceId;
   }

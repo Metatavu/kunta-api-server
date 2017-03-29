@@ -25,6 +25,8 @@ import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 
 public abstract class AbstractIndexHander {
 
+  public static final String ORDER_INDEX_FIELD = "orderIndex";
+  
   private static final String DEFAULT_INDEX = "kunta-api";
   private static final String DEFAULT_CLUSTERNAME = "elasticsearch";
   private static final String[] DEFAULT_HOSTS = new String[] {

@@ -127,13 +127,13 @@ public class GtfsStopTimeEntityUpdater extends EntityUpdater {
     if (kuntaApiStopTime != null) {
       modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(kuntaApiStopTime));
       gtfsPublicTransportStopTimeCache.put(kuntaApiStopTimeId, kuntaApiStopTime);
-      indexStopTime(kuntaApiOrganizationId, kuntaApiStopTime);
+      indexStopTime(kuntaApiOrganizationId, kuntaApiStopTime, orderIndex);
     } else {
       logger.severe(String.format("Failed to translate gtfs stoptime %s", identifier.getKuntaApiId()));
     }
   }
 
-  private void indexStopTime(OrganizationId kuntaApiOrganizationId, fi.metatavu.kuntaapi.server.rest.model.StopTime kuntaApiStopTime) {
+  private void indexStopTime(OrganizationId kuntaApiOrganizationId, fi.metatavu.kuntaapi.server.rest.model.StopTime kuntaApiStopTime, Long orderIndex) {
     IndexableStopTime indexableStopTime = new IndexableStopTime();
     indexableStopTime.setArrivalTime(kuntaApiStopTime.getArrivalTime());
     indexableStopTime.setDepartureTime(kuntaApiStopTime.getDepartureTime());
@@ -141,7 +141,7 @@ public class GtfsStopTimeEntityUpdater extends EntityUpdater {
     indexableStopTime.setStopId(kuntaApiStopTime.getStopId());
     indexableStopTime.setTripId(kuntaApiStopTime.getTripId());
     indexableStopTime.setOrganizationId(kuntaApiOrganizationId.getId());
-    
+    indexableStopTime.setOrderIndex(orderIndex);
     indexRequest.fire(new IndexRequest(indexableStopTime));
   }
 }
