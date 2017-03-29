@@ -761,6 +761,42 @@
               </execution>
             </executions>
           </plugin>
+          
+          <plugin>
+            <groupId>com.github.alexcojocaru</groupId>
+            <artifactId>elasticsearch-maven-plugin</artifactId>
+            <version>5.7</version>
+            <configuration>
+              <clusterName>elasticsearch</clusterName>
+              <tcpPort>9300</tcpPort>
+              <httpPort>9200</httpPort>
+              <version>5.2.2</version>
+              <plugins>
+                <plugin>
+                  <uri>ingest-attachment</uri>
+                </plugin>
+                <plugin>
+                  <uri>mapper-attachments</uri>
+                </plugin>
+              </plugins>
+            </configuration>
+            <executions>
+              <execution>
+                <id>start-elasticsearch</id>
+                <phase>pre-integration-test</phase>
+                <goals>
+                  <goal>runforked</goal>
+                </goals>
+              </execution>
+              <execution>
+                <id>stop-elasticsearch</id>
+                <phase>post-integration-test</phase>
+                <goals>
+                  <goal>stop</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
 
           <plugin>
             <groupId>org.codehaus.cargo</groupId>
