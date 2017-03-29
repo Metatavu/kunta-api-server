@@ -167,7 +167,7 @@ public class PostTestsIT extends AbstractIntegrationTest {
       .body("id.size()", is(2))
       .body("slug[0]", is("lorem-ipsum-dolor-sit-amet"))
       .body("slug[1]", is("test-2"))
-      .body("tags[1].size()", is(3))
+      .body("tags[1].size()", is(2))
       .body("tags[1][0]", is("Precious"))
       .body("tags[1][1]", is("test tag 2")); 
     
