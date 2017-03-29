@@ -130,7 +130,7 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
       if (managementCategory.isOk()) {
         categories.add(managementCategory.getResponse().getName());
       } else {
-        logger.log(Level.WARNING, String.format("Failed to retrieve category %s from management service", managementCategoryId));
+        logger.log(Level.WARNING, () -> String.format("Failed to retrieve category %s from management service", managementCategoryId));
       }
     }
     
