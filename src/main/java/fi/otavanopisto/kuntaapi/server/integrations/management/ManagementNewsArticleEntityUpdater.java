@@ -140,8 +140,19 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
   }
   
   private void updateManagementPost(OrganizationId organizationId, DefaultApi api, Post managementPost, Long orderIndex) {
-    List<String> categories = new ArrayList<>(managementPost.getCategories().size());
-    for (String managementCategoryId : managementPost.getCategories()) {
+    List<String> managementCategoryIds = new ArrayList<>();
+    
+    if (managementPost.getCategories() != null) {
+      managementCategoryIds.addAll(managementPost.getCategories());
+    }
+    
+    if (managementPost.getTags() != null) {
+      managementCategoryIds.addAll(managementPost.getTags());
+    }
+
+    List<String> categories = new ArrayList<>(managementCategoryIds.size());
+    
+    for (String managementCategoryId : managementCategoryIds) {
       ApiResponse<Category> managementCategory = api.wpV2CategoriesIdGet(managementCategoryId, null, null);
       if (managementCategory.isOk()) {
         categories.add(managementCategory.getResponse().getName());

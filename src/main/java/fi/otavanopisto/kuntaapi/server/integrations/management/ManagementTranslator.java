@@ -4,9 +4,7 @@ import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.TreeSet;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -101,15 +99,6 @@ public class ManagementTranslator {
   
   public NewsArticle translateNewsArticle(NewsArticleId kuntaApiNewsArticleId, List<String> categories, Post post) {
     NewsArticle newsArticle = new NewsArticle();
-    TreeSet<String> tags = new TreeSet<>();
-    
-    if (post.getTags() != null) {
-      tags.addAll(post.getTags());
-    }
-    
-    if (categories != null) {
-      tags.addAll(categories);
-    }
     
     newsArticle.setAbstract(cleanExcerpt(post.getExcerpt()));
     newsArticle.setContents(post.getContent().getRendered());
@@ -117,7 +106,7 @@ public class ManagementTranslator {
     newsArticle.setPublished(toOffsetDateTime(post.getDate()));
     newsArticle.setTitle(post.getTitle().getRendered());
     newsArticle.setSlug(post.getSlug());
-    newsArticle.setTags(Collections.unmodifiableList(new ArrayList<>(tags)));
+    newsArticle.setTags(categories);
     
     return newsArticle;
   }
