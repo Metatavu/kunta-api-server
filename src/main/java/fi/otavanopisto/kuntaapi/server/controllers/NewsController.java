@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.logging.Logger;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Instance;
@@ -13,9 +14,13 @@ import javax.inject.Inject;
 import org.apache.commons.lang3.StringUtils;
 
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
+import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.index.NewsArticleSearcher;
+import fi.otavanopisto.kuntaapi.server.index.SearchResult;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
+import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.NewsProvider;
 import fi.otavanopisto.kuntaapi.server.utils.ListUtils;
 import fi.metatavu.kuntaapi.server.rest.model.Attachment;
@@ -26,16 +31,32 @@ import fi.metatavu.kuntaapi.server.rest.model.NewsArticle;
 public class NewsController {
 
   @Inject
+  private Logger logger;
+
+  @Inject
   private EntityController entityController;
+
+  @Inject
+  private IdController idController;
+
+  @Inject
+  private NewsArticleSearcher newsArticleSearcher;
 
   @Inject
   private Instance<NewsProvider> newsProviders;
 
-  public List<NewsArticle> listNewsArticles(String slug, OffsetDateTime publishedBefore, OffsetDateTime publishedAfter, Integer firstResult, Integer maxResults, OrganizationId organizationId) {
+  public List<NewsArticle> listNewsArticles(String slug, String tag, OffsetDateTime publishedBefore, OffsetDateTime publishedAfter, Integer firstResult, Integer maxResults, OrganizationId organizationId) {
+    if (StringUtils.isBlank(slug) && StringUtils.isNotBlank(tag)) {
+      List<NewsArticle> result = searchNewsArticlesByTag(organizationId, tag, firstResult, maxResults);
+      if (result != null) {
+        return result;
+      }
+    }
+    
     List<NewsArticle> result = new ArrayList<>();
    
     for (NewsProvider newsProvider : getNewsProviders()) {
-      List<NewsArticle> newArticles = newsProvider.listOrganizationNews(organizationId, publishedBefore, publishedAfter);
+      List<NewsArticle> newArticles = newsProvider.listOrganizationNews(organizationId, tag, publishedBefore, publishedAfter);
       if (newArticles != null && !newArticles.isEmpty()) {
         if (slug != null) {
           result.addAll(filterBySlug(newArticles, slug));
@@ -88,6 +109,33 @@ public class NewsController {
     }
     
     return entityController.sortEntitiesInNaturalOrder(result);
+  }
+  
+  @SuppressWarnings ("squid:S1168")
+  private List<NewsArticle> searchNewsArticlesByTag(OrganizationId organizationId, String tag, Integer firstResult, Integer maxResults) { 
+    OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(organizationId, KuntaApiConsts.IDENTIFIER_NAME);
+    if (kuntaApiOrganizationId == null) {
+      logger.severe(String.format("Failed to translate organization %s into Kunta API id", organizationId.toString()));
+      return Collections.emptyList();
+    }
+    
+    SearchResult<NewsArticleId> searchResult = newsArticleSearcher.searchNewsArticlesByTag(kuntaApiOrganizationId.getId(), tag, firstResult != null ? firstResult.longValue() : null, maxResults != null ? maxResults.longValue() : null);
+    if (searchResult != null) {
+      List<NewsArticleId> newsArticleIds = searchResult.getResult();
+
+      List<NewsArticle> result = new ArrayList<>(newsArticleIds.size());
+
+      for (NewsArticleId newsArticleId : newsArticleIds) {
+        NewsArticle newsArticle = findNewsArticle(kuntaApiOrganizationId, newsArticleId);
+        if (newsArticle != null) {
+          result.add(newsArticle);
+        }
+      }
+      
+      return result;
+    }
+    
+    return null;
   }
   
   private List<NewsArticle> filterBySlug(List<NewsArticle> newsArticles, String slug) {

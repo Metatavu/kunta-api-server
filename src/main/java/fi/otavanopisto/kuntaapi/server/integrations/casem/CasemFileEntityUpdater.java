@@ -140,14 +140,14 @@ public class CasemFileEntityUpdater extends EntityUpdater {
       
       BinaryResponse binaryResponse = casemFileController.downloadFile(casemFileId);
       if (binaryResponse != null) {
-        indexFile(organizationId, kuntaApiFileId, kuntaApiPageId, binaryResponse);
+        indexFile(organizationId, kuntaApiFileId, kuntaApiPageId, binaryResponse, orderIndex);
       }
     } else {
       logger.log(Level.SEVERE, () -> String.format("Could not translate file %s", kuntaApiFileId.toString()));
     }
   }
   
-  private void indexFile(OrganizationId organizationId, FileId kuntaApiFileId, PageId kuntaApiPageId, BinaryResponse binaryResponse) {
+  private void indexFile(OrganizationId organizationId, FileId kuntaApiFileId, PageId kuntaApiPageId, BinaryResponse binaryResponse, Long orderIndex) {
     String encodedData = Base64.encodeBase64String(binaryResponse.getData());
 
     IndexableAttachment data = new IndexableAttachment();
@@ -159,6 +159,7 @@ public class CasemFileEntityUpdater extends EntityUpdater {
     indexableFile.setFileId(kuntaApiFileId.getId());
     indexableFile.setData(data);
     indexableFile.setOrganizationId(organizationId.getId());
+    indexableFile.setOrderIndex(orderIndex);
     
     if (kuntaApiPageId != null) {
       indexableFile.setPageId(kuntaApiPageId.getId());

@@ -69,11 +69,12 @@ public class StopTimeSearcher {
     if (depratureTimeOnOrAfter != null) {
       query.must(rangeQuery(DEPARTURE_TIME_FIELD).gte(depratureTimeOnOrAfter));
     }
+    
     return query;
   }
 
   private SortOrder resolveSortOrder(SortDir sortDir) {
-    return sortDir == SortDir.ASC ? SortOrder.ASC : SortOrder.DESC;
+    return sortDir == SortDir.DESC ? SortOrder.DESC : SortOrder.ASC;
   }
 
   private String resolveSortField(PublicTransportStopTimeSortBy sortBy) {
@@ -81,6 +82,7 @@ public class StopTimeSearcher {
     if (sortBy != null && sortBy == PublicTransportStopTimeSortBy.DEPARTURE_TIME) {
       sortField = DEPARTURE_TIME_FIELD;
     }
+    
     return sortField;
   }
   
@@ -95,16 +97,13 @@ public class StopTimeSearcher {
         .storedFields(ORGANIZATION_ID_FIELD)
         .setQuery(queryBuilder);
     
-    if (firstResult != null) {
-      requestBuilder.setFrom(firstResult.intValue());
-    }
-    
-    if (maxResults != null) {
-      requestBuilder.setSize(maxResults.intValue());
-    }
+    requestBuilder.setFrom(firstResult != null ? firstResult.intValue() : 0);
+    requestBuilder.setSize(maxResults != null ? maxResults.intValue() : IndexReader.MAX_RESULTS);
     
     if (sortField != null) {
       requestBuilder.addSort(sortField, sortOrder);
+    } else {
+      requestBuilder.addSort(AbstractIndexHander.ORDER_INDEX_FIELD, SortOrder.ASC);
     }
       
     return new SearchResult<>(getStopTimeIds(indexReader.search(requestBuilder)));

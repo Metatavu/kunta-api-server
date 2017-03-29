@@ -52,7 +52,7 @@ public class CaseMMeetingEntityUpdater extends EntityUpdater {
         ObjectMapper objectMapper = new ObjectMapper();
         Content meetingContent = objectMapper.readValue(task.getMeetingContent(), Content.class);
         List<Content> meetingItemContents  = objectMapper.readValue(task.getMeetingItemContents(), new TypeReference<List<Content>>() { });
-        updater.updateMeeting(task.getMeetingPageId(), meetingContent, meetingItemContents);
+        updater.updateMeeting(task.getMeetingPageId(), meetingContent, meetingItemContents, task.getOrderIndex());
       } catch (IOException e) {
         logger.log(Level.SEVERE, "Failed to process casem meeting update request", e); 
       }

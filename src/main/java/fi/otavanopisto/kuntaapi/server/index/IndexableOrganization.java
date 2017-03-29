@@ -2,6 +2,9 @@ package fi.otavanopisto.kuntaapi.server.index;
 
 public class IndexableOrganization implements Indexable {
 
+  @Field (index = "not_analyzed", store = true, type = "long")
+  private Long orderIndex;
+  
   @Field(index = "not_analyzed", store = true)
   private String organizationId;
 
@@ -21,6 +24,15 @@ public class IndexableOrganization implements Indexable {
   @Override
   public String getType() {
     return "organization";
+  }
+  
+  @Override
+  public Long getOrderIndex() {
+    return orderIndex;
+  }
+  
+  public void setOrderIndex(Long orderIndex) {
+    this.orderIndex = orderIndex;
   }
   
   @Field(index = "not_analyzed")

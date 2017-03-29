@@ -1,5 +1,7 @@
 package fi.otavanopisto.kuntaapi.server.integrations.management;
 
+import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
@@ -10,6 +12,7 @@ import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
 import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.event.Event;
 import javax.inject.Inject;
 
 import org.apache.commons.codec.digest.DigestUtils;
@@ -18,14 +21,20 @@ import fi.metatavu.kuntaapi.server.rest.model.NewsArticle;
 import fi.metatavu.management.client.ApiResponse;
 import fi.metatavu.management.client.DefaultApi;
 import fi.metatavu.management.client.model.Attachment;
+import fi.metatavu.management.client.model.Category;
 import fi.metatavu.management.client.model.Post;
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
+import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.index.IndexRemoveNewsArticle;
+import fi.otavanopisto.kuntaapi.server.index.IndexRemoveRequest;
+import fi.otavanopisto.kuntaapi.server.index.IndexRequest;
+import fi.otavanopisto.kuntaapi.server.index.IndexableNewsArticle;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.management.resources.ManagementAttachmentResourceContainer;
@@ -61,6 +70,9 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
   private IdentifierController identifierController;
   
   @Inject
+  private IdController idController;
+  
+  @Inject
   private IdentifierRelationController identifierRelationController;
   
   @Inject
@@ -74,7 +86,13 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
   
   @Inject
   private NewsArticleIdTaskQueue newsArticleIdTaskQueue;
+  
+  @Inject
+  private Event<IndexRequest> indexRequest;
 
+  @Inject
+  private Event<IndexRemoveRequest> indexRemoveRequest;
+  
   @Resource
   private TimerService timerService;
 
@@ -122,22 +140,36 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
   }
   
   private void updateManagementPost(OrganizationId organizationId, DefaultApi api, Post managementPost, Long orderIndex) {
-    NewsArticleId newsArticleId = new NewsArticleId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementPost.getId()));
+    List<String> categories = new ArrayList<>(managementPost.getCategories().size());
+    for (String managementCategoryId : managementPost.getCategories()) {
+      ApiResponse<Category> managementCategory = api.wpV2CategoriesIdGet(managementCategoryId, null, null);
+      if (managementCategory.isOk()) {
+        categories.add(managementCategory.getResponse().getName());
+      } else {
+        logger.log(Level.WARNING, () -> String.format("Failed to retrieve category %s from management service", managementCategoryId));
+      }
+    }
+    
+    OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(organizationId, KuntaApiConsts.IDENTIFIER_NAME);
+    NewsArticleId newsArticleId = new NewsArticleId(kuntaApiOrganizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementPost.getId()));
 
     Identifier identifier = identifierController.acquireIdentifier(orderIndex, newsArticleId);
-    identifierRelationController.setParentId(identifier, organizationId);
+    identifierRelationController.setParentId(identifier, kuntaApiOrganizationId);
     
-    NewsArticleId newsArticleKuntaApiId = new NewsArticleId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
-    NewsArticle newsArticle = managementTranslator.translateNewsArticle(newsArticleKuntaApiId, managementPost);
+    NewsArticleId kuntaApiNewsArticleId = new NewsArticleId(kuntaApiOrganizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
+    NewsArticle newsArticle = managementTranslator.translateNewsArticle(kuntaApiNewsArticleId, categories, managementPost);
     if (newsArticle == null) {
       logger.severe(String.format("Failed to translate news article %d", managementPost.getId()));
       return;
     }
     
-    newsArticleResourceContainer.put(newsArticleKuntaApiId, newsArticle);
+    newsArticleResourceContainer.put(kuntaApiNewsArticleId, newsArticle);
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(newsArticle));
+    indexRequest.fire(new IndexRequest(createIndexableNewsArticle(kuntaApiOrganizationId, kuntaApiNewsArticleId, newsArticle.getSlug(),
+        newsArticle.getTitle(), newsArticle.getAbstract(), newsArticle.getContents(), newsArticle.getTags(), 
+        newsArticle.getPublished(), orderIndex)));
     
-    List<AttachmentId> existingAttachmentIds = identifierRelationController.listAttachmentIdsBySourceAndParentId(ManagementConsts.IDENTIFIER_NAME, newsArticleKuntaApiId);
+    List<AttachmentId> existingAttachmentIds = identifierRelationController.listAttachmentIdsBySourceAndParentId(ManagementConsts.IDENTIFIER_NAME, kuntaApiNewsArticleId);
     if (managementPost.getFeaturedMedia() != null && managementPost.getFeaturedMedia() > 0) {
       AttachmentId attachmentId = updateFeaturedMedia(organizationId, identifier, api, managementPost.getFeaturedMedia()); 
       if (attachmentId != null) {
@@ -146,7 +178,7 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
     }
     
     for (AttachmentId existingAttachmentId : existingAttachmentIds) {
-      identifierRelationController.removeChild(newsArticleKuntaApiId, existingAttachmentId);
+      identifierRelationController.removeChild(kuntaApiNewsArticleId, existingAttachmentId);
     }
   }
   
@@ -191,7 +223,29 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
       modificationHashCache.clear(newsArticleIdentifier.getKuntaApiId());
       newsArticleResourceContainer.clear(kuntaApiNewsArticleId);
       identifierController.deleteIdentifier(newsArticleIdentifier);
+      
+      IndexRemoveNewsArticle indexRemove = new IndexRemoveNewsArticle();
+      indexRemove.setNewsArticleId(kuntaApiNewsArticleId.getId());
+      
+      indexRemoveRequest.fire(new IndexRemoveRequest(indexRemove));
     }
+  }
+
+  @SuppressWarnings ("squid:S00107")
+  private IndexableNewsArticle createIndexableNewsArticle(OrganizationId kuntaApiOrganizationId, NewsArticleId kuntaApiNewsArticleId, String slug, String title, String newsAbstract, String contents, List<String> tags, OffsetDateTime published, Long orderIndex) {
+    
+    IndexableNewsArticle indexableNewsArticle = new IndexableNewsArticle();
+    indexableNewsArticle.setContents(contents);
+    indexableNewsArticle.setNewsAbstract(newsAbstract);
+    indexableNewsArticle.setNewsArticleId(kuntaApiNewsArticleId.getId());
+    indexableNewsArticle.setOrderIndex(orderIndex);
+    indexableNewsArticle.setOrganizationId(kuntaApiOrganizationId.getId());
+    indexableNewsArticle.setPublished(published);
+    indexableNewsArticle.setTags(tags);
+    indexableNewsArticle.setTitle(title);
+    indexableNewsArticle.setSlug(slug);
+    
+    return indexableNewsArticle;
   }
 
 }

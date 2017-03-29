@@ -1,6 +1,9 @@
 package fi.otavanopisto.kuntaapi.server.index;
 
 public class IndexableFile implements Indexable {
+
+  @Field (index = "not_analyzed", store = true, type = "long")
+  private Long orderIndex;
   
   @Field (index = "not_analyzed", store = true)
   private String fileId;
@@ -22,6 +25,15 @@ public class IndexableFile implements Indexable {
   @Override
   public String getType() {
     return "file";
+  }
+  
+  @Override
+  public Long getOrderIndex() {
+    return orderIndex;
+  }
+  
+  public void setOrderIndex(Long orderIndex) {
+    this.orderIndex = orderIndex;
   }
   
   public void setFileId(String fileId) {

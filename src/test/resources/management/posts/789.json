@@ -32,10 +32,10 @@
 
     ],
     "categories":[
-       1
+       9001
     ],
     "tags":[
-
+      "test tag 1", "test tag 2"
     ],
     "_links":{
        "self":[

@@ -51,7 +51,7 @@ public class OrganizationController {
       searchResult = searchByBusinessNameOrBusinessCode(businessName, businessCode, firstResult, maxResults);
       if (searchResult == null) {
         // Search has failed, fall back to listing
-        return listByBusinessNameOrBusinessCode(businessName, businessCode);
+        return entityController.sortEntitiesInNaturalOrder(listByBusinessNameOrBusinessCode(businessName, businessCode));
       }
     } else {
       searchResult = organizationSearcher.searchOrganizations(search, businessCode, businessName, firstResult, maxResults);
@@ -66,7 +66,7 @@ public class OrganizationController {
       }
     }
     
-    return entityController.sortEntitiesInNaturalOrder(result);
+    return result;
   }
 
   private SearchResult<OrganizationId> searchByBusinessNameOrBusinessCode(String businessName, String businessCode, Long firstResult, Long maxResults) {
