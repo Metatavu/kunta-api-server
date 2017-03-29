@@ -165,7 +165,7 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
     
     newsArticleResourceContainer.put(kuntaApiNewsArticleId, newsArticle);
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(newsArticle));
-    indexRequest.fire(new IndexRequest(createIndexableNewsArticle(kuntaApiOrganizationId, kuntaApiNewsArticleId,
+    indexRequest.fire(new IndexRequest(createIndexableNewsArticle(kuntaApiOrganizationId, kuntaApiNewsArticleId, newsArticle.getSlug(),
         newsArticle.getTitle(), newsArticle.getAbstract(), newsArticle.getContents(), newsArticle.getTags(), 
         newsArticle.getPublished(), orderIndex)));
     
@@ -232,7 +232,7 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
   }
 
   @SuppressWarnings ("squid:S00107")
-  private IndexableNewsArticle createIndexableNewsArticle(OrganizationId kuntaApiOrganizationId, NewsArticleId kuntaApiNewsArticleId, String title, String newsAbstract, String contents, List<String> tags, OffsetDateTime published, Long orderIndex) {
+  private IndexableNewsArticle createIndexableNewsArticle(OrganizationId kuntaApiOrganizationId, NewsArticleId kuntaApiNewsArticleId, String slug, String title, String newsAbstract, String contents, List<String> tags, OffsetDateTime published, Long orderIndex) {
     
     IndexableNewsArticle indexableNewsArticle = new IndexableNewsArticle();
     indexableNewsArticle.setContents(contents);
@@ -243,6 +243,7 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
     indexableNewsArticle.setPublished(published);
     indexableNewsArticle.setTags(tags);
     indexableNewsArticle.setTitle(title);
+    indexableNewsArticle.setSlug(slug);
     
     return indexableNewsArticle;
   }

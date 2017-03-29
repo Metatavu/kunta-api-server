@@ -8,6 +8,9 @@ public class IndexableNewsArticle implements Indexable {
   @Field (index = "not_analyzed", store = true, type = "long")
   private Long orderIndex;
   
+  @Field (index = "not_analyzed", store = true)
+  private String slug;
+  
   @Field (index = "not_analyzed", store = true, type = "date")
   private OffsetDateTime published;  
 
@@ -46,6 +49,14 @@ public class IndexableNewsArticle implements Indexable {
   
   public void setOrderIndex(Long orderIndex) {
     this.orderIndex = orderIndex;
+  }
+  
+  public void setSlug(String slug) {
+    this.slug = slug;
+  }
+  
+  public String getSlug() {
+    return slug;
   }
 
   public OffsetDateTime getPublished() {
