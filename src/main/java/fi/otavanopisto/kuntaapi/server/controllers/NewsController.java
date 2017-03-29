@@ -111,6 +111,7 @@ public class NewsController {
     return entityController.sortEntitiesInNaturalOrder(result);
   }
   
+  @SuppressWarnings ("squid:S1168")
   private List<NewsArticle> searchNewsArticlesByTag(OrganizationId organizationId, String tag, Integer firstResult, Integer maxResults) { 
     OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(organizationId, KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiOrganizationId == null) {
