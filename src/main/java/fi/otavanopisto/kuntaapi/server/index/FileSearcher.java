@@ -19,11 +19,12 @@ import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.SearchHitField;
+import org.elasticsearch.search.sort.SortOrder;
 
-import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
-import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.id.FileId;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
+import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 
 @ApplicationScoped
@@ -81,14 +82,10 @@ public class FileSearcher {
       .storedFields(FILE_ID_FIELD, ORGANIZATION_ID_FIELD)
       .setQuery(queryBuilder);
     
-    if (firstResult != null) {
-      requestBuilder.setFrom(firstResult.intValue());
-    }
+    requestBuilder.setFrom(firstResult != null ? firstResult.intValue() : 0);
+    requestBuilder.setSize(maxResults != null ? maxResults.intValue() : IndexReader.MAX_RESULTS);
+    requestBuilder.addSort(AbstractIndexHander.ORDER_INDEX_FIELD, SortOrder.ASC);
     
-    if (maxResults != null) {
-      requestBuilder.setSize(maxResults.intValue());
-    }
-      
     return new SearchResult<>(getFileIds(indexReader.search(requestBuilder)));
   }
   

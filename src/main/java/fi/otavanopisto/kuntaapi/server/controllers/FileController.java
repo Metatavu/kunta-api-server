@@ -22,9 +22,6 @@ import fi.metatavu.kuntaapi.server.rest.model.FileDef;
 public class FileController {
 
   @Inject
-  private EntityController entityController;
-
-  @Inject
   private FileSearcher fileSearcher;
 
   @Inject
@@ -73,7 +70,7 @@ public class FileController {
         }
       }
       
-      return entityController.sortEntitiesInNaturalOrder(result);
+      return result;
     }
     
     return Collections.emptyList();
