@@ -18,6 +18,7 @@ import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.SearchHitField;
+import org.elasticsearch.search.sort.SortOrder;
 
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
@@ -55,13 +56,9 @@ public class PageSearcher {
       .storedFields(PAGE_ID_FIELD, ORGANIZATION_ID_FIELD)
       .setQuery(queryBuilder);
     
-    if (firstResult != null) {
-      requestBuilder.setFrom(firstResult.intValue());
-    }
-    
-    if (maxResults != null) {
-      requestBuilder.setSize(maxResults.intValue());
-    }
+    requestBuilder.setFrom(firstResult != null ? firstResult.intValue() : 0);
+    requestBuilder.setSize(maxResults != null ? maxResults.intValue() : IndexReader.MAX_RESULTS);
+    requestBuilder.addSort(AbstractIndexHander.ORDER_INDEX_FIELD, SortOrder.ASC);
       
     return new SearchResult<>(getPageIds(indexReader.search(requestBuilder)));
   }
