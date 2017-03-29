@@ -34,6 +34,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   private CasemMocker casemMocker = new CasemMocker();
   
   private ManagementPageMappingMocker managementPageMappingMocker = new ManagementPageMappingMocker();
+  private ManagementTagMocker managementTagMocker = new ManagementTagMocker();
   private ManagementCategoryMocker managementCategoryMocker = new ManagementCategoryMocker();
   private ManagementPageMocker managementPageMocker = new ManagementPageMocker();
   private ManagementPostMocker managementPostMocker = new ManagementPostMocker();
@@ -71,6 +72,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     managementMediaMocker.endMock();
     managementTileMocker.endMock();
     managementCategoryMocker.endMock();
+    managementTagMocker.endMock();
     
     restfulPtvServiceMocker.endMock();
     restfulPtvOrganizationMocker.endMock();
@@ -104,6 +106,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     managementTileMocker.startMock();
     managementPageMappingMocker.startMock();
     managementCategoryMocker.startMock();
+    managementTagMocker.startMock();
     
     insertSystemSetting(KuntaApiConsts.SYSTEM_SETTING_TESTS_RUNNING, "true");
     
@@ -165,6 +168,10 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   
   public ManagementCategoryMocker getManagementCategoryMocker() {
     return managementCategoryMocker;
+  }
+  
+  public ManagementTagMocker getManagementTagMocker() {
+    return managementTagMocker;
   }
   
   public RestfulPtvOrganizationMocker getRestfulPtvOrganizationMocker() {
