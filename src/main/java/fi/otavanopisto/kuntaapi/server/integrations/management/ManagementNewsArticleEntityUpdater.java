@@ -2,6 +2,7 @@ package fi.otavanopisto.kuntaapi.server.integrations.management;
 
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
@@ -16,6 +17,7 @@ import javax.enterprise.event.Event;
 import javax.inject.Inject;
 
 import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import fi.metatavu.kuntaapi.server.rest.model.NewsArticle;
 import fi.metatavu.management.client.ApiResponse;
@@ -23,6 +25,7 @@ import fi.metatavu.management.client.DefaultApi;
 import fi.metatavu.management.client.model.Attachment;
 import fi.metatavu.management.client.model.Category;
 import fi.metatavu.management.client.model.Post;
+import fi.metatavu.management.client.model.Tag;
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
@@ -140,15 +143,17 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
   }
   
   private void updateManagementPost(OrganizationId organizationId, DefaultApi api, Post managementPost, Long orderIndex) {
-    List<String> categories = new ArrayList<>(managementPost.getCategories().size());
-    for (String managementCategoryId : managementPost.getCategories()) {
-      ApiResponse<Category> managementCategory = api.wpV2CategoriesIdGet(managementCategoryId, null, null);
-      if (managementCategory.isOk()) {
-        categories.add(managementCategory.getResponse().getName());
-      } else {
-        logger.log(Level.WARNING, () -> String.format("Failed to retrieve category %s from management service", managementCategoryId));
-      }
+    List<String> managementCategoryIds = managementPost.getCategories();
+    if (managementCategoryIds == null) {
+      managementCategoryIds = Collections.emptyList();
     }
+    
+    List<String> managementTagIds = managementPost.getTags();
+    if (managementTagIds == null) {
+      managementTagIds = Collections.emptyList();
+    }
+
+    List<String> tags = resolvePostTags(api, managementCategoryIds, managementTagIds);
     
     OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(organizationId, KuntaApiConsts.IDENTIFIER_NAME);
     NewsArticleId newsArticleId = new NewsArticleId(kuntaApiOrganizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementPost.getId()));
@@ -157,7 +162,7 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
     identifierRelationController.setParentId(identifier, kuntaApiOrganizationId);
     
     NewsArticleId kuntaApiNewsArticleId = new NewsArticleId(kuntaApiOrganizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
-    NewsArticle newsArticle = managementTranslator.translateNewsArticle(kuntaApiNewsArticleId, categories, managementPost);
+    NewsArticle newsArticle = managementTranslator.translateNewsArticle(kuntaApiNewsArticleId, tags, managementPost);
     if (newsArticle == null) {
       logger.severe(String.format("Failed to translate news article %d", managementPost.getId()));
       return;
@@ -180,6 +185,48 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
     for (AttachmentId existingAttachmentId : existingAttachmentIds) {
       identifierRelationController.removeChild(kuntaApiNewsArticleId, existingAttachmentId);
     }
+  }
+  
+  private List<String> resolvePostTags(DefaultApi api, List<String> managementCategoryIds, List<String> managementTagIds) {
+    List<String> tags = new ArrayList<>(managementCategoryIds.size() + managementTagIds.size());
+    
+    for (String managementCategoryId : managementCategoryIds) {
+      String categoryName = resolveCategoryName(api, managementCategoryId);
+      if (StringUtils.isNotBlank(categoryName)) {
+        tags.add(categoryName);
+      }
+    }
+    
+    for (String managementTagId : managementTagIds) {
+      String tagName = resolveTagName(api, managementTagId);
+      if (StringUtils.isNotBlank(tagName)) {
+        tags.add(tagName);
+      }
+    }
+    
+    return tags;
+  }
+
+  private String resolveCategoryName(DefaultApi api, String managementCategoryId) {
+    ApiResponse<Category> managementCategoryResponse = api.wpV2CategoriesIdGet(managementCategoryId, null, null);
+    if (managementCategoryResponse.isOk()) {
+      return managementCategoryResponse.getResponse().getName();
+    } else {
+      logger.log(Level.WARNING, () -> String.format("Failed to retrieve category %s from management service", managementCategoryId));
+    }
+    
+    return null;
+  }
+  
+  private String resolveTagName(DefaultApi api, String managementTagId) {
+    ApiResponse<Tag> managementTagResponse = api.wpV2TagsIdGet(managementTagId, null, null);
+    if (managementTagResponse.isOk()) {
+      return managementTagResponse.getResponse().getName();
+    } else {
+      logger.log(Level.WARNING, () -> String.format("Failed to retrieve tag %s from management service", managementTagId));
+    }
+    
+    return null;
   }
   
   private AttachmentId updateFeaturedMedia(OrganizationId organizationId, Identifier newsArticleIdentifier, DefaultApi api, Integer featuredMedia) {
