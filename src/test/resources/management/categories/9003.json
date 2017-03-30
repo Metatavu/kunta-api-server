@@ -1,0 +1,42 @@
+{
+  "id":9003,
+  "count":1,
+  "description":"",
+  "link":"http:\/\/test-management.kunta-api.fi\/category\/test\/",
+  "name":"Test",
+  "slug":"test",
+  "taxonomy":"category",
+  "parent":0,
+  "meta":[
+
+  ],
+  "_links":{
+    "self":[
+      {
+        "href":"http:\/\/test-management.kunta-api.fi\/wp-json\/wp\/v2\/categories\/9003"
+      }
+    ],
+    "collection":[
+      {
+        "href":"http:\/\/test-management.kunta-api.fi\/wp-json\/wp\/v2\/categories"
+      }
+    ],
+    "about":[
+      {
+        "href":"http:\/\/test-management.kunta-api.fi\/wp-json\/wp\/v2\/taxonomies\/category"
+      }
+    ],
+    "wp:post_type":[
+      {
+        "href":"http:\/\/test-management.kunta-api.fi\/wp-json\/wp\/v2\/posts?categories=9003"
+      }
+    ],
+    "curies":[
+      {
+        "name":"wp",
+        "href":"https:\/\/api.w.org\/{rel}",
+        "templated":true
+      }
+    ]
+  }
+}

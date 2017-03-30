@@ -1,6 +1,9 @@
 package fi.otavanopisto.kuntaapi.server.index;
 
 public class IndexablePage implements Indexable {
+
+  @Field (index = "not_analyzed", store = true, type = "long")
+  private Long orderIndex;
   
   @Field (index = "not_analyzed", store = true)
   private String pageId;
@@ -27,6 +30,15 @@ public class IndexablePage implements Indexable {
     return "page";
   }
 
+  @Override
+  public Long getOrderIndex() {
+    return orderIndex;
+  }
+  
+  public void setOrderIndex(Long orderIndex) {
+    this.orderIndex = orderIndex;
+  }
+  
   public String getPageId() {
     return pageId;
   }

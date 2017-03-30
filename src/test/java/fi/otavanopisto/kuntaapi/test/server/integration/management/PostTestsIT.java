@@ -41,6 +41,12 @@ public class PostTestsIT extends AbstractIntegrationTest {
     getRestfulPtvOrganizationMocker()
       .mockOrganizations("0de268cf-1ea1-4719-8a6e-1150933b6b9e");
     
+    getManagementTagMocker()
+      .mockTags(9002);
+    
+    getManagementCategoryMocker()
+      .mockCategories(9001, 9003);
+    
     getManagementPostMocker()
       .mockPosts(789, 890, 901);
     
@@ -131,6 +137,52 @@ public class PostTestsIT extends AbstractIntegrationTest {
       .baseUri(getApiBasePath())
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/news?slug=non-existing", getOrganizationId(0))
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(0));
+  } 
+  
+  @Test
+  public void testListPostsByTag() throws InterruptedException {
+    String organizationId = getOrganizationId(0);
+    
+    waitApiListCount(String.format("/organizations/%s/news?tag=Yleinen", organizationId), 2);
+    
+    given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get("/organizations/{organizationId}/news?tag=Yleinen", organizationId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(2))
+      .body("id[0]", notNullValue())
+      .body("slug[0]", is("lorem-ipsum-dolor-sit-amet"))
+      .body("tags[0].size()", is(2))
+      .body("tags[0][0]", is("Yleinen"))
+      .body("tags[0][1]", is("Precious")); 
+    
+    given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get("/organizations/{organizationId}/news?tag=Precious", organizationId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(3))
+      .body("slug[0]", is("lorem-ipsum-dolor-sit-amet"))
+      .body("slug[1]", is("test-2"))
+      .body("slug[2]", is("test-3"))
+      .body("tags[2].size()", is(3))
+      .body("tags[2][0]", is("Yleinen"))
+      .body("tags[2][1]", is("Test"))
+      .body("tags[2][2]", is("Precious")); 
+    
+    given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get("/organizations/{organizationId}/news?tag=non-existing", getOrganizationId(0))
       .then()
       .assertThat()
       .statusCode(200)

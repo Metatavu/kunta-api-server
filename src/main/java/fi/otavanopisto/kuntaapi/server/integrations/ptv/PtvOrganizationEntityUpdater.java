@@ -110,7 +110,7 @@ public class PtvOrganizationEntityUpdater extends EntityUpdater {
       if (organization != null) {
         modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(organization));
         ptvOrganizationResourceContainer.put(kuntaApiOrganizationId, organization);
-        index(identifier.getKuntaApiId(), organization);
+        index(identifier.getKuntaApiId(), organization, orderIndex);
       } else {
         logger.log(Level.SEVERE, () -> String.format("Failed to translate organization %s", kuntaApiOrganizationId));
       }
@@ -119,12 +119,13 @@ public class PtvOrganizationEntityUpdater extends EntityUpdater {
     }
   }
   
-  private void index(String organizationId, fi.metatavu.kuntaapi.server.rest.model.Organization organization) {
+  private void index(String organizationId, fi.metatavu.kuntaapi.server.rest.model.Organization organization, Long orderIndex) {
     IndexableOrganization indexableOrganization = new IndexableOrganization();
     indexableOrganization.setBusinessCode(organization.getBusinessCode());
     indexableOrganization.setBusinessName(organization.getBusinessName());
     indexableOrganization.setLanguage("fi");
     indexableOrganization.setOrganizationId(organizationId);
+    indexableOrganization.setOrderIndex(orderIndex);
     
     indexRequest.fire(new IndexRequest(indexableOrganization));
   }

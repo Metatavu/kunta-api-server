@@ -131,7 +131,7 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
       if (service != null) {
         ptvServiceCache.put(kuntaApiServiceId, service);
         modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(service));
-        index(identifier.getKuntaApiId(), ptvService);
+        index(identifier.getKuntaApiId(), ptvService, orderIndex);
       }
       
     } else {
@@ -219,7 +219,7 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
     return null;
   }
   
-  private void index(String serviceId, Service service) {
+  private void index(String serviceId, Service service, Long orderIndex) {
     List<LocalizedListItem> descriptions = service.getDescriptions();
     List<LocalizedListItem> names = service.getNames();
     List<String> ptvOrganizationIds = service.getOrganizationIds();
@@ -245,6 +245,7 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
       indexableService.setAlternativeName(LocalizationUtils.getBestMatchingValue("AlternativeName", names, language, PtvConsts.DEFAULT_LANGUAGE));
       indexableService.setServiceId(serviceId);
       indexableService.setOrganizationIds(organizationIds);
+      indexableService.setOrderIndex(orderIndex);
       
       indexRequest.fire(new IndexRequest(indexableService));
     }

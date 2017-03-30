@@ -19,12 +19,16 @@ import org.elasticsearch.transport.client.PreBuiltTransportClient;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 
 public abstract class AbstractIndexHander {
 
+  public static final String ORDER_INDEX_FIELD = "orderIndex";
+  
   private static final String DEFAULT_INDEX = "kunta-api";
   private static final String DEFAULT_CLUSTERNAME = "elasticsearch";
   private static final String[] DEFAULT_HOSTS = new String[] {
@@ -69,6 +73,8 @@ public abstract class AbstractIndexHander {
   protected byte[] serialize(Indexable indexable) {
     ObjectMapper objectMapper = new ObjectMapper();
     try {
+      objectMapper.registerModule(new JavaTimeModule());
+      objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
       return objectMapper.writeValueAsBytes(indexable);
     } catch (JsonProcessingException e) {
       logger.log(Level.SEVERE, "Failed to serialize indexable object", e);

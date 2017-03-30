@@ -1,7 +1,10 @@
 package fi.otavanopisto.kuntaapi.server.index;
 
 public class IndexableStopTime implements Indexable {
-
+  
+  @Field (index = "not_analyzed", store = true, type = "long")
+  private Long orderIndex;
+  
   @Field(index = "not_analyzed", store = true)
   private String id;
 
@@ -34,6 +37,15 @@ public class IndexableStopTime implements Indexable {
     return tripId;
   }
 
+  @Override
+  public Long getOrderIndex() {
+    return orderIndex;
+  }
+  
+  public void setOrderIndex(Long orderIndex) {
+    this.orderIndex = orderIndex;
+  }
+  
   public void setTripId(String tripId) {
     this.tripId = tripId;
   }

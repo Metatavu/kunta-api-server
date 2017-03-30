@@ -97,7 +97,7 @@ public class ManagementTranslator {
     return banner;
   }
   
-  public NewsArticle translateNewsArticle(NewsArticleId kuntaApiNewsArticleId, Post post) {
+  public NewsArticle translateNewsArticle(NewsArticleId kuntaApiNewsArticleId, List<String> categories, Post post) {
     NewsArticle newsArticle = new NewsArticle();
     
     newsArticle.setAbstract(cleanExcerpt(post.getExcerpt()));
@@ -106,6 +106,7 @@ public class ManagementTranslator {
     newsArticle.setPublished(toOffsetDateTime(post.getDate()));
     newsArticle.setTitle(post.getTitle().getRendered());
     newsArticle.setSlug(post.getSlug());
+    newsArticle.setTags(categories);
     
     return newsArticle;
   }

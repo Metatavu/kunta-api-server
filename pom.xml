@@ -62,7 +62,7 @@
     
     <!-- Integrations -->
     
-    <kunta-api-spec.version>0.1.48</kunta-api-spec.version>
+    <kunta-api-spec.version>0.1.51</kunta-api-spec.version>
     <restful-ptv-rest-client.version>1.2.11</restful-ptv-rest-client.version>
     <management-rest-client.version>0.0.28</management-rest-client.version>
     <casem-rest-client.version>0.0.9</casem-rest-client.version>
@@ -757,6 +757,42 @@
                 <goals>
                   <goal>dump</goal>
                   <goal>report</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+          
+          <plugin>
+            <groupId>com.github.alexcojocaru</groupId>
+            <artifactId>elasticsearch-maven-plugin</artifactId>
+            <version>5.7</version>
+            <configuration>
+              <clusterName>elasticsearch</clusterName>
+              <tcpPort>9300</tcpPort>
+              <httpPort>9200</httpPort>
+              <version>5.2.2</version>
+              <plugins>
+                <plugin>
+                  <uri>ingest-attachment</uri>
+                </plugin>
+                <plugin>
+                  <uri>mapper-attachments</uri>
+                </plugin>
+              </plugins>
+            </configuration>
+            <executions>
+              <execution>
+                <id>start-elasticsearch</id>
+                <phase>pre-integration-test</phase>
+                <goals>
+                  <goal>runforked</goal>
+                </goals>
+              </execution>
+              <execution>
+                <id>stop-elasticsearch</id>
+                <phase>post-integration-test</phase>
+                <goals>
+                  <goal>stop</goal>
                 </goals>
               </execution>
             </executions>

@@ -77,7 +77,7 @@ public class ServiceController {
         }
       }
       
-      return entityController.sortEntitiesInNaturalOrder(result);
+      return result;
     }
     
     return Collections.emptyList();

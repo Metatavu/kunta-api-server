@@ -224,7 +224,7 @@ public class CaseMCacheUpdater {
     logger.fine(String.format("Done updating CaseM meeting list for organization %s", organizationId));
   }
   
-  public void updateMeeting(PageId casemMeetingPageId, Content meetingContent, List<Content> meetingItemContents) {
+  public void updateMeeting(PageId casemMeetingPageId, Content meetingContent, List<Content> meetingItemContents, Long meetingOrderIndex) {
     OrganizationId organizationId = casemMeetingPageId.getOrganizationId();
 
     if (!isCasemEnabled(organizationId)) {
@@ -289,7 +289,7 @@ public class CaseMCacheUpdater {
     Meeting meeting = createMeetingModel(downloadUrl, meetingTitle, memoApproved, itemLinks, meetingExtendedProperties);
     String meetingPageContents = renderContentMeeting(meeting, locale);
     caseMCache.cachePage(organizationId, meetingPage, casemTranslator.translateLocalized(meetingPageContents));
-    indexRequest.fire(new IndexRequest(createIndexablePage(organizationId, kuntaApiMeetingPageId, locale.getLanguage(), meetingPageContents, meetingTitle)));
+    indexRequest.fire(new IndexRequest(createIndexablePage(organizationId, kuntaApiMeetingPageId, locale.getLanguage(), meetingPageContents, meetingTitle, meetingOrderIndex)));
 
     List<FileId> attachmentFileIds = getAttachmentFileIds(organizationId, meetingExtendedProperties);
     for (int i = 0; i < attachmentFileIds.size(); i++) {
@@ -330,7 +330,7 @@ public class CaseMCacheUpdater {
     
     String meetingItemPageContents = renderContentMeetingItem(createMeetingItemModel(downloadUrl, meetingTitle, memoApproved, itemExtendedProperties), locale);
     caseMCache.cachePage(organizationId, meetingItemPage, casemTranslator.translateLocalized(meetingItemPageContents));
-    indexRequest.fire(new IndexRequest(createIndexablePage(organizationId, kuntaApiPageId, locale.getLanguage(), meetingItemPageContents, itemLink.getText())));
+    indexRequest.fire(new IndexRequest(createIndexablePage(organizationId, kuntaApiPageId, locale.getLanguage(), meetingItemPageContents, itemLink.getText(), orderIndex)));
     
     List<FileId> attachmentFileIds = getAttachmentFileIds(organizationId, itemExtendedProperties);
     for (int i = 0; i < attachmentFileIds.size(); i++) {
@@ -355,9 +355,10 @@ public class CaseMCacheUpdater {
     String boardTitle = getFirstTitle(boardPage.getTitles());
     Board board = createBoardModel(kuntaApiBoardPageId, boardTitle);
     String boardContent = renderContentBoard(board, locale);
-
+    Long orderIndex = identifierController.getIdentifierOrderIndex(kuntaApiBoardPageId.getId());
+    
     caseMCache.cachePage(organizationId, boardPage, casemTranslator.translateLocalized(boardContent));
-    indexRequest.fire(new IndexRequest(createIndexablePage(organizationId, kuntaApiBoardPageId, locale.getLanguage(), boardContent, boardTitle)));
+    indexRequest.fire(new IndexRequest(createIndexablePage(organizationId, kuntaApiBoardPageId, locale.getLanguage(), boardContent, boardTitle, orderIndex)));
   }
 
   private Board createBoardModel(PageId boardPageKuntaApiId, String boardTitle) {
@@ -1016,7 +1017,7 @@ public class CaseMCacheUpdater {
     return new PageId(organizationId, CaseMConsts.IDENTIFIER_NAME, String.format("CONTENT|%d", contentId));
   }
   
-  private IndexablePage createIndexablePage(OrganizationId organizationId, PageId pageId, String language, String content, String title) {
+  private IndexablePage createIndexablePage(OrganizationId organizationId, PageId pageId, String language, String content, String title, Long orderIndex) {
     OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(organizationId, KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiOrganizationId == null) {
       logger.severe(String.format("Failed to translate organizationId %s into KuntaAPI id", organizationId.toString()));
@@ -1035,6 +1036,7 @@ public class CaseMCacheUpdater {
     indexablePage.setOrganizationId(kuntaApiOrganizationId.getId());
     indexablePage.setPageId(kuntaApiPageId.getId());
     indexablePage.setTitle(title);
+    indexablePage.setOrderIndex(orderIndex);
     
     return indexablePage;
   }
