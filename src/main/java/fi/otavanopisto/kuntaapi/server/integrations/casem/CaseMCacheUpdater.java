@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.concurrent.TimeUnit;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,6 +19,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.annotation.PostConstruct;
+import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Event;
@@ -70,6 +72,7 @@ import fi.otavanopisto.kuntaapi.server.tasks.TaskRequest;
 
 @ApplicationScoped
 @Singleton
+@AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
 public class CaseMCacheUpdater {
 
@@ -229,6 +232,11 @@ public class CaseMCacheUpdater {
 
     if (!isCasemEnabled(organizationId)) {
       logger.severe(String.format(CASEM_DISABLED_FOR_ORGANIZATION, organizationId));
+      return;
+    }
+    
+    if (meetingContent == null) {
+      logger.log(Level.SEVERE, () -> String.format("Null meetingContent received for page %s", casemMeetingPageId));
       return;
     }
     

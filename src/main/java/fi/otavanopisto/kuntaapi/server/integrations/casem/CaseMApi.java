@@ -1,6 +1,6 @@
 package fi.otavanopisto.kuntaapi.server.integrations.casem;
 
-import javax.enterprise.context.Dependent;
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 import fi.otavanopisto.casem.client.ContentLanguagesApi;
@@ -12,11 +12,11 @@ import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 
 /**
- * Api client for Case M
+ * Api client for CaseM
  * 
  * @author Antti Leppä
  */
-@Dependent
+@ApplicationScoped
 public class CaseMApi {
 
   @Inject
@@ -24,9 +24,6 @@ public class CaseMApi {
 
   @Inject
   private OrganizationSettingController organizationSettingController;
-
-  private CaseMApi() {
-  }
 
   /**
    * Returns content languages api
