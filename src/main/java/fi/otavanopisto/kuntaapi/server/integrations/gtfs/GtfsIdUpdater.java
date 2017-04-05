@@ -30,20 +30,15 @@ import org.onebusaway.gtfs.serialization.GtfsReader;
 import fi.otavanopisto.kuntaapi.server.discover.IdUpdater;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.gtfs.tasks.GtfsAgencyEntityTask;
-import fi.otavanopisto.kuntaapi.server.integrations.gtfs.tasks.GtfsAgencyTaskQueue;
 import fi.otavanopisto.kuntaapi.server.integrations.gtfs.tasks.GtfsRouteEntityTask;
-import fi.otavanopisto.kuntaapi.server.integrations.gtfs.tasks.GtfsRouteTaskQueue;
 import fi.otavanopisto.kuntaapi.server.integrations.gtfs.tasks.GtfsScheduleEntityTask;
-import fi.otavanopisto.kuntaapi.server.integrations.gtfs.tasks.GtfsScheduleTaskQueue;
 import fi.otavanopisto.kuntaapi.server.integrations.gtfs.tasks.GtfsStopEntityTask;
-import fi.otavanopisto.kuntaapi.server.integrations.gtfs.tasks.GtfsStopTaskQueue;
 import fi.otavanopisto.kuntaapi.server.integrations.gtfs.tasks.GtfsStopTimeEntityTask;
-import fi.otavanopisto.kuntaapi.server.integrations.gtfs.tasks.GtfsStopTimeTaskQueue;
 import fi.otavanopisto.kuntaapi.server.integrations.gtfs.tasks.GtfsTripEntityTask;
-import fi.otavanopisto.kuntaapi.server.integrations.gtfs.tasks.GtfsTripTaskQueue;
 import fi.otavanopisto.kuntaapi.server.integrations.gtfs.tasks.OrganizationGtfsTaskQueue;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 import fi.otavanopisto.kuntaapi.server.tasks.OrganizationEntityUpdateTask;
+import javax.enterprise.event.Event;
 
 @ApplicationScoped
 @Singleton
@@ -58,28 +53,28 @@ public class GtfsIdUpdater extends IdUpdater {
   private OrganizationGtfsTaskQueue organizationGtfsTaskQueue;
   
   @Inject
-  private GtfsAgencyTaskQueue agencyTaskQueue;
-  
-  @Inject
-  private GtfsScheduleTaskQueue scheduleTaskQueue;
-  
-  @Inject
-  private GtfsRouteTaskQueue routeTaskQueue;
-  
-  @Inject
-  private GtfsStopTaskQueue stopTaskQueue;
-  
-  @Inject
-  private GtfsStopTimeTaskQueue stopTimeTaskQueue;
-  
-  @Inject
-  private GtfsTripTaskQueue tripTaskQueue;
-  
-  @Inject
   private OrganizationSettingController organizationSettingController;
 
   @Resource
   private TimerService timerService;
+  
+  @Inject
+  private Event<GtfsAgencyEntityTask> gtfsAgencyEntityTaskEvent;
+  
+  @Inject
+  private Event<GtfsStopEntityTask> gtfsStopEntityTaskEvent;
+    
+  @Inject
+  private Event<GtfsStopTimeEntityTask> gtfsStopTimeEntityTaskEvent;
+  
+  @Inject
+  private Event<GtfsTripEntityTask> gtfsTripEntityTaskEvent;
+      
+  @Inject
+  private Event<GtfsScheduleEntityTask> gtfsScheduleEntityTaskEvent;
+  
+  @Inject
+  private Event<GtfsRouteEntityTask> gtfsRouteEntityTaskEvent;
 
   @Override
   public String getName() {
@@ -145,7 +140,7 @@ public class GtfsIdUpdater extends IdUpdater {
     List<Agency> agencyList = new ArrayList<>(agencies);
     for(int i = 0; i < agencyList.size(); i++) {
       Agency agency = agencyList.get(i);
-      agencyTaskQueue.enqueueTask(false, new GtfsAgencyEntityTask(organizationId, agency, (long) i));
+      gtfsAgencyEntityTaskEvent.fire(new GtfsAgencyEntityTask(organizationId, agency, (long) i));
     }
   }
 
@@ -154,7 +149,7 @@ public class GtfsIdUpdater extends IdUpdater {
     List<Stop> stopList = new ArrayList<>(stops);
     for(int i = 0; i < stopList.size(); i++) {
       Stop stop = stopList.get(i);
-      stopTaskQueue.enqueueTask(false, new GtfsStopEntityTask(organizationId, stop, (long) i));
+      gtfsStopEntityTaskEvent.fire(new GtfsStopEntityTask(organizationId, stop, (long) i));
     }
   }
   
@@ -163,7 +158,7 @@ public class GtfsIdUpdater extends IdUpdater {
     List<StopTime> stopTimeList = new ArrayList<>(stopTimes);
     for(int i = 0; i < stopTimeList.size(); i++) {
       StopTime stopTime = stopTimeList.get(i);
-      stopTimeTaskQueue.enqueueTask(false, new GtfsStopTimeEntityTask(organizationId, stopTime, (long) i));
+      gtfsStopTimeEntityTaskEvent.fire(new GtfsStopTimeEntityTask(organizationId, stopTime, (long) i));
     }
   }
     
@@ -172,7 +167,7 @@ public class GtfsIdUpdater extends IdUpdater {
     List<Trip> tripList = new ArrayList<>(trips);
     for(int i = 0; i < tripList.size(); i++) {
       Trip trip = tripList.get(i);
-      tripTaskQueue.enqueueTask(false, new GtfsTripEntityTask(organizationId, trip, (long) i));
+      gtfsTripEntityTaskEvent.fire(new GtfsTripEntityTask(organizationId, trip, (long) i));
     }
   }
   
@@ -182,7 +177,7 @@ public class GtfsIdUpdater extends IdUpdater {
     for (int i = 0; i < serviceCalendarList.size(); i++) {
       ServiceCalendar serviceCalendar = serviceCalendarList.get(i);
       List<ServiceCalendarDate> exceptions = getExectionsByServiceCalendar(store, serviceCalendar);
-      scheduleTaskQueue.enqueueTask(false, new GtfsScheduleEntityTask(organizationId, serviceCalendar, exceptions, (long) i));
+      gtfsScheduleEntityTaskEvent.fire(new GtfsScheduleEntityTask(organizationId, serviceCalendar, exceptions, (long) i));
     }
   }
   
@@ -192,7 +187,7 @@ public class GtfsIdUpdater extends IdUpdater {
     for (int i = 0; i < routeList.size(); i++) {
       Route route = routeList.get(i);
       List<ServiceCalendar> serviceCalendars = getServiceCalendarsByRoute(store, route);
-      routeTaskQueue.enqueueTask(false, new GtfsRouteEntityTask(organizationId, route, serviceCalendars, (long) i));
+      gtfsRouteEntityTaskEvent.fire(new GtfsRouteEntityTask(organizationId, route, serviceCalendars, (long) i));
     }
   }
   
