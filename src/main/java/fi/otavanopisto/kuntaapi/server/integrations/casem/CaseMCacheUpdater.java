@@ -235,6 +235,11 @@ public class CaseMCacheUpdater {
       return;
     }
     
+    if (meetingContent == null) {
+      logger.log(Level.SEVERE, () -> String.format("Null meetingContent received for page %s", casemMeetingPageId));
+      return;
+    }
+    
     logger.fine(String.format("Updating CaseM meeting %s with %d items", casemMeetingPageId, meetingItemContents.size()));
     
     Locale locale = new Locale(CaseMConsts.DEFAULT_LANGUAGE);
