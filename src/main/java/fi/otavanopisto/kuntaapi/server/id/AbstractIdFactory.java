@@ -42,6 +42,10 @@ public abstract class AbstractIdFactory {
     return createId(ShortlinkId.class, kuntaApiOrganizationId, id);
   }
   
+  public FragmentId createFragmentId(OrganizationId kuntaApiOrganizationId, String id) {
+    return createId(FragmentId.class, kuntaApiOrganizationId, id);
+  }
+  
   public ElectronicServiceChannelId createElectronicServiceChannelId(String id) {
     return createId(ElectronicServiceChannelId.class, null, id);
   }
