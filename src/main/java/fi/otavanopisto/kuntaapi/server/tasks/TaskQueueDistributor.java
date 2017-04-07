@@ -16,6 +16,8 @@ import fi.otavanopisto.kuntaapi.server.controllers.ClusterController;
 import fi.otavanopisto.kuntaapi.server.controllers.TaskController;
 import fi.otavanopisto.kuntaapi.server.persistence.model.TaskQueue;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
+import java.util.Iterator;
+import javax.ejb.Timer;
 
 @Startup
 @Singleton
@@ -60,6 +62,12 @@ public class TaskQueueDistributor {
         }
       }
     } finally {
+      Iterator<Timer> timers = timerService.getTimers().iterator();
+      while(timers.hasNext()) {
+        Timer timer = timers.next();
+        timer.cancel();
+      }
+      
       startTimer();
     }
   }
