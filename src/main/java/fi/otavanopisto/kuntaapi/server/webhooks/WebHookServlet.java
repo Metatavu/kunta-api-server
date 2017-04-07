@@ -18,7 +18,7 @@ import javax.transaction.Transactional;
 import org.apache.commons.lang3.StringUtils;
 
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
-import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
+import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
 
 @WebServlet (urlPatterns = "/webhooks/*")
 @Transactional
@@ -28,6 +28,9 @@ public class WebHookServlet extends HttpServlet {
 
   @Inject
   private Logger logger;
+  
+  @Inject
+  private KuntaApiIdFactory kuntaApiIdFactory;
   
   @Inject
   private Instance<WebhookHandler> webhookHandlers;
@@ -48,15 +51,17 @@ public class WebHookServlet extends HttpServlet {
       return;
     }
     
-    OrganizationId organizationId = new OrganizationId(KuntaApiConsts.IDENTIFIER_NAME, organizationIdParam);
-    
+    OrganizationId kuntaApiOrganizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
+        
     Iterator<WebhookHandler> webhookHandlerIterator = webhookHandlers.iterator();
     while (webhookHandlerIterator.hasNext()) {
       WebhookHandler webhookHandler = webhookHandlerIterator.next();
       if (StringUtils.equals(webhookHandler.getType(), type)) {
-        if (webhookHandler.handle(organizationId, request)) {
+        if (webhookHandler.handle(kuntaApiOrganizationId, request)) {
+          logger.log(Level.INFO, () -> String.format("Webhook (%s) processed succesfully", type));
           response.setStatus(HttpServletResponse.SC_OK);
         } else {
+          logger.log(Level.WARNING, () -> String.format("Webhook (%s) processing failed", type));
           response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
         }
         
