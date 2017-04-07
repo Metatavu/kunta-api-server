@@ -2,9 +2,8 @@ package fi.otavanopisto.kuntaapi.server.integrations.kuntarekry.tasks;
 
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.kuntarekry.KuntaRekryJob;
-import fi.otavanopisto.kuntaapi.server.tasks.AbstractTask;
 
-public class KuntaRekryJobEntityTask extends AbstractTask {
+public class KuntaRekryJobEntityTask extends AbstractKuntaRekryJobTask {
 
   private static final long serialVersionUID = 2631366388691557632L;
   

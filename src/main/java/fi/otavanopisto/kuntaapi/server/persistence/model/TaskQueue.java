@@ -1,5 +1,7 @@
 package fi.otavanopisto.kuntaapi.server.persistence.model;
 
+import java.time.OffsetDateTime;
+
 import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -38,6 +40,8 @@ public class TaskQueue {
   @NotNull
   @NotEmpty
   private String responsibleNode;
+
+  private OffsetDateTime lastTaskReturned;
   
   public Long getId() {
     return id;
@@ -61,6 +65,14 @@ public class TaskQueue {
 
   public void setResponsibleNode(String responsibleNode) {
     this.responsibleNode = responsibleNode;
+  }
+  
+  public OffsetDateTime getLastTaskReturned() {
+    return lastTaskReturned;
+  }
+  
+  public void setLastTaskReturned(OffsetDateTime lastTaskReturned) {
+    this.lastTaskReturned = lastTaskReturned;
   }
 
 }

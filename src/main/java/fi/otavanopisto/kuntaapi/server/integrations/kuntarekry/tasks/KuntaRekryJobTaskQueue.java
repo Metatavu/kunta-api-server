@@ -6,7 +6,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.kuntarekry.KuntaRekryConsts;
 import fi.otavanopisto.kuntaapi.server.tasks.AbstractTaskQueue;
 
 @ApplicationScoped
-public class KuntaRekryJobTaskQueue extends AbstractTaskQueue<KuntaRekryJobEntityTask> {
+public class KuntaRekryJobTaskQueue extends AbstractTaskQueue<AbstractKuntaRekryJobTask> {
 
   @Override
   public String getName() {

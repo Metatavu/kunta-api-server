@@ -30,12 +30,20 @@ public abstract class AbstractIdFactory {
     return createId(OrganizationId.class, null, id);
   }
 
+  public MenuId createMenuId(OrganizationId kuntaApiOrganizationId, String id) {
+    return createId(MenuId.class, kuntaApiOrganizationId, id);
+  }
+
   public PageId createPageId(OrganizationId kuntaApiOrganizationId, String id) {
     return createId(PageId.class, kuntaApiOrganizationId, id);
   }
   
   public ShortlinkId createShortlinkId(OrganizationId kuntaApiOrganizationId, String id) {
     return createId(ShortlinkId.class, kuntaApiOrganizationId, id);
+  }
+  
+  public FragmentId createFragmentId(OrganizationId kuntaApiOrganizationId, String id) {
+    return createId(FragmentId.class, kuntaApiOrganizationId, id);
   }
   
   public ElectronicServiceChannelId createElectronicServiceChannelId(String id) {
