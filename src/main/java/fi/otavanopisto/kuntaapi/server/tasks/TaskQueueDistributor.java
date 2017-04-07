@@ -17,6 +17,8 @@ import fi.otavanopisto.kuntaapi.server.controllers.TaskController;
 import fi.otavanopisto.kuntaapi.server.persistence.model.TaskQueue;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.Timer;
 
 @Startup
@@ -25,6 +27,9 @@ import javax.ejb.Timer;
 public class TaskQueueDistributor {
 
   private static final int UPDATE_INTERVAL = 1000 * 60 * 5;
+  
+  @Inject
+  private Logger logger;
   
   @Inject
   private TaskController taskController;
@@ -62,13 +67,17 @@ public class TaskQueueDistributor {
         }
       }
     } finally {
-      Iterator<Timer> timers = timerService.getTimers().iterator();
-      while(timers.hasNext()) {
-        Timer timer = timers.next();
-        timer.cancel();
+      try {
+        Iterator<Timer> timers = timerService.getTimers().iterator();
+        while(timers.hasNext()) {
+          Timer timer = timers.next();
+          timer.cancel();
+        }
+      } catch (Exception e) {
+        logger.log(Level.SEVERE, "Exception while canceling timer", e);
+      } finally {
+        startTimer();
       }
-      
-      startTimer();
     }
   }
   

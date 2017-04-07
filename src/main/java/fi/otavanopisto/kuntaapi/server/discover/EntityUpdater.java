@@ -127,13 +127,17 @@ public abstract class EntityUpdater {
       } catch (Exception e) {
         logger.log(Level.SEVERE, "Timer throw an exception", e);
       } finally {
-        Iterator<Timer> timers = getTimerService().getTimers().iterator();
-        while(timers.hasNext()) {
-          Timer timer = timers.next();
-          timer.cancel();
+        try {
+          Iterator<Timer> timers = getTimerService().getTimers().iterator();
+          while(timers.hasNext()) {
+            Timer timer = timers.next();
+            timer.cancel();
+          }
+        } catch (Exception e) {
+          logger.log(Level.SEVERE, "Exception while canceling timer", e);
+        } finally {
+          startTimer(getTimerInterval());
         }
-        
-        startTimer(getTimerInterval());
       }
     }
   }
