@@ -333,7 +333,7 @@
     <sql dbms="mysql">UPDATE Identifier SET type = 'WEBPAGE_SERVICE_CHANNEL' where type = 'WEBPAGE_CHANNEL'</sql>
   </changeSet>
 
-  <changeSet id="task-queue" author="antti.leppa">
+  <changeSet id="task-queue-last-returned" author="antti.leppa">
     <addColumn tableName="TaskQueue">
       <column name="lastTaskReturned" type="timestamp"/>
     </addColumn>
