@@ -58,8 +58,10 @@ public class WebHookServlet extends HttpServlet {
       WebhookHandler webhookHandler = webhookHandlerIterator.next();
       if (StringUtils.equals(webhookHandler.getType(), type)) {
         if (webhookHandler.handle(kuntaApiOrganizationId, request)) {
+          logger.log(Level.INFO, () -> String.format("Webhook (%s) processed succesfully", type));
           response.setStatus(HttpServletResponse.SC_OK);
         } else {
+          logger.log(Level.WARNING, () -> String.format("Webhook (%s) processing failed", type));
           response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
         }
         
