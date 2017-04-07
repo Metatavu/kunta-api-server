@@ -16,12 +16,16 @@ import javax.inject.Inject;
 
 import org.apache.commons.lang3.StringUtils;
 
+import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.discover.IdUpdater;
+import fi.otavanopisto.kuntaapi.server.id.IdController;
+import fi.otavanopisto.kuntaapi.server.id.JobId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpClient;
 import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpClient.Response;
 import fi.otavanopisto.kuntaapi.server.integrations.kuntarekry.tasks.KuntaRekryJobEntityTask;
 import fi.otavanopisto.kuntaapi.server.integrations.kuntarekry.tasks.KuntaRekryJobTaskQueue;
+import fi.otavanopisto.kuntaapi.server.integrations.kuntarekry.tasks.KuntaRekryRemoveJobTask;
 import fi.otavanopisto.kuntaapi.server.integrations.kuntarekry.tasks.OrganizationJobsTaskQueue;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 import fi.otavanopisto.kuntaapi.server.tasks.OrganizationEntityUpdateTask;
@@ -37,6 +41,12 @@ public class KuntaRekryJobIdUpdater extends IdUpdater {
   
   @Inject
   private GenericHttpClient httpClient;
+
+  @Inject
+  private IdController idController;
+
+  @Inject
+  private IdentifierRelationController identifierRelationController;
   
   @Inject
   private OrganizationSettingController organizationSettingController;
@@ -46,7 +56,7 @@ public class KuntaRekryJobIdUpdater extends IdUpdater {
   
   @Inject
   private KuntaRekryJobTaskQueue kuntaRekryJobTaskQueue;
-
+  
   @Resource
   private TimerService timerService;
 
@@ -87,6 +97,8 @@ public class KuntaRekryJobIdUpdater extends IdUpdater {
       return;
     }
     
+    List<JobId> existingKuntaRekryJobIds = idController.translateIds(identifierRelationController.listJobIdsBySourceAndParentId(KuntaRekryConsts.IDENTIFIER_NAME, organizationId), KuntaRekryConsts.IDENTIFIER_NAME);
+    
     Response<List<KuntaRekryJob>> jobsResponse = httpClient.doGETRequest(uri, new GenericHttpClient.ResultType<List<KuntaRekryJob>>() {});
     if (jobsResponse.isOk()) {
       List<KuntaRekryJob> kuntaRekryJobs = jobsResponse.getResponseEntity();
@@ -94,7 +106,14 @@ public class KuntaRekryJobIdUpdater extends IdUpdater {
         KuntaRekryJob kuntaRekryJob = kuntaRekryJobs.get(i);
         Long orderIndex = (long) i;
         kuntaRekryJobTaskQueue.enqueueTask(false, new KuntaRekryJobEntityTask(organizationId, kuntaRekryJob, orderIndex));
+        JobId kuntaRekryId = new JobId(organizationId, KuntaRekryConsts.IDENTIFIER_NAME, String.valueOf(kuntaRekryJob.getJobId()));
+        existingKuntaRekryJobIds.remove(kuntaRekryId);
       }
+      
+      for (JobId existingKuntaRekryJobId : existingKuntaRekryJobIds) {
+        kuntaRekryJobTaskQueue.enqueueTask(false, new KuntaRekryRemoveJobTask(existingKuntaRekryJobId));
+      }
+      
     } else {
       logger.log(Level.SEVERE, () -> String.format("Failed to list jobs from Kuntarekry. API Returned [%d] %s", jobsResponse.getStatus(), jobsResponse.getMessage()));
     }
