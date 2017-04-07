@@ -14,10 +14,12 @@ import org.apache.commons.lang3.StringUtils;
 import fi.metatavu.management.client.DefaultApi;
 import fi.metatavu.management.client.model.Menu;
 import fi.otavanopisto.kuntaapi.server.id.BannerId;
+import fi.otavanopisto.kuntaapi.server.id.FragmentId;
 import fi.otavanopisto.kuntaapi.server.id.MenuId;
 import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
+import fi.otavanopisto.kuntaapi.server.id.ShortlinkId;
 import fi.otavanopisto.kuntaapi.server.id.TileId;
 import fi.otavanopisto.kuntaapi.server.integrations.management.ManagementApi;
 import fi.otavanopisto.kuntaapi.server.integrations.management.ManagementConsts;
@@ -125,6 +127,10 @@ public class ManagementWebhookHandler implements WebhookHandler {
         return handlePublishPost(kuntaApiOrganizationId, payload);
       case "tile":
         return handleTilePublish(kuntaApiOrganizationId, payload);
+      case "shortlink":
+        return handleShortlinkPublish(kuntaApiOrganizationId, payload);
+      case "fragment":
+        return handleFragmentPublish(kuntaApiOrganizationId, payload);
       case "customize_changeset":
         return handleMenuItemPublish(kuntaApiOrganizationId);
       default:
@@ -149,6 +155,10 @@ public class ManagementWebhookHandler implements WebhookHandler {
         return handleTrashTile(kuntaApiOrganizationId, payload);
       case "customize_changeset":
         return handleMenuItemTrash(kuntaApiOrganizationId);
+      case "shortlink":
+        return handleShortlinkTrash(kuntaApiOrganizationId, payload);
+      case "fragment":
+        return handleFragmentTrash(kuntaApiOrganizationId, payload);
       default:
         logger.log(Level.WARNING, () -> String.format("Don't know how to handle trashing of post type %s", payload.getPostType()));
       break;
@@ -181,6 +191,18 @@ public class ManagementWebhookHandler implements WebhookHandler {
     return true;
   }
 
+  private boolean handleFragmentTrash(OrganizationId kuntaApiOrganizationId, Payload payload) {
+    FragmentId fragmentId = managementIdFactory.createFragmentId(kuntaApiOrganizationId, payload.getId());
+    taskRequest.fire(new TaskRequest(false, new IdTask<FragmentId>(Operation.REMOVE, fragmentId)));
+    return true;
+  }
+  
+  private boolean handleShortlinkTrash(OrganizationId kuntaApiOrganizationId, Payload payload) {
+    ShortlinkId shortlinkId = managementIdFactory.createShortlinkId(kuntaApiOrganizationId, payload.getId());
+    taskRequest.fire(new TaskRequest(false, new IdTask<ShortlinkId>(Operation.REMOVE, shortlinkId)));
+    return true;
+  }
+
   private boolean handlePublishPage(OrganizationId organizationId, Payload payload) {
     PageId pageId = new PageId(organizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
     taskRequest.fire(new TaskRequest(true, new IdTask<PageId>(Operation.UPDATE, pageId, null)));
@@ -206,6 +228,18 @@ public class ManagementWebhookHandler implements WebhookHandler {
   private boolean handleTilePublish(OrganizationId organizationId, Payload payload) {
     TileId tileId = new TileId(organizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
     taskRequest.fire(new TaskRequest(true, new IdTask<TileId>(Operation.UPDATE, tileId, null)));
+    return true;
+  }
+
+  private boolean handleFragmentPublish(OrganizationId kuntaApiOrganizationId, Payload payload) {
+    FragmentId fragmentId = new FragmentId(kuntaApiOrganizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
+    taskRequest.fire(new TaskRequest(true, new IdTask<FragmentId>(Operation.UPDATE, fragmentId, null)));
+    return true;
+  }
+
+  private boolean handleShortlinkPublish(OrganizationId kuntaApiOrganizationId, Payload payload) {
+    ShortlinkId shortlinkId = new ShortlinkId(kuntaApiOrganizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
+    taskRequest.fire(new TaskRequest(true, new IdTask<ShortlinkId>(Operation.UPDATE, shortlinkId, null)));
     return true;
   }
 
