@@ -17,6 +17,7 @@ import javax.inject.Inject;
 import org.apache.commons.lang3.math.NumberUtils;
 
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
+import java.util.Iterator;
 
 @AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 public abstract class IdUpdater {
@@ -122,7 +123,17 @@ public abstract class IdUpdater {
       } catch (Exception e) {
         logger.log(Level.SEVERE, "Timer throw an exception", e);
       } finally {
-        startTimer(getTimerInterval());
+        try {
+          Iterator<Timer> timers = getTimerService().getTimers().iterator();
+          while(timers.hasNext()) {
+            Timer timer = timers.next();
+            timer.cancel();
+          }
+        } catch (Exception e) {
+          logger.log(Level.SEVERE, "Exception while canceling timer", e);
+        } finally {
+          startTimer(getTimerInterval());
+        }
       }
     }
   }
