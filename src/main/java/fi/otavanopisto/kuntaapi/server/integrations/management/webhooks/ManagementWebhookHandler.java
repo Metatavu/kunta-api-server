@@ -114,7 +114,7 @@ public class ManagementWebhookHandler implements WebhookHandler {
   }
   
   private boolean handlePublish(OrganizationId kuntaApiOrganizationId, Payload payload) {
-    logger.log(Level.INFO, () -> String.format("Processing publish of post type  %s", payload.getPostType()));
+    logger.log(Level.INFO, () -> String.format("Processing publish of post type %s", payload.getPostType()));
     
     switch (payload.getPostType()) {
       case "page":
@@ -125,7 +125,7 @@ public class ManagementWebhookHandler implements WebhookHandler {
         return handlePublishPost(kuntaApiOrganizationId, payload);
       case "tile":
         return handleTilePublish(kuntaApiOrganizationId, payload);
-      case "nav_menu_item":
+      case "customize_changeset":
         return handleMenuItemPublish(kuntaApiOrganizationId);
       default:
         logger.log(Level.WARNING, () -> String.format("Don't know how to handle publish of post type %s", payload.getPostType()));
@@ -136,7 +136,7 @@ public class ManagementWebhookHandler implements WebhookHandler {
   }
 
   private boolean handleTrash(OrganizationId kuntaApiOrganizationId, Payload payload) {
-    logger.log(Level.INFO, () -> String.format("Processing trash of post type  %s", payload.getPostType()));
+    logger.log(Level.INFO, () -> String.format("Processing trash of post type %s", payload.getPostType()));
     
     switch (payload.getPostType()) {
       case "page":
@@ -147,7 +147,7 @@ public class ManagementWebhookHandler implements WebhookHandler {
         return handleTrashPost(kuntaApiOrganizationId, payload);
       case "tile":
         return handleTrashTile(kuntaApiOrganizationId, payload);
-      case "nav_menu_item":
+      case "customize_changeset":
         return handleMenuItemTrash(kuntaApiOrganizationId);
       default:
         logger.log(Level.WARNING, () -> String.format("Don't know how to handle trashing of post type %s", payload.getPostType()));
