@@ -1,5 +1,6 @@
 package fi.otavanopisto.kuntaapi.server.persistence.dao;
 
+import java.time.OffsetDateTime;
 import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -101,6 +102,18 @@ public class TaskQueueDAO extends AbstractDAO<TaskQueue> {
    */
   public TaskQueue updateResponsibleNode(TaskQueue taskQueue, String responsibleNode) {
     taskQueue.setResponsibleNode(responsibleNode);
+    return persist(taskQueue);
+  }
+  
+  /**
+   * Updates when the last task of the queue has been retruned
+   * 
+   * @param taskQueue task queue
+   * @param lastTaskReturned time when last task was returned
+   * @return updated task queue
+   */
+  public TaskQueue updateLastTaskReturned(TaskQueue taskQueue, OffsetDateTime lastTaskReturned) {
+    taskQueue.setLastTaskReturned(lastTaskReturned);
     return persist(taskQueue);
   }
 
