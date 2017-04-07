@@ -73,6 +73,7 @@ public class TaskController {
     if (task != null) {
       byte[] data = task.getData();
       taskDAO.delete(task);
+      taskQueueDAO.updateLastTaskReturned(taskQueue, OffsetDateTime.now());
       return unserialize(data);
     }
     
