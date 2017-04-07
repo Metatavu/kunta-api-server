@@ -1,5 +1,6 @@
 package fi.otavanopisto.kuntaapi.server.integrations.management.webhooks;
 
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -10,12 +11,17 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang3.StringUtils;
 
+import fi.metatavu.management.client.DefaultApi;
+import fi.metatavu.management.client.model.Menu;
 import fi.otavanopisto.kuntaapi.server.id.BannerId;
+import fi.otavanopisto.kuntaapi.server.id.MenuId;
 import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.id.TileId;
+import fi.otavanopisto.kuntaapi.server.integrations.management.ManagementApi;
 import fi.otavanopisto.kuntaapi.server.integrations.management.ManagementConsts;
+import fi.otavanopisto.kuntaapi.server.integrations.management.ManagementIdFactory;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask.Operation;
 import fi.otavanopisto.kuntaapi.server.tasks.TaskRequest;
@@ -27,7 +33,13 @@ public class ManagementWebhookHandler implements WebhookHandler {
   
   @Inject
   private Logger logger;
-
+  
+  @Inject
+  private ManagementIdFactory managementIdFactory;
+  
+  @Inject
+  private ManagementApi managementApi;
+  
   @Inject
   private Event<TaskRequest> taskRequest;
   
@@ -38,7 +50,7 @@ public class ManagementWebhookHandler implements WebhookHandler {
 
   @Override
   @SuppressWarnings ("squid:S128")
-  public boolean handle(OrganizationId organizationId, HttpServletRequest request) {
+  public boolean handle(OrganizationId kuntaApiOrganizationId, HttpServletRequest request) {
     Payload payload = parsePayload(request);
 
     if (StringUtils.isBlank(payload.getHook())) {
@@ -49,9 +61,11 @@ public class ManagementWebhookHandler implements WebhookHandler {
     switch (payload.getHook()) {
       case "edit_post":
         if (validateEditPost(payload)) {
-          return handleEditPost(organizationId, payload);
+          return handleEditPost(kuntaApiOrganizationId, payload);
         }
       default:
+        logger.log(Level.WARNING, () -> String.format("Don't know how to handle hook %s", payload.getHook()));
+      break;
     }
       
     return false;
@@ -85,62 +99,92 @@ public class ManagementWebhookHandler implements WebhookHandler {
     return true;
   }
 
-  private boolean handleEditPost(OrganizationId organizationId, Payload payload) {
+  private boolean handleEditPost(OrganizationId kuntaApiOrganizationId, Payload payload) {
     switch (payload.getPostStatus()) {
       case "trash":
-        return handleTrash(organizationId, payload);
+        return handleTrash(kuntaApiOrganizationId, payload);
       case "publish":
-        return handlePublish(organizationId, payload);
+        return handlePublish(kuntaApiOrganizationId, payload);
       default:
+        logger.log(Level.WARNING, () -> String.format("Don't know how to handle post status %s", payload.getPostStatus()));
+      break;
     }
     
     return false;
   }
   
-  private boolean handlePublish(OrganizationId organizationId, Payload payload) {
+  private boolean handlePublish(OrganizationId kuntaApiOrganizationId, Payload payload) {
     switch (payload.getPostType()) {
       case "page":
-        return handlePublishPage(organizationId, payload);
+        return handlePublishPage(kuntaApiOrganizationId, payload);
       case "banner":
-        return handlePublishBanner(organizationId, payload);
+        return handlePublishBanner(kuntaApiOrganizationId, payload);
       case "post":
-        return handlePublishPost(organizationId, payload);
+        return handlePublishPost(kuntaApiOrganizationId, payload);
       case "tile":
-        return handleTilePublish(organizationId, payload);
+        return handleTilePublish(kuntaApiOrganizationId, payload);
+      case "nav_menu_item":
+        return handleMenuItemPublish(kuntaApiOrganizationId);
       default:
+        logger.log(Level.WARNING, () -> String.format("Don't know how to handle publish of post type  %s", payload.getPostType()));
+      break;
     }
     
     return false;
   }
-  
-  private boolean handleTrash(OrganizationId organizationId, Payload payload) {
+
+  private boolean handleTrash(OrganizationId kuntaApiOrganizationId, Payload payload) {
     switch (payload.getPostType()) {
       case "page":
-        PageId pageId = new PageId(organizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
-        taskRequest.fire(new TaskRequest(false, new IdTask<PageId>(Operation.REMOVE, pageId)));
-        return true;
+        return handleTrashPage(kuntaApiOrganizationId, payload);
       case "banner":
-        BannerId bannerId = new BannerId(organizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
-        taskRequest.fire(new TaskRequest(false, new IdTask<BannerId>(Operation.REMOVE, bannerId)));
-        return true;
+        return handleTrashBanner(kuntaApiOrganizationId, payload);
       case "post":
-        NewsArticleId newsArticleId = new NewsArticleId(organizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
-        taskRequest.fire(new TaskRequest(false, new IdTask<NewsArticleId>(Operation.REMOVE, newsArticleId)));
-        return true;
+        return handleTrashPost(kuntaApiOrganizationId, payload);
       case "tile":
-        TileId tileId = new TileId(organizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
-        taskRequest.fire(new TaskRequest(false, new IdTask<TileId>(Operation.REMOVE, tileId)));
-        return true;
+        return handleTrashTile(kuntaApiOrganizationId, payload);
+      case "nav_menu_item":
+        return handleMenuItemTrash(kuntaApiOrganizationId);
       default:
+        logger.log(Level.WARNING, () -> String.format("Don't know how to handle trashing of post type  %s", payload.getPostType()));
+      break;
     }
     
     return false;
+  }
+
+  private boolean handleTrashTile(OrganizationId kuntaApiOrganizationId, Payload payload) {
+    TileId tileId = new TileId(kuntaApiOrganizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
+    taskRequest.fire(new TaskRequest(false, new IdTask<TileId>(Operation.REMOVE, tileId)));
+    return true;
+  }
+
+  private boolean handleTrashPost(OrganizationId kuntaApiOrganizationId, Payload payload) {
+    NewsArticleId newsArticleId = new NewsArticleId(kuntaApiOrganizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
+    taskRequest.fire(new TaskRequest(false, new IdTask<NewsArticleId>(Operation.REMOVE, newsArticleId)));
+    return true;
+  }
+
+  private boolean handleTrashBanner(OrganizationId kuntaApiOrganizationId, Payload payload) {
+    BannerId bannerId = new BannerId(kuntaApiOrganizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
+    taskRequest.fire(new TaskRequest(false, new IdTask<BannerId>(Operation.REMOVE, bannerId)));
+    return true;
+  }
+
+  private boolean handleTrashPage(OrganizationId kuntaApiOrganizationId, Payload payload) {
+    PageId pageId = new PageId(kuntaApiOrganizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
+    taskRequest.fire(new TaskRequest(false, new IdTask<PageId>(Operation.REMOVE, pageId)));
+    return true;
   }
 
   private boolean handlePublishPage(OrganizationId organizationId, Payload payload) {
     PageId pageId = new PageId(organizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
     taskRequest.fire(new TaskRequest(true, new IdTask<PageId>(Operation.UPDATE, pageId, null)));
     return true;
+  }
+
+  private boolean handleMenuItemTrash(OrganizationId kuntaApiOrganizationId) {
+    return updateAllMenus(kuntaApiOrganizationId);
   }
 
   private boolean handlePublishBanner(OrganizationId organizationId, Payload payload) {
@@ -159,6 +203,28 @@ public class ManagementWebhookHandler implements WebhookHandler {
     TileId tileId = new TileId(organizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
     taskRequest.fire(new TaskRequest(true, new IdTask<TileId>(Operation.UPDATE, tileId, null)));
     return true;
+  }
+
+  private boolean handleMenuItemPublish(OrganizationId kuntaApiOrganizationId) {
+    return updateAllMenus(kuntaApiOrganizationId);
+  }
+  
+  private boolean updateAllMenus(OrganizationId kuntaApiOrganizationId) {
+    DefaultApi api = managementApi.getApi(kuntaApiOrganizationId);
+    
+    fi.metatavu.management.client.ApiResponse<List<Menu>> response = api.kuntaApiMenusGet(null);
+    if (response.isOk()) {
+      for (Menu menu : response.getResponse()) {
+        MenuId menuId = managementIdFactory.createMenuId(kuntaApiOrganizationId, String.valueOf(menu.getId()));
+        taskRequest.fire(new TaskRequest(true, new IdTask<MenuId>(Operation.UPDATE, menuId, null)));
+      }      
+      
+      return true;
+    } else {
+      logger.warning(String.format("Listing organization %s menus failed on [%d] %s", kuntaApiOrganizationId.getId(), response.getStatus(), response.getMessage()));
+    }
+    
+    return false;
   }
 
 }
