@@ -18,8 +18,10 @@ import fi.otavanopisto.kuntaapi.server.id.JobId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.kuntarekry.resources.KuntaRekryJobResourceContainer;
+import fi.otavanopisto.kuntaapi.server.integrations.kuntarekry.tasks.AbstractKuntaRekryJobTask;
 import fi.otavanopisto.kuntaapi.server.integrations.kuntarekry.tasks.KuntaRekryJobEntityTask;
 import fi.otavanopisto.kuntaapi.server.integrations.kuntarekry.tasks.KuntaRekryJobTaskQueue;
+import fi.otavanopisto.kuntaapi.server.integrations.kuntarekry.tasks.KuntaRekryRemoveJobTask;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 
 @ApplicationScoped
@@ -44,7 +46,7 @@ public class KuntaRekryJobEntityUpdater extends EntityUpdater {
   private KuntaRekryJobTaskQueue kuntaRekryJobTaskQueue;
 
   @Inject
-  private KuntaRekryJobResourceContainer kuntaRekryJobCache;
+  private KuntaRekryJobResourceContainer kuntaRekryJobResourceContainer;
 
   @Resource
   private TimerService timerService;
@@ -65,12 +67,14 @@ public class KuntaRekryJobEntityUpdater extends EntityUpdater {
   }
   
   private void executeNextTask() {
-    KuntaRekryJobEntityTask task = kuntaRekryJobTaskQueue.next();
-    if (task != null) {
-      updateKuntaRekryJob(task); 
+    AbstractKuntaRekryJobTask task = kuntaRekryJobTaskQueue.next();
+    if (task instanceof KuntaRekryRemoveJobTask) {
+      removeKuntaRekryJob((KuntaRekryRemoveJobTask) task);
+    } else if (task instanceof KuntaRekryJobEntityTask) {
+      updateKuntaRekryJob((KuntaRekryJobEntityTask) task); 
     }
   }
-
+  
   private void updateKuntaRekryJob(KuntaRekryJobEntityTask task) {
     KuntaRekryJob kuntaRekryJob = task.getEntity();
     OrganizationId organizationId = task.getOrganizationId();
@@ -86,7 +90,18 @@ public class KuntaRekryJobEntityUpdater extends EntityUpdater {
     JobId kuntaApiJobId = new JobId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
     Job job = kuntaRekryTranslator.translateJob(kuntaApiJobId, kuntaRekryJob);
     
-    kuntaRekryJobCache.put(kuntaApiJobId, job);
+    kuntaRekryJobResourceContainer.put(kuntaApiJobId, job);
+  }
+
+  private void removeKuntaRekryJob(KuntaRekryRemoveJobTask task) {
+    JobId kuntaRekryJobId = task.getKuntaRekryJobId();
+    
+    Identifier kuntaRekryJobIdentifier = identifierController.findIdentifierById(kuntaRekryJobId);
+    if (kuntaRekryJobIdentifier != null) {
+      modificationHashCache.clear(kuntaRekryJobIdentifier.getKuntaApiId());
+      kuntaRekryJobResourceContainer.clear(kuntaRekryJobId);
+      identifierController.deleteIdentifier(kuntaRekryJobIdentifier);
+    }
   }
 
 }
