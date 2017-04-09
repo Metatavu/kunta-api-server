@@ -8,6 +8,10 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
+import java.io.IOException;
+
+import org.jsoup.Jsoup;
+import org.jsoup.select.Elements;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
@@ -305,6 +309,41 @@ public class PageTestsIT extends AbstractIntegrationTest {
   }
   
   @Test
+  public void testPageContentImages() throws IOException {
+    String organizationId = getOrganizationId(0);
+    String pageId = getPageId(organizationId, 2);
+    String imageId = getPageImageId(organizationId, pageId, 0);
+    String pageContent = getPageContent(organizationId, pageId);
+    
+    Elements pageImages = Jsoup.parse(pageContent).select("img");
+    assertEquals(2, pageImages.size());
+    
+    assertEquals(String.format("/v1/organizations/%s/pages/%s/images/%s", organizationId, pageId, imageId), pageImages.get(0).attr("src"));
+    assertEquals("http://example.com/image.jpg", pageImages.get(1).attr("src"));
+      
+    given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get("/organizations/{ORGANIZATIONID}/pages/{PAGEID}/images", organizationId, pageId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(1))
+      .body("contentType[0]", is(IMAGE_JPEG))
+      .body("type[0]", is("content-image"));
+    
+    given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get("/organizations/{ORGANIZATIONID}/pages/{PAGEID}/images/{IMAGEID}", organizationId, pageId, imageId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("contentType", is(IMAGE_JPEG))
+      .body("type", is("content-image"));
+  }
+
+  @Test
   public void testPageImageNotFound() {
     String organizationId = getOrganizationId(0);
     String pageId = getPageId(organizationId, 0);
@@ -320,7 +359,6 @@ public class PageTestsIT extends AbstractIntegrationTest {
     }
 
     assertNotFound(String.format("/organizations/%s/pages/%s/images/%s", organizationId, incorrectPageId, imageId));
-    assertEquals(0, countApiList(String.format("/organizations/%s/pages/%s/images", organizationId, incorrectPageId)));
   }
 
   @Test
