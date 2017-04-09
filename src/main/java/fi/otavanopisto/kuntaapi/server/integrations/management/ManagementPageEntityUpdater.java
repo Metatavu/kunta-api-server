@@ -45,6 +45,7 @@ import fi.otavanopisto.kuntaapi.server.index.IndexRequest;
 import fi.otavanopisto.kuntaapi.server.index.IndexablePage;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
+import fi.otavanopisto.kuntaapi.server.integrations.management.resources.ManagementAttachmentDataResourceContainer;
 import fi.otavanopisto.kuntaapi.server.integrations.management.resources.ManagementAttachmentResourceContainer;
 import fi.otavanopisto.kuntaapi.server.integrations.management.resources.ManagementPageContentResourceContainer;
 import fi.otavanopisto.kuntaapi.server.integrations.management.resources.ManagementPageResourceContainer;
@@ -89,7 +90,10 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
 
   @Inject
   private ManagementPageResourceContainer managementPageResourceContainer;
-  
+
+  @Inject
+  private ManagementAttachmentDataResourceContainer managementAttachmentDataResourceContainer;
+
   @Inject
   private ManagementPageContentResourceContainer managementPageContentResourceContainer;
   
@@ -315,6 +319,7 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
       if (imageData != null) {
         String dataHash = DigestUtils.md5Hex(imageData.getData());
         modificationHashCache.put(identifier.getKuntaApiId(), dataHash);
+        managementAttachmentDataResourceContainer.put(kuntaApiAttachmentId, imageData);
       }
       
       return kuntaApiAttachmentId;
