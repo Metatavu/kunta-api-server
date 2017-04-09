@@ -18,7 +18,7 @@ import fi.otavanopisto.kuntaapi.server.controllers.StoredResourceController;
 import fi.otavanopisto.kuntaapi.server.id.BaseId;
 import fi.otavanopisto.kuntaapi.server.jackson.IdModule;
 
-public abstract class AbstractResourceContainer<K extends BaseId, V> implements Serializable {
+public abstract class AbstractResourceContainer<K extends BaseId, V> extends AbstractResourceContainerBase implements Serializable {
   
   private static final long serialVersionUID = 1744385470271720259L;
 
@@ -27,9 +27,6 @@ public abstract class AbstractResourceContainer<K extends BaseId, V> implements 
   
   @Inject
   private StoredResourceController storedResourceController;
-  
-  public abstract String getEntityType();
-  public abstract String getName();
   
   public void put(K id, V response) {
     if (response == null) {
