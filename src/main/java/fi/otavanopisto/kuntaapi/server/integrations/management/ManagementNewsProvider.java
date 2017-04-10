@@ -35,9 +35,6 @@ public class ManagementNewsProvider extends AbstractManagementProvider implement
   private IdentifierRelationController identifierRelationController;
   
   @Inject
-  private ManagementImageLoader managementImageLoader;
-  
-  @Inject
   private NewsArticleResourceContainer newsArticleResourceContainer;
   
   @Inject
@@ -99,19 +96,8 @@ public class ManagementNewsProvider extends AbstractManagementProvider implement
     if (!identifierRelationController.isChildOf(newsArticleId, attachmentId)) {
       return null;
     }
-    
-    Integer mediaId = getMediaId(attachmentId);
-    if (mediaId == null) {
-      return null;
-    }
-    
-    fi.metatavu.management.client.model.Attachment featuredMedia = findMedia(organizationId, mediaId);
-    if (featuredMedia == null) {
-      return null;
-    }
-    
-    AttachmentData imageData = managementImageLoader.getImageData(featuredMedia.getSourceUrl());
-    
+
+    AttachmentData imageData = getAttachmentData(organizationId, attachmentId);
     if (size != null) {
       return scaleImage(imageData, size);
     } else {

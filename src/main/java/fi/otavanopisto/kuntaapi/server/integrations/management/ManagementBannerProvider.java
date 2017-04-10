@@ -34,9 +34,6 @@ public class ManagementBannerProvider extends AbstractManagementProvider impleme
   @Inject
   private ManagementAttachmentResourceContainer managementAttachmentResourceContainer;
   
-  @Inject
-  private ManagementImageLoader managementImageLoader;
-  
   @Override
   public List<Banner> listOrganizationBanners(OrganizationId organizationId) {
     List<BannerId> bannerIds = identifierRelationController.listBannerIdsBySourceAndParentId(ManagementConsts.IDENTIFIER_NAME, organizationId);
@@ -91,17 +88,7 @@ public class ManagementBannerProvider extends AbstractManagementProvider impleme
       return null;
     }
 
-    Integer mediaId = getMediaId(attachmentId);
-    if (mediaId == null) {
-      return null;
-    }
-    
-    fi.metatavu.management.client.model.Attachment featuredMedia = findMedia(organizationId, mediaId);
-    if (featuredMedia == null) {
-      return null;
-    }
-
-    AttachmentData imageData = managementImageLoader.getImageData(featuredMedia.getSourceUrl());
+    AttachmentData imageData = getAttachmentData(organizationId, attachmentId);
     if (size != null) {
       return scaleImage(imageData, size);
     } else {

@@ -34,9 +34,6 @@ public class ManagementTileProvider extends AbstractManagementProvider implement
   @Inject
   private ManagementAttachmentResourceContainer managementAttachmentCache;
   
-  @Inject
-  private ManagementImageLoader managementImageLoader;
-
   @Override
   public List<Tile> listOrganizationTiles(OrganizationId organizationId) {
     List<TileId> tileIds = identifierRelationController.listTileIdsBySourceAndParentId(ManagementConsts.IDENTIFIER_NAME, organizationId);
@@ -83,14 +80,11 @@ public class ManagementTileProvider extends AbstractManagementProvider implement
 
   @Override
   public AttachmentData getTileImageData(OrganizationId organizationId, TileId tileId, AttachmentId attachmentId, Integer size) {
-    Integer mediaId = getMediaId(attachmentId);
-    if (mediaId == null) {
+    if (!identifierRelationController.isChildOf(tileId, attachmentId)) {
       return null;
     }
     
-    fi.metatavu.management.client.model.Attachment featuredMedia = findMedia(organizationId, mediaId);
-    AttachmentData imageData = managementImageLoader.getImageData(featuredMedia.getSourceUrl());
-    
+    AttachmentData imageData = getAttachmentData(organizationId, attachmentId);
     if (size != null) {
       return scaleImage(imageData, size);
     } else {

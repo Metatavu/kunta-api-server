@@ -40,6 +40,7 @@ import fi.otavanopisto.kuntaapi.server.index.IndexRequest;
 import fi.otavanopisto.kuntaapi.server.index.IndexableNewsArticle;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
+import fi.otavanopisto.kuntaapi.server.integrations.management.resources.ManagementAttachmentDataResourceContainer;
 import fi.otavanopisto.kuntaapi.server.integrations.management.resources.ManagementAttachmentResourceContainer;
 import fi.otavanopisto.kuntaapi.server.integrations.management.tasks.NewsArticleIdTaskQueue;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
@@ -80,7 +81,10 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
   
   @Inject
   private NewsArticleResourceContainer newsArticleResourceContainer;
-  
+
+  @Inject
+  private ManagementAttachmentDataResourceContainer managementAttachmentDataResourceContainer;
+
   @Inject
   private ManagementAttachmentResourceContainer managementAttachmentResourceContainer;
   
@@ -255,6 +259,7 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
       if (imageData != null) {
         String dataHash = DigestUtils.md5Hex(imageData.getData());
         modificationHashCache.put(identifier.getKuntaApiId(), dataHash);
+        managementAttachmentDataResourceContainer.put(kuntaApiAttachmentId, imageData);
       }
       
       return kuntaApiAttachmentId;

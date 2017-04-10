@@ -25,8 +25,8 @@ import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
 import fi.otavanopisto.kuntaapi.server.integrations.PageProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.management.resources.ManagementAttachmentResourceContainer;
-import fi.otavanopisto.kuntaapi.server.integrations.management.resources.ManagementPageResourceContainer;
 import fi.otavanopisto.kuntaapi.server.integrations.management.resources.ManagementPageContentResourceContainer;
+import fi.otavanopisto.kuntaapi.server.integrations.management.resources.ManagementPageResourceContainer;
 
 /**
  * Page provider for management service
@@ -55,9 +55,6 @@ public class ManagementPageProvider extends AbstractManagementProvider implement
   @Inject
   private ManagementAttachmentResourceContainer managementAttachmentResourceContainer;
   
-  @Inject
-  private ManagementImageLoader managementImageLoader;
-
   @Inject
   private IdController idController;
   
@@ -111,22 +108,19 @@ public class ManagementPageProvider extends AbstractManagementProvider implement
   }
 
   @Override
-  public AttachmentData getPageImageData(OrganizationId organizationId, PageId pageId, AttachmentId attachmentId,
-      Integer size) {
-    
-    Integer mediaId = getMediaId(attachmentId);
-    if (mediaId == null) {
+  public AttachmentData getPageImageData(OrganizationId organizationId, PageId pageId, AttachmentId attachmentId, Integer size) {
+    if (!identifierRelationController.isChildOf(pageId, attachmentId)) {
       return null;
     }
     
-    fi.metatavu.management.client.model.Attachment featuredMedia = findMedia(organizationId, mediaId);
-   
-    AttachmentData imageData = managementImageLoader.getImageData(featuredMedia.getSourceUrl());
+    AttachmentData imageData = getAttachmentData(organizationId, attachmentId);
+    
     if (size != null) {
       return scaleImage(imageData, size);
     } else {
       return imageData;
     }
+
   }
 
   private List<Page> listPages(OrganizationId organizationId, PageId parentId, boolean onlyRootPages, boolean includeUnmappedParentIds) {

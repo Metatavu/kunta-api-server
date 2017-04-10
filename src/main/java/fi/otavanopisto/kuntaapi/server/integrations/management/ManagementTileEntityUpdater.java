@@ -27,6 +27,7 @@ import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.TileId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
+import fi.otavanopisto.kuntaapi.server.integrations.management.resources.ManagementAttachmentDataResourceContainer;
 import fi.otavanopisto.kuntaapi.server.integrations.management.resources.ManagementAttachmentResourceContainer;
 import fi.otavanopisto.kuntaapi.server.integrations.management.tasks.TileIdTaskQueue;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
@@ -67,7 +68,10 @@ public class ManagementTileEntityUpdater extends EntityUpdater {
   
   @Inject
   private ManagementAttachmentResourceContainer managementAttachmentCache;
-  
+
+  @Inject
+  private ManagementAttachmentDataResourceContainer managementAttachmentDataResourceContainer;
+
   @Inject
   private ModificationHashCache modificationHashCache;
 
@@ -175,6 +179,7 @@ public class ManagementTileEntityUpdater extends EntityUpdater {
       if (imageData != null) {
         String dataHash = DigestUtils.md5Hex(imageData.getData());
         modificationHashCache.put(identifier.getKuntaApiId(), dataHash);
+        managementAttachmentDataResourceContainer.put(kuntaApiAttachmentId, imageData);
       }
       
       return kuntaApiAttachmentId;
