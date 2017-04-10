@@ -27,6 +27,7 @@ import fi.otavanopisto.kuntaapi.server.id.BannerId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
+import fi.otavanopisto.kuntaapi.server.integrations.management.resources.ManagementAttachmentDataResourceContainer;
 import fi.otavanopisto.kuntaapi.server.integrations.management.resources.ManagementAttachmentResourceContainer;
 import fi.otavanopisto.kuntaapi.server.integrations.management.tasks.BannerIdTaskQueue;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
@@ -55,7 +56,10 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
   
   @Inject
   private ManagementAttachmentResourceContainer managementAttachmentResourceContainer;
-  
+
+  @Inject
+  private ManagementAttachmentDataResourceContainer managementAttachmentDataResourceContainer;
+
   @Inject
   private ManagementApi managementApi;
   
@@ -173,6 +177,7 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
         if (imageData != null) {
           String dataHash = DigestUtils.md5Hex(imageData.getData());
           modificationHashCache.put(identifier.getKuntaApiId(), dataHash);
+          managementAttachmentDataResourceContainer.put(kuntaApiAttachmentId, imageData);
         }
       }
       

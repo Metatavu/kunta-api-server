@@ -30,6 +30,10 @@ public abstract class AbstractIdFactory {
     return createId(OrganizationId.class, null, id);
   }
 
+  public AttachmentId createAttachmentId(OrganizationId kuntaApiOrganizationId, String id) {
+    return createId(AttachmentId.class, kuntaApiOrganizationId, id);
+  }
+
   public MenuId createMenuId(OrganizationId kuntaApiOrganizationId, String id) {
     return createId(MenuId.class, kuntaApiOrganizationId, id);
   }

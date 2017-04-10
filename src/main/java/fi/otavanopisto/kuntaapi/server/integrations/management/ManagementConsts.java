@@ -18,6 +18,7 @@ public class ManagementConsts {
   public static final String ATTACHMENT_TYPE_NEWS = "news";
   public static final String ATTACHMENT_TYPE_PAGE_FEATURED = "featured";
   public static final String ATTACHMENT_TYPE_PAGE_BANNER = "banner";
+  public static final String ATTACHMENT_TYPE_PAGE_CONTENT_IMAGE = "content-image";
 
   private ManagementConsts() {
   }

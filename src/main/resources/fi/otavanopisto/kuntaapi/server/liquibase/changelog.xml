@@ -339,4 +339,35 @@
     </addColumn>
   </changeSet>
   
+  <changeSet id="stored-binary-resources" author="antti.leppa">
+    
+    <createTable tableName="StoredBinaryResource">
+      <column name="id" type="bigint(20)" autoIncrement="true">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="identifier_id" type="bigint(20)">
+        <constraints referencedTableName="Identifier" referencedColumnNames="id" foreignKeyName="FK_STORED_BINARY_RESOURCE_IDENTIFIER_ID" unique="true" uniqueConstraintName="identifier_id" />
+      </column>
+      <column name="type" type="varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="data" type="longblob">
+        <constraints nullable="false"/>
+      </column>
+      <column name="contentType" type="varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+    
+    <createIndex tableName="StoredBinaryResource" indexName="STORED_BINARY_RESOURCE_IDENTIFIER_TYPE" unique="true">
+      <column name="identifier_id"/>
+      <column name="type"/>
+    </createIndex>
+
+  </changeSet>
+  
+  <changeSet id="stored-binary-resource-drop-old-index" author="antti-leppa">
+    <dropUniqueConstraint tableName="StoredBinaryResource" uniqueColumns="identifier_id" constraintName="identifier_id"/>
+  </changeSet>
+  
 </databaseChangeLog>

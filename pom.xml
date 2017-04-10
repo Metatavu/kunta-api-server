@@ -99,6 +99,7 @@
     <!-- onebusaway-gtfs -->
     
     <onebusaway-gtfs.version>1.3.4</onebusaway-gtfs.version>    
+    
     <!-- Test -->
     
     <restassured.version>2.9.0</restassured.version> 
@@ -262,6 +263,12 @@
       <groupId>org.onebusaway</groupId>
       <artifactId>onebusaway-gtfs</artifactId>
       <version>${onebusaway-gtfs.version}</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.jsoup</groupId>
+      <artifactId>jsoup</artifactId>
+      <scope>provided</scope>
     </dependency>
     
     <dependency>

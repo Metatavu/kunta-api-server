@@ -4,6 +4,8 @@ import static com.jayway.restassured.RestAssured.given;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.fail;
 
+import java.io.IOException;
+
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.LoggerContext;
@@ -14,6 +16,7 @@ import org.junit.After;
 import com.jayway.restassured.http.ContentType;
 import com.jayway.restassured.path.json.exception.JsonPathException;
 
+import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
 import fi.metatavu.kuntaapi.server.rest.model.Page;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 
@@ -449,14 +452,32 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
         .getObject("[0]", Page.class);
   }
   
-  protected String getPageImageId(String organizatinoId, String pageId, int index) {
+  protected String getPageImageId(String organizationId, String pageId, int index) {
     return given() 
         .baseUri(getApiBasePath())
         .contentType(ContentType.JSON)
-        .get("/organizations/{organizationId}/pages/{pageId}/images", organizatinoId, pageId)
+        .get("/organizations/{organizationId}/pages/{pageId}/images", organizationId, pageId)
         .body()
         .jsonPath()
         .getString(String.format("id[%d]", index));
+  }
+  
+  protected String getPageContent(String organizationId, String pageId) throws IOException {
+    LocalizedValue[] pageContents = getPageContents(organizationId, pageId);
+    if (pageContents.length > 0) {
+      return pageContents[0].getValue();
+    }
+    
+    return null;
+  }
+  
+  protected LocalizedValue[] getPageContents(String organizationId, String pageId) throws IOException {
+    return given() 
+        .baseUri(getApiBasePath())
+        .contentType(ContentType.JSON)
+        .get("/organizations/{organizationId}/pages/{pageId}/content", organizationId, pageId)
+        .body()
+        .as(LocalizedValue[].class);
   }
   
   protected String getNewsArticleId(String organizationId, int index) {

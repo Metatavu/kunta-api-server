@@ -1,6 +1,9 @@
 package fi.otavanopisto.kuntaapi.server.integrations.management;
 
+import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -14,6 +17,12 @@ import javax.enterprise.event.Event;
 import javax.inject.Inject;
 
 import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.math.NumberUtils;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 import fi.metatavu.kuntaapi.server.rest.model.Attachment;
 import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
@@ -36,9 +45,10 @@ import fi.otavanopisto.kuntaapi.server.index.IndexRequest;
 import fi.otavanopisto.kuntaapi.server.index.IndexablePage;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
+import fi.otavanopisto.kuntaapi.server.integrations.management.resources.ManagementAttachmentDataResourceContainer;
 import fi.otavanopisto.kuntaapi.server.integrations.management.resources.ManagementAttachmentResourceContainer;
-import fi.otavanopisto.kuntaapi.server.integrations.management.resources.ManagementPageResourceContainer;
 import fi.otavanopisto.kuntaapi.server.integrations.management.resources.ManagementPageContentResourceContainer;
+import fi.otavanopisto.kuntaapi.server.integrations.management.resources.ManagementPageResourceContainer;
 import fi.otavanopisto.kuntaapi.server.integrations.management.tasks.PageIdTaskQueue;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
@@ -80,7 +90,10 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
 
   @Inject
   private ManagementPageResourceContainer managementPageResourceContainer;
-  
+
+  @Inject
+  private ManagementAttachmentDataResourceContainer managementAttachmentDataResourceContainer;
+
   @Inject
   private ManagementPageContentResourceContainer managementPageContentResourceContainer;
   
@@ -146,6 +159,12 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
   }
   
   private void updateManagementPage(OrganizationId organizationId, DefaultApi api, Page managementPage, Long orderIndex) {
+    OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(organizationId, KuntaApiConsts.IDENTIFIER_NAME);
+    if (kuntaApiOrganizationId == null) {
+      logger.log(Level.WARNING, () -> String.format("Failed to translate organization into KuntaAPI id %s", organizationId));
+      return;
+    }
+    
     PageId managementPageId = new PageId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementPage.getId()));
     
     BaseId mappedParentId = idMapController.findMappedPageParentId(organizationId, managementPageId);
@@ -177,21 +196,93 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
     PageId kuntaApiPageId = new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
     
     fi.metatavu.kuntaapi.server.rest.model.Page page = managementTranslator.translatePage(kuntaApiPageId, pageParentId, unmappedParentId, managementPage);
-    String contents = managementPage.getContent().getRendered();
     String title = managementPage.getTitle().getRendered();
-    List<LocalizedValue> pageContents = managementTranslator.translateLocalized(contents);
+    String processedHtml = processPage(api, kuntaApiOrganizationId, identifier, managementPage);
+    
+    List<LocalizedValue> pageContents = managementTranslator.translateLocalized(processedHtml);
     
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(managementPage));
     managementPageResourceContainer.put(kuntaApiPageId, page);
     managementPageContentResourceContainer.put(kuntaApiPageId, pageContents);
-    indexRequest.fire(new IndexRequest(createIndexablePage(organizationId, kuntaApiPageId, ManagementConsts.DEFAULT_LOCALE, contents, title, orderIndex)));
-
-    updateAttachments(organizationId, api, managementPage, identifier);
+    indexRequest.fire(new IndexRequest(createIndexablePage(organizationId, kuntaApiPageId, ManagementConsts.DEFAULT_LOCALE, processedHtml, title, orderIndex)));
   }
 
-  private void updateAttachments(OrganizationId organizationId, DefaultApi api, Page managementPage, Identifier pageIdentifier) {
+  private String processPage(DefaultApi api, OrganizationId kuntaApiOrganizationId, Identifier pageIdentifier, Page managementPage) {
+    String originalHtml = managementPage.getContent().getRendered();
+    
+    String baseUrl = organizationSettingController.getSettingValue(kuntaApiOrganizationId, ManagementConsts.ORGANIZATION_SETTING_BASEURL);
+    boolean changed = false;
+    Document document = Jsoup.parse(originalHtml);
+    Elements images = document.select("img[class*=\"wp-image-\"]");
+    long orderIndex = 3l;
+    List<AttachmentId> contentKuntaApiAttachmentIds = new ArrayList<>();
+    
+    for (Element image : images) {
+      Long mediaId = extractMediaId(image, baseUrl);
+      if (mediaId != null) {
+        AttachmentId kuntaApiAttachmentId = updateAttachment(kuntaApiOrganizationId, pageIdentifier, api, mediaId, ManagementConsts.ATTACHMENT_TYPE_PAGE_CONTENT_IMAGE, orderIndex);
+        if (kuntaApiAttachmentId != null) {
+          contentKuntaApiAttachmentIds.add(kuntaApiAttachmentId);
+          image.attr("src", "about:blank");
+          image.attr("data-organization-id", kuntaApiOrganizationId.getId());
+          image.attr("data-page-id", pageIdentifier.getKuntaApiId());
+          image.attr("data-attachment-id", kuntaApiAttachmentId.getId());
+          image.attr("data-image-type", ManagementConsts.ATTACHMENT_TYPE_PAGE_CONTENT_IMAGE);
+          image.addClass("kunta-api-image");
+          image.removeAttr("srcset");
+          image.removeAttr("sizes");
+          changed = true;
+        }
+      }
+    }
+    
+    String result = changed ? document.body().html() : originalHtml;
+    updateAttachments(kuntaApiOrganizationId, api, managementPage, pageIdentifier, contentKuntaApiAttachmentIds);
+    
+    return result;
+  }
+    
+  private Long extractMediaId(Element image, String managementUrl) {
+    URI imageUri = createURI(image.absUrl("src"));
+    if (imageUri == null) {
+      return null;
+    }
+
+    URI managementUri = createURI(managementUrl);
+    if (managementUri == null) {
+      return null;
+    }
+    
+    if (StringUtils.equals(managementUri.getHost(), imageUri.getHost())) {
+      Set<String> classNames = image.classNames();
+      for (String className : classNames) {
+        if (StringUtils.startsWith(className, "wp-image-")) {
+          return NumberUtils.createLong(className.substring(9));
+        }
+      }
+    }
+    
+    return null;
+  }
+  
+  private URI createURI(String str) {
+    try {
+      return URI.create(str);
+    } catch (Exception e) {
+      if (logger.isLoggable(Level.WARNING)) {
+        logger.log(Level.WARNING, String.format("Failed to parse URI from %s", str), e);
+      }
+    }
+    
+    return null;
+  }
+
+  private void updateAttachments(OrganizationId organizationId, DefaultApi api, Page managementPage, Identifier pageIdentifier, List<AttachmentId> contentImageKuntaApiAttachmentIds) {
     PageId pageKuntaApiId = new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, pageIdentifier.getKuntaApiId());
     List<AttachmentId> existingAttachmentIds = identifierRelationController.listAttachmentIdsBySourceAndParentId(ManagementConsts.IDENTIFIER_NAME, pageKuntaApiId);
+    for (AttachmentId contentImageAttachmentId : contentImageKuntaApiAttachmentIds) {
+      existingAttachmentIds.remove(contentImageAttachmentId);
+    }
     
     if (managementPage.getFeaturedMedia() != null && managementPage.getFeaturedMedia() > 0) {
       AttachmentId attachmentId = updateAttachment(organizationId, pageIdentifier, api, managementPage.getFeaturedMedia().longValue(), ManagementConsts.ATTACHMENT_TYPE_PAGE_FEATURED, 0l);
@@ -232,6 +323,7 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
       if (imageData != null) {
         String dataHash = DigestUtils.md5Hex(imageData.getData());
         modificationHashCache.put(identifier.getKuntaApiId(), dataHash);
+        managementAttachmentDataResourceContainer.put(kuntaApiAttachmentId, imageData);
       }
       
       return kuntaApiAttachmentId;

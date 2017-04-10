@@ -1,6 +1,8 @@
 package fi.otavanopisto.kuntaapi.server.integrations.management;
 
 import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.inject.Inject;
@@ -8,6 +10,7 @@ import javax.inject.Inject;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 
+import ezvcard.util.IOUtils;
 import fi.metatavu.management.client.ApiResponse;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
@@ -16,6 +19,8 @@ import fi.otavanopisto.kuntaapi.server.images.ImageReader;
 import fi.otavanopisto.kuntaapi.server.images.ImageScaler;
 import fi.otavanopisto.kuntaapi.server.images.ImageWriter;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
+import fi.otavanopisto.kuntaapi.server.integrations.management.resources.ManagementAttachmentDataResourceContainer;
+import fi.otavanopisto.kuntaapi.server.resources.StoredBinaryData;
 
 /**
  * Abstract base class for management providers
@@ -27,6 +32,9 @@ public abstract class AbstractManagementProvider {
   
   @Inject
   private Logger logger;
+
+  @Inject
+  private ManagementAttachmentDataResourceContainer managementAttachmentDataResourceContainer;
   
   @Inject
   private ManagementApi managementApi;
@@ -43,6 +51,9 @@ public abstract class AbstractManagementProvider {
   @Inject
   private ImageScaler imageScaler;
 
+  @Inject
+  private ManagementImageLoader managementImageLoader;
+
   protected AttachmentData scaleImage(AttachmentData imageData, Integer size) {
     if (imageData == null || imageData.getData() == null) {
       return null;
@@ -50,17 +61,52 @@ public abstract class AbstractManagementProvider {
     
     BufferedImage bufferedImage = imageReader.readBufferedImage(imageData.getData());
     if (bufferedImage != null) {
+      String formatName = imageWriter.getFormatName(imageData.getType());
+      
       BufferedImage scaledImage = imageScaler.scaleMaxSize(bufferedImage, size);
-      byte[] scaledImageData = imageWriter.writeBufferedImageAsPng(scaledImage);
+      byte[] scaledImageData = imageWriter.writeBufferedImage(scaledImage, formatName);
       if (scaledImageData != null) {
-        return new AttachmentData("image/png", scaledImageData);
+        String contentType = imageWriter.getContentTypeForFormatName(formatName);
+        return new AttachmentData(contentType, scaledImageData);
       }
     }
     
     return null;
   }
+
+  protected AttachmentData getAttachmentData(OrganizationId organizationId, AttachmentId attachmentId) {
+    AttachmentData storedAttachmentData = getStoredAttachmentData(attachmentId);
+    if (storedAttachmentData != null) {
+      return storedAttachmentData;
+    }
+    
+    Integer mediaId = getMediaId(attachmentId);
+    if (mediaId == null) {
+      return null;
+    }
+    
+    fi.metatavu.management.client.model.Attachment featuredMedia = findMedia(organizationId, mediaId);
+    if (featuredMedia == null) {
+      return null;
+    }
+   
+    return managementImageLoader.getImageData(featuredMedia.getSourceUrl());
+  }
   
-  protected Integer getMediaId(AttachmentId attachmentId) {
+  private AttachmentData getStoredAttachmentData(AttachmentId attachmentId) {
+    StoredBinaryData storedBinaryData = managementAttachmentDataResourceContainer.get(attachmentId);
+    if (storedBinaryData != null) {
+      try {
+        return new AttachmentData(storedBinaryData.getContentType(), IOUtils.toByteArray(storedBinaryData.getDataStream()));
+      } catch (IOException e) {
+        logger.log(Level.SEVERE, "Failed to read stream data", e);
+      } 
+    }
+     
+    return null;
+  }
+  
+  private Integer getMediaId(AttachmentId attachmentId) {
     AttachmentId managementAttachmentId = idController.translateAttachmentId(attachmentId, ManagementConsts.IDENTIFIER_NAME);
     if (managementAttachmentId == null) {
       logger.info(String.format("Could not translate %s into management id", attachmentId.toString()));
@@ -70,7 +116,7 @@ public abstract class AbstractManagementProvider {
     return NumberUtils.createInteger(StringUtils.substringBefore(managementAttachmentId.getId(), "-"));
   }
 
-  protected fi.metatavu.management.client.model.Attachment findMedia(OrganizationId organizationId, Integer mediaId) {
+  private fi.metatavu.management.client.model.Attachment findMedia(OrganizationId organizationId, Integer mediaId) {
     if (mediaId == null) {
       return null;
     }
