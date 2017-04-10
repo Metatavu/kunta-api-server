@@ -61,10 +61,13 @@ public abstract class AbstractManagementProvider {
     
     BufferedImage bufferedImage = imageReader.readBufferedImage(imageData.getData());
     if (bufferedImage != null) {
+      String formatName = imageWriter.getFormatName(imageData.getType());
+      
       BufferedImage scaledImage = imageScaler.scaleMaxSize(bufferedImage, size);
-      byte[] scaledImageData = imageWriter.writeBufferedImageAsPng(scaledImage);
+      byte[] scaledImageData = imageWriter.writeBufferedImage(scaledImage, formatName);
       if (scaledImageData != null) {
-        return new AttachmentData("image/png", scaledImageData);
+        String contentType = imageWriter.getContentTypeForFormatName(formatName);
+        return new AttachmentData(contentType, scaledImageData);
       }
     }
     

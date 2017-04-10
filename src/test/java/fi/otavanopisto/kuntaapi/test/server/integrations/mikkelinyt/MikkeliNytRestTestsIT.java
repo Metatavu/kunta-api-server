@@ -42,7 +42,7 @@ public class MikkeliNytRestTestsIT extends AbstractIntegrationTest {
   private static final ZoneId TIMEZONE_ID = ZoneId.of("Europe/Helsinki");
   
   private static final String TEST_EVENT_ATTACHMENT_TYPE = "image/jpeg";
-  private static final String TEST_EVENT_ATTACHMENT_SCALED_TYPE = "image/png";
+  private static final String TEST_EVENT_ATTACHMENT_SCALED_TYPE = "image/jpeg";
   private static final String TEST_EVENT_URL_TEMPLATE = "%s/event-url-address";
   private static final String TEST_EVENT_ZIP = "12345";
   private static final String TEST_EVENT_ADDRESS = "Testroad 3";
