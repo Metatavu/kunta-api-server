@@ -366,4 +366,8 @@
 
   </changeSet>
   
+  <changeSet id="stored-binary-resource-drop-old-index" author="antti-leppa">
+    <dropUniqueConstraint tableName="StoredBinaryResource" uniqueColumns="identifier_id" constraintName="identifier_id"/>
+  </changeSet>
+  
 </databaseChangeLog>
