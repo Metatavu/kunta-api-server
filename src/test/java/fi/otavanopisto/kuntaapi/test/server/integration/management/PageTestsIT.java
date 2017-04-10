@@ -29,7 +29,6 @@ import fi.otavanopisto.kuntaapi.test.AbstractIntegrationTest;
 public class PageTestsIT extends AbstractIntegrationTest {
 
   private static final String IMAGE_JPEG = "image/jpeg";
-  private static final String IMAGE_PNG = "image/png";
 
   /**
    * Starts WireMock
@@ -395,8 +394,8 @@ public class PageTestsIT extends AbstractIntegrationTest {
       .then()
       .assertThat()
       .statusCode(200)
-      .header("Content-Length", "13701")
-      .header("Content-Type", IMAGE_PNG);
+      .header("Content-Length", "2033")
+      .header("Content-Type", IMAGE_JPEG);
   }
   
   @Test
