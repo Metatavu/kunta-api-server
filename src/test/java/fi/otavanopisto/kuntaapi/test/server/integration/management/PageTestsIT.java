@@ -318,7 +318,11 @@ public class PageTestsIT extends AbstractIntegrationTest {
     Elements pageImages = Jsoup.parse(pageContent).select("img");
     assertEquals(2, pageImages.size());
     
-    assertEquals(String.format("/v1/organizations/%s/pages/%s/images/%s", organizationId, pageId, imageId), pageImages.get(0).attr("src"));
+    assertEquals("about:blank", pageImages.get(0).attr("src"));
+    assertEquals(organizationId, pageImages.get(0).attr("data-organization-id"));
+    assertEquals( pageId, pageImages.get(0).attr("data-page-id"));
+    assertEquals(imageId, pageImages.get(0).attr("data-attachment-id"));
+    assertEquals(ManagementConsts.ATTACHMENT_TYPE_PAGE_CONTENT_IMAGE, pageImages.get(0).attr("data-image-type"));
     assertEquals("http://example.com/image.jpg", pageImages.get(1).attr("src"));
       
     given() 
