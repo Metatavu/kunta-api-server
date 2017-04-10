@@ -13,6 +13,7 @@ import fi.otavanopisto.kuntaapi.server.controllers.StoredResourceController;
 import fi.otavanopisto.kuntaapi.server.id.BaseId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 
+@SuppressWarnings ("squid:S1948")
 public abstract class AbstractBinaryResourceContainer<K extends BaseId> extends AbstractResourceContainerBase implements Serializable {
   
   private static final long serialVersionUID = 1744385470271720259L;
