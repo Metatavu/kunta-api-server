@@ -223,8 +223,12 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
         AttachmentId kuntaApiAttachmentId = updateAttachment(kuntaApiOrganizationId, pageIdentifier, api, mediaId, ManagementConsts.ATTACHMENT_TYPE_PAGE_CONTENT_IMAGE, orderIndex);
         if (kuntaApiAttachmentId != null) {
           contentKuntaApiAttachmentIds.add(kuntaApiAttachmentId);
-          String imageSrc = String.format("/v1/organizations/%s/pages/%s/images/%s", kuntaApiOrganizationId.getId(), pageIdentifier.getKuntaApiId(), kuntaApiAttachmentId.getId());
-          image.attr("src", imageSrc);
+          image.attr("src", "about:blank");
+          image.attr("data-organization-id", kuntaApiOrganizationId.getId());
+          image.attr("data-page-id", pageIdentifier.getKuntaApiId());
+          image.attr("data-attachment-id", kuntaApiAttachmentId.getId());
+          image.attr("data-image-type", ManagementConsts.ATTACHMENT_TYPE_PAGE_CONTENT_IMAGE);
+          image.addClass("kunta-api-image");
           image.removeAttr("srcset");
           image.removeAttr("sizes");
           changed = true;
