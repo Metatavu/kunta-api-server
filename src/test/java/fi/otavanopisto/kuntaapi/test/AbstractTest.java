@@ -92,6 +92,7 @@ public abstract class AbstractTest {
   }
  
   protected void deleteIdentifiers() {
+    executeDelete("delete from StoredBinaryResource");
     executeDelete("delete from StoredResource");
     executeDelete("delete from IdentifierRelation");
     executeDelete("delete from Identifier");
