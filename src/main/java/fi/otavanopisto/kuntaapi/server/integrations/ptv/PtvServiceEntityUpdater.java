@@ -1,6 +1,7 @@
 package fi.otavanopisto.kuntaapi.server.integrations.ptv;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
@@ -14,6 +15,13 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Event;
 import javax.inject.Inject;
 
+import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
+import fi.metatavu.kuntaapi.server.rest.model.Service;
+import fi.metatavu.kuntaapi.server.rest.model.ServiceOrganization;
+import fi.metatavu.ptv.client.ApiResponse;
+import fi.metatavu.ptv.client.model.V4VmOpenApiService;
+import fi.metatavu.ptv.client.model.V4VmOpenApiServiceOrganization;
+import fi.metatavu.ptv.client.model.V4VmOpenApiServiceServiceChannel;
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
@@ -30,17 +38,15 @@ import fi.otavanopisto.kuntaapi.server.index.IndexRemoveService;
 import fi.otavanopisto.kuntaapi.server.index.IndexRequest;
 import fi.otavanopisto.kuntaapi.server.index.IndexableService;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
+import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
 import fi.otavanopisto.kuntaapi.server.integrations.management.ManagementConsts;
+import fi.otavanopisto.kuntaapi.server.integrations.ptv.client.PtvApi;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.ServiceIdTaskQueue;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask.Operation;
 import fi.otavanopisto.kuntaapi.server.utils.LocalizationUtils;
-import fi.metatavu.restfulptv.client.ApiResponse;
-import fi.metatavu.restfulptv.client.model.LocalizedListItem;
-import fi.metatavu.restfulptv.client.model.Service;
-import fi.metatavu.restfulptv.client.model.StatutoryDescription;
 
 @ApplicationScoped
 @Singleton
@@ -59,6 +65,9 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
   
   @Inject
   private PtvIdFactory ptvIdFactory;
+
+  @Inject
+  private KuntaApiIdFactory kuntaApiIdFactory;
   
   @Inject
   private PtvTranslator ptvTranslator;
@@ -113,91 +122,47 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
     }
   }
 
-  private void updatePtvService(ServiceId serviceId, Long orderIndex) {
+  private void updatePtvService(ServiceId ptvServiceId, Long orderIndex) {
     if (!systemSettingController.hasSettingValue(PtvConsts.SYSTEM_SETTING_BASEURL)) {
       logger.log(Level.INFO, "Ptv system setting not defined, skipping update."); 
       return;
     }
     
-    ApiResponse<Service> response = ptvApi.getServicesApi().findService(serviceId.getId());
+    ApiResponse<V4VmOpenApiService> response = ptvApi.getServiceApi().apiV4ServiceByIdGet(ptvServiceId.getId());
     if (response.isOk()) {
-      Identifier identifier = identifierController.acquireIdentifier(orderIndex, serviceId);
+      Identifier identifier = identifierController.acquireIdentifier(orderIndex, ptvServiceId);
       
-      Service ptvService = response.getResponse();
-      ServiceId kuntaApiServiceId = new ServiceId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
-      StatutoryDescription ptvStatutoryDescription = ptvService.getStatutoryDescriptionId() != null ? getStatutoryDescription(ptvService.getStatutoryDescriptionId()) : null;
+      V4VmOpenApiService ptvService = response.getResponse();
+      ServiceId kuntaApiServiceId = kuntaApiIdFactory.createFromIdentifier(ServiceId.class, identifier);
       
-      fi.metatavu.kuntaapi.server.rest.model.Service service = translateService(ptvService, kuntaApiServiceId, ptvStatutoryDescription);
+      fi.metatavu.kuntaapi.server.rest.model.Service service = translateService(ptvService, kuntaApiServiceId);
       if (service != null) {
         ptvServiceCache.put(kuntaApiServiceId, service);
         modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(service));
-        index(identifier.getKuntaApiId(), ptvService, orderIndex);
+        index(identifier.getKuntaApiId(), service, orderIndex);
       }
       
     } else {
-      logger.warning(String.format("Service %s processing failed on [%d] %s", serviceId.getId(), response.getStatus(), response.getMessage()));
+      logger.warning(String.format("Service %s processing failed on [%d] %s", ptvServiceId.getId(), response.getStatus(), response.getMessage()));
     }
   }
 
-  @SuppressWarnings ("squid:MethodCyclomaticComplexity")
-  private fi.metatavu.kuntaapi.server.rest.model.Service translateService(Service ptvService,
-      ServiceId kuntaApiServiceId, StatutoryDescription ptvStatutoryDescription) {
+  private fi.metatavu.kuntaapi.server.rest.model.Service translateService(V4VmOpenApiService ptvService, ServiceId kuntaApiServiceId) {
+    List<V4VmOpenApiServiceServiceChannel> serviceChannels = ptvService.getServiceChannels();
     
-    List<ElectronicServiceChannelId> kuntaApiElectronicServiceChannelIds = new ArrayList<>(ptvService.getElectronicServiceChannelIds().size()); 
-    List<PhoneServiceChannelId> kuntaApiPhoneServiceChannelIds = new ArrayList<>(ptvService.getPhoneServiceChannelIds().size());
-    List<PrintableFormServiceChannelId> kuntaApiPrintableFormServiceChannelIds = new ArrayList<>(ptvService.getPrintableFormServiceChannelIds().size());
-    List<ServiceLocationServiceChannelId> kuntaApiServiceLocationServiceChannelIds = new ArrayList<>(ptvService.getServiceLocationServiceChannelIds().size());
-    List<WebPageServiceChannelId> kuntaApiWebPageServiceChannelIds = new ArrayList<>(ptvService.getWebPageServiceChannelIds().size());
+    List<ElectronicServiceChannelId> kuntaApiElectronicServiceChannelIds = new ArrayList<>(); 
+    List<PhoneServiceChannelId> kuntaApiPhoneServiceChannelIds = new ArrayList<>();
+    List<PrintableFormServiceChannelId> kuntaApiPrintableFormServiceChannelIds = new ArrayList<>();
+    List<ServiceLocationServiceChannelId> kuntaApiServiceLocationServiceChannelIds = new ArrayList<>();
+    List<WebPageServiceChannelId> kuntaApiWebPageServiceChannelIds = new ArrayList<>();
     
-    for (String ptvElectronicServiceChannelId : ptvService.getElectronicServiceChannelIds()) {
-      ElectronicServiceChannelId kuntaApiElectronicServiceChannelId = idController.translateElectronicServiceChannelId(ptvIdFactory.createElectronicServiceChannelId(ptvElectronicServiceChannelId), KuntaApiConsts.IDENTIFIER_NAME);
-      if (kuntaApiElectronicServiceChannelId == null) {
-        logger.log(Level.INFO, () -> String.format("Could not translate electronic channel id %s into KuntaAPI id.", ptvElectronicServiceChannelId)); 
-        return null;
-      } 
-      
-      kuntaApiElectronicServiceChannelIds.add(kuntaApiElectronicServiceChannelId);
-    }
-
-    for (String ptvPhoneServiceChannelId : ptvService.getPhoneServiceChannelIds()) {
-      PhoneServiceChannelId kuntaApiPhoneServiceChannelId = idController.translatePhoneServiceChannelId(ptvIdFactory.createPhoneServiceChannelId(ptvPhoneServiceChannelId), KuntaApiConsts.IDENTIFIER_NAME);
-      if (kuntaApiPhoneServiceChannelId == null) {
-        logger.log(Level.INFO, () -> String.format("Could not translate phone channel id %s into KuntaAPI id.", ptvPhoneServiceChannelId)); 
-        return null;
-      } 
-      
-      kuntaApiPhoneServiceChannelIds.add(kuntaApiPhoneServiceChannelId);
+    for (V4VmOpenApiServiceServiceChannel serviceChannel : serviceChannels) {
+      sortServiceChannel(kuntaApiElectronicServiceChannelIds, kuntaApiPhoneServiceChannelIds,
+          kuntaApiPrintableFormServiceChannelIds, kuntaApiServiceLocationServiceChannelIds,
+          kuntaApiWebPageServiceChannelIds, serviceChannel);
     }
     
-    for (String ptvServiceLocationServiceChannelId : ptvService.getServiceLocationServiceChannelIds()) {
-      ServiceLocationServiceChannelId kuntaApiServiceLocationServiceChannelId = idController.translateServiceLocationServiceChannelId(ptvIdFactory.createServiceLocationServiceChannelId(ptvServiceLocationServiceChannelId), KuntaApiConsts.IDENTIFIER_NAME);
-      if (kuntaApiServiceLocationServiceChannelId == null) {
-        logger.log(Level.INFO, () -> String.format("Could not translate service location channel id %s into KuntaAPI id.", ptvServiceLocationServiceChannelId)); 
-        return null;
-      } 
-      
-      kuntaApiServiceLocationServiceChannelIds.add(kuntaApiServiceLocationServiceChannelId);
-    }
-    
-    for (String ptvPrintableFormServiceChannelId : ptvService.getPrintableFormServiceChannelIds()) {
-      PrintableFormServiceChannelId kuntaApiPrintableFormServiceChannelId = idController.translatePrintableFormServiceChannelId(ptvIdFactory.createPrintableFormServiceChannelId(ptvPrintableFormServiceChannelId), KuntaApiConsts.IDENTIFIER_NAME);
-      if (kuntaApiPrintableFormServiceChannelId == null) {
-        logger.log(Level.INFO, () -> String.format("Could not translate printable form channel id %s into KuntaAPI id.", ptvPrintableFormServiceChannelId)); 
-        return null;
-      } 
-      
-      kuntaApiPrintableFormServiceChannelIds.add(kuntaApiPrintableFormServiceChannelId);
-    }
-    
-    for (String ptvWebPageServiceChannelId : ptvService.getWebPageServiceChannelIds()) {
-      WebPageServiceChannelId kuntaApiWebPageServiceChannelId = idController.translateWebPageServiceChannelId(ptvIdFactory.createWebPageServiceChannelId(ptvWebPageServiceChannelId), KuntaApiConsts.IDENTIFIER_NAME);
-      if (kuntaApiWebPageServiceChannelId == null) {
-        logger.log(Level.INFO, () -> String.format("Could not translate web page channel id %s into KuntaAPI id.", ptvWebPageServiceChannelId)); 
-        return null;
-      } 
-      
-      kuntaApiWebPageServiceChannelIds.add(kuntaApiWebPageServiceChannelId);
-    }
+    List<ServiceOrganization> serviceOrganizations = translateServiceOrganizations(ptvService.getOrganizations());
     
     return ptvTranslator.translateService(kuntaApiServiceId,
         kuntaApiElectronicServiceChannelIds,
@@ -205,33 +170,76 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
         kuntaApiPrintableFormServiceChannelIds,
         kuntaApiServiceLocationServiceChannelIds,
         kuntaApiWebPageServiceChannelIds,
-        ptvService, 
-        ptvStatutoryDescription);
+        serviceOrganizations,
+        ptvService);
   }
-  
-  private StatutoryDescription getStatutoryDescription(String statutoryDescriptionId) {
-    ApiResponse<StatutoryDescription> response = ptvApi.getStatutoryDescriptionsApi().findStatutoryDescription(statutoryDescriptionId);
-    if (response.isOk()) {
-      return response.getResponse();
+
+  private void sortServiceChannel(List<ElectronicServiceChannelId> kuntaApiElectronicServiceChannelIds,
+      List<PhoneServiceChannelId> kuntaApiPhoneServiceChannelIds,
+      List<PrintableFormServiceChannelId> kuntaApiPrintableFormServiceChannelIds,
+      List<ServiceLocationServiceChannelId> kuntaApiServiceLocationServiceChannelIds,
+      List<WebPageServiceChannelId> kuntaApiWebPageServiceChannelIds, V4VmOpenApiServiceServiceChannel serviceChannel) {
+    String serviceChannelId = serviceChannel.getServiceChannelId();
+    
+    ElectronicServiceChannelId electronicServiceChannelId = idController.translateElectronicServiceChannelId(ptvIdFactory.createElectronicServiceChannelId(serviceChannelId), PtvConsts.IDENTIFIER_NAME);
+    if (electronicServiceChannelId != null) {
+      kuntaApiElectronicServiceChannelIds.add(electronicServiceChannelId);
+      return;
+    }
+    
+    PhoneServiceChannelId phoneServiceChannelId = idController.translatePhoneServiceChannelId(ptvIdFactory.createPhoneServiceChannelId(serviceChannelId), PtvConsts.IDENTIFIER_NAME);
+    if (phoneServiceChannelId != null) {
+      kuntaApiPhoneServiceChannelIds.add(phoneServiceChannelId);
+      return;
     } 
     
-    logger.warning(String.format("StatutoryDescription %s could not be loaded [%d] %s", statutoryDescriptionId, response.getStatus(), response.getMessage()));
-    return null;
+    PrintableFormServiceChannelId printableFormServiceChannelId = idController.translatePrintableFormServiceChannelId(ptvIdFactory.createPrintableFormServiceChannelId(serviceChannelId), PtvConsts.IDENTIFIER_NAME);
+    if (printableFormServiceChannelId != null) {
+      kuntaApiPrintableFormServiceChannelIds.add(printableFormServiceChannelId);
+      return;
+    } 
+    
+    ServiceLocationServiceChannelId serviceLocationServiceChannelId = idController.translateServiceLocationServiceChannelId(ptvIdFactory.createServiceLocationServiceChannelId(serviceChannelId), PtvConsts.IDENTIFIER_NAME);
+    if (serviceLocationServiceChannelId != null) {
+      kuntaApiServiceLocationServiceChannelIds.add(serviceLocationServiceChannelId);
+      return;
+    } 
+  
+    WebPageServiceChannelId webPageServiceChannelId = idController.translateWebPageServiceChannelId(ptvIdFactory.createWebPageServiceChannelId(serviceChannelId), PtvConsts.IDENTIFIER_NAME);
+    if (webPageServiceChannelId != null) {
+      kuntaApiWebPageServiceChannelIds.add(webPageServiceChannelId);
+      return;
+    } 
+    
+    logger.log(Level.WARNING, () -> String.format("Failed to resolve service channel %s type", serviceChannelId));
+  }
+  
+  private List<ServiceOrganization> translateServiceOrganizations(List<V4VmOpenApiServiceOrganization> ptvServiceOrganizations) {
+    if (ptvServiceOrganizations == null) {
+      return Collections.emptyList(); 
+    }
+    
+    List<ServiceOrganization> result = new ArrayList<>(ptvServiceOrganizations.size());
+    for (V4VmOpenApiServiceOrganization ptvServiceOrganization : ptvServiceOrganizations) {
+      OrganizationId ptvOrganizationId = ptvIdFactory.createOrganizationId(ptvServiceOrganization.getOrganizationId());
+      OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(ptvOrganizationId, KuntaApiConsts.IDENTIFIER_NAME);
+      if (kuntaApiOrganizationId != null) {
+        result.add(ptvTranslator.translateServiceOrganization(kuntaApiOrganizationId, ptvServiceOrganization));
+      } else {
+        logger.log(Level.SEVERE, () -> String.format("Failed to translate organization %s into Kunta API id", ptvOrganizationId));
+      }
+    }
+    
+    return result;
   }
   
   private void index(String serviceId, Service service, Long orderIndex) {
-    List<LocalizedListItem> descriptions = service.getDescriptions();
-    List<LocalizedListItem> names = service.getNames();
-    List<String> ptvOrganizationIds = service.getOrganizationIds();
-    List<String> organizationIds = new ArrayList<>(ptvOrganizationIds.size());
+    List<LocalizedValue> descriptions = service.getDescriptions();
+    List<LocalizedValue> names = service.getNames();
     
-    for (String ptvOrganizationId : ptvOrganizationIds) {
-      OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(new OrganizationId(PtvConsts.IDENTIFIER_NAME, ptvOrganizationId), KuntaApiConsts.IDENTIFIER_NAME);
-      if (kuntaApiOrganizationId != null) {
-        organizationIds.add(kuntaApiOrganizationId.getId());
-      } else {
-        logger.warning(String.format("Could not translate organization %s into Kunta API id", ptvOrganizationId));
-      }
+    List<String> organizationIds = new ArrayList<>(service.getOrganizations().size());
+    for (ServiceOrganization serviceOrganization : service.getOrganizations()) {
+      organizationIds.add(serviceOrganization.getOrganizationId());
     }
     
     for (String language : LocalizationUtils.getListsLanguages(names, descriptions)) {
@@ -239,7 +247,7 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
       indexableService.setShortDescription(LocalizationUtils.getBestMatchingValue("ShortDescription", descriptions, language, PtvConsts.DEFAULT_LANGUAGE));
       indexableService.setDescription(LocalizationUtils.getBestMatchingValue("Description", descriptions, language, PtvConsts.DEFAULT_LANGUAGE));
       indexableService.setUserInstruction(LocalizationUtils.getBestMatchingValue("ServiceUserInstruction", descriptions, language, PtvConsts.DEFAULT_LANGUAGE));
-      indexableService.setKeywords(service.getKeywords());
+      indexableService.setKeywords(LocalizationUtils.getLocaleValues(service.getKeywords(), PtvConsts.DEFAULT_LANGUAGE));
       indexableService.setLanguage(language);
       indexableService.setName(LocalizationUtils.getBestMatchingValue("Name", names, language, PtvConsts.DEFAULT_LANGUAGE));
       indexableService.setAlternativeName(LocalizationUtils.getBestMatchingValue("AlternativeName", names, language, PtvConsts.DEFAULT_LANGUAGE));
@@ -266,6 +274,6 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
       indexRemoveRequest.fire(new IndexRemoveRequest(indexRemove));
     }
   }
-  
+
 
 }

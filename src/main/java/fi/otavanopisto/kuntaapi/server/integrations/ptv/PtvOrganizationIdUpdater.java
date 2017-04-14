@@ -14,23 +14,22 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Event;
 import javax.inject.Inject;
 
-import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
+import fi.metatavu.ptv.client.ApiResponse;
+import fi.metatavu.ptv.client.model.V3VmOpenApiGuidPage;
+import fi.metatavu.ptv.client.model.VmOpenApiItem;
 import fi.otavanopisto.kuntaapi.server.discover.IdUpdater;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.integrations.ptv.client.PtvApi;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask.Operation;
 import fi.otavanopisto.kuntaapi.server.tasks.TaskRequest;
-import fi.metatavu.restfulptv.client.ApiResponse;
-import fi.metatavu.restfulptv.client.model.Organization;
 
 @ApplicationScoped
 @Singleton
 @AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
 public class PtvOrganizationIdUpdater extends IdUpdater {
-
-  private static final long BATCH_SIZE = 20;
   
   @Inject
   private Logger logger;
@@ -42,19 +41,19 @@ public class PtvOrganizationIdUpdater extends IdUpdater {
   private PtvApi ptvApi;
   
   @Inject
-  private IdentifierController identifierController;
-
+  private PtvIdFactory ptvIdFactory; 
+  
   @Inject
   private Event<TaskRequest> taskRequest;
 
   @Resource
   private TimerService timerService;
 
-  private long offset;
+  private Integer page;
   
   @PostConstruct
   public void init() {
-    offset = 0;
+    page = 0;
   }
   
   @Override
@@ -78,23 +77,21 @@ public class PtvOrganizationIdUpdater extends IdUpdater {
       return;
     }
     
-    ApiResponse<List<Organization>> organizationsResponse = ptvApi.getOrganizationApi().listOrganizations(offset, BATCH_SIZE);
-    if (!organizationsResponse.isOk()) {
-      logger.severe(String.format("Organization list reported [%d] %s", organizationsResponse.getStatus(), organizationsResponse.getMessage()));
+    ApiResponse<V3VmOpenApiGuidPage> response = ptvApi.getOrganizationApi().apiV4OrganizationGet(null, page);
+    if (!response.isOk()) {
+      logger.severe(String.format("Organization list reported [%d] %s", response.getStatus(), response.getMessage()));
     } else {
-      List<Organization> organizations = organizationsResponse.getResponse();
-      for (int i = 0; i < organizations.size(); i++) {
-        Organization organization = organizations.get(i);
-        Long orderIndex = (long) i + offset;
-        OrganizationId organizationId = new OrganizationId(PtvConsts.IDENTIFIER_NAME, organization.getId());
-        boolean priority = identifierController.findIdentifierById(organizationId) == null;
-        taskRequest.fire(new TaskRequest(priority, new IdTask<OrganizationId>(Operation.UPDATE, organizationId, orderIndex)));
+      List<VmOpenApiItem> items = response.getResponse().getItemList();
+      
+      for (int i = 0; i < items.size(); i++) {
+        VmOpenApiItem item = items.get(i);
+        Long orderIndex = (long) (i + (page * response.getResponse().getPageSize()));
+        OrganizationId ptvOrganizationId = ptvIdFactory.createOrganizationId(item.getId());
+        taskRequest.fire(new TaskRequest(false, new IdTask<OrganizationId>(Operation.UPDATE, ptvOrganizationId, orderIndex)));
       }
       
-      if (organizations.size() == BATCH_SIZE) {
-        offset += BATCH_SIZE;
-      } else {
-        offset = 0;
+      if (page < response.getResponse().getPageCount()) {
+        page++;
       }
     }
   }

@@ -11,19 +11,18 @@ import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
 import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.event.Event;
 import javax.inject.Inject;
 
-import fi.metatavu.restfulptv.client.ApiResponse;
-import fi.metatavu.restfulptv.client.model.PhoneServiceChannel;
+import fi.metatavu.ptv.client.ApiResponse;
+import fi.metatavu.ptv.client.model.V4VmOpenApiServiceChannels;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.IdUpdater;
-import fi.otavanopisto.kuntaapi.server.id.PhoneServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
+import fi.otavanopisto.kuntaapi.server.id.PhoneServiceChannelId;
+import fi.otavanopisto.kuntaapi.server.integrations.ptv.client.PtvApi;
+import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.PhoneServiceChannelRemoveTask;
+import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.ServiceChannelTasksQueue;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
-import fi.otavanopisto.kuntaapi.server.tasks.IdTask;
-import fi.otavanopisto.kuntaapi.server.tasks.IdTask.Operation;
-import fi.otavanopisto.kuntaapi.server.tasks.TaskRequest;
 
 @ApplicationScoped
 @Singleton
@@ -49,7 +48,7 @@ public class PtvPhoneServiceChannelIdRemoveUpdater extends IdUpdater {
   private IdentifierController identifierController;
 
   @Inject
-  private Event<TaskRequest> taskRequest;
+  private ServiceChannelTasksQueue serviceChannelTasksQueue;
 
   @Resource
   private TimerService timerService;
@@ -90,9 +89,9 @@ public class PtvPhoneServiceChannelIdRemoveUpdater extends IdUpdater {
         continue;
       }
       
-      ApiResponse<PhoneServiceChannel> response = ptvApi.getPhoneServiceChannelsApi().findPhoneServiceChannel(ptvPhoneServiceChannelId.getId());
+      ApiResponse<V4VmOpenApiServiceChannels> response = ptvApi.getServiceChannelApi().apiV4ServiceChannelByIdGet(phoneServiceChannelId.getId());
       if (response.getStatus() == 404) {
-        taskRequest.fire(new TaskRequest(false, new IdTask<PhoneServiceChannelId>(Operation.REMOVE, ptvPhoneServiceChannelId))); 
+        serviceChannelTasksQueue.enqueueTask(false, new PhoneServiceChannelRemoveTask(phoneServiceChannelId));
       }
     }
     

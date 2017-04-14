@@ -14,16 +14,17 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Event;
 import javax.inject.Inject;
 
+import fi.metatavu.ptv.client.ApiResponse;
+import fi.metatavu.ptv.client.model.V4VmOpenApiService;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.IdUpdater;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.ServiceId;
+import fi.otavanopisto.kuntaapi.server.integrations.ptv.client.PtvApi;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask.Operation;
 import fi.otavanopisto.kuntaapi.server.tasks.TaskRequest;
-import fi.metatavu.restfulptv.client.ApiResponse;
-import fi.metatavu.restfulptv.client.model.Service;
 
 @ApplicationScoped
 @Singleton
@@ -90,9 +91,9 @@ public class PtvServiceIdRemoveUpdater extends IdUpdater {
         continue;
       }
       
-      ApiResponse<Service> serviceResponse = ptvApi.getServicesApi().findService(ptvServiceId.getId());
-      if (serviceResponse.getStatus() == 404) {
-        taskRequest.fire(new TaskRequest(false, new IdTask<ServiceId>(Operation.REMOVE, ptvServiceId))); 
+      ApiResponse<V4VmOpenApiService> response = ptvApi.getServiceApi().apiV4ServiceByIdGet(ptvServiceId.getId());
+      if (response.getStatus() == 404) {
+        taskRequest.fire(new TaskRequest(false, new IdTask<ServiceId>(Operation.REMOVE, ptvServiceId)));
       }
     }
     
