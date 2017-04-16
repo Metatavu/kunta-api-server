@@ -185,7 +185,7 @@ public class PtvServiceChannelResolver {
   }
   
   public Map<String, Object> loadServiceChannelData(String serviceChannelId) {
-    String path = String.format("/api/ServiceChannel/%s", serviceChannelId);
+    String path = String.format("/api/v4/ServiceChannel/%s", serviceChannelId);
     ApiResponse<Map<String, Object>> response = ptvClient.doGETRequest(path, new ResultType<Map<String, Object>>() {}, null, null);
     if (response.isOk()) {
       return response.getResponse();
