@@ -39,9 +39,11 @@ public class CasemPageTestsIT extends AbstractIntegrationTest {
       .mockSubnodes(100, 123, 234)
       .mockSubnodes(100, 123, 234, 345)
       .mockContentList()
-      .mockContent(987, 876, 765)
-      .startMock();
+      .mockContent(987, 876, 765);
     
+    getManagementMediaMocker()
+      .mockMedias(3001);
+
     startMocks();
 
     waitApiListCount("/organizations", 1);
