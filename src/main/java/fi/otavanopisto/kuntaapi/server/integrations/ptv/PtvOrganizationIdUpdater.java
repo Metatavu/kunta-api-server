@@ -90,7 +90,7 @@ public class PtvOrganizationIdUpdater extends IdUpdater {
         taskRequest.fire(new TaskRequest(false, new IdTask<OrganizationId>(Operation.UPDATE, ptvOrganizationId, orderIndex)));
       }
       
-      if (page < response.getResponse().getPageCount()) {
+      if ((page + 1) < response.getResponse().getPageCount()) {
         page++;
       }
     }

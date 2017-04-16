@@ -83,7 +83,7 @@ public class PtvServiceChannelIdUpdater extends IdUpdater {
         serviceChannelTasksQueue.enqueueTask(false, new ServiceChannelUpdateTask(item.getId(), orderIndex));
       }
       
-      if (page < response.getResponse().getPageCount()) {
+      if ((page + 1) < response.getResponse().getPageCount()) {
         page++;
       }
     }

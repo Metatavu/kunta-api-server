@@ -264,6 +264,7 @@ public abstract class AbstractIdProvider implements IdProvider {
   private boolean isOrganizationBaseId(Class<? extends BaseId> idClass) {
     return OrganizationBaseId.class.isAssignableFrom(idClass);
   }
+  
   private <T extends BaseId> T createOrganizationBaseId(Class<T> idClass, String source, String id, String organizationKuntaApiId) {
     Constructor<T> idConstructor;
     try {

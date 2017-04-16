@@ -90,7 +90,7 @@ public class PtvServiceIdUpdater extends IdUpdater {
         taskRequest.fire(new TaskRequest(false, new IdTask<ServiceId>(Operation.UPDATE, ptvServiceId, orderIndex)));
       }
       
-      if (page < response.getResponse().getPageCount()) {
+      if ((page + 1) < response.getResponse().getPageCount()) {
         page++;
       }
     }
