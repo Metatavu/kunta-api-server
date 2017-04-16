@@ -4,7 +4,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
-import fi.metatavu.restfulptv.client.model.BadRequest;
+import fi.metatavu.kuntaapi.server.rest.model.BadRequest;
 
 @ApplicationScoped
 public class RestValidator {
