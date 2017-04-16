@@ -135,6 +135,7 @@ public class PtvTranslator {
     result.setDeliveryAddress(translateAddress(ptvPrintableFormServiceChannel.getDeliveryAddress()));
     result.setDescriptions(translateLocalizedValues(ptvPrintableFormServiceChannel.getServiceChannelDescriptions()));
     result.setFormIdentifier(translateLocalizedItems(ptvPrintableFormServiceChannel.getFormIdentifier()));
+    result.setFormReceiver(translateLocalizedItems(ptvPrintableFormServiceChannel.getFormReceiver()));
     result.setId(kuntaApiPrintableFormServiceChannelId.getId());
     result.setLanguages(ptvPrintableFormServiceChannel.getLanguages());
     result.setNames(translateLocalizedValues(ptvPrintableFormServiceChannel.getServiceChannelNames()));
@@ -396,6 +397,10 @@ public class PtvTranslator {
   }
 
   private Municipality translateMunicipality(VmOpenApiMunicipality ptvMunicipality) {
+    if (ptvMunicipality == null) {
+      return null;
+    }
+    
     Municipality municipality = new Municipality();
     municipality.setCode(ptvMunicipality.getCode());
     municipality.setNames(translateLocalizedItems(ptvMunicipality.getName()));
