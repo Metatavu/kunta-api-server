@@ -51,7 +51,7 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
     waitApiListCount("/webPageServiceChannels", 3);
     
     waitApiListCount("/organizations", 3);
-    waitApiListCount("/services", 2);
+    waitApiListCount("/services", 3);
   }
 
   @Test
