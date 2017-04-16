@@ -132,6 +132,8 @@ public class PtvOrganizationEntityUpdater extends EntityUpdater {
         OrganizationService organizationService = translateOrganizationService(ptvOrganizationService);
         if (organizationService != null) {
           organizationServices.add(organizationService);
+        } else {
+          return;
         }
       }
       
