@@ -14,12 +14,13 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 import fi.metatavu.ptv.client.ApiResponse;
-import fi.metatavu.ptv.client.model.V4VmOpenApiServiceChannels;
+import fi.metatavu.ptv.client.ResultType;
+import fi.metatavu.ptv.client.model.V4VmOpenApiWebPageChannel;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.IdUpdater;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.WebPageServiceChannelId;
-import fi.otavanopisto.kuntaapi.server.integrations.ptv.client.PtvApi;
+import fi.otavanopisto.kuntaapi.server.integrations.ptv.client.PtvClient;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.ServiceChannelTasksQueue;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.WebPageServiceChannelRemoveTask;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
@@ -42,7 +43,7 @@ public class PtvWebPageServiceChannelIdRemoveUpdater extends IdUpdater {
   private IdController idController;
 
   @Inject
-  private PtvApi ptvApi;
+  private PtvClient ptvClient;
   
   @Inject
   private IdentifierController identifierController;
@@ -89,7 +90,8 @@ public class PtvWebPageServiceChannelIdRemoveUpdater extends IdUpdater {
         continue;
       }
       
-      ApiResponse<V4VmOpenApiServiceChannels> response = ptvApi.getServiceChannelApi().apiV4ServiceChannelByIdGet(ptvWebPageServiceChannelId.getId());
+      String path = String.format("/api/v4/ServiceChannel/%s", ptvWebPageServiceChannelId.getId());
+      ApiResponse<V4VmOpenApiWebPageChannel> response = ptvClient.doGETRequest(path, new ResultType<V4VmOpenApiWebPageChannel>() {}, null, null);
       if (response.getStatus() == 404) {
         serviceChannelTasksQueue.enqueueTask(false, new WebPageServiceChannelRemoveTask(ptvWebPageServiceChannelId));
       }

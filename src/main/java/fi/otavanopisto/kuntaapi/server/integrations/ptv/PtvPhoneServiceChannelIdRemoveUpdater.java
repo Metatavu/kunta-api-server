@@ -14,12 +14,13 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 import fi.metatavu.ptv.client.ApiResponse;
-import fi.metatavu.ptv.client.model.V4VmOpenApiServiceChannels;
+import fi.metatavu.ptv.client.ResultType;
+import fi.metatavu.ptv.client.model.V4VmOpenApiPhoneChannel;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.IdUpdater;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.PhoneServiceChannelId;
-import fi.otavanopisto.kuntaapi.server.integrations.ptv.client.PtvApi;
+import fi.otavanopisto.kuntaapi.server.integrations.ptv.client.PtvClient;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.PhoneServiceChannelRemoveTask;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.ServiceChannelTasksQueue;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
@@ -42,7 +43,7 @@ public class PtvPhoneServiceChannelIdRemoveUpdater extends IdUpdater {
   private IdController idController;
 
   @Inject
-  private PtvApi ptvApi;
+  private PtvClient ptvClient;
   
   @Inject
   private IdentifierController identifierController;
@@ -89,9 +90,10 @@ public class PtvPhoneServiceChannelIdRemoveUpdater extends IdUpdater {
         continue;
       }
       
-      ApiResponse<V4VmOpenApiServiceChannels> response = ptvApi.getServiceChannelApi().apiV4ServiceChannelByIdGet(phoneServiceChannelId.getId());
+      String path = String.format("/api/v4/ServiceChannel/%s", ptvPhoneServiceChannelId.getId());
+      ApiResponse<V4VmOpenApiPhoneChannel> response = ptvClient.doGETRequest(path, new ResultType<V4VmOpenApiPhoneChannel>() {}, null, null);
       if (response.getStatus() == 404) {
-        serviceChannelTasksQueue.enqueueTask(false, new PhoneServiceChannelRemoveTask(phoneServiceChannelId));
+        serviceChannelTasksQueue.enqueueTask(false, new PhoneServiceChannelRemoveTask(ptvPhoneServiceChannelId));
       }
     }
     
