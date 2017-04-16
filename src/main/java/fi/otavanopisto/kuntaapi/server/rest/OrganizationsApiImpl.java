@@ -1624,6 +1624,18 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     return httpCacheController.sendModified(result, ids);
   }
   
+  /* Incidents */
+
+  @Override
+  public Response findOrganizationIncident(String organizationId, String incidentId, Request request) {
+    return createNotImplemented(NOT_IMPLEMENTED);
+  }
+
+  @Override
+  public Response listOrganizationIncidents(String organizationId, String startBefore, String endAfter, Integer area, Integer firstResult, Integer maxResults, String orderBy, String orderDir, Request request) {
+    return createNotImplemented(NOT_IMPLEMENTED);
+  }
+  
   private List<Page> listOrganizationPages(OrganizationId organizationId, boolean onlyRootPages, PageId parentId, String path, String search, Long firstResult, Long maxResults) {
     if (search != null) {
       return pageController.searchPages(organizationId, search, firstResult, maxResults);
