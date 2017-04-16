@@ -26,7 +26,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.ptv.resources.PtvOrganizatio
 public class PtvServiceProvider implements ServiceProvider {
   
   @Inject
-  private PtvServiceCache ptvServiceCache;
+  private PtvServiceResourceContainer ptvServiceResourceContainer;
   
   @Inject
   private PtvOrganizationServiceResourceContainer ptvOrganizationServiceCache;
@@ -39,7 +39,7 @@ public class PtvServiceProvider implements ServiceProvider {
   
   @Override
   public Service findService(ServiceId serviceId) {
-    return ptvServiceCache.get(serviceId);
+    return ptvServiceResourceContainer.get(serviceId);
   }
 
   @Override
@@ -54,7 +54,7 @@ public class PtvServiceProvider implements ServiceProvider {
     
     List<Service> result = new ArrayList<>(serviceIds.size());
     for (ServiceId serviceId : serviceIds) {
-      Service service = ptvServiceCache.get(serviceId);
+      Service service = ptvServiceResourceContainer.get(serviceId);
       if (service != null) {
         result.add(service);
       }
