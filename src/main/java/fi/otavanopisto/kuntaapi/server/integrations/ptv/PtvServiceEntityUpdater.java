@@ -79,7 +79,7 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
   private IdentifierController identifierController;
 
   @Inject
-  private PtvServiceCache ptvServiceCache;
+  private PtvServiceResourceContainer ptvServiceResourceContainer;
 
   @Inject
   private ModificationHashCache modificationHashCache;
@@ -137,7 +137,7 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
       
       fi.metatavu.kuntaapi.server.rest.model.Service service = translateService(ptvService, kuntaApiServiceId);
       if (service != null) {
-        ptvServiceCache.put(kuntaApiServiceId, service);
+        ptvServiceResourceContainer.put(kuntaApiServiceId, service);
         modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(service));
         index(identifier.getKuntaApiId(), service, orderIndex);
       }
@@ -181,33 +181,33 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
       List<WebPageServiceChannelId> kuntaApiWebPageServiceChannelIds, V4VmOpenApiServiceServiceChannel serviceChannel) {
     String serviceChannelId = serviceChannel.getServiceChannelId();
     
-    ElectronicServiceChannelId electronicServiceChannelId = idController.translateElectronicServiceChannelId(ptvIdFactory.createElectronicServiceChannelId(serviceChannelId), PtvConsts.IDENTIFIER_NAME);
-    if (electronicServiceChannelId != null) {
-      kuntaApiElectronicServiceChannelIds.add(electronicServiceChannelId);
+    ElectronicServiceChannelId kuntaApiElectronicServiceChannelId = idController.translateElectronicServiceChannelId(ptvIdFactory.createElectronicServiceChannelId(serviceChannelId), KuntaApiConsts.IDENTIFIER_NAME);
+    if (kuntaApiElectronicServiceChannelId != null) {
+      kuntaApiElectronicServiceChannelIds.add(kuntaApiElectronicServiceChannelId);
       return;
     }
     
-    PhoneServiceChannelId phoneServiceChannelId = idController.translatePhoneServiceChannelId(ptvIdFactory.createPhoneServiceChannelId(serviceChannelId), PtvConsts.IDENTIFIER_NAME);
-    if (phoneServiceChannelId != null) {
-      kuntaApiPhoneServiceChannelIds.add(phoneServiceChannelId);
+    PhoneServiceChannelId kuntaApiPhoneServiceChannelId = idController.translatePhoneServiceChannelId(ptvIdFactory.createPhoneServiceChannelId(serviceChannelId), KuntaApiConsts.IDENTIFIER_NAME);
+    if (kuntaApiPhoneServiceChannelId != null) {
+      kuntaApiPhoneServiceChannelIds.add(kuntaApiPhoneServiceChannelId);
       return;
     } 
     
-    PrintableFormServiceChannelId printableFormServiceChannelId = idController.translatePrintableFormServiceChannelId(ptvIdFactory.createPrintableFormServiceChannelId(serviceChannelId), PtvConsts.IDENTIFIER_NAME);
-    if (printableFormServiceChannelId != null) {
-      kuntaApiPrintableFormServiceChannelIds.add(printableFormServiceChannelId);
+    PrintableFormServiceChannelId kuntaApiPrintableFormServiceChannelId = idController.translatePrintableFormServiceChannelId(ptvIdFactory.createPrintableFormServiceChannelId(serviceChannelId), KuntaApiConsts.IDENTIFIER_NAME);
+    if (kuntaApiPrintableFormServiceChannelId != null) {
+      kuntaApiPrintableFormServiceChannelIds.add(kuntaApiPrintableFormServiceChannelId);
       return;
     } 
     
-    ServiceLocationServiceChannelId serviceLocationServiceChannelId = idController.translateServiceLocationServiceChannelId(ptvIdFactory.createServiceLocationServiceChannelId(serviceChannelId), PtvConsts.IDENTIFIER_NAME);
-    if (serviceLocationServiceChannelId != null) {
-      kuntaApiServiceLocationServiceChannelIds.add(serviceLocationServiceChannelId);
+    ServiceLocationServiceChannelId kuntaApiServiceLocationServiceChannelId = idController.translateServiceLocationServiceChannelId(ptvIdFactory.createServiceLocationServiceChannelId(serviceChannelId), KuntaApiConsts.IDENTIFIER_NAME);
+    if (kuntaApiServiceLocationServiceChannelId != null) {
+      kuntaApiServiceLocationServiceChannelIds.add(kuntaApiServiceLocationServiceChannelId);
       return;
     } 
   
-    WebPageServiceChannelId webPageServiceChannelId = idController.translateWebPageServiceChannelId(ptvIdFactory.createWebPageServiceChannelId(serviceChannelId), PtvConsts.IDENTIFIER_NAME);
-    if (webPageServiceChannelId != null) {
-      kuntaApiWebPageServiceChannelIds.add(webPageServiceChannelId);
+    WebPageServiceChannelId kuntaApiWebPageServiceChannelId = idController.translateWebPageServiceChannelId(ptvIdFactory.createWebPageServiceChannelId(serviceChannelId), KuntaApiConsts.IDENTIFIER_NAME);
+    if (kuntaApiWebPageServiceChannelId != null) {
+      kuntaApiWebPageServiceChannelIds.add(kuntaApiWebPageServiceChannelId);
       return;
     } 
     
@@ -265,7 +265,7 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
     if (serviceIdentifier != null) {
       ServiceId kuntaApiServiceId = new ServiceId(KuntaApiConsts.IDENTIFIER_NAME, serviceIdentifier.getKuntaApiId());
       modificationHashCache.clear(serviceIdentifier.getKuntaApiId());
-      ptvServiceCache.clear(kuntaApiServiceId);
+      ptvServiceResourceContainer.clear(kuntaApiServiceId);
       identifierController.deleteIdentifier(serviceIdentifier);
       
       IndexRemoveService indexRemove = new IndexRemoveService();
