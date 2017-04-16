@@ -1,0 +1,71 @@
+{
+  "id":"02256ce8-2879-47e4-a6f5-339872f0f758",
+  "serviceChannelType":"PrintableForm",
+  "organizationId":"18bb8d7c-1dc7-4188-9149-7d89fdeac75e",
+  "serviceChannelNames":[
+    {
+      "language":"fi",
+      "value":"Ohjeita päivähoitosijoitusta ja maksua varten",
+      "type":"Name"
+    }
+  ],
+  "serviceChannelDescriptions":[
+    {
+      "language":"fi",
+      "value":"Ohjeita päivähoitosijoitusta ja maksua varten",
+      "type":"ShortDescription"
+    },
+    {
+      "language":"fi",
+      "value":"Ohjeita päivähoitosijoitusta ja maksua varten",
+      "type":"Description"
+    }
+  ],
+  "formIdentifier":[
+    {
+      "value":"",
+      "language":"fi"
+    },
+    {
+      "value":"",
+      "language":"sv"
+    }
+  ],
+  "formReceiver":[
+    {
+      "value":"",
+      "language":"fi"
+    },
+    {
+      "value":"",
+      "language":"sv"
+    }
+  ],
+  "deliveryAddress":null,
+  "channelUrls":[
+    {
+      "language":"fi",
+      "value":"www.kuusamo.fi/node/501",
+      "type":"PDF"
+    }
+  ],
+  "attachments":[
+
+  ],
+  "supportPhones":[
+
+  ],
+  "supportEmails":[
+
+  ],
+  "languages":[
+
+  ],
+  "webPages":[
+
+  ],
+  "serviceHours":[
+
+  ],
+  "publishingStatus":"Published"
+}

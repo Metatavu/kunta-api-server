@@ -1,19 +1,25 @@
 package fi.otavanopisto.kuntaapi.test;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
+import static com.github.tomakehurst.wiremock.client.WireMock.containing;
 import static com.github.tomakehurst.wiremock.client.WireMock.get;
 import static com.github.tomakehurst.wiremock.client.WireMock.head;
 import static com.github.tomakehurst.wiremock.client.WireMock.removeStub;
 import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
+import static com.github.tomakehurst.wiremock.client.WireMock.urlPathEqualTo;
 import static org.junit.Assert.fail;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.EnumMap;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,10 +32,13 @@ import com.github.tomakehurst.wiremock.client.MappingBuilder;
 import com.github.tomakehurst.wiremock.client.ResponseDefinitionBuilder;
 import com.github.tomakehurst.wiremock.matching.StringValuePattern;
 import com.github.tomakehurst.wiremock.matching.UrlPattern;
+
 import ezvcard.util.IOUtils;
+import fi.metatavu.ptv.client.model.VmOpenApiItem;
+import fi.otavanopisto.kuntaapi.server.persistence.dao.AbstractDAO;
 
 @SuppressWarnings ("squid:S1166")
-public class ResourceMocker<I, R> {
+public abstract class AbstractPtvMocker<R> {
 
   private static final String APPLICATION_JSON = "application/json";
   private static final String CONTENT_TYPE = "Content-Type";
@@ -37,13 +46,17 @@ public class ResourceMocker<I, R> {
 
   private EnumMap<MockedResourceStatus, List<MappingBuilder>> statusLists = new EnumMap<>(MockedResourceStatus.class);
   private boolean started = false;
-  private Map<I, MockedResource<I, R>> resources = new LinkedHashMap<>();
-  private Map<I, List<ResourceMocker<?, ?>>> subMockers = new LinkedHashMap<>();
+  private Map<String, MockedResource<String, R>> resources = new LinkedHashMap<>();
+  private Map<String, List<AbstractPtvMocker<?>>> subMockers = new LinkedHashMap<>();
+  
+  public AbstractPtvMocker() {
+    mockDefaultLists();
+  }
   
   public void start() {
     started = true;
     
-    for (MockedResource<I, R> resource : resources.values()) {
+    for (MockedResource<String, R> resource : resources.values()) {
       for (MappingBuilder mapping : resource.getCurrentMappings()) {
         stubFor(mapping);
       }
@@ -55,13 +68,13 @@ public class ResourceMocker<I, R> {
         MockedResourceStatus status = statusListEntry.getKey();
         mapping.willReturn(aResponse()
           .withHeader(CONTENT_TYPE, APPLICATION_JSON)
-          .withBody(toJSON(getResources(status))));
+          .withBody(toJSON(getGuidPage(status))));
         stubFor(mapping);
       }
     }
     
-    for (List<ResourceMocker<?, ?>> subMockerList : subMockers.values()) {
-      for (ResourceMocker<?, ?> subMocker : subMockerList) {
+    for (List<AbstractPtvMocker<?>> subMockerList : subMockers.values()) {
+      for (AbstractPtvMocker<?> subMocker : subMockerList) {
         subMocker.start();
       }
     }
@@ -74,13 +87,13 @@ public class ResourceMocker<I, R> {
     
     started = false;
     
-    for (List<ResourceMocker<?, ?>> subMockerList : subMockers.values()) {
-      for (ResourceMocker<?, ?> subMocker : subMockerList) {
+    for (List<AbstractPtvMocker<?>> subMockerList : subMockers.values()) {
+      for (AbstractPtvMocker<?> subMocker : subMockerList) {
         subMocker.stop();
       }
     }
 
-    for (MockedResource<I, R> resource : resources.values()) {
+    for (MockedResource<String, R> resource : resources.values()) {
       for (MappingBuilder mapping : resource.getMappings()) {
         removeStub(mapping);
       }
@@ -91,9 +104,17 @@ public class ResourceMocker<I, R> {
         removeStub(mapping);
       }
     }
+    
+    resources.clear();
+    statusLists.clear();
+    subMockers.clear();
   }
   
-  public void add(I id, R resource, UrlPattern urlPattern) {
+  public abstract String getName();
+  public abstract String getBasePath();
+  public abstract String getEntityId(R entity);
+  
+  public void add(String id, R resource, UrlPattern urlPattern) {
     MappingBuilder okGetMapping = createOkGetMapping(urlPattern, resource);
     MappingBuilder okHeadMapping = createOkHeadMapping(urlPattern, resource);
     
@@ -102,14 +123,14 @@ public class ResourceMocker<I, R> {
     resources.put(id, new MockedResource<>(id, resource, okGetMapping, okHeadMapping, notFoundMapping));
   }
   
-  public Collection<MockedResource<I, R>> getMockedResources() {
+  public Collection<MockedResource<String, R>> getMockedResources() {
     return resources.values();
   }
   
-  public Collection<MockedResource<I, R>> getMockedResources(MockedResourceStatus status) {
-    Collection<MockedResource<I, R>> result = new ArrayList<>();
+  public Collection<MockedResource<String, R>> getMockedResources(MockedResourceStatus status) {
+    Collection<MockedResource<String, R>> result = new ArrayList<>();
     
-    for (MockedResource<I, R> resource : getMockedResources()) {
+    for (MockedResource<String, R> resource : getMockedResources()) {
       if (resource.getStatus().equals(status)) {
         result.add(resource);
       }
@@ -118,22 +139,29 @@ public class ResourceMocker<I, R> {
     return result;
   }
   
-  public List<R> getResources(MockedResourceStatus status) {
-    List<R> result = new ArrayList<>();
+  public GuidPage getGuidPage(MockedResourceStatus status) {
+    GuidPage result = new GuidPage();
     
-    for (MockedResource<I, R> mockedResource : getMockedResources(status)) {
-      result.add(mockedResource.getResource());
+    for (MockedResource<String, R> mockedResource : getMockedResources(status)) {
+      VmOpenApiItem item = new VmOpenApiItem();
+      item.setId(mockedResource.getId());
+      item.setName(mockedResource.getId());
+      result.addItem(item);
     }
+    
+    result.setPageCount(1);
+    result.setPageNumber(0);
+    result.setPageSize(1000);
     
     return result;
   }
   
-  public boolean isMocked(I id) {
+  public boolean isMocked(String id) {
     return resources.containsKey(id);
   }  
   
-  public void setStatus(I id, MockedResourceStatus status) {
-    MockedResource<I, R> resource = resources.get(id);
+  public void setStatus(String id, MockedResourceStatus status) {
+    MockedResource<String, R> resource = resources.get(id);
     if (resource.getStatus() == status) {
       return;
     }
@@ -157,9 +185,9 @@ public class ResourceMocker<I, R> {
   }
   
   @SuppressWarnings ("squid:S1301")
-  public void mockAlternative(I id, R alternative) {
+  public void mockAlternative(String id, R alternative) {
     List<MappingBuilder> alternativeMappings = new ArrayList<>();
-    MockedResource<I, R> resource = resources.get(id);
+    MockedResource<String, R> resource = resources.get(id);
     
     List<MappingBuilder> okMappings = resource.getMappings(MockedResourceStatus.OK);
     for (MappingBuilder okMapping : okMappings) {
@@ -194,9 +222,46 @@ public class ResourceMocker<I, R> {
     resource.updateStatusMappings(MockedResourceStatus.OK, alternativeMappings);
   }
 
-  private void updateSubMockerStatuses(I id, MockedResourceStatus status) {
+  public AbstractPtvMocker<R> mock(String... ids) {
+    for (String id : ids) {
+      try {
+        if (!isMocked(id)) {
+          mockEntity(id, readEntity(id));
+        } else {
+          setStatus(id, MockedResourceStatus.OK);
+        }
+      } catch (JsonProcessingException e) {
+        System.err.println(String.format("Failed to read %s of %s", id, getName()));
+        fail(e.getMessage());
+      }
+    }
+    
+    return this;
+  }
+
+  public AbstractPtvMocker<R> unmock(String... ids) {
+    for (String id : ids) {
+      setStatus(id, MockedResourceStatus.NOT_FOUND);
+    }
+    
+    return this;
+  }
+  
+  protected void mockEntity(String id, R entity) throws JsonProcessingException {
+    add(id, entity, urlPathEqualTo(String.format("%s/%s", getBasePath(), id)));
+  }
+  
+  private void mockDefaultLists() {
+    Map<String, StringValuePattern> queryParams = new HashMap<>();
+    queryParams.put("page", containing("0"));
+    
+    addStatusList(MockedResourceStatus.OK, urlPathEqualTo(getBasePath()));
+    addStatusList(MockedResourceStatus.OK, urlPathEqualTo(getBasePath()), queryParams);
+  }
+  
+  private void updateSubMockerStatuses(String id, MockedResourceStatus status) {
     if (subMockers.containsKey(id)) {
-      for (ResourceMocker<?, ?> subMocker : subMockers.get(id)) {
+      for (AbstractPtvMocker<?> subMocker : subMockers.get(id)) {
         if (status == MockedResourceStatus.OK) {
           subMocker.start();
         } else {
@@ -226,7 +291,7 @@ public class ResourceMocker<I, R> {
     statusLists.get(status).add(mapping);
   }
 
-  public void addSubMocker(I id, ResourceMocker<?, ?> subMocker) {
+  public void addSubMocker(String id, AbstractPtvMocker<?> subMocker) {
     if (!subMockers.containsKey(id)) {
       subMockers.put(id, new ArrayList<>());
     }
@@ -234,8 +299,49 @@ public class ResourceMocker<I, R> {
     subMockers.get(id).add(subMocker);
   }
   
+  protected R readEntity(String id) {
+    return readEntityFromJSONFile(String.format("ptv/%s/%s.json", getName(), id));
+  }
+
+  @SuppressWarnings("unchecked")
+  private R readEntityFromJSONFile(String file) {
+    return readJSONFile(file, getGenericTypeClass());
+  }
+  
+  private R readJSONFile(String file, Class <R> type){
+    ObjectMapper objectMapper = new ObjectMapper();
+    objectMapper.registerModule(new JavaTimeModule());
+    
+    try (InputStream stream = getClass().getClassLoader().getResourceAsStream(file)) {
+      return objectMapper.readValue(stream, type);
+    } catch (IOException e) {
+      // logger.log(Level.SEVERE, FAILED_TO_READ_MOCK_FILE, e);
+      fail(e.getMessage());
+    }
+    return null;
+  }
+  
+  @SuppressWarnings("unchecked")
+  private Class<R> getGenericTypeClass() {
+    Type genericSuperclass = getClass().getGenericSuperclass();
+
+    if (genericSuperclass instanceof ParameterizedType) {
+      return (Class<R>) getFirstTypeArgument((ParameterizedType) genericSuperclass);
+    } else {
+      if ((genericSuperclass instanceof Class<?>) && (AbstractDAO.class.isAssignableFrom((Class<?>) genericSuperclass))) {
+        return (Class<R>) getFirstTypeArgument((ParameterizedType) ((Class<?>) genericSuperclass).getGenericSuperclass());
+      }
+    }
+
+    return null;
+  }
+
+  private Class<?> getFirstTypeArgument(ParameterizedType parameterizedType) {
+    return (Class<?>) parameterizedType.getActualTypeArguments()[0];
+  }
+
   @SuppressWarnings ("squid:S1452")
-  public ResourceMocker<?, ?> getSubMocker(I id, int index) {
+  public AbstractPtvMocker<?> getSubMocker(String id, int index) {
     return subMockers.get(id).get(index);
   }
 
@@ -309,7 +415,7 @@ public class ResourceMocker<I, R> {
         
         mapping.willReturn(aResponse()
           .withHeader(CONTENT_TYPE, APPLICATION_JSON)
-          .withBody(toJSON(getResources(status))));
+          .withBody(toJSON(getGuidPage(status))));
         
         stubFor(mapping);
       }
@@ -326,6 +432,62 @@ public class ResourceMocker<I, R> {
       return null;
     }
   }
+  
+  public class GuidPage {
 
+    private Integer pageNumber = null;
+    private Integer pageSize = null;
+    private Integer pageCount = null;
+    private List<VmOpenApiItem> itemList = new ArrayList<VmOpenApiItem>();
+
+    public GuidPage() {
+      // Zero-argument constructor
+    }
+
+    public GuidPage(Integer pageNumber, Integer pageSize, Integer pageCount, List<VmOpenApiItem> itemList) {
+      super();
+      this.pageNumber = pageNumber;
+      this.pageSize = pageSize;
+      this.pageCount = pageCount;
+      this.itemList = itemList;
+    }
+
+    public Integer getPageNumber() {
+      return pageNumber;
+    }
+
+    public void setPageNumber(Integer pageNumber) {
+      this.pageNumber = pageNumber;
+    }
+
+    public Integer getPageSize() {
+      return pageSize;
+    }
+
+    public void setPageSize(Integer pageSize) {
+      this.pageSize = pageSize;
+    }
+
+    public Integer getPageCount() {
+      return pageCount;
+    }
+
+    public void setPageCount(Integer pageCount) {
+      this.pageCount = pageCount;
+    }
+
+    public List<VmOpenApiItem> getItemList() {
+      return itemList;
+    }
+
+    public void setItemList(List<VmOpenApiItem> itemList) {
+      this.itemList = itemList;
+    }
+    
+    public void addItem(VmOpenApiItem item) {
+      this.itemList.add(item);
+    }
+
+  }
 
 }

@@ -17,7 +17,6 @@ import com.jayway.restassured.http.ContentType;
 import com.jayway.restassured.path.json.config.JsonPathConfig;
 
 import fi.otavanopisto.kuntaapi.server.integrations.gtfs.GtfsConsts;
-import fi.otavanopisto.kuntaapi.server.integrations.ptv.PtvConsts;
 import fi.otavanopisto.kuntaapi.test.AbstractIntegrationTest;
 
 @SuppressWarnings ("squid:S1192")
@@ -33,10 +32,8 @@ public class StopTestsIT extends AbstractIntegrationTest {
   
   @Before
   public void beforeTest() throws InterruptedException {
-    createPtvSettings();
-    
-    getRestfulPtvOrganizationMocker()
-      .mockOrganizations("0de268cf-1ea1-4719-8a6e-1150933b6b9e");
+    getPtvOrganizationMocker()
+      .mock("0de268cf-1ea1-4719-8a6e-1150933b6b9e");
     
     startMocks();
 
@@ -50,8 +47,6 @@ public class StopTestsIT extends AbstractIntegrationTest {
   @After
   public void afterClass() {
     String organizationId = getOrganizationId(0);
-    getPtvMocker().endMock();
-    deletePtvSettings();
     deleteGtfsSettings(organizationId);
   }
 
@@ -106,15 +101,6 @@ public class StopTestsIT extends AbstractIntegrationTest {
     
     assertNotFound(String.format("/organizations/%s/transportStops/%s", incorrectOrganizationId, organizationStopId));
     assertEquals(0, countApiList(String.format("/organizations/%s/transportStops", incorrectOrganizationId)));
-  }
-
-  private void createPtvSettings() {
-    insertSystemSetting(PtvConsts.SYSTEM_SETTING_BASEURL, String.format("%s%s", getWireMockBasePath(), BASE_URL));
-    flushCache();
-  }
-  
-  private void deletePtvSettings() {
-    deleteSystemSetting(PtvConsts.SYSTEM_SETTING_BASEURL);
   }
   
   private void createGtfsSettings(String organizationId) {

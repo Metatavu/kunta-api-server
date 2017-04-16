@@ -1,0 +1,78 @@
+{
+  "id":"22472ece-95a0-4fef-a429-b4da689677b2",
+  "serviceChannelType":"EChannel",
+  "organizationId":"18bb8d7c-1dc7-4188-9149-7d89fdeac75e",
+  "serviceChannelNames":[
+    {
+      "language":"fi",
+      "value":"Wilma",
+      "type":"Name"
+    }
+  ],
+  "serviceChannelDescriptions":[
+    {
+      "language":"fi",
+      "value":"Wilma on peruskoulujen ja lukioiden hallinto-ohjelman www-liittymä.\n\nOpettajat syöttävät Wilman kautta arvioinnit ja poissaolot, päivittävät henkilötietojaan ja viestivät opiskelijoiden ja huoltajien kanssa. Huoltajat seuraavat ja selvittävät Wilman kautta opiskelijan poissaoloja, viestivät opettajien kanssa ja lukevat koulun tiedotteita.\n\nWilmaa käyttävät myös oppilaitoksen henkilökunta, johto sekä työpaikkaohjaajat.\n \nOpiskelijat valitsevat Wilmassa kursseja, seuraavat suorituksiaan, lukevat tiedotteita ja viestivät opettajien kanssa. ",
+      "type":"Description"
+    },
+    {
+      "language":"fi",
+      "value":"Mikkelissä huoltajien, opettajien ja oppilaiden viestinnän välineenä käytetään Wilmaa.",
+      "type":"ShortDescription"
+    }
+  ],
+  "signatureQuantity":0,
+  "requiresSignature":false,
+  "requiresAuthentication":true,
+  "urls":[
+    {
+      "value":"https://wilma.mikkeli.fi",
+      "language":"fi"
+    }
+  ],
+  "attachments":[
+
+  ],
+  "supportPhones":[
+    {
+      "additionalInformation":null,
+      "serviceChargeType":"Charged",
+      "chargeDescription":null,
+      "prefixNumber":null,
+      "isFinnishServiceNumber":true,
+      "number":null,
+      "language":"fi"
+    }
+  ],
+  "supportEmails":[
+    {
+      "value":null,
+      "language":"fi"
+    }
+  ],
+  "languages":[
+    "fi"
+  ],
+  "webPages":[
+
+  ],
+  "serviceHours":[
+    {
+      "serviceHourType":"Standard",
+      "validFrom":"2017-03-01T00:00:00+02:00",
+      "validTo":"2017-12-31T00:00:00+02:00",
+      "isClosed":false,
+      "validForNow":false,
+      "additionalInformation":[
+        {
+          "value":"",
+          "language":"fi"
+        }
+      ],
+      "openingHour":[
+
+      ]
+    }
+  ],
+  "publishingStatus":"Published"
+}

@@ -15,7 +15,6 @@ import com.github.tomakehurst.wiremock.junit.WireMockRule;
 import com.jayway.restassured.http.ContentType;
 
 import fi.otavanopisto.kuntaapi.server.integrations.management.ManagementConsts;
-import fi.otavanopisto.kuntaapi.server.integrations.ptv.PtvConsts;
 import fi.otavanopisto.kuntaapi.test.AbstractIntegrationTest;
 
 @SuppressWarnings ("squid:S1192")
@@ -31,10 +30,8 @@ public class TileTestsIT extends AbstractIntegrationTest {
   
   @Before
   public void beforeTest() throws InterruptedException {
-    createPtvSettings();
-
-    getRestfulPtvOrganizationMocker()
-      .mockOrganizations("0de268cf-1ea1-4719-8a6e-1150933b6b9e");
+    getPtvOrganizationMocker()
+      .mock("0de268cf-1ea1-4719-8a6e-1150933b6b9e");
     
     getManagementMediaMocker()
       .mockMedias(3001, 3002);
@@ -54,8 +51,6 @@ public class TileTestsIT extends AbstractIntegrationTest {
   @After
   public void afterClass() {
     String organizationId = getOrganizationId(0);
-    getPtvMocker().endMock();
-    deletePtvSettings();
     deleteManagementSettings(organizationId);
   }
   
@@ -190,15 +185,6 @@ public class TileTestsIT extends AbstractIntegrationTest {
       .statusCode(200)
       .header("Content-Length", "2033")
       .header("Content-Type", IMAGE_JPEG);
-  }
-
-  private void createPtvSettings() {
-    insertSystemSetting(PtvConsts.SYSTEM_SETTING_BASEURL, String.format("%s%s", getWireMockBasePath(), BASE_URL));
-    flushCache();
-  }
-  
-  private void deletePtvSettings() {
-    deleteSystemSetting(PtvConsts.SYSTEM_SETTING_BASEURL);
   }
     
   private void createManagementSettings(String organizationId) {
