@@ -177,6 +177,10 @@ public class PtvServiceChannelEntityUpdater extends EntityUpdater {
   }
   
   private void updateElectronicServiceChannel(Long orderIndex, V4VmOpenApiElectronicChannel ptvElectronicServiceChannel) {
+    if (ptvElectronicServiceChannel == null) {
+      return;
+    }
+    
     OrganizationId ptvOrganizationId = ptvIdFactory.createOrganizationId(ptvElectronicServiceChannel.getOrganizationId());
     OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(ptvOrganizationId, KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiOrganizationId == null) {
@@ -199,6 +203,10 @@ public class PtvServiceChannelEntityUpdater extends EntityUpdater {
   }
 
   private void updateServiceLocationServiceChannel(Long orderIndex, V4VmOpenApiServiceLocationChannel ptvServiceLocationServiceChannel) {
+    if (ptvServiceLocationServiceChannel == null) {
+      return;
+    }
+    
     OrganizationId ptvOrganizationId = ptvIdFactory.createOrganizationId(ptvServiceLocationServiceChannel.getOrganizationId());
     OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(ptvOrganizationId, KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiOrganizationId == null) {
@@ -221,6 +229,10 @@ public class PtvServiceChannelEntityUpdater extends EntityUpdater {
   }
   
   private void updatePrintableFormServiceChannel(Long orderIndex, V4VmOpenApiPrintableFormChannel ptvPrintableFormServiceChannel) {
+    if (ptvPrintableFormServiceChannel == null) {
+      return;
+    }
+    
     OrganizationId ptvOrganizationId = ptvIdFactory.createOrganizationId(ptvPrintableFormServiceChannel.getOrganizationId());
     OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(ptvOrganizationId, KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiOrganizationId == null) {
@@ -243,6 +255,10 @@ public class PtvServiceChannelEntityUpdater extends EntityUpdater {
   }
   
   private void updatePhoneServiceChannel(Long orderIndex, V4VmOpenApiPhoneChannel ptvPhoneServiceChannel) {
+    if (ptvPhoneServiceChannel == null) {
+      return;
+    }
+    
     OrganizationId ptvOrganizationId = ptvIdFactory.createOrganizationId(ptvPhoneServiceChannel.getOrganizationId());
     OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(ptvOrganizationId, KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiOrganizationId == null) {
@@ -265,6 +281,10 @@ public class PtvServiceChannelEntityUpdater extends EntityUpdater {
   }
   
   private void updateWebPageServiceChannel(Long orderIndex, V4VmOpenApiWebPageChannel ptvWebPageServiceChannel) {
+    if (ptvWebPageServiceChannel == null) {
+      return;
+    }
+    
     OrganizationId ptvOrganizationId = ptvIdFactory.createOrganizationId(ptvWebPageServiceChannel.getOrganizationId());
     OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(ptvOrganizationId, KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiOrganizationId == null) {
