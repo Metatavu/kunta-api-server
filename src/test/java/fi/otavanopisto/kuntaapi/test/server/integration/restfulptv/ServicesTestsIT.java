@@ -235,27 +235,33 @@ public class ServicesTestsIT extends AbstractIntegrationTest {
   
   @Test
   public void testServiceChannelIds()  {
-    String id = given() 
-      .baseUri(getApiBasePath())
-      .contentType(ContentType.JSON)
-      .get("/services")
-      .body().jsonPath().getString("id[0]");
-      
-    assertNotNull(id);
-      
     given() 
       .baseUri(getApiBasePath())
       .contentType(ContentType.JSON)
-      .get("/services/{serviceId}", id)
+      .get("/services/{serviceId}", getServiceId(0))
       .then()
       .assertThat()
       .statusCode(200)
       .body("id", notNullValue())
-      .body("electronicServiceChannelIds.size()", is(1))
-      .body("phoneServiceChannelIds.size()", is(2))
-      .body("printableFormServiceChannelIds.size()", is(1))
-      .body("serviceLocationServiceChannelIds.size()", is(2))
-      .body("webPageServiceChannelIds.size()", is(1));
+      .body("electronicServiceChannelIds.size()", is(0))
+      .body("phoneServiceChannelIds.size()", is(0))
+      .body("printableFormServiceChannelIds.size()", is(0))
+      .body("serviceLocationServiceChannelIds.size()", is(1))
+      .body("webPageServiceChannelIds.size()", is(0));
+
+    given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get("/services/{serviceId}", getServiceId(1))
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id", notNullValue())
+      .body("electronicServiceChannelIds.size()", is(0))
+      .body("phoneServiceChannelIds.size()", is(1))
+      .body("printableFormServiceChannelIds.size()", is(2))
+      .body("serviceLocationServiceChannelIds.size()", is(0))
+      .body("webPageServiceChannelIds.size()", is(0));
   }
   
   @Test
