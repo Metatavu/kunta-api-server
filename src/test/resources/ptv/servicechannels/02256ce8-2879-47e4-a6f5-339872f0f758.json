@@ -49,9 +49,13 @@
       "type":"PDF"
     }
   ],
-  "attachments":[
-
-  ],
+  "attachments":[{
+    "type": "Form",
+    "name": "Test form",
+    "description": "Form for testing",
+    "url": "http://example.com/test-form",
+    "language": "en"
+  }],
   "supportPhones":[
 
   ],
