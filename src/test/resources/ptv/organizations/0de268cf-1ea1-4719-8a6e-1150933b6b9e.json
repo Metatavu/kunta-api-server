@@ -34,9 +34,12 @@
   "phoneNumbers":[
 
   ],
-  "webPages":[
-
-  ],
+  "webPages":[{
+    "orderNumber": "1",
+    "value": "Example",
+    "url": "http://www.example.com",
+    "language": "fi"
+  }],
   "addresses":[
 
   ],
