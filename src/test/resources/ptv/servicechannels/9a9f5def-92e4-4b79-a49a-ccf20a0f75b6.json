@@ -62,9 +62,13 @@
       "language":"fi"
     }
   ],
-  "serviceAreas":[
-
-  ],
+  "serviceAreas":[{
+    "code": "123",
+    "name": [{
+      "value": "Example",
+      "language": "en"
+    }]
+  }],
   "addresses":[
     {
       "latitude":"6726437.712",
