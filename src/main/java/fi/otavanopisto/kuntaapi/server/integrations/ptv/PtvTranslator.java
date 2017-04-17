@@ -39,7 +39,6 @@ import fi.metatavu.ptv.client.model.V4VmOpenApiEmail;
 import fi.metatavu.ptv.client.model.V4VmOpenApiFintoItem;
 import fi.metatavu.ptv.client.model.V4VmOpenApiLaw;
 import fi.metatavu.ptv.client.model.V4VmOpenApiOrganization;
-import fi.metatavu.ptv.client.model.V4VmOpenApiOrganizationService;
 import fi.metatavu.ptv.client.model.V4VmOpenApiPhone;
 import fi.metatavu.ptv.client.model.V4VmOpenApiPhoneChannel;
 import fi.metatavu.ptv.client.model.V4VmOpenApiPhoneWithType;
@@ -205,22 +204,6 @@ public class PtvTranslator {
     organization.setWebPages(translateWebPagesWithOrderNumber(ptvOrganization.getWebPages()));
     
     return organization;
-  }
-  
-  public OrganizationService translateOrganizationService(OrganizationId kuntaApiOrganizationId, ServiceId kuntaApiServiceId, V4VmOpenApiOrganizationService ptvOrganizationService) {
-    if (ptvOrganizationService == null) {
-      return null;
-    }
-    
-    OrganizationService organizationService = new OrganizationService();
-    organizationService.setAdditionalInformation(translateLocalizedItems(ptvOrganizationService.getAdditionalInformation()));
-    organizationService.setOrganizationId(kuntaApiOrganizationId.getId());
-    organizationService.setProvisionType(ptvOrganizationService.getProvisionType());
-    organizationService.setRoleType(ptvOrganizationService.getRoleType());
-    organizationService.setServiceId(kuntaApiServiceId.getId());
-    organizationService.setWebPages(translateWebPages(ptvOrganizationService.getWebPages()));
-    
-    return organizationService;
   }
 
   @SuppressWarnings ("squid:S00107")
@@ -390,7 +373,9 @@ public class PtvTranslator {
     List<Municipality> result = new ArrayList<>(ptvMunicipalities.size());
     for (VmOpenApiMunicipality ptvMunicipality : ptvMunicipalities) {
       Municipality municipality = translateMunicipality(ptvMunicipality);
-      result.add(municipality);
+      if (municipality != null) {
+        result.add(municipality);
+      }
     }
     
     return result;
