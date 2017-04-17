@@ -17,9 +17,7 @@ import fi.metatavu.ptv.client.ResultType;
 import fi.metatavu.ptv.client.model.V4VmOpenApiElectronicChannel;
 import fi.metatavu.ptv.client.model.V4VmOpenApiPhoneChannel;
 import fi.metatavu.ptv.client.model.V4VmOpenApiPrintableFormChannel;
-import fi.metatavu.ptv.client.model.V4VmOpenApiService;
 import fi.metatavu.ptv.client.model.V4VmOpenApiServiceLocationChannel;
-import fi.metatavu.ptv.client.model.V4VmOpenApiServiceServiceChannel;
 import fi.metatavu.ptv.client.model.V4VmOpenApiWebPageChannel;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.client.PtvClient;
 
@@ -32,67 +30,7 @@ public class PtvServiceChannelResolver {
 
   @Inject
   private PtvClient ptvClient;
-  
-  public V4VmOpenApiElectronicChannel findElectronicChannel(String id) {
-    Map<String, Object> serviceChannelData = loadServiceChannelData(id);
-    if (serviceChannelData != null) {
-      ServiceChannelType type = resolveServiceChannelType(serviceChannelData);
-      if (type == ServiceChannelType.ELECTRONIC_CHANNEL) {
-        return unserializeElectronicChannel(serializeChannelData(serviceChannelData));
-      }
-    }
-    
-    return null;
-  }
-  
-  public V4VmOpenApiServiceLocationChannel findServiceLocationChannel(String id) {
-    Map<String, Object> serviceChannelData = loadServiceChannelData(id);
-    if (serviceChannelData != null) {
-      ServiceChannelType type = resolveServiceChannelType(serviceChannelData);
-      if (type == ServiceChannelType.SERVICE_LOCATION) {
-        return unserializeServiceLocationChannel(serializeChannelData(serviceChannelData));
-      }
-    }
-    
-    return null;
-  }
-  
-  public V4VmOpenApiPrintableFormChannel findPrintableFormChannel(String id) {
-    Map<String, Object> serviceChannelData = loadServiceChannelData(id);
-    if (serviceChannelData != null) {
-      ServiceChannelType type = resolveServiceChannelType(serviceChannelData);
-      if (type == ServiceChannelType.PRINTABLE_FORM) {
-        return unserializePrintableFormChannel(serializeChannelData(serviceChannelData));
-      }
-    }
-    
-    return null;
-  }
-  
-  public V4VmOpenApiPhoneChannel findPhoneChannel(String id) {
-    Map<String, Object> serviceChannelData = loadServiceChannelData(id);
-    if (serviceChannelData != null) {
-      ServiceChannelType type = resolveServiceChannelType(serviceChannelData);
-      if (type == ServiceChannelType.PHONE) {
-        return unserializePhoneChannel(serializeChannelData(serviceChannelData));
-      }
-    }
-    
-    return null;
-  }
-  
-  public V4VmOpenApiWebPageChannel findWebPageChannel(String id) {
-    Map<String, Object> serviceChannelData = loadServiceChannelData(id);
-    if (serviceChannelData != null) {
-      ServiceChannelType type = resolveServiceChannelType(serviceChannelData);
-      if (type == ServiceChannelType.WEB_PAGE) {
-        return unserializeWebPageChannel(serializeChannelData(serviceChannelData));
-      }
-    }
-    
-    return null;
-  }
-  
+
   @SuppressWarnings ("squid:S1168")
   public byte[] serializeChannelData(Map<String, Object> serviceChannelData) {
     if (serviceChannelData == null) {
@@ -206,47 +144,6 @@ public class PtvServiceChannelResolver {
     }
     
     return resolveServiceChannelType(id, (String) type);
-  }
-  
-  public ServiceChannelType resolveServiceChannelType(String serviceChannelId) {
-    Map<String, Object> serviceChannelData = loadServiceChannelData(serviceChannelId);
-    if (serviceChannelData != null) {
-      return resolveServiceChannelType(serviceChannelData);
-    }
-    
-    return null;
-  }
-
-  public ServiceChannelIds resolveServiceChannelIds(V4VmOpenApiService ptvService) {
-    ServiceChannelIds channelIds = new ServiceChannelIds();
-
-    for (V4VmOpenApiServiceServiceChannel ptvChannel : ptvService.getServiceChannels()) {
-      ServiceChannelType serviceChannelType = resolveServiceChannelType(ptvChannel.getServiceChannelId());
-      if (serviceChannelType != null) {
-        switch (serviceChannelType) {
-        case ELECTRONIC_CHANNEL:
-          channelIds.getElectricChannels().add(ptvChannel.getServiceChannelId());
-          break;
-        case SERVICE_LOCATION:
-          channelIds.getLocationServiceChannels().add(ptvChannel.getServiceChannelId());
-          break;
-        case PRINTABLE_FORM:
-          channelIds.getPrintableFormChannels().add(ptvChannel.getServiceChannelId());
-          break;
-        case PHONE:
-          channelIds.getPhoneChannels().add(ptvChannel.getServiceChannelId());
-          break;
-        case WEB_PAGE:
-          channelIds.getWebPageChannels().add(ptvChannel.getServiceChannelId());
-          break;
-        default:
-          logger.log(Level.SEVERE, () -> String.format("Unknown service channel type %s", serviceChannelType));
-          break;
-        }
-      }
-    }
-
-    return channelIds;
   }
 
   @SuppressWarnings ("squid:MethodCyclomaticComplexity")
