@@ -143,7 +143,7 @@ public class ServicesTestsIT extends AbstractIntegrationTest {
       .body("coverageType", is("Nationwide"))
       .body("municipalities.size()", is(0))
       .body("requirements.size()", is(1))
-      .body("requirements[0].value", is(""))
+      .body("requirements[0].value", is("Testi vaatimus"))
       .body("requirements[0].language", is("fi"))
       .body("publishingStatus", is("Published"))
       .body("chargeType", is("Free"))

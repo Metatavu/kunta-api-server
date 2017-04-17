@@ -23,21 +23,21 @@
   ],
   "formIdentifier":[
     {
-      "value":"",
+      "value":"Esimerkki tunniste",
       "language":"fi"
     },
     {
-      "value":"",
+      "value":"Exempel identifierare",
       "language":"sv"
     }
   ],
   "formReceiver":[
     {
-      "value":"",
+      "value":"Esimerkki vastaanottaja",
       "language":"fi"
     },
     {
-      "value":"",
+      "value":"Exempel mottagare",
       "language":"sv"
     }
   ],

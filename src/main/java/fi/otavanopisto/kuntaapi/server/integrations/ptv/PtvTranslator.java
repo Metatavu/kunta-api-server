@@ -399,16 +399,18 @@ public class PtvTranslator {
     
     List<Phone> result = new ArrayList<>(ptvPhones.size());
     for (V4VmOpenApiPhoneWithType ptvPhone : ptvPhones) {
-      Phone phone = new Phone();
-      phone.setAdditionalInformation(ptvPhone.getAdditionalInformation());
-      phone.setChargeDescription(ptvPhone.getChargeDescription());
-      phone.setIsFinnishServiceNumber(ptvPhone.getIsFinnishServiceNumber());
-      phone.setLanguage(ptvPhone.getLanguage());
-      phone.setNumber(ptvPhone.getNumber());
-      phone.setPrefixNumber(ptvPhone.getPrefixNumber());
-      phone.setServiceChargeType(ptvPhone.getServiceChargeType());
-      phone.setType(ptvPhone.getType());
-      result.add(phone);
+      if (StringUtils.isNotBlank(ptvPhone.getNumber())) {
+        Phone phone = new Phone();
+        phone.setAdditionalInformation(ptvPhone.getAdditionalInformation());
+        phone.setChargeDescription(ptvPhone.getChargeDescription());
+        phone.setIsFinnishServiceNumber(ptvPhone.getIsFinnishServiceNumber());
+        phone.setLanguage(ptvPhone.getLanguage());
+        phone.setNumber(ptvPhone.getNumber());
+        phone.setPrefixNumber(ptvPhone.getPrefixNumber());
+        phone.setServiceChargeType(ptvPhone.getServiceChargeType());
+        phone.setType(ptvPhone.getType());
+        result.add(phone);
+      }
     }
     
     return result;
@@ -421,16 +423,18 @@ public class PtvTranslator {
     
     List<Phone> result = new ArrayList<>(ptvPhones.size());
     for (V4VmOpenApiPhone ptvPhone : ptvPhones) {
-      Phone phone = new Phone();
-      phone.setAdditionalInformation(ptvPhone.getAdditionalInformation());
-      phone.setChargeDescription(ptvPhone.getChargeDescription());
-      phone.setIsFinnishServiceNumber(ptvPhone.getIsFinnishServiceNumber());
-      phone.setLanguage(ptvPhone.getLanguage());
-      phone.setNumber(ptvPhone.getNumber());
-      phone.setPrefixNumber(ptvPhone.getPrefixNumber());
-      phone.setServiceChargeType(ptvPhone.getServiceChargeType());
-      phone.setType(null);
-      result.add(phone);
+      if (StringUtils.isNotBlank(ptvPhone.getNumber())) {
+        Phone phone = new Phone();
+        phone.setAdditionalInformation(ptvPhone.getAdditionalInformation());
+        phone.setChargeDescription(ptvPhone.getChargeDescription());
+        phone.setIsFinnishServiceNumber(ptvPhone.getIsFinnishServiceNumber());
+        phone.setLanguage(ptvPhone.getLanguage());
+        phone.setNumber(ptvPhone.getNumber());
+        phone.setPrefixNumber(ptvPhone.getPrefixNumber());
+        phone.setServiceChargeType(ptvPhone.getServiceChargeType());
+        phone.setType(null);
+        result.add(phone);
+      }
     }
     
     return result;
@@ -443,11 +447,13 @@ public class PtvTranslator {
     
     List<Email> result = new ArrayList<>(ptvEmails.size());    
     for (V4VmOpenApiEmail ptvEmail : ptvEmails) {
-      Email email = new Email();
-      email.setDescription(ptvEmail.getDescription());
-      email.setLanguage(ptvEmail.getLanguage());
-      email.setValue(ptvEmail.getValue());
-      result.add(email);
+      if (StringUtils.isNotBlank(ptvEmail.getValue())) {
+        Email email = new Email();
+        email.setDescription(ptvEmail.getDescription());
+        email.setLanguage(ptvEmail.getLanguage());
+        email.setValue(ptvEmail.getValue());
+        result.add(email);
+      }
     }
     
     return result;
@@ -531,7 +537,7 @@ public class PtvTranslator {
       List<LocalizedValue> result = new ArrayList<>();
       
       for (VmOpenApiLanguageItem item : items) {
-        if (item != null) {
+        if ((item != null) && StringUtils.isNotBlank(item.getValue())) {
           LocalizedValue localizedValue = new LocalizedValue();
           localizedValue.setLanguage(item.getLanguage());
           localizedValue.setValue(item.getValue());
@@ -622,6 +628,10 @@ public class PtvTranslator {
     if (ptvWebPage == null) {
       return null;
     }
+    
+    if (StringUtils.isBlank(ptvWebPage.getUrl())) {
+      return null;
+    }
 
     WebPage webPage = new WebPage();
     webPage.setLanguage(ptvWebPage.getLanguage());
@@ -638,6 +648,10 @@ public class PtvTranslator {
       return null;
     }
 
+    if (StringUtils.isBlank(ptvWebPage.getUrl())) {
+      return null;
+    }
+
     WebPage webPage = new WebPage();
     webPage.setLanguage(ptvWebPage.getLanguage());
     webPage.setType(null);
@@ -650,6 +664,10 @@ public class PtvTranslator {
 
   private ServiceChannelAttachment translateAttachment(VmOpenApiAttachmentWithType ptvAttachment) {
     if (ptvAttachment == null) {
+      return null;
+    }
+    
+    if (StringUtils.isBlank(ptvAttachment.getUrl())) {
       return null;
     }
     

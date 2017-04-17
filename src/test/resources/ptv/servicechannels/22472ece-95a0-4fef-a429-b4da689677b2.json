@@ -40,13 +40,13 @@
       "chargeDescription":null,
       "prefixNumber":null,
       "isFinnishServiceNumber":true,
-      "number":null,
+      "number":"1234",
       "language":"fi"
     }
   ],
   "supportEmails":[
     {
-      "value":null,
+      "value":"support@example.com",
       "language":"fi"
     }
   ],
@@ -65,7 +65,7 @@
       "validForNow":false,
       "additionalInformation":[
         {
-          "value":"",
+          "value":"example",
           "language":"fi"
         }
       ],

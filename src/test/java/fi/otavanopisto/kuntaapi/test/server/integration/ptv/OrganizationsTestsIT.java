@@ -149,7 +149,7 @@ public class OrganizationsTestsIT extends AbstractIntegrationTest {
       .body("addresses[1][0].postOffice[0].value", is("MIKKELI"))
       .body("addresses[1][0].postOffice[0].language", is("sv"))
       .body("addresses[1][0].streetAddress.size()", is(1))
-      .body("addresses[1][0].streetAddress[0].value", nullValue())
+      .body("addresses[1][0].streetAddress[0].value", is("Example"))
       .body("addresses[1][0].streetAddress[0].language", is("fi"))
       .body("addresses[1][0].streetNumber", nullValue())
       .body("addresses[1][0].municipality", nullValue())

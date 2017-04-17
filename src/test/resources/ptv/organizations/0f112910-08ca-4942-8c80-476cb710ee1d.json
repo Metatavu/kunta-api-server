@@ -83,7 +83,7 @@
       ],
       "streetAddress":[
         {
-          "value":null,
+          "value":"Example",
           "language":"fi"
         }
       ],
