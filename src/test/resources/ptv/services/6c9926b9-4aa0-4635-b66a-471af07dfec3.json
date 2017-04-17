@@ -18,6 +18,11 @@
   "serviceDescriptions":[
     {
       "language":"fi",
+      "value":null,
+      "type":"ProcessingTimeAdditionalInfo"
+    },
+    {
+      "language":"fi",
       "value":"Tiivistelmä.",
       "type":"ShortDescription"
     },
@@ -35,6 +40,16 @@
       "language":"fi",
       "value":"",
       "type":"ChargeTypeAdditionalInfo"
+    },
+    {
+      "language":"fi",
+      "value":null,
+      "type":"ValidityTimeAdditionalInfo"
+    },
+    {
+      "language":"fi",
+      "value":null,
+      "type":"DeadLineAdditionalInfo"
     }
   ],
   "languages":[
@@ -192,7 +207,21 @@
     }
   ],
   "legislation":[
-
+    {
+      "names":[
+        {
+          "value":"Korkein oikeus",
+          "language":"fi"
+        }
+      ],
+      "webPages":[
+        {
+          "value":"Korkein oikeus",
+          "url":"http://www.finlex.fi/fi/oikeus/kko/",
+          "language":"fi"
+        }
+      ]
+    }
   ],
   "keywords":[
 

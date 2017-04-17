@@ -583,7 +583,7 @@ public class PtvTranslator {
       List<LocalizedValue> result = new ArrayList<>();
       
       for (VmOpenApiLocalizedListItem item : items) {
-        if (item != null) {
+        if ((item != null) && StringUtils.isNotBlank(item.getValue())) {
           LocalizedValue localizedValue = new LocalizedValue();
           localizedValue.setLanguage(item.getLanguage());
           localizedValue.setValue(item.getValue());
