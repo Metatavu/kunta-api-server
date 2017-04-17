@@ -1,4 +1,4 @@
-package fi.otavanopisto.kuntaapi.test.server.integration.restfulptv;
+package fi.otavanopisto.kuntaapi.test.server.integration.ptv;
 
 import static com.jayway.restassured.RestAssured.given;
 import static org.hamcrest.core.Is.is;
