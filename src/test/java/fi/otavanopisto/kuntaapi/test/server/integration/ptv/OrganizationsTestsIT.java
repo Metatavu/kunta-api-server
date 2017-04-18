@@ -78,7 +78,7 @@ public class OrganizationsTestsIT extends AbstractIntegrationTest {
       .body("descriptions.size()", is(0))
       .body("emailAddresses.size()", is(0))
       .body("phoneNumbers.size()", is(0))
-      .body("webPages.size()", is(1))
+      .body("webPages.size()", is(2))
       .body("webPages[0].value", is("Example"))
       .body("webPages[0].url", is("http://www.example.com"))
       .body("webPages[0].language", is("fi"))

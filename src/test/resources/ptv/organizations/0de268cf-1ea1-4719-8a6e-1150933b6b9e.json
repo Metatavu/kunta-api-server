@@ -39,6 +39,11 @@
     "value": "Example",
     "url": "http://www.example.com",
     "language": "fi"
+  }, {
+    "orderNumber": "2",
+    "value": "Example",
+    "url": "http://www.example.com/en",
+    "language": "en"
   }],
   "addresses":[
 
