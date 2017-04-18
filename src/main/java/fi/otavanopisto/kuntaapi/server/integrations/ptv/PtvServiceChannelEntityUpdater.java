@@ -111,7 +111,7 @@ public class PtvServiceChannelEntityUpdater extends EntityUpdater {
 
   @Override
   public String getName() {
-    return "ptv-electronic-channels";
+    return "ptv-service-channels";
   }
 
   @Override
