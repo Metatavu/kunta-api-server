@@ -57,6 +57,8 @@ public class PtvServiceIdUpdater extends AbstractPtvServiceIdUpdater {
   public void afterSuccess(V3VmOpenApiGuidPage guidPage) {
     if ((page + 1) < guidPage.getPageCount()) {
       page++;
+    } else {
+      page = 0;
     }
   }
 
