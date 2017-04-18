@@ -70,7 +70,7 @@ public abstract class AbstractPtvServiceIdUpdater extends IdUpdater {
         VmOpenApiItem item = items.get(i);
         Long orderIndex = getOrderIndex(i, response.getResponse());
         ServiceId ptvServiceId = ptvIdFactory.createServiceId(item.getId());
-        taskRequest.fire(new TaskRequest(false, new IdTask<ServiceId>(Operation.UPDATE, ptvServiceId, orderIndex)));
+        taskRequest.fire(new TaskRequest(getIsPriority(), new IdTask<ServiceId>(Operation.UPDATE, ptvServiceId, orderIndex)));
       }
       
       afterSuccess(response.getResponse());
