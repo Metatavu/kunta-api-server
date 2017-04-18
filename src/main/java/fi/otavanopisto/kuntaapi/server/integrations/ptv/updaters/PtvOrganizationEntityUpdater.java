@@ -87,7 +87,7 @@ public class PtvOrganizationEntityUpdater extends EntityUpdater {
 
   @Override
   public String getName() {
-    return "organizations";
+    return "ptv-organizations";
   }
 
   @Override
