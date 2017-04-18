@@ -176,7 +176,7 @@ public class ServicesTestsIT extends AbstractIntegrationTest {
       .statusCode(200)
       .body("id.size()", is(3))
       .body("type[1]", nullValue())
-      .body("statutoryDescriptionId[1]", notNullValue())
+      .body("statutoryDescriptionId[1]", nullValue())
       .body("serviceClasses[1].size()", is(1))
       .body("serviceClasses[1][0].name.size()", is(3))
       .body("serviceClasses[1][0].name[0].value", is("Työnhaku ja työpaikat"))
