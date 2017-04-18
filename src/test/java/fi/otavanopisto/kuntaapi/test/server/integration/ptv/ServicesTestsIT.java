@@ -218,6 +218,52 @@ public class ServicesTestsIT extends AbstractIntegrationTest {
   } 
   
   @Test
+  public void testListServicesByOrganization() {
+    String serviceId1 = getServiceId(0);
+    String serviceId2 = getServiceId(1);
+    String serviceId3 = getServiceId(2);
+    String organizationId1 = getOrganizationId(0);
+    String organizationId2 = getOrganizationId(1); 
+    String invalidOrganizationId = "invalid";
+    
+    given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get(String.format("/services?organizationId=%s", organizationId1))
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(2))
+      .body("id[0]", is(serviceId1))
+      .body("id[1]", is(serviceId2))
+      .body("organizations[0].size()", is(1))
+      .body("organizations[0][0].organizationId", is(organizationId1))
+      .body("organizations[1].size()", is(1))
+      .body("organizations[1][0].organizationId", is(organizationId1));
+    
+    given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get(String.format("/services?organizationId=%s", organizationId2))
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(1))
+      .body("id[0]", is(serviceId3))
+      .body("organizations[0].size()", is(1))
+      .body("organizations[0][0].organizationId", is(organizationId2));
+    
+    given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get(String.format("/services?organizationId=%s", invalidOrganizationId))
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(0));
+  }
+  
+  @Test
   public void testListServicesLimits() {
     assertListLimits("/services", 3);
   }
