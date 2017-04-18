@@ -38,7 +38,7 @@ public class PtvServiceChannelPriorityIdUpdater extends AbstractPtvServiceChanne
   
   @Override
   public String getName() {
-    return "service-channels-priority";
+    return "service-channel-priority-ids";
   }
   
   @Override
