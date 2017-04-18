@@ -1,4 +1,4 @@
-package fi.otavanopisto.kuntaapi.server.integrations.ptv;
+package fi.otavanopisto.kuntaapi.server.integrations.ptv.updaters;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -20,6 +20,7 @@ import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.IdUpdater;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.ServiceLocationServiceChannelId;
+import fi.otavanopisto.kuntaapi.server.integrations.ptv.PtvConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.client.PtvClient;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.ServiceChannelTasksQueue;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.ServiceLocationServiceChannelRemoveTask;

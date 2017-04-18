@@ -1,4 +1,4 @@
-package fi.otavanopisto.kuntaapi.server.integrations.ptv;
+package fi.otavanopisto.kuntaapi.server.integrations.ptv.updaters;
 
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -34,6 +34,9 @@ import fi.otavanopisto.kuntaapi.server.id.ServiceLocationServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.WebPageServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
+import fi.otavanopisto.kuntaapi.server.integrations.ptv.PtvConsts;
+import fi.otavanopisto.kuntaapi.server.integrations.ptv.PtvIdFactory;
+import fi.otavanopisto.kuntaapi.server.integrations.ptv.PtvTranslator;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.resources.PtvElectronicServiceChannelResourceContainer;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.resources.PtvPhoneServiceChannelResourceContainer;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.resources.PtvPrintableFormServiceChannelResourceContainer;

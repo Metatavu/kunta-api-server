@@ -1,4 +1,4 @@
-package fi.otavanopisto.kuntaapi.server.integrations.ptv;
+package fi.otavanopisto.kuntaapi.server.integrations.ptv.updaters;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -15,21 +15,22 @@ import javax.inject.Inject;
 
 import fi.metatavu.ptv.client.ApiResponse;
 import fi.metatavu.ptv.client.ResultType;
-import fi.metatavu.ptv.client.model.V4VmOpenApiWebPageChannel;
+import fi.metatavu.ptv.client.model.V4VmOpenApiElectronicChannel;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.IdUpdater;
+import fi.otavanopisto.kuntaapi.server.id.ElectronicServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
-import fi.otavanopisto.kuntaapi.server.id.WebPageServiceChannelId;
+import fi.otavanopisto.kuntaapi.server.integrations.ptv.PtvConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.client.PtvClient;
+import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.ElectronicServiceChannelRemoveTask;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.ServiceChannelTasksQueue;
-import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.WebPageServiceChannelRemoveTask;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 
 @ApplicationScoped
 @Singleton
 @AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
-public class PtvWebPageServiceChannelIdRemoveUpdater extends IdUpdater {
+public class PtvElectronicServiceChannelIdRemoveUpdater extends IdUpdater {
 
   private static final int BATCH_SIZE = 50;
   
@@ -44,13 +45,13 @@ public class PtvWebPageServiceChannelIdRemoveUpdater extends IdUpdater {
 
   @Inject
   private PtvClient ptvClient;
-  
+
   @Inject
   private IdentifierController identifierController;
-
+  
   @Inject
   private ServiceChannelTasksQueue serviceChannelTasksQueue;
-
+  
   @Resource
   private TimerService timerService;
 
@@ -63,7 +64,7 @@ public class PtvWebPageServiceChannelIdRemoveUpdater extends IdUpdater {
   
   @Override
   public String getName() {
-    return "ptv-web-page-service-channel-removed-ids";
+    return "ptv-electronic-service-channel-removed-ids";
   }
   
   @Override
@@ -82,22 +83,22 @@ public class PtvWebPageServiceChannelIdRemoveUpdater extends IdUpdater {
       return;
     }
     
-    List<WebPageServiceChannelId> webPageServiceChannelIds = idController.translateIds(identifierController.listWebPageServiceChannelIdsBySource(PtvConsts.IDENTIFIER_NAME, offset, BATCH_SIZE), PtvConsts.IDENTIFIER_NAME);
-    for (WebPageServiceChannelId webPageServiceChannelId : webPageServiceChannelIds) {
-      WebPageServiceChannelId ptvWebPageServiceChannelId = idController.translateWebPageServiceChannelId(webPageServiceChannelId, PtvConsts.IDENTIFIER_NAME);
-      if (ptvWebPageServiceChannelId == null) {
-        logger.log(Level.INFO, () -> String.format("Failed to translate web page service channel id %s into PTV service", webPageServiceChannelId)); 
+    List<ElectronicServiceChannelId> electronicServiceChannelIds = idController.translateIds(identifierController.listElectronicServiceChannelIdsBySource(PtvConsts.IDENTIFIER_NAME, offset, BATCH_SIZE), PtvConsts.IDENTIFIER_NAME);
+    for (ElectronicServiceChannelId electronicServiceChannelId : electronicServiceChannelIds) {
+      ElectronicServiceChannelId ptvElectronicServiceChannelId = idController.translateElectronicServiceChannelId(electronicServiceChannelId, PtvConsts.IDENTIFIER_NAME);
+      if (ptvElectronicServiceChannelId == null) {
+        logger.log(Level.INFO, () -> String.format("Failed to translate electronic service channel id %s into PTV service", electronicServiceChannelId)); 
         continue;
       }
-      
-      String path = String.format("/api/v4/ServiceChannel/%s", ptvWebPageServiceChannelId.getId());
-      ApiResponse<V4VmOpenApiWebPageChannel> response = ptvClient.doGETRequest(path, new ResultType<V4VmOpenApiWebPageChannel>() {}, null, null);
+
+      String path = String.format("/api/v4/ServiceChannel/%s", ptvElectronicServiceChannelId.getId());
+      ApiResponse<V4VmOpenApiElectronicChannel> response = ptvClient.doGETRequest(path, new ResultType<V4VmOpenApiElectronicChannel>() {}, null, null);
       if (response.getStatus() == 404) {
-        serviceChannelTasksQueue.enqueueTask(false, new WebPageServiceChannelRemoveTask(ptvWebPageServiceChannelId));
+        serviceChannelTasksQueue.enqueueTask(false, new ElectronicServiceChannelRemoveTask(ptvElectronicServiceChannelId));
       }
     }
     
-    if (webPageServiceChannelIds.size() == BATCH_SIZE) {
+    if (electronicServiceChannelIds.size() == BATCH_SIZE) {
       offset += BATCH_SIZE;
     } else {
       offset = 0;

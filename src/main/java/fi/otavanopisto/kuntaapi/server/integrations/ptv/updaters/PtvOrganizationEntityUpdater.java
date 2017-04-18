@@ -1,4 +1,4 @@
-package fi.otavanopisto.kuntaapi.server.integrations.ptv;
+package fi.otavanopisto.kuntaapi.server.integrations.ptv.updaters;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -29,6 +29,9 @@ import fi.otavanopisto.kuntaapi.server.index.IndexRequest;
 import fi.otavanopisto.kuntaapi.server.index.IndexableOrganization;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
+import fi.otavanopisto.kuntaapi.server.integrations.ptv.PtvConsts;
+import fi.otavanopisto.kuntaapi.server.integrations.ptv.PtvIdFactory;
+import fi.otavanopisto.kuntaapi.server.integrations.ptv.PtvTranslator;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.client.PtvApi;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.resources.PtvOrganizationResourceContainer;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.OrganizationIdTaskQueue;
