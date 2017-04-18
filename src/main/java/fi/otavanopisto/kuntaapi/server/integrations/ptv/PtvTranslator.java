@@ -235,7 +235,7 @@ public class PtvTranslator {
     result.setPublishingStatus(ptvService.getPublishingStatus());
     result.setRequirements(translateLocalizedItems(ptvService.getRequirements()));
     result.setServiceClasses(translateFintoItems(ptvService.getServiceClasses()));
-    result.setStatutoryDescriptionId(ptvService.getStatutoryServiceGeneralDescriptionId());
+    result.setStatutoryDescriptionId(null);
     result.setTargetGroups(translateFintoItems(ptvService.getTargetGroups()));
     result.setType(ptvService.getType());
     result.setElectronicServiceChannelIds(extractIds(kuntaApiElectronicServiceChannelIds));
