@@ -246,8 +246,6 @@ public class PtvTranslator {
     result.setLegislation(translateLaws(ptvService.getLegislation()));
     result.setOrganizations(serviceOrganizations);
     
-    ptvService.getOrganizations();
-    
     return result;
   }
   
