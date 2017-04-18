@@ -1,0 +1,195 @@
+{
+  "id":"0f112910-08ca-4942-8c80-476cb710ee1d",
+  "oid":null,
+  "municipality":{
+    "code":"491",
+    "name":[
+      {
+        "value":"S:t Michel",
+        "language":"sv"
+      },
+      {
+        "value":"Mikkeli",
+        "language":"fi"
+      }
+    ]
+  },
+  "organizationType":"Municipality",
+  "businessCode":"0165116-3",
+  "businessName":"Mikkelin kaupunki",
+  "organizationNames":[
+    {
+      "language":"fi",
+      "value":"Mikkelin kaupunki",
+      "type":"Name"
+    },
+    {
+      "language":"fi",
+      "value":"Mikkeli",
+      "type":"AlternateName"
+    }
+  ],
+  "displayNameType":"Name",
+  "organizationDescriptions":[
+    {
+      "language":"fi",
+      "value":"Mikkeli on 55 000 asukkaan kaupunki Etelä-Savossa Saimaan rannalla. Asiointi Mikkelin kaupungin kanssa on sujuvaa. Palvelut ovat saatavilla verkossa ympäri vuorokauden. Asiointi onnistuu vaikka kotisohvalta käsin helposti ja nopeasti.\nMikkeli panostaa uudenlaisten palvelujen tuottamiseen ja tarjoamiseen. Avoin digitaalisuus palvelee kuntalaisia ja tarjoaa mallia koko valtakunnalle. \nAvoimen datan sivusto open.mikkeli.fi kutsuu kuntalaisia mukaan ideoimaan digitaalisuuden mahdollisuuksia.",
+      "type":"Description"
+    }
+  ],
+  "emailAddresses":[
+    {
+      "description":null,
+      "value":"kirjaamo@mikkeli.fi",
+      "language":"fi"
+    }
+  ],
+  "phoneNumbers":[
+    {
+      "additionalInformation":null,
+      "serviceChargeType":"Charged",
+      "chargeDescription":null,
+      "prefixNumber":null,
+      "isFinnishServiceNumber":true,
+      "number":"0151941",
+      "language":"fi"
+    }
+  ],
+  "webPages":[
+    {
+      "orderNumber":null,
+      "value":"Mikkelin kaupungin kotisivut",
+      "url":"http://www.mikkeli.fi/",
+      "language":"fi"
+    }
+  ],
+  "addresses":[
+    {
+      "latitude":"0",
+      "longitude":"0",
+      "coordinateState":"EmptyInputReceived",
+      "type":"Postal",
+      "postOfficeBox":"PL 33",
+      "postalCode":"50101",
+      "postOffice":[
+        {
+          "value":"MIKKELI",
+          "language":"sv"
+        },
+        {
+          "value":"MIKKELI",
+          "language":"fi"
+        }
+      ],
+      "streetAddress":[
+        {
+          "value":"Example",
+          "language":"fi"
+        }
+      ],
+      "streetNumber":null,
+      "municipality":null,
+      "country":"FI",
+      "additionalInformations":[
+
+      ]
+    },
+    {
+      "latitude":"0",
+      "longitude":"0",
+      "coordinateState":"EmptyInputReceived",
+      "type":"Visiting",
+      "postOfficeBox":null,
+      "postalCode":"50100",
+      "postOffice":[
+        {
+          "value":"MIKKELI",
+          "language":"sv"
+        },
+        {
+          "value":"MIKKELI",
+          "language":"fi"
+        }
+      ],
+      "streetAddress":[
+        {
+          "value":"Maaherrankatu 9-11",
+          "language":"fi"
+        }
+      ],
+      "streetNumber":null,
+      "municipality":null,
+      "country":"FI",
+      "additionalInformations":[
+        {
+          "value":"Virastotalo",
+          "language":"fi"
+        }
+      ]
+    }
+  ],
+  "publishingStatus":"Published",
+  "parentOrganization":null,
+  "services":[
+    {
+      "additionalInformation":[
+
+      ],
+      "serviceId":"6c9926b9-4aa0-4635-b66a-471af07dfec3",
+      "organizationId":"0f112910-08ca-4942-8c80-476cb710ee1d",
+      "roleType":"Responsible",
+      "provisionType":null,
+      "webPages":[
+
+      ]
+    },
+    {
+      "additionalInformation":[
+
+      ],
+      "serviceId":"6c9926b9-4aa0-4635-b66a-471af07dfec3",
+      "organizationId":"0f112910-08ca-4942-8c80-476cb710ee1d",
+      "roleType":"Producer",
+      "provisionType":"SelfProduced",
+      "webPages":[
+
+      ]
+    },
+    {
+      "additionalInformation":[
+
+      ],
+      "serviceId":"822d5347-8398-4866-bb9d-9cdc60b38fba",
+      "organizationId":"0f112910-08ca-4942-8c80-476cb710ee1d",
+      "roleType":"Responsible",
+      "provisionType":null,
+      "webPages":[
+
+      ]
+    },
+    {
+      "additionalInformation":[
+
+      ],
+      "serviceId":"ef66b7c2-e938-4a30-ad57-475fc40abf27",
+      "organizationId":"0f112910-08ca-4942-8c80-476cb710ee1d",
+      "roleType":"Responsible",
+      "provisionType":null,
+      "webPages":[
+
+      ]
+    },
+    {
+      "additionalInformation":[
+
+      ],
+      "serviceId":"ef66b7c2-e938-4a30-ad57-475fc40abf27",
+      "organizationId":"0f112910-08ca-4942-8c80-476cb710ee1d",
+      "roleType":"Producer",
+      "provisionType":"SelfProduced",
+      "webPages":[
+
+      ]
+    }
+  ]
+}

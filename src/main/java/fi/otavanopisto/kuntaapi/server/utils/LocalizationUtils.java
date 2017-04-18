@@ -1,13 +1,14 @@
 package fi.otavanopisto.kuntaapi.server.utils;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.codec.binary.StringUtils;
 
-import fi.metatavu.restfulptv.client.model.LocalizedListItem;
+import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
 
 public class LocalizationUtils {
   
@@ -15,11 +16,11 @@ public class LocalizationUtils {
   }
   
   @SafeVarargs
-  public static List<String> getListsLanguages(final List<LocalizedListItem>... lists) {
+  public static List<String> getListsLanguages(final List<LocalizedValue>... lists) {
     List<String> result = new ArrayList<>();
     
-    for (List<LocalizedListItem> list : lists) {
-      for (LocalizedListItem item : list) {
+    for (List<LocalizedValue> list : lists) {
+      for (LocalizedValue item : list) {
         if (!result.contains(item.getLanguage())) {
           result.add(item.getLanguage());
         }
@@ -30,11 +31,11 @@ public class LocalizationUtils {
   }
 
   @SafeVarargs
-  public static List<String> getListsLanguages(String type, final List<LocalizedListItem>... lists) {
+  public static List<String> getListsLanguages(String type, final List<LocalizedValue>... lists) {
     List<String> result = new ArrayList<>();
     
-    for (List<LocalizedListItem> list : lists) {
-      for (LocalizedListItem item : list) {
+    for (List<LocalizedValue> list : lists) {
+      for (LocalizedValue item : list) {
         if (StringUtils.equals(type, item.getType()) && (!result.contains(item.getLanguage()))) {
           result.add(item.getLanguage());
         }
@@ -44,12 +45,28 @@ public class LocalizationUtils {
     return result;
   }
   
-  public static String getBestMatchingValue(String type, List<LocalizedListItem> items, String language, String defaultLanguage) {
+  public static List<String> getLocaleValues(List<LocalizedValue> items, String language) {
+    if (items == null) {
+      return Collections.emptyList();
+    }
+    
+    List<String> result = new ArrayList<>(items.size());
+    
+    for (LocalizedValue item : items) {
+      if (StringUtils.equals(language, item.getLanguage())) {
+        result.add(item.getValue());
+      }
+    }
+    
+    return result;
+  }
+  
+  public static String getBestMatchingValue(String type, List<LocalizedValue> items, String language, String defaultLanguage) {
     if (items.isEmpty()) {
       return null;
     }
     
-    Map<String, String> map = mapLocalizedListItems(type, items);
+    Map<String, String> map = mapLocalizedValues(type, items);
     if (map.isEmpty()) {
       return null;
     }
@@ -65,10 +82,10 @@ public class LocalizationUtils {
     return map.values().iterator().next();
   }
   
-  private static Map<String, String> mapLocalizedListItems(String type, List<LocalizedListItem> items) {
+  private static Map<String, String> mapLocalizedValues(String type, List<LocalizedValue> items) {
     Map<String, String> result = new HashMap<>();
     
-    for (LocalizedListItem item : items) {
+    for (LocalizedValue item : items) {
       if (StringUtils.equals(type, item.getType())) {
         result.put(item.getLanguage(), item.getValue());
       }

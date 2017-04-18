@@ -22,8 +22,7 @@ public class PtvIdProvider extends AbstractIdProvider {
     IdType.PHONE_SERVICE_CHANNEL, 
     IdType.PRINTABLE_FORM_SERVICE_CHANNEL, 
     IdType.SERVICE_LOCATION_SERVICE_CHANNEL, 
-    IdType.WEBPAGE_SERVICE_CHANNEL, 
-    IdType.ORGANIZATION_SERVICE
+    IdType.WEBPAGE_SERVICE_CHANNEL
   };
   
   @Override

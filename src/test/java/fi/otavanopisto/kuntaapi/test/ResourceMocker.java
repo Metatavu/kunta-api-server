@@ -37,13 +37,13 @@ public class ResourceMocker<I, R> {
 
   private EnumMap<MockedResourceStatus, List<MappingBuilder>> statusLists = new EnumMap<>(MockedResourceStatus.class);
   private boolean started = false;
-  private Map<I, MockedResource<R>> resources = new LinkedHashMap<>();
+  private Map<I, MockedResource<I, R>> resources = new LinkedHashMap<>();
   private Map<I, List<ResourceMocker<?, ?>>> subMockers = new LinkedHashMap<>();
   
   public void start() {
     started = true;
     
-    for (MockedResource<R> resource : resources.values()) {
+    for (MockedResource<I, R> resource : resources.values()) {
       for (MappingBuilder mapping : resource.getCurrentMappings()) {
         stubFor(mapping);
       }
@@ -80,7 +80,7 @@ public class ResourceMocker<I, R> {
       }
     }
 
-    for (MockedResource<R> resource : resources.values()) {
+    for (MockedResource<I, R> resource : resources.values()) {
       for (MappingBuilder mapping : resource.getMappings()) {
         removeStub(mapping);
       }
@@ -99,17 +99,17 @@ public class ResourceMocker<I, R> {
     
     MappingBuilder notFoundMapping = createNotFoundMapping(urlPattern);
     
-    resources.put(id, new MockedResource<>(resource, okGetMapping, okHeadMapping, notFoundMapping));
+    resources.put(id, new MockedResource<>(id, resource, okGetMapping, okHeadMapping, notFoundMapping));
   }
   
-  public Collection<MockedResource<R>> getMockedResources() {
+  public Collection<MockedResource<I, R>> getMockedResources() {
     return resources.values();
   }
   
-  public Collection<MockedResource<R>> getMockedResources(MockedResourceStatus status) {
-    Collection<MockedResource<R>> result = new ArrayList<>();
+  public Collection<MockedResource<I, R>> getMockedResources(MockedResourceStatus status) {
+    Collection<MockedResource<I, R>> result = new ArrayList<>();
     
-    for (MockedResource<R> resource : getMockedResources()) {
+    for (MockedResource<I, R> resource : getMockedResources()) {
       if (resource.getStatus().equals(status)) {
         result.add(resource);
       }
@@ -121,7 +121,7 @@ public class ResourceMocker<I, R> {
   public List<R> getResources(MockedResourceStatus status) {
     List<R> result = new ArrayList<>();
     
-    for (MockedResource<R> mockedResource : getMockedResources(status)) {
+    for (MockedResource<I, R> mockedResource : getMockedResources(status)) {
       result.add(mockedResource.getResource());
     }
     
@@ -133,7 +133,7 @@ public class ResourceMocker<I, R> {
   }  
   
   public void setStatus(I id, MockedResourceStatus status) {
-    MockedResource<R> resource = resources.get(id);
+    MockedResource<I, R> resource = resources.get(id);
     if (resource.getStatus() == status) {
       return;
     }
@@ -159,7 +159,7 @@ public class ResourceMocker<I, R> {
   @SuppressWarnings ("squid:S1301")
   public void mockAlternative(I id, R alternative) {
     List<MappingBuilder> alternativeMappings = new ArrayList<>();
-    MockedResource<R> resource = resources.get(id);
+    MockedResource<I, R> resource = resources.get(id);
     
     List<MappingBuilder> okMappings = resource.getMappings(MockedResourceStatus.OK);
     for (MappingBuilder okMapping : okMappings) {

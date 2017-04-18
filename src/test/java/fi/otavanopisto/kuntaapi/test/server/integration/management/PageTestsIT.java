@@ -22,7 +22,6 @@ import com.jayway.restassured.http.ContentType;
 
 import fi.metatavu.kuntaapi.server.rest.model.Page;
 import fi.otavanopisto.kuntaapi.server.integrations.management.ManagementConsts;
-import fi.otavanopisto.kuntaapi.server.integrations.ptv.PtvConsts;
 import fi.otavanopisto.kuntaapi.test.AbstractIntegrationTest;
 
 @SuppressWarnings ("squid:S1192")
@@ -38,10 +37,8 @@ public class PageTestsIT extends AbstractIntegrationTest {
   
   @Before
   public void beforeTest() throws InterruptedException {
-    createPtvSettings();
-
-    getRestfulPtvOrganizationMocker()
-      .mockOrganizations("0de268cf-1ea1-4719-8a6e-1150933b6b9e");
+    getPtvOrganizationMocker()
+      .mock("0de268cf-1ea1-4719-8a6e-1150933b6b9e");
     
     getManagementMediaMocker()
       .mockMedias(3001, 3002);
@@ -64,9 +61,7 @@ public class PageTestsIT extends AbstractIntegrationTest {
   @After
   public void afterClass() {
     String organizationId = getOrganizationId(0);
-    getPtvMocker().endMock();
     getManagementMocker().endMock();
-    deletePtvSettings();
     deleteManagementSettings(organizationId);
   }
   
@@ -414,15 +409,6 @@ public class PageTestsIT extends AbstractIntegrationTest {
     waitApiListCount(String.format("/organizations/%s/pages", organizationId), 3);
 
     assertEquals(pageId, getPageId(organizationId, 2));
-  }
-  
-  private void createPtvSettings() {
-    insertSystemSetting(PtvConsts.SYSTEM_SETTING_BASEURL, String.format("%s%s", getWireMockBasePath(), BASE_URL));
-    flushCache();
-  }
-  
-  private void deletePtvSettings() {
-    deleteSystemSetting(PtvConsts.SYSTEM_SETTING_BASEURL);
   }
     
   private void createManagementSettings(String organizationId) {

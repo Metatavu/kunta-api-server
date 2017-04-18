@@ -1,0 +1,102 @@
+{
+  "id":"1a17f994-b924-46ae-8708-c09938125119",
+  "serviceChannelType":"PrintableForm",
+  "organizationId":"18bb8d7c-1dc7-4188-9149-7d89fdeac75e",
+  "serviceChannelNames":[
+    {
+      "language":"fi",
+      "value":"Vieraskuntalaishakemus",
+      "type":"Name"
+    }
+  ],
+  "serviceChannelDescriptions":[
+    {
+      "language":"fi",
+      "value":"Tulevien 1. luokkalaisten lasten jotka eivät asu Kaarinassa, huoltajan tulee tehdä vieraskuntalaishakemus Kaarinan koulutoimistoon.   ",
+      "type":"ShortDescription"
+    },
+    {
+      "language":"fi",
+      "value":"TOISTETAAN TIETO, KOSKA NETTISIVUISSA EI OLE LISÄINFOA Tulevien 1. luokkalaisten lasten jotka eivät asu Kaarinassa, huoltajan tulee tehdä vieraskuntalaishakemus Kaarinan koulutoimistoon.   ",
+      "type":"Description"
+    }
+  ],
+  "formIdentifier":[
+    {
+      "value":"Esimerkki tunniste",
+      "language":"fi"
+    },
+    {
+      "value":"Exempel identifierare",
+      "language":"sv"
+    }
+  ],
+  "formReceiver":[
+    {
+      "value":"Sivistyspalvelut, Koulutuspalvelut",
+      "language":"fi"
+    },
+    {
+      "value":"Sivistyspalvelut, Koulutuspalvelut",
+      "language":"sv"
+    }
+  ],
+  "deliveryAddress":{
+    "latitude":"0",
+    "longitude":"0",
+    "coordinateState":"EmptyInputReceived",
+    "postOfficeBox":"",
+    "postalCode":"20780",
+    "postOffice":[
+      {
+        "value":"KAARINA",
+        "language":"sv"
+      },
+      {
+        "value":"KAARINA",
+        "language":"fi"
+      }
+    ],
+    "streetAddress":[
+      {
+        "value":"Lautakunnankatu 4",
+        "language":"fi"
+      }
+    ],
+    "streetNumber":null,
+    "municipality":null,
+    "country":"FI",
+    "additionalInformations":[
+      {
+        "value":"Vieraskuntalaishakemus voi postittaa tai tuoda Kaarinan koulutoimistoon. ",
+        "language":"fi"
+      }
+    ]
+  },
+  "channelUrls":[
+    {
+      "language":"fi",
+      "value":"http://www.kaarina.fi/opetus_ja_koulutus/perusopetus/fi_FI/ilmoittautuminen/",
+      "type":"DOC"
+    }
+  ],
+  "attachments":[
+
+  ],
+  "supportPhones":[
+
+  ],
+  "supportEmails":[
+
+  ],
+  "languages":[
+
+  ],
+  "webPages":[
+
+  ],
+  "serviceHours":[
+
+  ],
+  "publishingStatus":"Published"
+}

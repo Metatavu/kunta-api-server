@@ -23,7 +23,6 @@ import com.github.tomakehurst.wiremock.junit.WireMockRule;
 import com.jayway.restassured.http.ContentType;
 
 import fi.otavanopisto.kuntaapi.server.integrations.mikkelinyt.MikkeliNytConsts;
-import fi.otavanopisto.kuntaapi.server.integrations.ptv.PtvConsts;
 import fi.otavanopisto.kuntaapi.test.AbstractIntegrationTest;
 import fi.otavanopisto.kuntaapi.test.AbstractMocker;
 import fi.otavanopisto.mikkelinyt.model.Event;
@@ -63,10 +62,8 @@ public class MikkeliNytRestTestsIT extends AbstractIntegrationTest {
     String baseUrl = getWireMockBasePath();
     String imagesBasePath = IMAGES_BASE_PATH;
     
-    createSystemSettings();
-    
-    getRestfulPtvOrganizationMocker()
-      .mockOrganizations("0de268cf-1ea1-4719-8a6e-1150933b6b9e");
+    getPtvOrganizationMocker()
+      .mock("0de268cf-1ea1-4719-8a6e-1150933b6b9e");
     
     startMocks();
 
@@ -87,8 +84,6 @@ public class MikkeliNytRestTestsIT extends AbstractIntegrationTest {
   public void afterClass() {
     deleteOrganizationSettings(getOrganizationId(0));
     cleanMock(mocker);
-    getPtvMocker().endMock();
-    deleteSystemSettings();
   }
   
   /**
@@ -253,10 +248,6 @@ public class MikkeliNytRestTestsIT extends AbstractIntegrationTest {
     mocker.endMock();
   }
   
-  private void createSystemSettings() {
-    insertSystemSetting(PtvConsts.SYSTEM_SETTING_BASEURL, String.format("%s%s", getWireMockBasePath(), BASE_URL));
-  }
-
   private void createOrganizationSettings(String organizationId, String baseUrl, String imagesBasePath) {
     insertOrganizationSetting(organizationId, MikkeliNytConsts.ORGANIZATION_SETTING_APIKEY, ORGANIZATION_SETTING_APIKEY);
     insertOrganizationSetting(organizationId, MikkeliNytConsts.ORGANIZATION_SETTING_LOCATION, ORGANIZATION_SETTING_LOCATION);
@@ -269,10 +260,6 @@ public class MikkeliNytRestTestsIT extends AbstractIntegrationTest {
     deleteOrganizationSetting(organizationId, MikkeliNytConsts.ORGANIZATION_SETTING_LOCATION);
     deleteOrganizationSetting(organizationId, MikkeliNytConsts.ORGANIZATION_SETTING_BASEURL);
     deleteOrganizationSetting(organizationId, MikkeliNytConsts.ORGANIZATION_SETTING_IMAGEBASEURL);
-  }
-  
-  private void deleteSystemSettings() {
-    deleteSystemSetting(PtvConsts.SYSTEM_SETTING_BASEURL);
   }
   
   private class MikkeliNytMocker extends AbstractMocker {

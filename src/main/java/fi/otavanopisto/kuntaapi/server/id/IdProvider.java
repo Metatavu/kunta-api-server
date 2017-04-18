@@ -80,15 +80,6 @@ public interface IdProvider {
   public WebPageServiceChannelId translate(WebPageServiceChannelId serviceChannelId, String target);
   
   /**
-   * Translate organization service id
-   * 
-   * @param organizationServiceId original id
-   * @param target target type
-   * @return translated id
-   */
-  public OrganizationServiceId translate(OrganizationServiceId organizationServiceId, String target);
-  
-  /**
    * Translate event id
    * 
    * @param eventId original id

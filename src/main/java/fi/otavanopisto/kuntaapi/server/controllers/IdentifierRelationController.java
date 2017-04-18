@@ -21,7 +21,6 @@ import fi.otavanopisto.kuntaapi.server.id.JobId;
 import fi.otavanopisto.kuntaapi.server.id.MenuId;
 import fi.otavanopisto.kuntaapi.server.id.MenuItemId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
-import fi.otavanopisto.kuntaapi.server.id.OrganizationServiceId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportAgencyId;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportRouteId;
@@ -29,9 +28,11 @@ import fi.otavanopisto.kuntaapi.server.id.PublicTransportScheduleId;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportStopId;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportStopTimeId;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportTripId;
+import fi.otavanopisto.kuntaapi.server.id.ServiceId;
 import fi.otavanopisto.kuntaapi.server.id.ShortlinkId;
 import fi.otavanopisto.kuntaapi.server.id.TileId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
+import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
 import fi.otavanopisto.kuntaapi.server.persistence.dao.IdentifierRelationDAO;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.persistence.model.IdentifierRelation;
@@ -53,6 +54,9 @@ public class IdentifierRelationController {
   
   @Inject
   private IdentifierController identifierController;
+
+  @Inject
+  private KuntaApiIdFactory kuntaApiIdFactory;
   
   /**
    * Adds a child reference for parent identifier
@@ -172,17 +176,16 @@ public class IdentifierRelationController {
   }
   
   /**
-   * Lists organizationService ids by source and parent id. 
+   * Lists service ids by source and parent id. 
    * 
    * @param parentId parent id
-   * @return organizationService ids by parent id
+   * @return serviceIds by parent id
    */
-  public List<OrganizationServiceId> listOrganizationServiceIdsBySourceAndParentId(String source, BaseId parentId) {
-    List<Identifier> identifiers = listChildIdentifiersByParentSourceAndType(parentId, source, IdType.ORGANIZATION_SERVICE);
-    List<OrganizationServiceId> result = new ArrayList<>(identifiers.size());
+  public List<ServiceId> listServiceIdsBySourceAndParentId(String source, BaseId parentId) {
+    List<Identifier> identifiers = listChildIdentifiersByParentSourceAndType(parentId, source, IdType.SERVICE);
+    List<ServiceId> result = new ArrayList<>(identifiers.size());
     for (Identifier identifier : identifiers) {
-      OrganizationId organizationId = new OrganizationId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getOrganizationKuntaApiId());
-      result.add(new OrganizationServiceId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId()));
+      result.add(kuntaApiIdFactory.createFromIdentifier(ServiceId.class, identifier));
     }
     
     return result;

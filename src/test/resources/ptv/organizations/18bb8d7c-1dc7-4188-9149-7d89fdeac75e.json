@@ -1,0 +1,131 @@
+{
+  "id":"18bb8d7c-1dc7-4188-9149-7d89fdeac75e",
+  "oid":null,
+  "municipality":{
+    "code":"091",
+    "name":[
+      {
+        "value":"Helsingfors",
+        "language":"sv"
+      },
+      {
+        "value":"Helsinki",
+        "language":"fi"
+      }
+    ]
+  },
+  "organizationType":"Municipality",
+  "businessCode":"0201256-6",
+  "businessName":null,
+  "organizationNames":[
+    {
+      "language":"fi",
+      "value":"Helsinki",
+      "type":"AlternateName"
+    },
+    {
+      "language":"fi",
+      "value":"Helsingin kaupunki",
+      "type":"Name"
+    }
+  ],
+  "displayNameType":"Name",
+  "organizationDescriptions":[
+    {
+      "language":"fi",
+      "value":"",
+      "type":"Description"
+    }
+  ],
+  "emailAddresses":[
+    {
+      "description":"Neuvonta ja asiakaspalvelu",
+      "value":"helsinki.kirjaamo@hel.fi",
+      "language":"fi"
+    }
+  ],
+  "phoneNumbers":[
+    {
+      "additionalInformation":"Vaihde",
+      "serviceChargeType":"Charged",
+      "chargeDescription":"Jonotusajalta peritään normaali paikallisverkkomaksu",
+      "prefixNumber":"+358",
+      "isFinnishServiceNumber":false,
+      "number":"93101691",
+      "language":"fi"
+    }
+  ],
+  "webPages":[
+    {
+      "orderNumber":"1",
+      "value":"Helsingin kaupungin internet sivu",
+      "url":"http://www.hel.fi/www/helsinki/fi",
+      "language":"fi"
+    }
+  ],
+  "addresses":[
+    {
+      "latitude":"0",
+      "longitude":"0",
+      "coordinateState":"EmptyInputReceived",
+      "type":"Postal",
+      "postOfficeBox":"PL 1",
+      "postalCode":"00099",
+      "postOffice":[
+        {
+          "value":"HELSINGFORS STAD",
+          "language":"sv"
+        },
+        {
+          "value":"HELSINGIN KAUPUNKI",
+          "language":"fi"
+        }
+      ],
+      "streetAddress":[
+        {
+          "value":"",
+          "language":"fi"
+        }
+      ],
+      "streetNumber":"2 D",
+      "municipality":null,
+      "country":"FI",
+      "additionalInformations":[
+
+      ]
+    },
+    {
+      "latitude":"6671884.451",
+      "longitude":"386429.579",
+      "coordinateState":"Ok",
+      "type":"Visiting",
+      "postOfficeBox":"",
+      "postalCode":"00100",
+      "postOffice":[
+        {
+          "value":"HELSINGFORS",
+          "language":"sv"
+        },
+        {
+          "value":"HELSINKI",
+          "language":"fi"
+        }
+      ],
+      "streetAddress":[
+        {
+          "value":"Pohjoisesplanadi",
+          "language":"fi"
+        }
+      ],
+      "streetNumber":"11-13",
+      "municipality":null,
+      "country":"FI",
+      "additionalInformations":[
+
+      ]
+    }
+  ],
+  "publishingStatus":"Published",
+  "parentOrganization":null,
+  "services":[]
+}
