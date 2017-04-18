@@ -17,6 +17,7 @@ import fi.otavanopisto.kuntaapi.server.id.ServiceId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceLocationServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.WebPageServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.index.SearchResult;
+import fi.otavanopisto.kuntaapi.server.index.ServiceLocationServiceChannelSearcher;
 import fi.otavanopisto.kuntaapi.server.index.ServiceSearcher;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceChannelProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceProvider;
@@ -37,6 +38,9 @@ public class ServiceController {
   
   @Inject
   private ServiceSearcher serviceSearcher;
+  
+  @Inject
+  private ServiceLocationServiceChannelSearcher serviceLocationServiceChannelSearcher;
 
   @Inject
   private Instance<ServiceProvider> serviceProviders;
@@ -168,14 +172,32 @@ public class ServiceController {
     return ListUtils.limit(entityController.sortEntitiesInNaturalOrder(result), firstResult, maxResults);
   }
 
-  public List<ServiceLocationServiceChannel> listServiceLocationServiceChannels(Long firstResult, Long maxResults) {
-    List<ServiceLocationServiceChannel> result = new ArrayList<>();
-    
-    for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
-      result.addAll(serviceChannelProvider.listServiceLocationServiceChannels());
-    }
+  public List<ServiceLocationServiceChannel> listServiceLocationServiceChannels(String search, Long firstResult, Long maxResults) {
+    if (search != null) {
+      SearchResult<ServiceLocationServiceChannelId> searchResult = serviceLocationServiceChannelSearcher.searchServiceLocationServiceChannels(search, firstResult, maxResults);
+      if (searchResult == null) {
+        return Collections.emptyList();
+      }
 
-    return ListUtils.limit(entityController.sortEntitiesInNaturalOrder(result), firstResult, maxResults);
+      List<ServiceLocationServiceChannel> result = new ArrayList<>(searchResult.getResult().size());
+      for (ServiceLocationServiceChannelId serviceLocationServiceChannelId : searchResult.getResult()) {
+        ServiceLocationServiceChannel serviceLocationServiceChannel = findServiceLocationServiceChannel(serviceLocationServiceChannelId);
+        if (serviceLocationServiceChannel != null) {
+          result.add(serviceLocationServiceChannel);
+        }
+      }
+      
+      return result;
+    } else {
+      List<ServiceLocationServiceChannel> result = new ArrayList<>();
+      
+      
+      for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
+        result.addAll(serviceChannelProvider.listServiceLocationServiceChannels());
+      }
+  
+      return ListUtils.limit(entityController.sortEntitiesInNaturalOrder(result), firstResult, maxResults);
+    }
   }
 
   public List<WebPageServiceChannel> listWebPageServiceChannels(Long firstResult, Long maxResults) {
