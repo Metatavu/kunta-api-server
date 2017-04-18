@@ -35,7 +35,7 @@ public class PtvOrganizationIdUpdater extends AbstractPtvOrganizationIdUpdater {
   
   @Override
   public String getName() {
-    return "organizations";
+    return "organization-ids";
   }
   
   @Override
