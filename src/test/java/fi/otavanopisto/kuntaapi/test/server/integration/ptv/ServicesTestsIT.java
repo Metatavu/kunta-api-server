@@ -45,7 +45,12 @@ public class ServicesTestsIT extends AbstractIntegrationTest {
     
     startMocks();
     
+    waitApiListCount("/electronicServiceChannels", 3);
+    waitApiListCount("/phoneServiceChannels", 3);
+    waitApiListCount("/printableFormServiceChannels", 3);
     waitApiListCount("/serviceLocationServiceChannels", 3);
+    waitApiListCount("/webPageServiceChannels", 3);
+    
     waitApiListCount("/services", 3);
   }
   

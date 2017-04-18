@@ -1,4 +1,4 @@
-package fi.otavanopisto.kuntaapi.server.rest;
+ package fi.otavanopisto.kuntaapi.server.rest;
 
 import java.time.OffsetDateTime;
 import java.util.List;
@@ -1657,7 +1657,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   }
 
   private Response validateListLimitParams(Integer firstResult, Integer maxResults) {
-    return validateListLimitParams(firstResult != null ? firstResult.intValue() : null, maxResults != null ? maxResults.intValue() : null);
+    return validateListLimitParams(firstResult != null ? firstResult.longValue() : null, maxResults != null ? maxResults.longValue() : null);
   }
   
   private Response validateListLimitParams(Long firstResult, Long maxResults) {
