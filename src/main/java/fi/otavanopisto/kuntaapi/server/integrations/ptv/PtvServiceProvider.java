@@ -6,16 +6,12 @@ import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
-import fi.metatavu.kuntaapi.server.rest.model.OrganizationService;
 import fi.metatavu.kuntaapi.server.rest.model.Service;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
-import fi.otavanopisto.kuntaapi.server.id.OrganizationServiceId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceId;
-import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.ptv.resources.PtvOrganizationServiceResourceContainer;
 
 /**
  * PTV Service provider
@@ -26,10 +22,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.ptv.resources.PtvOrganizatio
 public class PtvServiceProvider implements ServiceProvider {
   
   @Inject
-  private PtvServiceCache ptvServiceCache;
-  
-  @Inject
-  private PtvOrganizationServiceResourceContainer ptvOrganizationServiceCache;
+  private PtvServiceResourceContainer ptvServiceResourceContainer;
   
   @Inject
   private IdentifierController identifierController;
@@ -39,7 +32,7 @@ public class PtvServiceProvider implements ServiceProvider {
   
   @Override
   public Service findService(ServiceId serviceId) {
-    return ptvServiceCache.get(serviceId);
+    return ptvServiceResourceContainer.get(serviceId);
   }
 
   @Override
@@ -54,7 +47,7 @@ public class PtvServiceProvider implements ServiceProvider {
     
     List<Service> result = new ArrayList<>(serviceIds.size());
     for (ServiceId serviceId : serviceIds) {
-      Service service = ptvServiceCache.get(serviceId);
+      Service service = ptvServiceResourceContainer.get(serviceId);
       if (service != null) {
         result.add(service);
       }
@@ -64,18 +57,7 @@ public class PtvServiceProvider implements ServiceProvider {
   }
   
   private List<ServiceId> listOrganizationServiceIds(OrganizationId organizationId) {
-    List<OrganizationServiceId> organizationServiceIds = identifierRelationController.listOrganizationServiceIdsBySourceAndParentId(PtvConsts.IDENTIFIER_NAME, organizationId);
-    
-    List<ServiceId> result = new ArrayList<>(organizationServiceIds.size());
-    
-    for (OrganizationServiceId organizationServiceId : organizationServiceIds) {
-      OrganizationService organizationService = ptvOrganizationServiceCache.get(organizationServiceId);
-      if (organizationService != null) {
-        result.add(new ServiceId(KuntaApiConsts.IDENTIFIER_NAME, organizationService.getServiceId()));
-      }
-    }
-    
-    return result;
+    return identifierRelationController.listServiceIdsBySourceAndParentId(PtvConsts.IDENTIFIER_NAME, organizationId);
   }
   
 }

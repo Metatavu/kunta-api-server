@@ -1,0 +1,46 @@
+{
+  "id":"e9ec256b-5ca2-4663-9da6-d8a2faff21a8",
+  "serviceChannelType":"WebPage",
+  "organizationId":"18bb8d7c-1dc7-4188-9149-7d89fdeac75e",
+  "serviceChannelNames":[
+    {
+      "language":"fi",
+      "value":"Ympäristöterveydenhuollon tarkastusten hinnasto",
+      "type":"Name"
+    }
+  ],
+  "serviceChannelDescriptions":[
+    {
+      "language":"fi",
+      "value":"Rovakaaren Ympäristöterveydenhuollon valvontasuunnitelmaan sisältyvien tarkastusten maksut vuonna 2017",
+      "type":"ShortDescription"
+    },
+    {
+      "language":"fi",
+      "value":"Rovakaaren Ympäristöterveydenhuollon taksat vuonna 2017.\nMääräytymisperusteet: s. 1-6\nMaksuryhmät: s. 7 (Liite 1)\nHinnasto: s 8-11 (Liitteet 2 ja 3)",
+      "type":"Description"
+    }
+  ],
+  "urls":[
+    {
+      "value":"https://www.rovaniemi.fi/loader.aspx?id=3fa104dd-dda1-4991-9587-b53ceab2da5c",
+      "language":"fi"
+    }
+  ],
+  "supportPhones":[
+
+  ],
+  "supportEmails":[
+
+  ],
+  "languages":[
+    "fi"
+  ],
+  "webPages":[
+
+  ],
+  "serviceHours":[
+
+  ],
+  "publishingStatus":"Published"
+}

@@ -1,0 +1,49 @@
+{
+  "id":"626cdd7a-e205-42da-8ce5-82b3b7add258",
+  "serviceChannelType":"Phone",
+  "organizationId":"18bb8d7c-1dc7-4188-9149-7d89fdeac75e",
+  "serviceChannelNames":[
+    {
+      "language":"fi",
+      "value":"Puhelinasiointi maksuton (esimerkki)",
+      "type":"Name"
+    }
+  ],
+  "serviceChannelDescriptions":[
+    {
+      "language":"fi",
+      "value":"Tämä on täysin maksuton puhelinasiointikanava. ",
+      "type":"ShortDescription"
+    },
+    {
+      "language":"fi",
+      "value":"Tämä on täysin maksuton puhelinasiointikanava, jolla testataan beta.suomi.fin toteutusta. ",
+      "type":"Description"
+    }
+  ],
+  "phoneNumbers":[
+    {
+      "type":"Phone",
+      "additionalInformation":null,
+      "serviceChargeType":"Free",
+      "chargeDescription":null,
+      "prefixNumber":"+358",
+      "isFinnishServiceNumber":false,
+      "number":"2012345",
+      "language":"fi"
+    }
+  ],
+  "supportEmails":[
+
+  ],
+  "languages":[
+    "fi"
+  ],
+  "webPages":[
+
+  ],
+  "serviceHours":[
+
+  ],
+  "publishingStatus":"Published"
+}

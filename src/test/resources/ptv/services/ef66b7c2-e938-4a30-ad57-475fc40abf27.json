@@ -1,0 +1,84 @@
+{
+  "id":"ef66b7c2-e938-4a30-ad57-475fc40abf27",
+  "type":null,
+  "statutoryServiceGeneralDescriptionId":"4f34f234-8112-41bd-ae4a-51e8ed93543d",
+  "serviceChargeType":null,
+  "serviceNames":[
+    {
+      "language":"fi",
+      "value":"Romanikielen opetus",
+      "type":"Name"
+    }
+  ],
+  "serviceDescriptions":[
+
+  ],
+  "languages":[
+
+  ],
+  "serviceClasses":[
+    {
+      "name":[
+        {
+          "value":"Perusopetus",
+          "language":"fi"
+        },
+        {
+          "value":"Grundläggande utbildning",
+          "language":"sv"
+        },
+        {
+          "value":"Basic education",
+          "language":"en"
+        }
+      ],
+      "code":"P6.2",
+      "ontologyType":"PTVL",
+      "uri":"http://urn.fi/URN:NBN:fi:au:ptvl:P6.2",
+      "parentId":"fa8991cb-1264-4950-954c-adc00a017911",
+      "parentUri":"http://urn.fi/URN:NBN:fi:au:ptvl:P6"
+    }
+  ],
+  "ontologyTerms":[
+
+  ],
+  "targetGroups":[
+
+  ],
+  "lifeEvents":[
+
+  ],
+  "industrialClasses":[
+
+  ],
+  "legislation":[
+
+  ],
+  "keywords":[
+
+  ],
+  "serviceCoverageType":null,
+  "municipalities":[
+
+  ],
+  "requirements":[
+
+  ],
+  "serviceChannels":[
+
+  ],
+  "organizations":[
+    {
+      "additionalInformation":[
+
+      ],
+      "organizationId":"18bb8d7c-1dc7-4188-9149-7d89fdeac75e",
+      "roleType":"Responsible",
+      "provisionType":null,
+      "webPages":[
+
+      ]
+    }
+  ],
+  "publishingStatus":"Published"
+}

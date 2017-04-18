@@ -19,6 +19,7 @@ import com.jayway.restassured.path.json.exception.JsonPathException;
 import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
 import fi.metatavu.kuntaapi.server.rest.model.Page;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
+import fi.otavanopisto.kuntaapi.server.integrations.ptv.PtvConsts;
 
 /**
  * Abstract base class for integration tests
@@ -31,7 +32,6 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   
   public static final String BASE_URL = "/v1";
   
-  private RestFulPtvMocker ptvMocker = new RestFulPtvMocker();
   private KuntarekryMocker kuntarekryMocker = new KuntarekryMocker();
   private ManagementMocker managementMocker = new ManagementMocker();
   private CasemMocker casemMocker = new CasemMocker();
@@ -47,14 +47,10 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   private ManagementFragmentMocker managementFragmentMocker = new ManagementFragmentMocker();
   private ManagementMediaMocker managementMediaMocker = new ManagementMediaMocker();
   private ManagementTileMocker managementTileMocker = new ManagementTileMocker();
-  private RestfulPtvServiceMocker restfulPtvServiceMocker = new RestfulPtvServiceMocker();
-  private RestfulPtvOrganizationMocker restfulPtvOrganizationMocker = new RestfulPtvOrganizationMocker();
-  private RestfulPtvElectronicServiceChannelMocker restfulPtvElectronicServiceChannelMocker = new RestfulPtvElectronicServiceChannelMocker();
-  private RestfulPtvPhoneServiceChannelMocker restfulPtvPhoneServiceChannelMocker = new RestfulPtvPhoneServiceChannelMocker();
-  private RestfulPtvPrintableFormServiceChannelMocker restfulPtvPrintableFormServiceChannelMocker = new RestfulPtvPrintableFormServiceChannelMocker();
-  private RestfulPtvServiceLocationServiceChannelMocker restfulPtvServiceLocationServiceChannelMocker = new RestfulPtvServiceLocationServiceChannelMocker();
-  private RestfulPtvWebPageServiceChannelMocker restfulPtvWebPageServiceChannelMocker = new RestfulPtvWebPageServiceChannelMocker();
   
+  private PtvServiceMocker ptvServiceMocker = new PtvServiceMocker();
+  private PtvServiceChannelMocker ptvServiceChannelMocker = new PtvServiceChannelMocker();
+  private PtvOrganizationMocker ptvOrganizationMocker = new PtvOrganizationMocker();
   
   @After
   public void afterEveryTest() {
@@ -76,26 +72,20 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     managementTileMocker.endMock();
     managementCategoryMocker.endMock();
     managementTagMocker.endMock();
-    
-    restfulPtvServiceMocker.endMock();
-    restfulPtvOrganizationMocker.endMock();
-    restfulPtvElectronicServiceChannelMocker.endMock();
-    restfulPtvPhoneServiceChannelMocker.endMock();
-    restfulPtvPrintableFormServiceChannelMocker.endMock();
-    restfulPtvServiceLocationServiceChannelMocker.endMock();
-    restfulPtvWebPageServiceChannelMocker.endMock();
-    
-    deleteIdentifiers();    
+    ptvServiceMocker.stop();
+    ptvServiceChannelMocker.stop();
+    ptvOrganizationMocker.stop();
+
+    deleteIdentifiers();   
+    deleteSystemSettings();
   }
   
-  public void startMocks() {
-    restfulPtvElectronicServiceChannelMocker.startMock();
-    restfulPtvPhoneServiceChannelMocker.startMock();
-    restfulPtvPrintableFormServiceChannelMocker.startMock();
-    restfulPtvServiceLocationServiceChannelMocker.startMock();
-    restfulPtvWebPageServiceChannelMocker.startMock();
-    restfulPtvOrganizationMocker.startMock();
-    restfulPtvServiceMocker.startMock();
+  public void startMocks() { 
+    createSystemSettings();
+    
+    ptvOrganizationMocker.start();
+    ptvServiceChannelMocker.start();
+    ptvServiceMocker.start();
     kuntarekryMocker.startMock();
     managementMocker.startMock();
     casemMocker.startMock();
@@ -117,8 +107,8 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     setLog4jLevel(Level.WARN);
   }
   
-  public RestFulPtvMocker getPtvMocker() {
-    return ptvMocker;
+  public PtvServiceMocker getPtvServiceMocker() {
+    return ptvServiceMocker;
   }
 
   public KuntarekryMocker getKuntarekryMocker() {
@@ -177,34 +167,14 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     return managementTagMocker;
   }
   
-  public RestfulPtvOrganizationMocker getRestfulPtvOrganizationMocker() {
-    return restfulPtvOrganizationMocker;
+  public PtvServiceChannelMocker getPtvServiceChannelMocker() {
+    return ptvServiceChannelMocker;
   }
   
-  public RestfulPtvServiceMocker getRestfulPtvServiceMocker() {
-    return restfulPtvServiceMocker;
+  public PtvOrganizationMocker getPtvOrganizationMocker() {
+    return ptvOrganizationMocker;
   }
   
-  public RestfulPtvElectronicServiceChannelMocker getRestfulPtvElectronicServiceChannelMocker() {
-    return restfulPtvElectronicServiceChannelMocker;
-  }
-  
-  public RestfulPtvPhoneServiceChannelMocker getRestfulPtvPhoneServiceChannelMocker() {
-    return restfulPtvPhoneServiceChannelMocker;
-  }
-  
-  public RestfulPtvPrintableFormServiceChannelMocker getRestfulPtvPrintableFormServiceChannelMocker() {
-    return restfulPtvPrintableFormServiceChannelMocker;
-  }
-  
-  public RestfulPtvServiceLocationServiceChannelMocker getRestfulPtvServiceLocationServiceChannelMocker() {
-    return restfulPtvServiceLocationServiceChannelMocker;
-  }
-  
-  public RestfulPtvWebPageServiceChannelMocker getRestfulPtvWebPageServiceChannelMocker() {
-    return restfulPtvWebPageServiceChannelMocker;
-  }
-
   protected void addServerLogEntry(String text) {
     given()
       .baseUri(getApiBasePath())
@@ -560,6 +530,66 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
         .getString(String.format("id[%d]", index));
   }
   
+  protected String getElectronicChannelId(int index) throws InterruptedException {
+    waitApiListCount("/electronicServiceChannels", 3);
+    
+    return given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get("/electronicServiceChannels")
+      .body()
+      .jsonPath()
+      .getString(String.format("id[%d]", index));
+  }
+  
+  protected String getPhoneChannelId(int index) throws InterruptedException {
+    waitApiListCount("/phoneServiceChannels", 3);
+    
+    return given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get("/phoneServiceChannels")
+      .body()
+      .jsonPath()
+      .getString(String.format("id[%d]", index));
+  }
+  
+  protected String getPrintableFormChannelId(int index) throws InterruptedException {
+    waitApiListCount("/printableFormServiceChannels", 3);
+    
+    return given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get("/printableFormServiceChannels")
+      .body()
+      .jsonPath()
+      .getString(String.format("id[%d]", index));
+  }
+  
+  protected String getServiceLocationChannelId(int index) throws InterruptedException {
+    waitApiListCount("/serviceLocationServiceChannels", 3);
+    
+    return given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get("/serviceLocationServiceChannels")
+      .body()
+      .jsonPath()
+      .getString(String.format("id[%d]", index));
+  }
+  
+  protected String getWebPageChannelId(int index) throws InterruptedException {
+    waitApiListCount("/webPageServiceChannels", 3);
+    
+    return given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get("/webPageServiceChannels")
+      .body()
+      .jsonPath()
+      .getString(String.format("id[%d]", index));
+  }
+  
   protected int countApiList(String path) {
     return given() 
       .baseUri(getApiBasePath())
@@ -734,6 +764,14 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     LoggerConfig loggerConfig = config.getLoggerConfig(LogManager.ROOT_LOGGER_NAME); 
     loggerConfig.setLevel(level);
     loggerContext.updateLoggers();
+  }
+  
+  private void createSystemSettings() {
+    insertSystemSetting(PtvConsts.SYSTEM_SETTING_BASEURL, String.format("%s%s", getWireMockBasePath(), "/ptv"));
+  }
+  
+  private void deleteSystemSettings() {
+    deleteSystemSetting(PtvConsts.SYSTEM_SETTING_BASEURL);
   }
   
 }

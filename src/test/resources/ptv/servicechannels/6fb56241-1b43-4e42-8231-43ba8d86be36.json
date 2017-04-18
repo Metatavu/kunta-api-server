@@ -1,0 +1,71 @@
+{
+  "id":"6fb56241-1b43-4e42-8231-43ba8d86be36",
+  "serviceChannelType":"PrintableForm",
+  "organizationId":"18bb8d7c-1dc7-4188-9149-7d89fdeac75e",
+  "serviceChannelNames":[
+    {
+      "language":"fi",
+      "value":"Poikkeamislupa ja suunnittelutarveratkaisun hakemuslomake",
+      "type":"Name"
+    }
+  ],
+  "serviceChannelDescriptions":[
+    {
+      "language":"fi",
+      "value":"Poikkeamisluvan ja suunnittelutarveratkaisun tarpeellisuus ja käsittely.",
+      "type":"ShortDescription"
+    },
+    {
+      "language":"fi",
+      "value":"Poikkeuslupa asemakaava-alueilla tarvitaan, mikäli halutaan poiketa kaavamääräyksistä tai rakennusjärjestyksen määräyksistä. Haja-asutusalueelle rakentaminen edellyttää pääsääntöisesti suunnittelutarveratkaisun. Ranta-alueilla uuden rakennuksen rakentaminen tai vähäistä suurempi laajentaminen edellyttää poikkeamisluvan. Lisäksi rakennushanke saattaa edellyttää poikkeamispäätöstä esim. rakennuskiellosta tai kunnan rakennusjärjestyksestä.  Poikkeamis- ja suunnittelutarvehakemukset ratkaistaan kaavoituspäällikön viranhaltijapäätöksinä. Joissakin tapauksissa poikkeamispäätöksen tekee Uudenmaan ELY-keskus, jolloin kaupunki antaa siitä lausunnon. Hakijan on varauduttava 3-6 kk käsittelyaikaan. \n",
+      "type":"Description"
+    }
+  ],
+  "formIdentifier":[
+    {
+      "value":"",
+      "language":"fi"
+    },
+    {
+      "value":"",
+      "language":"sv"
+    }
+  ],
+  "formReceiver":[
+    {
+      "value":"",
+      "language":"fi"
+    },
+    {
+      "value":"",
+      "language":"sv"
+    }
+  ],
+  "deliveryAddress":null,
+  "channelUrls":[
+    {
+      "language":"fi",
+      "value":"http://www.lohja.fi/Liitetiedostot/Kaupunkisuunnittelu/poikkarihakemus2011.pdf",
+      "type":"PDF"
+    }
+  ],
+  "attachments":[
+
+  ],
+  "supportPhones":[
+
+  ],
+  "supportEmails":[
+
+  ],
+  "languages":[
+
+  ],
+  "webPages":[
+
+  ],
+  "serviceHours":[
+
+  ],
+  "publishingStatus":"Published"
+}

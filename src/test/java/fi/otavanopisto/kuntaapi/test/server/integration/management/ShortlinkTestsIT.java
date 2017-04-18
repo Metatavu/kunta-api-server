@@ -14,7 +14,6 @@ import com.github.tomakehurst.wiremock.junit.WireMockRule;
 import com.jayway.restassured.http.ContentType;
 
 import fi.otavanopisto.kuntaapi.server.integrations.management.ManagementConsts;
-import fi.otavanopisto.kuntaapi.server.integrations.ptv.PtvConsts;
 import fi.otavanopisto.kuntaapi.test.AbstractIntegrationTest;
 
 @SuppressWarnings ("squid:S1192")
@@ -28,10 +27,8 @@ public class ShortlinkTestsIT extends AbstractIntegrationTest {
   
   @Before
   public void beforeTest() throws InterruptedException {
-    createPtvSettings();
-    
-    getRestfulPtvOrganizationMocker()
-      .mockOrganizations("0de268cf-1ea1-4719-8a6e-1150933b6b9e");
+    getPtvOrganizationMocker()
+      .mock("0de268cf-1ea1-4719-8a6e-1150933b6b9e");
     
     getManagementShortlinkMocker()
       .mockShortlinks(7001, 7002, 7003);
@@ -48,9 +45,7 @@ public class ShortlinkTestsIT extends AbstractIntegrationTest {
   @After
   public void afterClass() {
     String organizationId = getOrganizationId(0);
-    getPtvMocker().endMock();
     getManagementMocker().endMock();
-    deletePtvSettings();
     deleteManagementSettings(organizationId);
   }
   
@@ -123,15 +118,6 @@ public class ShortlinkTestsIT extends AbstractIntegrationTest {
     
     assertNotFound(String.format("/organizations/%s/shortlinks/%s", incorrectOrganizationId, organizationShortlinkId));
     assertEquals(0, countApiList(String.format("/organizations/%s/shortlinks", incorrectOrganizationId)));
-  }
-
-  private void createPtvSettings() {
-    insertSystemSetting(PtvConsts.SYSTEM_SETTING_BASEURL, String.format("%s%s", getWireMockBasePath(), BASE_URL));
-    flushCache();
-  }
-  
-  private void deletePtvSettings() {
-    deleteSystemSetting(PtvConsts.SYSTEM_SETTING_BASEURL);
   }
     
   private void createManagementSettings(String organizationId) {

@@ -1,0 +1,47 @@
+{
+  "id":"4b08ae17-75ae-4746-9382-1316c4ec02c5",
+  "serviceChannelType":"WebPage",
+  "organizationId":"18bb8d7c-1dc7-4188-9149-7d89fdeac75e",
+  "serviceChannelNames":[
+    {
+      "language":"fi",
+      "value":"Koulumaitotuen lainsäädäntö",
+      "type":"Name"
+    }
+  ],
+  "serviceChannelDescriptions":[
+    {
+      "language":"fi",
+      "value":"Koulumaitotuen keskeisin lainsäädäntö",
+      "type":"ShortDescription"
+    },
+    {
+      "language":"fi",
+      "value":"Koulumaitotuen lainsäädäntö perustuu Euroopan parlamentin, neuvoston ja komission asetuksiin sekä lisäksi koulumaitotukeen sovelletaan kansallista lainsäädäntöä ja Maaseutuviraston antamaa määräystä.",
+      "type":"Description"
+    }
+  ],
+  "urls":[
+    {
+      "value":"http://www.mavi.fi/fi/tuet-ja-palvelut/kunta-koulu-paivakoti/Sivut/Koulumaitotuen-lainsäädäntö.aspx",
+      "language":"fi"
+    }
+  ],
+  "supportPhones":[
+
+  ],
+  "supportEmails":[
+
+  ],
+  "languages":[
+    "sv",
+    "fi"
+  ],
+  "webPages":[
+
+  ],
+  "serviceHours":[
+
+  ],
+  "publishingStatus":"Published"
+}

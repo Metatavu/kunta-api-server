@@ -23,6 +23,7 @@ import ezvcard.property.RawProperty;
 import ezvcard.property.StructuredName;
 import ezvcard.property.Telephone;
 import ezvcard.property.TextProperty;
+import ezvcard.util.GeoUri;
 import fi.metatavu.kuntaapi.server.rest.model.Address;
 import fi.metatavu.kuntaapi.server.rest.model.Contact;
 import fi.metatavu.kuntaapi.server.rest.model.ContactPhone;
@@ -127,22 +128,35 @@ public class VCardTranslator {
     
     return Collections.emptyList();
   }
-
+  
   private Address translateAddress(ezvcard.property.Address vCardAddress) {
     if (vCardAddress == null) {
       return null;
     }
     
-    Address result = new Address();
+    GeoUri geo = vCardAddress.getGeo();
+    String latitude = null;
+    String longitude = null;
     
-    result.setType(getAddressType(vCardAddress.getTypes()));
-    result.setPostOfficeBox(getString(vCardAddress.getPoBox()));
-    result.setPostalCode(getString(vCardAddress.getPostalCode()));
-    result.setPostOffice(getString(vCardAddress.getRegion()));
-    result.setStreetAddress(getLocalizedString(vCardAddress.getStreetAddress()));
-    result.setMunicipality(null);
+    if (geo != null) {
+      latitude = String.valueOf(geo.getCoordA());
+      longitude = String.valueOf(geo.getCoordB());
+    }
+    
+    Address result = new Address();
+    result.setAdditionalInformations(Collections.emptyList());
+    result.setCoordinateState(null);
     result.setCountry(getString(vCardAddress.getCountry(), VCardConsts.DEFAULT_COUNTRY));
-    result.setQualifier(null);
+    result.setLatitude(latitude);
+    result.setLongitude(longitude);
+    result.setMunicipality(null);
+    result.setPostalCode(getString(vCardAddress.getPostalCode()));
+    result.setPostOffice(Collections.emptyList());
+    result.setPostOfficeBox(getString(vCardAddress.getPoBox()));
+    result.setStreetAddress(getLocalizedString(vCardAddress.getStreetAddress()));
+    result.setStreetNumber(null);
+    result.setType(getAddressType(vCardAddress.getTypes()));
+
 
     return result;
   }

@@ -39,8 +39,6 @@ public class IdController {
         return translateOrganizationId((OrganizationId) id, target);
       case SERVICE:
         return translateServiceId((ServiceId) id, target);
-      case ORGANIZATION_SERVICE:
-        return translateOrganizationServiceId((OrganizationServiceId) id, target);
       case ELECTRONIC_SERVICE_CHANNEL:
         return translateElectronicServiceChannelId((ElectronicServiceChannelId) id, target);
       case PHONE_SERVICE_CHANNEL:
@@ -150,30 +148,6 @@ public class IdController {
     IdProvider idProvider = getIdProvider(serviceId.getSource(), target);
     if (idProvider != null) {
       return idProvider.translate(serviceId, target);
-    }
-    
-    return null;
-  }
-  
-  /**
-   * Translates organization service id into into target id
-   * 
-   * @param organizationServiceId id to be translated
-   * @param target target
-   * @return translated id or null if translation has failed
-   */
-  public OrganizationServiceId translateOrganizationServiceId(OrganizationServiceId organizationServiceId, String target) {
-    if (organizationServiceId == null) {
-      return null;
-    }
-
-    if (StringUtils.equals(organizationServiceId.getSource(), target)) {
-      return organizationServiceId;
-    }
-    
-    IdProvider idProvider = getIdProvider(organizationServiceId.getSource(), target);
-    if (idProvider != null) {
-      return idProvider.translate(organizationServiceId, target);
     }
     
     return null;
