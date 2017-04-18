@@ -1,14 +1,10 @@
 package fi.otavanopisto.kuntaapi.server.rest;
 
 import java.time.OffsetDateTime;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.ejb.Stateful;
 import javax.enterprise.context.RequestScoped;
-import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Request;
@@ -34,7 +30,6 @@ import fi.metatavu.kuntaapi.server.rest.model.Menu;
 import fi.metatavu.kuntaapi.server.rest.model.MenuItem;
 import fi.metatavu.kuntaapi.server.rest.model.NewsArticle;
 import fi.metatavu.kuntaapi.server.rest.model.Organization;
-import fi.metatavu.kuntaapi.server.rest.model.OrganizationService;
 import fi.metatavu.kuntaapi.server.rest.model.OrganizationSetting;
 import fi.metatavu.kuntaapi.server.rest.model.Page;
 import fi.metatavu.kuntaapi.server.rest.model.Route;
@@ -73,7 +68,6 @@ import fi.otavanopisto.kuntaapi.server.id.MenuId;
 import fi.otavanopisto.kuntaapi.server.id.MenuItemId;
 import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
-import fi.otavanopisto.kuntaapi.server.id.OrganizationServiceId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportAgencyId;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportRouteId;
@@ -93,7 +87,6 @@ import fi.otavanopisto.kuntaapi.server.integrations.JobProvider.JobOrder;
 import fi.otavanopisto.kuntaapi.server.integrations.JobProvider.JobOrderDirection;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
-import fi.otavanopisto.kuntaapi.server.integrations.OrganizationServiceProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.PublicTransportStopTimeSortBy;
 import fi.otavanopisto.kuntaapi.server.integrations.SortDir;
 import fi.otavanopisto.kuntaapi.server.system.OrganizationSettingProvider;
@@ -174,11 +167,13 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   @Inject
   private PublicTransportController publicTransportController;
   
-  @Inject
-  private Instance<OrganizationServiceProvider> organizationServiceProviders;
-  
   @Override
   public Response listOrganizations(String businessName, String businessCode, String search, Long firstResult, Long maxResults, @Context Request request) {
+    Response validateResponse = validateListLimitParams(firstResult, maxResults);
+    if (validateResponse != null) {
+      return validateResponse;
+    }
+    
     List<Organization> organizations;
     
     if (search != null) {
@@ -214,59 +209,6 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     }
       
     return createNotFound(NOT_FOUND);
-  }
-
-  @Override
-  public Response createOrganizationService(String organizationId, OrganizationService body, @Context Request request) {
-    return createNotImplemented(NOT_IMPLEMENTED);
-  }
-  
-  @Override
-  public Response findOrganizationService(String organizationIdParam, String organizationServiceIdParam, @Context Request request) {
-    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
-    OrganizationServiceId organizationServiceId = toOrganizationServiceId(organizationId, organizationServiceIdParam);
-    
-    for (OrganizationServiceProvider organizationServiceProvider : getOrganizationServiceProviders()) {
-      OrganizationService organizationService = organizationServiceProvider.findOrganizationService(organizationId, organizationServiceId);
-      if (organizationService != null) {
-        return Response.ok(organizationService)
-          .build();
-      }
-    }
-    
-    return createNotFound(NOT_FOUND);
-  }
-  
-  @Override
-  public Response listOrganizationOrganizationServices(String organizationIdParam, Long firstResult, Long maxResults, @Context Request request) {
-    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
-    if (organizationId == null) {
-      return createBadRequest("Organization parameter is mandatory");
-    }
-    
-    Response validationResponse = validateListLimitParams(firstResult, maxResults);
-    if (validationResponse != null) {
-      return validationResponse;
-    }
-    
-    List<OrganizationService> result = new ArrayList<>();
-    
-    for (OrganizationServiceProvider organizationServiceProvider : getOrganizationServiceProviders()) {
-      result.addAll(organizationServiceProvider.listOrganizationServices(organizationId));
-    }
-    
-    int resultCount = result.size();
-    int firstIndex = firstResult == null ? 0 : Math.min(firstResult.intValue(), resultCount);
-    int toIndex = maxResults == null ? resultCount : Math.min(firstIndex + maxResults.intValue(), resultCount);
-    
-    return Response.ok(result.subList(firstIndex, toIndex))
-      .build();
-  }
-  
-  @Override
-  public Response updateOrganizationService(String organizationId, String organizationServiceId,
-      OrganizationService body, @Context Request request) {
-    return createNotImplemented(NOT_IMPLEMENTED);
   }
 
   @Override
@@ -347,6 +289,11 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       String endBefore, String endAfter,
       Integer firstResult, Integer maxResults,
       String orderBy, String orderDir, @Context Request request) {
+ 
+    Response validateResponse = validateListLimitParams(firstResult, maxResults);
+    if (validateResponse != null) {
+      return validateResponse;
+    }
     
     EventProvider.EventOrder order = EventProvider.EventOrder.START_DATE;
     EventProvider.EventOrderDirection orderDirection = EventProvider.EventOrderDirection.DESCENDING;
@@ -380,7 +327,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   }
   
   /* News */
-  
+
   @Override
   public Response listOrganizationNews(String organizationIdParam, String slug, String tag, String publishedBefore,
       String publishedAfter, Integer firstResult, Integer maxResults, Request request) {
@@ -802,6 +749,11 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   
   @Override
   public Response listOrganizationPages(String organizationIdParam, String parentIdParam, String path, String search, Long firstResult, Long maxResults, @Context Request request) {
+    Response validateResponse = validateListLimitParams(firstResult, maxResults);
+    if (validateResponse != null) {
+      return validateResponse;
+    }
+    
     OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
@@ -1085,6 +1037,10 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   
   @Override
   public Response listOrganizationFiles(String organizationIdParam, String pageIdParam, String search, Long firstResult, Long maxResults, Request request) {
+    Response validateResponse = validateListLimitParams(firstResult, maxResults);
+    if (validateResponse != null) {
+      return validateResponse;
+    }
     
     OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     if (organizationId == null) {
@@ -1188,6 +1144,11 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   @Override
   public Response listOrganizationJobs(String organizationIdParam, String sortBy, String sortDir, Long firstResult, Long maxResults, @Context Request request) {
+    Response validateResponse = validateListLimitParams(firstResult, maxResults);
+    if (validateResponse != null) {
+      return validateResponse;
+    }
+    
     OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
@@ -1242,6 +1203,11 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   
   @Override
   public Response listOrganizationAnnouncements(String organizationIdParam, String slug, Integer firstResult, Integer maxResults, String sortBy, String sortDir, @Context Request request) {
+    Response validateResponse = validateListLimitParams(firstResult, maxResults);
+    if (validateResponse != null) {
+      return validateResponse;
+    }
+    
     OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
@@ -1478,6 +1444,11 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   public Response listOrganizationPublicTransportStopTimes(String organizationIdParam, String stopIdParam, Integer departureTime,
       String sortByParam, String sortDirParam, Long firstResult, Long maxResults, Request request) {
     
+    Response validateResponse = validateListLimitParams(firstResult, maxResults);
+    if (validateResponse != null) {
+      return validateResponse;
+    }
+    
     OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
@@ -1609,6 +1580,11 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   
   @Override
   public Response listOrganizationShortlinks(String organizationIdParam, String path, Long firstResult, Long maxResults, Request request) {
+    Response validateResponse = validateListLimitParams(firstResult, maxResults);
+    if (validateResponse != null) {
+      return validateResponse;
+    }
+    
     OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
@@ -1679,6 +1655,10 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
     return httpCacheController.sendModified(result, ids);
   }
+
+  private Response validateListLimitParams(Integer firstResult, Integer maxResults) {
+    return validateListLimitParams(firstResult != null ? firstResult.intValue() : null, maxResults != null ? maxResults.intValue() : null);
+  }
   
   private Response validateListLimitParams(Long firstResult, Long maxResults) {
     if (firstResult != null && firstResult < 0) {
@@ -1715,15 +1695,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     
     return null;
   }
-
-  private OrganizationServiceId toOrganizationServiceId(OrganizationId organizationId, String id) {
-    if (StringUtils.isNotBlank(id)) {
-      return new OrganizationServiceId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, id);
-    }
-    
-    return null;
-  }
-
+  
   private EventId toEventId(OrganizationId organizationId, String id) {
     if (StringUtils.isNotBlank(id)) {
       return new EventId(organizationId,KuntaApiConsts.IDENTIFIER_NAME, id);
@@ -1858,17 +1830,6 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     }
     
     return null;
-  }
-  
-  private List<OrganizationServiceProvider> getOrganizationServiceProviders() {
-    List<OrganizationServiceProvider> result = new ArrayList<>();
-    
-    Iterator<OrganizationServiceProvider> iterator = organizationServiceProviders.iterator();
-    while (iterator.hasNext()) {
-      result.add(iterator.next());
-    }
-    
-    return Collections.unmodifiableList(result);
   }
   
 }

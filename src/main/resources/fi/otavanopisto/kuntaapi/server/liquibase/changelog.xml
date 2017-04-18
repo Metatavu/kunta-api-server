@@ -370,4 +370,9 @@
     <dropUniqueConstraint tableName="StoredBinaryResource" uniqueColumns="identifier_id" constraintName="identifier_id"/>
   </changeSet>
   
+  <changeSet id="remove-organization-service-identifiers" author="antti.leppa">
+    <sql>DELETE FROM ArchivedIdentifier where type = 'ORGANIZATION_SERVICE'</sql>
+    <sql>DELETE FROM Identifier where type = 'ORGANIZATION_SERVICE'</sql>
+  </changeSet>
+  
 </databaseChangeLog>

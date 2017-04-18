@@ -93,7 +93,6 @@ public class PtvTranslator {
     result.setSignatureQuantity(ptvElectronicServiceChannel.getSignatureQuantity());
     result.setSupportEmails(translateEmailsLanguageItem(ptvElectronicServiceChannel.getSupportEmails()));
     result.setSupportPhones(translatePhones(ptvElectronicServiceChannel.getSupportPhones()));
-    result.setType(ptvElectronicServiceChannel.getServiceChannelType());
     result.setUrls(translateLocalizedItems(ptvElectronicServiceChannel.getUrls()));
     result.setWebPages(translateWebPagesWithOrderNumber(ptvElectronicServiceChannel.getWebPages()));
     

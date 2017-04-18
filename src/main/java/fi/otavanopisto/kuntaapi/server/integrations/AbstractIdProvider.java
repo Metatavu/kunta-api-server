@@ -11,12 +11,12 @@ import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.id.AnnouncementId;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.BannerId;
+import fi.otavanopisto.kuntaapi.server.id.BaseId;
+import fi.otavanopisto.kuntaapi.server.id.ContactId;
 import fi.otavanopisto.kuntaapi.server.id.ElectronicServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.EventId;
 import fi.otavanopisto.kuntaapi.server.id.FileId;
 import fi.otavanopisto.kuntaapi.server.id.FragmentId;
-import fi.otavanopisto.kuntaapi.server.id.BaseId;
-import fi.otavanopisto.kuntaapi.server.id.ContactId;
 import fi.otavanopisto.kuntaapi.server.id.IdProvider;
 import fi.otavanopisto.kuntaapi.server.id.IdType;
 import fi.otavanopisto.kuntaapi.server.id.JobId;
@@ -25,7 +25,6 @@ import fi.otavanopisto.kuntaapi.server.id.MenuItemId;
 import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationBaseId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
-import fi.otavanopisto.kuntaapi.server.id.OrganizationServiceId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.id.PhoneServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.PrintableFormServiceChannelId;
@@ -100,11 +99,6 @@ public abstract class AbstractIdProvider implements IdProvider {
   @Override
   public WebPageServiceChannelId translate(WebPageServiceChannelId serviceChannelId, String target) {
     return translateId(serviceChannelId, IdType.WEBPAGE_SERVICE_CHANNEL, WebPageServiceChannelId.class, target);
-  }
-  
-  @Override
-  public OrganizationServiceId translate(OrganizationServiceId organizationServiceId, String target) {
-    return translateId(organizationServiceId, IdType.ORGANIZATION_SERVICE, OrganizationServiceId.class, target);
   }
   
   @Override
