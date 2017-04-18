@@ -53,13 +53,13 @@ public class ServiceLocationServiceChannelsApiImpl extends ServiceLocationServic
   }
 
   @Override
-  public Response listServiceLocationServiceChannels(Long firstResult, Long maxResults, @Context Request request) {
+  public Response listServiceLocationServiceChannels(String search, Long firstResult, Long maxResults, @Context Request request) {
     Response validationResponse = restValidator.validateListLimitParams(firstResult, maxResults);
     if (validationResponse != null) {
       return validationResponse;
     }
     
-    List<ServiceLocationServiceChannel> result = serviceController.listServiceLocationServiceChannels(firstResult, maxResults);
+    List<ServiceLocationServiceChannel> result = serviceController.listServiceLocationServiceChannels(search, firstResult, maxResults);
     
     List<String> ids = httpCacheController.getEntityIds(result);
     Response notModified = httpCacheController.getNotModified(request, ids);

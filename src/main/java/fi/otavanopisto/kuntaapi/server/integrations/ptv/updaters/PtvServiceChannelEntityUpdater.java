@@ -1,5 +1,6 @@
 package fi.otavanopisto.kuntaapi.server.integrations.ptv.updaters;
 
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
@@ -10,9 +11,11 @@ import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
 import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.event.Event;
 import javax.inject.Inject;
 
 import fi.metatavu.kuntaapi.server.rest.model.ElectronicServiceChannel;
+import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
 import fi.metatavu.kuntaapi.server.rest.model.PhoneServiceChannel;
 import fi.metatavu.kuntaapi.server.rest.model.PrintableFormServiceChannel;
 import fi.metatavu.kuntaapi.server.rest.model.ServiceLocationServiceChannel;
@@ -32,6 +35,10 @@ import fi.otavanopisto.kuntaapi.server.id.PhoneServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.PrintableFormServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceLocationServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.WebPageServiceChannelId;
+import fi.otavanopisto.kuntaapi.server.index.IndexRemoveRequest;
+import fi.otavanopisto.kuntaapi.server.index.IndexRemoveServiceLocationServiceChannel;
+import fi.otavanopisto.kuntaapi.server.index.IndexRequest;
+import fi.otavanopisto.kuntaapi.server.index.IndexableServiceLocationServiceChannel;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.PtvConsts;
@@ -55,6 +62,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.WebPageServiceChan
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask.Operation;
+import fi.otavanopisto.kuntaapi.server.utils.LocalizationUtils;
 
 @ApplicationScoped
 @Singleton
@@ -99,6 +107,12 @@ public class PtvServiceChannelEntityUpdater extends EntityUpdater {
 
   @Inject
   private PtvWebPageServiceChannelResourceContainer ptvWebPageServiceChannelResourceContainer;
+
+  @Inject
+  private Event<IndexRequest> indexRequest;
+  
+  @Inject
+  private Event<IndexRemoveRequest> indexRemoveRequest;
 
   @Inject
   private ModificationHashCache modificationHashCache;
@@ -229,8 +243,9 @@ public class PtvServiceChannelEntityUpdater extends EntityUpdater {
     
     ptvServiceLocationServiceChannelResourceContainer.put(kuntaApiServiceLocationServiceChannelId, serviceLocationServiceChannel);
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(serviceLocationServiceChannel));
+    indexServiceLocationChannel(orderIndex, serviceLocationServiceChannel);
   }
-  
+
   private void updatePrintableFormServiceChannel(Long orderIndex, V4VmOpenApiPrintableFormChannel ptvPrintableFormServiceChannel) {
     if (ptvPrintableFormServiceChannel == null) {
       return;
@@ -357,9 +372,18 @@ public class PtvServiceChannelEntityUpdater extends EntityUpdater {
     Identifier serviceLocationServiceChannelIdentifier = identifierController.findIdentifierById(serviceLocationServiceChannelId);
     if (serviceLocationServiceChannelIdentifier != null) {
       ServiceLocationServiceChannelId kuntaApiServiceLocationServiceChannelId = kuntaApiIdFactory.createFromIdentifier(ServiceLocationServiceChannelId.class, serviceLocationServiceChannelIdentifier);
+      ServiceLocationServiceChannel locationServiceChannel = ptvServiceLocationServiceChannelResourceContainer.get(kuntaApiServiceLocationServiceChannelId);
+      
+      for (String language : LocalizationUtils.getListsLanguages(locationServiceChannel.getNames(), locationServiceChannel.getDescriptions())) {
+        IndexRemoveServiceLocationServiceChannel removeServiceLocationServiceChannel = new IndexRemoveServiceLocationServiceChannel();
+        removeServiceLocationServiceChannel.setLanguage(language);
+        removeServiceLocationServiceChannel.setServiceLocationServiceChannelId(kuntaApiServiceLocationServiceChannelId.getId());
+        indexRemoveRequest.fire(new IndexRemoveRequest(removeServiceLocationServiceChannel));
+      }
+
       modificationHashCache.clear(serviceLocationServiceChannelIdentifier.getKuntaApiId());
       ptvServiceLocationServiceChannelResourceContainer.clear(kuntaApiServiceLocationServiceChannelId);
-      identifierController.deleteIdentifier(serviceLocationServiceChannelIdentifier);      
+      identifierController.deleteIdentifier(serviceLocationServiceChannelIdentifier);    
     }
   }
 
@@ -372,6 +396,23 @@ public class PtvServiceChannelEntityUpdater extends EntityUpdater {
       identifierController.deleteIdentifier(webPageServiceChannelIdentifier);      
     }
   }
-
+  
+  private void indexServiceLocationChannel(Long orderIndex, ServiceLocationServiceChannel serviceLocationServiceChannel) {
+    List<LocalizedValue> names = serviceLocationServiceChannel.getNames();
+    List<LocalizedValue> descriptions = serviceLocationServiceChannel.getDescriptions();
+    
+    for (String language : LocalizationUtils.getListsLanguages(names, descriptions)) {
+      IndexableServiceLocationServiceChannel indexableServiceLocationServiceChannel = new IndexableServiceLocationServiceChannel();
+      
+      indexableServiceLocationServiceChannel.setDescription(LocalizationUtils.getLocaleValue(descriptions, "ShortDescription", language));
+      indexableServiceLocationServiceChannel.setLanguage(language);
+      indexableServiceLocationServiceChannel.setName(LocalizationUtils.getLocaleValue(descriptions, "Name", language));
+      indexableServiceLocationServiceChannel.setOrderIndex(orderIndex);
+      indexableServiceLocationServiceChannel.setOrganizationId(serviceLocationServiceChannel.getOrganizationId());
+      indexableServiceLocationServiceChannel.setServiceLocationServiceChannelId(serviceLocationServiceChannel.getId());
+      
+      indexRequest.fire(new IndexRequest(indexableServiceLocationServiceChannel));
+    }
+  }
 
 }

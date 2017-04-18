@@ -61,6 +61,20 @@ public class LocalizationUtils {
     return result;
   }
   
+  public static String getLocaleValue(List<LocalizedValue> items, String type, String language) {
+    if (items == null) {
+      return null;
+    }
+    
+    for (LocalizedValue item : items) {
+      if (((type == null) || (item.getType().equals(type))) || StringUtils.equals(language, item.getLanguage())) {
+        return item.getValue();
+      }
+    }
+    
+    return null;
+  }
+  
   public static String getBestMatchingValue(String type, List<LocalizedValue> items, String language, String defaultLanguage) {
     if (items.isEmpty()) {
       return null;
