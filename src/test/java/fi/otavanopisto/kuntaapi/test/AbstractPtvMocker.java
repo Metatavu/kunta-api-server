@@ -24,6 +24,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -37,12 +39,14 @@ import ezvcard.util.IOUtils;
 import fi.metatavu.ptv.client.model.VmOpenApiItem;
 import fi.otavanopisto.kuntaapi.server.persistence.dao.AbstractDAO;
 
-@SuppressWarnings ("squid:S1166")
+@SuppressWarnings ({"squid:S1166", "squid:S1450"})
 public abstract class AbstractPtvMocker<R> {
 
   private static final String APPLICATION_JSON = "application/json";
   private static final String CONTENT_TYPE = "Content-Type";
   private static final String CONTENT_LENGTH = "Content-Length";
+
+  private static Logger logger = Logger.getLogger(AbstractPtvMocker.class.getName());
 
   private EnumMap<MockedResourceStatus, List<MappingBuilder>> statusLists = new EnumMap<>(MockedResourceStatus.class);
   private boolean started = false;
@@ -231,7 +235,7 @@ public abstract class AbstractPtvMocker<R> {
           setStatus(id, MockedResourceStatus.OK);
         }
       } catch (JsonProcessingException e) {
-        System.err.println(String.format("Failed to read %s of %s", id, getName()));
+        logger.log(Level.SEVERE, () -> String.format("Failed to read %s of %s", id, getName()));
         fail(e.getMessage());
       }
     }
@@ -315,7 +319,10 @@ public abstract class AbstractPtvMocker<R> {
     try (InputStream stream = getClass().getClassLoader().getResourceAsStream(file)) {
       return objectMapper.readValue(stream, type);
     } catch (IOException e) {
-      // logger.log(Level.SEVERE, FAILED_TO_READ_MOCK_FILE, e);
+      if (logger.isLoggable(Level.SEVERE)) {
+        logger.log(Level.SEVERE, "Failed to read mock file", e);
+      }
+      
       fail(e.getMessage());
     }
     return null;
@@ -438,7 +445,7 @@ public abstract class AbstractPtvMocker<R> {
     private Integer pageNumber = null;
     private Integer pageSize = null;
     private Integer pageCount = null;
-    private List<VmOpenApiItem> itemList = new ArrayList<VmOpenApiItem>();
+    private List<VmOpenApiItem> itemList = new ArrayList<>();
 
     public GuidPage() {
       // Zero-argument constructor

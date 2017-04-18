@@ -690,6 +690,7 @@ public class PtvTranslator {
     return result;
   }
 
+  @SuppressWarnings ("squid:S1698")
   private final class WebPageWithOrderNumberComparator implements Comparator<VmOpenApiWebPageWithOrderNumber> {
     @Override
     public int compare(VmOpenApiWebPageWithOrderNumber o1, VmOpenApiWebPageWithOrderNumber o2) {

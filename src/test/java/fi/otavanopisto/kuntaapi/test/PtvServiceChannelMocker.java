@@ -18,6 +18,7 @@ import fi.metatavu.ptv.client.model.V4VmOpenApiPrintableFormChannel;
 import fi.metatavu.ptv.client.model.V4VmOpenApiServiceLocationChannel;
 import fi.metatavu.ptv.client.model.V4VmOpenApiWebPageChannel;
 
+@SuppressWarnings ({"squid:S1075", "squid:S1450"})
 public class PtvServiceChannelMocker extends AbstractPtvMocker<Object> {
 
   private static final String FAILED_TO_READ_MOCK_FILE = "Failed to read mock file";
