@@ -43,7 +43,7 @@ public class PtvOrganizationPriorityIdUpdater extends AbstractPtvOrganizationIdU
 
   @Override
   public String getName() {
-    return "organization-priority-ids";
+    return "ptv-organization-priority-ids";
   }
 
   @Override
