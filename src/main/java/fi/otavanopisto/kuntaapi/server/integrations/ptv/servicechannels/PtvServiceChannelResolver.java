@@ -135,6 +135,12 @@ public class PtvServiceChannelResolver {
   }
   
   public ServiceChannelType resolveServiceChannelType(Map<String, Object> serviceChannelData) {
+    
+    if (serviceChannelData == null) {
+      logger.log(Level.WARNING, () -> "Null serviceChannelData");
+      return null;
+    }
+    
     String id = (String) serviceChannelData.get("id");
     
     Object type = serviceChannelData.get("serviceChannelType");
