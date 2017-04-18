@@ -2,7 +2,9 @@ package fi.otavanopisto.kuntaapi.server.integrations.ptv;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,6 +26,7 @@ import fi.metatavu.ptv.client.model.V4VmOpenApiServiceOrganization;
 import fi.metatavu.ptv.client.model.V4VmOpenApiServiceServiceChannel;
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
+import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
 import fi.otavanopisto.kuntaapi.server.id.ElectronicServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
@@ -77,6 +80,9 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
   
   @Inject
   private IdentifierController identifierController;
+  
+  @Inject
+  private IdentifierRelationController identifierRelationController;
 
   @Inject
   private PtvServiceResourceContainer ptvServiceResourceContainer;
@@ -136,12 +142,23 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
       ServiceId kuntaApiServiceId = kuntaApiIdFactory.createFromIdentifier(ServiceId.class, identifier);
       
       fi.metatavu.kuntaapi.server.rest.model.Service service = translateService(ptvService, kuntaApiServiceId);
+
       if (service != null) {
         ptvServiceResourceContainer.put(kuntaApiServiceId, service);
         modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(service));
+        
+        Set<String> kuntaApiServiceOrganizationIds = new HashSet<>(service.getOrganizations().size());
+        for (ServiceOrganization serviceOrganization : service.getOrganizations()) {
+          kuntaApiServiceOrganizationIds.add(serviceOrganization.getOrganizationId());
+        }
+        
+        for (String kuntaApiServiceOrganizationId : kuntaApiServiceOrganizationIds) {
+          Identifier serviceOrganizationIdentifier = identifierController.findIdentifierById(kuntaApiIdFactory.createOrganizationId(kuntaApiServiceOrganizationId));
+          identifierRelationController.addChild(serviceOrganizationIdentifier, identifier);
+        }
+        
         index(identifier.getKuntaApiId(), service, orderIndex);
       }
-      
     } else {
       logger.warning(String.format("Service %s processing failed on [%d] %s", ptvServiceId.getId(), response.getStatus(), response.getMessage()));
     }
@@ -221,12 +238,14 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
     
     List<ServiceOrganization> result = new ArrayList<>(ptvServiceOrganizations.size());
     for (V4VmOpenApiServiceOrganization ptvServiceOrganization : ptvServiceOrganizations) {
-      OrganizationId ptvOrganizationId = ptvIdFactory.createOrganizationId(ptvServiceOrganization.getOrganizationId());
-      OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(ptvOrganizationId, KuntaApiConsts.IDENTIFIER_NAME);
-      if (kuntaApiOrganizationId != null) {
-        result.add(ptvTranslator.translateServiceOrganization(kuntaApiOrganizationId, ptvServiceOrganization));
-      } else {
-        logger.log(Level.SEVERE, () -> String.format("Failed to translate organization %s into Kunta API id", ptvOrganizationId));
+      if (ptvServiceOrganization.getOrganizationId() != null) {
+        OrganizationId ptvOrganizationId = ptvIdFactory.createOrganizationId(ptvServiceOrganization.getOrganizationId());
+        OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(ptvOrganizationId, KuntaApiConsts.IDENTIFIER_NAME);
+        if (kuntaApiOrganizationId != null) {
+          result.add(ptvTranslator.translateServiceOrganization(kuntaApiOrganizationId, ptvServiceOrganization));
+        } else {
+          logger.log(Level.SEVERE, () -> String.format("Failed to translate organization %s into Kunta API id", ptvOrganizationId));
+        }
       }
     }
     
