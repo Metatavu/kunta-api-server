@@ -11,6 +11,7 @@ import fi.metatavu.kuntaapi.server.rest.ServiceLocationServiceChannelsApi;
 import fi.metatavu.kuntaapi.server.rest.model.ServiceLocationServiceChannel;
 import fi.otavanopisto.kuntaapi.server.controllers.HttpCacheController;
 import fi.otavanopisto.kuntaapi.server.controllers.ServiceController;
+import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceLocationServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
 
@@ -53,13 +54,15 @@ public class ServiceLocationServiceChannelsApiImpl extends ServiceLocationServic
   }
 
   @Override
-  public Response listServiceLocationServiceChannels(String search, Long firstResult, Long maxResults, @Context Request request) {
+  public Response listServiceLocationServiceChannels(String organizationIdParam, String search, Long firstResult, Long maxResults, @Context Request request) {
     Response validationResponse = restValidator.validateListLimitParams(firstResult, maxResults);
     if (validationResponse != null) {
       return validationResponse;
     }
     
-    List<ServiceLocationServiceChannel> result = serviceController.listServiceLocationServiceChannels(search, firstResult, maxResults);
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
+    
+    List<ServiceLocationServiceChannel> result = serviceController.listServiceLocationServiceChannels(organizationId, search, firstResult, maxResults);
     
     List<String> ids = httpCacheController.getEntityIds(result);
     Response notModified = httpCacheController.getNotModified(request, ids);

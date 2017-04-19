@@ -1,6 +1,7 @@
 package fi.otavanopisto.kuntaapi.server.index;
 
 import static org.elasticsearch.index.query.QueryBuilders.boolQuery;
+import static org.elasticsearch.index.query.QueryBuilders.matchQuery;
 import static org.elasticsearch.index.query.QueryBuilders.queryStringQuery;
 
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.SearchHitField;
 import org.elasticsearch.search.sort.SortOrder;
 
+import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceLocationServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
 
@@ -38,9 +40,16 @@ public class ServiceLocationServiceChannelSearcher {
   @Inject
   private IndexReader indexReader;
 
-  public SearchResult<ServiceLocationServiceChannelId> searchServiceLocationServiceChannels(String queryString, Long firstResult, Long maxResults) {
-    BoolQueryBuilder query = boolQuery()
-      .must(queryStringQuery(queryString));
+  public SearchResult<ServiceLocationServiceChannelId> searchServiceLocationServiceChannels(OrganizationId kuntaApiOrganizationId, String queryString, Long firstResult, Long maxResults) {
+    BoolQueryBuilder query = boolQuery();
+
+    if (kuntaApiOrganizationId != null) {
+      query.must(matchQuery(ORGANIZATION_ID_FIELD, kuntaApiOrganizationId.getId()));
+    }
+    
+    if (queryString != null) {
+      query.must(queryStringQuery(queryString));
+    }
     
     return searchServiceLocationServiceChannels(query, firstResult, maxResults);
   }
@@ -53,7 +62,7 @@ public class ServiceLocationServiceChannelSearcher {
     
     SearchRequestBuilder requestBuilder = indexReader
         .requestBuilder(TYPE)
-        .storedFields(SERVICE_LOCATION_SERVICE_CHANNEL_ID, ORGANIZATION_ID_FIELD)
+        .storedFields(SERVICE_LOCATION_SERVICE_CHANNEL_ID)
         .setQuery(queryBuilder);
     
     requestBuilder.setFrom(firstResult != null ? firstResult.intValue() : 0);
