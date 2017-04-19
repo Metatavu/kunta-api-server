@@ -4,6 +4,7 @@ import java.util.Iterator;
 import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
+import javax.ejb.DependsOn;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
 import javax.enterprise.inject.Any;
@@ -12,6 +13,7 @@ import javax.inject.Inject;
 
 @Singleton
 @Startup
+@DependsOn ("SchedulerIntervalUpdater")
 public class EntityUpdaterInitializer {
   
   @Inject

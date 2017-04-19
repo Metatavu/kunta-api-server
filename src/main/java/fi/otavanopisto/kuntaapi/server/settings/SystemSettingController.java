@@ -1,5 +1,8 @@
 package fi.otavanopisto.kuntaapi.server.settings;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.logging.Logger;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -218,6 +221,25 @@ public class SystemSettingController {
    **/
   public boolean hasSettingValue(String key) {
     return StringUtils.isNotBlank(getSettingValue(key));
+  }
+
+  /**
+   * Returns system settings as key - value pairs where keys start with prefix
+   * 
+   * @param prefix prefix
+   * @return Returns system settings as key - value pairs
+   */
+  public Map<String, String> getSettingsWithPrefix(String prefix) {
+    Map<String, String> result = new HashMap<>();
+    
+    List<SystemSetting> systemSettings = systemSettingDAO.listAll();
+    for (SystemSetting systemSetting : systemSettings) {
+      if (StringUtils.startsWith(systemSetting.getKey(), prefix)) {
+        result.put(systemSetting.getKey(), systemSetting.getValue());
+      }
+    }
+    
+    return result;
   }
 
 }
