@@ -13,7 +13,7 @@ import com.github.tomakehurst.wiremock.matching.StringValuePattern;
 import fi.metatavu.management.client.model.Menu;
 import fi.metatavu.management.client.model.Menuitem;
 
-@SuppressWarnings ("squid:S1166")
+@SuppressWarnings ({"squid:S1166","squid:S1075"})
 public class ManagementMenuMocker extends AbstractBaseMocker {
 
   private static final String PATH_TEMPLATE = "%s/%s";
