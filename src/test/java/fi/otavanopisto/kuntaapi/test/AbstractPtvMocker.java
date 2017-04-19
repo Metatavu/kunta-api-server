@@ -1,13 +1,13 @@
 package fi.otavanopisto.kuntaapi.test;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
+import static com.github.tomakehurst.wiremock.client.WireMock.absent;
 import static com.github.tomakehurst.wiremock.client.WireMock.containing;
 import static com.github.tomakehurst.wiremock.client.WireMock.get;
 import static com.github.tomakehurst.wiremock.client.WireMock.head;
 import static com.github.tomakehurst.wiremock.client.WireMock.removeStub;
 import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlPathEqualTo;
-import static com.github.tomakehurst.wiremock.client.WireMock.absent;
 import static org.junit.Assert.fail;
 
 import java.io.File;
@@ -20,7 +20,6 @@ import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.EnumMap;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -257,9 +256,9 @@ public abstract class AbstractPtvMocker<R> {
   }
   
   private void mockDefaultLists() {
-    Map<String, StringValuePattern> queryParams = new HashMap<>();
-    queryParams.put("page", containing("0"));
+    Map<String, StringValuePattern> queryParams = new LinkedHashMap<>();
     queryParams.put("date", absent());
+    queryParams.put("page", containing("0"));
     
     addStatusList(MockedResourceStatus.OK, urlPathEqualTo(getBasePath()));
     addStatusList(MockedResourceStatus.OK, urlPathEqualTo(getBasePath()), queryParams);
@@ -286,7 +285,7 @@ public abstract class AbstractPtvMocker<R> {
     
     if (queryParams != null) {
       for (Entry<String, StringValuePattern> queryParam : queryParams.entrySet()) {
-        mapping.withQueryParam(queryParam.getKey(), queryParam.getValue());
+        mapping = mapping.withQueryParam(queryParam.getKey(), queryParam.getValue());
       }
     }
     
