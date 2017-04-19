@@ -7,6 +7,7 @@ import static com.github.tomakehurst.wiremock.client.WireMock.head;
 import static com.github.tomakehurst.wiremock.client.WireMock.removeStub;
 import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlPathEqualTo;
+import static com.github.tomakehurst.wiremock.client.WireMock.absent;
 import static org.junit.Assert.fail;
 
 import java.io.File;
@@ -258,6 +259,7 @@ public abstract class AbstractPtvMocker<R> {
   private void mockDefaultLists() {
     Map<String, StringValuePattern> queryParams = new HashMap<>();
     queryParams.put("page", containing("0"));
+    queryParams.put("date", absent());
     
     addStatusList(MockedResourceStatus.OK, urlPathEqualTo(getBasePath()));
     addStatusList(MockedResourceStatus.OK, urlPathEqualTo(getBasePath()), queryParams);
