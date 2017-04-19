@@ -49,7 +49,7 @@ public class PtvServiceChannelPriorityIdUpdater extends AbstractPtvServiceChanne
   @Override
   public ApiResponse<V3VmOpenApiGuidPage> getPage() {
     currentUpdateStart = OffsetDateTime.now();
-    return ptvApi.getServiceChannelApi().apiV4ServiceChannelGet(lastUpdate, 0);
+    return ptvApi.getServiceChannelApi().apiV4ServiceChannelGet(lastUpdate, null);
   }
 
   @Override

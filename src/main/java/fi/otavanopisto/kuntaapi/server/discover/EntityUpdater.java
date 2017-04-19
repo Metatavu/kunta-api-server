@@ -74,7 +74,7 @@ public abstract class EntityUpdater {
       }
       
       String key = String.format("entity-updater.%s.warmup", getName());
-      Integer warmup = NumberUtils.createInteger(systemSettingController.getSettingValue(key));
+      Integer warmup = NumberUtils.createInteger(System.getProperty(key));
       if (warmup != null) {
         return warmup;
       }
@@ -96,7 +96,7 @@ public abstract class EntityUpdater {
       }
       
       String key = String.format("entity-updater.%s.interval", getName());
-      Integer interval = NumberUtils.createInteger(systemSettingController.getSettingValue(key));
+      Integer interval = NumberUtils.createInteger(System.getProperty(key));
       if (interval != null) {
         return interval;
       }
