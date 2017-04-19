@@ -1,7 +1,6 @@
 package fi.otavanopisto.kuntaapi.test;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
-import static com.github.tomakehurst.wiremock.client.WireMock.absent;
 import static com.github.tomakehurst.wiremock.client.WireMock.containing;
 import static com.github.tomakehurst.wiremock.client.WireMock.get;
 import static com.github.tomakehurst.wiremock.client.WireMock.head;
@@ -257,7 +256,6 @@ public abstract class AbstractPtvMocker<R> {
   
   private void mockDefaultLists() {
     Map<String, StringValuePattern> queryParams = new LinkedHashMap<>();
-    queryParams.put("date", absent());
     queryParams.put("page", containing("0"));
     
     addStatusList(MockedResourceStatus.OK, urlPathEqualTo(getBasePath()));
