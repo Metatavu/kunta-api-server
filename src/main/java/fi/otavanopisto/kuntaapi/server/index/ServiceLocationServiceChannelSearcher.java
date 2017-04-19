@@ -27,6 +27,7 @@ public class ServiceLocationServiceChannelSearcher {
   
   private static final String TYPE = "service-location-service-channel";
   private static final String ORGANIZATION_ID_FIELD = "organizationId";
+  private static final String SERVICE_LOCATION_SERVICE_CHANNEL_ID = "serviceLocationServiceChannelId";
   
   @Inject
   private Logger logger;
@@ -52,7 +53,7 @@ public class ServiceLocationServiceChannelSearcher {
     
     SearchRequestBuilder requestBuilder = indexReader
         .requestBuilder(TYPE)
-        .storedFields(ORGANIZATION_ID_FIELD)
+        .storedFields(SERVICE_LOCATION_SERVICE_CHANNEL_ID, ORGANIZATION_ID_FIELD)
         .setQuery(queryBuilder);
     
     requestBuilder.setFrom(firstResult != null ? firstResult.intValue() : 0);
@@ -66,15 +67,24 @@ public class ServiceLocationServiceChannelSearcher {
     List<ServiceLocationServiceChannelId> result = new ArrayList<>(hits.length);
     
     for (SearchHit hit : hits) {
-      Map<String, SearchHitField> fields = hit.getFields(); 
-      SearchHitField searchHitField = fields.get(ORGANIZATION_ID_FIELD);
-      String serviceLocationServiceChannelId = searchHitField.getValue();
-      if (StringUtils.isNotBlank(serviceLocationServiceChannelId)) {
-        result.add(kuntaApiIdFactory.createServiceLocationServiceChannelId(serviceLocationServiceChannelId));
+      ServiceLocationServiceChannelId serviceLocationServiceChannelId = getHitServiceLocationServiceChannelId(hit.getFields());
+      if (serviceLocationServiceChannelId != null) {
+        result.add(serviceLocationServiceChannelId);
       }
     }
     
     return result;
+  }
+  
+  private ServiceLocationServiceChannelId getHitServiceLocationServiceChannelId(Map<String, SearchHitField> fields) {
+    SearchHitField searchHitField = fields.get(SERVICE_LOCATION_SERVICE_CHANNEL_ID);
+    
+    String serviceLocationServiceChannelId = searchHitField.getValue();
+    if (StringUtils.isNotBlank(serviceLocationServiceChannelId)) {
+      return kuntaApiIdFactory.createServiceLocationServiceChannelId(serviceLocationServiceChannelId);
+    }
+    
+    return null;
   }
 
 }
