@@ -64,7 +64,7 @@ public class PtvServiceChannelIdUpdater extends AbstractPtvServiceChannelIdUpdat
 
   @Override
   public boolean getIsPriority() {
-    return true;
+    return false;
   }
 
 }
