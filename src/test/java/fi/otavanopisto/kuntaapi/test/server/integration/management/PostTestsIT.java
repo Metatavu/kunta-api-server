@@ -62,7 +62,6 @@ public class PostTestsIT extends AbstractIntegrationTest {
   public void afterClass() {
     String organizationId = getOrganizationId(0);
     deleteManagementSettings(organizationId);
-    getManagementMocker().endMock();
   }
 
   @Test

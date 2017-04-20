@@ -1,6 +1,7 @@
 package fi.otavanopisto.kuntaapi.server.index;
 
 import static org.elasticsearch.index.query.QueryBuilders.boolQuery;
+import static org.elasticsearch.index.query.QueryBuilders.matchQuery;
 import static org.elasticsearch.index.query.QueryBuilders.queryStringQuery;
 
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.SearchHitField;
 import org.elasticsearch.search.sort.SortOrder;
 
+import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceLocationServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
 
@@ -27,6 +29,7 @@ public class ServiceLocationServiceChannelSearcher {
   
   private static final String TYPE = "service-location-service-channel";
   private static final String ORGANIZATION_ID_FIELD = "organizationId";
+  private static final String SERVICE_LOCATION_SERVICE_CHANNEL_ID = "serviceLocationServiceChannelId";
   
   @Inject
   private Logger logger;
@@ -37,9 +40,16 @@ public class ServiceLocationServiceChannelSearcher {
   @Inject
   private IndexReader indexReader;
 
-  public SearchResult<ServiceLocationServiceChannelId> searchServiceLocationServiceChannels(String queryString, Long firstResult, Long maxResults) {
-    BoolQueryBuilder query = boolQuery()
-      .must(queryStringQuery(queryString));
+  public SearchResult<ServiceLocationServiceChannelId> searchServiceLocationServiceChannels(OrganizationId kuntaApiOrganizationId, String queryString, Long firstResult, Long maxResults) {
+    BoolQueryBuilder query = boolQuery();
+
+    if (kuntaApiOrganizationId != null) {
+      query.must(matchQuery(ORGANIZATION_ID_FIELD, kuntaApiOrganizationId.getId()));
+    }
+    
+    if (queryString != null) {
+      query.must(queryStringQuery(queryString));
+    }
     
     return searchServiceLocationServiceChannels(query, firstResult, maxResults);
   }
@@ -52,7 +62,7 @@ public class ServiceLocationServiceChannelSearcher {
     
     SearchRequestBuilder requestBuilder = indexReader
         .requestBuilder(TYPE)
-        .storedFields(ORGANIZATION_ID_FIELD)
+        .storedFields(SERVICE_LOCATION_SERVICE_CHANNEL_ID)
         .setQuery(queryBuilder);
     
     requestBuilder.setFrom(firstResult != null ? firstResult.intValue() : 0);
@@ -66,15 +76,24 @@ public class ServiceLocationServiceChannelSearcher {
     List<ServiceLocationServiceChannelId> result = new ArrayList<>(hits.length);
     
     for (SearchHit hit : hits) {
-      Map<String, SearchHitField> fields = hit.getFields(); 
-      SearchHitField searchHitField = fields.get(ORGANIZATION_ID_FIELD);
-      String serviceLocationServiceChannelId = searchHitField.getValue();
-      if (StringUtils.isNotBlank(serviceLocationServiceChannelId)) {
-        result.add(kuntaApiIdFactory.createServiceLocationServiceChannelId(serviceLocationServiceChannelId));
+      ServiceLocationServiceChannelId serviceLocationServiceChannelId = getHitServiceLocationServiceChannelId(hit.getFields());
+      if (serviceLocationServiceChannelId != null) {
+        result.add(serviceLocationServiceChannelId);
       }
     }
     
     return result;
+  }
+  
+  private ServiceLocationServiceChannelId getHitServiceLocationServiceChannelId(Map<String, SearchHitField> fields) {
+    SearchHitField searchHitField = fields.get(SERVICE_LOCATION_SERVICE_CHANNEL_ID);
+    
+    String serviceLocationServiceChannelId = searchHitField.getValue();
+    if (StringUtils.isNotBlank(serviceLocationServiceChannelId)) {
+      return kuntaApiIdFactory.createServiceLocationServiceChannelId(serviceLocationServiceChannelId);
+    }
+    
+    return null;
   }
 
 }

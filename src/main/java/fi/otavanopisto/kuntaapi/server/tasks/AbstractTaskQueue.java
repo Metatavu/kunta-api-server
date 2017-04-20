@@ -7,6 +7,8 @@ import javax.inject.Inject;
 import fi.otavanopisto.kuntaapi.server.controllers.ClusterController;
 import fi.otavanopisto.kuntaapi.server.controllers.TaskController;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Abstract base class for all task queues
@@ -25,6 +27,9 @@ public abstract class AbstractTaskQueue <T extends AbstractTask> {
   
   @Inject
   private TaskController taskController;
+  
+  @Inject
+  private Logger logger;
   
   private boolean running;
   
@@ -72,6 +77,10 @@ public abstract class AbstractTaskQueue <T extends AbstractTask> {
   public void enqueueTask(boolean priority, T task) {
     if (!running) {
       return;
+    }
+    
+    if (priority) {
+      logger.log(Level.INFO, () -> String.format("Added priority task to queue %s", getName())); 
     }
     
     taskController.createTask(getName(), priority, task);

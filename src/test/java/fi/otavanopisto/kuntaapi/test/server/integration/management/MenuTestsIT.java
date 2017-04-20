@@ -37,10 +37,9 @@ public class MenuTestsIT extends AbstractIntegrationTest {
     getManagementMediaMocker()
       .mockMedias(3001, 3002);
   
-    getManagementMocker()
-      .mockMenus("5001")
-      .mockMenuItems("5001", "6001", "6002", "6003")
-      .startMock();
+    getManagementMenuMocker()
+      .mockMenus(5001l)
+      .mockMenuItems(5001l, 6001l, 6002l, 6003l);
 
     startMocks();
     
@@ -56,7 +55,6 @@ public class MenuTestsIT extends AbstractIntegrationTest {
   @After
   public void afterClass() {
     String organizationId = getOrganizationId(0);
-    getManagementMocker().endMock();
     deleteManagementSettings(organizationId);
   }
   
