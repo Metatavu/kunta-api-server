@@ -172,9 +172,9 @@ public class ServiceController {
     return ListUtils.limit(entityController.sortEntitiesInNaturalOrder(result), firstResult, maxResults);
   }
 
-  public List<ServiceLocationServiceChannel> listServiceLocationServiceChannels(String search, Long firstResult, Long maxResults) {
-    if (search != null) {
-      SearchResult<ServiceLocationServiceChannelId> searchResult = serviceLocationServiceChannelSearcher.searchServiceLocationServiceChannels(search, firstResult, maxResults);
+  public List<ServiceLocationServiceChannel> listServiceLocationServiceChannels(OrganizationId kuntaApiOrganizationId, String search, Long firstResult, Long maxResults) {
+    if ((search != null) || (kuntaApiOrganizationId != null)) {
+      SearchResult<ServiceLocationServiceChannelId> searchResult = serviceLocationServiceChannelSearcher.searchServiceLocationServiceChannels(kuntaApiOrganizationId, search, firstResult, maxResults);
       if (searchResult == null) {
         return Collections.emptyList();
       }
@@ -190,8 +190,6 @@ public class ServiceController {
       return result;
     } else {
       List<ServiceLocationServiceChannel> result = new ArrayList<>();
-      
-      
       for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
         result.addAll(serviceChannelProvider.listServiceLocationServiceChannels());
       }

@@ -33,7 +33,6 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   public static final String BASE_URL = "/v1";
   
   private KuntarekryMocker kuntarekryMocker = new KuntarekryMocker();
-  private ManagementMocker managementMocker = new ManagementMocker();
   private CasemMocker casemMocker = new CasemMocker();
   
   private ManagementPageMappingMocker managementPageMappingMocker = new ManagementPageMappingMocker();
@@ -47,6 +46,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   private ManagementFragmentMocker managementFragmentMocker = new ManagementFragmentMocker();
   private ManagementMediaMocker managementMediaMocker = new ManagementMediaMocker();
   private ManagementTileMocker managementTileMocker = new ManagementTileMocker();
+  private ManagementMenuMocker managementMenuMocker = new ManagementMenuMocker();
   
   private PtvServiceMocker ptvServiceMocker = new PtvServiceMocker();
   private PtvServiceChannelMocker ptvServiceChannelMocker = new PtvServiceChannelMocker();
@@ -61,6 +61,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     deleteSystemSetting(KuntaApiConsts.SYSTEM_SETTING_TESTS_RUNNING);
     clearTasks();
     
+    managementMenuMocker.endMock();
     managementPageMappingMocker.endMock();
     managementPageMocker.endMock();
     managementPostMocker.endMock();
@@ -87,7 +88,6 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     ptvServiceChannelMocker.start();
     ptvServiceMocker.start();
     kuntarekryMocker.startMock();
-    managementMocker.startMock();
     casemMocker.startMock();
     managementPageMocker.startMock();
     managementPostMocker.startMock();
@@ -100,6 +100,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     managementPageMappingMocker.startMock();
     managementCategoryMocker.startMock();
     managementTagMocker.startMock();
+    managementMenuMocker.startMock();
     
     insertSystemSetting(KuntaApiConsts.SYSTEM_SETTING_TESTS_RUNNING, "true");
     
@@ -115,8 +116,8 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     return kuntarekryMocker;
   }
   
-  public ManagementMocker getManagementMocker() {
-    return managementMocker;
+  public ManagementMenuMocker getManagementMenuMocker() {
+    return managementMenuMocker;
   }
   
   public CasemMocker getCasemMocker() {

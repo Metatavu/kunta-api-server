@@ -18,6 +18,7 @@ import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.EnumMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -51,6 +52,7 @@ public abstract class AbstractPtvMocker<R> {
   private boolean started = false;
   private Map<String, MockedResource<String, R>> resources = new LinkedHashMap<>();
   private Map<String, List<AbstractPtvMocker<?>>> subMockers = new LinkedHashMap<>();
+  private MappingBuilder priorityList;
   
   public AbstractPtvMocker() {
     mockDefaultLists();
@@ -81,12 +83,21 @@ public abstract class AbstractPtvMocker<R> {
         subMocker.start();
       }
     }
+
+    priorityList = get(urlPathEqualTo(getBasePath())).withQueryParam("date", containing("20"))
+      .willReturn(aResponse()
+      .withHeader(CONTENT_TYPE, APPLICATION_JSON)
+      .withBody(toJSON(Collections.emptyList())));
+    
+    stubFor(priorityList);
   }
   
   public void stop() {
     if (!started) {
       return;
     }
+    
+    removeStub(priorityList);
     
     started = false;
     
@@ -255,11 +266,9 @@ public abstract class AbstractPtvMocker<R> {
   }
   
   private void mockDefaultLists() {
-    Map<String, StringValuePattern> queryParams = new LinkedHashMap<>();
-    queryParams.put("page", containing("0"));
-    
-    addStatusList(MockedResourceStatus.OK, urlPathEqualTo(getBasePath()));
-    addStatusList(MockedResourceStatus.OK, urlPathEqualTo(getBasePath()), queryParams);
+    Map<String, StringValuePattern> pageQueryParams = new LinkedHashMap<>();
+    pageQueryParams.put("page", containing("0"));
+    addStatusList(MockedResourceStatus.OK, urlPathEqualTo(getBasePath()), pageQueryParams);
   }
   
   private void updateSubMockerStatuses(String id, MockedResourceStatus status) {
