@@ -13,6 +13,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import fi.metatavu.management.client.DefaultApi;
 import fi.metatavu.management.client.model.Menu;
+import fi.otavanopisto.kuntaapi.server.id.AnnouncementId;
 import fi.otavanopisto.kuntaapi.server.id.BannerId;
 import fi.otavanopisto.kuntaapi.server.id.FragmentId;
 import fi.otavanopisto.kuntaapi.server.id.MenuId;
@@ -131,6 +132,8 @@ public class ManagementWebhookHandler implements WebhookHandler {
         return handleShortlinkPublish(kuntaApiOrganizationId, payload);
       case "fragment":
         return handleFragmentPublish(kuntaApiOrganizationId, payload);
+      case "announcement":
+        return handleAnnouncementPublish(kuntaApiOrganizationId, payload);
       case "customize_changeset":
         return handleMenuItemPublish(kuntaApiOrganizationId);
       default:
@@ -159,6 +162,8 @@ public class ManagementWebhookHandler implements WebhookHandler {
         return handleShortlinkTrash(kuntaApiOrganizationId, payload);
       case "fragment":
         return handleFragmentTrash(kuntaApiOrganizationId, payload);
+      case "announcement":
+        return handleAnnouncementTrash(kuntaApiOrganizationId, payload);
       default:
         logger.log(Level.WARNING, () -> String.format("Don't know how to handle trashing of post type %s", payload.getPostType()));
       break;
@@ -203,6 +208,12 @@ public class ManagementWebhookHandler implements WebhookHandler {
     return true;
   }
 
+  private boolean handleAnnouncementTrash(OrganizationId kuntaApiOrganizationId, Payload payload) {
+    AnnouncementId announcementId = new AnnouncementId(kuntaApiOrganizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
+    taskRequest.fire(new TaskRequest(false, new IdTask<AnnouncementId>(Operation.REMOVE, announcementId, null)));
+    return true;
+  }
+
   private boolean handlePublishPage(OrganizationId organizationId, Payload payload) {
     PageId pageId = new PageId(organizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
     taskRequest.fire(new TaskRequest(true, new IdTask<PageId>(Operation.UPDATE, pageId, null)));
@@ -234,6 +245,12 @@ public class ManagementWebhookHandler implements WebhookHandler {
   private boolean handleFragmentPublish(OrganizationId kuntaApiOrganizationId, Payload payload) {
     FragmentId fragmentId = new FragmentId(kuntaApiOrganizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
     taskRequest.fire(new TaskRequest(true, new IdTask<FragmentId>(Operation.UPDATE, fragmentId, null)));
+    return true;
+  }
+
+  private boolean handleAnnouncementPublish(OrganizationId kuntaApiOrganizationId, Payload payload) {
+    AnnouncementId announcementId = new AnnouncementId(kuntaApiOrganizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
+    taskRequest.fire(new TaskRequest(true, new IdTask<AnnouncementId>(Operation.UPDATE, announcementId, null)));
     return true;
   }
 
