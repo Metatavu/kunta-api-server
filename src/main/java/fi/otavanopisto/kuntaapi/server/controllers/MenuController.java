@@ -55,7 +55,7 @@ public class MenuController {
       result.addAll(menuProvider.listOrganizationMenuItems(organizationId, menuId));
     }
     
-    return result;
+    return entityController.sortEntitiesInNaturalOrder(result);
   }
   
   public MenuItem findMenuItem(OrganizationId organizationId, MenuId menuId, MenuItemId menuItemId) {
