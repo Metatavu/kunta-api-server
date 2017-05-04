@@ -4,10 +4,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.annotation.Resource;
 import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
-import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
@@ -61,9 +59,6 @@ public class ManagementShortlinkEntityUpdater extends EntityUpdater {
   @Inject
   private ShortlinkIdTaskQueue shortlinkIdTaskQueue;
 
-  @Resource
-  private TimerService timerService;
-
   @Override
   public String getName() {
     return "management-shortlinks";
@@ -74,11 +69,6 @@ public class ManagementShortlinkEntityUpdater extends EntityUpdater {
     executeNextTask();
   }
   
-  @Override
-  public TimerService getTimerService() {
-    return timerService;
-  }
-
   private void executeNextTask() {
     IdTask<ShortlinkId> task = shortlinkIdTaskQueue.next();
     if (task != null) {

@@ -1,13 +1,9 @@
 package fi.otavanopisto.kuntaapi.server.integrations.ptv.updaters;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.ejb.AccessTimeout;
-import javax.ejb.Singleton;
-import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 import fi.metatavu.ptv.client.ApiResponse;
@@ -19,9 +15,6 @@ import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.ServiceChannelTask
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.ServiceChannelUpdateTask;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 
-@ApplicationScoped
-@Singleton
-@AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
 public abstract class AbstractPtvServiceChannelIdUpdater extends IdUpdater {
   

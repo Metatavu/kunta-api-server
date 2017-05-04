@@ -4,10 +4,8 @@ import java.time.OffsetDateTime;
 import java.util.concurrent.TimeUnit;
 
 import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
 import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
-import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
@@ -23,9 +21,6 @@ public class PtvServicePriorityIdUpdater extends AbstractPtvServiceIdUpdater {
   
   @Inject
   private PtvApi ptvApi;
-  
-  @Resource
-  private TimerService timerService;
 
   private OffsetDateTime currentUpdateStart;
   
@@ -46,11 +41,6 @@ public class PtvServicePriorityIdUpdater extends AbstractPtvServiceIdUpdater {
     return "ptv-service-priority-ids";
   }
   
-  @Override
-  public TimerService getTimerService() {
-    return timerService;
-  }
-
   @Override
   public ApiResponse<V3VmOpenApiGuidPage> getPage() {
     currentUpdateStart = OffsetDateTime.now();

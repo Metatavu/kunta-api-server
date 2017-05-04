@@ -3,10 +3,8 @@ package fi.otavanopisto.kuntaapi.server.integrations.ptv.updaters;
 import java.util.concurrent.TimeUnit;
 
 import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
 import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
-import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
@@ -23,9 +21,6 @@ public class PtvServiceIdUpdater extends AbstractPtvServiceIdUpdater {
   @Inject
   private PtvApi ptvApi;
   
-  @Resource
-  private TimerService timerService;
-
   private Integer page;
 
   @PostConstruct
@@ -38,11 +33,6 @@ public class PtvServiceIdUpdater extends AbstractPtvServiceIdUpdater {
     return "ptv-service-ids";
   }
   
-  @Override
-  public TimerService getTimerService() {
-    return timerService;
-  }
-
   @Override
   public ApiResponse<V3VmOpenApiGuidPage> getPage() {
     return ptvApi.getServiceApi().apiV4ServiceGet(null, page);

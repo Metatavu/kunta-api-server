@@ -3,7 +3,6 @@ package fi.otavanopisto.kuntaapi.server.integrations.management;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
 import fi.metatavu.kuntaapi.server.rest.model.Attachment;
@@ -16,13 +15,14 @@ import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.TileProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.management.resources.ManagementAttachmentResourceContainer;
 import fi.otavanopisto.kuntaapi.server.resources.TileResourceContainer;
+import javax.enterprise.context.ApplicationScoped;
 
 /**
  * Tile provider for management wordpress
  * 
  * @author Antti Leppä
  */
-@RequestScoped
+@ApplicationScoped
 public class ManagementTileProvider extends AbstractManagementProvider implements TileProvider {
   
   @Inject

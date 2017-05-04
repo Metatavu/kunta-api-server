@@ -1,15 +1,15 @@
 package fi.otavanopisto.kuntaapi.server.integrations.management;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.annotation.Resource;
 import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
-import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
@@ -73,9 +73,6 @@ public class ManagementMenuEntityUpdater extends EntityUpdater {
   @Inject
   private ManagementMenuItemResourceContainer managementMenuItemResourceContainer;
 
-  @Resource
-  private TimerService timerService;
-
   @Override
   public String getName() {
     return "management-menus";
@@ -84,11 +81,6 @@ public class ManagementMenuEntityUpdater extends EntityUpdater {
   @Override
   public void timeout() {
     executeNextTask();
-  }
-  
-  @Override
-  public TimerService getTimerService() {
-    return timerService;
   }
   
   private void executeNextTask() {
@@ -123,7 +115,7 @@ public class ManagementMenuEntityUpdater extends EntityUpdater {
     Identifier menuIdentifier = updateManagementMenu(organizationId, managementMenu, orderIndex);
     MenuId menuId = new MenuId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, menuIdentifier.getKuntaApiId());
     List<MenuItemId> existingKuntaApiMenuItemIds = identifierRelationController.listMenuItemIdsBySourceAndParentId(ManagementConsts.IDENTIFIER_NAME, menuId);
-    List<Menuitem> managementMenuItems = listManagementMenuItems(api, managementMenu);
+    List<Menuitem> managementMenuItems = sortManagementMenuItems(listManagementMenuItems(api, managementMenu));
     for (int i = 0, l = managementMenuItems.size(); i < l; i++) {
       Menuitem managementMenuItem = managementMenuItems.get(i);
       MenuItemId menuItemId = updateManagementMenuItem(organizationId, menuIdentifier, managementMenuItem, (long) i);
@@ -133,6 +125,12 @@ public class ManagementMenuEntityUpdater extends EntityUpdater {
     for (MenuItemId existingKuntaApiMenuItemId : existingKuntaApiMenuItemIds) {
       deleteMenuItem(existingKuntaApiMenuItemId);
     }
+  }
+
+  private List<Menuitem> sortManagementMenuItems(List<Menuitem> managementMenuItems) {
+    List<Menuitem> result = new ArrayList<>(managementMenuItems);
+    Collections.sort(result, new ManagementMenuItemComparator());
+    return result;
   }
 
   private List<Menuitem> listManagementMenuItems(DefaultApi api, fi.metatavu.management.client.model.Menu menu) {
@@ -289,4 +287,17 @@ public class ManagementMenuEntityUpdater extends EntityUpdater {
     }
   }
   
+  public class ManagementMenuItemComparator implements Comparator<Menuitem> {
+
+    @Override
+    public int compare(Menuitem menuItem1, Menuitem menuItem2) {
+      if (menuItem1.getOrder() != null && menuItem2.getOrder() != null) {
+        return menuItem1.getOrder().compareTo(menuItem2.getOrder());
+      }
+
+      return menuItem1.getId().compareTo(menuItem2.getId());
+    }
+
+  }
+
 }

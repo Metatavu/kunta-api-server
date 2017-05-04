@@ -3,7 +3,6 @@ package fi.otavanopisto.kuntaapi.server.integrations.ptv;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
 import fi.metatavu.kuntaapi.server.rest.model.ElectronicServiceChannel;
@@ -23,6 +22,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.ptv.resources.PtvPhoneServic
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.resources.PtvPrintableFormServiceChannelResourceContainer;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.resources.PtvServiceLocationServiceChannelResourceContainer;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.resources.PtvWebPageServiceChannelResourceContainer;
+import javax.enterprise.context.ApplicationScoped;
 
 /**
  * Service channel provider for PTV
@@ -30,7 +30,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.ptv.resources.PtvWebPageServ
  * @author Antti Leppä
  * @author Heikki Kurhinen
  */
-@RequestScoped
+@ApplicationScoped
 public class PtvServiceChannelProvider implements ServiceChannelProvider {
   
   @Inject

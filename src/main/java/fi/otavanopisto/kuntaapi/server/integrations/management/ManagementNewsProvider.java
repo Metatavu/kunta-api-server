@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
 import fi.metatavu.kuntaapi.server.rest.model.Attachment;
@@ -19,13 +18,14 @@ import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.NewsProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.management.resources.ManagementAttachmentResourceContainer;
 import fi.otavanopisto.kuntaapi.server.resources.NewsArticleResourceContainer;
+import javax.enterprise.context.ApplicationScoped;
 
 /**
  * News provider for management wordpress
  * 
  * @author Antti Leppä
  */
-@RequestScoped
+@ApplicationScoped
 public class ManagementNewsProvider extends AbstractManagementProvider implements NewsProvider {
   
   @Inject

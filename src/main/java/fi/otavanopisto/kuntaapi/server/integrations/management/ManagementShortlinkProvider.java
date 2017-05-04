@@ -3,7 +3,6 @@ package fi.otavanopisto.kuntaapi.server.integrations.management;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
 import org.apache.commons.lang3.StringUtils;
@@ -14,13 +13,14 @@ import fi.otavanopisto.kuntaapi.server.id.ShortlinkId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.ShortlinkProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.management.resources.ManagementShortlinkResourceContainer;
+import javax.enterprise.context.ApplicationScoped;
 
 /**
  * Shortlink provider for management wordpress
  * 
  * @author Antti Leppä
  */
-@RequestScoped
+@ApplicationScoped
 @SuppressWarnings ("squid:S3306")
 public class ManagementShortlinkProvider extends AbstractManagementProvider implements ShortlinkProvider {
   

@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
 import org.apache.commons.lang3.StringUtils;
@@ -32,6 +31,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.EventProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpClient.Response;
 import fi.otavanopisto.kuntaapi.server.resources.EventResourceContainer;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
+import javax.enterprise.context.ApplicationScoped;
 
 /**
  * Event provider for Mikkeli Nyt
@@ -40,7 +40,7 @@ import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
  * @author Heikki Kurhinen
  */
 
-@RequestScoped
+@ApplicationScoped
 public class MikkeliNytEventProvider implements EventProvider {
   
   @Inject
