@@ -13,6 +13,7 @@ public class PtvConsts {
   public static final String SYSTEM_SETTING_BASEURL = "ptv.baseUrl";
   public static final String DEFAULT_LANGUAGE = "fi";
   public static final String TIMEZONE = "Europe/Helsinki";
+  public static final String[] PTV_SUPPORTED_LANGUAGES = {"fi", "en", "sv"};
   
   private PtvConsts() {
   }

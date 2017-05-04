@@ -372,9 +372,8 @@ public class PtvServiceChannelEntityUpdater extends EntityUpdater {
     Identifier serviceLocationServiceChannelIdentifier = identifierController.findIdentifierById(serviceLocationServiceChannelId);
     if (serviceLocationServiceChannelIdentifier != null) {
       ServiceLocationServiceChannelId kuntaApiServiceLocationServiceChannelId = kuntaApiIdFactory.createFromIdentifier(ServiceLocationServiceChannelId.class, serviceLocationServiceChannelIdentifier);
-      ServiceLocationServiceChannel locationServiceChannel = ptvServiceLocationServiceChannelResourceContainer.get(kuntaApiServiceLocationServiceChannelId);
       
-      for (String language : LocalizationUtils.getListsLanguages(locationServiceChannel.getNames(), locationServiceChannel.getDescriptions())) {
+      for (String language : PtvConsts.PTV_SUPPORTED_LANGUAGES) {
         IndexRemoveServiceLocationServiceChannel removeServiceLocationServiceChannel = new IndexRemoveServiceLocationServiceChannel();
         removeServiceLocationServiceChannel.setLanguage(language);
         removeServiceLocationServiceChannel.setServiceLocationServiceChannelId(kuntaApiServiceLocationServiceChannelId.getId());
