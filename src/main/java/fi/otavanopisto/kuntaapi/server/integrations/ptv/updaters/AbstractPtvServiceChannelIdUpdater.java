@@ -19,9 +19,6 @@ import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.ServiceChannelTask
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.ServiceChannelUpdateTask;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 
-@ApplicationScoped
-@Singleton
-@AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
 public abstract class AbstractPtvServiceChannelIdUpdater extends IdUpdater {
   
