@@ -1,5 +1,7 @@
 package fi.otavanopisto.kuntaapi.server.rest;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -17,10 +19,14 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import org.apache.commons.lang3.StringUtils;
+
 import fi.otavanopisto.kuntaapi.server.controllers.ClientContainer;
 import fi.otavanopisto.kuntaapi.server.controllers.SecurityController;
+import fi.otavanopisto.kuntaapi.server.discover.AbstractUpdater;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
 import fi.otavanopisto.kuntaapi.server.discover.IdUpdater;
+import fi.otavanopisto.kuntaapi.server.discover.UpdaterHealth;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 import fi.otavanopisto.kuntaapi.server.tasks.AbstractTaskQueue;
 
@@ -35,7 +41,7 @@ import fi.otavanopisto.kuntaapi.server.tasks.AbstractTaskQueue;
 @Produces (MediaType.APPLICATION_JSON)
 @Consumes (MediaType.APPLICATION_JSON)
 public class SystemRESTService {
-
+  
   @PersistenceUnit
   private EntityManagerFactory entityManagerFactory;
   
@@ -134,6 +140,48 @@ public class SystemRESTService {
     return Response.status(Status.FORBIDDEN).build();
   }
   
+  /**
+   * Updaters health
+   * 
+   * @return [OK, WARNING or CRITICAL]: Details
+   */
+  @GET
+  @Path ("/updaters/health")
+  @Produces (MediaType.TEXT_PLAIN)
+  public Response getUpdatersHealth() {
+    UpdaterHealth overallHealth = UpdaterHealth.OK;
+    UpdaterDetails updaterDetails = new UpdaterDetails();
+    
+    
+    for (IdUpdater idUpdater : idUpdaters) {
+      overallHealth = minHeath(overallHealth, idUpdater.getHealth());
+      updaterDetails.addUpdaterState(idUpdater);
+    }
+
+    for (EntityUpdater entityUpdater : entityUpdaters) {
+      overallHealth = minHeath(overallHealth, entityUpdater.getHealth());
+      updaterDetails.addUpdaterState(entityUpdater);
+    }
+    
+    if (overallHealth == UpdaterHealth.OK || overallHealth == UpdaterHealth.UNKNOWN) {
+      return Response.ok(String.format("%s: ok: %d, unknown: %d", 
+        overallHealth.name(), 
+        updaterDetails.getOkCount(), 
+        updaterDetails.getUnknownCount()
+      )).build();
+    } else {
+      return Response.ok(String.format("%s: ok: %d, unknown: %d, warnings: %d , criticals: %d - %s", 
+        overallHealth.name(), 
+        updaterDetails.getOkCount(), 
+        updaterDetails.getUnknownCount(),
+        updaterDetails.getWarningCount(),
+        updaterDetails.getCriticalCount(),
+        StringUtils.join(updaterDetails.getDetails(), ","))
+     ).build();
+    }
+    
+  }
+
   @GET
   @Path ("/log")
   @Produces (MediaType.TEXT_PLAIN)
@@ -151,4 +199,65 @@ public class SystemRESTService {
     return systemSettingController.inTestMode() || securityController.isUnrestrictedClient(clientContainer.getClient());
   }
   
+  private UpdaterHealth minHeath(UpdaterHealth health1, UpdaterHealth health2) {
+    if (health2.ordinal() > health1.ordinal()) {
+      return health2;
+    }
+    
+    return health1;
+  }
+  
+  private class UpdaterDetails {
+    
+    List<String> details = new ArrayList<>();
+    int okCount = 0;
+    int unknownCount = 0;
+    int warningCount = 0;
+    int criticalCount= 0;
+    
+    public void addUpdaterState(AbstractUpdater updater) {
+      UpdaterHealth updaterHealth = updater.getHealth();
+      
+      if (updaterHealth != UpdaterHealth.UNKNOWN && updaterHealth != UpdaterHealth.OK) {
+        details.add(String.format("Updater %s health is %s (%d ms since last run)", updater.getName(), updaterHealth, updater.getSinceLastRun()));
+      }
+      
+      switch (updaterHealth) {
+        case OK:
+          okCount++;
+        break;
+        case CRITICAL:
+          criticalCount++;
+        break;
+        case WARNING:
+          warningCount++;
+        break;
+        default:
+          unknownCount++;
+        break;
+      }
+    }
+    
+    public int getCriticalCount() {
+      return criticalCount;
+    }
+    
+    public List<String> getDetails() {
+      return details;
+    }
+    
+    public int getOkCount() {
+      return okCount;
+    }
+    
+    public int getUnknownCount() {
+      return unknownCount;
+    }
+    
+    public int getWarningCount() {
+      return warningCount;
+    }
+    
+  }
+
 }

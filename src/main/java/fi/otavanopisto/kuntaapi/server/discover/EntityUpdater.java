@@ -1,12 +1,8 @@
 package fi.otavanopisto.kuntaapi.server.discover;
 
-import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
-import javax.ejb.AccessTimeout;
 import javax.ejb.TimerService;
 import javax.inject.Inject;
 
@@ -15,58 +11,20 @@ import org.apache.commons.lang3.math.NumberUtils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import javax.naming.InitialContext;
-import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
-import javax.annotation.Resource;
-import javax.ejb.EJBContext;
-import javax.enterprise.concurrent.ManagedScheduledExecutorService;
-import javax.naming.NamingException;
-import javax.transaction.SystemException;
-import javax.transaction.UserTransaction;
 
-@AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
-public abstract class EntityUpdater {
-  
+import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
+
+public abstract class EntityUpdater extends AbstractUpdater {
+
   @Inject
   private Logger logger;
 
   @Inject
   private SystemSettingController systemSettingController;
 
-  @Resource
-  private ManagedScheduledExecutorService managedScheduledExecutorService;
-  
-  @Resource
-  private EJBContext ejbContext;
-  
-  private boolean stopped;
-  
-  @PostConstruct
-  public void postConstruct() {
-    stopped = false;
-    startTimer(getTimerWarmup(), getTimerInterval());
-  }
-  
-  @PreDestroy
-  public void preDestroy() {
-    stopped = true;
-  }
-  
-  public abstract void timeout();
   public abstract TimerService getTimerService();
   
-  /**
-   * Stops entity updater
-   * 
-   * @param cancelTimers if true all assiciated timers are also canceled
-   */
-  public void stop(boolean cancelTimers) {
-    stopped = true;
-    if (cancelTimers) {
-      managedScheduledExecutorService.shutdownNow();
-    }
-  }
-  
+  @Override
   public long getTimerWarmup() {
     try {
       if (systemSettingController.inTestMode()) {
@@ -86,9 +44,10 @@ public abstract class EntityUpdater {
       }
     }
     
-    return 1000 * 60;
+    return 1000l * 60;
   }
   
+  @Override
   public long getTimerInterval() {
     try {
       if (systemSettingController.inTestMode()) {
@@ -108,51 +67,11 @@ public abstract class EntityUpdater {
       }
     }
     
-    return 1000 * 5;
-  }
-
-  private void startTimer(long warmup, long delay) {
-    managedScheduledExecutorService.scheduleWithFixedDelay(() -> {
-      UserTransaction userTransaction = ejbContext.getUserTransaction();
-      try {
-        //userTransaction = lookup();
-        userTransaction.begin();
-        if (!isStopped() && isEligibleToRun()) {
-          logger.log(Level.INFO, String.format("Running timer %s", getName()));
-          timeout();
-        }
-        userTransaction.commit();
-      } catch (Exception ex) {
-        logger.log(Level.SEVERE, String.format("Timer with name %s throw an exception", getName()), ex);
-        try {
-          if(userTransaction != null) {
-              userTransaction.rollback();
-          }
-        } catch (SystemException e1) {
-          logger.log(Level.SEVERE, "Failed to rollback transaction", e1);
-        }
-      }
-    }, warmup, delay, TimeUnit.MILLISECONDS);
+    return 1000l * 5;
   }
   
-  public abstract String getName();
-  
-  public boolean isStopped() {
-    return stopped;
-  }
-  
-  private UserTransaction lookup() {
-    try {
-      InitialContext ic = new InitialContext();
-      return (UserTransaction)ic.lookup("java:comp/UserTransaction");
-    } catch (NamingException ex) {
-      logger.log(Level.SEVERE, "Failed to lookup UserTransaction", ex);
-    }
-    
-    return null;
-  }
-  
-  private boolean isEligibleToRun() {
+  @Override
+  public boolean isEligibleToRun() {
     if (systemSettingController.inFailsafeMode()) {
       return false;
     }
