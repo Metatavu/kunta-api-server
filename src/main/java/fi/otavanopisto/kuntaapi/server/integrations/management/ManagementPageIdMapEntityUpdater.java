@@ -8,10 +8,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.annotation.Resource;
 import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
-import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
@@ -61,9 +59,6 @@ public class ManagementPageIdMapEntityUpdater extends EntityUpdater {
   @Inject
   private OrganizationPageMapsTaskQueue organizationPageMapsTaskQueue;
 
-  @Resource
-  private TimerService timerService;
-
   @Override
   public String getName() {
     return "management-page-id-map";
@@ -79,11 +74,6 @@ public class ManagementPageIdMapEntityUpdater extends EntityUpdater {
         organizationPageMapsTaskQueue.enqueueTasks(organizationSettingController.listOrganizationIdsWithSetting(ManagementConsts.ORGANIZATION_SETTING_BASEURL));
       }
     }
-  }
-  
-  @Override
-  public TimerService getTimerService() {
-    return timerService;
   }
   
   private void updatePageIdMap(OrganizationId organizationId) {

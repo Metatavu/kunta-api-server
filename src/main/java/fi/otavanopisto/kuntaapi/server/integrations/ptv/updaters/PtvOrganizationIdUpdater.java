@@ -3,10 +3,8 @@ package fi.otavanopisto.kuntaapi.server.integrations.ptv.updaters;
 import java.util.concurrent.TimeUnit;
 
 import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
 import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
-import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
@@ -22,9 +20,6 @@ public class PtvOrganizationIdUpdater extends AbstractPtvOrganizationIdUpdater {
   
   @Inject
   private PtvApi ptvApi;
-
-  @Resource
-  private TimerService timerService;
   
   private Integer page;
   
@@ -60,11 +55,6 @@ public class PtvOrganizationIdUpdater extends AbstractPtvOrganizationIdUpdater {
     } else {
       page = 0;
     }
-  }
-
-  @Override
-  public TimerService getTimerService() {
-    return timerService;
   }
 
 }

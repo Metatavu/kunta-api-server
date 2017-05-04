@@ -6,10 +6,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.annotation.Resource;
 import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
-import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
@@ -73,9 +71,6 @@ public class ManagementMenuEntityUpdater extends EntityUpdater {
   @Inject
   private ManagementMenuItemResourceContainer managementMenuItemResourceContainer;
 
-  @Resource
-  private TimerService timerService;
-
   @Override
   public String getName() {
     return "management-menus";
@@ -84,11 +79,6 @@ public class ManagementMenuEntityUpdater extends EntityUpdater {
   @Override
   public void timeout() {
     executeNextTask();
-  }
-  
-  @Override
-  public TimerService getTimerService() {
-    return timerService;
   }
   
   private void executeNextTask() {

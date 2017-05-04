@@ -6,10 +6,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
 import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
-import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
@@ -52,9 +50,6 @@ public class PtvWebPageServiceChannelIdRemoveUpdater extends IdUpdater {
   @Inject
   private ServiceChannelTasksQueue serviceChannelTasksQueue;
 
-  @Resource
-  private TimerService timerService;
-
   private int offset;
 
   @PostConstruct
@@ -70,11 +65,6 @@ public class PtvWebPageServiceChannelIdRemoveUpdater extends IdUpdater {
   @Override
   public void timeout() {
     checkRemovedIds();
-  }
-
-  @Override
-  public TimerService getTimerService() {
-    return timerService;
   }
 
   private void checkRemovedIds() {

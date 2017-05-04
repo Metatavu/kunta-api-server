@@ -12,10 +12,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.annotation.Resource;
 import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
-import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
@@ -84,9 +82,6 @@ public class MikkeliNytEntityUpdater extends EntityUpdater {
   @Inject
   private OrganizationEventsTaskQueue organizationEventsTaskQueue;
 
-  @Resource
-  private TimerService timerService;
-
   @Override
   public String getName() {
     return "mikkeli-nyt-events";
@@ -104,11 +99,6 @@ public class MikkeliNytEntityUpdater extends EntityUpdater {
     }
   }
   
-  @Override
-  public TimerService getTimerService() {
-    return timerService;
-  }
-
   private void updateEvents(OrganizationId organizationId) {
     Response<EventsResponse> response = listEvents(organizationId);
     if (response.isOk()) {

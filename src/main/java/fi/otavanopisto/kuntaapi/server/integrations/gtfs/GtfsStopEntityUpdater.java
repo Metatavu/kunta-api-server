@@ -4,10 +4,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.annotation.Resource;
 import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
-import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
@@ -63,9 +61,6 @@ public class GtfsStopEntityUpdater extends EntityUpdater {
   @Inject
   private GtfsStopTaskQueue gtfsStopTaskQueue;
 
-  @Resource
-  private TimerService timerService;
-
   @Override
   public String getName() {
     return "gtfs-public-transport-stops";
@@ -77,11 +72,6 @@ public class GtfsStopEntityUpdater extends EntityUpdater {
     if (task != null) {
       updateGtfsStop(task);
     }
-  }
-  
-  @Override
-  public TimerService getTimerService() {
-    return timerService;
   }
   
   private void updateGtfsStop(GtfsStopEntityTask task) {

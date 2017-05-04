@@ -8,11 +8,13 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.annotation.Resource;
 import javax.ejb.EJBContext;
+import javax.ejb.Startup;
 import javax.enterprise.concurrent.ManagedScheduledExecutorService;
 import javax.inject.Inject;
 import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
 
+@Startup
 public abstract class AbstractUpdater {
 
   private static final int UPDATER_WARNING_THRESHOLD_SLACK = 1000 * 60;

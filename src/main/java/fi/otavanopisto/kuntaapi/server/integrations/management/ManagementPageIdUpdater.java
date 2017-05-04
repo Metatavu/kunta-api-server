@@ -8,10 +8,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.annotation.Resource;
 import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
-import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Event;
 import javax.inject.Inject;
@@ -53,9 +51,6 @@ public class ManagementPageIdUpdater extends IdUpdater {
   @Inject
   private OrganizationPagesTaskQueue organizationPagesTaskQueue;
 
-  @Resource
-  private TimerService timerService;
-
   @Override
   public String getName() {
     return "management-page-ids";
@@ -71,11 +66,6 @@ public class ManagementPageIdUpdater extends IdUpdater {
     }
   }
   
-  @Override
-  public TimerService getTimerService() {
-    return timerService;
-  }
-    
   private void updateManagementPages(OrganizationId organizationId) {
     if (!organizationSettingController.hasSettingValue(organizationId, ManagementConsts.ORGANIZATION_SETTING_BASEURL)) {
       logger.log(Level.INFO, "Organization management baseUrl not set, skipping update"); 

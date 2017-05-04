@@ -3,7 +3,6 @@ package fi.otavanopisto.kuntaapi.server.discover;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.ejb.TimerService;
 import javax.inject.Inject;
 
 import org.apache.commons.lang3.math.NumberUtils;
@@ -18,8 +17,6 @@ public abstract class IdUpdater extends AbstractUpdater {
   @Inject
   private SystemSettingController systemSettingController;
   
-  public abstract TimerService getTimerService();
-  
   @Override
   public long getTimerWarmup() {
     if (systemSettingController.inTestMode()) {
@@ -28,7 +25,7 @@ public abstract class IdUpdater extends AbstractUpdater {
 
     try {
       String key = String.format("id-updater.%s.warmup", getName());
-      Long warmup = NumberUtils.createLong(System.getProperty(key));
+      Long warmup = NumberUtils.createLong(systemSettingController.getSettingValue(key));
       if (warmup != null) {
         return warmup;
       }
@@ -51,7 +48,7 @@ public abstract class IdUpdater extends AbstractUpdater {
     
     try {
       String key = String.format("id-updater.%s.interval", getName());
-      Long interval = NumberUtils.createLong(System.getProperty(key));
+      Long interval = NumberUtils.createLong(systemSettingController.getSettingValue(key));
       if (interval != null) {
         return interval;
       }

@@ -3,10 +3,8 @@ package fi.otavanopisto.kuntaapi.server.integrations.management;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import javax.annotation.Resource;
 import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
-import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Event;
 import javax.inject.Inject;
@@ -50,9 +48,6 @@ public class ManagementRemovedPageIdUpdater extends IdUpdater {
   @Inject
   private OrganizationPageRemovesTaskQueue organizationPageRemovesTaskQueue;
 
-  @Resource
-  private TimerService timerService;
-  
   @Override
   public String getName() {
     return "management-remove-page-ids";
@@ -66,11 +61,6 @@ public class ManagementRemovedPageIdUpdater extends IdUpdater {
     } else if (organizationPageRemovesTaskQueue.isEmpty()) {
       organizationPageRemovesTaskQueue.enqueueTasks(organizationSettingController.listOrganizationIdsWithSetting(ManagementConsts.ORGANIZATION_SETTING_BASEURL));
     }
-  }
-  
-  @Override
-  public TimerService getTimerService() {
-    return timerService;
   }
   
   private void checkRemovedManagementPages(OrganizationId organizationId) {
