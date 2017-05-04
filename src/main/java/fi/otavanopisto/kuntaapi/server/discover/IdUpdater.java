@@ -1,6 +1,5 @@
 package fi.otavanopisto.kuntaapi.server.discover;
 
-import java.util.Collection;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -8,16 +7,19 @@ import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.ejb.AccessTimeout;
-import javax.ejb.Timeout;
-import javax.ejb.Timer;
-import javax.ejb.TimerConfig;
 import javax.ejb.TimerService;
 import javax.inject.Inject;
 
 import org.apache.commons.lang3.math.NumberUtils;
 
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
-import java.util.Iterator;
+import javax.annotation.Resource;
+import javax.ejb.EJBContext;
+import javax.enterprise.concurrent.ManagedScheduledExecutorService;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.transaction.SystemException;
+import javax.transaction.UserTransaction;
 
 @AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 public abstract class IdUpdater {
@@ -27,13 +29,19 @@ public abstract class IdUpdater {
 
   @Inject
   private SystemSettingController systemSettingController;
-
+  
+  @Resource
+  private ManagedScheduledExecutorService managedScheduledExecutorService;
+  
+  @Resource
+  private EJBContext ejbContext;
+  
   private boolean stopped;
   
   @PostConstruct
   public void postConstruct() {
     stopped = false;
-    startTimer(getTimerWarmup());
+    startTimer(getTimerWarmup(), getTimerInterval());
   }
   
   @PreDestroy
@@ -52,25 +60,18 @@ public abstract class IdUpdater {
   public void stop(boolean cancelTimers) {
     stopped = true;
     if (cancelTimers) {
-      try {
-        Collection<Timer> timers = getTimerService().getTimers();
-        for (Timer timer : timers) {
-          timer.cancel();
-        }
-      } catch (Exception e) {
-        logger.log(Level.SEVERE, "Failed to cancel timer", e);
-      }
+      managedScheduledExecutorService.shutdownNow();
     }
   }
   
-  public int getTimerWarmup() {
+  public long getTimerWarmup() {
     if (systemSettingController.inTestMode()) {
-      return 200;
+      return 200l;
     }
 
     try {
       String key = String.format("id-updater.%s.warmup", getName());
-      Integer warmup = NumberUtils.createInteger(System.getProperty(key));
+      Long warmup = NumberUtils.createLong(System.getProperty(key));
       if (warmup != null) {
         return warmup;
       }
@@ -82,17 +83,17 @@ public abstract class IdUpdater {
       }
     }
 
-    return 1000 * 60;
+    return 1000l * 60;
   }
   
-  public int getTimerInterval() {
+  public long getTimerInterval() {
     if (systemSettingController.inTestMode()) {
-      return 1000;
+      return 1000l;
     }
     
     try {
       String key = String.format("id-updater.%s.interval", getName());
-      Integer interval = NumberUtils.createInteger(System.getProperty(key));
+      Long interval = NumberUtils.createLong(System.getProperty(key));
       if (interval != null) {
         return interval;
       }
@@ -104,38 +105,42 @@ public abstract class IdUpdater {
       }
     }
     
-    return 1000 * 60;
-  }
-
-  private void startTimer(int duration) {
-    TimerConfig timerConfig = new TimerConfig();
-    timerConfig.setPersistent(false);
-    getTimerService().createSingleActionTimer(duration, timerConfig);
+    return 1000l * 10;
   }
   
-  @Timeout
-  public void onTimeout() {
-    if (!isStopped()) {
+  private void startTimer(long warmup, long delay) {
+    managedScheduledExecutorService.scheduleWithFixedDelay(() -> {
+      UserTransaction userTransaction = ejbContext.getUserTransaction();
       try {
-        if (isEligibleToRun()) {
+        //userTransaction = lookup();
+        userTransaction.begin();
+        if (!isStopped() && isEligibleToRun()) {
+          logger.log(Level.INFO, String.format("Running timer %s", getName()));
           timeout();
         }
-      } catch (Exception e) {
-        logger.log(Level.SEVERE, "Timer throw an exception", e);
-      } finally {
+        userTransaction.commit();
+      } catch (Exception ex) {
+        logger.log(Level.SEVERE, String.format("Timer with name %s throw an exception", getName()), ex);
         try {
-          Iterator<Timer> timers = getTimerService().getTimers().iterator();
-          while(timers.hasNext()) {
-            Timer timer = timers.next();
-            timer.cancel();
+          if(userTransaction != null) {
+              userTransaction.rollback();
           }
-        } catch (Exception e) {
-          logger.log(Level.SEVERE, "Exception while canceling timer", e);
-        } finally {
-          startTimer(getTimerInterval());
+        } catch (SystemException e1) {
+          logger.log(Level.SEVERE, "Failed to rollback transaction", e1);
         }
       }
+    }, warmup, delay, TimeUnit.MILLISECONDS);
+  }
+  
+  private UserTransaction lookup() {
+    try {
+      InitialContext ic = new InitialContext();
+      return (UserTransaction)ic.lookup("java:comp/UserTransaction");
+    } catch (NamingException ex) {
+      logger.log(Level.SEVERE, "Failed to lookup UserTransaction", ex);
     }
+    
+    return null;
   }
   
   public abstract String getName();
@@ -149,11 +154,7 @@ public abstract class IdUpdater {
       return false;
     }
     
-    if (!systemSettingController.isNotTestingOrTestRunning()) {
-      return false;
-    }
-    
-    return true;
+    return systemSettingController.isNotTestingOrTestRunning();
   }
   
 }
