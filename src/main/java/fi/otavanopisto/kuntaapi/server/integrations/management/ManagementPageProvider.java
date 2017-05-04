@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.logging.Logger;
 
-import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
 import org.apache.commons.lang3.StringUtils;
@@ -27,13 +26,14 @@ import fi.otavanopisto.kuntaapi.server.integrations.PageProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.management.resources.ManagementAttachmentResourceContainer;
 import fi.otavanopisto.kuntaapi.server.integrations.management.resources.ManagementPageContentResourceContainer;
 import fi.otavanopisto.kuntaapi.server.integrations.management.resources.ManagementPageResourceContainer;
+import javax.enterprise.context.ApplicationScoped;
 
 /**
  * Page provider for management service
  * 
  * @author Antti Leppä
  */
-@RequestScoped
+@ApplicationScoped
 @SuppressWarnings ("squid:S3306")
 public class ManagementPageProvider extends AbstractManagementProvider implements PageProvider {
 

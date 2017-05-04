@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
 import org.apache.commons.codec.binary.StringUtils;
@@ -18,13 +17,14 @@ import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.MenuProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.management.resources.ManagementMenuItemResourceContainer;
 import fi.otavanopisto.kuntaapi.server.resources.MenuResourceContainer;
+import javax.enterprise.context.ApplicationScoped;
 
 /**
  * Menu provider for management wordpress
  * 
  * @author Antti Leppä
  */
-@RequestScoped
+@ApplicationScoped
 @SuppressWarnings ("squid:S3306")
 public class ManagementMenuProvider extends AbstractManagementProvider implements MenuProvider {
   

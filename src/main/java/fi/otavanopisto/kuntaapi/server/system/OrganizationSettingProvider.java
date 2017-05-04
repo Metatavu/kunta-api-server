@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
 import org.apache.commons.lang3.StringUtils;
@@ -14,6 +13,7 @@ import org.apache.commons.lang3.StringUtils;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.metatavu.kuntaapi.server.rest.model.OrganizationSetting;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
+import javax.enterprise.context.ApplicationScoped;
 
 /**
  * Provides organization settings 
@@ -21,7 +21,7 @@ import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
  * @author Heikki Kurhinen
  * @author Antti Leppä
  */
-@RequestScoped
+@ApplicationScoped
 @SuppressWarnings("squid:S3306")
 public class OrganizationSettingProvider {
 
