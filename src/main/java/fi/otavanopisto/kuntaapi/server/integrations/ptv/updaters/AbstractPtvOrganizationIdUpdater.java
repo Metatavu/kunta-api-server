@@ -48,7 +48,6 @@ public abstract class AbstractPtvOrganizationIdUpdater extends IdUpdater {
 
   @Override
   public void timeout() {
-    logger.severe("HURRRHURRRRRRR!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
     discoverIds();
   }
   
