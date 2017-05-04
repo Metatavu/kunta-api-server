@@ -143,7 +143,7 @@ public class SystemRESTService {
   /**
    * Updaters health
    * 
-   * @return [OK, WARNING or CRITICAL]: Details
+   * @return [OK, UNKNOWN, WARNING or CRITICAL]: Details
    */
   @GET
   @Path ("/updaters/health")
@@ -152,14 +152,13 @@ public class SystemRESTService {
     UpdaterHealth overallHealth = UpdaterHealth.OK;
     UpdaterDetails updaterDetails = new UpdaterDetails();
     
-    
     for (IdUpdater idUpdater : idUpdaters) {
-      overallHealth = minHeath(overallHealth, idUpdater.getHealth());
+      overallHealth = minHealth(overallHealth, idUpdater.getHealth());
       updaterDetails.addUpdaterState(idUpdater);
     }
 
     for (EntityUpdater entityUpdater : entityUpdaters) {
-      overallHealth = minHeath(overallHealth, entityUpdater.getHealth());
+      overallHealth = minHealth(overallHealth, entityUpdater.getHealth());
       updaterDetails.addUpdaterState(entityUpdater);
     }
     
@@ -176,7 +175,7 @@ public class SystemRESTService {
         updaterDetails.getUnknownCount(),
         updaterDetails.getWarningCount(),
         updaterDetails.getCriticalCount(),
-        StringUtils.join(updaterDetails.getDetails(), ","))
+        StringUtils.join(updaterDetails.getDetails(), ", "))
      ).build();
     }
     
@@ -199,7 +198,7 @@ public class SystemRESTService {
     return systemSettingController.inTestMode() || securityController.isUnrestrictedClient(clientContainer.getClient());
   }
   
-  private UpdaterHealth minHeath(UpdaterHealth health1, UpdaterHealth health2) {
+  private UpdaterHealth minHealth(UpdaterHealth health1, UpdaterHealth health2) {
     if (health2.ordinal() > health1.ordinal()) {
       return health2;
     }
