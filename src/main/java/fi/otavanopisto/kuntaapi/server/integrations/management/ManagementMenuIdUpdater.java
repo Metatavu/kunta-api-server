@@ -6,10 +6,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.annotation.Resource;
 import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
-import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Event;
 import javax.inject.Inject;
@@ -56,9 +54,6 @@ public class ManagementMenuIdUpdater extends IdUpdater {
   @Inject
   private Event<TaskRequest> taskRequest;
 
-  @Resource
-  private TimerService timerService;
-
   @Override
   public String getName() {
     return "management-menu-ids";
@@ -72,11 +67,6 @@ public class ManagementMenuIdUpdater extends IdUpdater {
     } else if (organizationMenusTaskQueue.isEmpty()) {
       organizationMenusTaskQueue.enqueueTasks(organizationSettingController.listOrganizationIdsWithSetting(ManagementConsts.ORGANIZATION_SETTING_BASEURL));
     }
-  }
-  
-  @Override
-  public TimerService getTimerService() {
-    return timerService;
   }
   
   private void updateManagementMenus(OrganizationId organizationId) {

@@ -6,10 +6,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.annotation.Resource;
 import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
-import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
@@ -36,9 +34,6 @@ public class CaseMMeetingEntityUpdater extends EntityUpdater {
   @Inject
   private MeetingDataUpdateTaskQueue meetingDataUpdateTaskQueue;
 
-  @Resource
-  private TimerService timerService;
-
   @Override
   public String getName() {
     return "casem-meetings";
@@ -59,9 +54,4 @@ public class CaseMMeetingEntityUpdater extends EntityUpdater {
     }
   }
   
-  @Override
-  public TimerService getTimerService() {
-    return timerService;
-  }
-
 }

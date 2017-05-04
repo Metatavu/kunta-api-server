@@ -1,76 +1,31 @@
 package fi.otavanopisto.kuntaapi.server.discover;
 
-import java.util.Collection;
-import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
-import javax.ejb.AccessTimeout;
-import javax.ejb.Timeout;
-import javax.ejb.Timer;
-import javax.ejb.TimerConfig;
-import javax.ejb.TimerService;
 import javax.inject.Inject;
 
 import org.apache.commons.lang3.math.NumberUtils;
 
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
-import java.util.Iterator;
 
-@AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
-public abstract class IdUpdater {
+public abstract class IdUpdater extends AbstractUpdater {
 
   @Inject
   private Logger logger;
 
   @Inject
   private SystemSettingController systemSettingController;
-
-  private boolean stopped;
   
-  @PostConstruct
-  public void postConstruct() {
-    stopped = false;
-    startTimer(getTimerWarmup());
-  }
-  
-  @PreDestroy
-  public void preDestroy() {
-    stopped = true;
-  }
-  
-  public abstract void timeout();
-  public abstract TimerService getTimerService();
-  
-  /**
-   * Stops id updater
-   * 
-   * @param cancelTimers if true all assiciated timers are also canceled
-   */
-  public void stop(boolean cancelTimers) {
-    stopped = true;
-    if (cancelTimers) {
-      try {
-        Collection<Timer> timers = getTimerService().getTimers();
-        for (Timer timer : timers) {
-          timer.cancel();
-        }
-      } catch (Exception e) {
-        logger.log(Level.SEVERE, "Failed to cancel timer", e);
-      }
-    }
-  }
-  
-  public int getTimerWarmup() {
+  @Override
+  public long getTimerWarmup() {
     if (systemSettingController.inTestMode()) {
-      return 200;
+      return 200l;
     }
 
     try {
       String key = String.format("id-updater.%s.warmup", getName());
-      Integer warmup = NumberUtils.createInteger(System.getProperty(key));
+      Long warmup = NumberUtils.createLong(systemSettingController.getSettingValue(key));
       if (warmup != null) {
         return warmup;
       }
@@ -82,17 +37,18 @@ public abstract class IdUpdater {
       }
     }
 
-    return 1000 * 60;
+    return 1000l * 60;
   }
   
-  public int getTimerInterval() {
+  @Override
+  public long getTimerInterval() {
     if (systemSettingController.inTestMode()) {
-      return 1000;
+      return 1000l;
     }
     
     try {
       String key = String.format("id-updater.%s.interval", getName());
-      Integer interval = NumberUtils.createInteger(System.getProperty(key));
+      Long interval = NumberUtils.createLong(systemSettingController.getSettingValue(key));
       if (interval != null) {
         return interval;
       }
@@ -104,56 +60,16 @@ public abstract class IdUpdater {
       }
     }
     
-    return 1000 * 60;
-  }
-
-  private void startTimer(int duration) {
-    TimerConfig timerConfig = new TimerConfig();
-    timerConfig.setPersistent(false);
-    getTimerService().createSingleActionTimer(duration, timerConfig);
+    return 1000l * 10;
   }
   
-  @Timeout
-  public void onTimeout() {
-    if (!isStopped()) {
-      try {
-        if (isEligibleToRun()) {
-          timeout();
-        }
-      } catch (Exception e) {
-        logger.log(Level.SEVERE, "Timer throw an exception", e);
-      } finally {
-        try {
-          Iterator<Timer> timers = getTimerService().getTimers().iterator();
-          while(timers.hasNext()) {
-            Timer timer = timers.next();
-            timer.cancel();
-          }
-        } catch (Exception e) {
-          logger.log(Level.SEVERE, "Exception while canceling timer", e);
-        } finally {
-          startTimer(getTimerInterval());
-        }
-      }
-    }
-  }
-  
-  public abstract String getName();
-  
-  public boolean isStopped() {
-    return stopped;
-  }
-  
-  private boolean isEligibleToRun() {
+  @Override
+  public boolean isEligibleToRun() {
     if (systemSettingController.inFailsafeMode()) {
       return false;
     }
     
-    if (!systemSettingController.isNotTestingOrTestRunning()) {
-      return false;
-    }
-    
-    return true;
+    return systemSettingController.isNotTestingOrTestRunning();
   }
   
 }

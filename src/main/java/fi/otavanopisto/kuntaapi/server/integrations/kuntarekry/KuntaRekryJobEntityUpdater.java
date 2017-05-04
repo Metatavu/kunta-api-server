@@ -2,10 +2,8 @@ package fi.otavanopisto.kuntaapi.server.integrations.kuntarekry;
 
 import java.util.concurrent.TimeUnit;
 
-import javax.annotation.Resource;
 import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
-import javax.ejb.TimerService;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
@@ -48,9 +46,6 @@ public class KuntaRekryJobEntityUpdater extends EntityUpdater {
   @Inject
   private KuntaRekryJobResourceContainer kuntaRekryJobResourceContainer;
 
-  @Resource
-  private TimerService timerService;
-
   @Override
   public String getName() {
     return "organization-jobs";
@@ -59,11 +54,6 @@ public class KuntaRekryJobEntityUpdater extends EntityUpdater {
   @Override
   public void timeout() {
     executeNextTask();
-  }
-  
-  @Override
-  public TimerService getTimerService() {
-    return timerService;
   }
   
   private void executeNextTask() {

@@ -3,7 +3,6 @@ package fi.otavanopisto.kuntaapi.server.integrations.ptv;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
 import org.apache.commons.lang3.StringUtils;
@@ -13,13 +12,14 @@ import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.OrganizationProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.resources.PtvOrganizationResourceContainer;
+import javax.enterprise.context.ApplicationScoped;
 
 /**
  * Organization provider for PTV
  * 
  * @author Antti Leppä
  */
-@RequestScoped
+@ApplicationScoped
 public class PtvOrganizationProvider implements OrganizationProvider {
   
   @Inject

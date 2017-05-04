@@ -3,7 +3,6 @@ package fi.otavanopisto.kuntaapi.server.integrations.management;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
 import org.apache.commons.lang3.StringUtils;
@@ -14,13 +13,14 @@ import fi.otavanopisto.kuntaapi.server.id.AnnouncementId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.AnnouncementProvider;
 import fi.otavanopisto.kuntaapi.server.resources.AnnouncementResourceContainer;
+import javax.enterprise.context.ApplicationScoped;
 
 /**
  * Announcement provider for management wordpress
  * 
  * @author Antti Leppä
  */
-@RequestScoped
+@ApplicationScoped
 @SuppressWarnings ("squid:S3306")
 public class ManagementAnnouncementProvider extends AbstractManagementProvider implements AnnouncementProvider {
   
