@@ -1,5 +1,9 @@
 package fi.otavanopisto.kuntaapi.server.integrations.ptv;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 /**
  * Constants for palvelutietoväylä
  * 
@@ -13,7 +17,7 @@ public class PtvConsts {
   public static final String SYSTEM_SETTING_BASEURL = "ptv.baseUrl";
   public static final String DEFAULT_LANGUAGE = "fi";
   public static final String TIMEZONE = "Europe/Helsinki";
-  public static final String[] PTV_SUPPORTED_LANGUAGES = {"fi", "en", "sv"};
+  public static final List<String> PTV_SUPPORTED_LANGUAGES = Collections.unmodifiableList(Arrays.asList("fi", "en", "sv"));
   
   private PtvConsts() {
   }
