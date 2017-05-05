@@ -38,7 +38,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 /**
  * Response aware HTTP client for integrations
  * 
- * @author Otavan Opisto
+ * @author Metatavu
  */
 @Dependent
 public class GenericHttpClient {
