@@ -145,7 +145,7 @@ public class PtvOrganizationEntityUpdater extends EntityUpdater {
     }
   }
 
-  public OrganizationId translateParentOrganizationId(OrganizationId kuntaApiOrganizationId, V5VmOpenApiOrganization ptvOrganization) {
+  private OrganizationId translateParentOrganizationId(OrganizationId kuntaApiOrganizationId, V5VmOpenApiOrganization ptvOrganization) {
     OrganizationId ptvParentOrganizationId = ptvIdFactory.createOrganizationId(ptvOrganization.getParentOrganization());
     OrganizationId kuntaApiParentOrganizationId = null;
     
