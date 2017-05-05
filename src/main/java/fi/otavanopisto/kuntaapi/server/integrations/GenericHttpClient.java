@@ -34,6 +34,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpHead;
 import org.apache.http.client.methods.HttpUriRequest;
 
@@ -208,7 +209,7 @@ public class GenericHttpClient {
     
     try {
       try (CloseableHttpResponse response = httpClient.execute(request)) {
-        return createResponse(response, resultType);
+        return createResponse(response, request.getMethod(), resultType);
       }
     } catch (JsonParseException | JsonMappingException  e) {
       logger.log(Level.SEVERE, RESPONSE_PARSING_FAILED, e);
@@ -231,14 +232,14 @@ public class GenericHttpClient {
     return String.valueOf(value);
   }
   
-  private <T> Response<T> createResponse(HttpResponse httpResponse, ResultType<T> resultType) throws IOException {
+  private <T> Response<T> createResponse(HttpResponse httpResponse, String httpMethod, ResultType<T> resultType) throws IOException {
     StatusLine statusLine = httpResponse.getStatusLine();
     int statusCode = statusLine.getStatusCode();
     String message = statusLine.getReasonPhrase();
     
     switch (statusCode) {
       case 200:
-        return handleOkResponse(httpResponse, statusCode, message, resultType.getTypeReference());
+        return httpMethod.equals(HttpHead.METHOD_NAME) ? handleNoContentResponse(statusCode, message, resultType.getTypeReference()) : handleOkResponse(httpResponse, statusCode, message, resultType.getTypeReference());
       case 204:
         return handleNoContentResponse(statusCode, message, resultType.getTypeReference());
       default:
