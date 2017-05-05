@@ -1,7 +1,7 @@
 {
   "id":"1a17f994-b924-46ae-8708-c09938125119",
   "serviceChannelType":"PrintableForm",
-  "organizationId":"18bb8d7c-1dc7-4188-9149-7d89fdeac75e",
+  "organizationId":"d45ec681-4da3-4a38-af67-fb2d949b9387",
   "serviceChannelNames":[
     {
       "language":"fi",
@@ -45,7 +45,7 @@
     "latitude":"0",
     "longitude":"0",
     "coordinateState":"EmptyInputReceived",
-    "postOfficeBox":"",
+    "postOfficeBox":[],
     "postalCode":"20780",
     "postOffice":[
       {

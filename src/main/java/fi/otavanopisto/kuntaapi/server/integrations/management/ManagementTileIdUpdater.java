@@ -119,7 +119,7 @@ public class ManagementTileIdUpdater extends IdUpdater {
     for (TileId tileId : tileIds) {
       TileId managementTileId = idController.translateTileId(tileId, ManagementConsts.IDENTIFIER_NAME);
       if (managementTileId != null) {
-        ApiResponse<Tile> response = api.wpV2TileIdGet(managementTileId.getId(), null, null, null);
+        ApiResponse<Object> response = api.wpV2TileIdHead(managementTileId.getId(), null, null, null);
         int status = response.getStatus();
         // If status is 404 the tile has been removed and if its a 403 its either trashed or unpublished.
         // In both cases the tile should not longer be available throught API

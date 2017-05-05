@@ -87,7 +87,7 @@ public abstract class AbstractPtvMocker<R> {
     priorityList = get(urlPathEqualTo(getBasePath())).withQueryParam("date", containing("20"))
       .willReturn(aResponse()
       .withHeader(CONTENT_TYPE, APPLICATION_JSON)
-      .withBody(toJSON(Collections.emptyList())));
+      .withBody(toJSON(new GuidPage(0, 0, 0, Collections.emptyList()))));
     
     stubFor(priorityList);
   }
@@ -312,15 +312,15 @@ public abstract class AbstractPtvMocker<R> {
   }
   
   protected R readEntity(String id) {
-    return readEntityFromJSONFile(String.format("ptv/%s/%s.json", getName(), id));
+    return readEntityFromJSONFile(id, String.format("ptv/%s/%s.json", getName(), id));
   }
 
   @SuppressWarnings("unchecked")
-  private R readEntityFromJSONFile(String file) {
-    return readJSONFile(file, getGenericTypeClass());
+  private R readEntityFromJSONFile(String id, String file) {
+    return readJSONFile(id, file, getGenericTypeClass());
   }
   
-  private R readJSONFile(String file, Class <R> type){
+  private R readJSONFile(String id, String file, Class <R> type) {
     ObjectMapper objectMapper = new ObjectMapper();
     objectMapper.registerModule(new JavaTimeModule());
     
@@ -328,11 +328,12 @@ public abstract class AbstractPtvMocker<R> {
       return objectMapper.readValue(stream, type);
     } catch (IOException e) {
       if (logger.isLoggable(Level.SEVERE)) {
-        logger.log(Level.SEVERE, "Failed to read mock file", e);
+        logger.log(Level.SEVERE, String.format("Failed to read mock file (%s)", id), e);
       }
       
-      fail(e.getMessage());
+      fail(String.format("Failed to read mock file (%s): %s", id, e.getMessage()));
     }
+    
     return null;
   }
   

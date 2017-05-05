@@ -119,7 +119,7 @@ public class ManagementAnnouncementIdUpdater extends IdUpdater {
     for (AnnouncementId announcementId : announcementIds) {
       AnnouncementId managementAnnouncementId = idController.translateAnnouncementId(announcementId, ManagementConsts.IDENTIFIER_NAME);
       if (managementAnnouncementId != null) {
-        ApiResponse<Announcement> response = api.wpV2AnnouncementIdGet(managementAnnouncementId.getId(), null, null, null);
+        ApiResponse<Object> response = api.wpV2AnnouncementIdHead(managementAnnouncementId.getId(), null, null, null);
         int status = response.getStatus();
         // If status is 404 the announcement has been removed and if its a 403 its either trashed or unpublished.
         // In both cases the announcement should not longer be available throught API

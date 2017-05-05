@@ -1,6 +1,8 @@
 {
-  "id":"0f112910-08ca-4942-8c80-476cb710ee1d",
+  "id":"ae2682d3-6238-4019-b34f-b078c5f9bb50",
   "oid":null,
+  "parentOrganization":null,
+  "organizationType":"Municipality",
   "municipality":{
     "code":"491",
     "name":[
@@ -14,7 +16,6 @@
       }
     ]
   },
-  "organizationType":"Municipality",
   "businessCode":"0165116-3",
   "businessName":"Mikkelin kaupunki",
   "organizationNames":[
@@ -29,7 +30,18 @@
       "type":"AlternateName"
     }
   ],
-  "displayNameType":"Name",
+  "displayNameType":[
+    {
+      "type":"Name",
+      "language":"fi"
+    },
+    {
+      "type":"Name",
+      "language":"sv"
+    }
+  ],
+  "areaType":null,
+  "areas":null,
   "organizationDescriptions":[
     {
       "language":"fi",
@@ -69,7 +81,16 @@
       "longitude":"0",
       "coordinateState":"EmptyInputReceived",
       "type":"Postal",
-      "postOfficeBox":"PL 33",
+      "postOfficeBox":[
+        {
+          "value":"PL 33",
+          "language":"sv"
+        },
+        {
+          "value":"PL 33",
+          "language":"fi"
+        }
+      ],
       "postalCode":"50101",
       "postOffice":[
         {
@@ -99,7 +120,9 @@
       "longitude":"0",
       "coordinateState":"EmptyInputReceived",
       "type":"Visiting",
-      "postOfficeBox":null,
+      "postOfficeBox":[
+
+      ],
       "postalCode":"50100",
       "postOffice":[
         {
@@ -129,64 +152,78 @@
     }
   ],
   "publishingStatus":"Published",
-  "parentOrganization":null,
   "services":[
     {
+      "service":{
+        "id":"2f21448e-e461-4ad0-a87a-47bcb08e578e",
+        "name":"Perusopetus"
+      },
+      "organizationId":"ae2682d3-6238-4019-b34f-b078c5f9bb50",
+      "roleType":"Responsible",
+      "provisionType":null,
       "additionalInformation":[
 
       ],
-      "serviceId":"6c9926b9-4aa0-4635-b66a-471af07dfec3",
-      "organizationId":"0f112910-08ca-4942-8c80-476cb710ee1d",
-      "roleType":"Responsible",
-      "provisionType":null,
       "webPages":[
 
       ]
     },
     {
-      "additionalInformation":[
-
-      ],
-      "serviceId":"6c9926b9-4aa0-4635-b66a-471af07dfec3",
-      "organizationId":"0f112910-08ca-4942-8c80-476cb710ee1d",
+      "service":{
+        "id":"2f21448e-e461-4ad0-a87a-47bcb08e578e",
+        "name":"Perusopetus"
+      },
+      "organizationId":"ae2682d3-6238-4019-b34f-b078c5f9bb50",
       "roleType":"Producer",
       "provisionType":"SelfProduced",
+      "additionalInformation":[
+
+      ],
       "webPages":[
 
       ]
     },
     {
-      "additionalInformation":[
-
-      ],
-      "serviceId":"822d5347-8398-4866-bb9d-9cdc60b38fba",
-      "organizationId":"0f112910-08ca-4942-8c80-476cb710ee1d",
-      "roleType":"Responsible",
-      "provisionType":null,
-      "webPages":[
-
-      ]
-    },
-    {
-      "additionalInformation":[
-
-      ],
-      "serviceId":"ef66b7c2-e938-4a30-ad57-475fc40abf27",
-      "organizationId":"0f112910-08ca-4942-8c80-476cb710ee1d",
-      "roleType":"Responsible",
-      "provisionType":null,
-      "webPages":[
-
-      ]
-    },
-    {
-      "additionalInformation":[
-
-      ],
-      "serviceId":"ef66b7c2-e938-4a30-ad57-475fc40abf27",
-      "organizationId":"0f112910-08ca-4942-8c80-476cb710ee1d",
+      "service":{
+        "id":"0003651e-6afe-400e-816c-c64af41521f8",
+        "name":"Esiopetusikäisen päivähoito"
+      },
+      "organizationId":"ae2682d3-6238-4019-b34f-b078c5f9bb50",
       "roleType":"Producer",
       "provisionType":"SelfProduced",
+      "additionalInformation":[
+
+      ],
+      "webPages":[
+
+      ]
+    },
+    {
+      "service":{
+        "id":"00047a04-9c01-48ea-99da-4ec332f6d0fa",
+        "name":"Esiopetusikäisen päivähoito"
+      },
+      "organizationId":"ae2682d3-6238-4019-b34f-b078c5f9bb50",
+      "roleType":"Responsible",
+      "provisionType":null,
+      "additionalInformation":[
+
+      ],
+      "webPages":[
+
+      ]
+    },
+    {
+      "service":{
+        "id":"00047a04-9c01-48ea-99da-4ec332f6d0fa",
+        "name":"Erityisvarhaiskasvatus"
+      },
+      "organizationId":"ae2682d3-6238-4019-b34f-b078c5f9bb50",
+      "roleType":"Producer",
+      "provisionType":"SelfProduced",
+      "additionalInformation":[
+
+      ],
       "webPages":[
 
       ]

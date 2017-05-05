@@ -19,7 +19,7 @@ import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
 import fi.metatavu.kuntaapi.server.rest.model.Service;
 import fi.metatavu.kuntaapi.server.rest.model.ServiceOrganization;
 import fi.metatavu.ptv.client.ApiResponse;
-import fi.metatavu.ptv.client.model.V4VmOpenApiService;
+import fi.metatavu.ptv.client.model.V5VmOpenApiService;
 import fi.metatavu.ptv.client.model.V4VmOpenApiServiceOrganization;
 import fi.metatavu.ptv.client.model.V4VmOpenApiServiceServiceChannel;
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
@@ -128,11 +128,11 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
       return;
     }
     
-    ApiResponse<V4VmOpenApiService> response = ptvApi.getServiceApi().apiV4ServiceByIdGet(ptvServiceId.getId());
+    ApiResponse<V5VmOpenApiService> response = ptvApi.getServiceApi().apiV5ServiceByIdGet(ptvServiceId.getId());
     if (response.isOk()) {
       Identifier identifier = identifierController.acquireIdentifier(orderIndex, ptvServiceId);
       
-      V4VmOpenApiService ptvService = response.getResponse();
+      V5VmOpenApiService ptvService = response.getResponse();
       ServiceId kuntaApiServiceId = kuntaApiIdFactory.createFromIdentifier(ServiceId.class, identifier);
       
       fi.metatavu.kuntaapi.server.rest.model.Service service = translateService(ptvService, kuntaApiServiceId);
@@ -158,7 +158,7 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
     }
   }
 
-  private fi.metatavu.kuntaapi.server.rest.model.Service translateService(V4VmOpenApiService ptvService, ServiceId kuntaApiServiceId) {
+  private fi.metatavu.kuntaapi.server.rest.model.Service translateService(V5VmOpenApiService ptvService, ServiceId kuntaApiServiceId) {
     List<V4VmOpenApiServiceServiceChannel> serviceChannels = ptvService.getServiceChannels();
     
     List<ElectronicServiceChannelId> kuntaApiElectronicServiceChannelIds = new ArrayList<>(); 

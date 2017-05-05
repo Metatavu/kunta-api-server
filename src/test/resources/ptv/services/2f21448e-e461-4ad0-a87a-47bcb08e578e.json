@@ -1,5 +1,5 @@
 {
-  "id":"6c9926b9-4aa0-4635-b66a-471af07dfec3",
+  "id":"2f21448e-e461-4ad0-a87a-47bcb08e578e",
   "type":"Service",
   "statutoryServiceGeneralDescriptionId":null,
   "serviceChargeType":"Free",
@@ -8,14 +8,18 @@
       "language":"fi",
       "value":"Metatavu testaa",
       "type":"Name"
-    },
-    {
-      "language":"fi",
-      "value":"",
-      "type":"AlternateName"
     }
   ],
+  "areaType":"WholeCountry",
+  "areas":[
+
+  ],
   "serviceDescriptions":[
+    {
+      "language":"fi",
+      "value":"Kuvaus",
+      "type":"Description"
+    },
     {
       "language":"fi",
       "value":null,
@@ -23,13 +27,8 @@
     },
     {
       "language":"fi",
-      "value":"Tiivistelmä.",
+      "value":"Tiivistelmä. on tämä tii-vis-tel-mä.",
       "type":"ShortDescription"
-    },
-    {
-      "language":"fi",
-      "value":"Kuvaus",
-      "type":"Description"
     },
     {
       "language":"fi",
@@ -128,48 +127,16 @@
     {
       "name":[
         {
-          "value":"Asevelvollisuus",
-          "language":"fi"
-        },
-        {
-          "value":"Asevelvollisuus",
-          "language":"fi"
-        },
-        {
-          "value":"Värnplikt",
-          "language":"sv"
-        },
-        {
-          "value":"Asevelvollisuus",
-          "language":"fi"
-        },
-        {
-          "value":"Conscription",
-          "language":"en"
-        },
-        {
-          "value":"Värnplikt",
-          "language":"sv"
-        },
-        {
-          "value":"Asevelvollisuus",
-          "language":"fi"
-        },
-        {
-          "value":"Conscription",
-          "language":"en"
-        },
-        {
-          "value":"Asevelvollisuus",
-          "language":"fi"
-        },
-        {
           "value":"Värnplikt",
           "language":"sv"
         },
         {
           "value":"Conscription",
           "language":"en"
+        },
+        {
+          "value":"Asevelvollisuus",
+          "language":"fi"
         }
       ],
       "code":"KE2",
@@ -226,10 +193,6 @@
   "keywords":[
 
   ],
-  "serviceCoverageType":"Nationwide",
-  "municipalities":[
-
-  ],
   "requirements":[
     {
       "value":"Testi vaatimus",
@@ -251,20 +214,27 @@
   "organizations":[
     {
       "additionalInformation":[
-
+        {
+          "value":null,
+          "language":"fi"
+        }
       ],
       "organizationId":null,
       "roleType":"Producer",
       "provisionType":"VoucherServices",
       "webPages":[
-
+        {
+          "value":null,
+          "url":null,
+          "language":"fi"
+        }
       ]
     },
     {
       "additionalInformation":[
 
       ],
-      "organizationId":"0f112910-08ca-4942-8c80-476cb710ee1d",
+      "organizationId":"ae2682d3-6238-4019-b34f-b078c5f9bb50",
       "roleType":"Responsible",
       "provisionType":null,
       "webPages":[

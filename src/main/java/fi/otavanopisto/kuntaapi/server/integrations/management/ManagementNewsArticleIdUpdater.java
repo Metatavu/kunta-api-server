@@ -108,7 +108,7 @@ public class ManagementNewsArticleIdUpdater extends IdUpdater {
     for (NewsArticleId newsArticleId : newsArticleIds) {
       NewsArticleId managementArticleId = idController.translateNewsArticleId(newsArticleId, ManagementConsts.IDENTIFIER_NAME);
       if (managementArticleId != null) {
-        ApiResponse<Post> response = api.wpV2PostsIdGet(managementArticleId.getId(), null, null, null);
+        ApiResponse<Object> response = api.wpV2PostsIdHead(managementArticleId.getId(), null, null, null);
         int status = response.getStatus();
         // If status is 404 the post has been removed and if its a 403 its either trashed or unpublished.
         // In both cases the post should not longer be available throught API

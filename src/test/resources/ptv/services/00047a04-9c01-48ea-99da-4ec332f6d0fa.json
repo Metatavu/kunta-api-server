@@ -1,0 +1,216 @@
+{
+  "id":"00047a04-9c01-48ea-99da-4ec332f6d0fa",
+  "type":"Service",
+  "statutoryServiceGeneralDescriptionId":"4f34f234-8112-41bd-ae4a-51e8ed93543d",
+  "serviceChargeType":null,
+  "serviceNames":[
+    {
+      "language":"fi",
+      "value":"Romanikielen opetus",
+      "type":"Name"
+    }
+  ],
+  "areaType":"WholeCountry",
+  "areas":[
+
+  ],
+  "serviceDescriptions":[
+
+  ],
+  "languages":[
+
+  ],
+  "serviceClasses":[
+    {
+      "name":[
+        {
+          "value":"Perusopetus",
+          "language":"fi"
+        },
+        {
+          "value":"Grundläggande utbildning",
+          "language":"sv"
+        },
+        {
+          "value":"Basic education",
+          "language":"en"
+        }
+      ],
+      "code":"P6.2",
+      "ontologyType":"PTVL",
+      "uri":"http://urn.fi/URN:NBN:fi:au:ptvl:P6.2",
+      "parentId":"fa8991cb-1264-4950-954c-adc00a017911",
+      "parentUri":"http://urn.fi/URN:NBN:fi:au:ptvl:P6"
+    }
+  ],
+  "ontologyTerms":[
+    {
+      "name":[
+        {
+          "value":"romani",
+          "language":"sv"
+        },
+        {
+          "value":"romanikieli",
+          "language":"fi"
+        },
+        {
+          "value":"Romani language",
+          "language":"en"
+        }
+      ],
+      "code":"",
+      "ontologyType":"YSO",
+      "uri":"http://www.yso.fi/onto/koko/p6296",
+      "parentId":null,
+      "parentUri":"http://www.yso.fi/onto/koko/p498"
+    },
+    {
+      "name":[
+        {
+          "value":"perusopetus",
+          "language":"fi"
+        },
+        {
+          "value":"basundervisning",
+          "language":"sv"
+        },
+        {
+          "value":"basic education",
+          "language":"en"
+        }
+      ],
+      "code":"",
+      "ontologyType":"YSO",
+      "uri":"http://www.yso.fi/onto/koko/p1275",
+      "parentId":null,
+      "parentUri":"http://www.yso.fi/onto/koko/p33827"
+    },
+    {
+      "name":[
+        {
+          "value":"Grundschule, Gesamtschule",
+          "language":"de"
+        },
+        {
+          "value":"peruskoulu",
+          "language":"fi"
+        },
+        {
+          "value":"grundskolan",
+          "language":"sv"
+        },
+        {
+          "value":"comprehensive school",
+          "language":"en"
+        },
+        {
+          "value":"põhikool",
+          "language":"et"
+        }
+      ],
+      "code":"",
+      "ontologyType":"YSO",
+      "uri":"http://www.yso.fi/onto/koko/p14592",
+      "parentId":null,
+      "parentUri":"http://www.yso.fi/onto/koko/p48279"
+    },
+    {
+      "name":[
+        {
+          "value":"romanikieliset",
+          "language":"fi"
+        },
+        {
+          "value":"romanispråkiga",
+          "language":"sv"
+        },
+        {
+          "value":"Romany speakers",
+          "language":"en"
+        }
+      ],
+      "code":"",
+      "ontologyType":"YSO",
+      "uri":"http://www.yso.fi/onto/koko/p12704",
+      "parentId":null,
+      "parentUri":"http://www.yso.fi/onto/koko/p36947"
+    }
+  ],
+  "targetGroups":[
+    {
+      "name":[
+        {
+          "value":"Kansalaiset",
+          "language":"fi"
+        },
+        {
+          "value":"Citizens",
+          "language":"en"
+        },
+        {
+          "value":"Medborgare",
+          "language":"sv"
+        }
+      ],
+      "code":"KR1",
+      "ontologyType":"TARGETGROUP",
+      "uri":"http://urn.fi/URN:NBN:fi:au:ptvl:KR1",
+      "parentId":null,
+      "parentUri":""
+    },
+    {
+      "name":[
+        {
+          "value":"Lapset ja lapsiperheet",
+          "language":"fi"
+        },
+        {
+          "value":"Children and families with children",
+          "language":"en"
+        },
+        {
+          "value":"Barn och barnfamiljer",
+          "language":"sv"
+        }
+      ],
+      "code":"KR1.2",
+      "ontologyType":"TARGETGROUP",
+      "uri":"http://urn.fi/URN:NBN:fi:au:ptvl:KR1.2",
+      "parentId":"07e55fa9-0455-4238-8e7d-5fdbfba431b6",
+      "parentUri":"http://urn.fi/URN:NBN:fi:au:ptvl:KR1"
+    }
+  ],
+  "lifeEvents":[
+
+  ],
+  "industrialClasses":[
+
+  ],
+  "legislation":[
+
+  ],
+  "keywords":[
+
+  ],
+  "requirements":[
+
+  ],
+  "serviceChannels":[
+
+  ],
+  "organizations":[
+    {
+      "additionalInformation":[
+
+      ],
+      "organizationId":"d45ec681-4da3-4a38-af67-fb2d949b9387",
+      "roleType":"Responsible",
+      "provisionType":null,
+      "webPages":[
+
+      ]
+    }
+  ],
+  "publishingStatus":"Published"
+}
