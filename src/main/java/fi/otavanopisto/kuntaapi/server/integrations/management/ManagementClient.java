@@ -77,6 +77,34 @@ public class ManagementClient implements fi.metatavu.management.client.ApiClient
   }
 
   @Override
+  public <T> ApiResponse<T> doHEADRequest(String url, ResultType<T> resultType, Map<String, Object> queryParams, Map<String, Object> postParams) {
+    URIBuilder uriBuilder;
+    try {
+      uriBuilder = new URIBuilder(url);
+    } catch (URISyntaxException e) {
+      logger.log(Level.SEVERE, INVALID_URI_SYNTAX, e);
+      return new ApiResponse<>(500, INVALID_URI_SYNTAX, null);
+    }
+    
+    if (queryParams != null) {
+      for (Entry<String, Object> entry : queryParams.entrySet()) {
+        addQueryParam(uriBuilder, entry);
+      }
+    }
+    
+    URI uri;
+    try {
+      uri = uriBuilder.build();
+    } catch (URISyntaxException e) {
+      logger.log(Level.SEVERE, INVALID_URI_SYNTAX, e);
+      return new ApiResponse<>(500, INVALID_URI_SYNTAX, null);
+    }
+
+    Response<T> response = httpClient.doHEADRequest(uri, new GenericHttpClient.ResultTypeWrapper<>(resultType.getType()));
+    return new ApiResponse<>(response.getStatus(), response.getMessage(), response.getResponseEntity());
+  }
+  
+  @Override
   public <T> ApiResponse<T> doPOSTRequest(String url, ResultType<T> resultType, Map<String, Object> queryParams, Map<String, Object> postParams) {
     throw new UnsupportedOperationException();
   }

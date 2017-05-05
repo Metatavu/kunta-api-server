@@ -119,7 +119,7 @@ public class ManagementShortlinkIdUpdater extends IdUpdater {
     for (ShortlinkId shortlinkId : shortlinkIds) {
       ShortlinkId managementShortlinkId = idController.translateShortlinkId(shortlinkId, ManagementConsts.IDENTIFIER_NAME);
       if (managementShortlinkId != null) {
-        ApiResponse<Shortlink> response = api.wpV2ShortlinkIdGet(managementShortlinkId.getId(), null, null, null);
+        ApiResponse<Object> response = api.wpV2ShortlinkIdHead(managementShortlinkId.getId(), null, null, null);
         int status = response.getStatus();
         // If status is 404 the shortlink has been removed and if its a 403 its either trashed or unpublished.
         // In both cases the shortlink should not longer be available throught API
