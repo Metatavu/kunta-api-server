@@ -40,7 +40,7 @@ public class PtvOrganizationIdUpdater extends AbstractPtvOrganizationIdUpdater {
 
   @Override
   public ApiResponse<V3VmOpenApiGuidPage> getPage() {
-    return ptvApi.getOrganizationApi().apiV4OrganizationGet(null, page);
+    return ptvApi.getOrganizationApi().apiV5OrganizationGet(null, page);
   }
 
   @Override

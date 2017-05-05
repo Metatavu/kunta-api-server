@@ -13,7 +13,7 @@ import javax.inject.Inject;
 
 import fi.metatavu.ptv.client.ApiResponse;
 import fi.metatavu.ptv.client.ResultType;
-import fi.metatavu.ptv.client.model.V4VmOpenApiServiceLocationChannel;
+import fi.metatavu.ptv.client.model.V5VmOpenApiServiceLocationChannel;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.IdUpdater;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
@@ -81,8 +81,8 @@ public class PtvServiceLocationServiceChannelIdRemoveUpdater extends IdUpdater {
         continue;
       }
       
-      String path = String.format("/api/v4/ServiceChannel/%s", ptvServiceLocationServiceChannelId.getId());
-      ApiResponse<V4VmOpenApiServiceLocationChannel> response = ptvClient.doGETRequest(path, new ResultType<V4VmOpenApiServiceLocationChannel>() {}, null, null);
+      String path = String.format("/api/%s/ServiceChannel/%s", PtvConsts.VERSION, ptvServiceLocationServiceChannelId.getId());
+      ApiResponse<V5VmOpenApiServiceLocationChannel> response = ptvClient.doGETRequest(path, new ResultType<V5VmOpenApiServiceLocationChannel>() {}, null, null);
       if (response.getStatus() == 404) {
         serviceChannelTasksQueue.enqueueTask(false, new ServiceLocationServiceChannelRemoveTask(ptvServiceLocationServiceChannelId));
       }

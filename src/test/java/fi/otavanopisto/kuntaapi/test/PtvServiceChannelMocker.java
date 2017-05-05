@@ -12,17 +12,18 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
-import fi.metatavu.ptv.client.model.V4VmOpenApiElectronicChannel;
-import fi.metatavu.ptv.client.model.V4VmOpenApiPhoneChannel;
-import fi.metatavu.ptv.client.model.V4VmOpenApiPrintableFormChannel;
-import fi.metatavu.ptv.client.model.V4VmOpenApiServiceLocationChannel;
+import fi.metatavu.ptv.client.model.V5VmOpenApiElectronicChannel;
+import fi.metatavu.ptv.client.model.V5VmOpenApiPhoneChannel;
+import fi.otavanopisto.kuntaapi.server.integrations.ptv.PtvConsts;
+import fi.metatavu.ptv.client.model.V5VmOpenApiPrintableFormChannel;
+import fi.metatavu.ptv.client.model.V5VmOpenApiServiceLocationChannel;
 import fi.metatavu.ptv.client.model.V4VmOpenApiWebPageChannel;
 
 @SuppressWarnings ({"squid:S1075", "squid:S1450"})
 public class PtvServiceChannelMocker extends AbstractPtvMocker<Object> {
 
   private static final String FAILED_TO_READ_MOCK_FILE = "Failed to read mock file";
-  private static final String BASE_PATH = "/ptv/api/v4/ServiceChannel";
+  private static final String BASE_PATH = String.format("/ptv/api/%s/ServiceChannel", PtvConsts.VERSION);
 
   private static Logger logger = Logger.getLogger(PtvServiceChannelMocker.class.getName());
 
@@ -38,20 +39,20 @@ public class PtvServiceChannelMocker extends AbstractPtvMocker<Object> {
   
   @Override
   public String getEntityId(Object entity) {
-    if (entity instanceof V4VmOpenApiElectronicChannel) {
-      return ((V4VmOpenApiElectronicChannel) entity).getId();
+    if (entity instanceof V5VmOpenApiElectronicChannel) {
+      return ((V5VmOpenApiElectronicChannel) entity).getId();
     }
     
-    if (entity instanceof V4VmOpenApiPhoneChannel) {
-      return ((V4VmOpenApiPhoneChannel) entity).getId();
+    if (entity instanceof V5VmOpenApiPhoneChannel) {
+      return ((V5VmOpenApiPhoneChannel) entity).getId();
     }
     
-    if (entity instanceof V4VmOpenApiPrintableFormChannel) {
-      return ((V4VmOpenApiPrintableFormChannel) entity).getId();
+    if (entity instanceof V5VmOpenApiPrintableFormChannel) {
+      return ((V5VmOpenApiPrintableFormChannel) entity).getId();
     }
     
-    if (entity instanceof V4VmOpenApiServiceLocationChannel) {
-      return ((V4VmOpenApiServiceLocationChannel) entity).getId();
+    if (entity instanceof V5VmOpenApiServiceLocationChannel) {
+      return ((V5VmOpenApiServiceLocationChannel) entity).getId();
     }
     
     if (entity instanceof V4VmOpenApiWebPageChannel) {
