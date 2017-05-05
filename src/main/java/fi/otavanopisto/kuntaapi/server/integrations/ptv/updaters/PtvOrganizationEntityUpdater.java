@@ -168,7 +168,7 @@ public class PtvOrganizationEntityUpdater extends EntityUpdater {
     
     ServiceId kuntaApiServiceId = idController.translateServiceId(ptvIdFactory.createServiceId(ptvServiceId), KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiServiceId == null) {
-      logger.log(Level.INFO, String.format("Could not translate service %s into Kunta API", ptvServiceId)); 
+      logger.log(Level.INFO, () -> String.format("Could not translate service %s into Kunta API", ptvServiceId)); 
       return null;
     }
 
