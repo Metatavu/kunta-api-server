@@ -40,7 +40,7 @@ import org.apache.http.client.methods.HttpUriRequest;
 /**
  * Response aware HTTP client for integrations
  * 
- * @author Otavan Opisto
+ * @author Metatavu
  */
 @Dependent
 public class GenericHttpClient {

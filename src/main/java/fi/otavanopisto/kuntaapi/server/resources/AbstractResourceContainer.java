@@ -17,6 +17,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import fi.otavanopisto.kuntaapi.server.controllers.StoredResourceController;
 import fi.otavanopisto.kuntaapi.server.id.BaseId;
 import fi.otavanopisto.kuntaapi.server.jackson.IdModule;
+import fi.otavanopisto.kuntaapi.server.jackson.UnknownFieldLoggerDeserializationProblemHandler;
 
 public abstract class AbstractResourceContainer<K extends BaseId, V> extends AbstractResourceContainerBase implements Serializable {
   
@@ -80,6 +81,7 @@ public abstract class AbstractResourceContainer<K extends BaseId, V> extends Abs
     ObjectMapper objectMapper = new ObjectMapper();
     objectMapper.registerModule(new JavaTimeModule());
     objectMapper.registerModule(new IdModule());
+    objectMapper.addHandler(new UnknownFieldLoggerDeserializationProblemHandler());
     return objectMapper;
   }
 

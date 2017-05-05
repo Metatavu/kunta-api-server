@@ -1,11 +1,12 @@
 package fi.otavanopisto.kuntaapi.test;
 
-import fi.metatavu.ptv.client.model.V4VmOpenApiService;
+import fi.metatavu.ptv.client.model.V5VmOpenApiService;
+import fi.otavanopisto.kuntaapi.server.integrations.ptv.PtvConsts;
 
 @SuppressWarnings ("squid:S1450")
-public class PtvServiceMocker extends AbstractPtvMocker<V4VmOpenApiService> {
+public class PtvServiceMocker extends AbstractPtvMocker<V5VmOpenApiService> {
 
-  private static final String BASE_PATH = "/ptv/api/v4/Service";
+  private static final String BASE_PATH = String.format("/ptv/api/%s/Service", PtvConsts.VERSION);
 
   @Override
   public String getName() {
@@ -18,7 +19,7 @@ public class PtvServiceMocker extends AbstractPtvMocker<V4VmOpenApiService> {
   }
   
   @Override
-  public String getEntityId(V4VmOpenApiService entity) {
+  public String getEntityId(V5VmOpenApiService entity) {
     return entity.getId();
   }
   

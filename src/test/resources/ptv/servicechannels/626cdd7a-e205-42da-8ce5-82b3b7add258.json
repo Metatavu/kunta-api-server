@@ -1,7 +1,7 @@
 {
   "id":"626cdd7a-e205-42da-8ce5-82b3b7add258",
   "serviceChannelType":"Phone",
-  "organizationId":"18bb8d7c-1dc7-4188-9149-7d89fdeac75e",
+  "organizationId":"d45ec681-4da3-4a38-af67-fb2d949b9387",
   "serviceChannelNames":[
     {
       "language":"fi",
@@ -24,7 +24,6 @@
   "phoneNumbers":[
     {
       "type":"Phone",
-      "additionalInformation":null,
       "serviceChargeType":"Free",
       "chargeDescription":null,
       "prefixNumber":"+358",

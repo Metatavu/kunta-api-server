@@ -1,7 +1,7 @@
 {
   "id":"c0681f51-d1b4-4a9b-bbbf-ddf9a5273cd1",
   "serviceChannelType":"ServiceLocation",
-  "organizationId":"18bb8d7c-1dc7-4188-9149-7d89fdeac75e",
+  "organizationId":"d45ec681-4da3-4a38-af67-fb2d949b9387",
   "serviceChannelNames":[
     {
       "language":"fi",
@@ -21,7 +21,6 @@
       "type":"Description"
     }
   ],
-  "serviceAreaRestricted":false,
   "phoneNumbers":[
     {
       "type":"Phone",
@@ -47,7 +46,7 @@
   "webPages":[
 
   ],
-  "serviceAreas":[
+  "areas":[
 
   ],
   "addresses":[
@@ -56,7 +55,7 @@
       "longitude":"514607.162",
       "coordinateState":"Ok",
       "type":"Visiting",
-      "postOfficeBox":"",
+      "postOfficeBox":[],
       "postalCode":"50100",
       "postOffice":[
         {

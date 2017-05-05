@@ -27,10 +27,10 @@ public class OrganizationsTestsIT extends AbstractIntegrationTest {
   @Before
   public void beforeTest() throws InterruptedException {
     getPtvOrganizationMocker()
-      .mock("0de268cf-1ea1-4719-8a6e-1150933b6b9e", "0f112910-08ca-4942-8c80-476cb710ee1d", "18bb8d7c-1dc7-4188-9149-7d89fdeac75e");
+      .mock("9355a207-efd3-4cfb-a02b-67187f34c822", "ae2682d3-6238-4019-b34f-b078c5f9bb50", "d45ec681-4da3-4a38-af67-fb2d949b9387");
     
     getPtvServiceMocker()
-      .mock("6c9926b9-4aa0-4635-b66a-471af07dfec3", "822d5347-8398-4866-bb9d-9cdc60b38fba", "ef66b7c2-e938-4a30-ad57-475fc40abf27");
+      .mock("2f21448e-e461-4ad0-a87a-47bcb08e578e", "0003651e-6afe-400e-816c-c64af41521f8", "00047a04-9c01-48ea-99da-4ec332f6d0fa");
   
     getPtvServiceChannelMocker()
       .mock("22472ece-95a0-4fef-a429-b4da689677b2", "44187ff9-71ed-40df-89f6-916be4f3baa6", "799e0e4f-4da7-4e7d-9e0e-f1370b80fc9a")  // ElectronicServiceChannels
@@ -74,7 +74,11 @@ public class OrganizationsTestsIT extends AbstractIntegrationTest {
       .body("names[0].language", is("fi"))
       .body("names[0].value", is("Mäntyharjun kunta"))
       .body("names[0].type", is("Name"))
-      .body("displayNameType", is("Name"))
+      .body("displayNameType.size()", is(2))
+      .body("displayNameType[0].type", is("Name"))
+      .body("displayNameType[0].language", is("fi"))
+      .body("displayNameType[1].type", is("Name"))
+      .body("displayNameType[1].language", is("sv"))
       .body("descriptions.size()", is(0))
       .body("emailAddresses.size()", is(0))
       .body("phoneNumbers.size()", is(0))
@@ -111,7 +115,11 @@ public class OrganizationsTestsIT extends AbstractIntegrationTest {
       .body("names[1][0].language", is("fi"))
       .body("names[1][0].value", is("Mikkelin kaupunki"))
       .body("names[1][0].type", is("Name"))
-      .body("displayNameType[1]", is("Name"))
+      .body("displayNameType[1].size()", is(2))
+      .body("displayNameType[1][0].type", is("Name"))
+      .body("displayNameType[1][0].language", is("fi"))
+      .body("displayNameType[1][1].type", is("Name"))
+      .body("displayNameType[1][1].language", is("sv"))
       
       .body("descriptions[1].size()", is(1))
       .body("descriptions[1][0].language", is("fi"))
@@ -142,7 +150,12 @@ public class OrganizationsTestsIT extends AbstractIntegrationTest {
       .body("addresses[1][0].longitude", is("0"))
       .body("addresses[1][0].coordinateState", is("EmptyInputReceived"))
       .body("addresses[1][0].type", is("Postal"))
-      .body("addresses[1][0].postOfficeBox", is("PL 33"))
+      .body("addresses[1][0].postOfficeBox.size()", is(2))
+      .body("addresses[1][0].postOfficeBox[0].language", is("sv"))
+      .body("addresses[1][0].postOfficeBox[0].value", is("PL 33"))
+      .body("addresses[1][0].postOfficeBox[1].language", is("fi"))
+      .body("addresses[1][0].postOfficeBox[1].value", is("PL 33"))
+      
       .body("addresses[1][0].postalCode", is("50101"))
       
       .body("addresses[1][0].postOffice.size()", is(2))

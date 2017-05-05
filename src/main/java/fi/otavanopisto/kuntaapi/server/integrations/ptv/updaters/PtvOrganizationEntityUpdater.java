@@ -15,8 +15,8 @@ import javax.inject.Inject;
 
 import fi.metatavu.kuntaapi.server.rest.model.OrganizationService;
 import fi.metatavu.ptv.client.ApiResponse;
-import fi.metatavu.ptv.client.model.V4VmOpenApiOrganization;
-import fi.metatavu.ptv.client.model.V4VmOpenApiOrganizationService;
+import fi.metatavu.ptv.client.model.V5VmOpenApiOrganization;
+import fi.metatavu.ptv.client.model.V5VmOpenApiOrganizationService;
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
@@ -109,19 +109,21 @@ public class PtvOrganizationEntityUpdater extends EntityUpdater {
       return;
     }
     
-    ApiResponse<V4VmOpenApiOrganization> response = ptvApi.getOrganizationApi().apiV4OrganizationByIdGet(organizationId.getId());
+    ApiResponse<V5VmOpenApiOrganization> response = ptvApi.getOrganizationApi().apiV5OrganizationByIdGet(organizationId.getId());
     if (response.isOk()) {
       Identifier identifier = identifierController.acquireIdentifier(orderIndex, organizationId);
       OrganizationId kuntaApiOrganizationId = kuntaApiIdFactory.createFromIdentifier(OrganizationId.class, identifier);
-      V4VmOpenApiOrganization ptvOrganization = response.getResponse();
-      
-      List<V4VmOpenApiOrganizationService> ptvOrganizationServices = ptvOrganization.getServices();
+      V5VmOpenApiOrganization ptvOrganization = response.getResponse();
+      OrganizationId kuntaApiParentOrganizationId = translateParentOrganizationId(kuntaApiOrganizationId,
+          ptvOrganization);
+     
+      List<V5VmOpenApiOrganizationService> ptvOrganizationServices = ptvOrganization.getServices();
       if (ptvOrganizationServices == null) {
         ptvOrganizationServices = Collections.emptyList();
       }
       
       List<OrganizationService> organizationServices = new ArrayList<>(ptvOrganizationServices.size());
-      for (V4VmOpenApiOrganizationService ptvOrganizationService : ptvOrganizationServices) {
+      for (V5VmOpenApiOrganizationService ptvOrganizationService : ptvOrganizationServices) {
         OrganizationService organizationService = translateOrganizationService(ptvOrganizationService);
         if (organizationService != null) {
           organizationServices.add(organizationService);
@@ -130,7 +132,7 @@ public class PtvOrganizationEntityUpdater extends EntityUpdater {
         }
       }
       
-      fi.metatavu.kuntaapi.server.rest.model.Organization organization = ptvTranslator.translateOrganization(kuntaApiOrganizationId, organizationServices, ptvOrganization);
+      fi.metatavu.kuntaapi.server.rest.model.Organization organization = ptvTranslator.translateOrganization(kuntaApiOrganizationId, kuntaApiParentOrganizationId, organizationServices, ptvOrganization);
       if (organization != null) {
         modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(organization));
         ptvOrganizationResourceContainer.put(kuntaApiOrganizationId, organization);
@@ -142,11 +144,31 @@ public class PtvOrganizationEntityUpdater extends EntityUpdater {
       logger.warning(String.format("Organization %s processing failed on [%d] %s", organizationId.getId(), response.getStatus(), response.getMessage()));
     }
   }
+
+  private OrganizationId translateParentOrganizationId(OrganizationId kuntaApiOrganizationId, V5VmOpenApiOrganization ptvOrganization) {
+    OrganizationId ptvParentOrganizationId = ptvIdFactory.createOrganizationId(ptvOrganization.getParentOrganization());
+    OrganizationId kuntaApiParentOrganizationId = null;
+    
+    if (ptvParentOrganizationId != null) {
+      kuntaApiParentOrganizationId = idController.translateOrganizationId(kuntaApiParentOrganizationId, KuntaApiConsts.IDENTIFIER_NAME);
+      if (kuntaApiParentOrganizationId == null) {
+        logger.log(Level.SEVERE, () -> String.format("Could not to translate organization %s parent organization id %s into KuntaAPI id", kuntaApiOrganizationId, ptvParentOrganizationId));
+      }
+    }
+    
+    return kuntaApiParentOrganizationId;
+  }
   
-  private OrganizationService translateOrganizationService(V4VmOpenApiOrganizationService ptvOrganizationService) {
-    ServiceId kuntaApiServiceId = idController.translateServiceId(ptvIdFactory.createServiceId(ptvOrganizationService.getServiceId()), KuntaApiConsts.IDENTIFIER_NAME);
+  private OrganizationService translateOrganizationService(V5VmOpenApiOrganizationService ptvOrganizationService) {
+    if (ptvOrganizationService.getService() == null || ptvOrganizationService.getService().getId() == null) {
+      return null;
+    }
+    
+    String ptvServiceId = ptvOrganizationService.getService().getId();
+    
+    ServiceId kuntaApiServiceId = idController.translateServiceId(ptvIdFactory.createServiceId(ptvServiceId), KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiServiceId == null) {
-      logger.log(Level.INFO, String.format("Could not translate service %s into Kunta API", ptvOrganizationService.getServiceId())); 
+      logger.log(Level.INFO, () -> String.format("Could not translate service %s into Kunta API", ptvServiceId)); 
       return null;
     }
 

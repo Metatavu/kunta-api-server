@@ -152,7 +152,7 @@ public class VCardTranslator {
     result.setMunicipality(null);
     result.setPostalCode(getString(vCardAddress.getPostalCode()));
     result.setPostOffice(Collections.emptyList());
-    result.setPostOfficeBox(getString(vCardAddress.getPoBox()));
+    result.setPostOfficeBox(getLocalizedString(vCardAddress.getPoBox()));
     result.setStreetAddress(getLocalizedString(vCardAddress.getStreetAddress()));
     result.setStreetNumber(null);
     result.setType(getAddressType(vCardAddress.getTypes()));

@@ -18,10 +18,10 @@ import fi.metatavu.kuntaapi.server.rest.model.PhoneServiceChannel;
 import fi.metatavu.kuntaapi.server.rest.model.PrintableFormServiceChannel;
 import fi.metatavu.kuntaapi.server.rest.model.ServiceLocationServiceChannel;
 import fi.metatavu.kuntaapi.server.rest.model.WebPageServiceChannel;
-import fi.metatavu.ptv.client.model.V4VmOpenApiElectronicChannel;
-import fi.metatavu.ptv.client.model.V4VmOpenApiPhoneChannel;
-import fi.metatavu.ptv.client.model.V4VmOpenApiPrintableFormChannel;
-import fi.metatavu.ptv.client.model.V4VmOpenApiServiceLocationChannel;
+import fi.metatavu.ptv.client.model.V5VmOpenApiElectronicChannel;
+import fi.metatavu.ptv.client.model.V5VmOpenApiPhoneChannel;
+import fi.metatavu.ptv.client.model.V5VmOpenApiPrintableFormChannel;
+import fi.metatavu.ptv.client.model.V5VmOpenApiServiceLocationChannel;
 import fi.metatavu.ptv.client.model.V4VmOpenApiWebPageChannel;
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
@@ -183,7 +183,7 @@ public class PtvServiceChannelEntityUpdater extends EntityUpdater {
     }
   }
   
-  private void updateElectronicServiceChannel(Long orderIndex, V4VmOpenApiElectronicChannel ptvElectronicServiceChannel) {
+  private void updateElectronicServiceChannel(Long orderIndex, V5VmOpenApiElectronicChannel ptvElectronicServiceChannel) {
     if (ptvElectronicServiceChannel == null) {
       return;
     }
@@ -209,7 +209,7 @@ public class PtvServiceChannelEntityUpdater extends EntityUpdater {
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(electronicServiceChannel));
   }
 
-  private void updateServiceLocationServiceChannel(Long orderIndex, V4VmOpenApiServiceLocationChannel ptvServiceLocationServiceChannel) {
+  private void updateServiceLocationServiceChannel(Long orderIndex, V5VmOpenApiServiceLocationChannel ptvServiceLocationServiceChannel) {
     if (ptvServiceLocationServiceChannel == null) {
       return;
     }
@@ -236,7 +236,7 @@ public class PtvServiceChannelEntityUpdater extends EntityUpdater {
     indexServiceLocationChannel(orderIndex, serviceLocationServiceChannel);
   }
 
-  private void updatePrintableFormServiceChannel(Long orderIndex, V4VmOpenApiPrintableFormChannel ptvPrintableFormServiceChannel) {
+  private void updatePrintableFormServiceChannel(Long orderIndex, V5VmOpenApiPrintableFormChannel ptvPrintableFormServiceChannel) {
     if (ptvPrintableFormServiceChannel == null) {
       return;
     }
@@ -262,7 +262,7 @@ public class PtvServiceChannelEntityUpdater extends EntityUpdater {
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(printableFormServiceChannel));
   }
   
-  private void updatePhoneServiceChannel(Long orderIndex, V4VmOpenApiPhoneChannel ptvPhoneServiceChannel) {
+  private void updatePhoneServiceChannel(Long orderIndex, V5VmOpenApiPhoneChannel ptvPhoneServiceChannel) {
     if (ptvPhoneServiceChannel == null) {
       return;
     }

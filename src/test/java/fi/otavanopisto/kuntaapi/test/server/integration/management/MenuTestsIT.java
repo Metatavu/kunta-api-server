@@ -29,7 +29,7 @@ public class MenuTestsIT extends AbstractIntegrationTest {
   @Before
   public void beforeTest() throws InterruptedException {
     getPtvOrganizationMocker()
-      .mock("0de268cf-1ea1-4719-8a6e-1150933b6b9e");
+      .mock("9355a207-efd3-4cfb-a02b-67187f34c822");
     
     getManagementPageMocker()
       .mockPages(456, 567, 678);
