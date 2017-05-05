@@ -11,7 +11,6 @@ import javax.inject.Inject;
 
 import fi.metatavu.management.client.ApiResponse;
 import fi.metatavu.management.client.DefaultApi;
-import fi.metatavu.management.client.model.Page;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.IdUpdater;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
@@ -70,7 +69,7 @@ public class ManagementRemovedPageIdUpdater extends IdUpdater {
     for (PageId pageId : pageIds) {
       PageId managementPageId = idController.translatePageId(pageId, ManagementConsts.IDENTIFIER_NAME);
       if (managementPageId != null) {
-        ApiResponse<Page> response = api.wpV2PagesIdGet(managementPageId.getId(), null, null, null);
+        ApiResponse<Object> response = api.wpV2PagesIdHead(managementPageId.getId(), null, null, null);
         int status = response.getStatus();
         // If status is 404 the page has been removed and if its a 403 its either trashed or unpublished.
         // In both cases the page should not longer be available throught API

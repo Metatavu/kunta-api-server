@@ -34,6 +34,8 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import org.apache.http.client.methods.HttpHead;
+import org.apache.http.client.methods.HttpUriRequest;
 
 /**
  * Response aware HTTP client for integrations
@@ -51,6 +53,71 @@ public class GenericHttpClient {
   private Logger logger;
 
   private GenericHttpClient() {
+  }
+
+  
+  /**
+   * Executes a HEAD request into a specified URI
+   * 
+   * @param basePath base path for all requests
+   * @param path path of request
+   * @param resultType result type
+   * @param queryParams query params
+   * @return the response
+   */
+  public <T> Response<T> doHEADRequest(String basePath, String path, ResultType<T> resultType, Map<String, Object> queryParams) {
+    URIBuilder uriBuilder;
+    try {
+      uriBuilder = new URIBuilder(String.format("%s%s", basePath, path));
+    } catch (URISyntaxException e) {
+      logger.log(Level.SEVERE, INVALID_URI_SYNTAX, e);
+      return new Response<>(500, INVALID_URI_SYNTAX, null);
+    }
+    
+    if (queryParams != null) {
+      for (Entry<String, Object> entry : queryParams.entrySet()) {
+        uriBuilder.addParameter(entry.getKey(), parameterToString(entry.getValue()));
+      }
+    }
+    
+    try {
+      return doHEADRequest(uriBuilder.build(), resultType, null);
+    } catch (URISyntaxException e) {
+      logger.log(Level.SEVERE, INVALID_URI_SYNTAX, e);
+      return new Response<>(500, INVALID_URI_SYNTAX, null);
+    }
+  }
+  
+   /**
+   * Executes a HEAD request into a specified URI
+   * 
+   * @param uri request uri
+   * @param resultType result type
+   * @param extraHeaders extra headers for the request
+   * @return the response
+   */
+  public <T> Response<T> doHEADRequest(URI uri, ResultType<T> resultType, Map<String, String> extraHeaders) {
+    if (StringUtils.isBlank(uri.getHost())) {
+      return new Response<>(400, String.format("Malformed address %s", uri), null);
+    }
+    
+    CloseableHttpClient httpClient = HttpClients.createDefault();
+    try {
+      return executeHEADRequest(resultType, uri, httpClient, extraHeaders);
+    } finally {
+      closeClient(httpClient);
+    }
+  }
+  
+  /**
+   * Executes a get request into a specified URI
+   * 
+   * @param uri request uri
+   * @param resultType type of request
+   * @return the response
+   */
+  public <T> Response<T> doHEADRequest(URI uri, ResultType<T> resultType) {
+    return doHEADRequest(uri, resultType, null);
   }
   
   /**
@@ -90,7 +157,6 @@ public class GenericHttpClient {
    * 
    * @param uri request uri
    * @param resultType type of request
-   * @param queryParams query params
    * @return the response
    */
   public <T> Response<T> doGETRequest(URI uri, ResultType<T> resultType) {
@@ -102,7 +168,6 @@ public class GenericHttpClient {
    * 
    * @param uri request uri
    * @param resultType type of request
-   * @param queryParams query params
    * @param extraHeaders extra headers for the request
    * @return the response
    */
@@ -113,28 +178,37 @@ public class GenericHttpClient {
     
     CloseableHttpClient httpClient = HttpClients.createDefault();
     try {
-      return executeRequest(resultType, uri, httpClient, extraHeaders);
+      return executeGETRequest(resultType, uri, httpClient, extraHeaders);
     } finally {
       closeClient(httpClient);
     }
   }
 
-  private <T> Response<T> executeRequest(ResultType<T> resultType, URI uri,
+  private <T> Response<T> executeGETRequest(ResultType<T> resultType, URI uri,
       CloseableHttpClient httpClient, Map<String, String> extraHeaders) {
     HttpGet httpGet = new HttpGet(uri);
-   
+
+    return executeRequest(httpClient, httpGet, resultType, extraHeaders);
+  }
+  
+  private <T> Response<T> executeHEADRequest(ResultType<T> resultType, URI uri,
+      CloseableHttpClient httpClient, Map<String, String> extraHeaders) {
+    HttpHead httpHead = new HttpHead(uri);
+    
+    return executeRequest(httpClient, httpHead, resultType, extraHeaders);
+  }
+  
+  private <T> Response<T> executeRequest(CloseableHttpClient httpClient, HttpUriRequest request, ResultType<T> resultType, Map<String, String> extraHeaders) {
+    
     if (extraHeaders != null) {
       for (Entry<String, String> extraHeader : extraHeaders.entrySet()) {
-        httpGet.addHeader(extraHeader.getKey(), extraHeader.getValue());
+        request.addHeader(extraHeader.getKey(), extraHeader.getValue());
       }
     }
     
     try {
-      CloseableHttpResponse response = httpClient.execute(httpGet);
-      try {
-        return createResponse(response, resultType);
-      } finally {
-        response.close();
+      try (CloseableHttpResponse response = httpClient.execute(request)) {
+        return createResponse(response, request.getMethod(), resultType);
       }
     } catch (JsonParseException | JsonMappingException  e) {
       logger.log(Level.SEVERE, RESPONSE_PARSING_FAILED, e);
@@ -157,14 +231,14 @@ public class GenericHttpClient {
     return String.valueOf(value);
   }
   
-  private <T> Response<T> createResponse(HttpResponse httpResponse, ResultType<T> resultType) throws IOException {
+  private <T> Response<T> createResponse(HttpResponse httpResponse, String httpMethod, ResultType<T> resultType) throws IOException {
     StatusLine statusLine = httpResponse.getStatusLine();
     int statusCode = statusLine.getStatusCode();
     String message = statusLine.getReasonPhrase();
     
     switch (statusCode) {
       case 200:
-        return handleOkResponse(httpResponse, statusCode, message, resultType.getTypeReference());
+        return httpMethod.equals(HttpHead.METHOD_NAME) ? handleNoContentResponse(statusCode, message, resultType.getTypeReference()) : handleOkResponse(httpResponse, statusCode, message, resultType.getTypeReference());
       case 204:
         return handleNoContentResponse(statusCode, message, resultType.getTypeReference());
       default:

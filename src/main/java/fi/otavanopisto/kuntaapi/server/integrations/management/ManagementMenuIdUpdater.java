@@ -103,7 +103,7 @@ public class ManagementMenuIdUpdater extends IdUpdater {
     for (MenuId menuId : menuIds) {
       MenuId managementMenuId = idController.translateMenuId(menuId, ManagementConsts.IDENTIFIER_NAME);
       if (managementMenuId != null) {
-        ApiResponse<Menu> response = api.kuntaApiMenusIdGet(managementMenuId.getId());
+        ApiResponse<Object> response = api.kuntaApiMenusIdHead(managementMenuId.getId());
         int status = response.getStatus();
         // If status is 404 the menu has been removed and if its a 403 its either trashed or unpublished.
         // In both cases the menu should not longer be available throught API

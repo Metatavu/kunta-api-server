@@ -119,7 +119,7 @@ public class ManagementFragmentIdUpdater extends IdUpdater {
     for (FragmentId fragmentId : fragmentIds) {
       FragmentId managementFragmentId = idController.translateFragmentId(fragmentId, ManagementConsts.IDENTIFIER_NAME);
       if (managementFragmentId != null) {
-        ApiResponse<Fragment> response = api.wpV2FragmentIdGet(managementFragmentId.getId(), null, null, null);
+        ApiResponse<Object> response = api.wpV2FragmentIdHead(managementFragmentId.getId(), null, null, null);
         int status = response.getStatus();
         // If status is 404 the fragment has been removed and if its a 403 its either trashed or unpublished.
         // In both cases the fragment should not longer be available throught API

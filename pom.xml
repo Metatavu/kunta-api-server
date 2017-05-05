@@ -66,7 +66,7 @@
     
     <!-- Integrations -->
     
-    <management-rest-client.version>0.0.28</management-rest-client.version>
+    <management-rest-client.version>0.0.29</management-rest-client.version>
     <casem-rest-client.version>0.0.9</casem-rest-client.version>
     <mikkelinyt.rest-model.version>0.0.1</mikkelinyt.rest-model.version>
 
