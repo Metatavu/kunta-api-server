@@ -1,6 +1,8 @@
 {
-  "id":"18bb8d7c-1dc7-4188-9149-7d89fdeac75e",
+  "id":"d45ec681-4da3-4a38-af67-fb2d949b9387",
   "oid":null,
+  "parentOrganization":null,
+  "organizationType":"Municipality",
   "municipality":{
     "code":"091",
     "name":[
@@ -14,7 +16,6 @@
       }
     ]
   },
-  "organizationType":"Municipality",
   "businessCode":"0201256-6",
   "businessName":null,
   "organizationNames":[
@@ -29,7 +30,18 @@
       "type":"Name"
     }
   ],
-  "displayNameType":"Name",
+  "displayNameType":[
+    {
+      "type":"Name",
+      "language":"fi"
+    },
+    {
+      "type":"Name",
+      "language":"sv"
+    }
+  ],
+  "areaType":null,
+  "areas":null,
   "organizationDescriptions":[
     {
       "language":"fi",
@@ -69,7 +81,16 @@
       "longitude":"0",
       "coordinateState":"EmptyInputReceived",
       "type":"Postal",
-      "postOfficeBox":"PL 1",
+      "postOfficeBox":[
+        {
+          "value":"PL 1",
+          "language":"sv"
+        },
+        {
+          "value":"PL 1",
+          "language":"fi"
+        }
+      ],
       "postalCode":"00099",
       "postOffice":[
         {
@@ -99,7 +120,9 @@
       "longitude":"386429.579",
       "coordinateState":"Ok",
       "type":"Visiting",
-      "postOfficeBox":"",
+      "postOfficeBox":[
+
+      ],
       "postalCode":"00100",
       "postOffice":[
         {
@@ -126,6 +149,81 @@
     }
   ],
   "publishingStatus":"Published",
-  "parentOrganization":null,
-  "services":[]
+  "services":[
+    {
+      "service":{
+        "id":"00047a04-9c01-48ea-99da-4ec332f6d0fa",
+        "name":"TPR IN api testi 1/23.2."
+      },
+      "organizationId":"d45ec681-4da3-4a38-af67-fb2d949b9387",
+      "roleType":"Producer",
+      "provisionType":"SelfProduced",
+      "additionalInformation":[
+
+      ],
+      "webPages":[
+
+      ]
+    },
+    {
+      "service":{
+        "id":"00047a04-9c01-48ea-99da-4ec332f6d0fa",
+        "name":"TPR IN api testi 1/23.2."
+      },
+      "organizationId":"d45ec681-4da3-4a38-af67-fb2d949b9387",
+      "roleType":"Responsible",
+      "provisionType":"SelfProduced",
+      "additionalInformation":[
+
+      ],
+      "webPages":[
+
+      ]
+    },
+    {
+      "service":{
+        "id":"0003651e-6afe-400e-816c-c64af41521f8",
+        "name":"TPR IN api testi 1/23.2."
+      },
+      "organizationId":"d45ec681-4da3-4a38-af67-fb2d949b9387",
+      "roleType":"Producer",
+      "provisionType":"SelfProduced",
+      "additionalInformation":[
+
+      ],
+      "webPages":[
+
+      ]
+    },
+    {
+      "service":{
+        "id":"0003651e-6afe-400e-816c-c64af41521f8",
+        "name":"TPR IN api testi 1/23.2."
+      },
+      "organizationId":"d45ec681-4da3-4a38-af67-fb2d949b9387",
+      "roleType":"Responsible",
+      "provisionType":"SelfProduced",
+      "additionalInformation":[
+
+      ],
+      "webPages":[
+
+      ]
+    },
+    {
+      "service":{
+        "id":"2f21448e-e461-4ad0-a87a-47bcb08e578e",
+        "name":"TPR IN api testi, palvelu 1"
+      },
+      "organizationId":"d45ec681-4da3-4a38-af67-fb2d949b9387",
+      "roleType":"Producer",
+      "provisionType":"SelfProduced",
+      "additionalInformation":[
+
+      ],
+      "webPages":[
+
+      ]
+    }
+  ]
 }

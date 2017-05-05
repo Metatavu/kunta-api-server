@@ -1,6 +1,8 @@
 {
-  "id":"0de268cf-1ea1-4719-8a6e-1150933b6b9e",
+  "id":"9355a207-efd3-4cfb-a02b-67187f34c822",
   "oid":null,
+  "parentOrganization":null,
+  "organizationType":"Municipality",
   "municipality":{
     "code":"507",
     "name":[
@@ -14,7 +16,6 @@
       }
     ]
   },
-  "organizationType":"Municipality",
   "businessCode":"0165761-0",
   "businessName":"Mäntyharju",
   "organizationNames":[
@@ -24,7 +25,18 @@
       "type":"Name"
     }
   ],
-  "displayNameType":"Name",
+  "displayNameType":[
+    {
+      "type":"Name",
+      "language":"fi"
+    },
+    {
+      "type":"Name",
+      "language":"sv"
+    }
+  ],
+  "areaType":null,
+  "areas":null,
   "organizationDescriptions":[
 
   ],
@@ -49,7 +61,6 @@
 
   ],
   "publishingStatus":"Published",
-  "parentOrganization":null,
   "services":[
 
   ]

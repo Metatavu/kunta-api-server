@@ -1,7 +1,7 @@
 {
   "id":"9a9f5def-92e4-4b79-a49a-ccf20a0f75b6",
   "serviceChannelType":"ServiceLocation",
-  "organizationId":"18bb8d7c-1dc7-4188-9149-7d89fdeac75e",
+  "organizationId":"d45ec681-4da3-4a38-af67-fb2d949b9387",
   "serviceChannelNames":[
     {
       "language":"fi",
@@ -21,7 +21,6 @@
       "type":"Description"
     }
   ],
-  "serviceAreaRestricted":false,
   "phoneNumbers":[
     {
       "type":"Phone",
@@ -62,7 +61,7 @@
       "language":"fi"
     }
   ],
-  "serviceAreas":[{
+  "areas":[{
     "code": "123",
     "name": [{
       "value": "Example",
@@ -75,7 +74,7 @@
       "longitude":"309359.871",
       "coordinateState":"Ok",
       "type":"Visiting",
-      "postOfficeBox":"",
+      "postOfficeBox":[],
       "postalCode":"31400",
       "postOffice":[
         {
@@ -108,7 +107,13 @@
       "longitude":"0",
       "coordinateState":"EmptyInputReceived",
       "type":"Postal",
-      "postOfficeBox":"PL 41",
+      "postOfficeBox":[{
+        "value":"PL 41",
+        "language":"sv"
+      },{
+        "value":"PL 41",
+        "language":"fi"
+      }],
       "postalCode":"31401",
       "postOffice":[
         {
