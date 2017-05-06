@@ -34,25 +34,25 @@ import fi.metatavu.kuntaapi.server.rest.model.ServiceOrganization;
 import fi.metatavu.kuntaapi.server.rest.model.WebPage;
 import fi.metatavu.kuntaapi.server.rest.model.WebPageServiceChannel;
 import fi.metatavu.ptv.client.model.V2VmOpenApiDailyOpeningTime;
-import fi.metatavu.ptv.client.model.V5VmOpenApiAddressWithCoordinates;
-import fi.metatavu.ptv.client.model.V5VmOpenApiAddressWithTypeAndCoordinates;
-import fi.metatavu.ptv.client.model.V5VmOpenApiElectronicChannel;
 import fi.metatavu.ptv.client.model.V4VmOpenApiEmail;
 import fi.metatavu.ptv.client.model.V4VmOpenApiFintoItem;
 import fi.metatavu.ptv.client.model.V4VmOpenApiLaw;
-import fi.metatavu.ptv.client.model.V5VmOpenApiOrganization;
 import fi.metatavu.ptv.client.model.V4VmOpenApiPhone;
-import fi.metatavu.ptv.client.model.V5VmOpenApiPhoneChannel;
-import fi.metatavu.ptv.client.model.V5VmOpenApiPhoneChannelPhone;
 import fi.metatavu.ptv.client.model.V4VmOpenApiPhoneWithType;
-import fi.metatavu.ptv.client.model.V5VmOpenApiPrintableFormChannel;
-import fi.metatavu.ptv.client.model.V5VmOpenApiService;
 import fi.metatavu.ptv.client.model.V4VmOpenApiServiceHour;
-import fi.metatavu.ptv.client.model.V5VmOpenApiServiceLocationChannel;
-import fi.metatavu.ptv.client.model.VmOpenApiArea;
 import fi.metatavu.ptv.client.model.V4VmOpenApiServiceOrganization;
 import fi.metatavu.ptv.client.model.V4VmOpenApiWebPage;
 import fi.metatavu.ptv.client.model.V4VmOpenApiWebPageChannel;
+import fi.metatavu.ptv.client.model.V5VmOpenApiAddressWithCoordinates;
+import fi.metatavu.ptv.client.model.V5VmOpenApiAddressWithTypeAndCoordinates;
+import fi.metatavu.ptv.client.model.V5VmOpenApiElectronicChannel;
+import fi.metatavu.ptv.client.model.V5VmOpenApiOrganization;
+import fi.metatavu.ptv.client.model.V5VmOpenApiPhoneChannel;
+import fi.metatavu.ptv.client.model.V5VmOpenApiPhoneChannelPhone;
+import fi.metatavu.ptv.client.model.V5VmOpenApiPrintableFormChannel;
+import fi.metatavu.ptv.client.model.V5VmOpenApiService;
+import fi.metatavu.ptv.client.model.V5VmOpenApiServiceLocationChannel;
+import fi.metatavu.ptv.client.model.VmOpenApiArea;
 import fi.metatavu.ptv.client.model.VmOpenApiAttachmentWithType;
 import fi.metatavu.ptv.client.model.VmOpenApiLanguageItem;
 import fi.metatavu.ptv.client.model.VmOpenApiLocalizedListItem;
@@ -67,6 +67,7 @@ import fi.otavanopisto.kuntaapi.server.id.PrintableFormServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceLocationServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.WebPageServiceChannelId;
+import fi.otavanopisto.kuntaapi.server.utils.TimeUtils;
 
 @ApplicationScoped
 public class PtvTranslator {
@@ -525,8 +526,41 @@ public class PtvTranslator {
     }
     
     List<ServiceHour> result = new ArrayList<>(ptvServiceHours.size());
-
-    for (V4VmOpenApiServiceHour ptvServiceHour : ptvServiceHours) {
+    List<V4VmOpenApiServiceHour> ptvServiceHoursMerged = new ArrayList<>(ptvServiceHours.size());
+    
+    int ptvServiceHourSize = ptvServiceHours.size();
+    int index = 0;
+    
+    while (index < (ptvServiceHourSize - 1)) {
+      V4VmOpenApiServiceHour ptvServiceHour = ptvServiceHours.get(index);
+      V4VmOpenApiServiceHour nextPtvServiceHour = ptvServiceHours.get(index + 1);
+      
+      while (isServiceHourMergeable(ptvServiceHour, nextPtvServiceHour)) {
+        List<V2VmOpenApiDailyOpeningTime> openingHour = new ArrayList<>();
+        if (ptvServiceHour.getOpeningHour() != null) {
+          openingHour.addAll(ptvServiceHour.getOpeningHour());
+        }
+        
+        if (nextPtvServiceHour.getOpeningHour() != null) {
+          openingHour.addAll(nextPtvServiceHour.getOpeningHour());
+        }
+        
+        ptvServiceHour.setOpeningHour(openingHour);
+        
+        index++;
+        nextPtvServiceHour = ptvServiceHours.get(index + 1);          
+      }
+      
+      ptvServiceHoursMerged.add(ptvServiceHour);
+      
+      index++;
+    }
+    
+    if (index < ptvServiceHourSize) {
+      ptvServiceHoursMerged.add(ptvServiceHours.get(ptvServiceHourSize - 1));
+    }
+    
+    for (V4VmOpenApiServiceHour ptvServiceHour : ptvServiceHoursMerged) {
       ServiceHour serviceHour = new ServiceHour();
       serviceHour.setAdditionalInformation(translateLocalizedItems(ptvServiceHour.getAdditionalInformation()));
       serviceHour.setIsClosed(ptvServiceHour.getIsClosed());
@@ -538,9 +572,47 @@ public class PtvTranslator {
       result.add(serviceHour);
     }
     
+    Collections.sort(result, new ServiceHourComparator());
+    
     return result;
   }
 
+  private boolean isServiceHourMergeable(V4VmOpenApiServiceHour ptvServiceHour1, V4VmOpenApiServiceHour ptvServiceHour2) {
+    if (ptvServiceHour1 == null || ptvServiceHour2 == null) {
+      return false;
+    }
+    
+    if (!StringUtils.equals(ptvServiceHour1.getServiceHourType(), ptvServiceHour2.getServiceHourType())) {
+      return false;
+    }
+    
+    if (ptvServiceHour1.getIsClosed() != ptvServiceHour2.getIsClosed() || ptvServiceHour1.getValidForNow() != ptvServiceHour2.getValidForNow()) {
+      return false;
+    }
+
+    return TimeUtils.compareOffsetDateTimes(ptvServiceHour1.getValidFrom(), ptvServiceHour2.getValidFrom()) == 0 &&
+      TimeUtils.compareOffsetDateTimes(ptvServiceHour1.getValidTo(), ptvServiceHour2.getValidTo()) == 0 &&
+      languageItemListsEqual(ptvServiceHour1.getAdditionalInformation(), ptvServiceHour2.getAdditionalInformation());
+  }
+  
+  private boolean languageItemListsEqual(List<VmOpenApiLanguageItem> list1, List<VmOpenApiLanguageItem> list2) {
+    if (list1 == list2) {
+      return true;
+    }
+    
+    if (list1 == null || list2 == null) {
+      return false;
+    }
+    
+    for (int i = 0; i < list1.size(); i++) {
+      if (!list1.get(i).toString().equals(list2.get(i).toString())) {
+        return false;
+      }
+    }
+    
+    return true;
+  }
+  
   private List<DailyOpeningTime> translateOpeningHours(List<V2VmOpenApiDailyOpeningTime> ptvOpeningHours) {
     if (ptvOpeningHours == null) {
       return Collections.emptyList();
@@ -557,6 +629,8 @@ public class PtvTranslator {
       dailyOpeningTime.isExtra(ptvOpeningHour.getIsExtra());
       result.add(dailyOpeningTime);
     }
+    
+    Collections.sort(result, new DailyOpeningTimeComparator());
     
     return result;
   }
@@ -771,6 +845,69 @@ public class PtvTranslator {
       
       return order1.compareTo(order2);
     }
+  }
+  
+  @SuppressWarnings ("squid:S1698")
+  private final class ServiceHourComparator implements Comparator<ServiceHour> {
+    
+    @Override
+    public int compare(ServiceHour o1, ServiceHour o2) {
+      Integer typeIndex1 = getTypeIndex(o1.getServiceHourType());
+      Integer typeIndex2 = getTypeIndex(o2.getServiceHourType());
+      int result = typeIndex1.compareTo(typeIndex2);
+      
+      if (result != 0) {
+        return result;
+      }
+      
+      return TimeUtils.compareOffsetDateTimes(o1.getValidFrom(), o2.getValidFrom());
+    }
+    
+    private Integer getTypeIndex(String type) {
+      if (StringUtils.equals("Standard", type)) {
+        return 0;
+      }
+
+      if (StringUtils.equals("Special", type)) {
+        return 1;
+      }
+
+      if (StringUtils.equals("Exception", type)) {
+        return 2;
+      }
+      
+      return 3;
+    }
+    
+  }
+  
+  @SuppressWarnings ("squid:S1698")
+  private final class DailyOpeningTimeComparator implements Comparator<DailyOpeningTime> {
+    
+    @Override
+    public int compare(DailyOpeningTime o1, DailyOpeningTime o2) {
+      Integer dayFrom1 = o1.getDayFrom();
+      Integer dayFrom2 = o2.getDayFrom();
+
+      if (dayFrom1 == dayFrom2) {
+        return 0;
+      }
+      
+      if (dayFrom1 == null) {
+        return -1;
+      }
+      
+      if (dayFrom2 == null) {
+        return 1;
+      }
+      
+      return toMondayFirst(dayFrom1).compareTo(toMondayFirst(dayFrom2));
+    }
+    
+    private Integer toMondayFirst(Integer index) {
+      return (index + 6) % 7;
+    }
+    
   }
 
 }
