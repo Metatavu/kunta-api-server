@@ -144,6 +144,28 @@
     },
     {
       "serviceHourType":"Standard",
+      "validFrom":"2017-04-03T00:00:00+03:00",
+      "validTo":"2017-04-09T00:00:00+03:00",
+      "isClosed":false,
+      "validForNow":false,
+      "additionalInformation":[
+        {
+          "value":"Huhtikuun ensimmäinen viikko",
+          "language":"fi"
+        }
+      ],
+      "openingHour":[
+        {
+          "dayFrom":"Saturday",
+          "dayTo":"",
+          "from":"12:00:00",
+          "to":"13:00:00",
+          "isExtra":false
+        }
+      ]
+    },
+    {
+      "serviceHourType":"Standard",
       "validFrom":null,
       "validTo":null,
       "isClosed":false,
