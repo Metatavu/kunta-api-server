@@ -586,14 +586,14 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
       
       .body("serviceHours[1][1].openingHour[0].dayFrom", is(1))
       .body("serviceHours[1][1].openingHour[0].dayTo", nullValue())
-      .body("serviceHours[1][1].openingHour[0].from", is("09:00:00"))
-      .body("serviceHours[1][1].openingHour[0].to", is("17:00:00"))
+      .body("serviceHours[1][1].openingHour[0].from", is("08:00:00"))
+      .body("serviceHours[1][1].openingHour[0].to", is("16:00:00"))
       .body("serviceHours[1][1].openingHour[0].isExtra", is(false))      
 
       .body("serviceHours[1][1].openingHour[1].dayFrom", is(2))
       .body("serviceHours[1][1].openingHour[1].dayTo", nullValue())
       .body("serviceHours[1][1].openingHour[1].from", is("08:00:00"))
-      .body("serviceHours[1][1].openingHour[1].to", is("16:00:00"))
+      .body("serviceHours[1][1].openingHour[1].to", is("17:00:00"))
       .body("serviceHours[1][1].openingHour[1].isExtra", is(false))      
 
       .body("serviceHours[1][1].openingHour[2].dayFrom", is(6))
@@ -602,30 +602,30 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
       .body("serviceHours[1][1].openingHour[2].to", is("13:00:00"))
       .body("serviceHours[1][1].openingHour[2].isExtra", is(false))      
 
-      .body("serviceHours[1][2].validFrom", sameInstant(getInstant(2017, 4, 26, 0, 0, TIMEZONE_ID)))
+      .body("serviceHours[1][2].serviceHourType", is("Exception"))
+      .body("serviceHours[1][2].validFrom", sameInstant(getInstant(2017, 2, 27, 0, 0, TIMEZONE_ID)))
       .body("serviceHours[1][2].validTo", nullValue())
-      .body("serviceHours[1][2].isClosed", is(true))
+      .body("serviceHours[1][2].isClosed", is(false))
       .body("serviceHours[1][2].validForNow", is(false))
       .body("serviceHours[1][2].additionalInformation.size()", is(1))
-      .body("serviceHours[1][2].additionalInformation[0].value", is("Test"))
+      .body("serviceHours[1][2].additionalInformation[0].value", is("Aamupäivystys"))
       .body("serviceHours[1][2].additionalInformation[0].language", is("fi"))
-      .body("serviceHours[1][2].openingHour.size()", is(0))
-      
-      .body("serviceHours[1][3].serviceHourType", is("Exception"))
-      .body("serviceHours[1][3].validFrom", sameInstant(getInstant(2017, 2, 27, 0, 0, TIMEZONE_ID)))
+      .body("serviceHours[1][2].openingHour.size()", is(1))
+      .body("serviceHours[1][2].openingHour[0].dayFrom", nullValue())
+      .body("serviceHours[1][2].openingHour[0].dayTo", nullValue())
+      .body("serviceHours[1][2].openingHour[0].from", is("06:00:00"))
+      .body("serviceHours[1][2].openingHour[0].to", is("9:00:00"))
+      .body("serviceHours[1][2].openingHour[0].isExtra", is(false))
+
+      .body("serviceHours[1][3].validFrom", sameInstant(getInstant(2017, 4, 26, 0, 0, TIMEZONE_ID)))
       .body("serviceHours[1][3].validTo", nullValue())
-      .body("serviceHours[1][3].isClosed", is(false))
+      .body("serviceHours[1][3].isClosed", is(true))
       .body("serviceHours[1][3].validForNow", is(false))
       .body("serviceHours[1][3].additionalInformation.size()", is(1))
-      .body("serviceHours[1][3].additionalInformation[0].value", is("Aamupäivystys"))
+      .body("serviceHours[1][3].additionalInformation[0].value", is("Test"))
       .body("serviceHours[1][3].additionalInformation[0].language", is("fi"))
-      .body("serviceHours[1][3].openingHour.size()", is(1))
-      .body("serviceHours[1][3].openingHour[0].dayFrom", nullValue())
-      .body("serviceHours[1][3].openingHour[0].dayTo", nullValue())
-      .body("serviceHours[1][3].openingHour[0].from", is("06:00:00"))
-      .body("serviceHours[1][3].openingHour[0].to", is("9:00:00"))
-      .body("serviceHours[1][3].openingHour[0].isExtra", is(false))
-
+      .body("serviceHours[1][3].openingHour.size()", is(0))
+      
       .body("publishingStatus[1]", is("Published"));
   }
 
