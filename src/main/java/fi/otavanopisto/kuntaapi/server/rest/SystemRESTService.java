@@ -162,11 +162,10 @@ public class SystemRESTService {
       updaterDetails.addUpdaterState(entityUpdater);
     }
     
-    if (overallHealth == UpdaterHealth.OK || overallHealth == UpdaterHealth.UNKNOWN) {
-      return Response.ok(String.format("%s: ok: %d, unknown: %d", 
+    if (overallHealth == UpdaterHealth.OK) {
+      return Response.ok(String.format("%s: ok: %d", 
         overallHealth.name(), 
-        updaterDetails.getOkCount(), 
-        updaterDetails.getUnknownCount()
+        updaterDetails.getOkCount()
       )).build();
     } else {
       return Response.ok(String.format("%s: ok: %d, unknown: %d, warnings: %d , criticals: %d - %s", 
@@ -217,7 +216,9 @@ public class SystemRESTService {
     public void addUpdaterState(AbstractUpdater updater) {
       UpdaterHealth updaterHealth = updater.getHealth();
       
-      if (updaterHealth != UpdaterHealth.UNKNOWN && updaterHealth != UpdaterHealth.OK) {
+      if (updaterHealth == UpdaterHealth.UNKNOWN) {
+        details.add(String.format("Updater %s health is %s", updater.getName(), updaterHealth));
+      } else if (updaterHealth != UpdaterHealth.OK) {
         details.add(String.format("Updater %s health is %s (%d ms since last run)", updater.getName(), updaterHealth, updater.getSinceLastRun()));
       }
       
