@@ -535,7 +535,7 @@ public class PtvTranslator {
       V4VmOpenApiServiceHour ptvServiceHour = ptvServiceHours.get(index);
       V4VmOpenApiServiceHour nextPtvServiceHour = ptvServiceHours.get(index + 1);
       
-      while (isServiceHourMergeable(ptvServiceHour, nextPtvServiceHour)) {
+      while ((index < (ptvServiceHourSize - 1)) && isServiceHourMergeable(ptvServiceHour, nextPtvServiceHour)) {
         List<V2VmOpenApiDailyOpeningTime> openingHour = new ArrayList<>();
         if (ptvServiceHour.getOpeningHour() != null) {
           openingHour.addAll(ptvServiceHour.getOpeningHour());
