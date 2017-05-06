@@ -546,9 +546,9 @@ public class PtvTranslator {
         }
         
         ptvServiceHour.setOpeningHour(openingHour);
+        nextPtvServiceHour = ptvServiceHours.get(index + 1);
         
-        index++;
-        nextPtvServiceHour = ptvServiceHours.get(index + 1);          
+        index++;          
       }
       
       ptvServiceHoursMerged.add(ptvServiceHour);
