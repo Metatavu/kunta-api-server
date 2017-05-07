@@ -3,12 +3,15 @@ package fi.otavanopisto.kuntaapi.server.integrations.ptv;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.enterprise.context.ApplicationScoped;
 
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.math.NumberUtils;
 
 import fi.metatavu.kuntaapi.server.rest.model.Address;
@@ -520,47 +523,13 @@ public class PtvTranslator {
     return result;
   }
 
-  private List<ServiceHour> translateServiceHours(List<V4VmOpenApiServiceHour> ptvServiceHours) {
-    if (ptvServiceHours == null) {
+  public List<ServiceHour> translateServiceHours(List<V4VmOpenApiServiceHour> ptvServiceHours) {
+    if (ptvServiceHours == null || (ptvServiceHours.isEmpty())) {
       return Collections.emptyList();
     }
     
     List<ServiceHour> result = new ArrayList<>(ptvServiceHours.size());
-    List<V4VmOpenApiServiceHour> ptvServiceHoursMerged = new ArrayList<>(ptvServiceHours.size());
-    
-    int ptvServiceHourSize = ptvServiceHours.size();
-    int index = 0;
-    
-    while (index < (ptvServiceHourSize - 1)) {
-      V4VmOpenApiServiceHour ptvServiceHour = ptvServiceHours.get(index);
-      V4VmOpenApiServiceHour nextPtvServiceHour = ptvServiceHours.get(index + 1);
-      
-      while ((index < (ptvServiceHourSize - 1)) && isServiceHourMergeable(ptvServiceHour, nextPtvServiceHour)) {
-        List<V2VmOpenApiDailyOpeningTime> openingHour = new ArrayList<>();
-        if (ptvServiceHour.getOpeningHour() != null) {
-          openingHour.addAll(ptvServiceHour.getOpeningHour());
-        }
-        
-        if (nextPtvServiceHour.getOpeningHour() != null) {
-          openingHour.addAll(nextPtvServiceHour.getOpeningHour());
-        }
-        
-        ptvServiceHour.setOpeningHour(openingHour);
-        nextPtvServiceHour = ptvServiceHours.get(index + 1);
-        
-        index++;          
-      }
-      
-      ptvServiceHoursMerged.add(ptvServiceHour);
-      
-      index++;
-    }
-    
-    if (index < ptvServiceHourSize) {
-      ptvServiceHoursMerged.add(ptvServiceHours.get(ptvServiceHourSize - 1));
-    }
-    
-    for (V4VmOpenApiServiceHour ptvServiceHour : ptvServiceHoursMerged) {
+    for (V4VmOpenApiServiceHour ptvServiceHour : mergePtvServiceHours(ptvServiceHours)) {
       ServiceHour serviceHour = new ServiceHour();
       serviceHour.setAdditionalInformation(translateLocalizedItems(ptvServiceHour.getAdditionalInformation()));
       serviceHour.setIsClosed(ptvServiceHour.getIsClosed());
@@ -576,41 +545,85 @@ public class PtvTranslator {
     
     return result;
   }
-
-  private boolean isServiceHourMergeable(V4VmOpenApiServiceHour ptvServiceHour1, V4VmOpenApiServiceHour ptvServiceHour2) {
-    if (ptvServiceHour1 == null || ptvServiceHour2 == null) {
-      return false;
-    }
-    
-    if (!StringUtils.equals(ptvServiceHour1.getServiceHourType(), ptvServiceHour2.getServiceHourType())) {
-      return false;
-    }
-    
-    if (ptvServiceHour1.getIsClosed() != ptvServiceHour2.getIsClosed() || ptvServiceHour1.getValidForNow() != ptvServiceHour2.getValidForNow()) {
-      return false;
-    }
-
-    return TimeUtils.compareOffsetDateTimes(ptvServiceHour1.getValidFrom(), ptvServiceHour2.getValidFrom()) == 0 &&
-      TimeUtils.compareOffsetDateTimes(ptvServiceHour1.getValidTo(), ptvServiceHour2.getValidTo()) == 0 &&
-      languageItemListsEqual(ptvServiceHour1.getAdditionalInformation(), ptvServiceHour2.getAdditionalInformation());
-  }
   
-  private boolean languageItemListsEqual(List<VmOpenApiLanguageItem> list1, List<VmOpenApiLanguageItem> list2) {
-    if (list1 == list2) {
-      return true;
-    }
+  private List<V4VmOpenApiServiceHour> mergePtvServiceHours(List<V4VmOpenApiServiceHour> ptvServiceHours) {
+    Map<Integer, List<V4VmOpenApiServiceHour>> mapped = mapMergeablePtvServiceHours(ptvServiceHours);
     
-    if (list1 == null || list2 == null) {
-      return false;
-    }
+    List<V4VmOpenApiServiceHour> result = new ArrayList<>(ptvServiceHours.size());
     
-    for (int i = 0; i < list1.size(); i++) {
-      if (!list1.get(i).toString().equals(list2.get(i).toString())) {
-        return false;
+    for (List<V4VmOpenApiServiceHour> serviceHours : mapped.values()) {
+      if (!serviceHours.isEmpty()) {
+        result.add(mergePtvServiceHour(serviceHours));
       }
     }
     
-    return true;
+    return result;    
+  }
+
+  private V4VmOpenApiServiceHour mergePtvServiceHour(List<V4VmOpenApiServiceHour> serviceHours) {
+    V4VmOpenApiServiceHour ptvServiceHour = serviceHours.get(0);
+    
+    if (serviceHours.size() > 1) {
+      List<V2VmOpenApiDailyOpeningTime> mergedOpeningOurs = new ArrayList<>();
+      if (ptvServiceHour.getOpeningHour() != null) {
+        mergedOpeningOurs.addAll(ptvServiceHour.getOpeningHour());
+      }
+      
+      for (int i = 1; i < serviceHours.size(); i++) {
+        if (serviceHours.get(i).getOpeningHour() != null) {
+          mergedOpeningOurs.addAll(serviceHours.get(i).getOpeningHour());
+        }
+      }
+      
+      ptvServiceHour.setOpeningHour(mergedOpeningOurs); 
+    }
+    
+    return ptvServiceHour;
+  }
+
+  private Map<Integer, List<V4VmOpenApiServiceHour>> mapMergeablePtvServiceHours(List<V4VmOpenApiServiceHour> ptvServiceHours) {
+    Map<Integer, List<V4VmOpenApiServiceHour>> result = new HashMap<>(ptvServiceHours.size());
+    
+    for (V4VmOpenApiServiceHour ptvServiceHour : ptvServiceHours) {
+      int serviceHourHash = calculateMergeablePtvServiceHourHash(ptvServiceHour);
+      List<V4VmOpenApiServiceHour> serviceHourList = result.get(serviceHourHash);
+      if (serviceHourList == null) {
+        serviceHourList = new ArrayList<>();
+      }
+      
+      serviceHourList.add(ptvServiceHour);
+      
+      result.put(serviceHourHash, serviceHourList);
+    }
+    
+    return result;
+  }
+
+  /**
+   * Calculates hash for mergable service hour. 
+   * 
+   * Method uses all fields except the opening hours to calulate the hash
+   * 
+   * @param ptvServiceHour ptv service hour object
+   * @return hash for mergable service hour
+   */
+  private int calculateMergeablePtvServiceHourHash(V4VmOpenApiServiceHour ptvServiceHour) {
+    HashCodeBuilder hashCodeBuilder = new HashCodeBuilder(6621, 5511);
+    
+    if (ptvServiceHour.getAdditionalInformation() != null) {
+      for (VmOpenApiLanguageItem additionalInformation : ptvServiceHour.getAdditionalInformation()) {
+        hashCodeBuilder.append(additionalInformation.getLanguage());
+        hashCodeBuilder.append(additionalInformation.getValue());
+      }
+    }
+
+    hashCodeBuilder.append(ptvServiceHour.getIsClosed());
+    hashCodeBuilder.append(ptvServiceHour.getServiceHourType());
+    hashCodeBuilder.append(ptvServiceHour.getValidForNow());
+    hashCodeBuilder.append(ptvServiceHour.getValidFrom());
+    hashCodeBuilder.append(ptvServiceHour.getValidTo());
+    
+    return hashCodeBuilder.toHashCode();
   }
   
   private List<DailyOpeningTime> translateOpeningHours(List<V2VmOpenApiDailyOpeningTime> ptvOpeningHours) {
