@@ -468,7 +468,7 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
       .body("addresses[0].additionalInformations.size()", is(1))
       .body("addresses[0].additionalInformations[0].value", is("Example"))
       .body("addresses[0].additionalInformations[0].language", is("fi"))
-      .body("serviceHours.size()", is(6))
+      .body("serviceHours.size()", is(5))
       .body("publishingStatus", is("Published"));
   }
 

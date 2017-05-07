@@ -1,0 +1,46 @@
+[
+  {
+    "serviceHourType":"Standard",
+    "validFrom":"2017-04-03T00:00:00+03:00",
+    "validTo":"2017-04-09T00:00:00+03:00",
+    "isClosed":false,
+    "validForNow":false,
+    "additionalInformation":[
+      {
+        "value":"Huhtikuun ensimmäinen viikko",
+        "language":"fi"
+      }
+    ],
+    "openingHour":[
+      {
+        "dayFrom":"Monday",
+        "dayTo":"",
+        "from":"08:00:00",
+        "to":"16:00:00",
+        "isExtra":false
+      },
+      {
+        "dayFrom":"Tuesday",
+        "dayTo":"",
+        "from":"08:00:00",
+        "to":"17:00:00",
+        "isExtra":false
+      }
+    ]
+  }, {
+    "serviceHourType":"Exception",
+    "validFrom":"2017-04-26T00:00:00+03:00",
+    "validTo":null,
+    "isClosed":true,
+    "validForNow":false,
+    "additionalInformation":[
+      {
+        "value":"Test",
+        "language":"fi"
+      }
+    ],
+    "openingHour":[
+
+    ]
+  }
+]
