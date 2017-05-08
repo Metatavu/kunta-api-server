@@ -45,8 +45,11 @@ public class NewsController {
   @Inject
   private Instance<NewsProvider> newsProviders;
 
-  public List<NewsArticle> listNewsArticles(String slug, String tag, OffsetDateTime publishedBefore, OffsetDateTime publishedAfter, Integer firstResult, Integer maxResults, OrganizationId organizationId) {
-    if (StringUtils.isBlank(slug) && StringUtils.isNotBlank(tag)) {
+  @SuppressWarnings ("squid:S00107")
+  public List<NewsArticle> listNewsArticles(String slug, String tag, OffsetDateTime publishedBefore, OffsetDateTime publishedAfter, String search, Integer firstResult, Integer maxResults, OrganizationId organizationId) {
+    if (StringUtils.isNotBlank(search)) {
+      return searchNewsArticlesByFreeText(organizationId, search, firstResult, maxResults);
+    } else if (StringUtils.isBlank(slug) && StringUtils.isNotBlank(tag)) {
       List<NewsArticle> result = searchNewsArticlesByTag(organizationId, tag, firstResult, maxResults);
       if (result != null) {
         return result;
@@ -136,6 +139,33 @@ public class NewsController {
     }
     
     return null;
+  }
+
+  @SuppressWarnings ("squid:S1168")
+  private List<NewsArticle> searchNewsArticlesByFreeText(OrganizationId organizationId, String search, Integer firstResult, Integer maxResults) {
+    OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(organizationId, KuntaApiConsts.IDENTIFIER_NAME);
+    if (kuntaApiOrganizationId == null) {
+      logger.severe(String.format("Failed to translate organization %s into Kunta API id", organizationId.toString()));
+      return Collections.emptyList();
+    }
+    
+    SearchResult<NewsArticleId> searchResult = newsArticleSearcher.searchNewsArticlesByFreeText(kuntaApiOrganizationId.getId(), search, firstResult != null ? firstResult.longValue() : null, maxResults != null ? maxResults.longValue() : null);
+    if (searchResult != null) {
+      List<NewsArticleId> newsArticleIds = searchResult.getResult();
+
+      List<NewsArticle> result = new ArrayList<>(newsArticleIds.size());
+
+      for (NewsArticleId newsArticleId : newsArticleIds) {
+        NewsArticle newsArticle = findNewsArticle(kuntaApiOrganizationId, newsArticleId);
+        if (newsArticle != null) {
+          result.add(newsArticle);
+        }
+      }
+      
+      return result;
+    }
+    
+    return Collections.emptyList();
   }
   
   private List<NewsArticle> filterBySlug(List<NewsArticle> newsArticles, String slug) {
