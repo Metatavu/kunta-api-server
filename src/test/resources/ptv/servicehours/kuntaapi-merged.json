@@ -1,0 +1,120 @@
+[
+  {
+    "serviceHourType":"Standard",
+    "validFrom":null,
+    "validTo":null,
+    "isClosed":false,
+    "validForNow":true,
+    "additionalInformation":[ ],
+    "openingHour":[
+      {
+        "dayFrom":1,
+        "dayTo": null,
+        "from":"09:00:00",
+        "to":"17:00:00",
+        "isExtra":false
+      },
+      {
+        "dayFrom":2,
+        "dayTo": null,
+        "from":"09:00:00",
+        "to":"17:00:00",
+        "isExtra":false
+      },
+      {
+        "dayFrom":3,
+        "dayTo": null,
+        "from":"09:00:00",
+        "to":"16:30:00",
+        "isExtra":false
+      },
+      {
+        "dayFrom":4,
+        "dayTo": null,
+        "from":"09:00:00",
+        "to":"17:00:00",
+        "isExtra":false
+      },
+      {
+        "dayFrom":5,
+        "dayTo": null,
+        "from":"10:00:00",
+        "to":"14:00:00",
+        "isExtra":false
+      }
+    ]
+  }, {
+    "serviceHourType":"Standard",
+    "validFrom":"2017-04-03T00:00:00+03:00",
+    "validTo":"2017-04-09T00:00:00+03:00",
+    "isClosed":false,
+    "validForNow":false,
+    "additionalInformation":[
+      {
+        "value":"Huhtikuun ensimmäinen viikko",
+        "language":"fi"
+      }
+    ],
+    "openingHour":[
+      {
+        "dayFrom":1,
+        "dayTo": null,
+        "from":"08:00:00",
+        "to":"16:00:00",
+        "isExtra":false
+      },
+      {
+        "dayFrom":2,
+        "dayTo": null,
+        "from":"08:00:00",
+        "to":"17:00:00",
+        "isExtra":false
+      },
+      {
+        "dayFrom":6,
+        "dayTo": null,
+        "from":"12:00:00",
+        "to":"13:00:00",
+        "isExtra":false
+      }
+    ]
+  },
+  {
+    "serviceHourType":"Exception",
+    "validFrom":"2017-02-27T00:00:00+02:00",
+    "validTo":null,
+    "isClosed":false,
+    "validForNow":false,
+    "additionalInformation":[
+      {
+        "value":"Aamupäivystys",
+        "language":"fi"
+      }
+    ],
+    "openingHour":[
+      {
+        "dayFrom": null,
+        "dayTo": null,
+        "from":"06:00:00",
+        "to":"9:00:00",
+        "isExtra":false
+      }
+    ]
+  },
+  {
+    "serviceHourType":"Exception",
+    "validFrom":"2017-04-26T00:00:00+03:00",
+    "validTo":null,
+    "isClosed":true,
+    "validForNow":false,
+    "additionalInformation":[
+      {
+        "value":"Test",
+        "language":"fi"
+      }
+    ],
+    "openingHour":[
+
+    ]
+  }
+]

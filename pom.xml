@@ -108,6 +108,7 @@
     
     <!-- Test -->
     
+    <jsonassert.version>1.5.0</jsonassert.version>
     <restassured.version>2.9.0</restassured.version> 
     <wiremock.version>2.1.11</wiremock.version>
     <deltaspike.version>1.7.2</deltaspike.version>
@@ -611,6 +612,12 @@
     
     <!-- Test -->
     
+    <dependency>
+      <groupId>org.skyscreamer</groupId>
+      <artifactId>jsonassert</artifactId>
+      <version>${jsonassert.version}</version>
+    </dependency>
+
     <dependency>
       <groupId>com.jayway.restassured</groupId>
       <artifactId>rest-assured</artifactId>
