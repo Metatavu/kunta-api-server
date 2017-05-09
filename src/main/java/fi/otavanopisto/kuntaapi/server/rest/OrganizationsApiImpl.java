@@ -1,6 +1,7 @@
- package fi.otavanopisto.kuntaapi.server.rest;
+package fi.otavanopisto.kuntaapi.server.rest;
 
 import java.time.OffsetDateTime;
+import java.util.Collections;
 import java.util.List;
 
 import javax.ejb.Stateful;
@@ -9,6 +10,7 @@ import javax.inject.Inject;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Request;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.ResponseBuilder;
 import javax.ws.rs.core.Response.Status;
 
 import org.apache.commons.lang3.EnumUtils;
@@ -77,6 +79,7 @@ import fi.otavanopisto.kuntaapi.server.id.PublicTransportStopTimeId;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportTripId;
 import fi.otavanopisto.kuntaapi.server.id.ShortlinkId;
 import fi.otavanopisto.kuntaapi.server.id.TileId;
+import fi.otavanopisto.kuntaapi.server.index.SearchResult;
 import fi.otavanopisto.kuntaapi.server.integrations.AnnouncementProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.AnnouncementProvider.AnnouncementOrder;
 import fi.otavanopisto.kuntaapi.server.integrations.AnnouncementProvider.AnnouncementOrderDirection;
@@ -769,14 +772,11 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     boolean onlyRootPages = StringUtils.equals("ROOT", parentIdParam);
     PageId parentId = onlyRootPages ? null : toPageId(organizationId, parentIdParam);
     
-    List<Page> result = listOrganizationPages(organizationId, onlyRootPages, parentId, path, search, firstResult, maxResults);
-    List<String> ids = httpCacheController.getEntityIds(result);
-    Response notModified = httpCacheController.getNotModified(request, ids);
-    if (notModified != null) {
-      return notModified;
+    if (search != null) {
+      return buildResponse(pageController.searchPages(organizationId, search, firstResult, maxResults), request);
+    } else {
+      return buildResponse(pageController.listPages(organizationId, path, onlyRootPages, parentId, firstResult, maxResults), null, request);
     }
-
-    return httpCacheController.sendModified(result, ids);
   }
 
   @Override
@@ -1615,14 +1615,28 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     return createNotImplemented(NOT_IMPLEMENTED);
   }
   
-  private List<Page> listOrganizationPages(OrganizationId organizationId, boolean onlyRootPages, PageId parentId, String path, String search, Long firstResult, Long maxResults) {
-    if (search != null) {
-      return pageController.searchPages(organizationId, search, firstResult, maxResults);
+  private <T> Response buildResponse(SearchResult<T> searchResult, Request request) {
+    if (searchResult == null) {
+      return buildResponse(Collections.emptyList(), 0l, request);
     } else {
-      return pageController.listPages(organizationId, path, onlyRootPages, parentId, firstResult, maxResults);
-    }
+      return buildResponse(searchResult.getResult(), searchResult.getTotalHits(), request);
+    }    
   }
 
+  private <T> Response buildResponse(List<T> result, Long totalHits, Request request) {
+    List<String> ids = httpCacheController.getEntityIds(result);
+    ResponseBuilder responseBuilder = httpCacheController.notModified(request, ids);
+    if (responseBuilder == null) {
+      responseBuilder = httpCacheController.modified(result, ids);
+    }
+    
+    if (totalHits != null) {
+      responseBuilder.header("X-Kunta-API-Total-Results", totalHits);
+    }
+      
+    return responseBuilder.build();
+  }
+  
   private Response listOrganizationJobs(Request request, OrganizationId organizationId, JobOrder order, JobOrderDirection orderDirection, Long firstResult, Long maxResults) {
     List<Job> result = jobController.listJobs(organizationId, order, orderDirection, firstResult, maxResults);
     

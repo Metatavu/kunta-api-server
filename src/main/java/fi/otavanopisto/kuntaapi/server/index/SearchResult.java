@@ -1,10 +1,9 @@
 package fi.otavanopisto.kuntaapi.server.index;
 
+import java.util.Collections;
 import java.util.List;
 
-import fi.otavanopisto.kuntaapi.server.id.BaseId;
-
-public class SearchResult <T extends BaseId> {
+public class SearchResult <T> {
   
   private List<T> result;
   private long totalHits;
@@ -20,6 +19,10 @@ public class SearchResult <T extends BaseId> {
   
   public long getTotalHits() {
     return totalHits;
+  }
+  
+  public static <T> SearchResult<T> emptyResult() {
+    return new SearchResult<>(Collections.emptyList(), 0);
   }
   
 }
