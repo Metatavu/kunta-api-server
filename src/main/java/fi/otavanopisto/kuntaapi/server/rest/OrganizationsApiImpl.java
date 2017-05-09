@@ -1470,14 +1470,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       sortDir = EnumUtils.getEnum(SortDir.class, sortDirParam);
     }
     
-    List<StopTime> result = publicTransportController.listStopTimes(organizationId, stopId, departureTime, sortBy, sortDir, firstResult, maxResults);
-    List<String> ids = httpCacheController.getEntityIds(result);
-    Response notModified = httpCacheController.getNotModified(request, ids);
-    if (notModified != null) {
-      return notModified;
-    }
-
-    return httpCacheController.sendModified(result, ids);
+    return restResponseBuilder.buildResponse(publicTransportController.searchStopTimes(organizationId, null, stopId, departureTime, sortBy, sortDir, firstResult, maxResults), request);
   }
 
   @Override

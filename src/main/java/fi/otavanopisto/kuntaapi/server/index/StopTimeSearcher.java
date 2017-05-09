@@ -37,7 +37,7 @@ public class StopTimeSearcher {
   public SearchResult<PublicTransportStopTimeId> searchStopTimes(String organizationId, String tripId, String stopId, Integer depratureTimeOnOrAfter, PublicTransportStopTimeSortBy sortBy, SortDir sortDir, Long firstResult, Long maxResults) {
     BoolQueryBuilder query = createQuery(organizationId, tripId, stopId, depratureTimeOnOrAfter);
     String sortField = resolveSortField(sortBy);
-    SortOrder sortOrder = sortDir.toElasticSortOrder();
+    SortOrder sortOrder = sortDir != null ? sortDir.toElasticSortOrder() : SortOrder.ASC;
     
     return searchStopTimes(query, firstResult, maxResults, sortField, sortOrder);
   }

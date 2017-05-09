@@ -12,6 +12,7 @@ import javax.inject.Inject;
 import org.elasticsearch.action.search.SearchRequestBuilder;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilder;
+import org.elasticsearch.search.sort.SortOrder;
 
 import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
 import fi.otavanopisto.kuntaapi.server.integrations.NewsSortOrder;
@@ -61,10 +62,11 @@ public class NewsArticleSearcher {
     requestBuilder.setFrom(firstResult != null ? firstResult.intValue() : 0);
     requestBuilder.setSize(maxResults != null ? maxResults.intValue() : IndexReader.MAX_RESULTS);
     
+    SortOrder order = sortDir != null ? sortDir.toElasticSortOrder() : SortOrder.ASC;
     if (sortOrder == NewsSortOrder.SCORE) {
-      requestBuilder.addSort("_score", sortDir.toElasticSortOrder());
+      requestBuilder.addSort("_score", order);
     } else {
-      requestBuilder.addSort(AbstractIndexHander.ORDER_INDEX_FIELD, sortDir.toElasticSortOrder());
+      requestBuilder.addSort(AbstractIndexHander.ORDER_INDEX_FIELD, order);
     }
     
     return indexReader.search(requestBuilder, NewsArticleId.class, MEWS_ARTICLE_ID_FIELD, ORGANIZATION_ID_FIELD);
