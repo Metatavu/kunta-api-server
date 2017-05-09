@@ -89,8 +89,8 @@ import fi.otavanopisto.kuntaapi.server.integrations.JobProvider.JobOrderDirectio
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
 import fi.otavanopisto.kuntaapi.server.integrations.NewsSortOrder;
-import fi.otavanopisto.kuntaapi.server.integrations.OrganizationSortOrder;
-import fi.otavanopisto.kuntaapi.server.integrations.PageSortOrder;
+import fi.otavanopisto.kuntaapi.server.integrations.OrganizationSortBy;
+import fi.otavanopisto.kuntaapi.server.integrations.PageSortBy;
 import fi.otavanopisto.kuntaapi.server.integrations.PublicTransportStopTimeSortBy;
 import fi.otavanopisto.kuntaapi.server.integrations.SortDir;
 import fi.otavanopisto.kuntaapi.server.system.OrganizationSettingProvider;
@@ -106,6 +106,8 @@ import fi.otavanopisto.kuntaapi.server.system.OrganizationSettingProvider;
 @SuppressWarnings ("squid:S3306")
 public class OrganizationsApiImpl extends OrganizationsApi {
   
+  private static final String INVALID_VALUE_FOR_SORT_DIR = "Invalid value for sortDir";
+  private static final String INVALID_VALUE_FOR_SORT_BY = "Invalid value for sortBy";
   private static final String INVALID_SETTING_ID = "Invalid setting id";
   private static final String MAX_RESULTS_MUST_BY_A_POSITIVE_INTEGER = "maxResults must by a positive integer";
   private static final String FIRST_RESULT_MUST_BY_A_POSITIVE_INTEGER = "firstResult must by a positive integer";
@@ -175,17 +177,26 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   private RestResponseBuilder restResponseBuilder;
   
   @Override
-  public Response listOrganizations(String businessName, String businessCode, String search, Long firstResult, Long maxResults, @Context Request request) {
+  public Response listOrganizations(String businessName, String businessCode, String search, String sortByParam,
+      String sortDirParam, Long firstResult, Long maxResults, Request request) {
+    
     Response validateResponse = validateListLimitParams(firstResult, maxResults);
     if (validateResponse != null) {
       return validateResponse;
     }
-
-    OrganizationSortOrder sortOrder = OrganizationSortOrder.NATURAL;
-    SortDir sortDir = SortDir.ASC;
+    
+    OrganizationSortBy sortBy = resolveOrganizationSortBy(sortByParam);
+    if (sortBy == null) {
+      return createBadRequest(INVALID_VALUE_FOR_SORT_BY);
+    }
+    
+    SortDir sortDir = resolveSortDir(sortDirParam);
+    if (sortDir == null) {
+      return createBadRequest(INVALID_VALUE_FOR_SORT_DIR);
+    }
     
     if (search != null) {
-      return restResponseBuilder.buildResponse(organizationController.searchOrganizations(search, businessName, businessCode, sortOrder, sortDir, firstResult, maxResults), request);
+      return restResponseBuilder.buildResponse(organizationController.searchOrganizations(search, businessName, businessCode, sortBy, sortDir, firstResult, maxResults), request);
     } else {
       return restResponseBuilder.buildResponse(organizationController.listOrganizations(firstResult, maxResults), null, request);
     }
@@ -327,27 +338,35 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   }
   
   /* News */
-
+  
   @Override
   public Response listOrganizationNews(String organizationIdParam, String slug, String tag, String publishedBefore,
-      String publishedAfter, String search, Integer firstResult, Integer maxResults, Request request) {
+      String publishedAfter, String search, String sortByParam, String sortDirParam, Integer firstResult, Integer maxResults, Request request) {
+    
     OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     
-    NewsSortOrder sortOrder = NewsSortOrder.NATURAL;
-    SortDir sortDir = SortDir.ASC;
+    NewsSortOrder sortBy = resolveNewsSortBy(sortByParam);
+    if (sortBy == null) {
+      return createBadRequest(INVALID_VALUE_FOR_SORT_BY);
+    }
+    
+    SortDir sortDir = resolveSortDir(sortDirParam);
+    if (sortDir == null) {
+      return createBadRequest(INVALID_VALUE_FOR_SORT_DIR);
+    }
     
     if (search != null) {
-      return restResponseBuilder.buildResponse(newsController.searchNewsArticlesByFreeText(organizationId, search, sortOrder, sortDir, firstResult, maxResults), request);
+      return restResponseBuilder.buildResponse(newsController.searchNewsArticlesByFreeText(organizationId, search, sortBy, sortDir, firstResult, maxResults), request);
     }
     
     if (tag != null) {
-      SearchResult<NewsArticle> searchResult = newsController.searchNewsArticlesByTag(organizationId, tag, sortOrder, sortDir, firstResult, maxResults);
+      SearchResult<NewsArticle> searchResult = newsController.searchNewsArticlesByTag(organizationId, tag, sortBy, sortDir, firstResult, maxResults);
       if (searchResult != null) {
         return restResponseBuilder.buildResponse(searchResult, request);
       }
     }
     
-    return restResponseBuilder.buildResponse(newsController.listNewsArticles(slug, tag, getDateTime(publishedBefore), getDateTime(publishedAfter), sortOrder, sortDir, firstResult, maxResults, organizationId), null, request);
+    return restResponseBuilder.buildResponse(newsController.listNewsArticles(slug, tag, getDateTime(publishedBefore), getDateTime(publishedAfter), sortBy, sortDir, firstResult, maxResults, organizationId), null, request);
   }
 
   @Override
@@ -749,14 +768,25 @@ public class OrganizationsApiImpl extends OrganizationsApi {
         .build();
   }
 
-  
   /* Pages */
   
   @Override
-  public Response listOrganizationPages(String organizationIdParam, String parentIdParam, String path, String search, Long firstResult, Long maxResults, @Context Request request) {
+  public Response listOrganizationPages(String organizationIdParam, String parentIdParam, String path, String search,
+      String sortByParam, String sortDirParam, Long firstResult, Long maxResults, Request request) {
+    
     Response validateResponse = validateListLimitParams(firstResult, maxResults);
     if (validateResponse != null) {
       return validateResponse;
+    }
+    
+    PageSortBy sortBy = resolvePageSortBy(sortByParam);
+    if (sortBy == null) {
+      return createBadRequest(INVALID_VALUE_FOR_SORT_BY);
+    }
+    
+    SortDir sortDir = resolveSortDir(sortDirParam);
+    if (sortDir == null) {
+      return createBadRequest(INVALID_VALUE_FOR_SORT_DIR);
     }
     
     OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
@@ -770,11 +800,9 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     
     boolean onlyRootPages = StringUtils.equals("ROOT", parentIdParam);
     PageId parentId = onlyRootPages ? null : toPageId(organizationId, parentIdParam);
-    PageSortOrder sortOrder = PageSortOrder.NATURAL;
-    SortDir sortDir = SortDir.ASC;
     
     if (search != null) {
-      return restResponseBuilder.buildResponse(pageController.searchPages(organizationId, search, sortOrder, sortDir, firstResult, maxResults), request);
+      return restResponseBuilder.buildResponse(pageController.searchPages(organizationId, search, sortBy, sortDir, firstResult, maxResults), request);
     } else {
       return restResponseBuilder.buildResponse(pageController.listPages(organizationId, path, onlyRootPages, parentId, firstResult, maxResults), null, request);
     }
@@ -1164,14 +1192,14 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     if (StringUtils.isNotBlank(sortBy)) {
       order = EnumUtils.getEnum(JobProvider.JobOrder.class, sortBy);
       if (order == null) {
-        return createBadRequest("Invalid value for sortBy");
+        return createBadRequest(INVALID_VALUE_FOR_SORT_BY);
       }
     }
     
     if (StringUtils.isNotBlank(sortDir)) {
       orderDirection = EnumUtils.getEnum(JobOrderDirection.class, sortDir);
       if (orderDirection == null) {
-        return createBadRequest("Invalid value for sortDir");
+        return createBadRequest(INVALID_VALUE_FOR_SORT_DIR);
       }
     }
     
@@ -1223,14 +1251,14 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     if (StringUtils.isNotBlank(sortBy)) {
       order = EnumUtils.getEnum(AnnouncementProvider.AnnouncementOrder.class, sortBy);
       if (order == null) {
-        return createBadRequest("Invalid value for sortBy");
+        return createBadRequest(INVALID_VALUE_FOR_SORT_BY);
       }
     }
     
     if (StringUtils.isNotBlank(sortDir)) {
       orderDirection = EnumUtils.getEnum(AnnouncementProvider.AnnouncementOrderDirection.class, sortDir);
       if (orderDirection == null) {
-        return createBadRequest("Invalid value for sortDir");
+        return createBadRequest(INVALID_VALUE_FOR_SORT_DIR);
       }
     }
     
@@ -1607,6 +1635,41 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   @Override
   public Response listOrganizationIncidents(String organizationId, String startBefore, String endAfter, Integer area, Integer firstResult, Integer maxResults, String orderBy, String orderDir, Request request) {
     return createNotImplemented(NOT_IMPLEMENTED);
+  }
+
+
+  private SortDir resolveSortDir(String sortDirParam) {
+    SortDir sortDir = SortDir.ASC;
+    if (sortDirParam != null) {
+      return EnumUtils.getEnum(SortDir.class, sortDirParam);
+    }
+    
+    return sortDir;
+  }
+
+  private OrganizationSortBy resolveOrganizationSortBy(String sortByParam) {
+    OrganizationSortBy sortBy = OrganizationSortBy.NATURAL;
+    if (sortByParam != null) {
+      return  EnumUtils.getEnum(OrganizationSortBy.class, sortByParam);
+    }
+    return sortBy;
+  }
+
+  private NewsSortOrder resolveNewsSortBy(String sortByParam) {
+    NewsSortOrder sortBy = NewsSortOrder.NATURAL;
+    if (sortByParam != null) {
+      return  EnumUtils.getEnum(NewsSortOrder.class, sortByParam);
+    }
+    return sortBy;
+  }
+
+  private PageSortBy resolvePageSortBy(String sortByParam) {
+    PageSortBy sortBy = PageSortBy.NATURAL;
+    if (sortByParam != null) {
+      return EnumUtils.getEnum(PageSortBy.class, sortByParam);
+    }
+    
+    return sortBy;
   }
   
   private Response listOrganizationJobs(Request request, OrganizationId organizationId, JobOrder order, JobOrderDirection orderDirection, Long firstResult, Long maxResults) {

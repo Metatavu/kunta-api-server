@@ -15,7 +15,7 @@ import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.search.sort.SortOrder;
 
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
-import fi.otavanopisto.kuntaapi.server.integrations.OrganizationSortOrder;
+import fi.otavanopisto.kuntaapi.server.integrations.OrganizationSortBy;
 import fi.otavanopisto.kuntaapi.server.integrations.SortDir;
 
 @ApplicationScoped
@@ -32,7 +32,7 @@ public class OrganizationSearcher {
   @Inject
   private IndexReader indexReader;
 
-  public SearchResult<OrganizationId> searchOrganizations(String queryString, String businessCode, String businessName, OrganizationSortOrder sortOrder, SortDir sortDir, Long firstResult, Long maxResults) {
+  public SearchResult<OrganizationId> searchOrganizations(String queryString, String businessCode, String businessName, OrganizationSortBy sortOrder, SortDir sortDir, Long firstResult, Long maxResults) {
     BoolQueryBuilder query = boolQuery().
       must(queryStringQuery(queryString));
     
@@ -47,15 +47,15 @@ public class OrganizationSearcher {
     return searchOrganizations(query, sortOrder, sortDir, firstResult, maxResults);
   }
    
-  public SearchResult<OrganizationId> searchOrganizationsByBusinessCode(String businessCode, OrganizationSortOrder sortOrder, SortDir sortDir, Long firstResult, Long maxResults) {
+  public SearchResult<OrganizationId> searchOrganizationsByBusinessCode(String businessCode, OrganizationSortBy sortOrder, SortDir sortDir, Long firstResult, Long maxResults) {
     return searchOrganizations(termQuery(BUSINESS_CODE_FIELD, businessCode), sortOrder, sortDir, firstResult, maxResults);
   }
   
-  public SearchResult<OrganizationId> searchOrganizationsByBusinessName(String businessName, OrganizationSortOrder sortOrder, SortDir sortDir, Long firstResult, Long maxResults) {
+  public SearchResult<OrganizationId> searchOrganizationsByBusinessName(String businessName, OrganizationSortBy sortOrder, SortDir sortDir, Long firstResult, Long maxResults) {
     return searchOrganizations(termQuery(BUSINESS_NAME_UT_FIELD, businessName), sortOrder, sortDir, firstResult, maxResults);
   }
   
-  public SearchResult<OrganizationId> searchOrganizationsByBusinessCodeAndBusinessName(String businessCode, String businessName, OrganizationSortOrder sortOrder, SortDir sortDir, Long firstResult, Long maxResults) {
+  public SearchResult<OrganizationId> searchOrganizationsByBusinessCodeAndBusinessName(String businessCode, String businessName, OrganizationSortBy sortOrder, SortDir sortDir, Long firstResult, Long maxResults) {
     BoolQueryBuilder query = boolQuery()
       .must(termQuery(BUSINESS_CODE_FIELD, businessCode))
       .must(termQuery(BUSINESS_NAME_UT_FIELD, businessName));
@@ -63,7 +63,7 @@ public class OrganizationSearcher {
     return searchOrganizations(query, sortOrder, sortDir, firstResult, maxResults);
   }
   
-  private SearchResult<OrganizationId> searchOrganizations(QueryBuilder queryBuilder, OrganizationSortOrder sortOrder, SortDir sortDir, Long firstResult, Long maxResults) {
+  private SearchResult<OrganizationId> searchOrganizations(QueryBuilder queryBuilder, OrganizationSortBy sortOrder, SortDir sortDir, Long firstResult, Long maxResults) {
     if (!indexReader.isEnabled()) {
       logger.warning("Could not search organizations. Search functions are disabled");
       return null;
@@ -78,7 +78,7 @@ public class OrganizationSearcher {
     requestBuilder.setSize(maxResults != null ? maxResults.intValue() : IndexReader.MAX_RESULTS);
     
     SortOrder order = sortDir != null ? sortDir.toElasticSortOrder() : SortOrder.ASC;
-    if (sortOrder == OrganizationSortOrder.SCORE) {
+    if (sortOrder == OrganizationSortBy.SCORE) {
       requestBuilder
         .addSort("_score", order)
         .addSort(AbstractIndexHander.ORDER_INDEX_FIELD, order);

@@ -19,7 +19,7 @@ import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
-import fi.otavanopisto.kuntaapi.server.integrations.ServiceSortOrder;
+import fi.otavanopisto.kuntaapi.server.integrations.ServiceSortBy;
 import fi.otavanopisto.kuntaapi.server.integrations.SortDir;
 
 @ApplicationScoped
@@ -37,7 +37,7 @@ public class ServiceSearcher {
   @Inject
   private IndexReader indexReader;
 
-  public SearchResult<ServiceId> searchServices(OrganizationId organizationId, String text, ServiceSortOrder sortOrder, SortDir sortDir, Long firstResult, Long maxResults) {
+  public SearchResult<ServiceId> searchServices(OrganizationId organizationId, String text, ServiceSortBy sortOrder, SortDir sortDir, Long firstResult, Long maxResults) {
     BoolQueryBuilder query = boolQuery()
       .must(queryStringQuery(text));
     
@@ -54,7 +54,7 @@ public class ServiceSearcher {
     return searchServices(query, sortOrder, sortDir, firstResult, maxResults);
   }
   
-  private SearchResult<ServiceId> searchServices(QueryBuilder queryBuilder, ServiceSortOrder sortOrder, SortDir sortDir, Long firstResult, Long maxResults) {
+  private SearchResult<ServiceId> searchServices(QueryBuilder queryBuilder, ServiceSortBy sortOrder, SortDir sortDir, Long firstResult, Long maxResults) {
     if (!indexReader.isEnabled()) {
       logger.warning("Could not execute search. Search functions are disabled");
       return null;
@@ -69,7 +69,7 @@ public class ServiceSearcher {
     requestBuilder.setSize(maxResults != null ? maxResults.intValue() : IndexReader.MAX_RESULTS);
     
     SortOrder order = sortDir != null ? sortDir.toElasticSortOrder() : SortOrder.ASC;
-    if (sortOrder == ServiceSortOrder.SCORE) {
+    if (sortOrder == ServiceSortBy.SCORE) {
       requestBuilder
         .addSort("_score", order)
         .addSort(AbstractIndexHander.ORDER_INDEX_FIELD, order);

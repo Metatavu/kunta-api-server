@@ -20,9 +20,9 @@ import fi.otavanopisto.kuntaapi.server.index.SearchResult;
 import fi.otavanopisto.kuntaapi.server.index.ServiceLocationServiceChannelSearcher;
 import fi.otavanopisto.kuntaapi.server.index.ServiceSearcher;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceChannelProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.ServiceLocationServiceChannelSortOrder;
+import fi.otavanopisto.kuntaapi.server.integrations.ServiceLocationServiceChannelSortBy;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.ServiceSortOrder;
+import fi.otavanopisto.kuntaapi.server.integrations.ServiceSortBy;
 import fi.otavanopisto.kuntaapi.server.integrations.SortDir;
 import fi.otavanopisto.kuntaapi.server.utils.ListUtils;
 import fi.metatavu.kuntaapi.server.rest.model.ElectronicServiceChannel;
@@ -72,7 +72,7 @@ public class ServiceController {
     return ListUtils.limit(entityController.sortEntitiesInNaturalOrder(result), firstResult, maxResults);
   }
 
-  public SearchResult<Service> searchServices(OrganizationId organizationId, String search, ServiceSortOrder sortOrder, SortDir sortDir, Long firstResult, Long maxResults) {
+  public SearchResult<Service> searchServices(OrganizationId organizationId, String search, ServiceSortBy sortOrder, SortDir sortDir, Long firstResult, Long maxResults) {
     SearchResult<ServiceId> searchResult = serviceSearcher.searchServices(organizationId, search, sortOrder, sortDir, firstResult, maxResults);
     if (searchResult != null) {
       List<Service> result = new ArrayList<>(searchResult.getResult().size());
@@ -184,7 +184,7 @@ public class ServiceController {
     return ListUtils.limit(entityController.sortEntitiesInNaturalOrder(result), firstResult, maxResults);
   }
   
-  public SearchResult<ServiceLocationServiceChannel> searchServiceLocationServiceChannels(OrganizationId kuntaApiOrganizationId, String search, ServiceLocationServiceChannelSortOrder sortOrder, SortDir sortDir, Long firstResult, Long maxResults) {
+  public SearchResult<ServiceLocationServiceChannel> searchServiceLocationServiceChannels(OrganizationId kuntaApiOrganizationId, String search, ServiceLocationServiceChannelSortBy sortOrder, SortDir sortDir, Long firstResult, Long maxResults) {
     SearchResult<ServiceLocationServiceChannelId> searchResult = serviceLocationServiceChannelSearcher.searchServiceLocationServiceChannels(kuntaApiOrganizationId, search, sortOrder,  sortDir, firstResult, maxResults);
     if (searchResult == null) {
       return SearchResult.emptyResult();

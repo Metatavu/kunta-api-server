@@ -1,6 +1,6 @@
 package fi.otavanopisto.kuntaapi.server.integrations;
 
-public enum ServiceSortOrder {
+public enum OrganizationSortBy {
 
   NATURAL,
   

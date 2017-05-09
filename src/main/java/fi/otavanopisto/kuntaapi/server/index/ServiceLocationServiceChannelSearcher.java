@@ -16,7 +16,7 @@ import org.elasticsearch.search.sort.SortOrder;
 
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceLocationServiceChannelId;
-import fi.otavanopisto.kuntaapi.server.integrations.ServiceLocationServiceChannelSortOrder;
+import fi.otavanopisto.kuntaapi.server.integrations.ServiceLocationServiceChannelSortBy;
 import fi.otavanopisto.kuntaapi.server.integrations.SortDir;
 
 @ApplicationScoped
@@ -32,7 +32,7 @@ public class ServiceLocationServiceChannelSearcher {
   @Inject
   private IndexReader indexReader;
 
-  public SearchResult<ServiceLocationServiceChannelId> searchServiceLocationServiceChannels(OrganizationId kuntaApiOrganizationId, String queryString, ServiceLocationServiceChannelSortOrder sortOrder, SortDir sortDir, Long firstResult, Long maxResults) {
+  public SearchResult<ServiceLocationServiceChannelId> searchServiceLocationServiceChannels(OrganizationId kuntaApiOrganizationId, String queryString, ServiceLocationServiceChannelSortBy sortOrder, SortDir sortDir, Long firstResult, Long maxResults) {
     BoolQueryBuilder query = boolQuery();
 
     if (kuntaApiOrganizationId != null) {
@@ -46,7 +46,7 @@ public class ServiceLocationServiceChannelSearcher {
     return searchServiceLocationServiceChannels(query, sortOrder, sortDir, firstResult, maxResults);
   }
    
-  private SearchResult<ServiceLocationServiceChannelId> searchServiceLocationServiceChannels(QueryBuilder queryBuilder, ServiceLocationServiceChannelSortOrder sortOrder, SortDir sortDir, Long firstResult, Long maxResults) {
+  private SearchResult<ServiceLocationServiceChannelId> searchServiceLocationServiceChannels(QueryBuilder queryBuilder, ServiceLocationServiceChannelSortBy sortOrder, SortDir sortDir, Long firstResult, Long maxResults) {
     if (!indexReader.isEnabled()) {
       logger.warning("Could not search service location service channels. Search functions are disabled");
       return null;
@@ -61,7 +61,7 @@ public class ServiceLocationServiceChannelSearcher {
     requestBuilder.setSize(maxResults != null ? maxResults.intValue() : IndexReader.MAX_RESULTS);
     
     SortOrder order = sortDir != null ? sortDir.toElasticSortOrder() : SortOrder.ASC;
-    if (sortOrder == ServiceLocationServiceChannelSortOrder.SCORE) {
+    if (sortOrder == ServiceLocationServiceChannelSortBy.SCORE) {
       requestBuilder
         .addSort("_score", order)
         .addSort(AbstractIndexHander.ORDER_INDEX_FIELD, order);

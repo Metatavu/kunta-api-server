@@ -13,7 +13,7 @@ import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.index.OrganizationSearcher;
 import fi.otavanopisto.kuntaapi.server.index.SearchResult;
 import fi.otavanopisto.kuntaapi.server.integrations.OrganizationProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.OrganizationSortOrder;
+import fi.otavanopisto.kuntaapi.server.integrations.OrganizationSortBy;
 import fi.otavanopisto.kuntaapi.server.integrations.SortDir;
 import fi.otavanopisto.kuntaapi.server.utils.ListUtils;
 import fi.metatavu.kuntaapi.server.rest.model.Organization;
@@ -41,7 +41,7 @@ public class OrganizationController {
     return ListUtils.limit(entityController.sortEntitiesInNaturalOrder(organizations), firstResult, maxResults);
   }
 
-  public SearchResult<Organization> searchOrganizations(String search, String businessName, String businessCode, OrganizationSortOrder sortOrder, SortDir sortDir, Long firstResult, Long maxResults) {
+  public SearchResult<Organization> searchOrganizations(String search, String businessName, String businessCode, OrganizationSortBy sortOrder, SortDir sortDir, Long firstResult, Long maxResults) {
     SearchResult<OrganizationId> searchResult;
 
     if (search == null) {
@@ -72,7 +72,7 @@ public class OrganizationController {
     return SearchResult.emptyResult();
   }
 
-  private SearchResult<OrganizationId> searchByBusinessNameOrBusinessCode(String businessName, String businessCode, OrganizationSortOrder sortOrder, SortDir sortDir, Long firstResult, Long maxResults) {
+  private SearchResult<OrganizationId> searchByBusinessNameOrBusinessCode(String businessName, String businessCode, OrganizationSortBy sortOrder, SortDir sortDir, Long firstResult, Long maxResults) {
     if (businessName == null && businessCode != null) {
       return organizationSearcher.searchOrganizationsByBusinessCode(businessCode, sortOrder, sortDir, firstResult, maxResults);
     } else if (businessName != null && businessCode == null) {

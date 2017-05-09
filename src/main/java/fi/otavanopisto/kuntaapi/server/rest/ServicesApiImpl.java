@@ -11,6 +11,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Request;
 import javax.ws.rs.core.Response;
 
+import org.apache.commons.lang3.EnumUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import fi.metatavu.kuntaapi.server.rest.ServicesApi;
@@ -20,8 +21,7 @@ import fi.otavanopisto.kuntaapi.server.controllers.ServiceController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
-import fi.otavanopisto.kuntaapi.server.integrations.OrganizationSortOrder;
-import fi.otavanopisto.kuntaapi.server.integrations.ServiceSortOrder;
+import fi.otavanopisto.kuntaapi.server.integrations.ServiceSortBy;
 import fi.otavanopisto.kuntaapi.server.integrations.SortDir;
 
 /**
@@ -33,7 +33,9 @@ import fi.otavanopisto.kuntaapi.server.integrations.SortDir;
 @Stateful
 @SuppressWarnings ({ "squid:S3306", "unused" })
 public class ServicesApiImpl extends ServicesApi {
-  
+
+  private static final String INVALID_VALUE_FOR_SORT_DIR = "Invalid value for sortDir";
+  private static final String INVALID_VALUE_FOR_SORT_BY = "Invalid value for sortBy";
   private static final String NOT_FOUND = "Not Found";
   private static final String NOT_IMPLEMENTED = "Not implemented";
   
@@ -72,20 +74,29 @@ public class ServicesApiImpl extends ServicesApi {
   }
   
   @Override
-  public Response listServices(String organizationIdParam, String search, Long firstResult, Long maxResults, @Context Request request) {
+  public Response listServices(String organizationIdParam, String search, String sortByParam, String sortDirParam, Long firstResult,
+      Long maxResults, Request request) {
+   
+    ServiceSortBy sortBy = resolveServiceSortBy(sortByParam);
+    if (sortBy == null) {
+      return createBadRequest(INVALID_VALUE_FOR_SORT_BY);
+    }
+    
+    SortDir sortDir = resolveSortDir(sortDirParam);
+    if (sortDir == null) {
+      return createBadRequest(INVALID_VALUE_FOR_SORT_DIR);
+    }
+
     Response validationResponse = restValidator.validateListLimitParams(firstResult, maxResults);
     if (validationResponse != null) {
       return validationResponse;
     }
     
-    ServiceSortOrder sortOrder = ServiceSortOrder.NATURAL;
-    SortDir sortDir = SortDir.ASC;
-    
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
     if (search == null) {
       return restResponseBuilder.buildResponse(serviceController.listServices(organizationId, firstResult, maxResults), null, request);
     } else {
-      return restResponseBuilder.buildResponse(serviceController.searchServices(organizationId, search, sortOrder, sortDir, firstResult, maxResults), request);
+      return restResponseBuilder.buildResponse(serviceController.searchServices(organizationId, search, sortBy, sortDir, firstResult, maxResults), request);
     }
   }
   
@@ -164,6 +175,22 @@ public class ServicesApiImpl extends ServicesApi {
     return redirect(pathBuilder.toString());
   }
 
+  private SortDir resolveSortDir(String sortDirParam) {
+    SortDir sortDir = SortDir.ASC;
+    if (sortDirParam != null) {
+      return EnumUtils.getEnum(SortDir.class, sortDirParam);
+    }
+    
+    return sortDir;
+  }
+
+  private ServiceSortBy resolveServiceSortBy(String sortByParam) {
+    ServiceSortBy sortBy = ServiceSortBy.NATURAL;
+    if (sortByParam != null) {
+      return  EnumUtils.getEnum(ServiceSortBy.class, sortByParam);
+    }
+    return sortBy;
+  }
 
   private Response redirect(String path) {
     return Response.temporaryRedirect(URI.create(path)).build();
