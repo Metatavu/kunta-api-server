@@ -20,6 +20,9 @@ import fi.otavanopisto.kuntaapi.server.controllers.ServiceController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
+import fi.otavanopisto.kuntaapi.server.integrations.OrganizationSortOrder;
+import fi.otavanopisto.kuntaapi.server.integrations.ServiceSortOrder;
+import fi.otavanopisto.kuntaapi.server.integrations.SortDir;
 
 /**
  * REST Service implementation
@@ -28,7 +31,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
  */
 @RequestScoped
 @Stateful
-@SuppressWarnings ("squid:S3306")
+@SuppressWarnings ({ "squid:S3306", "unused" })
 public class ServicesApiImpl extends ServicesApi {
   
   private static final String NOT_FOUND = "Not Found";
@@ -75,11 +78,14 @@ public class ServicesApiImpl extends ServicesApi {
       return validationResponse;
     }
     
+    ServiceSortOrder sortOrder = ServiceSortOrder.NATURAL;
+    SortDir sortDir = SortDir.ASC;
+    
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
     if (search == null) {
       return restResponseBuilder.buildResponse(serviceController.listServices(organizationId, firstResult, maxResults), null, request);
     } else {
-      return restResponseBuilder.buildResponse(serviceController.searchServices(organizationId, search, firstResult, maxResults), request);
+      return restResponseBuilder.buildResponse(serviceController.searchServices(organizationId, search, sortOrder, sortDir, firstResult, maxResults), request);
     }
   }
   

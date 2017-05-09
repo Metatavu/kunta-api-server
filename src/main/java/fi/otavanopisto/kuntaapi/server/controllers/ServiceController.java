@@ -22,6 +22,7 @@ import fi.otavanopisto.kuntaapi.server.index.ServiceSearcher;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceChannelProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceLocationServiceChannelSortOrder;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceProvider;
+import fi.otavanopisto.kuntaapi.server.integrations.ServiceSortOrder;
 import fi.otavanopisto.kuntaapi.server.integrations.SortDir;
 import fi.otavanopisto.kuntaapi.server.utils.ListUtils;
 import fi.metatavu.kuntaapi.server.rest.model.ElectronicServiceChannel;
@@ -71,8 +72,8 @@ public class ServiceController {
     return ListUtils.limit(entityController.sortEntitiesInNaturalOrder(result), firstResult, maxResults);
   }
 
-  public SearchResult<Service> searchServices(OrganizationId organizationId, String search, Long firstResult, Long maxResults) {
-    SearchResult<ServiceId> searchResult = serviceSearcher.searchServices(organizationId, search, firstResult, maxResults);
+  public SearchResult<Service> searchServices(OrganizationId organizationId, String search, ServiceSortOrder sortOrder, SortDir sortDir, Long firstResult, Long maxResults) {
+    SearchResult<ServiceId> searchResult = serviceSearcher.searchServices(organizationId, search, sortOrder, sortDir, firstResult, maxResults);
     if (searchResult != null) {
       List<Service> result = new ArrayList<>(searchResult.getResult().size());
       
