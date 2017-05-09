@@ -91,6 +91,8 @@ public abstract class AbstractIndexHander {
     try {
       TransportClient transportClient;
       
+      System.out.println(String.format("Cluster %s, %s", clusterName, StringUtils.join(hosts, ",") ));
+      
       Settings settings = Settings.builder()
         .put("cluster.name", clusterName)
         .build();
