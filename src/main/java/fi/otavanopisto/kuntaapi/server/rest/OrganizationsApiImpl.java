@@ -90,6 +90,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
 import fi.otavanopisto.kuntaapi.server.integrations.NewsSortOrder;
 import fi.otavanopisto.kuntaapi.server.integrations.OrganizationSortOrder;
+import fi.otavanopisto.kuntaapi.server.integrations.PageSortOrder;
 import fi.otavanopisto.kuntaapi.server.integrations.PublicTransportStopTimeSortBy;
 import fi.otavanopisto.kuntaapi.server.integrations.SortDir;
 import fi.otavanopisto.kuntaapi.server.system.OrganizationSettingProvider;
@@ -769,9 +770,11 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     
     boolean onlyRootPages = StringUtils.equals("ROOT", parentIdParam);
     PageId parentId = onlyRootPages ? null : toPageId(organizationId, parentIdParam);
+    PageSortOrder sortOrder = PageSortOrder.NATURAL;
+    SortDir sortDir = SortDir.ASC;
     
     if (search != null) {
-      return restResponseBuilder.buildResponse(pageController.searchPages(organizationId, search, firstResult, maxResults), request);
+      return restResponseBuilder.buildResponse(pageController.searchPages(organizationId, search, sortOrder, sortDir, firstResult, maxResults), request);
     } else {
       return restResponseBuilder.buildResponse(pageController.listPages(organizationId, path, onlyRootPages, parentId, firstResult, maxResults), null, request);
     }
