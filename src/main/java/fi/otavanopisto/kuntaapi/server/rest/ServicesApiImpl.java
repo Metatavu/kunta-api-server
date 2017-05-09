@@ -43,6 +43,9 @@ public class ServicesApiImpl extends ServicesApi {
   @Inject
   private HttpCacheController httpCacheController;
   
+  @Inject
+  private RestResponseBuilder restResponseBuilder;
+  
   @Override
   public Response createService(Service body, @Context Request request) {
     return createNotImplemented(NOT_IMPLEMENTED);
@@ -73,21 +76,11 @@ public class ServicesApiImpl extends ServicesApi {
     }
     
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
-    
-    List<Service> services;
     if (search == null) {
-      services = serviceController.listServices(organizationId, firstResult, maxResults);
+      return restResponseBuilder.buildResponse(serviceController.listServices(organizationId, firstResult, maxResults), null, request);
     } else {
-      services = serviceController.searchServices(organizationId, search, firstResult, maxResults);
+      return restResponseBuilder.buildResponse(serviceController.searchServices(organizationId, search, firstResult, maxResults), request);
     }
-    
-    List<String> ids = httpCacheController.getEntityIds(services);
-    Response notModified = httpCacheController.getNotModified(request, ids);
-    if (notModified != null) {
-      return notModified;
-    }
-
-    return httpCacheController.sendModified(services, ids);
   }
   
   @Override

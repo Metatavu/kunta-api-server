@@ -69,7 +69,7 @@ public class ServiceController {
     return ListUtils.limit(entityController.sortEntitiesInNaturalOrder(result), firstResult, maxResults);
   }
 
-  public List<Service> searchServices(OrganizationId organizationId, String search, Long firstResult, Long maxResults) {
+  public SearchResult<Service> searchServices(OrganizationId organizationId, String search, Long firstResult, Long maxResults) {
     SearchResult<ServiceId> searchResult = serviceSearcher.searchServices(organizationId, search, firstResult, maxResults);
     if (searchResult != null) {
       List<Service> result = new ArrayList<>(searchResult.getResult().size());
@@ -81,10 +81,10 @@ public class ServiceController {
         }
       }
       
-      return result;
+      return new SearchResult<>(result, searchResult.getTotalHits());
     }
     
-    return Collections.emptyList();
+    return SearchResult.emptyResult();
   }
   
   public ElectronicServiceChannel findElectronicServiceChannel(ElectronicServiceChannelId electronicChannelId) {
