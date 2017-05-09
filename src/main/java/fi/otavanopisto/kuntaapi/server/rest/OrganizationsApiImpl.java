@@ -89,6 +89,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.JobProvider.JobOrderDirectio
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
 import fi.otavanopisto.kuntaapi.server.integrations.NewsSortOrder;
+import fi.otavanopisto.kuntaapi.server.integrations.OrganizationSortOrder;
 import fi.otavanopisto.kuntaapi.server.integrations.PublicTransportStopTimeSortBy;
 import fi.otavanopisto.kuntaapi.server.integrations.SortDir;
 import fi.otavanopisto.kuntaapi.server.system.OrganizationSettingProvider;
@@ -178,9 +179,12 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     if (validateResponse != null) {
       return validateResponse;
     }
+
+    OrganizationSortOrder sortOrder = OrganizationSortOrder.NATURAL;
+    SortDir sortDir = SortDir.ASC;
     
     if (search != null) {
-      return restResponseBuilder.buildResponse(organizationController.searchOrganizations(search, businessName, businessCode, firstResult, maxResults), request);
+      return restResponseBuilder.buildResponse(organizationController.searchOrganizations(search, businessName, businessCode, sortOrder, sortDir, firstResult, maxResults), request);
     } else {
       return restResponseBuilder.buildResponse(organizationController.listOrganizations(firstResult, maxResults), null, request);
     }

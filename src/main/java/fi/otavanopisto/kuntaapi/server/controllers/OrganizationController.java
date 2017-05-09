@@ -13,6 +13,8 @@ import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.index.OrganizationSearcher;
 import fi.otavanopisto.kuntaapi.server.index.SearchResult;
 import fi.otavanopisto.kuntaapi.server.integrations.OrganizationProvider;
+import fi.otavanopisto.kuntaapi.server.integrations.OrganizationSortOrder;
+import fi.otavanopisto.kuntaapi.server.integrations.SortDir;
 import fi.otavanopisto.kuntaapi.server.utils.ListUtils;
 import fi.metatavu.kuntaapi.server.rest.model.Organization;
 
@@ -39,18 +41,19 @@ public class OrganizationController {
     return ListUtils.limit(entityController.sortEntitiesInNaturalOrder(organizations), firstResult, maxResults);
   }
 
-  public SearchResult<Organization> searchOrganizations(String search, String businessName, String businessCode, Long firstResult, Long maxResults) {
+  public SearchResult<Organization> searchOrganizations(String search, String businessName, String businessCode, OrganizationSortOrder sortOrder, SortDir sortDir, Long firstResult, Long maxResults) {
     SearchResult<OrganizationId> searchResult;
-    
+
     if (search == null) {
-      searchResult = searchByBusinessNameOrBusinessCode(businessName, businessCode, firstResult, maxResults);
+      searchResult = searchByBusinessNameOrBusinessCode(businessName, businessCode, sortOrder, sortDir, firstResult, maxResults);
       if (searchResult == null) {
         // Search has failed, fall back to listing
         List<Organization> organizations = listByBusinessNameOrBusinessCode(businessName, businessCode);
         return new SearchResult<>(organizations, organizations.size());
       }
     } else {
-      searchResult = organizationSearcher.searchOrganizations(search, businessCode, businessName, firstResult, maxResults);
+      searchResult = organizationSearcher.searchOrganizations(search, businessCode, businessName, sortOrder, sortDir, 
+          firstResult, maxResults);
     }
     
     if (searchResult != null) {
@@ -69,13 +72,13 @@ public class OrganizationController {
     return SearchResult.emptyResult();
   }
 
-  private SearchResult<OrganizationId> searchByBusinessNameOrBusinessCode(String businessName, String businessCode, Long firstResult, Long maxResults) {
+  private SearchResult<OrganizationId> searchByBusinessNameOrBusinessCode(String businessName, String businessCode, OrganizationSortOrder sortOrder, SortDir sortDir, Long firstResult, Long maxResults) {
     if (businessName == null && businessCode != null) {
-      return organizationSearcher.searchOrganizationsByBusinessCode(businessCode, firstResult, maxResults);
+      return organizationSearcher.searchOrganizationsByBusinessCode(businessCode, sortOrder, sortDir, firstResult, maxResults);
     } else if (businessName != null && businessCode == null) {
-      return organizationSearcher.searchOrganizationsByBusinessName(businessName, firstResult, maxResults);
+      return organizationSearcher.searchOrganizationsByBusinessName(businessName, sortOrder, sortDir, firstResult, maxResults);
     } else {
-      return organizationSearcher.searchOrganizationsByBusinessCodeAndBusinessName(businessCode, businessName, firstResult, maxResults);
+      return organizationSearcher.searchOrganizationsByBusinessCodeAndBusinessName(businessCode, businessName, sortOrder, sortDir, firstResult, maxResults);
     }
   }
 

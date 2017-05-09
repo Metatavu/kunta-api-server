@@ -64,7 +64,9 @@ public class NewsArticleSearcher {
     
     SortOrder order = sortDir != null ? sortDir.toElasticSortOrder() : SortOrder.ASC;
     if (sortOrder == NewsSortOrder.SCORE) {
-      requestBuilder.addSort("_score", order);
+      requestBuilder
+        .addSort("_score", order)
+        .addSort(AbstractIndexHander.ORDER_INDEX_FIELD, order);
     } else {
       requestBuilder.addSort(AbstractIndexHander.ORDER_INDEX_FIELD, order);
     }
