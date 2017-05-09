@@ -86,6 +86,10 @@
     
     <elasticsearch.version>5.0.1</elasticsearch.version>
     
+    <!-- Jest -->
+    
+    <io.searchbox.version>2.4.0</io.searchbox.version>
+    
     <!-- Lucene -->
     
     <lucene.version>6.2.1</lucene.version>
@@ -904,9 +908,7 @@
                       <command>/subsystem=infinispan/cache-container=kunta-api:add()</command>
                       <command>/subsystem=undertow/server=default-server/host=kunta-api:add(alias=["${it.host}"])</command>
                       <command>/system-property=it-test:add(value="true")</command>
-                      <command>/subsystem=logging/logger=fi.otavanopisto.kuntaapi.server.index.AbstractIndexHander:add(level=FATAL)</command>
                       <command>/subsystem=logging/logger=fi.otavanopisto.kuntaapi.server.security.SecurityFilter:add(level=FATAL)</command>
-                      <command>/subsystem=logging/logger=fi.otavanopisto.kuntaapi.server.index.IndexUpdater:add(level=SEVERE)</command>
                       <command>/subsystem=logging/logger=org.onebusaway.gtfs.serialization.GtfsReader:add(level=WARN)</command>
                     </commands>
                   </before-deployment>
