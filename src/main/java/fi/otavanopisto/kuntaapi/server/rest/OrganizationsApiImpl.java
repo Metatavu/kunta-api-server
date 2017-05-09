@@ -330,15 +330,18 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     NewsSortOrder sortOrder = NewsSortOrder.NATURAL;
     SortDir sortDir = SortDir.ASC;
     
-    List<NewsArticle> result = newsController.listNewsArticles(slug, tag, getDateTime(publishedBefore), getDateTime(publishedAfter), search, sortOrder, sortDir, firstResult, maxResults, organizationId);
-    
-    List<String> ids = httpCacheController.getEntityIds(result);
-    Response notModified = httpCacheController.getNotModified(request, ids);
-    if (notModified != null) {
-      return notModified;
+    if (search != null) {
+      return buildResponse(newsController.searchNewsArticlesByFreeText(organizationId, search, sortOrder, sortDir, firstResult, maxResults), request);
     }
-
-    return httpCacheController.sendModified(result, ids);
+    
+    if (tag != null) {
+      SearchResult<NewsArticle> searchResult = newsController.searchNewsArticlesByTag(organizationId, tag, sortOrder, sortDir, firstResult, maxResults);
+      if (searchResult != null) {
+        return buildResponse(searchResult, request);
+      }
+    }
+    
+    return buildResponse(newsController.listNewsArticles(slug, tag, getDateTime(publishedBefore), getDateTime(publishedAfter), sortOrder, sortDir, firstResult, maxResults, organizationId), null, request);
   }
 
   @Override
