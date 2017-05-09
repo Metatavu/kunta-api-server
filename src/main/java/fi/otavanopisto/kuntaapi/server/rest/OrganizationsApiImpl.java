@@ -87,6 +87,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.JobProvider.JobOrder;
 import fi.otavanopisto.kuntaapi.server.integrations.JobProvider.JobOrderDirection;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
+import fi.otavanopisto.kuntaapi.server.integrations.NewsSortOrder;
 import fi.otavanopisto.kuntaapi.server.integrations.PublicTransportStopTimeSortBy;
 import fi.otavanopisto.kuntaapi.server.integrations.SortDir;
 import fi.otavanopisto.kuntaapi.server.system.OrganizationSettingProvider;
@@ -333,7 +334,10 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       String publishedAfter, String search, Integer firstResult, Integer maxResults, Request request) {
     OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     
-    List<NewsArticle> result = newsController.listNewsArticles(slug, tag, getDateTime(publishedBefore), getDateTime(publishedAfter), search, firstResult, maxResults, organizationId);
+    NewsSortOrder sortOrder = NewsSortOrder.NATURAL;
+    SortDir sortDir = SortDir.ASC;
+    
+    List<NewsArticle> result = newsController.listNewsArticles(slug, tag, getDateTime(publishedBefore), getDateTime(publishedAfter), search, sortOrder, sortDir, firstResult, maxResults, organizationId);
     
     List<String> ids = httpCacheController.getEntityIds(result);
     Response notModified = httpCacheController.getNotModified(request, ids);

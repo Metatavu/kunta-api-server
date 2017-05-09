@@ -18,11 +18,12 @@ import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.SearchHitField;
-import org.elasticsearch.search.sort.SortOrder;
 
 import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
+import fi.otavanopisto.kuntaapi.server.integrations.NewsSortOrder;
+import fi.otavanopisto.kuntaapi.server.integrations.SortDir;
 
 @ApplicationScoped
 public class NewsArticleSearcher {
@@ -37,32 +38,24 @@ public class NewsArticleSearcher {
   
   @Inject
   private IndexReader indexReader;
-
-  public SearchResult<NewsArticleId> searchNewsArticles(String organizationId, String queryString, Long firstResult, Long maxResults) {
-    BoolQueryBuilder query = boolQuery()
-      .must(matchQuery(ORGANIZATION_ID_FIELD, organizationId))
-      .must(queryStringQuery(queryString));
-    
-    return searchNewsArticles(query, firstResult, maxResults);
-  }
   
-  public SearchResult<NewsArticleId> searchNewsArticlesByTag(String organizationId, String tag, Long firstResult, Long maxResults) {
+  public SearchResult<NewsArticleId> searchNewsArticlesByTag(String organizationId, String tag, NewsSortOrder sortOrder, SortDir sortDir, Long firstResult, Long maxResults) {
     BoolQueryBuilder query = boolQuery()
       .must(matchQuery(ORGANIZATION_ID_FIELD, organizationId))
       .must(matchQuery(TAGS_FIELD, tag));
     
-    return searchNewsArticles(query, firstResult, maxResults);
+    return searchNewsArticles(query, sortOrder, sortDir, firstResult, maxResults);
   }
 
-  public SearchResult<NewsArticleId> searchNewsArticlesByFreeText(String organizationId, String search, Long firstResult, Long maxResults) {
+  public SearchResult<NewsArticleId> searchNewsArticlesByFreeText(String organizationId, String search, NewsSortOrder sortOrder, SortDir sortDir, Long firstResult, Long maxResults) {
     BoolQueryBuilder query = boolQuery()
       .must(matchQuery(ORGANIZATION_ID_FIELD, organizationId))
       .must(queryStringQuery(search));
     
-    return searchNewsArticles(query, firstResult, maxResults);
+    return searchNewsArticles(query, sortOrder, sortDir, firstResult, maxResults);
   }
   
-  private SearchResult<NewsArticleId> searchNewsArticles(QueryBuilder queryBuilder, Long firstResult, Long maxResults) {
+  private SearchResult<NewsArticleId> searchNewsArticles(QueryBuilder queryBuilder, NewsSortOrder sortOrder, SortDir sortDir, Long firstResult, Long maxResults) {
     if (!indexReader.isEnabled()) {
       logger.warning("Could not execute search. Search functions are disabled");
       return null;
@@ -75,8 +68,13 @@ public class NewsArticleSearcher {
     
     requestBuilder.setFrom(firstResult != null ? firstResult.intValue() : 0);
     requestBuilder.setSize(maxResults != null ? maxResults.intValue() : IndexReader.MAX_RESULTS);
-    requestBuilder.addSort(AbstractIndexHander.ORDER_INDEX_FIELD, SortOrder.ASC);
-      
+    
+    if (sortOrder == NewsSortOrder.SCORE) {
+      requestBuilder.addSort("_score", sortDir.toElasticSortOrder());
+    } else {
+      requestBuilder.addSort(AbstractIndexHander.ORDER_INDEX_FIELD, sortDir.toElasticSortOrder());
+    }
+    
     return new SearchResult<>(getNewsArticleIds(indexReader.search(requestBuilder)));
   }
   

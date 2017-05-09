@@ -22,6 +22,8 @@ import fi.otavanopisto.kuntaapi.server.index.SearchResult;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.NewsProvider;
+import fi.otavanopisto.kuntaapi.server.integrations.NewsSortOrder;
+import fi.otavanopisto.kuntaapi.server.integrations.SortDir;
 import fi.otavanopisto.kuntaapi.server.utils.ListUtils;
 import fi.metatavu.kuntaapi.server.rest.model.Attachment;
 import fi.metatavu.kuntaapi.server.rest.model.NewsArticle;
@@ -46,11 +48,11 @@ public class NewsController {
   private Instance<NewsProvider> newsProviders;
 
   @SuppressWarnings ("squid:S00107")
-  public List<NewsArticle> listNewsArticles(String slug, String tag, OffsetDateTime publishedBefore, OffsetDateTime publishedAfter, String search, Integer firstResult, Integer maxResults, OrganizationId organizationId) {
+  public List<NewsArticle> listNewsArticles(String slug, String tag, OffsetDateTime publishedBefore, OffsetDateTime publishedAfter, String search, NewsSortOrder sortOrder, SortDir sortDir, Integer firstResult, Integer maxResults, OrganizationId organizationId) {
     if (StringUtils.isNotBlank(search)) {
-      return searchNewsArticlesByFreeText(organizationId, search, firstResult, maxResults);
+      return searchNewsArticlesByFreeText(organizationId, search, sortOrder, sortDir, firstResult, maxResults);
     } else if (StringUtils.isBlank(slug) && StringUtils.isNotBlank(tag)) {
-      List<NewsArticle> result = searchNewsArticlesByTag(organizationId, tag, firstResult, maxResults);
+      List<NewsArticle> result = searchNewsArticlesByTag(organizationId, tag, sortOrder, sortDir, firstResult, maxResults);
       if (result != null) {
         return result;
       }
@@ -115,14 +117,14 @@ public class NewsController {
   }
   
   @SuppressWarnings ("squid:S1168")
-  private List<NewsArticle> searchNewsArticlesByTag(OrganizationId organizationId, String tag, Integer firstResult, Integer maxResults) { 
+  private List<NewsArticle> searchNewsArticlesByTag(OrganizationId organizationId, String tag, NewsSortOrder sortOrder, SortDir sortDir, Integer firstResult, Integer maxResults) { 
     OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(organizationId, KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiOrganizationId == null) {
       logger.severe(String.format("Failed to translate organization %s into Kunta API id", organizationId.toString()));
       return Collections.emptyList();
     }
     
-    SearchResult<NewsArticleId> searchResult = newsArticleSearcher.searchNewsArticlesByTag(kuntaApiOrganizationId.getId(), tag, firstResult != null ? firstResult.longValue() : null, maxResults != null ? maxResults.longValue() : null);
+    SearchResult<NewsArticleId> searchResult = newsArticleSearcher.searchNewsArticlesByTag(kuntaApiOrganizationId.getId(), tag, sortOrder, sortDir, firstResult != null ? firstResult.longValue() : null, maxResults != null ? maxResults.longValue() : null);
     if (searchResult != null) {
       List<NewsArticleId> newsArticleIds = searchResult.getResult();
 
@@ -142,14 +144,14 @@ public class NewsController {
   }
 
   @SuppressWarnings ("squid:S1168")
-  private List<NewsArticle> searchNewsArticlesByFreeText(OrganizationId organizationId, String search, Integer firstResult, Integer maxResults) {
+  private List<NewsArticle> searchNewsArticlesByFreeText(OrganizationId organizationId, String search, NewsSortOrder sortOrder, SortDir sortDir, Integer firstResult, Integer maxResults) {
     OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(organizationId, KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiOrganizationId == null) {
       logger.severe(String.format("Failed to translate organization %s into Kunta API id", organizationId.toString()));
       return Collections.emptyList();
     }
     
-    SearchResult<NewsArticleId> searchResult = newsArticleSearcher.searchNewsArticlesByFreeText(kuntaApiOrganizationId.getId(), search, firstResult != null ? firstResult.longValue() : null, maxResults != null ? maxResults.longValue() : null);
+    SearchResult<NewsArticleId> searchResult = newsArticleSearcher.searchNewsArticlesByFreeText(kuntaApiOrganizationId.getId(), search, sortOrder, sortDir, firstResult != null ? firstResult.longValue() : null, maxResults != null ? maxResults.longValue() : null);
     if (searchResult != null) {
       List<NewsArticleId> newsArticleIds = searchResult.getResult();
 
