@@ -65,12 +65,19 @@ public class StopTimeSearcher {
   }
 
   private String resolveSortField(PublicTransportStopTimeSortBy sortBy) {
-    String sortField = null;
-    if (sortBy != null && sortBy == PublicTransportStopTimeSortBy.DEPARTURE_TIME) {
-      sortField = DEPARTURE_TIME_FIELD;
+    if (sortBy != null) {
+      switch (sortBy) {
+        case DEPARTURE_TIME:
+          return DEPARTURE_TIME_FIELD;
+        case SCORE:
+          return "_score";
+        default:
+          break;
+      }
+      
     }
     
-    return sortField;
+    return null;
   }
   
   private SearchResult<PublicTransportStopTimeId> searchStopTimes(QueryBuilder queryBuilder, Long firstResult, Long maxResults, String sortField, SortOrder sortOrder) {
