@@ -87,9 +87,9 @@ public class StopTimeSearcher {
     }
     
     SearchRequestBuilder requestBuilder = indexReader
-        .requestBuilder(TYPE)
-        .storedFields(ORGANIZATION_ID_FIELD)
-        .setQuery(queryBuilder);
+      .requestBuilder(TYPE)
+      .storedFields(ORGANIZATION_ID_FIELD)
+      .setQuery(queryBuilder);
     
     requestBuilder.setFrom(firstResult != null ? firstResult.intValue() : 0);
     requestBuilder.setSize(maxResults != null ? maxResults.intValue() : IndexReader.MAX_RESULTS);
@@ -100,7 +100,7 @@ public class StopTimeSearcher {
       requestBuilder.addSort(AbstractIndexHander.ORDER_INDEX_FIELD, SortOrder.ASC);
     }
     
-    return indexReader.search(requestBuilder, PublicTransportStopTimeId.class, "_id");
+    return indexReader.search(requestBuilder, PublicTransportStopTimeId.class, "_id", ORGANIZATION_ID_FIELD);
   }
 
 }

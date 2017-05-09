@@ -103,7 +103,7 @@ public abstract class AbstractIdFactory {
       return null;
     }
     
-    if(isOrganizationBaseId(idClass)) {
+    if (isOrganizationBaseId(idClass)) {
       return createOrganizationBaseId(idClass, id, organizationId);
     } else {
       return createBaseId(idClass, id);
