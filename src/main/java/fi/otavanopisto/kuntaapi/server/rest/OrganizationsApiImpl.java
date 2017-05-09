@@ -1,7 +1,6 @@
 package fi.otavanopisto.kuntaapi.server.rest;
 
 import java.time.OffsetDateTime;
-import java.util.Collections;
 import java.util.List;
 
 import javax.ejb.Stateful;
@@ -10,7 +9,6 @@ import javax.inject.Inject;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Request;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.ResponseBuilder;
 import javax.ws.rs.core.Response.Status;
 
 import org.apache.commons.lang3.EnumUtils;
@@ -171,6 +169,9 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   @Inject
   private PublicTransportController publicTransportController;
   
+  @Inject
+  private RestResponseBuilder restResponseBuilder;
+  
   @Override
   public Response listOrganizations(String businessName, String businessCode, String search, Long firstResult, Long maxResults, @Context Request request) {
     Response validateResponse = validateListLimitParams(firstResult, maxResults);
@@ -179,9 +180,9 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     }
     
     if (search != null) {
-      return buildResponse(organizationController.searchOrganizations(search, businessName, businessCode, firstResult, maxResults), request);
+      return restResponseBuilder.buildResponse(organizationController.searchOrganizations(search, businessName, businessCode, firstResult, maxResults), request);
     } else {
-      return buildResponse(organizationController.listOrganizations(firstResult, maxResults), null, request);
+      return restResponseBuilder.buildResponse(organizationController.listOrganizations(firstResult, maxResults), null, request);
     }
   }
   
@@ -331,17 +332,17 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     SortDir sortDir = SortDir.ASC;
     
     if (search != null) {
-      return buildResponse(newsController.searchNewsArticlesByFreeText(organizationId, search, sortOrder, sortDir, firstResult, maxResults), request);
+      return restResponseBuilder.buildResponse(newsController.searchNewsArticlesByFreeText(organizationId, search, sortOrder, sortDir, firstResult, maxResults), request);
     }
     
     if (tag != null) {
       SearchResult<NewsArticle> searchResult = newsController.searchNewsArticlesByTag(organizationId, tag, sortOrder, sortDir, firstResult, maxResults);
       if (searchResult != null) {
-        return buildResponse(searchResult, request);
+        return restResponseBuilder.buildResponse(searchResult, request);
       }
     }
     
-    return buildResponse(newsController.listNewsArticles(slug, tag, getDateTime(publishedBefore), getDateTime(publishedAfter), sortOrder, sortDir, firstResult, maxResults, organizationId), null, request);
+    return restResponseBuilder.buildResponse(newsController.listNewsArticles(slug, tag, getDateTime(publishedBefore), getDateTime(publishedAfter), sortOrder, sortDir, firstResult, maxResults, organizationId), null, request);
   }
 
   @Override
@@ -766,9 +767,9 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     PageId parentId = onlyRootPages ? null : toPageId(organizationId, parentIdParam);
     
     if (search != null) {
-      return buildResponse(pageController.searchPages(organizationId, search, firstResult, maxResults), request);
+      return restResponseBuilder.buildResponse(pageController.searchPages(organizationId, search, firstResult, maxResults), request);
     } else {
-      return buildResponse(pageController.listPages(organizationId, path, onlyRootPages, parentId, firstResult, maxResults), null, request);
+      return restResponseBuilder.buildResponse(pageController.listPages(organizationId, path, onlyRootPages, parentId, firstResult, maxResults), null, request);
     }
   }
 
@@ -1606,28 +1607,6 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   @Override
   public Response listOrganizationIncidents(String organizationId, String startBefore, String endAfter, Integer area, Integer firstResult, Integer maxResults, String orderBy, String orderDir, Request request) {
     return createNotImplemented(NOT_IMPLEMENTED);
-  }
-  
-  private <T> Response buildResponse(SearchResult<T> searchResult, Request request) {
-    if (searchResult == null) {
-      return buildResponse(Collections.emptyList(), 0l, request);
-    } else {
-      return buildResponse(searchResult.getResult(), searchResult.getTotalHits(), request);
-    }    
-  }
-
-  private <T> Response buildResponse(List<T> result, Long totalHits, Request request) {
-    List<String> ids = httpCacheController.getEntityIds(result);
-    ResponseBuilder responseBuilder = httpCacheController.notModified(request, ids);
-    if (responseBuilder == null) {
-      responseBuilder = httpCacheController.modified(result, ids);
-    }
-    
-    if (totalHits != null) {
-      responseBuilder.header("X-Kunta-API-Total-Results", totalHits);
-    }
-      
-    return responseBuilder.build();
   }
   
   private Response listOrganizationJobs(Request request, OrganizationId organizationId, JobOrder order, JobOrderDirection orderDirection, Long firstResult, Long maxResults) {
