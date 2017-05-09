@@ -29,44 +29,44 @@ public class OrganizationController {
   @Inject
   private Instance<OrganizationProvider> organizationProviders;
   
-  public List<Organization> listOrganizations(String businessName, String businessCode, Long firstResult, Long maxResults) {
+  public List<Organization> listOrganizations(Long firstResult, Long maxResults) {
     List<Organization> organizations = new ArrayList<>();
     
-    if (businessName != null || businessCode != null) {
-      organizations = searchOrganizations(null, businessName, businessCode, null, null);
-    } else {
-      for (OrganizationProvider organizationProvider : getOrganizationProviders()) {
-        organizations.addAll(organizationProvider.listOrganizations(businessName, businessCode));
-      }
+    for (OrganizationProvider organizationProvider : getOrganizationProviders()) {
+      organizations.addAll(organizationProvider.listOrganizations(null, null));
     }
     
     return ListUtils.limit(entityController.sortEntitiesInNaturalOrder(organizations), firstResult, maxResults);
   }
 
-  public List<Organization> searchOrganizations(String search, String businessName, String businessCode, Long firstResult, Long maxResults) {
-    List<Organization> result = new ArrayList<>();
+  public SearchResult<Organization> searchOrganizations(String search, String businessName, String businessCode, Long firstResult, Long maxResults) {
     SearchResult<OrganizationId> searchResult;
     
     if (search == null) {
       searchResult = searchByBusinessNameOrBusinessCode(businessName, businessCode, firstResult, maxResults);
       if (searchResult == null) {
         // Search has failed, fall back to listing
-        return entityController.sortEntitiesInNaturalOrder(listByBusinessNameOrBusinessCode(businessName, businessCode));
+        List<Organization> organizations = listByBusinessNameOrBusinessCode(businessName, businessCode);
+        return new SearchResult<>(organizations, organizations.size());
       }
     } else {
       searchResult = organizationSearcher.searchOrganizations(search, businessCode, businessName, firstResult, maxResults);
     }
     
     if (searchResult != null) {
+      List<Organization> result = new ArrayList<>();
+      
       for (OrganizationId organizationId : searchResult.getResult()) {
         Organization organization = findOrganization(organizationId);
         if (organization != null) {
           result.add(organization);
         }
       }
+      
+      return new SearchResult<>(result, searchResult.getTotalHits());
     }
     
-    return result;
+    return SearchResult.emptyResult();
   }
 
   private SearchResult<OrganizationId> searchByBusinessNameOrBusinessCode(String businessName, String businessCode, Long firstResult, Long maxResults) {

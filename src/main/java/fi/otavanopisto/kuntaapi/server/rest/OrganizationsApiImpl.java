@@ -178,21 +178,11 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return validateResponse;
     }
     
-    List<Organization> organizations;
-    
     if (search != null) {
-      organizations = organizationController.searchOrganizations(search, businessName, businessCode, firstResult, maxResults);
+      return buildResponse(organizationController.searchOrganizations(search, businessName, businessCode, firstResult, maxResults), request);
     } else {
-      organizations = organizationController.listOrganizations(businessName, businessCode, firstResult, maxResults);
+      return buildResponse(organizationController.listOrganizations(firstResult, maxResults), null, request);
     }
-    
-    List<String> ids = httpCacheController.getEntityIds(organizations);
-    Response notModified = httpCacheController.getNotModified(request, ids);
-    if (notModified != null) {
-      return notModified;
-    }
-
-    return httpCacheController.sendModified(organizations, ids);
   }
   
   @Override
