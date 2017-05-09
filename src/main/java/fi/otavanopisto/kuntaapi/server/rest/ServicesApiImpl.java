@@ -86,7 +86,7 @@ public class ServicesApiImpl extends ServicesApi {
     if (sortDir == null) {
       return createBadRequest(INVALID_VALUE_FOR_SORT_DIR);
     }
-
+    
     Response validationResponse = restValidator.validateListLimitParams(firstResult, maxResults);
     if (validationResponse != null) {
       return validationResponse;

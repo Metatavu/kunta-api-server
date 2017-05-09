@@ -12,6 +12,7 @@ import javax.inject.Inject;
 import org.elasticsearch.action.search.SearchRequestBuilder;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilder;
+import org.elasticsearch.search.sort.SortBuilders;
 import org.elasticsearch.search.sort.SortOrder;
 
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
@@ -63,7 +64,7 @@ public class OrganizationSearcher {
     return searchOrganizations(query, sortOrder, sortDir, firstResult, maxResults);
   }
   
-  private SearchResult<OrganizationId> searchOrganizations(QueryBuilder queryBuilder, OrganizationSortBy sortOrder, SortDir sortDir, Long firstResult, Long maxResults) {
+  private SearchResult<OrganizationId> searchOrganizations(QueryBuilder queryBuilder, OrganizationSortBy sortBy, SortDir sortDir, Long firstResult, Long maxResults) {
     if (!indexReader.isEnabled()) {
       logger.warning("Could not search organizations. Search functions are disabled");
       return null;
@@ -78,12 +79,14 @@ public class OrganizationSearcher {
     requestBuilder.setSize(maxResults != null ? maxResults.intValue() : IndexReader.MAX_RESULTS);
     
     SortOrder order = sortDir != null ? sortDir.toElasticSortOrder() : SortOrder.ASC;
-    if (sortOrder == OrganizationSortBy.SCORE) {
-      requestBuilder
-        .addSort("_score", order)
-        .addSort(AbstractIndexHander.ORDER_INDEX_FIELD, order);
-    } else {
-      requestBuilder.addSort(AbstractIndexHander.ORDER_INDEX_FIELD, order);
+    switch (sortBy) {
+      case SCORE:
+        requestBuilder.addSort(SortBuilders.scoreSort().order(order));
+      break;
+      case NATURAL:
+      default:
+        requestBuilder.addSort(SortBuilders.fieldSort(AbstractIndexHander.ORDER_INDEX_FIELD).order(order));
+      break;
     }
     
     return indexReader.search(requestBuilder, OrganizationId.class, ORGANIZATION_ID_FIELD);
