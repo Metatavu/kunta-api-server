@@ -763,6 +763,9 @@
               <dataFile>${jacoco.reportPath}</dataFile>
               <outputDirectory>${project.reporting.outputDirectory}/jacoco-it</outputDirectory>
               <classDumpDir>${project.reporting.outputDirectory}/jacoco-it/classes</classDumpDir>
+              <excludes>
+                <exclude>**/*_.class</exclude>
+              </excludes>
             </configuration>
                 
             <executions>
