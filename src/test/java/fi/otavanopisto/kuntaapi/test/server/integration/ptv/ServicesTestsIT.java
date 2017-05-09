@@ -270,6 +270,41 @@ public class ServicesTestsIT extends AbstractIntegrationTest {
       .statusCode(200)
       .body("id.size()", is(0));
   }
+  @Test
+  public void testListServicesSearch() {
+    given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get("/services?search=(tes*)|(Nuorten*)")
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(2))
+      .body("names[0][0].value", is("Metatavu testaa"))
+      .body("names[1][0].value", is("Nuorten työpajat"));
+    
+    given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get("/services?search=(tes*)|(Nuorten*)&sortBy=SCORE&sortDir=DESC")
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(2))
+      .body("names[0][0].value", is("Nuorten työpajat"))
+      .body("names[1][0].value", is("Metatavu testaa"));
+    
+    given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get("/services?search=(tes*)|(Nuorten*)&sortBy=SCORE&sortDir=ASC")
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(2))
+      .body("names[0][0].value", is("Metatavu testaa"))
+      .body("names[1][0].value", is("Nuorten työpajat"));
+  }
   
   @Test
   public void testListServicesLimits() {
