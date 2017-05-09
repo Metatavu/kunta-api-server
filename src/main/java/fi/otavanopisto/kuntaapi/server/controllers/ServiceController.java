@@ -72,8 +72,8 @@ public class ServiceController {
     return ListUtils.limit(entityController.sortEntitiesInNaturalOrder(result), firstResult, maxResults);
   }
 
-  public SearchResult<Service> searchServices(OrganizationId organizationId, String search, ServiceSortBy sortOrder, SortDir sortDir, Long firstResult, Long maxResults) {
-    SearchResult<ServiceId> searchResult = serviceSearcher.searchServices(organizationId, search, sortOrder, sortDir, firstResult, maxResults);
+  public SearchResult<Service> searchServices(OrganizationId organizationId, String search, ServiceSortBy sortBy, SortDir sortDir, Long firstResult, Long maxResults) {
+    SearchResult<ServiceId> searchResult = serviceSearcher.searchServices(organizationId, search, sortBy, sortDir, firstResult, maxResults);
     if (searchResult != null) {
       List<Service> result = new ArrayList<>(searchResult.getResult().size());
       
@@ -184,8 +184,8 @@ public class ServiceController {
     return ListUtils.limit(entityController.sortEntitiesInNaturalOrder(result), firstResult, maxResults);
   }
   
-  public SearchResult<ServiceLocationServiceChannel> searchServiceLocationServiceChannels(OrganizationId kuntaApiOrganizationId, String search, ServiceLocationServiceChannelSortBy sortOrder, SortDir sortDir, Long firstResult, Long maxResults) {
-    SearchResult<ServiceLocationServiceChannelId> searchResult = serviceLocationServiceChannelSearcher.searchServiceLocationServiceChannels(kuntaApiOrganizationId, search, sortOrder,  sortDir, firstResult, maxResults);
+  public SearchResult<ServiceLocationServiceChannel> searchServiceLocationServiceChannels(OrganizationId kuntaApiOrganizationId, String search, ServiceLocationServiceChannelSortBy sortBy, SortDir sortDir, Long firstResult, Long maxResults) {
+    SearchResult<ServiceLocationServiceChannelId> searchResult = serviceLocationServiceChannelSearcher.searchServiceLocationServiceChannels(kuntaApiOrganizationId, search, sortBy,  sortDir, firstResult, maxResults);
     if (searchResult == null) {
       return SearchResult.emptyResult();
     }

@@ -15,7 +15,7 @@ import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.search.sort.SortOrder;
 
 import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
-import fi.otavanopisto.kuntaapi.server.integrations.NewsSortOrder;
+import fi.otavanopisto.kuntaapi.server.integrations.NewsSortBy;
 import fi.otavanopisto.kuntaapi.server.integrations.SortDir;
 
 @ApplicationScoped
@@ -32,7 +32,7 @@ public class NewsArticleSearcher {
   @Inject
   private IndexReader indexReader;
   
-  public SearchResult<NewsArticleId> searchNewsArticlesByTag(String organizationId, String tag, NewsSortOrder sortOrder, SortDir sortDir, Long firstResult, Long maxResults) {
+  public SearchResult<NewsArticleId> searchNewsArticlesByTag(String organizationId, String tag, NewsSortBy sortOrder, SortDir sortDir, Long firstResult, Long maxResults) {
     BoolQueryBuilder query = boolQuery()
       .must(matchQuery(ORGANIZATION_ID_FIELD, organizationId))
       .must(matchQuery(TAGS_FIELD, tag));
@@ -40,7 +40,7 @@ public class NewsArticleSearcher {
     return searchNewsArticles(query, sortOrder, sortDir, firstResult, maxResults);
   }
 
-  public SearchResult<NewsArticleId> searchNewsArticlesByFreeText(String organizationId, String search, NewsSortOrder sortOrder, SortDir sortDir, Long firstResult, Long maxResults) {
+  public SearchResult<NewsArticleId> searchNewsArticlesByFreeText(String organizationId, String search, NewsSortBy sortOrder, SortDir sortDir, Long firstResult, Long maxResults) {
     BoolQueryBuilder query = boolQuery()
       .must(matchQuery(ORGANIZATION_ID_FIELD, organizationId))
       .must(queryStringQuery(search));
@@ -48,7 +48,7 @@ public class NewsArticleSearcher {
     return searchNewsArticles(query, sortOrder, sortDir, firstResult, maxResults);
   }
   
-  private SearchResult<NewsArticleId> searchNewsArticles(QueryBuilder queryBuilder, NewsSortOrder sortOrder, SortDir sortDir, Long firstResult, Long maxResults) {
+  private SearchResult<NewsArticleId> searchNewsArticles(QueryBuilder queryBuilder, NewsSortBy sortOrder, SortDir sortDir, Long firstResult, Long maxResults) {
     if (!indexReader.isEnabled()) {
       logger.warning("Could not execute search. Search functions are disabled");
       return null;
@@ -63,7 +63,7 @@ public class NewsArticleSearcher {
     requestBuilder.setSize(maxResults != null ? maxResults.intValue() : IndexReader.MAX_RESULTS);
     
     SortOrder order = sortDir != null ? sortDir.toElasticSortOrder() : SortOrder.ASC;
-    if (sortOrder == NewsSortOrder.SCORE) {
+    if (sortOrder == NewsSortBy.SCORE) {
       requestBuilder
         .addSort("_score", order)
         .addSort(AbstractIndexHander.ORDER_INDEX_FIELD, order);

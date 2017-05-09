@@ -88,7 +88,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.JobProvider.JobOrder;
 import fi.otavanopisto.kuntaapi.server.integrations.JobProvider.JobOrderDirection;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
-import fi.otavanopisto.kuntaapi.server.integrations.NewsSortOrder;
+import fi.otavanopisto.kuntaapi.server.integrations.NewsSortBy;
 import fi.otavanopisto.kuntaapi.server.integrations.OrganizationSortBy;
 import fi.otavanopisto.kuntaapi.server.integrations.PageSortBy;
 import fi.otavanopisto.kuntaapi.server.integrations.PublicTransportStopTimeSortBy;
@@ -345,7 +345,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     
     OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     
-    NewsSortOrder sortBy = resolveNewsSortBy(sortByParam);
+    NewsSortBy sortBy = resolveNewsSortBy(sortByParam);
     if (sortBy == null) {
       return createBadRequest(INVALID_VALUE_FOR_SORT_BY);
     }
@@ -1655,10 +1655,10 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     return sortBy;
   }
 
-  private NewsSortOrder resolveNewsSortBy(String sortByParam) {
-    NewsSortOrder sortBy = NewsSortOrder.NATURAL;
+  private NewsSortBy resolveNewsSortBy(String sortByParam) {
+    NewsSortBy sortBy = NewsSortBy.NATURAL;
     if (sortByParam != null) {
-      return  EnumUtils.getEnum(NewsSortOrder.class, sortByParam);
+      return  EnumUtils.getEnum(NewsSortBy.class, sortByParam);
     }
     return sortBy;
   }

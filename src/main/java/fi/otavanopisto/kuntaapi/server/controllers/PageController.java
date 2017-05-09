@@ -109,14 +109,14 @@ public class PageController {
     return null;
   }
 
-  public SearchResult<Page> searchPages(OrganizationId organizationId, String queryString, PageSortBy sortOrder, SortDir sortDir, Long firstResult, Long maxResults) {
+  public SearchResult<Page> searchPages(OrganizationId organizationId, String queryString, PageSortBy sortBy, SortDir sortDir, Long firstResult, Long maxResults) {
     OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(organizationId, KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiOrganizationId == null) {
       logger.severe(String.format("Failed to translate organization %s into Kunta API id", organizationId.toString()));
       return SearchResult.emptyResult();
     }
     
-    SearchResult<PageId> searchResult = pageSearcher.searchPages(kuntaApiOrganizationId.getId(), queryString, sortOrder, sortDir, firstResult, maxResults);
+    SearchResult<PageId> searchResult = pageSearcher.searchPages(kuntaApiOrganizationId.getId(), queryString, sortBy, sortDir, firstResult, maxResults);
     if (searchResult != null) {
       List<Page> pages = new ArrayList<>(searchResult.getResult().size());
       
