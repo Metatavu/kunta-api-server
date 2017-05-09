@@ -16,6 +16,8 @@ import org.elasticsearch.search.sort.SortOrder;
 
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceLocationServiceChannelId;
+import fi.otavanopisto.kuntaapi.server.integrations.ServiceLocationServiceChannelSortOrder;
+import fi.otavanopisto.kuntaapi.server.integrations.SortDir;
 
 @ApplicationScoped
 public class ServiceLocationServiceChannelSearcher {
@@ -30,7 +32,7 @@ public class ServiceLocationServiceChannelSearcher {
   @Inject
   private IndexReader indexReader;
 
-  public SearchResult<ServiceLocationServiceChannelId> searchServiceLocationServiceChannels(OrganizationId kuntaApiOrganizationId, String queryString, Long firstResult, Long maxResults) {
+  public SearchResult<ServiceLocationServiceChannelId> searchServiceLocationServiceChannels(OrganizationId kuntaApiOrganizationId, String queryString, ServiceLocationServiceChannelSortOrder sortOrder, SortDir sortDir, Long firstResult, Long maxResults) {
     BoolQueryBuilder query = boolQuery();
 
     if (kuntaApiOrganizationId != null) {
@@ -41,10 +43,10 @@ public class ServiceLocationServiceChannelSearcher {
       query.must(queryStringQuery(queryString));
     }
     
-    return searchServiceLocationServiceChannels(query, firstResult, maxResults);
+    return searchServiceLocationServiceChannels(query, sortOrder, sortDir, firstResult, maxResults);
   }
    
-  private SearchResult<ServiceLocationServiceChannelId> searchServiceLocationServiceChannels(QueryBuilder queryBuilder, Long firstResult, Long maxResults) {
+  private SearchResult<ServiceLocationServiceChannelId> searchServiceLocationServiceChannels(QueryBuilder queryBuilder, ServiceLocationServiceChannelSortOrder sortOrder, SortDir sortDir, Long firstResult, Long maxResults) {
     if (!indexReader.isEnabled()) {
       logger.warning("Could not search service location service channels. Search functions are disabled");
       return null;
@@ -57,8 +59,16 @@ public class ServiceLocationServiceChannelSearcher {
     
     requestBuilder.setFrom(firstResult != null ? firstResult.intValue() : 0);
     requestBuilder.setSize(maxResults != null ? maxResults.intValue() : IndexReader.MAX_RESULTS);
-    requestBuilder.addSort(AbstractIndexHander.ORDER_INDEX_FIELD, SortOrder.ASC);
-      
+    
+    SortOrder order = sortDir != null ? sortDir.toElasticSortOrder() : SortOrder.ASC;
+    if (sortOrder == ServiceLocationServiceChannelSortOrder.SCORE) {
+      requestBuilder
+        .addSort("_score", order)
+        .addSort(AbstractIndexHander.ORDER_INDEX_FIELD, order);
+    } else {
+      requestBuilder.addSort(AbstractIndexHander.ORDER_INDEX_FIELD, order);
+    }
+    
     return indexReader.search(requestBuilder, ServiceLocationServiceChannelId.class, SERVICE_LOCATION_SERVICE_CHANNEL_ID);
   }
 

@@ -12,6 +12,8 @@ import fi.otavanopisto.kuntaapi.server.controllers.ServiceController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceLocationServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
+import fi.otavanopisto.kuntaapi.server.integrations.ServiceLocationServiceChannelSortOrder;
+import fi.otavanopisto.kuntaapi.server.integrations.SortDir;
 
 public class ServiceLocationServiceChannelsApiImpl extends ServiceLocationServiceChannelsApi {
 
@@ -60,9 +62,12 @@ public class ServiceLocationServiceChannelsApiImpl extends ServiceLocationServic
       return validationResponse;
     }
     
+    ServiceLocationServiceChannelSortOrder sortOrder = ServiceLocationServiceChannelSortOrder.NATURAL;
+    SortDir sortDir = SortDir.ASC;
+    
     OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     if (search != null || organizationId != null) {
-      return restResponseBuilder.buildResponse(serviceController.searchServiceLocationServiceChannels(organizationId, search, firstResult, maxResults), request);
+      return restResponseBuilder.buildResponse(serviceController.searchServiceLocationServiceChannels(organizationId, search, sortOrder, sortDir, firstResult, maxResults), request);
     }
     
     return restResponseBuilder.buildResponse(serviceController.listServiceLocationServiceChannels(firstResult, maxResults), null, request);
