@@ -1,27 +1,20 @@
 package fi.otavanopisto.kuntaapi.server.index;
 
 import static org.elasticsearch.index.query.QueryBuilders.boolQuery;
-import static org.elasticsearch.index.query.QueryBuilders.termQuery;
 import static org.elasticsearch.index.query.QueryBuilders.queryStringQuery;
+import static org.elasticsearch.index.query.QueryBuilders.termQuery;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 import java.util.logging.Logger;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
-import org.apache.commons.lang3.StringUtils;
 import org.elasticsearch.action.search.SearchRequestBuilder;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilder;
-import org.elasticsearch.search.SearchHit;
-import org.elasticsearch.search.SearchHitField;
 import org.elasticsearch.search.sort.SortOrder;
 
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
-import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 
 @ApplicationScoped
 public class OrganizationSearcher {
@@ -82,23 +75,8 @@ public class OrganizationSearcher {
     requestBuilder.setFrom(firstResult != null ? firstResult.intValue() : 0);
     requestBuilder.setSize(maxResults != null ? maxResults.intValue() : IndexReader.MAX_RESULTS);
     requestBuilder.addSort(AbstractIndexHander.ORDER_INDEX_FIELD, SortOrder.ASC);
-      
-    return new SearchResult<>(getOrganizationIds(indexReader.search(requestBuilder)));
-  }
-  
-  private List<OrganizationId> getOrganizationIds(SearchHit[] hits) {
-    List<OrganizationId> result = new ArrayList<>(hits.length);
     
-    for (SearchHit hit : hits) {
-      Map<String, SearchHitField> fields = hit.getFields(); 
-      SearchHitField searchHitField = fields.get(ORGANIZATION_ID_FIELD);
-      String organizationId = searchHitField.getValue();
-      if (StringUtils.isNotBlank(organizationId)) {
-        result.add(new OrganizationId(KuntaApiConsts.IDENTIFIER_NAME, organizationId));
-      }
-    }
-    
-    return result;
+    return indexReader.search(requestBuilder, OrganizationId.class, ORGANIZATION_ID_FIELD);
   }
 
 }

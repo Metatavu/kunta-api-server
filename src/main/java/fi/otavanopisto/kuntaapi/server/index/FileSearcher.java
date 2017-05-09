@@ -4,21 +4,15 @@ import static org.elasticsearch.index.query.QueryBuilders.boolQuery;
 import static org.elasticsearch.index.query.QueryBuilders.matchQuery;
 import static org.elasticsearch.index.query.QueryBuilders.queryStringQuery;
 
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
-import java.util.Map;
 import java.util.logging.Logger;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
-import org.apache.commons.lang3.StringUtils;
 import org.elasticsearch.action.search.SearchRequestBuilder;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilder;
-import org.elasticsearch.search.SearchHit;
-import org.elasticsearch.search.SearchHitField;
 import org.elasticsearch.search.sort.SortOrder;
 
 import fi.otavanopisto.kuntaapi.server.id.FileId;
@@ -48,7 +42,7 @@ public class FileSearcher {
     OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(organizationId, KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiOrganizationId == null) {
       logger.severe(String.format("Failed to translate organization %s into Kunta API id", organizationId.toString()));
-      return new SearchResult<>(Collections.emptyList());
+      return new SearchResult<>(Collections.emptyList(), 0);
     }
 
     BoolQueryBuilder query = boolQuery()
@@ -62,7 +56,7 @@ public class FileSearcher {
       PageId kuntaApiPageId = idController.translatePageId(pageId, KuntaApiConsts.IDENTIFIER_NAME);
       if (kuntaApiPageId == null) {
         logger.severe(String.format("Failed to translate page %s into Kunta API id", pageId.toString()));
-        return new SearchResult<>(Collections.emptyList());
+        return new SearchResult<>(Collections.emptyList(), 0);
       }
       
       query.must(matchQuery(PAGE_ID_FIELD, kuntaApiPageId.getId()));
@@ -86,26 +80,7 @@ public class FileSearcher {
     requestBuilder.setSize(maxResults != null ? maxResults.intValue() : IndexReader.MAX_RESULTS);
     requestBuilder.addSort(AbstractIndexHander.ORDER_INDEX_FIELD, SortOrder.ASC);
     
-    return new SearchResult<>(getFileIds(indexReader.search(requestBuilder)));
+    return indexReader.search(requestBuilder, FileId.class, FILE_ID_FIELD, ORGANIZATION_ID_FIELD);
   }
-  
-  private List<FileId> getFileIds(SearchHit[] hits) {
-    List<FileId> result = new ArrayList<>(hits.length);
-    
-    for (SearchHit hit : hits) {
-      Map<String, SearchHitField> fields = hit.getFields(); 
-      SearchHitField fileHitField = fields.get(FILE_ID_FIELD);
-      SearchHitField organizationHitField = fields.get(ORGANIZATION_ID_FIELD);
-      
-      String fileId = fileHitField.getValue();
-      
-      if (StringUtils.isNotBlank(fileId)) {
-        OrganizationId organizationId = new OrganizationId(KuntaApiConsts.IDENTIFIER_NAME, organizationHitField.getValue());
-        result.add(new FileId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, fileId));
-      }
-    }
-    
-    return result;
-  }
-   
+
 }

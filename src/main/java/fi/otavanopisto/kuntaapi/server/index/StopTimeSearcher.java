@@ -4,26 +4,17 @@ import static org.elasticsearch.index.query.QueryBuilders.boolQuery;
 import static org.elasticsearch.index.query.QueryBuilders.rangeQuery;
 import static org.elasticsearch.index.query.QueryBuilders.termQuery;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
-import org.apache.commons.lang3.StringUtils;
 import org.elasticsearch.action.search.SearchRequestBuilder;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilder;
-import org.elasticsearch.search.SearchHit;
-import org.elasticsearch.search.SearchHitField;
 import org.elasticsearch.search.sort.SortOrder;
 
-import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportStopTimeId;
-import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.PublicTransportStopTimeSortBy;
 import fi.otavanopisto.kuntaapi.server.integrations.SortDir;
 
@@ -101,29 +92,8 @@ public class StopTimeSearcher {
     } else {
       requestBuilder.addSort(AbstractIndexHander.ORDER_INDEX_FIELD, SortOrder.ASC);
     }
-      
-    return new SearchResult<>(getStopTimeIds(indexReader.search(requestBuilder)));
-  }
-  
-  private List<PublicTransportStopTimeId> getStopTimeIds(SearchHit[] hits) {
-    List<PublicTransportStopTimeId> result = new ArrayList<>(hits.length);
     
-    for (SearchHit hit : hits) {
-      Map<String, SearchHitField> fields = hit.getFields(); 
-      String stopTimeId = hit.getId();
-      
-      SearchHitField organizationIdField = fields.get(ORGANIZATION_ID_FIELD);
-      if (organizationIdField != null) {
-        String organizationId = organizationIdField.getValue();
-        if (StringUtils.isNotBlank(organizationId)) {
-          result.add(new PublicTransportStopTimeId(new OrganizationId(KuntaApiConsts.IDENTIFIER_NAME, organizationId), KuntaApiConsts.IDENTIFIER_NAME, stopTimeId));
-        }
-      } else {
-        logger.log(Level.SEVERE, () -> String.format("Could not find organization from stop time %s", stopTimeId));
-      }
-    }
-    
-    return result;
+    return indexReader.search(requestBuilder, PublicTransportStopTimeId.class, "_id");
   }
 
 }

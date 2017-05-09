@@ -4,24 +4,16 @@ import static org.elasticsearch.index.query.QueryBuilders.boolQuery;
 import static org.elasticsearch.index.query.QueryBuilders.matchQuery;
 import static org.elasticsearch.index.query.QueryBuilders.queryStringQuery;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 import java.util.logging.Logger;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
-import org.apache.commons.lang3.StringUtils;
 import org.elasticsearch.action.search.SearchRequestBuilder;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilder;
-import org.elasticsearch.search.SearchHit;
-import org.elasticsearch.search.SearchHitField;
 
 import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
-import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
-import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.NewsSortOrder;
 import fi.otavanopisto.kuntaapi.server.integrations.SortDir;
 
@@ -75,26 +67,7 @@ public class NewsArticleSearcher {
       requestBuilder.addSort(AbstractIndexHander.ORDER_INDEX_FIELD, sortDir.toElasticSortOrder());
     }
     
-    return new SearchResult<>(getNewsArticleIds(indexReader.search(requestBuilder)));
-  }
-  
-  private List<NewsArticleId> getNewsArticleIds(SearchHit[] hits) {
-    List<NewsArticleId> result = new ArrayList<>(hits.length);
-    
-    for (SearchHit hit : hits) {
-      Map<String, SearchHitField> fields = hit.getFields(); 
-      SearchHitField newsArticleHitField = fields.get(MEWS_ARTICLE_ID_FIELD);
-      SearchHitField organizationHitField = fields.get(ORGANIZATION_ID_FIELD);
-      
-      String newsArticleId = newsArticleHitField.getValue();
-      
-      if (StringUtils.isNotBlank(newsArticleId)) {
-        OrganizationId organizationId = new OrganizationId(KuntaApiConsts.IDENTIFIER_NAME, organizationHitField.getValue());
-        result.add(new NewsArticleId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, newsArticleId));
-      }
-    }
-    
-    return result;
+    return indexReader.search(requestBuilder, NewsArticleId.class, MEWS_ARTICLE_ID_FIELD, ORGANIZATION_ID_FIELD);
   }
    
 }
