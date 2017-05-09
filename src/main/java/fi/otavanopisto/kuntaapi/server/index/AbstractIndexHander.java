@@ -32,7 +32,7 @@ public abstract class AbstractIndexHander {
   private static final String DEFAULT_INDEX = "kunta-api";
   private static final String DEFAULT_CLUSTERNAME = "elasticsearch";
   private static final String[] DEFAULT_HOSTS = new String[] {
-    "localhost:9300"
+    "localhost:9200"
   };
 
   @Inject
