@@ -53,6 +53,14 @@ public class NewsArticleSearcher {
     
     return searchNewsArticles(query, firstResult, maxResults);
   }
+
+  public SearchResult<NewsArticleId> searchNewsArticlesByFreeText(String organizationId, String search, Long firstResult, Long maxResults) {
+    BoolQueryBuilder query = boolQuery()
+      .must(matchQuery(ORGANIZATION_ID_FIELD, organizationId))
+      .must(queryStringQuery(search));
+    
+    return searchNewsArticles(query, firstResult, maxResults);
+  }
   
   private SearchResult<NewsArticleId> searchNewsArticles(QueryBuilder queryBuilder, Long firstResult, Long maxResults) {
     if (!indexReader.isEnabled()) {
