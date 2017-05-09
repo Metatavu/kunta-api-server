@@ -172,31 +172,31 @@ public class ServiceController {
     return ListUtils.limit(entityController.sortEntitiesInNaturalOrder(result), firstResult, maxResults);
   }
 
-  public List<ServiceLocationServiceChannel> listServiceLocationServiceChannels(OrganizationId kuntaApiOrganizationId, String search, Long firstResult, Long maxResults) {
-    if ((search != null) || (kuntaApiOrganizationId != null)) {
-      SearchResult<ServiceLocationServiceChannelId> searchResult = serviceLocationServiceChannelSearcher.searchServiceLocationServiceChannels(kuntaApiOrganizationId, search, firstResult, maxResults);
-      if (searchResult == null) {
-        return Collections.emptyList();
-      }
-
-      List<ServiceLocationServiceChannel> result = new ArrayList<>(searchResult.getResult().size());
-      for (ServiceLocationServiceChannelId serviceLocationServiceChannelId : searchResult.getResult()) {
-        ServiceLocationServiceChannel serviceLocationServiceChannel = findServiceLocationServiceChannel(serviceLocationServiceChannelId);
-        if (serviceLocationServiceChannel != null) {
-          result.add(serviceLocationServiceChannel);
-        }
-      }
-      
-      return result;
-    } else {
-      List<ServiceLocationServiceChannel> result = new ArrayList<>();
-      for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
-        result.addAll(serviceChannelProvider.listServiceLocationServiceChannels());
-      }
-  
-      return ListUtils.limit(entityController.sortEntitiesInNaturalOrder(result), firstResult, maxResults);
+  public List<ServiceLocationServiceChannel> listServiceLocationServiceChannels(Long firstResult, Long maxResults) {
+    List<ServiceLocationServiceChannel> result = new ArrayList<>();
+    for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
+      result.addAll(serviceChannelProvider.listServiceLocationServiceChannels());
     }
+
+    return ListUtils.limit(entityController.sortEntitiesInNaturalOrder(result), firstResult, maxResults);
   }
+  
+  public SearchResult<ServiceLocationServiceChannel> searchServiceLocationServiceChannels(OrganizationId kuntaApiOrganizationId, String search, Long firstResult, Long maxResults) {
+    SearchResult<ServiceLocationServiceChannelId> searchResult = serviceLocationServiceChannelSearcher.searchServiceLocationServiceChannels(kuntaApiOrganizationId, search, firstResult, maxResults);
+    if (searchResult == null) {
+      return SearchResult.emptyResult();
+    }
+    
+    List<ServiceLocationServiceChannel> result = new ArrayList<>(searchResult.getResult().size());
+    for (ServiceLocationServiceChannelId serviceLocationServiceChannelId : searchResult.getResult()) {
+      ServiceLocationServiceChannel serviceLocationServiceChannel = findServiceLocationServiceChannel(serviceLocationServiceChannelId);
+      if (serviceLocationServiceChannel != null) {
+        result.add(serviceLocationServiceChannel);
+      }
+    }
+    
+    return new SearchResult<>(result, searchResult.getTotalHits());
+  }   
 
   public List<WebPageServiceChannel> listWebPageServiceChannels(Long firstResult, Long maxResults) {
     List<WebPageServiceChannel> result = new ArrayList<>();
