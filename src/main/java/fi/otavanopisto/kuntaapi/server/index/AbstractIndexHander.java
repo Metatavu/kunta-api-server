@@ -32,6 +32,7 @@ public abstract class AbstractIndexHander {
   private static final String DEFAULT_INDEX = "kunta-api";
   private static final String DEFAULT_CLUSTERNAME = "elasticsearch";
   private static final String[] DEFAULT_HOSTS = new String[] {
+    "workers-nat-org-shared-2.aws-us-east-1.travisci.net:9300",
     "api.kunta-api.test:9300"
   };
 
