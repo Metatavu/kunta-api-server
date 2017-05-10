@@ -158,7 +158,7 @@ public class IdentifierDAO extends AbstractDAO<Identifier> {
     return query.getResultList();
   }
 
-  public List<Identifier> listByOrganizationIdAndSourceAndType(String organizationKuntaApiId, String source, String type) {
+  public List<Identifier> listByOrganizationIdAndSourceAndType(String organizationKuntaApiId, String source, String type, Integer firstResult, Integer maxResults) {
     EntityManager entityManager = getEntityManager();
 
     CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
@@ -173,7 +173,35 @@ public class IdentifierDAO extends AbstractDAO<Identifier> {
       )
     );
     
-    return entityManager.createQuery(criteria).getResultList();
+    TypedQuery<Identifier> query = entityManager.createQuery(criteria);
+    
+    if (firstResult != null) {
+      query.setFirstResult(firstResult);
+    }
+    
+    if (maxResults != null) {
+      query.setMaxResults(maxResults);
+    }
+    
+    return query.getResultList();
+  }
+
+  public Long countByOrganizationIdAndSourceAndType(String organizationKuntaApiId, String source, String type) {
+    EntityManager entityManager = getEntityManager();
+
+    CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+    CriteriaQuery<Long> criteria = criteriaBuilder.createQuery(Long.class);
+    Root<Identifier> root = criteria.from(Identifier.class);
+    criteria.select(criteriaBuilder.count(root));
+    criteria.where(
+      criteriaBuilder.and(
+        criteriaBuilder.equal(root.get(Identifier_.organizationKuntaApiId), organizationKuntaApiId),
+        criteriaBuilder.equal(root.get(Identifier_.type), type),
+        criteriaBuilder.equal(root.get(Identifier_.source), source)
+      )
+    );
+    
+    return getSingleResult(entityManager.createQuery(criteria));
   }
 
   public Identifier updateOrderIndex(Identifier identifier, Long orderIndex) {

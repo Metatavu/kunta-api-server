@@ -13,6 +13,7 @@ public class OrganizationEntityUpdateTask extends AbstractTask {
   private static final long serialVersionUID = -1860630132331504727L;
   
   private OrganizationId organizationId;
+  private int offset;
   
   /**
    * Zero-argument constructor
@@ -26,9 +27,10 @@ public class OrganizationEntityUpdateTask extends AbstractTask {
    * 
    * @param organizationId organization id
    */
-  public OrganizationEntityUpdateTask(OrganizationId organizationId) {
+  public OrganizationEntityUpdateTask(OrganizationId organizationId, int offset) {
     super();
     this.organizationId = organizationId;
+    this.offset = offset;
   }
 
   public OrganizationId getOrganizationId() {
@@ -37,6 +39,14 @@ public class OrganizationEntityUpdateTask extends AbstractTask {
   
   public void setOrganizationId(OrganizationId organizationId) {
     this.organizationId = organizationId;
+  }
+  
+  public int getOffset() {
+    return offset;
+  }
+  
+  public void setOffset(int offset) {
+    this.offset = offset;
   }
   
 }

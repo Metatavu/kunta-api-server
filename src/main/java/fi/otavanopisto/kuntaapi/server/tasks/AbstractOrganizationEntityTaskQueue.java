@@ -16,13 +16,18 @@ public abstract class AbstractOrganizationEntityTaskQueue extends AbstractTaskQu
   public abstract String getSource();
   public abstract String getEntity();
   
+  
   @Override
   public String getName() {
     return String.format("%s-organization-%s-entities", getSource(), getEntity());
   }
+
+  public void enqueueTask(OrganizationId organizationId, int offset) {
+    enqueueTask(false, new OrganizationEntityUpdateTask(organizationId, offset));
+  }
   
   public void enqueueTask(OrganizationId organizationId) {
-    enqueueTask(false, new OrganizationEntityUpdateTask(organizationId));
+    enqueueTask(organizationId, 0);
   }
   
   public void enqueueTasks(List<OrganizationId> organizationIds) {
