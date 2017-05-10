@@ -19,9 +19,9 @@ import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
 import fi.metatavu.kuntaapi.server.rest.model.Service;
 import fi.metatavu.kuntaapi.server.rest.model.ServiceOrganization;
 import fi.metatavu.ptv.client.ApiResponse;
-import fi.metatavu.ptv.client.model.V5VmOpenApiService;
 import fi.metatavu.ptv.client.model.V4VmOpenApiServiceOrganization;
 import fi.metatavu.ptv.client.model.V4VmOpenApiServiceServiceChannel;
+import fi.metatavu.ptv.client.model.V5VmOpenApiService;
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
@@ -46,6 +46,8 @@ import fi.otavanopisto.kuntaapi.server.integrations.ptv.PtvIdFactory;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.PtvServiceResourceContainer;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.PtvTranslator;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.client.PtvApi;
+import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.ServiceChannelTasksQueue;
+import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.ServiceChannelUpdateTask;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.ServiceIdTaskQueue;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
@@ -100,6 +102,9 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
   
   @Inject
   private Event<IndexRemoveRequest> indexRemoveRequest;
+
+  @Inject
+  private ServiceChannelTasksQueue serviceChannelTasksQueue;
 
   @Override
   public String getName() {
@@ -223,6 +228,7 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
     } 
     
     logger.log(Level.WARNING, () -> String.format("Failed to resolve service channel %s type", serviceChannelId));
+    serviceChannelTasksQueue.enqueueTask(true, new ServiceChannelUpdateTask(serviceChannelId, null));
   }
   
   private List<ServiceOrganization> translateServiceOrganizations(List<V4VmOpenApiServiceOrganization> ptvServiceOrganizations) {
