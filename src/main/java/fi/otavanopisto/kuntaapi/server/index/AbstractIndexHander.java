@@ -9,13 +9,8 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.inject.Inject;
 
-import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
 import org.elasticsearch.client.Client;
 import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.common.settings.Settings;
@@ -27,7 +22,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
-import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpClient;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 
@@ -47,18 +41,12 @@ public abstract class AbstractIndexHander {
   @Inject
   private Logger logger;
   
-  @Inject
-  private GenericHttpClient httpClient;
-  
   private String index;
   private TransportClient client;
   
   
   @PostConstruct
   public void init() {
-    debugPrint("http://localhost:9300");
-    debugPrint("http://localhost:9200");
-    
     String[] hosts = systemSettingController.getSettingValues(KuntaApiConsts.SYSTEM_SETTING_ELASTIC_SEARCH_HOSTS, DEFAULT_HOSTS);
     String clusterName = systemSettingController.getSettingValue(KuntaApiConsts.SYSTEM_SETTING_ELASTIC_CLUSTER_NAME, DEFAULT_CLUSTERNAME);
     index = systemSettingController.getSettingValue(KuntaApiConsts.SYSTEM_SETTING_ELASTIC_INDEX, DEFAULT_INDEX);
@@ -66,24 +54,6 @@ public abstract class AbstractIndexHander {
     setup();
   }
   
-  private void debugPrint(String url) {
-    try {
-      CloseableHttpClient httpClient = HttpClients.createDefault();
-      try {
-        HttpGet request = new HttpGet(url);
-        try (CloseableHttpResponse response = httpClient.execute(request)) {
-          String content = IOUtils.toString(response.getEntity().getContent());
-          System.out.println(String.format("%s replied %s", content));
-        }
-        
-      } finally {
-        httpClient.close();
-      }
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-  }
-
   @PreDestroy
   public void deinit() {
     if (client != null) {
@@ -121,11 +91,6 @@ public abstract class AbstractIndexHander {
   private TransportClient createTransportClient(String[] hosts, String clusterName) {
     try {
       TransportClient transportClient;
-      
-      
-      
-      System.out.println(String.format("Cluster %s, %s", clusterName, StringUtils.join(hosts, ",") ));
-      
       Settings settings = Settings.builder()
         .put("cluster.name", clusterName)
         .build();

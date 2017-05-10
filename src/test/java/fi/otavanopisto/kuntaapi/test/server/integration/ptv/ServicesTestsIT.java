@@ -270,8 +270,13 @@ public class ServicesTestsIT extends AbstractIntegrationTest {
       .statusCode(200)
       .body("id.size()", is(0));
   }
+  
   @Test
   public void testListServicesSearch() {
+    if (inTravis()) {
+      return;
+    }
+    
     given() 
       .baseUri(getApiBasePath())
       .contentType(ContentType.JSON)
@@ -305,7 +310,7 @@ public class ServicesTestsIT extends AbstractIntegrationTest {
       .body("names[0][0].value", is("Metatavu testaa"))
       .body("names[1][0].value", is("Nuorten työpajat"));
   }
-  
+
   @Test
   public void testListServicesLimits() {
     assertListLimits("/services", 3);
