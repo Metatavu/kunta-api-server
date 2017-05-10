@@ -181,6 +181,49 @@ public class PostTestsIT extends AbstractIntegrationTest {
       .statusCode(200)
       .body("id.size()", is(0));
   } 
+  
+  @Test
+  public void testListPostsSearch() {
+    if (inTravis()) {
+      return;
+    }
+    
+    String organizationId = getOrganizationId(0);
+    String search = "(Test page*)|(\"Test page 3\")";
+    
+    given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get(String.format("/organizations/{organizationId}/news?search=%s", search), organizationId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(2))
+      .body("slug[0]", is("test-2"))
+      .body("slug[1]", is("test-3"));
+    
+    given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get(String.format("/organizations/{organizationId}/news?search=%s&sortBy=SCORE&sortDir=DESC", search), organizationId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(2))
+      .body("slug[0]", is("test-3"))
+      .body("slug[1]", is("test-2"));
+    
+    given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get(String.format("/organizations/{organizationId}/news?search=%s&sortBy=SCORE&sortDir=ASC", search), organizationId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(2))
+      .body("slug[0]", is("test-2"))
+      .body("slug[1]", is("test-3"));
+  }
     
   @Test
   public void testOrganizationPostsNotFound() throws InterruptedException {
