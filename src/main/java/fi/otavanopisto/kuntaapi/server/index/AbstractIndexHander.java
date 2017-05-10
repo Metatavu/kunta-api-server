@@ -126,7 +126,9 @@ public abstract class AbstractIndexHander {
   
   private InetAddress resolveInetAddress(String name) {
     try {
-      return InetAddress.getByName(name);
+      InetAddress address = InetAddress.getByName(name);
+      System.out.println(String.format("IP: %s", address.getHostAddress()));
+      return address;
     } catch (UnknownHostException e) {
       logger.log(Level.SEVERE, String.format("Could resolve address %s, falling back to localhost", name), e);
     }
