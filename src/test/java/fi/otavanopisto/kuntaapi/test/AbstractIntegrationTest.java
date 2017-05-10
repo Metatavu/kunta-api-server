@@ -759,6 +759,10 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
       .body("id.size()", is(0));
   }
   
+  protected boolean inTravis() {
+    return "true".equalsIgnoreCase(System.getenv("TRAVIS"));
+  }
+  
   private void setLog4jLevel(Level level) {
     LoggerContext loggerContext = (LoggerContext) LogManager.getContext(false);
     Configuration config = loggerContext.getConfiguration();

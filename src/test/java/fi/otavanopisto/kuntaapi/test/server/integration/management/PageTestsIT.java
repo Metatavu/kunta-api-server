@@ -179,6 +179,49 @@ public class PageTestsIT extends AbstractIntegrationTest {
   }
   
   @Test
+  public void testListPagesSearch() {
+    if (inTravis()) {
+      return;
+    }
+    
+    String organizationId = getOrganizationId(0);
+    String search = "(search*)|(Bertha)";
+    
+    given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get(String.format("/organizations/{organizationId}/pages?search=%s", search), organizationId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(2))
+      .body("slug[0]", is("abraham"))
+      .body("slug[1]", is("bertha"));
+    
+    given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get(String.format("/organizations/{organizationId}/pages?search=%s&sortBy=SCORE&sortDir=DESC", search), organizationId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(2))
+      .body("slug[0]", is("bertha"))
+      .body("slug[1]", is("abraham"));
+    
+    given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get(String.format("/organizations/{organizationId}/pages?search=%s&sortBy=SCORE&sortDir=ASC", search), organizationId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(2))
+      .body("slug[0]", is("abraham"))
+      .body("slug[1]", is("bertha"));
+  }
+  
+  @Test
   public void testListPagesByPath() {
     given() 
       .baseUri(getApiBasePath())

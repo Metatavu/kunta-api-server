@@ -67,7 +67,7 @@ public class LocalizationUtils {
     }
     
     for (LocalizedValue item : items) {
-      if (((type == null) || (item.getType().equals(type))) || StringUtils.equals(language, item.getLanguage())) {
+      if (((type == null) || (item.getType().equals(type))) && StringUtils.equals(language, item.getLanguage())) {
         return item.getValue();
       }
     }

@@ -18,11 +18,11 @@ import fi.metatavu.kuntaapi.server.rest.model.PhoneServiceChannel;
 import fi.metatavu.kuntaapi.server.rest.model.PrintableFormServiceChannel;
 import fi.metatavu.kuntaapi.server.rest.model.ServiceLocationServiceChannel;
 import fi.metatavu.kuntaapi.server.rest.model.WebPageServiceChannel;
+import fi.metatavu.ptv.client.model.V4VmOpenApiWebPageChannel;
 import fi.metatavu.ptv.client.model.V5VmOpenApiElectronicChannel;
 import fi.metatavu.ptv.client.model.V5VmOpenApiPhoneChannel;
 import fi.metatavu.ptv.client.model.V5VmOpenApiPrintableFormChannel;
 import fi.metatavu.ptv.client.model.V5VmOpenApiServiceLocationChannel;
-import fi.metatavu.ptv.client.model.V4VmOpenApiWebPageChannel;
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
@@ -395,7 +395,7 @@ public class PtvServiceChannelEntityUpdater extends EntityUpdater {
       
       indexableServiceLocationServiceChannel.setDescription(LocalizationUtils.getLocaleValue(descriptions, "ShortDescription", language));
       indexableServiceLocationServiceChannel.setLanguage(language);
-      indexableServiceLocationServiceChannel.setName(LocalizationUtils.getLocaleValue(descriptions, "Name", language));
+      indexableServiceLocationServiceChannel.setName(LocalizationUtils.getLocaleValue(names, "Name", language));
       indexableServiceLocationServiceChannel.setOrderIndex(orderIndex);
       indexableServiceLocationServiceChannel.setOrganizationId(serviceLocationServiceChannel.getOrganizationId());
       indexableServiceLocationServiceChannel.setServiceLocationServiceChannelId(serviceLocationServiceChannel.getId());

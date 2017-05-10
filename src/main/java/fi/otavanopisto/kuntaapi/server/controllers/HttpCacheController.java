@@ -69,17 +69,21 @@ public class HttpCacheController {
   }
   
   public Response getNotModified(Request request, List<String> ids) {
+    ResponseBuilder responseBuilder = notModified(request, ids);
+    if (responseBuilder != null) {
+      return responseBuilder.build();
+    }
+    
+    return null;
+  }
+  
+  public ResponseBuilder notModified(Request request, List<String> ids) {
     EntityTag tag = getEntityTag(ids);
     if (tag == null) {
       return null;
     }
     
-    ResponseBuilder builder = request.evaluatePreconditions(tag);
-    if (builder != null) {
-      return builder.build();
-    }
-   
-    return null;
+   return request.evaluatePreconditions(tag);
   }
 
   public Response sendModified(Object entity, String id) {
@@ -97,10 +101,10 @@ public class HttpCacheController {
       .build();
   }
   
-  public Response sendModified(Object entity, List<String> ids) {
+  public ResponseBuilder modified(Object entity, List<String> ids) {
     EntityTag tag = getEntityTag(ids);
     if (tag == null) {
-      return Response.ok(entity).build();
+      return Response.ok(entity);
     }
     
     CacheControl cacheControl = new CacheControl();
@@ -108,8 +112,11 @@ public class HttpCacheController {
     
     return Response.ok(entity)
       .cacheControl(cacheControl)
-      .tag(tag)
-      .build();
+      .tag(tag);
+  }
+  
+  public Response sendModified(Object entity, List<String> ids) {
+    return modified(entity, ids).build();
   }
 
   public Response streamModified(byte[] data, String type, BaseId baseId) {

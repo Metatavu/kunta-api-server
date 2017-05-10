@@ -179,4 +179,47 @@ public class OrganizationsTestsIT extends AbstractIntegrationTest {
       .body("services[1][0].provisionType", nullValue())
       .body("services[1][0].webPages.size()", is(0));
   } 
+  
+  @Test
+  public void testListOrganizationsSearch() {
+    if (inTravis()) {
+      return;
+    }
+    
+    String search = "(M*)|(Mi*)";
+    
+    given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get(String.format("/organizations?search=%s", search))
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(2))
+      .body("names[0][0].value", is("Mäntyharjun kunta"))
+      .body("names[1][0].value", is("Mikkelin kaupunki"));
+    
+    given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get(String.format("/organizations?search=%s&sortBy=SCORE&sortDir=DESC", search))
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(2))
+      .body("names[0][0].value", is("Mikkelin kaupunki"))
+      .body("names[1][0].value", is("Mäntyharjun kunta"));
+    
+    given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get(String.format("/organizations?search=%s&sortBy=SCORE&sortDir=ASC", search))
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(2))
+      .body("names[0][0].value", is("Mäntyharjun kunta"))
+      .body("names[1][0].value", is("Mikkelin kaupunki"));
+  }
+
 }

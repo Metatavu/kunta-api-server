@@ -4,25 +4,20 @@ import static org.elasticsearch.index.query.QueryBuilders.boolQuery;
 import static org.elasticsearch.index.query.QueryBuilders.matchQuery;
 import static org.elasticsearch.index.query.QueryBuilders.queryStringQuery;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 import java.util.logging.Logger;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
-import org.apache.commons.lang3.StringUtils;
 import org.elasticsearch.action.search.SearchRequestBuilder;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilder;
-import org.elasticsearch.search.SearchHit;
-import org.elasticsearch.search.SearchHitField;
+import org.elasticsearch.search.sort.SortBuilders;
 import org.elasticsearch.search.sort.SortOrder;
 
-import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
-import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
+import fi.otavanopisto.kuntaapi.server.integrations.PageSortBy;
+import fi.otavanopisto.kuntaapi.server.integrations.SortDir;
 
 @ApplicationScoped
 public class PageSearcher {
@@ -37,15 +32,15 @@ public class PageSearcher {
   @Inject
   private IndexReader indexReader;
 
-  public SearchResult<PageId> searchPages(String organizationId, String queryString, Long firstResult, Long maxResults) {
+  public SearchResult<PageId> searchPages(String organizationId, String queryString, PageSortBy sortOrder, SortDir sortDir, Long firstResult, Long maxResults) {
     BoolQueryBuilder query = boolQuery()
       .must(matchQuery(ORGANIZATION_ID_FIELD, organizationId))
       .must(queryStringQuery(queryString));
     
-    return searchPages(query, firstResult, maxResults);
+    return searchPages(query, sortOrder, sortDir, firstResult, maxResults);
   }
   
-  private SearchResult<PageId> searchPages(QueryBuilder queryBuilder, Long firstResult, Long maxResults) {
+  private SearchResult<PageId> searchPages(QueryBuilder queryBuilder, PageSortBy sortBy, SortDir sortDir, Long firstResult, Long maxResults) {
     if (!indexReader.isEnabled()) {
       logger.warning("Could not execute search. Search functions are disabled");
       return null;
@@ -58,28 +53,19 @@ public class PageSearcher {
     
     requestBuilder.setFrom(firstResult != null ? firstResult.intValue() : 0);
     requestBuilder.setSize(maxResults != null ? maxResults.intValue() : IndexReader.MAX_RESULTS);
-    requestBuilder.addSort(AbstractIndexHander.ORDER_INDEX_FIELD, SortOrder.ASC);
-      
-    return new SearchResult<>(getPageIds(indexReader.search(requestBuilder)));
-  }
-  
-  private List<PageId> getPageIds(SearchHit[] hits) {
-    List<PageId> result = new ArrayList<>(hits.length);
     
-    for (SearchHit hit : hits) {
-      Map<String, SearchHitField> fields = hit.getFields(); 
-      SearchHitField pageHitField = fields.get(PAGE_ID_FIELD);
-      SearchHitField organizationHitField = fields.get(ORGANIZATION_ID_FIELD);
-      
-      String pageId = pageHitField.getValue();
-      
-      if (StringUtils.isNotBlank(pageId)) {
-        OrganizationId organizationId = new OrganizationId(KuntaApiConsts.IDENTIFIER_NAME, organizationHitField.getValue());
-        result.add(new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, pageId));
-      }
+    SortOrder order = sortDir != null ? sortDir.toElasticSortOrder() : SortOrder.ASC;
+    switch (sortBy) {
+      case SCORE:
+        requestBuilder.addSort(SortBuilders.scoreSort().order(order));
+      break;
+      case NATURAL:
+      default:
+        requestBuilder.addSort(SortBuilders.fieldSort(AbstractIndexHander.ORDER_INDEX_FIELD).order(order));
+      break;
     }
-    
-    return result;
+      
+    return indexReader.search(requestBuilder, PageId.class, PAGE_ID_FIELD, ORGANIZATION_ID_FIELD);
   }
    
 }

@@ -1,8 +1,8 @@
 package fi.otavanopisto.kuntaapi.server.integrations;
 
-public enum PublicTransportStopTimeSortBy {
+public enum ServiceSortBy {
 
-  DEPARTURE_TIME,
+  NATURAL,
   
   SCORE
   

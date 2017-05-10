@@ -7,6 +7,11 @@
       "language":"fi",
       "value":"Someron kaupungintalo",
       "type":"Name"
+    },
+    {
+      "language":"sv",
+      "value":"Testaa. Someron kaupungintalo",
+      "type":"Name"
     }
   ],
   "serviceChannelDescriptions":[

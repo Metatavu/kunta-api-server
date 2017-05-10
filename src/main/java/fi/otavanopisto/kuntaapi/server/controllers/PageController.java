@@ -24,6 +24,8 @@ import fi.otavanopisto.kuntaapi.server.index.SearchResult;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.PageProvider;
+import fi.otavanopisto.kuntaapi.server.integrations.PageSortBy;
+import fi.otavanopisto.kuntaapi.server.integrations.SortDir;
 import fi.otavanopisto.kuntaapi.server.utils.ListUtils;
 
 @ApplicationScoped
@@ -107,28 +109,28 @@ public class PageController {
     return null;
   }
 
-  public List<Page> searchPages(OrganizationId organizationId, String queryString, Long firstResult, Long maxResults) {
+  public SearchResult<Page> searchPages(OrganizationId organizationId, String queryString, PageSortBy sortBy, SortDir sortDir, Long firstResult, Long maxResults) {
     OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(organizationId, KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiOrganizationId == null) {
       logger.severe(String.format("Failed to translate organization %s into Kunta API id", organizationId.toString()));
-      return Collections.emptyList();
+      return SearchResult.emptyResult();
     }
     
-    SearchResult<PageId> searchResult = pageSearcher.searchPages(kuntaApiOrganizationId.getId(), queryString, firstResult, maxResults);
+    SearchResult<PageId> searchResult = pageSearcher.searchPages(kuntaApiOrganizationId.getId(), queryString, sortBy, sortDir, firstResult, maxResults);
     if (searchResult != null) {
-      List<Page> result = new ArrayList<>(searchResult.getResult().size());
+      List<Page> pages = new ArrayList<>(searchResult.getResult().size());
       
       for (PageId pageId : searchResult.getResult()) {
         Page page = findPage(organizationId, pageId);
         if (page != null) {
-          result.add(page);
+          pages.add(page);
         }
       }
       
-      return result;
+      return new SearchResult<>(pages, searchResult.getTotalHits());
     }
     
-    return Collections.emptyList();
+    return SearchResult.emptyResult();
   }
   
   public Page findPage(OrganizationId organizationId, PageId pageId) {
