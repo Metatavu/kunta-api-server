@@ -29,6 +29,8 @@ import fi.otavanopisto.kuntaapi.server.tasks.TaskRequest;
 @SuppressWarnings ("squid:S3306")
 public class ManagementRemovedPageIdUpdater extends IdUpdater {
 
+  private static final int PER_PAGE = 10;
+  
   @Inject
   private IdentifierController identifierController;
 
@@ -56,16 +58,23 @@ public class ManagementRemovedPageIdUpdater extends IdUpdater {
   public void timeout() {
     OrganizationEntityUpdateTask task = organizationPageRemovesTaskQueue.next();
     if (task != null) {
-      checkRemovedManagementPages(task.getOrganizationId());
+      checkRemovedManagementPages(task.getOrganizationId(), task.getOffset());
     } else if (organizationPageRemovesTaskQueue.isEmpty()) {
-      organizationPageRemovesTaskQueue.enqueueTasks(organizationSettingController.listOrganizationIdsWithSetting(ManagementConsts.ORGANIZATION_SETTING_BASEURL));
+      List<OrganizationId> kuntaApiOrganizationIds = organizationSettingController.listOrganizationIdsWithSetting(ManagementConsts.ORGANIZATION_SETTING_BASEURL);
+      for (OrganizationId kuntaApiOrganizationId : kuntaApiOrganizationIds) {
+        Long pageCount = identifierController.countOrganizationPageIdsBySource(kuntaApiOrganizationId, ManagementConsts.IDENTIFIER_NAME);
+        int batchCount = (int) Math.ceil(pageCount.floatValue() / PER_PAGE);
+        for (int i = 0; i < batchCount; i++) {
+          organizationPageRemovesTaskQueue.enqueueTask(kuntaApiOrganizationId, i * PER_PAGE);
+        }
+      }
     }
   }
   
-  private void checkRemovedManagementPages(OrganizationId organizationId) {
+  private void checkRemovedManagementPages(OrganizationId organizationId, int offset) {
     DefaultApi api = managementApi.getApi(organizationId);
     
-    List<PageId> pageIds = identifierController.listOrganizationPageIdsBySource(organizationId, ManagementConsts.IDENTIFIER_NAME);
+    List<PageId> pageIds = identifierController.listOrganizationPageIdsBySource(organizationId, ManagementConsts.IDENTIFIER_NAME, offset, PER_PAGE);
     for (PageId pageId : pageIds) {
       PageId managementPageId = idController.translatePageId(pageId, ManagementConsts.IDENTIFIER_NAME);
       if (managementPageId != null) {

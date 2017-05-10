@@ -187,7 +187,11 @@ public class IdentifierController {
   }
   
   public List<PageId> listOrganizationPageIdsBySource(OrganizationId organizationId, String source) {
-    List<String> pageIds = listSourceIdsByOrganizationIdAndSourceAndType(organizationId, source, IdType.PAGE.toString());
+    return listOrganizationPageIdsBySource(organizationId, source, null, null);
+  }
+  
+  public List<PageId> listOrganizationPageIdsBySource(OrganizationId organizationId, String source, Integer firstResult, Integer maxResults) {
+    List<String> pageIds = listSourceIdsByOrganizationIdAndSourceAndType(organizationId, source, IdType.PAGE.toString(), firstResult, maxResults);
     List<PageId> result = new ArrayList<>(pageIds.size());
     
     for (String pageId : pageIds) {
@@ -195,6 +199,10 @@ public class IdentifierController {
     }
     
     return result;
+  }
+  
+  public Long countOrganizationPageIdsBySource(OrganizationId organizationId, String source) {
+    return countSourceIdsByOrganizationIdAndSourceAndType(organizationId, source, IdType.PAGE.toString());
   }
   
   public List<AnnouncementId> listOrganizationAnnouncementIdsBySource(OrganizationId organizationId, String source) {
@@ -308,13 +316,17 @@ public class IdentifierController {
   }
 
   private List<String> listSourceIdsByOrganizationIdAndSourceAndType(OrganizationId organizationId, String source, String type) {
+    return listSourceIdsByOrganizationIdAndSourceAndType(organizationId, source, type, null, null);
+  }
+  
+  private List<String> listSourceIdsByOrganizationIdAndSourceAndType(OrganizationId organizationId, String source, String type, Integer firstResult, Integer maxResults) {
     String organizationKuntaApiId = getOrganizationIdKuntaApiId(organizationId);
     if (organizationKuntaApiId == null) {
       logger.log(Level.SEVERE, String.format("Could not translate organization %s into Kunta API id", organizationId));
       return Collections.emptyList();
     }
     
-    List<Identifier> identifiers = identifierDAO.listByOrganizationIdAndSourceAndType(organizationKuntaApiId, source, type);
+    List<Identifier> identifiers = identifierDAO.listByOrganizationIdAndSourceAndType(organizationKuntaApiId, source, type, firstResult, maxResults);
     List<String> result = new ArrayList<>(identifiers.size());
     
     for (Identifier identifier : identifiers) {
@@ -322,6 +334,16 @@ public class IdentifierController {
     }
     
     return result;
+  }
+  
+  private Long countSourceIdsByOrganizationIdAndSourceAndType(OrganizationId organizationId, String source, String type) {
+    String organizationKuntaApiId = getOrganizationIdKuntaApiId(organizationId);
+    if (organizationKuntaApiId == null) {
+      logger.log(Level.SEVERE, String.format("Could not translate organization %s into Kunta API id", organizationId));
+      return 0l;
+    }
+    
+    return identifierDAO.countByOrganizationIdAndSourceAndType(organizationKuntaApiId, source, type);
   }
   
   public List<ServiceId> listServiceIdsBySource(String source) {
