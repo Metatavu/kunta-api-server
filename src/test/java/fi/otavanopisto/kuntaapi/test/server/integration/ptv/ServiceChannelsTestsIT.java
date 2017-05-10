@@ -419,7 +419,7 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
       
       .body("id", notNullValue())
       .body("organizationId", notNullValue())
-      .body("names.size()", is(1))
+      .body("names.size()", is(2))
       .body("names[0].language", is("fi"))
       .body("names[0].value", is("Someron kaupungintalo"))
       .body("names[0].type", is("Name"))
@@ -483,7 +483,7 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
       .statusCode(200)
       .body("id[1]", notNullValue())
       .body("organizationId[1]", notNullValue())
-      .body("names[1].size()", is(1))
+      .body("names[1].size()", is(2))
       .body("names[1][0].language", is("fi"))
       .body("names[1][0].value", is("Metatavun toimisto"))
       .body("names[1][0].type", is("Name"))
@@ -627,6 +627,48 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
       .body("serviceHours[1][3].openingHour.size()", is(0))
       
       .body("publishingStatus[1]", is("Published"));
+  }
+  
+  @Test
+  public void testListServiceLocationChannelSearch() {
+    if (inTravis()) {
+      return;
+    }
+    
+    String search = "(Test*)|(Metatavu*)";
+    
+    given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get(String.format("/serviceLocationServiceChannels?search=%s", search))
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(2))
+      .body("names[0][0].value", is("Someron kaupungintalo"))
+      .body("names[1][0].value", is("Metatavun toimisto"));
+    
+    given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get(String.format("/serviceLocationServiceChannels?search=%s&sortBy=SCORE&sortDir=DESC", search))
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(2))
+      .body("names[0][0].value", is("Metatavun toimisto"))
+      .body("names[1][0].value", is("Someron kaupungintalo"));
+    
+    given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get(String.format("/serviceLocationServiceChannels?search=%s&sortBy=SCORE&sortDir=ASC", search))
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(2))
+      .body("names[0][0].value", is("Someron kaupungintalo"))
+      .body("names[1][0].value", is("Metatavun toimisto"));
   }
 
   @Test

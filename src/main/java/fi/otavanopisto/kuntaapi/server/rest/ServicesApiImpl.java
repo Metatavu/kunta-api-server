@@ -11,6 +11,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Request;
 import javax.ws.rs.core.Response;
 
+import org.apache.commons.lang3.EnumUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import fi.metatavu.kuntaapi.server.rest.ServicesApi;
@@ -20,6 +21,8 @@ import fi.otavanopisto.kuntaapi.server.controllers.ServiceController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
+import fi.otavanopisto.kuntaapi.server.integrations.ServiceSortBy;
+import fi.otavanopisto.kuntaapi.server.integrations.SortDir;
 
 /**
  * REST Service implementation
@@ -28,9 +31,11 @@ import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
  */
 @RequestScoped
 @Stateful
-@SuppressWarnings ("squid:S3306")
+@SuppressWarnings ({ "squid:S3306", "unused" })
 public class ServicesApiImpl extends ServicesApi {
-  
+
+  private static final String INVALID_VALUE_FOR_SORT_DIR = "Invalid value for sortDir";
+  private static final String INVALID_VALUE_FOR_SORT_BY = "Invalid value for sortBy";
   private static final String NOT_FOUND = "Not Found";
   private static final String NOT_IMPLEMENTED = "Not implemented";
   
@@ -42,6 +47,9 @@ public class ServicesApiImpl extends ServicesApi {
 
   @Inject
   private HttpCacheController httpCacheController;
+  
+  @Inject
+  private RestResponseBuilder restResponseBuilder;
   
   @Override
   public Response createService(Service body, @Context Request request) {
@@ -66,28 +74,30 @@ public class ServicesApiImpl extends ServicesApi {
   }
   
   @Override
-  public Response listServices(String organizationIdParam, String search, Long firstResult, Long maxResults, @Context Request request) {
+  public Response listServices(String organizationIdParam, String search, String sortByParam, String sortDirParam, Long firstResult,
+      Long maxResults, Request request) {
+   
+    ServiceSortBy sortBy = resolveServiceSortBy(sortByParam);
+    if (sortBy == null) {
+      return createBadRequest(INVALID_VALUE_FOR_SORT_BY);
+    }
+    
+    SortDir sortDir = resolveSortDir(sortDirParam);
+    if (sortDir == null) {
+      return createBadRequest(INVALID_VALUE_FOR_SORT_DIR);
+    }
+    
     Response validationResponse = restValidator.validateListLimitParams(firstResult, maxResults);
     if (validationResponse != null) {
       return validationResponse;
     }
     
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
-    
-    List<Service> services;
     if (search == null) {
-      services = serviceController.listServices(organizationId, firstResult, maxResults);
+      return restResponseBuilder.buildResponse(serviceController.listServices(organizationId, firstResult, maxResults), null, request);
     } else {
-      services = serviceController.searchServices(organizationId, search, firstResult, maxResults);
+      return restResponseBuilder.buildResponse(serviceController.searchServices(organizationId, search, sortBy, sortDir, firstResult, maxResults), request);
     }
-    
-    List<String> ids = httpCacheController.getEntityIds(services);
-    Response notModified = httpCacheController.getNotModified(request, ids);
-    if (notModified != null) {
-      return notModified;
-    }
-
-    return httpCacheController.sendModified(services, ids);
   }
   
   @Override
@@ -165,6 +175,22 @@ public class ServicesApiImpl extends ServicesApi {
     return redirect(pathBuilder.toString());
   }
 
+  private SortDir resolveSortDir(String sortDirParam) {
+    SortDir sortDir = SortDir.ASC;
+    if (sortDirParam != null) {
+      return EnumUtils.getEnum(SortDir.class, sortDirParam);
+    }
+    
+    return sortDir;
+  }
+
+  private ServiceSortBy resolveServiceSortBy(String sortByParam) {
+    ServiceSortBy sortBy = ServiceSortBy.NATURAL;
+    if (sortByParam != null) {
+      return  EnumUtils.getEnum(ServiceSortBy.class, sortByParam);
+    }
+    return sortBy;
+  }
 
   private Response redirect(String path) {
     return Response.temporaryRedirect(URI.create(path)).build();

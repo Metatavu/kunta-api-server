@@ -98,12 +98,12 @@ public abstract class AbstractIdFactory {
     return createId(PublicTransportTripId.class, kuntaApiOrganizationId, id);
   }
   
-  protected <T extends BaseId> T createId(Class<T> idClass, OrganizationId organizationId, String id) {
+  public <T extends BaseId> T createId(Class<T> idClass, OrganizationId organizationId, String id) {
     if (id == null) {
       return null;
     }
     
-    if(isOrganizationBaseId(idClass)) {
+    if (isOrganizationBaseId(idClass)) {
       return createOrganizationBaseId(idClass, id, organizationId);
     } else {
       return createBaseId(idClass, id);

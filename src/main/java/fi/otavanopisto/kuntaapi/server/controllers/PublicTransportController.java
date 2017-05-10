@@ -84,9 +84,39 @@ public class PublicTransportController {
     
     return null;
   }
-  
-  public List<StopTime> listStopTimes(OrganizationId organizationId, PublicTransportStopId stopId, Integer departureTime, PublicTransportStopTimeSortBy sortBy, SortDir sortDir, Long firstResult, Long maxResults) {
-    return searchStopTimes(organizationId, null, stopId, departureTime, sortBy, sortDir, firstResult, maxResults);
+
+  @SuppressWarnings ("squid:S00107")
+  public SearchResult<StopTime> searchStopTimes(OrganizationId organizationId, PublicTransportTripId tripId, PublicTransportStopId stopId, Integer depratureTimeOnOrAfter, PublicTransportStopTimeSortBy sortBy, SortDir sortDir, Long firstResult, Long maxResults) {
+    SearchResult<PublicTransportStopTimeId> searchResult = stopTimeSearcher.searchStopTimes(
+      organizationId != null ? organizationId.getId() : null, 
+      tripId != null ? tripId.getId() : null, 
+      stopId != null ? stopId.getId() : null, 
+      depratureTimeOnOrAfter, 
+      sortBy,
+      sortDir,
+      firstResult, 
+      maxResults);
+    
+    if (searchResult != null) {
+      List<StopTime> result = new ArrayList<>(searchResult.getResult().size());
+      
+      for (PublicTransportStopTimeId stopTimeId : searchResult.getResult()) {
+        StopTime stopTime = findStopTime(organizationId, stopTimeId);
+        if (stopTime != null) {
+          result.add(stopTime);
+        }
+      }
+      
+      return new SearchResult<>(result, searchResult.getTotalHits());
+    } else {
+      List<StopTime> result = new ArrayList<>();
+      
+      for (PublicTransportProvider publicTransportProvider : getPublicTransportProviders()) {
+        result.addAll(publicTransportProvider.listStopTimes(organizationId, stopId, depratureTimeOnOrAfter));
+      }
+      
+      return new SearchResult<>(ListUtils.limit(sortStopTimes(result, sortBy, sortDir), firstResult, maxResults), result.size());
+    }
   }
   
   public StopTime findStopTime(OrganizationId organizationId, PublicTransportStopTimeId stopTimeId) {
@@ -161,38 +191,6 @@ public class PublicTransportController {
     }
     
     return null;
-  }
-  
-  @SuppressWarnings ("squid:S00107")
-  private List<StopTime> searchStopTimes(OrganizationId organizationId, PublicTransportTripId tripId, PublicTransportStopId stopId, Integer depratureTimeOnOrAfter, PublicTransportStopTimeSortBy sortBy, SortDir sortDir, Long firstResult, Long maxResults) {
-    List<StopTime> result = new ArrayList<>();
-    
-    SearchResult<PublicTransportStopTimeId> searchResult = stopTimeSearcher.searchStopTimes(
-      organizationId != null ? organizationId.getId() : null, 
-      tripId != null ? tripId.getId() : null, 
-      stopId != null ? stopId.getId() : null, 
-      depratureTimeOnOrAfter, 
-      sortBy,
-      sortDir,
-      firstResult, 
-      maxResults);
-    
-    if (searchResult != null) {
-      for (PublicTransportStopTimeId stopTimeId : searchResult.getResult()) {
-        StopTime stopTime = findStopTime(organizationId, stopTimeId);
-        if (stopTime != null) {
-          result.add(stopTime);
-        }
-      }
-      
-      return result; 
-    } else {
-      for (PublicTransportProvider publicTransportProvider : getPublicTransportProviders()) {
-        result.addAll(publicTransportProvider.listStopTimes(organizationId, stopId, depratureTimeOnOrAfter));
-      }
-      
-      return ListUtils.limit(sortStopTimes(result, sortBy, sortDir), firstResult, maxResults);
-    }
   }
   
   private List<StopTime> sortStopTimes(List<StopTime> stopTimes, PublicTransportStopTimeSortBy sortBy, SortDir sortDir) {

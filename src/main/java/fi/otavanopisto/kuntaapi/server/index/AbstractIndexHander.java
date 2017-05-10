@@ -40,9 +40,10 @@ public abstract class AbstractIndexHander {
   
   @Inject
   private Logger logger;
-
+  
   private String index;
   private TransportClient client;
+  
   
   @PostConstruct
   public void init() {
@@ -90,7 +91,6 @@ public abstract class AbstractIndexHander {
   private TransportClient createTransportClient(String[] hosts, String clusterName) {
     try {
       TransportClient transportClient;
-      
       Settings settings = Settings.builder()
         .put("cluster.name", clusterName)
         .build();

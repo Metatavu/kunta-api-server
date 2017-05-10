@@ -20,7 +20,10 @@ import fi.otavanopisto.kuntaapi.server.index.SearchResult;
 import fi.otavanopisto.kuntaapi.server.index.ServiceLocationServiceChannelSearcher;
 import fi.otavanopisto.kuntaapi.server.index.ServiceSearcher;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceChannelProvider;
+import fi.otavanopisto.kuntaapi.server.integrations.ServiceLocationServiceChannelSortBy;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceProvider;
+import fi.otavanopisto.kuntaapi.server.integrations.ServiceSortBy;
+import fi.otavanopisto.kuntaapi.server.integrations.SortDir;
 import fi.otavanopisto.kuntaapi.server.utils.ListUtils;
 import fi.metatavu.kuntaapi.server.rest.model.ElectronicServiceChannel;
 import fi.metatavu.kuntaapi.server.rest.model.PhoneServiceChannel;
@@ -69,8 +72,8 @@ public class ServiceController {
     return ListUtils.limit(entityController.sortEntitiesInNaturalOrder(result), firstResult, maxResults);
   }
 
-  public List<Service> searchServices(OrganizationId organizationId, String search, Long firstResult, Long maxResults) {
-    SearchResult<ServiceId> searchResult = serviceSearcher.searchServices(organizationId, search, firstResult, maxResults);
+  public SearchResult<Service> searchServices(OrganizationId organizationId, String search, ServiceSortBy sortBy, SortDir sortDir, Long firstResult, Long maxResults) {
+    SearchResult<ServiceId> searchResult = serviceSearcher.searchServices(organizationId, search, sortBy, sortDir, firstResult, maxResults);
     if (searchResult != null) {
       List<Service> result = new ArrayList<>(searchResult.getResult().size());
       
@@ -81,10 +84,10 @@ public class ServiceController {
         }
       }
       
-      return result;
+      return new SearchResult<>(result, searchResult.getTotalHits());
     }
     
-    return Collections.emptyList();
+    return SearchResult.emptyResult();
   }
   
   public ElectronicServiceChannel findElectronicServiceChannel(ElectronicServiceChannelId electronicChannelId) {
@@ -172,31 +175,31 @@ public class ServiceController {
     return ListUtils.limit(entityController.sortEntitiesInNaturalOrder(result), firstResult, maxResults);
   }
 
-  public List<ServiceLocationServiceChannel> listServiceLocationServiceChannels(OrganizationId kuntaApiOrganizationId, String search, Long firstResult, Long maxResults) {
-    if ((search != null) || (kuntaApiOrganizationId != null)) {
-      SearchResult<ServiceLocationServiceChannelId> searchResult = serviceLocationServiceChannelSearcher.searchServiceLocationServiceChannels(kuntaApiOrganizationId, search, firstResult, maxResults);
-      if (searchResult == null) {
-        return Collections.emptyList();
-      }
-
-      List<ServiceLocationServiceChannel> result = new ArrayList<>(searchResult.getResult().size());
-      for (ServiceLocationServiceChannelId serviceLocationServiceChannelId : searchResult.getResult()) {
-        ServiceLocationServiceChannel serviceLocationServiceChannel = findServiceLocationServiceChannel(serviceLocationServiceChannelId);
-        if (serviceLocationServiceChannel != null) {
-          result.add(serviceLocationServiceChannel);
-        }
-      }
-      
-      return result;
-    } else {
-      List<ServiceLocationServiceChannel> result = new ArrayList<>();
-      for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
-        result.addAll(serviceChannelProvider.listServiceLocationServiceChannels());
-      }
-  
-      return ListUtils.limit(entityController.sortEntitiesInNaturalOrder(result), firstResult, maxResults);
+  public List<ServiceLocationServiceChannel> listServiceLocationServiceChannels(Long firstResult, Long maxResults) {
+    List<ServiceLocationServiceChannel> result = new ArrayList<>();
+    for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
+      result.addAll(serviceChannelProvider.listServiceLocationServiceChannels());
     }
+
+    return ListUtils.limit(entityController.sortEntitiesInNaturalOrder(result), firstResult, maxResults);
   }
+  
+  public SearchResult<ServiceLocationServiceChannel> searchServiceLocationServiceChannels(OrganizationId kuntaApiOrganizationId, String search, ServiceLocationServiceChannelSortBy sortBy, SortDir sortDir, Long firstResult, Long maxResults) {
+    SearchResult<ServiceLocationServiceChannelId> searchResult = serviceLocationServiceChannelSearcher.searchServiceLocationServiceChannels(kuntaApiOrganizationId, search, sortBy, sortDir, firstResult, maxResults);
+    if (searchResult == null) {
+      return SearchResult.emptyResult();
+    }
+    
+    List<ServiceLocationServiceChannel> result = new ArrayList<>(searchResult.getResult().size());
+    for (ServiceLocationServiceChannelId serviceLocationServiceChannelId : searchResult.getResult()) {
+      ServiceLocationServiceChannel serviceLocationServiceChannel = findServiceLocationServiceChannel(serviceLocationServiceChannelId);
+      if (serviceLocationServiceChannel != null) {
+        result.add(serviceLocationServiceChannel);
+      }
+    }
+    
+    return new SearchResult<>(result, searchResult.getTotalHits());
+  }   
 
   public List<WebPageServiceChannel> listWebPageServiceChannels(Long firstResult, Long maxResults) {
     List<WebPageServiceChannel> result = new ArrayList<>();

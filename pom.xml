@@ -62,7 +62,7 @@
 
     <!-- Kunta API Spec -->
 
-    <kunta-api-spec.version>0.1.81</kunta-api-spec.version>
+    <kunta-api-spec.version>0.1.84</kunta-api-spec.version>
     
     <!-- Integrations -->
     
@@ -763,6 +763,9 @@
               <dataFile>${jacoco.reportPath}</dataFile>
               <outputDirectory>${project.reporting.outputDirectory}/jacoco-it</outputDirectory>
               <classDumpDir>${project.reporting.outputDirectory}/jacoco-it/classes</classDumpDir>
+              <excludes>
+                <exclude>**/*_.class</exclude>
+              </excludes>
             </configuration>
                 
             <executions>

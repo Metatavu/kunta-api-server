@@ -7,6 +7,11 @@
       "language":"fi",
       "value":"Metatavun toimisto",
       "type":"Name"
+    },
+    {
+      "language":"sv",
+      "value":"Testaa. Metatavun toimisto",
+      "type":"Name"
     }
   ],
   "serviceChannelDescriptions":[
