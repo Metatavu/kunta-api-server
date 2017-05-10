@@ -14,7 +14,7 @@
        "rendered":"Bertha"
     },
     "content":{
-       "rendered":"<p>Bertha<\/p><p><img alt=\"\" class=\"alignnone size-full wp-image-3001\" height=\"458\" src=\"http:\/\/api.kunta-api.test:58081\/wp-content\/uploads\/2017\/02\/test-image-480.jpg\" width=\"863\" srcset=\"http:\/\/api.kunta-api.test:58081\/wp-content\/uploads\/2017\/02\/test-image-480.jpg 863w, http:\/\/api.kunta-api.test:58081\/wp-content\/uploads\/2017\/02\/test-image-300.jpg 300w\" sizes=\"(max-width: 863px) 100vw, 863px\" \/><img src=\"http://example.com/image.jpg\"/></p>",
+       "rendered":"<p>Bertha<\/p><p><img alt=\"\" class=\"alignnone size-full wp-image-3001\" height=\"458\" src=\"http:\/\/api.kunta-api.test:58081\/wp-content\/uploads\/2017\/02\/test-image-480.jpg\" width=\"863\" srcset=\"http:\/\/api.kunta-api.test:58081\/wp-content\/uploads\/2017\/02\/test-image-480.jpg 863w, http:\/\/api.kunta-api.test:58081\/wp-content\/uploads\/2017\/02\/test-image-300.jpg 300w\" sizes=\"(max-width: 863px) 100vw, 863px\" \/><img src=\"http://example.com/image.jpg\"/><p>search test</p></p>",
        "protected":false
     },
     "excerpt":{
