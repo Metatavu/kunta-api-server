@@ -56,11 +56,11 @@ public class ManagementIncidentProvider extends AbstractManagementProvider imple
   }
 
   private boolean isAcceptable(Incident incident, String slug, OffsetDateTime startBefore, OffsetDateTime endAfter) {
-    if (startBefore != null && startBefore.isBefore(incident.getStart())) {
+    if (startBefore != null && (incident.getStart() == null || startBefore.isBefore(incident.getStart()))) {
       return false;
     }
 
-    if (endAfter != null && endAfter.isAfter(incident.getEnd())) {
+    if (endAfter != null && (incident.getEnd() == null || endAfter.isAfter(incident.getEnd()))) {
       return false;
     }
     
