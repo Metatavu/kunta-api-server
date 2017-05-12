@@ -20,7 +20,7 @@ import fi.otavanopisto.kuntaapi.server.utils.ListUtils;
 import fi.metatavu.kuntaapi.server.rest.model.Incident;
 
 @ApplicationScoped
-@SuppressWarnings ("squid:S3306")
+@SuppressWarnings ({"squid:S3306","squid:S00107"})
 public class IncidentController {
   
   @Inject
