@@ -38,13 +38,9 @@ public class ManagementIncidentProvider extends AbstractManagementProvider imple
     
     for (IncidentId incidentId : incidentIds) {
       Incident incident = managementIncidentCache.get(incidentId);
-      System.out.println("-------------------------");
       if (incident != null && isAcceptable(incident, slug, startBefore, endAfter)) {
         incidents.add(incident);
-      } else {
-        System.out.println("No match: " + incident.getId());
       }
-      System.out.println("-------------------------");
     }
     
     return incidents;
@@ -60,16 +56,11 @@ public class ManagementIncidentProvider extends AbstractManagementProvider imple
   }
 
   private boolean isAcceptable(Incident incident, String slug, OffsetDateTime startBefore, OffsetDateTime endAfter) {
-    System.out.println("startBefore: " + startBefore + " istart: " + incident.getStart());
-    System.out.println("endAfter: " + endAfter + " iend: " + incident.getEnd());
-    
     if (startBefore != null && startBefore.isBefore(incident.getStart())) {
-      System.out.println(String.format("%s NOT startBefore: %s ", incident.getStart(), startBefore));
       return false;
     }
 
     if (endAfter != null && endAfter.isAfter(incident.getEnd())) {
-      System.out.println(String.format("%s NOT startBefore: %s ", incident.getEnd(), endAfter));
       return false;
     }
     
