@@ -1,0 +1,62 @@
+{
+  "id": 10002,
+  "date": "2017-05-12T09:39:10",
+  "date_gmt": "2017-05-12T06:39:10",
+  "guid": {
+    "rendered": "http://localhost:1234/?post_type=incident&#038;p=10002"
+  },
+  "modified": "2017-05-12T09:39:10",
+  "modified_gmt": "2017-05-12T06:39:10",
+  "slug": "kemikaalivuoto",
+  "status": "publish",
+  "type": "incident",
+  "link": "http://localhost:1234/incident/kemikaalivuoto/",
+  "title": {
+    "rendered": "Kemikaalivuoto"
+  },
+  "template": "",
+  "incident_areas": [],
+  "incident_type": "severe",
+  "description": "Vaarallisia kemikaaleja vuotanut Mikkelin torille",
+  "areas": [
+    "Mikkelin kaupunki"
+  ],
+  "start_time": "2017-05-26T15:00:00",
+  "end_time": "2017-05-26T16:00:00",
+  "_links": {
+    "self": [
+      {
+        "href": "http://localhost:1234/wp-json/wp/v2/incident/10002"
+      }
+    ],
+    "collection": [
+      {
+        "href": "http://localhost:1234/wp-json/wp/v2/incident"
+      }
+    ],
+    "about": [
+      {
+        "href": "http://localhost:1234/wp-json/wp/v2/types/incident"
+      }
+    ],
+    "wp:attachment": [
+      {
+        "href": "http://localhost:1234/wp-json/wp/v2/media?parent=10002"
+      }
+    ],
+    "wp:term": [
+      {
+        "taxonomy": "incident_areas",
+        "embeddable": true,
+        "href": "http://localhost:1234/wp-json/wp/v2/incident_areas?post=10002"
+      }
+    ],
+    "curies": [
+      {
+        "name": "wp",
+        "href": "https://api.w.org/{rel}",
+        "templated": true
+      }
+    ]
+  }
+}

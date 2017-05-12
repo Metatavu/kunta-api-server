@@ -1,0 +1,62 @@
+{
+  "id": 10001,
+  "date": "2017-05-12T09:40:28",
+  "date_gmt": "2017-05-12T06:40:28",
+  "guid": {
+    "rendered": "http://localhost:1234/?post_type=incident&#038;p=10001"
+  },
+  "modified": "2017-05-12T09:40:28",
+  "modified_gmt": "2017-05-12T06:40:28",
+  "slug": "toimimattomat-puhelinyhteydet",
+  "status": "publish",
+  "type": "incident",
+  "link": "http://localhost:1234/incident/toimimattomat-puhelinyhteydet/",
+  "title": {
+    "rendered": "Toimimattomat puhelinyhteydet"
+  },
+  "template": "",
+  "incident_areas": [],
+  "incident_type": "disruption",
+  "description": "Puhelin ei toimi Rantasalmella",
+  "areas": [
+    "Rantasalmi"
+  ],
+  "start_time": "2017-05-29T00:00:00",
+  "end_time": "2017-05-30T00:00:00",
+  "_links": {
+    "self": [
+      {
+        "href": "http://localhost:1234/wp-json/wp/v2/incident/10001"
+      }
+    ],
+    "collection": [
+      {
+        "href": "http://localhost:1234/wp-json/wp/v2/incident"
+      }
+    ],
+    "about": [
+      {
+        "href": "http://localhost:1234/wp-json/wp/v2/types/incident"
+      }
+    ],
+    "wp:attachment": [
+      {
+        "href": "http://localhost:1234/wp-json/wp/v2/media?parent=10001"
+      }
+    ],
+    "wp:term": [
+      {
+        "taxonomy": "incident_areas",
+        "embeddable": true,
+        "href": "http://localhost:1234/wp-json/wp/v2/incident_areas?post=10001"
+      }
+    ],
+    "curies": [
+      {
+        "name": "wp",
+        "href": "https://api.w.org/{rel}",
+        "templated": true
+      }
+    ]
+  }
+}

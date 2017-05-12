@@ -19,6 +19,7 @@ import fi.metatavu.kuntaapi.server.rest.model.NewsArticle;
 import fi.metatavu.kuntaapi.server.rest.model.PageMeta;
 import fi.metatavu.kuntaapi.server.rest.model.Tile;
 import fi.metatavu.management.client.model.Announcement;
+import fi.metatavu.management.client.model.Incident;
 import fi.metatavu.management.client.model.Post;
 import fi.metatavu.management.client.model.PostExcerpt;
 import fi.metatavu.management.client.model.Shortlink;
@@ -26,6 +27,7 @@ import fi.otavanopisto.kuntaapi.server.id.AnnouncementId;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.BannerId;
 import fi.otavanopisto.kuntaapi.server.id.FragmentId;
+import fi.otavanopisto.kuntaapi.server.id.IncidentId;
 import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
@@ -151,6 +153,20 @@ public class ManagementTranslator {
     result.setName(managementShortlink.getTitle().getRendered());
     result.setPath(managementShortlink.getPath());
     result.setUrl(managementShortlink.getUrl());
+    return result;
+  }
+
+  public fi.metatavu.kuntaapi.server.rest.model.Incident translateIncident(IncidentId kuntaApiIncidentId, Incident managementIncident) {
+    fi.metatavu.kuntaapi.server.rest.model.Incident result = new fi.metatavu.kuntaapi.server.rest.model.Incident();
+    result.setId(kuntaApiIncidentId.getId());
+    result.setAreas(managementIncident.getAreas());
+    result.setDescription(managementIncident.getDescription());
+    result.setEnd(toOffsetDateTime(managementIncident.getEndTime()));
+    result.setId(kuntaApiIncidentId.getId());
+    result.setSeverity(managementIncident.getIncidentType());
+    result.setStart(toOffsetDateTime(managementIncident.getStartTime()));
+    result.setTitle(managementIncident.getTitle().getRendered());
+    result.setSlug(managementIncident.getSlug());
     return result;
   }
   
