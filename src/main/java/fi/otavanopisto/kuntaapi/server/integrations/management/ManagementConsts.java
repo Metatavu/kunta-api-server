@@ -12,6 +12,8 @@ public class ManagementConsts {
   public static final String CACHE_NAME = "mwp";
   public static final boolean CACHE_RESPONSES = false;
   public static final String ORGANIZATION_SETTING_BASEURL = "managementservice.baseUrl";
+  public static final String ORGANIZATION_SETTING_TIMEZONE = "managementservice.timezone";
+  public static final String ORGANIZATION_SETTING_TIMEZONE_DEFAULT = "Europe/Helsinki";
   public static final String DEFAULT_LOCALE = "fi";
   public static final String ATTACHMENT_TYPE_BANNER = "banner";
   public static final String ATTACHMENT_TYPE_TILE = "tile";
