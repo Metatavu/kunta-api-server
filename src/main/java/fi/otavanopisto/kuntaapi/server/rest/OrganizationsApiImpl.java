@@ -201,7 +201,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createBadRequest(INVALID_VALUE_FOR_SORT_DIR);
     }
     
-    if (search != null) {
+    if (search != null || businessCode != null || businessName != null) {
       return restResponseBuilder.buildResponse(organizationController.searchOrganizations(search, businessName, businessCode, sortBy, sortDir, firstResult, maxResults), request);
     } else {
       return restResponseBuilder.buildResponse(organizationController.listOrganizations(firstResult, maxResults), null, request);
