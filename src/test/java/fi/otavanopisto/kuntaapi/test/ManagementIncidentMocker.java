@@ -12,7 +12,7 @@ import com.github.tomakehurst.wiremock.matching.StringValuePattern;
 
 import fi.metatavu.management.client.model.Incident;
 
-@SuppressWarnings ("squid:S1166")
+@SuppressWarnings ({"squid:S1166", "squid:S1075"})
 public class ManagementIncidentMocker extends AbstractBaseMocker {
 
   private static final String PATH_TEMPLATE = "%s/%s";
