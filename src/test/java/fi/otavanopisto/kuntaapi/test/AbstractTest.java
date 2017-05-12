@@ -55,6 +55,10 @@ public abstract class AbstractTest {
     return getOffsetDateTime(year, month, dayOfMonth, hour, minute, zone).toInstant();
   }
   
+  protected String getIsoDateTime(int year, int month, int dayOfMonth, int hour, int minute, ZoneId zone) {
+    return DateTimeFormatter.ISO_DATE_TIME.format(getOffsetDateTime(year, month, dayOfMonth, hour, minute, zone));
+  }
+  
   protected int getHttpPort() {
     return Integer.parseInt(System.getProperty("it.port.http"));
   }

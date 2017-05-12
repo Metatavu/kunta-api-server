@@ -50,6 +50,10 @@ public abstract class AbstractIdFactory {
     return createId(ShortlinkId.class, kuntaApiOrganizationId, id);
   }
   
+  public IncidentId createIncidentId(OrganizationId kuntaApiOrganizationId, String id) {
+    return createId(IncidentId.class, kuntaApiOrganizationId, id);
+  }
+  
   public FragmentId createFragmentId(OrganizationId kuntaApiOrganizationId, String id) {
     return createId(FragmentId.class, kuntaApiOrganizationId, id);
   }

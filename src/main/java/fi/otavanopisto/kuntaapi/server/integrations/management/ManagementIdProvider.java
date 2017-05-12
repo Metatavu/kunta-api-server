@@ -24,7 +24,8 @@ public class ManagementIdProvider extends AbstractIdProvider {
     IdType.MENU, 
     IdType.FILE, 
     IdType.MENU_ITEM,
-    IdType.SHORTLINK
+    IdType.SHORTLINK,
+    IdType.INCIDENT
   };
   
   @Override

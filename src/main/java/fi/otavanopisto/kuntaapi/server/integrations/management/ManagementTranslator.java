@@ -2,9 +2,11 @@ package fi.otavanopisto.kuntaapi.server.integrations.management;
 
 import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
-import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TimeZone;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -19,6 +21,7 @@ import fi.metatavu.kuntaapi.server.rest.model.NewsArticle;
 import fi.metatavu.kuntaapi.server.rest.model.PageMeta;
 import fi.metatavu.kuntaapi.server.rest.model.Tile;
 import fi.metatavu.management.client.model.Announcement;
+import fi.metatavu.management.client.model.Incident;
 import fi.metatavu.management.client.model.Post;
 import fi.metatavu.management.client.model.PostExcerpt;
 import fi.metatavu.management.client.model.Shortlink;
@@ -26,18 +29,26 @@ import fi.otavanopisto.kuntaapi.server.id.AnnouncementId;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.BannerId;
 import fi.otavanopisto.kuntaapi.server.id.FragmentId;
+import fi.otavanopisto.kuntaapi.server.id.IncidentId;
 import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.id.ShortlinkId;
 import fi.otavanopisto.kuntaapi.server.id.TileId;
+import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 
 @ApplicationScoped
 @SuppressWarnings ("squid:S3306")
 public class ManagementTranslator {
   
   @Inject
+  private Logger logger;
+  
+  @Inject
   private ManagementImageLoader managementImageLoader;
+
+  @Inject
+  private OrganizationSettingController organizationSettingController;  
   
   public List<LocalizedValue> translateLocalized(String value) {
     List<LocalizedValue> result = new ArrayList<>();
@@ -103,7 +114,7 @@ public class ManagementTranslator {
     newsArticle.setAbstract(cleanExcerpt(post.getExcerpt()));
     newsArticle.setContents(post.getContent().getRendered());
     newsArticle.setId(kuntaApiNewsArticleId.getId());
-    newsArticle.setPublished(toOffsetDateTime(post.getDate()));
+    newsArticle.setPublished(toOffsetDateTime(kuntaApiNewsArticleId.getOrganizationId(), post.getDate()));
     newsArticle.setTitle(post.getTitle().getRendered());
     newsArticle.setSlug(post.getSlug());
     newsArticle.setTags(categories);
@@ -116,7 +127,7 @@ public class ManagementTranslator {
       
     result.setContents(managementAnnouncement.getContent().getRendered());
     result.setId(kuntaApiAnnouncementId.getId());
-    result.setPublished(toOffsetDateTime(managementAnnouncement.getDate()));
+    result.setPublished(toOffsetDateTime(kuntaApiAnnouncementId.getOrganizationId(), managementAnnouncement.getDate()));
     result.setTitle(managementAnnouncement.getTitle().getRendered());
     result.setSlug(managementAnnouncement.getSlug());
     
@@ -153,13 +164,44 @@ public class ManagementTranslator {
     result.setUrl(managementShortlink.getUrl());
     return result;
   }
+
+  public fi.metatavu.kuntaapi.server.rest.model.Incident translateIncident(IncidentId kuntaApiIncidentId, Incident managementIncident) {
+    fi.metatavu.kuntaapi.server.rest.model.Incident result = new fi.metatavu.kuntaapi.server.rest.model.Incident();
+    result.setId(kuntaApiIncidentId.getId());
+    result.setAreas(managementIncident.getAreas());
+    result.setDescription(managementIncident.getDescription());
+    result.setEnd(toOffsetDateTime(kuntaApiIncidentId.getOrganizationId(), managementIncident.getEndTime()));
+    result.setId(kuntaApiIncidentId.getId());
+    result.setSeverity(managementIncident.getIncidentType());
+    result.setStart(toOffsetDateTime(kuntaApiIncidentId.getOrganizationId(), managementIncident.getStartTime()));
+    result.setTitle(managementIncident.getTitle().getRendered());
+    result.setSlug(managementIncident.getSlug());
+    return result;
+  }
   
-  private OffsetDateTime toOffsetDateTime(LocalDateTime date) {
+  private OffsetDateTime toOffsetDateTime(OrganizationId organizationId, LocalDateTime date) {
     if (date == null) {
       return null;
     }
     
-    return date.atZone(ZoneId.systemDefault()).toOffsetDateTime();
+    TimeZone timeZone = getOrganizationTimeZone(organizationId);
+    return date.atZone(timeZone.toZoneId()).toOffsetDateTime();
+  }
+  
+  
+  private TimeZone getOrganizationTimeZone(OrganizationId organizationId) {
+    String timeZoneString = organizationSettingController.getSettingValue(organizationId, ManagementConsts.ORGANIZATION_SETTING_TIMEZONE);
+    if (timeZoneString == null) {
+      timeZoneString = ManagementConsts.ORGANIZATION_SETTING_TIMEZONE_DEFAULT;
+    }
+    
+    TimeZone result = TimeZone.getTimeZone(timeZoneString);
+    if(result == null) {
+      logger.log(Level.SEVERE, String.format("Malformed organization gtfs timezone setting for organization %s", organizationId));
+      return TimeZone.getDefault();
+    }
+    
+    return result;
   }
 
   private String cleanExcerpt(PostExcerpt postExcerpt) {
