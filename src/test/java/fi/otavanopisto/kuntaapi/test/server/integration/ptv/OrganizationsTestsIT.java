@@ -94,7 +94,6 @@ public class OrganizationsTestsIT extends AbstractIntegrationTest {
   
   @Test
   public void testListOrganizations() {
-
     given() 
       .baseUri(getApiBasePath())
       .contentType(ContentType.JSON)
@@ -179,6 +178,62 @@ public class OrganizationsTestsIT extends AbstractIntegrationTest {
       .body("services[1][0].provisionType", nullValue())
       .body("services[1][0].webPages.size()", is(0));
   } 
+
+  @Test
+  public void testListOrganizationsByBusinessCode() {
+    if (inTravis()) {
+      return;
+    }
+    
+    given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get("/organizations?businessCode=0165116-3")
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("size()", is(1))
+      .body("id[0]", notNullValue())
+      .body("businessName[0]", is("Mikkelin kaupunki"))
+      .body("businessCode[0]", is("0165116-3"));
+    
+    given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get("/organizations?businessCode=0000000-0")
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("size()", is(0));
+  }
+
+  @Test
+  public void testListOrganizationsByBusinessName() {
+    if (inTravis()) {
+      return;
+    }
+    
+    given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get("/organizations?businessName=Mikkelin kaupunki")
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("size()", is(1))
+      .body("id[0]", notNullValue())
+      .body("businessName[0]", is("Mikkelin kaupunki"))
+      .body("businessCode[0]", is("0165116-3"));
+    
+    given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get("/organizations?businessName=invalid")
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("size()", is(0));
+  }
   
   @Test
   public void testListOrganizationsSearch() {

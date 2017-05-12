@@ -259,5 +259,14 @@ public interface IdProvider {
    * @return translated id
    */
   public ShortlinkId translate(ShortlinkId shortlinkId, String target);
+  
+  /**
+   * Translate incident id
+   * 
+   * @param incidentId original id
+   * @param target target type
+   * @return translated id
+   */
+  public IncidentId translate(IncidentId incidentId, String target);
 
 }

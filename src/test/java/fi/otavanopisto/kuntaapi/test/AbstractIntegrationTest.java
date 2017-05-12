@@ -41,6 +41,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   private ManagementPageMocker managementPageMocker = new ManagementPageMocker();
   private ManagementPostMocker managementPostMocker = new ManagementPostMocker();
   private ManagementShortlinkMocker managementShortlinkMocker = new ManagementShortlinkMocker();
+  private ManagementIncidentMocker managementIncidentMocker = new ManagementIncidentMocker();
   private ManagementAnnouncementMocker managementAnnouncementMocker = new ManagementAnnouncementMocker();
   private ManagementBannerMocker managementBannerMocker = new ManagementBannerMocker();
   private ManagementFragmentMocker managementFragmentMocker = new ManagementFragmentMocker();
@@ -66,6 +67,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     managementPageMocker.endMock();
     managementPostMocker.endMock();
     managementShortlinkMocker.endMock();
+    managementIncidentMocker.endMock();
     managementAnnouncementMocker.endMock();
     managementBannerMocker.endMock();
     managementFragmentMocker.endMock();
@@ -92,6 +94,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     managementPageMocker.startMock();
     managementPostMocker.startMock();
     managementShortlinkMocker.startMock();
+    managementIncidentMocker.startMock();
     managementAnnouncementMocker.startMock();
     managementBannerMocker.startMock();
     managementFragmentMocker.startMock();
@@ -138,6 +141,10 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   
   public ManagementShortlinkMocker getManagementShortlinkMocker() {
     return managementShortlinkMocker;
+  }
+
+  public ManagementIncidentMocker getManagementIncidentMocker() {
+    return managementIncidentMocker;
   }
   
   public ManagementAnnouncementMocker getManagementAnnouncementMocker() {
@@ -348,6 +355,16 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
         .baseUri(getApiBasePath())
         .contentType(ContentType.JSON)
         .get(String.format("/organizations/%s/shortlinks", organizationId))
+        .body()
+        .jsonPath()
+        .getString(String.format("id[%d]", index));
+  }
+  
+  protected String getOrganizationIncidentId(String organizationId, int index) {
+    return given() 
+        .baseUri(getApiBasePath())
+        .contentType(ContentType.JSON)
+        .get(String.format("/organizations/%s/incidents", organizationId))
         .body()
         .jsonPath()
         .getString(String.format("id[%d]", index));

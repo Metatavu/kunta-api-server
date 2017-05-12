@@ -22,6 +22,7 @@ import fi.otavanopisto.kuntaapi.server.id.ContactId;
 import fi.otavanopisto.kuntaapi.server.id.ElectronicServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.FragmentId;
 import fi.otavanopisto.kuntaapi.server.id.IdType;
+import fi.otavanopisto.kuntaapi.server.id.IncidentId;
 import fi.otavanopisto.kuntaapi.server.id.MenuId;
 import fi.otavanopisto.kuntaapi.server.id.MenuItemId;
 import fi.otavanopisto.kuntaapi.server.id.MissingOrganizationIdException;
@@ -244,6 +245,17 @@ public class IdentifierController {
     
     for (String shortlinkId : shortlinkIds) {
       result.add(new ShortlinkId(organizationId, source, shortlinkId));
+    }
+    
+    return result;
+  }
+
+  public List<IncidentId> listOrganizationIncidentIdsBySource(OrganizationId organizationId, String source) {
+    List<String> incidentIds = listSourceIdsByOrganizationIdAndSourceAndType(organizationId, source, IdType.INCIDENT.toString());
+    List<IncidentId> result = new ArrayList<>(incidentIds.size());
+    
+    for (String incidentId : incidentIds) {
+      result.add(new IncidentId(organizationId, source, incidentId));
     }
     
     return result;

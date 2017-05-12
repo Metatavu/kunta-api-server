@@ -16,6 +16,7 @@ import fi.metatavu.management.client.model.Menu;
 import fi.otavanopisto.kuntaapi.server.id.AnnouncementId;
 import fi.otavanopisto.kuntaapi.server.id.BannerId;
 import fi.otavanopisto.kuntaapi.server.id.FragmentId;
+import fi.otavanopisto.kuntaapi.server.id.IncidentId;
 import fi.otavanopisto.kuntaapi.server.id.MenuId;
 import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
@@ -130,6 +131,8 @@ public class ManagementWebhookHandler implements WebhookHandler {
         return handleTilePublish(kuntaApiOrganizationId, payload);
       case "shortlink":
         return handleShortlinkPublish(kuntaApiOrganizationId, payload);
+      case "incident":
+        return handleIncidentPublish(kuntaApiOrganizationId, payload);
       case "fragment":
         return handleFragmentPublish(kuntaApiOrganizationId, payload);
       case "announcement":
@@ -160,6 +163,8 @@ public class ManagementWebhookHandler implements WebhookHandler {
         return handleMenuItemTrash(kuntaApiOrganizationId);
       case "shortlink":
         return handleShortlinkTrash(kuntaApiOrganizationId, payload);
+      case "incident":
+        return handleIncidentTrash(kuntaApiOrganizationId, payload);
       case "fragment":
         return handleFragmentTrash(kuntaApiOrganizationId, payload);
       case "announcement":
@@ -205,6 +210,12 @@ public class ManagementWebhookHandler implements WebhookHandler {
   private boolean handleShortlinkTrash(OrganizationId kuntaApiOrganizationId, Payload payload) {
     ShortlinkId shortlinkId = managementIdFactory.createShortlinkId(kuntaApiOrganizationId, payload.getId());
     taskRequest.fire(new TaskRequest(false, new IdTask<ShortlinkId>(Operation.REMOVE, shortlinkId)));
+    return true;
+  }
+  
+  private boolean handleIncidentTrash(OrganizationId kuntaApiOrganizationId, Payload payload) {
+    IncidentId incidentId = managementIdFactory.createIncidentId(kuntaApiOrganizationId, payload.getId());
+    taskRequest.fire(new TaskRequest(false, new IdTask<IncidentId>(Operation.REMOVE, incidentId)));
     return true;
   }
 
@@ -257,6 +268,12 @@ public class ManagementWebhookHandler implements WebhookHandler {
   private boolean handleShortlinkPublish(OrganizationId kuntaApiOrganizationId, Payload payload) {
     ShortlinkId shortlinkId = new ShortlinkId(kuntaApiOrganizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
     taskRequest.fire(new TaskRequest(true, new IdTask<ShortlinkId>(Operation.UPDATE, shortlinkId, null)));
+    return true;
+  }
+
+  private boolean handleIncidentPublish(OrganizationId kuntaApiOrganizationId, Payload payload) {
+    IncidentId incidentId = new IncidentId(kuntaApiOrganizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
+    taskRequest.fire(new TaskRequest(true, new IdTask<IncidentId>(Operation.UPDATE, incidentId, null)));
     return true;
   }
 
