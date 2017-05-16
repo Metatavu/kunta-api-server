@@ -19,6 +19,7 @@ public class TilannehuoneTranslator {
     result.setExtent(tilannehuoneEmergency.getExtent());
     result.setId(kuntaApiEmergencyId.getId());
     result.setLatitude(tilannehuoneEmergency.getLatitude());
+    result.setLongitude(tilannehuoneEmergency.getLongitude());
     result.setLocation(tilannehuoneEmergency.getLocation());
     result.setSources(translateSources(tilannehuoneEmergency.getSources()));
     result.setTime(tilannehuoneEmergency.getTime());
