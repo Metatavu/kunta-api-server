@@ -63,8 +63,10 @@ public class TilannehuoneIdUpdater extends IdUpdater {
     try (InputStream fileStream = new FileInputStream(importFile)) {
       List<Emergency> tilannehuoneEmergencies = objectMapper.readValue(fileStream, new TypeReference<List<Emergency>>() {});
       if (tilannehuoneEmergencies != null) {
+        long orderIndex = System.currentTimeMillis();
         for (Emergency tilannehuoneEmergency : tilannehuoneEmergencies) {
-          tilannehuoneEmergencyTaskQueue.enqueueTask(false, new TilannehuoneEmergencyEntityTask(tilannehuoneEmergency));
+          tilannehuoneEmergencyTaskQueue.enqueueTask(false, new TilannehuoneEmergencyEntityTask(tilannehuoneEmergency, orderIndex));
+          orderIndex++;
         }
       }
     } catch (FileNotFoundException e) {

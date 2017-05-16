@@ -83,7 +83,7 @@ public class TilannehuoneEntityUpdater extends EntityUpdater {
       OrganizationId kuntaApiOrganizationId = organizationSettingController.findOrganizationIdByKeyAndValue(TilannehuoneConsts.ORGANIZATION_SETTING_AREA, tilannehuoneEmergency.getArea());
       if (kuntaApiOrganizationId != null) {
         EmergencyId tilannehuoneEmergencyId = tilannehuoneIdFactory.createEmergencyId(kuntaApiOrganizationId, tilannehuoneEmergency.getId());
-        Long orderIndex = tilannehuoneEmergency.getTime().toInstant().toEpochMilli();
+        Long orderIndex = task.getOrderIndex();
         Identifier identifier = identifierController.acquireIdentifier(orderIndex, tilannehuoneEmergencyId);
         EmergencyId kuntaApiEmergencyId = kuntaApiIdFactory.createFromIdentifier(EmergencyId.class, identifier);
         identifierRelationController.setParentId(identifier, kuntaApiOrganizationId);
