@@ -172,6 +172,10 @@ public class MikkeliNytEventProvider implements EventProvider {
   }
   
   private AttachmentData scaleEventImage(AttachmentData imageData, Integer size) {
+    if (imageData == null) {
+      return null;
+    }
+    
     BufferedImage bufferedImage = imageReader.readBufferedImage(imageData.getData());
     if (bufferedImage != null) {
       String formatName = imageWriter.getFormatName(imageData.getType());
