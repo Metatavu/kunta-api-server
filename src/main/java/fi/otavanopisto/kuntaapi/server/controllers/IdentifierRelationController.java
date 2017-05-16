@@ -14,6 +14,7 @@ import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.BannerId;
 import fi.otavanopisto.kuntaapi.server.id.BaseId;
 import fi.otavanopisto.kuntaapi.server.id.ContactId;
+import fi.otavanopisto.kuntaapi.server.id.EmergencyId;
 import fi.otavanopisto.kuntaapi.server.id.EventId;
 import fi.otavanopisto.kuntaapi.server.id.FragmentId;
 import fi.otavanopisto.kuntaapi.server.id.IdType;
@@ -255,6 +256,23 @@ public class IdentifierRelationController {
     for (Identifier identifier : identifiers) {
       OrganizationId organizationId = new OrganizationId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getOrganizationKuntaApiId());
       result.add(new IncidentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId()));
+    }
+    
+    return result;
+  }
+  
+  /**
+   * Lists emergency ids by source and parent id. 
+   * 
+   * @param parentId parent id
+   * @return emergency ids by parent id
+   */
+  public List<EmergencyId> listEmergencyIdsBySourceAndParentId(String source, BaseId parentId) {
+    List<Identifier> identifiers = listChildIdentifiersByParentSourceAndType(parentId, source, IdType.EMERGENCY);
+    List<EmergencyId> result = new ArrayList<>(identifiers.size());
+    for (Identifier identifier : identifiers) {
+      OrganizationId organizationId = new OrganizationId(KuntaApiConsts.IDENTIFIER_NAME, identifier.getOrganizationKuntaApiId());
+      result.add(new EmergencyId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId()));
     }
     
     return result;

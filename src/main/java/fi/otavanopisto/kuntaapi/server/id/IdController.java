@@ -91,6 +91,8 @@ public class IdController {
         return translateShortlinkId((ShortlinkId) id, target);
       case INCIDENT:
         return translateIncidentId((IncidentId) id, target);
+      case EMERGENCY:
+        return translateEmergencyId((EmergencyId) id, target);
       default:
         return null;
     }
@@ -775,6 +777,30 @@ public class IdController {
     IdProvider idProvider = getIdProvider(incidentId.getSource(), target);
     if (idProvider != null) {
       return idProvider.translate(incidentId, target);
+    }
+    
+    return null;
+  }
+  
+  /**
+   * Translates emergency id into into target id
+   * 
+   * @param emergencyId id to be translated
+   * @param target target
+   * @return translated id or null if translation has failed
+   */
+  public EmergencyId translateEmergencyId(EmergencyId emergencyId, String target) {
+    if (emergencyId == null) {
+      return null;
+    }
+
+    if (StringUtils.equals(emergencyId.getSource(), target)) {
+      return emergencyId;
+    }
+    
+    IdProvider idProvider = getIdProvider(emergencyId.getSource(), target);
+    if (idProvider != null) {
+      return idProvider.translate(emergencyId, target);
     }
     
     return null;
