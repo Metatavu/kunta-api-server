@@ -14,6 +14,7 @@ import fi.otavanopisto.kuntaapi.server.id.BannerId;
 import fi.otavanopisto.kuntaapi.server.id.BaseId;
 import fi.otavanopisto.kuntaapi.server.id.ContactId;
 import fi.otavanopisto.kuntaapi.server.id.ElectronicServiceChannelId;
+import fi.otavanopisto.kuntaapi.server.id.EmergencyId;
 import fi.otavanopisto.kuntaapi.server.id.EventId;
 import fi.otavanopisto.kuntaapi.server.id.FileId;
 import fi.otavanopisto.kuntaapi.server.id.FragmentId;
@@ -205,6 +206,11 @@ public abstract class AbstractIdProvider implements IdProvider {
   @Override
   public IncidentId translate(IncidentId incidentId, String target) {
     return translateId(incidentId, IdType.INCIDENT, IncidentId.class, target);
+  }
+
+  @Override
+  public EmergencyId translate(EmergencyId emergencyId, String target) {
+    return translateId(emergencyId, IdType.EMERGENCY, EmergencyId.class, target);
   }
   
   private <T extends BaseId> T translateId(T id, IdType type, Class<T> idClass, String target) {

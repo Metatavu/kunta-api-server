@@ -63,6 +63,29 @@ public class OrganizationSettingDAO extends AbstractDAO<OrganizationSetting> {
   }
 
   /**
+   * Finds organization setting by key and value
+   * 
+   * @param key setting key
+   * @param value setting value
+   * @return found setting or null if non found
+   */
+  public OrganizationSetting findByKeyAndValue(String key, String value) {
+    EntityManager entityManager = getEntityManager();
+
+    CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+    CriteriaQuery<OrganizationSetting> criteria = criteriaBuilder.createQuery(OrganizationSetting.class);
+    Root<OrganizationSetting> root = criteria.from(OrganizationSetting.class);
+    criteria.select(root);
+    criteria.where(
+      criteriaBuilder.and(
+        criteriaBuilder.equal(root.get(OrganizationSetting_.key), key),
+        criteriaBuilder.equal(root.get(OrganizationSetting_.value), value)
+      )
+    );
+    
+    return getSingleResult(entityManager.createQuery(criteria));
+  }
+  /**
    * Lists organization settings
    * 
    * @param organizationKuntaApiId organization's Kunta API id

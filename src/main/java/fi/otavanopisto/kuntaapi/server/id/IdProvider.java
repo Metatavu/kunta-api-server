@@ -268,5 +268,14 @@ public interface IdProvider {
    * @return translated id
    */
   public IncidentId translate(IncidentId incidentId, String target);
+  
+  /**
+   * Translate emergency id
+   * 
+   * @param emergencyId original id
+   * @param target target type
+   * @return translated id
+   */
+  public EmergencyId translate(EmergencyId emergencyId, String target);
 
 }
