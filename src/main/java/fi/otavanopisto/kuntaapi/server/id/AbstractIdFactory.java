@@ -54,6 +54,10 @@ public abstract class AbstractIdFactory {
     return createId(IncidentId.class, kuntaApiOrganizationId, id);
   }
   
+  public EmergencyId createEmergencyId(OrganizationId kuntaApiOrganizationId, String id) {
+    return createId(EmergencyId.class, kuntaApiOrganizationId, id);
+  }
+  
   public FragmentId createFragmentId(OrganizationId kuntaApiOrganizationId, String id) {
     return createId(FragmentId.class, kuntaApiOrganizationId, id);
   }

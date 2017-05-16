@@ -13,6 +13,7 @@ import org.apache.commons.lang3.StringUtils;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
+import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
 import fi.otavanopisto.kuntaapi.server.persistence.dao.OrganizationSettingDAO;
 import fi.otavanopisto.kuntaapi.server.persistence.model.OrganizationSetting;
 
@@ -35,6 +36,9 @@ public class OrganizationSettingController {
   
   @Inject
   private IdController idController;
+
+  @Inject
+  private KuntaApiIdFactory kuntaApiIdFactory;
   
   /**
    * Returns organization setting by key or null if setting is not defined
@@ -156,6 +160,19 @@ public class OrganizationSettingController {
     }
   }
 
+  public OrganizationId findOrganizationIdByKeyAndValue(String key, String value) {
+    OrganizationSetting organizationSetting = findOrganizationSettingByKeyAndValue(key, value);
+    if (organizationSetting == null) {
+      return null;
+    }
+    
+    return kuntaApiIdFactory.createOrganizationId(organizationSetting.getOrganizationKuntaApiId());
+  }
+
+  private OrganizationSetting findOrganizationSettingByKeyAndValue(String key, String value) {
+    return organizationSettingDAO.findByKeyAndValue(key, value);
+  }
+  
   /**
    * Deletes an organization setting
    * 

@@ -21,6 +21,7 @@ import fi.metatavu.kuntaapi.server.rest.model.Announcement;
 import fi.metatavu.kuntaapi.server.rest.model.Attachment;
 import fi.metatavu.kuntaapi.server.rest.model.Banner;
 import fi.metatavu.kuntaapi.server.rest.model.Contact;
+import fi.metatavu.kuntaapi.server.rest.model.Emergency;
 import fi.metatavu.kuntaapi.server.rest.model.Event;
 import fi.metatavu.kuntaapi.server.rest.model.FileDef;
 import fi.metatavu.kuntaapi.server.rest.model.Fragment;
@@ -44,6 +45,7 @@ import fi.otavanopisto.kuntaapi.server.controllers.AnnouncementController;
 import fi.otavanopisto.kuntaapi.server.controllers.BannerController;
 import fi.otavanopisto.kuntaapi.server.controllers.ClientContainer;
 import fi.otavanopisto.kuntaapi.server.controllers.ContactController;
+import fi.otavanopisto.kuntaapi.server.controllers.EmergencyController;
 import fi.otavanopisto.kuntaapi.server.controllers.EventController;
 import fi.otavanopisto.kuntaapi.server.controllers.FileController;
 import fi.otavanopisto.kuntaapi.server.controllers.FragmentController;
@@ -62,6 +64,7 @@ import fi.otavanopisto.kuntaapi.server.id.AnnouncementId;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.BannerId;
 import fi.otavanopisto.kuntaapi.server.id.ContactId;
+import fi.otavanopisto.kuntaapi.server.id.EmergencyId;
 import fi.otavanopisto.kuntaapi.server.id.EventId;
 import fi.otavanopisto.kuntaapi.server.id.FileId;
 import fi.otavanopisto.kuntaapi.server.id.FragmentId;
@@ -85,6 +88,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.AnnouncementProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.AnnouncementProvider.AnnouncementOrder;
 import fi.otavanopisto.kuntaapi.server.integrations.AnnouncementProvider.AnnouncementOrderDirection;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
+import fi.otavanopisto.kuntaapi.server.integrations.EmergencySortBy;
 import fi.otavanopisto.kuntaapi.server.integrations.EventProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.IncidentSortBy;
 import fi.otavanopisto.kuntaapi.server.integrations.JobProvider;
@@ -166,6 +170,9 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   @Inject
   private IncidentController incidentController;
+
+  @Inject
+  private EmergencyController emergencyController;
   
   @Inject
   private KuntaApiIdFactory kuntaApiIdFactory;
@@ -1694,6 +1701,69 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     return httpCacheController.sendModified(result, ids);
   }
 
+  /* Emergencies */
+  
+  @Override
+  public Response findOrganizationEmergency(String organizationIdParam, String emergencyIdParam, Request request) {
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    EmergencyId emergencyId = kuntaApiIdFactory.createEmergencyId(organizationId, emergencyIdParam);
+    if (emergencyId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+
+    Response notModified = httpCacheController.getNotModified(request, emergencyId);
+    if (notModified != null) {
+      return notModified;
+    }
+    
+    Emergency emergency = emergencyController.findEmergency(organizationId, emergencyId);
+    if (emergency != null) {
+      return httpCacheController.sendModified(emergency, emergency.getId());
+    }
+    
+    return createNotFound(NOT_FOUND);
+  }
+  
+  @Override
+  public Response listOrganizationEmergencies(String organizationIdParam, String location, String before, String after,
+      Integer firstResult, Integer maxResults, String sortByParam, String sortDirParam, Request request) {
+    
+    Response validateResponse = validateListLimitParams(firstResult, maxResults);
+    if (validateResponse != null) {
+      return validateResponse;
+    }
+    
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+
+    EmergencySortBy sortBy = resolveEmergencySortBy(sortByParam);
+    if (sortBy == null) {
+      return createBadRequest(INVALID_VALUE_FOR_SORT_BY);
+    }
+    
+    SortDir sortDir = resolveSortDir(sortDirParam);
+    if (sortDir == null) {
+      return createBadRequest(INVALID_VALUE_FOR_SORT_DIR);
+    }
+    
+    List<Emergency> result = emergencyController.listEmergencies(organizationId, location, getDateTime(before), getDateTime(after), 
+        sortBy, sortDir, firstResult, maxResults);
+    
+    List<String> ids = httpCacheController.getEntityIds(result);
+    Response notModified = httpCacheController.getNotModified(request, ids);
+    if (notModified != null) {
+      return notModified;
+    }
+
+    return httpCacheController.sendModified(result, ids);
+  }
+
   private SortDir resolveSortDir(String sortDirParam) {
     SortDir sortDir = SortDir.ASC;
     if (sortDirParam != null) {
@@ -1715,6 +1785,14 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     IncidentSortBy sortBy = IncidentSortBy.NATURAL;
     if (sortByParam != null) {
       return  EnumUtils.getEnum(IncidentSortBy.class, sortByParam);
+    }
+    return sortBy;
+  }
+
+  private EmergencySortBy resolveEmergencySortBy(String sortByParam) {
+    EmergencySortBy sortBy = EmergencySortBy.NATURAL;
+    if (sortByParam != null) {
+      return  EnumUtils.getEnum(EmergencySortBy.class, sortByParam);
     }
     return sortBy;
   }

@@ -1,0 +1,382 @@
+[
+  {
+    "id":"07e97a3d17927703655f4d0cb6eb5d0a",
+    "url":"http://www.tilannehuone.fi/tehtava.php?hash=07e97a3d17927703655f4d0cb6eb5d0a",
+    "location":"Kirkkonummi",
+    "area":"Etelä-Savon pelastuslaitos",
+    "time":"2017-05-16T06:23:01.000Z",
+    "description":null,
+    "extent":null,
+    "type":"palohälytys",
+    "sources":[
+
+    ]
+  },
+  {
+    "id":"31695cb05d0b482971cf91dec8b12061",
+    "url":"http://www.tilannehuone.fi/tehtava.php?hash=31695cb05d0b482971cf91dec8b12061",
+    "location":"Turku",
+    "area":null,
+    "time":"2017-05-16T06:13:01.000Z",
+    "description":null,
+    "extent":null,
+    "type":"palohälytys",
+    "sources":[
+
+    ]
+  },
+  {
+    "id":"14857aba356ec79d94c9912d4d72a18c",
+    "url":"http://www.tilannehuone.fi/tehtava.php?hash=14857aba356ec79d94c9912d4d72a18c",
+    "location":"Helsinki",
+    "area":"Helsingin kaupungin pelastuslaitos",
+    "time":"2017-05-16T06:04:00.000Z",
+    "description":null,
+    "extent":"pieni",
+    "type":"tieliikenneonnettomuus",
+    "latitude": "12.34",
+    "longitude": "34.56",
+    "sources":[{
+      "name": "Testi",
+      "url": "http://example.com"
+    }]
+  },
+  {
+    "id":"8b4c74f00f2b89edd542225c06ee8f74",
+    "url":"http://www.tilannehuone.fi/tehtava.php?hash=8b4c74f00f2b89edd542225c06ee8f74",
+    "location":"Kerava",
+    "area":null,
+    "time":"2017-05-16T05:55:01.000Z",
+    "description":null,
+    "extent":null,
+    "type":"palohälytys",
+    "sources":[
+
+    ]
+  },
+  {
+    "id":"aaefd4e4d68389f4245cd01aa8b89191",
+    "url":"http://www.tilannehuone.fi/tehtava.php?hash=aaefd4e4d68389f4245cd01aa8b89191",
+    "location":"Tampere",
+    "area":null,
+    "time":"2017-05-16T05:57:02.000Z",
+    "description":null,
+    "extent":"pieni",
+    "type":"öljyvah./ymp.onnet. maalla",
+    "sources":[
+
+    ]
+  },
+  {
+    "id":"956b94ec0ed0c0fb3377f6c46d391378",
+    "url":"http://www.tilannehuone.fi/tehtava.php?hash=956b94ec0ed0c0fb3377f6c46d391378",
+    "location":"Vihti",
+    "area":null,
+    "time":"2017-05-16T05:49:01.000Z",
+    "description":null,
+    "extent":"pieni",
+    "type":"maastopalo",
+    "sources":[
+
+    ]
+  },
+  {
+    "id":"e953858c57dc69a5eae2f591b0bd873a",
+    "url":"http://www.tilannehuone.fi/tehtava.php?hash=e953858c57dc69a5eae2f591b0bd873a",
+    "location":"Iisalmi",
+    "area":null,
+    "time":"2017-05-16T05:47:01.000Z",
+    "description":null,
+    "extent":"pieni",
+    "type":"vahingontorjunta",
+    "sources":[
+
+    ]
+  },
+  {
+    "id":"7fdc781902b4a7dd21d58d26c8759dfc",
+    "url":"http://www.tilannehuone.fi/tehtava.php?hash=7fdc781902b4a7dd21d58d26c8759dfc",
+    "location":"Vantaa",
+    "area":null,
+    "time":"2017-05-16T05:47:01.000Z",
+    "description":null,
+    "extent":"pieni",
+    "type":"öljyvah./ymp.onnet. maalla",
+    "sources":[
+
+    ]
+  },
+  {
+    "id":"f7e6afac52ed9bf126b4059fa7315dc9",
+    "url":"http://www.tilannehuone.fi/tehtava.php?hash=f7e6afac52ed9bf126b4059fa7315dc9",
+    "location":"Virrat",
+    "area":null,
+    "time":"2017-05-16T05:42:01.000Z",
+    "description":null,
+    "extent":null,
+    "type":"palohälytys",
+    "sources":[
+
+    ]
+  },
+  {
+    "id":"f5eeea1ec5409ef32cc82b6c9cea1eac",
+    "url":"http://www.tilannehuone.fi/tehtava.php?hash=f5eeea1ec5409ef32cc82b6c9cea1eac",
+    "location":"Urjala",
+    "area":null,
+    "time":"2017-05-16T05:39:01.000Z",
+    "description":null,
+    "extent":"pieni",
+    "type":"vahingontorjunta",
+    "sources":[
+
+    ]
+  },
+  {
+    "id":"e711b1c9931dce26d1d4a7614d0a627a",
+    "url":"http://www.tilannehuone.fi/tehtava.php?hash=e711b1c9931dce26d1d4a7614d0a627a",
+    "location":"Espoo",
+    "area":null,
+    "time":"2017-05-16T05:39:01.000Z",
+    "description":null,
+    "extent":null,
+    "type":"palohälytys",
+    "sources":[
+
+    ]
+  },
+  {
+    "id":"054ac93806eec07464125e5871ee834d",
+    "url":"http://www.tilannehuone.fi/tehtava.php?hash=054ac93806eec07464125e5871ee834d",
+    "location":"Helsinki",
+    "area":"Helsingin kaupungin pelastuslaitos",
+    "time":"2017-05-16T05:39:00.000Z",
+    "description":null,
+    "extent":"keskisuuri",
+    "type":"liikennevälinepalo",
+    "sources":[
+
+    ]
+  },
+  {
+    "id":"5f696e25add35ecda4e559651e6b60a1",
+    "url":"http://www.tilannehuone.fi/tehtava.php?hash=5f696e25add35ecda4e559651e6b60a1",
+    "location":"Helsinki",
+    "area":"Helsingin kaupungin pelastuslaitos",
+    "time":"2017-05-16T05:39:00.000Z",
+    "description":null,
+    "extent":"keskisuuri",
+    "type":"liikennevälinepalo",
+    "sources":[
+
+    ]
+  },
+  {
+    "id":"510405c18e995e91650374055e95c789",
+    "url":"http://www.tilannehuone.fi/tehtava.php?hash=510405c18e995e91650374055e95c789",
+    "location":"Äänekoski",
+    "area":null,
+    "time":"2017-05-16T05:39:01.000Z",
+    "description":null,
+    "extent":null,
+    "type":"palohälytys",
+    "sources":[
+
+    ]
+  },
+  {
+    "id":"ef83879cbd1f8066c374298566f07d81",
+    "url":"http://www.tilannehuone.fi/tehtava.php?hash=ef83879cbd1f8066c374298566f07d81",
+    "location":"Porvoo",
+    "area":null,
+    "time":"2017-05-16T05:39:01.000Z",
+    "description":null,
+    "extent":null,
+    "type":"palohälytys",
+    "sources":[
+
+    ]
+  },
+  {
+    "id":"4b1533f520eaf825ae02232e100d515c",
+    "url":"http://www.tilannehuone.fi/tehtava.php?hash=4b1533f520eaf825ae02232e100d515c",
+    "location":"Tampere",
+    "area":null,
+    "time":"2017-05-16T05:39:01.000Z",
+    "description":null,
+    "extent":null,
+    "type":"palohälytys",
+    "sources":[
+
+    ]
+  },
+  {
+    "id":"dccd467985a4f5c62cbea898d9684445",
+    "url":"http://www.tilannehuone.fi/tehtava.php?hash=dccd467985a4f5c62cbea898d9684445",
+    "location":"Kurikka",
+    "area":null,
+    "time":"2017-05-16T05:39:01.000Z",
+    "description":null,
+    "extent":"pieni",
+    "type":"tieliikenneonnettomuus",
+    "sources":[
+
+    ]
+  },
+  {
+    "id":"e6d4c1a4fbe44deba4f4507be55a63e5",
+    "url":"http://www.tilannehuone.fi/tehtava.php?hash=e6d4c1a4fbe44deba4f4507be55a63e5",
+    "location":"Loviisa",
+    "area":null,
+    "time":"2017-05-16T04:41:01.000Z",
+    "description":null,
+    "extent":null,
+    "type":"palohälytys",
+    "sources":[
+
+    ]
+  },
+  {
+    "id":"d618f799648f1fd9b2d3223efc90980e",
+    "url":"http://www.tilannehuone.fi/tehtava.php?hash=d618f799648f1fd9b2d3223efc90980e",
+    "location":"Nurmes",
+    "area":"Pohjois-Karjalan pelastuslaitos",
+    "time":"2017-05-16T04:41:01.000Z",
+    "description":null,
+    "extent":"keskisuuri",
+    "type":"rakennuspalo",
+    "sources":[
+
+    ]
+  },
+  {
+    "id":"b9b51d639dbb22b5ce9e82fa72509296",
+    "url":"http://www.tilannehuone.fi/tehtava.php?hash=b9b51d639dbb22b5ce9e82fa72509296",
+    "location":"Tampere",
+    "area":null,
+    "time":"2017-05-16T04:41:01.000Z",
+    "description":null,
+    "extent":"pieni",
+    "type":"öljyvah./ymp.onnet. maalla",
+    "sources":[
+
+    ]
+  },
+  {
+    "id":"52b8b41b9868a5fbaea2b324b58138fe",
+    "url":"http://www.tilannehuone.fi/tehtava.php?hash=52b8b41b9868a5fbaea2b324b58138fe",
+    "location":"Seinäjoki",
+    "area":null,
+    "time":"2017-05-16T06:41:01.000Z",
+    "description":null,
+    "extent":"pieni",
+    "type":"maastopalo",
+    "sources":[
+
+    ]
+  },
+  {
+    "id":"f6c04d6f5a766cbefd4b785c94b5c8ef",
+    "url":"http://www.tilannehuone.fi/tehtava.php?hash=f6c04d6f5a766cbefd4b785c94b5c8ef",
+    "location":"Tampere",
+    "area":null,
+    "time":"2017-05-16T06:46:01.000Z",
+    "description":null,
+    "extent":"pieni",
+    "type":"tulipalo muu",
+    "sources":[
+
+    ]
+  },
+  {
+    "id":"dd4018737955d1977a4fc22ba2144900",
+    "url":"http://www.tilannehuone.fi/tehtava.php?hash=dd4018737955d1977a4fc22ba2144900",
+    "location":"Lieksa",
+    "area":null,
+    "time":"2017-05-16T06:52:01.000Z",
+    "description":null,
+    "extent":"pieni",
+    "type":"vahingontorjunta",
+    "sources":[
+
+    ]
+  },
+  {
+    "id":"f19559b44aeff059d2e629f0be7b683d",
+    "url":"http://www.tilannehuone.fi/tehtava.php?hash=f19559b44aeff059d2e629f0be7b683d",
+    "location":"Tampere",
+    "area":null,
+    "time":"2017-05-16T07:03:01.000Z",
+    "description":null,
+    "extent":"pieni",
+    "type":"öljyvah./ymp.onnet. maalla",
+    "sources":[
+
+    ]
+  },
+  {
+    "id":"e623556c2f43024ebb044d7168371374",
+    "url":"http://www.tilannehuone.fi/tehtava.php?hash=e623556c2f43024ebb044d7168371374",
+    "location":"Hanko",
+    "area":null,
+    "time":"2017-05-16T07:04:01.000Z",
+    "description":null,
+    "extent":"pieni",
+    "type":"rakennuspalo",
+    "sources":[
+
+    ]
+  },
+  {
+    "id":"b4c3bfec88de43e03c7d37c04e9da7b9",
+    "url":"http://www.tilannehuone.fi/tehtava.php?hash=b4c3bfec88de43e03c7d37c04e9da7b9",
+    "location":"Varkaus",
+    "area":null,
+    "time":"2017-05-16T07:06:01.000Z",
+    "description":null,
+    "extent":"pieni",
+    "type":"rakennuspalo",
+    "sources":[
+
+    ]
+  },
+  {
+    "id":"9ab2a3d123eba58472f3f852138145f7",
+    "url":"http://www.tilannehuone.fi/tehtava.php?hash=9ab2a3d123eba58472f3f852138145f7",
+    "location":"Kotka",
+    "area":null,
+    "time":"2017-05-16T07:30:01.000Z",
+    "description":null,
+    "extent":null,
+    "type":"palohälytys",
+    "sources":[
+
+    ]
+  },
+  {
+    "id":"59583b35dbb4c53888b914792293ff2f",
+    "url":"http://www.tilannehuone.fi/tehtava.php?hash=59583b35dbb4c53888b914792293ff2f",
+    "location":"Espoo",
+    "area":null,
+    "time":"2017-05-16T07:35:01.000Z",
+    "description":null,
+    "extent":null,
+    "type":"palohälytys",
+    "sources":[
+
+    ]
+  },
+  {
+    "id":"78c3bab0cf7265cfb49ed92e34ac47a8",
+    "url":"http://www.tilannehuone.fi/tehtava.php?hash=78c3bab0cf7265cfb49ed92e34ac47a8",
+    "location":"Mikkeli",
+    "area":null,
+    "time":"2017-05-16T07:35:01.000Z",
+    "description":null,
+    "extent":"keskisuuri",
+    "type":"liikennevälinepalo",
+    "sources":[
+
+    ]
+  }
+]

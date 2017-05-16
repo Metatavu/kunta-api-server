@@ -20,6 +20,7 @@ import fi.otavanopisto.kuntaapi.server.id.BannerId;
 import fi.otavanopisto.kuntaapi.server.id.BaseId;
 import fi.otavanopisto.kuntaapi.server.id.ContactId;
 import fi.otavanopisto.kuntaapi.server.id.ElectronicServiceChannelId;
+import fi.otavanopisto.kuntaapi.server.id.EmergencyId;
 import fi.otavanopisto.kuntaapi.server.id.FragmentId;
 import fi.otavanopisto.kuntaapi.server.id.IdType;
 import fi.otavanopisto.kuntaapi.server.id.IncidentId;
@@ -256,6 +257,17 @@ public class IdentifierController {
     
     for (String incidentId : incidentIds) {
       result.add(new IncidentId(organizationId, source, incidentId));
+    }
+    
+    return result;
+  }
+
+  public List<EmergencyId> listOrganizationEmergencyIdsBySource(OrganizationId organizationId, String source) {
+    List<String> emergencyIds = listSourceIdsByOrganizationIdAndSourceAndType(organizationId, source, IdType.EMERGENCY.toString());
+    List<EmergencyId> result = new ArrayList<>(emergencyIds.size());
+    
+    for (String emergencyId : emergencyIds) {
+      result.add(new EmergencyId(organizationId, source, emergencyId));
     }
     
     return result;
