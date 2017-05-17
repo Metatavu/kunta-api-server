@@ -47,7 +47,7 @@ public class TilannehuoneIdUpdater extends IdUpdater {
   
   @PostConstruct
   public void init() {
-    lastUpdate = OffsetDateTime.now().minusHours(1);
+    lastUpdate = null;
   }
   
   @Override
@@ -73,7 +73,7 @@ public class TilannehuoneIdUpdater extends IdUpdater {
     
     long orderIndex = System.currentTimeMillis();
     for (Emergency tilannehuoneEmergency : tilannehuoneEmergencies) {
-      if (tilannehuoneEmergency.getTime() != null && tilannehuoneEmergency.getTime().isAfter(lastUpdate)) {
+      if (systemSettingController.isTestRunning() || lastUpdate == null || (tilannehuoneEmergency.getTime() != null && tilannehuoneEmergency.getTime().isAfter(lastUpdate))) {
         tilannehuoneEmergencyTaskQueue.enqueueTask(false, new TilannehuoneEmergencyEntityTask(tilannehuoneEmergency, orderIndex));
       }
       
