@@ -4,11 +4,14 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.time.OffsetDateTime;
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
 import javax.enterprise.context.ApplicationScoped;
@@ -39,6 +42,13 @@ public class TilannehuoneIdUpdater extends IdUpdater {
 
   @Inject
   private SystemSettingController systemSettingController;
+
+  private OffsetDateTime lastUpdate;
+  
+  @PostConstruct
+  public void init() {
+    lastUpdate = OffsetDateTime.now().minusHours(1);
+  }
   
   @Override
   public String getName() {
@@ -51,29 +61,44 @@ public class TilannehuoneIdUpdater extends IdUpdater {
   }
   
   private void updateTilannehuoneEntities() {
+    OffsetDateTime currentUpdateStart = OffsetDateTime.now();
+    
     String importFile = systemSettingController.getSettingValue(TilannehuoneConsts.SYSTEM_SETTING_TILANNEHUONE_IMPORT_FILE);
     if (importFile == null) {
       logger.log(Level.WARNING, "Tilannehuone import file not specified");
       return;
     }
     
+    List<Emergency> tilannehuoneEmergencies = readEmergencies(importFile);
+    
+    long orderIndex = System.currentTimeMillis();
+    for (Emergency tilannehuoneEmergency : tilannehuoneEmergencies) {
+      if (tilannehuoneEmergency.getTime() != null && tilannehuoneEmergency.getTime().isAfter(lastUpdate)) {
+        tilannehuoneEmergencyTaskQueue.enqueueTask(false, new TilannehuoneEmergencyEntityTask(tilannehuoneEmergency, orderIndex));
+      }
+      
+      orderIndex++;
+    }
+    
+    lastUpdate = currentUpdateStart;
+  }
+  
+  private List<Emergency> readEmergencies(String importFile) {
     ObjectMapper objectMapper = new ObjectMapper();
     objectMapper.registerModule(new JavaTimeModule());
     
     try (InputStream fileStream = new FileInputStream(importFile)) {
       List<Emergency> tilannehuoneEmergencies = objectMapper.readValue(fileStream, new TypeReference<List<Emergency>>() {});
       if (tilannehuoneEmergencies != null) {
-        long orderIndex = System.currentTimeMillis();
-        for (Emergency tilannehuoneEmergency : tilannehuoneEmergencies) {
-          tilannehuoneEmergencyTaskQueue.enqueueTask(false, new TilannehuoneEmergencyEntityTask(tilannehuoneEmergency, orderIndex));
-          orderIndex++;
-        }
+        return tilannehuoneEmergencies;        
       }
     } catch (FileNotFoundException e) {
       logger.log(Level.SEVERE, "Failed to read tilannehuone import file", e);
     } catch (IOException e) {
       logger.log(Level.SEVERE, "Failed to parse tilannehuone import file", e);
     }
+    
+    return Collections.emptyList();
   }
   
 }
