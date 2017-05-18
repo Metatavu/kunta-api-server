@@ -3,15 +3,15 @@
   "date":"2017-02-13T06:03:10",
   "date_gmt":"2017-02-13T04:03:10",
   "guid":{
-    "rendered":"http:\/\/api.kunta-api.test:58081\/wp-content\/uploads\/2017\/02\/test-image-1000.jpg"
+    "rendered":"http:\/\/api.kunta-api.test:58081\/wp-content\/uploads\/2017\/02\/test-image-1000-667.jpg"
   },
   "modified":"2017-02-13T06:03:10",
   "modified_gmt":"2017-02-13T04:03:10",
-  "slug":"test-image-1000",
+  "slug":"test-image-1000-667",
   "type":"attachment",
-  "link":"http:\/\/api.kunta-api.test:58081\/test-image-1000\/",
+  "link":"http:\/\/api.kunta-api.test:58081\/test-image-1000-667\/",
   "title":{
-    "rendered":"test-image-1000"
+    "rendered":"test-image-1000-667"
   },
   "author":1,
   "comment_status":"open",
@@ -21,7 +21,7 @@
 
   ],
   "description":{
-    "rendered":"<p class=\"attachment\"><a href='http:\/\/api.kunta-api.test:58081\/wp-content\/uploads\/2017\/02\/test-image-1000.jpg'><img width=\"300\" height=\"200\" src=\"http:\/\/api.kunta-api.test:58081\/wp-content\/uploads\/2017\/02\/test-image-1000-300x200.jpg\" class=\"attachment-medium size-medium\" alt=\"\" srcset=\"http:\/\/api.kunta-api.test:58081\/wp-content\/uploads\/2017\/02\/test-image-1000-300x200.jpg 300w, http:\/\/api.kunta-api.test:58081\/wp-content\/uploads\/2017\/02\/test-image-1000-768x512.jpg 768w, http:\/\/api.kunta-api.test:58081\/wp-content\/uploads\/2017\/02\/test-image-1000.jpg 1000w\" sizes=\"100vw\" \/><\/a><\/p>\n"
+    "rendered":"<p class=\"attachment\"><a href='http:\/\/api.kunta-api.test:58081\/wp-content\/uploads\/2017\/02\/test-image-1000-667.jpg'><img width=\"300\" height=\"200\" src=\"http:\/\/api.kunta-api.test:58081\/wp-content\/uploads\/2017\/02\/test-image-1000-667-300x200.jpg\" class=\"attachment-medium size-medium\" alt=\"\" srcset=\"http:\/\/api.kunta-api.test:58081\/wp-content\/uploads\/2017\/02\/test-image-1000-667-300x200.jpg 300w, http:\/\/api.kunta-api.test:58081\/wp-content\/uploads\/2017\/02\/test-image-1000-667-768x512.jpg 768w, http:\/\/api.kunta-api.test:58081\/wp-content\/uploads\/2017\/02\/test-image-1000-667.jpg 1000w\" sizes=\"100vw\" \/><\/a><\/p>\n"
   },
   "caption":{
     "rendered":""
@@ -32,42 +32,42 @@
   "media_details":{
     "width":1000,
     "height":667,
-    "file":"2017\/02\/test-image-1000.jpg",
+    "file":"2017\/02\/test-image-1000-667.jpg",
     "sizes":{
       "thumbnail":{
-        "file":"test-image-1000-150x150.jpg",
+        "file":"test-image-1000-667-150x150.jpg",
         "width":150,
         "height":150,
         "mime_type":"image\/jpeg",
-        "source_url":"http:\/\/api.kunta-api.test:58081\/wp-content\/uploads\/2017\/02\/test-image-1000-150x150.jpg"
+        "source_url":"http:\/\/api.kunta-api.test:58081\/wp-content\/uploads\/2017\/02\/test-image-1000-667-150x150.jpg"
       },
       "medium":{
-        "file":"test-image-1000-300x200.jpg",
+        "file":"test-image-1000-667-300x200.jpg",
         "width":300,
         "height":200,
         "mime_type":"image\/jpeg",
-        "source_url":"http:\/\/api.kunta-api.test:58081\/wp-content\/uploads\/2017\/02\/test-image-1000-300x200.jpg"
+        "source_url":"http:\/\/api.kunta-api.test:58081\/wp-content\/uploads\/2017\/02\/test-image-1000-667-300x200.jpg"
       },
       "medium_large":{
-        "file":"test-image-1000-768x512.jpg",
+        "file":"test-image-1000-667-768x512.jpg",
         "width":768,
         "height":512,
         "mime_type":"image\/jpeg",
-        "source_url":"http:\/\/api.kunta-api.test:58081\/wp-content\/uploads\/2017\/02\/test-image-1000-768x512.jpg"
+        "source_url":"http:\/\/api.kunta-api.test:58081\/wp-content\/uploads\/2017\/02\/test-image-1000-667-768x512.jpg"
       },
       "twentyseventeen-thumbnail-avatar":{
-        "file":"test-image-1000-100x100.jpg",
+        "file":"test-image-1000-667-100x100.jpg",
         "width":100,
         "height":100,
         "mime_type":"image\/jpeg",
-        "source_url":"http:\/\/api.kunta-api.test:58081\/wp-content\/uploads\/2017\/02\/test-image-1000-100x100.jpg"
+        "source_url":"http:\/\/api.kunta-api.test:58081\/wp-content\/uploads\/2017\/02\/test-image-1000-667-100x100.jpg"
       },
       "full":{
-        "file":"test-image-1000.jpg",
+        "file":"test-image-1000-667.jpg",
         "width":1000,
         "height":667,
         "mime_type":"image\/jpeg",
-        "source_url":"http:\/\/api.kunta-api.test:58081\/wp-content\/uploads\/2017\/02\/test-image-1000.jpg"
+        "source_url":"http:\/\/api.kunta-api.test:58081\/wp-content\/uploads\/2017\/02\/test-image-1000-667.jpg"
       }
     },
     "image_meta":{
@@ -88,7 +88,7 @@
     }
   },
   "post":null,
-  "source_url":"http:\/\/api.kunta-api.test:58081\/wp-content\/uploads\/2017\/02\/test-image-1000.jpg",
+  "source_url":"http:\/\/api.kunta-api.test:58081\/wp-content\/uploads\/2017\/02\/test-image-1000-667.jpg",
   "_links":{
     "self":[
       {
