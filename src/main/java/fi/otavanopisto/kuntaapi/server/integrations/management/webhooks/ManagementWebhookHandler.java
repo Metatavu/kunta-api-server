@@ -227,7 +227,7 @@ public class ManagementWebhookHandler implements WebhookHandler {
 
   private boolean handlePublishPage(OrganizationId organizationId, Payload payload) {
     PageId pageId = new PageId(organizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
-    taskRequest.fire(new TaskRequest(true, new IdTask<PageId>(Operation.UPDATE, pageId, null)));
+    taskRequest.fire(new TaskRequest(true, new IdTask<PageId>(Operation.UPDATE, pageId, payload.getOrderIndex())));
     return true;
   }
 
@@ -237,43 +237,43 @@ public class ManagementWebhookHandler implements WebhookHandler {
 
   private boolean handlePublishBanner(OrganizationId organizationId, Payload payload) {
     BannerId bannerId = new BannerId(organizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
-    taskRequest.fire(new TaskRequest(true, new IdTask<BannerId>(Operation.UPDATE, bannerId, null)));
+    taskRequest.fire(new TaskRequest(true, new IdTask<BannerId>(Operation.UPDATE, bannerId, payload.getOrderIndex())));
     return true;
   }
 
   private boolean handlePublishPost(OrganizationId organizationId, Payload payload) {
     NewsArticleId newsArticleId = new NewsArticleId(organizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
-    taskRequest.fire(new TaskRequest(true, new IdTask<NewsArticleId>(Operation.UPDATE, newsArticleId, null)));
+    taskRequest.fire(new TaskRequest(true, new IdTask<NewsArticleId>(Operation.UPDATE, newsArticleId, payload.getOrderIndex())));
     return true;
   }
 
   private boolean handleTilePublish(OrganizationId organizationId, Payload payload) {
     TileId tileId = new TileId(organizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
-    taskRequest.fire(new TaskRequest(true, new IdTask<TileId>(Operation.UPDATE, tileId, null)));
+    taskRequest.fire(new TaskRequest(true, new IdTask<TileId>(Operation.UPDATE, tileId, payload.getOrderIndex())));
     return true;
   }
 
   private boolean handleFragmentPublish(OrganizationId kuntaApiOrganizationId, Payload payload) {
     FragmentId fragmentId = new FragmentId(kuntaApiOrganizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
-    taskRequest.fire(new TaskRequest(true, new IdTask<FragmentId>(Operation.UPDATE, fragmentId, null)));
+    taskRequest.fire(new TaskRequest(true, new IdTask<FragmentId>(Operation.UPDATE, fragmentId, payload.getOrderIndex())));
     return true;
   }
 
   private boolean handleAnnouncementPublish(OrganizationId kuntaApiOrganizationId, Payload payload) {
     AnnouncementId announcementId = new AnnouncementId(kuntaApiOrganizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
-    taskRequest.fire(new TaskRequest(true, new IdTask<AnnouncementId>(Operation.UPDATE, announcementId, null)));
+    taskRequest.fire(new TaskRequest(true, new IdTask<AnnouncementId>(Operation.UPDATE, announcementId, payload.getOrderIndex())));
     return true;
   }
 
   private boolean handleShortlinkPublish(OrganizationId kuntaApiOrganizationId, Payload payload) {
     ShortlinkId shortlinkId = new ShortlinkId(kuntaApiOrganizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
-    taskRequest.fire(new TaskRequest(true, new IdTask<ShortlinkId>(Operation.UPDATE, shortlinkId, null)));
+    taskRequest.fire(new TaskRequest(true, new IdTask<ShortlinkId>(Operation.UPDATE, shortlinkId, payload.getOrderIndex())));
     return true;
   }
 
   private boolean handleIncidentPublish(OrganizationId kuntaApiOrganizationId, Payload payload) {
     IncidentId incidentId = new IncidentId(kuntaApiOrganizationId, ManagementConsts.IDENTIFIER_NAME, payload.getId());
-    taskRequest.fire(new TaskRequest(true, new IdTask<IncidentId>(Operation.UPDATE, incidentId, null)));
+    taskRequest.fire(new TaskRequest(true, new IdTask<IncidentId>(Operation.UPDATE, incidentId, payload.getOrderIndex())));
     return true;
   }
 

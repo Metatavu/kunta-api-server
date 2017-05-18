@@ -18,6 +18,9 @@ public class Payload {
   @JsonProperty("post_type")
   private String postType;
 
+  @JsonProperty("order_index")
+  private Long orderIndex;
+
   public String getId() {
     return id;
   }
@@ -48,6 +51,14 @@ public class Payload {
 
   public void setPostType(String postType) {
     this.postType = postType;
+  }
+  
+  public Long getOrderIndex() {
+    return orderIndex;
+  }
+  
+  public void setOrderIndex(Long orderIndex) {
+    this.orderIndex = orderIndex;
   }
 
 }
