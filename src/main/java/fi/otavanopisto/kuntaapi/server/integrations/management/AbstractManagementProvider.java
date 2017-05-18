@@ -63,7 +63,7 @@ public abstract class AbstractManagementProvider {
     if (bufferedImage != null) {
       String formatName = imageWriter.getFormatName(imageData.getType());
       
-      BufferedImage scaledImage = imageScaler.scaleMaxSize(bufferedImage, size);
+      BufferedImage scaledImage = imageScaler.scaleToCover(bufferedImage, size, true);
       byte[] scaledImageData = imageWriter.writeBufferedImage(scaledImage, formatName);
       if (scaledImageData != null) {
         String contentType = imageWriter.getContentTypeForFormatName(formatName);

@@ -22,34 +22,84 @@ public class ImageScaler {
   @Inject
   private Logger logger;
   
-  /**
-   * Down scales image into max width / height
+ /**
+   * Scales image to cover size x size
    * 
-   * @param originalImage original image
-   * @param maxSize max width / height of new image
+   * @param originalImage image
+   * @param size desired size
+   * @param downScaleOnly whether to return original if both propotions are lower than desired size
    * @return scaled image
    */
-  public BufferedImage scaleMaxSize(BufferedImage originalImage, int maxSize) {
-    return scaleMaxSize(originalImage, maxSize, null);
+  public BufferedImage scaleToCover(BufferedImage originalImage, int size, boolean downScaleOnly) {
+    return scaleToCover(originalImage, size, downScaleOnly, null);
   }
   
   /**
-   * Down scales image into max width / height. Accepts image observer
+   * Scales image to cover size x size. Accepts imageObserver
    * 
-   * @param originalImage original image
-   * @param maxSize max width / height of new image
+   * @param originalImage image
+   * @param size desired size
+   * @param downScaleOnly whether to return original if both propotions are lower than desired size
    * @param imageObserver image observer
    * @return scaled image
    */
-  public BufferedImage scaleMaxSize(BufferedImage originalImage, int maxSize, ImageObserver imageObserver) {
-    int width = maxSize;
-    int height = maxSize;
+  public BufferedImage scaleToCover(BufferedImage originalImage, int size, boolean downScaleOnly, ImageObserver imageObserver) {
+    int width = originalImage.getWidth();
+    int height = originalImage.getHeight();
     
-    if ((originalImage.getHeight() < maxSize) && (originalImage.getWidth() < maxSize)) {
+    if (downScaleOnly && width < size && height < size) {
+      return originalImage;
+    }
+    
+    if (width > height) {
+      width = -1;
+      height = size;
+    } else {
+      width = size;
+      height = -1;
+    }
+    
+    Image scaledInstance = originalImage.getScaledInstance(width, height, java.awt.Image.SCALE_SMOOTH);
+    
+    if (imageObserver != null) {
+      scaledInstance.getWidth(imageObserver);
+      scaledInstance.getHeight(imageObserver);        
+    } else {
+      scaledInstance.getWidth(null);
+      scaledInstance.getHeight(null);
+    }
+    
+    return toBufferedImage(scaledInstance);
+  }
+  
+  /**
+   * Down scales image to fix size x size
+   * 
+   * @param originalImage original image
+   * @param size max width / height of new image
+   * @return scaled image
+   */
+  public BufferedImage scaleToFit(BufferedImage originalImage, int size) {
+    return scaleToFit(originalImage, size, null);
+  }
+  
+  /**
+   * Down scales image to fix size x size. Accepts image observer
+   * 
+   * @param originalImage original image
+   * @param size max width / height of new image
+   * @param imageObserver image observer
+   * @return scaled image
+   */
+  public BufferedImage scaleToFit(BufferedImage originalImage, int size, ImageObserver imageObserver) {
+    int width = size;
+    int height = size;
+    
+    if ((originalImage.getHeight() < size) && (originalImage.getWidth() < size)) {
       return originalImage;
     }
 
-    if ((originalImage.getHeight() / maxSize) > (originalImage.getWidth() / maxSize))
+    if ((originalImage.getHeight() / size) > (originalImage.getWidth() / size))
       width = -1;
     else
       height = -1;

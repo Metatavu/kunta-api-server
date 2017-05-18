@@ -183,7 +183,7 @@ public class TileTestsIT extends AbstractIntegrationTest {
       .then()
       .assertThat()
       .statusCode(200)
-      .header("Content-Length", "2033")
+      .header("Content-Length", "3295")
       .header("Content-Type", IMAGE_JPEG);
   }
     
