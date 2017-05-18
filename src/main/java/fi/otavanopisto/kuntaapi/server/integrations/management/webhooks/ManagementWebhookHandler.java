@@ -10,6 +10,7 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.math.NumberUtils;
 
 import fi.metatavu.management.client.DefaultApi;
 import fi.metatavu.management.client.model.Menu;
@@ -76,11 +77,16 @@ public class ManagementWebhookHandler implements WebhookHandler {
   }
 
   private Payload parsePayload(HttpServletRequest request) {
+    String orderIndexParam = request.getParameter("order_index");
+    Long orderIndex = NumberUtils.isNumber(orderIndexParam) ? NumberUtils.createLong(orderIndexParam) : null;
+    
     Payload payload = new Payload();
     payload.setId(request.getParameter("ID"));
     payload.setPostStatus(request.getParameter("post_status"));
     payload.setHook(request.getParameter("hook"));
     payload.setPostType(request.getParameter("post_type"));
+    payload.setOrderIndex(orderIndex);
+    
     return payload;
   }
 
