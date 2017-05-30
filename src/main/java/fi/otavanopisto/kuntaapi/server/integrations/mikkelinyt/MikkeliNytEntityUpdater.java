@@ -17,6 +17,7 @@ import javax.ejb.Singleton;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.client.utils.URIBuilder;
@@ -29,11 +30,14 @@ import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.EventId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.BinaryHttpClient;
 import fi.otavanopisto.kuntaapi.server.integrations.BinaryHttpClient.DownloadMeta;
 import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpClient;
 import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpClient.Response;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
+import fi.otavanopisto.kuntaapi.server.integrations.mikkelinyt.resources.MikkeliNytAttachmentDataResourceContainer;
+import fi.otavanopisto.kuntaapi.server.integrations.mikkelinyt.resources.MikkeliNytAttachmentResourceContainer;
 import fi.otavanopisto.kuntaapi.server.integrations.mikkelinyt.tasks.OrganizationEventsTaskQueue;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.resources.EventResourceContainer;
@@ -62,10 +66,16 @@ public class MikkeliNytEntityUpdater extends EntityUpdater {
   private BinaryHttpClient binaryHttpClient;
   
   @Inject
+  private MikkeliNytImageLoader mikkeliNytImageLoader;
+  
+  @Inject
   private EventResourceContainer eventCache;
   
   @Inject
-  private MikkeliNytAttachmentCache mikkeliNytAttachmentCache;
+  private MikkeliNytAttachmentDataResourceContainer mikkeliNytAttachmentDataResourceContainer;
+  
+  @Inject
+  private MikkeliNytAttachmentResourceContainer mikkeliNytAttachmentResourceContainer;
   
   @Inject
   private OrganizationSettingController organizationSettingController; 
@@ -144,11 +154,17 @@ public class MikkeliNytEntityUpdater extends EntityUpdater {
     
     Identifier identifier = identifierController.acquireIdentifier(orderIndex, mikkeliNytAttachmentId);
     identifierRelationController.addChild(eventIdentifier, identifier);
-    AttachmentId kuntaApiId = new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
-    Attachment attachment = translate(kuntaApiId, imageUrl);
+    AttachmentId kuntaApiAttachmentId = new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
+    Attachment attachment = translate(kuntaApiAttachmentId, imageUrl);
 
-    modificationHashCache.put(kuntaApiId.getId(), createPojoHash(attachment));
-    mikkeliNytAttachmentCache.put(kuntaApiId, attachment);
+    mikkeliNytAttachmentResourceContainer.put(kuntaApiAttachmentId, attachment);
+    
+    AttachmentData imageData = mikkeliNytImageLoader.getImageData(organizationId, mikkeliNytAttachmentId);
+    if (imageData != null) {
+      String dataHash = DigestUtils.md5Hex(imageData.getData());
+      modificationHashCache.put(identifier.getKuntaApiId(), dataHash);
+      mikkeliNytAttachmentDataResourceContainer.put(kuntaApiAttachmentId, imageData);
+    }
   }
    
   private void deleteEvent(OrganizationId organizationId, EventId eventId) {
