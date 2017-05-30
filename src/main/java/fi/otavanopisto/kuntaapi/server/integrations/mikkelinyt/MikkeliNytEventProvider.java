@@ -1,19 +1,17 @@
 package fi.otavanopisto.kuntaapi.server.integrations.mikkelinyt;
 
 import java.awt.image.BufferedImage;
-import java.net.URI;
-import java.net.URISyntaxException;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
-import org.apache.commons.lang3.StringUtils;
-import org.apache.http.client.utils.URIBuilder;
-
+import ezvcard.util.IOUtils;
 import fi.metatavu.kuntaapi.server.rest.model.Attachment;
 import fi.metatavu.kuntaapi.server.rest.model.Event;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
@@ -25,13 +23,11 @@ import fi.otavanopisto.kuntaapi.server.images.ImageReader;
 import fi.otavanopisto.kuntaapi.server.images.ImageScaler;
 import fi.otavanopisto.kuntaapi.server.images.ImageWriter;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
-import fi.otavanopisto.kuntaapi.server.integrations.BinaryHttpClient;
-import fi.otavanopisto.kuntaapi.server.integrations.BinaryHttpClient.BinaryResponse;
 import fi.otavanopisto.kuntaapi.server.integrations.EventProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpClient.Response;
+import fi.otavanopisto.kuntaapi.server.integrations.mikkelinyt.resources.MikkeliNytAttachmentDataResourceContainer;
+import fi.otavanopisto.kuntaapi.server.integrations.mikkelinyt.resources.MikkeliNytAttachmentResourceContainer;
 import fi.otavanopisto.kuntaapi.server.resources.EventResourceContainer;
-import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
-import javax.enterprise.context.ApplicationScoped;
+import fi.otavanopisto.kuntaapi.server.resources.StoredBinaryData;
 
 /**
  * Event provider for Mikkeli Nyt
@@ -53,16 +49,16 @@ public class MikkeliNytEventProvider implements EventProvider {
   private IdentifierRelationController identifierRelationController;
   
   @Inject
-  private BinaryHttpClient binaryHttpClient;
-
-  @Inject
   private EventResourceContainer eventCache;
   
   @Inject
-  private MikkeliNytAttachmentCache mikkeliNytAttachmentCache;
+  private MikkeliNytAttachmentDataResourceContainer mikkeliNytAttachmentDataResourceContainer;
   
   @Inject
-  private OrganizationSettingController organizationSettingController;
+  private MikkeliNytAttachmentResourceContainer mikkeliNytAttachmentResourceContainer;
+  
+  @Inject
+  private MikkeliNytImageLoader mikkeliNytImageLoader;
 
   @Inject
   private ImageReader imageReader;
@@ -105,7 +101,7 @@ public class MikkeliNytEventProvider implements EventProvider {
     List<Attachment> result = new ArrayList<>(attachmentIds.size());
     
     for (AttachmentId attachmentId : attachmentIds) {
-      Attachment attachment = mikkeliNytAttachmentCache.get(attachmentId);
+      Attachment attachment = mikkeliNytAttachmentResourceContainer.get(attachmentId);
       if (attachment != null) {
         result.add(attachment);
       }
@@ -120,7 +116,7 @@ public class MikkeliNytEventProvider implements EventProvider {
       return null;
     }
     
-    return mikkeliNytAttachmentCache.get(attachmentId);
+    return mikkeliNytAttachmentResourceContainer.get(attachmentId);
   }
 
   @Override
@@ -135,6 +131,28 @@ public class MikkeliNytEventProvider implements EventProvider {
     }
     
     return imageData;
+  }
+
+  private AttachmentData getImageData(OrganizationId organizationId, AttachmentId attachmentId) {
+    AttachmentData storedAttachmentData = getStoredAttachmentData(attachmentId);
+    if (storedAttachmentData != null) {
+      return storedAttachmentData;
+    }
+    
+    return downloadImageData(organizationId, attachmentId);
+  }
+  
+  private AttachmentData getStoredAttachmentData(AttachmentId attachmentId) {
+    StoredBinaryData storedBinaryData = mikkeliNytAttachmentDataResourceContainer.get(attachmentId);
+    if (storedBinaryData != null) {
+      try {
+        return new AttachmentData(storedBinaryData.getContentType(), IOUtils.toByteArray(storedBinaryData.getDataStream()));
+      } catch (IOException e) {
+        logger.log(Level.SEVERE, "Failed to read stream data", e);
+      } 
+    }
+     
+    return null;
   }
 
   private boolean isWithinTimeRanges(Event event, OffsetDateTime startBefore,
@@ -189,47 +207,15 @@ public class MikkeliNytEventProvider implements EventProvider {
     
     return null;
   }
-
-  private Response<AttachmentData> getImageData(String imageUrl) {
-    URI uri;
-    
-    try {
-      uri = new URIBuilder(imageUrl).build();
-    } catch (URISyntaxException e) {
-      logger.log(Level.SEVERE, String.format("Invalid uri %s", imageUrl), e);
-      return new Response<>(500, "Internal Server Error", null);
-    }
-
-    Response<BinaryResponse> response = binaryHttpClient.downloadBinary(uri);
-    AttachmentData data = null;
-    if (response.getResponseEntity() != null) {
-      data = new AttachmentData(response.getResponseEntity().getType(), response.getResponseEntity().getData());
-    }
-    
-    return new Response<>(response.getStatus(), response.getMessage(), data);
-  }
   
-  private AttachmentData getImageData(OrganizationId organizationId, AttachmentId imageId) {
+  private AttachmentData downloadImageData(OrganizationId organizationId, AttachmentId imageId) {
     AttachmentId mikkeliNytId = idController.translateAttachmentId(imageId, MikkeliNytConsts.IDENTIFIER_NAME);
     if (mikkeliNytId == null) {
       logger.severe(String.format("Failed to translate %s into MikkeliNyt id", imageId.toString()));
       return null;
     }
     
-    String imageBaseUrl = organizationSettingController.getSettingValue(organizationId, MikkeliNytConsts.ORGANIZATION_SETTING_IMAGEBASEURL);
-    if (StringUtils.isNotBlank(imageBaseUrl)) {
-      String imageUrl = String.format("%s%s", imageBaseUrl, mikkeliNytId.getId());
-      Response<AttachmentData> imageDataResponse = getImageData(imageUrl);
-      if (imageDataResponse.isOk()) {
-        return imageDataResponse.getResponseEntity();
-      } else {
-        logger.severe(String.format("Request to find image (%s) data failed on [%d] %s", imageId.toString(), imageDataResponse.getStatus(), imageDataResponse.getMessage()));
-      }
-    }
-    
-    logger.severe(String.format("Image imageBaseUrl has not been configured properly for organization %s", organizationId));
-    
-    return null;
+    return mikkeliNytImageLoader.getImageData(organizationId, mikkeliNytId);
   } 
 
   
