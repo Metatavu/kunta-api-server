@@ -22,6 +22,8 @@ import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 
 @ApplicationScoped
 public class MikkeliNytImageLoader {
+  
+  private static final String[] SIZES = {"1140", "1000"};
 
   @Inject
   private Logger logger;
@@ -35,8 +37,13 @@ public class MikkeliNytImageLoader {
   public AttachmentData getImageData(OrganizationId organizationId, AttachmentId mikkeliNytId) {
     String imageBaseUrl = organizationSettingController.getSettingValue(organizationId, MikkeliNytConsts.ORGANIZATION_SETTING_IMAGEBASEURL);
     if (StringUtils.isNotBlank(imageBaseUrl)) {
-      String imageUrl = String.format("%s%s", imageBaseUrl, mikkeliNytId.getId());
-      return getImageData(imageUrl);
+      for (String size : SIZES) {
+        String imageUrl = String.format("%s/%s/%s", imageBaseUrl, size, mikkeliNytId.getId());
+        AttachmentData imageData = getImageData(imageUrl);
+        if (imageData != null) {
+          return imageData;
+        }
+      }
     }
     
     logger.severe(String.format("Image imageBaseUrl has not been configured properly for organization %s", organizationId));
