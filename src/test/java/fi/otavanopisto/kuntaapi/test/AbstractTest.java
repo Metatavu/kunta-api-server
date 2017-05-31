@@ -43,12 +43,19 @@ public abstract class AbstractTest {
     System.out.println(String.format("> %s", testName.getMethodName()));
   }
   
-  protected ZonedDateTime getZonedDateTime(int year, int month, int dayOfMonth, int hour, int minute, ZoneId zone) {
-    return ZonedDateTime.of(year, month, dayOfMonth, hour, minute, 0, 0, zone);
+  protected ZonedDateTime getZonedDateTime(int year, int month, int dayOfMonth, int hour, int minute, int second, ZoneId zone) {
+    return ZonedDateTime.of(year, month, dayOfMonth, hour, minute, second, 0, zone);
   }
   
   protected OffsetDateTime getOffsetDateTime(int year, int month, int dayOfMonth, int hour, int minute, ZoneId zone) {
-    return getZonedDateTime(year, month, dayOfMonth, hour, minute, zone).toOffsetDateTime();
+    return getZonedDateTime(year, month, dayOfMonth, hour, minute, 0, zone).toOffsetDateTime();
+  }
+  protected OffsetDateTime getOffsetDateTime(int year, int month, int dayOfMonth, int hour, int minute, int second, ZoneId zone) {
+    return getZonedDateTime(year, month, dayOfMonth, hour, minute, second, zone).toOffsetDateTime();
+  }
+
+  protected Instant getInstant(int year, int month, int dayOfMonth, int hour, int minute, int second, ZoneId zone) {
+    return getOffsetDateTime(year, month, dayOfMonth, hour, minute, second, zone).toInstant();
   }
   
   protected Instant getInstant(int year, int month, int dayOfMonth, int hour, int minute, ZoneId zone) {

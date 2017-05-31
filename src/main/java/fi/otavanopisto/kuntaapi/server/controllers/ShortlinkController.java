@@ -32,11 +32,7 @@ public class ShortlinkController {
       result.addAll(shortlinkProvider.listOrganizationShortlinks(organizationId, path));
     }
     
-    int resultCount = result.size();
-    int firstIndex = firstResult == null ? 0 : Math.min(firstResult.intValue(), resultCount);
-    int toIndex = maxResults == null ? resultCount : Math.min(firstIndex + maxResults.intValue(), resultCount);
-    
-    return ListUtils.limit(entityController.sortEntitiesInNaturalOrder(result), firstIndex, toIndex);
+    return ListUtils.limit(entityController.sortEntitiesInNaturalOrder(result), firstResult, maxResults);
   }
 
   public Shortlink findShortlink(OrganizationId organizationId, ShortlinkId shortlinkId) {

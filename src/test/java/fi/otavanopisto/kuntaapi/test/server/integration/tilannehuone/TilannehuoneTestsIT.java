@@ -109,7 +109,7 @@ public class TilannehuoneTestsIT extends AbstractIntegrationTest {
       .statusCode(200)
       .body("id.size()", is(3))
       .body("location[1]", is("Helsinki"))
-      .body("time[1]", sameInstant(getInstant(2017, 5, 16, 8, 39, TIMEZONE_ID)))
+      .body("time[1]", sameInstant(getInstant(2017, 5, 16, 8, 39, 1, TIMEZONE_ID)))
       .body("description[1]", nullValue())
       .body("extent[1]", is("keskisuuri"))
       .body("type[1]", is("liikennevälinepalo"))
@@ -136,7 +136,31 @@ public class TilannehuoneTestsIT extends AbstractIntegrationTest {
     given() 
       .baseUri(getApiBasePath())
       .contentType(ContentType.JSON)
-      .get("/organizations/{organizationId}/emergencies?sortBy=START", getOrganizationId(0))
+      .get("/organizations/{organizationId}/emergencies?orderBy=START", getOrganizationId(0))
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(3))
+      .body("url[0]", is("http://www.tilannehuone.fi/tehtava.php?hash=5f696e25add35ecda4e559651e6b60a1"))
+      .body("url[1]", is("http://www.tilannehuone.fi/tehtava.php?hash=054ac93806eec07464125e5871ee834d"))
+      .body("url[2]", is("http://www.tilannehuone.fi/tehtava.php?hash=14857aba356ec79d94c9912d4d72a18c"));
+    
+    given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get("/organizations/{organizationId}/emergencies?orderBy=START&orderDir=ASC", getOrganizationId(0))
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(3))
+      .body("url[0]", is("http://www.tilannehuone.fi/tehtava.php?hash=5f696e25add35ecda4e559651e6b60a1"))
+      .body("url[1]", is("http://www.tilannehuone.fi/tehtava.php?hash=054ac93806eec07464125e5871ee834d"))
+      .body("url[2]", is("http://www.tilannehuone.fi/tehtava.php?hash=14857aba356ec79d94c9912d4d72a18c"));
+    
+    given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get("/organizations/{organizationId}/emergencies?orderBy=START&orderDir=DESC", getOrganizationId(0))
       .then()
       .assertThat()
       .statusCode(200)
@@ -148,10 +172,6 @@ public class TilannehuoneTestsIT extends AbstractIntegrationTest {
 
   @Test
   public void testListEmergenciesFilterByTimes() {
-    // 2017-05-16T08:39:01.000Z
-    // 2017-05-16T08:39:01.000Z
-    // 2017-05-16T09:04:00.000Z
-    
     given() 
       .baseUri(getApiBasePath())
       .contentType(ContentType.JSON)
@@ -161,7 +181,7 @@ public class TilannehuoneTestsIT extends AbstractIntegrationTest {
       .statusCode(200)
       .body("id.size()", is(2))
       .body("id[0]", notNullValue())
-      .body("time[0]", sameInstant(getInstant(2017, 5, 16, 8, 39, TIMEZONE_ID)));
+      .body("time[0]", sameInstant(getInstant(2017, 5, 16, 8, 39, 1, TIMEZONE_ID)));
     
     given() 
       .baseUri(getApiBasePath())

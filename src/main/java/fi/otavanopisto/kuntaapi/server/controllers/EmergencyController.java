@@ -36,17 +36,13 @@ public class EmergencyController {
       result.addAll(emergencyProvider.listOrganizationEmergencies(organizationId, location, before, after));
     }
     
-    int resultCount = result.size();
-    int firstIndex = firstResult == null ? 0 : Math.min(firstResult.intValue(), resultCount);
-    int toIndex = maxResults == null ? resultCount : Math.min(firstIndex + maxResults.intValue(), resultCount);
-    
     if (sortBy == EmergencySortBy.NATURAL) {
       result = entityController.sortEntitiesInNaturalOrder(result, sortDir);
     } else {
       Collections.sort(result, new EmergencyTimeComparator(sortDir));
     }
     
-    return ListUtils.limit(result, firstIndex, toIndex);
+    return ListUtils.limit(result, firstResult, maxResults);
   }
 
   public Emergency findEmergency(OrganizationId organizationId, EmergencyId emergencyId) {
@@ -83,7 +79,7 @@ public class EmergencyController {
     public int compare(Emergency emergency1, Emergency emergency2) {
       int result = compareTimes(emergency1, emergency2);
 
-      if (sortDir == SortDir.ASC) {
+      if (sortDir == SortDir.DESC) {
         return -result;
       } 
       

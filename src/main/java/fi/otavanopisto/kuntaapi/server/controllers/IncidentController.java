@@ -36,17 +36,13 @@ public class IncidentController {
       result.addAll(incidentProvider.listOrganizationIncidents(organizationId, slug, startBefore, endAfter));
     }
     
-    int resultCount = result.size();
-    int firstIndex = firstResult == null ? 0 : Math.min(firstResult.intValue(), resultCount);
-    int toIndex = maxResults == null ? resultCount : Math.min(firstIndex + maxResults.intValue(), resultCount);
-    
     if (sortBy == IncidentSortBy.NATURAL) {
       result = entityController.sortEntitiesInNaturalOrder(result, sortDir);
     } else {
       Collections.sort(result, new IncidentComparator(sortBy, sortDir));
     }
     
-    return ListUtils.limit(result, firstIndex, toIndex);
+    return ListUtils.limit(result, firstResult, maxResults);
   }
 
   public Incident findIncident(OrganizationId organizationId, IncidentId incidentId) {
