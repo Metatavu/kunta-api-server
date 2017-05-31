@@ -18,6 +18,8 @@
   "incident_areas": [],
   "incident_type": "severe",
   "description": "Karhu havaittu liikkumassa alueella Hirvensalmi - Joroinen - Juva",
+  "details_link": "https://example.org/example-details",
+  "details_link_text":null,
   "areas": [
     "Hirvensalmi",
     "Joroinen",

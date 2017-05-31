@@ -18,6 +18,8 @@
   "incident_areas": [],
   "incident_type": "severe",
   "description": "Vaarallisia kemikaaleja vuotanut Mikkelin torille",
+  "details_link": "",
+  "details_link_text":"Example details",
   "areas": [
     "Mikkelin kaupunki"
   ],

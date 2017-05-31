@@ -233,15 +233,17 @@ public class MikkeliNytRestTestsIT extends AbstractIntegrationTest {
     String eventPlace = TEST_EVENT_PLACE;
     String eventThumbPath = String.format("%s/480/%s", imagesBasePath, attachmentId);
     String eventImagePath = String.format("%s/1000/%s", imagesBasePath, attachmentId);
+    String eventLargePath = String.format("%s/1140/%s", imagesBasePath, attachmentId);
     String eventThumb = String.format("%s%s", baseUrl, eventThumbPath);
-    String eventImage = String.format("%s%s", baseUrl, eventImagePath);
+    String eventLarge = String.format("%s%s", baseUrl, eventLargePath);
     
     OffsetDateTime start = getOffsetDateTime(2020, 5, 6, 17, 30, TIMEZONE_ID);
     OffsetDateTime end = getOffsetDateTime(2020, 5, 6, 19, 00, TIMEZONE_ID);
 
     mocker.mockGetBinary(eventImagePath, TEST_EVENT_ATTACHMENT_TYPE, "test-image-1000-667.jpg");
+    mocker.mockGetBinary(eventLargePath, TEST_EVENT_ATTACHMENT_TYPE, "test-image-1000-667.jpg");
     
-    return mocker.mockEvent(eventId, eventUrl, eventName, eventDescription, eventCity, eventAddres, eventZip, eventPlace, eventImage, eventThumb, start, end);
+    return mocker.mockEvent(eventId, eventUrl, eventName, eventDescription, eventCity, eventAddres, eventZip, eventPlace, eventLarge, eventThumb, start, end);
   }
 
   private void cleanMock(MikkeliNytMocker mocker) {
@@ -252,7 +254,7 @@ public class MikkeliNytRestTestsIT extends AbstractIntegrationTest {
     insertOrganizationSetting(organizationId, MikkeliNytConsts.ORGANIZATION_SETTING_APIKEY, ORGANIZATION_SETTING_APIKEY);
     insertOrganizationSetting(organizationId, MikkeliNytConsts.ORGANIZATION_SETTING_LOCATION, ORGANIZATION_SETTING_LOCATION);
     insertOrganizationSetting(organizationId, MikkeliNytConsts.ORGANIZATION_SETTING_BASEURL, baseUrl);
-    insertOrganizationSetting(organizationId, MikkeliNytConsts.ORGANIZATION_SETTING_IMAGEBASEURL, String.format("%s/%s/1000/", baseUrl, imagesBasePath));
+    insertOrganizationSetting(organizationId, MikkeliNytConsts.ORGANIZATION_SETTING_IMAGEBASEURL, String.format("%s/%s", baseUrl, imagesBasePath));
   }
   
   private void deleteOrganizationSettings(String organizationId) {

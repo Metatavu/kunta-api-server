@@ -3,6 +3,7 @@ package fi.otavanopisto.kuntaapi.test.server.integration.management;
 import static com.jayway.restassured.RestAssured.given;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.notNullValue;
+import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.Assert.assertEquals;
 
 import java.time.ZoneId;
@@ -73,6 +74,43 @@ public class IncidentTestsIT extends AbstractIntegrationTest {
       .body("areas[0]", is("Rantasalmi"))
       .body("severity", is("disruption"));
   } 
+  
+
+  @Test
+  public void testIncidentsDetailsLink() {
+    String organizationId = getOrganizationId(0);
+    
+    given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get("/organizations/{organizationId}/incidents/{incidentId}", organizationId, getOrganizationIncidentId(organizationId, 0))
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("detailsLink", is("http://www.example.com/incident/details"))
+      .body("detailsLinkText", is("Example details"));
+    
+    given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get("/organizations/{organizationId}/incidents/{incidentId}", organizationId, getOrganizationIncidentId(organizationId, 1))
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("detailsLink", nullValue())
+      .body("detailsLinkText", nullValue());
+    
+    given() 
+      .baseUri(getApiBasePath())
+      .contentType(ContentType.JSON)
+      .get("/organizations/{organizationId}/incidents/{incidentId}", organizationId, getOrganizationIncidentId(organizationId, 2))
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("detailsLink", is("https://example.org/example-details"))
+      .body("detailsLinkText", is("https://example.org/example-details"));
+  } 
+  
   
   @Test
   public void testListIncidentsBySlug() {
