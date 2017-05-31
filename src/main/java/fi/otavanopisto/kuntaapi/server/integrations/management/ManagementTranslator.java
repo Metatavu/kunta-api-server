@@ -176,6 +176,20 @@ public class ManagementTranslator {
     result.setStart(toOffsetDateTime(kuntaApiIncidentId.getOrganizationId(), managementIncident.getStartTime()));
     result.setTitle(managementIncident.getTitle().getRendered());
     result.setSlug(managementIncident.getSlug());
+    
+    String detailsLink = managementIncident.getDetailsLink();
+    
+    if (StringUtils.isNotBlank(detailsLink)) {
+      result.setDetailsLink(detailsLink);
+      
+      String detailsLinktext = managementIncident.getDetailsLinkText();
+      if (StringUtils.isBlank(detailsLinktext)) {
+        result.setDetailsLinkText(detailsLink);
+      } else {
+        result.setDetailsLinkText(detailsLinktext);
+      }
+    }
+    
     return result;
   }
   

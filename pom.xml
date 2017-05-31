@@ -62,11 +62,11 @@
 
     <!-- Kunta API Spec -->
 
-    <kunta-api-spec.version>0.1.89</kunta-api-spec.version>
+    <kunta-api-spec.version>0.1.90</kunta-api-spec.version>
     
     <!-- Integrations -->
     
-    <management-rest-client.version>0.0.30</management-rest-client.version>
+    <management-rest-client.version>0.0.31</management-rest-client.version>
     <casem-rest-client.version>0.0.9</casem-rest-client.version>
     <mikkelinyt.rest-model.version>0.0.1</mikkelinyt.rest-model.version>
 

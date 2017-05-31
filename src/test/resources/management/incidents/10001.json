@@ -18,6 +18,8 @@
   "incident_areas": [],
   "incident_type": "disruption",
   "description": "Puhelin ei toimi Rantasalmella",
+  "details_link": "http://www.example.com/incident/details",
+  "details_link_text":"Example details",
   "areas": [
     "Rantasalmi"
   ],
