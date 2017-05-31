@@ -109,7 +109,7 @@ public class TilannehuoneTestsIT extends AbstractIntegrationTest {
       .statusCode(200)
       .body("id.size()", is(3))
       .body("location[1]", is("Helsinki"))
-      .body("time[1]", sameInstant(getInstant(2017, 5, 16, 8, 39, TIMEZONE_ID)))
+      .body("time[1]", sameInstant(getInstant(2017, 5, 16, 8, 39, 1, TIMEZONE_ID)))
       .body("description[1]", nullValue())
       .body("extent[1]", is("keskisuuri"))
       .body("type[1]", is("liikennevälinepalo"))
@@ -181,7 +181,7 @@ public class TilannehuoneTestsIT extends AbstractIntegrationTest {
       .statusCode(200)
       .body("id.size()", is(2))
       .body("id[0]", notNullValue())
-      .body("time[0]", sameInstant(getInstant(2017, 5, 16, 8, 39, TIMEZONE_ID)));
+      .body("time[0]", sameInstant(getInstant(2017, 5, 16, 8, 39, 1, TIMEZONE_ID)));
     
     given() 
       .baseUri(getApiBasePath())
