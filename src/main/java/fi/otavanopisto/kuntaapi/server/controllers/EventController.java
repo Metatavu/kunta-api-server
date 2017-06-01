@@ -18,6 +18,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.EventProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.EventProvider.EventOrder;
 import fi.otavanopisto.kuntaapi.server.integrations.EventProvider.EventOrderDirection;
+import fi.otavanopisto.kuntaapi.server.utils.ListUtils;
 import fi.metatavu.kuntaapi.server.rest.model.Attachment;
 import fi.metatavu.kuntaapi.server.rest.model.Event;
 
@@ -84,11 +85,7 @@ public class EventController {
       result.addAll(eventProvider.listOrganizationEvents(organizationId, startBefore, startAfter, endBefore, endAfter));
     }
     
-    int resultCount = result.size();
-    int firstIndex = firstResult == null ? 0 : Math.min(firstResult.intValue(), resultCount);
-    int toIndex = maxResults == null ? resultCount : Math.min(firstIndex + maxResults.intValue(), resultCount);
-    
-    return sortEvents(result.subList(firstIndex, toIndex), order, orderDirection);
+    return ListUtils.limit(sortEvents(result, order, orderDirection), firstResult, maxResults);
   }
   
   private List<Event> sortEvents(List<Event> result, EventProvider.EventOrder order, EventProvider.EventOrderDirection orderDirection) {
