@@ -48,7 +48,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   private ManagementMediaMocker managementMediaMocker = new ManagementMediaMocker();
   private ManagementTileMocker managementTileMocker = new ManagementTileMocker();
   private ManagementMenuMocker managementMenuMocker = new ManagementMenuMocker();
-  
+  private LinkedEventsEventMocker linkedEventsEventMocker = new LinkedEventsEventMocker();
   private PtvServiceMocker ptvServiceMocker = new PtvServiceMocker();
   private PtvServiceChannelMocker ptvServiceChannelMocker = new PtvServiceChannelMocker();
   private PtvOrganizationMocker ptvOrganizationMocker = new PtvOrganizationMocker();
@@ -75,6 +75,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     managementTileMocker.endMock();
     managementCategoryMocker.endMock();
     managementTagMocker.endMock();
+    linkedEventsEventMocker.endMock();
     ptvServiceMocker.stop();
     ptvServiceChannelMocker.stop();
     ptvOrganizationMocker.stop();
@@ -89,6 +90,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     ptvOrganizationMocker.start();
     ptvServiceChannelMocker.start();
     ptvServiceMocker.start();
+    linkedEventsEventMocker.startMock();
     kuntarekryMocker.startMock();
     casemMocker.startMock();
     managementPageMocker.startMock();
@@ -173,6 +175,10 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   
   public ManagementTagMocker getManagementTagMocker() {
     return managementTagMocker;
+  }
+  
+  public LinkedEventsEventMocker getLinkedEventsEventMocker() {
+    return linkedEventsEventMocker;
   }
   
   public PtvServiceChannelMocker getPtvServiceChannelMocker() {
@@ -335,6 +341,16 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
         .baseUri(getApiBasePath())
         .contentType(ContentType.JSON)
         .get(String.format("/organizations/%s/announcements", organizationId))
+        .body()
+        .jsonPath()
+        .getString(String.format("id[%d]", index));
+  }
+  
+  protected String getOrganizationEventId(String organizationId, int index) {
+    return given() 
+        .baseUri(getApiBasePath())
+        .contentType(ContentType.JSON)
+        .get(String.format("/organizations/%s/events", organizationId))
         .body()
         .jsonPath()
         .getString(String.format("id[%d]", index));

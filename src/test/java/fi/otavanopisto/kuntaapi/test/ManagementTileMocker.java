@@ -18,7 +18,7 @@ public class ManagementTileMocker extends AbstractBaseMocker {
   private static final String PATH_TEMPLATE = "%s/%s";
   private static final String RESOURCES_PATH = "/wp-json/wp/v2/tile";
   
-  private ResourceMocker<Integer, Tile> tileMocker = new ResourceMocker<>();
+  private ManagementResourceMocker<Integer, Tile> tileMocker = new ManagementResourceMocker<>();
 
   public ManagementTileMocker() {
     mockLists();

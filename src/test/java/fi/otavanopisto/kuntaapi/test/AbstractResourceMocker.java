@@ -29,7 +29,7 @@ import com.github.tomakehurst.wiremock.matching.UrlPattern;
 import ezvcard.util.IOUtils;
 
 @SuppressWarnings ("squid:S1166")
-public class ResourceMocker<I, R> {
+public abstract class AbstractResourceMocker<I, R> {
 
   private static final String APPLICATION_JSON = "application/json";
   private static final String CONTENT_TYPE = "Content-Type";
@@ -38,7 +38,7 @@ public class ResourceMocker<I, R> {
   private EnumMap<MockedResourceStatus, List<MappingBuilder>> statusLists = new EnumMap<>(MockedResourceStatus.class);
   private boolean started = false;
   private Map<I, MockedResource<I, R>> resources = new LinkedHashMap<>();
-  private Map<I, List<ResourceMocker<?, ?>>> subMockers = new LinkedHashMap<>();
+  private Map<I, List<AbstractResourceMocker<?, ?>>> subMockers = new LinkedHashMap<>();
   
   public void start() {
     started = true;
@@ -55,13 +55,13 @@ public class ResourceMocker<I, R> {
         MockedResourceStatus status = statusListEntry.getKey();
         mapping.willReturn(aResponse()
           .withHeader(CONTENT_TYPE, APPLICATION_JSON)
-          .withBody(toJSON(getResources(status))));
+          .withBody(toJSON(getListContent(status))));
         stubFor(mapping);
       }
     }
     
-    for (List<ResourceMocker<?, ?>> subMockerList : subMockers.values()) {
-      for (ResourceMocker<?, ?> subMocker : subMockerList) {
+    for (List<AbstractResourceMocker<?, ?>> subMockerList : subMockers.values()) {
+      for (AbstractResourceMocker<?, ?> subMocker : subMockerList) {
         subMocker.start();
       }
     }
@@ -74,8 +74,8 @@ public class ResourceMocker<I, R> {
     
     started = false;
     
-    for (List<ResourceMocker<?, ?>> subMockerList : subMockers.values()) {
-      for (ResourceMocker<?, ?> subMocker : subMockerList) {
+    for (List<AbstractResourceMocker<?, ?>> subMockerList : subMockers.values()) {
+      for (AbstractResourceMocker<?, ?> subMocker : subMockerList) {
         subMocker.stop();
       }
     }
@@ -92,6 +92,8 @@ public class ResourceMocker<I, R> {
       }
     }
   }
+  
+  public abstract Object getListContent(MockedResourceStatus status);
   
   public void add(I id, R resource, UrlPattern urlPattern) {
     MappingBuilder okGetMapping = createOkGetMapping(urlPattern, resource);
@@ -113,16 +115,6 @@ public class ResourceMocker<I, R> {
       if (resource.getStatus().equals(status)) {
         result.add(resource);
       }
-    }
-    
-    return result;
-  }
-  
-  public List<R> getResources(MockedResourceStatus status) {
-    List<R> result = new ArrayList<>();
-    
-    for (MockedResource<I, R> mockedResource : getMockedResources(status)) {
-      result.add(mockedResource.getResource());
     }
     
     return result;
@@ -196,7 +188,7 @@ public class ResourceMocker<I, R> {
 
   private void updateSubMockerStatuses(I id, MockedResourceStatus status) {
     if (subMockers.containsKey(id)) {
-      for (ResourceMocker<?, ?> subMocker : subMockers.get(id)) {
+      for (AbstractResourceMocker<?, ?> subMocker : subMockers.get(id)) {
         if (status == MockedResourceStatus.OK) {
           subMocker.start();
         } else {
@@ -226,7 +218,7 @@ public class ResourceMocker<I, R> {
     statusLists.get(status).add(mapping);
   }
 
-  public void addSubMocker(I id, ResourceMocker<?, ?> subMocker) {
+  public void addSubMocker(I id, AbstractResourceMocker<?, ?> subMocker) {
     if (!subMockers.containsKey(id)) {
       subMockers.put(id, new ArrayList<>());
     }
@@ -235,7 +227,7 @@ public class ResourceMocker<I, R> {
   }
   
   @SuppressWarnings ("squid:S1452")
-  public ResourceMocker<?, ?> getSubMocker(I id, int index) {
+  public AbstractResourceMocker<?, ?> getSubMocker(I id, int index) {
     return subMockers.get(id).get(index);
   }
 
@@ -309,7 +301,7 @@ public class ResourceMocker<I, R> {
         
         mapping.willReturn(aResponse()
           .withHeader(CONTENT_TYPE, APPLICATION_JSON)
-          .withBody(toJSON(getResources(status))));
+          .withBody(toJSON(getListContent(status))));
         
         stubFor(mapping);
       }

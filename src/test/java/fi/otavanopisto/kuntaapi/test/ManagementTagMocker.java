@@ -18,7 +18,7 @@ public class ManagementTagMocker extends AbstractBaseMocker {
   private static final String PATH_TEMPLATE = "%s/%s";
   private static final String PAGES_PATH = "/wp-json/wp/v2/tags";
   
-  private ResourceMocker<Integer, Tag> tagMocker = new ResourceMocker<>();
+  private ManagementResourceMocker<Integer, Tag> tagMocker = new ManagementResourceMocker<>();
 
   public ManagementTagMocker() {
     mockLists();
