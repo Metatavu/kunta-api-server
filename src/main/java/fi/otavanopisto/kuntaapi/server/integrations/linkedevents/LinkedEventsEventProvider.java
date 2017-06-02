@@ -124,7 +124,7 @@ public class LinkedEventsEventProvider implements EventProvider {
       return null;
     }
     
-    AttachmentData imageData = getImageData(organizationId, attachmentId);
+    AttachmentData imageData = getImageData(attachmentId);
     if (size != null) {
       return scaleEventImage(imageData, size);
     }
@@ -132,13 +132,13 @@ public class LinkedEventsEventProvider implements EventProvider {
     return imageData;
   }
 
-  private AttachmentData getImageData(OrganizationId organizationId, AttachmentId attachmentId) {
+  private AttachmentData getImageData(AttachmentId attachmentId) {
     AttachmentData storedAttachmentData = getStoredAttachmentData(attachmentId);
     if (storedAttachmentData != null) {
       return storedAttachmentData;
     }
     
-    return downloadImageData(organizationId, attachmentId);
+    return downloadImageData(attachmentId);
   }
   
   private AttachmentData getStoredAttachmentData(AttachmentId attachmentId) {
@@ -154,6 +154,7 @@ public class LinkedEventsEventProvider implements EventProvider {
     return null;
   }
 
+  @SuppressWarnings ("squid:S1126")
   private boolean isWithinTimeRanges(Event event, OffsetDateTime startBefore,
       OffsetDateTime startAfter, OffsetDateTime endBefore, OffsetDateTime endAfter) {
     
@@ -171,11 +172,11 @@ public class LinkedEventsEventProvider implements EventProvider {
     return true;
   }
 
+  @SuppressWarnings ("squid:S1126")
   private boolean isWithinTimeRange(OffsetDateTime before, OffsetDateTime after, OffsetDateTime time) {
     if (before != null && time.isAfter(before)) {
       return false;
     }
-
 
     if (after != null && time.isBefore(after)) {
       return false;
@@ -203,7 +204,7 @@ public class LinkedEventsEventProvider implements EventProvider {
     return null;
   }
   
-  private AttachmentData downloadImageData(OrganizationId organizationId, AttachmentId imageId) {
+  private AttachmentData downloadImageData(AttachmentId imageId) {
     AttachmentId linkedEventsId = idController.translateAttachmentId(imageId, LinkedEventsConsts.IDENTIFIER_NAME);
     if (linkedEventsId == null) {
       logger.severe(String.format("Failed to translate %s into Linked events id", imageId.toString()));
