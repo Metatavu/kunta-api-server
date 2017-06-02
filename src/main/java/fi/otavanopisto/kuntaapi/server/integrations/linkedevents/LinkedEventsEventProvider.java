@@ -1,4 +1,4 @@
-package fi.otavanopisto.kuntaapi.server.integrations.mikkelinyt;
+package fi.otavanopisto.kuntaapi.server.integrations.linkedevents;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -24,20 +24,19 @@ import fi.otavanopisto.kuntaapi.server.images.ImageScaler;
 import fi.otavanopisto.kuntaapi.server.images.ImageWriter;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.EventProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.mikkelinyt.resources.MikkeliNytAttachmentDataResourceContainer;
-import fi.otavanopisto.kuntaapi.server.integrations.mikkelinyt.resources.MikkeliNytAttachmentResourceContainer;
-import fi.otavanopisto.kuntaapi.server.integrations.mikkelinyt.resources.MikkeliNytEventResourceContainer;
+import fi.otavanopisto.kuntaapi.server.integrations.linkedevents.resources.LinkedEventsAttachmentDataResourceContainer;
+import fi.otavanopisto.kuntaapi.server.integrations.linkedevents.resources.LinkedEventsAttachmentResourceContainer;
+import fi.otavanopisto.kuntaapi.server.integrations.linkedevents.resources.LinkedEventsEventResourceContainer;
 import fi.otavanopisto.kuntaapi.server.resources.StoredBinaryData;
 
 /**
- * Event provider for Mikkeli Nyt
+ * Event provider for Linked events
  * 
  * @author Antti Leppä
- * @author Heikki Kurhinen
  */
 
 @ApplicationScoped
-public class MikkeliNytEventProvider implements EventProvider {
+public class LinkedEventsEventProvider implements EventProvider {
   
   @Inject
   private Logger logger;
@@ -49,16 +48,16 @@ public class MikkeliNytEventProvider implements EventProvider {
   private IdentifierRelationController identifierRelationController;
 
   @Inject
-  private MikkeliNytEventResourceContainer mikkeliNytEventResourceContainer;
+  private LinkedEventsEventResourceContainer linkedEventsEventResourceContainer;
   
   @Inject
-  private MikkeliNytAttachmentDataResourceContainer mikkeliNytAttachmentDataResourceContainer;
+  private LinkedEventsAttachmentDataResourceContainer linkedEventsAttachmentDataResourceContainer;
   
   @Inject
-  private MikkeliNytAttachmentResourceContainer mikkeliNytAttachmentResourceContainer;
+  private LinkedEventsAttachmentResourceContainer linkedEventsAttachmentResourceContainer;
   
   @Inject
-  private MikkeliNytImageLoader mikkeliNytImageLoader;
+  private LinkedEventsImageLoader linkedEventsImageLoader;
 
   @Inject
   private ImageReader imageReader;
@@ -73,11 +72,11 @@ public class MikkeliNytEventProvider implements EventProvider {
   public List<Event> listOrganizationEvents(OrganizationId organizationId, OffsetDateTime startBefore,
       OffsetDateTime startAfter, OffsetDateTime endBefore, OffsetDateTime endAfter) {
     
-    List<EventId> eventIds = identifierRelationController.listEventIdsBySourceAndParentId(MikkeliNytConsts.IDENTIFIER_NAME, organizationId);
+    List<EventId> eventIds = identifierRelationController.listEventIdsBySourceAndParentId(LinkedEventsConsts.IDENTIFIER_NAME, organizationId);
     List<Event> result = new ArrayList<>(eventIds.size());
     
     for (EventId eventId : eventIds) {
-      Event event = mikkeliNytEventResourceContainer.get(eventId);
+      Event event = linkedEventsEventResourceContainer.get(eventId);
       if (event != null && isWithinTimeRanges(event, startBefore, startAfter, endBefore, endAfter)) {
         result.add(event); 
       }
@@ -92,16 +91,16 @@ public class MikkeliNytEventProvider implements EventProvider {
       return null;
     }
     
-    return mikkeliNytEventResourceContainer.get(eventId);
+    return linkedEventsEventResourceContainer.get(eventId);
   }
 
   @Override
   public List<Attachment> listEventImages(OrganizationId organizationId, EventId eventId) {
-    List<AttachmentId> attachmentIds = identifierRelationController.listAttachmentIdsBySourceAndParentId(MikkeliNytConsts.IDENTIFIER_NAME, eventId);
+    List<AttachmentId> attachmentIds = identifierRelationController.listAttachmentIdsBySourceAndParentId(LinkedEventsConsts.IDENTIFIER_NAME, eventId);
     List<Attachment> result = new ArrayList<>(attachmentIds.size());
     
     for (AttachmentId attachmentId : attachmentIds) {
-      Attachment attachment = mikkeliNytAttachmentResourceContainer.get(attachmentId);
+      Attachment attachment = linkedEventsAttachmentResourceContainer.get(attachmentId);
       if (attachment != null) {
         result.add(attachment);
       }
@@ -116,7 +115,7 @@ public class MikkeliNytEventProvider implements EventProvider {
       return null;
     }
     
-    return mikkeliNytAttachmentResourceContainer.get(attachmentId);
+    return linkedEventsAttachmentResourceContainer.get(attachmentId);
   }
 
   @Override
@@ -143,7 +142,7 @@ public class MikkeliNytEventProvider implements EventProvider {
   }
   
   private AttachmentData getStoredAttachmentData(AttachmentId attachmentId) {
-    StoredBinaryData storedBinaryData = mikkeliNytAttachmentDataResourceContainer.get(attachmentId);
+    StoredBinaryData storedBinaryData = linkedEventsAttachmentDataResourceContainer.get(attachmentId);
     if (storedBinaryData != null) {
       try {
         return new AttachmentData(storedBinaryData.getContentType(), IOUtils.toByteArray(storedBinaryData.getDataStream()));
@@ -209,13 +208,13 @@ public class MikkeliNytEventProvider implements EventProvider {
   }
   
   private AttachmentData downloadImageData(OrganizationId organizationId, AttachmentId imageId) {
-    AttachmentId mikkeliNytId = idController.translateAttachmentId(imageId, MikkeliNytConsts.IDENTIFIER_NAME);
-    if (mikkeliNytId == null) {
-      logger.severe(String.format("Failed to translate %s into MikkeliNyt id", imageId.toString()));
+    AttachmentId linkedEventsId = idController.translateAttachmentId(imageId, LinkedEventsConsts.IDENTIFIER_NAME);
+    if (linkedEventsId == null) {
+      logger.severe(String.format("Failed to translate %s into Linked events id", imageId.toString()));
       return null;
     }
     
-    return mikkeliNytImageLoader.getImageData(organizationId, mikkeliNytId);
+    return linkedEventsImageLoader.getImageData(linkedEventsId);
   } 
 
   

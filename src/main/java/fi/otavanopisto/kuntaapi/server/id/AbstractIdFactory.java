@@ -42,6 +42,10 @@ public abstract class AbstractIdFactory {
     return createId(MenuId.class, kuntaApiOrganizationId, id);
   }
 
+  public EventId createEventId(OrganizationId kuntaApiOrganizationId, String id) {
+    return createId(EventId.class, kuntaApiOrganizationId, id);
+  }
+
   public PageId createPageId(OrganizationId kuntaApiOrganizationId, String id) {
     return createId(PageId.class, kuntaApiOrganizationId, id);
   }

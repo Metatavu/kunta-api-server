@@ -69,6 +69,7 @@
     <management-rest-client.version>0.0.31</management-rest-client.version>
     <casem-rest-client.version>0.0.9</casem-rest-client.version>
     <mikkelinyt.rest-model.version>0.0.1</mikkelinyt.rest-model.version>
+    <linkedevents-client.version>0.0.2</linkedevents-client.version>
 
     <!-- PTV -->
     
@@ -344,6 +345,18 @@
       </exclusions>
     </dependency>
 
+    <dependency>
+      <groupId>fi.metatavu.linkedevents</groupId>
+      <artifactId>linkedevents-client</artifactId>
+      <version>${linkedevents-client.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>com.fasterxml.jackson.datatype</groupId>
+          <artifactId>jackson-datatype-jsr310</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    
     <dependency>
       <groupId>fi.otavanopisto.casem.casem-rest-client</groupId>
       <artifactId>casem-rest-client</artifactId>

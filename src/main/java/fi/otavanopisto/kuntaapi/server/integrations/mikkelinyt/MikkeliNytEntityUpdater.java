@@ -38,9 +38,9 @@ import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpClient.Response;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.mikkelinyt.resources.MikkeliNytAttachmentDataResourceContainer;
 import fi.otavanopisto.kuntaapi.server.integrations.mikkelinyt.resources.MikkeliNytAttachmentResourceContainer;
+import fi.otavanopisto.kuntaapi.server.integrations.mikkelinyt.resources.MikkeliNytEventResourceContainer;
 import fi.otavanopisto.kuntaapi.server.integrations.mikkelinyt.tasks.OrganizationEventsTaskQueue;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
-import fi.otavanopisto.kuntaapi.server.resources.EventResourceContainer;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 import fi.otavanopisto.kuntaapi.server.tasks.OrganizationEntityUpdateTask;
@@ -69,7 +69,7 @@ public class MikkeliNytEntityUpdater extends EntityUpdater {
   private MikkeliNytImageLoader mikkeliNytImageLoader;
   
   @Inject
-  private EventResourceContainer eventCache;
+  private MikkeliNytEventResourceContainer mikkeliNytEventResourceContainer;
   
   @Inject
   private MikkeliNytAttachmentDataResourceContainer mikkeliNytAttachmentDataResourceContainer;
@@ -143,7 +143,7 @@ public class MikkeliNytEntityUpdater extends EntityUpdater {
     }
     
     modificationHashCache.put(kuntaApiId.getId(), createPojoHash(event));
-    eventCache.put(kuntaApiId, event);
+    mikkeliNytEventResourceContainer.put(kuntaApiId, event);
     
     return kuntaApiId;
   }
@@ -172,7 +172,7 @@ public class MikkeliNytEntityUpdater extends EntityUpdater {
     if (eventIdentifier != null) {
       EventId kuntaApiEventId = new EventId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, eventIdentifier.getKuntaApiId());
       modificationHashCache.clear(eventIdentifier.getKuntaApiId());
-      eventCache.clear(kuntaApiEventId);
+      mikkeliNytEventResourceContainer.clear(kuntaApiEventId);
       identifierController.deleteIdentifier(eventIdentifier);
     }
   }
