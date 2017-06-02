@@ -19,7 +19,6 @@ import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
 import fi.otavanopisto.kuntaapi.server.id.EventId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
-import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
 import fi.otavanopisto.kuntaapi.server.integrations.linkedevents.LinkedEventsConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.linkedevents.LinkedEventsIdFactory;
@@ -125,11 +124,9 @@ public class LinkedEvenstEventEntityUpdater extends EntityUpdater {
   }
 
   private void deleteLinkedEventsEvent(EventId linkedEventsEventId) {
-    OrganizationId organizationId = linkedEventsEventId.getOrganizationId();
-    
     Identifier eventIdentifier = identifierController.findIdentifierById(linkedEventsEventId);
     if (eventIdentifier != null) {
-      EventId kuntaApiEventId = new EventId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, eventIdentifier.getKuntaApiId());
+      EventId kuntaApiEventId = kuntaApiIdFactory.createFromIdentifier(EventId.class, eventIdentifier);
       modificationHashCache.clear(eventIdentifier.getKuntaApiId());
       linkedEventsEventResourceContainer.clear(kuntaApiEventId);
       identifierController.deleteIdentifier(eventIdentifier);

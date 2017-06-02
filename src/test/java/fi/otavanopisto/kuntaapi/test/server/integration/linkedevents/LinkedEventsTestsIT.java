@@ -56,9 +56,6 @@ public class LinkedEventsTestsIT extends AbstractIntegrationTest {
   @Test
   public void testFindEvents() {
     String organizationId = getOrganizationId(0);
-    
-    System.out.println(getOrganizationEventId(organizationId, 0));
-    
     given() 
       .baseUri(getApiBasePath())
       .contentType(ContentType.JSON)
