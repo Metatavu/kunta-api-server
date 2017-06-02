@@ -18,7 +18,7 @@ public class ManagementCategoryMocker extends AbstractBaseMocker {
   private static final String PATH_TEMPLATE = "%s/%s";
   private static final String PAGES_PATH = "/wp-json/wp/v2/categories";
   
-  private ResourceMocker<Integer, Category> categoryMocker = new ResourceMocker<>();
+  private ManagementResourceMocker<Integer, Category> categoryMocker = new ManagementResourceMocker<>();
 
   public ManagementCategoryMocker() {
     mockLists();

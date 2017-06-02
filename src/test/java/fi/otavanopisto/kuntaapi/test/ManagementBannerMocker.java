@@ -18,7 +18,7 @@ public class ManagementBannerMocker extends AbstractBaseMocker {
   private static final String PATH_TEMPLATE = "%s/%s";
   private static final String RESOURCES_PATH = "/wp-json/wp/v2/banner";
   
-  private ResourceMocker<Integer, Banner> bannerMocker = new ResourceMocker<>();
+  private ManagementResourceMocker<Integer, Banner> bannerMocker = new ManagementResourceMocker<>();
 
   public ManagementBannerMocker() {
     mockLists();

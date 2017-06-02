@@ -23,8 +23,8 @@ public class ManagementMediaMocker extends AbstractBaseMocker {
   private static final String RESOURCES_PATH = "/wp-json/wp/v2/media";
   private static final String FILE_PATH = "/wp-content/uploads/%s";
   
-  private ResourceMocker<Integer, Attachment> mediaMocker = new ResourceMocker<>();
-  private ResourceMocker<Integer, File> fileMocker = new ResourceMocker<>();
+  private ManagementResourceMocker<Integer, Attachment> mediaMocker = new ManagementResourceMocker<>();
+  private ManagementResourceMocker<Integer, File> fileMocker = new ManagementResourceMocker<>();
 
   public ManagementMediaMocker() {
     mockLists();
