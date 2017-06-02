@@ -91,7 +91,7 @@ public class LinkedEventsTestsIT extends AbstractIntegrationTest {
       .body("originalUrl[1]", nullValue())
       .body("name[1]", is("Tanssit La 8.7.2017 klo 20.00"))
       .body("description[1]", is("Kake Randelin & Company. Ravintolassa karaoke\nTapahtumapaikka: Nurmaan lava\nJärjestäjä: Nurmaanseudun maamiesseura\n"))
-      .body("start[1]", sameInstant(getInstant(2017, 7, 6, 21, 00, TIMEZONE_ID)))
+      .body("start[1]", sameInstant(getInstant(2017, 7, 7, 21, 00, TIMEZONE_ID)))
       .body("end[1]", nullValue())
       .body("city[1]", nullValue())
       .body("place[1]", nullValue())

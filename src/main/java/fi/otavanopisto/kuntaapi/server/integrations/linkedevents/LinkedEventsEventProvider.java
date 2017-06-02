@@ -160,10 +160,6 @@ public class LinkedEventsEventProvider implements EventProvider {
     OffsetDateTime eventStart = event.getStart();
     OffsetDateTime eventEnd = event.getEnd();
     
-    if (eventStart == null || eventEnd == null) {
-      return false;
-    }
-    
     if (!isWithinTimeRange(startBefore, startAfter, eventStart)) {
       return false;
     }

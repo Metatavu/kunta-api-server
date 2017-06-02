@@ -63,7 +63,7 @@ public class LinkedEvenstEventEntityUpdater extends EntityUpdater {
   private IdentifierRelationController identifierRelationController;
 
   @Inject
-  private LinkedEventsEventResourceContainer linkedEventsEventCache;
+  private LinkedEventsEventResourceContainer linkedEventsEventResourceContainer;
   
   @Inject
   private ModificationHashCache modificationHashCache;
@@ -121,7 +121,7 @@ public class LinkedEvenstEventEntityUpdater extends EntityUpdater {
     fi.metatavu.kuntaapi.server.rest.model.Event event = linkedEventsTranslator.translateEvent(kuntaApiEventId, linkedEventsEvent, place);
     
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(event));
-    linkedEventsEventCache.put(kuntaApiEventId, event);
+    linkedEventsEventResourceContainer.put(kuntaApiEventId, event);
   }
 
   private void deleteLinkedEventsEvent(EventId linkedEventsEventId) {
@@ -131,7 +131,7 @@ public class LinkedEvenstEventEntityUpdater extends EntityUpdater {
     if (eventIdentifier != null) {
       EventId kuntaApiEventId = new EventId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, eventIdentifier.getKuntaApiId());
       modificationHashCache.clear(eventIdentifier.getKuntaApiId());
-      linkedEventsEventCache.clear(kuntaApiEventId);
+      linkedEventsEventResourceContainer.clear(kuntaApiEventId);
       identifierController.deleteIdentifier(eventIdentifier);
     }
     
