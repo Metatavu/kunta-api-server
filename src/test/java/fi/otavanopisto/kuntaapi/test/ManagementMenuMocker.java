@@ -20,7 +20,7 @@ public class ManagementMenuMocker extends AbstractBaseMocker {
   private static final String RESOURCES_PATH = "/wp-json/kunta-api/menus";
   private static final String MENU_ITEMS_PATH = "/wp-json/kunta-api/menus/%s/items";
   
-  private ResourceMocker<Long, Menu> menuMocker = new ResourceMocker<>();
+  private ManagementResourceMocker<Long, Menu> menuMocker = new ManagementResourceMocker<>();
 
   public ManagementMenuMocker() {
     mockLists();
@@ -51,7 +51,7 @@ public class ManagementMenuMocker extends AbstractBaseMocker {
           Menu menu = readMenuFromJSONFile(String.format("management/menus/%d.json", id));
           mockMenu(menu);
           
-          ResourceMocker<Long, Menuitem> itemMocker = new ResourceMocker<>();
+          ManagementResourceMocker<Long, Menuitem> itemMocker = new ManagementResourceMocker<>();
           itemMocker.addStatusList(MockedResourceStatus.OK, urlPathEqualTo(String.format(MENU_ITEMS_PATH, id)));
           menuMocker.addSubMocker(id, itemMocker);
           
@@ -100,7 +100,7 @@ public class ManagementMenuMocker extends AbstractBaseMocker {
   public ManagementMenuMocker mockMenuItems(Long menuId, Long... menuItemIds) {
     for (Long menuItemId : menuItemIds) {
       @SuppressWarnings("unchecked")
-      ResourceMocker<Long, Menuitem> itemMocker = (ResourceMocker<Long, Menuitem>) menuMocker.getSubMocker(menuId, 0);
+      ManagementResourceMocker<Long, Menuitem> itemMocker = (ManagementResourceMocker<Long, Menuitem>) menuMocker.getSubMocker(menuId, 0);
       if (!itemMocker.isMocked(menuItemId)) {
         itemMocker.add(menuItemId, readMenuItemFromJSONFile(String.format("management/menuitems/%s.json", menuItemId)), urlPathEqualTo(String.format(PATH_TEMPLATE, String.format(MENU_ITEMS_PATH, menuId), menuItemId)));
       } else {

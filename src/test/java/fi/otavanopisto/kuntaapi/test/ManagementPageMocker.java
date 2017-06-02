@@ -18,7 +18,7 @@ public class ManagementPageMocker extends AbstractBaseMocker {
   private static final String PATH_TEMPLATE = "%s/%s";
   private static final String PAGES_PATH = "/wp-json/wp/v2/pages";
   
-  private ResourceMocker<Integer, Page> pageMocker = new ResourceMocker<>();
+  private ManagementResourceMocker<Integer, Page> pageMocker = new ManagementResourceMocker<>();
 
   public ManagementPageMocker() {
     mockLists();

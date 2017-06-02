@@ -18,7 +18,7 @@ public class ManagementFragmentMocker extends AbstractBaseMocker {
   private static final String PATH_TEMPLATE = "%s/%s";
   private static final String RESOURCES_PATH = "/wp-json/wp/v2/fragment";
   
-  private ResourceMocker<Integer, Fragment> fragmentMocker = new ResourceMocker<>();
+  private ManagementResourceMocker<Integer, Fragment> fragmentMocker = new ManagementResourceMocker<>();
 
   public ManagementFragmentMocker() {
     mockLists();

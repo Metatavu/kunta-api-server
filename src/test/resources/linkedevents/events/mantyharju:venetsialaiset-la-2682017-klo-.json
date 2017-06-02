@@ -1,0 +1,37 @@
+{
+    "id": "mantyharju:venetsialaiset-la-2682017-klo-",
+    "location": null,
+    "keywords": [],
+    "super_event": null,
+    "event_status": "EventScheduled",
+    "external_links": [],
+    "offers": [],
+    "data_source": "mantyharju",
+    "publisher": "mantyharju:87fefd9e-0d06-46d5-ab14-a4a35fa03b17",
+    "sub_events": [],
+    "in_language": [],
+    "audience": [],
+    "custom_data": null,
+    "created_time": null,
+    "last_modified_time": "2017-06-01T22:26:24.954671Z",
+    "date_published": null,
+    "start_time": "2017-08-25T21:00:00Z",
+    "end_time": null,
+    "super_event_type": null,
+    "name": {
+        "fi": "Venetsialaiset La 26.8.2017 klo 19.00"
+    },
+    "short_description": {
+        "fi": "Venetsialaisten ohjelmassa on hyvää musiikkia, ruokaa, juomaa ja seuraa!\nTapahtumapaikka: Rantaravintola Kurkiniemi\nJärjestäjä: Rantaravintola Kurkiniemi\n"
+    },
+    "provider": null,
+    "description": {
+        "fi": "Venetsialaisten ohjelmassa on hyvää musiikkia, ruokaa, juomaa ja seuraa!\nTapahtumapaikka: Rantaravintola Kurkiniemi\nJärjestäjä: Rantaravintola Kurkiniemi\n"
+    },
+    "info_url": null,
+    "location_extra_info": null,
+    "@id": "http://linkedevents.kunta-api.fi/v1/event/mantyharju:venetsialaiset-la-2682017-klo-/",
+    "@context": "http://schema.org",
+    "@type": "Event/LinkedEvent",
+    "images": []
+}

@@ -18,7 +18,7 @@ public class ManagementIncidentMocker extends AbstractBaseMocker {
   private static final String PATH_TEMPLATE = "%s/%s";
   private static final String PAGES_PATH = "/wp-json/wp/v2/incident";
   
-  private ResourceMocker<Integer, Incident> incidentMocker = new ResourceMocker<>();
+  private ManagementResourceMocker<Integer, Incident> incidentMocker = new ManagementResourceMocker<>();
 
   public ManagementIncidentMocker() {
     mockLists();

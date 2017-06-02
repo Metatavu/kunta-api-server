@@ -18,7 +18,7 @@ public class ManagementShortlinkMocker extends AbstractBaseMocker {
   private static final String PATH_TEMPLATE = "%s/%s";
   private static final String PAGES_PATH = "/wp-json/wp/v2/shortlink";
   
-  private ResourceMocker<Integer, Shortlink> shortlinkMocker = new ResourceMocker<>();
+  private ManagementResourceMocker<Integer, Shortlink> shortlinkMocker = new ManagementResourceMocker<>();
 
   public ManagementShortlinkMocker() {
     mockLists();
