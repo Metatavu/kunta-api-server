@@ -143,6 +143,12 @@ public class PageController {
     
     return null;
   }
+  
+  public void deletePage(OrganizationId organizationId, PageId pageId) {
+    for (PageProvider pageProvider : getPageProviders()) {
+      pageProvider.deleteOrganizationPage(organizationId, pageId);
+    }
+  }
 
   /**
    * Returns page contents as list of LocalizedValues. If the page is not provided by 
