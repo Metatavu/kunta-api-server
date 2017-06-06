@@ -6,8 +6,12 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.event.Event;
 import javax.inject.Inject;
 
+import fi.metatavu.kuntaapi.server.rest.model.Attachment;
+import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
+import fi.metatavu.kuntaapi.server.rest.model.Page;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.debug.Timed;
@@ -15,13 +19,12 @@ import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
+import fi.otavanopisto.kuntaapi.server.index.IndexRemovePage;
+import fi.otavanopisto.kuntaapi.server.index.IndexRemoveRequest;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
 import fi.otavanopisto.kuntaapi.server.integrations.PageProvider;
-import fi.metatavu.kuntaapi.server.rest.model.Attachment;
-import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
-import fi.metatavu.kuntaapi.server.rest.model.Page;
 
 /**
  * Page provider for CaseM
@@ -50,6 +53,9 @@ public class CaseMPageProvider implements PageProvider {
 
   @Inject
   private IdentifierRelationController identifierRelationController;
+  
+  @Inject
+  private Event<IndexRemoveRequest> indexRemoveRequest;
   
   @Override
   @Timed (infoThreshold = 100, warningThreshold = 200, severeThreshold = 400)
@@ -123,7 +129,21 @@ public class CaseMPageProvider implements PageProvider {
     return null;
   }
 
-
+  @Override
+  public void deleteOrganizationPage(OrganizationId organizationId, PageId pageId) {
+    PageId casemPageId = idController.translatePageId(pageId, CaseMConsts.IDENTIFIER_NAME);
+    if (casemPageId != null) {
+      Page page = caseMCache.findPage(pageId);
+      if (page != null) {
+        caseMCache.removePage(pageId);
+        IndexRemovePage indexRemovePage = new IndexRemovePage();
+        indexRemovePage.setLanguage(CaseMConsts.DEFAULT_LANGUAGE);
+        indexRemovePage.setPageId(page.getId());
+        indexRemoveRequest.fire(new IndexRemoveRequest(indexRemovePage));
+      }
+    }
+  }
+  
   private List<Page> listIncludingUnmappedParentIds(OrganizationId organizationId, PageId kuntaApiParentId, boolean onlyRootPages) {
     if (kuntaApiParentId == null && !onlyRootPages) {
       return Collections.emptyList();

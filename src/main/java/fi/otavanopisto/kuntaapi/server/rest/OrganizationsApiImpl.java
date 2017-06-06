@@ -217,24 +217,24 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   
   @Override
   public Response findOrganization(String organizationIdParam, @Context Request request) {
-  	  OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
-    	if (organizationId == null) {
-    	  return createNotFound(NOT_FOUND);
-    	}
-    	
-    	Response notModified = httpCacheController.getNotModified(request, organizationId);
-    	if (notModified != null) {
-    	  return notModified;
-    	}
-    	
-    	Organization organization = organizationController.findOrganization(organizationId);
-    	if (organization != null) {
+	  OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
+  	if (organizationId == null) {
+  	  return createNotFound(NOT_FOUND);
+  	}
+  	
+  	Response notModified = httpCacheController.getNotModified(request, organizationId);
+  	if (notModified != null) {
+  	  return notModified;
+  	}
+  	
+  	Organization organization = organizationController.findOrganization(organizationId);
+  	if (organization != null) {
       return httpCacheController.sendModified(organization, organization.getId());
     }
       
     return createNotFound(NOT_FOUND);
   }
-
+  
   @Override
   public Response findOrganizationEvent(String organizationIdParam, String eventIdParam, @Context Request request) {
     OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
@@ -930,6 +930,31 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     }
     
     return Response.status(Status.NOT_FOUND).build();
+  }
+
+  @Override
+  public Response deleteOrganizationPage(String organizationIdParam, String pageIdParam, Request request) {
+    if (!securityController.isUnrestrictedClient(clientContainer.getClient())) {
+      return createForbidden(FORBIDDEN);
+    }
+    
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    PageId pageId = toPageId(organizationId, pageIdParam);
+    if (pageId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    Page page = pageController.findPage(organizationId, pageId);
+    if (page != null) {
+      pageController.deletePage(organizationId, pageId);
+      return Response.noContent().build();
+    }
+    
+    return createNotFound(NOT_FOUND);
   }
     
   /* Fragments */

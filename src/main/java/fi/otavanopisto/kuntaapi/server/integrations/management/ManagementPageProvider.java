@@ -120,7 +120,11 @@ public class ManagementPageProvider extends AbstractManagementProvider implement
     } else {
       return imageData;
     }
-
+  }
+  
+  @Override
+  public void deleteOrganizationPage(OrganizationId organizationId, PageId pageId) {
+    // Page removal should be done in management service
   }
 
   private List<Page> listPages(OrganizationId organizationId, PageId parentId, boolean onlyRootPages, boolean includeUnmappedParentIds) {
