@@ -19,7 +19,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.ptv.client.PtvApi;
 @SuppressWarnings ("squid:S3306")
 public class PtvServicePriorityIdUpdater extends AbstractPtvServiceIdUpdater {
   
-  private final static int UPDATE_SLACK_MINUTE = 3;
+  private static final int UPDATE_SLACK_MINUTE = 3;
   
   @Inject
   private PtvApi ptvApi;
