@@ -2,6 +2,7 @@ package fi.otavanopisto.kuntaapi.server.integrations.management;
 
 import java.net.URI;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
@@ -37,12 +38,15 @@ import fi.otavanopisto.kuntaapi.server.id.BaseId;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
+import fi.otavanopisto.kuntaapi.server.id.ServiceId;
+import fi.otavanopisto.kuntaapi.server.id.ServiceLocationServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.index.IndexRemovePage;
 import fi.otavanopisto.kuntaapi.server.index.IndexRemoveRequest;
 import fi.otavanopisto.kuntaapi.server.index.IndexRequest;
 import fi.otavanopisto.kuntaapi.server.index.IndexablePage;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
+import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
 import fi.otavanopisto.kuntaapi.server.integrations.management.resources.ManagementAttachmentDataResourceContainer;
 import fi.otavanopisto.kuntaapi.server.integrations.management.resources.ManagementAttachmentResourceContainer;
 import fi.otavanopisto.kuntaapi.server.integrations.management.resources.ManagementPageContentResourceContainer;
@@ -109,6 +113,9 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
   
   @Inject
   private PageIdTaskQueue pageIdTaskQueue;
+  
+  @Inject
+  private KuntaApiIdFactory kuntaApiIdFactory;
 
   @Override
   public String getName() {
@@ -225,11 +232,74 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
         }
       }
     }
+
+    updateEmbeddedServices(pageIdentifier, document);
+    updateEmbeddedServiceLocationServiceChannels(pageIdentifier, document);
     
     String result = changed ? document.body().html() : originalHtml;
     updateAttachments(kuntaApiOrganizationId, api, managementPage, pageIdentifier, contentKuntaApiAttachmentIds);
     
     return result;
+  }
+  
+  private void updateEmbeddedServices(Identifier pageIdentifier, Document document) {
+    Set<String> embeddedServiceIds = new HashSet<>();
+    Elements embeddedServiceArticles = document.select("article[data-type=\"kunta-api-service-component\"]");
+    for (Element embeddedServiceArticle : embeddedServiceArticles) {
+      String embeddedServiceId = embeddedServiceArticle.attr("data-service-id"); 
+      if (StringUtils.isNotBlank(embeddedServiceId)) {
+        embeddedServiceIds.add(embeddedServiceId); 
+      }
+    }
+    
+    updateEmbeddedServiceIds(pageIdentifier, embeddedServiceIds);
+  }
+
+  private void updateEmbeddedServiceIds(Identifier pageIdentifier, Set<String> embeddedServiceIds) {
+    PageId kuntaApiPageId = kuntaApiIdFactory.createFromIdentifier(PageId.class, pageIdentifier);
+    List<ServiceId> existingServiceIds = identifierRelationController.listServiceIdsByParentId(kuntaApiPageId);
+    for (String embeddedServiceId : embeddedServiceIds) {
+      ServiceId kuntaApiServiceId = kuntaApiIdFactory.createServiceId(embeddedServiceId);
+      Identifier serviceIdentifier = identifierController.findIdentifierById(kuntaApiServiceId);
+      if (serviceIdentifier != null) {
+        existingServiceIds.remove(kuntaApiServiceId);
+        identifierRelationController.addChild(pageIdentifier, serviceIdentifier);
+      }
+    }
+    
+    for (ServiceId serviceId : existingServiceIds) {
+      identifierRelationController.removeChild(kuntaApiPageId, serviceId);
+    }
+  }
+
+  private void updateEmbeddedServiceLocationServiceChannels(Identifier pageIdentifier, Document document) {
+    Set<String> embeddedServiceLocationServiceChannelIds = new HashSet<>();
+    Elements embeddedServiceLocationChannelArticles = document.select("article[data-type=\"kunta-api-service-location-component\"]");
+    for (Element embeddedServiceLocationChannelArticle : embeddedServiceLocationChannelArticles) {
+      String embeddedServiceChannelId = embeddedServiceLocationChannelArticle.attr("data-service-channel-id"); 
+      if (StringUtils.isNotBlank(embeddedServiceChannelId)) {
+        embeddedServiceLocationServiceChannelIds.add(embeddedServiceChannelId); 
+      }
+    }
+    
+    updateEmbeddedServiceLocationServiceChannelIds(pageIdentifier, embeddedServiceLocationServiceChannelIds);
+  }
+
+  private void updateEmbeddedServiceLocationServiceChannelIds(Identifier pageIdentifier, Set<String> embeddedServiceLocationServiceChannelIds) {
+    PageId kuntaApiPageId = kuntaApiIdFactory.createFromIdentifier(PageId.class, pageIdentifier);
+    List<ServiceLocationServiceChannelId> serviceLocationServiceChannelIds = identifierRelationController.listServiceLocationServiceChannelIdsByParentId(kuntaApiPageId);
+    for (String embeddedServiceLocationServiceChannelId : embeddedServiceLocationServiceChannelIds) {
+      ServiceLocationServiceChannelId serviceLocationServiceChannelId = kuntaApiIdFactory.createServiceLocationServiceChannelId(embeddedServiceLocationServiceChannelId);
+      Identifier serviceLocationServiceChannelIdentifier = identifierController.findIdentifierById(serviceLocationServiceChannelId);
+      if (serviceLocationServiceChannelIdentifier != null) {
+        serviceLocationServiceChannelIds.remove(serviceLocationServiceChannelId);
+        identifierRelationController.addChild(pageIdentifier, serviceLocationServiceChannelIdentifier);
+      }
+    }
+    
+    for (ServiceLocationServiceChannelId serviceLocationServiceChannelId : serviceLocationServiceChannelIds) {
+      identifierRelationController.removeChild(kuntaApiPageId, serviceLocationServiceChannelId);
+    }
   }
     
   private Long extractMediaId(Element image, String managementUrl) {

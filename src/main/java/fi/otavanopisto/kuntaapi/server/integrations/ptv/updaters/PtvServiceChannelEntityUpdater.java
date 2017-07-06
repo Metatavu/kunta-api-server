@@ -25,10 +25,12 @@ import fi.metatavu.ptv.client.model.V5VmOpenApiPrintableFormChannel;
 import fi.metatavu.ptv.client.model.V5VmOpenApiServiceLocationChannel;
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
+import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
 import fi.otavanopisto.kuntaapi.server.id.ElectronicServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.id.PhoneServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.PrintableFormServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceLocationServiceChannelId;
@@ -39,6 +41,9 @@ import fi.otavanopisto.kuntaapi.server.index.IndexRequest;
 import fi.otavanopisto.kuntaapi.server.index.IndexableServiceLocationServiceChannel;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
+import fi.otavanopisto.kuntaapi.server.integrations.management.ManagementConsts;
+import fi.otavanopisto.kuntaapi.server.integrations.management.ManagementIdFactory;
+import fi.otavanopisto.kuntaapi.server.integrations.management.tasks.PageIdTaskQueue;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.PtvConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.PtvIdFactory;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.PtvTranslator;
@@ -59,6 +64,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.ServiceLocationSer
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.WebPageServiceChannelRemoveTask;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
+import fi.otavanopisto.kuntaapi.server.tasks.IdTask;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask.Operation;
 import fi.otavanopisto.kuntaapi.server.utils.LocalizationUtils;
 
@@ -120,6 +126,15 @@ public class PtvServiceChannelEntityUpdater extends EntityUpdater {
 
   @Inject
   private ServiceChannelTasksQueue serviceChannelTasksQueue;
+  
+  @Inject
+  private IdentifierRelationController identifierRelationController;
+  
+  @Inject
+  private PageIdTaskQueue pageIdTaskQueue;
+
+  @Inject
+  private ManagementIdFactory managementIdFactory;
   
   @Override
   public String getName() {
@@ -234,6 +249,9 @@ public class PtvServiceChannelEntityUpdater extends EntityUpdater {
     ptvServiceLocationServiceChannelResourceContainer.put(kuntaApiServiceLocationServiceChannelId, serviceLocationServiceChannel);
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(serviceLocationServiceChannel));
     indexServiceLocationChannel(orderIndex, serviceLocationServiceChannel);
+    
+    List<PageId> parentPageIds = identifierRelationController.listPageIdsByChildId(kuntaApiServiceLocationServiceChannelId);
+    updateParentPageIds(parentPageIds);
   }
 
   private void updatePrintableFormServiceChannel(Long orderIndex, V5VmOpenApiPrintableFormChannel ptvPrintableFormServiceChannel) {
@@ -401,6 +419,17 @@ public class PtvServiceChannelEntityUpdater extends EntityUpdater {
       indexableServiceLocationServiceChannel.setServiceLocationServiceChannelId(serviceLocationServiceChannel.getId());
       
       indexRequest.fire(new IndexRequest(indexableServiceLocationServiceChannel));
+    }
+  }
+
+  private void updateParentPageIds(List<PageId> parentPageIds) {
+    for (PageId parentPageId : parentPageIds) {
+      Identifier parentPageIdentifier = identifierController.findIdentifierById(parentPageId);
+      if (ManagementConsts.IDENTIFIER_NAME.equals(parentPageIdentifier.getSource())) {
+        // TODO: REFACTOR THIS AWAY FROM THE PTV INTEGRATION PLUGIN
+        PageId pageId = managementIdFactory.createFromIdentifier(PageId.class, parentPageIdentifier);
+        pageIdTaskQueue.enqueueTask(true, new IdTask<PageId>(Operation.UPDATE, pageId));
+      }
     }
   }
 

@@ -29,6 +29,7 @@ import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
 import fi.otavanopisto.kuntaapi.server.id.ElectronicServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.id.PhoneServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.PrintableFormServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceId;
@@ -41,6 +42,8 @@ import fi.otavanopisto.kuntaapi.server.index.IndexableService;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
 import fi.otavanopisto.kuntaapi.server.integrations.management.ManagementConsts;
+import fi.otavanopisto.kuntaapi.server.integrations.management.ManagementIdFactory;
+import fi.otavanopisto.kuntaapi.server.integrations.management.tasks.PageIdTaskQueue;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.PtvConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.PtvIdFactory;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.PtvServiceResourceContainer;
@@ -105,7 +108,13 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
 
   @Inject
   private ServiceChannelTasksQueue serviceChannelTasksQueue;
+  
+  @Inject
+  private PageIdTaskQueue pageIdTaskQueue;
 
+  @Inject
+  private ManagementIdFactory managementIdFactory;
+   
   @Override
   public String getName() {
     return "ptv-services";
@@ -158,8 +167,22 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
         
         index(identifier.getKuntaApiId(), service, orderIndex);
       }
+      
+      List<PageId> parentPageIds = identifierRelationController.listPageIdsByChildId(ptvServiceId);
+      updateParentPageIds(parentPageIds);
     } else {
       logger.warning(String.format("Service %s processing failed on [%d] %s", ptvServiceId.getId(), response.getStatus(), response.getMessage()));
+    }
+  }
+
+  private void updateParentPageIds(List<PageId> parentPageIds) {
+    for (PageId parentPageId : parentPageIds) {
+      Identifier parentPageIdentifier = identifierController.findIdentifierById(parentPageId);
+      if (ManagementConsts.IDENTIFIER_NAME.equals(parentPageIdentifier.getSource())) {
+        // TODO: REFACTOR THIS AWAY FROM THE PTV INTEGRATION PLUGIN
+        PageId pageId = managementIdFactory.createFromIdentifier(PageId.class, parentPageIdentifier);
+        pageIdTaskQueue.enqueueTask(true, new IdTask<PageId>(Operation.UPDATE, pageId));
+      }
     }
   }
 
