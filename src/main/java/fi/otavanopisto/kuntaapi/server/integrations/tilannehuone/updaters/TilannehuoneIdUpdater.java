@@ -1,5 +1,6 @@
 package fi.otavanopisto.kuntaapi.server.integrations.tilannehuone.updaters;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -83,7 +84,13 @@ public class TilannehuoneIdUpdater extends IdUpdater {
     lastUpdate = currentUpdateStart;
   }
   
-  private List<Emergency> readEmergencies(String importFile) {
+  private List<Emergency> readEmergencies(String importFileName) {
+    File importFile = new File(importFileName);
+    if (!importFile.exists()) {
+      logger.log(Level.SEVERE, () -> String.format("Tilannehuone import file %s does not exit", importFileName));
+      return Collections.emptyList();
+    }
+    
     ObjectMapper objectMapper = new ObjectMapper();
     objectMapper.registerModule(new JavaTimeModule());
     
