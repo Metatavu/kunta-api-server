@@ -19,6 +19,8 @@ import fi.otavanopisto.kuntaapi.server.integrations.ptv.client.PtvApi;
 @SuppressWarnings ("squid:S3306")
 public class PtvOrganizationPriorityIdUpdater extends AbstractPtvOrganizationIdUpdater {
   
+  private final static int UPDATE_SLACK_MINUTE = 3;
+  
   @Inject
   private PtvApi ptvApi;
   
@@ -44,7 +46,7 @@ public class PtvOrganizationPriorityIdUpdater extends AbstractPtvOrganizationIdU
   @Override
   public ApiResponse<V3VmOpenApiGuidPage> getPage() {
     currentUpdateStart = OffsetDateTime.now();
-    return ptvApi.getOrganizationApi().apiV5OrganizationGet(lastUpdate, null);
+    return ptvApi.getOrganizationApi().apiV5OrganizationGet(lastUpdate.minusMinutes(UPDATE_SLACK_MINUTE), null);
   }
 
   @Override
