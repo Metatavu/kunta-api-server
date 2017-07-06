@@ -106,10 +106,12 @@ public class IdentifierRelationDAO extends AbstractDAO<IdentifierRelation> {
   }
   
   /**
-   * Lists child identifiers by parent
+   * Lists child identifiers by parent, source and type
    * 
    * @param parent parent identifier
-   * @return child identifiers by parent
+   * @param source source 
+   * @param type type
+   * @return child identifiers
    */
   public List<Identifier> listChildIdentifiersByParentSourceAndType(Identifier parent, String source, String type) {
     EntityManager entityManager = getEntityManager();
@@ -130,5 +132,59 @@ public class IdentifierRelationDAO extends AbstractDAO<IdentifierRelation> {
     
     return entityManager.createQuery(criteria).getResultList();
   }
+  
+  /**
+   * Lists child identifiers by parent and type
+   * 
+   * @param parent parent identifier
+   * @param type type
+   * @return child identifiers
+   */
+  public List<Identifier> listChildIdentifiersByParentAndType(Identifier parent, String type) {
+    EntityManager entityManager = getEntityManager();
+
+    CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+    CriteriaQuery<Identifier> criteria = criteriaBuilder.createQuery(Identifier.class);
+    Root<IdentifierRelation> root = criteria.from(IdentifierRelation.class);
+    Join<IdentifierRelation, Identifier> identifierJoin = root.join(IdentifierRelation_.child);
+    
+    criteria.select(root.get(IdentifierRelation_.child));
+    criteria.where(
+      criteriaBuilder.and(
+        criteriaBuilder.equal(root.get(IdentifierRelation_.parent), parent),
+        criteriaBuilder.equal(identifierJoin.get(Identifier_.type), type)
+      )
+    );
+    
+    return entityManager.createQuery(criteria).getResultList();
+  }
+  
+  /**
+   * Lists parent identifiers by child and type
+   * 
+   * @param parent parent identifier
+   * @param type type
+   * @return child identifiers
+   */
+  public List<Identifier> listParentIdentifiersByChildAndType(Identifier child, String type) {
+    EntityManager entityManager = getEntityManager();
+
+    CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+    CriteriaQuery<Identifier> criteria = criteriaBuilder.createQuery(Identifier.class);
+    Root<IdentifierRelation> root = criteria.from(IdentifierRelation.class);
+    Join<IdentifierRelation, Identifier> parentJoin = root.join(IdentifierRelation_.parent);
+    
+    criteria.select(root.get(IdentifierRelation_.parent));
+    criteria.where(
+      criteriaBuilder.and(
+        criteriaBuilder.equal(root.get(IdentifierRelation_.child), child),
+        criteriaBuilder.equal(parentJoin.get(Identifier_.type), type)
+      )
+    );
+    
+    return entityManager.createQuery(criteria).getResultList();
+  }
+  
+  
   
 }

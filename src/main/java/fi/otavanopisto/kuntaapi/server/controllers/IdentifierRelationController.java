@@ -31,6 +31,7 @@ import fi.otavanopisto.kuntaapi.server.id.PublicTransportStopId;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportStopTimeId;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportTripId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceId;
+import fi.otavanopisto.kuntaapi.server.id.ServiceLocationServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.ShortlinkId;
 import fi.otavanopisto.kuntaapi.server.id.TileId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
@@ -178,6 +179,23 @@ public class IdentifierRelationController {
   }
   
   /**
+   * Lists page ids by child id
+   * 
+   * @param childId child id
+   * @return page ids by child id
+   */
+  public List<PageId> listPageIdsByChildId(BaseId childId) {
+    List<Identifier> identifiers = listParentIdentifiersByChildIdAndType(childId, IdType.PAGE);
+    
+    List<PageId> result = new ArrayList<>(identifiers.size());
+    for (Identifier identifier : identifiers) {
+      result.add(kuntaApiIdFactory.createFromIdentifier(PageId.class, identifier));
+    }
+    
+    return result;
+  }
+  
+  /**
    * Lists service ids by source and parent id. 
    * 
    * @param parentId parent id
@@ -188,6 +206,38 @@ public class IdentifierRelationController {
     List<ServiceId> result = new ArrayList<>(identifiers.size());
     for (Identifier identifier : identifiers) {
       result.add(kuntaApiIdFactory.createFromIdentifier(ServiceId.class, identifier));
+    }
+    
+    return result;
+  }
+  
+  /**
+   * Lists service ids by parent id. 
+   * 
+   * @param parentId parent id
+   * @return serviceIds by parent id
+   */
+  public List<ServiceId> listServiceIdsByParentId(BaseId parentId) {
+    List<Identifier> identifiers = listChildIdentifiersByParentAndType(parentId, IdType.SERVICE);
+    List<ServiceId> result = new ArrayList<>(identifiers.size());
+    for (Identifier identifier : identifiers) {
+      result.add(kuntaApiIdFactory.createFromIdentifier(ServiceId.class, identifier));
+    }
+    
+    return result;
+  }
+  
+  /**
+   * Lists service location service channel ids by parent id. 
+   * 
+   * @param parentId parent id
+   * @return serviceLocationServiceChannelIds by parent id
+   */
+  public List<ServiceLocationServiceChannelId> listServiceLocationServiceChannelIdsByParentId(BaseId parentId) {
+    List<Identifier> identifiers = listChildIdentifiersByParentAndType(parentId, IdType.SERVICE_LOCATION_SERVICE_CHANNEL);
+    List<ServiceLocationServiceChannelId> result = new ArrayList<>(identifiers.size());
+    for (Identifier identifier : identifiers) {
+      result.add(kuntaApiIdFactory.createFromIdentifier(ServiceLocationServiceChannelId.class, identifier));
     }
     
     return result;
@@ -538,6 +588,28 @@ public class IdentifierRelationController {
     
     return identifierRelationDAO.listChildIdentifiersByParentSourceAndType(parentIdentifier, source, type.name());    
   }
+  
+  private List<Identifier> listChildIdentifiersByParentAndType(BaseId parentId, IdType type) {
+    Identifier parentIdentifier = identifierController.findIdentifierById(parentId);
+    if (parentIdentifier == null) {
+      logger.log(Level.WARNING, String.format("Could not find identifier for parent id %s when listing a child ids", parentId));
+      return Collections.emptyList();
+    }
+    
+    return identifierRelationDAO.listChildIdentifiersByParentAndType(parentIdentifier, type.name());    
+  }
+  
+  private List<Identifier> listParentIdentifiersByChildIdAndType(BaseId childId, IdType type) {
+    Identifier childIdentifier = identifierController.findIdentifierById(childId);
+    if (childIdentifier == null) {
+      logger.log(Level.WARNING, String.format("Could not find identifier for child id %s when listing parent ids", childId));
+      return Collections.emptyList();
+    }
+    
+    return identifierRelationDAO.listParentIdentifiersByChildAndType(childIdentifier, type.name());    
+  }
+  
+  
 
   public boolean isChildOf(BaseId parentId, BaseId childId) {
     return findIdentifierRelation(parentId, childId) != null;
