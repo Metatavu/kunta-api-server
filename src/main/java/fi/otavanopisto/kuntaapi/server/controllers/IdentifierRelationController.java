@@ -14,6 +14,7 @@ import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.BannerId;
 import fi.otavanopisto.kuntaapi.server.id.BaseId;
 import fi.otavanopisto.kuntaapi.server.id.ContactId;
+import fi.otavanopisto.kuntaapi.server.id.ElectronicServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.EmergencyId;
 import fi.otavanopisto.kuntaapi.server.id.EventId;
 import fi.otavanopisto.kuntaapi.server.id.FragmentId;
@@ -24,6 +25,8 @@ import fi.otavanopisto.kuntaapi.server.id.MenuId;
 import fi.otavanopisto.kuntaapi.server.id.MenuItemId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
+import fi.otavanopisto.kuntaapi.server.id.PhoneServiceChannelId;
+import fi.otavanopisto.kuntaapi.server.id.PrintableFormServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportAgencyId;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportRouteId;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportScheduleId;
@@ -34,6 +37,7 @@ import fi.otavanopisto.kuntaapi.server.id.ServiceId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceLocationServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.ShortlinkId;
 import fi.otavanopisto.kuntaapi.server.id.TileId;
+import fi.otavanopisto.kuntaapi.server.id.WebPageServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
 import fi.otavanopisto.kuntaapi.server.persistence.dao.IdentifierRelationDAO;
@@ -81,6 +85,19 @@ public class IdentifierRelationController {
    */
   public void removeChild(BaseId parentId, BaseId childId) {
     IdentifierRelation identifierRelation = findIdentifierRelation(parentId, childId);
+    if (identifierRelation != null) {
+      identifierRelationDAO.delete(identifierRelation);
+    }
+  }
+  
+  /**
+   * Removes a child reference from parent
+   * 
+   * @param parentId parent identifier
+   * @param childId child identifier
+   */
+  public void removeChild(Identifier parentIdentifier, Identifier childIdentifier) {
+    IdentifierRelation identifierRelation = identifierRelationDAO.findByParentAndChild(parentIdentifier, childIdentifier);
     if (identifierRelation != null) {
       identifierRelationDAO.delete(identifierRelation);
     }
@@ -222,6 +239,86 @@ public class IdentifierRelationController {
     List<ServiceId> result = new ArrayList<>(identifiers.size());
     for (Identifier identifier : identifiers) {
       result.add(kuntaApiIdFactory.createFromIdentifier(ServiceId.class, identifier));
+    }
+    
+    return result;
+  }
+
+  /**
+   * Lists electronic service channel ids by source and parent id. 
+   * 
+   * @param parentId parent id
+   * @return serviceIds by parent id
+   */
+  public List<ElectronicServiceChannelId> listElectronicServiceChannelIdsBySourceAndParentId(String source, BaseId parentId) {
+    List<Identifier> identifiers = listChildIdentifiersByParentSourceAndType(parentId, source, IdType.ELECTRONIC_SERVICE_CHANNEL);
+    List<ElectronicServiceChannelId> result = new ArrayList<>(identifiers.size());
+    for (Identifier identifier : identifiers) {
+      result.add(kuntaApiIdFactory.createFromIdentifier(ElectronicServiceChannelId.class, identifier));
+    }
+    
+    return result;
+  }
+
+  /**
+   * Lists phone service channel ids by source and parent id. 
+   * 
+   * @param parentId parent id
+   * @return serviceIds by parent id
+   */
+  public List<PhoneServiceChannelId> listPhoneServiceChannelIdsBySourceAndParentId(String source, BaseId parentId) {
+    List<Identifier> identifiers = listChildIdentifiersByParentSourceAndType(parentId, source, IdType.PHONE_SERVICE_CHANNEL);
+    List<PhoneServiceChannelId> result = new ArrayList<>(identifiers.size());
+    for (Identifier identifier : identifiers) {
+      result.add(kuntaApiIdFactory.createFromIdentifier(PhoneServiceChannelId.class, identifier));
+    }
+    
+    return result;
+  }
+  
+  /**
+   * Lists printableForm service channel ids by source and parent id. 
+   * 
+   * @param parentId parent id
+   * @return serviceIds by parent id
+   */
+  public List<PrintableFormServiceChannelId> listPrintableFormServiceChannelIdsBySourceAndParentId(String source, BaseId parentId) {
+    List<Identifier> identifiers = listChildIdentifiersByParentSourceAndType(parentId, source, IdType.PRINTABLE_FORM_SERVICE_CHANNEL);
+    List<PrintableFormServiceChannelId> result = new ArrayList<>(identifiers.size());
+    for (Identifier identifier : identifiers) {
+      result.add(kuntaApiIdFactory.createFromIdentifier(PrintableFormServiceChannelId.class, identifier));
+    }
+    
+    return result;
+  }
+  
+  /**
+   * Lists serviceLocation service channel ids by source and parent id. 
+   * 
+   * @param parentId parent id
+   * @return serviceIds by parent id
+   */
+  public List<ServiceLocationServiceChannelId> listServiceLocationServiceChannelIdsBySourceAndParentId(String source, BaseId parentId) {
+    List<Identifier> identifiers = listChildIdentifiersByParentSourceAndType(parentId, source, IdType.SERVICE_LOCATION_SERVICE_CHANNEL);
+    List<ServiceLocationServiceChannelId> result = new ArrayList<>(identifiers.size());
+    for (Identifier identifier : identifiers) {
+      result.add(kuntaApiIdFactory.createFromIdentifier(ServiceLocationServiceChannelId.class, identifier));
+    }
+    
+    return result;
+  }
+  
+  /**
+   * Lists webPage service channel ids by source and parent id. 
+   * 
+   * @param parentId parent id
+   * @return serviceIds by parent id
+   */
+  public List<WebPageServiceChannelId> listWebPageServiceChannelIdsBySourceAndParentId(String source, BaseId parentId) {
+    List<Identifier> identifiers = listChildIdentifiersByParentSourceAndType(parentId, source, IdType.WEBPAGE_SERVICE_CHANNEL);
+    List<WebPageServiceChannelId> result = new ArrayList<>(identifiers.size());
+    for (Identifier identifier : identifiers) {
+      result.add(kuntaApiIdFactory.createFromIdentifier(WebPageServiceChannelId.class, identifier));
     }
     
     return result;
@@ -609,8 +706,6 @@ public class IdentifierRelationController {
     return identifierRelationDAO.listParentIdentifiersByChildAndType(childIdentifier, type.name());    
   }
   
-  
-
   public boolean isChildOf(BaseId parentId, BaseId childId) {
     return findIdentifierRelation(parentId, childId) != null;
   }

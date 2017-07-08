@@ -26,8 +26,10 @@ import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
+import fi.otavanopisto.kuntaapi.server.id.BaseId;
 import fi.otavanopisto.kuntaapi.server.id.ElectronicServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
+import fi.otavanopisto.kuntaapi.server.id.IdType;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.id.PhoneServiceChannelId;
@@ -149,6 +151,12 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
       V5VmOpenApiService ptvService = response.getResponse();
       ServiceId kuntaApiServiceId = kuntaApiIdFactory.createFromIdentifier(ServiceId.class, identifier);
       
+      List<ElectronicServiceChannelId> electronicServiceChannelIds = identifierRelationController.listElectronicServiceChannelIdsBySourceAndParentId(PtvConsts.IDENTIFIER_NAME, kuntaApiServiceId);
+      List<PhoneServiceChannelId> phoneServiceChannelIds = identifierRelationController.listPhoneServiceChannelIdsBySourceAndParentId(PtvConsts.IDENTIFIER_NAME, kuntaApiServiceId);
+      List<PrintableFormServiceChannelId> printableFormServiceChannelIds = identifierRelationController.listPrintableFormServiceChannelIdsBySourceAndParentId(PtvConsts.IDENTIFIER_NAME, kuntaApiServiceId);
+      List<ServiceLocationServiceChannelId> serviceLocationServiceChannelIds = identifierRelationController.listServiceLocationServiceChannelIdsBySourceAndParentId(PtvConsts.IDENTIFIER_NAME, kuntaApiServiceId);
+      List<WebPageServiceChannelId> webPageServiceChannelIds = identifierRelationController.listWebPageServiceChannelIdsBySourceAndParentId(PtvConsts.IDENTIFIER_NAME, kuntaApiServiceId);
+      
       fi.metatavu.kuntaapi.server.rest.model.Service service = translateService(ptvService, kuntaApiServiceId);
 
       if (service != null) {
@@ -168,11 +176,60 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
         index(identifier.getKuntaApiId(), service, orderIndex);
       }
       
+      updateChannelRelations(identifier, service, electronicServiceChannelIds, phoneServiceChannelIds, printableFormServiceChannelIds, serviceLocationServiceChannelIds, webPageServiceChannelIds);
+      
       List<PageId> parentPageIds = identifierRelationController.listPageIdsByChildId(ptvServiceId);
       updateParentPageIds(parentPageIds);
     } else {
-      logger.warning(String.format("Service %s processing failed on [%d] %s", ptvServiceId.getId(), response.getStatus(), response.getMessage()));
+      logger.warning(() -> String.format("Service %s processing failed on [%d] %s", ptvServiceId.getId(), response.getStatus(), response.getMessage()));
     }
+  }
+
+  private void updateChannelRelations(Identifier serviceIdentfier, Service service, List<ElectronicServiceChannelId> electronicServiceChannelIds, List<PhoneServiceChannelId> phoneServiceChannelIds, List<PrintableFormServiceChannelId> printableFormServiceChannelIds, List<ServiceLocationServiceChannelId> serviceLocationServiceChannelIds, List<WebPageServiceChannelId> webPageServiceChannelIds) {
+    updateServiceChannelRelations(serviceIdentfier, IdType.ELECTRONIC_SERVICE_CHANNEL, extractKuntaApiIds(electronicServiceChannelIds), service.getElectronicServiceChannelIds());
+    updateServiceChannelRelations(serviceIdentfier, IdType.PHONE_SERVICE_CHANNEL, extractKuntaApiIds(phoneServiceChannelIds), service.getElectronicServiceChannelIds());
+    updateServiceChannelRelations(serviceIdentfier, IdType.PRINTABLE_FORM_SERVICE_CHANNEL, extractKuntaApiIds(printableFormServiceChannelIds), service.getElectronicServiceChannelIds());
+    updateServiceChannelRelations(serviceIdentfier, IdType.SERVICE_LOCATION_SERVICE_CHANNEL, extractKuntaApiIds(serviceLocationServiceChannelIds), service.getElectronicServiceChannelIds());
+    updateServiceChannelRelations(serviceIdentfier, IdType.WEBPAGE_SERVICE_CHANNEL, extractKuntaApiIds(webPageServiceChannelIds), service.getElectronicServiceChannelIds());
+  }
+
+  private void updateServiceChannelRelations(Identifier serviceIdentfier, IdType type, List<String> oldServiceChannelIds, List<String> serviceChannelIds) {
+    List<String> removedServiceChannelIds = new ArrayList<>(oldServiceChannelIds);
+    List<String> newServiceChannelIds = new ArrayList<>();
+    
+    for (String serviceChannelId : serviceChannelIds) {
+      removedServiceChannelIds.remove(serviceChannelId);
+      if (!oldServiceChannelIds.contains(serviceChannelId)) {
+        newServiceChannelIds.add(serviceChannelId);
+      }
+    }
+    
+    for (String removedServiceChannelId : removedServiceChannelIds) {
+      Identifier channelIdentifier = identifierController.findIdentifierByTypeSourceAndKuntaApiId(type.name(), PtvConsts.IDENTIFIER_NAME, removedServiceChannelId);  
+      identifierRelationController.removeChild(serviceIdentfier, channelIdentifier);
+    }
+
+    for (String newServiceChannelId : newServiceChannelIds) {
+      Identifier channelIdentifier = identifierController.findIdentifierByTypeSourceAndKuntaApiId(type.name(), PtvConsts.IDENTIFIER_NAME, newServiceChannelId);  
+      identifierRelationController.addChild(serviceIdentfier, channelIdentifier);
+    }
+  }
+
+  private List<String> extractKuntaApiIds(List<? extends BaseId> ids) {
+    if (ids == null || ids.isEmpty()) {
+      return Collections.emptyList();
+    }
+    
+    List<String> result = new ArrayList<>(ids.size());
+    for (BaseId id : ids) {
+      if (KuntaApiConsts.IDENTIFIER_NAME.equals(id.getSource())) {
+        result.add(id.getId());  
+      } else {
+        logger.severe(() -> String.format("%s is not a kunta api id", id));
+      }
+    }
+    
+    return result;
   }
 
   private void updateParentPageIds(List<PageId> parentPageIds) {
