@@ -144,6 +144,7 @@ public class ManagementWebhookHandler implements WebhookHandler {
       case "announcement":
         return handleAnnouncementPublish(kuntaApiOrganizationId, payload);
       case "customize_changeset":
+      case "nav_menu_item":
         return handleMenuItemPublish(kuntaApiOrganizationId);
       default:
         logger.log(Level.WARNING, () -> String.format("Don't know how to handle publish of post type %s", payload.getPostType()));
@@ -166,6 +167,7 @@ public class ManagementWebhookHandler implements WebhookHandler {
       case "tile":
         return handleTrashTile(kuntaApiOrganizationId, payload);
       case "customize_changeset":
+      case "nav_menu_item":
         return handleMenuItemTrash(kuntaApiOrganizationId);
       case "shortlink":
         return handleShortlinkTrash(kuntaApiOrganizationId, payload);
