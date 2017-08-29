@@ -50,7 +50,9 @@ public class TaskQueueDistributor {
   
   @Timeout
   public void onTimeout() {
-    selfAssignQueues();
+    if (!systemSettingController.inFailsafeMode()) {
+      selfAssignQueues();
+    }
   }
   
   private void selfAssignQueues() {
