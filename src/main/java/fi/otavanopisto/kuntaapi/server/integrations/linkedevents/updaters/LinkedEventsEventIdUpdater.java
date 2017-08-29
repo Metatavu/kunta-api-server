@@ -123,7 +123,7 @@ public class LinkedEventsEventIdUpdater extends IdUpdater {
       if (linkedEventsEventId != null) {
         ApiResponse<Event> response = eventApi.eventRetrieve(linkedEventsEventId.getId());
         int status = response.getStatus();
-        if (status == 404) {
+        if (status == 410) {
           linkedEventsEventIdTaskQueue.enqueueTask(false, new IdTask<EventId>(Operation.REMOVE, eventId));
         }
       }
