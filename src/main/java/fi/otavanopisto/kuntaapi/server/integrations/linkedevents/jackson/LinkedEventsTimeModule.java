@@ -10,6 +10,7 @@ public class LinkedEventsTimeModule extends SimpleModule {
 
   public LinkedEventsTimeModule() {
     addDeserializer(TemporalAccessor.class, new TemporalAccessorDeserializer());  
+    addSerializer(TemporalAccessor.class, new TemporalAccessorSerializer());  
   }
   
 }
