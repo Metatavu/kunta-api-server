@@ -26,7 +26,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpClient;
 import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpClient.Response;
 
 /**
- * API Client for palvelutietovaranto
+ * API Client for Linked Events
  * 
  * @author Antti Leppä
  */

@@ -1,32 +1,34 @@
 package fi.otavanopisto.kuntaapi.server.tasks;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
+import javax.ejb.EJBContext;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
-import javax.ejb.Timeout;
-import javax.ejb.TimerConfig;
-import javax.ejb.TimerService;
+import javax.enterprise.concurrent.ManagedScheduledExecutorService;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import javax.transaction.SystemException;
+import javax.transaction.UserTransaction;
+
+import org.apache.commons.codec.binary.StringUtils;
 
 import fi.otavanopisto.kuntaapi.server.controllers.ClusterController;
 import fi.otavanopisto.kuntaapi.server.controllers.TaskController;
 import fi.otavanopisto.kuntaapi.server.persistence.model.TaskQueue;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
-import java.util.Iterator;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.ejb.Timer;
 
 @Startup
 @Singleton
 @ApplicationScoped
 public class TaskQueueDistributor {
 
-  private static final int UPDATE_INTERVAL = 1000 * 60 * 5;
+  private static final int UPDATE_INTERVAL = 1000 * 60;
   
   @Inject
   private Logger logger;
@@ -41,50 +43,62 @@ public class TaskQueueDistributor {
   private SystemSettingController systemSettingController;
   
   @Resource
-  private TimerService timerService;
+  private ManagedScheduledExecutorService managedScheduledExecutorService;
+  
+  @Resource
+  private EJBContext ejbContext;
 
   @PostConstruct
   public void postConstruct() {
     startTimer();
   }
   
-  @Timeout
-  public void onTimeout() {
-    selfAssignQueues();
-  }
-  
   private void selfAssignQueues() {
-    try {
-      String localNodeName = clusterController.getLocalNodeName();
-      List<String> nodeNames = clusterController.getNodeNames();
-      int myIndex = nodeNames.indexOf(localNodeName);
-      int nodeCount = nodeNames.size();
-      List<TaskQueue> taskQueues = taskController.listTaskQueues();
-      
-      for (int i = 0; i < taskQueues.size(); i++) {
-        if ((i % nodeCount) == myIndex) {
-          taskController.updateTaskQueueResponsibleNode(taskQueues.get(i), localNodeName);
+    String localNodeName = clusterController.getLocalNodeName();
+    List<String> nodeNames = clusterController.getNodeNames();
+    int myIndex = nodeNames.indexOf(localNodeName);
+    int nodeCount = nodeNames.size();
+    List<TaskQueue> taskQueues = taskController.listTaskQueues();
+    
+    logger.log(Level.INFO, () -> String.format("Reassigning queues, found %d workers online. My index is %d", nodeCount, myIndex));
+    
+    for (int i = 0; i < taskQueues.size(); i++) {
+      if ((i % nodeCount) == myIndex) {
+        TaskQueue taskQueue = taskQueues.get(i);
+        if (!StringUtils.equals(taskQueue.getResponsibleNode(), localNodeName)) {
+          logger.log(Level.INFO, () -> String.format("Worker %s reserved queue %s", localNodeName, taskQueue.getName()));
+          taskController.updateTaskQueueResponsibleNode(taskQueue, localNodeName);
         }
-      }
-    } finally {
-      try {
-        Iterator<Timer> timers = timerService.getTimers().iterator();
-        while(timers.hasNext()) {
-          Timer timer = timers.next();
-          timer.cancel();
-        }
-      } catch (Exception e) {
-        logger.log(Level.SEVERE, "Exception while canceling timer", e);
-      } finally {
-        startTimer();
       }
     }
   }
   
   private void startTimer() {
-    TimerConfig timerConfig = new TimerConfig();
-    timerConfig.setPersistent(false);
-    timerService.createSingleActionTimer(systemSettingController.inTestMode() ? 1000 : UPDATE_INTERVAL, timerConfig);
+    startTimer(UPDATE_INTERVAL, UPDATE_INTERVAL);
+  }
+  
+  private void startTimer(long warmup, long delay) {
+    managedScheduledExecutorService.scheduleWithFixedDelay(() -> {
+      UserTransaction userTransaction = ejbContext.getUserTransaction();
+      try {
+        userTransaction.begin();
+        
+        if (!systemSettingController.inFailsafeMode()) {
+          selfAssignQueues();
+        }
+        
+        userTransaction.commit();
+      } catch (Exception ex) {
+        logger.log(Level.SEVERE, "TaskQueueDistributor crashed", ex);
+        try {
+          if (userTransaction != null) {
+            userTransaction.rollback();
+          }
+        } catch (SystemException e1) {
+          logger.log(Level.SEVERE, "Failed to rollback transaction", e1);
+        }
+      }
+    }, warmup, delay, TimeUnit.MILLISECONDS);
   }
   
 }

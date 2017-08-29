@@ -1,5 +1,11 @@
 package fi.otavanopisto.kuntaapi.server.integrations.linkedevents;
 
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.time.OffsetTime;
+import java.time.ZoneOffset;
+import java.time.temporal.ChronoField;
+import java.time.temporal.TemporalAccessor;
 import java.util.Map;
 
 import fi.metatavu.linkedevents.client.model.Event;
@@ -44,15 +50,32 @@ public class LinkedEventsTranslator {
     result.setAddress(address);
     result.setCity(city);
     result.setDescription(description);
-    result.setEnd(linkedEventsEvent.getEndTime());
+    result.setEnd(translateTime(linkedEventsEvent.getEndTime()));
     result.setId(kuntaApiId.getId());
     result.setName(name);
     result.setOriginalUrl(url);
     result.setPlace(place);
     result.setZip(zip);
-    result.setStart(linkedEventsEvent.getStartTime());
+    result.setStart(translateTime(linkedEventsEvent.getStartTime()));
     
     return result;
+  }
+
+  private OffsetDateTime translateTime(TemporalAccessor time) {
+    if (time == null) {
+      return null;
+    }
+    
+    if (time.isSupported(ChronoField.HOUR_OF_DAY)) {
+      return OffsetDateTime.from(time);
+    }
+    
+    LocalDate localDate = LocalDate.from(time);
+    if (localDate != null) {
+      return localDate.atTime(OffsetTime.of(0, 0, 0, 0, ZoneOffset.UTC));
+    }
+    
+    return null;
   }
   
   

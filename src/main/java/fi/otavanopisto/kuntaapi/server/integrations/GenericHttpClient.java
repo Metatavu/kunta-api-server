@@ -6,6 +6,7 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.logging.Level;
@@ -31,6 +32,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.Module;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -51,10 +53,15 @@ public class GenericHttpClient {
   
   @Inject
   private Logger logger;
+  
+  private List<Module> modules;
 
   private GenericHttpClient() {
   }
-
+  
+  public void setModules(List<Module> modules) {
+    this.modules = modules;
+  }
   
   /**
    * Executes a HEAD request into a specified URI
@@ -254,11 +261,11 @@ public class GenericHttpClient {
       String contentType = getContentType(httpResponse);
       if ("text/xml".equals(contentType)) {
         XmlMapper xmlMapper = new XmlMapper();
-        xmlMapper.registerModule(new JavaTimeModule());
+        registerModules(xmlMapper);
         return new Response<>(statusCode, message, (T) xmlMapper.readValue(httpResponseContent, typeReference));
       } else {
         ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.registerModule(new JavaTimeModule());
+        registerModules(objectMapper);
         return new Response<>(statusCode, message, (T) objectMapper.readValue(httpResponseContent, typeReference));
       }
     } finally {
@@ -266,6 +273,16 @@ public class GenericHttpClient {
     }
   }
   
+  private void registerModules(ObjectMapper objectMapper) {
+    if (modules != null) {
+      for (Module module : modules) {
+        objectMapper.registerModule(module);
+      }
+    } else {
+      objectMapper.registerModule(new JavaTimeModule());
+    }
+  }
+
   private String getContentType(HttpResponse httpResponse) {
     Header header = httpResponse.getFirstHeader("Content-Type");
     if (header != null) {
