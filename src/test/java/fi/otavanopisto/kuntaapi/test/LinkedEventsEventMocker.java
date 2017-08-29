@@ -4,27 +4,19 @@ import static com.github.tomakehurst.wiremock.client.WireMock.containing;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlPathEqualTo;
 import static org.junit.Assert.fail;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.tomakehurst.wiremock.matching.StringValuePattern;
 
 import fi.metatavu.linkedevents.client.model.Event;
-import fi.otavanopisto.kuntaapi.server.integrations.linkedevents.jackson.LinkedEventsTimeModule;
 
 @SuppressWarnings ({"squid:S1166", "squid:S1075"})
 public class LinkedEventsEventMocker extends AbstractBaseMocker {
   
-  private static Logger logger = Logger.getLogger(LinkedEventsEventMocker.class.getName());
   private static final String PATH_TEMPLATE = "%s%s/";
   private static final String RESOURCES_PATH = "/v1/event/";
-  private static final String FAILED_TO_READ_MOCK_FILE = "Failed to read mock file";
   
   private LinkedEventsResourceMocker<String, Event> eventMocker = new LinkedEventsResourceMocker<>();
 
@@ -111,20 +103,6 @@ public class LinkedEventsEventMocker extends AbstractBaseMocker {
    */    
   private Event readEventFromJSONFile(String file) {
     return readJSONFile(file, Event.class);
-  }
-  
-  @Override
-  protected <T> T readJSONFile(String file, Class <T> type){
-    ObjectMapper objectMapper = new ObjectMapper();
-    objectMapper.registerModule(new LinkedEventsTimeModule());
-    
-    try (InputStream stream = getClass().getClassLoader().getResourceAsStream(file)) {
-      return objectMapper.readValue(stream, type);
-    } catch (IOException e) {
-      logger.log(Level.SEVERE, FAILED_TO_READ_MOCK_FILE, e);
-      fail(e.getMessage());
-    }
-    return null;
   }
   
 }
