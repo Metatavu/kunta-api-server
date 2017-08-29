@@ -96,7 +96,7 @@ public class LinkedEventsEventIdUpdater extends IdUpdater {
     String linkedEventsOrganization = organizationSettingController.getSettingValue(organizationId, LinkedEventsConsts.ORGANIZATION_SETTING_ORGANIZATION);
     
     EventApi eventApi = linkedEventsApi.getEventApi(organizationId);
-    ApiResponse<InlineResponse200> response = eventApi.eventList(null, null, null, null, null, null, null, null, null, null, null, null, linkedEventsOrganization, page + 1, PER_PAGE);
+    ApiResponse<InlineResponse200> response = eventApi.eventList(null, null, null, null, null, null, null, null, null, null, null, null, null, linkedEventsOrganization, null, page + 1, PER_PAGE);
     if (response.isOk()) {
       InlineResponse200 responseMeta = response.getResponse();
       MetaDefinition meta = responseMeta.getMeta();
@@ -134,7 +134,7 @@ public class LinkedEventsEventIdUpdater extends IdUpdater {
     String linkedEventsOrganization = organizationSettingController.getSettingValue(organizationId, LinkedEventsConsts.ORGANIZATION_SETTING_ORGANIZATION);
     
     EventApi eventApi = linkedEventsApi.getEventApi(organizationId);
-    ApiResponse<InlineResponse200> response = eventApi.eventList(null, null, null, null, null, null, null, null, null, null, null, null, linkedEventsOrganization, 1, 1);
+    ApiResponse<InlineResponse200> response = eventApi.eventList(null, null, null, null, null, null, null, null, null, null, null, null, null, linkedEventsOrganization, null, 1, 1);
     if (response.isOk()) {
       InlineResponse200 responseMeta = response.getResponse();
       return responseMeta.getMeta().getCount();

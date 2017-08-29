@@ -8,6 +8,7 @@ import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,6 +25,7 @@ import fi.metatavu.linkedevents.client.ApiResponse;
 import fi.metatavu.linkedevents.client.ResultType;
 import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpClient;
 import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpClient.Response;
+import fi.otavanopisto.kuntaapi.server.integrations.linkedevents.jackson.LinkedEventsTimeModule;
 
 /**
  * API Client for palvelutietovaranto
@@ -69,6 +71,7 @@ public class LinkedEventsClient implements fi.metatavu.linkedevents.client.ApiCl
     Map<String, String> extraHeaders = new HashMap<>();
     extraHeaders.put("Accept", ACCEPT);
     
+    httpClient.setModules(Arrays.asList(new LinkedEventsTimeModule()));
     Response<T> response = httpClient.doGETRequest(uri, new GenericHttpClient.ResultTypeWrapper<>(resultType.getType()), extraHeaders);
     
     return new ApiResponse<>(response.getStatus(), response.getMessage(), response.getResponseEntity());
