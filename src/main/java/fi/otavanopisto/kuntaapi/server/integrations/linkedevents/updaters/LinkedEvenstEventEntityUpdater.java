@@ -150,7 +150,6 @@ public class LinkedEvenstEventEntityUpdater extends EntityUpdater {
         ApiResponse<Place> placeResponse = filterApi.placeRetrieve(placeId);
         if (!placeResponse.isOk()) {
           logger.log(Level.INFO, () -> String.format("Failed to load place (%s) from LinkedEvents event %s", linkedEventsEvent.getId(), placeId)); 
-          return;
         } else {
           place = placeResponse.getResponse();
         }
