@@ -212,7 +212,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   @SuppressWarnings ({"squid:S1166", "squid:S00108", "squid:S2925", "squid:S106"})
   protected void waitApiListCount(String path, int count) throws InterruptedException {
     int counter = 0;
-    long timeout = System.currentTimeMillis() + (120 * 1000);
+    long timeout = System.currentTimeMillis() + (60 * 1000 * 5);
     while (true) {
       counter++;
       Thread.sleep(1000);

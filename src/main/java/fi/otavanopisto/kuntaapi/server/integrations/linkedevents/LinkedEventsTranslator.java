@@ -8,13 +8,16 @@ import java.time.temporal.ChronoField;
 import java.time.temporal.TemporalAccessor;
 import java.util.Map;
 
+import fi.metatavu.kuntaapi.server.rest.model.Attachment;
 import fi.metatavu.linkedevents.client.model.Event;
 import fi.metatavu.linkedevents.client.model.EventInfoUrl;
 import fi.metatavu.linkedevents.client.model.EventName;
 import fi.metatavu.linkedevents.client.model.Place;
 import fi.metatavu.linkedevents.client.model.PlaceAddressLocality;
 import fi.metatavu.linkedevents.client.model.PlaceName;
+import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.EventId;
+import fi.otavanopisto.kuntaapi.server.integrations.BinaryHttpClient.DownloadMeta;
 
 public class LinkedEventsTranslator {
 
@@ -59,6 +62,15 @@ public class LinkedEventsTranslator {
     result.setStart(translateTime(linkedEventsEvent.getStartTime()));
     
     return result;
+  }
+
+  public Attachment translateAttachment(AttachmentId kuntaApiAttachmentId, DownloadMeta imageMeta) {
+    Attachment attachment = new Attachment();
+    attachment.setId(kuntaApiAttachmentId.getId());
+    attachment.setContentType(imageMeta.getContentType());
+    attachment.setSize(Long.valueOf(imageMeta.getSize()));
+    attachment.setType(imageMeta.getContentType());
+    return attachment;
   }
 
   private OffsetDateTime translateTime(TemporalAccessor time) {
