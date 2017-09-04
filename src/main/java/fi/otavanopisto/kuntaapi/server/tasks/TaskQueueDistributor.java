@@ -29,6 +29,7 @@ import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 public class TaskQueueDistributor {
 
   private static final int UPDATE_INTERVAL = 1000 * 60;
+  private static final int TEST_UPDATE_INTERVAL = 1000;
   
   @Inject
   private Logger logger;
@@ -74,7 +75,9 @@ public class TaskQueueDistributor {
   }
   
   private void startTimer() {
-    startTimer(UPDATE_INTERVAL, UPDATE_INTERVAL);
+    boolean testMode = systemSettingController.inTestMode();
+    long interval = testMode ? TEST_UPDATE_INTERVAL : UPDATE_INTERVAL;
+    startTimer(interval, interval);
   }
   
   private void startTimer(long warmup, long delay) {
