@@ -734,7 +734,7 @@
             <configuration>
               <failIfNoTests>true</failIfNoTests>
               <skipAfterFailureCount>1</skipAfterFailureCount>
-              <argLine>-Xms1024m -Xmx2048m</argLine>
+              <argLine>-Xmx3G</argLine>
               <includes>
                 <include>**/*IT.java</include>
               </includes>
@@ -844,7 +844,7 @@
           <plugin>
             <groupId>org.codehaus.cargo</groupId>
             <artifactId>cargo-maven2-plugin</artifactId>
-            <version>1.5.0</version>
+            <version>1.6.4</version>
             <configuration>
               <container>
                 <containerId>wildfly10x</containerId>
@@ -866,7 +866,7 @@
                 <properties>
                   <cargo.servlet.port>${it.port.http}</cargo.servlet.port>
                   <cargo.jboss.configuration>standalone</cargo.jboss.configuration>
-                  <cargo.jvmargs>${jacoco.agent.itArgLine},output=tcpserver,port=6300 -Xms64m -Xmx1024m -Drunmode=TEST</cargo.jvmargs>
+                  <cargo.jvmargs>${jacoco.agent.itArgLine},output=tcpserver,port=6300 -Xms64m -Xmx2G -Drunmode=TEST</cargo.jvmargs>
                   <cargo.datasource.datasource.fnici>
                     cargo.datasource.driver=${it.jdbc.driver}|
                     cargo.datasource.url=${it.jdbc.url}|
