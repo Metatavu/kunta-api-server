@@ -813,6 +813,7 @@
               <tcpPort>9300</tcpPort>
               <httpPort>9200</httpPort>
               <version>5.2.2</version>
+              <skip>${it.skipelasticsearch}</skip>
               <plugins>
                 <plugin>
                   <uri>ingest-attachment</uri>
