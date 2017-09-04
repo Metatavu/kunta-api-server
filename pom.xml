@@ -922,6 +922,8 @@
                       <command>/subsystem=logging/logger=fi.otavanopisto.kuntaapi.server.security.SecurityFilter:add(level=FATAL)</command>
                       <command>/subsystem=logging/logger=fi.otavanopisto.kuntaapi.server.index.IndexUpdater:add(level=SEVERE)</command>
                       <command>/subsystem=logging/logger=org.onebusaway.gtfs.serialization.GtfsReader:add(level=WARN)</command>
+                      <command>/subsystem=logging/logger=fi.otavanopisto.kuntaapi.server.integrations.tilannehuone.updaters.TilannehuoneIdUpdater:add(level=SEVERE)</command>
+                      <command>/subsystem=logging/logger=ffi.otavanopisto.kuntaapi.server.integrations.ptv.updaters.PtvOrganizationEntityUpdater:add(level=WARN)</command>
                     </commands>
                   </before-deployment>
                   <filename>${project.build.finalName}.${project.packaging}</filename>
