@@ -734,7 +734,7 @@
             <configuration>
               <failIfNoTests>true</failIfNoTests>
               <skipAfterFailureCount>1</skipAfterFailureCount>
-              <argLine>-Xmx3G</argLine>
+              <argLine>-Xmx2G</argLine>
               <includes>
                 <include>**/*IT.java</include>
               </includes>
