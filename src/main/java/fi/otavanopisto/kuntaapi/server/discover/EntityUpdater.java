@@ -48,7 +48,7 @@ public abstract class EntityUpdater extends AbstractUpdater {
   public long getTimerInterval() {
     try {
       if (systemSettingController.inTestMode()) {
-        return 100;
+        return 100l;
       }
       
       String key = String.format("entity-updater.%s.interval", getName());

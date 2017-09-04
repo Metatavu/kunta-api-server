@@ -17,7 +17,7 @@ if [ "$TRAVIS_PULL_REQUEST" != "false" ] && [ $TRAVIS_BRANCH != "master" ] && [ 
     -Dsonar.github.repository=$TRAVIS_REPO_SLUG \
     -Dsonar.github.pullRequest=$TRAVIS_PULL_REQUEST
     
-  mvn clean verify jacoco:report coveralls:report -Pitests -DrepoToken=$COVERALLS_TOKEN
+  mvn clean verify jacoco:report coveralls:report -Pitests -DrepoToken=$COVERALLS_TOKEN -Dit.skipelasticsearch=true
   TEST_STATUS=$?
   
   if [ "$TEST_STATUS" != "0" ]; then
@@ -44,7 +44,7 @@ elif [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ $TRAVIS_BRANCH == "develop" ]; t
     -Dsonar.sources=src \
     -Dsonar.java.source=1.8
   set -e
-  mvn clean verify jacoco:report coveralls:report -Pitests -DrepoToken=$COVERALLS_TOKEN
+  mvn clean verify jacoco:report coveralls:report -Pitests -DrepoToken=$COVERALLS_TOKEN -Dit.skipelasticsearch=true
   set +e
 elif [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ $TRAVIS_BRANCH == "master" ]; then
   echo "Master build"
