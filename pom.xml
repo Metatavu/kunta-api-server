@@ -807,7 +807,7 @@
           <plugin>
             <groupId>com.github.alexcojocaru</groupId>
             <artifactId>elasticsearch-maven-plugin</artifactId>
-            <version>5.7</version>
+            <version>5.11</version>
             <configuration>
               <clusterName>elasticsearch</clusterName>
               <tcpPort>9300</tcpPort>
