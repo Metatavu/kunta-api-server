@@ -111,8 +111,8 @@
 <p>${correctioninstructions}</p>
 </#if>
 
-<div class="casem-meta" data-meta-name="casem-type" data-meta-value="meeting-item"/>
-<#if meetingTitle??><div class="casem-meta" data-meta-name="meeting-title" data-meta-value="${meetingTitle}"/></#if>
-<#if name??><div class="casem-meta" data-meta-name="meeting-item-name" data-meta-value="${name}"/></#if>
-<#if article??><div class="casem-meta" data-meta-name="meeting-item-article" data-meta-value="${article}"/></#if>
-<#if additionalTopic??><div class="casem-meta" data-meta-name="meeting-item-additional-topic" data-meta-value="true"/></#if>
+<div class="casem-meta" data-meta-name="casem-type" data-meta-value="meeting-item"></div>
+<#if meetingTitle??><div class="casem-meta" data-meta-name="meeting-title" data-meta-value="${meetingTitle}"></div></#if>
+<#if name??><div class="casem-meta" data-meta-name="meeting-item-name" data-meta-value="${name}"></div></#if>
+<#if article??><div class="casem-meta" data-meta-name="meeting-item-article" data-meta-value="${article}"></div></#if>
+<#if additionalTopic??><div class="casem-meta" data-meta-name="meeting-item-additional-topic" data-meta-value="true"></div></#if>
