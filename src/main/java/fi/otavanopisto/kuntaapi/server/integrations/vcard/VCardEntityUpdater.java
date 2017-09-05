@@ -85,7 +85,9 @@ public class VCardEntityUpdater extends EntityUpdater {
       if (task != null) {
         updateContacts(task.getOrganizationId());
       } else {
-        organizationVCardsTaskQueue.enqueueTasks(organizationSettingController.listOrganizationIdsWithSetting(VCardConsts.ORGANIZATION_SETTING_URL));
+        if (organizationVCardsTaskQueue.isEmpty()) {
+          organizationVCardsTaskQueue.enqueueTasks(organizationSettingController.listOrganizationIdsWithSetting(VCardConsts.ORGANIZATION_SETTING_URL));
+        }
       }
     }
   }

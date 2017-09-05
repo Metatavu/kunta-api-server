@@ -1,6 +1,4 @@
-<#if meetingTitle??>
-  <h1>${meetingTitle}</h1>
-</#if>
+<h2><#if article??>§ ${article}</#if> <#if name??>${name}</#if><#if additionalTopic> (jatkopykälä)</#if></h2>
 
 <#if memoApproved>
   <p class="casem-memo-approved">Pöytäkirja on tarkastettu </p>
@@ -8,7 +6,6 @@
   <p class="casem-memo-not-approved">Esityslista on tarkastamaton</p>
 </#if>
 
-<h2><#if article??>§ ${article}</#if> <#if name??>${name}</#if><#if additionalTopic> (jatkopykälä)</#if></h2>
 <#if caseNativeId??>
 <p>${caseNativeId}</p>
 </#if>
@@ -113,3 +110,9 @@
 <h3>Muutoksenhaku</h3>
 <p>${correctioninstructions}</p>
 </#if>
+
+<div class="casem-meta" data-meta-name="casem-type" data-meta-value="meeting-item"/>
+<#if meetingTitle??><div class="casem-meta" data-meta-name="meeting-title" data-meta-value="${meetingTitle}"/></#if>
+<#if name??><div class="casem-meta" data-meta-name="meeting-item-name" data-meta-value="${name}"/></#if>
+<#if article??><div class="casem-meta" data-meta-name="meeting-item-article" data-meta-value="${article}"/></#if>
+<#if additionalTopic??><div class="casem-meta" data-meta-name="meeting-item-additional-topic" data-meta-value="true"/></#if>
