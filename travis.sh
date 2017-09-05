@@ -12,6 +12,7 @@ if [ "$TRAVIS_PULL_REQUEST" != "false" ] && [ $TRAVIS_BRANCH != "master" ] && [ 
     -Dsonar.projectName=Kunta\ API\ Server \
     -Dsonar.projectVersion=$PROJECT_VERSION \
     -Dsonar.sources=src \
+    -Dsonar.java.binaries=target/classes \
     -Dsonar.java.source=1.8 \
     -Dsonar.github.oauth=$GITHUB_TOKEN \
     -Dsonar.github.repository=$TRAVIS_REPO_SLUG \
@@ -42,6 +43,7 @@ elif [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ $TRAVIS_BRANCH == "develop" ]; t
     -Dsonar.projectName=Kunta\ API\ Server \
     -Dsonar.projectVersion=$PROJECT_VERSION \
     -Dsonar.sources=src \
+    -Dsonar.java.binaries=target/classes \
     -Dsonar.java.source=1.8
   set -e
   mvn clean verify jacoco:report coveralls:report -Pitests -DrepoToken=$COVERALLS_TOKEN -Dit.skipelasticsearch=true
