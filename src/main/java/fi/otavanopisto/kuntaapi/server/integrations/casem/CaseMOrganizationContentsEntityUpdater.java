@@ -67,9 +67,11 @@ public class CaseMOrganizationContentsEntityUpdater extends EntityUpdater {
           updateOrganizationMeetings(meetingTask.getOrganizationId());
         } else {
           List<OrganizationId> organizationIds = organizationSettingController.listOrganizationIdsWithSetting(CaseMConsts.ORGANIZATION_SETTING_BASEURL);
-          organizationNodesTaskQueue.enqueueTasks(organizationIds);
-          organizationBoardsTaskQueue.enqueueTasks(organizationIds);
-          organizationMeetingsTaskQueue.enqueueTasks(organizationIds);
+          if (!organizationIds.isEmpty() && organizationNodesTaskQueue.isEmpty() && organizationBoardsTaskQueue.isEmpty() && organizationMeetingsTaskQueue.isEmpty()) {            
+            organizationNodesTaskQueue.enqueueTasks(organizationIds);
+            organizationBoardsTaskQueue.enqueueTasks(organizationIds);
+            organizationMeetingsTaskQueue.enqueueTasks(organizationIds);
+          }
         }
       }
     }

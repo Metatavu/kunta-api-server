@@ -82,3 +82,5 @@
     </#list>
   </#if>
 </#if>
+
+<div class="casem-meta" data-meta-name="casem-type" data-meta-value="meeting"></div>
