@@ -1,8 +1,10 @@
 package fi.otavanopisto.kuntaapi.server.integrations.vcard;
 
-import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -12,6 +14,7 @@ import java.util.logging.Logger;
 import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
 import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.event.Event;
 import javax.inject.Inject;
 
 import org.apache.commons.lang3.StringUtils;
@@ -20,16 +23,18 @@ import ezvcard.Ezvcard;
 import ezvcard.VCard;
 import ezvcard.io.chain.ChainingTextParser;
 import fi.metatavu.kuntaapi.server.rest.model.Contact;
+import fi.metatavu.kuntaapi.server.rest.model.ContactPhone;
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
 import fi.otavanopisto.kuntaapi.server.id.ContactId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
-import fi.otavanopisto.kuntaapi.server.integrations.BinaryHttpClient;
-import fi.otavanopisto.kuntaapi.server.integrations.BinaryHttpClient.BinaryResponse;
-import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpClient.Response;
-import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
+import fi.otavanopisto.kuntaapi.server.index.IndexRemoveContact;
+import fi.otavanopisto.kuntaapi.server.index.IndexRemoveRequest;
+import fi.otavanopisto.kuntaapi.server.index.IndexRequest;
+import fi.otavanopisto.kuntaapi.server.index.IndexableContact;
+import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
 import fi.otavanopisto.kuntaapi.server.integrations.vcard.tasks.OrganizationVCardsTaskQueue;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.resources.ContactResourceContainer;
@@ -50,8 +55,11 @@ public class VCardEntityUpdater extends EntityUpdater {
   private SystemSettingController systemSettingController;
 
   @Inject
-  private BinaryHttpClient binaryHttpClient;
-  
+  private KuntaApiIdFactory kuntaApiIdFactory;
+
+  @Inject
+  private VCardIdFactory vCardIdFactory;
+
   @Inject
   private VCardTranslator vCardTranslator;
   
@@ -73,6 +81,12 @@ public class VCardEntityUpdater extends EntityUpdater {
   @Inject
   private OrganizationVCardsTaskQueue organizationVCardsTaskQueue;
 
+  @Inject
+  private Event<IndexRequest> indexRequest;
+
+  @Inject
+  private Event<IndexRemoveRequest> indexRemoveRequest;
+
   @Override
   public String getName() {
     return "vcard-contacts";
@@ -86,57 +100,47 @@ public class VCardEntityUpdater extends EntityUpdater {
         updateContacts(task.getOrganizationId());
       } else {
         if (organizationVCardsTaskQueue.isEmpty()) {
-          organizationVCardsTaskQueue.enqueueTasks(organizationSettingController.listOrganizationIdsWithSetting(VCardConsts.ORGANIZATION_SETTING_URL));
+          organizationVCardsTaskQueue.enqueueTasks(organizationSettingController.listOrganizationIdsWithSetting(VCardConsts.ORGANIZATION_VCARD_FILE));
         }
       }
     }
   }
   
-  private void updateContacts(OrganizationId organizationId) {
-    String url = getUrl(organizationId);
-    if (StringUtils.isBlank(url)) {
+  private void updateContacts(OrganizationId kuntaApiOrganizationId) {
+    if (!hasFileSetting(kuntaApiOrganizationId)) {
       return;
     }
     
-    String username = getUsername(organizationId);
-    String password = getPassword(organizationId);
+    File vCardFile = getVCardFile(kuntaApiOrganizationId);
+    if (!vCardFile.exists()) {
+      logger.log(Level.WARNING, () -> String.format("Organization %s VCard file %s does not exist", kuntaApiOrganizationId, vCardFile.getAbsolutePath()));
+      return;
+    }
     
-    Response<BinaryResponse> response = binaryHttpClient.downloadBinary(url, username, password);
-    if (response.isOk()) {
-      BinaryResponse responseEntity = response.getResponseEntity();
-      try {
-        updateContacts(organizationId, parseVCards(responseEntity));
-      } catch (IOException e) {
-        logger.log(Level.SEVERE, String.format("Failed to read VCard stream for organization %s", organizationId.toString()), e);
-      }
-    } else {
-      logger.severe(String.format("Organization %s vcard contact list download failed on [%d] %s", organizationId.toString(), response.getStatus(), response.getMessage()));
+    try (FileInputStream fileInputStream = new FileInputStream(vCardFile)) {
+      updateContacts(kuntaApiOrganizationId, parseVCards(fileInputStream));
+    } catch (IOException e) {
+      logger.log(Level.SEVERE, String.format("Failed to read VCard stream for organization %s", kuntaApiOrganizationId.toString()), e); 
     }
   }
 
-  private void updateContacts(OrganizationId organizationId, List<VCard> vCards) {
-    List<ContactId> removedIds = identifierController.listOrganizationContactIdsBySource(organizationId, VCardConsts.IDENTIFIER_NAME);
+  private void updateContacts(OrganizationId kuntaApiOrganizationId, List<VCard> vCards) {
+    List<ContactId> existingVCardIds = identifierController.listOrganizationContactIdsBySource(kuntaApiOrganizationId, VCardConsts.IDENTIFIER_NAME);
     
     for (int i = 0; i < vCards.size(); i++) {
       VCard vCard = vCards.get(i);
       Long orderIndex = (long) i;
-      ContactId contactId = updateContact(organizationId, vCard, orderIndex);
-      if (contactId != null) {
-        removedIds.remove(contactId);
+      ContactId vcardContactId = updateContact(kuntaApiOrganizationId, vCard, orderIndex);
+      if (vcardContactId != null) {
+        existingVCardIds.remove(vcardContactId);
       }
     }
     
-    for (ContactId removedId : removedIds) {
-      deleteContact(organizationId, removedId);
+    for (ContactId removedVCardId : existingVCardIds) {
+      deleteContact(removedVCardId);
     }
   }
 
-  private List<VCard> parseVCards(BinaryResponse responseEntity) throws IOException {
-    try (InputStream inputStream = new ByteArrayInputStream(responseEntity.getData())) {
-      return parseVCards(inputStream);
-    }
-  }
-  
   private List<VCard> parseVCards(InputStream inputStream) throws IOException {
     ChainingTextParser<ChainingTextParser<?>> parser = Ezvcard.parse(inputStream);
     if (parser != null) {
@@ -146,47 +150,76 @@ public class VCardEntityUpdater extends EntityUpdater {
     return Collections.emptyList();
   }
   
-
-  private ContactId updateContact(OrganizationId organizationId, VCard vCard, Long orderIndex) {
+  private ContactId updateContact(OrganizationId kuntaApiOrganizationId, VCard vCard, Long orderIndex) {
     String vCardUid = vCard.getUid().getValue();
     if (StringUtils.isBlank(vCardUid)) {
-      logger.severe(String.format("Skipped VCard without uid in organization %s", organizationId));
+      logger.severe(() -> String.format("Skipped VCard without uid in organization %s", kuntaApiOrganizationId));
       return null;
     }
     
-    ContactId contactId = new ContactId(organizationId, VCardConsts.IDENTIFIER_NAME, vCardUid);
-    Identifier identifier = identifierController.acquireIdentifier(orderIndex, contactId);
-    identifierRelationController.setParentId(identifier, organizationId);
+    ContactId vcardContactId = vCardIdFactory.createContactId(kuntaApiOrganizationId, vCardUid);
+    Identifier identifier = identifierController.acquireIdentifier(orderIndex, vcardContactId);
+    identifierRelationController.setParentId(identifier, kuntaApiOrganizationId);
     
-    ContactId kuntaApiContactId = new ContactId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
+    ContactId kuntaApiContactId = kuntaApiIdFactory.createFromIdentifier(ContactId.class, identifier);
     Contact contact = vCardTranslator.translateVCard(kuntaApiContactId, vCard);
     
     modificationHashCache.put(kuntaApiContactId.getId(), createPojoHash(contact));
     contactCache.put(kuntaApiContactId, contact);
     
-    return contactId;
+    createIndexableContact(kuntaApiOrganizationId, contact, orderIndex);
+    
+    indexRequest.fire(new IndexRequest(createIndexableContact(kuntaApiOrganizationId, contact, orderIndex)));
+
+    return vcardContactId;
   }
   
-  private void deleteContact(OrganizationId organizationId, ContactId contactId) {
-    Identifier contactIdentifier = identifierController.findIdentifierById(contactId);
+  private void deleteContact(ContactId vcardContactId) {
+    Identifier contactIdentifier = identifierController.findIdentifierById(vcardContactId);
     if (contactIdentifier != null) {
-      ContactId kuntaApiContactId = new ContactId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, contactIdentifier.getKuntaApiId());
+      ContactId kuntaApiContactId = kuntaApiIdFactory.createFromIdentifier(ContactId.class, contactIdentifier);
       modificationHashCache.clear(contactIdentifier.getKuntaApiId());
       contactCache.clear(kuntaApiContactId);
       identifierController.deleteIdentifier(contactIdentifier);
+      IndexRemoveContact indexRemove = new IndexRemoveContact();
+      indexRemove.setContactId(kuntaApiContactId.getId());
+      indexRemoveRequest.fire(new IndexRemoveRequest(indexRemove));
     }
   }
 
-  private String getUrl(OrganizationId organizationId) {
-    return organizationSettingController.getSettingValue(organizationId, VCardConsts.ORGANIZATION_SETTING_URL);
-  }
-
-  private String getUsername(OrganizationId organizationId) {
-    return organizationSettingController.getSettingValue(organizationId, VCardConsts.ORGANIZATION_SETTING_USERNAME);
-  }
-
-  private String getPassword(OrganizationId organizationId) {
-    return organizationSettingController.getSettingValue(organizationId, VCardConsts.ORGANIZATION_SETTING_PASSWORD);
+  private boolean hasFileSetting(OrganizationId organizationId) {
+    return StringUtils.isNotBlank(organizationSettingController.getSettingValue(organizationId, VCardConsts.ORGANIZATION_VCARD_FILE));
   }
   
+  private File getVCardFile(OrganizationId organizationId) {
+    return new File(organizationSettingController.getSettingValue(organizationId, VCardConsts.ORGANIZATION_VCARD_FILE));
+  }
+  
+  private IndexableContact createIndexableContact(OrganizationId kuntaApiOrganizationId, Contact contact, Long orderIndex) {
+    List<String> phoneNumbers = new ArrayList<>();
+    List<ContactPhone> phones = contact.getPhones();
+    if (phones != null) {
+      for (ContactPhone phone : phones) {
+        if (StringUtils.isNotBlank(phone.getType())) {
+          phoneNumbers.add(phone.getNumber());
+        }
+      }
+    }
+     
+    IndexableContact result = new IndexableContact();
+    result.setAdditionalInformations(contact.getAdditionalInformations());
+    result.setContactId(contact.getId());
+    result.setDisplayName(contact.getDisplayName());
+    result.setEmails(contact.getEmails());
+    result.setFirstName(contact.getFirstName());
+    result.setLastName(contact.getLastName());
+    result.setOrderIndex(orderIndex);
+    result.setOrganization(contact.getOrganization());
+    result.setOrganizationId(kuntaApiOrganizationId.getId());
+    result.setOrganizationUnits(contact.getOrganizationUnits());
+    result.setPhoneNumbers(phoneNumbers);
+    result.setTitle(contact.getTitle());
+    
+    return result;
+  }
 }

@@ -88,6 +88,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.AnnouncementProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.AnnouncementProvider.AnnouncementOrder;
 import fi.otavanopisto.kuntaapi.server.integrations.AnnouncementProvider.AnnouncementOrderDirection;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
+import fi.otavanopisto.kuntaapi.server.integrations.ContactSortBy;
 import fi.otavanopisto.kuntaapi.server.integrations.EmergencySortBy;
 import fi.otavanopisto.kuntaapi.server.integrations.EventProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.IncidentSortBy;
@@ -1329,17 +1330,38 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     
     return createNotFound(NOT_FOUND);
   }
-
+  
   @Override
-  public Response listOrganizationContacts(String organizationIdParam, Request request) {
+  public Response listOrganizationContacts(String organizationIdParam, String search, String sortByParam, String sortDirParam,
+      Long firstResult, Long maxResults, Request request) {    
+    Response validateResponse = validateListLimitParams(firstResult, maxResults);
+    if (validateResponse != null) {
+      return validateResponse;
+    }
+    
+    ContactSortBy sortBy = resolveContactSortBy(sortByParam);
+    if (sortBy == null) {
+      return createBadRequest(INVALID_VALUE_FOR_SORT_BY);
+    }
+    
+    System.out.println("Sort by:" + sortBy);
+    
+    SortDir sortDir = resolveSortDir(sortDirParam);
+    if (sortDir == null) {
+      return createBadRequest(INVALID_VALUE_FOR_SORT_DIR);
+    }
+    
     OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     if (organizationId == null) {
       return createNotFound(NOT_FOUND);
     }
     
-    return listOrganizationContacts(request, organizationId, null, null);
+    if (search != null) {
+      return restResponseBuilder.buildResponse(contactController.searchContacts(organizationId, search, sortBy, sortDir, firstResult, maxResults), request);
+    } else {
+      return restResponseBuilder.buildResponse(contactController.listContacts(organizationId, firstResult, maxResults), null, request);
+    }
   }
-
   
   /* Public transport */
   
@@ -1838,6 +1860,15 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     
     return sortBy;
   }
+
+  private ContactSortBy resolveContactSortBy(String sortByParam) {
+    ContactSortBy sortBy = ContactSortBy.NATURAL;
+    if (sortByParam != null) {
+      return EnumUtils.getEnum(ContactSortBy.class, sortByParam);
+    }
+    
+    return sortBy;
+  }
   
   private Response listOrganizationJobs(Request request, OrganizationId organizationId, JobOrder order, JobOrderDirection orderDirection, Long firstResult, Long maxResults) {
     List<Job> result = jobController.listJobs(organizationId, order, orderDirection, firstResult, maxResults);
@@ -1853,18 +1884,6 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   private Response listOrganizationAnnouncements(Request request, OrganizationId organizationId, String slug, AnnouncementOrder order, AnnouncementOrderDirection orderDirection, Integer firstResult, Integer maxResults) {
     List<Announcement> result = announcementController.listAnnouncements(organizationId, slug, order, orderDirection, firstResult, maxResults);
-    
-    List<String> ids = httpCacheController.getEntityIds(result);
-    Response notModified = httpCacheController.getNotModified(request, ids);
-    if (notModified != null) {
-      return notModified;
-    }
-
-    return httpCacheController.sendModified(result, ids);
-  }
-
-  private Response listOrganizationContacts(Request request, OrganizationId organizationId, Integer firstResult, Integer maxResults) {
-    List<Contact> result = contactController.listContacts(organizationId, firstResult, maxResults);
     
     List<String> ids = httpCacheController.getEntityIds(result);
     Response notModified = httpCacheController.getNotModified(request, ids);

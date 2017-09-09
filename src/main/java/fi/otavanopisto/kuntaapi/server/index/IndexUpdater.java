@@ -36,6 +36,7 @@ public class IndexUpdater extends AbstractIndexHander {
     registerIndexable(IndexableStopTime.class);
     registerIndexable(IndexableNewsArticle.class);
     registerIndexable(IndexableServiceLocationServiceChannel.class);
+    registerIndexable(IndexableContact.class);
   }
 
   @Lock (LockType.READ)
