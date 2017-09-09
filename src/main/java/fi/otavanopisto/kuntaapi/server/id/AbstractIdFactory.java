@@ -110,6 +110,10 @@ public abstract class AbstractIdFactory {
     return createId(PublicTransportTripId.class, kuntaApiOrganizationId, id);
   }
   
+  public ContactId createContactId(OrganizationId kuntaApiOrganizationId, String id) {
+    return createId(ContactId.class, kuntaApiOrganizationId, id);
+  }
+  
   public <T extends BaseId> T createId(Class<T> idClass, OrganizationId organizationId, String id) {
     if (id == null) {
       return null;
