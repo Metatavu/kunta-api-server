@@ -915,6 +915,8 @@
                   <before-deployment>
                     <batch>true</batch>
                     <commands>
+                      <command>/interface=public:write-attribute(name=inet-address,value=api.kunta-api.test)</command>
+                      <command>/interface=management:write-attribute(name=inet-address,value=api.kunta-api.test)</command>
                       <command>/subsystem=undertow/server=default-server/https-listener=https:remove()</command>
                       <command>/subsystem=infinispan/cache-container=kunta-api:add()</command>
                       <command>/subsystem=undertow/server=default-server/host=kunta-api:add(alias=["${it.host}"])</command>
