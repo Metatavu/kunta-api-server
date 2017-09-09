@@ -55,9 +55,6 @@ public class ContactSearcher {
     requestBuilder.setSize(maxResults != null ? maxResults.intValue() : IndexReader.MAX_RESULTS);
     
     SortOrder order = sortDir != null ? sortDir.toElasticSortOrder() : SortOrder.ASC;
-
-    System.out.println("SORT BY: " + sortBy);
-    System.out.println("SORT DIR: " + order);
     
     switch (sortBy) {
       case SCORE:
