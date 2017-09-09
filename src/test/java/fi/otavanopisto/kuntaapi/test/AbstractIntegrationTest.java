@@ -406,11 +406,11 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
         .getString(String.format("id[%d]", index));
   }
   
-  protected String getBannerImageId(String organizatinoId, String bannerId, int index) {
+  protected String getBannerImageId(String organizationId, String bannerId, int index) {
     return given() 
         .baseUri(getApiBasePath())
         .contentType(ContentType.JSON)
-        .get("/organizations/{organizationId}/banners/{bannerId}/images", organizatinoId, bannerId)
+        .get("/organizations/{organizationId}/banners/{bannerId}/images", organizationId, bannerId)
         .body()
         .jsonPath()
         .getString(String.format("id[%d]", index));
@@ -426,11 +426,11 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
         .getString(String.format("id[%d]", index));
   }
   
-  protected String getTileImageId(String organizatinoId, String tileId, int index) {
+  protected String getTileImageId(String organizationId, String tileId, int index) {
     return given() 
         .baseUri(getApiBasePath())
         .contentType(ContentType.JSON)
-        .get("/organizations/{organizationId}/tiles/{tileId}/images", organizatinoId, tileId)
+        .get("/organizations/{organizationId}/tiles/{tileId}/images", organizationId, tileId)
         .body()
         .jsonPath()
         .getString(String.format("id[%d]", index));
@@ -504,11 +504,11 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
         .getString(String.format("id[%d]", index));
   }
   
-  protected String getNewsArticleImageId(String organizatinoId, String newsArticleId, int index) {
+  protected String getNewsArticleImageId(String organizationId, String newsArticleId, int index) {
     return given() 
         .baseUri(getApiBasePath())
         .contentType(ContentType.JSON)
-        .get("/organizations/{organizationId}/news/{newsArticleId}/images", organizatinoId, newsArticleId)
+        .get("/organizations/{organizationId}/news/{newsArticleId}/images", organizationId, newsArticleId)
         .body()
         .jsonPath()
         .getString(String.format("id[%d]", index));
@@ -534,41 +534,51 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
         .getString(String.format("id[%d]", index));
   }
   
-  protected String getEventId(String organizatinoId, int index) {
+  protected String getEventId(String organizationId, int index) {
     return given() 
         .baseUri(getApiBasePath())
         .contentType(ContentType.JSON)
-        .get("/organizations/{organizationId}/events", organizatinoId)
+        .get("/organizations/{organizationId}/events", organizationId)
         .body()
         .jsonPath()
         .getString(String.format("id[%d]", index));
   }
   
-  protected String getEventImageId(String organizatinoId, String eventId, int index) {
+  protected String getEventImageId(String organizationId, String eventId, int index) {
     return given() 
         .baseUri(getApiBasePath())
         .contentType(ContentType.JSON)
-        .get("/organizations/{organizationId}/events/{eventId}/images", organizatinoId, eventId)
+        .get("/organizations/{organizationId}/events/{eventId}/images", organizationId, eventId)
         .body()
         .jsonPath()
         .getString(String.format("id[%d]", index));
   }
   
-  protected String getMenuId(String organizatinoId, int index) {
+  protected String getMenuId(String organizationId, int index) {
     return given() 
         .baseUri(getApiBasePath())
         .contentType(ContentType.JSON)
-        .get("/organizations/{organizationId}/menus", organizatinoId)
+        .get("/organizations/{organizationId}/menus", organizationId)
+        .body()
+        .jsonPath()
+        .getString(String.format("id[%d]", index));
+  }
+
+  protected String getContactId(String organizationId, int index) {
+    return given() 
+        .baseUri(getApiBasePath())
+        .contentType(ContentType.JSON)
+        .get("/organizations/{organizationId}/contacts", organizationId)
         .body()
         .jsonPath()
         .getString(String.format("id[%d]", index));
   }
   
-  protected String getMenuItemId(String organizatinoId, String menuId, int index) {
+  protected String getMenuItemId(String organizationId, String menuId, int index) {
     return given() 
         .baseUri(getApiBasePath())
         .contentType(ContentType.JSON)
-        .get("/organizations/{organizationId}/menus/{menuId}/items", organizatinoId, menuId)
+        .get("/organizations/{organizationId}/menus/{menuId}/items", organizationId, menuId)
         .body()
         .jsonPath()
         .getString(String.format("id[%d]", index));
@@ -812,6 +822,15 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     LoggerConfig loggerConfig = config.getLoggerConfig(LogManager.ROOT_LOGGER_NAME); 
     loggerConfig.setLevel(level);
     loggerContext.updateLoggers();
+  }
+  
+  protected void waitMs(int ms) {
+    if (ms > 0) {
+      try {
+        Thread.sleep(ms);
+      } catch (InterruptedException e) {
+      }
+    }
   }
   
   private void createSystemSettings() {
