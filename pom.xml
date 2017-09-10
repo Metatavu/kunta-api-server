@@ -734,7 +734,7 @@
             <configuration>
               <failIfNoTests>true</failIfNoTests>
               <skipAfterFailureCount>1</skipAfterFailureCount>
-              <argLine>-Xmx1536M</argLine>
+              <argLine>-Xmx1200M</argLine>
               <includes>
                 <include>**/*IT.java</include>
               </includes>
@@ -866,7 +866,7 @@
                 <properties>
                   <cargo.servlet.port>${it.port.http}</cargo.servlet.port>
                   <cargo.jboss.configuration>standalone</cargo.jboss.configuration>
-                  <cargo.jvmargs>${jacoco.agent.itArgLine},output=tcpserver,port=6300 -Xmx1536M -Drunmode=TEST</cargo.jvmargs>
+                  <cargo.jvmargs>${jacoco.agent.itArgLine},output=tcpserver,port=6300 -Xmx1200M -Drunmode=TEST</cargo.jvmargs>
                   <cargo.datasource.datasource.fnici>
                     cargo.datasource.driver=${it.jdbc.driver}|
                     cargo.datasource.url=${it.jdbc.url}|
@@ -915,10 +915,6 @@
                   <before-deployment>
                     <batch>true</batch>
                     <commands>
-                      <command>/interface=public:write-attribute(name=inet-address,value=api.kunta-api.test)</command>
-                      <command>/interface=management:write-attribute(name=inet-address,value=api.kunta-api.test)</command>
-                      <command>/subsystem=undertow/server=default-server/https-listener=https:remove()</command>
-                      <command>/subsystem=infinispan/cache-container=kunta-api:add()</command>
                       <command>/subsystem=undertow/server=default-server/host=kunta-api:add(alias=["${it.host}"])</command>
                       <command>/system-property=it-test:add(value="true")</command>
                       <command>/subsystem=logging/logger=fi.otavanopisto.kuntaapi.server.index.AbstractIndexHander:add(level=FATAL)</command>
