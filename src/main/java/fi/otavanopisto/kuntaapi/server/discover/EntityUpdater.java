@@ -25,7 +25,7 @@ public abstract class EntityUpdater extends AbstractUpdater {
   public long getTimerWarmup() {
     try {
       if (systemSettingController.inTestMode()) {
-        return 500;
+        return 200;
       }
       
       String key = String.format("entity-updater.%s.warmup", getName());
