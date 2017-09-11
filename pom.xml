@@ -914,6 +914,7 @@
                   <before-deployment>
                     <batch>true</batch>
                     <commands>
+                      <command>/subsystem=infinispan/cache-container=kunta-api:add()</command>
                       <command>/subsystem=undertow/server=default-server/host=kunta-api:add(alias=["${it.host}"])</command>
                       <command>/system-property=it-test:add(value="true")</command>
                       <command>/subsystem=logging/logger=fi.otavanopisto.kuntaapi.server.index.AbstractIndexHander:add(level=FATAL)</command>
