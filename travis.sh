@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export JAVA_OPTS="-Xmx1G"
+
 if [ "$TRAVIS_PULL_REQUEST" != "false" ] && [ $TRAVIS_BRANCH != "master" ] && [ -n "${GITHUB_TOKEN}" ] && [ -n "${SONAR_TOKEN}" ]; then
   echo "Pull request"
   mvn clean verify jacoco:report coveralls:report -Pitests -DrepoToken=$COVERALLS_TOKEN -Dit.skipelasticsearch=true
