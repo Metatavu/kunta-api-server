@@ -20,7 +20,7 @@ public abstract class IdUpdater extends AbstractUpdater {
   @Override
   public long getTimerWarmup() {
     if (systemSettingController.inTestMode()) {
-      return 1000l;
+      return 2000l;
     }
 
     try {

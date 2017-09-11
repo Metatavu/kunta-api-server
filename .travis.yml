@@ -1,5 +1,5 @@
 language: java
-sudo: required
+sudo: false
 jdk: oraclejdk8
 cache:
   directories:
@@ -23,15 +23,3 @@ notifications:
   email: false
   webhooks:
     - http://travis.metatavu.io:7333/travisping
-    
-matrix:
- - profile=tests
- - profile=itest package=casem
- - profile=itest package=gtfs test=false failIfNoTests=false
- - profile=itest package=kuntarekry test=false failIfNoTests=false
- - profile=itest package=linkedevents test=false failIfNoTests=false
- - profile=itest package=management test=false failIfNoTests=false
- - profile=itest package=ptv test=false failIfNoTests=false
- - profile=itest package=tilannehuone test=false failIfNoTests=false
- - profile=itest package=vcard test=false failIfNoTests=false
- - profile=itest package=mikkelinyt test=false failIfNoTests=false
