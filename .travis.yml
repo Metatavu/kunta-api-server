@@ -1,5 +1,5 @@
 language: java
-sudo: required
+sudo: false
 jdk: oraclejdk8
 cache:
   directories:
@@ -10,7 +10,10 @@ cache:
 addons:
   hosts:
     - api.kunta-api.test
-   
+  apt:
+    packages:
+      - oracle-java8-installer
+      
 install: true
 
 before_script:
