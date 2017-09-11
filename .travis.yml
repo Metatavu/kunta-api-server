@@ -1,8 +1,5 @@
 language: java
-sudo: true
-dist: precise
-before_script:
-  - sudo sysctl -w vm.max_map_count=262144
+sudo: false
 jdk: oraclejdk8
 cache:
   directories:

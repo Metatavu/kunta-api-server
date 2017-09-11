@@ -100,7 +100,7 @@ public abstract class AbstractIndexHander {
       for (String host : hosts) {
         String[] parts = StringUtils.split(host, ':');
         if (parts.length != 2 || !NumberUtils.isNumber(parts[1])) {
-          logger.severe(String.format("Invalid elastic search host %s, dropped", host));
+          logger.severe(() -> String.format("Invalid elastic search host %s, dropped", host));
         }
         
         String name = parts[0];
