@@ -115,7 +115,8 @@
     <deltaspike.version>1.7.2</deltaspike.version>
     <weld-se.version>2.3.5.Final</weld-se.version>
     <reflections.version>0.9.10</reflections.version>
-    
+    <it.package>**</it.package>
+    <it.tests>fi/otavanopisto/kuntaapi/test/server/integration/${it.package}/*IT.java</it.tests>
   </properties>
   
   <dependencyManagement>
@@ -734,8 +735,9 @@
             <configuration>
               <failIfNoTests>true</failIfNoTests>
               <skipAfterFailureCount>1</skipAfterFailureCount>
+              <argLine>-Xmx1G</argLine>
               <includes>
-                <include>**/*IT.java</include>
+                <include>${it.tests}</include>
               </includes>
               <systemPropertyVariables>
                 <java.util.logging.config.file>${project.basedir}/src/test/resources/logging.properties</java.util.logging.config.file>

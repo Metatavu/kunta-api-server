@@ -241,6 +241,9 @@ public class OrganizationsTestsIT extends AbstractIntegrationTest {
       return;
     }
     
+    // Give index some time to update
+    waitMs(1000);
+    
     String search = "(M*)|(Mi*)";
     
     given() 
