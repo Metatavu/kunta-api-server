@@ -865,7 +865,7 @@
                 <properties>
                   <cargo.servlet.port>${it.port.http}</cargo.servlet.port>
                   <cargo.jboss.configuration>standalone</cargo.jboss.configuration>
-                  <cargo.jvmargs>${jacoco.agent.itArgLine},output=tcpserver,port=6300 -Drunmode=TEST</cargo.jvmargs>
+                  <cargo.jvmargs>${jacoco.agent.itArgLine},output=tcpserver,port=6300 -Xmx1G -Drunmode=TEST</cargo.jvmargs>
                   <cargo.datasource.datasource.fnici>
                     cargo.datasource.driver=${it.jdbc.driver}|
                     cargo.datasource.url=${it.jdbc.url}|
