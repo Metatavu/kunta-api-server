@@ -4,28 +4,44 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.logging.Logger;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
 
-import fi.otavanopisto.kuntaapi.server.id.ContactId;
-import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
-import fi.otavanopisto.kuntaapi.server.integrations.ContactProvider;
-import fi.otavanopisto.kuntaapi.server.utils.ListUtils;
 import fi.metatavu.kuntaapi.server.rest.model.Contact;
+import fi.otavanopisto.kuntaapi.server.id.ContactId;
+import fi.otavanopisto.kuntaapi.server.id.IdController;
+import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.index.ContactSearcher;
+import fi.otavanopisto.kuntaapi.server.index.SearchResult;
+import fi.otavanopisto.kuntaapi.server.integrations.ContactProvider;
+import fi.otavanopisto.kuntaapi.server.integrations.ContactSortBy;
+import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
+import fi.otavanopisto.kuntaapi.server.integrations.SortDir;
+import fi.otavanopisto.kuntaapi.server.utils.ListUtils;
 
 @ApplicationScoped
 @SuppressWarnings ("squid:S3306")
 public class ContactController {
-  
+
+  @Inject
+  private Logger logger;
+
   @Inject
   private EntityController entityController;
-  
+
+  @Inject
+  private ContactSearcher contactSearcher;
+
+  @Inject
+  private IdController idController;
+
   @Inject
   private Instance<ContactProvider> contactProviders;
   
-  public List<Contact> listContacts(OrganizationId organizationId, Integer firstResult, Integer maxResults) {
+  public List<Contact> listContacts(OrganizationId organizationId, Long firstResult, Long maxResults) {
     List<Contact> result = new ArrayList<>();
    
     for (ContactProvider contactProvider : getContactProviders()) {
@@ -44,6 +60,30 @@ public class ContactController {
     }
     
     return null;
+  }
+  
+  public SearchResult<Contact> searchContacts(OrganizationId organizationId, String queryString, ContactSortBy sortBy, SortDir sortDir, Long firstResult, Long maxResults) {
+    OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(organizationId, KuntaApiConsts.IDENTIFIER_NAME);
+    if (kuntaApiOrganizationId == null) {
+      logger.severe(() -> String.format("Failed to translate organization %s into Kunta API id", organizationId.toString()));
+      return SearchResult.emptyResult();
+    }
+    
+    SearchResult<ContactId> searchResult = contactSearcher.searchContacts(kuntaApiOrganizationId.getId(), queryString, sortBy, sortDir, firstResult, maxResults);
+    if (searchResult != null) {
+      List<Contact> contacts = new ArrayList<>(searchResult.getResult().size());
+      
+      for (ContactId contactId : searchResult.getResult()) {
+        Contact contact = findContact(organizationId, contactId);
+        if (contact != null) {
+          contacts.add(contact);
+        }
+      }
+      
+      return new SearchResult<>(contacts, searchResult.getTotalHits());
+    }
+    
+    return SearchResult.emptyResult();
   }
   
   private List<ContactProvider> getContactProviders() {

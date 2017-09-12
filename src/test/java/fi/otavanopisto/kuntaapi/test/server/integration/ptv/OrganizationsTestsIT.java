@@ -181,7 +181,7 @@ public class OrganizationsTestsIT extends AbstractIntegrationTest {
 
   @Test
   public void testListOrganizationsByBusinessCode() {
-    if (inTravis()) {
+    if (skipElasticSearchTests()) {
       return;
     }
     
@@ -209,7 +209,7 @@ public class OrganizationsTestsIT extends AbstractIntegrationTest {
 
   @Test
   public void testListOrganizationsByBusinessName() {
-    if (inTravis()) {
+    if (skipElasticSearchTests()) {
       return;
     }
     
@@ -237,9 +237,12 @@ public class OrganizationsTestsIT extends AbstractIntegrationTest {
   
   @Test
   public void testListOrganizationsSearch() {
-    if (inTravis()) {
+    if (skipElasticSearchTests()) {
       return;
     }
+    
+    // Give index some time to update
+    waitMs(1000);
     
     String search = "(M*)|(Mi*)";
     

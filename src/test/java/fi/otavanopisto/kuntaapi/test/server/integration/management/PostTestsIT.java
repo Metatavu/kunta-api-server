@@ -184,9 +184,11 @@ public class PostTestsIT extends AbstractIntegrationTest {
   
   @Test
   public void testListPostsSearch() {
-    if (inTravis()) {
+    if (skipElasticSearchTests()) {
       return;
     }
+    
+    waitForElasticIndex();
     
     String organizationId = getOrganizationId(0);
     String search = "(Test page*)|(\"Test page 3\")";

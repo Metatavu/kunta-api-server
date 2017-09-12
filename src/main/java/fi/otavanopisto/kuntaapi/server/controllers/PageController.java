@@ -112,7 +112,7 @@ public class PageController {
   public SearchResult<Page> searchPages(OrganizationId organizationId, String queryString, PageSortBy sortBy, SortDir sortDir, Long firstResult, Long maxResults) {
     OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(organizationId, KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiOrganizationId == null) {
-      logger.severe(String.format("Failed to translate organization %s into Kunta API id", organizationId.toString()));
+      logger.severe(() -> String.format("Failed to translate organization %s into Kunta API id", organizationId.toString()));
       return SearchResult.emptyResult();
     }
     
