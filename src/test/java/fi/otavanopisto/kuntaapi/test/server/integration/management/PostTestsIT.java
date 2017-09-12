@@ -188,6 +188,8 @@ public class PostTestsIT extends AbstractIntegrationTest {
       return;
     }
     
+    waitForElasticIndex();
+    
     String organizationId = getOrganizationId(0);
     String search = "(Test page*)|(\"Test page 3\")";
     
