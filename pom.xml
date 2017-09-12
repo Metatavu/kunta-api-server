@@ -735,7 +735,7 @@
             <configuration>
               <failIfNoTests>true</failIfNoTests>
               <skipAfterFailureCount>1</skipAfterFailureCount>
-              <argLine>-Xmx1G</argLine>
+              <argLine>-Xmx2G</argLine>
               <includes>
                 <include>${it.tests}</include>
               </includes>
@@ -867,7 +867,7 @@
                 <properties>
                   <cargo.servlet.port>${it.port.http}</cargo.servlet.port>
                   <cargo.jboss.configuration>standalone</cargo.jboss.configuration>
-                  <cargo.jvmargs>${jacoco.agent.itArgLine},output=tcpserver,port=6300 -Xmx1G -Drunmode=TEST</cargo.jvmargs>
+                  <cargo.jvmargs>${jacoco.agent.itArgLine},output=tcpserver,port=6300 -Xmx2G -Djava.net.preferIPv4Stack=true -Djava.net.preferIPv4Addresses=true -Drunmode=TEST</cargo.jvmargs>
                   <cargo.datasource.datasource.fnici>
                     cargo.datasource.driver=${it.jdbc.driver}|
                     cargo.datasource.url=${it.jdbc.url}|
