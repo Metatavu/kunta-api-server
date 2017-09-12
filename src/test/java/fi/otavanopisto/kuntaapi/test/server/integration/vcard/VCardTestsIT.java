@@ -173,8 +173,7 @@ public class VCardTestsIT extends AbstractIntegrationTest{
       return;
     }
     
-    // Wait for index
-    waitMs(1000);
+    waitForElasticIndex();
     
     String search = "(Haku)|(Pirkko)";
     String organizationId = getOrganizationId(0);
@@ -240,8 +239,7 @@ public class VCardTestsIT extends AbstractIntegrationTest{
       return;
     }
     
-    // Wait for index
-    waitMs(1000);
+    waitForElasticIndex();
     
     String search = "(Haku)|(pirkko)";
     String organizationId = getOrganizationId(0);

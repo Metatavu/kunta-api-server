@@ -820,6 +820,10 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     return "true".equalsIgnoreCase(System.getProperty("it.skipelasticsearch"));
   }
   
+  protected void waitForElasticIndex() {
+    waitMs(3000);    
+  }
+  
   private void setLog4jLevel(Level level) {
     LoggerContext loggerContext = (LoggerContext) LogManager.getContext(false);
     Configuration config = loggerContext.getConfiguration();

@@ -1344,8 +1344,6 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createBadRequest(INVALID_VALUE_FOR_SORT_BY);
     }
     
-    System.out.println("Sort by:" + sortBy);
-    
     SortDir sortDir = resolveSortDir(sortDirParam);
     if (sortDir == null) {
       return createBadRequest(INVALID_VALUE_FOR_SORT_DIR);
