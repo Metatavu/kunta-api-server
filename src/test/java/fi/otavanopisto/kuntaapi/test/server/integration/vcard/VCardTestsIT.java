@@ -169,7 +169,7 @@ public class VCardTestsIT extends AbstractIntegrationTest{
   
   @Test
   public void testListContactsSearch() {
-    if (inTravis()) {
+    if (skipElasticSearchTests()) {
       return;
     }
     
@@ -236,7 +236,7 @@ public class VCardTestsIT extends AbstractIntegrationTest{
 
   @Test
   public void testListContactsSearchRemoved() throws InterruptedException {
-    if (inTravis()) {
+    if (skipElasticSearchTests()) {
       return;
     }
     

@@ -815,6 +815,10 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   protected boolean inTravis() {
     return "true".equalsIgnoreCase(System.getenv("TRAVIS"));
   }
+
+  protected boolean skipElasticSearchTests() {
+    return "true".equalsIgnoreCase(System.getProperty("it.skipelasticsearch"));
+  }
   
   private void setLog4jLevel(Level level) {
     LoggerContext loggerContext = (LoggerContext) LogManager.getContext(false);

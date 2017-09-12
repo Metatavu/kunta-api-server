@@ -631,7 +631,7 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
   
   @Test
   public void testListServiceLocationChannelSearch() {
-    if (inTravis()) {
+    if (skipElasticSearchTests()) {
       return;
     }
     

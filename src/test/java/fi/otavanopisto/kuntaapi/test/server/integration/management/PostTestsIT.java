@@ -184,7 +184,7 @@ public class PostTestsIT extends AbstractIntegrationTest {
   
   @Test
   public void testListPostsSearch() {
-    if (inTravis()) {
+    if (skipElasticSearchTests()) {
       return;
     }
     
