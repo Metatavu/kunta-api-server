@@ -175,7 +175,7 @@ public class VCardTestsIT extends AbstractIntegrationTest{
     
     waitForElasticIndex();
     
-    String search = "(Haku)|(Pirkko^2)";
+    String search = "(Haku)|(Pirkko^10)";
     String organizationId = getOrganizationId(0);
     
     given() 
