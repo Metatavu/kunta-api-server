@@ -30,6 +30,7 @@ import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.EventId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.images.ScaledImageStore;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.BinaryHttpClient;
 import fi.otavanopisto.kuntaapi.server.integrations.BinaryHttpClient.DownloadMeta;
@@ -91,6 +92,9 @@ public class MikkeliNytEntityUpdater extends EntityUpdater {
   
   @Inject
   private OrganizationEventsTaskQueue organizationEventsTaskQueue;
+
+  @Inject
+  private ScaledImageStore scaledImageStore;
 
   @Override
   public String getName() {
@@ -159,11 +163,14 @@ public class MikkeliNytEntityUpdater extends EntityUpdater {
 
     mikkeliNytAttachmentResourceContainer.put(kuntaApiAttachmentId, attachment);
     
-    AttachmentData imageData = mikkeliNytImageLoader.getImageData(organizationId, mikkeliNytAttachmentId);
+    AttachmentData imageData = mikkeliNytImageLoader.getImageData(mikkeliNytAttachmentId);
     if (imageData != null) {
       String dataHash = DigestUtils.md5Hex(imageData.getData());
-      modificationHashCache.put(identifier.getKuntaApiId(), dataHash);
-      mikkeliNytAttachmentDataResourceContainer.put(kuntaApiAttachmentId, imageData);
+      if (!dataHash.equals(modificationHashCache.get(identifier.getKuntaApiId()))) {
+        modificationHashCache.put(identifier.getKuntaApiId(), dataHash);
+        mikkeliNytAttachmentDataResourceContainer.put(kuntaApiAttachmentId, imageData);
+        scaledImageStore.purgeStoredImages(kuntaApiAttachmentId);
+      }
     }
   }
    

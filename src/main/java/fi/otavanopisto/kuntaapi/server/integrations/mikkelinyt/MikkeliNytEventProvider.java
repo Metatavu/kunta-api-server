@@ -1,6 +1,5 @@
 package fi.otavanopisto.kuntaapi.server.integrations.mikkelinyt;
 
-import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
@@ -19,11 +18,9 @@ import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.EventId;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
-import fi.otavanopisto.kuntaapi.server.images.ImageReader;
-import fi.otavanopisto.kuntaapi.server.images.ImageScaler;
-import fi.otavanopisto.kuntaapi.server.images.ImageWriter;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.EventProvider;
+import fi.otavanopisto.kuntaapi.server.integrations.management.AbstractAttachmentImageProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.mikkelinyt.resources.MikkeliNytAttachmentDataResourceContainer;
 import fi.otavanopisto.kuntaapi.server.integrations.mikkelinyt.resources.MikkeliNytAttachmentResourceContainer;
 import fi.otavanopisto.kuntaapi.server.integrations.mikkelinyt.resources.MikkeliNytEventResourceContainer;
@@ -37,7 +34,7 @@ import fi.otavanopisto.kuntaapi.server.resources.StoredBinaryData;
  */
 
 @ApplicationScoped
-public class MikkeliNytEventProvider implements EventProvider {
+public class MikkeliNytEventProvider extends AbstractAttachmentImageProvider implements EventProvider {
   
   @Inject
   private Logger logger;
@@ -60,15 +57,6 @@ public class MikkeliNytEventProvider implements EventProvider {
   @Inject
   private MikkeliNytImageLoader mikkeliNytImageLoader;
 
-  @Inject
-  private ImageReader imageReader;
-
-  @Inject
-  private ImageWriter imageWriter;
-  
-  @Inject
-  private ImageScaler imageScaler;
-  
   @Override
   public List<Event> listOrganizationEvents(OrganizationId organizationId, OffsetDateTime startBefore,
       OffsetDateTime startAfter, OffsetDateTime endBefore, OffsetDateTime endAfter) {
@@ -120,26 +108,22 @@ public class MikkeliNytEventProvider implements EventProvider {
   }
 
   @Override
-  public AttachmentData getEventImageData(OrganizationId organizationId, EventId eventId, AttachmentId attachmentId, Integer size) {
-    if (!identifierRelationController.isChildOf(eventId, attachmentId)) {
+  public AttachmentData getEventImageData(OrganizationId organizationId, EventId eventId, AttachmentId kuntaApiAttachmentId, Integer size) {
+    if (!identifierRelationController.isChildOf(eventId, kuntaApiAttachmentId)) {
       return null;
     }
     
-    AttachmentData imageData = getImageData(organizationId, attachmentId);
-    if (size != null) {
-      return scaleEventImage(imageData, size);
-    }
-    
-    return imageData;
+    return getImageData(kuntaApiAttachmentId, size);
   }
-
-  private AttachmentData getImageData(OrganizationId organizationId, AttachmentId attachmentId) {
-    AttachmentData storedAttachmentData = getStoredAttachmentData(attachmentId);
+  
+  @Override
+  protected AttachmentData getAttachmentData(AttachmentId kuntaApiAttachmentId) {
+    AttachmentData storedAttachmentData = getStoredAttachmentData(kuntaApiAttachmentId);
     if (storedAttachmentData != null) {
       return storedAttachmentData;
     }
     
-    return downloadImageData(organizationId, attachmentId);
+    return downloadImageData(kuntaApiAttachmentId);
   }
   
   private AttachmentData getStoredAttachmentData(AttachmentId attachmentId) {
@@ -189,33 +173,14 @@ public class MikkeliNytEventProvider implements EventProvider {
     return true;
   }
   
-  private AttachmentData scaleEventImage(AttachmentData imageData, Integer size) {
-    if (imageData == null) {
-      return null;
-    }
-    
-    BufferedImage bufferedImage = imageReader.readBufferedImage(imageData.getData());
-    if (bufferedImage != null) {
-      String formatName = imageWriter.getFormatName(imageData.getType());
-      BufferedImage scaledImage = imageScaler.scaleToCover(bufferedImage, size, true);
-      byte[] scaledImageData = imageWriter.writeBufferedImage(scaledImage, formatName);
-      if (scaledImageData != null) {
-        String contentType = imageWriter.getContentTypeForFormatName(formatName);
-        return new AttachmentData(contentType, scaledImageData);
-      }
-    }
-    
-    return null;
-  }
-  
-  private AttachmentData downloadImageData(OrganizationId organizationId, AttachmentId imageId) {
+  private AttachmentData downloadImageData(AttachmentId imageId) {
     AttachmentId mikkeliNytId = idController.translateAttachmentId(imageId, MikkeliNytConsts.IDENTIFIER_NAME);
     if (mikkeliNytId == null) {
-      logger.severe(String.format("Failed to translate %s into MikkeliNyt id", imageId.toString()));
+      logger.severe(() -> String.format("Failed to translate %s into MikkeliNyt id", imageId.toString()));
       return null;
     }
     
-    return mikkeliNytImageLoader.getImageData(organizationId, mikkeliNytId);
+    return mikkeliNytImageLoader.getImageData(mikkeliNytId);
   } 
 
   

@@ -95,7 +95,7 @@ public class ManagementAnnouncementEntityUpdater extends EntityUpdater {
     if (response.isOk()) {
       updateManagementAnnouncement(organizationId, response.getResponse(), orderIndex);
     } else {
-      logger.warning(String.format("Find organization %s announcement %s failed on [%d] %s", organizationId.getId(), announcementId.toString(), response.getStatus(), response.getMessage()));
+      logger.warning(() -> String.format("Find organization %s announcement %s failed on [%d] %s", organizationId.getId(), announcementId.toString(), response.getStatus(), response.getMessage()));
     }
   }
   

@@ -40,6 +40,7 @@ import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceLocationServiceChannelId;
+import fi.otavanopisto.kuntaapi.server.images.ScaledImageStore;
 import fi.otavanopisto.kuntaapi.server.index.IndexRemovePage;
 import fi.otavanopisto.kuntaapi.server.index.IndexRemoveRequest;
 import fi.otavanopisto.kuntaapi.server.index.IndexRequest;
@@ -117,6 +118,9 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
   @Inject
   private KuntaApiIdFactory kuntaApiIdFactory;
 
+  @Inject
+  private ScaledImageStore scaledImageStore;
+
   @Override
   public String getName() {
     return "management-pages";
@@ -151,7 +155,7 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
     if (response.isOk()) {
       updateManagementPage(organizationId, api, response.getResponse(), orderIndex);
     } else {
-      logger.warning(String.format("Find organization %s page %s failed on [%d] %s", organizationId.getId(), managementPageId.toString(), response.getStatus(), response.getMessage()));
+      logger.warning(() -> String.format("Find organization %s page %s failed on [%d] %s", organizationId.getId(), managementPageId.toString(), response.getStatus(), response.getMessage()));
     }
   }
   
@@ -173,7 +177,7 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
       PageId managementParentPageId = new PageId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementPage.getParent()));
       kuntaApiParentId = idController.translatePageId(managementParentPageId, KuntaApiConsts.IDENTIFIER_NAME);
       if (kuntaApiParentId == null) {
-        logger.severe(String.format("Could not translate %d parent page %d into management page id", managementPage.getParent(), managementPage.getId()));
+        logger.severe(() -> String.format("Could not translate %d parent page %d into management page id", managementPage.getParent(), managementPage.getId()));
         return;
       }
     }
@@ -366,7 +370,7 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
   private AttachmentId updateAttachment(OrganizationId organizationId, Identifier pageIdentifier, DefaultApi api, Long managementMediaId, String type, Long orderIndex) {
     ApiResponse<fi.metatavu.management.client.model.Attachment> response = api.wpV2MediaIdGet(String.valueOf(managementMediaId), null, null);
     if (!response.isOk()) {
-      logger.severe(String.format("Finding media failed on [%d] %s", response.getStatus(), response.getMessage()));
+      logger.severe(() -> String.format("Finding media failed on [%d] %s", response.getStatus(), response.getMessage()));
       return null;
     } else {
       fi.metatavu.management.client.model.Attachment managementAttachment = response.getResponse();
@@ -382,8 +386,11 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
       AttachmentData imageData = managementImageLoader.getImageData(managementAttachment.getSourceUrl());
       if (imageData != null) {
         String dataHash = DigestUtils.md5Hex(imageData.getData());
-        modificationHashCache.put(identifier.getKuntaApiId(), dataHash);
-        managementAttachmentDataResourceContainer.put(kuntaApiAttachmentId, imageData);
+        if (!dataHash.equals(modificationHashCache.get(identifier.getKuntaApiId()))) {
+          modificationHashCache.put(identifier.getKuntaApiId(), dataHash);
+          managementAttachmentDataResourceContainer.put(kuntaApiAttachmentId, imageData);
+          scaledImageStore.purgeStoredImages(kuntaApiAttachmentId);
+        }
       }
       
       return kuntaApiAttachmentId;
