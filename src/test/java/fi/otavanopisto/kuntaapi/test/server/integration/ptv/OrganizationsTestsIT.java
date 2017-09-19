@@ -215,6 +215,8 @@ public class OrganizationsTestsIT extends AbstractIntegrationTest {
       return;
     }
     
+    waitForElasticIndex();
+    
     given() 
       .baseUri(getApiBasePath())
       .contentType(ContentType.JSON)
@@ -243,8 +245,7 @@ public class OrganizationsTestsIT extends AbstractIntegrationTest {
       return;
     }
     
-    // Give index some time to update
-    waitMs(1000);
+    waitForElasticIndex();
     
     String search = "(M*)|(Mi*)";
     
