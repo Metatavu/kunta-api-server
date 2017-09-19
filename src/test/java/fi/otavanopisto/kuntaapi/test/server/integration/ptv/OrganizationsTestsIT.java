@@ -185,6 +185,8 @@ public class OrganizationsTestsIT extends AbstractIntegrationTest {
       return;
     }
     
+    waitForElasticIndex();
+    
     given() 
       .baseUri(getApiBasePath())
       .contentType(ContentType.JSON)
