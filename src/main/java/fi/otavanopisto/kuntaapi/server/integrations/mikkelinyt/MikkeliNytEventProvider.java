@@ -56,16 +56,7 @@ public class MikkeliNytEventProvider extends AbstractAttachmentImageProvider imp
   
   @Inject
   private MikkeliNytImageLoader mikkeliNytImageLoader;
-//
-//  @Inject
-//  private ImageReader imageReader;
-//
-//  @Inject
-//  private ImageWriter imageWriter;
-//  
-//  @Inject
-//  private ImageScaler imageScaler;
-  
+
   @Override
   public List<Event> listOrganizationEvents(OrganizationId organizationId, OffsetDateTime startBefore,
       OffsetDateTime startAfter, OffsetDateTime endBefore, OffsetDateTime endAfter) {

@@ -2,6 +2,7 @@ package fi.otavanopisto.kuntaapi.server.images;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -26,6 +27,9 @@ import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 @ApplicationScoped
 public class ScaledImageStore {
  
+  private static final String FAILED_TO_READ_STORED_SCALED_IMAGE = "Failed to read stored scaled image %s";
+  private static final String FAILED_TO_DELETE_STORED_SCALED_IMAGE = "Failed to delete stored scaled image %s";
+  
   @Inject
   private Logger logger;
   
@@ -43,10 +47,16 @@ public class ScaledImageStore {
       try {
         return objectMapper.readValue(imageFile, AttachmentData.class);
       } catch (IOException e) {
-        logger.log(Level.WARNING, String.format("Failed to read stored scaled image %s", imageFile.getName()), e);
-        if (!imageFile.delete()) {
-          logger.log(Level.WARNING, String.format("Failed to delete stored scaled image %s", imageFile.getName()), e);  
+        logger.log(Level.WARNING, String.format(FAILED_TO_READ_STORED_SCALED_IMAGE, imageFile.getName()), e);
+        
+        try {
+          Files.deleteIfExists(imageFile.toPath());
+        } catch (IOException e1) {
+          if (logger.isLoggable(Level.WARNING)) {
+            logger.log(Level.WARNING, String.format(FAILED_TO_DELETE_STORED_SCALED_IMAGE, imageFile.getName()), e1);
+          }
         }
+
       }
     }
     
@@ -68,9 +78,12 @@ public class ScaledImageStore {
     try {
       objectMapper.writeValue(imageFile, imageData);
     } catch (IOException e) {
-      logger.log(Level.WARNING, String.format("Failed to read stored scaled image %s", imageFile.getName()), e);
-      if (imageFile.exists() && !imageFile.delete()) {
-        logger.log(Level.WARNING, String.format("Failed to delete stored scaled image %s", imageFile.getName()), e);  
+      logger.log(Level.WARNING, String.format(FAILED_TO_READ_STORED_SCALED_IMAGE, imageFile.getName()), e);
+      
+      try {
+        Files.deleteIfExists(imageFile.toPath());
+      } catch (IOException e1) {
+        logger.log(Level.WARNING, String.format(FAILED_TO_DELETE_STORED_SCALED_IMAGE, imageFile.getName()), e1);
       }
     }
     
@@ -103,8 +116,12 @@ public class ScaledImageStore {
   public void purgeStoredImages(AttachmentId kuntaApiAttachmentId) {
     File[] storedImages = listStoredImages(kuntaApiAttachmentId);
     for (File storedImage : storedImages) {
-      if (!storedImage.delete()) {
-        logger.log(Level.WARNING, () -> String.format("Failed to delete stored scaled image %s", storedImage.getName()));  
+      try {
+        Files.deleteIfExists(storedImage.toPath());
+      } catch (IOException e1) {
+        if (logger.isLoggable(Level.WARNING)) {
+          logger.log(Level.WARNING, String.format(FAILED_TO_DELETE_STORED_SCALED_IMAGE, storedImage.getName()), e1);
+        }
       }
     }
   }
