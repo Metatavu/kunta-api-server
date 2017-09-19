@@ -78,7 +78,7 @@
     <!-- Jackson -->
     
     <jackson-dataformat-xml.version>2.6.3</jackson-dataformat-xml.version>
-    <jackson-dataformat-smile.version>2.6.3</jackson-dataformat-smile.version>
+    <jackson-dataformat-smile.version>2.7.4</jackson-dataformat-smile.version>
     
     <!-- Freemarker -->
     
@@ -279,6 +279,12 @@
       <groupId>com.fasterxml.jackson.dataformat</groupId>
       <artifactId>jackson-dataformat-smile</artifactId>
       <version>${jackson-dataformat-smile.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>com.fasterxml.jackson.core</groupId>
+          <artifactId>jackson-core</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     
     <dependency>
