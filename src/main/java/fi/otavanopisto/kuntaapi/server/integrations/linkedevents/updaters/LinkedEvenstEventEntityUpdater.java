@@ -28,6 +28,7 @@ import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.EventId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.images.ScaledImageStore;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.BinaryHttpClient;
 import fi.otavanopisto.kuntaapi.server.integrations.BinaryHttpClient.DownloadMeta;
@@ -96,6 +97,9 @@ public class LinkedEvenstEventEntityUpdater extends EntityUpdater {
   
   @Inject
   private BinaryHttpClient binaryHttpClient;
+
+  @Inject
+  private ScaledImageStore scaledImageStore;
   
   @Override
   public String getName() {
@@ -130,7 +134,7 @@ public class LinkedEvenstEventEntityUpdater extends EntityUpdater {
     if (response.isOk()) {
       updateLinkedEventsEvent(organizationId, response.getResponse(), orderIndex);
     } else {
-      logger.warning(String.format("Find event %s event %s failed on [%d] %s", organizationId.getId(), eventId.toString(), response.getStatus(), response.getMessage()));
+      logger.warning(() -> String.format("Find event %s event %s failed on [%d] %s", organizationId.getId(), eventId.toString(), response.getStatus(), response.getMessage()));
     }
   }
   
@@ -190,8 +194,11 @@ public class LinkedEvenstEventEntityUpdater extends EntityUpdater {
     AttachmentData imageData = linkedEventsImageLoader.getImageData(linkedEventsAttachmentId);
     if (imageData != null) {
       String dataHash = DigestUtils.md5Hex(imageData.getData());
-      modificationHashCache.put(imageIdentifier.getKuntaApiId(), dataHash);
-      linkedEventsAttachmentDataResourceContainer.put(kuntaApiAttachmentId, imageData);
+      if (!dataHash.equals(modificationHashCache.get(imageIdentifier.getKuntaApiId()))) {
+        modificationHashCache.put(imageIdentifier.getKuntaApiId(), dataHash);
+        linkedEventsAttachmentDataResourceContainer.put(kuntaApiAttachmentId, imageData);
+        scaledImageStore.purgeStoredImages(kuntaApiAttachmentId);
+      }
     }
   }
 

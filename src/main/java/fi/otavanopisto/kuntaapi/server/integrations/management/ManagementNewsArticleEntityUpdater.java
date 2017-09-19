@@ -32,6 +32,7 @@ import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.images.ScaledImageStore;
 import fi.otavanopisto.kuntaapi.server.index.IndexRemoveNewsArticle;
 import fi.otavanopisto.kuntaapi.server.index.IndexRemoveRequest;
 import fi.otavanopisto.kuntaapi.server.index.IndexRequest;
@@ -97,6 +98,9 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
 
   @Inject
   private Event<IndexRemoveRequest> indexRemoveRequest;
+
+  @Inject
+  private ScaledImageStore scaledImageStore;
   
   @Override
   public String getName() {
@@ -132,7 +136,7 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
     if (response.isOk()) {
       updateManagementPost(organizationId, api, response.getResponse(), orderIndex);
     } else {
-      logger.warning(String.format("Find organization %s post %s failed on [%d] %s", organizationId.getId(), newsArticleId.toString(), response.getStatus(), response.getMessage()));
+      logger.warning(() -> String.format("Find organization %s post %s failed on [%d] %s", organizationId.getId(), newsArticleId.toString(), response.getStatus(), response.getMessage()));
     }
   }
   
@@ -158,7 +162,7 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
     NewsArticleId kuntaApiNewsArticleId = new NewsArticleId(kuntaApiOrganizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
     NewsArticle newsArticle = managementTranslator.translateNewsArticle(kuntaApiNewsArticleId, tags, managementPost);
     if (newsArticle == null) {
-      logger.severe(String.format("Failed to translate news article %d", managementPost.getId()));
+      logger.severe(() -> String.format("Failed to translate news article %d", managementPost.getId()));
       return;
     }
     
@@ -226,7 +230,7 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
   private AttachmentId updateFeaturedMedia(OrganizationId organizationId, Identifier newsArticleIdentifier, DefaultApi api, Integer featuredMedia) {
     ApiResponse<fi.metatavu.management.client.model.Attachment> response = api.wpV2MediaIdGet(String.valueOf(featuredMedia), null, null);
     if (!response.isOk()) {
-      logger.severe(String.format("Finding media failed on [%d] %s", response.getStatus(), response.getMessage()));
+      logger.severe(() -> String.format("Finding media failed on [%d] %s", response.getStatus(), response.getMessage()));
       return null;
     } else {
       Attachment managementAttachment = response.getResponse();
@@ -239,7 +243,7 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
       AttachmentId kuntaApiAttachmentId = new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
       fi.metatavu.kuntaapi.server.rest.model.Attachment attachment = managementTranslator.translateAttachment(kuntaApiAttachmentId, managementAttachment, ManagementConsts.ATTACHMENT_TYPE_NEWS);
       if (attachment == null) {
-        logger.severe(String.format("Failed to translate news article attachment %d", featuredMedia));
+        logger.severe(() -> String.format("Failed to translate news article attachment %d", featuredMedia));
         return null;
       }
       
@@ -248,8 +252,11 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
       AttachmentData imageData = managementImageLoader.getImageData(managementAttachment.getSourceUrl());
       if (imageData != null) {
         String dataHash = DigestUtils.md5Hex(imageData.getData());
-        modificationHashCache.put(identifier.getKuntaApiId(), dataHash);
-        managementAttachmentDataResourceContainer.put(kuntaApiAttachmentId, imageData);
+        if (!dataHash.equals(modificationHashCache.get(identifier.getKuntaApiId()))) {
+          modificationHashCache.put(identifier.getKuntaApiId(), dataHash);
+          managementAttachmentDataResourceContainer.put(kuntaApiAttachmentId, imageData);
+          scaledImageStore.purgeStoredImages(kuntaApiAttachmentId);
+        }
       }
       
       return kuntaApiAttachmentId;

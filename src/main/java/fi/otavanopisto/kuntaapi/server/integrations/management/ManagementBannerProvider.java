@@ -83,17 +83,12 @@ public class ManagementBannerProvider extends AbstractManagementProvider impleme
   }
 
   @Override
-  public AttachmentData getBannerImageData(OrganizationId organizationId, BannerId bannerId, AttachmentId attachmentId, Integer size) {
-    if (!identifierRelationController.isChildOf(bannerId, attachmentId)) {
+  public AttachmentData getBannerImageData(OrganizationId organizationId, BannerId bannerId, AttachmentId kuntaApiAttachmentId, Integer size) {
+    if (!identifierRelationController.isChildOf(bannerId, kuntaApiAttachmentId)) {
       return null;
     }
-
-    AttachmentData imageData = getAttachmentData(organizationId, attachmentId);
-    if (size != null) {
-      return scaleImage(imageData, size);
-    } else {
-      return imageData;
-    }
+    
+    return getImageData(kuntaApiAttachmentId, size);
   }
 
 }

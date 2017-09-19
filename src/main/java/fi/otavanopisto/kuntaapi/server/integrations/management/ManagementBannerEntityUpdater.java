@@ -23,6 +23,7 @@ import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.BannerId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.images.ScaledImageStore;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.management.resources.ManagementAttachmentDataResourceContainer;
@@ -76,6 +77,9 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
   @Inject
   private BannerIdTaskQueue bannerIdTaskQueue;
 
+  @Inject
+  private ScaledImageStore scaledImageStore;
+  
   @Override
   public String getName() {
     return "management-banners";
@@ -110,7 +114,7 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
     if (response.isOk()) {
       updateManagementBanner(api, organizationId, response.getResponse(), orderIndex);
     } else {
-      logger.warning(String.format("Finding organization %s banner failed on [%d] %s", managementBannerId.getId(), response.getStatus(), response.getMessage()));
+      logger.warning(() -> String.format("Finding organization %s banner failed on [%d] %s", managementBannerId.getId(), response.getStatus(), response.getMessage()));
     }
   }
   
@@ -123,7 +127,7 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
     BannerId bannerKuntaApiId = new BannerId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
     fi.metatavu.kuntaapi.server.rest.model.Banner banner = managementTranslator.translateBanner(bannerKuntaApiId, managementBanner);
     if (banner == null) {
-      logger.severe(String.format("Could not translate banner %d into Kunta API banner", managementBanner.getId()));
+      logger.severe(() -> String.format("Could not translate banner %d into Kunta API banner", managementBanner.getId()));
       return;
     }
     
@@ -147,7 +151,7 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
   private AttachmentId updateFeaturedMedia(OrganizationId organizationId, DefaultApi api, Identifier bannerIdentifier, Integer featuredMedia) {
     ApiResponse<fi.metatavu.management.client.model.Attachment> response = api.wpV2MediaIdGet(String.valueOf(featuredMedia), null, null);
     if (!response.isOk()) {
-      logger.severe(String.format("Finding media failed on [%d] %s", response.getStatus(), response.getMessage()));
+      logger.severe(() -> String.format("Finding media failed on [%d] %s", response.getStatus(), response.getMessage()));
       return null;
     } else {
       Attachment managementAttachment = response.getResponse();
@@ -166,8 +170,11 @@ public class ManagementBannerEntityUpdater extends EntityUpdater {
         AttachmentData imageData = managementImageLoader.getImageData(managementAttachment.getSourceUrl());
         if (imageData != null) {
           String dataHash = DigestUtils.md5Hex(imageData.getData());
-          modificationHashCache.put(identifier.getKuntaApiId(), dataHash);
-          managementAttachmentDataResourceContainer.put(kuntaApiAttachmentId, imageData);
+          if (!dataHash.equals(modificationHashCache.get(identifier.getKuntaApiId()))) {
+            modificationHashCache.put(identifier.getKuntaApiId(), dataHash);
+            managementAttachmentDataResourceContainer.put(kuntaApiAttachmentId, imageData);
+            scaledImageStore.purgeStoredImages(kuntaApiAttachmentId);
+          }
         }
       }
       

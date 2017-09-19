@@ -1,6 +1,5 @@
 package fi.otavanopisto.kuntaapi.server.integrations.management;
 
-import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,9 +14,6 @@ import fi.metatavu.management.client.ApiResponse;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
-import fi.otavanopisto.kuntaapi.server.images.ImageReader;
-import fi.otavanopisto.kuntaapi.server.images.ImageScaler;
-import fi.otavanopisto.kuntaapi.server.images.ImageWriter;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.management.resources.ManagementAttachmentDataResourceContainer;
 import fi.otavanopisto.kuntaapi.server.resources.StoredBinaryData;
@@ -28,7 +24,7 @@ import fi.otavanopisto.kuntaapi.server.resources.StoredBinaryData;
  * @author Antti Leppä
  */
 @SuppressWarnings ("squid:S3306")
-public abstract class AbstractManagementProvider {
+public abstract class AbstractManagementProvider extends AbstractAttachmentImageProvider {
   
   @Inject
   private Logger logger;
@@ -43,49 +39,21 @@ public abstract class AbstractManagementProvider {
   private IdController idController;
   
   @Inject
-  private ImageReader imageReader;
-
-  @Inject
-  private ImageWriter imageWriter;
-  
-  @Inject
-  private ImageScaler imageScaler;
-
-  @Inject
   private ManagementImageLoader managementImageLoader;
-
-  protected AttachmentData scaleImage(AttachmentData imageData, Integer size) {
-    if (imageData == null || imageData.getData() == null) {
-      return null;
-    }
-    
-    BufferedImage bufferedImage = imageReader.readBufferedImage(imageData.getData());
-    if (bufferedImage != null) {
-      String formatName = imageWriter.getFormatName(imageData.getType());
-      
-      BufferedImage scaledImage = imageScaler.scaleToCover(bufferedImage, size, true);
-      byte[] scaledImageData = imageWriter.writeBufferedImage(scaledImage, formatName);
-      if (scaledImageData != null) {
-        String contentType = imageWriter.getContentTypeForFormatName(formatName);
-        return new AttachmentData(contentType, scaledImageData);
-      }
-    }
-    
-    return null;
-  }
-
-  protected AttachmentData getAttachmentData(OrganizationId organizationId, AttachmentId attachmentId) {
-    AttachmentData storedAttachmentData = getStoredAttachmentData(attachmentId);
+  
+  @Override
+  protected AttachmentData getAttachmentData(AttachmentId kuntaApiAttachmentId) {
+    AttachmentData storedAttachmentData = getStoredAttachmentData(kuntaApiAttachmentId);
     if (storedAttachmentData != null) {
       return storedAttachmentData;
     }
     
-    Integer mediaId = getMediaId(attachmentId);
+    Integer mediaId = getMediaId(kuntaApiAttachmentId);
     if (mediaId == null) {
       return null;
     }
     
-    fi.metatavu.management.client.model.Attachment featuredMedia = findMedia(organizationId, mediaId);
+    fi.metatavu.management.client.model.Attachment featuredMedia = findMedia(kuntaApiAttachmentId.getOrganizationId(), mediaId);
     if (featuredMedia == null) {
       return null;
     }
@@ -109,10 +77,10 @@ public abstract class AbstractManagementProvider {
   private Integer getMediaId(AttachmentId attachmentId) {
     AttachmentId managementAttachmentId = idController.translateAttachmentId(attachmentId, ManagementConsts.IDENTIFIER_NAME);
     if (managementAttachmentId == null) {
-      logger.info(String.format("Could not translate %s into management id", attachmentId.toString()));
+      logger.info(() -> String.format("Could not translate %s into management id", attachmentId.toString()));
       return null;
     }
-    
+
     return NumberUtils.createInteger(StringUtils.substringBefore(managementAttachmentId.getId(), "-"));
   }
 
@@ -123,7 +91,7 @@ public abstract class AbstractManagementProvider {
     
     ApiResponse<fi.metatavu.management.client.model.Attachment> response = managementApi.getApi(organizationId).wpV2MediaIdGet(String.valueOf(mediaId), null, null);
     if (!response.isOk()) {
-      logger.severe(String.format("Finding media failed on [%d] %s", response.getStatus(), response.getMessage()));
+      logger.severe(() -> String.format("Finding media failed on [%d] %s", response.getStatus(), response.getMessage()));
     } else {
       return response.getResponse();
     }

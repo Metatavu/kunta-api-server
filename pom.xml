@@ -78,6 +78,7 @@
     <!-- Jackson -->
     
     <jackson-dataformat-xml.version>2.6.3</jackson-dataformat-xml.version>
+    <jackson-dataformat-smile.version>2.6.3</jackson-dataformat-smile.version>
     
     <!-- Freemarker -->
     
@@ -272,6 +273,12 @@
           <artifactId>jackson-module-jaxb-annotations</artifactId>
         </exclusion>
       </exclusions>
+    </dependency>
+    
+    <dependency>
+      <groupId>com.fasterxml.jackson.dataformat</groupId>
+      <artifactId>jackson-dataformat-smile</artifactId>
+      <version>${jackson-dataformat-smile.version}</version>
     </dependency>
     
     <dependency>
