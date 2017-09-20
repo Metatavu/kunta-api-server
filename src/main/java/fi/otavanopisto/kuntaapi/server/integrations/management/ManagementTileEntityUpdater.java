@@ -23,6 +23,7 @@ import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.TileId;
+import fi.otavanopisto.kuntaapi.server.images.ScaledImageStore;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.management.resources.ManagementAttachmentDataResourceContainer;
@@ -76,6 +77,9 @@ public class ManagementTileEntityUpdater extends EntityUpdater {
   @Inject
   private TileIdTaskQueue tileIdTaskQueue;
 
+  @Inject
+  private ScaledImageStore scaledImageStore;
+
   @Override
   public String getName() {
     return "management-tiles";
@@ -110,7 +114,7 @@ public class ManagementTileEntityUpdater extends EntityUpdater {
     if (response.isOk()) {
       updateManagementTile(api, organizationId, response.getResponse(), orderIndex);
     } else {
-      logger.warning(String.format("Finding organization %s tile failed on [%d] %s", managementTileId.getId(), response.getStatus(), response.getMessage()));
+      logger.warning(() -> String.format("Finding organization %s tile failed on [%d] %s", managementTileId.getId(), response.getStatus(), response.getMessage()));
     }
   }
   
@@ -123,7 +127,7 @@ public class ManagementTileEntityUpdater extends EntityUpdater {
     TileId tileKuntaApiId = new TileId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
     fi.metatavu.kuntaapi.server.rest.model.Tile tile = managementTranslator.translateTile(tileKuntaApiId, managementTile);
     if (tile == null) {
-      logger.severe(String.format("Could not translate management tile %s", identifier.getKuntaApiId()));
+      logger.severe(() -> String.format("Could not translate management tile %s", identifier.getKuntaApiId()));
       return;
     }
     
@@ -147,7 +151,7 @@ public class ManagementTileEntityUpdater extends EntityUpdater {
   private AttachmentId updateFeaturedMedia(OrganizationId organizationId, Identifier tileIdentifier, DefaultApi api, Integer featuredMedia) {
     ApiResponse<Attachment> response = api.wpV2MediaIdGet(String.valueOf(featuredMedia), null, null);
     if (!response.isOk()) {
-      logger.severe(String.format("Finding media failed on [%d] %s", response.getStatus(), response.getMessage()));
+      logger.severe(() -> String.format("Finding media failed on [%d] %s", response.getStatus(), response.getMessage()));
       return null;
     } else {
       Attachment managementAttachment = response.getResponse();
@@ -168,8 +172,11 @@ public class ManagementTileEntityUpdater extends EntityUpdater {
       AttachmentData imageData = managementImageLoader.getImageData(managementAttachment.getSourceUrl());
       if (imageData != null) {
         String dataHash = DigestUtils.md5Hex(imageData.getData());
-        modificationHashCache.put(identifier.getKuntaApiId(), dataHash);
-        managementAttachmentDataResourceContainer.put(kuntaApiAttachmentId, imageData);
+        if (!dataHash.equals(modificationHashCache.get(identifier.getKuntaApiId()))) {
+          modificationHashCache.put(identifier.getKuntaApiId(), dataHash);
+          managementAttachmentDataResourceContainer.put(kuntaApiAttachmentId, imageData);
+          scaledImageStore.purgeStoredImages(kuntaApiAttachmentId);
+        }
       }
       
       return kuntaApiAttachmentId;

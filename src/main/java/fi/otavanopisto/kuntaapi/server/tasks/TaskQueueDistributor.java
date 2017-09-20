@@ -29,7 +29,7 @@ import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 public class TaskQueueDistributor {
 
   private static final int UPDATE_INTERVAL = 1000 * 60;
-  private static final int TEST_UPDATE_INTERVAL = 1000;
+  private static final int TEST_UPDATE_INTERVAL = 5000;
   
   @Inject
   private Logger logger;

@@ -79,17 +79,12 @@ public class ManagementTileProvider extends AbstractManagementProvider implement
   }
 
   @Override
-  public AttachmentData getTileImageData(OrganizationId organizationId, TileId tileId, AttachmentId attachmentId, Integer size) {
-    if (!identifierRelationController.isChildOf(tileId, attachmentId)) {
+  public AttachmentData getTileImageData(OrganizationId organizationId, TileId tileId, AttachmentId kuntaApiAttachmentId, Integer size) {
+    if (!identifierRelationController.isChildOf(tileId, kuntaApiAttachmentId)) {
       return null;
     }
     
-    AttachmentData imageData = getAttachmentData(organizationId, attachmentId);
-    if (size != null) {
-      return scaleImage(imageData, size);
-    } else {
-      return imageData;
-    }
+    return getImageData(kuntaApiAttachmentId, size);
   }
 
 }

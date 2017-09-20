@@ -108,18 +108,12 @@ public class ManagementPageProvider extends AbstractManagementProvider implement
   }
 
   @Override
-  public AttachmentData getPageImageData(OrganizationId organizationId, PageId pageId, AttachmentId attachmentId, Integer size) {
-    if (!identifierRelationController.isChildOf(pageId, attachmentId)) {
+  public AttachmentData getPageImageData(OrganizationId organizationId, PageId pageId, AttachmentId kuntaApiAttachmentId, Integer size) {
+    if (!identifierRelationController.isChildOf(pageId, kuntaApiAttachmentId)) {
       return null;
     }
     
-    AttachmentData imageData = getAttachmentData(organizationId, attachmentId);
-    
-    if (size != null) {
-      return scaleImage(imageData, size);
-    } else {
-      return imageData;
-    }
+    return getImageData(kuntaApiAttachmentId, size);
   }
   
   @Override

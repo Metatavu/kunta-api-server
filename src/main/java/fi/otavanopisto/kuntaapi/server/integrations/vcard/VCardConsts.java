@@ -9,11 +9,10 @@ package fi.otavanopisto.kuntaapi.server.integrations.vcard;
 public class VCardConsts {
   
   public static final String IDENTIFIER_NAME = "vcard";
-  public static final String ORGANIZATION_SETTING_URL = "vcard.url";
-  public static final String ORGANIZATION_SETTING_USERNAME = "vcard.username";
-  public static final String ORGANIZATION_SETTING_PASSWORD = "vcard.password";
+
   public static final String DEFAULT_LANGUAGE = "fi";
   public static final String DEFAULT_COUNTRY = "Suomi";
+  public static final String ORGANIZATION_VCARD_FILE = "vcard.file";
   
   private VCardConsts() {
   }

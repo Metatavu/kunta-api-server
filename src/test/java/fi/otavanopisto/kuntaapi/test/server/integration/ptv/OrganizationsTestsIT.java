@@ -181,9 +181,11 @@ public class OrganizationsTestsIT extends AbstractIntegrationTest {
 
   @Test
   public void testListOrganizationsByBusinessCode() {
-    if (inTravis()) {
+    if (skipElasticSearchTests()) {
       return;
     }
+    
+    waitForElasticIndex();
     
     given() 
       .baseUri(getApiBasePath())
@@ -209,9 +211,11 @@ public class OrganizationsTestsIT extends AbstractIntegrationTest {
 
   @Test
   public void testListOrganizationsByBusinessName() {
-    if (inTravis()) {
+    if (skipElasticSearchTests()) {
       return;
     }
+    
+    waitForElasticIndex();
     
     given() 
       .baseUri(getApiBasePath())
@@ -237,9 +241,11 @@ public class OrganizationsTestsIT extends AbstractIntegrationTest {
   
   @Test
   public void testListOrganizationsSearch() {
-    if (inTravis()) {
+    if (skipElasticSearchTests()) {
       return;
     }
+    
+    waitForElasticIndex();
     
     String search = "(M*)|(Mi*)";
     

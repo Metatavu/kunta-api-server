@@ -180,7 +180,7 @@ public class PageTestsIT extends AbstractIntegrationTest {
   
   @Test
   public void testListPagesSearch() {
-    if (inTravis()) {
+    if (skipElasticSearchTests()) {
       return;
     }
     
@@ -220,7 +220,7 @@ public class PageTestsIT extends AbstractIntegrationTest {
       .body("slug[0]", is("abraham"))
       .body("slug[1]", is("bertha"));
   }
-  
+
   @Test
   public void testListPagesByPath() {
     given() 

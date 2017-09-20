@@ -22,7 +22,7 @@ public class AttachmentData {
    * Attachment constructor
    * 
    * @param type attachment content type
-   * @param data attachment data as input stream
+   * @param data attachment data as byte array
    */
   public AttachmentData(String type, byte[] data) {
     super();
@@ -30,10 +30,20 @@ public class AttachmentData {
     this.data = data;
   }
 
+  /**
+   * Returns data
+   * 
+   * @return data
+   */
   public byte[] getData() {
     return data;
   }
 
+  /**
+   * Returns mimetype
+   * 
+   * @return mimetype
+   */
   public String getType() {
     return type;
   }

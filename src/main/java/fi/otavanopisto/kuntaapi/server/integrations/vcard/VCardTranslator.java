@@ -107,6 +107,8 @@ public class VCardTranslator {
           result.add(contactPhone);
         }
       }
+
+      return result;
     }
     
     return Collections.emptyList();
@@ -151,7 +153,7 @@ public class VCardTranslator {
     result.setLongitude(longitude);
     result.setMunicipality(null);
     result.setPostalCode(getString(vCardAddress.getPostalCode()));
-    result.setPostOffice(Collections.emptyList());
+    result.setPostOffice(getLocalizedString(vCardAddress.getLocality()));
     result.setPostOfficeBox(getLocalizedString(vCardAddress.getPoBox()));
     result.setStreetAddress(getLocalizedString(vCardAddress.getStreetAddress()));
     result.setStreetNumber(null);

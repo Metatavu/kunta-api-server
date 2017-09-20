@@ -62,7 +62,7 @@
 
     <!-- Kunta API Spec -->
 
-    <kunta-api-spec.version>0.1.91</kunta-api-spec.version>
+    <kunta-api-spec.version>0.1.92</kunta-api-spec.version>
     
     <!-- Integrations -->
     
@@ -78,6 +78,7 @@
     <!-- Jackson -->
     
     <jackson-dataformat-xml.version>2.6.3</jackson-dataformat-xml.version>
+    <jackson-dataformat-smile.version>2.7.4</jackson-dataformat-smile.version>
     
     <!-- Freemarker -->
     
@@ -115,7 +116,8 @@
     <deltaspike.version>1.7.2</deltaspike.version>
     <weld-se.version>2.3.5.Final</weld-se.version>
     <reflections.version>0.9.10</reflections.version>
-    
+    <it.package>**</it.package>
+    <it.tests>fi/otavanopisto/kuntaapi/test/server/integration/${it.package}/*IT.java</it.tests>
   </properties>
   
   <dependencyManagement>
@@ -269,6 +271,18 @@
         <exclusion>
           <groupId>com.fasterxml.jackson.module</groupId>
           <artifactId>jackson-module-jaxb-annotations</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    
+    <dependency>
+      <groupId>com.fasterxml.jackson.dataformat</groupId>
+      <artifactId>jackson-dataformat-smile</artifactId>
+      <version>${jackson-dataformat-smile.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>com.fasterxml.jackson.core</groupId>
+          <artifactId>jackson-core</artifactId>
         </exclusion>
       </exclusions>
     </dependency>
@@ -736,7 +750,7 @@
               <skipAfterFailureCount>1</skipAfterFailureCount>
               <argLine>-Xmx2G</argLine>
               <includes>
-                <include>**/*IT.java</include>
+                <include>${it.tests}</include>
               </includes>
               <systemPropertyVariables>
                 <java.util.logging.config.file>${project.basedir}/src/test/resources/logging.properties</java.util.logging.config.file>
@@ -866,7 +880,7 @@
                 <properties>
                   <cargo.servlet.port>${it.port.http}</cargo.servlet.port>
                   <cargo.jboss.configuration>standalone</cargo.jboss.configuration>
-                  <cargo.jvmargs>${jacoco.agent.itArgLine},output=tcpserver,port=6300 -Xms64m -Xmx2G -Drunmode=TEST</cargo.jvmargs>
+                  <cargo.jvmargs>${jacoco.agent.itArgLine},output=tcpserver,port=6300 -Xmx2G -Djava.net.preferIPv4Stack=true -Djava.net.preferIPv4Addresses=true -Drunmode=TEST</cargo.jvmargs>
                   <cargo.datasource.datasource.fnici>
                     cargo.datasource.driver=${it.jdbc.driver}|
                     cargo.datasource.url=${it.jdbc.url}|

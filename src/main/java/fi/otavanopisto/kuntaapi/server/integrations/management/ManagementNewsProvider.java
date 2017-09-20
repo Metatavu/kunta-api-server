@@ -92,17 +92,12 @@ public class ManagementNewsProvider extends AbstractManagementProvider implement
   }
 
   @Override
-  public AttachmentData getNewsArticleImageData(OrganizationId organizationId, NewsArticleId newsArticleId, AttachmentId attachmentId, Integer size) {
-    if (!identifierRelationController.isChildOf(newsArticleId, attachmentId)) {
+  public AttachmentData getNewsArticleImageData(OrganizationId organizationId, NewsArticleId newsArticleId, AttachmentId kuntaApiAttachmentId, Integer size) {
+    if (!identifierRelationController.isChildOf(newsArticleId, kuntaApiAttachmentId)) {
       return null;
     }
 
-    AttachmentData imageData = getAttachmentData(organizationId, attachmentId);
-    if (size != null) {
-      return scaleImage(imageData, size);
-    } else {
-      return imageData;
-    }
+    return getImageData(kuntaApiAttachmentId, size);
   }
   
   private boolean isAcceptable(NewsArticle newsArticle, String tag, OffsetDateTime publishedBefore, OffsetDateTime publishedAfter) {

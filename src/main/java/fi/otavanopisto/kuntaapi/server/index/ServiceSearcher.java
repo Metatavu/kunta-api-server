@@ -45,7 +45,7 @@ public class ServiceSearcher {
     if (organizationId != null) {
       OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(organizationId, KuntaApiConsts.IDENTIFIER_NAME);
       if (kuntaApiOrganizationId == null) {
-        logger.warning(String.format("Could not translate organization id %s into Kunta API id", organizationId));
+        logger.warning(() -> String.format("Could not translate organization id %s into Kunta API id", organizationId));
         return new SearchResult<>(Collections.emptyList(), 0);
       }
       

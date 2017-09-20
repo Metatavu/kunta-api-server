@@ -273,7 +273,7 @@ public class ServicesTestsIT extends AbstractIntegrationTest {
   
   @Test
   public void testListServicesSearch() {
-    if (inTravis()) {
+    if (skipElasticSearchTests()) {
       return;
     }
     
