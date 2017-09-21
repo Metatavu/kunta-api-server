@@ -1160,6 +1160,31 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     
     return createNotFound(NOT_FOUND);
   }
+  
+  @Override
+  public Response deleteOrganizationFile(String organizationIdParam, String fileIdParam, Request request) {
+    if (!securityController.isUnrestrictedClient(clientContainer.getClient())) {
+      return createForbidden(FORBIDDEN);
+    }
+    
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    FileId fileId = toFileId(organizationId, fileIdParam);
+    if (fileId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    FileDef file = fileController.findFile(organizationId, fileId);
+    if (file != null) {
+      fileController.deleteFile(organizationId, fileId);
+      return Response.noContent().build();
+    }
+    
+    return createNotFound(NOT_FOUND);
+  }
 
   @Override
   public Response getOrganizationFileData(String organizationIdParam, String fileIdParam, @Context Request request) {

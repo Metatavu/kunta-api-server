@@ -25,6 +25,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
 import fi.otavanopisto.kuntaapi.server.integrations.PageProvider;
+import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 
 /**
  * Page provider for CaseM
@@ -140,6 +141,11 @@ public class CaseMPageProvider implements PageProvider {
         indexRemovePage.setLanguage(CaseMConsts.DEFAULT_LANGUAGE);
         indexRemovePage.setPageId(page.getId());
         indexRemoveRequest.fire(new IndexRemoveRequest(indexRemovePage));
+      }
+      
+      Identifier identifier = identifierController.findIdentifierById(casemPageId);
+      if (identifier != null) {
+        identifierController.deleteIdentifier(identifier);
       }
     }
   }

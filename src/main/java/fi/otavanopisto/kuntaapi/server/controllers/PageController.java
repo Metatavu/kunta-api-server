@@ -144,6 +144,12 @@ public class PageController {
     return null;
   }
   
+  /**
+   * Deletes a page
+   * 
+   * @param organizationId organization id
+   * @param pageId pageId
+   */
   public void deletePage(OrganizationId organizationId, PageId pageId) {
     for (PageProvider pageProvider : getPageProviders()) {
       pageProvider.deleteOrganizationPage(organizationId, pageId);

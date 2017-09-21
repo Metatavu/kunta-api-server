@@ -77,7 +77,7 @@ public interface PageProvider {
   public AttachmentData getPageImageData(OrganizationId organizationId, PageId pageId, AttachmentId attachmentId, Integer size);
   
   /**
-   * Deletes a page. If page can not be found or provider does not support removal no action should be taked
+   * Deletes a page. If page can not be found or provider does not support removal no action should be taken
    * 
    * @param organizationId organization id
    * @param pageId page to be removed
