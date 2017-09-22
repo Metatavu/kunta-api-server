@@ -949,9 +949,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createNotFound(NOT_FOUND);
     }
     
-    Page page = pageController.findPage(organizationId, pageId);
-    if (page != null) {
-      pageController.deletePage(organizationId, pageId);
+    if (pageController.deletePage(organizationId, pageId)) {
       return Response.noContent().build();
     }
     
@@ -1177,9 +1175,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createNotFound(NOT_FOUND);
     }
     
-    FileDef file = fileController.findFile(organizationId, fileId);
-    if (file != null) {
-      fileController.deleteFile(organizationId, fileId);
+    if (fileController.deleteFile(organizationId, fileId)) {
       return Response.noContent().build();
     }
     

@@ -131,7 +131,7 @@ public class CaseMPageProvider implements PageProvider {
   }
 
   @Override
-  public void deleteOrganizationPage(OrganizationId organizationId, PageId pageId) {
+  public boolean deleteOrganizationPage(OrganizationId organizationId, PageId pageId) {
     PageId casemPageId = idController.translatePageId(pageId, CaseMConsts.IDENTIFIER_NAME);
     if (casemPageId != null) {
       Page page = caseMCache.findPage(pageId);
@@ -146,8 +146,11 @@ public class CaseMPageProvider implements PageProvider {
       Identifier identifier = identifierController.findIdentifierById(casemPageId);
       if (identifier != null) {
         identifierController.deleteIdentifier(identifier);
+        return true;
       }
     }
+    
+    return false;
   }
   
   private List<Page> listIncludingUnmappedParentIds(OrganizationId organizationId, PageId kuntaApiParentId, boolean onlyRootPages) {
