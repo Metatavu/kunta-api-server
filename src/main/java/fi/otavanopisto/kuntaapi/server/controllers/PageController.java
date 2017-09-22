@@ -149,11 +149,16 @@ public class PageController {
    * 
    * @param organizationId organization id
    * @param pageId pageId
+   * @return returns whether page was deleted or not
    */
-  public void deletePage(OrganizationId organizationId, PageId pageId) {
+  public boolean deletePage(OrganizationId organizationId, PageId pageId) {
     for (PageProvider pageProvider : getPageProviders()) {
-      pageProvider.deleteOrganizationPage(organizationId, pageId);
+      if (pageProvider.deleteOrganizationPage(organizationId, pageId)) {
+        return true;
+      }
     }
+    
+    return false;
   }
 
   /**

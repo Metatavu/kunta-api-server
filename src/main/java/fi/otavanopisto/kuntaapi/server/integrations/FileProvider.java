@@ -34,7 +34,8 @@ public interface FileProvider {
    * 
    * @param organizationId organization id
    * @param fileId file to be removed
+   * @return returns whether file was deleted or not
    */
-  public void deleteOrganizationFile(OrganizationId organizationId, FileId fileId);
+  public boolean deleteOrganizationFile(OrganizationId organizationId, FileId fileId);
 
 }

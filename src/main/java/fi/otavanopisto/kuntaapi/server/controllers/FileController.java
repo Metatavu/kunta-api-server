@@ -54,11 +54,16 @@ public class FileController {
    * 
    * @param organizationId organization id
    * @param fileId fileId
+   * @return returns whether file was deleted or not
    */
-  public void deleteFile(OrganizationId organizationId, FileId fileId) {
+  public boolean deleteFile(OrganizationId organizationId, FileId fileId) {
     for (FileProvider fileProvider : getFileProviders()) {
-      fileProvider.deleteOrganizationFile(organizationId, fileId);
+      if (fileProvider.deleteOrganizationFile(organizationId, fileId)) {
+        return true;
+      }
     }
+    
+    return false;
   }
 
   public AttachmentData getFileData(OrganizationId organizationId, FileId fileId) {

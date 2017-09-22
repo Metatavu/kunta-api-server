@@ -72,7 +72,7 @@ public class CaseMFileProvider implements FileProvider {
   }
   
   @Override
-  public void deleteOrganizationFile(OrganizationId organizationId, FileId fileId) {
+  public boolean deleteOrganizationFile(OrganizationId organizationId, FileId fileId) {
     Identifier fileIdentifier = identifierController.findIdentifierById(fileId);
     if (fileIdentifier != null) {
       FileId kuntaApiFileId = new FileId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, fileIdentifier.getKuntaApiId());
@@ -82,7 +82,10 @@ public class CaseMFileProvider implements FileProvider {
       IndexRemoveFile indexRemove = new IndexRemoveFile();
       indexRemove.setFileId(kuntaApiFileId.getId());
       indexRemoveRequest.fire(new IndexRemoveRequest(indexRemove));
+      return true;
     }
+    
+    return false;
   }
   
 }

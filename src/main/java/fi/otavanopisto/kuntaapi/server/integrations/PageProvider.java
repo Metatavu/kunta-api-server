@@ -81,7 +81,8 @@ public interface PageProvider {
    * 
    * @param organizationId organization id
    * @param pageId page to be removed
+   * @return returns whether page was deleted or not
    */
-  public void deleteOrganizationPage(OrganizationId organizationId, PageId pageId);
+  public boolean deleteOrganizationPage(OrganizationId organizationId, PageId pageId);
   
 }
