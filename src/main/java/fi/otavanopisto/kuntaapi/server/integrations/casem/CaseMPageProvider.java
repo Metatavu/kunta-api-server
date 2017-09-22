@@ -25,6 +25,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
 import fi.otavanopisto.kuntaapi.server.integrations.PageProvider;
+import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 
 /**
  * Page provider for CaseM
@@ -130,7 +131,7 @@ public class CaseMPageProvider implements PageProvider {
   }
 
   @Override
-  public void deleteOrganizationPage(OrganizationId organizationId, PageId pageId) {
+  public boolean deleteOrganizationPage(OrganizationId organizationId, PageId pageId) {
     PageId casemPageId = idController.translatePageId(pageId, CaseMConsts.IDENTIFIER_NAME);
     if (casemPageId != null) {
       Page page = caseMCache.findPage(pageId);
@@ -141,7 +142,15 @@ public class CaseMPageProvider implements PageProvider {
         indexRemovePage.setPageId(page.getId());
         indexRemoveRequest.fire(new IndexRemoveRequest(indexRemovePage));
       }
+      
+      Identifier identifier = identifierController.findIdentifierById(casemPageId);
+      if (identifier != null) {
+        identifierController.deleteIdentifier(identifier);
+        return true;
+      }
     }
+    
+    return false;
   }
   
   private List<Page> listIncludingUnmappedParentIds(OrganizationId organizationId, PageId kuntaApiParentId, boolean onlyRootPages) {

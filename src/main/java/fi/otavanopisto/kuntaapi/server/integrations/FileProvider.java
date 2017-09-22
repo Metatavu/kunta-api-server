@@ -1,8 +1,8 @@
 package fi.otavanopisto.kuntaapi.server.integrations;
 
+import fi.metatavu.kuntaapi.server.rest.model.FileDef;
 import fi.otavanopisto.kuntaapi.server.id.FileId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
-import fi.metatavu.kuntaapi.server.rest.model.FileDef;
 
 /**
  * Interface that describes a single file provider
@@ -28,5 +28,14 @@ public interface FileProvider {
    * @return organization file data
    */
   public AttachmentData getOrganizationFileData(OrganizationId organizationId, FileId fileId);
+
+  /**
+   * Deletes a file. If file can not be found or provider does not support removal no action should be taken
+   * 
+   * @param organizationId organization id
+   * @param fileId file to be removed
+   * @return returns whether file was deleted or not
+   */
+  public boolean deleteOrganizationFile(OrganizationId organizationId, FileId fileId);
 
 }

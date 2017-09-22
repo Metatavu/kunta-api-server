@@ -117,8 +117,9 @@ public class ManagementPageProvider extends AbstractManagementProvider implement
   }
   
   @Override
-  public void deleteOrganizationPage(OrganizationId organizationId, PageId pageId) {
+  public boolean deleteOrganizationPage(OrganizationId organizationId, PageId pageId) {
     // Page removal should be done in management service
+    return false;
   }
 
   private List<Page> listPages(OrganizationId organizationId, PageId parentId, boolean onlyRootPages, boolean includeUnmappedParentIds) {

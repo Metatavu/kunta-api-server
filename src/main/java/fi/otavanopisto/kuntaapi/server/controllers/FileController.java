@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
 
+import fi.metatavu.kuntaapi.server.rest.model.FileDef;
 import fi.otavanopisto.kuntaapi.server.id.FileId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
@@ -15,7 +17,6 @@ import fi.otavanopisto.kuntaapi.server.index.FileSearcher;
 import fi.otavanopisto.kuntaapi.server.index.SearchResult;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.FileProvider;
-import fi.metatavu.kuntaapi.server.rest.model.FileDef;
 
 @ApplicationScoped
 @SuppressWarnings ("squid:S3306")
@@ -46,6 +47,23 @@ public class FileController {
     }
     
     return null;
+  }
+  
+  /**
+   * Deletes a file
+   * 
+   * @param organizationId organization id
+   * @param fileId fileId
+   * @return returns whether file was deleted or not
+   */
+  public boolean deleteFile(OrganizationId organizationId, FileId fileId) {
+    for (FileProvider fileProvider : getFileProviders()) {
+      if (fileProvider.deleteOrganizationFile(organizationId, fileId)) {
+        return true;
+      }
+    }
+    
+    return false;
   }
 
   public AttachmentData getFileData(OrganizationId organizationId, FileId fileId) {

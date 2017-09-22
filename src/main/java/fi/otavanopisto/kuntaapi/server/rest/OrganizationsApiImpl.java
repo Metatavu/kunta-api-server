@@ -949,9 +949,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createNotFound(NOT_FOUND);
     }
     
-    Page page = pageController.findPage(organizationId, pageId);
-    if (page != null) {
-      pageController.deletePage(organizationId, pageId);
+    if (pageController.deletePage(organizationId, pageId)) {
       return Response.noContent().build();
     }
     
@@ -1156,6 +1154,29 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     FileDef file = fileController.findFile(organizationId, fileId);
     if (file != null) {
       return httpCacheController.sendModified(file, file.getId());
+    }
+    
+    return createNotFound(NOT_FOUND);
+  }
+  
+  @Override
+  public Response deleteOrganizationFile(String organizationIdParam, String fileIdParam, Request request) {
+    if (!securityController.isUnrestrictedClient(clientContainer.getClient())) {
+      return createForbidden(FORBIDDEN);
+    }
+    
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    FileId fileId = toFileId(organizationId, fileIdParam);
+    if (fileId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    if (fileController.deleteFile(organizationId, fileId)) {
+      return Response.noContent().build();
     }
     
     return createNotFound(NOT_FOUND);
