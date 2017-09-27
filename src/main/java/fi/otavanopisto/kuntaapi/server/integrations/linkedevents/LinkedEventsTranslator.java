@@ -67,9 +67,16 @@ public class LinkedEventsTranslator {
   public Attachment translateAttachment(AttachmentId kuntaApiAttachmentId, DownloadMeta imageMeta) {
     Attachment attachment = new Attachment();
     attachment.setId(kuntaApiAttachmentId.getId());
-    attachment.setContentType(imageMeta.getContentType());
-    attachment.setSize(Long.valueOf(imageMeta.getSize()));
-    attachment.setType(imageMeta.getContentType());
+    
+    if (imageMeta != null) {
+      attachment.setContentType(imageMeta.getContentType());
+      if (imageMeta.getSize() != null) {
+        attachment.setSize(Long.valueOf(imageMeta.getSize()));
+      }
+    }
+    
+    attachment.setType(LinkedEventsConsts.ATTACHMENT_TYPE_EVENT_IMAGE);
+    
     return attachment;
   }
 
