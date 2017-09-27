@@ -33,7 +33,6 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   public static final String BASE_URL = "/v1";
   
   private KuntarekryMocker kuntarekryMocker = new KuntarekryMocker();
-  private CasemMocker casemMocker = new CasemMocker();
   
   private ManagementPageMappingMocker managementPageMappingMocker = new ManagementPageMappingMocker();
   private ManagementTagMocker managementTagMocker = new ManagementTagMocker();
@@ -92,7 +91,6 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     ptvServiceMocker.start();
     linkedEventsEventMocker.startMock();
     kuntarekryMocker.startMock();
-    casemMocker.startMock();
     managementPageMocker.startMock();
     managementPostMocker.startMock();
     managementShortlinkMocker.startMock();
@@ -124,11 +122,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   public ManagementMenuMocker getManagementMenuMocker() {
     return managementMenuMocker;
   }
-  
-  public CasemMocker getCasemMocker() {
-    return casemMocker;
-  }
-  
+
   public ManagementPageMappingMocker getManagementPageMappingMocker() {
     return managementPageMappingMocker;
   }

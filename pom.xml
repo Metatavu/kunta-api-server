@@ -67,7 +67,6 @@
     <!-- Integrations -->
     
     <management-rest-client.version>0.0.31</management-rest-client.version>
-    <casem-rest-client.version>0.0.9</casem-rest-client.version>
     <mikkelinyt.rest-model.version>0.0.1</mikkelinyt.rest-model.version>
     <linkedevents-client.version>0.0.7</linkedevents-client.version>
 
@@ -79,10 +78,6 @@
     
     <jackson-dataformat-xml.version>2.6.3</jackson-dataformat-xml.version>
     <jackson-dataformat-smile.version>2.7.4</jackson-dataformat-smile.version>
-    
-    <!-- Freemarker -->
-    
-    <freemarker.version>2.3.23</freemarker.version>
     
     <!-- Elastic Search -->
     
@@ -298,12 +293,6 @@
       <artifactId>jsoup</artifactId>
       <scope>provided</scope>
     </dependency>
-    
-    <dependency>
-      <groupId>org.freemarker</groupId>
-      <artifactId>freemarker</artifactId>
-      <version>${freemarker.version}</version>
-    </dependency>
 
     <dependency>
       <groupId>com.fasterxml.jackson.module</groupId>
@@ -363,18 +352,6 @@
       <groupId>fi.metatavu.linkedevents</groupId>
       <artifactId>linkedevents-client</artifactId>
       <version>${linkedevents-client.version}</version>
-      <exclusions>
-        <exclusion>
-          <groupId>com.fasterxml.jackson.datatype</groupId>
-          <artifactId>jackson-datatype-jsr310</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    
-    <dependency>
-      <groupId>fi.otavanopisto.casem.casem-rest-client</groupId>
-      <artifactId>casem-rest-client</artifactId>
-      <version>${casem-rest-client.version}</version>
       <exclusions>
         <exclusion>
           <groupId>com.fasterxml.jackson.datatype</groupId>
