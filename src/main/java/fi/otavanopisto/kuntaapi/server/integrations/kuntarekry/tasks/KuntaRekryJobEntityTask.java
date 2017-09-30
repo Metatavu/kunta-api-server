@@ -44,5 +44,9 @@ public class KuntaRekryJobEntityTask extends AbstractKuntaRekryJobTask {
   public void setOrderIndex(Long orderIndex) {
     this.orderIndex = orderIndex;
   }
-  
+
+  @Override
+  public String getUniqueId() {
+    return String.format("kuntarekry-job-entity-task-%s-%s", getOrganizationId().toString(), getEntity().getJobId());
+  }
 }

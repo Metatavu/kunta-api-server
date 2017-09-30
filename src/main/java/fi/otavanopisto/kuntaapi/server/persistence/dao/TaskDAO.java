@@ -25,19 +25,44 @@ public class TaskDAO extends AbstractDAO<Task> {
    * Creates new task entity
    * 
    * @param queue queue the task belongs to
+   * @param uniqueId unique id for the task. Property is used to ensure that task is added only once to the queue
    * @param priority whether the task is a priority task or not
    * @param data serialized task data
    * @param created creation time
    * @return created task
    */
-  public Task create(TaskQueue queue, Boolean priority, byte[] data, OffsetDateTime created) {
+  public Task create(TaskQueue queue, String uniqueId, Boolean priority, byte[] data, OffsetDateTime created) {
     Task task = new Task();
+    task.setUniqueId(uniqueId);
     task.setCreated(created);
     task.setData(data);
     task.setPriority(priority);
     task.setQueue(queue);
-    
     return persist(task);
+  }
+  
+  /**
+   * Counts tasks by queue and unique id
+   * 
+   * @param queue queue
+   * @param uniqueId unique id
+   * @return count of tasks by queue and unique id
+   */
+  public Long countByQueueAndUniqueId(TaskQueue queue, String uniqueId) {
+    EntityManager entityManager = getEntityManager();
+
+    CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+    CriteriaQuery<Long> criteria = criteriaBuilder.createQuery(Long.class);
+    Root<Task> root = criteria.from(Task.class);
+    criteria.select(criteriaBuilder.count(root.get(Task_.id)));
+    criteria.where(
+      criteriaBuilder.and(
+        criteriaBuilder.equal(root.get(Task_.queue), queue),
+        criteriaBuilder.equal(root.get(Task_.uniqueId), uniqueId)
+      )
+    );
+    
+    return getSingleResult(entityManager.createQuery(criteria));
   }
   
   /**

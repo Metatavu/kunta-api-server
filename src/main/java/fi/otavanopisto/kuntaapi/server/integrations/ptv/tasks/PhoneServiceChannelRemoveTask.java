@@ -25,5 +25,10 @@ public class PhoneServiceChannelRemoveTask extends AbstractServiceChannelTask {
   public void setPhoneServiceChannelId(PhoneServiceChannelId phoneServiceChannelId) {
     this.phoneServiceChannelId = phoneServiceChannelId;
   }
+
+  @Override
+  public String getUniqueId() {
+    return String.format("ptv-phone-service-channel-remove-task-%s", phoneServiceChannelId.toString());
+  }
   
 }

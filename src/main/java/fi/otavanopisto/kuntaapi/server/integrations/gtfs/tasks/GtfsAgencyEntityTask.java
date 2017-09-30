@@ -22,4 +22,10 @@ public class GtfsAgencyEntityTask extends AbstractGtfsEntityTask<Agency> {
   public OrganizationId getOrganizationId() {
     return organizationId;
   }
+  
+  @Override
+  public String getUniqueId() {
+    return String.format("gtfs-agency-entity-task-%s-%s", getOrganizationId().toString(), getEntity().getId());
+  }
+  
 }

@@ -25,5 +25,10 @@ public class ServiceLocationServiceChannelRemoveTask extends AbstractServiceChan
   public void setServiceLocationServiceChannelId(ServiceLocationServiceChannelId serviceLocationServiceChannelId) {
     this.serviceLocationServiceChannelId = serviceLocationServiceChannelId;
   }
+
+  @Override
+  public String getUniqueId() {
+    return String.format("ptv-service-location-service-channel-remove-task-%s", serviceLocationServiceChannelId.toString());
+  }
   
 }

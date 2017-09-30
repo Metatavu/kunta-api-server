@@ -22,4 +22,9 @@ public class GtfsStopEntityTask extends AbstractGtfsEntityTask<Stop> {
     return organizationId;
   }
   
+  @Override
+  public String getUniqueId() {
+    return String.format("gtfs-stop-entity-task-%s-%s", getOrganizationId().toString(), getEntity().getId());
+  }
+  
 }

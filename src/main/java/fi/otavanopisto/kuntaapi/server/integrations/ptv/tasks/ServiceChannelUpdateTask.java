@@ -34,5 +34,10 @@ public class ServiceChannelUpdateTask extends AbstractServiceChannelTask {
   public void setOrderIndex(Long orderIndex) {
     this.orderIndex = orderIndex;
   }
+
+  @Override
+  public String getUniqueId() {
+    return String.format("ptv-service-channel-update-task-%s", id.toString());
+  }
   
 }

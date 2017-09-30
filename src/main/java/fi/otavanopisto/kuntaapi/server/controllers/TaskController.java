@@ -48,7 +48,13 @@ public class TaskController {
 
     byte[] data = serialize(task);
     if (data != null) {
-      return taskDAO.create(taskQueue, priority, data, OffsetDateTime.now());
+      String uniqueId = task.getUniqueId();
+      if (taskDAO.countByQueueAndUniqueId(taskQueue, uniqueId) == 0) {
+        return taskDAO.create(taskQueue, uniqueId, priority, data, OffsetDateTime.now());
+      } else {
+        logger.warning(() -> String.format("Task %s already found from queue %s. Skipped", uniqueId, queueName));
+      }
+      
     }
     
     return null;

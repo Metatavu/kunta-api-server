@@ -34,5 +34,10 @@ public class TilannehuoneEmergencyEntityTask extends AbstractTask {
   public void setOrderIndex(Long orderIndex) {
     this.orderIndex = orderIndex;
   }
+
+  @Override
+  public String getUniqueId() {
+    return String.format("tilannehuone-emergency-entity-task-%s", tilannehuoneEmergency.toString());
+  }
   
 }
