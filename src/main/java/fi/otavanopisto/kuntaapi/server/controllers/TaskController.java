@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.time.OffsetDateTime;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -57,12 +56,13 @@ public class TaskController {
           if (existingTask != null && !existingTask.getPriority()) {
             taskDAO.updatePriority(existingTask, Boolean.TRUE);
             logger.warning(() -> String.format("Task %s from queue %s elevated into priority task", uniqueId, queueName));
+          } else {
+            logger.warning(() -> String.format("Task %s already found from queue %s. Skipped", uniqueId, queueName));
           }
         } else {
           logger.warning(() -> String.format("Task %s already found from queue %s. Skipped", uniqueId, queueName));
         }
       }
-      
     }
     
     return null;
@@ -95,14 +95,23 @@ public class TaskController {
   }
   
   /**
-   * Lists all task queues
+   * Returns count of task queue
    * 
-   * @return all task queues
+   * @return count of task queue
    */
-  public List<TaskQueue> listTaskQueues() {
-    return taskQueueDAO.listAllTaskQueues();
+  public Long countTaskQueues() {
+    return taskQueueDAO.count();
   }
   
+  /**
+   * Returns task queue by index. List is ordered by id
+   * 
+   * @return task queue by index
+   */
+  public TaskQueue findTaskQueueByIndex(int index) {
+    return taskQueueDAO.findTaskQueueByIndex(index);
+  }
+
   /**
    * Updates a node that is responsible of the task queue
    * 
