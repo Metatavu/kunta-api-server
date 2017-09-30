@@ -55,7 +55,7 @@ public class TaskController {
           Task existingTask = taskDAO.findByQueueAndUniqueId(taskQueue, uniqueId);
           if (existingTask != null && !existingTask.getPriority()) {
             taskDAO.updatePriority(existingTask, Boolean.TRUE);
-            logger.warning(() -> String.format("Task %s from queue %s elevated into priority task", uniqueId, queueName));
+            logger.info(() -> String.format("Task %s from queue %s elevated into priority task", uniqueId, queueName));
           } else {
             logger.warning(() -> String.format("Task %s already found from queue %s. Skipped", uniqueId, queueName));
           }
