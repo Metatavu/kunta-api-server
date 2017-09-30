@@ -23,4 +23,9 @@ public class GtfsStopTimeEntityTask extends AbstractGtfsEntityTask<StopTime> {
     return organizationId;
   }
   
+  @Override
+  public String getUniqueId() {
+    return String.format("gtfs-stoptime-entity-task-%s-%s", getOrganizationId().toString(), getEntity().getId());
+  }
+  
 }

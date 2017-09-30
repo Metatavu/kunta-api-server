@@ -38,6 +38,11 @@ public class Task {
   @Column(nullable = false)
   private OffsetDateTime created;
   
+  @Column(nullable = false)
+  @NotNull
+  @NotEmpty
+  private String uniqueId;
+  
   public Long getId() {
     return id;
   }
@@ -76,6 +81,24 @@ public class Task {
 
   public void setCreated(OffsetDateTime created) {
     this.created = created;
+  }
+  
+  /**
+   * Returns unique id for the task in the queue. Property is used to ensure that task is added only once to the queue
+   * 
+   * @return unique id
+   */
+  public String getUniqueId() {
+    return uniqueId;
+  }
+  
+  /**
+   * Sets unique id for the task in the queue.
+   * 
+   * @param uniqueId unique id
+   */
+  public void setUniqueId(String uniqueId) {
+    this.uniqueId = uniqueId;
   }
   
 }

@@ -17,4 +17,8 @@ public class KuntaRekryRemoveJobTask extends AbstractKuntaRekryJobTask {
     return kuntaRekryJobId;
   }
 
+  @Override
+  public String getUniqueId() {
+    return String.format("kuntarekry-remove-job-task-%s", kuntaRekryJobId.toString());
+  }
 }

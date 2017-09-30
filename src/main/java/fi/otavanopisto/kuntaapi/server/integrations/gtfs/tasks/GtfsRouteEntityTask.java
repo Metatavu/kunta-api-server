@@ -31,5 +31,10 @@ public class GtfsRouteEntityTask extends AbstractGtfsEntityTask<Route> {
   public List<ServiceCalendar> getServiceCalendars() {
     return serviceCalendars;
   }
+  
+  @Override
+  public String getUniqueId() {
+    return String.format("gtfs-route-entity-task-%s-%s", getOrganizationId().toString(), getEntity().getId());
+  }
 
 }

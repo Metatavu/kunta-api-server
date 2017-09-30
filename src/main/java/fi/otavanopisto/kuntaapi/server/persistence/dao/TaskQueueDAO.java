@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
@@ -74,6 +75,26 @@ public class TaskQueueDAO extends AbstractDAO<TaskQueue> {
     );
     
     return getSingleResult(entityManager.createQuery(criteria));
+  }
+  
+  /**
+   * Returns task queue by index. List is ordered by id
+   * 
+   * @return task queue by index
+   */
+  public TaskQueue findTaskQueueByIndex(int index) {
+    EntityManager entityManager = getEntityManager();
+
+    CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+    CriteriaQuery<TaskQueue> criteria = criteriaBuilder.createQuery(TaskQueue.class);
+    Root<TaskQueue> root = criteria.from(TaskQueue.class);
+    criteria.select(root);
+    criteria.orderBy(criteriaBuilder.asc(root.get(TaskQueue_.id)));
+    TypedQuery<TaskQueue> query = entityManager.createQuery(criteria);
+    query.setFirstResult(index);
+    query.setMaxResults(1);
+    
+    return getSingleResult(query);
   }
   
   /**
