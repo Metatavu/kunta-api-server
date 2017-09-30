@@ -51,7 +51,7 @@ public class OrganizationEntityUpdateTask extends AbstractTask {
 
   @Override
   public String getUniqueId() {
-    return String.format("organization-entity-update-task-%s", getOrganizationId().toString());
+    return String.format("organization-entity-update-task-%s-%d", getOrganizationId().toString(), offset);
   }
   
 }
