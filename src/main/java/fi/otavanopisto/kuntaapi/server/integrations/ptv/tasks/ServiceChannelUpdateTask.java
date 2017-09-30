@@ -37,7 +37,7 @@ public class ServiceChannelUpdateTask extends AbstractServiceChannelTask {
 
   @Override
   public String getUniqueId() {
-    return String.format("ptv-service-channel-update-task-%s", id.toString());
+    return String.format("ptv-service-channel-update-task-%s", getId());
   }
   
 }
