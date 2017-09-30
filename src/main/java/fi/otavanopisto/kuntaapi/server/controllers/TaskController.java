@@ -52,7 +52,15 @@ public class TaskController {
       if (taskDAO.countByQueueAndUniqueId(taskQueue, uniqueId) == 0) {
         return taskDAO.create(taskQueue, uniqueId, priority, data, OffsetDateTime.now());
       } else {
-        logger.warning(() -> String.format("Task %s already found from queue %s. Skipped", uniqueId, queueName));
+        if (priority) {
+          Task existingTask = taskDAO.findByQueueAndUniqueId(taskQueue, uniqueId);
+          if (existingTask != null && !existingTask.getPriority()) {
+            taskDAO.updatePriority(existingTask, Boolean.TRUE);
+            logger.warning(() -> String.format("Task %s from queue %s elevated into priority task", uniqueId, queueName));
+          }
+        } else {
+          logger.warning(() -> String.format("Task %s already found from queue %s. Skipped", uniqueId, queueName));
+        }
       }
       
     }

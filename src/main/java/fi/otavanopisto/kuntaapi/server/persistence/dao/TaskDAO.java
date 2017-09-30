@@ -42,6 +42,30 @@ public class TaskDAO extends AbstractDAO<Task> {
   }
   
   /**
+   * Finds task by queue and unique id
+   * 
+   * @param queue queue
+   * @param uniqueId unique id
+   * @return task
+   */
+  public Task findByQueueAndUniqueId(TaskQueue queue, String uniqueId) {
+    EntityManager entityManager = getEntityManager();
+
+    CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+    CriteriaQuery<Task> criteria = criteriaBuilder.createQuery(Task.class);
+    Root<Task> root = criteria.from(Task.class);
+    criteria.select(root);
+    criteria.where(
+      criteriaBuilder.and(
+        criteriaBuilder.equal(root.get(Task_.queue), queue),
+        criteriaBuilder.equal(root.get(Task_.uniqueId), uniqueId)
+      )
+    );
+    
+    return getSingleResult(entityManager.createQuery(criteria));
+  }
+  
+  /**
    * Counts tasks by queue and unique id
    * 
    * @param queue queue
@@ -96,6 +120,18 @@ public class TaskDAO extends AbstractDAO<Task> {
     criteria.where(criteriaBuilder.equal(root.get(Task_.queue), queue));
     
     return getSingleResult(entityManager.createQuery(criteria));
+  }
+
+  /**
+   * Updates task's priority property
+   * 
+   * @param task task
+   * @param priority priority
+   * @return Updated task
+   */
+  public Task updatePriority(Task task, Boolean priority) {
+    task.setPriority(priority);
+    return persist(task);
   }
   
 }
