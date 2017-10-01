@@ -73,7 +73,7 @@ public class LinkedEventsEventIdUpdater extends IdUpdater {
     if (task != null) {
       checkRemovedLinkedEventsEvent(task.getOrganizationId(), task.getOffset());
       updateLinkedEventsEvents(task.getOrganizationId(), task.getOffset());
-    } else if (organizationLinkedEventsEventTaskQueue.isEmpty()) {
+    } else if (organizationLinkedEventsEventTaskQueue.isEmptyAndLocalNodeResponsible()) {
       List<OrganizationId> kuntaApiOrganizationIds = organizationSettingController.listOrganizationIdsWithSetting(LinkedEventsConsts.ORGANIZATION_SETTING_BASEURL);
       for (OrganizationId kuntaApiOrganizationId : kuntaApiOrganizationIds) {
         long eventCount = getEventCount(kuntaApiOrganizationId);

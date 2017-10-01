@@ -68,7 +68,7 @@ public class ManagementTileIdUpdater extends IdUpdater {
     OrganizationEntityUpdateTask task = organizationTilesTaskQueue.next();
     if (task != null) {
       updateManagementTiles(task.getOrganizationId());
-    } else if (organizationTilesTaskQueue.isEmpty()) {
+    } else if (organizationTilesTaskQueue.isEmptyAndLocalNodeResponsible()) {
       organizationTilesTaskQueue.enqueueTasks(organizationSettingController.listOrganizationIdsWithSetting(ManagementConsts.ORGANIZATION_SETTING_BASEURL));
     }
   }

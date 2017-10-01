@@ -87,12 +87,12 @@ public abstract class AbstractTaskQueue <T extends AbstractTask> {
   }
 
   /**
-   * Returns whether current queue is empty
+   * Returns true if current queue is empty and local node is responsible from the queue
    * 
-   * @return true if current queue is empty, false otherwise
+   * @return true if current queue is empty and local node is responsible from the queue
    */
-  public boolean isEmpty() {
-    return taskController.isQueueEmpty(getName());
+  public boolean isEmptyAndLocalNodeResponsible() {
+    return taskController.isQueueEmpty(getName()) && taskController.isNodeResponsibleFromQueue(getName(), clusterController.getLocalNodeName());
   }
   
   /**

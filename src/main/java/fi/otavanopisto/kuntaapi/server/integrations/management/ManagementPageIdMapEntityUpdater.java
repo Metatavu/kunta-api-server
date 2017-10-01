@@ -70,7 +70,7 @@ public class ManagementPageIdMapEntityUpdater extends EntityUpdater {
       OrganizationEntityUpdateTask task = organizationPageMapsTaskQueue.next();
       if (task != null) {
         updatePageIdMap(task.getOrganizationId());
-      } else if (organizationPageMapsTaskQueue.isEmpty()) {
+      } else if (organizationPageMapsTaskQueue.isEmptyAndLocalNodeResponsible()) {
         organizationPageMapsTaskQueue.enqueueTasks(organizationSettingController.listOrganizationIdsWithSetting(ManagementConsts.ORGANIZATION_SETTING_BASEURL));
       }
     }

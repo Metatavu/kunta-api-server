@@ -68,7 +68,7 @@ public class ManagementShortlinkIdUpdater extends IdUpdater {
     OrganizationEntityUpdateTask task = organizationShortlinksTaskQueue.next();
     if (task != null) {
       updateManagementShortlinks(task.getOrganizationId());
-    } else if (organizationShortlinksTaskQueue.isEmpty()) {
+    } else if (organizationShortlinksTaskQueue.isEmptyAndLocalNodeResponsible()) {
       organizationShortlinksTaskQueue.enqueueTasks(organizationSettingController.listOrganizationIdsWithSetting(ManagementConsts.ORGANIZATION_SETTING_BASEURL));
     }
   }

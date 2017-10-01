@@ -68,7 +68,7 @@ public class ManagementNewsArticleIdUpdater extends IdUpdater {
     OrganizationEntityUpdateTask task = organizationNewsArticlesTaskQueue.next();
     if (task != null) {
       updateManagementPosts(task.getOrganizationId());
-    } else if (organizationNewsArticlesTaskQueue.isEmpty()) {
+    } else if (organizationNewsArticlesTaskQueue.isEmptyAndLocalNodeResponsible()) {
       organizationNewsArticlesTaskQueue.enqueueTasks(organizationSettingController.listOrganizationIdsWithSetting(ManagementConsts.ORGANIZATION_SETTING_BASEURL));
     }
   }
