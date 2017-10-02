@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import javax.persistence.PersistenceException;
 
 import org.hibernate.JDBCException;
 
@@ -45,9 +46,9 @@ public class TaskController {
   public <T extends AbstractTask> Task createTask(String queueName, Boolean priority, T task) {
     TaskQueue taskQueue = taskQueueDAO.findByName(queueName);
     if (taskQueue == null) {
-      taskQueue = taskQueueDAO.create(queueName, "UNKNOWN");
+      taskQueue = createTaskQueue(queueName);
     }
-
+    
     byte[] data = serialize(task);
     if (data != null) {
       String uniqueId = task.getUniqueId();
@@ -74,21 +75,37 @@ public class TaskController {
   private Task createTask(String queueName, Boolean priority, TaskQueue taskQueue, byte[] data, String uniqueId) {
     try {
       return taskDAO.create(taskQueue, uniqueId, priority, data, OffsetDateTime.now());
+    } catch (PersistenceException e) {
+      handleCreateTaskErrorPersistence(queueName, uniqueId, e);
     } catch (JDBCException e) {
-      if (e.getCause() instanceof SQLException) {
-        SQLException sqlException = (SQLException) e.getCause();
-        if (sqlException.getErrorCode() == 1062) {
-          logger.warning(() -> String.format("Task %s insterted twice into queue %s. Skipped", uniqueId, queueName));
-          return null;
-        }
-      }
-      
-      logger.log(Level.SEVERE, "Could not create task", e);
+      handleCreateTaskErrorJdbc(queueName, uniqueId, e);
+    } catch (Exception e) {
+      logger.log(Level.SEVERE, "Task creating failed on unexpected error", e);
     }
     
     return null;
   }
   
+  private void handleCreateTaskErrorPersistence(String queueName, String uniqueId, PersistenceException e) {
+    if (e.getCause() instanceof JDBCException) {
+      handleCreateTaskErrorJdbc(queueName, uniqueId, (JDBCException) e.getCause());
+    } else {
+      logger.log(Level.SEVERE, "Task creating failed on unexpected persistence error", e);
+    }
+  }
+
+  private void handleCreateTaskErrorJdbc(String queueName, String uniqueId, JDBCException e) {
+    if (e.getCause() instanceof SQLException) {
+      SQLException sqlException = (SQLException) e.getCause();
+      if (sqlException.getErrorCode() == 1062) {
+        logger.warning(() -> String.format("Task %s insterted twice into queue %s. Skipped", uniqueId, queueName));
+        return;
+      }
+    }
+    
+    logger.log(Level.SEVERE, "Task creating failed on unexpected JDBC error", e);
+  }
+
   /**
    * Returns next tasks in queue
    * 
@@ -122,6 +139,25 @@ public class TaskController {
    */
   public Long countTaskQueues() {
     return taskQueueDAO.count();
+  }
+  
+  /**
+   * Creates new task queue
+   * 
+   * @param name queue name
+   * @return created queue
+   */
+  public TaskQueue createTaskQueue(String name) {
+    return taskQueueDAO.create(name, "UNKNOWN");
+  }
+  
+  /**
+   * Returns task queue by name.
+   * 
+   * @return task queue
+   */
+  public TaskQueue findTaskQueueByName(String name) {
+    return taskQueueDAO.findByName(name);
   }
   
   /**

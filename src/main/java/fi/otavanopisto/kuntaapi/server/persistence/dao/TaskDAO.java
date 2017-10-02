@@ -38,7 +38,9 @@ public class TaskDAO extends AbstractDAO<Task> {
     task.setData(data);
     task.setPriority(priority);
     task.setQueue(queue);
-    return persist(task);
+    Task result = persist(task);
+    flush();
+    return result;
   }
   
   /**

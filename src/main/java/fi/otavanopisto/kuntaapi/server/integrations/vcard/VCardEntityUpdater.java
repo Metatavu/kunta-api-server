@@ -99,7 +99,7 @@ public class VCardEntityUpdater extends EntityUpdater {
       if (task != null) {
         updateContacts(task.getOrganizationId());
       } else {
-        if (organizationVCardsTaskQueue.isEmpty()) {
+        if (organizationVCardsTaskQueue.isEmptyAndLocalNodeResponsible()) {
           organizationVCardsTaskQueue.enqueueTasks(organizationSettingController.listOrganizationIdsWithSetting(VCardConsts.ORGANIZATION_VCARD_FILE));
         }
       }

@@ -68,7 +68,7 @@ public class ManagementBannerIdUpdater extends IdUpdater {
     OrganizationEntityUpdateTask task = organizationBannersTaskQueue.next();
     if (task != null) {
       updateManagementBanners(task.getOrganizationId());
-    } else if (organizationBannersTaskQueue.isEmpty()) {
+    } else if (organizationBannersTaskQueue.isEmptyAndLocalNodeResponsible()) {
       organizationBannersTaskQueue.enqueueTasks(organizationSettingController.listOrganizationIdsWithSetting(ManagementConsts.ORGANIZATION_SETTING_BASEURL));
     }
   }

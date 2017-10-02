@@ -68,7 +68,7 @@ public class ManagementIncidentIdUpdater extends IdUpdater {
     OrganizationEntityUpdateTask task = organizationIncidentsTaskQueue.next();
     if (task != null) {
       updateManagementIncidents(task.getOrganizationId());
-    } else if (organizationIncidentsTaskQueue.isEmpty()) {
+    } else if (organizationIncidentsTaskQueue.isEmptyAndLocalNodeResponsible()) {
       organizationIncidentsTaskQueue.enqueueTasks(organizationSettingController.listOrganizationIdsWithSetting(ManagementConsts.ORGANIZATION_SETTING_BASEURL));
     }
   }
