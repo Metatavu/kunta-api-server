@@ -22,5 +22,9 @@ public class GtfsTripEntityTask extends AbstractGtfsEntityTask<Trip> {
   public OrganizationId getOrganizationId() {
     return organizationId;
   }
-  
+
+  @Override
+  public String getUniqueId() {
+    return String.format("gtfs-trip-entity-task-%s-%s", getOrganizationId().toString(), getEntity().getId());
+  }
 }

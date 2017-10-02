@@ -26,4 +26,9 @@ public class ElectronicServiceChannelRemoveTask extends AbstractServiceChannelTa
     this.electronicServiceChannelId = electronicServiceChannelId;
   }
   
+  @Override
+  public String getUniqueId() {
+    return String.format("ptv-electronic-service-channel-remove-task-%s", getElectronicServiceChannelId().toString());
+  }
+  
 }

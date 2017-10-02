@@ -25,5 +25,10 @@ public class WebPageServiceChannelRemoveTask extends AbstractServiceChannelTask 
   public void setWebPageServiceChannelId(WebPageServiceChannelId webPageServiceChannelId) {
     this.webPageServiceChannelId = webPageServiceChannelId;
   }
+
+  @Override
+  public String getUniqueId() {
+    return String.format("web-page-service-channel-remove-task-%s", webPageServiceChannelId.toString());
+  }
   
 }

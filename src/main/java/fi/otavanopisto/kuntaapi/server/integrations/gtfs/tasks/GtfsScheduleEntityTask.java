@@ -32,4 +32,8 @@ public class GtfsScheduleEntityTask extends AbstractGtfsEntityTask<ServiceCalend
     return exceptions;
   }
 
+  @Override
+  public String getUniqueId() {
+    return String.format("gtfs-schedule-entity-task-%s-%s", getOrganizationId().toString(), getEntity().getId());
+  }
 }

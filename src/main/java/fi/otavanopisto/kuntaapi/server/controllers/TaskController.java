@@ -5,13 +5,16 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.sql.SQLException;
 import java.time.OffsetDateTime;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import javax.persistence.PersistenceException;
+
+import org.hibernate.JDBCException;
 
 import fi.otavanopisto.kuntaapi.server.persistence.dao.TaskDAO;
 import fi.otavanopisto.kuntaapi.server.persistence.dao.TaskQueueDAO;
@@ -43,17 +46,66 @@ public class TaskController {
   public <T extends AbstractTask> Task createTask(String queueName, Boolean priority, T task) {
     TaskQueue taskQueue = taskQueueDAO.findByName(queueName);
     if (taskQueue == null) {
-      taskQueue = taskQueueDAO.create(queueName, "UNKNOWN");
+      taskQueue = createTaskQueue(queueName);
     }
-
+    
     byte[] data = serialize(task);
     if (data != null) {
-      return taskDAO.create(taskQueue, priority, data, OffsetDateTime.now());
+      String uniqueId = task.getUniqueId();
+      if (taskDAO.countByQueueAndUniqueId(taskQueue, uniqueId) == 0) {
+        return createTask(queueName, priority, taskQueue, data, uniqueId);
+      } else {
+        if (priority) {
+          Task existingTask = taskDAO.findByQueueAndUniqueId(taskQueue, uniqueId);
+          if (existingTask != null && !existingTask.getPriority()) {
+            taskDAO.updatePriority(existingTask, Boolean.TRUE);
+            logger.info(() -> String.format("Task %s from queue %s elevated into priority task", uniqueId, queueName));
+          } else {
+            logger.warning(() -> String.format("Task %s already found from queue %s. Skipped", uniqueId, queueName));
+          }
+        } else {
+          logger.warning(() -> String.format("Task %s already found from queue %s. Skipped", uniqueId, queueName));
+        }
+      }
+    }
+    
+    return null;
+  }
+
+  private Task createTask(String queueName, Boolean priority, TaskQueue taskQueue, byte[] data, String uniqueId) {
+    try {
+      return taskDAO.create(taskQueue, uniqueId, priority, data, OffsetDateTime.now());
+    } catch (PersistenceException e) {
+      handleCreateTaskErrorPersistence(queueName, uniqueId, e);
+    } catch (JDBCException e) {
+      handleCreateTaskErrorJdbc(queueName, uniqueId, e);
+    } catch (Exception e) {
+      logger.log(Level.SEVERE, "Task creating failed on unexpected error", e);
     }
     
     return null;
   }
   
+  private void handleCreateTaskErrorPersistence(String queueName, String uniqueId, PersistenceException e) {
+    if (e.getCause() instanceof JDBCException) {
+      handleCreateTaskErrorJdbc(queueName, uniqueId, (JDBCException) e.getCause());
+    } else {
+      logger.log(Level.SEVERE, "Task creating failed on unexpected persistence error", e);
+    }
+  }
+
+  private void handleCreateTaskErrorJdbc(String queueName, String uniqueId, JDBCException e) {
+    if (e.getCause() instanceof SQLException) {
+      SQLException sqlException = (SQLException) e.getCause();
+      if (sqlException.getErrorCode() == 1062) {
+        logger.warning(() -> String.format("Task %s insterted twice into queue %s. Skipped", uniqueId, queueName));
+        return;
+      }
+    }
+    
+    logger.log(Level.SEVERE, "Task creating failed on unexpected JDBC error", e);
+  }
+
   /**
    * Returns next tasks in queue
    * 
@@ -81,14 +133,42 @@ public class TaskController {
   }
   
   /**
-   * Lists all task queues
+   * Returns count of task queue
    * 
-   * @return all task queues
+   * @return count of task queue
    */
-  public List<TaskQueue> listTaskQueues() {
-    return taskQueueDAO.listAllTaskQueues();
+  public Long countTaskQueues() {
+    return taskQueueDAO.count();
   }
   
+  /**
+   * Creates new task queue
+   * 
+   * @param name queue name
+   * @return created queue
+   */
+  public TaskQueue createTaskQueue(String name) {
+    return taskQueueDAO.create(name, "UNKNOWN");
+  }
+  
+  /**
+   * Returns task queue by name.
+   * 
+   * @return task queue
+   */
+  public TaskQueue findTaskQueueByName(String name) {
+    return taskQueueDAO.findByName(name);
+  }
+  
+  /**
+   * Returns task queue by index. List is ordered by id
+   * 
+   * @return task queue by index
+   */
+  public TaskQueue findTaskQueueByIndex(int index) {
+    return taskQueueDAO.findTaskQueueByIndex(index);
+  }
+
   /**
    * Updates a node that is responsible of the task queue
    * 

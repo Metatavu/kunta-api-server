@@ -68,7 +68,7 @@ public class ManagementFragmentIdUpdater extends IdUpdater {
     OrganizationEntityUpdateTask task = organizationFragmentsTaskQueue.next();
     if (task != null) {
       updateManagementFragments(task.getOrganizationId());
-    } else if (organizationFragmentsTaskQueue.isEmpty()) {
+    } else if (organizationFragmentsTaskQueue.isEmptyAndLocalNodeResponsible()) {
       organizationFragmentsTaskQueue.enqueueTasks(organizationSettingController.listOrganizationIdsWithSetting(ManagementConsts.ORGANIZATION_SETTING_BASEURL));
     }
   }

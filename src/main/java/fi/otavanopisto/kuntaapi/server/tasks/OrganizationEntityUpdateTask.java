@@ -48,5 +48,10 @@ public class OrganizationEntityUpdateTask extends AbstractTask {
   public void setOffset(int offset) {
     this.offset = offset;
   }
+
+  @Override
+  public String getUniqueId() {
+    return String.format("organization-entity-update-task-%s-%d", getOrganizationId().toString(), offset);
+  }
   
 }

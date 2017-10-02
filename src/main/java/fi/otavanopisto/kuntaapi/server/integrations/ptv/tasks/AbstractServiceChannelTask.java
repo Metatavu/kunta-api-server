@@ -3,7 +3,7 @@ package fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks;
 import fi.otavanopisto.kuntaapi.server.tasks.AbstractTask;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask.Operation;
 
-public class AbstractServiceChannelTask extends AbstractTask {
+public abstract class AbstractServiceChannelTask extends AbstractTask {
 
   private static final long serialVersionUID = 7658507520622077865L;
   

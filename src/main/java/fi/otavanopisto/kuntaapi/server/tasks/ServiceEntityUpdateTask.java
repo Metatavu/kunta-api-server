@@ -38,5 +38,10 @@ public class ServiceEntityUpdateTask extends AbstractTask {
   public void setServiceId(ServiceId serviceId) {
     this.serviceId = serviceId;
   }
+
+  @Override
+  public String getUniqueId() {
+    return String.format("ptv-service-entity-update-task-%s", serviceId.toString());
+  }
   
 }

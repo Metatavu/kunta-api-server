@@ -25,5 +25,10 @@ public class PrintableFormServiceChannelRemoveTask extends AbstractServiceChanne
   public void setPrintableFormServiceChannelId(PrintableFormServiceChannelId printableFormServiceChannelId) {
     this.printableFormServiceChannelId = printableFormServiceChannelId;
   }
+
+  @Override
+  public String getUniqueId() {
+    return String.format("ptv-printable-form-service-channel-remove-task-%s", printableFormServiceChannelId.toString());
+  }
   
 }

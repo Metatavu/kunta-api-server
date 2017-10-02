@@ -133,6 +133,11 @@ public class IdTask <I extends BaseId> extends AbstractTask {
     this.orderIndex = orderIndex;
   }
   
+  @Override
+  public String getUniqueId() {
+    return String.format("id-%s-task-%s", operation.name(), id.toString());
+  }  
+  
   /**
    * Enumeration that describes an operation
    * 

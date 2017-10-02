@@ -377,4 +377,20 @@
     <sql>DELETE FROM Identifier where type = 'ORGANIZATION_SERVICE'</sql>
   </changeSet>
   
+  <changeSet id="task-unique-id" author="antti.leppa">
+    <delete tableName="Task"/>
+  
+    <addColumn tableName="Task">
+      <column name="uniqueId" type="varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+    </addColumn>
+    
+    <createIndex tableName="Task" indexName="UN_TASK_UNIQUE_ID_QUEUE_ID" unique="true">
+      <column name="uniqueId"></column>
+      <column name="queue_id"></column>
+    </createIndex>
+    
+  </changeSet>
+  
 </databaseChangeLog>

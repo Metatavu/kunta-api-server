@@ -59,7 +59,7 @@ public class ManagementRemovedPageIdUpdater extends IdUpdater {
     OrganizationEntityUpdateTask task = organizationPageRemovesTaskQueue.next();
     if (task != null) {
       checkRemovedManagementPages(task.getOrganizationId(), task.getOffset());
-    } else if (organizationPageRemovesTaskQueue.isEmpty()) {
+    } else if (organizationPageRemovesTaskQueue.isEmptyAndLocalNodeResponsible()) {
       List<OrganizationId> kuntaApiOrganizationIds = organizationSettingController.listOrganizationIdsWithSetting(ManagementConsts.ORGANIZATION_SETTING_BASEURL);
       for (OrganizationId kuntaApiOrganizationId : kuntaApiOrganizationIds) {
         Long pageCount = identifierController.countOrganizationPageIdsBySource(kuntaApiOrganizationId, ManagementConsts.IDENTIFIER_NAME);
