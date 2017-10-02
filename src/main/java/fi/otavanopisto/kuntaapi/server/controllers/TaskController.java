@@ -46,9 +46,9 @@ public class TaskController {
   public <T extends AbstractTask> Task createTask(String queueName, Boolean priority, T task) {
     TaskQueue taskQueue = taskQueueDAO.findByName(queueName);
     if (taskQueue == null) {
-      taskQueue = taskQueueDAO.create(queueName, "UNKNOWN");
+      taskQueue = createTaskQueue(queueName);
     }
-
+    
     byte[] data = serialize(task);
     if (data != null) {
       String uniqueId = task.getUniqueId();
@@ -139,6 +139,25 @@ public class TaskController {
    */
   public Long countTaskQueues() {
     return taskQueueDAO.count();
+  }
+  
+  /**
+   * Creates new task queue
+   * 
+   * @param name queue name
+   * @return created queue
+   */
+  public TaskQueue createTaskQueue(String name) {
+    return taskQueueDAO.create(name, "UNKNOWN");
+  }
+  
+  /**
+   * Returns task queue by name.
+   * 
+   * @return task queue
+   */
+  public TaskQueue findTaskQueueByName(String name) {
+    return taskQueueDAO.findByName(name);
   }
   
   /**

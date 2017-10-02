@@ -35,6 +35,10 @@ public abstract class AbstractTaskQueue <T extends AbstractTask> {
   
   @PostConstruct
   public void postConstruct() {
+    if (taskController.findTaskQueueByName(getName()) == null) {
+      taskController.createTaskQueue(getName());
+    }
+    
     running = true;
   }
 
