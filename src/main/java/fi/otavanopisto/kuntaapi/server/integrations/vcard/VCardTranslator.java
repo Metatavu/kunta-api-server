@@ -267,8 +267,11 @@ public class VCardTranslator {
   private boolean getExtendedPropertyBoolean(VCard vCard, String name) {
     RawProperty extendedProperty = vCard.getExtendedProperty(name);
     if (extendedProperty != null && extendedProperty.getValue() != null) {
+      System.out.println(name + " " + extendedProperty.getValue());
       return Boolean.getBoolean(extendedProperty.getValue());
     }
+    
+    System.out.println(name + " is null");
     
     return false;
   }
