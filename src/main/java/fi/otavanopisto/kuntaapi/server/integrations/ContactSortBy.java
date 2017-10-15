@@ -4,6 +4,8 @@ public enum ContactSortBy {
 
   NATURAL,
   
-  SCORE
+  SCORE,
+  
+  DISPLAY_NAME
   
 }
