@@ -58,6 +58,9 @@ public class VCardTranslator {
     result.setTitle(getFirst(vCard.getTitles()));
     result.setPrivateContact(getExtendedPropertyBoolean(vCard, "X-MECM-PRIVATE"));
     
+    System.out.println("Card private:" + kuntaApiContactId.getId());
+    System.out.println(getExtendedPropertyBoolean(vCard, "X-MECM-PRIVATE"));
+    
     return result;
   }
   
