@@ -60,3 +60,22 @@ ORG;MECM-TYPE=DEPARTMENT:Test Users
 TITLE:Test Person
 mecm-pbx:EXAMPLE
 END:VCARD
+BEGIN:VCARD
+VERSION:4.0
+PRODID:ez-vcard 0.10.0
+UID:urn:mecm:example-4567
+SOURCE:https://tools.kunta-api.fi/example/vcards/urn:mecm:example-4567
+TZ:Europe/Helsinki
+REV:20160212T122528Z
+FN:Piilo Esimerkki
+EMAIL:piilo.esimerkki@example.fi
+ADR:;Hidden room 22;Pirkonväylä 8;Testia;;12345;
+ORG:City of Example
+ORG;MECM-TYPE=DEPARTMENT:Testing
+ORG;MECM-TYPE=DEPARTMENT:Integration Testing
+ORG;MECM-TYPE=DEPARTMENT:Test Users
+TITLE:Hidden Person
+mecm-pbx:EXAMPLE
+X-MECM-PRIVATE-NUMBER:true
+X-MECM-NO-CALLS:true
+END:VCARD

@@ -219,6 +219,7 @@ public class VCardEntityUpdater extends EntityUpdater {
     result.setOrganizationUnits(contact.getOrganizationUnits());
     result.setPhoneNumbers(phoneNumbers);
     result.setTitle(contact.getTitle());
+    result.setPrivateContact(contact.getPrivateContact());
     
     return result;
   }

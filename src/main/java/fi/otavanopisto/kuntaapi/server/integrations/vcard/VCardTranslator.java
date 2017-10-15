@@ -56,6 +56,7 @@ public class VCardTranslator {
     result.setPhones(translatePhones(vCard.getTelephoneNumbers()));
     result.setStatuses(translateStatuses(vCard));
     result.setTitle(getFirst(vCard.getTitles()));
+    result.setPrivateContact(getExtendedPropertyBoolean(vCard, "X-MECM-PRIVATE"));
     
     return result;
   }
@@ -258,6 +259,15 @@ public class VCardTranslator {
     }
     
     return null;
+  }
+  
+  private boolean getExtendedPropertyBoolean(VCard vCard, String name) {
+    RawProperty extendedProperty = vCard.getExtendedProperty(name);
+    if (extendedProperty != null && extendedProperty.getValue() != null) {
+      return Boolean.getBoolean(extendedProperty.getValue());
+    }
+    
+    return false;
   }
 
   private String getFirst(List<? extends TextProperty> textProperties) {
