@@ -24,6 +24,7 @@ public class ContactSearcher {
   
   private static final String TYPE = "contact";
   private static final String CONTACT_ID_FIELD = "contactId";
+  private static final String DISPLAY_NAME_UT_FIELD = "displayNameUT";
   private static final String ORGANIZATION_ID_FIELD = "organizationId";
   
   @Inject
@@ -59,6 +60,9 @@ public class ContactSearcher {
     switch (sortBy) {
       case SCORE:
         requestBuilder.addSort(SortBuilders.scoreSort().order(order));
+      break;
+      case DISPLAY_NAME:
+        requestBuilder.addSort(SortBuilders.fieldSort(DISPLAY_NAME_UT_FIELD).order(order));
       break;
       case NATURAL:
       default:

@@ -15,6 +15,9 @@ public class IndexableContact implements Indexable {
 
   private String displayName;
 
+  @Field (index = "not_analyzed", store = true)
+  private String displayNameUT;
+
   private String firstName;
 
   private String lastName;
@@ -72,8 +75,13 @@ public class IndexableContact implements Indexable {
 
   public void setDisplayName(String displayName) {
     this.displayName = displayName;
+    this.displayNameUT = displayName;
   }
-
+  
+  public String getDisplayNameUT() {
+    return displayNameUT;
+  }
+  
   public String getFirstName() {
     return firstName;
   }
