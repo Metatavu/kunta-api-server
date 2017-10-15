@@ -27,7 +27,7 @@ public class VCardContactProvider implements ContactProvider {
   public Contact findOrganizationContact(OrganizationId organizationId, ContactId contactId) {
     if (identifierRelationController.isChildOf(organizationId, contactId)) {
       Contact contact = contactCache.get(contactId);
-      if (contact != null && Boolean.FALSE.equals(contact.getPrivateContact())) {
+      if (contact != null && !isPrivateContact(contact)) {
         return contact;
       }
     }
@@ -42,12 +42,17 @@ public class VCardContactProvider implements ContactProvider {
     
     for (ContactId contactId : contactIds) {
       Contact contact = contactCache.get(contactId);
-      if (contact != null && Boolean.FALSE.equals(contact.getPrivateContact())) {
+      if (contact != null && !isPrivateContact(contact)) {
         result.add(contact);
       }
     }
     
     return result;
+  }
+  
+  private boolean isPrivateContact(Contact contact) {
+    Boolean privateContact = contact.getPrivateContact();
+    return privateContact == null || privateContact;
   }
 
 }
