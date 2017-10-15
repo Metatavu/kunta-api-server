@@ -33,6 +33,9 @@ public class IndexableContact implements Indexable {
   private List<String> emails;
 
   private List<String> phoneNumbers;
+  
+  @Field (index = "not_analyzed", store = true)
+  private Boolean privateContact;
 
   @Override
   public String getId() {
@@ -144,6 +147,14 @@ public class IndexableContact implements Indexable {
 
   public void setPhoneNumbers(List<String> phoneNumbers) {
     this.phoneNumbers = phoneNumbers;
+  }
+  
+  public Boolean getPrivateContact() {
+    return privateContact;
+  }
+  
+  public void setPrivateContact(Boolean privateContact) {
+    this.privateContact = privateContact;
   }
 
 }

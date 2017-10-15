@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
+import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -56,6 +57,7 @@ public class VCardTranslator {
     result.setPhones(translatePhones(vCard.getTelephoneNumbers()));
     result.setStatuses(translateStatuses(vCard));
     result.setTitle(getFirst(vCard.getTitles()));
+    result.setPrivateContact(getExtendedPropertyBoolean(vCard, "X-MECM-PRIVATE"));
     
     return result;
   }
@@ -258,6 +260,15 @@ public class VCardTranslator {
     }
     
     return null;
+  }
+  
+  private boolean getExtendedPropertyBoolean(VCard vCard, String name) {
+    RawProperty extendedProperty = vCard.getExtendedProperty(name);
+    if (extendedProperty != null && extendedProperty.getValue() != null) {
+      return BooleanUtils.toBoolean(extendedProperty.getValue());
+    }
+    
+    return false;
   }
 
   private String getFirst(List<? extends TextProperty> textProperties) {
