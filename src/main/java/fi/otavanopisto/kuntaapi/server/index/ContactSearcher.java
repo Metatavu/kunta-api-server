@@ -24,6 +24,8 @@ public class ContactSearcher {
   
   private static final String TYPE = "contact";
   private static final String CONTACT_ID_FIELD = "contactId";
+  private static final String PRIVATE_CONTACT_FIELD = "privateContact";
+  private static final String DISPLAY_NAME_UT_FIELD = "displayNameUT";
   private static final String ORGANIZATION_ID_FIELD = "organizationId";
   
   @Inject
@@ -35,6 +37,7 @@ public class ContactSearcher {
   public SearchResult<ContactId> searchContacts(String organizationId, String queryString, ContactSortBy sortOrder, SortDir sortDir, Long firstResult, Long maxResults) {
     BoolQueryBuilder query = boolQuery()
       .must(matchQuery(ORGANIZATION_ID_FIELD, organizationId))
+      .must(matchQuery(PRIVATE_CONTACT_FIELD, false))
       .must(queryStringQuery(queryString));
     
     return searchContacts(query, sortOrder, sortDir, firstResult, maxResults);
@@ -59,6 +62,9 @@ public class ContactSearcher {
     switch (sortBy) {
       case SCORE:
         requestBuilder.addSort(SortBuilders.scoreSort().order(order));
+      break;
+      case DISPLAY_NAME:
+        requestBuilder.addSort(SortBuilders.fieldSort(DISPLAY_NAME_UT_FIELD).order(order));
       break;
       case NATURAL:
       default:
