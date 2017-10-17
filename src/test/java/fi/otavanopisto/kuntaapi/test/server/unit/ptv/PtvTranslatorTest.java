@@ -19,7 +19,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.skyscreamer.jsonassert.JSONAssert;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -113,8 +112,8 @@ public class PtvTranslatorTest extends AbstractTest {
       assertJSONEquals(expectedServiceHour.getOpeningHour(), actualServiceHour.getOpeningHour());
     }
   }
-
-  private void assertJSONEquals(Object expected, Object actual) throws JsonProcessingException, JSONException {
+  
+  private void assertJSONEquals(Object expected, Object actual) throws IOException, JSONException {
     ObjectMapper objectMapper = new ObjectMapper();
 
     JSONAssert.assertEquals(objectMapper.writeValueAsString(expected), objectMapper.writeValueAsString(actual), false);
@@ -126,7 +125,7 @@ public class PtvTranslatorTest extends AbstractTest {
     }
     
     if (expected == null || actual == null) {
-      fail(String.format("ServiceHours (%s, %s) are not equal", expected, actual));
+      fail(String.format("ServiceHours (%s, %s) are not equal", expected != null ? expected.toString() : "NULL", actual != null ? actual.toString() : "NULL"));
     }
     
     assertTrue(String.format("ServiceHours (%s, %s) are not equal", expected, actual), sameInstant(expected.toInstant()).matches(actual.toInstant()));
