@@ -204,12 +204,12 @@
       "additionalInformation":[
 
       ],
-      "organizationId":"d45ec681-4da3-4a38-af67-fb2d949b9387",
+      "organization": {
+        "id": "d45ec681-4da3-4a38-af67-fb2d949b9387",
+        "name": "Helsinki"
+      },
       "roleType":"Responsible",
-      "provisionType":null,
-      "webPages":[
-
-      ]
+      "provisionType":null
     }
   ],
   "publishingStatus":"Published"

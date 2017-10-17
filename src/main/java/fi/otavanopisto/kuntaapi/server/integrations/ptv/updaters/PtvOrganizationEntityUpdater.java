@@ -3,6 +3,7 @@ package fi.otavanopisto.kuntaapi.server.integrations.ptv.updaters;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,7 +16,7 @@ import javax.inject.Inject;
 
 import fi.metatavu.kuntaapi.server.rest.model.OrganizationService;
 import fi.metatavu.ptv.client.ApiResponse;
-import fi.metatavu.ptv.client.model.V5VmOpenApiOrganization;
+import fi.metatavu.ptv.client.model.V6VmOpenApiOrganization;
 import fi.metatavu.ptv.client.model.V5VmOpenApiOrganizationService;
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
@@ -109,11 +110,11 @@ public class PtvOrganizationEntityUpdater extends EntityUpdater {
       return;
     }
     
-    ApiResponse<V5VmOpenApiOrganization> response = ptvApi.getOrganizationApi().apiV5OrganizationByIdGet(organizationId.getId());
+    ApiResponse<V6VmOpenApiOrganization> response = ptvApi.getOrganizationApi().apiV6OrganizationByIdGet(organizationId.getId());
     if (response.isOk()) {
       Identifier identifier = identifierController.acquireIdentifier(orderIndex, organizationId);
       OrganizationId kuntaApiOrganizationId = kuntaApiIdFactory.createFromIdentifier(OrganizationId.class, identifier);
-      V5VmOpenApiOrganization ptvOrganization = response.getResponse();
+      V6VmOpenApiOrganization ptvOrganization = response.getResponse();
       OrganizationId kuntaApiParentOrganizationId = translateParentOrganizationId(kuntaApiOrganizationId,
           ptvOrganization);
      
@@ -145,7 +146,7 @@ public class PtvOrganizationEntityUpdater extends EntityUpdater {
     }
   }
 
-  private OrganizationId translateParentOrganizationId(OrganizationId kuntaApiOrganizationId, V5VmOpenApiOrganization ptvOrganization) {
+  private OrganizationId translateParentOrganizationId(OrganizationId kuntaApiOrganizationId, V6VmOpenApiOrganization ptvOrganization) {
     OrganizationId ptvParentOrganizationId = ptvIdFactory.createOrganizationId(ptvOrganization.getParentOrganization());
     OrganizationId kuntaApiParentOrganizationId = null;
     
@@ -164,7 +165,7 @@ public class PtvOrganizationEntityUpdater extends EntityUpdater {
       return null;
     }
     
-    String ptvServiceId = ptvOrganizationService.getService().getId();
+    UUID ptvServiceId = ptvOrganizationService.getService().getId();
     
     ServiceId kuntaApiServiceId = idController.translateServiceId(ptvIdFactory.createServiceId(ptvServiceId), KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiServiceId == null) {

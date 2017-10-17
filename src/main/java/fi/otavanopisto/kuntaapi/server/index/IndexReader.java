@@ -72,7 +72,7 @@ public class IndexReader extends AbstractIndexHander {
       
       if (organizationField != null) {
         SearchHitField organizationHitField = fields.get(organizationField);
-        organizationId = kuntaApiIdFactory.createOrganizationId(organizationHitField.getValue());
+        organizationId = kuntaApiIdFactory.createOrganizationId((String) organizationHitField.getValue());
       }
       
       String id = "_id".equals(idField) ? hit.getId() : fields.get(idField).getValue();

@@ -56,7 +56,7 @@ public abstract class AbstractPtvServiceChannelIdUpdater extends IdUpdater {
         for (int i = 0; i < items.size(); i++) {
           VmOpenApiItem item = items.get(i);
           Long orderIndex = getOrderIndex(i, response.getResponse());
-          serviceChannelTasksQueue.enqueueTask(getIsPriority(), new ServiceChannelUpdateTask(item.getId(), orderIndex));
+          serviceChannelTasksQueue.enqueueTask(getIsPriority(), new ServiceChannelUpdateTask(item.getId().toString(), orderIndex));
         }
       }
       
