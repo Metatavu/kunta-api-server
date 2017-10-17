@@ -125,7 +125,7 @@ public class PtvTranslatorTest extends AbstractTest {
     }
     
     if (expected == null || actual == null) {
-      fail(String.format("ServiceHours (%s, %s) are not equal", expected != null ? expected.toString() : "NULL", actual != null ? actual.toString() : "NULL"));
+      fail("ServiceHours are not equal");
     }
     
     assertTrue(String.format("ServiceHours (%s, %s) are not equal", expected, actual), sameInstant(expected.toInstant()).matches(actual.toInstant()));
