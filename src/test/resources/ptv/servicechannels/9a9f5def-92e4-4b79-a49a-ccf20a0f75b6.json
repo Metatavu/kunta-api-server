@@ -57,7 +57,6 @@
   "languages":[
     "fi"
   ],
-  "phoneServiceCharge":false,
   "webPages":[
     {
       "orderNumber":"1",
@@ -551,5 +550,6 @@
       ]
     }
   ],
-  "publishingStatus":"Published"
+  "publishingStatus":"Published",
+  "modified": "2017-07-06T09:59:41.779161"
 }

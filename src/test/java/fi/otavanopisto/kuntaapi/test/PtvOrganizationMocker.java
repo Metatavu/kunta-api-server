@@ -1,10 +1,10 @@
 package fi.otavanopisto.kuntaapi.test;
 
-import fi.metatavu.ptv.client.model.V5VmOpenApiOrganization;
+import fi.metatavu.ptv.client.model.V6VmOpenApiOrganization;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.PtvConsts;
 
 @SuppressWarnings ("squid:S1075")
-public class PtvOrganizationMocker extends AbstractPtvMocker<V5VmOpenApiOrganization> {
+public class PtvOrganizationMocker extends AbstractPtvMocker<V6VmOpenApiOrganization> {
   
   private static final String BASE_PATH = String.format("/ptv/api/%s/Organization", PtvConsts.VERSION);
 
@@ -19,8 +19,8 @@ public class PtvOrganizationMocker extends AbstractPtvMocker<V5VmOpenApiOrganiza
   }
   
   @Override
-  public String getEntityId(V5VmOpenApiOrganization entity) {
-    return entity.getId();
+  public String getEntityId(V6VmOpenApiOrganization entity) {
+    return entity.getId().toString();
   }
   
 }

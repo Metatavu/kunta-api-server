@@ -13,7 +13,7 @@ import javax.inject.Inject;
 
 import fi.metatavu.ptv.client.ApiResponse;
 import fi.metatavu.ptv.client.ResultType;
-import fi.metatavu.ptv.client.model.V5VmOpenApiElectronicChannel;
+import fi.metatavu.ptv.client.model.V6VmOpenApiElectronicChannel;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.IdUpdater;
 import fi.otavanopisto.kuntaapi.server.id.ElectronicServiceChannelId;
@@ -82,7 +82,7 @@ public class PtvElectronicServiceChannelIdRemoveUpdater extends IdUpdater {
       }
 
       String path = String.format("/api/%s/ServiceChannel/%s", PtvConsts.VERSION, ptvElectronicServiceChannelId.getId());
-      ApiResponse<V5VmOpenApiElectronicChannel> response = ptvClient.doGETRequest(path, new ResultType<V5VmOpenApiElectronicChannel>() {}, null, null);
+      ApiResponse<V6VmOpenApiElectronicChannel> response = ptvClient.doGETRequest(path, new ResultType<V6VmOpenApiElectronicChannel>() {}, null, null);
       if (response.getStatus() == 404) {
         serviceChannelTasksQueue.enqueueTask(false, new ElectronicServiceChannelRemoveTask(ptvElectronicServiceChannelId));
       }

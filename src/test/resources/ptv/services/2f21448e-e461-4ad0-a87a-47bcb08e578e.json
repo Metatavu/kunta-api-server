@@ -201,7 +201,10 @@
   ],
   "serviceChannels":[
     {
-      "serviceChannelId":"c0681f51-d1b4-4a9b-bbbf-ddf9a5273cd1",
+      "serviceChannel": {
+        "id": "c0681f51-d1b4-4a9b-bbbf-ddf9a5273cd1",
+        "name": "Metatavun toimisto"
+      },
       "description":[
 
       ],
@@ -219,27 +222,20 @@
           "language":"fi"
         }
       ],
-      "organizationId":null,
+      "organization":null,
       "roleType":"Producer",
-      "provisionType":"VoucherServices",
-      "webPages":[
-        {
-          "value":null,
-          "url":null,
-          "language":"fi"
-        }
-      ]
+      "provisionType":"VoucherServices"
     },
     {
       "additionalInformation":[
 
       ],
-      "organizationId":"ae2682d3-6238-4019-b34f-b078c5f9bb50",
+      "organization": {
+        "id": "ae2682d3-6238-4019-b34f-b078c5f9bb50",
+        "name": "Mikkelin kaupunki"
+      },
       "roleType":"Responsible",
-      "provisionType":null,
-      "webPages":[
-
-      ]
+      "provisionType":null
     }
   ],
   "publishingStatus":"Published"

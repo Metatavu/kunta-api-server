@@ -18,11 +18,11 @@ import fi.metatavu.kuntaapi.server.rest.model.PhoneServiceChannel;
 import fi.metatavu.kuntaapi.server.rest.model.PrintableFormServiceChannel;
 import fi.metatavu.kuntaapi.server.rest.model.ServiceLocationServiceChannel;
 import fi.metatavu.kuntaapi.server.rest.model.WebPageServiceChannel;
-import fi.metatavu.ptv.client.model.V4VmOpenApiWebPageChannel;
-import fi.metatavu.ptv.client.model.V5VmOpenApiElectronicChannel;
-import fi.metatavu.ptv.client.model.V5VmOpenApiPhoneChannel;
-import fi.metatavu.ptv.client.model.V5VmOpenApiPrintableFormChannel;
-import fi.metatavu.ptv.client.model.V5VmOpenApiServiceLocationChannel;
+import fi.metatavu.ptv.client.model.V6VmOpenApiWebPageChannel;
+import fi.metatavu.ptv.client.model.V6VmOpenApiElectronicChannel;
+import fi.metatavu.ptv.client.model.V6VmOpenApiPhoneChannel;
+import fi.metatavu.ptv.client.model.V6VmOpenApiPrintableFormChannel;
+import fi.metatavu.ptv.client.model.V6VmOpenApiServiceLocationChannel;
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
@@ -198,7 +198,7 @@ public class PtvServiceChannelEntityUpdater extends EntityUpdater {
     }
   }
   
-  private void updateElectronicServiceChannel(Long orderIndex, V5VmOpenApiElectronicChannel ptvElectronicServiceChannel) {
+  private void updateElectronicServiceChannel(Long orderIndex, V6VmOpenApiElectronicChannel ptvElectronicServiceChannel) {
     if (ptvElectronicServiceChannel == null) {
       return;
     }
@@ -224,7 +224,7 @@ public class PtvServiceChannelEntityUpdater extends EntityUpdater {
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(electronicServiceChannel));
   }
 
-  private void updateServiceLocationServiceChannel(Long orderIndex, V5VmOpenApiServiceLocationChannel ptvServiceLocationServiceChannel) {
+  private void updateServiceLocationServiceChannel(Long orderIndex, V6VmOpenApiServiceLocationChannel ptvServiceLocationServiceChannel) {
     if (ptvServiceLocationServiceChannel == null) {
       return;
     }
@@ -254,7 +254,7 @@ public class PtvServiceChannelEntityUpdater extends EntityUpdater {
     updateParentPageIds(parentPageIds);
   }
 
-  private void updatePrintableFormServiceChannel(Long orderIndex, V5VmOpenApiPrintableFormChannel ptvPrintableFormServiceChannel) {
+  private void updatePrintableFormServiceChannel(Long orderIndex, V6VmOpenApiPrintableFormChannel ptvPrintableFormServiceChannel) {
     if (ptvPrintableFormServiceChannel == null) {
       return;
     }
@@ -280,7 +280,7 @@ public class PtvServiceChannelEntityUpdater extends EntityUpdater {
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(printableFormServiceChannel));
   }
   
-  private void updatePhoneServiceChannel(Long orderIndex, V5VmOpenApiPhoneChannel ptvPhoneServiceChannel) {
+  private void updatePhoneServiceChannel(Long orderIndex, V6VmOpenApiPhoneChannel ptvPhoneServiceChannel) {
     if (ptvPhoneServiceChannel == null) {
       return;
     }
@@ -306,7 +306,7 @@ public class PtvServiceChannelEntityUpdater extends EntityUpdater {
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(phoneServiceChannel));
   }
   
-  private void updateWebPageServiceChannel(Long orderIndex, V4VmOpenApiWebPageChannel ptvWebPageServiceChannel) {
+  private void updateWebPageServiceChannel(Long orderIndex, V6VmOpenApiWebPageChannel ptvWebPageServiceChannel) {
     if (ptvWebPageServiceChannel == null) {
       return;
     }

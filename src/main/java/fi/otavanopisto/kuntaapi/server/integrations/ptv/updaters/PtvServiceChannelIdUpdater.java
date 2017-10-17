@@ -35,7 +35,7 @@ public class PtvServiceChannelIdUpdater extends AbstractPtvServiceChannelIdUpdat
   
   @Override
   public ApiResponse<V3VmOpenApiGuidPage> getPage() {
-    return ptvApi.getServiceChannelApi().apiV5ServiceChannelGet(null, page);
+    return ptvApi.getServiceChannelApi().apiV6ServiceChannelGet(null, page, false);
   }
 
   @Override

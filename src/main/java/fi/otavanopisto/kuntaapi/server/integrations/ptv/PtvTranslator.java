@@ -6,6 +6,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.enterprise.context.ApplicationScoped;
 
@@ -43,18 +44,18 @@ import fi.metatavu.ptv.client.model.V4VmOpenApiLaw;
 import fi.metatavu.ptv.client.model.V4VmOpenApiPhone;
 import fi.metatavu.ptv.client.model.V4VmOpenApiPhoneWithType;
 import fi.metatavu.ptv.client.model.V4VmOpenApiServiceHour;
-import fi.metatavu.ptv.client.model.V4VmOpenApiServiceOrganization;
+import fi.metatavu.ptv.client.model.V6VmOpenApiServiceOrganization;
 import fi.metatavu.ptv.client.model.V4VmOpenApiWebPage;
-import fi.metatavu.ptv.client.model.V4VmOpenApiWebPageChannel;
+import fi.metatavu.ptv.client.model.V6VmOpenApiWebPageChannel;
 import fi.metatavu.ptv.client.model.V5VmOpenApiAddressWithCoordinates;
 import fi.metatavu.ptv.client.model.V5VmOpenApiAddressWithTypeAndCoordinates;
-import fi.metatavu.ptv.client.model.V5VmOpenApiElectronicChannel;
-import fi.metatavu.ptv.client.model.V5VmOpenApiOrganization;
-import fi.metatavu.ptv.client.model.V5VmOpenApiPhoneChannel;
+import fi.metatavu.ptv.client.model.V6VmOpenApiElectronicChannel;
+import fi.metatavu.ptv.client.model.V6VmOpenApiOrganization;
+import fi.metatavu.ptv.client.model.V6VmOpenApiPhoneChannel;
 import fi.metatavu.ptv.client.model.V5VmOpenApiPhoneChannelPhone;
-import fi.metatavu.ptv.client.model.V5VmOpenApiPrintableFormChannel;
-import fi.metatavu.ptv.client.model.V5VmOpenApiService;
-import fi.metatavu.ptv.client.model.V5VmOpenApiServiceLocationChannel;
+import fi.metatavu.ptv.client.model.V6VmOpenApiPrintableFormChannel;
+import fi.metatavu.ptv.client.model.V6VmOpenApiService;
+import fi.metatavu.ptv.client.model.V6VmOpenApiServiceLocationChannel;
 import fi.metatavu.ptv.client.model.VmOpenApiArea;
 import fi.metatavu.ptv.client.model.VmOpenApiAttachmentWithType;
 import fi.metatavu.ptv.client.model.VmOpenApiLanguageItem;
@@ -86,7 +87,7 @@ public class PtvTranslator {
     "Saturday"
   };
   
-  public ElectronicServiceChannel translateElectronicServiceChannel(ElectronicServiceChannelId kuntaApiElectronicServiceChannelId, OrganizationId kuntaApiOrganizationId, V5VmOpenApiElectronicChannel ptvElectronicServiceChannel) {
+  public ElectronicServiceChannel translateElectronicServiceChannel(ElectronicServiceChannelId kuntaApiElectronicServiceChannelId, OrganizationId kuntaApiOrganizationId, V6VmOpenApiElectronicChannel ptvElectronicServiceChannel) {
     ElectronicServiceChannel result = new ElectronicServiceChannel();
     
     result.setAttachments(translateAttachments(ptvElectronicServiceChannel.getAttachments()));
@@ -110,7 +111,7 @@ public class PtvTranslator {
 
   public ServiceLocationServiceChannel translateServiceLocationServiceChannel(
       ServiceLocationServiceChannelId kuntaApiServiceLocationServiceChannelId, OrganizationId kuntaApiOrganizationId,
-      V5VmOpenApiServiceLocationChannel ptvServiceLocationServiceChannel) {
+      V6VmOpenApiServiceLocationChannel ptvServiceLocationServiceChannel) {
     
     ServiceLocationServiceChannel result = new ServiceLocationServiceChannel();
     result.setAddresses(translateAddresses(ptvServiceLocationServiceChannel.getAddresses()));
@@ -121,7 +122,7 @@ public class PtvTranslator {
     result.setNames(translateLocalizedValues(ptvServiceLocationServiceChannel.getServiceChannelNames()));
     result.setOrganizationId(kuntaApiOrganizationId.getId());
     result.setPhoneNumbers(translatePhonesWithTypes(ptvServiceLocationServiceChannel.getPhoneNumbers()));    
-    result.setPhoneServiceCharge(ptvServiceLocationServiceChannel.getPhoneServiceCharge());
+    result.setPhoneServiceCharge(null);
     result.setPublishingStatus(ptvServiceLocationServiceChannel.getPublishingStatus());
     result.setAreas(translateAreas(ptvServiceLocationServiceChannel.getAreas()));
     result.setAreaType(ptvServiceLocationServiceChannel.getAreaType());
@@ -133,7 +134,7 @@ public class PtvTranslator {
 
   public PrintableFormServiceChannel translatePrintableFormServiceChannel(
       PrintableFormServiceChannelId kuntaApiPrintableFormServiceChannelId, OrganizationId kuntaApiOrganizationId,
-      V5VmOpenApiPrintableFormChannel ptvPrintableFormServiceChannel) {
+      V6VmOpenApiPrintableFormChannel ptvPrintableFormServiceChannel) {
     
     PrintableFormServiceChannel result = new PrintableFormServiceChannel();
     result.setAttachments(translateAttachments(ptvPrintableFormServiceChannel.getAttachments()));
@@ -156,7 +157,7 @@ public class PtvTranslator {
   }
 
   public PhoneServiceChannel translatePhoneServiceChannel(PhoneServiceChannelId kuntaApiPhoneServiceChannelId,
-      OrganizationId kuntaApiOrganizationId, V5VmOpenApiPhoneChannel ptvPhoneServiceChannel) {
+      OrganizationId kuntaApiOrganizationId, V6VmOpenApiPhoneChannel ptvPhoneServiceChannel) {
     
     PhoneServiceChannel result = new PhoneServiceChannel();
     result.setDescriptions(translateLocalizedValues(ptvPhoneServiceChannel.getServiceChannelDescriptions()));
@@ -174,7 +175,7 @@ public class PtvTranslator {
   }
 
   public WebPageServiceChannel translateWebPageServiceChannel(WebPageServiceChannelId kuntaApiWebPageServiceChannelId,
-      OrganizationId kuntaApiOrganizationId, V4VmOpenApiWebPageChannel ptvWebPageServiceChannel) {
+      OrganizationId kuntaApiOrganizationId, V6VmOpenApiWebPageChannel ptvWebPageServiceChannel) {
     
     WebPageServiceChannel result = new WebPageServiceChannel();
     result.setDescriptions(translateLocalizedValues(ptvWebPageServiceChannel.getServiceChannelDescriptions()));
@@ -192,7 +193,7 @@ public class PtvTranslator {
     return result;
   }
 
-  public Organization translateOrganization(OrganizationId kuntaApiOrganizationId, OrganizationId kuntaApiParentOrganizationId, List<OrganizationService> organizationServices, V5VmOpenApiOrganization ptvOrganization) {
+  public Organization translateOrganization(OrganizationId kuntaApiOrganizationId, OrganizationId kuntaApiParentOrganizationId, List<OrganizationService> organizationServices, V6VmOpenApiOrganization ptvOrganization) {
     Organization organization = new Organization();
     
     organization.setAddresses(translateAddresses(ptvOrganization.getAddresses()));
@@ -227,7 +228,7 @@ public class PtvTranslator {
       List<ServiceLocationServiceChannelId> kuntaApiServiceLocationServiceChannelIds, 
       List<WebPageServiceChannelId> kuntaApiWebPageServiceChannelIds, 
       List<ServiceOrganization> serviceOrganizations,
-      V5VmOpenApiService ptvService) {
+      V6VmOpenApiService ptvService) {
     
     if (ptvService == null) {
       return null;
@@ -263,7 +264,7 @@ public class PtvTranslator {
     return result;
   }
   
-  public ServiceOrganization translateServiceOrganization(OrganizationId kuntaApiOrganizationId, V4VmOpenApiServiceOrganization ptvServiceOrganization) {
+  public ServiceOrganization translateServiceOrganization(OrganizationId kuntaApiOrganizationId, V6VmOpenApiServiceOrganization ptvServiceOrganization) {
     if (ptvServiceOrganization == null) {
       return null;
     }
@@ -273,7 +274,7 @@ public class PtvTranslator {
     result.setOrganizationId(kuntaApiOrganizationId.getId());
     result.setProvisionType(ptvServiceOrganization.getProvisionType());
     result.setRoleType(ptvServiceOrganization.getRoleType());
-    result.setWebPages(translateWebPages(ptvServiceOrganization.getWebPages()));
+    result.setWebPages(translateWebPages(Collections.emptyList()));
     
     return result;
   }
@@ -306,7 +307,7 @@ public class PtvTranslator {
       ontologyItem.setCode(ptvFintoItem.getCode());
       ontologyItem.setName(translateLocalizedItems(ptvFintoItem.getName()));
       ontologyItem.setOntologyType(ptvFintoItem.getOntologyType());
-      ontologyItem.setParentId(ptvFintoItem.getParentId());
+      ontologyItem.setParentId(translateUUID(ptvFintoItem.getParentId()));
       ontologyItem.setParentUri(ptvFintoItem.getParentUri());
       ontologyItem.setUri(ptvFintoItem.getUri());
       result.add(ontologyItem);
@@ -923,4 +924,17 @@ public class PtvTranslator {
     
   }
 
+  /**
+   * Translate UUID into string
+   * 
+   * @param uuid UUID
+   * @return string
+   */
+  private String translateUUID(UUID uuid) {
+    if (uuid == null) {
+      return null;
+    }
+    
+    return uuid.toString();
+  }
 }

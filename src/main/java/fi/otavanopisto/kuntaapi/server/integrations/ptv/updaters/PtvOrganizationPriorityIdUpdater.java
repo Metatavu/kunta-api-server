@@ -46,7 +46,7 @@ public class PtvOrganizationPriorityIdUpdater extends AbstractPtvOrganizationIdU
   @Override
   public ApiResponse<V3VmOpenApiGuidPage> getPage() {
     currentUpdateStart = OffsetDateTime.now();
-    return ptvApi.getOrganizationApi().apiV5OrganizationGet(lastUpdate.minusMinutes(UPDATE_SLACK_MINUTE), null);
+    return ptvApi.getOrganizationApi().apiV6OrganizationGet(lastUpdate.minusMinutes(UPDATE_SLACK_MINUTE), null, false);
   }
 
   @Override

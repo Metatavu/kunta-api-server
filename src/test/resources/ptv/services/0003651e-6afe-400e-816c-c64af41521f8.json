@@ -177,7 +177,10 @@
   ],
   "serviceChannels":[
     {
-      "serviceChannelId":"02256ce8-2879-47e4-a6f5-339872f0f758",
+      "serviceChannel": {
+        "id": "02256ce8-2879-47e4-a6f5-339872f0f758",
+        "name": "Ohjeita päivähoitosijoitusta ja maksua varten"
+      },
       "description":[
         {
           "language":"fi",
@@ -196,7 +199,10 @@
       ]
     },
     {
-      "serviceChannelId":"108f0c61-bfba-4dd7-8f02-deb4e77c52d0",
+      "serviceChannel": {
+        "id": "108f0c61-bfba-4dd7-8f02-deb4e77c52d0",
+        "name": "Forssan kaupungin puhelinvaihde"
+      },
       "description":[
         {
           "language":"fi",
@@ -215,7 +221,10 @@
       ]
     },
     {
-      "serviceChannelId":"1a17f994-b924-46ae-8708-c09938125119",
+      "serviceChannel": {
+        "id": "1a17f994-b924-46ae-8708-c09938125119",
+        "name": "Vieraskuntalaishakemus"
+      },
       "description":[
         {
           "language":"fi",
@@ -239,23 +248,23 @@
       "additionalInformation":[
 
       ],
-      "organizationId":"ae2682d3-6238-4019-b34f-b078c5f9bb50",
+      "organization": {
+        "id": "ae2682d3-6238-4019-b34f-b078c5f9bb50",
+        "name": "Mikkelin kaupunki"
+      },
       "roleType":"Responsible",
-      "provisionType":null,
-      "webPages":[
-
-      ]
+      "provisionType":null
     },
     {
       "additionalInformation":[
 
       ],
-      "organizationId":"ae2682d3-6238-4019-b34f-b078c5f9bb50",
+      "organization": {
+        "id": "ae2682d3-6238-4019-b34f-b078c5f9bb50",
+        "name": "Mikkelin kaupunki"
+      },
       "roleType":"Producer",
-      "provisionType":"SelfProduced",
-      "webPages":[
-
-      ]
+      "provisionType":"SelfProduced"
     }
   ],
   "publishingStatus":"Published"

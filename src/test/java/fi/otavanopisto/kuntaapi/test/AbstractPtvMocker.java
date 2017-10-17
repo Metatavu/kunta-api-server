@@ -23,12 +23,14 @@ import java.util.EnumMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 import java.util.Map.Entry;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.github.tomakehurst.wiremock.client.MappingBuilder;
 import com.github.tomakehurst.wiremock.client.ResponseDefinitionBuilder;
@@ -158,7 +160,7 @@ public abstract class AbstractPtvMocker<R> {
     
     for (MockedResource<String, R> mockedResource : getMockedResources(status)) {
       VmOpenApiItem item = new VmOpenApiItem();
-      item.setId(mockedResource.getId());
+      item.setId(UUID.fromString(mockedResource.getId()));
       item.setName(mockedResource.getId());
       result.addItem(item);
     }
@@ -321,9 +323,8 @@ public abstract class AbstractPtvMocker<R> {
   }
   
   private R readJSONFile(String id, String file, Class <R> type) {
-    ObjectMapper objectMapper = new ObjectMapper();
-    objectMapper.registerModule(new JavaTimeModule());
-    
+    ObjectMapper objectMapper = getObjectMapper();
+
     try (InputStream stream = getClass().getClassLoader().getResourceAsStream(file)) {
       return objectMapper.readValue(stream, type);
     } catch (IOException e) {
@@ -440,13 +441,18 @@ public abstract class AbstractPtvMocker<R> {
   
   private String toJSON(Object object) {
     try {
-      ObjectMapper objectMapper = new ObjectMapper();
-      objectMapper.registerModule(new JavaTimeModule());
-      return objectMapper.writeValueAsString(object);
+      return getObjectMapper().writeValueAsString(object);
     } catch (JsonProcessingException e) {
       fail(e.getMessage());
       return null;
     }
+  }
+
+  private ObjectMapper getObjectMapper() {
+    ObjectMapper objectMapper = new ObjectMapper();
+    objectMapper.registerModule(new JavaTimeModule());
+    objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
+    return objectMapper;
   }
   
   public class GuidPage {
