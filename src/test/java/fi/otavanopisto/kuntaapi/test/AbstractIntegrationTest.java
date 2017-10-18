@@ -218,18 +218,39 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
       .statusCode(200);
   }
   
+  /**
+   * Returns REST assurred request specification autheticated with test client with unrestricted access to API
+   * 
+   * @return REST assurred request specification autheticated with test client with unrestricted access to API
+   */
   protected RequestSpecification givenUnrestricted() {
     return givenAuthenticated(AccessType.UNRESTRICTED);
   }
 
+  /**
+   * Returns REST assurred request specification autheticated with test client with read only access to API
+   * 
+   * @return REST assurred request specification autheticated with test client with read only access to API
+   */
   protected RequestSpecification givenReadonly() {
-    return givenAuthenticated(AccessType.UNRESTRICTED);
+    return givenAuthenticated(AccessType.READ_ONLY);
   }
 
+  /**
+   * Returns REST assurred request specification autheticated with test client with read write access to API
+   * 
+   * @return REST assurred request specification autheticated with test client with read write access to API
+   */
   protected RequestSpecification givenReadWrite() {
-    return givenAuthenticated(AccessType.UNRESTRICTED);
+    return givenAuthenticated(AccessType.READ_WRITE);
   }
   
+  /**
+   * Returns REST assurred request specification autheticated with test client of given access type
+   * 
+   * @param accessType access type
+   * @return REST assurred request specification autheticated with test client of given access type
+   */
   protected RequestSpecification givenAuthenticated(AccessType accessType) {
     return given()
       .baseUri(getApiBasePath())
