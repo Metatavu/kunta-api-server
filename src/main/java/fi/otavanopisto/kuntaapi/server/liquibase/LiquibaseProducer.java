@@ -1,11 +1,16 @@
 package fi.otavanopisto.kuntaapi.server.liquibase;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Logger;
 
 import javax.annotation.Resource;
 import javax.enterprise.context.Dependent;
 import javax.enterprise.inject.Produces;
 import javax.sql.DataSource;
+
+import org.apache.commons.lang3.StringUtils;
 
 import liquibase.integration.cdi.CDILiquibaseConfig;
 import liquibase.integration.cdi.annotations.LiquibaseType;
@@ -15,14 +20,30 @@ import liquibase.resource.ResourceAccessor;
 @Dependent
 public class LiquibaseProducer {
   
+  private static Logger logger = Logger.getLogger(LiquibaseProducer.class.getName());
+  
   @Resource (lookup = "java:jboss/datasources/kuntaapi")
   private DataSource dataSource;
   
   @Produces
   @LiquibaseType
   public CDILiquibaseConfig createConfig() {
+    List<String> contextList = new ArrayList<>();
+    
+    if ("TEST".equals(System.getProperty("runmode"))) {
+      contextList.add("test");
+    } else {
+      contextList.add("production");
+    }
+    
+    String contexts = StringUtils.join(contextList, ',');
+    
     CDILiquibaseConfig config = new CDILiquibaseConfig();
     config.setChangeLog("fi/otavanopisto/kuntaapi/server/liquibase/changelog.xml");
+    config.setContexts(contexts);
+    
+    logger.info(() -> String.format("Using contexts %s", contexts));
+    
     return config;
   }
   

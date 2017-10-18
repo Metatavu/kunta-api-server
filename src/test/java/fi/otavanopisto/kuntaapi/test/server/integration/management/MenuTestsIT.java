@@ -1,6 +1,5 @@
 package fi.otavanopisto.kuntaapi.test.server.integration.management;
 
-import static com.jayway.restassured.RestAssured.given;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.hamcrest.core.IsNull.nullValue;
@@ -61,8 +60,7 @@ public class MenuTestsIT extends AbstractIntegrationTest {
   @Test
   public void testFindMenus() {
     String organizationId = getOrganizationId(0);
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/menus/{menuId}", organizationId, getMenuId(organizationId, 0))
       .then()
@@ -74,8 +72,7 @@ public class MenuTestsIT extends AbstractIntegrationTest {
   
   @Test
   public void testListMenusBySlug() {
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/menus?slug=menu-1", getOrganizationId(0))
       .then()
@@ -85,8 +82,7 @@ public class MenuTestsIT extends AbstractIntegrationTest {
       .body("id[0]", notNullValue())
       .body("slug[0]", is("menu-1"));
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/menus?slug=non-existing", getOrganizationId(0))
       .then()
@@ -97,8 +93,7 @@ public class MenuTestsIT extends AbstractIntegrationTest {
   
   @Test
   public void testListMenus() {
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/menus", getOrganizationId(0))
       .then()
@@ -133,8 +128,7 @@ public class MenuTestsIT extends AbstractIntegrationTest {
     String menuId = getMenuId(organizationId, 0);
     String menuItemId = getMenuItemId(organizationId, menuId, 0);
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/menus/{menuId}/items/{menuItemId}", organizationId, menuId, menuItemId)
       .then()
@@ -154,8 +148,7 @@ public class MenuTestsIT extends AbstractIntegrationTest {
     String organizationId = getOrganizationId(0);
     String menuId = getMenuId(organizationId, 0);
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/menus/{menuId}/items", organizationId, menuId)
       .then()

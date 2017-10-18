@@ -1,6 +1,5 @@
 package fi.otavanopisto.kuntaapi.test.server.integration.management;
 
-import static com.jayway.restassured.RestAssured.given;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.hamcrest.core.IsNull.nullValue;
@@ -58,8 +57,7 @@ public class BannerTestsIT extends AbstractIntegrationTest {
   @Test
   public void testFindBanners() {
     String organizationId = getOrganizationId(0);
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/banners/{bannerId}", organizationId, getBannerId(organizationId, 0))
       .then()
@@ -75,8 +73,7 @@ public class BannerTestsIT extends AbstractIntegrationTest {
   
   @Test
   public void testListBanners() {
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/banners", getOrganizationId(0))
       .then()
@@ -94,8 +91,7 @@ public class BannerTestsIT extends AbstractIntegrationTest {
   @Test
   public void testBannersNoTitle() {
     String organizationId = getOrganizationId(0);
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/banners/{bannerId}", organizationId, getBannerId(organizationId, 1))
       .then()
@@ -133,8 +129,7 @@ public class BannerTestsIT extends AbstractIntegrationTest {
     String bannerId = getBannerId(organizationId, 0);
     String imageId = getBannerImageId(organizationId, bannerId, 0);
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{ORGANIZATIONID}/banners/{BANNERID}/images/{IMAGEID}", organizationId, bannerId, imageId)
       .then()
@@ -169,8 +164,7 @@ public class BannerTestsIT extends AbstractIntegrationTest {
     String bannerId = getBannerId(organizationId, 0);
     String imageId = getBannerImageId(organizationId, bannerId, 0);
 
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{ORGANIZATIONID}/banners/{EVENTID}/images/{IMAGEID}/data", organizationId, bannerId, imageId)
       .then()
@@ -186,8 +180,7 @@ public class BannerTestsIT extends AbstractIntegrationTest {
     String bannerId = getBannerId(organizationId, 0);
     String imageId = getBannerImageId(organizationId, bannerId, 0);
 
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{ORGANIZATIONID}/banners/{EVENTID}/images/{IMAGEID}/data?size=100", organizationId, bannerId, imageId)
       .then()

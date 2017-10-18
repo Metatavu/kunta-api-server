@@ -1,6 +1,5 @@
 package fi.otavanopisto.kuntaapi.test.server.integration.gtfs;
 
-import static com.jayway.restassured.RestAssured.given;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.hamcrest.Matchers.greaterThanOrEqualTo;
@@ -54,8 +53,7 @@ public class StopTimeTestsIT extends AbstractIntegrationTest {
   public void testListStopTimes() {
     String organizationId = getOrganizationId(0);
     
-    Response response = given() 
-      .baseUri(getApiBasePath())
+    Response response = givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/transportStopTimes", organizationId);
     
@@ -82,8 +80,7 @@ public class StopTimeTestsIT extends AbstractIntegrationTest {
     String organizationId = getOrganizationId(0);
     int departureTime = getSecondsFromMidnight("15:34:00");
     
-    Response response = given() 
-      .baseUri(getApiBasePath())
+    Response response = givenReadonly()
       .contentType(ContentType.JSON)
       .get(String.format("/organizations/{organizationId}/transportStopTimes?departureTime=%d", departureTime), organizationId);
     
@@ -111,8 +108,7 @@ public class StopTimeTestsIT extends AbstractIntegrationTest {
     
     String stopId = getOrganizationStopId(organizationId, 0);
     
-    Response response = given() 
-      .baseUri(getApiBasePath())
+    Response response = givenReadonly()
       .contentType(ContentType.JSON)
       .get(String.format("/organizations/{organizationId}/transportStopTimes?stopId=%s", stopId), organizationId);
     
@@ -137,8 +133,7 @@ public class StopTimeTestsIT extends AbstractIntegrationTest {
   public void testListStopTimesSortByDepartureTime() {
     String organizationId = getOrganizationId(0);
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/transportStopTimes?sortBy=DEPARTURE_TIME", organizationId)
       .then()
@@ -147,8 +142,7 @@ public class StopTimeTestsIT extends AbstractIntegrationTest {
       .body("id.size()", is(19))
       .body("departureTime[1]", is(getSecondsFromMidnight("15:06:00"))); 
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/transportStopTimes?sortBy=DEPARTURE_TIME&sortDir=DESC", organizationId)
       .then()
@@ -162,8 +156,7 @@ public class StopTimeTestsIT extends AbstractIntegrationTest {
   public void testFindStopTime() {
     String organizationId = getOrganizationId(0);
     
-    Response response = given() 
-      .baseUri(getApiBasePath())
+    Response response = givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/transportStopTimes/{stopTimeId}", organizationId, getOrganizationStopTimeId(organizationId, 2));
     

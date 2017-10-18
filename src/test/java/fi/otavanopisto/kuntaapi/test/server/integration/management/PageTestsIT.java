@@ -1,6 +1,5 @@
 package fi.otavanopisto.kuntaapi.test.server.integration.management;
 
-import static com.jayway.restassured.RestAssured.given;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.hamcrest.core.IsNull.nullValue;
@@ -105,8 +104,7 @@ public class PageTestsIT extends AbstractIntegrationTest {
     
     assertEquals(0, countApiList(firstParentPath));
     
-    given()
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/pages/{pageId}", organizationId, pageId)
       .then()
@@ -118,8 +116,7 @@ public class PageTestsIT extends AbstractIntegrationTest {
     
     waitApiListCount(firstParentPath, 1);
     
-    given()
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/pages/{pageId}", organizationId, pageId)
       .then()
@@ -132,8 +129,7 @@ public class PageTestsIT extends AbstractIntegrationTest {
     waitApiListCount(firstParentPath, 0);
     waitApiListCount(newParentPath, 1);
     
-    given()
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/pages/{pageId}", organizationId, pageId)
       .then()
@@ -145,8 +141,7 @@ public class PageTestsIT extends AbstractIntegrationTest {
   @Test
   public void testFindPages() {
     String organizationId = getOrganizationId(0);
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/pages/{pageId}", organizationId, getPageId(organizationId, 0))
       .then()
@@ -166,8 +161,7 @@ public class PageTestsIT extends AbstractIntegrationTest {
     // Zeus shoud be listed before abraham and bertha because it's menu_order is set to -100 
 
     String organizationId = getOrganizationId(0);
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/pages", organizationId)
       .then()
@@ -187,8 +181,7 @@ public class PageTestsIT extends AbstractIntegrationTest {
     String organizationId = getOrganizationId(0);
     String search = "(search*)|(Bertha)";
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get(String.format("/organizations/{organizationId}/pages?search=%s", search), organizationId)
       .then()
@@ -198,8 +191,7 @@ public class PageTestsIT extends AbstractIntegrationTest {
       .body("slug[0]", is("abraham"))
       .body("slug[1]", is("bertha"));
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get(String.format("/organizations/{organizationId}/pages?search=%s&sortBy=SCORE&sortDir=DESC", search), organizationId)
       .then()
@@ -209,8 +201,7 @@ public class PageTestsIT extends AbstractIntegrationTest {
       .body("slug[0]", is("bertha"))
       .body("slug[1]", is("abraham"));
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get(String.format("/organizations/{organizationId}/pages?search=%s&sortBy=SCORE&sortDir=ASC", search), organizationId)
       .then()
@@ -223,8 +214,7 @@ public class PageTestsIT extends AbstractIntegrationTest {
 
   @Test
   public void testListPagesByPath() {
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/pages?path=/bertha", getOrganizationId(0))
       .then()
@@ -234,8 +224,7 @@ public class PageTestsIT extends AbstractIntegrationTest {
       .body("id[0]", notNullValue())
       .body("slug[0]", is("bertha")); 
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/pages?path=/non-existing", getOrganizationId(0))
       .then()
@@ -268,8 +257,7 @@ public class PageTestsIT extends AbstractIntegrationTest {
     String pageId = getPageId(organizationId, 0);
     String imageId = getPageImageId(organizationId, pageId, 0);
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{ORGANIZATIONID}/pages/{PAGEID}/images/{IMAGEID}", organizationId, pageId, imageId)
       .then()
@@ -286,8 +274,7 @@ public class PageTestsIT extends AbstractIntegrationTest {
     String featuredImageId = getPageImageId(organizationId, pageId, 0);
     String bannerImageId = getPageImageId(organizationId, pageId, 1);
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{ORGANIZATIONID}/pages/{PAGEID}/images/{IMAGEID}", organizationId, pageId, featuredImageId)
       .then()
@@ -296,8 +283,7 @@ public class PageTestsIT extends AbstractIntegrationTest {
       .body("id", is(featuredImageId))
       .body("type", is("featured"));
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{ORGANIZATIONID}/pages/{PAGEID}/images/{IMAGEID}", organizationId, pageId, bannerImageId)
       .then()
@@ -314,8 +300,7 @@ public class PageTestsIT extends AbstractIntegrationTest {
     
     waitApiListCount(String.format("/organizations/%s/pages/%s/images", organizationId, pageId), 2);
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{ORGANIZATIONID}/pages/{PAGEID}/images?type=banner", organizationId, pageId)
       .then()
@@ -324,8 +309,7 @@ public class PageTestsIT extends AbstractIntegrationTest {
       .body("id.size()", is(1))
       .body("type[0]", is("banner"));
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{ORGANIZATIONID}/pages/{PAGEID}/images?type=featured", organizationId, pageId)
       .then()
@@ -334,8 +318,7 @@ public class PageTestsIT extends AbstractIntegrationTest {
       .body("id.size()", is(1))
       .body("type[0]", is("featured"));
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{ORGANIZATIONID}/pages/{PAGEID}/images?type=invalid", organizationId, pageId)
       .then()
@@ -361,8 +344,7 @@ public class PageTestsIT extends AbstractIntegrationTest {
     assertEquals(ManagementConsts.ATTACHMENT_TYPE_PAGE_CONTENT_IMAGE, pageImages.get(0).attr("data-image-type"));
     assertEquals("http://example.com/image.jpg", pageImages.get(1).attr("src"));
       
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{ORGANIZATIONID}/pages/{PAGEID}/images", organizationId, pageId)
       .then()
@@ -372,8 +354,7 @@ public class PageTestsIT extends AbstractIntegrationTest {
       .body("contentType[0]", is(IMAGE_JPEG))
       .body("type[0]", is("content-image"));
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{ORGANIZATIONID}/pages/{PAGEID}/images/{IMAGEID}", organizationId, pageId, imageId)
       .then()
@@ -407,8 +388,7 @@ public class PageTestsIT extends AbstractIntegrationTest {
     String pageId = getPageId(organizationId, 0);
     String imageId = getPageImageId(organizationId, pageId, 0);
 
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{ORGANIZATIONID}/pages/{PAGEID}/images/{IMAGEID}/data", organizationId, pageId, imageId)
       .then()
@@ -424,8 +404,7 @@ public class PageTestsIT extends AbstractIntegrationTest {
     String pageId = getPageId(organizationId, 0);
     String imageId = getPageImageId(organizationId, pageId, 0);
 
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{ORGANIZATIONID}/pages/{EVENTID}/images/{IMAGEID}/data?size=100", organizationId, pageId, imageId)
       .then()

@@ -1,6 +1,5 @@
 package fi.otavanopisto.kuntaapi.test.server.integration.gtfs;
 
-import static com.jayway.restassured.RestAssured.given;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.Assert.assertEquals;
@@ -51,8 +50,7 @@ public class ScheduleTestsIT extends AbstractIntegrationTest{
   
   @Test
   public void testListSchedules() {
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/transportSchedules", getOrganizationId(0))
       .then()
@@ -73,8 +71,7 @@ public class ScheduleTestsIT extends AbstractIntegrationTest{
   @Test
   public void testFindSchedule() {
     String organizationId = getOrganizationId(0);
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/transportSchedules/{scheduleId}", organizationId, getOrganizationScheduleId(organizationId, 10))
       .then()

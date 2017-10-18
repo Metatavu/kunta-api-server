@@ -15,11 +15,13 @@ import org.junit.After;
 
 import com.jayway.restassured.http.ContentType;
 import com.jayway.restassured.path.json.exception.JsonPathException;
+import com.jayway.restassured.specification.RequestSpecification;
 
 import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
 import fi.metatavu.kuntaapi.server.rest.model.Page;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.PtvConsts;
+import fi.otavanopisto.kuntaapi.server.persistence.model.clients.AccessType;
 
 /**
  * Abstract base class for integration tests
@@ -182,18 +184,60 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   public PtvOrganizationMocker getPtvOrganizationMocker() {
     return ptvOrganizationMocker;
   }
+
+  /**
+   * Returns test client id for given access type
+   * 
+   * @param accessType access type
+   * @return clientId
+   */
+  protected String getClientId(AccessType accessType) {
+    return String.format("%s_ID", accessType.name());
+  }
+
+
+  /**
+   * Returns test client secret for given access type
+   * 
+   * @param accessType access type
+   * @return clientSecret
+   */
+  protected String getClientSecret(AccessType accessType) {
+    return String.format("%s_SECRET", accessType.name());
+  }
   
+  /**
+   * Adds a log entry into the server log
+   * 
+   * @param text log entry text
+   */
   protected void addServerLogEntry(String text) {
-    given()
-      .baseUri(getApiBasePath())
+    givenUnrestricted()
       .get(String.format("/system/log?text=%s", text))
       .then()
       .statusCode(200);
   }
+  
+  protected RequestSpecification givenUnrestricted() {
+    return givenAuthenticated(AccessType.UNRESTRICTED);
+  }
+
+  protected RequestSpecification givenReadonly() {
+    return givenAuthenticated(AccessType.UNRESTRICTED);
+  }
+
+  protected RequestSpecification givenReadWrite() {
+    return givenAuthenticated(AccessType.UNRESTRICTED);
+  }
+  
+  protected RequestSpecification givenAuthenticated(AccessType accessType) {
+    return given()
+      .baseUri(getApiBasePath())
+      .auth().preemptive().basic(getClientId(accessType), getClientSecret(accessType));
+  }
 
   protected void flushCache() {
-    given()
-      .baseUri(getApiBasePath())
+    givenUnrestricted()
       .get("/system/jpa/cache/flush")
       .then()
       .statusCode(200);
@@ -202,7 +246,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   protected void clearTasks() {
     executeDelete("delete from Task");
   }
-
+  
   @SuppressWarnings ({"squid:S1166", "squid:S00108", "squid:S2925", "squid:S106"})
   protected void waitApiListCount(String path, int count) throws InterruptedException {
     int counter = 0;
@@ -231,8 +275,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   }
 
   protected void assertFound(String url) {
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get(url)
       .then()
@@ -241,8 +284,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   }
 
   protected void assertNotFound(String url) {
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get(url)
       .then()
@@ -251,68 +293,61 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   }
   
   protected String getOrganizationAgencyId(String organizationId, int index) {
-    return given() 
-        .baseUri(getApiBasePath())
-        .contentType(ContentType.JSON)
-        .get(String.format("/organizations/%s/transportAgencies", organizationId))
-        .body()
-        .jsonPath()
-        .getString(String.format("id[%d]", index));
+    return givenReadonly()
+      .contentType(ContentType.JSON)
+      .get(String.format("/organizations/%s/transportAgencies", organizationId))
+      .body()
+      .jsonPath()
+      .getString(String.format("id[%d]", index));
   }
   
   protected String getOrganizationScheduleId(String organizationId, int index) {
-    return given() 
-        .baseUri(getApiBasePath())
-        .contentType(ContentType.JSON)
-        .get(String.format("/organizations/%s/transportSchedules", organizationId))
-        .body()
-        .jsonPath()
-        .getString(String.format("id[%d]", index));
+    return givenReadonly()
+      .contentType(ContentType.JSON)
+      .get(String.format("/organizations/%s/transportSchedules", organizationId))
+      .body()
+      .jsonPath()
+      .getString(String.format("id[%d]", index));
   }
   
   protected String getOrganizationRouteId(String organizationId, int index) {
-    return given() 
-        .baseUri(getApiBasePath())
-        .contentType(ContentType.JSON)
-        .get(String.format("/organizations/%s/transportRoutes", organizationId))
-        .body()
-        .jsonPath()
-        .getString(String.format("id[%d]", index));
+    return givenReadonly()
+      .contentType(ContentType.JSON)
+      .get(String.format("/organizations/%s/transportRoutes", organizationId))
+      .body()
+      .jsonPath()
+      .getString(String.format("id[%d]", index));
   }
   
   protected String getOrganizationStopId(String organizationId, int index) {
-    return given() 
-        .baseUri(getApiBasePath())
-        .contentType(ContentType.JSON)
-        .get(String.format("/organizations/%s/transportStops", organizationId))
-        .body()
-        .jsonPath()
-        .getString(String.format("id[%d]", index));
+    return givenReadonly()
+      .contentType(ContentType.JSON)
+      .get(String.format("/organizations/%s/transportStops", organizationId))
+      .body()
+      .jsonPath()
+      .getString(String.format("id[%d]", index));
   }
   
   protected String getOrganizationStopTimeId(String organizationId, int index) {
-    return given() 
-        .baseUri(getApiBasePath())
-        .contentType(ContentType.JSON)
-        .get(String.format("/organizations/%s/transportStopTimes", organizationId))
-        .body()
-        .jsonPath()
-        .getString(String.format("id[%d]", index));
+    return givenReadonly()
+      .contentType(ContentType.JSON)
+      .get(String.format("/organizations/%s/transportStopTimes", organizationId))
+      .body()
+      .jsonPath()
+      .getString(String.format("id[%d]", index));
   }
   
   protected String getOrganizationTripId(String organizationId, int index) {
-    return given() 
-        .baseUri(getApiBasePath())
-        .contentType(ContentType.JSON)
-        .get(String.format("/organizations/%s/transportTrips", organizationId))
-        .body()
-        .jsonPath()
-        .getString(String.format("id[%d]", index));
+    return givenReadonly()
+      .contentType(ContentType.JSON)
+      .get(String.format("/organizations/%s/transportTrips", organizationId))
+      .body()
+      .jsonPath()
+      .getString(String.format("id[%d]", index));
   }
   
   protected String getOrganizationServiceId(String organizationId, int index) {
-    return given() 
-        .baseUri(getApiBasePath())
+    return givenReadonly()
         .contentType(ContentType.JSON)
         .get(String.format("/organizations/%s/organizationServices", organizationId))
         .body()
@@ -321,8 +356,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   }
   
   protected String getOrganizationJobId(String organizationId, int index) {
-    return given() 
-        .baseUri(getApiBasePath())
+    return givenReadonly()
         .contentType(ContentType.JSON)
         .get(String.format("/organizations/%s/jobs", organizationId))
         .body()
@@ -331,8 +365,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   }
   
   protected String getOrganizationAnnouncementId(String organizationId, int index) {
-    return given() 
-        .baseUri(getApiBasePath())
+    return givenReadonly()
         .contentType(ContentType.JSON)
         .get(String.format("/organizations/%s/announcements", organizationId))
         .body()
@@ -341,8 +374,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   }
   
   protected String getOrganizationEventId(String organizationId, int index) {
-    return given() 
-        .baseUri(getApiBasePath())
+    return givenReadonly()
         .contentType(ContentType.JSON)
         .get(String.format("/organizations/%s/events", organizationId))
         .body()
@@ -351,8 +383,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   }
   
   protected String getOrganizationFragmentId(String organizationId, int index) {
-    return given() 
-        .baseUri(getApiBasePath())
+    return givenReadonly()
         .contentType(ContentType.JSON)
         .get(String.format("/organizations/%s/fragments", organizationId))
         .body()
@@ -361,8 +392,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   }
   
   protected String getOrganizationShortlinkId(String organizationId, int index) {
-    return given() 
-        .baseUri(getApiBasePath())
+    return givenReadonly()
         .contentType(ContentType.JSON)
         .get(String.format("/organizations/%s/shortlinks", organizationId))
         .body()
@@ -371,8 +401,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   }
   
   protected String getOrganizationIncidentId(String organizationId, int index) {
-    return given() 
-        .baseUri(getApiBasePath())
+    return givenReadonly()
         .contentType(ContentType.JSON)
         .get(String.format("/organizations/%s/incidents", organizationId))
         .body()
@@ -381,8 +410,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   }
   
   protected String getOrganizationEmergencyId(String organizationId, int index) {
-    return given() 
-        .baseUri(getApiBasePath())
+    return givenReadonly()
         .contentType(ContentType.JSON)
         .get(String.format("/organizations/%s/emergencies", organizationId))
         .body()
@@ -391,8 +419,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   }
   
   protected String getBannerId(String organizationId, int index) {
-    return given() 
-        .baseUri(getApiBasePath())
+    return givenReadonly()
         .contentType(ContentType.JSON)
         .get(String.format("/organizations/%s/banners", organizationId))
         .body()
@@ -401,8 +428,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   }
   
   protected String getBannerImageId(String organizationId, String bannerId, int index) {
-    return given() 
-        .baseUri(getApiBasePath())
+    return givenReadonly()
         .contentType(ContentType.JSON)
         .get("/organizations/{organizationId}/banners/{bannerId}/images", organizationId, bannerId)
         .body()
@@ -411,8 +437,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   }
   
   protected String getTileId(String organizationId, int index) {
-    return given() 
-        .baseUri(getApiBasePath())
+    return givenReadonly()
         .contentType(ContentType.JSON)
         .get(String.format("/organizations/%s/tiles", organizationId))
         .body()
@@ -421,8 +446,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   }
   
   protected String getTileImageId(String organizationId, String tileId, int index) {
-    return given() 
-        .baseUri(getApiBasePath())
+    return givenReadonly()
         .contentType(ContentType.JSON)
         .get("/organizations/{organizationId}/tiles/{tileId}/images", organizationId, tileId)
         .body()
@@ -431,8 +455,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   }
   
   protected String getPageId(String organizationId, int index) {
-    return given() 
-        .baseUri(getApiBasePath())
+    return givenReadonly()
         .contentType(ContentType.JSON)
         .get(String.format("/organizations/%s/pages", organizationId))
         .body()
@@ -441,8 +464,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   }
 
   protected String getPageIdByPath(String organizationId, String path) {
-    return given() 
-        .baseUri(getApiBasePath())
+    return givenReadonly()
         .contentType(ContentType.JSON)
         .get(String.format("/organizations/%s/pages?path=%s", organizationId, path))
         .body()
@@ -451,8 +473,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   }
 
   protected Page getPageByPath(String organizationId, String path) {
-    return given() 
-        .baseUri(getApiBasePath())
+    return givenReadonly()
         .contentType(ContentType.JSON)
         .get(String.format("/organizations/%s/pages?path=%s", organizationId, path))
         .body()
@@ -461,8 +482,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   }
   
   protected String getPageImageId(String organizationId, String pageId, int index) {
-    return given() 
-        .baseUri(getApiBasePath())
+    return givenReadonly()
         .contentType(ContentType.JSON)
         .get("/organizations/{organizationId}/pages/{pageId}/images", organizationId, pageId)
         .body()
@@ -480,8 +500,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   }
   
   protected LocalizedValue[] getPageContents(String organizationId, String pageId) throws IOException {
-    return given() 
-        .baseUri(getApiBasePath())
+    return givenReadonly()
         .contentType(ContentType.JSON)
         .get("/organizations/{organizationId}/pages/{pageId}/content", organizationId, pageId)
         .body()
@@ -489,8 +508,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   }
   
   protected String getNewsArticleId(String organizationId, int index) {
-    return given() 
-        .baseUri(getApiBasePath())
+    return givenReadonly()
         .contentType(ContentType.JSON)
         .get(String.format("/organizations/%s/news", organizationId))
         .body()
@@ -499,8 +517,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   }
   
   protected String getNewsArticleImageId(String organizationId, String newsArticleId, int index) {
-    return given() 
-        .baseUri(getApiBasePath())
+    return givenReadonly()
         .contentType(ContentType.JSON)
         .get("/organizations/{organizationId}/news/{newsArticleId}/images", organizationId, newsArticleId)
         .body()
@@ -509,8 +526,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   }
   
   protected String getOrganizationId(int index) {
-    return given() 
-        .baseUri(getApiBasePath())
+    return givenReadonly()
         .contentType(ContentType.JSON)
         .get("/organizations")
         .body()
@@ -519,8 +535,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   }
   
   protected String getServiceId(int index) {
-    return given() 
-        .baseUri(getApiBasePath())
+    return givenReadonly()
         .contentType(ContentType.JSON)
         .get("/services")
         .body()
@@ -529,8 +544,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   }
   
   protected String getEventId(String organizationId, int index) {
-    return given() 
-        .baseUri(getApiBasePath())
+    return givenReadonly()
         .contentType(ContentType.JSON)
         .get("/organizations/{organizationId}/events", organizationId)
         .body()
@@ -539,8 +553,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   }
   
   protected String getEventImageId(String organizationId, String eventId, int index) {
-    return given() 
-        .baseUri(getApiBasePath())
+    return givenReadonly()
         .contentType(ContentType.JSON)
         .get("/organizations/{organizationId}/events/{eventId}/images", organizationId, eventId)
         .body()
@@ -549,8 +562,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   }
   
   protected String getMenuId(String organizationId, int index) {
-    return given() 
-        .baseUri(getApiBasePath())
+    return givenReadonly()
         .contentType(ContentType.JSON)
         .get("/organizations/{organizationId}/menus", organizationId)
         .body()
@@ -559,8 +571,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   }
 
   protected String getContactId(String organizationId, int index) {
-    return given() 
-        .baseUri(getApiBasePath())
+    return givenReadonly()
         .contentType(ContentType.JSON)
         .get("/organizations/{organizationId}/contacts", organizationId)
         .body()
@@ -569,8 +580,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   }
   
   protected String getMenuItemId(String organizationId, String menuId, int index) {
-    return given() 
-        .baseUri(getApiBasePath())
+    return givenReadonly()
         .contentType(ContentType.JSON)
         .get("/organizations/{organizationId}/menus/{menuId}/items", organizationId, menuId)
         .body()
@@ -581,8 +591,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   protected String getElectronicChannelId(int index) throws InterruptedException {
     waitApiListCount("/electronicServiceChannels", 3);
     
-    return given() 
-      .baseUri(getApiBasePath())
+    return givenReadonly()
       .contentType(ContentType.JSON)
       .get("/electronicServiceChannels")
       .body()
@@ -593,8 +602,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   protected String getPhoneChannelId(int index) throws InterruptedException {
     waitApiListCount("/phoneServiceChannels", 3);
     
-    return given() 
-      .baseUri(getApiBasePath())
+    return givenReadonly()
       .contentType(ContentType.JSON)
       .get("/phoneServiceChannels")
       .body()
@@ -605,8 +613,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   protected String getPrintableFormChannelId(int index) throws InterruptedException {
     waitApiListCount("/printableFormServiceChannels", 3);
     
-    return given() 
-      .baseUri(getApiBasePath())
+    return givenReadonly()
       .contentType(ContentType.JSON)
       .get("/printableFormServiceChannels")
       .body()
@@ -617,8 +624,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   protected String getServiceLocationChannelId(int index) throws InterruptedException {
     waitApiListCount("/serviceLocationServiceChannels", 3);
     
-    return given() 
-      .baseUri(getApiBasePath())
+    return givenReadonly()
       .contentType(ContentType.JSON)
       .get("/serviceLocationServiceChannels")
       .body()
@@ -629,8 +635,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   protected String getWebPageChannelId(int index) throws InterruptedException {
     waitApiListCount("/webPageServiceChannels", 3);
     
-    return given() 
-      .baseUri(getApiBasePath())
+    return givenReadonly()
       .contentType(ContentType.JSON)
       .get("/webPageServiceChannels")
       .body()
@@ -639,8 +644,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   }
   
   protected int countApiList(String path) {
-    return given() 
-      .baseUri(getApiBasePath())
+    return givenReadonly()
       .contentType(ContentType.JSON)
       .get(path)
       .andReturn()
@@ -650,141 +654,125 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   }
   
   protected void assertListLimits(String basePath, int maxResults) {
-    given() 
-    .baseUri(getApiBasePath())
-    .contentType(ContentType.JSON)
-    .get(String.format("%s?firstResult=1", basePath))
-    .then()
-    .assertThat()
-    .statusCode(200)
-    .body("id.size()", is(maxResults - 1));
+    givenReadonly()
+      .contentType(ContentType.JSON)
+      .get(String.format("%s?firstResult=1", basePath))
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(maxResults - 1));
   
-  given() 
-    .baseUri(getApiBasePath())
-    .contentType(ContentType.JSON)
-    .get(String.format("%s?firstResult=2", basePath))
-    .then()
-    .assertThat()
-    .statusCode(200)
-    .body("id.size()", is(maxResults - 2));
+    givenReadonly()
+      .contentType(ContentType.JSON)
+      .get(String.format("%s?firstResult=2", basePath))
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(maxResults - 2));
   
-  given() 
-    .baseUri(getApiBasePath())
-    .contentType(ContentType.JSON)
-    .get(String.format("%s?firstResult=666", basePath))
-    .then()
-    .assertThat()
-    .statusCode(200)
-    .body("id.size()", is(0));
+    givenReadonly()
+      .contentType(ContentType.JSON)
+      .get(String.format("%s?firstResult=666", basePath))
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(0));
   
-  given() 
-    .baseUri(getApiBasePath())
-    .contentType(ContentType.JSON)
-    .get(String.format("%s?firstResult=-1", basePath))
-    .then()
-    .assertThat()
-    .statusCode(400);
+    givenReadonly()
+      .contentType(ContentType.JSON)
+      .get(String.format("%s?firstResult=-1", basePath))
+      .then()
+      .assertThat()
+      .statusCode(400);
   
-  given() 
-    .baseUri(getApiBasePath())
-    .contentType(ContentType.JSON)
-    .get(String.format("%s?maxResults=2", basePath))
-    .then()
-    .assertThat()
-    .statusCode(200)
-    .body("id.size()", is(2));
+    givenReadonly()
+      .contentType(ContentType.JSON)
+      .get(String.format("%s?maxResults=2", basePath))
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(2));
   
-  given() 
-    .baseUri(getApiBasePath())
-    .contentType(ContentType.JSON)
-    .get(String.format("%s?maxResults=0", basePath))
-    .then()
-    .assertThat()
-    .statusCode(200)
-    .body("id.size()", is(0));
+    givenReadonly()
+      .contentType(ContentType.JSON)
+      .get(String.format("%s?maxResults=0", basePath))
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(0));
   
-  given() 
-    .baseUri(getApiBasePath())
-    .contentType(ContentType.JSON)
-    .get(String.format("%s?maxResults=-1", basePath))
-    .then()
-    .assertThat()
-    .statusCode(400);
+    givenReadonly()
+      .contentType(ContentType.JSON)
+      .get(String.format("%s?maxResults=-1", basePath))
+      .then()
+      .assertThat()
+      .statusCode(400);
   
-  given() 
-    .baseUri(getApiBasePath())
-    .contentType(ContentType.JSON)
-    .get(String.format("%s?maxResults=666", basePath))
-    .then()
-    .assertThat()
-    .statusCode(200)
-    .body("id.size()", is(maxResults));
+    givenReadonly()
+      .contentType(ContentType.JSON)
+      .get(String.format("%s?maxResults=666", basePath))
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(maxResults));
   
-  given() 
-    .baseUri(getApiBasePath())
-    .contentType(ContentType.JSON)
-    .get(String.format("%s?firstResult=0&maxResults=2", basePath))
-    .then()
-    .assertThat()
-    .statusCode(200)
-    .body("id.size()", is(2));
+    givenReadonly()
+      .contentType(ContentType.JSON)
+      .get(String.format("%s?firstResult=0&maxResults=2", basePath))
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(2));
   
-  given() 
-    .baseUri(getApiBasePath())
-    .contentType(ContentType.JSON)
-    .get(String.format("%s?firstResult=1&maxResults=2", basePath))
-    .then()
-    .assertThat()
-    .statusCode(200)
-    .body("id.size()", is(2));
+    givenReadonly()
+      .contentType(ContentType.JSON)
+      .get(String.format("%s?firstResult=1&maxResults=2", basePath))
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(2));
   
-  given() 
-    .baseUri(getApiBasePath())
-    .contentType(ContentType.JSON)
-    .get(String.format("%s?firstResult=1&maxResults=1", basePath))
-    .then()
-    .assertThat()
-    .statusCode(200)
-    .body("id.size()", is(1));
+    givenReadonly()
+      .contentType(ContentType.JSON)
+      .get(String.format("%s?firstResult=1&maxResults=1", basePath))
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(1));
   
-  given() 
-    .baseUri(getApiBasePath())
-    .contentType(ContentType.JSON)
-    .get(String.format("%s?firstResult=-1&maxResults=1", basePath))
-    .then()
-    .assertThat()
-    .statusCode(400);
+    givenReadonly()
+      .contentType(ContentType.JSON)
+      .get(String.format("%s?firstResult=-1&maxResults=1", basePath))
+      .then()
+      .assertThat()
+      .statusCode(400);
   
-  given() 
-    .baseUri(getApiBasePath())
-    .contentType(ContentType.JSON)
-    .get(String.format("%s?firstResult=2&maxResults=-1", basePath))
-    .then()
-    .assertThat()
-    .statusCode(400);
+    givenReadonly()
+      .contentType(ContentType.JSON)
+      .get(String.format("%s?firstResult=2&maxResults=-1", basePath))
+      .then()
+      .assertThat()
+      .statusCode(400);
   
-  given() 
-    .baseUri(getApiBasePath())
-    .contentType(ContentType.JSON)
-    .get(String.format("%s?firstResult=1&maxResults=0", basePath))
-    .then()
-    .assertThat()
-    .statusCode(200)
-    .body("id.size()", is(0));
+    givenReadonly()
+      .contentType(ContentType.JSON)
+      .get(String.format("%s?firstResult=1&maxResults=0", basePath))
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(0));
   
-  given() 
-    .baseUri(getApiBasePath())
-    .contentType(ContentType.JSON)
-    .get(String.format("%s?firstResult=21&maxResults=20", basePath))
-    .then()
-    .assertThat()
-    .statusCode(200)
-    .body("id.size()", is(0));
+    givenReadonly()
+      .contentType(ContentType.JSON)
+      .get(String.format("%s?firstResult=21&maxResults=20", basePath))
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(0));
   }
   
   protected void assertPageInPath(String path, String expectedSlug, String expectedParentId) {
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get(path)
       .then()
@@ -796,8 +784,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   }
   
   protected void assertPageNotInPath(String path) {
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get(path)
       .then()

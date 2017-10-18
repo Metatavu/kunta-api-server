@@ -1,6 +1,5 @@
 package fi.otavanopisto.kuntaapi.test.server.integration.ptv;
 
-import static com.jayway.restassured.RestAssured.given;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.hamcrest.core.IsNull.nullValue;
@@ -56,14 +55,12 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
 
   @Test
   public void testFindElectronicChannel() throws InterruptedException {
-    String channelId = given() 
-      .baseUri(getApiBasePath())
+    String channelId = givenReadonly()
       .contentType(ContentType.JSON)
       .get("/electronicServiceChannels")
       .body().jsonPath().getString("id[0]");
 
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/electronicServiceChannels/{channelId}", channelId)
       .then()
@@ -116,8 +113,7 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
   
   @Test
   public void testListElectronicChannels() throws InterruptedException {
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/electronicServiceChannels")
       .then()
@@ -175,14 +171,12 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
   
   @Test
   public void testFindPhoneChannel() throws InterruptedException {
-    String channelId = given() 
-        .baseUri(getApiBasePath())
+    String channelId = givenReadonly()
         .contentType(ContentType.JSON)
         .get("/phoneServiceChannels")
         .body().jsonPath().getString("id[0]");
 
-      given() 
-        .baseUri(getApiBasePath())
+    givenReadonly()
         .contentType(ContentType.JSON)
         .get("/phoneServiceChannels/{channelId}", channelId)
         .then()
@@ -235,14 +229,12 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
   
   @Test
   public void testListPhoneChannels() throws InterruptedException {
-    String channelId = given() 
-        .baseUri(getApiBasePath())
+    String channelId = givenReadonly()
         .contentType(ContentType.JSON)
         .get("/phoneServiceChannels")
         .body().jsonPath().getString("id[0]");
 
-      given() 
-        .baseUri(getApiBasePath())
+    givenReadonly()
         .contentType(ContentType.JSON)
         .get("/phoneServiceChannels/{channelId}", channelId)
         .then()
@@ -295,15 +287,13 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
   
   @Test
   public void testFindPrintableFormChannel() throws InterruptedException {
-    String channelId = given() 
-      .baseUri(getApiBasePath())
+    String channelId = givenReadonly()
       .contentType(ContentType.JSON)
       .get("/printableFormServiceChannels")
       .body().jsonPath().getString("id[0]");
  
 
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/printableFormServiceChannels/{channelId}", channelId)
       .then()
@@ -346,8 +336,7 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
 
   @Test
   public void testListPrintableFormChannels() throws InterruptedException {
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/printableFormServiceChannels")
       .then()
@@ -403,14 +392,12 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
   public void testFindServiceLocationChannel() throws InterruptedException {
     waitApiListCount("/serviceLocationServiceChannels", 3);
     
-    String channelId = given() 
-      .baseUri(getApiBasePath())
+    String channelId = givenReadonly()
       .contentType(ContentType.JSON)
       .get("/serviceLocationServiceChannels")
       .body().jsonPath().getString("id[0]");
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/serviceLocationServiceChannels/{channelId}", channelId)
       .then()
@@ -473,8 +460,7 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
 
   @Test
   public void testListServiceLocationChannel() throws InterruptedException {
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/serviceLocationServiceChannels")
       .then()
@@ -635,8 +621,7 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
     
     String search = "(Test*)|(Metatavu*)";
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get(String.format("/serviceLocationServiceChannels?search=%s", search))
       .then()
@@ -646,8 +631,7 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
       .body("names[0][0].value", is("Someron kaupungintalo"))
       .body("names[1][0].value", is("Metatavun toimisto"));
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get(String.format("/serviceLocationServiceChannels?search=%s&sortBy=SCORE&sortDir=DESC", search))
       .then()
@@ -657,8 +641,7 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
       .body("names[0][0].value", is("Metatavun toimisto"))
       .body("names[1][0].value", is("Someron kaupungintalo"));
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get(String.format("/serviceLocationServiceChannels?search=%s&sortBy=SCORE&sortDir=ASC", search))
       .then()
@@ -671,14 +654,12 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
 
   @Test
   public void testFindWebPageChannel() throws InterruptedException {
-    String channelId = given() 
-      .baseUri(getApiBasePath())
+    String channelId = givenReadonly()
       .contentType(ContentType.JSON)
       .get("/webPageServiceChannels")
       .body().jsonPath().getString("id[0]");
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/webPageServiceChannels/{channelId}", channelId)
       .then()
@@ -710,8 +691,7 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
   public void testListWebPageChannel() throws InterruptedException {
     waitApiListCount("/webPageServiceChannels", 3);
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/webPageServiceChannels")
       .then()

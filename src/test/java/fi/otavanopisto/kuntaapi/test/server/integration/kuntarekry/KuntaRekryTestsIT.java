@@ -1,6 +1,5 @@
 package fi.otavanopisto.kuntaapi.test.server.integration.kuntarekry;
 
-import static com.jayway.restassured.RestAssured.given;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.Assert.assertEquals;
@@ -58,8 +57,7 @@ public class KuntaRekryTestsIT extends AbstractIntegrationTest {
   public void findListJob() {
     String organizationId = getOrganizationId(0);
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/jobs/{jobId}", organizationId, getOrganizationJobId(organizationId, 0))
       .then()
@@ -80,8 +78,7 @@ public class KuntaRekryTestsIT extends AbstractIntegrationTest {
   
   @Test
   public void testListJobs() {
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/jobs", getOrganizationId(0))
       .then()
@@ -103,8 +100,7 @@ public class KuntaRekryTestsIT extends AbstractIntegrationTest {
   
   @Test
   public void testListJobsSort() {
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/jobs?sortBy=PUBLICATION_END&sortDir=ASCENDING", getOrganizationId(0))
       .then()
@@ -114,8 +110,7 @@ public class KuntaRekryTestsIT extends AbstractIntegrationTest {
       .body("id[2]", notNullValue())
       .body("link[2]", is("https://www.kuntarekry.fi/fi/tyopaikka/2234567890"));
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/jobs?sortBy=PUBLICATION_END&sortDir=DESCENDING", getOrganizationId(0))
       .then()
@@ -125,8 +120,7 @@ public class KuntaRekryTestsIT extends AbstractIntegrationTest {
       .body("id[0]", notNullValue())
       .body("link[0]", is("https://www.kuntarekry.fi/fi/tyopaikka/2234567890"));
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/jobs?sortBy=PUBLICATION_START&sortDir=ASCENDING", getOrganizationId(0))
       .then()
@@ -136,8 +130,7 @@ public class KuntaRekryTestsIT extends AbstractIntegrationTest {
       .body("id[2]", notNullValue())
       .body("link[2]", is("https://www.kuntarekry.fi/fi/tyopaikka/2234567890"));
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/jobs?sortBy=PUBLICATION_START&sortDir=DESCENDING", getOrganizationId(0))
       .then()

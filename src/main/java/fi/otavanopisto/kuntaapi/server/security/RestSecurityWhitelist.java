@@ -22,7 +22,7 @@ public class RestSecurityWhitelist {
   
   @PostConstruct
   public void init() {
-    whitelist = loadWhitelst();
+    whitelist = loadWhitelist();
   }
   
   /**
@@ -38,7 +38,7 @@ public class RestSecurityWhitelist {
   /**
    * Loads settings from the properties file
    */
-  private Set<String> loadWhitelst() {
+  private Set<String> loadWhitelist() {
     Properties properties = new Properties();
     try {
       properties.load(getClass().getClassLoader().getResourceAsStream("security-whitelist.properties"));

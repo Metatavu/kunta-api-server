@@ -1,6 +1,5 @@
 package fi.otavanopisto.kuntaapi.test.server.integration.management;
 
-import static com.jayway.restassured.RestAssured.given;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNot.not;
 import static org.hamcrest.core.IsNull.notNullValue;
@@ -67,8 +66,7 @@ public class PostTestsIT extends AbstractIntegrationTest {
   @Test
   public void testFindPosts() {
     String organizationId = getOrganizationId(0);
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/news/{newsArticleId}", organizationId, getNewsArticleId(organizationId, 0))
       .then()
@@ -85,8 +83,7 @@ public class PostTestsIT extends AbstractIntegrationTest {
   @Test
   public void testMoreLink() {
     String organizationId = getOrganizationId(0);
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/news/{newsArticleId}", organizationId, getNewsArticleId(organizationId, 0))
       .then()
@@ -101,8 +98,7 @@ public class PostTestsIT extends AbstractIntegrationTest {
     // Zeus shoud be listed before abraham and bertha because it's menu_order is set to -100 
 
     String organizationId = getOrganizationId(0);
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/news", organizationId)
       .then()
@@ -115,8 +111,7 @@ public class PostTestsIT extends AbstractIntegrationTest {
   
   @Test
   public void testListPostsByPath() {
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/news?slug=test-3", getOrganizationId(0))
       .then()
@@ -126,8 +121,7 @@ public class PostTestsIT extends AbstractIntegrationTest {
       .body("id[0]", notNullValue())
       .body("slug[0]", is("test-3")); 
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/news?slug=non-existing", getOrganizationId(0))
       .then()
@@ -142,8 +136,7 @@ public class PostTestsIT extends AbstractIntegrationTest {
     
     waitApiListCount(String.format("/organizations/%s/news?tag=Yleinen", organizationId), 2);
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/news?tag=Yleinen", organizationId)
       .then()
@@ -156,8 +149,7 @@ public class PostTestsIT extends AbstractIntegrationTest {
       .body("tags[0][0]", is("Yleinen"))
       .body("tags[0][1]", is("Precious")); 
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/news?tag=Precious", organizationId)
       .then()
@@ -172,8 +164,7 @@ public class PostTestsIT extends AbstractIntegrationTest {
       .body("tags[2][1]", is("Test"))
       .body("tags[2][2]", is("Precious")); 
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/news?tag=non-existing", getOrganizationId(0))
       .then()
@@ -193,8 +184,7 @@ public class PostTestsIT extends AbstractIntegrationTest {
     String organizationId = getOrganizationId(0);
     String search = "(Test page*)|(\"Test page 3\")";
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get(String.format("/organizations/{organizationId}/news?search=%s", search), organizationId)
       .then()
@@ -204,8 +194,7 @@ public class PostTestsIT extends AbstractIntegrationTest {
       .body("slug[0]", is("test-2"))
       .body("slug[1]", is("test-3"));
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get(String.format("/organizations/{organizationId}/news?search=%s&sortBy=SCORE&sortDir=DESC", search), organizationId)
       .then()
@@ -215,8 +204,7 @@ public class PostTestsIT extends AbstractIntegrationTest {
       .body("slug[0]", is("test-3"))
       .body("slug[1]", is("test-2"));
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get(String.format("/organizations/{organizationId}/news?search=%s&sortBy=SCORE&sortDir=ASC", search), organizationId)
       .then()
@@ -251,8 +239,7 @@ public class PostTestsIT extends AbstractIntegrationTest {
     String newsArticleId = getNewsArticleId(organizationId, 0);
     String imageId = getNewsArticleImageId(organizationId, newsArticleId, 0);
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{ORGANIZATIONID}/news/{NEWSARTICLEID}/images/{IMAGEID}", organizationId, newsArticleId, imageId)
       .then()
@@ -287,8 +274,7 @@ public class PostTestsIT extends AbstractIntegrationTest {
     String newsArticleId = getNewsArticleId(organizationId, 0);
     String imageId = getNewsArticleImageId(organizationId, newsArticleId, 0);
 
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{ORGANIZATIONID}/news/{NEWSARTICLEID}/images/{IMAGEID}/data", organizationId, newsArticleId, imageId)
       .then()
@@ -304,8 +290,7 @@ public class PostTestsIT extends AbstractIntegrationTest {
     String newsArticleId = getNewsArticleId(organizationId, 0);
     String imageId = getNewsArticleImageId(organizationId, newsArticleId, 0);
 
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{ORGANIZATIONID}/news/{EVENTID}/images/{IMAGEID}/data?size=100", organizationId, newsArticleId, imageId)
       .then()
