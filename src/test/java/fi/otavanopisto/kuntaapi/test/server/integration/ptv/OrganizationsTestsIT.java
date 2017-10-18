@@ -1,6 +1,5 @@
 package fi.otavanopisto.kuntaapi.test.server.integration.ptv;
 
-import static com.jayway.restassured.RestAssured.given;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.hamcrest.core.IsNull.nullValue;
@@ -46,16 +45,14 @@ public class OrganizationsTestsIT extends AbstractIntegrationTest {
 
   @Test
   public void findOrganization() {
-    String id = given() 
-      .baseUri(getApiBasePath())
+    String id = givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations")
       .body().jsonPath().getString("id[0]");
       
     assertNotNull(id);
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}", id)
       .then()
@@ -94,8 +91,7 @@ public class OrganizationsTestsIT extends AbstractIntegrationTest {
   
   @Test
   public void testListOrganizations() {
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations")
       .then()
@@ -187,8 +183,7 @@ public class OrganizationsTestsIT extends AbstractIntegrationTest {
     
     waitForElasticIndex();
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations?businessCode=0165116-3")
       .then()
@@ -199,8 +194,7 @@ public class OrganizationsTestsIT extends AbstractIntegrationTest {
       .body("businessName[0]", is("Mikkelin kaupunki"))
       .body("businessCode[0]", is("0165116-3"));
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations?businessCode=0000000-0")
       .then()
@@ -217,8 +211,7 @@ public class OrganizationsTestsIT extends AbstractIntegrationTest {
     
     waitForElasticIndex();
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations?businessName=Mikkelin kaupunki")
       .then()
@@ -229,8 +222,7 @@ public class OrganizationsTestsIT extends AbstractIntegrationTest {
       .body("businessName[0]", is("Mikkelin kaupunki"))
       .body("businessCode[0]", is("0165116-3"));
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations?businessName=invalid")
       .then()
@@ -249,8 +241,7 @@ public class OrganizationsTestsIT extends AbstractIntegrationTest {
     
     String search = "(M*)|(Mi*)";
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get(String.format("/organizations?search=%s", search))
       .then()
@@ -260,8 +251,7 @@ public class OrganizationsTestsIT extends AbstractIntegrationTest {
       .body("names[0][0].value", is("Mäntyharjun kunta"))
       .body("names[1][0].value", is("Mikkelin kaupunki"));
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get(String.format("/organizations?search=%s&sortBy=SCORE&sortDir=DESC", search))
       .then()
@@ -271,8 +261,7 @@ public class OrganizationsTestsIT extends AbstractIntegrationTest {
       .body("names[0][0].value", is("Mikkelin kaupunki"))
       .body("names[1][0].value", is("Mäntyharjun kunta"));
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get(String.format("/organizations?search=%s&sortBy=SCORE&sortDir=ASC", search))
       .then()

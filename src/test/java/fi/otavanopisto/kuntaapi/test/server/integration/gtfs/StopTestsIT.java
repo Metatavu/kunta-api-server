@@ -1,6 +1,5 @@
 package fi.otavanopisto.kuntaapi.test.server.integration.gtfs;
 
-import static com.jayway.restassured.RestAssured.given;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.Assert.assertEquals;
@@ -52,9 +51,8 @@ public class StopTestsIT extends AbstractIntegrationTest {
 
   @Test
   public void testListStops() {
-    given()
+    givenReadonly()
       .config(new RestAssuredConfig().jsonConfig(new JsonConfig(JsonPathConfig.NumberReturnType.DOUBLE)))
-      .baseUri(getApiBasePath())
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/transportStops", getOrganizationId(0))
       .then()
@@ -70,9 +68,8 @@ public class StopTestsIT extends AbstractIntegrationTest {
   @Test
   public void testFindStop() {
     String organizationId = getOrganizationId(0);
-    given()
+    givenReadonly()
       .config(new RestAssuredConfig().jsonConfig(new JsonConfig(JsonPathConfig.NumberReturnType.DOUBLE)))
-      .baseUri(getApiBasePath())
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/transportStops/{stopId}", organizationId, getOrganizationStopId(organizationId, 2))
       .then()

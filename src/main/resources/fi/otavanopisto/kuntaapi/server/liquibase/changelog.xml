@@ -393,4 +393,8 @@
     
   </changeSet>
   
+  <changeSet id="test-client" author="antti.leppa" context="test">
+    <sqlFile path="fi/otavanopisto/kuntaapi/server/liquibase/test-client.sql" />
+  </changeSet>
+  
 </databaseChangeLog>

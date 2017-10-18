@@ -1,6 +1,5 @@
 package fi.otavanopisto.kuntaapi.test.server.integration.ptv;
 
-import static com.jayway.restassured.RestAssured.given;
 import static com.jayway.restassured.config.RedirectConfig.redirectConfig;
 import static com.jayway.restassured.config.RestAssuredConfig.newConfig;
 import static org.hamcrest.core.Is.is;
@@ -58,16 +57,14 @@ public class ServicesTestsIT extends AbstractIntegrationTest {
   
   @Test
   public void findService() {
-    String id = given() 
-        .baseUri(getApiBasePath())
+    String id = givenReadonly()
         .contentType(ContentType.JSON)
         .get("/services")
         .body().jsonPath().getString("id[0]");
         
     assertNotNull(id);
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/services/{serviceId}", id)
       .then()
@@ -169,8 +166,7 @@ public class ServicesTestsIT extends AbstractIntegrationTest {
   
   @Test
   public void testListServices() {
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/services")
       .then()
@@ -234,8 +230,7 @@ public class ServicesTestsIT extends AbstractIntegrationTest {
     String organizationId2 = getOrganizationId(1); 
     String invalidOrganizationId = "invalid";
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get(String.format("/services?organizationId=%s", organizationId1))
       .then()
@@ -249,8 +244,7 @@ public class ServicesTestsIT extends AbstractIntegrationTest {
       .body("organizations[1].size()", is(2))
       .body("organizations[1][0].organizationId", is(organizationId1));
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get(String.format("/services?organizationId=%s", organizationId2))
       .then()
@@ -261,8 +255,7 @@ public class ServicesTestsIT extends AbstractIntegrationTest {
       .body("organizations[0].size()", is(1))
       .body("organizations[0][0].organizationId", is(organizationId2));
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get(String.format("/services?organizationId=%s", invalidOrganizationId))
       .then()
@@ -277,8 +270,7 @@ public class ServicesTestsIT extends AbstractIntegrationTest {
       return;
     }
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/services?search=(tes*)|(Nuorten*)")
       .then()
@@ -288,8 +280,7 @@ public class ServicesTestsIT extends AbstractIntegrationTest {
       .body("names[0][0].value", is("Metatavu testaa"))
       .body("names[1][0].value", is("Nuorten työpajat"));
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/services?search=(tes*)|(Nuorten*)&sortBy=SCORE&sortDir=DESC")
       .then()
@@ -299,8 +290,7 @@ public class ServicesTestsIT extends AbstractIntegrationTest {
       .body("names[0][0].value", is("Nuorten työpajat"))
       .body("names[1][0].value", is("Metatavu testaa"));
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/services?search=(tes*)|(Nuorten*)&sortBy=SCORE&sortDir=ASC")
       .then()
@@ -334,8 +324,7 @@ public class ServicesTestsIT extends AbstractIntegrationTest {
   
   @Test
   public void testServiceChannelIds()  {
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/services/{serviceId}", getServiceId(0))
       .then()
@@ -348,8 +337,7 @@ public class ServicesTestsIT extends AbstractIntegrationTest {
       .body("serviceLocationServiceChannelIds.size()", is(1))
       .body("webPageServiceChannelIds.size()", is(0));
 
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/services/{serviceId}", getServiceId(1))
       .then()
@@ -378,8 +366,7 @@ public class ServicesTestsIT extends AbstractIntegrationTest {
     String toListPath = String.format("/%s", to);
     String toFindPath = String.format("%s/%s", toListPath, "CHANNEL_ID");
 
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .config(newConfig().redirect(redirectConfig().followRedirects(false)))
       .get(fromListPath)
@@ -388,8 +375,7 @@ public class ServicesTestsIT extends AbstractIntegrationTest {
       .statusCode(307)
       .header("Location", String.format("%s%s", getApiBasePath(), toListPath));
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .config(newConfig().redirect(redirectConfig().followRedirects(false)))
       .get(fromFindPath)

@@ -1,6 +1,5 @@
 package fi.otavanopisto.kuntaapi.test.server.integration.gtfs;
 
-import static com.jayway.restassured.RestAssured.given;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.Assert.assertEquals;
@@ -49,8 +48,7 @@ public class AgencyTestsIT extends AbstractIntegrationTest{
   
   @Test
   public void testListAgencies() {
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/transportAgencies", getOrganizationId(0))
       .then()
@@ -66,8 +64,7 @@ public class AgencyTestsIT extends AbstractIntegrationTest{
   @Test
   public void testFindAgency() {
     String organizationId = getOrganizationId(0);
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/transportAgencies/{agencyId}", organizationId, getOrganizationAgencyId(organizationId, 0))
       .then()

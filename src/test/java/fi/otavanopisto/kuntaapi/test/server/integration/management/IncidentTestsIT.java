@@ -1,6 +1,5 @@
 package fi.otavanopisto.kuntaapi.test.server.integration.management;
 
-import static com.jayway.restassured.RestAssured.given;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.hamcrest.core.IsNull.nullValue;
@@ -57,8 +56,7 @@ public class IncidentTestsIT extends AbstractIntegrationTest {
   public void testFindIncidents() {
     String organizationId = getOrganizationId(0);
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/incidents/{incidentId}", organizationId, getOrganizationIncidentId(organizationId, 0))
       .then()
@@ -80,8 +78,7 @@ public class IncidentTestsIT extends AbstractIntegrationTest {
   public void testIncidentsDetailsLink() {
     String organizationId = getOrganizationId(0);
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/incidents/{incidentId}", organizationId, getOrganizationIncidentId(organizationId, 0))
       .then()
@@ -90,8 +87,7 @@ public class IncidentTestsIT extends AbstractIntegrationTest {
       .body("detailsLink", is("http://www.example.com/incident/details"))
       .body("detailsLinkText", is("Example details"));
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/incidents/{incidentId}", organizationId, getOrganizationIncidentId(organizationId, 1))
       .then()
@@ -100,8 +96,7 @@ public class IncidentTestsIT extends AbstractIntegrationTest {
       .body("detailsLink", nullValue())
       .body("detailsLinkText", nullValue());
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/incidents/{incidentId}", organizationId, getOrganizationIncidentId(organizationId, 2))
       .then()
@@ -114,8 +109,7 @@ public class IncidentTestsIT extends AbstractIntegrationTest {
   
   @Test
   public void testListIncidentsBySlug() {
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/incidents?slug=karhu", getOrganizationId(0))
       .then()
@@ -125,8 +119,7 @@ public class IncidentTestsIT extends AbstractIntegrationTest {
       .body("id[0]", notNullValue())
       .body("slug[0]", is("karhu"));
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/incidents?slug=non-existing", getOrganizationId(0))
       .then()
@@ -137,8 +130,7 @@ public class IncidentTestsIT extends AbstractIntegrationTest {
   
   @Test
   public void testListIncidents() {
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/incidents", getOrganizationId(0))
       .then()
@@ -171,8 +163,7 @@ public class IncidentTestsIT extends AbstractIntegrationTest {
 //    "end_time": "2017-05-14T00:00:00",
     
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get(String.format("/organizations/{organizationId}/incidents?startBefore=%s", getIsoDateTime(2017, 5, 13, 0, 0, TIMEZONE_ID)), getOrganizationId(0))
       .then()
@@ -182,8 +173,7 @@ public class IncidentTestsIT extends AbstractIntegrationTest {
       .body("id[0]", notNullValue())
       .body("slug[0]", is("karhu"));
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get(String.format("/organizations/{organizationId}/incidents?startBefore=%s", getIsoDateTime(2017, 5, 11, 0, 0, TIMEZONE_ID)), getOrganizationId(0))
       .then()
@@ -191,8 +181,7 @@ public class IncidentTestsIT extends AbstractIntegrationTest {
       .statusCode(200)
       .body("id.size()", is(0));
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get(String.format("/organizations/{organizationId}/incidents?endAfter=%s", getIsoDateTime(2017, 5, 13, 0, 0, TIMEZONE_ID)), getOrganizationId(0))
       .then()
@@ -200,8 +189,7 @@ public class IncidentTestsIT extends AbstractIntegrationTest {
       .statusCode(200)
       .body("id.size()", is(3));
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get(String.format("/organizations/{organizationId}/incidents?endAfter=%s", getIsoDateTime(2017, 5, 29, 0, 0, TIMEZONE_ID)), getOrganizationId(0))
       .then()
@@ -210,8 +198,7 @@ public class IncidentTestsIT extends AbstractIntegrationTest {
       .body("id.size()", is(1))
       .body("slug[0]", is("toimimattomat-puhelinyhteydet"));
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get(String.format("/organizations/{organizationId}/incidents?startBefore=%s", getIsoDateTime(2016, 6, 1, 0, 0, TIMEZONE_ID)), getOrganizationId(0))
       .then()

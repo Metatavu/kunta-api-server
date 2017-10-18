@@ -1,6 +1,5 @@
 package fi.otavanopisto.kuntaapi.test.server.integration.vcard;
 
-import static com.jayway.restassured.RestAssured.given;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.hamcrest.core.IsNull.nullValue;
@@ -53,8 +52,7 @@ public class VCardTestsIT extends AbstractIntegrationTest{
   
   @Test
   public void testListContacts() {
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/contacts", getOrganizationId(0))
       .then()
@@ -101,8 +99,7 @@ public class VCardTestsIT extends AbstractIntegrationTest{
     String organizationId = getOrganizationId(0);
     String contactId = getContactId(organizationId, 0);
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/contacts/{contactId}", organizationId, contactId)
       .then()
@@ -178,8 +175,7 @@ public class VCardTestsIT extends AbstractIntegrationTest{
     String search = "(Haku)|(Pirkko^10)";
     String organizationId = getOrganizationId(0);
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get(String.format("/organizations/{organizationId}/contacts?search=%s&sortBy=SCORE&sortDir=DESC", search), organizationId)
       .then()
@@ -189,8 +185,7 @@ public class VCardTestsIT extends AbstractIntegrationTest{
       .body("displayName[0]", is("Pirkko Haku Esimerkki"))
       .body("displayName[1]", is("Seppo Haku Esimerkki"));
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get(String.format("/organizations/{organizationId}/contacts?search=%s&sortBy=SCORE&sortDir=ASC", search), organizationId)
       .then()
@@ -205,8 +200,7 @@ public class VCardTestsIT extends AbstractIntegrationTest{
   public void testRemoveContacts() throws InterruptedException {
     String organizationId = getOrganizationId(0);
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/contacts", organizationId)
       .then()
@@ -221,8 +215,7 @@ public class VCardTestsIT extends AbstractIntegrationTest{
 
     waitApiListCount(String.format("/organizations/%s/contacts", getOrganizationId(0)), 2);
 
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/contacts", organizationId)
       .then()
@@ -244,8 +237,7 @@ public class VCardTestsIT extends AbstractIntegrationTest{
     String search = "(Haku)|(Pirkko^10)";
     String organizationId = getOrganizationId(0);
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get(String.format("/organizations/{organizationId}/contacts?search=%s&sortBy=SCORE&sortDir=DESC", search), organizationId)
       .then()
@@ -258,8 +250,7 @@ public class VCardTestsIT extends AbstractIntegrationTest{
     changeVCardFile(organizationId, "vcard/test-removed.vcard");
     waitApiListCount(String.format("/organizations/%s/contacts", getOrganizationId(0)), 2);
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get(String.format("/organizations/{organizationId}/contacts?search=%s&sortBy=SCORE", search), organizationId)
       .then()
