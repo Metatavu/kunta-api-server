@@ -397,4 +397,46 @@
     <sqlFile path="fi/otavanopisto/kuntaapi/server/liquibase/test-client.sql" />
   </changeSet>
   
+  <changeSet id="organization-external-access-token" author="antti.leppa">
+    
+    <createTable tableName="OrganizationExternalAccessToken">
+      <column name="id" type="bigint(20)" autoIncrement="true">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="tokenType" type="varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="accessToken" type="text">
+        <constraints nullable="false"/>
+      </column>
+      <column name="organizationKuntaApiId" type="varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="expires" type="timestamp">
+        <constraints nullable="true"/>
+      </column>
+    </createTable>
+
+  </changeSet>
+    
+  <changeSet id="client-organization-permission-grant" author="antti.leppa">
+    <dropTable tableName="ClientOrganization"/>
+   
+    <createTable tableName="ClientOrganizationPermissionGrant">
+      <column name="id" type="bigint(20)" autoIncrement="true">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="client_id" type="bigint(20)">
+        <constraints referencedTableName="Identifier" referencedColumnNames="id" foreignKeyName="FK_CLIENT_ORGANIZATION_CLIENT_ID"/>
+      </column>
+      <column name="organizationIdentifier_id" type="bigint(20)">
+        <constraints referencedTableName="Identifier" referencedColumnNames="id" foreignKeyName="FK_CLIENT_ORGANIZATION_IDENTIFIER_ID"/>
+      </column>
+      <column name="permission" type="varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+    
+  </changeSet>
+  
 </databaseChangeLog>
