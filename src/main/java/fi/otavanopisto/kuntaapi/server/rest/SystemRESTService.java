@@ -2,6 +2,7 @@ package fi.otavanopisto.kuntaapi.server.rest;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -21,12 +22,19 @@ import javax.ws.rs.core.Response.Status;
 
 import org.apache.commons.lang3.StringUtils;
 
+import fi.metatavu.ptv.client.ApiResponse;
+import fi.metatavu.ptv.client.ServiceChannelApi;
+import fi.metatavu.ptv.client.model.V6VmOpenApiServiceLocationChannel;
+import fi.metatavu.ptv.client.model.V6VmOpenApiServiceLocationChannelInBase;
 import fi.otavanopisto.kuntaapi.server.controllers.ClientContainer;
 import fi.otavanopisto.kuntaapi.server.controllers.SecurityController;
 import fi.otavanopisto.kuntaapi.server.discover.AbstractUpdater;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
 import fi.otavanopisto.kuntaapi.server.discover.IdUpdater;
 import fi.otavanopisto.kuntaapi.server.discover.UpdaterHealth;
+import fi.otavanopisto.kuntaapi.server.integrations.ptv.client.PtvApi;
+import fi.otavanopisto.kuntaapi.server.integrations.ptv.in.PtvInTranslator;
+import fi.otavanopisto.kuntaapi.server.integrations.ptv.servicechannels.PtvServiceChannelResolver;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 import fi.otavanopisto.kuntaapi.server.tasks.AbstractTaskQueue;
 
@@ -56,15 +64,50 @@ public class SystemRESTService {
 
   @Inject
   private ClientContainer clientContainer;
+
+  @Inject
+  private PtvInTranslator ptvInTranslator;
+  
+  @Inject
+  private PtvApi ptvApi; 
+
+  @Inject
+  private PtvServiceChannelResolver ptvServiceChannelResolver;
   
   @Inject  
   private Instance<AbstractTaskQueue<?>> taskQueues;
-
+  
   @Inject  
   private Instance<IdUpdater> idUpdaters;
   
   @Inject  
   private Instance<EntityUpdater> entityUpdaters;
+  
+  @GET
+  @Path ("/gg")
+  @Produces (MediaType.TEXT_PLAIN)
+  public Response getGG() {
+    ServiceChannelApi serviceChannelApi = ptvApi.getServiceChannelApi(null);
+    String id = "5f12d1f1-c326-4282-9b4a-8281af83478d";
+    Map<String, Object> channelData = ptvServiceChannelResolver.loadServiceChannelData(id);
+    byte[] serializeChannelData = ptvServiceChannelResolver.serializeChannelData(channelData);
+    
+    
+    // ServiceChannelType channelType = ptvServiceChannelResolver.resolveServiceChannelType(channelData);
+    V6VmOpenApiServiceLocationChannel serviceLocationChannel = ptvServiceChannelResolver.unserializeServiceLocationChannel(serializeChannelData);
+    
+    V6VmOpenApiServiceLocationChannelInBase inRequest = ptvInTranslator.translateServiceLocationChannel(serviceLocationChannel);
+    inRequest.getServiceChannelDescriptions().get(1).setValue("Metatavun testitoimisto Pieksämäen luonnonkauniissa keskustassa.");
+    
+    ApiResponse<V6VmOpenApiServiceLocationChannel> response = serviceChannelApi.apiV6ServiceChannelServiceLocationByIdPut(id, inRequest);
+    if (response.isOk()) {
+      System.out.println("SUKSETT!");;
+    } else {
+      System.out.println(response.getMessage());
+    }
+    
+    return Response.ok("gg").build();
+  }
 
   /**
    * Returns pong

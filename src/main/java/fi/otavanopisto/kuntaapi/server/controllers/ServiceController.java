@@ -133,6 +133,24 @@ public class ServiceController {
     
     return null;
   }
+  
+  /**
+   * Updates service location service channel
+   * 
+   * @param serviceLocationChannelId service location service channel id
+   * @param serviceLocationServiceChannel new data for service location service channel
+   * @return updated service location service channel
+   */
+  public ServiceLocationServiceChannel updateServiceLocationServiceChannel(ServiceLocationServiceChannelId serviceLocationChannelId, ServiceLocationServiceChannel serviceLocationServiceChannel) {
+    for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
+      ServiceLocationServiceChannel updatedServiceLocationServiceChannel = serviceChannelProvider.updateServiceLocationServiceChannel(serviceLocationChannelId, serviceLocationServiceChannel);
+      if (updatedServiceLocationServiceChannel != null) {
+        return updatedServiceLocationServiceChannel;
+      }
+    }
+    
+    return null;
+  }
 
   public WebPageServiceChannel findWebPageServiceChannel(WebPageServiceChannelId webPageChannelId) {
     for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {

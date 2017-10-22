@@ -9,13 +9,16 @@ import org.apache.commons.lang3.EnumUtils;
 
 import fi.metatavu.kuntaapi.server.rest.ServiceLocationServiceChannelsApi;
 import fi.metatavu.kuntaapi.server.rest.model.ServiceLocationServiceChannel;
+import fi.otavanopisto.kuntaapi.server.controllers.ClientContainer;
 import fi.otavanopisto.kuntaapi.server.controllers.HttpCacheController;
+import fi.otavanopisto.kuntaapi.server.controllers.SecurityController;
 import fi.otavanopisto.kuntaapi.server.controllers.ServiceController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceLocationServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceLocationServiceChannelSortBy;
 import fi.otavanopisto.kuntaapi.server.integrations.SortDir;
+import fi.otavanopisto.kuntaapi.server.persistence.model.clients.ClientOrganizationPermission;
 
 public class ServiceLocationServiceChannelsApiImpl extends ServiceLocationServiceChannelsApi {
 
@@ -34,7 +37,13 @@ public class ServiceLocationServiceChannelsApiImpl extends ServiceLocationServic
   private ServiceController serviceController;
 
   @Inject
+  private SecurityController securityController;
+
+  @Inject
   private HttpCacheController httpCacheController;
+  
+  @Inject
+  private ClientContainer clientContainer;
   
   @Inject
   private RestResponseBuilder restResponseBuilder;
@@ -57,6 +66,23 @@ public class ServiceLocationServiceChannelsApiImpl extends ServiceLocationServic
     }
     
     return createNotFound(NOT_FOUND);
+  }
+  
+  @Override
+  public Response updateServiceLocationServiceChannel(String serviceLocationServiceChannelIdParam, ServiceLocationServiceChannel newServiceLocationChannel, Request request) {
+    ServiceLocationServiceChannelId serviceLocationServiceChannelId = kuntaApiIdFactory.createServiceLocationServiceChannelId(serviceLocationServiceChannelIdParam);
+    ServiceLocationServiceChannel serviceLocationServiceChannel = serviceController.findServiceLocationServiceChannel(serviceLocationServiceChannelId);
+    if (serviceLocationServiceChannel == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(serviceLocationServiceChannel.getOrganizationId());
+    if (!securityController.hasOrganizationPermission(clientContainer.getClient(), organizationId, ClientOrganizationPermission.UPDATE_SERVICE_CHANNELS)) {
+      return createForbidden("No permission to update service location service channel");
+    }
+    
+    ServiceLocationServiceChannel updatedServiceLocationServiceChannel = serviceController.updateServiceLocationServiceChannel(serviceLocationServiceChannelId, newServiceLocationChannel);
+    return httpCacheController.sendModified(updatedServiceLocationServiceChannel, updatedServiceLocationServiceChannel.getId());
   }
   
   @Override
