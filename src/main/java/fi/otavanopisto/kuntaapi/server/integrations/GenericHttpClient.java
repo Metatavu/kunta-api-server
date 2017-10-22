@@ -23,7 +23,12 @@ import org.apache.http.HttpResponse;
 import org.apache.http.StatusLine;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpHead;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpPut;
+import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.client.utils.URIBuilder;
+import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
@@ -36,20 +41,21 @@ import com.fasterxml.jackson.databind.Module;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import org.apache.http.client.methods.HttpHead;
-import org.apache.http.client.methods.HttpUriRequest;
 
 /**
  * Response aware HTTP client for integrations
  * 
- * @author Metatavu
+ * @author Antti Leppä
+ * @author Heikki Kurhinen
  */
 @Dependent
 public class GenericHttpClient {
 
+  private static final String MALFORMED_ADDRESS = "Malformed address %s";
   private static final String REQUEST_TIMED_OUT = "Request timed out";
   private static final String RESPONSE_PARSING_FAILED = "Response parsing failed";
   private static final String INVALID_URI_SYNTAX = "Invalid uri syntax";
+  private static final String FAILED_TO_SERIALIZE_BODY = "Failed to serialize body";
   
   @Inject
   private Logger logger;
@@ -105,12 +111,12 @@ public class GenericHttpClient {
    */
   public <T> Response<T> doHEADRequest(URI uri, ResultType<T> resultType, Map<String, String> extraHeaders) {
     if (StringUtils.isBlank(uri.getHost())) {
-      return new Response<>(400, String.format("Malformed address %s", uri), null);
+      return new Response<>(400, String.format(MALFORMED_ADDRESS, uri), null);
     }
     
     CloseableHttpClient httpClient = HttpClients.createDefault();
     try {
-      return executeHEADRequest(resultType, uri, httpClient, extraHeaders);
+      return executeHEADRequest(resultType, uri, httpClient, extraHeaders, null);
     } finally {
       closeClient(httpClient);
     }
@@ -152,7 +158,55 @@ public class GenericHttpClient {
     }
     
     try {
-      return doGETRequest(uriBuilder.build(), resultType, null);
+      return doGETRequest(uriBuilder.build(), resultType, null, null);
+    } catch (URISyntaxException e) {
+      logger.log(Level.SEVERE, INVALID_URI_SYNTAX, e);
+      return new Response<>(500, INVALID_URI_SYNTAX, null);
+    }
+  }
+  
+  /**
+   * Executes a put request into a specified URI
+   * 
+   * @param basePath base path for all requests
+   * @param path path of request
+   * @param resultType type of request
+   * @param queryParams query params
+   * @param body body
+   * @return the response
+   */
+  public <T> Response<T> doPUTRequest(String basePath, String path, ResultType<T> resultType, Map<String, Object> queryParams, String body) {
+    return doPUTRequest(basePath, path, resultType, queryParams, body, null);
+  }
+  
+  /**
+   * Executes a put request into a specified URI
+   * 
+   * @param basePath base path for all requests
+   * @param path path of request
+   * @param resultType type of request
+   * @param queryParams query params
+   * @param body body
+   * @param accessToken access token (optional)
+   * @return the response
+   */
+  public <T> Response<T> doPUTRequest(String basePath, String path, ResultType<T> resultType, Map<String, Object> queryParams, String body, String accessToken) {
+    URIBuilder uriBuilder;
+    try {
+      uriBuilder = new URIBuilder(String.format("%s%s", basePath, path));
+    } catch (URISyntaxException e) {
+      logger.log(Level.SEVERE, INVALID_URI_SYNTAX, e);
+      return new Response<>(500, INVALID_URI_SYNTAX, null);
+    }
+    
+    if (queryParams != null) {
+      for (Entry<String, Object> entry : queryParams.entrySet()) {
+        uriBuilder.addParameter(entry.getKey(), parameterToString(entry.getValue()));
+      }
+    }
+    
+    try {
+      return doPUTRequest(uriBuilder.build(), resultType, null, body, accessToken);
     } catch (URISyntaxException e) {
       logger.log(Level.SEVERE, INVALID_URI_SYNTAX, e);
       return new Response<>(500, INVALID_URI_SYNTAX, null);
@@ -167,9 +221,81 @@ public class GenericHttpClient {
    * @return the response
    */
   public <T> Response<T> doGETRequest(URI uri, ResultType<T> resultType) {
-    return doGETRequest(uri, resultType, null);
+    return doGETRequest(uri, resultType, null, null);
   }
 
+  /**
+   * Executes a put request into a specified URI
+   * 
+   * @param uri request uri
+   * @param resultType type of request
+   * @param extraHeaders extra headers for the request
+   * @param body body
+   * @param accessToken access token (optional)
+   * @return the response
+   */
+  public <T> Response<T> doPUTRequest(URI uri, ResultType<T> resultType, Map<String, String> extraHeaders, Object body, String accessToken) {
+    if (StringUtils.isBlank(uri.getHost())) {
+      return new Response<>(400, String.format(MALFORMED_ADDRESS, uri), null);
+    }
+    
+    CloseableHttpClient httpClient = HttpClients.createDefault();
+    try {
+      return executePUTRequest(resultType, uri, httpClient, extraHeaders, body, accessToken);
+    } finally {
+      closeClient(httpClient);
+    }
+  }
+  
+  /**
+   * Executes a post request into a specified URI
+   * 
+   * @param uri request uri
+   * @param resultType type of request
+   * @param extraHeaders extra headers for the request
+   * @param body body
+   * @return the response
+   */
+  public <T> Response<T> doPOSTRequest(URI uri, ResultType<T> resultType, Map<String, String> extraHeaders, Object body) {
+    return doPOSTRequest(uri, resultType, extraHeaders, body, null);
+  }
+  
+  /**
+   * Executes a post request into a specified URI
+   * 
+   * @param uri request uri
+   * @param resultType type of request
+   * @param extraHeaders extra headers for the request
+   * @param body body
+   * @return the response
+   */
+  public <T> Response<T> doPOSTRequest(URI uri, ResultType<T> resultType, Map<String, String> extraHeaders, byte[] body) {
+    return doPOSTRequest(uri, resultType, extraHeaders, body, null);
+  }
+
+  /**
+   * Executes a post request into a specified URI
+   * 
+   * @param uri request uri
+   * @param resultType type of request
+   * @param extraHeaders extra headers for the request
+   * @param body body
+   * @param accessToken access token (optional)
+   * @return the response
+   */
+  public <T> Response<T> doPOSTRequest(URI uri, ResultType<T> resultType, Map<String, String> extraHeaders, Object body, String accessToken) {
+    if (StringUtils.isBlank(uri.getHost())) {
+      return new Response<>(400, String.format(MALFORMED_ADDRESS, uri), null);
+    }
+    
+    CloseableHttpClient httpClient = HttpClients.createDefault();
+    try {
+      return executePOSTRequest(resultType, uri, httpClient, extraHeaders, body, accessToken);
+    } finally {
+      closeClient(httpClient);
+    }
+  }
+  
   /**
    * Executes a get request into a specified URI
    * 
@@ -179,38 +305,91 @@ public class GenericHttpClient {
    * @return the response
    */
   public <T> Response<T> doGETRequest(URI uri, ResultType<T> resultType, Map<String, String> extraHeaders) {
+    return doGETRequest(uri, resultType, extraHeaders, null);
+  }
+
+  /**
+   * Executes a get request into a specified URI
+   * 
+   * @param uri request uri
+   * @param resultType type of request
+   * @param extraHeaders extra headers for the request
+   * @param acessToken access token (optional)
+   * @return the response
+   */
+  public <T> Response<T> doGETRequest(URI uri, ResultType<T> resultType, Map<String, String> extraHeaders, String acessToken) {
     if (StringUtils.isBlank(uri.getHost())) {
-      return new Response<>(400, String.format("Malformed address %s", uri), null);
+      return new Response<>(400, String.format(MALFORMED_ADDRESS, uri), null);
     }
     
     CloseableHttpClient httpClient = HttpClients.createDefault();
     try {
-      return executeGETRequest(resultType, uri, httpClient, extraHeaders);
+      return executeGETRequest(resultType, uri, httpClient, extraHeaders, acessToken);
     } finally {
       closeClient(httpClient);
     }
   }
 
   private <T> Response<T> executeGETRequest(ResultType<T> resultType, URI uri,
-      CloseableHttpClient httpClient, Map<String, String> extraHeaders) {
+      CloseableHttpClient httpClient, Map<String, String> extraHeaders, String accessToken) {
     HttpGet httpGet = new HttpGet(uri);
 
-    return executeRequest(httpClient, httpGet, resultType, extraHeaders);
+    return executeRequest(httpClient, httpGet, resultType, extraHeaders, accessToken);
+  }
+
+  private <T> Response<T> executePUTRequest(ResultType<T> resultType, URI uri, CloseableHttpClient httpClient, Map<String, String> extraHeaders, Object body, String accessToken) {
+    HttpPut httpPut = new HttpPut(uri);
+    
+    if (body instanceof HttpEntity) {
+      httpPut.setEntity((HttpEntity) body);
+    } else {
+      try {
+        byte[] bodyBytes = getJsonObjectMapper().writeValueAsBytes(body);
+        httpPut.setEntity(new ByteArrayEntity(bodyBytes));
+      } catch (IOException e) {
+        logger.log(Level.SEVERE, FAILED_TO_SERIALIZE_BODY, e);
+        return new Response<>(500, FAILED_TO_SERIALIZE_BODY, null);
+      }
+    }
+    
+    return executeRequest(httpClient, httpPut, resultType, extraHeaders, accessToken);
+  }
+
+  private <T> Response<T> executePOSTRequest(ResultType<T> resultType, URI uri, CloseableHttpClient httpClient, Map<String, String> extraHeaders, Object body, String accessToken) {
+    HttpPost httpPost = new HttpPost(uri);
+
+    if (body instanceof HttpEntity) {
+      httpPost.setEntity((HttpEntity) body);
+    } else {
+      try {
+        byte[] bodyBytes = getJsonObjectMapper().writeValueAsBytes(body);
+        httpPost.setEntity(new ByteArrayEntity(bodyBytes));
+      } catch (IOException e) {
+        logger.log(Level.SEVERE, FAILED_TO_SERIALIZE_BODY, e);
+        return new Response<>(500, FAILED_TO_SERIALIZE_BODY, null);
+      }
+    }
+    
+    return executeRequest(httpClient, httpPost, resultType, extraHeaders, accessToken);
   }
   
   private <T> Response<T> executeHEADRequest(ResultType<T> resultType, URI uri,
-      CloseableHttpClient httpClient, Map<String, String> extraHeaders) {
+      CloseableHttpClient httpClient, Map<String, String> extraHeaders, String accessToken) {
     HttpHead httpHead = new HttpHead(uri);
     
-    return executeRequest(httpClient, httpHead, resultType, extraHeaders);
+    return executeRequest(httpClient, httpHead, resultType, extraHeaders, accessToken);
   }
   
-  private <T> Response<T> executeRequest(CloseableHttpClient httpClient, HttpUriRequest request, ResultType<T> resultType, Map<String, String> extraHeaders) {
+  private <T> Response<T> executeRequest(CloseableHttpClient httpClient, HttpUriRequest request, ResultType<T> resultType, Map<String, String> extraHeaders, String accessToken) {
     
     if (extraHeaders != null) {
       for (Entry<String, String> extraHeader : extraHeaders.entrySet()) {
         request.addHeader(extraHeader.getKey(), extraHeader.getValue());
       }
+    }
+    
+    if (accessToken != null) {
+      request.addHeader("Authorization", String.format("Bearer %s", accessToken));
     }
     
     try {
@@ -260,17 +439,27 @@ public class GenericHttpClient {
       String httpResponseContent = IOUtils.toString(entity.getContent());
       String contentType = getContentType(httpResponse);
       if ("text/xml".equals(contentType)) {
-        XmlMapper xmlMapper = new XmlMapper();
-        registerModules(xmlMapper);
+        XmlMapper xmlMapper = getXmlObjectMapper();
         return new Response<>(statusCode, message, (T) xmlMapper.readValue(httpResponseContent, typeReference));
       } else {
-        ObjectMapper objectMapper = new ObjectMapper();
-        registerModules(objectMapper);
+        ObjectMapper objectMapper = getJsonObjectMapper();
         return new Response<>(statusCode, message, (T) objectMapper.readValue(httpResponseContent, typeReference));
       }
     } finally {
       EntityUtils.consume(entity);
     }
+  }
+
+  private XmlMapper getXmlObjectMapper() {
+    XmlMapper xmlMapper = new XmlMapper();
+    registerModules(xmlMapper);
+    return xmlMapper;
+  }
+
+  private ObjectMapper getJsonObjectMapper() {
+    ObjectMapper objectMapper = new ObjectMapper();
+    registerModules(objectMapper);
+    return objectMapper;
   }
   
   private void registerModules(ObjectMapper objectMapper) {
