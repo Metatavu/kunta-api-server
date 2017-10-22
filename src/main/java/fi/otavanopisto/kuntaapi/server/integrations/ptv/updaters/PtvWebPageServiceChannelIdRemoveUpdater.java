@@ -82,7 +82,7 @@ public class PtvWebPageServiceChannelIdRemoveUpdater extends IdUpdater {
       }
       
       String path = String.format("/api/%s/ServiceChannel/%s", PtvConsts.VERSION, ptvWebPageServiceChannelId.getId());
-      ApiResponse<V6VmOpenApiWebPageChannel> response = ptvClient.doGETRequest(path, new ResultType<V6VmOpenApiWebPageChannel>() {}, null, null);
+      ApiResponse<V6VmOpenApiWebPageChannel> response = ptvClient.doGETRequest(null, path, new ResultType<V6VmOpenApiWebPageChannel>() {}, null, null);
       if (response.getStatus() == 404) {
         serviceChannelTasksQueue.enqueueTask(false, new WebPageServiceChannelRemoveTask(ptvWebPageServiceChannelId));
       }

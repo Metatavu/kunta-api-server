@@ -82,7 +82,7 @@ public class PtvServiceLocationServiceChannelIdRemoveUpdater extends IdUpdater {
       }
       
       String path = String.format("/api/%s/ServiceChannel/%s", PtvConsts.VERSION, ptvServiceLocationServiceChannelId.getId());
-      ApiResponse<V6VmOpenApiServiceLocationChannel> response = ptvClient.doGETRequest(path, new ResultType<V6VmOpenApiServiceLocationChannel>() {}, null, null);
+      ApiResponse<V6VmOpenApiServiceLocationChannel> response = ptvClient.doGETRequest(null, path, new ResultType<V6VmOpenApiServiceLocationChannel>() {}, null, null);
       if (response.getStatus() == 404) {
         serviceChannelTasksQueue.enqueueTask(false, new ServiceLocationServiceChannelRemoveTask(ptvServiceLocationServiceChannelId));
       }

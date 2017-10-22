@@ -62,7 +62,7 @@
 
     <!-- Kunta API Spec -->
 
-    <kunta-api-spec.version>0.1.95</kunta-api-spec.version>
+    <kunta-api-spec.version>0.1.96</kunta-api-spec.version>
     
     <!-- Integrations -->
     
@@ -72,7 +72,7 @@
 
     <!-- PTV -->
     
-    <ptv-rest-client.version>0.6.2</ptv-rest-client.version>
+    <ptv-rest-client.version>0.6.4</ptv-rest-client.version>
     
     <!-- Jackson -->
     

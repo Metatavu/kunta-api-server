@@ -82,7 +82,7 @@ public class PtvPhoneServiceChannelIdRemoveUpdater extends IdUpdater {
       }
       
       String path = String.format("/api/%s/ServiceChannel/%s", PtvConsts.VERSION, ptvPhoneServiceChannelId.getId());
-      ApiResponse<V6VmOpenApiPhoneChannel> response = ptvClient.doGETRequest(path, new ResultType<V6VmOpenApiPhoneChannel>() {}, null, null);
+      ApiResponse<V6VmOpenApiPhoneChannel> response = ptvClient.doGETRequest(null, path, new ResultType<V6VmOpenApiPhoneChannel>() {}, null, null);
       if (response.getStatus() == 404) {
         serviceChannelTasksQueue.enqueueTask(false, new PhoneServiceChannelRemoveTask(ptvPhoneServiceChannelId));
       }

@@ -82,7 +82,7 @@ public class PtvServiceIdRemoveUpdater extends IdUpdater {
         continue;
       }
       
-      ApiResponse<V6VmOpenApiService> response = ptvApi.getServiceApi().apiV6ServiceByIdGet(ptvServiceId.getId());
+      ApiResponse<V6VmOpenApiService> response = ptvApi.getServiceApi(null).apiV6ServiceByIdGet(ptvServiceId.getId());
       if (response.getStatus() == 404) {
         taskRequest.fire(new TaskRequest(false, new IdTask<ServiceId>(Operation.REMOVE, ptvServiceId)));
       }

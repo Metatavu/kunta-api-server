@@ -82,7 +82,7 @@ public class PtvElectronicServiceChannelIdRemoveUpdater extends IdUpdater {
       }
 
       String path = String.format("/api/%s/ServiceChannel/%s", PtvConsts.VERSION, ptvElectronicServiceChannelId.getId());
-      ApiResponse<V6VmOpenApiElectronicChannel> response = ptvClient.doGETRequest(path, new ResultType<V6VmOpenApiElectronicChannel>() {}, null, null);
+      ApiResponse<V6VmOpenApiElectronicChannel> response = ptvClient.doGETRequest(null, path, new ResultType<V6VmOpenApiElectronicChannel>() {}, null, null);
       if (response.getStatus() == 404) {
         serviceChannelTasksQueue.enqueueTask(false, new ElectronicServiceChannelRemoveTask(ptvElectronicServiceChannelId));
       }

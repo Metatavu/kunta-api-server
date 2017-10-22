@@ -8,6 +8,7 @@ import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -46,7 +47,7 @@ public class PtvClient extends fi.metatavu.ptv.client.ApiClient {
   private GenericHttpClient httpClient;
   
   @Override
-  public <T> ApiResponse<T> doGETRequest(String path, ResultType<T> resultType, Map<String, Object> queryParams, Map<String, Object> postParams) {
+  public <T> ApiResponse<T> doGETRequest(String accessToken, String path, ResultType<T> resultType, Map<String, Object> queryParams, Map<String, Object> postParams) {
     URIBuilder uriBuilder;
     try {
       uriBuilder = new URIBuilder(String.format("%s%s", getBaseUrl(), path));
@@ -75,17 +76,44 @@ public class PtvClient extends fi.metatavu.ptv.client.ApiClient {
   }
   
   @Override
-  public <T> ApiResponse<T> doPOSTRequest(String path, ResultType<T> resultType, Map<String, Object> queryParams, Map<String, Object> postParams) {
+  public <T> ApiResponse<T> doPOSTRequest(String accessToken, String path, ResultType<T> resultType, Map<String, Object> queryParams, Map<String, Object> postParams, Object body) {
     return null;
   }
 
   @Override
-  public <T> ApiResponse<T> doPUTRequest(String path, ResultType<T> resultType, Map<String, Object> queryParams, Map<String, Object> postParams) {
-    return null;
+  public <T> ApiResponse<T> doPUTRequest(String accessToken, String path, ResultType<T> resultType, Map<String, Object> queryParams, Map<String, Object> postParams, Object body) {
+    URIBuilder uriBuilder;
+    try {
+      uriBuilder = new URIBuilder(String.format("%s%s", getBaseUrl(), path));
+    } catch (URISyntaxException e) {
+      logger.log(Level.SEVERE, INVALID_URI_SYNTAX, e);
+      return new ApiResponse<>(500, INVALID_URI_SYNTAX, null);
+    }
+    
+    if (queryParams != null) {
+      for (Entry<String, Object> entry : queryParams.entrySet()) {
+        addQueryParam(uriBuilder, entry);
+      }
+    }
+    
+    URI uri;
+    try {
+      uri = uriBuilder.build();
+    } catch (URISyntaxException e) {
+      logger.log(Level.SEVERE, INVALID_URI_SYNTAX, e);
+      return new ApiResponse<>(500, INVALID_URI_SYNTAX, null);
+    }
+    
+    Map<String, String> extraHeaders = new HashMap<>();
+    extraHeaders.put("Content-Type", "application/json");
+    
+    Response<T> response = httpClient.doPUTRequest(uri, new GenericHttpClient.ResultTypeWrapper<>(resultType.getType()), extraHeaders, body, accessToken);
+    
+    return new ApiResponse<>(response.getStatus(), response.getMessage(), response.getResponseEntity());
   }
 
   @Override
-  public <T> ApiResponse<T> doDELETERequest(String path, ResultType<T> resultType, Map<String, Object> queryParams, Map<String, Object> postParams) {
+  public <T> ApiResponse<T> doDELETERequest(String accessToken, String path, ResultType<T> resultType, Map<String, Object> queryParams, Map<String, Object> postParams) {
     return null;
   }
   

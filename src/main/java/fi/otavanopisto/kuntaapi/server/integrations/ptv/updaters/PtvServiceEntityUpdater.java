@@ -143,7 +143,7 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
       return;
     }
     
-    ApiResponse<V6VmOpenApiService> response = ptvApi.getServiceApi().apiV6ServiceByIdGet(ptvServiceId.getId());
+    ApiResponse<V6VmOpenApiService> response = ptvApi.getServiceApi(null).apiV6ServiceByIdGet(ptvServiceId.getId());
     if (response.isOk()) {
       Identifier identifier = identifierController.acquireIdentifier(orderIndex, ptvServiceId);
       

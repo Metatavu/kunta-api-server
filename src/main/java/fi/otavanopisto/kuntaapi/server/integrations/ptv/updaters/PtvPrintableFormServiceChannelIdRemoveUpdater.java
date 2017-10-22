@@ -82,7 +82,7 @@ public class PtvPrintableFormServiceChannelIdRemoveUpdater extends IdUpdater {
       }
       
       String path = String.format("/api/%s/ServiceChannel/%s", PtvConsts.VERSION, ptvPrintableFormServiceChannelId.getId());
-      ApiResponse<V6VmOpenApiPrintableFormChannel> response = ptvClient.doGETRequest(path, new ResultType<V6VmOpenApiPrintableFormChannel>() {}, null, null);
+      ApiResponse<V6VmOpenApiPrintableFormChannel> response = ptvClient.doGETRequest(null, path, new ResultType<V6VmOpenApiPrintableFormChannel>() {}, null, null);
       if (response.getStatus() == 404) {
         serviceChannelTasksQueue.enqueueTask(false, new PrintableFormServiceChannelRemoveTask(ptvPrintableFormServiceChannelId));
       }
