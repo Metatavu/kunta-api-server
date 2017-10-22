@@ -9,7 +9,6 @@ import javax.enterprise.context.ApplicationScoped;
 
 import org.apache.commons.lang3.StringUtils;
 
-import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
 import fi.metatavu.ptv.client.model.V4VmOpenApiPhone;
 import fi.metatavu.ptv.client.model.V4VmOpenApiPhoneSimple;
 import fi.metatavu.ptv.client.model.V4VmOpenApiPhoneWithType;
@@ -23,8 +22,13 @@ import fi.metatavu.ptv.client.model.VmOpenApiLanguageItem;
 import fi.metatavu.ptv.client.model.VmOpenApiLocalizedListItem;
 import fi.metatavu.ptv.client.model.VmOpenApiMunicipality;
 
+/**
+ * Translator for translating resources from PTV out format into PTV in format
+ * 
+ * @author Antti Leppä
+ */
 @ApplicationScoped
-public class PtvInTranslator {
+public class PtvOutPtvInTranslator {
 
   /**
    * Translates PTV out service location channel into PTV in service location channel
@@ -53,52 +57,6 @@ public class PtvInTranslator {
     result.setServiceChannelNames(translateLocalizedListItemsToLanguageItems(ptvResource.getServiceChannelNames()));
     result.setServiceHours(ptvResource.getServiceHours());
     result.setWebPages(ptvResource.getWebPages());
-    return result;
-  }
-
-  /**
-   * Translates list of localized values into list of VmOpenApiLanguageItems
-   * 
-   * @param localizedValues list of LocalizedValue
-   * @return list of VmOpenApiLanguageItems
-   */
-  public List<VmOpenApiLanguageItem> translateLocalizedValuesIntoLanguageItems(List<LocalizedValue> localizedValues) {
-    if (localizedValues == null || localizedValues.isEmpty()) {
-      return Collections.emptyList();
-    }
-    
-    List<VmOpenApiLanguageItem> result = new ArrayList<>(localizedValues.size());
-    
-    for (LocalizedValue localizedValue : localizedValues) {
-      VmOpenApiLanguageItem languageItem = translateLocalizedValuesIntoLanguageItem(localizedValue);
-      if (languageItem != null) {
-        result.add(languageItem);
-      }
-    }
-
-    return result;
-  }
-
-  /**
-   * Translates list of localized values into list of VmOpenApiLanguageItems
-   * 
-   * @param localizedValues list of LocalizedValue
-   * @return list of VmOpenApiLanguageItems
-   */
-  public List<VmOpenApiLocalizedListItem> translateLocalizedValuesIntoLocalizedListItems(List<LocalizedValue> localizedValues) {
-    if (localizedValues == null || localizedValues.isEmpty()) {
-      return Collections.emptyList();
-    }
-    
-    List<VmOpenApiLocalizedListItem> result = new ArrayList<>(localizedValues.size());
-    
-    for (LocalizedValue localizedValue : localizedValues) {
-      VmOpenApiLocalizedListItem localizedListItem = translateLocalizedValuesIntoLocalizedListItem(localizedValue);
-      if (localizedListItem != null) {
-        result.add(localizedListItem);
-      }
-    }
-
     return result;
   }
 
@@ -276,28 +234,4 @@ public class PtvInTranslator {
     return result;
   }
   
-  private VmOpenApiLanguageItem translateLocalizedValuesIntoLanguageItem(LocalizedValue localizedValue) {
-    if (localizedValue == null) {
-      return null;
-    }
-    
-    VmOpenApiLanguageItem result = new VmOpenApiLanguageItem();
-    result.setLanguage(localizedValue.getLanguage());
-    result.setValue(localizedValue.getValue());
-    
-    return result;
-  }
-
-  private VmOpenApiLocalizedListItem translateLocalizedValuesIntoLocalizedListItem(LocalizedValue localizedValue) {
-    if (localizedValue == null) {
-      return null;
-    }
-    
-    VmOpenApiLocalizedListItem result = new VmOpenApiLocalizedListItem();
-    result.setLanguage(localizedValue.getLanguage());
-    result.setValue(localizedValue.getValue());
-    result.setType(localizedValue.getType());
-
-    return result;
-  }
 }

@@ -29,7 +29,8 @@ import fi.otavanopisto.kuntaapi.server.id.WebPageServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceChannelProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.client.PtvApi;
-import fi.otavanopisto.kuntaapi.server.integrations.ptv.in.PtvInTranslator;
+import fi.otavanopisto.kuntaapi.server.integrations.ptv.in.KuntaApiPtvTranslator;
+import fi.otavanopisto.kuntaapi.server.integrations.ptv.in.PtvOutPtvInTranslator;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.resources.PtvElectronicServiceChannelResourceContainer;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.resources.PtvPhoneServiceChannelResourceContainer;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.resources.PtvPrintableFormServiceChannelResourceContainer;
@@ -77,7 +78,10 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
   private PtvTranslator ptvTranslator;
 
   @Inject
-  private PtvInTranslator ptvInTranslator;
+  private PtvOutPtvInTranslator ptvOutPtvInTranslator;
+
+  @Inject
+  private KuntaApiPtvTranslator kuntaApiPtvTranslator;
   
   @Inject
   private PtvApi ptvApi; 
@@ -124,7 +128,7 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
       
       byte[] serializeChannelData = ptvServiceChannelResolver.serializeChannelData(channelData);
       V6VmOpenApiServiceLocationChannel ptvServiceLocationServiceChannel = ptvServiceChannelResolver.unserializeServiceLocationChannel(serializeChannelData);
-      V6VmOpenApiServiceLocationChannelInBase ptvServiceLocationServiceChannelIn = ptvInTranslator.translateServiceLocationChannel(ptvServiceLocationServiceChannel);
+      V6VmOpenApiServiceLocationChannelInBase ptvServiceLocationServiceChannelIn = ptvOutPtvInTranslator.translateServiceLocationChannel(ptvServiceLocationServiceChannel);
       
       if (ptvServiceLocationServiceChannelIn == null) {
         logger.log(Level.SEVERE, () -> String.format("Failed to translate ptv %s service location service channel", ptvServiceLocationServiceChannelId.getId()));
@@ -139,8 +143,10 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
       }
       
       ServiceChannelApi serviceChannelApi = ptvApi.getServiceChannelApi(kuntaApiOrganizationId);
-      ptvServiceLocationServiceChannelIn.setServiceChannelNames(ptvInTranslator.translateLocalizedValuesIntoLanguageItems(serviceLocationServiceChannel.getNames()));
-      ptvServiceLocationServiceChannelIn.setServiceChannelDescriptions(ptvInTranslator.translateLocalizedValuesIntoLocalizedListItems(serviceLocationServiceChannel.getDescriptions()));
+      ptvServiceLocationServiceChannelIn.setServiceChannelNames(kuntaApiPtvTranslator.translateLocalizedValuesIntoLanguageItems(serviceLocationServiceChannel.getNames()));
+      ptvServiceLocationServiceChannelIn.setServiceChannelDescriptions(kuntaApiPtvTranslator.translateLocalizedValuesIntoLocalizedListItems(serviceLocationServiceChannel.getDescriptions()));
+      ptvServiceLocationServiceChannelIn.setPhoneNumbers(kuntaApiPtvTranslator.translatePhoneNumbers(serviceLocationServiceChannel.getPhoneNumbers()));
+      ptvServiceLocationServiceChannelIn.setAddresses(kuntaApiPtvTranslator.translateAddresses(serviceLocationServiceChannel.getAddresses()));
       
       ApiResponse<V6VmOpenApiServiceLocationChannel> response = serviceChannelApi.apiV6ServiceChannelServiceLocationByIdPut(ptvServiceLocationServiceChannelId.getId(), ptvServiceLocationServiceChannelIn);
       if (response.isOk()) {
