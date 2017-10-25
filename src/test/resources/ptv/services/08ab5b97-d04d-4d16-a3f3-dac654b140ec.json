@@ -1,0 +1,418 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "491",
+      "name" : [ {
+        "value" : "S:t Michel",
+        "language" : "sv"
+      }, {
+        "value" : "Mikkeli",
+        "language" : "fi"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Perusopetus",
+      "language" : "fi"
+    }, {
+      "value" : "Grundläggande utbildning",
+      "language" : "sv"
+    }, {
+      "value" : "Basic education",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Till denna serviceundergrupp hör både den egentliga grundläggande utbildningen med innehåll och mål samt direkta tjänster som erbjuds i anslutning till grundläggande utbildningen och för att stöda den, t.ex. skoltransporter, skolmat och assistanstjänster. Till denna grupp hör också ärenden i anslutning till avläggande av grundläggande utbildning utomlands i enlighet med den finska grundläggande utbildningen.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains basic education itself with its contents and objectives as well as the services offered directly in connection with and in support of basic education, for example school transport, school lunches and an assistant’s services. The class also includes issues related to completing abroad a basic education that is in line with the Finnish basic education.",
+      "language" : "en"
+    }, {
+      "value" : "Tähän palvelualaluokkaan kuuluvat sekä varsinainen perusopetus sisältöineen ja tavoitteineen sekä perusopetuksen yhteydessä ja sen tukemiseksi välittömästi tarjottavat palvelut, esimerkiksi koulukuljetukset, kouluruokailu ja avustajapalvelut. Tähän luokkaan kuuluvat myös Suomen perusopetuksen mukaisen peruskoulutuksen ulkomailla suorittamiseen liittyvät asiat.",
+      "language" : "fi"
+    } ],
+    "code" : "P6.2",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1062",
+    "parentId" : "fa8991cb-1264-4950-954c-adc00a017911",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1060"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "AreaType",
+  "publishingStatus" : "Published",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-03-12T20:08:56.36852",
+  "id" : "08ab5b97-d04d-4d16-a3f3-dac654b140ec",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "047b91ef-aa08-4be6-b72d-1231e61c5cb9",
+      "name" : "Hakemus vieraan oppilasalueen kouluun"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "0c00262c-3529-4cc3-b0fe-2f03a2c4e4ce",
+      "name" : "Testi puhelinasiointikanava"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "1af0ec8c-b647-4f40-b1a9-db6052c5096d",
+      "name" : "Hakemus muun kuin lähikoulun 7. luokalle"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "1dec7c89-96b8-4860-83d0-bad8b8897ba6",
+      "name" : "Mikkelin Lyseon koulu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "4d52960e-2e39-4d9e-8f7c-5bc8994b024f",
+      "name" : "Ihastjärven koulu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "614bdc8a-bb55-4f36-be4e-7e1bea9a7706",
+      "name" : "Testiverkkoasiointikanava"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "74b3ac81-cf57-40b0-b0b1-b9dcf752a143",
+      "name" : "Testi verkkosivu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "97c01787-b57c-42f1-a002-7d09b363993f",
+      "name" : "Testi"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "a31fbcc7-d45f-4eb2-a32a-afd134d02aa5",
+      "name" : "Kalevankankaan koulu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "b5fba182-2a08-44aa-a168-c11f8d1d4664",
+      "name" : "Anttolan yhtenäiskoulu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "b8e980f4-58c7-477b-a9d1-b01d50be50f0",
+      "name" : "Wilma"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : null,
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Perusopetus",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "peruskouluopetus",
+    "type" : "AlternateName"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "basundervisning",
+      "language" : "sv"
+    }, {
+      "value" : "perusopetus",
+      "language" : "fi"
+    }, {
+      "value" : "basic education",
+      "language" : "en"
+    } ],
+    "code" : "",
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p1275",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p33827"
+  }, {
+    "name" : [ {
+      "value" : "Grundschule, Gesamtschule",
+      "language" : "de"
+    }, {
+      "value" : "peruskoulu",
+      "language" : "fi"
+    }, {
+      "value" : "grundskolan",
+      "language" : "sv"
+    }, {
+      "value" : "comprehensive school",
+      "language" : "en"
+    }, {
+      "value" : "põhikool",
+      "language" : "et"
+    } ],
+    "code" : "",
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p14592",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p48279"
+  }, {
+    "name" : [ {
+      "value" : "oppivelvollisuus",
+      "language" : "fi"
+    }, {
+      "value" : "läroplikt",
+      "language" : "sv"
+    }, {
+      "value" : "compulsory education",
+      "language" : "en"
+    } ],
+    "code" : "",
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p7089",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p7187"
+  } ],
+  "lifeEvents" : [ ],
+  "statutoryServiceGeneralDescriptionId" : "d0800049-710a-4919-9e0c-c371c00adbe2",
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : ""
+  }, {
+    "name" : [ {
+      "value" : "Lapset ja lapsiperheet",
+      "language" : "fi"
+    }, {
+      "value" : "Children and families with children",
+      "language" : "en"
+    }, {
+      "value" : "Barn och barnfamiljer",
+      "language" : "sv"
+    } ],
+    "code" : "KR1.2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2003",
+    "parentId" : "07e55fa9-0455-4238-8e7d-5fdbfba431b6",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001"
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Mikkelin kaupungissa on 23 peruskoulua. Kullekin koululle on määritelty oppilasalue, jonka mukaisesti oppilaan lähikoulu määräytyy.",
+    "type" : "ShortDescription"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLineAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTimeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTimeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Mikkeli lähettää aloittaville oppilaille kotiin kirjeen, jossa kerrotaan heidän lähikoulunsa. Huoltaja ilmoittaa lapsen ensimmäiselle luokalle tammikuun aikana.\nOppivelvollinen voi hakea myös muuhun kuin kunnan osoittamaan kouluun. Lapsen huoltaja toimittaa tällöin hakemuksen halutun koulun rehtorille. Tällöin Mikkelin kaupunki ei järjestä eikä maksa koulukuljetusta.\nMuulle kuin ensimmäiselle luokalle ja kesken lukuvuotta Mikkeliin muuttavan oppilaan huoltaja ottaa ensisijaisesti yhteyttä oppilasalueensa lähikoulun rehtoriin.",
+    "type" : "ServiceUserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Kunta on velvollinen järjestämään perusopetusta kaikille sen alueella asuville oppivelvollisille. Mikkelin kaupungissa on 23 peruskoulua, joista 5 on yhtenäiskoulua, 2 yläkoulua ja 16 alakoulua. Kullekin koululle on määritelty oppilasalue, jonka mukaisesti oppilaan lähikoulu määräytyy.\nMikkeli osoittaa oppivelvolliselle koulupaikan ns. lähikoulussa. Lähikoulu ei välttämättä ole lähin koulu. Oppivelvollinen voi pyrkiä myös muuhun kuin kunnan osoittamaan kouluun, mutta hänellä ei ole subjektiivista oikeutta päästä tähän kouluun. Pääsääntöisesti koululaisen oma koulu on oppilasalueen lähikoulu.",
+    "type" : "Description"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "ae2682d3-6238-4019-b34f-b078c5f9bb50",
+      "name" : "Mikkelin kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProduced",
+    "organization" : {
+      "id" : "ae2682d3-6238-4019-b34f-b078c5f9bb50",
+      "name" : "Mikkelin kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

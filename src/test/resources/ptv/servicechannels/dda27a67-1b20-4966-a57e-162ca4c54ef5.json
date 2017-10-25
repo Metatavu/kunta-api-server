@@ -1,0 +1,174 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Rouhialankatu",
+        "language" : "fi"
+      } ],
+      "streetNumber" : "4",
+      "postalCode" : "50100",
+      "postOffice" : [ {
+        "value" : "MIKKELI",
+        "language" : "sv"
+      }, {
+        "value" : "MIKKELI",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "491",
+        "name" : [ {
+          "value" : "S:t Michel",
+          "language" : "sv"
+        }, {
+          "value" : "Mikkeli",
+          "language" : "fi"
+        } ]
+      },
+      "additionalInformation" : [ {
+        "value" : "käynti sisäpihalta",
+        "language" : "fi"
+      } ],
+      "latitude" : "6840381.653",
+      "longitude" : "514607.162",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi" ],
+  "areas" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "2f21448e-e461-4ad0-a87a-47bcb08e578e",
+      "name" : "Metatavu testaa"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Charged",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "442909201",
+    "language" : "fi"
+  } ],
+  "organizationId" : "ae2682d3-6238-4019-b34f-b078c5f9bb50",
+  "emails" : [ {
+    "value" : "info@metatavu.fi",
+    "language" : "fi"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Metatavun toimisto",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ {
+    "serviceHourType" : "Standard",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ {
+      "value" : null,
+      "language" : "fi"
+    } ],
+    "openingHour" : [ {
+      "dayFrom" : "Monday",
+      "dayTo" : "",
+      "from" : "09:00:00",
+      "to" : "17:00:00",
+      "isExtra" : false
+    }, {
+      "dayFrom" : "Tuesday",
+      "dayTo" : "",
+      "from" : "09:00:00",
+      "to" : "17:00:00",
+      "isExtra" : false
+    }, {
+      "dayFrom" : "Wednesday",
+      "dayTo" : "",
+      "from" : "09:00:00",
+      "to" : "16:30:00",
+      "isExtra" : false
+    }, {
+      "dayFrom" : "Thursday",
+      "dayTo" : "",
+      "from" : "09:00:00",
+      "to" : "17:00:00",
+      "isExtra" : false
+    }, {
+      "dayFrom" : "Friday",
+      "dayTo" : "",
+      "from" : "10:00:00",
+      "to" : "14:00:00",
+      "isExtra" : false
+    } ]
+  }, {
+    "serviceHourType" : "Standard",
+    "validFrom" : "2017-04-03T00:00:00+03:00",
+    "validTo" : "2017-04-09T00:00:00+03:00",
+    "isClosed" : false,
+    "validForNow" : false,
+    "additionalInformation" : [ {
+      "value" : "Huhtikuun ensimmäinen viikko",
+      "language" : "fi"
+    } ],
+    "openingHour" : [ {
+      "dayFrom" : "Monday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00",
+      "isExtra" : false
+    }, {
+      "dayFrom" : "Tuesday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "17:00:00",
+      "isExtra" : false
+    } ]
+  }, {
+    "serviceHourType" : "Exception",
+    "validFrom" : "2017-02-27T00:00:00+02:00",
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : false,
+    "additionalInformation" : [ {
+      "value" : "Poikkeuksellisesti suljettu",
+      "language" : "fi"
+    } ],
+    "openingHour" : [ {
+      "dayFrom" : null,
+      "dayTo" : null,
+      "from" : "01:00:00",
+      "to" : "1:15:00",
+      "isExtra" : false
+    } ]
+  } ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Metatavu testaa",
+    "type" : "ShortDescription"
+  }, {
+    "language" : "fi",
+    "value" : "Metatavun toimiston aukioloajat x",
+    "type" : "Description"
+  } ],
+  "areaType" : null,
+  "publishingStatus" : "Published",
+  "modified" : "2017-07-06T09:59:41.779161",
+  "id" : "dda27a67-1b20-4966-a57e-162ca4c54ef5"
+}

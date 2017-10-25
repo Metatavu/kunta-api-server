@@ -1,0 +1,58 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "languages" : [ "fi" ],
+  "areas" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "08ab5b97-d04d-4d16-a3f3-dac654b140ec",
+      "name" : "Perusopetus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : "Testi",
+    "serviceChargeType" : "Charged",
+    "chargeDescription" : "Testiajalta peritään lisämaksu",
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "9876543",
+    "language" : "fi"
+  } ],
+  "organizationId" : "ae2682d3-6238-4019-b34f-b078c5f9bb50",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Testi puhelinasiointikanava",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "Phone",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Puhelinasiointikanava testausta varten.",
+    "type" : "ShortDescription"
+  }, {
+    "language" : "fi",
+    "value" : "Puhelinasiointikanava testausta varten",
+    "type" : "Description"
+  } ],
+  "areaType" : null,
+  "publishingStatus" : "Published",
+  "modified" : "2017-03-12T20:08:56.868524",
+  "id" : "0c00262c-3529-4cc3-b0fe-2f03a2c4e4ce"
+}

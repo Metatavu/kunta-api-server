@@ -1,0 +1,172 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Asuminen",
+      "language" : "fi"
+    }, {
+      "value" : "Boende",
+      "language" : "sv"
+    }, {
+      "value" : "Housing",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Denna servicegrupp omfattar hur man söker, hittar och skaffar en bostad, olika boendeformer, ekonomiskt stöd för boende, processer och tjänster i anslutning till flyttning inom Finland samt tjänster som berör befolkningsdatasystemet.",
+      "language" : "sv"
+    }, {
+      "value" : "Tähän palveluluokkaan kuuluvat asunnon etsiminen, löytäminen ja hankkiminen, erilaiset asumismuodot, asumisen taloudelliset tuet, Suomen sisällä tapahtuvaan muuttoon liittyvät prosessit ja palvelut sekä väestötietojärjestelmään liittyvät palvelut.",
+      "language" : "fi"
+    }, {
+      "value" : "This service class includes seeking, finding and purchasing a residence, different housing forms, housing benefits, processes and services related to migration within Finland, as well as services associated with the Population Information System.",
+      "language" : "en"
+    } ],
+    "code" : "P1",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1001",
+    "parentId" : null,
+    "parentUri" : ""
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "WholeCountry",
+  "publishingStatus" : "Published",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-03-12T20:08:48.72782",
+  "id" : "bcfaf5f1-98db-401e-8628-7d4f2b4ec260",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "97c01787-b57c-42f1-a002-7d09b363993f",
+      "name" : "Testi"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : null,
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Uusi testipalvelu",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "DNA-testit",
+      "language" : "fi"
+    }, {
+      "value" : "dna-test",
+      "language" : "sv"
+    }, {
+      "value" : "DNA tests",
+      "language" : "en"
+    } ],
+    "code" : "",
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p64557",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p10657"
+  } ],
+  "lifeEvents" : [ {
+    "name" : [ {
+      "value" : "Skilsmässa",
+      "language" : "sv"
+    }, {
+      "value" : "Avioero",
+      "language" : "fi"
+    }, {
+      "value" : "Divorce",
+      "language" : "en"
+    } ],
+    "code" : "KE7",
+    "ontologyType" : "LIFESITUATION",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v3017",
+    "parentId" : null,
+    "parentUri" : ""
+  } ],
+  "statutoryServiceGeneralDescriptionId" : null,
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Businesses and non-government organizations",
+      "language" : "en"
+    }, {
+      "value" : "Yritykset ja yhteisöt",
+      "language" : "fi"
+    }, {
+      "value" : "Företag och samfund",
+      "language" : "sv"
+    } ],
+    "code" : "KR2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008",
+    "parentId" : null,
+    "parentUri" : ""
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : "XX Äsken luotu palvelu",
+    "type" : "ShortDescription"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ServiceUserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLineAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTimeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTimeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Tuossa aiemmin luotu palvelu",
+    "type" : "Description"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "ae2682d3-6238-4019-b34f-b078c5f9bb50",
+      "name" : "Mikkelin kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProduced",
+    "organization" : {
+      "id" : "ae2682d3-6238-4019-b34f-b078c5f9bb50",
+      "name" : "Mikkelin kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

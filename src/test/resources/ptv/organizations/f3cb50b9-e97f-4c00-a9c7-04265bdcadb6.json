@@ -1,0 +1,129 @@
+{
+  "id": "f3cb50b9-e97f-4c00-a9c7-04265bdcadb6",
+  "sourceId": null,
+  "oid": null,
+  "parentOrganization": null,
+  "organizationType": "Municipality",
+  "municipality": {
+    "code": "593",
+    "name": [
+      {
+        "value": "Pieksämäki",
+        "language": "fi"
+      },
+      {
+        "value": "Pieksämäki",
+        "language": "sv"
+      }
+    ]
+  },
+  "businessCode": "2048903-4",
+  "businessName": "Pieksämäki",
+  "organizationNames": [
+    {
+      "language": "fi",
+      "value": "Pieksämäen kaupunki",
+      "type": "Name"
+    }
+  ],
+  "displayNameType": [
+    {
+      "type": "Name",
+      "language": "fi"
+    },
+    {
+      "type": "Name",
+      "language": "sv"
+    }
+  ],
+  "areaType": null,
+  "areas": null,
+  "organizationDescriptions": [],
+  "emailAddresses": [],
+  "phoneNumbers": [],
+  "webPages": [],
+  "addresses": [],
+  "electronicInvoicings": [],
+  "publishingStatus": "Published",
+  "services": [
+    {
+      "organizationId": "f3cb50b9-e97f-4c00-a9c7-04265bdcadb6",
+      "service": {
+        "id": "b21dbc0e-ea54-449d-8419-3fe7a6126948",
+        "name": "Kehittyvän yrityksen neuvonta"
+      },
+      "roleType": "Responsible",
+      "provisionType": null,
+      "additionalInformation": [],
+      "webPages": []
+    },
+    {
+      "organizationId": "f3cb50b9-e97f-4c00-a9c7-04265bdcadb6",
+      "service": {
+        "id": "8f0fe030-794e-4ed5-beb7-57c6be43f2ba",
+        "name": "Yritysten sijoittuminen seudulle"
+      },
+      "roleType": "Responsible",
+      "provisionType": null,
+      "additionalInformation": [],
+      "webPages": []
+    },
+    {
+      "organizationId": "f3cb50b9-e97f-4c00-a9c7-04265bdcadb6",
+      "service": {
+        "id": "4c490d84-1fc2-4011-98b5-fbc7a878cbce",
+        "name": "Ranta-asemakaavoitukseen vaikuttaminen"
+      },
+      "roleType": "Responsible",
+      "provisionType": null,
+      "additionalInformation": [],
+      "webPages": []
+    },
+    {
+      "organizationId": "f3cb50b9-e97f-4c00-a9c7-04265bdcadb6",
+      "service": {
+        "id": "2fb268a5-8fa5-467e-b908-98131b916365",
+        "name": "Sosiaalipäivystys"
+      },
+      "roleType": "Responsible",
+      "provisionType": null,
+      "additionalInformation": [],
+      "webPages": []
+    },
+    {
+      "organizationId": "f3cb50b9-e97f-4c00-a9c7-04265bdcadb6",
+      "service": {
+        "id": "4c490d84-1fc2-4011-98b5-fbc7a878cbce",
+        "name": "Ranta-asemakaavoitukseen vaikuttaminen"
+      },
+      "roleType": "Producer",
+      "provisionType": "SelfProduced",
+      "additionalInformation": [],
+      "webPages": []
+    },
+    {
+      "organizationId": "f3cb50b9-e97f-4c00-a9c7-04265bdcadb6",
+      "service": {
+        "id": "b21dbc0e-ea54-449d-8419-3fe7a6126948",
+        "name": "Kehittyvän yrityksen neuvonta"
+      },
+      "roleType": "Producer",
+      "provisionType": "SelfProduced",
+      "additionalInformation": [],
+      "webPages": []
+    },
+    {
+      "organizationId": "f3cb50b9-e97f-4c00-a9c7-04265bdcadb6",
+      "service": {
+        "id": "8f0fe030-794e-4ed5-beb7-57c6be43f2ba",
+        "name": "Yritysten sijoittuminen seudulle"
+      },
+      "roleType": "Producer",
+      "provisionType": "SelfProduced",
+      "additionalInformation": [],
+      "webPages": []
+    }
+  ],
+  "modified": "2017-03-12T20:08:56.462261",
+  "subOrganizations": null
+}
