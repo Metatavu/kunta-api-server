@@ -2,7 +2,6 @@ package fi.otavanopisto.kuntaapi.test.utils;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
@@ -27,17 +26,19 @@ import fi.metatavu.ptv.client.model.V7VmOpenApiService;
 import fi.metatavu.ptv.client.model.V7VmOpenApiServiceServiceChannel;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.servicechannels.ServiceChannelType;
 
+@SuppressWarnings ({"squid:S106", "squid:S3457", "squid:S1148"})
 public class PtvDownload {
   
+  private static final String JSON = ".json";
   private static final String PTV = "v7";
 
-  public static void main(String[] args) throws JsonParseException, JsonMappingException, IOException {
+  public static void main(String[] args) throws IOException {
     new PtvDownload()
       .downloadOrganizations()
       .printIds();
   }
   
-  private void printIds() throws JsonParseException, JsonMappingException, IOException {
+  private void printIds() throws IOException {
     File[] organizationFiles = listJsonFiles(getOrganizationsFolder());
     File[] serviceFiles = listJsonFiles(getServicesFolder());
     File[] serviceChannelFiles = listJsonFiles(getServiceChannelsFolder());
@@ -71,7 +72,7 @@ public class PtvDownload {
   private void printIdList(String constName, File[] files) {
     List<String> ids = new ArrayList<>();
     for (File file : files) {
-      ids.add(String.format("      \"%s\"",  StringUtils.stripEnd(file.getName(), ".json")));
+      ids.add(String.format("      \"%s\"",  StringUtils.stripEnd(file.getName(), JSON)));
     }
     
     System.out.println(String.format("\n    public final static String[] %s = {", constName));
@@ -79,12 +80,12 @@ public class PtvDownload {
     System.out.println("    };");
   }
 
-  private void printServiceChannelList(ServiceChannelType type, File[] files) throws JsonParseException, JsonMappingException, IOException {
+  private void printServiceChannelList(ServiceChannelType type, File[] files) throws IOException {
     List<String> ids = new ArrayList<>();
     for (File file : files) {
       ServiceChannelTypeExtract serviceChannelTypeExtract = getObjectMapper().readValue(file, ServiceChannelTypeExtract.class);
       if (resolveChannelType(serviceChannelTypeExtract.getServiceChannelType()) == type) {
-        ids.add(String.format("      \"%s\"",  StringUtils.stripEnd(file.getName(), ".json")));
+        ids.add(String.format("      \"%s\"",  StringUtils.stripEnd(file.getName(), JSON)));
       }
     }
     
@@ -93,7 +94,7 @@ public class PtvDownload {
     System.out.println("    };");
   }
 
-  private PtvDownload downloadOrganizations() throws JsonParseException, JsonMappingException, IOException {
+  private PtvDownload downloadOrganizations() throws IOException {
     File[] organizationFiles = listJsonFiles(getOrganizationsFolder());
     for (File organizationFile : organizationFiles) {
       downloadOrganizationServices(organizationFile);
@@ -103,13 +104,9 @@ public class PtvDownload {
   }
   
   private File[] listJsonFiles(File folder) {
-    return folder.listFiles(new FilenameFilter() {
-      @Override
-      public boolean accept(File dir, String name) {
-        return name.endsWith(".json");
-      }
-      
-    });  
+    return folder.listFiles((File dir, String name) -> {
+      return name.endsWith(JSON);
+    });
   }
   
   private File getOrganizationsFolder() {
@@ -140,7 +137,7 @@ public class PtvDownload {
     return new ObjectMapper();
   }
 
-  private void downloadService(V5VmOpenApiOrganizationService service) throws JsonParseException, JsonMappingException, IOException {
+  private void downloadService(V5VmOpenApiOrganizationService service) throws IOException {
     String serviceId = service.getService().getId().toString();
     File servicesFolder = getServicesFolder();
     
@@ -158,7 +155,7 @@ public class PtvDownload {
     downloadServiceChannels(target);
   }
   
-  private void downloadServiceChannels(File serviceFile) throws JsonParseException, JsonMappingException, IOException {
+  private void downloadServiceChannels(File serviceFile) throws IOException {
     V7VmOpenApiService service = new ObjectMapper().readValue(serviceFile, V7VmOpenApiService.class);
     
     List<V7VmOpenApiServiceServiceChannel> serviceChannels = service.getServiceChannels();
