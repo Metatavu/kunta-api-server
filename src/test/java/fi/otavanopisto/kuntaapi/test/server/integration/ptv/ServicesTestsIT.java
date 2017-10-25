@@ -29,30 +29,21 @@ public class ServicesTestsIT extends AbstractIntegrationTest {
   
   @Before
   public void beforeTest() throws InterruptedException {
-    getPtvOrganizationMocker()
-      .mock("ae2682d3-6238-4019-b34f-b078c5f9bb50", "d45ec681-4da3-4a38-af67-fb2d949b9387");
-    
-    getPtvServiceMocker()
-      .mock("2f21448e-e461-4ad0-a87a-47bcb08e578e", "0003651e-6afe-400e-816c-c64af41521f8", "00047a04-9c01-48ea-99da-4ec332f6d0fa");
-    
-    getPtvServiceChannelMocker()
-      .mock("22472ece-95a0-4fef-a429-b4da689677b2", "44187ff9-71ed-40df-89f6-916be4f3baa6", "799e0e4f-4da7-4e7d-9e0e-f1370b80fc9a")  // ElectronicServiceChannels
-      .mock("108f0c61-bfba-4dd7-8f02-deb4e77c52d0", "626cdd7a-e205-42da-8ce5-82b3b7add258", "e9e86a9e-6593-469d-bc01-f1a59c28168d")  // PhoneServiceChannels
-      .mock("02256ce8-2879-47e4-a6f5-339872f0f758", "1a17f994-b924-46ae-8708-c09938125119", "6fb56241-1b43-4e42-8231-43ba8d86be36")  // PrintableFormServiceChannels
-      .mock("9a9f5def-92e4-4b79-a49a-ccf20a0f75b6", "c0681f51-d1b4-4a9b-bbbf-ddf9a5273cd1", "cf927001-8b45-4f08-b93b-c78fe8477928")  // ServiceLocationServiceChannels
-      .mock("4b08ae17-75ae-4746-9382-1316c4ec02c5", "aedae320-a2b2-4fe6-b23b-2e1a025ba415", "e9ec256b-5ca2-4663-9da6-d8a2faff21a8"); // WebPageServiceChannels
-    
+    getPtvOrganizationMocker().mock(TestPtvConsts.ORGANIZATIONS);
+    getPtvServiceMocker().mock(TestPtvConsts.SERVICES);    
+    getPtvServiceChannelMocker().mock(TestPtvConsts.SERVICE_CHANNELS);
+
     startMocks();
     
-    waitApiListCount("/organizations", 2);
+    waitApiListCount("/organizations", 3);
     
-    waitApiListCount("/electronicServiceChannels", 3);
-    waitApiListCount("/phoneServiceChannels", 3);
-    waitApiListCount("/printableFormServiceChannels", 3);
-    waitApiListCount("/serviceLocationServiceChannels", 3);
-    waitApiListCount("/webPageServiceChannels", 3);
+    waitApiListCount("/electronicServiceChannels", TestPtvConsts.ELECTRONIC_CHANNEL_SERVICE_CHANNELS.length);
+    waitApiListCount("/phoneServiceChannels", TestPtvConsts.PHONE_SERVICE_CHANNELS.length);
+    waitApiListCount("/printableFormServiceChannels", TestPtvConsts.PRINTABLE_FORM_SERVICE_CHANNELS.length);
+    waitApiListCount("/serviceLocationServiceChannels", TestPtvConsts.SERVICE_LOCATION_SERVICE_CHANNELS.length);
+    waitApiListCount("/webPageServiceChannels", TestPtvConsts.WEB_PAGE_SERVICE_CHANNELS.length);
     
-    waitApiListCount("/services", 3);
+    waitApiListCount("/services", TestPtvConsts.SERVICES.length);
   }
   
   @Test
@@ -79,14 +70,16 @@ public class ServicesTestsIT extends AbstractIntegrationTest {
       .body("serviceClasses[0].name[0].language", is("fi"))
       .body("serviceClasses[0].code", is("P13"))
       .body("serviceClasses[0].ontologyType", is("PTVL"))
-      .body("serviceClasses[0].uri", is("http://urn.fi/URN:NBN:fi:au:ptvl:P13"))
+      .body("serviceClasses[0].uri", is("http://urn.fi/URN:NBN:fi:au:ptvl:v1120"))
       .body("serviceClasses[0].parentId", nullValue())
       .body("serviceClasses[0].parentUri", is(""))
 
       .body("ontologyTerms.size()", is(1))
       .body("ontologyTerms[0].name.size()", is(3))
-      .body("ontologyTerms[0].name[0].value", is("dna-test"))
-      .body("ontologyTerms[0].name[0].language", is("sv"))
+      .body("ontologyTerms[0].name[0].value", is("DNA-testit"))
+      .body("ontologyTerms[0].name[0].language", is("fi"))
+      .body("ontologyTerms[0].name[1].value", is("dna-test"))
+      .body("ontologyTerms[0].name[1].language", is("sv"))
       .body("ontologyTerms[0].code", is(""))
       .body("ontologyTerms[0].ontologyType", is("YSO"))
       .body("ontologyTerms[0].uri", is("http://www.yso.fi/onto/koko/p64557"))
@@ -99,22 +92,22 @@ public class ServicesTestsIT extends AbstractIntegrationTest {
       .body("targetGroups[0].name[0].language", is("en"))
       .body("targetGroups[0].code", is("KR2"))
       .body("targetGroups[0].ontologyType", is("TARGETGROUP"))
-      .body("targetGroups[0].uri", is("http://urn.fi/URN:NBN:fi:au:ptvl:KR2"))
+      .body("targetGroups[0].uri", is("http://urn.fi/URN:NBN:fi:au:ptvl:v2008"))
       .body("targetGroups[0].parentId", nullValue())
       .body("targetGroups[0].parentUri", is(""))
       
       .body("lifeEvents.size()", is(1))
       .body("lifeEvents[0].name.size()", is(3))
-      .body("lifeEvents[0].name[0].value", is("Värnplikt"))
-      .body("lifeEvents[0].name[0].language", is("sv"))
+      .body("lifeEvents[0].name[1].value", is("Värnplikt"))
+      .body("lifeEvents[0].name[1].language", is("sv"))
       .body("lifeEvents[0].code", is("KE2"))
       .body("lifeEvents[0].ontologyType", is("LIFESITUATION"))
-      .body("lifeEvents[0].uri", is("http://urn.fi/URN:NBN:fi:au:ptvl:KE2"))
+      .body("lifeEvents[0].uri", is("http://urn.fi/URN:NBN:fi:au:ptvl:v3008"))
       .body("lifeEvents[0].parentId", nullValue())
       .body("lifeEvents[0].parentUri", is(""))
       
       .body("industrialClasses.size()", is(1))
-      .body("industrialClasses[0].name.size()", is(4))
+      .body("industrialClasses[0].name.size()", is(3))
       .body("industrialClasses[0].name[0].value", is("Aikakauslehtien kustantaminen"))
       .body("industrialClasses[0].name[0].language", is("fi"))
       .body("industrialClasses[0].code", is("5"))
@@ -130,7 +123,7 @@ public class ServicesTestsIT extends AbstractIntegrationTest {
 
       .body("descriptions.size()", is(2))
       .body("descriptions[0].language", is("fi"))
-      .body("descriptions[0].value", is("Kuvaus"))
+      .body("descriptions[0].value", is("xxKuvaus"))
       .body("descriptions[0].type", is("Description"))
       
       .body("languages.size()", is(1))
@@ -140,25 +133,19 @@ public class ServicesTestsIT extends AbstractIntegrationTest {
       .body("legislation[0].names.size()", is(1))
       .body("legislation[0].names[0].value", is("Korkein oikeus"))
       .body("legislation[0].names[0].language", is("fi"))
-      .body("legislation[0].webPages.size()", is(1))
-      .body("legislation[0].webPages[0].value", is("Korkein oikeus"))
-      .body("legislation[0].webPages[0].language", is("fi"))
-      .body("legislation[0].webPages[0].url", is("http://www.finlex.fi/fi/oikeus/kko/"))
+      .body("legislation[0].webPages.size()", is(0))
       .body("areas.size()", is(0))
       .body("areaType", is("WholeCountry"))
-      .body("requirements.size()", is(1))
-      .body("requirements[0].value", is("Testi vaatimus"))
-      .body("requirements[0].language", is("fi"))
+      .body("requirements.size()", is(0))
       .body("publishingStatus", is("Published"))
       .body("chargeType", is("Free"))
-      .body("organizations.size()", is(1))
+      .body("organizations.size()", is(2))
       .body("organizations[0].additionalInformation.size()", is(0))
       .body("organizations[0].organizationId", notNullValue())
       .body("organizations[0].roleType", is("Responsible"))
       .body("organizations[0].provisionType", nullValue())
-      .body("organizations[0].webPages.size()", is(0))
       .body("electronicServiceChannelIds.size()", is(0))
-      .body("phoneServiceChannelIds.size()", is(0))
+      .body("phoneServiceChannelIds.size()", is(1))
       .body("printableFormServiceChannelIds.size()", is(0))
       .body("serviceLocationServiceChannelIds.size()", is(1))
       .body("webPageServiceChannelIds.size()", is(0));
@@ -172,33 +159,33 @@ public class ServicesTestsIT extends AbstractIntegrationTest {
       .then()
       .assertThat()
       .statusCode(200)
-      .body("id.size()", is(3))
+      .body("id.size()", is(TestPtvConsts.SERVICES.length))
       .body("type[1]", is("Service"))
       .body("statutoryDescriptionId[1]", nullValue())
       .body("serviceClasses[1].size()", is(1))
       .body("serviceClasses[1][0].name.size()", is(3))
-      .body("serviceClasses[1][0].name[0].value", is("Työnhaku ja työpaikat"))
+      .body("serviceClasses[1][0].name[0].value", is("Asuminen"))
       .body("serviceClasses[1][0].name[0].language", is("fi"))
-      .body("serviceClasses[1][0].code", is("P10.1"))
+      .body("serviceClasses[1][0].code", is("P1"))
       .body("serviceClasses[1][0].ontologyType", is("PTVL"))
-      .body("serviceClasses[1][0].uri", is("http://urn.fi/URN:NBN:fi:au:ptvl:P10.1"))
-      .body("serviceClasses[1][0].parentId", is("dbe5f86e-3c58-4208-b64f-17ca809796e2"))
-      .body("serviceClasses[1][0].parentUri", is("http://urn.fi/URN:NBN:fi:au:ptvl:P10"))
+      .body("serviceClasses[1][0].uri", is("http://urn.fi/URN:NBN:fi:au:ptvl:v1001"))
+      .body("serviceClasses[1][0].parentId", nullValue())
+      .body("serviceClasses[1][0].parentUri", is(""))
 
-      .body("ontologyTerms[1].size()", is(2))
-      .body("targetGroups[1].size()", is(2))
-      .body("lifeEvents[1].size()", is(0))
+      .body("ontologyTerms[1].size()", is(1))
+      .body("targetGroups[1].size()", is(1))
+      .body("lifeEvents[1].size()", is(1))
       .body("industrialClasses[1].size()", is(0))
       
       .body("names[1].size()", is(1))
       .body("names[1][0].language", is("fi"))
-      .body("names[1][0].value", is("Nuorten työpajat"))
+      .body("names[1][0].value", is("Uusi testipalvelu"))
       .body("names[1][0].type", is("Name"))
 
       .body("descriptions[1].size()", is(2))
 
       .body("languages[1].size()", is(1))
-      .body("languages[1][0]", is("sv"))
+      .body("languages[1][0]", is("fi"))
       .body("keywords[1].size()", is(0))
       .body("legislation[1].size()", is(0))
       .body("areas[1].size()", is(0))
@@ -215,17 +202,14 @@ public class ServicesTestsIT extends AbstractIntegrationTest {
       .body("organizations[1][0].webPages.size()", is(0))
       
       .body("electronicServiceChannelIds[1].size()", is(0))
-      .body("phoneServiceChannelIds[1].size()", is(1))
-      .body("printableFormServiceChannelIds[1].size()", is(2))
-      .body("serviceLocationServiceChannelIds[1].size()", is(0))
+      .body("phoneServiceChannelIds[1].size()", is(0))
+      .body("printableFormServiceChannelIds[1].size()", is(0))
+      .body("serviceLocationServiceChannelIds[1].size()", is(1))
       .body("webPageServiceChannelIds[1].size()", is(0));
   } 
   
   @Test
   public void testListServicesByOrganization() {
-    String serviceId1 = getServiceId(0);
-    String serviceId2 = getServiceId(1);
-    String serviceId3 = getServiceId(2);
     String organizationId1 = getOrganizationId(0);
     String organizationId2 = getOrganizationId(1); 
     String invalidOrganizationId = "invalid";
@@ -236,10 +220,8 @@ public class ServicesTestsIT extends AbstractIntegrationTest {
       .then()
       .assertThat()
       .statusCode(200)
-      .body("id.size()", is(2))
-      .body("id[0]", is(serviceId1))
-      .body("id[1]", is(serviceId2))
-      .body("organizations[0].size()", is(1))
+      .body("id.size()", is(5))
+      .body("organizations[0].size()", is(2))
       .body("organizations[0][0].organizationId", is(organizationId1))
       .body("organizations[1].size()", is(2))
       .body("organizations[1][0].organizationId", is(organizationId1));
@@ -250,9 +232,8 @@ public class ServicesTestsIT extends AbstractIntegrationTest {
       .then()
       .assertThat()
       .statusCode(200)
-      .body("id.size()", is(1))
-      .body("id[0]", is(serviceId3))
-      .body("organizations[0].size()", is(1))
+      .body("id.size()", is(4))
+      .body("organizations[0].size()", is(2))
       .body("organizations[0][0].organizationId", is(organizationId2));
     
     givenReadonly()
@@ -270,56 +251,60 @@ public class ServicesTestsIT extends AbstractIntegrationTest {
       return;
     }
     
+    String query = "((test*) OR (Metatavu*)) AND (-Sosiaalipäivystys)";
+    
+    waitForElasticIndex();
+    
     givenReadonly()
       .contentType(ContentType.JSON)
-      .get("/services?search=(tes*)|(Nuorten*)")
+      .get(String.format("/services?search=%s", query))
       .then()
       .assertThat()
       .statusCode(200)
       .body("id.size()", is(2))
       .body("names[0][0].value", is("Metatavu testaa"))
-      .body("names[1][0].value", is("Nuorten työpajat"));
+      .body("names[1][0].value", is("Uusi testipalvelu"));
     
     givenReadonly()
       .contentType(ContentType.JSON)
-      .get("/services?search=(tes*)|(Nuorten*)&sortBy=SCORE&sortDir=DESC")
+      .get(String.format("/services?search=%s&sortBy=SCORE&sortDir=DESC", query))
       .then()
       .assertThat()
       .statusCode(200)
       .body("id.size()", is(2))
-      .body("names[0][0].value", is("Nuorten työpajat"))
+      .body("names[0][0].value", is("Metatavu testaa"))
+      .body("names[1][0].value", is("Uusi testipalvelu"));
+    
+    givenReadonly()
+      .contentType(ContentType.JSON)
+      .get(String.format("/services?search=%s&sortBy=SCORE&sortDir=ASC", query))
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(2))
+      .body("names[0][0].value", is("Uusi testipalvelu"))
       .body("names[1][0].value", is("Metatavu testaa"));
-    
-    givenReadonly()
-      .contentType(ContentType.JSON)
-      .get("/services?search=(tes*)|(Nuorten*)&sortBy=SCORE&sortDir=ASC")
-      .then()
-      .assertThat()
-      .statusCode(200)
-      .body("id.size()", is(2))
-      .body("names[0][0].value", is("Metatavu testaa"))
-      .body("names[1][0].value", is("Nuorten työpajat"));
   }
 
   @Test
   public void testListServicesLimits() {
-    assertListLimits("/services", 3);
+    assertListLimits("/services", TestPtvConsts.SERVICES.length);
   }
   
   @Test
   public void testServiceUnarchive() throws InterruptedException {
-    String serviceId = getServiceId(2);
+    String serviceId = getServiceId(TestPtvConsts.SERVICES.length - 1);
     assertNotNull(serviceId);
     
-    getPtvServiceMocker().unmock("00047a04-9c01-48ea-99da-4ec332f6d0fa");
+    getPtvServiceMocker().unmock(TestPtvConsts.SERVICES[0]);
     
-    waitApiListCount("/services", 2);
-    assertNull(getServiceId(2));
+    waitApiListCount("/services", TestPtvConsts.SERVICES.length - 1);
+    assertNull(getServiceId(TestPtvConsts.SERVICES.length - 1));
     
-    getPtvServiceMocker().mock("00047a04-9c01-48ea-99da-4ec332f6d0fa");
-    waitApiListCount("/services", 3);
+    getPtvServiceMocker().mock(TestPtvConsts.SERVICES[0]);
+    waitApiListCount("/services", TestPtvConsts.SERVICES.length);
     
-    assertEquals(serviceId, getServiceId(2));
+    assertEquals(serviceId, getServiceId(TestPtvConsts.SERVICES.length - 1));
   }
   
   @Test
@@ -332,7 +317,7 @@ public class ServicesTestsIT extends AbstractIntegrationTest {
       .statusCode(200)
       .body("id", notNullValue())
       .body("electronicServiceChannelIds.size()", is(0))
-      .body("phoneServiceChannelIds.size()", is(0))
+      .body("phoneServiceChannelIds.size()", is(1))
       .body("printableFormServiceChannelIds.size()", is(0))
       .body("serviceLocationServiceChannelIds.size()", is(1))
       .body("webPageServiceChannelIds.size()", is(0));
@@ -345,9 +330,9 @@ public class ServicesTestsIT extends AbstractIntegrationTest {
       .statusCode(200)
       .body("id", notNullValue())
       .body("electronicServiceChannelIds.size()", is(0))
-      .body("phoneServiceChannelIds.size()", is(1))
-      .body("printableFormServiceChannelIds.size()", is(2))
-      .body("serviceLocationServiceChannelIds.size()", is(0))
+      .body("phoneServiceChannelIds.size()", is(0))
+      .body("printableFormServiceChannelIds.size()", is(0))
+      .body("serviceLocationServiceChannelIds.size()", is(1))
       .body("webPageServiceChannelIds.size()", is(0));
   }
   

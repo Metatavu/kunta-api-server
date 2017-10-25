@@ -12,12 +12,12 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
-import fi.metatavu.ptv.client.model.V6VmOpenApiElectronicChannel;
-import fi.metatavu.ptv.client.model.V6VmOpenApiPhoneChannel;
+import fi.metatavu.ptv.client.model.V7VmOpenApiElectronicChannel;
+import fi.metatavu.ptv.client.model.V7VmOpenApiPhoneChannel;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.PtvConsts;
-import fi.metatavu.ptv.client.model.V6VmOpenApiPrintableFormChannel;
-import fi.metatavu.ptv.client.model.V6VmOpenApiServiceLocationChannel;
-import fi.metatavu.ptv.client.model.V6VmOpenApiWebPageChannel;
+import fi.metatavu.ptv.client.model.V7VmOpenApiPrintableFormChannel;
+import fi.metatavu.ptv.client.model.V7VmOpenApiServiceLocationChannel;
+import fi.metatavu.ptv.client.model.V7VmOpenApiWebPageChannel;
 
 @SuppressWarnings ({"squid:S1075", "squid:S1450"})
 public class PtvServiceChannelMocker extends AbstractPtvMocker<Object> {
@@ -39,24 +39,24 @@ public class PtvServiceChannelMocker extends AbstractPtvMocker<Object> {
   
   @Override
   public String getEntityId(Object entity) {
-    if (entity instanceof V6VmOpenApiElectronicChannel) {
-      return ((V6VmOpenApiElectronicChannel) entity).getId().toString();
+    if (entity instanceof V7VmOpenApiElectronicChannel) {
+      return ((V7VmOpenApiElectronicChannel) entity).getId().toString();
     }
     
-    if (entity instanceof V6VmOpenApiPhoneChannel) {
-      return ((V6VmOpenApiPhoneChannel) entity).getId().toString();
+    if (entity instanceof V7VmOpenApiPhoneChannel) {
+      return ((V7VmOpenApiPhoneChannel) entity).getId().toString();
     }
     
-    if (entity instanceof V6VmOpenApiPrintableFormChannel) {
-      return ((V6VmOpenApiPrintableFormChannel) entity).getId().toString();
+    if (entity instanceof V7VmOpenApiPrintableFormChannel) {
+      return ((V7VmOpenApiPrintableFormChannel) entity).getId().toString();
     }
     
-    if (entity instanceof V6VmOpenApiServiceLocationChannel) {
-      return ((V6VmOpenApiServiceLocationChannel) entity).getId().toString();
+    if (entity instanceof V7VmOpenApiServiceLocationChannel) {
+      return ((V7VmOpenApiServiceLocationChannel) entity).getId().toString();
     }
     
-    if (entity instanceof V6VmOpenApiWebPageChannel) {
-      return ((V6VmOpenApiWebPageChannel) entity).getId().toString();
+    if (entity instanceof V7VmOpenApiWebPageChannel) {
+      return ((V7VmOpenApiWebPageChannel) entity).getId().toString();
     }
     
     return null;

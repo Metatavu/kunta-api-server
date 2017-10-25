@@ -26,7 +26,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import fi.metatavu.kuntaapi.server.rest.model.ServiceHour;
 import fi.metatavu.ptv.client.model.V4VmOpenApiServiceHour;
-import fi.otavanopisto.kuntaapi.server.integrations.ptv.PtvTranslator;
+import fi.otavanopisto.kuntaapi.server.integrations.ptv.translation.PtvTranslator;
 import fi.otavanopisto.kuntaapi.test.AbstractTest;
 
 @RunWith (CdiTestRunner.class)
