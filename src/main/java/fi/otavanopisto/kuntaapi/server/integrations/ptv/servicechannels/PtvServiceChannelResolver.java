@@ -14,11 +14,11 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import fi.metatavu.ptv.client.ApiResponse;
 import fi.metatavu.ptv.client.ResultType;
-import fi.metatavu.ptv.client.model.V6VmOpenApiElectronicChannel;
-import fi.metatavu.ptv.client.model.V6VmOpenApiPhoneChannel;
-import fi.metatavu.ptv.client.model.V6VmOpenApiPrintableFormChannel;
-import fi.metatavu.ptv.client.model.V6VmOpenApiServiceLocationChannel;
-import fi.metatavu.ptv.client.model.V6VmOpenApiWebPageChannel;
+import fi.metatavu.ptv.client.model.V7VmOpenApiElectronicChannel;
+import fi.metatavu.ptv.client.model.V7VmOpenApiPhoneChannel;
+import fi.metatavu.ptv.client.model.V7VmOpenApiPrintableFormChannel;
+import fi.metatavu.ptv.client.model.V7VmOpenApiServiceLocationChannel;
+import fi.metatavu.ptv.client.model.V7VmOpenApiWebPageChannel;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.PtvConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.client.PtvClient;
 
@@ -49,14 +49,14 @@ public class PtvServiceChannelResolver {
     return null;
   }
   
-  public V6VmOpenApiElectronicChannel unserializeElectronicChannel(byte[] channelData) {
+  public V7VmOpenApiElectronicChannel unserializeElectronicChannel(byte[] channelData) {
     if (channelData == null) {
       return null;
     }
     
     ObjectMapper objectMapper = createObjectMapper();
     try {
-      return objectMapper.readValue(channelData, V6VmOpenApiElectronicChannel.class);
+      return objectMapper.readValue(channelData, V7VmOpenApiElectronicChannel.class);
     } catch (IOException e) {
       logger.log(Level.SEVERE, "Failed to unserialize electronic service channel", e);
     }
@@ -64,14 +64,14 @@ public class PtvServiceChannelResolver {
     return null;
   }
 
-  public V6VmOpenApiServiceLocationChannel unserializeServiceLocationChannel(byte[] channelData) {
+  public V7VmOpenApiServiceLocationChannel unserializeServiceLocationChannel(byte[] channelData) {
     if (channelData == null) {
       return null;
     }
     
     ObjectMapper objectMapper = createObjectMapper();
     try {
-      return objectMapper.readValue(channelData, V6VmOpenApiServiceLocationChannel.class);
+      return objectMapper.readValue(channelData, V7VmOpenApiServiceLocationChannel.class);
     } catch (IOException e) {
       logger.log(Level.SEVERE, "Failed to unserialize service location channel", e);
     }
@@ -79,7 +79,7 @@ public class PtvServiceChannelResolver {
     return null;
   }
   
-  public V6VmOpenApiPrintableFormChannel unserializePrintableFormChannel(byte[] channelData) {
+  public V7VmOpenApiPrintableFormChannel unserializePrintableFormChannel(byte[] channelData) {
     if (channelData == null) {
       return null;
     }
@@ -87,7 +87,7 @@ public class PtvServiceChannelResolver {
     ObjectMapper objectMapper = createObjectMapper();
 
     try {
-      return objectMapper.readValue(channelData, V6VmOpenApiPrintableFormChannel.class);
+      return objectMapper.readValue(channelData, V7VmOpenApiPrintableFormChannel.class);
     } catch (IOException e) {
       logger.log(Level.SEVERE, "Failed to unserialize printable form service channel", e);
     }
@@ -95,7 +95,7 @@ public class PtvServiceChannelResolver {
     return null;
   }
   
-  public V6VmOpenApiPhoneChannel unserializePhoneChannel(byte[] channelData) {
+  public V7VmOpenApiPhoneChannel unserializePhoneChannel(byte[] channelData) {
     if (channelData == null) {
       return null;
     }
@@ -103,7 +103,7 @@ public class PtvServiceChannelResolver {
     ObjectMapper objectMapper = createObjectMapper();
 
     try {
-      return objectMapper.readValue(channelData, V6VmOpenApiPhoneChannel.class);
+      return objectMapper.readValue(channelData, V7VmOpenApiPhoneChannel.class);
     } catch (IOException e) {
       logger.log(Level.SEVERE, "Failed to unserialize phone service channel", e);
     }
@@ -111,11 +111,11 @@ public class PtvServiceChannelResolver {
     return null;
   }
   
-  public V6VmOpenApiWebPageChannel unserializeWebPageChannel(byte[] channelData) {
+  public V7VmOpenApiWebPageChannel unserializeWebPageChannel(byte[] channelData) {
     ObjectMapper objectMapper = createObjectMapper();
 
     try {
-      return objectMapper.readValue(channelData, V6VmOpenApiWebPageChannel.class);
+      return objectMapper.readValue(channelData, V7VmOpenApiWebPageChannel.class);
     } catch (IOException e) {
       logger.log(Level.SEVERE, "Failed to unserialize web page service channel", e);
     }

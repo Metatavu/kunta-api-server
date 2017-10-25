@@ -10,7 +10,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 import fi.metatavu.ptv.client.ApiResponse;
-import fi.metatavu.ptv.client.model.V3VmOpenApiGuidPage;
+import fi.metatavu.ptv.client.model.VmOpenApiOrganizationGuidPage;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.client.PtvApi;
 
 @ApplicationScoped
@@ -44,18 +44,18 @@ public class PtvOrganizationPriorityIdUpdater extends AbstractPtvOrganizationIdU
   }
 
   @Override
-  public ApiResponse<V3VmOpenApiGuidPage> getPage() {
+  public ApiResponse<VmOpenApiOrganizationGuidPage> getPage() {
     currentUpdateStart = OffsetDateTime.now();
-    return ptvApi.getOrganizationApi().apiV6OrganizationGet(lastUpdate.minusMinutes(UPDATE_SLACK_MINUTE), null, false);
+    return ptvApi.getOrganizationApi().apiV7OrganizationGet(lastUpdate.minusMinutes(UPDATE_SLACK_MINUTE), null, false);
   }
 
   @Override
-  public Long getOrderIndex(int itemIndex, V3VmOpenApiGuidPage guidPage) {
+  public Long getOrderIndex(int itemIndex, VmOpenApiOrganizationGuidPage guidPage) {
     return null;
   }
 
   @Override
-  public void afterSuccess(V3VmOpenApiGuidPage guidPage) {
+  public void afterSuccess(VmOpenApiOrganizationGuidPage guidPage) {
     lastUpdate = currentUpdateStart;
   }
 

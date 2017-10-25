@@ -13,7 +13,7 @@ import javax.inject.Inject;
 
 import fi.metatavu.ptv.client.ApiResponse;
 import fi.metatavu.ptv.client.ResultType;
-import fi.metatavu.ptv.client.model.V6VmOpenApiPhoneChannel;
+import fi.metatavu.ptv.client.model.V7VmOpenApiPhoneChannel;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.IdUpdater;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
@@ -82,7 +82,7 @@ public class PtvPhoneServiceChannelIdRemoveUpdater extends IdUpdater {
       }
       
       String path = String.format("/api/%s/ServiceChannel/%s", PtvConsts.VERSION, ptvPhoneServiceChannelId.getId());
-      ApiResponse<V6VmOpenApiPhoneChannel> response = ptvClient.doGETRequest(null, path, new ResultType<V6VmOpenApiPhoneChannel>() {}, null, null);
+      ApiResponse<V7VmOpenApiPhoneChannel> response = ptvClient.doGETRequest(null, path, new ResultType<V7VmOpenApiPhoneChannel>() {}, null, null);
       if (response.getStatus() == 404) {
         serviceChannelTasksQueue.enqueueTask(false, new PhoneServiceChannelRemoveTask(ptvPhoneServiceChannelId));
       }

@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class PtvConsts {
   
-  public static final String VERSION = "v6";
+  public static final String VERSION = "v7";
   public static final String IDENTIFIER_NAME = "PTV";
   public static final boolean SYNCHRONIZE = true;
   public static final String CACHE_NAME = "ptv";

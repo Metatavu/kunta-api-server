@@ -35,7 +35,7 @@ public class PtvServiceIdUpdater extends AbstractPtvServiceIdUpdater {
   
   @Override
   public ApiResponse<V3VmOpenApiGuidPage> getPage() {
-    return ptvApi.getServiceApi(null).apiV6ServiceGet(null, page, false);
+    return ptvApi.getServiceApi(null).apiV7ServiceGet(null, page, false);
   }
 
   @Override
