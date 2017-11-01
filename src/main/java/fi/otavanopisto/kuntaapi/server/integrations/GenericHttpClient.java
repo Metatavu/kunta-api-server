@@ -1,6 +1,7 @@
 package fi.otavanopisto.kuntaapi.server.integrations;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Array;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -39,6 +40,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.Module;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
@@ -427,8 +429,18 @@ public class GenericHttpClient {
         return httpMethod.equals(HttpHead.METHOD_NAME) ? handleNoContentResponse(statusCode, message, resultType.getTypeReference()) : handleOkResponse(httpResponse, statusCode, message, resultType.getTypeReference());
       case 204:
         return handleNoContentResponse(statusCode, message, resultType.getTypeReference());
+      case 400:
+        HttpEntity entity = httpResponse.getEntity();
+        try (InputStream contentStream = entity.getContent()) {
+          String content = IOUtils.toString(contentStream);
+          if (StringUtils.isNotBlank(content)) {
+            return handleErrorResponse(statusCode, content);
+          }
+        }
+        
+        return handleErrorResponse(statusCode, message);
       default:
-      return handleErrorResponse(statusCode, message);
+        return handleErrorResponse(statusCode, message);
     }
   }
 
@@ -458,6 +470,7 @@ public class GenericHttpClient {
 
   private ObjectMapper getJsonObjectMapper() {
     ObjectMapper objectMapper = new ObjectMapper();
+    objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
     registerModules(objectMapper);
     return objectMapper;
   }
