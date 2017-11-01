@@ -3,6 +3,16 @@ package fi.otavanopisto.kuntaapi.server.integrations.ptv.translation;
 import fi.metatavu.kuntaapi.server.rest.model.Address;
 
 public class AbstractTranslator {
+  
+  protected static final String[] WEEKDAY_INDICES = new String[] {
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday"
+  };
 
   /**
    * Returns address PTV subtype for address

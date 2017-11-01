@@ -88,15 +88,6 @@ public class PtvTranslator extends AbstractTranslator {
   private Logger logger;
 
   private static final String ONTOLOGY_SYSTEM_FINTO = "FINTO";
-  private static final String[] WEEKDAY_INDICES = new String[] {
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday"
-  };
   
   public ElectronicServiceChannel translateElectronicServiceChannel(ElectronicServiceChannelId kuntaApiElectronicServiceChannelId, OrganizationId kuntaApiOrganizationId, V7VmOpenApiElectronicChannel ptvElectronicServiceChannel) {
     ElectronicServiceChannel result = new ElectronicServiceChannel();

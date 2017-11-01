@@ -7,9 +7,13 @@ import java.util.List;
 import javax.enterprise.context.ApplicationScoped;
 
 import fi.metatavu.kuntaapi.server.rest.model.Address;
+import fi.metatavu.kuntaapi.server.rest.model.DailyOpeningTime;
 import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
 import fi.metatavu.kuntaapi.server.rest.model.Phone;
+import fi.metatavu.kuntaapi.server.rest.model.ServiceHour;
+import fi.metatavu.ptv.client.model.V2VmOpenApiDailyOpeningTime;
 import fi.metatavu.ptv.client.model.V4VmOpenApiPhone;
+import fi.metatavu.ptv.client.model.V4VmOpenApiServiceHour;
 import fi.metatavu.ptv.client.model.V7VmOpenApiAddressWithMovingIn;
 import fi.metatavu.ptv.client.model.VmOpenApiAddressPostOfficeBoxIn;
 import fi.metatavu.ptv.client.model.VmOpenApiAddressStreetWithCoordinatesIn;
@@ -139,6 +143,29 @@ public class KuntaApiPtvTranslator extends AbstractTranslator {
     return result;
   }
 
+  /**
+   * Translates Kunta API Service hours into PTV Service Hours
+   * 
+   * @param serviceHours Kunta API Service hours
+   * @return PTV Service Hours
+   */
+  public List<V4VmOpenApiServiceHour> translateServiceHours(List<ServiceHour> serviceHours) {
+    if (serviceHours == null || serviceHours.isEmpty()) {
+      return Collections.emptyList();
+    }
+    
+    List<V4VmOpenApiServiceHour> result = new ArrayList<>(serviceHours.size());
+    
+    for (ServiceHour serviceHour : serviceHours) {
+      V4VmOpenApiServiceHour ptvServiceHour = translateServiceHour(serviceHour);
+      if (ptvServiceHour != null) {
+        result.add(ptvServiceHour);
+      }
+    }
+    
+    return result;
+  }
+
   private V4VmOpenApiPhone translatePhoneNumber(Phone phoneNumber) {
     if (phoneNumber == null) {
       return null;
@@ -214,6 +241,63 @@ public class KuntaApiPtvTranslator extends AbstractTranslator {
     }
     
     return null;
+  }
+
+  private V4VmOpenApiServiceHour translateServiceHour(ServiceHour serviceHour) {
+    if (serviceHour == null) {
+      return null;
+    }
+    
+    V4VmOpenApiServiceHour result = new V4VmOpenApiServiceHour();
+    result.setAdditionalInformation(translateLocalizedValuesIntoLanguageItems(serviceHour.getAdditionalInformation()));
+    result.setIsClosed(serviceHour.getIsClosed());
+    result.setOpeningHour(translateDailyOpeningTimes(serviceHour.getOpeningHour()));
+    result.setServiceHourType(serviceHour.getServiceHourType());
+    result.setValidForNow(serviceHour.getValidForNow());
+    result.setValidFrom(serviceHour.getValidFrom());
+    result.setValidTo(serviceHour.getValidTo());
+    
+    return result;
+  }
+
+  private List<V2VmOpenApiDailyOpeningTime> translateDailyOpeningTimes(List<DailyOpeningTime> dailyOpeningTimes) {
+    if (dailyOpeningTimes == null || dailyOpeningTimes.isEmpty()) {
+      return Collections.emptyList();
+    }
+    
+    List<V2VmOpenApiDailyOpeningTime> result = new ArrayList<>(dailyOpeningTimes.size());
+    
+    for (DailyOpeningTime dailyOpeningTime : dailyOpeningTimes) {
+      V2VmOpenApiDailyOpeningTime ptvServiceHour = translateDailyOpeningTime(dailyOpeningTime);
+      if (ptvServiceHour != null) {
+        result.add(ptvServiceHour);
+      }
+    }
+    
+    return result;
+  }
+
+  private V2VmOpenApiDailyOpeningTime translateDailyOpeningTime(DailyOpeningTime dailyOpeningTime) {
+    if (dailyOpeningTime == null) {
+      return null;
+    }
+    
+    V2VmOpenApiDailyOpeningTime result = new V2VmOpenApiDailyOpeningTime();
+    result.setDayFrom(translateOpeningTimeDay(dailyOpeningTime.getDayFrom()));
+    result.setDayTo(translateOpeningTimeDay(dailyOpeningTime.getDayTo()));
+    result.setFrom(dailyOpeningTime.getFrom());
+    result.setIsExtra(dailyOpeningTime.getIsExtra());
+    result.setTo(dailyOpeningTime.getTo());
+    
+    return result;
+  }
+
+  private String translateOpeningTimeDay(Integer dayFrom) {
+    if (dayFrom == null || dayFrom < 0 || dayFrom > WEEKDAY_INDICES.length - 1) {
+      return null;
+    }
+    
+    return WEEKDAY_INDICES[dayFrom];
   }
 
   private VmOpenApiAddressPostOfficeBoxIn translatePostOfficeBoxAddress(Address address) {
