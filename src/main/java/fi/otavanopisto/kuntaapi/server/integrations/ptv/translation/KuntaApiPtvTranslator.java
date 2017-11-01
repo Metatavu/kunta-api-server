@@ -8,6 +8,7 @@ import javax.enterprise.context.ApplicationScoped;
 
 import fi.metatavu.kuntaapi.server.rest.model.Address;
 import fi.metatavu.kuntaapi.server.rest.model.DailyOpeningTime;
+import fi.metatavu.kuntaapi.server.rest.model.Email;
 import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
 import fi.metatavu.kuntaapi.server.rest.model.Phone;
 import fi.metatavu.kuntaapi.server.rest.model.ServiceHour;
@@ -162,6 +163,41 @@ public class KuntaApiPtvTranslator extends AbstractTranslator {
         result.add(ptvServiceHour);
       }
     }
+    
+    return result;
+  }
+
+  /**
+   * Translates list of Kunta API emails into list of PTV language items
+   * 
+   * @param emails list of Kunta API emails
+   * @return list of PTV language items
+   */
+  public List<VmOpenApiLanguageItem> translateEmailsIntoLanguageItems(List<Email> emails) {
+    if (emails == null || emails.isEmpty()) {
+      return Collections.emptyList();
+    }
+    
+    List<VmOpenApiLanguageItem> result = new ArrayList<>(emails.size());
+    
+    for (Email email : emails) {
+      VmOpenApiLanguageItem ptvLanguageItem = translateEmailIntoLanguageItem(email);
+      if (ptvLanguageItem != null) {
+        result.add(ptvLanguageItem);
+      }
+    }
+    
+    return result;
+  }
+
+  private VmOpenApiLanguageItem translateEmailIntoLanguageItem(Email email) {
+    if (email == null) {
+      return null;
+    }
+    
+    VmOpenApiLanguageItem result = new VmOpenApiLanguageItem();
+    result.setLanguage(email.getLanguage());
+    result.setValue(email.getValue());
     
     return result;
   }

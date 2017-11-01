@@ -148,7 +148,7 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
       
       ptvServiceLocationServiceChannelIn.setAddresses(kuntaApiPtvTranslator.translateAddressesMovingIn(serviceLocationServiceChannel.getAddresses()));
 //      ptvServiceLocationServiceChannelIn.setAreas(areas);
-//      ptvServiceLocationServiceChannelIn.setEmails(emails);
+      ptvServiceLocationServiceChannelIn.setEmails(kuntaApiPtvTranslator.translateEmailsIntoLanguageItems(serviceLocationServiceChannel.getEmails()));
 //      ptvServiceLocationServiceChannelIn.setFaxNumbers(faxNumbers);
 //      ptvServiceLocationServiceChannelIn.setLanguages(languages);
       ptvServiceLocationServiceChannelIn.setPhoneNumbers(kuntaApiPtvTranslator.translatePhoneNumbers(serviceLocationServiceChannel.getPhoneNumbers()));
