@@ -19,6 +19,7 @@ import fi.otavanopisto.kuntaapi.server.id.WebPageServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.index.SearchResult;
 import fi.otavanopisto.kuntaapi.server.index.ServiceLocationServiceChannelSearcher;
 import fi.otavanopisto.kuntaapi.server.index.ServiceSearcher;
+import fi.otavanopisto.kuntaapi.server.integrations.IntegrationResponse;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceChannelProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceLocationServiceChannelSortBy;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceProvider;
@@ -141,9 +142,9 @@ public class ServiceController {
    * @param serviceLocationServiceChannel new data for service location service channel
    * @return updated service location service channel
    */
-  public ServiceLocationServiceChannel updateServiceLocationServiceChannel(ServiceLocationServiceChannelId serviceLocationChannelId, ServiceLocationServiceChannel serviceLocationServiceChannel) {
+  public IntegrationResponse<ServiceLocationServiceChannel> updateServiceLocationServiceChannel(ServiceLocationServiceChannelId serviceLocationChannelId, ServiceLocationServiceChannel serviceLocationServiceChannel) {
     for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
-      ServiceLocationServiceChannel updatedServiceLocationServiceChannel = serviceChannelProvider.updateServiceLocationServiceChannel(serviceLocationChannelId, serviceLocationServiceChannel);
+      IntegrationResponse<ServiceLocationServiceChannel> updatedServiceLocationServiceChannel = serviceChannelProvider.updateServiceLocationServiceChannel(serviceLocationChannelId, serviceLocationServiceChannel);
       if (updatedServiceLocationServiceChannel != null) {
         return updatedServiceLocationServiceChannel;
       }

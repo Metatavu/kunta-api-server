@@ -11,6 +11,7 @@ import javax.ws.rs.core.Response.ResponseBuilder;
 
 import fi.otavanopisto.kuntaapi.server.controllers.HttpCacheController;
 import fi.otavanopisto.kuntaapi.server.index.SearchResult;
+import fi.otavanopisto.kuntaapi.server.integrations.IntegrationResponse;
 
 @ApplicationScoped
 public class RestResponseBuilder {
@@ -38,6 +39,12 @@ public class RestResponseBuilder {
     }
       
     return responseBuilder.build();
+  }
+  
+  public <T> Response buildErrorResponse(IntegrationResponse<T> integrationResponse) {
+    return Response.status(integrationResponse.getStatus())
+      .entity(integrationResponse.getMessage())
+      .build();
   }
   
 }

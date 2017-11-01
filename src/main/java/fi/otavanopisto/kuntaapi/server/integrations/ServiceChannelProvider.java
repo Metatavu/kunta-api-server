@@ -59,7 +59,7 @@ public interface ServiceChannelProvider {
    * @param serviceLocationServiceChannel new data for service location service channel
    * @return updated service location service channel
    */
-  public ServiceLocationServiceChannel updateServiceLocationServiceChannel(
+  public IntegrationResponse<ServiceLocationServiceChannel> updateServiceLocationServiceChannel(
       ServiceLocationServiceChannelId serviceLocationChannelId,
       ServiceLocationServiceChannel serviceLocationServiceChannel);
   

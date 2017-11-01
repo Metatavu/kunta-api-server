@@ -26,6 +26,7 @@ import fi.otavanopisto.kuntaapi.server.id.PhoneServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.PrintableFormServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceLocationServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.WebPageServiceChannelId;
+import fi.otavanopisto.kuntaapi.server.integrations.IntegrationResponse;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceChannelProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.client.PtvApi;
@@ -117,7 +118,7 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
   }
   
   @Override
-  public ServiceLocationServiceChannel updateServiceLocationServiceChannel(ServiceLocationServiceChannelId serviceLocationChannelId, ServiceLocationServiceChannel serviceLocationServiceChannel) {
+  public IntegrationResponse<ServiceLocationServiceChannel> updateServiceLocationServiceChannel(ServiceLocationServiceChannelId serviceLocationChannelId, ServiceLocationServiceChannel serviceLocationServiceChannel) {
     ServiceLocationServiceChannelId ptvServiceLocationServiceChannelId = idController.translateServiceLocationServiceChannelId(serviceLocationChannelId, PtvConsts.IDENTIFIER_NAME);
     if (ptvServiceLocationServiceChannelId != null) {
       Map<String, Object> channelData = ptvServiceChannelResolver.loadServiceChannelData(ptvServiceLocationServiceChannelId.getId());
@@ -153,9 +154,10 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
       if (response.isOk()) {
         V7VmOpenApiServiceLocationChannel ptvUpdatedServiceLocationServiceChannel = response.getResponse();
         serviceChannelTasksQueue.enqueueTask(true, new ServiceChannelUpdateTask(ptvUpdatedServiceLocationServiceChannel.getId().toString(), null));
-        return ptvTranslator.translateServiceLocationServiceChannel(serviceLocationChannelId, kuntaApiOrganizationId, ptvUpdatedServiceLocationServiceChannel);
-      } else {
+        return IntegrationResponse.ok(ptvTranslator.translateServiceLocationServiceChannel(serviceLocationChannelId, kuntaApiOrganizationId, ptvUpdatedServiceLocationServiceChannel));
+      } else {        
         logger.severe(() -> String.format("Failed to update service location service channel [%d] %s", response.getStatus(), response.getMessage()));
+        return IntegrationResponse.statusMessage(response.getStatus(), response.getMessage());
       }
       
     }

@@ -15,6 +15,7 @@ import fi.otavanopisto.kuntaapi.server.controllers.SecurityController;
 import fi.otavanopisto.kuntaapi.server.controllers.ServiceController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceLocationServiceChannelId;
+import fi.otavanopisto.kuntaapi.server.integrations.IntegrationResponse;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceLocationServiceChannelSortBy;
 import fi.otavanopisto.kuntaapi.server.integrations.SortDir;
@@ -72,6 +73,7 @@ public class ServiceLocationServiceChannelsApiImpl extends ServiceLocationServic
   public Response updateServiceLocationServiceChannel(String serviceLocationServiceChannelIdParam, ServiceLocationServiceChannel newServiceLocationChannel, Request request) {
     ServiceLocationServiceChannelId serviceLocationServiceChannelId = kuntaApiIdFactory.createServiceLocationServiceChannelId(serviceLocationServiceChannelIdParam);
     ServiceLocationServiceChannel serviceLocationServiceChannel = serviceController.findServiceLocationServiceChannel(serviceLocationServiceChannelId);
+    
     if (serviceLocationServiceChannel == null) {
       return createNotFound(NOT_FOUND);
     }
@@ -81,10 +83,14 @@ public class ServiceLocationServiceChannelsApiImpl extends ServiceLocationServic
       return createForbidden("No permission to update service location service channel");
     }
     
-    ServiceLocationServiceChannel updatedServiceLocationServiceChannel = serviceController.updateServiceLocationServiceChannel(serviceLocationServiceChannelId, newServiceLocationChannel);
-    return httpCacheController.sendModified(updatedServiceLocationServiceChannel, updatedServiceLocationServiceChannel.getId());
+    IntegrationResponse<ServiceLocationServiceChannel> integrationResponse = serviceController.updateServiceLocationServiceChannel(serviceLocationServiceChannelId, newServiceLocationChannel);
+    if (integrationResponse.isOk()) {
+      return httpCacheController.sendModified(integrationResponse.getEntity(), integrationResponse.getEntity().getId());
+    } else {
+      return restResponseBuilder.buildErrorResponse(integrationResponse);
+    }
   }
-  
+
   @Override
   public Response listServiceLocationServiceChannels(String organizationIdParam, String search, String sortByParam,
       String sortDirParam, Long firstResult, Long maxResults, Request request) {
