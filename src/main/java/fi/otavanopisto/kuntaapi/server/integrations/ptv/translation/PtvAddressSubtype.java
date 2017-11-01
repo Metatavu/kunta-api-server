@@ -2,6 +2,7 @@ package fi.otavanopisto.kuntaapi.server.integrations.ptv.translation;
 
 public enum PtvAddressSubtype {
 
+  UNKNOWN (""),
   NO_ADDRESS ("NoAddress"),
   STREET ("Street"),
   POST_OFFICE_BOX  ("PostOfficeBox"),

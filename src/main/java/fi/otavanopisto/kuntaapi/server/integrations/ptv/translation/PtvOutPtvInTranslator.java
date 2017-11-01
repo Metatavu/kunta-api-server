@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -28,7 +31,10 @@ import fi.metatavu.ptv.client.model.VmOpenApiMunicipality;
  * @author Antti Leppä
  */
 @ApplicationScoped
-public class PtvOutPtvInTranslator {
+public class PtvOutPtvInTranslator extends AbstractTranslator {
+  
+  @Inject
+  private Logger logger;
 
   /**
    * Translates PTV out service location channel into PTV in service location channel
@@ -56,7 +62,9 @@ public class PtvOutPtvInTranslator {
     result.setServiceChannelDescriptions(ptvResource.getServiceChannelDescriptions());
     result.setServiceChannelNames(translateLocalizedListItemsToLanguageItems(ptvResource.getServiceChannelNames()));
     result.setServiceHours(ptvResource.getServiceHours());
+    result.setSourceId(ptvResource.getSourceId());
     result.setWebPages(ptvResource.getWebPages());
+    
     return result;
   }
 
@@ -81,13 +89,41 @@ public class PtvOutPtvInTranslator {
     
     V7VmOpenApiAddressWithMovingIn result = new V7VmOpenApiAddressWithMovingIn();
     
-    result.setCountry(result.getCountry());
-    result.setLocationAbroad(result.getLocationAbroad());
-    result.setMultipointLocation(result.getMultipointLocation());
-    result.setPostOfficeBoxAddress(result.getPostOfficeBoxAddress());
-    result.setStreetAddress(result.getStreetAddress());
-    result.setSubType(result.getSubType());
-    result.setType(result.getType());
+    result.setCountry(address.getCountry());
+    result.setType(address.getType());
+    result.setSubType(address.getSubType());
+    
+    if ("Visiting".equals(result.getType())) {
+      result.setType("Location");
+      result.setSubType(PtvAddressSubtype.SINGLE.getPtvValue());
+    }
+    
+    result.setLocationAbroad(null);
+    result.setMultipointLocation(null);
+    result.setPostOfficeBoxAddress(null);
+    result.setStreetAddress(null);
+    
+    PtvAddressSubtype subtype = getAddressSubtype(result.getSubType());
+    switch (subtype) {
+      case ABROAD:
+        result.setLocationAbroad(result.getLocationAbroad());
+      break;
+      case MULTIPOINT:
+        result.setMultipointLocation(result.getMultipointLocation());
+      break;
+      case POST_OFFICE_BOX:
+        result.setPostOfficeBoxAddress(result.getPostOfficeBoxAddress());
+      break;
+      case NO_ADDRESS:
+      break;
+      case SINGLE:
+      case STREET:
+        result.setStreetAddress(result.getStreetAddress());
+      break;
+      default:
+        logger.log(Level.SEVERE, () -> String.format("Unknown subtype %s", result.getSubType()));
+      break;
+    }
     
     return result;
   }
@@ -206,7 +242,7 @@ public class PtvOutPtvInTranslator {
     result.setLanguage(phoneNumber.getLanguage());
     result.setNumber(phoneNumber.getNumber());
     result.setPrefixNumber(phoneNumber.getPrefixNumber());
-    
+
     return result;
   }
 

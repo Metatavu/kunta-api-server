@@ -395,6 +395,8 @@ public class PtvTranslator extends AbstractTranslator {
       case SINGLE:
       case STREET:
         return translateStreetAddressWithCoordinates(ptvAddress.getStreetAddress(), ptvAddress.getType(), ptvAddress.getSubType(), ptvAddress.getCountry());
+      case ABROAD:
+        return translateAddressAbroad(ptvAddress.getLocationAbroad(), ptvAddress.getType(), ptvAddress.getSubType(), ptvAddress.getCountry());
       case POST_OFFICE_BOX:
         return translatePostOfficeBoxAddress(ptvAddress.getPostOfficeBoxAddress(), ptvAddress.getType(), ptvAddress.getSubType(), ptvAddress.getCountry());
       default:
@@ -485,6 +487,30 @@ public class PtvTranslator extends AbstractTranslator {
     result.setType(type);
     result.setSubtype(subtype);
     
+    return result;
+  }
+
+  private Address translateAddressAbroad(List<VmOpenApiLanguageItem> ptvLocationAbroad, String type, String subtype, String country) {
+    if (ptvLocationAbroad == null) {
+      return null;
+    }
+    
+    Address result = new Address();
+    result.setAdditionalInformations(null);
+    result.setCoordinateState(null);
+    result.setCountry(country);
+    result.setLatitude(null);
+    result.setLongitude(null);
+    result.setMunicipality(null);
+    result.setPostalCode(null);
+    result.setPostOffice(null);
+    result.setPostOfficeBox(null);
+    result.setStreetAddress(null);
+    result.setStreetNumber(null);
+    result.setType(type);
+    result.setSubtype(subtype);
+    result.setLocationAbroad(translateLocalizedItems(ptvLocationAbroad));
+
     return result;
   }
 

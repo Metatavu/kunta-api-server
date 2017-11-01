@@ -199,7 +199,9 @@ public class KuntaApiPtvTranslator extends AbstractTranslator {
   }
 
   private VmOpenApiAddressStreetWithCoordinatesIn translateAddressWithCoordinatesIn(Address address) {
-    if (getAddressSubtype(address) == PtvAddressSubtype.STREET) {
+    PtvAddressSubtype addressSubtype = getAddressSubtype(address);
+    
+    if (addressSubtype == PtvAddressSubtype.SINGLE || addressSubtype == PtvAddressSubtype.STREET) {
       VmOpenApiAddressStreetWithCoordinatesIn result = new VmOpenApiAddressStreetWithCoordinatesIn();
       result.setAdditionalInformation(translateLocalizedValuesIntoLanguageItems(address.getAdditionalInformations()));
       result.setLatitude(address.getLatitude());

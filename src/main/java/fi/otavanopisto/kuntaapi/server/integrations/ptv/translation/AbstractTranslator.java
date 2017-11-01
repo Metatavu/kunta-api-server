@@ -27,7 +27,7 @@ public class AbstractTranslator {
       }
     }
     
-    return PtvAddressSubtype.STREET;
+    return PtvAddressSubtype.UNKNOWN;
   }
   
 }
