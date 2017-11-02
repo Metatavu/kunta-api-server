@@ -93,11 +93,7 @@ public class ServicesApiImpl extends ServicesApi {
     }
     
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
-    if (search == null) {
-      return restResponseBuilder.buildResponse(serviceController.listServices(organizationId, firstResult, maxResults), null, request);
-    } else {
-      return restResponseBuilder.buildResponse(serviceController.searchServices(organizationId, search, sortBy, sortDir, firstResult, maxResults), request);
-    }
+    return restResponseBuilder.buildResponse(serviceController.searchServices(organizationId, search, sortBy, sortDir, firstResult, maxResults), request);
   }
   
   @Override
