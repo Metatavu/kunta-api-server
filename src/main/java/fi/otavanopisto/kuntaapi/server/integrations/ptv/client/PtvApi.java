@@ -3,6 +3,7 @@ package fi.otavanopisto.kuntaapi.server.integrations.ptv.client;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
+import fi.metatavu.ptv.client.CodeListApi;
 import fi.metatavu.ptv.client.GeneralDescriptionApi;
 import fi.metatavu.ptv.client.OrganizationApi;
 import fi.metatavu.ptv.client.ServiceApi;
@@ -23,6 +24,10 @@ public class PtvApi {
   
   public OrganizationApi getOrganizationApi() {
     return new OrganizationApi(client, null);
+  }
+  
+  public CodeListApi getCodeListApi() {
+    return new CodeListApi(client, null);
   }
 
   public GeneralDescriptionApi getGeneralDescriptionApi(OrganizationId organizationId) {
