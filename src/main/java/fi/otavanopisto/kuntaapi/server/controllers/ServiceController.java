@@ -62,14 +62,14 @@ public class ServiceController {
     return null;
   }
   
-  public List<Service> listServices(OrganizationId organizationId, Long firstResult, Long maxResults) {
+  private List<Service> listServices(OrganizationId organizationId) {
     List<Service> result = new ArrayList<>();
     
     for (ServiceProvider serviceProvider : getServiceProviders()) {
       result.addAll(serviceProvider.listServices(organizationId));
     }
     
-    return ListUtils.limit(entityController.sortEntitiesInNaturalOrder(result), firstResult, maxResults);
+    return entityController.sortEntitiesInNaturalOrder(result);
   }
 
   public SearchResult<Service> searchServices(OrganizationId organizationId, String search, ServiceSortBy sortBy, SortDir sortDir, Long firstResult, Long maxResults) {
@@ -85,9 +85,14 @@ public class ServiceController {
       }
       
       return new SearchResult<>(result, searchResult.getTotalHits());
+    } else {
+      if (search != null) {
+        return SearchResult.emptyResult();
+      } else {
+        List<Service> services = listServices(organizationId);
+        return new SearchResult<>(ListUtils.limit(services, firstResult, maxResults), services.size());
+      }
     }
-    
-    return SearchResult.emptyResult();
   }
   
   public ElectronicServiceChannel findElectronicServiceChannel(ElectronicServiceChannelId electronicChannelId) {
@@ -133,7 +138,7 @@ public class ServiceController {
     
     return null;
   }
-
+  
   public WebPageServiceChannel findWebPageServiceChannel(WebPageServiceChannelId webPageChannelId) {
     for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
       WebPageServiceChannel webPageChannel = serviceChannelProvider.findWebPageServiceChannelChannel(webPageChannelId);

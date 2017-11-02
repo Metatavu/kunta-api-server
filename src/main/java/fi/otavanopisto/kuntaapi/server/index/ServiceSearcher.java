@@ -39,8 +39,11 @@ public class ServiceSearcher {
   private IndexReader indexReader;
 
   public SearchResult<ServiceId> searchServices(OrganizationId organizationId, String text, ServiceSortBy sortOrder, SortDir sortDir, Long firstResult, Long maxResults) {
-    BoolQueryBuilder query = boolQuery()
-      .must(queryStringQuery(text));
+    BoolQueryBuilder query = boolQuery();
+    
+    if (text != null) {
+      query.must(queryStringQuery(text));
+    }
     
     if (organizationId != null) {
       OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(organizationId, KuntaApiConsts.IDENTIFIER_NAME);
