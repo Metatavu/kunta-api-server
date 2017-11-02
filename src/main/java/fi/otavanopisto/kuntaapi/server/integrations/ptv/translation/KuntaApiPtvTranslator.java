@@ -3,6 +3,8 @@ package fi.otavanopisto.kuntaapi.server.integrations.ptv.translation;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 import javax.enterprise.context.ApplicationScoped;
 
@@ -12,14 +14,17 @@ import fi.metatavu.kuntaapi.server.rest.model.Email;
 import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
 import fi.metatavu.kuntaapi.server.rest.model.Phone;
 import fi.metatavu.kuntaapi.server.rest.model.ServiceHour;
+import fi.metatavu.kuntaapi.server.rest.model.WebPage;
 import fi.metatavu.ptv.client.model.V2VmOpenApiDailyOpeningTime;
 import fi.metatavu.ptv.client.model.V4VmOpenApiPhone;
+import fi.metatavu.ptv.client.model.V4VmOpenApiPhoneSimple;
 import fi.metatavu.ptv.client.model.V4VmOpenApiServiceHour;
 import fi.metatavu.ptv.client.model.V7VmOpenApiAddressWithMovingIn;
 import fi.metatavu.ptv.client.model.VmOpenApiAddressPostOfficeBoxIn;
 import fi.metatavu.ptv.client.model.VmOpenApiAddressStreetWithCoordinatesIn;
 import fi.metatavu.ptv.client.model.VmOpenApiLanguageItem;
 import fi.metatavu.ptv.client.model.VmOpenApiLocalizedListItem;
+import fi.metatavu.ptv.client.model.VmOpenApiWebPageWithOrderNumber;
 
 /**
  * Translator for translating resources from Kunta API format into PTV formats
@@ -98,6 +103,24 @@ public class KuntaApiPtvTranslator extends AbstractTranslator {
     return result;
   }
 
+  /**
+   * Translates Kunta API fax numbers into PTV fax numbers
+   * 
+   * @param phoneNumbers Kunta API fax numbers
+   * @return PTV fax numbers
+   */
+  public List<V4VmOpenApiPhoneSimple> translateFaxNumbers(List<Phone> phoneNumbers) {
+    if (phoneNumbers == null || phoneNumbers.isEmpty()) {
+      return Collections.emptyList();
+    }
+    
+    return phoneNumbers
+      .stream()
+      .map(this::translateFaxNumber)
+      .filter(Objects::nonNull)
+      .collect(Collectors.toList());
+  }
+  
   /**
    * Translates Kunta API addresses into PTV in moving in addresses
    * 
@@ -190,6 +213,61 @@ public class KuntaApiPtvTranslator extends AbstractTranslator {
     return result;
   }
 
+  /**
+   * Translates list of Kunta API web pages into list of PTV web pages
+   * 
+   * @param webPages list of Kunta API web pages 
+   * @return list of PTV web pages
+   */
+  public List<VmOpenApiWebPageWithOrderNumber> translateWebPages(List<WebPage> webPages) {
+    if (webPages == null || webPages.isEmpty()) {
+      return Collections.emptyList();
+    }
+    
+    List<VmOpenApiWebPageWithOrderNumber> result = new ArrayList<>(webPages.size());
+    int orderNumber = 0;
+    
+    for (WebPage webPage : webPages) {
+      VmOpenApiWebPageWithOrderNumber ptvWebPage = translateWebPage(webPage, String.valueOf(orderNumber));
+      if (ptvWebPage != null) {
+        result.add(ptvWebPage);
+        orderNumber++;
+      }
+    }
+    
+    return result;
+    
+  }
+
+  private VmOpenApiWebPageWithOrderNumber translateWebPage(WebPage webPage, String orderNumber) {
+    if (webPage == null) {
+      return null;
+    }
+    
+    VmOpenApiWebPageWithOrderNumber result = new VmOpenApiWebPageWithOrderNumber();
+    result.setLanguage(webPage.getLanguage());
+    result.setOrderNumber(orderNumber);
+    result.setUrl(webPage.getUrl());
+    result.setValue(webPage.getValue());
+    
+    return result;
+  }
+  
+  private V4VmOpenApiPhoneSimple translateFaxNumber(Phone phoneNumber) {
+    if (phoneNumber == null || !"Fax".equals(phoneNumber.getType())) {
+      return null;
+    }
+    
+    V4VmOpenApiPhoneSimple result = new V4VmOpenApiPhoneSimple();
+    result.setIsFinnishServiceNumber(phoneNumber.getIsFinnishServiceNumber());
+    result.setLanguage(phoneNumber.getLanguage());
+    result.setNumber(phoneNumber.getNumber());
+    result.setPrefixNumber(phoneNumber.getPrefixNumber());
+    
+    return result;
+  }
+  
+
   private VmOpenApiLanguageItem translateEmailIntoLanguageItem(Email email) {
     if (email == null) {
       return null;
@@ -203,7 +281,7 @@ public class KuntaApiPtvTranslator extends AbstractTranslator {
   }
 
   private V4VmOpenApiPhone translatePhoneNumber(Phone phoneNumber) {
-    if (phoneNumber == null) {
+    if (phoneNumber == null || !"Phone".equals(phoneNumber.getType())) {
       return null;
     }
     

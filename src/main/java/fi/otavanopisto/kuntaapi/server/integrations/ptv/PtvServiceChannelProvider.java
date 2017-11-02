@@ -149,12 +149,13 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
       ptvServiceLocationServiceChannelIn.setAddresses(kuntaApiPtvTranslator.translateAddressesMovingIn(serviceLocationServiceChannel.getAddresses()));
 //      ptvServiceLocationServiceChannelIn.setAreas(areas);
       ptvServiceLocationServiceChannelIn.setEmails(kuntaApiPtvTranslator.translateEmailsIntoLanguageItems(serviceLocationServiceChannel.getEmails()));
-//      ptvServiceLocationServiceChannelIn.setFaxNumbers(faxNumbers);
+      ptvServiceLocationServiceChannelIn.setFaxNumbers(kuntaApiPtvTranslator.translateFaxNumbers(serviceLocationServiceChannel.getPhoneNumbers()));
 //      ptvServiceLocationServiceChannelIn.setLanguages(languages);
       ptvServiceLocationServiceChannelIn.setPhoneNumbers(kuntaApiPtvTranslator.translatePhoneNumbers(serviceLocationServiceChannel.getPhoneNumbers()));
       ptvServiceLocationServiceChannelIn.setServiceChannelDescriptions(kuntaApiPtvTranslator.translateLocalizedValuesIntoLocalizedListItems(serviceLocationServiceChannel.getDescriptions()));
       ptvServiceLocationServiceChannelIn.setServiceChannelNames(kuntaApiPtvTranslator.translateLocalizedValuesIntoLanguageItems(serviceLocationServiceChannel.getNames()));
       ptvServiceLocationServiceChannelIn.setServiceHours(kuntaApiPtvTranslator.translateServiceHours(serviceLocationServiceChannel.getServiceHours()));
+      ptvServiceLocationServiceChannelIn.setWebPages(kuntaApiPtvTranslator.translateWebPages(serviceLocationServiceChannel.getWebPages()));
       
       ApiResponse<V7VmOpenApiServiceLocationChannel> response = serviceChannelApi.apiV7ServiceChannelServiceLocationByIdPut(ptvServiceLocationServiceChannelId.getId(), ptvServiceLocationServiceChannelIn);
       if (response.isOk()) {
