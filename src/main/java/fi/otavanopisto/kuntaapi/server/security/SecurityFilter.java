@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
 import javax.ws.rs.core.Context;
+import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.Provider;
 
 import org.apache.commons.codec.binary.Base64;
@@ -33,61 +34,74 @@ public class SecurityFilter implements ContainerRequestFilter {
   
   @Inject
   private SecurityController clientController;
+
+  @Inject
+  private RestSecurityWhitelist restSecurityWhitelist;
   
   @Context
   private HttpServletRequest request;
   
   @Override
   public void filter(ContainerRequestContext requestContext) {
+    String path = requestContext.getUriInfo().getPath();
+    if (restSecurityWhitelist.isWhitelisted(path)) {
+      return;
+    }
+    
     String authorizationHeader = requestContext.getHeaderString(AUTHORIZATION_HEADER);
     if (StringUtils.isBlank(authorizationHeader)) {
-      logUnuauthorizedRequest(requestContext, "Missing authorization header");
+      handleUnuauthorizedRequest(requestContext, "Missing authorization header");
       return;
     }
     
     if (!StringUtils.startsWithIgnoreCase(authorizationHeader, AUTHENTICATION_SCHEME)) {
-      logUnuauthorizedRequest(requestContext, "Invalid authorization scheme");
+      handleUnuauthorizedRequest(requestContext, "Invalid authorization scheme");
       return;
     }
     
     String authorization = decodeAuthorization(authorizationHeader);
     if (StringUtils.isBlank(authorization)) {
-      logUnuauthorizedRequest(requestContext, "Invalid credentials");
+      handleUnuauthorizedRequest(requestContext, "Invalid credentials");
       return;        
     }
     
     String[] credentials = StringUtils.split(authorization, ":", 2);
     if (credentials.length != 2) {
-      logUnuauthorizedRequest(requestContext, "Missing credentials");
+      handleUnuauthorizedRequest(requestContext, "Missing credentials");
       return;        
     }
     
     Client client = clientController.findClientByClientIdAndSecret(credentials[0], credentials[1]);
     if (client == null) {
-      logUnuauthorizedRequest(requestContext, "Invalid clientId or clientSecret");
+      handleUnuauthorizedRequest(requestContext, "Invalid clientId or clientSecret");
       return;        
     }
     
     String method = StringUtils.upperCase(requestContext.getMethod());
     if (!isMethodAllowed(method, client)) {
-      logUnuauthorizedRequest(requestContext, String.format("Client is not allowed to use %s", method));
+      handleUnuauthorizedRequest(requestContext, String.format("Client is not allowed to use %s", method));
     }
 
     clientContainer.setClient(client);
   }
   
+  /**
+   * Returns whether method is allowed for the client
+   * 
+   * @param method method
+   * @param client client
+   * @return whether method is allowed for the client
+   */
   private boolean isMethodAllowed(String method, Client client) {
-    if ("GET".equals(method)) {
-      return true;
-    }
-    
-    if ((client.getAccessType() == AccessType.READ_WRITE) || (client.getAccessType() == AccessType.UNRESTRICTED)) {
-      return true;
-    }
-      
-    return false;        
+    return ("GET".equals(method)) || (client.getAccessType() == AccessType.READ_WRITE) || (client.getAccessType() == AccessType.UNRESTRICTED);
   }
   
+  /**
+   * Decodes authorization string
+   * 
+   * @param authorization authorization string
+   * @return decoded authorization string
+   */
   private String decodeAuthorization(String authorization) {
     try {
       return new String(Base64.decodeBase64(authorization.substring(AUTHENTICATION_SCHEME.length())), "UTF-8");
@@ -97,13 +111,25 @@ public class SecurityFilter implements ContainerRequestFilter {
     }
   }
 
-  private void logUnuauthorizedRequest(ContainerRequestContext requestContext, String message) {
-    logger.log(Level.SEVERE, String.format("%s from %s", message, getRequestDetails(requestContext)));
+  /**
+   * Handles unauthorized request
+   * 
+   * @param requestContext request context
+   * @param logMessage log message
+   */
+  private void handleUnuauthorizedRequest(ContainerRequestContext requestContext, String logMessage) {
+    logger.log(Level.WARNING, () -> String.format("%s from %s", logMessage, getRequestDetails(requestContext)));
+    requestContext.abortWith(Response.status(Response.Status.UNAUTHORIZED).entity("Unauthorized").build());
   }
 
+  /**
+   * Returns details from the request
+   * 
+   * @param requestContext request context
+   * @return details from the request
+   */
   private String getRequestDetails(ContainerRequestContext requestContext) {
     return String.format("%s (%s)", request.getRemoteHost(), requestContext.getHeaderString("User-Agent"));
   }
-  
   
 }

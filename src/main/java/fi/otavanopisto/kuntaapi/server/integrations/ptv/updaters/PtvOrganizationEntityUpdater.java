@@ -3,6 +3,7 @@ package fi.otavanopisto.kuntaapi.server.integrations.ptv.updaters;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,7 +16,7 @@ import javax.inject.Inject;
 
 import fi.metatavu.kuntaapi.server.rest.model.OrganizationService;
 import fi.metatavu.ptv.client.ApiResponse;
-import fi.metatavu.ptv.client.model.V5VmOpenApiOrganization;
+import fi.metatavu.ptv.client.model.V7VmOpenApiOrganization;
 import fi.metatavu.ptv.client.model.V5VmOpenApiOrganizationService;
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
@@ -29,10 +30,10 @@ import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.PtvConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.PtvIdFactory;
-import fi.otavanopisto.kuntaapi.server.integrations.ptv.PtvTranslator;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.client.PtvApi;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.resources.PtvOrganizationResourceContainer;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.OrganizationIdTaskQueue;
+import fi.otavanopisto.kuntaapi.server.integrations.ptv.translation.PtvTranslator;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask;
@@ -109,11 +110,11 @@ public class PtvOrganizationEntityUpdater extends EntityUpdater {
       return;
     }
     
-    ApiResponse<V5VmOpenApiOrganization> response = ptvApi.getOrganizationApi().apiV5OrganizationByIdGet(organizationId.getId());
+    ApiResponse<V7VmOpenApiOrganization> response = ptvApi.getOrganizationApi().apiV7OrganizationByIdGet(organizationId.getId());
     if (response.isOk()) {
       Identifier identifier = identifierController.acquireIdentifier(orderIndex, organizationId);
       OrganizationId kuntaApiOrganizationId = kuntaApiIdFactory.createFromIdentifier(OrganizationId.class, identifier);
-      V5VmOpenApiOrganization ptvOrganization = response.getResponse();
+      V7VmOpenApiOrganization ptvOrganization = response.getResponse();
       OrganizationId kuntaApiParentOrganizationId = translateParentOrganizationId(kuntaApiOrganizationId,
           ptvOrganization);
      
@@ -145,7 +146,7 @@ public class PtvOrganizationEntityUpdater extends EntityUpdater {
     }
   }
 
-  private OrganizationId translateParentOrganizationId(OrganizationId kuntaApiOrganizationId, V5VmOpenApiOrganization ptvOrganization) {
+  private OrganizationId translateParentOrganizationId(OrganizationId kuntaApiOrganizationId, V7VmOpenApiOrganization ptvOrganization) {
     OrganizationId ptvParentOrganizationId = ptvIdFactory.createOrganizationId(ptvOrganization.getParentOrganization());
     OrganizationId kuntaApiParentOrganizationId = null;
     
@@ -164,7 +165,7 @@ public class PtvOrganizationEntityUpdater extends EntityUpdater {
       return null;
     }
     
-    String ptvServiceId = ptvOrganizationService.getService().getId();
+    UUID ptvServiceId = ptvOrganizationService.getService().getId();
     
     ServiceId kuntaApiServiceId = idController.translateServiceId(ptvIdFactory.createServiceId(ptvServiceId), KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiServiceId == null) {

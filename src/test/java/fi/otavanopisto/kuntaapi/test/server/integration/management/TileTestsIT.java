@@ -1,6 +1,5 @@
 package fi.otavanopisto.kuntaapi.test.server.integration.management;
 
-import static com.jayway.restassured.RestAssured.given;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.hamcrest.core.StringContains.containsString;
@@ -57,8 +56,7 @@ public class TileTestsIT extends AbstractIntegrationTest {
   @Test
   public void testFindTiles() {
     String organizationId = getOrganizationId(0);
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/tiles/{tileId}", organizationId, getTileId(organizationId, 0))
       .then()
@@ -71,8 +69,7 @@ public class TileTestsIT extends AbstractIntegrationTest {
   
   @Test
   public void testListTiles() {
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/tiles", getOrganizationId(0))
       .then()
@@ -87,8 +84,7 @@ public class TileTestsIT extends AbstractIntegrationTest {
   @Test
   public void testTilesNoTitle() {
     String organizationId = getOrganizationId(0);
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/tiles/{tileId}", organizationId, getTileId(organizationId, 2))
       .then()
@@ -123,8 +119,7 @@ public class TileTestsIT extends AbstractIntegrationTest {
     String tileId = getTileId(organizationId, 0);
     String imageId = getTileImageId(organizationId, tileId, 0);
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{ORGANIZATIONID}/tiles/{TILEID}/images/{IMAGEID}", organizationId, tileId, imageId)
       .then()
@@ -159,8 +154,7 @@ public class TileTestsIT extends AbstractIntegrationTest {
     String tileId = getTileId(organizationId, 0);
     String imageId = getTileImageId(organizationId, tileId, 0);
 
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{ORGANIZATIONID}/tiles/{TILEID}/images/{IMAGEID}/data", organizationId, tileId, imageId)
       .then()
@@ -176,8 +170,7 @@ public class TileTestsIT extends AbstractIntegrationTest {
     String tileId = getTileId(organizationId, 0);
     String imageId = getTileImageId(organizationId, tileId, 0);
 
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{ORGANIZATIONID}/tiles/{TILEID}/images/{IMAGEID}/data?size=100", organizationId, tileId, imageId)
       .then()

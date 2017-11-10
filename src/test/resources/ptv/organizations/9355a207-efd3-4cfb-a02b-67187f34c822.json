@@ -1,67 +1,51 @@
 {
-  "id":"9355a207-efd3-4cfb-a02b-67187f34c822",
-  "oid":null,
-  "parentOrganization":null,
-  "organizationType":"Municipality",
-  "municipality":{
-    "code":"507",
-    "name":[
+  "id": "9355a207-efd3-4cfb-a02b-67187f34c822",
+  "sourceId": null,
+  "oid": null,
+  "parentOrganization": null,
+  "organizationType": "Municipality",
+  "municipality": {
+    "code": "507",
+    "name": [
       {
-        "value":"Mäntyharju",
-        "language":"sv"
+        "value": "Mäntyharju",
+        "language": "sv"
       },
       {
-        "value":"Mäntyharju",
-        "language":"fi"
+        "value": "Mäntyharju",
+        "language": "fi"
       }
     ]
   },
-  "businessCode":"0165761-0",
-  "businessName":"Mäntyharju",
-  "organizationNames":[
+  "businessCode": "0165761-0",
+  "businessName": "Mäntyharju",
+  "organizationNames": [
     {
-      "language":"fi",
-      "value":"Mäntyharjun kunta",
-      "type":"Name"
+      "language": "fi",
+      "value": "Mäntyharjun kunta",
+      "type": "Name"
     }
   ],
-  "displayNameType":[
+  "displayNameType": [
     {
-      "type":"Name",
-      "language":"fi"
+      "type": "Name",
+      "language": "fi"
     },
     {
-      "type":"Name",
-      "language":"sv"
+      "type": "Name",
+      "language": "sv"
     }
   ],
-  "areaType":null,
-  "areas":null,
-  "organizationDescriptions":[
-
-  ],
-  "emailAddresses":[
-
-  ],
-  "phoneNumbers":[
-
-  ],
-  "webPages":[{
-    "orderNumber": "1",
-    "value": "Example",
-    "url": "http://www.example.com",
-    "language": "fi"
-  }, {
-    "orderNumber": "2",
-    "value": "Example",
-    "url": "http://www.example.com/en",
-    "language": "en"
-  }],
-  "addresses":[
-
-  ],
-  "publishingStatus":"Published",
-  "services":[
-
-  ]
+  "areaType": null,
+  "areas": null,
+  "organizationDescriptions": [],
+  "emailAddresses": [],
+  "phoneNumbers": [],
+  "webPages": [],
+  "addresses": [],
+  "electronicInvoicings": [],
+  "publishingStatus": "Published",
+  "services": [],
+  "modified": "2017-03-12T20:08:56.462261",
+  "subOrganizations": null
 }

@@ -2,9 +2,12 @@ package fi.otavanopisto.kuntaapi.test.server.unit.ptv;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.time.OffsetDateTime;
 import java.util.Collections;
 import java.util.List;
 
@@ -23,10 +26,11 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import fi.metatavu.kuntaapi.server.rest.model.ServiceHour;
 import fi.metatavu.ptv.client.model.V4VmOpenApiServiceHour;
-import fi.otavanopisto.kuntaapi.server.integrations.ptv.PtvTranslator;
+import fi.otavanopisto.kuntaapi.server.integrations.ptv.translation.PtvTranslator;
+import fi.otavanopisto.kuntaapi.test.AbstractTest;
 
 @RunWith (CdiTestRunner.class)
-public class PtvTranslatorTest {
+public class PtvTranslatorTest extends AbstractTest {
   
   @Inject
   private PtvTranslator ptvTranslator;
@@ -94,10 +98,37 @@ public class PtvTranslatorTest {
     }
   }
   
-  private void assertServiceHoursEqual(List<ServiceHour> expected, List<ServiceHour> actual) throws IOException, JSONException {
-    String expectedString = getObjectMapper().writeValueAsString(expected);
-    String actualString = getObjectMapper().writeValueAsString(actual);
-    JSONAssert.assertEquals("ServiceHours are not equal", expectedString, actualString, false);
+  private void assertServiceHoursEqual(List<ServiceHour> expectedServiceHours, List<ServiceHour> actualServiceHours) throws IOException, JSONException {
+    assertEquals(expectedServiceHours.size(), actualServiceHours.size());
+    for (int i = 0; i < expectedServiceHours.size(); i++) {
+      ServiceHour expectedServiceHour = expectedServiceHours.get(i);
+      ServiceHour actualServiceHour = actualServiceHours.get(i);
+      assertEquals(expectedServiceHour.getServiceHourType(), actualServiceHour.getServiceHourType());
+      assertInstantsMatch(expectedServiceHour.getValidFrom(), actualServiceHour.getValidFrom());
+      assertInstantsMatch(expectedServiceHour.getValidTo(), actualServiceHour.getValidTo());
+      assertEquals(expectedServiceHour.getIsClosed(), actualServiceHour.getIsClosed());
+      assertEquals(expectedServiceHour.getValidForNow(), actualServiceHour.getValidForNow());
+      assertJSONEquals(expectedServiceHour.getAdditionalInformation(), actualServiceHour.getAdditionalInformation());
+      assertJSONEquals(expectedServiceHour.getOpeningHour(), actualServiceHour.getOpeningHour());
+    }
+  }
+  
+  private void assertJSONEquals(Object expected, Object actual) throws IOException, JSONException {
+    ObjectMapper objectMapper = new ObjectMapper();
+
+    JSONAssert.assertEquals(objectMapper.writeValueAsString(expected), objectMapper.writeValueAsString(actual), false);
+  }
+
+  private void assertInstantsMatch(OffsetDateTime expected, OffsetDateTime actual) {
+    if (expected == actual) {
+      return;  
+    }
+    
+    if (expected == null || actual == null) {
+      fail("ServiceHours are not equal");
+    }
+    
+    assertTrue(String.format("ServiceHours (%s, %s) are not equal", expected, actual), sameInstant(expected.toInstant()).matches(actual.toInstant()));
   }
   
   private ObjectMapper getObjectMapper() {

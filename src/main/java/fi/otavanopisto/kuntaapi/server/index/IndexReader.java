@@ -27,7 +27,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
 @DependsOn (value = "IndexUpdater")
 public class IndexReader extends AbstractIndexHander {
   
-  public static final int MAX_RESULTS = 10000;
+  public static final int MAX_RESULTS = 1000;
   
   @Inject
   private KuntaApiIdFactory kuntaApiIdFactory;
@@ -72,7 +72,7 @@ public class IndexReader extends AbstractIndexHander {
       
       if (organizationField != null) {
         SearchHitField organizationHitField = fields.get(organizationField);
-        organizationId = kuntaApiIdFactory.createOrganizationId(organizationHitField.getValue());
+        organizationId = kuntaApiIdFactory.createOrganizationId((String) organizationHitField.getValue());
       }
       
       String id = "_id".equals(idField) ? hit.getId() : fields.get(idField).getValue();

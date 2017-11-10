@@ -13,7 +13,7 @@ import javax.enterprise.event.Event;
 import javax.inject.Inject;
 
 import fi.metatavu.ptv.client.ApiResponse;
-import fi.metatavu.ptv.client.model.V5VmOpenApiService;
+import fi.metatavu.ptv.client.model.V7VmOpenApiService;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.IdUpdater;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
@@ -82,7 +82,7 @@ public class PtvServiceIdRemoveUpdater extends IdUpdater {
         continue;
       }
       
-      ApiResponse<V5VmOpenApiService> response = ptvApi.getServiceApi().apiV5ServiceByIdGet(ptvServiceId.getId());
+      ApiResponse<V7VmOpenApiService> response = ptvApi.getServiceApi(null).apiV7ServiceByIdGet(ptvServiceId.getId());
       if (response.getStatus() == 404) {
         taskRequest.fire(new TaskRequest(false, new IdTask<ServiceId>(Operation.REMOVE, ptvServiceId)));
       }

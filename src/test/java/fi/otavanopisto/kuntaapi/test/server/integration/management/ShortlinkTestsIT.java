@@ -1,6 +1,5 @@
 package fi.otavanopisto.kuntaapi.test.server.integration.management;
 
-import static com.jayway.restassured.RestAssured.given;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.Assert.assertEquals;
@@ -51,8 +50,7 @@ public class ShortlinkTestsIT extends AbstractIntegrationTest {
   @Test
   public void testFindShortlinks() {
     String organizationId = getOrganizationId(0);
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/shortlinks/{shortlinkId}", organizationId, getOrganizationShortlinkId(organizationId, 0))
       .then()
@@ -65,8 +63,7 @@ public class ShortlinkTestsIT extends AbstractIntegrationTest {
   
   @Test
   public void testListShortlinksBySlug() {
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/shortlinks?path=/hills", getOrganizationId(0))
       .then()
@@ -76,8 +73,7 @@ public class ShortlinkTestsIT extends AbstractIntegrationTest {
       .body("id[0]", notNullValue())
       .body("path[0]", is("/hills"));
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/shortlinks?path=non-existing", getOrganizationId(0))
       .then()
@@ -88,8 +84,7 @@ public class ShortlinkTestsIT extends AbstractIntegrationTest {
   
   @Test
   public void testListShortlinks() {
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/shortlinks", getOrganizationId(0))
       .then()

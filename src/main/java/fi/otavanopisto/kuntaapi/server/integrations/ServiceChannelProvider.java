@@ -51,6 +51,17 @@ public interface ServiceChannelProvider {
    * @return Returns a location service channel
    */
   public ServiceLocationServiceChannel findServiceLocationServiceChannel(ServiceLocationServiceChannelId serviceLocationServiceChannelId);
+
+  /**
+   * Updates service location service channel
+   * 
+   * @param serviceLocationChannelId service location service channel id
+   * @param serviceLocationServiceChannel new data for service location service channel
+   * @return updated service location service channel
+   */
+  public IntegrationResponse<ServiceLocationServiceChannel> updateServiceLocationServiceChannel(
+      ServiceLocationServiceChannelId serviceLocationChannelId,
+      ServiceLocationServiceChannel serviceLocationServiceChannel);
   
   /**
    * Finds service webpage channel

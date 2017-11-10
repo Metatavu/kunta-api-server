@@ -1,6 +1,5 @@
 package fi.otavanopisto.kuntaapi.test.server.integrations.mikkelinyt;
 
-import static com.jayway.restassured.RestAssured.given;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.hamcrest.core.Is.is;
 
@@ -94,8 +93,7 @@ public class MikkeliNytRestTestsIT extends AbstractIntegrationTest {
     String organizationId = getOrganizationId(0);
     String eventId = getEventId(organizationId, 0);
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{ORGANIZATIONID}/events", organizationId)
       .then()
@@ -123,8 +121,7 @@ public class MikkeliNytRestTestsIT extends AbstractIntegrationTest {
     String baseUrl = getWireMockBasePath();
     String eventId = getEventId(organizationId, 0);
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{ORGANIZATIONID}/events/{EVENTID}", organizationId, eventId)
       .then()
@@ -152,8 +149,7 @@ public class MikkeliNytRestTestsIT extends AbstractIntegrationTest {
     String eventId = getEventId(organizationId, 0);
     String imageId = getEventImageId(organizationId, eventId, 0);
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{ORGANIZATIONID}/events/{EVENTID}/images/{IMAGEID}", organizationId, eventId, imageId)
       .then()
@@ -171,8 +167,7 @@ public class MikkeliNytRestTestsIT extends AbstractIntegrationTest {
     String organizationId = getOrganizationId(0);
     String eventId = getEventId(organizationId, 0);
 
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{ORGANIZATIONID}/events/{EVENTID}/images", organizationId, eventId)
       .then()
@@ -192,8 +187,7 @@ public class MikkeliNytRestTestsIT extends AbstractIntegrationTest {
     String eventId = getEventId(organizationId, 0);
     String imageId = getEventImageId(organizationId, eventId, 0);
 
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{ORGANIZATIONID}/events/{EVENTID}/images/{IMAGEID}/data", organizationId, eventId, imageId)
       .then()
@@ -211,8 +205,7 @@ public class MikkeliNytRestTestsIT extends AbstractIntegrationTest {
     String eventId = getEventId(organizationId, 0);
     String imageId = getEventImageId(organizationId, eventId, 0);
 
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{ORGANIZATIONID}/events/{EVENTID}/images/{IMAGEID}/data?size=100", organizationId, eventId, imageId)
       .then()

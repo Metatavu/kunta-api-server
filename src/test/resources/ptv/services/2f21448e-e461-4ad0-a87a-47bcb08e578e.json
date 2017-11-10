@@ -1,246 +1,203 @@
 {
-  "id":"2f21448e-e461-4ad0-a87a-47bcb08e578e",
-  "type":"Service",
-  "statutoryServiceGeneralDescriptionId":null,
-  "serviceChargeType":"Free",
-  "serviceNames":[
-    {
-      "language":"fi",
-      "value":"Metatavu testaa",
-      "type":"Name"
-    }
-  ],
-  "areaType":"WholeCountry",
-  "areas":[
-
-  ],
-  "serviceDescriptions":[
-    {
-      "language":"fi",
-      "value":"Kuvaus",
-      "type":"Description"
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Eläkkeet",
+      "language" : "fi"
+    }, {
+      "value" : "Pensioner",
+      "language" : "sv"
+    }, {
+      "value" : "Pensions",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "I denna servicegrupp behandlas ur ett serviceperspektiv typer av lagstadgade pensioner i Finland samt pensionsskyddet för personer som är permanent bosatta i utlandet med tanke på både finländare bosatta utomlands och invandrare bosatta i Finland.",
+      "language" : "sv"
+    }, {
+      "value" : "Tässä palveluluokassa käsitellään palvelunäkökulmasta Suomen lakisääteisten eläkkeiden tyyppejä sekä ulkomailla pysyvästi asuvan eläketurvaa niin ulkosuomalaisen kuin Suomessa asuvan maahanmuuttajan kannalta.",
+      "language" : "fi"
+    }, {
+      "value" : "This service class contains the Finnish statutory pension types and the pension security of those permanently resident abroad from the perspective of both expatriate Finns and immigrants residing in Finland from the service point of view.",
+      "language" : "en"
+    } ],
+    "code" : "P13",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1120",
+    "parentId" : null,
+    "parentUri" : ""
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "WholeCountry",
+  "publishingStatus" : "Published",
+  "serviceVouchers" : [ {
+    "orderNumber" : 0,
+    "value" : null,
+    "language" : "fi",
+    "url" : null,
+    "additionalInformation" : null
+  } ],
+  "modified" : "2017-07-06T09:44:49.636165",
+  "id" : "2f21448e-e461-4ad0-a87a-47bcb08e578e",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "b0ca2d94-f113-47ae-9c90-1bc1733c44be",
+      "name" : "Metatavun auttava puhelin"
     },
-    {
-      "language":"fi",
-      "value":null,
-      "type":"ProcessingTimeAdditionalInfo"
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "dda27a67-1b20-4966-a57e-162ca4c54ef5",
+      "name" : "Metatavun toimisto"
     },
-    {
-      "language":"fi",
-      "value":"Tiivistelmä. on tämä tii-vis-tel-mä.",
-      "type":"ShortDescription"
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : true,
+  "legislation" : [ {
+    "names" : [ {
+      "value" : "Korkein oikeus",
+      "language" : "fi"
+    } ],
+    "webPages" : [ ]
+  } ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ {
+    "name" : [ {
+      "value" : "Aikakauslehtien kustantaminen",
+      "language" : "fi"
+    }, {
+      "value" : "Utgivning av tidskrifter",
+      "language" : "sv"
+    }, {
+      "value" : "Publishing of journals and periodicals",
+      "language" : "en"
+    } ],
+    "code" : "5",
+    "ontologyType" : null,
+    "uri" : "http://www.stat.fi/meta/luokitukset/toimiala/001-2008/58142",
+    "parentId" : "f82cd02c-a5e4-4624-bebe-a9afe66a776b",
+    "parentUri" : "http://www.stat.fi/meta/luokitukset/toimiala/001-2008/5814"
+  } ],
+  "serviceChargeType" : "Free",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Metatavu testaa",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "DNA-testit",
+      "language" : "fi"
+    }, {
+      "value" : "dna-test",
+      "language" : "sv"
+    }, {
+      "value" : "DNA tests",
+      "language" : "en"
+    } ],
+    "code" : "",
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p64557",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p10657"
+  } ],
+  "lifeEvents" : [ {
+    "name" : [ {
+      "value" : "Conscription",
+      "language" : "en"
+    }, {
+      "value" : "Värnplikt",
+      "language" : "sv"
+    }, {
+      "value" : "Asevelvollisuus",
+      "language" : "fi"
+    } ],
+    "code" : "KE2",
+    "ontologyType" : "LIFESITUATION",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v3008",
+    "parentId" : null,
+    "parentUri" : ""
+  } ],
+  "statutoryServiceGeneralDescriptionId" : null,
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Businesses and non-government organizations",
+      "language" : "en"
+    }, {
+      "value" : "Yritykset ja yhteisöt",
+      "language" : "fi"
+    }, {
+      "value" : "Företag och samfund",
+      "language" : "sv"
+    } ],
+    "code" : "KR2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008",
+    "parentId" : null,
+    "parentUri" : ""
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLineAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "xxKuvaus",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTimeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Tiivistelmä. on tämä tiivistelmä.x",
+    "type" : "ShortDescription"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ServiceUserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTimeAdditionalInfo"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "ae2682d3-6238-4019-b34f-b078c5f9bb50",
+      "name" : "Mikkelin kaupunki"
     },
-    {
-      "language":"fi",
-      "value":"",
-      "type":"ServiceUserInstruction"
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProduced",
+    "organization" : {
+      "id" : "ae2682d3-6238-4019-b34f-b078c5f9bb50",
+      "name" : "Mikkelin kaupunki"
     },
-    {
-      "language":"fi",
-      "value":"",
-      "type":"ChargeTypeAdditionalInfo"
-    },
-    {
-      "language":"fi",
-      "value":null,
-      "type":"ValidityTimeAdditionalInfo"
-    },
-    {
-      "language":"fi",
-      "value":null,
-      "type":"DeadLineAdditionalInfo"
-    }
-  ],
-  "languages":[
-    "fi"
-  ],
-  "serviceClasses":[
-    {
-      "name":[
-        {
-          "value":"Eläkkeet",
-          "language":"fi"
-        },
-        {
-          "value":"Pensioner",
-          "language":"sv"
-        },
-        {
-          "value":"Pensions",
-          "language":"en"
-        }
-      ],
-      "code":"P13",
-      "ontologyType":"PTVL",
-      "uri":"http://urn.fi/URN:NBN:fi:au:ptvl:P13",
-      "parentId":null,
-      "parentUri":""
-    }
-  ],
-  "ontologyTerms":[
-    {
-      "name":[
-        {
-          "value":"dna-test",
-          "language":"sv"
-        },
-        {
-          "value":"DNA-testit",
-          "language":"fi"
-        },
-        {
-          "value":"DNA tests",
-          "language":"en"
-        }
-      ],
-      "code":"",
-      "ontologyType":"YSO",
-      "uri":"http://www.yso.fi/onto/koko/p64557",
-      "parentId":null,
-      "parentUri":"http://www.yso.fi/onto/koko/p10657"
-    }
-  ],
-  "targetGroups":[
-    {
-      "name":[
-        {
-          "value":"Businesses and non-government organizations",
-          "language":"en"
-        },
-        {
-          "value":"Yritykset ja yhteisöt",
-          "language":"fi"
-        },
-        {
-          "value":"Företag och samfund",
-          "language":"sv"
-        }
-      ],
-      "code":"KR2",
-      "ontologyType":"TARGETGROUP",
-      "uri":"http://urn.fi/URN:NBN:fi:au:ptvl:KR2",
-      "parentId":null,
-      "parentUri":""
-    }
-  ],
-  "lifeEvents":[
-    {
-      "name":[
-        {
-          "value":"Värnplikt",
-          "language":"sv"
-        },
-        {
-          "value":"Conscription",
-          "language":"en"
-        },
-        {
-          "value":"Asevelvollisuus",
-          "language":"fi"
-        }
-      ],
-      "code":"KE2",
-      "ontologyType":"LIFESITUATION",
-      "uri":"http://urn.fi/URN:NBN:fi:au:ptvl:KE2",
-      "parentId":null,
-      "parentUri":""
-    }
-  ],
-  "industrialClasses":[
-    {
-      "name":[
-        {
-          "value":"Aikakauslehtien kustantaminen",
-          "language":"fi"
-        },
-        {
-          "value":"Aikakauslehtien kustantaminen",
-          "language":"fi"
-        },
-        {
-          "value":"Utgivning av tidskrifter",
-          "language":"sv"
-        },
-        {
-          "value":"Publishing of journals and periodicals",
-          "language":"en"
-        }
-      ],
-      "code":"5",
-      "ontologyType":null,
-      "uri":"http://www.stat.fi/meta/luokitukset/toimiala/001-2008/58142",
-      "parentId":"f82cd02c-a5e4-4624-bebe-a9afe66a776b",
-      "parentUri":"http://www.stat.fi/meta/luokitukset/toimiala/001-2008/5814"
-    }
-  ],
-  "legislation":[
-    {
-      "names":[
-        {
-          "value":"Korkein oikeus",
-          "language":"fi"
-        }
-      ],
-      "webPages":[
-        {
-          "value":"Korkein oikeus",
-          "url":"http://www.finlex.fi/fi/oikeus/kko/",
-          "language":"fi"
-        }
-      ]
-    }
-  ],
-  "keywords":[
-
-  ],
-  "requirements":[
-    {
-      "value":"Testi vaatimus",
-      "language":"fi"
-    }
-  ],
-  "serviceChannels":[
-    {
-      "serviceChannelId":"c0681f51-d1b4-4a9b-bbbf-ddf9a5273cd1",
-      "description":[
-
-      ],
-      "serviceChargeType":null,
-      "digitalAuthorizations":[
-
-      ]
-    }
-  ],
-  "organizations":[
-    {
-      "additionalInformation":[
-        {
-          "value":null,
-          "language":"fi"
-        }
-      ],
-      "organizationId":null,
-      "roleType":"Producer",
-      "provisionType":"VoucherServices",
-      "webPages":[
-        {
-          "value":null,
-          "url":null,
-          "language":"fi"
-        }
-      ]
-    },
-    {
-      "additionalInformation":[
-
-      ],
-      "organizationId":"ae2682d3-6238-4019-b34f-b078c5f9bb50",
-      "roleType":"Responsible",
-      "provisionType":null,
-      "webPages":[
-
-      ]
-    }
-  ],
-  "publishingStatus":"Published"
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
 }

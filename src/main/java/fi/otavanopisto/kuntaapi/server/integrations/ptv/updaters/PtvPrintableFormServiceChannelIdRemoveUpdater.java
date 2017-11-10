@@ -13,7 +13,7 @@ import javax.inject.Inject;
 
 import fi.metatavu.ptv.client.ApiResponse;
 import fi.metatavu.ptv.client.ResultType;
-import fi.metatavu.ptv.client.model.V5VmOpenApiPrintableFormChannel;
+import fi.metatavu.ptv.client.model.V7VmOpenApiPrintableFormChannel;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.IdUpdater;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
@@ -82,7 +82,7 @@ public class PtvPrintableFormServiceChannelIdRemoveUpdater extends IdUpdater {
       }
       
       String path = String.format("/api/%s/ServiceChannel/%s", PtvConsts.VERSION, ptvPrintableFormServiceChannelId.getId());
-      ApiResponse<V5VmOpenApiPrintableFormChannel> response = ptvClient.doGETRequest(path, new ResultType<V5VmOpenApiPrintableFormChannel>() {}, null, null);
+      ApiResponse<V7VmOpenApiPrintableFormChannel> response = ptvClient.doGETRequest(null, path, new ResultType<V7VmOpenApiPrintableFormChannel>() {}, null, null);
       if (response.getStatus() == 404) {
         serviceChannelTasksQueue.enqueueTask(false, new PrintableFormServiceChannelRemoveTask(ptvPrintableFormServiceChannelId));
       }

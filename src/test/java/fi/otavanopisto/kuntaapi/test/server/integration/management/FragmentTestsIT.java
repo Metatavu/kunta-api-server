@@ -1,6 +1,5 @@
 package fi.otavanopisto.kuntaapi.test.server.integration.management;
 
-import static com.jayway.restassured.RestAssured.given;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.hamcrest.core.StringContains.containsString;
@@ -52,8 +51,7 @@ public class FragmentTestsIT extends AbstractIntegrationTest {
   @Test
   public void testFindFragments() {
     String organizationId = getOrganizationId(0);
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/fragments/{fragmentId}", organizationId, getOrganizationFragmentId(organizationId, 0))
       .then()
@@ -66,8 +64,7 @@ public class FragmentTestsIT extends AbstractIntegrationTest {
   
   @Test
   public void testListFragmentsBySlug() {
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/fragments?slug=test-1", getOrganizationId(0))
       .then()
@@ -77,8 +74,7 @@ public class FragmentTestsIT extends AbstractIntegrationTest {
       .body("id[0]", notNullValue())
       .body("slug[0]", is("test-1"));
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/fragments?slug=non-existing", getOrganizationId(0))
       .then()
@@ -89,8 +85,7 @@ public class FragmentTestsIT extends AbstractIntegrationTest {
   
   @Test
   public void testListFragments() {
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/fragments", getOrganizationId(0))
       .then()

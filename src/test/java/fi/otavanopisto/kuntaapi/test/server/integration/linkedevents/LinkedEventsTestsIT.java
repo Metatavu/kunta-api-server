@@ -1,6 +1,5 @@
 package fi.otavanopisto.kuntaapi.test.server.integration.linkedevents;
 
-import static com.jayway.restassured.RestAssured.given;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.hamcrest.core.IsNull.nullValue;
@@ -56,8 +55,7 @@ public class LinkedEventsTestsIT extends AbstractIntegrationTest {
   @Test
   public void testFindEvents() {
     String organizationId = getOrganizationId(0);
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/events/{eventId}", organizationId, getOrganizationEventId(organizationId, 0))
       .then()
@@ -77,8 +75,7 @@ public class LinkedEventsTestsIT extends AbstractIntegrationTest {
   
   @Test
   public void testListEvents() {
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/events", getOrganizationId(0))
       .then()

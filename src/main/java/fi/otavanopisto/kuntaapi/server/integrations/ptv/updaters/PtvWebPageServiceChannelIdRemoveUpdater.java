@@ -13,7 +13,7 @@ import javax.inject.Inject;
 
 import fi.metatavu.ptv.client.ApiResponse;
 import fi.metatavu.ptv.client.ResultType;
-import fi.metatavu.ptv.client.model.V4VmOpenApiWebPageChannel;
+import fi.metatavu.ptv.client.model.V7VmOpenApiWebPageChannel;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.IdUpdater;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
@@ -82,7 +82,7 @@ public class PtvWebPageServiceChannelIdRemoveUpdater extends IdUpdater {
       }
       
       String path = String.format("/api/%s/ServiceChannel/%s", PtvConsts.VERSION, ptvWebPageServiceChannelId.getId());
-      ApiResponse<V4VmOpenApiWebPageChannel> response = ptvClient.doGETRequest(path, new ResultType<V4VmOpenApiWebPageChannel>() {}, null, null);
+      ApiResponse<V7VmOpenApiWebPageChannel> response = ptvClient.doGETRequest(null, path, new ResultType<V7VmOpenApiWebPageChannel>() {}, null, null);
       if (response.getStatus() == 404) {
         serviceChannelTasksQueue.enqueueTask(false, new WebPageServiceChannelRemoveTask(ptvWebPageServiceChannelId));
       }

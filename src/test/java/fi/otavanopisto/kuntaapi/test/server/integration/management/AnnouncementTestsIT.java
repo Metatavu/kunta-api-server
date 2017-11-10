@@ -1,6 +1,5 @@
 package fi.otavanopisto.kuntaapi.test.server.integration.management;
 
-import static com.jayway.restassured.RestAssured.given;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.hamcrest.core.IsNull.nullValue;
@@ -56,8 +55,7 @@ public class AnnouncementTestsIT extends AbstractIntegrationTest {
   @Test
   public void testFindAnnouncements() {
     String organizationId = getOrganizationId(0);
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/announcements/{announcementId}", organizationId, getOrganizationAnnouncementId(organizationId, 0))
       .then()
@@ -72,8 +70,7 @@ public class AnnouncementTestsIT extends AbstractIntegrationTest {
   
   @Test
   public void testListAnnouncementsBySlug() {
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/announcements?slug=aakkostesti", getOrganizationId(0))
       .then()
@@ -86,8 +83,7 @@ public class AnnouncementTestsIT extends AbstractIntegrationTest {
       .body("abstract[0]", nullValue())
       .body("published[0]", sameInstant(getInstant(2016, 12, 23, 11, 33, TIMEZONE_ID)));
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/announcements?slug=non-existing", getOrganizationId(0))
       .then()
@@ -98,8 +94,7 @@ public class AnnouncementTestsIT extends AbstractIntegrationTest {
   
   @Test
   public void testListAnnouncements() {
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/announcements", getOrganizationId(0))
       .then()

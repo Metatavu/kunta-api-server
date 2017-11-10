@@ -1,6 +1,5 @@
 package fi.otavanopisto.kuntaapi.test.server.integration.tilannehuone;
 
-import static com.jayway.restassured.RestAssured.given;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.hamcrest.core.IsNull.nullValue;
@@ -56,8 +55,7 @@ public class TilannehuoneTestsIT extends AbstractIntegrationTest {
   public void testFindEmergency() {
     String organizationId = getOrganizationId(0);
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/emergencies/{emergencyId}", organizationId, getOrganizationEmergencyId(organizationId, 0))
       .then()
@@ -79,8 +77,7 @@ public class TilannehuoneTestsIT extends AbstractIntegrationTest {
   
   @Test
   public void testListEmergenciesBySlug() {
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/emergencies?location=Helsinki", getOrganizationId(0))
       .then()
@@ -88,8 +85,7 @@ public class TilannehuoneTestsIT extends AbstractIntegrationTest {
       .statusCode(200)
       .body("id.size()", is(3));
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/emergencies?location=non-existing", getOrganizationId(0))
       .then()
@@ -100,8 +96,7 @@ public class TilannehuoneTestsIT extends AbstractIntegrationTest {
   
   @Test
   public void testListEmergencies() {
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/emergencies", getOrganizationId(0))
       .then()
@@ -121,8 +116,7 @@ public class TilannehuoneTestsIT extends AbstractIntegrationTest {
   
   @Test
   public void testListEmergenciesSort() {
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/emergencies", getOrganizationId(0))
       .then()
@@ -133,8 +127,7 @@ public class TilannehuoneTestsIT extends AbstractIntegrationTest {
       .body("url[1]", is("http://www.tilannehuone.fi/tehtava.php?hash=054ac93806eec07464125e5871ee834d"))
       .body("url[2]", is("http://www.tilannehuone.fi/tehtava.php?hash=5f696e25add35ecda4e559651e6b60a1"));
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/emergencies?orderBy=START", getOrganizationId(0))
       .then()
@@ -145,8 +138,7 @@ public class TilannehuoneTestsIT extends AbstractIntegrationTest {
       .body("url[1]", is("http://www.tilannehuone.fi/tehtava.php?hash=054ac93806eec07464125e5871ee834d"))
       .body("url[2]", is("http://www.tilannehuone.fi/tehtava.php?hash=14857aba356ec79d94c9912d4d72a18c"));
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/emergencies?orderBy=START&orderDir=ASC", getOrganizationId(0))
       .then()
@@ -157,8 +149,7 @@ public class TilannehuoneTestsIT extends AbstractIntegrationTest {
       .body("url[1]", is("http://www.tilannehuone.fi/tehtava.php?hash=054ac93806eec07464125e5871ee834d"))
       .body("url[2]", is("http://www.tilannehuone.fi/tehtava.php?hash=14857aba356ec79d94c9912d4d72a18c"));
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{organizationId}/emergencies?orderBy=START&orderDir=DESC", getOrganizationId(0))
       .then()
@@ -172,8 +163,7 @@ public class TilannehuoneTestsIT extends AbstractIntegrationTest {
 
   @Test
   public void testListEmergenciesFilterByTimes() {
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get(String.format("/organizations/{organizationId}/emergencies?before=%s", getIsoDateTime(2017, 5, 16, 9, 0, TIMEZONE_ID)), getOrganizationId(0))
       .then()
@@ -183,8 +173,7 @@ public class TilannehuoneTestsIT extends AbstractIntegrationTest {
       .body("id[0]", notNullValue())
       .body("time[0]", sameInstant(getInstant(2017, 5, 16, 8, 39, 1, TIMEZONE_ID)));
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get(String.format("/organizations/{organizationId}/emergencies?before=%s", getIsoDateTime(2017, 5, 11, 0, 0, TIMEZONE_ID)), getOrganizationId(0))
       .then()
@@ -192,8 +181,7 @@ public class TilannehuoneTestsIT extends AbstractIntegrationTest {
       .statusCode(200)
       .body("id.size()", is(0));
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get(String.format("/organizations/{organizationId}/emergencies?after=%s", getIsoDateTime(2017, 5, 13, 0, 0, TIMEZONE_ID)), getOrganizationId(0))
       .then()
@@ -201,8 +189,7 @@ public class TilannehuoneTestsIT extends AbstractIntegrationTest {
       .statusCode(200)
       .body("id.size()", is(3));
     
-    given() 
-      .baseUri(getApiBasePath())
+    givenReadonly()
       .contentType(ContentType.JSON)
       .get(String.format("/organizations/{organizationId}/emergencies?after=%s", getIsoDateTime(2017, 5, 16, 9, 0, TIMEZONE_ID)), getOrganizationId(0))
       .then()
