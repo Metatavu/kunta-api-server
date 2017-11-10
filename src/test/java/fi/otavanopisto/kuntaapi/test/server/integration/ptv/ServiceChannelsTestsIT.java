@@ -328,13 +328,6 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
       .get("/serviceLocationServiceChannels")
       .body().jsonPath().getString("id[0]");
     
-    System.out.println(
-    givenReadonly()
-    .contentType(ContentType.JSON)
-    .get("/serviceLocationServiceChannels/{channelId}", channelId)
-    .body()
-    .asString());
-    
     givenReadonly()
       .contentType(ContentType.JSON)
       .get("/serviceLocationServiceChannels/{channelId}", channelId)
