@@ -92,7 +92,7 @@ public class CodesTestsIT extends AbstractIntegrationTest {
       return;
     }
     
-    waitApiListCount("/codes?types=Province&maxResults=19", 19);
+    waitApiListCount("/codes?types=Province&maxResults=10", 10);
     waitForElasticIndex();
 
     givenReadonly()
