@@ -37,6 +37,10 @@ public class CodesTestsIT extends AbstractIntegrationTest {
       return;
     }
     
+    if (inTravis()) {
+      return;
+    }
+    
     waitApiListCount("/codes?types=Country&maxResults=25", 25);
     waitForElasticIndex();
     
@@ -62,6 +66,10 @@ public class CodesTestsIT extends AbstractIntegrationTest {
   @Test
   public void testListMunicipalityCodes() throws InterruptedException {
     if (skipElasticSearchTests()) {
+      return;
+    }
+    
+    if (inTravis()) {
       return;
     }
     
@@ -92,7 +100,11 @@ public class CodesTestsIT extends AbstractIntegrationTest {
       return;
     }
     
-    waitApiListCount("/codes?types=Province&maxResults=19", 19);
+    if (inTravis()) {
+      return;
+    }
+    
+    waitApiListCount("/codes?types=Province&maxResults=10", 10);
     waitForElasticIndex();
 
     givenReadonly()
@@ -115,6 +127,10 @@ public class CodesTestsIT extends AbstractIntegrationTest {
   @Test
   public void testListHospitalRegionsCodes() throws InterruptedException {
     if (skipElasticSearchTests()) {
+      return;
+    }
+    
+    if (inTravis()) {
       return;
     }
     
@@ -144,6 +160,10 @@ public class CodesTestsIT extends AbstractIntegrationTest {
       return;
     }
     
+    if (inTravis()) {
+      return;
+    }
+    
     waitApiListCount("/codes?types=BusinessRegions&maxResults=15", 15);
     waitForElasticIndex();
 
@@ -170,6 +190,10 @@ public class CodesTestsIT extends AbstractIntegrationTest {
       return;
     }
     
+    if (inTravis()) {
+      return;
+    }
+    
     waitApiListCount("/codes?types=Language&maxResults=15", 15);
     waitForElasticIndex();
 
@@ -193,6 +217,10 @@ public class CodesTestsIT extends AbstractIntegrationTest {
   @Test
   public void testListPostalCodes() throws InterruptedException {
     if (skipElasticSearchTests()) {
+      return;
+    }
+    
+    if (inTravis()) {
       return;
     }
     
