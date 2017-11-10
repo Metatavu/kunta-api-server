@@ -150,7 +150,7 @@ public class PtvCodeListEntityUpdater extends EntityUpdater {
 
 
   private void handleCodeListPagedResponse(ApiResponse<VmOpenApiCodeListPage> response, CodeType codeType) {
-    Long orderIndex = codeType.ordinal() * 200000l;
+    Long orderIndex = codeType.ordinal() * 100000l;
     
     if (response.isOk()) {
       for (VmOpenApiCodeListItem item : response.getResponse().getItemList()) {
@@ -163,7 +163,7 @@ public class PtvCodeListEntityUpdater extends EntityUpdater {
   }
 
   private void handleCountryCodeListResponse(ApiResponse<List<VmOpenApiDialCodeListItem>> response, CodeType codeType) {
-    Long orderIndex = codeType.ordinal() * 300000l;
+    Long orderIndex = codeType.ordinal() * 100000l;
     if (response.isOk()) {
       for (VmOpenApiDialCodeListItem item : response.getResponse()) {
         handleDialCodeItem(orderIndex, item, codeType);
