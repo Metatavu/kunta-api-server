@@ -328,6 +328,13 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
       .get("/serviceLocationServiceChannels")
       .body().jsonPath().getString("id[0]");
     
+    System.out.println(
+    givenReadonly()
+    .contentType(ContentType.JSON)
+    .get("/serviceLocationServiceChannels/{channelId}", channelId)
+    .body()
+    .asString());
+    
     givenReadonly()
       .contentType(ContentType.JSON)
       .get("/serviceLocationServiceChannels/{channelId}", channelId)
@@ -371,10 +378,10 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
       .body("addresses[0].latitude", is("6839060.668"))
       .body("addresses[0].longitude", is("514295.022"))
       .body("addresses[0].coordinateState", is("Ok"))
-      .body("addresses[0].coordinates.EPSG3067.latitude", is("6839060.668"))
-      .body("addresses[0].coordinates.EPSG3067.longitude", is("514295.022"))
-      .body("addresses[0].coordinates.EPSG4326.latitude", is("61.6844735714"))
-      .body("addresses[0].coordinates.EPSG4326.longitude", is("27.2701351211"))
+      .body("addresses[0].coordinates.epsg3067.latitude", is("6839060.668"))
+      .body("addresses[0].coordinates.epsg3067.longitude", is("514295.022"))
+      .body("addresses[0].coordinates.epsg4326.latitude", is(":61.68447357132788"))
+      .body("addresses[0].coordinates.epsg4326.longitude", is("27.270135123294395"))
       .body("addresses[0].type", is("Location"))
       .body("addresses[0].subtype", is("Single"))
       .body("addresses[0].postOfficeBox", nullValue())
