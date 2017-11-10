@@ -116,7 +116,7 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
   public ServiceLocationServiceChannel findServiceLocationServiceChannel(ServiceLocationServiceChannelId serviceLocationChannelId) {
     return ptvServiceLocationServiceChannelResourceContainer.get(serviceLocationChannelId);
   }
-  
+
   @Override
   public IntegrationResponse<ServiceLocationServiceChannel> updateServiceLocationServiceChannel(ServiceLocationServiceChannelId serviceLocationChannelId, ServiceLocationServiceChannel serviceLocationServiceChannel) {
     ServiceLocationServiceChannelId ptvServiceLocationServiceChannelId = idController.translateServiceLocationServiceChannelId(serviceLocationChannelId, PtvConsts.IDENTIFIER_NAME);
@@ -147,7 +147,8 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
       ServiceChannelApi serviceChannelApi = ptvApi.getServiceChannelApi(kuntaApiOrganizationId);
       
       ptvServiceLocationServiceChannelIn.setAddresses(kuntaApiPtvTranslator.translateAddressesMovingIn(serviceLocationServiceChannel.getAddresses()));
-//      ptvServiceLocationServiceChannelIn.setAreas(areas);
+      ptvServiceLocationServiceChannelIn.setAreas(kuntaApiPtvTranslator.translateAreas(serviceLocationServiceChannel.getAreas()));
+      ptvServiceLocationServiceChannelIn.setAreaType(serviceLocationServiceChannel.getAreaType());
       ptvServiceLocationServiceChannelIn.setEmails(kuntaApiPtvTranslator.translateEmailsIntoLanguageItems(serviceLocationServiceChannel.getEmails()));
       ptvServiceLocationServiceChannelIn.setFaxNumbers(kuntaApiPtvTranslator.translateFaxNumbers(serviceLocationServiceChannel.getPhoneNumbers()));
       ptvServiceLocationServiceChannelIn.setLanguages(serviceLocationServiceChannel.getLanguages());

@@ -19,6 +19,8 @@ import org.apache.commons.lang3.math.NumberUtils;
 
 import fi.metatavu.kuntaapi.server.rest.model.Address;
 import fi.metatavu.kuntaapi.server.rest.model.Area;
+import fi.metatavu.kuntaapi.server.rest.model.Code;
+import fi.metatavu.kuntaapi.server.rest.model.CodeExtra;
 import fi.metatavu.kuntaapi.server.rest.model.DailyOpeningTime;
 import fi.metatavu.kuntaapi.server.rest.model.ElectronicServiceChannel;
 import fi.metatavu.kuntaapi.server.rest.model.Email;
@@ -64,12 +66,15 @@ import fi.metatavu.ptv.client.model.VmOpenApiAddressStreet;
 import fi.metatavu.ptv.client.model.VmOpenApiAddressStreetWithCoordinates;
 import fi.metatavu.ptv.client.model.VmOpenApiArea;
 import fi.metatavu.ptv.client.model.VmOpenApiAttachmentWithType;
+import fi.metatavu.ptv.client.model.VmOpenApiCodeListItem;
+import fi.metatavu.ptv.client.model.VmOpenApiDialCodeListItem;
 import fi.metatavu.ptv.client.model.VmOpenApiLanguageItem;
 import fi.metatavu.ptv.client.model.VmOpenApiLocalizedListItem;
 import fi.metatavu.ptv.client.model.VmOpenApiMunicipality;
 import fi.metatavu.ptv.client.model.VmOpenApiNameTypeByLanguage;
 import fi.metatavu.ptv.client.model.VmOpenApiWebPageWithOrderNumber;
 import fi.otavanopisto.kuntaapi.server.id.BaseId;
+import fi.otavanopisto.kuntaapi.server.id.CodeId;
 import fi.otavanopisto.kuntaapi.server.id.ElectronicServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PhoneServiceChannelId;
@@ -77,6 +82,7 @@ import fi.otavanopisto.kuntaapi.server.id.PrintableFormServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceLocationServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.WebPageServiceChannelId;
+import fi.otavanopisto.kuntaapi.server.integrations.ptv.CodeType;
 import fi.otavanopisto.kuntaapi.server.utils.TimeUtils;
 
 @ApplicationScoped
@@ -587,6 +593,7 @@ public class PtvTranslator extends AbstractTranslator {
     area.setCode(ptvArea.getCode());
     area.setName(translateLocalizedItems(ptvArea.getName()));
     area.setMunicipalities(translateMunicipalities(ptvArea.getMunicipalities()));
+    area.setType(ptvArea.getType());
     
     return area;
   }
@@ -869,6 +876,60 @@ public class PtvTranslator extends AbstractTranslator {
     return result;
   }
   
+  /**
+   * Translates PTV code list item into Kunta API code
+   * 
+   * @param ptvCodeListItem PTV code list item
+   * @param codeType code type
+   * @return Kunta API code
+   */
+  public Code translateCode(CodeId kuntaApiId, VmOpenApiDialCodeListItem ptvCodeListItem, CodeType codeType) {
+    if (ptvCodeListItem == null) {
+      return null;
+    }
+
+    List<String> prefixNumbers = ptvCodeListItem.getPrefixNumbers();
+    List<CodeExtra> extra = new ArrayList<>(prefixNumbers != null ? prefixNumbers.size() : 0);
+    
+    for (String prefixNumber : prefixNumbers) {
+      CodeExtra codeExtra = new CodeExtra();
+      codeExtra.setKey("prefixNumber");
+      codeExtra.setValue(prefixNumber);
+      extra.add(codeExtra);
+    }
+    
+    Code result = new Code();
+    result.setId(kuntaApiId.getId());
+    result.setCode(ptvCodeListItem.getCode());
+    result.setExtra(extra);
+    result.setNames(translateLocalizedItems(ptvCodeListItem.getNames()));
+    result.setType(codeType.getType());
+    
+    return result;
+  }
+
+  /**
+   * Translates PTV code list item into Kunta API code
+   * 
+   * @param ptvCodeListItem PTV code list item
+   * @param codeType code type
+   * @return Kunta API code
+   */
+  public Code translateCode(CodeId kuntaApiId, VmOpenApiCodeListItem ptvCodeListItem, CodeType codeType) {
+    if (ptvCodeListItem == null) {
+      return null;
+    }
+
+    Code result = new Code();
+    result.setId(kuntaApiId.getId());
+    result.setCode(ptvCodeListItem.getCode());
+    result.setExtra(Collections.emptyList());
+    result.setNames(translateLocalizedItems(ptvCodeListItem.getNames()));
+    result.setType(codeType.getType());
+    
+    return result;
+  }
+  
   private List<LocalizedValue> translateLocalizedValues(List<VmOpenApiLocalizedListItem> items) {
     if (items != null && !items.isEmpty()) {
       List<LocalizedValue> result = new ArrayList<>();
@@ -1107,4 +1168,5 @@ public class PtvTranslator extends AbstractTranslator {
     
     return uuid.toString();
   }
+  
 }
