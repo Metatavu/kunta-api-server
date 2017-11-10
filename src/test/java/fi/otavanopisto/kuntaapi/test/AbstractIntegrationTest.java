@@ -53,9 +53,10 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   private PtvServiceMocker ptvServiceMocker = new PtvServiceMocker();
   private PtvServiceChannelMocker ptvServiceChannelMocker = new PtvServiceChannelMocker();
   private PtvOrganizationMocker ptvOrganizationMocker = new PtvOrganizationMocker();
+  private PtvCodesMocker ptvCodesMocker = new PtvCodesMocker();
   
   @After
-  public void afterEveryTest() {
+  public void afterEveryTest() throws IOException {
     setLog4jLevel(Level.OFF);
     
     addServerLogEntry(String.format("### Test %s end ###", testName.getMethodName()));
@@ -80,11 +81,19 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     ptvServiceMocker.stop();
     ptvServiceChannelMocker.stop();
     ptvOrganizationMocker.stop();
+    ptvCodesMocker.endMock();
 
-    deleteIdentifiers();   
+    if (dropIdentifiersAfter()) {
+      deleteIdentifiers();
+    }
+    
     deleteSystemSettings();
   }
   
+  protected  boolean dropIdentifiersAfter() {
+    return true;
+  }
+
   public void startMocks() { 
     createSystemSettings();
     
@@ -106,6 +115,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     managementCategoryMocker.startMock();
     managementTagMocker.startMock();
     managementMenuMocker.startMock();
+    ptvCodesMocker.startMock();
     
     insertSystemSetting(KuntaApiConsts.SYSTEM_SETTING_TESTS_RUNNING, "true");
     
@@ -183,6 +193,10 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   
   public PtvOrganizationMocker getPtvOrganizationMocker() {
     return ptvOrganizationMocker;
+  }
+  
+  public PtvCodesMocker getPtvCodesMocker() {
+    return ptvCodesMocker;
   }
 
   /**
