@@ -525,7 +525,7 @@ public class PtvTranslator extends AbstractTranslator {
     if (ptvAddress == null) {
       return null;
     }
-    
+
     Address result = new Address();
     result.setAdditionalInformations(translateLocalizedItems(ptvAddress.getAdditionalInformation()));
     result.setCoordinateState(ptvAddress.getCoordinateState());
@@ -1109,16 +1109,16 @@ public class PtvTranslator extends AbstractTranslator {
     coordinateTransform.transform(srcProjCoordinates, targetProjCoordinates);
 
     Coordinate epsg3067Coordinate = new Coordinate();
-    epsg3067Coordinate.setLatitude(srcLatitude);
-    epsg3067Coordinate.setLongitude(srcLongitude);
+    epsg3067Coordinate.setLatitude(srcLatitude.toString());
+    epsg3067Coordinate.setLongitude(srcLongitude.toString());
     
     Coordinate epsg4326Coordinate = new Coordinate();
-    epsg4326Coordinate.setLatitude(targetProjCoordinates.y);
-    epsg4326Coordinate.setLongitude(targetProjCoordinates.x);
+    epsg4326Coordinate.setLatitude(String.valueOf(targetProjCoordinates.y));
+    epsg4326Coordinate.setLongitude(String.valueOf(targetProjCoordinates.x));
 
     Coordinates coordinates = new Coordinates();
-    coordinates.setEPSG3067(epsg3067Coordinate);
-    coordinates.setEPSG4326(epsg4326Coordinate);
+    coordinates.setEpsg3067(epsg3067Coordinate);
+    coordinates.setEpsg4326(epsg4326Coordinate);
     
     return coordinates;
   }
