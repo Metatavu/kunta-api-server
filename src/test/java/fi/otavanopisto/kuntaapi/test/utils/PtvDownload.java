@@ -20,6 +20,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import ezvcard.util.IOUtils;
 import fi.metatavu.ptv.client.model.V5VmOpenApiOrganizationService;
 import fi.metatavu.ptv.client.model.V7VmOpenApiOrganization;
 import fi.metatavu.ptv.client.model.V7VmOpenApiService;
@@ -34,10 +35,24 @@ public class PtvDownload {
 
   public static void main(String[] args) throws IOException {
     new PtvDownload()
-      .downloadOrganizations()
-      .printIds();
+      .downloadCodes();
   }
   
+  private PtvDownload downloadCodes() throws MalformedURLException, FileNotFoundException, IOException {
+    String[] areaCodeTypes = {"Province", "HospitalRegions", "BusinessRegions"};
+    for (String areaCodeType : areaCodeTypes) {
+      download(getFullUrl(String.format("/CodeList/GetAreaCodes/type/%s", areaCodeType)), new File(getCodesFolder(), String.format("%s.json", areaCodeType.toLowerCase())));
+    }
+
+    download(getFullUrl("/CodeList/GetCountryCodes"), new File(getCodesFolder(), "country.json"));
+    download(getFullUrl("/CodeList/GetLanguageCodes"), new File(getCodesFolder(), "language.json"));
+    download(getFullUrl("/CodeList/GetMunicipalityCodes"), new File(getCodesFolder(), "municipality.json"));
+    download(getFullUrl("/CodeList/GetPostalCodes"), new File(getCodesFolder(), "postal.json"));
+
+    return this;
+  }
+  
+  @SuppressWarnings("unused")
   private void printIds() throws IOException {
     File[] organizationFiles = listJsonFiles(getOrganizationsFolder());
     File[] serviceFiles = listJsonFiles(getServicesFolder());
@@ -120,6 +135,10 @@ public class PtvDownload {
   private File getServiceChannelsFolder() {
     return new File(getPtvFolder(), "servicechannels");
   }
+
+  private File getCodesFolder() {
+    return new File(getPtvFolder(), "codes");
+  }
   
   private File getPtvFolder() {
     return new File(System.getProperty("user.dir"), "src/test/resources/ptv");
@@ -136,12 +155,15 @@ public class PtvDownload {
   private ObjectMapper getObjectMapper() {
     return new ObjectMapper();
   }
+  
+  private String getFullUrl(String path) {
+    return String.format("https://api.palvelutietovaranto.trn.suomi.fi/api/%s%s", PTV, path);
+  }
 
   private void downloadService(V5VmOpenApiOrganizationService service) throws IOException {
     String serviceId = service.getService().getId().toString();
     File servicesFolder = getServicesFolder();
-    
-    String url = String.format("https://api.palvelutietovaranto.trn.suomi.fi/api/%s/Service/%s", PTV, serviceId);
+    String url = getFullUrl(String.format("/Service/%s", serviceId));
     File target = new File(servicesFolder, String.format("%s.json", serviceId));
     if (!target.exists()) {
       try {
@@ -192,9 +214,15 @@ public class PtvDownload {
   }
   
   private void prettyPrintJson(InputStream inputStream, FileOutputStream fileStream) throws JsonParseException, JsonMappingException, JsonProcessingException, IOException {
-    ObjectMapper objectMapper = getObjectMapper();
-    byte[] data = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsBytes(objectMapper.readValue(inputStream, new TypeReference<HashMap<String, Object>>() { }));
-    fileStream.write(data);
+    byte[] bytes = IOUtils.toByteArray(inputStream);
+    
+    try {
+      ObjectMapper objectMapper = getObjectMapper();
+      byte[] data = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsBytes(objectMapper.readValue(bytes, new TypeReference<HashMap<String, Object>>() { }));
+      fileStream.write(data);
+    } catch (IOException e) {
+      fileStream.write(bytes);
+    }
   }
   
   @JsonIgnoreProperties (ignoreUnknown = true)
