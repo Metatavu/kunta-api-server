@@ -1,0 +1,172 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : null,
+    "value" : "Mikkelin Lyseon koulun vanha kotisivu",
+    "url" : "https://sites.google.com/site/mikkelinlyseonkoulu/",
+    "language" : "fi"
+  }, {
+    "orderNumber" : null,
+    "value" : "Mikkelin Lyseon koulun kotisivu",
+    "url" : "https://peda.net/mikkeli/perusopetus/mikkelinlyseo",
+    "language" : "fi"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Porrassalmenkatu",
+        "language" : "fi"
+      } ],
+      "streetNumber" : "30",
+      "postalCode" : "50100",
+      "postOffice" : [ {
+        "value" : "MIKKELI",
+        "language" : "sv"
+      }, {
+        "value" : "MIKKELI",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "491",
+        "name" : [ {
+          "value" : "S:t Michel",
+          "language" : "sv"
+        }, {
+          "value" : "Mikkeli",
+          "language" : "fi"
+        } ]
+      },
+      "additionalInformation" : [ {
+        "value" : null,
+        "language" : "fi"
+      } ],
+      "latitude" : "6840090.902",
+      "longitude" : "514698.977",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "491",
+      "name" : [ {
+        "value" : "S:t Michel",
+        "language" : "sv"
+      }, {
+        "value" : "Mikkeli",
+        "language" : "fi"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "08ab5b97-d04d-4d16-a3f3-dac654b140ec",
+      "name" : "Perusopetus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Other",
+    "chargeDescription" : "paikallisverkkomaksu / paikallispuhelumaksu",
+    "prefixNumber" : null,
+    "isFinnishServiceNumber" : true,
+    "number" : "111044 794 2772",
+    "language" : "fi"
+  }, {
+    "type" : "Fax",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Other",
+    "chargeDescription" : null,
+    "prefixNumber" : null,
+    "isFinnishServiceNumber" : true,
+    "number" : "000",
+    "language" : "fi"
+  } ],
+  "organizationId" : "ae2682d3-6238-4019-b34f-b078c5f9bb50",
+  "emails" : [ {
+    "value" : "jari.luukkonen@mikkeli.fi",
+    "language" : "fi"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Mikkelin Lyseon koulu",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ {
+    "serviceHourType" : "Standard",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ ],
+    "openingHour" : [ {
+      "dayFrom" : "Friday",
+      "dayTo" : "Friday",
+      "from" : "08:00:00",
+      "to" : "16:15:00",
+      "isExtra" : false
+    }, {
+      "dayFrom" : "Thursday",
+      "dayTo" : "Thursday",
+      "from" : "08:00:00",
+      "to" : "16:15:00",
+      "isExtra" : false
+    }, {
+      "dayFrom" : "Wednesday",
+      "dayTo" : "Wednesday",
+      "from" : "08:00:00",
+      "to" : "16:15:00",
+      "isExtra" : false
+    }, {
+      "dayFrom" : "Tuesday",
+      "dayTo" : "Tuesday",
+      "from" : "08:00:00",
+      "to" : "16:15:00",
+      "isExtra" : false
+    }, {
+      "dayFrom" : "Monday",
+      "dayTo" : "Monday",
+      "from" : "08:00:00",
+      "to" : "16:15:00",
+      "isExtra" : false
+    } ]
+  } ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Mikkelin Lyseon koulussa on n. 400 yläkoululaista. Kouluun kuuluu myös yläkoululaisten sairaalaopetuksen yksikkö Moision sairaala-alueella.",
+    "type" : "ShortDescription"
+  }, {
+    "language" : "fi",
+    "value" : "Mikkelin Lyseon koulussa on n. 400 yläkoululaista. Koulu sijaitsee keskellä kaupunkia lähellä palvelu- ja liikuntapaikkoja ja on kaupungin itäisen oppilasalueen lähiyläkoulu. Kouluun kuuluu myös Moision sairaala-alueella toimiva yläkoululaisten sairaalaopetuksen yksikkö. \nViime vuosina tehtyjen remonttien jälkeen koulun tilat ovat toimivat ja hyvässä kunnossa.\nMikkelin Lyseon koulu tukee nuorten oikeutta omaan kasvuun yhteistyössä kodin kanssa. Turvalliset rajat ja rehellisyys tukevat tätä tavoitetta. Koulun kehittämishankkeet ja arkinen työskentely tähtäävät oppilaiden osallisuuden, turvallisuuden ja viihtyvyyden lisäämiseen. Viime vuosina on panostettu oppilaiden välituntiaktiviteettien lisäämiseen niin ulkona kuin sisälläkin. Tärkeä osa kouluviihtyvyyden edistämistä ja kiusaamisen ehkäisyä ovat aktiivisesti toimivat tukioppilaat ja oppilaskunnan edustajat.",
+    "type" : "Description"
+  } ],
+  "areaType" : "AreaType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-03-12T20:08:56.665388",
+  "id" : "1dec7c89-96b8-4860-83d0-bad8b8897ba6"
+}

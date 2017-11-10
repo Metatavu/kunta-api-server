@@ -1,0 +1,81 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "attachments" : [ ],
+  "languages" : [ "fi" ],
+  "supportPhones" : [ {
+    "additionalInformation" : null,
+    "serviceChargeType" : "Charged",
+    "chargeDescription" : null,
+    "prefixNumber" : null,
+    "isFinnishServiceNumber" : true,
+    "number" : null,
+    "language" : "fi"
+  } ],
+  "formIdentifier" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "areas" : [ ],
+  "supportEmails" : [ {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "08ab5b97-d04d-4d16-a3f3-dac654b140ec",
+      "name" : "Perusopetus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "ae2682d3-6238-4019-b34f-b078c5f9bb50",
+  "channelUrls" : [ {
+    "language" : "fi",
+    "value" : "http://www.mikkeli.fi/sites/mikkeli.fi/files/atoms/files/hakemus_muun_kuin_lahikoulun_7.luokalle_2014.pdf",
+    "type" : "PDF"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Hakemus muun kuin lähikoulun 7. luokalle",
+    "type" : "Name"
+  } ],
+  "deliveryAddress" : null,
+  "serviceHours" : [ ],
+  "serviceChannelType" : "PrintableForm",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Hakemus siirtymisestä 7. luokalle muuhun kuin osoitteenmukaiseen lähikouluun.",
+    "type" : "ShortDescription"
+  }, {
+    "language" : "fi",
+    "value" : "Nykyiset 6. luokkalaiset siirtyvät 7. luokille osoitteensa (osoite vuoden ensimmäisenä päivänä) mukaiseen lähikouluun. Mikäli perhe muuttaa 1.1. jälkeen, määräytyy lähikoulupaikka uuden osoitteen mukaisesti. Mikäli oppilas on saanut oikeuden käydä 6. luokan muussa kuin lähikoulussaan, tämä oikeus on voimassa vain 6. luokan loppuun.\n\nJos oppilas haluaa siirtyä 7. luokalle muuhun kuin osoitteenmukaiseen lähikouluun, tulee huoltajan tehdä hakemus kyseisen koulun rehtorille 30.1. mennessä. ",
+    "type" : "Description"
+  } ],
+  "areaType" : null,
+  "publishingStatus" : "Published",
+  "modified" : "2017-03-12T20:08:56.696645",
+  "id" : "1af0ec8c-b647-4f40-b1a9-db6052c5096d",
+  "formReceiver" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ]
+}

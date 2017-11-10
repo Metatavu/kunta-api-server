@@ -17,6 +17,8 @@ import javax.ejb.Singleton;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
+import org.apache.commons.lang3.StringUtils;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -37,6 +39,7 @@ public class IndexUpdater extends AbstractIndexHander {
     registerIndexable(IndexableNewsArticle.class);
     registerIndexable(IndexableServiceLocationServiceChannel.class);
     registerIndexable(IndexableContact.class);
+    registerIndexable(IndexableCode.class);
   }
 
   @Lock (LockType.READ)
@@ -101,6 +104,10 @@ public class IndexUpdater extends AbstractIndexHander {
       if (fieldAnnotation != null) {
         Map<String, Object> fieldProperties = new HashMap<>();
         fieldProperties.put("type", fieldAnnotation.type());
+        
+        if (StringUtils.isNotBlank(fieldAnnotation.analyzer())) {
+          fieldProperties.put("analyzer", fieldAnnotation.analyzer());
+        }
         
         if (!"attachment".equals(fieldAnnotation.type())) {
           fieldProperties.put("index", fieldAnnotation.index());

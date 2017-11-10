@@ -3,6 +3,7 @@ package fi.otavanopisto.kuntaapi.test.server.integration.ptv;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.hamcrest.core.IsNull.nullValue;
+import static org.hamcrest.core.StringStartsWith.startsWith;
 
 import java.time.ZoneId;
 
@@ -28,29 +29,20 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
   
   @Before
   public void beforeTest() throws InterruptedException {
-    getPtvOrganizationMocker()
-      .mock("9355a207-efd3-4cfb-a02b-67187f34c822", "ae2682d3-6238-4019-b34f-b078c5f9bb50", "d45ec681-4da3-4a38-af67-fb2d949b9387");
-    
-    getPtvServiceMocker()
-      .mock("2f21448e-e461-4ad0-a87a-47bcb08e578e", "0003651e-6afe-400e-816c-c64af41521f8", "00047a04-9c01-48ea-99da-4ec332f6d0fa");
-    
-    getPtvServiceChannelMocker()
-      .mock("22472ece-95a0-4fef-a429-b4da689677b2", "44187ff9-71ed-40df-89f6-916be4f3baa6", "799e0e4f-4da7-4e7d-9e0e-f1370b80fc9a")  // ElectronicServiceChannels
-      .mock("108f0c61-bfba-4dd7-8f02-deb4e77c52d0", "626cdd7a-e205-42da-8ce5-82b3b7add258", "e9e86a9e-6593-469d-bc01-f1a59c28168d")  // PhoneServiceChannels
-      .mock("02256ce8-2879-47e4-a6f5-339872f0f758", "1a17f994-b924-46ae-8708-c09938125119", "6fb56241-1b43-4e42-8231-43ba8d86be36")  // PrintableFormServiceChannels
-      .mock("9a9f5def-92e4-4b79-a49a-ccf20a0f75b6", "c0681f51-d1b4-4a9b-bbbf-ddf9a5273cd1", "cf927001-8b45-4f08-b93b-c78fe8477928")  // ServiceLocationServiceChannels
-      .mock("4b08ae17-75ae-4746-9382-1316c4ec02c5", "aedae320-a2b2-4fe6-b23b-2e1a025ba415", "e9ec256b-5ca2-4663-9da6-d8a2faff21a8"); // WebPageServiceChannels
-    
+    getPtvOrganizationMocker().mock(TestPtvConsts.ORGANIZATIONS);
+    getPtvServiceMocker().mock(TestPtvConsts.SERVICES);    
+    getPtvServiceChannelMocker().mock(TestPtvConsts.SERVICE_CHANNELS);
+
     startMocks();
 
-    waitApiListCount("/electronicServiceChannels", 3);
-    waitApiListCount("/phoneServiceChannels", 3);
-    waitApiListCount("/printableFormServiceChannels", 3);
-    waitApiListCount("/serviceLocationServiceChannels", 3);
-    waitApiListCount("/webPageServiceChannels", 3);
+    waitApiListCount("/electronicServiceChannels", TestPtvConsts.ELECTRONIC_CHANNEL_SERVICE_CHANNELS.length);
+    waitApiListCount("/phoneServiceChannels", TestPtvConsts.PHONE_SERVICE_CHANNELS.length);
+    waitApiListCount("/printableFormServiceChannels", TestPtvConsts.PRINTABLE_FORM_SERVICE_CHANNELS.length);
+    waitApiListCount("/serviceLocationServiceChannels", TestPtvConsts.SERVICE_LOCATION_SERVICE_CHANNELS.length);
+    waitApiListCount("/webPageServiceChannels", TestPtvConsts.WEB_PAGE_SERVICE_CHANNELS.length);
     
-    waitApiListCount("/organizations", 3);
-    waitApiListCount("/services", 3);
+    waitApiListCount("/organizations", TestPtvConsts.ORGANIZATIONS.length);
+    waitApiListCount("/services", TestPtvConsts.SERVICES.length);
   }
 
   @Test
@@ -67,30 +59,19 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
       .assertThat()
       .statusCode(200)
       .body("id", notNullValue())
-      .body("organizationId", is(getOrganizationId(2)))
+      .body("organizationId", is(getOrganizationId(0)))
       .body("names.size()", is(1))
       .body("names[0].language", is("fi"))
       .body("names[0].value", is("Wilma"))
       .body("names[0].type", is("Name"))
       .body("descriptions.size()", is(2))
       .body("descriptions[1].language", is("fi"))
-      .body("descriptions[1].value", is("Mikkelissä huoltajien, opettajien ja oppilaiden viestinnän välineenä käytetään Wilmaa."))
-      .body("descriptions[1].type", is("ShortDescription"))
+      .body("descriptions[1].value", startsWith("Wilma on peruskoulujen ja lukioiden hallinto-ohjelman www-liittymä."))
+      .body("descriptions[1].type", is("Description"))
       .body("signatureQuantity", is(0))
       .body("requiresSignature", is(false))
-      .body("supportPhones.size()", is(1))
-      .body("supportPhones[0].additionalInformation", nullValue())
-      .body("supportPhones[0].serviceChargeType", is("Charged"))
-      .body("supportPhones[0].chargeDescription", nullValue())
-      .body("supportPhones[0].prefixNumber", nullValue())
-      .body("supportPhones[0].isFinnishServiceNumber", is(true))
-      .body("supportPhones[0].number", is("1234"))
-      .body("supportPhones[0].language", is("fi"))
-      .body("supportPhones[0].type", nullValue())
-      .body("supportEmails.size()", is(1))
-      .body("supportEmails[0].language", is("fi"))
-      .body("supportEmails[0].value", is("support@example.com"))
-      .body("requiresAuthentication", is(true))
+      .body("supportPhones.size()", is(0))
+      .body("supportEmails.size()", is(0))
       .body("urls.size()", is(1))
       .body("urls[0].language", is("fi"))
       .body("urls[0].value", is("https://wilma.mikkeli.fi"))
@@ -104,9 +85,7 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
       .body("serviceHours[0].validTo", sameInstant(getInstant(2017, 12, 31, 0, 0, TIMEZONE_ID)))
       .body("serviceHours[0].isClosed", is(false))
       .body("serviceHours[0].validForNow", is(false))
-      .body("serviceHours[0].additionalInformation.size()", is(1))
-      .body("serviceHours[0].additionalInformation[0].value", is("example"))
-      .body("serviceHours[0].additionalInformation[0].language", is("fi"))
+      .body("serviceHours[0].additionalInformation.size()", is(0))
       .body("serviceHours[0].openingHour.size()", is(0))
       .body("publishingStatus", is("Published"));
   }
@@ -119,170 +98,150 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
       .then()
       .assertThat()
       .statusCode(200)
-      .body("id.size()", is(3))
+      .body("id.size()", is(2))
       
-      .body("organizationId[1]", is(getOrganizationId(2)))
+      .body("organizationId[1]", is(getOrganizationId(0)))
       .body("names[1].size()", is(1))
       .body("names[1][0].language", is("fi"))
-      .body("names[1][0].value", is("Haku esiopetukseen"))
+      .body("names[1][0].value", is("Testiverkkoasiointikanava"))
       .body("names[1][0].type", is("Name"))
       .body("descriptions[1].size()", is(2))
       .body("descriptions[1][1].language", is("fi"))
-      .body("descriptions[1][1].value", is("Hae esiopetukseen"))
+      .body("descriptions[1][1].value", is("Testausta varten tehty verkkoasiointikanava"))
       .body("descriptions[1][1].type", is("Description"))
-      .body("signatureQuantity[1]", is(1))
-      .body("requiresSignature[1]", is(true))
-      .body("supportPhones[1].size()", is(1))
-      .body("supportPhones[1][0].additionalInformation", is("Neuvonta ja asiakaspalvelu"))
-      .body("supportPhones[1][0].serviceChargeType", is("Charged"))
-      .body("supportPhones[1][0].chargeDescription", is("Jonotusajalta peritään normaali puhelumaksu."))
-      .body("supportPhones[1][0].prefixNumber", is("+358"))
-      .body("supportPhones[1][0].isFinnishServiceNumber", is(false))
-      .body("supportPhones[1][0].number", is("931086400"))
-      .body("supportPhones[1][0].language", is("fi"))
-      .body("supportPhones[1][0].type", nullValue())
-      .body("supportEmails[1].size()", is(1))
-      .body("supportEmails[1][0].language", is("fi"))
-      .body("supportEmails[1][0].value", is("neuonta@edu.hel.fi"))
+      .body("signatureQuantity[1]", is(0))
+      .body("requiresSignature[1]", is(false))
+      .body("supportPhones[1].size()", is(0))
+      .body("supportEmails[1].size()", is(0))
       .body("requiresAuthentication[1]", is(true))
       .body("urls[1].size()", is(1))
       .body("urls[1][0].language", is("fi"))
-      .body("urls[1][0].value", is("http://hel.fi/edu"))
+      .body("urls[1][0].value", is("https://www.google.com"))
       .body("languages[1].size()", is(0))
       .body("attachments[1].size()", is(0))
       .body("webPages[1].size()", is(0))
-      .body("serviceHours[1].size()", is(1))
-      .body("serviceHours[1][0].serviceHourType", is("Special"))
-      .body("serviceHours[1][0].validFrom", sameInstant(getInstant(2017, 1, 22, 0, 0, TIMEZONE_ID)))
-      .body("serviceHours[1][0].validTo", sameInstant(getInstant(2017, 4, 19, 0, 0, TIMEZONE_ID)))
-      .body("serviceHours[1][0].isClosed", is(false))
-      .body("serviceHours[1][0].validForNow", is(false))
-      .body("serviceHours[1][0].additionalInformation.size()", is(1))
-      .body("serviceHours[1][0].additionalInformation[0].value", is("Hakuaika"))
-      .body("serviceHours[1][0].additionalInformation[0].language", is("fi"))
-      .body("serviceHours[1][0].openingHour.size()", is(1))
-      .body("serviceHours[1][0].openingHour[0].dayFrom", is(2))
-      .body("serviceHours[1][0].openingHour[0].dayTo", is(1))
-      .body("serviceHours[1][0].openingHour[0].from", is("00:00:00"))
-      .body("serviceHours[1][0].openingHour[0].to", is("00:00:00"))
-      .body("serviceHours[1][0].openingHour[0].isExtra", is(false))
+      .body("serviceHours[1].size()", is(0))
       .body("publishingStatus[1]", is("Published"));
-  } 
+  }
   
   @Test
   public void testFindPhoneChannel() throws InterruptedException {
     String channelId = givenReadonly()
-        .contentType(ContentType.JSON)
-        .get("/phoneServiceChannels")
-        .body().jsonPath().getString("id[0]");
+      .contentType(ContentType.JSON)
+      .get("/phoneServiceChannels")
+      .body().jsonPath().getString("id[0]");
 
     givenReadonly()
-        .contentType(ContentType.JSON)
-        .get("/phoneServiceChannels/{channelId}", channelId)
-        .then()
-        .assertThat()
-        .statusCode(200)
-        .body("id", notNullValue())
-        .body("organizationId", is(getOrganizationId(2)))
-        .body("names.size()", is(1))
-        .body("names[0].language", is("fi"))
-        .body("names[0].value", is("Forssan kaupungin puhelinvaihde"))
-        .body("names[0].type", is("Name"))
-        .body("descriptions.size()", is(2))
-        .body("descriptions[1].language", is("fi"))
-        .body("descriptions[1].value", is("Puhelinvaihde välittää puhelut kaupungin henkilökunnalle."))
-        .body("descriptions[1].type", is("Description"))
-        .body("phoneNumbers.size()", is(1))
-        .body("phoneNumbers[0].serviceChargeType", is("Charged"))
-        .body("phoneNumbers[0].chargeDescription", nullValue())
-        .body("phoneNumbers[0].prefixNumber", is("+358"))
-        .body("phoneNumbers[0].isFinnishServiceNumber", is(false))
-        .body("phoneNumbers[0].number", is("341411"))
-        .body("phoneNumbers[0].language", is("fi"))
-        .body("phoneNumbers[0].type", is("Phone"))
-        .body("supportEmails.size()", is(1))
-        .body("supportEmails[0].language", is("fi"))
-        .body("supportEmails[0].value", is("palvelupiste@forssa.fi"))
-        .body("languages.size()", is(1))
-        .body("languages[0]", is("fi"))
-        .body("webPages.size()", is(1))
-        .body("webPages[0].value", nullValue())
-        .body("webPages[0].url", is("http://www.forssa.fi/"))
-        .body("webPages[0].language", is("fi"))
-        .body("serviceHours.size()", is(1))
-        .body("serviceHours[0].serviceHourType", is("Standard"))
-        .body("serviceHours[0].validFrom", nullValue())
-        .body("serviceHours[0].validTo", nullValue())
-        .body("serviceHours[0].isClosed", is(false))
-        .body("serviceHours[0].validForNow", is(true))
-        .body("serviceHours[0].additionalInformation.size()", is(1))
-        .body("serviceHours[0].additionalInformation[0].value", is("example"))
-        .body("serviceHours[0].additionalInformation[0].language", is("fi"))
-        .body("serviceHours[0].openingHour.size()", is(5))
-        .body("serviceHours[0].openingHour[0].dayFrom", is(1))
-        .body("serviceHours[0].openingHour[0].dayTo", nullValue())
-        .body("serviceHours[0].openingHour[0].from", is("08:00:00"))
-        .body("serviceHours[0].openingHour[0].to", is("16:00:00"))
-        .body("serviceHours[0].openingHour[0].isExtra", is(false))
-        .body("publishingStatus", is("Published"));
+      .contentType(ContentType.JSON)
+      .get("/phoneServiceChannels/{channelId}", channelId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id", notNullValue())
+      .body("organizationId", is(getOrganizationId(0)))
+      .body("names.size()", is(1))
+      .body("names[0].language", is("fi"))
+      .body("names[0].value", is("Testi puhelinasiointikanava"))
+      .body("names[0].type", is("Name"))
+      .body("descriptions.size()", is(2))
+      .body("descriptions[1].language", is("fi"))
+      .body("descriptions[1].value", is("Puhelinasiointikanava testausta varten"))
+      .body("descriptions[1].type", is("Description"))
+      .body("phoneNumbers.size()", is(1))
+      .body("phoneNumbers[0].serviceChargeType", is("Charged"))
+      .body("phoneNumbers[0].chargeDescription", is("Testiajalta peritään lisämaksu"))
+      .body("phoneNumbers[0].prefixNumber", is("+358"))
+      .body("phoneNumbers[0].isFinnishServiceNumber", is(false))
+      .body("phoneNumbers[0].number", is("9876543"))
+      .body("phoneNumbers[0].language", is("fi"))
+      .body("phoneNumbers[0].type", is("Phone"))
+      .body("supportEmails.size()", is(0))
+      .body("languages.size()", is(1))
+      .body("languages[0]", is("fi"))
+      .body("webPages.size()", is(0))
+      .body("serviceHours.size()", is(0))
+      .body("publishingStatus", is("Published"));
   }
   
   @Test
   public void testListPhoneChannels() throws InterruptedException {
-    String channelId = givenReadonly()
-        .contentType(ContentType.JSON)
-        .get("/phoneServiceChannels")
-        .body().jsonPath().getString("id[0]");
-
     givenReadonly()
-        .contentType(ContentType.JSON)
-        .get("/phoneServiceChannels/{channelId}", channelId)
-        .then()
-        .assertThat()
-        .statusCode(200)
-        .body("id", notNullValue())
-        .body("organizationId", is(getOrganizationId(2)))
-        .body("names.size()", is(1))
-        .body("names[0].language", is("fi"))
-        .body("names[0].value", is("Forssan kaupungin puhelinvaihde"))
-        .body("names[0].type", is("Name"))
-        .body("descriptions.size()", is(2))
-        .body("descriptions[1].language", is("fi"))
-        .body("descriptions[1].value", is("Puhelinvaihde välittää puhelut kaupungin henkilökunnalle."))
-        .body("descriptions[1].type", is("Description"))
-        .body("phoneNumbers.size()", is(1))
-        .body("phoneNumbers[0].serviceChargeType", is("Charged"))
-        .body("phoneNumbers[0].chargeDescription", nullValue())
-        .body("phoneNumbers[0].prefixNumber", is("+358"))
-        .body("phoneNumbers[0].isFinnishServiceNumber", is(false))
-        .body("phoneNumbers[0].number", is("341411"))
-        .body("phoneNumbers[0].language", is("fi"))
-        .body("phoneNumbers[0].type", is("Phone"))
-        .body("supportEmails.size()", is(1))
-        .body("supportEmails[0].language", is("fi"))
-        .body("supportEmails[0].value", is("palvelupiste@forssa.fi"))
-        .body("languages.size()", is(1))
-        .body("languages[0]", is("fi"))
-        .body("webPages.size()", is(1))
-        .body("webPages[0].value", nullValue())
-        .body("webPages[0].url", is("http://www.forssa.fi/"))
-        .body("webPages[0].language", is("fi"))
-        .body("serviceHours.size()", is(1))
-        .body("serviceHours[0].serviceHourType", is("Standard"))
-        .body("serviceHours[0].validFrom", nullValue())
-        .body("serviceHours[0].validTo", nullValue())
-        .body("serviceHours[0].isClosed", is(false))
-        .body("serviceHours[0].validForNow", is(true))
-        .body("serviceHours[0].additionalInformation.size()", is(1))
-        .body("serviceHours[0].additionalInformation[0].value", is("example"))
-        .body("serviceHours[0].additionalInformation[0].language", is("fi"))
-        .body("serviceHours[0].openingHour.size()", is(5))
-        .body("serviceHours[0].openingHour[0].dayFrom", is(1))
-        .body("serviceHours[0].openingHour[0].dayTo", nullValue())
-        .body("serviceHours[0].openingHour[0].from", is("08:00:00"))
-        .body("serviceHours[0].openingHour[0].to", is("16:00:00"))
-        .body("serviceHours[0].openingHour[0].isExtra", is(false))
-        .body("publishingStatus", is("Published"));
+      .contentType(ContentType.JSON)
+      .get("/phoneServiceChannels")
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id[1]", notNullValue())
+      .body("organizationId[1]", is(getOrganizationId(0)))
+      .body("names[1].size()", is(1))
+      .body("names[1][0].language", is("fi"))
+      .body("names[1][0].value", is("Metatavun auttava puhelin"))
+      .body("names[1][0].type", is("Name"))
+      .body("descriptions[1].size()", is(2))
+      .body("descriptions[1][1].language", is("fi"))
+      .body("descriptions[1][1].value", is("Testataan puhelinkanavien aukioloaikoja."))
+      .body("descriptions[1][1].type", is("Description"))
+      .body("phoneNumbers[1].size()", is(1))
+      .body("phoneNumbers[1][0].serviceChargeType", is("Charged"))
+      .body("phoneNumbers[1][0].chargeDescription", nullValue())
+      .body("phoneNumbers[1][0].prefixNumber", is("+358"))
+      .body("phoneNumbers[1][0].isFinnishServiceNumber", is(false))
+      .body("phoneNumbers[1][0].number", is("503263840"))
+      .body("phoneNumbers[1][0].language", is("fi"))
+      .body("phoneNumbers[1][0].type", is("Phone"))
+      .body("supportEmails[1].size()", is(0))
+      .body("languages[1].size()", is(1))
+      .body("languages[1][0]", is("fi"))
+      .body("webPages[1].size()", is(0))
+      .body("serviceHours[1].size()", is(5))
+      .body("serviceHours[1][0].serviceHourType", is("Standard"))
+      .body("serviceHours[1][0].validFrom", nullValue())
+      .body("serviceHours[1][0].validTo", nullValue())
+      .body("serviceHours[1][0].isClosed", is(false))
+      .body("serviceHours[1][0].validForNow", is(true))
+      .body("serviceHours[1][0].additionalInformation.size()", is(0))
+      .body("serviceHours[1][0].openingHour.size()", is(5))
+      .body("serviceHours[1][0].openingHour[0].dayFrom", is(1))
+      .body("serviceHours[1][0].openingHour[0].dayTo", nullValue())
+      .body("serviceHours[1][0].openingHour[0].from", is("08:00:00"))
+      .body("serviceHours[1][0].openingHour[0].to", is("16:00:00"))
+      .body("serviceHours[1][0].openingHour[0].isExtra", is(false))
+      
+      .body("serviceHours[1][1].serviceHourType", is("Special"))
+      .body("serviceHours[1][1].validFrom", sameInstant(getInstant(2017, 4, 6, 0, 0, 0, TIMEZONE_ID)))
+      .body("serviceHours[1][1].validTo", sameInstant(getInstant(2017, 4, 20, 0, 0, 0, TIMEZONE_ID)))
+      .body("serviceHours[1][1].isClosed", is(false))
+      .body("serviceHours[1][1].validForNow", is(false))
+      .body("serviceHours[1][1].additionalInformation.size()", is(0))
+      .body("serviceHours[1][1].openingHour.size()", is(1))
+      .body("serviceHours[1][1].openingHour[0].dayFrom", is(1))
+      .body("serviceHours[1][1].openingHour[0].dayTo", is(5))
+      .body("serviceHours[1][1].openingHour[0].from", is("02:15:00"))
+      .body("serviceHours[1][1].openingHour[0].to", is("0:45:00"))
+      .body("serviceHours[1][1].openingHour[0].isExtra", is(false))
+  
+      .body("serviceHours[1][2].serviceHourType", is("Exception"))
+      .body("serviceHours[1][2].validFrom", sameInstant(getInstant(2017, 4, 5, 0, 0, 0, TIMEZONE_ID)))
+      .body("serviceHours[1][2].validTo", nullValue())
+      .body("serviceHours[1][2].isClosed", is(false))
+      .body("serviceHours[1][2].validForNow", is(false))
+      .body("serviceHours[1][2].additionalInformation.size()", is(0))
+      .body("serviceHours[1][2].openingHour.size()", is(1))
+      .body("serviceHours[1][2].openingHour[0].dayFrom", nullValue())
+      .body("serviceHours[1][2].openingHour[0].dayTo", nullValue())
+      .body("serviceHours[1][2].openingHour[0].from", is("01:00:00"))
+      .body("serviceHours[1][2].openingHour[0].to", is("3:00:00"))
+      .body("serviceHours[1][2].openingHour[0].isExtra", is(false))
+  
+      .body("serviceHours[1][4].serviceHourType", is("Exception"))
+      .body("serviceHours[1][4].validFrom", sameInstant(getInstant(2017, 6, 8, 0, 0, 0, TIMEZONE_ID)))
+      .body("serviceHours[1][4].validTo", sameInstant(getInstant(2017, 6, 22, 0, 0, 0, TIMEZONE_ID)))
+      .body("serviceHours[1][4].isClosed", is(true))
+      .body("serviceHours[1][4].validForNow", is(false))
+      .body("serviceHours[1][4].additionalInformation.size()", is(0))
+      .body("serviceHours[1][4].openingHour.size()", is(0))
+  
+      .body("publishingStatus[1]", is("Published"));
   }
   
   @Test
@@ -292,7 +251,6 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
       .get("/printableFormServiceChannels")
       .body().jsonPath().getString("id[0]");
  
-
     givenReadonly()
       .contentType(ContentType.JSON)
       .get("/printableFormServiceChannels/{channelId}", channelId)
@@ -300,35 +258,27 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
       .assertThat()
       .statusCode(200)
       .body("id", notNullValue())
-      .body("organizationId", is(getOrganizationId(2)))
+      .body("organizationId", is(getOrganizationId(0)))
       .body("names.size()", is(1))
       .body("names[0].language", is("fi"))
-      .body("names[0].value", is("Ohjeita päivähoitosijoitusta ja maksua varten"))
+      .body("names[0].value", is("Hakemus vieraan oppilasalueen kouluun"))
       .body("names[0].type", is("Name"))
       .body("descriptions.size()", is(2))
-      .body("descriptions[1].language", is("fi"))
-      .body("descriptions[1].value", is("Ohjeita päivähoitosijoitusta ja maksua varten"))
-      .body("descriptions[1].type", is("Description"))
-      .body("formIdentifier.size()", is(2))
-      .body("formIdentifier[0].language", is("fi"))
-      .body("formIdentifier[0].value", is("Esimerkki tunniste"))
-      .body("formReceiver.size()", is(2))
-      .body("formReceiver[0].language", is("fi"))
-      .body("formReceiver[0].value", is("Esimerkki vastaanottaja"))
+      .body("descriptions[0].language", is("fi"))
+      .body("descriptions[0].value", is("Hakemus koulunkäyntiin muussa kuin omassa lähikoulussa."))
+      .body("descriptions[0].type", is("ShortDescription"))
+      .body("formIdentifier.size()", is(0))
+      .body("formReceiver.size()", is(0))
       .body("deliveryAddress", nullValue())
       .body("channelUrls.size()", is(1))
       .body("channelUrls[0].language", is("fi"))
-      .body("channelUrls[0].value", is("www.kuusamo.fi/node/501"))
+      .body("channelUrls[0].value", is("http://www.mikkeli.fi/sites/mikkeli.fi/files/atoms/files/hakemus_vieraan_oppilasalueen_kouluun_2014.pdf"))
       .body("channelUrls[0].type", is("PDF"))
-      .body("attachments.size()", is(1))
-      .body("attachments[0].type", is("Form"))
-      .body("attachments[0].name", is("Test form"))
-      .body("attachments[0].description", is("Form for testing"))
-      .body("attachments[0].url", is("http://example.com/test-form"))
-      .body("attachments[0].language", is("en"))
+      .body("attachments.size()", is(0))
       .body("supportPhones.size()", is(0))
       .body("supportEmails.size()", is(0))
-      .body("languages.size()", is(0))
+      .body("languages.size()", is(1))
+      .body("languages[0]", is("fi"))
       .body("webPages.size()", is(0))
       .body("serviceHours.size()", is(0))
       .body("publishingStatus", is("Published"));
@@ -343,46 +293,27 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
       .assertThat()
       .statusCode(200)
       .body("id[1]", notNullValue())
-      .body("organizationId[1]", is(getOrganizationId(2)))
+      .body("organizationId[1]", is(getOrganizationId(0)))
       .body("names[1].size()", is(1))
       .body("names[1][0].language", is("fi"))
-      .body("names[1][0].value", is("Vieraskuntalaishakemus"))
+      .body("names[1][0].value", is("Hakemus muun kuin lähikoulun 7. luokalle"))
       .body("names[1][0].type", is("Name"))
       .body("descriptions[1].size()", is(2))
-      .body("descriptions[1][1].language", is("fi"))
-      .body("descriptions[1][1].value", is("TOISTETAAN TIETO, KOSKA NETTISIVUISSA EI OLE LISÄINFOA Tulevien 1. luokkalaisten lasten jotka eivät asu Kaarinassa, huoltajan tulee tehdä vieraskuntalaishakemus Kaarinan koulutoimistoon.   "))
-      .body("descriptions[1][1].type", is("Description"))
-      .body("formIdentifier[1].size()", is(2))
-      .body("formIdentifier[1][0].language", is("fi"))
-      .body("formIdentifier[1][0].value", is("Esimerkki tunniste"))
-      .body("formReceiver[1].size()", is(2))
-      .body("formReceiver[1][0].language", is("fi"))
-      .body("formReceiver[1][0].value", is("Sivistyspalvelut, Koulutuspalvelut"))
-      .body("deliveryAddress[1].latitude", is("0"))
-      .body("deliveryAddress[1].longitude", is("0"))
-      .body("deliveryAddress[1].coordinateState", is("EmptyInputReceived"))
-      .body("deliveryAddress[1].postOfficeBox.size()", is(0))
-      .body("deliveryAddress[1].postalCode", is("20780"))
-      .body("deliveryAddress[1].postOffice.size()", is(2))
-      .body("deliveryAddress[1].postOffice[0].value", is("KAARINA"))
-      .body("deliveryAddress[1].postOffice[0].language", is("sv"))
-      .body("deliveryAddress[1].streetAddress.size()", is(1))
-      .body("deliveryAddress[1].streetAddress[0].value", is("Lautakunnankatu 4"))
-      .body("deliveryAddress[1].streetAddress[0].language", is("fi"))
-      .body("deliveryAddress[1].additionalInformations.size()", is(1))
-      .body("deliveryAddress[1].additionalInformations[0].value", is("Vieraskuntalaishakemus voi postittaa tai tuoda Kaarinan koulutoimistoon. "))
-      .body("deliveryAddress[1].additionalInformations[0].language", is("fi"))
-      .body("deliveryAddress[1].country", is("FI"))
-      .body("deliveryAddress[1].municipality", nullValue())
-      .body("deliveryAddress[1].streetNumber", nullValue())
+      .body("descriptions[1][0].language", is("fi"))
+      .body("descriptions[1][0].value", is("Hakemus siirtymisestä 7. luokalle muuhun kuin osoitteenmukaiseen lähikouluun."))
+      .body("descriptions[1][0].type", is("ShortDescription"))
+      .body("formIdentifier[1].size()", is(0))
+      .body("formReceiver[1].size()", is(0))
+      .body("deliveryAddress[1]", nullValue())
       .body("channelUrls[1].size()", is(1))
       .body("channelUrls[1][0].language", is("fi"))
-      .body("channelUrls[1][0].value", is("http://www.kaarina.fi/opetus_ja_koulutus/perusopetus/fi_FI/ilmoittautuminen/"))
-      .body("channelUrls[1][0].type", is("DOC"))
+      .body("channelUrls[1][0].value", is("http://www.mikkeli.fi/sites/mikkeli.fi/files/atoms/files/hakemus_muun_kuin_lahikoulun_7.luokalle_2014.pdf"))
+      .body("channelUrls[1][0].type", is("PDF"))
       .body("attachments[1].size()", is(0))
       .body("supportPhones[1].size()", is(0))
       .body("supportEmails[1].size()", is(0))
-      .body("languages[1].size()", is(0))
+      .body("languages[1].size()", is(1))
+      .body("languages[1][0]", is("fi"))
       .body("webPages[1].size()", is(0))
       .body("serviceHours[1].size()", is(0))
       .body("publishingStatus[1]", is("Published"));
@@ -390,7 +321,7 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
   
   @Test
   public void testFindServiceLocationChannel() throws InterruptedException {
-    waitApiListCount("/serviceLocationServiceChannels", 3);
+    waitApiListCount("/serviceLocationServiceChannels", TestPtvConsts.SERVICE_LOCATION_SERVICE_CHANNELS.length);
     
     String channelId = givenReadonly()
       .contentType(ContentType.JSON)
@@ -403,58 +334,75 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
       .then()
       .assertThat()
       .statusCode(200)
-      
       .body("id", notNullValue())
       .body("organizationId", notNullValue())
-      .body("names.size()", is(2))
+      .body("names.size()", is(1))
       .body("names[0].language", is("fi"))
-      .body("names[0].value", is("Someron kaupungintalo"))
+      .body("names[0].value", is("Saksalan päiväkoti"))
       .body("names[0].type", is("Name"))
       .body("descriptions.size()", is(2))
-      .body("descriptions[1].language", is("fi"))
-      .body("descriptions[1].value", is("Someron kaupungin infopiste ja puhelinvaihde palvelevat kaupungintalon aulassa. Infopisteestä saa yleistietoa kaupunginpalveluista, sinne voi toimittaa kaupungille suunnatut asiakirjat kirjattavaksi ja edelleen oikeille tahoille toimitettaviksi. Infopisteessä voi myös maksaa kaupungin laskuja, hoitaa tilojen varauksia ja ostaa koululaisten matkalippuja.  "))
-      .body("descriptions[1].type", is("Description"))
+      .body("descriptions[0].language", is("fi"))
+      .body("descriptions[0].value", is("Saksalan päiväkoti järjestää vuoropäivähoitoa ja esiopetusta kolmessa lapsiryhmässä."))
+      .body("descriptions[0].type", is("ShortDescription"))
       .body("phoneNumbers.size()", is(2))
-      .body("phoneNumbers[0].serviceChargeType", is("Charged"))
+      .body("phoneNumbers[0].serviceChargeType", is("Other"))
       .body("phoneNumbers[0].chargeDescription", nullValue())
-      .body("phoneNumbers[0].prefixNumber", is("+358"))
-      .body("phoneNumbers[0].isFinnishServiceNumber", is(false))
-      .body("phoneNumbers[0].number", is("277911"))
+      .body("phoneNumbers[0].prefixNumber", nullValue())
+      .body("phoneNumbers[0].isFinnishServiceNumber", is(true))
+      .body("phoneNumbers[0].number", is("000"))
       .body("phoneNumbers[0].language", is("fi"))
-      .body("phoneNumbers[0].type", is("Phone"))
-      .body("emails.size()", is(1))
-      .body("emails[0].language", is("fi"))
-      .body("emails[0].value", is("info@somero.fi"))
+      .body("phoneNumbers[0].type", is("Fax"))
+      .body("emails.size()", is(0))
       .body("languages.size()", is(1))
       .body("languages[0]", is("fi"))
-      .body("webPages.size()", is(1))
-      .body("webPages[0].value", is("Someron kaupunki"))
-      .body("webPages[0].url", is("https://www.somero.fi"))
+      .body("webPages.size()", is(2))
+      .body("webPages[0].value", is("Saksalan päiväkodin blogi"))
+      .body("webPages[0].url", is("http://saksalapk.blogspot.fi/"))
       .body("webPages[0].language", is("fi"))
       .body("areas.size()", is(1))
-      .body("areas[0].code", is("123"))
-      .body("areas[0].name.size()", is(1))
-      .body("areas[0].name[0].value", is("Example"))
-      .body("areas[0].name[0].language", is("en"))
-      .body("addresses.size()", is(2))
-      .body("addresses[0].latitude", is("6726437.712"))
-      .body("addresses[0].longitude", is("309359.871"))
-      .body("addresses[0].type", is("Visiting"))
-      .body("addresses[0].postOfficeBox.size()", is(0))
-      .body("addresses[0].postalCode", is("31400"))
-      .body("addresses[0].postOffice.size()", is(2))
-      .body("addresses[0].postOffice[0].value", is("SOMERO"))
-      .body("addresses[0].postOffice[0].language", is("sv"))
+      .body("areas[0].code", nullValue())
+      .body("areas[0].name.size()", is(0))
+      .body("areas[0].municipalities.size()", is(1))
+      .body("areas[0].municipalities[0].code", is("491"))
+      .body("areas[0].municipalities[0].names.size()", is(2))
+      .body("areas[0].municipalities[0].names[0].value", is("S:t Michel"))
+      .body("areas[0].municipalities[0].names[0].language", is("sv"))
+      .body("addresses.size()", is(1))
+      .body("addresses[0].latitude", is("6839060.668"))
+      .body("addresses[0].longitude", is("514295.022"))
+      .body("addresses[0].coordinateState", is("Ok"))
+      .body("addresses[0].type", is("Location"))
+      .body("addresses[0].subtype", is("Single"))
+      .body("addresses[0].postOfficeBox", nullValue())
       .body("addresses[0].streetAddress.size()", is(1))
-      .body("addresses[0].streetAddress[0].value", is("Joensuuntie"))
+      .body("addresses[0].streetAddress[0].value", is("Maaherrankatu "))
       .body("addresses[0].streetAddress[0].language", is("fi"))
-      .body("addresses[0].streetNumber", is("20"))
-      .body("addresses[0].municipality", nullValue())
+      .body("addresses[0].streetNumber", is("1"))
+      .body("addresses[0].postalCode", is("50170"))
+      .body("addresses[0].postOffice.size()", is(2))
+      .body("addresses[0].postOffice[0].value", is("MIKKELI"))
+      .body("addresses[0].postOffice[0].language", is("sv"))
+      .body("addresses[0].municipality.code", is("491"))
+      .body("addresses[0].municipality.names.size()", is(2))
+      .body("addresses[0].municipality.names[0].value", is("S:t Michel"))
+      .body("addresses[0].municipality.names[0].language", is("sv"))
       .body("addresses[0].country", is("FI"))
-      .body("addresses[0].additionalInformations.size()", is(1))
-      .body("addresses[0].additionalInformations[0].value", is("Example"))
-      .body("addresses[0].additionalInformations[0].language", is("fi"))
-      .body("serviceHours.size()", is(5))
+      .body("addresses[0].additionalInformations.size()", is(0))
+      .body("addresses[0].locationAbroad.size()", is(0))
+      .body("addresses[0].multipointLocation.size()", is(0))
+      .body("serviceHours.size()", is(1))
+      .body("serviceHours[0].serviceHourType", is("Standard"))
+      .body("serviceHours[0].validFrom", nullValue())
+      .body("serviceHours[0].validTo", nullValue())
+      .body("serviceHours[0].isClosed", is(false))
+      .body("serviceHours[0].validForNow", is(true))
+      .body("serviceHours[0].additionalInformation.size()", is(0))
+      .body("serviceHours[0].openingHour.size()", is(5))
+      .body("serviceHours[0].openingHour[0].dayFrom", is(1))
+      .body("serviceHours[0].openingHour[0].dayTo", is(1))
+      .body("serviceHours[0].openingHour[0].from", is("05:00:00"))
+      .body("serviceHours[0].openingHour[0].to", is("23:00:00"))
+      .body("serviceHours[0].openingHour[0].isExtra", is(false))
       .body("publishingStatus", is("Published"));
   }
 
@@ -466,151 +414,135 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
       .then()
       .assertThat()
       .statusCode(200)
-      .body("id[1]", notNullValue())
-      .body("organizationId[1]", notNullValue())
-      .body("names[1].size()", is(2))
-      .body("names[1][0].language", is("fi"))
-      .body("names[1][0].value", is("Metatavun toimisto"))
-      .body("names[1][0].type", is("Name"))
-      .body("descriptions[1].size()", is(2))
-      .body("descriptions[1][1].language", is("fi"))
-      .body("descriptions[1][1].value", is("Metatavun toimiston aukioloajat"))
-      .body("descriptions[1][1].type", is("Description"))
-      .body("phoneNumbers[1].size()", is(1))
-      .body("phoneNumbers[1][0].serviceChargeType", is("Charged"))
-      .body("phoneNumbers[1][0].chargeDescription", nullValue())
-      .body("phoneNumbers[1][0].prefixNumber", is("+358"))
-      .body("phoneNumbers[1][0].isFinnishServiceNumber", is(false))
-      .body("phoneNumbers[1][0].number", is("442909201"))
-      .body("phoneNumbers[1][0].language", is("fi"))
-      .body("phoneNumbers[1][0].type", is("Phone"))
-      .body("emails[1].size()", is(1))
-      .body("emails[1][0].language", is("fi"))
-      .body("emails[1][0].value", is("info@metatavu.fi"))
-      .body("languages[1].size()", is(1))
-      .body("languages[1][0]", is("fi"))
-      .body("webPages[1].size()", is(0))
-      .body("areas[1].size()", is(0))
-      .body("addresses[1].size()", is(1))
-      .body("addresses[1][0].type", is("Visiting"))
-      .body("addresses[1][0].postOfficeBox.size()", is(0))
-      .body("addresses[1][0].postalCode", is("50100"))
-      .body("addresses[1][0].postOffice.size()", is(2))
-      .body("addresses[1][0].postOffice[0].value", is("MIKKELI"))
-      .body("addresses[1][0].postOffice[0].language", is("sv"))
-      .body("addresses[1][0].streetAddress.size()", is(1))
-      .body("addresses[1][0].streetAddress[0].value", is("Rouhialankatu"))
-      .body("addresses[1][0].streetAddress[0].language", is("fi"))
-      .body("addresses[1][0].streetNumber", is("4"))
-      .body("addresses[1][0].municipality.code", is("491"))
-      .body("addresses[1][0].municipality.names.size()", is(2))
-      .body("addresses[1][0].municipality.names[0].value", is("S:t Michel"))
-      .body("addresses[1][0].municipality.names[0].language", is("sv"))
-      .body("addresses[1][0].country", is("FI"))
-      .body("addresses[1][0].latitude", is("6840381.653"))
-      .body("addresses[1][0].longitude", is("514607.162"))
-      .body("addresses[1][0].qualifier", nullValue())
-      .body("addresses[1][0].additionalInformations.size()", is(1))
-      .body("addresses[1][0].additionalInformations[0].value", is("käynti sisäpihalta"))
-      .body("addresses[1][0].additionalInformations[0].language", is("fi"))
+      .body("id[4]", notNullValue())
+      .body("organizationId[4]", notNullValue())
+      .body("names[4].size()", is(1))
+      .body("names[4][0].language", is("fi"))
+      .body("names[4][0].value", is("Metatavun toimisto"))
+      .body("names[4][0].type", is("Name"))
+      .body("descriptions[4].size()", is(2))
+      .body("descriptions[4][1].language", is("fi"))
+      .body("descriptions[4][1].value", is("Metatavun toimiston aukioloajat x"))
+      .body("descriptions[4][1].type", is("Description"))
+      .body("phoneNumbers[4].size()", is(1))
+      .body("phoneNumbers[4][0].serviceChargeType", is("Charged"))
+      .body("phoneNumbers[4][0].chargeDescription", nullValue())
+      .body("phoneNumbers[4][0].prefixNumber", is("+358"))
+      .body("phoneNumbers[4][0].isFinnishServiceNumber", is(false))
+      .body("phoneNumbers[4][0].number", is("442909201"))
+      .body("phoneNumbers[4][0].language", is("fi"))
+      .body("phoneNumbers[4][0].type", is("Phone"))
+      .body("emails[4].size()", is(1))
+      .body("emails[4][0].language", is("fi"))
+      .body("emails[4][0].value", is("info@metatavu.fi"))
+      .body("languages[4].size()", is(1))
+      .body("languages[4][0]", is("fi"))
+      .body("webPages[4].size()", is(0))
+      .body("areas[4].size()", is(0))
+      .body("addresses[4].size()", is(1))
+      .body("addresses[4][0].type", is("Location"))
+      .body("addresses[4][0].subtype", is("Single"))
+      .body("addresses[4][0].postOfficeBox", nullValue())
+      .body("addresses[4][0].postalCode", is("50100"))
+      .body("addresses[4][0].postOffice.size()", is(2))
+      .body("addresses[4][0].postOffice[0].value", is("MIKKELI"))
+      .body("addresses[4][0].postOffice[0].language", is("sv"))
+      .body("addresses[4][0].streetAddress.size()", is(1))
+      .body("addresses[4][0].streetAddress[0].value", is("Rouhialankatu"))
+      .body("addresses[4][0].streetAddress[0].language", is("fi"))
+      .body("addresses[4][0].streetNumber", is("4"))
+      .body("addresses[4][0].municipality.code", is("491"))
+      .body("addresses[4][0].municipality.names.size()", is(2))
+      .body("addresses[4][0].municipality.names[0].value", is("S:t Michel"))
+      .body("addresses[4][0].municipality.names[0].language", is("sv"))
+      .body("addresses[4][0].country", is("FI"))
+      .body("addresses[4][0].latitude", is("6840381.653"))
+      .body("addresses[4][0].longitude", is("514607.162"))
+      .body("addresses[4][0].qualifier", nullValue())
+      .body("addresses[4][0].additionalInformations.size()", is(1))
+      .body("addresses[4][0].additionalInformations[0].value", is("käynti sisäpihalta"))
+      .body("addresses[4][0].additionalInformations[0].language", is("fi"))
 
-      .body("serviceHours[1].size()", is(4))
-      .body("serviceHours[1][0].serviceHourType", is("Standard"))
-      .body("serviceHours[1][1].serviceHourType", is("Standard"))
-      .body("serviceHours[1][2].serviceHourType", is("Exception"))
-      .body("serviceHours[1][3].serviceHourType", is("Exception"))
+      .body("serviceHours[4].size()", is(3))
+      .body("serviceHours[4][0].serviceHourType", is("Standard"))
+      .body("serviceHours[4][1].serviceHourType", is("Standard"))
+      .body("serviceHours[4][2].serviceHourType", is("Exception"))
       
-      .body("serviceHours[1][0].serviceHourType", is("Standard"))
-      .body("serviceHours[1][0].validFrom", nullValue())
-      .body("serviceHours[1][0].validTo", nullValue())
-      .body("serviceHours[1][0].isClosed", is(false))
-      .body("serviceHours[1][0].validForNow", is(true))
-      .body("serviceHours[1][0].additionalInformation.size()", is(0))
-      .body("serviceHours[1][0].openingHour.size()", is(5))
+      .body("serviceHours[4][0].validFrom", nullValue())
+      .body("serviceHours[4][0].validTo", nullValue())
+      .body("serviceHours[4][0].isClosed", is(false))
+      .body("serviceHours[4][0].validForNow", is(true))
+      .body("serviceHours[4][0].additionalInformation.size()", is(0))
+      .body("serviceHours[4][0].openingHour.size()", is(5))
       
-      .body("serviceHours[1][0].openingHour[0].dayFrom", is(1))
-      .body("serviceHours[1][0].openingHour[0].dayTo", nullValue())
-      .body("serviceHours[1][0].openingHour[0].from", is("09:00:00"))
-      .body("serviceHours[1][0].openingHour[0].to", is("17:00:00"))
-      .body("serviceHours[1][0].openingHour[0].isExtra", is(false))      
+      .body("serviceHours[4][0].openingHour[0].dayFrom", is(1))
+      .body("serviceHours[4][0].openingHour[0].dayTo", nullValue())
+      .body("serviceHours[4][0].openingHour[0].from", is("09:00:00"))
+      .body("serviceHours[4][0].openingHour[0].to", is("17:00:00"))
+      .body("serviceHours[4][0].openingHour[0].isExtra", is(false))      
       
-      .body("serviceHours[1][0].openingHour[1].dayFrom", is(2))
-      .body("serviceHours[1][0].openingHour[1].dayTo", nullValue())
-      .body("serviceHours[1][0].openingHour[1].from", is("09:00:00"))
-      .body("serviceHours[1][0].openingHour[1].to", is("17:00:00"))
-      .body("serviceHours[1][0].openingHour[1].isExtra", is(false))      
+      .body("serviceHours[4][0].openingHour[1].dayFrom", is(2))
+      .body("serviceHours[4][0].openingHour[1].dayTo", nullValue())
+      .body("serviceHours[4][0].openingHour[1].from", is("09:00:00"))
+      .body("serviceHours[4][0].openingHour[1].to", is("17:00:00"))
+      .body("serviceHours[4][0].openingHour[1].isExtra", is(false))      
       
-      .body("serviceHours[1][0].openingHour[2].dayFrom", is(3))
-      .body("serviceHours[1][0].openingHour[2].dayTo", nullValue())
-      .body("serviceHours[1][0].openingHour[2].from", is("09:00:00"))
-      .body("serviceHours[1][0].openingHour[2].to", is("16:30:00"))
-      .body("serviceHours[1][0].openingHour[2].isExtra", is(false))           
+      .body("serviceHours[4][0].openingHour[2].dayFrom", is(3))
+      .body("serviceHours[4][0].openingHour[2].dayTo", nullValue())
+      .body("serviceHours[4][0].openingHour[2].from", is("09:00:00"))
+      .body("serviceHours[4][0].openingHour[2].to", is("16:30:00"))
+      .body("serviceHours[4][0].openingHour[2].isExtra", is(false))           
       
-      .body("serviceHours[1][0].openingHour[3].dayFrom", is(4))
-      .body("serviceHours[1][0].openingHour[3].dayTo", nullValue())
-      .body("serviceHours[1][0].openingHour[3].from", is("09:00:00"))
-      .body("serviceHours[1][0].openingHour[3].to", is("17:00:00"))
-      .body("serviceHours[1][0].openingHour[3].isExtra", is(false))           
+      .body("serviceHours[4][0].openingHour[3].dayFrom", is(4))
+      .body("serviceHours[4][0].openingHour[3].dayTo", nullValue())
+      .body("serviceHours[4][0].openingHour[3].from", is("09:00:00"))
+      .body("serviceHours[4][0].openingHour[3].to", is("17:00:00"))
+      .body("serviceHours[4][0].openingHour[3].isExtra", is(false))           
       
-      .body("serviceHours[1][0].openingHour[4].dayFrom", is(5))
-      .body("serviceHours[1][0].openingHour[4].dayTo", nullValue())
-      .body("serviceHours[1][0].openingHour[4].from", is("10:00:00"))
-      .body("serviceHours[1][0].openingHour[4].to", is("14:00:00"))
-      .body("serviceHours[1][0].openingHour[4].isExtra", is(false))      
+      .body("serviceHours[4][0].openingHour[4].dayFrom", is(5))
+      .body("serviceHours[4][0].openingHour[4].dayTo", nullValue())
+      .body("serviceHours[4][0].openingHour[4].from", is("10:00:00"))
+      .body("serviceHours[4][0].openingHour[4].to", is("14:00:00"))
+      .body("serviceHours[4][0].openingHour[4].isExtra", is(false))      
       
-      .body("serviceHours[1][1].serviceHourType", is("Standard"))
-      .body("serviceHours[1][1].validFrom", sameInstant(getInstant(2017, 4, 3, 0, 0, TIMEZONE_ID)))
-      .body("serviceHours[1][1].validTo", sameInstant(getInstant(2017, 4, 9, 0, 0, TIMEZONE_ID)))
-      .body("serviceHours[1][1].isClosed", is(false))
-      .body("serviceHours[1][1].validForNow", is(false))
-      .body("serviceHours[1][1].additionalInformation.size()", is(1))
-      .body("serviceHours[1][1].additionalInformation[0].value", is("Huhtikuun ensimmäinen viikko"))
-      .body("serviceHours[1][1].additionalInformation[0].language", is("fi"))
-      .body("serviceHours[1][1].openingHour.size()", is(3))
+      .body("serviceHours[4][1].serviceHourType", is("Standard"))
+      .body("serviceHours[4][1].validFrom", sameInstant(getInstant(2017, 4, 3, 0, 0, TIMEZONE_ID)))
+      .body("serviceHours[4][1].validTo", sameInstant(getInstant(2017, 4, 9, 0, 0, TIMEZONE_ID)))
+      .body("serviceHours[4][1].isClosed", is(false))
+      .body("serviceHours[4][1].validForNow", is(false))
+      .body("serviceHours[4][1].additionalInformation.size()", is(1))
+      .body("serviceHours[4][1].additionalInformation[0].value", is("Huhtikuun ensimmäinen viikko"))
+      .body("serviceHours[4][1].additionalInformation[0].language", is("fi"))
+      .body("serviceHours[4][1].openingHour.size()", is(2))
       
-      .body("serviceHours[1][1].openingHour[0].dayFrom", is(1))
-      .body("serviceHours[1][1].openingHour[0].dayTo", nullValue())
-      .body("serviceHours[1][1].openingHour[0].from", is("08:00:00"))
-      .body("serviceHours[1][1].openingHour[0].to", is("16:00:00"))
-      .body("serviceHours[1][1].openingHour[0].isExtra", is(false))      
+      .body("serviceHours[4][1].openingHour[0].dayFrom", is(1))
+      .body("serviceHours[4][1].openingHour[0].dayTo", nullValue())
+      .body("serviceHours[4][1].openingHour[0].from", is("08:00:00"))
+      .body("serviceHours[4][1].openingHour[0].to", is("16:00:00"))
+      .body("serviceHours[4][1].openingHour[0].isExtra", is(false))      
 
-      .body("serviceHours[1][1].openingHour[1].dayFrom", is(2))
-      .body("serviceHours[1][1].openingHour[1].dayTo", nullValue())
-      .body("serviceHours[1][1].openingHour[1].from", is("08:00:00"))
-      .body("serviceHours[1][1].openingHour[1].to", is("17:00:00"))
-      .body("serviceHours[1][1].openingHour[1].isExtra", is(false))      
-
-      .body("serviceHours[1][1].openingHour[2].dayFrom", is(6))
-      .body("serviceHours[1][1].openingHour[2].dayTo", nullValue())
-      .body("serviceHours[1][1].openingHour[2].from", is("12:00:00"))
-      .body("serviceHours[1][1].openingHour[2].to", is("13:00:00"))
-      .body("serviceHours[1][1].openingHour[2].isExtra", is(false))      
-
-      .body("serviceHours[1][2].serviceHourType", is("Exception"))
-      .body("serviceHours[1][2].validFrom", sameInstant(getInstant(2017, 2, 27, 0, 0, TIMEZONE_ID)))
-      .body("serviceHours[1][2].validTo", nullValue())
-      .body("serviceHours[1][2].isClosed", is(false))
-      .body("serviceHours[1][2].validForNow", is(false))
-      .body("serviceHours[1][2].additionalInformation.size()", is(1))
-      .body("serviceHours[1][2].additionalInformation[0].value", is("Aamupäivystys"))
-      .body("serviceHours[1][2].additionalInformation[0].language", is("fi"))
-      .body("serviceHours[1][2].openingHour.size()", is(1))
-      .body("serviceHours[1][2].openingHour[0].dayFrom", nullValue())
-      .body("serviceHours[1][2].openingHour[0].dayTo", nullValue())
-      .body("serviceHours[1][2].openingHour[0].from", is("06:00:00"))
-      .body("serviceHours[1][2].openingHour[0].to", is("9:00:00"))
-      .body("serviceHours[1][2].openingHour[0].isExtra", is(false))
-
-      .body("serviceHours[1][3].validFrom", sameInstant(getInstant(2017, 4, 26, 0, 0, TIMEZONE_ID)))
-      .body("serviceHours[1][3].validTo", nullValue())
-      .body("serviceHours[1][3].isClosed", is(true))
-      .body("serviceHours[1][3].validForNow", is(false))
-      .body("serviceHours[1][3].additionalInformation.size()", is(1))
-      .body("serviceHours[1][3].additionalInformation[0].value", is("Test"))
-      .body("serviceHours[1][3].additionalInformation[0].language", is("fi"))
-      .body("serviceHours[1][3].openingHour.size()", is(0))
+      .body("serviceHours[4][1].openingHour[1].dayFrom", is(2))
+      .body("serviceHours[4][1].openingHour[1].dayTo", nullValue())
+      .body("serviceHours[4][1].openingHour[1].from", is("08:00:00"))
+      .body("serviceHours[4][1].openingHour[1].to", is("17:00:00"))
+      .body("serviceHours[4][1].openingHour[1].isExtra", is(false))      
       
-      .body("publishingStatus[1]", is("Published"));
+      .body("serviceHours[4][2].serviceHourType", is("Exception"))
+      .body("serviceHours[4][2].validFrom", sameInstant(getInstant(2017, 2, 27, 0, 0, TIMEZONE_ID)))
+      .body("serviceHours[4][2].validTo", nullValue())
+      .body("serviceHours[4][2].isClosed", is(false))
+      .body("serviceHours[4][2].validForNow", is(false))
+      .body("serviceHours[4][2].additionalInformation.size()", is(1))
+      .body("serviceHours[4][2].additionalInformation[0].value", is("Poikkeuksellisesti suljettu"))
+      .body("serviceHours[4][2].additionalInformation[0].language", is("fi"))
+      .body("serviceHours[4][2].openingHour.size()", is(1))
+      .body("serviceHours[4][2].openingHour[0].dayFrom", nullValue())
+      .body("serviceHours[4][2].openingHour[0].dayTo", nullValue())
+      .body("serviceHours[4][2].openingHour[0].from", is("01:00:00"))
+      .body("serviceHours[4][2].openingHour[0].to", is("1:15:00"))
+      .body("serviceHours[4][2].openingHour[0].isExtra", is(false))
+      
+      .body("publishingStatus[4]", is("Published"));
   }
   
   @Test
@@ -628,7 +560,7 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
       .assertThat()
       .statusCode(200)
       .body("id.size()", is(2))
-      .body("names[0][0].value", is("Someron kaupungintalo"))
+      .body("names[0][0].value", is("Testi"))
       .body("names[1][0].value", is("Metatavun toimisto"));
     
     givenReadonly()
@@ -639,7 +571,7 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
       .statusCode(200)
       .body("id.size()", is(2))
       .body("names[0][0].value", is("Metatavun toimisto"))
-      .body("names[1][0].value", is("Someron kaupungintalo"));
+      .body("names[1][0].value", is("Testi"));
     
     givenReadonly()
       .contentType(ContentType.JSON)
@@ -648,7 +580,7 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
       .assertThat()
       .statusCode(200)
       .body("id.size()", is(2))
-      .body("names[0][0].value", is("Someron kaupungintalo"))
+      .body("names[0][0].value", is("Testi"))
       .body("names[1][0].value", is("Metatavun toimisto"));
   }
 
@@ -669,19 +601,19 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
       .body("organizationId", notNullValue())
       .body("names.size()", is(1))
       .body("names[0].language", is("fi"))
-      .body("names[0].value", is("Koulumaitotuen lainsäädäntö"))
+      .body("names[0].value", is("Testi verkkosivu"))
       .body("names[0].type", is("Name"))
       .body("descriptions.size()", is(2))
       .body("descriptions[1].language", is("fi"))
-      .body("descriptions[1].value", is("Koulumaitotuen lainsäädäntö perustuu Euroopan parlamentin, neuvoston ja komission asetuksiin sekä lisäksi koulumaitotukeen sovelletaan kansallista lainsäädäntöä ja Maaseutuviraston antamaa määräystä."))
+      .body("descriptions[1].value", is("Verkkosivu testausta varten"))
       .body("descriptions[1].type", is("Description"))
       .body("urls.size()", is(1))
       .body("urls[0].language", is("fi"))
-      .body("urls[0].value", is("http://www.mavi.fi/fi/tuet-ja-palvelut/kunta-koulu-paivakoti/Sivut/Koulumaitotuen-lainsäädäntö.aspx"))
+      .body("urls[0].value", is("https://www.google.com"))
       .body("supportPhones.size()", is(0))
       .body("supportEmails.size()", is(0))
-      .body("languages.size()", is(2))
-      .body("languages[0]", is("sv"))
+      .body("languages.size()", is(1))
+      .body("languages[0]", is("fi"))
       .body("webPages.size()", is(0))
       .body("serviceHours.size()", is(0))
       .body("publishingStatus", is("Published"));
@@ -689,7 +621,7 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
 
   @Test
   public void testListWebPageChannel() throws InterruptedException {
-    waitApiListCount("/webPageServiceChannels", 3);
+    waitApiListCount("/webPageServiceChannels", TestPtvConsts.WEB_PAGE_SERVICE_CHANNELS.length);
     
     givenReadonly()
       .contentType(ContentType.JSON)
@@ -697,68 +629,67 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
       .then()
       .assertThat()
       .statusCode(200)
-      .body("id[1]", notNullValue())
-      .body("organizationId[1]", notNullValue())
-      .body("names[1].size()", is(1))
-      .body("names[1][0].language", is("fi"))
-      .body("names[1][0].value", is("Pukkilan kunnan verkkosivut"))
-      .body("names[1][0].type", is("Name"))
-      .body("descriptions[1].size()", is(2))
-      .body("descriptions[1][1].language", is("fi"))
-      .body("descriptions[1][1].value", is("Palvelut, tapahtumakalenteri, asiointi."))
-      .body("descriptions[1][1].type", is("Description"))
-      .body("urls[1].size()", is(1))
-      .body("urls[1][0].language", is("fi"))
-      .body("urls[1][0].value", is("http://www.pukkila.fi/"))
-
-      .body("supportPhones[1].size()", is(0))
-      .body("supportEmails[1].size()", is(0))
-      .body("languages[1].size()", is(1))
-      .body("languages[1][0]", is("fi"))
-      .body("webPages[1].size()", is(0))
-      .body("serviceHours[1].size()", is(0))
-      .body("publishingStatus[1]", is("Published"));
+      .body("id[0]", notNullValue())
+      .body("organizationId[0]", notNullValue())
+      .body("names[0].size()", is(1))
+      .body("names[0][0].language", is("fi"))
+      .body("names[0][0].value", is("Testi verkkosivu"))
+      .body("names[0][0].type", is("Name"))
+      .body("descriptions[0].size()", is(2))
+      .body("descriptions[0][1].language", is("fi"))
+      .body("descriptions[0][1].value", is("Verkkosivu testausta varten"))
+      .body("descriptions[0][1].type", is("Description"))
+      .body("urls[0].size()", is(1))
+      .body("urls[0][0].language", is("fi"))
+      .body("urls[0][0].value", is("https://www.google.com"))
+      .body("supportPhones[0].size()", is(0))
+      .body("supportEmails[0].size()", is(0))
+      .body("languages[0].size()", is(1))
+      .body("languages[0][0]", is("fi"))
+      .body("webPages[0].size()", is(0))
+      .body("serviceHours[0].size()", is(0))
+      .body("publishingStatus[0]", is("Published"));
   }
 
   @Test
   public void testListElectronicChannelsLimits() throws InterruptedException {
     String channelsUrl = "/electronicServiceChannels";
-    waitApiListCount(channelsUrl, 3);
-    assertListLimits(channelsUrl, 3);
+    waitApiListCount(channelsUrl, TestPtvConsts.ELECTRONIC_CHANNEL_SERVICE_CHANNELS.length);
+    assertListLimits(channelsUrl, TestPtvConsts.ELECTRONIC_CHANNEL_SERVICE_CHANNELS.length);
   }
   
   @Test
   public void testListPhoneChannelsLimits() throws InterruptedException {
     String channelsUrl = "/phoneServiceChannels";
-    waitApiListCount(channelsUrl, 3);
-    assertListLimits(channelsUrl, 3);
+    waitApiListCount(channelsUrl, TestPtvConsts.PHONE_SERVICE_CHANNELS.length);
+    assertListLimits(channelsUrl, TestPtvConsts.PHONE_SERVICE_CHANNELS.length);
   }
   
   @Test
   public void testListPrintableFormChannelsLimits() throws InterruptedException {
     String channelsUrl = "/printableFormServiceChannels";
-    waitApiListCount(channelsUrl, 3);
-    assertListLimits(channelsUrl, 3);
+    waitApiListCount(channelsUrl, TestPtvConsts.PRINTABLE_FORM_SERVICE_CHANNELS.length);
+    assertListLimits(channelsUrl, TestPtvConsts.PRINTABLE_FORM_SERVICE_CHANNELS.length);
   }
   
   @Test
   public void testListServiceLocationChannelLimits() throws InterruptedException {
     String channelsUrl = "/serviceLocationServiceChannels";
-    waitApiListCount(channelsUrl, 3);
-    assertListLimits(channelsUrl, 3);
+    waitApiListCount(channelsUrl, TestPtvConsts.SERVICE_LOCATION_SERVICE_CHANNELS.length);
+    assertListLimits(channelsUrl, TestPtvConsts.SERVICE_LOCATION_SERVICE_CHANNELS.length);
   }
   
   @Test
   public void testListWebPageChannelsLimits() throws InterruptedException {
     String channelsUrl = "/webPageServiceChannels";
-    waitApiListCount(channelsUrl, 3);
-    assertListLimits(channelsUrl, 3);
+    waitApiListCount(channelsUrl, TestPtvConsts.WEB_PAGE_SERVICE_CHANNELS.length);
+    assertListLimits(channelsUrl, TestPtvConsts.WEB_PAGE_SERVICE_CHANNELS.length);
   }
   
   @Test
   public void testElectronicChannelNotFound() throws InterruptedException {
-    String electronicChannelId = getElectronicChannelId(0);
-    String phoneChannelId = getPhoneChannelId(0);
+    String electronicChannelId = getElectronicChannelId(0, TestPtvConsts.ELECTRONIC_CHANNEL_SERVICE_CHANNELS.length);
+    String phoneChannelId = getPhoneChannelId(0, TestPtvConsts.PHONE_SERVICE_CHANNELS.length);
     String[] malformedIds = new String[] {"evil", "*", "/", "1", "-1", "~"};
     
     assertFound(String.format("/electronicServiceChannels/%s", electronicChannelId));
@@ -772,8 +703,8 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
   
   @Test
   public void testPhoneChannelNotFound() throws InterruptedException {
-    String electronicChannelId = getElectronicChannelId(0);
-    String phoneChannelId = getPhoneChannelId(0);
+    String electronicChannelId = getElectronicChannelId(0, TestPtvConsts.ELECTRONIC_CHANNEL_SERVICE_CHANNELS.length);
+    String phoneChannelId = getPhoneChannelId(0, TestPtvConsts.PHONE_SERVICE_CHANNELS.length);
     String[] malformedIds = new String[] {"evil", "*", "/", "1", "-1", "~"};
     
     assertFound(String.format("/phoneServiceChannels/%s", phoneChannelId));
@@ -787,8 +718,8 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
   
   @Test
   public void testPrintableFormChannelNotFound() throws InterruptedException {
-    String electronicChannelId = getElectronicChannelId(0);
-    String printableFormChannelId = getPrintableFormChannelId(0);
+    String electronicChannelId = getElectronicChannelId(0, TestPtvConsts.ELECTRONIC_CHANNEL_SERVICE_CHANNELS.length);
+    String printableFormChannelId = getPrintableFormChannelId(0, TestPtvConsts.PRINTABLE_FORM_SERVICE_CHANNELS.length);
     String[] malformedIds = new String[] {"evil", "*", "/", "1", "-1", "~"};
     
     assertFound(String.format("/printableFormServiceChannels/%s", printableFormChannelId));
@@ -802,8 +733,8 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
 
   @Test
   public void testServiceLocationChannelNotFound() throws InterruptedException {
-    String electronicChannelId = getElectronicChannelId(0);
-    String serviceLocationChannelId = getServiceLocationChannelId(0);
+    String electronicChannelId = getElectronicChannelId(0, TestPtvConsts.ELECTRONIC_CHANNEL_SERVICE_CHANNELS.length);
+    String serviceLocationChannelId = getServiceLocationChannelId(0, TestPtvConsts.SERVICE_LOCATION_SERVICE_CHANNELS.length);
     String[] malformedIds = new String[] {"evil", "*", "/", "1", "-1", "~"};
     
     assertFound(String.format("/serviceLocationServiceChannels/%s", serviceLocationChannelId));
@@ -817,8 +748,8 @@ public class ServiceChannelsTestsIT extends AbstractIntegrationTest {
 
   @Test
   public void testWebPageChannelNotFound() throws InterruptedException {
-    String electronicChannelId = getElectronicChannelId(0);
-    String webPageChannelId = getWebPageChannelId(0);
+    String electronicChannelId = getElectronicChannelId(0, TestPtvConsts.ELECTRONIC_CHANNEL_SERVICE_CHANNELS.length);
+    String webPageChannelId = getWebPageChannelId(0, TestPtvConsts.WEB_PAGE_SERVICE_CHANNELS.length);
     String[] malformedIds = new String[] {"evil", "*", "/", "1", "-1", "~"};
     
     assertFound(String.format("/webPageServiceChannels/%s", webPageChannelId));

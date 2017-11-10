@@ -1,0 +1,172 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : null,
+    "value" : "Ihastjärven koulun blogi",
+    "url" : "https://ihastjarvi.wordpress.com/",
+    "language" : "fi"
+  }, {
+    "orderNumber" : null,
+    "value" : "Ihastjärven koulun kotisivu",
+    "url" : "http://www.ihastjarvi.fi/koulu/",
+    "language" : "fi"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Ihastjärventie",
+        "language" : "fi"
+      } ],
+      "streetNumber" : "170",
+      "postalCode" : "50970",
+      "postOffice" : [ {
+        "value" : "MIKKELI",
+        "language" : "sv"
+      }, {
+        "value" : "MIKKELI",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "491",
+        "name" : [ {
+          "value" : "S:t Michel",
+          "language" : "sv"
+        }, {
+          "value" : "Mikkeli",
+          "language" : "fi"
+        } ]
+      },
+      "additionalInformation" : [ {
+        "value" : null,
+        "language" : "fi"
+      } ],
+      "latitude" : "6857733.72",
+      "longitude" : "509149.635",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "491",
+      "name" : [ {
+        "value" : "S:t Michel",
+        "language" : "sv"
+      }, {
+        "value" : "Mikkeli",
+        "language" : "fi"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "08ab5b97-d04d-4d16-a3f3-dac654b140ec",
+      "name" : "Perusopetus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Fax",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Other",
+    "chargeDescription" : null,
+    "prefixNumber" : null,
+    "isFinnishServiceNumber" : true,
+    "number" : "000",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Other",
+    "chargeDescription" : "paikallisverkkomaksu / paikallispuhelumaksu",
+    "prefixNumber" : null,
+    "isFinnishServiceNumber" : true,
+    "number" : "111044 794 5504",
+    "language" : "fi"
+  } ],
+  "organizationId" : "ae2682d3-6238-4019-b34f-b078c5f9bb50",
+  "emails" : [ {
+    "value" : "jarmo.hanninen@mikkeli.fi",
+    "language" : "fi"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Ihastjärven koulu",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ {
+    "serviceHourType" : "Standard",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ ],
+    "openingHour" : [ {
+      "dayFrom" : "Wednesday",
+      "dayTo" : "Wednesday",
+      "from" : "08:00:00",
+      "to" : "16:15:00",
+      "isExtra" : false
+    }, {
+      "dayFrom" : "Tuesday",
+      "dayTo" : "Tuesday",
+      "from" : "08:00:00",
+      "to" : "16:15:00",
+      "isExtra" : false
+    }, {
+      "dayFrom" : "Monday",
+      "dayTo" : "Monday",
+      "from" : "08:00:00",
+      "to" : "16:15:00",
+      "isExtra" : false
+    }, {
+      "dayFrom" : "Thursday",
+      "dayTo" : "Thursday",
+      "from" : "08:00:00",
+      "to" : "16:15:00",
+      "isExtra" : false
+    }, {
+      "dayFrom" : "Friday",
+      "dayTo" : "Friday",
+      "from" : "08:00:00",
+      "to" : "16:15:00",
+      "isExtra" : false
+    } ]
+  } ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Ihastjärven koulu on neliopettajainen, reilun 50 oppilaan alakoulu, jossa toimii luokat 0-6.",
+    "type" : "ShortDescription"
+  }, {
+    "language" : "fi",
+    "value" : "Ihastjärven koulu sijaitsee noin 20 kilometrin päässä Mikkelin keskustasta. Uusi Ihastjärven koulu on valmistunut vuonna 2012. Koulun tilat on suunniteltu yhdessä oppilaiden kanssa. Neliopettajaisessa koulussa annetaan yhdysluokkaopetusta ryhmissä 0-2 -luokat, 3-4 -luokat ja 5-6 -luokat. Esioppilaat ovat samassa ryhmässä 1-2 -luokkalaisten kanssa",
+    "type" : "Description"
+  } ],
+  "areaType" : "AreaType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-03-12T20:08:56.665388",
+  "id" : "4d52960e-2e39-4d9e-8f7c-5bc8994b024f"
+}

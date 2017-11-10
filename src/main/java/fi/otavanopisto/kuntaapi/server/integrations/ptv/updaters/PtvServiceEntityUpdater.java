@@ -20,9 +20,9 @@ import fi.metatavu.kuntaapi.server.rest.model.Service;
 import fi.metatavu.kuntaapi.server.rest.model.ServiceOrganization;
 import fi.metatavu.ptv.client.ApiResponse;
 import fi.metatavu.ptv.client.model.V6VmOpenApiServiceOrganization;
-import fi.metatavu.ptv.client.model.V6VmOpenApiServiceServiceChannel;
+import fi.metatavu.ptv.client.model.V7VmOpenApiServiceServiceChannel;
 import fi.metatavu.ptv.client.model.VmOpenApiItem;
-import fi.metatavu.ptv.client.model.V6VmOpenApiService;
+import fi.metatavu.ptv.client.model.V7VmOpenApiService;
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
@@ -48,11 +48,11 @@ import fi.otavanopisto.kuntaapi.server.integrations.management.tasks.PageIdTaskQ
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.PtvConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.PtvIdFactory;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.PtvServiceResourceContainer;
-import fi.otavanopisto.kuntaapi.server.integrations.ptv.PtvTranslator;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.client.PtvApi;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.ServiceChannelTasksQueue;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.ServiceChannelUpdateTask;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.ServiceIdTaskQueue;
+import fi.otavanopisto.kuntaapi.server.integrations.ptv.translation.PtvTranslator;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask;
@@ -143,11 +143,11 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
       return;
     }
     
-    ApiResponse<V6VmOpenApiService> response = ptvApi.getServiceApi().apiV6ServiceByIdGet(ptvServiceId.getId());
+    ApiResponse<V7VmOpenApiService> response = ptvApi.getServiceApi(null).apiV7ServiceByIdGet(ptvServiceId.getId());
     if (response.isOk()) {
       Identifier identifier = identifierController.acquireIdentifier(orderIndex, ptvServiceId);
       
-      V6VmOpenApiService ptvService = response.getResponse();
+      V7VmOpenApiService ptvService = response.getResponse();
       ServiceId kuntaApiServiceId = kuntaApiIdFactory.createFromIdentifier(ServiceId.class, identifier);
       
       fi.metatavu.kuntaapi.server.rest.model.Service service = translateService(ptvService, kuntaApiServiceId);
@@ -187,8 +187,8 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
     }
   }
 
-  private fi.metatavu.kuntaapi.server.rest.model.Service translateService(V6VmOpenApiService ptvService, ServiceId kuntaApiServiceId) {
-    List<V6VmOpenApiServiceServiceChannel> serviceChannels = ptvService.getServiceChannels();
+  private fi.metatavu.kuntaapi.server.rest.model.Service translateService(V7VmOpenApiService ptvService, ServiceId kuntaApiServiceId) {
+    List<V7VmOpenApiServiceServiceChannel> serviceChannels = ptvService.getServiceChannels();
     
     List<ElectronicServiceChannelId> kuntaApiElectronicServiceChannelIds = new ArrayList<>(); 
     List<PhoneServiceChannelId> kuntaApiPhoneServiceChannelIds = new ArrayList<>();
@@ -196,7 +196,7 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
     List<ServiceLocationServiceChannelId> kuntaApiServiceLocationServiceChannelIds = new ArrayList<>();
     List<WebPageServiceChannelId> kuntaApiWebPageServiceChannelIds = new ArrayList<>();
     
-    for (V6VmOpenApiServiceServiceChannel serviceChannel : serviceChannels) {
+    for (V7VmOpenApiServiceServiceChannel serviceChannel : serviceChannels) {
       sortServiceChannel(kuntaApiElectronicServiceChannelIds, kuntaApiPhoneServiceChannelIds,
           kuntaApiPrintableFormServiceChannelIds, kuntaApiServiceLocationServiceChannelIds,
           kuntaApiWebPageServiceChannelIds, serviceChannel);
@@ -218,7 +218,7 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
       List<PhoneServiceChannelId> kuntaApiPhoneServiceChannelIds,
       List<PrintableFormServiceChannelId> kuntaApiPrintableFormServiceChannelIds,
       List<ServiceLocationServiceChannelId> kuntaApiServiceLocationServiceChannelIds,
-      List<WebPageServiceChannelId> kuntaApiWebPageServiceChannelIds, V6VmOpenApiServiceServiceChannel serviceServiceChannel) {
+      List<WebPageServiceChannelId> kuntaApiWebPageServiceChannelIds, V7VmOpenApiServiceServiceChannel serviceServiceChannel) {
     
     VmOpenApiItem serviceChannel = serviceServiceChannel.getServiceChannel();
     if (serviceChannel == null || serviceChannel.getId() == null) {

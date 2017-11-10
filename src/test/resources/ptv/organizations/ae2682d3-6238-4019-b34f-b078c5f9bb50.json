@@ -1,233 +1,271 @@
 {
-  "id":"ae2682d3-6238-4019-b34f-b078c5f9bb50",
-  "oid":null,
-  "parentOrganization":null,
-  "organizationType":"Municipality",
-  "municipality":{
-    "code":"491",
-    "name":[
+  "id": "ae2682d3-6238-4019-b34f-b078c5f9bb50",
+  "sourceId": null,
+  "oid": null,
+  "parentOrganization": null,
+  "organizationType": "Municipality",
+  "municipality": {
+    "code": "491",
+    "name": [
       {
-        "value":"S:t Michel",
-        "language":"sv"
+        "value": "S:t Michel",
+        "language": "sv"
       },
       {
-        "value":"Mikkeli",
-        "language":"fi"
+        "value": "Mikkeli",
+        "language": "fi"
       }
     ]
   },
-  "businessCode":"0165116-3",
-  "businessName":"Mikkelin kaupunki",
-  "organizationNames":[
+  "businessCode": "0165116-3",
+  "businessName": "Mikkelin kaupunki",
+  "organizationNames": [
     {
-      "language":"fi",
-      "value":"Mikkelin kaupunki",
-      "type":"Name"
+      "language": "fi",
+      "value": "Mikkelin kaupunki",
+      "type": "Name"
     },
     {
-      "language":"fi",
-      "value":"Mikkeli",
-      "type":"AlternateName"
+      "language": "fi",
+      "value": "Mikkeli",
+      "type": "AlternateName"
     }
   ],
-  "displayNameType":[
+  "displayNameType": [
     {
-      "type":"Name",
-      "language":"fi"
+      "type": "Name",
+      "language": "fi"
     },
     {
-      "type":"Name",
-      "language":"sv"
+      "type": "Name",
+      "language": "sv"
     }
   ],
-  "areaType":null,
-  "areas":null,
-  "organizationDescriptions":[
+  "areaType": null,
+  "areas": null,
+  "organizationDescriptions": [
     {
-      "language":"fi",
-      "value":"Mikkeli on 55 000 asukkaan kaupunki Etelä-Savossa Saimaan rannalla. Asiointi Mikkelin kaupungin kanssa on sujuvaa. Palvelut ovat saatavilla verkossa ympäri vuorokauden. Asiointi onnistuu vaikka kotisohvalta käsin helposti ja nopeasti.\nMikkeli panostaa uudenlaisten palvelujen tuottamiseen ja tarjoamiseen. Avoin digitaalisuus palvelee kuntalaisia ja tarjoaa mallia koko valtakunnalle. \nAvoimen datan sivusto open.mikkeli.fi kutsuu kuntalaisia mukaan ideoimaan digitaalisuuden mahdollisuuksia.",
-      "type":"Description"
+      "language": "fi",
+      "value": "Mikkeli on 55 000 asukkaan kaupunki Etelä-Savossa Saimaan rannalla. Asiointi Mikkelin kaupungin kanssa on sujuvaa. Palvelut ovat saatavilla verkossa ympäri vuorokauden. Asiointi onnistuu vaikka kotisohvalta käsin helposti ja nopeasti.\nMikkeli panostaa uudenlaisten palvelujen tuottamiseen ja tarjoamiseen. Avoin digitaalisuus palvelee kuntalaisia ja tarjoaa mallia koko valtakunnalle. \nAvoimen datan sivusto open.mikkeli.fi kutsuu kuntalaisia mukaan ideoimaan digitaalisuuden mahdollisuuksia.",
+      "type": "Description"
     }
   ],
-  "emailAddresses":[
+  "emailAddresses": [
     {
-      "description":null,
-      "value":"kirjaamo@mikkeli.fi",
-      "language":"fi"
+      "description": null,
+      "value": "kirjaamo@mikkeli.fi",
+      "language": "fi"
     }
   ],
-  "phoneNumbers":[
+  "phoneNumbers": [
     {
-      "additionalInformation":null,
-      "serviceChargeType":"Charged",
-      "chargeDescription":null,
-      "prefixNumber":null,
-      "isFinnishServiceNumber":true,
-      "number":"0151941",
-      "language":"fi"
+      "additionalInformation": null,
+      "serviceChargeType": "Charged",
+      "chargeDescription": null,
+      "prefixNumber": null,
+      "isFinnishServiceNumber": true,
+      "number": "0151941",
+      "language": "fi"
     }
   ],
-  "webPages":[
+  "webPages": [
     {
-      "orderNumber":null,
-      "value":"Mikkelin kaupungin kotisivut",
-      "url":"http://www.mikkeli.fi/",
-      "language":"fi"
+      "orderNumber": null,
+      "value": "Mikkelin kaupungin kotisivut",
+      "url": "http://www.mikkeli.fi/",
+      "language": "fi"
     }
   ],
-  "addresses":[
+  "addresses": [
     {
-      "latitude":"0",
-      "longitude":"0",
-      "coordinateState":"EmptyInputReceived",
-      "type":"Postal",
-      "postOfficeBox":[
-        {
-          "value":"PL 33",
-          "language":"sv"
-        },
-        {
-          "value":"PL 33",
-          "language":"fi"
-        }
-      ],
-      "postalCode":"50101",
-      "postOffice":[
-        {
-          "value":"MIKKELI",
-          "language":"sv"
-        },
-        {
-          "value":"MIKKELI",
-          "language":"fi"
-        }
-      ],
-      "streetAddress":[
-        {
-          "value":"Example",
-          "language":"fi"
-        }
-      ],
-      "streetNumber":null,
-      "municipality":null,
-      "country":"FI",
-      "additionalInformations":[
-
-      ]
-    },
-    {
-      "latitude":"0",
-      "longitude":"0",
-      "coordinateState":"EmptyInputReceived",
-      "type":"Visiting",
-      "postOfficeBox":[
-
-      ],
-      "postalCode":"50100",
-      "postOffice":[
-        {
-          "value":"MIKKELI",
-          "language":"sv"
-        },
-        {
-          "value":"MIKKELI",
-          "language":"fi"
-        }
-      ],
-      "streetAddress":[
-        {
-          "value":"Maaherrankatu 9-11",
-          "language":"fi"
-        }
-      ],
-      "streetNumber":null,
-      "municipality":null,
-      "country":"FI",
-      "additionalInformations":[
-        {
-          "value":"Virastotalo",
-          "language":"fi"
-        }
-      ]
-    }
-  ],
-  "publishingStatus":"Published",
-  "services":[
-    {
-      "service":{
-        "id":"2f21448e-e461-4ad0-a87a-47bcb08e578e",
-        "name":"Perusopetus"
+      "type": "Postal",
+      "subType": "PostOfficeBox",
+      "postOfficeBoxAddress": {
+        "postOfficeBox": [
+          {
+            "value": "PL 33",
+            "language": "sv"
+          },
+          {
+            "value": "PL 33",
+            "language": "fi"
+          }
+        ],
+        "postalCode": "50101",
+        "postOffice": [
+          {
+            "value": "MIKKELI",
+            "language": "sv"
+          },
+          {
+            "value": "MIKKELI",
+            "language": "fi"
+          }
+        ],
+        "municipality": null,
+        "additionalInformation": []
       },
-      "organizationId":"ae2682d3-6238-4019-b34f-b078c5f9bb50",
-      "roleType":"Responsible",
-      "provisionType":null,
-      "additionalInformation":[
-
-      ],
-      "webPages":[
-
-      ]
+      "streetAddress": null,
+      "foreignAddress": null,
+      "country": "FI"
     },
     {
-      "service":{
-        "id":"2f21448e-e461-4ad0-a87a-47bcb08e578e",
-        "name":"Perusopetus"
+      "type": "Visiting",
+      "subType": "Street",
+      "postOfficeBoxAddress": null,
+      "streetAddress": {
+        "street": [
+          {
+            "value": "Maaherrankatu 9-11",
+            "language": "fi"
+          }
+        ],
+        "streetNumber": null,
+        "postalCode": "50100",
+        "postOffice": [
+          {
+            "value": "MIKKELI",
+            "language": "sv"
+          },
+          {
+            "value": "MIKKELI",
+            "language": "fi"
+          }
+        ],
+        "municipality": null,
+        "additionalInformation": [
+          {
+            "value": "Virastotalo",
+            "language": "fi"
+          }
+        ],
+        "latitude": "0",
+        "longitude": "0",
+        "coordinateState": "EmptyInputReceived"
       },
-      "organizationId":"ae2682d3-6238-4019-b34f-b078c5f9bb50",
-      "roleType":"Producer",
-      "provisionType":"SelfProduced",
-      "additionalInformation":[
-
-      ],
-      "webPages":[
-
-      ]
-    },
-    {
-      "service":{
-        "id":"0003651e-6afe-400e-816c-c64af41521f8",
-        "name":"Esiopetusikäisen päivähoito"
-      },
-      "organizationId":"ae2682d3-6238-4019-b34f-b078c5f9bb50",
-      "roleType":"Producer",
-      "provisionType":"SelfProduced",
-      "additionalInformation":[
-
-      ],
-      "webPages":[
-
-      ]
-    },
-    {
-      "service":{
-        "id":"00047a04-9c01-48ea-99da-4ec332f6d0fa",
-        "name":"Esiopetusikäisen päivähoito"
-      },
-      "organizationId":"ae2682d3-6238-4019-b34f-b078c5f9bb50",
-      "roleType":"Responsible",
-      "provisionType":null,
-      "additionalInformation":[
-
-      ],
-      "webPages":[
-
-      ]
-    },
-    {
-      "service":{
-        "id":"00047a04-9c01-48ea-99da-4ec332f6d0fa",
-        "name":"Erityisvarhaiskasvatus"
-      },
-      "organizationId":"ae2682d3-6238-4019-b34f-b078c5f9bb50",
-      "roleType":"Producer",
-      "provisionType":"SelfProduced",
-      "additionalInformation":[
-
-      ],
-      "webPages":[
-
-      ]
+      "foreignAddress": null,
+      "country": "FI"
     }
   ],
-  "modified": "2017-07-06T09:59:41.779161"
+  "electronicInvoicings": [],
+  "publishingStatus": "Published",
+  "services": [
+    {
+      "organizationId": "ae2682d3-6238-4019-b34f-b078c5f9bb50",
+      "service": {
+        "id": "08ab5b97-d04d-4d16-a3f3-dac654b140ec",
+        "name": "Perusopetus"
+      },
+      "roleType": "Responsible",
+      "provisionType": null,
+      "additionalInformation": [],
+      "webPages": []
+    },
+    {
+      "organizationId": "ae2682d3-6238-4019-b34f-b078c5f9bb50",
+      "service": {
+        "id": "58a33fee-d7c6-4875-a1b7-75d70b00d012",
+        "name": "Esiopetusikäisen päivähoito"
+      },
+      "roleType": "Responsible",
+      "provisionType": null,
+      "additionalInformation": [],
+      "webPages": []
+    },
+    {
+      "organizationId": "ae2682d3-6238-4019-b34f-b078c5f9bb50",
+      "service": {
+        "id": "6b979930-048e-4ed4-a80c-0e11ba562dfe",
+        "name": "Erityisvarhaiskasvatus"
+      },
+      "roleType": "Responsible",
+      "provisionType": null,
+      "additionalInformation": [],
+      "webPages": []
+    },
+    {
+      "organizationId": "ae2682d3-6238-4019-b34f-b078c5f9bb50",
+      "service": {
+        "id": "2f21448e-e461-4ad0-a87a-47bcb08e578e",
+        "name": "Metatavu testaa"
+      },
+      "roleType": "Responsible",
+      "provisionType": null,
+      "additionalInformation": [],
+      "webPages": []
+    },
+    {
+      "organizationId": "ae2682d3-6238-4019-b34f-b078c5f9bb50",
+      "service": {
+        "id": "bcfaf5f1-98db-401e-8628-7d4f2b4ec260",
+        "name": "Uusi testipalvelu"
+      },
+      "roleType": "Responsible",
+      "provisionType": null,
+      "additionalInformation": [],
+      "webPages": []
+    },
+    {
+      "organizationId": "ae2682d3-6238-4019-b34f-b078c5f9bb50",
+      "service": {
+        "id": "bcfaf5f1-98db-401e-8628-7d4f2b4ec260",
+        "name": "Uusi testipalvelu"
+      },
+      "roleType": "Producer",
+      "provisionType": "SelfProduced",
+      "additionalInformation": [],
+      "webPages": []
+    },
+    {
+      "organizationId": "ae2682d3-6238-4019-b34f-b078c5f9bb50",
+      "service": {
+        "id": "2f21448e-e461-4ad0-a87a-47bcb08e578e",
+        "name": "Metatavu testaa"
+      },
+      "roleType": "Producer",
+      "provisionType": "SelfProduced",
+      "additionalInformation": [],
+      "webPages": []
+    },
+    {
+      "organizationId": "ae2682d3-6238-4019-b34f-b078c5f9bb50",
+      "service": {
+        "id": "6b979930-048e-4ed4-a80c-0e11ba562dfe",
+        "name": "Erityisvarhaiskasvatus"
+      },
+      "roleType": "Producer",
+      "provisionType": "SelfProduced",
+      "additionalInformation": [],
+      "webPages": []
+    },
+    {
+      "organizationId": "ae2682d3-6238-4019-b34f-b078c5f9bb50",
+      "service": {
+        "id": "58a33fee-d7c6-4875-a1b7-75d70b00d012",
+        "name": "Esiopetusikäisen päivähoito"
+      },
+      "roleType": "Producer",
+      "provisionType": "SelfProduced",
+      "additionalInformation": [],
+      "webPages": []
+    },
+    {
+      "organizationId": "ae2682d3-6238-4019-b34f-b078c5f9bb50",
+      "service": {
+        "id": "08ab5b97-d04d-4d16-a3f3-dac654b140ec",
+        "name": "Perusopetus"
+      },
+      "roleType": "Producer",
+      "provisionType": "SelfProduced",
+      "additionalInformation": [],
+      "webPages": []
+    }
+  ],
+  "modified": "2017-03-12T20:08:56.571652",
+  "subOrganizations": [
+    {
+      "id": "d6f490f6-1d7b-41c3-875b-9e17f184e049",
+      "name": "Mikkelin seudun ympäristöpalvelut"
+    }
+  ]
 }

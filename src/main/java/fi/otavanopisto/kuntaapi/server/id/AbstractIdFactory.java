@@ -203,6 +203,10 @@ public abstract class AbstractIdFactory {
     return createId(ContactId.class, kuntaApiOrganizationId, id);
   }
 
+  public CodeId createCodeId(String id) {
+    return createId(CodeId.class, null, id);
+  }
+
   public <T extends BaseId> T createId(Class<T> idClass, OrganizationId organizationId, UUID id) {
     if (id == null) {
       return null;

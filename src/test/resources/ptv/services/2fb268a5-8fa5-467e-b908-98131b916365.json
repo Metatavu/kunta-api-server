@@ -1,0 +1,131 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "593",
+      "name" : [ {
+        "value" : "Pieksämäki",
+        "language" : "fi"
+      }, {
+        "value" : "Pieksämäki",
+        "language" : "sv"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Sosiaalipalvelut",
+      "language" : "fi"
+    }, {
+      "value" : "Socialtjänster",
+      "language" : "sv"
+    }, {
+      "value" : "Social services",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Tässä palveluluokassa käsitellään sekä yleisiä että erityisryhmille suunnattuja sosiaalipalveluja, jotka on tarkoitettu kansalaisten arjen, asumisen ja toimeentulon tukemiseen.",
+      "language" : "fi"
+    }, {
+      "value" : "I den här servicegruppen behandlas både allmänna socialtjänster och socialtjänster för specialgrupper, vilka avsetts som stöd för medborgarnas vardag, boende och försörjning.",
+      "language" : "sv"
+    }, {
+      "value" : "This service class contains both general social services and those targeted at special groups to support citizens’ everyday life management, housing and incomes.",
+      "language" : "en"
+    } ],
+    "code" : "P4",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1023",
+    "parentId" : null,
+    "parentUri" : ""
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "AreaType",
+  "publishingStatus" : "Published",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-10-23T12:23:39.412233",
+  "id" : "2fb268a5-8fa5-467e-b908-98131b916365",
+  "serviceChannels" : [ ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : null,
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Sosiaalipäivystys",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "sosiaalipäivystys (sosiaalipalvelut)",
+      "language" : "fi"
+    } ],
+    "code" : "",
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p60126",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p18203"
+  }, {
+    "name" : [ {
+      "value" : "sosiaalipäivystys (päivystys)",
+      "language" : "fi"
+    } ],
+    "code" : "",
+    "ontologyType" : "TERO",
+    "uri" : "http://www.yso.fi/onto/koko/p76751",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p14988"
+  } ],
+  "lifeEvents" : [ ],
+  "statutoryServiceGeneralDescriptionId" : "9a765383-e715-4006-bd44-c48af415e227",
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : ""
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Testipalvelu",
+    "type" : "ShortDescription"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ServiceUserInstruction"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "f3cb50b9-e97f-4c00-a9c7-04265bdcadb6",
+      "name" : "Pieksämäen kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  } ]
+}

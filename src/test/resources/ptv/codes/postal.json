@@ -1,0 +1,129 @@
+{
+  "pageNumber": 1,
+  "pageSize": 1000,
+  "pageCount": 1,
+  "itemList": [
+    {
+      "code": "00002",
+      "names": [
+        {
+          "value": "HELSINGFORS",
+          "language": "sv"
+        },
+        {
+          "value": "HELSINKI",
+          "language": "fi"
+        }
+      ]
+    },
+    {
+      "code": "00003",
+      "names": [
+        {
+          "value": "VASTAUSLÄHETYS",
+          "language": "fi"
+        },
+        {
+          "value": "SVARSFÖRSÄNDELSE",
+          "language": "sv"
+        }
+      ]
+    },
+    {
+      "code": "00006",
+      "names": [
+        {
+          "value": "SVARSFÖRSÄNDELSE",
+          "language": "sv"
+        },
+        {
+          "value": "VASTAUSLÄHETYS",
+          "language": "fi"
+        }
+      ]
+    },
+    {
+      "code": "00009",
+      "names": []
+    },
+    {
+      "code": "00011",
+      "names": [
+        {
+          "value": "POSTI",
+          "language": "sv"
+        },
+        {
+          "value": "POSTI",
+          "language": "fi"
+        }
+      ]
+    },
+    {
+      "code": "00012",
+      "names": [
+        {
+          "value": "FUJITSU",
+          "language": "sv"
+        },
+        {
+          "value": "FUJITSU",
+          "language": "fi"
+        }
+      ]
+    },
+    {
+      "code": "00013",
+      "names": [
+        {
+          "value": "OP",
+          "language": "fi"
+        },
+        {
+          "value": "OP",
+          "language": "sv"
+        }
+      ]
+    },
+    {
+      "code": "00014",
+      "names": [
+        {
+          "value": "HELSINGFORS UNIVERSITET",
+          "language": "sv"
+        },
+        {
+          "value": "HELSINGIN YLIOPISTO",
+          "language": "fi"
+        }
+      ]
+    },
+    {
+      "code": "00015",
+      "names": [
+        {
+          "value": "OTAVAMEDIA",
+          "language": "fi"
+        },
+        {
+          "value": "OTAVAMEDIA",
+          "language": "sv"
+        }
+      ]
+    },
+    {
+      "code": "00016",
+      "names": [
+        {
+          "value": "KESKO",
+          "language": "fi"
+        },
+        {
+          "value": "KESKO",
+          "language": "sv"
+        }
+      ]
+    }
+
+  ]
+}

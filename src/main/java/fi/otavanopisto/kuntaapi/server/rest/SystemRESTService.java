@@ -59,13 +59,13 @@ public class SystemRESTService {
   
   @Inject  
   private Instance<AbstractTaskQueue<?>> taskQueues;
-
+  
   @Inject  
   private Instance<IdUpdater> idUpdaters;
   
   @Inject  
   private Instance<EntityUpdater> entityUpdaters;
-
+  
   /**
    * Returns pong
    * 

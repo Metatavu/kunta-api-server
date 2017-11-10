@@ -53,9 +53,10 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   private PtvServiceMocker ptvServiceMocker = new PtvServiceMocker();
   private PtvServiceChannelMocker ptvServiceChannelMocker = new PtvServiceChannelMocker();
   private PtvOrganizationMocker ptvOrganizationMocker = new PtvOrganizationMocker();
+  private PtvCodesMocker ptvCodesMocker = new PtvCodesMocker();
   
   @After
-  public void afterEveryTest() {
+  public void afterEveryTest() throws IOException {
     setLog4jLevel(Level.OFF);
     
     addServerLogEntry(String.format("### Test %s end ###", testName.getMethodName()));
@@ -80,11 +81,19 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     ptvServiceMocker.stop();
     ptvServiceChannelMocker.stop();
     ptvOrganizationMocker.stop();
+    ptvCodesMocker.endMock();
 
-    deleteIdentifiers();   
+    if (dropIdentifiersAfter()) {
+      deleteIdentifiers();
+    }
+    
     deleteSystemSettings();
   }
   
+  protected  boolean dropIdentifiersAfter() {
+    return true;
+  }
+
   public void startMocks() { 
     createSystemSettings();
     
@@ -106,6 +115,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     managementCategoryMocker.startMock();
     managementTagMocker.startMock();
     managementMenuMocker.startMock();
+    ptvCodesMocker.startMock();
     
     insertSystemSetting(KuntaApiConsts.SYSTEM_SETTING_TESTS_RUNNING, "true");
     
@@ -183,6 +193,10 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   
   public PtvOrganizationMocker getPtvOrganizationMocker() {
     return ptvOrganizationMocker;
+  }
+  
+  public PtvCodesMocker getPtvCodesMocker() {
+    return ptvCodesMocker;
   }
 
   /**
@@ -609,8 +623,8 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
         .getString(String.format("id[%d]", index));
   }
   
-  protected String getElectronicChannelId(int index) throws InterruptedException {
-    waitApiListCount("/electronicServiceChannels", 3);
+  protected String getElectronicChannelId(int index, int waitCount) throws InterruptedException {
+    waitApiListCount("/electronicServiceChannels", waitCount);
     
     return givenReadonly()
       .contentType(ContentType.JSON)
@@ -620,8 +634,12 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
       .getString(String.format("id[%d]", index));
   }
   
-  protected String getPhoneChannelId(int index) throws InterruptedException {
-    waitApiListCount("/phoneServiceChannels", 3);
+  protected String getElectronicChannelId(int index) throws InterruptedException {
+    return getElectronicChannelId(index, 3);
+  }
+  
+  protected String getPhoneChannelId(int index, int waitCount) throws InterruptedException {
+    waitApiListCount("/phoneServiceChannels", waitCount);
     
     return givenReadonly()
       .contentType(ContentType.JSON)
@@ -631,8 +649,12 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
       .getString(String.format("id[%d]", index));
   }
   
-  protected String getPrintableFormChannelId(int index) throws InterruptedException {
-    waitApiListCount("/printableFormServiceChannels", 3);
+  protected String getPhoneChannelId(int index) throws InterruptedException {
+    return getPhoneChannelId(index, 3);
+  }
+  
+  protected String getPrintableFormChannelId(int index, int waitCount) throws InterruptedException {
+    waitApiListCount("/printableFormServiceChannels", waitCount);
     
     return givenReadonly()
       .contentType(ContentType.JSON)
@@ -642,8 +664,12 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
       .getString(String.format("id[%d]", index));
   }
   
-  protected String getServiceLocationChannelId(int index) throws InterruptedException {
-    waitApiListCount("/serviceLocationServiceChannels", 3);
+  protected String getPrintableFormChannelId(int index) throws InterruptedException {
+    return getPrintableFormChannelId(index, 3);
+  }
+  
+  protected String getServiceLocationChannelId(int index, int waitCount) throws InterruptedException {
+    waitApiListCount("/serviceLocationServiceChannels", waitCount);
     
     return givenReadonly()
       .contentType(ContentType.JSON)
@@ -653,8 +679,12 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
       .getString(String.format("id[%d]", index));
   }
   
-  protected String getWebPageChannelId(int index) throws InterruptedException {
-    waitApiListCount("/webPageServiceChannels", 3);
+  protected String getServiceLocationChannelId(int index) throws InterruptedException {
+    return getServiceLocationChannelId(index, 3); 
+  }
+  
+  protected String getWebPageChannelId(int index, int waitCount) throws InterruptedException {
+    waitApiListCount("/webPageServiceChannels", waitCount);
     
     return givenReadonly()
       .contentType(ContentType.JSON)
@@ -662,6 +692,10 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
       .body()
       .jsonPath()
       .getString(String.format("id[%d]", index));
+  }
+  
+  protected String getWebPageChannelId(int index) throws InterruptedException {
+    return getWebPageChannelId(index, 3);
   }
   
   protected int countApiList(String path) {
@@ -689,7 +723,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
       .then()
       .assertThat()
       .statusCode(200)
-      .body("id.size()", is(maxResults - 2));
+      .body("id.size()", is(Math.max(maxResults - 2, 0)));
   
     givenReadonly()
       .contentType(ContentType.JSON)
@@ -712,7 +746,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
       .then()
       .assertThat()
       .statusCode(200)
-      .body("id.size()", is(2));
+      .body("id.size()", is(Math.min(maxResults, 2)));
   
     givenReadonly()
       .contentType(ContentType.JSON)
@@ -743,7 +777,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
       .then()
       .assertThat()
       .statusCode(200)
-      .body("id.size()", is(2));
+      .body("id.size()", is(Math.min(maxResults, 2)));
   
     givenReadonly()
       .contentType(ContentType.JSON)
@@ -751,7 +785,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
       .then()
       .assertThat()
       .statusCode(200)
-      .body("id.size()", is(2));
+      .body("id.size()", is(Math.min(maxResults - 1, 2)));
   
     givenReadonly()
       .contentType(ContentType.JSON)
@@ -759,7 +793,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
       .then()
       .assertThat()
       .statusCode(200)
-      .body("id.size()", is(1));
+      .body("id.size()", is(Math.min(maxResults - 1, 1)));
   
     givenReadonly()
       .contentType(ContentType.JSON)

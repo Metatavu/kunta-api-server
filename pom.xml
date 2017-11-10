@@ -62,7 +62,7 @@
 
     <!-- Kunta API Spec -->
 
-    <kunta-api-spec.version>0.1.95</kunta-api-spec.version>
+    <kunta-api-spec.version>0.1.104</kunta-api-spec.version>
     
     <!-- Integrations -->
     
@@ -72,7 +72,7 @@
 
     <!-- PTV -->
     
-    <ptv-rest-client.version>0.6.2</ptv-rest-client.version>
+    <ptv-rest-client.version>0.7.0</ptv-rest-client.version>
     
     <!-- Jackson -->
     
@@ -95,7 +95,7 @@
     
     <ez-vcard.version>0.10.0</ez-vcard.version>
     
-    <!--  slf4j-api -->
+    <!-- slf4j-api -->
     
     <slf4j-api.version>1.7.7</slf4j-api.version>
     
@@ -909,6 +909,12 @@
                       <command>/subsystem=infinispan/cache-container=kunta-api:add()</command>
                       <command>/subsystem=undertow/server=default-server/host=kunta-api:add(alias=["${it.host}"])</command>
                       <command>/system-property=it-test:add(value="true")</command>
+                      <command>/subsystem=logging/logger=org.jboss.as.ejb3.deployment:add(level=WARNING)</command>
+                      <command>/subsystem=logging/logger=org.jboss.as.config:remove()</command>
+                      <command>/subsystem=logging/logger=org.jboss.as.config:add(level=INFO)</command>
+                      <command>/subsystem=logging/logger=fi.otavanopisto.kuntaapi.server.tasks.AbstractTaskQueue:add(level=WARNING)</command>
+                      <command>/subsystem=logging/logger=fi.otavanopisto.kuntaapi.server.tasks.TaskQueueDistributor:add(level=WARNING)</command>
+                      <command>/subsystem=logging/logger=fi.otavanopisto.kuntaapi.server.controllers.TaskController:add(level=SEVERE)</command>
                       <command>/subsystem=logging/logger=fi.otavanopisto.kuntaapi.server.index.AbstractIndexHander:add(level=FATAL)</command>
                       <command>/subsystem=logging/logger=fi.otavanopisto.kuntaapi.server.security.SecurityFilter:add(level=INFO)</command>
                       <command>/subsystem=logging/logger=fi.otavanopisto.kuntaapi.server.index.IndexUpdater:add(level=SEVERE)</command>

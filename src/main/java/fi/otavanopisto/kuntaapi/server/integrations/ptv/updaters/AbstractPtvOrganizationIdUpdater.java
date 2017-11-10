@@ -8,8 +8,8 @@ import javax.enterprise.event.Event;
 import javax.inject.Inject;
 
 import fi.metatavu.ptv.client.ApiResponse;
-import fi.metatavu.ptv.client.model.V3VmOpenApiGuidPage;
-import fi.metatavu.ptv.client.model.VmOpenApiItem;
+import fi.metatavu.ptv.client.model.VmOpenApiOrganizationGuidPage;
+import fi.metatavu.ptv.client.model.VmOpenApiOrganizationItem;
 import fi.otavanopisto.kuntaapi.server.discover.IdUpdater;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.PtvConsts;
@@ -34,11 +34,11 @@ public abstract class AbstractPtvOrganizationIdUpdater extends IdUpdater {
   @Inject
   private Event<TaskRequest> taskRequest;
 
-  public abstract ApiResponse<V3VmOpenApiGuidPage> getPage();
+  public abstract ApiResponse<VmOpenApiOrganizationGuidPage> getPage();
 
-  public abstract Long getOrderIndex(int itemIndex, V3VmOpenApiGuidPage guidPage);
+  public abstract Long getOrderIndex(int itemIndex, VmOpenApiOrganizationGuidPage guidPage);
   
-  public abstract void afterSuccess(V3VmOpenApiGuidPage guidPage);
+  public abstract void afterSuccess(VmOpenApiOrganizationGuidPage guidPage);
 
   public abstract boolean getIsPriority();
 
@@ -53,15 +53,15 @@ public abstract class AbstractPtvOrganizationIdUpdater extends IdUpdater {
       return;
     }
     
-    ApiResponse<V3VmOpenApiGuidPage> response = getPage();
+    ApiResponse<VmOpenApiOrganizationGuidPage> response = getPage();
     if (!response.isOk()) {
-      logger.severe(String.format("Organization list reported [%d] %s", response.getStatus(), response.getMessage()));
+      logger.severe(() -> String.format("Organization list reported [%d] %s", response.getStatus(), response.getMessage()));
     } else {
-      List<VmOpenApiItem> items = response.getResponse().getItemList();
+      List<VmOpenApiOrganizationItem> items = response.getResponse().getItemList();
       
       if (items != null) {
         for (int i = 0; i < items.size(); i++) {
-          VmOpenApiItem item = items.get(i);
+          VmOpenApiOrganizationItem item = items.get(i);
           Long orderIndex = getOrderIndex(i, response.getResponse());
           OrganizationId ptvOrganizationId = ptvIdFactory.createOrganizationId(item.getId());
           taskRequest.fire(new TaskRequest(getIsPriority(), new IdTask<OrganizationId>(Operation.UPDATE, ptvOrganizationId, orderIndex)));
