@@ -33,6 +33,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.ptv.resources.PtvCodeListTas
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.resources.PtvCodeResourceContainer;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.translation.PtvTranslator;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
+import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 
 @ApplicationScoped
 @Singleton
@@ -42,6 +43,9 @@ public class PtvCodeListEntityUpdater extends EntityUpdater {
 
   @Inject
   private Logger logger;
+
+  @Inject
+  private SystemSettingController systemSettingController;
   
   @Inject
   private PtvCodeResourceContainer ptvCodeResourceContainer;
@@ -78,6 +82,15 @@ public class PtvCodeListEntityUpdater extends EntityUpdater {
   @Override
   public void timeout() {
     executeNextTask();
+  }
+  
+  @Override
+  public long getTimerInterval() {
+    if (systemSettingController.inTestMode()) {
+      return 5000l;
+    }
+    
+    return super.getTimerInterval();
   }
   
   private void executeNextTask() {
