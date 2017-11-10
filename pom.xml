@@ -62,7 +62,7 @@
 
     <!-- Kunta API Spec -->
 
-    <kunta-api-spec.version>0.1.100</kunta-api-spec.version>
+    <kunta-api-spec.version>0.1.104</kunta-api-spec.version>
     
     <!-- Integrations -->
     
@@ -95,7 +95,7 @@
     
     <ez-vcard.version>0.10.0</ez-vcard.version>
     
-    <!--  slf4j-api -->
+    <!-- slf4j-api -->
     
     <slf4j-api.version>1.7.7</slf4j-api.version>
     

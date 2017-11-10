@@ -21,6 +21,8 @@ public enum IdType {
 
   WEBPAGE_SERVICE_CHANNEL,
   
+  CODE,
+  
   EVENT,
   
   ATTACHMENT,

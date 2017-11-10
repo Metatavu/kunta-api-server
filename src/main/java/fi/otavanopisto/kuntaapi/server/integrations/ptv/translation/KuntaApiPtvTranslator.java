@@ -1,6 +1,7 @@
 package fi.otavanopisto.kuntaapi.server.integrations.ptv.translation;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
@@ -9,6 +10,7 @@ import java.util.stream.Collectors;
 import javax.enterprise.context.ApplicationScoped;
 
 import fi.metatavu.kuntaapi.server.rest.model.Address;
+import fi.metatavu.kuntaapi.server.rest.model.Area;
 import fi.metatavu.kuntaapi.server.rest.model.DailyOpeningTime;
 import fi.metatavu.kuntaapi.server.rest.model.Email;
 import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
@@ -22,6 +24,7 @@ import fi.metatavu.ptv.client.model.V4VmOpenApiServiceHour;
 import fi.metatavu.ptv.client.model.V7VmOpenApiAddressWithMovingIn;
 import fi.metatavu.ptv.client.model.VmOpenApiAddressPostOfficeBoxIn;
 import fi.metatavu.ptv.client.model.VmOpenApiAddressStreetWithCoordinatesIn;
+import fi.metatavu.ptv.client.model.VmOpenApiAreaIn;
 import fi.metatavu.ptv.client.model.VmOpenApiLanguageItem;
 import fi.metatavu.ptv.client.model.VmOpenApiLocalizedListItem;
 import fi.metatavu.ptv.client.model.VmOpenApiWebPageWithOrderNumber;
@@ -237,6 +240,36 @@ public class KuntaApiPtvTranslator extends AbstractTranslator {
     
     return result;
     
+  }
+
+  /**
+   * Translates KuntaAPI areas into PTV in Areas
+   * 
+   * @param List of Kunta API areas
+   * @return List of PTV in areas
+   */
+  public List<VmOpenApiAreaIn> translateAreas(List<Area> areas) {
+    if (areas == null || areas.isEmpty()) {
+      return Collections.emptyList();
+    }
+
+    return areas
+      .stream()
+      .map(this::translateArea)
+      .filter(Objects::nonNull)
+      .collect(Collectors.toList());
+  }
+  
+  private VmOpenApiAreaIn translateArea(Area area) {
+    if (area == null) {
+      return null;
+    }
+    
+    VmOpenApiAreaIn result = new VmOpenApiAreaIn();
+    result.setAreaCodes(Arrays.asList(area.getCode()));
+    result.setType(area.getType());
+
+    return result;
   }
 
   private VmOpenApiWebPageWithOrderNumber translateWebPage(WebPage webPage, String orderNumber) {
