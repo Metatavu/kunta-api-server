@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.ejb.Stateful;
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
@@ -52,6 +53,7 @@ import fi.otavanopisto.kuntaapi.server.tasks.AbstractTaskQueue;
  */
 @Path ("/system")
 @RequestScoped
+@Stateful
 @Produces (MediaType.APPLICATION_JSON)
 @Consumes (MediaType.APPLICATION_JSON)
 public class SystemRESTService {
