@@ -16,11 +16,18 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.math.NumberUtils;
+import org.osgeo.proj4j.CRSFactory;
+import org.osgeo.proj4j.CoordinateReferenceSystem;
+import org.osgeo.proj4j.CoordinateTransform;
+import org.osgeo.proj4j.CoordinateTransformFactory;
+import org.osgeo.proj4j.ProjCoordinate;
 
 import fi.metatavu.kuntaapi.server.rest.model.Address;
 import fi.metatavu.kuntaapi.server.rest.model.Area;
 import fi.metatavu.kuntaapi.server.rest.model.Code;
 import fi.metatavu.kuntaapi.server.rest.model.CodeExtra;
+import fi.metatavu.kuntaapi.server.rest.model.Coordinate;
+import fi.metatavu.kuntaapi.server.rest.model.Coordinates;
 import fi.metatavu.kuntaapi.server.rest.model.DailyOpeningTime;
 import fi.metatavu.kuntaapi.server.rest.model.ElectronicServiceChannel;
 import fi.metatavu.kuntaapi.server.rest.model.Email;
@@ -452,6 +459,7 @@ public class PtvTranslator extends AbstractTranslator {
     result.setCountry(null);
     result.setLatitude(null);
     result.setLongitude(null);
+    result.setCoordinates(null);
     result.setMunicipality(null);
     result.setPostalCode(null);
     result.setPostOffice(null);
@@ -475,6 +483,7 @@ public class PtvTranslator extends AbstractTranslator {
     result.setCountry(country);
     result.setLatitude(null);
     result.setLongitude(null);
+    result.setCoordinates(null);
     result.setMunicipality(translateMunicipality(ptvAddress.getMunicipality()));
     result.setPostalCode(ptvAddress.getPostalCode());
     result.setPostOffice(translateLocalizedItems(ptvAddress.getPostOffice()));
@@ -498,6 +507,7 @@ public class PtvTranslator extends AbstractTranslator {
     result.setCountry(country);
     result.setLatitude(null);
     result.setLongitude(null);
+    result.setCoordinates(null);
     result.setMunicipality(null);
     result.setPostalCode(null);
     result.setPostOffice(null);
@@ -515,13 +525,14 @@ public class PtvTranslator extends AbstractTranslator {
     if (ptvAddress == null) {
       return null;
     }
-    
+
     Address result = new Address();
     result.setAdditionalInformations(translateLocalizedItems(ptvAddress.getAdditionalInformation()));
     result.setCoordinateState(ptvAddress.getCoordinateState());
     result.setCountry(country);
     result.setLatitude(ptvAddress.getLatitude());
     result.setLongitude(ptvAddress.getLongitude());
+    result.setCoordinates(translateCoordinates(ptvAddress.getLatitude(), ptvAddress.getLongitude()));
     result.setMunicipality(translateMunicipality(ptvAddress.getMunicipality()));
     result.setPostalCode(ptvAddress.getPostalCode());
     result.setPostOffice(translateLocalizedItems(ptvAddress.getPostOffice()));
@@ -545,6 +556,7 @@ public class PtvTranslator extends AbstractTranslator {
     result.setCountry(country);
     result.setLatitude(null);
     result.setLongitude(null);
+    result.setCoordinates(null);
     result.setMunicipality(translateMunicipality(ptvAddress.getMunicipality()));
     result.setPostalCode(ptvAddress.getPostalCode());
     result.setPostOffice(translateLocalizedItems(ptvAddress.getPostOffice()));
@@ -1067,6 +1079,48 @@ public class PtvTranslator extends AbstractTranslator {
     }
     
     return result;
+  }
+  
+  private Coordinates translateCoordinates(String ptvLatitude, String ptvLongitude) {
+
+    if (!NumberUtils.isParsable(ptvLongitude) || !NumberUtils.isParsable(ptvLatitude)){
+      logger.warning("coordinates not parsable");
+      return null;
+    }
+    
+    Double srcLongitude = NumberUtils.createDouble(ptvLongitude);
+    Double srcLatitude = NumberUtils.createDouble(ptvLatitude);
+    
+    ProjCoordinate srcProjCoordinates = new ProjCoordinate(srcLongitude, srcLatitude);
+
+    if (!srcProjCoordinates.hasValidXandYOrdinates()) {
+      logger.warning("coordinates are not valid");
+      return null;
+    }
+    
+    ProjCoordinate targetProjCoordinates = new ProjCoordinate();
+    
+    CRSFactory crsFactory = new CRSFactory();
+    CoordinateReferenceSystem srcCRS = crsFactory.createFromName("EPSG:3067");
+    CoordinateReferenceSystem targetCRS = crsFactory.createFromName("EPSG:4326");
+    
+    CoordinateTransformFactory coordinateTransformFactory = new CoordinateTransformFactory();
+    CoordinateTransform coordinateTransform = coordinateTransformFactory.createTransform(srcCRS, targetCRS);
+    coordinateTransform.transform(srcProjCoordinates, targetProjCoordinates);
+
+    Coordinate epsg3067Coordinate = new Coordinate();
+    epsg3067Coordinate.setLatitude(srcLatitude.toString());
+    epsg3067Coordinate.setLongitude(srcLongitude.toString());
+    
+    Coordinate epsg4326Coordinate = new Coordinate();
+    epsg4326Coordinate.setLatitude(String.valueOf(targetProjCoordinates.y));
+    epsg4326Coordinate.setLongitude(String.valueOf(targetProjCoordinates.x));
+
+    Coordinates coordinates = new Coordinates();
+    coordinates.setEpsg3067(epsg3067Coordinate);
+    coordinates.setEpsg4326(epsg4326Coordinate);
+    
+    return coordinates;
   }
 
   @SuppressWarnings ("squid:S1698")
