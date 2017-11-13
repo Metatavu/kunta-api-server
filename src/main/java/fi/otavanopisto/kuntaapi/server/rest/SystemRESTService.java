@@ -21,12 +21,26 @@ import javax.ws.rs.core.Response.Status;
 
 import org.apache.commons.lang3.StringUtils;
 
+import fi.metatavu.kuntaapi.server.rest.model.ServiceLocationServiceChannel;
 import fi.otavanopisto.kuntaapi.server.controllers.ClientContainer;
+import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.controllers.SecurityController;
+import fi.otavanopisto.kuntaapi.server.controllers.ServiceController;
 import fi.otavanopisto.kuntaapi.server.discover.AbstractUpdater;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
 import fi.otavanopisto.kuntaapi.server.discover.IdUpdater;
 import fi.otavanopisto.kuntaapi.server.discover.UpdaterHealth;
+import fi.otavanopisto.kuntaapi.server.id.IdController;
+import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.id.ServiceLocationServiceChannelId;
+import fi.otavanopisto.kuntaapi.server.index.SearchResult;
+import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
+import fi.otavanopisto.kuntaapi.server.integrations.ServiceLocationServiceChannelSortBy;
+import fi.otavanopisto.kuntaapi.server.integrations.SortDir;
+import fi.otavanopisto.kuntaapi.server.integrations.ptv.PtvConsts;
+import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.ServiceChannelTasksQueue;
+import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.ServiceChannelUpdateTask;
+import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 import fi.otavanopisto.kuntaapi.server.tasks.AbstractTaskQueue;
 
@@ -44,18 +58,33 @@ public class SystemRESTService {
   
   @PersistenceUnit
   private EntityManagerFactory entityManagerFactory;
-  
+
   @Inject  
   private Logger logger;
+
+  @Inject  
+  private KuntaApiIdFactory kuntaApiIdFactory;
+
+  @Inject  
+  private IdController idController;
+
+  @Inject  
+  private IdentifierController identifierController;
   
   @Inject  
   private SystemSettingController systemSettingController;
+  
+  @Inject
+  private ServiceController serviceController;
 
   @Inject
   private SecurityController securityController;
 
   @Inject
   private ClientContainer clientContainer;
+
+  @Inject
+  private ServiceChannelTasksQueue serviceChannelTasksQueue;
   
   @Inject  
   private Instance<AbstractTaskQueue<?>> taskQueues;
@@ -89,6 +118,45 @@ public class SystemRESTService {
   public Response flushCaches() {
     if (inTestModeOrUnrestrictedClient()) {
       entityManagerFactory.getCache().evictAll();
+      return Response.ok("ok").build();
+    }
+    
+    return Response.status(Status.FORBIDDEN).build();
+  }
+  
+  @GET
+  @Path ("/utils/ptv/organizationServiceLocationChannelTasks")
+  @Produces (MediaType.TEXT_PLAIN)
+  public Response utilsPtvOrganizationServiceLocationChannelTasks(@QueryParam ("organizationId") String kuntaApiOrganizationIdParam, @QueryParam ("first") Long first, @QueryParam ("max") Long max) {
+    if (inTestModeOrUnrestrictedClient()) {
+      if (kuntaApiOrganizationIdParam == null || first == null || max == null) {
+        return Response.status(Status.BAD_REQUEST).build();
+      }
+      
+      OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(kuntaApiOrganizationIdParam);
+      SearchResult<ServiceLocationServiceChannel> locationServiceChannels = serviceController.searchServiceLocationServiceChannels(organizationId, null, ServiceLocationServiceChannelSortBy.NATURAL, SortDir.DESC, first, max);
+      if (locationServiceChannels != null) {
+        for (ServiceLocationServiceChannel serviceLocationServiceChannel : locationServiceChannels.getResult()) {
+          ServiceLocationServiceChannelId locationServiceChannelId = kuntaApiIdFactory.createServiceLocationServiceChannelId(serviceLocationServiceChannel.getId());
+          if (locationServiceChannelId != null) {
+            ServiceLocationServiceChannelId ptvServiceChannelId = idController.translateServiceLocationServiceChannelId(locationServiceChannelId, PtvConsts.IDENTIFIER_NAME);
+            if (ptvServiceChannelId != null) {
+              Identifier identifier = identifierController.findIdentifierById(ptvServiceChannelId);
+              if (identifier != null) {
+                Long orderIndex = identifier.getOrderIndex();
+                serviceChannelTasksQueue.enqueueTask(true, new ServiceChannelUpdateTask(ptvServiceChannelId.getId(), orderIndex));
+              } else {
+                logger.severe("Could not find identifier");
+              }
+            } else {
+              logger.severe("Could not find ptv id");
+            }
+          } else {
+            logger.severe("Could not find kunta api id");
+          }
+        }
+      }
+      
       return Response.ok("ok").build();
     }
     
