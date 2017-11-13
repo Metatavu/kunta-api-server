@@ -153,6 +153,7 @@ public class VCardTranslator {
     result.setCountry(getString(vCardAddress.getCountry(), VCardConsts.DEFAULT_COUNTRY));
     result.setLatitude(latitude);
     result.setLongitude(longitude);
+    result.setCoordinates(null);
     result.setMunicipality(null);
     result.setPostalCode(getString(vCardAddress.getPostalCode()));
     result.setPostOffice(getLocalizedString(vCardAddress.getLocality()));
