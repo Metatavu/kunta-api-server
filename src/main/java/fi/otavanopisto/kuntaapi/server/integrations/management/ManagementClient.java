@@ -15,7 +15,7 @@ import org.apache.http.client.utils.URIBuilder;
 
 import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpCache;
 import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpClient;
-import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpClient.Response;
+import fi.otavanopisto.kuntaapi.server.integrations.AbstractHttpClient.Response;
 import fi.metatavu.management.client.ApiResponse;
 import fi.metatavu.management.client.ResultType;
 

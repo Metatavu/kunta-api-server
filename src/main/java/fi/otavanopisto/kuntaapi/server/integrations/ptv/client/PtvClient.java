@@ -23,7 +23,7 @@ import org.apache.http.client.utils.URIBuilder;
 import fi.metatavu.ptv.client.ApiResponse;
 import fi.metatavu.ptv.client.ResultType;
 import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpClient;
-import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpClient.Response;
+import fi.otavanopisto.kuntaapi.server.integrations.AbstractHttpClient.Response;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.PtvConsts;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 
@@ -44,7 +44,7 @@ public class PtvClient extends fi.metatavu.ptv.client.ApiClient {
   private SystemSettingController systemSettingController;
 
   @Inject
-  private GenericHttpClient httpClient;
+  private PtvHttpClient httpClient;
   
   @Override
   public <T> ApiResponse<T> doGETRequest(String accessToken, String path, ResultType<T> resultType, Map<String, Object> queryParams, Map<String, Object> postParams) {

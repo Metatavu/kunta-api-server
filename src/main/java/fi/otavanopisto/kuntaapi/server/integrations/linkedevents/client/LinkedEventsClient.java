@@ -23,7 +23,7 @@ import org.apache.http.client.utils.URIBuilder;
 import fi.metatavu.linkedevents.client.ApiResponse;
 import fi.metatavu.linkedevents.client.ResultType;
 import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpClient;
-import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpClient.Response;
+import fi.otavanopisto.kuntaapi.server.integrations.AbstractHttpClient.Response;
 
 /**
  * API Client for Linked Events

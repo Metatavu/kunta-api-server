@@ -11,7 +11,7 @@ import org.apache.http.client.utils.URIBuilder;
 
 import fi.otavanopisto.kuntaapi.server.integrations.BinaryHttpClient.BinaryResponse;
 import fi.otavanopisto.kuntaapi.server.integrations.BinaryHttpClient.DownloadMeta;
-import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpClient.Response;
+import fi.otavanopisto.kuntaapi.server.integrations.AbstractHttpClient.Response;
 
 public abstract class AbstractImageLoader {
   
