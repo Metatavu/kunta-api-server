@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
@@ -36,6 +37,7 @@ import fi.otavanopisto.kuntaapi.server.id.PrintableFormServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceLocationServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.WebPageServiceChannelId;
+import fi.otavanopisto.kuntaapi.server.index.IndexRemoveDeprecatedService;
 import fi.otavanopisto.kuntaapi.server.index.IndexRemoveRequest;
 import fi.otavanopisto.kuntaapi.server.index.IndexRemoveService;
 import fi.otavanopisto.kuntaapi.server.index.IndexRequest;
@@ -293,22 +295,54 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
       organizationIds.add(serviceOrganization.getOrganizationId());
     }
     
-    for (String language : LocalizationUtils.getListsLanguages(names, descriptions)) {
-      IndexableService indexableService = new IndexableService();
-      indexableService.setShortDescription(LocalizationUtils.getBestMatchingValue("ShortDescription", descriptions, language, PtvConsts.DEFAULT_LANGUAGE));
-      indexableService.setDescription(LocalizationUtils.getBestMatchingValue("Description", descriptions, language, PtvConsts.DEFAULT_LANGUAGE));
-      indexableService.setUserInstruction(LocalizationUtils.getBestMatchingValue("ServiceUserInstruction", descriptions, language, PtvConsts.DEFAULT_LANGUAGE));
-      indexableService.setKeywords(LocalizationUtils.getLocaleValues(service.getKeywords(), PtvConsts.DEFAULT_LANGUAGE));
-      indexableService.setLanguage(language);
-      indexableService.setName(LocalizationUtils.getBestMatchingValue("Name", names, language, PtvConsts.DEFAULT_LANGUAGE));
-      indexableService.setAlternativeName(LocalizationUtils.getBestMatchingValue("AlternativeName", names, language, PtvConsts.DEFAULT_LANGUAGE));
-      indexableService.setServiceId(serviceId);
-      indexableService.setOrganizationIds(organizationIds);
-      indexableService.setOrderIndex(orderIndex);
-      
-      indexRequest.fire(new IndexRequest(indexableService));
+    // Remove deprecated version of this service before indexing new. 
+    // This can be removed after few weeks of operation
+    for (String language : PtvConsts.PTV_SUPPORTED_LANGUAGES) {
+      IndexRemoveDeprecatedService removeDeprecatedService = new IndexRemoveDeprecatedService();
+      removeDeprecatedService.setLanguage(language);
+      removeDeprecatedService.setServiceId(serviceId);
+      indexRemoveRequest.fire(new IndexRemoveRequest(removeDeprecatedService));
     }
+
+    Map<String, String> shortDescriptionMap = LocalizationUtils.getLocalizedValueMap("ShortDescription", descriptions);
+    Map<String, String> descriptionMap = LocalizationUtils.getLocalizedValueMap("Description", descriptions);
+    Map<String, String> userInstructionMap = LocalizationUtils.getLocalizedValueMap("ServiceUserInstruction", descriptions);
+    Map<String, String> nameMap = LocalizationUtils.getLocalizedValueMap("Name", names);
+    Map<String, String> alternativeNameMap = LocalizationUtils.getLocalizedValueMap("AlternativeName", names);
     
+    IndexableService indexableService = new IndexableService();
+    indexableService.setShortDescriptionEn(shortDescriptionMap.get("en"));
+    indexableService.setShortDescriptionFi(shortDescriptionMap.get("fi"));
+    indexableService.setShortDescriptionSv(shortDescriptionMap.get("sv"));
+    
+    indexableService.setDescriptionEn(descriptionMap.get("en"));
+    indexableService.setDescriptionFi(descriptionMap.get("fi"));
+    indexableService.setDescriptionSv(descriptionMap.get("sv"));
+
+    indexableService.setUserInstructionEn(userInstructionMap.get("en"));
+    indexableService.setUserInstructionFi(userInstructionMap.get("fi"));
+    indexableService.setUserInstructionSv(userInstructionMap.get("sv"));
+
+    indexableService.setNameEn(nameMap.get("en"));
+    indexableService.setNameFi(nameMap.get("fi"));
+    indexableService.setNameSv(nameMap.get("sv"));
+
+    indexableService.setAlternativeNameEn(alternativeNameMap.get("en"));
+    indexableService.setAlternativeNameFi(alternativeNameMap.get("fi"));
+    indexableService.setAlternativeNameSv(alternativeNameMap.get("sv"));
+
+    indexableService.setKeywords(LocalizationUtils.getLocaleValues(service.getKeywords(), PtvConsts.DEFAULT_LANGUAGE));
+    indexableService.setServiceId(serviceId);
+    indexableService.setOrganizationIds(organizationIds);
+    indexableService.setOrderIndex(orderIndex);
+    
+    indexableService.setElectronicServiceChannelIds(service.getElectronicServiceChannelIds());
+    indexableService.setPhoneServiceChannelIds(service.getPhoneServiceChannelIds());
+    indexableService.setServiceLocationServiceChannelIds(service.getServiceLocationServiceChannelIds());
+    indexableService.setPrintableFormServiceChannelIds(service.getPrintableFormServiceChannelIds());
+    indexableService.setWebPageServiceChannelIds(service.getWebPageServiceChannelIds());
+    
+    indexRequest.fire(new IndexRequest(indexableService));  
   }
   
   private void deletePtvService(ServiceId ptvServiceId) {
@@ -321,7 +355,6 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
       
       IndexRemoveService indexRemove = new IndexRemoveService();
       indexRemove.setServiceId(kuntaApiServiceId.getId());
-      indexRemove.setLanguage(ManagementConsts.DEFAULT_LOCALE);
       indexRemoveRequest.fire(new IndexRemoveRequest(indexRemove));
     }
   }

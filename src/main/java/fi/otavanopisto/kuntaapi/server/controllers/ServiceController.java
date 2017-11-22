@@ -62,19 +62,30 @@ public class ServiceController {
     
     return null;
   }
-  
-  public List<Service> listServices(OrganizationId organizationId, Long firstResult, Long maxResults) {
-    List<Service> result = new ArrayList<>();
-    
-    for (ServiceProvider serviceProvider : getServiceProviders()) {
-      result.addAll(serviceProvider.listServices(organizationId));
-    }
-    
-    return ListUtils.limit(entityController.sortEntitiesInNaturalOrder(result), firstResult, maxResults);
-  }
+//  
+//  public List<Service> listServices(OrganizationId organizationId, Long firstResult, Long maxResults) {
+//    List<Service> result = new ArrayList<>();
+//    
+//    for (ServiceProvider serviceProvider : getServiceProviders()) {
+//      result.addAll(serviceProvider.listServices(organizationId));
+//    }
+//    
+//    return ListUtils.limit(entityController.sortEntitiesInNaturalOrder(result), firstResult, maxResults);
+//  }
 
-  public SearchResult<Service> searchServices(OrganizationId organizationId, String search, ServiceSortBy sortBy, SortDir sortDir, Long firstResult, Long maxResults) {
-    SearchResult<ServiceId> searchResult = serviceSearcher.searchServices(organizationId, search, sortBy, sortDir, firstResult, maxResults);
+  public SearchResult<Service> searchServices(OrganizationId organizationId, ElectronicServiceChannelId electronicServiceChannelId, PhoneServiceChannelId phoneServiceChannelId, PrintableFormServiceChannelId printableFormServiceChannelId, ServiceLocationServiceChannelId serviceLocationServiceChannelId, WebPageServiceChannelId webPageServiceChannelId, String search, ServiceSortBy sortBy, SortDir sortDir, Long firstResult, Long maxResults) {
+    SearchResult<ServiceId> searchResult = serviceSearcher.searchServices(organizationId, 
+        electronicServiceChannelId,
+        phoneServiceChannelId,
+        printableFormServiceChannelId,
+        serviceLocationServiceChannelId,
+        webPageServiceChannelId,
+        search, 
+        sortBy, 
+        sortDir, 
+        firstResult, 
+        maxResults);
+    
     if (searchResult != null) {
       List<Service> result = new ArrayList<>(searchResult.getResult().size());
       
@@ -86,9 +97,12 @@ public class ServiceController {
       }
       
       return new SearchResult<>(result, searchResult.getTotalHits());
+    } else {
+//      List<Service> services = listServices(organizationId, firstResult, maxResults);
+//      return new SearchResult<>(services, services.size());
     }
     
-    return SearchResult.emptyResult();
+    return new SearchResult<>(Collections.emptyList(), 0);
   }
   
   public ElectronicServiceChannel findElectronicServiceChannel(ElectronicServiceChannelId electronicChannelId) {

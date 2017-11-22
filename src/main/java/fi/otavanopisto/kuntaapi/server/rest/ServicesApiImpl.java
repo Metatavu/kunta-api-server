@@ -18,9 +18,16 @@ import fi.metatavu.kuntaapi.server.rest.ServicesApi;
 import fi.metatavu.kuntaapi.server.rest.model.Service;
 import fi.otavanopisto.kuntaapi.server.controllers.HttpCacheController;
 import fi.otavanopisto.kuntaapi.server.controllers.ServiceController;
+import fi.otavanopisto.kuntaapi.server.id.ElectronicServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.id.PhoneServiceChannelId;
+import fi.otavanopisto.kuntaapi.server.id.PrintableFormServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceId;
+import fi.otavanopisto.kuntaapi.server.id.ServiceLocationServiceChannelId;
+import fi.otavanopisto.kuntaapi.server.id.WebPageServiceChannelId;
+import fi.otavanopisto.kuntaapi.server.index.SearchResult;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
+import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceSortBy;
 import fi.otavanopisto.kuntaapi.server.integrations.SortDir;
 
@@ -47,9 +54,12 @@ public class ServicesApiImpl extends ServicesApi {
 
   @Inject
   private HttpCacheController httpCacheController;
-  
+
   @Inject
   private RestResponseBuilder restResponseBuilder;
+
+  @Inject
+  private KuntaApiIdFactory kuntaApiIdFactory;
   
   @Override
   public Response createService(Service body, @Context Request request) {
@@ -74,8 +84,10 @@ public class ServicesApiImpl extends ServicesApi {
   }
   
   @Override
-  public Response listServices(String organizationIdParam, String search, String sortByParam, String sortDirParam, Long firstResult,
-      Long maxResults, Request request) {
+  public Response listServices(String organizationIdParam, String search, String sortByParam, String sortDirParam, 
+      Long firstResult, Long maxResults, String electronicServiceChannelIdParam, String phoneServiceChannelIdParam,
+      String printableFormServiceChannelIdParam, String serviceLocationServiceChannelIdParam, String webPageServiceChannelIdParam,
+      Request request) {
    
     ServiceSortBy sortBy = resolveServiceSortBy(sortByParam);
     if (sortBy == null) {
@@ -92,12 +104,32 @@ public class ServicesApiImpl extends ServicesApi {
       return validationResponse;
     }
     
+    ElectronicServiceChannelId electronicServiceChannelId = kuntaApiIdFactory.createElectronicServiceChannelId(electronicServiceChannelIdParam);
+    PhoneServiceChannelId phoneServiceChannelId = kuntaApiIdFactory.createPhoneServiceChannelId(phoneServiceChannelIdParam);
+    PrintableFormServiceChannelId printableFormServiceChannelId = kuntaApiIdFactory.createPrintableFormServiceChannelId(printableFormServiceChannelIdParam);
+    ServiceLocationServiceChannelId serviceLocationServiceChannelId = kuntaApiIdFactory.createServiceLocationServiceChannelId(serviceLocationServiceChannelIdParam);
+    WebPageServiceChannelId webPageServiceChannelId = kuntaApiIdFactory.createWebPageServiceChannelId(webPageServiceChannelIdParam);
+    
     OrganizationId organizationId = toOrganizationId(organizationIdParam);
+    SearchResult<Service> result = serviceController.searchServices(organizationId, 
+        electronicServiceChannelId,
+        phoneServiceChannelId,
+        printableFormServiceChannelId,
+        serviceLocationServiceChannelId,
+        webPageServiceChannelId,
+        search, 
+        sortBy, 
+        sortDir, 
+        firstResult, 
+        maxResults);
+    
+    return restResponseBuilder.buildResponse(result, request);
+/**
     if (search == null) {
       return restResponseBuilder.buildResponse(serviceController.listServices(organizationId, firstResult, maxResults), null, request);
     } else {
-      return restResponseBuilder.buildResponse(serviceController.searchServices(organizationId, search, sortBy, sortDir, firstResult, maxResults), request);
     }
+**/    
   }
   
   @Override
