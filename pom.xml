@@ -920,6 +920,7 @@
                     <batch>true</batch>
                     <commands>
                       <command>/subsystem=infinispan/cache-container=kunta-api:add()</command>
+                      <command>/subsystem=infinispan/cache-container=hibernate/local-cache=entity/component=transaction:write-attribute(name=locking,value=OPTIMISTIC)</command>
                       <command>/subsystem=undertow/server=default-server/host=kunta-api:add(alias=["${it.host}"])</command>
                       <command>/system-property=it-test:add(value="true")</command>
                       <command>/subsystem=logging/logger=org.jboss.as.ejb3.deployment:add(level=WARNING)</command>

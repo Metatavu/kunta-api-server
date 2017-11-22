@@ -118,6 +118,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
 
   public void startMocks() {
     if (dropIdentifiersAfter()) {
+      waitForElasticIndex();
       deleteIndices();
     }
     
@@ -300,8 +301,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   protected void flushCache() {
     givenUnrestricted()
       .get("/system/jpa/cache/flush")
-      .then()
-      .statusCode(200);
+      .then();
   }
   
   protected void clearTasks() {
