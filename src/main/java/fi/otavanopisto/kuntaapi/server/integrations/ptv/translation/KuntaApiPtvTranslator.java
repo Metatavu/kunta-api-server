@@ -14,6 +14,7 @@ import fi.metatavu.kuntaapi.server.rest.model.Area;
 import fi.metatavu.kuntaapi.server.rest.model.DailyOpeningTime;
 import fi.metatavu.kuntaapi.server.rest.model.Email;
 import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
+import fi.metatavu.kuntaapi.server.rest.model.Municipality;
 import fi.metatavu.kuntaapi.server.rest.model.Phone;
 import fi.metatavu.kuntaapi.server.rest.model.ServiceHour;
 import fi.metatavu.kuntaapi.server.rest.model.WebPage;
@@ -28,6 +29,7 @@ import fi.metatavu.ptv.client.model.VmOpenApiAreaIn;
 import fi.metatavu.ptv.client.model.VmOpenApiLanguageItem;
 import fi.metatavu.ptv.client.model.VmOpenApiLocalizedListItem;
 import fi.metatavu.ptv.client.model.VmOpenApiWebPageWithOrderNumber;
+import fi.otavanopisto.kuntaapi.server.integrations.ptv.CodeType;
 
 /**
  * Translator for translating resources from Kunta API format into PTV formats
@@ -266,9 +268,24 @@ public class KuntaApiPtvTranslator extends AbstractTranslator {
     }
     
     VmOpenApiAreaIn result = new VmOpenApiAreaIn();
-    result.setAreaCodes(Arrays.asList(area.getCode()));
     result.setType(area.getType());
 
+    if (CodeType.MUNICIPALITY.getType().equals(area.getType())) {
+      List<Municipality> municipalities = area.getMunicipalities();
+      if (municipalities == null || municipalities.isEmpty()) {
+        return null;
+      }
+      
+      List<String> areaCodes = new ArrayList<>(municipalities.size());
+      for (Municipality municipality : municipalities) {
+        areaCodes.add(municipality.getCode());
+      }
+      
+      result.setAreaCodes(areaCodes);
+    } else {
+      result.setAreaCodes(Arrays.asList(area.getCode()));
+    }
+    
     return result;
   }
 
