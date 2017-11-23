@@ -1,5 +1,6 @@
 package fi.otavanopisto.kuntaapi.server.index;
 
+import java.util.Collections;
 import java.util.List;
 
 public class IndexableService implements Indexable {
@@ -58,7 +59,11 @@ public class IndexableService implements Indexable {
   @Field (analyzer = "english")
   private String descriptionEn;
 
-  private List<String> keywords;
+  private List<String> keywordsFi;
+
+  private List<String> keywordsSv;
+
+  private List<String> keywordsEn;
 
   @Field(index = "not_analyzed", store = true)
   private List<String> electronicServiceChannelIds;
@@ -135,12 +140,33 @@ public class IndexableService implements Indexable {
     return null;
   }
 
+  @Deprecated
   public List<String> getKeywords() {
-    return keywords;
+    return Collections.emptyList();
   }
-
-  public void setKeywords(List<String> keywords) {
-    this.keywords = keywords;
+  
+  public void setKeywordsEn(List<String> keywordsEn) {
+    this.keywordsEn = keywordsEn;
+  }
+  
+  public List<String> getKeywordsEn() {
+    return keywordsEn;
+  }
+  
+  public void setKeywordsFi(List<String> keywordsFi) {
+    this.keywordsFi = keywordsFi;
+  }
+  
+  public List<String> getKeywordsFi() {
+    return keywordsFi;
+  }
+  
+  public void setKeywordsSv(List<String> keywordsSv) {
+    this.keywordsSv = keywordsSv;
+  }
+  
+  public List<String> getKeywordsSv() {
+    return keywordsSv;
   }
 
   public List<String> getElectronicServiceChannelIds() {

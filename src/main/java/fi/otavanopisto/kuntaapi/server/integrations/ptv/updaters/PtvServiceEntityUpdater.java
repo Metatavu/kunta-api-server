@@ -331,7 +331,10 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
     indexableService.setAlternativeNameFi(alternativeNameMap.get("fi"));
     indexableService.setAlternativeNameSv(alternativeNameMap.get("sv"));
 
-    indexableService.setKeywords(LocalizationUtils.getLocaleValues(service.getKeywords(), PtvConsts.DEFAULT_LANGUAGE));
+    indexableService.setKeywordsEn(LocalizationUtils.getLocaleValues(service.getKeywords(), "en"));
+    indexableService.setKeywordsFi(LocalizationUtils.getLocaleValues(service.getKeywords(), "fi"));
+    indexableService.setKeywordsSv(LocalizationUtils.getLocaleValues(service.getKeywords(), "sv"));
+    
     indexableService.setServiceId(serviceId);
     indexableService.setOrganizationIds(organizationIds);
     indexableService.setOrderIndex(orderIndex);
