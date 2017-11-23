@@ -94,6 +94,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     deleteSystemSettings();
   }
   
+  @SuppressWarnings ("squid:S00108")
   private void deleteIndices() {
     try {
       String types = "service";

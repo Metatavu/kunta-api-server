@@ -50,6 +50,7 @@ public class ServiceSearcher {
   @Inject
   private IndexReader indexReader;
 
+  @SuppressWarnings ("squid:S00107")
   public SearchResult<ServiceId> searchServices(OrganizationId organizationId, ElectronicServiceChannelId electronicServiceChannelId, PhoneServiceChannelId phoneServiceChannelId, PrintableFormServiceChannelId printableFormServiceChannelId, ServiceLocationServiceChannelId serviceLocationServiceChannelId, WebPageServiceChannelId webPageServiceChannelId, String text, ServiceSortBy sortOrder, SortDir sortDir, Long firstResult, Long maxResults) {
     BoolQueryBuilder query = boolQuery();
     
@@ -98,7 +99,7 @@ public class ServiceSearcher {
     
     SearchRequestBuilder requestBuilder = indexReader
       .requestBuilder("service")
-      .storedFields("serviceId")
+      .storedFields(SERVICE_ID_FIELD)
       .setQuery(queryBuilder);
     
     requestBuilder.setFrom(firstResult != null ? firstResult.intValue() : 0);

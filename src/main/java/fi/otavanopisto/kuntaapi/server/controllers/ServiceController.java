@@ -62,17 +62,7 @@ public class ServiceController {
     
     return null;
   }
-//  
-//  public List<Service> listServices(OrganizationId organizationId, Long firstResult, Long maxResults) {
-//    List<Service> result = new ArrayList<>();
-//    
-//    for (ServiceProvider serviceProvider : getServiceProviders()) {
-//      result.addAll(serviceProvider.listServices(organizationId));
-//    }
-//    
-//    return ListUtils.limit(entityController.sortEntitiesInNaturalOrder(result), firstResult, maxResults);
-//  }
-
+  
   public SearchResult<Service> searchServices(OrganizationId organizationId, ElectronicServiceChannelId electronicServiceChannelId, PhoneServiceChannelId phoneServiceChannelId, PrintableFormServiceChannelId printableFormServiceChannelId, ServiceLocationServiceChannelId serviceLocationServiceChannelId, WebPageServiceChannelId webPageServiceChannelId, String search, ServiceSortBy sortBy, SortDir sortDir, Long firstResult, Long maxResults) {
     SearchResult<ServiceId> searchResult = serviceSearcher.searchServices(organizationId, 
         electronicServiceChannelId,
@@ -97,9 +87,6 @@ public class ServiceController {
       }
       
       return new SearchResult<>(result, searchResult.getTotalHits());
-    } else {
-//      List<Service> services = listServices(organizationId, firstResult, maxResults);
-//      return new SearchResult<>(services, services.size());
     }
     
     return new SearchResult<>(Collections.emptyList(), 0);

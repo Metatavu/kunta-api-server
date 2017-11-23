@@ -48,9 +48,6 @@ public class SecurityFilter implements ContainerRequestFilter {
       return;
     }
     
-    if (true)
-    return;
-    
     String authorizationHeader = requestContext.getHeaderString(AUTHORIZATION_HEADER);
     if (StringUtils.isBlank(authorizationHeader)) {
       handleUnuauthorizedRequest(requestContext, "Missing authorization header");
