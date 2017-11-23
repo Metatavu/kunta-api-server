@@ -6,6 +6,10 @@ import static org.junit.Assert.fail;
 
 import java.io.IOException;
 
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.LoggerContext;
@@ -90,11 +94,35 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     deleteSystemSettings();
   }
   
+  @SuppressWarnings ("squid:S00108")
+  private void deleteIndices() {
+    try {
+      String types = "service";
+      String body = "{\"query\": {\"match_all\": {} } }";
+      HttpPost httpPost = new HttpPost(String.format("http://localhost:9200/kunta-api/%s/_delete_by_query?conflicts=proceed", types));
+      httpPost.setEntity(new StringEntity(body));
+      
+      CloseableHttpClient httpClient = HttpClients.createDefault();
+      try {
+        httpClient.execute(httpPost);
+      } finally {
+        httpClient.close();
+      }
+    } catch (IOException e) {
+      
+    }
+  }
+
   protected  boolean dropIdentifiersAfter() {
     return true;
   }
 
-  public void startMocks() { 
+  public void startMocks() {
+    if (dropIdentifiersAfter()) {
+      waitForElasticIndex();
+      deleteIndices();
+    }
+    
     createSystemSettings();
     
     ptvOrganizationMocker.start();
@@ -274,8 +302,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   protected void flushCache() {
     givenUnrestricted()
       .get("/system/jpa/cache/flush")
-      .then()
-      .statusCode(200);
+      .then();
   }
   
   protected void clearTasks() {
@@ -569,7 +596,9 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
         .getString(String.format("id[%d]", index));
   }
   
-  protected String getServiceId(int index) {
+  protected String getServiceId(int index, int waitCount) throws InterruptedException {
+    waitApiListCount("/services", waitCount);
+    
     return givenReadonly()
         .contentType(ContentType.JSON)
         .get("/services")

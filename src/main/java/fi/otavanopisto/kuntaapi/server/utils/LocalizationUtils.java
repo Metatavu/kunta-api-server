@@ -80,7 +80,7 @@ public class LocalizationUtils {
       return null;
     }
     
-    Map<String, String> map = mapLocalizedValues(type, items);
+    Map<String, String> map = getLocalizedValueMap(type, items);
     if (map.isEmpty()) {
       return null;
     }
@@ -96,7 +96,14 @@ public class LocalizationUtils {
     return map.values().iterator().next();
   }
   
-  private static Map<String, String> mapLocalizedValues(String type, List<LocalizedValue> items) {
+  /**
+   * Returns typed localized items as map with language as key and value as value
+   * 
+   * @param type type
+   * @param items localized items
+   * @return localized items as map with language as key and value as value
+   */
+  public static Map<String, String> getLocalizedValueMap(String type, List<LocalizedValue> items) {
     Map<String, String> result = new HashMap<>();
     
     for (LocalizedValue item : items) {

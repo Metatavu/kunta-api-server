@@ -25,6 +25,7 @@ import fi.otavanopisto.kuntaapi.server.controllers.CodeController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.CodeId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
+import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
 import fi.otavanopisto.kuntaapi.server.integrations.CodeSortBy;
 import fi.otavanopisto.kuntaapi.server.integrations.CodeSortBy;
 import fi.otavanopisto.kuntaapi.server.integrations.SortDir;
@@ -41,6 +42,10 @@ public class CodesApiImpl extends CodesApi {
 
   private static final String INVALID_VALUE_FOR_SORT_DIR = "Invalid value for sortDir";
   private static final String INVALID_VALUE_FOR_SORT_BY = "Invalid value for sortBy";
+  private static final String NOT_FOUND = "Not Found";
+
+  @Inject
+  private KuntaApiIdFactory kuntaApiIdFactory;
   
   @Inject
   private CodeController codeController;
@@ -53,6 +58,26 @@ public class CodesApiImpl extends CodesApi {
   
   @Inject
   private RestResponseBuilder restResponseBuilder;
+
+  @Override
+  public Response findCode(String codeIdParam, Request request) {
+    CodeId codeId = kuntaApiIdFactory.createCodeId(codeIdParam);
+    if (codeId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    Response notModified = httpCacheController.getNotModified(request, codeId);
+    if (notModified != null) {
+      return notModified;
+    }
+    
+    Code code = codeController.findCode(codeId);
+    if (code != null) {
+      return httpCacheController.sendModified(code, code.getId());
+    }
+      
+    return createNotFound(NOT_FOUND);
+  }
   
   @Override
   public Response listCodes(List<String> types, String search, String sortByParam, String sortDirParam, Long firstResult, Long maxResultsParam, Request request) {
