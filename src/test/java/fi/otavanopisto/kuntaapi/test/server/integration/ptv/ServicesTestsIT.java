@@ -437,10 +437,13 @@ public class ServicesTestsIT extends AbstractIntegrationTest {
     getPtvServiceMocker().unmock(TestPtvConsts.SERVICES[0]);
     
     waitApiListCount("/services", TestPtvConsts.SERVICES.length - 1);
+    waitForElasticIndex();
+    
     assertNull(getServiceId(TestPtvConsts.SERVICES.length - 1, TestPtvConsts.SERVICES.length - 1));
     
     getPtvServiceMocker().mock(TestPtvConsts.SERVICES[0]);
     waitApiListCount("/services", TestPtvConsts.SERVICES.length);
+    waitForElasticIndex();
     
     assertEquals(serviceId, getServiceId(TestPtvConsts.SERVICES.length - 1, TestPtvConsts.SERVICES.length));
   }
