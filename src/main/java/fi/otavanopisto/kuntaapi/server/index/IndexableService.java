@@ -59,10 +59,13 @@ public class IndexableService implements Indexable {
   @Field (analyzer = "english")
   private String descriptionEn;
 
+  @Field (analyzer = "finnish")
   private List<String> keywordsFi;
 
+  @Field (analyzer = "swedish")
   private List<String> keywordsSv;
 
+  @Field (analyzer = "english")
   private List<String> keywordsEn;
 
   @Field(index = "not_analyzed", store = true)
