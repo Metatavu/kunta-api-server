@@ -77,7 +77,7 @@ public class IndexableService implements Indexable {
 
   @Override
   public String getId() {
-    return serviceId;
+    return getServiceId();
   }
 
   @Override
