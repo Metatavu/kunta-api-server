@@ -22,6 +22,7 @@ import javax.ws.rs.core.Response.Status;
 
 import org.apache.commons.lang3.StringUtils;
 
+import fi.metatavu.kuntaapi.server.rest.model.Service;
 import fi.metatavu.kuntaapi.server.rest.model.ServiceLocationServiceChannel;
 import fi.otavanopisto.kuntaapi.server.controllers.ClientContainer;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
@@ -33,17 +34,22 @@ import fi.otavanopisto.kuntaapi.server.discover.IdUpdater;
 import fi.otavanopisto.kuntaapi.server.discover.UpdaterHealth;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.id.ServiceId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceLocationServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.index.SearchResult;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceLocationServiceChannelSortBy;
+import fi.otavanopisto.kuntaapi.server.integrations.ServiceSortBy;
 import fi.otavanopisto.kuntaapi.server.integrations.SortDir;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.PtvConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.ServiceChannelTasksQueue;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.ServiceChannelUpdateTask;
+import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.ServiceIdTaskQueue;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 import fi.otavanopisto.kuntaapi.server.tasks.AbstractTaskQueue;
+import fi.otavanopisto.kuntaapi.server.tasks.IdTask;
+import fi.otavanopisto.kuntaapi.server.tasks.IdTask.Operation;
 
 /**
  * System REST Services
@@ -88,6 +94,9 @@ public class SystemRESTService {
   @Inject
   private ServiceChannelTasksQueue serviceChannelTasksQueue;
   
+  @Inject
+  private ServiceIdTaskQueue serviceIdTaskQueue;
+  
   @Inject  
   private Instance<AbstractTaskQueue<?>> taskQueues;
   
@@ -129,6 +138,7 @@ public class SystemRESTService {
   @GET
   @Path ("/utils/ptv/organizationServiceLocationChannelTasks")
   @Produces (MediaType.TEXT_PLAIN)
+  @SuppressWarnings ("squid:S3776")
   public Response utilsPtvOrganizationServiceLocationChannelTasks(@QueryParam ("organizationId") String kuntaApiOrganizationIdParam, @QueryParam ("first") Long first, @QueryParam ("max") Long max) {
     if (inTestModeOrUnrestrictedClient()) {
       if (kuntaApiOrganizationIdParam == null || first == null || max == null) {
@@ -150,6 +160,40 @@ public class SystemRESTService {
               } else {
                 logger.severe("Could not find identifier");
               }
+            } else {
+              logger.severe("Could not find ptv id");
+            }
+          } else {
+            logger.severe("Could not find kunta api id");
+          }
+        }
+      }
+      
+      return Response.ok("ok").build();
+    }
+    
+    return Response.status(Status.FORBIDDEN).build();
+  }
+  
+  @GET
+  @Path ("/utils/ptv/organizationServiceTasks")
+  @Produces (MediaType.TEXT_PLAIN)
+  @SuppressWarnings ("squid:S3776")
+  public Response utilsPtvOrganizationServiceTasks(@QueryParam ("organizationId") String kuntaApiOrganizationIdParam, @QueryParam ("first") Long first, @QueryParam ("max") Long max) {
+    if (inTestModeOrUnrestrictedClient()) {
+      if (kuntaApiOrganizationIdParam == null || first == null || max == null) {
+        return Response.status(Status.BAD_REQUEST).build();
+      }
+      
+      OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(kuntaApiOrganizationIdParam);
+      SearchResult<Service> searchResult = serviceController.searchServices(organizationId, null, null, null, null, null, null, ServiceSortBy.NATURAL, SortDir.DESC, first, max);
+      if (searchResult != null) {
+        for (Service service : searchResult.getResult()) {
+          ServiceId serviceId = kuntaApiIdFactory.createServiceId(service.getId());
+          if (serviceId != null) {
+            ServiceId ptvServiceId = idController.translateServiceId(serviceId, PtvConsts.IDENTIFIER_NAME);
+            if (ptvServiceId != null) {
+              serviceIdTaskQueue.enqueueTask(true, new IdTask<ServiceId>(Operation.UPDATE, ptvServiceId));
             } else {
               logger.severe("Could not find ptv id");
             }
