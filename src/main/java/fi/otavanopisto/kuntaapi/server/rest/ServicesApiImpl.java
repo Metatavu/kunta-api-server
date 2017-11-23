@@ -124,12 +124,6 @@ public class ServicesApiImpl extends ServicesApi {
         maxResults);
     
     return restResponseBuilder.buildResponse(result, request);
-/**
-    if (search == null) {
-      return restResponseBuilder.buildResponse(serviceController.listServices(organizationId, firstResult, maxResults), null, request);
-    } else {
-    }
-**/    
   }
   
   @Override
