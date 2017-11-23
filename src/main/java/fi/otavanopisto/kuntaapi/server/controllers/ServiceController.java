@@ -63,6 +63,7 @@ public class ServiceController {
     return null;
   }
   
+  @SuppressWarnings ("squid:S00107")
   public SearchResult<Service> searchServices(OrganizationId organizationId, ElectronicServiceChannelId electronicServiceChannelId, PhoneServiceChannelId phoneServiceChannelId, PrintableFormServiceChannelId printableFormServiceChannelId, ServiceLocationServiceChannelId serviceLocationServiceChannelId, WebPageServiceChannelId webPageServiceChannelId, String search, ServiceSortBy sortBy, SortDir sortDir, Long firstResult, Long maxResults) {
     SearchResult<ServiceId> searchResult = serviceSearcher.searchServices(organizationId, 
         electronicServiceChannelId,
