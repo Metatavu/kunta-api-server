@@ -206,7 +206,145 @@ public class ServicesTestsIT extends AbstractIntegrationTest {
       .body("printableFormServiceChannelIds[1].size()", is(0))
       .body("serviceLocationServiceChannelIds[1].size()", is(1))
       .body("webPageServiceChannelIds[1].size()", is(0));
-  } 
+  }
+
+  @Test
+  public void testListServicesByElectronicServiceChannelId() throws InterruptedException {
+    String electronicChannelId1 = getElectronicChannelId(0, TestPtvConsts.ELECTRONIC_CHANNEL_SERVICE_CHANNELS.length);
+    String electronicChannelId2 = getElectronicChannelId(1, TestPtvConsts.ELECTRONIC_CHANNEL_SERVICE_CHANNELS.length);
+    String serviceId = getServiceId(6, TestPtvConsts.SERVICES.length);
+    String invalidElectronicChannelId = "invalid";
+    
+    givenReadonly()
+      .contentType(ContentType.JSON)
+      .get(String.format("/services?electronicServiceChannelId=%s", electronicChannelId1))
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(1))
+      .body("id[0]", is(serviceId))
+      .body("electronicServiceChannelIds[0].size()", is(2))
+      .body("electronicServiceChannelIds[0][0]", is(electronicChannelId2))
+      .body("electronicServiceChannelIds[0][1]", is(electronicChannelId1));
+    
+    givenReadonly()
+      .contentType(ContentType.JSON)
+      .get(String.format("/services?electronicServiceChannelId=%s", invalidElectronicChannelId))
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(0));
+  }
+
+  @Test
+  public void testListServicesByPhoneServiceChannelId() throws InterruptedException {
+    String phoneChannelId1 = getPhoneChannelId(0, TestPtvConsts.PHONE_SERVICE_CHANNELS.length);
+    String serviceId = getServiceId(6, TestPtvConsts.SERVICES.length);
+    String invalidPhoneChannelId = "invalid";
+    
+    givenReadonly()
+      .contentType(ContentType.JSON)
+      .get(String.format("/services?phoneServiceChannelId=%s", phoneChannelId1))
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(1))
+      .body("id[0]", is(serviceId))
+      .body("phoneServiceChannelIds[0].size()", is(1))
+      .body("phoneServiceChannelIds[0][0]", is(phoneChannelId1));
+    
+    givenReadonly()
+      .contentType(ContentType.JSON)
+      .get(String.format("/services?phoneServiceChannelId=%s", invalidPhoneChannelId))
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(0));
+  }
+
+  @Test
+  public void testListServicesByPrintableFormServiceChannelId() throws InterruptedException {
+    String printableFormChannelId1 = getPrintableFormChannelId(0, TestPtvConsts.PRINTABLE_FORM_SERVICE_CHANNELS.length);
+    String printableFormChannelId2 = getPrintableFormChannelId(1, TestPtvConsts.PRINTABLE_FORM_SERVICE_CHANNELS.length);
+    String serviceId = getServiceId(6, TestPtvConsts.SERVICES.length);
+    String invalidPrintableFormChannelId = "invalid";
+    
+    givenReadonly()
+      .contentType(ContentType.JSON)
+      .get(String.format("/services?printableFormServiceChannelId=%s", printableFormChannelId1))
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(1))
+      .body("id[0]", is(serviceId))
+      .body("printableFormServiceChannelIds[0].size()", is(2))
+      .body("printableFormServiceChannelIds[0][0]", is(printableFormChannelId1))
+      .body("printableFormServiceChannelIds[0][1]", is(printableFormChannelId2));
+    
+    givenReadonly()
+      .contentType(ContentType.JSON)
+      .get(String.format("/services?printableFormServiceChannelId=%s", invalidPrintableFormChannelId))
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(0));
+  }
+
+  @Test
+  public void testListServicesByServiceLocationServiceChannelId() throws InterruptedException {
+    String serviceLocationChannelId1 = getServiceLocationChannelId(0, TestPtvConsts.SERVICE_LOCATION_SERVICE_CHANNELS.length);
+    String serviceLocationChannelId8 = getServiceLocationChannelId(8, TestPtvConsts.SERVICE_LOCATION_SERVICE_CHANNELS.length);
+    String serviceLocationChannelId9 = getServiceLocationChannelId(9, TestPtvConsts.SERVICE_LOCATION_SERVICE_CHANNELS.length);
+    String serviceId = getServiceId(5, TestPtvConsts.SERVICES.length);
+    String invalidServiceLocationChannelId = "invalid";
+    
+    givenReadonly()
+      .contentType(ContentType.JSON)
+      .get(String.format("/services?serviceLocationServiceChannelId=%s", serviceLocationChannelId1))
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(1))
+      .body("id[0]", is(serviceId))
+      .body("serviceLocationServiceChannelIds[0].size()", is(3))
+      .body("serviceLocationServiceChannelIds[0][0]", is(serviceLocationChannelId1))
+      .body("serviceLocationServiceChannelIds[0][1]", is(serviceLocationChannelId9))
+      .body("serviceLocationServiceChannelIds[0][2]", is(serviceLocationChannelId8));
+    
+    givenReadonly()
+      .contentType(ContentType.JSON)
+      .get(String.format("/services?serviceLocationServiceChannelId=%s", invalidServiceLocationChannelId))
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(0));
+  }
+
+  @Test
+  public void testListServicesByWebPageServiceChannelId() throws InterruptedException {
+    String webPageChannelId1 = getWebPageChannelId(0, TestPtvConsts.WEB_PAGE_SERVICE_CHANNELS.length);
+    String serviceId = getServiceId(6, TestPtvConsts.SERVICES.length);
+    String invalidWebPageChannelId = "invalid";
+    
+    givenReadonly()
+      .contentType(ContentType.JSON)
+      .get(String.format("/services?webPageServiceChannelId=%s", webPageChannelId1))
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(1))
+      .body("id[0]", is(serviceId))
+      .body("webPageServiceChannelIds[0].size()", is(1))
+      .body("webPageServiceChannelIds[0][0]", is(webPageChannelId1));
+    
+    givenReadonly()
+      .contentType(ContentType.JSON)
+      .get(String.format("/services?webPageServiceChannelId=%s", invalidWebPageChannelId))
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(0));
+  }
   
   @Test
   public void testListServicesByOrganization() {
@@ -293,25 +431,28 @@ public class ServicesTestsIT extends AbstractIntegrationTest {
   
   @Test
   public void testServiceUnarchive() throws InterruptedException {
-    String serviceId = getServiceId(TestPtvConsts.SERVICES.length - 1);
+    String serviceId = getServiceId(TestPtvConsts.SERVICES.length - 1, TestPtvConsts.SERVICES.length);
     assertNotNull(serviceId);
     
     getPtvServiceMocker().unmock(TestPtvConsts.SERVICES[0]);
     
     waitApiListCount("/services", TestPtvConsts.SERVICES.length - 1);
-    assertNull(getServiceId(TestPtvConsts.SERVICES.length - 1));
+    waitForElasticIndex();
+    
+    assertNull(getServiceId(TestPtvConsts.SERVICES.length - 1, TestPtvConsts.SERVICES.length - 1));
     
     getPtvServiceMocker().mock(TestPtvConsts.SERVICES[0]);
     waitApiListCount("/services", TestPtvConsts.SERVICES.length);
+    waitForElasticIndex();
     
-    assertEquals(serviceId, getServiceId(TestPtvConsts.SERVICES.length - 1));
+    assertEquals(serviceId, getServiceId(TestPtvConsts.SERVICES.length - 1, TestPtvConsts.SERVICES.length));
   }
   
   @Test
-  public void testServiceChannelIds()  {
+  public void testServiceChannelIds() throws InterruptedException  {
     givenReadonly()
       .contentType(ContentType.JSON)
-      .get("/services/{serviceId}", getServiceId(0))
+      .get("/services/{serviceId}", getServiceId(0, TestPtvConsts.SERVICES.length))
       .then()
       .assertThat()
       .statusCode(200)
@@ -324,7 +465,7 @@ public class ServicesTestsIT extends AbstractIntegrationTest {
 
     givenReadonly()
       .contentType(ContentType.JSON)
-      .get("/services/{serviceId}", getServiceId(1))
+      .get("/services/{serviceId}", getServiceId(1, TestPtvConsts.SERVICES.length))
       .then()
       .assertThat()
       .statusCode(200)
