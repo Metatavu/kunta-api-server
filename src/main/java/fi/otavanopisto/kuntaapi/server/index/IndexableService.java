@@ -110,22 +110,27 @@ public class IndexableService implements Indexable {
     this.organizationIds = organizationIds;
   }
 
+  @Deprecated
   public String getName() {
     return null;
   }
 
+  @Deprecated
   public String getAlternativeName() {
     return null;
   }
 
+  @Deprecated
   public String getShortDescription() {
     return null;
   }
 
+  @Deprecated
   public String getUserInstruction() {
     return null;
   }
 
+  @Deprecated
   public String getDescription() {
     return null;
   }
