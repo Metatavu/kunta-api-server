@@ -16,7 +16,6 @@ import org.apache.commons.lang3.StringUtils;
 
 import fi.metatavu.kuntaapi.server.rest.ServicesApi;
 import fi.metatavu.kuntaapi.server.rest.model.Service;
-import fi.metatavu.kuntaapi.server.rest.model.ServiceLocationServiceChannel;
 import fi.otavanopisto.kuntaapi.server.controllers.ClientContainer;
 import fi.otavanopisto.kuntaapi.server.controllers.HttpCacheController;
 import fi.otavanopisto.kuntaapi.server.controllers.SecurityController;

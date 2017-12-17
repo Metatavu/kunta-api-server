@@ -381,7 +381,7 @@ public class KuntaApiPtvTranslator extends AbstractTranslator {
     }
     
     List<ServiceOrganization> serviceProducers = organizations.stream()
-      .filter((serviceOrganization) -> !" ".equals(serviceOrganization.getRoleType()))
+      .filter(serviceOrganization -> !" ".equals(serviceOrganization.getRoleType()))
       .collect(Collectors.toList());
     
     List<VmOpenApiServiceProducerIn> result = new ArrayList<>(serviceProducers.size());
