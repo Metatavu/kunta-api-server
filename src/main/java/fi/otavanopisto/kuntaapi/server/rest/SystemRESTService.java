@@ -42,6 +42,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.ServiceLocationServiceChanne
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceSortBy;
 import fi.otavanopisto.kuntaapi.server.integrations.SortDir;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.PtvConsts;
+import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.OrganizationIdTaskQueue;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.ServiceChannelTasksQueue;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.ServiceChannelUpdateTask;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.ServiceIdTaskQueue;
@@ -84,7 +85,7 @@ public class SystemRESTService {
   
   @Inject
   private ServiceController serviceController;
-
+  
   @Inject
   private SecurityController securityController;
 
@@ -96,6 +97,9 @@ public class SystemRESTService {
   
   @Inject
   private ServiceIdTaskQueue serviceIdTaskQueue;
+
+  @Inject
+  private OrganizationIdTaskQueue organizationIdTaskQueue;
   
   @Inject  
   private Instance<AbstractTaskQueue<?>> taskQueues;
@@ -201,6 +205,23 @@ public class SystemRESTService {
             logger.severe("Could not find kunta api id");
           }
         }
+      }
+      
+      return Response.ok("ok").build();
+    }
+    
+    return Response.status(Status.FORBIDDEN).build();
+  }
+  
+  @GET
+  @Path ("/utils/ptv/organizationTasks")
+  @Produces (MediaType.TEXT_PLAIN)
+  @SuppressWarnings ("squid:S3776")
+  public Response utilsPtvOrganizationTasks(@QueryParam ("first") Integer first, @QueryParam ("max") Integer max) {
+    if (inTestModeOrUnrestrictedClient()) {
+      List<OrganizationId> organizationIds  = identifierController.listOrganizationIdsBySource(PtvConsts.IDENTIFIER_NAME, first, max);
+      for (OrganizationId organizationId : organizationIds) {
+        organizationIdTaskQueue.enqueueTask(true, new IdTask<OrganizationId>(Operation.UPDATE, organizationId));
       }
       
       return Response.ok("ok").build();
