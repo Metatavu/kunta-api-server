@@ -110,9 +110,15 @@ public class PtvOrganizationEntityUpdater extends EntityUpdater {
       return;
     }
     
-    ApiResponse<V7VmOpenApiOrganization> response = ptvApi.getOrganizationApi().apiV7OrganizationByIdGet(organizationId.getId());
+    OrganizationId ptvOrganizationId = idController.translateOrganizationId(organizationId, PtvConsts.IDENTIFIER_NAME);
+    if (ptvOrganizationId == null) {
+      logger.log(Level.SEVERE, () -> String.format("Failed to translate organization id %s into Ptv Id", organizationId)); 
+      return;
+    }
+    
+    ApiResponse<V7VmOpenApiOrganization> response = ptvApi.getOrganizationApi().apiV7OrganizationByIdGet(ptvOrganizationId.getId());
     if (response.isOk()) {
-      Identifier identifier = identifierController.acquireIdentifier(orderIndex, organizationId);
+      Identifier identifier = identifierController.acquireIdentifier(orderIndex, ptvOrganizationId);
       OrganizationId kuntaApiOrganizationId = kuntaApiIdFactory.createFromIdentifier(OrganizationId.class, identifier);
       V7VmOpenApiOrganization ptvOrganization = response.getResponse();
       OrganizationId kuntaApiParentOrganizationId = translateParentOrganizationId(kuntaApiOrganizationId,
@@ -128,8 +134,6 @@ public class PtvOrganizationEntityUpdater extends EntityUpdater {
         OrganizationService organizationService = translateOrganizationService(ptvOrganizationService);
         if (organizationService != null) {
           organizationServices.add(organizationService);
-        } else {
-          return;
         }
       }
       
@@ -142,7 +146,7 @@ public class PtvOrganizationEntityUpdater extends EntityUpdater {
         logger.log(Level.SEVERE, () -> String.format("Failed to translate organization %s", kuntaApiOrganizationId));
       }
     } else {
-      logger.warning(String.format("Organization %s processing failed on [%d] %s", organizationId.getId(), response.getStatus(), response.getMessage()));
+      logger.warning(() -> String.format("Organization %s processing failed on [%d] %s", ptvOrganizationId.getId(), response.getStatus(), response.getMessage()));
     }
   }
 

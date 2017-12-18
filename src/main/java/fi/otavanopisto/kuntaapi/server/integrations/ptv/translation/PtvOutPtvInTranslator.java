@@ -4,26 +4,36 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
+import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 import org.apache.commons.lang3.StringUtils;
 
+import fi.metatavu.ptv.client.model.V4VmOpenApiFintoItem;
 import fi.metatavu.ptv.client.model.V4VmOpenApiPhone;
 import fi.metatavu.ptv.client.model.V4VmOpenApiPhoneSimple;
 import fi.metatavu.ptv.client.model.V4VmOpenApiPhoneWithType;
+import fi.metatavu.ptv.client.model.V6VmOpenApiServiceOrganization;
 import fi.metatavu.ptv.client.model.V7VmOpenApiAddressWithMoving;
 import fi.metatavu.ptv.client.model.V7VmOpenApiAddressWithMovingIn;
+import fi.metatavu.ptv.client.model.V7VmOpenApiFintoItemWithDescription;
+import fi.metatavu.ptv.client.model.V7VmOpenApiService;
+import fi.metatavu.ptv.client.model.V7VmOpenApiServiceInBase;
 import fi.metatavu.ptv.client.model.V7VmOpenApiServiceLocationChannel;
 import fi.metatavu.ptv.client.model.V7VmOpenApiServiceLocationChannelInBase;
 import fi.metatavu.ptv.client.model.VmOpenApiArea;
 import fi.metatavu.ptv.client.model.VmOpenApiAreaIn;
+import fi.metatavu.ptv.client.model.VmOpenApiItem;
 import fi.metatavu.ptv.client.model.VmOpenApiLanguageItem;
 import fi.metatavu.ptv.client.model.VmOpenApiLocalizedListItem;
 import fi.metatavu.ptv.client.model.VmOpenApiMunicipality;
+import fi.metatavu.ptv.client.model.VmOpenApiServiceProducerIn;
 
 /**
  * Translator for translating resources from PTV out format into PTV in format
@@ -66,6 +76,119 @@ public class PtvOutPtvInTranslator extends AbstractTranslator {
     result.setWebPages(ptvResource.getWebPages());
     
     return result;
+  }
+  
+  /**
+   * Translates PTV out service into PTV in service
+   * 
+   * @param service PTV out service
+   * @return PTV in service
+   */
+  public V7VmOpenApiServiceInBase translateService(V7VmOpenApiService service) {
+    if (service == null) {
+      return null;
+    }
+    
+    String mainResponsibleOrganization = null;
+    List<UUID> otherResponsibleOrganizations = new ArrayList<>();
+    List<VmOpenApiServiceProducerIn> serviceProducers = new ArrayList<>();
+    int serviceProducerOrderNumber = 0;
+    
+    List<V6VmOpenApiServiceOrganization> organizations = service.getOrganizations();
+    for (V6VmOpenApiServiceOrganization organization : organizations) {
+      VmOpenApiItem organizationItem = organization.getOrganization();
+      if (organizationItem != null && organizationItem.getId() != null) {
+        UUID organizationUuid = organizationItem.getId();
+        String organizationId = organizationUuid.toString();
+        
+        if ("Responsible".equals(organization.getRoleType())) {
+          if (mainResponsibleOrganization == null) {
+            mainResponsibleOrganization = organizationId;
+          } else {
+            otherResponsibleOrganizations.add(UUID.fromString(organizationId));
+          }
+        } else {
+          VmOpenApiServiceProducerIn apiServiceProducer = new VmOpenApiServiceProducerIn();
+          apiServiceProducer.setAdditionalInformation(organization.getAdditionalInformation());
+          apiServiceProducer.setOrderNumber(serviceProducerOrderNumber);
+          apiServiceProducer.setOrganizations(Arrays.asList(organizationUuid));
+          apiServiceProducer.setProvisionType(organization.getProvisionType());
+          serviceProducers.add(apiServiceProducer); 
+          serviceProducerOrderNumber++;
+        }
+      }
+    }
+    
+    V7VmOpenApiServiceInBase result = new V7VmOpenApiServiceInBase();
+    
+    result.setAreas(translateAreas(service.getAreas()));
+    result.setAreaType(service.getAreaType());
+    result.setFundingType(service.getFundingType());
+    result.setIndustrialClasses(translateFintoItems(service.getIndustrialClasses()));
+    result.setKeywords(service.getKeywords());
+    result.setLanguages(service.getLanguages());
+    result.setLegislation(service.getLegislation());
+    result.setLifeEvents(translateFintoItems(service.getLifeEvents()));
+    result.setMainResponsibleOrganization(mainResponsibleOrganization);
+    result.setOntologyTerms(translateFintoItems(service.getOntologyTerms()));
+    result.setOtherResponsibleOrganizations(otherResponsibleOrganizations);
+    result.setPublishingStatus(service.getPublishingStatus());
+    result.setRequirements(service.getRequirements());
+    result.setServiceChargeType(service.getServiceChargeType());
+    result.setServiceClasses(translateFintoItemWithDescriptions(service.getServiceClasses()));
+    result.setServiceDescriptions(service.getServiceDescriptions());
+    result.setServiceNames(service.getServiceNames());
+    result.setServiceProducers(serviceProducers);
+    result.setServiceVouchers(service.getServiceVouchers());
+    result.setServiceVouchersInUse(service.getServiceVouchersInUse());
+    result.setSourceId(service.getSourceId());
+    result.setStatutoryServiceGeneralDescriptionId(translateUuid(service.getStatutoryServiceGeneralDescriptionId()));
+    result.setTargetGroups(translateFintoItems(service.getTargetGroups()));
+    result.setType(service.getType());
+    
+    return result;
+  }
+
+  private String translateUuid(UUID uuid) {
+    if (uuid == null) {
+      return null;
+    }
+    
+    return uuid.toString();
+  }
+
+  /**
+   * Translates Finto items into uris
+   * 
+   * @param fintoItems items
+   * @return finto uris
+   */
+  private List<String> translateFintoItems(List<V4VmOpenApiFintoItem> fintoItems) {
+    if (fintoItems == null) {
+      return Collections.emptyList();
+    }
+
+    return fintoItems.stream()
+      .map(V4VmOpenApiFintoItem::getUri)
+      .filter(Objects::nonNull)
+      .collect(Collectors.toList());
+  }
+
+  /**
+   * Translates Finto items into uris
+   * 
+   * @param fintoItems items
+   * @return finto uris
+   */
+  private List<String> translateFintoItemWithDescriptions(List<V7VmOpenApiFintoItemWithDescription> fintoItems) {
+    if (fintoItems == null) {
+      return Collections.emptyList();
+    }
+
+    return fintoItems.stream()
+      .map(V7VmOpenApiFintoItemWithDescription::getUri)
+      .filter(Objects::nonNull)
+      .collect(Collectors.toList());
   }
 
   private List<V7VmOpenApiAddressWithMovingIn> translateAddressesWithMoving(List<V7VmOpenApiAddressWithMoving> addresses) {
@@ -176,8 +299,25 @@ public class PtvOutPtvInTranslator extends AbstractTranslator {
       return null;
     }
     
+    List<String> areaCodes = null;
+    
     VmOpenApiAreaIn result = new VmOpenApiAreaIn();
-    result.setAreaCodes(Arrays.asList(area.getCode()));
+    
+    
+    if ("Municipality".equals(area.getType())) {
+      if (area.getMunicipalities() != null) {
+        areaCodes = area.getMunicipalities()
+          .stream()
+          .map(VmOpenApiMunicipality::getCode)
+          .collect(Collectors.toList());
+      } else {
+        areaCodes = Collections.emptyList();
+      }
+    } else {
+      areaCodes = Arrays.asList(area.getCode());
+    }
+    
+    result.setAreaCodes(areaCodes);
     result.setType(area.getType());
     
     return result;

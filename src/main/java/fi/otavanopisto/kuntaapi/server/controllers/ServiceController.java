@@ -20,6 +20,7 @@ import fi.otavanopisto.kuntaapi.server.index.SearchResult;
 import fi.otavanopisto.kuntaapi.server.index.ServiceLocationServiceChannelSearcher;
 import fi.otavanopisto.kuntaapi.server.index.ServiceSearcher;
 import fi.otavanopisto.kuntaapi.server.integrations.IntegrationResponse;
+import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceChannelProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceLocationServiceChannelSortBy;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceProvider;
@@ -31,6 +32,7 @@ import fi.metatavu.kuntaapi.server.rest.model.PhoneServiceChannel;
 import fi.metatavu.kuntaapi.server.rest.model.PrintableFormServiceChannel;
 import fi.metatavu.kuntaapi.server.rest.model.Service;
 import fi.metatavu.kuntaapi.server.rest.model.ServiceLocationServiceChannel;
+import fi.metatavu.kuntaapi.server.rest.model.ServiceOrganization;
 import fi.metatavu.kuntaapi.server.rest.model.WebPageServiceChannel;
 
 @ApplicationScoped
@@ -47,6 +49,9 @@ public class ServiceController {
   private ServiceLocationServiceChannelSearcher serviceLocationServiceChannelSearcher;
 
   @Inject
+  private KuntaApiIdFactory kuntaApiIdFactory;
+
+  @Inject
   private Instance<ServiceProvider> serviceProviders;
   
   @Inject
@@ -57,6 +62,24 @@ public class ServiceController {
       Service service = serviceProvider.findService(serviceId);
       if (service != null) {
         return service;
+      }
+    }
+    
+    return null;
+  }
+
+  /**
+   * Updates service
+   * 
+   * @param serviceId service id
+   * @param service new data for the service
+   * @return updated service
+   */
+  public IntegrationResponse<Service> updateService(ServiceId serviceId, Service service) {
+    for (ServiceProvider serviceProvider : getServiceProviders()) {
+      IntegrationResponse<Service> updatedService = serviceProvider.updateService(serviceId, service);
+      if (updatedService != null) {
+        return updatedService;
       }
     }
     
@@ -230,6 +253,23 @@ public class ServiceController {
     }
 
     return ListUtils.limit(entityController.sortEntitiesInNaturalOrder(result), firstResult, maxResults);
+  }
+  
+  /**
+   * Resolves service's main responsible organization. If not found null is returned
+   * 
+   * @param service service
+   * @return service's main responsible organization or null if not found
+   */
+  public OrganizationId getServiceMainResponsibleOrganization(Service service) {
+    List<ServiceOrganization> organizations = service.getOrganizations();
+    for (ServiceOrganization organization : organizations) {
+      if ("Responsible".equals(organization.getRoleType())) {
+        return kuntaApiIdFactory.createOrganizationId(organization.getOrganizationId());
+      }
+    }
+    
+    return null;
   }
   
   private List<ServiceProvider> getServiceProviders() {

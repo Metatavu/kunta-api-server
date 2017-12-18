@@ -156,7 +156,7 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
       ptvServiceLocationServiceChannelIn.setServiceChannelDescriptions(kuntaApiPtvTranslator.translateLocalizedValuesIntoLocalizedListItems(serviceLocationServiceChannel.getDescriptions()));
       ptvServiceLocationServiceChannelIn.setServiceChannelNames(kuntaApiPtvTranslator.translateLocalizedValuesIntoLanguageItems(serviceLocationServiceChannel.getNames()));
       ptvServiceLocationServiceChannelIn.setServiceHours(kuntaApiPtvTranslator.translateServiceHours(serviceLocationServiceChannel.getServiceHours()));
-      ptvServiceLocationServiceChannelIn.setWebPages(kuntaApiPtvTranslator.translateWebPages(serviceLocationServiceChannel.getWebPages()));
+      ptvServiceLocationServiceChannelIn.setWebPages(kuntaApiPtvTranslator.translateWebPagesWithOrder(serviceLocationServiceChannel.getWebPages()));
       
       ApiResponse<V7VmOpenApiServiceLocationChannel> response = serviceChannelApi.apiV7ServiceChannelServiceLocationByIdPut(ptvServiceLocationServiceChannelId.getId(), ptvServiceLocationServiceChannelIn);
       if (response.isOk()) {

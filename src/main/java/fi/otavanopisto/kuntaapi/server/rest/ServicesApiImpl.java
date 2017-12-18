@@ -16,7 +16,9 @@ import org.apache.commons.lang3.StringUtils;
 
 import fi.metatavu.kuntaapi.server.rest.ServicesApi;
 import fi.metatavu.kuntaapi.server.rest.model.Service;
+import fi.otavanopisto.kuntaapi.server.controllers.ClientContainer;
 import fi.otavanopisto.kuntaapi.server.controllers.HttpCacheController;
+import fi.otavanopisto.kuntaapi.server.controllers.SecurityController;
 import fi.otavanopisto.kuntaapi.server.controllers.ServiceController;
 import fi.otavanopisto.kuntaapi.server.id.ElectronicServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
@@ -26,10 +28,12 @@ import fi.otavanopisto.kuntaapi.server.id.ServiceId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceLocationServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.WebPageServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.index.SearchResult;
+import fi.otavanopisto.kuntaapi.server.integrations.IntegrationResponse;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceSortBy;
 import fi.otavanopisto.kuntaapi.server.integrations.SortDir;
+import fi.otavanopisto.kuntaapi.server.persistence.model.clients.ClientOrganizationPermission;
 
 /**
  * REST Service implementation
@@ -48,7 +52,13 @@ public class ServicesApiImpl extends ServicesApi {
   
   @Inject
   private ServiceController serviceController;
-  
+
+  @Inject
+  private SecurityController securityController;
+
+  @Inject
+  private KuntaApiIdFactory kuntaApiIdFactory;
+
   @Inject
   private RestValidator restValidator;
 
@@ -59,7 +69,7 @@ public class ServicesApiImpl extends ServicesApi {
   private RestResponseBuilder restResponseBuilder;
 
   @Inject
-  private KuntaApiIdFactory kuntaApiIdFactory;
+  private ClientContainer clientContainer;
   
   @Override
   public Response createService(Service body, @Context Request request) {
@@ -127,8 +137,29 @@ public class ServicesApiImpl extends ServicesApi {
   }
   
   @Override
-  public Response updateService(String serviceId, Service body, @Context Request request) {
-    return createNotImplemented(NOT_IMPLEMENTED);
+  public Response updateService(String serviceIdParam, Service body, @Context Request request) {
+    ServiceId serviceId = kuntaApiIdFactory.createServiceId(serviceIdParam);
+    Service service = serviceController.findService(serviceId);
+    
+    if (service == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    OrganizationId mainResponsibleOrganizationId = serviceController.getServiceMainResponsibleOrganization(service);
+    if (mainResponsibleOrganizationId == null) {
+      return createInternalServerError("Failed to resolve main responsible organization id");
+    }
+    
+    if (!securityController.hasOrganizationPermission(clientContainer.getClient(), mainResponsibleOrganizationId, ClientOrganizationPermission.UPDATE_SERVICES)) {
+      return createForbidden("No permission to update service");
+    }
+    
+    IntegrationResponse<Service> integrationResponse = serviceController.updateService(serviceId, body);
+    if (integrationResponse.isOk()) {
+      return httpCacheController.sendModified(integrationResponse.getEntity(), integrationResponse.getEntity().getId());
+    } else {
+      return restResponseBuilder.buildErrorResponse(integrationResponse);
+    }
   }
   
   @Override

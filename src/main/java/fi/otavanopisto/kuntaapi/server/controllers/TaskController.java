@@ -55,8 +55,9 @@ public class TaskController {
       if (taskDAO.countByQueueAndUniqueId(taskQueue, uniqueId) == 0) {
         return createTask(queueName, priority, taskQueue, data, uniqueId);
       } else {
+        Task existingTask = taskDAO.findByQueueAndUniqueId(taskQueue, uniqueId);
+        
         if (priority) {
-          Task existingTask = taskDAO.findByQueueAndUniqueId(taskQueue, uniqueId);
           if (existingTask != null && !existingTask.getPriority()) {
             taskDAO.updatePriority(existingTask, Boolean.TRUE);
             logger.info(() -> String.format("Task %s from queue %s elevated into priority task", uniqueId, queueName));
@@ -66,10 +67,22 @@ public class TaskController {
         } else {
           logger.warning(() -> String.format("Task %s already found from queue %s. Skipped", uniqueId, queueName));
         }
+        
+        return existingTask;
       }
     }
     
     return null;
+  }
+  
+  /**
+   * Returns whether the task by given id exists
+   * 
+   * @param taskId task id
+   * @return whether the task by given id exists
+   */
+  public boolean isTaskExisting(Long taskId) {
+    return taskDAO.isExisting(taskId);
   }
 
   private Task createTask(String queueName, Boolean priority, TaskQueue taskQueue, byte[] data, String uniqueId) {

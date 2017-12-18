@@ -1,5 +1,9 @@
 package fi.otavanopisto.kuntaapi.server.tasks;
 
+import java.util.concurrent.Future;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.inject.Inject;
@@ -7,8 +11,6 @@ import javax.inject.Inject;
 import fi.otavanopisto.kuntaapi.server.controllers.ClusterController;
 import fi.otavanopisto.kuntaapi.server.controllers.TaskController;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Abstract base class for all task queues
@@ -27,6 +29,9 @@ public abstract class AbstractTaskQueue <T extends AbstractTask> {
   
   @Inject
   private TaskController taskController;
+
+  @Inject
+  private TaskListener taskListener;
   
   @Inject
   private Logger logger;
@@ -77,17 +82,18 @@ public abstract class AbstractTaskQueue <T extends AbstractTask> {
    * 
    * @param priority whether the task is a priority task or not
    * @param task taks
+   * @return returns future representing task state
    */
-  public void enqueueTask(boolean priority, T task) {
+  public Future<Long> enqueueTask(boolean priority, T task) {
     if (!running) {
-      return;
+      return null;
     }
     
     if (priority) {
       logger.log(Level.INFO, () -> String.format("Added priority task to queue %s", getName())); 
     }
     
-    taskController.createTask(getName(), priority, task);
+    return taskListener.listen(taskController.createTask(getName(), priority, task));    
   }
 
   /**
