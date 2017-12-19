@@ -97,7 +97,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   @SuppressWarnings ("squid:S00108")
   private void deleteIndices() {
     try {
-      String types = "service";
+      String types = "service,electronic-service-channel";
       String body = "{\"query\": {\"match_all\": {} } }";
       HttpPost httpPost = new HttpPost(String.format("http://localhost:9200/kunta-api/%s/_delete_by_query?conflicts=proceed", types));
       httpPost.setEntity(new StringEntity(body));

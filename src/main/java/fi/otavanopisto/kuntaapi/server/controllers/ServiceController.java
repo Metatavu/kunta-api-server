@@ -268,6 +268,17 @@ public class ServiceController {
     return new SearchResult<>(result, searchResult.getTotalHits());
   }
 
+  /**
+   * Searches Electronic Service Channels. All parameters can be nulled. Nulled parameters will be ignored
+   * 
+   * @param kuntaApiOrganizationId organization id
+   * @param search free-text search
+   * @param sortBy sort by
+   * @param sortDir sort direction
+   * @param firstResult first result
+   * @param maxResults max results
+   * @return search result
+   */
   public SearchResult<ElectronicServiceChannel> searchElectronicServiceChannels(OrganizationId kuntaApiOrganizationId, String search, ElectronicServiceChannelSortBy sortBy, SortDir sortDir, Long firstResult, Long maxResults) {
     SearchResult<ElectronicServiceChannelId> searchResult = electronicServiceChannelSearcher.searchElectronicServiceChannels(kuntaApiOrganizationId, search, sortBy, sortDir, firstResult, maxResults);
     if (searchResult == null) {

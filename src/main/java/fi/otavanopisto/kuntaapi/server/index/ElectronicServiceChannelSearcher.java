@@ -33,7 +33,18 @@ public class ElectronicServiceChannelSearcher {
   @Inject
   private IndexReader indexReader;
 
-  public SearchResult<ElectronicServiceChannelId> searchElectronicServiceChannels(OrganizationId kuntaApiOrganizationId, String queryString, ElectronicServiceChannelSortBy sortOrder, SortDir sortDir, Long firstResult, Long maxResults) {
+  /**
+   * Searches Electronic Service Channels. All parameters can be nulled. Nulled parameters will be ignored
+   * 
+   * @param kuntaApiOrganizationId organization id
+   * @param queryString free-text search
+   * @param sortBy sort by
+   * @param sortDir sort direction
+   * @param firstResult first result
+   * @param maxResults max results
+   * @return search result
+   */
+  public SearchResult<ElectronicServiceChannelId> searchElectronicServiceChannels(OrganizationId kuntaApiOrganizationId, String queryString, ElectronicServiceChannelSortBy sortBy, SortDir sortDir, Long firstResult, Long maxResults) {
     BoolQueryBuilder query = boolQuery();
 
     if (kuntaApiOrganizationId != null) {
@@ -44,7 +55,7 @@ public class ElectronicServiceChannelSearcher {
       query.must(queryStringQuery(queryString));
     }
     
-    return searchElectronicServiceChannels(query, sortOrder, sortDir, firstResult, maxResults);
+    return searchElectronicServiceChannels(query, sortBy, sortDir, firstResult, maxResults);
   }
    
   private SearchResult<ElectronicServiceChannelId> searchElectronicServiceChannels(QueryBuilder queryBuilder, ElectronicServiceChannelSortBy sortBy, SortDir sortDir, Long firstResult, Long maxResults) {
