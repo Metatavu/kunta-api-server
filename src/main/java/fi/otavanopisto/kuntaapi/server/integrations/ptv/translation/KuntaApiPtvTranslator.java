@@ -24,6 +24,7 @@ import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
 import fi.metatavu.kuntaapi.server.rest.model.Municipality;
 import fi.metatavu.kuntaapi.server.rest.model.OntologyItem;
 import fi.metatavu.kuntaapi.server.rest.model.Phone;
+import fi.metatavu.kuntaapi.server.rest.model.ServiceChannelAttachment;
 import fi.metatavu.kuntaapi.server.rest.model.ServiceHour;
 import fi.metatavu.kuntaapi.server.rest.model.ServiceOrganization;
 import fi.metatavu.kuntaapi.server.rest.model.ServiceVoucher;
@@ -38,6 +39,7 @@ import fi.metatavu.ptv.client.model.V7VmOpenApiAddressWithMovingIn;
 import fi.metatavu.ptv.client.model.VmOpenApiAddressPostOfficeBoxIn;
 import fi.metatavu.ptv.client.model.VmOpenApiAddressStreetWithCoordinatesIn;
 import fi.metatavu.ptv.client.model.VmOpenApiAreaIn;
+import fi.metatavu.ptv.client.model.VmOpenApiAttachment;
 import fi.metatavu.ptv.client.model.VmOpenApiLanguageItem;
 import fi.metatavu.ptv.client.model.VmOpenApiLocalizedListItem;
 import fi.metatavu.ptv.client.model.VmOpenApiServiceProducerIn;
@@ -392,6 +394,37 @@ public class KuntaApiPtvTranslator extends AbstractTranslator {
         result.add(producer);
       }
     }
+    
+    return result;
+  }
+
+  /**
+   * Translates list of Kunta API service channel attachments into Ptv In attachments
+   * 
+   * @param attachments Kunta API service channel attachments
+   * @return Ptv In attachments
+   */
+  public List<VmOpenApiAttachment> translateAttachments(List<ServiceChannelAttachment> attachments) {
+    if (attachments == null) {
+      return Collections.emptyList();
+    }
+    
+    return attachments.stream()
+      .map(this::translateAttachment)
+      .filter(Objects::nonNull)
+      .collect(Collectors.toList());
+  }
+  
+  private VmOpenApiAttachment translateAttachment(ServiceChannelAttachment attachment) {
+    if (attachment == null) {
+      return null;
+    }
+    
+    VmOpenApiAttachment result = new VmOpenApiAttachment();
+    result.setDescription(attachment.getDescription());
+    result.setLanguage(attachment.getLanguage());
+    result.setName(attachment.getName());
+    result.setUrl(attachment.getUrl());
     
     return result;
   }

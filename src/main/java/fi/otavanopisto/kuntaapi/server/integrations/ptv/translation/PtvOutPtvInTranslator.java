@@ -19,9 +19,11 @@ import fi.metatavu.ptv.client.model.V4VmOpenApiFintoItem;
 import fi.metatavu.ptv.client.model.V4VmOpenApiPhone;
 import fi.metatavu.ptv.client.model.V4VmOpenApiPhoneSimple;
 import fi.metatavu.ptv.client.model.V4VmOpenApiPhoneWithType;
+import fi.metatavu.ptv.client.model.V6VmOpenApiElectronicChannelInBase;
 import fi.metatavu.ptv.client.model.V6VmOpenApiServiceOrganization;
 import fi.metatavu.ptv.client.model.V7VmOpenApiAddressWithMoving;
 import fi.metatavu.ptv.client.model.V7VmOpenApiAddressWithMovingIn;
+import fi.metatavu.ptv.client.model.V7VmOpenApiElectronicChannel;
 import fi.metatavu.ptv.client.model.V7VmOpenApiFintoItemWithDescription;
 import fi.metatavu.ptv.client.model.V7VmOpenApiService;
 import fi.metatavu.ptv.client.model.V7VmOpenApiServiceInBase;
@@ -29,6 +31,8 @@ import fi.metatavu.ptv.client.model.V7VmOpenApiServiceLocationChannel;
 import fi.metatavu.ptv.client.model.V7VmOpenApiServiceLocationChannelInBase;
 import fi.metatavu.ptv.client.model.VmOpenApiArea;
 import fi.metatavu.ptv.client.model.VmOpenApiAreaIn;
+import fi.metatavu.ptv.client.model.VmOpenApiAttachment;
+import fi.metatavu.ptv.client.model.VmOpenApiAttachmentWithType;
 import fi.metatavu.ptv.client.model.VmOpenApiItem;
 import fi.metatavu.ptv.client.model.VmOpenApiLanguageItem;
 import fi.metatavu.ptv.client.model.VmOpenApiLocalizedListItem;
@@ -77,7 +81,37 @@ public class PtvOutPtvInTranslator extends AbstractTranslator {
     
     return result;
   }
+
+  /**
+   * Translates PTV out service location channel into PTV in service location channel
+   * 
+   * @param ptvResource PTV out service location channel
+   * @return PTV in service location channel
+   */
+  public V6VmOpenApiElectronicChannelInBase translateElectronicChannel(V7VmOpenApiElectronicChannel ptvResource) {
+    V6VmOpenApiElectronicChannelInBase result = new V6VmOpenApiElectronicChannelInBase();
+    
+    result.setAreas(translateAreas(ptvResource.getAreas()));
+    result.setAreaType(ptvResource.getAreaType());
+    result.setAttachments(translateAttachments(ptvResource.getAttachments()));
+    result.setIsVisibleForAll(true);
+    result.setOrganizationId(ptvResource.getOrganizationId().toString());
+    result.setPublishingStatus(ptvResource.getPublishingStatus());
+    result.setRequiresAuthentication(ptvResource.getRequiresAuthentication());
+    result.setRequiresSignature(ptvResource.getRequiresSignature());
+    result.setServiceChannelDescriptions(ptvResource.getServiceChannelDescriptions());
+    result.setServiceChannelNames(translateLocalizedListItemsToLanguageItems(ptvResource.getServiceChannelNames()));
+    result.setServiceHours(ptvResource.getServiceHours());
+    result.setSignatureQuantity(String.valueOf(ptvResource.getSignatureQuantity()));
+    result.setSourceId(ptvResource.getSourceId());
+    result.setSupportEmails(ptvResource.getSupportEmails());
+    result.setSupportPhones(ptvResource.getSupportPhones());
+    result.setUrls(ptvResource.getUrls());
+    
+    return result;
+  }
   
+
   /**
    * Translates PTV out service into PTV in service
    * 
@@ -293,6 +327,31 @@ public class PtvOutPtvInTranslator extends AbstractTranslator {
     
     return result;
   }
+  
+  private List<VmOpenApiAttachment> translateAttachments(List<VmOpenApiAttachmentWithType> attachments) {
+    if (attachments == null) {
+      return Collections.emptyList();
+    }
+    
+    return attachments.stream()
+      .map(this::translateAttachment)
+      .filter(Objects::nonNull)
+      .collect(Collectors.toList());
+  }
+  
+  private VmOpenApiAttachment translateAttachment(VmOpenApiAttachmentWithType attachment) {
+    if (attachment == null) {
+      return null;
+    }
+    
+    VmOpenApiAttachment result = new VmOpenApiAttachment();
+    result.setDescription(attachment.getDescription());
+    result.setLanguage(attachment.getLanguage());
+    result.setName(attachment.getName());
+    result.setUrl(attachment.getUrl());
+    
+    return result;
+  }
 
   private VmOpenApiAreaIn translateArea(VmOpenApiArea area) {
     if (area == null) {
@@ -309,6 +368,7 @@ public class PtvOutPtvInTranslator extends AbstractTranslator {
         areaCodes = area.getMunicipalities()
           .stream()
           .map(VmOpenApiMunicipality::getCode)
+          .filter(Objects::nonNull)
           .collect(Collectors.toList());
       } else {
         areaCodes = Collections.emptyList();

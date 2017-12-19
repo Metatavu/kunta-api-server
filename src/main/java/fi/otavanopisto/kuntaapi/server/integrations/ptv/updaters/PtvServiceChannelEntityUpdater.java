@@ -18,11 +18,11 @@ import fi.metatavu.kuntaapi.server.rest.model.PhoneServiceChannel;
 import fi.metatavu.kuntaapi.server.rest.model.PrintableFormServiceChannel;
 import fi.metatavu.kuntaapi.server.rest.model.ServiceLocationServiceChannel;
 import fi.metatavu.kuntaapi.server.rest.model.WebPageServiceChannel;
-import fi.metatavu.ptv.client.model.V7VmOpenApiWebPageChannel;
 import fi.metatavu.ptv.client.model.V7VmOpenApiElectronicChannel;
 import fi.metatavu.ptv.client.model.V7VmOpenApiPhoneChannel;
 import fi.metatavu.ptv.client.model.V7VmOpenApiPrintableFormChannel;
 import fi.metatavu.ptv.client.model.V7VmOpenApiServiceLocationChannel;
+import fi.metatavu.ptv.client.model.V7VmOpenApiWebPageChannel;
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
@@ -38,6 +38,7 @@ import fi.otavanopisto.kuntaapi.server.id.WebPageServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.index.IndexRemoveRequest;
 import fi.otavanopisto.kuntaapi.server.index.IndexRemoveServiceLocationServiceChannel;
 import fi.otavanopisto.kuntaapi.server.index.IndexRequest;
+import fi.otavanopisto.kuntaapi.server.index.IndexableElectronicServiceChannel;
 import fi.otavanopisto.kuntaapi.server.index.IndexableServiceLocationServiceChannel;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
@@ -222,6 +223,8 @@ public class PtvServiceChannelEntityUpdater extends EntityUpdater {
     
     ptvElectronicServiceChannelResourceContainer.put(kuntaApiElectronicServiceChannelId, electronicServiceChannel);
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(electronicServiceChannel));
+    
+    indexElectronicServiceChannel(orderIndex, electronicServiceChannel);
   }
 
   private void updateServiceLocationServiceChannel(Long orderIndex, V7VmOpenApiServiceLocationChannel ptvServiceLocationServiceChannel) {
@@ -420,6 +423,32 @@ public class PtvServiceChannelEntityUpdater extends EntityUpdater {
       
       indexRequest.fire(new IndexRequest(indexableServiceLocationServiceChannel));
     }
+  }
+  
+  private void indexElectronicServiceChannel(Long orderIndex, ElectronicServiceChannel serviceChannel) {
+    Map<String, String> shortDescriptionMap = LocalizationUtils.getLocalizedValueMap("ShortDescription", serviceChannel.getDescriptions());
+    Map<String, String> descriptionMap = LocalizationUtils.getLocalizedValueMap("Description", serviceChannel.getDescriptions());
+    Map<String, String> nameMap = LocalizationUtils.getLocalizedValueMap("Name", serviceChannel.getNames());
+    
+    IndexableElectronicServiceChannel indexable = new IndexableElectronicServiceChannel();
+    
+    indexable.setShortDescriptionEn(shortDescriptionMap.get("en"));
+    indexable.setShortDescriptionFi(shortDescriptionMap.get("fi"));
+    indexable.setShortDescriptionSv(shortDescriptionMap.get("sv"));
+    
+    indexable.setDescriptionEn(descriptionMap.get("en"));
+    indexable.setDescriptionFi(descriptionMap.get("fi"));
+    indexable.setDescriptionSv(descriptionMap.get("sv"));
+
+    indexable.setNameEn(nameMap.get("en"));
+    indexable.setNameFi(nameMap.get("fi"));
+    indexable.setNameSv(nameMap.get("sv"));
+    
+    indexable.setServiceChannelId(serviceChannel.getId());
+    indexable.setOrganizationId(serviceChannel.getOrganizationId());
+    indexable.setOrderIndex(orderIndex);
+    
+    indexRequest.fire(new IndexRequest(indexable));
   }
 
   private void updateParentPageIds(List<PageId> parentPageIds) {

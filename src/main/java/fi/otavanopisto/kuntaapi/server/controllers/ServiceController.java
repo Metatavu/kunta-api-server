@@ -16,9 +16,11 @@ import fi.otavanopisto.kuntaapi.server.id.PrintableFormServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceLocationServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.WebPageServiceChannelId;
+import fi.otavanopisto.kuntaapi.server.index.ElectronicServiceChannelSearcher;
 import fi.otavanopisto.kuntaapi.server.index.SearchResult;
 import fi.otavanopisto.kuntaapi.server.index.ServiceLocationServiceChannelSearcher;
 import fi.otavanopisto.kuntaapi.server.index.ServiceSearcher;
+import fi.otavanopisto.kuntaapi.server.integrations.ElectronicServiceChannelSortBy;
 import fi.otavanopisto.kuntaapi.server.integrations.IntegrationResponse;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceChannelProvider;
@@ -47,6 +49,9 @@ public class ServiceController {
   
   @Inject
   private ServiceLocationServiceChannelSearcher serviceLocationServiceChannelSearcher;
+  
+  @Inject
+  private ElectronicServiceChannelSearcher electronicServiceChannelSearcher;
 
   @Inject
   private KuntaApiIdFactory kuntaApiIdFactory;
@@ -161,6 +166,24 @@ public class ServiceController {
   }
   
   /**
+   * Updates electronic service channel
+   * 
+   * @param electronicChannelId electronic service channel id
+   * @param electronicServiceChannel new data for electronic service channel
+   * @return updated electronic service channel
+   */
+  public IntegrationResponse<ElectronicServiceChannel> updateElectronicServiceChannel(ElectronicServiceChannelId electronicChannelId, ElectronicServiceChannel electronicServiceChannel) {
+    for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
+      IntegrationResponse<ElectronicServiceChannel> updatedElectronicServiceChannel = serviceChannelProvider.updateElectronicServiceChannel(electronicChannelId, electronicServiceChannel);
+      if (updatedElectronicServiceChannel != null) {
+        return updatedElectronicServiceChannel;
+      }
+    }
+    
+    return null;
+  }
+  
+  /**
    * Updates service location service channel
    * 
    * @param serviceLocationChannelId service location service channel id
@@ -243,7 +266,24 @@ public class ServiceController {
     }
     
     return new SearchResult<>(result, searchResult.getTotalHits());
-  }   
+  }
+
+  public SearchResult<ElectronicServiceChannel> searchElectronicServiceChannels(OrganizationId kuntaApiOrganizationId, String search, ElectronicServiceChannelSortBy sortBy, SortDir sortDir, Long firstResult, Long maxResults) {
+    SearchResult<ElectronicServiceChannelId> searchResult = electronicServiceChannelSearcher.searchElectronicServiceChannels(kuntaApiOrganizationId, search, sortBy, sortDir, firstResult, maxResults);
+    if (searchResult == null) {
+      return SearchResult.emptyResult();
+    }
+    
+    List<ElectronicServiceChannel> result = new ArrayList<>(searchResult.getResult().size());
+    for (ElectronicServiceChannelId electronicServiceChannelId : searchResult.getResult()) {
+      ElectronicServiceChannel electronicServiceChannel = findElectronicServiceChannel(electronicServiceChannelId);
+      if (electronicServiceChannel != null) {
+        result.add(electronicServiceChannel);
+      }
+    }
+    
+    return new SearchResult<>(result, searchResult.getTotalHits());
+  }
 
   public List<WebPageServiceChannel> listWebPageServiceChannels(Long firstResult, Long maxResults) {
     List<WebPageServiceChannel> result = new ArrayList<>();

@@ -53,6 +53,17 @@ public interface ServiceChannelProvider {
   public ServiceLocationServiceChannel findServiceLocationServiceChannel(ServiceLocationServiceChannelId serviceLocationServiceChannelId);
 
   /**
+   * Updates electronic service channel
+   * 
+   * @param electronicChannelId electronic service channel id
+   * @param electronicServiceChannel new data for service channel
+   * @return updated service channel
+   */
+  public IntegrationResponse<ElectronicServiceChannel> updateElectronicServiceChannel(
+      ElectronicServiceChannelId electronicChannelId,
+      ElectronicServiceChannel electronicServiceChannel);
+  
+  /**
    * Updates service location service channel
    * 
    * @param serviceLocationChannelId service location service channel id
