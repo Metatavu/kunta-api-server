@@ -48,7 +48,7 @@ public abstract class AbstractPtvServiceChannelIdUpdater extends IdUpdater {
     
     ApiResponse<V3VmOpenApiGuidPage> response = getPage();
     if (!response.isOk()) {
-      logger.severe(String.format("Service channel list reported [%d] %s", response.getStatus(), response.getMessage()));
+      logger.severe(() -> String.format("Service channel list reported [%d] %s", response.getStatus(), response.getMessage()));
     } else {
       List<VmOpenApiItem> items = response.getResponse().getItemList();
       

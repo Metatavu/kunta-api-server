@@ -35,6 +35,7 @@ import fi.otavanopisto.kuntaapi.server.id.PhoneServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.PrintableFormServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceLocationServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.WebPageServiceChannelId;
+import fi.otavanopisto.kuntaapi.server.index.IndexRemoveElectronicServiceChannel;
 import fi.otavanopisto.kuntaapi.server.index.IndexRemoveRequest;
 import fi.otavanopisto.kuntaapi.server.index.IndexRemoveServiceLocationServiceChannel;
 import fi.otavanopisto.kuntaapi.server.index.IndexRequest;
@@ -355,7 +356,10 @@ public class PtvServiceChannelEntityUpdater extends EntityUpdater {
       ElectronicServiceChannelId kuntaApiElectronicServiceChannelId = kuntaApiIdFactory.createFromIdentifier(ElectronicServiceChannelId.class, electronicServiceChannelIdentifier);
       modificationHashCache.clear(electronicServiceChannelIdentifier.getKuntaApiId());
       ptvElectronicServiceChannelResourceContainer.clear(kuntaApiElectronicServiceChannelId);
-      identifierController.deleteIdentifier(electronicServiceChannelIdentifier);      
+      identifierController.deleteIdentifier(electronicServiceChannelIdentifier);
+      IndexRemoveElectronicServiceChannel indexRemoveElectronicServiceChannel = new IndexRemoveElectronicServiceChannel();
+      indexRemoveElectronicServiceChannel.setServiceChannelId(electronicServiceChannelIdentifier.getKuntaApiId());
+      indexRemoveRequest.fire(new IndexRemoveRequest(indexRemoveElectronicServiceChannel));      
     }
   }
 
