@@ -9,6 +9,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
 
+import fi.otavanopisto.kuntaapi.server.id.BaseId;
 import fi.otavanopisto.kuntaapi.server.id.ElectronicServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PhoneServiceChannelId;
@@ -16,15 +17,17 @@ import fi.otavanopisto.kuntaapi.server.id.PrintableFormServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceLocationServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.WebPageServiceChannelId;
-import fi.otavanopisto.kuntaapi.server.index.ElectronicServiceChannelSearcher;
 import fi.otavanopisto.kuntaapi.server.index.SearchResult;
-import fi.otavanopisto.kuntaapi.server.index.ServiceLocationServiceChannelSearcher;
-import fi.otavanopisto.kuntaapi.server.index.ServiceSearcher;
-import fi.otavanopisto.kuntaapi.server.integrations.ElectronicServiceChannelSortBy;
+import fi.otavanopisto.kuntaapi.server.index.search.ElectronicServiceChannelSearcher;
+import fi.otavanopisto.kuntaapi.server.index.search.PhoneServiceChannelSearcher;
+import fi.otavanopisto.kuntaapi.server.index.search.PrintableFormServiceChannelSearcher;
+import fi.otavanopisto.kuntaapi.server.index.search.ServiceLocationServiceChannelSearcher;
+import fi.otavanopisto.kuntaapi.server.index.search.ServiceSearcher;
+import fi.otavanopisto.kuntaapi.server.index.search.WebPageServiceChannelSearcher;
+import fi.otavanopisto.kuntaapi.server.integrations.ServiceChannelSortBy;
 import fi.otavanopisto.kuntaapi.server.integrations.IntegrationResponse;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceChannelProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.ServiceLocationServiceChannelSortBy;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceSortBy;
 import fi.otavanopisto.kuntaapi.server.integrations.SortDir;
@@ -53,6 +56,15 @@ public class ServiceController {
   @Inject
   private ElectronicServiceChannelSearcher electronicServiceChannelSearcher;
 
+  @Inject
+  private PhoneServiceChannelSearcher phoneServiceChannelSearcher;
+  
+  @Inject
+  private PrintableFormServiceChannelSearcher printableFormServiceChannelSearcher;
+  
+  @Inject
+  private WebPageServiceChannelSearcher webPageServiceChannelSearcher;
+  
   @Inject
   private KuntaApiIdFactory kuntaApiIdFactory;
 
@@ -250,22 +262,21 @@ public class ServiceController {
 
     return ListUtils.limit(entityController.sortEntitiesInNaturalOrder(result), firstResult, maxResults);
   }
-  
-  public SearchResult<ServiceLocationServiceChannel> searchServiceLocationServiceChannels(OrganizationId kuntaApiOrganizationId, String search, ServiceLocationServiceChannelSortBy sortBy, SortDir sortDir, Long firstResult, Long maxResults) {
-    SearchResult<ServiceLocationServiceChannelId> searchResult = serviceLocationServiceChannelSearcher.searchServiceLocationServiceChannels(kuntaApiOrganizationId, search, sortBy, sortDir, firstResult, maxResults);
-    if (searchResult == null) {
-      return SearchResult.emptyResult();
-    }
-    
-    List<ServiceLocationServiceChannel> result = new ArrayList<>(searchResult.getResult().size());
-    for (ServiceLocationServiceChannelId serviceLocationServiceChannelId : searchResult.getResult()) {
-      ServiceLocationServiceChannel serviceLocationServiceChannel = findServiceLocationServiceChannel(serviceLocationServiceChannelId);
-      if (serviceLocationServiceChannel != null) {
-        result.add(serviceLocationServiceChannel);
-      }
-    }
-    
-    return new SearchResult<>(result, searchResult.getTotalHits());
+
+  /**
+   * Searches service location service Channels. All parameters can be nulled. Nulled parameters will be ignored
+   * 
+   * @param kuntaApiOrganizationId organization id
+   * @param search free-text search
+   * @param sortBy sort by
+   * @param sortDir sort direction
+   * @param firstResult first result
+   * @param maxResults max results
+   * @return search result
+   */
+  public SearchResult<ServiceLocationServiceChannel> searchServiceLocationServiceChannels(OrganizationId kuntaApiOrganizationId, String search, ServiceChannelSortBy sortBy, SortDir sortDir, Long firstResult, Long maxResults) {
+    SearchResult<ServiceLocationServiceChannelId> searchResult = serviceLocationServiceChannelSearcher.searchServiceChannels(kuntaApiOrganizationId, search, sortBy, sortDir, firstResult, maxResults);
+    return processServiceChannelsResults(searchResult, this::findServiceLocationServiceChannel);
   }
 
   /**
@@ -279,21 +290,57 @@ public class ServiceController {
    * @param maxResults max results
    * @return search result
    */
-  public SearchResult<ElectronicServiceChannel> searchElectronicServiceChannels(OrganizationId kuntaApiOrganizationId, String search, ElectronicServiceChannelSortBy sortBy, SortDir sortDir, Long firstResult, Long maxResults) {
-    SearchResult<ElectronicServiceChannelId> searchResult = electronicServiceChannelSearcher.searchElectronicServiceChannels(kuntaApiOrganizationId, search, sortBy, sortDir, firstResult, maxResults);
-    if (searchResult == null) {
-      return SearchResult.emptyResult();
-    }
-    
-    List<ElectronicServiceChannel> result = new ArrayList<>(searchResult.getResult().size());
-    for (ElectronicServiceChannelId electronicServiceChannelId : searchResult.getResult()) {
-      ElectronicServiceChannel electronicServiceChannel = findElectronicServiceChannel(electronicServiceChannelId);
-      if (electronicServiceChannel != null) {
-        result.add(electronicServiceChannel);
-      }
-    }
-    
-    return new SearchResult<>(result, searchResult.getTotalHits());
+  public SearchResult<ElectronicServiceChannel> searchElectronicServiceChannels(OrganizationId kuntaApiOrganizationId, String search, ServiceChannelSortBy sortBy, SortDir sortDir, Long firstResult, Long maxResults) {
+    SearchResult<ElectronicServiceChannelId> searchResult = electronicServiceChannelSearcher.searchServiceChannels(kuntaApiOrganizationId, search, sortBy, sortDir, firstResult, maxResults);
+    return processServiceChannelsResults(searchResult, this::findElectronicServiceChannel);
+  }
+
+  /**
+   * Searches phone service Channels. All parameters can be nulled. Nulled parameters will be ignored
+   * 
+   * @param kuntaApiOrganizationId organization id
+   * @param search free-text search
+   * @param sortBy sort by
+   * @param sortDir sort direction
+   * @param firstResult first result
+   * @param maxResults max results
+   * @return search result
+   */
+  public SearchResult<PhoneServiceChannel> searchPhoneServiceChannels(OrganizationId kuntaApiOrganizationId, String search, ServiceChannelSortBy sortBy, SortDir sortDir, Long firstResult, Long maxResults) {
+    SearchResult<PhoneServiceChannelId> searchResult = phoneServiceChannelSearcher.searchServiceChannels(kuntaApiOrganizationId, search, sortBy, sortDir, firstResult, maxResults);
+    return processServiceChannelsResults(searchResult, this::findPhoneServiceChannel);
+  }
+
+  /**
+   * Searches printable form service Channels. All parameters can be nulled. Nulled parameters will be ignored
+   * 
+   * @param kuntaApiOrganizationId organization id
+   * @param search free-text search
+   * @param sortBy sort by
+   * @param sortDir sort direction
+   * @param firstResult first result
+   * @param maxResults max results
+   * @return search result
+   */
+  public SearchResult<PrintableFormServiceChannel> searchPrintableFormServiceChannels(OrganizationId kuntaApiOrganizationId, String search, ServiceChannelSortBy sortBy, SortDir sortDir, Long firstResult, Long maxResults) {
+    SearchResult<PrintableFormServiceChannelId> searchResult = printableFormServiceChannelSearcher.searchServiceChannels(kuntaApiOrganizationId, search, sortBy, sortDir, firstResult, maxResults);
+    return processServiceChannelsResults(searchResult, this::findPrintableFormServiceChannel);
+  }
+
+  /**
+   * Searches web page service Channels. All parameters can be nulled. Nulled parameters will be ignored
+   * 
+   * @param kuntaApiOrganizationId organization id
+   * @param search free-text search
+   * @param sortBy sort by
+   * @param sortDir sort direction
+   * @param firstResult first result
+   * @param maxResults max results
+   * @return search result
+   */
+  public SearchResult<WebPageServiceChannel> searchWebPageServiceChannels(OrganizationId kuntaApiOrganizationId, String search, ServiceChannelSortBy sortBy, SortDir sortDir, Long firstResult, Long maxResults) {
+    SearchResult<WebPageServiceChannelId> searchResult = webPageServiceChannelSearcher.searchServiceChannels(kuntaApiOrganizationId, search, sortBy, sortDir, firstResult, maxResults);
+    return processServiceChannelsResults(searchResult, this::findWebPageServiceChannel);
   }
 
   public List<WebPageServiceChannel> listWebPageServiceChannels(Long firstResult, Long maxResults) {
@@ -343,5 +390,28 @@ public class ServiceController {
     }
     
     return Collections.unmodifiableList(result);
+  }
+
+  private <I extends BaseId, T> SearchResult<T> processServiceChannelsResults(SearchResult<I> searchResult, SearchResultFinder<I, T> resultFinder) {
+    if (searchResult == null) {
+      return SearchResult.emptyResult();
+    }
+    
+    List<T> result = new ArrayList<>(searchResult.getResult().size());
+    for (I serviceChannelId : searchResult.getResult()) {
+      T electronicServiceChannel = resultFinder.find(serviceChannelId);
+      if (electronicServiceChannel != null) {
+        result.add(electronicServiceChannel);
+      }
+    }
+    
+    return new SearchResult<>(result, searchResult.getTotalHits());
+  }
+  
+  @FunctionalInterface
+  private interface SearchResultFinder<I extends BaseId, T> {
+    
+    T find(I id);
+    
   }
 }

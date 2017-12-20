@@ -37,10 +37,13 @@ public class IndexUpdater extends AbstractIndexHander {
     registerIndexable(IndexableFile.class);
     registerIndexable(IndexableStopTime.class);
     registerIndexable(IndexableNewsArticle.class);
-    registerIndexable(IndexableServiceLocationServiceChannel.class);
     registerIndexable(IndexableContact.class);
     registerIndexable(IndexableCode.class);
+    registerIndexable(IndexableServiceLocationServiceChannel.class);
     registerIndexable(IndexableElectronicServiceChannel.class);
+    registerIndexable(IndexablePhoneServiceChannel.class);
+    registerIndexable(IndexablePrintableFormServiceChannel.class);
+    registerIndexable(IndexableWebPageServiceChannel.class);
   }
 
   @Lock (LockType.READ)

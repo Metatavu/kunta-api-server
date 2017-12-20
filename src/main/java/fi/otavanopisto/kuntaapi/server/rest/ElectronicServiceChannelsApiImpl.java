@@ -17,7 +17,7 @@ import fi.otavanopisto.kuntaapi.server.controllers.SecurityController;
 import fi.otavanopisto.kuntaapi.server.controllers.ServiceController;
 import fi.otavanopisto.kuntaapi.server.id.ElectronicServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
-import fi.otavanopisto.kuntaapi.server.integrations.ElectronicServiceChannelSortBy;
+import fi.otavanopisto.kuntaapi.server.integrations.ServiceChannelSortBy;
 import fi.otavanopisto.kuntaapi.server.integrations.IntegrationResponse;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
 import fi.otavanopisto.kuntaapi.server.integrations.SortDir;
@@ -83,7 +83,7 @@ public class ElectronicServiceChannelsApiImpl extends ElectronicServiceChannelsA
       return validationResponse;
     }
     
-    ElectronicServiceChannelSortBy sortBy = resolveElectronicServiceChannelSortBy(sortByParam);
+    ServiceChannelSortBy sortBy = resolveElectronicServiceChannelSortBy(sortByParam);
     if (sortBy == null) {
       return createBadRequest(INVALID_VALUE_FOR_SORT_BY);
     }
@@ -120,10 +120,10 @@ public class ElectronicServiceChannelsApiImpl extends ElectronicServiceChannelsA
     }
   }
   
-  private ElectronicServiceChannelSortBy resolveElectronicServiceChannelSortBy(String sortByParam) {
-    ElectronicServiceChannelSortBy sortBy = ElectronicServiceChannelSortBy.NATURAL;
+  private ServiceChannelSortBy resolveElectronicServiceChannelSortBy(String sortByParam) {
+    ServiceChannelSortBy sortBy = ServiceChannelSortBy.NATURAL;
     if (sortByParam != null) {
-      return  EnumUtils.getEnum(ElectronicServiceChannelSortBy.class, sortByParam);
+      return  EnumUtils.getEnum(ServiceChannelSortBy.class, sortByParam);
     }
     
     return sortBy;

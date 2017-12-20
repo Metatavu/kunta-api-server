@@ -17,7 +17,7 @@ import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceLocationServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.integrations.IntegrationResponse;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
-import fi.otavanopisto.kuntaapi.server.integrations.ServiceLocationServiceChannelSortBy;
+import fi.otavanopisto.kuntaapi.server.integrations.ServiceChannelSortBy;
 import fi.otavanopisto.kuntaapi.server.integrations.SortDir;
 import fi.otavanopisto.kuntaapi.server.persistence.model.clients.ClientOrganizationPermission;
 
@@ -100,7 +100,7 @@ public class ServiceLocationServiceChannelsApiImpl extends ServiceLocationServic
       return validationResponse;
     }
     
-    ServiceLocationServiceChannelSortBy sortBy = resolveServiceLocationServiceChannelSortBy(sortByParam);
+    ServiceChannelSortBy sortBy = resolveServiceChannelSortBy(sortByParam);
     if (sortBy == null) {
       return createBadRequest(INVALID_VALUE_FOR_SORT_BY);
     }
@@ -111,11 +111,8 @@ public class ServiceLocationServiceChannelsApiImpl extends ServiceLocationServic
     }
     
     OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
-    if (search != null || organizationId != null) {
-      return restResponseBuilder.buildResponse(serviceController.searchServiceLocationServiceChannels(organizationId, search, sortBy, sortDir, firstResult, maxResults), request);
-    }
     
-    return restResponseBuilder.buildResponse(serviceController.listServiceLocationServiceChannels(firstResult, maxResults), null, request);
+    return restResponseBuilder.buildResponse(serviceController.searchServiceLocationServiceChannels(organizationId, search, sortBy, sortDir, firstResult, maxResults), request);
   }
 
   private SortDir resolveSortDir(String sortDirParam) {
@@ -127,10 +124,10 @@ public class ServiceLocationServiceChannelsApiImpl extends ServiceLocationServic
     return sortDir;
   }
 
-  private ServiceLocationServiceChannelSortBy resolveServiceLocationServiceChannelSortBy(String sortByParam) {
-    ServiceLocationServiceChannelSortBy sortBy = ServiceLocationServiceChannelSortBy.NATURAL;
+  private ServiceChannelSortBy resolveServiceChannelSortBy(String sortByParam) {
+    ServiceChannelSortBy sortBy = ServiceChannelSortBy.NATURAL;
     if (sortByParam != null) {
-      return  EnumUtils.getEnum(ServiceLocationServiceChannelSortBy.class, sortByParam);
+      return  EnumUtils.getEnum(ServiceChannelSortBy.class, sortByParam);
     }
     
     return sortBy;

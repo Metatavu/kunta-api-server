@@ -24,7 +24,7 @@ import fi.otavanopisto.kuntaapi.server.id.PublicTransportStopId;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportStopTimeId;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportTripId;
 import fi.otavanopisto.kuntaapi.server.index.SearchResult;
-import fi.otavanopisto.kuntaapi.server.index.StopTimeSearcher;
+import fi.otavanopisto.kuntaapi.server.index.search.StopTimeSearcher;
 import fi.otavanopisto.kuntaapi.server.integrations.PublicTransportProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.PublicTransportStopTimeSortBy;
 import fi.otavanopisto.kuntaapi.server.integrations.SortDir;

@@ -11,8 +11,8 @@ import javax.inject.Inject;
 
 import fi.metatavu.kuntaapi.server.rest.model.Code;
 import fi.otavanopisto.kuntaapi.server.id.CodeId;
-import fi.otavanopisto.kuntaapi.server.index.CodeSearcher;
 import fi.otavanopisto.kuntaapi.server.index.SearchResult;
+import fi.otavanopisto.kuntaapi.server.index.search.CodeSearcher;
 import fi.otavanopisto.kuntaapi.server.integrations.CodeProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.CodeSortBy;
 import fi.otavanopisto.kuntaapi.server.integrations.SortDir;

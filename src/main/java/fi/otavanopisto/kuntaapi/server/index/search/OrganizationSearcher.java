@@ -1,4 +1,4 @@
-package fi.otavanopisto.kuntaapi.server.index;
+package fi.otavanopisto.kuntaapi.server.index.search;
 
 import static org.elasticsearch.index.query.QueryBuilders.boolQuery;
 import static org.elasticsearch.index.query.QueryBuilders.queryStringQuery;
@@ -16,6 +16,9 @@ import org.elasticsearch.search.sort.SortBuilders;
 import org.elasticsearch.search.sort.SortOrder;
 
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.index.AbstractIndexHander;
+import fi.otavanopisto.kuntaapi.server.index.IndexReader;
+import fi.otavanopisto.kuntaapi.server.index.SearchResult;
 import fi.otavanopisto.kuntaapi.server.integrations.OrganizationSortBy;
 import fi.otavanopisto.kuntaapi.server.integrations.SortDir;
 
