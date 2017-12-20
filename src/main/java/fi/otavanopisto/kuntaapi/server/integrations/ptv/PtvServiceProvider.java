@@ -262,34 +262,34 @@ public class PtvServiceProvider implements ServiceProvider {
    */
   private List<String> getPtvServiceChannelIds(Service service) {
     Stream<String> electronicChannelsStream = service.getElectronicServiceChannelIds().stream()
-      .map(channelId -> kuntaApiIdFactory.createElectronicServiceChannelId(channelId))
+      .map(kuntaApiIdFactory::createElectronicServiceChannelId)
       .map(channelId -> idController.translateElectronicServiceChannelId(channelId, PtvConsts.IDENTIFIER_NAME))
       .filter(Objects::nonNull)
       .map(ElectronicServiceChannelId::getId);
     
     Stream<String> phoneChannelsStream = service.getPhoneServiceChannelIds().stream()
-      .map(channelId -> kuntaApiIdFactory.createPhoneServiceChannelId(channelId))
+      .map(kuntaApiIdFactory::createPhoneServiceChannelId)
       .map(channelId -> idController.translatePhoneServiceChannelId(channelId, PtvConsts.IDENTIFIER_NAME))
       .filter(Objects::nonNull)
       .map(PhoneServiceChannelId::getId);
 
     Stream<String> printableFormChannelsStream = service.getPrintableFormServiceChannelIds().stream()
-      .map(channelId -> kuntaApiIdFactory.createPrintableFormServiceChannelId(channelId))
+      .map(kuntaApiIdFactory::createPrintableFormServiceChannelId)
       .map(channelId -> idController.translatePrintableFormServiceChannelId(channelId, PtvConsts.IDENTIFIER_NAME))
       .filter(Objects::nonNull)
       .map(PrintableFormServiceChannelId::getId);
 
     Stream<String> serviceLocationChannelsStream = service.getServiceLocationServiceChannelIds().stream()
-      .map(channelId -> kuntaApiIdFactory.createServiceLocationServiceChannelId(channelId))
+      .map(kuntaApiIdFactory::createServiceLocationServiceChannelId)
       .map(channelId -> idController.translateServiceLocationServiceChannelId(channelId, PtvConsts.IDENTIFIER_NAME))
       .filter(Objects::nonNull)
       .map(ServiceLocationServiceChannelId::getId);
     
     Stream<String> webPageChannelsStream = service.getWebPageServiceChannelIds().stream()
-        .map(channelId -> kuntaApiIdFactory.createWebPageServiceChannelId(channelId))
-        .map(channelId -> idController.translateWebPageServiceChannelId(channelId, PtvConsts.IDENTIFIER_NAME))
-        .filter(Objects::nonNull)
-        .map(WebPageServiceChannelId::getId);
+      .map(kuntaApiIdFactory::createWebPageServiceChannelId)
+      .map(channelId -> idController.translateWebPageServiceChannelId(channelId, PtvConsts.IDENTIFIER_NAME))
+      .filter(Objects::nonNull)
+      .map(WebPageServiceChannelId::getId);
     
     return Stream.of(electronicChannelsStream, phoneChannelsStream, printableFormChannelsStream, serviceLocationChannelsStream, webPageChannelsStream)
       .reduce(Stream::concat)
