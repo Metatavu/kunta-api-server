@@ -383,7 +383,7 @@ public class KuntaApiPtvTranslator extends AbstractTranslator {
     }
     
     List<ServiceOrganization> serviceProducers = organizations.stream()
-      .filter(serviceOrganization -> !" ".equals(serviceOrganization.getRoleType()))
+      .filter(serviceOrganization -> "Producer".equals(serviceOrganization.getRoleType()))
       .collect(Collectors.toList());
     
     List<VmOpenApiServiceProducerIn> result = new ArrayList<>(serviceProducers.size());
@@ -430,6 +430,10 @@ public class KuntaApiPtvTranslator extends AbstractTranslator {
   }
 
   private VmOpenApiServiceProducerIn translateServiceProducer(ServiceOrganization serviceOrganization, Integer orderNumber) {
+    if (serviceOrganization == null || !"Producer".equals(serviceOrganization.getRoleType())) {
+      return null;
+    }
+    
     OrganizationId kuntaApiOrganizationId = kuntaApiIdFactory.createOrganizationId(serviceOrganization.getOrganizationId());
     OrganizationId ptvOrganizationId = idController.translateOrganizationId(kuntaApiOrganizationId, PtvConsts.IDENTIFIER_NAME);
     if (ptvOrganizationId == null) {
@@ -501,7 +505,7 @@ public class KuntaApiPtvTranslator extends AbstractTranslator {
   }
 
   private V4VmOpenApiWebPage translateWebPage(WebPage webPage) {
-    if (webPage == null || StringUtils.isBlank(webPage.getUrl()) || StringUtils.isBlank(webPage.getValue())) {
+    if (webPage == null || (StringUtils.isBlank(webPage.getUrl()) && StringUtils.isBlank(webPage.getValue()))) {
       return null;
     }
 

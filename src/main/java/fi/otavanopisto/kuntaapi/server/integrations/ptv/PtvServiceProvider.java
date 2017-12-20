@@ -2,12 +2,15 @@ package fi.otavanopisto.kuntaapi.server.integrations.ptv;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -16,16 +19,27 @@ import javax.transaction.Transactional.TxType;
 
 import fi.metatavu.kuntaapi.server.rest.model.Service;
 import fi.metatavu.ptv.client.ApiResponse;
+import fi.metatavu.ptv.client.ConnectionApi;
 import fi.metatavu.ptv.client.ServiceApi;
 import fi.metatavu.ptv.client.model.V7VmOpenApiService;
+import fi.metatavu.ptv.client.model.V7VmOpenApiServiceAndChannelRelationInBase;
 import fi.metatavu.ptv.client.model.V7VmOpenApiServiceInBase;
+import fi.metatavu.ptv.client.model.V7VmOpenApiServiceServiceChannel;
+import fi.metatavu.ptv.client.model.V7VmOpenApiServiceServiceChannelInBase;
+import fi.metatavu.ptv.client.model.VmOpenApiItem;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.controllers.ServiceController;
+import fi.otavanopisto.kuntaapi.server.id.ElectronicServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.id.PhoneServiceChannelId;
+import fi.otavanopisto.kuntaapi.server.id.PrintableFormServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceId;
+import fi.otavanopisto.kuntaapi.server.id.ServiceLocationServiceChannelId;
+import fi.otavanopisto.kuntaapi.server.id.WebPageServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.integrations.IntegrationResponse;
+import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.client.PtvApi;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.ServiceIdTaskQueue;
@@ -62,6 +76,9 @@ public class PtvServiceProvider implements ServiceProvider {
 
   @Inject
   private KuntaApiPtvTranslator kuntaApiPtvTranslator;
+
+  @Inject
+  private KuntaApiIdFactory kuntaApiIdFactory;
 
   @Inject
   private PtvApi ptvApi; 
@@ -115,7 +132,13 @@ public class PtvServiceProvider implements ServiceProvider {
         return IntegrationResponse.statusMessage(findResponse.getStatus(), findResponse.getMessage());
       }
       
-      V7VmOpenApiServiceInBase ptvServiceIn = ptvOutPtvInTranslator.translateService(findResponse.getResponse());
+      V7VmOpenApiService ptvService = findResponse.getResponse();
+      List<V7VmOpenApiServiceServiceChannel> serviceChannels = ptvService.getServiceChannels();
+      
+      VmOpenApiItem serviceChannel = serviceChannels.get(0).getServiceChannel();
+      serviceChannel.getId();
+      
+      V7VmOpenApiServiceInBase ptvServiceIn = ptvOutPtvInTranslator.translateService(ptvService);
       ptvServiceIn.setAreas(kuntaApiPtvTranslator.translateAreas(service.getAreas()));
       ptvServiceIn.setAreaType(service.getAreaType());
       ptvServiceIn.setFundingType(service.getFundingType());
@@ -146,6 +169,12 @@ public class PtvServiceProvider implements ServiceProvider {
       ApiResponse<V7VmOpenApiService> updateResponse = serviceApi.apiV7ServiceByIdPut(ptvServiceId.getId(), ptvServiceIn, false);
       
       if (updateResponse.isOk()) {
+        ApiResponse<V7VmOpenApiService> updateServiceChannelsResponse = updateServiceChannels(mainOrganizationId, ptvService, service);
+        if (!updateServiceChannelsResponse.isOk()) {
+          logger.severe(() -> String.format("Failed to update service channels [%d] %s", updateServiceChannelsResponse.getStatus(), updateServiceChannelsResponse.getMessage()));
+          return IntegrationResponse.statusMessage(updateServiceChannelsResponse.getStatus(), updateServiceChannelsResponse.getMessage());
+        }
+        
         Future<Long> enqueuedTask = serviceIdTaskQueue.enqueueTask(true, new IdTask<ServiceId>(Operation.UPDATE, serviceId));
         
         try {
@@ -178,6 +207,94 @@ public class PtvServiceProvider implements ServiceProvider {
   
   private List<ServiceId> listOrganizationServiceIds(OrganizationId organizationId) {
     return identifierRelationController.listServiceIdsBySourceAndParentId(PtvConsts.IDENTIFIER_NAME, organizationId);
+  }
+
+  /**
+   * Updates service channel connections into PTV
+   * 
+   * @param organizationId organization id
+   * @param ptvService ptv service to be updated
+   * @param service kunta api where services are updated from
+   * @return response
+   */
+  private ApiResponse<V7VmOpenApiService> updateServiceChannels(OrganizationId organizationId, V7VmOpenApiService ptvService, Service service) {
+    ConnectionApi connectionApi = ptvApi.getConnectionApi(organizationId);
+    V7VmOpenApiServiceAndChannelRelationInBase relationUpdateRequest = new V7VmOpenApiServiceAndChannelRelationInBase();
+    relationUpdateRequest.setDeleteAllChannelRelations(true);
+        
+    List<String> ptvServiceChannelIds = getPtvServiceChannelIds(service);
+    
+    List<V7VmOpenApiServiceServiceChannel> serviceChannels = ptvService.getServiceChannels().stream()
+      .filter(channel -> channel.getServiceChannel() != null && channel.getServiceChannel().getId() != null)
+      .collect(Collectors.toList());
+    
+    List<String> ptvExistingServiceChannelIds = serviceChannels.stream()
+      .map(channel -> channel.getServiceChannel().getId().toString() )
+      .collect(Collectors.collectingAndThen(Collectors.toList(), ArrayList<String>::new));
+    
+    for (String ptvServiceChannelId : ptvServiceChannelIds) {
+      if (!ptvExistingServiceChannelIds.contains(ptvServiceChannelId)) {
+        V7VmOpenApiServiceServiceChannelInBase channelRelation = new V7VmOpenApiServiceServiceChannelInBase();
+        channelRelation.setServiceChannelId(ptvServiceChannelId);
+        channelRelation.setDeleteAllDescriptions(false);
+        channelRelation.setDeleteAllServiceHours(false);
+        channelRelation.setDeleteServiceChargeType(false);
+        relationUpdateRequest.addChannelRelationsItem(channelRelation);
+      }
+      
+      ptvExistingServiceChannelIds.remove(ptvServiceChannelId);
+    }
+    
+    serviceChannels.stream()
+      .filter(serviceChannel -> !ptvExistingServiceChannelIds.contains(serviceChannel.getServiceChannel().getId().toString()))
+      .map(serviceChannel -> ptvOutPtvInTranslator.translateServiceServiceChannel(serviceChannel))
+      .filter(Objects::nonNull)
+      .forEach(relationUpdateRequest::addChannelRelationsItem);
+      
+    return connectionApi.apiV7ConnectionServiceIdByServiceIdPut(ptvService.getId().toString(), relationUpdateRequest);
+  }
+  
+  /**
+   * Loads PTV service channel ids used in Kunta API service
+   * 
+   * @param service Kunta API Service
+   * @return PTV service channel ids used in the service
+   */
+  private List<String> getPtvServiceChannelIds(Service service) {
+    Stream<String> electronicChannelsStream = service.getElectronicServiceChannelIds().stream()
+      .map(channelId -> kuntaApiIdFactory.createElectronicServiceChannelId(channelId))
+      .map(channelId -> idController.translateElectronicServiceChannelId(channelId, PtvConsts.IDENTIFIER_NAME))
+      .filter(Objects::nonNull)
+      .map(ElectronicServiceChannelId::getId);
+    
+    Stream<String> phoneChannelsStream = service.getPhoneServiceChannelIds().stream()
+      .map(channelId -> kuntaApiIdFactory.createPhoneServiceChannelId(channelId))
+      .map(channelId -> idController.translatePhoneServiceChannelId(channelId, PtvConsts.IDENTIFIER_NAME))
+      .filter(Objects::nonNull)
+      .map(PhoneServiceChannelId::getId);
+
+    Stream<String> printableFormChannelsStream = service.getPrintableFormServiceChannelIds().stream()
+      .map(channelId -> kuntaApiIdFactory.createPrintableFormServiceChannelId(channelId))
+      .map(channelId -> idController.translatePrintableFormServiceChannelId(channelId, PtvConsts.IDENTIFIER_NAME))
+      .filter(Objects::nonNull)
+      .map(PrintableFormServiceChannelId::getId);
+
+    Stream<String> serviceLocationChannelsStream = service.getServiceLocationServiceChannelIds().stream()
+      .map(channelId -> kuntaApiIdFactory.createServiceLocationServiceChannelId(channelId))
+      .map(channelId -> idController.translateServiceLocationServiceChannelId(channelId, PtvConsts.IDENTIFIER_NAME))
+      .filter(Objects::nonNull)
+      .map(ServiceLocationServiceChannelId::getId);
+    
+    Stream<String> webPageChannelsStream = service.getWebPageServiceChannelIds().stream()
+        .map(channelId -> kuntaApiIdFactory.createWebPageServiceChannelId(channelId))
+        .map(channelId -> idController.translateWebPageServiceChannelId(channelId, PtvConsts.IDENTIFIER_NAME))
+        .filter(Objects::nonNull)
+        .map(WebPageServiceChannelId::getId);
+    
+    return Stream.of(electronicChannelsStream, phoneChannelsStream, printableFormChannelsStream, serviceLocationChannelsStream, webPageChannelsStream)
+      .reduce(Stream::concat)
+      .orElseGet(Stream::empty)
+      .collect(Collectors.toList());
   }
   
 }
