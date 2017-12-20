@@ -124,7 +124,9 @@ public class PtvTranslator extends AbstractTranslator {
     result.setSupportPhones(translatePhones(ptvElectronicServiceChannel.getSupportPhones()));
     result.setUrls(translateLocalizedItems(ptvElectronicServiceChannel.getUrls()));
     result.setWebPages(translateWebPagesWithOrderNumber(ptvElectronicServiceChannel.getWebPages()));
-    
+    result.setAreas(translateAreas(ptvElectronicServiceChannel.getAreas()));
+    result.setAreaType(ptvElectronicServiceChannel.getAreaType());
+
     return result;
   }
 

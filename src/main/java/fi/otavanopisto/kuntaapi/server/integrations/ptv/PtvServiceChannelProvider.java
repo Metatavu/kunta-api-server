@@ -3,11 +3,18 @@ package fi.otavanopisto.kuntaapi.server.integrations.ptv;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import javax.transaction.Transactional;
+import javax.transaction.Transactional.TxType;
+import javax.ws.rs.core.Response;
 
 import fi.metatavu.kuntaapi.server.rest.model.ElectronicServiceChannel;
 import fi.metatavu.kuntaapi.server.rest.model.PhoneServiceChannel;
@@ -16,6 +23,8 @@ import fi.metatavu.kuntaapi.server.rest.model.ServiceLocationServiceChannel;
 import fi.metatavu.kuntaapi.server.rest.model.WebPageServiceChannel;
 import fi.metatavu.ptv.client.ApiResponse;
 import fi.metatavu.ptv.client.ServiceChannelApi;
+import fi.metatavu.ptv.client.model.V6VmOpenApiElectronicChannelInBase;
+import fi.metatavu.ptv.client.model.V7VmOpenApiElectronicChannel;
 import fi.metatavu.ptv.client.model.V7VmOpenApiServiceLocationChannel;
 import fi.metatavu.ptv.client.model.V7VmOpenApiServiceLocationChannelInBase;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
@@ -41,7 +50,6 @@ import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.ServiceChannelTask
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.ServiceChannelUpdateTask;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.translation.KuntaApiPtvTranslator;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.translation.PtvOutPtvInTranslator;
-import fi.otavanopisto.kuntaapi.server.integrations.ptv.translation.PtvTranslator;
 
 /**
  * Service channel provider for PTV
@@ -76,9 +84,6 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
   @Inject
   private IdController idController;
   
-  @Inject
-  private PtvTranslator ptvTranslator;
-
   @Inject
   private PtvOutPtvInTranslator ptvOutPtvInTranslator;
 
@@ -116,20 +121,75 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
   public ServiceLocationServiceChannel findServiceLocationServiceChannel(ServiceLocationServiceChannelId serviceLocationChannelId) {
     return ptvServiceLocationServiceChannelResourceContainer.get(serviceLocationChannelId);
   }
+  
+  @Override
+  public IntegrationResponse<ElectronicServiceChannel> updateElectronicServiceChannel(ElectronicServiceChannelId electronicChannelId, ElectronicServiceChannel electronicServiceChannel) {
+    ElectronicServiceChannelId ptvElectronicServiceChannelId = idController.translateElectronicServiceChannelId(electronicChannelId, PtvConsts.IDENTIFIER_NAME);
+    if (ptvElectronicServiceChannelId != null) {
+      V7VmOpenApiElectronicChannel ptvElectronicServiceChannel = loadServiceChannel(ServiceChannelType.ELECTRONIC_CHANNEL, ptvElectronicServiceChannelId.getId());
+      if (ptvElectronicServiceChannel == null) {
+        return IntegrationResponse.statusMessage(Response.Status.BAD_REQUEST.getStatusCode(), "Could not resolve service channel");
+      }
+      
+      V6VmOpenApiElectronicChannelInBase ptvElectronicServiceChannelIn = ptvOutPtvInTranslator.translateElectronicChannel(ptvElectronicServiceChannel);
+      
+      if (ptvElectronicServiceChannelIn == null) {
+        logger.log(Level.SEVERE, () -> String.format("Failed to translate ptv %s service location service channel", ptvElectronicServiceChannelId.getId()));
+        return null;
+      }
+      
+      OrganizationId ptvOrganizationId = ptvIdFactory.createOrganizationId(ptvElectronicServiceChannel.getOrganizationId());
+      OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(ptvOrganizationId, KuntaApiConsts.IDENTIFIER_NAME);
+      if (kuntaApiOrganizationId == null) {
+        logger.log(Level.WARNING, () -> String.format("Failed to translate ptv organization id %s into Kunta API organization id", ptvOrganizationId));
+        return null;
+      }
+      
+      ServiceChannelApi serviceChannelApi = ptvApi.getServiceChannelApi(kuntaApiOrganizationId);
+      
+      ptvElectronicServiceChannelIn.setAreas(kuntaApiPtvTranslator.translateAreas(electronicServiceChannel.getAreas()));
+      ptvElectronicServiceChannelIn.setAreaType(electronicServiceChannel.getAreaType());
+      ptvElectronicServiceChannelIn.setAttachments(kuntaApiPtvTranslator.translateAttachments(electronicServiceChannel.getAttachments()));
+      ptvElectronicServiceChannelIn.setPublishingStatus(electronicServiceChannel.getPublishingStatus());
+      ptvElectronicServiceChannelIn.setRequiresAuthentication(electronicServiceChannel.getRequiresAuthentication());
+      ptvElectronicServiceChannelIn.setRequiresSignature(electronicServiceChannel.getRequiresSignature());
+      ptvElectronicServiceChannelIn.setServiceChannelDescriptions(kuntaApiPtvTranslator.translateLocalizedValuesIntoLocalizedListItems(electronicServiceChannel.getDescriptions()));
+      ptvElectronicServiceChannelIn.setServiceChannelNames(kuntaApiPtvTranslator.translateLocalizedValuesIntoLanguageItems(electronicServiceChannel.getNames()));
+      ptvElectronicServiceChannelIn.setServiceHours(kuntaApiPtvTranslator.translateServiceHours(electronicServiceChannel.getServiceHours()));
+      ptvElectronicServiceChannelIn.setSignatureQuantity(String.valueOf(electronicServiceChannel.getSignatureQuantity()));
+      ptvElectronicServiceChannelIn.setSupportEmails(kuntaApiPtvTranslator.translateEmailsIntoLanguageItems(electronicServiceChannel.getSupportEmails()));
+      ptvElectronicServiceChannelIn.setSupportPhones(kuntaApiPtvTranslator.translatePhoneNumbers(electronicServiceChannel.getSupportPhones()));
+      ptvElectronicServiceChannelIn.setUrls(kuntaApiPtvTranslator.translateLocalizedValuesIntoLanguageItems(electronicServiceChannel.getUrls()));
+      ptvElectronicServiceChannelIn.setDeleteAllAttachments(true);
+      ptvElectronicServiceChannelIn.setDeleteAllServiceHours(true);
+      ptvElectronicServiceChannelIn.setDeleteAllSupportEmails(true);
+      ptvElectronicServiceChannelIn.setDeleteAllSupportPhones(true);
+      ptvElectronicServiceChannelIn.setDeleteAllWebPages(false);
+
+      ApiResponse<V7VmOpenApiElectronicChannel> response = serviceChannelApi.apiV7ServiceChannelEChannelByIdPut(ptvElectronicServiceChannelId.getId(), ptvElectronicServiceChannelIn);
+      if (response.isOk()) {
+        String updatedPtvChannelId = response.getResponse().getId().toString();
+        waitServiceChannelUpdate(updatedPtvChannelId);
+        return findElectronicChannelAfterUpdate(electronicChannelId);
+      } else {        
+        logger.severe(() -> String.format("Failed to update service location service channel [%d] %s", response.getStatus(), response.getMessage()));
+        return IntegrationResponse.statusMessage(response.getStatus(), response.getMessage());
+      }
+      
+    }
+    
+    return null;
+  }
 
   @Override
   public IntegrationResponse<ServiceLocationServiceChannel> updateServiceLocationServiceChannel(ServiceLocationServiceChannelId serviceLocationChannelId, ServiceLocationServiceChannel serviceLocationServiceChannel) {
     ServiceLocationServiceChannelId ptvServiceLocationServiceChannelId = idController.translateServiceLocationServiceChannelId(serviceLocationChannelId, PtvConsts.IDENTIFIER_NAME);
     if (ptvServiceLocationServiceChannelId != null) {
-      Map<String, Object> channelData = ptvServiceChannelResolver.loadServiceChannelData(ptvServiceLocationServiceChannelId.getId());
-      ServiceChannelType serviceChannelType = ptvServiceChannelResolver.resolveServiceChannelType(channelData);
-      if (serviceChannelType != ServiceChannelType.SERVICE_LOCATION) {
-        logger.log(Level.SEVERE, () -> String.format("Attempted to update ptv %s service channel %s into SERVICE_LOCATION", serviceChannelType, ptvServiceLocationServiceChannelId.getId()));
-        return null;
+      V7VmOpenApiServiceLocationChannel ptvServiceLocationServiceChannel = loadServiceChannel(ServiceChannelType.SERVICE_LOCATION, ptvServiceLocationServiceChannelId.getId());
+      if (ptvServiceLocationServiceChannel == null) {
+        return IntegrationResponse.statusMessage(Response.Status.BAD_REQUEST.getStatusCode(), "Could not resolve service channel");
       }
       
-      byte[] serializeChannelData = ptvServiceChannelResolver.serializeChannelData(channelData);
-      V7VmOpenApiServiceLocationChannel ptvServiceLocationServiceChannel = ptvServiceChannelResolver.unserializeServiceLocationChannel(serializeChannelData);
       V7VmOpenApiServiceLocationChannelInBase ptvServiceLocationServiceChannelIn = ptvOutPtvInTranslator.translateServiceLocationChannel(ptvServiceLocationServiceChannel);
       
       if (ptvServiceLocationServiceChannelIn == null) {
@@ -160,9 +220,9 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
       
       ApiResponse<V7VmOpenApiServiceLocationChannel> response = serviceChannelApi.apiV7ServiceChannelServiceLocationByIdPut(ptvServiceLocationServiceChannelId.getId(), ptvServiceLocationServiceChannelIn);
       if (response.isOk()) {
-        V7VmOpenApiServiceLocationChannel ptvUpdatedServiceLocationServiceChannel = response.getResponse();
-        serviceChannelTasksQueue.enqueueTask(true, new ServiceChannelUpdateTask(ptvUpdatedServiceLocationServiceChannel.getId().toString(), null));
-        return IntegrationResponse.ok(ptvTranslator.translateServiceLocationServiceChannel(serviceLocationChannelId, kuntaApiOrganizationId, ptvUpdatedServiceLocationServiceChannel));
+        String updatedPtvChannelId = response.getResponse().getId().toString();
+        waitServiceChannelUpdate(updatedPtvChannelId);
+        return findServiceLocationChannelAfterUpdate(serviceLocationChannelId);
       } else {        
         logger.severe(() -> String.format("Failed to update service location service channel [%d] %s", response.getStatus(), response.getMessage()));
         return IntegrationResponse.statusMessage(response.getStatus(), response.getMessage());
@@ -251,6 +311,66 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
     }
     
     return result;
+  }
+
+  /**
+   * Returns service channel in new transaction. Used after the service channel has been updated.
+   * 
+   * @param serviceChannelId serviceId
+   * @return updated service 
+   */
+  @Transactional (TxType.REQUIRES_NEW)
+  public IntegrationResponse<ServiceLocationServiceChannel> findServiceLocationChannelAfterUpdate(ServiceLocationServiceChannelId serviceChannelId) {
+    return IntegrationResponse.ok(findServiceLocationServiceChannel(serviceChannelId));
+  }
+
+  /**
+   * Returns service channel in new transaction. Used after the service channel has been updated.
+   * 
+   * @param serviceChannelId serviceId
+   * @return updated service 
+   */
+  @Transactional (TxType.REQUIRES_NEW)
+  public IntegrationResponse<ElectronicServiceChannel> findElectronicChannelAfterUpdate(ElectronicServiceChannelId serviceChannelId) {
+    return IntegrationResponse.ok(findElectronicServiceChannel(serviceChannelId));
+  }
+
+  private void waitServiceChannelUpdate(String updatedPtvChannelId) {
+    Future<Long> enqueuedTask = serviceChannelTasksQueue.enqueueTask(true, new ServiceChannelUpdateTask(updatedPtvChannelId, null));        
+    try {
+      enqueuedTask.get(1l, TimeUnit.MINUTES);
+    } catch (InterruptedException | ExecutionException | TimeoutException e) {
+      logger.log(Level.WARNING, "Task waiting failed, returning old version", e);
+    }
+  }
+  
+  @SuppressWarnings("unchecked")
+  private <T> T loadServiceChannel(ServiceChannelType expectedType, String ptvServiceChannelId) {
+    Map<String, Object> channelData = ptvServiceChannelResolver.loadServiceChannelData(ptvServiceChannelId);
+    ServiceChannelType serviceChannelType = ptvServiceChannelResolver.resolveServiceChannelType(channelData);
+    if (serviceChannelType != expectedType) {
+      logger.log(Level.SEVERE, () -> String.format("Attempted to update ptv %s service channel %s into %s", serviceChannelType, ptvServiceChannelId, expectedType));
+      return null;
+    }
+    
+    byte[] serializeChannelData = ptvServiceChannelResolver.serializeChannelData(channelData);
+    
+    switch (expectedType) {
+      case ELECTRONIC_CHANNEL:
+        return (T) ptvServiceChannelResolver.unserializeElectronicChannel(serializeChannelData);
+      case PHONE:
+        return (T) ptvServiceChannelResolver.unserializePhoneChannel(serializeChannelData);
+      case PRINTABLE_FORM:
+        return (T) ptvServiceChannelResolver.unserializePrintableFormChannel(serializeChannelData);
+      case SERVICE_LOCATION:
+        return (T) ptvServiceChannelResolver.unserializeServiceLocationChannel(serializeChannelData);
+      case WEB_PAGE:
+        return (T) ptvServiceChannelResolver.unserializeWebPageChannel(serializeChannelData);
+      default:
+        logger.severe(() -> String.format("I don't know how to unserialize %s", expectedType));
+    }
+    
+    return null;
   }
   
 }

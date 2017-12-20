@@ -40,6 +40,7 @@ public class IndexUpdater extends AbstractIndexHander {
     registerIndexable(IndexableServiceLocationServiceChannel.class);
     registerIndexable(IndexableContact.class);
     registerIndexable(IndexableCode.class);
+    registerIndexable(IndexableElectronicServiceChannel.class);
   }
 
   @Lock (LockType.READ)
