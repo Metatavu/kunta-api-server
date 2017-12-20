@@ -1,4 +1,4 @@
-package fi.otavanopisto.kuntaapi.server.index;
+package fi.otavanopisto.kuntaapi.server.index.search;
 
 import static org.elasticsearch.index.query.QueryBuilders.boolQuery;
 import static org.elasticsearch.index.query.QueryBuilders.queryStringQuery;
@@ -24,6 +24,9 @@ import fi.otavanopisto.kuntaapi.server.id.PrintableFormServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceLocationServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.WebPageServiceChannelId;
+import fi.otavanopisto.kuntaapi.server.index.AbstractIndexHander;
+import fi.otavanopisto.kuntaapi.server.index.IndexReader;
+import fi.otavanopisto.kuntaapi.server.index.SearchResult;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceSortBy;
 import fi.otavanopisto.kuntaapi.server.integrations.SortDir;

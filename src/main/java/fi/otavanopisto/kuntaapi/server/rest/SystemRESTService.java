@@ -38,7 +38,7 @@ import fi.otavanopisto.kuntaapi.server.id.ServiceId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceLocationServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.index.SearchResult;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
-import fi.otavanopisto.kuntaapi.server.integrations.ServiceLocationServiceChannelSortBy;
+import fi.otavanopisto.kuntaapi.server.integrations.ServiceChannelSortBy;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceSortBy;
 import fi.otavanopisto.kuntaapi.server.integrations.SortDir;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.PtvConsts;
@@ -150,7 +150,7 @@ public class SystemRESTService {
       }
       
       OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(kuntaApiOrganizationIdParam);
-      SearchResult<ServiceLocationServiceChannel> locationServiceChannels = serviceController.searchServiceLocationServiceChannels(organizationId, null, ServiceLocationServiceChannelSortBy.NATURAL, SortDir.DESC, first, max);
+      SearchResult<ServiceLocationServiceChannel> locationServiceChannels = serviceController.searchServiceLocationServiceChannels(organizationId, null, ServiceChannelSortBy.NATURAL, SortDir.DESC, first, max);
       if (locationServiceChannels != null) {
         for (ServiceLocationServiceChannel serviceLocationServiceChannel : locationServiceChannels.getResult()) {
           ServiceLocationServiceChannelId locationServiceChannelId = kuntaApiIdFactory.createServiceLocationServiceChannelId(serviceLocationServiceChannel.getId());

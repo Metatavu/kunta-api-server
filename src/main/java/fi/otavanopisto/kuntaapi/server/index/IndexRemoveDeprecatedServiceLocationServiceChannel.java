@@ -1,6 +1,6 @@
 package fi.otavanopisto.kuntaapi.server.index;
 
-public class IndexRemoveServiceLocationServiceChannel implements IndexRemove {
+public class IndexRemoveDeprecatedServiceLocationServiceChannel implements IndexRemove {
 
   private String serviceLocationServiceChannelId;
   

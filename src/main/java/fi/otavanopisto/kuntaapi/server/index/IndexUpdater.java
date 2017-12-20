@@ -37,10 +37,13 @@ public class IndexUpdater extends AbstractIndexHander {
     registerIndexable(IndexableFile.class);
     registerIndexable(IndexableStopTime.class);
     registerIndexable(IndexableNewsArticle.class);
-    registerIndexable(IndexableServiceLocationServiceChannel.class);
     registerIndexable(IndexableContact.class);
     registerIndexable(IndexableCode.class);
+    registerIndexable(IndexableServiceLocationServiceChannel.class);
     registerIndexable(IndexableElectronicServiceChannel.class);
+    registerIndexable(IndexablePhoneServiceChannel.class);
+    registerIndexable(IndexablePrintableFormServiceChannel.class);
+    registerIndexable(IndexableWebPageServiceChannel.class);
   }
 
   @Lock (LockType.READ)
@@ -74,12 +77,7 @@ public class IndexUpdater extends AbstractIndexHander {
     
     try {
       Indexable instance = indexable.newInstance();
-      
-      BeanInfo beanInfo = Introspector.getBeanInfo(indexable);
-      for (PropertyDescriptor propertyDescriptor : beanInfo.getPropertyDescriptors()) {
-        readPropertyMapping(indexable, properties, propertyDescriptor);
-      }
-      
+      readProperties(indexable, properties);
       updateTypeMapping(instance.getType(), properties);
       
     } catch (IntrospectionException e) {
@@ -89,8 +87,23 @@ public class IndexUpdater extends AbstractIndexHander {
     }
   }
 
-  public void readPropertyMapping(Class<? extends Indexable> indexable, Map<String, Map<String, Object>> properties,
-      PropertyDescriptor propertyDescriptor) {
+  @SuppressWarnings("unchecked")
+  private void readProperties(Class<? extends Indexable> indexable, Map<String, Map<String, Object>> properties) throws InstantiationException, IllegalAccessException, IntrospectionException {
+    BeanInfo beanInfo = Introspector.getBeanInfo(indexable);
+    for (PropertyDescriptor propertyDescriptor : beanInfo.getPropertyDescriptors()) {
+      readPropertyMapping(indexable, properties, propertyDescriptor);
+    }
+    
+    Class<?> superclass = indexable.getSuperclass();
+    if (superclass == null || superclass.equals(Object.class)) {
+      return;
+    }
+    
+    
+    readProperties((Class<? extends Indexable>) indexable.getSuperclass(), properties);
+  }
+
+  private void readPropertyMapping(Class<? extends Indexable> indexable, Map<String, Map<String, Object>> properties, PropertyDescriptor propertyDescriptor) {
     String fieldName = propertyDescriptor.getName();
     Field propertyField = getField(indexable, fieldName);
     Method readMethod = propertyDescriptor.getReadMethod();
@@ -131,7 +144,7 @@ public class IndexUpdater extends AbstractIndexHander {
       Map<String, Map<String, Map<String, Object>>> mapping = new HashMap<>();
       mapping.put("properties", properties);
       String source = objectMapper.writeValueAsString(mapping);
-      
+
       getClient()
         .admin()
         .indices()

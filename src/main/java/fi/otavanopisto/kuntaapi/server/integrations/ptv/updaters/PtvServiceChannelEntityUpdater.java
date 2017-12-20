@@ -35,12 +35,15 @@ import fi.otavanopisto.kuntaapi.server.id.PhoneServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.PrintableFormServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceLocationServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.WebPageServiceChannelId;
-import fi.otavanopisto.kuntaapi.server.index.IndexRemoveElectronicServiceChannel;
+import fi.otavanopisto.kuntaapi.server.index.AbstractIndexableServiceChannel;
+import fi.otavanopisto.kuntaapi.server.index.IndexRemoveDeprecatedServiceLocationServiceChannel;
 import fi.otavanopisto.kuntaapi.server.index.IndexRemoveRequest;
-import fi.otavanopisto.kuntaapi.server.index.IndexRemoveServiceLocationServiceChannel;
 import fi.otavanopisto.kuntaapi.server.index.IndexRequest;
 import fi.otavanopisto.kuntaapi.server.index.IndexableElectronicServiceChannel;
+import fi.otavanopisto.kuntaapi.server.index.IndexablePhoneServiceChannel;
+import fi.otavanopisto.kuntaapi.server.index.IndexablePrintableFormServiceChannel;
 import fi.otavanopisto.kuntaapi.server.index.IndexableServiceLocationServiceChannel;
+import fi.otavanopisto.kuntaapi.server.index.IndexableWebPageServiceChannel;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
 import fi.otavanopisto.kuntaapi.server.integrations.management.ManagementConsts;
@@ -282,6 +285,7 @@ public class PtvServiceChannelEntityUpdater extends EntityUpdater {
     
     ptvPrintableFormServiceChannelResourceContainer.put(kuntaApiPrintableFormServiceChannelId, printableFormServiceChannel);
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(printableFormServiceChannel));
+    indexPrintableFormServiceChannel(orderIndex, printableFormServiceChannel);
   }
   
   private void updatePhoneServiceChannel(Long orderIndex, V7VmOpenApiPhoneChannel ptvPhoneServiceChannel) {
@@ -308,6 +312,7 @@ public class PtvServiceChannelEntityUpdater extends EntityUpdater {
     
     ptvPhoneServiceChannelResourceContainer.put(kuntaApiPhoneServiceChannelId, phoneServiceChannel);
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(phoneServiceChannel));
+    indexPhoneServiceChannel(orderIndex, phoneServiceChannel);
   }
   
   private void updateWebPageServiceChannel(Long orderIndex, V7VmOpenApiWebPageChannel ptvWebPageServiceChannel) {
@@ -334,6 +339,7 @@ public class PtvServiceChannelEntityUpdater extends EntityUpdater {
     
     ptvWebPageServiceChannelResourceContainer.put(kuntaApiWebPageServiceChannelId, webPageServiceChannel);
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(webPageServiceChannel));
+    indexWebPageServiceChannel(orderIndex, webPageServiceChannel);
   }
 
   private void removeServiceChannelChannel(AbstractServiceChannelTask task) {
@@ -354,12 +360,10 @@ public class PtvServiceChannelEntityUpdater extends EntityUpdater {
     Identifier electronicServiceChannelIdentifier = identifierController.findIdentifierById(electronicServiceChannelId);
     if (electronicServiceChannelIdentifier != null) {
       ElectronicServiceChannelId kuntaApiElectronicServiceChannelId = kuntaApiIdFactory.createFromIdentifier(ElectronicServiceChannelId.class, electronicServiceChannelIdentifier);
+      indexRemoveRequest.fire(new IndexRemoveRequest(new IndexableElectronicServiceChannel(kuntaApiElectronicServiceChannelId.getId())));
       modificationHashCache.clear(electronicServiceChannelIdentifier.getKuntaApiId());
       ptvElectronicServiceChannelResourceContainer.clear(kuntaApiElectronicServiceChannelId);
       identifierController.deleteIdentifier(electronicServiceChannelIdentifier);
-      IndexRemoveElectronicServiceChannel indexRemoveElectronicServiceChannel = new IndexRemoveElectronicServiceChannel();
-      indexRemoveElectronicServiceChannel.setServiceChannelId(electronicServiceChannelIdentifier.getKuntaApiId());
-      indexRemoveRequest.fire(new IndexRemoveRequest(indexRemoveElectronicServiceChannel));      
     }
   }
 
@@ -367,6 +371,7 @@ public class PtvServiceChannelEntityUpdater extends EntityUpdater {
     Identifier phoneServiceChannelIdentifier = identifierController.findIdentifierById(phoneServiceChannelId);
     if (phoneServiceChannelIdentifier != null) {
       PhoneServiceChannelId kuntaApiPhoneServiceChannelId = kuntaApiIdFactory.createFromIdentifier(PhoneServiceChannelId.class, phoneServiceChannelIdentifier);
+      indexRemoveRequest.fire(new IndexRemoveRequest(new IndexablePhoneServiceChannel(kuntaApiPhoneServiceChannelId.getId())));
       modificationHashCache.clear(phoneServiceChannelIdentifier.getKuntaApiId());
       ptvPhoneServiceChannelResourceContainer.clear(kuntaApiPhoneServiceChannelId);
       identifierController.deleteIdentifier(phoneServiceChannelIdentifier);      
@@ -377,6 +382,7 @@ public class PtvServiceChannelEntityUpdater extends EntityUpdater {
     Identifier printableFormServiceChannelIdentifier = identifierController.findIdentifierById(printableFormServiceChannelId);
     if (printableFormServiceChannelIdentifier != null) {
       PrintableFormServiceChannelId kuntaApiPrintableFormServiceChannelId = kuntaApiIdFactory.createFromIdentifier(PrintableFormServiceChannelId.class, printableFormServiceChannelIdentifier);
+      indexRemoveRequest.fire(new IndexRemoveRequest(new IndexablePrintableFormServiceChannel(kuntaApiPrintableFormServiceChannelId.getId())));
       modificationHashCache.clear(printableFormServiceChannelIdentifier.getKuntaApiId());
       ptvPrintableFormServiceChannelResourceContainer.clear(kuntaApiPrintableFormServiceChannelId);
       identifierController.deleteIdentifier(printableFormServiceChannelIdentifier);      
@@ -387,14 +393,7 @@ public class PtvServiceChannelEntityUpdater extends EntityUpdater {
     Identifier serviceLocationServiceChannelIdentifier = identifierController.findIdentifierById(serviceLocationServiceChannelId);
     if (serviceLocationServiceChannelIdentifier != null) {
       ServiceLocationServiceChannelId kuntaApiServiceLocationServiceChannelId = kuntaApiIdFactory.createFromIdentifier(ServiceLocationServiceChannelId.class, serviceLocationServiceChannelIdentifier);
-      
-      for (String language : PtvConsts.PTV_SUPPORTED_LANGUAGES) {
-        IndexRemoveServiceLocationServiceChannel removeServiceLocationServiceChannel = new IndexRemoveServiceLocationServiceChannel();
-        removeServiceLocationServiceChannel.setLanguage(language);
-        removeServiceLocationServiceChannel.setServiceLocationServiceChannelId(kuntaApiServiceLocationServiceChannelId.getId());
-        indexRemoveRequest.fire(new IndexRemoveRequest(removeServiceLocationServiceChannel));
-      }
-
+      indexRemoveRequest.fire(new IndexRemoveRequest(new IndexableServiceLocationServiceChannel(kuntaApiServiceLocationServiceChannelId.getId())));
       modificationHashCache.clear(serviceLocationServiceChannelIdentifier.getKuntaApiId());
       ptvServiceLocationServiceChannelResourceContainer.clear(kuntaApiServiceLocationServiceChannelId);
       identifierController.deleteIdentifier(serviceLocationServiceChannelIdentifier);    
@@ -405,54 +404,74 @@ public class PtvServiceChannelEntityUpdater extends EntityUpdater {
     Identifier webPageServiceChannelIdentifier = identifierController.findIdentifierById(webPageServiceChannelId);
     if (webPageServiceChannelIdentifier != null) {
       WebPageServiceChannelId kuntaApiWebPageServiceChannelId = kuntaApiIdFactory.createFromIdentifier(WebPageServiceChannelId.class, webPageServiceChannelIdentifier);
+      indexRemoveRequest.fire(new IndexRemoveRequest(new IndexableWebPageServiceChannel(kuntaApiWebPageServiceChannelId.getId())));
       modificationHashCache.clear(webPageServiceChannelIdentifier.getKuntaApiId());
       ptvWebPageServiceChannelResourceContainer.clear(kuntaApiWebPageServiceChannelId);
       identifierController.deleteIdentifier(webPageServiceChannelIdentifier);      
     }
   }
   
-  private void indexServiceLocationChannel(Long orderIndex, ServiceLocationServiceChannel serviceLocationServiceChannel) {
-    List<LocalizedValue> names = serviceLocationServiceChannel.getNames();
-    List<LocalizedValue> descriptions = serviceLocationServiceChannel.getDescriptions();
-    
-    for (String language : LocalizationUtils.getListsLanguages(names, descriptions)) {
-      IndexableServiceLocationServiceChannel indexableServiceLocationServiceChannel = new IndexableServiceLocationServiceChannel();
-      
-      indexableServiceLocationServiceChannel.setDescription(LocalizationUtils.getLocaleValue(descriptions, "ShortDescription", language));
-      indexableServiceLocationServiceChannel.setLanguage(language);
-      indexableServiceLocationServiceChannel.setName(LocalizationUtils.getLocaleValue(names, "Name", language));
-      indexableServiceLocationServiceChannel.setOrderIndex(orderIndex);
-      indexableServiceLocationServiceChannel.setOrganizationId(serviceLocationServiceChannel.getOrganizationId());
-      indexableServiceLocationServiceChannel.setServiceLocationServiceChannelId(serviceLocationServiceChannel.getId());
-      
-      indexRequest.fire(new IndexRequest(indexableServiceLocationServiceChannel));
-    }
+  private void indexElectronicServiceChannel(Long orderIndex, ElectronicServiceChannel serviceChannel) {
+    indexServiceChannel(IndexableElectronicServiceChannel.class, orderIndex, serviceChannel.getId(), serviceChannel.getOrganizationId(), serviceChannel.getNames(), serviceChannel.getDescriptions());
+  }
+
+  private void indexPhoneServiceChannel(Long orderIndex, PhoneServiceChannel serviceChannel) {
+    indexServiceChannel(IndexablePhoneServiceChannel.class, orderIndex, serviceChannel.getId(), serviceChannel.getOrganizationId(), serviceChannel.getNames(), serviceChannel.getDescriptions());
   }
   
-  private void indexElectronicServiceChannel(Long orderIndex, ElectronicServiceChannel serviceChannel) {
-    Map<String, String> shortDescriptionMap = LocalizationUtils.getLocalizedValueMap("ShortDescription", serviceChannel.getDescriptions());
-    Map<String, String> descriptionMap = LocalizationUtils.getLocalizedValueMap("Description", serviceChannel.getDescriptions());
-    Map<String, String> nameMap = LocalizationUtils.getLocalizedValueMap("Name", serviceChannel.getNames());
+  private void indexPrintableFormServiceChannel(Long orderIndex, PrintableFormServiceChannel serviceChannel) {
+    indexServiceChannel(IndexablePrintableFormServiceChannel.class, orderIndex, serviceChannel.getId(), serviceChannel.getOrganizationId(), serviceChannel.getNames(), serviceChannel.getDescriptions());
+  }
+  
+  private void indexWebPageServiceChannel(Long orderIndex, WebPageServiceChannel serviceChannel) {
+    indexServiceChannel(IndexableWebPageServiceChannel.class, orderIndex, serviceChannel.getId(), serviceChannel.getOrganizationId(), serviceChannel.getNames(), serviceChannel.getDescriptions());
+  }
+  
+  private void indexServiceLocationChannel(Long orderIndex, ServiceLocationServiceChannel serviceChannel) {
+    // Remove deprecated version of this service before indexing new. 
+    // This can be removed after few weeks of operation
+    for (String language : PtvConsts.PTV_SUPPORTED_LANGUAGES) {
+      IndexRemoveDeprecatedServiceLocationServiceChannel removeChannel = new IndexRemoveDeprecatedServiceLocationServiceChannel();
+      removeChannel.setLanguage(language);
+      removeChannel.setServiceLocationServiceChannelId(serviceChannel.getId());
+      indexRemoveRequest.fire(new IndexRemoveRequest(removeChannel));
+    }
     
-    IndexableElectronicServiceChannel indexable = new IndexableElectronicServiceChannel();
+    indexServiceChannel(IndexableServiceLocationServiceChannel.class, orderIndex, serviceChannel.getId(), serviceChannel.getOrganizationId(), serviceChannel.getNames(), serviceChannel.getDescriptions());
+  }
+  
+  private void indexServiceChannel(Class<? extends AbstractIndexableServiceChannel> indexableClass, Long orderIndex, String serviceChannelId, String organizationId, List<LocalizedValue> names, List<LocalizedValue> descriptions) {
+    Map<String, String> shortDescriptionMap = LocalizationUtils.getLocalizedValueMap("ShortDescription", descriptions);
+    Map<String, String> descriptionMap = LocalizationUtils.getLocalizedValueMap("Description", descriptions);
+    Map<String, String> nameMap = LocalizationUtils.getLocalizedValueMap("Name", names);
     
-    indexable.setShortDescriptionEn(shortDescriptionMap.get("en"));
-    indexable.setShortDescriptionFi(shortDescriptionMap.get("fi"));
-    indexable.setShortDescriptionSv(shortDescriptionMap.get("sv"));
-    
-    indexable.setDescriptionEn(descriptionMap.get("en"));
-    indexable.setDescriptionFi(descriptionMap.get("fi"));
-    indexable.setDescriptionSv(descriptionMap.get("sv"));
+    indexServiceChannel(indexableClass, orderIndex, serviceChannelId, organizationId, shortDescriptionMap, descriptionMap, nameMap);
+  }
 
-    indexable.setNameEn(nameMap.get("en"));
-    indexable.setNameFi(nameMap.get("fi"));
-    indexable.setNameSv(nameMap.get("sv"));
-    
-    indexable.setServiceChannelId(serviceChannel.getId());
-    indexable.setOrganizationId(serviceChannel.getOrganizationId());
-    indexable.setOrderIndex(orderIndex);
-    
-    indexRequest.fire(new IndexRequest(indexable));
+  private void indexServiceChannel(Class<? extends AbstractIndexableServiceChannel> indexableClass, Long orderIndex, String serviceChannelId, String organizationId, Map<String, String> shortDescriptionMap, Map<String, String> descriptionMap, Map<String, String> nameMap) {
+    try {
+      AbstractIndexableServiceChannel indexable = indexableClass.newInstance();
+      
+      indexable.setShortDescriptionEn(shortDescriptionMap.get("en"));
+      indexable.setShortDescriptionFi(shortDescriptionMap.get("fi"));
+      indexable.setShortDescriptionSv(shortDescriptionMap.get("sv"));
+      
+      indexable.setDescriptionEn(descriptionMap.get("en"));
+      indexable.setDescriptionFi(descriptionMap.get("fi"));
+      indexable.setDescriptionSv(descriptionMap.get("sv"));
+
+      indexable.setNameEn(nameMap.get("en"));
+      indexable.setNameFi(nameMap.get("fi"));
+      indexable.setNameSv(nameMap.get("sv"));
+      
+      indexable.setServiceChannelId(serviceChannelId);
+      indexable.setOrganizationId(organizationId);
+      indexable.setOrderIndex(orderIndex);
+      
+      indexRequest.fire(new IndexRequest(indexable));
+    } catch (InstantiationException | IllegalAccessException e) {
+      logger.log(Level.SEVERE, "Failed to index service channe", e);
+    }
   }
 
   private void updateParentPageIds(List<PageId> parentPageIds) {

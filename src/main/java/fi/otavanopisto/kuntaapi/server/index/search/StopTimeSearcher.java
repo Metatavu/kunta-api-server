@@ -1,4 +1,4 @@
-package fi.otavanopisto.kuntaapi.server.index;
+package fi.otavanopisto.kuntaapi.server.index.search;
 
 import static org.elasticsearch.index.query.QueryBuilders.boolQuery;
 import static org.elasticsearch.index.query.QueryBuilders.rangeQuery;
@@ -15,6 +15,9 @@ import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.search.sort.SortOrder;
 
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportStopTimeId;
+import fi.otavanopisto.kuntaapi.server.index.AbstractIndexHander;
+import fi.otavanopisto.kuntaapi.server.index.IndexReader;
+import fi.otavanopisto.kuntaapi.server.index.SearchResult;
 import fi.otavanopisto.kuntaapi.server.integrations.PublicTransportStopTimeSortBy;
 import fi.otavanopisto.kuntaapi.server.integrations.SortDir;
 
