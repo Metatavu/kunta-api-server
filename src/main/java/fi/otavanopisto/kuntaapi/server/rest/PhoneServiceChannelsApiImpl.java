@@ -1,5 +1,7 @@
 package fi.otavanopisto.kuntaapi.server.rest;
 
+import javax.ejb.Stateful;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Request;
@@ -9,14 +11,20 @@ import org.apache.commons.lang3.EnumUtils;
 
 import fi.metatavu.kuntaapi.server.rest.PhoneServiceChannelsApi;
 import fi.metatavu.kuntaapi.server.rest.model.PhoneServiceChannel;
+import fi.otavanopisto.kuntaapi.server.controllers.ClientContainer;
 import fi.otavanopisto.kuntaapi.server.controllers.HttpCacheController;
+import fi.otavanopisto.kuntaapi.server.controllers.SecurityController;
 import fi.otavanopisto.kuntaapi.server.controllers.ServiceController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PhoneServiceChannelId;
+import fi.otavanopisto.kuntaapi.server.integrations.IntegrationResponse;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceChannelSortBy;
 import fi.otavanopisto.kuntaapi.server.integrations.SortDir;
+import fi.otavanopisto.kuntaapi.server.persistence.model.clients.ClientOrganizationPermission;
 
+@RequestScoped
+@Stateful
 public class PhoneServiceChannelsApiImpl extends PhoneServiceChannelsApi {
 
   private static final String NOT_FOUND = "Not Found";
@@ -38,6 +46,12 @@ public class PhoneServiceChannelsApiImpl extends PhoneServiceChannelsApi {
   
   @Inject
   private RestResponseBuilder restResponseBuilder;
+  
+  @Inject
+  private SecurityController securityController;
+  
+  @Inject
+  private ClientContainer clientContainer;
 
   @Override
   public Response findPhoneServiceChannel(String phoneChannelIdParam, @Context Request request) {
@@ -81,6 +95,28 @@ public class PhoneServiceChannelsApiImpl extends PhoneServiceChannelsApi {
     OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     
     return restResponseBuilder.buildResponse(serviceController.searchPhoneServiceChannels(organizationId, search, sortBy, sortDir, firstResult, maxResults), request);
+  }
+
+  @Override
+  public Response updatePhoneServiceChannel(String phoneServiceChannelIdParam, PhoneServiceChannel newPhoneChannel, Request request) {
+    PhoneServiceChannelId phoneServiceChannelId = kuntaApiIdFactory.createPhoneServiceChannelId(phoneServiceChannelIdParam);
+    PhoneServiceChannel phoneServiceChannel = serviceController.findPhoneServiceChannel(phoneServiceChannelId);
+    
+    if (phoneServiceChannel == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(phoneServiceChannel.getOrganizationId());
+    if (!securityController.hasOrganizationPermission(clientContainer.getClient(), organizationId, ClientOrganizationPermission.UPDATE_SERVICE_CHANNELS)) {
+      return createForbidden("No permission to update service location service channel");
+    }
+    
+    IntegrationResponse<PhoneServiceChannel> integrationResponse = serviceController.updatePhoneServiceChannel(phoneServiceChannelId, newPhoneChannel);
+    if (integrationResponse.isOk()) {
+      return httpCacheController.sendModified(integrationResponse.getEntity(), integrationResponse.getEntity().getId());
+    } else {
+      return restResponseBuilder.buildErrorResponse(integrationResponse);
+    }
   }
 
   private SortDir resolveSortDir(String sortDirParam) {

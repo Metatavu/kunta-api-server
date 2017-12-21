@@ -27,6 +27,8 @@ import fi.metatavu.ptv.client.model.V7VmOpenApiAddressWithMoving;
 import fi.metatavu.ptv.client.model.V7VmOpenApiAddressWithMovingIn;
 import fi.metatavu.ptv.client.model.V7VmOpenApiElectronicChannel;
 import fi.metatavu.ptv.client.model.V7VmOpenApiFintoItemWithDescription;
+import fi.metatavu.ptv.client.model.V7VmOpenApiPhoneChannel;
+import fi.metatavu.ptv.client.model.V7VmOpenApiPhoneChannelInBase;
 import fi.metatavu.ptv.client.model.V7VmOpenApiService;
 import fi.metatavu.ptv.client.model.V7VmOpenApiServiceInBase;
 import fi.metatavu.ptv.client.model.V7VmOpenApiServiceLocationChannel;
@@ -116,7 +118,36 @@ public class PtvOutPtvInTranslator extends AbstractTranslator {
     
     return result;
   }
-  
+
+  /**
+   * Translates PTV out phone service channel into PTV in phone service channel
+   * 
+   * @param ptvResource PTV out phone service channel
+   * @return PTV in phone service channel
+   */
+  public V7VmOpenApiPhoneChannelInBase translatePhoneChannel(V7VmOpenApiPhoneChannel ptvResource) {
+    if (ptvResource == null) {
+      return null;
+    }
+    
+    V7VmOpenApiPhoneChannelInBase result = new V7VmOpenApiPhoneChannelInBase();
+    result.setAreas(translateAreas(ptvResource.getAreas()));
+    result.setAreaType(ptvResource.getAreaType());
+    result.setDeleteAllServiceHours(true);
+    result.setDeleteAllWebPages(true);
+    result.setIsVisibleForAll(true);
+    result.setLanguages(ptvResource.getLanguages());
+    result.setOrganizationId(ptvResource.getOrganizationId().toString());
+    result.setPhoneNumbers(ptvResource.getPhoneNumbers());
+    result.setPublishingStatus(ptvResource.getPublishingStatus());
+    result.setServiceChannelDescriptions(ptvResource.getServiceChannelDescriptions());
+    result.setServiceChannelNames(translateLocalizedListItemsToLanguageItems(ptvResource.getServiceChannelNames()));
+    result.setServiceHours(ptvResource.getServiceHours());
+    result.setSourceId(ptvResource.getSourceId());
+    result.setSupportEmails(ptvResource.getSupportEmails());
+    
+    return result;
+  }
 
   /**
    * Translates PTV out service into PTV in service

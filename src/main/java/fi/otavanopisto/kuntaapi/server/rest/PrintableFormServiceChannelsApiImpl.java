@@ -1,5 +1,7 @@
 package fi.otavanopisto.kuntaapi.server.rest;
 
+import javax.ejb.Stateful;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Request;
@@ -17,6 +19,8 @@ import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceChannelSortBy;
 import fi.otavanopisto.kuntaapi.server.integrations.SortDir;
 
+@RequestScoped
+@Stateful
 public class PrintableFormServiceChannelsApiImpl extends PrintableFormServiceChannelsApi {
 
   private static final String NOT_FOUND = "Not Found";
