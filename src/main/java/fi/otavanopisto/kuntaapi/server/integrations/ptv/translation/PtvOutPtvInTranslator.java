@@ -21,6 +21,7 @@ import fi.metatavu.ptv.client.model.V4VmOpenApiPhoneSimple;
 import fi.metatavu.ptv.client.model.V4VmOpenApiPhoneWithType;
 import fi.metatavu.ptv.client.model.V6VmOpenApiElectronicChannelInBase;
 import fi.metatavu.ptv.client.model.V6VmOpenApiServiceOrganization;
+import fi.metatavu.ptv.client.model.V6VmOpenApiWebPageChannelInBase;
 import fi.metatavu.ptv.client.model.V7VmOpenApiAddress;
 import fi.metatavu.ptv.client.model.V7VmOpenApiAddressDelivery;
 import fi.metatavu.ptv.client.model.V7VmOpenApiAddressDeliveryIn;
@@ -39,6 +40,7 @@ import fi.metatavu.ptv.client.model.V7VmOpenApiServiceLocationChannel;
 import fi.metatavu.ptv.client.model.V7VmOpenApiServiceLocationChannelInBase;
 import fi.metatavu.ptv.client.model.V7VmOpenApiServiceServiceChannel;
 import fi.metatavu.ptv.client.model.V7VmOpenApiServiceServiceChannelInBase;
+import fi.metatavu.ptv.client.model.V7VmOpenApiWebPageChannel;
 import fi.metatavu.ptv.client.model.VmOpenApiAddressPostOfficeBox;
 import fi.metatavu.ptv.client.model.VmOpenApiAddressPostOfficeBoxIn;
 import fi.metatavu.ptv.client.model.VmOpenApiAddressStreet;
@@ -65,6 +67,8 @@ import fi.metatavu.ptv.client.model.VmOpenApiServiceProducerIn;
  */
 @ApplicationScoped
 public class PtvOutPtvInTranslator extends AbstractTranslator {
+  
+  private static final String UNKNOWN_SUBTYPE = "Unknown subtype %s";
   
   @Inject
   private Logger logger;
@@ -198,6 +202,23 @@ public class PtvOutPtvInTranslator extends AbstractTranslator {
     return result;
   }
   
+  public V6VmOpenApiWebPageChannelInBase translateWebPageChannel(V7VmOpenApiWebPageChannel ptvResource) {
+    V6VmOpenApiWebPageChannelInBase result = new V6VmOpenApiWebPageChannelInBase();
+    result.setDeleteAllSupportEmails(true);
+    result.setDeleteAllSupportPhones(true);
+    result.setIsVisibleForAll(true);
+    result.setLanguages(ptvResource.getLanguages());
+    result.setOrganizationId(ptvResource.getOrganizationId().toString());
+    result.setPublishingStatus(ptvResource.getPublishingStatus());
+    result.setServiceChannelDescriptions(ptvResource.getServiceChannelDescriptions());
+    result.setServiceChannelNames(translateLocalizedListItemsToLanguageItems(ptvResource.getServiceChannelNames()));
+    result.setSourceId(ptvResource.getSourceId());
+    result.setSupportEmails(ptvResource.getSupportEmails());
+    result.setSupportPhones(ptvResource.getSupportPhones());
+    result.setUrls(ptvResource.getUrls());
+    
+    return result;
+  }
 
   /**
    * Translates PTV out service into PTV in service
@@ -269,7 +290,7 @@ public class PtvOutPtvInTranslator extends AbstractTranslator {
     
     return result;
   }
-  
+
   /**
    * Translates service's service channel connection from PTV out to PTV in
    * 
@@ -402,7 +423,7 @@ public class PtvOutPtvInTranslator extends AbstractTranslator {
       break;
     
       default:
-        logger.log(Level.SEVERE, () -> String.format("Unknown subtype %s", result.getSubType()));
+        logger.log(Level.SEVERE, () -> String.format(UNKNOWN_SUBTYPE, result.getSubType()));
       break;
     }
     
@@ -448,7 +469,7 @@ public class PtvOutPtvInTranslator extends AbstractTranslator {
         result.setStreetAddress(translateAddressStreetWithCoordinates(address.getStreetAddress()));
       break;
       default:
-        logger.log(Level.SEVERE, () -> String.format("Unknown subtype %s", result.getSubType()));
+        logger.log(Level.SEVERE, () -> String.format(UNKNOWN_SUBTYPE, result.getSubType()));
       break;
     }
     
@@ -486,7 +507,7 @@ public class PtvOutPtvInTranslator extends AbstractTranslator {
         result.setStreetAddress(translateAddressStreetWithCoordinates(address.getStreetAddress()));
       break;
       default:
-        logger.log(Level.SEVERE, () -> String.format("Unknown subtype %s", result.getSubType()));
+        logger.log(Level.SEVERE, () -> String.format(UNKNOWN_SUBTYPE, result.getSubType()));
       break;
     }
     
