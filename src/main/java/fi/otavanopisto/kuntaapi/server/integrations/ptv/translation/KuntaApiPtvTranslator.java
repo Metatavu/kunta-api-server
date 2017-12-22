@@ -347,10 +347,8 @@ public class KuntaApiPtvTranslator extends AbstractTranslator {
     }
     
     return webPages.stream()
-      .filter((webPage) -> {
-        return webPage != null && StringUtils.isNotBlank(webPage.getUrl());
-      })
-      .map((webPage) -> {
+      .filter(webPage -> webPage != null && StringUtils.isNotBlank(webPage.getUrl()))
+      .map(webPage -> {
         VmOpenApiLanguageItem result = new VmOpenApiLanguageItem();
         result.setLanguage(webPage.getLanguage());
         result.setValue(webPage.getUrl());
