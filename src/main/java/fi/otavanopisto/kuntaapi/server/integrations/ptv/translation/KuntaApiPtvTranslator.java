@@ -36,8 +36,10 @@ import fi.metatavu.ptv.client.model.V4VmOpenApiPhoneSimple;
 import fi.metatavu.ptv.client.model.V4VmOpenApiPhoneWithType;
 import fi.metatavu.ptv.client.model.V4VmOpenApiServiceHour;
 import fi.metatavu.ptv.client.model.V4VmOpenApiWebPage;
+import fi.metatavu.ptv.client.model.V7VmOpenApiAddressDeliveryIn;
 import fi.metatavu.ptv.client.model.V7VmOpenApiAddressWithMovingIn;
 import fi.metatavu.ptv.client.model.VmOpenApiAddressPostOfficeBoxIn;
+import fi.metatavu.ptv.client.model.VmOpenApiAddressStreetIn;
 import fi.metatavu.ptv.client.model.VmOpenApiAddressStreetWithCoordinatesIn;
 import fi.metatavu.ptv.client.model.VmOpenApiAreaIn;
 import fi.metatavu.ptv.client.model.VmOpenApiAttachment;
@@ -457,6 +459,26 @@ public class KuntaApiPtvTranslator extends AbstractTranslator {
       .filter(Objects::nonNull)
       .collect(Collectors.toList());
   }
+
+  /**
+   * Translates Kunta API delivery address into PTV in addresses
+   * 
+   * @param deliveryAddress Kunta API delivery address
+   * @return PTV in addresses
+   */
+  public V7VmOpenApiAddressDeliveryIn translateDeliveryAddresses(Address deliveryAddress) {
+    if (deliveryAddress == null) {
+      return null;
+    }
+    
+    V7VmOpenApiAddressDeliveryIn result = new V7VmOpenApiAddressDeliveryIn(); 
+    result.setDeliveryAddressInText(translateLocalizedValuesIntoLanguageItems(deliveryAddress.getAdditionalInformations()));
+    result.setPostOfficeBoxAddress(translatePostOfficeBoxAddress(deliveryAddress));
+    result.setStreetAddress(translateStreetAddress(deliveryAddress));
+    result.setSubType(deliveryAddress.getSubtype());
+    
+    return result;
+  }
   
   private VmOpenApiAttachment translateAttachment(ServiceChannelAttachment attachment) {
     if (attachment == null) {
@@ -769,6 +791,21 @@ public class KuntaApiPtvTranslator extends AbstractTranslator {
     }
     
     return null;
+  }
+
+  private VmOpenApiAddressStreetIn translateStreetAddress(Address address) {
+    if (address == null) {
+      return null;
+    }
+    
+    VmOpenApiAddressStreetIn result = new VmOpenApiAddressStreetIn();
+    result.setAdditionalInformation(translateLocalizedValuesIntoLanguageItems(address.getAdditionalInformations()));
+    result.setMunicipality(address.getMunicipality() != null ? address.getMunicipality().getCode() : null);
+    result.setPostalCode(address.getPostalCode());
+    result.setStreet(translateLocalizedValuesIntoLanguageItems(address.getStreetAddress()));
+    result.setStreetNumber(address.getStreetNumber());
+    
+    return result;
   }
 
 }

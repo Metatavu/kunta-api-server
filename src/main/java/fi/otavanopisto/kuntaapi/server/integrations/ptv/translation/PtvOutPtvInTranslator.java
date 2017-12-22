@@ -22,6 +22,8 @@ import fi.metatavu.ptv.client.model.V4VmOpenApiPhoneWithType;
 import fi.metatavu.ptv.client.model.V6VmOpenApiElectronicChannelInBase;
 import fi.metatavu.ptv.client.model.V6VmOpenApiServiceOrganization;
 import fi.metatavu.ptv.client.model.V7VmOpenApiAddress;
+import fi.metatavu.ptv.client.model.V7VmOpenApiAddressDelivery;
+import fi.metatavu.ptv.client.model.V7VmOpenApiAddressDeliveryIn;
 import fi.metatavu.ptv.client.model.V7VmOpenApiAddressIn;
 import fi.metatavu.ptv.client.model.V7VmOpenApiAddressWithMoving;
 import fi.metatavu.ptv.client.model.V7VmOpenApiAddressWithMovingIn;
@@ -29,12 +31,21 @@ import fi.metatavu.ptv.client.model.V7VmOpenApiElectronicChannel;
 import fi.metatavu.ptv.client.model.V7VmOpenApiFintoItemWithDescription;
 import fi.metatavu.ptv.client.model.V7VmOpenApiPhoneChannel;
 import fi.metatavu.ptv.client.model.V7VmOpenApiPhoneChannelInBase;
+import fi.metatavu.ptv.client.model.V7VmOpenApiPrintableFormChannel;
+import fi.metatavu.ptv.client.model.V7VmOpenApiPrintableFormChannelInBase;
 import fi.metatavu.ptv.client.model.V7VmOpenApiService;
 import fi.metatavu.ptv.client.model.V7VmOpenApiServiceInBase;
 import fi.metatavu.ptv.client.model.V7VmOpenApiServiceLocationChannel;
 import fi.metatavu.ptv.client.model.V7VmOpenApiServiceLocationChannelInBase;
 import fi.metatavu.ptv.client.model.V7VmOpenApiServiceServiceChannel;
 import fi.metatavu.ptv.client.model.V7VmOpenApiServiceServiceChannelInBase;
+import fi.metatavu.ptv.client.model.VmOpenApiAddressPostOfficeBox;
+import fi.metatavu.ptv.client.model.VmOpenApiAddressPostOfficeBoxIn;
+import fi.metatavu.ptv.client.model.VmOpenApiAddressStreet;
+import fi.metatavu.ptv.client.model.VmOpenApiAddressStreetIn;
+import fi.metatavu.ptv.client.model.VmOpenApiAddressStreetWithCoordinates;
+import fi.metatavu.ptv.client.model.VmOpenApiAddressStreetWithCoordinatesIn;
+import fi.metatavu.ptv.client.model.VmOpenApiAddressStreetWithOrder;
 import fi.metatavu.ptv.client.model.VmOpenApiArea;
 import fi.metatavu.ptv.client.model.VmOpenApiAreaIn;
 import fi.metatavu.ptv.client.model.VmOpenApiAttachment;
@@ -148,6 +159,45 @@ public class PtvOutPtvInTranslator extends AbstractTranslator {
     
     return result;
   }
+  
+  /**
+   * Translates PTV out printable form service channel into PTV in printable form service channel
+   * 
+   * @param ptvResource PTV out service channel
+   * @return PTV in service channel
+   */
+  public V7VmOpenApiPrintableFormChannelInBase translatePrintableFormChannel(V7VmOpenApiPrintableFormChannel ptvResource) {
+    if (ptvResource == null) {
+      return null;
+    }
+    
+    V7VmOpenApiPrintableFormChannelInBase result = new V7VmOpenApiPrintableFormChannelInBase();
+    result.setAreas(translateAreas(ptvResource.getAreas()));
+    result.setAreaType(ptvResource.getAreaType());
+    result.setAttachments(translateAttachments(ptvResource.getAttachments()));
+    result.setChannelUrls(ptvResource.getChannelUrls());
+    result.setDeliveryAddress(translateDeliveryAddresses(ptvResource.getDeliveryAddress()));
+    result.setFormIdentifier(ptvResource.getFormIdentifier());
+    result.setFormReceiver(ptvResource.getFormReceiver());
+    result.setIsVisibleForAll(true);
+    result.setOrganizationId(ptvResource.getOrganizationId().toString());
+    result.setPublishingStatus(ptvResource.getPublishingStatus());
+    result.setServiceChannelDescriptions(ptvResource.getServiceChannelDescriptions());
+    result.setServiceChannelNames(translateLocalizedListItemsToLanguageItems(ptvResource.getServiceChannelNames()));
+    result.setSourceId(ptvResource.getSourceId());
+    result.setSupportEmails(ptvResource.getSupportEmails());
+    result.setSupportPhones(ptvResource.getSupportPhones());
+    result.setDeleteAllAttachments(true);
+    result.setDeleteAllChannelUrls(true);
+    result.setDeleteAllFormIdentifiers(true);
+    result.setDeleteAllFormReceivers(true);
+    result.setDeleteAllSupportEmails(true);
+    result.setDeleteAllSupportPhones(true);
+    result.setDeleteDeliveryAddress(true);
+    
+    return result;
+  }
+  
 
   /**
    * Translates PTV out service into PTV in service
@@ -328,6 +378,37 @@ public class PtvOutPtvInTranslator extends AbstractTranslator {
     return result;
   }
 
+  private V7VmOpenApiAddressDeliveryIn translateDeliveryAddresses(V7VmOpenApiAddressDelivery address) {
+    if (address == null) {
+      return null;
+    }
+    
+    V7VmOpenApiAddressDeliveryIn result = new V7VmOpenApiAddressDeliveryIn();
+    result.setDeliveryAddressInText(address.getDeliveryAddressInText());
+    result.setSubType(address.getSubType());
+    result.setPostOfficeBoxAddress(null);
+    result.setStreetAddress(null);
+    
+    PtvAddressSubtype subtype = getAddressSubtype(result.getSubType());
+    switch (subtype) {
+      case POST_OFFICE_BOX:
+        result.setPostOfficeBoxAddress(translateAddressPostOfficeBox(address.getPostOfficeBoxAddress()));
+      break;
+      case NO_ADDRESS:
+      break;
+      case SINGLE:
+      case STREET:
+        result.setStreetAddress(translateAddressStreet(address.getStreetAddress()));
+      break;
+    
+      default:
+        logger.log(Level.SEVERE, () -> String.format("Unknown subtype %s", result.getSubType()));
+      break;
+    }
+    
+    return result;
+  }
+
   private V7VmOpenApiAddressWithMovingIn translateAddressWithMoving(V7VmOpenApiAddressWithMoving address) {
     if (address == null) {
       return null;
@@ -352,19 +433,19 @@ public class PtvOutPtvInTranslator extends AbstractTranslator {
     PtvAddressSubtype subtype = getAddressSubtype(result.getSubType());
     switch (subtype) {
       case ABROAD:
-        result.setLocationAbroad(result.getLocationAbroad());
+        result.setLocationAbroad(address.getLocationAbroad());
       break;
       case MULTIPOINT:
-        result.setMultipointLocation(result.getMultipointLocation());
+        result.setMultipointLocation(translateAddressesStreetWithCoordinates(address.getMultipointLocation()));
       break;
       case POST_OFFICE_BOX:
-        result.setPostOfficeBoxAddress(result.getPostOfficeBoxAddress());
+        result.setPostOfficeBoxAddress(translateAddressPostOfficeBox(address.getPostOfficeBoxAddress()));
       break;
       case NO_ADDRESS:
       break;
       case SINGLE:
       case STREET:
-        result.setStreetAddress(result.getStreetAddress());
+        result.setStreetAddress(translateAddressStreetWithCoordinates(address.getStreetAddress()));
       break;
       default:
         logger.log(Level.SEVERE, () -> String.format("Unknown subtype %s", result.getSubType()));
@@ -396,13 +477,13 @@ public class PtvOutPtvInTranslator extends AbstractTranslator {
     PtvAddressSubtype subtype = getAddressSubtype(result.getSubType());
     switch (subtype) {
       case POST_OFFICE_BOX:
-        result.setPostOfficeBoxAddress(result.getPostOfficeBoxAddress());
+        result.setPostOfficeBoxAddress(translateAddressPostOfficeBox(address.getPostOfficeBoxAddress()));
       break;
       case NO_ADDRESS:
       break;
       case SINGLE:
       case STREET:
-        result.setStreetAddress(result.getStreetAddress());
+        result.setStreetAddress(translateAddressStreetWithCoordinates(address.getStreetAddress()));
       break;
       default:
         logger.log(Level.SEVERE, () -> String.format("Unknown subtype %s", result.getSubType()));
@@ -411,6 +492,81 @@ public class PtvOutPtvInTranslator extends AbstractTranslator {
     
     return result;
   }
+
+  private VmOpenApiAddressStreetIn translateAddressStreet(VmOpenApiAddressStreet streetAddress) {
+    if (streetAddress == null) {
+      return null;
+    }
+    
+    VmOpenApiAddressStreetIn result = new VmOpenApiAddressStreetIn();
+    result.setAdditionalInformation(streetAddress.getAdditionalInformation());
+    result.setMunicipality(streetAddress.getMunicipality() != null ? streetAddress.getMunicipality().getCode() : null);
+    result.setPostalCode(streetAddress.getPostalCode());
+    result.setStreet(streetAddress.getStreet());
+    result.setStreetNumber(streetAddress.getStreetNumber());
+    
+    return result;
+  }
+  
+  private VmOpenApiAddressStreetWithCoordinatesIn translateAddressStreetWithCoordinates(VmOpenApiAddressStreetWithCoordinates streetAddress) {
+    if (streetAddress == null) {
+      return null;
+    }
+    
+    VmOpenApiAddressStreetWithCoordinatesIn result = new VmOpenApiAddressStreetWithCoordinatesIn();
+    result.setAdditionalInformation(streetAddress.getAdditionalInformation());
+    result.setLatitude(streetAddress.getLatitude());
+    result.setLongitude(streetAddress.getLongitude());
+    result.setMunicipality(streetAddress.getMunicipality() != null ? streetAddress.getMunicipality().getCode() : null);
+    result.setPostalCode(streetAddress.getPostalCode());
+    result.setStreet(streetAddress.getStreet());
+    result.setStreetNumber(streetAddress.getStreetNumber());
+    
+    return result;
+  }
+  
+  private VmOpenApiAddressStreetWithCoordinatesIn translateAddressStreetWithCoordinates(VmOpenApiAddressStreetWithOrder streetAddress) {
+    if (streetAddress == null) {
+      return null;
+    }
+    
+    VmOpenApiAddressStreetWithCoordinatesIn result = new VmOpenApiAddressStreetWithCoordinatesIn();
+    result.setAdditionalInformation(streetAddress.getAdditionalInformation());
+    result.setLatitude(streetAddress.getLatitude());
+    result.setLongitude(streetAddress.getLongitude());
+    result.setMunicipality(streetAddress.getMunicipality() != null ? streetAddress.getMunicipality().getCode() : null);
+    result.setPostalCode(streetAddress.getPostalCode());
+    result.setStreet(streetAddress.getStreet());
+    result.setStreetNumber(streetAddress.getStreetNumber());
+    
+    return result;
+  }
+
+  private VmOpenApiAddressPostOfficeBoxIn translateAddressPostOfficeBox(VmOpenApiAddressPostOfficeBox postOfficeBoxAddress) {
+    if (postOfficeBoxAddress == null) {
+      return null;
+    }
+    
+    VmOpenApiAddressPostOfficeBoxIn result = new VmOpenApiAddressPostOfficeBoxIn();
+    result.setAdditionalInformation(postOfficeBoxAddress.getAdditionalInformation());
+    result.setMunicipality(postOfficeBoxAddress.getMunicipality() != null ? postOfficeBoxAddress.getMunicipality().getCode() : null);
+    result.setPostalCode(postOfficeBoxAddress.getPostalCode());
+    result.setPostOfficeBox(postOfficeBoxAddress.getPostOfficeBox());
+    
+    return result;
+  }
+
+  private List<VmOpenApiAddressStreetWithCoordinatesIn> translateAddressesStreetWithCoordinates(List<VmOpenApiAddressStreetWithOrder> addresses) {
+    if (addresses == null) {
+      return Collections.emptyList();
+    }
+    
+    return addresses.stream()
+      .map(this::translateAddressStreetWithCoordinates)
+      .filter(Objects::nonNull)
+      .collect(Collectors.toList());
+  }
+
 
   @SuppressWarnings("unused")
   private List<VmOpenApiLanguageItem> cleanLanguageItems(List<VmOpenApiLanguageItem> items) {
