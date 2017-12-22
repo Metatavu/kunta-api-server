@@ -66,7 +66,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.ptv.translation.PtvOutPtvInT
 @ApplicationScoped
 public class PtvServiceChannelProvider implements ServiceChannelProvider {
 
-  private static final String FAILED_TO_TRANSLATE_PTV_SERVICE_LOCATION_SERVICE_CHANNEL = "Failed to translate ptv %s service location service channel";
+  private static final String FAILED_TO_TRANSLATE_PTV_SERVICE_CHANNEL = "Failed to translate ptv %s service channel";
 
   private static final String FAILED_TO_UPDATE_SERVICE_CHANNEL = "Failed to update service service channel [%d] %s";
 
@@ -153,7 +153,7 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
       V6VmOpenApiElectronicChannelInBase ptvElectronicServiceChannelIn = ptvOutPtvInTranslator.translateElectronicChannel(ptvElectronicServiceChannel);
       
       if (ptvElectronicServiceChannelIn == null) {
-        logger.log(Level.SEVERE, () -> String.format(FAILED_TO_TRANSLATE_PTV_SERVICE_LOCATION_SERVICE_CHANNEL, ptvElectronicServiceChannelId.getId()));
+        logger.log(Level.SEVERE, () -> String.format(FAILED_TO_TRANSLATE_PTV_SERVICE_CHANNEL, ptvElectronicServiceChannelId.getId()));
         return null;
       }
       
@@ -212,7 +212,7 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
       V7VmOpenApiPhoneChannelInBase ptvPhoneServiceChannelIn = ptvOutPtvInTranslator.translatePhoneChannel(ptvPhoneServiceChannel);
       
       if (ptvPhoneServiceChannelIn == null) {
-        logger.log(Level.SEVERE, () -> String.format(FAILED_TO_TRANSLATE_PTV_SERVICE_LOCATION_SERVICE_CHANNEL, ptvPhoneServiceChannelId.getId()));
+        logger.log(Level.SEVERE, () -> String.format(FAILED_TO_TRANSLATE_PTV_SERVICE_CHANNEL, ptvPhoneServiceChannelId.getId()));
         return null;
       }
       
@@ -266,7 +266,7 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
       V7VmOpenApiPrintableFormChannelInBase ptvPrintableFormServiceChannelIn = ptvOutPtvInTranslator.translatePrintableFormChannel(ptvPrintableFormServiceChannel);
       
       if (ptvPrintableFormServiceChannelIn == null) {
-        logger.log(Level.SEVERE, () -> String.format("Failed to translate ptv %s service location service channel", ptvPrintableFormServiceChannelId.getId()));
+        logger.log(Level.SEVERE, () -> String.format(FAILED_TO_TRANSLATE_PTV_SERVICE_CHANNEL, ptvPrintableFormServiceChannelId.getId()));
         return null;
       }
       
@@ -319,7 +319,7 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
       V7VmOpenApiServiceLocationChannelInBase ptvServiceLocationServiceChannelIn = ptvOutPtvInTranslator.translateServiceLocationChannel(ptvServiceLocationServiceChannel);
       
       if (ptvServiceLocationServiceChannelIn == null) {
-        logger.log(Level.SEVERE, () -> String.format(FAILED_TO_TRANSLATE_PTV_SERVICE_LOCATION_SERVICE_CHANNEL, ptvServiceLocationServiceChannelId.getId()));
+        logger.log(Level.SEVERE, () -> String.format(FAILED_TO_TRANSLATE_PTV_SERVICE_CHANNEL, ptvServiceLocationServiceChannelId.getId()));
         return null;
       }
       
@@ -371,7 +371,7 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
       V6VmOpenApiWebPageChannelInBase ptvWebPageServiceChannelIn = ptvOutPtvInTranslator.translateWebPageChannel(ptvWebPageServiceChannel);
       
       if (ptvWebPageServiceChannelIn == null) {
-        logger.log(Level.SEVERE, () -> String.format(FAILED_TO_TRANSLATE_PTV_SERVICE_LOCATION_SERVICE_CHANNEL, ptvWebPageServiceChannelId.getId()));
+        logger.log(Level.SEVERE, () -> String.format(FAILED_TO_TRANSLATE_PTV_SERVICE_CHANNEL, ptvWebPageServiceChannelId.getId()));
         return null;
       }
       
