@@ -253,7 +253,7 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
     if (ptvPrintableFormServiceChannelId != null) {
       V7VmOpenApiPrintableFormChannel ptvPrintableFormServiceChannel = loadServiceChannel(ServiceChannelType.PRINTABLE_FORM, ptvPrintableFormServiceChannelId.getId());
       if (ptvPrintableFormServiceChannel == null) {
-        return IntegrationResponse.statusMessage(Response.Status.BAD_REQUEST.getStatusCode(), "Could not resolve service channel");
+        return IntegrationResponse.statusMessage(Response.Status.BAD_REQUEST.getStatusCode(), COULD_NOT_RESOLVE_SERVICE_CHANNEL);
       }
       
       V7VmOpenApiPrintableFormChannelInBase ptvPrintableFormServiceChannelIn = ptvOutPtvInTranslator.translatePrintableFormChannel(ptvPrintableFormServiceChannel);
@@ -266,7 +266,7 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
       OrganizationId ptvOrganizationId = ptvIdFactory.createOrganizationId(ptvPrintableFormServiceChannel.getOrganizationId());
       OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(ptvOrganizationId, KuntaApiConsts.IDENTIFIER_NAME);
       if (kuntaApiOrganizationId == null) {
-        logger.log(Level.WARNING, () -> String.format("Failed to translate ptv organization id %s into Kunta API organization id", ptvOrganizationId));
+        logger.log(Level.WARNING, () -> String.format(FAILED_TO_TRANSLATE_PTV_ORGANIZATION_ID_INTO_KUNTA_API_ORGANIZATION_ID, ptvOrganizationId));
         return null;
       }
       

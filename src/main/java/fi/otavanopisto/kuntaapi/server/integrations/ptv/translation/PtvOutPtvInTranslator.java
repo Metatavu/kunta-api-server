@@ -66,6 +66,7 @@ import fi.metatavu.ptv.client.model.VmOpenApiServiceProducerIn;
 @ApplicationScoped
 public class PtvOutPtvInTranslator extends AbstractTranslator {
   
+  private static final String UNKNOWN_SUBTYPE = "Unknown subtype %s";
   @Inject
   private Logger logger;
 
@@ -402,7 +403,7 @@ public class PtvOutPtvInTranslator extends AbstractTranslator {
       break;
     
       default:
-        logger.log(Level.SEVERE, () -> String.format("Unknown subtype %s", result.getSubType()));
+        logger.log(Level.SEVERE, () -> String.format(UNKNOWN_SUBTYPE, result.getSubType()));
       break;
     }
     
@@ -448,7 +449,7 @@ public class PtvOutPtvInTranslator extends AbstractTranslator {
         result.setStreetAddress(translateAddressStreetWithCoordinates(address.getStreetAddress()));
       break;
       default:
-        logger.log(Level.SEVERE, () -> String.format("Unknown subtype %s", result.getSubType()));
+        logger.log(Level.SEVERE, () -> String.format(UNKNOWN_SUBTYPE, result.getSubType()));
       break;
     }
     
@@ -486,7 +487,7 @@ public class PtvOutPtvInTranslator extends AbstractTranslator {
         result.setStreetAddress(translateAddressStreetWithCoordinates(address.getStreetAddress()));
       break;
       default:
-        logger.log(Level.SEVERE, () -> String.format("Unknown subtype %s", result.getSubType()));
+        logger.log(Level.SEVERE, () -> String.format(UNKNOWN_SUBTYPE, result.getSubType()));
       break;
     }
     
