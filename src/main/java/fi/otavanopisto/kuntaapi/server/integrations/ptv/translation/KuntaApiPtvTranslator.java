@@ -33,6 +33,7 @@ import fi.metatavu.ptv.client.model.V2VmOpenApiDailyOpeningTime;
 import fi.metatavu.ptv.client.model.V4VmOpenApiLaw;
 import fi.metatavu.ptv.client.model.V4VmOpenApiPhone;
 import fi.metatavu.ptv.client.model.V4VmOpenApiPhoneSimple;
+import fi.metatavu.ptv.client.model.V4VmOpenApiPhoneWithType;
 import fi.metatavu.ptv.client.model.V4VmOpenApiServiceHour;
 import fi.metatavu.ptv.client.model.V4VmOpenApiWebPage;
 import fi.metatavu.ptv.client.model.V7VmOpenApiAddressWithMovingIn;
@@ -135,6 +136,24 @@ public class KuntaApiPtvTranslator extends AbstractTranslator {
     
     return result;
   }
+  
+  /**
+   * Translates Kunta API phone numbers into PTV phone numbers
+   * 
+   * @param phoneNumbers Kunta API phone numbers
+   * @return PTV phone numbers
+   */
+  public List<V4VmOpenApiPhoneWithType> translatePhoneNumbersWithTypes(List<Phone> phoneNumbers) {
+    if (phoneNumbers == null || phoneNumbers.isEmpty()) {
+      return Collections.emptyList();
+    }
+    
+    return phoneNumbers.stream()
+      .map(this::translatePhoneNumberWithType)
+      .filter(Objects::nonNull)
+      .collect(Collectors.toList());
+  }
+
 
   /**
    * Translates Kunta API fax numbers into PTV fax numbers
@@ -311,6 +330,28 @@ public class KuntaApiPtvTranslator extends AbstractTranslator {
       .stream()
       .map(this::translateArea)
       .filter(Objects::nonNull)
+      .collect(Collectors.toList());
+  }
+
+  /**
+   * Translates Kunta API WebPages into PTV language items
+   * 
+   * @param webPages Kunta API WebPages
+   * @return PTV language items
+   */
+  public List<VmOpenApiLanguageItem> translateWebPagesIntoLanguageItems(List<WebPage> webPages) {
+    if (webPages == null) {
+      return Collections.emptyList();
+    }
+    
+    return webPages.stream()
+      .filter(webPage -> webPage != null && StringUtils.isNotBlank(webPage.getUrl()))
+      .map(webPage -> {
+        VmOpenApiLanguageItem result = new VmOpenApiLanguageItem();
+        result.setLanguage(webPage.getLanguage());
+        result.setValue(webPage.getUrl());
+        return result;
+      })
       .collect(Collectors.toList());
   }
 
@@ -572,6 +613,24 @@ public class KuntaApiPtvTranslator extends AbstractTranslator {
     result.setNumber(phoneNumber.getNumber());
     result.setPrefixNumber(phoneNumber.getPrefixNumber());
     result.setServiceChargeType(phoneNumber.getServiceChargeType());
+    
+    return result;
+  }
+
+  private V4VmOpenApiPhoneWithType translatePhoneNumberWithType(Phone phoneNumber) {
+    if (phoneNumber == null) {
+      return null;
+    }
+    
+    V4VmOpenApiPhoneWithType result = new V4VmOpenApiPhoneWithType();
+    result.setAdditionalInformation(phoneNumber.getAdditionalInformation());
+    result.setChargeDescription(phoneNumber.getChargeDescription());
+    result.setIsFinnishServiceNumber(phoneNumber.getIsFinnishServiceNumber());
+    result.setLanguage(phoneNumber.getLanguage());
+    result.setNumber(phoneNumber.getNumber());
+    result.setPrefixNumber(phoneNumber.getPrefixNumber());
+    result.setServiceChargeType(phoneNumber.getServiceChargeType());
+    result.setType(phoneNumber.getType());
     
     return result;
   }

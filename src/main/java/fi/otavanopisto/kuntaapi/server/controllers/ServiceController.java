@@ -196,6 +196,24 @@ public class ServiceController {
   }
   
   /**
+   * Updates phone service channel
+   * 
+   * @param phoneChannelId phone service channel id
+   * @param phoneServiceChannel new data for phone service channel
+   * @return updated phone service channel
+   */
+  public IntegrationResponse<PhoneServiceChannel> updatePhoneServiceChannel(PhoneServiceChannelId phoneChannelId, PhoneServiceChannel phoneServiceChannel) {
+    for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
+      IntegrationResponse<PhoneServiceChannel> updatedPhoneServiceChannel = serviceChannelProvider.updatePhoneServiceChannel(phoneChannelId, phoneServiceChannel);
+      if (updatedPhoneServiceChannel != null) {
+        return updatedPhoneServiceChannel;
+      }
+    }
+    
+    return null;
+  }
+  
+  /**
    * Updates service location service channel
    * 
    * @param serviceLocationChannelId service location service channel id
@@ -414,4 +432,5 @@ public class ServiceController {
     T find(I id);
     
   }
+
 }

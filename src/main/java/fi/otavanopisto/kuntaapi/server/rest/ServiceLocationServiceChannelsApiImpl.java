@@ -1,5 +1,7 @@
 package fi.otavanopisto.kuntaapi.server.rest;
 
+import javax.ejb.Stateful;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Request;
@@ -21,6 +23,8 @@ import fi.otavanopisto.kuntaapi.server.integrations.ServiceChannelSortBy;
 import fi.otavanopisto.kuntaapi.server.integrations.SortDir;
 import fi.otavanopisto.kuntaapi.server.persistence.model.clients.ClientOrganizationPermission;
 
+@RequestScoped
+@Stateful
 public class ServiceLocationServiceChannelsApiImpl extends ServiceLocationServiceChannelsApi {
 
   private static final String NOT_FOUND = "Not Found";

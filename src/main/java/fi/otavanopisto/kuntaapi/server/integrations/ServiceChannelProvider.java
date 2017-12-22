@@ -62,6 +62,17 @@ public interface ServiceChannelProvider {
   public IntegrationResponse<ElectronicServiceChannel> updateElectronicServiceChannel(
       ElectronicServiceChannelId electronicChannelId,
       ElectronicServiceChannel electronicServiceChannel);
+
+  /**
+   * Updates phone service channel
+   * 
+   * @param phoneChannelId phone service channel id
+   * @param phoneServiceChannel new data for service channel
+   * @return updated service channel
+   */
+  public IntegrationResponse<PhoneServiceChannel> updatePhoneServiceChannel(
+      PhoneServiceChannelId phoneChannelId,
+      PhoneServiceChannel phoneServiceChannel);
   
   /**
    * Updates service location service channel
