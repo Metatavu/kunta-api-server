@@ -69,7 +69,7 @@ import fi.metatavu.ptv.client.model.VmOpenApiServiceProducerIn;
 public class PtvOutPtvInTranslator extends AbstractTranslator {
   
   private static final String UNKNOWN_SUBTYPE = "Unknown subtype %s";
-  
+
   @Inject
   private Logger logger;
 
