@@ -73,6 +73,17 @@ public interface ServiceChannelProvider {
   public IntegrationResponse<PhoneServiceChannel> updatePhoneServiceChannel(
       PhoneServiceChannelId phoneChannelId,
       PhoneServiceChannel phoneServiceChannel);
+
+  /**
+   * Updates printable form service channel
+   * 
+   * @param printableFormChannelId printable form service channel id
+   * @param printableFormServiceChannel new data for service channel
+   * @return updated service channel
+   */
+  public IntegrationResponse<PrintableFormServiceChannel> updatePrintableFormServiceChannel(
+      PrintableFormServiceChannelId printableFormChannelId,
+      PrintableFormServiceChannel printableFormServiceChannel);
   
   /**
    * Updates service location service channel

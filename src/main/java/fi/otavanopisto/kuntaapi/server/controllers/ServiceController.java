@@ -214,6 +214,24 @@ public class ServiceController {
   }
   
   /**
+   * Updates printable form service channel
+   * 
+   * @param printableFormChannelId printable form service channel id
+   * @param printableFormServiceChannel new data for printable form service channel
+   * @return updated printable form service channel
+   */
+  public IntegrationResponse<PrintableFormServiceChannel> updatePrintableFormServiceChannel(PrintableFormServiceChannelId printableFormChannelId, PrintableFormServiceChannel printableFormServiceChannel) {
+    for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
+      IntegrationResponse<PrintableFormServiceChannel> updatedPrintableFormServiceChannel = serviceChannelProvider.updatePrintableFormServiceChannel(printableFormChannelId, printableFormServiceChannel);
+      if (updatedPrintableFormServiceChannel != null) {
+        return updatedPrintableFormServiceChannel;
+      }
+    }
+    
+    return null;
+  }
+  
+  /**
    * Updates service location service channel
    * 
    * @param serviceLocationChannelId service location service channel id

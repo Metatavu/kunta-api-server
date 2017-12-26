@@ -11,13 +11,17 @@ import org.apache.commons.lang3.EnumUtils;
 
 import fi.metatavu.kuntaapi.server.rest.PrintableFormServiceChannelsApi;
 import fi.metatavu.kuntaapi.server.rest.model.PrintableFormServiceChannel;
+import fi.otavanopisto.kuntaapi.server.controllers.ClientContainer;
 import fi.otavanopisto.kuntaapi.server.controllers.HttpCacheController;
+import fi.otavanopisto.kuntaapi.server.controllers.SecurityController;
 import fi.otavanopisto.kuntaapi.server.controllers.ServiceController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PrintableFormServiceChannelId;
+import fi.otavanopisto.kuntaapi.server.integrations.IntegrationResponse;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceChannelSortBy;
 import fi.otavanopisto.kuntaapi.server.integrations.SortDir;
+import fi.otavanopisto.kuntaapi.server.persistence.model.clients.ClientOrganizationPermission;
 
 @RequestScoped
 @Stateful
@@ -42,6 +46,12 @@ public class PrintableFormServiceChannelsApiImpl extends PrintableFormServiceCha
   
   @Inject
   private RestResponseBuilder restResponseBuilder;
+  
+  @Inject
+  private ClientContainer clientContainer;
+
+  @Inject
+  private SecurityController securityController;
   
   @Override
   public Response findPrintableFormServiceChannel(String printableFormServiceChannelIdParam, @Context Request request) {
@@ -85,6 +95,28 @@ public class PrintableFormServiceChannelsApiImpl extends PrintableFormServiceCha
     OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     
     return restResponseBuilder.buildResponse(serviceController.searchPrintableFormServiceChannels(organizationId, search, sortBy, sortDir, firstResult, maxResults), request);
+  }
+
+  @Override
+  public Response updatePrintableFormServiceChannel(String printableFormServiceChannelIdParam, PrintableFormServiceChannel newPrintableFormChannel, Request request) {
+    PrintableFormServiceChannelId printableFormServiceChannelId = kuntaApiIdFactory.createPrintableFormServiceChannelId(printableFormServiceChannelIdParam);
+    PrintableFormServiceChannel printableFormServiceChannel = serviceController.findPrintableFormServiceChannel(printableFormServiceChannelId);
+    
+    if (printableFormServiceChannel == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(printableFormServiceChannel.getOrganizationId());
+    if (!securityController.hasOrganizationPermission(clientContainer.getClient(), organizationId, ClientOrganizationPermission.UPDATE_SERVICE_CHANNELS)) {
+      return createForbidden("No permission to update service location service channel");
+    }
+    
+    IntegrationResponse<PrintableFormServiceChannel> integrationResponse = serviceController.updatePrintableFormServiceChannel(printableFormServiceChannelId, newPrintableFormChannel);
+    if (integrationResponse.isOk()) {
+      return httpCacheController.sendModified(integrationResponse.getEntity(), integrationResponse.getEntity().getId());
+    } else {
+      return restResponseBuilder.buildErrorResponse(integrationResponse);
+    }
   }
 
   private SortDir resolveSortDir(String sortDirParam) {

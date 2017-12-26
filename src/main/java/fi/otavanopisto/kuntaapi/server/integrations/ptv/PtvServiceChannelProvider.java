@@ -27,6 +27,8 @@ import fi.metatavu.ptv.client.model.V6VmOpenApiElectronicChannelInBase;
 import fi.metatavu.ptv.client.model.V7VmOpenApiElectronicChannel;
 import fi.metatavu.ptv.client.model.V7VmOpenApiPhoneChannel;
 import fi.metatavu.ptv.client.model.V7VmOpenApiPhoneChannelInBase;
+import fi.metatavu.ptv.client.model.V7VmOpenApiPrintableFormChannel;
+import fi.metatavu.ptv.client.model.V7VmOpenApiPrintableFormChannelInBase;
 import fi.metatavu.ptv.client.model.V7VmOpenApiServiceLocationChannel;
 import fi.metatavu.ptv.client.model.V7VmOpenApiServiceLocationChannelInBase;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
@@ -243,7 +245,61 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
     
     return null;
   }
+  
 
+  @Override
+  public IntegrationResponse<PrintableFormServiceChannel> updatePrintableFormServiceChannel(PrintableFormServiceChannelId printableFormChannelId, PrintableFormServiceChannel printableFormServiceChannel) {
+    PrintableFormServiceChannelId ptvPrintableFormServiceChannelId = idController.translatePrintableFormServiceChannelId(printableFormChannelId, PtvConsts.IDENTIFIER_NAME);
+    if (ptvPrintableFormServiceChannelId != null) {
+      V7VmOpenApiPrintableFormChannel ptvPrintableFormServiceChannel = loadServiceChannel(ServiceChannelType.PRINTABLE_FORM, ptvPrintableFormServiceChannelId.getId());
+      if (ptvPrintableFormServiceChannel == null) {
+        return IntegrationResponse.statusMessage(Response.Status.BAD_REQUEST.getStatusCode(), COULD_NOT_RESOLVE_SERVICE_CHANNEL);
+      }
+      
+      V7VmOpenApiPrintableFormChannelInBase ptvPrintableFormServiceChannelIn = ptvOutPtvInTranslator.translatePrintableFormChannel(ptvPrintableFormServiceChannel);
+      
+      if (ptvPrintableFormServiceChannelIn == null) {
+        logger.log(Level.SEVERE, () -> String.format("Failed to translate ptv %s service location service channel", ptvPrintableFormServiceChannelId.getId()));
+        return null;
+      }
+      
+      OrganizationId ptvOrganizationId = ptvIdFactory.createOrganizationId(ptvPrintableFormServiceChannel.getOrganizationId());
+      OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(ptvOrganizationId, KuntaApiConsts.IDENTIFIER_NAME);
+      if (kuntaApiOrganizationId == null) {
+        logger.log(Level.WARNING, () -> String.format(FAILED_TO_TRANSLATE_PTV_ORGANIZATION_ID_INTO_KUNTA_API_ORGANIZATION_ID, ptvOrganizationId));
+        return null;
+      }
+      
+      ServiceChannelApi serviceChannelApi = ptvApi.getServiceChannelApi(kuntaApiOrganizationId);
+      
+      ptvPrintableFormServiceChannelIn.setAreas(kuntaApiPtvTranslator.translateAreas(printableFormServiceChannel.getAreas()));
+      ptvPrintableFormServiceChannelIn.setAreaType(printableFormServiceChannel.getAreaType());
+      ptvPrintableFormServiceChannelIn.setAttachments(kuntaApiPtvTranslator.translateAttachments(printableFormServiceChannel.getAttachments()));
+      ptvPrintableFormServiceChannelIn.setChannelUrls(kuntaApiPtvTranslator.translateLocalizedValuesIntoLocalizedListItems(printableFormServiceChannel.getChannelUrls()));
+      ptvPrintableFormServiceChannelIn.setDeliveryAddress(kuntaApiPtvTranslator.translateDeliveryAddresses(printableFormServiceChannel.getDeliveryAddress()));
+      ptvPrintableFormServiceChannelIn.setFormIdentifier(kuntaApiPtvTranslator.translateLocalizedValuesIntoLanguageItems(printableFormServiceChannel.getFormIdentifier()));
+      ptvPrintableFormServiceChannelIn.setFormReceiver(kuntaApiPtvTranslator.translateLocalizedValuesIntoLanguageItems(printableFormServiceChannel.getFormReceiver()));
+      ptvPrintableFormServiceChannelIn.setPublishingStatus(printableFormServiceChannel.getPublishingStatus());
+      ptvPrintableFormServiceChannelIn.setServiceChannelDescriptions(kuntaApiPtvTranslator.translateLocalizedValuesIntoLocalizedListItems(printableFormServiceChannel.getDescriptions()));
+      ptvPrintableFormServiceChannelIn.setServiceChannelNames(kuntaApiPtvTranslator.translateLocalizedValuesIntoLanguageItems(printableFormServiceChannel.getNames()));
+      ptvPrintableFormServiceChannelIn.setSupportEmails(kuntaApiPtvTranslator.translateEmailsIntoLanguageItems(printableFormServiceChannel.getSupportEmails()));
+      ptvPrintableFormServiceChannelIn.setSupportPhones(kuntaApiPtvTranslator.translatePhoneNumbers(printableFormServiceChannel.getSupportPhones()));
+
+      ApiResponse<V7VmOpenApiPrintableFormChannel> response = serviceChannelApi.apiV7ServiceChannelPrintableFormByIdPut(ptvPrintableFormServiceChannelId.getId(), ptvPrintableFormServiceChannelIn);
+      if (response.isOk()) {
+        String updatedPtvChannelId = response.getResponse().getId().toString();
+        waitServiceChannelUpdate(updatedPtvChannelId);
+        return findPrintableFormChannelAfterUpdate(printableFormChannelId);
+      } else {        
+        logger.severe(() -> String.format("Failed to update service location service channel [%d] %s", response.getStatus(), response.getMessage()));
+        return IntegrationResponse.statusMessage(response.getStatus(), response.getMessage());
+      }
+      
+    }
+    
+    return null;
+  }
+  
   @Override
   public IntegrationResponse<ServiceLocationServiceChannel> updateServiceLocationServiceChannel(ServiceLocationServiceChannelId serviceLocationChannelId, ServiceLocationServiceChannel serviceLocationServiceChannel) {
     ServiceLocationServiceChannelId ptvServiceLocationServiceChannelId = idController.translateServiceLocationServiceChannelId(serviceLocationChannelId, PtvConsts.IDENTIFIER_NAME);
@@ -407,6 +463,17 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
   @Transactional (TxType.REQUIRES_NEW)
   public IntegrationResponse<PhoneServiceChannel> findPhoneChannelAfterUpdate(PhoneServiceChannelId serviceChannelId) {
     return IntegrationResponse.ok(findPhoneServiceChannel(serviceChannelId));
+  }
+
+  /**
+   * Returns service channel in new transaction. Used after the service channel has been updated.
+   * 
+   * @param serviceChannelId serviceId
+   * @return updated service 
+   */
+  @Transactional (TxType.REQUIRES_NEW)
+  public IntegrationResponse<PrintableFormServiceChannel> findPrintableFormChannelAfterUpdate(PrintableFormServiceChannelId serviceChannelId) {
+    return IntegrationResponse.ok(findPrintableFormServiceChannel(serviceChannelId));
   }
 
   private void waitServiceChannelUpdate(String updatedPtvChannelId) {
