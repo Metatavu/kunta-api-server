@@ -248,10 +248,28 @@ public class ServiceController {
     
     return null;
   }
+  
+  /**
+   * Updates web page service channel
+   * 
+   * @param webPageChannelId web page service channel id
+   * @param webPageServiceChannel new data for web page service channel
+   * @return updated web page service channel
+   */
+  public IntegrationResponse<WebPageServiceChannel> updateWebPageServiceChannel(WebPageServiceChannelId webPageChannelId, WebPageServiceChannel webPageServiceChannel) {
+    for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
+      IntegrationResponse<WebPageServiceChannel> updatedWebPageServiceChannel = serviceChannelProvider.updateWebPageServiceChannel(webPageChannelId, webPageServiceChannel);
+      if (updatedWebPageServiceChannel != null) {
+        return updatedWebPageServiceChannel;
+      }
+    }
+    
+    return null;
+  }
 
   public WebPageServiceChannel findWebPageServiceChannel(WebPageServiceChannelId webPageChannelId) {
     for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
-      WebPageServiceChannel webPageChannel = serviceChannelProvider.findWebPageServiceChannelChannel(webPageChannelId);
+      WebPageServiceChannel webPageChannel = serviceChannelProvider.findWebPageServiceChannel(webPageChannelId);
       if (webPageChannel != null) {
         return webPageChannel;
       }

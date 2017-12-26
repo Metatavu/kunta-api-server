@@ -11,13 +11,17 @@ import org.apache.commons.lang3.EnumUtils;
 
 import fi.metatavu.kuntaapi.server.rest.WebPageServiceChannelsApi;
 import fi.metatavu.kuntaapi.server.rest.model.WebPageServiceChannel;
+import fi.otavanopisto.kuntaapi.server.controllers.ClientContainer;
 import fi.otavanopisto.kuntaapi.server.controllers.HttpCacheController;
+import fi.otavanopisto.kuntaapi.server.controllers.SecurityController;
 import fi.otavanopisto.kuntaapi.server.controllers.ServiceController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.WebPageServiceChannelId;
+import fi.otavanopisto.kuntaapi.server.integrations.IntegrationResponse;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceChannelSortBy;
 import fi.otavanopisto.kuntaapi.server.integrations.SortDir;
+import fi.otavanopisto.kuntaapi.server.persistence.model.clients.ClientOrganizationPermission;
 
 @RequestScoped
 @Stateful
@@ -42,6 +46,12 @@ public class WebPageServiceChannelsApiImpl extends WebPageServiceChannelsApi {
   
   @Inject
   private RestResponseBuilder restResponseBuilder;
+
+  @Inject
+  private SecurityController securityController;
+
+  @Inject
+  private ClientContainer clientContainer;
 
   @Override
   public Response findWebPageServiceChannel(String webPageServiceChannelIdParam, @Context Request request) {
@@ -85,6 +95,28 @@ public class WebPageServiceChannelsApiImpl extends WebPageServiceChannelsApi {
     OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     
     return restResponseBuilder.buildResponse(serviceController.searchWebPageServiceChannels(organizationId, search, sortBy, sortDir, firstResult, maxResults), request);
+  }
+
+  @Override
+  public Response updateWebPageServiceChannel(String webPageServiceChannelIdParam, WebPageServiceChannel newWebPageChannel, Request request) {
+    WebPageServiceChannelId webPageServiceChannelId = kuntaApiIdFactory.createWebPageServiceChannelId(webPageServiceChannelIdParam);
+    WebPageServiceChannel webPageServiceChannel = serviceController.findWebPageServiceChannel(webPageServiceChannelId);
+    
+    if (webPageServiceChannel == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(webPageServiceChannel.getOrganizationId());
+    if (!securityController.hasOrganizationPermission(clientContainer.getClient(), organizationId, ClientOrganizationPermission.UPDATE_SERVICE_CHANNELS)) {
+      return createForbidden("No permission to update service location service channel");
+    }
+    
+    IntegrationResponse<WebPageServiceChannel> integrationResponse = serviceController.updateWebPageServiceChannel(webPageServiceChannelId, newWebPageChannel);
+    if (integrationResponse.isOk()) {
+      return httpCacheController.sendModified(integrationResponse.getEntity(), integrationResponse.getEntity().getId());
+    } else {
+      return restResponseBuilder.buildErrorResponse(integrationResponse);
+    }
   }
 
   private SortDir resolveSortDir(String sortDirParam) {

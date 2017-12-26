@@ -24,6 +24,7 @@ import fi.metatavu.kuntaapi.server.rest.model.WebPageServiceChannel;
 import fi.metatavu.ptv.client.ApiResponse;
 import fi.metatavu.ptv.client.ServiceChannelApi;
 import fi.metatavu.ptv.client.model.V6VmOpenApiElectronicChannelInBase;
+import fi.metatavu.ptv.client.model.V6VmOpenApiWebPageChannelInBase;
 import fi.metatavu.ptv.client.model.V7VmOpenApiElectronicChannel;
 import fi.metatavu.ptv.client.model.V7VmOpenApiPhoneChannel;
 import fi.metatavu.ptv.client.model.V7VmOpenApiPhoneChannelInBase;
@@ -31,6 +32,7 @@ import fi.metatavu.ptv.client.model.V7VmOpenApiPrintableFormChannel;
 import fi.metatavu.ptv.client.model.V7VmOpenApiPrintableFormChannelInBase;
 import fi.metatavu.ptv.client.model.V7VmOpenApiServiceLocationChannel;
 import fi.metatavu.ptv.client.model.V7VmOpenApiServiceLocationChannelInBase;
+import fi.metatavu.ptv.client.model.V7VmOpenApiWebPageChannel;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.id.ElectronicServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
@@ -64,9 +66,9 @@ import fi.otavanopisto.kuntaapi.server.integrations.ptv.translation.PtvOutPtvInT
 @ApplicationScoped
 public class PtvServiceChannelProvider implements ServiceChannelProvider {
 
-  private static final String FAILED_TO_TRANSLATE_PTV_SERVICE_LOCATION_SERVICE_CHANNEL = "Failed to translate ptv %s service location service channel";
+  private static final String FAILED_TO_TRANSLATE_PTV_SERVICE_CHANNEL = "Failed to translate ptv %s service channel";
 
-  private static final String FAILED_TO_UPDATE_SERVICE_LOCATION_SERVICE_CHANNEL = "Failed to update service location service channel [%d] %s";
+  private static final String FAILED_TO_UPDATE_SERVICE_CHANNEL = "Failed to update service service channel [%d] %s";
 
   private static final String FAILED_TO_TRANSLATE_PTV_ORGANIZATION_ID_INTO_KUNTA_API_ORGANIZATION_ID = "Failed to translate ptv organization id %s into Kunta API organization id";
 
@@ -135,6 +137,11 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
   }
   
   @Override
+  public WebPageServiceChannel findWebPageServiceChannel(WebPageServiceChannelId webPageServiceChannelId) {
+    return ptvWebPageServiceChannelResourceContainer.get(webPageServiceChannelId);
+  }
+  
+  @Override
   public IntegrationResponse<ElectronicServiceChannel> updateElectronicServiceChannel(ElectronicServiceChannelId electronicChannelId, ElectronicServiceChannel electronicServiceChannel) {
     ElectronicServiceChannelId ptvElectronicServiceChannelId = idController.translateElectronicServiceChannelId(electronicChannelId, PtvConsts.IDENTIFIER_NAME);
     if (ptvElectronicServiceChannelId != null) {
@@ -146,7 +153,7 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
       V6VmOpenApiElectronicChannelInBase ptvElectronicServiceChannelIn = ptvOutPtvInTranslator.translateElectronicChannel(ptvElectronicServiceChannel);
       
       if (ptvElectronicServiceChannelIn == null) {
-        logger.log(Level.SEVERE, () -> String.format(FAILED_TO_TRANSLATE_PTV_SERVICE_LOCATION_SERVICE_CHANNEL, ptvElectronicServiceChannelId.getId()));
+        logger.log(Level.SEVERE, () -> String.format(FAILED_TO_TRANSLATE_PTV_SERVICE_CHANNEL, ptvElectronicServiceChannelId.getId()));
         return null;
       }
       
@@ -184,7 +191,7 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
         waitServiceChannelUpdate(updatedPtvChannelId);
         return findElectronicChannelAfterUpdate(electronicChannelId);
       } else {        
-        logger.severe(() -> String.format(FAILED_TO_UPDATE_SERVICE_LOCATION_SERVICE_CHANNEL, response.getStatus(), response.getMessage()));
+        logger.severe(() -> String.format(FAILED_TO_UPDATE_SERVICE_CHANNEL, response.getStatus(), response.getMessage()));
         return IntegrationResponse.statusMessage(response.getStatus(), response.getMessage());
       }
       
@@ -205,7 +212,7 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
       V7VmOpenApiPhoneChannelInBase ptvPhoneServiceChannelIn = ptvOutPtvInTranslator.translatePhoneChannel(ptvPhoneServiceChannel);
       
       if (ptvPhoneServiceChannelIn == null) {
-        logger.log(Level.SEVERE, () -> String.format(FAILED_TO_TRANSLATE_PTV_SERVICE_LOCATION_SERVICE_CHANNEL, ptvPhoneServiceChannelId.getId()));
+        logger.log(Level.SEVERE, () -> String.format(FAILED_TO_TRANSLATE_PTV_SERVICE_CHANNEL, ptvPhoneServiceChannelId.getId()));
         return null;
       }
       
@@ -237,7 +244,7 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
         waitServiceChannelUpdate(updatedPtvChannelId);
         return findPhoneChannelAfterUpdate(phoneChannelId);
       } else {        
-        logger.severe(() -> String.format(FAILED_TO_UPDATE_SERVICE_LOCATION_SERVICE_CHANNEL, response.getStatus(), response.getMessage()));
+        logger.severe(() -> String.format(FAILED_TO_UPDATE_SERVICE_CHANNEL, response.getStatus(), response.getMessage()));
         return IntegrationResponse.statusMessage(response.getStatus(), response.getMessage());
       }
       
@@ -259,7 +266,7 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
       V7VmOpenApiPrintableFormChannelInBase ptvPrintableFormServiceChannelIn = ptvOutPtvInTranslator.translatePrintableFormChannel(ptvPrintableFormServiceChannel);
       
       if (ptvPrintableFormServiceChannelIn == null) {
-        logger.log(Level.SEVERE, () -> String.format("Failed to translate ptv %s service location service channel", ptvPrintableFormServiceChannelId.getId()));
+        logger.log(Level.SEVERE, () -> String.format(FAILED_TO_TRANSLATE_PTV_SERVICE_CHANNEL, ptvPrintableFormServiceChannelId.getId()));
         return null;
       }
       
@@ -312,7 +319,7 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
       V7VmOpenApiServiceLocationChannelInBase ptvServiceLocationServiceChannelIn = ptvOutPtvInTranslator.translateServiceLocationChannel(ptvServiceLocationServiceChannel);
       
       if (ptvServiceLocationServiceChannelIn == null) {
-        logger.log(Level.SEVERE, () -> String.format(FAILED_TO_TRANSLATE_PTV_SERVICE_LOCATION_SERVICE_CHANNEL, ptvServiceLocationServiceChannelId.getId()));
+        logger.log(Level.SEVERE, () -> String.format(FAILED_TO_TRANSLATE_PTV_SERVICE_CHANNEL, ptvServiceLocationServiceChannelId.getId()));
         return null;
       }
       
@@ -343,7 +350,7 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
         waitServiceChannelUpdate(updatedPtvChannelId);
         return findServiceLocationChannelAfterUpdate(serviceLocationChannelId);
       } else {        
-        logger.severe(() -> String.format(FAILED_TO_UPDATE_SERVICE_LOCATION_SERVICE_CHANNEL, response.getStatus(), response.getMessage()));
+        logger.severe(() -> String.format(FAILED_TO_UPDATE_SERVICE_CHANNEL, response.getStatus(), response.getMessage()));
         return IntegrationResponse.statusMessage(response.getStatus(), response.getMessage());
       }
       
@@ -353,8 +360,51 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
   }
   
   @Override
-  public WebPageServiceChannel findWebPageServiceChannelChannel(WebPageServiceChannelId webPageServiceChannelId) {
-    return ptvWebPageServiceChannelResourceContainer.get(webPageServiceChannelId);
+  public IntegrationResponse<WebPageServiceChannel> updateWebPageServiceChannel(WebPageServiceChannelId webPageChannelId, WebPageServiceChannel webPageServiceChannel) {
+    WebPageServiceChannelId ptvWebPageServiceChannelId = idController.translateWebPageServiceChannelId(webPageChannelId, PtvConsts.IDENTIFIER_NAME);
+    if (ptvWebPageServiceChannelId != null) {
+      V7VmOpenApiWebPageChannel ptvWebPageServiceChannel = loadServiceChannel(ServiceChannelType.WEB_PAGE, ptvWebPageServiceChannelId.getId());
+      if (ptvWebPageServiceChannel == null) {
+        return IntegrationResponse.statusMessage(Response.Status.BAD_REQUEST.getStatusCode(), COULD_NOT_RESOLVE_SERVICE_CHANNEL);
+      }
+      
+      V6VmOpenApiWebPageChannelInBase ptvWebPageServiceChannelIn = ptvOutPtvInTranslator.translateWebPageChannel(ptvWebPageServiceChannel);
+      
+      if (ptvWebPageServiceChannelIn == null) {
+        logger.log(Level.SEVERE, () -> String.format(FAILED_TO_TRANSLATE_PTV_SERVICE_CHANNEL, ptvWebPageServiceChannelId.getId()));
+        return null;
+      }
+      
+      OrganizationId ptvOrganizationId = ptvIdFactory.createOrganizationId(ptvWebPageServiceChannel.getOrganizationId());
+      OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(ptvOrganizationId, KuntaApiConsts.IDENTIFIER_NAME);
+      if (kuntaApiOrganizationId == null) {
+        logger.log(Level.WARNING, () -> String.format(FAILED_TO_TRANSLATE_PTV_ORGANIZATION_ID_INTO_KUNTA_API_ORGANIZATION_ID, ptvOrganizationId));
+        return null;
+      }
+      
+      ServiceChannelApi serviceChannelApi = ptvApi.getServiceChannelApi(kuntaApiOrganizationId);
+      
+      ptvWebPageServiceChannelIn.setLanguages(webPageServiceChannel.getLanguages());
+      ptvWebPageServiceChannelIn.setPublishingStatus(webPageServiceChannel.getPublishingStatus());
+      ptvWebPageServiceChannelIn.setServiceChannelDescriptions(kuntaApiPtvTranslator.translateLocalizedValuesIntoLocalizedListItems(webPageServiceChannel.getDescriptions()));
+      ptvWebPageServiceChannelIn.setServiceChannelNames(kuntaApiPtvTranslator.translateLocalizedValuesIntoLanguageItems(webPageServiceChannel.getNames()));
+      ptvWebPageServiceChannelIn.setSupportEmails(kuntaApiPtvTranslator.translateEmailsIntoLanguageItems(webPageServiceChannel.getSupportEmails()));
+      ptvWebPageServiceChannelIn.setSupportPhones(kuntaApiPtvTranslator.translatePhoneNumbers(webPageServiceChannel.getSupportPhones()));
+      ptvWebPageServiceChannelIn.setUrls(kuntaApiPtvTranslator.translateLocalizedValuesIntoLanguageItems(webPageServiceChannel.getUrls()));
+      
+      ApiResponse<V7VmOpenApiWebPageChannel> response = serviceChannelApi.apiV7ServiceChannelWebPageByIdPut(ptvWebPageServiceChannelId.getId(), ptvWebPageServiceChannelIn);
+      if (response.isOk()) {
+        String updatedPtvChannelId = response.getResponse().getId().toString();
+        waitServiceChannelUpdate(updatedPtvChannelId);
+        return findWebPageChannelAfterUpdate(webPageChannelId);
+      } else {        
+        logger.severe(() -> String.format(FAILED_TO_UPDATE_SERVICE_CHANNEL, response.getStatus(), response.getMessage()));
+        return IntegrationResponse.statusMessage(response.getStatus(), response.getMessage());
+      }
+      
+    }
+    
+    return null;
   }
   
   @Override
@@ -476,6 +526,17 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
     return IntegrationResponse.ok(findPrintableFormServiceChannel(serviceChannelId));
   }
 
+  /**
+   * Returns service channel in new transaction. Used after the service channel has been updated.
+   * 
+   * @param serviceChannelId serviceId
+   * @return updated service 
+   */
+  @Transactional (TxType.REQUIRES_NEW)
+  public IntegrationResponse<WebPageServiceChannel> findWebPageChannelAfterUpdate(WebPageServiceChannelId serviceChannelId) {
+    return IntegrationResponse.ok(findWebPageServiceChannel(serviceChannelId));
+  }
+  
   private void waitServiceChannelUpdate(String updatedPtvChannelId) {
     Future<Long> enqueuedTask = serviceChannelTasksQueue.enqueueTask(true, new ServiceChannelUpdateTask(updatedPtvChannelId, null));        
     try {
