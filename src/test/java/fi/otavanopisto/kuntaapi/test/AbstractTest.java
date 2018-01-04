@@ -24,6 +24,10 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.rules.TestName;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+
 /**
  * Abstract base class for all tests
  * 
@@ -132,6 +136,14 @@ public abstract class AbstractTest {
     return -1;
   }
 
+  protected ObjectMapper getObjectMapper() {
+    ObjectMapper objectMapper = new ObjectMapper();
+    objectMapper.registerModule(new JavaTimeModule());
+    objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+    
+    return objectMapper;
+  }
+  
   private void applyStatementParams(PreparedStatement statement, Object... params)
       throws SQLException {
     for (int i = 0, l = params.length; i < l; i++) {
