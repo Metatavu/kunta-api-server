@@ -438,5 +438,10 @@
     </createTable>
     
   </changeSet>
+    
+  <changeSet id="client-organization-permission-grant-client-reference" author="antti.leppa">
+    <dropForeignKeyConstraint baseTableName="ClientOrganizationPermissionGrant" constraintName="FK_CLIENT_ORGANIZATION_CLIENT_ID" />
+    <addForeignKeyConstraint baseTableName="ClientOrganizationPermissionGrant" constraintName="FK_CLIENT_ORGANIZATION_CLIENT_ID" baseColumnNames="client_id" referencedTableName="Client" referencedColumnNames="id"/>
+  </changeSet>
   
 </databaseChangeLog>
