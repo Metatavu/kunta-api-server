@@ -117,7 +117,7 @@ public abstract class AbstractDAO<T> {
   @SuppressWarnings ("squid:S1166")
   public boolean isExisting(Long id) {
     try {
-      return getEntityManager().getReference(getGenericTypeClass(), id) != null;
+      return getEntityManager().find(getGenericTypeClass(), id) != null;
     } catch (EntityNotFoundException e) {
       return false;
     }    
@@ -135,7 +135,6 @@ public abstract class AbstractDAO<T> {
   }
 
   protected <X> X getSingleResult(TypedQuery<X> query) {
-    @SuppressWarnings("unchecked")
     List<X> list = query.getResultList();
 
     if (list.isEmpty())
