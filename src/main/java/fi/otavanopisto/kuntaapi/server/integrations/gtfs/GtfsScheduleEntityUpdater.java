@@ -29,7 +29,7 @@ import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 @Singleton
 @AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
-public class GtfsScheduleEntityUpdater extends EntityUpdater {
+public class GtfsScheduleEntityUpdater extends EntityUpdater<GtfsScheduleEntityTask> {
 
   @Inject
   private Logger logger;
@@ -65,12 +65,17 @@ public class GtfsScheduleEntityUpdater extends EntityUpdater {
   public String getName() {
     return "gtfs-public-transport-schedules";
   }
+  
+  @Override
+  public void execute(GtfsScheduleEntityTask task) {
+    updateGtfsSchedule(task);
+  }
 
   @Override
   public void timeout() {
     GtfsScheduleEntityTask task = gtfsScheduleTaskQueue.next();
     if (task != null) {
-      updateGtfsSchedule(task);
+      execute(task);
     }
   }
   

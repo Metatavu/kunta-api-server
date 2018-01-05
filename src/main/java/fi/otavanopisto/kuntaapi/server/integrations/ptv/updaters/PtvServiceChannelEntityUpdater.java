@@ -77,7 +77,7 @@ import fi.otavanopisto.kuntaapi.server.utils.LocalizationUtils;
 @Singleton
 @AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
-public class PtvServiceChannelEntityUpdater extends EntityUpdater {
+public class PtvServiceChannelEntityUpdater extends EntityUpdater <AbstractServiceChannelTask> {
 
   private static final String COULD_NOT_TRANSLATE_ORGANIZATION_INTO_KUNTA_API_ID = "Could not translate organization %s into kunta api id";
 
@@ -151,14 +151,19 @@ public class PtvServiceChannelEntityUpdater extends EntityUpdater {
     executeNextTask();
   }
   
+  @Override
+  public void execute(AbstractServiceChannelTask task) {
+    if (task.getOperation() == Operation.UPDATE) {
+      updateServiceChannelChannel((ServiceChannelUpdateTask) task);
+    } else if (task.getOperation() == Operation.REMOVE) {
+      removeServiceChannelChannel(task);
+    }
+  }
+  
   private void executeNextTask() {
     AbstractServiceChannelTask task = serviceChannelTasksQueue.next();
     if (task != null) {
-      if (task.getOperation() == Operation.UPDATE) {
-        updateServiceChannelChannel((ServiceChannelUpdateTask) task);
-      } else if (task.getOperation() == Operation.REMOVE) {
-        removeServiceChannelChannel(task);
-      }
+      execute(task);
     }
   }
 

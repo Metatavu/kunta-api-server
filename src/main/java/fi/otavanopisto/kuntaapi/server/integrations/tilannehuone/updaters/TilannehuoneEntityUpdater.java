@@ -31,7 +31,7 @@ import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 @Singleton
 @AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
-public class TilannehuoneEntityUpdater extends EntityUpdater {
+public class TilannehuoneEntityUpdater extends EntityUpdater<TilannehuoneEmergencyEntityTask> {
 
   @Inject
   private Logger logger;
@@ -72,11 +72,12 @@ public class TilannehuoneEntityUpdater extends EntityUpdater {
   public void timeout() {
     TilannehuoneEmergencyEntityTask task = tilannehuoneEmergencyTaskQueue.next();
     if (task != null) {
-      executeTask(task);
+      execute(task);
     }
   }
   
-  private void executeTask(TilannehuoneEmergencyEntityTask task) {
+  @Override
+  public void execute(TilannehuoneEmergencyEntityTask task) {
     Emergency tilannehuoneEmergency = task.getTilannehuoneEmergency();
     
     if (StringUtils.isNotBlank(tilannehuoneEmergency.getArea())) {

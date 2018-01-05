@@ -330,7 +330,6 @@ public abstract class AbstractPtvMocker<R> {
   }
 
   
-  @SuppressWarnings("unchecked")
   private R readEntityFromJSONFile(String id, String file) {
     return readJSONFile(id, file, getGenericTypeClass());
   }

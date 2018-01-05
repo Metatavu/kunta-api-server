@@ -52,7 +52,7 @@ import fi.otavanopisto.kuntaapi.server.tasks.IdTask.Operation;
 @Singleton
 @AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
-public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
+public class ManagementNewsArticleEntityUpdater extends EntityUpdater<IdTask<NewsArticleId>> {
 
   @Inject
   private Logger logger;
@@ -112,14 +112,19 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater {
     executeNextTask();
   }
   
+  @Override
+  public void execute(IdTask<NewsArticleId> task) {
+    if (task.getOperation() == Operation.UPDATE) {
+      updateManagementPost(task.getId(), task.getOrderIndex()); 
+    } else if (task.getOperation() == Operation.REMOVE) {
+      deleteManagementPost(task.getId());
+    }
+  }
+  
   private void executeNextTask() {
     IdTask<NewsArticleId> task = newsArticleIdTaskQueue.next();
     if (task != null) {
-      if (task.getOperation() == Operation.UPDATE) {
-        updateManagementPost(task.getId(), task.getOrderIndex()); 
-      } else if (task.getOperation() == Operation.REMOVE) {
-        deleteManagementPost(task.getId());
-      }
+      execute(task);
     }
   }
   

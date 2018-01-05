@@ -30,7 +30,7 @@ import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 @Singleton
 @AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
-public class GtfsRouteEntityUpdater extends EntityUpdater {
+public class GtfsRouteEntityUpdater extends EntityUpdater<GtfsRouteEntityTask> {
 
   @Inject
   private Logger logger;
@@ -71,8 +71,13 @@ public class GtfsRouteEntityUpdater extends EntityUpdater {
   public void timeout() {
     GtfsRouteEntityTask task = gtfsRouteTaskQueue.next();
     if (task != null) {
-      updateGtfsRoute(task);
+      execute(task);
     }
+  }
+  
+  @Override
+  public void execute(GtfsRouteEntityTask task) {
+    updateGtfsRoute(task);
   }
   
   private void updateGtfsRoute(GtfsRouteEntityTask task) {

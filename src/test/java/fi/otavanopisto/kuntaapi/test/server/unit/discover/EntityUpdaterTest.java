@@ -23,21 +23,21 @@ import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
 public class EntityUpdaterTest {
   
   @Inject
-  private Instance<EntityUpdater> entityUpdaters;
+  private Instance<EntityUpdater<?>> entityUpdaters;
   
   @Test
   @SuppressWarnings({"unchecked", "squid:S1160"})
   public void testBeanAnnotations() throws IOException, ClassNotFoundException {
     assertNotNull(entityUpdaters);
     
-    Iterator<EntityUpdater> iterator = entityUpdaters.iterator();
+    Iterator<EntityUpdater<?>> iterator = entityUpdaters.iterator();
     assertTrue(iterator.hasNext());
     
     while (iterator.hasNext()) {
-      EntityUpdater entityUpdater = iterator.next();
+      EntityUpdater<?> entityUpdater = iterator.next();
       assertNotNull(entityUpdater);
       String className = StringUtils.substringBefore(entityUpdater.getClass().getName(), "$");
-      Class<? extends EntityUpdater> entityUpdaterClass = (Class<? extends EntityUpdater>) Class.forName(className);
+      Class<? extends EntityUpdater<?>> entityUpdaterClass = (Class<? extends EntityUpdater<?>>) Class.forName(className);
       assertNotNull(entityUpdaterClass);
       
       assertTrue(String.format("Singleton not present in %s", entityUpdaterClass.getName()), entityUpdaterClass.isAnnotationPresent(Singleton.class));

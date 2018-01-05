@@ -65,7 +65,7 @@ import fi.otavanopisto.kuntaapi.server.utils.LocalizationUtils;
 @Singleton
 @AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
-public class PtvServiceEntityUpdater extends EntityUpdater {
+public class PtvServiceEntityUpdater extends EntityUpdater<IdTask<ServiceId>> {
 
   @Inject
   private Logger logger;
@@ -128,14 +128,19 @@ public class PtvServiceEntityUpdater extends EntityUpdater {
     executeNextTask();
   }
   
+  @Override
+  public void execute(IdTask<ServiceId> task) {
+    if (task.getOperation() == Operation.UPDATE) {
+      updatePtvService(task.getId(), task.getOrderIndex()); 
+    } else if (task.getOperation() == Operation.REMOVE) {
+      deletePtvService(task.getId());
+    }
+  }
+  
   private void executeNextTask() {
     IdTask<ServiceId> task = serviceIdTaskQueue.next();
     if (task != null) {
-      if (task.getOperation() == Operation.UPDATE) {
-        updatePtvService(task.getId(), task.getOrderIndex()); 
-      } else if (task.getOperation() == Operation.REMOVE) {
-        deletePtvService(task.getId());
-      }
+      execute(task);
     }
   }
 

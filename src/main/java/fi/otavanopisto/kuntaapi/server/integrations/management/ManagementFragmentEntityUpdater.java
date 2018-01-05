@@ -30,7 +30,7 @@ import fi.otavanopisto.kuntaapi.server.tasks.IdTask.Operation;
 @Singleton
 @AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
-public class ManagementFragmentEntityUpdater extends EntityUpdater {
+public class ManagementFragmentEntityUpdater extends EntityUpdater<IdTask<FragmentId>> {
 
   @Inject
   private Logger logger;
@@ -69,14 +69,19 @@ public class ManagementFragmentEntityUpdater extends EntityUpdater {
     executeNextTask();
   }
   
+  @Override
+  public void execute(IdTask<FragmentId> task) {
+    if (task.getOperation() == Operation.UPDATE) {
+      updateManagementFragment(task.getId(), task.getOrderIndex()); 
+    } else if (task.getOperation() == Operation.REMOVE) {
+      deleteManagementFragment(task.getId());
+    }
+  }
+  
   private void executeNextTask() {
     IdTask<FragmentId> task = fragmentIdTaskQueue.next();
     if (task != null) {
-      if (task.getOperation() == Operation.UPDATE) {
-        updateManagementFragment(task.getId(), task.getOrderIndex()); 
-      } else if (task.getOperation() == Operation.REMOVE) {
-        deleteManagementFragment(task.getId());
-      }
+      execute(task);
     }
   }
   

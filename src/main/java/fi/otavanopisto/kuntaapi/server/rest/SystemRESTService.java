@@ -108,7 +108,7 @@ public class SystemRESTService {
   private Instance<IdUpdater> idUpdaters;
   
   @Inject  
-  private Instance<EntityUpdater> entityUpdaters;
+  private Instance<EntityUpdater<?>> entityUpdaters;
   
   /**
    * Returns pong
@@ -265,7 +265,7 @@ public class SystemRESTService {
         idUpdater.stop(cancelTimers);
       }
       
-      for (EntityUpdater entityUpdater : entityUpdaters) {
+      for (EntityUpdater<?> entityUpdater : entityUpdaters) {
         entityUpdater.stop(cancelTimers);
       }
       
@@ -292,7 +292,7 @@ public class SystemRESTService {
       updaterDetails.addUpdaterState(idUpdater);
     }
 
-    for (EntityUpdater entityUpdater : entityUpdaters) {
+    for (EntityUpdater<?> entityUpdater : entityUpdaters) {
       overallHealth = minHealth(overallHealth, entityUpdater.getHealth());
       updaterDetails.addUpdaterState(entityUpdater);
     }

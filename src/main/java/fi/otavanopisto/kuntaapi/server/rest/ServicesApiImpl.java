@@ -42,7 +42,7 @@ import fi.otavanopisto.kuntaapi.server.persistence.model.clients.ClientOrganizat
  */
 @RequestScoped
 @Stateful
-@SuppressWarnings ({ "squid:S3306", "unused" })
+@SuppressWarnings ({ "squid:S3306" })
 public class ServicesApiImpl extends ServicesApi {
 
   private static final String INVALID_VALUE_FOR_SORT_DIR = "Invalid value for sortDir";
