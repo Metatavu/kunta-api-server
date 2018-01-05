@@ -41,6 +41,19 @@ public class WebpageServiceChannelInTestsIT extends AbstractPtvInTest {
   }
   
   @Test
+  public void updateWebPageServiceChannelUnauthorized() throws JsonParseException, JsonMappingException, IOException, InterruptedException {
+    WebPageServiceChannel kuntaApiResource = getWebPageChannel(0, TestPtvConsts.WEB_PAGE_SERVICE_CHANNELS.length);
+    
+    givenReadonly()
+      .body(kuntaApiResource)
+      .contentType(ContentType.JSON)
+      .put("/webPageServiceChannels/{kuntaApiChannelId}", kuntaApiResource.getId())
+      .then()
+      .assertThat()
+      .statusCode(401);
+  }
+  
+  @Test
   public void updateWebPageServiceChannelUnchanged() throws JsonParseException, JsonMappingException, IOException, InterruptedException {
     String ptvId = TestPtvConsts.WEB_PAGE_SERVICE_CHANNELS[0];
     String organizationId = getOrganizationId(0);
