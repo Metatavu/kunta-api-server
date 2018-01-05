@@ -318,9 +318,9 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
  }
   
   protected void grantOrganizationPermission(AccessType accessType, String organizationKuntaApiId, ClientOrganizationPermission permission) {
-    Long findIdentifierIdByKuntaApiId = findIdentifierIdByKuntaApiId(organizationKuntaApiId);
+    Long organizationId = findIdentifierIdByKuntaApiId(organizationKuntaApiId);
     Long clientDatabaseId = findClientDatabaseIdByAccessType(accessType);
-    executeInsert("insert into ClientOrganizationPermissionGrant (client_id, organizationIdentifier_id, permission) values (?, ?, ?)", clientDatabaseId, findIdentifierIdByKuntaApiId, permission.name());
+    executeInsert("insert into ClientOrganizationPermissionGrant (client_id, organizationIdentifier_id, permission) values (?, ?, ?)", clientDatabaseId, organizationId, permission.name());
   }
   
   /**

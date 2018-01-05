@@ -1,6 +1,7 @@
 package fi.otavanopisto.kuntaapi.test.server.integration.ptv;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -16,10 +17,9 @@ import fi.metatavu.ptv.client.model.V6VmOpenApiWebPageChannelInBase;
 import fi.metatavu.ptv.client.model.V7VmOpenApiWebPageChannel;
 import fi.otavanopisto.kuntaapi.server.persistence.model.clients.AccessType;
 import fi.otavanopisto.kuntaapi.server.persistence.model.clients.ClientOrganizationPermission;
-import fi.otavanopisto.kuntaapi.test.AbstractIntegrationTest;
 import fi.otavanopisto.kuntaapi.test.AbstractPtvMocker;
 
-public class WebpageServiceChannelInTestsIT extends AbstractIntegrationTest {
+public class WebpageServiceChannelInTestsIT extends AbstractPtvInTest {
 
   /**
    * Starts WireMock
@@ -41,7 +41,7 @@ public class WebpageServiceChannelInTestsIT extends AbstractIntegrationTest {
   }
   
   @Test
-  public void updateWebPageServiceChannel() throws JsonParseException, JsonMappingException, IOException, InterruptedException {
+  public void updateWebPageServiceChannelUnchanged() throws JsonParseException, JsonMappingException, IOException, InterruptedException {
     String ptvId = TestPtvConsts.WEB_PAGE_SERVICE_CHANNELS[0];
     String organizationId = getOrganizationId(0);
     
@@ -50,7 +50,6 @@ public class WebpageServiceChannelInTestsIT extends AbstractIntegrationTest {
     grantOrganizationPermission(AccessType.READ_WRITE, organizationId, ClientOrganizationPermission.UPDATE_SERVICE_CHANNELS);
 
     WebPageServiceChannel kuntaApiResource = getWebPageChannel(0, TestPtvConsts.WEB_PAGE_SERVICE_CHANNELS.length);
-    
     V6VmOpenApiWebPageChannelInBase ptvInResource = getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_IN_API, ptvId, V6VmOpenApiWebPageChannelInBase.class);
     V7VmOpenApiWebPageChannel ptvOutResource =  getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_OUT_API, ptvId, V7VmOpenApiWebPageChannel.class);
     
@@ -67,4 +66,43 @@ public class WebpageServiceChannelInTestsIT extends AbstractIntegrationTest {
     getPtvServiceChannelMocker().verifyWebPage(ptvId, ptvInResource);
   }
   
+  @Test
+  public void updateWebPageServiceChannelChanges() throws JsonParseException, JsonMappingException, IOException, InterruptedException {
+    String ptvId = TestPtvConsts.WEB_PAGE_SERVICE_CHANNELS[0];
+    String organizationId = getOrganizationId(0);
+    
+    String kuntaApiChannelId = getWebPageChannelId(0, TestPtvConsts.WEB_PAGE_SERVICE_CHANNELS.length);
+    
+    grantOrganizationPermission(AccessType.READ_WRITE, organizationId, ClientOrganizationPermission.UPDATE_SERVICE_CHANNELS);
+
+    WebPageServiceChannel kuntaApiResource = getWebPageChannel(0, TestPtvConsts.WEB_PAGE_SERVICE_CHANNELS.length);
+    kuntaApiResource.setDescriptions(createLocalizedValue("en", "Description", "Changed Description"));
+    kuntaApiResource.setLanguages(Arrays.asList("en"));
+    kuntaApiResource.setNames(createLocalizedValue("en", "Name", "Changed Name"));
+    kuntaApiResource.setSupportEmails(createEmails("en", "fake@example.com"));
+    kuntaApiResource.setSupportPhones(createPhones("en", "Phone", "+358", "12345-FAKE", "Charged", "Testing", false, "Test phone"));
+    kuntaApiResource.setUrls(createLocalizedValue("en", "URL", "www.example.com"));
+    
+    V6VmOpenApiWebPageChannelInBase ptvInResource = getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_IN_API, ptvId, V6VmOpenApiWebPageChannelInBase.class);
+    ptvInResource.setServiceChannelDescriptions(createPtvInLocalizedItems("en", "Description", "Changed Description"));
+    ptvInResource.setLanguages(Arrays.asList("en"));
+    ptvInResource.setServiceChannelNames(createPtvInLanguageItems("en", "Changed Name"));
+    ptvInResource.setSupportEmails(createPtvInLanguageItems("en", "fake@example.com"));
+    ptvInResource.setSupportPhones(createPtvInPhones("en", "Phone", "+358", "12345-FAKE", "Charged", "Testing", false, "Test phone"));
+    ptvInResource.setUrls(createPtvInLanguageItems("en", "www.example.com"));
+    
+    V7VmOpenApiWebPageChannel ptvOutResource =  getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_OUT_API, ptvId, V7VmOpenApiWebPageChannel.class);
+    
+    getPtvServiceChannelMocker().mockWebpagePut(ptvId, ptvOutResource);
+    
+    givenReadWrite()
+      .body(kuntaApiResource)
+      .contentType(ContentType.JSON)
+      .put("/webPageServiceChannels/{kuntaApiChannelId}",kuntaApiChannelId)
+      .then()
+      .assertThat()
+      .statusCode(200);
+
+    getPtvServiceChannelMocker().verifyWebPage(ptvId, ptvInResource);
+  }
 }

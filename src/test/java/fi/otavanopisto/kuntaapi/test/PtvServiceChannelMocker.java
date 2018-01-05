@@ -87,7 +87,6 @@ public class PtvServiceChannelMocker extends AbstractPtvMocker<Object> {
           .withBody(toJSON(responseEntity)))); 
   }
   
-  @SuppressWarnings("unchecked")
   private Object readEntityFromJSONFile(String file) {
     ObjectMapper objectMapper = getObjectMapper();
     
