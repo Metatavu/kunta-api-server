@@ -22,6 +22,7 @@ import fi.otavanopisto.kuntaapi.test.AbstractPtvMocker;
 
 public class ServiceLocationServiceChannelInTestsIT extends AbstractPtvInTest {
 
+  private static final String SERVICE_CHANNEL_FIND_PATH = "/serviceLocationServiceChannels/{kuntaApiChannelId}";
   /**
    * Starts WireMock
    */
@@ -48,7 +49,7 @@ public class ServiceLocationServiceChannelInTestsIT extends AbstractPtvInTest {
     givenReadonly()
       .body(kuntaApiResource)
       .contentType(ContentType.JSON)
-      .put("/serviceLocationServiceChannels/{kuntaApiChannelId}", kuntaApiResource.getId())
+      .put(SERVICE_CHANNEL_FIND_PATH, kuntaApiResource.getId())
       .then()
       .assertThat()
       .statusCode(401);
@@ -61,7 +62,7 @@ public class ServiceLocationServiceChannelInTestsIT extends AbstractPtvInTest {
     givenReadWrite()
       .body(kuntaApiResource)
       .contentType(ContentType.JSON)
-      .put("/serviceLocationServiceChannels/{kuntaApiChannelId}", kuntaApiResource.getId())
+      .put(SERVICE_CHANNEL_FIND_PATH, kuntaApiResource.getId())
       .then()
       .assertThat()
       .statusCode(403);
@@ -84,7 +85,7 @@ public class ServiceLocationServiceChannelInTestsIT extends AbstractPtvInTest {
     givenReadWrite()
       .body(kuntaApiResource)
       .contentType(ContentType.JSON)
-      .put("/serviceLocationServiceChannels/{kuntaApiChannelId}",kuntaApiChannelId)
+      .put(SERVICE_CHANNEL_FIND_PATH,kuntaApiChannelId)
       .then()
       .assertThat()
       .statusCode(200);
@@ -93,7 +94,7 @@ public class ServiceLocationServiceChannelInTestsIT extends AbstractPtvInTest {
   }
   
   @Test
-  public void updateServiceLocationServiceChannelChanges() throws JsonParseException, JsonMappingException, IOException, InterruptedException {
+  public void updateServiceLocationServiceChannelChanges() throws IOException, InterruptedException {
     String ptvId = TestPtvConsts.SERVICE_LOCATION_SERVICE_CHANNELS[0];
     String organizationId = getOrganizationId(0);
     
@@ -138,7 +139,7 @@ public class ServiceLocationServiceChannelInTestsIT extends AbstractPtvInTest {
     givenReadWrite()
       .body(kuntaApiResource)
       .contentType(ContentType.JSON)
-      .put("/serviceLocationServiceChannels/{kuntaApiChannelId}",kuntaApiChannelId)
+      .put(SERVICE_CHANNEL_FIND_PATH,kuntaApiChannelId)
       .then()
       .assertThat()
       .statusCode(200);

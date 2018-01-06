@@ -22,9 +22,7 @@ import org.apache.logging.log4j.core.config.Configuration;
 import org.apache.logging.log4j.core.config.LoggerConfig;
 import org.junit.After;
 
-import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.jayway.restassured.http.ContentType;
 import com.jayway.restassured.path.json.exception.JsonPathException;
 import com.jayway.restassured.specification.RequestSpecification;
@@ -274,9 +272,10 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
         try {
           statement.setObject(1, clientId);
           statement.execute();
-          ResultSet resultSet = statement.getResultSet();
-          if (resultSet.next()) {
-            return resultSet.getLong(1);
+          try (ResultSet resultSet = statement.getResultSet()) {
+            if (resultSet.next()) {
+              return resultSet.getLong(1);
+            }
           }
         } finally {
           statement.close();
@@ -301,9 +300,10 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
         try {
           statement.setObject(1, kuntaApiId);
           statement.execute();
-          ResultSet resultSet = statement.getResultSet();
-          if (resultSet.next()) {
-            return resultSet.getLong(1);
+          try (ResultSet resultSet = statement.getResultSet()) {
+            if (resultSet.next()) {
+              return resultSet.getLong(1);
+            }
           }
         } finally {
           statement.close();
@@ -788,7 +788,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     return getServiceLocationChannelId(index, 3); 
   }
   
-  protected ServiceLocationServiceChannel getServiceLocationServiceChannel(int index, int waitCount) throws JsonParseException, JsonMappingException, IOException, InterruptedException {
+  protected ServiceLocationServiceChannel getServiceLocationServiceChannel(int index, int waitCount) throws IOException, InterruptedException {
     waitApiListCount("/serviceLocationServiceChannels", waitCount);
     
     try (InputStream channelDataStream = givenReadonly()
@@ -801,7 +801,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     }
   }
   
-  protected WebPageServiceChannel getWebPageChannel(int index, int waitCount) throws JsonParseException, JsonMappingException, IOException, InterruptedException {
+  protected WebPageServiceChannel getWebPageChannel(int index, int waitCount) throws IOException, InterruptedException {
     waitApiListCount("/webPageServiceChannels", waitCount);
     
     try (InputStream channelDataStream = givenReadonly()

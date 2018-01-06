@@ -21,6 +21,8 @@ import fi.otavanopisto.kuntaapi.test.AbstractPtvMocker;
 
 public class WebpageServiceChannelInTestsIT extends AbstractPtvInTest {
 
+  private static final String SERVICE_CHANNEL_FIND_PATH = "/webPageServiceChannels/{kuntaApiChannelId}";
+  
   /**
    * Starts WireMock
    */
@@ -47,7 +49,7 @@ public class WebpageServiceChannelInTestsIT extends AbstractPtvInTest {
     givenReadonly()
       .body(kuntaApiResource)
       .contentType(ContentType.JSON)
-      .put("/webPageServiceChannels/{kuntaApiChannelId}", kuntaApiResource.getId())
+      .put(SERVICE_CHANNEL_FIND_PATH, kuntaApiResource.getId())
       .then()
       .assertThat()
       .statusCode(401);
@@ -60,7 +62,7 @@ public class WebpageServiceChannelInTestsIT extends AbstractPtvInTest {
     givenReadWrite()
       .body(kuntaApiResource)
       .contentType(ContentType.JSON)
-      .put("/webPageServiceChannels/{kuntaApiChannelId}", kuntaApiResource.getId())
+      .put(SERVICE_CHANNEL_FIND_PATH, kuntaApiResource.getId())
       .then()
       .assertThat()
       .statusCode(403);
@@ -83,7 +85,7 @@ public class WebpageServiceChannelInTestsIT extends AbstractPtvInTest {
     givenReadWrite()
       .body(kuntaApiResource)
       .contentType(ContentType.JSON)
-      .put("/webPageServiceChannels/{kuntaApiChannelId}",kuntaApiChannelId)
+      .put(SERVICE_CHANNEL_FIND_PATH,kuntaApiChannelId)
       .then()
       .assertThat()
       .statusCode(200);
@@ -92,7 +94,7 @@ public class WebpageServiceChannelInTestsIT extends AbstractPtvInTest {
   }
   
   @Test
-  public void updateWebPageServiceChannelChanges() throws JsonParseException, JsonMappingException, IOException, InterruptedException {
+  public void updateWebPageServiceChannelChanges() throws IOException, InterruptedException {
     String ptvId = TestPtvConsts.WEB_PAGE_SERVICE_CHANNELS[0];
     String organizationId = getOrganizationId(0);
     
@@ -123,7 +125,7 @@ public class WebpageServiceChannelInTestsIT extends AbstractPtvInTest {
     givenReadWrite()
       .body(kuntaApiResource)
       .contentType(ContentType.JSON)
-      .put("/webPageServiceChannels/{kuntaApiChannelId}",kuntaApiChannelId)
+      .put(SERVICE_CHANNEL_FIND_PATH,kuntaApiChannelId)
       .then()
       .assertThat()
       .statusCode(200);

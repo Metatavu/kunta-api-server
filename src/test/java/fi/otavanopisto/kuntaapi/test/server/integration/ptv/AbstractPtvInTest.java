@@ -29,6 +29,7 @@ import fi.metatavu.ptv.client.model.VmOpenApiWebPageWithOrderNumber;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.translation.PtvAddressSubtype;
 import fi.otavanopisto.kuntaapi.test.AbstractIntegrationTest;
 
+@SuppressWarnings ("squid:S00107")
 public class AbstractPtvInTest extends AbstractIntegrationTest {
 
   protected List<WebPage> createWebPages(String language, String type, String url, String value, String description) {
