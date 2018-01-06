@@ -20,6 +20,7 @@ import fi.metatavu.ptv.client.model.V7VmOpenApiElectronicChannel;
 import fi.metatavu.ptv.client.model.V7VmOpenApiPhoneChannel;
 import fi.metatavu.ptv.client.model.V7VmOpenApiPrintableFormChannel;
 import fi.metatavu.ptv.client.model.V7VmOpenApiServiceLocationChannel;
+import fi.metatavu.ptv.client.model.V7VmOpenApiServiceLocationChannelInBase;
 import fi.metatavu.ptv.client.model.V7VmOpenApiWebPageChannel;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.PtvConsts;
 
@@ -74,9 +75,17 @@ public class PtvServiceChannelMocker extends AbstractPtvMocker<Object> {
   public void mockWebpagePut(String id, V7VmOpenApiWebPageChannel responseEntity) {
     mockServiceChannelPut("WebPage", id, responseEntity);
   }
-
+  
+  public void mockServiceLocationPut(String id, V7VmOpenApiServiceLocationChannel responseEntity) {
+    mockServiceChannelPut("ServiceLocation", id, responseEntity);
+  }
+  
   public void verifyWebPage(String id, V6VmOpenApiWebPageChannelInBase entity) {
     verifyPut(String.format("/ptv/api/%s/ServiceChannel/WebPage/%s", PtvConsts.VERSION, id), toJSON(entity));
+  }
+  
+  public void verifyServiceLocation(String id, V7VmOpenApiServiceLocationChannelInBase entity) {
+    verifyPut(String.format("/ptv/api/%s/ServiceChannel/ServiceLocation/%s", PtvConsts.VERSION, id), toJSON(entity));
   }
   
   private void mockServiceChannelPut(String type, String id, Object responseEntity) {

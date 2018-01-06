@@ -294,7 +294,7 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
         updateServiceChannel(updatedPtvChannelId);
         return findPrintableFormChannelAfterUpdate(printableFormChannelId);
       } else {        
-        logger.severe(() -> String.format("Failed to update service location service channel [%d] %s", response.getStatus(), response.getMessage()));
+        logger.severe(() -> String.format("Failed to update service printable form service channel [%d] %s", response.getStatus(), response.getMessage()));
         return IntegrationResponse.statusMessage(response.getStatus(), response.getMessage());
       }
       
