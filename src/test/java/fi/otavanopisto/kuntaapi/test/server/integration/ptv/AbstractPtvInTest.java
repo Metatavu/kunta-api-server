@@ -170,10 +170,29 @@ public class AbstractPtvInTest extends AbstractIntegrationTest {
   }
   
   protected List<Address> createAddresssesAbroad(List<LocalizedValue> locationAbroad) {
-    return createAddressses("Location", PtvAddressSubtype.ABROAD.getPtvValue(), null, null, null, null, null, locationAbroad, null, null, null, null, null, null, null, null);
+    return Arrays.asList(createAddressAbroad(locationAbroad));
+  }
+
+  protected Address createAddressAbroad(List<LocalizedValue> locationAbroad) {
+    return createAddress("Location", PtvAddressSubtype.ABROAD.getPtvValue(), null, null, null, null, null, locationAbroad, null, null, null, null, null, null, null, null);
+  }
+  
+  protected Address createAddressFreeText(List<LocalizedValue> additionalInformation) {
+    return createAddress("Location", PtvAddressSubtype.NO_ADDRESS.getPtvValue(), null, null, null, null, null, null, null, null, null, null, null, null, null, additionalInformation);
   }
 
   protected List<Address> createAddressses(String type, String subtype, String country, List<LocalizedValue> streetAddress, String streetNumber, List<LocalizedValue> postOffice, List<Address> multipointLocation, List<LocalizedValue> locationAbroad, String latitude, String longitude, Municipality municipality, String postalCode, List<LocalizedValue> postOfficeBox, String coordinateState, Coordinates coordinates, List<LocalizedValue> additionalInformations) {
+    Address result = createAddress(type, subtype, country, streetAddress, streetNumber, postOffice, multipointLocation,
+        locationAbroad, latitude, longitude, municipality, postalCode, postOfficeBox, coordinateState, coordinates,
+        additionalInformations);
+    return Arrays.asList(result);
+  }
+
+  protected Address createAddress(String type, String subtype, String country, List<LocalizedValue> streetAddress,
+      String streetNumber, List<LocalizedValue> postOffice, List<Address> multipointLocation,
+      List<LocalizedValue> locationAbroad, String latitude, String longitude, Municipality municipality,
+      String postalCode, List<LocalizedValue> postOfficeBox, String coordinateState, Coordinates coordinates,
+      List<LocalizedValue> additionalInformations) {
     Address result = new Address();
     result.setAdditionalInformations(additionalInformations);
     result.setCoordinates(coordinates);
@@ -191,7 +210,7 @@ public class AbstractPtvInTest extends AbstractIntegrationTest {
     result.setStreetNumber(streetNumber);
     result.setSubtype(subtype);
     result.setType(type);
-    return Arrays.asList(result);
+    return result;
   }
 
   protected VmOpenApiAreaIn createArea(String type, String code) {
