@@ -109,6 +109,7 @@ public class PtvDownload {
     System.out.println("    };");
   }
 
+  @SuppressWarnings("unused")
   private PtvDownload downloadOrganizations() throws IOException {
     File[] organizationFiles = listJsonFiles(getOrganizationsFolder());
     for (File organizationFile : organizationFiles) {

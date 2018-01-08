@@ -62,7 +62,7 @@ import fi.otavanopisto.kuntaapi.server.tasks.IdTask.Operation;
 @Singleton
 @AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
-public class ManagementPageEntityUpdater extends EntityUpdater {
+public class ManagementPageEntityUpdater extends EntityUpdater<IdTask<PageId>> {
 
   @Inject
   private Logger logger;
@@ -131,14 +131,19 @@ public class ManagementPageEntityUpdater extends EntityUpdater {
     executeNextTask();
   }
   
+  @Override
+  public void execute(IdTask<PageId> task) {
+    if (task.getOperation() == Operation.UPDATE) {
+      updateManagementPage(task.getId(), task.getOrderIndex()); 
+    } else if (task.getOperation() == Operation.REMOVE) {
+      deleteManagementPage(task.getId());
+    }
+  }
+  
   private void executeNextTask() {
     IdTask<PageId> task = pageIdTaskQueue.next();
     if (task != null) {
-      if (task.getOperation() == Operation.UPDATE) {
-        updateManagementPage(task.getId(), task.getOrderIndex()); 
-      } else if (task.getOperation() == Operation.REMOVE) {
-        deleteManagementPage(task.getId());
-      }
+      execute(task);
     }
   }
   

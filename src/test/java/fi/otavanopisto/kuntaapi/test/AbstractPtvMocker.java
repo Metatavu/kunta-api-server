@@ -2,11 +2,15 @@ package fi.otavanopisto.kuntaapi.test;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
 import static com.github.tomakehurst.wiremock.client.WireMock.containing;
+import static com.github.tomakehurst.wiremock.client.WireMock.equalToJson;
 import static com.github.tomakehurst.wiremock.client.WireMock.get;
 import static com.github.tomakehurst.wiremock.client.WireMock.head;
+import static com.github.tomakehurst.wiremock.client.WireMock.putRequestedFor;
 import static com.github.tomakehurst.wiremock.client.WireMock.removeStub;
 import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
+import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlPathEqualTo;
+import static com.github.tomakehurst.wiremock.client.WireMock.verify;
 import static org.junit.Assert.fail;
 
 import java.io.File;
@@ -44,6 +48,9 @@ import fi.otavanopisto.kuntaapi.server.persistence.dao.AbstractDAO;
 @SuppressWarnings ({"squid:S1166", "squid:S1450"})
 public abstract class AbstractPtvMocker<R> {
 
+  public static final String PTV_OUT_API = "out";
+  public static final String PTV_IN_API = "in";
+  
   private static final String APPLICATION_JSON = "application/json";
   private static final String CONTENT_TYPE = "Content-Type";
   private static final String CONTENT_LENGTH = "Content-Length";
@@ -242,7 +249,7 @@ public abstract class AbstractPtvMocker<R> {
     for (String id : ids) {
       try {
         if (!isMocked(id)) {
-          mockEntity(id, readEntity(id));
+          mockEntity(id, readEntity(PTV_OUT_API, id));
         } else {
           setStatus(id, MockedResourceStatus.OK);
         }
@@ -262,6 +269,7 @@ public abstract class AbstractPtvMocker<R> {
     
     return this;
   }
+  
   
   protected void mockEntity(String id, R entity) throws JsonProcessingException {
     add(id, entity, urlPathEqualTo(String.format("%s/%s", getBasePath(), id)));
@@ -313,16 +321,20 @@ public abstract class AbstractPtvMocker<R> {
     subMockers.get(id).add(subMocker);
   }
   
-  protected R readEntity(String id) {
-    return readEntityFromJSONFile(id, String.format("ptv/%s/%s.json", getName(), id));
+  public R readEntity(String api, String id) {
+    return readEntityFromJSONFile(id, String.format("ptv/%s/%s/%s.json", api, getName(), id));
   }
 
-  @SuppressWarnings("unchecked")
+  public <T> T readEntity(String api, String id, Class<? extends T> clazz) {
+    return readJSONFile(id, String.format("ptv/%s/%s/%s.json", api, getName(), id), clazz);
+  }
+
+  
   private R readEntityFromJSONFile(String id, String file) {
     return readJSONFile(id, file, getGenericTypeClass());
   }
   
-  private R readJSONFile(String id, String file, Class <R> type) {
+  private <T> T readJSONFile(String id, String file, Class <? extends T> type) {
     ObjectMapper objectMapper = getObjectMapper();
 
     try (InputStream stream = getClass().getClassLoader().getResourceAsStream(file)) {
@@ -439,7 +451,7 @@ public abstract class AbstractPtvMocker<R> {
     }
   }
   
-  private String toJSON(Object object) {
+  protected String toJSON(Object object) {
     try {
       return getObjectMapper().writeValueAsString(object);
     } catch (JsonProcessingException e) {
@@ -448,11 +460,16 @@ public abstract class AbstractPtvMocker<R> {
     }
   }
 
-  private ObjectMapper getObjectMapper() {
+  protected ObjectMapper getObjectMapper() {
     ObjectMapper objectMapper = new ObjectMapper();
     objectMapper.registerModule(new JavaTimeModule());
     objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
     return objectMapper;
+  }
+  
+  protected void verifyPut(String path, String payload) {
+    verify(1, putRequestedFor(urlEqualTo(path))
+        .withRequestBody(equalToJson(payload, true, true)));
   }
   
   public class GuidPage {

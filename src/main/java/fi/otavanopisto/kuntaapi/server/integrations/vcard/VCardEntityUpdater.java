@@ -46,7 +46,7 @@ import fi.otavanopisto.kuntaapi.server.tasks.OrganizationEntityUpdateTask;
 @Singleton
 @AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
-public class VCardEntityUpdater extends EntityUpdater {
+public class VCardEntityUpdater extends EntityUpdater<OrganizationEntityUpdateTask> {
 
   @Inject
   private Logger logger;
@@ -91,13 +91,18 @@ public class VCardEntityUpdater extends EntityUpdater {
   public String getName() {
     return "vcard-contacts";
   }
+  
+  @Override
+  public void execute(OrganizationEntityUpdateTask task) {
+    updateContacts(task.getOrganizationId());
+  }
 
   @Override
   public void timeout() {
     if (systemSettingController.isNotTestingOrTestRunning()) {
       OrganizationEntityUpdateTask task = organizationVCardsTaskQueue.next();
       if (task != null) {
-        updateContacts(task.getOrganizationId());
+        execute(task);
       } else {
         if (organizationVCardsTaskQueue.isEmptyAndLocalNodeResponsible()) {
           organizationVCardsTaskQueue.enqueueTasks(organizationSettingController.listOrganizationIdsWithSetting(VCardConsts.ORGANIZATION_VCARD_FILE));

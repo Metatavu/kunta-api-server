@@ -3,10 +3,6 @@ package fi.otavanopisto.kuntaapi.server.integrations.ptv;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
@@ -42,9 +38,9 @@ import fi.otavanopisto.kuntaapi.server.integrations.IntegrationResponse;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.client.PtvApi;
-import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.ServiceIdTaskQueue;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.translation.KuntaApiPtvTranslator;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.translation.PtvOutPtvInTranslator;
+import fi.otavanopisto.kuntaapi.server.integrations.ptv.updaters.PtvServiceEntityUpdater;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask.Operation;
 
@@ -82,12 +78,12 @@ public class PtvServiceProvider implements ServiceProvider {
 
   @Inject
   private PtvApi ptvApi; 
-  
+
   @Inject
   private ServiceController serviceController;
 
   @Inject
-  private ServiceIdTaskQueue serviceIdTaskQueue;
+  private PtvServiceEntityUpdater ptvServiceEntityUpdater;
   
   @Override
   public Service findService(ServiceId serviceId) {
@@ -175,13 +171,7 @@ public class PtvServiceProvider implements ServiceProvider {
           return IntegrationResponse.statusMessage(updateServiceChannelsResponse.getStatus(), updateServiceChannelsResponse.getMessage());
         }
         
-        Future<Long> enqueuedTask = serviceIdTaskQueue.enqueueTask(true, new IdTask<ServiceId>(Operation.UPDATE, serviceId));
-        
-        try {
-          enqueuedTask.get(1l, TimeUnit.MINUTES);
-        } catch (InterruptedException | ExecutionException | TimeoutException e) {
-          logger.log(Level.WARNING, "Task waiting failed, returning old version", e);
-        }
+        ptvServiceEntityUpdater.execute(new IdTask<ServiceId>(Operation.UPDATE, serviceId));
         
         return findServiceAfterUpdate(serviceId);
       } else {        

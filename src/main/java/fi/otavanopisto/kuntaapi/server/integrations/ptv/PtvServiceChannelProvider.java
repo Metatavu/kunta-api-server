@@ -3,10 +3,6 @@ package fi.otavanopisto.kuntaapi.server.integrations.ptv;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -52,10 +48,10 @@ import fi.otavanopisto.kuntaapi.server.integrations.ptv.resources.PtvServiceLoca
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.resources.PtvWebPageServiceChannelResourceContainer;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.servicechannels.PtvServiceChannelResolver;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.servicechannels.ServiceChannelType;
-import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.ServiceChannelTasksQueue;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.ServiceChannelUpdateTask;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.translation.KuntaApiPtvTranslator;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.translation.PtvOutPtvInTranslator;
+import fi.otavanopisto.kuntaapi.server.integrations.ptv.updaters.PtvServiceChannelEntityUpdater;
 
 /**
  * Service channel provider for PTV
@@ -114,7 +110,7 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
   private PtvServiceChannelResolver ptvServiceChannelResolver;
   
   @Inject
-  private ServiceChannelTasksQueue serviceChannelTasksQueue;
+  private PtvServiceChannelEntityUpdater ptvServiceChannelEntityUpdater;
   
   @Override
   public ElectronicServiceChannel findElectronicServiceChannel(ElectronicServiceChannelId electronicServiceChannelId) {
@@ -188,7 +184,7 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
       ApiResponse<V7VmOpenApiElectronicChannel> response = serviceChannelApi.apiV7ServiceChannelEChannelByIdPut(ptvElectronicServiceChannelId.getId(), ptvElectronicServiceChannelIn);
       if (response.isOk()) {
         String updatedPtvChannelId = response.getResponse().getId().toString();
-        waitServiceChannelUpdate(updatedPtvChannelId);
+        updateServiceChannel(updatedPtvChannelId);
         return findElectronicChannelAfterUpdate(electronicChannelId);
       } else {        
         logger.severe(() -> String.format(FAILED_TO_UPDATE_SERVICE_CHANNEL, response.getStatus(), response.getMessage()));
@@ -241,7 +237,7 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
       ApiResponse<V7VmOpenApiPhoneChannel> response = serviceChannelApi.apiV7ServiceChannelPhoneByIdPut(ptvPhoneServiceChannelId.getId(), ptvPhoneServiceChannelIn);
       if (response.isOk()) {
         String updatedPtvChannelId = response.getResponse().getId().toString();
-        waitServiceChannelUpdate(updatedPtvChannelId);
+        updateServiceChannel(updatedPtvChannelId);
         return findPhoneChannelAfterUpdate(phoneChannelId);
       } else {        
         logger.severe(() -> String.format(FAILED_TO_UPDATE_SERVICE_CHANNEL, response.getStatus(), response.getMessage()));
@@ -295,10 +291,10 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
       ApiResponse<V7VmOpenApiPrintableFormChannel> response = serviceChannelApi.apiV7ServiceChannelPrintableFormByIdPut(ptvPrintableFormServiceChannelId.getId(), ptvPrintableFormServiceChannelIn);
       if (response.isOk()) {
         String updatedPtvChannelId = response.getResponse().getId().toString();
-        waitServiceChannelUpdate(updatedPtvChannelId);
+        updateServiceChannel(updatedPtvChannelId);
         return findPrintableFormChannelAfterUpdate(printableFormChannelId);
       } else {        
-        logger.severe(() -> String.format("Failed to update service location service channel [%d] %s", response.getStatus(), response.getMessage()));
+        logger.severe(() -> String.format("Failed to update service printable form service channel [%d] %s", response.getStatus(), response.getMessage()));
         return IntegrationResponse.statusMessage(response.getStatus(), response.getMessage());
       }
       
@@ -347,7 +343,7 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
       ApiResponse<V7VmOpenApiServiceLocationChannel> response = serviceChannelApi.apiV7ServiceChannelServiceLocationByIdPut(ptvServiceLocationServiceChannelId.getId(), ptvServiceLocationServiceChannelIn);
       if (response.isOk()) {
         String updatedPtvChannelId = response.getResponse().getId().toString();
-        waitServiceChannelUpdate(updatedPtvChannelId);
+        updateServiceChannel(updatedPtvChannelId);
         return findServiceLocationChannelAfterUpdate(serviceLocationChannelId);
       } else {        
         logger.severe(() -> String.format(FAILED_TO_UPDATE_SERVICE_CHANNEL, response.getStatus(), response.getMessage()));
@@ -395,9 +391,9 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
       ApiResponse<V7VmOpenApiWebPageChannel> response = serviceChannelApi.apiV7ServiceChannelWebPageByIdPut(ptvWebPageServiceChannelId.getId(), ptvWebPageServiceChannelIn);
       if (response.isOk()) {
         String updatedPtvChannelId = response.getResponse().getId().toString();
-        waitServiceChannelUpdate(updatedPtvChannelId);
+        updateServiceChannel(updatedPtvChannelId);
         return findWebPageChannelAfterUpdate(webPageChannelId);
-      } else {        
+      } else {
         logger.severe(() -> String.format(FAILED_TO_UPDATE_SERVICE_CHANNEL, response.getStatus(), response.getMessage()));
         return IntegrationResponse.statusMessage(response.getStatus(), response.getMessage());
       }
@@ -537,17 +533,8 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
     return IntegrationResponse.ok(findWebPageServiceChannel(serviceChannelId));
   }
   
-  private void waitServiceChannelUpdate(String updatedPtvChannelId) {
-    Future<Long> enqueuedTask = serviceChannelTasksQueue.enqueueTask(true, new ServiceChannelUpdateTask(updatedPtvChannelId, null));        
-    try {
-      if (enqueuedTask != null) {
-        enqueuedTask.get(1l, TimeUnit.MINUTES);
-      } else {
-        logger.log(Level.SEVERE, "Task future was null, returning old version");
-      }
-    } catch (InterruptedException | ExecutionException | TimeoutException e) {
-      logger.log(Level.WARNING, "Task waiting failed, returning old version", e);
-    }
+  private void updateServiceChannel(String updatedPtvChannelId) {
+    ptvServiceChannelEntityUpdater.execute(new ServiceChannelUpdateTask(updatedPtvChannelId, null));
   }
   
   @SuppressWarnings("unchecked")

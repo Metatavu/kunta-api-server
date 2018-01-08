@@ -19,13 +19,13 @@ public class EntityUpdaterInitializer {
   
   @Inject
   @Any
-  private Instance<EntityUpdater> entityUpdaters;
+  private Instance<EntityUpdater<?>> entityUpdaters;
   
   @PostConstruct
   public void start() {
-    Iterator<EntityUpdater> updaters = entityUpdaters.iterator();
+    Iterator<EntityUpdater<?>> updaters = entityUpdaters.iterator();
     while (updaters.hasNext()) {
-      EntityUpdater updater = updaters.next();
+      EntityUpdater<?> updater = updaters.next();
       logger.info(String.format("Registering entity updater %s", updater.getName()));
     }
   }

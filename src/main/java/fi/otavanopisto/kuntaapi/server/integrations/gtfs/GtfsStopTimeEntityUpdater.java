@@ -34,7 +34,7 @@ import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 @Singleton
 @AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
-public class GtfsStopTimeEntityUpdater extends EntityUpdater {
+public class GtfsStopTimeEntityUpdater extends EntityUpdater<GtfsStopTimeEntityTask> {
 
   @Inject
   private Logger logger;
@@ -78,8 +78,13 @@ public class GtfsStopTimeEntityUpdater extends EntityUpdater {
   public void timeout() {
     GtfsStopTimeEntityTask task = gtfsStopTimeTaskQueue.next();
     if (task != null) {
-      updateGtfsStopTime(task);
+      execute(task);
     }
+  }
+  
+  @Override
+  public void execute(GtfsStopTimeEntityTask task) {
+    updateGtfsStopTime(task);
   }
   
   private void updateGtfsStopTime(GtfsStopTimeEntityTask task) {

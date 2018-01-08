@@ -5,6 +5,11 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.fail;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.List;
 
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
@@ -17,15 +22,23 @@ import org.apache.logging.log4j.core.config.Configuration;
 import org.apache.logging.log4j.core.config.LoggerConfig;
 import org.junit.After;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.jayway.restassured.http.ContentType;
 import com.jayway.restassured.path.json.exception.JsonPathException;
 import com.jayway.restassured.specification.RequestSpecification;
 
+import fi.metatavu.kuntaapi.server.rest.model.ElectronicServiceChannel;
 import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
 import fi.metatavu.kuntaapi.server.rest.model.Page;
+import fi.metatavu.kuntaapi.server.rest.model.PhoneServiceChannel;
+import fi.metatavu.kuntaapi.server.rest.model.PrintableFormServiceChannel;
+import fi.metatavu.kuntaapi.server.rest.model.Service;
+import fi.metatavu.kuntaapi.server.rest.model.ServiceLocationServiceChannel;
+import fi.metatavu.kuntaapi.server.rest.model.WebPageServiceChannel;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.PtvConsts;
 import fi.otavanopisto.kuntaapi.server.persistence.model.clients.AccessType;
+import fi.otavanopisto.kuntaapi.server.persistence.model.clients.ClientOrganizationPermission;
 
 /**
  * Abstract base class for integration tests
@@ -87,6 +100,8 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     ptvOrganizationMocker.stop();
     ptvCodesMocker.endMock();
 
+    deleteOrganizationPermissions();
+    
     if (dropIdentifiersAfter()) {
       deleteIdentifiers();
     }
@@ -237,7 +252,6 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     return String.format("%s_ID", accessType.name());
   }
 
-
   /**
    * Returns test client secret for given access type
    * 
@@ -246,6 +260,72 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
    */
   protected String getClientSecret(AccessType accessType) {
     return String.format("%s_SECRET", accessType.name());
+  }
+  
+  private Long findClientDatabaseIdByAccessType(AccessType accessType) {
+    return findClientDatabaseIdByClientId(getClientId(accessType));
+  }
+  
+  private Long findClientDatabaseIdByClientId(String clientId) {
+    Connection connection = getConnection();
+    
+    try {
+      try {
+        connection.setAutoCommit(true);
+        PreparedStatement statement = connection.prepareStatement("select id from Client where clientId = ?");
+        try {
+          statement.setObject(1, clientId);
+          statement.execute();
+          try (ResultSet resultSet = statement.getResultSet()) {
+            if (resultSet.next()) {
+              return resultSet.getLong(1);
+            }
+          }
+        } finally {
+          statement.close();
+        }
+      } finally {
+        connection.close();
+      }
+    } catch (Exception e) {
+      fail(e.getMessage());
+    }
+    
+    return null;
+ }
+  
+  private Long findIdentifierIdByKuntaApiId(String kuntaApiId) {
+    Connection connection = getConnection();
+    
+    try {
+      try {
+        connection.setAutoCommit(true);
+        PreparedStatement statement = connection.prepareStatement("select id from Identifier where kuntaApiId = ?");
+        try {
+          statement.setObject(1, kuntaApiId);
+          statement.execute();
+          try (ResultSet resultSet = statement.getResultSet()) {
+            if (resultSet.next()) {
+              return resultSet.getLong(1);
+            }
+          }
+        } finally {
+          statement.close();
+        }
+      } finally {
+        connection.close();
+      }
+    } catch (Exception e) {
+      fail(e.getMessage());
+    }
+    
+    return null;
+ }
+  
+  protected void grantOrganizationPermission(AccessType accessType, String organizationKuntaApiId, ClientOrganizationPermission permission) {
+    Long organizationId = findIdentifierIdByKuntaApiId(organizationKuntaApiId);
+    Long clientDatabaseId = findClientDatabaseIdByAccessType(accessType);
+    executeInsert("insert into ClientOrganizationPermissionGrant (client_id, organizationIdentifier_id, permission) values (?, ?, ?)", clientDatabaseId, organizationId, permission.name());
   }
   
   /**
@@ -712,6 +792,84 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     return getServiceLocationChannelId(index, 3); 
   }
   
+  protected Service getService(int index, int waitCount) throws IOException, InterruptedException {
+    waitApiListCount("/services", waitCount);
+    
+    try (InputStream serviceDataStream = givenReadonly()
+      .contentType(ContentType.JSON)
+      .get(String.format("/services?firstResult=%d&maxResults=1", index))
+      .body()
+      .asInputStream()) {      
+      List<Service> results = getObjectMapper().readValue(serviceDataStream, new TypeReference<List<Service>>() {});
+      return results.get(0);
+    }
+  }
+  
+  protected ElectronicServiceChannel getElectronicServiceChannel(int index, int waitCount) throws IOException, InterruptedException {
+    waitApiListCount("/electronicServiceChannels", waitCount);
+    
+    try (InputStream channelDataStream = givenReadonly()
+      .contentType(ContentType.JSON)
+      .get(String.format("/electronicServiceChannels?firstResult=%d&maxResults=1", index))
+      .body()
+      .asInputStream()) {      
+      List<ElectronicServiceChannel> results = getObjectMapper().readValue(channelDataStream, new TypeReference<List<ElectronicServiceChannel>>() {});
+      return results.get(0);
+    }
+  }
+  
+  protected PhoneServiceChannel getPhoneServiceChannel(int index, int waitCount) throws IOException, InterruptedException {
+    waitApiListCount("/phoneServiceChannels", waitCount);
+    
+    try (InputStream channelDataStream = givenReadonly()
+      .contentType(ContentType.JSON)
+      .get(String.format("/phoneServiceChannels?firstResult=%d&maxResults=1", index))
+      .body()
+      .asInputStream()) {      
+      List<PhoneServiceChannel> results = getObjectMapper().readValue(channelDataStream, new TypeReference<List<PhoneServiceChannel>>() {});
+      return results.get(0);
+    }
+  }
+  
+  protected PrintableFormServiceChannel getPrintableFormServiceChannel(int index, int waitCount) throws IOException, InterruptedException {
+    waitApiListCount("/printableFormServiceChannels", waitCount);
+    
+    try (InputStream channelDataStream = givenReadonly()
+      .contentType(ContentType.JSON)
+      .get(String.format("/printableFormServiceChannels?firstResult=%d&maxResults=1", index))
+      .body()
+      .asInputStream()) {      
+      List<PrintableFormServiceChannel> results = getObjectMapper().readValue(channelDataStream, new TypeReference<List<PrintableFormServiceChannel>>() {});
+      return results.get(0);
+    }
+  }
+  
+  protected ServiceLocationServiceChannel getServiceLocationServiceChannel(int index, int waitCount) throws IOException, InterruptedException {
+    waitApiListCount("/serviceLocationServiceChannels", waitCount);
+    
+    try (InputStream channelDataStream = givenReadonly()
+      .contentType(ContentType.JSON)
+      .get(String.format("/serviceLocationServiceChannels?firstResult=%d&maxResults=1", index))
+      .body()
+      .asInputStream()) {      
+      List<ServiceLocationServiceChannel> results = getObjectMapper().readValue(channelDataStream, new TypeReference<List<ServiceLocationServiceChannel>>() {});
+      return results.get(0);
+    }
+  }
+  
+  protected WebPageServiceChannel getWebPageChannel(int index, int waitCount) throws IOException, InterruptedException {
+    waitApiListCount("/webPageServiceChannels", waitCount);
+    
+    try (InputStream channelDataStream = givenReadonly()
+      .contentType(ContentType.JSON)
+      .get(String.format("/webPageServiceChannels?firstResult=%d&maxResults=1", index))
+      .body()
+      .asInputStream()) {      
+      List<WebPageServiceChannel> results = getObjectMapper().readValue(channelDataStream, new TypeReference<List<WebPageServiceChannel>>() {});
+      return results.get(0);
+    }
+  }
+  
   protected String getWebPageChannelId(int index, int waitCount) throws InterruptedException {
     waitApiListCount("/webPageServiceChannels", waitCount);
     
@@ -897,6 +1055,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     loggerContext.updateLoggers();
   }
   
+  @SuppressWarnings ("squid:S2925")
   protected void waitMs(int ms) {
     if (ms > 0) {
       try {
@@ -904,6 +1063,10 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
       } catch (InterruptedException e) {
       }
     }
+  }
+  
+  private void deleteOrganizationPermissions() {
+    executeDelete("delete from ClientOrganizationPermissionGrant");
   }
   
   private void createSystemSettings() {

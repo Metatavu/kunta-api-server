@@ -39,7 +39,7 @@ import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 @Singleton
 @AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
-public class PtvCodeListEntityUpdater extends EntityUpdater {
+public class PtvCodeListEntityUpdater extends EntityUpdater<PtvCodeListTask> {
 
   @Inject
   private Logger logger;
@@ -85,6 +85,11 @@ public class PtvCodeListEntityUpdater extends EntityUpdater {
   }
   
   @Override
+  public void execute(PtvCodeListTask task) {
+    executeTask(task);
+  }
+  
+  @Override
   public long getTimerInterval() {
     if (systemSettingController.inTestMode()) {
       return 5000l;
@@ -96,7 +101,7 @@ public class PtvCodeListEntityUpdater extends EntityUpdater {
   private void executeNextTask() {
     PtvCodeListTask task = codeListTaskQueue.next();
     if (task != null) {
-      executeTask(task);
+      execute(task);
     } else if (codeListTaskQueue.isEmptyAndLocalNodeResponsible()) {
       fillQueue();
     }

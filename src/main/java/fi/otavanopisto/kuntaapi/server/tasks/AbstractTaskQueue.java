@@ -1,6 +1,5 @@
 package fi.otavanopisto.kuntaapi.server.tasks;
 
-import java.util.concurrent.Future;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -29,9 +28,6 @@ public abstract class AbstractTaskQueue <T extends AbstractTask> {
   
   @Inject
   private TaskController taskController;
-
-  @Inject
-  private TaskListener taskListener;
   
   @Inject
   private Logger logger;
@@ -82,18 +78,17 @@ public abstract class AbstractTaskQueue <T extends AbstractTask> {
    * 
    * @param priority whether the task is a priority task or not
    * @param task taks
-   * @return returns future representing task state
    */
-  public Future<Long> enqueueTask(boolean priority, T task) {
+  public void enqueueTask(boolean priority, T task) {
     if (!running) {
-      return null;
+      return;
     }
     
     if (priority) {
       logger.log(Level.INFO, () -> String.format("Added priority task to queue %s", getName())); 
     }
     
-    return taskListener.listen(taskController.createTask(getName(), priority, task));    
+    taskController.createTask(getName(), priority, task);
   }
 
   /**

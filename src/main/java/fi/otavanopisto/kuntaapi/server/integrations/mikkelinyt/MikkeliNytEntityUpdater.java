@@ -52,7 +52,7 @@ import fi.otavanopisto.mikkelinyt.model.EventsResponse;
 @Singleton
 @AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
-public class MikkeliNytEntityUpdater extends EntityUpdater {
+public class MikkeliNytEntityUpdater extends EntityUpdater<OrganizationEntityUpdateTask> {
 
   @Inject
   private Logger logger;
@@ -106,11 +106,16 @@ public class MikkeliNytEntityUpdater extends EntityUpdater {
     if (systemSettingController.isNotTestingOrTestRunning()) {
       OrganizationEntityUpdateTask task = organizationEventsTaskQueue.next();
       if (task != null) {
-        updateEvents(task.getOrganizationId());
+        execute(task);
       } else if (organizationEventsTaskQueue.isEmptyAndLocalNodeResponsible()) {
         organizationEventsTaskQueue.enqueueTasks(organizationSettingController.listOrganizationIdsWithSetting(MikkeliNytConsts.ORGANIZATION_SETTING_BASEURL));
       }
     }
+  }
+  
+  @Override
+  public void execute(OrganizationEntityUpdateTask task) {
+    updateEvents(task.getOrganizationId());
   }
   
   private void updateEvents(OrganizationId organizationId) {

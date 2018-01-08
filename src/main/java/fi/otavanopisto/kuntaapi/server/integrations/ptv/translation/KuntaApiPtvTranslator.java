@@ -61,6 +61,8 @@ import fi.otavanopisto.kuntaapi.server.integrations.ptv.PtvConsts;
 @ApplicationScoped
 public class KuntaApiPtvTranslator extends AbstractTranslator {
 
+  private static final String UNKNOWN_SUBTYPE = "Unknown subtype %s";
+
   @Inject
   private Logger logger;
 
@@ -470,9 +472,24 @@ public class KuntaApiPtvTranslator extends AbstractTranslator {
     }
     
     V7VmOpenApiAddressDeliveryIn result = new V7VmOpenApiAddressDeliveryIn(); 
-    result.setDeliveryAddressInText(translateLocalizedValuesIntoLanguageItems(deliveryAddress.getAdditionalInformations()));
-    result.setPostOfficeBoxAddress(translatePostOfficeBoxAddress(deliveryAddress));
-    result.setStreetAddress(translateStreetAddress(deliveryAddress));
+    
+    PtvAddressSubtype subtype = getAddressSubtype(deliveryAddress.getSubtype());
+    switch (subtype) {
+      case POST_OFFICE_BOX:
+        result.setPostOfficeBoxAddress(translatePostOfficeBoxAddress(deliveryAddress));
+      break;
+      case NO_ADDRESS:
+        result.setDeliveryAddressInText(translateLocalizedValuesIntoLanguageItems(deliveryAddress.getAdditionalInformations()));
+      break;
+      case SINGLE:
+      case STREET:
+        result.setStreetAddress(translateStreetAddress(deliveryAddress));
+      break;
+      default:
+        logger.log(Level.SEVERE, () -> String.format(UNKNOWN_SUBTYPE, deliveryAddress.getSubtype()));
+      break;
+    }
+
     result.setSubType(deliveryAddress.getSubtype());
     
     return result;

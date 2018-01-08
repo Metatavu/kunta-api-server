@@ -43,7 +43,7 @@ import fi.otavanopisto.kuntaapi.server.tasks.IdTask.Operation;
 @Singleton
 @AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
-public class PtvOrganizationEntityUpdater extends EntityUpdater {
+public class PtvOrganizationEntityUpdater extends EntityUpdater<IdTask<OrganizationId>> {
 
   @Inject
   private Logger logger;
@@ -91,16 +91,21 @@ public class PtvOrganizationEntityUpdater extends EntityUpdater {
     executeNextTask();
   }
   
+  @Override
+  public void execute(IdTask<OrganizationId> task) {
+    OrganizationId organizationId = task.getId();
+    
+    if (task.getOperation() == Operation.UPDATE) {
+      updateOrganization(organizationId, task.getOrderIndex());
+    } else if (task.getOperation() == Operation.REMOVE) {
+      logger.log(Level.SEVERE, "PTV Organization removal is not implemented");
+    }
+  }
+  
   private void executeNextTask() {
     IdTask<OrganizationId> task = organizationIdTaskQueue.next();
     if (task != null) {
-      OrganizationId organizationId = task.getId();
-      
-      if (task.getOperation() == Operation.UPDATE) {
-        updateOrganization(organizationId, task.getOrderIndex());
-      } else if (task.getOperation() == Operation.REMOVE) {
-        logger.log(Level.SEVERE, "PTV Organization removal is not implemented");
-      }
+      execute(task);
     }
   }
   

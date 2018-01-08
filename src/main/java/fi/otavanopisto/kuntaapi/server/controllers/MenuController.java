@@ -26,7 +26,6 @@ public class MenuController {
   @Inject
   private Instance<MenuProvider> menuProviders;
   
-  @SuppressWarnings("unchecked")
   public List<Menu> listMenus(String slug, OrganizationId organizationId) {
     List<Menu> result = new ArrayList<>();
     
