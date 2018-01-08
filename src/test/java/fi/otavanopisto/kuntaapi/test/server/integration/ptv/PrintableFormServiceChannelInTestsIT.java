@@ -140,7 +140,7 @@ public class PrintableFormServiceChannelInTestsIT extends AbstractPtvInTest {
     ptvInResource.setFormReceiver(createPtvInLanguageItems("en", "Example receiver"));
     ptvInResource.setServiceChannelNames(createPtvInLanguageItems("en", "Changed Name"));
     ptvInResource.setSupportEmails(createPtvInLanguageItems("en", "fake@example.com"));
-    ptvInResource.setSupportPhones(createPtvInPhones("en", "Phone", "+358", "12345-FAKE", "Charged", "Testing", false, "Test phone"));
+    ptvInResource.setSupportPhones(createPtvInPhones("en", "+358", "12345-FAKE", "Charged", "Testing", false, "Test phone"));
     
     V7VmOpenApiPrintableFormChannel ptvOutResource =  getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_OUT_API, ptvId, V7VmOpenApiPrintableFormChannel.class);
     

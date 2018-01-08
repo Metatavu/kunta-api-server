@@ -29,6 +29,7 @@ import com.jayway.restassured.specification.RequestSpecification;
 
 import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
 import fi.metatavu.kuntaapi.server.rest.model.Page;
+import fi.metatavu.kuntaapi.server.rest.model.PhoneServiceChannel;
 import fi.metatavu.kuntaapi.server.rest.model.PrintableFormServiceChannel;
 import fi.metatavu.kuntaapi.server.rest.model.ServiceLocationServiceChannel;
 import fi.metatavu.kuntaapi.server.rest.model.WebPageServiceChannel;
@@ -787,6 +788,19 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   
   protected String getServiceLocationChannelId(int index) throws InterruptedException {
     return getServiceLocationChannelId(index, 3); 
+  }
+  
+  protected PhoneServiceChannel getPhoneServiceChannel(int index, int waitCount) throws IOException, InterruptedException {
+    waitApiListCount("/phoneServiceChannels", waitCount);
+    
+    try (InputStream channelDataStream = givenReadonly()
+      .contentType(ContentType.JSON)
+      .get(String.format("/phoneServiceChannels?firstResult=%d&maxResults=1", index))
+      .body()
+      .asInputStream()) {      
+      List<PhoneServiceChannel> results = getObjectMapper().readValue(channelDataStream, new TypeReference<List<PhoneServiceChannel>>() {});
+      return results.get(0);
+    }
   }
   
   protected PrintableFormServiceChannel getPrintableFormServiceChannel(int index, int waitCount) throws IOException, InterruptedException {

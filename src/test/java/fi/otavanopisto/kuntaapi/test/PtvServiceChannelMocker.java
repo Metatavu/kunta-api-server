@@ -18,6 +18,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import fi.metatavu.ptv.client.model.V6VmOpenApiWebPageChannelInBase;
 import fi.metatavu.ptv.client.model.V7VmOpenApiElectronicChannel;
 import fi.metatavu.ptv.client.model.V7VmOpenApiPhoneChannel;
+import fi.metatavu.ptv.client.model.V7VmOpenApiPhoneChannelInBase;
 import fi.metatavu.ptv.client.model.V7VmOpenApiPrintableFormChannel;
 import fi.metatavu.ptv.client.model.V7VmOpenApiPrintableFormChannelInBase;
 import fi.metatavu.ptv.client.model.V7VmOpenApiServiceLocationChannel;
@@ -77,12 +78,20 @@ public class PtvServiceChannelMocker extends AbstractPtvMocker<Object> {
     mockServiceChannelPut("WebPage", id, responseEntity);
   }
   
+  public void mockPhonePut(String id, V7VmOpenApiPhoneChannel responseEntity) {
+    mockServiceChannelPut("Phone", id, responseEntity);
+  }
+  
   public void mockPrintableFormPut(String id, V7VmOpenApiPrintableFormChannel responseEntity) {
     mockServiceChannelPut("PrintableForm", id, responseEntity);
   }
   
   public void mockServiceLocationPut(String id, V7VmOpenApiServiceLocationChannel responseEntity) {
     mockServiceChannelPut("ServiceLocation", id, responseEntity);
+  }
+  
+  public void verifyPhone(String id, V7VmOpenApiPhoneChannelInBase entity) {
+    verifyPut(String.format("/ptv/api/%s/ServiceChannel/Phone/%s", PtvConsts.VERSION, id), toJSON(entity));
   }
   
   public void verifyPrintableForm(String id, V7VmOpenApiPrintableFormChannelInBase entity) {

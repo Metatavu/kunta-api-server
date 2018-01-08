@@ -13,16 +13,21 @@ import fi.metatavu.kuntaapi.server.rest.model.Email;
 import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
 import fi.metatavu.kuntaapi.server.rest.model.Municipality;
 import fi.metatavu.kuntaapi.server.rest.model.Phone;
+import fi.metatavu.kuntaapi.server.rest.model.ServiceChannelAttachment;
 import fi.metatavu.kuntaapi.server.rest.model.ServiceHour;
 import fi.metatavu.kuntaapi.server.rest.model.WebPage;
 import fi.metatavu.ptv.client.model.V2VmOpenApiDailyOpeningTime;
 import fi.metatavu.ptv.client.model.V4VmOpenApiPhone;
 import fi.metatavu.ptv.client.model.V4VmOpenApiPhoneSimple;
+import fi.metatavu.ptv.client.model.V4VmOpenApiPhoneWithType;
 import fi.metatavu.ptv.client.model.V4VmOpenApiServiceHour;
+import fi.metatavu.ptv.client.model.V7VmOpenApiAddressDeliveryIn;
 import fi.metatavu.ptv.client.model.V7VmOpenApiAddressWithMovingIn;
 import fi.metatavu.ptv.client.model.VmOpenApiAddressPostOfficeBoxIn;
+import fi.metatavu.ptv.client.model.VmOpenApiAddressStreetIn;
 import fi.metatavu.ptv.client.model.VmOpenApiAddressStreetWithCoordinatesIn;
 import fi.metatavu.ptv.client.model.VmOpenApiAreaIn;
+import fi.metatavu.ptv.client.model.VmOpenApiAttachment;
 import fi.metatavu.ptv.client.model.VmOpenApiLanguageItem;
 import fi.metatavu.ptv.client.model.VmOpenApiLocalizedListItem;
 import fi.metatavu.ptv.client.model.VmOpenApiWebPageWithOrderNumber;
@@ -43,7 +48,20 @@ public class AbstractPtvInTest extends AbstractIntegrationTest {
     return Arrays.asList(result);
   }
 
-  protected List<V4VmOpenApiPhone> createPtvInPhones(String language, String type, String prefixNumber, String number, String serviceChargeType, String chargeDescription, Boolean isFinnishServiceNumber, String additionalInformation) {
+  protected List<V4VmOpenApiPhoneWithType> createPtvInPhonesWithTypes(String language, String type, String prefixNumber, String number, String serviceChargeType, String chargeDescription, Boolean isFinnishServiceNumber, String additionalInformation) {
+    V4VmOpenApiPhoneWithType result = new V4VmOpenApiPhoneWithType();
+    result.setAdditionalInformation(additionalInformation);
+    result.setChargeDescription(chargeDescription);
+    result.setIsFinnishServiceNumber(isFinnishServiceNumber);
+    result.setLanguage(language);
+    result.setNumber(number);
+    result.setPrefixNumber(prefixNumber);
+    result.setServiceChargeType(serviceChargeType);
+    result.setType(type);
+    return Arrays.asList(result);
+  }
+
+  protected List<V4VmOpenApiPhone> createPtvInPhones(String language, String prefixNumber, String number, String serviceChargeType, String chargeDescription, Boolean isFinnishServiceNumber, String additionalInformation) {
     V4VmOpenApiPhone result = new V4VmOpenApiPhone();
     result.setAdditionalInformation(additionalInformation);
     result.setChargeDescription(chargeDescription);
@@ -236,5 +254,33 @@ public class AbstractPtvInTest extends AbstractIntegrationTest {
 
     result.setType(type);
     return result;
-  } 
+  }
+
+  protected V7VmOpenApiAddressDeliveryIn createPtvInDeliveryAddress(String subType, VmOpenApiAddressStreetIn streetAddress, VmOpenApiAddressPostOfficeBoxIn postOfficeBoxAddress, List<VmOpenApiLanguageItem> deliveryAddressInText) {
+    V7VmOpenApiAddressDeliveryIn result = new V7VmOpenApiAddressDeliveryIn();
+    result.setDeliveryAddressInText(deliveryAddressInText);
+    result.setPostOfficeBoxAddress(postOfficeBoxAddress);
+    result.setStreetAddress(streetAddress);
+    result.setSubType(subType);
+    return result;
+  }
+
+  protected List<VmOpenApiAttachment> createPtvInAttachments(String language, String url, String name, String description) {
+    VmOpenApiAttachment result = new VmOpenApiAttachment();
+    result.setDescription(description);
+    result.setLanguage(language);
+    result.setName(name);
+    result.setUrl(url);
+    return Arrays.asList(result);
+  }
+
+  protected List<ServiceChannelAttachment> createAttachments(String language, String type, String url, String name, String description) {
+    ServiceChannelAttachment result = new ServiceChannelAttachment();
+    result.setDescription(description);
+    result.setLanguage(language);
+    result.setName(name);
+    result.setType(type);
+    result.setUrl(url);
+    return Arrays.asList(result);
+  }
 }

@@ -127,7 +127,7 @@ public class ServiceLocationServiceChannelInTestsIT extends AbstractPtvInTest {
     ptvInResource.setLanguages(Arrays.asList("en"));
     ptvInResource.setServiceChannelNames(createPtvInLanguageItems("en", "Changed Name"));
     ptvInResource.setEmails(createPtvInLanguageItems("en", "fake@example.com"));
-    ptvInResource.setPhoneNumbers(createPtvInPhones("en", "Phone", "+358", "12345-FAKE", "Charged", "Testing", false, "Test phone"));
+    ptvInResource.setPhoneNumbers(createPtvInPhones("en", "+358", "12345-FAKE", "Charged", "Testing", false, "Test phone"));
     ptvInResource.setFaxNumbers(createPtvInFaxNumbers("en", "+258", "54321-FAKE", true));
     ptvInResource.setServiceHours(Arrays.asList(creaatePtvInServiceHour(false, Collections.emptyList(), "Exception", false, null, null, createPtvInLanguageItems("en", "Test"))));
     ptvInResource.setWebPages(createPtvInWebPages("en", "https://www.example.com", "Example"));
