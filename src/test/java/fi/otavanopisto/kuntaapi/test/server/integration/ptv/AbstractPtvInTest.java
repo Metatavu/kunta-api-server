@@ -10,17 +10,22 @@ import fi.metatavu.kuntaapi.server.rest.model.Area;
 import fi.metatavu.kuntaapi.server.rest.model.Coordinates;
 import fi.metatavu.kuntaapi.server.rest.model.DailyOpeningTime;
 import fi.metatavu.kuntaapi.server.rest.model.Email;
+import fi.metatavu.kuntaapi.server.rest.model.Law;
 import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
 import fi.metatavu.kuntaapi.server.rest.model.Municipality;
+import fi.metatavu.kuntaapi.server.rest.model.OntologyItem;
 import fi.metatavu.kuntaapi.server.rest.model.Phone;
 import fi.metatavu.kuntaapi.server.rest.model.ServiceChannelAttachment;
 import fi.metatavu.kuntaapi.server.rest.model.ServiceHour;
+import fi.metatavu.kuntaapi.server.rest.model.ServiceVoucher;
 import fi.metatavu.kuntaapi.server.rest.model.WebPage;
 import fi.metatavu.ptv.client.model.V2VmOpenApiDailyOpeningTime;
+import fi.metatavu.ptv.client.model.V4VmOpenApiLaw;
 import fi.metatavu.ptv.client.model.V4VmOpenApiPhone;
 import fi.metatavu.ptv.client.model.V4VmOpenApiPhoneSimple;
 import fi.metatavu.ptv.client.model.V4VmOpenApiPhoneWithType;
 import fi.metatavu.ptv.client.model.V4VmOpenApiServiceHour;
+import fi.metatavu.ptv.client.model.V4VmOpenApiWebPage;
 import fi.metatavu.ptv.client.model.V7VmOpenApiAddressDeliveryIn;
 import fi.metatavu.ptv.client.model.V7VmOpenApiAddressWithMovingIn;
 import fi.metatavu.ptv.client.model.VmOpenApiAddressPostOfficeBoxIn;
@@ -30,6 +35,7 @@ import fi.metatavu.ptv.client.model.VmOpenApiAreaIn;
 import fi.metatavu.ptv.client.model.VmOpenApiAttachment;
 import fi.metatavu.ptv.client.model.VmOpenApiLanguageItem;
 import fi.metatavu.ptv.client.model.VmOpenApiLocalizedListItem;
+import fi.metatavu.ptv.client.model.VmOpenApiServiceVoucher;
 import fi.metatavu.ptv.client.model.VmOpenApiWebPageWithOrderNumber;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.translation.PtvAddressSubtype;
 import fi.otavanopisto.kuntaapi.test.AbstractIntegrationTest;
@@ -285,4 +291,58 @@ public class AbstractPtvInTest extends AbstractIntegrationTest {
     result.setUrl(url);
     return Arrays.asList(result);
   }
+
+  protected List<VmOpenApiServiceVoucher> createPtvServiceVouchers(String language, String value, String url, String additionalInformation) {
+    VmOpenApiServiceVoucher result = new VmOpenApiServiceVoucher();
+    result.setAdditionalInformation(additionalInformation);
+    result.setLanguage(language);
+    result.setOrderNumber(0);
+    result.setUrl(url);
+    result.setValue(value);
+    return Arrays.asList(result);
+  }
+  
+  protected List<ServiceVoucher> createServiceVouchers(String language, String value, String url, String additionalInformation) {
+    ServiceVoucher result = new ServiceVoucher();
+    result.setAdditionalInformation(additionalInformation);
+    result.setLanguage(language);
+    result.setUrl(url);
+    result.setValue(value);
+    return Arrays.asList(result);
+  }
+  
+  protected List<V4VmOpenApiLaw> createPtvInLaw(List<VmOpenApiLanguageItem> names, String url, String value) {
+    V4VmOpenApiLaw result = new V4VmOpenApiLaw();
+    result.setNames(names);
+    result.setWebPages(createPtvWebPages("en", url, value));
+    return Arrays.asList(result);
+  }
+  
+  protected List<V4VmOpenApiWebPage> createPtvWebPages(String language, String url, String value) {
+    V4VmOpenApiWebPage result = new V4VmOpenApiWebPage();
+    result.setLanguage(language);
+    result.setUrl(url);
+    result.setValue(value);
+    return Arrays.asList(result);
+  }
+  
+  protected List<Law> createLaw(List<LocalizedValue> names, String url, String value, String description) {
+    Law result = new Law();
+    result.setNames(names);
+    result.setWebPages(createWebPages("en", "Web", url, value, description));
+    return Arrays.asList(result);
+  }
+  
+  protected List<OntologyItem> createOntologyItems(String uri) {
+    OntologyItem result = new OntologyItem();
+    result.setCode("Fake");
+    result.setName(createLocalizedValue("en", "Fake Class"));
+    result.setOntologyType("TestType");
+    result.setParentId(null);
+    result.setParentUri(null);
+    result.setSystem("TEST");
+    result.setUri(uri);
+    return Arrays.asList(result);
+  }
+  
 }

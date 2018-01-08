@@ -32,6 +32,7 @@ import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
 import fi.metatavu.kuntaapi.server.rest.model.Page;
 import fi.metatavu.kuntaapi.server.rest.model.PhoneServiceChannel;
 import fi.metatavu.kuntaapi.server.rest.model.PrintableFormServiceChannel;
+import fi.metatavu.kuntaapi.server.rest.model.Service;
 import fi.metatavu.kuntaapi.server.rest.model.ServiceLocationServiceChannel;
 import fi.metatavu.kuntaapi.server.rest.model.WebPageServiceChannel;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
@@ -791,6 +792,19 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     return getServiceLocationChannelId(index, 3); 
   }
   
+  protected Service getService(int index, int waitCount) throws IOException, InterruptedException {
+    waitApiListCount("/services", waitCount);
+    
+    try (InputStream serviceDataStream = givenReadonly()
+      .contentType(ContentType.JSON)
+      .get(String.format("/services?firstResult=%d&maxResults=1", index))
+      .body()
+      .asInputStream()) {      
+      List<Service> results = getObjectMapper().readValue(serviceDataStream, new TypeReference<List<Service>>() {});
+      return results.get(0);
+    }
+  }
+  
   protected ElectronicServiceChannel getElectronicServiceChannel(int index, int waitCount) throws IOException, InterruptedException {
     waitApiListCount("/electronicServiceChannels", waitCount);
     
@@ -1041,6 +1055,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     loggerContext.updateLoggers();
   }
   
+  @SuppressWarnings ("squid:S2925")
   protected void waitMs(int ms) {
     if (ms > 0) {
       try {

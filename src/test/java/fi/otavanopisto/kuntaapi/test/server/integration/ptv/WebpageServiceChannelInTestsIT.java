@@ -7,8 +7,6 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.github.tomakehurst.wiremock.junit.WireMockRule;
 import com.jayway.restassured.http.ContentType;
 
@@ -44,7 +42,7 @@ public class WebpageServiceChannelInTestsIT extends AbstractPtvInTest {
   }
   
   @Test
-  public void updateWebPageServiceChannelUnauthorized() throws JsonParseException, JsonMappingException, IOException, InterruptedException {
+  public void updateWebPageServiceChannelUnauthorized() throws IOException, InterruptedException {
     WebPageServiceChannel kuntaApiResource = getWebPageChannel(0, TestPtvConsts.WEB_PAGE_SERVICE_CHANNELS.length);
     
     givenReadonly()
@@ -57,7 +55,7 @@ public class WebpageServiceChannelInTestsIT extends AbstractPtvInTest {
   }
   
   @Test
-  public void updateWebPageServiceChannelForbidden() throws JsonParseException, JsonMappingException, IOException, InterruptedException {
+  public void updateWebPageServiceChannelForbidden() throws IOException, InterruptedException {
     WebPageServiceChannel kuntaApiResource = getWebPageChannel(0, TestPtvConsts.WEB_PAGE_SERVICE_CHANNELS.length);
     
     givenReadWrite()
@@ -70,7 +68,7 @@ public class WebpageServiceChannelInTestsIT extends AbstractPtvInTest {
   }
   
   @Test
-  public void updateWebPageServiceChannelUnchanged() throws JsonParseException, JsonMappingException, IOException, InterruptedException {
+  public void updateWebPageServiceChannelUnchanged() throws IOException, InterruptedException {
     String ptvId = TestPtvConsts.WEB_PAGE_SERVICE_CHANNELS[0];
     String organizationId = getOrganizationId(0);
     String kuntaApiChannelId = getWebPageChannelId(0, TestPtvConsts.WEB_PAGE_SERVICE_CHANNELS.length);
