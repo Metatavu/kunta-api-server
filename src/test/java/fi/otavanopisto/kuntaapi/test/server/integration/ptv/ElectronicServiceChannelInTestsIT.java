@@ -8,8 +8,6 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.github.tomakehurst.wiremock.junit.WireMockRule;
 import com.jayway.restassured.http.ContentType;
 
@@ -20,6 +18,7 @@ import fi.otavanopisto.kuntaapi.server.persistence.model.clients.AccessType;
 import fi.otavanopisto.kuntaapi.server.persistence.model.clients.ClientOrganizationPermission;
 import fi.otavanopisto.kuntaapi.test.AbstractPtvMocker;
 
+@SuppressWarnings ("squid:S1075")
 public class ElectronicServiceChannelInTestsIT extends AbstractPtvInTest {
 
   private static final String SERVICE_CHANNEL_FIND_PATH = "/electronicServiceChannels/{kuntaApiChannelId}";
@@ -43,7 +42,7 @@ public class ElectronicServiceChannelInTestsIT extends AbstractPtvInTest {
   }
   
   @Test
-  public void updateElectronicServiceChannelUnauthorized() throws JsonParseException, JsonMappingException, IOException, InterruptedException {
+  public void updateElectronicServiceChannelUnauthorized() throws IOException, InterruptedException {
     ElectronicServiceChannel kuntaApiResource = getElectronicServiceChannel(0, TestPtvConsts.ELECTRONIC_CHANNEL_SERVICE_CHANNELS.length);
     
     givenReadonly()
@@ -56,7 +55,7 @@ public class ElectronicServiceChannelInTestsIT extends AbstractPtvInTest {
   }
   
   @Test
-  public void updateElectronicServiceChannelForbidden() throws JsonParseException, JsonMappingException, IOException, InterruptedException {
+  public void updateElectronicServiceChannelForbidden() throws IOException, InterruptedException {
     ElectronicServiceChannel kuntaApiResource = getElectronicServiceChannel(0, TestPtvConsts.ELECTRONIC_CHANNEL_SERVICE_CHANNELS.length);
     
     givenReadWrite()
@@ -69,7 +68,7 @@ public class ElectronicServiceChannelInTestsIT extends AbstractPtvInTest {
   }
   
   @Test
-  public void updateElectronicServiceChannelUnchanged() throws JsonParseException, JsonMappingException, IOException, InterruptedException {
+  public void updateElectronicServiceChannelUnchanged() throws IOException, InterruptedException {
     String ptvId = TestPtvConsts.ELECTRONIC_CHANNEL_SERVICE_CHANNELS[0];
     String organizationId = getOrganizationId(0);
     String kuntaApiChannelId = getElectronicChannelId(0, TestPtvConsts.ELECTRONIC_CHANNEL_SERVICE_CHANNELS.length);

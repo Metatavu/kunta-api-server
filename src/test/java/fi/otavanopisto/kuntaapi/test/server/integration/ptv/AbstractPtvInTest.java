@@ -34,8 +34,10 @@ import fi.metatavu.ptv.client.model.VmOpenApiWebPageWithOrderNumber;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.translation.PtvAddressSubtype;
 import fi.otavanopisto.kuntaapi.test.AbstractIntegrationTest;
 
-@SuppressWarnings ("squid:S00107")
+@SuppressWarnings ({"squid:S00107", "squid:S2187"})
 public class AbstractPtvInTest extends AbstractIntegrationTest {
+
+  private static final String LOCATION = "Location";
 
   protected List<WebPage> createWebPages(String language, String type, String url, String value, String description) {
     WebPage result = new WebPage();
@@ -172,7 +174,7 @@ public class AbstractPtvInTest extends AbstractIntegrationTest {
   }
 
   protected List<V7VmOpenApiAddressWithMovingIn> createPtvInAddressAbroad(List<VmOpenApiLanguageItem> locationAbroad) {
-    return createPtvInAddress("Location", PtvAddressSubtype.ABROAD.getPtvValue(), null, null, null, Collections.emptyList(), locationAbroad);
+    return createPtvInAddress(LOCATION, PtvAddressSubtype.ABROAD.getPtvValue(), null, null, null, Collections.emptyList(), locationAbroad);
   }
 
   protected List<V7VmOpenApiAddressWithMovingIn> createPtvInAddress(String type, String subType, String country, VmOpenApiAddressStreetWithCoordinatesIn streetAddress, VmOpenApiAddressPostOfficeBoxIn postOfficeBoxAddress, List<VmOpenApiAddressStreetWithCoordinatesIn> multipointLocation, List<VmOpenApiLanguageItem> locationAbroad) {
@@ -192,11 +194,11 @@ public class AbstractPtvInTest extends AbstractIntegrationTest {
   }
 
   protected Address createAddressAbroad(List<LocalizedValue> locationAbroad) {
-    return createAddress("Location", PtvAddressSubtype.ABROAD.getPtvValue(), null, null, null, null, null, locationAbroad, null, null, null, null, null, null, null, null);
+    return createAddress(LOCATION, PtvAddressSubtype.ABROAD.getPtvValue(), null, null, null, null, null, locationAbroad, null, null, null, null, null, null, null, null);
   }
   
   protected Address createAddressFreeText(List<LocalizedValue> additionalInformation) {
-    return createAddress("Location", PtvAddressSubtype.NO_ADDRESS.getPtvValue(), null, null, null, null, null, null, null, null, null, null, null, null, null, additionalInformation);
+    return createAddress(LOCATION, PtvAddressSubtype.NO_ADDRESS.getPtvValue(), null, null, null, null, null, null, null, null, null, null, null, null, null, additionalInformation);
   }
 
   protected List<Address> createAddressses(String type, String subtype, String country, List<LocalizedValue> streetAddress, String streetNumber, List<LocalizedValue> postOffice, List<Address> multipointLocation, List<LocalizedValue> locationAbroad, String latitude, String longitude, Municipality municipality, String postalCode, List<LocalizedValue> postOfficeBox, String coordinateState, Coordinates coordinates, List<LocalizedValue> additionalInformations) {
