@@ -155,22 +155,32 @@ public class SystemRESTService {
         for (ServiceLocationServiceChannel serviceLocationServiceChannel : locationServiceChannels.getResult()) {
           ServiceLocationServiceChannelId locationServiceChannelId = kuntaApiIdFactory.createServiceLocationServiceChannelId(serviceLocationServiceChannel.getId());
           if (locationServiceChannelId != null) {
-            ServiceLocationServiceChannelId ptvServiceChannelId = idController.translateServiceLocationServiceChannelId(locationServiceChannelId, PtvConsts.IDENTIFIER_NAME);
-            if (ptvServiceChannelId != null) {
-              Identifier identifier = identifierController.findIdentifierById(ptvServiceChannelId);
-              if (identifier != null) {
-                Long orderIndex = identifier.getOrderIndex();
-                serviceChannelTasksQueue.enqueueTask(true, new ServiceChannelUpdateTask(ptvServiceChannelId.getId(), orderIndex));
-              } else {
-                logger.severe("Could not find identifier");
-              }
-            } else {
-              logger.severe("Could not find ptv id");
-            }
+            createServiceLocationServiceChannelUpdateTask(locationServiceChannelId);
           } else {
             logger.severe("Could not find kunta api id");
           }
         }
+      }
+      
+      return Response.ok("ok").build();
+    }
+    
+    return Response.status(Status.FORBIDDEN).build();
+  }
+  
+  @GET
+  @Path ("/utils/ptv/serviceLocationChannelTasks")
+  @Produces (MediaType.TEXT_PLAIN)
+  @SuppressWarnings ("squid:S3776")
+  public Response utilsPtvServiceLocationChannelTasks(@QueryParam ("first") Integer first, @QueryParam ("max") Integer max) {
+    if (inTestModeOrUnrestrictedClient()) {
+      if (first == null || max == null) {
+        return Response.status(Status.BAD_REQUEST).build();
+      }
+      
+      List<ServiceLocationServiceChannelId> serviceChannelIds = identifierController.listServiceLocationServiceChannelIdsBySource(PtvConsts.IDENTIFIER_NAME, first, max);
+      for (ServiceLocationServiceChannelId serviceChannelId : serviceChannelIds) {
+        createServiceLocationServiceChannelUpdateTask(serviceChannelId); 
       }
       
       return Response.ok("ok").build();
@@ -338,6 +348,21 @@ public class SystemRESTService {
     }
     
     return health1;
+  }
+
+  private void createServiceLocationServiceChannelUpdateTask(ServiceLocationServiceChannelId locationServiceChannelId) {
+    ServiceLocationServiceChannelId ptvServiceChannelId = idController.translateServiceLocationServiceChannelId(locationServiceChannelId, PtvConsts.IDENTIFIER_NAME);
+    if (ptvServiceChannelId != null) {
+      Identifier identifier = identifierController.findIdentifierById(ptvServiceChannelId);
+      if (identifier != null) {
+        Long orderIndex = identifier.getOrderIndex();
+        serviceChannelTasksQueue.enqueueTask(true, new ServiceChannelUpdateTask(ptvServiceChannelId.getId(), orderIndex));
+      } else {
+        logger.severe("Could not find identifier");
+      }
+    } else {
+      logger.severe("Could not find ptv id");
+    }
   }
   
   private class UpdaterDetails {
