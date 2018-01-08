@@ -8,8 +8,6 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.github.tomakehurst.wiremock.junit.WireMockRule;
 import com.jayway.restassured.http.ContentType;
 
@@ -20,6 +18,7 @@ import fi.otavanopisto.kuntaapi.server.persistence.model.clients.AccessType;
 import fi.otavanopisto.kuntaapi.server.persistence.model.clients.ClientOrganizationPermission;
 import fi.otavanopisto.kuntaapi.test.AbstractPtvMocker;
 
+@SuppressWarnings ("squid:S1075")
 public class ServiceLocationServiceChannelInTestsIT extends AbstractPtvInTest {
 
   private static final String SERVICE_CHANNEL_FIND_PATH = "/serviceLocationServiceChannels/{kuntaApiChannelId}";
@@ -43,7 +42,7 @@ public class ServiceLocationServiceChannelInTestsIT extends AbstractPtvInTest {
   }
   
   @Test
-  public void updateServiceLocationServiceChannelUnauthorized() throws JsonParseException, JsonMappingException, IOException, InterruptedException {
+  public void updateServiceLocationServiceChannelUnauthorized() throws IOException, InterruptedException {
     ServiceLocationServiceChannel kuntaApiResource = getServiceLocationServiceChannel(0, TestPtvConsts.SERVICE_LOCATION_SERVICE_CHANNELS.length);
     
     givenReadonly()
@@ -56,7 +55,7 @@ public class ServiceLocationServiceChannelInTestsIT extends AbstractPtvInTest {
   }
   
   @Test
-  public void updateServiceLocationServiceChannelForbidden() throws JsonParseException, JsonMappingException, IOException, InterruptedException {
+  public void updateServiceLocationServiceChannelForbidden() throws IOException, InterruptedException {
     ServiceLocationServiceChannel kuntaApiResource = getServiceLocationServiceChannel(0, TestPtvConsts.SERVICE_LOCATION_SERVICE_CHANNELS.length);
     
     givenReadWrite()
@@ -69,7 +68,7 @@ public class ServiceLocationServiceChannelInTestsIT extends AbstractPtvInTest {
   }
   
   @Test
-  public void updateServiceLocationServiceChannelUnchanged() throws JsonParseException, JsonMappingException, IOException, InterruptedException {
+  public void updateServiceLocationServiceChannelUnchanged() throws IOException, InterruptedException {
     String ptvId = TestPtvConsts.SERVICE_LOCATION_SERVICE_CHANNELS[0];
     String organizationId = getOrganizationId(0);
     String kuntaApiChannelId = getServiceLocationChannelId(0, TestPtvConsts.SERVICE_LOCATION_SERVICE_CHANNELS.length);

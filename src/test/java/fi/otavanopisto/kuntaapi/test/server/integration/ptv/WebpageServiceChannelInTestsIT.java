@@ -19,6 +19,7 @@ import fi.otavanopisto.kuntaapi.server.persistence.model.clients.AccessType;
 import fi.otavanopisto.kuntaapi.server.persistence.model.clients.ClientOrganizationPermission;
 import fi.otavanopisto.kuntaapi.test.AbstractPtvMocker;
 
+@SuppressWarnings ("squid:S1075")
 public class WebpageServiceChannelInTestsIT extends AbstractPtvInTest {
 
   private static final String SERVICE_CHANNEL_FIND_PATH = "/webPageServiceChannels/{kuntaApiChannelId}";
