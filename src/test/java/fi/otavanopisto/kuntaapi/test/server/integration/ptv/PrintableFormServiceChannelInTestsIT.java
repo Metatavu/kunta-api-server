@@ -10,7 +10,6 @@ import org.junit.Test;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.tomakehurst.wiremock.junit.WireMockRule;
 import com.jayway.restassured.http.ContentType;
 
@@ -126,8 +125,6 @@ public class PrintableFormServiceChannelInTestsIT extends AbstractPtvInTest {
       createPhone("en", "Phone", "+358", "12345-FAKE", "Charged", "Testing", false, "Test phone"),
       createPhone("en", "Fax", "+258", "54321-FAKE", "Free", "Testing fax", true, "Test fax")
     ));
-    
-    System.out.println(new ObjectMapper().writeValueAsString(kuntaApiResource));
     
     V7VmOpenApiPrintableFormChannelInBase ptvInResource = getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_IN_API, ptvId, V7VmOpenApiPrintableFormChannelInBase.class);
     ptvInResource.setAreas(Arrays.asList(createArea("Municipality", "12345")));

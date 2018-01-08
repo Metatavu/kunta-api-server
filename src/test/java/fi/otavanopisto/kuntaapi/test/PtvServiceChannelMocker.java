@@ -15,6 +15,7 @@ import java.util.logging.Logger;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import fi.metatavu.ptv.client.model.V6VmOpenApiElectronicChannelInBase;
 import fi.metatavu.ptv.client.model.V6VmOpenApiWebPageChannelInBase;
 import fi.metatavu.ptv.client.model.V7VmOpenApiElectronicChannel;
 import fi.metatavu.ptv.client.model.V7VmOpenApiPhoneChannel;
@@ -74,8 +75,8 @@ public class PtvServiceChannelMocker extends AbstractPtvMocker<Object> {
     return readEntityFromJSONFile(String.format("ptv/%s/%s/%s.json", api, getName(), id));
   }
   
-  public void mockWebpagePut(String id, V7VmOpenApiWebPageChannel responseEntity) {
-    mockServiceChannelPut("WebPage", id, responseEntity);
+  public void mockElectronicPut(String id, V7VmOpenApiElectronicChannel responseEntity) {
+    mockServiceChannelPut("EChannel", id, responseEntity);
   }
   
   public void mockPhonePut(String id, V7VmOpenApiPhoneChannel responseEntity) {
@@ -88,6 +89,14 @@ public class PtvServiceChannelMocker extends AbstractPtvMocker<Object> {
   
   public void mockServiceLocationPut(String id, V7VmOpenApiServiceLocationChannel responseEntity) {
     mockServiceChannelPut("ServiceLocation", id, responseEntity);
+  }
+
+  public void mockWebpagePut(String id, V7VmOpenApiWebPageChannel responseEntity) {
+    mockServiceChannelPut("WebPage", id, responseEntity);
+  }
+  
+  public void verifyElectronic(String id, V6VmOpenApiElectronicChannelInBase entity) {
+    verifyPut(String.format("/ptv/api/%s/ServiceChannel/EChannel/%s", PtvConsts.VERSION, id), toJSON(entity));
   }
   
   public void verifyPhone(String id, V7VmOpenApiPhoneChannelInBase entity) {

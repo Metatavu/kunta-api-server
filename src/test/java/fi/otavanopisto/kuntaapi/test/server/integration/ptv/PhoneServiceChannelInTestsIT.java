@@ -8,8 +8,6 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.github.tomakehurst.wiremock.junit.WireMockRule;
 import com.jayway.restassured.http.ContentType;
 
@@ -20,6 +18,7 @@ import fi.otavanopisto.kuntaapi.server.persistence.model.clients.AccessType;
 import fi.otavanopisto.kuntaapi.server.persistence.model.clients.ClientOrganizationPermission;
 import fi.otavanopisto.kuntaapi.test.AbstractPtvMocker;
 
+@SuppressWarnings ("squid:S1075")
 public class PhoneServiceChannelInTestsIT extends AbstractPtvInTest {
 
   private static final String SERVICE_CHANNEL_FIND_PATH = "/phoneServiceChannels/{kuntaApiChannelId}";
@@ -43,7 +42,7 @@ public class PhoneServiceChannelInTestsIT extends AbstractPtvInTest {
   }
   
   @Test
-  public void updatePhoneServiceChannelUnauthorized() throws JsonParseException, JsonMappingException, IOException, InterruptedException {
+  public void updatePhoneServiceChannelUnauthorized() throws IOException, InterruptedException {
     PhoneServiceChannel kuntaApiResource = getPhoneServiceChannel(0, TestPtvConsts.PHONE_SERVICE_CHANNELS.length);
     
     givenReadonly()
@@ -56,7 +55,7 @@ public class PhoneServiceChannelInTestsIT extends AbstractPtvInTest {
   }
   
   @Test
-  public void updatePhoneServiceChannelForbidden() throws JsonParseException, JsonMappingException, IOException, InterruptedException {
+  public void updatePhoneServiceChannelForbidden() throws IOException, InterruptedException {
     PhoneServiceChannel kuntaApiResource = getPhoneServiceChannel(0, TestPtvConsts.PHONE_SERVICE_CHANNELS.length);
     
     givenReadWrite()
@@ -69,7 +68,7 @@ public class PhoneServiceChannelInTestsIT extends AbstractPtvInTest {
   }
   
   @Test
-  public void updatePhoneServiceChannelUnchanged() throws JsonParseException, JsonMappingException, IOException, InterruptedException {
+  public void updatePhoneServiceChannelUnchanged() throws IOException, InterruptedException {
     String ptvId = TestPtvConsts.PHONE_SERVICE_CHANNELS[0];
     String organizationId = getOrganizationId(0);
     String kuntaApiChannelId = getPhoneChannelId(0, TestPtvConsts.PHONE_SERVICE_CHANNELS.length);

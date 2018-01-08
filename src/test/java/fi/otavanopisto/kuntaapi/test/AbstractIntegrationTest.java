@@ -27,6 +27,7 @@ import com.jayway.restassured.http.ContentType;
 import com.jayway.restassured.path.json.exception.JsonPathException;
 import com.jayway.restassured.specification.RequestSpecification;
 
+import fi.metatavu.kuntaapi.server.rest.model.ElectronicServiceChannel;
 import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
 import fi.metatavu.kuntaapi.server.rest.model.Page;
 import fi.metatavu.kuntaapi.server.rest.model.PhoneServiceChannel;
@@ -788,6 +789,19 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   
   protected String getServiceLocationChannelId(int index) throws InterruptedException {
     return getServiceLocationChannelId(index, 3); 
+  }
+  
+  protected ElectronicServiceChannel getElectronicServiceChannel(int index, int waitCount) throws IOException, InterruptedException {
+    waitApiListCount("/electronicServiceChannels", waitCount);
+    
+    try (InputStream channelDataStream = givenReadonly()
+      .contentType(ContentType.JSON)
+      .get(String.format("/electronicServiceChannels?firstResult=%d&maxResults=1", index))
+      .body()
+      .asInputStream()) {      
+      List<ElectronicServiceChannel> results = getObjectMapper().readValue(channelDataStream, new TypeReference<List<ElectronicServiceChannel>>() {});
+      return results.get(0);
+    }
   }
   
   protected PhoneServiceChannel getPhoneServiceChannel(int index, int waitCount) throws IOException, InterruptedException {
