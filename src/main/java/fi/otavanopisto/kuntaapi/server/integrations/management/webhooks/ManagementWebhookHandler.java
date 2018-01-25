@@ -112,6 +112,7 @@ public class ManagementWebhookHandler implements WebhookHandler {
   private boolean handleEditPost(OrganizationId kuntaApiOrganizationId, Payload payload) {
     switch (payload.getPostStatus()) {
       case "trash":
+      case "draft":
         return handleTrash(kuntaApiOrganizationId, payload);
       case "publish":
         return handlePublish(kuntaApiOrganizationId, payload);
