@@ -38,7 +38,7 @@ import fi.otavanopisto.kuntaapi.server.tasks.OrganizationEntityUpdateTask;
 @Singleton
 @AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
-public class PtvAccessTokenUpdater extends EntityUpdater {
+public class PtvAccessTokenUpdater extends EntityUpdater<OrganizationEntityUpdateTask> {
 
   @Inject
   private Logger logger;
@@ -62,13 +62,18 @@ public class PtvAccessTokenUpdater extends EntityUpdater {
   public String getName() {
     return "PTV.accessToken";
   }
+  
+  @Override
+  public void execute(OrganizationEntityUpdateTask task) {
+    refreshAccessToken(task.getOrganizationId());
+  }
 
   @Override
   public void timeout() {
     if (systemSettingController.isNotTestingOrTestRunning()) {
       OrganizationEntityUpdateTask task = accessTokenTaskQueue.next();
       if (task != null) {
-        refreshAccessToken(task.getOrganizationId());
+        execute(task);
       } else {
         if (accessTokenTaskQueue.isEmptyAndLocalNodeResponsible()) {
           accessTokenTaskQueue.enqueueTasks(organizationSettingController.listOrganizationIdsWithSetting(PtvConsts.ORGANIZATION_SETTING_API_PASS));

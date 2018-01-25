@@ -30,7 +30,7 @@ import fi.otavanopisto.kuntaapi.server.tasks.IdTask.Operation;
 @Singleton
 @AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
-public class ManagementShortlinkEntityUpdater extends EntityUpdater {
+public class ManagementShortlinkEntityUpdater extends EntityUpdater<IdTask<ShortlinkId>> {
 
   @Inject
   private Logger logger;
@@ -69,14 +69,19 @@ public class ManagementShortlinkEntityUpdater extends EntityUpdater {
     executeNextTask();
   }
   
+  @Override
+  public void execute(IdTask<ShortlinkId> task) {
+    if (task.getOperation() == Operation.UPDATE) {
+      updateManagementShortlink(task.getId(), task.getOrderIndex()); 
+    } else if (task.getOperation() == Operation.REMOVE) {
+      deleteManagementShortlink(task.getId());
+    }
+  }
+  
   private void executeNextTask() {
     IdTask<ShortlinkId> task = shortlinkIdTaskQueue.next();
     if (task != null) {
-      if (task.getOperation() == Operation.UPDATE) {
-        updateManagementShortlink(task.getId(), task.getOrderIndex()); 
-      } else if (task.getOperation() == Operation.REMOVE) {
-        deleteManagementShortlink(task.getId());
-      }
+      execute(task);
     }
   }
   

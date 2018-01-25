@@ -75,7 +75,9 @@ public class IndexReader extends AbstractIndexHander {
         organizationId = kuntaApiIdFactory.createOrganizationId((String) organizationHitField.getValue());
       }
       
-      String id = "_id".equals(idField) ? hit.getId() : fields.get(idField).getValue();
+      String id = "_id".equals(idField) ? 
+          hit.getId() : 
+            fields.get(idField).getValue();
       
       if (StringUtils.isNotBlank(id)) {
         T kuntaApiId = kuntaApiIdFactory.createId(idClass, organizationId, id);

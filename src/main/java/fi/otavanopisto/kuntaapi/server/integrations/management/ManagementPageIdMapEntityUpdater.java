@@ -36,7 +36,7 @@ import fi.otavanopisto.kuntaapi.server.tasks.OrganizationEntityUpdateTask;
 @Singleton
 @AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
-public class ManagementPageIdMapEntityUpdater extends EntityUpdater {
+public class ManagementPageIdMapEntityUpdater extends EntityUpdater<OrganizationEntityUpdateTask> {
 
   @Inject
   private Logger logger;
@@ -63,13 +63,18 @@ public class ManagementPageIdMapEntityUpdater extends EntityUpdater {
   public String getName() {
     return "management-page-id-map";
   }
+  
+  @Override
+  public void execute(OrganizationEntityUpdateTask task) {
+    updatePageIdMap(task.getOrganizationId());
+  }
 
   @Override
   public void timeout() {
     if (systemSettingController.isNotTestingOrTestRunning()) {
       OrganizationEntityUpdateTask task = organizationPageMapsTaskQueue.next();
       if (task != null) {
-        updatePageIdMap(task.getOrganizationId());
+        execute(task);
       } else if (organizationPageMapsTaskQueue.isEmptyAndLocalNodeResponsible()) {
         organizationPageMapsTaskQueue.enqueueTasks(organizationSettingController.listOrganizationIdsWithSetting(ManagementConsts.ORGANIZATION_SETTING_BASEURL));
       }

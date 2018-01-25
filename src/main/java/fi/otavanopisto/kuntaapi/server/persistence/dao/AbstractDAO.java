@@ -7,6 +7,7 @@ import java.util.logging.Logger;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityNotFoundException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
@@ -106,6 +107,21 @@ public abstract class AbstractDAO<T> {
   public void flush() {
     getEntityManager().flush();
   }
+  
+  /**
+   * Returns whether entity with given id exists
+   * 
+   * @param id entity id
+   * @return whether entity with given id exists
+   */
+  @SuppressWarnings ("squid:S1166")
+  public boolean isExisting(Long id) {
+    try {
+      return getEntityManager().find(getGenericTypeClass(), id) != null;
+    } catch (EntityNotFoundException e) {
+      return false;
+    }    
+  }
 
   /**
    * Persists an entity
@@ -119,14 +135,13 @@ public abstract class AbstractDAO<T> {
   }
 
   protected <X> X getSingleResult(TypedQuery<X> query) {
-    @SuppressWarnings("unchecked")
     List<X> list = query.getResultList();
 
     if (list.isEmpty())
       return null;
     
     if (list.size() > 1) {
-      logger.severe(String.format("SingleResult query returned %d elements from %s", list.size(), getGenericTypeClass().getName()));
+      logger.severe(() -> String.format("SingleResult query returned %d elements from %s", list.size(), getGenericTypeClass().getName()));
     }
 
     return list.get(list.size() - 1);

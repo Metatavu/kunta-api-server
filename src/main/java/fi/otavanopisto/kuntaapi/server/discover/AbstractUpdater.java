@@ -15,10 +15,10 @@ import javax.transaction.UserTransaction;
 
 public abstract class AbstractUpdater {
 
-  private static final int UPDATER_WARNING_THRESHOLD_SLACK = 1000 * 60;
-  private static final int UPDATER_CRITICAL_THRESHOLD_SLACK = 1000 * 120;
-  private static final int UPDATER_WARNING_THRESHOLD_MULTIPLIER = 5;
-  private static final int UPDATER_CRITICAL_THRESHOLD_MULTIPLIER = 20;
+  private static final int UPDATER_WARNING_THRESHOLD_SLACK = 1000 * 120;
+  private static final int UPDATER_CRITICAL_THRESHOLD_SLACK = 1000 * 240;
+  private static final int UPDATER_WARNING_THRESHOLD_MULTIPLIER = 20;
+  private static final int UPDATER_CRITICAL_THRESHOLD_MULTIPLIER = 50;
 
   @Inject
   private Logger logger;

@@ -13,13 +13,20 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 
-public abstract class EntityUpdater extends AbstractUpdater {
+public abstract class EntityUpdater <T> extends AbstractUpdater {
 
   @Inject
   private Logger logger;
 
   @Inject
   private SystemSettingController systemSettingController;
+  
+  /**
+   * Executes given task
+   * 
+   * @param task task
+   */
+  public abstract  void execute(T task);
 
   @Override
   public long getTimerWarmup() {
@@ -48,7 +55,7 @@ public abstract class EntityUpdater extends AbstractUpdater {
   public long getTimerInterval() {
     try {
       if (systemSettingController.inTestMode()) {
-        return 100l;
+        return 200l;
       }
       
       String key = String.format("entity-updater.%s.interval", getName());

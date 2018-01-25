@@ -1,0 +1,61 @@
+{
+  "sourceId" : null,
+  "statutoryServiceGeneralDescriptionId" : null,
+  "type" : "Service",
+  "fundingType" : null,
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Metatavu testaa",
+    "type" : "Name"
+  } ],
+  "serviceChargeType" : "Free",
+  "areaType" : "WholeCountry",
+  "areas" : [ ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : "xxKuvaus",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Tiivistelmä. on tämä tiivistelmä.x",
+    "type" : "ShortDescription"
+  } ],
+  "languages" : [ "fi" ],
+  "serviceClasses" : [ "http://urn.fi/URN:NBN:fi:au:ptvl:v1120" ],
+  "ontologyTerms" : [ "http://www.yso.fi/onto/koko/p64557" ],
+  "targetGroups" : [ "http://urn.fi/URN:NBN:fi:au:ptvl:v2008" ],
+  "lifeEvents" : [ "http://urn.fi/URN:NBN:fi:au:ptvl:v3008" ],
+  "industrialClasses" : [ "http://www.stat.fi/meta/luokitukset/toimiala/001-2008/58142" ],
+  "legislation" : [ {
+    "names" : [ {
+      "value" : "Korkein oikeus",
+      "language" : "fi"
+    } ],
+    "webPages" : [ ]
+  } ],
+  "keywords" : [ ],
+  "requirements" : [ ],
+  "otherResponsibleOrganizations" : [ ],
+  "serviceProducers" : [ {
+    "orderNumber" : 0,
+    "provisionType" : "SelfProduced",
+    "organizations" : [ "ae2682d3-6238-4019-b34f-b078c5f9bb50" ],
+    "additionalInformation" : [ ]
+  } ],
+  "serviceVouchersInUse" : true,
+  "serviceVouchers" : [ {
+    "orderNumber" : 0,
+    "value" : null,
+    "language" : "fi",
+    "url" : null,
+    "additionalInformation" : null
+  } ],
+  "publishingStatus" : "Published",
+  "deleteAllLifeEvents" : true,
+  "deleteAllIndustrialClasses" : true,
+  "deleteAllLaws" : true,
+  "deleteAllKeywords" : true,
+  "deleteServiceChargeType" : true,
+  "deleteStatutoryServiceGeneralDescriptionId" : false,
+  "mainResponsibleOrganization" : "ae2682d3-6238-4019-b34f-b078c5f9bb50"
+}

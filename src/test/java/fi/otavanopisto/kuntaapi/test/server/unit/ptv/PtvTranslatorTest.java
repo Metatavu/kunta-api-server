@@ -21,8 +21,6 @@ import org.skyscreamer.jsonassert.JSONAssert;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import fi.metatavu.kuntaapi.server.rest.model.ServiceHour;
 import fi.metatavu.ptv.client.model.V4VmOpenApiServiceHour;
@@ -130,12 +128,4 @@ public class PtvTranslatorTest extends AbstractTest {
     
     assertTrue(String.format("ServiceHours (%s, %s) are not equal", expected, actual), sameInstant(expected.toInstant()).matches(actual.toInstant()));
   }
-  
-  private ObjectMapper getObjectMapper() {
-    ObjectMapper objectMapper = new ObjectMapper();
-    objectMapper.registerModule(new JavaTimeModule());
-    objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
-    return objectMapper;
-  }
-  
 }

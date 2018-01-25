@@ -53,6 +53,39 @@ public interface ServiceChannelProvider {
   public ServiceLocationServiceChannel findServiceLocationServiceChannel(ServiceLocationServiceChannelId serviceLocationServiceChannelId);
 
   /**
+   * Updates electronic service channel
+   * 
+   * @param electronicChannelId electronic service channel id
+   * @param electronicServiceChannel new data for service channel
+   * @return updated service channel
+   */
+  public IntegrationResponse<ElectronicServiceChannel> updateElectronicServiceChannel(
+      ElectronicServiceChannelId electronicChannelId,
+      ElectronicServiceChannel electronicServiceChannel);
+
+  /**
+   * Updates phone service channel
+   * 
+   * @param phoneChannelId phone service channel id
+   * @param phoneServiceChannel new data for service channel
+   * @return updated service channel
+   */
+  public IntegrationResponse<PhoneServiceChannel> updatePhoneServiceChannel(
+      PhoneServiceChannelId phoneChannelId,
+      PhoneServiceChannel phoneServiceChannel);
+
+  /**
+   * Updates printable form service channel
+   * 
+   * @param printableFormChannelId printable form service channel id
+   * @param printableFormServiceChannel new data for service channel
+   * @return updated service channel
+   */
+  public IntegrationResponse<PrintableFormServiceChannel> updatePrintableFormServiceChannel(
+      PrintableFormServiceChannelId printableFormChannelId,
+      PrintableFormServiceChannel printableFormServiceChannel);
+  
+  /**
    * Updates service location service channel
    * 
    * @param serviceLocationChannelId service location service channel id
@@ -62,6 +95,17 @@ public interface ServiceChannelProvider {
   public IntegrationResponse<ServiceLocationServiceChannel> updateServiceLocationServiceChannel(
       ServiceLocationServiceChannelId serviceLocationChannelId,
       ServiceLocationServiceChannel serviceLocationServiceChannel);
+
+  /**
+   * Updates web page service channel
+   * 
+   * @param webPageChannelId webPage service channel id
+   * @param webPageServiceChannel new data for service channel
+   * @return updated service channel
+   */
+  public IntegrationResponse<WebPageServiceChannel> updateWebPageServiceChannel(
+      WebPageServiceChannelId webPageChannelId,
+      WebPageServiceChannel webPageServiceChannel);
   
   /**
    * Finds service webpage channel
@@ -69,7 +113,7 @@ public interface ServiceChannelProvider {
    * @param webPageServiceChannelId web page service channel id
    * @return Returns a webpage service channel
    */
-  public WebPageServiceChannel findWebPageServiceChannelChannel(WebPageServiceChannelId webPageServiceChannelId);
+  public WebPageServiceChannel findWebPageServiceChannel(WebPageServiceChannelId webPageServiceChannelId);
 
   /**
    * Lists electronic service channels  

@@ -26,7 +26,7 @@ import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 @Singleton
 @AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
-public class KuntaRekryJobEntityUpdater extends EntityUpdater {
+public class KuntaRekryJobEntityUpdater extends EntityUpdater<AbstractKuntaRekryJobTask> {
 
   @Inject
   private KuntaRekryTranslator kuntaRekryTranslator;
@@ -56,12 +56,19 @@ public class KuntaRekryJobEntityUpdater extends EntityUpdater {
     executeNextTask();
   }
   
-  private void executeNextTask() {
-    AbstractKuntaRekryJobTask task = kuntaRekryJobTaskQueue.next();
+  @Override
+  public void execute(AbstractKuntaRekryJobTask task) {
     if (task instanceof KuntaRekryRemoveJobTask) {
       removeKuntaRekryJob((KuntaRekryRemoveJobTask) task);
     } else if (task instanceof KuntaRekryJobEntityTask) {
       updateKuntaRekryJob((KuntaRekryJobEntityTask) task); 
+    }
+  }
+  
+  private void executeNextTask() {
+    AbstractKuntaRekryJobTask task = kuntaRekryJobTaskQueue.next();
+    if (task != null) {
+      execute(task);
     }
   }
   

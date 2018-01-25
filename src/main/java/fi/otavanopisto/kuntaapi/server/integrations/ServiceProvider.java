@@ -2,9 +2,9 @@ package fi.otavanopisto.kuntaapi.server.integrations;
 
 import java.util.List;
 
+import fi.metatavu.kuntaapi.server.rest.model.Service;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceId;
-import fi.metatavu.kuntaapi.server.rest.model.Service;
 
 /**
  * Interface that describes a single service provider
@@ -29,4 +29,12 @@ public interface ServiceProvider {
    */
   public List<Service> listServices(OrganizationId organizationId);
   
+  /**
+   * Updates service
+   * 
+   * @param serviceId service id
+   * @param service new data for service
+   * @return updated service
+   */
+  public IntegrationResponse<Service> updateService(ServiceId serviceId, Service service);
 }

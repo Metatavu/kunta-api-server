@@ -6,8 +6,10 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.UUID;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -46,6 +48,7 @@ import fi.metatavu.kuntaapi.server.rest.model.ServiceChannelAttachment;
 import fi.metatavu.kuntaapi.server.rest.model.ServiceHour;
 import fi.metatavu.kuntaapi.server.rest.model.ServiceLocationServiceChannel;
 import fi.metatavu.kuntaapi.server.rest.model.ServiceOrganization;
+import fi.metatavu.kuntaapi.server.rest.model.ServiceVoucher;
 import fi.metatavu.kuntaapi.server.rest.model.WebPage;
 import fi.metatavu.kuntaapi.server.rest.model.WebPageServiceChannel;
 import fi.metatavu.ptv.client.model.V2VmOpenApiDailyOpeningTime;
@@ -79,6 +82,7 @@ import fi.metatavu.ptv.client.model.VmOpenApiLanguageItem;
 import fi.metatavu.ptv.client.model.VmOpenApiLocalizedListItem;
 import fi.metatavu.ptv.client.model.VmOpenApiMunicipality;
 import fi.metatavu.ptv.client.model.VmOpenApiNameTypeByLanguage;
+import fi.metatavu.ptv.client.model.VmOpenApiServiceVoucher;
 import fi.metatavu.ptv.client.model.VmOpenApiWebPageWithOrderNumber;
 import fi.otavanopisto.kuntaapi.server.id.BaseId;
 import fi.otavanopisto.kuntaapi.server.id.CodeId;
@@ -120,7 +124,9 @@ public class PtvTranslator extends AbstractTranslator {
     result.setSupportPhones(translatePhones(ptvElectronicServiceChannel.getSupportPhones()));
     result.setUrls(translateLocalizedItems(ptvElectronicServiceChannel.getUrls()));
     result.setWebPages(translateWebPagesWithOrderNumber(ptvElectronicServiceChannel.getWebPages()));
-    
+    result.setAreas(translateAreas(ptvElectronicServiceChannel.getAreas()));
+    result.setAreaType(ptvElectronicServiceChannel.getAreaType());
+
     return result;
   }
 
@@ -279,10 +285,37 @@ public class PtvTranslator extends AbstractTranslator {
     result.setOrganizations(serviceOrganizations);
     result.setAreas(translateAreas(ptvService.getAreas()));
     result.setAreaType(ptvService.getAreaType());
+    result.setVouchers(ptvService.getServiceVouchersInUse() ? translateServiceVouchers(ptvService.getServiceVouchers()) : Collections.emptyList());
     
     return result;
   }
   
+  private List<ServiceVoucher> translateServiceVouchers(List<VmOpenApiServiceVoucher> ptvServiceVouchers) {
+    if (ptvServiceVouchers == null || ptvServiceVouchers.isEmpty()) {
+      return Collections.emptyList();
+    }
+    
+    return ptvServiceVouchers
+      .stream()
+      .map(this::translateServiceVoucher)
+      .filter(Objects::nonNull)
+      .collect(Collectors.toList());
+  }
+  
+  private ServiceVoucher translateServiceVoucher(VmOpenApiServiceVoucher ptvServiceVoucher) {
+    if (ptvServiceVoucher == null) {
+      return null;
+    }
+    
+    ServiceVoucher serviceVoucher = new ServiceVoucher();
+    serviceVoucher.setAdditionalInformation(ptvServiceVoucher.getAdditionalInformation());
+    serviceVoucher.setLanguage(ptvServiceVoucher.getLanguage());
+    serviceVoucher.setUrl(ptvServiceVoucher.getUrl());
+    serviceVoucher.setValue(ptvServiceVoucher.getValue());
+    
+    return serviceVoucher;
+  }
+
   public ServiceOrganization translateServiceOrganization(OrganizationId kuntaApiOrganizationId, V6VmOpenApiServiceOrganization ptvServiceOrganization) {
     if (ptvServiceOrganization == null) {
       return null;

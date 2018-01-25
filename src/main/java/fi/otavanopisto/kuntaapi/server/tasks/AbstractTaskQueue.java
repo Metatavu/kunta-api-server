@@ -1,5 +1,8 @@
 package fi.otavanopisto.kuntaapi.server.tasks;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.inject.Inject;
@@ -7,8 +10,6 @@ import javax.inject.Inject;
 import fi.otavanopisto.kuntaapi.server.controllers.ClusterController;
 import fi.otavanopisto.kuntaapi.server.controllers.TaskController;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Abstract base class for all task queues

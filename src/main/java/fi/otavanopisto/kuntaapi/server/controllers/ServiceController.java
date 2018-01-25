@@ -9,6 +9,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
 
+import fi.otavanopisto.kuntaapi.server.id.BaseId;
 import fi.otavanopisto.kuntaapi.server.id.ElectronicServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PhoneServiceChannelId;
@@ -17,11 +18,16 @@ import fi.otavanopisto.kuntaapi.server.id.ServiceId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceLocationServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.WebPageServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.index.SearchResult;
-import fi.otavanopisto.kuntaapi.server.index.ServiceLocationServiceChannelSearcher;
-import fi.otavanopisto.kuntaapi.server.index.ServiceSearcher;
+import fi.otavanopisto.kuntaapi.server.index.search.ElectronicServiceChannelSearcher;
+import fi.otavanopisto.kuntaapi.server.index.search.PhoneServiceChannelSearcher;
+import fi.otavanopisto.kuntaapi.server.index.search.PrintableFormServiceChannelSearcher;
+import fi.otavanopisto.kuntaapi.server.index.search.ServiceLocationServiceChannelSearcher;
+import fi.otavanopisto.kuntaapi.server.index.search.ServiceSearcher;
+import fi.otavanopisto.kuntaapi.server.index.search.WebPageServiceChannelSearcher;
+import fi.otavanopisto.kuntaapi.server.integrations.ServiceChannelSortBy;
 import fi.otavanopisto.kuntaapi.server.integrations.IntegrationResponse;
+import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceChannelProvider;
-import fi.otavanopisto.kuntaapi.server.integrations.ServiceLocationServiceChannelSortBy;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceSortBy;
 import fi.otavanopisto.kuntaapi.server.integrations.SortDir;
@@ -31,6 +37,7 @@ import fi.metatavu.kuntaapi.server.rest.model.PhoneServiceChannel;
 import fi.metatavu.kuntaapi.server.rest.model.PrintableFormServiceChannel;
 import fi.metatavu.kuntaapi.server.rest.model.Service;
 import fi.metatavu.kuntaapi.server.rest.model.ServiceLocationServiceChannel;
+import fi.metatavu.kuntaapi.server.rest.model.ServiceOrganization;
 import fi.metatavu.kuntaapi.server.rest.model.WebPageServiceChannel;
 
 @ApplicationScoped
@@ -45,6 +52,21 @@ public class ServiceController {
   
   @Inject
   private ServiceLocationServiceChannelSearcher serviceLocationServiceChannelSearcher;
+  
+  @Inject
+  private ElectronicServiceChannelSearcher electronicServiceChannelSearcher;
+
+  @Inject
+  private PhoneServiceChannelSearcher phoneServiceChannelSearcher;
+  
+  @Inject
+  private PrintableFormServiceChannelSearcher printableFormServiceChannelSearcher;
+  
+  @Inject
+  private WebPageServiceChannelSearcher webPageServiceChannelSearcher;
+  
+  @Inject
+  private KuntaApiIdFactory kuntaApiIdFactory;
 
   @Inject
   private Instance<ServiceProvider> serviceProviders;
@@ -57,6 +79,24 @@ public class ServiceController {
       Service service = serviceProvider.findService(serviceId);
       if (service != null) {
         return service;
+      }
+    }
+    
+    return null;
+  }
+
+  /**
+   * Updates service
+   * 
+   * @param serviceId service id
+   * @param service new data for the service
+   * @return updated service
+   */
+  public IntegrationResponse<Service> updateService(ServiceId serviceId, Service service) {
+    for (ServiceProvider serviceProvider : getServiceProviders()) {
+      IntegrationResponse<Service> updatedService = serviceProvider.updateService(serviceId, service);
+      if (updatedService != null) {
+        return updatedService;
       }
     }
     
@@ -138,6 +178,60 @@ public class ServiceController {
   }
   
   /**
+   * Updates electronic service channel
+   * 
+   * @param electronicChannelId electronic service channel id
+   * @param electronicServiceChannel new data for electronic service channel
+   * @return updated electronic service channel
+   */
+  public IntegrationResponse<ElectronicServiceChannel> updateElectronicServiceChannel(ElectronicServiceChannelId electronicChannelId, ElectronicServiceChannel electronicServiceChannel) {
+    for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
+      IntegrationResponse<ElectronicServiceChannel> updatedElectronicServiceChannel = serviceChannelProvider.updateElectronicServiceChannel(electronicChannelId, electronicServiceChannel);
+      if (updatedElectronicServiceChannel != null) {
+        return updatedElectronicServiceChannel;
+      }
+    }
+    
+    return null;
+  }
+  
+  /**
+   * Updates phone service channel
+   * 
+   * @param phoneChannelId phone service channel id
+   * @param phoneServiceChannel new data for phone service channel
+   * @return updated phone service channel
+   */
+  public IntegrationResponse<PhoneServiceChannel> updatePhoneServiceChannel(PhoneServiceChannelId phoneChannelId, PhoneServiceChannel phoneServiceChannel) {
+    for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
+      IntegrationResponse<PhoneServiceChannel> updatedPhoneServiceChannel = serviceChannelProvider.updatePhoneServiceChannel(phoneChannelId, phoneServiceChannel);
+      if (updatedPhoneServiceChannel != null) {
+        return updatedPhoneServiceChannel;
+      }
+    }
+    
+    return null;
+  }
+  
+  /**
+   * Updates printable form service channel
+   * 
+   * @param printableFormChannelId printable form service channel id
+   * @param printableFormServiceChannel new data for printable form service channel
+   * @return updated printable form service channel
+   */
+  public IntegrationResponse<PrintableFormServiceChannel> updatePrintableFormServiceChannel(PrintableFormServiceChannelId printableFormChannelId, PrintableFormServiceChannel printableFormServiceChannel) {
+    for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
+      IntegrationResponse<PrintableFormServiceChannel> updatedPrintableFormServiceChannel = serviceChannelProvider.updatePrintableFormServiceChannel(printableFormChannelId, printableFormServiceChannel);
+      if (updatedPrintableFormServiceChannel != null) {
+        return updatedPrintableFormServiceChannel;
+      }
+    }
+    
+    return null;
+  }
+  
+  /**
    * Updates service location service channel
    * 
    * @param serviceLocationChannelId service location service channel id
@@ -154,10 +248,28 @@ public class ServiceController {
     
     return null;
   }
+  
+  /**
+   * Updates web page service channel
+   * 
+   * @param webPageChannelId web page service channel id
+   * @param webPageServiceChannel new data for web page service channel
+   * @return updated web page service channel
+   */
+  public IntegrationResponse<WebPageServiceChannel> updateWebPageServiceChannel(WebPageServiceChannelId webPageChannelId, WebPageServiceChannel webPageServiceChannel) {
+    for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
+      IntegrationResponse<WebPageServiceChannel> updatedWebPageServiceChannel = serviceChannelProvider.updateWebPageServiceChannel(webPageChannelId, webPageServiceChannel);
+      if (updatedWebPageServiceChannel != null) {
+        return updatedWebPageServiceChannel;
+      }
+    }
+    
+    return null;
+  }
 
   public WebPageServiceChannel findWebPageServiceChannel(WebPageServiceChannelId webPageChannelId) {
     for (ServiceChannelProvider serviceChannelProvider : getServiceChannelProviders()) {
-      WebPageServiceChannel webPageChannel = serviceChannelProvider.findWebPageServiceChannelChannel(webPageChannelId);
+      WebPageServiceChannel webPageChannel = serviceChannelProvider.findWebPageServiceChannel(webPageChannelId);
       if (webPageChannel != null) {
         return webPageChannel;
       }
@@ -204,23 +316,86 @@ public class ServiceController {
 
     return ListUtils.limit(entityController.sortEntitiesInNaturalOrder(result), firstResult, maxResults);
   }
-  
-  public SearchResult<ServiceLocationServiceChannel> searchServiceLocationServiceChannels(OrganizationId kuntaApiOrganizationId, String search, ServiceLocationServiceChannelSortBy sortBy, SortDir sortDir, Long firstResult, Long maxResults) {
-    SearchResult<ServiceLocationServiceChannelId> searchResult = serviceLocationServiceChannelSearcher.searchServiceLocationServiceChannels(kuntaApiOrganizationId, search, sortBy, sortDir, firstResult, maxResults);
-    if (searchResult == null) {
-      return SearchResult.emptyResult();
-    }
-    
-    List<ServiceLocationServiceChannel> result = new ArrayList<>(searchResult.getResult().size());
-    for (ServiceLocationServiceChannelId serviceLocationServiceChannelId : searchResult.getResult()) {
-      ServiceLocationServiceChannel serviceLocationServiceChannel = findServiceLocationServiceChannel(serviceLocationServiceChannelId);
-      if (serviceLocationServiceChannel != null) {
-        result.add(serviceLocationServiceChannel);
-      }
-    }
-    
-    return new SearchResult<>(result, searchResult.getTotalHits());
-  }   
+
+  /**
+   * Searches service location service Channels. All parameters can be nulled. Nulled parameters will be ignored
+   * 
+   * @param kuntaApiOrganizationId organization id
+   * @param search free-text search
+   * @param sortBy sort by
+   * @param sortDir sort direction
+   * @param firstResult first result
+   * @param maxResults max results
+   * @return search result
+   */
+  public SearchResult<ServiceLocationServiceChannel> searchServiceLocationServiceChannels(OrganizationId kuntaApiOrganizationId, String search, ServiceChannelSortBy sortBy, SortDir sortDir, Long firstResult, Long maxResults) {
+    SearchResult<ServiceLocationServiceChannelId> searchResult = serviceLocationServiceChannelSearcher.searchServiceChannels(kuntaApiOrganizationId, search, sortBy, sortDir, firstResult, maxResults);
+    return processServiceChannelsResults(searchResult, this::findServiceLocationServiceChannel);
+  }
+
+  /**
+   * Searches Electronic Service Channels. All parameters can be nulled. Nulled parameters will be ignored
+   * 
+   * @param kuntaApiOrganizationId organization id
+   * @param search free-text search
+   * @param sortBy sort by
+   * @param sortDir sort direction
+   * @param firstResult first result
+   * @param maxResults max results
+   * @return search result
+   */
+  public SearchResult<ElectronicServiceChannel> searchElectronicServiceChannels(OrganizationId kuntaApiOrganizationId, String search, ServiceChannelSortBy sortBy, SortDir sortDir, Long firstResult, Long maxResults) {
+    SearchResult<ElectronicServiceChannelId> searchResult = electronicServiceChannelSearcher.searchServiceChannels(kuntaApiOrganizationId, search, sortBy, sortDir, firstResult, maxResults);
+    return processServiceChannelsResults(searchResult, this::findElectronicServiceChannel);
+  }
+
+  /**
+   * Searches phone service Channels. All parameters can be nulled. Nulled parameters will be ignored
+   * 
+   * @param kuntaApiOrganizationId organization id
+   * @param search free-text search
+   * @param sortBy sort by
+   * @param sortDir sort direction
+   * @param firstResult first result
+   * @param maxResults max results
+   * @return search result
+   */
+  public SearchResult<PhoneServiceChannel> searchPhoneServiceChannels(OrganizationId kuntaApiOrganizationId, String search, ServiceChannelSortBy sortBy, SortDir sortDir, Long firstResult, Long maxResults) {
+    SearchResult<PhoneServiceChannelId> searchResult = phoneServiceChannelSearcher.searchServiceChannels(kuntaApiOrganizationId, search, sortBy, sortDir, firstResult, maxResults);
+    return processServiceChannelsResults(searchResult, this::findPhoneServiceChannel);
+  }
+
+  /**
+   * Searches printable form service Channels. All parameters can be nulled. Nulled parameters will be ignored
+   * 
+   * @param kuntaApiOrganizationId organization id
+   * @param search free-text search
+   * @param sortBy sort by
+   * @param sortDir sort direction
+   * @param firstResult first result
+   * @param maxResults max results
+   * @return search result
+   */
+  public SearchResult<PrintableFormServiceChannel> searchPrintableFormServiceChannels(OrganizationId kuntaApiOrganizationId, String search, ServiceChannelSortBy sortBy, SortDir sortDir, Long firstResult, Long maxResults) {
+    SearchResult<PrintableFormServiceChannelId> searchResult = printableFormServiceChannelSearcher.searchServiceChannels(kuntaApiOrganizationId, search, sortBy, sortDir, firstResult, maxResults);
+    return processServiceChannelsResults(searchResult, this::findPrintableFormServiceChannel);
+  }
+
+  /**
+   * Searches web page service Channels. All parameters can be nulled. Nulled parameters will be ignored
+   * 
+   * @param kuntaApiOrganizationId organization id
+   * @param search free-text search
+   * @param sortBy sort by
+   * @param sortDir sort direction
+   * @param firstResult first result
+   * @param maxResults max results
+   * @return search result
+   */
+  public SearchResult<WebPageServiceChannel> searchWebPageServiceChannels(OrganizationId kuntaApiOrganizationId, String search, ServiceChannelSortBy sortBy, SortDir sortDir, Long firstResult, Long maxResults) {
+    SearchResult<WebPageServiceChannelId> searchResult = webPageServiceChannelSearcher.searchServiceChannels(kuntaApiOrganizationId, search, sortBy, sortDir, firstResult, maxResults);
+    return processServiceChannelsResults(searchResult, this::findWebPageServiceChannel);
+  }
 
   public List<WebPageServiceChannel> listWebPageServiceChannels(Long firstResult, Long maxResults) {
     List<WebPageServiceChannel> result = new ArrayList<>();
@@ -230,6 +405,23 @@ public class ServiceController {
     }
 
     return ListUtils.limit(entityController.sortEntitiesInNaturalOrder(result), firstResult, maxResults);
+  }
+  
+  /**
+   * Resolves service's main responsible organization. If not found null is returned
+   * 
+   * @param service service
+   * @return service's main responsible organization or null if not found
+   */
+  public OrganizationId getServiceMainResponsibleOrganization(Service service) {
+    List<ServiceOrganization> organizations = service.getOrganizations();
+    for (ServiceOrganization organization : organizations) {
+      if ("Responsible".equals(organization.getRoleType())) {
+        return kuntaApiIdFactory.createOrganizationId(organization.getOrganizationId());
+      }
+    }
+    
+    return null;
   }
   
   private List<ServiceProvider> getServiceProviders() {
@@ -253,4 +445,28 @@ public class ServiceController {
     
     return Collections.unmodifiableList(result);
   }
+
+  private <I extends BaseId, T> SearchResult<T> processServiceChannelsResults(SearchResult<I> searchResult, SearchResultFinder<I, T> resultFinder) {
+    if (searchResult == null) {
+      return SearchResult.emptyResult();
+    }
+    
+    List<T> result = new ArrayList<>(searchResult.getResult().size());
+    for (I serviceChannelId : searchResult.getResult()) {
+      T electronicServiceChannel = resultFinder.find(serviceChannelId);
+      if (electronicServiceChannel != null) {
+        result.add(electronicServiceChannel);
+      }
+    }
+    
+    return new SearchResult<>(result, searchResult.getTotalHits());
+  }
+  
+  @FunctionalInterface
+  private interface SearchResultFinder<I extends BaseId, T> {
+    
+    T find(I id);
+    
+  }
+
 }

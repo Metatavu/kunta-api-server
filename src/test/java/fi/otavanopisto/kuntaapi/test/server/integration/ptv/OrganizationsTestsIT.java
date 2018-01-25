@@ -31,7 +31,8 @@ public class OrganizationsTestsIT extends AbstractIntegrationTest {
     
     startMocks();
 
-    waitApiListCount("/organizations", 3);
+    waitApiListCount("/services", TestPtvConsts.SERVICES.length);
+    waitApiListCount("/organizations", TestPtvConsts.ORGANIZATIONS.length);
   }
 
   @Test
