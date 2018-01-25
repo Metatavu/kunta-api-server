@@ -32,10 +32,15 @@ import fi.otavanopisto.kuntaapi.server.discover.AbstractUpdater;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
 import fi.otavanopisto.kuntaapi.server.discover.IdUpdater;
 import fi.otavanopisto.kuntaapi.server.discover.UpdaterHealth;
+import fi.otavanopisto.kuntaapi.server.id.BaseId;
+import fi.otavanopisto.kuntaapi.server.id.ElectronicServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.id.PhoneServiceChannelId;
+import fi.otavanopisto.kuntaapi.server.id.PrintableFormServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceLocationServiceChannelId;
+import fi.otavanopisto.kuntaapi.server.id.WebPageServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.index.SearchResult;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceChannelSortBy;
@@ -155,7 +160,7 @@ public class SystemRESTService {
         for (ServiceLocationServiceChannel serviceLocationServiceChannel : locationServiceChannels.getResult()) {
           ServiceLocationServiceChannelId locationServiceChannelId = kuntaApiIdFactory.createServiceLocationServiceChannelId(serviceLocationServiceChannel.getId());
           if (locationServiceChannelId != null) {
-            createServiceLocationServiceChannelUpdateTask(locationServiceChannelId);
+            createServiceChannelUpdateTask(locationServiceChannelId);
           } else {
             logger.severe("Could not find kunta api id");
           }
@@ -180,7 +185,91 @@ public class SystemRESTService {
       
       List<ServiceLocationServiceChannelId> serviceChannelIds = identifierController.listServiceLocationServiceChannelIdsBySource(PtvConsts.IDENTIFIER_NAME, first, max);
       for (ServiceLocationServiceChannelId serviceChannelId : serviceChannelIds) {
-        createServiceLocationServiceChannelUpdateTask(serviceChannelId); 
+        createServiceChannelUpdateTask(serviceChannelId); 
+      }
+      
+      return Response.ok("ok").build();
+    }
+    
+    return Response.status(Status.FORBIDDEN).build();
+  }
+  
+  @GET
+  @Path ("/utils/ptv/electronicChannelTasks")
+  @Produces (MediaType.TEXT_PLAIN)
+  @SuppressWarnings ("squid:S3776")
+  public Response utilsPtvElectronicChannelTasks(@QueryParam ("first") Integer first, @QueryParam ("max") Integer max) {
+    if (inTestModeOrUnrestrictedClient()) {
+      if (first == null || max == null) {
+        return Response.status(Status.BAD_REQUEST).build();
+      }
+      
+      List<ElectronicServiceChannelId> serviceChannelIds = identifierController.listElectronicServiceChannelIdsBySource(PtvConsts.IDENTIFIER_NAME, first, max);
+      for (ElectronicServiceChannelId serviceChannelId : serviceChannelIds) {
+        createServiceChannelUpdateTask(serviceChannelId); 
+      }
+      
+      return Response.ok("ok").build();
+    }
+    
+    return Response.status(Status.FORBIDDEN).build();
+  }
+  
+  @GET
+  @Path ("/utils/ptv/webPageChannelTasks")
+  @Produces (MediaType.TEXT_PLAIN)
+  @SuppressWarnings ("squid:S3776")
+  public Response utilsPtvWebPageChannelTasks(@QueryParam ("first") Integer first, @QueryParam ("max") Integer max) {
+    if (inTestModeOrUnrestrictedClient()) {
+      if (first == null || max == null) {
+        return Response.status(Status.BAD_REQUEST).build();
+      }
+      
+      List<WebPageServiceChannelId> serviceChannelIds = identifierController.listWebPageServiceChannelIdsBySource(PtvConsts.IDENTIFIER_NAME, first, max);
+      for (WebPageServiceChannelId serviceChannelId : serviceChannelIds) {
+        createServiceChannelUpdateTask(serviceChannelId); 
+      }
+      
+      return Response.ok("ok").build();
+    }
+    
+    return Response.status(Status.FORBIDDEN).build();
+  }
+  
+  @GET
+  @Path ("/utils/ptv/printableFormChannelTasks")
+  @Produces (MediaType.TEXT_PLAIN)
+  @SuppressWarnings ("squid:S3776")
+  public Response utilsPtvPrintableFormChannelTasks(@QueryParam ("first") Integer first, @QueryParam ("max") Integer max) {
+    if (inTestModeOrUnrestrictedClient()) {
+      if (first == null || max == null) {
+        return Response.status(Status.BAD_REQUEST).build();
+      }
+      
+      List<PrintableFormServiceChannelId> serviceChannelIds = identifierController.listPrintableFormServiceChannelIdsBySource(PtvConsts.IDENTIFIER_NAME, first, max);
+      for (PrintableFormServiceChannelId serviceChannelId : serviceChannelIds) {
+        createServiceChannelUpdateTask(serviceChannelId); 
+      }
+      
+      return Response.ok("ok").build();
+    }
+    
+    return Response.status(Status.FORBIDDEN).build();
+  }
+  
+  @GET
+  @Path ("/utils/ptv/phoneChannelTasks")
+  @Produces (MediaType.TEXT_PLAIN)
+  @SuppressWarnings ("squid:S3776")
+  public Response utilsPtvPhoneChannelTasks(@QueryParam ("first") Integer first, @QueryParam ("max") Integer max) {
+    if (inTestModeOrUnrestrictedClient()) {
+      if (first == null || max == null) {
+        return Response.status(Status.BAD_REQUEST).build();
+      }
+      
+      List<PhoneServiceChannelId> serviceChannelIds = identifierController.listPhoneServiceChannelIdsBySource(PtvConsts.IDENTIFIER_NAME, first, max);
+      for (PhoneServiceChannelId serviceChannelId : serviceChannelIds) {
+        createServiceChannelUpdateTask(serviceChannelId); 
       }
       
       return Response.ok("ok").build();
@@ -350,8 +439,9 @@ public class SystemRESTService {
     return health1;
   }
 
-  private void createServiceLocationServiceChannelUpdateTask(ServiceLocationServiceChannelId locationServiceChannelId) {
-    ServiceLocationServiceChannelId ptvServiceChannelId = idController.translateServiceLocationServiceChannelId(locationServiceChannelId, PtvConsts.IDENTIFIER_NAME);
+  @SuppressWarnings("unchecked")
+  private <T extends BaseId> void createServiceChannelUpdateTask(T serviceChannelId) {  
+    T ptvServiceChannelId = (T) idController.translateId(serviceChannelId, PtvConsts.IDENTIFIER_NAME);
     if (ptvServiceChannelId != null) {
       Identifier identifier = identifierController.findIdentifierById(ptvServiceChannelId);
       if (identifier != null) {
