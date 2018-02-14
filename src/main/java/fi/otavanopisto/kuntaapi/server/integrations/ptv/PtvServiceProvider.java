@@ -206,7 +206,8 @@ public class PtvServiceProvider implements ServiceProvider {
     ConnectionApi connectionApi = ptvApi.getConnectionApi(organizationId);
     V7VmOpenApiServiceAndChannelRelationInBase relationUpdateRequest = new V7VmOpenApiServiceAndChannelRelationInBase();
     relationUpdateRequest.setDeleteAllChannelRelations(true);
-        
+    relationUpdateRequest.channelRelations(new ArrayList<V7VmOpenApiServiceServiceChannelInBase>());
+    
     List<String> ptvServiceChannelIds = getPtvServiceChannelIds(service);
     
     List<V7VmOpenApiServiceServiceChannel> serviceChannels = ptvService.getServiceChannels().stream()
