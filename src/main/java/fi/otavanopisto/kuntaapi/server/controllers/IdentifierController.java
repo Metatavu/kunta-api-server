@@ -188,6 +188,26 @@ public class IdentifierController {
     
     return result;
   }
+
+  
+  /**
+   * Lists page ids by source. Method returns page ids from all organizations
+   * 
+   * @param source source
+   * @param firstResult first result
+   * @param maxResults max results
+   * @return Lists of page ids
+   */
+  public List<PageId> listPageIdsBySource(String source, Integer firstResult, Integer maxResults) {
+    List<Identifier> identifiers = identifierDAO.listBySourceAndType(source, IdType.PAGE.toString(), firstResult, maxResults);
+    List<PageId> result = new ArrayList<>(identifiers.size());
+
+    for (Identifier identifier : identifiers) {
+      result.add(kuntaApiIdFactory.createFromIdentifier(PageId.class, identifier));
+    }
+ 
+    return result;
+  }
   
   public List<PageId> listOrganizationPageIdsBySource(OrganizationId organizationId, String source) {
     return listOrganizationPageIdsBySource(organizationId, source, null, null);
