@@ -36,6 +36,7 @@ import fi.otavanopisto.kuntaapi.server.id.BaseId;
 import fi.otavanopisto.kuntaapi.server.id.ElectronicServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.id.PhoneServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.PrintableFormServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceId;
@@ -46,6 +47,8 @@ import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceChannelSortBy;
 import fi.otavanopisto.kuntaapi.server.integrations.ServiceSortBy;
 import fi.otavanopisto.kuntaapi.server.integrations.SortDir;
+import fi.otavanopisto.kuntaapi.server.integrations.management.ManagementConsts;
+import fi.otavanopisto.kuntaapi.server.integrations.management.tasks.PageIdTaskQueue;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.PtvConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.OrganizationIdTaskQueue;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.ServiceChannelTasksQueue;
@@ -102,6 +105,9 @@ public class SystemRESTService {
   
   @Inject
   private ServiceIdTaskQueue serviceIdTaskQueue;
+  
+  @Inject
+  private PageIdTaskQueue pageIdTaskQueue;
 
   @Inject
   private OrganizationIdTaskQueue organizationIdTaskQueue;
@@ -321,6 +327,32 @@ public class SystemRESTService {
       List<OrganizationId> organizationIds  = identifierController.listOrganizationIdsBySource(PtvConsts.IDENTIFIER_NAME, first, max);
       for (OrganizationId organizationId : organizationIds) {
         organizationIdTaskQueue.enqueueTask(true, new IdTask<OrganizationId>(Operation.UPDATE, organizationId));
+      }
+      
+      return Response.ok("ok").build();
+    }
+    
+    return Response.status(Status.FORBIDDEN).build();
+  }
+  
+  @GET
+  @Path ("/utils/management/pageTasks")
+  @Produces (MediaType.TEXT_PLAIN)
+  @SuppressWarnings ("squid:S3776")
+  public Response utilsManagementPageTasks(@QueryParam ("first") Integer first, @QueryParam ("max") Integer max) {
+    if (inTestModeOrUnrestrictedClient()) {
+      if (first == null || max == null) {
+        return Response.status(Status.BAD_REQUEST).build();
+      }
+      
+      List<PageId> pageIds = identifierController.listPageIdsBySource(ManagementConsts.IDENTIFIER_NAME, first, max);
+      for (PageId pageId : pageIds) {
+        PageId managementPageId = idController.translatePageId(pageId, ManagementConsts.IDENTIFIER_NAME);
+        if (managementPageId != null) {
+          pageIdTaskQueue.enqueueTask(true, new IdTask<PageId>(Operation.UPDATE, managementPageId));
+        } else {
+          logger.severe("Could not find management id");
+        }
       }
       
       return Response.ok("ok").build();
