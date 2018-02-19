@@ -22,7 +22,6 @@ import fi.metatavu.ptv.client.model.V7VmOpenApiServiceAndChannelRelationInBase;
 import fi.metatavu.ptv.client.model.V7VmOpenApiServiceInBase;
 import fi.metatavu.ptv.client.model.V7VmOpenApiServiceServiceChannel;
 import fi.metatavu.ptv.client.model.V7VmOpenApiServiceServiceChannelInBase;
-import fi.metatavu.ptv.client.model.VmOpenApiItem;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.controllers.ServiceController;
@@ -129,10 +128,6 @@ public class PtvServiceProvider implements ServiceProvider {
       }
       
       V7VmOpenApiService ptvService = findResponse.getResponse();
-      List<V7VmOpenApiServiceServiceChannel> serviceChannels = ptvService.getServiceChannels();
-      
-      VmOpenApiItem serviceChannel = serviceChannels.get(0).getServiceChannel();
-      serviceChannel.getId();
       
       V7VmOpenApiServiceInBase ptvServiceIn = ptvOutPtvInTranslator.translateService(ptvService);
       ptvServiceIn.setAreas(kuntaApiPtvTranslator.translateAreas(service.getAreas()));
@@ -211,7 +206,8 @@ public class PtvServiceProvider implements ServiceProvider {
     ConnectionApi connectionApi = ptvApi.getConnectionApi(organizationId);
     V7VmOpenApiServiceAndChannelRelationInBase relationUpdateRequest = new V7VmOpenApiServiceAndChannelRelationInBase();
     relationUpdateRequest.setDeleteAllChannelRelations(true);
-        
+    relationUpdateRequest.channelRelations(new ArrayList<V7VmOpenApiServiceServiceChannelInBase>());
+    
     List<String> ptvServiceChannelIds = getPtvServiceChannelIds(service);
     
     List<V7VmOpenApiServiceServiceChannel> serviceChannels = ptvService.getServiceChannels().stream()
