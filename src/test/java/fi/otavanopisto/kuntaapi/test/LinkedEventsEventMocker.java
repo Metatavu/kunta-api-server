@@ -46,7 +46,7 @@ public class LinkedEventsEventMocker extends AbstractBaseMocker {
     try {
       for (String id : ids) {
         if (!eventMocker.isMocked(id)) {
-          Event event = readEventFromJSONFile(String.format("linkedevents/events/%s.json", id));
+          Event event = readEventFromJSONFile(String.format("linkedevents/events/%s.json", id.replaceAll(":", "_")));
           mockEvent(event);
         } else {
           eventMocker.setStatus(id, MockedResourceStatus.OK);
