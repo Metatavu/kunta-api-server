@@ -25,7 +25,7 @@ public class PtvOrganizationIdUpdater extends AbstractPtvOrganizationIdUpdater {
   
   @PostConstruct
   public void init() {
-    page = 0;
+    page = 1;
   }
   
   @Override
