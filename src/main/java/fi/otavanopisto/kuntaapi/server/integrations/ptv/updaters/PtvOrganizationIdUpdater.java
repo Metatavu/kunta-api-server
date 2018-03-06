@@ -53,7 +53,7 @@ public class PtvOrganizationIdUpdater extends AbstractPtvOrganizationIdUpdater {
     if ((page + 1) < guidPage.getPageCount()) {
       page++;
     } else {
-      page = 0;
+      page = 1;
     }
   }
 

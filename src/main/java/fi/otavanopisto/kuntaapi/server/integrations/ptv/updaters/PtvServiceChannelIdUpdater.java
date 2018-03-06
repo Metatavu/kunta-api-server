@@ -25,7 +25,7 @@ public class PtvServiceChannelIdUpdater extends AbstractPtvServiceChannelIdUpdat
   
   @PostConstruct
   public void init() {
-    page = 0;
+    page = 1;
   }
   
   @Override
@@ -48,7 +48,7 @@ public class PtvServiceChannelIdUpdater extends AbstractPtvServiceChannelIdUpdat
     if ((page + 1) < guidPage.getPageCount()) {
       page++;
     } else {
-      page = 0;
+      page = 1;
     }
   }
 
