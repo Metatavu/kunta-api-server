@@ -173,7 +173,7 @@ public abstract class AbstractPtvMocker<R> {
     }
     
     result.setPageCount(1);
-    result.setPageNumber(0);
+    result.setPageNumber(1);
     result.setPageSize(1000);
     
     return result;
@@ -277,7 +277,7 @@ public abstract class AbstractPtvMocker<R> {
   
   private void mockDefaultLists() {
     Map<String, StringValuePattern> pageQueryParams = new LinkedHashMap<>();
-    pageQueryParams.put("page", containing("0"));
+    pageQueryParams.put("page", containing("1"));
     addStatusList(MockedResourceStatus.OK, urlPathEqualTo(getBasePath()), pageQueryParams);
   }
   
