@@ -41,7 +41,7 @@ import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceLocationServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.images.ScaledImageStore;
-import fi.otavanopisto.kuntaapi.server.index.IndexRemovePage;
+import fi.otavanopisto.kuntaapi.server.index.IndexRemoveDeprecatedPage;
 import fi.otavanopisto.kuntaapi.server.index.IndexRemoveRequest;
 import fi.otavanopisto.kuntaapi.server.index.IndexRequest;
 import fi.otavanopisto.kuntaapi.server.index.IndexablePage;
@@ -413,10 +413,14 @@ public class ManagementPageEntityUpdater extends EntityUpdater<IdTask<PageId>> {
       managementPageContentResourceContainer.clear(kuntaApiPageId);
       identifierController.deleteIdentifier(pageIdentifier);
       
-      IndexRemovePage indexRemove = new IndexRemovePage();
+      IndexablePage indexRemove = new IndexablePage();
       indexRemove.setPageId(kuntaApiPageId.getId());
-      indexRemove.setLanguage(ManagementConsts.DEFAULT_LOCALE);
       indexRemoveRequest.fire(new IndexRemoveRequest(indexRemove));
+
+      IndexRemoveDeprecatedPage indexRemoveDeprecated = new IndexRemoveDeprecatedPage();
+      indexRemoveDeprecated.setPageId(kuntaApiPageId.getId());
+      indexRemoveDeprecated.setLanguage(ManagementConsts.DEFAULT_LOCALE);
+      indexRemoveRequest.fire(new IndexRemoveRequest(indexRemoveDeprecated));
     }
   }
 
@@ -426,13 +430,17 @@ public class ManagementPageEntityUpdater extends EntityUpdater<IdTask<PageId>> {
       logger.severe(String.format("Failed to translate organizationId %s into KuntaAPI id", organizationId.toString()));
       return null;
     }
+
+    IndexRemoveDeprecatedPage indexRemove = new IndexRemoveDeprecatedPage();
+    indexRemove.setPageId(kuntaApiPageId.getId());
+    indexRemove.setLanguage(ManagementConsts.DEFAULT_LOCALE);
+    indexRemoveRequest.fire(new IndexRemoveRequest(indexRemove));
     
     IndexablePage indexablePage = new IndexablePage();
-    indexablePage.setContent(content);
-    indexablePage.setLanguage(language);
+    indexablePage.setContentFi(content);
     indexablePage.setOrganizationId(kuntaApiOrganizationId.getId());
     indexablePage.setPageId(kuntaApiPageId.getId());
-    indexablePage.setTitle(title);
+    indexablePage.setTitleFi(title);
     indexablePage.setOrderIndex(orderIndex);
     
     return indexablePage;

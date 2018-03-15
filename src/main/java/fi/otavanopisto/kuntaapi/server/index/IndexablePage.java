@@ -1,6 +1,6 @@
 package fi.otavanopisto.kuntaapi.server.index;
 
-public class IndexablePage implements Indexable {
+public class IndexablePage implements Indexable, IndexRemove {
 
   @Field (index = "not_analyzed", store = true, type = "long")
   private Long orderIndex;
@@ -11,18 +11,27 @@ public class IndexablePage implements Indexable {
   @Field (index = "not_analyzed", store = true)
   private String organizationId;
   
-  @Field (index = "not_analyzed")
-  private String language;
+  @Field(analyzer = "finnish")
+  private String titleFi;
   
-  @Field
-  private String title;
+  @Field(analyzer = "swedish")
+  private String titleSv;
+  
+  @Field(analyzer = "english")
+  private String titleEn;
 
-  @Field
-  private String content;
+  @Field(analyzer = "finnish")
+  private String contentFi;
+
+  @Field(analyzer = "swedish")
+  private String contentSv;
+
+  @Field(analyzer = "english")
+  private String contentEn;
 
   @Override
   public String getId() {
-    return String.format("%s_%s", pageId, language);
+    return String.format("%s", pageId);
   }
 
   @Override
@@ -55,28 +64,51 @@ public class IndexablePage implements Indexable {
     this.organizationId = organizationId;
   }
 
-  public String getLanguage() {
-    return language;
-  }
-  
-  public void setLanguage(String language) {
-    this.language = language;
+  public String getTitleFi() {
+    return titleFi;
   }
 
-  public String getTitle() {
-    return title;
+  public void setTitleFi(String titleFi) {
+    this.titleFi = titleFi;
   }
 
-  public void setTitle(String title) {
-    this.title = title;
+  public String getTitleSv() {
+    return titleSv;
   }
 
-  public String getContent() {
-    return content;
+  public void setTitleSv(String titleSv) {
+    this.titleSv = titleSv;
   }
 
-  public void setContent(String content) {
-    this.content = content;
+  public String getTitleEn() {
+    return titleEn;
   }
 
+  public void setTitleEn(String titleEn) {
+    this.titleEn = titleEn;
+  }
+
+  public String getContentFi() {
+    return contentFi;
+  }
+
+  public void setContentFi(String contentFi) {
+    this.contentFi = contentFi;
+  }
+
+  public String getContentSv() {
+    return contentSv;
+  }
+
+  public void setContentSv(String contentSv) {
+    this.contentSv = contentSv;
+  }
+
+  public String getContentEn() {
+    return contentEn;
+  }
+
+  public void setContentEn(String contentEn) {
+    this.contentEn = contentEn;
+  }
 }
