@@ -206,6 +206,8 @@ public class ManagementPageEntityUpdater extends EntityUpdater<IdTask<PageId>> {
     String processedHtml = processPage(api, kuntaApiOrganizationId, identifier, managementPage);
     
     List<LocalizedValue> pageContents = managementTranslator.translateLocalized(processedHtml);
+
+    removeDeprecatedPage(kuntaApiPageId);
     
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(managementPage));
     managementPageResourceContainer.put(kuntaApiPageId, page);
@@ -417,10 +419,7 @@ public class ManagementPageEntityUpdater extends EntityUpdater<IdTask<PageId>> {
       indexRemove.setPageId(kuntaApiPageId.getId());
       indexRemoveRequest.fire(new IndexRemoveRequest(indexRemove));
 
-      IndexRemoveDeprecatedPage indexRemoveDeprecated = new IndexRemoveDeprecatedPage();
-      indexRemoveDeprecated.setPageId(kuntaApiPageId.getId());
-      indexRemoveDeprecated.setLanguage(ManagementConsts.DEFAULT_LOCALE);
-      indexRemoveRequest.fire(new IndexRemoveRequest(indexRemoveDeprecated));
+      removeDeprecatedPage(kuntaApiPageId);
     }
   }
 
@@ -430,11 +429,6 @@ public class ManagementPageEntityUpdater extends EntityUpdater<IdTask<PageId>> {
       logger.severe(String.format("Failed to translate organizationId %s into KuntaAPI id", organizationId.toString()));
       return null;
     }
-
-    IndexRemoveDeprecatedPage indexRemove = new IndexRemoveDeprecatedPage();
-    indexRemove.setPageId(kuntaApiPageId.getId());
-    indexRemove.setLanguage(ManagementConsts.DEFAULT_LOCALE);
-    indexRemoveRequest.fire(new IndexRemoveRequest(indexRemove));
     
     IndexablePage indexablePage = new IndexablePage();
     indexablePage.setContentFi(content);
@@ -444,6 +438,13 @@ public class ManagementPageEntityUpdater extends EntityUpdater<IdTask<PageId>> {
     indexablePage.setOrderIndex(orderIndex);
     
     return indexablePage;
+  }
+
+  private void removeDeprecatedPage(PageId kuntaApiPageId) {
+    IndexRemoveDeprecatedPage indexRemove = new IndexRemoveDeprecatedPage();
+    indexRemove.setPageId(kuntaApiPageId.getId());
+    indexRemove.setLanguage(ManagementConsts.DEFAULT_LOCALE);
+    indexRemoveRequest.fire(new IndexRemoveRequest(indexRemove));
   }
   
 }
