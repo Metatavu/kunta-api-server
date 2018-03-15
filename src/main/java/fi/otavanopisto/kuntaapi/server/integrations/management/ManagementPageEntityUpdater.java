@@ -212,7 +212,7 @@ public class ManagementPageEntityUpdater extends EntityUpdater<IdTask<PageId>> {
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(managementPage));
     managementPageResourceContainer.put(kuntaApiPageId, page);
     managementPageContentResourceContainer.put(kuntaApiPageId, pageContents);
-    indexRequest.fire(new IndexRequest(createIndexablePage(organizationId, kuntaApiPageId, ManagementConsts.DEFAULT_LOCALE, processedHtml, title, orderIndex)));
+    indexRequest.fire(new IndexRequest(createIndexablePage(organizationId, kuntaApiPageId, processedHtml, title, orderIndex)));
   }
 
   private String processPage(DefaultApi api, OrganizationId kuntaApiOrganizationId, Identifier pageIdentifier, Page managementPage) {
@@ -423,7 +423,7 @@ public class ManagementPageEntityUpdater extends EntityUpdater<IdTask<PageId>> {
     }
   }
 
-  private IndexablePage createIndexablePage(OrganizationId organizationId, PageId kuntaApiPageId, String language, String content, String title, Long orderIndex) {
+  private IndexablePage createIndexablePage(OrganizationId organizationId, PageId kuntaApiPageId, String content, String title, Long orderIndex) {
     OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(kuntaApiPageId.getOrganizationId(), KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiOrganizationId == null) {
       logger.severe(String.format("Failed to translate organizationId %s into KuntaAPI id", organizationId.toString()));
