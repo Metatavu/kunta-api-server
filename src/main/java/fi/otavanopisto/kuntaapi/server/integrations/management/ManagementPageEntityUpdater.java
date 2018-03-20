@@ -41,7 +41,7 @@ import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceLocationServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.images.ScaledImageStore;
-import fi.otavanopisto.kuntaapi.server.index.IndexRemovePage;
+import fi.otavanopisto.kuntaapi.server.index.IndexRemoveDeprecatedPage;
 import fi.otavanopisto.kuntaapi.server.index.IndexRemoveRequest;
 import fi.otavanopisto.kuntaapi.server.index.IndexRequest;
 import fi.otavanopisto.kuntaapi.server.index.IndexablePage;
@@ -206,11 +206,13 @@ public class ManagementPageEntityUpdater extends EntityUpdater<IdTask<PageId>> {
     String processedHtml = processPage(api, kuntaApiOrganizationId, identifier, managementPage);
     
     List<LocalizedValue> pageContents = managementTranslator.translateLocalized(processedHtml);
+
+    removeDeprecatedPage(kuntaApiPageId);
     
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(managementPage));
     managementPageResourceContainer.put(kuntaApiPageId, page);
     managementPageContentResourceContainer.put(kuntaApiPageId, pageContents);
-    indexRequest.fire(new IndexRequest(createIndexablePage(organizationId, kuntaApiPageId, ManagementConsts.DEFAULT_LOCALE, processedHtml, title, orderIndex)));
+    indexRequest.fire(new IndexRequest(createIndexablePage(organizationId, kuntaApiPageId, processedHtml, title, orderIndex)));
   }
 
   private String processPage(DefaultApi api, OrganizationId kuntaApiOrganizationId, Identifier pageIdentifier, Page managementPage) {
@@ -413,14 +415,15 @@ public class ManagementPageEntityUpdater extends EntityUpdater<IdTask<PageId>> {
       managementPageContentResourceContainer.clear(kuntaApiPageId);
       identifierController.deleteIdentifier(pageIdentifier);
       
-      IndexRemovePage indexRemove = new IndexRemovePage();
+      IndexablePage indexRemove = new IndexablePage();
       indexRemove.setPageId(kuntaApiPageId.getId());
-      indexRemove.setLanguage(ManagementConsts.DEFAULT_LOCALE);
       indexRemoveRequest.fire(new IndexRemoveRequest(indexRemove));
+
+      removeDeprecatedPage(kuntaApiPageId);
     }
   }
 
-  private IndexablePage createIndexablePage(OrganizationId organizationId, PageId kuntaApiPageId, String language, String content, String title, Long orderIndex) {
+  private IndexablePage createIndexablePage(OrganizationId organizationId, PageId kuntaApiPageId, String content, String title, Long orderIndex) {
     OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(kuntaApiPageId.getOrganizationId(), KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiOrganizationId == null) {
       logger.severe(String.format("Failed to translate organizationId %s into KuntaAPI id", organizationId.toString()));
@@ -428,14 +431,20 @@ public class ManagementPageEntityUpdater extends EntityUpdater<IdTask<PageId>> {
     }
     
     IndexablePage indexablePage = new IndexablePage();
-    indexablePage.setContent(content);
-    indexablePage.setLanguage(language);
+    indexablePage.setContentFi(content);
     indexablePage.setOrganizationId(kuntaApiOrganizationId.getId());
     indexablePage.setPageId(kuntaApiPageId.getId());
-    indexablePage.setTitle(title);
+    indexablePage.setTitleFi(title);
     indexablePage.setOrderIndex(orderIndex);
     
     return indexablePage;
+  }
+
+  private void removeDeprecatedPage(PageId kuntaApiPageId) {
+    IndexRemoveDeprecatedPage indexRemove = new IndexRemoveDeprecatedPage();
+    indexRemove.setPageId(kuntaApiPageId.getId());
+    indexRemove.setLanguage(ManagementConsts.DEFAULT_LOCALE);
+    indexRemoveRequest.fire(new IndexRemoveRequest(indexRemove));
   }
   
 }
