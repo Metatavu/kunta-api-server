@@ -6,6 +6,9 @@ public class IndexablePage implements Indexable, IndexRemove {
   private Long orderIndex;
   
   @Field (index = "not_analyzed", store = true)
+  private Integer menuOrder;
+  
+  @Field (index = "not_analyzed", store = true)
   private String pageId;
   
   @Field (index = "not_analyzed", store = true)
@@ -47,7 +50,15 @@ public class IndexablePage implements Indexable, IndexRemove {
   public void setOrderIndex(Long orderIndex) {
     this.orderIndex = orderIndex;
   }
-  
+
+  public Integer getMenuOrder() {
+    return menuOrder;
+  }
+
+  public void setMenuOrder(Integer menuOrder) {
+    this.menuOrder = menuOrder;
+  }
+
   public String getPageId() {
     return pageId;
   }
