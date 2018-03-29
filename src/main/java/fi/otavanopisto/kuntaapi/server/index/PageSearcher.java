@@ -25,6 +25,8 @@ public class PageSearcher {
   private static final String TYPE = "page";
   private static final String PAGE_ID_FIELD = "pageId";
   private static final String ORGANIZATION_ID_FIELD = "organizationId";
+  private static final String MENU_ORDER_FIELD = "menuOrder";
+  private static final String TITLE_RAW_FIELD = "titleRaw";
   
   @Inject
   private Logger logger;
@@ -34,8 +36,11 @@ public class PageSearcher {
 
   public SearchResult<PageId> searchPages(String organizationId, String queryString, PageSortBy sortOrder, SortDir sortDir, Long firstResult, Long maxResults) {
     BoolQueryBuilder query = boolQuery()
-      .must(matchQuery(ORGANIZATION_ID_FIELD, organizationId))
-      .must(queryStringQuery(queryString));
+      .must(matchQuery(ORGANIZATION_ID_FIELD, organizationId));
+    
+    if (queryString != null) {
+      query.must(queryStringQuery(queryString));
+    }
     
     return searchPages(query, sortOrder, sortDir, firstResult, maxResults);
   }
@@ -58,6 +63,10 @@ public class PageSearcher {
     switch (sortBy) {
       case SCORE:
         requestBuilder.addSort(SortBuilders.scoreSort().order(order));
+      break;
+      case MENU:
+        requestBuilder.addSort(SortBuilders.fieldSort(MENU_ORDER_FIELD).order(order))
+                      .addSort(SortBuilders.fieldSort(TITLE_RAW_FIELD).order(order));
       break;
       case NATURAL:
       default:

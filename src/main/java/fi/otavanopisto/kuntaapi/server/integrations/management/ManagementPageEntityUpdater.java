@@ -431,6 +431,7 @@ public class ManagementPageEntityUpdater extends EntityUpdater<IdTask<PageId>> {
     }
     
     IndexablePage indexablePage = new IndexablePage();
+    indexablePage.setTitleRaw(title);
     indexablePage.setContentFi(content);
     indexablePage.setOrganizationId(kuntaApiOrganizationId.getId());
     indexablePage.setPageId(kuntaApiPageId.getId());

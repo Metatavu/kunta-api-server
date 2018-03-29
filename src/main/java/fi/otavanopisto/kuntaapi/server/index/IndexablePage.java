@@ -14,6 +14,9 @@ public class IndexablePage implements Indexable, IndexRemove {
   @Field (index = "not_analyzed", store = true)
   private String organizationId;
   
+  @Field (index = "not_analyzed", store = true)
+  private String titleRaw;
+  
   @Field(analyzer = "finnish")
   private String titleFi;
   
@@ -73,6 +76,14 @@ public class IndexablePage implements Indexable, IndexRemove {
 
   public void setOrganizationId(String organizationId) {
     this.organizationId = organizationId;
+  }
+  
+  public String getTitleRaw() {
+    return titleRaw;
+  }
+
+  public void setTitleRaw(String titleRaw) {
+    this.titleRaw = titleRaw;
   }
 
   public String getTitleFi() {
