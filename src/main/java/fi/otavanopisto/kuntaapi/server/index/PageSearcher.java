@@ -38,6 +38,20 @@ public class PageSearcher {
   @Inject
   private IndexReader indexReader;
 
+  /**
+   * Search pages. 
+   * 
+   * @param organizationId organixation id. Id source must be Kunta API
+   * @param queryString free text search. Optional
+   * @param sortOrder sort order
+   * @param sortDir sort direction
+   * @param onlyRootPages returns only root pages. Should not be used with parentId parameter
+   * @param parentId returns only pages with specified parent id. Id source must be Kunta API. Should not be used with onlyRootPages parameter 
+   * @param firstResult first result index
+   * @param maxResults max results
+   * @return result
+   */
+  @SuppressWarnings ("squid:S00107")
   public SearchResult<PageId> searchPages(String organizationId, String queryString, PageSortBy sortOrder, SortDir sortDir, boolean onlyRootPages, PageId parentId, Long firstResult, Long maxResults) {
     BoolQueryBuilder query = boolQuery()
       .must(matchQuery(ORGANIZATION_ID_FIELD, organizationId));
@@ -62,10 +76,20 @@ public class PageSearcher {
       query.mustNot(existsQuery(PARENT_ID_FIELD));
     }
     
-    return searchPages(query, sortOrder, sortDir, onlyRootPages, parentId, firstResult, maxResults);
+    return searchPages(query, sortOrder, sortDir, firstResult, maxResults);
   }
   
-  private SearchResult<PageId> searchPages(QueryBuilder queryBuilder, PageSortBy sortBy, SortDir sortDir, boolean onlyRootPages, PageId parentId, Long firstResult, Long maxResults) {
+  /**
+   * Executes query and applies sorts and limits
+   * 
+   * @param queryBuilder query
+   * @param sortBy sort by
+   * @param sortDir sort direction
+   * @param firstResult first result
+   * @param maxResults max results
+   * @return search result
+   */
+  private SearchResult<PageId> searchPages(QueryBuilder queryBuilder, PageSortBy sortBy, SortDir sortDir, Long firstResult, Long maxResults) {
     if (!indexReader.isEnabled()) {
       logger.warning("Could not execute search. Search functions are disabled");
       return null;
