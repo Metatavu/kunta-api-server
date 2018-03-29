@@ -39,6 +39,8 @@ import fi.otavanopisto.kuntaapi.server.tasks.OrganizationEntityUpdateTask;
 @AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
 public class PtvAccessTokenUpdater extends EntityUpdater<OrganizationEntityUpdateTask> {
+  
+  private static final long TOKEN_EXPIRE_MAX_TIME = 60l * 60 * 24 * 7;
 
   @Inject
   private Logger logger;
@@ -121,6 +123,10 @@ public class PtvAccessTokenUpdater extends EntityUpdater<OrganizationEntityUpdat
       if (response.isOk()) {
         PtvAccessToken accessToken = response.getResponseEntity();
         Long expiresIn = accessToken.getExpiresIn();
+        if (expiresIn == null) {
+          expiresIn = TOKEN_EXPIRE_MAX_TIME;
+        }
+        
         OffsetDateTime tokenExpires = OffsetDateTime.now().plusSeconds(expiresIn);
         externalAccessTokenController.setOrganizationExternalAccessToken(kuntaApiOrganizationId, PtvConsts.PTV_ACCESS_TOKEN_TYPE, accessToken.getAccessToken(), tokenExpires);
       } else {
