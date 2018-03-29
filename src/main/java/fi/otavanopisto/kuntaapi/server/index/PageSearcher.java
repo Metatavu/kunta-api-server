@@ -3,7 +3,9 @@ package fi.otavanopisto.kuntaapi.server.index;
 import static org.elasticsearch.index.query.QueryBuilders.boolQuery;
 import static org.elasticsearch.index.query.QueryBuilders.matchQuery;
 import static org.elasticsearch.index.query.QueryBuilders.queryStringQuery;
+import static org.elasticsearch.index.query.QueryBuilders.existsQuery;
 
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -16,6 +18,7 @@ import org.elasticsearch.search.sort.SortBuilders;
 import org.elasticsearch.search.sort.SortOrder;
 
 import fi.otavanopisto.kuntaapi.server.id.PageId;
+import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.PageSortBy;
 import fi.otavanopisto.kuntaapi.server.integrations.SortDir;
 
@@ -24,6 +27,7 @@ public class PageSearcher {
   
   private static final String TYPE = "page";
   private static final String PAGE_ID_FIELD = "pageId";
+  private static final String PARENT_ID_FIELD = "parentId";
   private static final String ORGANIZATION_ID_FIELD = "organizationId";
   private static final String MENU_ORDER_FIELD = "menuOrder";
   private static final String TITLE_RAW_FIELD = "titleRaw";
@@ -40,6 +44,22 @@ public class PageSearcher {
     
     if (queryString != null) {
       query.must(queryStringQuery(queryString));
+    }
+    
+    if (parentId != null) {
+      if (!KuntaApiConsts.IDENTIFIER_NAME.equals(parentId.getSource())) {
+        if (logger.isLoggable(Level.WARNING)) {
+          logger.warning(String.format("Could not execute search. Parent id source was unsupported (%s)", parentId.getSource()));
+        }
+        
+        return null;
+      }
+      
+      query.must(matchQuery(PARENT_ID_FIELD, parentId.getId()));
+    }
+    
+    if (onlyRootPages) {
+      query.mustNot(existsQuery(PARENT_ID_FIELD));
     }
     
     return searchPages(query, sortOrder, sortDir, onlyRootPages, parentId, firstResult, maxResults);

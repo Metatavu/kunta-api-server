@@ -109,6 +109,7 @@ public class PageController {
     return null;
   }
 
+  @SuppressWarnings ("squid:S00107")
   public SearchResult<Page> searchPages(OrganizationId organizationId, String queryString, PageSortBy sortBy, SortDir sortDir, boolean onlyRootPages, PageId parentId, Long firstResult, Long maxResults) {
     OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(organizationId, KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiOrganizationId == null) {
@@ -116,7 +117,7 @@ public class PageController {
       return SearchResult.emptyResult();
     }
     
-    SearchResult<PageId> searchResult = pageSearcher.searchPages(kuntaApiOrganizationId.getId(), queryString, sortBy, sortDir, firstResult, maxResults);
+    SearchResult<PageId> searchResult = pageSearcher.searchPages(kuntaApiOrganizationId.getId(), queryString, sortBy, sortDir, onlyRootPages, parentId, firstResult, maxResults);
     if (searchResult != null) {
       List<Page> pages = new ArrayList<>(searchResult.getResult().size());
       

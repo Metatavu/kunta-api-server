@@ -814,11 +814,11 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     
     boolean onlyRootPages = StringUtils.equals("ROOT", parentIdParam);
     PageId parentId = onlyRootPages ? null : toPageId(organizationId, parentIdParam);
-    
-    if (search != null) {
-      return restResponseBuilder.buildResponse(pageController.searchPages(organizationId, search, sortBy, sortDir, onlyRootPages, parentId, firstResult, maxResults), request);
-    } else {
+
+    if (path != null) {
       return restResponseBuilder.buildResponse(pageController.listPages(organizationId, path, onlyRootPages, parentId, firstResult, maxResults), null, request);
+    } else {
+      return restResponseBuilder.buildResponse(pageController.searchPages(organizationId, search, sortBy, sortDir, onlyRootPages, parentId, firstResult, maxResults), request);
     }
   }
 
