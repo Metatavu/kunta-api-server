@@ -423,18 +423,22 @@ public class ManagementPageEntityUpdater extends EntityUpdater<IdTask<PageId>> {
     }
   }
 
-  private IndexablePage createIndexablePage(
-      OrganizationId organizationId,
-      PageId kuntaApiPageId,
-      String content,
-      String title,
-      Long orderIndex,
-      Integer menuOrder,
-      PageId pageParentId
-  ) {
+  /**
+   * Creates a page model for indexing
+   * 
+   * @param organizationId organization id
+   * @param kuntaApiPageId pageId in Kunta API format
+   * @param content page content
+   * @param title page title
+   * @param orderIndex page order index 
+   * @param menuOrder page menu order
+   * @param pageParentId page parent id
+   * @return indexable page
+   */
+  private IndexablePage createIndexablePage(OrganizationId organizationId, PageId kuntaApiPageId, String content, String title, Long orderIndex, Integer menuOrder, PageId pageParentId) {
     OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(kuntaApiPageId.getOrganizationId(), KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiOrganizationId == null) {
-      logger.severe(String.format("Failed to translate organizationId %s into KuntaAPI id", organizationId.toString()));
+      logger.severe(() -> String.format("Failed to translate organizationId %s into KuntaAPI id", organizationId.toString()));
       return null;
     }
     
@@ -443,7 +447,7 @@ public class ManagementPageEntityUpdater extends EntityUpdater<IdTask<PageId>> {
     indexablePage.setContentFi(content);
     indexablePage.setOrganizationId(kuntaApiOrganizationId.getId());
     indexablePage.setPageId(kuntaApiPageId.getId());
-    indexablePage.setParentId(pageParentId.getId());
+    indexablePage.setParentId(pageParentId != null ? pageParentId.getId() : null);
     indexablePage.setTitleFi(title);
     indexablePage.setOrderIndex(orderIndex);
     indexablePage.setMenuOrder(menuOrder);
