@@ -816,7 +816,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     PageId parentId = onlyRootPages ? null : toPageId(organizationId, parentIdParam);
     
     if (search != null) {
-      return restResponseBuilder.buildResponse(pageController.searchPages(organizationId, search, sortBy, sortDir, firstResult, maxResults), request);
+      return restResponseBuilder.buildResponse(pageController.searchPages(organizationId, search, sortBy, sortDir, onlyRootPages, parentId, firstResult, maxResults), request);
     } else {
       return restResponseBuilder.buildResponse(pageController.listPages(organizationId, path, onlyRootPages, parentId, firstResult, maxResults), null, request);
     }

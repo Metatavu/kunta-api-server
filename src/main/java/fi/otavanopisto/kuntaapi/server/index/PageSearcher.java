@@ -34,7 +34,7 @@ public class PageSearcher {
   @Inject
   private IndexReader indexReader;
 
-  public SearchResult<PageId> searchPages(String organizationId, String queryString, PageSortBy sortOrder, SortDir sortDir, Long firstResult, Long maxResults) {
+  public SearchResult<PageId> searchPages(String organizationId, String queryString, PageSortBy sortOrder, SortDir sortDir, boolean onlyRootPages, PageId parentId, Long firstResult, Long maxResults) {
     BoolQueryBuilder query = boolQuery()
       .must(matchQuery(ORGANIZATION_ID_FIELD, organizationId));
     
@@ -42,10 +42,10 @@ public class PageSearcher {
       query.must(queryStringQuery(queryString));
     }
     
-    return searchPages(query, sortOrder, sortDir, firstResult, maxResults);
+    return searchPages(query, sortOrder, sortDir, onlyRootPages, parentId, firstResult, maxResults);
   }
   
-  private SearchResult<PageId> searchPages(QueryBuilder queryBuilder, PageSortBy sortBy, SortDir sortDir, Long firstResult, Long maxResults) {
+  private SearchResult<PageId> searchPages(QueryBuilder queryBuilder, PageSortBy sortBy, SortDir sortDir, boolean onlyRootPages, PageId parentId, Long firstResult, Long maxResults) {
     if (!indexReader.isEnabled()) {
       logger.warning("Could not execute search. Search functions are disabled");
       return null;
@@ -58,6 +58,9 @@ public class PageSearcher {
     
     requestBuilder.setFrom(firstResult != null ? firstResult.intValue() : 0);
     requestBuilder.setSize(maxResults != null ? maxResults.intValue() : IndexReader.MAX_RESULTS);
+    
+    
+    // TODO onlyRootPages and parentId
     
     SortOrder order = sortDir != null ? sortDir.toElasticSortOrder() : SortOrder.ASC;
     switch (sortBy) {

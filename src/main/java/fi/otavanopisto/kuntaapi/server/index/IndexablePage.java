@@ -10,6 +10,9 @@ public class IndexablePage implements Indexable, IndexRemove {
   
   @Field (index = "not_analyzed", store = true)
   private String pageId;
+
+  @Field (index = "not_analyzed", store = true)
+  private String parentId;
   
   @Field (index = "not_analyzed", store = true)
   private String organizationId;
@@ -68,6 +71,14 @@ public class IndexablePage implements Indexable, IndexRemove {
 
   public void setPageId(String pageId) {
     this.pageId = pageId;
+  }
+  
+  public String getParentId() {
+    return parentId;
+  }
+
+  public void setParentId(String parentId) {
+    this.parentId = parentId;
   }
 
   public String getOrganizationId() {
