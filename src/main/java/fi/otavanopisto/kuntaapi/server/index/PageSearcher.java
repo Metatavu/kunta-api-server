@@ -79,9 +79,6 @@ public class PageSearcher {
     requestBuilder.setFrom(firstResult != null ? firstResult.intValue() : 0);
     requestBuilder.setSize(maxResults != null ? maxResults.intValue() : IndexReader.MAX_RESULTS);
     
-    
-    // TODO onlyRootPages and parentId
-    
     SortOrder order = sortDir != null ? sortDir.toElasticSortOrder() : SortOrder.ASC;
     switch (sortBy) {
       case SCORE:
