@@ -83,18 +83,6 @@ public abstract class AbstractUpdater {
     return stopped;
   }
   
-  /**
-   * Stops entity updater
-   * 
-   * @param cancelTimers if true all assiciated timers are also canceled
-   */
-  public void stop(boolean cancelTimers) {
-    stopped = true;
-    if (cancelTimers) {
-      managedScheduledExecutorService.shutdownNow();
-    }
-  }
-
   private void startTimer(long warmup, long delay) {
     managedScheduledExecutorService.scheduleWithFixedDelay(() -> {
       UserTransaction userTransaction = ejbContext.getUserTransaction();

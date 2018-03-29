@@ -391,15 +391,6 @@ public class SystemRESTService {
   @Produces (MediaType.TEXT_PLAIN)
   public Response stopAllUpdaters(@QueryParam ("cancelTimers") Boolean cancelTimers) {
     if (inTestModeOrUnrestrictedClient()) {
-      
-      for (IdUpdater idUpdater : idUpdaters) {
-        idUpdater.stop(cancelTimers);
-      }
-      
-      for (EntityUpdater<?> entityUpdater : entityUpdaters) {
-        entityUpdater.stop(cancelTimers);
-      }
-      
       return Response.ok("ok").build();
     }
     
