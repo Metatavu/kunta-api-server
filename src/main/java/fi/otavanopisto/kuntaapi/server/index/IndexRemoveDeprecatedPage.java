@@ -12,7 +12,7 @@ public class IndexRemoveDeprecatedPage implements IndexRemove {
 
   @Override
   public String getType() {
-    return "service";
+    return "page";
   }
   
   public String getLanguage() {

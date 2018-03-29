@@ -6,10 +6,19 @@ public class IndexablePage implements Indexable, IndexRemove {
   private Long orderIndex;
   
   @Field (index = "not_analyzed", store = true)
+  private Integer menuOrder;
+  
+  @Field (index = "not_analyzed", store = true)
   private String pageId;
+
+  @Field (index = "not_analyzed", store = true)
+  private String parentId;
   
   @Field (index = "not_analyzed", store = true)
   private String organizationId;
+  
+  @Field (index = "not_analyzed", store = true)
+  private String titleRaw;
   
   @Field(analyzer = "finnish")
   private String titleFi;
@@ -47,13 +56,29 @@ public class IndexablePage implements Indexable, IndexRemove {
   public void setOrderIndex(Long orderIndex) {
     this.orderIndex = orderIndex;
   }
-  
+
+  public Integer getMenuOrder() {
+    return menuOrder;
+  }
+
+  public void setMenuOrder(Integer menuOrder) {
+    this.menuOrder = menuOrder;
+  }
+
   public String getPageId() {
     return pageId;
   }
 
   public void setPageId(String pageId) {
     this.pageId = pageId;
+  }
+  
+  public String getParentId() {
+    return parentId;
+  }
+
+  public void setParentId(String parentId) {
+    this.parentId = parentId;
   }
 
   public String getOrganizationId() {
@@ -62,6 +87,14 @@ public class IndexablePage implements Indexable, IndexRemove {
 
   public void setOrganizationId(String organizationId) {
     this.organizationId = organizationId;
+  }
+  
+  public String getTitleRaw() {
+    return titleRaw;
+  }
+
+  public void setTitleRaw(String titleRaw) {
+    this.titleRaw = titleRaw;
   }
 
   public String getTitleFi() {

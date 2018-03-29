@@ -4,6 +4,8 @@ public enum PageSortBy {
 
   NATURAL,
   
-  SCORE
+  SCORE,
+  
+  MENU
   
 }
