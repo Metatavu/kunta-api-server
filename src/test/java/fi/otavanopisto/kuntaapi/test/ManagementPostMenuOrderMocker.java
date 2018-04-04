@@ -7,6 +7,8 @@ import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlPathEqualTo;
 import static org.junit.Assert.fail;
 
+import com.github.tomakehurst.wiremock.client.WireMock;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,24 +26,21 @@ import fi.otavanopisto.kuntaapi.server.integrations.management.client.model.Post
  */
 public class ManagementPostMenuOrderMocker extends AbstractBaseMocker {
   
+  @SuppressWarnings ("squid:S1075")
   private static final String PATH = "/wp-json/menuorder/v1/posts/%s";
   
   private Map<Integer, MappingBuilder> menuMappings;
   
   @Override
   public void startMock() {
-    menuMappings.values().stream().forEach((mapping) -> {
-      stubFor(mapping);
-    });
+    menuMappings.values().stream().forEach(WireMock::stubFor);
     
     super.startMock();
   }
   
   @Override
   public void endMock() {
-    menuMappings.values().stream().forEach((mapping) -> {
-      removeStub(mapping);
-    });
+    menuMappings.values().stream().forEach(WireMock::removeStub);
     
     super.endMock();
   }
