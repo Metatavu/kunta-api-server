@@ -45,6 +45,9 @@ public class PostTestsIT extends AbstractIntegrationTest {
     getManagementPostMocker()
       .mockPosts(789, 890, 901);
     
+    getManagementPostMenuOrderMocker()
+      .mockMenuOrders(789, 890, 901);
+    
     getManagementMediaMocker()
       .mockMedias(3001, 3002);
     
@@ -95,8 +98,6 @@ public class PostTestsIT extends AbstractIntegrationTest {
   
   @Test
   public void testListPosts() {
-    // Zeus shoud be listed before abraham and bertha because it's menu_order is set to -100 
-
     String organizationId = getOrganizationId(0);
     givenReadonly()
       .contentType(ContentType.JSON)
@@ -107,6 +108,40 @@ public class PostTestsIT extends AbstractIntegrationTest {
       .body("slug[0]", is("lorem-ipsum-dolor-sit-amet"))
       .body("slug[1]", is("test-2"))
       .body("slug[2]", is("test-3"));
+  } 
+  
+  @Test
+  public void testListPostsOrderLow() throws InterruptedException {
+    getManagementPostMenuOrderMocker().mockMenuOrder(789, 20);
+    String organizationId = getOrganizationId(0);
+    waitNewsArticleSlug(organizationId, 0, "ORDER_NUMBER_PUBLISHED", "test-2");
+
+    givenReadonly()
+      .contentType(ContentType.JSON)
+      .get("/organizations/{organizationId}/news?sortBy=ORDER_NUMBER_PUBLISHED", organizationId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("slug[0]", is("test-2"))
+      .body("slug[1]", is("test-3"))
+      .body("slug[2]", is("lorem-ipsum-dolor-sit-amet"));
+  } 
+  
+  @Test
+  public void testListPostsOrderHigh() throws InterruptedException {
+    getManagementPostMenuOrderMocker().mockMenuOrder(901, -20);
+    String organizationId = getOrganizationId(0);
+    waitNewsArticleSlug(organizationId, 0, "ORDER_NUMBER_PUBLISHED", "test-3");
+    
+    givenReadonly()
+      .contentType(ContentType.JSON)
+      .get("/organizations/{organizationId}/news?sortBy=ORDER_NUMBER_PUBLISHED", organizationId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("slug[0]", is("test-3"))
+      .body("slug[1]", is("lorem-ipsum-dolor-sit-amet"))
+      .body("slug[2]", is("test-2"));
   } 
   
   @Test
