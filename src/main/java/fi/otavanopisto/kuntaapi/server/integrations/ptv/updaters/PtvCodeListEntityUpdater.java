@@ -158,9 +158,11 @@ public class PtvCodeListEntityUpdater extends EntityUpdater<PtvCodeListTask> {
     Long orderIndex = codeType.ordinal() * 100000l;
     
     if (response.isOk()) {
-      for (VmOpenApiCodeListItem item : response.getResponse().getItemList()) {
-        handleItem(orderIndex, item, codeType);
-        orderIndex++;
+      if (response.getResponse() != null) {
+        for (VmOpenApiCodeListItem item : response.getResponse().getItemList()) {
+          handleItem(orderIndex, item, codeType);
+          orderIndex++;
+        }
       }
     } else {
       logger.log(Level.SEVERE, () -> String.format("Failed to update paged code list [%d]: %s", response.getStatus(), response.getMessage()));
