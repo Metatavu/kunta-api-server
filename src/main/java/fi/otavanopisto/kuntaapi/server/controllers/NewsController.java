@@ -11,8 +11,6 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
 
-import org.apache.commons.lang3.StringUtils;
-
 import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.NewsArticleId;
@@ -24,7 +22,6 @@ import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.NewsProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.NewsSortBy;
 import fi.otavanopisto.kuntaapi.server.integrations.SortDir;
-import fi.otavanopisto.kuntaapi.server.utils.ListUtils;
 import fi.metatavu.kuntaapi.server.rest.model.Attachment;
 import fi.metatavu.kuntaapi.server.rest.model.NewsArticle;
 
@@ -46,24 +43,6 @@ public class NewsController {
 
   @Inject
   private Instance<NewsProvider> newsProviders;
-
-  @SuppressWarnings ("squid:S00107")
-  public List<NewsArticle> listNewsArticles(String slug, String tag, OffsetDateTime publishedBefore, OffsetDateTime publishedAfter, NewsSortBy sortBy, SortDir sortDir, Integer firstResult, Integer maxResults, OrganizationId organizationId) {
-    List<NewsArticle> result = new ArrayList<>();
-   
-    for (NewsProvider newsProvider : getNewsProviders()) {
-      List<NewsArticle> newArticles = newsProvider.listOrganizationNews(organizationId, tag, publishedBefore, publishedAfter);
-      if (newArticles != null && !newArticles.isEmpty()) {
-        if (slug != null) {
-          result.addAll(filterBySlug(newArticles, slug));
-        } else {
-          result.addAll(newArticles);
-        }
-      }
-    }
-    
-    return ListUtils.limit(entityController.sortEntitiesInNaturalOrder(result), firstResult, maxResults);
-  }
 
   public NewsArticle findNewsArticle(OrganizationId organizationId, NewsArticleId newsArticleId) {
     for (NewsProvider newsProvider : getNewsProviders()) {
@@ -107,14 +86,17 @@ public class NewsController {
     return entityController.sortEntitiesInNaturalOrder(result);
   }
   
-  public SearchResult<NewsArticle> searchNewsArticlesByTag(OrganizationId organizationId, String tag, NewsSortBy sortBy, SortDir sortDir, Integer firstResult, Integer maxResults) { 
+  @SuppressWarnings ("squid:S00107")
+  public SearchResult<NewsArticle> searchNewsArticles(OrganizationId organizationId, String search, String tag, String slug, 
+      OffsetDateTime publishedBefore, OffsetDateTime publishedAfter, NewsSortBy sortBy, SortDir sortDir, Integer firstResult, Integer maxResults) { 
+    
     OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(organizationId, KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiOrganizationId == null) {
-      logger.severe(String.format("Failed to translate organization %s into Kunta API id", organizationId.toString()));
+      logger.severe(() -> String.format("Failed to translate organization %s into Kunta API id", organizationId.toString()));
       return SearchResult.emptyResult();
     }
     
-    SearchResult<NewsArticleId> searchResult = newsArticleSearcher.searchNewsArticlesByTag(kuntaApiOrganizationId.getId(), tag, sortBy, sortDir, firstResult != null ? firstResult.longValue() : null, maxResults != null ? maxResults.longValue() : null);
+    SearchResult<NewsArticleId> searchResult = newsArticleSearcher.searchNewsArticles(kuntaApiOrganizationId.getId(), search, tag, slug, publishedBefore, publishedAfter, sortBy, sortDir, firstResult != null ? firstResult.longValue() : null, maxResults != null ? maxResults.longValue() : null);
     if (searchResult != null) {
       List<NewsArticleId> newsArticleIds = searchResult.getResult();
 
@@ -131,44 +113,6 @@ public class NewsController {
     }
     
     return null;
-  }
-
-  public SearchResult<NewsArticle> searchNewsArticlesByFreeText(OrganizationId organizationId, String search, NewsSortBy sortBy, SortDir sortDir, Integer firstResult, Integer maxResults) {
-    OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(organizationId, KuntaApiConsts.IDENTIFIER_NAME);
-    if (kuntaApiOrganizationId == null) {
-      logger.severe(String.format("Failed to translate organization %s into Kunta API id", organizationId.toString()));
-      return SearchResult.emptyResult();
-    }
-    
-    SearchResult<NewsArticleId> searchResult = newsArticleSearcher.searchNewsArticlesByFreeText(kuntaApiOrganizationId.getId(), search, sortBy, sortDir, firstResult != null ? firstResult.longValue() : null, maxResults != null ? maxResults.longValue() : null);
-    if (searchResult != null) {
-      List<NewsArticleId> newsArticleIds = searchResult.getResult();
-
-      List<NewsArticle> result = new ArrayList<>(newsArticleIds.size());
-
-      for (NewsArticleId newsArticleId : newsArticleIds) {
-        NewsArticle newsArticle = findNewsArticle(kuntaApiOrganizationId, newsArticleId);
-        if (newsArticle != null) {
-          result.add(newsArticle);
-        }
-      }
-      
-      return new SearchResult<>(result, searchResult.getTotalHits());
-    }
-    
-    return SearchResult.emptyResult();
-  }
-  
-  private List<NewsArticle> filterBySlug(List<NewsArticle> newsArticles, String slug) {
-    List<NewsArticle> result = new ArrayList<>();
-   
-    for (NewsArticle newsArticle : newsArticles) {
-      if (StringUtils.equals(slug, newsArticle.getSlug())) {
-        result.add(newsArticle);
-      }
-    }
-    
-    return result;
   }
   
   private List<NewsProvider> getNewsProviders() {

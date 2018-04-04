@@ -83,7 +83,6 @@ import fi.otavanopisto.kuntaapi.server.id.PublicTransportStopTimeId;
 import fi.otavanopisto.kuntaapi.server.id.PublicTransportTripId;
 import fi.otavanopisto.kuntaapi.server.id.ShortlinkId;
 import fi.otavanopisto.kuntaapi.server.id.TileId;
-import fi.otavanopisto.kuntaapi.server.index.SearchResult;
 import fi.otavanopisto.kuntaapi.server.integrations.AnnouncementProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.AnnouncementProvider.AnnouncementOrder;
 import fi.otavanopisto.kuntaapi.server.integrations.AnnouncementProvider.AnnouncementOrderDirection;
@@ -369,18 +368,8 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createBadRequest(INVALID_VALUE_FOR_SORT_DIR);
     }
     
-    if (search != null) {
-      return restResponseBuilder.buildResponse(newsController.searchNewsArticlesByFreeText(organizationId, search, sortBy, sortDir, firstResult, maxResults), request);
-    }
-    
-    if (tag != null) {
-      SearchResult<NewsArticle> searchResult = newsController.searchNewsArticlesByTag(organizationId, tag, sortBy, sortDir, firstResult, maxResults);
-      if (searchResult != null) {
-        return restResponseBuilder.buildResponse(searchResult, request);
-      }
-    }
-    
-    return restResponseBuilder.buildResponse(newsController.listNewsArticles(slug, tag, getDateTime(publishedBefore), getDateTime(publishedAfter), sortBy, sortDir, firstResult, maxResults, organizationId), null, request);
+    return restResponseBuilder.buildResponse(newsController.searchNewsArticles(organizationId, search, tag, slug, getDateTime(publishedBefore), getDateTime(publishedAfter), 
+        sortBy, sortDir, firstResult, maxResults), request);
   }
 
   @Override

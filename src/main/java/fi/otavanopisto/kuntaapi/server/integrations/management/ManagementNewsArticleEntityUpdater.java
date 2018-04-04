@@ -39,6 +39,7 @@ import fi.otavanopisto.kuntaapi.server.index.IndexRequest;
 import fi.otavanopisto.kuntaapi.server.index.IndexableNewsArticle;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
+import fi.otavanopisto.kuntaapi.server.integrations.management.client.ManagementApi;
 import fi.otavanopisto.kuntaapi.server.integrations.management.resources.ManagementAttachmentDataResourceContainer;
 import fi.otavanopisto.kuntaapi.server.integrations.management.resources.ManagementAttachmentResourceContainer;
 import fi.otavanopisto.kuntaapi.server.integrations.management.tasks.NewsArticleIdTaskQueue;
@@ -155,7 +156,8 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater<IdTask<New
     if (managementTagIds == null) {
       managementTagIds = Collections.emptyList();
     }
-
+    
+    Integer postMenuOrder = managementApi.getPostMenuOrder(organizationId, managementPost.getId());
     List<String> tags = resolvePostTags(api, managementCategoryIds, managementTagIds);
     
     OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(organizationId, KuntaApiConsts.IDENTIFIER_NAME);
@@ -175,7 +177,7 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater<IdTask<New
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(newsArticle));
     indexRequest.fire(new IndexRequest(createIndexableNewsArticle(kuntaApiOrganizationId, kuntaApiNewsArticleId, newsArticle.getSlug(),
         newsArticle.getTitle(), newsArticle.getAbstract(), newsArticle.getContents(), newsArticle.getTags(), 
-        newsArticle.getPublished(), orderIndex)));
+        newsArticle.getPublished(), postMenuOrder, orderIndex)));
     
     List<AttachmentId> existingAttachmentIds = identifierRelationController.listAttachmentIdsBySourceAndParentId(ManagementConsts.IDENTIFIER_NAME, kuntaApiNewsArticleId);
     if (managementPost.getFeaturedMedia() != null && managementPost.getFeaturedMedia() > 0) {
@@ -286,7 +288,7 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater<IdTask<New
   }
 
   @SuppressWarnings ("squid:S00107")
-  private IndexableNewsArticle createIndexableNewsArticle(OrganizationId kuntaApiOrganizationId, NewsArticleId kuntaApiNewsArticleId, String slug, String title, String newsAbstract, String contents, List<String> tags, OffsetDateTime published, Long orderIndex) {
+  private IndexableNewsArticle createIndexableNewsArticle(OrganizationId kuntaApiOrganizationId, NewsArticleId kuntaApiNewsArticleId, String slug, String title, String newsAbstract, String contents, List<String> tags, OffsetDateTime published, Integer postMenuOrder, Long orderIndex) {
     
     IndexableNewsArticle indexableNewsArticle = new IndexableNewsArticle();
     indexableNewsArticle.setContents(contents);
@@ -298,6 +300,7 @@ public class ManagementNewsArticleEntityUpdater extends EntityUpdater<IdTask<New
     indexableNewsArticle.setTags(tags);
     indexableNewsArticle.setTitle(title);
     indexableNewsArticle.setSlug(slug);
+    indexableNewsArticle.setOrderNumber(postMenuOrder);
     
     return indexableNewsArticle;
   }
