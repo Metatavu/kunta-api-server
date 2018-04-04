@@ -1,12 +1,12 @@
  {
     "id":901,
-    "date":"2017-01-12T13:38:19",
-    "date_gmt":"2017-01-12T11:38:19",
+    "date":"2017-01-12T14:38:19",
+    "date_gmt":"2017-01-12T12:38:19",
     "guid":{
        "rendered":"http:\/\/test-management.kunta-api.fi\/?p=901"
     },
-    "modified":"2017-01-12T13:38:19",
-    "modified_gmt":"2017-01-12T11:38:19",
+    "modified":"2017-01-12T14:38:19",
+    "modified_gmt":"2017-01-12T12:38:19",
     "slug":"test-3",
     "type":"post",
     "link":"https:\/\/test-management.kunta-api.fi\/test-3\/",

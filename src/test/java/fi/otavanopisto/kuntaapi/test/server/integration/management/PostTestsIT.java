@@ -45,6 +45,9 @@ public class PostTestsIT extends AbstractIntegrationTest {
     getManagementPostMocker()
       .mockPosts(789, 890, 901);
     
+    getManagementPostMenuOrderMocker()
+      .mockMenuOrders(789, 890, 901);
+    
     getManagementMediaMocker()
       .mockMedias(3001, 3002);
     
@@ -77,7 +80,7 @@ public class PostTestsIT extends AbstractIntegrationTest {
       .body("slug", is("lorem-ipsum-dolor-sit-amet"))
       .body("abstract", containsString("Consectetur adipiscing elit"))
       .body("contents", containsString("Aenean a pellentesque erat"))
-      .body("published", sameInstant(getInstant(2017, 01, 12, 13, 38, TIMEZONE_ID)));
+      .body("published", sameInstant(getInstant(2017, 01, 12, 11, 38, TIMEZONE_ID)));
   }
   
   @Test
@@ -95,8 +98,6 @@ public class PostTestsIT extends AbstractIntegrationTest {
   
   @Test
   public void testListPosts() {
-    // Zeus shoud be listed before abraham and bertha because it's menu_order is set to -100 
-
     String organizationId = getOrganizationId(0);
     givenReadonly()
       .contentType(ContentType.JSON)
@@ -107,6 +108,83 @@ public class PostTestsIT extends AbstractIntegrationTest {
       .body("slug[0]", is("lorem-ipsum-dolor-sit-amet"))
       .body("slug[1]", is("test-2"))
       .body("slug[2]", is("test-3"));
+  } 
+  
+  @Test
+  public void testListPostsPublishedBefore() {
+    String organizationId = getOrganizationId(0);
+    givenReadonly()
+      .contentType(ContentType.JSON)
+      .get(String.format("/organizations/{organizationId}/news?publishedBefore=%s", getIsoDateTime(2017, 1, 12, 14, 00, TIMEZONE_ID)), organizationId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(2))
+      .body("slug[0]", is("lorem-ipsum-dolor-sit-amet"))
+      .body("slug[1]", is("test-2"));
+  } 
+  
+  @Test
+  public void testListPostsPublishedAfter() {
+    String organizationId = getOrganizationId(0);
+    givenReadonly()
+      .contentType(ContentType.JSON)
+      .get(String.format("/organizations/{organizationId}/news?publishedAfter=%s", getIsoDateTime(2017, 1, 12, 14, 00, TIMEZONE_ID)), organizationId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(1))
+      .body("slug[0]", is("test-3"));
+  }
+  
+  @Test
+  public void testListPostsPublishedBetween() {
+    String organizationId = getOrganizationId(0);
+    String after = getIsoDateTime(2017, 1, 12, 12, 00, TIMEZONE_ID);
+    String before = getIsoDateTime(2017, 1, 12, 14, 00, TIMEZONE_ID);
+    
+    givenReadonly()
+      .contentType(ContentType.JSON)
+      .get(String.format("/organizations/{organizationId}/news?publishedBefore=%s&publishedAfter=%s", before, after), organizationId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(1))
+      .body("slug[0]", is("test-2"));
+  }
+  
+  @Test
+  public void testListPostsOrderLow() throws InterruptedException {
+    getManagementPostMenuOrderMocker().mockMenuOrder(789, 20);
+    String organizationId = getOrganizationId(0);
+    waitNewsArticleSlug(organizationId, 0, "ORDER_NUMBER_PUBLISHED", "test-2");
+
+    givenReadonly()
+      .contentType(ContentType.JSON)
+      .get("/organizations/{organizationId}/news?sortBy=ORDER_NUMBER_PUBLISHED", organizationId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("slug[0]", is("test-2"))
+      .body("slug[1]", is("test-3"))
+      .body("slug[2]", is("lorem-ipsum-dolor-sit-amet"));
+  } 
+  
+  @Test
+  public void testListPostsOrderHigh() throws InterruptedException {
+    getManagementPostMenuOrderMocker().mockMenuOrder(901, -20);
+    String organizationId = getOrganizationId(0);
+    waitNewsArticleSlug(organizationId, 0, "ORDER_NUMBER_PUBLISHED", "test-3");
+    
+    givenReadonly()
+      .contentType(ContentType.JSON)
+      .get("/organizations/{organizationId}/news?sortBy=ORDER_NUMBER_PUBLISHED", organizationId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("slug[0]", is("test-3"))
+      .body("slug[1]", is("lorem-ipsum-dolor-sit-amet"))
+      .body("slug[2]", is("test-2"));
   } 
   
   @Test

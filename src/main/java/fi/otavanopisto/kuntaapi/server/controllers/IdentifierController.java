@@ -316,6 +316,25 @@ public class IdentifierController {
     return result;
   }
 
+  /**
+   * Lists new article ids by source. Method returns news article ids from all organizations
+   * 
+   * @param source source
+   * @param firstResult first result
+   * @param maxResults max results
+   * @return Lists of page ids
+   */
+  public List<NewsArticleId> listNewsArticleIdsBySource(String source, Integer firstResult, Integer maxResults) {
+    List<Identifier> identifiers = identifierDAO.listBySourceAndType(source, IdType.NEWS_ARTICLE.toString(), firstResult, maxResults);
+    List<NewsArticleId> result = new ArrayList<>(identifiers.size());
+
+    for (Identifier identifier : identifiers) {
+      result.add(kuntaApiIdFactory.createFromIdentifier(NewsArticleId.class, identifier));
+    }
+ 
+    return result;
+  }
+
   public List<NewsArticleId> listOrganizationNewsArticleIdsBySource(OrganizationId organizationId, String source) {
     List<String> newsArticleIds = listSourceIdsByOrganizationIdAndSourceAndType(organizationId, source, IdType.NEWS_ARTICLE.toString());
     List<NewsArticleId> result = new ArrayList<>(newsArticleIds.size());

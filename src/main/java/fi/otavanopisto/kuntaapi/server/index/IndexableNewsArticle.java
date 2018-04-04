@@ -8,6 +8,9 @@ public class IndexableNewsArticle implements Indexable {
   @Field (index = "not_analyzed", store = true, type = "long")
   private Long orderIndex;
   
+  @Field (index = "not_analyzed", store = true, type = "integer")
+  private Integer orderNumber;
+  
   @Field (index = "not_analyzed", store = true)
   private String slug;
   
@@ -49,6 +52,14 @@ public class IndexableNewsArticle implements Indexable {
   
   public void setOrderIndex(Long orderIndex) {
     this.orderIndex = orderIndex;
+  }
+  
+  public Integer getOrderNumber() {
+    return orderNumber;
+  }
+  
+  public void setOrderNumber(Integer orderNumber) {
+    this.orderNumber = orderNumber;
   }
   
   public void setSlug(String slug) {

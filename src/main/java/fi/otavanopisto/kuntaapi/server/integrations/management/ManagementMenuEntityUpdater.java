@@ -29,6 +29,7 @@ import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.MenuProvider.MenuItemType;
+import fi.otavanopisto.kuntaapi.server.integrations.management.client.ManagementApi;
 import fi.otavanopisto.kuntaapi.server.integrations.management.resources.ManagementMenuItemResourceContainer;
 import fi.otavanopisto.kuntaapi.server.integrations.management.tasks.MenuIdTaskQueue;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;

@@ -1,12 +1,12 @@
  {
     "id":789,
-    "date":"2017-01-12T13:38:00",
-    "date_gmt":"2017-01-12T11:38:00",
+    "date":"2017-01-12T11:38:00",
+    "date_gmt":"2017-01-12T09:38:00",
     "guid":{
        "rendered":"http:\/\/test-management.kunta-api.fi\/?p=789"
     },
-    "modified":"2017-01-12T13:38:19",
-    "modified_gmt":"2017-01-12T11:38:19",
+    "modified":"2017-01-12T11:38:19",
+    "modified_gmt":"2017-01-12T09:38:19",
     "slug":"lorem-ipsum-dolor-sit-amet",
     "type":"post",
     "link":"https:\/\/test-management.kunta-api.fi\/lorem-ipsum-dolor-sit-amet\/",
