@@ -6,6 +6,7 @@ import static org.elasticsearch.index.query.QueryBuilders.queryStringQuery;
 import static org.elasticsearch.index.query.QueryBuilders.rangeQuery;
 
 import java.time.OffsetDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.logging.Logger;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -66,11 +67,11 @@ public class NewsArticleSearcher {
       RangeQueryBuilder rangeQuery = rangeQuery(PUBLISHED_FIELD);
       
       if (publishedAfter != null) {
-        rangeQuery.gte(publishedAfter);
+        rangeQuery.gte(publishedAfter.format(DateTimeFormatter.ISO_OFFSET_DATE_TIME));
       }
       
       if (publishedBefore != null) {
-        rangeQuery.lte(publishedBefore);
+        rangeQuery.lte(publishedBefore.format(DateTimeFormatter.ISO_OFFSET_DATE_TIME));
       }    
       
       query.must(rangeQuery);
