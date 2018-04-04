@@ -80,7 +80,7 @@ public class PostTestsIT extends AbstractIntegrationTest {
       .body("slug", is("lorem-ipsum-dolor-sit-amet"))
       .body("abstract", containsString("Consectetur adipiscing elit"))
       .body("contents", containsString("Aenean a pellentesque erat"))
-      .body("published", sameInstant(getInstant(2017, 01, 12, 13, 38, TIMEZONE_ID)));
+      .body("published", sameInstant(getInstant(2017, 01, 12, 9, 38, TIMEZONE_ID)));
   }
   
   @Test
