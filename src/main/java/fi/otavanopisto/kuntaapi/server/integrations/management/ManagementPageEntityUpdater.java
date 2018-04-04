@@ -451,6 +451,7 @@ public class ManagementPageEntityUpdater extends EntityUpdater<IdTask<PageId>> {
     indexablePage.setParentId(pageParentId != null ? pageParentId.getId() : null);
     indexablePage.setTitleFi(title);
     indexablePage.setOrderIndex(orderIndex);
+    indexablePage.setOrderNumber(menuOrder);
     indexablePage.setMenuOrder(menuOrder);
     
     return indexablePage;
