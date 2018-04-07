@@ -3,7 +3,10 @@ package fi.otavanopisto.kuntaapi.server.index.search;
 import static org.elasticsearch.index.query.QueryBuilders.boolQuery;
 import static org.elasticsearch.index.query.QueryBuilders.matchQuery;
 import static org.elasticsearch.index.query.QueryBuilders.queryStringQuery;
+import static org.elasticsearch.index.query.QueryBuilders.rangeQuery;
 
+import java.time.OffsetDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.logging.Logger;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -12,6 +15,7 @@ import javax.inject.Inject;
 import org.elasticsearch.action.search.SearchRequestBuilder;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilder;
+import org.elasticsearch.index.query.RangeQueryBuilder;
 import org.elasticsearch.search.sort.SortBuilders;
 import org.elasticsearch.search.sort.SortOrder;
 
@@ -29,6 +33,9 @@ public class NewsArticleSearcher {
   private static final String MEWS_ARTICLE_ID_FIELD = "newsArticleId";
   private static final String ORGANIZATION_ID_FIELD = "organizationId";
   private static final String TAGS_FIELD = "tags";
+  private static final String SLUG_FIELD = "slug";
+  private static final String PUBLISHED_FIELD = "published";
+  private static final String ORDER_NUMBER_FIELD = "orderNumber";
   
   @Inject
   private Logger logger;
@@ -36,18 +43,39 @@ public class NewsArticleSearcher {
   @Inject
   private IndexReader indexReader;
   
-  public SearchResult<NewsArticleId> searchNewsArticlesByTag(String organizationId, String tag, NewsSortBy sortOrder, SortDir sortDir, Long firstResult, Long maxResults) {
-    BoolQueryBuilder query = boolQuery()
-      .must(matchQuery(ORGANIZATION_ID_FIELD, organizationId))
-      .must(matchQuery(TAGS_FIELD, tag));
+  @SuppressWarnings ("squid:S00107")
+  public SearchResult<NewsArticleId> searchNewsArticles(String organizationId, String search, String tag, String slug, 
+      OffsetDateTime publishedBefore, OffsetDateTime publishedAfter, NewsSortBy sortOrder, SortDir sortDir, 
+      Long firstResult, Long maxResults) {
     
-    return searchNewsArticles(query, sortOrder, sortDir, firstResult, maxResults);
-  }
-
-  public SearchResult<NewsArticleId> searchNewsArticlesByFreeText(String organizationId, String search, NewsSortBy sortOrder, SortDir sortDir, Long firstResult, Long maxResults) {
     BoolQueryBuilder query = boolQuery()
-      .must(matchQuery(ORGANIZATION_ID_FIELD, organizationId))
-      .must(queryStringQuery(search));
+      .must(matchQuery(ORGANIZATION_ID_FIELD, organizationId));
+
+    if (tag != null) {
+      query.must(matchQuery(TAGS_FIELD, tag));
+    }
+
+    if (slug != null) {
+      query.must(matchQuery(SLUG_FIELD, slug));
+    }
+    
+    if (search != null) {
+      query.must(queryStringQuery(search));
+    }
+    
+    if (publishedBefore != null || publishedAfter != null) {
+      RangeQueryBuilder rangeQuery = rangeQuery(PUBLISHED_FIELD);
+      
+      if (publishedAfter != null) {
+        rangeQuery.gte(publishedAfter.format(DateTimeFormatter.ISO_OFFSET_DATE_TIME));
+      }
+      
+      if (publishedBefore != null) {
+        rangeQuery.lte(publishedBefore.format(DateTimeFormatter.ISO_OFFSET_DATE_TIME));
+      }    
+      
+      query.must(rangeQuery);
+    }
     
     return searchNewsArticles(query, sortOrder, sortDir, firstResult, maxResults);
   }
@@ -58,6 +86,7 @@ public class NewsArticleSearcher {
       return null;
     }
     
+
     SearchRequestBuilder requestBuilder = indexReader
       .requestBuilder(TYPE)
       .storedFields(MEWS_ARTICLE_ID_FIELD, ORGANIZATION_ID_FIELD)
@@ -70,6 +99,10 @@ public class NewsArticleSearcher {
     switch (sortBy) {
       case SCORE:
         requestBuilder.addSort(SortBuilders.scoreSort().order(order));
+      break;
+      case ORDER_NUMBER_PUBLISHED:
+        requestBuilder.addSort(SortBuilders.fieldSort(ORDER_NUMBER_FIELD).order(order))
+                      .addSort(SortBuilders.fieldSort(PUBLISHED_FIELD).order(order));
       break;
       case NATURAL:
       default:

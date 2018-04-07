@@ -71,6 +71,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   private PtvServiceChannelMocker ptvServiceChannelMocker = new PtvServiceChannelMocker();
   private PtvOrganizationMocker ptvOrganizationMocker = new PtvOrganizationMocker();
   private PtvCodesMocker ptvCodesMocker = new PtvCodesMocker();
+  private ManagementPostMenuOrderMocker managementPostMenuOrderMocker = new ManagementPostMenuOrderMocker();
   
   @After
   public void afterEveryTest() throws IOException {
@@ -99,6 +100,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     ptvServiceChannelMocker.stop();
     ptvOrganizationMocker.stop();
     ptvCodesMocker.endMock();
+    managementPostMenuOrderMocker.endMock();
 
     deleteOrganizationPermissions();
     
@@ -159,6 +161,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     managementTagMocker.startMock();
     managementMenuMocker.startMock();
     ptvCodesMocker.startMock();
+    managementPostMenuOrderMocker.startMock();
     
     insertSystemSetting(KuntaApiConsts.SYSTEM_SETTING_TESTS_RUNNING, "true");
     
@@ -240,6 +243,10 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   
   public PtvCodesMocker getPtvCodesMocker() {
     return ptvCodesMocker;
+  }
+  
+  public ManagementPostMenuOrderMocker getManagementPostMenuOrderMocker() {
+    return managementPostMenuOrderMocker;
   }
 
   /**
@@ -387,6 +394,35 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   
   protected void clearTasks() {
     executeDelete("delete from Task");
+  }
+
+  @SuppressWarnings ({"squid:S1166", "squid:S00108", "squid:S2925", "squid:S106"})
+  protected void waitNewsArticleSlug(String organizationId, int index, String sortBy, String slug) throws InterruptedException {
+    int counter = 0;
+    long timeout = System.currentTimeMillis() + (60 * 1000 * 5);
+    while (true) {
+      counter++;
+      Thread.sleep(1000);
+      try {
+        String currentSlug = getNewsArticleSlug(organizationId, sortBy, index);
+        if (slug.equals(currentSlug)) {
+          return;
+        }
+        
+        
+        
+        if (System.currentTimeMillis() > timeout) {
+          fail(String.format("Timeout waiting for news article %d to have slug %s", index, slug));
+        }
+        
+        if ((counter % 10) == 0) {
+          System.out.println(String.format("... still waiting for news article %d to have slug %s (current slug is %s)", index, slug, currentSlug));
+        }
+        
+      } catch (JsonPathException e) {
+        
+      }
+    }
   }
   
   @SuppressWarnings ({"squid:S1166", "squid:S00108", "squid:S2925", "squid:S106"})
@@ -656,6 +692,15 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
         .body()
         .jsonPath()
         .getString(String.format("id[%d]", index));
+  }
+  
+  protected String getNewsArticleSlug(String organizationId, String sortBy, int index) {
+    return givenReadonly()
+        .contentType(ContentType.JSON)
+        .get(String.format("/organizations/%s/news?sortBy=%s", organizationId, sortBy))
+        .body()
+        .jsonPath()
+        .getString(String.format("slug[%d]", index));
   }
   
   protected String getNewsArticleImageId(String organizationId, String newsArticleId, int index) {

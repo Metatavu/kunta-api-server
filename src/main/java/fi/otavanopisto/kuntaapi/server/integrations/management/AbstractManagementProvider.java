@@ -15,6 +15,7 @@ import fi.otavanopisto.kuntaapi.server.id.AttachmentId;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.AttachmentData;
+import fi.otavanopisto.kuntaapi.server.integrations.management.client.ManagementApi;
 import fi.otavanopisto.kuntaapi.server.integrations.management.resources.ManagementAttachmentDataResourceContainer;
 import fi.otavanopisto.kuntaapi.server.resources.StoredBinaryData;
 

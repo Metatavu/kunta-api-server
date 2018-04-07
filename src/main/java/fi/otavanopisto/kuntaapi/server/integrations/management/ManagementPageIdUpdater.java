@@ -20,6 +20,7 @@ import fi.metatavu.management.client.model.Page;
 import fi.otavanopisto.kuntaapi.server.discover.IdUpdater;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.PageId;
+import fi.otavanopisto.kuntaapi.server.integrations.management.client.ManagementApi;
 import fi.otavanopisto.kuntaapi.server.integrations.management.tasks.OrganizationPagesTaskQueue;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask;

@@ -21,6 +21,7 @@ import fi.otavanopisto.kuntaapi.server.discover.IdUpdater;
 import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.id.TileId;
+import fi.otavanopisto.kuntaapi.server.integrations.management.client.ManagementApi;
 import fi.otavanopisto.kuntaapi.server.integrations.management.tasks.OrganizationTilesTaskQueue;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 import fi.otavanopisto.kuntaapi.server.tasks.IdTask;

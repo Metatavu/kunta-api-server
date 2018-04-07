@@ -1,4 +1,4 @@
-package fi.otavanopisto.kuntaapi.server.integrations.management;
+package fi.otavanopisto.kuntaapi.server.integrations.management.client;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -8,7 +8,7 @@ import java.util.Map.Entry;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.enterprise.context.Dependent;
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 import org.apache.http.client.utils.URIBuilder;
@@ -16,6 +16,7 @@ import org.apache.http.client.utils.URIBuilder;
 import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpCache;
 import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpClient;
 import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpClient.Response;
+import fi.otavanopisto.kuntaapi.server.integrations.management.ManagementConsts;
 import fi.metatavu.management.client.ApiResponse;
 import fi.metatavu.management.client.ResultType;
 
@@ -24,7 +25,7 @@ import fi.metatavu.management.client.ResultType;
  * 
  * @author Antti Leppä
  */
-@Dependent
+@ApplicationScoped
 public class ManagementClient implements fi.metatavu.management.client.ApiClient {
 
   private static final String INVALID_URI_SYNTAX = "Invalid uri syntax";
@@ -37,9 +38,6 @@ public class ManagementClient implements fi.metatavu.management.client.ApiClient
 
   @Inject
   private GenericHttpCache httpCache;
-  
-  private ManagementClient() {
-  }
   
   @Override
   public <T> ApiResponse<T> doGETRequest(String url, ResultType<T> resultType, Map<String, Object> queryParams, Map<String, Object> postParams) {

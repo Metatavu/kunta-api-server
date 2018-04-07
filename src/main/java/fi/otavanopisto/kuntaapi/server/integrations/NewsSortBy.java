@@ -4,6 +4,8 @@ public enum NewsSortBy {
 
   NATURAL,
   
-  SCORE
+  SCORE,
+  
+  ORDER_NUMBER_PUBLISHED
   
 }
