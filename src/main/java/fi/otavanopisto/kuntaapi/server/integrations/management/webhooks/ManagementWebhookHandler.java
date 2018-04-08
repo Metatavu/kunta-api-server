@@ -113,6 +113,10 @@ public class ManagementWebhookHandler implements WebhookHandler {
     switch (payload.getPostStatus()) {
       case "trash":
       case "draft":
+      case "expiration":
+      case "future":
+      case "private":
+      case "pending":
         return handleTrash(kuntaApiOrganizationId, payload);
       case "publish":
         return handlePublish(kuntaApiOrganizationId, payload);
@@ -120,7 +124,7 @@ public class ManagementWebhookHandler implements WebhookHandler {
         logger.log(Level.WARNING, () -> String.format("Don't know how to handle post status %s", payload.getPostStatus()));
       break;
     }
-    
+
     return false;
   }
   
