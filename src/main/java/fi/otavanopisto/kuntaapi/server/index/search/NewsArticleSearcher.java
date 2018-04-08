@@ -43,6 +43,21 @@ public class NewsArticleSearcher {
   @Inject
   private IndexReader indexReader;
   
+  /**
+   * Search news articles. 
+   * 
+   * @param organizationId organixation id. Id source must be Kunta API
+   * @param search free text search. Optional
+   * @param tag filter by tag. Optional
+   * @param slug filter by slug. Optional
+   * @param publishedBefore filter by published before. Optional
+   * @param publishedAfter filter by published after. Optional
+   * @param sortOrder sort order
+   * @param sortDir sort direction
+   * @param firstResult first result index
+   * @param maxResults max results
+   * @return result
+   */
   @SuppressWarnings ("squid:S00107")
   public SearchResult<NewsArticleId> searchNewsArticles(String organizationId, String search, String tag, String slug, 
       OffsetDateTime publishedBefore, OffsetDateTime publishedAfter, NewsSortBy sortOrder, SortDir sortDir, 
@@ -80,6 +95,16 @@ public class NewsArticleSearcher {
     return searchNewsArticles(query, sortOrder, sortDir, firstResult, maxResults);
   }
   
+  /**
+   * Executes query and applies sorts and limits
+   * 
+   * @param queryBuilder query
+   * @param sortBy sort by
+   * @param sortDir sort direction
+   * @param firstResult first result
+   * @param maxResults max results
+   * @return search result
+   */
   private SearchResult<NewsArticleId> searchNewsArticles(QueryBuilder queryBuilder, NewsSortBy sortBy, SortDir sortDir, Long firstResult, Long maxResults) {
     if (!indexReader.isEnabled()) {
       logger.warning("Could not execute search. Search functions are disabled");
@@ -102,7 +127,7 @@ public class NewsArticleSearcher {
       break;
       case ORDER_NUMBER_PUBLISHED:
         requestBuilder.addSort(SortBuilders.fieldSort(ORDER_NUMBER_FIELD).order(order))
-                      .addSort(SortBuilders.fieldSort(PUBLISHED_FIELD).order(order));
+                      .addSort(SortBuilders.fieldSort(PUBLISHED_FIELD).order(revertOrder(order)));
       break;
       case NATURAL:
       default:
@@ -111,6 +136,24 @@ public class NewsArticleSearcher {
     }
     
     return indexReader.search(requestBuilder, NewsArticleId.class, MEWS_ARTICLE_ID_FIELD, ORGANIZATION_ID_FIELD);
+  }
+
+  /**
+   * Reverts sort order
+   * 
+   * @param order original order
+   * @return reverted order
+   */
+  private SortOrder revertOrder(SortOrder order) {
+    if (order == null) {
+      return null;
+    }
+    
+    if (order == SortOrder.ASC) {
+      return SortOrder.DESC;
+    }
+    
+    return SortOrder.ASC;
   }
    
 }
