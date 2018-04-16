@@ -145,11 +145,16 @@ public class LinkedEventsEventProvider extends AbstractAttachmentImageProvider i
     OffsetDateTime eventStart = event.getStart();
     OffsetDateTime eventEnd = event.getEnd();
     
+    if (eventStart == null) {
+      logger.severe(() -> String.format("Event %s does not have start time", event.getId()));
+      return false;
+    }
+    
     if (!isWithinTimeRange(startBefore, startAfter, eventStart)) {
       return false;
     }
     
-    if (!isWithinTimeRange(endBefore, endAfter, eventEnd)) {
+    if (eventEnd != null && !isWithinTimeRange(endBefore, endAfter, eventEnd)) {
       return false;
     }
     
