@@ -31,13 +31,15 @@ import fi.otavanopisto.kuntaapi.test.AbstractTest;
 @RunWith (CdiTestRunner.class)
 public class TptTranslatorTest extends AbstractTest {
   
+  private static final String EXAMPLE_BASE_URL = "https://api.example.com";
+  
   @Inject
   private TptTranslator tptTranslator;
 
   @Test
   public void testNull() {
     assertNotNull(tptTranslator);
-    tptTranslator.translateJob(getJobId(), "https://api.example.com", null);
+    tptTranslator.translateJob(getJobId(), EXAMPLE_BASE_URL, null);
   }
 
   @Test
@@ -49,7 +51,7 @@ public class TptTranslatorTest extends AbstractTest {
     assertNotNull(docsEntry);
     assertNull(docsEntry.getHakuPaattyy());
     
-    Job kuntaApiJob = tptTranslator.translateJob(getJobId(), "https://api.example.com", docsEntry);
+    Job kuntaApiJob = tptTranslator.translateJob(getJobId(), EXAMPLE_BASE_URL, docsEntry);
     assertNotNull(kuntaApiJob);
     assertNull(kuntaApiJob.getPublicationEnd());
   }
@@ -61,9 +63,9 @@ public class TptTranslatorTest extends AbstractTest {
     
     DocsEntry docsEntry = areaSearch.getResponse().getDocs().get(1);
     assertNotNull(docsEntry);
-    assertEquals(docsEntry.getHakuPaattyy(), "14.04.2018");
+    assertEquals("14.04.2018", docsEntry.getHakuPaattyy());
 
-    Job kuntaApiJob = tptTranslator.translateJob(getJobId(), "https://api.example.com", docsEntry);
+    Job kuntaApiJob = tptTranslator.translateJob(getJobId(), EXAMPLE_BASE_URL, docsEntry);
     assertNotNull(kuntaApiJob);
     assertNotNull(kuntaApiJob.getPublicationEnd());
     assertEquals(kuntaApiJob.getPublicationEnd().toInstant(), getInstant(2018, 4, 14, 0, 0, ZoneId.of(TptConsts.TIMEZONE)));    
@@ -76,9 +78,9 @@ public class TptTranslatorTest extends AbstractTest {
     
     DocsEntry docsEntry = areaSearch.getResponse().getDocs().get(2);
     assertNotNull(docsEntry);
-    assertEquals(docsEntry.getHakuPaattyy(), "15.05.2018 klo 14:00");
+    assertEquals("15.05.2018 klo 14:00", docsEntry.getHakuPaattyy());
 
-    Job kuntaApiJob = tptTranslator.translateJob(getJobId(), "https://api.example.com", docsEntry);
+    Job kuntaApiJob = tptTranslator.translateJob(getJobId(), EXAMPLE_BASE_URL, docsEntry);
     assertNotNull(kuntaApiJob);
     assertNotNull(kuntaApiJob.getPublicationEnd());
     assertEquals(kuntaApiJob.getPublicationEnd().toInstant(), getInstant(2018, 5, 15, 14, 0, ZoneId.of(TptConsts.TIMEZONE)));    

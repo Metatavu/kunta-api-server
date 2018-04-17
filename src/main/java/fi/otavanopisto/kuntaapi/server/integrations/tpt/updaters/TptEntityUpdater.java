@@ -104,7 +104,7 @@ public class TptEntityUpdater extends EntityUpdater<TptAbstractJobTask> {
       modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(kuntaApiJob));
       tptJobResourceContainer.put(kuntaApiJobId, kuntaApiJob);
     } else {
-      logger.severe(String.format("Failed to translate tpt job %s", identifier.getKuntaApiId()));
+      logger.severe(() -> String.format("Failed to translate tpt job %s", identifier.getKuntaApiId()));
     }
   }
   

@@ -77,14 +77,14 @@ public class TptIdUpdater extends IdUpdater {
         int status = headerStatus == null ? -1 : headerStatus.intValue();
 
         if (apiResponse.getResponse() == null) {
-          logger.warning(String.format("Listing organization %s tpt jobs list returned null", organizationId.getId()));
+          logger.warning(() -> String.format("Listing organization %s tpt jobs list returned null", organizationId.getId()));
         } else if (status != 0) {
-          logger.warning(String.format("Listing organization %s tpt jobs list returned status %d", organizationId.getId(), status));
+          logger.warning(() -> String.format("Listing organization %s tpt jobs list returned status %d", organizationId.getId(), status));
         } else {
           enqueueTasks(organizationId, apiResponse.getResponse());
         }
       } else {
-        logger.warning(String.format("Listing organization %s tpt jobs failed on [%d] %s", organizationId.getId(), response.getStatus(), response.getMessage()));
+        logger.warning(() -> String.format("Listing organization %s tpt jobs failed on [%d] %s", organizationId.getId(), response.getStatus(), response.getMessage()));
       }
     }
   }

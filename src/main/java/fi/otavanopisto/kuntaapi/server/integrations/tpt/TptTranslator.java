@@ -89,14 +89,14 @@ public class TptTranslator {
     
     TemporalAccessor temporalAccessor = formatter.parse(hakuPaattyy);
     if (temporalAccessor == null) {
-      logger.log(Level.WARNING, String.format("Failed to parse hakuPaattyy %s", hakuPaattyy));
+      logger.log(Level.WARNING, () -> String.format("Failed to parse hakuPaattyy %s", hakuPaattyy));
       return null;
     }
 
     if (temporalAccessor.isSupported(ChronoField.HOUR_OF_DAY)) {
       LocalDateTime localDateTime = LocalDateTime.from(temporalAccessor);
       if (localDateTime == null) {
-        logger.log(Level.WARNING, String.format("Failed to parse hakuPaattyy %s", hakuPaattyy));
+        logger.log(Level.WARNING, () -> String.format("Failed to parse hakuPaattyy %s", hakuPaattyy));
         return null;
       }
       
@@ -108,7 +108,7 @@ public class TptTranslator {
       return localDate.atStartOfDay(ZoneId.of(TptConsts.TIMEZONE)).toOffsetDateTime();
     }
     
-    logger.log(Level.WARNING, String.format("Failed to convert hakuPaattyy %s into OffsetDateTime", hakuPaattyy));
+    logger.log(Level.WARNING, () -> String.format("Failed to convert hakuPaattyy %s into OffsetDateTime", hakuPaattyy));
 
     return null;    
   }

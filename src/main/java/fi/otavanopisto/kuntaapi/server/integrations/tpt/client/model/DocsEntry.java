@@ -1,11 +1,14 @@
 package fi.otavanopisto.kuntaapi.server.integrations.tpt.client.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.io.Serializable;
 import java.time.OffsetDateTime;
 import java.util.*;
 
+@JsonIgnoreProperties (ignoreUnknown = true)
+@SuppressWarnings ({"squid:S00116", "squid:S00100", "squid:S00117"})
 public class DocsEntry implements Serializable {
 
   private static final long serialVersionUID = -4442994963182715417L;

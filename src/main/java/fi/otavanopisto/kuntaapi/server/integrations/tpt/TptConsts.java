@@ -5,6 +5,7 @@ package fi.otavanopisto.kuntaapi.server.integrations.tpt;
  * 
  * @author Antti Leppä
  */
+@SuppressWarnings ("squid:S1075")
 public class TptConsts {
   
   public static final String IDENTIFIER_NAME = "TPT";
