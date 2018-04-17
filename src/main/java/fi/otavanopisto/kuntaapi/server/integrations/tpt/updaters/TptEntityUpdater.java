@@ -20,8 +20,10 @@ import fi.otavanopisto.kuntaapi.server.integrations.tpt.TptTranslator;
 import fi.otavanopisto.kuntaapi.server.integrations.tpt.client.TptApi;
 import fi.otavanopisto.kuntaapi.server.integrations.tpt.client.model.DocsEntry;
 import fi.otavanopisto.kuntaapi.server.integrations.tpt.resources.TptJobResourceContainer;
-import fi.otavanopisto.kuntaapi.server.integrations.tpt.tasks.TptJobEntityTask;
+import fi.otavanopisto.kuntaapi.server.integrations.tpt.tasks.TptAbstractJobTask;
+import fi.otavanopisto.kuntaapi.server.integrations.tpt.tasks.TptJobRemoveTask;
 import fi.otavanopisto.kuntaapi.server.integrations.tpt.tasks.TptJobTaskQueue;
+import fi.otavanopisto.kuntaapi.server.integrations.tpt.tasks.TptJobUpdateTask;
 import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 
 /**
@@ -33,7 +35,7 @@ import fi.otavanopisto.kuntaapi.server.persistence.model.Identifier;
 @Singleton
 @AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
-public class TptEntityUpdater extends EntityUpdater<TptJobEntityTask> {
+public class TptEntityUpdater extends EntityUpdater<TptAbstractJobTask> {
 
   @Inject
   private Logger logger;
@@ -72,14 +74,22 @@ public class TptEntityUpdater extends EntityUpdater<TptJobEntityTask> {
 
   @Override
   public void timeout() {
-    TptJobEntityTask task = tptJobTaskQueue.next();
+    TptAbstractJobTask task = tptJobTaskQueue.next();
     if (task != null) {
       execute(task);
     }
   }
-  
+
   @Override
-  public void execute(TptJobEntityTask task) {
+  public void execute(TptAbstractJobTask task) {
+    if (task instanceof TptJobRemoveTask) {
+      executeRemove((TptJobRemoveTask) task);
+    } else if (task instanceof TptJobUpdateTask) {
+      executeUpdate((TptJobUpdateTask) task);
+    }
+  }
+  
+  private void executeUpdate(TptJobUpdateTask task) {
     DocsEntry tptJob = task.getTptJob();
     OrganizationId kuntaApiOrganizationId = task.getKuntaApiOrganizationId();
     JobId tptJobId = tptIdFactory.createJobId(kuntaApiOrganizationId, tptJob.getId());
@@ -96,6 +106,18 @@ public class TptEntityUpdater extends EntityUpdater<TptJobEntityTask> {
     } else {
       logger.severe(String.format("Failed to translate tpt job %s", identifier.getKuntaApiId()));
     }
+  }
+  
+  private void executeRemove(TptJobRemoveTask task) {
+    JobId removedTptJobId = task.getRemovedTptJobId();
+    
+    Identifier jobIdentifier = identifierController.findIdentifierById(removedTptJobId);
+    if (jobIdentifier != null) {
+      JobId removedKuntaApiJobId = kuntaApiIdFactory.createFromIdentifier(JobId.class, jobIdentifier);
+      modificationHashCache.clear(jobIdentifier.getKuntaApiId());
+      tptJobResourceContainer.clear(removedKuntaApiJobId);
+      identifierController.deleteIdentifier(jobIdentifier);
+    }  
   }
   
 }

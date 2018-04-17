@@ -9,14 +9,18 @@ import javax.ejb.Singleton;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
+import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
 import fi.otavanopisto.kuntaapi.server.discover.IdUpdater;
+import fi.otavanopisto.kuntaapi.server.id.JobId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpClient.Response;
 import fi.otavanopisto.kuntaapi.server.integrations.tpt.TptConsts;
+import fi.otavanopisto.kuntaapi.server.integrations.tpt.TptIdFactory;
 import fi.otavanopisto.kuntaapi.server.integrations.tpt.client.TptApi;
 import fi.otavanopisto.kuntaapi.server.integrations.tpt.client.model.ApiResponse;
 import fi.otavanopisto.kuntaapi.server.integrations.tpt.client.model.DocsEntry;
-import fi.otavanopisto.kuntaapi.server.integrations.tpt.tasks.TptJobEntityTask;
+import fi.otavanopisto.kuntaapi.server.integrations.tpt.tasks.TptJobUpdateTask;
+import fi.otavanopisto.kuntaapi.server.integrations.tpt.tasks.TptJobRemoveTask;
 import fi.otavanopisto.kuntaapi.server.integrations.tpt.tasks.TptJobTaskQueue;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
 
@@ -42,6 +46,12 @@ public class TptIdUpdater extends IdUpdater {
 
   @Inject
   private OrganizationSettingController organizationSettingController;
+
+  @Inject
+  private IdentifierController identifierController;
+  
+  @Inject
+  private TptIdFactory tptIdFactory;
 
   @Override
   public String getName() {
@@ -82,11 +92,18 @@ public class TptIdUpdater extends IdUpdater {
   private void enqueueTasks(OrganizationId organizationId, fi.otavanopisto.kuntaapi.server.integrations.tpt.client.model.Response response) {
     long orderIndex = 0;
     
+    List<JobId> removedJobIds = identifierController.listOrganizationJobIdsBySource(organizationId, TptConsts.IDENTIFIER_NAME);
+    
     for (DocsEntry docsEntry : response.getDocs()) {
-      tptJobTaskQueue.enqueueTask(false, new TptJobEntityTask(organizationId, docsEntry, orderIndex));
+      JobId jobId = tptIdFactory.createJobId(organizationId, docsEntry.getId());
+      removedJobIds.remove(jobId);
+      tptJobTaskQueue.enqueueTask(false, new TptJobUpdateTask(organizationId, docsEntry, orderIndex));
       orderIndex++;
     }
     
+    for (JobId removedJobId : removedJobIds) {
+      tptJobTaskQueue.enqueueTask(true, new TptJobRemoveTask(removedJobId));
+    }
   }
   
 }

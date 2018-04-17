@@ -10,11 +10,11 @@ import fi.otavanopisto.kuntaapi.server.tasks.AbstractTaskQueue;
  * @author Antti Leppä
  */
 @ApplicationScoped
-public class TptJobTaskQueue extends AbstractTaskQueue<TptJobEntityTask> {
+public class TptJobTaskQueue extends AbstractTaskQueue<TptAbstractJobTask> {
 
   @Override
   public String getName() {
-    return "tpt-job-entities";
+    return "tpt-jobs";
   }
   
 }

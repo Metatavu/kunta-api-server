@@ -92,7 +92,6 @@ public class TptTestsIT extends AbstractIntegrationTest {
       .body("publicationStart[1]", sameInstant(getInstant(2018, 2, 2, 0, 0, TIMEZONE_ID)))
       .body("publicationEnd[1]",  sameInstant(getInstant(2018, 4, 14, 0, 0, TIMEZONE_ID)))
       .body("link[1]", is(getLink(2345678)));
-    
   } 
   
   @Test
@@ -155,7 +154,35 @@ public class TptTestsIT extends AbstractIntegrationTest {
     assertNotFound(String.format("/organizations/%s/jobs/%s", incorrectOrganizationId, organizationJobId));
     assertEquals(0, countApiList(String.format("/organizations/%s/jobs", incorrectOrganizationId)));
   }
+  
+  @Test
+  public void testListRemovedJobs() throws InterruptedException {
+    getTptMocker().endMock();
+    getTptMocker().mockAreaSearch("Testil%C3%A4", "tpt/area-search-removed.json");
+    getTptMocker().startMock();
     
+    waitApiListCount(String.format("/organizations/%s/jobs", getOrganizationId(0)), 2); 
+
+    givenReadonly()
+      .contentType(ContentType.JSON)
+      .get("/organizations/{organizationId}/jobs", getOrganizationId(0))
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(2))
+      .body("id[0]", notNullValue())
+      .body("title[0]", is("Lähihoitaja, Testilän sairaalaan"))
+      .body("employmentType[0]", is("yli 12 kuukautta"))
+      .body("description[0]", is("Hoitaja testilän sairaalaan"))
+      .body("location[0]", is("Testilä"))
+      .body("organisationalUnit[0]", is("Testilän sairaala"))
+      .body("duration[0]", is("yli 12 kuukautta, sijaisuuksia"))
+      .body("taskArea[0]", is("Lähihoitaja"))
+      .body("publicationStart[0]", sameInstant(getInstant(2018, 2, 2, 0, 0, TIMEZONE_ID)))
+      .body("publicationEnd[0]",  sameInstant(getInstant(2018, 4, 14, 0, 0, TIMEZONE_ID)))
+      .body("link[0]", is(getLink(2345678)));
+  }
+
   private void createTptSettings(String organizationId) {
     insertOrganizationSetting(organizationId, TptConsts.ORGANIZATION_SETTING_AREA, "Testilä");
     insertSystemSetting(TptConsts.SYSTEM_SETTING_BASE_URL, getWireMockBasePath());

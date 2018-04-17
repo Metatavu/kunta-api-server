@@ -25,6 +25,7 @@ import fi.otavanopisto.kuntaapi.server.id.EventId;
 import fi.otavanopisto.kuntaapi.server.id.FragmentId;
 import fi.otavanopisto.kuntaapi.server.id.IdType;
 import fi.otavanopisto.kuntaapi.server.id.IncidentId;
+import fi.otavanopisto.kuntaapi.server.id.JobId;
 import fi.otavanopisto.kuntaapi.server.id.MenuId;
 import fi.otavanopisto.kuntaapi.server.id.MenuItemId;
 import fi.otavanopisto.kuntaapi.server.id.MissingOrganizationIdException;
@@ -292,6 +293,37 @@ public class IdentifierController {
     }
     
     return result;
+  }
+
+  /**
+   * Lists job ids by organization id. Returned ids are in source format
+   * 
+   * @param organizationId organization id
+   * @param source source
+   * @param firstResult first result
+   * @param maxResults max results
+   * @return list of job ids in source format
+   */
+  public List<JobId> listOrganizationJobIdsBySource(OrganizationId organizationId, String source, Integer firstResult, Integer maxResults) {
+    List<String> jobIds = listSourceIdsByOrganizationIdAndSourceAndType(organizationId, source, IdType.JOB.toString(), firstResult, maxResults);
+    List<JobId> result = new ArrayList<>(jobIds.size());
+    
+    for (String jobId : jobIds) {
+      result.add(new JobId(organizationId, source, jobId));
+    }
+    
+    return result;
+  }
+
+  /**
+   * Lists job ids by organization id. Returned ids are in source format
+   * 
+   * @param organizationId organization id
+   * @param source source
+   * @return list of job ids in source format
+   */
+  public List<JobId> listOrganizationJobIdsBySource(OrganizationId organizationId, String source) {
+    return listOrganizationJobIdsBySource(organizationId, source, null, null);
   }
 
   public List<EmergencyId> listOrganizationEmergencyIdsBySource(OrganizationId organizationId, String source) {

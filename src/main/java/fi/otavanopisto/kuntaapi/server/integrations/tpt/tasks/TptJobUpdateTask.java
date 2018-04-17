@@ -2,26 +2,25 @@ package fi.otavanopisto.kuntaapi.server.integrations.tpt.tasks;
 
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.tpt.client.model.DocsEntry;
-import fi.otavanopisto.kuntaapi.server.tasks.AbstractTask;
 
 /**
  * Job update task for te-palvelut.fi -integration
  * 
  * @author Antti Leppä
  */
-public class TptJobEntityTask extends AbstractTask {
+public class TptJobUpdateTask extends TptAbstractJobTask {
   
-  private static final long serialVersionUID = -8809460557685004243L;
+  private static final long serialVersionUID = -2120946422190891190L;
   
   private Long orderIndex;
   private DocsEntry tptJob;
   private OrganizationId kuntaApiOrganizationId;
   
-  public TptJobEntityTask() {
+  public TptJobUpdateTask() {
     // Zero-argument constructor
   }
   
-  public TptJobEntityTask(OrganizationId kuntaApiOrganizationId, DocsEntry tptJob, Long orderIndex) {
+  public TptJobUpdateTask(OrganizationId kuntaApiOrganizationId, DocsEntry tptJob, Long orderIndex) {
     this.kuntaApiOrganizationId = kuntaApiOrganizationId;
     this.tptJob = tptJob;
     this.orderIndex = orderIndex;
@@ -53,7 +52,7 @@ public class TptJobEntityTask extends AbstractTask {
 
   @Override
   public String getUniqueId() {
-    return String.format("tpt-job-entity-task-%s", tptJob.getId());
+    return String.format("tpt-job-update-task-%s", tptJob.getId());
   }
   
 }
