@@ -2,6 +2,7 @@ package fi.otavanopisto.kuntaapi.server.integrations.tpt.client;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URI;
+import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -38,7 +39,13 @@ public class TptApi {
   private OrganizationSettingController organizationSettingController;
   
   public Response<ApiResponse> searchByArea(OrganizationId organizationId) {
-    String area = getArea(organizationId);
+    String area;
+    try {
+      area = getArea(organizationId);
+    } catch (UnsupportedEncodingException e) {
+      return new Response<>(500, e.getMessage(), null);
+    }
+    
     if (area == null) {
       return null;
     }
@@ -69,9 +76,10 @@ public class TptApi {
    * 
    * @param organizationId management service organization id
    * @return tpt area for for given organization
+   * @throws UnsupportedEncodingException 
    */
-  private String getArea(OrganizationId organizationId) {
-    return organizationSettingController.getSettingValue(organizationId, TptConsts.ORGANIZATION_SETTING_AREA);
+  private String getArea(OrganizationId organizationId) throws UnsupportedEncodingException {
+    return URLDecoder.decode(organizationSettingController.getSettingValue(organizationId, TptConsts.ORGANIZATION_SETTING_AREA), "UTF-8");
   }
   
 }
