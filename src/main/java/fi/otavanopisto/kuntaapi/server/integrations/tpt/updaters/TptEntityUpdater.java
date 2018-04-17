@@ -17,6 +17,7 @@ import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
 import fi.otavanopisto.kuntaapi.server.integrations.tpt.TptIdFactory;
 import fi.otavanopisto.kuntaapi.server.integrations.tpt.TptTranslator;
+import fi.otavanopisto.kuntaapi.server.integrations.tpt.client.TptApi;
 import fi.otavanopisto.kuntaapi.server.integrations.tpt.client.model.DocsEntry;
 import fi.otavanopisto.kuntaapi.server.integrations.tpt.resources.TptJobResourceContainer;
 import fi.otavanopisto.kuntaapi.server.integrations.tpt.tasks.TptJobEntityTask;
@@ -57,6 +58,9 @@ public class TptEntityUpdater extends EntityUpdater<TptJobEntityTask> {
 
   @Inject
   private TptIdFactory tptIdFactory;
+
+  @Inject
+  private TptApi tptApi;
   
   @Inject
   private TptJobTaskQueue tptJobTaskQueue;
@@ -83,7 +87,8 @@ public class TptEntityUpdater extends EntityUpdater<TptJobEntityTask> {
     Identifier identifier = identifierController.acquireIdentifier(orderIndex, tptJobId);
     JobId kuntaApiJobId = kuntaApiIdFactory.createFromIdentifier(JobId.class, identifier);
     identifierRelationController.setParentId(identifier, kuntaApiOrganizationId);
-    fi.metatavu.kuntaapi.server.rest.model.Job kuntaApiJob = tptTranslator.translateJob(kuntaApiJobId, tptJob);
+    String baseUrl = tptApi.getBaseUrl();
+    fi.metatavu.kuntaapi.server.rest.model.Job kuntaApiJob = tptTranslator.translateJob(kuntaApiJobId, baseUrl, tptJob);
 
     if (kuntaApiJob != null) {
       modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(kuntaApiJob));

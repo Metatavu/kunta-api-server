@@ -58,15 +58,15 @@ public class TptIdUpdater extends IdUpdater {
    * enqueues tasks for all found and removed jobs
    */
   private void updateTptEntities() {
-    List<OrganizationId> organizationIds = organizationSettingController.listOrganizationIdsWithSetting(TptConsts.ORGANIZATION_AREA);
+    List<OrganizationId> organizationIds = organizationSettingController.listOrganizationIdsWithSetting(TptConsts.ORGANIZATION_SETTING_AREA);
     for (OrganizationId organizationId : organizationIds) {
       Response<ApiResponse> response = tptApi.searchByArea(organizationId);
       if (response.isOk()) {
         ApiResponse apiResponse = response.getResponseEntity();
         Integer headerStatus = apiResponse.getResponseHeader().getStatus();
         int status = headerStatus == null ? -1 : headerStatus.intValue();
-        
-        if ( apiResponse.getResponse() == null) {
+
+        if (apiResponse.getResponse() == null) {
           logger.warning(String.format("Listing organization %s tpt jobs list returned null", organizationId.getId()));
         } else if (status != 0) {
           logger.warning(String.format("Listing organization %s tpt jobs list returned status %d", organizationId.getId(), status));

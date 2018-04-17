@@ -15,6 +15,7 @@ import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpClient.Response;
 import fi.otavanopisto.kuntaapi.server.integrations.tpt.TptConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.tpt.client.model.ApiResponse;
 import fi.otavanopisto.kuntaapi.server.settings.OrganizationSettingController;
+import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 
 /**
  * API client for te-palvelut.fi -service
@@ -29,6 +30,9 @@ public class TptApi {
 
   @Inject
   private GenericHttpClient httpClient;
+
+  @Inject
+  private SystemSettingController systemSettingController;
   
   @Inject
   private OrganizationSettingController organizationSettingController;
@@ -41,7 +45,8 @@ public class TptApi {
     
     String uri;
     try {
-      uri = String.format(TptConsts.AREA_SEARCH_URL, URLEncoder.encode(area, "UTF-8"));
+      String path = String.format(TptConsts.AREA_SEARCH_PATH, URLEncoder.encode(area, "UTF-8"));
+      uri = String.format("%s%s", getBaseUrl(), path);
     } catch (UnsupportedEncodingException e) {
       logger.log(Level.SEVERE, "Could not encode area parameter", e);
       return null;
@@ -51,13 +56,22 @@ public class TptApi {
   }
   
   /**
+   * Returns base URL for the te-palvelut.fi -service API
+   * 
+   * @return base URL for the te-palvelut.fi -service API
+   */
+  public String getBaseUrl() {
+    return systemSettingController.getSettingValue(TptConsts.SYSTEM_SETTING_BASE_URL, TptConsts.DEFAULT_BASE_URL);
+  }
+  
+  /**
    * Returns tpt area for for given organization
    * 
    * @param organizationId management service organization id
    * @return tpt area for for given organization
    */
-  public String getArea(OrganizationId organizationId) {
-    return organizationSettingController.getSettingValue(organizationId, TptConsts.ORGANIZATION_AREA);
+  private String getArea(OrganizationId organizationId) {
+    return organizationSettingController.getSettingValue(organizationId, TptConsts.ORGANIZATION_SETTING_AREA);
   }
   
 }

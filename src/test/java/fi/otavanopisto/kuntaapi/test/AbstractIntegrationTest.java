@@ -52,7 +52,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   public static final String BASE_URL = "/v1";
   
   private KuntarekryMocker kuntarekryMocker = new KuntarekryMocker();
-  
+  private TptMocker tptMocker = new TptMocker(); 
   private ManagementPageMappingMocker managementPageMappingMocker = new ManagementPageMappingMocker();
   private ManagementTagMocker managementTagMocker = new ManagementTagMocker();
   private ManagementCategoryMocker managementCategoryMocker = new ManagementCategoryMocker();
@@ -101,6 +101,8 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     ptvOrganizationMocker.stop();
     ptvCodesMocker.endMock();
     managementPostMenuOrderMocker.endMock();
+    kuntarekryMocker.endMock();
+    tptMocker.endMock();
 
     deleteOrganizationPermissions();
     
@@ -147,6 +149,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     ptvServiceMocker.start();
     linkedEventsEventMocker.startMock();
     kuntarekryMocker.startMock();
+    tptMocker.startMock();
     managementPageMocker.startMock();
     managementPostMocker.startMock();
     managementShortlinkMocker.startMock();
@@ -175,6 +178,10 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
 
   public KuntarekryMocker getKuntarekryMocker() {
     return kuntarekryMocker;
+  }
+  
+  public TptMocker getTptMocker() {
+    return tptMocker;
   }
   
   public ManagementMenuMocker getManagementMenuMocker() {

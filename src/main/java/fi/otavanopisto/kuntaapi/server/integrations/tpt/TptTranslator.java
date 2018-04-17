@@ -40,14 +40,18 @@ public class TptTranslator {
    * Translates a te-palvelut job into Kunta API Job
    * 
    * @param kuntaApiJobId job id
+   * @param baseUrl tpt API base url
    * @param tptJob te-palvelut job
    * @return Kunta API Job
    */
-  public Job translateJob(JobId kuntaApiJobId, DocsEntry tptJob) {
+  public Job translateJob(JobId kuntaApiJobId, String baseUrl, DocsEntry tptJob) {
     if (tptJob == null) {
       return null;
     }
     
+    String path = String.format(TptConsts.JOB_LINK_PATH, tptJob.getIlmoitusnumero());
+    String link = String.format("%s%s", baseUrl, path);
+
     Job result = new Job();
     
     result.setId(kuntaApiJobId.getId());
@@ -60,7 +64,7 @@ public class TptTranslator {
     result.setTaskArea(tptJob.getTehtavanimi());
     result.setPublicationEnd(translateHakuPaattyy(tptJob.getHakuPaattyy()));
     result.setPublicationStart(tptJob.getIlmoituspaivamaara());
-    result.setLink(String.format(TptConsts.JOB_LINK_URL, tptJob.getIlmoitusnumero()));
+    result.setLink(link);
     
     return result;
   }

@@ -37,7 +37,7 @@ public class TptTranslatorTest extends AbstractTest {
   @Test
   public void testNull() {
     assertNotNull(tptTranslator);
-    tptTranslator.translateJob(getJobId(), null);
+    tptTranslator.translateJob(getJobId(), "https://api.example.com", null);
   }
 
   @Test
@@ -49,7 +49,7 @@ public class TptTranslatorTest extends AbstractTest {
     assertNotNull(docsEntry);
     assertNull(docsEntry.getHakuPaattyy());
     
-    Job kuntaApiJob = tptTranslator.translateJob(getJobId(), docsEntry);
+    Job kuntaApiJob = tptTranslator.translateJob(getJobId(), "https://api.example.com", docsEntry);
     assertNotNull(kuntaApiJob);
     assertNull(kuntaApiJob.getPublicationEnd());
   }
@@ -63,7 +63,7 @@ public class TptTranslatorTest extends AbstractTest {
     assertNotNull(docsEntry);
     assertEquals(docsEntry.getHakuPaattyy(), "14.04.2018");
 
-    Job kuntaApiJob = tptTranslator.translateJob(getJobId(), docsEntry);
+    Job kuntaApiJob = tptTranslator.translateJob(getJobId(), "https://api.example.com", docsEntry);
     assertNotNull(kuntaApiJob);
     assertNotNull(kuntaApiJob.getPublicationEnd());
     assertEquals(kuntaApiJob.getPublicationEnd().toInstant(), getInstant(2018, 4, 14, 0, 0, ZoneId.of(TptConsts.TIMEZONE)));    
@@ -78,7 +78,7 @@ public class TptTranslatorTest extends AbstractTest {
     assertNotNull(docsEntry);
     assertEquals(docsEntry.getHakuPaattyy(), "15.05.2018 klo 14:00");
 
-    Job kuntaApiJob = tptTranslator.translateJob(getJobId(), docsEntry);
+    Job kuntaApiJob = tptTranslator.translateJob(getJobId(), "https://api.example.com", docsEntry);
     assertNotNull(kuntaApiJob);
     assertNotNull(kuntaApiJob.getPublicationEnd());
     assertEquals(kuntaApiJob.getPublicationEnd().toInstant(), getInstant(2018, 5, 15, 14, 0, ZoneId.of(TptConsts.TIMEZONE)));    
