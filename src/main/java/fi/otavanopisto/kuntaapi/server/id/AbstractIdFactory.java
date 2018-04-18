@@ -99,6 +99,14 @@ public abstract class AbstractIdFactory {
     return createId(EmergencyId.class, kuntaApiOrganizationId, id);
   }
   
+  public JobId createJobId(OrganizationId kuntaApiOrganizationId, UUID id) {
+    return createId(JobId.class, kuntaApiOrganizationId, id);
+  }
+  
+  public JobId createJobId(OrganizationId kuntaApiOrganizationId, String id) {
+    return createId(JobId.class, kuntaApiOrganizationId, id);
+  }
+  
   public FragmentId createFragmentId(OrganizationId kuntaApiOrganizationId, UUID id) {
     return createId(FragmentId.class, kuntaApiOrganizationId, id);
   }

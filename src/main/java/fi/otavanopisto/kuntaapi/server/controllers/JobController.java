@@ -1,5 +1,6 @@
 package fi.otavanopisto.kuntaapi.server.controllers;
 
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -56,21 +57,31 @@ public class JobController {
     
     switch (order) {
       case PUBLICATION_END:
-        Collections.sort(sorted, (Job o1, Job o2)
-          -> orderDirection != JobOrderDirection.ASCENDING 
-            ? o2.getPublicationEnd().compareTo(o1.getPublicationEnd())
-            : o1.getPublicationEnd().compareTo(o2.getPublicationEnd()));
+        Collections.sort(sorted, (Job o1, Job o2) -> compareOffsetDateTimes(o1.getPublicationEnd(), o2.getPublicationEnd(), orderDirection));
       break;
       case PUBLICATION_START:
-        Collections.sort(sorted, (Job o1, Job o2)
-          -> orderDirection != JobOrderDirection.ASCENDING 
-            ? o2.getPublicationStart().compareTo(o1.getPublicationStart())
-            : o1.getPublicationStart().compareTo(o2.getPublicationStart()));
+        Collections.sort(sorted, (Job o1, Job o2) -> compareOffsetDateTimes(o1.getPublicationStart(), o2.getPublicationStart(), orderDirection));
       break;
       default:
     }
 
     return sorted;
+  }
+  
+  private int compareOffsetDateTimes(OffsetDateTime o1, OffsetDateTime o2, JobOrderDirection orderDirection) {
+    if (o2 == o1) {
+      return 0;
+    }
+    
+    if (o2 == null) {
+      return orderDirection != JobOrderDirection.ASCENDING ? -1 : 1;
+    }
+    
+    if (o1 == null) {
+      return orderDirection != JobOrderDirection.ASCENDING ? 1 : -1;
+    }
+    
+    return orderDirection != JobOrderDirection.ASCENDING ? o2.compareTo(o1) : o1.compareTo(o2);
   }
 
   private List<JobProvider> getJobProviders() {
