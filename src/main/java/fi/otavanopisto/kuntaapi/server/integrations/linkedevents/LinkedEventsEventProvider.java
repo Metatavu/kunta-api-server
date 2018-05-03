@@ -154,7 +154,7 @@ public class LinkedEventsEventProvider extends AbstractAttachmentImageProvider i
       return false;
     }
     
-    if (eventEnd != null && !isWithinTimeRange(endBefore, endAfter, eventEnd)) {
+    if (!isWithinTimeRange(endBefore, endAfter, eventEnd != null ? eventEnd : eventStart)) {
       return false;
     }
     
