@@ -56,7 +56,7 @@ public class EmergencySearcher {
    * @return result
    */
   @SuppressWarnings ("squid:S00107")
-  public SearchResult<EmergencyId> searchEmergencys(String organizationId, String search, String location, 
+  public SearchResult<EmergencyId> searchEmergencies(String organizationId, String search, String location, 
       OffsetDateTime before, OffsetDateTime after, EmergencySortBy sortBy, SortDir sortDir, 
       Integer firstResult, Integer maxResults) {
     
@@ -85,7 +85,7 @@ public class EmergencySearcher {
       query.must(rangeQuery);
     }
     
-    return searchEmergencys(query, sortBy, sortDir, firstResult, maxResults);
+    return searchEmergencies(query, sortBy, sortDir, firstResult, maxResults);
   }
   
   /**
@@ -98,7 +98,7 @@ public class EmergencySearcher {
    * @param maxResults max results
    * @return search result
    */
-  private SearchResult<EmergencyId> searchEmergencys(QueryBuilder queryBuilder, EmergencySortBy sortBy, SortDir sortDir, Integer firstResult, Integer maxResults) {
+  private SearchResult<EmergencyId> searchEmergencies(QueryBuilder queryBuilder, EmergencySortBy sortBy, SortDir sortDir, Integer firstResult, Integer maxResults) {
     if (!indexReader.isEnabled()) {
       logger.warning("Could not execute search. Search functions are disabled");
       return null;

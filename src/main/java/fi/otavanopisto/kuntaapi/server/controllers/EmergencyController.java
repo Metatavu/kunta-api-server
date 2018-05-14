@@ -59,7 +59,7 @@ public class EmergencyController {
       return SearchResult.emptyResult();
     }
     
-    SearchResult<EmergencyId> searchResult = emergencySearcher.searchEmergencys(kuntaApiOrganizationId.getId(), null, location, before, after, sortBy, sortDir, firstResult, maxResults);
+    SearchResult<EmergencyId> searchResult = emergencySearcher.searchEmergencies(kuntaApiOrganizationId.getId(), null, location, before, after, sortBy, sortDir, firstResult, maxResults);
     if (searchResult != null) {
       List<Emergency> result = searchResult.getResult().stream().map((emergencyId) -> {
         return findEmergency(kuntaApiOrganizationId, emergencyId);
@@ -68,7 +68,7 @@ public class EmergencyController {
       return new SearchResult<>(result, searchResult.getTotalHits());
     }
     
-    return null;
+    return SearchResult.emptyResult();
   }
 
   /**
