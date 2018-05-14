@@ -1806,17 +1806,10 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     if (sortDir == null) {
       return createBadRequest(INVALID_VALUE_FOR_SORT_DIR);
     }
-    
-    List<Emergency> result = emergencyController.listEmergencies(organizationId, location, getDateTime(before), getDateTime(after), 
-        sortBy, sortDir, firstResult, maxResults);
-    
-    List<String> ids = httpCacheController.getEntityIds(result);
-    Response notModified = httpCacheController.getNotModified(request, ids);
-    if (notModified != null) {
-      return notModified;
-    }
 
-    return httpCacheController.sendModified(result, ids);
+    
+    return restResponseBuilder.buildResponse(emergencyController.searchEmergencies(organizationId, location, getDateTime(before), getDateTime(after), 
+      sortBy, sortDir, firstResult, maxResults), request);
   }
 
   private SortDir resolveSortDir(String sortDirParam) {

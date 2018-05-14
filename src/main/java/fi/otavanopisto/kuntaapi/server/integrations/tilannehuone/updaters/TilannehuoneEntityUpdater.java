@@ -1,11 +1,13 @@
 package fi.otavanopisto.kuntaapi.server.integrations.tilannehuone.updaters;
 
+import java.time.OffsetDateTime;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
 import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
 import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.event.Event;
 import javax.inject.Inject;
 
 import org.apache.commons.lang3.StringUtils;
@@ -16,6 +18,8 @@ import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
 import fi.otavanopisto.kuntaapi.server.id.EmergencyId;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.index.IndexRequest;
+import fi.otavanopisto.kuntaapi.server.index.IndexableEmergency;
 import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiIdFactory;
 import fi.otavanopisto.kuntaapi.server.integrations.tilannehuone.TilannehuoneConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.tilannehuone.TilannehuoneIdFactory;
@@ -62,6 +66,9 @@ public class TilannehuoneEntityUpdater extends EntityUpdater<TilannehuoneEmergen
   
   @Inject
   private TilannehuoneEmergencyTaskQueue tilannehuoneEmergencyTaskQueue;
+  
+  @Inject
+  private Event<IndexRequest> indexRequest;
 
   @Override
   public String getName() {
@@ -94,10 +101,35 @@ public class TilannehuoneEntityUpdater extends EntityUpdater<TilannehuoneEmergen
         if (kuntaApiEmergency != null) {
           modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(kuntaApiEmergency));
           tilannehuoneEmergencyResourceContainer.put(kuntaApiEmergencyId, kuntaApiEmergency);
+          IndexableEmergency indexableEmergency = createIndexableEmergency(kuntaApiOrganizationId, kuntaApiEmergencyId, kuntaApiEmergency.getLocation(), kuntaApiEmergency.getDescription(), kuntaApiEmergency.getTime(), orderIndex);
+          indexRequest.fire(new IndexRequest(indexableEmergency));
         } else {
-          logger.severe(String.format("Failed to translate tilannehuone emergency %s", identifier.getKuntaApiId()));
+          logger.severe(() -> String.format("Failed to translate tilannehuone emergency %s", identifier.getKuntaApiId()));
         }
       }
     }
   }
+  
+  /**
+   * Creates an indeable emergecy
+   * 
+   * @param kuntaApiOrganizationId kunta api organization id
+   * @param kuntaApiEmergencyId kunta api emergency id
+   * @param location location
+   * @param description description
+   * @param time emergency time
+   * @param orderIndex order index
+   * @return indeable emergency
+   */
+  private IndexableEmergency createIndexableEmergency(OrganizationId kuntaApiOrganizationId, EmergencyId kuntaApiEmergencyId, String location, String description, OffsetDateTime time, Long orderIndex) {
+    IndexableEmergency result = new IndexableEmergency();
+    result.setDescription(description);
+    result.setEmergencyId(kuntaApiEmergencyId.getId());
+    result.setLocation(location);
+    result.setOrderIndex(orderIndex);
+    result.setOrganizationId(kuntaApiOrganizationId.getId());
+    result.setTime(time);
+    return result;
+  }
+  
 }
