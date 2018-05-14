@@ -115,7 +115,7 @@ public class EmergencySearcher {
     SortOrder order = sortDir != null ? sortDir.toElasticSortOrder() : SortOrder.ASC;
     switch (sortBy) {
       case START:
-        requestBuilder.addSort(SortBuilders.fieldSort(TIME_FIELD).order(revertOrder(order)));
+        requestBuilder.addSort(SortBuilders.fieldSort(TIME_FIELD).order(order));
       break;
       case NATURAL:
       default:
@@ -126,22 +126,4 @@ public class EmergencySearcher {
     return indexReader.search(requestBuilder, EmergencyId.class, EMERGENCY_ID_FIELD, ORGANIZATION_ID_FIELD);
   }
 
-  /**
-   * Reverts sort order
-   * 
-   * @param order original order
-   * @return reverted order
-   */
-  private SortOrder revertOrder(SortOrder order) {
-    if (order == null) {
-      return null;
-    }
-    
-    if (order == SortOrder.ASC) {
-      return SortOrder.DESC;
-    }
-    
-    return SortOrder.ASC;
-  }
-   
 }
