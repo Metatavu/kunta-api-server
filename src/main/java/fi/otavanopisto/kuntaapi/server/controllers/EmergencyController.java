@@ -61,9 +61,7 @@ public class EmergencyController {
     
     SearchResult<EmergencyId> searchResult = emergencySearcher.searchEmergencies(kuntaApiOrganizationId.getId(), null, location, before, after, sortBy, sortDir, firstResult, maxResults);
     if (searchResult != null) {
-      List<Emergency> result = searchResult.getResult().stream().map((emergencyId) -> {
-        return findEmergency(kuntaApiOrganizationId, emergencyId);
-      }).collect(Collectors.toList());
+      List<Emergency> result = searchResult.getResult().stream().map(emergencyId -> findEmergency(kuntaApiOrganizationId, emergencyId) ).collect(Collectors.toList());
 
       return new SearchResult<>(result, searchResult.getTotalHits());
     }

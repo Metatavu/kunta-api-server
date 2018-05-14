@@ -24,7 +24,7 @@ public class IndexableEmergency implements Indexable {
 
   @Override
   public String getId() {
-    return emergencyId;
+    return getEmergencyId();
   }
 
   @Override
