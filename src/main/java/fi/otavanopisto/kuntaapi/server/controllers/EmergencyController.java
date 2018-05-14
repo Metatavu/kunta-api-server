@@ -3,48 +3,79 @@ package fi.otavanopisto.kuntaapi.server.controllers;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
+import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
 
+import fi.metatavu.kuntaapi.server.rest.model.Emergency;
 import fi.otavanopisto.kuntaapi.server.id.EmergencyId;
+import fi.otavanopisto.kuntaapi.server.id.IdController;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
+import fi.otavanopisto.kuntaapi.server.index.SearchResult;
+import fi.otavanopisto.kuntaapi.server.index.search.EmergencySearcher;
 import fi.otavanopisto.kuntaapi.server.integrations.EmergencyProvider;
 import fi.otavanopisto.kuntaapi.server.integrations.EmergencySortBy;
+import fi.otavanopisto.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.SortDir;
-import fi.otavanopisto.kuntaapi.server.utils.ListUtils;
-import fi.metatavu.kuntaapi.server.rest.model.Emergency;
 
 @ApplicationScoped
 @SuppressWarnings ({"squid:S3306","squid:S00107"})
 public class EmergencyController {
   
   @Inject
-  private EntityController entityController;
+  private Logger logger;
+
+  @Inject
+  private EmergencySearcher emergencySearcher;
+  
+  @Inject
+  private IdController idController;
   
   @Inject
   private Instance<EmergencyProvider> emergencyProviders;
   
-  public List<Emergency> listEmergencies(OrganizationId organizationId, String location, OffsetDateTime before, OffsetDateTime after, EmergencySortBy sortBy, SortDir sortDir, Integer firstResult, Integer maxResults) {
-    List<Emergency> result = new ArrayList<>();
-   
-    for (EmergencyProvider emergencyProvider : getEmergencyProviders()) {
-      result.addAll(emergencyProvider.listOrganizationEmergencies(organizationId, location, before, after));
+  /**
+   * Search emergencies. 
+   * 
+   * @param organizationId organization id
+   * @param location emergency location
+   * @param before filter by time before. Optional
+   * @param after filter by time after. Optional
+   * @param sortBy sort by
+   * @param sortDir sort direction
+   * @param firstResult first result index
+   * @param maxResults max results
+   * @return result
+   */
+  public SearchResult<Emergency> searchEmergencies(OrganizationId organizationId, String location, OffsetDateTime before, OffsetDateTime after, EmergencySortBy sortBy, SortDir sortDir, Integer firstResult, Integer maxResults) {
+    OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(organizationId, KuntaApiConsts.IDENTIFIER_NAME);
+    if (kuntaApiOrganizationId == null) {
+      logger.severe(() -> String.format("Failed to translate organization %s into Kunta API id", organizationId.toString()));
+      return SearchResult.emptyResult();
     }
     
-    if (sortBy == EmergencySortBy.NATURAL) {
-      result = entityController.sortEntitiesInNaturalOrder(result, sortDir);
-    } else {
-      Collections.sort(result, new EmergencyTimeComparator(sortDir));
+    SearchResult<EmergencyId> searchResult = emergencySearcher.searchEmergencies(kuntaApiOrganizationId.getId(), null, location, before, after, sortBy, sortDir, firstResult, maxResults);
+    if (searchResult != null) {
+      List<Emergency> result = searchResult.getResult().stream().map(emergencyId -> findEmergency(kuntaApiOrganizationId, emergencyId) ).collect(Collectors.toList());
+
+      return new SearchResult<>(result, searchResult.getTotalHits());
     }
     
-    return ListUtils.limit(result, firstResult, maxResults);
+    return SearchResult.emptyResult();
   }
 
+  /**
+   * Finds an emergency
+   * 
+   * @param organizationId organization id
+   * @param emergencyId emergency id
+   * @return found emergency or null if not found
+   */
   public Emergency findEmergency(OrganizationId organizationId, EmergencyId emergencyId) {
     for (EmergencyProvider emergencyProvider : getEmergencyProviders()) {
       Emergency emergency = emergencyProvider.findOrganizationEmergency(organizationId, emergencyId);
@@ -66,44 +97,5 @@ public class EmergencyController {
     
     return Collections.unmodifiableList(result);
   }
-  
-  private class EmergencyTimeComparator implements Comparator<Emergency> {
-    
-    private SortDir sortDir;
-    
-    public EmergencyTimeComparator(SortDir sortDir) {
-      this.sortDir = sortDir;
-    }
-    
-    @Override
-    public int compare(Emergency emergency1, Emergency emergency2) {
-      int result = compareTimes(emergency1, emergency2);
 
-      if (sortDir == SortDir.DESC) {
-        return -result;
-      } 
-      
-      return result;
-    }
-
-    private int compareTimes(Emergency emergency1, Emergency emergency2) {
-      return compareDates(emergency1.getTime(), emergency2.getTime());
-    }
-
-    private int compareDates(OffsetDateTime dateTime1, OffsetDateTime dateTime2) {
-      if (dateTime1 == null && dateTime2 == null) {
-        return 0;
-      }
-      
-      if (dateTime1 == null) {
-        return 1;
-      } else if (dateTime2 == null) {
-        return -1;
-      }
-              
-      return dateTime1.compareTo(dateTime2);
-    }
-    
-  }
-  
 }
