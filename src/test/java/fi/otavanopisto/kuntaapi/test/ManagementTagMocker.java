@@ -17,7 +17,6 @@ public class ManagementTagMocker extends AbstractBaseMocker {
 
   private static final String PATH_TEMPLATE = "%s/%s";
   private static final String PAGES_PATH = "/wp-json/wp/v2/tags";
-  
   private ManagementResourceMocker<Integer, Tag> tagMocker = new ManagementResourceMocker<>();
 
   public ManagementTagMocker() {
@@ -34,6 +33,29 @@ public class ManagementTagMocker extends AbstractBaseMocker {
   public void endMock() {
     tagMocker.stop();
     super.endMock();
+  }
+  
+  /**
+   * Clear status lists
+   * 
+   * @return mocker
+   */
+  public ManagementTagMocker clearStatusLists() {
+    tagMocker.clearStatusLists();
+    return this;
+  }
+  
+  /**
+   * Adds status list for specific post
+   * 
+   * @param postId post id
+   * @return mocker
+   */
+  public ManagementTagMocker addStatusListWithPost(String postId) {
+    Map<String, StringValuePattern> queryParams = new HashMap<>();
+    queryParams.put("post", containing(postId));
+    tagMocker.addStatusList(MockedResourceStatus.OK, urlPathEqualTo(PAGES_PATH), queryParams);
+    return this;
   }
   
   /**

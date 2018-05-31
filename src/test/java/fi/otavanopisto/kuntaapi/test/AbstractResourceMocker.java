@@ -198,6 +198,13 @@ public abstract class AbstractResourceMocker<I, R> {
     }
   }
   
+  /**
+   * Clears status lists from the mocker
+   */
+  public void clearStatusLists() {
+    statusLists.clear();
+  }
+  
   public void addStatusList(MockedResourceStatus status, UrlPattern urlPattern) {
     addStatusList(status, urlPattern, null);
   }  

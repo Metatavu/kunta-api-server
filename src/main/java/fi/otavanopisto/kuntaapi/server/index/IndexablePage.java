@@ -1,5 +1,7 @@
 package fi.otavanopisto.kuntaapi.server.index;
 
+import java.util.List;
+
 public class IndexablePage implements Indexable, IndexRemove {
 
   @Field (index = "not_analyzed", store = true, type = "long")
@@ -41,6 +43,9 @@ public class IndexablePage implements Indexable, IndexRemove {
   @Field(analyzer = "english")
   private String contentEn;
 
+  @Field (index = "not_analyzed")
+  private List<String> tags;
+  
   @Override
   public String getId() {
     return String.format("%s", pageId);
@@ -155,4 +160,13 @@ public class IndexablePage implements Indexable, IndexRemove {
   public void setContentEn(String contentEn) {
     this.contentEn = contentEn;
   }
+  
+  public List<String> getTags() {
+    return tags;
+  }
+  
+  public void setTags(List<String> tags) {
+    this.tags = tags;
+  }
+  
 }
