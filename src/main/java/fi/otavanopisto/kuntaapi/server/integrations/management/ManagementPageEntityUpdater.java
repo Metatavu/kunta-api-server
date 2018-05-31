@@ -2,12 +2,14 @@ package fi.otavanopisto.kuntaapi.server.integrations.management;
 
 import java.net.URI;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
@@ -28,6 +30,7 @@ import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
 import fi.metatavu.management.client.ApiResponse;
 import fi.metatavu.management.client.DefaultApi;
 import fi.metatavu.management.client.model.Page;
+import fi.metatavu.management.client.model.Tag;
 import fi.otavanopisto.kuntaapi.server.cache.ModificationHashCache;
 import fi.otavanopisto.kuntaapi.server.controllers.IdMapController;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierController;
@@ -41,7 +44,6 @@ import fi.otavanopisto.kuntaapi.server.id.PageId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceId;
 import fi.otavanopisto.kuntaapi.server.id.ServiceLocationServiceChannelId;
 import fi.otavanopisto.kuntaapi.server.images.ScaledImageStore;
-import fi.otavanopisto.kuntaapi.server.index.IndexRemoveDeprecatedPage;
 import fi.otavanopisto.kuntaapi.server.index.IndexRemoveRequest;
 import fi.otavanopisto.kuntaapi.server.index.IndexRequest;
 import fi.otavanopisto.kuntaapi.server.index.IndexablePage;
@@ -172,6 +174,7 @@ public class ManagementPageEntityUpdater extends EntityUpdater<IdTask<PageId>> {
       return;
     }
     
+    List<String> tags = getPageTags(api, managementPage.getId());
     PageId managementPageId = new PageId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementPage.getId()));
     
     BaseId mappedParentId = idMapController.findMappedPageParentId(organizationId, managementPageId);
@@ -207,13 +210,29 @@ public class ManagementPageEntityUpdater extends EntityUpdater<IdTask<PageId>> {
     String processedHtml = processPage(api, kuntaApiOrganizationId, identifier, managementPage);
     
     List<LocalizedValue> pageContents = managementTranslator.translateLocalized(processedHtml);
-
-    removeDeprecatedPage(kuntaApiPageId);
     
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(managementPage));
     managementPageResourceContainer.put(kuntaApiPageId, page);
     managementPageContentResourceContainer.put(kuntaApiPageId, pageContents);
-    indexRequest.fire(new IndexRequest(createIndexablePage(organizationId, kuntaApiPageId, processedHtml, title, orderIndex, managementPage.getMenuOrder(), pageParentId)));
+    indexRequest.fire(new IndexRequest(createIndexablePage(organizationId, kuntaApiPageId, processedHtml, title, orderIndex, managementPage.getMenuOrder(), pageParentId, tags)));
+  }
+  
+  /**
+   * Lists tags for a page
+   * 
+   * @param api Wordpress API instance
+   * @param pageId page id
+   * @return list of tags
+   */
+  private List<String> getPageTags(DefaultApi api, Integer pageId) {
+    ApiResponse<List<Tag>> tagsResponse = api.wpV2TagsGet(null, null, null, null, null, null, null, null, null, false, pageId, null);
+    if (tagsResponse.isOk()) {
+      return tagsResponse.getResponse().stream().map(Tag::getName).collect(Collectors.toList());
+    } else {
+      logger.warning(() -> String.format("List page %d tags failed on [%d] %s", pageId, tagsResponse.getStatus(), tagsResponse.getMessage()));
+    }
+    
+    return Collections.emptyList();
   }
 
   private String processPage(DefaultApi api, OrganizationId kuntaApiOrganizationId, Identifier pageIdentifier, Page managementPage) {
@@ -419,8 +438,6 @@ public class ManagementPageEntityUpdater extends EntityUpdater<IdTask<PageId>> {
       IndexablePage indexRemove = new IndexablePage();
       indexRemove.setPageId(kuntaApiPageId.getId());
       indexRemoveRequest.fire(new IndexRemoveRequest(indexRemove));
-
-      removeDeprecatedPage(kuntaApiPageId);
     }
   }
 
@@ -434,9 +451,11 @@ public class ManagementPageEntityUpdater extends EntityUpdater<IdTask<PageId>> {
    * @param orderIndex page order index 
    * @param menuOrder page menu order
    * @param pageParentId page parent id
+   * @param tags 
    * @return indexable page
    */
-  private IndexablePage createIndexablePage(OrganizationId organizationId, PageId kuntaApiPageId, String content, String title, Long orderIndex, Integer menuOrder, PageId pageParentId) {
+  @SuppressWarnings ("squid:S00107")
+  private IndexablePage createIndexablePage(OrganizationId organizationId, PageId kuntaApiPageId, String content, String title, Long orderIndex, Integer menuOrder, PageId pageParentId, List<String> tags) {
     OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(kuntaApiPageId.getOrganizationId(), KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiOrganizationId == null) {
       logger.severe(() -> String.format("Failed to translate organizationId %s into KuntaAPI id", organizationId.toString()));
@@ -453,15 +472,9 @@ public class ManagementPageEntityUpdater extends EntityUpdater<IdTask<PageId>> {
     indexablePage.setOrderIndex(orderIndex);
     indexablePage.setOrderNumber(menuOrder);
     indexablePage.setMenuOrder(menuOrder);
+    indexablePage.setTags(tags);
     
     return indexablePage;
-  }
-
-  private void removeDeprecatedPage(PageId kuntaApiPageId) {
-    IndexRemoveDeprecatedPage indexRemove = new IndexRemoveDeprecatedPage();
-    indexRemove.setPageId(kuntaApiPageId.getId());
-    indexRemove.setLanguage(ManagementConsts.DEFAULT_LOCALE);
-    indexRemoveRequest.fire(new IndexRemoveRequest(indexRemove));
   }
   
 }
