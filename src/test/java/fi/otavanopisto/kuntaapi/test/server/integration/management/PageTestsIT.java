@@ -42,6 +42,11 @@ public class PageTestsIT extends AbstractIntegrationTest {
     getManagementMediaMocker()
       .mockMedias(3001, 3002);
     
+    getManagementTagMocker()
+      .mockTags(9002)
+      .clearStatusLists()
+      .addStatusListWithPost("567");
+    
     getManagementPageMocker()
       .mockPages(456, 567, 678);
 
@@ -212,6 +217,33 @@ public class PageTestsIT extends AbstractIntegrationTest {
       .body("slug[1]", is("bertha"));
   }
 
+  @Test
+  public void testListPagesSearchByTag() {
+    if (skipElasticSearchTests()) {
+      return;
+    }
+    
+    String organizationId = getOrganizationId(0);
+    
+    givenReadonly()
+      .contentType(ContentType.JSON)
+      .get("/organizations/{organizationId}/pages?search=Precious", organizationId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(1))
+      .body("slug[0]", is("abraham"));
+    
+    givenReadonly()
+      .contentType(ContentType.JSON)
+      .get("/organizations/{organizationId}/pages?search=Preci*", organizationId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(1))
+      .body("slug[0]", is("abraham"));
+  }
+  
   @Test
   public void testListPagesByPath() {
     givenReadonly()
