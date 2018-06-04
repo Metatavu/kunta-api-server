@@ -198,7 +198,6 @@ public class PtvAccessTokenUpdater extends EntityUpdater<OrganizationEntityUpdat
       }
     } catch (UnsupportedEncodingException e) {
       logger.log(Level.SEVERE, "Failed to construct PTV access token body", e);
-      return;
     }
   }
   
