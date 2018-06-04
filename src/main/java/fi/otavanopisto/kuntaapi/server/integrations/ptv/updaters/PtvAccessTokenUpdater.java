@@ -100,7 +100,7 @@ public class PtvAccessTokenUpdater extends EntityUpdater<OrganizationEntityUpdat
     String baseUrl = systemSettingController.getSettingValue(PtvConsts.SYSTEM_SETTING_STS_BASEURL);
     String apiUser = organizationSettingController.getSettingValue(kuntaApiOrganizationId, PtvConsts.ORGANIZATION_SETTING_API_USER);
     String apiPass = organizationSettingController.getSettingValue(kuntaApiOrganizationId, PtvConsts.ORGANIZATION_SETTING_API_PASS);
-    PtvAuthStrategy authStrategy = EnumUtils.getEnum(PtvAuthStrategy.class, organizationSettingController.getSettingValue(kuntaApiOrganizationId, PtvConsts.SYSTEM_SETTING_AUTH_STRATEGY));
+    PtvAuthStrategy authStrategy = EnumUtils.getEnum(PtvAuthStrategy.class, systemSettingController.getSettingValue(PtvConsts.SYSTEM_SETTING_AUTH_STRATEGY));
     if (authStrategy == null) {
       authStrategy = PtvAuthStrategy.FORM;
     }
