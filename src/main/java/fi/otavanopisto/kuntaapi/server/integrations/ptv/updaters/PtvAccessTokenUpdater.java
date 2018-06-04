@@ -16,17 +16,21 @@ import javax.ejb.Singleton;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
+import org.apache.commons.lang3.EnumUtils;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.message.BasicNameValuePair;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
 import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpClient;
 import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpClient.Response;
 import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpClient.ResultType;
+import fi.otavanopisto.kuntaapi.server.integrations.ptv.PtvAuthStrategy;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.PtvConsts;
 import fi.otavanopisto.kuntaapi.server.integrations.ptv.tasks.AccessTokenTaskQueue;
 import fi.otavanopisto.kuntaapi.server.security.ExternalAccessTokenController;
@@ -96,7 +100,67 @@ public class PtvAccessTokenUpdater extends EntityUpdater<OrganizationEntityUpdat
     String baseUrl = systemSettingController.getSettingValue(PtvConsts.SYSTEM_SETTING_STS_BASEURL);
     String apiUser = organizationSettingController.getSettingValue(kuntaApiOrganizationId, PtvConsts.ORGANIZATION_SETTING_API_USER);
     String apiPass = organizationSettingController.getSettingValue(kuntaApiOrganizationId, PtvConsts.ORGANIZATION_SETTING_API_PASS);
+    PtvAuthStrategy authStrategy = EnumUtils.getEnum(PtvAuthStrategy.class, systemSettingController.getSettingValue(PtvConsts.SYSTEM_SETTING_AUTH_STRATEGY));
+    if (authStrategy == null) {
+      authStrategy = PtvAuthStrategy.FORM;
+    }
     
+    switch (authStrategy) {
+      case FORM:
+        refreshFormAccessToken(kuntaApiOrganizationId,baseUrl, apiUser, apiPass);
+      break;
+      case JSON:
+        refreshJsonAccessToken(kuntaApiOrganizationId,baseUrl, apiUser, apiPass);
+      break;
+      default:
+        if (logger.isLoggable(Level.SEVERE)) {
+          logger.log(Level.SEVERE, String.format("Unknown auth strategy: %s", authStrategy)); 
+        }
+      break;
+    }
+  }
+  
+  private void refreshJsonAccessToken(OrganizationId kuntaApiOrganizationId, String baseUrl, String apiUser, String apiPass) {
+    Map<String, String> headers = new HashMap<>();
+    headers.put("Content-Type", "application/json");
+
+    URI uri = null;
+    try {
+      uri = new URI(String.format("%s/api/auth/api-login", baseUrl));
+    } catch (URISyntaxException e) {
+      logger.log(Level.SEVERE, "Failed to construct PTV access token url", e);
+      return;
+    }
+    
+    PtvJsonTokenRequest tokenRequest = new PtvJsonTokenRequest();
+    tokenRequest.setPassword(apiPass);
+    tokenRequest.setUsername(apiUser);
+    byte[] body;
+    ObjectMapper objectMapper = new ObjectMapper();
+    
+    try {
+      body = objectMapper.writeValueAsBytes(tokenRequest);
+    } catch (JsonProcessingException e) {
+      if (logger.isLoggable(Level.SEVERE)) {
+        logger.log(Level.SEVERE, "Failed to serialize token request", e);
+      }
+      
+      return;
+    }
+  
+    ResultType<PtvJsonAccessToken> resultType = new GenericHttpClient.ResultType<PtvJsonAccessToken>() {};
+    Response<PtvJsonAccessToken> response = genericHttpClient.doPOSTRequest(uri, resultType, headers, body);
+    if (response.isOk()) {
+      PtvJsonAccessToken accessToken = response.getResponseEntity();
+      Long expiresIn = TOKEN_EXPIRE_MAX_TIME;
+      OffsetDateTime tokenExpires = OffsetDateTime.now().plusSeconds(expiresIn);
+      externalAccessTokenController.setOrganizationExternalAccessToken(kuntaApiOrganizationId, PtvConsts.PTV_ACCESS_TOKEN_TYPE, accessToken.getAccessToken(), tokenExpires);
+    } else {
+      logger.log(Level.SEVERE, () -> String.format("Failed to refresh PTV access token for organization %s: [%d]: %s", kuntaApiOrganizationId, response.getStatus(), response.getMessage())); 
+    }
+  }
+
+  private void refreshFormAccessToken(OrganizationId kuntaApiOrganizationId, String baseUrl, String apiUser, String apiPass) {
     Map<String, String> headers = new HashMap<>();
     headers.put("Content-Type", "application/x-www-form-urlencoded");
 
@@ -118,10 +182,10 @@ public class PtvAccessTokenUpdater extends EntityUpdater<OrganizationEntityUpdat
         new BasicNameValuePair("password", apiPass)
       ));
       
-      ResultType<PtvAccessToken> resultType = new GenericHttpClient.ResultType<PtvAccessToken>() {};
-      Response<PtvAccessToken> response = genericHttpClient.doPOSTRequest(uri, resultType, headers, formEntity);
+      ResultType<PtvFormAccessToken> resultType = new GenericHttpClient.ResultType<PtvFormAccessToken>() {};
+      Response<PtvFormAccessToken> response = genericHttpClient.doPOSTRequest(uri, resultType, headers, formEntity);
       if (response.isOk()) {
-        PtvAccessToken accessToken = response.getResponseEntity();
+        PtvFormAccessToken accessToken = response.getResponseEntity();
         Long expiresIn = accessToken.getExpiresIn();
         if (expiresIn == null) {
           expiresIn = TOKEN_EXPIRE_MAX_TIME;
@@ -134,12 +198,50 @@ public class PtvAccessTokenUpdater extends EntityUpdater<OrganizationEntityUpdat
       }
     } catch (UnsupportedEncodingException e) {
       logger.log(Level.SEVERE, "Failed to construct PTV access token body", e);
-      return;
     }
   }
   
+  public static class PtvJsonTokenRequest {
+    
+    private String username;
+    private String password;
+    
+    public String getPassword() {
+      return password;
+    }
+    
+    public void setPassword(String password) {
+      this.password = password;
+    }
+    
+    public String getUsername() {
+      return username;
+    }
+    
+    public void setUsername(String username) {
+      this.username = username;
+    }
+    
+  }
+  
   @JsonIgnoreProperties (ignoreUnknown = true)
-  public static class PtvAccessToken {
+  public static class PtvJsonAccessToken {
+    
+    @JsonProperty (value = "ptvToken")
+    private String accessToken;
+    
+    public String getAccessToken() {
+      return accessToken;
+    }
+    
+    public void setAccessToken(String accessToken) {
+      this.accessToken = accessToken;
+    }
+    
+  }
+
+  @JsonIgnoreProperties (ignoreUnknown = true)
+  public static class PtvFormAccessToken {
     
     @JsonProperty (value = "access_token")
     private String accessToken;
