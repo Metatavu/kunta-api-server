@@ -148,15 +148,11 @@ public class PtvAccessTokenUpdater extends EntityUpdater<OrganizationEntityUpdat
       return;
     }
   
-    ResultType<PtvAccessToken> resultType = new GenericHttpClient.ResultType<PtvAccessToken>() {};
-    Response<PtvAccessToken> response = genericHttpClient.doPOSTRequest(uri, resultType, headers, body);
+    ResultType<PtvJsonAccessToken> resultType = new GenericHttpClient.ResultType<PtvJsonAccessToken>() {};
+    Response<PtvJsonAccessToken> response = genericHttpClient.doPOSTRequest(uri, resultType, headers, body);
     if (response.isOk()) {
-      PtvAccessToken accessToken = response.getResponseEntity();
-      Long expiresIn = accessToken.getExpiresIn();
-      if (expiresIn == null) {
-        expiresIn = TOKEN_EXPIRE_MAX_TIME;
-      }
-      
+      PtvJsonAccessToken accessToken = response.getResponseEntity();
+      Long expiresIn = TOKEN_EXPIRE_MAX_TIME;
       OffsetDateTime tokenExpires = OffsetDateTime.now().plusSeconds(expiresIn);
       externalAccessTokenController.setOrganizationExternalAccessToken(kuntaApiOrganizationId, PtvConsts.PTV_ACCESS_TOKEN_TYPE, accessToken.getAccessToken(), tokenExpires);
     } else {
@@ -186,10 +182,10 @@ public class PtvAccessTokenUpdater extends EntityUpdater<OrganizationEntityUpdat
         new BasicNameValuePair("password", apiPass)
       ));
       
-      ResultType<PtvAccessToken> resultType = new GenericHttpClient.ResultType<PtvAccessToken>() {};
-      Response<PtvAccessToken> response = genericHttpClient.doPOSTRequest(uri, resultType, headers, formEntity);
+      ResultType<PtvFormAccessToken> resultType = new GenericHttpClient.ResultType<PtvFormAccessToken>() {};
+      Response<PtvFormAccessToken> response = genericHttpClient.doPOSTRequest(uri, resultType, headers, formEntity);
       if (response.isOk()) {
-        PtvAccessToken accessToken = response.getResponseEntity();
+        PtvFormAccessToken accessToken = response.getResponseEntity();
         Long expiresIn = accessToken.getExpiresIn();
         if (expiresIn == null) {
           expiresIn = TOKEN_EXPIRE_MAX_TIME;
@@ -228,9 +224,25 @@ public class PtvAccessTokenUpdater extends EntityUpdater<OrganizationEntityUpdat
     }
     
   }
+  
+  @JsonIgnoreProperties (ignoreUnknown = true)
+  public static class PtvJsonAccessToken {
+    
+    @JsonProperty (value = "ptvToken")
+    private String accessToken;
+    
+    public String getAccessToken() {
+      return accessToken;
+    }
+    
+    public void setAccessToken(String accessToken) {
+      this.accessToken = accessToken;
+    }
+    
+  }
 
   @JsonIgnoreProperties (ignoreUnknown = true)
-  public static class PtvAccessToken {
+  public static class PtvFormAccessToken {
     
     @JsonProperty (value = "access_token")
     private String accessToken;
