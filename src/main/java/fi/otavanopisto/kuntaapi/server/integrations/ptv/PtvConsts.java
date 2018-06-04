@@ -17,6 +17,7 @@ public class PtvConsts {
   public static final String CACHE_NAME = "ptv";
   public static final String SYSTEM_SETTING_BASEURL = "ptv.baseUrl";
   public static final String SYSTEM_SETTING_STS_BASEURL = "ptv.stsBaseUrl";
+  public static final String SYSTEM_SETTING_AUTH_STRATEGY = "ptv.authStrategy";
   public static final String DEFAULT_LANGUAGE = "fi";
   public static final String TIMEZONE = "Europe/Helsinki";
   public static final List<String> PTV_SUPPORTED_LANGUAGES = Collections.unmodifiableList(Arrays.asList("fi", "en", "sv"));
