@@ -22,8 +22,6 @@ import org.apache.http.message.BasicNameValuePair;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import fi.otavanopisto.kuntaapi.server.discover.EntityUpdater;
 import fi.otavanopisto.kuntaapi.server.id.OrganizationId;
@@ -135,21 +133,9 @@ public class PtvAccessTokenUpdater extends EntityUpdater<OrganizationEntityUpdat
     PtvJsonTokenRequest tokenRequest = new PtvJsonTokenRequest();
     tokenRequest.setPassword(apiPass);
     tokenRequest.setUsername(apiUser);
-    byte[] body;
-    ObjectMapper objectMapper = new ObjectMapper();
-    
-    try {
-      body = objectMapper.writeValueAsBytes(tokenRequest);
-    } catch (JsonProcessingException e) {
-      if (logger.isLoggable(Level.SEVERE)) {
-        logger.log(Level.SEVERE, "Failed to serialize token request", e);
-      }
-      
-      return;
-    }
-  
+
     ResultType<PtvJsonAccessToken> resultType = new GenericHttpClient.ResultType<PtvJsonAccessToken>() {};
-    Response<PtvJsonAccessToken> response = genericHttpClient.doPOSTRequest(uri, resultType, headers, body);
+    Response<PtvJsonAccessToken> response = genericHttpClient.doPOSTRequest(uri, resultType, headers, tokenRequest);
     if (response.isOk()) {
       PtvJsonAccessToken accessToken = response.getResponseEntity();
       Long expiresIn = TOKEN_EXPIRE_MAX_TIME;
