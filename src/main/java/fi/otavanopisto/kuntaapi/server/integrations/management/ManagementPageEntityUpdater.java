@@ -271,7 +271,7 @@ public class ManagementPageEntityUpdater extends EntityUpdater<IdTask<PageId>> {
     String result = changed ? document.body().html() : originalHtml;
     updateAttachments(kuntaApiOrganizationId, api, managementPage, pageIdentifier, contentKuntaApiAttachmentIds);
     
-    return StringEscapeUtils.unescapeHtml4(result);
+    return result;
   }
   
   private void updateEmbeddedServices(Identifier pageIdentifier, Document document) {
@@ -465,7 +465,7 @@ public class ManagementPageEntityUpdater extends EntityUpdater<IdTask<PageId>> {
     
     IndexablePage indexablePage = new IndexablePage();
     indexablePage.setTitleRaw(title);
-    indexablePage.setContentFi(content);
+    indexablePage.setContentFi(StringEscapeUtils.unescapeHtml4(content));
     indexablePage.setOrganizationId(kuntaApiOrganizationId.getId());
     indexablePage.setPageId(kuntaApiPageId.getId());
     indexablePage.setParentId(pageParentId != null ? pageParentId.getId() : null);
