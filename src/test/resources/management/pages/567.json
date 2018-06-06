@@ -14,7 +14,7 @@
        "rendered":"Abraham"
     },
     "content":{
-       "rendered":"<p>Abraham<\/p><p>search test</p>",
+       "rendered":"<p>Abraham<\/p><p>search test</p><p>t&auml;m&auml;</p>",
        "protected":false
     },
     "excerpt":{

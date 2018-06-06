@@ -18,6 +18,7 @@ import javax.enterprise.event.Event;
 import javax.inject.Inject;
 
 import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.jsoup.Jsoup;
@@ -270,7 +271,7 @@ public class ManagementPageEntityUpdater extends EntityUpdater<IdTask<PageId>> {
     String result = changed ? document.body().html() : originalHtml;
     updateAttachments(kuntaApiOrganizationId, api, managementPage, pageIdentifier, contentKuntaApiAttachmentIds);
     
-    return result;
+    return StringEscapeUtils.unescapeHtml4(result);
   }
   
   private void updateEmbeddedServices(Identifier pageIdentifier, Document document) {
