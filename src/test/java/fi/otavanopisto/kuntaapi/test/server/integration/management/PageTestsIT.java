@@ -218,6 +218,25 @@ public class PageTestsIT extends AbstractIntegrationTest {
   }
 
   @Test
+  public void testListPagesSearchHtmlEscaped() {
+    if (skipElasticSearchTests()) {
+      return;
+    }
+    
+    String organizationId = getOrganizationId(0);
+    String search = "(tämä*)";
+    
+    givenReadonly()
+      .contentType(ContentType.JSON)
+      .get(String.format("/organizations/{organizationId}/pages?search=%s", search), organizationId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(1))
+      .body("slug[0]", is("abraham"));
+  }
+  
+  @Test
   public void testListPagesSearchByTag() {
     if (skipElasticSearchTests()) {
       return;
