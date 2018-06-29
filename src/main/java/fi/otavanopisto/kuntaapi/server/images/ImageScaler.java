@@ -47,7 +47,7 @@ public class ImageScaler {
     int width = originalImage.getWidth();
     int height = originalImage.getHeight();
     
-    if (downScaleOnly && width < size && height < size) {
+    if (downScaleOnly && (width < size || height < size)) {
       return originalImage;
     }
     
