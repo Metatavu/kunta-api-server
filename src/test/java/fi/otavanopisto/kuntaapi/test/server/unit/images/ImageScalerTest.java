@@ -108,6 +108,11 @@ public class ImageScalerTest {
       assertEquals(1000, scaledImage.getWidth());
       assertEquals(667, scaledImage.getHeight());
       
+      scaledImage = imageScaler.scaleToCover(bufferedImage, 900, true);
+      
+      assertEquals(1000, scaledImage.getWidth());
+      assertEquals(667, scaledImage.getHeight());
+      
       scaledImage = imageScaler.scaleToCover(bufferedImage, 1200, false);
 
       assertEquals(1799, scaledImage.getWidth());
@@ -126,6 +131,11 @@ public class ImageScalerTest {
       assertEquals(1000, bufferedImage.getHeight());
       
       BufferedImage scaledImage = imageScaler.scaleToCover(bufferedImage, 1200, true);
+      
+      assertEquals(667, scaledImage.getWidth());
+      assertEquals(1000, scaledImage.getHeight());
+      
+      scaledImage = imageScaler.scaleToCover(bufferedImage, 900, true);
       
       assertEquals(667, scaledImage.getWidth());
       assertEquals(1000, scaledImage.getHeight());
