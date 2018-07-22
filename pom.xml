@@ -85,7 +85,7 @@
     
     <!-- Lucene -->
     
-    <lucene.version>6.2.1</lucene.version>
+    <lucene.version>6.6.2</lucene.version>
     
     <!-- Liquibase -->
     
