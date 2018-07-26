@@ -76,12 +76,12 @@
     
     <!-- Jackson -->
     
-    <jackson-dataformat-xml.version>2.6.3</jackson-dataformat-xml.version>
+    <jackson-dataformat-xml.version>2.7.4</jackson-dataformat-xml.version>
     <jackson-dataformat-smile.version>2.7.4</jackson-dataformat-smile.version>
     
     <!-- Elastic Search -->
     
-    <elasticsearch.version>5.0.1</elasticsearch.version>
+    <elasticsearch.version>5.2.0</elasticsearch.version>
     
     <!-- Lucene -->
     
