@@ -909,7 +909,7 @@
                     <command>/subsystem=infinispan/cache-container=kunta-api/local-cache=modificationhash:add()</command>
                   </commands>
                 </configuration>
-              </execution
+              </execution>
               <execution>
                 <id>deploy</id>
                 <phase>pre-integration-test</phase>
