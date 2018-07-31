@@ -13,10 +13,8 @@ import javax.inject.Inject;
 
 import org.apache.http.client.utils.URIBuilder;
 
-import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpCache;
 import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpClient;
 import fi.otavanopisto.kuntaapi.server.integrations.GenericHttpClient.Response;
-import fi.otavanopisto.kuntaapi.server.integrations.management.ManagementConsts;
 import fi.metatavu.management.client.ApiResponse;
 import fi.metatavu.management.client.ResultType;
 
@@ -35,9 +33,6 @@ public class ManagementClient implements fi.metatavu.management.client.ApiClient
 
   @Inject
   private GenericHttpClient httpClient;
-
-  @Inject
-  private GenericHttpCache httpCache;
   
   @Override
   public <T> ApiResponse<T> doGETRequest(String url, ResultType<T> resultType, Map<String, Object> queryParams, Map<String, Object> postParams) {
@@ -63,14 +58,7 @@ public class ManagementClient implements fi.metatavu.management.client.ApiClient
       return new ApiResponse<>(500, INVALID_URI_SYNTAX, null);
     }
     
-    Response<T> response = httpCache.get(ManagementConsts.CACHE_NAME, uri, new GenericHttpClient.ResponseResultTypeWrapper<>(resultType.getType()));
-    if (response == null) {
-      response = httpClient.doGETRequest(uri, new GenericHttpClient.ResultTypeWrapper<>(resultType.getType()));
-      if (ManagementConsts.CACHE_RESPONSES) {
-        httpCache.put(ManagementConsts.CACHE_NAME, uri, response);
-      }
-    }
-    
+    Response<T> response = httpClient.doGETRequest(uri, new GenericHttpClient.ResultTypeWrapper<>(resultType.getType()));
     return new ApiResponse<>(response.getStatus(), response.getMessage(), response.getResponseEntity());
   }
 
