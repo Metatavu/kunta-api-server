@@ -35,7 +35,7 @@ public class ModificationHashCache {
     if (cache.containsKey(id)) {
       String rawData = cache.get(id);
       if (rawData == null) {
-        logger.log(Level.SEVERE, String.format("Could not find data for id %s", id));
+        logger.log(Level.SEVERE, () -> String.format("Could not find data for id %s", id));
         return null;
       }
       
