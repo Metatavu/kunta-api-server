@@ -8,7 +8,8 @@ import java.util.logging.Logger;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
-import ezvcard.util.IOUtils;
+import org.apache.commons.io.IOUtils;
+
 import fi.otavanopisto.kuntaapi.server.id.BaseId;
 import fi.otavanopisto.kuntaapi.server.persistence.dao.StoredBinaryResourceDAO;
 import fi.otavanopisto.kuntaapi.server.persistence.dao.StoredResourceDAO;

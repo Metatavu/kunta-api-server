@@ -26,7 +26,8 @@ import com.github.tomakehurst.wiremock.client.MappingBuilder;
 import com.github.tomakehurst.wiremock.client.ResponseDefinitionBuilder;
 import com.github.tomakehurst.wiremock.matching.StringValuePattern;
 import com.github.tomakehurst.wiremock.matching.UrlPattern;
-import ezvcard.util.IOUtils;
+
+import org.apache.commons.io.IOUtils;
 
 @SuppressWarnings ("squid:S1166")
 public abstract class AbstractResourceMocker<I, R> {
