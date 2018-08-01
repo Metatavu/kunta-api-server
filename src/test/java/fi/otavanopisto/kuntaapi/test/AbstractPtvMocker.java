@@ -41,7 +41,8 @@ import com.github.tomakehurst.wiremock.client.ResponseDefinitionBuilder;
 import com.github.tomakehurst.wiremock.matching.StringValuePattern;
 import com.github.tomakehurst.wiremock.matching.UrlPattern;
 
-import ezvcard.util.IOUtils;
+import org.apache.commons.io.IOUtils;
+
 import fi.metatavu.ptv.client.model.VmOpenApiItem;
 import fi.otavanopisto.kuntaapi.server.persistence.dao.AbstractDAO;
 

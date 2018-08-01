@@ -7,13 +7,10 @@ import java.util.logging.Logger;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.Initialized;
 import javax.enterprise.event.Observes;
-import javax.enterprise.inject.Any;
-import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
 
 import org.apache.commons.lang3.StringUtils;
 
-import fi.otavanopisto.kuntaapi.server.cache.AbstractCache;
 import fi.otavanopisto.kuntaapi.server.settings.SystemSettingController;
 
 @ApplicationScoped
@@ -27,10 +24,6 @@ public class SystemHealthCheck {
   @Inject
   private SystemSettingController systemSettingController;
 
-  @Inject
-  @Any
-  private Instance<AbstractCache<?, ?>> caches;
-   
   public void init(@Observes @Initialized(ApplicationScoped.class) Object init) {
     if (StringUtils.equalsIgnoreCase("true", System.getProperty("kuntaApi.skipHealthCheck"))) { 
       return;
@@ -46,8 +39,6 @@ public class SystemHealthCheck {
       problems.add("System is running in test mode");
     }
     
-    checkCacheHealth(problems);
-    
     logger.info(LINE);
     logger.info("System health check");
     
@@ -61,14 +52,6 @@ public class SystemHealthCheck {
     }
     
     logger.info(LINE);
-  }
-  
-  private void checkCacheHealth(List<String> problems) {
-    for (AbstractCache<?, ?> cache : caches) {
-      if (!cache.isHealthy()) {
-        problems.add(String.format("Configuration problems detected with %s cache", cache.getCacheName()));
-      }
-    }
   }
   
 }

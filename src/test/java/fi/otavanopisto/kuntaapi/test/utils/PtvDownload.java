@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -20,7 +21,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import ezvcard.util.IOUtils;
 import fi.metatavu.ptv.client.model.V5VmOpenApiOrganizationService;
 import fi.metatavu.ptv.client.model.V7VmOpenApiOrganization;
 import fi.metatavu.ptv.client.model.V7VmOpenApiService;

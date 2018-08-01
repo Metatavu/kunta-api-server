@@ -10,7 +10,8 @@ import java.util.logging.Logger;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
-import ezvcard.util.IOUtils;
+import org.apache.commons.io.IOUtils;
+
 import fi.metatavu.kuntaapi.server.rest.model.Attachment;
 import fi.metatavu.kuntaapi.server.rest.model.Event;
 import fi.otavanopisto.kuntaapi.server.controllers.IdentifierRelationController;

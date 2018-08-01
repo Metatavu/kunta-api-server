@@ -58,7 +58,7 @@
     
     <!-- Wildfly -->
     
-    <wildfly-spec-api.version>10.1.0.Final</wildfly-spec-api.version>
+    <wildfly-spec-api.version>13.0.0.Final</wildfly-spec-api.version>
 
     <!-- Kunta API Spec -->
 
@@ -76,8 +76,8 @@
     
     <!-- Jackson -->
     
-    <jackson-dataformat-xml.version>2.6.3</jackson-dataformat-xml.version>
-    <jackson-dataformat-smile.version>2.7.4</jackson-dataformat-smile.version>
+    <jackson-dataformat-xml.version>2.9.5</jackson-dataformat-xml.version>
+    <jackson-dataformat-smile.version>2.9.5</jackson-dataformat-smile.version>
     
     <!-- Elastic Search -->
     
@@ -89,15 +89,15 @@
     
     <!-- Liquibase -->
     
-    <liquibase.version>3.5.3</liquibase.version>
+    <liquibase.version>3.6.2</liquibase.version>
     
     <!-- VCard -->
     
-    <ez-vcard.version>0.10.0</ez-vcard.version>
+    <ez-vcard.version>0.10.4</ez-vcard.version>
     
     <!-- slf4j-api -->
     
-    <slf4j-api.version>1.7.7</slf4j-api.version>
+    <slf4j-api.version>1.7.22</slf4j-api.version>
     
     <!-- onebusaway-gtfs -->
     
@@ -111,10 +111,10 @@
     
     <jsonassert.version>1.5.0</jsonassert.version>
     <restassured.version>2.9.0</restassured.version> 
-    <wiremock.version>2.1.11</wiremock.version>
-    <deltaspike.version>1.7.2</deltaspike.version>
-    <weld-se.version>2.3.5.Final</weld-se.version>
-    <reflections.version>0.9.10</reflections.version>
+    <wiremock.version>2.18.0</wiremock.version>
+    <deltaspike.version>1.8.2</deltaspike.version>
+    <weld-se.version>3.0.4.Final</weld-se.version>
+    <reflections.version>0.9.11</reflections.version>
     <it.package>**</it.package>
     <it.tests>fi/otavanopisto/kuntaapi/test/server/integration/${it.package}/*IT.java</it.tests>
   </properties>
@@ -155,14 +155,14 @@
           <dependency>        
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-jpamodelgen</artifactId>
-            <version>5.0.7.Final</version>
+            <version>5.3.3.Final</version>
           </dependency>
         </dependencies>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>2.19.1</version>
+        <version>2.22.0</version>
         <configuration>
           <systemPropertyVariables>
             <liquibase.shouldRun>false</liquibase.shouldRun>
@@ -254,36 +254,12 @@
       <groupId>com.fasterxml.jackson.dataformat</groupId>
       <artifactId>jackson-dataformat-xml</artifactId>
       <version>${jackson-dataformat-xml.version}</version>
-      <exclusions>
-        <exclusion>
-          <groupId>com.fasterxml.jackson.core</groupId>
-          <artifactId>jackson-core</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>com.fasterxml.jackson.core</groupId>
-          <artifactId>jackson-databind</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>com.fasterxml.jackson.core</groupId>
-          <artifactId>jackson-annotations</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>com.fasterxml.jackson.module</groupId>
-          <artifactId>jackson-module-jaxb-annotations</artifactId>
-        </exclusion>
-      </exclusions>
     </dependency>
     
     <dependency>
       <groupId>com.fasterxml.jackson.dataformat</groupId>
       <artifactId>jackson-dataformat-smile</artifactId>
       <version>${jackson-dataformat-smile.version}</version>
-      <exclusions>
-        <exclusion>
-          <groupId>com.fasterxml.jackson.core</groupId>
-          <artifactId>jackson-core</artifactId>
-        </exclusion>
-      </exclusions>
     </dependency>
     
     <dependency>
@@ -678,7 +654,7 @@
     
     <dependency>
       <groupId>org.jboss.weld.se</groupId>
-      <artifactId>weld-se</artifactId>
+      <artifactId>weld-se-shaded</artifactId>
       <version>${weld-se.version}</version>
       <scope>test</scope>
     </dependency>
@@ -851,14 +827,14 @@
           <plugin>
             <groupId>org.codehaus.cargo</groupId>
             <artifactId>cargo-maven2-plugin</artifactId>
-            <version>1.6.4</version>
+            <version>1.6.8</version>
             <configuration>
               <container>
-                <containerId>wildfly10x</containerId>
+                <containerId>wildfly12x</containerId>
                 <log>${project.basedir}/target/cargo.log</log>
                 <output>${project.basedir}/target/wildfly.log</output>
                 <zipUrlInstaller>
-                  <url>http://download.jboss.org/wildfly/10.1.0.Final/wildfly-10.1.0.Final.zip</url>
+                  <url>http://download.jboss.org/wildfly/13.0.0.Final/wildfly-13.0.0.Final.zip</url>
                   <downloadDir>${project.basedir}/.cargo/downloads</downloadDir>
                   <extractDir>${project.basedir}/.cargo/extracts</extractDir>
                 </zipUrlInstaller>     
@@ -874,16 +850,6 @@
                   <cargo.servlet.port>${it.port.http}</cargo.servlet.port>
                   <cargo.jboss.configuration>standalone</cargo.jboss.configuration>
                   <cargo.jvmargs>${jacoco.agent.itArgLine},output=tcpserver,port=6300 -Xmx2G -Djava.net.preferIPv4Stack=true -Djava.net.preferIPv4Addresses=true -Drunmode=TEST</cargo.jvmargs>
-                  <cargo.datasource.datasource.fnici>
-                    cargo.datasource.driver=${it.jdbc.driver}|
-                    cargo.datasource.properties=${it.jdbc.properties}|
-                    cargo.datasource.type=${it.jdbc.type}|
-                    cargo.datasource.url=${it.jdbc.url}|
-                    cargo.datasource.jndi=${it.jdbc.jndi}|
-                    cargo.datasource.username=${it.jdbc.username}|
-                    cargo.datasource.password=${it.jdbc.password}|
-                    cargo.datasource.transactionsupport=${it.jdbc.transactionsupport}|
-                  </cargo.datasource.datasource.fnici>
                 </properties>    
               </configuration>
               <deployer/>
@@ -909,11 +875,41 @@
             </executions>
           </plugin>
           
-          <plugin>
+           <plugin>
             <groupId>org.wildfly.plugins</groupId>
             <artifactId>wildfly-maven-plugin</artifactId>
-            <version>1.0.2.Final</version>
+            <version>1.2.1.Final</version>
             <executions>
+              <execution>
+                <id>wildfly-configure</id>
+                <phase>pre-integration-test</phase>
+                <goals>
+                  <goal>execute-commands</goal>
+                </goals>
+                <configuration>
+                  <batch>true</batch>
+                  <commands>
+                    <command>xa-data-source add --name=ci --driver-name=h2 --jndi-name=${it.jdbc.jndi} --user-name=${it.jdbc.username} --password=${it.jdbc.password} --xa-datasource-properties=${it.jdbc.properties}</command>
+                    <command>/subsystem=undertow/server=default-server/host=kunta-api:add(alias=["${it.host}"],default-web-module="kunta-api.war")</command>
+                    <command>/system-property=it-test:add(value="true")</command>
+                    <command>/subsystem=logging/logger=org.jboss.as.ejb3.deployment:add(level=WARNING)</command>
+                    <command>/subsystem=logging/logger=org.jboss.as.config:remove()</command>
+                    <command>/subsystem=logging/logger=org.jboss.as.config:add(level=INFO)</command>
+                    <command>/subsystem=logging/logger=fi.otavanopisto.kuntaapi.server.tasks.AbstractTaskQueue:add(level=WARNING)</command>
+                    <command>/subsystem=logging/logger=fi.otavanopisto.kuntaapi.server.tasks.TaskQueueDistributor:add(level=WARNING)</command>
+                    <command>/subsystem=logging/logger=fi.otavanopisto.kuntaapi.server.controllers.TaskController:add(level=SEVERE)</command>
+                    <command>/subsystem=logging/logger=fi.otavanopisto.kuntaapi.server.index.AbstractIndexHander:add(level=FATAL)</command>
+                    <command>/subsystem=logging/logger=fi.otavanopisto.kuntaapi.server.security.SecurityFilter:add(level=INFO)</command>
+                    <command>/subsystem=logging/logger=fi.otavanopisto.kuntaapi.server.index.IndexUpdater:add(level=SEVERE)</command>
+                    <command>/subsystem=logging/logger=org.onebusaway.gtfs.serialization.GtfsReader:add(level=WARN)</command>
+                    <command>/subsystem=logging/logger=fi.otavanopisto.kuntaapi.server.integrations.tilannehuone.updaters.TilannehuoneIdUpdater:add(level=SEVERE)</command>
+                    <command>/subsystem=logging/logger=fi.otavanopisto.kuntaapi.server.integrations.ptv.updaters.PtvOrganizationEntityUpdater:add(level=WARN)</command>
+                    <command>/subsystem=infinispan/cache-container=kunta-api:add()</command>
+                    <command>/subsystem=infinispan/cache-container=hibernate/local-cache=entity/component=transaction:write-attribute(name=locking,value=OPTIMISTIC)</command>
+                    <command>/subsystem=infinispan/cache-container=kunta-api/local-cache=modificationhash:add()</command>
+                  </commands>
+                </configuration>
+              </execution>
               <execution>
                 <id>deploy</id>
                 <phase>pre-integration-test</phase>
@@ -921,33 +917,12 @@
                   <goal>deploy</goal>
                 </goals>
                 <configuration>
-                  <before-deployment>
-                    <batch>true</batch>
-                    <commands>
-                      <command>/subsystem=infinispan/cache-container=kunta-api:add()</command>
-                      <command>/subsystem=infinispan/cache-container=hibernate/local-cache=entity/component=transaction:write-attribute(name=locking,value=OPTIMISTIC)</command>
-                      <command>/subsystem=undertow/server=default-server/host=kunta-api:add(alias=["${it.host}"])</command>
-                      <command>/system-property=it-test:add(value="true")</command>
-                      <command>/subsystem=logging/logger=org.jboss.as.ejb3.deployment:add(level=WARNING)</command>
-                      <command>/subsystem=logging/logger=org.jboss.as.config:remove()</command>
-                      <command>/subsystem=logging/logger=org.jboss.as.config:add(level=INFO)</command>
-                      <command>/subsystem=logging/logger=fi.otavanopisto.kuntaapi.server.tasks.AbstractTaskQueue:add(level=WARNING)</command>
-                      <command>/subsystem=logging/logger=fi.otavanopisto.kuntaapi.server.tasks.TaskQueueDistributor:add(level=WARNING)</command>
-                      <command>/subsystem=logging/logger=fi.otavanopisto.kuntaapi.server.controllers.TaskController:add(level=SEVERE)</command>
-                      <command>/subsystem=logging/logger=fi.otavanopisto.kuntaapi.server.index.AbstractIndexHander:add(level=FATAL)</command>
-                      <command>/subsystem=logging/logger=fi.otavanopisto.kuntaapi.server.security.SecurityFilter:add(level=INFO)</command>
-                      <command>/subsystem=logging/logger=fi.otavanopisto.kuntaapi.server.index.IndexUpdater:add(level=SEVERE)</command>
-                      <command>/subsystem=logging/logger=org.onebusaway.gtfs.serialization.GtfsReader:add(level=WARN)</command>
-                      <command>/subsystem=logging/logger=fi.otavanopisto.kuntaapi.server.integrations.tilannehuone.updaters.TilannehuoneIdUpdater:add(level=SEVERE)</command>
-                      <command>/subsystem=logging/logger=fi.otavanopisto.kuntaapi.server.integrations.ptv.updaters.PtvOrganizationEntityUpdater:add(level=WARN)</command>
-                    </commands>
-                  </before-deployment>
                   <filename>${project.build.finalName}.${project.packaging}</filename>
                 </configuration>
               </execution>
             </executions>
           </plugin>
-                    
+          
           <plugin>
             <groupId>org.sonatype.plugins</groupId>
             <artifactId>wait-maven-plugin</artifactId>
