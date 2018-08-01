@@ -100,7 +100,7 @@ public class IdentifierRelationController {
     if (parentId != null) {
       parentIdentifier = identifierController.findIdentifierById(parentId);
       if (parentIdentifier == null) {
-        logger.log(Level.SEVERE, String.format("Could not find identifier for parent id %s when setting parents", parentId));
+        logger.log(Level.SEVERE, () ->  String.format("Could not find identifier for parent id %s when setting parents", parentId));
         return;
       }
     }
@@ -582,7 +582,7 @@ public class IdentifierRelationController {
   private List<Identifier> listChildIdentifiersByParentSourceAndType(BaseId parentId, String source, IdType type) {
     Identifier parentIdentifier = identifierController.findIdentifierById(parentId);
     if (parentIdentifier == null) {
-      logger.log(Level.WARNING, String.format("Could not find identifier for parent id %s when listing a child ids", parentId));
+      logger.log(Level.WARNING, () -> String.format("Could not find identifier for parent id %s when listing a child ids", parentId));
       return Collections.emptyList();
     }
     
