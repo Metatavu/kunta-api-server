@@ -1,0 +1,69 @@
+package fi.metatavu.kuntaapi.server.integrations;
+
+import java.time.OffsetDateTime;
+import java.util.List;
+
+import fi.metatavu.kuntaapi.server.id.AttachmentId;
+import fi.metatavu.kuntaapi.server.id.NewsArticleId;
+import fi.metatavu.kuntaapi.server.id.OrganizationId;
+import fi.metatavu.kuntaapi.server.rest.model.Attachment;
+import fi.metatavu.kuntaapi.server.rest.model.NewsArticle;
+
+/**
+ * Interface that describes a single news provider
+ * 
+ * @author Antti Leppä
+ */
+public interface NewsProvider {
+
+  /**
+   * List news in an organization
+   * 
+   * @param organizationId organization id
+   * @param tag return only news articles containing specified tag
+   * @param publishedBefore return only news published before the date
+   * @param publishedAfter return only news published after the date
+   * @return organization news articles
+   */
+  public List<NewsArticle> listOrganizationNews(OrganizationId organizationId, String tag, OffsetDateTime publishedBefore, OffsetDateTime publishedAfter);
+  
+  /**
+   * Finds a single news article
+   * 
+   * @param organizationId organization id
+   * @param newsArticleId news article id
+   * @return news article or null of not found
+   */
+  public NewsArticle findOrganizationNewsArticle(OrganizationId organizationId, NewsArticleId newsArticleId);
+
+  /**
+   * Lists images attached to the news article
+   * 
+   * @param organizationId organization id
+   * @param newsArticleId news article id
+   * @return list of images attached to the news article
+   */
+  public List<Attachment> listNewsArticleImages(OrganizationId organizationId, NewsArticleId newsArticleId);
+  
+  /**
+   * Finds a news article image
+   * 
+   * @param organizationId organization id
+   * @param newsArticleId news article id
+   * @param attachmentId image id
+   * @return an news article image or null if not found
+   */
+  public Attachment findNewsArticleImage(OrganizationId organizationId, NewsArticleId newsArticleId, AttachmentId attachmentId);
+  
+  /**
+   * Returns data of news article image
+   * 
+   * @param organizationId organization id
+   * @param newsArticleId news article id
+   * @param attachmentId image id
+   * @param size max size of image. Specify null for untouched
+   * @return news article image data
+   */
+  public AttachmentData getNewsArticleImageData(OrganizationId organizationId, NewsArticleId newsArticleId, AttachmentId attachmentId, Integer size);
+  
+}
