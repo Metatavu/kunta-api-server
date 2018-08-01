@@ -3,6 +3,7 @@ package fi.metatavu.kuntaapi.server.index;
 import java.util.Collections;
 import java.util.List;
 
+@SuppressWarnings ("squid:MissingDeprecatedCheck")
 public class IndexableService implements Indexable {
 
   @Field(index = "not_analyzed", store = true, type = "long")
