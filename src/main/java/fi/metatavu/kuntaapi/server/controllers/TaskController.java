@@ -270,7 +270,7 @@ public class TaskController {
     return null;
   }
 
-  @SuppressWarnings("unchecked")
+  @SuppressWarnings({"unchecked", "squid:S4508"})
   private <T extends AbstractTask> T unserializeFromStream(ByteArrayInputStream byteStream) {
     try (ObjectInputStream objectStream = new ObjectInputStream(byteStream)) {
       Object object = objectStream.readObject();

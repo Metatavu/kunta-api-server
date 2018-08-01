@@ -1,6 +1,7 @@
 package fi.metatavu.kuntaapi.server.discover;
 
 import java.util.Iterator;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
@@ -26,7 +27,7 @@ public class IdUpdaterInitializer {
     Iterator<IdUpdater> updaters = idUpdaters.iterator();
     while (updaters.hasNext()) {
       IdUpdater updater = updaters.next();
-      logger.info(String.format("Registering id updater %s", updater.getName()));
+      logger.log(Level.INFO, () -> String.format("Registering id updater %s", updater.getName()));
     }
   }
    

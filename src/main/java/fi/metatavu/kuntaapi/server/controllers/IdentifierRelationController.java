@@ -592,7 +592,7 @@ public class IdentifierRelationController {
   private List<Identifier> listChildIdentifiersByParentAndType(BaseId parentId, IdType type) {
     Identifier parentIdentifier = identifierController.findIdentifierById(parentId);
     if (parentIdentifier == null) {
-      logger.log(Level.WARNING, String.format("Could not find identifier for parent id %s when listing a child ids", parentId));
+      logger.log(Level.WARNING, () -> String.format("Could not find identifier for parent id %s when listing a child ids", parentId));
       return Collections.emptyList();
     }
     
@@ -602,7 +602,7 @@ public class IdentifierRelationController {
   private List<Identifier> listParentIdentifiersByChildIdAndType(BaseId childId, IdType type) {
     Identifier childIdentifier = identifierController.findIdentifierById(childId);
     if (childIdentifier == null) {
-      logger.log(Level.WARNING, String.format("Could not find identifier for child id %s when listing parent ids", childId));
+      logger.log(Level.WARNING, () -> String.format("Could not find identifier for child id %s when listing parent ids", childId));
       return Collections.emptyList();
     }
     
@@ -618,13 +618,13 @@ public class IdentifierRelationController {
   private IdentifierRelation findIdentifierRelation(BaseId parentId, BaseId childId) {
     Identifier parentIdentifier = identifierController.findIdentifierById(parentId);
     if (parentIdentifier == null) {
-      logger.log(Level.WARNING, String.format("Could not find identifier for parent id %s", parentId));
+      logger.log(Level.WARNING, () -> String.format("Could not find identifier for parent id %s", parentId));
       return null;
     }
     
     Identifier childIdentifier = identifierController.findIdentifierById(childId);
     if (childIdentifier == null) {
-      logger.log(Level.WARNING, String.format("Could not find identifier for child id %s ", childId));
+      logger.log(Level.WARNING, () -> String.format("Could not find identifier for child id %s ", childId));
       return null;
     }
     

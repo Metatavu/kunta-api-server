@@ -199,11 +199,7 @@ public class GtfsPublicTransportProvider implements PublicTransportProvider {
       return false;
     }
     
-    if (departureTime != null && stopTime.getDepartureTime() < departureTime) {
-      return false;
-    }
-    
-    return true;
+    return !(departureTime != null && stopTime.getDepartureTime() < departureTime);
   }
 
 }

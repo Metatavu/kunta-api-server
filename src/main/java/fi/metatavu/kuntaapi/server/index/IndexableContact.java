@@ -39,7 +39,7 @@ public class IndexableContact implements Indexable {
 
   @Override
   public String getId() {
-    return contactId;
+    return getContactId();
   }
 
   @Override

@@ -1,6 +1,7 @@
 package fi.metatavu.kuntaapi.server.discover;
 
 import java.util.Iterator;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
@@ -26,7 +27,7 @@ public class EntityUpdaterInitializer {
     Iterator<EntityUpdater<?>> updaters = entityUpdaters.iterator();
     while (updaters.hasNext()) {
       EntityUpdater<?> updater = updaters.next();
-      logger.info(String.format("Registering entity updater %s", updater.getName()));
+      logger.log(Level.INFO, () -> String.format("Registering entity updater %s", updater.getName()));
     }
   }
    

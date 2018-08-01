@@ -429,7 +429,7 @@ public class IdentifierController {
   private List<String> listSourceIdsByOrganizationIdAndSourceAndType(OrganizationId organizationId, String source, String type, Integer firstResult, Integer maxResults) {
     String organizationKuntaApiId = getOrganizationIdKuntaApiId(organizationId);
     if (organizationKuntaApiId == null) {
-      logger.log(Level.SEVERE, String.format("Could not translate organization %s into Kunta API id", organizationId));
+      logger.log(Level.SEVERE, () -> String.format("Could not translate organization %s into Kunta API id", organizationId));
       return Collections.emptyList();
     }
     
@@ -446,7 +446,7 @@ public class IdentifierController {
   private Long countSourceIdsByOrganizationIdAndSourceAndType(OrganizationId organizationId, String source, String type) {
     String organizationKuntaApiId = getOrganizationIdKuntaApiId(organizationId);
     if (organizationKuntaApiId == null) {
-      logger.log(Level.SEVERE, String.format("Could not translate organization %s into Kunta API id", organizationId));
+      logger.log(Level.SEVERE, () -> String.format("Could not translate organization %s into Kunta API id", organizationId));
       return 0l;
     }
     

@@ -15,7 +15,7 @@ public class IndexRemoveNewsArticle implements IndexRemove {
   }
   
   public String getNewsArticleId() {
-    return newsArticleId;
+    return getId();
   }
   
   public void setNewsArticleId(String newsArticleId) {

@@ -91,7 +91,7 @@ public class GtfsStopTimeEntityUpdater extends EntityUpdater<GtfsStopTimeEntityT
     StopTime gtfsStopTime = task.getEntity();
     OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(task.getOrganizationId(), KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiOrganizationId == null) {
-      logger.log(Level.SEVERE, "Could not translate organization %s into Kunta API id", task.getOrganizationId());
+      logger.log(Level.SEVERE, () -> String.format("Could not translate organization %s into Kunta API id", task.getOrganizationId()));
       return;
     }
     
@@ -124,7 +124,7 @@ public class GtfsStopTimeEntityUpdater extends EntityUpdater<GtfsStopTimeEntityT
       gtfsPublicTransportStopTimeCache.put(kuntaApiStopTimeId, kuntaApiStopTime);
       indexStopTime(kuntaApiOrganizationId, kuntaApiStopTime, orderIndex);
     } else {
-      logger.severe(String.format("Failed to translate gtfs stoptime %s", identifier.getKuntaApiId()));
+      logger.log(Level.SEVERE, () -> String.format("Failed to translate gtfs stoptime %s", identifier.getKuntaApiId()));
     }
   }
 

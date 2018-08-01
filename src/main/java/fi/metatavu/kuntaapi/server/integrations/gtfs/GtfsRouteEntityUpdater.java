@@ -84,7 +84,7 @@ public class GtfsRouteEntityUpdater extends EntityUpdater<GtfsRouteEntityTask> {
     Route gtfsRoute = task.getEntity();
     OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(task.getOrganizationId(), KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiOrganizationId == null) {
-      logger.log(Level.SEVERE, "Could not translate organization %s into Kunta API id", task.getOrganizationId());
+      logger.log(Level.SEVERE, () -> String.format("Could not translate organization %s into Kunta API id", task.getOrganizationId()));
       return;
     }
     
@@ -108,7 +108,7 @@ public class GtfsRouteEntityUpdater extends EntityUpdater<GtfsRouteEntityTask> {
       modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(kuntaApiRoute));
       gtfsPublicTransportRouteCache.put(kuntaApiRouteId, kuntaApiRoute);
     } else {
-      logger.severe(String.format("Failed to translate gtfs route %s", identifier.getKuntaApiId()));
+      logger.log(Level.SEVERE, () -> String.format("Failed to translate gtfs route %s", identifier.getKuntaApiId()));
     }
   }
 }

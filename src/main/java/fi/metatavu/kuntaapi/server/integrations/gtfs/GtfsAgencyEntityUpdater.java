@@ -83,7 +83,7 @@ public class GtfsAgencyEntityUpdater extends EntityUpdater<GtfsAgencyEntityTask>
     Agency gtfsAgency = task.getEntity();
     OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(task.getOrganizationId(), KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiOrganizationId == null) {
-      logger.log(Level.SEVERE, "Could not translate organization %s into Kunta API id", task.getOrganizationId());
+      logger.log(Level.SEVERE, () -> String.format("Could not translate organization %s into Kunta API id", task.getOrganizationId());
       return;
     }
     

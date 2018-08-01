@@ -83,7 +83,7 @@ public class GtfsScheduleEntityUpdater extends EntityUpdater<GtfsScheduleEntityT
     ServiceCalendar gtfsServiceCalendar = task.getEntity();
     OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(task.getOrganizationId(), KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiOrganizationId == null) {
-      logger.log(Level.SEVERE, "Could not translate organization %s into Kunta API id", task.getOrganizationId());
+      logger.log(Level.SEVERE, () -> String.format("Could not translate organization %s into Kunta API id", task.getOrganizationId()));
       return;
     }
     
@@ -99,7 +99,7 @@ public class GtfsScheduleEntityUpdater extends EntityUpdater<GtfsScheduleEntityT
       modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(kuntaApiSchedule));
       gtfsPublicTransportScheduleCache.put(kuntaApiScheduleId, kuntaApiSchedule);
     } else {
-      logger.severe(String.format("Failed to translate gtfs schedule %s", identifier.getKuntaApiId()));
+      logger.log(Level.SEVERE, () -> String.format("Failed to translate gtfs schedule %s", identifier.getKuntaApiId()));
     }
   }
 

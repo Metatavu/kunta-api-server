@@ -6,7 +6,7 @@ public class IndexRemoveContact implements IndexRemove {
 
   @Override
   public String getId() {
-    return contactId;
+    return getContactId();
   }
 
   @Override

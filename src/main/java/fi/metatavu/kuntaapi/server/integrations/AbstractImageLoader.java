@@ -39,7 +39,7 @@ public abstract class AbstractImageLoader {
     if (response.isOk()) {
       return new AttachmentData(response.getResponseEntity().getType(), response.getResponseEntity().getData());
     } else {
-      logger.severe(String.format("Image download failed from %s on [%d] %s", uri.toString(), response.getStatus(), response.getMessage()));
+      logger.log(Level.SEVERE, () -> String.format("Image download failed from %s on [%d] %s", uri.toString(), response.getStatus(), response.getMessage()));
     }
     
     return null;

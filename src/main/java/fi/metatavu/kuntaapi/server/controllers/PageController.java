@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -65,7 +66,7 @@ public class PageController {
         if (pages != null) {
           result.addAll(pages);
         } else {
-          logger.severe(String.format("Page provider %s returned null when listing pages", pageProvider.getClass().getName())); 
+          logger.log(Level.SEVERE, () -> String.format("Page provider %s returned null when listing pages", pageProvider.getClass().getName())); 
         }
       }
     }

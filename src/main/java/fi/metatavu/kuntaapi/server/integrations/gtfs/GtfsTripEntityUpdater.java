@@ -85,7 +85,7 @@ public class GtfsTripEntityUpdater extends EntityUpdater<GtfsTripEntityTask> {
     Trip gtfsTrip = task.getEntity();
     OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(task.getOrganizationId(), KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiOrganizationId == null) {
-      logger.log(Level.SEVERE, "Could not translate organization %s into Kunta API id", task.getOrganizationId());
+      logger.log(Level.SEVERE, () -> String.format("Could not translate organization %s into Kunta API id", task.getOrganizationId()));
       return;
     }
     
@@ -117,7 +117,7 @@ public class GtfsTripEntityUpdater extends EntityUpdater<GtfsTripEntityTask> {
       modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(kuntaApiTrip));
       gtfsPublicTransportTripCache.put(kuntaApiTripId, kuntaApiTrip);
     } else {
-      logger.severe(String.format("Failed to translate gtfs trip %s", identifier.getKuntaApiId()));
+      logger.log(Level.SEVERE, () -> String.format("Failed to translate gtfs trip %s", identifier.getKuntaApiId()));
     }
   }
 }

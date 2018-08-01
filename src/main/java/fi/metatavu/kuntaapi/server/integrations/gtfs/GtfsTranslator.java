@@ -116,13 +116,13 @@ public class GtfsTranslator {
   private TimeZone getOrganizationTimeZone(OrganizationId organizationId) {
     String timeZoneString = organizationSettingController.getSettingValue(organizationId, GtfsConsts.ORGANIZATION_SETTING_GTFS_TIMEZONE);
     if(timeZoneString == null) {
-      logger.log(Level.SEVERE, String.format("Missing organization gtfs timezone setting for organization %s", organizationId));
+      logger.log(Level.SEVERE, () -> String.format("Missing organization gtfs timezone setting for organization %s", organizationId));
       return null;
     }
     
     TimeZone result = TimeZone.getTimeZone(timeZoneString);
     if(result == null) {
-      logger.log(Level.SEVERE, String.format("Malformed organization gtfs timezone setting for organization %s", organizationId));
+      logger.log(Level.SEVERE, () -> String.format("Malformed organization gtfs timezone setting for organization %s", organizationId));
       return null;
     }
     
