@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+  <changeSet id="0" author="antti.leppa">
+    <preConditions onFail="MARK_RAN"> 
+      <not>
+        <tableExists tableName="Identifier"/>    
+      </not>
+    </preConditions>
+    
+    <createTable tableName="Identifier">
+      <column name="id" type="bigint(20)" autoIncrement="true">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="kuntaApiId" type="varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="source" type="varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="sourceId" type="varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="type" type="varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+    
+    <addUniqueConstraint constraintName="UK1js2b5xvk9obx1f7nf5fxmhlx" columnNames="type,source,sourceId" tableName="Identifier"/>
+    <addUniqueConstraint constraintName="UKo0se1m5aqhec7bvoynayxcw0s" columnNames="type,source,kuntaApiId" tableName="Identifier"/>
+    
+    <createTable tableName="OrganizationSetting">
+      <column name="id" type="bigint(20)" autoIncrement="true">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="settingKey" type="varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="organizationKuntaApiId" type="varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="value" type="longtext">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+    
+    <addUniqueConstraint constraintName="UKoe2i4hm4mi5e81td7v1kymq4b" columnNames="organizationKuntaApiId,settingKey" tableName="OrganizationSetting"/>
+    
+    <createTable tableName="SystemSetting">
+      <column name="id" type="bigint(20)" autoIncrement="true">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="settingKey" type="varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="value" type="longtext">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+    
+    <addUniqueConstraint constraintName="UK_2bxruoc4f804oo1i8hvn1lqff" columnNames="settingKey" tableName="SystemSetting"/>
+    <addUniqueConstraint constraintName="UK2bxruoc4f804oo1i8hvn1lqff" columnNames="settingKey" tableName="SystemSetting"/>    
+    
+    <sql dbms="mysql">alter table Identifier convert to character set utf8 collate utf8_unicode_ci</sql>
+    <sql dbms="mysql">alter table OrganizationSetting convert to character set utf8 collate utf8_unicode_ci</sql>
+    <sql dbms="mysql">alter table SystemSetting convert to character set utf8 collate utf8_unicode_ci</sql>
+  </changeSet>
+
+  <changeSet id="1" author="antti.leppa">
+    <delete tableName="Identifier">
+      <where>type not in ('SERVICE', 'ORGANIZATION')</where>
+    </delete>
+    <dropUniqueConstraint tableName="Identifier" constraintName="UK1js2b5xvk9obx1f7nf5fxmhlx"/>
+    <dropUniqueConstraint tableName="Identifier" constraintName="UKo0se1m5aqhec7bvoynayxcw0s"/>    
+    <addColumn tableName="Identifier">
+      <column name="organizationKuntaApiId" type="varchar(255)"></column>
+    </addColumn>
+    <addUniqueConstraint constraintName="UK_IDENTIFIER_SOURCE" tableName="Identifier" columnNames="organizationKuntaApiId,type,source,sourceId" />
+    <addUniqueConstraint constraintName="UK_IDENTIFIER_APIID" tableName="Identifier" columnNames="organizationKuntaApiId,type,source,kuntaApiId" />
+  </changeSet>
+  
+  <changeSet id="2" author="antti.leppa">
+    <addColumn tableName="Identifier">
+      <column name="orderIndex" type="bigint(20)">
+        <constraints nullable="false"/>
+      </column>
+    </addColumn>
+    
+    <sql>update Identifier set orderIndex = id</sql>
+  </changeSet>
+
+  <changeSet id="identifier-parent" author="antti.leppa">
+    <addColumn tableName="Identifier">
+      <column name="parent_id" type="bigint(20)">
+        <constraints referencedTableName="Identifier" referencedColumnNames="id" foreignKeyName="FK_IDENTIFIER_PARENT_ID"/>
+      </column>
+      <column name="modified" type="timestamp">
+        <constraints nullable="true"/>
+      </column>
+    </addColumn>
+    
+    <sql>update Identifier set modified = NOW()</sql>
+  </changeSet>
+  
+  <changeSet id="identifier-parent-index" author="antti.leppa">
+    <createIndex tableName="Identifier" indexName="IDENTIFIER_SOURCE_PARENT_TYPE_ORDER">
+      <column name="source"/>
+      <column name="parent_id"/>
+      <column name="type"/>
+      <column name="orderIndex"/>
+    </createIndex>
+  </changeSet>
+  
+  <changeSet id="identifier-kuntaapiid-index" author="antti.leppa">
+    <createIndex tableName="Identifier" indexName="IDENTIFIER_KUNTAAPIID" unique="true">
+      <column name="kuntaApiId"/>
+    </createIndex>
+  </changeSet>
+  
+  <changeSet id="identifier-relation" author="antti.leppa">
+    <createTable tableName="IdentifierRelation">
+      <column name="id" type="bigint(20)" autoIncrement="true">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="parent_id" type="bigint(20)">
+        <constraints referencedTableName="Identifier" referencedColumnNames="id" foreignKeyName="FK_IDENTIFIER_RELATION_PARENT_ID"/>
+      </column>
+      <column name="child_id" type="bigint(20)">
+        <constraints referencedTableName="Identifier" referencedColumnNames="id" foreignKeyName="FK_IDENTIFIER_RELATION_CHILD_ID"/>
+      </column>
+    </createTable>
+    
+    <addUniqueConstraint constraintName="UK_IDENTIFIER_RELATION_PARENT_CHILD" columnNames="parent_id,child_id" tableName="IdentifierRelation"/>
+  </changeSet>
+  
+  <changeSet id="identifier-relation-migrate" author="antti.leppa">
+    <sql dbms="mysql">INSERT INTO IdentifierRelation (child_id, parent_id) SELECT id, parent_id FROM Identifier</sql>
+    <dropIndex tableName="Identifier" indexName="IDENTIFIER_SOURCE_PARENT_TYPE_ORDER"/>
+    <dropForeignKeyConstraint baseTableName="Identifier" constraintName="FK_IDENTIFIER_PARENT_ID"/>
+    <dropColumn tableName="Identifier" columnName="parent_id"/>
+  </changeSet>
+  
+  
+  <changeSet id="client" author="antti.leppa">
+    <createTable tableName="Client">
+      <column name="id" type="bigint(20)" autoIncrement="true">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="name" type="varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="clientId" type="varchar(255)">
+        <constraints nullable="false" unique="true"/>
+      </column>
+      <column name="clientSecret" type="varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="accessType" type="varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+    
+    <createTable tableName="ClientOrganization">
+      <column name="id" type="bigint(20)" autoIncrement="true">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="client_id" type="bigint(20)">
+        <constraints referencedTableName="Identifier" referencedColumnNames="id" foreignKeyName="FK_CLIENT_ORGANIZATION_CLIENT_ID"/>
+      </column>
+      <column name="organizationIdentifier_id" type="bigint(20)">
+        <constraints referencedTableName="Identifier" referencedColumnNames="id" foreignKeyName="FK_CLIENT_ORGANIZATION_IDENTIFIER_ID"/>
+      </column>
+    </createTable>
+  </changeSet>
+  
+  <changeSet id="archived-identifier" author="antti.leppa">
+    
+    <createTable tableName="ArchivedIdentifier">
+      <column name="id" type="bigint(20)" autoIncrement="true">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="kuntaApiId" type="varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="source" type="varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="sourceId" type="varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="type" type="varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="organizationKuntaApiId" type="varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="archived" type="timestamp">
+        <constraints nullable="true"/>
+      </column>
+    </createTable>
+  
+    <addUniqueConstraint constraintName="UK_ARCHIVED_IDENTIFIER_SOURCE" tableName="ArchivedIdentifier" columnNames="organizationKuntaApiId,type,source,sourceId" />
+    <addUniqueConstraint constraintName="UK_ARCHIVED_IDENTIFIER_APIID" tableName="ArchivedIdentifier" columnNames="organizationKuntaApiId,type,source,kuntaApiId" />
+  
+  </changeSet>
+  
+  <changeSet id="archieved-identifier-order-index" author="heikki.kurhinen">
+    <addColumn tableName="ArchivedIdentifier">
+      <column name="orderIndex" type="bigint(20)">
+        <constraints nullable="false"/>
+      </column>
+    </addColumn>
+    <sql dbms="mysql">UPDATE ArchivedIdentifier SET orderIndex = 0</sql>
+  </changeSet>
+  
+  <changeSet id="identifier-organization-ids-nullable" author="antti.leppa">
+    <dropNotNullConstraint tableName="Identifier" columnName="organizationKuntaApiId" columnDataType="varchar(255)"/> 
+    <dropNotNullConstraint tableName="ArchivedIdentifier" columnName="organizationKuntaApiId" columnDataType="varchar(255)"/> 
+  </changeSet>
+  
+  <changeSet id="tasks" author="antti.leppa">
+    
+    <createTable tableName="Task">
+      <column name="id" type="bigint(20)" autoIncrement="true">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="priority" type="boolean">
+        <constraints nullable="false"/>
+      </column>
+      <column name="queue" type="varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="data" type="longblob">
+        <constraints nullable="false"/>
+      </column>
+      <column name="created" type="timestamp">
+        <constraints nullable="true"/>
+      </column>
+    </createTable>
+    
+    <createIndex tableName="Task" indexName="TASK_QUEUE_PRIORITY_CREATED">
+      <column name="queue"/>
+      <column name="priority"/>
+      <column name="created"/>
+    </createIndex>
+    
+  </changeSet>
+  
+  <changeSet id="stored-resources" author="antti.leppa">
+    
+    <createTable tableName="StoredResource">
+      <column name="id" type="bigint(20)" autoIncrement="true">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="identifier_id" type="bigint(20)">
+        <constraints referencedTableName="Identifier" referencedColumnNames="id" foreignKeyName="FK_STORED_RESOURCE_IDENTIFIER_ID" unique="true" uniqueConstraintName="identifier_id" />
+      </column>
+      <column name="data" type="longtext">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+    
+  </changeSet>
+  
+  <changeSet id="stored-resource-type" author="antti-leppa">
+    <addColumn tableName="StoredResource">
+      <column name="type" type="varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+    </addColumn>
+    <sql dbms="mysql">DELETE FROM StoredResource</sql>
+    
+    <createIndex tableName="StoredResource" indexName="STORED_RESOURCE_IDENTIFIER_TYPE" unique="true">
+      <column name="identifier_id"/>
+      <column name="type"/>
+    </createIndex>
+    
+  </changeSet>
+  
+  <changeSet id="stored-resource-drop-old-index" author="antti-leppa">
+    <dropUniqueConstraint tableName="StoredResource" uniqueColumns="identifier_id" constraintName="identifier_id"/>
+  </changeSet>
+  
+  <changeSet id="task-queues" author="antti.leppa">
+    
+    <createTable tableName="TaskQueue">
+      <column name="id" type="bigint(20)" autoIncrement="true">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="name" type="varchar(255)">
+        <constraints nullable="false" unique="true"/>
+      </column>
+      <column name="responsibleNode" type="varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+    
+    <createIndex tableName="TaskQueue" indexName="TASK_QUEUE_NAME_RESPONSIBLE_NODE" unique="true">
+      <column name="name"/>
+      <column name="responsibleNode"/>
+    </createIndex>
+    
+    <sql dbms="mysql">INSERT INTO TaskQueue (name, responsibleNode) SELECT queue, 'UNKNOWN' from Task group by queue</sql>
+    
+    <addColumn tableName="Task">
+      <column name="queue_id" type="bigint(20)">
+        <constraints referencedTableName="TaskQueue" referencedColumnNames="id" foreignKeyName="FK_TASK_TASK_QUEUE_ID"/>
+      </column>
+    </addColumn>
+    
+    <sql dbms="mysql">UPDATE Task t set queue_id = (SELECT id FROM TaskQueue q where q.name = t.queue)</sql>
+    
+    <dropIndex tableName="Task" indexName="TASK_QUEUE_PRIORITY_CREATED" />
+    <dropColumn tableName="Task" columnName="queue"/>
+    
+  </changeSet>
+  
+  <changeSet id="task-priority-index" author="heikki.kurhinen">
+    <createIndex tableName="Task" indexName="TASK__PRIORITY_CREATED">
+      <column name="priority"/>
+      <column name="created"/>
+    </createIndex>
+  </changeSet>
+  
+  <changeSet id="service-channel-types" author="antti.leppa">
+    <sql dbms="mysql">UPDATE ArchivedIdentifier SET type = 'PHONE_SERVICE_CHANNEL' where type = 'PHONE_CHANNEL'</sql>
+    <sql dbms="mysql">UPDATE Identifier SET type = 'PHONE_SERVICE_CHANNEL' where type = 'PHONE_CHANNEL'</sql>
+    <sql dbms="mysql">UPDATE ArchivedIdentifier SET type = 'PRINTABLE_FORM_SERVICE_CHANNEL' where type = 'PRINTABLE_FORM_CHANNEL'</sql>
+    <sql dbms="mysql">UPDATE Identifier SET type = 'PRINTABLE_FORM_SERVICE_CHANNEL' where type = 'PRINTABLE_FORM_CHANNEL'</sql>
+    <sql dbms="mysql">UPDATE ArchivedIdentifier SET type = 'SERVICE_LOCATION_SERVICE_CHANNEL' where type = 'SERVICE_LOCATION_CHANNEL'</sql>
+    <sql dbms="mysql">UPDATE Identifier SET type = 'SERVICE_LOCATION_SERVICE_CHANNEL' where type = 'SERVICE_LOCATION_CHANNEL'</sql>
+    <sql dbms="mysql">UPDATE ArchivedIdentifier SET type = 'WEBPAGE_SERVICE_CHANNEL' where type = 'WEBPAGE_CHANNEL'</sql>
+    <sql dbms="mysql">UPDATE Identifier SET type = 'WEBPAGE_SERVICE_CHANNEL' where type = 'WEBPAGE_CHANNEL'</sql>
+  </changeSet>
+
+  <changeSet id="task-queue-last-returned" author="antti.leppa">
+    <addColumn tableName="TaskQueue">
+      <column name="lastTaskReturned" type="timestamp"/>
+    </addColumn>
+  </changeSet>
+  
+  <changeSet id="stored-binary-resources" author="antti.leppa">
+    
+    <createTable tableName="StoredBinaryResource">
+      <column name="id" type="bigint(20)" autoIncrement="true">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="identifier_id" type="bigint(20)">
+        <constraints referencedTableName="Identifier" referencedColumnNames="id" foreignKeyName="FK_STORED_BINARY_RESOURCE_IDENTIFIER_ID" unique="true" uniqueConstraintName="identifier_id" />
+      </column>
+      <column name="type" type="varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="data" type="longblob">
+        <constraints nullable="false"/>
+      </column>
+      <column name="contentType" type="varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+    
+    <createIndex tableName="StoredBinaryResource" indexName="STORED_BINARY_RESOURCE_IDENTIFIER_TYPE" unique="true">
+      <column name="identifier_id"/>
+      <column name="type"/>
+    </createIndex>
+
+  </changeSet>
+  
+  <changeSet id="stored-binary-resource-drop-old-index" author="antti-leppa">
+    <dropUniqueConstraint tableName="StoredBinaryResource" uniqueColumns="identifier_id" constraintName="identifier_id"/>
+  </changeSet>
+  
+  <changeSet id="remove-organization-service-identifiers" author="antti.leppa">
+    <sql>DELETE FROM StoredResource where identifier_id in (SELECT id FROM Identifier where type = 'ORGANIZATION_SERVICE')</sql>
+    <sql>DELETE FROM IdentifierRelation WHERE child_id in (SELECT id FROM Identifier where type = 'ORGANIZATION_SERVICE') or parent_id in (SELECT id FROM Identifier where type = 'ORGANIZATION_SERVICE')</sql>
+    <sql>DELETE FROM ArchivedIdentifier where type = 'ORGANIZATION_SERVICE'</sql>
+    <sql>DELETE FROM Identifier where type = 'ORGANIZATION_SERVICE'</sql>
+  </changeSet>
+  
+  <changeSet id="task-unique-id" author="antti.leppa">
+    <delete tableName="Task"/>
+  
+    <addColumn tableName="Task">
+      <column name="uniqueId" type="varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+    </addColumn>
+    
+    <createIndex tableName="Task" indexName="UN_TASK_UNIQUE_ID_QUEUE_ID" unique="true">
+      <column name="uniqueId"></column>
+      <column name="queue_id"></column>
+    </createIndex>
+    
+  </changeSet>
+  
+  <changeSet id="test-client" author="antti.leppa" context="test">
+    <sqlFile path="fi/metatavu/kuntaapi/server/liquibase/test-client.sql" />
+  </changeSet>
+  
+  <changeSet id="organization-external-access-token" author="antti.leppa">
+    
+    <createTable tableName="OrganizationExternalAccessToken">
+      <column name="id" type="bigint(20)" autoIncrement="true">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="tokenType" type="varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="accessToken" type="text">
+        <constraints nullable="false"/>
+      </column>
+      <column name="organizationKuntaApiId" type="varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="expires" type="timestamp">
+        <constraints nullable="true"/>
+      </column>
+    </createTable>
+
+  </changeSet>
+    
+  <changeSet id="client-organization-permission-grant" author="antti.leppa">
+    <dropTable tableName="ClientOrganization"/>
+   
+    <createTable tableName="ClientOrganizationPermissionGrant">
+      <column name="id" type="bigint(20)" autoIncrement="true">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="client_id" type="bigint(20)">
+        <constraints referencedTableName="Identifier" referencedColumnNames="id" foreignKeyName="FK_CLIENT_ORGANIZATION_CLIENT_ID"/>
+      </column>
+      <column name="organizationIdentifier_id" type="bigint(20)">
+        <constraints referencedTableName="Identifier" referencedColumnNames="id" foreignKeyName="FK_CLIENT_ORGANIZATION_IDENTIFIER_ID"/>
+      </column>
+      <column name="permission" type="varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+    
+  </changeSet>
+    
+  <changeSet id="client-organization-permission-grant-client-reference" author="antti.leppa">
+    <dropForeignKeyConstraint baseTableName="ClientOrganizationPermissionGrant" constraintName="FK_CLIENT_ORGANIZATION_CLIENT_ID" />
+    <addForeignKeyConstraint baseTableName="ClientOrganizationPermissionGrant" constraintName="FK_CLIENT_ORGANIZATION_CLIENT_ID" baseColumnNames="client_id" referencedTableName="Client" referencedColumnNames="id"/>
+  </changeSet>
+  
+</databaseChangeLog>
