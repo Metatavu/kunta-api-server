@@ -3,6 +3,7 @@ package fi.metatavu.kuntaapi.server.integrations.management;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.inject.Inject;
@@ -127,7 +128,7 @@ public class ManagementPageProvider extends AbstractManagementProvider implement
     if (parentId != null) {
       kuntaApiParentId = idController.translatePageId(parentId, KuntaApiConsts.IDENTIFIER_NAME);
       if (kuntaApiParentId == null) {
-        logger.severe(String.format("Could not translate page %s into Kunta API page id", parentId.getId()));
+        logger.log(Level.SEVERE, () -> String.format("Could not translate page %s into Kunta API page id", parentId.getId()));
         return Collections.emptyList();
       }
     }
@@ -186,24 +187,15 @@ public class ManagementPageProvider extends AbstractManagementProvider implement
   private boolean isAcceptablePageByParentIncludingUnmapped(OrganizationId organizationId, Page page, PageId kuntaApiParentId) {
     PageId pageParentPageId = kuntaApiIdFactory.createPageId(organizationId, page.getParentId());
     PageId unmappedPageParentPageId = kuntaApiIdFactory.createPageId(organizationId, page.getMeta().getUnmappedParentId());
-    
-    if (idController.idsEqual(pageParentPageId, kuntaApiParentId) || idController.idsEqual(unmappedPageParentPageId, kuntaApiParentId)) {
-      return true;
-    }
-
-    return false;
+    return idController.idsEqual(pageParentPageId, kuntaApiParentId) || idController.idsEqual(unmappedPageParentPageId, kuntaApiParentId);
   }
 
   private boolean isAcceptableRootPageIncludingUnmapped(Page page) {
     if (page.getParentId() == null) {
       return true;
     }
-    
-    if ("ROOT".equals(page.getMeta().getUnmappedParentId())) {
-      return true;
-    }
-    
-    return false;
+
+    return "ROOT".equals(page.getMeta().getUnmappedParentId());
   }
 
 }

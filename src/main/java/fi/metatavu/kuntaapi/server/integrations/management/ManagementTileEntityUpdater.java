@@ -170,7 +170,7 @@ public class ManagementTileEntityUpdater extends EntityUpdater<IdTask<TileId>> {
       AttachmentId kuntaApiAttachmentId = new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
       fi.metatavu.kuntaapi.server.rest.model.Attachment attachment = managementTranslator.translateAttachment(kuntaApiAttachmentId, managementAttachment, ManagementConsts.ATTACHMENT_TYPE_TILE);
       if (attachment == null) {
-        logger.severe(String.format("Could not translate management attachment %s", identifier.getKuntaApiId()));
+        logger.log(Level.SEVERE, () -> String.format("Could not translate management attachment %s", identifier.getKuntaApiId()));
         return null;
       }
       

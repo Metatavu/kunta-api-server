@@ -4,6 +4,7 @@ import static org.elasticsearch.index.query.QueryBuilders.boolQuery;
 import static org.elasticsearch.index.query.QueryBuilders.matchQuery;
 import static org.elasticsearch.index.query.QueryBuilders.queryStringQuery;
 
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -40,7 +41,7 @@ public class FileSearcher {
   public SearchResult<FileId> searchFiles(OrganizationId organizationId, PageId pageId, String queryString, Long firstResult, Long maxResults) {
     OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(organizationId, KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiOrganizationId == null) {
-      logger.severe(String.format("Failed to translate organization %s into Kunta API id", organizationId.toString()));
+      logger.log(Level.SEVERE, () -> String.format("Failed to translate organization %s into Kunta API id", organizationId.toString()));
       return SearchResult.emptyResult();
     }
 
@@ -54,7 +55,7 @@ public class FileSearcher {
     if (pageId != null) {
       PageId kuntaApiPageId = idController.translatePageId(pageId, KuntaApiConsts.IDENTIFIER_NAME);
       if (kuntaApiPageId == null) {
-        logger.severe(String.format("Failed to translate page %s into Kunta API id", pageId.toString()));
+        logger.log(Level.SEVERE, () -> String.format("Failed to translate page %s into Kunta API id", pageId.toString()));
         return SearchResult.emptyResult();
       }
       

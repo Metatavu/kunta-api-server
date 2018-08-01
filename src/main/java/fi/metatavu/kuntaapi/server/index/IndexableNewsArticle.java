@@ -37,7 +37,7 @@ public class IndexableNewsArticle implements Indexable {
   
   @Override
   public String getId() {
-    return newsArticleId;
+    return getNewsArticleId();
   }
 
   @Override

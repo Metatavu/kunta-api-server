@@ -83,7 +83,7 @@ public class GtfsStopEntityUpdater extends EntityUpdater<GtfsStopEntityTask> {
     Stop gtfsStop = task.getEntity();
     OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(task.getOrganizationId(), KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiOrganizationId == null) {
-      logger.log(Level.SEVERE, "Could not translate organization %s into Kunta API id", task.getOrganizationId());
+      logger.log(Level.SEVERE, () -> String.format("Could not translate organization %s into Kunta API id", task.getOrganizationId()));
       return;
     }
     
@@ -101,7 +101,7 @@ public class GtfsStopEntityUpdater extends EntityUpdater<GtfsStopEntityTask> {
       modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(kuntaApiStop));
       gtfsPublicTransportStopCache.put(kuntaApiStopId, kuntaApiStop);
     } else {
-      logger.severe(String.format("Failed to translate gtfs stop %s", identifier.getKuntaApiId()));
+      logger.log(Level.SEVERE, () -> String.format("Failed to translate gtfs stop %s", identifier.getKuntaApiId()));
     }
 
   }

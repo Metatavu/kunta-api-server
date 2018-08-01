@@ -60,12 +60,8 @@ public abstract class AbstractIdProvider implements IdProvider {
     if (getSource().equals(source) && KuntaApiConsts.IDENTIFIER_NAME.equals(target)) {
       return true;
     }
-    
-    if (getSource().equals(target) && KuntaApiConsts.IDENTIFIER_NAME.equals(source)) {
-      return true;
-    }
-    
-    return false;
+
+    return getSource().equals(target) && KuntaApiConsts.IDENTIFIER_NAME.equals(source);
   }
 
   @Override

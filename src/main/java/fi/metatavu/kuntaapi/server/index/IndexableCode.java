@@ -39,7 +39,7 @@ public class IndexableCode implements Indexable {
 
   @Override
   public String getId() {
-    return codeId;
+    return getCode();
   }
 
   @Override

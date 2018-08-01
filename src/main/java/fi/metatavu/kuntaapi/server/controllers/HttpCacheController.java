@@ -47,7 +47,7 @@ public class HttpCacheController {
     }
     
     if (!KuntaApiConsts.IDENTIFIER_NAME.equals(baseId.getSource())) {
-      logger.log(Level.WARNING, String.format("Refused to pass id with source %s to modificationHashCache", baseId.getSource()));
+      logger.log(Level.WARNING, () -> String.format("Refused to pass id with source %s to modificationHashCache", baseId.getSource()));
       return null;
     }
     
