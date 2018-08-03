@@ -2,9 +2,10 @@ package fi.metatavu.kuntaapi.server.discover;
 
 import java.util.Iterator;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
 import javax.annotation.Resource;
 import javax.ejb.EJBContext;
 import javax.ejb.Singleton;
@@ -21,6 +22,9 @@ import fi.metatavu.kuntaapi.server.tasks.Job;
 @ApplicationScoped
 @Startup
 public class Updater {
+
+  @Inject
+  private Logger logger;
 
   @Inject
   @Any
@@ -40,15 +44,9 @@ public class Updater {
     }
   }
   
-  @PreDestroy
-  public void preDestroy() {
-  }
-
   private void startJob(Job job) {
-    System.out.println(String.format("Starting job %s", job.getName()));
-    
+    logger.log(Level.INFO, () -> String.format("Starting job %s", job.getName()));    
     managedScheduledExecutorService.scheduleWithFixedDelay(job, job.getTimerWarmup(), job.getTimerInterval(), TimeUnit.MILLISECONDS);
   }
-
 
 }
