@@ -18,8 +18,8 @@ public class GtfsScheduleEntityTask extends AbstractGtfsEntityTask<ServiceCalend
     // Zero-argument constructor
   }
   
-  public GtfsScheduleEntityTask(OrganizationId organizationId, ServiceCalendar serviceCalendar, List<ServiceCalendarDate> exceptions, Long orderIndex) {
-    super(serviceCalendar, orderIndex);
+  public GtfsScheduleEntityTask(boolean priority, OrganizationId organizationId, ServiceCalendar serviceCalendar, List<ServiceCalendarDate> exceptions, Long orderIndex) {
+    super(String.format("gtfs-schedule-entity-task-%s-%s", organizationId.toString(), serviceCalendar.getId()), priority, serviceCalendar, orderIndex);
     this.organizationId = organizationId;
     this.exceptions = exceptions;
   }
@@ -32,8 +32,4 @@ public class GtfsScheduleEntityTask extends AbstractGtfsEntityTask<ServiceCalend
     return exceptions;
   }
 
-  @Override
-  public String getUniqueId() {
-    return String.format("gtfs-schedule-entity-task-%s-%s", getOrganizationId().toString(), getEntity().getId());
-  }
 }

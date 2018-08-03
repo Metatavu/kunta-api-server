@@ -534,7 +534,7 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
   }
   
   private void updateServiceChannel(String updatedPtvChannelId) {
-    ptvServiceChannelEntityUpdater.execute(new ServiceChannelUpdateTask(updatedPtvChannelId, null));
+    ptvServiceChannelEntityUpdater.execute(new ServiceChannelUpdateTask(true, updatedPtvChannelId, null));
   }
   
   @SuppressWarnings("unchecked")

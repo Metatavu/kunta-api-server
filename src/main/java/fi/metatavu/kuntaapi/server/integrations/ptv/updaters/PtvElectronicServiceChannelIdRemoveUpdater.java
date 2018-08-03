@@ -11,9 +11,6 @@ import javax.ejb.Singleton;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
-import fi.metatavu.ptv.client.ApiResponse;
-import fi.metatavu.ptv.client.ResultType;
-import fi.metatavu.ptv.client.model.V7VmOpenApiElectronicChannel;
 import fi.metatavu.kuntaapi.server.controllers.IdentifierController;
 import fi.metatavu.kuntaapi.server.discover.IdUpdater;
 import fi.metatavu.kuntaapi.server.id.ElectronicServiceChannelId;
@@ -23,6 +20,9 @@ import fi.metatavu.kuntaapi.server.integrations.ptv.client.PtvClient;
 import fi.metatavu.kuntaapi.server.integrations.ptv.tasks.ElectronicServiceChannelRemoveTask;
 import fi.metatavu.kuntaapi.server.integrations.ptv.tasks.ServiceChannelTasksQueue;
 import fi.metatavu.kuntaapi.server.settings.SystemSettingController;
+import fi.metatavu.ptv.client.ApiResponse;
+import fi.metatavu.ptv.client.ResultType;
+import fi.metatavu.ptv.client.model.V7VmOpenApiElectronicChannel;
 
 @ApplicationScoped
 @Singleton
@@ -84,7 +84,7 @@ public class PtvElectronicServiceChannelIdRemoveUpdater extends IdUpdater {
       String path = String.format("/api/%s/ServiceChannel/%s", PtvConsts.VERSION, ptvElectronicServiceChannelId.getId());
       ApiResponse<V7VmOpenApiElectronicChannel> response = ptvClient.doGETRequest(null, path, new ResultType<V7VmOpenApiElectronicChannel>() {}, null, null);
       if (response.getStatus() == 404) {
-        serviceChannelTasksQueue.enqueueTask(false, new ElectronicServiceChannelRemoveTask(ptvElectronicServiceChannelId));
+        serviceChannelTasksQueue.enqueueTask(new ElectronicServiceChannelRemoveTask(false, ptvElectronicServiceChannelId));
       }
     }
     

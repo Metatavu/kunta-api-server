@@ -20,7 +20,7 @@ import fi.metatavu.kuntaapi.server.id.AnnouncementId;
 import fi.metatavu.kuntaapi.server.id.OrganizationId;
 import fi.metatavu.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.metatavu.kuntaapi.server.integrations.management.client.ManagementApi;
-import fi.metatavu.kuntaapi.server.integrations.management.tasks.AttachmentIdTaskQueue;
+import fi.metatavu.kuntaapi.server.integrations.management.tasks.AnnouncementIdTaskQueue;
 import fi.metatavu.kuntaapi.server.persistence.model.Identifier;
 import fi.metatavu.kuntaapi.server.resources.AnnouncementResourceContainer;
 import fi.metatavu.kuntaapi.server.settings.OrganizationSettingController;
@@ -58,7 +58,7 @@ public class ManagementAnnouncementEntityUpdater extends EntityUpdater<IdTask<An
   private ModificationHashCache modificationHashCache;
   
   @Inject
-  private AttachmentIdTaskQueue attachmentIdTaskQueue;
+  private AnnouncementIdTaskQueue announcementIdTaskQueue;
 
   @Override
   public String getName() {
@@ -82,7 +82,7 @@ public class ManagementAnnouncementEntityUpdater extends EntityUpdater<IdTask<An
   }
 
   private void executeNextTask() {
-    IdTask<AnnouncementId> task = attachmentIdTaskQueue.next();
+    IdTask<AnnouncementId> task = announcementIdTaskQueue.next();
     if (task != null) {
       execute(task);
     }

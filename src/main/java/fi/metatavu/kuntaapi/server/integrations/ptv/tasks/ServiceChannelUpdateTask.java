@@ -13,8 +13,8 @@ public class ServiceChannelUpdateTask extends AbstractServiceChannelTask {
     // Zero-argument constructor
   }
 
-  public ServiceChannelUpdateTask(String id, Long orderIndex) {
-    super(Operation.UPDATE);
+  public ServiceChannelUpdateTask(boolean priority, String id, Long orderIndex) {
+    super( String.format("ptv-service-channel-update-task-%s", id), priority, Operation.UPDATE);
     this.id = id;
     this.orderIndex = orderIndex;
   }
@@ -35,9 +35,4 @@ public class ServiceChannelUpdateTask extends AbstractServiceChannelTask {
     this.orderIndex = orderIndex;
   }
 
-  @Override
-  public String getUniqueId() {
-    return String.format("ptv-service-channel-update-task-%s", getId());
-  }
-  
 }

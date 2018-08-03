@@ -1,9 +1,9 @@
 package fi.metatavu.kuntaapi.server.integrations.tilannehuone.tasks;
 
 import fi.metatavu.kuntaapi.server.integrations.tilannehuone.model.Emergency;
-import fi.metatavu.kuntaapi.server.tasks.AbstractTask;
+import fi.metatavu.metaflow.tasks.impl.DefaultTaskImpl;
 
-public class TilannehuoneEmergencyEntityTask extends AbstractTask {
+public class TilannehuoneEmergencyEntityTask extends DefaultTaskImpl {
   
   private static final long serialVersionUID = -5874811911961670142L;
   
@@ -14,7 +14,8 @@ public class TilannehuoneEmergencyEntityTask extends AbstractTask {
     // Zero-argument constructor
   }
   
-  public TilannehuoneEmergencyEntityTask(Emergency tilannehuoneEmergency, Long orderIndex) {
+  public TilannehuoneEmergencyEntityTask(boolean priority, Emergency tilannehuoneEmergency, Long orderIndex) {
+    super(String.format("tilannehuone-emergency-entity-task-%s", tilannehuoneEmergency.toString()), priority);
     this.tilannehuoneEmergency = tilannehuoneEmergency;
     this.orderIndex = orderIndex;
   }
@@ -33,11 +34,6 @@ public class TilannehuoneEmergencyEntityTask extends AbstractTask {
   
   public void setOrderIndex(Long orderIndex) {
     this.orderIndex = orderIndex;
-  }
-
-  @Override
-  public String getUniqueId() {
-    return String.format("tilannehuone-emergency-entity-task-%s", tilannehuoneEmergency.toString());
   }
   
 }

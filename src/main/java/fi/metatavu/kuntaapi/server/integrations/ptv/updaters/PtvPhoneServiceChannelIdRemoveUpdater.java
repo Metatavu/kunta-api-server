@@ -11,9 +11,6 @@ import javax.ejb.Singleton;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
-import fi.metatavu.ptv.client.ApiResponse;
-import fi.metatavu.ptv.client.ResultType;
-import fi.metatavu.ptv.client.model.V7VmOpenApiPhoneChannel;
 import fi.metatavu.kuntaapi.server.controllers.IdentifierController;
 import fi.metatavu.kuntaapi.server.discover.IdUpdater;
 import fi.metatavu.kuntaapi.server.id.IdController;
@@ -23,6 +20,9 @@ import fi.metatavu.kuntaapi.server.integrations.ptv.client.PtvClient;
 import fi.metatavu.kuntaapi.server.integrations.ptv.tasks.PhoneServiceChannelRemoveTask;
 import fi.metatavu.kuntaapi.server.integrations.ptv.tasks.ServiceChannelTasksQueue;
 import fi.metatavu.kuntaapi.server.settings.SystemSettingController;
+import fi.metatavu.ptv.client.ApiResponse;
+import fi.metatavu.ptv.client.ResultType;
+import fi.metatavu.ptv.client.model.V7VmOpenApiPhoneChannel;
 
 @ApplicationScoped
 @Singleton
@@ -84,7 +84,7 @@ public class PtvPhoneServiceChannelIdRemoveUpdater extends IdUpdater {
       String path = String.format("/api/%s/ServiceChannel/%s", PtvConsts.VERSION, ptvPhoneServiceChannelId.getId());
       ApiResponse<V7VmOpenApiPhoneChannel> response = ptvClient.doGETRequest(null, path, new ResultType<V7VmOpenApiPhoneChannel>() {}, null, null);
       if (response.getStatus() == 404) {
-        serviceChannelTasksQueue.enqueueTask(false, new PhoneServiceChannelRemoveTask(ptvPhoneServiceChannelId));
+        serviceChannelTasksQueue.enqueueTask(new PhoneServiceChannelRemoveTask(false, ptvPhoneServiceChannelId));
       }
     }
     

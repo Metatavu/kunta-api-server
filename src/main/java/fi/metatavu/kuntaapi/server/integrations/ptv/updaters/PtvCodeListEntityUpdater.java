@@ -11,13 +11,6 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Event;
 import javax.inject.Inject;
 
-import fi.metatavu.kuntaapi.server.rest.model.Code;
-import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
-import fi.metatavu.ptv.client.ApiResponse;
-import fi.metatavu.ptv.client.CodeListApi;
-import fi.metatavu.ptv.client.model.VmOpenApiCodeListItem;
-import fi.metatavu.ptv.client.model.VmOpenApiCodeListPage;
-import fi.metatavu.ptv.client.model.VmOpenApiDialCodeListItem;
 import fi.metatavu.kuntaapi.server.cache.ModificationHashCache;
 import fi.metatavu.kuntaapi.server.controllers.IdentifierController;
 import fi.metatavu.kuntaapi.server.discover.EntityUpdater;
@@ -33,7 +26,14 @@ import fi.metatavu.kuntaapi.server.integrations.ptv.resources.PtvCodeListTaskQue
 import fi.metatavu.kuntaapi.server.integrations.ptv.resources.PtvCodeResourceContainer;
 import fi.metatavu.kuntaapi.server.integrations.ptv.translation.PtvTranslator;
 import fi.metatavu.kuntaapi.server.persistence.model.Identifier;
+import fi.metatavu.kuntaapi.server.rest.model.Code;
+import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
 import fi.metatavu.kuntaapi.server.settings.SystemSettingController;
+import fi.metatavu.ptv.client.ApiResponse;
+import fi.metatavu.ptv.client.CodeListApi;
+import fi.metatavu.ptv.client.model.VmOpenApiCodeListItem;
+import fi.metatavu.ptv.client.model.VmOpenApiCodeListPage;
+import fi.metatavu.ptv.client.model.VmOpenApiDialCodeListItem;
 
 @ApplicationScoped
 @Singleton
@@ -235,7 +235,7 @@ public class PtvCodeListEntityUpdater extends EntityUpdater<PtvCodeListTask> {
       if (type == CodeType.POSTAL) {
         fillQueuePostal(codeListApi);
       } else {
-        codeListTaskQueue.enqueueTask(false, new PtvCodeListTask(type, 0));
+        codeListTaskQueue.enqueueTask(new PtvCodeListTask(false, type, 0));
       }
     }
   }
@@ -247,7 +247,7 @@ public class PtvCodeListEntityUpdater extends EntityUpdater<PtvCodeListTask> {
         logger.log(Level.SEVERE, "Failed to read PTV code list size");
       } else {
         for (int page = 0; page < postalCodesResponse.getResponse().getPageCount(); page++) {
-          codeListTaskQueue.enqueueTask(false, new PtvCodeListTask(CodeType.POSTAL, page));
+          codeListTaskQueue.enqueueTask(new PtvCodeListTask(false, CodeType.POSTAL, page));
         }
       }
     } else {

@@ -98,14 +98,14 @@ public class GtfsStopTimeEntityUpdater extends EntityUpdater<GtfsStopTimeEntityT
     PublicTransportStopId gtfsStopId = gtfsIdFactory.createStopId(kuntaApiOrganizationId, gtfsStopTime.getStop().getId().getId());
     PublicTransportStopId kuntaApiStopId = idController.translatePublicTransportStopId(gtfsStopId, KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiStopId == null) {
-      gtfsStopTimeTaskQueue.enqueueTask(false, task);
+      gtfsStopTimeTaskQueue.enqueueTask(task);
       return;
     }
     
     PublicTransportTripId gtfsTripId = gtfsIdFactory.createTripId(kuntaApiOrganizationId, gtfsStopTime.getTrip().getId().getId());
     PublicTransportTripId kuntaApiTripId = idController.translatePublicTransportTripId(gtfsTripId, KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiTripId == null) {
-      gtfsStopTimeTaskQueue.enqueueTask(false, task);
+      gtfsStopTimeTaskQueue.enqueueTask(task);
       return;
     }
     

@@ -130,7 +130,7 @@ public class GtfsIdUpdater extends IdUpdater {
     List<Agency> agencyList = new ArrayList<>(agencies);
     for(int i = 0; i < agencyList.size(); i++) {
       Agency agency = agencyList.get(i);
-      gtfsAgencyEntityTaskEvent.fire(new GtfsAgencyEntityTask(organizationId, agency, (long) i));
+      gtfsAgencyEntityTaskEvent.fire(new GtfsAgencyEntityTask(false, organizationId, agency, (long) i));
     }
   }
 
@@ -139,7 +139,7 @@ public class GtfsIdUpdater extends IdUpdater {
     List<Stop> stopList = new ArrayList<>(stops);
     for(int i = 0; i < stopList.size(); i++) {
       Stop stop = stopList.get(i);
-      gtfsStopEntityTaskEvent.fire(new GtfsStopEntityTask(organizationId, stop, (long) i));
+      gtfsStopEntityTaskEvent.fire(new GtfsStopEntityTask(false, organizationId, stop, (long) i));
     }
   }
   
@@ -148,7 +148,7 @@ public class GtfsIdUpdater extends IdUpdater {
     List<StopTime> stopTimeList = new ArrayList<>(stopTimes);
     for(int i = 0; i < stopTimeList.size(); i++) {
       StopTime stopTime = stopTimeList.get(i);
-      gtfsStopTimeEntityTaskEvent.fire(new GtfsStopTimeEntityTask(organizationId, stopTime, (long) i));
+      gtfsStopTimeEntityTaskEvent.fire(new GtfsStopTimeEntityTask(false, organizationId, stopTime, (long) i));
     }
   }
     
@@ -157,7 +157,7 @@ public class GtfsIdUpdater extends IdUpdater {
     List<Trip> tripList = new ArrayList<>(trips);
     for(int i = 0; i < tripList.size(); i++) {
       Trip trip = tripList.get(i);
-      gtfsTripEntityTaskEvent.fire(new GtfsTripEntityTask(organizationId, trip, (long) i));
+      gtfsTripEntityTaskEvent.fire(new GtfsTripEntityTask(false, organizationId, trip, (long) i));
     }
   }
   
@@ -167,7 +167,7 @@ public class GtfsIdUpdater extends IdUpdater {
     for (int i = 0; i < serviceCalendarList.size(); i++) {
       ServiceCalendar serviceCalendar = serviceCalendarList.get(i);
       List<ServiceCalendarDate> exceptions = getExectionsByServiceCalendar(store, serviceCalendar);
-      gtfsScheduleEntityTaskEvent.fire(new GtfsScheduleEntityTask(organizationId, serviceCalendar, exceptions, (long) i));
+      gtfsScheduleEntityTaskEvent.fire(new GtfsScheduleEntityTask(false, organizationId, serviceCalendar, exceptions, (long) i));
     }
   }
   
@@ -177,7 +177,7 @@ public class GtfsIdUpdater extends IdUpdater {
     for (int i = 0; i < routeList.size(); i++) {
       Route route = routeList.get(i);
       List<ServiceCalendar> serviceCalendars = getServiceCalendarsByRoute(store, route);
-      gtfsRouteEntityTaskEvent.fire(new GtfsRouteEntityTask(organizationId, route, serviceCalendars, (long) i));
+      gtfsRouteEntityTaskEvent.fire(new GtfsRouteEntityTask(false, organizationId, route, serviceCalendars, (long) i));
     }
   }
   

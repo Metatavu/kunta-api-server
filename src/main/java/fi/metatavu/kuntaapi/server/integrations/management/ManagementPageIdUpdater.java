@@ -11,22 +11,21 @@ import java.util.logging.Logger;
 import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
 import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.event.Event;
 import javax.inject.Inject;
 
-import fi.metatavu.management.client.ApiResponse;
-import fi.metatavu.management.client.DefaultApi;
-import fi.metatavu.management.client.model.Page;
 import fi.metatavu.kuntaapi.server.discover.IdUpdater;
 import fi.metatavu.kuntaapi.server.id.OrganizationId;
 import fi.metatavu.kuntaapi.server.id.PageId;
 import fi.metatavu.kuntaapi.server.integrations.management.client.ManagementApi;
 import fi.metatavu.kuntaapi.server.integrations.management.tasks.OrganizationPagesTaskQueue;
+import fi.metatavu.kuntaapi.server.integrations.management.tasks.PageIdTaskQueue;
 import fi.metatavu.kuntaapi.server.settings.OrganizationSettingController;
 import fi.metatavu.kuntaapi.server.tasks.IdTask;
 import fi.metatavu.kuntaapi.server.tasks.IdTask.Operation;
 import fi.metatavu.kuntaapi.server.tasks.OrganizationEntityUpdateTask;
-import fi.metatavu.kuntaapi.server.tasks.TaskRequest;
+import fi.metatavu.management.client.ApiResponse;
+import fi.metatavu.management.client.DefaultApi;
+import fi.metatavu.management.client.model.Page;
 
 @ApplicationScoped
 @Singleton
@@ -47,7 +46,7 @@ public class ManagementPageIdUpdater extends IdUpdater {
   private OrganizationSettingController organizationSettingController; 
   
   @Inject
-  private Event<TaskRequest> taskRequest;
+  private PageIdTaskQueue pageIdTaskQueue; 
   
   @Inject
   private OrganizationPagesTaskQueue organizationPagesTaskQueue;
@@ -93,7 +92,7 @@ public class ManagementPageIdUpdater extends IdUpdater {
     for (int i = 0, l = managementPages.size(); i < l; i++) {
       Page managementPage = managementPages.get(i);
       PageId pageId = new PageId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementPage.getId()));
-      taskRequest.fire(new TaskRequest(false, new IdTask<PageId>(Operation.UPDATE, pageId, (long) i)));
+      pageIdTaskQueue.enqueueTask(new IdTask<PageId>(false, Operation.UPDATE, pageId, (long) i));
     }
   }
   

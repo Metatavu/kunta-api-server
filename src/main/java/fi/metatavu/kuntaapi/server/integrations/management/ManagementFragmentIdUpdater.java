@@ -10,24 +10,23 @@ import java.util.logging.Logger;
 import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
 import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.event.Event;
 import javax.inject.Inject;
 
-import fi.metatavu.management.client.ApiResponse;
-import fi.metatavu.management.client.DefaultApi;
-import fi.metatavu.management.client.model.Fragment;
 import fi.metatavu.kuntaapi.server.controllers.IdentifierController;
 import fi.metatavu.kuntaapi.server.discover.IdUpdater;
 import fi.metatavu.kuntaapi.server.id.FragmentId;
 import fi.metatavu.kuntaapi.server.id.IdController;
 import fi.metatavu.kuntaapi.server.id.OrganizationId;
 import fi.metatavu.kuntaapi.server.integrations.management.client.ManagementApi;
+import fi.metatavu.kuntaapi.server.integrations.management.tasks.FragmentIdTaskQueue;
 import fi.metatavu.kuntaapi.server.integrations.management.tasks.OrganizationFragmentsTaskQueue;
 import fi.metatavu.kuntaapi.server.settings.OrganizationSettingController;
 import fi.metatavu.kuntaapi.server.tasks.IdTask;
 import fi.metatavu.kuntaapi.server.tasks.IdTask.Operation;
 import fi.metatavu.kuntaapi.server.tasks.OrganizationEntityUpdateTask;
-import fi.metatavu.kuntaapi.server.tasks.TaskRequest;
+import fi.metatavu.management.client.ApiResponse;
+import fi.metatavu.management.client.DefaultApi;
+import fi.metatavu.management.client.model.Fragment;
 
 @ApplicationScoped
 @Singleton
@@ -55,9 +54,9 @@ public class ManagementFragmentIdUpdater extends IdUpdater {
   
   @Inject
   private OrganizationFragmentsTaskQueue organizationFragmentsTaskQueue;
-  
+
   @Inject
-  private Event<TaskRequest> taskRequest;
+  private FragmentIdTaskQueue fragmentIdTaskQueue;
 
   @Override
   public String getName() {
@@ -100,7 +99,7 @@ public class ManagementFragmentIdUpdater extends IdUpdater {
     for (int i = 0, l = managementFragments.size(); i < l; i++) {
       Fragment managementFragment = managementFragments.get(i);
       FragmentId fragmentId = new FragmentId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementFragment.getId()));
-      taskRequest.fire(new TaskRequest(false, new IdTask<FragmentId>(Operation.UPDATE, fragmentId, (long) i)));
+      fragmentIdTaskQueue.enqueueTask(new IdTask<FragmentId>(false, Operation.UPDATE, fragmentId, (long) i));
     }
   }
   
@@ -125,7 +124,7 @@ public class ManagementFragmentIdUpdater extends IdUpdater {
         // If status is 404 the fragment has been removed and if its a 403 its either trashed or unpublished.
         // In both cases the fragment should not longer be available throught API
         if (status == 404 || status == 403) {
-          taskRequest.fire(new TaskRequest(false, new IdTask<FragmentId>(Operation.REMOVE, fragmentId)));
+          fragmentIdTaskQueue.enqueueTask(new IdTask<FragmentId>(false, Operation.REMOVE, fragmentId));
         }
       }
     }

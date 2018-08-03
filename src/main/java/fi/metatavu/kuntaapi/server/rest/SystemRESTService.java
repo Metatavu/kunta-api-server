@@ -22,13 +22,11 @@ import javax.ws.rs.core.Response.Status;
 
 import org.apache.commons.lang3.StringUtils;
 
-import fi.metatavu.kuntaapi.server.rest.model.Service;
-import fi.metatavu.kuntaapi.server.rest.model.ServiceLocationServiceChannel;
 import fi.metatavu.kuntaapi.server.controllers.ClientContainer;
 import fi.metatavu.kuntaapi.server.controllers.IdentifierController;
 import fi.metatavu.kuntaapi.server.controllers.SecurityController;
 import fi.metatavu.kuntaapi.server.controllers.ServiceController;
-import fi.metatavu.kuntaapi.server.discover.AbstractUpdater;
+import fi.metatavu.kuntaapi.server.discover.AbstractDiscoverJob;
 import fi.metatavu.kuntaapi.server.discover.EntityUpdater;
 import fi.metatavu.kuntaapi.server.discover.IdUpdater;
 import fi.metatavu.kuntaapi.server.discover.UpdaterHealth;
@@ -57,8 +55,10 @@ import fi.metatavu.kuntaapi.server.integrations.ptv.tasks.ServiceChannelTasksQue
 import fi.metatavu.kuntaapi.server.integrations.ptv.tasks.ServiceChannelUpdateTask;
 import fi.metatavu.kuntaapi.server.integrations.ptv.tasks.ServiceIdTaskQueue;
 import fi.metatavu.kuntaapi.server.persistence.model.Identifier;
+import fi.metatavu.kuntaapi.server.rest.model.Service;
+import fi.metatavu.kuntaapi.server.rest.model.ServiceLocationServiceChannel;
 import fi.metatavu.kuntaapi.server.settings.SystemSettingController;
-import fi.metatavu.kuntaapi.server.tasks.AbstractTaskQueue;
+import fi.metatavu.kuntaapi.server.tasks.AbstractKuntaApiTaskQueue;
 import fi.metatavu.kuntaapi.server.tasks.IdTask;
 import fi.metatavu.kuntaapi.server.tasks.IdTask.Operation;
 
@@ -118,7 +118,7 @@ public class SystemRESTService {
   private OrganizationIdTaskQueue organizationIdTaskQueue;
   
   @Inject  
-  private Instance<AbstractTaskQueue<?>> taskQueues;
+  private Instance<AbstractKuntaApiTaskQueue<?>> taskQueues;
   
   @Inject  
   private Instance<IdUpdater> idUpdaters;
@@ -307,7 +307,7 @@ public class SystemRESTService {
           if (serviceId != null) {
             ServiceId ptvServiceId = idController.translateServiceId(serviceId, PtvConsts.IDENTIFIER_NAME);
             if (ptvServiceId != null) {
-              serviceIdTaskQueue.enqueueTask(true, new IdTask<ServiceId>(Operation.UPDATE, ptvServiceId));
+              serviceIdTaskQueue.enqueueTask(new IdTask<ServiceId>(true, Operation.UPDATE, ptvServiceId));
             } else {
               logger.severe("Could not find ptv id");
             }
@@ -331,7 +331,7 @@ public class SystemRESTService {
     if (inTestModeOrUnrestrictedClient()) {
       List<OrganizationId> organizationIds  = identifierController.listOrganizationIdsBySource(PtvConsts.IDENTIFIER_NAME, first, max);
       for (OrganizationId organizationId : organizationIds) {
-        organizationIdTaskQueue.enqueueTask(true, new IdTask<OrganizationId>(Operation.UPDATE, organizationId));
+        organizationIdTaskQueue.enqueueTask(new IdTask<OrganizationId>(true, Operation.UPDATE, organizationId));
       }
       
       return Response.ok("ok").build();
@@ -354,7 +354,7 @@ public class SystemRESTService {
       for (PageId pageId : pageIds) {
         PageId managementPageId = idController.translatePageId(pageId, ManagementConsts.IDENTIFIER_NAME);
         if (managementPageId != null) {
-          pageIdTaskQueue.enqueueTask(true, new IdTask<PageId>(Operation.UPDATE, managementPageId));
+          pageIdTaskQueue.enqueueTask(new IdTask<PageId>(true, Operation.UPDATE, managementPageId));
         } else {
           logger.severe("Could not find management id");
         }
@@ -380,7 +380,7 @@ public class SystemRESTService {
       for (NewsArticleId newsArticleId : newsArticleIds) {
         NewsArticleId managementNewsArticleId = idController.translateNewsArticleId(newsArticleId, ManagementConsts.IDENTIFIER_NAME);
         if (managementNewsArticleId != null) {
-          newsArticleIdTaskQueue.enqueueTask(true, new IdTask<NewsArticleId>(Operation.UPDATE, managementNewsArticleId));
+          newsArticleIdTaskQueue.enqueueTask(new IdTask<NewsArticleId>(true, Operation.UPDATE, managementNewsArticleId));
         } else {
           logger.severe("Could not find management id");
         }
@@ -402,7 +402,7 @@ public class SystemRESTService {
   @Produces (MediaType.TEXT_PLAIN)
   public Response stopTasks() {
     if (inTestModeOrUnrestrictedClient()) {
-      for (AbstractTaskQueue<?> taskQueue : taskQueues) {
+      for (AbstractKuntaApiTaskQueue<?> taskQueue : taskQueues) {
         taskQueue.stop();
       }
       
@@ -500,7 +500,7 @@ public class SystemRESTService {
       Identifier identifier = identifierController.findIdentifierById(ptvServiceChannelId);
       if (identifier != null) {
         Long orderIndex = identifier.getOrderIndex();
-        serviceChannelTasksQueue.enqueueTask(true, new ServiceChannelUpdateTask(ptvServiceChannelId.getId(), orderIndex));
+        serviceChannelTasksQueue.enqueueTask(new ServiceChannelUpdateTask(true, ptvServiceChannelId.getId(), orderIndex));
       } else {
         logger.severe("Could not find identifier");
       }
@@ -517,7 +517,7 @@ public class SystemRESTService {
     int warningCount = 0;
     int criticalCount= 0;
     
-    public void addUpdaterState(AbstractUpdater updater) {
+    public void addUpdaterState(AbstractDiscoverJob updater) {
       UpdaterHealth updaterHealth = updater.getHealth();
       
       if (updaterHealth == UpdaterHealth.UNKNOWN) {

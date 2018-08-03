@@ -95,13 +95,13 @@ public class KuntaRekryJobIdUpdater extends IdUpdater {
       for (int i = 0; i < kuntaRekryJobs.size(); i++) {
         KuntaRekryJob kuntaRekryJob = kuntaRekryJobs.get(i);
         Long orderIndex = (long) i;
-        kuntaRekryJobTaskQueue.enqueueTask(false, new KuntaRekryJobEntityTask(organizationId, kuntaRekryJob, orderIndex));
+        kuntaRekryJobTaskQueue.enqueueTask(new KuntaRekryJobEntityTask(false, organizationId, kuntaRekryJob, orderIndex));
         JobId kuntaRekryId = new JobId(organizationId, KuntaRekryConsts.IDENTIFIER_NAME, String.valueOf(kuntaRekryJob.getJobId()));
         existingKuntaRekryJobIds.remove(kuntaRekryId);
       }
       
       for (JobId existingKuntaRekryJobId : existingKuntaRekryJobIds) {
-        kuntaRekryJobTaskQueue.enqueueTask(false, new KuntaRekryRemoveJobTask(existingKuntaRekryJobId));
+        kuntaRekryJobTaskQueue.enqueueTask(new KuntaRekryRemoveJobTask(false, existingKuntaRekryJobId));
       }
       
     } else {

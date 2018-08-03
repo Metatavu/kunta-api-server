@@ -9,24 +9,23 @@ import java.util.logging.Logger;
 import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
 import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.event.Event;
 import javax.inject.Inject;
 
-import fi.metatavu.management.client.ApiResponse;
-import fi.metatavu.management.client.DefaultApi;
-import fi.metatavu.management.client.model.Menu;
 import fi.metatavu.kuntaapi.server.controllers.IdentifierController;
 import fi.metatavu.kuntaapi.server.discover.IdUpdater;
 import fi.metatavu.kuntaapi.server.id.IdController;
 import fi.metatavu.kuntaapi.server.id.MenuId;
 import fi.metatavu.kuntaapi.server.id.OrganizationId;
 import fi.metatavu.kuntaapi.server.integrations.management.client.ManagementApi;
+import fi.metatavu.kuntaapi.server.integrations.management.tasks.MenuIdTaskQueue;
 import fi.metatavu.kuntaapi.server.integrations.management.tasks.OrganizationMenusTaskQueue;
 import fi.metatavu.kuntaapi.server.settings.OrganizationSettingController;
 import fi.metatavu.kuntaapi.server.tasks.IdTask;
 import fi.metatavu.kuntaapi.server.tasks.IdTask.Operation;
 import fi.metatavu.kuntaapi.server.tasks.OrganizationEntityUpdateTask;
-import fi.metatavu.kuntaapi.server.tasks.TaskRequest;
+import fi.metatavu.management.client.ApiResponse;
+import fi.metatavu.management.client.DefaultApi;
+import fi.metatavu.management.client.model.Menu;
 
 @ApplicationScoped
 @Singleton
@@ -51,10 +50,10 @@ public class ManagementMenuIdUpdater extends IdUpdater {
   
   @Inject
   private OrganizationMenusTaskQueue organizationMenusTaskQueue;
-  
-  @Inject
-  private Event<TaskRequest> taskRequest;
 
+  @Inject
+  private MenuIdTaskQueue menuIdTaskQueue;
+  
   @Override
   public String getName() {
     return "management-menu-ids";
@@ -84,7 +83,7 @@ public class ManagementMenuIdUpdater extends IdUpdater {
     for (int i = 0, l = managementMenus.size(); i < l; i++) {
       Menu managementMenu = managementMenus.get(i);
       MenuId menuId = new MenuId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementMenu.getId()));
-      taskRequest.fire(new TaskRequest(false, new IdTask<MenuId>(Operation.UPDATE, menuId, (long) i)));
+      menuIdTaskQueue.enqueueTask(new IdTask<MenuId>(false, Operation.UPDATE, menuId, (long) i));
     }
   }
 
@@ -109,7 +108,7 @@ public class ManagementMenuIdUpdater extends IdUpdater {
         // If status is 404 the menu has been removed and if its a 403 its either trashed or unpublished.
         // In both cases the menu should not longer be available throught API
         if (status == 404 || status == 403) {
-          taskRequest.fire(new TaskRequest(false, new IdTask<MenuId>(Operation.REMOVE, menuId)));
+          menuIdTaskQueue.enqueueTask(new IdTask<MenuId>(false, Operation.REMOVE, menuId));
         }
       }
     }

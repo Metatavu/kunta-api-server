@@ -19,9 +19,9 @@ import fi.metatavu.kuntaapi.server.integrations.tpt.TptIdFactory;
 import fi.metatavu.kuntaapi.server.integrations.tpt.client.TptApi;
 import fi.metatavu.kuntaapi.server.integrations.tpt.client.model.ApiResponse;
 import fi.metatavu.kuntaapi.server.integrations.tpt.client.model.DocsEntry;
-import fi.metatavu.kuntaapi.server.integrations.tpt.tasks.TptJobUpdateTask;
 import fi.metatavu.kuntaapi.server.integrations.tpt.tasks.TptJobRemoveTask;
 import fi.metatavu.kuntaapi.server.integrations.tpt.tasks.TptJobTaskQueue;
+import fi.metatavu.kuntaapi.server.integrations.tpt.tasks.TptJobUpdateTask;
 import fi.metatavu.kuntaapi.server.settings.OrganizationSettingController;
 
 /**
@@ -97,12 +97,12 @@ public class TptIdUpdater extends IdUpdater {
     for (DocsEntry docsEntry : response.getDocs()) {
       JobId jobId = tptIdFactory.createJobId(organizationId, docsEntry.getId());
       removedJobIds.remove(jobId);
-      tptJobTaskQueue.enqueueTask(false, new TptJobUpdateTask(organizationId, docsEntry, orderIndex));
+      tptJobTaskQueue.enqueueTask(new TptJobUpdateTask(false, organizationId, docsEntry, orderIndex));
       orderIndex++;
     }
     
     for (JobId removedJobId : removedJobIds) {
-      tptJobTaskQueue.enqueueTask(true, new TptJobRemoveTask(removedJobId));
+      tptJobTaskQueue.enqueueTask(new TptJobRemoveTask(true, removedJobId));
     }
   }
   

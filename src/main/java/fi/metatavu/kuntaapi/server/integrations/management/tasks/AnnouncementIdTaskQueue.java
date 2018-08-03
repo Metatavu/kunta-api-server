@@ -8,7 +8,7 @@ import fi.metatavu.kuntaapi.server.integrations.management.ManagementConsts;
 import fi.metatavu.kuntaapi.server.tasks.AbstractIdTaskQueue;
 
 @ApplicationScoped
-public class AttachmentIdTaskQueue extends AbstractIdTaskQueue<AnnouncementId> {
+public class AnnouncementIdTaskQueue extends AbstractIdTaskQueue<AnnouncementId> {
 
   @Override
   public String getSource() {

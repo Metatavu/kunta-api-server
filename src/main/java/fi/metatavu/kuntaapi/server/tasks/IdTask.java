@@ -1,6 +1,7 @@
 package fi.metatavu.kuntaapi.server.tasks;
 
 import fi.metatavu.kuntaapi.server.id.BaseId;
+import fi.metatavu.metaflow.tasks.impl.DefaultTaskImpl;
 
 /**
  * Id task
@@ -9,7 +10,7 @@ import fi.metatavu.kuntaapi.server.id.BaseId;
  *
  * @param <I> id type
  */
-public class IdTask <I extends BaseId> extends AbstractTask {
+public class IdTask <I extends BaseId> extends DefaultTaskImpl {
   
   private static final long serialVersionUID = -9061073739316230871L;
   
@@ -28,12 +29,14 @@ public class IdTask <I extends BaseId> extends AbstractTask {
   /**
    * Constructor for id task
    * 
+   * @param priority priority
    * @param operation operation
    * @param parentId parent id
    * @param id id
    * @param orderIndex order index
    */
-  public IdTask(Operation operation, BaseId parentId, I id, Long orderIndex) {
+  public IdTask(boolean priority, Operation operation, BaseId parentId, I id, Long orderIndex) {
+	super(String.format("id-%s-task-%s", operation.name(), id.toString()), priority);
     this.parentId = parentId;
     this.id = id;
     this.operation = operation;
@@ -43,22 +46,24 @@ public class IdTask <I extends BaseId> extends AbstractTask {
   /**
    * Constructor for id task
    * 
+   * @param priority priority
    * @param operation operation
    * @param id id
    * @param orderIndex order index
    */
-  public IdTask(Operation operation, I id, Long orderIndex) {
-    this(operation, null, id, orderIndex);
+  public IdTask(boolean priority, Operation operation, I id, Long orderIndex) {
+    this(priority, operation, null, id, orderIndex);
   }
   
   /**
    * Constructor for id task
    * 
+   * @param priority priority
    * @param operation operation
    * @param id id
    */
-  public IdTask(Operation operation, I id) {
-    this(operation, id, null);
+  public IdTask(boolean priority, Operation operation, I id) {
+    this(priority, operation, id, null);
   }
   
   /**
@@ -132,11 +137,6 @@ public class IdTask <I extends BaseId> extends AbstractTask {
   public void setOrderIndex(Long orderIndex) {
     this.orderIndex = orderIndex;
   }
-  
-  @Override
-  public String getUniqueId() {
-    return String.format("id-%s-task-%s", operation.name(), id.toString());
-  }  
   
   /**
    * Enumeration that describes an operation

@@ -106,7 +106,7 @@ public class LinkedEventsEventIdUpdater extends IdUpdater {
           Event event = events.get(i);
           EventId eventId = linkedEventsIdFactory.createEventId(organizationId, event.getId());
           Long orderIndex = (long) (offset + i);
-          linkedEventsEventIdTaskQueue.enqueueTask(false, new IdTask<EventId>(Operation.UPDATE, eventId, orderIndex));
+          linkedEventsEventIdTaskQueue.enqueueTask(new IdTask<EventId>(false, Operation.UPDATE, eventId, orderIndex));
         }
       }
     } else {
@@ -124,7 +124,7 @@ public class LinkedEventsEventIdUpdater extends IdUpdater {
         ApiResponse<Event> response = eventApi.eventRetrieve(linkedEventsEventId.getId());
         int status = response.getStatus();
         if (status == 410) {
-          linkedEventsEventIdTaskQueue.enqueueTask(false, new IdTask<EventId>(Operation.REMOVE, eventId));
+          linkedEventsEventIdTaskQueue.enqueueTask(new IdTask<EventId>(false, Operation.REMOVE, eventId));
         }
       }
     }

@@ -22,7 +22,7 @@ public class ClusterController {
 
   @Lock(LockType.READ)
   public String getLocalNodeName() {
-    Node localNode = channelGroup.getLocalNode();
+    Node localNode = channelGroup.getLocalMember();
     if (localNode != null) {
       return localNode.getName();
     }
@@ -32,7 +32,7 @@ public class ClusterController {
   
   @Lock(LockType.READ)
   public List<String> getNodeNames() {
-    List<Node> nodes = channelGroup.getNodes();
+    List<Node> nodes = channelGroup.getMembership().getMembers();
     
     List<String> result = new ArrayList<>(nodes.size());
     for (Node node : nodes) {

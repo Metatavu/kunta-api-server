@@ -6,14 +6,14 @@ import java.util.logging.Logger;
 
 import javax.inject.Inject;
 
-import fi.metatavu.ptv.client.ApiResponse;
-import fi.metatavu.ptv.client.model.V3VmOpenApiGuidPage;
-import fi.metatavu.ptv.client.model.VmOpenApiItem;
 import fi.metatavu.kuntaapi.server.discover.IdUpdater;
 import fi.metatavu.kuntaapi.server.integrations.ptv.PtvConsts;
 import fi.metatavu.kuntaapi.server.integrations.ptv.tasks.ServiceChannelTasksQueue;
 import fi.metatavu.kuntaapi.server.integrations.ptv.tasks.ServiceChannelUpdateTask;
 import fi.metatavu.kuntaapi.server.settings.SystemSettingController;
+import fi.metatavu.ptv.client.ApiResponse;
+import fi.metatavu.ptv.client.model.V3VmOpenApiGuidPage;
+import fi.metatavu.ptv.client.model.VmOpenApiItem;
 
 @SuppressWarnings ("squid:S3306")
 public abstract class AbstractPtvServiceChannelIdUpdater extends IdUpdater {
@@ -56,7 +56,7 @@ public abstract class AbstractPtvServiceChannelIdUpdater extends IdUpdater {
         for (int i = 0; i < items.size(); i++) {
           VmOpenApiItem item = items.get(i);
           Long orderIndex = getOrderIndex(i, response.getResponse());
-          serviceChannelTasksQueue.enqueueTask(getIsPriority(), new ServiceChannelUpdateTask(item.getId().toString(), orderIndex));
+          serviceChannelTasksQueue.enqueueTask(new ServiceChannelUpdateTask(getIsPriority(), item.getId().toString(), orderIndex));
         }
       }
       

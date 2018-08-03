@@ -1,9 +1,9 @@
 package fi.metatavu.kuntaapi.server.integrations.ptv.tasks;
 
-import fi.metatavu.kuntaapi.server.tasks.AbstractTask;
+import fi.metatavu.metaflow.tasks.impl.DefaultTaskImpl;
 import fi.metatavu.kuntaapi.server.tasks.IdTask.Operation;
 
-public abstract class AbstractServiceChannelTask extends AbstractTask {
+public abstract class AbstractServiceChannelTask extends DefaultTaskImpl {
 
   private static final long serialVersionUID = 7658507520622077865L;
   
@@ -13,8 +13,8 @@ public abstract class AbstractServiceChannelTask extends AbstractTask {
     // Zero-argument constructor
   }
 
-  public AbstractServiceChannelTask(Operation operation) {
-    super();
+  public AbstractServiceChannelTask(String uniqueId, boolean priority, Operation operation) {
+    super(uniqueId, priority);
     this.operation = operation;
   }
 

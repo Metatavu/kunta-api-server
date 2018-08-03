@@ -14,8 +14,8 @@ public class GtfsStopTimeEntityTask extends AbstractGtfsEntityTask<StopTime> {
     // Zero-argument constructor
   }
   
-  public GtfsStopTimeEntityTask(OrganizationId organizationId, StopTime stopTime, Long orderIndex) {
-    super(stopTime, orderIndex);
+  public GtfsStopTimeEntityTask(boolean priority, OrganizationId organizationId, StopTime stopTime, Long orderIndex) {
+    super(String.format("gtfs-stoptime-entity-task-%s-%s", organizationId.toString(), stopTime.getId()), priority, stopTime, orderIndex);
     this.organizationId = organizationId;
   }
   
@@ -23,9 +23,5 @@ public class GtfsStopTimeEntityTask extends AbstractGtfsEntityTask<StopTime> {
     return organizationId;
   }
   
-  @Override
-  public String getUniqueId() {
-    return String.format("gtfs-stoptime-entity-task-%s-%s", getOrganizationId().toString(), getEntity().getId());
-  }
   
 }

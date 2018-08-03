@@ -166,7 +166,7 @@ public class PtvServiceProvider implements ServiceProvider {
           return IntegrationResponse.statusMessage(updateServiceChannelsResponse.getStatus(), updateServiceChannelsResponse.getMessage());
         }
         
-        ptvServiceEntityUpdater.execute(new IdTask<ServiceId>(Operation.UPDATE, ptvServiceId));
+        ptvServiceEntityUpdater.execute(new IdTask<ServiceId>(true, Operation.UPDATE, ptvServiceId));
         
         return findServiceAfterUpdate(serviceId);
       } else {        

@@ -9,21 +9,20 @@ import javax.annotation.PostConstruct;
 import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
 import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.event.Event;
 import javax.inject.Inject;
 
-import fi.metatavu.ptv.client.ApiResponse;
-import fi.metatavu.ptv.client.model.V7VmOpenApiService;
 import fi.metatavu.kuntaapi.server.controllers.IdentifierController;
 import fi.metatavu.kuntaapi.server.discover.IdUpdater;
 import fi.metatavu.kuntaapi.server.id.IdController;
 import fi.metatavu.kuntaapi.server.id.ServiceId;
 import fi.metatavu.kuntaapi.server.integrations.ptv.PtvConsts;
 import fi.metatavu.kuntaapi.server.integrations.ptv.client.PtvApi;
+import fi.metatavu.kuntaapi.server.integrations.ptv.tasks.ServiceIdTaskQueue;
 import fi.metatavu.kuntaapi.server.settings.SystemSettingController;
 import fi.metatavu.kuntaapi.server.tasks.IdTask;
 import fi.metatavu.kuntaapi.server.tasks.IdTask.Operation;
-import fi.metatavu.kuntaapi.server.tasks.TaskRequest;
+import fi.metatavu.ptv.client.ApiResponse;
+import fi.metatavu.ptv.client.model.V7VmOpenApiService;
 
 @ApplicationScoped
 @Singleton
@@ -44,12 +43,12 @@ public class PtvServiceIdRemoveUpdater extends IdUpdater {
 
   @Inject
   private PtvApi ptvApi;
-  
+
   @Inject
   private IdentifierController identifierController;
 
   @Inject
-  private Event<TaskRequest> taskRequest;
+  private ServiceIdTaskQueue serviceIdTaskQueue;
 
   private long offset;
 
@@ -84,7 +83,7 @@ public class PtvServiceIdRemoveUpdater extends IdUpdater {
       
       ApiResponse<V7VmOpenApiService> response = ptvApi.getServiceApi(null).apiV7ServiceByIdGet(ptvServiceId.getId());
       if (response.getStatus() == 404) {
-        taskRequest.fire(new TaskRequest(false, new IdTask<ServiceId>(Operation.REMOVE, ptvServiceId)));
+        serviceIdTaskQueue.enqueueTask(new IdTask<ServiceId>(false, Operation.REMOVE, ptvServiceId));
       }
     }
     

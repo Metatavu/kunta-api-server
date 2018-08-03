@@ -92,7 +92,7 @@ public class GtfsTripEntityUpdater extends EntityUpdater<GtfsTripEntityTask> {
     PublicTransportRouteId gtfsRouteId = gtfsIdFactory.createRouteId(kuntaApiOrganizationId, gtfsTrip.getRoute().getId().getId());
     PublicTransportRouteId kuntaApiRouteId = idController.translatePublicTransportRouteId(gtfsRouteId, KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiRouteId == null) {
-      gtfsTripTaskQueue.enqueueTask(false, task);
+      gtfsTripTaskQueue.enqueueTask(task);
       return;
     }
     
@@ -100,7 +100,7 @@ public class GtfsTripEntityUpdater extends EntityUpdater<GtfsTripEntityTask> {
     PublicTransportScheduleId gtfsScheduleId = gtfsIdFactory.createScheduleId(kuntaApiOrganizationId, gtfsTrip.getServiceId().getId());
     PublicTransportScheduleId kuntaApiScheduleId = idController.translatePublicTransportScheduleId(gtfsScheduleId, KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiScheduleId == null) {
-      gtfsTripTaskQueue.enqueueTask(false, task);
+      gtfsTripTaskQueue.enqueueTask(task);
       return;
     }
     

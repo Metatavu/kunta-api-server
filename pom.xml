@@ -106,6 +106,10 @@
     <!-- osgeo.proj4j -->
     
     <osgeo-proj4j.version>0.1.0</osgeo-proj4j.version>
+
+    <!-- Metaflow -->
+
+    <metaflow.version>0.0.2-SNAPSHOT</metaflow.version>
     
     <!-- Test -->
     
@@ -314,6 +318,12 @@
           <artifactId>jackson-datatype-jsr310</artifactId>
         </exclusion>
       </exclusions>
+    </dependency>
+    
+    <dependency>
+      <groupId>fi.metatavu.metaflow</groupId>
+      <artifactId>metaflow</artifactId>
+      <version>${metaflow.version}</version>
     </dependency>
 
     <dependency>
@@ -895,7 +905,7 @@
                     <command>/subsystem=logging/logger=org.jboss.as.ejb3.deployment:add(level=WARNING)</command>
                     <command>/subsystem=logging/logger=org.jboss.as.config:remove()</command>
                     <command>/subsystem=logging/logger=org.jboss.as.config:add(level=INFO)</command>
-                    <command>/subsystem=logging/logger=fi.metatavu.kuntaapi.server.tasks.AbstractTaskQueue:add(level=WARNING)</command>
+                    <command>/subsystem=logging/logger=fi.metatavu.kuntaapi.server.tasks.AbstractKuntaApiTaskQueue:add(level=WARNING)</command>
                     <command>/subsystem=logging/logger=fi.metatavu.kuntaapi.server.tasks.TaskQueueDistributor:add(level=WARNING)</command>
                     <command>/subsystem=logging/logger=fi.metatavu.kuntaapi.server.controllers.TaskController:add(level=SEVERE)</command>
                     <command>/subsystem=logging/logger=fi.metatavu.kuntaapi.server.index.AbstractIndexHander:add(level=FATAL)</command>

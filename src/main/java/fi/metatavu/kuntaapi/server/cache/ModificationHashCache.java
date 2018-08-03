@@ -17,8 +17,6 @@ import org.infinispan.Cache;
 @Singleton
 public class ModificationHashCache {
   
-  private static final long serialVersionUID = -4814807444228342335L;
-
   @Inject
   private Logger logger;
 

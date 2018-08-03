@@ -14,8 +14,8 @@ public class GtfsTripEntityTask extends AbstractGtfsEntityTask<Trip> {
     // Zero-argument constructor
   }
   
-  public GtfsTripEntityTask(OrganizationId organizationId, Trip trip, Long orderIndex) {
-    super(trip, orderIndex);
+  public GtfsTripEntityTask(boolean priority, OrganizationId organizationId, Trip trip, Long orderIndex) {
+    super(String.format("gtfs-trip-entity-task-%s-%s", organizationId.toString(), trip.getId()), priority, trip, orderIndex);
     this.organizationId = organizationId;
   }
   
@@ -23,8 +23,4 @@ public class GtfsTripEntityTask extends AbstractGtfsEntityTask<Trip> {
     return organizationId;
   }
 
-  @Override
-  public String getUniqueId() {
-    return String.format("gtfs-trip-entity-task-%s-%s", getOrganizationId().toString(), getEntity().getId());
-  }
 }

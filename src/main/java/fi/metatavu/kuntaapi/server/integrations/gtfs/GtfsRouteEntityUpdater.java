@@ -91,7 +91,7 @@ public class GtfsRouteEntityUpdater extends EntityUpdater<GtfsRouteEntityTask> {
     PublicTransportAgencyId gtfsAgencyId = gtfsIdFactory.createAgencyId(kuntaApiOrganizationId, gtfsRoute.getAgency().getId());
     PublicTransportAgencyId kuntaApiAgencyId = idController.translatePublicTransportAgencyId(gtfsAgencyId, KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiAgencyId == null) {
-      gtfsRouteTaskQueue.enqueueTask(false, task);
+      gtfsRouteTaskQueue.enqueueTask(task);
       return;
     }
     

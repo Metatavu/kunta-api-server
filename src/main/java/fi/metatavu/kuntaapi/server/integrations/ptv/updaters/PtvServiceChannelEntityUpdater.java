@@ -485,7 +485,7 @@ public class PtvServiceChannelEntityUpdater extends EntityUpdater <AbstractServi
       if (ManagementConsts.IDENTIFIER_NAME.equals(parentPageIdentifier.getSource())) {
         // TODO: REFACTOR THIS AWAY FROM THE PTV INTEGRATION PLUGIN
         PageId pageId = managementIdFactory.createFromIdentifier(PageId.class, parentPageIdentifier);
-        pageIdTaskQueue.enqueueTask(true, new IdTask<PageId>(Operation.UPDATE, pageId));
+        pageIdTaskQueue.enqueueTask(new IdTask<PageId>(true, Operation.UPDATE, pageId));
       }
     }
   }

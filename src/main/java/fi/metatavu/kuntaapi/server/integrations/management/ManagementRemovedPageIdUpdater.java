@@ -6,11 +6,8 @@ import java.util.concurrent.TimeUnit;
 import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
 import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.event.Event;
 import javax.inject.Inject;
 
-import fi.metatavu.management.client.ApiResponse;
-import fi.metatavu.management.client.DefaultApi;
 import fi.metatavu.kuntaapi.server.controllers.IdentifierController;
 import fi.metatavu.kuntaapi.server.discover.IdUpdater;
 import fi.metatavu.kuntaapi.server.id.IdController;
@@ -18,11 +15,13 @@ import fi.metatavu.kuntaapi.server.id.OrganizationId;
 import fi.metatavu.kuntaapi.server.id.PageId;
 import fi.metatavu.kuntaapi.server.integrations.management.client.ManagementApi;
 import fi.metatavu.kuntaapi.server.integrations.management.tasks.OrganizationPageRemovesTaskQueue;
+import fi.metatavu.kuntaapi.server.integrations.management.tasks.PageIdTaskQueue;
 import fi.metatavu.kuntaapi.server.settings.OrganizationSettingController;
 import fi.metatavu.kuntaapi.server.tasks.IdTask;
 import fi.metatavu.kuntaapi.server.tasks.IdTask.Operation;
 import fi.metatavu.kuntaapi.server.tasks.OrganizationEntityUpdateTask;
-import fi.metatavu.kuntaapi.server.tasks.TaskRequest;
+import fi.metatavu.management.client.ApiResponse;
+import fi.metatavu.management.client.DefaultApi;
 
 @ApplicationScoped
 @Singleton
@@ -43,9 +42,9 @@ public class ManagementRemovedPageIdUpdater extends IdUpdater {
   
   @Inject
   private OrganizationSettingController organizationSettingController; 
-  
+
   @Inject
-  private Event<TaskRequest> taskRequest;
+  private PageIdTaskQueue pageIdTaskQueue; 
   
   @Inject
   private OrganizationPageRemovesTaskQueue organizationPageRemovesTaskQueue;
@@ -84,7 +83,7 @@ public class ManagementRemovedPageIdUpdater extends IdUpdater {
         // If status is 404 the page has been removed and if its a 403 its either trashed or unpublished.
         // In both cases the page should not longer be available throught API
         if (status == 404 || status == 403) {
-          taskRequest.fire(new TaskRequest(false, new IdTask<PageId>(Operation.REMOVE, pageId)));
+          pageIdTaskQueue.enqueueTask(new IdTask<PageId>(false, Operation.REMOVE, pageId));
         }
       }
     }

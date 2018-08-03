@@ -2,9 +2,9 @@ package fi.metatavu.kuntaapi.server.integrations.gtfs.tasks;
 
 import java.io.Serializable;
 
-import fi.metatavu.kuntaapi.server.tasks.AbstractTask;
+import fi.metatavu.metaflow.tasks.impl.DefaultTaskImpl;
 
-public abstract class AbstractGtfsEntityTask <E extends Serializable> extends AbstractTask {
+public abstract class AbstractGtfsEntityTask <E extends Serializable> extends DefaultTaskImpl {
 
   private static final long serialVersionUID = 2631366388691557632L;
   
@@ -15,7 +15,8 @@ public abstract class AbstractGtfsEntityTask <E extends Serializable> extends Ab
     // Zero-argument constructor
   }
   
-  public AbstractGtfsEntityTask(E entity, Long orderIndex) {
+  public AbstractGtfsEntityTask(String uniqueId, boolean priority, E entity, Long orderIndex) {
+    super(uniqueId, priority);
     this.entity = entity;
     this.orderIndex = orderIndex;
   }

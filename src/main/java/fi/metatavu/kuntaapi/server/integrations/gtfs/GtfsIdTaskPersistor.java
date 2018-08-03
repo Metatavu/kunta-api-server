@@ -42,32 +42,32 @@ public class GtfsIdTaskPersistor {
   
   @Transactional (Transactional.TxType.REQUIRES_NEW)
   public void onGtfsAgencyUpdateRequest(@Observes (during = TransactionPhase.AFTER_COMPLETION) GtfsAgencyEntityTask event) {
-    agencyTaskQueue.enqueueTask(false, event);
+    agencyTaskQueue.enqueueTask(event);
   }
   
   @Transactional (Transactional.TxType.REQUIRES_NEW)
   public void onGtfsStopUpdateRequest(@Observes (during = TransactionPhase.AFTER_COMPLETION) GtfsStopEntityTask event) {
-    stopTaskQueue.enqueueTask(false, event);
+    stopTaskQueue.enqueueTask(event);
   }
   
   @Transactional (Transactional.TxType.REQUIRES_NEW)  
   public void onGtfsStopTimeUpdateRequest(@Observes (during = TransactionPhase.AFTER_COMPLETION) GtfsStopTimeEntityTask event) {
-    stopTimeTaskQueue.enqueueTask(false, event);
+    stopTimeTaskQueue.enqueueTask(event);
   }
   
   @Transactional (Transactional.TxType.REQUIRES_NEW)
   public void onGtfsTripUpdateRequest(@Observes (during = TransactionPhase.AFTER_COMPLETION) GtfsTripEntityTask event) {
-    tripTaskQueue.enqueueTask(false, event);
+    tripTaskQueue.enqueueTask(event);
   }
         
   @Transactional (Transactional.TxType.REQUIRES_NEW)
   public void onGtfsScheduleUpdateRequest(@Observes (during = TransactionPhase.AFTER_COMPLETION) GtfsScheduleEntityTask event) {
-    scheduleTaskQueue.enqueueTask(false, event);
+    scheduleTaskQueue.enqueueTask(event);
   }
   
   @Transactional (Transactional.TxType.REQUIRES_NEW)
   public void onGtfsRouteUpdateRequest(@Observes (during = TransactionPhase.AFTER_COMPLETION) GtfsRouteEntityTask event) {
-    routeTaskQueue.enqueueTask(false, event);
+    routeTaskQueue.enqueueTask(event);
   }
   
 }

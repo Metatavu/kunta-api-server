@@ -75,7 +75,7 @@ public class TilannehuoneIdUpdater extends IdUpdater {
     long orderIndex = System.currentTimeMillis();
     for (Emergency tilannehuoneEmergency : tilannehuoneEmergencies) {
       if (systemSettingController.isTestRunning() || lastUpdate == null || (tilannehuoneEmergency.getTime() != null && tilannehuoneEmergency.getTime().isAfter(lastUpdate))) {
-        tilannehuoneEmergencyTaskQueue.enqueueTask(false, new TilannehuoneEmergencyEntityTask(tilannehuoneEmergency, orderIndex));
+        tilannehuoneEmergencyTaskQueue.enqueueTask(new TilannehuoneEmergencyEntityTask(false, tilannehuoneEmergency, orderIndex));
       }
       
       orderIndex++;

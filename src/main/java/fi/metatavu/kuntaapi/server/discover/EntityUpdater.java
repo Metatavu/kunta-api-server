@@ -6,83 +6,32 @@ import java.util.logging.Logger;
 import javax.inject.Inject;
 
 import org.apache.commons.codec.digest.DigestUtils;
-import org.apache.commons.lang3.math.NumberUtils;
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import fi.metatavu.kuntaapi.server.settings.SystemSettingController;
+import fi.metatavu.kuntaapi.server.tasks.ExecutableJob;
+import fi.metatavu.metaflow.tasks.Task;
 
-public abstract class EntityUpdater <T> extends AbstractUpdater {
+public abstract class EntityUpdater <T extends Task> extends AbstractDiscoverJob implements ExecutableJob<T> {
 
   @Inject
   private Logger logger;
 
-  @Inject
-  private SystemSettingController systemSettingController;
-  
-  /**
-   * Executes given task
-   * 
-   * @param task task
-   */
-  public abstract  void execute(T task);
+  @Override
+  public long getTestModeTimerInterval() {
+    return 200l;
+  }
 
   @Override
-  public long getTimerWarmup() {
-    try {
-      if (systemSettingController.inTestMode()) {
-        return 200;
-      }
-      
-      String key = String.format("entity-updater.%s.warmup", getName());
-      Long warmup = NumberUtils.createLong(systemSettingController.getSettingValue(key));
-      if (warmup != null) {
-        return warmup;
-      }
-      
-      logger.log(Level.WARNING, () -> String.format("Warmup for entity updater %s is undefied", key));
-    } catch (Exception e) {
-      if (logger.isLoggable(Level.SEVERE)) {
-        logger.log(Level.SEVERE, "Failed to retrieve warmup", e);
-      }
-    }
-    
-    return 1000l * 60;
+  public long getTestModeTimerWarmup() {
+    return 200l;
   }
-  
-  @Override
-  public long getTimerInterval() {
-    try {
-      if (systemSettingController.inTestMode()) {
-        return 200l;
-      }
-      
-      String key = String.format("entity-updater.%s.interval", getName());
-      Long interval = NumberUtils.createLong(systemSettingController.getSettingValue(key));
-      if (interval != null) {
-        return interval;
-      }
 
-      logger.log(Level.WARNING, () -> String.format("Interval for entity updater %s is undefied", key));
-    } catch (Exception e) {
-      if (logger.isLoggable(Level.SEVERE)) {
-        logger.log(Level.SEVERE, "Failed to retrieve timer interval", e);
-      }
-    }
-    
-    return 1000l * 5;
-  }
-  
   @Override
-  public boolean isEligibleToRun() {
-    if (systemSettingController.inFailsafeMode()) {
-      return false;
-    }
-    
-    return systemSettingController.isNotTestingOrTestRunning();
+  public String getSettingPrefix() {
+    return "entity-updater";
   }
-  
+
   protected String createPojoHash(Object entity) {
     try {
       return DigestUtils.md5Hex(new ObjectMapper().writeValueAsBytes(entity));

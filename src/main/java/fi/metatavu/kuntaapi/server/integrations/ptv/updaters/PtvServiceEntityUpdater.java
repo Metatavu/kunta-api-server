@@ -189,7 +189,7 @@ public class PtvServiceEntityUpdater extends EntityUpdater<IdTask<ServiceId>> {
       if (ManagementConsts.IDENTIFIER_NAME.equals(parentPageIdentifier.getSource())) {
         // TODO: REFACTOR THIS AWAY FROM THE PTV INTEGRATION PLUGIN
         PageId pageId = managementIdFactory.createFromIdentifier(PageId.class, parentPageIdentifier);
-        pageIdTaskQueue.enqueueTask(true, new IdTask<PageId>(Operation.UPDATE, pageId));
+        pageIdTaskQueue.enqueueTask(new IdTask<PageId>(true, Operation.UPDATE, pageId));
       }
     }
   }
@@ -265,7 +265,7 @@ public class PtvServiceEntityUpdater extends EntityUpdater<IdTask<ServiceId>> {
     } 
     
     logger.log(Level.WARNING, () -> String.format("Failed to resolve service channel %s type", serviceChannelId));
-    serviceChannelTasksQueue.enqueueTask(true, new ServiceChannelUpdateTask(serviceChannelId, null));
+    serviceChannelTasksQueue.enqueueTask(new ServiceChannelUpdateTask(true, serviceChannelId, null));
   }
   
   private List<ServiceOrganization> translateServiceOrganizations(List<V6VmOpenApiServiceOrganization> ptvServiceOrganizations) {

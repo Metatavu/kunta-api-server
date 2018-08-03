@@ -10,24 +10,23 @@ import java.util.logging.Logger;
 import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
 import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.event.Event;
 import javax.inject.Inject;
 
-import fi.metatavu.management.client.ApiResponse;
-import fi.metatavu.management.client.DefaultApi;
-import fi.metatavu.management.client.model.Incident;
 import fi.metatavu.kuntaapi.server.controllers.IdentifierController;
 import fi.metatavu.kuntaapi.server.discover.IdUpdater;
-import fi.metatavu.kuntaapi.server.id.IncidentId;
 import fi.metatavu.kuntaapi.server.id.IdController;
+import fi.metatavu.kuntaapi.server.id.IncidentId;
 import fi.metatavu.kuntaapi.server.id.OrganizationId;
 import fi.metatavu.kuntaapi.server.integrations.management.client.ManagementApi;
+import fi.metatavu.kuntaapi.server.integrations.management.tasks.IncidentIdTaskQueue;
 import fi.metatavu.kuntaapi.server.integrations.management.tasks.OrganizationIncidentsTaskQueue;
 import fi.metatavu.kuntaapi.server.settings.OrganizationSettingController;
 import fi.metatavu.kuntaapi.server.tasks.IdTask;
 import fi.metatavu.kuntaapi.server.tasks.IdTask.Operation;
 import fi.metatavu.kuntaapi.server.tasks.OrganizationEntityUpdateTask;
-import fi.metatavu.kuntaapi.server.tasks.TaskRequest;
+import fi.metatavu.management.client.ApiResponse;
+import fi.metatavu.management.client.DefaultApi;
+import fi.metatavu.management.client.model.Incident;
 
 @ApplicationScoped
 @Singleton
@@ -55,10 +54,10 @@ public class ManagementIncidentIdUpdater extends IdUpdater {
   
   @Inject
   private OrganizationIncidentsTaskQueue organizationIncidentsTaskQueue;
-  
-  @Inject
-  private Event<TaskRequest> taskRequest;
 
+  @Inject
+  private IncidentIdTaskQueue incidentIdTaskQueue;
+  
   @Override
   public String getName() {
     return "management-incident-ids";
@@ -100,7 +99,7 @@ public class ManagementIncidentIdUpdater extends IdUpdater {
     for (int i = 0, l = managementIncidents.size(); i < l; i++) {
       Incident managementIncident = managementIncidents.get(i);
       IncidentId incidentId = new IncidentId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementIncident.getId()));
-      taskRequest.fire(new TaskRequest(false, new IdTask<IncidentId>(Operation.UPDATE, incidentId, (long) i)));
+      incidentIdTaskQueue.enqueueTask(new IdTask<IncidentId>(false, Operation.UPDATE, incidentId, (long) i));
     }
   }
   
@@ -125,7 +124,7 @@ public class ManagementIncidentIdUpdater extends IdUpdater {
         // If status is 404 the incident has been removed and if its a 403 its either trashed or unpublished.
         // In both cases the incident should not longer be available throught API
         if (status == 404 || status == 403) {
-          taskRequest.fire(new TaskRequest(false, new IdTask<IncidentId>(Operation.REMOVE, incidentId)));
+          incidentIdTaskQueue.enqueueTask(new IdTask<IncidentId>(false, Operation.REMOVE, incidentId));
         }
       }
     }

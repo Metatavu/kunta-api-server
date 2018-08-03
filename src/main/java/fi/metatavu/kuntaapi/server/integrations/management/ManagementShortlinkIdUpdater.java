@@ -10,24 +10,23 @@ import java.util.logging.Logger;
 import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
 import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.event.Event;
 import javax.inject.Inject;
 
-import fi.metatavu.management.client.ApiResponse;
-import fi.metatavu.management.client.DefaultApi;
-import fi.metatavu.management.client.model.Shortlink;
 import fi.metatavu.kuntaapi.server.controllers.IdentifierController;
 import fi.metatavu.kuntaapi.server.discover.IdUpdater;
-import fi.metatavu.kuntaapi.server.id.ShortlinkId;
 import fi.metatavu.kuntaapi.server.id.IdController;
 import fi.metatavu.kuntaapi.server.id.OrganizationId;
+import fi.metatavu.kuntaapi.server.id.ShortlinkId;
 import fi.metatavu.kuntaapi.server.integrations.management.client.ManagementApi;
 import fi.metatavu.kuntaapi.server.integrations.management.tasks.OrganizationShortlinksTaskQueue;
+import fi.metatavu.kuntaapi.server.integrations.management.tasks.ShortlinkIdTaskQueue;
 import fi.metatavu.kuntaapi.server.settings.OrganizationSettingController;
 import fi.metatavu.kuntaapi.server.tasks.IdTask;
 import fi.metatavu.kuntaapi.server.tasks.IdTask.Operation;
 import fi.metatavu.kuntaapi.server.tasks.OrganizationEntityUpdateTask;
-import fi.metatavu.kuntaapi.server.tasks.TaskRequest;
+import fi.metatavu.management.client.ApiResponse;
+import fi.metatavu.management.client.DefaultApi;
+import fi.metatavu.management.client.model.Shortlink;
 
 @ApplicationScoped
 @Singleton
@@ -52,13 +51,13 @@ public class ManagementShortlinkIdUpdater extends IdUpdater {
   
   @Inject
   private OrganizationSettingController organizationSettingController; 
-  
+
   @Inject
   private OrganizationShortlinksTaskQueue organizationShortlinksTaskQueue;
-  
-  @Inject
-  private Event<TaskRequest> taskRequest;
 
+  @Inject
+  private ShortlinkIdTaskQueue shortlinkIdTaskQueue;
+  
   @Override
   public String getName() {
     return "management-shortlink-ids";
@@ -100,7 +99,7 @@ public class ManagementShortlinkIdUpdater extends IdUpdater {
     for (int i = 0, l = managementShortlinks.size(); i < l; i++) {
       Shortlink managementShortlink = managementShortlinks.get(i);
       ShortlinkId shortlinkId = new ShortlinkId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementShortlink.getId()));
-      taskRequest.fire(new TaskRequest(false, new IdTask<ShortlinkId>(Operation.UPDATE, shortlinkId, (long) i)));
+      shortlinkIdTaskQueue.enqueueTask(new IdTask<ShortlinkId>(false, Operation.UPDATE, shortlinkId, (long) i));
     }
   }
   
@@ -125,7 +124,7 @@ public class ManagementShortlinkIdUpdater extends IdUpdater {
         // If status is 404 the shortlink has been removed and if its a 403 its either trashed or unpublished.
         // In both cases the shortlink should not longer be available throught API
         if (status == 404 || status == 403) {
-          taskRequest.fire(new TaskRequest(false, new IdTask<ShortlinkId>(Operation.REMOVE, shortlinkId)));
+          shortlinkIdTaskQueue.enqueueTask(new IdTask<ShortlinkId>(false, Operation.REMOVE, shortlinkId));
         }
       }
     }

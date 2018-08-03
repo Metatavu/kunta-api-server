@@ -1,6 +1,7 @@
 package fi.metatavu.kuntaapi.server.tasks;
 
 import fi.metatavu.kuntaapi.server.id.OrganizationId;
+import fi.metatavu.metaflow.tasks.impl.DefaultTaskImpl;
 
 /**
  * Organization entity update task
@@ -8,7 +9,7 @@ import fi.metatavu.kuntaapi.server.id.OrganizationId;
  * @author Antti Leppä
  *
  */
-public class OrganizationEntityUpdateTask extends AbstractTask {
+public class OrganizationEntityUpdateTask extends DefaultTaskImpl {
   
   private static final long serialVersionUID = -1860630132331504727L;
   
@@ -28,7 +29,7 @@ public class OrganizationEntityUpdateTask extends AbstractTask {
    * @param organizationId organization id
    */
   public OrganizationEntityUpdateTask(OrganizationId organizationId, int offset) {
-    super();
+    super(String.format("organization-entity-update-task-%s-%d", organizationId.toString(), offset), false);
     this.organizationId = organizationId;
     this.offset = offset;
   }
@@ -47,11 +48,6 @@ public class OrganizationEntityUpdateTask extends AbstractTask {
   
   public void setOffset(int offset) {
     this.offset = offset;
-  }
-
-  @Override
-  public String getUniqueId() {
-    return String.format("organization-entity-update-task-%s-%d", getOrganizationId().toString(), offset);
   }
   
 }

@@ -15,7 +15,8 @@ public class KuntaRekryJobEntityTask extends AbstractKuntaRekryJobTask {
     // Zero-argument constructor
   }
   
-  public KuntaRekryJobEntityTask(OrganizationId organizationId, KuntaRekryJob entity, Long orderIndex) {
+  public KuntaRekryJobEntityTask(boolean priority, OrganizationId organizationId, KuntaRekryJob entity, Long orderIndex) {
+	super(String.format("kuntarekry-job-entity-task-%s-%s", organizationId.toString(), entity.getJobId()), priority);
     this.organizationId = organizationId;
     this.entity = entity;
     this.orderIndex = orderIndex;
@@ -45,8 +46,4 @@ public class KuntaRekryJobEntityTask extends AbstractKuntaRekryJobTask {
     this.orderIndex = orderIndex;
   }
 
-  @Override
-  public String getUniqueId() {
-    return String.format("kuntarekry-job-entity-task-%s-%s", getOrganizationId().toString(), getEntity().getJobId());
-  }
 }

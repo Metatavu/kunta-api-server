@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.enterprise.event.Event;
 import javax.inject.Inject;
 
 import fi.metatavu.ptv.client.ApiResponse;
@@ -14,10 +13,10 @@ import fi.metatavu.kuntaapi.server.discover.IdUpdater;
 import fi.metatavu.kuntaapi.server.id.OrganizationId;
 import fi.metatavu.kuntaapi.server.integrations.ptv.PtvConsts;
 import fi.metatavu.kuntaapi.server.integrations.ptv.PtvIdFactory;
+import fi.metatavu.kuntaapi.server.integrations.ptv.tasks.OrganizationIdTaskQueue;
 import fi.metatavu.kuntaapi.server.settings.SystemSettingController;
 import fi.metatavu.kuntaapi.server.tasks.IdTask;
 import fi.metatavu.kuntaapi.server.tasks.IdTask.Operation;
-import fi.metatavu.kuntaapi.server.tasks.TaskRequest;
 
 @SuppressWarnings ("squid:S3306")
 public abstract class AbstractPtvOrganizationIdUpdater extends IdUpdater {
@@ -27,12 +26,12 @@ public abstract class AbstractPtvOrganizationIdUpdater extends IdUpdater {
 
   @Inject  
   private SystemSettingController systemSettingController;
+
+  @Inject  
+  private PtvIdFactory ptvIdFactory;  
   
   @Inject
-  private PtvIdFactory ptvIdFactory; 
-  
-  @Inject
-  private Event<TaskRequest> taskRequest;
+  private OrganizationIdTaskQueue organizationIdTaskQueue;
 
   public abstract ApiResponse<VmOpenApiOrganizationGuidPage> getPage();
 
@@ -64,7 +63,7 @@ public abstract class AbstractPtvOrganizationIdUpdater extends IdUpdater {
           VmOpenApiOrganizationItem item = items.get(i);
           Long orderIndex = getOrderIndex(i, response.getResponse());
           OrganizationId ptvOrganizationId = ptvIdFactory.createOrganizationId(item.getId());
-          taskRequest.fire(new TaskRequest(getIsPriority(), new IdTask<OrganizationId>(Operation.UPDATE, ptvOrganizationId, orderIndex)));
+          organizationIdTaskQueue.enqueueTask(new IdTask<OrganizationId>(false, Operation.UPDATE, ptvOrganizationId, orderIndex));
         }
       }
       

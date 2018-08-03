@@ -432,7 +432,7 @@ public class GenericHttpClient {
       case 400:
         HttpEntity entity = httpResponse.getEntity();
         try (InputStream contentStream = entity.getContent()) {
-          String content = IOUtils.toString(contentStream);
+          String content = IOUtils.toString(contentStream, "UTF-8");
           if (StringUtils.isNotBlank(content)) {
             return handleErrorResponse(statusCode, content);
           }
@@ -448,7 +448,7 @@ public class GenericHttpClient {
   private <T> Response<T> handleOkResponse(HttpResponse httpResponse, int statusCode, String message, TypeReference<T> typeReference) throws IOException {
     HttpEntity entity = httpResponse.getEntity();
     try {
-      String httpResponseContent = IOUtils.toString(entity.getContent());
+      String httpResponseContent = IOUtils.toString(entity.getContent(), "UTF-8");
       String contentType = getContentType(httpResponse);
       if ("text/xml".equals(contentType)) {
         XmlMapper xmlMapper = getXmlObjectMapper();

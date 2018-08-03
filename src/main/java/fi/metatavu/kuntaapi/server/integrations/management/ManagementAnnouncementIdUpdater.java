@@ -10,24 +10,23 @@ import java.util.logging.Logger;
 import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
 import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.event.Event;
 import javax.inject.Inject;
 
-import fi.metatavu.management.client.ApiResponse;
-import fi.metatavu.management.client.DefaultApi;
-import fi.metatavu.management.client.model.Announcement;
 import fi.metatavu.kuntaapi.server.controllers.IdentifierController;
 import fi.metatavu.kuntaapi.server.discover.IdUpdater;
 import fi.metatavu.kuntaapi.server.id.AnnouncementId;
 import fi.metatavu.kuntaapi.server.id.IdController;
 import fi.metatavu.kuntaapi.server.id.OrganizationId;
 import fi.metatavu.kuntaapi.server.integrations.management.client.ManagementApi;
+import fi.metatavu.kuntaapi.server.integrations.management.tasks.AnnouncementIdTaskQueue;
 import fi.metatavu.kuntaapi.server.integrations.management.tasks.OrganizationAnnouncementsTaskQueue;
 import fi.metatavu.kuntaapi.server.settings.OrganizationSettingController;
 import fi.metatavu.kuntaapi.server.tasks.IdTask;
 import fi.metatavu.kuntaapi.server.tasks.IdTask.Operation;
 import fi.metatavu.kuntaapi.server.tasks.OrganizationEntityUpdateTask;
-import fi.metatavu.kuntaapi.server.tasks.TaskRequest;
+import fi.metatavu.management.client.ApiResponse;
+import fi.metatavu.management.client.DefaultApi;
+import fi.metatavu.management.client.model.Announcement;
 
 @ApplicationScoped
 @Singleton
@@ -55,9 +54,9 @@ public class ManagementAnnouncementIdUpdater extends IdUpdater {
 
   @Inject
   private OrganizationAnnouncementsTaskQueue organizationAnnouncementsTaskQueue;
-  
+
   @Inject
-  private Event<TaskRequest> taskRequest;
+  private AnnouncementIdTaskQueue announcementIdTaskQueue;
 
   @Override
   public String getName() {
@@ -100,7 +99,7 @@ public class ManagementAnnouncementIdUpdater extends IdUpdater {
     for (int i = 0, l = managementAnnouncements.size(); i < l; i++) {
       Announcement managementAnnouncement = managementAnnouncements.get(i);
       AnnouncementId announcementId = new AnnouncementId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementAnnouncement.getId()));
-      taskRequest.fire(new TaskRequest(false, new IdTask<AnnouncementId>(Operation.UPDATE, announcementId, (long) i)));
+      announcementIdTaskQueue.enqueueTask(new IdTask<AnnouncementId>(false, Operation.UPDATE, announcementId, (long) i));
     }
   }
   
@@ -125,7 +124,7 @@ public class ManagementAnnouncementIdUpdater extends IdUpdater {
         // If status is 404 the announcement has been removed and if its a 403 its either trashed or unpublished.
         // In both cases the announcement should not longer be available throught API
         if (status == 404 || status == 403) {
-          taskRequest.fire(new TaskRequest(false, new IdTask<AnnouncementId>(Operation.REMOVE, announcementId)));
+          announcementIdTaskQueue.enqueueTask(new IdTask<AnnouncementId>(false, Operation.REMOVE, announcementId));
         }
       }
     }
