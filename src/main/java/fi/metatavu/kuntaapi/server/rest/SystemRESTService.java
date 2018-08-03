@@ -521,9 +521,9 @@ public class SystemRESTService {
       UpdaterHealth updaterHealth = updater.getHealth();
       
       if (updaterHealth == UpdaterHealth.UNKNOWN) {
-        details.add(String.format("Updater %s health is %s", updater.getName(), updaterHealth));
+        details.add(String.format("DiscoverJobInitializer %s health is %s", updater.getName(), updaterHealth));
       } else if (updaterHealth != UpdaterHealth.OK) {
-        details.add(String.format("Updater %s health is %s (%d ms since last run)", updater.getName(), updaterHealth, updater.getSinceLastRun()));
+        details.add(String.format("DiscoverJobInitializer %s health is %s (%d ms since last run)", updater.getName(), updaterHealth, updater.getSinceLastRun()));
       }
       
       switch (updaterHealth) {

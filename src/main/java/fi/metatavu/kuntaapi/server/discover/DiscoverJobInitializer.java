@@ -21,7 +21,7 @@ import fi.metatavu.kuntaapi.server.tasks.Job;
 @Singleton
 @ApplicationScoped
 @Startup
-public class Updater {
+public class DiscoverJobInitializer {
 
   @Inject
   private Logger logger;
