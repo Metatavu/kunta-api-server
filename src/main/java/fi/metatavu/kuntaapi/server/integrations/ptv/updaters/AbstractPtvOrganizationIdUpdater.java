@@ -63,7 +63,7 @@ public abstract class AbstractPtvOrganizationIdUpdater extends IdUpdater {
           VmOpenApiOrganizationItem item = items.get(i);
           Long orderIndex = getOrderIndex(i, response.getResponse());
           OrganizationId ptvOrganizationId = ptvIdFactory.createOrganizationId(item.getId());
-          organizationIdTaskQueue.enqueueTask(new IdTask<OrganizationId>(false, Operation.UPDATE, ptvOrganizationId, orderIndex));
+          organizationIdTaskQueue.enqueueTask(new IdTask<OrganizationId>(getIsPriority(), Operation.UPDATE, ptvOrganizationId, orderIndex));
         }
       }
       
