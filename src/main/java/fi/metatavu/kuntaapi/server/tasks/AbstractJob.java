@@ -36,6 +36,7 @@ public abstract class AbstractJob implements Job {
   public void run() {
     if (isEligibleToRun()) {
       runTx();
+      lastRun = System.currentTimeMillis();
     }
   }
   
