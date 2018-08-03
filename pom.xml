@@ -109,7 +109,7 @@
 
     <!-- Metaflow -->
 
-    <metaflow.version>0.0.2</metaflow.version>
+    <metaflow.version>0.0.3</metaflow.version>
     
     <!-- Test -->
     
