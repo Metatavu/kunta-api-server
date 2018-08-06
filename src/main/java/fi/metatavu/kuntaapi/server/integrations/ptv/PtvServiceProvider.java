@@ -39,7 +39,7 @@ import fi.metatavu.kuntaapi.server.integrations.ServiceProvider;
 import fi.metatavu.kuntaapi.server.integrations.ptv.client.PtvApi;
 import fi.metatavu.kuntaapi.server.integrations.ptv.translation.KuntaApiPtvTranslator;
 import fi.metatavu.kuntaapi.server.integrations.ptv.translation.PtvOutPtvInTranslator;
-import fi.metatavu.kuntaapi.server.integrations.ptv.updaters.PtvServiceEntityUpdater;
+import fi.metatavu.kuntaapi.server.integrations.ptv.updaters.PtvServiceEntityDiscoverJob;
 import fi.metatavu.kuntaapi.server.tasks.IdTask;
 import fi.metatavu.kuntaapi.server.tasks.IdTask.Operation;
 
@@ -82,7 +82,7 @@ public class PtvServiceProvider implements ServiceProvider {
   private ServiceController serviceController;
 
   @Inject
-  private PtvServiceEntityUpdater ptvServiceEntityUpdater;
+  private PtvServiceEntityDiscoverJob ptvServiceEntityDiscoverJob;
   
   @Override
   public Service findService(ServiceId serviceId) {
@@ -166,7 +166,7 @@ public class PtvServiceProvider implements ServiceProvider {
           return IntegrationResponse.statusMessage(updateServiceChannelsResponse.getStatus(), updateServiceChannelsResponse.getMessage());
         }
         
-        ptvServiceEntityUpdater.execute(new IdTask<ServiceId>(Operation.UPDATE, ptvServiceId));
+        ptvServiceEntityDiscoverJob.execute(new IdTask<ServiceId>(true, Operation.UPDATE, ptvServiceId));
         
         return findServiceAfterUpdate(serviceId);
       } else {        

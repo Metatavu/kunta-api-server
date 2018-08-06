@@ -13,8 +13,8 @@ public class WebPageServiceChannelRemoveTask extends AbstractServiceChannelTask 
     // Zero-argument constructor
   }
 
-  public WebPageServiceChannelRemoveTask(WebPageServiceChannelId webPageServiceChannelId) {
-    super(Operation.REMOVE);
+  public WebPageServiceChannelRemoveTask(boolean priority, WebPageServiceChannelId webPageServiceChannelId) {
+    super(String.format("web-page-service-channel-remove-task-%s", webPageServiceChannelId.toString()), priority, Operation.REMOVE);
     this.webPageServiceChannelId = webPageServiceChannelId;
   }
   
@@ -24,11 +24,6 @@ public class WebPageServiceChannelRemoveTask extends AbstractServiceChannelTask 
   
   public void setWebPageServiceChannelId(WebPageServiceChannelId webPageServiceChannelId) {
     this.webPageServiceChannelId = webPageServiceChannelId;
-  }
-
-  @Override
-  public String getUniqueId() {
-    return String.format("web-page-service-channel-remove-task-%s", webPageServiceChannelId.toString());
   }
   
 }

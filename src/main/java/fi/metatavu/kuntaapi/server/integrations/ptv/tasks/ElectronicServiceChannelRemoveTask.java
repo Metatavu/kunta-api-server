@@ -13,8 +13,8 @@ public class ElectronicServiceChannelRemoveTask extends AbstractServiceChannelTa
     // Zero-argument constructor
   }
 
-  public ElectronicServiceChannelRemoveTask(ElectronicServiceChannelId electronicServiceChannelId) {
-    super(Operation.REMOVE);
+  public ElectronicServiceChannelRemoveTask(boolean priority, ElectronicServiceChannelId electronicServiceChannelId) {
+    super(String.format("ptv-electronic-service-channel-remove-task-%s", electronicServiceChannelId.toString()), priority, Operation.REMOVE);
     this.electronicServiceChannelId = electronicServiceChannelId;
   }
   
@@ -24,11 +24,6 @@ public class ElectronicServiceChannelRemoveTask extends AbstractServiceChannelTa
   
   public void setElectronicServiceChannelId(ElectronicServiceChannelId electronicServiceChannelId) {
     this.electronicServiceChannelId = electronicServiceChannelId;
-  }
-  
-  @Override
-  public String getUniqueId() {
-    return String.format("ptv-electronic-service-channel-remove-task-%s", getElectronicServiceChannelId().toString());
   }
   
 }

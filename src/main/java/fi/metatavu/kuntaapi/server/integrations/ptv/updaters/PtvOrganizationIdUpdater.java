@@ -16,7 +16,7 @@ import fi.metatavu.kuntaapi.server.integrations.ptv.client.PtvApi;
 @Singleton
 @AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
-public class PtvOrganizationIdUpdater extends AbstractPtvOrganizationIdUpdater {
+public class PtvOrganizationIdUpdater extends AbstractPtvOrganizationIdDiscoverJob {
   
   @Inject
   private PtvApi ptvApi;

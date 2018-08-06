@@ -2,10 +2,10 @@ package fi.metatavu.kuntaapi.server.integrations.tilannehuone.tasks;
 
 import javax.enterprise.context.ApplicationScoped;
 
-import fi.metatavu.kuntaapi.server.tasks.AbstractTaskQueue;
+import fi.metatavu.kuntaapi.server.tasks.AbstractKuntaApiTaskQueue;
 
 @ApplicationScoped
-public class TilannehuoneEmergencyTaskQueue extends AbstractTaskQueue<TilannehuoneEmergencyEntityTask> {
+public class TilannehuoneEmergencyTaskQueue extends AbstractKuntaApiTaskQueue<TilannehuoneEmergencyEntityTask> {
 
   @Override
   public String getName() {

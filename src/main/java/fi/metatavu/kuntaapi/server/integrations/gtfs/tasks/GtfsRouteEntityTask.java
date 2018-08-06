@@ -18,8 +18,8 @@ public class GtfsRouteEntityTask extends AbstractGtfsEntityTask<Route> {
     // Zero-argument constructor
   }
   
-  public GtfsRouteEntityTask(OrganizationId organizationId, Route route, List<ServiceCalendar> serviceCalendars, Long orderIndex) {
-    super(route, orderIndex);
+  public GtfsRouteEntityTask(boolean priority, OrganizationId organizationId, Route route, List<ServiceCalendar> serviceCalendars, Long orderIndex) {
+    super(String.format("gtfs-route-entity-task-%s-%s", organizationId.toString(), route.getId()), priority, route, orderIndex);
     this.organizationId = organizationId;
     this.serviceCalendars = serviceCalendars;
   }
@@ -32,9 +32,4 @@ public class GtfsRouteEntityTask extends AbstractGtfsEntityTask<Route> {
     return serviceCalendars;
   }
   
-  @Override
-  public String getUniqueId() {
-    return String.format("gtfs-route-entity-task-%s-%s", getOrganizationId().toString(), getEntity().getId());
-  }
-
 }

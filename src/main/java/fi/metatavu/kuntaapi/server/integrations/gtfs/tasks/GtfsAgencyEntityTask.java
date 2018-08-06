@@ -14,18 +14,13 @@ public class GtfsAgencyEntityTask extends AbstractGtfsEntityTask<Agency> {
     // Zero-argument constructor
   }
   
-  public GtfsAgencyEntityTask(OrganizationId organizationId, Agency agency, Long orderIndex) {
-    super(agency, orderIndex);
+  public GtfsAgencyEntityTask(boolean priority, OrganizationId organizationId, Agency agency, Long orderIndex) {
+    super(String.format("gtfs-agency-entity-task-%s-%s", organizationId.toString(), agency.getId()), priority, agency, orderIndex);
     this.organizationId = organizationId;
   }
   
   public OrganizationId getOrganizationId() {
     return organizationId;
-  }
-  
-  @Override
-  public String getUniqueId() {
-    return String.format("gtfs-agency-entity-task-%s-%s", getOrganizationId().toString(), getEntity().getId());
   }
   
 }

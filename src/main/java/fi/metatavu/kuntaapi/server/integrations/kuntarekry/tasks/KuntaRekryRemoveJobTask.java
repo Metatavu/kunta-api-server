@@ -8,8 +8,8 @@ public class KuntaRekryRemoveJobTask extends AbstractKuntaRekryJobTask {
   
   private JobId kuntaRekryJobId;
 
-  public KuntaRekryRemoveJobTask(JobId kuntaRekryJobId) {
-    super();
+  public KuntaRekryRemoveJobTask(boolean priority, JobId kuntaRekryJobId) {
+    super(String.format("kuntarekry-remove-job-task-%s", kuntaRekryJobId.toString()), priority);
     this.kuntaRekryJobId = kuntaRekryJobId;
   }
 
@@ -17,8 +17,4 @@ public class KuntaRekryRemoveJobTask extends AbstractKuntaRekryJobTask {
     return kuntaRekryJobId;
   }
 
-  @Override
-  public String getUniqueId() {
-    return String.format("kuntarekry-remove-job-task-%s", kuntaRekryJobId.toString());
-  }
 }

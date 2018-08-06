@@ -106,6 +106,10 @@
     <!-- osgeo.proj4j -->
     
     <osgeo-proj4j.version>0.1.0</osgeo-proj4j.version>
+
+    <!-- Metaflow -->
+
+    <metaflow.version>0.0.3</metaflow.version>
     
     <!-- Test -->
     
@@ -314,6 +318,12 @@
           <artifactId>jackson-datatype-jsr310</artifactId>
         </exclusion>
       </exclusions>
+    </dependency>
+    
+    <dependency>
+      <groupId>fi.metatavu.metaflow</groupId>
+      <artifactId>metaflow</artifactId>
+      <version>${metaflow.version}</version>
     </dependency>
 
     <dependency>
@@ -895,15 +905,15 @@
                     <command>/subsystem=logging/logger=org.jboss.as.ejb3.deployment:add(level=WARNING)</command>
                     <command>/subsystem=logging/logger=org.jboss.as.config:remove()</command>
                     <command>/subsystem=logging/logger=org.jboss.as.config:add(level=INFO)</command>
-                    <command>/subsystem=logging/logger=fi.metatavu.kuntaapi.server.tasks.AbstractTaskQueue:add(level=WARNING)</command>
+                    <command>/subsystem=logging/logger=fi.metatavu.kuntaapi.server.tasks.AbstractKuntaApiTaskQueue:add(level=WARNING)</command>
                     <command>/subsystem=logging/logger=fi.metatavu.kuntaapi.server.tasks.TaskQueueDistributor:add(level=WARNING)</command>
                     <command>/subsystem=logging/logger=fi.metatavu.kuntaapi.server.controllers.TaskController:add(level=SEVERE)</command>
                     <command>/subsystem=logging/logger=fi.metatavu.kuntaapi.server.index.AbstractIndexHander:add(level=FATAL)</command>
                     <command>/subsystem=logging/logger=fi.metatavu.kuntaapi.server.security.SecurityFilter:add(level=INFO)</command>
                     <command>/subsystem=logging/logger=fi.metatavu.kuntaapi.server.index.IndexUpdater:add(level=SEVERE)</command>
                     <command>/subsystem=logging/logger=org.onebusaway.gtfs.serialization.GtfsReader:add(level=WARN)</command>
-                    <command>/subsystem=logging/logger=fi.metatavu.kuntaapi.server.integrations.tilannehuone.updaters.TilannehuoneIdUpdater:add(level=SEVERE)</command>
-                    <command>/subsystem=logging/logger=fi.metatavu.kuntaapi.server.integrations.ptv.updaters.PtvOrganizationEntityUpdater:add(level=WARN)</command>
+                    <command>/subsystem=logging/logger=fi.metatavu.kuntaapi.server.integrations.tilannehuone.updaters.TilannehuoneIdDiscoverJob:add(level=SEVERE)</command>
+                    <command>/subsystem=logging/logger=fi.metatavu.kuntaapi.server.integrations.ptv.updaters.PtvOrganizationEntityDiscoverJob:add(level=WARN)</command>
                     <command>/subsystem=infinispan/cache-container=kunta-api:add()</command>
                     <command>/subsystem=infinispan/cache-container=hibernate/local-cache=entity/component=transaction:write-attribute(name=locking,value=OPTIMISTIC)</command>
                     <command>/subsystem=infinispan/cache-container=kunta-api/local-cache=modificationhash:add()</command>

@@ -13,8 +13,8 @@ public class PrintableFormServiceChannelRemoveTask extends AbstractServiceChanne
     // Zero-argument constructor
   }
 
-  public PrintableFormServiceChannelRemoveTask(PrintableFormServiceChannelId printableFormServiceChannelId) {
-    super(Operation.REMOVE);
+  public PrintableFormServiceChannelRemoveTask(boolean priority, PrintableFormServiceChannelId printableFormServiceChannelId) {
+    super(String.format("ptv-printable-form-service-channel-remove-task-%s", printableFormServiceChannelId.toString()),priority, Operation.REMOVE);
     this.printableFormServiceChannelId = printableFormServiceChannelId;
   }
   
@@ -24,11 +24,6 @@ public class PrintableFormServiceChannelRemoveTask extends AbstractServiceChanne
   
   public void setPrintableFormServiceChannelId(PrintableFormServiceChannelId printableFormServiceChannelId) {
     this.printableFormServiceChannelId = printableFormServiceChannelId;
-  }
-
-  @Override
-  public String getUniqueId() {
-    return String.format("ptv-printable-form-service-channel-remove-task-%s", printableFormServiceChannelId.toString());
   }
   
 }

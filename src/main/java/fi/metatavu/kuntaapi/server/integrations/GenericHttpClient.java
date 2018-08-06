@@ -7,6 +7,7 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.nio.charset.Charset;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -432,7 +433,7 @@ public class GenericHttpClient {
       case 400:
         HttpEntity entity = httpResponse.getEntity();
         try (InputStream contentStream = entity.getContent()) {
-          String content = IOUtils.toString(contentStream);
+          String content = IOUtils.toString(contentStream, "UTF-8");
           if (StringUtils.isNotBlank(content)) {
             return handleErrorResponse(statusCode, content);
           }
@@ -443,12 +444,18 @@ public class GenericHttpClient {
         return handleErrorResponse(statusCode, message);
     }
   }
-
-  @SuppressWarnings("unchecked")
+  
+  @SuppressWarnings({"squid:MissingDeprecatedCheck"})
+  @Deprecated
   private <T> Response<T> handleOkResponse(HttpResponse httpResponse, int statusCode, String message, TypeReference<T> typeReference) throws IOException {
+    return handleOkResponse(httpResponse, statusCode, message, typeReference, Charset.defaultCharset());
+  }
+  
+  @SuppressWarnings("unchecked")
+  private <T> Response<T> handleOkResponse(HttpResponse httpResponse, int statusCode, String message, TypeReference<T> typeReference, Charset encoding) throws IOException {
     HttpEntity entity = httpResponse.getEntity();
     try {
-      String httpResponseContent = IOUtils.toString(entity.getContent());
+      String httpResponseContent = IOUtils.toString(entity.getContent(), encoding);
       String contentType = getContentType(httpResponse);
       if ("text/xml".equals(contentType)) {
         XmlMapper xmlMapper = getXmlObjectMapper();

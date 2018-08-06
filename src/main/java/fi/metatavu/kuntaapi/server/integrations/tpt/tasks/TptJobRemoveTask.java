@@ -17,7 +17,8 @@ public class TptJobRemoveTask extends TptAbstractJobTask {
     // Zero-argument constructor
   }
   
-  public TptJobRemoveTask(JobId removedTptJobId) {
+  public TptJobRemoveTask(boolean priority, JobId removedTptJobId) {
+    super(String.format("tpt-job-removed-task-%s", removedTptJobId.getId()), priority);
     this.removedTptJobId = removedTptJobId;
   }
   
@@ -27,11 +28,6 @@ public class TptJobRemoveTask extends TptAbstractJobTask {
   
   public void setRemovedTptJobId(JobId removedTptJobId) {
     this.removedTptJobId = removedTptJobId;
-  }
-  
-  @Override
-  public String getUniqueId() {
-    return String.format("tpt-job-removed-task-%s", getRemovedTptJobId().getId());
   }
   
 }

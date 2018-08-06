@@ -13,18 +13,13 @@ public class GtfsStopEntityTask extends AbstractGtfsEntityTask<Stop> {
     // Zero-argument constructor
   }
   
-  public GtfsStopEntityTask(OrganizationId organizationId, Stop stop, Long orderIndex) {
-    super(stop, orderIndex);
+  public GtfsStopEntityTask(boolean priority, OrganizationId organizationId, Stop stop, Long orderIndex) {
+    super(String.format("gtfs-stop-entity-task-%s-%s", organizationId.toString(), stop.getId()), priority, stop, orderIndex);
     this.organizationId = organizationId;
   }
   
   public OrganizationId getOrganizationId() {
     return organizationId;
   }
-  
-  @Override
-  public String getUniqueId() {
-    return String.format("gtfs-stop-entity-task-%s-%s", getOrganizationId().toString(), getEntity().getId());
-  }
-  
+
 }

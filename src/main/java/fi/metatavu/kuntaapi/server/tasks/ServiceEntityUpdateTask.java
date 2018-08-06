@@ -1,6 +1,7 @@
 package fi.metatavu.kuntaapi.server.tasks;
 
 import fi.metatavu.kuntaapi.server.id.ServiceId;
+import fi.metatavu.metaflow.tasks.impl.DefaultTaskImpl;
 
 /**
  * Service entity update task
@@ -8,7 +9,7 @@ import fi.metatavu.kuntaapi.server.id.ServiceId;
  * @author Antti Leppä
  *
  */
-public class ServiceEntityUpdateTask extends AbstractTask {
+public class ServiceEntityUpdateTask extends DefaultTaskImpl {
   
   private static final long serialVersionUID = 6512130266904607810L;
   
@@ -24,10 +25,11 @@ public class ServiceEntityUpdateTask extends AbstractTask {
   /**
    * Constructor
    * 
+   * @param priority priority
    * @param serviceId organization id
    */
-  public ServiceEntityUpdateTask(ServiceId serviceId) {
-    super();
+  public ServiceEntityUpdateTask(boolean priority, ServiceId serviceId) {
+    super(String.format("ptv-service-entity-update-task-%s", serviceId.toString()), priority);
     this.serviceId = serviceId;
   }
 
@@ -37,11 +39,6 @@ public class ServiceEntityUpdateTask extends AbstractTask {
   
   public void setServiceId(ServiceId serviceId) {
     this.serviceId = serviceId;
-  }
-
-  @Override
-  public String getUniqueId() {
-    return String.format("ptv-service-entity-update-task-%s", serviceId.toString());
   }
   
 }

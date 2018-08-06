@@ -1,9 +1,5 @@
 package fi.metatavu.kuntaapi.server.tasks;
 
-import javax.enterprise.event.Observes;
-
-import org.apache.commons.lang3.StringUtils;
-
 import fi.metatavu.kuntaapi.server.id.BaseId;
 import fi.metatavu.kuntaapi.server.id.IdType;
 
@@ -14,7 +10,7 @@ import fi.metatavu.kuntaapi.server.id.IdType;
  *
  * @param <I> id type
  */
-public abstract class AbstractIdTaskQueue<I extends BaseId> extends AbstractTaskQueue<IdTask<I>> {
+public abstract class AbstractIdTaskQueue<I extends BaseId> extends AbstractKuntaApiTaskQueue<IdTask<I>> {
  
   /**
    * Returns type of queue ids
@@ -33,21 +29,6 @@ public abstract class AbstractIdTaskQueue<I extends BaseId> extends AbstractTask
   @Override
   public String getName() {
     return String.format("%s-%s-ids", getSource(), getType().name());
-  }
-  
-  @SuppressWarnings("unchecked")
-  public void onTaskRequest(@Observes TaskRequest request) {
-    if (request.getTask() instanceof IdTask) {
-      IdTask<?> task = (IdTask<?>) request.getTask();
-      if (isAccetableId(task.getId())) {
-        enqueueTask(request.isPriority(), (IdTask<I>) task);
-      }
-    }
-  }
-
-  @SuppressWarnings ("squid:UnusedPrivateMethod")
-  private boolean isAccetableId(BaseId id) {
-    return id.getType() == getType() && StringUtils.equals(id.getSource(), getSource());
   }
   
 }

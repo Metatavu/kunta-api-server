@@ -1,9 +1,9 @@
 package fi.metatavu.kuntaapi.server.integrations.ptv.resources;
 
 import fi.metatavu.kuntaapi.server.integrations.ptv.CodeType;
-import fi.metatavu.kuntaapi.server.tasks.AbstractTask;
+import fi.metatavu.metaflow.tasks.impl.DefaultTaskImpl;
 
-public class PtvCodeListTask extends AbstractTask {
+public class PtvCodeListTask extends DefaultTaskImpl {
   
   private static final long serialVersionUID = 1617145788854073496L;
   
@@ -14,7 +14,8 @@ public class PtvCodeListTask extends AbstractTask {
     // Zero-argument constructor
   }
   
-  public PtvCodeListTask(CodeType type, Integer page) {
+  public PtvCodeListTask(boolean priority, CodeType type, Integer page) {
+	  super(String.format("ptv-code-list-%s-%d", type, page), priority);
     this.type = type;
     this.page = page;
   }
@@ -25,11 +26,6 @@ public class PtvCodeListTask extends AbstractTask {
   
   public CodeType getType() {
     return type;
-  }
-  
-  @Override
-  public String getUniqueId() {
-    return String.format("ptv-code-list-%s-%d", type, page);
   }
   
 }

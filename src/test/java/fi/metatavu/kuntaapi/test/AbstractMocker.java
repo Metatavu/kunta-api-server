@@ -139,7 +139,7 @@ public class AbstractMocker {
   
   protected String readFile(String file) {
     try (InputStream stream = getClass().getClassLoader().getResourceAsStream(file)) {
-      return IOUtils.toString(stream);
+      return IOUtils.toString(stream, "UTF-8");
     } catch (IOException e) {
       logger.log(Level.SEVERE, FAILED_TO_READ_MOCK_FILE, e);
       fail(e.getMessage());

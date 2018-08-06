@@ -11,7 +11,7 @@ import fi.metatavu.kuntaapi.server.id.ServiceId;
  *
  * @param <I> id type
  */
-public abstract class AbstractServiceEntityTaskQueue extends AbstractTaskQueue<ServiceEntityUpdateTask> {
+public abstract class AbstractServiceEntityTaskQueue extends AbstractKuntaApiTaskQueue<ServiceEntityUpdateTask> {
   
   public abstract String getSource();
   public abstract String getEntity();
@@ -21,13 +21,13 @@ public abstract class AbstractServiceEntityTaskQueue extends AbstractTaskQueue<S
     return String.format("%s-service-%s-entities", getSource(), getEntity());
   }
   
-  public void enqueueTask(ServiceId serviceId) {
-    enqueueTask(false, new ServiceEntityUpdateTask(serviceId));
+  public void enqueueTask(boolean priority, ServiceId serviceId) {
+    enqueueTask(new ServiceEntityUpdateTask(priority, serviceId));
   }
   
   public void enqueueTasks(List<ServiceId> serviceIds) {
     for (ServiceId serviceId : serviceIds) {
-      enqueueTask(serviceId);
+      enqueueTask(false, serviceId);
     }
   }
   

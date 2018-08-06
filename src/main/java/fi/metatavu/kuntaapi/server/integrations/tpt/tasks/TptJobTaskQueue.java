@@ -2,7 +2,7 @@ package fi.metatavu.kuntaapi.server.integrations.tpt.tasks;
 
 import javax.enterprise.context.ApplicationScoped;
 
-import fi.metatavu.kuntaapi.server.tasks.AbstractTaskQueue;
+import fi.metatavu.kuntaapi.server.tasks.AbstractKuntaApiTaskQueue;
 
 /**
  * Task queue for running te-palvelut.fi -integration job tasks
@@ -10,7 +10,7 @@ import fi.metatavu.kuntaapi.server.tasks.AbstractTaskQueue;
  * @author Antti Leppä
  */
 @ApplicationScoped
-public class TptJobTaskQueue extends AbstractTaskQueue<TptAbstractJobTask> {
+public class TptJobTaskQueue extends AbstractKuntaApiTaskQueue<TptAbstractJobTask> {
 
   @Override
   public String getName() {

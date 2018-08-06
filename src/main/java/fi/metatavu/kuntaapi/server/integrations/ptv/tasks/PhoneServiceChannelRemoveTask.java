@@ -13,8 +13,8 @@ public class PhoneServiceChannelRemoveTask extends AbstractServiceChannelTask {
     // Zero-argument constructor
   }
 
-  public PhoneServiceChannelRemoveTask(PhoneServiceChannelId phoneServiceChannelId) {
-    super(Operation.REMOVE);
+  public PhoneServiceChannelRemoveTask(boolean priority, PhoneServiceChannelId phoneServiceChannelId) {
+    super(String.format("ptv-phone-service-channel-remove-task-%s", phoneServiceChannelId.toString()), priority, Operation.REMOVE);
     this.phoneServiceChannelId = phoneServiceChannelId;
   }
   
@@ -26,9 +26,5 @@ public class PhoneServiceChannelRemoveTask extends AbstractServiceChannelTask {
     this.phoneServiceChannelId = phoneServiceChannelId;
   }
 
-  @Override
-  public String getUniqueId() {
-    return String.format("ptv-phone-service-channel-remove-task-%s", phoneServiceChannelId.toString());
-  }
-  
+
 }

@@ -11,7 +11,7 @@ import fi.metatavu.kuntaapi.server.id.OrganizationId;
  *
  * @param <I> id type
  */
-public abstract class AbstractOrganizationEntityTaskQueue extends AbstractTaskQueue<OrganizationEntityUpdateTask> {
+public abstract class AbstractOrganizationEntityTaskQueue extends AbstractKuntaApiTaskQueue<OrganizationEntityUpdateTask> {
   
   public abstract String getSource();
   public abstract String getEntity();
@@ -23,7 +23,7 @@ public abstract class AbstractOrganizationEntityTaskQueue extends AbstractTaskQu
   }
 
   public void enqueueTask(OrganizationId organizationId, int offset) {
-    enqueueTask(false, new OrganizationEntityUpdateTask(organizationId, offset));
+    enqueueTask(new OrganizationEntityUpdateTask(organizationId, offset));
   }
   
   public void enqueueTask(OrganizationId organizationId) {

@@ -20,7 +20,9 @@ public class TptJobUpdateTask extends TptAbstractJobTask {
     // Zero-argument constructor
   }
   
-  public TptJobUpdateTask(OrganizationId kuntaApiOrganizationId, DocsEntry tptJob, Long orderIndex) {
+  public TptJobUpdateTask(boolean priority, OrganizationId kuntaApiOrganizationId, DocsEntry tptJob, Long orderIndex) {
+    super(String.format("tpt-job-update-task-%s", tptJob.getId()), priority);
+    
     this.kuntaApiOrganizationId = kuntaApiOrganizationId;
     this.tptJob = tptJob;
     this.orderIndex = orderIndex;
@@ -48,11 +50,6 @@ public class TptJobUpdateTask extends TptAbstractJobTask {
   
   public void setKuntaApiOrganizationId(OrganizationId kuntaApiOrganizationId) {
     this.kuntaApiOrganizationId = kuntaApiOrganizationId;
-  }
-
-  @Override
-  public String getUniqueId() {
-    return String.format("tpt-job-update-task-%s", tptJob.getId());
   }
   
 }
