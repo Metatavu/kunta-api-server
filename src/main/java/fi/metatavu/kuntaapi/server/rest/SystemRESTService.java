@@ -27,8 +27,8 @@ import fi.metatavu.kuntaapi.server.controllers.IdentifierController;
 import fi.metatavu.kuntaapi.server.controllers.SecurityController;
 import fi.metatavu.kuntaapi.server.controllers.ServiceController;
 import fi.metatavu.kuntaapi.server.discover.AbstractDiscoverJob;
-import fi.metatavu.kuntaapi.server.discover.EntityUpdater;
-import fi.metatavu.kuntaapi.server.discover.IdUpdater;
+import fi.metatavu.kuntaapi.server.discover.EntityDiscoverJob;
+import fi.metatavu.kuntaapi.server.discover.IdDiscoverJob;
 import fi.metatavu.kuntaapi.server.discover.UpdaterHealth;
 import fi.metatavu.kuntaapi.server.id.BaseId;
 import fi.metatavu.kuntaapi.server.id.ElectronicServiceChannelId;
@@ -121,10 +121,10 @@ public class SystemRESTService {
   private Instance<AbstractKuntaApiTaskQueue<?>> taskQueues;
   
   @Inject  
-  private Instance<IdUpdater> idUpdaters;
+  private Instance<IdDiscoverJob> idDiscoverJobs;
   
   @Inject  
-  private Instance<EntityUpdater<?>> entityUpdaters;
+  private Instance<EntityDiscoverJob<?>> entityDiscoverJobs;
   
   /**
    * Returns pong
@@ -440,12 +440,12 @@ public class SystemRESTService {
     UpdaterHealth overallHealth = UpdaterHealth.OK;
     UpdaterDetails updaterDetails = new UpdaterDetails();
     
-    for (IdUpdater idUpdater : idUpdaters) {
-      overallHealth = minHealth(overallHealth, idUpdater.getHealth());
-      updaterDetails.addUpdaterState(idUpdater);
+    for (IdDiscoverJob idDiscoverJob : idDiscoverJobs) {
+      overallHealth = minHealth(overallHealth, idDiscoverJob.getHealth());
+      updaterDetails.addUpdaterState(idDiscoverJob);
     }
 
-    for (EntityUpdater<?> entityUpdater : entityUpdaters) {
+    for (EntityDiscoverJob<?> entityUpdater : entityDiscoverJobs) {
       overallHealth = minHealth(overallHealth, entityUpdater.getHealth());
       updaterDetails.addUpdaterState(entityUpdater);
     }

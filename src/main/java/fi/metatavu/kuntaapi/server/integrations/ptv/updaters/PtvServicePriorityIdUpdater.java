@@ -17,7 +17,7 @@ import fi.metatavu.kuntaapi.server.integrations.ptv.client.PtvApi;
 @Singleton
 @AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
-public class PtvServicePriorityIdUpdater extends AbstractPtvServiceIdUpdater {
+public class PtvServicePriorityIdUpdater extends AbstractPtvServiceIdDiscoverJob {
   
   private static final int UPDATE_SLACK_MINUTE = 3;
   

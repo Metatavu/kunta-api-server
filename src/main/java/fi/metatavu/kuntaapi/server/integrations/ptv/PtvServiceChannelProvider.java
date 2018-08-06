@@ -51,7 +51,7 @@ import fi.metatavu.kuntaapi.server.integrations.ptv.servicechannels.ServiceChann
 import fi.metatavu.kuntaapi.server.integrations.ptv.tasks.ServiceChannelUpdateTask;
 import fi.metatavu.kuntaapi.server.integrations.ptv.translation.KuntaApiPtvTranslator;
 import fi.metatavu.kuntaapi.server.integrations.ptv.translation.PtvOutPtvInTranslator;
-import fi.metatavu.kuntaapi.server.integrations.ptv.updaters.PtvServiceChannelEntityUpdater;
+import fi.metatavu.kuntaapi.server.integrations.ptv.updaters.PtvServiceChannelEntityDiscoverJob;
 
 /**
  * Service channel provider for PTV
@@ -110,7 +110,7 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
   private PtvServiceChannelResolver ptvServiceChannelResolver;
   
   @Inject
-  private PtvServiceChannelEntityUpdater ptvServiceChannelEntityUpdater;
+  private PtvServiceChannelEntityDiscoverJob ptvServiceChannelEntityDiscoverJob;
   
   @Override
   public ElectronicServiceChannel findElectronicServiceChannel(ElectronicServiceChannelId electronicServiceChannelId) {
@@ -534,7 +534,7 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
   }
   
   private void updateServiceChannel(String updatedPtvChannelId) {
-    ptvServiceChannelEntityUpdater.execute(new ServiceChannelUpdateTask(true, updatedPtvChannelId, null));
+    ptvServiceChannelEntityDiscoverJob.execute(new ServiceChannelUpdateTask(true, updatedPtvChannelId, null));
   }
   
   @SuppressWarnings("unchecked")
