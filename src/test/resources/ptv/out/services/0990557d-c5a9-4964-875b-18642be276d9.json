@@ -1,0 +1,273 @@
+{
+  "sourceId" : null,
+  "keywords" : [ {
+    "value" : "palvelutalo",
+    "language" : "fi"
+  }, {
+    "value" : "vanhainkoti",
+    "language" : "fi"
+  } ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Asumispalvelut",
+      "language" : "fi"
+    }, {
+      "value" : "Boendetjänster",
+      "language" : "sv"
+    }, {
+      "value" : "Housing services",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Till denna serviceundergrupp hör bostads- och serviceboendelösningar för äldre och personer med nedsatt funktionsförmåga (subventionerat boende, serviceboende och effektiverat serviceboende), bidrag i samband med dessa samt hjälp- och stödmedel som används hemma. Denna grupp innehåller också stödboendet för omhändertagna barn, långtidssjuka och rehabiliteringsklienter inom missbrukarvården. Till denna grupp hör inte t.ex. hem- och hemsjukvårdstjänster, som finns i sina egna grupper.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains housing and supported housing solutions for older people and the disabled (supported housing, sheltered housing and sheltered housing with 24-hour assistance), the associated benefits and assistive and support devices used at home. The class also contains supported housing services for children in foster care, chronically ill people and persons in substance abuse rehabilitation. This class does not include home care and home nursing services, for example, which have their own classes.",
+      "language" : "en"
+    }, {
+      "value" : "Tähän alapalveluluokkaan kuuluvat ikääntyneiden ja vammaisten asunto- ja palveluasumisratkaisut (tuettu asuminen, palveluasuminen ja tehostettu palveluasuminen), niihin kuuluvat tuet sekä kotona käytettävät apu- ja tukivälineet. Luokkaan kuuluvat myös huostaanotettujen lasten ja pitkäaikaissairaiden perhehoidon ja päihdekuntoutujien tukiasuminen. Luokkaan eivät kuulu esimerkiksi koti- ja kotisairaanhoitopalvelut, jotka ovat omissa luokissaan.",
+      "language" : "fi"
+    } ],
+    "code" : "P4.1",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1024",
+    "parentId" : "079b55da-af80-41ab-9346-c8fdd284afcf",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1023"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "e0391dc4-a880-4e79-8aaa-c81217098606",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "0990557d-c5a9-4964-875b-18642be276d9",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "275d293a-524a-4a7f-b370-b954c036aa20",
+      "name" : "Kaarlentupa"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "32762125-4505-455f-8bbb-6ebc9391be86",
+      "name" : "Fylgia"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "37cea5d9-c760-4dfb-b50b-4dbf3e0523cb",
+      "name" : "Carl & Carolina"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "5011189d-6eb8-4f00-b7f3-e36157e09451",
+      "name" : "Onnenkaivo"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "5bef2879-523c-4117-9232-db81202def60",
+      "name" : "Villa Isolahti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "b18bd28f-1b9d-4a81-a384-0138af4ddb1f",
+      "name" : "Asiakasmaksutoimiston verkkosivu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : "Myös yksityisten palveluasumisen asukkaat valitsee SAS-työryhmä. (Selvitä-arvioi-sijoita.) Lisätietoja antaa johtava sosiaalityöntekijä.",
+    "language" : "fi"
+  }, {
+    "value" : "Vasa stads SAS-arbetsgrupp väljer invånarna till serviceboendeplatserna för äldre. Förkortningen SAS kommer från finskans selvitä - arvioi – sijoita (utred – bedöm – placera).  Det finns kriterier för hur man får en serviceboendeplats. Ytterligare information ger ledande socialarbetaren per telefon. ",
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "Chargeable",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Yksityinen ikäihmisten palveluasuminen",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Yksityinen palveluasuminen",
+    "type" : "AlternativeName"
+  }, {
+    "language" : "sv",
+    "value" : "Privata serviceboende för äldre",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "boendeservice",
+      "language" : "sv"
+    }, {
+      "value" : "asumispalvelut",
+      "language" : "fi"
+    }, {
+      "value" : "housing services",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p17574",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p18203"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan kaupunki ostaa ikäihmisten palveluasumista yksityisistä palvelutaloista.\n\nAsukkaat kalustavat itse asuntonsa tai huoneensa ja saavat palvelutalosta tarvitsemansa palvelut.\n\nPalveluasumispaikan saamiseen on kriteerit.\n\nPalveluasuminen on joko kerrostaloasumista omassa huoneistossa tai asumista pienkodissa, jossa asukkaalla on käytössään oma huone ja lisäksi pienkodin yhteiset tilat.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan kaupunki ostaa ikäihmisten palveluasumista yksityisistä palvelutaloista.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : "Vasa stads köper serviceboende för äldre i privata servicehus.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : "Vasa stads köper serviceboende för äldre i privata servicehus. \n\nDe boende inreder själva sin bostad eller sitt rum och får den service som de behöver i servicehuset. \n\nServiceboende är antingen våningshusboende i egen lägenhet eller boende i småhem, där de boende har ett eget rum till förfogande och därtill småhemmets gemensamma utrymmen. \n",
+    "type" : "Description"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "ProcuredServices",
+    "organization" : null,
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

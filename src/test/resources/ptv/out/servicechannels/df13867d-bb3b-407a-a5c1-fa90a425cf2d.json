@@ -1,0 +1,95 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "http://www.vaasanvesi.fi/lomakkeet",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "http://www.vaasanvesi.fi/web/sv/lomakkeet#",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "requiresSignature" : false,
+  "attachments" : [ ],
+  "languages" : [ ],
+  "supportPhones" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "5210e364-8b49-4eb4-bd4e-4df8b34a7bbd",
+      "name" : "Liittyminen vesi- ja viemäriverkostoon"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "5bc8f908-9b0b-45a9-8c06-b6d7e325cb5a",
+      "name" : "Veden tuotanto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Vaasan Veden lomakkeet",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Vasa Vattens blanketter",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "EChannel",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Vaasan Veden sähköiset asiointilomakkeet löytyvät Vaasan Veden verkkosivuilta. \nVerkkosivulta löytyvät muun muassa seuraavat sähköiset lomakkeet:\n* Palaute\n* Lukeman ilmoitus\n* Omistajanvaihto\n* Laskutusosoitteen muutos\n* Ennusteen muutos\n* Liittymätietojen tilauslomake",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan Veden sähköiset asiointilomakkeet löytyvät Vaasan Veden verkkosivuilta.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Vasa Vattens elektroniska blanketter finns på Vasa Vattens webbsidor.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Vasa Vattens elektroniska blanketter finns på Vasa Vattens webbsidor. \nPå webbsidorna finns bl.a. följande elektroniska blanketter:\n* Feedback\n* Vattenmätaravläsning\n* Ägarbyte\n* Ändring av faktureringsadress\n* Ändring av prognos\n* Anslutningsuppgifternas beställningsblankett",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "df13867d-bb3b-407a-a5c1-fa90a425cf2d",
+  "signatureQuantity" : 0,
+  "requiresAuthentication" : false
+}

@@ -1,0 +1,61 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://www.facebook.com/origo.etsivanuorisotyo",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://www.facebook.com/origo.etsivanuorisotyo",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "d64463b9-e039-48c8-b3e6-b625ecf3ea69",
+      "name" : "Etsivä nuorisotyö"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Origon Facebook-sivu",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Origos Facebook-sida",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Origon Facebook-sivulla voit seurata Vaasan etsivän nuorisotyön toimintaa ja ottaa yhteyttä. Origon profiili on julkinen. ",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Origon Facebook-sivulla voit seurata Vaasan etsivän nuorisotyön toimintaa ja ottaa yhteyttä.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "På Origos Facebook-sida kan du följa det uppsökande ungdomsarbetets verksamhet i Vasa och ta kontakt.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "På Origos Facebook-sida kan du följa det uppsökande ungdomsarbetets verksamhet i Vasa och ta kontakt. Origos profil är offentlig. ",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "975bcf22-285f-4d43-bb90-37498bc42667"
+}

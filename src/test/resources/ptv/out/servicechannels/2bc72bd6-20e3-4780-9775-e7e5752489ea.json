@@ -1,0 +1,194 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Vaasanpuistikko",
+        "language" : "fi"
+      }, {
+        "value" : "Vasaesplanaden",
+        "language" : "sv"
+      } ],
+      "streetNumber" : "10",
+      "postalCode" : "65100",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ {
+        "value" : null,
+        "language" : "fi"
+      } ],
+      "latitude" : "7007482.053",
+      "longitude" : "228184.6",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "12096a3f-4575-4f5f-ac83-bf54ff896808",
+      "name" : "Kirjaamo"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "7f1c5751-6a67-4af5-af18-79177e2fb687",
+      "name" : "Avustukset eläkeläisyhdistysten toimintaan"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "866d0002-4d70-4759-a743-afe0f6836343",
+      "name" : "Avustukset toimintaan Vähässäkyrössä"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "96c64475-9312-4c18-9f5d-d37dfb1a69da",
+      "name" : "Avustukset tapahtumien järjestämiseen"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "d558a51c-2a75-4a6f-943b-99da839205f5",
+      "name" : "Kaupunginhallituksen avustukset toimintaan"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Fax",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : null,
+    "isFinnishServiceNumber" : true,
+    "number" : null,
+    "language" : "sv"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63251066",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63251066",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ {
+    "value" : "kirjaamo@vaasa.fi",
+    "language" : "fi"
+  }, {
+    "value" : "kirjaamo@vaasa.fi",
+    "language" : "sv"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Keskuskirjaamo",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Registraturen",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Kirjaamo vastaanottaa kaupungille, kaupunginhallitukselle ja -valtuustolle osoitetut kirjeet sekä kirjaa ne asianhallintajärjestelmään. ",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Kirjaamo vastaanottaa kaupungille, kaupunginhallitukselle ja -valtuustolle osoitetut kirjeet sekä kirjaa ne asianhallintajärjestelmään.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Registraturens uppgift är att ta emot brev som adresserats till staden, stadsstyrelsen och -fullmäktige samt registrera dem i ärendehanteringssystemet",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Registraturens uppgift är att ta emot brev som adresserats till staden, stadsstyrelsen och -fullmäktige samt registrera dem i ärendehanteringssystemet.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "2bc72bd6-20e3-4780-9775-e7e5752489ea"
+}

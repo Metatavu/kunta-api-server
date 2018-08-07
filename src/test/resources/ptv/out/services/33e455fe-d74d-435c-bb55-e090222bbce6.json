@@ -1,0 +1,371 @@
+{
+  "sourceId" : null,
+  "keywords" : [ {
+    "value" : "leikkialueet",
+    "language" : "fi"
+  }, {
+    "value" : "lekområden",
+    "language" : "sv"
+  } ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Liikunta ja urheilu",
+      "language" : "fi"
+    }, {
+      "value" : "Motion och idrott",
+      "language" : "sv"
+    }, {
+      "value" : "Sports and exercise",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Tähän palvelualaluokkaan kuuluvat liikuntapaikat, urheiluopistot ja niiden palvelut, liikunnan tietopalvelut ja urheiluseurojen sekä liikuntajärjestöjen toiminta.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains sports facilities, sports institutes and their services, exercise information services and the activities of sports clubs and sports associations.",
+      "language" : "en"
+    }, {
+      "value" : "Denna serviceundergrupp omfattar motionsställen, idrottsinstitut och deras tjänster, informationstjänster för motion samt idrottsföreningars och motionsorganisationers verksamhet.",
+      "language" : "sv"
+    } ],
+    "code" : "P27.1",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1211",
+    "parentId" : "175762f6-53cd-4d29-a285-625bfb421b21",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1210"
+  }, {
+    "name" : [ {
+      "value" : "Liikunta ja ulkoilu",
+      "language" : "fi"
+    }, {
+      "value" : "Motion och friluftsliv",
+      "language" : "sv"
+    }, {
+      "value" : "Sports and outdoor activities",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "I denna servicegrupp behandlas tjänster relaterade till motion, friluftsliv och fritidsverksamhet ute i naturen.",
+      "language" : "sv"
+    }, {
+      "value" : "Tässä palveluluokassa käsitellään kuntoliikuntaan, ulkoiluun ja luonnossa tapahtuvaan vapaa-ajan toimintaan liittyviä palveluja.",
+      "language" : "fi"
+    }, {
+      "value" : "This service class contains services related to keep-fit exercise, outdoor exercise and free-time activities in nature.",
+      "language" : "en"
+    } ],
+    "code" : "P27",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1210",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "f56e65c9-d0da-4ba5-962e-f510a91d6688",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "33e455fe-d74d-435c-bb55-e090222bbce6",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "1c8f4d40-ce50-41ff-bad3-7194a59ec97e",
+      "name" : "Vaasan karttapalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3659c778-f216-4875-a016-048219957a56",
+      "name" : "Viheraluehortonomi"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "64221f78-3c09-4006-8610-d16995d7cc7f",
+      "name" : "Viheralueyksikkö"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  }, {
+    "value" : null,
+    "language" : "en"
+  } ],
+  "languages" : [ "sv", "fi" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "sv",
+    "value" : "Lekparker",
+    "type" : "Name"
+  }, {
+    "language" : "en",
+    "value" : "Play Areas",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Leikkipuistot",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ ],
+    "code" : null,
+    "ontologyType" : null,
+    "uri" : "http://www.yso.fi/onto/yso/p5514",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "leikkipuistot",
+      "language" : "fi"
+    }, {
+      "value" : "lekparker",
+      "language" : "sv"
+    }, {
+      "value" : "playgrounds",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p32576",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p11148;http://www.yso.fi/onto/koko/p34333"
+  }, {
+    "name" : [ {
+      "value" : "ulkoilu",
+      "language" : "fi"
+    }, {
+      "value" : "friluftsliv",
+      "language" : "sv"
+    }, {
+      "value" : "outdoor recreation",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p31732",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p35142"
+  }, {
+    "name" : [ {
+      "value" : "friluftsområden",
+      "language" : "sv"
+    }, {
+      "value" : "ulkoilualueet",
+      "language" : "fi"
+    }, {
+      "value" : "outdoor recreation areas",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p32966",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p37350"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Lapset ja lapsiperheet",
+      "language" : "fi"
+    }, {
+      "value" : "Children and families with children",
+      "language" : "en"
+    }, {
+      "value" : "Barn och barnfamiljer",
+      "language" : "sv"
+    } ],
+    "code" : "KR1.2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2003",
+    "parentId" : "daff1fb9-9394-49b5-b033-d1d1c7005ab6",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001"
+  }, {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "sv",
+    "value" : "Lekparkernas placering kan du se i Vasas karttjänst. Via feedbacktjänsten kan du ge respons i fråga om lekparkerna.\n\nVasa stads grönområdeshortonom svarar på frågor angående lekparkerna och tar emot anmälningar om lekredskap som är sönder.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : "I Vasa finns 78 lekparker, vilka alla är utrustade med åtminstone standardredskap såsom gungor, sandlåda och rutschbana.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "I Vasa finns 78 lekparker, vilka alla är utrustade med åtminstone standardredskap såsom gungor, sandlåda och rutschbana. Lekparkerna har planerats och byggts enligt standarderna och de granskas och underhålls regelbundet. \n\nRedskap finns för både mindre och större barn. I en del lekparker finns också konditionsredskap för vuxna. \n\nLekparkerna är trivsamma samlings- och rekreationsplatser för alla åldrar. Staden uppmuntrar barn, unga, vuxna och seniorer att tillbringa tid tillsammans i en mångsidig lekmiljö. \n",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasassa on 78 leikkipuistoa, joista jokainen on varustettu vähintään perusleikkivälineillä; keinut, hiekkalaatikko ja liukumäki.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "en",
+    "value" : "Vaasa offers numerous great places for kids to play in. Each play area offers at least the basic facilities, such as a swing, sandpit and slide.\n\nThe play areas are designed, built and maintained according to the latest safety standards. There are play facilities for both small and big kids.",
+    "type" : "Description"
+  }, {
+    "language" : "en",
+    "value" : "Vaasa offers numerous great places for kids to play in. Each play area offers at least the basic facilities, such as a swing, sandpit and slide.",
+    "type" : "Summary"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasassa on 78 leikkipuistoa, joista jokainen on varustettu vähintään perusleikkivälineillä; keinut, hiekkalaatikko ja liukumäki. Leikkipuistot on suunniteltu ja rakennettu standardien mukaisesti ja niitä tarkastetaan ja ylläpidetään säännöllisesti.\n\nVälineitä löytyy sekä pienille että isommille lapsille. Joissakin leikkipuistoissa on myös kuntoiluvälineitä aikuisille. \n\nLeikkipuistot ovat kaikenikäisten viihtyisiä kohtaamis- ja virkistäytymispaikkoja. Kaupunki kannustaa siihen, että lapset, nuoret, aikuiset ja seniorit viettäisivät yhteistä aikaa monimuotoisissa leikkiympäristöissä.",
+    "type" : "Description"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : "Leikkipuistojen sijainnin kartalla näet Vaasan karttapalvelusta. Palautepalvelun kautta voit antaa palautetta leikkipuistoja koskien.\n\nVaasan kaupungin viheraluehortonomi vastaa leikkipuistoihin liittyviin kysymyksiin ja ottaa vastaan ilmoituksia rikkinäisistä leikkivälineistä.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "en",
+    "value" : "You can see play areas on a map at Vaasa map service. \n\nQuestions about play areas? Call us at 0400 959 179.",
+    "type" : "UserInstruction"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

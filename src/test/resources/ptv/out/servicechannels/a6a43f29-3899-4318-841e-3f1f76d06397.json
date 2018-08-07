@@ -1,0 +1,165 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Itäinen kasarmintori",
+        "language" : "fi"
+      }, {
+        "value" : "Östra kasärngatan",
+        "language" : "sv"
+      } ],
+      "streetNumber" : "7-9",
+      "postalCode" : "65100",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ ],
+      "latitude" : "7006948.88",
+      "longitude" : "228375.738",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "73af8c06-6a6b-4780-9164-8e8872eecc9c",
+      "name" : "Kunnallinen päiväkotihoito"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : null,
+    "isFinnishServiceNumber" : true,
+    "number" : null,
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ {
+    "value" : "pikkukasarminpk@vaasa.fi",
+    "language" : "fi"
+  }, {
+    "value" : "pikkukasarminpk@vaasa.fi",
+    "language" : "sv"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "sv",
+    "value" : "Daghemmet Lill Kasern",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Pikku Kasarmin päiväkoti",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ {
+    "serviceHourType" : "DaysOfTheWeek",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ {
+      "value" : null,
+      "language" : "fi"
+    } ],
+    "openingHour" : [ {
+      "dayFrom" : "Monday",
+      "dayTo" : "",
+      "from" : "06:30:00",
+      "to" : "17:00:00"
+    }, {
+      "dayFrom" : "Tuesday",
+      "dayTo" : "",
+      "from" : "06:30:00",
+      "to" : "17:00:00"
+    }, {
+      "dayFrom" : "Wednesday",
+      "dayTo" : "",
+      "from" : "06:30:00",
+      "to" : "17:00:00"
+    }, {
+      "dayFrom" : "Thursday",
+      "dayTo" : "",
+      "from" : "06:30:00",
+      "to" : "17:00:00"
+    }, {
+      "dayFrom" : "Friday",
+      "dayTo" : "",
+      "from" : "06:30:00",
+      "to" : "17:00:00"
+    } ]
+  } ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Pikku Kasarmi toimii Vaasan keskustassa vanhalla kasarmialueella.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Daghemmet Lill Kasern finns vid gamla kasernområdet, tidigare 2:a batteriet, i centrum av Vasa. I daghemmet betonas lek och motion, miljöfostran och hållbar utveckling, socialt umgänge, musik och tvåspråkighet. \n\nBarngrupperna: \n* Hattifnattarna, under 3 år (svensk) \n* Pikku Myyt, under 3 år (finsk) \n* Nuuskamuikkuset, 3–5-åringar (finsk)\n* Hemuler (svensk)\n* Mymmelit, förskoleundervisning (finsk) \n* Nipsut (finsk) \n\nDaghemmets motto: \"Varje dag är en värdefull dag för barnet!” \n",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Daghemmet Lill Kasern finns vid gamla kasernområdet, tidigare 2:a batteriet, i centrum av Vasa.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Pikku Kasarmi toimii Vaasan keskustassa vanhalla kasarmialueella entisessä 2. patterissa. Päiväkodissa painotetaan leikkiä ja liikuntaa, luontokasvatusta ja kestävää kehitystä, sosiaalista kanssakäymistä, musiikkia ja kaksikielisyyttä.\n\nLapsiryhmät: \n* Hattifnattarna, alle 3 v, (ruots.) \n* Pikku Myyt, alle 3 v. (suom.)\n* Nuuskamuikkuset, joustavan rakenteen ryhmä (suom.) \n* Hemuler, 3-5 v. (ruots.)\n* Mymmelit, esiopetus \n* Nipsut, joustavan rakenteen ryhmä (suom.)\n\nPäiväkodin motto: \"Jokainen päivä on lapselle arvokas!\"",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-03T11:46:05.779876",
+  "id" : "a6a43f29-3899-4318-841e-3f1f76d06397"
+}

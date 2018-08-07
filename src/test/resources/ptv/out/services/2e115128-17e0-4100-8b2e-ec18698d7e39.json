@@ -1,0 +1,244 @@
+{
+  "sourceId" : null,
+  "keywords" : [ {
+    "value" : "ikäihmiset",
+    "language" : "fi"
+  }, {
+    "value" : "Ikäkeskus",
+    "language" : "fi"
+  } ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Liikunta ja urheilu",
+      "language" : "fi"
+    }, {
+      "value" : "Motion och idrott",
+      "language" : "sv"
+    }, {
+      "value" : "Sports and exercise",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Tähän palvelualaluokkaan kuuluvat liikuntapaikat, urheiluopistot ja niiden palvelut, liikunnan tietopalvelut ja urheiluseurojen sekä liikuntajärjestöjen toiminta.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains sports facilities, sports institutes and their services, exercise information services and the activities of sports clubs and sports associations.",
+      "language" : "en"
+    }, {
+      "value" : "Denna serviceundergrupp omfattar motionsställen, idrottsinstitut och deras tjänster, informationstjänster för motion samt idrottsföreningars och motionsorganisationers verksamhet.",
+      "language" : "sv"
+    } ],
+    "code" : "P27.1",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1211",
+    "parentId" : "175762f6-53cd-4d29-a285-625bfb421b21",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1210"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "2e115128-17e0-4100-8b2e-ec18698d7e39",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "040f1fda-7613-4476-95ff-dc2bfab20677",
+      "name" : "Ikäkeskuksen liikuntapalveluiden vastaava fysioterapeutti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "2deb3b81-6ff5-425d-9273-f33a3db5701d",
+      "name" : "Ikäkeskuksen liikuntapalveluiden verkkosivu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : "Ikäkeskuksen liikuntapalvelut on tarkoitettu yli 65-vuotiaille. ",
+    "language" : "fi"
+  }, {
+    "value" : "Seniormotion är avsedd för alla pensionärer.",
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : null,
+  "serviceNames" : [ {
+    "language" : "sv",
+    "value" : "Seniorcentrets motionsservice",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Ikäkeskuksen liikuntapalvelut",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "motion (idrott)",
+      "language" : "sv"
+    }, {
+      "value" : "liikunta",
+      "language" : "fi"
+    }, {
+      "value" : "physical training",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p30612",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p35142"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Ikäihmiset",
+      "language" : "fi"
+    }, {
+      "value" : "Seniors",
+      "language" : "en"
+    }, {
+      "value" : "De äldre",
+      "language" : "sv"
+    } ],
+    "code" : "KR1.1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2002",
+    "parentId" : "daff1fb9-9394-49b5-b033-d1d1c7005ab6",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001"
+  }, {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : "Erbjuder konditionshöjande och uppiggande motionssals- och vattengymnastikgrupper samt individuell motionshandledning. \n\nMotionssalsträning och vattengymnastik är lämpliga och trygga motionsformer även för seniorer. Med rätt belastning och rätt utvalda rörelser är dessa motionsformer effektiva. Med regelbunden motion kan man fördröja att den fysiska konditionen sjunker samt förbättra muskelstyrkan, vilket är en betydlig faktor för att upprätthålla balansen. Det finns alltid ledare på plats.\n\nFörutom gruppverksamhet har seniorer möjlighet till individuell motionshandledning. Vid motionshandledning fås information och råd om hur du sköter din kondition samt information om stadens motionsmöjligheter.\n",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Erbjuder konditionshöjande och uppiggande motionssals- och vattengymnastikgrupper samt individuell motionshandledning.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Ikäkeskus tarjoaa kuntoa ja mieltä virkistäviä kuntosali- ja vesivoimisteluryhmiä sekä yksilöllistä liikuntaneuvontaa ikäihmisille. Ikäkeskuksen kuntosali- ja vesivoimisteluharjoittelu sopii ja on turvallista myös ikäihmisille. Rasitukseltaan ja liikeradoiltaan oikeantyyppinen harjoittelu on tehokas liikuntamuoto. Ryhmissä on ohjaaja paikalla ja ryhmäkäynnit pidetään kerran viikossa sovittuna aikana. Ryhmätoiminnan lisäksi ikäihmisillä on mahdollisuus yksilölliseen liikuntaneuvontaan. Liikuntaneuvonnassa saa ohjausta ja opastusta omasta kunnosta huolehtimiseen, sekä tietoa kaupungin liikuntamahdollisuuksista. ",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Ikäkeskuksen liikuntapalveluihin on jatkuva haku. Ryhmiin voi hakea tulostettavalla lomakkeella. Lisää tietoa Vaasan kaupungin verkkosivuilta. ",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : "Ikäkeskus tarjoaa kuntoa ja mieltä virkistäviä kuntosali- ja vesivoimisteluryhmiä sekä yksilöllistä liikuntaneuvontaa ikäihmisille.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Till Seniorcentrets motionsservice kan man söka fortgående.  Till grupperna kan man söka på en utskrivbar blankett. Mer information på Vasa stads webbsidor. ",
+    "type" : "UserInstruction"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

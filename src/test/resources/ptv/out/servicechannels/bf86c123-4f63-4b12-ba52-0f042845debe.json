@@ -1,0 +1,44 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "http://www.naantali.fi/kulttuuri/nlin_museo/fi_FI/museo/",
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "f990b29a-0f5f-46ab-a726-c61395a94165",
+      "name" : "Museopalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Naantalin museon verkkosivut",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Naantalin museon verkkosivuilla on kattavasti tietoa museon tarjonnasta ja palveluista sekä Naantalin historiasta.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Naantalin museon verkkosivuilla on kattavasti tietoa museon tarjonnasta ja palveluista sekä Naantalin historiasta.",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "bf86c123-4f63-4b12-ba52-0f042845debe"
+}

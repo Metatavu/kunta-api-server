@@ -1,0 +1,88 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "languages" : [ "fi" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "c2f928f7-c123-4f04-bdfc-7cf822b5de88",
+      "name" : "Rokotuspalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "409000864",
+    "language" : "fi"
+  } ],
+  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Rokotus- ja matkailuterveysneuvoja",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ {
+    "serviceHourType" : "DaysOfTheWeek",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ {
+      "value" : "Soittoaika",
+      "language" : "fi"
+    } ],
+    "openingHour" : [ {
+      "dayFrom" : "Monday",
+      "dayTo" : "",
+      "from" : "13:00:00",
+      "to" : "14:00:00"
+    }, {
+      "dayFrom" : "Thursday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "09:00:00"
+    } ]
+  } ],
+  "serviceChannelType" : "Phone",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Saat rokotus- ja matkailuterveysneuvojalta tietoa kansalliseen ohjelmaan sekä matkailuun kuuluvista rokotuksista. Voit myös varata ajan rokotukseen.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Ota yhteyttä rokotus- ja matkailuterveysneuvojaan, kun tarvitset tietoa kansalliseen rokotusohjelmaan tai matkailuun kuuluvista rokotuksista. Samasta numerosta voit varata ajan rokotusvastaanotolle. Tarvittaessa saat reseptin rokotteita ja/tai malarian estolääkitystä varten.\n\nRokotus- ja matkailuterveysneuvoja työskentelee myös Velkuan terveydenhoitajana.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2018-04-09T10:46:22.01111",
+  "id" : "acdcecff-294c-41fc-a60b-ebc25431cc30"
+}

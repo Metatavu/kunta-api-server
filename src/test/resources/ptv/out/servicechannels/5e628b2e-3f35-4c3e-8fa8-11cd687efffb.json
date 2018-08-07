@@ -1,0 +1,61 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/vaikuta",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/sv/paverka",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv", "en" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "dd8fb9a3-e6f4-4793-8f7e-22dac70f39f1",
+      "name" : "Kuntalaisaloite"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Vaikuta",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Påverka",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Sivustolta saat lisätietoa vaikuttamiskanavista ja -tavoista, joilla vaasalaiset voivat osallistua kaupungin toimintaa ja tulevaisuutta koskevaan suunnitteluun ja päätöksentekoon. Sivustolta löytyy myös linkit voimassa oleviin kuulutuksiin sekä muihin ajankohtaisiin vaikuttamismahdollisuuksiin.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Sivustolta saat lisätietoa vaikuttamiskanavista ja -tavoista, joilla vaasalaiset voivat osallistua kaupungin suunnitteluun ja päätöksentekoon.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "På webbsidorna Påverka får du mer information om de kanaler och sätt att påverka genom vilka Vasaborna kan delta i stadens verksamhet samt planeringen",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "På webbsidorna Påverka får du mer information om de kanaler och sätt att påverka genom vilka Vasaborna kan delta i stadens verksamhet samt planeringen och beslutsfattandet om framtiden. På webbplatsen finns även länkar till gällande kungörelser och andra aktuella påverkningsmöjligheter.\n",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "5e628b2e-3f35-4c3e-8fa8-11cd687efffb"
+}

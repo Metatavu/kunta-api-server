@@ -1,0 +1,247 @@
+{
+  "sourceId" : null,
+  "keywords" : [ {
+    "value" : "Tillgänglighetsunderstöd",
+    "language" : "sv"
+  } ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Toimitilat",
+      "language" : "fi"
+    }, {
+      "value" : "Premises",
+      "language" : "en"
+    }, {
+      "value" : "Kontorslokaler",
+      "language" : "sv"
+    } ],
+    "description" : [ {
+      "value" : "This service subclass contains services related to purchasing and renting facilities for companies, including business premises or warehouses.",
+      "language" : "en"
+    }, {
+      "value" : "Tähän palvelualaluokkaan kuuluvat yritysten toimitilojen kuten liikehuoneistojen tai varastojen hankintaan ja vuokraukseen liittyvät palvelut.",
+      "language" : "fi"
+    }, {
+      "value" : "Till denna serviceundergrupp hör tjänster i anslutning till anskaffning och hyrning av företagens kontorslokaler såsom affärslokaler eller lagerutrymmen.",
+      "language" : "sv"
+    } ],
+    "code" : "P2.5",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1012",
+    "parentId" : "dd30002b-be2b-4689-878a-60e93492cc87",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1007"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2018-02-14T08:53:07.656124",
+  "id" : "22cbe0dc-9773-4a1c-b81f-6084d3f2fb9d",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "06ff6614-ef55-4728-a931-08d61535dd34",
+      "name" : "Esteettömyysavustus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "22cd9e41-dcc9-42d5-bc40-3dd64d27c030",
+      "name" : "Kiinteistötoimi"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "260ffe9b-58aa-4f51-9153-f33968161a8b",
+      "name" : "Maksatushakemus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "8f773c1c-25ad-4a0e-84b9-05bf379f526d",
+      "name" : "Esteettömyysavustusanomus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "sv"
+  }, {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "sv",
+    "value" : "Tillgänglighetsunderstöd",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Esteettömyysavustus",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "avustukset",
+      "language" : "fi"
+    }, {
+      "value" : "understöd (bidrag)",
+      "language" : "sv"
+    }, {
+      "value" : "financial aid",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p34757",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p63861;http://www.yso.fi/onto/koko/p13760"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Yritykset ja yhteisöt",
+      "language" : "fi"
+    }, {
+      "value" : "Businesses and non-government organizations",
+      "language" : "en"
+    }, {
+      "value" : "Företag och samfund",
+      "language" : "sv"
+    } ],
+    "code" : "KR2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : "Esteettömyysavustuksen tarkoituksena on parantaa esteettömyyttä Vaasan kaupungissa.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Staden beviljar understöd på basis av ansökan. Understöd ska ansökas hos Vasa stads fastighetssektor på blanketten för ansökan om tillgänglighetsunderstöd. Ansökningstid för året 2018 är 1.2.-31.10.2018. Ytterligare information ger Vasa stads fastighetssektor:\nasumispalvelut(at)vaasa.fi \n\nUtbetalningen av understödet ansöks med en ansökan om utbetalning hos Vasa stads fastighetssektor. Ansökan om utbetalning av årets 2018 understödet ska inlämnas senast 1.12.2018, och då bör åtgärderna vara klara.\n",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan kaupunki myöntää esteettömyysavustusta yhdistyksille, yhteisöille ja pienille yrityksille palvelu- ja toimitilojen esteettömyyden ja saavutettavuuden parantamiseksi. \n\nEsteettömyysavustuksen tarkoituksena on parantaa esteettömyyttä Vaasan kaupungissa. Esteettömyysavustusta voidaan myöntää yhdistyksille, yhteisöille ja pienille yrityksille, joiden toimipaikka on Vaasa. Avustuksen kohteena ovat sellaiset toimenpiteet, jotka mahdollistavat kuulo-, näkö- tai liikuntarajoitteisen henkilön esteettömän pääsyn, liikkumisen ja toimimisen palvelu- ja toimitiloissa. Avustusta myönnettäessä kiinnitetään huomiota tilojen kokonaisesteettömyyteen. Avustettavia toimenpiteitä voivat olla esimerkiksi:\n\n* luiskien tai kynnysluiskien rakentaminen\n* kynnyskorkeuksien madaltaminen\n* askelmien poistaminen\n* oviaukkojen leventäminen\n* kaiteiden asentaminen ja\n* ulko-ovien automatisointi\n\nEsteettömyysavustus on 30 prosenttia hankkeen hyväksytyistä kokonaiskustannuksista tai enintään 3 000 €. ",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : "Vasa stad beviljar tillgänglighetsunderstöd till föreningar, samfund och mindre företag för förbättrande av tillgängligheten och nåbarheten till service- och verksamhetslokaler. Syftet med tillgänglighetsunderstödet är att förbättra tillgängligheten i Vasa stad. \n\nTillgänglighetsunderstöd kan beviljas föreningar, samfund och mindre företag med Vasa som verksamhetsort. Understöd beviljas för sådana åtgärder som gör det möjligt för personer med nedsatt hörsel och syn samt rörelsehinder att ta sig till, röra sig och verka i service- och verksamhetslokaler hinderfritt. Vid beviljandet av understöd fästs uppmärksamhet vid lokalernas tillgänglighet i dess helhet. Understöd kan beviljas exempelvis för följande åtgärder:\n\n* byggande av ramper/tröskelramper\n* sänkning av trösklar\n* avlägsnande av trappsteg\n* breddning av dörrar\n* installation av räcken och\n* automatisering av ytterdörrar\n\nTillgänglighetsunderstödet är högst 30 procent av de godkända totalkostnaderna för projektet eller högst 3 000 €. ",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Syftet med tillgänglighetsunderstödet är att förbättra tillgängligheten i Vasa stad.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : "Kaupunki myöntää avustusta hakemuksen perusteella. Avustusta tulee hakea esteettömyysavustusanomus-lomakkeella Vaasan kaupungin kiinteistötoimesta. Vuoden 2018 hakuaika on 1.2.-31.10.2018. Lisätietoja saa Vaasan kaupungin kiinteistötoimesta sähköpostitse: asumispalvelut(at)vaasa.fi\n\nAvustuksen maksatusta haetaan maksatushakemuksella Vaasan kaupungin kiinteistötoimesta. Vuoden 2018 avustuksen maksatusta on haettava viimeistään 1.12.2018, jolloin toimenpiteiden tulee olla valmiita.",
+    "type" : "UserInstruction"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

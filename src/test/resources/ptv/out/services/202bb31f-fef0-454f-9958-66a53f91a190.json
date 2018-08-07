@@ -1,0 +1,269 @@
+{
+  "sourceId" : null,
+  "keywords" : [ {
+    "value" : "Ungdomsstationen Klaara",
+    "language" : "sv"
+  }, {
+    "value" : "nuoret",
+    "language" : "fi"
+  }, {
+    "value" : "Nuorisoasema Klaara",
+    "language" : "fi"
+  }, {
+    "value" : "ungdomar",
+    "language" : "sv"
+  } ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Sosiaalipalvelujen neuvonta- ja ohjauspalvelut",
+      "language" : "fi"
+    }, {
+      "value" : "Socialtjänsternas rådgivnings- och handledningstjänster",
+      "language" : "sv"
+    }, {
+      "value" : "Social service advisory and guidance services",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Till denna serviceundergrupp hör allmän rådgivning och handledning gällande socialtjänster som erbjuds medborgarna samt stöd till socialtjänstklienter i frågor som gäller socialtjänster, t.ex. rättsskydd och kundförhållande. Till exempel socialombudsmannens verksamhet hör till denna grupp.",
+      "language" : "sv"
+    }, {
+      "value" : "Tähän alapalveluluokkaan kuuluu kansalaisille annettava sosiaalipalveluja koskeva yleinen neuvonta ja ohjaus sekä sosiaalihuollon asiakkaiden tukeminen sosiaalipalveluja koskevissa, esimerkiksi oikeusturvaan ja asiakkuuteen liittyvissä kysymyksissä. Esimerkiksi sosiaaliasiamiehen toiminta kuuluu tähän luokkaan.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass includes general advice and guidance on social services provided for citizens as well as support for social welfare clients in issues related to social services, including legal protection and client relationships. For example, the activities of a social services ombudsman belong to this class.",
+      "language" : "en"
+    } ],
+    "code" : "P4.13",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1036",
+    "parentId" : "079b55da-af80-41ab-9346-c8fdd284afcf",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1023"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2017-12-12T07:48:05.958808",
+  "id" : "202bb31f-fef0-454f-9958-66a53f91a190",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "491e082e-269f-45d9-8c0d-59706ad2aa18",
+      "name" : "Klaaran puhelinasiointi"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "59178725-f709-4653-89c1-35f6bd7db79c",
+      "name" : "Nuorisoasema Klaara"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "e246bf2c-02a9-4041-b4e8-0fd9f05f12f5",
+      "name" : "Nuorisoasema Klaaran verkkosivut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : "Tjänsterna riktar sig till Vasabor och enligt avtal även till ungdomar som kommer från andra kommuner och till deras familjer. ",
+    "language" : "sv"
+  }, {
+    "value" : "Palvelut on suunnattu vaasalaisille ja sopimuksesta myös muista kunnista tuleville nuorille ja heidän perheilleen. ",
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "sv",
+    "value" : "Ungdomsstationen Klaara",
+    "type" : "AlternativeName"
+  }, {
+    "language" : "fi",
+    "value" : "Nuorisoasema Klaara",
+    "type" : "AlternativeName"
+  }, {
+    "language" : "sv",
+    "value" : "Öppenvård för unga",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Avohoito nuorille",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "mental hälsa",
+      "language" : "sv"
+    }, {
+      "value" : "mielenterveys",
+      "language" : "fi"
+    }, {
+      "value" : "mental health",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p31001",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p31347;http://www.yso.fi/onto/koko/p34937"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Nuoret",
+      "language" : "fi"
+    }, {
+      "value" : "Young people",
+      "language" : "en"
+    }, {
+      "value" : "De unga",
+      "language" : "sv"
+    } ],
+    "code" : "KR1.3",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2004",
+    "parentId" : "daff1fb9-9394-49b5-b033-d1d1c7005ab6",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001"
+  }, {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : "Yhteydenotot ja ajanvaraukset voi tehdä verkossa tai puhelimitse. Paikan päälle voi mennä myös ilman ajanvarausta. ",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : "Ungdomsstationen Klaara erbjuder tjänster med fokus på förebyggande och behandling av problem som gäller mental hälsa, missbruk och livskompetens blan",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Nuorisoasema Klaara tarjoaa 13-22-vuotiaiden mielenterveys-, päihde- ja elämänhallinnan ongelmien ennaltaehkäisyyn ja hoitoon keskittyviä palveluja.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : "Man kan ta kontakt och boka tid på nätet eller per telefon. Det går även att komma till stationen utan tidsbokning. ",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : "Palvelu on asiakkaille maksuton.",
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Nuorisoasema Klaara tarjoaa 13-22-vuotiaiden mielenterveys-, päihde- ja elämänhallinnan ongelmien ennaltaehkäisyyn ja hoitoon keskittyviä palveluja. Klaara tarjoaa neuvontaa ja ohjausta, kahdenkeskisiä keskusteluja asemalla tai muualla, toiminnallisia ja terapeuttisia ryhmiä sekä perhetapaamisia. Palvelut ovat luottamuksellisia, vapaaehtoisia ja asiakkaille maksuttomia. Myös mielenterveystalo (mielenterveystalo.fi) on kaikille avoin palvelu, joka tarjoaa tietoa aikuisten ja nuorten mielenterveys- ja päihdeongelmista sekä itsehoito-ohjeita. ",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Ungdomsstationen Klaara erbjuder tjänster med fokus på förebyggande och behandling av problem som gäller mental hälsa, missbruk och livskompetens bland ungdomar i åldern 13-22 år. Klaara erbjuder rådgivning och handledning, samtal på tu man hand på stationen eller någon annanstans, aktiverande och terapeutiska grupper samt familjeträffar. Servicen är konfidentiell, frivillig och avgiftsfri för klienterna. Även psykporten (mielenterveystalo.fi) är en tjänst som är öppen för alla och som erbjuder information om problem kring psykisk hälsa och rusmedelsanvändning bland vuxna och ungdomar samt anvisningar för egenvård. ",
+    "type" : "Description"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

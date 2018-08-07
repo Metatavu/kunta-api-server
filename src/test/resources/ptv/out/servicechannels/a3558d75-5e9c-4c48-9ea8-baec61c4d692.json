@@ -1,0 +1,93 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "",
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "3efb44e8-16ce-4c9c-bdab-32a32de50d5a",
+      "name" : "Sisätautien tutkimus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "505895384",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Sekreterare",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "505895384",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "sv",
+    "value" : "Inremedicinska mottagningen",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Sisätautilääkärin vastaanotto",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "Phone",
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "Remiss- och tidsbeställningsförfrågningar. Patienten ska ha en remiss från den vårdande läkaren för att få en mottagningstid.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Remiss- och tidsbeställningsförfrågningar.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Sisätautilääkärin vastaanoton sihteeri vastaa lähete- ja ajanvarauskyselyihin.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Sisätautilääkärin vastaanoton sihteeri vastaa lähete- ja ajanvarauskyselyihin. Ajanvarausta varten potilas tarvitsee lähetteen hoitavalta lääkäriltä.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "a3558d75-5e9c-4c48-9ea8-baec61c4d692"
+}

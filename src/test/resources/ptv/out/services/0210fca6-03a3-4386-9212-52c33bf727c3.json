@@ -1,0 +1,329 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Toimialakohtaiset luvat ja velvoitteet",
+      "language" : "fi"
+    }, {
+      "value" : "Sector-specific permits and obligations",
+      "language" : "en"
+    }, {
+      "value" : "Branschspecifika tillstånd och skyldigheter",
+      "language" : "sv"
+    } ],
+    "description" : [ {
+      "value" : "Tähän alapalveluluokkaan kuuluvat yritystoimintaa velvoittavat asiat, jotka voivat liittyä lupien hankintaan, ilmoituksien tekemiseen tai rekisteröinteihin.",
+      "language" : "fi"
+    }, {
+      "value" : "Denna underservicegrupp omfattar obligatoriska ärenden relaterade till företagsverksamhet, såsom tillstånd, anmälningar och registrering.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains obligations associated with enterprising, which may be related to obtaining permits, submitting notifications or completing registrations.",
+      "language" : "en"
+    } ],
+    "code" : "P11.2",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1107",
+    "parentId" : "60445628-3697-444b-b4b8-ef0cd42b45cf",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1105"
+  }, {
+    "name" : [ {
+      "value" : "Luonnonvaraiset kasvit ja eläimet",
+      "language" : "fi"
+    }, {
+      "value" : "Vilda växter och djur",
+      "language" : "sv"
+    }, {
+      "value" : "Wild plants and animals",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Tähän palvelualaluokkaan kuuluvat luonnonvaraisiin kasveihin ja eläimiin liittyvät palvelut kuten luvat, havaintoilmoitusten tekeminen ja erilaiset tietopalvelut.",
+      "language" : "fi"
+    }, {
+      "value" : "Denna serviceundergrupp omfattar tjänster relaterade till vilda växter och djur, såsom tillstånd, anmälningar om observationer och olika informationstjänster.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains services related to wild plants and animals, including licences, reporting of sightings and different information services.",
+      "language" : "en"
+    } ],
+    "code" : "P24.1",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1192",
+    "parentId" : "7acae1fe-18d6-4479-a6da-1ebfc6278c55",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1191"
+  }, {
+    "name" : [ {
+      "value" : "Eläinlääkäripalvelut",
+      "language" : "fi"
+    }, {
+      "value" : "Veterinary services",
+      "language" : "en"
+    }, {
+      "value" : "Veterinärtjänster",
+      "language" : "sv"
+    } ],
+    "description" : [ {
+      "value" : "Tähän palvelualaluokkaan kuuluvat palvelut, joiden puitteissa niin tuotanto- kuin lemmikkieläimiä suojataan kärsimykseltä ja edistetään eläinten terveyttä ja hyvinvointia. Tähän liittyvät alueelliset ja paikalliset eläinlääkäripalvelut, tautien ehkäisy, eläinten elinolojen ja hoidon laatu.",
+      "language" : "fi"
+    }, {
+      "value" : "Denna serviceundergrupp omfattar tjänster inom vars ram både produktions- och sällskapsdjur skyddas mot lidande och som främjar djurens hälsa och välbefinnande. Hit hör regionala och lokala veterinärtjänster, förebyggande av sjukdomar, kvaliteten på djurens levnadsförhållanden och vården.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains services which protect both production animals and pets from suffering and promote animal health and welfare. It includes regional and local veterinary services, disease prevention, and the quality of animals’ living conditions and care.",
+      "language" : "en"
+    } ],
+    "code" : "P24.5",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1196",
+    "parentId" : "7acae1fe-18d6-4479-a6da-1ebfc6278c55",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1191"
+  }, {
+    "name" : [ {
+      "value" : "Tuotantoeläimet",
+      "language" : "fi"
+    }, {
+      "value" : "Produktionsdjur",
+      "language" : "sv"
+    }, {
+      "value" : "Production animals",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "I denna serviceundergrupp behandlas tjänster relaterade till produktionsdjur, såsom produktionsstöd, anmälningsskyldigheter, ersättningar för djurskador och allmänna skyldigheter avseende djurens välbefinnande.",
+      "language" : "sv"
+    }, {
+      "value" : "Tässä palvelualaluokassa käsitellään tuotantoeläimiin liittyviä palveluja kuten tuotantotukia, ilmoitusvelvoitteita, eläinvahinkokorvauksia ja eläinten hyvinvointiin liittyviä yleisiä velvoitteita.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains services related to production animals, including production subsidies, notification duties, compensation for damage to animals and general obligations related to animal welfare.",
+      "language" : "en"
+    } ],
+    "code" : "P24.3",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1194",
+    "parentId" : "7acae1fe-18d6-4479-a6da-1ebfc6278c55",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1191"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "6738da4c-aedd-4742-9f9f-6dd1990795ff",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "0210fca6-03a3-4386-9212-52c33bf727c3",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "6dad2ebd-48ec-470a-b47d-6557951b6d96",
+      "name" : "Valvontaeläinlääkäri"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "sv",
+    "value" : "Djurskydd",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Eläinsuojelu",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "eläinsuojelu",
+      "language" : "fi"
+    }, {
+      "value" : "djurskydd",
+      "language" : "sv"
+    }, {
+      "value" : "animal protection",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p49174",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p32415"
+  }, {
+    "name" : [ {
+      "value" : "veterinärer",
+      "language" : "sv"
+    }, {
+      "value" : "eläinlääkärit",
+      "language" : "fi"
+    }, {
+      "value" : "veterinarians",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p33833",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p32854"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Yritykset ja yhteisöt",
+      "language" : "fi"
+    }, {
+      "value" : "Businesses and non-government organizations",
+      "language" : "en"
+    }, {
+      "value" : "Företag och samfund",
+      "language" : "sv"
+    } ],
+    "code" : "KR2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "sv",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : "I Vasa sköter övervakningsveterinären uppgifter som ansluter sig till djurskyddet.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "I Vasa sköter övervakningsveterinären uppgifter som ansluter sig till djurskyddet. ",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasassa valvontaeläinlääkäri hoitaa eläinsuojeluun liittyvät tehtävät.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasassa valvontaeläinlääkäri hoitaa eläinsuojeluun liittyvät tehtävät. \n",
+    "type" : "Description"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

@@ -1,0 +1,135 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "http://lyseo.vaasa.fi/",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "http://lyseo.vaasa.fi/en",
+    "value" : null,
+    "language" : "en"
+  }, {
+    "orderNumber" : "0",
+    "url" : "http://lyseo.vaasa.fi/",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "de", "en", "fi" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "34ce61c9-128d-4e19-b805-cd0fc40c6f3c",
+      "name" : "Lukiokoulutuksen opinto-ohjaus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "6387f401-b9ea-4cc9-85a0-f750909d3a96",
+      "name" : "Lukiokoulutus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "b36ea9f7-a278-468b-b488-5946e638fbc5",
+      "name" : "Lukiokoulutuksen opiskelijahuolto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "b6c09aaf-9502-48c4-8f33-c6b89219053d",
+      "name" : "Aikuislukiokoulutus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "sv",
+    "value" : "Vaasan lyseon lukios webbsidor",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan lyseon lukion verkkosivut",
+    "type" : "Name"
+  }, {
+    "language" : "en",
+    "value" : "Web pages of Vaasan lyseon lukio",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "en",
+    "value" : "On the web pages of Vaasan lyseon lukio you can find information about the school and also its senior oriented education.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "På Vaasan lyseon lukios sidor hittar du information om gymnasiets och dess vuxenlinjes verksamhet.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "På Vaasan lyseon lukios sidor hittar du information om gymnasiets och dess vuxenlinjes verksamhet.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan lyseon lukion sivuilta löydät tietoa lukion ja sen aikuislinjan toiminnasta.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan lyseon lukion sivuilta löydät tietoa lukion ja sen aikuislinjan toiminnasta.",
+    "type" : "Description"
+  }, {
+    "language" : "en",
+    "value" : "On the web pages of Vaasan lyseon lukio you can find information about the school and also its senior oriented education.",
+    "type" : "Summary"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "45be9de4-40f9-45f5-a16b-d7bc6e7dcec4"
+}

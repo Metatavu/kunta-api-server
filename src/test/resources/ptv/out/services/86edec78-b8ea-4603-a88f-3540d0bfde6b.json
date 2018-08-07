@@ -1,0 +1,220 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Socialtjänster",
+      "language" : "sv"
+    }, {
+      "value" : "Sosiaalipalvelut",
+      "language" : "fi"
+    }, {
+      "value" : "Social services",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Tässä palveluluokassa käsitellään sekä yleisiä että erityisryhmille suunnattuja sosiaalipalveluja, jotka on tarkoitettu kansalaisten arjen, asumisen ja toimeentulon tukemiseen.",
+      "language" : "fi"
+    }, {
+      "value" : "I den här servicegruppen behandlas både allmänna socialtjänster och socialtjänster för specialgrupper, vilka avsetts som stöd för medborgarnas vardag, boende och försörjning.",
+      "language" : "sv"
+    }, {
+      "value" : "This service class contains both general social services and those targeted at special groups to support citizens’ everyday life management, housing and incomes.",
+      "language" : "en"
+    } ],
+    "code" : "P4",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1023",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "Hälso- och sjukvård, näring",
+      "language" : "sv"
+    }, {
+      "value" : "Terveydenhuolto, sairaanhoito ja ravitsemus",
+      "language" : "fi"
+    }, {
+      "value" : "Health and medical care, nutrition",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Tässä palveluluokassa käsitellään sekä yleisiä että tietyille ryhmille suunnattuja terveyden- ja sairaanhoidon palveluja. Luokkaan kuuluvat myös lääkkeisiin ja ravitsemukseen liittyvät palvelut sekä kuntoutus terveydenhoidollisen ja lääkinnällisen kuntoutuksen osalta.",
+      "language" : "fi"
+    }, {
+      "value" : "I denna serviceundergrupp behandlas både allmänna och hälso- och sjukvårdstjänster för vissa grupper. Till gruppen hör också tjänster i anslutning till läkemedel och näring samt rehabilitering för hälso- och sjukvårdens och medicinska rehabiliteringens del.",
+      "language" : "sv"
+    }, {
+      "value" : "This service class contains health and medical care services, both general services and those intended for specific groups. It also includes services associated with medicines and nutrition, as well as rehabilitation for the part of health care related and medical rehabilitation.",
+      "language" : "en"
+    } ],
+    "code" : "P5",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1038",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "Data protection and personal data",
+      "language" : "en"
+    }, {
+      "value" : "Tietosuoja ja henkilötiedot",
+      "language" : "fi"
+    }, {
+      "value" : "Datasekretess och personuppgifter",
+      "language" : "sv"
+    } ],
+    "description" : [ {
+      "value" : "This service subclass contains services related to personal data and privacy protection, personal identifiers, travel documents and registers containing personal data. It also contains matters pertaining to a citizen's rights to control and use their personal data.",
+      "language" : "en"
+    }, {
+      "value" : "Tässä palvelualaluokassa käsitellään henkilötietojen ja yksityisyyden suojaan, henkilötunnuksiin ja -tunnisteisiin, matkustusasiakirjoihin ja henkilötietoja sisältäviin rekistereihin liittyviä palveluja sekä kansalaisen oikeuksia hallita ja käyttää omia tietojaan.",
+      "language" : "fi"
+    }, {
+      "value" : "Denna serviceundergrupp omfattar tjänster relaterad till skyddet av personuppgifter och integritet, personbeteckningar och -koder, resedokument och register med personuppgifter samt medborgarnas rättigheter att kontrollera och begränsa användningen av deras personuppgifter.",
+      "language" : "sv"
+    } ],
+    "code" : "P7.9",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1085",
+    "parentId" : "487549b3-a7de-4312-badb-2ee6bb390950",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1076"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "Nationwide",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "86edec78-b8ea-4603-a88f-3540d0bfde6b",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "80f6bcb5-e224-4041-97da-95b6936878fe",
+      "name" : "Väestörekisterikeskuksen verkkoasiointi"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : "Toimikorttien käyttöönottamiseksi organisaation on tehtävä Väestörekisterikeskuksen kanssa tarvittavat sopimukset. Asiakassopimus tehdään kaikkien organisaatioiden kanssa, jotka tilaavat Väestörekisterikeskuksen myöntämät toimikortit käyttöönsä. Toimikorttien tilaaminen Vartti-järjestelmällä edellyttää rekisteröintisopimuksen tekemistä Väestörekisterikeskuksen kanssa. Väestörekisterikeskus kouluttaa asiakasorganisaation valitsemat henkilöt rekisteröintitehtäviin. Koulutuksen jälkeen asiakas voi hakea rekisteröintioikeutta Vartti -järjestelmään. Sosiaali- ja terveydenhuollon ammattihenkilöt eivät tarvitse mitään sopimuksia kortin tilaamiseksi, jos heidän ammattioikeudet löytyvät Valviran ylläpitämästä Terhikki tai Suosikki –rekisteristä.",
+    "language" : "fi"
+  } ],
+  "languages" : [ "sv", "fi" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : null,
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Toimikorttien hankinta sosiaali- ja terveydenhuollon organisaatioille",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Sote ammattikortti, Sote henkilöstökortti, Sote toimijakortti, Vartti, tilapäisvarmenne, varakortti",
+    "type" : "AlternativeName"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "tietoturva",
+      "language" : "fi"
+    }, {
+      "value" : "datasäkerhet",
+      "language" : "sv"
+    }, {
+      "value" : "data security",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p35296",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p33999;http://www.yso.fi/onto/koko/p34854"
+  }, {
+    "name" : [ {
+      "value" : "datasekretess",
+      "language" : "sv"
+    }, {
+      "value" : "tietosuoja",
+      "language" : "fi"
+    }, {
+      "value" : "data privacy",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p3682",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p35296;http://www.yso.fi/onto/koko/p80431"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Viranomaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Authorities",
+      "language" : "en"
+    }, {
+      "value" : "Myndigheter",
+      "language" : "sv"
+    } ],
+    "code" : "KR3",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2017",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Asiakasorganisaation ja Väestörekisterikeskuksen väliset sopimukset tehdään sähköisesti Verkkoasioinnissa. Ohjeet ja linkki Verkkoasiointiin on saatavilla osoitteesta eevertti.vrk.fi/asiointi. Rekisteröintipisteiden yhteystiedot löytyvät osoitteesta: eevertti.vrk.fi/terveydenhuollolle. Sosiaali- ja terveydenhuollon rekisteröintipisteiden sähköinen ajanvarauspalvelu löytyy osoitteesta: http://vrk.ajapa.fi/th/",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Väestörekisterikeskuksen varmennepalvelut tarjotaan toistaiseksi sosiaali- ja terveydenhuollon ammattihenkilöille veloituksetta. Väestörekisterikeskuksen varmennepalvelut tarjotaan toistaiseksi veloituksetta myös sosiaali- ja terveydenhuollon muulle henkilöstölle mikäli he osallistuvat potilashoitotyöhön.",
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : "Toimikortteja käytetään tietojärjestelmiin tunnistautumiseen, tiedon salaamiseen ja sähköisten allekirjoitusten tekemiseen sote-palveluissa.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Väestörekisterikeskus myöntää sosiaali-ja terveyshuollon organisaatioiden käyttöön toimikortteja ja henkilövarmenteita. Toimikortteja käytetään eri tietojärjestelmiin tunnistautumiseen, tiedon salaamiseen ja sähköisten allekirjoitusten tekemiseen. Toimikortteihin on integroitavissa etäluettava teknologia (RFID). Organisaatio tilaa toimikortteja ja varmenteita Vartti-tilaus- ja hallinnointijärjestelmällä. Vartti -järjestelmällä organisaatio voi hallinnoida tilaamiensa korttien ja varmenteiden elinkaarta. Järjestelmä mahdollistaa lisäksi tilapäisvarmenteiden lataamisen varakorteille online-yhteydellä. Tilapäisvarmenteet ladataan vikaantuneen tai kadonneen kortin tilalle. Sosiaali-ja terveydenhuollon ammattihenkilöt voivat tilata ammattikortin valtakunnallisesti mistä tahansa julkisen terveydenhuollon rekisteröintipisteestä.",
+    "type" : "Description"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "b458d033-042d-4cbe-b030-34e81da28821",
+      "name" : "Väestörekisterikeskus"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "b458d033-042d-4cbe-b030-34e81da28821",
+      "name" : "Väestörekisterikeskus"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

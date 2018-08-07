@@ -1,0 +1,100 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "attachments" : [ ],
+  "languages" : [ ],
+  "deliveryAddresses" : [ {
+    "subType" : "NoAddress",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : null,
+    "deliveryAddressInText" : [ ],
+    "receiver" : [ {
+      "value" : null,
+      "language" : "fi"
+    }, {
+      "value" : null,
+      "language" : "sv"
+    } ]
+  } ],
+  "supportPhones" : [ ],
+  "formIdentifier" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "ee407e80-061b-4632-be2f-41c40a5e4790",
+      "name" : "Fysioterapian palvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "channelUrls" : [ {
+    "language" : "fi",
+    "value" : "https://www.vaasa.fi/sites/default/files/fysioterapian_esitietolomake.pdf",
+    "type" : "PDF"
+  }, {
+    "language" : "sv",
+    "value" : "https://www.vaasa.fi/sites/default/files/forhandsuppgifter_for_fysioterapi_0.pdf",
+    "type" : "PDF"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Fysioterapian esitietolomake",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Fysioterapins formulär med förhandsuppgifter",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "PrintableForm",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Fysioterapian esitietolomake.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Fysioterapian esitietolomake",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Fysioterapins formulär med förhandsuppgifter",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Fysioterapins formulär med förhandsuppgifter.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "14e326e1-8dab-4558-82e6-b95d04eb153d"
+}

@@ -1,0 +1,100 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/node/8941",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/en/node/8941",
+    "value" : null,
+    "language" : "en"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/sv/node/8941",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv", "en" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "0a25ac2d-4476-4285-8a66-e00953ec26cd",
+      "name" : "Vaasan kaupungin sähköinen asiointi ja lomakkeet"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "12096a3f-4575-4f5f-ac83-bf54ff896808",
+      "name" : "Kirjaamo"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "9cec0d0d-b555-4eef-8303-0fef35a92c09",
+      "name" : "Kaupungin lomakkeet"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "sv",
+    "value" : "Elektroniska tjänster",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Sähköinen asiointi",
+    "type" : "Name"
+  }, {
+    "language" : "en",
+    "value" : "Electronic services",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "På webbsidorna hittar du mer information om och länkar till Vasa stads olika elektroniska tjänster.\n",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "På webbsidorna hittar du mer information om och länkar till Vasa stads olika elektroniska tjänster.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Verkkosivulta löydät lisätietoa ja linkkejä Vaasan kaupungin eri palvelujen sähköiseen asiointiin.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Verkkosivulta löydät lisätietoa ja linkkejä Vaasan kaupungin eri palvelujen sähköiseen asiointiin. ",
+    "type" : "Description"
+  }, {
+    "language" : "en",
+    "value" : "You can find further information and links to the electronic services on the webpages of the City of Vaasa.",
+    "type" : "Summary"
+  }, {
+    "language" : "en",
+    "value" : "You can find further information and links to the electronic services on the webpages of the City of Vaasa.\n",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "de19ad29-4f3e-4de8-81e6-6b11b0e67de6"
+}

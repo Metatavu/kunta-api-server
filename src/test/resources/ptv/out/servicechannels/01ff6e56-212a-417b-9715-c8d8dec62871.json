@@ -1,0 +1,55 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "http://www.naantali.fi/perhe_ja_sosiaali/paihdehuolto/fi_FI/paihdetyo/",
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "1180d4c4-488b-4c99-ae9f-4da1f63536e5",
+      "name" : "Päihdeongelmaisten palveluohjaus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "c95d3846-429c-489d-afd2-359218bcaa5d",
+      "name" : "Päihdetyö"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Päihdetyön verkkosivu",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Naantalin kaupungin päihdetyön verkkosivu.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Naantalin kaupungin päihdetyön verkkosivuilta saat tietoa päihdetyöstä. ",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2018-06-07T10:48:37.207465",
+  "id" : "01ff6e56-212a-417b-9715-c8d8dec62871"
+}

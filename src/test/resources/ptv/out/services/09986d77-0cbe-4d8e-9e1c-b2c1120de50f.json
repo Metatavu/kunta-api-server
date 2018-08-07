@@ -1,0 +1,247 @@
+{
+  "sourceId" : null,
+  "keywords" : [ {
+    "value" : "hammaslääkäripäivystys",
+    "language" : "fi"
+  } ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Suun ja hampaiden terveydenhuolto",
+      "language" : "fi"
+    }, {
+      "value" : "Mun- och tandhälsovård",
+      "language" : "sv"
+    }, {
+      "value" : "Oral and dental health care",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Till denna serviceundergrupp hör tjänster i samband med mun- och tandhälsovård såsom kontroller, tandläkarens och -munhygienistens vårdåtgärder samt specialtandläkartjänster såsom ortodonti.",
+      "language" : "sv"
+    }, {
+      "value" : "Tähän alapalveluluokkaan kuuluvat suun ja hampaiden terveydenhuollon palvelut kuten ennaltaehkäisevä hoito, tarkastukset, hammaslääkärin ja -hygienistin hoitotoimenpiteet sekä oikomishoidon kaltaiset erikoishammaslääkäripalvelut.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains oral and dental health services, including preventive care, check-ups, procedures carried out by a dentist or a dental hygienist, as well as specialist dental care services, such as orthodontic treatments.",
+      "language" : "en"
+    } ],
+    "code" : "P5.10",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1048",
+    "parentId" : "76ca210c-5183-4d41-b796-50612d5930c7",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1038"
+  }, {
+    "name" : [ {
+      "value" : "Ensiapu ja päivystys",
+      "language" : "fi"
+    }, {
+      "value" : "Förstahjälpen och jouren",
+      "language" : "sv"
+    }, {
+      "value" : "First aid and emergency care",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Tässä palvelualaluokassa käsitellään potilaan kiireelliseen hoitoon ja hoitoon hakeutumiseen liittyviä palveluja.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains services related to providing and obtaining urgent care.",
+      "language" : "en"
+    }, {
+      "value" : "I denna serviceundergrupp behandlas tjänster i anslutning till brådskande vård av patienten och uppsökande av vård.",
+      "language" : "sv"
+    } ],
+    "code" : "P5.5",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1043",
+    "parentId" : "76ca210c-5183-4d41-b796-50612d5930c7",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1038"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "cccd591f-d864-4ea7-b2d8-1f98cdf5bae9",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "09986d77-0cbe-4d8e-9e1c-b2c1120de50f",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "519d939c-ad0d-448d-94ad-7e0fd224367d",
+      "name" : "Hammashuollon ajanvaraus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "bd9cbdec-9b50-4e6d-a6cd-f68bb8e03fe5",
+      "name" : "Hammashoidon iltapäivystys"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "c9320e8d-d7a8-41d7-85b8-7597e1604c0c",
+      "name" : "Hammashoidon arkipäivystys"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "Chargeable",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Hammaslääkäripäivystys",
+    "type" : "AlternativeName"
+  }, {
+    "language" : "fi",
+    "value" : "Hammashuollon päivystys",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "tandvård",
+      "language" : "sv"
+    }, {
+      "value" : "hammashuolto",
+      "language" : "fi"
+    }, {
+      "value" : "dental care (public health service)",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p13395",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p2062"
+  }, {
+    "name" : [ {
+      "value" : "jour",
+      "language" : "sv"
+    }, {
+      "value" : "päivystys",
+      "language" : "fi"
+    }, {
+      "value" : "on-call duty",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p14988",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p31480"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Päivystyksen tarkoituksena on turvata tarjolla oleva tutkimus ja ensiapuhoito, jota ei voida siirtää ilman hengenvaaraa tai merkittävää terveydellistä haittaa.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "ARKIPÄIVYSTYS\n\nKiireellisen hammashoidon ajanvaraus uudessa numerossa 06 325 2202 ma-to klo 7.30–16.00 ja pe klo 7.30–15.00. Hammashuollon päivystys ma-to klo 8.00–16.00 ja pe klo 8.00–15.00 eri hammashoitoloissa.\n\nHuom! Vanha ajanvarausnumero 06 320 0245 poistuu kevään 2017 aikana.\n\nVIIKONLOPPU- JA ARKIPYHÄPÄIVYSTYS\n\nViikonloppu- ja arkipyhäpäivystys klo 10.00–12.00 ilman ajanvarausta on Vaasan keskussairaalan yhteispäivystyksen tiloissa (os. Hietalahdenkatu 2-4). Potilaat hoidetaan saapumisjärjestyksessä. Päivystysvastaanotolle tultaessa on täytettävä esitietolomake, joka annetaan päivystävälle hammaslääkärille.\n\nViikonloppuiltaisin ja arkipyhinä klo 14.30–21.00 päivystys on Seinäjoella. Yhteydenotot Vaasan keskussairaalaan p. 06 213 1001. Sairaanhoitaja arvioi hoidon tarpeen.\n\nILTAPÄIVYSTYS\n\nIltapäivystyksessä hoidetaan sellaisia oireita, jotka uhkaavat vakavasti potilaan terveyttä eikä hoitoa voi siirtää seuraavaan päivään.\n\nIltapäivystys Seinäjoella arki-iltaisin klo 16–21, viikonloppuiltaisin ja arkipyhinä klo 14.30–21.00. Yhteydenotot Vaasan keskussairaalaan p. 06 213 1001. Sairaanhoitaja arvioi puhelimessa hoidon tarpeen.\n\nYÖPÄIVYSTYS\n\nYöpäivystys klo 21.00–8.00 Turun yliopistollisessa sairaalassa. Yhteydenotot hoidon tarpeen arviointia varten Turun yliopistolliseen sairaalaan p. 02 313 8800.\n\nTilanteita, jotka vaativat kiireellistä ensiapua\n\n• turvotus, nielemisvaikeus\n• rajoittunut suun avaaminen\n• suu ei mene kiinni\n• kuume edellisten yhteydessä\n• voimakas hammasperäinen kipu (jatkuva kipu, joka estää unen saannin, ja särkylääkkeet eivät auta)\n• hammastapaturmat tai leukamurtumaepäilyt\n• verenvuoto esim. poiston jälkeen, jos suu tuntuu täyttyvän nopeasti verellä\n• rikkoutunut kiinteä oikomiskoje, joka pistää, eikä tilannetta saa helpotettua esim. purukumilla tai oikomisvahalla pehmustamalla\n\nTilanteita, jotka eivät vaadi kiireellistä ensiapua\n\n• kipu, johon särkylääke auttaa\n• vihlominen kylmälle tai kuumalle\n• hampaan tai paikan lohkeama\n• proteesien ongelmat tai nastahampaiden irtoamiset\n• irrotettavien oikomiskojeiden ongelmat tai niskavetohoidossa renkaan irtoaminen\n\nKaikkia 18 vuotta täyttäneitä potilaita laskutetaan terveyskeskusmaksujen mukaisesti, samoin ulkopaikkakuntalaisia. Peruuttamatta jätetystä hoitoajasta peritään 15 vuotta täyttäneeltä 51,40 euroa. Lasku lähetetään potilaalle kotiin.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Hammashuollon päivystyksessä hoidetaan kiireellistä hoitoa vaativia potilaita.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

@@ -1,0 +1,88 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "languages" : [ "fi", "sv", "en" ],
+  "areas" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "449960f4-9563-4c45-86c3-524edfad456a",
+      "name" : "Kansalaisvarmenne"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : null,
+    "isFinnishServiceNumber" : true,
+    "number" : "060096160",
+    "language" : "fi"
+  } ],
+  "organizationId" : "b458d033-042d-4cbe-b030-34e81da28821",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Varmenteiden neuvontapalvelu",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ {
+    "serviceHourType" : "DaysOfTheWeek",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ ],
+    "openingHour" : [ {
+      "dayFrom" : "Monday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "20:00:00"
+    }, {
+      "dayFrom" : "Tuesday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "20:00:00"
+    }, {
+      "dayFrom" : "Wednesday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "20:00:00"
+    }, {
+      "dayFrom" : "Thursday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "20:00:00"
+    }, {
+      "dayFrom" : "Friday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "20:00:00"
+    }, {
+      "dayFrom" : "Saturday",
+      "dayTo" : "",
+      "from" : "09:00:00",
+      "to" : "15:00:00"
+    } ]
+  } ],
+  "serviceChannelType" : "Phone",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Neuvontapalvelussa annetaan tukea varmenteiden käytössä ja käyttöönoton yhteydessä esiintyvissä yleisimmissä ongelmatilanteissa.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Neuvontapalvelussa annetaan tukea Väestörekisterikeskuksen myöntämien varmenteiden käytössä ja käyttöönoton yhteydessä esiintyvissä yleisimmissä ongelmatilanteissa. Neuvontapalvelun numero ohjautuu Kansalaisneuvonnan puhelinpalveluun.",
+    "type" : "Description"
+  } ],
+  "areaType" : null,
+  "publishingStatus" : "Published",
+  "modified" : "2018-02-13T12:56:52.128325",
+  "id" : "839e3ff0-484b-45aa-bb52-784a1ab2c109"
+}

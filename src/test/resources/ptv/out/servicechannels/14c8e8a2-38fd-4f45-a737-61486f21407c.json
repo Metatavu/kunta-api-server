@@ -1,0 +1,44 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "http://www.naantali.fi/terveys/palvelut/fi_FI/muistineuvonta/",
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "bab19689-bfaf-4b53-994a-cbf4591901a3",
+      "name" : "Muistineuvonta"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Muistineuvonnan verkkosivu",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Muistineuvonnan verkkosivulla on tietoa muistitutkimuksiin hakeutumisesta, yhteystiedoista sekä Muistiasiakkaan palvelut Naantalissa -opas.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Muistineuvonnan verkkosivulta saat tietoa muistitutkimuksiin hakeutumisesta, yhteystiedoista sekä pääset lukemaan Muistiasiakkaan palvelut Naantalissa -opasta.",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2018-04-09T12:35:39.955047",
+  "id" : "14c8e8a2-38fd-4f45-a737-61486f21407c"
+}

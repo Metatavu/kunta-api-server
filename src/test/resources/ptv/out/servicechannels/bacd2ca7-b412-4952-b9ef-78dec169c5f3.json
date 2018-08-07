@@ -1,0 +1,191 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "http://www.naantali.fi/kulttuuri/tilat_kulttuuri_ja_vapaa_aika/monitoimitalo/fi_FI/monitoimitalo/",
+    "value" : "Karvetin monitoimitalo",
+    "language" : "fi"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Ripikatu",
+        "language" : "fi"
+      } ],
+      "streetNumber" : "6",
+      "postalCode" : "21110",
+      "postOffice" : [ {
+        "value" : "NAANTALI",
+        "language" : "sv"
+      }, {
+        "value" : "NAANTALI",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "529",
+        "name" : [ {
+          "value" : "Naantali",
+          "language" : "fi"
+        }, {
+          "value" : "Nådendal",
+          "language" : "sv"
+        }, {
+          "value" : "Naantali",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ ],
+      "latitude" : "6715145.554",
+      "longitude" : "227979.682",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  }, {
+    "type" : "Postal",
+    "subType" : "PostOfficeBox",
+    "postOfficeBoxAddress" : {
+      "postOfficeBox" : [ {
+        "value" : "PL 43",
+        "language" : "fi"
+      } ],
+      "postalCode" : "21101",
+      "postOffice" : [ {
+        "value" : "NAANTALI",
+        "language" : "sv"
+      }, {
+        "value" : "NAANTALI",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "529",
+        "name" : [ {
+          "value" : "Naantali",
+          "language" : "fi"
+        }, {
+          "value" : "Nådendal",
+          "language" : "sv"
+        }, {
+          "value" : "Naantali",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ ]
+    },
+    "streetAddress" : null,
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "25b6bae1-fa45-4fe4-8ea1-36260c46b2ce",
+      "name" : "Nuorisotyö"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "3f192972-7480-45fb-b8e3-c11ea2973c8f",
+      "name" : "Nuorisotilat"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "65d98179-d9ad-4540-ab2b-0acc01d66d0c",
+      "name" : "Nuorten työpajat"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "a9c1b4bd-9181-4ba8-a7c2-dd07f1ee283f",
+      "name" : "Vuokrattavat kulttuuri- ja vapaa-aikatilat"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : "Nuoriso- ja vapaa-aikatilojen valvoja",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "447334601",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Tilanvaraus",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "4345320",
+    "language" : "fi"
+  } ],
+  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "emails" : [ ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Karvetin monitoimitalo",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Karvetin monitoimitalo on Naantalin kaupungin nuoriso- ja vapaa-aikatila.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Monitoimitalossa on monenlaista toimintaa. Alakerrassa järjestetään aamu- ja iltapäiväkerhoja alakoululaisille ja monipuolista toimintaa vapaa-ajanviettoon nuorille. Alakerran tilat ovat vuokrattavissa myös yhdistysten käyttöön. Alakerrassa on iso monitoimitila keittiöineen, eri kokoisia kokoustiloja ja toimintahalli.\n\nYläkerrassa toimii työpaja. \n",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2018-05-28T11:34:57.050319",
+  "id" : "bacd2ca7-b412-4952-b9ef-78dec169c5f3"
+}

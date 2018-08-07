@@ -1,0 +1,246 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Sosiaalipalvelut",
+      "language" : "fi"
+    }, {
+      "value" : "Socialtjänster",
+      "language" : "sv"
+    }, {
+      "value" : "Social services",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Tässä palveluluokassa käsitellään sekä yleisiä että erityisryhmille suunnattuja sosiaalipalveluja, jotka on tarkoitettu kansalaisten arjen, asumisen ja toimeentulon tukemiseen.",
+      "language" : "fi"
+    }, {
+      "value" : "I den här servicegruppen behandlas både allmänna socialtjänster och socialtjänster för specialgrupper, vilka avsetts som stöd för medborgarnas vardag, boende och försörjning.",
+      "language" : "sv"
+    }, {
+      "value" : "This service class contains both general social services and those targeted at special groups to support citizens’ everyday life management, housing and incomes.",
+      "language" : "en"
+    } ],
+    "code" : "P4",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1023",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "63ed702e-73c6-46cf-8e10-0d45ebdcfc4b",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "2e9e3d04-37dc-45f1-be18-733f48f660c2",
+      "name" : "Arjen hallinnan tukipalveluiden palveluyksikköjohtaja"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "ee220ddb-e9e3-4122-9217-7fff0d91ef28",
+      "name" : "Aaltokoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "sv"
+  }, {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : null,
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Päihdekuntoutujien asumispalvelut",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Boendeservice för missbrukare/rehabiliteringspatienter",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "boendeservice",
+      "language" : "sv"
+    }, {
+      "value" : "asumispalvelut",
+      "language" : "fi"
+    }, {
+      "value" : "housing services",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p17574",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p18203"
+  }, {
+    "name" : [ {
+      "value" : "stödboende",
+      "language" : "sv"
+    }, {
+      "value" : "tuettu asuminen (asumispalvelut)",
+      "language" : "fi"
+    }, {
+      "value" : "supported accommodation",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p53876",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p17574"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Päihdekuntoutujien asumispalveluiden järjestäminen on osa sosiaalihuoltolain mukaisia palveluja. Palvelut järjestetään palvelutarpeen arvion ja palvelusuunnitelman mukaisesti siten kuin asiakkaan asumisen tarve edellyttää.\n\nVaasan kaupunki tarjoaa päihdekuntoutujien asumispalveluita sekä omana tuotantona että ostopalveluina hoivakoti Hopearannassa. Lisäksi on tarvittaessa mahdollista ostaa palveluja muilta yksityisiltä palveluntuottajilta.\n\nTukiasuminen on tarkoitettu päihdeongelmaisille, joille asumisen vaikeudet ovat olleet kuntoutumisen esteenä ja jotka tarvitsevat tuettua asumista arjesta selviytymiseen.\n\nAsumismuotoina ovat yksittäiset eri puolilla kaupunkia sijaitsevat asunnot, sekä tuettua ympärivuorokautista asumista tarjoavat Silmukoti (15 asukaspaikkaa), Aaltokoti (9 asukaspaikkaa) ja erityisesti päihteiden käytön aiheuttamista muistisairauksista kärsiville tarkoitettu ostopalvelu Hopearanta (16 paikkaa).\n\n",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Päihdekuntoutujien asumispalveluiden järjestäminen on osa sosiaalihuoltolain mukaisia palveluja.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Boendeservice för missbrukare/rehabiliteringspatienter",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : "Stödboende är avsett för personer med missbruksproblem, för vilka boendesvårigheterna utgjort ett hinder för rehabiliteringen och som behöver stödboende för att klara vardagen.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "UserInstruction"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "ProcuredServices",
+    "organization" : null,
+    "roleType" : "Producer",
+    "additionalInformation" : [ {
+      "value" : "Vaasan Setlementtiyhdistys Ry",
+      "language" : "fi"
+    } ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

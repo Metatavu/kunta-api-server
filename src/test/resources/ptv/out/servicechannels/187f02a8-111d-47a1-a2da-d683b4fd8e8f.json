@@ -1,0 +1,61 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/node/2731",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/sv/node/2731",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "a9de364a-a777-4f14-844e-90739f661e0b",
+      "name" : "Tilastopalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Tilastoja Vaasasta ja Vaasan seudulta",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Statistik om Vasa och Vasaregionen",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Verkkosivulta löydät tilastotietoja Vaasasta ja Vaasan seudulta. ",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Verkkosivulta löydät tilastotietoja Vaasasta ja Vaasan seudulta.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "På webbsidan finns uppgifter om statistik om Vasa och Vasaregionen.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "På webbsidan finns uppgifter om statistik om Vasa och Vasaregionen.",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "187f02a8-111d-47a1-a2da-d683b4fd8e8f"
+}

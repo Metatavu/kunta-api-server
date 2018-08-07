@@ -1,0 +1,93 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/node/15791",
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "888abdcc-5b29-4a55-bc48-d3beaf85bbf0",
+      "name" : "Osastokuntoutus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63252460",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63252460",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Kotikuntoutusyksikkö",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Hemrehabiliteringsenhet",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "Phone",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Kotikuntoutusyksiköstä saa lisätietoa kuntouttavista lyhytaikaishoidoista, kuten osastokuntoutuksesta.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Kotikuntoutusyksiköstä saa lisätietoa kuntouttavista lyhytaikaishoidoista, kuten osastokuntoutuksesta.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Ytterligare uppgifter om rehabiliterande perioder med korttidsvård liksom avdelningsrehabiliteringen.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Ytterligare uppgifter om rehabiliterande perioder med korttidsvård liksom avdelningsrehabiliteringen. ",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "49de6df6-1baf-48b8-a822-94a54d31d1ab"
+}

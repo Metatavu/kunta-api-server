@@ -1,0 +1,102 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Soittajankatu",
+        "language" : "fi"
+      } ],
+      "streetNumber" : "1a",
+      "postalCode" : "21110",
+      "postOffice" : [ {
+        "value" : "NAANTALI",
+        "language" : "sv"
+      }, {
+        "value" : "NAANTALI",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "529",
+        "name" : [ {
+          "value" : "Naantali",
+          "language" : "fi"
+        }, {
+          "value" : "Nådendal",
+          "language" : "sv"
+        }, {
+          "value" : "Naantali",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ {
+        "value" : "Puistokäytävän varrella",
+        "language" : "fi"
+      } ],
+      "latitude" : "6716560.186",
+      "longitude" : "226965.404",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "4394390f-4833-4988-962a-6a210f4e50b2",
+      "name" : "Leikkipuistot"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ ],
+  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "emails" : [ ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Soikallion leikkikenttä",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Naantalissa on yhteensä yli 30 kaupungin ylläpitämää leikkikenttää.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Soikallion leikkikenttä sijaitsee Naantalissa Soinisten alueella. Leikkikenttä on kevyenliikenteenväylän varrella kallioiden kupeessa.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "3548c3df-d459-4634-8e89-bdfcfea28097"
+}

@@ -1,0 +1,234 @@
+{
+  "sourceId" : null,
+  "keywords" : [ {
+    "value" : "yhteensopivuus",
+    "language" : "fi"
+  }, {
+    "value" : "avoindata",
+    "language" : "fi"
+  } ],
+  "areas" : [ ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Paikkatietopalvelut",
+      "language" : "fi"
+    }, {
+      "value" : "Geodatatjänster",
+      "language" : "sv"
+    }, {
+      "value" : "Geographic information services",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Denna serviceundergrupp omfattar geodatatjänster i dataformat om den bebyggda och naturliga miljön i Finland.",
+      "language" : "sv"
+    }, {
+      "value" : "Tähän palvelualaluokkaan kuuluvat palvelut, jotka tarjoavat datamuodossa olevaa paikkatietoa Suomen rakennetusta ja luonnonympäristöstä.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains services that offer geographic information in data format on built and natural environments in Finland.",
+      "language" : "en"
+    } ],
+    "code" : "P18.2",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1158",
+    "parentId" : "419f1cc3-738c-41e1-b359-21f95e04f619",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1156"
+  }, {
+    "name" : [ {
+      "value" : "Kansalaisvaikuttaminen",
+      "language" : "fi"
+    }, {
+      "value" : "Medborgarnas medverkan",
+      "language" : "sv"
+    }, {
+      "value" : "Civic participation",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Denna serviceundergrupp omfattar medborgarnas och frivilligorganisationernas politiska och samhälleliga medverkan utanför val ur ett serviceperspektiv. Gruppen omfattar bland annat förfaranden för grundande och registrering av föreningar samt medborgar- och kommuninvånarinitiativ.",
+      "language" : "sv"
+    }, {
+      "value" : "Tässä palvelualaluokassa käsitellään palvelujen näkökumasta kansalaisten ja kansalaisyhteisöjen poliittista ja yhteiskunnallista vaikuttamista vaalien ulkopuolella. Luokkaan kuuluvat muun muassa yhdistyksen perustamisen ja rekisteröinnin menettelyt sekä kansalais- ja kuntalaisaloitteiden tekeminen.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains the political and social participation of citizens and non-governmental organisations outside the elections from the service point of view. The class includes the procedures for establishing and registering an association and submitting citizen’s and local resident’s initiatives.",
+      "language" : "en"
+    } ],
+    "code" : "P8.3",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1093",
+    "parentId" : "6621dcc1-803a-4984-b20e-16da4651a293",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1090"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "Nationwide",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-19T11:54:44.547705",
+  "id" : "7b5d0b9e-5126-4f38-b0b3-b1c1e847acc1",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "6180d972-a4b3-4812-a924-b35a1b377ad2",
+      "name" : "Avoindata.fi verkkoasiointi"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ {
+    "names" : [ {
+      "value" : "Valtiovarainministeriön asetus eräiden hallinnon yhteisten sähköisen asioinnin tukipalveluiden tuottamisesta",
+      "language" : "fi"
+    } ],
+    "webPages" : [ {
+      "url" : "http://www.finlex.fi/fi/laki/ajantasa/2016/20160607",
+      "value" : null,
+      "language" : "fi"
+    } ]
+  } ],
+  "requirements" : [ {
+    "value" : "Avoimen datan aineistot on lisenssointu tyypillisesti JHS189 (CC BY 4.0) mukaisesti.",
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi", "en", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ {
+    "name" : [ {
+      "value" : "Verkkoportaalit",
+      "language" : "fi"
+    }, {
+      "value" : "Web portals",
+      "language" : "en"
+    }, {
+      "value" : "Webbportaler",
+      "language" : "sv"
+    } ],
+    "code" : "5",
+    "ontologyType" : null,
+    "uri" : "http://www.stat.fi/meta/luokitukset/toimiala/001-2008/63120",
+    "parentId" : "420160d9-7c7f-4b32-b0c4-1025231a30f7",
+    "parentUri" : "http://www.stat.fi/meta/luokitukset/toimiala/001-2008/6312"
+  } ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Avoimen tiedon ja yhteentoimivuuden palvelu",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "avoimen datan palvelu",
+    "type" : "AlternativeName"
+  } ],
+  "ontologyTerms" : [ ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Företag och samfund",
+      "language" : "sv"
+    }, {
+      "value" : "Yritykset ja yhteisöt",
+      "language" : "fi"
+    }, {
+      "value" : "Businesses and non-government organizations",
+      "language" : "en"
+    } ],
+    "code" : "KR2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "Myndigheter",
+      "language" : "sv"
+    }, {
+      "value" : "Authorities",
+      "language" : "en"
+    }, {
+      "value" : "Viranomaiset",
+      "language" : "fi"
+    } ],
+    "code" : "KR3",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2017",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "Medborgare",
+      "language" : "sv"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Käytä ensisijaisesti verkkoasiointia.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : "Avoindata.fi-palvelussa voit etsiä muiden julkaisemia avoimia tietoaineistoja sekä julkaista ja hallinnoida omia avoimia tietoaineistojasi.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : "VRK:n ylläpitämä Suomen avoimen datan palvelu edistää julkishallinnon läpinäkyvyyttä sekä avoimen datan löydettävyyttä, saatavuutta ja hyödyntämistä. Avoindata.fi-palvelussa voit etsiä muiden julkaisemia avoimia tietoaineistoja sekä julkaista ja hallinnoida omia avoimia tietoaineistojasi.",
+    "type" : "Description"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "b458d033-042d-4cbe-b030-34e81da28821",
+      "name" : "Väestörekisterikeskus"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "b458d033-042d-4cbe-b030-34e81da28821",
+      "name" : "Väestörekisterikeskus"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

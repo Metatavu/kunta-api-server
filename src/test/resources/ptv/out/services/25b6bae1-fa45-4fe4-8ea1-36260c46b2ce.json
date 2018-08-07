@@ -1,0 +1,453 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Vapaa-ajan palvelut",
+      "language" : "fi"
+    }, {
+      "value" : "Fritidstjänster",
+      "language" : "sv"
+    }, {
+      "value" : "Free-time services",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Denna serviceundergrupp omfattar tjänster relaterade till fritiden på ett omfattande plan. Denna grupp omfattar inte motions- och idrottstjänster, som har en egen huvudgrupp.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains free-time services in a wide sense. The class does not include sports and exercise services, which have their own main class.",
+      "language" : "en"
+    }, {
+      "value" : "Tähän palvelualaluokkaan kuuluvat vapaa-ajan piiriin laajasti katsottavat palvelut. Tähän luokkaan eivät kuulu liikunnan ja urheilun palvelut, jotka ovat omassa pääluokassaan.",
+      "language" : "fi"
+    } ],
+    "code" : "P25.5",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1203",
+    "parentId" : "200f3f00-31b1-41cc-a986-2d9e4dc40fb7",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1198"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "3ba7c26b-37b3-41e0-a55a-680a422cbde5",
+  "serviceVouchers" : [ ],
+  "modified" : "2018-05-28T11:43:44.418181",
+  "id" : "25b6bae1-fa45-4fe4-8ea1-36260c46b2ce",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "16579725-4f14-4862-a98a-cd22700dd5ec",
+      "name" : "Rymättylän nuorisotila"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "20c61f5a-e693-480d-a16e-24b86bd3b9f7",
+      "name" : "Maijamäen koulu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "2481937a-5d4d-4643-a9b9-9877be5d4d3e",
+      "name" : "Rymättylän koulu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "381ca7b9-dd45-4451-8e2f-6d1f2cd8583f",
+      "name" : "Nuoriso- ja vapaa-ajanohjaajat"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3cfd7097-b73e-4f2a-a482-099b00f12b02",
+      "name" : "Merimaskun koulu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "41c7c254-4e33-49ad-bbc5-830b5b295f70",
+      "name" : "Velkuan koulu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "44807258-fefe-43f0-a900-1f3e8f8f6f68",
+      "name" : "Kultarannan koulu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "54cea689-0d6e-41ac-adf6-dd12e7e97769",
+      "name" : "Etsivä nuorisotyöntekijä"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "69c2f81a-bc28-4992-9491-b82dacc0868c",
+      "name" : "Taimon koulu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "79ef34ea-b731-4c0d-ac77-d139be9eb84c",
+      "name" : "Suopellon koulu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "9f9f9de3-e74b-4924-90b2-4a003bfebf30",
+      "name" : "Kuparivuoren koulu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "acfd9ef0-6d18-4a18-b163-fcd7dfd1ef76",
+      "name" : "Lietsalan koulu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "b3664c87-fc07-4d6b-9454-f3587310eb9d",
+      "name" : "Etsivä nuorisotyö Naantalin nettisivuilla"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "bacd2ca7-b412-4952-b9ef-78dec169c5f3",
+      "name" : "Karvetin monitoimitalo"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "be42fd69-04e3-4770-ab3e-084de8218da7",
+      "name" : "Nuorisotilojen valvoja"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "c148e197-646e-4c38-97b3-27cbe4a983eb",
+      "name" : "Karvetin koulu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "e67a7c41-6f4d-46a0-8bd2-f77150a644a5",
+      "name" : "Erityisnuorisotyöntekijä"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : "* Palvelu on tarkoitettu kaikille 15–29-vuotiaille naantalilaisille.\n* Nuorisotalotoimintaa järjestetään 9-17-vuotiaille.\n* Nuorisotalolla käynti edellyttää nuorisokorttia, jonka voi hakea nuorisotilalta. \n",
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Nuorisotyö",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "ungdomsarbete",
+      "language" : "sv"
+    }, {
+      "value" : "nuorisotyö",
+      "language" : "fi"
+    }, {
+      "value" : "youth work",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p14497",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p33881"
+  }, {
+    "name" : [ {
+      "value" : "ungdomsföreningar",
+      "language" : "sv"
+    }, {
+      "value" : "nuorisokerhot",
+      "language" : "fi"
+    }, {
+      "value" : "youth clubs",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "TERO",
+    "uri" : "http://www.yso.fi/onto/koko/p53947",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p15932"
+  }, {
+    "name" : [ {
+      "value" : "nuorisokulttuuri",
+      "language" : "fi"
+    }, {
+      "value" : "ungdomskultur",
+      "language" : "sv"
+    }, {
+      "value" : "youth culture",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p35489",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p33986"
+  }, {
+    "name" : [ {
+      "value" : "ungdomsrådgivning",
+      "language" : "sv"
+    }, {
+      "value" : "nuorisoneuvonta",
+      "language" : "fi"
+    }, {
+      "value" : "youth counselling",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p75625",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p35080"
+  }, {
+    "name" : [ {
+      "value" : "informations- och rådgivningsställen för ungdomar",
+      "language" : "sv"
+    }, {
+      "value" : "nuorten tieto- ja neuvontapisteet",
+      "language" : "fi"
+    }, {
+      "value" : "youth information and guidance points",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p69024",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p3075"
+  }, {
+    "name" : [ {
+      "value" : "nuori (13-18 vuotta)",
+      "language" : "fi"
+    }, {
+      "value" : "ungdomar",
+      "language" : "sv"
+    }, {
+      "value" : "adolescent",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "TERO",
+    "uri" : "http://www.yso.fi/onto/koko/p58671",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p34010"
+  }, {
+    "name" : [ {
+      "value" : "lasten ja nuorten osallisuus",
+      "language" : "fi"
+    }, {
+      "value" : "barns och ungdomars medverkan",
+      "language" : "sv"
+    }, {
+      "value" : "the involvement of children and young people",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p65414",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p35853"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Nuoret",
+      "language" : "fi"
+    }, {
+      "value" : "Young people",
+      "language" : "en"
+    }, {
+      "value" : "De unga",
+      "language" : "sv"
+    } ],
+    "code" : "KR1.3",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2004",
+    "parentId" : "daff1fb9-9394-49b5-b033-d1d1c7005ab6",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001"
+  }, {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : "Nuorisotyö tarjoaa tukea ja apua naantalilaisille nuorille ja heidän vanhemmilleen sekä järjestää monipuolista harrastustoimintaa.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Naantalin nuorisotyöntekijät auttavat ja tukevat nuoria ja heidän vanhempiaan monissa asioissa, pienemmissä ja isommissa. \n\nNuorisotyöntekijät auttavat harrastuksen haussa, työhakemuksen ja ansioluettelon tekemisessä, kulkevat rinnalla virastoihin, pohtivat kanssasi parisuhteen tai kaverisuhteiden koukeroita ja neuvovat mahdollisuuksissa lähteä ulkomaille. Nuorisotyö järjestää nuorille ja nuorten kanssa laadukkaita ja monipuolisia harrastusmahdollisuuksia ja tapahtumia. Nuorisotyöntekijät ovat tavattavissa nuorisotaloilla, kouluissa, tapahtumissa ja kaduilla.",
+    "type" : "Description"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

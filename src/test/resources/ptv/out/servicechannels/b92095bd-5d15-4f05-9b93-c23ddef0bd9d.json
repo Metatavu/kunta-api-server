@@ -1,0 +1,44 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "http://www.naantali.fi/terveys/palvelut/fi_FI/potilasasiamies/",
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "f39bd763-ddc6-4db9-84de-607eebcf69c5",
+      "name" : "Potilasasiamies"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Potilasasiamiehen palvelut ja yhteystiedot",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Saat verkkosivulta tietoa potilasasiamiehen palveluista ja eri tavoista ottaa häneen yhteyttä. Naantali ostaa potilasasiamiehen palvelut VSSHP:lta.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Saat verkkosivulta tietoa potilasasiamiehen palveluista ja yhteystiedoista. Naantalin kaupunki ostaa potilasasiamiehen palvelut Varsinais-Suomen sairaanhoitopiiriltä eli VSSHP:lta.",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2018-04-10T12:19:01.959761",
+  "id" : "b92095bd-5d15-4f05-9b93-c23ddef0bd9d"
+}

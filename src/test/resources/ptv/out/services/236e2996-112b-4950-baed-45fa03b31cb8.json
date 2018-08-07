@@ -1,0 +1,271 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Properties",
+      "language" : "en"
+    }, {
+      "value" : "Fastigheter",
+      "language" : "sv"
+    }, {
+      "value" : "Kiinteistöt",
+      "language" : "fi"
+    } ],
+    "description" : [ {
+      "value" : "Tässä alapalveluluokassa käsitellään palvelujen näkökulmasta kiinteistötietoja sekä kiinteistöjen kauppaa ja verotusta.",
+      "language" : "fi"
+    }, {
+      "value" : "I denna underservicegrupp behandlas ur servicesynvinkeln fastighetsuppgifter samt fastighetsaffärer och -beskattning.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains property information as well as the trade and taxation of properties from the service point of view.",
+      "language" : "en"
+    } ],
+    "code" : "P2.4",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1011",
+    "parentId" : "dd30002b-be2b-4689-878a-60e93492cc87",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1007"
+  }, {
+    "name" : [ {
+      "value" : "Bebyggd miljö",
+      "language" : "sv"
+    }, {
+      "value" : "Rakennettu ympäristö",
+      "language" : "fi"
+    }, {
+      "value" : "Built environment",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Tässä palveluluokassa käsitellään julkiseen ja asumiskäyttöön tarkoitettuja rakennuksia sekä yleensä kiinteistöihin ja niiden käyttöön liittyvää kunnallista infrastruktuuria ja sen palveluja.",
+      "language" : "fi"
+    }, {
+      "value" : "I denna serviceundergrupp behandlas byggnader ämnade för offentligt och boendebruk samt kommunal infrastruktur och dess tjänster allmänt i anslutning till fastigheter och dess bruk.",
+      "language" : "sv"
+    }, {
+      "value" : "This service class contains public and residential buildings as well as municipal infrastructure and related services associated with buildings and their use in general.",
+      "language" : "en"
+    } ],
+    "code" : "P2",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1007",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "Rakentaminen",
+      "language" : "fi"
+    }, {
+      "value" : "Construction",
+      "language" : "en"
+    }, {
+      "value" : "Byggande",
+      "language" : "sv"
+    } ],
+    "description" : [ {
+      "value" : "Tässä alapalveluluokassa käsitellään rakentamiseen liittyviä asioita yksityisen rakentajan palvelujen näkökulmasta. Keskeisiä asioita ovat esimerkiksi rakentamisen luvat ja lupaprosessit, rakennusvalvonnasta huolehtiminen, remontointi ja korjausrakentaminen sekä rakentamiseen liittyvät veroasiat.",
+      "language" : "fi"
+    }, {
+      "value" : "This subclass contains issues related to construction from the point of view of services for private builders. Key issues include permits and permit processes of construction, ensuring appropriate building control, renovations and repairs as well as tax issues relevant to construction.",
+      "language" : "en"
+    }, {
+      "value" : "I denna serviceundergrupp behandlas ärenden i samband med byggande utgående från tjänster för en privat byggare. Centrala ärenden är t.ex. bygglov och tillståndsprocesser, sörjande för byggnadstillsyn, renovering och ombyggnad samt skatteärenden i anslutning till byggande.",
+      "language" : "sv"
+    } ],
+    "code" : "P2.1",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1008",
+    "parentId" : "dd30002b-be2b-4689-878a-60e93492cc87",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1007"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "Nationwide",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "236e2996-112b-4950-baed-45fa03b31cb8",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "80f6bcb5-e224-4041-97da-95b6936878fe",
+      "name" : "Väestörekisterikeskuksen verkkoasiointi"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : "VTJ-ylläpitokäyttöliittymä on tarkoitettu maistraattien, kuntien rakennusvalvonnan ja maanmittauslaitoksen käyttöön. Palvelu on maksuton.\n\nVäestötietojärjestelmän tiedot eivät ole julkisia, ja niiden käyttö edellyttää aina Väestörekisterikeskuksen asiakasorganisaatiolle myöntämää lupaa sekä asiakasorganisaation sitoutumista luvan ehtoihin. Luvan saajan tulee tutustua myönnetyn luvan ehtoihin ja varmistaa, että väestötietojärjestelmän tietoja käsiteltäessä noudatetaan tietosuojaa ja tietojenkäsittelyn turvallisuutta koskevaa lainsäädäntöä ja viranomaisten määräyksiä. Väestötietojärjestelmästä saatuja tietoja ei saa luovuttaa kolmannelle osapuolelle ilman Väestörekisterikeskuksen tapauskohtaisesti myöntämää lupaa.\n\nVäestötietojärjestelmästä saatuja tietoja saa tallettaa omaan rekisteriin vain, mikäli käyttäjäorganisaatiolla on siihen henkilötietolain tai muun lain mukaan oikeus. \n",
+    "language" : "fi"
+  }, {
+    "value" : "BDS-användargränssnittet är avsett för magistraterna, byggnadsinspektionen i kommunerna och lantmäteriverket. Tjänsten är gratis.\n\nBefolkningsdatasystemets uppgifter är inte offentliga, och användning av dem förutsätter alltid tillstånd av Befolkningsregistercentralen och en förbindelse att följa tillståndsvillkoren. Den som fått tillstånd ska bekanta sig med tillståndsvillkoren och försäkra sig om att man vid hantering av befolkningsdatasystemets uppgifter följer gällande lagstiftning och myndighetsbestämmelser om dataskydd och datasäkerhet. Uppgifter från befolkningsdatasystemet får inte överlämnas till tredje part utan särskilt tillstånd av Befolkningsregistercentralen.\n\nMan får registrera uppgifter från befolkningsdatasystemet i sina egna register endast ifall användningsorganisationen har rätt att göra det enligt personuppgiftslagen eller någon annan lag.\n",
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "VTJ-ylläpitokäyttöliittymä",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "uRahu",
+    "type" : "AlternativeName"
+  }, {
+    "language" : "sv",
+    "value" : "BDS-användargränssnittet",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "byggnads- och åtgärdstillstånd",
+      "language" : "sv"
+    }, {
+      "value" : "rakennus- ja toimenpideluvat",
+      "language" : "fi"
+    }, {
+      "value" : "construction permits and planning permissions for minor construction",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p65675",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p65281"
+  }, {
+    "name" : [ {
+      "value" : "bygglov",
+      "language" : "sv"
+    }, {
+      "value" : "rakentamisen luvat",
+      "language" : "fi"
+    }, {
+      "value" : "construction permits",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p65281",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p32857"
+  }, {
+    "name" : [ {
+      "value" : "rakentaminen",
+      "language" : "fi"
+    }, {
+      "value" : "byggande",
+      "language" : "sv"
+    }, {
+      "value" : "construction",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p34882",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p24991"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Viranomaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Authorities",
+      "language" : "en"
+    }, {
+      "value" : "Myndigheter",
+      "language" : "sv"
+    } ],
+    "code" : "KR3",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2017",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Asiakasorganisaation ja Väestörekisterikeskuksen väliset sopimukset tehdään sähköisesti Väestörekisterikeskuksen Verkkoasioinnissa. Asiakasorganisaatio voi verkkoasioinnin kautta ilmoittaa myös VTJ-ylläpitorajapinnan yhteyshenkilön tiedot, saadakseen organisaationsa henkilökunnalle esim. raporttioikeudet VTJ-ylläpitokäyttöliittymään. Ohjeet ovat saatavilla Väestörekisterikeskuksen Eevertti-sivustolla.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : "VTJ-ylläpitokäyttöliittymä on nettiselainpohjainen järjestelmä, josta on käytettävissä rakennustietojen raportointi-, selailu- ja ylläpito-roolit.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : "VTJ-ylläpitokäyttöliittymä on nettiselaimella käytettävä järjestelmä, josta on käytettävissä rakennustietojen raportointi-, selailu- ja ylläpito-roolit. Ylläpito-rooli tarjoaa maistraateille, kuntien rakennusvalvonnalle ja maanmittauslaitokselle laajat oikeudet väestötietojärjestelmässä olevien rakennushanke- ja rakennustietojen lisäämiseen, muuttamiseen ja poistamiseen. Selailu-roolilla voi selata väestötietojärjestelmään rekisteröityjä rakennus- ja huoneistotietoja. Raportointi-rooli taas tarvitaan rakennus- ja huoneistotietojen rekisteröinnin virhelistojen (RHR-virhelistojen) sekä keskeneräisten rakennushankkeiden luettelon hakemiseen.\n\nKaikki kunnat voivat hakemuksesta saada käyttöönsä VTJ-ylläpitokäyttöliittymän raportointi- ja selailu-roolit. Maistraateilla ja maanmittauslaitoksella on käytössään VTJ-ylläpitokäyttöliittymän ylläpitorooli. VTJ-ylläpitokäyttöliittymän käyttäjäoikeuksia hallinnoidaan VTJkyselyn kanssa yhteisessä hallintapalveluissa. Kunta ilmoittaa Väestörekisterikeskukselle käyttäjähallinnan vastuukäyttäjän tiedot Verkkoasioinnin kautta.\n",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "BDS-användargränssnittet för byggnadsuppgifter används med hjälp av webbläsare, antingen i rapporterings-, bläddrings- eller ajourhållningsroll.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "BDS-användargränssnittet för byggnadsuppgifter används med hjälp av webbläsare, antingen i rapporterings-, bläddrings- eller ajourhållningsroll. Ajourhållningsrollen erbjuder magistraten och byggnadsinspektionen i kommunerna samt lantmäteribyråerna omfattande rättigheter att korrigera, stryka och lägga till bygglov och byggnadsuppgifter i befolkningsdatasystemet. I bläddringsrollen kan man bläddra i de byggnader och bygglov som finns i befolkningsdatasystemet. Rapporteringsrollen åter behövs för hämtning av byggnads- och lägenhetsuppgifternas fellängder och listan på halvfärdiga bygglov.\nAlla kommuner kan på ansökan få användarrättigheter till BDS-användargränssnittets rapporterings- och bläddringsroller. Ajourhållningsrollen används av magistraterna och lantmäteriverket. BDS-användargränssnittets användarrättigheter administreras i samma administrationstjänst som VTJkysely. Kommunen anmäler sin ansvariga användare till Befolkningsregistercentralen via tillståndsansökan i e-tjänsten.\n",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Avtalen mellan Befolkningsregistercentralen och kundorganisationen görs elektroniskt via Befolkningsregistercentralens e-tjänst. Kundorganisationen kan via e-tjänsten också anmäla uppgifter om kontaktpersonen för BDS-användargränssnittet, för kunna få t.ex. rapporträttigheter till BDS-användargränssnittet för sin personal. Anvisningar finns på Befolkningsregistercentralens webbsida Eevertti.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "b458d033-042d-4cbe-b030-34e81da28821",
+      "name" : "Väestörekisterikeskus"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "b458d033-042d-4cbe-b030-34e81da28821",
+      "name" : "Väestörekisterikeskus"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

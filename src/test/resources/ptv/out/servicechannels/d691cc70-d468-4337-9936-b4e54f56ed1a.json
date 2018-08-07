@@ -1,0 +1,88 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "8a4b4a99-9cc4-44fa-948e-63db631643e7",
+      "name" : "Lemmikkieläinten hautapaikat"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "407615572",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "407615572",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Työnjohtaja",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Arbetsledare",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "Phone",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Vaasan kaupungin viheralueyksikön työnjohtajaan voit olla yhteydessä pieneläinten hautapaikkojen vuokraukseen liittyvissä asioissa.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Arbetsledaren vid Vasa stads grönområdesenhet kan du kontakta i ärenden som gäller hyrning av gravplatser för smådjur.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan kaupungin viheralueyksikön työnjohtajaan voit olla yhteydessä pieneläinten hautapaikkojen vuokraukseen ja pieneläinhautausmaan kunnossapitoon sekä hoitoon liittyvissä asioissa.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Arbetsledaren vid Vasa stads grönområdesenhet kan du kontakta i ärenden som gäller hyrning av gravplatser för smådjur samt underhåll och skötsel av smådjursgravgården. \n",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2018-01-23T08:38:05.888084",
+  "id" : "d691cc70-d468-4337-9936-b4e54f56ed1a"
+}

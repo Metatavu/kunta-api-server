@@ -1,0 +1,155 @@
+{
+  "sourceId" : null,
+  "keywords" : [ {
+    "value" : "Asiointilupa, asiointivaltuudet",
+    "language" : "fi"
+  } ],
+  "areas" : [ ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Tietosuoja ja henkilötiedot",
+      "language" : "fi"
+    }, {
+      "value" : "Datasekretess och personuppgifter",
+      "language" : "sv"
+    }, {
+      "value" : "Data protection and personal data",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "This service subclass contains services related to personal data and privacy protection, personal identifiers, travel documents and registers containing personal data. It also contains matters pertaining to a citizen's rights to control and use their personal data.",
+      "language" : "en"
+    }, {
+      "value" : "Tässä palvelualaluokassa käsitellään henkilötietojen ja yksityisyyden suojaan, henkilötunnuksiin ja -tunnisteisiin, matkustusasiakirjoihin ja henkilötietoja sisältäviin rekistereihin liittyviä palveluja sekä kansalaisen oikeuksia hallita ja käyttää omia tietojaan.",
+      "language" : "fi"
+    }, {
+      "value" : "Denna serviceundergrupp omfattar tjänster relaterad till skyddet av personuppgifter och integritet, personbeteckningar och -koder, resedokument och register med personuppgifter samt medborgarnas rättigheter att kontrollera och begränsa användningen av deras personuppgifter.",
+      "language" : "sv"
+    } ],
+    "code" : "P7.9",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1085",
+    "parentId" : "487549b3-a7de-4312-badb-2ee6bb390950",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1076"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "Nationwide",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "f4e22166-0b6a-4d33-b885-715a298999c4",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "6631f997-eb58-401e-b0a9-274f7d51cb0a",
+      "name" : "Sähköisten valtuuksien luonti yrityksen puolesta asioinnissa"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : "Tulevaisuudessa kun valtuuksien hallinnointi on mahdollista, valtuuttaminen edellyttää tunnistautumista Suomi.fi-verkkopalveluun. Tunnistautuminen tapahtuu verkkopankkitunnuksilla, mobiilivarmenteella tai varmennekortilla (henkilökortti, organisaatiokortti ja sosiaali- ja terveydenhuollon ammattikortti).",
+    "language" : "fi"
+  } ],
+  "languages" : [ "sv", "fi" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Yrityksen puolesta asiointi",
+    "type" : "AlternativeName"
+  }, {
+    "language" : "fi",
+    "value" : "Suomi.fi-valtuudet yrityksen puolesta asiointiin",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "tietoon perustuva suostumus",
+      "language" : "fi"
+    }, {
+      "value" : "informerat samtycke",
+      "language" : "sv"
+    }, {
+      "value" : "informed consent",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "TERO",
+    "uri" : "http://www.yso.fi/onto/koko/p51717",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p53859"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Yritykset ja yhteisöt",
+      "language" : "fi"
+    }, {
+      "value" : "Businesses and non-government organizations",
+      "language" : "en"
+    }, {
+      "value" : "Företag och samfund",
+      "language" : "sv"
+    } ],
+    "code" : "KR2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Palvelu tarkistaa oikeuden asioida yrityksen puolesta. Palvelun avulla voi valtuuttaa henkilön tai yrityksen asioimaan yrityksen puolesta verkossa.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : "Suomi.fi-valtuudet-palvelu voidaan jakaa kahteen osaan: Jos haluat asioida edustamasi yrityksen puolesta jossakin julkishallinnon tai yksityisen sektorin verkkopalvelussa, Suomi.fi-valtuudet tarkistaa oikeutesi puolesta-asiointiin. Tämä edellyttää, että verkkopalvelu on ottanut Suomi.fi-valtuudet käyttöön. Esimerkiksi Trafin Oma asiointi -palvelussa oikeutesi asioida yrityksen puolesta tarkistetaan Suomi.fi-valtuuksien avulla. Tulevaisuudessa yritys voi valtuuttaa toisen yrityksen tai henkilön asioimaan puolestaan sähköisissä asiointipalveluissa. Valtuuttaminen tapahtuu Suomi.fi-verkkopalvelussa. Valtuuksien hallintaa voi jo nyt kokeilla testihenkilöiden tunnuksilla testipalvelussa.",
+    "type" : "Description"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "b458d033-042d-4cbe-b030-34e81da28821",
+      "name" : "Väestörekisterikeskus"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "b458d033-042d-4cbe-b030-34e81da28821",
+      "name" : "Väestörekisterikeskus"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

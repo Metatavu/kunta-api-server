@@ -1,0 +1,88 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "2379f83b-2cb4-45b4-8f01-a98923093e90",
+      "name" : "Vammaisten päivä- ja työtoiminta"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "405601540",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "405601540",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Vammaisten päivä- ja työtoiminnan johtaja",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Chefen för dag- och arbetsverksamheten för personer med funktionsnedsättning",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "Phone",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Vammaisten päivä- ja työtoiminnan johtaja.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Vammaisten päivä- ja työtoiminnan johtaja.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Chefen för dag- och arbetsverksamheten för personer med funktionsnedsättning",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Chefen för dag- och arbetsverksamheten för personer med funktionsnedsättning.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "d9c8efdd-777b-46d7-9d91-03c2ab781d0b"
+}

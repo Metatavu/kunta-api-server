@@ -1,0 +1,146 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/node/16531/",
+    "value" : "Vanhan Vaasan koulun verkkosivut",
+    "language" : "fi"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Kustaa III:n polku",
+        "language" : "fi"
+      }, {
+        "value" : "Gustaf III:s stig",
+        "language" : "sv"
+      } ],
+      "streetNumber" : "2-4",
+      "postalCode" : "65230",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ ],
+      "latitude" : "7005691.966",
+      "longitude" : "233510.054",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "17c633dd-5408-495a-86c1-d8f57598e899",
+      "name" : "Perusopetus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Fax",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : null,
+    "isFinnishServiceNumber" : true,
+    "number" : null,
+    "language" : "sv"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Rehtori",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "407568618",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Rektor",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "407568618",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Vanhan Vaasan koulu",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Vanhan Vaasan koulu",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Vanhan Vaasan koulu on noin 250 oppilaan opinahjo, joka sijaitsee kulttuurihistoriallisella alueella. Kivenheiton päässä on vanha kaupunki, josta on jäljellä enää rauniot. Koulu on suojaisessa paikassa keskellä luontoa ja hyviä harrastusmahdollisuuksia. Koulun piha on kehuttu ja oppilaat viihtyvät hyvin välitunneilla. Lisäksi melkein koulun pääoven vierestä lähtee pururata, joka toimii talvisin myös hiihtolatuna. Koulun vieressä on Alkulan tila, jossa luokat voivat käydä katsomassa eläimiä. Siellä on mahdollisuus myös grillaamiseen. Lisäksi tila tarjoaa oppilaillemme kerhoja, joissa voi muun muassa kokata, askarrella ja hoitaa eläimiä. Kiva ympäristö vaikuttaa myös opetukseen, joka on luonnonläheistä ja perusarvoja kunnioittavaa. Hyvä työilmapiiri ja hyvät välit oppilaisiin ja huoltajiin ovat koulumme toiminnan ydinalueita. Näistä perusasioista on hyvä ponnistaa eteenpäin.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Vanhan Vaasan koulu on noin 250 oppilaan opinahjo, joka sijaitsee kulttuurihistoriallisella alueella.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Vanhan Vaasan koulu är en skola med ca 250 elever, vilken finns på ett kulturhistoriskt område.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Vanhan Vaasan koulu är en skola med ca 250 elever, vilken finns på ett kulturhistoriskt område. På ett stenkasts avstånd finns den gamla staden, av vilken endast ruiner återstår. Skolan finns på en skyddad plats nära naturen och där finns fina fritidsmöjligheter.  Skolans gård har fått beröm och eleverna trivs bra på rasterna. Dessutom börjar nästan bredvid skolans huvudentré en spånbana som vintertid också har skidspår. Bredvid skolan finns Alkula gård, dit klasserna kan gå för att titta på djur.  Där finns också grillmöjligheter. Därtill erbjuder gården klubbar för våra elever, där man bl.a. kan laga mat, pyssla och sköta djur. En trevlig omgivning inverkar också på undervisningen, som är naturnära och respekterar de grundläggande värdena. Ett bra arbetsklimat och goda kontakter till elever och vårdnadshavare är fokusområden för vår skolas verksamhet. Från dessa grundläggande saker är det bra att ta sats framåt. \n",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "5167ff20-dd80-4b55-85b7-e52fdbe78abf"
+}

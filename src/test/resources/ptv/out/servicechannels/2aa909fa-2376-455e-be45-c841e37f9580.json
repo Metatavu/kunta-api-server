@@ -1,0 +1,61 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/node/13031/",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/sv/node/13031/",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "97f1495b-8a21-4a5d-9c45-c03aa100de06",
+      "name" : "Kiinteistöjen ja asunnon välitys"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Kiinteistöjen ja asunnonvälitys",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Fastighets- och bostadsförmedling",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Vaasan kaupungin verkkosivuilta löydät listan Vaasassa toimivista kiinteistönvälittäjistä. \n",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan kaupungin verkkosivuilta löydät listan Vaasassa toimivista kiinteistönvälittäjistä.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "På Vasa stads webbsidor finns en lista över de fastighetsmäklare som verkar i Vasa.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "På Vasa stads webbsidor finns en lista över de fastighetsmäklare som verkar i Vasa. ",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "2aa909fa-2376-455e-be45-c841e37f9580"
+}

@@ -1,0 +1,153 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Jyrsijänkatu",
+        "language" : "fi"
+      }, {
+        "value" : "Fräsargatan",
+        "language" : "sv"
+      } ],
+      "streetNumber" : "2",
+      "postalCode" : "65370",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ {
+        "value" : null,
+        "language" : "sv"
+      } ],
+      "latitude" : "7006638.403",
+      "longitude" : "233637.789",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "d14f70fd-d474-4d58-bd18-ed32dab8d2ab",
+      "name" : "Lastenneuvolapalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : "2 Terveydenhoitaja",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "405716528",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "1 Terveydenhoitaja",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "401369152",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Hälsovårdare",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "401369152",
+    "language" : "sv"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Hälsovårdare",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "405716528",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Ristinummen lastenneuvola",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Korsnästågets barnrådgivning",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Ristinummen lastenneuvola palvelee Ristinummen ja lähialueiden lapsiperheitä.\n\nPuhelinaika ma-pe klo 11-11-30.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Ristinummen lastenneuvola palvelee Ristinummen ja lähialueiden lapsiperheitä.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Korsnästågets barnrådgivning.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Korsnästågets barnrådgivning. \n\nTelefontid kl. 11-11.30.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "caecdd06-135c-484d-ba80-6fdeb3be273b"
+}

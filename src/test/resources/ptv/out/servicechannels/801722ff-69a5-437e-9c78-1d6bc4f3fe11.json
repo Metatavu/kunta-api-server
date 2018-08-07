@@ -1,0 +1,94 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "http://www.naantali.fi/terveys/palvelut/neuvolat/fi_FI/perhetyo/",
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "38b46245-1c68-423e-87cc-f0ecceb1ffeb",
+      "name" : "Neuvolan perhetyö"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "5e8cef86-77bf-4671-ad81-a8056df81fdd",
+      "name" : "Lastenneuvolapalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "d9279666-d9df-46dd-8838-1ca4a2cd5f4f",
+      "name" : "Lapsiperheiden kotipalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : "Neuvolan perhetyöntekijä/terveydenhoitaja",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "447330029",
+    "language" : "fi"
+  } ],
+  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Neuvolan perhetyöntekijä/terveydenhoitaja",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "Phone",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Ota yhteyttä neuvolan perhetyöntekijään/terveydenhoitajaan kun tarvitset neuvontaa ja tukea arjessa alle kouluikäisten lasten kanssa.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Ota yhteyttä neuvolan perhetyöntekijään/terveydenhoitajaan kun tarvitset neuvontaa ja tukea arjessa alle kouluikäisten lasten kanssa.\n\nNeuvolan perhetyö on maksutonta.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-12-11T14:07:34.95817",
+  "id" : "801722ff-69a5-437e-9c78-1d6bc4f3fe11"
+}

@@ -1,0 +1,61 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/node/12831",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/sv/node/12831",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "03385592-f0a8-4dc1-8790-2c23ce1486c8",
+      "name" : "Faksi-, skannaus-, kopio- ja postipalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Faksi-, skannaus-, kopio- ja postipalvelu",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Fax-, skannings-, kopieringstjänst och postservice",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Verkkosivulta löydät lisätietoa palvelusta ja hinnastosta.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "På webbsidan finns ytterligare information om servicen och prislistan.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "På webbsidan finns ytterligare information om servicen och prislistan.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Verkkosivulta löydät lisätietoa palvelusta ja hinnastosta. ",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "2c5dd33e-a2c7-4761-b0a1-9ba738c788a0"
+}

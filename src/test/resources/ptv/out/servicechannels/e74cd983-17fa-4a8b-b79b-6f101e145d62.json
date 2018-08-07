@@ -1,0 +1,44 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "http://www.naantali.fi/liikenne/pysakointi/fi_FI/pysakointitietoa/",
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "6d8311b4-aef4-4839-b0ea-7c87b4c71c40",
+      "name" : "Pysäköinninvalvonta"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Pysäköintitietoa Naantalissa autoileville",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Sivusto sisältää Naantalin pysäköintiä ja pysäköinninvalvontaa koskevaa perustietoa.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Sivusto sisältää Naantalin pysäköintiä ja pysäköinninvalvontaa koskevaa perustietoa. Kävijämäärät Naantalissa ja varsinkin sen vanhassa kaupungissa moninkertaistuvat kesäisin. Sivustolla annetaan tietoa perhematkailukohde Muumimaailman paikoitusalueesta ja kaupungin muista tärkeistä pysäköintiin sopivista alueista.  ",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "e74cd983-17fa-4a8b-b79b-6f101e145d62"
+}

@@ -1,0 +1,235 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/node/4261",
+    "value" : "Horisontti",
+    "language" : "fi"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Vaasanpuistikko",
+        "language" : "fi"
+      }, {
+        "value" : "Vasaesplanaden",
+        "language" : "sv"
+      } ],
+      "streetNumber" : "20 B",
+      "postalCode" : "65100",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ {
+        "value" : "2. kerros",
+        "language" : "fi"
+      }, {
+        "value" : "2 vån",
+        "language" : "sv"
+      } ],
+      "latitude" : "7007593.926",
+      "longitude" : "228557.495",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "4c7c93da-2924-4101-a3c7-5b934450d422",
+      "name" : "Opioidiriippuvaisten korvaushoito"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "c0ce316c-23d2-416c-9c3c-816380b868d5",
+      "name" : "Mielenterveyspalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : "Päihdepalvelut, ma-pe klo 10-12",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "407193436",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Mielenterveyspalvelut, ma-pe klo 10-12",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "408096983",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Osastonsihteeri, soittopyynnöt ja peruutukset",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63252800",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Johtava ohjaaja",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "406581042",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Missbruksservicen",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "407193436",
+    "language" : "sv"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Mentalvårdsservicen",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "408096983",
+    "language" : "sv"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Ringbud och annuleringar",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63252800",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Mielenterveys- ja riippuvuuskeskus Horisontti",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Center för mental- och beroendevård Horisonten",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ {
+    "serviceHourType" : "DaysOfTheWeek",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ {
+      "value" : null,
+      "language" : "fi"
+    } ],
+    "openingHour" : [ {
+      "dayFrom" : "Monday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "17:00:00"
+    }, {
+      "dayFrom" : "Tuesday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    }, {
+      "dayFrom" : "Wednesday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    }, {
+      "dayFrom" : "Thursday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    }, {
+      "dayFrom" : "Friday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "15:00:00"
+    } ]
+  } ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "Horisonten - Center för mental- och beroendevård erbjuder hjälp vid missbruks- och beroendeproblem och mentalvårdsproblem.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Vasas Center för mental- och beroendevård Horisonten erbjuder hjälp vid:\n\n* Missbruks- och beroendeproblem bland 25 år fyllda personer och deras närstående i Vasa, Laihela och avtalskommunerna.\n* Mentalvårdsproblem bland 25 år fyllda Vasabor samt deras anhöriga.\n* Besvärliga livssituationer.\nServicen är frivillig, konfidentiell och avgiftsfri.\n\nVasas Center för mental- och beroendevård Horisonten erbjuder öppen mentalvårdsservice för 25 år fyllda och äldre Vasabor. 25 år fyllda personer från Vasa och avtalskommunerna erbjuds hjälp vid missbruks- och beroendeproblem.\n",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan Mielenterveys- ja riippuvuuskeskus Horisontti tarjoaa apua\n\n* Päihde- ja riippuvuusongelmiin yli 25-vuotiaille henkilöille ja heidän läheisilleen vaasalaisille, laihialaisille ja sopimuskuntalaisille.\n* Mielenterveyden ongelmiin 25 vuotta täyttäneille vaasalaisille ja heidän omaisille.\n* Haastaviin elämäntilanteisiin\n\nPalvelut ovat vapaaehtoisia, luottamuksellisia ja maksuttomia.\n\nVaasan Mielenterveys- ja riippuvuuskeskus Horisontti tarjoaa mielenterveyden avopalveluita 25 vuotta täyttäneille tai sitä vanhemmille vaasalaisille. Päihde- ja riippuvuusongelmiin tarjotaan apua yli 25-vuotiaille vaasalaisille ja sopimuskuntalaisille.\n\n",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan Mielenterveys- ja riippuvuuskeskus Horisontti tarjoaa apua päihde- ja riippuvuusongelmiin sekä mielenterveyden ongelmiin.",
+    "type" : "Summary"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "9188e9c0-5c39-4ec4-a715-f6e4da8e0277"
+}

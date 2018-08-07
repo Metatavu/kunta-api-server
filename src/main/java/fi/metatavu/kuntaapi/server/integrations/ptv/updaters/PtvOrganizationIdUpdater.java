@@ -9,7 +9,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 import fi.metatavu.ptv.client.ApiResponse;
-import fi.metatavu.ptv.client.model.VmOpenApiOrganizationGuidPage;
+import fi.metatavu.ptv.client.model.V8VmOpenApiOrganizationGuidPage;
 import fi.metatavu.kuntaapi.server.integrations.ptv.client.PtvApi;
 
 @ApplicationScoped
@@ -39,17 +39,17 @@ public class PtvOrganizationIdUpdater extends AbstractPtvOrganizationIdDiscoverJ
   }
 
   @Override
-  public ApiResponse<VmOpenApiOrganizationGuidPage> getPage() {
-    return ptvApi.getOrganizationApi().apiV7OrganizationGet(null, page, false);
+  public ApiResponse<V8VmOpenApiOrganizationGuidPage> getPage() {
+    return ptvApi.getOrganizationApi().apiV8OrganizationGet(page, null, null, "published");
   }
 
   @Override
-  public Long getOrderIndex(int itemIndex, VmOpenApiOrganizationGuidPage guidPage) {
+  public Long getOrderIndex(int itemIndex, V8VmOpenApiOrganizationGuidPage guidPage) {
     return (long) (itemIndex + (page * guidPage.getPageSize()));
   }
 
   @Override
-  public void afterSuccess(VmOpenApiOrganizationGuidPage guidPage) {
+  public void afterSuccess(V8VmOpenApiOrganizationGuidPage guidPage) {
     if ((page + 1) < guidPage.getPageCount()) {
       page++;
     } else {

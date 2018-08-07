@@ -1,0 +1,217 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Elinkeinot",
+      "language" : "fi"
+    }, {
+      "value" : "Näringar",
+      "language" : "sv"
+    }, {
+      "value" : "Industries",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Tähän palveluluokkaan kuuluvat kaikki yritystoimintaan liittyvät palvelut yrityksen perustamisesta liiketoiminnan kehittämiseen ja aina yrityksen lopettamiseen saakka.",
+      "language" : "fi"
+    }, {
+      "value" : "Denna servicegrupp omfattar alla tjänster relaterade till företagsverksamhet från etablering av företag till utveckling av affärsverksamheten och nedläggning av företag.",
+      "language" : "sv"
+    }, {
+      "value" : "This service class contains all services related to enterprising from the establishment of an enterprise to business development and winding up a company.",
+      "language" : "en"
+    } ],
+    "code" : "P11",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1105",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "3df9b54f-bbb5-4c22-904a-2f385a069942",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "0c59bc72-25a7-4f1a-939e-305952ef3fb1",
+      "name" : "Vaasan seudun elinvoimastrategia"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "6d5fd34a-309b-4e84-90a6-79c8393b9d59",
+      "name" : "Kaupunkikehitys"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "c35bc307-7056-4641-b01b-3e192f36c7b2",
+      "name" : "Kaupunkikehitys"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "sv"
+  }, {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : null,
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Elinkeinopalvelut",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Näringstjänster",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Yritykset ja yhteisöt",
+      "language" : "fi"
+    }, {
+      "value" : "Businesses and non-government organizations",
+      "language" : "en"
+    }, {
+      "value" : "Företag och samfund",
+      "language" : "sv"
+    } ],
+    "code" : "KR2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : "I ärenden som gäller näringslivsservice ta kontakt med Vasa stads stadutveklingen.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan kaupungin elinkeinopalvelut tukevat kaupungin elinvoiman ja elinkeinoelämän kehittymistä.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Elinkeinopalveluihin liittyvissä asioissa ota yhteyttä Vaasan kaupungin Kaupunkikehitykseen.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan kaupungin elinkeinopalvelut tukevat kaupungin elinvoiman ja elinkeinoelämän kehittymistä. Kaupunki toimii yhdessä paikallisen ja seudullisen elinkeinoelämän, yrittäjäyhdistysten, yliopistojen ja muiden julkisten toimijoiden kanssa.\n\nElinkeinopalveluiden toimintaan kuuluu kaupungin strategian mukaisiin elinkeinoasioihin (kuten osaava työvoima, innovaatiot sekä infrastruktuuri ja logistiikkaympäristö) osallistuminen, elinkeinoelämän edistäminen ja tukeminen sekä sen kehittäminen kansallisella ja kansainvälisellä tasolla.\n\nVaasan kaupungin elinkeinopalvelut ottaa huomioon kaupungin strategian kaikessa toiminnassaan. Elinkeinopalveluiden kolme tärkeintä painopistettä ovat:\n\nKasvusopimus\nINKA-ohjelma\nVaasan seudun Elinvoimastrategia 2016-2020\n \nKasvusopimuksen tavoitteena on vahvistaa seudun kilpailukykyä yhdessä valtion, seudun kuntien ja muiden toimijoiden kanssa, sekä tukea kansallista tavoitetta ja Vaasan seudun tavoitetta luoda Suomeen Euroopan johtava energiateknologiakeskittymä vuoteen 2030 mennessä. INKA-ohjelman tavoitteena on vahvistaa kansainvälisesti vetovoimaisten innovaatiokeskusten syntymistä Suomeen. Vuonna 2016 valmistunut Vaasan seudun Elinvoimastrategian 2016-2020 tavoitteena on, että seudun elinkeinoelämä, opetustoimi ja kunnat muodostavat yhteisen näkemyksen siitä, miten seudun elinvoimaisuutta sekä kasvua kehitetään tulevaisuudessa. \n\nElinkeinopalvelut osallistuu myös aktiivisesti EU-hankkeeseen Midway Alignment of the Bothnian Corridor, jolla Euroopan kuljetusverkoston tehokkuutta parannetaan sekä edistetään mm. laivaliikennettä.\n\nTietoa tilastopalvelusta, yritysneuvonnasta, yritystonteista sekä yritysten toimitiloista löytyy Vaasan kaupungin verkkosivuilta näitä palveluja käsittelevistä osioista.\n\nVaasan seudun seitsemän kunnan omistama seudullinen kehittämisyhtiö Vaasanseudun Kehitys Oy (VASEK) tukee myös kaupungin elinkeinopalveluita.\n\nVASEKin tehtäviin kuuluu:\n* seudullisen elinkeinoneuvonnan koordinointi\n* toimialakohtaisten yrityspalvelujen tuottaminen\n* seudulliset elinkeinoihin ja yrittämiseen liittyvät kehityshankkeet\n* seudun markkinointi",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Vasa stads näringslivsservice stöder utvecklingen av stadens livskraft och näringsliv.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Vasa stads näringslivsservice stöder utvecklingen av stadens livskraft och näringsliv. Staden samverkar med det lokala och regionala näringslivet, företagarföreningarna, universiteten och andra offentliga aktörer.\n\nI näringslivsservicens verksamhet ingår att engagera sig i näringslivsfrågor som är i enlighet med stadens strategi (såsom kompetent arbetskraft, innovationer samt infrastruktur och logistikmiljöer) samt att främja och stöda näringslivet och dess utveckling både nationellt och internationellt.\n\nVasa stads näringslivsservice beaktar stadens strategi i all sin verksamhet. Näringslivsservicens tre viktigaste tyngpunkter är:\n\nTillväxtavtalet\nINKA-programmet\nVasaregionens Livskraftsstrategi 2016-2020\n\nSyftet med tillväxtavtalet är att stärka regionens konkurrenskraft i samarbete mellan staten, regionens kommuner och övriga aktörer samt att stöda det nationella målet och Vasaregionens mål att i Finland skapa Europas ledande energiteknologikluster till år 2030. INKA-programmets målsättning är att stärka uppkomsten av internationellt attraktiva innovationskluster i Finland. Avsikten med Vasaregionens Livskraftsstrategi 2016-2020, som blev klar våren 2016, är att regionens näringsliv, utbildningssektor och kommuner tillsammans skapar en samsyn hur utveckla regionens livskraft och tillväxt i framtiden.\n\nNäringslivsservicen deltar även aktivt i EU-projektet Midway Alignment of the Bothnian Corridor, som förbättrar effektiviteten i det Europeiska transportnätverket samt främjar bl.a. färjtrafiken.\n\nInformation om Statistiktjänster, Företagsrådgivning, Företagstomter samt Företagens verksamhetslokaler hittar du på Vasa stads webbsidor i de servicekategorier som behandlar dessa tjänster.\n\nDet regionala utvecklingsbolaget Vasaregionens Utveckling Ab (VASEK), som ägs av sju kommuner i Vasaregionen stöder även stadens näringslivsservice.\n\nVASEK har som uppgift att:\n* koordinera näringslivsrådgivningen i regionen\n* producera branschvisa företagstjänster\n* verkställa regionala utvecklingsprojekt i anslutning till företagande och näringsliv\n* marknadsföra regionen",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

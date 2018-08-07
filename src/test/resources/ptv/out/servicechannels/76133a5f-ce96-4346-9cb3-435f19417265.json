@@ -1,0 +1,154 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/node/5061",
+    "value" : "Ristinummen päiväkoti",
+    "language" : "fi"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Ostospolku",
+        "language" : "fi"
+      } ],
+      "streetNumber" : "12",
+      "postalCode" : "65370",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ ],
+      "latitude" : "7006397.012",
+      "longitude" : "233713.186",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "43befe44-8bcc-4b37-9634-824666e05681",
+      "name" : "Erityisvarhaiskasvatus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "73af8c06-6a6b-4780-9164-8e8872eecc9c",
+      "name" : "Kunnallinen päiväkotihoito"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ {
+    "value" : "ristinummenpk@vaasa.fi",
+    "language" : "fi"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Ristinummen päiväkoti",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ {
+    "serviceHourType" : "DaysOfTheWeek",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ {
+      "value" : null,
+      "language" : "fi"
+    } ],
+    "openingHour" : [ {
+      "dayFrom" : "Monday",
+      "dayTo" : "",
+      "from" : "06:30:00",
+      "to" : "17:00:00"
+    }, {
+      "dayFrom" : "Tuesday",
+      "dayTo" : "",
+      "from" : "06:30:00",
+      "to" : "17:00:00"
+    }, {
+      "dayFrom" : "Wednesday",
+      "dayTo" : "",
+      "from" : "06:30:00",
+      "to" : "17:00:00"
+    }, {
+      "dayFrom" : "Thursday",
+      "dayTo" : "",
+      "from" : "06:30:00",
+      "to" : "17:00:00"
+    }, {
+      "dayFrom" : "Friday",
+      "dayTo" : "",
+      "from" : "06:30:00",
+      "to" : "17:00:00"
+    } ]
+  } ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Toiminta-ajatuksena on turvallisen ja välittävän ilmapiirin luominen, hyvän näkeminen lapsessa ja se, että jokainen lapsi ja aikuinen on arvokas. Päiväkoti painottaa erilaisuuden hyväksymistä, yhteistyötä muiden lasten ja aikuisten kanssa, toisten kuuntelemista ja kunnioittamista, liikuntaa, keskittymiskyvyn parantamista ja tervettä itsetuntoa sekä pettymysten ja vastoinkäymisten sietokyvyn kasvattamista. \n\nPäiväkodin tavoitteet: Lapsen kokonaisvaltainen kehittyminen liikunnan, musiikin, kädentaitojen, luovan ilmaisun ja ympäristökasvatuksen avulla, vuorovaikutus eri kulttuureista tulevien lasten ja aikuisten kanssa ja läsnä oleva, aidosti lapset huomioon ottava aikuinen sekä kannustava, kiireetön oppimisympäristö. Toiminta pohjautuu Vaasan kaupungin esiopetus- ja varhaiskasvatussuunnitelmaan.\n\nLapsiryhmät:\n* Talitintit, alle 3 v.\n* Hippiäiset, 1-5 v.\n* Västäräkit,  3-6 v.\n*  Pääskyset,  5-6 v. \n* Punatulkut, 1-5 v.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Ristinummen päiväkoti sijaitsee Ristinummella.",
+    "type" : "Summary"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-03T12:05:36.036523",
+  "id" : "76133a5f-ce96-4346-9cb3-435f19417265"
+}

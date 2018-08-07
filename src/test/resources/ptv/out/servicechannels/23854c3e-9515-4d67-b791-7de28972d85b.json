@@ -1,0 +1,61 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/node/12771",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/sv/node/12771",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "a093d734-5999-4ddc-a1ae-fbff37405979",
+      "name" : "Kaupungin kassa"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Kaupungin kassa",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Stadens kassa",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "På webbsidan hittar du tilläggsinformation om stadens kassa.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Verkkosivulta löydät kaupungin kassaan liittyvää lisätietoa. ",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Verkkosivulta löydät kaupungin kassaan liittyvää lisätietoa.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "På webbsidan hittar du tilläggsinformation om stadens kassa. \n",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "23854c3e-9515-4d67-b791-7de28972d85b"
+}

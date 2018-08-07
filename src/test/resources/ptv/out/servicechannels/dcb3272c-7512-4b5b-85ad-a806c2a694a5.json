@@ -1,0 +1,144 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "attachments" : [ ],
+  "languages" : [ ],
+  "deliveryAddresses" : [ {
+    "subType" : "Street",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Vöyrinkatu",
+        "language" : "fi"
+      }, {
+        "value" : "Vörågatan",
+        "language" : "sv"
+      } ],
+      "streetNumber" : "2",
+      "postalCode" : "65100",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : null,
+      "additionalInformation" : [ {
+        "value" : "Lomakkeet lähetetään ensisijaisesti sähköpostilla osoitteeseen: kirsti.myllari@vaasa.fi",
+        "language" : "fi"
+      }, {
+        "value" : "Blanketter skickas i första hand via e-post: kirsti.myllari@vasa.fi",
+        "language" : "sv"
+      } ]
+    },
+    "deliveryAddressInText" : null,
+    "receiver" : [ {
+      "value" : "Kirsti Mylläri, Ruokapalvelujohtaja",
+      "language" : "fi"
+    }, {
+      "value" : "Kirsti Mylläri, Matservicechef",
+      "language" : "sv"
+    } ]
+  } ],
+  "supportPhones" : [ ],
+  "formIdentifier" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "8863e1d6-8d66-4f36-848a-231e93ae259c",
+      "name" : "Ruokapalveluiden tapahtuma- ja vuokrauspalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "9e7adb97-3950-407b-aa48-a1344627fd2a",
+      "name" : "Kotipalveluateriat"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "channelUrls" : [ {
+    "language" : "fi",
+    "value" : "https://www.vaasa.fi/sites/default/files/huoneistonvuokrausanomus_lokaloverlatelseansokan.pdf",
+    "type" : "PDF"
+  }, {
+    "language" : "sv",
+    "value" : "https://www.vaasa.fi/sites/default/files/huoneistonvuokrauspyynto_-_lokaloverlatelseansokan.pdf",
+    "type" : "PDF"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Ruokapalveluiden huoneistovuokrausanomus",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Matservicens lokalöverlåtelseansökan",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "PrintableForm",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Vaasan Ruokapalveluiden keittiön vuokraamisesta voi jättää toiveen huoneistovuokrausanomuksella.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan Ruokapalveluiden keittiöitä voi vuokrata omia tilaisuuksia varten silloin, kun ne eivät ole varsinaisen toiminnan käytössä. Vuokraustoiveen voi jättää huoneistovuokrausanomuslomakkeella.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Vasa Matservices kök kan hyras för olika evenemang när de inte används för den egentliga verksamheten.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Vasa Matservices kök kan hyras för olika evenemang när de inte används för den egentliga verksamheten. Önskemål om hyrning kan anges på blanketten lokalöverlåtelseansökan. \n",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "dcb3272c-7512-4b5b-85ad-a806c2a694a5"
+}

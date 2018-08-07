@@ -1,0 +1,97 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/node/26508/",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/en/node/26508/",
+    "value" : null,
+    "language" : "en"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/sv/node/26508/",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "sv", "fi" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "17c633dd-5408-495a-86c1-d8f57598e899",
+      "name" : "Perusopetus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "7d293b2a-2cce-46e9-87e8-d5834091cc8f",
+      "name" : "Oppilashuolto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "sv",
+    "value" : "Vasa stads grundläggande utbildnings webbsidor",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan perusopetuksen verkkosivut",
+    "type" : "Name"
+  }, {
+    "language" : "en",
+    "value" : "The webpages of the basic education in the city of Vaasa",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "På Vasa stads grundläggande utbildnings webbsidor hittar du information om den grundläggande utbildningen. På webbsidorna finns bland annat personalens kontaktuppgifter och information om skolorna och den grundläggande utbildningens uppgifter.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "På Vasa stads grundläggande utbildnings webbsidor hittar du information om den grundläggande utbildningen.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan kaupungin perusopetuksen verkkosivuilta löydät lisätietoja perusopetuksen toiminnasta.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan kaupungin perusopetuksen verkkosivuilta löydät tietoa perusopetuksen toiminnasta. Sivustolta löytyvät muun muuassa henkilökunnan yhteystiedot sekä tietoa kouluista ja perusopetuksen tehtävistä.",
+    "type" : "Description"
+  }, {
+    "language" : "en",
+    "value" : "On the web pages of the basic education in the city of Vaasa you will find information about the activities within the basic education.",
+    "type" : "Summary"
+  }, {
+    "language" : "en",
+    "value" : "On the web pages of the basic education in the city of Vaasa you will find information about the activities within the basic education. On the pages you can among other things find contact information to the personnel and information about the schools and about the tasks of the basic education.\n",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "e805eb29-51f6-4d1b-ac68-07f3d6c77f44"
+}

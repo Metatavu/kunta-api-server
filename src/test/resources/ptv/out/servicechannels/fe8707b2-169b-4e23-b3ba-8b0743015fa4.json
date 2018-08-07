@@ -1,0 +1,88 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "5b4e1a6b-c97b-4634-9c7b-b3464181e23d",
+      "name" : "Puunkaatolupa"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "407393550",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "407393550",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Metsätalousinsinööri",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Skogsbruksingenjör",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "Phone",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Vaasan kaupungin viheralueyksikön metsätalousinsinööriin voit olla yhteydessä metsien hoitoon ja puunkaatolupiin liittyvissä asioissa.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan kaupungin viheralueyksikön metsätalousinsinööriin voit olla yhteydessä metsien hoitoon ja puunkaatolupiin liittyvissä asioissa.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Skogsbruksingenjören vid Vasa stads grönområdesenhet kan du kontakta i ärenden som gäller skogsvård och tillstånd för trädfällning.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Skogsbruksingenjören vid Vasa stads grönområdesenhet kan du kontakta i ärenden som gäller skogsvård och tillstånd för trädfällning. \n",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "fe8707b2-169b-4e23-b3ba-8b0743015fa4"
+}

@@ -1,0 +1,175 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://kartta.vaasa.fi/IMS/fi",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://kartta.vaasa.fi/IMS/en/Map",
+    "value" : null,
+    "language" : "en"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://kartta.vaasa.fi/IMS/sv",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "requiresSignature" : false,
+  "attachments" : [ ],
+  "languages" : [ ],
+  "supportPhones" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "0549a1e8-93da-42cb-b2c3-2b65daad2816",
+      "name" : "Kaavaotteet ja -neuvonta"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "2cadcde8-8108-48fc-b069-f373f6b2bea8",
+      "name" : "Karttatuotteet"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "33e455fe-d74d-435c-bb55-e090222bbce6",
+      "name" : "Leikkipuistot"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "61f21023-a984-4e31-9b05-4f414b24e11c",
+      "name" : "Asemakaavoitukseen vaikuttaminen"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "645e3abd-ed4b-4c73-9e7a-adb4dde26879",
+      "name" : "Koirapuistot"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "77419a3f-7bf9-42f8-9d04-d639f7056469",
+      "name" : "Vaasan uimarannat"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "a8d91727-72f0-490f-a924-912923e0431c",
+      "name" : "Viljelypalstat"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "sv",
+    "value" : "Vasas kartservice",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan karttapalvelu",
+    "type" : "Name"
+  }, {
+    "language" : "en",
+    "value" : "Vaasa map services",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "EChannel",
+  "serviceChannelDescriptions" : [ {
+    "language" : "en",
+    "value" : "The Real Estate Department of the City of Vaasa maintains the Vaasa map service (IMS). The map service contains an original map, a tourist map, aerial pictures, maps as well as other data about the city. The map services allow you to search for instance for playgrounds, beaches, statues and memorial monuments, public rubbish bins or for instance the locations of unassigned plots. \n\n",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Vasa stads fastighetssektor upprätthåller Vasas kartservice (IMS). I kartservicen finns stomkarta, guidekarta, flygbilder, kartor samt andra lägesdata. I kartservicen kan du söka efter läget på till exempel stadens lekparker, badstränder, statyer och minnesmärken, allmänna avfallskärl eller lediga tomter. ",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "I Vasa stads kartservice finns stomkarta, guidekarta, flygbilder, kartor samt andra lägesdata.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan kaupungin karttapalvelusta löytyy kantakartta, opaskartta, ilmakuvia, karttoja sekä muuta paikkatietoa.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan kaupungin kiinteistötoimi ylläpitää Vaasan karttapalvelua (IMS). Karttapalvelusta löytyy kantakartta, opaskartta, ilmakuvia, karttoja sekä muuta paikkatietoa. Karttapalvelusta voit hakea esimerkiksi kaupungin leikkipuistojen, uimarantojen, patsaiden ja muistomerkkien, yleisten roska-astioiden tai vapaana olevien tonttien sijainnit.",
+    "type" : "Description"
+  }, {
+    "language" : "en",
+    "value" : "The map service of the City of Vaasa contains an original map, a tourist map, aerial pictures, maps as well as other data about the city.",
+    "type" : "Summary"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "1c8f4d40-ce50-41ff-bad3-7194a59ec97e",
+  "signatureQuantity" : 0,
+  "requiresAuthentication" : false
+}

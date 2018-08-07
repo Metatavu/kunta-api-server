@@ -1,0 +1,114 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://varaus.vaasa.fi/WebTimmi/login.do",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://varaus.vaasa.fi/WebTimmi/login.do?lang=SE",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "requiresSignature" : false,
+  "attachments" : [ ],
+  "languages" : [ ],
+  "supportPhones" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "29f1439a-8c1c-449a-81b5-08bd30342139",
+      "name" : "Sisäliikunta"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "b6036051-f838-48b0-8b5a-4354b5f311f1",
+      "name" : "Ulkoliikunta"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "c5bb9319-8f2c-4150-beb2-7f98750ffea0",
+      "name" : "Venepaikat"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Timmi",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Timmi",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "EChannel",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Timmi-tilanvarausohjelman kautta voit seurata tilojen ja venepaikkojen varaustilannetta Vaasassa, sekä tehdä varauksia.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Timmi-tilanvarausohjelman kautta voi seurata tilojen ja venepaikkojen varaustilannetta Vaasassa, sekä tehdä varauksia. Timmistä löydät muun muassa liikuntapaikat, kulttuuritalot ja salit erilaisia tilaisuuksia varten. Tilavarauksia voit selata ilman kirjautumista, mutta varausten tekeminen edellyttää rekisteröitymistä palveluun.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Via Timmi-lokalbokningsprogrammet kan du både följa med reserveringssituationen gällande lokaler och båtplatser i Vasa samt göra reserveringar.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Via Timmi-lokalbokningsprogrammet kan du både följa med reserveringssituationen gällande lokaler och båtplatser i Vasa samt göra reserveringar. I Timmi finns bl.a. idrottsplatser, kulturhus och salar för olika ändamål. Lokalbokningarna kan du bläddra i utan att logga in, men för att reservera en plats ska du registrera dig i tjänsten. \n",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "2b71e4ae-2375-474c-978d-33649069664d",
+  "signatureQuantity" : 0,
+  "requiresAuthentication" : true
+}

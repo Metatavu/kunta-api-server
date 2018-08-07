@@ -1,0 +1,193 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/kaupungin-organisaatio/sivistystoimi/varhaiskasvatus",
+    "value" : "Varhaiskasvatus",
+    "language" : "fi"
+  }, {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/sv/node/2781/",
+    "value" : "Småbarnsfostran",
+    "language" : "sv"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Korsholmanpuistikko",
+        "language" : "fi"
+      }, {
+        "value" : "Korsholmsesplanaden",
+        "language" : "sv"
+      } ],
+      "streetNumber" : "33",
+      "postalCode" : "65100",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ ],
+      "latitude" : "7007207.781",
+      "longitude" : "228996.99",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "93888dc1-1f6f-4c5e-8d95-7daac71fd89f",
+      "name" : "Perhepäivähoito"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Fax",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : null,
+    "isFinnishServiceNumber" : true,
+    "number" : null,
+    "language" : "sv"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "401681653",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "401681653",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ {
+    "value" : "kapsakki@vaasa.fi",
+    "language" : "fi"
+  }, {
+    "value" : "kapsakki@vaasa.fi",
+    "language" : "sv"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Kapsäkki",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Kapsäcken",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ {
+    "serviceHourType" : "DaysOfTheWeek",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ {
+      "value" : null,
+      "language" : "fi"
+    } ],
+    "openingHour" : [ {
+      "dayFrom" : "Monday",
+      "dayTo" : "",
+      "from" : "07:00:00",
+      "to" : "17:00:00"
+    }, {
+      "dayFrom" : "Tuesday",
+      "dayTo" : "",
+      "from" : "07:00:00",
+      "to" : "17:00:00"
+    }, {
+      "dayFrom" : "Wednesday",
+      "dayTo" : "",
+      "from" : "07:00:00",
+      "to" : "17:00:00"
+    }, {
+      "dayFrom" : "Thursday",
+      "dayTo" : "",
+      "from" : "07:00:00",
+      "to" : "17:00:00"
+    }, {
+      "dayFrom" : "Friday",
+      "dayTo" : "",
+      "from" : "07:00:00",
+      "to" : "17:00:00"
+    } ]
+  } ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "I Kapsäcken har 12 dagvårdsplatser för gruppfamiljedagvården och 4 dagvårdsplatser för reservvården inom svenskspråkiga familjedagvården.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "I gruppfamiljedaghem Kapsäcken har 12 dagvårdsplatser för gruppfamiljedagvården och 4 dagvårdsplatser för reservvården inom svenskspråkiga familjedagvården.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Kapsäkissä on 12 paikkaa ryhmäperhepäivähoidolle  ja 4 paikkaa ruotsinkielisen perhepäivähoidon varahoidolle.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Kapsäkissä on 12 paikkaa ryhmäperhepäivähoidolle  ja 4 paikkaa ruotsinkielisen perhepäivähoidon varahoidolle.",
+    "type" : "Summary"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "d51525a5-7977-4add-9163-4b02cd4f8931"
+}

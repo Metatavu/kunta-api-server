@@ -1,0 +1,260 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Liikunta ja urheilu",
+      "language" : "fi"
+    }, {
+      "value" : "Motion och idrott",
+      "language" : "sv"
+    }, {
+      "value" : "Sports and exercise",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Tähän palvelualaluokkaan kuuluvat liikuntapaikat, urheiluopistot ja niiden palvelut, liikunnan tietopalvelut ja urheiluseurojen sekä liikuntajärjestöjen toiminta.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains sports facilities, sports institutes and their services, exercise information services and the activities of sports clubs and sports associations.",
+      "language" : "en"
+    }, {
+      "value" : "Denna serviceundergrupp omfattar motionsställen, idrottsinstitut och deras tjänster, informationstjänster för motion samt idrottsföreningars och motionsorganisationers verksamhet.",
+      "language" : "sv"
+    } ],
+    "code" : "P27.1",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1211",
+    "parentId" : "175762f6-53cd-4d29-a285-625bfb421b21",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1210"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2018-01-02T12:20:52.874685",
+  "id" : "7a32451f-3f36-46f2-83b5-5557589b8680",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "384a1d03-df7c-4cbe-a09f-2284917a0e40",
+      "name" : "Lasten ja nuorten liikunta"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "6c6b7832-815c-49b6-aa3c-4855c4f1dd05",
+      "name" : "Liikuntasuunnittelija, Lasten ja nuorten liikunta"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "c506ddcb-412e-4d00-a56a-f57b5290a963",
+      "name" : "Perheliikunnan verkkosivut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "ea120e38-dfc7-44e6-8e75-0d49ddcfe852",
+      "name" : "Liikuntapalvelujen toimisto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : "Alla barn måste ha med sig en vårdnadshavare, på vars ansvar barnet rör sig i familjemotion.",
+    "language" : "sv"
+  }, {
+    "value" : "Jokaisella lapsella tulee olla mukana huoltaja, jonka vastuulla hän liikkuu perheliikuntavuoroilla.",
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "sv",
+    "value" : "Familjemotion",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Perheliikunta",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "motion (idrott)",
+      "language" : "sv"
+    }, {
+      "value" : "liikunta",
+      "language" : "fi"
+    }, {
+      "value" : "physical training",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p30612",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p35142"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Lapset ja lapsiperheet",
+      "language" : "fi"
+    }, {
+      "value" : "Children and families with children",
+      "language" : "en"
+    }, {
+      "value" : "Barn och barnfamiljer",
+      "language" : "sv"
+    } ],
+    "code" : "KR1.2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2003",
+    "parentId" : "daff1fb9-9394-49b5-b033-d1d1c7005ab6",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001"
+  }, {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : "Familjemotion ordnas vardag, vardagskvällar och veckoslut på avgiftsfria och för alla öppna familjemotionsturer.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : "Ytterligare information om verksamheten och tidtabellerna på webbsidorna idrott för barn och unga eller av idrottsplaneraren. ",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : "Lisätietoja toiminnasta ja aikatauluista saat lasten ja nuorten liikunnan nettisivuilta ja liikuntasuunnittelijalta. ",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Perheliikuntaa järjestetään arkipäivisin ja -iltaisin sekä viikonloppuisin maksuttomilla ja kaikille avoimilla perheliikuntavuoroilla.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Perheliikuntaa järjestetään arkipäivisin ja -iltaisin sekä viikonloppuisin maksuttomilla ja kaikille avoimilla perheliikuntavuoroilla, joita ovat Hoppis-perheliikunta, Ulkohoppis sekä perheluistelutapahtumat. \n\nHoppis-perheliikunta on koko perheelle suunnattu maksuton liikunnallinen iltapäivä. Perheillä on mahdollisuus liikkua omatoimisesti käytössään Urheiluhallin tilat sekä runsaasti liikuntavälineitä. Jokaisella lapselle tulee olla mukana huoltaja, jonka vastuulla hän liikkuu Hoppiksessa. Perheliikuntaan voit osallistua ilman ennakkovarausta tai ilmoittautumista. Hoppis-perheliikuntaa järjestetään kevätkaudella 2018 viikoilla 2-19 sunnuntaisin klo 15.30-17.00 Urheiluhallilla.\n\nUlkohoppis on perheille suunnattu maksuton tapahtuma, jossa tutustutaan liikuntapalveluiden ohjaajien kanssa oman lähiympäristön liikkumismahdollisuuksiin. Ulkohoppis-toiminta jatkuu jälleen keväällä 2018.\n\nLiikuntapalvelut järjestävää yhteistyössä jääurheiluseurojen kanssa kaikille maksuttomia ja avoimia perheluisteluvuoroja ja -tapahtumia Vaasa Arenalla harjoitusjää 3:lla. Perheluisteluun voit osallistua ilman ennakkovarausta tai ilmoittautumista. Jäävuorolla on jokaisella kerralla paikalla liikuntapalveluiden tai jääurheiluseuran ohjaaja. Perheluisteluvuoroja ja -tapahtumia järjestetään kevätkaudella 2018 viikoilla 1-13 lauantaisin klo 13.00-14.00 Vaasa Arenalla. Tulevista perheluistelutapahtumista tiedotetaan lasten ja nuorten liikunnan nettisivuilla.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : "Familjemotion ordnas vardag, vardagskvällar och veckoslut på avgiftsfria och för alla öppna familjemotionsturer, vilka är Hoppis-familjemotionstur, Utehoppis och familjeskridskoåkningsturer och -evenemang. \n\nHoppis-familjemotion är en avgiftsfri motionseftermiddag för hela familjen. Familjerna har möjlighet att röra sig på egen hand med idrottshallens utrymmen och många idrottsredskap till sitt förfogande. Alla barn måste ha med sig en vårdnadshavare, på vars ansvar barnet rör sig i Hoppis. Du kan delta i familjemotionen utan förhandsreservering eller anmälan. Hoppis-familjemotion ordnas under vårsäsongen 2018 veckorna 2-19, söndagar kl. 15.30–17.00 i Idrottshallen.\n\nUtehoppis är ett avgiftsfritt evenemang riktat till familjer, där man tillsammans med ledare från idrottsservicen bekantar sig med motionsmöjligheter i den egna näromgivningen. Utehoppis fortsätter på våren 2018.\n\nIdrottsservicen ordnar i samarbete med isidrottsföreningarna avgiftsfria och öppna familjeskridskoåkningsturer och -evenemang i Vaasa Arena på träningsis 3. Alla barn måste ha med sig en vårdnadshavare, på vars ansvar barnet rör sig i Hoppis. Du kan delta i familjeskridskoåkningen utan förhandsreservering eller anmälan. På isturen är varje gång en instruktör från idrottsservicen eller issportsföreningen på plats. Verksamhet ordnas under vårsäsongen 2018 veckorna 1-13, lördagar kl. 13.00–14.00 i Vaasa Arena. Vi meddelar om kommande familjeskridskoåkningsturer och -evenemang på webbsidor idrott för barn och unga. ",
+    "type" : "Description"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

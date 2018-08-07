@@ -1,0 +1,125 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "1",
+    "url" : "http://www.naantali.fi/liikunta_ja_ulkoilu/fi_FI/tilanvaraus/",
+    "value" : "Tilanvaraus ja tilamaksut",
+    "language" : "fi"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Kuparivuorentie",
+        "language" : "fi"
+      } ],
+      "streetNumber" : "1",
+      "postalCode" : "21100",
+      "postOffice" : [ {
+        "value" : "NAANTALI",
+        "language" : "sv"
+      }, {
+        "value" : "NAANTALI",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "529",
+        "name" : [ {
+          "value" : "Naantali",
+          "language" : "fi"
+        }, {
+          "value" : "Nådendal",
+          "language" : "sv"
+        }, {
+          "value" : "Naantali",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ ],
+      "latitude" : "6713571.686",
+      "longitude" : "226367.015",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  }, {
+    "type" : "Postal",
+    "subType" : "PostOfficeBox",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : null,
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "a9c1b4bd-9181-4ba8-a7c2-dd07f1ee283f",
+      "name" : "Vuokrattavat kulttuuri- ja vapaa-aikatilat"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : "Sivistystoimisto, tilanvaraus ma-pe klo 9-15",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "24345320",
+    "language" : "fi"
+  } ],
+  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "emails" : [ {
+    "value" : "tilanvaraus@naantali.fi",
+    "language" : "fi"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Urheilutalo",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Urheilutalo toimii monipuolisena liikuntatilana, joka soveltuu myös muiden tilaisuuksien ja juhlien järjestämiseen.\n* liikuntasali, 257 m² (pituus 20,6 m, leveys 12,28/13 m, korkeus 4,5/6,8 m)\n* lentopallokenttä\n* sulkapallokenttä\n* salibandy, ei laitoja\n* esiintymislava (sis. dvd-soitin, mikrofoni)\nUrheilutaloa voi varata Julius-tilanvarausohjelmassa.\n\nUrheilutalo on vuokrattavissa juhlakäyttöön perjantaista klo 19 alkaen sunnuntaihin klo 12 asti. Talossa on keittiö, jonka varustukseen kuuluu jääkaappi, pakastin, tiskikone, liesi, mikro ja kahvinkeitin (ei astioita). Eteisaulassa on runsaasti vaatteiden säilytystilaa. Salissa on 42 pöytää, kooltaan 70 x 180 cm ja tuoleja on 360 kpl. Istumapaikkoja pöytien ääressä on korkeintaan 250 henkilölle. Tila on hyväksytty 500 henkilölle.\n",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Urheilutalo toimii monipuolisena liikuntatilana, joka soveltuu myös muiden tilaisuuksien ja juhlien järjestämiseen",
+    "type" : "Summary"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "fd41c9ab-9ffe-41ad-b8ec-393353ddb59f"
+}

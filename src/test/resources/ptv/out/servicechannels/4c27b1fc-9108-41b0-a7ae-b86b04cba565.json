@@ -1,0 +1,137 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/node/6871",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/sv/node/6871",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "5aeef5bd-aaa8-48c2-b1da-c7f4d5dd70e0",
+      "name" : "Ikäihmisten hoitopaikat"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63252463",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63252463",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Lyhytaikainen hoito ja intervallihoito - Himalaja",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Kortvarigvård och intervallvård - Himalaja",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ {
+    "serviceHourType" : "DaysOfTheWeek",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ {
+      "value" : null,
+      "language" : "fi"
+    } ],
+    "openingHour" : [ {
+      "dayFrom" : "Monday",
+      "dayTo" : "",
+      "from" : "09:00:00",
+      "to" : "11:00:00"
+    }, {
+      "dayFrom" : "Tuesday",
+      "dayTo" : "",
+      "from" : "09:00:00",
+      "to" : "11:00:00"
+    }, {
+      "dayFrom" : "Wednesday",
+      "dayTo" : "",
+      "from" : "09:00:00",
+      "to" : "11:00:00"
+    }, {
+      "dayFrom" : "Thursday",
+      "dayTo" : "",
+      "from" : "09:00:00",
+      "to" : "11:00:00"
+    }, {
+      "dayFrom" : "Friday",
+      "dayTo" : "",
+      "from" : "09:00:00",
+      "to" : "11:00:00"
+    } ]
+  } ],
+  "serviceChannelType" : "Phone",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Tiedustelut koskien lyhytaikaista hoitoa ja intervallihoitoa Himalajassa.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Tiedustelut koskien lyhytaikaista hoitoa ja intervallihoitoa Himalajassa.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Kortvarigvård och intervallvård för äldre på Himalaja serviceboende.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Kortvarigvård och intervallvård för äldre på Himalaja serviceboende.  Mer information per telefon.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "4c27b1fc-9108-41b0-a7ae-b86b04cba565"
+}

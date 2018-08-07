@@ -1,0 +1,86 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "http://kuntsi.vaasa.fi/",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "http://kuntsi.vaasa.fi/index_eng.html",
+    "value" : null,
+    "language" : "en"
+  }, {
+    "orderNumber" : "0",
+    "url" : "http://kuntsi.vaasa.fi/swe/index.html",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "sv", "en", "fi" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "3c746357-4921-4214-8ce0-025e729dfb70",
+      "name" : "Museopalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "sv",
+    "value" : "Kuntsis museums webbsidor",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Kuntsin modernin taiteen museon verkkosivut",
+    "type" : "Name"
+  }, {
+    "language" : "en",
+    "value" : "Web pages of the Kuntsi Museum of Modern Art",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Kuntsin modernin taiteen museon verkkosivuilta löydät tietoa museon toiminnasta. Sivustolta löydät muun muassa museon hinnaston ja aukioloajat, sekä tietoa näyttelyistä, tapahtumista, taidekerhoista ja museon historiasta ja kokoelmista.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Kuntsin modernin taiteen museon verkkosivuilta löydät tietoa museon toiminnasta.",
+    "type" : "Summary"
+  }, {
+    "language" : "en",
+    "value" : "The web pages of the Kuntsi Museum of Modern Arts gives you information about the museums activities.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "På webbsidorna för Kuntsis museum för modern konst hittar du information om museets verksamhet. På sidorna finns bland annat museets prislista och öppettider samt information om utställningar, evenemang, konstklubbar och museets historia och samlingar. ",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "På webbsidorna för Kuntsis museum för modern konst hittar du information om museets verksamhet.",
+    "type" : "Summary"
+  }, {
+    "language" : "en",
+    "value" : "The web pages of the Kuntsi Museum of Modern Arts gives you information about the museums activities. The pages present among others opening times, prices, information about the exhibitions, events, art clubs as well as the museums history and collections. \n",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "6e8f7414-06b9-4b3c-9396-dae2bfff7dfc"
+}

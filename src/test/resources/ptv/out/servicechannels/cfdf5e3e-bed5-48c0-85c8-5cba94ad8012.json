@@ -1,0 +1,84 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://star.duodecim.fi/star/home.do?regcode=5EZQE",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://star.duodecim.fi/star/setLang.do?method=swedish",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "requiresSignature" : false,
+  "attachments" : [ ],
+  "languages" : [ ],
+  "supportPhones" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "865f4a49-afae-433c-bb83-035ac2852c2d",
+      "name" : "Sähköinen terveystarkastus ja terveysvalmennus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Sähköinen terveystarkastus ja -valmennus",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Elektronisk hälsogranskning och hälsoträning",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "EChannel",
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "Ur hälsogranskningen får du reda på hur ditt levnadssätt påverkar den uppskattade livslängden och din risk att insjukna i sjukdomar som förkortar livslängden och försvagar livskvaliteten.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Sähköisen terveystarkastus ja -valmennus antaa tietoa mm. eliniän ennusteesta, sairausriskeistä, terveydestä ja hyvinvoinnista.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Sähköisen terveystarkastus ja -valmennus antaa tietoa mm. eliniän ennusteesta, sairausriskeistä, terveydestä ja hyvinvoinnista.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Ur hälsogranskningen får du reda på hur ditt levnadssätt påverkar den uppskattade livslängden och din risk att insjukna i sjukdomar.",
+    "type" : "Summary"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "cfdf5e3e-bed5-48c0-85c8-5cba94ad8012",
+  "signatureQuantity" : 0,
+  "requiresAuthentication" : false
+}

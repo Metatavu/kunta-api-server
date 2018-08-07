@@ -1,0 +1,251 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "PermitOrObligation",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Toimialakohtaiset luvat ja velvoitteet",
+      "language" : "fi"
+    }, {
+      "value" : "Sector-specific permits and obligations",
+      "language" : "en"
+    }, {
+      "value" : "Branschspecifika tillstånd och skyldigheter",
+      "language" : "sv"
+    } ],
+    "description" : [ {
+      "value" : "Tähän alapalveluluokkaan kuuluvat yritystoimintaa velvoittavat asiat, jotka voivat liittyä lupien hankintaan, ilmoituksien tekemiseen tai rekisteröinteihin.",
+      "language" : "fi"
+    }, {
+      "value" : "Denna underservicegrupp omfattar obligatoriska ärenden relaterade till företagsverksamhet, såsom tillstånd, anmälningar och registrering.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains obligations associated with enterprising, which may be related to obtaining permits, submitting notifications or completing registrations.",
+      "language" : "en"
+    } ],
+    "code" : "P11.2",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1107",
+    "parentId" : "60445628-3697-444b-b4b8-ef0cd42b45cf",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1105"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "ffe89420-e8b7-4a33-8d63-8d4c69795a0a",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "bc8664c9-c095-41fb-89d7-8afed15fbde5",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "28288abb-73ae-42de-9b33-502cc516987d",
+      "name" : "Tupakka- ja nikotiinivalmisteet"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "8080da68-4225-4bde-b01c-4c3c087a2f81",
+      "name" : "Ympäristötoimi"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : null,
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Tupakkatuotteiden ja nikotiininesteiden vähittäismyyntilupa sekä tukkumyynti-ilmoitus",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Detaljhandelstillstånd för tobaksprodukter och nikotinvätskor samt anmälan om partiförsäljning",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "tupakkatuotteet",
+      "language" : "fi"
+    }, {
+      "value" : "tobaksprodukter",
+      "language" : "sv"
+    }, {
+      "value" : "tobacco products",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p12753",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p36737"
+  }, {
+    "name" : [ {
+      "value" : "minuthandel",
+      "language" : "sv"
+    }, {
+      "value" : "vähittäiskauppa",
+      "language" : "fi"
+    }, {
+      "value" : "retail trade",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p1048",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p37329"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Yritykset ja yhteisöt",
+      "language" : "fi"
+    }, {
+      "value" : "Businesses and non-government organizations",
+      "language" : "en"
+    }, {
+      "value" : "Företag och samfund",
+      "language" : "sv"
+    } ],
+    "code" : "KR2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "Kotimarkkinoilla toimivat yritykset",
+      "language" : "fi"
+    }, {
+      "value" : "Businesses operating in the domestic (Finnish) market",
+      "language" : "en"
+    }, {
+      "value" : "Företag på den inhemska marknaden",
+      "language" : "sv"
+    } ],
+    "code" : "KR2.3",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2011",
+    "parentId" : "338939bb-b01a-4a80-a091-7c5238322bc0",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008"
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "sv",
+    "value" : "Detaljhandel med tobakprodukter och nikotinvätskor förutsätter ett tillstånd.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Den beräknade behandlingstiden är 1-4 veckor.",
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : "Arvioitu käsittelyaika on 1-4 viikkoa.",
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : "Määräaikainen vähittäismyyntilupa voidaan myöntää enintään vuodeksi. Myyjän tulee ilmoittaa tukkumyynnin lopettamisesta.",
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : "Ett riksomfattade register över försäljningsplatserna för nikotinprodukter upprätthålls av tillstånds- och tillsynsverket för social- och hälsovården (Valvira). ",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : "Ett detaljhandelstillstånd på viss tid kan beviljas för högst ett år. Försäljaren ska meddela om avslutande av partiförsäljning.",
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : "Avgiften för detaljhandelstillståndet för tobaksprodukter och nikotinpreparat och den årliga tillsynsavgiften gällande försäljningen fastställs enligt avgiftstaxan för miljö- och hälsoskydd inom Vasa stads och Laihela kommuns samarbetsområde.",
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Tupakkatuotteiden ja nikotiininesteiden vähittäismyynti edellyttää luvan.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Valtakunnallista rekisteriä nikotiinivalmisteiden myyntipaikoista ylläpitää sosiaali- ja terveysalan lupa- ja valvontavirasto (Valvira). ",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Ohjeet lupahakemuksen ja omavalvontasuunnitelman tekemiseen sekä myyntilupahakemus löytyvät Valviran verkkosivuilta. ",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Tupakkatuotteiden ja nikotiinivalmisteiden vähittäismyyntilupamaksu ja myynnin vuosittainen valvontamaksu määräytyy Vaasan kaupungin ja Laihian kunnan yhteistoiminta-alueen ympäristöterveydenhuollon maksutaksan mukaisesti.",
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "Other",
+    "organization" : null,
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

@@ -1,0 +1,72 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/vierasateria-ja-erilliset-tilaukset",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/sv/node/20501",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "8863e1d6-8d66-4f36-848a-231e93ae259c",
+      "name" : "Ruokapalveluiden tapahtuma- ja vuokrauspalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "9e7adb97-3950-407b-aa48-a1344627fd2a",
+      "name" : "Kotipalveluateriat"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Vierasateria ja erilliset tilaukset",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Gästmåltider och fristående beställningar",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Vaasan Ruokapalveluiden sivuilta löydät tietoa tapahtumatilauksista, tarjouspyynnöistä ja keittiötilojen vuokraamisesta. Sivuilta löydät tiedot myös vierailijoille avoimista ruokailupaikoista ja muuta yleistä tietoa Vaasan ruokapalveluiden toiminnasta.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan Ruokapalveluiden sivuilta löydät tietoa tapahtumatilauksista, tarjouspyynnöistä ja keittiötilojen vuokraamisesta.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Information om evenmangsbeställningar, anbudsförfrågningar och hyrning av kök finns på sidan Vasa Matservice",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Information om evenmangsbeställningar, anbudsförfrågningar och hyrning av kök finns på sidan Vasa Matservice. Där finns även information om platser där måltider serveras för gäster samt ytterligare information om Vasa Matservices verksamhet.",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "21cb334d-5ccf-4b0d-849f-9b716ae793a0"
+}

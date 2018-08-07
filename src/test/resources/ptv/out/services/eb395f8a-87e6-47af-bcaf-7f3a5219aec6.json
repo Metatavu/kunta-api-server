@@ -1,0 +1,240 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "PermitOrObligation",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Ympäristöilmoitukset ja luvat",
+      "language" : "fi"
+    }, {
+      "value" : "Miljöanmälan och -tillstånd",
+      "language" : "sv"
+    }, {
+      "value" : "Environmental notifications and permits",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Tähän palvelualaluokkaan kuuluvat ne ilmoitus- ja lupamenettelyt, jotka liittyvät ympäristöä pysyvästi muuttaviin tai ympäristölle mahdollisesti haitallisiin toimenpiteisiin kuten kaivostoimintaan tai ympäristövaarallisiin kemikaaleihin.",
+      "language" : "fi"
+    }, {
+      "value" : "Denna serviceundergrupp omfattar anmälnings- och tillståndsförfaranden relaterade till åtgärder som förändrar miljön permanent eller som eventuellt är skadliga för miljön, såsom gruvdrift eller miljöfarliga kemikalier.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains the notification and permit procedures associated with actions that permanently change the environment or are potentially harmful for the environment, including mining or chemicals that pose an environmental hazard.",
+      "language" : "en"
+    } ],
+    "code" : "P23.5",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1188",
+    "parentId" : "9eac7938-e66b-4023-ac2e-8774ee615bca",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1184"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "5dba4ff2-cf43-4541-8fea-5194365edd7e",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "eb395f8a-87e6-47af-bcaf-7f3a5219aec6",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "113e7511-d5bd-40da-b587-f46aff8aef81",
+      "name" : "Ympäristötarkastaja, maa-aineslupahakemukset"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "8080da68-4225-4bde-b01c-4c3c087a2f81",
+      "name" : "Ympäristötoimi"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "c0af7e2d-34e2-41a2-9731-2316a032209c",
+      "name" : "Maa-ainesten otto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "Chargeable",
+  "serviceNames" : [ {
+    "language" : "sv",
+    "value" : "Marktäktstillstånd",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Maa-ainesten ottamislupa",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ ],
+    "code" : null,
+    "ontologyType" : null,
+    "uri" : "http://www.yso.fi/onto/yso/p5958",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Yritykset ja yhteisöt",
+      "language" : "fi"
+    }, {
+      "value" : "Businesses and non-government organizations",
+      "language" : "en"
+    }, {
+      "value" : "Företag och samfund",
+      "language" : "sv"
+    } ],
+    "code" : "KR2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Vaasassa maa-ainesluvat käsitellään rakennus- ja ympäristölautakunnassa.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Kommunerna fastställer beloppet på tillståndsavgiften.",
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : "Tillståndet gäller vanligtvis i tio (10) år. Tillstånd kan beviljas också för en kortar eller (vid tagande av bergsmaterial) för en längre tidsperiod.",
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : "I Vasa behandlas tillstånd till marktäkt i byggnads- och miljönämnden.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "För  tagande av substanser (sten, grus, lera och mull) för bortforsling, lagring eller förädling behövs tillstånd enligt marktäktslagen. I Vasa behandlas tillstånd till marktäkt i byggnads- och miljönämnden. Vid prövningen av förutsättningar för att tillstånd ska beviljas beaktas till exempel hur marktäkten inverkar på landskapet och grundvattnet.  \n\nTillstånd enligt marktäktslagen behövs inte om substanser tas för eget sedvanligt bruk till husbehov för boende eller för jord- och skogsbruk, dock högst 500 fast kubikmeter som tas på egen mark.\n",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Maa-ainesten (kiviaines, sora, hiekka, savi ja ruokamulta) ottamiseen pois kuljetettavaksi, varastoitavaksi tai jalostettavaksi tarvitaan maa-aineslain mukainen lupa. Vaasassa maa-ainesluvat käsitellään rakennus- ja ympäristölautakunnassa. Luvan myöntämisedellytyksiä harkittaessa otetaan huomioon esimerkiksi se, miten maa-ainesten otto vaikuttaa maisemaan ja pohjaveteen.\n\nMaa-aineslain mukaista lupaa ei tarvita,  jos maa-aineksia otetaan omaa tavanomaista kotitarvekäyttöä varten asumiseen tai maa- ja metsätalouteen, kuitenkin enintään 500 kiintokuutiometriä joka otetaan omalla maalla.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Lupa on voimassa tavallisesti kymmenen (10) vuotta. Lupia voidaan myöntää myös lyhyemmälle tai (kallioaineksen otossa) pidemmälle aikavälille.",
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : "Maa-aineslupahakemusten käsittelystä saa lisätietoja ympäristötarkastajalta.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : "Kunnat määräävät lupamaksun suuruuden.",
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : "Om behandlingen av ansökan om marktäktstillstånd ger miljöinspektören mera information. ",
+    "type" : "UserInstruction"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

@@ -1,0 +1,475 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Hietalahdenkatu",
+        "language" : "en"
+      }, {
+        "value" : "Hietalahdenkatu",
+        "language" : "fi"
+      }, {
+        "value" : "Sandviksgatan",
+        "language" : "sv"
+      } ],
+      "streetNumber" : "6",
+      "postalCode" : "65100",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ ],
+      "latitude" : "7006634.382",
+      "longitude" : "228431.013",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "1df0be8d-54ef-42d9-9112-52b7c34e7a95",
+      "name" : "Perhesuunnittelu- ja ehkäisyneuvonta"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "59203070-088b-4260-99b6-1195b45bfee1",
+      "name" : "Äitiysneuvolapalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "6d81fb01-ba3d-437d-9e3f-c827284283c6",
+      "name" : "Seulontatutkimukset"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Fax",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63171014",
+    "language" : "sv"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Äitiysneuvolan terveydenhoitaja - Gerby 2",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "404825186",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Äitiysneuvolan terveydenhoitaja - Gerby 1",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "401871812",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Äitiysneuvolan terveydenhoitaja - Hietalahti 2",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "401799575",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Äitiysneuvolan terveydenhoitaja - Huutoniemi 1",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "404825179",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Äitiysneuvolan terveydenhoitaja - Huutoniemi 2",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "401369143",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Äitiysneuvolan terveydenhoitaja - keskusta ja Sundom",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "404825161",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Äitiysneuvolan terveydenhoitaja - Palosaari 1",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "404825187",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Äitiysneuvolan terveydenhoitaja - Ristinummi",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "404825135",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Äitiysneuvolan terveydenhoitaja - Palosaari 2",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "401876635",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Äitiysneuvolan terveydenhoitaja - Hietalahti 1",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "404825207",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Maternity clinic's public health nurse - Gerby 1",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "401871812",
+    "language" : "en"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Maternity clinic's public health nurse - Hietalahti 1",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "401799575",
+    "language" : "en"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Maternity clinic's public health nurse - Huutoniemi 1",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "404825179",
+    "language" : "en"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Maternity clinic's public health nurse - Huutoniemi 2",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "401369143",
+    "language" : "en"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Maternity clinic's public health nurse - Palosaari 1",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "404825187",
+    "language" : "en"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Maternity clinic's public health nurse - Hietalahti 1",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "404825207",
+    "language" : "en"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Maternity clinic's public health nurse - City center and Sundom",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "404825161",
+    "language" : "en"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Maternity clinic's public health nurse - Palosaari 1",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "401876635",
+    "language" : "en"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Maternity clinic's public health nurse - Gerby 2",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "404825186",
+    "language" : "en"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Maternity clinic's public health nurse - Ristinummi",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "404825135",
+    "language" : "en"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Family planning",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63251767",
+    "language" : "en"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Mödrarådgivningens hälsovårdare - Korsnäståget",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "404825135",
+    "language" : "sv"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Mödrarådgivningens hälsovårdare - Brändö 2",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "401876635",
+    "language" : "sv"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Mödrarådgivningens hälsovårdare - Brändö 1",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "404825187",
+    "language" : "sv"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Mödrarådgivningens hälsovårdare - Centrum & Sundom",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "404825161",
+    "language" : "sv"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Mödrarådgivningens hälsovårdare - Roparnäs 2",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "401369143",
+    "language" : "sv"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Mödrarådgivningens hälsovårdare - Roparnäs 2",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "404825179",
+    "language" : "sv"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Mödrarådgivningens hälsovårdare - Sandviken 2",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "401799575",
+    "language" : "sv"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Mödrarådgivningens hälsovårdare - Sandviken 1",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "404825207",
+    "language" : "sv"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Mödrarådgivningens hälsovårdare - Gerby 2",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "404825186",
+    "language" : "sv"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Mödrarådgivningens hälsovårdare - Gerby 1",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "401871812",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ ],
+  "serviceChannelNames" : [ {
+    "language" : "sv",
+    "value" : "Mödra- och familjerådgivningen",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Äitiys- ja perhesuunnitteluneuvola",
+    "type" : "Name"
+  }, {
+    "language" : "en",
+    "value" : "Maternity and family planning clinic",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ {
+    "serviceHourType" : "DaysOfTheWeek",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ {
+      "value" : null,
+      "language" : "fi"
+    } ],
+    "openingHour" : [ {
+      "dayFrom" : "Monday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    }, {
+      "dayFrom" : "Tuesday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    }, {
+      "dayFrom" : "Wednesday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    }, {
+      "dayFrom" : "Thursday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    }, {
+      "dayFrom" : "Friday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    } ]
+  } ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Äitiys- ja perhesuunnitteluneuvola tarjoaa keskitetysti neuvolapalveluja kaikille vaasalaisille naisille asuinalueesta riippumatta.",
+    "type" : "Summary"
+  }, {
+    "language" : "en",
+    "value" : "Maternity and family planning clinic offers centralized health service for all women living in Vaasa.  The only exception is Vähäkyrö area, which has an own maternity and family planning clinic.\n\nYou can make an appointment by calling your own areas public health nurse. Maternity clinic offers health service for pregnant women. Family planning offers service concerning for example contraception and birth control and counselling regarding termination of pregnancy.",
+    "type" : "Description"
+  }, {
+    "language" : "en",
+    "value" : "Maternity and family planning clinic offers centralized health service for all women living in Vaasa.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Mödra- och familjerådgivningen erbjuder centraliserat rådgivningsservice till alla kvinnor i Vasa oberoende av bostadsområde. Undantag är mödrarådgivningen i Lillkyro. \n\nMödrarådgivningen betjänar gravida kvinnor fram till eftergranskningen efter förlossningen. I fråga om graviditet är målsättningen för mödrarådgivningen att trygga den gravida kvinnans, fostrets och den nyföddas hälsa samt främja och upprätthålla familjens hälsa och välmående. Tid till mödrarådgivningen kan du boka genom att ringa till det egna områdets hälsovårdare under telefontiden må-fr 11–11.30. Det egna områdets hälsovårdare bestäms enligt bostadsområde. \n\nFamiljeplaneringens målsättning är att upprätthålla och främja den sexuella hälsan",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Mödra- och familjerådgivningen erbjuder centraliserat rådgivningsservice till alla kvinnor i Vasa oberoende av bostadsområde.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Äitiys- ja perhesuunnitteluneuvola tarjoaa keskitetysti neuvolapalveluja kaikille vaasalaisille naisille asuinalueesta riippumatta. Poikkeuksena Vähänkyrön äitiysneuvola. \n\nÄitiysneuvola palvelee raskaana olevia naisia synnytyksen jälkitarkastukseen saakka. Raskauden ollessa kysymyksessä äitiysneuvonnan tavoitteena on turvata odottavan äidin, sikiön ja vastasyntyneen terveys sekä edistää ja ylläpitää perheen terveyttä ja hyvinvointia. Aika äitiysneuvolaan varataan soittamalla oman alueen terveydenhoitajalle puhelinajalla ma – pe klo 11-11.30. Oman alueen terveydenhoitaja määräytyy asuinpaikan mukaan.\n\nPerhesuunnitteluneuvolasta saa mm. ehkäisyneuvontaa, lapsettomuuden hoidon alkututkimukset ja raskauden keskeytykseen liittyvää neuvontaa.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "1dc8b511-394f-4817-a5c1-448a20c9711b"
+}

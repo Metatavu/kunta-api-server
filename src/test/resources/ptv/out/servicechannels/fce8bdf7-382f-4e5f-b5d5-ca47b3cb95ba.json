@@ -1,0 +1,72 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/node/28230",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/sv/node/28230",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "307cd174-2824-4260-820c-e115624f6d4b",
+      "name" : "Koulujen kerhotoiminta"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "c5cd2254-29a3-4712-a093-f15c44208117",
+      "name" : "Action-toiminta"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "sv",
+    "value" : "Action-verksamhetens webbsidor",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Action-toiminnan verkkosivut",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "På webbsidorna finns mera information om Action-verksamhet. ",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "På webbsidorna finns mera information om Action-verksamhet.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Verkkosivuilta löydät lisää tietoa Action-toiminnasta. ",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Verkkosivuilta löydät lisää tietoa Action-toiminnasta.",
+    "type" : "Summary"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "fce8bdf7-382f-4e5f-b5d5-ca47b3cb95ba"
+}

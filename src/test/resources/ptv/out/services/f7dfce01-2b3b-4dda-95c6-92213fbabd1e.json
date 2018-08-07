@@ -1,0 +1,432 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Lasten päivähoito",
+      "language" : "fi"
+    }, {
+      "value" : "Barndagvård",
+      "language" : "sv"
+    }, {
+      "value" : "Day-care for children",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Till denna serviceundergrupp hör barnets rättigheter i anslutning till dagvård för små barn, förutsättningar för dagvård, ärendehanteringstjänster och ansökningsförfaranden, olika genomföringsformer och servicekanaler för dagvård, vårdavgifter och bidrag i anslutning till dem.",
+      "language" : "sv"
+    }, {
+      "value" : "Tähän alapalveluluokkaan kuuluvat pienten lasten päivähoitoon liittyvät lapsen oikeudet, päivähoidon saamisen edellytykset, asiointipalvelut ja hakumenettelyt, erilaiset päivähoidon toteuttamismuodot ja palvelukanavat, hoidon maksut ja niihin liittyvät taloudelliset tuet.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains a child’s rights related to day-care for young children, eligibility criteria, e-services and application procedures associated with day-care, different forms and service channels of day-care provision, fees charged for day-care and financial support related to the fees.",
+      "language" : "en"
+    } ],
+    "code" : "P3.4",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1017",
+    "parentId" : "77af99fa-93eb-4de6-ac83-1b161a961263",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1013"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "e4315af5-abcb-45a0-ab00-688e7ecd5313",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-10-24T12:15:40.155783",
+  "id" : "f7dfce01-2b3b-4dda-95c6-92213fbabd1e",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "05edf711-da73-4d0e-9f6b-5b7f603b5112",
+      "name" : "Naantalin varhaiskasvatuksen verkkoasiointi"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "0739aa9b-7312-4cdd-bc63-d86b39dc4257",
+      "name" : "Tammiston päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "11b34399-c107-4eaf-8b63-ca14f58cf493",
+      "name" : "Päiväkotiruokailun verkkosivu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "1bd39cda-3006-482e-acff-93ab8ddc9f1b",
+      "name" : "Keskustan päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "33abffaa-244b-4485-85d2-a7885509c6b6",
+      "name" : "Soinisten päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3db7f436-300e-4fbf-8e88-fd3b6c903e12",
+      "name" : "Varhaiskasvatustoimisto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "41ebe689-dbed-4bb2-a6f2-184e29d625ed",
+      "name" : "Rymättylän päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "495ab7f8-cc75-4e43-bbc4-629e41d67e71",
+      "name" : "Suovuoren päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "55511eb4-7e65-4cd8-9dbb-95ee54f82d03",
+      "name" : "Taimon päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "5addb843-4487-46c5-b955-6d5d41bfdad7",
+      "name" : "Nuhjalan päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "6dc68be3-cfc9-44b5-afc4-adc9fae54763",
+      "name" : "Päivähoidon esimies"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "7bbe81f9-c65f-46e5-a78f-b0ab123306f8",
+      "name" : "Ruonan päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "875ad885-ad22-4cd4-b555-143fdf2649ab",
+      "name" : "Viialan päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "87e0e1ca-857b-4d79-a428-4f66b746177a",
+      "name" : "Karvetin päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "9872be90-1f7d-4021-ab13-25556c6f9357",
+      "name" : "Kreivinniityn päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "a798437b-589b-4124-a4e7-c4ebf22a25cd",
+      "name" : "Päivähoitopaikan hakeminen"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "abbf9e88-97a6-4908-8ab8-58fab37fac4f",
+      "name" : "Merimaskun päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "ad29e11d-9c97-4e02-a7da-5f5cefe442e9",
+      "name" : "Varhaiskasvatuksen johtaja"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "ba97be96-7381-47ac-bcac-16805aa7b2b9",
+      "name" : "Asiakasmaksujen perusteet varhaiskasvatuksessa"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "c6edea53-938a-444d-8cf7-ff821626c88e",
+      "name" : "Päivähoidon tuloselvityslomake"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "ec158adc-c2d8-4192-922b-b6dd25e7b92d",
+      "name" : "Päiväkotien keittiöiden puhelinnumerot"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "fdfce5e7-3b5a-45dc-8cf0-d67f90042256",
+      "name" : "Vuoropäiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : null,
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Naantalin varhaiskasvatus, päiväkodit",
+    "type" : "AlternativeName"
+  }, {
+    "language" : "fi",
+    "value" : "Kunnallinen päiväkotihoito",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "kunnalliset päiväkodit",
+      "language" : "fi"
+    }, {
+      "value" : "kommunala daghem",
+      "language" : "sv"
+    }, {
+      "value" : "municipal nursery schools",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p69458",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p34607"
+  }, {
+    "name" : [ {
+      "value" : "päiväkotihoito",
+      "language" : "fi"
+    }, {
+      "value" : "dagvård",
+      "language" : "sv"
+    }, {
+      "value" : "nursery school care",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p69116",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p9399"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Lapset ja lapsiperheet",
+      "language" : "fi"
+    }, {
+      "value" : "Children and families with children",
+      "language" : "en"
+    }, {
+      "value" : "Barn och barnfamiljer",
+      "language" : "sv"
+    } ],
+    "code" : "KR1.2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2003",
+    "parentId" : "daff1fb9-9394-49b5-b033-d1d1c7005ab6",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001"
+  }, {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Naantalissa on 14 kunnallista päiväkotia, joista yksi tarjoaa ympärivuorokautista hoitoa. Kaikissa päiväkodeissa toiminta on ryhmämuotoista. Lapsiryhmät voidaan muodostaa eri tavoin ottaen huomioon esimerkiksi lasten ikä, sisarussuhteet tai tuen tarve.\n\nPäivittäinen hoitoaika järjestetään perheen tarpeiden mukaan. Hoitoaika määritellään hoitosopimuksessa, jonka huoltaja ja päiväkodinjohtaja allekirjoittavat.\n\nNaantalin kaupungin varhaiskasvatus on pystynyt järjestämään kaikille naantalilaisille lapsille hoitopaikan.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Naantalissa on 14 kunnallista päiväkotia, joista yksi tarjoaa ympärivuorokautista hoitoa. Kaikissa päiväkodeissa toiminta on ryhmämuotoista.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Hae lapselle päivähoitopaikkaa vähintään neljä kuukautta ennen hoidon tarvetta. Ellei hoidon tarve ole ennakoitavissa (jos esimerkiksi työllistyt nopeasti), hae lapselle hoitopaikkaa viimeistään kaksi viikkoa ennen hoidon alkua. Saat päätöksen hoitopaikasta kotiin postitse.\n\nHae päivähoitopaikkaa verkkopalvelussa (tee varhaiskasvatushakemus). Tarvitset palvelun käyttämistä varten pankkitunnukset tai mobiilivarmenteen.\n",
+    "type" : "UserInstruction"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

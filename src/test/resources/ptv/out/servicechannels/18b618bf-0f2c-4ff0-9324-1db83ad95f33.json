@@ -1,0 +1,153 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "languages" : [ "fi" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "6828bd27-8141-4724-ad14-e54b15dbb7bb",
+      "name" : "Vammaisten henkilökohtainen apu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "98614223-4745-4f54-86d1-a20f6c6030aa",
+      "name" : "Vammaisten asumispalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : "(sukunimi L-Ö + Vähäkyrö)",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63254230",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "(sukunimi A-K + ruotsinkieliset)",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63252678",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "(efternamn L-Ö + Lillkyro)",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63254230",
+    "language" : "sv"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "(efternamn A-K + svenskpråkiga)",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63252678",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Sosiaalityöntekijä - vammaisten asumispalvelut ja henkilökohtainen apu",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Socialarbetare - Boendeservice och personlig assistans för personer med funktionsnedsättning",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ {
+    "serviceHourType" : "DaysOfTheWeek",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ {
+      "value" : null,
+      "language" : "fi"
+    } ],
+    "openingHour" : [ {
+      "dayFrom" : "Monday",
+      "dayTo" : "",
+      "from" : "09:00:00",
+      "to" : "10:00:00"
+    }, {
+      "dayFrom" : "Tuesday",
+      "dayTo" : "",
+      "from" : "09:00:00",
+      "to" : "10:00:00"
+    }, {
+      "dayFrom" : "Wednesday",
+      "dayTo" : "",
+      "from" : "09:00:00",
+      "to" : "10:00:00"
+    }, {
+      "dayFrom" : "Thursday",
+      "dayTo" : "",
+      "from" : "09:00:00",
+      "to" : "10:00:00"
+    }, {
+      "dayFrom" : "Friday",
+      "dayTo" : "",
+      "from" : "09:00:00",
+      "to" : "10:00:00"
+    } ]
+  } ],
+  "serviceChannelType" : "Phone",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Sosiaalityöntekijä - vammaisten asumispalvelut ja henkilökohtainen apu.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Socialarbetare - Boendeservice och personlig assistans för personer med funktionsnedsättning",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Sosiaalityöntekijä - vammaisten asumispalvelut ja henkilökohtainen apu.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Socialarbetare - Boendeservice och personlig assistans för personer med funktionsnedsättning ",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "18b618bf-0f2c-4ff0-9324-1db83ad95f33"
+}

@@ -1,0 +1,72 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/node/27205",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/sv/node/27205",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "632d6d70-14c7-4b91-b37a-05de0c140161",
+      "name" : "Nuorisotilat"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "f1118351-952c-414a-b421-522746102314",
+      "name" : "Nuorisopalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Nuorisopalveluiden vuokrattavat tilat",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Lokaler som ungdomsservicen hyr ut",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Verkkosivuilta löydät lisätietoa nuorisotilojen vuokraamisesta. ",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Verkkosivuilta löydät lisätietoa nuorisotilojen vuokraamisesta.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "På webbsidorna hittar du mer information om uthyrningen av ungdomslokaler.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "På webbsidorna hittar du mer information om uthyrningen av ungdomslokaler.",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "61d4c8df-b515-47e3-8cfd-8d973e02cffc"
+}

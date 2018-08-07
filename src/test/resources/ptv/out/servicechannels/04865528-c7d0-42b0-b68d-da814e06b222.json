@@ -1,0 +1,307 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/kaavoitus",
+    "value" : "Kaavoitus",
+    "language" : "fi"
+  }, {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/sv/planlaggningen",
+    "value" : "Planläggningen",
+    "language" : "sv"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Kirkkopuistikko",
+        "language" : "fi"
+      }, {
+        "value" : "Kyrkoesplanaden",
+        "language" : "sv"
+      } ],
+      "streetNumber" : "26 A",
+      "postalCode" : "65100",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ {
+        "value" : "2. kerros",
+        "language" : "fi"
+      }, {
+        "value" : "Andra våningen",
+        "language" : "sv"
+      } ],
+      "latitude" : "7007388.61",
+      "longitude" : "228141.849",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  }, {
+    "type" : "Postal",
+    "subType" : "PostOfficeBox",
+    "postOfficeBoxAddress" : {
+      "postOfficeBox" : [ {
+        "value" : "PL 2",
+        "language" : "fi"
+      }, {
+        "value" : "PB 2",
+        "language" : "sv"
+      } ],
+      "postalCode" : "65101",
+      "postOffice" : [ {
+        "value" : "VAASA",
+        "language" : "fi"
+      }, {
+        "value" : "VASA",
+        "language" : "sv"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ {
+        "value" : null,
+        "language" : "fi"
+      } ]
+    },
+    "streetAddress" : null,
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi", "sv", "en" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "0404e86d-f3b5-4e04-b95a-af5078709361",
+      "name" : "Suunnittelutarveratkaisu tai poikkeamispäätös"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "0549a1e8-93da-42cb-b2c3-2b65daad2816",
+      "name" : "Kaavaotteet ja -neuvonta"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "61f21023-a984-4e31-9b05-4f414b24e11c",
+      "name" : "Asemakaavoitukseen vaikuttaminen"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "7580b7a3-bb88-46b9-903e-4d374029f6c8",
+      "name" : "Yleiskaavoitukseen vaikuttaminen"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "79d638b1-7e96-443c-84ab-f9e12171f4de",
+      "name" : "Ranta-asemakaavoitukseen vaikuttaminen"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "b1e7b1fb-2c5c-4756-8fc5-88ca5596049f",
+      "name" : "Maisematyölupa"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "c64e7178-dcc8-49fd-a88a-84cb3bdc2086",
+      "name" : "Rakentaminen ranta-alueelle"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Fax",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : null,
+    "isFinnishServiceNumber" : true,
+    "number" : null,
+    "language" : "sv"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63251160",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63251160",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ {
+    "value" : "kaavoitus@vaasa.fi",
+    "language" : "fi"
+  }, {
+    "value" : "planlaggningen@vasa.fi",
+    "language" : "sv"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Kaavoitus",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Planläggningen",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ {
+    "serviceHourType" : "DaysOfTheWeek",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ {
+      "value" : null,
+      "language" : "fi"
+    } ],
+    "openingHour" : [ {
+      "dayFrom" : "Monday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    }, {
+      "dayFrom" : "Tuesday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    }, {
+      "dayFrom" : "Wednesday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    }, {
+      "dayFrom" : "Thursday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    }, {
+      "dayFrom" : "Friday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    } ]
+  } ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Kaavoitus suunnittelee yhdessä asukkaiden, yhdistysten ja yritysten kanssa turvallista, terveellistä ja viihtyisää ympäristöä kaikille.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Planläggningen planerar tillsammans med invånarna, föreningar och företag en trygg, hälsosam och trivsam miljö för alla.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Kaavoitus suunnittelee yhdessä asukkaiden, yhdistysten ja yritysten kanssa turvallista, terveellistä ja viihtyisää ympäristöä kaikille.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Planläggningen planerar tillsammans med invånarna, föreningar och företag en trygg, hälsosam och trivsam miljö för alla.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "04865528-c7d0-42b0-b68d-da814e06b222"
+}

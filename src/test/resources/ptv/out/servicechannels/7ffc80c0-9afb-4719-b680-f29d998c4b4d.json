@@ -1,0 +1,122 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/node/9951",
+    "value" : "Ristinummen hammashoitola",
+    "language" : "fi"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Jyrsijänkatu",
+        "language" : "fi"
+      }, {
+        "value" : "Fräsaregatan",
+        "language" : "sv"
+      } ],
+      "streetNumber" : "2",
+      "postalCode" : "65370",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ {
+        "value" : null,
+        "language" : "sv"
+      } ],
+      "latitude" : "7006638.403",
+      "longitude" : "233637.789",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi", "sv", "en" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "73ff8109-ab84-416d-a858-be94413c93a9",
+      "name" : "Suun terveydenhuolto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Ristinummen hammashoitola",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Korsnästågets tandklinik",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Hammashoitola toimii ajanvarauksella. Hammashoitolassa hoidetaan suun alueen tarkastuksia ja tarvittavia ehkäiseviä ja korjaavia toimenpiteitä.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Ristinummen hammashoitola",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Korsnästågets tandklinik",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Tandkliniken fungerar med tidsbokning. På tandkliniken sköts granskningar av munområdet och behövliga förebyggande och reparerande åtgärder.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "7ffc80c0-9afb-4719-b680-f29d998c4b4d"
+}

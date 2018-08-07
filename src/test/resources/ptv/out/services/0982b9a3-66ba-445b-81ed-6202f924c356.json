@@ -1,0 +1,271 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Lasten päivähoito",
+      "language" : "fi"
+    }, {
+      "value" : "Barndagvård",
+      "language" : "sv"
+    }, {
+      "value" : "Day-care for children",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Till denna serviceundergrupp hör barnets rättigheter i anslutning till dagvård för små barn, förutsättningar för dagvård, ärendehanteringstjänster och ansökningsförfaranden, olika genomföringsformer och servicekanaler för dagvård, vårdavgifter och bidrag i anslutning till dem.",
+      "language" : "sv"
+    }, {
+      "value" : "Tähän alapalveluluokkaan kuuluvat pienten lasten päivähoitoon liittyvät lapsen oikeudet, päivähoidon saamisen edellytykset, asiointipalvelut ja hakumenettelyt, erilaiset päivähoidon toteuttamismuodot ja palvelukanavat, hoidon maksut ja niihin liittyvät taloudelliset tuet.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains a child’s rights related to day-care for young children, eligibility criteria, e-services and application procedures associated with day-care, different forms and service channels of day-care provision, fees charged for day-care and financial support related to the fees.",
+      "language" : "en"
+    } ],
+    "code" : "P3.4",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1017",
+    "parentId" : "77af99fa-93eb-4de6-ac83-1b161a961263",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1013"
+  }, {
+    "name" : [ {
+      "value" : "Perheiden palvelut",
+      "language" : "fi"
+    }, {
+      "value" : "Tjänster för familjer",
+      "language" : "sv"
+    }, {
+      "value" : "Services for families",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "I denna servicegrupp behandlas tjänster för barnfamiljer, som i huvudsak omfattar perioden från graviditeten till att en ung person blir myndig. I innehållet i servicegruppen granskas tjänsterna för familjer och situationer ofta via aktörer, situationer och synvinklar.",
+      "language" : "sv"
+    }, {
+      "value" : "Tässä palveluluokassa käsitellään lapsiperheen palveluja, jotka pääosin kattavat ajanjakson raskausajasta nuoren täysi-ikäiseksi tulemiseen. Palveluluokan sisällössä perheen palveluja ja tilanteita tarkastellaan useiden toimijoiden, tilanteiden ja näkökulmien kautta.",
+      "language" : "fi"
+    }, {
+      "value" : "This service class contains services for families with children, mainly covering the period from pregnancy until a young person turns 18. In the contents of this service class, family services are examined from the perspective of different actors, situations and viewpoints.",
+      "language" : "en"
+    } ],
+    "code" : "P3",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1013",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "47d0ddd0-728e-47d0-8e3c-58b653df5e95",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-10-24T13:17:16.867007",
+  "id" : "0982b9a3-66ba-445b-81ed-6202f924c356",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "05edf711-da73-4d0e-9f6b-5b7f603b5112",
+      "name" : "Naantalin varhaiskasvatuksen verkkoasiointi"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3db7f436-300e-4fbf-8e88-fd3b6c903e12",
+      "name" : "Varhaiskasvatustoimisto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "6dc68be3-cfc9-44b5-afc4-adc9fae54763",
+      "name" : "Päivähoidon esimies"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "ad29e11d-9c97-4e02-a7da-5f5cefe442e9",
+      "name" : "Varhaiskasvatuksen johtaja"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "fdfce5e7-3b5a-45dc-8cf0-d67f90042256",
+      "name" : "Vuoropäiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : null,
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Vuoropäivähoito",
+    "type" : "AlternativeName"
+  }, {
+    "language" : "fi",
+    "value" : "Varhaiskasvatuksen vuorohoito",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "päiväkotihoito",
+      "language" : "fi"
+    }, {
+      "value" : "dagvård",
+      "language" : "sv"
+    }, {
+      "value" : "nursery school care",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p69116",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p9399"
+  }, {
+    "name" : [ {
+      "value" : "vuorohoito",
+      "language" : "fi"
+    }, {
+      "value" : "skiftesvård",
+      "language" : "sv"
+    }, {
+      "value" : "nonstandard hour child care",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p53864",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p18203"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Lapset ja lapsiperheet",
+      "language" : "fi"
+    }, {
+      "value" : "Children and families with children",
+      "language" : "en"
+    }, {
+      "value" : "Barn och barnfamiljer",
+      "language" : "sv"
+    } ],
+    "code" : "KR1.2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2003",
+    "parentId" : "daff1fb9-9394-49b5-b033-d1d1c7005ab6",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001"
+  }, {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : "Vuorohoito palvelee perheitä, joissa molemmat vanhemmat ovat työssä, ja jotka tarvitsevat lapselle/lapsille ilta-, yö-, ja viikonloppuhoitoa. Vuoropäiväkoti on tarvittaessa auki ympäri vuorokauden vanhempien ennalta ilmoittamien hoitoaikatoiveiden mukaan.\n\nVuorohoito on Naantalissa keskitetty keskustan Vuoropäiväkotiin.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Hae lapselle päivähoitopaikkaa vähintään neljä kuukautta ennen hoidon tarvetta. Ellei hoidon tarve ole ennakoitavissa (jos esimerkiksi työllistyt nopeasti), hae lapselle hoitopaikkaa viimeistään kaksi viikkoa ennen hoidon alkua. Saat päätöksen hoitopaikasta kotiin postitse.\n\nHae päivähoitopaikkaa verkkopalvelussa (tee varhaiskasvatushakemus). Tarvitset kirjautumista varten pankkitunnukset tai mobiilivarmenteen.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Vuorohoitoa saa tarvittaessa ympäri vuorokauden vanhempien ennalta ilmoittamien hoitoaikatoiveiden mukaan.",
+    "type" : "Summary"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

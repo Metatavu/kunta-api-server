@@ -1,0 +1,281 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Asuminen",
+      "language" : "fi"
+    }, {
+      "value" : "Boende",
+      "language" : "sv"
+    }, {
+      "value" : "Housing",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Denna servicegrupp omfattar hur man söker, hittar och skaffar en bostad, olika boendeformer, ekonomiskt stöd för boende, processer och tjänster i anslutning till flyttning inom Finland samt tjänster som berör befolkningsdatasystemet.",
+      "language" : "sv"
+    }, {
+      "value" : "Tähän palveluluokkaan kuuluvat asunnon etsiminen, löytäminen ja hankkiminen, erilaiset asumismuodot, asumisen taloudelliset tuet, Suomen sisällä tapahtuvaan muuttoon liittyvät prosessit ja palvelut sekä väestötietojärjestelmään liittyvät palvelut.",
+      "language" : "fi"
+    }, {
+      "value" : "This service class includes seeking, finding and purchasing a residence, different housing forms, housing benefits, processes and services related to migration within Finland, as well as services associated with the Population Information System.",
+      "language" : "en"
+    } ],
+    "code" : "P1",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1001",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "Ympäristö",
+      "language" : "fi"
+    }, {
+      "value" : "Miljö",
+      "language" : "sv"
+    }, {
+      "value" : "The environment",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "I denna servicegrupp behandlas miljörelaterade tjänster med tanke på såväl naturliga miljöer som boendemiljöer och övriga bebyggda miljöer.",
+      "language" : "sv"
+    }, {
+      "value" : "Tässä palveluluokassa käsitellään ympäristöön liittyviä palveluja sekä luonnonympäristöjen että asumis- ja muun rakennetun ympäristön kannalta.",
+      "language" : "fi"
+    }, {
+      "value" : "This service class contains services related to the environment, including both natural environments and living and other built environments.",
+      "language" : "en"
+    } ],
+    "code" : "P23",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1184",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2018-04-04T07:19:01.56624",
+  "id" : "a8d91727-72f0-490f-a924-912923e0431c",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "1c8f4d40-ce50-41ff-bad3-7194a59ec97e",
+      "name" : "Vaasan karttapalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3659c778-f216-4875-a016-048219957a56",
+      "name" : "Viheraluehortonomi"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "5877e38d-c7dc-4263-8ff6-a70b13768f1d",
+      "name" : "Toimistosihteeri"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "64221f78-3c09-4006-8610-d16995d7cc7f",
+      "name" : "Viheralueyksikkö"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "dea16700-08a3-4910-ab16-5bb7e9f0c849",
+      "name" : "Toimistohortonomi"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "Chargeable",
+  "serviceNames" : [ {
+    "language" : "sv",
+    "value" : "Odlingslotter",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Viljelypalstat",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "viljelypalstat",
+      "language" : "fi"
+    }, {
+      "value" : "odlingsspalter",
+      "language" : "sv"
+    }, {
+      "value" : "allotments",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p65562",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p25281"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "sv",
+    "value" : "På stadens odlingslotter kan ettåriga grönsaker och blommor odlas för eget behov.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : "Palstan vuokrahinta on 25 €/kausi.",
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Kaupungin viljelypalstoilla voi viljellä yksivuotisia kasviksia ja kukkia omaan tarpeeseen.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : "Priset på en odlingslott är 25 €/säsong.",
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Vapaita palstoja voi tiedustella puhelimitse, mutta itse vuokrasopimus edellyttää henkilökohtaisen käynnin ja henkilöllisyyden todistamisen. Viheralueyksikön toimisto on auki viljelystä kiinnostuneille klo 8.00-11.00 ja 12.00-16.00 huhti-kesäkuussa (portti Kaarlenkentän takana, keltainen ylärakennus). Muina kuukausina pyydämme ensin soittamaan viheralueyksikön toimistohortonomille tai toimistosihteerille. Jos haluat, että viljelypalstasi käännetään ennen kylvöjä, ota yhteyttä Viheralueyksikköön viimeistään 8.6.2018.\n\nViljelysopimukset tehdään vuodeksi kerrallaan. Viheralueyksikkö lähettää viljelijälle laskun kevättalvesta, ja mikäli viljelijä maksaa laskun, hän saa jatkaa automaattisesti viljelyä samalla palstalla myös seuraavalla kaudella. Jos palstalla haluaa tehdä kunnostus- ja muokkaustöitä syksyllä ennen tulevaa kautta, voi vapaan palstan vuokrata syyskuun loppuun mennessä ja vuokramaksu on tällöin 25 € loppuvuodelle.\n\nPalstaviljelyalueiden sijainnit löydät Vaasan karttapalvelusta. Palstoja ei voi ennalta varata. ",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Kaupungin viljelypalstoilla voi viljellä yksivuotisia kasviksia ja kukkia omaan tarpeeseen. Viheralueyksikkö vuokraa vapaita viljelypalstoja Vaasan kaupungin Viheralueyksikössä (Kaarlen kentän takana, Kaupunginpuutarhan ylärakennuksessa). Viljelypalstoja voi vuokrata kasvukauden alusta sadonkorjuuseen huhti- ja syyskuun välisenä aikana eli 23.4.–30.9.2018.\n\nYksivuotisten kasvien viljelyä voi harrastaa Vaasassa neljällä eri palstaviljelyalueella: Kotirannalla (Ainonkatu), Korkeamäellä (Hirventie), Suvilahdessa (Suvilahdentie) sekä Vanhassa Vaasassa (Läntinen Pitkäkatu). Palstat ovat kooltaan yhden aarin eli 10x10 m.\n\n",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : "Förfrågningar om lediga odlingslotter kan göras per telefon, men själva arrendeavtalet kräver ett personligt besök och styrkande av identitet. Grönområdesenhetens kansli är öppet för odlingsintresserade kl. 8.00-11.00 och 12.00-16.00 i april-juni (porten bakom Karlsplanen, den gula övre byggnaden). Andra månader ber vi dig först ta kontakt per telefon med grönområdesenhetens byråhortonom eller byråsekreterare. Om du vill att din odlingslott ska bearbetas före sådden, kontakta grönområdesenheten senast 8.6.2018. \n\nOdlingslottsavtalen ingås för ett år åt gången. Grönområdesenheten sänder en faktura till odlaren på vårvintern och om odlaren betalar fakturan, får han eller hon automatiskt fortsätta odla på samma lott nästa säsong. Om man vill bearbeta lotten redan på hösten inför den följande säsongen, kan en ledig lott arrenderas fram till utgången av september och avgiften är då 25 € för resten av året. \n\nOdlingslotternas placering ser du i Vasas karttjänst. Odlingslotterna kan inte reserveras på förhand. ",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : "På stadens odlingslotter kan ettåriga grönsaker och blommor odlas för eget behov. Grönområdesenheten arrenderar ut odlingslotter vid Vasa stads grönområdesenhet (bakom Karlsplanen, i stadsträdgårdens övre byggnad). Odlingslotter kan arrenderas från början av växtperioden ända till skördetid mellan april och september d.v.s. 23.4 – 30.9.2018. \n\nEttåriga växter kan odlas i Vasa på fyra olika områden: Hemstrand (Ainogatan), Högbacken (Älgvägen), Sunnanvik (Sunnanviksvägen) samt Gamla Vasa (Västra Långgatan). Odlingslotterna omfattar en ar d.v.s. 10x10 m. \n\n\n",
+    "type" : "Description"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

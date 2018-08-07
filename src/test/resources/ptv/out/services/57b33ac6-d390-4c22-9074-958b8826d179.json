@@ -1,0 +1,208 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Kiinteistöt",
+      "language" : "fi"
+    }, {
+      "value" : "Properties",
+      "language" : "en"
+    }, {
+      "value" : "Fastigheter",
+      "language" : "sv"
+    } ],
+    "description" : [ {
+      "value" : "Tässä alapalveluluokassa käsitellään palvelujen näkökulmasta kiinteistötietoja sekä kiinteistöjen kauppaa ja verotusta.",
+      "language" : "fi"
+    }, {
+      "value" : "I denna underservicegrupp behandlas ur servicesynvinkeln fastighetsuppgifter samt fastighetsaffärer och -beskattning.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains property information as well as the trade and taxation of properties from the service point of view.",
+      "language" : "en"
+    } ],
+    "code" : "P2.4",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1011",
+    "parentId" : "dd30002b-be2b-4689-878a-60e93492cc87",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1007"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "a17f00ba-3d3d-4ff0-8af2-f5bd00218df5",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "57b33ac6-d390-4c22-9074-958b8826d179",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "14a9874a-8b9b-488a-aec5-5321dd36678f",
+      "name" : "Kiinteistötoimitushakemus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "32834fb0-9e06-44a2-aed4-2cc61751e8a8",
+      "name" : "Ympäristöviraston maksuluettelo"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : "Rasitteen perustaminen edellyttää tonttien omistajien välistä sopimusta. Rasitesopimuksessa tulee sopia rasitteeseen liittyvistä asioista, kuten rasitteen käytöstä, rakentamis-, kuntoonpano- ja kunnossapitokustannuksista sekä rasiteoikeudesta maksettavasta korvauksesta.",
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "Chargeable",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Rasitetoimitus",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "tontit",
+      "language" : "fi"
+    }, {
+      "value" : "tomter",
+      "language" : "sv"
+    }, {
+      "value" : "plots of land",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p4911",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p18755"
+  }, {
+    "name" : [ {
+      "value" : "rasitetoimitus",
+      "language" : "fi"
+    }, {
+      "value" : "servitutsförrättning",
+      "language" : "sv"
+    }, {
+      "value" : "easement proceedings",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p68188",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p13588"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Yritykset ja yhteisöt",
+      "language" : "fi"
+    }, {
+      "value" : "Businesses and non-government organizations",
+      "language" : "en"
+    }, {
+      "value" : "Företag och samfund",
+      "language" : "sv"
+    } ],
+    "code" : "KR2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : "Rasitetoimituksessa perustetaan käyttöoikeus toisen tontin alueelle. Naantalissa sitovan tonttijaon alueella toimitukset tekee kaupunki.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Rasitetoimituksen hintaan vaikuttaa perustettavien rasitteiden määrä. Tontin lohkomisen yhteydessä perustettu rasite on erillisessä rasitetoimituksessa perustettua rasitetta edullisempi. Rasitteiden hinnat löytyvät Ympäristöviraston maksuluettelon Maanmittaus-osioista.",
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : "Jos rasitetoimituksen kohteet sijaitsevat Manner-Naantalin tai Luonnonmaan asemakaava-alueella, hae rasitetoimitusta tulostettavalla lomakkeella kaupungilta. Merkitse lomakkeeseen haettavan toimenpiteen kohtaan \"Rasitetoimitus\". Liitä hakemukseen myös tontin omistajien välinen rasitesopimus.\n\nJos rasitetoimituksen kohteet sijaitsevat muualla kuin Manner-Naantalin tai Luonnonmaan asemakaava-alueella, hae lohkomista Maanmittauslaitokselta.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Rasitetoimituksessa perustetaan tai poistetaan käyttöoikeus eli rasite toisen tontin alueelle. Toimituksessa perustettu rasite on voimassa vaikka kiinteistöt vaihtaisivat omistajia. Tarpeettomaksi jäänyt rasite myös poistetaan rasitetoimituksessa. \n\nNaantalin kaupunki tekee rasitetoimitukset  sitovan tonttijaon alueella, eli Manner-Naantalin ja Luonnonmaan asemakaavoitetuilla alueilla. Muilla alueilla rasitetoimituksista vastaa Maanmittauslaitos.",
+    "type" : "Description"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

@@ -1,0 +1,151 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Osaomistus- ja asumisoikeusasuminen",
+      "language" : "fi"
+    }, {
+      "value" : "Delägar- och bostadsrättsboende",
+      "language" : "sv"
+    }, {
+      "value" : "Partial ownership and right-of-occupancy housing",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "This service subclass contains the application and funding procedures as well as application criteria related to these housing forms. It also includes services related to seeking and purchasing a partial ownership or right-of-occupancy residence.",
+      "language" : "en"
+    }, {
+      "value" : "Tähän palvelualaluokkaan kuuluvat kuuluvat näihin asumismuotoihin liittyvät haku- ja rahoitusmenettelyt sekä hakemisen edellytykset. Luokkaan kuuluvat myös osaomistus- tai asumisoikeusasunnon etsimiseen ja hankkimiseen liittyvät palvelut.",
+      "language" : "fi"
+    }, {
+      "value" : "Till denna serviceundergrupp hör ansöknings- och finansieringsförfaranden i anslutning till dessa boendeformer samt förutsättningar för sökandet. Till gruppen hör också tjänster i anslutning till sökande och anskaffande av delägar- eller bostadsrättsbostad.",
+      "language" : "sv"
+    } ],
+    "code" : "P1.3",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1004",
+    "parentId" : "00c74cc0-46c5-48f3-ab36-6dc0a7bcaec1",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1001"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "f8b7b4a0-42ea-4cdc-aa21-7dd02f15d1e2",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "79d08ed0-fc9a-4e17-ae71-8ca1d4a8696e",
+  "serviceChannels" : [ ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Asumisoikeus- ja osaomistusasunnot",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "asumisoikeusasunnot",
+      "language" : "fi"
+    }, {
+      "value" : "bostadsrättsbostäder",
+      "language" : "sv"
+    }, {
+      "value" : "right-of-residence apartments",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p129",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p36235"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : "Naantalissa on kolmen eri toimijan asumisoikeus- ja osaomistusasuntoja koko kanta-Naantalin alueella.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : "Naantalissa on kolmen eri toimijan asumisoikeus- ja osaomistusasuntoja koko kanta-Naantalin alueella.\n\nAsumisoikeusasunto on asunto, jota asukas hallitsee mutta ei omista. Hän maksaa asumisestaan kuukausikulujen lisäksi maksun, joka palautetaan hänelle poismuuton yhteydessä. Asukas maksaa 10-15 % asunnon hinnasta asumisoikeusmaksuna ja saa maksua vastaan pysyvän asumisoikeuden. Asuntoa ei voi lunastaa omaksi. Asumisoikeusasuntoja hallinnoivat ulkopuoliset asumisoikeusyhtiöt, jotka myös päättävät asukasvalinnasta.\n\nOsaomistusasunnolla tarkoitetaan asumismuotoa, jossa asukas sijoittaa aluksi 10-20 % asunnon hankintahinnasta ja saa omistukseensa vähemmistöosuuden asunnon hallinnasta. \n\n",
+    "type" : "Description"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "Other",
+    "organization" : null,
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

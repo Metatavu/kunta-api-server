@@ -1,0 +1,272 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Maankäyttö, kaavoitus ja tontit",
+      "language" : "fi"
+    }, {
+      "value" : "Markanvändning, planering och tomter",
+      "language" : "sv"
+    }, {
+      "value" : "Land use, land use planning and sites",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "I denna underservicegrupp behandlas landskapsplanering, detaljplaner och stadsplaner, påverkningsmöjligheter för dessa samt affärer med och hyrning av planerad mark och tomter, inklusive företagstomter.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains regional land use plans, local master plans and local detailed plans, possibilities of influencing these plans, and the sales and leasing of zoned land and sites, including commercial sites.",
+      "language" : "en"
+    }, {
+      "value" : "Tässä alapalveluluokassa käsitellään maakuntakaavoja, yleiskaavoja ja asemakaavoja, niihin liittyviä vaikuttamismahdollisuuksia sekä kaavoitetun maan ja tonttien kauppaa ja vuokraamista, mukaan lukien yritystontit.",
+      "language" : "fi"
+    } ],
+    "code" : "P2.3",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1010",
+    "parentId" : "dd30002b-be2b-4689-878a-60e93492cc87",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1007"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "b1171fff-abc7-49bf-ba0b-f99730f45329",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "61f21023-a984-4e31-9b05-4f414b24e11c",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "04865528-c7d0-42b0-b68d-da814e06b222",
+      "name" : "Kaavoitus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "1c8f4d40-ce50-41ff-bad3-7194a59ec97e",
+      "name" : "Vaasan karttapalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e84085a-328c-4e1f-81fa-aeae61c6478a",
+      "name" : "Kaavoituksen verkkosivut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "sv",
+    "value" : "Påverkan av detaljplanläggning",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Asemakaavoitukseen vaikuttaminen",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "asemakaavat (kaavat)",
+      "language" : "fi"
+    }, {
+      "value" : "detaljplaner",
+      "language" : "sv"
+    }, {
+      "value" : "zoning plans",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p39878",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p65315"
+  }, {
+    "name" : [ ],
+    "code" : null,
+    "ontologyType" : null,
+    "uri" : "http://www.yso.fi/onto/yso/p15882",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Företag och samfund",
+      "language" : "sv"
+    }, {
+      "value" : "Yritykset ja yhteisöt",
+      "language" : "fi"
+    }, {
+      "value" : "Businesses and non-government organizations",
+      "language" : "en"
+    } ],
+    "code" : "KR2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "Företag på den inhemska marknaden",
+      "language" : "sv"
+    }, {
+      "value" : "Businesses operating in the domestic (Finnish) market",
+      "language" : "en"
+    }, {
+      "value" : "Kotimarkkinoilla toimivat yritykset",
+      "language" : "fi"
+    } ],
+    "code" : "KR2.3",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2011",
+    "parentId" : "338939bb-b01a-4a80-a091-7c5238322bc0",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008"
+  }, {
+    "name" : [ {
+      "value" : "Medborgare",
+      "language" : "sv"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : "Jokaisella vaasalaisella on mahdollisuus vaikuttaa kaavoitukseen Vaasan alueella.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : "Alla Vasabor har möjlighet att påverka planläggningen i Vasas område.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Alla Vasabor har möjlighet att påverka planläggningen i Vasas område. Initiativet till utarbetande eller ändring av en detaljplan kan komma från markägaren eller kommunen. Planprojekt meddelas på Vasa stads webbsidor, i planläggningsöversikten som publiceras varje år samt i lokaltidningarna. \n\nEn detaljplan kan gälla ett helt bostadsområde med boende-, arbetsplats- och rekreationsområden eller enbart en enda tomt. Byggandet på strandområden kan styras genom en stranddetaljplan som utarbetas av markägaren. Till detaljplanen hör en detaljplanekarta samt planbeteckningar och planbestämmelser.  Till detaljplanen hör också en beskrivning där det redogörs för utarbetandet av planen och dess viktigaste egenskaper. \n\nI början av detaljplanläggningsprocessen utarbetas ett program för deltagande och bedömning där sätten för deltagande och påverkan samt de bedömda konsekvenserna beskrivs. Programmet för deltagande och bedömning läggs fram offentligt. Om programmet och målen för hela projektet kan åsikter framföras till Planläggningen t.ex. per e-post. \n\nI planutkastet presenteras den planerade markanvändningen på området. Planutkastet presenteras på en karta och åskådliggörs med t.ex. bilder och 3D-modeller. Planutkastet framläggs offentligt. Utkastskedet är med tanke på påverkning av planens innehåll det viktigaste skedet. I utkastskedet vill man veta vilka kommuninvånarnas åsikter i ärendet är. Dessa kan framföras på varierande sätt som beskrivs i programmet för deltagande och bedömning. I utkastskedet kan en skriftlig åsikt inlämnas om alla projekt. Åsikterna inlämnas till Planläggningen. \n\nPå basis av planutkastet utarbetas ett planförslag som läggs fram offentligt. Planförslaget är en färdig plan som kan godkännas som sådan. I planförslagsskedet kan kommuninvånarna lämna in anmärkningar i ärendet, men i det skedet görs inte längre andra än små justeringar i planen. Om det efter förslagsskedet kommer större ändringar i planen, ska den läggas fram offentligt på nytt. Anmärkningarna riktas till stadsstyrelsen och tillställs Planläggningen. \n\nDetaljplaneförslaget godkänns av stadsfullmäktige eller stadsstyrelsens planeringssektion. Efter godkännandet kan besvär över planen anföras hos förvaltningsdomstolen i trettio dagar. Detaljplanen vinner laga kraft, när detta kungörs på Vasa stads webbsidor och i lokaltidningarna. ",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Jokaisella vaasalaisella on mahdollisuus vaikuttaa kaavoitukseen Vaasan alueella. Aloitteen asemakaavan laatimiseksi tai muuttamiseksi voi tehdä maanomistaja tai kunta. Kaavahankkeista ilmoitetaan Vaasan kaupungin verkkosivuilla, vuosittain julkaistavassa kaavoituskatsauksessa sekä paikallislehdissä.\n\nAsemakaava voi koskea kokonaista asuntoaluetta asuin- , työ- ja virkistysalueineen tai vain yhtä tonttia. Ranta-alueiden rakentamista voidaan ohjata ranta-asemakaavalla, jonka laatii maanomistaja. Asemakaavaan kuuluvat asemakaavakartta sekä kaavamerkinnät ja -määräykset.  Asemakaavaan liittyy selostus, jossa kerrotaan kaavan laatimisesta ja keskeisistä ominaisuuksista.\n\nAsemakaavoituksen alussa laaditaan osallistumis- ja arviointisuunnitelma, jossa kuvataan osallistumis- ja vaikuttamistavat ja arvioitavat vaikutukset. Osallistumis- ja arviointisuunnitelma asetetaan julkisesti nähtäville. Suunnitelmasta ja koko hankkeen tavoitteista voi esittää mielipiteitä kaavoitukselle, esimerkiksi sähköpostilla. \n\nKaavaluonnoksessa esitetään alueelle suunniteltu maankäyttö. Kaavaluonnos esitetään kartalla ja sitä havainnollistetaan esimerkiksi kuvilla ja 3d-malleilla. Kaavaluonnos pidetään julkisesti nähtävillä. Luonnosvaihe on kaavan sisältöön vaikuttamisen kannalta tärkein vaihe. Luonnosvaiheessa kysytään kuntalaisten mielipiteitä asiasta. Niitä voi esittää osallistumis- ja arviointisuunnitelmassa kerrotuilla vaihtelevilla tavoilla. Kirjallisen mielipiteen voi luonnosvaiheessa jättää kaikista hankkeista. Mielipiteet toimitetaan kaavoitukselle. \n\nKaavaluonnoksen pohjalta laaditaan kaavaehdotus, joka asetetaan julkisesti nähtäville. Kaavaehdotus on viimeistelty suunnitelma, joka sellaisenaan voidaan hyväksyä. Kaavaehdotus vaiheessa kuntalainen voi jättää asiasta muistutuksia, mutta ehdotusvaiheessa kaavaan tehdään enää pieniä tarkistuksia. Jos kaavaan tulee ehdotusvaiheen jälkeen suurempia muutoksia, se asetetaan uudelleen nähtäville. Muistutukset osoitetaan kaupunginhallitukselle ja toimitetaan kaavoitukseen. \n\nAsemakaavaehdotus hyväksytään kaupunginvaltuustossa tai kaupunginhallituksen suunnittelujaostossa. Hyväksymisen jälkeen kaavasta voi valittaa hallinto-oikeuteen kolmenkymmenen päivän ajan. Asemakaava saa lainvoiman, kun se ilmoitetaan kuulutuksella Vaasan kaupungin verkkosivuilla sekä paikallislehdissä.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasassa vireillä olevat asemakaavat löydät kaavoituksen verkkosivuilta tai Vaasan karttapalvelusta. Kaavoituksen sivuilta löydät myös yleistietoa kaavoituksesta.\nKaavoitukseen vaikuttamiseen liittyvissä asioissa voit ottaa yhteyttä kaavoitukseen.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : "Aktuella detaljplaner i Vasa stad finns på Planläggningens webbsidor eller i Vasas karttjänst. På sidorna finns också allmän information om planläggning.\nI ärenden som gäller påverkande av planläggningen kan du ta kontakt med Planläggningen. ",
+    "type" : "UserInstruction"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

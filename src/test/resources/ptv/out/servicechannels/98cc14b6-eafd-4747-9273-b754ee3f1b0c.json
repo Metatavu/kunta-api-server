@@ -1,0 +1,99 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Katinhäntä",
+        "language" : "fi"
+      } ],
+      "streetNumber" : "1",
+      "postalCode" : "21100",
+      "postOffice" : [ {
+        "value" : "NAANTALI",
+        "language" : "sv"
+      }, {
+        "value" : "NAANTALI",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "529",
+        "name" : [ {
+          "value" : "Naantali",
+          "language" : "fi"
+        }, {
+          "value" : "Nådendal",
+          "language" : "sv"
+        }, {
+          "value" : "Naantali",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ ],
+      "latitude" : "6713821.435",
+      "longitude" : "226203.04",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "f990b29a-0f5f-46ab-a726-c61395a94165",
+      "name" : "Museopalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ ],
+  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "emails" : [ ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Naantalin museo, Hiilola ja Sau-Kallio",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Porvariskoti Hiilola ja käsityöläisen talo Sau-Kallio kertovat asumisesta pienessä puukaupungissa 1800-luvulla.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Hiilolan koti-interiööri esittelee porvarisperheen elämää 1800-luvun lopulla. Lisäksi rakennuksessa voi tutustua pienoisnäyttelyyn, joka kertoo Naantalin kaupungin käsityö- ja kylpylähistoriasta. Hiilolan pihan aitassa on lasten leikkipaikka ja puutarhaan on pääsy vaikkei museon pääsymaksua maksaisikaan. Puutarhasta löytyy luostariajan perinteeseen perustuva yrttimaa ja kopio Naantalin vanhan kylpylän kaivorakennuksesta. \n\nPuutarhan perällä on Sau-Kallion talo, joka on sisustettu käsityöläisen asunnoksi. Sau-Kallio on avoinna tilauksesta ja satunnaisesti. \n",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2018-05-28T11:47:13.021646",
+  "id" : "98cc14b6-eafd-4747-9273-b754ee3f1b0c"
+}

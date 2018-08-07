@@ -1,0 +1,88 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "http://www.naantali.fi/asuminen_ja_rakentaminen/rakennusvalvonta/taksat_rakennusvalvonta/fi_FI/taksat_rakennusvalvonta/",
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "3cc03b46-ca95-4df5-a64a-10f9727debdf",
+      "name" : "Toimenpidelupa tai -ilmoitus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "45eb8e24-3d8a-4692-adb1-4bfd0878005d",
+      "name" : "Purkamislupa"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "4aecfaa2-7891-4eb0-84fb-4b95ed507e3e",
+      "name" : "Maisematyölupa"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "592ba6cd-459c-46fe-9399-2f53ee22ce22",
+      "name" : "Rakennuslupa"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "6f079bef-e5fc-4df0-9595-7eeadee13513",
+      "name" : "Suunnittelutarveratkaisu tai poikkeamispäätös"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Naantalin kaupungin rakennusvalvonnan taksat",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Naantalin kaupungissa rakennusvalvonnan tarkastus- ja valvontatehtävistä sekä muista viranomaistehtävistä suoritettavat maksut",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Luvan hakija tai toimenpiteen suorittaja on velvollinen suorittamaan tarkastus- ja valvontatehtävistä sekä muista viranomaistehtävistä kunnalle maksun, jonka perusteet määrätään tässä taksassa maankäyttö- ja rakennuslain (MRL) 145 §:n ja muiden säädösten nojalla. Maksut ovat arvonlisäverottomia.",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "36cfde68-e728-471d-af66-ac3df7a82b0e"
+}

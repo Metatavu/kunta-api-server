@@ -1,0 +1,159 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/hietalahden-koulu",
+    "value" : "Hietalahden koulu kotisivut",
+    "language" : "fi"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Ravikatu",
+        "language" : "fi"
+      } ],
+      "streetNumber" : "9",
+      "postalCode" : "65100",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : null,
+      "additionalInformation" : [ {
+        "value" : "Hietalahden koulu",
+        "language" : "fi"
+      } ],
+      "latitude" : "7006403.231",
+      "longitude" : "229534.542",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  }, {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Kauppapuistikko",
+        "language" : "fi"
+      } ],
+      "streetNumber" : "22",
+      "postalCode" : "65100",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ {
+        "value" : "Kauppapuistikon yksikkö",
+        "language" : "fi"
+      } ],
+      "latitude" : "7007314.437",
+      "longitude" : "228494.686",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "17c633dd-5408-495a-86c1-d8f57598e899",
+      "name" : "Perusopetus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Fax",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : null,
+    "isFinnishServiceNumber" : true,
+    "number" : null,
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Rehtori Eija Huttunen",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63253190",
+    "language" : "fi"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Hietalahden koulu",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Hietalahden koulussa on yleisopetuksen vuosiluokat 1-6 ja erityisluokat  0-10.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Hietalahden koulussa on yleisopetuksen vuosiluokat 1-6 ja erityisluokat  0-10. Koulussa toimii aktiivinen vanhempainyhdistys TÖTSÄ. Koulun kerhot ovat suosittuja: muun muassa kokkikerho, atk-kerho ja kuvataidekerho ovat toimineet yli 10 vuoden ajan.\n\nAmmattitaitoinen henkilökunta toimii oppilaiden parhaaksi. Isän- ja äitienpäiväaamut, joulumarkkinat ja harrastepäivät tuovat oman leimansa koulun arkeen.\n\nErityisopetus Vaasassa on alkanut yli 100 vuotta sitten. Yleisopetuksen oppilaat ja erityisoppilaat toimivat Hietalahdessa yhdessä niin arjessa kuin juhlassakin. Integraatio on kaksisuuntaista ja aina oppilaan edun mukaista.\n\nKoulun toiminta-ajatus \"koulu kaikille\" viittaa tavoitteeseen, että koulusta lähtee suvaitsevaisia ja erilaisuuden rikkautena ymmärtäviä lapsia ja nuoria, joilla on hyvät eväät elämään ja vahva itsetunto.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "14cbacf5-f08c-498f-bf74-1626f7da743b"
+}

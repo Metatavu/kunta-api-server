@@ -1,0 +1,44 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "http://www.naantali.fi/terveys/palvelut/fi_FI/laboratorio/",
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "1e91c7da-980a-4e1d-9ad7-e645cf4d1e8b",
+      "name" : "Laboratoriopalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Laboratorion verkkosivu",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Naantalin terveyspalvelujen laboratorion verkkosivu.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Naantalin terveyspalvelujen laboratorion verkkosivuilta saat tietoa laboratorion aukioloajoista sekä ohjeita laboratoriotutkimuksiin valmistautumisesta. ",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-11-27T11:57:59.342519",
+  "id" : "a3b7a1d6-d831-4aee-b892-1e46cb20dad8"
+}

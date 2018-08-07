@@ -1,0 +1,186 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "0aa3d969-e80b-4e20-89b2-9681eb0fd02a",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "005bf017-7733-444c-9f94-6b16857aafbb",
+      "name" : "Sosiaalipäivystys"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "090e8fd3-14be-4847-a056-f06bc7c010bd",
+      "name" : "Johtava sosiaalityöntekijä - lapsi- ja perhesosiaalityön palvelutarpeen arviointi"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "23577ed2-fed7-4fcb-89bc-3065984b6d3d",
+      "name" : "Lastenvalvoja"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "2bda0a71-96d9-4c9a-8b03-5c0eabf945ea",
+      "name" : "Lapsi- ja perhesosiaalityön ja lastensuojelun päivystys"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv", "en" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Lapsi- ja perhesosiaalityö",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Barn- och familjesocialarbete",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : "Palvelutarpeen arvioinnin tekee sosiaalityöntekijä. Kiireelliseen avuntarpeeseen vastaa Pohjanmaan sosiaalipäivystys.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : "Tillsammans med socialarbetaren kan du diskutera saker som har att göra med din familjes nuvarande livssituation och framtid.\n\nServiceområdet för barn- och familjesocialarbete:\n\n* stöder barnfamiljer och föräldraskap samt främja barnets individuella uppväxt och positiva utveckling samt delaktighet \n* stöder barnfamiljer i ärenden som berör livshantering, arbete, underhåll och studier samt minska på ojämlikheten \n* tryggar barnens rätt till omsorg och underhåll samt makarnas rätt till underhåll\n* stöder familjerna i adoptionsärenden och konfliktsituationer \n* främjar delaktigheten och jämlikheten för personer med funktionsnedsättningar i samhället samt främja och få bort hinder som beror på funktionsnedsättningarna\n* främjar och stöda integration \n* främjar och minska på skador som beror på problemanvändningen av rusmedel och andra problem med mentala hälsan samt främjande av familjernas funktionsförmåga och säkerhet \n* tryggar rätten till en säker uppväxtmiljö för barn som behöver särskilt stöd och skydd samt även en balanserad och mångsidig utveckling för dessa (barnskydd)",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Sosiaalityöntekijän kanssa voit keskustella asioista, jotka liittyvät nykyiseen perheesi tilanteeseen tai tulevaisuuteen.\n\nLapsi- ja perhesosiaalityön palvelualue:\n* tukee lapsiperheitä ja vanhemmuutta sekä edistää lapsen yksilöllistä kasvua ja myönteistä kehitystä ja osallisuutta\n* tukee lapsiperheitä elämänhallintaan, työhön, toimeentuloon ja opiskeluun liittyvissä asioissa sekä vähentää eriarvoisuutta\n* turvata lasten oikeus huoltoon ja elatukseen sekä puolisoiden oikeus elatukseen\n* tukee perheitä adoptioasioissa ja ristiriitatilanteissa\n* edistää vammaisten henkilöiden osallisuutta ja yhdenvertaisuutta yhteiskunnassa sekä ehkäistä ja poistaa vammaisuudesta johtuvia esteitä\n* edistää ja tukea kotoutumista\n* ehkäisee ja vähentää päihteiden ongelmakäytöstä ja mielenterveysongelmista aiheutuvia haittoja sekä edistää perheiden toimintakykyä ja turvallisuutta\n* turvata erityistä tukea ja suojelua tarvitsevien lasten oikeus turvalliseen kasvuympäristöön sekä tasapainoiseen ja monipuoliseen kehitykseen (lastensuojelu)",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Lapsi- ja perhesosiaalityö on keskustelua ja neuvontaa, joka tukee vanhemmuutta ja auttaa lapsiperheitä suoriutumaan arjestaan.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Barn- och familjesocialarbetet är samtal och rådgivning som stöder föräldraskapet och hjälper barnfamiljerna att klara av vardagen.",
+    "type" : "Summary"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

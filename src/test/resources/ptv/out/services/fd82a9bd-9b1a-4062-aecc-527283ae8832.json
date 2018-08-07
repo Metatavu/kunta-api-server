@@ -1,0 +1,261 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Vuokra-asuminen",
+      "language" : "fi"
+    }, {
+      "value" : "Hyresboende",
+      "language" : "sv"
+    }, {
+      "value" : "Rental housing",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Tässä palvelualaluokassa käsitellään vuokra-asuntojen saatavuuden ja hintatietojen palvelut, vuokrasopimusasiat, vuokralaisen oikeudet ja velvollisuudet sekä asunnon vuokralle antaminen ja jälleenvuokraaminen. Luokkaan kuuluvat myös vuokra-asunnon etsimiseen ja hankkimiseen liittyvät palvelut.",
+      "language" : "fi"
+    }, {
+      "value" : "I denna serviceundergrupp behandlas tjänster för hyresbostäders tillgänglighet och prisuppgifter, hyresavtalsärenden, hyrestagarens rättigheter och skyldigheter samt uthyrning och återuthyrning av bostad. Till gruppen hör också tjänster i anslutning till sökande och anskaffande av hyresbostad.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains services related to the availability and price information of rental residences, lease agreement issues, a lodger’s rights and duties, as well as letting and subletting. It also includes services related to seeking and obtaining a rented residence.",
+      "language" : "en"
+    } ],
+    "code" : "P1.1",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1002",
+    "parentId" : "00c74cc0-46c5-48f3-ab36-6dc0a7bcaec1",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1001"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "0069c15e-4ec6-4bd2-b1eb-a771b889b10c",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "fd82a9bd-9b1a-4062-aecc-527283ae8832",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "b793313d-17ab-4681-8d5d-509cdf290e20",
+      "name" : "Asunnon vuokraus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  }, {
+    "value" : null,
+    "language" : "en"
+  } ],
+  "languages" : [ "sv", "fi", "en" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "Chargeable",
+  "serviceNames" : [ {
+    "language" : "sv",
+    "value" : "Hyrning av bostad",
+    "type" : "Name"
+  }, {
+    "language" : "en",
+    "value" : "Renting an apartment",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Asunnon vuokraus",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Kommunens hyresbostäder",
+    "type" : "AlternativeName"
+  }, {
+    "language" : "en",
+    "value" : "Municipal rental housing",
+    "type" : "AlternativeName"
+  }, {
+    "language" : "fi",
+    "value" : "Kunnan vuokra-asunnot",
+    "type" : "AlternativeName"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "kommunala hyresbostäder",
+      "language" : "sv"
+    }, {
+      "value" : "kunnalliset vuokra-asunnot",
+      "language" : "fi"
+    }, {
+      "value" : "municipal rental dwellings",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p1734",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p36586"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasassa on monia mahdollisuuksia asua vuokralla. Vaasan kaupungin oma vuokra-asuntojen välittäjä on Kiinteistö Oy Pikipruukki.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "en",
+    "value" : "Vasa offers many possibilities living on rent. There are apartments both in the city centre as well as on the countryside. The biggest apartment rental services in Vaasa are Kiinteistö Oy Pikipruukki, VOAS - The Student Housing Foundation in Vaasa and Vähänkyrön Vuokratalot Kiinteistö Oy. \n\nKiinteistö Oy Pikipruukki is the City of Vaasa’s own mediator of rental apartments. Pikipruukki is the biggest of the apartment rental services. Pikipruukki offers apartments from single rooms to bigger family apartments in terraced houses, one-family houses as well as blocks of flats.\n\nVOAS has about 3 000 residences and furthermore also office and business premises.\n\nVähänkyrön Vuokratalot has 173 apartments of various sized by the Vähäkyrö Church, in Merikaarto and Tervajoki. \n\nThe rental apartments are mediated by mediator offices and private apartment owners.\n\n\n",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "I Vasa finns många möjligheter att bo på hyra. Vasa stads egen hyresbostäder förmedlaren är Fastighets Ab Pikipruukki.",
+    "type" : "Summary"
+  }, {
+    "language" : "en",
+    "value" : "Vasa offers many possibilities living on rent. Kiinteistö Oy Pikipruukki is the City of Vaasa’s own mediator of rental apartments.",
+    "type" : "Summary"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : "I Vasa finns många möjligheter att bo på hyra. Bostäder finns både i stadens centrum och på landsbygden. De största bostadsuthyrarna i Vasa är Fastighets Ab Pikipruukki, Vasa studiebostadsstiftelse VOAS samt Vähänkyrön Vuokratalot Kiinteistö Oy.\n\nVasa stads egen hyresbostäder förmedlaren är Fastighets Ab Pikipruukki. Pikipruukki är den största uthyrare. Den erbjuder från enrummare till större familjebostäder i rad-, små- och flervåningshus.\n\nVOAS har för närvarande ca 3000 bostadsplatser samt därtill olika kontors- och affärslokaler.\n\nBolaget Vähänkyrön Vuokratalot har 173 hyresbostäder av olika storlek vid Lillkyro kyrka, i Merikart och Tervajoki.\n\nHyresbostäder förmedlas av förmedlingsbyråer och privata bostadsägare.",
+    "type" : "Description"
+  }, {
+    "language" : "en",
+    "value" : "The web pages of the City of Vaasa has gathered a list of mediators of rental apartments in Vaasa. You can study the apartment selection through the mediators’ web pages.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : "På Vasa stads webbsidor finns en förteckning över aktörer som erbjuder hyresbostäder i Vasa. Bekanta dig med bostadsutbudet på serviceproducenternas egna sidor.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan kaupungin nettisivuille on koottu lista vuokra-asuntojen tarjoajista Vaasassa. Asuntovalikoimaan voit tutustua palvelun tarjoajien sivuilla. ",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasassa on monia mahdollisuuksia asua vuokralla. Asuntoja löytyy niin kaupungin keskustasta kuin maaseudultakin. Suurimpia asunnon vuokraajia Vaasassa ovat Kiinteistö Oy Pikipruukki, Vaasan opiskelija-asuntosäätiö VOAS sekä Vähänkyrön Vuokratalot Kiinteistö Oy. \n\nVaasan kaupungin oma vuokra-asuntojen välittäjä on Kiinteistö Oy Pikipruukki. Pikipruukki on vuokraajista suurin. Se tarjoaa asuntoja yksiöistä isompiin perheasuntoihin niin rivi-, pien- kuin kerrostaloissakin.\n\nVOASilla on noin 3000 asuntopaikkaa ja lisäksi erilaisia toimisto- ja liiketiloja.\n\nVähänkyrön Vuokratalot yhtiöllä on 173 erikokoista asuntoa Vähänkyrön kirkolla, Merikaarrossa ja Tervajoella.\n\nVuokra-asuntoja välittävät välitystoimistot ja yksityiset asunnonomistajat.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "ProcuredServices",
+    "organization" : null,
+    "roleType" : "Producer",
+    "additionalInformation" : [ {
+      "value" : "Kiinteistö Oy Pikipruukki",
+      "language" : "fi"
+    }, {
+      "value" : "Kiinteistö Oy Pikipruukki",
+      "language" : "en"
+    } ]
+  } ]
+}

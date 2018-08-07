@@ -1,0 +1,100 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "attachments" : [ ],
+  "languages" : [ ],
+  "deliveryAddresses" : [ {
+    "subType" : "NoAddress",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : null,
+    "deliveryAddressInText" : [ ],
+    "receiver" : [ {
+      "value" : null,
+      "language" : "fi"
+    }, {
+      "value" : null,
+      "language" : "sv"
+    } ]
+  } ],
+  "supportPhones" : [ ],
+  "formIdentifier" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "bbd21873-c5d0-4279-9874-4da9ff7066f2",
+      "name" : "Ilmoitus elintarvikehuoneistosta"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "channelUrls" : [ {
+    "language" : "fi",
+    "value" : "https://www.vaasa.fi/sites/default/files/ilmoitus_toiminnanharjoittajan_vaihtumisesta.pdf",
+    "type" : "PDF"
+  }, {
+    "language" : "sv",
+    "value" : "https://www.vaasa.fi/sites/default/files/ethtoimvaihtsv13aa.pdf",
+    "type" : "PDF"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Ilmoitus toiminnanharjoittajan vaihtumisesta",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Anmälan om byte av verksamhetsidkare",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "PrintableForm",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Toiminnanharjoittajan vaihtumisesta ilmoitetaan lomakkeella postitse tai verkossa. ",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Toiminnanharjoittajan vaihtumisesta ilmoitetaan lomakkeella postitse tai verkossa.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Om byte av verksamhetsidkare meddelas på en blankett per post eller på nätet.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Om byte av verksamhetsidkare meddelas på en blankett per post eller på nätet. ",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "9bb8426f-ad41-4616-9e68-5fb3a71d067f"
+}

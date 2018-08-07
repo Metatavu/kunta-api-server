@@ -1,0 +1,44 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "http://www.naantali.fi/liikunta_ja_ulkoilu/avustukset/fi_FI/avustukset/?u4.highlight=seuraverkko",
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "f18febcc-9943-4abd-905c-f23ae33f337f",
+      "name" : "Liikunnan kansalaistoiminnan tuki ja avustukset"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Seuraverkko liikunnan avustusten hakemiseen",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Seuraverkkopalvelun kautta haetaan liikunnan perusavustuksia.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Verkkosivu ohjeistaa seuraverkkopalvelun käytössä.",
+    "type" : "Summary"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2018-05-28T12:27:27.833231",
+  "id" : "ad2541ee-2954-4cc7-ac48-4b3c986f6f53"
+}

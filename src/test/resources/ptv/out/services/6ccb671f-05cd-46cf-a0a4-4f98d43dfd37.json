@@ -1,0 +1,273 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Liikunta ja urheilu",
+      "language" : "fi"
+    }, {
+      "value" : "Motion och idrott",
+      "language" : "sv"
+    }, {
+      "value" : "Sports and exercise",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Tähän palvelualaluokkaan kuuluvat liikuntapaikat, urheiluopistot ja niiden palvelut, liikunnan tietopalvelut ja urheiluseurojen sekä liikuntajärjestöjen toiminta.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains sports facilities, sports institutes and their services, exercise information services and the activities of sports clubs and sports associations.",
+      "language" : "en"
+    }, {
+      "value" : "Denna serviceundergrupp omfattar motionsställen, idrottsinstitut och deras tjänster, informationstjänster för motion samt idrottsföreningars och motionsorganisationers verksamhet.",
+      "language" : "sv"
+    } ],
+    "code" : "P27.1",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1211",
+    "parentId" : "175762f6-53cd-4d29-a285-625bfb421b21",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1210"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-19T12:11:17.435834",
+  "id" : "6ccb671f-05cd-46cf-a0a4-4f98d43dfd37",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "5aff3fde-9e88-4f1d-9e8a-8be9ebf6a098",
+      "name" : "Vaasan uimahalli"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "8144cba3-258a-417b-a857-884c146e205c",
+      "name" : "Uimahallin verkkosivu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "en"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  }, {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi", "sv", "en" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "Chargeable",
+  "serviceNames" : [ {
+    "language" : "sv",
+    "value" : "Simhallen",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Uimahalli",
+    "type" : "Name"
+  }, {
+    "language" : "en",
+    "value" : "Swimming Centre",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "uimahallit",
+      "language" : "fi"
+    }, {
+      "value" : "simhallar",
+      "language" : "sv"
+    }, {
+      "value" : "indoor swimming pools (sports halls)",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p11070",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p75672;http://www.yso.fi/onto/koko/p66287;http://www.yso.fi/onto/koko/p35315;http://www.yso.fi/onto/koko/p33522"
+  }, {
+    "name" : [ {
+      "value" : "simning",
+      "language" : "sv"
+    }, {
+      "value" : "uinti",
+      "language" : "fi"
+    }, {
+      "value" : "swimming",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p32246",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p18621;http://www.yso.fi/onto/koko/p48399"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "en",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "en",
+    "value" : "The Vaasa Swimming Centre offers diverse facilities for water sports. Its four different pools ensure that every age group has a great place to swim. As well as swimming for fitness, you can take up water running and water aerobics classes.\n\nIn addition to the pools, the swimming centre has a diverse gym that is available for all customers over the age of 13. The centre's facilities also include a conference room, club room, two rental saunas and two solariums.\n\nCafé Uimala offers delicious buffet lunch every day, as well as coffee shop services.",
+    "type" : "Description"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "en",
+    "value" : "Swimming centre opening hours (September–May): Mon, Wed and Fri 6:30–21:00, Tue and Thu 8:00–21:00 (entrance until 19:45, pools and gym close at 20:30) and Sat and Sun 10:00–18:00 (entrance until 16:45, pools and gym close at 17:30).\n\nTo see holiday opening hours and to read more about the services offered, go to the swimming centre’s website.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "en",
+    "value" : "The Vaasa Swimming Centre offers diverse facilities for water sports. Its four different pools ensure that every age group has a great place to swim.",
+    "type" : "Summary"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : "I Vasa simhall kan man förutom motionssimning träna vattenlöpning samt delta i ledd vattengymnastik. Hopptornet och trampolinerna står också till kundernas förfogande enligt separata tidtabeller. Simnings-, dyknings- och kanotföreningarna använder aktivt simhallen som träningsställe. Simhallen fungera också som tävlingsarena för de här grenarna nästan månatligen. En delbar 50 meters bassäng, elektronisk tidtagning samt en stor läktare ger speciellt simtävlingar ypperliga ramar  Utöver bassängutrymmen finns ett mångsidigt gym i simhallen, till vilket alla kunder som fyllt 13 år har tillgång. I hallen finns mötesrum, klubbrum, två beställningsbastur och två solarier. I simhallen finns också Café Uimala, som utöver kaffeservice också serverar en riklig buffélunch dagligen. ",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : "I Vasa simhall kan man förutom motionssimning träna vattenlöpning samt delta i ledd vattengymnastik.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Mera information om simhallens service och öppettider på webbsidorna. ",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Lisätietoja Uimahallin palveluista ja aukioloajoista verkkosivuilta. ",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan Uimahallissa voi kuntouinnin lisäksi harrastaa vesijuoksua sekä osallistua ohjattuihin vesijumppiin.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan Uimahallissa voi kuntouinnin lisäksi harrastaa vesijuoksua sekä osallistua ohjattuihin vesijumppiin.  Hyppytorni ja ponnahduslaudat ovat myös asiakkaiden käytettävissä erillisten aikataulujen mukaisesti. \n\nUinti-, sukellus- ja melontaseurat käyttävät uimahallia aktiivisesti harjoittelupaikkanaan. Uimahalli toimii myös näiden lajien kilpailuareenana lähes kuukausittain. Jaettava 50 metrin allas, sähköinen ajanotto sekä suuri katsomo antavat varsinkin uintikilpailuihin loistavat puitteet. \n\nAllastilojen lisäksi uimahallissa on monipuolinen kuntosali, joka on kaikkien 13-vuotta täyttäneiden asiakkaiden käytettävissä. Hallista löytyy kokoustila, kerhohuone, kaksi tilaussaunaa ja yksi solarium. Uimahallissa on myös Café Uimala, joka tarjoaa kahvilapalvelujen lisäksi runsaan buffetlounaan päivittäin. ",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

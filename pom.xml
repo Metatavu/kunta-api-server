@@ -72,7 +72,7 @@
 
     <!-- PTV -->
     
-    <ptv-rest-client.version>0.7.0</ptv-rest-client.version>
+    <ptv-rest-client.version>0.8.0</ptv-rest-client.version>
     
     <!-- Jackson -->
     

@@ -1,0 +1,231 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Asumispalvelut",
+      "language" : "fi"
+    }, {
+      "value" : "Boendetjänster",
+      "language" : "sv"
+    }, {
+      "value" : "Housing services",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Till denna serviceundergrupp hör bostads- och serviceboendelösningar för äldre och personer med nedsatt funktionsförmåga (subventionerat boende, serviceboende och effektiverat serviceboende), bidrag i samband med dessa samt hjälp- och stödmedel som används hemma. Denna grupp innehåller också stödboendet för omhändertagna barn, långtidssjuka och rehabiliteringsklienter inom missbrukarvården. Till denna grupp hör inte t.ex. hem- och hemsjukvårdstjänster, som finns i sina egna grupper.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains housing and supported housing solutions for older people and the disabled (supported housing, sheltered housing and sheltered housing with 24-hour assistance), the associated benefits and assistive and support devices used at home. The class also contains supported housing services for children in foster care, chronically ill people and persons in substance abuse rehabilitation. This class does not include home care and home nursing services, for example, which have their own classes.",
+      "language" : "en"
+    }, {
+      "value" : "Tähän alapalveluluokkaan kuuluvat ikääntyneiden ja vammaisten asunto- ja palveluasumisratkaisut (tuettu asuminen, palveluasuminen ja tehostettu palveluasuminen), niihin kuuluvat tuet sekä kotona käytettävät apu- ja tukivälineet. Luokkaan kuuluvat myös huostaanotettujen lasten ja pitkäaikaissairaiden perhehoidon ja päihdekuntoutujien tukiasuminen. Luokkaan eivät kuulu esimerkiksi koti- ja kotisairaanhoitopalvelut, jotka ovat omissa luokissaan.",
+      "language" : "fi"
+    } ],
+    "code" : "P4.1",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1024",
+    "parentId" : "079b55da-af80-41ab-9346-c8fdd284afcf",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1023"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "520f8e7f-b0dc-4c12-bb01-a5e517f87741",
+  "serviceVouchers" : [ ],
+  "modified" : "2018-06-07T10:34:10.189762",
+  "id" : "7f7a9eaf-230c-47ad-aead-fd2c56e66845",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "08446245-d828-4563-8c96-63d02554dc66",
+      "name" : "Naantalin sosiaali- ja terveyspalvelut, kaupungintalo, 3. krs."
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "2ba08719-ae78-408a-82ab-1276410029c2",
+      "name" : "Sosiaalityöntekijä (asiakkaat M - Ö), vammaispalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "4b7f5bba-0d37-4b19-83b2-eb975478db59",
+      "name" : "Vammaispalvelujen asumispalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "4fa40ae7-4693-415f-8be7-0af7880a7501",
+      "name" : "Sosiaalityöntekijä (asiakkaat A - L), vammaispalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "74d6e94d-a6de-4222-989c-b6d688093ab3",
+      "name" : "Avohuollon ohjaaja, vammaispalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "7c6f0428-a78d-40a3-bfd6-f4f6f0150512",
+      "name" : "Vammaispalveluhakemus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "b21a7ec6-a338-43c7-87fb-350831ea6e17",
+      "name" : "Naantalin vammaispalvelujen verkkosivu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : "Asunnon muutostöitä ja asuntoon kuuluvien välineiden ja laitteiden hankkimisesta aiheutuneita kohtuullisia kustannuksia korvataan vaikeavammaiselle henkilölle, jos hän vammansa tai sairautensa johdosta välttämättä tarvitsee suoriutuakseen tavanomaisista elämän toiminnoista, eikä hän ole jatkuvan laitoshoidon tarpeessa. ",
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : null,
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Asunnon muutostyöt",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "asunnon muutostyö",
+      "language" : "fi"
+    }, {
+      "value" : "förändringsarbete i bostad",
+      "language" : "sv"
+    }, {
+      "value" : "residential alteration",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p67830",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p18203"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Vaikeavammaiselle korvataan asunnon muutostöistä ja asuntoon kuuluvien välineiden ja laitteiden hankkimisesta aiheutuneet kohtuulliset kustannukset.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Asunnon muutostöitä voit hakea vammaispalveluhakemuksella.\n",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : "Naantalin kaupunki korvaa vaikeavammaiselle henkilölle asunnon muutostöistä ja asuntoon kuuluvien välineiden ja laitteiden hankkimisesta aiheutuneet kohtuulliset kustannukset. \n\nKorvattavia asunnon muutostöitä ovat esimerkiksi ovien levennykset, kynnysten poistot, luiskien rakentamiset, pesutilojen muutostyöt, tukikahvojen ja kaiteiden asentamiset, kiinteiden kalusteiden korkeuden muuttamiset ja valaistuksen muutostyöt. \n\nKorvattavia asuntoon kuuluvia välineitä ovat nostolaitteet, hälytyslaitteet ja vastaavat muut asuntoon kiinteästi asennettavat välineet ja laitteet. ",
+    "type" : "Description"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

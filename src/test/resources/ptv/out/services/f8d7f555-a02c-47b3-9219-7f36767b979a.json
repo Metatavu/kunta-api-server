@@ -1,0 +1,241 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Perusopetus",
+      "language" : "fi"
+    }, {
+      "value" : "Grundläggande utbildning",
+      "language" : "sv"
+    }, {
+      "value" : "Basic education",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Till denna serviceundergrupp hör både den egentliga grundläggande utbildningen med innehåll och mål samt direkta tjänster som erbjuds i anslutning till grundläggande utbildningen och för att stöda den, t.ex. skoltransporter, skolmat och assistanstjänster. Till denna grupp hör också ärenden i anslutning till avläggande av grundläggande utbildning utomlands i enlighet med den finska grundläggande utbildningen.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains basic education itself with its contents and objectives as well as the services offered directly in connection with and in support of basic education, for example school transport, school lunches and an assistant’s services. The class also includes issues related to completing abroad a basic education that is in line with the Finnish basic education.",
+      "language" : "en"
+    }, {
+      "value" : "Tähän palvelualaluokkaan kuuluvat sekä varsinainen perusopetus sisältöineen ja tavoitteineen sekä perusopetuksen yhteydessä ja sen tukemiseksi välittömästi tarjottavat palvelut, esimerkiksi koulukuljetukset, kouluruokailu ja avustajapalvelut. Tähän luokkaan kuuluvat myös Suomen perusopetuksen mukaisen peruskoulutuksen ulkomailla suorittamiseen liittyvät asiat.",
+      "language" : "fi"
+    } ],
+    "code" : "P6.2",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1062",
+    "parentId" : "fd1bb60e-4206-4f0a-994f-8ffcb4ffaaa4",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1060"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "1508a64c-e75a-472c-8a9f-3b916508d6b0",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-10-20T10:50:59.913771",
+  "id" : "f8d7f555-a02c-47b3-9219-7f36767b979a",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "6894ee49-f5ac-4a69-b9f0-bf3de2a02f0c",
+      "name" : "Naantalin kaupungin johtava rehtori"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "b8931c4b-1119-4c69-9bc4-a41fb00b92fe",
+      "name" : "Wilma Naantali"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "ddff2508-46bb-4b80-a1df-879fc48f3ae5",
+      "name" : "Naantalin kaupungin johtava koulupsykologi"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : "Oppilaan tarve koulunkäynninohjaajan tukeen ja apuvälineisiin määritellään yhteistyössä huoltajien ja koulun oppilashuollon kanssa. ",
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : null,
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Avustajapalvelut ja apuvälineet perusopetuksen oppilaalle",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "Grundschule, Gesamtschule",
+      "language" : "de"
+    }, {
+      "value" : "peruskoulu",
+      "language" : "fi"
+    }, {
+      "value" : "grundskolan",
+      "language" : "sv"
+    }, {
+      "value" : "comprehensive school",
+      "language" : "en"
+    }, {
+      "value" : "põhikool",
+      "language" : "et"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p14592",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p48279"
+  }, {
+    "name" : [ {
+      "value" : "grundläggande utbildning",
+      "language" : "sv"
+    }, {
+      "value" : "perusopetus",
+      "language" : "fi"
+    }, {
+      "value" : "basic education",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p1275",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p33827"
+  }, {
+    "name" : [ {
+      "value" : "personliga assistenter",
+      "language" : "sv"
+    }, {
+      "value" : "vammaisten avustajat",
+      "language" : "fi"
+    }, {
+      "value" : "assistants for disabled people",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p15433",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p32849;http://www.yso.fi/onto/koko/p4374"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Lapset ja lapsiperheet",
+      "language" : "fi"
+    }, {
+      "value" : "Children and families with children",
+      "language" : "en"
+    }, {
+      "value" : "Barn och barnfamiljer",
+      "language" : "sv"
+    } ],
+    "code" : "KR1.2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2003",
+    "parentId" : "daff1fb9-9394-49b5-b033-d1d1c7005ab6",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001"
+  }, {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : "Perusopetuksen oppilailla on oikeus saada tarvitsemiaan avustaja- ja apuvälinepalveluita.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Vanhemmat voivat ottaa yhteyttä lapsensa opettajaan tai koulun rehtoriin joko puhelimitse, sähköpostilla tai Wilma-viestillä. Johtavan rehtorin ja koulupsykologin tavoittaa puhelimitse.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Perusopetuksen oppilailla on oikeus saada tarvitsemiaan avustaja- ja apuvälinepalveluita. Naantalin jokaisessa koulussa työskentelee useita koulunkäynninohjaajia. Alakouluissa ohjaajat työskentelevät koulun oppitunneilla sekä aamu- ja iltapäivätoiminnan ohjaajina. Yläkouluissa ohjaajat työskentelevät pääsääntöisesti luokka-avustajina. Jos oppilas tarvitsee henkilökohtaisen avustajan, tarve määritellään yhteistyössä huoltajien ja koulun oppilashuollon kanssa ja tämä kirjataan oppilaan henkilökohtaiseen opetuksen järjestämissuunnitelmaan (HOJKS).\n\nKoulunkäynninohjaaja\n* tukee oppilaan tai oppilasryhmän oppimista ja toimintaa koulun arjessa.\n* auttaa ja tukee oppilasta tehtävissä, joissa tämä ei kehitysvaiheensa, vammansa tai sosiaalisen tilanteensa vuoksi selviydy itse.\n* toimii yhteistyössä opettajan kanssa ja opettajan antamien ohjeiden mukaan. \n* on tarvittaessa mukana moniammatillisissa työryhmissä, mm. oppilashuoltoryhmät. \n* valvoo ja ohjaa: mm. välituntivalvonnat, läksyparkit ja kuljetusoppilaiden kyydityksistä huolehtiminen. \n* osallistuu tarvittaessa oppilaan opetusta, kuntoutusta ja koulutyötä koskevaan suunnitteluun ja kuntouttamiseen (esim. fysio-, puhe- tai toimintaterapeutin antamien ohjeistusten mukaisesti). \n* käyttää tarvittaessa korvaavia kommunikointimenetelmiä (taike-taulukko, viittomakieli jne.).  \n* vastaa aamu- ja iltapäivätoiminnassa oman yksikkönsä toiminnan suunnittelusta, turvallisuudesta ja ohjauksesta yhteistyössä muiden ohjaajien kanssa. \nApuvälineet\n* Oppilas saa koulusta tai koulun kautta oppimiseen tarvittavat välttämättömät apuvälineet, jotka eivät kuulu esimerkiksi vammaispalvelujen piiriin. Tarve määritellään yhteistyössä huoltajien ja koulun oppilashuollon kanssa ja kirjataan oppilaan henkilökohtaiseen opetuksen järjestämissuunnitelmaan (HOJKS).",
+    "type" : "Description"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

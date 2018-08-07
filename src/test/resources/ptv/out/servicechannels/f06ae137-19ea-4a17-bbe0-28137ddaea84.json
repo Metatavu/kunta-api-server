@@ -1,0 +1,113 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/keskuskoulu",
+    "value" : "Keskuskoulun verkkosivut",
+    "language" : "fi"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Raastuvankatu",
+        "language" : "fi"
+      } ],
+      "streetNumber" : "39-43",
+      "postalCode" : "65100",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ ],
+      "latitude" : "7007112.154",
+      "longitude" : "228423.449",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "17c633dd-5408-495a-86c1-d8f57598e899",
+      "name" : "Perusopetus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : "Rehtori",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "405167235",
+    "language" : "fi"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Keskuskoulu",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Keskuskoulun tavoitteena on kasvattaa oma-aloitteisia ja vastuuntuntoisia ihmisiä rohkaisevassa, kannustavassa ja turvallisessa oppimisympäristössä.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Keskuskoulun tavoitteena on kasvattaa oma-aloitteisia ja vastuuntuntoisia ihmisiä rohkaisevassa, kannustavassa ja turvallisessa oppimisympäristössä. Keskuskoulu sijaitsee keskellä kaupunkia kulttuuritarjonnan, monipuolisten liikuntapaikkojen ja meren läheisyydessä. Vuonna 1938 rakennettu arvokas koulukiinteistö peruskorjataan täydellisesti tulevien vuosien aikana. Koululla järjestetään pienemmille oppilaille aamu- ja iltapäivätoimintaa. Lukuvuonna 2014-2015 koulussa oli 350 oppilasta. Monikulttuurisen suomenkielisen yleisopetuksen rinnalla toimii ruotsikielinen kielikylpyopetus, joka alkaa 5-vuotiaana päiväkodissa ja jatkuu koko perusopetuksen ajan. Tavoitteena on tarjota suomenkielisille lapsille mahdollisuus hankkia vahva ruotsin kielen taito. Keskuskoululla toimii aktiivinen, vuonna 2011 perustettu Vaasan Keskuskoulun vanhempainyhdistys. Yhdistys toimii kotien ja koulun yhdessäolon ja vuorovaikutuksen lisäämiseksi. Vanhempainyhdistyksen rinnalla toimii Vaasan kielikylpy-yhdistys, joka on ollut mukana kielikylpytoiminnan suunnittelussa, kehittämisessä ja tukemisessa jo yli 20 vuotta. Vanhemmat toivotetaan tervetulleiksi mukaan yhdistyksen toimintaan!",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "f06ae137-19ea-4a17-bbe0-28137ddaea84"
+}

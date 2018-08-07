@@ -1,0 +1,155 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/node/9491",
+    "value" : "Pohjanmaan sovittelutoimisto",
+    "language" : "fi"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Karlebygatan",
+        "language" : "sv"
+      }, {
+        "value" : "Kaarlelankatu",
+        "language" : "fi"
+      } ],
+      "streetNumber" : "74",
+      "postalCode" : "67100",
+      "postOffice" : [ {
+        "value" : "KARLEBY",
+        "language" : "sv"
+      }, {
+        "value" : "KOKKOLA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "272",
+        "name" : [ {
+          "value" : "Kokkola",
+          "language" : "fi"
+        }, {
+          "value" : "Karleby",
+          "language" : "sv"
+        }, {
+          "value" : "Kokkola",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ ],
+      "latitude" : "7085665.412",
+      "longitude" : "309921.187",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi", "sv", "en" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "41541d85-41f2-4443-83e1-50c32b2e4309",
+      "name" : "Rikosasioiden sovittelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : "Sovitteluohjaaja",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "405827515",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Sovitteluohjaaja",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "406428592",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Medlingshandledare",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "405827515",
+    "language" : "sv"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Medlingshandledare",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "406428592",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ ],
+  "serviceChannelNames" : [ {
+    "language" : "sv",
+    "value" : "Österbottens medlingsbyrå - Karleby",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Pohjanmaan sovittelutoimisto - Kokkola",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Sovittelutoimistossa järjestetään tapaamisia joissa rikoksesta epäilty ja rikoksen uhri kohtaavat sovittelijan välityksellä.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "I medlingsbyrån ordnas träffar där den brottsmisstänkte och brottsoffret träffas genom medlaren.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Rikosasioiden sovittelu on maksuton palvelu, jossa rikoksesta epäilty ja rikoksen uhri voivat kohdata toisensa luottamuksellisesti puolueettoman sovittelijan välityksellä.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Medling i brottsmål är en avgiftsfri tjänst, där den för brottet misstänkte och brottsoffret kan träffa varandra konfidentiellt genom opartiska medlares förmedling.\n",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "2b51817a-7459-40ac-8d97-8686e4af1028"
+}

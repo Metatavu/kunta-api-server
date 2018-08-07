@@ -1,0 +1,125 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "1",
+    "url" : "http://www.naantali.fi/perhe_ja_sosiaali/hoito_ja_vanhuspalvelut/fi_FI/onnela/",
+    "value" : "Katavakodin Onnela",
+    "language" : "fi"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Maskulaisentie",
+        "language" : "fi"
+      } ],
+      "streetNumber" : "4",
+      "postalCode" : "21140",
+      "postOffice" : [ {
+        "value" : "RYMÄTTYLÄ",
+        "language" : "sv"
+      }, {
+        "value" : "RYMÄTTYLÄ",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "529",
+        "name" : [ {
+          "value" : "Naantali",
+          "language" : "fi"
+        }, {
+          "value" : "Nådendal",
+          "language" : "sv"
+        }, {
+          "value" : "Naantali",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ ],
+      "latitude" : "6704120.687",
+      "longitude" : "221929.568",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "7dda4402-0c92-4d3c-aefe-f0d1f0637929",
+      "name" : "Tehostettu palveluasuminen ikäihmisille"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : "Katavakodin Onnela",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "444171264",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Palvelukodin johtaja",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "400230390",
+    "language" : "fi"
+  } ],
+  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "emails" : [ {
+    "value" : "katavakoti@naantali.fi",
+    "language" : "fi"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Katavakodin ryhmäkoti Onnela",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Katavakodin ryhmäkoti Onnela tarjoaa ympärivuorokautista hoitoa ikäihmisille.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Katavakodin ryhmäkoti Onnela on ympärivuorokautista hoitoa tuottava kymmenen asukkaan avohoidonyksikkö ikäihmisille, joilla on runsaasti päivittäistä hoidon tarvetta, mutta jotka eivät vielä ole laitoshoidon tarpeessa.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-09-27T13:07:35.932871",
+  "id" : "9e0896ad-69f7-480c-b454-6917f0ed67e4"
+}

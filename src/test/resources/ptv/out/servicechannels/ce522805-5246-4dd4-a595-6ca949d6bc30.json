@@ -1,0 +1,159 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Tammikaivontie",
+        "language" : "fi"
+      }, {
+        "value" : "Dammbrunnsvägen",
+        "language" : "sv"
+      } ],
+      "streetNumber" : "4",
+      "postalCode" : "65100",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ {
+        "value" : "Koti- ja laitoshoito / Ikäkeskus",
+        "language" : "fi"
+      }, {
+        "value" : "Hem- och anstaltsvård/ Seniorcenter",
+        "language" : "sv"
+      } ],
+      "latitude" : "7007850.117",
+      "longitude" : "230049.973",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  }, {
+    "type" : "Postal",
+    "subType" : "PostOfficeBox",
+    "postOfficeBoxAddress" : {
+      "postOfficeBox" : [ {
+        "value" : "PL 241",
+        "language" : "fi"
+      }, {
+        "value" : "PB 241",
+        "language" : "sv"
+      } ],
+      "postalCode" : "65101",
+      "postOffice" : [ {
+        "value" : "VAASA",
+        "language" : "fi"
+      }, {
+        "value" : "VASA",
+        "language" : "sv"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ ]
+    },
+    "streetAddress" : null,
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi", "sv", "en" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "0c9e0160-6c37-46ab-8911-4c93087b87e2",
+      "name" : "Potilasasiamies"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Potilasasiamiehen toimisto",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Patientombudsmannens mottagning",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Potilasasiamies neuvoo terveydenhuollon potilaita näiden asemasta ja oikeuksista. Potilasasiamiehen toimisto sijaitsee Ikäkeskuksessa ja toimii ajanvarausperiaatteella.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Potilasasiamiehen toimisto toimii ajanvarausperiaatteella.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Patientombudsmannens mottagning finns i Seniorcenter.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Patientombudsmans mottagning finns i Seniorcenter.\n\nTräffen bör stämmas på förhand.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "ce522805-5246-4dd4-a595-6ca949d6bc30"
+}

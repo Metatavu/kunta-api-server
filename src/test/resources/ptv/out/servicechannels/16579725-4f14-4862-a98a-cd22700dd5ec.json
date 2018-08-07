@@ -1,0 +1,174 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "1",
+    "url" : "http://www.naantali.fi/nuoriso/nuorisotalot/fi_FI/nuorisotalojen_aukioloajat/",
+    "value" : "Nuorisotilat Naantalin kaupungin verkkosivuilla",
+    "language" : "fi"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Vanha Ahteentaantie",
+        "language" : "fi"
+      } ],
+      "streetNumber" : "2",
+      "postalCode" : "21140",
+      "postOffice" : [ {
+        "value" : "RYMÄTTYLÄ",
+        "language" : "sv"
+      }, {
+        "value" : "RYMÄTTYLÄ",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "529",
+        "name" : [ {
+          "value" : "Naantali",
+          "language" : "fi"
+        }, {
+          "value" : "Nådendal",
+          "language" : "sv"
+        }, {
+          "value" : "Naantali",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ {
+        "value" : null,
+        "language" : "fi"
+      } ],
+      "latitude" : "6704033.399",
+      "longitude" : "221207.523",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  }, {
+    "type" : "Postal",
+    "subType" : "PostOfficeBox",
+    "postOfficeBoxAddress" : {
+      "postOfficeBox" : [ {
+        "value" : "PL 43",
+        "language" : "fi"
+      } ],
+      "postalCode" : "21101",
+      "postOffice" : [ {
+        "value" : "NAANTALI",
+        "language" : "sv"
+      }, {
+        "value" : "NAANTALI",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "529",
+        "name" : [ {
+          "value" : "Naantali",
+          "language" : "fi"
+        }, {
+          "value" : "Nådendal",
+          "language" : "sv"
+        }, {
+          "value" : "Naantali",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ ]
+    },
+    "streetAddress" : null,
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "25b6bae1-fa45-4fe4-8ea1-36260c46b2ce",
+      "name" : "Nuorisotyö"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "3f192972-7480-45fb-b8e3-c11ea2973c8f",
+      "name" : "Nuorisotilat"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "a9c1b4bd-9181-4ba8-a7c2-dd07f1ee283f",
+      "name" : "Vuokrattavat kulttuuri- ja vapaa-aikatilat"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : "Nuorisotilojen valvoja",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "447334601",
+    "language" : "fi"
+  } ],
+  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "emails" : [ ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Rymättylän nuorisotila",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Vapaa-aikatila 13–17-vuotiaille nuorille Naantalin Rymättylässä.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Vapaa-aikatila 13–17-vuotiaille nuorille Naantalin Rymättylässä.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "16579725-4f14-4862-a98a-cd22700dd5ec"
+}

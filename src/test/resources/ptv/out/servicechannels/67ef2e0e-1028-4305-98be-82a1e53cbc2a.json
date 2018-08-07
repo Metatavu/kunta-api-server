@@ -1,0 +1,99 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "5cdb5298-5c7e-4b6b-a0b0-a40a2153ba34",
+      "name" : "Kotisairaalapalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "407415950",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "407415950",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Kotisairaalan puhelinasiointi",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Hemsjukhusets telefon",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ {
+    "serviceHourType" : "DaysOfTheWeek",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ {
+      "value" : null,
+      "language" : "fi"
+    } ],
+    "openingHour" : [ ]
+  } ],
+  "serviceChannelType" : "Phone",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Kotisairaalan puhelin palvelee erilaisissa kyselyissä ja tiedusteluissa vuorokauden ympäri.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Kotisairaalan puhelin palvelee erilaisissa kyselyissä ja tiedusteluissa vuorokauden ympäri.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Ytterligare uppgifter om hemsjukhuset fås per telefon alla dagar i veckan dygnet runt.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Ytterligare uppgifter om hemsjukhuset fås per telefon alla dagar i veckan dygnet runt.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "67ef2e0e-1028-4305-98be-82a1e53cbc2a"
+}

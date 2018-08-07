@@ -1,0 +1,405 @@
+{
+  "sourceId" : null,
+  "keywords" : [ {
+    "value" : "privata daghem",
+    "language" : "sv"
+  }, {
+    "value" : "daghemsvård",
+    "language" : "sv"
+  } ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Lasten päivähoito",
+      "language" : "fi"
+    }, {
+      "value" : "Barndagvård",
+      "language" : "sv"
+    }, {
+      "value" : "Day-care for children",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Till denna serviceundergrupp hör barnets rättigheter i anslutning till dagvård för små barn, förutsättningar för dagvård, ärendehanteringstjänster och ansökningsförfaranden, olika genomföringsformer och servicekanaler för dagvård, vårdavgifter och bidrag i anslutning till dem.",
+      "language" : "sv"
+    }, {
+      "value" : "Tähän alapalveluluokkaan kuuluvat pienten lasten päivähoitoon liittyvät lapsen oikeudet, päivähoidon saamisen edellytykset, asiointipalvelut ja hakumenettelyt, erilaiset päivähoidon toteuttamismuodot ja palvelukanavat, hoidon maksut ja niihin liittyvät taloudelliset tuet.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains a child’s rights related to day-care for young children, eligibility criteria, e-services and application procedures associated with day-care, different forms and service channels of day-care provision, fees charged for day-care and financial support related to the fees.",
+      "language" : "en"
+    } ],
+    "code" : "P3.4",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1017",
+    "parentId" : "77af99fa-93eb-4de6-ac83-1b161a961263",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1013"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "d3f16063-3409-492f-970a-24b796e536a3",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "02ca738b-ca02-471f-8ec9-9d18cbe1db6e",
+      "name" : "Päivähoitopaikan siirtohakemus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "41409b25-4cb0-4c63-a068-66fb078558aa",
+      "name" : "Päivähoitopaikan irtisanominen"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "686fc94c-ffdd-45a7-99b5-5bbdc903d7cf",
+      "name" : "Varhaiskasvatuksen verkkosivut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "6ec1816c-aaba-4fff-9abc-4220de127901",
+      "name" : "Päiväkoti Tuulenpesä"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "7fef9e45-7bed-483d-9b5f-805f7e32ba58",
+      "name" : "Varhaiskasvatuksen asiakaspalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "9bd74732-8506-46bf-99e4-c7d108e812e2",
+      "name" : "Vaasa English Playschool"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "a055e4e3-835d-4027-9978-e2f878de59fb",
+      "name" : "Pursimiehenkadun päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "a287b94a-16df-4659-a2e4-435ad8cc6009",
+      "name" : "Varhaiskasvatuksen sähköinen asiointi"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "aafdf446-8e91-44d9-b774-8991d11f77a0",
+      "name" : "Kiillekujan päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "b38c86f8-1db6-4ec2-a4f9-d473ef3f9876",
+      "name" : "Päiväkoti Lyhty"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "be79e969-b4f6-42d9-a5b6-42c1a44f0ec1",
+      "name" : "Rantapääskyn päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "c9c073ec-fa65-4469-b1fc-cf5d7bb69b50",
+      "name" : "Päivähoitohakemus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "d89b38de-8c59-487d-aa5f-526aafdb6416",
+      "name" : "Steinerpäiväkoti Tiitiäinen"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "f56c8f72-6734-4838-a10a-c7ac264c0255",
+      "name" : "Kalliokadun päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv", "en" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "Chargeable",
+  "serviceNames" : [ {
+    "language" : "sv",
+    "value" : "Privat daghemsvård",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Yksityinen päiväkotihoito",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "privatvårdsstöd",
+      "language" : "sv"
+    }, {
+      "value" : "yksityisen hoidon tuki (lastenhoidon tuet, sosiaalietuudet)",
+      "language" : "fi"
+    }, {
+      "value" : "private day care allowance",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p72908",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p75651"
+  }, {
+    "name" : [ {
+      "value" : "päiväkotihoito",
+      "language" : "fi"
+    }, {
+      "value" : "dagvård",
+      "language" : "sv"
+    }, {
+      "value" : "nursery school care",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p69116",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p9399"
+  }, {
+    "name" : [ {
+      "value" : "yksityiset päiväkodit",
+      "language" : "fi"
+    }, {
+      "value" : "privata daghem",
+      "language" : "sv"
+    }, {
+      "value" : "private nursery schools",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p65738",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p34607"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Lapset ja lapsiperheet",
+      "language" : "fi"
+    }, {
+      "value" : "Children and families with children",
+      "language" : "en"
+    }, {
+      "value" : "Barn och barnfamiljer",
+      "language" : "sv"
+    } ],
+    "code" : "KR1.2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2003",
+    "parentId" : "daff1fb9-9394-49b5-b033-d1d1c7005ab6",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001"
+  }, {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : "Den privata daghemsvården produceras av företag, samfund eller organisationer, övervakas av kommunen och verksamheten regleras av lagen om småbarnspedagogik. \n\nI Vasa är samtliga privata daghem köpservicedaghem. I fråga om köpservicevård köper Vasa stads småbarnspedagogik vårdplatsen av det privata daghemmet. Verksamheten i de privata köpservicedaghemmen baserar sig på lagen och förordningen om småbarnspedagogik och de följer samma regler och föreskrifter som Vasa stads egna enheter. Köpservicedagvården anordnas av kommunen och familjen kan inte få stöd för privat vård. Köpserviceplatsen ansöker man likadant om som en kommunal dagvårdsplats. Klientavgifterna bestäms i enlighet med lagen om klientavgifter och är likadana som i den kommunala dagvården.  \n",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Det primära sättet att ansöka om dagvårdsplats är en elektronisk ansökan, men pappersblanketten är ett alternativ. Blanketten kan skrivas ut eller hämtas på daghemmen eller småbarnspedagogikens kundbetjäning. \n\nBlanketten returneras till det daghem där man i första hand ansöker om dagvårdsplats för sitt barn. Uppsägning av dagvårdsplatsen bör göras skriftligt 30 kalenderdagar före den sista vårddagen. Förflyttning av dagvårdsplatsen kan anhållas om med blanketten Anhållan om förflyttning av dagvårdsplats.  \n",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : "Yksityinen päiväkotihoito on yritysten, yhteisöjen tai järjestöjen tuottamaa, kunnan valvomaa ja varhaiskasvatuslain säätelemää toimintaa.\n\nVaasassa yksityiset päiväkodit kuuluvat ostopalvelupäiväkotitoiminnan piiriin. Ostopalvelupäivähoidossa Vaasan kaupungin varhaiskasvatus ostaa yksityiseltä päiväkodista hoitopaikan. Ostopalvelupäiväkotien toiminta perustuu päivähoitolakiin ja -asetukseen ja ne noudattavat samoja sääntöjä ja määräyksiä kuin Vaasan kaupungin omat yksiköt. Ostopalvelu on kunnan järjestämää päivähoitoa, eikä perhe voi saada siihen yksityisen hoidon tukea.\n\nOstopalvelupaikkaa haetaan samoin kuin kunnallista hoitopaikkaa ja myös päivähoitomaksut määräytyvät asiakasmaksulain mukaisesti ja ovat samat kuin kunnallisessa päivähoidossa.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Päivähoitopaikkaa haetaan ensisijaisesti sähköisesti tai vaihtoehtoisesti lomakkeella. Lomakkeen voi tulostaa tai sen voi noutaa päiväkodeista tai varhaiskasvatuksen asiakaspalvelusta. Hakemus palautetaan siihen päiväkotiin, josta hoitopaikkaa ensisijaisesti haetaan. Mahdollinen päivähoitopaikan irtisanominen tulee tehdä kirjallisesti 30 kalenteripäivää ennen viimeistä hoidossaolopäivää. Lapsen päivähoitopaikan siirtoa voi anoa täyttämällä siirtoanomuksen.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasassa yksityiset päiväkodit kuuluvat ostopalvelupäiväkotitoiminnan piiriin.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : "Samtliga privata daghem i Vasa är köpservicedaghem.",
+    "type" : "Summary"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "ProcuredServices",
+    "organization" : null,
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

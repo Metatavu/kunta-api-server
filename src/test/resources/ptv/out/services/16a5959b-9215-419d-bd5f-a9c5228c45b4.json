@@ -1,0 +1,236 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "946",
+      "name" : [ {
+        "value" : "Vöyri",
+        "language" : "fi"
+      }, {
+        "value" : "Vörå",
+        "language" : "sv"
+      }, {
+        "value" : "Vörå",
+        "language" : "en"
+      } ]
+    }, {
+      "code" : "499",
+      "name" : [ {
+        "value" : "Mustasaari",
+        "language" : "fi"
+      }, {
+        "value" : "Korsholm",
+        "language" : "sv"
+      }, {
+        "value" : "Korsholm",
+        "language" : "en"
+      } ]
+    }, {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    }, {
+      "code" : "399",
+      "name" : [ {
+        "value" : "Laihia",
+        "language" : "fi"
+      }, {
+        "value" : "Laihela",
+        "language" : "sv"
+      }, {
+        "value" : "Laihia",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Elinkeinot",
+      "language" : "fi"
+    }, {
+      "value" : "Näringar",
+      "language" : "sv"
+    }, {
+      "value" : "Industries",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Tähän palveluluokkaan kuuluvat kaikki yritystoimintaan liittyvät palvelut yrityksen perustamisesta liiketoiminnan kehittämiseen ja aina yrityksen lopettamiseen saakka.",
+      "language" : "fi"
+    }, {
+      "value" : "Denna servicegrupp omfattar alla tjänster relaterade till företagsverksamhet från etablering av företag till utveckling av affärsverksamheten och nedläggning av företag.",
+      "language" : "sv"
+    }, {
+      "value" : "This service class contains all services related to enterprising from the establishment of an enterprise to business development and winding up a company.",
+      "language" : "en"
+    } ],
+    "code" : "P11",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1105",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "16a5959b-9215-419d-bd5f-a9c5228c45b4",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : null,
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Maaseutupalvelut",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Landsbygdstjänster",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "maatalous",
+      "language" : "fi"
+    }, {
+      "value" : "lantbruk",
+      "language" : "sv"
+    }, {
+      "value" : "agriculture",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p31916",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p48204;http://www.yso.fi/onto/koko/p57458"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Yritykset ja yhteisöt",
+      "language" : "fi"
+    }, {
+      "value" : "Businesses and non-government organizations",
+      "language" : "en"
+    }, {
+      "value" : "Företag och samfund",
+      "language" : "sv"
+    } ],
+    "code" : "KR2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Yhteiseen maaseutuhallintoon kuuluu Vaasa, Laihia, Mustasaari ja Vöyri.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Maaseutuhallinnon yhteistoiminta-alueen tehtävänä on kehittää ja toteuttaa toimenpiteitä maatalouden, maaseudun yritteliäisyyden ja elinvoimaisuuden parantamiseksi sekä huolehtia maaseutuelinkeinojen tehtävien hoitamisesta. Yhteiseen maaseutuhallintoon kuuluu Vaasa, Laihia, Mustasaari ja Vöyri. Isäntäkuntana toimii Vöyrin kunta. \n\nYhteistoiminta-alueen viljelijät voivat asioida alueen jokaisessa toimipisteessä asuinkunnasta riippumatta.\n\nMaaseututoimiston tehtäviä ovat esimerkiksi:\n* peltoala- ja eläintukihakemusten käsittely\n* maksatus ja valvonta, lausunnot muille viranomaisille ja laitoksille\n* tukien valvontaan liittyvät kuulemis- ja takaisinperintätehtävät\n* tukioikeusrekisterin ylläpito, sato-, hirvi- ja petoeläinvahinkojen arviointi\n* hukkakauratarkastukset\n* muu maaseutuelinkeinohallintoon liittyvä neuvonta mm. eläke-, luopumistuki- ja investointiasioissa.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Till landsbygdsförvaltningen hör Vasa, Laihela, Korsholm och Vörå. Vörå fungerar som värdkommun.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : "Landsbygdsförvaltningen  för samarbetsområde har i uppgift att utveckla och genomföra åtgärder för förbättrande av lantbrukets, landsbygdens företagsamhet och livskraft samt att handha skötseln av landsbygdsnäring. Till landsbygdsförvaltningen hör Vasa, Laihela, Korsholm och Vörå. Vörå fungerar som värdkommun.\n\nJordbrukarna i samarbetsområdet kan uträtta sina ärenden vid alla verksamhetsställen i området oberoende av boendeort.\n\nTill landsbygdsbyråns uppgifter hör till exempel:\n* behandlingen av ansökningar gällande åker- och djurstöd\n* utbetalning och övervakning, utlåtanden till andra myndigheter och inrättningar\n* uppgifter i anslutning till hörande och återkrav\n* upprätthållande av stödregister, utvärdering skörde-, älg- och rovdjursskador\n* flyghavregranskningar\n* annan rådgivning i anslutning till landsbygdsförvaltning bl.a. pensions-, avträdelsestöd- och investeringsärenden",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "UserInstruction"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

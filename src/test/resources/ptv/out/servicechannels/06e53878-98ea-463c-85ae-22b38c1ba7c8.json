@@ -1,0 +1,153 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Lystitie",
+        "language" : "fi"
+      }, {
+        "value" : "Nöjesvägen",
+        "language" : "sv"
+      } ],
+      "streetNumber" : "2-4",
+      "postalCode" : "65300",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ {
+        "value" : null,
+        "language" : "sv"
+      } ],
+      "latitude" : "7007858.124",
+      "longitude" : "230738.828",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "98614223-4745-4f54-86d1-a20f6c6030aa",
+      "name" : "Vammaisten asumispalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : "Asuntola",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63252598",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Vastaava ohjaaja",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "407647838",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Ansvariga handledaren",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "407647838",
+    "language" : "sv"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Boendet",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63252598",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Purohovi",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Bäckhovet",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Purohovi on uusi, syyskuussa 2013 käyttöön otettu kehitysvammaisten asumisyksikkö Purolan asuinalueella. Yksikössä on 12 asukaspaikkaa, joista kuusi paikkaa koostuu entisestä Rantakodosta. Lisäksi pihassamme on oma rakennus neljälle tukiasukkaalle.\n\nPurohovin tilat ovat suunniteltu varta vasten käyttöömme. Tilat ovat esteettömät ja toimimme yhdessä tasossa. Sijainti on uudella asuinalueella ja läheltämme löytyy niin hyviä ulkoilumahdollisuuksia ja kauppoja kuin terveyskeskus ja apteekkikin. Oma piha kesäkeittiöineen, marjapensaineen ja omenapuineen tuo osaltaan kodikkuutta pihapiiriin.\n\nHenkilökuntaan kuuluu vastaava ohjaaja sekä 12 hoitajaa. Kodissa työskennellään kolmivuorotyössä. Jokainen asukas huomioidaan yksilönä ja hän saa tarvitsemansa tuen, avun ja ohjauksen omien tarpeidensa pohjalta. Asukkaina on kaikenikäisiä. Heitä tuetaan omatoimisuuteen ja ylläpidetään jo opittuja taitoja mahdollisimman pitkään. Kodissa vietetään normaalia ja turvallista elämää, johon kuuluvat niin arkirutiinit kotitöineen kuten juhlahetketkin. Myös matkat, retket, harrastukset ja yhteydet omaisiin ja tuttaviin tuovat oman lisänsä elämään.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Purohovi on kehitysvammaisten asumispalveluyksikkö.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Bäckhovet är en boendeenhet för personer med utvecklingsstörning.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Bäckhovet är en boendeenhet för personer med utvecklingsstörning.\n\nBäckhovet är en ny boendeenhet för utvecklingsstörda som tagits i bruk i september 2013 och finns i bostadsområdet Bobäck. I enheten finns 12 invånarplatser, varav sex platser består av tidigare Rantakoto. Därtill finns i vår gårdsgrupp en egen byggnad för fyra stödinvånare.\n\nBäckhovets utrymmen är planerade specifikt för vår verksamhet. Utrymmena är tillgängliga och vi fungerar på ett plan. Placeringen är på ett nytt bostadsområde och i närheten finns goda friluftsmöjligheter, butiker, hälsovårdscentralen och ett apotek. Det finns en egen gård med sommarkök, bärbuskar och äppelträd. Detta medför hemlikhet i gårdsmiljön.\n\nI personalen ingår en ansvarig handledare och 12 skötare. I hemmet sker treskiftesarbete. Varje invånare ses som individ och denne får det stöd, den hjälp och den handledning som behövs, utifrån de egna behoven. Invånare finns i alla åldrar. Invånarna stöds i självständighet, och de redan inlärda färdigheterna upprätthålls så länge som möjligt. I hemmet levs ett normalt och tryggt liv, i vilket ingår såväl vardagliga rutiner med tillhörande hemarbeten som festligheter. Även resor, utflykter, hobbyn och kontakter till anhöriga och bekanta medför det lilla extra i livet.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "06e53878-98ea-463c-85ae-22b38c1ba7c8"
+}

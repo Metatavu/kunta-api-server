@@ -1,0 +1,211 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/node/15831",
+    "value" : "Diabetes",
+    "language" : "fi"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Tammikaivontie",
+        "language" : "fi"
+      }, {
+        "value" : "Dammbrunnsvägen",
+        "language" : "sv"
+      } ],
+      "streetNumber" : "4",
+      "postalCode" : "65100",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ {
+        "value" : "Sepänkyläntie 14-16 (parakki)",
+        "language" : "fi"
+      }, {
+        "value" : "(huvudhälsostation/baracken)",
+        "language" : "sv"
+      } ],
+      "latitude" : "7007850.117",
+      "longitude" : "230049.973",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi", "sv", "en" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "0c39d3f1-5f95-4b98-b14d-4812c087eae3",
+      "name" : "Diabeteksen hoito"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "a355e75f-be55-4c48-a5fd-0b1d9a3f2b1c",
+      "name" : "Hoitotarvikejakelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : "Diabeteshoitaja",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "405738679",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Diabeteshoitaja",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "406462135",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "405738679",
+    "language" : "sv"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "406462135",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ {
+    "value" : "diabetes@vaasa.fi",
+    "language" : "fi"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Diabetesvastaanotto",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Diabetesmottagningen",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ {
+    "serviceHourType" : "DaysOfTheWeek",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ {
+      "value" : null,
+      "language" : "fi"
+    } ],
+    "openingHour" : [ {
+      "dayFrom" : "Monday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    }, {
+      "dayFrom" : "Tuesday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    }, {
+      "dayFrom" : "Wednesday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    }, {
+      "dayFrom" : "Thursday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    }, {
+      "dayFrom" : "Friday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "12:00:00"
+    } ]
+  } ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "Diabetiker sänds till Diabetesmottagningen med remiss från den vårdande läkaren eller diabetesskötaren på hälsostationen.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Diabetesvastaanotolle diabeetikot tulevat hoitavan lääkärin tai terveysasemalla työskentelevän diabeteshoitajan lähetteellä. \n\nDiabetesvastaanoton asiantuntijaryhmään kuuluu diabetekseen erikoistunut lääkäri sekä erikoistuva lääkäri, diabeteshoitajia ja jalkojenhoitaja. Potilaat ovat 1-tyypin diabetesta sairastavia, mutta myös tiettyjä 2-tyypin diabeetikkoja hoidetaan Diabetesvastaanotolla.\n\nDiabetesvastaanotolla tehdään tarvittaessa sensorointia eli kudossokerin mittausta sekä verensokerin mittausta.\n\nPuhelinajat: ma–to klo 10–11 ja klo 13–13.30",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Diabetesvastaanotolle diabeetikot tulevat hoitavan lääkärin tai terveysasemalla työskentelevän diabeteshoitajan lähetteellä.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Diabetiker sänds till Diabetesmottagningen med remiss från den vårdande läkaren eller diabetesskötaren på hälsostationen.\n\nTill sakkunniggruppen på Diabetesmottagningen hör en läkare som är specialiserad i diabetes samt en specialiserande läkare, diabetesskötare och fotvårdare. Patienterna är typ 1 -diabetiker men även vissa typ 2 -diabetiker sköts på Diabetesmottagningen.\n\nPå diabetesmottagningen görs vid behov sensorering, dvs. mätning av vävnadssockret samt mätning av blodsockret.\n\nTelefontider till diabetesskötaren: må – to kl. 10–11 och kl. 13–13.30.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "44d9a59b-9730-41a2-b937-d281cf40e89e"
+}

@@ -1,0 +1,96 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "languages" : [ "fi" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "23abb1bf-8672-42b2-8a21-ddb38e2c397f",
+      "name" : "Nuorten tieto- ja neuvontapalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "25b6bae1-fa45-4fe4-8ea1-36260c46b2ce",
+      "name" : "Nuorisotyö"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : "Mm. musiikkitoiminta, tapahtumat, nuorisovaltuustotoiminta, avoin nuorisotyö.",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "447334635",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Mm. nuorten tieto- ja neuvontapalvelu, Vertti-toiminta, nuorisovaltuustotoiminta, avoin nuorisotyö",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "503390553",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Mm. alueellinen ja seudullinen yhteistyö, alakouluyhteistyö, kerhotoiminta.",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "445334353",
+    "language" : "fi"
+  } ],
+  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Nuoriso- ja vapaa-ajanohjaajat",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "Phone",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Nuoriso- ja vapaa-ajanohjaajat järjestävät lapsille ja nuorille monipuolista harrastustoimintaa sekä auttavat ja tukevat elämän ongelmatilanteissa.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Nuoriso- ja vapaa-ajanohjaajat järjestävät lapsille ja nuorille monipuolista harrastustoimintaa sekä auttavat ja tukevat elämän ongelmatilanteissa.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "381ca7b9-dd45-4451-8e2f-6d1f2cd8583f"
+}

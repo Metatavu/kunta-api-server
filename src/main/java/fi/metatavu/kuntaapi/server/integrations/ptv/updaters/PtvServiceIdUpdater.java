@@ -35,7 +35,7 @@ public class PtvServiceIdUpdater extends AbstractPtvServiceIdDiscoverJob {
   
   @Override
   public ApiResponse<V3VmOpenApiGuidPage> getPage() {
-    return ptvApi.getServiceApi(null).apiV7ServiceGet(null, page, false);
+    return ptvApi.getServiceApi(null).apiV8ServiceGet(page, null, null, "published");
   }
 
   @Override

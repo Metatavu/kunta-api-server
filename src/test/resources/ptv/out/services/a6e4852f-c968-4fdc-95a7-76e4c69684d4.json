@@ -1,0 +1,232 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Elinkeinot",
+      "language" : "fi"
+    }, {
+      "value" : "Näringar",
+      "language" : "sv"
+    }, {
+      "value" : "Industries",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Tähän palveluluokkaan kuuluvat kaikki yritystoimintaan liittyvät palvelut yrityksen perustamisesta liiketoiminnan kehittämiseen ja aina yrityksen lopettamiseen saakka.",
+      "language" : "fi"
+    }, {
+      "value" : "Denna servicegrupp omfattar alla tjänster relaterade till företagsverksamhet från etablering av företag till utveckling av affärsverksamheten och nedläggning av företag.",
+      "language" : "sv"
+    }, {
+      "value" : "This service class contains all services related to enterprising from the establishment of an enterprise to business development and winding up a company.",
+      "language" : "en"
+    } ],
+    "code" : "P11",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1105",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "a6e4852f-c968-4fdc-95a7-76e4c69684d4",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  }, {
+    "value" : null,
+    "language" : "en"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : null,
+  "serviceNames" : [ {
+    "language" : "en",
+    "value" : "Business Advice",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Yritysneuvonta",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Företagsrådgivning",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "yritysneuvonta",
+      "language" : "fi"
+    }, {
+      "value" : "företagsrådgivning",
+      "language" : "sv"
+    }, {
+      "value" : "company guidance",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p14831",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p35080"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Yritykset ja yhteisöt",
+      "language" : "fi"
+    }, {
+      "value" : "Businesses and non-government organizations",
+      "language" : "en"
+    }, {
+      "value" : "Företag och samfund",
+      "language" : "sv"
+    } ],
+    "code" : "KR2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "en",
+    "value" : "Owned by the region’s towns and municipalities, the Vaasa Region Development Company VASEK promotes and reinforces growth and competitiveness in the region. VASEK coordinates regional business services in the Vaasa region. When you need help and support in starting a company, and during your first years in business, the experts at VASEK and the Vaasa Region Enterprise Agency Startia, which is a part of VASEK, are the people to ask.\n\nThe service gives you what you need to get started in business and to develop your operations in future years. VASEK’s business advisors will help you with any questions relating to business without charge and in complete confidence. You can contact the company representative in charge of entrepreneurs in your own municipality, or one whose special know-how best suits your needs.\n\nThe Vaasa Employment and Economic Development Office organises start-up information events for new entrepreneurs and also allocates start-up grants for new businesses.\n\nOther organisations serving companies include the Centre for Economic Development, Transport and the Environment; the Technology Centre Merinova; Vaasan Yrittäjät association of enterprises; Österbottens Företagarforening association of enterprises; the Ostrobothnia Chamber of Commerce and the Federation of Finnish Enterprises.",
+    "type" : "Description"
+  }, {
+    "language" : "en",
+    "value" : "When you need help and support in starting a company, and during your first years in business, the experts at VASEK and the Vaasa Region Enterprise Ag",
+    "type" : "Summary"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : "Ta kontakt med Vasaregionens Utveckling Ab VASEKs företagsrådgivning.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Ota yhteyttä Vaasanseudun Kehitys Oy VASEKIN yritysneuvontaan.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasanseudun Kehitys Oy VASEK on Vaasan seudun kuntien omistama kehittämis- ja elinkeinoyhtiö, joka koordinoi seudullisia yrityspalveluja Vaasan seudulla. Apua ja tukea yrityksen perustamiseen ja toiminnan alkutaipaleelle saa VASEKista ja sen osana toimivasta Vaasanseudun Uusyrityskeskus Startiasta.\n\nPalvelu antaa eväät oman liiketoiminnan perustamiseen ja sen jatkokehittämiseen.\n\nVaasanseudun Kehitys Oy VASEKin yritysneuvojat auttavat kaikissa yritystoimintaan liittyvissä kysymyksissä maksuttomasti ja luottamuksella. Voit ottaa yhteyttä oman kuntasi yrittäjistä vastaavaan yritysasiamieheen tai asiamieheen, jonka erityisosaaminen parhaiten vastaa tarpeitasi.\n\nVaasan työ- ja elinkeinotoimisto järjestää aloittavan yrittäjän startti-infoja, antaa neuvontaa ja myöntää starttirahoja aloittavalle yrittäjälle.\n\nYrityksiä palvelevat lisäksi mm:\n* Ely-keskus\n* Merinova\n* Vaasan Yrittäjät ry\n* Österbottens Företagarforening rf\n* Pohjanmaan kauppakamari\n* Suomen yrittäjät",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Apua ja tukea yrityksen perustamiseen ja toiminnan alkutaipaleelle saa VASEKista ja sen osana toimivasta Vaasanseudun Uusyrityskeskus Startiasta.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Hjälp och stöd vid bildande av företag och vid startandet av verksamheten ger VASEK och Vasanejdens Nyföretagscentrum Startia",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Vasaregionens Utveckling Ab VASEK är ett utvecklings- och näringsbolag som ägs av kommunerna i Vasaregionen och som koordinerar de regionala företagstjänsterna i Vasaregionen. Hjälp och stöd vid bildande av företag och vid startandet av verksamheten ger VASEK och Vasanejdens Nyföretagscentrum Startia som fungerar som en del av VASEK. \n\nServicen vägleder då affärsverksamhet grundas och vidareutvecklas.\n\nVasaregionens Utveckling Ab VASEKs företagsrådgivare hjälper avgiftsfritt och konfidentiellt i alla frågor som ansluter sig till företagsverksamhet. Du kan ta kontakt med företagsombudet som ansvarar för företagarna i din egen kommun eller med ett ombud vars specialkännedom bäst motsvarar  dina behov.\n\nVasas arbets- och näringsbyrå ordnar startinfon för företagare, ger råd och beviljar startpengar för nya företagare.\n\nFöretag betjänas även bl.a. av:\n* Närings-, trafik- och miljöcentralen\n* Merinova\n* Vaasan Yrittäjät ry\n* Österbottens Företagarförening rf\n* Österbottens handelskammare\n* Företagarna i Finland",
+    "type" : "Description"
+  }, {
+    "language" : "en",
+    "value" : "Please contact  the Vaasa Region Development Company VASEK's business services.",
+    "type" : "UserInstruction"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "ProcuredServices",
+    "organization" : null,
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

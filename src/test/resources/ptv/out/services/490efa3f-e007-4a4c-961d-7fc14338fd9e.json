@@ -1,0 +1,221 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Lapsiperheiden sosiaalipalvelut",
+      "language" : "fi"
+    }, {
+      "value" : "Socialtjänster för barnfamiljer",
+      "language" : "sv"
+    }, {
+      "value" : "Social services for families with children",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "I denna serviceundergrupp behandlas ekonomiska bidrag och förmåner särskilt för barnfamiljer samt de hem- och stödtjänster som inte omfattas av familjerådgivningen eller barnskyddet.",
+      "language" : "sv"
+    }, {
+      "value" : "Tässä alapalveluluokassa käsitellään erityisesti lapsiperheille suunnattuja taloudellisia tukia ja etuuksia sekä niitä koti- ja tukipalveluja, jotka eivät kuulu perheneuvonnan tai lastensuojelun piiriin.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains financial subsidies and benefits targeted especially at families with children as well as home and support services that are not included in family counselling or child welfare.",
+      "language" : "en"
+    } ],
+    "code" : "P3.6",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1019",
+    "parentId" : "77af99fa-93eb-4de6-ac83-1b161a961263",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1013"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "490efa3f-e007-4a4c-961d-7fc14338fd9e",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "ee088bb4-c61a-44de-939b-e0db11c3adb7",
+      "name" : "Lapsiperheiden kotipalvelun ohjaaja"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "Chargeable",
+  "serviceNames" : [ {
+    "language" : "sv",
+    "value" : "Hemservice för barnfamiljer",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Lapsiperheiden kotipalvelu",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "lapsiperheiden sosiaalityö",
+      "language" : "fi"
+    } ],
+    "code" : null,
+    "ontologyType" : "TERO",
+    "uri" : "http://www.yso.fi/onto/koko/p52234",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p16696"
+  }, {
+    "name" : [ {
+      "value" : "hemservice",
+      "language" : "sv"
+    }, {
+      "value" : "kotipalvelu",
+      "language" : "fi"
+    }, {
+      "value" : "home help service",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p54976",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p18203"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Lapsiperheiden kotipalvelun tavoitteena on vahvistaa perheen arjessa selviytymistä ja sitä, että perhe itse löytäisi elämänhallinnan ja omat voimavaransa.\n\nLapsiperheiden kotipalvelun hoitaja huolehtii lapsista yhdessä vanhempien kanssa, ohjaa kasvatuksessa, tukee vanhemmuudessa, arkirutiinien hallinnassa ja perheen toimintakyvyn parantamisessa muuttuvissa elämäntilanteissa. Kotipalvelua voidaan myös antaa ennaltaehkäisevänä lastensuojeluna.\n\nKotipalvelua voi saada tilapäisesti tai pitkäkestoisesti ja suunnitelmallisesti. On myös mahdollista saada tehostettua perhetyötä ja korjaavaa perhetyötä avohuollon tukitoimenpiteenä.\n\nAsiakas maksaa kotipalvelusta bruttotulojen, perheen koon ja palvelun määrän mukaan määräytyvän kuukausimaksun tai käynnin pituuden mukaan määräytyvän käyntimaksun (asetus sosiaali- ja terveydenhuollon asiakasmaksuista).\n\nKotipalvelun kautta ei saa siivousapua.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : "Hemservice för barnfamiljer.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : "Lapsiperheiden kotipalvelun tavoitteena on vahvistaa perheen arjessa selviytymistä.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : "En vårdare inom hemservice för barnfamiljer har hand om barnen tillsammans med föräldrarna, ger uppfostringsråd, stöd i föräldraskapet, i hanteringen av vardagsrutiner och stöd som syftar till att förbättra familjens förmåga att fungera i förändrade livssituationer.\n\nHemservice kan ges tillfälligt eller under längre tid och planenligt. Det finns också möjlighet att få effektiverat familjearbete och korrigerande familjearbete som stödåtgärd inom öppenvården.\n\nKlienten betalar en månadsavgift för hemservicen som baserar sig på bruttoinkomsterna, familjens storlek och servicekvantiteten eller en besöksavgift som baserar sig på besökets längd (förordningen om klientavgifter inom social- och hälsovården).\n\nHemservicen tillhandahåller inte städhjälp.\n",
+    "type" : "Description"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

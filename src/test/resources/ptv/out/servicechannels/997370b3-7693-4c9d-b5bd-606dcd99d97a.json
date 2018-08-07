@@ -1,0 +1,78 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/node/26141",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/en/node/26141",
+    "value" : null,
+    "language" : "en"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/node/26141",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv", "en" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "2fce2731-41b3-430c-9823-cbd58ac1d3f5",
+      "name" : "Bussit - Paikallisliikenne"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "sv",
+    "value" : "Bus tidtabeller och rutter",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Bussien aikataulut ja reitit",
+    "type" : "Name"
+  }, {
+    "language" : "en",
+    "value" : "Bus schedules and routes",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "Bus tidtabeller och rutter",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Bus tidtabeller och rutter",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Bussien aikataulut ja reitit",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Bussien aikataulut ja reitit",
+    "type" : "Summary"
+  }, {
+    "language" : "en",
+    "value" : "Bus schedules and routes",
+    "type" : "Summary"
+  }, {
+    "language" : "en",
+    "value" : "Bus schedules and routes",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-11-06T10:46:35.087978",
+  "id" : "997370b3-7693-4c9d-b5bd-606dcd99d97a"
+}

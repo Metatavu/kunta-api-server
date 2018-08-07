@@ -1,0 +1,61 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "http://www.vaasanasumisoikeus.com/",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "http://www.vaasanasumisoikeus.com/sv/web/sv/framsidan",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv", "en" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "63b83874-054a-44e0-a265-0ea1b9d27871",
+      "name" : "Asumisoikeusasunnot"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Vaasan Asumisoikeus Oy",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Vasa Bostadsrätt Ab",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Vaasan Asumisoikeus Oy:n sivuilta löydät tietoa asumisoikeusasunnoista Vaasassa. Sivustolla voit etsiä tietoa vapaista ja vapautuvista asunnoista, hakea asumisoikeusasuntoa tai täyttää vuokra-asuntohakemuksen.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan Asumisoikeus Oy:n sivuilta löydät tietoa asumisoikeusasunnoista Vaasassa.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "På Vasa Bostadsrätt Ab:s webbsidor hittar du uppgifter om bostadsrättsbostäder i Vasa.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "På Vasa Bostadsrätt Ab:s webbsidor hittar du uppgifter om bostadsrättsbostäder i Vasa. På webbsidor kan du söka information om bostäder som blir lediga eller som redan är lediga, ansöka om bostadsrättsbostäden eller fylla i hyresbostadsansökan.",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "3f19fae0-cfbe-42c1-8ffe-116af68192ff"
+}

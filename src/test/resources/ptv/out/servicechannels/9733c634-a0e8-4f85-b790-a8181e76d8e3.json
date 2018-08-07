@@ -1,0 +1,124 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "06aa9e46-25f9-4a8a-9f66-be317450b933",
+      "name" : "Vanhussosiaalityö"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : "Korkeamäki, Suvilahti, Vanha Vaasa, Ristinummi, Teeriniemi, Melaniemi, Huutonie, Asevelikylä, Purola",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "407580336",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Keskusta, Hietalahti, Vaskiluoto, Sundom",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "400985914",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Palosaari, Vöyrinkaupunki, Vetokannas, Kotiranta, Isolahti, Gerby, Västervik, Vähäkyrö",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "407573389",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Centrum, Sandviken, Vasklot, Sundom",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "400985914",
+    "language" : "sv"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Brändö, Vöråstan, Dragnäsbäck, Hemstrand, Storviken, Gerby, Västervik, Lillkyro",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "407573389",
+    "language" : "sv"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Högbacken, Sunnanvik, Gamla Vasa, Korsnäståget, Orrnäs, Melmo, Roparnäs, Vapenbrödrabyn, Bobäck",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "407580336",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Sosiaalityöntekijä - vanhussosiaalityö",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Socialarbetare - gerontologiskt socialarbete",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "Phone",
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "Socialarbetare - gerontologiskt socialarbete",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Vanhushuollon sosiaalityöntekijä on erityistyöntekijä, johon voi ottaa yhteyttä erilaisissa ikääntymiseen liittyvissä asioissa, joissa tarvitsee tukea. \n\nTyöntekijä antaa ohjausta, neuvontaa ja apua esim. asumiseen, hoitopaikkoihin, taloudellisiin asioihin ja erilaisiin sosiaalisiin ongelmiin liittyvissä asioissa. Lisäksi hän tiedottaa saatavilla olevista palveluista.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Sosiaalityöntekijöiden vastuualueet on jaettu asuinaluiden mukaan.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Socialarbetaren inom äldreomsorgen är en specialarbetstagare, som kan kontaktas i olika ärenden i anslutning till åldrandet där stöd behövs. Socialarbetaren ger handledning, rådgivning och hjälp i ärenden som ansluter sig till exempelvis boende, vårdplatser, ekonomiska ärenden och ärenden i anslutning till olika sociala problem. Dessutom informerar socialarbetaren om den service som står till buds. Socialarbetaren gör vid behov också hembesök.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "9733c634-a0e8-4f85-b790-a8181e76d8e3"
+}

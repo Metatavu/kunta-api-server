@@ -1,0 +1,143 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "languages" : [ "fi", "sv", "en" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "64270b88-1f0e-4a7b-acb8-d3d5a3eb4727",
+      "name" : "Valmennustoiminta 7-9 lk"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "7a32451f-3f36-46f2-83b5-5557589b8680",
+      "name" : "Perheliikunta"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "98fd2cc8-ccbb-46c1-a773-92fecf7a0c91",
+      "name" : "Lasten ja nuorten liikunta"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "c5cd2254-29a3-4712-a093-f15c44208117",
+      "name" : "Action-toiminta"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "d96742f6-e091-4299-97c4-108383cc5395",
+      "name" : "Harrastetoiminta"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "e8460816-27c2-4c5a-b18c-ceefb3d674e2",
+      "name" : "Liikkuva koulu -toiminta"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : null,
+    "isFinnishServiceNumber" : true,
+    "number" : "400983993",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : null,
+    "isFinnishServiceNumber" : true,
+    "number" : "400983993",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Liikuntasuunnittelija, Lasten ja nuorten liikunta",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Idrottsplanerare, Idrott för barn och unga",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "Phone",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Lasten ja nuorten liikuntaan liittyvissä asioissa voit olla yhteydessä liikuntasuunnittelijaan.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Lasten ja nuorten liikuntaan liittyvissä asioissa voit olla yhteydessä liikuntasuunnittelijaan.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "I ärenden som gäller idrott för barn och unga, kan du ta kontakt med idrottsplaneraren.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "I ärenden som gäller idrott för barn och unga, kan du ta kontakt med idrottsplaneraren.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "6c6b7832-815c-49b6-aa3c-4855c4f1dd05"
+}

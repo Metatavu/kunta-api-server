@@ -1,0 +1,84 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://pienhankintapalvelu.fi/vaasa/Home/Index",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://pienhankintapalvelu.fi/vaasa/Home/Index",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "requiresSignature" : false,
+  "attachments" : [ ],
+  "languages" : [ ],
+  "supportPhones" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "b08f9788-f337-4840-a4fa-92ec4638b2db",
+      "name" : "Avoimet tarjouspyynnöt"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Pienhankintapalvelu",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Tjänst för småskalig upphandling",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "EChannel",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Pienhankintapalvelun kautta Vaasan kaupunki ilmoittaa käynnissä olevista tarjouskilpailuista ja tarjoajat pystyvät jättämään tarjouksensa sähköisesti. \n\nVoimassa olevia tarjouspyyntöjä voi katsoa ilman tunnuksia Tarjouspyynnöt-osiossa. Kun rekisteröidyt palveluun, pystyt lataamaan tarjouspyynnön omalle  ja siihen liittyvät dokumentit omalle tietokoneellesi, esittämään tarjouspyyntöä koskevia kysymyksiä ja jättämään tarjouksen sähköisesti.\n",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Pienhankintapalvelun kautta Vaasan kaupunki ilmoittaa käynnissä olevista tarjouskilpailuista ja tarjoajat pystyvät jättämään tarjouksensa sähköisesti.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "I Tjänsten för småskalig upphandling meddelar Vasa stad pågående anbudsförfaranden och anbudsgivarna kan lämna sina anbud elektroniskt.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "I Tjänsten för småskalig upphandling meddelar Vasa stad pågående anbudsförfaranden och anbudsgivarna kan lämna sina anbud elektroniskt. \n\nAktuella anbudsförfrågningar går att se utan användarkoder under Anbudsförfrågningar. Då du registrerar dig i tjänsten, kan du ladda ner anbudsförfrågningen och anslutande dokument till din egen dator, ställa frågor om anbudsförfrågningen och lämna anbud elektroniskt. \n",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "dc8b5eb9-984e-4779-b96a-c86113ab8333",
+  "signatureQuantity" : 0,
+  "requiresAuthentication" : true
+}

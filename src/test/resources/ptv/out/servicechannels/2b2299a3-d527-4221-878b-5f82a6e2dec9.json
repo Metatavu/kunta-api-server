@@ -1,0 +1,61 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/node/6871/",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/sv/node/6871/",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "5aeef5bd-aaa8-48c2-b1da-c7f4d5dd70e0",
+      "name" : "Ikäihmisten hoitopaikat"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Ikäihmisten hoitopaikat",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Seniorernas vårdplatser",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Verkkosivulta löytyy tietoa Vaasan kaupungin järjestämästä ikäihmisten lyhytaikaisesta hoidosta, intervallihoidosta ja tehostetusta palveluasumisesta.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Verkkosivulta löytyy tietoa Vaasan kaupungin järjestämästä ikäihmisten lyhytaikaisesta hoidosta, intervallihoidosta ja tehostetusta palveluasumisesta.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "På Vasa stads webbsidor hittar du tillägsuppgifter om seniorernas vårdplatser.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "På Vasa stads webbsidor hittar du tillägsuppgifter om seniorernas vårdplatser; kortvarig vård, intervallvård och långvarig vård.",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "2b2299a3-d527-4221-878b-5f82a6e2dec9"
+}

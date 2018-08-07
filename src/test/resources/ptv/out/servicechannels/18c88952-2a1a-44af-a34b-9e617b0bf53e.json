@@ -1,0 +1,44 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "http://www.naantali.fi/perhe_ja_sosiaali/hoito_ja_vanhuspalvelut/fi_FI/kotihoidon_alueet/_files/97264099787408747/default/kadut%20ja%20alueet_Naantali.pdf",
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "29e1b6f6-b722-4bd1-b128-df796b728355",
+      "name" : "Kotihoito"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Kotihoidon katuluettelo",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Kotihoidon katuluettelosta näet, mitkä alueet kuuluvat minkäkin kotihoidon tiimin vastuulle.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Kotihoidon katuluettelosta näet, mitkä alueet kuuluvat minkäkin kotihoidon tiimin vastuulle. Saariston aluetta ei ole lueteltu katuluettelossa. ",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "18c88952-2a1a-44af-a34b-9e617b0bf53e"
+}

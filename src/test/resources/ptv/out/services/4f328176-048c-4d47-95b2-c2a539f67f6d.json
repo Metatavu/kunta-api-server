@@ -1,0 +1,196 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Vapaa sivistystyö ja taidekasvatus",
+      "language" : "fi"
+    }, {
+      "value" : "Fritt bildningsarbete och konstfostran",
+      "language" : "sv"
+    }, {
+      "value" : "Free adult education and art education",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Tähän palvelualaluokkaan kuuluvat kaikille avointa opisto- ja korkeakouluopetusta, eri taiteiden avointa opetusta sekä lasten ja nuorten taidekasvatusta antavat oppilaitokset opetussisältöineen.",
+      "language" : "fi"
+    }, {
+      "value" : "Denna serviceundergrupp omfattar instituts- och högskoleundervisning som är öppen för alla, öppen undervisning i olika konstarter samt läroanstalter som ordnar konstfostran för barn och ungdomar.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains instruction at secondary and higher level educational institutions that is open for all, open instruction in different arts as well as institutions that provide art education for children and young people and their teaching contents.",
+      "language" : "en"
+    } ],
+    "code" : "P25.7",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1205",
+    "parentId" : "200f3f00-31b1-41cc-a986-2d9e4dc40fb7",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1198"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "8a27a266-dad6-4740-a355-71baebaa86d6",
+  "serviceVouchers" : [ ],
+  "modified" : "2018-01-15T11:37:02.634505",
+  "id" : "4f328176-048c-4d47-95b2-c2a539f67f6d",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "8481a311-c6e2-4ac7-8cab-4d65e5e708c3",
+      "name" : "Netti-ilmoittautuminen Naantalin opistoon"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "a11450b0-d0bc-4202-8306-fbd53578b783",
+      "name" : "Naantalin opisto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "Chargeable",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Naantalin opisto",
+    "type" : "AlternativeName"
+  }, {
+    "language" : "fi",
+    "value" : "Kansalaisopisto",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "medborgarinstitut",
+      "language" : "sv"
+    }, {
+      "value" : "kansalaisopistot",
+      "language" : "fi"
+    }, {
+      "value" : "adult education centres",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p32167",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p32084"
+  }, {
+    "name" : [ {
+      "value" : "vapaa sivistystyö",
+      "language" : "fi"
+    }, {
+      "value" : "fritt bildningsarbete",
+      "language" : "sv"
+    }, {
+      "value" : "non-formal adult education",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p5141",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p17845"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : "Naantalin opisto antaa monipuolista yleissivistävää koulutusta, kuten kuvataiteen perusopetusta, kielten opetusta ja avointa yliopisto-opetusta.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Naantalin opisto antaa monipuolista yleissivistävää koulutusta, kuten taito- ja taideaineiden, kielten, tietotekniikan sekä avoimen yliopiston opetusta. Se on vapaan sivistystyön oppilaitos (kansalaisopisto), joka tarjoaa oppimis- ja harrastusmahdollisuuksia eri-ikäisille. \n\nOpistolla on Kanta-Naantalin lisäksi toimintaa myös koko Saaristo-Naantalin alueella eli Merimaskussa, Rymättylässä, Velkualla ja Livonsaaressa. Opiston yhteydessä toimii taiteen perusopetusta antava lasten ja nuorten kuvataidekoulu.\n\nNaantalin opisto tarjoaa:\n* Vireyttä vapaa-aikaan.\n* Mukavaa vastapainoa työlle.\n* Henkistä, fyysistä ja sosiaalista hyvinvointia.\n* Oppimisen haasteita ja onnistumisen kokemuksia eri-ikäisille.\n* Monipuolisia mahdollisuuksia itsensä kehittämiseen.\n* Laadukasta opetusta ammattitaitoisten opettajien johdolla.\n* Mielenkiintoista työtä opetusalalla.\n",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Ilmoittautuminen syksyn 2017 kursseille alkaa 15.6.2017. Opistolla on käytössä verkkoilmoittautuminen.\n\nOpiskelijat otetaan kurssille ilmoittautumisjärjestyksessä. Ilmoittautuessasi internetin kautta näet heti, onko paikkoja vielä vapaana. Kurssin täytyttyä voit ilmoittautua varasijoille. Täytäthän ilmoittautuessasi yhteystietosi huolellisesti. \n\nHuomioithan, että ilmoittautuessasi kurssille sitoudut maksamaan kurssimaksun.\n\nOpetus alkaa opetusohjelman mukaisesti. Kurssin alkamisesta ei ilmoiteta erikseen. Peruutuspaikan saamisesta, kurssin peruuntumisesta tai aikataulumuutoksista lähetetään tieto ilmoittautuneille tekstiviestillä.\n",
+    "type" : "UserInstruction"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

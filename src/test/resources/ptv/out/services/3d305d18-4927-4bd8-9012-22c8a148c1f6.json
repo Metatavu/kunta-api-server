@@ -1,0 +1,171 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Päihde- ja mielenterveyspalvelut",
+      "language" : "fi"
+    }, {
+      "value" : "Intoxicant abuse and mental health services",
+      "language" : "en"
+    }, {
+      "value" : "Tjänster för missbrukare och mentalvårdstjänster",
+      "language" : "sv"
+    } ],
+    "description" : [ {
+      "value" : "Tjänster som hör till denna serviceundergrupp har anvisats för personer som insjuknat i missbrukar- och övriga beroendsjukdomar och för de som lider av mentala problem. Gruppens tjänster kan vara såväl vårdande, stödjande som förebyggande.",
+      "language" : "sv"
+    }, {
+      "value" : "Tähän palvelualaluokkaan kuuluvat palvelut on kohdennettu päihde- ja muista riippuvuusairauksia sairastaville ja mielenterveyden ongelmista kärsiville. Luokan palvelut voivat olla niin hoitavia, tukevia kuin ennalta ehkäiseviä.",
+      "language" : "fi"
+    }, {
+      "value" : "The services in this subclass are intended for persons with intoxicant and other addictions or mental health problems. They may include treatment, support and prevention.",
+      "language" : "en"
+    } ],
+    "code" : "P5.7",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1045",
+    "parentId" : "76ca210c-5183-4d41-b796-50612d5930c7",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1038"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "1557f616-f8b0-4bd5-b538-6e2b3c5a233a",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-12-14T14:58:35.048457",
+  "id" : "3d305d18-4927-4bd8-9012-22c8a148c1f6",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "1b841858-b3c2-4950-9849-a0e0ffae4271",
+      "name" : "Psykiatristen sairaanhoitajien vastaanotto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "a0ab327b-ac16-47e2-83eb-ef6cf26e5783",
+      "name" : "Terveyskeskuspsykologin vastaanotto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "fbbb8ab0-e53e-4785-a918-37cd01658080",
+      "name" : "Terveyskeskuksen puhelinvaihde"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : "* Psykiatristen sairaanhoitajien palvelut on tarkoitettu aikuisille.\n* Terveyskeskuspsykologin palvelut on tarkoitettu koko väestölle lukuun ottamatta peruskouluikäisiä, joiden palvelujen tarpeen arvioi koulupsykologi.",
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : null,
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Mielenterveyspalvelut",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "mentalvårdstjänster",
+      "language" : "sv"
+    }, {
+      "value" : "mielenterveyspalvelut",
+      "language" : "fi"
+    }, {
+      "value" : "mental health services",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p14390",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p12249"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Naantalin kaupungin mielenterveyspalvelut ovat apunasi, kun tarvitset tukea erilaisissa mielenterveyden ongelmissa tai elämän kriisitilanteissa. \n\nKeskustelukäynnit psykiatrisen sairaanhoitajan tai terveyskeskuspsykologin kanssa antavat sinulle mahdollisuuden tilanteidesi selvittämiseen sekä ajatustesi ja tunteidesi jäsentämiseen. Ajan voit soittaa itse, jolloin tilannetta voidaan alustavasti arvioida. \n\nErikoissairaanhoitoon kuuluvat psykiatripalvelut hoidetaan Raision psykiatrian poliklinikalla, jonne tarvitset lääkärin lähetteen. Ajan hoidon arviointia varten voit varata omalääkäriltä, joka tarvittaessa tekee lähetteen erikoissairaanhoitoon.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "* Ota yhteyttä psykiatriseen sairaanhoitajaan tai terveyskeskuspsykologiin, kun tarvitset mielenterveyspalveluja. Et tarvitse erikseen lähetettä.\n* Erikoissairaanhoitoon kuuluvia psykiatripalveluja varten tarvitset lääkärin lähetteen, jonka sinulle voi tarvittaessa kirjoittaa omalääkärisi hoidon arvioinnin perusteella.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Mielenterveyspalvelut ovat apunasi, kun tarvitset tukea erilaisissa mielenterveyden ongelmissa tai elämän kriisitilanteissa.",
+    "type" : "Summary"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

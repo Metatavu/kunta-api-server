@@ -1,0 +1,237 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Ravinto",
+      "language" : "fi"
+    }, {
+      "value" : "Nutrition",
+      "language" : "en"
+    }, {
+      "value" : "Näring",
+      "language" : "sv"
+    } ],
+    "description" : [ {
+      "value" : "I denna serviceundergrupp behandlas ärenden i anslutning till näring som upprätthåller hälsan såsom näringsrekommendationer och näringsrådgivning.",
+      "language" : "sv"
+    }, {
+      "value" : "Tässä alapalveluluokassa käsitellään terveyttä ylläpitävään ravitsemukseen kuten ravitsemussuosituksiin ja ravitsemusneuvontaan liittyviä asioita.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains issues related to nutrition that maintains good health, including nutrition recommendations and nutritional advice.",
+      "language" : "en"
+    } ],
+    "code" : "P5.20",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1058",
+    "parentId" : "76ca210c-5183-4d41-b796-50612d5930c7",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1038"
+  }, {
+    "name" : [ {
+      "value" : "Vanhusten palvelut",
+      "language" : "fi"
+    }, {
+      "value" : "Äldretjänster",
+      "language" : "sv"
+    }, {
+      "value" : "Services for older people",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "This service subclass contains services for older people, excluding housing services and including rehabilitation, transport and befriending services among other things.",
+      "language" : "en"
+    }, {
+      "value" : "Till denna serviceundergrupp hör andra än boendetjänster, bl.a. rehabiliterings-, transport- och väntjänster för de äldre.",
+      "language" : "sv"
+    }, {
+      "value" : "Tähän alapalveluluokkaan kuuluvat vanhusten muut kuin asumispalvelut, muun muassa kuntoutus-, kuljetus- ja ystäväpalvelut.",
+      "language" : "fi"
+    } ],
+    "code" : "P4.2",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1025",
+    "parentId" : "079b55da-af80-41ab-9346-c8fdd284afcf",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1023"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "24744d3b-04e3-45cf-8362-a9e3fe632d7f",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "f1ce5195-d9e9-4076-ba14-da8ae98562cf",
+      "name" : "Ruokapalvelut palvelutaloissa ja kaupungin sairaalassa sekä kotipalveluateriat"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "sv", "fi" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : null,
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Ruokailu palvelutaloissa ja Vaasan kaupungin sairaalassa",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Måltider inom serviceboende och Vasa stadssjukhus",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "serviceboende",
+      "language" : "sv"
+    }, {
+      "value" : "palveluasuminen (asumispalvelut)",
+      "language" : "fi"
+    }, {
+      "value" : "assisted living",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p56253",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p17574"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan Ruokapalvelut valmistaa ruoan senioritaloille, palveluasumisyksiköille ja Vaasan kaupungin sairaalalle.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan Ruokapalveluiden sivuilta löydät lounaslistan, sekä lisätietoa Ruokapalveluiden toiminnasta.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : "Vasa Matservice tillreder maten till seniorhus, serviceboendeenheter och Vasa stadssjukhus.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Matsedeln och ytterligare information om matservicen finns på sidan Vasa Matservice.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : "Vasa Matservice tillreder maten till seniorhus, serviceboendeenheter och Vasa stadssjukhus. \n\nI Vasa har pensionärerna möjlighet till lunch på följande ställen:\n* Bruksgårdens servicecenter, Brändövägen 39: vardagar och veckoslut kl. 10.30 – 12.30\n* Berghemmets servicecenter, Berggatan 2 – 4: vardagar kl. 11.00 – 13.00\n* Huvudhälsostationens näringscentral, Smedsbyvägen 14 – 16: vardagar kl. 11.00 – 13.00 enbart för pensionärer som har en anhörig som vårdas på avdelning på stadssjukhuset. Under veckosluten kl. 11.00 – 13.00 för alla pensionärer.\nVasa Matservice använder en sex veckors roterande basmatsedel som bas för menyplaneringen. I menyn beaktas bl.a. helger, säsongens råvaror, specialdieter och näringsmässiga synviklar. Måltiden består av varm mat, sallad och/eller varma grönsaker, bröd, efterrätt och mjölk.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan Ruokapalvelut valmistaa ruoan senioritaloille, palveluasumisyksiköille ja Vaasan kaupungin sairaalalle.\n\nVaasassa eläkeläisillä on mahdollisuus lounasruokailuun seuraavissa paikoissa:\n* Ruukinkartanon palvelukeskus, Palosaarentie 39: arkisin ja viikonloppuisin klo 10.30-12.30\n* Vuorikodin palvelukeskus, Vuorikatu 2-4: arkisin klo 11.00-13.00\n* Pääterveysaseman ravintokeskus, Sepänkyläntie 14-16: arkisin klo 11.00-13.00 ainoastaan eläkeläisille, joilla on omainen kaupunginsairaalan osastolla hoidossa. Viikonloppuisin klo 11.00-13.00 kaikille eläkeläisille.\nRuokalistan laadinnassa Vaasan Ruokapalvelut käyttää kuuden viikon kiertävää perusruokalistaa. Ruokalistassa huomioidaan mm. juhlapyhät, sesonkikohtaiset raaka-aineet, erityisruokavaliot ja ravitsemukselliset näkökulmat. Ateria sisältää lämpimän ruoan, salaatin tai lämpimän kasvislisäkkeen, leivän, jälkiruoan ja maidon. ",
+    "type" : "Description"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

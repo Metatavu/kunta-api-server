@@ -1,0 +1,338 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Myndigheters kungörelser och annonser",
+      "language" : "sv"
+    }, {
+      "value" : "Viranomaisten kuulutukset ja ilmoitukset",
+      "language" : "fi"
+    }, {
+      "value" : "Official notifications and declarations",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "This service subclass features those electronic services and media where public sector organisations publish their official notifications and declarations.",
+      "language" : "en"
+    }, {
+      "value" : "Denna underservicegrupp innehåller digitala tjänster där myndigheter publicerar sina offentliga kungörelser och annonser.",
+      "language" : "sv"
+    }, {
+      "value" : "Tämä alapalveluluokka sisältää sähköiset palvelut, joissa viranomaiset julkaisevat viralliset kuulutuksensa ja ilmoituksensa.",
+      "language" : "fi"
+    } ],
+    "code" : "P9.5",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1221",
+    "parentId" : "95f29e15-fb54-4ac2-8c9b-fac6ae3121fa",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1095"
+  }, {
+    "name" : [ {
+      "value" : "Laillisuusvalvonta",
+      "language" : "fi"
+    }, {
+      "value" : "Laglighetsövervakning",
+      "language" : "sv"
+    }, {
+      "value" : "Legal protection and legality",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Tähän palvelualaluokkaan kuuluvat palvelut, joiden avulla kansalaiset voivat valvoa viranomaisten toiminnan lainmukaisuutta ja kannella viranomaisen virheellisestä toiminnasta. Tässä keskeisiä ovat Oikeuskansleri ja Eduskunnan oikeusasiamies.",
+      "language" : "fi"
+    }, {
+      "value" : "Denna serviceundergrupp omfattar tjänster med vars hjälp medborgare kan följa upp myndighetsverksamhetens lagenlighet och anmäla fel i myndigheternas verksamhet. Nyckelinstanserna i dessa ärenden är Justiekanslern och Riksdagens justieombudsman.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains services through which citizens can monitor the legality and report errors in the authorities’ actions. The central authorities in these matters are the Chancellor of Justice and the Parliamentary Ombudsman.",
+      "language" : "en"
+    } ],
+    "code" : "P7.3",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1079",
+    "parentId" : "487549b3-a7de-4312-badb-2ee6bb390950",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1076"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "d13319ba-9fcb-4636-aa73-8d229a13537c",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "b0fb5b22-460d-4393-b1aa-ff14f3bdf129",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "1be51928-1202-41ad-add3-6f136f53c2d1",
+      "name" : "Yhteispalvelu Vähäkyrö"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "5db45747-3331-4282-9d6b-168e3f1bf20a",
+      "name" : "Kuulutukset"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "97570ca2-8438-4f25-a8c8-d29688217a20",
+      "name" : "Yhteispalvelu Vaasa - Kansalaisinfo"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "c4cae0db-21c1-497e-b05c-4fe9dd02a83a",
+      "name" : "Kunnan viralliset ilmoitukset"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Kunnan viralliset ilmoitukset",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Kommunens officiella meddelanden",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "kungörelser",
+      "language" : "sv"
+    }, {
+      "value" : "kuulutukset",
+      "language" : "fi"
+    }, {
+      "value" : "public notices",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p33940",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p48398"
+  }, {
+    "name" : [ {
+      "value" : "kunnanvirastot",
+      "language" : "fi"
+    }, {
+      "value" : "kommunala ämbetsverk",
+      "language" : "sv"
+    }, {
+      "value" : "municipal offices",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p66185",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p34903"
+  }, {
+    "name" : [ {
+      "value" : "ilmoitukset (tiedotteet)",
+      "language" : "fi"
+    }, {
+      "value" : "annonser",
+      "language" : "sv"
+    }, {
+      "value" : "announcements",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p13673",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p48398;http://www.yso.fi/onto/koko/p37046"
+  }, {
+    "name" : [ {
+      "value" : "avustukset",
+      "language" : "fi"
+    }, {
+      "value" : "understöd (bidrag)",
+      "language" : "sv"
+    }, {
+      "value" : "financial aid",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p34757",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p63861;http://www.yso.fi/onto/koko/p13760"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Yritykset ja yhteisöt",
+      "language" : "fi"
+    }, {
+      "value" : "Businesses and non-government organizations",
+      "language" : "en"
+    }, {
+      "value" : "Företag och samfund",
+      "language" : "sv"
+    } ],
+    "code" : "KR2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "Viranomaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Authorities",
+      "language" : "en"
+    }, {
+      "value" : "Myndigheter",
+      "language" : "sv"
+    } ],
+    "code" : "KR3",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2017",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "sv",
+    "value" : "Kommunen ska upprätthålla en anslagstavla i ämbetshus eller annan av kommunstyrelse förordnad lämplig plats, dit det är fritt tillträde under tjänstet",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : "Kommunen ska upprätthålla en anslagstavla i ämbetshus eller annan av kommunstyrelse förordnad lämplig plats, dit det är fritt tillträde under tjänstetid. \nVasa stads officiella anslagstavla samlar både stadens kungörelser, dvs. officiella meddelanden och lediga arbetsplatser. Kungörelser kan läsas också på stadens webbsidor, lediga arbetsplatser kan sökas genom den elektroniska rekryteringen. Kungörelserna finns framlagda på Vasas och Lillkyros samserviceställen. Eventuella bilagor till kungörelserna är i regel framlagda på samserviceställena. Vasa stads kungörelse publiceras därtill också i vissa eller alla lokaltidningar. Kommuninvånarna anses ha fått del av kungörelsen, då den har publicerats på Vasa stads officiella anslagstavlor. ",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Kungörelserna finns framlagda på Vasas samserviceställe under huvudbibliotekets öppettider, i Lillkyros samserviceenhet under tjänstetid samt på Vasa stads webbsidor. ",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : "Kunnan on ylläpidettävä ilmoitustaulua virastotalossa tai muussa kunnanhallituksen määräämässä sopivassa paikassa, johon on virka-aikana vapaa pääsy.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan kaupungin virallinen ilmoitustaulu kokoaa sekä kaupungin kuulutukset eli viralliset ilmoitukset että avoimet työpaikat. Kuulutuksia voi lukea myös kaupungin verkkosivuilta, avoimet työpaikat ovat haettavissa sähköisen rekrytoinnin kautta. Kuulutukset ovat nähtävillä  Vaasan ja Vähänkyrön yhteispalvelupisteissä. Mahdolliset kuulutusten liitteet ovat pääsääntöisesti nähtävinä yhteispalvelupisteissä. Vaasan kaupungin kuulutukset julkaistaan lisäksi myös joissain tai kaikissa paikallislehdissä. Kuntalaisten katsotaan saaneen tiedon kuulutuksesta, kun se on julkaistu Vaasan kaupungin virallisilla ilmoitustauluilla. ",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Kuulutukset ovat nähtävillä Vaasan yhteispalvelupisteessä pääkirjaston aukioloaikoina, Vähänkyrön yhteispalvelupisteessä virka-aikoina sekä Vaasan kaupungin verkkosivuilla. ",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

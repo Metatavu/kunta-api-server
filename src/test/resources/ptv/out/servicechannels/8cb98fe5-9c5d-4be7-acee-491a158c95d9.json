@@ -1,0 +1,209 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/node/1981/",
+    "value" : "Vaasa-opisto",
+    "language" : "fi"
+  }, {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/en/node/1981/",
+    "value" : "Vaasa-opisto",
+    "language" : "en"
+  }, {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/sv/node/1981/",
+    "value" : "Vaasa-opisto",
+    "language" : "sv"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Raastuvankatu",
+        "language" : "en"
+      }, {
+        "value" : "Raastuvankatu",
+        "language" : "fi"
+      }, {
+        "value" : "Rådhusgatan",
+        "language" : "sv"
+      } ],
+      "streetNumber" : "31",
+      "postalCode" : "65100",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : null,
+      "additionalInformation" : [ {
+        "value" : "Vaasan opistotalo",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasan opistotalo",
+        "language" : "fi"
+      } ],
+      "latitude" : "7007277.527",
+      "longitude" : "228373.317",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "sv", "en", "fi" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "152",
+      "name" : [ {
+        "value" : "Storkyro",
+        "language" : "sv"
+      }, {
+        "value" : "Isokyrö",
+        "language" : "fi"
+      }, {
+        "value" : "Isokyrö",
+        "language" : "en"
+      } ]
+    }, {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    }, {
+      "code" : "399",
+      "name" : [ {
+        "value" : "Laihia",
+        "language" : "fi"
+      }, {
+        "value" : "Laihela",
+        "language" : "sv"
+      }, {
+        "value" : "Laihia",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "819bed3d-6147-4a22-a454-eac010516ce7",
+      "name" : "Kansalaisopistot"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "bee2e49a-91ae-42bf-bed3-af1f6bccd2d5",
+      "name" : "Aikuisten peruskouluopinnot"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : "Vaasan työväenopiston info",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63253496",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Information centre of Vaasa-opisto",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63253496",
+    "language" : "en"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Vaasan työväenopistos info",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63253496",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ {
+    "value" : "vaasa-opisto@edu.vaasa.fi",
+    "language" : "fi"
+  }, {
+    "value" : "vaasa-opisto@edu.vaasa.fi",
+    "language" : "en"
+  }, {
+    "value" : "vaasa-opisto@edu.vaasa.fi",
+    "language" : "sv"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Vaasa-opisto",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Vaasa-opisto",
+    "type" : "Name"
+  }, {
+    "language" : "en",
+    "value" : "Vaasa-opisto",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Vaasa-opisto on Vaasan kaupungin suomenkielinen työväenopisto. Vaasa-opisto järjestää opetusta kielistä sekä taito-, taide- ja tietoaineista. Opetuksen lisäksi opisto järjestää yleisöluentoja, opintoretkiä ja tapahtumia.\n\nVaasa-opistolta voit vuokrata luokkatiloja, auditorion tai juhlasalin. Vaasan lisäksi opistolla on toimipisteet Isossakyrössä, Vähässäkyrössä ja Laihialla.\n\nLue lisää tilojen vuokraamisesta ja Vaasa-opiston toiminnasta opiston kotisivuilta.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasa-opisto on Vaasan kaupungin suomenkielinen työväenopisto.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Vaasa-opisto är Vasa stads finskspråkiga arbetarinstitut. Vaasa-opisto ordnar undervisning i språk samt färdighets-, konst- och kunskapsämnen. Förutom undervisning arrangerar institutet publika föreläsningar, exkursioner och evenemang.\n\nI Vaasa-opisto kan du hyra klassrum, auditoriet eller festsalen. Vaasa-opisto har verksamhetsenheter förutom i Vasa även i Storkyro, Lillkyro och Laihela.\n\nLäs mera om lokalhyrning och Vaasa-opistos verksamhet på institutets webbsidor.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Vaasa-opisto är Vasa stads finskspråkiga arbetarinstitut.",
+    "type" : "Summary"
+  }, {
+    "language" : "en",
+    "value" : "Vaasa-opisto is the Finnish-speaking workers institute in the City of Vaasa. Vaasa-opisto arranges education in different languages as well as practical, arts and theoretical subjects. Apart from this, the institute also arranges public lectures, field trips and events. \n\nVaasa-opisto also allows you to rent class rooms, the auditorium or the festival hall. Apart from Vaasa the institute also has units in Isokyrö, Vähäkyrö and Laihia. \n\nRead more about renting the premises or the institute’s activities on the web pages of Vaasa-opisto.",
+    "type" : "Description"
+  }, {
+    "language" : "en",
+    "value" : "Vaasa-opisto is the Finnish-speaking workers institute in the City of Vaasa.",
+    "type" : "Summary"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "8cb98fe5-9c5d-4be7-acee-491a158c95d9"
+}

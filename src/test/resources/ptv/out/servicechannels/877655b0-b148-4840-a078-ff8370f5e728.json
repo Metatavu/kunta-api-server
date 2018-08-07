@@ -1,0 +1,215 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/node/2781/",
+    "value" : "Varhaiskasvatus",
+    "language" : "fi"
+  }, {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/sv/node/2781/",
+    "value" : "Småbarnsfostran",
+    "language" : "sv"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Stråkantie",
+        "language" : "fi"
+      }, {
+        "value" : "Stråkavägen",
+        "language" : "sv"
+      } ],
+      "streetNumber" : "174",
+      "postalCode" : "65410",
+      "postOffice" : [ {
+        "value" : "SUNDOM",
+        "language" : "sv"
+      }, {
+        "value" : "SUNDOM",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ {
+        "value" : "Sundom daghem / Barnholken",
+        "language" : "sv"
+      } ],
+      "latitude" : "7003644.968",
+      "longitude" : "223353.183",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  }, {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Sundomintie",
+        "language" : "fi"
+      }, {
+        "value" : "Sundomvägen",
+        "language" : "sv"
+      } ],
+      "streetNumber" : "13",
+      "postalCode" : "65410",
+      "postOffice" : [ {
+        "value" : "SUNDOM",
+        "language" : "sv"
+      }, {
+        "value" : "SUNDOM",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ {
+        "value" : "Sundom daghem",
+        "language" : "sv"
+      } ],
+      "latitude" : "7001836.409",
+      "longitude" : "224930.408",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "73af8c06-6a6b-4780-9164-8e8872eecc9c",
+      "name" : "Kunnallinen päiväkotihoito"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ {
+    "value" : "sundomdh@vasa.fi",
+    "language" : "fi"
+  }, {
+    "value" : "sundomdh@vasa.fi",
+    "language" : "sv"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "sv",
+    "value" : "Sundom daghem",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Sundom daghem",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ {
+    "serviceHourType" : "DaysOfTheWeek",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ {
+      "value" : null,
+      "language" : "sv"
+    } ],
+    "openingHour" : [ {
+      "dayFrom" : "Monday",
+      "dayTo" : "",
+      "from" : "06:30:00",
+      "to" : "17:00:00"
+    }, {
+      "dayFrom" : "Tuesday",
+      "dayTo" : "",
+      "from" : "06:30:00",
+      "to" : "17:00:00"
+    }, {
+      "dayFrom" : "Wednesday",
+      "dayTo" : "",
+      "from" : "06:30:00",
+      "to" : "17:00:00"
+    }, {
+      "dayFrom" : "Thursday",
+      "dayTo" : "",
+      "from" : "06:30:00",
+      "to" : "17:00:00"
+    }, {
+      "dayFrom" : "Friday",
+      "dayTo" : "",
+      "from" : "06:30:00",
+      "to" : "17:00:00"
+    } ]
+  } ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Sundom daghem sijaitsee samassa rakennuksessa koulun/oppimiskeskuksen kanssa.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Sundom daghem är beläget i samma byggnad som skolan/lärcentret.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Sundom daghem är beläget i samma byggnad som skolan/lärcentret. Daghemmet samarbetar med skolan och använder bl.a. deras matsal och gymnastiksal. Även biblioteket besöks regelbundet. Bredvid daghemmet finns en stor och inspirerande skog dit vi ofta går och leker och har pedagogiska stunder utomhus.\n\nBarnholken ligger i naturskön miljö nära havet. Vi vistas i naturen, både skogs och strandmiljö. Även Holken har ett eget kök som tillreder god och näringsrik kost.\n\nPlatsantalet: Ekorrarna 21 heldagsplatser för 3-5-åringar, Barnlyan 21 heldagsplatser för 5-6-åringar (förskola), Barnkojan 18 heldagsplatser för 6-åringar (förskola) och Barnholken 21 heldagsplatser för 3-5-åringar (stråkavägen 174).\n \nTyngdspunktsområden:\n- Språket\n- Social kompetens\n- Ge barnet böjligheter att uppleva, forska och upptäcka genom att få prova nya saker. Genom olika upplevelser ges barnen möjlighet att känna glädje över att lära sig nya saker ock att lyckas.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Sundom daghem sijaitsee samassa rakennuksessa koulun/oppimiskeskuksen kanssa. Päiväkoti tekee yhteistyötä koulun kanssa ja käyttää koulun ruoka- ja liikuntasalia. Myös kirjastossa vieraillaan säännöllisesti. Päiväkodin vieressä sijaitsee suuri ja inspiroiva metsä, jossa usein käydään leikkimässä ja pidetään opetustuokioita.\n\nBarnholken sijaitsee luonnonkauniissa ympäristössä meren lähellä. Oleskelemme luonnossa, sekä metsässä että rannan ympäristössä. Holkenilla on myös oma keittiö, jossa valmistuu hyvää ja ravitsevaa ruokaa.\n\nLapsiryhmät:\nEkorrarna, 3-5 vuotiaat, 21 kokopäiväpaikkaa\nBarnlyan, 5-6 vuotiaat (esikoulu), 21 kokopäiväpaikkaa\nBarnkojan, 6-vuotiaat (esikoulu) 18 kokopäiväpaikkaa\nBarnholken, 3-5 vuotiaat, 21 kokopäiväpaikkaa (stråkavägen 174)\n\nPainopistealueet:\n- Kieli\n- Sosiaalinen toimintakyky\n- Anna lapselle mahdollisuus kokea, tutkia ja havainnoida kokeilemalla uusia asioita. Erilaisten kokemusten myötä lapsi saa mahdollisuuden tuntea iloa onnistumisistaan ja uuden oppimisesta.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-09-13T10:57:18.178172",
+  "id" : "877655b0-b148-4840-a078-ff8370f5e728"
+}

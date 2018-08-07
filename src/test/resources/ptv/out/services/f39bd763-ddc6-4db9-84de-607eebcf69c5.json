@@ -1,0 +1,146 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Terveyden ja hyvinvoinnin neuvonta- ja ohjauspalvelut",
+      "language" : "fi"
+    }, {
+      "value" : "Advisory and guidance services for health and well-being",
+      "language" : "en"
+    }, {
+      "value" : "Hälsovårdens rådgivnings- och handledningstjänster",
+      "language" : "sv"
+    } ],
+    "description" : [ {
+      "value" : "The class contains services related to an individual service transaction, visit to a service unit, or a service package or its management, through which a client receives advice and guidance when seeking health and/or well-being services in either problem situations or health promotion. These include the patient ombudsman’s services, appointments, reminder services, self-care services and case management services.",
+      "language" : "en"
+    }, {
+      "value" : "Tjänster i anslutning till en separat servicehändelse, besök till en serviceenhet eller tjänster i samband med en servicehelhet eller dess hantering, med hjälp av vilken klienten får rådgivning och handledning när han eller hon söker hälsovårdstjänster i problemsituationer. Sådana är t.ex. patientombudsmannens tjänster, tidsbeställningar, påminnelsetjänster, egenvårdstjänster och servicestyrning.",
+      "language" : "sv"
+    }, {
+      "value" : "Yksittäiseen palvelutapahtumaan, käyntiin palveluyksikössä tai palvelukokonaisuuteen tai sen hallintaan liittyvät palvelut, joiden avulla asiakas saa neuvontaa ja opastusta etsiessään palveluja terveyden ja hyvinvoinnin ongelmatilanteisiin ja terveyden edistämiseen. Näitä ovat esimerkiksi potilasasiamiespalvelu, ajanvaraukset, muistutuspalvelut, oma- ja itsehoitopalvelut ja palveluohjaus.",
+      "language" : "fi"
+    } ],
+    "code" : "P5.17",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1055",
+    "parentId" : "76ca210c-5183-4d41-b796-50612d5930c7",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1038"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "7529f457-e3e1-481c-8336-5c9c1cdaa56f",
+  "serviceVouchers" : [ ],
+  "modified" : "2018-04-10T12:19:51.23902",
+  "id" : "f39bd763-ddc6-4db9-84de-607eebcf69c5",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "b92095bd-5d15-4f05-9b93-c23ddef0bd9d",
+      "name" : "Potilasasiamiehen palvelut ja yhteystiedot"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : null,
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Potilasasiamies",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "patientombudsmän",
+      "language" : "sv"
+    }, {
+      "value" : "potilasasiamiehet",
+      "language" : "fi"
+    }, {
+      "value" : "patient ombudsmen",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p609",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p5289"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Ota yhteyttä potilasasiamieheen, jos tarvitset tietoa potilaan oikeuksista ja neuvoja esimerkiksi valituksen tekemisessä. \n\nVoit ottaa potilasasiamieheen yhteyttä puhelimitse, sähköpostitse tai kirjeitse. Voit myös sopia tapaamisen potilasasiamiehen kanssa.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Potilasasiamies on potilaan oikeuksien edistäjä. Naantalin kaupunki ostaa potilasasiamiehen palvelut Varsinais-Suomen sairaanhoitopiiriltä.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Potilasasiamies on potilaan oikeuksien edistäjä. Naantalin kaupunki ostaa potilasasiamiehen palvelut Varsinais-Suomen sairaanhoitopiiriltä.\n\nPotilasasiamies:\n* tiedottaa potilaan oikeuksista\n* toimii potilaan oikeuksien edistämiseksi\n* neuvoo ja avustaa sinua potilaan asemasta ja oikeuksista annetun lain sekä potilasvahinkolain soveltamiseen liittyvissä asioissa, kuten kohteluun, salassapitoon tai potilasvahinkoepäilyyn liittyvissä asioissa ja valitusmenettelyissä\n* ohjaa sinua muilla lainsäädäntöön perustuvilla tavoilla ajamaan etuasi.\n\nPotilasasiamies ei ota kantaa lääketieteellisiin ratkaisuihin.",
+    "type" : "Description"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "ProcuredServices",
+    "organization" : null,
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

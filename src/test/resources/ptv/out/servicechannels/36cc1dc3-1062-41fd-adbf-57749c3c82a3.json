@@ -1,0 +1,61 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "http://www.sähköwaasa.fi/go/",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "http://www.sähköwaasa.fi/go/",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "1b635b67-72ba-49bc-85b2-bec7a2a839ea",
+      "name" : "Katuvalaistus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "SähköWaasan verkkosivut",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "SähköWaasas webbsidor",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "SähköWaasa Oy:n verkkosivuilla voit tehdä vikailmoituksia katu- ja liikennevaloista.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "På SähköWaasa Oy:s webbsidor kan du göra felanmälningar om gatlampor och trafikljus.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "SähköWaasa Oy:n verkkosivuilla voit tehdä vikailmoituksia katu- ja liikennevaloista. ",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "På SähköWaasa Oy:s webbsidor kan du göra felanmälningar om gatlampor och trafikljus. ",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "36cc1dc3-1062-41fd-adbf-57749c3c82a3"
+}

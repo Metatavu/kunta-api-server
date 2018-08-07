@@ -1,0 +1,135 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Krutkällarvägen",
+        "language" : "sv"
+      }, {
+        "value" : "Ruutikellarintie",
+        "language" : "fi"
+      } ],
+      "streetNumber" : "4",
+      "postalCode" : "65100",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ {
+        "value" : null,
+        "language" : "sv"
+      } ],
+      "latitude" : "7006492.234",
+      "longitude" : "229776.311",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "c30a7883-6588-4d2b-856d-4cd85cec443c",
+      "name" : "Vammais- ja esteettömyysasiamies"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "400956221",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "400956221",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ ],
+  "serviceChannelNames" : [ {
+    "language" : "sv",
+    "value" : "Handikapp- och tillgänglighetsombudet",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Vammais- ja esteettömyysasiamies",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "Handikapp- och tillgänglighetsombudet kan kontaktas i frågor som berör tillgängligheten i bebyggd miljö och den service som erbjuds.\n\nUppgiften för handikapp- och tillgänglighetsombudet är främja de handikappades och de på olika vis rörelsehindrade personernas förutsättning att leva och fungera som en jämlik stadsbo.\n\nTillgänglighet:\nEn tillgänglig bilplats för rörelsehindrade finns vid social- och hälsovårdsverkets förvaltning bakom huvudingångens hörn framför Silveria. Busshållplats finns längs huvudvägen. Tillgänglig huvudingång med ramp och automatiska skjutdörrar. Till alla våningar kan man ta sig med hiss eller via trappor. Tillgänglig toalett på restaurangsidan i första våningen. Personalen hjälper vid behov.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Handikapp- och tillgänglighetsombudet kan kontaktas i frågor som berör tillgängligheten i bebyggd miljö och den service som erbjuds.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Vammais- ja esteettömyysasiamieheen voi olla yhteydessä rakennetun ympäristön ja palvelujen esteettömyyteen liittyviin kysymyksiin.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Vammais- ja esteettömyysasiamieheen voi olla yhteydessä rakennetun ympäristön ja palvelujen esteettömyyteen liittyviin kysymyksiin.\n\nVammais- ja esteettömyysasiamies ei käsittele vammaisia henkilöitä koskevia oikeudellisia asioita eikä korvaa vakiintuneita valitus-, neuvonta- ja vaikuttamisväyliä (esim. sosiaaliasiamies, potilasasiamies, sosiaali- ja perhepalvelut).\n\nSaavutettavuus:\nSosiaali- ja terveystoimen yhteisten ja teknisten palveluiden esteetön LE-paikka on pääsisäänkäynnin kulman takana Silverian edessä. Bussipysäkki on päätien varressa. Esteetön pääsisäänkäynti, jossa luiska ja sähköistetyt liukuovet. Kaikkiin kerroksiin pääsee hissillä tai portailla. Esteetön WC ravintolan puolella 1. kerroksessa. Henkilökunnalta saa apua tarvittaessa.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "bc2d60a4-55bb-4cf0-a5a5-ef6307774f07"
+}

@@ -1,0 +1,67 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "languages" : [ "fi" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "7dda4402-0c92-4d3c-aefe-f0d1f0637929",
+      "name" : "Tehostettu palveluasuminen ikäihmisille"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : "Tilapäiskuntoutuksen tiiminvetäjä/kuntoutusohjaaja",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "447330015",
+    "language" : "fi"
+  } ],
+  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Tilapäiskuntoutus (Lietsala)",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "Phone",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Lietsalan tilapäiskuntoutuksen tiiminvetäjän puhelinasiointinumero.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Birgittakodin Lietsalan osaston tiiminvetäjään/kuntoutusohjaajaan voi ottaa yhteyttä tilapäiskuntoutukseen liittyvissä asioissa.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2018-06-07T11:23:47.190084",
+  "id" : "ba8c24a8-c1cb-4408-99e6-bcea7abf31f9"
+}

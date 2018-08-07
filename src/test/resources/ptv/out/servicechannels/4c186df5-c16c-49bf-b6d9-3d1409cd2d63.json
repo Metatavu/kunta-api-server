@@ -1,0 +1,171 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Mäkikaivontie",
+        "language" : "fi"
+      }, {
+        "value" : "Backbrunnsvägen",
+        "language" : "sv"
+      } ],
+      "streetNumber" : "20",
+      "postalCode" : "65100",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ {
+        "value" : null,
+        "language" : "sv"
+      } ],
+      "latitude" : "7007031.014",
+      "longitude" : "229510.84",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "98614223-4745-4f54-86d1-a20f6c6030aa",
+      "name" : "Vammaisten asumispalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : "O-solu & tukiasuminen",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "400864547",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "A-solu",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "405902238",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Vastaava ohjaaja",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "407573500",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "A-cellen",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "405902238",
+    "language" : "sv"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "O-cellen & stödboende",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "400864547",
+    "language" : "sv"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Ansvarande ledare",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "407573500",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Mäkihovi",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Mäkihovi",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "Mäkihovi är en boendeenhet för personer med utvecklingsstörning.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Mäkihovi är en boendeenhet för personer med utvecklingsstörning.\n\nI  enheten Boendet Mäkihovi finns totalt 22 platser för handikappade som behöver hjälpt boende. Boendet finns i ett nybygge som byggts 2009 i Backbrunnsområdet i Sandviken.\n\nI boendet arbetar man dygnet runt med resurserna från en ansvarande ledare och elva (11) skötare.\n\nI A-cellen bor 6 invånare med autism av olika grad, som behöver en strukturerad handledning från personalen samt stöd dygnet runt. Totalt arbetar två anställda samtidigt i A-cellen.\n\nI O-cellen bor 8 invånare, som dygnet runt har en skötare i taget som stöd och hjälp i vardagen.\n\nI II:a våningen av Mäkihovi finns 8 separata stödbotäder, där det bor unga vuxna med handikapp som på olika sätt behöver stöd.\n\nI vår enhet strävar man till en hemlik miljö genom att skapa trygghet och samvaro. Vårt mål är att stöda självständigheten samt förmågan till enskilt boende bland stödinvånarna. Genom individuellt stöd och individuell handledning möjliggör vi en god livskvalitet för invånarna.  ",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Mäkihovin asuntola on yhteensä 22-paikkainen kehitysvammaisten autetun asumisen yksikkö. Asuntola sijaitsee v. 2009 rakennetussa uudisrakennuksessa Mäkikaivon alueella Hietalahdessa. Asuntolassa työskennellään ympärivuorokautisesti. Henkilökuntaan kuuluu vastaava ohjaaja ja 11 hoitajaa.\n\nA-solussa asuu 6 eriasteisesti autistista asukasta, jotka tarvitsevat strukturoitua henkilökunnan ohjausta ja tukea ympäri vuorokauden. Työntekijöitä A-solussa työskentelee samanaikaisesti kaksi kerrallaan.\n\nO-solussa asuu 8 asukasta, joiden arjen tukena ja apuna ympärivuorokautisesti on yksi hoitaja kerrallaan.\n\nMäkihovin 2. kerroksessa sijaitsee 8 erillistä tukiasuntoa, joissa asuu eri tavoin tukea tarvitsevia nuoria aikuisia kehitysvammaisia. Yksikössämme pyritään kodinomaiseen ilmapiiriin, luoden turvallisuutta ja yhdessäoloa. Tavoitteenamme on tukea tukiasukkaiden omatoimisuutta sekä kykyä yksilölliseen asumiseen. Yksilöllisen tuen ja ohjauksen avulla mahdollistamme asukkaiden hyvän elämänlaadun.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Mäkihovi on kehitysvammaisten asumispalveluyksikkö.",
+    "type" : "Summary"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "4c186df5-c16c-49bf-b6d9-3d1409cd2d63"
+}

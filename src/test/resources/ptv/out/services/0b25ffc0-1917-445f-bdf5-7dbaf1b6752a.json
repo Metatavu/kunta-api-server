@@ -1,0 +1,171 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Kuntoutus",
+      "language" : "fi"
+    }, {
+      "value" : "Rehabilitation",
+      "language" : "en"
+    }, {
+      "value" : "Rehabilitering",
+      "language" : "sv"
+    } ],
+    "description" : [ {
+      "value" : "This service subclass contains statutory and other services whose primary purpose is to help a person recover his or her work or functional ability that has been reduced for various reasons through different therapeutic and/or medical methods.",
+      "language" : "en"
+    }, {
+      "value" : "Tässä. alapalveluluokassa käsitellään läkisääteisiä ja muita palveluja, joiden ensisijainen tarkoitus on palauttaa henkilön eri syistä alentunut työ- tai toimintakyky erilaisin terapeuttisin ja/tai lääkinnällisin menetelmin.",
+      "language" : "fi"
+    }, {
+      "value" : "I denna serviceundergrupp behandlas lagstadgade och övriga tjänster vars primära syfte är att återställa personens arbets- eller funktionsförmåga, som av olika anledningar blivit nedsatt, med hjälp av olika terapeutiska och/eller medicinska metoder.",
+      "language" : "sv"
+    } ],
+    "code" : "P5.13",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1051",
+    "parentId" : "76ca210c-5183-4d41-b796-50612d5930c7",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1038"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "75124d6d-0fc0-4b26-b63b-810130306fc9",
+  "serviceVouchers" : [ ],
+  "modified" : "2018-01-04T16:47:03.668588",
+  "id" : "0b25ffc0-1917-445f-bdf5-7dbaf1b6752a",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "699eb21e-37a2-486c-b22b-6c01c76b6697",
+      "name" : "Puheterapeutin vastaanotto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "ea7ac0f7-80fc-4bf8-937b-89286d1fe979",
+      "name" : "Puheterapian verkkosivut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "fbbb8ab0-e53e-4785-a918-37cd01658080",
+      "name" : "Terveyskeskuksen puhelinvaihde"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Puheterapian palvelut",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "puheterapia (hoitomenetelmät)",
+      "language" : "fi"
+    }, {
+      "value" : "talterapi",
+      "language" : "sv"
+    }, {
+      "value" : "speech therapy",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p8003",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p32617"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Puheterapian tarkoituksena on poistaa, lieventää ja ehkäistä kommunikoinnin häiriöitä ja niihin liittyviä vuorovaikutuksen ongelmia.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Puheterapiaan tullaan yleensä neuvolan, lääkärin tai päivähoidon lähettämänä. Et kuitenkaan välttämättä tarvitse lähetettä, vaan voit ottaa puheterapeuttiin yhteyttä myös suoraan.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Puheterapia on lääkinnällistä kuntoutusta, jonka tarkoituksena on poistaa, lieventää ja ehkäistä kommunikoinnin häiriöitä ja niihin liittyviä vuorovaikutuksen ongelmia. Tavoitteena on, että asiakkaat saavuttavat mahdollisimman hyvän kommunikaatiokyvyn ja kielellisen toimintakyvyn. \n\nHäiriöitä voi olla esimerkiksi \n* kielellisissä taidoissa\n* äänessä\n* kuulossa\n* lukemisessa ja/tai kirjoittamisessa\n\ntai kielen kehitys voi olla viivästynyt tai puhe epäselvää. Puheterapiassa voidaan kuntouttaa myös suun alueen motoriikkaa ja nielemistä. Vaikeudet voivat olla synnynnäisiä tai vamman/sairauden myöhemmin aiheuttamia. \n\nPuheterapiapalvelujen muotoja ovat arvio, ohjaus, neuvonta (myös puhelimitse), seuranta ja terapia. Puheterapiajakson kesto sovitaan asiakkaan kanssa hoidon alussa. \n\nVanhempien, omaisten ja lähiympäristön ohjaus sekä yhteistyö päivähoidon ja muiden ammattikuntien kanssa on osa puheterapiaa ja tukee edistymistä ja kuntoutumista. Lähiyhteisön aktiivinen osallistuminen puheterapiaan lisää sen vaikuttavuutta.\n\nNaantalin terveyskeskuksessa asiakkaita palvelee kaksi puheterapeuttia.",
+    "type" : "Description"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

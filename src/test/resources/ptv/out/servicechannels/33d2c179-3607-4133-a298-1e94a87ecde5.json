@@ -1,0 +1,61 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/node/27609",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/sv/node/27609",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "90bb012f-c085-4304-b8a0-f3eb31662cae",
+      "name" : "Rakennusvalvonta ja rakennustyön aikainen valvonta"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Ohje LVI-suunnitelmien toimittamiseen",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Anvisning för inlämnande av VVS-planer",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Rakennuslupapäätöksessä voidaan määrätä luvanhakija toimittamaan lvi-suunnitelmat rakennusvalvontaan ennen vesi- ja viemäritöiden aloittamista. Verkkosivulta löydät ohjeen lvi-suunnitelmien toimittamiseen.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Rakennuslupapäätöksessä voidaan määrätä luvanhakija toimittamaan lvi-suunnitelmat rakennusvalvontaan ennen vesi- ja viemäritöiden aloittamista",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "I bygglovsbeslutet kan den sökande åläggas att lämna in VVS-planerna till byggnadstillsynen innan vatten- och avloppsarbetena inleds.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "I bygglovsbeslutet kan den sökande åläggas att lämna in VVS-planerna till byggnadstillsynen innan vatten- och avloppsarbetena inleds. På webbplatsen finns anvisning för inlämnande av VVS-planer.",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "33d2c179-3607-4133-a298-1e94a87ecde5"
+}

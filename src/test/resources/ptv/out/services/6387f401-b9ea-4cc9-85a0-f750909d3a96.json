@@ -1,0 +1,333 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Lukiokoulutus",
+      "language" : "fi"
+    }, {
+      "value" : "Gymnasieutbildning",
+      "language" : "sv"
+    }, {
+      "value" : "General upper secondary education",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Till denna serviceundergrupp hör gymnasieutbildningens innehåll och syfte, hur man söker till gymnasieutbildningen, sätt att genomföra gymnasieutbildning samt studentexamen. Det ekonomiska stödet för studierna behandlas i sin egen serviceundergrupp.",
+      "language" : "sv"
+    }, {
+      "value" : "Tähän alapalveluluokkaan kuuluvat lukiokoulutuksen sisältö ja tarkoitus, lukiokoulutukseen hakeminen, lukion suorittamisen tavat ja ylioppilastutkinto. Opintojen taloudellinen tuki käsitellään omassa alapalveluluokassaan.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains the contents and objectives of general upper secondary education, applying for a place in general upper secondary education, methods of completing the education and the matriculation examination. Financial support for studies is included in its own subclass.",
+      "language" : "en"
+    } ],
+    "code" : "P6.8",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1068",
+    "parentId" : "fd1bb60e-4206-4f0a-994f-8ffcb4ffaaa4",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1060"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "07ac17e9-b833-43b2-b336-a0d1ed4824b9",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "6387f401-b9ea-4cc9-85a0-f750909d3a96",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "08ed030f-2000-47fe-83ab-7bcfe338db9c",
+      "name" : "Vasa svenska aftonläroverketin verkkosivut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "234ed31d-c6fc-4f1e-9fb6-8e7bbcee0f88",
+      "name" : "Vasa Gymnasiumin verkkosivut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3f69886e-3e21-41c6-8486-19d289644f10",
+      "name" : "Vasa övningsskolan verkkosivut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "45be9de4-40f9-45f5-a16b-d7bc6e7dcec4",
+      "name" : "Vaasan lyseon lukion verkkosivut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  }, {
+    "value" : null,
+    "language" : "en"
+  } ],
+  "languages" : [ "en", "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : null,
+  "serviceNames" : [ {
+    "language" : "en",
+    "value" : "General upper secondary school education",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Gymnasieutbildning",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Lukiokoulutus",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "Gymnasium/ gymnasiale Oberstufe",
+      "language" : "de"
+    }, {
+      "value" : "gymnasiet",
+      "language" : "sv"
+    }, {
+      "value" : "lukio",
+      "language" : "fi"
+    }, {
+      "value" : "general upper secondary school",
+      "language" : "en"
+    }, {
+      "value" : "gümnaasium",
+      "language" : "et"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p510",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p48279"
+  }, {
+    "name" : [ {
+      "value" : "lukiokoulutus (opetus)",
+      "language" : "fi"
+    }, {
+      "value" : "gymnasieutbildning",
+      "language" : "sv"
+    }, {
+      "value" : "general upper secondary education",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p75844",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p33827"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : "Bekanta dig med gymnasierna på gymnasiernas webbsidor. Du kan söka till gymnasium genom gemensam ansökan.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : "Gymnasiet är en kursformad, allmänbildande, årskurslös skola. Gymnasieutbildningen leder till studentexamen. Utbildning ordnas bl.a. i gymnasier och vuxengymnasier.\n\nGymnasiets lärokurs omfattar tre år, men du kan förkorta eller förlänga studietiden om du vill.\n\nVid gymnasier i Vasa kan du studera på finska, svenska och engelska. I Vasa finns fyra gymnasier: Vaasan lyseon lukio och dess vuxenlinje, Vasa gymnasium, Vasa övningsskola gymnasium och Vasa övningsskolas IB-linje och Vasa svenska aftonläroverk.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasassa toimii neljä lukiota.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "en",
+    "value" : "There are four upper secondary schools in Vaasa.",
+    "type" : "Summary"
+  }, {
+    "language" : "en",
+    "value" : "Respective upper secondary school has more information on their web pages. You can apply for entry to an upper secondary school through the joint application system.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Tutustu lukioihin lukioiden sivuilla. Lukioon voi hakea yhteishaulla.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Lukio on kurssimuotoinen koulu, jossa ei ole vuosiluokkia. Lukiokoulutus tähtää ylioppilastutkintoon. Koulutusta järjestetään muun muassa lukioissa ja aikuislukioissa.\n\nLukion oppimäärä on laajuudeltaan kolmivuotinen, mutta halutessaan opiskeluaikaa voi lyhentää tai pidentää.\n\nVaasassa lukioissa voi opiskella suomeksi, ruotsiksi ja englanniksi. Vaasassa toimii neljä lukiota: Vaasan lyseon lukio ja sen aikuislinja, Vasa gymnasium, Vasa övningsskola gymnasium ja sen IB-linja sekä Vasa svenska aftonläroverk.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : "I Vasa finns fyra gymnasier.",
+    "type" : "Summary"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "en",
+    "value" : "The upper secondary school is a course formed school, which does not have year classes. The upper secondary school educations aims at a matriculation examination. The education is arranged among others in upper secondary schools and senior secondary schools for adults.\n\nThe upper secondary school’s syllabus is three years, but if wanted the studying time can be shortened or extended.\n\nIn Vaasa you can study the upper secondary school in Finnish, Swedish and English. There are four upper secondary schools in Vaasa: Vaasan lyseon lukio (incl. senior alternative), Vasa gymnasium, Vasa övningsskola gymnasium as well as its IB field of studies and Vasa svenska aftonläroverk.",
+    "type" : "Description"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

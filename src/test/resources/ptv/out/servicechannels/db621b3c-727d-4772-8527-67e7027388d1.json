@@ -1,0 +1,99 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://www.nuortenelama.fi/",
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "requiresSignature" : false,
+  "attachments" : [ ],
+  "languages" : [ ],
+  "supportPhones" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "564",
+      "name" : [ {
+        "value" : "Oulu",
+        "language" : "fi"
+      }, {
+        "value" : "Uleåborg",
+        "language" : "sv"
+      }, {
+        "value" : "Oulu",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "23abb1bf-8672-42b2-8a21-ddb38e2c397f",
+      "name" : "Nuorten tieto- ja neuvontapalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "92374b0f-7d3c-4017-858e-666ee3ca2761",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Nuortenelämä.fi",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ {
+    "serviceHourType" : "DaysOfTheWeek",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ {
+      "value" : "Chat",
+      "language" : "fi"
+    } ],
+    "openingHour" : [ {
+      "dayFrom" : "Monday",
+      "dayTo" : "",
+      "from" : "13:00:00",
+      "to" : "15:00:00"
+    }, {
+      "dayFrom" : "Tuesday",
+      "dayTo" : "",
+      "from" : "13:00:00",
+      "to" : "15:00:00"
+    } ]
+  }, {
+    "serviceHourType" : "DaysOfTheWeek",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ {
+      "value" : "Kysyttävää-palsta",
+      "language" : "fi"
+    } ],
+    "openingHour" : [ ]
+  } ],
+  "serviceChannelType" : "EChannel",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Nuortenelämä.fi on verkkopalvelu Suomessa asuville nuorille.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Voit kysyä mieltä askarruttavista asioistasi chat-palvelussa tai esittää kysymyksen Kysyttävää-palstalla. ",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "db621b3c-727d-4772-8527-67e7027388d1",
+  "signatureQuantity" : 0,
+  "requiresAuthentication" : false
+}

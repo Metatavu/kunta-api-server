@@ -1,0 +1,149 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "1",
+    "url" : "http://www.vaasankaupunginteatteri.fi/",
+    "value" : "Vaasan kaupunginteatteri",
+    "language" : "fi"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Pitkäkatu",
+        "language" : "fi"
+      }, {
+        "value" : "Storalånggatan",
+        "language" : "sv"
+      } ],
+      "streetNumber" : "53",
+      "postalCode" : "65100",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ ],
+      "latitude" : "7007472.99",
+      "longitude" : "228643.27",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "60377f58-8ff5-4094-aa6d-97f1d2b49986",
+      "name" : "Teatteripalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Fax",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63253969",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Lippukassa",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63253961",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Biljettkassa",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63253961",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ {
+    "value" : "VKT@vaasa.fi",
+    "language" : "fi"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Vaasan kaupunginteatteri",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Vaasan kaupunginteatteri",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Vaasan kaupunginteatteri tarjoaa monipuolista teatteria kaikenikäisille. Lisää tietoa Vaasan kaupunginteatterin verkkosivuilta.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Vaasan kaupunginteatteri erbjuder mångsidig teater för alla åldrar. Mera information finns på Vaasan kaupunginteatteris webbsidor.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan kaupunginteatteri tarjoaa monipuolista teatteria kaikenikäisille. Lisää tietoa Vaasan kaupunginteatterin verkkosivuilta. ",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Vaasan kaupunginteatteri erbjuder mångsidig teater för alla åldrar. Mera information finns på Vaasan kaupunginteatteris webbsidor.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "49e9a4b5-90b5-43e0-bb32-4151941caf4d"
+}

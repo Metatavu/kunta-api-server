@@ -1,0 +1,78 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "http://vamia.fi/oppisopimus/",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "http://vamia.fi/en/",
+    "value" : null,
+    "language" : "en"
+  }, {
+    "orderNumber" : "0",
+    "url" : "http://vamia.fi/sv/laroavtal/",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "259c7384-0e97-4b14-9784-5bc64c59557a",
+      "name" : "Oppisopimuskoulutus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "sv",
+    "value" : "Vamia - läroavtal",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Vamia - oppisopimus",
+    "type" : "Name"
+  }, {
+    "language" : "en",
+    "value" : "Vamia apprenticeship contract",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "På Vamias webbsidor hittar du mera information om läroavtalsutbildningen i Vasa. \n",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "På Vamias webbsidor hittar du mera information om läroavtalsutbildningen i Vasa.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Vamian verkkosivuilta löydät lisätietoa oppisopimuskoulutuksesta Vaasassa.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Vamian verkkosivuilta löydät lisätietoa oppisopimuskoulutuksesta Vaasassa.",
+    "type" : "Description"
+  }, {
+    "language" : "en",
+    "value" : "Vamia’s web pages offer more information about apprenticeship contract education in Vaasa.",
+    "type" : "Summary"
+  }, {
+    "language" : "en",
+    "value" : "Vamia’s web pages offer more information about apprenticeship contract education in Vaasa.\n",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "0da318fd-23e9-46e5-a21a-c52f174d1df7"
+}

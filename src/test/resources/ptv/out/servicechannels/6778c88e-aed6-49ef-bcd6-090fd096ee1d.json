@@ -1,0 +1,196 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "languages" : [ "fi" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "29e1b6f6-b722-4bd1-b128-df796b728355",
+      "name" : "Kotihoito"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "ea30eb08-c9a6-4e73-8875-dd3fbabac451",
+      "name" : "Saattohoito"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : "Saariston tiimi",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "405457034",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Saariston terveydenhoitaja",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "504141195",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Saariston terveydenhoitaja",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "504141190",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Saariston terveydenhoitaja",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "409000864",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Saariston sairaanhoitaja",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "444171408",
+    "language" : "fi"
+  } ],
+  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Kotihoidon saariston tiimi",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ {
+    "serviceHourType" : "DaysOfTheWeek",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ {
+      "value" : "Tiimi tavoitettavissa puhelimitse",
+      "language" : "fi"
+    } ],
+    "openingHour" : [ {
+      "dayFrom" : "Monday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "20:00:00"
+    }, {
+      "dayFrom" : "Tuesday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "20:00:00"
+    }, {
+      "dayFrom" : "Wednesday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "20:00:00"
+    }, {
+      "dayFrom" : "Thursday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "20:00:00"
+    }, {
+      "dayFrom" : "Friday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "20:00:00"
+    }, {
+      "dayFrom" : "Saturday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "20:00:00"
+    }, {
+      "dayFrom" : "Sunday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "20:00:00"
+    } ]
+  }, {
+    "serviceHourType" : "DaysOfTheWeek",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ {
+      "value" : "Terveydenhoitajat ja sairaanhoitaja tavoitettavissa puhelimitse",
+      "language" : "fi"
+    } ],
+    "openingHour" : [ {
+      "dayFrom" : "Monday",
+      "dayTo" : "",
+      "from" : "13:00:00",
+      "to" : "14:00:00"
+    }, {
+      "dayFrom" : "Tuesday",
+      "dayTo" : "",
+      "from" : "13:00:00",
+      "to" : "14:00:00"
+    }, {
+      "dayFrom" : "Wednesday",
+      "dayTo" : "",
+      "from" : "13:00:00",
+      "to" : "14:00:00"
+    }, {
+      "dayFrom" : "Thursday",
+      "dayTo" : "",
+      "from" : "13:00:00",
+      "to" : "14:00:00"
+    }, {
+      "dayFrom" : "Friday",
+      "dayTo" : "",
+      "from" : "13:00:00",
+      "to" : "14:00:00"
+    } ]
+  } ],
+  "serviceChannelType" : "Phone",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Saariston tiimin hoitajat tavoitat jokaisena päivänä klo 8 - 20.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Kotihoidon saariston tiimin alueisiin kuuluvat Rymättylä, Merimasku ja Velkua. Kotihoidon saariston tiimin alueella työskentelee lähihoitajia, kolme terveydenhoitajaa ja yksi sairaanhoitaja. \n\nVoit soittaa mihin vain sairaanhoitajan tai terveydenhoitajien puhelinnumeroihin maanantaista perjantaihin klo 13 - 14 välisenä aikana. ",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-09-29T11:19:11.43124",
+  "id" : "6778c88e-aed6-49ef-bcd6-090fd096ee1d"
+}

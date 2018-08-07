@@ -1,0 +1,122 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "attachments" : [ ],
+  "languages" : [ ],
+  "deliveryAddresses" : [ {
+    "subType" : "NoAddress",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : null,
+    "deliveryAddressInText" : [ ],
+    "receiver" : [ {
+      "value" : null,
+      "language" : "fi"
+    }, {
+      "value" : null,
+      "language" : "sv"
+    } ]
+  } ],
+  "supportPhones" : [ ],
+  "formIdentifier" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "2ad665ab-a8ec-4f86-907b-f328b5a35d99",
+      "name" : "Rasitetoimitus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "3c02634b-8d84-46f6-8923-61760dadeb7a",
+      "name" : "Tontin lohkominen"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "b276b8f7-675a-4cfe-bb6f-e5a091325367",
+      "name" : "Rajankäynti asemakaava-alueella"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "channelUrls" : [ {
+    "language" : "fi",
+    "value" : "https://vaasa.fi/sites/default/files/atom/kiinteistotoimitushakemus.pdf",
+    "type" : "PDF"
+  }, {
+    "language" : "sv",
+    "value" : "https://vaasa.fi/sites/default/files/atom/fastighetsforrattningsansokan.pdf",
+    "type" : "PDF"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Kiinteistötoimitushakemus",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Ansökan om fastighetsförrättning",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "PrintableForm",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Kiinteistötoimitushakemuksella voit hakea muun muassa tontin lohkomista, rasitetoimitusta ja kiinteistön- ja rajanmääritystä.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Med ansökan om fastighetsförrättning kan du ansöka om bland annat styckning av tomt, servitutsförrättning och fastighets- och gränsbestämning.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Med ansökan om fastighetsförrättning kan du ansöka om bland annat styckning av tomt, servitutsförrättning och fastighets- och gränsbestämning.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Kiinteistötoimitushakemuksella voit hakea muun muassa tontin lohkomista, rasitetoimitusta ja kiinteistön- ja rajanmääritystä.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2018-04-05T07:07:49.946645",
+  "id" : "30217b28-7040-4c4c-b26e-3122f4cd3f1d"
+}

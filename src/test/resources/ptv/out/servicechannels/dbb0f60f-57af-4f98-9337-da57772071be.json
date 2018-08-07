@@ -1,0 +1,181 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://kirjasto.vaasa.fi/fi/library-page/variskan-kirjasto",
+    "value" : "Variskan kirjasto",
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://kirjasto.vaasa.fi/sv/library-page/variska-bibliotek",
+    "value" : "Variska bibliotek",
+    "language" : "sv"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Gamla Vasa gatan",
+        "language" : "sv"
+      }, {
+        "value" : "Vanhan Vaasan katu",
+        "language" : "fi"
+      } ],
+      "streetNumber" : "20",
+      "postalCode" : "65370",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ ],
+      "latitude" : "7006086.277",
+      "longitude" : "233862.713",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "435f2ae4-fbb4-416f-9255-716c49c3b228",
+      "name" : "Kirjastopalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "063253575",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "063253575",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ {
+    "value" : "kirjasto.variska@vaasa.fi",
+    "language" : "fi"
+  }, {
+    "value" : "kirjasto.variska@vaasa.fi",
+    "language" : "sv"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Variskan kirjasto",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Variska bibliotek",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ {
+    "serviceHourType" : "DaysOfTheWeek",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ ],
+    "openingHour" : [ {
+      "dayFrom" : "Monday",
+      "dayTo" : "",
+      "from" : "12:00:00",
+      "to" : "19:00:00"
+    }, {
+      "dayFrom" : "Tuesday",
+      "dayTo" : "",
+      "from" : "12:00:00",
+      "to" : "19:00:00"
+    }, {
+      "dayFrom" : "Wednesday",
+      "dayTo" : "",
+      "from" : "12:00:00",
+      "to" : "19:00:00"
+    }, {
+      "dayFrom" : "Thursday",
+      "dayTo" : "",
+      "from" : "10:00:00",
+      "to" : "16:00:00"
+    }, {
+      "dayFrom" : "Friday",
+      "dayTo" : "",
+      "from" : "10:00:00",
+      "to" : "16:00:00"
+    } ]
+  } ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Variskan kirjasto sijaitsee samassa rakennuksessa Variskan koulun kanssa.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "I bibliotekets allaktivitetsutrymmen ordnas utställningar och dessa hyrs även ut för mötesanvändning. Mer information och öppethållningstider från Variska bibliotekets webbsidor. ",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Variska bibliotek finns i samma byggnad som Variskan koulu.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Kirjaston monitoimitilassa järjestetään näyttelyitä ja sitä vuokrataan myös kokouskäyttöön. Lisätietoa ja aukioloajat Variskan kirjaston verkkosivuilta. ",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2018-05-28T09:20:36.01685",
+  "id" : "dbb0f60f-57af-4f98-9337-da57772071be"
+}

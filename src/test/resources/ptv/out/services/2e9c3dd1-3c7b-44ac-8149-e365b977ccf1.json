@@ -1,0 +1,221 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Sosiaalipalvelut",
+      "language" : "fi"
+    }, {
+      "value" : "Socialtjänster",
+      "language" : "sv"
+    }, {
+      "value" : "Social services",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Tässä palveluluokassa käsitellään sekä yleisiä että erityisryhmille suunnattuja sosiaalipalveluja, jotka on tarkoitettu kansalaisten arjen, asumisen ja toimeentulon tukemiseen.",
+      "language" : "fi"
+    }, {
+      "value" : "I den här servicegruppen behandlas både allmänna socialtjänster och socialtjänster för specialgrupper, vilka avsetts som stöd för medborgarnas vardag, boende och försörjning.",
+      "language" : "sv"
+    }, {
+      "value" : "This service class contains both general social services and those targeted at special groups to support citizens’ everyday life management, housing and incomes.",
+      "language" : "en"
+    } ],
+    "code" : "P4",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1023",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "dd4caf4b-ff5f-4228-8de4-e4f4ad27523d",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "2e9c3dd1-3c7b-44ac-8149-e365b977ccf1",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "005bf017-7733-444c-9f94-6b16857aafbb",
+      "name" : "Sosiaalipäivystys"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv", "en" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Sosiaalipäivystys",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Socialjour",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "sosiaalipäivystys (päivystys)",
+      "language" : "fi"
+    } ],
+    "code" : null,
+    "ontologyType" : "TERO",
+    "uri" : "http://www.yso.fi/onto/koko/p76751",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p14988"
+  }, {
+    "name" : [ {
+      "value" : "sosiaalipäivystys (sosiaalipalvelut)",
+      "language" : "fi"
+    }, {
+      "value" : "socialjour",
+      "language" : "sv"
+    }, {
+      "value" : "24-hour social services",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p60126",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p18203"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : "Sosiaalipäivystys vastaa kiireelliseen sosiaaliseen avuntarpeeseen kaikkina vuorokauden aikoina ja viikonpäivinä.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Sosiaalipäivystys vastaa kiireelliseen sosiaaliseen avuntarpeeseen kaikkina vuorokauden aikoina ja viikonpäivinä.\n\nKiireellisen avun tarpeessa voi olla hoivaa vaille jäänyt lapsi, nuori ongelmineen tai vanhus, jonka kunto heikkenee äkillisesti, tai päihteiden käytön vuoksi nopeasti hoitoa tarvitseva.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Kiireellistä sosiaalipalvelua vuorokauden ympäri antaa Pohjanmaan sosiaalipäivystys numerossa 06 325 2347. ",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : "Socialjouren svarar på brådskande behov av socialhjälp alla tider på dygnet alla dagar i veckan.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Socialjouren svarar på brådskande behov av socialhjälp alla tider på dygnet alla dagar i veckan.\n\nDet kan vara ett barn, en ung person med problem eller en äldre person vars kondition snabbt försämras, eller en person som på grund av rusmedelsbruk är i behov av snabb vård som behöver brådskande hjälp.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : "Brådskande socialservice dygnet runt ges på Österbottens socialjournummer 06 325 2347.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

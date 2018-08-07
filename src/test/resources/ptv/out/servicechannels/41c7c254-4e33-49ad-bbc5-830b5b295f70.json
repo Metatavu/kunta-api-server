@@ -1,0 +1,190 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "1",
+    "url" : "http://www.naantali.fi/opetus_ja_koulutus/koulut/velkua/henkilokunta/fi_FI/henkilokunta/",
+    "value" : "Velkuan koulun henkilökunta",
+    "language" : "fi"
+  }, {
+    "orderNumber" : "2",
+    "url" : "http://www.naantali.fi/opetus_ja_koulutus/koulut/velkua/fi_FI/etusivu/",
+    "value" : "Velkuan koulun www-sivut",
+    "language" : "fi"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Palvan koulutie",
+        "language" : "fi"
+      } ],
+      "streetNumber" : "9",
+      "postalCode" : "21195",
+      "postOffice" : [ {
+        "value" : "VELKUA",
+        "language" : "sv"
+      }, {
+        "value" : "VELKUA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "529",
+        "name" : [ {
+          "value" : "Naantali",
+          "language" : "fi"
+        }, {
+          "value" : "Nådendal",
+          "language" : "sv"
+        }, {
+          "value" : "Naantali",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ ],
+      "latitude" : "6715084.463",
+      "longitude" : "206920.995",
+      "coordinateState" : "EnteredByUser"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  }, {
+    "type" : "Postal",
+    "subType" : "PostOfficeBox",
+    "postOfficeBoxAddress" : {
+      "postOfficeBox" : [ {
+        "value" : "PL 43",
+        "language" : "fi"
+      } ],
+      "postalCode" : "21101",
+      "postOffice" : [ {
+        "value" : "NAANTALI",
+        "language" : "sv"
+      }, {
+        "value" : "NAANTALI",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "529",
+        "name" : [ {
+          "value" : "Naantali",
+          "language" : "fi"
+        }, {
+          "value" : "Nådendal",
+          "language" : "sv"
+        }, {
+          "value" : "Naantali",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ ]
+    },
+    "streetAddress" : null,
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "25b6bae1-fa45-4fe4-8ea1-36260c46b2ce",
+      "name" : "Nuorisotyö"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "8c7ac754-4229-4abc-b2a8-d51b817f43f2",
+      "name" : "Päivähoito esiopetusikäisille"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "aa770428-0ee1-433d-8d2c-90c060c477cd",
+      "name" : "Perusopetuksen erityisopetus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "e45cae1e-dfbc-44eb-b57b-ef73f21b38c4",
+      "name" : "Perusopetus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : "Koulunjohtaja",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "409000835",
+    "language" : "fi"
+  } ],
+  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "emails" : [ {
+    "value" : "etunimi.sukunimi@naantali.fi",
+    "language" : "fi"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Velkuan koulu",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Velkuan koulu on Naantalin kaupungin perusopetuksen yhtenäiskoulu, jossa annetaan opetusta esiluokasta yhdeksänteen luokkaan.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Velkuan koulu on yhtenäiskoulu, jossa annetaan opetusta esiluokasta yhdeksänteen luokkaan. Koulu sijaitsee Palvan saarella, jonne on lossiyhteys. Oppilaita on noin 50 ja kokoaikaisia opettajia kolme. Lisäksi koulussa työskentelee osa-aikaisia tuntiopettajia, etäopettajia sekä kaksi koulunkäynninohjaajaa. \n\nJo alakoulun puolella oppilaat saavat nauttia tarvittaessa syvemmällekin pureutuvasta opetuksesta aineopettajien opettaessa oppilaita osassa aineista jo luokilla 3 - 6. Myös etäopetus on Velkuan koulussa toimivaa arkipäivää. Suurin osa koulun kieltenopetuksesta järjestetään etäopetuksena. Koulua ympäröivää saaristoluontoa hyödynnetään monilla tavoin opetuksessa. Velkuan koulu on laajentanut toimintaansa koulun lähimetsässä olevaan metsäluokkaan. Tablettien ja sähköisten oppimisalustojen avulla toiminta on laajentunut myös bittiavaruuteen ja pilveen.\n\nVelkuan koululaiset oppivat saaristolaisiksi, jotka pärjäävät merellä ja metsässä, oppivat kunnioittamaan luontoa ja nauttimaan meren läheisyydestä sekä arvostavat kädentaitoja. Kestävän kehityksen näkökulmat läpäisevät kaiken opetuksen.\n\nVelkuan koulussa opetus on joustavaa ja yksilöllistä. Pienessä koulussa eri-ikäiset oppilaat harjaantuvat toimimaan yhdessä. Opettajat, avustajat, oppilaat ja vanhemmat tulevat tutuiksi toisilleen ja erilaisten oppilaiden tarpeiden huomiointi on ihanteellisesti mahdollista. Pienissä luokissa oppimista haittaaviin tekijöihin voidaan puuttua nopeasti ja yhteistyö kodin ja koulun välillä on kiinteää. Erityisoppilaat opiskelevat avustajien tukemina yleisopetuksen jo valmiiksi pienissä ryhmissä.\n",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "41c7c254-4e33-49ad-bbc5-830b5b295f70"
+}

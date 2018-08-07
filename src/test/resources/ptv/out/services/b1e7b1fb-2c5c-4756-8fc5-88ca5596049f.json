@@ -1,0 +1,291 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "PermitOrObligation",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Toimialakohtaiset luvat ja velvoitteet",
+      "language" : "fi"
+    }, {
+      "value" : "Sector-specific permits and obligations",
+      "language" : "en"
+    }, {
+      "value" : "Branschspecifika tillstånd och skyldigheter",
+      "language" : "sv"
+    } ],
+    "description" : [ {
+      "value" : "Tähän alapalveluluokkaan kuuluvat yritystoimintaa velvoittavat asiat, jotka voivat liittyä lupien hankintaan, ilmoituksien tekemiseen tai rekisteröinteihin.",
+      "language" : "fi"
+    }, {
+      "value" : "Denna underservicegrupp omfattar obligatoriska ärenden relaterade till företagsverksamhet, såsom tillstånd, anmälningar och registrering.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains obligations associated with enterprising, which may be related to obtaining permits, submitting notifications or completing registrations.",
+      "language" : "en"
+    } ],
+    "code" : "P11.2",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1107",
+    "parentId" : "60445628-3697-444b-b4b8-ef0cd42b45cf",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1105"
+  }, {
+    "name" : [ {
+      "value" : "Rakentaminen",
+      "language" : "fi"
+    }, {
+      "value" : "Byggande",
+      "language" : "sv"
+    }, {
+      "value" : "Construction",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Tässä alapalveluluokassa käsitellään rakentamiseen liittyviä asioita yksityisen rakentajan palvelujen näkökulmasta. Keskeisiä asioita ovat esimerkiksi rakentamisen luvat ja lupaprosessit, rakennusvalvonnasta huolehtiminen, remontointi ja korjausrakentaminen sekä rakentamiseen liittyvät veroasiat.",
+      "language" : "fi"
+    }, {
+      "value" : "This subclass contains issues related to construction from the point of view of services for private builders. Key issues include permits and permit processes of construction, ensuring appropriate building control, renovations and repairs as well as tax issues relevant to construction.",
+      "language" : "en"
+    }, {
+      "value" : "I denna serviceundergrupp behandlas ärenden i samband med byggande utgående från tjänster för en privat byggare. Centrala ärenden är t.ex. bygglov och tillståndsprocesser, sörjande för byggnadstillsyn, renovering och ombyggnad samt skatteärenden i anslutning till byggande.",
+      "language" : "sv"
+    } ],
+    "code" : "P2.1",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1008",
+    "parentId" : "dd30002b-be2b-4689-878a-60e93492cc87",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1007"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "80b50071-f93b-4e8d-a6dc-79ad64fe17e0",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "b1e7b1fb-2c5c-4756-8fc5-88ca5596049f",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "04865528-c7d0-42b0-b68d-da814e06b222",
+      "name" : "Kaavoitus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "5382bfb6-81b7-42a3-8624-4c9f90b223e5",
+      "name" : "Maisematyöluvan hakemuslomake"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "801c60af-bf19-4355-8c14-512050059b2e",
+      "name" : "Naapurien kuuleminen"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : "Lupa on myönnettävä asema-, yleiskaava- tai rakennuskieltoalueella, jollei toimenpide vaikeuta alueen käyttämistä kaavassa varattuun tarkoitukseen tai turmele kaupunki- tai maisemakuvaa. (Maankäyttö- ja rakennuslaki 128 § ja 140 §). \n\nMaisematyöluvan alaiset toimenpiteet eivät koske maa-ainesten ottamista (maa-ainesten kaupallinen myynti), joka on maa-aineslain piiriin kuuluvaa toimintaa. Maa-ainesluvista Vaasan kaupungilla vastaa ympäristöosasto.\n\nMaisematyöluvan piiriin kuulumattomista puiden kaatotöistä voi tiedustella Vaasan kaupungin viheralueyksiköstä, josta yksityistontin omistaja saa neuvoa ja vuokratontin haltija voi kysyä lupaa kaatotöihin.",
+    "language" : "fi"
+  }, {
+    "value" : "Tillstånd bör beviljas på detalj-, generalplane- och byggförbudsområde, om inte åtgärden försvårar användningen av området för det ändamål som har reserverats i planen eller förstör stads- eller landskapsbilden.\n(Markanvändnings- och bygglagen § 128 och § 140)\n\nTillstånd för miljöåtgärder gäller inte marktäkt (kommersiell försäljning av marksubstanser), en verksamhet som faller inom ramen för marktäktslagen. I Vasa stad är det miljöavdelningen som ansvarar för marktäktstillstånden.\n\nNär det gäller fällning av träd som inte berörs av tillstånd för miljöåtgärder, kontakta Vasa stads grönområdesenhet, som ger ägare av privat tomt råd och kan ge innehavare av arrendetomt tillstånd till trädfällning.",
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : null,
+  "serviceNames" : [ {
+    "language" : "sv",
+    "value" : "Tillstånd för miljöåtgärder",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Maisematyölupa",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "byggnadstillsyn",
+      "language" : "sv"
+    }, {
+      "value" : "rakennusvalvonta",
+      "language" : "fi"
+    }, {
+      "value" : "supervisory control of building",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p31057",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p35439"
+  }, {
+    "name" : [ {
+      "value" : "markbyggnad",
+      "language" : "sv"
+    }, {
+      "value" : "maarakennus",
+      "language" : "fi"
+    }, {
+      "value" : "earth construction",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p34969",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p34882"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Yritykset ja yhteisöt",
+      "language" : "fi"
+    }, {
+      "value" : "Businesses and non-government organizations",
+      "language" : "en"
+    }, {
+      "value" : "Företag och samfund",
+      "language" : "sv"
+    } ],
+    "code" : "KR2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : "Tillstånd för miljöåtgärder behövs för sådant jordbyggnadsarbete,sådan trädfällning eller någon annan därmed jämförbar åtgärd som förändrar landskapet",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Tillstånd för miljöåtgärder behövs för sådant jordbyggnadsarbete (t.ex. grävning, utfyllnad och sprängning), sådan trädfällning eller någon annan därmed jämförbar åtgärd som förändrar landskapet. Den som innehar platsen ansvarar för att det finns nödvändiga tillstånd för de åtgärder som vidtas. Ytterligare uppgifter och vägledning ger Planläggningen.\n\nTillstånd behövs inte:\n* för att genomföra åtgärder som är nödvändiga för genomförande av general- eller detaljplan\n* för utförande av arbeten i enlighet med beviljat bygglov eller åtgärdstillstånd\n* för åtgärder med ringa inverkningar (bedöms från fall till fall)\n* för genomförande av vägplan i enlighet med landsvägslagen och järnvägsplan i enlighet med banlagen.\nI sista hand är det planläggningen som avgör om tillstånd behövs.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Tillstånd för miljöåtgärder söks med planläggningens blankett. Av ansökan bör framgå hurdana och hur omfattande åtgärder det är fråga om (när det gäller jordbyggnad också nuvarande och kommande höjdnivåer), eventuella efterarbeten (t.ex. plantering av nya träd, anpassning av jordbyggnadsarbetet till landskapet e.d.) samt motiveringar till åtgärderna. Därtill bör nödvändiga bilagor lämnas in i samband med ansökan.\n* En utredning över att det är sökanden som innehar platsen (exempelvis en kopia av arrendeavtalet, om innehavet av platsen är baserat på arrendeförhållande).\n* Fullmakt, om sökanden är någon annan än den som innehar platsen.\n* Kartutdrag/situationsplan, varav åtgärdernas läge, beskaffenhet och omfattning framgår i nödvändig utsträckning.\n* En utredning om hörande av grannarna på planläggningens blankett. Grannar är angränsande och mittemot belägna fastigheters ägare och innehavare. Sökanden kan själv höra grannarna eller alternativt kan planläggningen sköta hörandet mot extra betalning.\n* Annan väsentlig utredning som behövs för att avgöra ansökan om tillstånd för miljöåtgärder.\nNär det är ett bolag som ansöker\n* bifogas en utredning över den bolagsrättsliga fullmakten.\n* behövs ett utdrag eller en kopia av det styrelsemötesprotokoll, där man har beslutat om ärendet som miljöåtgärdstillståndet gäller. ",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : "Ansökan om tillstånd för miljöåtgärder behandlas på planläggningen och förs till stadsstyrelsens planeringssektion för avgörande. Planeringssektionens sammanträden hålls ungefär en gång i månaden (förutom i juli när inget sammanträde hålls). Besvärstiden för miljöåtgärdstillstånd är 30 dagar, och därefter vinner beslutet laga kraft.",
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : "Tillståndet för miljöåtgärder gäller i tre (3) år. Att beslutet följs övervakas av byggnadstillsynen.",
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Maisematyölupa on voimassa kolme (3) vuotta. Päätöksen noudattamista valvoo rakennusvalvonta.",
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : "Maisematyölupahakemus käsitellään kaavoituksessa ja viedään kaupunginhallituksen suunnittelujaoston päätettäväksi. Suunnittelujaoston kokoukset ovat noin kuukauden välein (heinäkuussa ei kokousta). Maisematyöluvalla on 30 päivän valitusaika, jonka jälkeen päätös on lainvoimainen.",
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : "Maisematyölupa tarvitaan maisemaa muuttavaan maanrakennustyöhön, puiden kaatamiseen ja vastaaviin toimiin asemakaava-alueella.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Maisematyölupaa haetaan kaavoituksen lomakkeella. Hakemuksesta tulee käydä ilmi millaisista ja kuinka laajoista toimenpiteistä on kyse (maanrakennustyössä myös nykyiset ja tulevat korot), mahdolliset jälkihoitotoimenpiteet (esim. uuden puun istutus, maanrakennustyön maisemointi tms.) sekä perustelut toimenpiteille. Lisäksi hakemuksen yhteydessä tulisi esittää tarpeelliset liitteet.\n* Selvitys siitä, että hakija hallitsee paikkaa (esim. kopio maanvuokrasopimuksesta, jos paikan hallinta perustuu vuokrasuhteeseen).\n* Valtakirja, mikäli hakijana toimii joku muu kuin paikan haltija.\n* Karttaote/asemapiirros, josta selviää tarvittavissa määrin toimenpiteiden sijainti, laatu ja laajuus.\n* Selvitys naapurien kuulemisesta kaavoituksen lomakkeella. Naapureita ovat kiinteistöön rajoittuvien ja vastapäätä olevien kiinteistöjen omistajat ja haltijat. Hakija voi itse kuulla naapurit tai vaihtoehtoisesti kaavoitus voi hoitaa kuulemisen lisämaksusta.\n* Muu maisematyöluvan ratkaisemiseksi tarvittava olennainen selvitys.\nYhtiön ollessa hakijana lisäksi tarvitaan:\n*  liitetään selvitys yhtiön nimenkirjoitusoikeudesta.\n* tarvitaan ote tai kopio hallituksen kokouksen pöytäkirjasta, jossa maisematyölupa-asiasta on päätetty.                \n\n",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Maisematyölupa tarvitaan maisemaa muuttavaan maanrakennustyöhön (esim. kaivaminen, täyttäminen ja louhinta), puiden kaatamiseen tai muuhun näihin verrattavaan toimenpiteeseen. Paikan haltija on vastuussa siitä, että suorittamillaan toimenpiteillä on tarvittavat luvat. Lisätietoja ja opastusta saa Vaasan kaupungin kaavoituksesta. \n\nLupaa ei tarvita:\n* yleis- tai asemakaavan toteuttamiseksi tarpeellisten toimenpiteiden toteuttamiseen.\n* myönnetyn rakennus- tai toimenpideluvan mukaisten töiden suorittamiseen.\n* vaikutuksiltaan vähäisiin toimenpiteisiin (arvioidaan tapauskohtaisesti).\n* maantielain mukaisen tiesuunnitelman tai ratalain mukaisen ratasuunnitelman toteutukseen.\nHarkinta luvan tarpeellisuudessa kuuluu kuitenkin viime kädessä kaavoitukselle.",
+    "type" : "Description"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

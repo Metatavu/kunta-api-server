@@ -1,0 +1,113 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/isolahden-koulu",
+    "value" : "Isolahden koulu",
+    "language" : "fi"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Pallokatu",
+        "language" : "fi"
+      } ],
+      "streetNumber" : "17",
+      "postalCode" : "65230",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ ],
+      "latitude" : "7010476.78",
+      "longitude" : "228269.653",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "17c633dd-5408-495a-86c1-d8f57598e899",
+      "name" : "Perusopetus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : "Rehtori Taito Gromov",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63253210",
+    "language" : "fi"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Isolahden koulu",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Isolahden koulu on kehittyvä vaasalainen peruskoulu, jossa yhdistyy yleisopetus ja erityisopetus.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Isolahden koulu on kehittyvä vaasalainen peruskoulu, jossa yhdistyy yleisopetus ja erityisopetus. Koulussa on noin 270 oppilasta ja työskentelee noin 60 aikuista. Koulussamme on yleisopetuksen luokat 1-6. Luokkia on kahdessa eri sarjassa, eli A- ja B -luokat. Yhdysluokiksi kutsumme erityisopetuksen 0-10-luokkia, joiden oppilaat tarvitsevat pysyvästi erityistä tukea ja ovat pidemmässä oppivelvollisuudessa. Meillä on karkeasti jaoteltuna vuosittain noin 220 yleisopetuksen oppilasta ja 50 erityisopetuksen oppilasta. Isolahden koulussa on tehty vaiheittainen peruskorjaus vuosien 2008-2016 aikana. Peruskorjaushankkeessa kouluun on saatu erikokoisten ja erilaisten oppilasryhmien tarpeiden mukaisia luokkatiloja. Kalustamisen yhteydessä on ajanmukaistettu muun muassa atk-varusteita. Peruskorjaushankkeen aikana on uusittu myös piha-alueita, kulkureittejä ja valaistusta. Tekonurmikenttä on ollut käytössä marraskuusta 2014. Tavoitteena on ollut kehittää koulualueesta sellainen, että siellä viihdytään myös vapaa-ajalla. Koulun suuri liikuntasali tarjoaa niin ikään hyviä liikuntamahdollisuuksia. Kehitämme koko ajan opetusta ajan hengessä ja korostamme opetuksessa toisen huomioon ottamista ja hyviä tapoja. Koulussa on myös iltapäiväkerho.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "8889e704-3b1a-4199-8e3f-2aa758a52d0f"
+}

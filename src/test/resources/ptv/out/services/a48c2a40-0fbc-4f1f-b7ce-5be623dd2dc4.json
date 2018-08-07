@@ -1,0 +1,256 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Sosiaalipalvelujen neuvonta- ja ohjauspalvelut",
+      "language" : "fi"
+    }, {
+      "value" : "Socialtjänsternas rådgivnings- och handledningstjänster",
+      "language" : "sv"
+    }, {
+      "value" : "Social service advisory and guidance services",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Till denna serviceundergrupp hör allmän rådgivning och handledning gällande socialtjänster som erbjuds medborgarna samt stöd till socialtjänstklienter i frågor som gäller socialtjänster, t.ex. rättsskydd och kundförhållande. Till exempel socialombudsmannens verksamhet hör till denna grupp.",
+      "language" : "sv"
+    }, {
+      "value" : "Tähän alapalveluluokkaan kuuluu kansalaisille annettava sosiaalipalveluja koskeva yleinen neuvonta ja ohjaus sekä sosiaalihuollon asiakkaiden tukeminen sosiaalipalveluja koskevissa, esimerkiksi oikeusturvaan ja asiakkuuteen liittyvissä kysymyksissä. Esimerkiksi sosiaaliasiamiehen toiminta kuuluu tähän luokkaan.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass includes general advice and guidance on social services provided for citizens as well as support for social welfare clients in issues related to social services, including legal protection and client relationships. For example, the activities of a social services ombudsman belong to this class.",
+      "language" : "en"
+    } ],
+    "code" : "P4.13",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1036",
+    "parentId" : "079b55da-af80-41ab-9346-c8fdd284afcf",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1023"
+  }, {
+    "name" : [ {
+      "value" : "Vammaisten muut kuin asumis- ja kotipalvelut",
+      "language" : "fi"
+    }, {
+      "value" : "Andra än boende- och hemservice för personer med funktionsnedsättning",
+      "language" : "sv"
+    }, {
+      "value" : "Services for the disabled other than housing and home services",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Till denna serviceundergrupp hör andra än boendeservice, bl.a. rehabiliterings-, tolknings- och färdtjänster för personer med funktionsnedsättning.",
+      "language" : "sv"
+    }, {
+      "value" : "Tähän alapalveluluokkaan kuuluvat vammaisten muut kuin asumispalvelut, muun muassa kuntoutus-, tulkkaus- ja kuljetuspalvelut.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains services for persons with disabilities, excluding housing services and including rehabilitation, interpretation and transport services.",
+      "language" : "en"
+    } ],
+    "code" : "P4.4",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1027",
+    "parentId" : "079b55da-af80-41ab-9346-c8fdd284afcf",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1023"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "661fd1c5-5549-4fff-8408-232a205d57a4",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-10-06T11:29:29.157274",
+  "id" : "a48c2a40-0fbc-4f1f-b7ce-5be623dd2dc4",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "2ba08719-ae78-408a-82ab-1276410029c2",
+      "name" : "Sosiaalityöntekijä (asiakkaat M - Ö), vammaispalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "4fa40ae7-4693-415f-8be7-0af7880a7501",
+      "name" : "Sosiaalityöntekijä (asiakkaat A - L), vammaispalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "74d6e94d-a6de-4222-989c-b6d688093ab3",
+      "name" : "Avohuollon ohjaaja, vammaispalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "b21a7ec6-a338-43c7-87fb-350831ea6e17",
+      "name" : "Naantalin vammaispalvelujen verkkosivu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : null,
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Vammaisten palveluohjaus",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "handikappservice",
+      "language" : "sv"
+    }, {
+      "value" : "vammaispalvelut",
+      "language" : "fi"
+    }, {
+      "value" : "services for the disabled",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "TERO",
+    "uri" : "http://www.yso.fi/onto/koko/p70909",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p18203"
+  }, {
+    "name" : [ {
+      "value" : "servicerådgivning",
+      "language" : "sv"
+    }, {
+      "value" : "palveluohjaus",
+      "language" : "fi"
+    }, {
+      "value" : "service counselling",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p6198",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p77930"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Vammaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Disabled people",
+      "language" : "en"
+    }, {
+      "value" : "Handikappade",
+      "language" : "sv"
+    } ],
+    "code" : "KR1.6",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2007",
+    "parentId" : "daff1fb9-9394-49b5-b033-d1d1c7005ab6",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001"
+  }, {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Vammaisten palveluohjauksessa vammainen henkilö ja hänen omaisensa saavat neuvontaa, ohjausta ja tietoa tarjolla olevista vammaispalveluista.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Naantalin kaupungin vammaisten palveluohjauksessa vammainen henkilö ja hänen omaisensa saavat neuvontaa, ohjausta ja tietoa tarjolla olevista vammaispalveluista. Palveluohjauksen tavoitteena on suunnitella palveluita yhdessä asiakkaan, omaisten ja mahdollisten yhteistyötahojen kanssa.\n\nTarkoituksena on, että vammainen asiakas saa oikeanlaiset ja hänen tarpeisiinsa sopivat palvelu- ja tukimuodot. ",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

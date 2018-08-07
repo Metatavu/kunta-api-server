@@ -1,0 +1,259 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Lasten päivähoito",
+      "language" : "fi"
+    }, {
+      "value" : "Barndagvård",
+      "language" : "sv"
+    }, {
+      "value" : "Day-care for children",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Till denna serviceundergrupp hör barnets rättigheter i anslutning till dagvård för små barn, förutsättningar för dagvård, ärendehanteringstjänster och ansökningsförfaranden, olika genomföringsformer och servicekanaler för dagvård, vårdavgifter och bidrag i anslutning till dem.",
+      "language" : "sv"
+    }, {
+      "value" : "Tähän alapalveluluokkaan kuuluvat pienten lasten päivähoitoon liittyvät lapsen oikeudet, päivähoidon saamisen edellytykset, asiointipalvelut ja hakumenettelyt, erilaiset päivähoidon toteuttamismuodot ja palvelukanavat, hoidon maksut ja niihin liittyvät taloudelliset tuet.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains a child’s rights related to day-care for young children, eligibility criteria, e-services and application procedures associated with day-care, different forms and service channels of day-care provision, fees charged for day-care and financial support related to the fees.",
+      "language" : "en"
+    } ],
+    "code" : "P3.4",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1017",
+    "parentId" : "77af99fa-93eb-4de6-ac83-1b161a961263",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1013"
+  }, {
+    "name" : [ {
+      "value" : "Vammaisten muut kuin asumis- ja kotipalvelut",
+      "language" : "fi"
+    }, {
+      "value" : "Andra än boende- och hemservice för personer med funktionsnedsättning",
+      "language" : "sv"
+    }, {
+      "value" : "Services for the disabled other than housing and home services",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Till denna serviceundergrupp hör andra än boendeservice, bl.a. rehabiliterings-, tolknings- och färdtjänster för personer med funktionsnedsättning.",
+      "language" : "sv"
+    }, {
+      "value" : "Tähän alapalveluluokkaan kuuluvat vammaisten muut kuin asumispalvelut, muun muassa kuntoutus-, tulkkaus- ja kuljetuspalvelut.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains services for persons with disabilities, excluding housing services and including rehabilitation, interpretation and transport services.",
+      "language" : "en"
+    } ],
+    "code" : "P4.4",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1027",
+    "parentId" : "079b55da-af80-41ab-9346-c8fdd284afcf",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1023"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "39a1ba7c-e9b0-43bd-aa5b-761418da50dd",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "3d5568a8-72b1-4822-aaab-0dc6285fbf0a",
+      "name" : "Vammaisten iltapäivä- ja lomahoidon vastaava ohjaaja"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "be10e244-cef5-496b-8e62-a9697981f46b",
+      "name" : "Sosiaalityöntekijä - vammaispalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "e3f2831a-a2ef-4056-8f56-14f5ea580845",
+      "name" : "Vammaisten iltapäivä- ja lomahoito"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "sv",
+    "value" : "Eftermiddag- och semestervård för personer med funktionsnedsättning",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Vammaisten iltapäivä- ja lomahoito",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "eftermiddagsverksamhet för personer med utvecklingsstörning",
+      "language" : "sv"
+    }, {
+      "value" : "kehitysvammaisten iltapäivätoiminta",
+      "language" : "fi"
+    }, {
+      "value" : "after-school activities for persons with developmental disabilities",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p69278",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p16586"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : "Eftermiddags- och semestervård i enlighet med lagen om specialomsorger om utvecklingsstörda ordnas med beaktande av klientens individuella behov.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : "Eftermiddags- och semestervård i enlighet med lagen om specialomsorger om utvecklingsstörda ordnas med beaktande av klientens individuella behov.\n\nFör skolelever från tredje klassen ordnas eftermiddagsvård i samarbete med verket för fostran och utbildning.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Sosiaalityöntekijät antavat palvelusta lisätietoja.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Vammaisten erityishuoltolain mukainen iltapäivä sekä loma-ajanhoito järjestetään asiakkaan yksilölliset tarpeet huomioiden.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Vammaisten erityishuoltolain mukainen iltapäivä sekä loma-ajanhoito järjestetään asiakkaan yksilölliset tarpeet huomioiden.\n\nKoululaisten iltapäivätoimintaa järjestetään iltapäiväkodeissa. Yksilöllistä ja kodinomaista hoitoa annetaan sekä kehitysvammaisille että autistismin kirjoon kuuluville lapsille ja nuorille koulupäivän jälkeen kolmannesta koululuokasta eteenpäin. Kodit ovat avoinna arkisin koulupäivän jälkeen klo 16.30 saakka ja koulujen loma-aikoina tarvittaessa kokopäiväisesti. \n\n",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

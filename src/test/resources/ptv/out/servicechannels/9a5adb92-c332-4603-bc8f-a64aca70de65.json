@@ -1,0 +1,61 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/palvelut/kaivuluvat",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/sv/tjanster/gravtillstand",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "51e6aef9-72e8-4bf4-b438-41e5f3d02f03",
+      "name" : "Kaivuluvat"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "sv",
+    "value" : "Grävtillstånd",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Kaivuluvat",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "På sidan Grävtillstånd hittar du ytterligare information om grävtillståndsärenden, t.ex. om Vasa stads gräv- och placeringstillstånd samt avgifter för grävtillståndsbehandling och övervakning. ",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Kaivuluvat -sivulta löydät lisätietoa kaivulupiin liittyvistä asioista, kuten Vaasan kaupungin kaivu- ja sijoituslupamääräyksistä sekä kaivulupakäsittely- ja valvontamaksuista.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Kaivulupaa haetaan kaivulupahakemuksella. Täytä sähköinen kaivulupahakemus tai lähetä hakemus postitse Vaasan kaupungin Kuntatekniikkaan.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Grävtillstånd ansöks med tillståndsansökan. Fyll i ansökan om grävtillstånd elektroniskt eller skicka den per post till Vasa stads kommunteknik.",
+    "type" : "Summary"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "9a5adb92-c332-4603-bc8f-a64aca70de65"
+}

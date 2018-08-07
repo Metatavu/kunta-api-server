@@ -1,0 +1,61 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/node/8441",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/sv/node/8441",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "0f97c621-8a82-41e9-b235-42095910a276",
+      "name" : "Katujen ja yleisten alueiden kunnossapito"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Katujen kunnossapidon verkkosivut",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Webbsidor för underhåll av gator",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Lisää tietoa katujen kunnossapidosta, kunnossapitoluokista ja tehdyistä päällystekorjauksista löydät Vaasan kaupungin verkkosivuilta.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Lisää tietoa katujen kunnossapidosta, kunnossapitoluokista ja tehdyistä päällystekorjauksista löydät Vaasan kaupungin verkkosivuilta.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Mer information om underhåll av gator, underhållsklasser och utförda beläggningsreparationer finns på Vasa stads webbsidor.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Mer information om underhåll av gator, underhållsklasser och utförda beläggningsreparationer finns på Vasa stads webbsidor. ",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "a72ca81b-00a4-49fd-bd26-756545fff3d9"
+}

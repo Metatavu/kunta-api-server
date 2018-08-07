@@ -1,0 +1,83 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "http://www.vaasanvesi.fi/etusivu",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "http://www.vaasanvesi.fi/web/sv/etusivu",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv", "en" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "414b4c1c-7d39-4ad0-bcb4-a0926c6f2d51",
+      "name" : "Jäteveden puhdistus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "5210e364-8b49-4eb4-bd4e-4df8b34a7bbd",
+      "name" : "Liittyminen vesi- ja viemäriverkostoon"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "5bc8f908-9b0b-45a9-8c06-b6d7e325cb5a",
+      "name" : "Veden tuotanto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "sv",
+    "value" : "Vasa Vattens webbsidor",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan Veden verkkosivut",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "På Vasa Vattens webbsidor hittar du tilläggsuppgifter om organisationens tjänster.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "På Vasa Vattens webbsidor hittar du tilläggsuppgifter om organisationens tjänster.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan veden verkkosivuilta löydät lisätietoja organisaation palveluista.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan veden verkkosivuilta löydät lisätietoja organisaation palveluista.",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "16548766-39da-42a7-9c04-874fb781856d"
+}

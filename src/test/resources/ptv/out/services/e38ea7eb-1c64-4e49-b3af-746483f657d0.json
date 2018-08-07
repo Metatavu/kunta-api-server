@@ -1,0 +1,139 @@
+{
+  "sourceId" : null,
+  "keywords" : [ {
+    "value" : "Tunnistaminen, Tunnistus",
+    "language" : "fi"
+  } ],
+  "areas" : [ ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Generella informations- ja förvaltningstjänster",
+      "language" : "sv"
+    }, {
+      "value" : "General information and administrative services",
+      "language" : "en"
+    }, {
+      "value" : "Yleiset tieto- ja hallintopalvelut",
+      "language" : "fi"
+    } ],
+    "description" : [ {
+      "value" : "I denna servicegrupp behandlas informations-, förvaltnings- och stödtjänster riktade till medborgare, samfund och andra myndigheter som till innehållet kan hänföra sig till vilket ämne som helst och därför inte kan placeras under de andra offentliga förvaltningens servicegrupper.",
+      "language" : "sv"
+    }, {
+      "value" : "This service class features services that offer general information, administrative and support services to citizens and public and private organisations. These are services that are not connected to any specific service topic and for that reason cannot be included in the other main classes of the service classification.",
+      "language" : "en"
+    }, {
+      "value" : "Tässä palveluluokassa käsitellään kansalaisille, yhteisöille ja toisille viranomaisille tarjottavia tieto-, hallinto- ja tukipalveluja, jotka sisällöltään voivat liittyä mihin aiheeseen tahansa ja joita ei tämän vuoksi voida sijoittaa julkisen palvelun luokituksen muihin aiheluokkiin.",
+      "language" : "fi"
+    } ],
+    "code" : "P9",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1095",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "Nationwide",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "e38ea7eb-1c64-4e49-b3af-746483f657d0",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "dbd61d83-be97-41f1-a91b-3a61fad3354a",
+      "name" : "Suomi.fi-tunnistuksen käyttöönotto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : "Palvelun käyttäminen edellyttää palvelun käyttöönottoa ja käyttöehtojen hyväksymistä. Julkisen hallinnon organisaation on integroitava tietojärjestelmänsä Suomi.fi-tunnistukseen sopiviksi. Organisaatio tarvitsee myös Väestörekisterikeskuksen myöntämän VTJ-tietoluvan.",
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : null,
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Tunnistus",
+    "type" : "AlternativeName"
+  }, {
+    "language" : "fi",
+    "value" : "Suomi.fi-tunnistus organisaatioille",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Viranomaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Authorities",
+      "language" : "en"
+    }, {
+      "value" : "Myndigheter",
+      "language" : "sv"
+    } ],
+    "code" : "KR3",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2017",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : "Suomi.fi-tunnistus tarjoaa julkisen hallinnon organisaatioille turvallisen tavan tunnistaa Suomen kansalaiset verkossa tunnistusvälineiden avulla",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Suomi.fi-tunnistus tarjoaa julkisen hallinnon organisaatioille turvallisen tavan tunnistaa Suomen kansalaiset verkossa yleisten tunnistusvälineiden avulla. Kansalaiset voivat tunnistautua verkkopankkitunnusten, mobiilivarmenteen ja varmennekortin (henkilökortti, organisaatiokortti ja sosiaali- ja terveydenhuollon ammattikortti) avulla. Vuoden 2017 loppuun mennessä palvelun avulla tunnistetaan myös EU-maiden kansalaiset.",
+    "type" : "Description"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "b458d033-042d-4cbe-b030-34e81da28821",
+      "name" : "Väestörekisterikeskus"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "b458d033-042d-4cbe-b030-34e81da28821",
+      "name" : "Väestörekisterikeskus"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

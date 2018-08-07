@@ -1,0 +1,44 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "http://www.naantali.fi/terveys/palvelut/fi_FI/rontgen/",
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "166bd0e6-2013-4703-b5ac-431205a8c8a9",
+      "name" : "Kuvantamispalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Röntgenin verkkosivu",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Naantalin terveyskeskuksen röntgenin verkkosivu.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Naantalin terveyskeskuksen röntgenin verkkosivulta saat lisätietoa kuvantamispalveluista ja lähetekäytännöistä. ",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-11-20T15:22:11.939968",
+  "id" : "6a2a6518-caa8-4b14-a1cb-a532610c00da"
+}

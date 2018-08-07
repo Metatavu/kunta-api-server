@@ -1,0 +1,61 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "http://www.botnialab.fi/",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "http://www.botnialab.fi/sv/web/sv/",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "88c01d02-23d0-4211-b9eb-9fb85f0f4877",
+      "name" : "BotniaLab Oy"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "BotniaLabin verkkosivu",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "BotniaLabs webbsida",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Verkkosivuilta saat lisätietoa BotniaLab Oy:n palveluista.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Verkkosivuilta saat lisät lisätietoa BotniaLab Oy:n palveluista. ",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "På webbsidan får du mera information om BotniaLab Ab:s service.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "På webbsidan får du mera information om BotniaLab Ab:s service. ",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "c1998ab6-b4fc-4722-959b-b2d497191333"
+}

@@ -1,0 +1,337 @@
+{
+  "sourceId" : null,
+  "keywords" : [ {
+    "value" : "lapsineuvola",
+    "language" : "fi"
+  } ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Neuvolapalvelut",
+      "language" : "fi"
+    }, {
+      "value" : "Rådgivningstjänster",
+      "language" : "sv"
+    }, {
+      "value" : "Health clinic services",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "I denna serviceundergrupp behandlas kommunens lagstadgade moderskaps- och barnrådgivningstjänster med olika verksamhetsformer.",
+      "language" : "sv"
+    }, {
+      "value" : "Tässä palvelualaluokassa käsitellään kuntien lakisääteisesti järjestämiä äitiys-ja lastenneuvolapalveluja eri toimintamuotoineen.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains the statutory maternity and child health clinic services organised by the municipalities and the clinics’ various forms of activities.",
+      "language" : "en"
+    } ],
+    "code" : "P5.2",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1040",
+    "parentId" : "76ca210c-5183-4d41-b796-50612d5930c7",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1038"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "59213e6e-e902-4eb3-b482-7deeac620613",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "d14f70fd-d474-4d58-bd18-ed32dab8d2ab",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "31c3790f-b887-4b74-b9d3-2b5361b64471",
+      "name" : "Neuvolapsykologi"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "432b08a9-d7d3-4219-bd25-59e1e81879b5",
+      "name" : "Vähänkyrön lastenneuvola"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "664443b7-e991-43f5-b25a-379eac2b5f2a",
+      "name" : "Terveydenhuollon sähköisen asioinnin sopimus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "85a0a12c-79dd-4a2c-adae-5483f788166c",
+      "name" : "Laihian lastenneuvola"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "8dced9d7-5124-4d87-8031-b1cc22d8995d",
+      "name" : "Gerbyn lastenneuvola"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "c5dd211d-8c73-4bf1-a37f-2f19714d3d11",
+      "name" : "Tammikaivon lastenneuvola"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "c6a1a6da-8156-4bcc-81b9-38ff6781860d",
+      "name" : "Keskustan lastenneuvola"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "caecdd06-135c-484d-ba80-6fdeb3be273b",
+      "name" : "Ristinummen lastenneuvola"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "fff7fca1-c8a0-406f-a8f1-0c3d858fa4e0",
+      "name" : "Lastenneuvolan sähköinen ajanvaraus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  }, {
+    "value" : null,
+    "language" : "en"
+  } ],
+  "languages" : [ "fi", "sv", "en" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Lastenneuvolapalvelut",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Barnrådgivningens tjänster",
+    "type" : "Name"
+  }, {
+    "language" : "en",
+    "value" : "Child welfare clinic services",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "lastenneuvolat",
+      "language" : "fi"
+    }, {
+      "value" : "barnrådgivningsbyråer",
+      "language" : "sv"
+    }, {
+      "value" : "child welfare clinics",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p5037",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p77844;http://www.yso.fi/onto/koko/p37040"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "en",
+    "value" : "To make an appointment, call your own Child Welfare Clinic.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Lastenneuvola pyrkii edistämään koko perheen hyvinvointia ja tukemaan perhettä omaksumaan terveellisiä elämäntapoja.\n\nLastenneuvolan tavoitteena on lapsen fyysisen, psyykkisen ja sosiaalisen kasvun ja kehityksen seuranta ja tukeminen. Neuvolassa pyritään myös terveen kehityksen esteiden tunnistamiseen ja poistamiseen.\n\nKeskusteluissa autetaan vanhempia löytämään keinoja ratkaista perheen ongelmia ja luottamaan omiin kykyihinsä kasvattajina.",
+    "type" : "Description"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "en",
+    "value" : "Child welfare clinics work to promote the well-being of the whole family and to support the family in adopting a healthy lifestyle.\n\nThe purpose of a child welfare clinic is to monitor and support the physical, mental and social growth and development of a child. Another aim is to recognise and eliminate obstacles to a child's healthy development.\n\nDiscussions at the clinics aim to help parents to find ways to solve any problems in the family and to trust their own abilities as parents.",
+    "type" : "Description"
+  }, {
+    "language" : "en",
+    "value" : "Under school-age children are entitled to use the municipal child welfare clinic services.",
+    "type" : "Summary"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : "Barnrådgivningen strävar efter att främja hela familjens välmående och att stöda familjen till att omfatta sunda levnadsvanor.\n\nSyftet med barnrådgivningen är uppföljning och stödande av barns fysiska, psykiska och sociala uppväxt och utveckling. På rådgivningen strävar man också efter att identifiera och undanröja hinder för en sund utveckling.\n\nVid samtal hjälper man föräldrarna att hitta metoder för att lösa familjens problem och att lita på sina egna förmågor som fostrare.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Alle kouluikäiset lapset ovat oikeutettuja kunnan neuvolapalveluihin.",
+    "type" : "Summary"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : "Aika lastenneuvolaan varataan soittamalla oman alueen lastenneuvolaan tai vanhemmat voivat tilata ajan lastenneuvolan ikäkausitarkastuksiin 1-, 2-, 3-, 5- ja 6-vuotiaille myös sähköisesti.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : "Tid till barnrådgivningen bokas genom ett samtal till det egna områdets barnrådgivnin geller föräldrarna kan också elektroniskt boka tid till barnrådgivningens hälsovårdare för 1-,2-,3-,5- och 6- årskontroller.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : "Barn under skolåldern har rätt till kommunens rådgivningstjänster.",
+    "type" : "Summary"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

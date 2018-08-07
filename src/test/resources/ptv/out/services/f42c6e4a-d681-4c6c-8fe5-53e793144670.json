@@ -1,0 +1,442 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Esiopetus",
+      "language" : "fi"
+    }, {
+      "value" : "Förskoleundervisning",
+      "language" : "sv"
+    }, {
+      "value" : "Pre-school education",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Tähän palvelualaluokkaan kuuluvat sekä varsinainen esiopetus sisältöineen että esiopetuksen paikallinen järjestäminen ja vaihtoehdot lasten ja heidän perheidensä kannalta.",
+      "language" : "fi"
+    }, {
+      "value" : "Till denna servicearbetsgrupp hör både den egentliga förskoleundervisningen med innehåll och det lokala ordnandet av förskoleundervisning och alternativ med tanke på barnen och deras familjer.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains pre-school education itself and its contents, the local organisation of pre-school education, and alternatives for children and their parents.",
+      "language" : "en"
+    } ],
+    "code" : "P6.1",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1061",
+    "parentId" : "fd1bb60e-4206-4f0a-994f-8ffcb4ffaaa4",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1060"
+  }, {
+    "name" : [ {
+      "value" : "Lasten päivähoito",
+      "language" : "fi"
+    }, {
+      "value" : "Barndagvård",
+      "language" : "sv"
+    }, {
+      "value" : "Day-care for children",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Till denna serviceundergrupp hör barnets rättigheter i anslutning till dagvård för små barn, förutsättningar för dagvård, ärendehanteringstjänster och ansökningsförfaranden, olika genomföringsformer och servicekanaler för dagvård, vårdavgifter och bidrag i anslutning till dem.",
+      "language" : "sv"
+    }, {
+      "value" : "Tähän alapalveluluokkaan kuuluvat pienten lasten päivähoitoon liittyvät lapsen oikeudet, päivähoidon saamisen edellytykset, asiointipalvelut ja hakumenettelyt, erilaiset päivähoidon toteuttamismuodot ja palvelukanavat, hoidon maksut ja niihin liittyvät taloudelliset tuet.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains a child’s rights related to day-care for young children, eligibility criteria, e-services and application procedures associated with day-care, different forms and service channels of day-care provision, fees charged for day-care and financial support related to the fees.",
+      "language" : "en"
+    } ],
+    "code" : "P3.4",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1017",
+    "parentId" : "77af99fa-93eb-4de6-ac83-1b161a961263",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1013"
+  }, {
+    "name" : [ {
+      "value" : "Perusopetus",
+      "language" : "fi"
+    }, {
+      "value" : "Grundläggande utbildning",
+      "language" : "sv"
+    }, {
+      "value" : "Basic education",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Till denna serviceundergrupp hör både den egentliga grundläggande utbildningen med innehåll och mål samt direkta tjänster som erbjuds i anslutning till grundläggande utbildningen och för att stöda den, t.ex. skoltransporter, skolmat och assistanstjänster. Till denna grupp hör också ärenden i anslutning till avläggande av grundläggande utbildning utomlands i enlighet med den finska grundläggande utbildningen.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains basic education itself with its contents and objectives as well as the services offered directly in connection with and in support of basic education, for example school transport, school lunches and an assistant’s services. The class also includes issues related to completing abroad a basic education that is in line with the Finnish basic education.",
+      "language" : "en"
+    }, {
+      "value" : "Tähän palvelualaluokkaan kuuluvat sekä varsinainen perusopetus sisältöineen ja tavoitteineen sekä perusopetuksen yhteydessä ja sen tukemiseksi välittömästi tarjottavat palvelut, esimerkiksi koulukuljetukset, kouluruokailu ja avustajapalvelut. Tähän luokkaan kuuluvat myös Suomen perusopetuksen mukaisen peruskoulutuksen ulkomailla suorittamiseen liittyvät asiat.",
+      "language" : "fi"
+    } ],
+    "code" : "P6.2",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1062",
+    "parentId" : "fd1bb60e-4206-4f0a-994f-8ffcb4ffaaa4",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1060"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "53c26527-8e69-40b4-9702-a43c009c17cb",
+  "serviceVouchers" : [ ],
+  "modified" : "2018-04-13T09:29:47.810273",
+  "id" : "f42c6e4a-d681-4c6c-8fe5-53e793144670",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "03d45cd0-65f1-494b-a354-5a17de9f52cf",
+      "name" : "Ruoka-aineallergia koulussa"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "0739aa9b-7312-4cdd-bc63-d86b39dc4257",
+      "name" : "Tammiston päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "11b34399-c107-4eaf-8b63-ca14f58cf493",
+      "name" : "Päiväkotiruokailun verkkosivu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "1bd39cda-3006-482e-acff-93ab8ddc9f1b",
+      "name" : "Keskustan päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "2c5d18c3-df2b-4f7a-b4bc-34d8c02eeebd",
+      "name" : "Ruokapalvelujohtaja"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "33abffaa-244b-4485-85d2-a7885509c6b6",
+      "name" : "Soinisten päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "41ebe689-dbed-4bb2-a6f2-184e29d625ed",
+      "name" : "Rymättylän päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "495ab7f8-cc75-4e43-bbc4-629e41d67e71",
+      "name" : "Suovuoren päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "55511eb4-7e65-4cd8-9dbb-95ee54f82d03",
+      "name" : "Taimon päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "5addb843-4487-46c5-b955-6d5d41bfdad7",
+      "name" : "Nuhjalan päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "74608728-3841-43c0-b1da-f3165bda4759",
+      "name" : "Kouluruokailun verkkosivu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "7bbe81f9-c65f-46e5-a78f-b0ab123306f8",
+      "name" : "Ruonan päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "875ad885-ad22-4cd4-b555-143fdf2649ab",
+      "name" : "Viialan päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "87e0e1ca-857b-4d79-a428-4f66b746177a",
+      "name" : "Karvetin päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "9872be90-1f7d-4021-ab13-25556c6f9357",
+      "name" : "Kreivinniityn päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "abbf9e88-97a6-4908-8ab8-58fab37fac4f",
+      "name" : "Merimaskun päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "d9610904-d829-446c-949d-631678642dec",
+      "name" : "Ilmoitus erityisruokavaliosta"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "e83b54c1-7274-4743-931b-86c9ad90d5b2",
+      "name" : "Koulujen keittiöiden puhelinnumerot"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "ec158adc-c2d8-4192-922b-b6dd25e7b92d",
+      "name" : "Päiväkotien keittiöiden puhelinnumerot"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "fdfce5e7-3b5a-45dc-8cf0-d67f90042256",
+      "name" : "Vuoropäiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : null,
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Ruokailu päiväkodeissa, esikoulussa ja kouluissa",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "kouluruokailu",
+      "language" : "fi"
+    }, {
+      "value" : "skolbespisning",
+      "language" : "sv"
+    }, {
+      "value" : "school catering",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p10102",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p9883"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Lapset ja lapsiperheet",
+      "language" : "fi"
+    }, {
+      "value" : "Children and families with children",
+      "language" : "en"
+    }, {
+      "value" : "Barn och barnfamiljer",
+      "language" : "sv"
+    } ],
+    "code" : "KR1.2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2003",
+    "parentId" : "daff1fb9-9394-49b5-b033-d1d1c7005ab6",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001"
+  }, {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Naantalin lapset saavat päiväkodissa, esiopetuksessa ja koulussa päivittäin lämpimän aterian, minkä lisäksi päiväkotiruokailu sisältää myös välipaloja. Esiopetuksessa ja koulussa ruokailu on maksutonta ja päiväkotihoidossa olevien lasten ruokailu sisältyy vanhempien maksamaan päivähoitomaksuun.\n\nVarsinaisesta ruokalistasta poikkeavaa ruokaa tarjotaan joko terveydellisistä, eettisistä tai uskonnollisista syystä.\n\nYläkoululaiset voivat ostaa iltapäivällä koulusta välipalan. Välipala maksetaan välipalalipuilla, joita voi ostaa kaupungin palvelupisteistä (kaupungintalo, Merimasku, Rymättylä ja Velkua) tai oman koulun keittiöstä. Ostokset voi maksaa myös kortilla.\n\nNaantalin kaupungin ateriapalvelun ruokalistoja voi ladata puhelimeen ilmaisen Jamix Menu -sovelluksen kautta. Ruokalistat ovat myös kouluruokailun ja päiväkotiruokailun verkkosivuilla.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : "Esiopetuksessa ja koulussa ruokailu on maksutonta ja päiväkotihoidossa olevien lasten ruokailu sisältyy vanhempien maksamaan päivähoitomaksuun.\n\nYläkoululaiset voivat ostaa iltapäivällä koulusta välipalan. Välipala maksetaan välipalalipuilla, joita voi ostaa kaupungin palvelupisteistä (kaupungintalo, Merimasku, Rymättylä ja Velkua), tai oman koulun keittiöstä. Ostokset voi maksaa myös kortilla.",
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "* Jos lapsi tarvitsee normaalista ruokalistasta poikkeavaa ruokaa terveydellisistä, eettisistä tai uskonnollisista syistä, otathan yhteyttä päiväkodin henkilökuntaan tai koulussa kouluterveydenhoitajaan.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Lapset saavat päiväkodissa, esiopetuksessa ja koulussa päivittäin lämpimän aterian, minkä lisäksi päiväkotiruokailu sisältää myös välipaloja.",
+    "type" : "Summary"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

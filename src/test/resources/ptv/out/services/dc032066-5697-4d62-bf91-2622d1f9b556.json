@@ -1,0 +1,379 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Perusterveydenhuolto",
+      "language" : "fi"
+    }, {
+      "value" : "Primärvård",
+      "language" : "sv"
+    }, {
+      "value" : "Primary health care",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Tähän palvelualaluokkaan kuuluvat palvelut, jotka sijoittuvat perusterveydenhuollon määritelmään: \"Perusterveydenhuolto edistää, tukee ja ylläpitää väestön terveyttä, hyvinvointia ja toimintakykyä tarjoamalla terveyden- ja sairaanhoidon palveluita. Pääasialliset palvelumuodot ovat kuntalaisten käynnit eriasteisten hoitajien ja lääkäreiden vastaanotoilla ja ympärivuorokautinen sairaanhoito terveyskeskuksessa.\n Toiminta perustuu pääosin kunnallista terveydenhuoltoa säätelevään lainsäädäntöön.\"",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains services that meet the following definition of primary care: “The task of primary health care is to maintain, support and improve citizens’ health, well-being, and work and functional ability by offering health and medical care services. The main service forms are visits made by municipal residents to the surgeries of nurses and doctors at different levels and 24-hour medical care at health centres. The activities are primarily based on the legislation that regulates municipal health care.”",
+      "language" : "en"
+    }, {
+      "value" : "Denna serviceundergrupp omfattar tjänster som svarar mot definitionen av primärvård: \"Primärvården främjar, stöder och upprätthåller befolkningens hälsa, välfärd och funktionsförmåga genom att erbjuda hälso- och sjukvårdstjänster. Huvudsakliga serviceformer är kommuninvånarnas besök på olika graders skötar- och läkarmottagningar och dygnet runt sjukvård på hälsovårdscentralen. Verksamheten grundar sig i huvudsak på lagstiftning som reglerar den kommunala hälso- och sjukvården.\"",
+      "language" : "sv"
+    } ],
+    "code" : "P5.1",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1039",
+    "parentId" : "76ca210c-5183-4d41-b796-50612d5930c7",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1038"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "272ce6da-852e-42d2-a620-5b84104b7fe7",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "dc032066-5697-4d62-bf91-2622d1f9b556",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "1a7417f4-7b86-4ce2-b415-ff8d374c0f67",
+      "name" : "Influenssan kotihoito-ohje"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "1b9b9aff-2865-4710-9b9a-9b9f26b378f7",
+      "name" : "Laihian terveyspalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "325f24cb-e861-41a3-b1b2-a437545aa3b8",
+      "name" : "Gerbyn terveysasema"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "37f7d324-cc8c-42e4-b68a-88ecbcbe1235",
+      "name" : "Noroviruksen kotihoito-ohjeet"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "473492c8-fe54-4488-9e47-84a0e47b7b95",
+      "name" : "Sosiaali- ja terveystoimen maksut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "47b1e897-dac7-4ff6-b5da-c002a5256d01",
+      "name" : "Ristinummen terveysasema"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "71367797-9a28-4f5e-a278-55a327efa468",
+      "name" : "Laihian terveysasema"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "a2f714ff-d0b2-4e57-bdd7-914dd5d36303",
+      "name" : "Vähänkyrön terveysasema"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "cfa06fda-7937-40b2-8d64-f36e9375a235",
+      "name" : "Tammikaivon terveysasema"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "e655c858-04ff-473c-9924-75f1e178370f",
+      "name" : "Kirkkopuistikon terveysasema"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  }, {
+    "value" : null,
+    "language" : "en"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "Chargeable",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Terveysasemapalvelut",
+    "type" : "AlternativeName"
+  }, {
+    "language" : "sv",
+    "value" : "Hälsostationsservice",
+    "type" : "AlternativeName"
+  }, {
+    "language" : "fi",
+    "value" : "Lääkärin ja hoitajan vastaanotto",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Läkares eller skötares mottagning",
+    "type" : "Name"
+  }, {
+    "language" : "en",
+    "value" : "Appointment with a doctor or a nurse",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "lääkärinvastaanotot",
+      "language" : "fi"
+    }, {
+      "value" : "läkarmottagningar",
+      "language" : "sv"
+    }, {
+      "value" : "doctors' offices",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p68520",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p67664"
+  }, {
+    "name" : [ {
+      "value" : "sjukskötarmottagningar",
+      "language" : "sv"
+    }, {
+      "value" : "sairaanhoitajan vastaanotot",
+      "language" : "fi"
+    }, {
+      "value" : "nurse's appointments",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p68815",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p67664"
+  }, {
+    "name" : [ {
+      "value" : "terveyskeskuspalvelut",
+      "language" : "fi"
+    } ],
+    "code" : null,
+    "ontologyType" : "TERO",
+    "uri" : "http://www.yso.fi/onto/koko/p52961",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p12249"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Terveyskeskuksen avosairaanhoidon lääkäripalveluista peritään asiakasmaksuasetuksen mukainen käyntimaksu kahdelta ensimmäiseltä käynniltä samassa terveyskeskuksessa kalenterivuoden aikana.",
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "en",
+    "value" : "To make an appointment with a doctor, call your own Health Centre.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Kuntalaisilla on oikeus kunnan järjestämään hoitajan ja lääkärin vastaanottoon. Tarpeellinen hoito on järjestettävä kohtuullisessa 3 kk:n ajassa.",
+    "type" : "Summary"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Lääkärin vastaanotolla käydään terveydellisten tai muiden lääkärin osaamista vaativien syiden takia.\n\nMuita terveysasemapalveluita ovat sairaanhoitajan vastaanotolla tehtäviä toimenpiteet. Terveysasemapalvelujen kautta voit saada esimerkiksi sairauslomatodistukset flunssa- ja vatsatautitapauksissa, mittauttaa verenpaineen, saada elintapaohjeita. Sairaanhoitajat tekevät tavallisesti myös korvahuuhteluja, haavahoitoa, sidevaihtoja, ompeleiden ja hakasten poistoa, kuulontutkimuksia ja spirometrioita.\n\nLisäksi he antavat lääkärin määräämiä lääkeinjektioita sekä aikuisten rokotuksia.\n\nEi-kiireellisen lääkärikäynnin syynä voivat olla esimerkiksi:\n* lääkärin tutkimusta ja hoitoa vaativat ei-kiireelliset sairaudet\n* pitkäaikaissairauksien seuranta ja hoito\n* päivystyskäyntien kontrollit\n* ei-kiireelliset mielenterveyden ongelmat tai sellaisten epäily\n* reseptien uusinnat, mikäli vastaanottokäynti on katsottu aiheelliseksi\n* röntgen- ja laboratoriovastaukset, mikäli vastaanottokäynti on katsottu aiheelliseksi\n* sairauksiin liittyvät lääkärintodistukset\nTarvittaessa lääkäri laatii lähetteen sopivaksi katsomaansa jatkopaikkaan.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : "Kommuninvånarna har rätt till en skötares eller läkares mottagning som ordnas av kommunen. Nödvändig vård ska ordnas inom en skälig tid, minst. 3 mån.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Genom hälsostationsservicen kan du få till exempel sjukledighetsintyg i förkylnings- och magsjukdomsfall, mäta blodtrycket, få livsstilsråd. Med hälsostationsservice avses åtgärder som utförs på sjukskötarmottagning.\n\nSjukskötarna gör vanligtvis också öronsköljningar, sårvård, byte av förband, stygn- och klämborttagning, hörselundersökningar och spirometri. Därtill ger de av läkare ordinerade läkemedelsinjektioner samt vaccin för vuxna.\n\nBesök på läkarmottagningen görs av hälsoskäl eller andra orsaker som förutsätter läkarkunskap.\n\nOrsaker till icke-brådskande läkarbesök kan vara till exempel:\n\nicke-brådskande sjukdomar som förutsätter läkarundersökning och -vård\nuppföljning och vård av kroniska sjukdomar\nkontroller efter jourbesök\nicke-brådskande mentala problem eller misstanke om sådana\nförnyande av recept om mottagningsbesök har ansetts vara befogat\nröntgen- och laboratoriesvar, om mottagningsbesök har ansetts vara befogat\nläkarintyg i anslutning till sjukdomar\n\nVid behov uppgör läkaren en remiss till en lämplig plats för fortsatt vård.\n\n",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "En tid till läkarmottagningen och till sjukskötare får man genom att ringa till den egna hälsostationen. Man bokar tid på förhand också till hörselundersökning och spirometri.\n\nPersoner som brådskande behöver vård  kan komma till skötaren utan tidsbställning (t.ex. sjukledigheter och illamående).",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Ajanvarauksen ja hoidon tarpeen arvioinnin puhelinnumerossa tehdään hoidon tarpeen arviointi, jonka perusteella voidaan varata aika omalääkärille tai sairaanhoitajalle. Ajanvarauspalvelusta saa ohjeita ja neuvontaa puhelimitse.\n\n Ajat kuulontutkimukseen ja spirometriaan varataan oman terveysaseman kautta. Äkillisesti hoitoa tarvitsevat voivat tulla hoitajalle ilman ajanvarausta (esim. sairauslomat, huonovointisuus).",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "en",
+    "value" : "A doctor can help you with your health issues or for other reasons that require a doctor’s expertise.\n\nNon-urgent reasons to make an appointment with a doctor include:\n\n• non-urgent illness that requires examination or treatment by a doctor\n\n• follow-up and treatment of a chronic disease\n\n• control visit after an emergency health care visit\n\n• non-urgent mental health problems\n\n• prescription renewals, if you have been told to see a doctor for a renewal\n\n• X-ray and laboratory results if you have been told to see a doctor for them\n\n• medical certificates concerning an illness\n\n\n\nWhen necessary, a doctor will refer you to another expert.",
+    "type" : "Description"
+  }, {
+    "language" : "en",
+    "value" : "Municipal residents are entitled to a nurse’s or a doctor’s services  organised by the municipality.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "ProcessingTime"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

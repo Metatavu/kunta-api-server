@@ -1,0 +1,202 @@
+{
+  "sourceId" : null,
+  "keywords" : [ {
+    "value" : "terveystarkastus netissä",
+    "language" : "fi"
+  } ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Terveystarkastukset",
+      "language" : "fi"
+    }, {
+      "value" : "Health examinations",
+      "language" : "en"
+    }, {
+      "value" : "Hälsoundersökningar",
+      "language" : "sv"
+    } ],
+    "description" : [ {
+      "value" : "Till denna serviceundergrupp hör både regelbundna hälsoundersökningar (t.ex. i skolan) och godtyckliga hälsoundersökningar (t.ex. i företagshälsovården) och sållningsliknande, sjukdomsbaserade undersökningar, som erbjuds till omfattande befolkningsgrupper.",
+      "language" : "sv"
+    }, {
+      "value" : "Tähän palvelualaluokkaan kuuluvat sekä säännöllisesti järjestettävät terveystarkastukset (esimerkiksi kouluissa) ja harkinnanvaraiset terveystarkastukset (esimerkiksi työterveydenhuollossa) että tiettyihin sairauksiin liittyvät seulonnat, joita tarjotaan laajoille väestöryhmille.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains both regular health examinations (for example at schools) and discretionary health examinations (for example in occupational health care services) as well as screenings of large population groups, focusing on specific illnesses.",
+      "language" : "en"
+    } ],
+    "code" : "P5.8",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1046",
+    "parentId" : "76ca210c-5183-4d41-b796-50612d5930c7",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1038"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "865f4a49-afae-433c-bb83-035ac2852c2d",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "cfdf5e3e-bed5-48c0-85c8-5cba94ad8012",
+      "name" : "Sähköinen terveystarkastus ja -valmennus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv", "en" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "sv",
+    "value" : "Elektronisk hälsogranskning och hälsoträning",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Sähköinen terveystarkastus ja terveysvalmennus",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "terveystarkastukset",
+      "language" : "fi"
+    }, {
+      "value" : "hälsokontroller",
+      "language" : "sv"
+    }, {
+      "value" : "health examinations",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p4603",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p869;http://www.yso.fi/onto/koko/p34179"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : "Sähköinen terveystarkastus ja terveysvalmennus ovat kuntalaisille tarkoitettuja palveluja oman hyvinvoinnin seurantaan ja tukemiseen.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Sähköinen terveystarkastus ja terveysvalmennus ovat kuntalaisille tarkoitettuja palveluja oman hyvinvoinnin seurantaan ja tukemiseen. Terveystarkastuksesta saat selville, miten elämäntapasi vaikuttavat arvioituun elinikääsi ja riskiisi sairastua elinikää lyhentäviin ja elämänlaatua heikentäviin sairauksiin.\n\nVoit myös ilmoittautua sähköisen terveysvalmentajan valmennusohjelmiin. Valittavanasi olevat teemat ovat:\n* liikuntaohjelma, eri vaativuustasoja\n* terveellinen ravinto -valmennusohjelma\n* univalmennusohjelma\n* painonhallinnan valmennusohjelma\n* alkoholin käytön hallinnan valmennusohjelma\n* tupakoinnin lopettamisen valmennusohjelma\n* stressin hallinnan harjoitusohjelma\n* ristiriitojen ratkaisu parisuhteessa -valmennusohjelma\n* lapsiperheiden harjoitusohjelma\n\nPalvelun avulla voit parantaa mahdollisuuksiasi hyvään ja terveeseen elämään ja saada tietoa terveyteesi ja hyvinvointiisi vaikuttavista tekijöistä.\n\n",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : "Ur hälsogranskningen får du reda på hur ditt levnadssätt påverkar den uppskattade livslängden och din risk att insjukna i sjukdomar som förkortar livslängden och försvagar livskvaliteten.\n\nDen elektroniska hälsogranskningen är riktad till kommuninvånare som vill följa upp och få stöd till sin välfärd.\n\nDu kan även anmäla dig till den elektroniska hälsotränarens träningsprogram.\nDe teman du kan välja är:\n* motionsprogram, olika belastningsnivåer\n* hälsosam kost (träningsprogram)\n* sömnträningsprogram\n* träningsprogram för vikthantering\n* träningsprogram för hantering av alkoholkonsumtion\n* träningsprogram för att sluta röka\n* träningsprogram för stresshantering\n* träningsprogram för att lösa konflikter i parförhållande\n* träningsprogram för barnfamiljer\n\n\nGenom tjänsten kan du förbättra dina möjligheter till ett gott och friskt liv och samtidigt få information om faktorer som påverkar din hälsa och ditt välbefinnande.\n\n",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Ur hälsogranskningen får du reda på hur ditt levnadssätt påverkar den uppskattade livslängden och din risk att insjukna i sjukdomar.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "ProcuredServices",
+    "organization" : null,
+    "roleType" : "Producer",
+    "additionalInformation" : [ {
+      "value" : "Kustannus Oy Duodecim",
+      "language" : "fi"
+    } ]
+  } ]
+}

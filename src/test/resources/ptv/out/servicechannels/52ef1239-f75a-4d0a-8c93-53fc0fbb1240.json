@@ -1,0 +1,156 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Gustavsrovägen",
+        "language" : "sv"
+      }, {
+        "value" : "Kustaalantie",
+        "language" : "fi"
+      } ],
+      "streetNumber" : "31",
+      "postalCode" : "65230",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ ],
+      "latitude" : "7009343.198",
+      "longitude" : "229264.763",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "73af8c06-6a6b-4780-9164-8e8872eecc9c",
+      "name" : "Kunnallinen päiväkotihoito"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ {
+    "value" : "hemstrandsdh@vaasa.fi",
+    "language" : "fi"
+  }, {
+    "value" : "hemstrandsdh@vaasa.fi",
+    "language" : "sv"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "sv",
+    "value" : "Hemstrands daghem",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Hemstrands daghem",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ {
+    "serviceHourType" : "DaysOfTheWeek",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ {
+      "value" : null,
+      "language" : "sv"
+    } ],
+    "openingHour" : [ {
+      "dayFrom" : "Monday",
+      "dayTo" : "",
+      "from" : "06:30:00",
+      "to" : "17:00:00"
+    }, {
+      "dayFrom" : "Tuesday",
+      "dayTo" : "",
+      "from" : "06:30:00",
+      "to" : "17:00:00"
+    }, {
+      "dayFrom" : "Wednesday",
+      "dayTo" : "",
+      "from" : "06:30:00",
+      "to" : "17:00:00"
+    }, {
+      "dayFrom" : "Thursday",
+      "dayTo" : "",
+      "from" : "06:30:00",
+      "to" : "17:00:00"
+    }, {
+      "dayFrom" : "Friday",
+      "dayTo" : "",
+      "from" : "06:30:00",
+      "to" : "17:00:00"
+    } ]
+  } ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "Vi stöder barnen i deras individuella växande i en hemtrevlig miljö.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Vi stöder barnen i deras individuella växande i en hemtrevlig miljö. Natur och miljö beaktas i verksamheten, så att intresse och respekt för naturen väcks hos barnet. \n\nBarngrupper: \nSkogsstjärnorna, 16 heldagsplatser, 1-3 år \nBlåssipporna, 21 heldagsplatser, 4-6 år \n\nTyngdpunktsområden: Lyssna till det enskilda barnet, utveckla de sociala färdigheterna, stöda barnets självkänsla, natur och miljöfostran och vett och etikett. ",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Tuemme lapsen kasvua yksilökohtaisesti kodinomaisessa ympäristössä.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Tuemme lapsen kasvua yksilökohtaisesta kodinomaisessa ympäristössä. Luonto ja ympäristö huomioidaan toiminnassa, jotta mielenkiinto ja kunniotus luontoa kohtaan heräisi lapsessa. \n\nLapsiryhmät: \nMetsätähdet, 1-3 vuotiaat, 16 kokopäiväistä paikkaa\nSinivuokot, 4-6 vuotiaat, 21 kokopäiväistä paikkaa\n\nPainopistealueet:  Lapsen yksillöllinen kuunteleminen, sosiaalisten valmiuksien kehittäminen, lapsen itsetunnon tukeminen, luonto- ja ympäristökasvatus.\n",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "52ef1239-f75a-4d0a-8c93-53fc0fbb1240"
+}

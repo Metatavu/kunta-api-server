@@ -1,0 +1,61 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "http://www.vaasansahko.fi/FI/Pages/Default.aspx",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "http://www.vaasansahko.fi/sv/Pages/Framsida.aspx",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv", "en" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "db1a5de4-4683-485d-90c5-ac7677b70f1d",
+      "name" : "Sähkön jakelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Vaasan Sähkön verkkosivut",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Vasa Elektriskas webbsidor",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Lue lisää Vaasan Sähkön palveluista tai tee esimerkiksi sähkösopimus Vaasan Sähkön sivuilla.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Lue lisää Vaasan Sähkön palveluista tai tee esimerkiksi sähkösopimus Vaasan Sähkön sivuilla.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Läs mera om Vasa Elektriskas tjänster eller gör till exempel ett elavtal på Vasa Elektriskas webbplats.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Läs mera om Vasa Elektriskas tjänster eller gör till exempel ett elavtal på Vasa Elektriskas webbplats.",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "ffce9d7b-b89d-4664-90eb-1ef3fdf8e26f"
+}

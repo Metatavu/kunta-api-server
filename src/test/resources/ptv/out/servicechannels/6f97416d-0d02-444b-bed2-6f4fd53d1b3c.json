@@ -1,0 +1,137 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/tuottajat/kotiranta",
+    "value" : "Kotirannan palvelutalo",
+    "language" : "fi"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Sorsantie",
+        "language" : "fi"
+      }, {
+        "value" : "Andvägen",
+        "language" : "sv"
+      } ],
+      "streetNumber" : "12",
+      "postalCode" : "65230",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ ],
+      "latitude" : "7009419.523",
+      "longitude" : "229130.387",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "c687d556-4f17-44e9-bb64-9f7d02e4233e",
+      "name" : "Palveluasuminen"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63252515",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63252515",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Kotiranta",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Hemstrand",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Kotiranta on tehostetun palveluasumisen yksikkönä tarkoitettu muistisairaille ikäihmisille, jotka eivät selviä omassa kodissaan avopalveluiden tuella.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Kotiranta on 60-paikkainen tehostetun palveluasumisen yksikkö, joka muodostuu neljästä pienkodista. Palvelutalo on tarkoitettu muistisairaille ikäihmisille, jotka eivät selviä omassa kodissaan avopalveluiden tuella.\n\nAsukkailla on oma huone, jossa on suihku ja WC. Asukas kalustaa oman huoneensa itse, sänky ja patja tulevat talon puolesta. Ruokailu- ja oleskelutilat ovat yhteiset. Palvelutalossa on myös jumppasali, aidattuja ulkoilualueita sekä isot parvekkeet.\n\nJokaiselle asukkaalle tehdään henkilökohtainen palvelu- ja hoitosuunnitelma.\n\nSAS-työryhmä valitsee asukkaat. Lisätietoja antaa johtava sosiaalityöntekijä p. 0400 910 698.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Hemstrand är en servicehus som är ämnat för minnessjuka seniorer, som inte klarar sig i sina egna hem med stöd av öppenservicen.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Hemstrand är en enhet med 60 platser för effektiverat serviceboende. Enheten består av fyra småhem. Servicehuset är ämnat för minnessjuka seniorer, som inte klarar sig i sina egna hem med stöd av öppenservicen.\nInvånarna har ett eget rum där det finns dusch och WC. Invånaren inreder själv sitt rum, sängen och madrassen står huset för.\n\nMåltids- och vistelseutrymmena är gemensamma. I servicehuset finns även en gymnastiksal, inhägnade friluftsområden samt stora balkonger.\n\nFör invånarna uppgörs en individuell vård- och serviceplan.\n\nSAS-arbetsgruppen väljer invånarna. Mera information ger ledande socialarbetare tfn 0400 910 698.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "6f97416d-0d02-444b-bed2-6f4fd53d1b3c"
+}

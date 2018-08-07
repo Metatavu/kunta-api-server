@@ -1,0 +1,97 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/node/2401",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/en/node/2401",
+    "value" : null,
+    "language" : "en"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/sv/node/2401/",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "sv", "fi" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "54a6b6a4-0c7a-4e9f-b5d4-55eefc89d4a9",
+      "name" : "Taiteen perusopetus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "819bed3d-6147-4a22-a454-eac010516ce7",
+      "name" : "Kansalaisopistot"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Taiteen perusopetus - TaiKon",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Grundläggande konstundervisning - TaiKon",
+    "type" : "Name"
+  }, {
+    "language" : "en",
+    "value" : "Basic arts education - TaiKon",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "TaiKonin sivuilta löydät tarkempaa tietoa taiteen peruopetuksesta Vaasassa.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "TaiKonin sivuilta löydät tarkempaa tietoa taiteen peruopetuksesta Vaasassa.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "På TaiKons sidor hittar du närmare upplysningar om den grundläggande konstundervisningen i Vasa.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "På TaiKons sidor hittar du närmare upplysningar om den grundläggande konstundervisningen i Vasa.",
+    "type" : "Description"
+  }, {
+    "language" : "en",
+    "value" : "The web pages of TaiKon offers you more specific information about the basic arts education in Vaasa.",
+    "type" : "Summary"
+  }, {
+    "language" : "en",
+    "value" : "The web pages of TaiKon offers you more specific information about the basic arts education in Vaasa.",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "ae10d349-b33f-4973-86cb-f265b146ea78"
+}

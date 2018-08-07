@@ -1,0 +1,290 @@
+{
+  "sourceId" : null,
+  "keywords" : [ {
+    "value" : "harrasteliikunta",
+    "language" : "fi"
+  }, {
+    "value" : "perusopetus",
+    "language" : "fi"
+  }, {
+    "value" : "alakoulut",
+    "language" : "fi"
+  }, {
+    "value" : "Liikkuva koulu",
+    "language" : "fi"
+  } ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Liikunta ja urheilu",
+      "language" : "fi"
+    }, {
+      "value" : "Motion och idrott",
+      "language" : "sv"
+    }, {
+      "value" : "Sports and exercise",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Tähän palvelualaluokkaan kuuluvat liikuntapaikat, urheiluopistot ja niiden palvelut, liikunnan tietopalvelut ja urheiluseurojen sekä liikuntajärjestöjen toiminta.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains sports facilities, sports institutes and their services, exercise information services and the activities of sports clubs and sports associations.",
+      "language" : "en"
+    }, {
+      "value" : "Denna serviceundergrupp omfattar motionsställen, idrottsinstitut och deras tjänster, informationstjänster för motion samt idrottsföreningars och motionsorganisationers verksamhet.",
+      "language" : "sv"
+    } ],
+    "code" : "P27.1",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1211",
+    "parentId" : "175762f6-53cd-4d29-a285-625bfb421b21",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1210"
+  }, {
+    "name" : [ {
+      "value" : "Liikunta ja ulkoilu",
+      "language" : "fi"
+    }, {
+      "value" : "Motion och friluftsliv",
+      "language" : "sv"
+    }, {
+      "value" : "Sports and outdoor activities",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "I denna servicegrupp behandlas tjänster relaterade till motion, friluftsliv och fritidsverksamhet ute i naturen.",
+      "language" : "sv"
+    }, {
+      "value" : "Tässä palveluluokassa käsitellään kuntoliikuntaan, ulkoiluun ja luonnossa tapahtuvaan vapaa-ajan toimintaan liittyviä palveluja.",
+      "language" : "fi"
+    }, {
+      "value" : "This service class contains services related to keep-fit exercise, outdoor exercise and free-time activities in nature.",
+      "language" : "en"
+    } ],
+    "code" : "P27",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1210",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2017-10-25T09:37:17.324187",
+  "id" : "e8460816-27c2-4c5a-b18c-ceefb3d674e2",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "10c52ca2-2227-4a81-a63b-22348ebbaca4",
+      "name" : "Liikkuva koulu -toiminnan verkkosivu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "36adf85e-4f59-4e13-9c30-06a24bd7fa95",
+      "name" : "Liikkuva koulu -koordinaattori (ruotsinkieliset koulut)"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "6c6b7832-815c-49b6-aa3c-4855c4f1dd05",
+      "name" : "Liikuntasuunnittelija, Lasten ja nuorten liikunta"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "c7599089-5c1a-4478-be5c-5dc07981b20d",
+      "name" : "Liikkuva koulu -koordinaattori (suomenkieliset koulut)"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "ea120e38-dfc7-44e6-8e75-0d49ddcfe852",
+      "name" : "Liikuntapalvelujen toimisto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "sv", "fi" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Liikkuva koulu -toiminta",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Skolan i rörelse -verksamhet",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "motion (idrott)",
+      "language" : "sv"
+    }, {
+      "value" : "liikunta",
+      "language" : "fi"
+    }, {
+      "value" : "physical training",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p30612",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p35142"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : "Lisätietoja toiminnasta saat Liikkuva koulu -koordinaattoreilta. ",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : "Skolan i rörelse ökar elevernas fysiska aktivitet, deras delaktighet och inlärning med målet att göra skoldagen aktivare och trivsammare.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : "Mera information får du av koordinatorerna för Skolan i rörelse och idrottsservicen.  ",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Toiminnassa lisätään liikettä, oppilaiden osallisuutta ja oppimista koulupäivän sisälle, tavoitteena aktiivisempi ja viihtyisämpi koulupäivä.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Liikkuva koulu -toiminnan tavoitteena on aktiivisempi ja viihtyisämpi koulupäivä. Jokainen koulu toteuttaa liikkuvampaa koulupäivää omalla tavallaan. Tärkeää on oppilaiden osallisuus, oppiminen ja liikkeen lisääminen – istumisen vähentäminen.\n\nLiikkuvissa kouluissa ajatellaan asioita uusilla tavoilla ja muutetaan toimintakulttuuria aktiivisemmaksi. Pyrkimyksenä on, että jokainen peruskoululainen liikkuu vähintään tunnin päivässä. Koulut saavat tukea toiminnan toteuttamiseen alueellisilta ja valtakunnallisilta verkostoilta. Liikkuva koulu -ohjelma on yksi hallitusohjelman osaamisen ja koulutuksen kärkihankkeista, ja sen rahoituksesta vastaa opetus- ja kulttuuriministeriö. \n\nKaikki Vaasan perusopetuksen koulut ovat rekisteröityneet liikkuviksi kouluiksi ja osallistuvat toiminnan järjestämiseen omalla tavallaan. Liikkeelle lähdössä on huomioitu koulujen omat tarpeet oppilaita ja henkilökuntaa kuunnellen. Tavoitteena on edetä pienin askelin ja näin varmistetaan myös onnistumisen elämykset ja kokeilujen vakiintuminen käytänteiksi.\n\nKoulupäivän aikana ja iltapäivisin järjestetään eri Vaasan kaupungin toimijoiden kautta liikunta- ja kulttuuripainotteista toimintaa sekä urheiluseurojen ja liikuntapalveluja tuottavien yritysten kautta harrastustoimintaa.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : "I skolan i rörelse tänker man på sakerna på ett nytt sätt och ingriper i verksamhetskulturen på ett aktivitetsfrämjande sätt. Varje grundskoleelev ska röra på sig åtminstone en timme per dag. Skolorna får hjälp av ett omfattande Skolan i rörelse -stödnätverk. Programmet Skolan i rörelse är ett av spetsprojekten inom kompetens och och utveckling i regreringsprogrammet som finansieras av undervisnings- och kulturministeriet.\n\nAlla Vasas skolor inom den grundläggande utbildningen är registrerad som Skolan i rörelse skolor och deltar i ordnandet av verksamheten på sitt eget sätt. Utgångspunkten har varit att beakta skolornas egna behov och man har lyssnat till elever och personal. Målet är att gå framåt med små steg och på så sätt säkerställs också upplevelser av att lyckas och försök befästs till praxis.\n\nUnder skoldagen och på eftermiddagarna ordnas idrotts- och kulturbetonad verksamhet genom olika aktörer inom Vasa stad samt hobbyverksamhet genom idrottsföreningar och företag som producerar idrottsservice.\n",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

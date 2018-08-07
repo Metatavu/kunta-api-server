@@ -1,0 +1,143 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/node/4981",
+    "value" : "Metsäkallion päiväkoti",
+    "language" : "fi"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Porvarinkatu",
+        "language" : "fi"
+      } ],
+      "streetNumber" : "34",
+      "postalCode" : "65230",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ ],
+      "latitude" : "7009650.771",
+      "longitude" : "229873.659",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "73af8c06-6a6b-4780-9164-8e8872eecc9c",
+      "name" : "Kunnallinen päiväkotihoito"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ {
+    "value" : "metsakallionpk@vaasa.fi",
+    "language" : "fi"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Metsäkallion päiväkoti",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ {
+    "serviceHourType" : "DaysOfTheWeek",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ {
+      "value" : null,
+      "language" : "fi"
+    } ],
+    "openingHour" : [ {
+      "dayFrom" : "Monday",
+      "dayTo" : "",
+      "from" : "06:30:00",
+      "to" : "17:00:00"
+    }, {
+      "dayFrom" : "Tuesday",
+      "dayTo" : "",
+      "from" : "06:30:00",
+      "to" : "17:00:00"
+    }, {
+      "dayFrom" : "Wednesday",
+      "dayTo" : "",
+      "from" : "06:30:00",
+      "to" : "17:00:00"
+    }, {
+      "dayFrom" : "Thursday",
+      "dayTo" : "",
+      "from" : "06:30:00",
+      "to" : "17:00:00"
+    }, {
+      "dayFrom" : "Friday",
+      "dayTo" : "",
+      "from" : "06:30:00",
+      "to" : "17:00:00"
+    } ]
+  } ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Päiväkodin arki rakentuu laadukkaista, elämyksellisistä ja monipuolisista viriketoiminnoista. Aikaa löytyy leikille ja yhdessäololle, ulkoilu ja liikunta on päivittäistä. \nPäiväkodin läheisyydessä on useita metsiä, joiden männyt, kivet ja kannot houkuttelevat lapsia tutkimaan ympäristöä. Ympäristö tarjoaa monipuolisia aktiviteetteja vuodenajasta riippumatta. Retkillä opettelemme turvallista liikkumista. Perushoito ja ohjattu toiminta on suunniteltua. Lähtökohtana toiminnassa on lapsen kehitystaso ja yksilölliset tarpeet. Leikin ja arjessa elämisen kautta lapsi oppii hyviä käytöstapoja ja solmimaan ystävyyssuhteita. Toiminnassamme näkyy luontokasvatuksen periaatteet. Päiväkodin henkilökunta toimii tiiviissä yhteistyössä vanhempien kanssa lapsen yksilöllisyyttä ja itsetuntoa tukien. Yhdessä luodaan turvallinen kasvuympäristö lapsen kehitykselle ja oppimiselle. \nPainopistealueet ovat lapsen yksilöllinen huomioiminen, luottavainen ja avoin kasvatuskumppanuus, lähiympäristöön tutustuminen ja sen vaaliminen sekä ihmisen ja luonnon arvostaminen.\n\nLapsiryhmät: \n* Havuhiipat 5-6 v., \n* Kastehelmet alle 3 v., \n* Sammaltossut, joustavan rakenteen ryhmä, \n* Tuohitossut 3-4 v., \n* Kivitaskut, esiopetus (Paviljonki)\n* Naavaparrat, esiopetus (Paviljonki)\n* Niittyvillat, 4-5 v. (Paviljonki).",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Metsäkallion päiväkoti sijaitsee Metsäkallion alueella.",
+    "type" : "Summary"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-03T11:35:51.971579",
+  "id" : "8c79c916-ac58-4268-8fe6-81a8e8749dd3"
+}

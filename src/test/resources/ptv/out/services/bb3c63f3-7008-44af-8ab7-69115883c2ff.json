@@ -1,0 +1,226 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Kotihoito ja kotipalvelut",
+      "language" : "fi"
+    }, {
+      "value" : "Hemvård och hemservice",
+      "language" : "sv"
+    }, {
+      "value" : "Home care and home services",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Till denna serviceundergrupp hör tjänster som ansluter sig särskilt till hemvård och hemservice för de äldre och personer med funktionsnedsättning och som ger stöd för städning, personlig hygien, matlagning osv. Till denna grupp hör inte egentliga hemsjukvårdstjänster, som finns i sin egen serviceundergrupp.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains especially services related to the home care of and home services for older people and persons with disabilities to provide assistance with cleaning, personal hygiene, cooking etc. The class excludes actual home nursing services, which have their own subclass.",
+      "language" : "en"
+    }, {
+      "value" : "Tähän alapalveluluokkaan kuuluvat erityisesti ikääntyneiden ja vammaisten kotihoitoon ja kotipalveluihin liittyvät palvelut, joilla tuetaan siivouksessa, henkilökohtaisessa hygieniassa, ruoanlaitossa jne. Tähän luokkaan eivät kuulu varsinaiset kotisairaanhoidon palvelut, jotka ovat omassa alapalveluluokassaan.",
+      "language" : "fi"
+    } ],
+    "code" : "P4.3",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1026",
+    "parentId" : "079b55da-af80-41ab-9346-c8fdd284afcf",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1023"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "8f4276e6-0b45-474e-b97a-546dddcc5d2a",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "bb3c63f3-7008-44af-8ab7-69115883c2ff",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "073ac310-6cb0-4a82-820d-d462a75712f3",
+      "name" : "Kotihoidon palveluneuvoja"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "fddedfa5-b2a2-470b-800c-5b6340e22216",
+      "name" : "Kotipalveluohjaajat"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "Chargeable",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Sotainvalidien kotipalvelu",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Hemservice för krigsinvalider",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "hemtjänst",
+      "language" : "sv"
+    }, {
+      "value" : "kotipalvelut",
+      "language" : "fi"
+    }, {
+      "value" : "home help services",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p48297",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p18203"
+  }, {
+    "name" : [ {
+      "value" : "hemservice",
+      "language" : "sv"
+    }, {
+      "value" : "kotipalvelu",
+      "language" : "fi"
+    }, {
+      "value" : "home help service",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p54976",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p18203"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "sv",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Sotainvalideille tarkoitettuja kotipalveluita Vaasassa muiden palveluiden lisäksi ovat siivouspalvelu, pyykkipalvelu, ruohonleikkuupalvelu sekä lounassetelit. Tietoa sotainvalidien palveluista saa oman alueen kotipalveluohjaajalta.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Sotainvalideille tarkoitettuja kotipalveluita Vaasassa muiden palveluiden lisäksi ovat siivouspalvelu, pyykkipalvelu, lounassetelit ym.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : "Hemservice för krigsinvalider i Vasa är städservice, tvättservice, gräsklippningsservice samt lunchsedlar.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : "Hemservice för krigsinvalider i Vasa är städservice, tvättservice, gräsklippningsservice samt lunchsedlar.\n\nInformation om service till krigsinvalider ger även det egna områdets hemserviceledare.\n",
+    "type" : "Description"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

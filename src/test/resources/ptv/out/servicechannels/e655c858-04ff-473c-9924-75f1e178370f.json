@@ -1,0 +1,241 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/tuottajat/kirkkopuistikon-terveysasema",
+    "value" : "Kirkkopuistikon terveysasema",
+    "language" : "fi"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Kirkkopuistikko",
+        "language" : "en"
+      }, {
+        "value" : "Kirkkopuistikko",
+        "language" : "fi"
+      }, {
+        "value" : "Kyrkoesplanaden",
+        "language" : "sv"
+      } ],
+      "streetNumber" : "26",
+      "postalCode" : "65100",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ ],
+      "latitude" : "7007388.61",
+      "longitude" : "228141.849",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi", "sv", "en" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "0a2d9fec-d2f7-47eb-8313-ead1d05a5d0e",
+      "name" : "Kuulontutkimus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "0c39d3f1-5f95-4b98-b14d-4812c087eae3",
+      "name" : "Diabeteksen hoito"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "a355e75f-be55-4c48-a5fd-0b1d9a3f2b1c",
+      "name" : "Hoitotarvikejakelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "dc032066-5697-4d62-bf91-2622d1f9b556",
+      "name" : "Lääkärin ja hoitajan vastaanotto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "e993863b-a6ba-49c6-9315-36f64578ecb3",
+      "name" : "Reseptin uusiminen"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : "Ajanvaraukset, neuvonta",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63251666",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63251666",
+    "language" : "en"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63251666",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ ],
+  "serviceChannelNames" : [ {
+    "language" : "sv",
+    "value" : "Kyrkoesplanadens hälsostation",
+    "type" : "Name"
+  }, {
+    "language" : "en",
+    "value" : "Kirkkopuistikko health center",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Kirkkopuistikon terveysasema",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ {
+    "serviceHourType" : "DaysOfTheWeek",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ {
+      "value" : null,
+      "language" : "fi"
+    } ],
+    "openingHour" : [ {
+      "dayFrom" : "Monday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    }, {
+      "dayFrom" : "Tuesday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    }, {
+      "dayFrom" : "Wednesday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    }, {
+      "dayFrom" : "Thursday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    }, {
+      "dayFrom" : "Friday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "14:15:00"
+    } ]
+  } ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Kirkkopuistikon terveysasema palvelee alueen asukkaita sekä kiireettömissä että kiireellisissä sairaustapauksissa lääkäri- ja hoitajavastaanotolla.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Terveysasema palvelee sekä kiireettömissä että kiireellisissä sairaustapauksissa alueen (keskusta, Hietalahti, Korkeamäki, Suvilahti, Vaskiluoto ja Sundom) asukkaita. Lääkäri- ja hoitajavastaanotot on järjestetty ajanvarausperiaatteella, jotta pystyttäisiin turvaamaan mahdollisimman häiriötön ja sujuva vastaanottotapahtuma.\n\nÄkillisissä sairastapauksissa sairaanhoitaja arvioi hoidon tarpeen, antaa kotihoito-ohjeita sekä ohjaa tarvittaessa lääkärin vastaanotolle. Lääkäreillä on päivittäin muutamia päivystysvastaanottoaikoja ajanvarauksella. Äkillisesti hoitoa tarvitsevat voivat tulla hoitajalle ilman ajanvarausta (esim. sairauslomat, huonovointisuus). Vastaanotto avoinna: ma-to klo 8-11 ja klo 12-15.30, pe klo 8-11 ja klo 12-13.30.\n\n",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Kyrkoesplanadens hälsostation betjänar i både icke akuta och akuta sjukdomsfall.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Kyrkoesplanadens hälsostation betjänar i både icke akuta och akuta sjukdomsfall. Målområde: \nCentrum, Sandviken, Högbacken, Sunnanvik, Vasklot och Sundom.\n\nLäkar- och skötarmottagningar är ordnad enligt tidsbokningsprincipen för att kunna garantera möjligheten till en ostörd och smidig mottagning.\n\nVid akuta sjukdomsfall bedömer sjukskötare vårdbehovet, ger hemvårdsföreskrifter eller sänder vidare till en läkarmottagning vid behov. Läkarna har dagligen några jourmottagningstider enligt tidsbokning. Vid akuta sjukdomsfall kan man komma till skötarmottagningen utan tidsbeställning (t.ex. sjukledighet som utfärdas av skötare, nedsatt allmänt tillstånd). Mottagningen är öppen må-to kl. 8-11 och kl. 12-15.30, fr kl. 8-11 och kl. 12-13.30\n\nPer telefon:\n\n• tidsbokning till läkar- eller skötarmottagning\n\n• bokning till läkarnas telefontider\n\n• rådgivning och sjukvårdsinformation\n\n• förfrågningar om laboratoriesvar enligt överenskommelse med skötarna\nmå-to kl. 12-15.30, fr kl. 12-13.30\n",
+    "type" : "Description"
+  }, {
+    "language" : "en",
+    "value" : "Kirkkopuistikko health center provides services to Vaasa residents both in urgent and non-urgent health issues with doctor and nurse appoinments.",
+    "type" : "Summary"
+  }, {
+    "language" : "en",
+    "value" : "Kirkkopuistikko health center provides services to Vaasa residents both in urgent and non-urgent health issues with doctor and nurse appoinments.\n\nIn urgent health issues nurse evaluates the need of care, gives instructions on home care and if necessary refers to a doctor. Patiens in need of urgent care can come to nurse's office without an appointment between Monday-Thursday 8 am-11 am and 12 pm-3.30 pm.  Fridays 8 am-11 am and 12 pm-13.30 pm.\n\nIn an life-threatening emergency always call 112.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "e655c858-04ff-473c-9924-75f1e178370f"
+}

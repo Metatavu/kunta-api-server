@@ -1,0 +1,44 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "http://www.naantali.fi/perhe_ja_sosiaali/hoito_ja_vanhuspalvelut/fi_FI/veteraanikuntoutus/_files/99404384024002874/default/Kuntoutuksen%20ja%20avopalveluiden%20haku-%20ja%20palautusohjeet.pdf",
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "50719692-7569-4d68-9783-16ee751be3e8",
+      "name" : "Rintamaveteraanien kuntoutus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Kuntoutuksen ja avopalveluiden hakuohjeet (veteraanit)",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Rintamaveteraanien maksuttoman kuntoutuksen ja kotiin vietävien avopalveluiden hakuohjeet opastavat sinua veteraanikuntoutuksen ja avopalveluiden hakemisessa.\n\nOhjeet voi myös tulostaa.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Rintamaveteraanien maksuttoman kuntoutuksen ja kotiin vietävien avopalveluiden hakuohjeet.",
+    "type" : "Summary"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2018-04-09T15:02:16.101678",
+  "id" : "022036cc-4e94-4177-87c3-57868adc4c11"
+}

@@ -1,0 +1,234 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Terveyden ja hyvinvoinnin neuvonta- ja ohjauspalvelut",
+      "language" : "fi"
+    }, {
+      "value" : "Advisory and guidance services for health and well-being",
+      "language" : "en"
+    }, {
+      "value" : "Hälsovårdens rådgivnings- och handledningstjänster",
+      "language" : "sv"
+    } ],
+    "description" : [ {
+      "value" : "The class contains services related to an individual service transaction, visit to a service unit, or a service package or its management, through which a client receives advice and guidance when seeking health and/or well-being services in either problem situations or health promotion. These include the patient ombudsman’s services, appointments, reminder services, self-care services and case management services.",
+      "language" : "en"
+    }, {
+      "value" : "Tjänster i anslutning till en separat servicehändelse, besök till en serviceenhet eller tjänster i samband med en servicehelhet eller dess hantering, med hjälp av vilken klienten får rådgivning och handledning när han eller hon söker hälsovårdstjänster i problemsituationer. Sådana är t.ex. patientombudsmannens tjänster, tidsbeställningar, påminnelsetjänster, egenvårdstjänster och servicestyrning.",
+      "language" : "sv"
+    }, {
+      "value" : "Yksittäiseen palvelutapahtumaan, käyntiin palveluyksikössä tai palvelukokonaisuuteen tai sen hallintaan liittyvät palvelut, joiden avulla asiakas saa neuvontaa ja opastusta etsiessään palveluja terveyden ja hyvinvoinnin ongelmatilanteisiin ja terveyden edistämiseen. Näitä ovat esimerkiksi potilasasiamiespalvelu, ajanvaraukset, muistutuspalvelut, oma- ja itsehoitopalvelut ja palveluohjaus.",
+      "language" : "fi"
+    } ],
+    "code" : "P5.17",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1055",
+    "parentId" : "76ca210c-5183-4d41-b796-50612d5930c7",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1038"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "16d1bd9e-6a64-4888-843c-2aabfd23653d",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "1a7417f4-7b86-4ce2-b415-ff8d374c0f67",
+      "name" : "Influenssan kotihoito-ohje"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "c42199f3-e91b-4854-84e4-d10f0bba3320",
+      "name" : "Hygieniahoitaja"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "sv",
+    "value" : "Hygienskötaren",
+    "type" : "AlternativeName"
+  }, {
+    "language" : "sv",
+    "value" : "Hygien",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Hygieniahoitajan palvelut",
+    "type" : "AlternativeName"
+  }, {
+    "language" : "fi",
+    "value" : "Hygienia",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "handhygien",
+      "language" : "sv"
+    }, {
+      "value" : "käsihygienia",
+      "language" : "fi"
+    }, {
+      "value" : "hand hygiene",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "TERO",
+    "uri" : "http://www.yso.fi/onto/koko/p72368",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p33290"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Viranomaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Authorities",
+      "language" : "en"
+    }, {
+      "value" : "Myndigheter",
+      "language" : "sv"
+    } ],
+    "code" : "KR3",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2017",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "sv",
+    "value" : "Hygienskötarens uppgift är att främja patient- och klientsäkerheten samt arbetar-skyddet för hälsovårdspersonalen i Vasa stads område.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : "Hygienskötarens uppgift är att främja patient- och klientsäkerheten samt arbetar-skyddet för hälsovårdspersonalen i Vasa stads område. Hygienskötaren fungerar i samarbete med ansvariga läkaren för smittsamma sjukdomar samt utför samarbete med de olika enheterna inom social- och hälsovården.\n\nHygienskötarens uppgifter är:\n\n• förebyggande och övervakande av smittsamma och infektionssjukdomar samt uppföljande av vård av infektioner\n\n• kartläggning av personer som insjuknat i en smitta, skötande om undersökningar samt rådgivning för att förebygga att smittan sprider sig\n\n• samarbete med hemvården, dagvården och skolorna\n\n• instruering av praktiska åtgärder i hygienärenden, sköta om att instruktionerna tas i bruk samt ordnande av utbildning för hälsovårdspersonalen\n\n• deltagande i bekämpandet och utredandet av epidemier\n\n• givande av experthjälp och råd åt kommuninvånarna i fråga om hygien, infektioner och smittsamma sjukdomar",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Hygieniahoitajan tehtävänä on edistää potilas- ja asiakasturvallisuutta sekä terveydenhuollon henkilökunnan työturvallisuutta Vaasan kaupungin alueella. Hygieniahoitaja toimii yhteistyössä tartuntataudeista vastaavan lääkärin ja infektioyksikön kanssa sekä tekee yhteistyötä sosiaali- ja terveydenhuollon eri yksiköiden kanssa.\n\nHygieniahoitajan tehtäviä ovat: \n* tartunta- ja infektiotautien ehkäiseminen ja valvominen sekä hoitoon liittyvien infektioiden seuraaminen\n* tartunnalle altistuneiden kartoitus, tutkimuksista huolehtiminen sekä neuvonta taudin leviämisen ehkäisemiseksi\n* yhteistyö kotihoidon, päivähoidon ja koulujen kanssa\n* käytännön toimien ohjeistaminen hygienia-asioissa, ohjeiden käyttöönotosta huolehtiminen sekä koulutuksien järjestäminen terveydenhuollon henkilökunnalle\n* epidemioiden torjuntaan ja selvittelyyn osallistuminen\n* asiantuntija-avun ja neuvojen antaminen kuntalaisille hygieniaan, infektioihin ja tartuntatauteihin liittyen\n\n",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Hygieniahoitajan tehtävänä on edistää potilas- ja asiakasturvallisuutta sekä terveydenhuollon henkilökunnan työturvallisuutta.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

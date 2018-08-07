@@ -1,0 +1,166 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Government (state and local) registers and databases",
+      "language" : "en"
+    }, {
+      "value" : "Rekisterit ja tietokannat",
+      "language" : "fi"
+    }, {
+      "value" : "Register och databaser",
+      "language" : "sv"
+    } ],
+    "description" : [ {
+      "value" : "Denna underservicegrupp innehåller lagenligt utnyttjande av innehållet i den offentliga förvaltningens register och databaser som enstaka informationsinlämningar eller som automatiskt sambruk av information mellan systemen.",
+      "language" : "sv"
+    }, {
+      "value" : "Tämä alapalveluluokka sisältää julkishallinnon rekisterien ja tietokantojen sisältämän aineiston lainmukaisen, palveluluonteisen hyödyntämisen yksittäisinä tietoluovutuksina tai koneellisena tietojen yhteiskäyttönä järjestelmien välillä.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass features services that facilitate legal disclosures of information from public sector registers and databases either as individual instances or mass information exchange between information systems.",
+      "language" : "en"
+    } ],
+    "code" : "P9.3",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1219",
+    "parentId" : "95f29e15-fb54-4ac2-8c9b-fac6ae3121fa",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1095"
+  }, {
+    "name" : [ {
+      "value" : "Statistics and information services",
+      "language" : "en"
+    }, {
+      "value" : "Statistik- och informationstjänster",
+      "language" : "sv"
+    }, {
+      "value" : "Tilasto- ja tietopalvelut",
+      "language" : "fi"
+    } ],
+    "description" : [ {
+      "value" : "This service subclass features services that produce or collect, manage and distribute systematic or systematized (statistical or otherwise) information or data on society, the natural environment or organisations and their activities.",
+      "language" : "en"
+    }, {
+      "value" : "Denna underservicegrupp innehåller tjänster som har som uppgift att producera eller samla, underhålla och bjuda systematiskt (statistiskt eller på annat sätt) producerad information om samhället, naturmiljön eller organisationers verksamhet.",
+      "language" : "sv"
+    }, {
+      "value" : "Tämä alapalveluluokka sisältää palvelut, joiden tehtävänä on tuottaa tai kerätä, ylläpitää ja tarjota systemaattisesti (tilastollisesti tai muulla tavoin) tuotettua tietoa yhteiskunnasta, luonnonympäristöstä tai organisaatioiden toiminnasta.",
+      "language" : "fi"
+    } ],
+    "code" : "P9.1",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1217",
+    "parentId" : "95f29e15-fb54-4ac2-8c9b-fac6ae3121fa",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1095"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "Nationwide",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2018-04-12T09:12:17.061565",
+  "id" : "6487128b-8db8-4fd3-9118-4d9bc08768c4",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "764c1bd7-0e37-417c-bb00-57a4fe5474cf",
+      "name" : "Hankesalkku"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : "Hankesalkkupalvelu on tarkoitettu ministeriöiden sekä virastojen ja laitosten käyttöön. ",
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Valtionhallinnon yhteinen Hankesalkku",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "hankerahoitus",
+      "language" : "fi"
+    }, {
+      "value" : "projektfinansiering",
+      "language" : "sv"
+    }, {
+      "value" : "project funding",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p62568",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p32651"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Viranomaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Authorities",
+      "language" : "en"
+    }, {
+      "value" : "Myndigheter",
+      "language" : "sv"
+    } ],
+    "code" : "KR3",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2017",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Hankesalkkujärjestelmään käyttäjätunnukset saat oman organisaatiosi Hankesalkun pääkäyttäjältä. ",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Hankesalkkujärjestelmä sisältää perustiedot valtionhallinnon tärkeistä kehityshankkeista ja -projekteista sekä niihin liittyvän tilanneraportoinnin.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Väestörekisterikeskus ylläpitää valtionhallinnon yhteistä hankesalkkujärjestelmää. Se sisältää perustiedot merkittävistä kehityshankkeista ja -projekteista sekä niihin liittyvän tilanneraportoinnin. Hankesalkun avulla seurataan hankkeiden etenemistä ja hyötyjen toteutumista. Hankesalkku tukee osaltaan julkisen hallinnon digitalisaatiokehitystä.\n\nMinisteriöiden ja virastojen tulee viedä Hankesalkkuun tiedot merkittävistä hankkeista ja projekteista, jotka sisältävät tietotekniikan kehittämistä. Lisäksi järjestelmään voi viedä myös pienempiä projekteja ja muitakin kuin vain ICT:n kehittämistä sisältäviä projekteja. \n\nYhteinen hankesalkkujärjestelmä luo edellytyksiä salkunhallintaan muun muassa yhtenäistämällä tietosisältöä ja raportointia sekä tarjoamalla kokonaisnäkymän eri vaiheissa oleviin kehityshankkeisiin ja -projekteihin sekä virasto-, hallinnonala- että valtiokonsernitasolla. \n\nHankesalkun hallinnassa on kyse kehittämiskokonaisuuden ohjauksesta, jonka tukemiseksi ja koordinoinnin helpottamiseksi hankkeita ja projekteja kootaan erilaisiin \"salkkuihin\". Salkunhallinnan peruskysymyksiä ovat\n\n* Mitä hankkeita ja projekteja organisaatiossa on käynnissä? Miten ne tukevat strategiaa ja tavoitteita?\n* Miten kehittämistä priorisoidaan? Mitä kehitetään ja missä järjestyksessä?\n* Mikä on yksittäisten hankkeiden ja projektien etenemisen tilanne? Onko niillä keskinäisiä riippuvuuksia, jotka pitää ottaa huomioon?\n\nVäestörekisterikeskus kokoaa Hankesalkusta säännöllisesti yhteenvedon. Siinä ovat mukana hankkeet, joiden arvioidut kokonaiskustannukset ovat vähintään miljoona euroa. Yhteenvedot julkaistaan Väestörekisterikeskuksen Eevertti-sivustolla.\n\nLisäksi Väestörekisterikeskus laatii Hankesalkun tiedoista yhteenvetoja eri tarpeisiin. \n",
+    "type" : "Description"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "b458d033-042d-4cbe-b030-34e81da28821",
+      "name" : "Väestörekisterikeskus"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "b458d033-042d-4cbe-b030-34e81da28821",
+      "name" : "Väestörekisterikeskus"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "ProcuredServices",
+    "organization" : null,
+    "roleType" : "Producer",
+    "additionalInformation" : [ {
+      "value" : "Keto Software Oy",
+      "language" : "fi"
+    } ]
+  } ]
+}

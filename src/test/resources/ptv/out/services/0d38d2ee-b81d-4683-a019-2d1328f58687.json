@@ -1,0 +1,333 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Maankäyttö, kaavoitus ja tontit",
+      "language" : "fi"
+    }, {
+      "value" : "Markanvändning, planering och tomter",
+      "language" : "sv"
+    }, {
+      "value" : "Land use, land use planning and sites",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "I denna underservicegrupp behandlas landskapsplanering, detaljplaner och stadsplaner, påverkningsmöjligheter för dessa samt affärer med och hyrning av planerad mark och tomter, inklusive företagstomter.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains regional land use plans, local master plans and local detailed plans, possibilities of influencing these plans, and the sales and leasing of zoned land and sites, including commercial sites.",
+      "language" : "en"
+    }, {
+      "value" : "Tässä alapalveluluokassa käsitellään maakuntakaavoja, yleiskaavoja ja asemakaavoja, niihin liittyviä vaikuttamismahdollisuuksia sekä kaavoitetun maan ja tonttien kauppaa ja vuokraamista, mukaan lukien yritystontit.",
+      "language" : "fi"
+    } ],
+    "code" : "P2.3",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1010",
+    "parentId" : "dd30002b-be2b-4689-878a-60e93492cc87",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1007"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "0d38d2ee-b81d-4683-a019-2d1328f58687",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "22cd9e41-dcc9-42d5-bc40-3dd64d27c030",
+      "name" : "Kiinteistötoimi"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "532ab2a9-1516-4e3e-ba38-ee5c51237723",
+      "name" : "Yritystontit"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "b16b7981-36cb-4c66-bcf5-a00524690956",
+      "name" : "Kiinteistötoimen verkkosivut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "bc96ca8c-25b4-4e4d-b3ab-51772933bfbb",
+      "name" : "Rivi- ja kerrostalotontit"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "dfad52db-0ef1-46b7-8788-9b3f74bacce5",
+      "name" : "Omakotitontit"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "ec6c5f45-d38c-4220-8b76-1b0e591800af",
+      "name" : "Pientalotonttihakemus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "en"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv", "en" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "Chargeable",
+  "serviceNames" : [ {
+    "language" : "sv",
+    "value" : "Tomter för byggande",
+    "type" : "Name"
+  }, {
+    "language" : "en",
+    "value" : "Plots for construction",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Tontit rakentamiseen",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "tontit",
+      "language" : "fi"
+    }, {
+      "value" : "tomter",
+      "language" : "sv"
+    }, {
+      "value" : "plots of land",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p4911",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p18755"
+  }, {
+    "name" : [ {
+      "value" : "bostadstomter",
+      "language" : "sv"
+    }, {
+      "value" : "asuntotontit",
+      "language" : "fi"
+    }, {
+      "value" : "residential plots",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p66074",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p4911"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Yritykset ja yhteisöt",
+      "language" : "fi"
+    }, {
+      "value" : "Businesses and non-government organizations",
+      "language" : "en"
+    }, {
+      "value" : "Företag och samfund",
+      "language" : "sv"
+    } ],
+    "code" : "KR2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Vaasan kaupungilta voit hakea asunto- ja yritystontteja rakentamiseen.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Hos Vasa stad kan du ansöka om bostads- och företagstomter för byggande.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan kaupungilta voit hakea asunto- ja yritystontteja rakentamiseen. Asuntotontit ovat rivi-, kerrostalo- ja omakotitontteja. Vaasan kaupunki luovuttaa asemakaavan mukaiset asuntotontit rakentamiseen pääosin julkisilla hauilla joko vuokraamalla tai myymällä. Tekninen lautakunta päättää vuosittain tontinluovutuksen periaatteista ja asuntotonttien varauksista.\n\nOmakotitontit:\nOmakotitontit luovutetaan julkisilla hauilla, joko erillisinä hakuaikoina (uudet tontit, tarjouskilpailutontit) tai ns. jatkuvana hakuna. Tontinsaaja saa pääsääntöisesti itse valita, vuokraako tai ostaako hän tontin.\nOmakotitonttien luovutuksessa noudatetaan etukäteen määriteltyjä valintakriteerejä. Osa tonteista voidaan jakaa myös toisin perustein tai myydä tarjouskilpailulla. Hakukierroksilta yli jääneet kiinteähintaiset tontit jaetaan ilmoittautumisjärjestyksessä.\n\nRivi- ja kerrostalotontit:\nErityistä arvoa ja kysyntää omaavat rivi- ja kerrostalotontit (mm. ranta-alueet, ydinkeskusta ja sen lähialueet) luovutetaan pääsääntöisesti julkisen hinta- tai laatukilpailun avulla. Muilta osin tontit jaetaan pääosin harkinnan mukaan ottaen huomioon kaupungin asunto- ja elinkeinopoliittiset tavoitteet sekä suunnitelmien laadun.\n\nYritystontit:\nAsemakaavan mukaiset yritystontit luovutetaan rakentamiseen julkisilla hauilla tai neuvottelumenettelyllä. Vaasan kaupunki luovuttaa yritystontteja ensisijaisesti vuokraamalla. Yritystontit jaetaan pääosin neuvottelumenettelyllä ottaen huomioon kaupungin elinkeinopoliittiset tavoitteet.\nTontit voidaan jakaa myös julkisen hinta- tai laatukilpailun perusteella. Teollisuus- ja varastotontit myydään vain poikkeustapauksissa.\n",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : "Tonttien hakeminen on maksutonta. Maksamalla tontin varausmaksun vahvistat tontin varauksen. Lisätietoa maksuista saat Vaasan kaupungin tonttipalveluista.",
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Haettavana olevista asuntotonteista ilmoitetaan paikallislehdissä ja kiinteistötoimen verkkosivuilla. Asuntotontteja voit hakea pientalotonttihakemuksella. Hakulomakkeen voi tulostaa verkossa. Hakulomakkeita saa myös kiinteistötoimesta ja Kansalaisinfosta. \n\nYritystontteja voi tiedustella Kiinteistötoimen tonttipalveluista sähköpostitse: tontit@vaasa.fi Yritystontit -verkkosivulta löydät tietoa vapaana olevista yritystonteista Vaasassa.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : "Hos Vasa stad kan du ansöka om bostads- och företagstomter för byggande. \nBostadstomterna är radhus-, flervåningshus- och egnahemstomter. Vasa stad överlåter bostadstomter enligt detaljplan för byggande i regel genom offentlig ansökan antingen genom  arrendering eller genom försäljning. Tekniska nämnden beslutar årligen om principerna för tomtöverlåtelse och reserveringarna av bostadstomter. \n\nEgnahemstomter:\nEgnahemstomter överlåts genom offentlig ansökan, antingen under separata ansökningstider (nya tomter, tomter enligt anbudsförfarande) eller som s.k. fortgående ansökan. Tomtmottagarna får i regel själv väja om de arrenderar eller köper tomten. Vid överlåtelse av egnahemstomter iakttas på förhand fastställda urvalskriterier. En del av tomterna kan också delas ut på andra grunder eller säljas genom anbudsförfarande. Tomter med fasta priser som blivit över efter ansökningsrundan delas ut i den ordning ansökan inlämnas.\n\nRad- och flervåningshustomter:\nSpeciellt värdefulla och efterfrågade rad- och flervåningshustomter (bl.a. strandområden, centrum och dess närområden) överlåts i regel genom en offentlig pris- eller kvalitetstävling. Till övriga delar delas tomterna i regel ut enligt prövning med beaktande av stadens bostads- och näringspolitiska mål samt planernas kvalitet.\n\nFöretagstomter:\nFöretagstomter enligt detaljplanen överlåts för byggande genom offentlig ansökan eller förhandlingsförfarande.  Vasa stad överlåter företagstomter i första hand genom arrendering. Företagstomter delas till största delen ut genom förhandlingsförfarande med beaktande av stadens näringspolitiska mål.\nTomterna kan också delas ut på basis av en offentlig pris- eller kvalitetstävling. Industri- och lagertomter säljs endast i undantagsfall.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Om de bostadstomter som kan sökas meddelas i lokaltidningarna och på fastighetssektorns webbsidor. Bostadstomter kan sökas med en ansökan om småhustomt. Ansökningsblanketten kan skrivas ut på nätet. Ansökningsblanketter fås också på fastighetssektorn och Medborgarinfon.\n \nOm företagstomter kan man höra sig för hos Fastighetssektorns tomtservice per e-post: tontit@vaasa.fi. På webbsidan Företagstomer finns uppgifter om lediga företagstomter i Vasa. ",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : "Ansökan om tomter är avgiftsfri. Genom att betala en reserveringsavgift för tomten bekräftar du reserveringen av tomten. Tilläggsinformation om avgifterna ger Vasa stads tomtservice.",
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "en",
+    "value" : "You can apply plots for constructing estates and companies from the City of Vaasa.",
+    "type" : "Summary"
+  }, {
+    "language" : "en",
+    "value" : "Ask more about the applicable estate plots from the Real Estate Department of the City of Vaasa.\n\nPlots for companies can be inquired from the Real Estate Departments plot services: tontit@vaasa.fi ",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "en",
+    "value" : "You can apply plots for constructing estates and companies from the City of Vaasa. The plots for estates are plots for terraces houses, multi-storey buildings and detached houses. The City of Vaasa mainly conveys estate plots for construction according to the city plan through public applications either by renting or by selling. The technical board annually decides on the principles on conveying plots and taking reservations for estate plots.\n\nPlots for detached houses:\nPlots for detached houses are conveyed through public applications, either during separate application times (new plots, plots for competitive bidding) or through so-called continuous applications. As a rule of thumb, the person to whom the plot is assigned can decide himself or herself whether to buy or rent the plot. When assigning plots for detached or semi-detached houses, selection criteria that have been determined beforehand are applied. Some plots may also be distributed on other grounds or sold through competitive bidding. Any fixed-price plots that have not been assigned during the application rounds will be distributed in order of registration.\n\nPlots for terrace houses and multi-storey buildings:\nPlots for terrace houses and multi-storey buildings that are of special value or especially sought-after are mainly assigned through a public price or quality competition. Otherwise plots are mainly distributed at the discretion of City officials, taking into account the City’s housing and industrial policy targets and the quality of the proposed building projects.\n\nPlots for companies:\nPlots for companies according to the city plan are conveyed for construction through public applications or through negotiations. The City of Vaasa primarily convey plots for companies by renting. Plots for companies are distributed through negotiation, taking into account the City's business political targets.\nPlots can also be distributed based on the public price and quality competition. Industrial and warehouse plots are sold only in exceptional cases.\n",
+    "type" : "Description"
+  }, {
+    "language" : "en",
+    "value" : "Applying for plots is free of charge. By paying the reservation fee of the plot, you verify the plot reservation. More information about the payments are given by the plot services of the City of Vaasa.",
+    "type" : "ChargeTypeAdditionalInfo"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

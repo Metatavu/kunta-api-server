@@ -1,0 +1,210 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Sosiaalipalvelujen oheis- ja tukipalvelut",
+      "language" : "fi"
+    }, {
+      "value" : "Social service auxiliary and support services",
+      "language" : "en"
+    }, {
+      "value" : "Socialtjänsternas sido- och stödtjänster",
+      "language" : "sv"
+    } ],
+    "description" : [ {
+      "value" : "Tähän alapalveluluokkaan kuuluvat sosiaalipalveluja täydentävät palvelut, joiden avulla tuetaan palveluyksikön perustehtävää, asiakkaan arkea ja sosiaalipalvelujen saavutettavuutta. Tällaisia ovat esim. ateriapalvelut, vaatehuoltopalvelut, siivouspalvelut, sosiaalista kanssakäymistä edistävät palvelut ja palveluyksikön asiakkaille tarkoitetut sähköiset palvelukanavat.",
+      "language" : "fi"
+    }, {
+      "value" : "Till denna serviceundergrupp hör tjänster som kompletterar socialtjänster, med hjälp av vilka man stöder serviceenhetens grunduppgift, kundens vardag och socialtjänsternas tillgänglighet. Sådana är bl.a. måltidstjänster, klädvårdstjänster, städningstjänster, tjänster som främjar social växelverkan och elektroniska servicekanaler för serviceenhetens klienter.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains services complementing social services that help to support the basic tasks of a service unit, a client's everyday life and the accessibility of social services. They include meal, clothing care and cleaning services, services that promote social interaction, and e-service channels intended for service unit clients.",
+      "language" : "en"
+    } ],
+    "code" : "P4.14",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1037",
+    "parentId" : "079b55da-af80-41ab-9346-c8fdd284afcf",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1023"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "c0441fa9-94ae-4a68-b5c7-d6565cc78a0a",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "025bdcf0-d2a0-43f0-a692-d34b6778c7bf",
+      "name" : "Pohjanmaan tulkkikeskuksen verkkosivu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "17770368-5ae6-4c7b-9e4d-ee2bd6625543",
+      "name" : "Pohjanmaan tulkkikeskus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv", "en" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Asioimistulkkaus- ja käännöspalvelut",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Tulkkipalvelu",
+    "type" : "AlternativeName"
+  }, {
+    "language" : "sv",
+    "value" : "Kontakttolknings- och översättningsservice",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : "Pohjanmaan tulkkikeskus tarjoaa asioimistulkkaus- ja käännöspalveluja Pohjanmaan alueella toimiville viranomaisille.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Kun viranomainen tilaa tulkin, tulkkaus on asiakkaalle maksutonta.",
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Pohjanmaan tulkkikeskus tarjoaa asioimistulkkaus- ja käännöspalveluja Pohjanmaan alueella toimiville viranomaisille. Käännöspalveluja käyttävät myös yksityishenkilöt.\n\nMaahantulon alkuvaiheessa tarvitaan erilaisissa tilanteissa tulkkaus-ja käännöspalveluja. Asioimistulkkia käytetään mm. viranomaisen ja maahanmuuttajan välisessä asioinnissa. Tulkkaamisesta ja kääntämisestä on mainintoja monessa kohtaa Suomen lainsäädäntöä. Viranomaisen on huolehdittava asian tulkitsemisesta tai kääntämisestä, jos maahanmuuttaja ei osaa kielilain mukaan viranomaisessa käytettävää suomen tai ruotsin kieltä taikka hän ei vammaisuutensa tai sairautensa vuoksi voi tulla ymmärretyksi tässä laissa tarkoitetussa asiassa, joka voi tulla vireille viranomaisen aloitteesta.\n\nTulkkaus säästää aikaa sekä voimavaroja ja mahdollistaa tietojen välittämisen kielirajoista huolimatta. Tulkkipalveluita annetaan monipuolisesti useilla eri kielillä.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : "Österbottens tolkcentral erbjuder kontakttolknings- och översättningstjänster åt myndigheter som är verksamma i området Österbotten. Översättningstjänsterna används också av privatpersoner.\n\nI initialskedet efter ankomsten till landet behövs tolknings- och översättningstjänster i olika situationer. Kontakttolkar används bl.a. vid uträttande av ärenden mellan myndigheter och invandrare. Om tolkning och översättning finns omnämnanden i flera punkter av Finlands lagstiftning. Myndigheten ska ordna tolkning eller översättning i ett ärende, om invandraren inte behärskar det språk, finska eller svenska, som enligt språklagen ska användas hos myndigheten eller om han eller hon på grund av handikapp eller sjukdom inte kan bli förstådd i ett ärende som avses i denna lag och som kan inledas på myndighetens initiativ.\n\nTolkningen sparar tid och resurser och möjliggör att information förmedlas trots språkgränserna. Tolktjänster erbjuds mångsidigt på många olika språk.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : "Österbottens tolkcentral erbjuder kontakttolknings- och översättningstjänster åt myndigheter som är verksamma i området Österbotten.",
+    "type" : "Summary"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

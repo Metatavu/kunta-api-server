@@ -1,0 +1,221 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Vapaa sivistystyö ja taidekasvatus",
+      "language" : "fi"
+    }, {
+      "value" : "Fritt bildningsarbete och konstfostran",
+      "language" : "sv"
+    }, {
+      "value" : "Free adult education and art education",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Tähän palvelualaluokkaan kuuluvat kaikille avointa opisto- ja korkeakouluopetusta, eri taiteiden avointa opetusta sekä lasten ja nuorten taidekasvatusta antavat oppilaitokset opetussisältöineen.",
+      "language" : "fi"
+    }, {
+      "value" : "Denna serviceundergrupp omfattar instituts- och högskoleundervisning som är öppen för alla, öppen undervisning i olika konstarter samt läroanstalter som ordnar konstfostran för barn och ungdomar.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains instruction at secondary and higher level educational institutions that is open for all, open instruction in different arts as well as institutions that provide art education for children and young people and their teaching contents.",
+      "language" : "en"
+    } ],
+    "code" : "P25.7",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1205",
+    "parentId" : "200f3f00-31b1-41cc-a986-2d9e4dc40fb7",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1198"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "b022f60d-c4ed-4bab-b88e-d33d30c6f3ba",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "4dbc8d94-9494-4799-99d0-dbb503ff7e24",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "2a63ef79-1757-4036-b6e7-c4cfa6ea3139",
+      "name" : "Netti-ilmoittautuminen ja hakeminen Naantalin musiikkiopistoon"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "8481a311-c6e2-4ac7-8cab-4d65e5e708c3",
+      "name" : "Netti-ilmoittautuminen Naantalin opistoon"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "8f1b4ac9-1acc-4fd5-9169-4913fe17848d",
+      "name" : "Naantalin musiikkiopisto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "a11450b0-d0bc-4202-8306-fbd53578b783",
+      "name" : "Naantalin opisto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : null,
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Taiteen perusopetus",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ ],
+    "code" : null,
+    "ontologyType" : null,
+    "uri" : "http://www.yso.fi/onto/yso/p21985",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "De unga",
+      "language" : "sv"
+    }, {
+      "value" : "Young people",
+      "language" : "en"
+    }, {
+      "value" : "Nuoret",
+      "language" : "fi"
+    } ],
+    "code" : "KR1.3",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2004",
+    "parentId" : "daff1fb9-9394-49b5-b033-d1d1c7005ab6",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001"
+  }, {
+    "name" : [ {
+      "value" : "Barn och barnfamiljer",
+      "language" : "sv"
+    }, {
+      "value" : "Lapset ja lapsiperheet",
+      "language" : "fi"
+    }, {
+      "value" : "Children and families with children",
+      "language" : "en"
+    } ],
+    "code" : "KR1.2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2003",
+    "parentId" : "daff1fb9-9394-49b5-b033-d1d1c7005ab6",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001"
+  }, {
+    "name" : [ {
+      "value" : "Medborgare",
+      "language" : "sv"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : "Naantalissa saa taiteen perusopetusta musiikissa (Naantalin musiikkiopisto) ja kuvataiteessa (Naantalin opisto/Kuvataidekoulu).",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Naantalissa saa taiteen perusopetusta musiikissa (Naantalin musiikkiopisto) ja kuvataiteessa (Naantalin opisto/kuvataidekoulu).\n\nMusiikin laaja oppimäärä - Naantalin musiikkiopisto\n* Naantalin musiikkiopisto antaa musiikin laajan oppimäärän mukaista opetusta. Opetus on tutkintoon johtavaa ja tavoitteellista. Laajan oppimäärän mukainen musiikin taiteen perusopetus ohjaa oppilaita keskittyneeseen ja pitkäjänteiseen työskentelyyn. Se antaa myös valmiuksia musiikkialan ammattiopintoihin. Laajan oppimääräin mukaiset opinnot rakentuvat varhaisiän musiikkikasvatuksen, musiikin perustason ja musiikkiopistotason opinnoista. Laajan oppimäärän opetusta antavat musiikkioppilaitokset. Opetus perustuu taiteen perusopetuksesta annettuun lakiin.\n* Vilkas konserttitoiminta ja oppilasillat tarjoavat opiskelijoille esiintymismahdollisuuksia ja elävöittävät kaupungin musiikkitarjontaa. Musiikkiopisto osallistuu moniin toiminta-alueensa kulttuuritapahtumiin tavoitteenaan niin musiikkiopistoa kuin myös toimintaympäristöään palveleva yhteistyö.\nKuvataiteen yleinen oppimäärä - Naantalin opisto/Kuvataidekoulu\n* Naantalin opiston Kuvataidekoulu antaa kuvataiteen yleisen oppimäärän mukaista opetusta 7 - 16 -vuotiaille lapsille ja nuorille. Opetus on tavoitteellista, tasolta toiselle etenevää kuvataiteen opetusta, jonka sisältö ja opetusmenetelmät suunnitellaan oppilaan ikään ja kehitysvaiheeseen nähden sopiviksi. Opinnot syventävät ja täydentävät perusopetuksen taidekasvatusta ja luovat pohjaa taiteen ammatillisiin opintoihin. Aloitusiästä riippuen opintojen kesto on 4 - 8 vuotta.\n* Varhaisiän opinnoissa (5 - 6 -vuotiaat) lapset tutustuvat taiteen ilmiöihin leikinomaisen työskentelyn avulla. Opetus on mielikuvitusta rikastuttavaa, monipuolista aistien ja ilmaisun harjoittamista.\n\n",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Voit hakea:\n* Naantalin musiikkiopiston uudeksi oppilaaksi ilmoittautumalla pääsykokeisiin verkossa. Pääsykokeet järjestetään keväisin. \nVoit ilmoittautua:\n* Naantalin musiikkiopiston muskarin ryhmiin täyttämällä lomakkeen verkossa.\n* Naantalin opiston kuvataidekouluun täyttämällä lomakkeen verkossa.",
+    "type" : "UserInstruction"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

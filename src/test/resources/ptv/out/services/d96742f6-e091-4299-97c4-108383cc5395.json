@@ -1,0 +1,340 @@
+{
+  "sourceId" : null,
+  "keywords" : [ {
+    "value" : "liikuntakokeilu",
+    "language" : "fi"
+  }, {
+    "value" : "lajikokeilu",
+    "language" : "fi"
+  } ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Liikunta ja urheilu",
+      "language" : "fi"
+    }, {
+      "value" : "Motion och idrott",
+      "language" : "sv"
+    }, {
+      "value" : "Sports and exercise",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Tähän palvelualaluokkaan kuuluvat liikuntapaikat, urheiluopistot ja niiden palvelut, liikunnan tietopalvelut ja urheiluseurojen sekä liikuntajärjestöjen toiminta.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains sports facilities, sports institutes and their services, exercise information services and the activities of sports clubs and sports associations.",
+      "language" : "en"
+    }, {
+      "value" : "Denna serviceundergrupp omfattar motionsställen, idrottsinstitut och deras tjänster, informationstjänster för motion samt idrottsföreningars och motionsorganisationers verksamhet.",
+      "language" : "sv"
+    } ],
+    "code" : "P27.1",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1211",
+    "parentId" : "175762f6-53cd-4d29-a285-625bfb421b21",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1210"
+  }, {
+    "name" : [ {
+      "value" : "Liikunta ja ulkoilu",
+      "language" : "fi"
+    }, {
+      "value" : "Motion och friluftsliv",
+      "language" : "sv"
+    }, {
+      "value" : "Sports and outdoor activities",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "I denna servicegrupp behandlas tjänster relaterade till motion, friluftsliv och fritidsverksamhet ute i naturen.",
+      "language" : "sv"
+    }, {
+      "value" : "Tässä palveluluokassa käsitellään kuntoliikuntaan, ulkoiluun ja luonnossa tapahtuvaan vapaa-ajan toimintaan liittyviä palveluja.",
+      "language" : "fi"
+    }, {
+      "value" : "This service class contains services related to keep-fit exercise, outdoor exercise and free-time activities in nature.",
+      "language" : "en"
+    } ],
+    "code" : "P27",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1210",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2017-10-19T12:47:55.466391",
+  "id" : "d96742f6-e091-4299-97c4-108383cc5395",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "384a1d03-df7c-4cbe-a09f-2284917a0e40",
+      "name" : "Lasten ja nuorten liikunta"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "6c6b7832-815c-49b6-aa3c-4855c4f1dd05",
+      "name" : "Liikuntasuunnittelija, Lasten ja nuorten liikunta"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "7e8b01df-6909-4ad0-ba64-3f2123af4788",
+      "name" : "Vaasa kaupungin verkkokauppa"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "98928e3e-1299-49be-b571-6d95de3ece21",
+      "name" : "Harrastetoiminnan verkkosivut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "sv"
+  }, {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : null,
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Harrastetoiminta",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Hobbyverksamhet",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "urheilu",
+      "language" : "fi"
+    }, {
+      "value" : "idrott",
+      "language" : "sv"
+    }, {
+      "value" : "sports",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p48399",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p35142"
+  }, {
+    "name" : [ {
+      "value" : "koululiikunta",
+      "language" : "fi"
+    }, {
+      "value" : "skolidrott",
+      "language" : "sv"
+    }, {
+      "value" : "physical education (school subject)",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p2991",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p30612"
+  }, {
+    "name" : [ {
+      "value" : "motion (idrott)",
+      "language" : "sv"
+    }, {
+      "value" : "liikunta",
+      "language" : "fi"
+    }, {
+      "value" : "physical training",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p30612",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p35142"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "De unga",
+      "language" : "sv"
+    }, {
+      "value" : "Young people",
+      "language" : "en"
+    }, {
+      "value" : "Nuoret",
+      "language" : "fi"
+    } ],
+    "code" : "KR1.3",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2004",
+    "parentId" : "daff1fb9-9394-49b5-b033-d1d1c7005ab6",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001"
+  }, {
+    "name" : [ {
+      "value" : "Barn och barnfamiljer",
+      "language" : "sv"
+    }, {
+      "value" : "Lapset ja lapsiperheet",
+      "language" : "fi"
+    }, {
+      "value" : "Children and families with children",
+      "language" : "en"
+    } ],
+    "code" : "KR1.2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2003",
+    "parentId" : "daff1fb9-9394-49b5-b033-d1d1c7005ab6",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001"
+  }, {
+    "name" : [ {
+      "value" : "Medborgare",
+      "language" : "sv"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : "Hobbyverksamheten består av grentestning-verksamhet och grenskolor som ordnas med föreningarna, Skolan i rörelse -hobbyverksamhet och hobbyklubbar.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : "Lajikoulut maksavat 37,20€/laji (sis. alv 24%).",
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : "Ilmoittautuminen lajikokeiluihin käynnistyy elokuussa. Toimintaan ilmoittaudutaan sähköisella ilmoittautumislomakkeella lasten ja nuorten liikunnan nettisivujen kautta. \n\nLajikouluihin ilmoittaudutaan mukaan Vaasan kaupungin verkkokaupassa. Toimintaan ilmoittautuminen alkaa kuukautta ennen lajikoulun alkua.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Harrastetoimintaan sisältyy seurojen kanssa iltaisin ja viikonloppuisin järjestettävät lajikokeilut ja lajikoulut, Liikkuva koulun kautta toteutettava -harrastetoiminta sekä iltapäivän Lasten Liike harrastekerhot.\n\nLajikokeiluissa osallistuja pääsee maksutta tutustumaan lajiin ja oppii lajin perusteita, samalla huoltajat pääsevät tutustumaan liikunta- tai urheiluseuran toimintaan. Maksuton lajikokeilu pitää sisällään kolmesta viiteen harjoituskertaa. Kokeilun jälkeen osallistuja voi jatkaa harrastamista seurassa.\n\nLajikoulut ovat alkeiskursseja, joita järjestetään yhdessä urheiluseuran kanssa. Lajikouluissa lapset ja nuoret pääsevät kokeilemaan erilaisia lajeja ja samalla lasten vanhemmat pääsevät tutustumaan urheiluseuran toimintaan. \n\nLasten Liike -iltapäivien ideana on tarjota jokaiselle lapselle liikunnallinen harrastus koulupäivän yhteyteen. Harrastekerhot ovat luonteeltaan monialaisia harrastekerhoja, joissa yhdistyvät liikunta ja kulttuuri.\n\nLiikkuva koulu -toiminnassa järjestetään harrastustoimintaa koulupäivän aikana ja iltapäivisin koulun ulkopuolisten tahojen toimesta.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Harrastetoimintaan sisältyy seurojen kanssa järjestettävät lajikokeilut ja lajikoulut, Liikkuva koulu-harrastetoiminta sekä iltapäivän harrastekerhot.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : "Höstsäsongens grenskolor kostar 37,20€/gren (inkl. moms 24%)",
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : "Anmälan till grentestning-verksamheten börjar i augusti. Anmälan till verksamheten görs med den elektroniska anmälningsblanketten på webbsidor idrott för barn och unga. \n\nAnmälan till grenskolorna via Vasa stads nätbutik. Anmälningen börjar en månad före grenskolar startar. ",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : "Hobbyverksamheten består av grentestning-verksamhet och grenskolor som ordnas på kvällar och veckoslut i samarbete med idrottsföreningarna, Skolan i rörelse -hobbyverksamhet och hobbyklubbar som ordnas på eftermiddagar.\n\nInom grentestning-verksamheten får deltagaren avgiftsfritt bekanta sig med en gren och lär sig grunderna i grenen, samtidigt får vårdnadshavarna bekanta sig med idrotts- eller sportföreningens verksamhet. I den avgiftsfria verksamheten ingår tre till fem träningsgånger. Efter träningarna kan deltagaren fortsätta att utöva grenen inom föreningen.\n\nGrenskolorna är nybörjarkurser som ordnas tillsammans med en idrottsförening. I grenskolorna får barnen och de unga prova på olika grenar och samtidigt får barnens föräldrar bekanta sig med idrottsföreningens verksamhet.\n\nIden med Lasten Liike iltapäivät hobbyklubbar är att erbjuda en idrottslig hobby för varje barn i anknytning till skoldagen. Hobbyklubbarna är till sin karaktär mångsidiga klubbar med flera olika aktörer, där idrott och kultur förenas.\n\nSkolan i rörelse -hobbyverksamhet ordnas under skoldagen och på eftermiddagar av skolans externa aktörer.\n",
+    "type" : "Description"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

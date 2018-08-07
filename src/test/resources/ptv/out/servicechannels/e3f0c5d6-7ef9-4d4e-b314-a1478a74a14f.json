@@ -1,0 +1,116 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/huutoniemen-koulu",
+    "value" : "Huutoniemen koulu",
+    "language" : "fi"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Mannerheimintie",
+        "language" : "fi"
+      } ],
+      "streetNumber" : "41",
+      "postalCode" : "65320",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ {
+        "value" : null,
+        "language" : "fi"
+      } ],
+      "latitude" : "7007166.028",
+      "longitude" : "231408.871",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "17c633dd-5408-495a-86c1-d8f57598e899",
+      "name" : "Perusopetus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : "Rehtori",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "405692500",
+    "language" : "fi"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Huutoniemen koulu",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Huutoniemen koulu on alakoulu, jossa opiskellaan 1-6 luokilla.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Huutoniemen koulu on alakoulu, jossa opiskellaan 1-6 luokilla. Oppilaita on n. 340. Luokanopettajien lisäksi koulussa on kaksi erityisopettajaa, kieltenopettaja ja S2-opettaja (suomi toisena kielenä). Haluamme antaa oppilaille hyvää perusopetusta, korostamme oppimisessa yhteistoiminnallisuutta ja yritteliäisyyttä. Huutoniemen koulu on Vihreä Lippu -koulu. Vihreä Lippu on päiväkotien, koulujen, oppilaitosten sekä lasten ja nuorten vapaa-ajan toimijoiden kestävän kehityksen ohjelma ja kansainvälinen kasvatusalan ympäristömerkki. Ohjelman periaatteet ovat lasten osallisuus, ympäristökuormituksen vähentäminen, kestävän kehityksen kasvatus osana jokapäiväistä arkea, jatkuva parantaminen ja yhteistyö ympäröivän yhteiskunnan kanssa. Koulun pysyvään luokkaohjelmaan kuuluu 1. luokalla jäteneuvontaa yhteistyössä Stormossenin kanssa, 2. luokalla Vanhaan Vaasaan tutustuminen, 3. luokalla jäteneuvontaa yhteisyössä Stormossenin kanssa ja Jääkausinäyttelyyn tutustuminen Pohjanmaan museossa, 4. luokalla retki Unescon maailmanperintökohteeseen Merenkurkun saaristossa, 5. luokalla vierailu Stormossenin jätteenkäsittelylaitokselle ja 6. luokalla vierailu Westenergyn jätteenkäsittelylaitoksella. Huutoniemen koulu on myös KiVakoulu. KiVakoulu on valtakunnallinen kiusaamisen vastainen ohjelma, jonka avulla pyritään siihen, että ketään ei kiusata koulussa tai koulumatkoilla. Oppilaat tutustutetaan KiVakoulun materiaalin avulla mm. kiusaamisen käsitteeseen, yhteisiin pelisääntöihin, tunteisiin ja toisten kanssa toimeen tulemiseen. Koulussamme toimii koulutiimi, jossa on yksi edustaja joka luokalta. 5-6 luokilta edustajia on kaksi. Koulutiimiläiset osallistuvat aktiivisesti koulun arjen suunnitteluun yhdessä koulutiimin ohjaajien kanssa. Koulutiimi kokoontuu säännöllisesti. Koulumme alakerrassa toimii Huutoniemen kirjasto. Teemme yhteistyötä kirjaston kanssa aktiivisesti. Yhteistyön hedelmänä on syntynyt mm. kirjailijavierailuja ja näyttelyitä kirjastoon. Oppilaat käyttävät kirjastoa viikoittain. Kaksi kertaa vuodessa koulussa järjestetään kirjallisuusviikko, jolloin keskitytään lukemaan vähintään puoli tuntia päivässä. Kannustamme oppilaita suorittamaan Kunnari-lukudiplomin. Huutoniemen koulussa toimii aktiivinen vanhempainyhdistys. Yhdistys järjestää mm. koulukuvauksen, joulumyyjäisiä, discoja ja ystävänpäivätapahtumia. Lisäksi vanhempainyhdistys tukee rahallisesti jokaista luokkaa esimerkiksi retkikustannuksissa tai luokkaretkissä.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "e3f0c5d6-7ef9-4d4e-b314-a1478a74a14f"
+}

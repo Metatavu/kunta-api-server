@@ -1,0 +1,259 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Ympäristön- ja luonnonsuojelu",
+      "language" : "fi"
+    }, {
+      "value" : "Environmental protection and conservation",
+      "language" : "en"
+    }, {
+      "value" : "Miljö- och naturskydd",
+      "language" : "sv"
+    } ],
+    "description" : [ {
+      "value" : "This service subclass primarily includes procedures that prevent environmental nuisances, including controlling known negative impacts, conservation of species, creating natural areas as well as training and advisory services.",
+      "language" : "en"
+    }, {
+      "value" : "Tähän palvelualaluokkaan kuuluvat ensi sijassa ympäristöhaittoja ehkäisevät menettelyt kuten tunnettujen haittatekijöiden säätely, lajien suojelu, luonnontilaisten alueiden perustaminen sekä koulutus- ja neuvontapalvelut.",
+      "language" : "fi"
+    }, {
+      "value" : "Denna serviceundergrupp omfattar i första hand förfaranden som förebygger miljöolägenheter, såsom reglering av kända skadliga faktorer, skydd av olika arter, etablering av områden i naturtillstånd samt utbildnings- och rådgivningstjänster.",
+      "language" : "sv"
+    } ],
+    "code" : "P23.1",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1185",
+    "parentId" : "9eac7938-e66b-4023-ac2e-8774ee615bca",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1184"
+  }, {
+    "name" : [ {
+      "value" : "Ympäristövalvonta ja -terveydenhuolto",
+      "language" : "fi"
+    }, {
+      "value" : "Miljötillsyn och -hälsovård",
+      "language" : "sv"
+    }, {
+      "value" : "Environmental oversight and hygiene",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Denna serviceundergrupp omfattar lagstadgade myndighetsförfaranden med vars hjälp man på kommunnivå tar hand om den naturliga miljöns tillstånd och livsmiljöns sundhet.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains statutory official procedures for maintaining a good status of the natural environment and a healthy living environment.",
+      "language" : "en"
+    }, {
+      "value" : "Tähän palvelualaluokkaan kuuluvat ne lakisääteiset viranomaismenettelyt, joiden avulla kuntatasolla huolehditaan luonnonympäristön tilasta ja elinympäristön terveellisyydestä.",
+      "language" : "fi"
+    } ],
+    "code" : "P23.7",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1190",
+    "parentId" : "9eac7938-e66b-4023-ac2e-8774ee615bca",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1184"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "1f2f9c8c-cb45-4e18-bb88-6d50c6683da8",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "1c36b53f-dcd1-4453-a68e-a7bfa41ad968",
+      "name" : "Ympäristötarkastaja, ympäristön tilan seuranta"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "8080da68-4225-4bde-b01c-4c3c087a2f81",
+      "name" : "Ympäristötoimi"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "82be74b8-1eb0-4b33-9a06-1a8b589b65c3",
+      "name" : "Ympäristön tilan seuranta"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Ympäristön tila",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Miljöns tillstånd",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "uimavesien valvonta",
+      "language" : "fi"
+    }, {
+      "value" : "övervakning av badstränder",
+      "language" : "sv"
+    }, {
+      "value" : "swimming water monitoring",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p67681",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p68303"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : "Luftkvaliteten kontrolleras i Vasa centrum.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : "Miljöavdelningen informerar om miljöns tillstånd vid behov. De senaste uppgifter ser du via luftkvalitetsportalen. Ytvattnets temperatur och algsituationen kan du följa med på miljöförvaltningens webbsidor. Pollenuppgifterna kan kontrolleras via den nationella pollenrapporten. Ytterligare uppgifter på webbsidorna. ",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : "Ilmanlaatua tarkkaillaan Vaasan keskustassa.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Ympäristöosasto tiedottaa ympäristön tilasta tarpeen mukaan. Viimeisimmät tiedot näet Ilmanlaatuportaalista. Pintaveden lämpötilaa ja levätilannetta voi seurata ympäristöhallinnon verkkosivuilta. Siitepölytiedot voi tarkistaa valtakunnallisesta siitepölytiedotteesta. Lisätietoa verkkosivuilta.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Ilmanlaatua tarkkaillaan Vaasan keskustassa. Ilman laatua pidetään pilaantuneena, jos se aiheuttaa esimerkiksi haju-, terveys- tai viihtyvyyshaittoja. Uimarantojen vedenlaatua tutkitaan uimakaudella 15.6.-31.8. kolme kertaa. Vedenlaadusta ilmoitetaan uimarannoilla. ",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : "Luftkvaliteten kontrolleras i Vasa centrum. Luftkvaliteten betraktas som förorenad, om den ger upphov till exempelvis lukt-, hälso- eller trivselolägenheter. Vattenkvaliteten vid badstränderna granskas tre gånger under badsäsongen 15.6–31.8. På badstränderna finns information om vattenkvaliteten. ",
+    "type" : "Description"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

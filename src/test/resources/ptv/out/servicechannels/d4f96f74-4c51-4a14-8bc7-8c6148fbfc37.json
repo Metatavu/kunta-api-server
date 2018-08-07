@@ -1,0 +1,183 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Tammikaivontie",
+        "language" : "fi"
+      }, {
+        "value" : "Dammbrunnsvägen",
+        "language" : "sv"
+      } ],
+      "streetNumber" : null,
+      "postalCode" : "65100",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ {
+        "value" : "3. kerros",
+        "language" : "fi"
+      }, {
+        "value" : "3 vån",
+        "language" : "sv"
+      } ],
+      "latitude" : null,
+      "longitude" : null,
+      "coordinateState" : null
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "5c1b1d93-d44f-46fa-a98b-4276d285ca17",
+      "name" : "Puheterapian palvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Fax",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : null,
+    "isFinnishServiceNumber" : true,
+    "number" : null,
+    "language" : "sv"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Puheterapeutti - suomenkieliset koululaiset, puhelinaika ti klo 9-10",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63252013",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Puheterapeutti - ruotsinkieliset alle kouluikäiset lapset, puhelinaika ti klo 12-13",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : null,
+    "isFinnishServiceNumber" : true,
+    "number" : "63252822",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Puheterapeutti - aikuiset ja ruotsinkieliset koululaiset, puhelinaika ti klo 9-10",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63252017",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Takterapeut - vuxna och svenskspråkiga skolelever",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "401955390",
+    "language" : "sv"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Talterapeut - finskspråkiga skolelever",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63252013",
+    "language" : "sv"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Talterapeut - svenskspråkiga barn under skolåldern",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63252822",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Puheterapian polikliininen vastaanotto - Pääterveysasema",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Talterapis polikliniska mottagningen - Huvudhälsostationen",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "Talterapis polikliniska mottagningen -\nHuvudhälsostationen",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Talterapi för vuxna och svenskspråkiga skolelever, finskspråkiga skolelever och svenskspråkiga barn under skolåldern.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Puheterapian polikliininen vastaanottopiste sijaitsee Pääterveysasemalla. Vastaanotolla otetaan vastaan aikuiset, ruotsinkieliset ja suomenkieliset koululaiset sekä ruotsinkieliset alle kouluikäiset lapset.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Puheterapian polikliininen vastaanottopiste sijaitsee Pääterveysasemalla.",
+    "type" : "Summary"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "d4f96f74-4c51-4a14-8bc7-8c6148fbfc37"
+}

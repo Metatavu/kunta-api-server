@@ -1,0 +1,293 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Vapaa-ajan palvelut",
+      "language" : "fi"
+    }, {
+      "value" : "Fritidstjänster",
+      "language" : "sv"
+    }, {
+      "value" : "Free-time services",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Denna serviceundergrupp omfattar tjänster relaterade till fritiden på ett omfattande plan. Denna grupp omfattar inte motions- och idrottstjänster, som har en egen huvudgrupp.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains free-time services in a wide sense. The class does not include sports and exercise services, which have their own main class.",
+      "language" : "en"
+    }, {
+      "value" : "Tähän palvelualaluokkaan kuuluvat vapaa-ajan piiriin laajasti katsottavat palvelut. Tähän luokkaan eivät kuulu liikunnan ja urheilun palvelut, jotka ovat omassa pääluokassaan.",
+      "language" : "fi"
+    } ],
+    "code" : "P25.5",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1203",
+    "parentId" : "200f3f00-31b1-41cc-a986-2d9e4dc40fb7",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1198"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "5e485584-7089-4d03-9327-15c0ebe1a072",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "373ce62b-9594-44a6-96af-3a474868f1c3",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "a46c5ddf-1c08-44d9-acf2-6a7396d410da",
+      "name" : "Vapaa-aikalautakunnan avustushakemus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "d2d85803-abf7-4687-b198-e585cb066e84",
+      "name" : "Nuorisoavustusten verkkosivu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Nuorisoyhdistysten ja -ryhmien tuki ja avustukset",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Stöd och bidrag för ungdomsföreningar och -grupper",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "avustukset",
+      "language" : "fi"
+    }, {
+      "value" : "understöd (bidrag)",
+      "language" : "sv"
+    }, {
+      "value" : "financial aid",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p34757",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p63861;http://www.yso.fi/onto/koko/p13760"
+  }, {
+    "name" : [ {
+      "value" : "ungdomsarbete",
+      "language" : "sv"
+    }, {
+      "value" : "nuorisotyö",
+      "language" : "fi"
+    }, {
+      "value" : "youth work",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p14497",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p33881"
+  }, {
+    "name" : [ ],
+    "code" : null,
+    "ontologyType" : null,
+    "uri" : "http://www.yso.fi/onto/yso/p14658",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Young people",
+      "language" : "en"
+    }, {
+      "value" : "Nuoret",
+      "language" : "fi"
+    }, {
+      "value" : "De unga",
+      "language" : "sv"
+    } ],
+    "code" : "KR1.3",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2004",
+    "parentId" : "daff1fb9-9394-49b5-b033-d1d1c7005ab6",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001"
+  }, {
+    "name" : [ {
+      "value" : "Yritykset ja yhteisöt",
+      "language" : "fi"
+    }, {
+      "value" : "Företag och samfund",
+      "language" : "sv"
+    }, {
+      "value" : "Businesses and non-government organizations",
+      "language" : "en"
+    } ],
+    "code" : "KR2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "Yhdistykset ja järjestöt",
+      "language" : "fi"
+    }, {
+      "value" : "Non-government organizations",
+      "language" : "en"
+    }, {
+      "value" : "Föreningar och organisationer",
+      "language" : "sv"
+    } ],
+    "code" : "KR2.7",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2015",
+    "parentId" : "338939bb-b01a-4a80-a091-7c5238322bc0",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008"
+  }, {
+    "name" : [ {
+      "value" : "Medborgare",
+      "language" : "sv"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : "I Vasa beviljar stadens fritidsnämnd verksamhetsbidrag för motions- och ungdomsföreningar. ",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Ansökningstiderna för bidragen meddelas på Vasa stads webbsidor. Ansökningen sker i första hand elektroniskt, men det går också att skriva ut en blankett och skicka den per post. Mer information om ansökan och ansökningstider finns på webbsidorna. ",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasassa kaupungin vapaa-aikalautakunta myöntää toiminta-avustusta liikunta- ja nuorisoyhdistyksille.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasassa kaupungin vapaa-aikalautakunta myöntää toiminta-avustusta liikunta- ja nuorisoyhdistyksille. ",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Avustusten hakuajat ilmoitetaan Vaasan kaupungin verkkosivuilla. Hakeminen tapahtuu ensisijaisesti sähköisesti, mutta lomakkeen voi myös tulostaa ja lähettää postitse. Lisätietoja hakemisesta ja hakuajoista verkkosivuilta. ",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : "I Vasa beviljar stadens fritidsnämnd verksamhetsbidrag för motions- och ungdomsföreningar.",
+    "type" : "Summary"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

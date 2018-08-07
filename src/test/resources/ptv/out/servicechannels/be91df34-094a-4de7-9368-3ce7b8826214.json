@@ -1,0 +1,95 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://naantali.venepaikat.fi",
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "requiresSignature" : false,
+  "attachments" : [ {
+    "type" : "Attachment",
+    "name" : null,
+    "description" : null,
+    "url" : "http://www.naantali.fi",
+    "language" : "fi"
+  } ],
+  "languages" : [ ],
+  "supportPhones" : [ {
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "24345334",
+    "language" : "fi"
+  } ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ {
+    "value" : "venepaikat@naantali.fi",
+    "language" : "fi"
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "429568b5-5876-49f5-a9cc-4b91d1c0ea50",
+      "name" : "Naantalin laituri- ja pienvenepaikkojen vuokraus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Naantalin laituri- ja pienvenepaikkojen sähköinen varausjärjestelmä",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ {
+    "serviceHourType" : "DaysOfTheWeek",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ {
+      "value" : null,
+      "language" : "fi"
+    } ],
+    "openingHour" : [ ]
+  } ],
+  "serviceChannelType" : "EChannel",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Naantalin ympäri vuorokauden auki oleva laituri- ja venepaikkojen sähköinen varausjärjestelmä.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Naantalin kaupungin kausivenepaikkoja voi vuokrata ympäri vuorokauden auki olevasta sähköisestä varausjärjestelmästä. Paikkoja on mahdollista vuokrata myös asiakaspalvelun kautta.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "be91df34-094a-4de7-9368-3ce7b8826214",
+  "signatureQuantity" : 0,
+  "requiresAuthentication" : true
+}

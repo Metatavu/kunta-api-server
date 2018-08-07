@@ -1,0 +1,110 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://vtjkysely2010.vrk.fi/",
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "requiresSignature" : false,
+  "attachments" : [ {
+    "type" : "Attachment",
+    "name" : "VRK:n asiakassivusto Eevertti",
+    "description" : "Lisätiedot, hakemuslomakkeet ja yhteystiedot.",
+    "url" : "www.eevertti.vrk.fi/",
+    "language" : "fi"
+  } ],
+  "languages" : [ ],
+  "supportPhones" : [ ],
+  "areas" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "bf2a0e95-657b-42cf-92a1-63a4bd682c93",
+      "name" : "VTJkysely-palvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "b458d033-042d-4cbe-b030-34e81da28821",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "VTJkysely -palvelu",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ {
+    "serviceHourType" : "DaysOfTheWeek",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ {
+      "value" : "24h",
+      "language" : "fi"
+    } ],
+    "openingHour" : [ {
+      "dayFrom" : "Monday",
+      "dayTo" : "",
+      "from" : "00:00:00",
+      "to" : "00:00:00"
+    }, {
+      "dayFrom" : "Tuesday",
+      "dayTo" : "",
+      "from" : "00:00:00",
+      "to" : "00:00:00"
+    }, {
+      "dayFrom" : "Wednesday",
+      "dayTo" : "",
+      "from" : "00:00:00",
+      "to" : "00:00:00"
+    }, {
+      "dayFrom" : "Thursday",
+      "dayTo" : "",
+      "from" : "00:00:00",
+      "to" : "00:00:00"
+    }, {
+      "dayFrom" : "Friday",
+      "dayTo" : "",
+      "from" : "00:00:00",
+      "to" : "00:00:00"
+    }, {
+      "dayFrom" : "Saturday",
+      "dayTo" : "",
+      "from" : "00:00:00",
+      "to" : "00:00:00"
+    }, {
+      "dayFrom" : "Sunday",
+      "dayTo" : "",
+      "from" : "00:00:00",
+      "to" : "00:00:00"
+    } ]
+  } ],
+  "serviceChannelType" : "EChannel",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Selainkäyttöinen palvelu, jonka avulla käyttäjät voivat hakea väestötietojärjestelmän (VTJ) tietoja.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "VTJkysely on selainkäyttöinen, reaaliaikainen palvelu, jonka avulla käyttäjät voivat hakea tarvitsemiaan väestötietojärjestelmän tietoja. VTJkyselystä löytyvät kaikki väestötietojärjestelmään kirjatut henkilö-, rakennus- ja kiinteistötiedot. Palvelu on toiminnassa ympäri vuorokauden.",
+    "type" : "Description"
+  } ],
+  "areaType" : null,
+  "publishingStatus" : "Published",
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "82aa191c-050e-4640-bace-52bdd09f9453",
+  "signatureQuantity" : 0,
+  "requiresAuthentication" : true
+}

@@ -1,0 +1,208 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Työnhaku ja työpaikat",
+      "language" : "fi"
+    }, {
+      "value" : "Jobbsökning och arbetsplatser",
+      "language" : "sv"
+    }, {
+      "value" : "Jobseeking and jobs",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Tähän palvelualaluokkaan kuuluvat useat työttömälle tarkoitetut palvelut. Näiden avulla työnhakija voi muun muassa etsiä avoimia työpaikkoja Suomesta ja ulkomailta ja hakea niihin, ilmoittautua työttömäksi työnhakijaksi, tuottaa ansioluettelon ja jättää avoimia hakemuksia työpaikkapalveluihin. Myös työnhakuvalmennuksen ja työvoimakoulutuksen kaltaiset palvelut kuuluvat tähän luokkaan.",
+      "language" : "fi"
+    }, {
+      "value" : "Denna serviceundergrupp omfattar flera tjänster för arbetslösa. Med hjälp av dem kan arbetssökande bland annat söka lediga arbetsplatser i Finland och utomlands, anmäla sig som arbetslös arbetssökande, skriva CV och lämna öppna ansökningar till rekryteringstjänster. Även tjänster av typen jobbsökningscoachning och arbetskraftsutbildning hör till denna grupp.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains many services intended for the unemployed. Supported by them, jobseekers may, for example, look for vacancies in Finland and abroad and submit their applications, register as unemployed jobseekers, prepare a CV and submit open applications to web services for jobseekers. The class also includes such services as coaching for jobseekers and labour market training.",
+      "language" : "en"
+    } ],
+    "code" : "P10.1",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1097",
+    "parentId" : "e30562f5-0141-4d5c-bc25-e24679dba4d4",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1096"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "db40fe8b-17db-4fe6-b733-a7dee05ae157",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "65d98179-d9ad-4540-ab2b-0acc01d66d0c",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "7a2367bb-22df-455f-b1a9-3b4cbd369f20",
+      "name" : "Työpajaohjaajat"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "bacd2ca7-b412-4952-b9ef-78dec169c5f3",
+      "name" : "Karvetin monitoimitalo"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : "Työpajatoiminta on tarkoitettu alle 29-vuotiaille naantalilaisille.",
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Nuorten työpajat",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "ungdomsarbete",
+      "language" : "sv"
+    }, {
+      "value" : "nuorisotyö",
+      "language" : "fi"
+    }, {
+      "value" : "youth work",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p14497",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p33881"
+  }, {
+    "name" : [ {
+      "value" : "verksamhet i verkstäder",
+      "language" : "sv"
+    }, {
+      "value" : "työpajatoiminta",
+      "language" : "fi"
+    }, {
+      "value" : "workshop activity",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p68304",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p15890"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Nuoret",
+      "language" : "fi"
+    }, {
+      "value" : "Young people",
+      "language" : "en"
+    }, {
+      "value" : "De unga",
+      "language" : "sv"
+    } ],
+    "code" : "KR1.3",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2004",
+    "parentId" : "daff1fb9-9394-49b5-b033-d1d1c7005ab6",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001"
+  }, {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Naantalin kaupunki järjestää Karvetin Monitoimitalolla työpajatoimintaa alle 29-vuotiaille naantalilaisille.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Naantalin kaupunki järjestää Karvetin Monitoimitalolla työpajatoimintaa alle 29-vuotiaille naantalilaisille. Työpajassa nuoret saavat mahdollisuuden ohjattuun ja tuettuun työntekoon sekä apua koulutukseen hakeutumiseen tai avoimille työmarkkinoille työllistymiseen. Työpajassa tehdään muun muassa erilaisia puu- ja keramiikkatöitä, tekstiilituotteita ja kotitalouksien arkiaputöitä.\n\nMikäli olet vailla työ- tai opiskelupaikkaa ja tarvitset päiviisi tekemistä, voit tiedustella vapaita työpajapaikkoja työpajaohjaajalta.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "UserInstruction"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

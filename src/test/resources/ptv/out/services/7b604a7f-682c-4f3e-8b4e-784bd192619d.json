@@ -1,0 +1,113 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Generella informations- ja förvaltningstjänster",
+      "language" : "sv"
+    }, {
+      "value" : "General information and administrative services",
+      "language" : "en"
+    }, {
+      "value" : "Yleiset tieto- ja hallintopalvelut",
+      "language" : "fi"
+    } ],
+    "description" : [ {
+      "value" : "I denna servicegrupp behandlas informations-, förvaltnings- och stödtjänster riktade till medborgare, samfund och andra myndigheter som till innehållet kan hänföra sig till vilket ämne som helst och därför inte kan placeras under de andra offentliga förvaltningens servicegrupper.",
+      "language" : "sv"
+    }, {
+      "value" : "This service class features services that offer general information, administrative and support services to citizens and public and private organisations. These are services that are not connected to any specific service topic and for that reason cannot be included in the other main classes of the service classification.",
+      "language" : "en"
+    }, {
+      "value" : "Tässä palveluluokassa käsitellään kansalaisille, yhteisöille ja toisille viranomaisille tarjottavia tieto-, hallinto- ja tukipalveluja, jotka sisällöltään voivat liittyä mihin aiheeseen tahansa ja joita ei tämän vuoksi voida sijoittaa julkisen palvelun luokituksen muihin aiheluokkiin.",
+      "language" : "fi"
+    } ],
+    "code" : "P9",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1095",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "Nationwide",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "7b604a7f-682c-4f3e-8b4e-784bd192619d",
+  "serviceChannels" : [ ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : null,
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Suomi.fi-viestit käyttöönottaville organisaatioille",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Viestit-palvelu",
+    "type" : "AlternativeName"
+  } ],
+  "ontologyTerms" : [ ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Viranomaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Authorities",
+      "language" : "en"
+    }, {
+      "value" : "Myndigheter",
+      "language" : "sv"
+    } ],
+    "code" : "KR3",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2017",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Suomi.fi-viestien avulla julkishallinnon organisaatiot voivat lähettää kansalaisille ja yrityksille viestejä keskitetysti.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Suomi.fi-viestit-palvelun kautta julkishallinnon organisaatiot voivat lähettää kansalaisille tai yrittäjille viestejä keskitetysti. Viranomaisille Suomi.fi-viestit tuo mahdollisuuden lähettää sähköisesti tiedoksiantoja ja päätöksiä kansalaisille riippumatta siitä, missä muodossa kansalainen viestit haluaa vastaanottaa. Jos kansalainen on antanut luvan vastaanottaa viestit sähköisesti, viranomaisen lähettämä viesti ohjautuu kansalaisen Suomi.fi-verkkopalvelun viesteihin. Jos kansalainen ei ole antanut lupaa lähettää itselleen posteja sähköisesti, palveluun lähetetyt viestit tulostetaan ja postitetaan paperipostina kansalaiselle.",
+    "type" : "Description"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "b458d033-042d-4cbe-b030-34e81da28821",
+      "name" : "Väestörekisterikeskus"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "b458d033-042d-4cbe-b030-34e81da28821",
+      "name" : "Väestörekisterikeskus"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

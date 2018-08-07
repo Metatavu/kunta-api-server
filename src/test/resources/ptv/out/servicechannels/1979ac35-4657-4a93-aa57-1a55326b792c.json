@@ -1,0 +1,44 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "http://www.naantali.fi/tiedotteet/kuulutukset",
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "b9bb4525-079b-440b-879b-ce82d58280a5",
+      "name" : "Naantalin kaupungin kuulutukset"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Naantalin kuulutukset verkossa",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Saat verkkosivulta tietoa Naantalin kuulutuksista.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Saat verkkosivulta tietoa Naantalin kuulutuksista. Kuulutukset ovat verkkosivulla aikajärjestyksessä.",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-11-16T11:20:09.180193",
+  "id" : "1979ac35-4657-4a93-aa57-1a55326b792c"
+}

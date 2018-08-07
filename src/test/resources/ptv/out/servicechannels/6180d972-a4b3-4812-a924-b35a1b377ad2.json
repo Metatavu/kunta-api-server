@@ -1,0 +1,108 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "http://www.avoindata.fi",
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "requiresSignature" : false,
+  "attachments" : [ ],
+  "languages" : [ ],
+  "supportPhones" : [ ],
+  "areas" : [ ],
+  "supportEmails" : [ {
+    "value" : "avoindata@vrk.fi",
+    "language" : "fi"
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "4a3f3c92-834d-4f83-8a60-2251717b13e7",
+      "name" : "Julkisen hallinnon kokonaisarkkitehtuurin mallinnuspalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "7b5d0b9e-5126-4f38-b0b3-b1c1e847acc1",
+      "name" : "Avoimen tiedon ja yhteentoimivuuden palvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "b458d033-042d-4cbe-b030-34e81da28821",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Avoindata.fi verkkoasiointi",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ {
+    "serviceHourType" : "DaysOfTheWeek",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ {
+      "value" : null,
+      "language" : "fi"
+    } ],
+    "openingHour" : [ {
+      "dayFrom" : "Monday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    }, {
+      "dayFrom" : "Tuesday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    }, {
+      "dayFrom" : "Wednesday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    }, {
+      "dayFrom" : "Thursday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    }, {
+      "dayFrom" : "Friday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    } ]
+  } ],
+  "serviceChannelType" : "EChannel",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Julkishallinnon tuottaman avoimen datan palvelu",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Voit lisätä, muokata, etsiä ja katsella avoimen datan tiedostoja. Palvelu toimii kansallisena avoimen datan portaalina. Palvelu sisältää myös yhteentoimivuuden työkalut, joilla tarkoitetaan julkisen hallinnon tiedon johtamiseen ja tiedolla johtamiseen soveltuvaa tietoa. Palvelusta löydät myös maanmittauslaitoksen paikkatietohakemiston sisältämät avoimet tiedot ja palveluun on ladattu HRI.fi kaupunkiportaalin sisältämät avoimen datan tiedot.",
+    "type" : "Description"
+  } ],
+  "areaType" : null,
+  "publishingStatus" : "Published",
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "6180d972-a4b3-4812-a924-b35a1b377ad2",
+  "signatureQuantity" : 0,
+  "requiresAuthentication" : false
+}

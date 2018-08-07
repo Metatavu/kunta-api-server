@@ -1,0 +1,169 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/node/2781/",
+    "value" : "Varhaiskasvatus",
+    "language" : "fi"
+  }, {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/sv/node/2781/",
+    "value" : "Småbarnsfostran",
+    "language" : "sv"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Kaptensgatan",
+        "language" : "sv"
+      }, {
+        "value" : "Kapteeninkatu",
+        "language" : "fi"
+      } ],
+      "streetNumber" : "39",
+      "postalCode" : "65200",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ {
+        "value" : null,
+        "language" : "sv"
+      } ],
+      "latitude" : "7008905.748",
+      "longitude" : "227685.788",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "73af8c06-6a6b-4780-9164-8e8872eecc9c",
+      "name" : "Kunnallinen päiväkotihoito"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ {
+    "value" : "kaptensgatansdh@vasa.fi",
+    "language" : "fi"
+  }, {
+    "value" : "kaptensgatansdh@vasa.fi",
+    "language" : "sv"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "sv",
+    "value" : "Kaptensgatans daghem",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Kapteeninkadun päiväkoti",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ {
+    "serviceHourType" : "DaysOfTheWeek",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ {
+      "value" : null,
+      "language" : "sv"
+    } ],
+    "openingHour" : [ {
+      "dayFrom" : "Monday",
+      "dayTo" : "",
+      "from" : "06:30:00",
+      "to" : "17:00:00"
+    }, {
+      "dayFrom" : "Tuesday",
+      "dayTo" : "",
+      "from" : "06:30:00",
+      "to" : "17:00:00"
+    }, {
+      "dayFrom" : "Wednesday",
+      "dayTo" : "",
+      "from" : "06:30:00",
+      "to" : "17:00:00"
+    }, {
+      "dayFrom" : "Thursday",
+      "dayTo" : "",
+      "from" : "06:30:00",
+      "to" : "17:00:00"
+    }, {
+      "dayFrom" : "Friday",
+      "dayTo" : "",
+      "from" : "06:30:00",
+      "to" : "17:00:00"
+    } ]
+  } ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "Kaptensgatans daghems verksamhetsidé: Enligt Vasa stads gemensamma upplagda mål erbjuder daghemspersonalen barnfamiljerna en kvalitativ dagvård.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Kaptensgatans daghems verksamhetsidé: Enligt Vasa stads gemensamma upplagda mål erbjuder daghemspersonalen barnfamiljerna en kvalitativ dagvård. \n\nDaghemmets tyngdpunktsområden är leken, smågruppsarbete och fostrarsamverkan.\n\nBarngrupper: Snäckorna, under 3 åriga (svenskspråkig) och Musslorna, 3-5 åringar (svenskspråkig).",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Kapteeninkadun päiväkodin henkilökunta tarjoaa lapsiperheille laadukasta päivähoitoa Vaasan kaupungin yhteisten tavoitteiden mukaisesti.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Kapteeninkadun päiväkodin toiminta-ajatus: Päiväkodin henkilökunta tarjoaa lapsiperheille laadukasta päivähoitoa Vaasan kaupungin yhteisten tavoitteiden mukaisesti. \nPäiväkodin painopistealueita ovat leikki, pienryhmätyöskentely ja kasvatuskumppanuus. \nLapsiryhmät: Snäckorna, alle 3-vuotiaat (ruotsinkielinen) ja Musslorna, 3–5-vuotiaat (ruotsinkielinen). \n",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "97d7c3de-cc1d-44b9-914f-c1ee16816e5d"
+}

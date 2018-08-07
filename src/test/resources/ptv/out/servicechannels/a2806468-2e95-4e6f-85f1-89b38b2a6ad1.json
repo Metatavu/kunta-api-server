@@ -1,0 +1,181 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "1",
+    "url" : "http://www.naantali.fi/perhe_ja_sosiaali/paihdehuolto/fi_FI/paivatoimintakeskus/",
+    "value" : "Tuulentupa",
+    "language" : "fi"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Tuulensuunkatu",
+        "language" : "fi"
+      } ],
+      "streetNumber" : "8",
+      "postalCode" : "21100",
+      "postOffice" : [ {
+        "value" : "NAANTALI",
+        "language" : "sv"
+      }, {
+        "value" : "NAANTALI",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "529",
+        "name" : [ {
+          "value" : "Naantali",
+          "language" : "fi"
+        }, {
+          "value" : "Nådendal",
+          "language" : "sv"
+        }, {
+          "value" : "Naantali",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ {
+        "value" : "Tuulentupa sijaitsee Tuulensuunkadulla vanhan poliisilaitoksen tiloissa. Sisäänkäynti rakennuksen takaa parkkipaikan puolelta.",
+        "language" : "fi"
+      } ],
+      "latitude" : "6713872.173",
+      "longitude" : "226796.882",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "0f522839-80cc-414d-ac8b-0952d59a87d1",
+      "name" : "Päihteiden käyttäjien päiväkeskuspalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "1180d4c4-488b-4c99-ae9f-4da1f63536e5",
+      "name" : "Päihdeongelmaisten palveluohjaus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : "Päivätoiminnan ohjaaja",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "444171420",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Päihdetyöntekijä",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "503390573",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Asiakaspuhelin",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "444171357",
+    "language" : "fi"
+  } ],
+  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "emails" : [ ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Päivätoimintakeskus Tuulentupa",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ {
+    "serviceHourType" : "DaysOfTheWeek",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ {
+      "value" : null,
+      "language" : "fi"
+    } ],
+    "openingHour" : [ {
+      "dayFrom" : "Monday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "15:00:00"
+    }, {
+      "dayFrom" : "Tuesday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "15:00:00"
+    }, {
+      "dayFrom" : "Wednesday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "14:00:00"
+    }, {
+      "dayFrom" : "Thursday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "15:00:00"
+    }, {
+      "dayFrom" : "Friday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "14:00:00"
+    } ]
+  } ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Päivätoimintakeskus Tuulentupa on kaikille naantalilaisille avoin päihteetön matalan kynnyksen kohtaamispaikka.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Päivätoimintakeskus Tuulentupa on kaikille naantalilaisille avoin päihteetön matalan kynnyksen kohtaamispaikka. \n\nTuulentuvasta saat päihdetyön ammattilaisten palveluohjausta, apua erilaisiin elämänhallintaan liittyviin kysymyksiin sekä ohjausta ja motivaatiota mielekkääseen päihteettömään toimintaan. Tuulentuvalta saat myös vertaistukea tai voit vain muuten viettää päivää mukavassa seurassa.\n\nPäivätoimintakeskus Tuulentuvassa \n* on ruokailumahdollisuus (ilmainen aamupuuro klo 8, lounas 3 € klo 11 - 12, kahvi 20 snt)\n* tietokoneet ja puhelin ovat iImaiseksi asiakkaiden käytössä asioiden hoitamista varten\n* voit pestä ja kuivattaa pyykkiä (pyykinpesuaineet talon puolesta)\n* on mahdollisuus peseytymiseen ja saunomiseen, pesuaineet ja pyyhkeet saat talon puolesta\n* päihteiden käyttö ja hallussapito on  ehdottomasti kielletty.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-04T13:24:36.903075",
+  "id" : "a2806468-2e95-4e6f-85f1-89b38b2a6ad1"
+}

@@ -1,0 +1,100 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "attachments" : [ ],
+  "languages" : [ ],
+  "deliveryAddresses" : [ {
+    "subType" : "NoAddress",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : null,
+    "deliveryAddressInText" : [ ],
+    "receiver" : [ {
+      "value" : null,
+      "language" : "fi"
+    }, {
+      "value" : null,
+      "language" : "sv"
+    } ]
+  } ],
+  "supportPhones" : [ ],
+  "formIdentifier" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "bbd21873-c5d0-4279-9874-4da9ff7066f2",
+      "name" : "Ilmoitus elintarvikehuoneistosta"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "channelUrls" : [ {
+    "language" : "fi",
+    "value" : "https://www.vaasa.fi/sites/default/files/toimijan_tiedotus_valvontaviranomaiselle_elintarvikkeen_myynnista.pdf",
+    "type" : "PDF"
+  }, {
+    "language" : "sv",
+    "value" : "https://www.vaasa.fi/sites/default/files/toimtiedsv13aa.pdf",
+    "type" : "PDF"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Tiedotus elintarvikkeen myynnistä ja muusta käsittelystä liikkuvassa elintarvikehuoneistossa",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Underrättelse om försäljning och annan hantering av livsmedel i en mobil livsmedelslokal",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "PrintableForm",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Elintarvikkeen myynnistä ja muusta käsittelystä liikkuvassa elintarvikehuoneistossa ilmoitetaan lomakkeella postitse tai sähköisesti. ",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Elintarvikkeen myynnistä ja muusta käsittelystä liikkuvassa elintarvikehuoneistossa ilmoitetaan lomakkeella postitse tai sähköisesti.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Om försäljning och annan hantering av livsmedel i en mobil livsmedelslokal görs en anmälan på en blankett per post eller elektroniskt.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Om försäljning och annan hantering av livsmedel i en mobil livsmedelslokal görs en anmälan på en blankett per post eller elektroniskt.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "48b1fee1-5ea9-464e-92cb-5ec4de8cd640"
+}

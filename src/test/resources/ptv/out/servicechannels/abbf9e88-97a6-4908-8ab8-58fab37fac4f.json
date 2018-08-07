@@ -1,0 +1,221 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "1",
+    "url" : "http://www.naantali.fi/opetus_ja_koulutus/varhaiskasvatus/paivakodit/merimaskun_pk/fi_FI/merimaskun_paivakoti/",
+    "value" : "Merimaskun päiväkoti",
+    "language" : "fi"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Sauniementie",
+        "language" : "fi"
+      } ],
+      "streetNumber" : "3",
+      "postalCode" : "21195",
+      "postOffice" : [ {
+        "value" : "VELKUA",
+        "language" : "sv"
+      }, {
+        "value" : "VELKUA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "529",
+        "name" : [ {
+          "value" : "Naantali",
+          "language" : "fi"
+        }, {
+          "value" : "Nådendal",
+          "language" : "sv"
+        }, {
+          "value" : "Naantali",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ {
+        "value" : "Kummelin päiväkotiyksikkö Velkualla.",
+        "language" : "fi"
+      } ],
+      "latitude" : "6715210.484",
+      "longitude" : "208661.091",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  }, {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Iskolantie",
+        "language" : "fi"
+      } ],
+      "streetNumber" : "19",
+      "postalCode" : "21160",
+      "postOffice" : [ {
+        "value" : "MERIMASKU",
+        "language" : "sv"
+      }, {
+        "value" : "MERIMASKU",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "529",
+        "name" : [ {
+          "value" : "Naantali",
+          "language" : "fi"
+        }, {
+          "value" : "Nådendal",
+          "language" : "sv"
+        }, {
+          "value" : "Naantali",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ {
+        "value" : "Merimaskun päiväkoti Kaarnapaatti.",
+        "language" : "fi"
+      } ],
+      "latitude" : "6714756.791",
+      "longitude" : "218133.271",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  }, {
+    "type" : "Postal",
+    "subType" : "Street",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Iskolantie",
+        "language" : "fi"
+      } ],
+      "streetNumber" : "19",
+      "postalCode" : "21160",
+      "postOffice" : [ {
+        "value" : "MERIMASKU",
+        "language" : "sv"
+      }, {
+        "value" : "MERIMASKU",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "529",
+        "name" : [ {
+          "value" : "Naantali",
+          "language" : "fi"
+        }, {
+          "value" : "Nådendal",
+          "language" : "sv"
+        }, {
+          "value" : "Naantali",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ ],
+      "latitude" : "6714756.791",
+      "longitude" : "218133.271",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "4b9f3ded-173b-4018-b43b-d3bbd1ef0ba8",
+      "name" : "Tilapäinen päivähoito"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "f42c6e4a-d681-4c6c-8fe5-53e793144670",
+      "name" : "Ruokailu päiväkodeissa, esikoulussa ja kouluissa"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "f7dfce01-2b3b-4dda-95c6-92213fbabd1e",
+      "name" : "Kunnallinen päiväkotihoito"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : "Aluepäiväkodin johtaja (Merimaskun päiväkoti, Kummelin päiväkotiyksikkö, Rymättylän päiväkoti ja Rymättylän esiopetus)",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "447334706",
+    "language" : "fi"
+  } ],
+  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "emails" : [ ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Merimaskun päiväkoti",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Merimaskun päiväkoti Kaarnapaatti sijaitsee luonnonläheisellä alueella Merimaskussa, Otavan saaressa. Päiväkoti on Merimaskun koulun vieressä.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Merimaskun päiväkoti Kaarnapaatissa on 3 ryhmää. Esiopetusryhmä toimii Merimaskun koulun tiloissa. Päiväkoti kannustaa lapsia liikkumaan päivittäin niin sisällä kuin ulkonakin. Päiväkodin iso piha tarjoaa mahdollisuuksia monipuoliseen leikkiin ja liikuntaan. Kaarnapaatti liikku viikoittain lähimetsässä, pururadalla, koulun kentällä ja jumppasalissa.\n\nKummelin pieni päiväkotiyksikkö Velkuan saaressa kuuluu hallinnollisesti Merimaskun päiväkotiin. ",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "abbf9e88-97a6-4908-8ab8-58fab37fac4f"
+}

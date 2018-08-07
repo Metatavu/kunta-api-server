@@ -1,0 +1,608 @@
+{
+  "sourceId" : null,
+  "keywords" : [ {
+    "value" : "grundläggande utbildning",
+    "language" : "sv"
+  }, {
+    "value" : "läroplikt",
+    "language" : "sv"
+  }, {
+    "value" : "grundskola",
+    "language" : "sv"
+  } ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Perusopetus",
+      "language" : "fi"
+    }, {
+      "value" : "Grundläggande utbildning",
+      "language" : "sv"
+    }, {
+      "value" : "Basic education",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Till denna serviceundergrupp hör både den egentliga grundläggande utbildningen med innehåll och mål samt direkta tjänster som erbjuds i anslutning till grundläggande utbildningen och för att stöda den, t.ex. skoltransporter, skolmat och assistanstjänster. Till denna grupp hör också ärenden i anslutning till avläggande av grundläggande utbildning utomlands i enlighet med den finska grundläggande utbildningen.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains basic education itself with its contents and objectives as well as the services offered directly in connection with and in support of basic education, for example school transport, school lunches and an assistant’s services. The class also includes issues related to completing abroad a basic education that is in line with the Finnish basic education.",
+      "language" : "en"
+    }, {
+      "value" : "Tähän palvelualaluokkaan kuuluvat sekä varsinainen perusopetus sisältöineen ja tavoitteineen sekä perusopetuksen yhteydessä ja sen tukemiseksi välittömästi tarjottavat palvelut, esimerkiksi koulukuljetukset, kouluruokailu ja avustajapalvelut. Tähän luokkaan kuuluvat myös Suomen perusopetuksen mukaisen peruskoulutuksen ulkomailla suorittamiseen liittyvät asiat.",
+      "language" : "fi"
+    } ],
+    "code" : "P6.2",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1062",
+    "parentId" : "fd1bb60e-4206-4f0a-994f-8ffcb4ffaaa4",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1060"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "27d2f17f-085f-4686-82c7-c030cb6556ac",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-10-19T06:39:48.135752",
+  "id" : "17c633dd-5408-495a-86c1-d8f57598e899",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "0daede62-be2c-4f7a-aa87-d36f86bb7c7c",
+      "name" : "Vaasan kristillisen koulun verkkosivut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "13992280-9c95-4ede-af13-33ad2acde746",
+      "name" : "Sundom skola"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "14cbacf5-f08c-498f-bf74-1626f7da743b",
+      "name" : "Hietalahden koulu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "2877aead-1169-407b-8123-a3bbe5cfe458",
+      "name" : "Opetussihteeri"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "29d7b706-b7a1-4b76-bac1-0e395ea9df77",
+      "name" : "Tervajoen koulu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "2f648147-a615-4d31-b251-f4fbe3a26ee4",
+      "name" : "Wilma"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3f69886e-3e21-41c6-8486-19d289644f10",
+      "name" : "Vasa övningsskolan verkkosivut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3fd72047-c3c4-4d1a-9291-0bcaa4ce9174",
+      "name" : "Merikaarron koulu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "4a28133d-683a-47a9-b5f3-6b2f95a5d6e9",
+      "name" : "Hallintosihteeri"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "5167ff20-dd80-4b55-85b7-e52fdbe78abf",
+      "name" : "Vanhan Vaasan koulu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "5c8de887-82f4-4900-910d-6496b113fec1",
+      "name" : "Onkilahden yhtenäiskoulu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "5d04a7cd-d372-409e-b3d6-211ae5325bd2",
+      "name" : "Savilahden yhtenäiskoulu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "5feb2f03-7e84-4c51-b99b-e5277e8f53e5",
+      "name" : "Merenkurkun koulu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "7174829e-03de-4865-ad45-a13163e2d8ff",
+      "name" : "Nummen koulu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "83ee14a8-a7dd-4390-b029-16868cad5c2d",
+      "name" : "Haga skola"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "8889e704-3b1a-4199-8e3f-2aa758a52d0f",
+      "name" : "Isolahden koulu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "9339d846-cb38-4be3-96b3-6e07bbd99208",
+      "name" : "Gerby skola"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "a5a5ab4f-90f3-4b2e-8176-1b856cfc2955",
+      "name" : "Vaasan Rudolf Steiner -koulun verkkosivut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "bb8af683-7a97-4a0b-9a0e-adfc21fd7c34",
+      "name" : "Variskan koulu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "c1673b07-b4d3-4c28-a8e4-874148bd9fec",
+      "name" : "Borgaregatans skola"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "e3f0c5d6-7ef9-4d4e-b314-a1478a74a14f",
+      "name" : "Huutoniemen koulu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "e3f9fbd1-4132-48a9-bc62-f65e022e01a2",
+      "name" : "Suvilahden koulu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "e805eb29-51f6-4d1b-ac68-07f3d6c77f44",
+      "name" : "Vaasan perusopetuksen verkkosivut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "ecdf1bc2-ad32-46cc-9421-50ce61bc710f",
+      "name" : "Vikinga skola"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "f06ae137-19ea-4a17-bbe0-28137ddaea84",
+      "name" : "Keskuskoulu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "f1891bbe-34ed-467f-aaff-c19e60911de5",
+      "name" : "Länsimetsän koulu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "sv"
+  }, {
+    "value" : null,
+    "language" : "en"
+  }, {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "sv", "fi" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : null,
+  "serviceNames" : [ {
+    "language" : "sv",
+    "value" : "Grundläggande utbildning",
+    "type" : "Name"
+  }, {
+    "language" : "en",
+    "value" : "Basic education",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Perusopetus",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "Grundschule, Gesamtschule",
+      "language" : "de"
+    }, {
+      "value" : "peruskoulu",
+      "language" : "fi"
+    }, {
+      "value" : "grundskolan",
+      "language" : "sv"
+    }, {
+      "value" : "comprehensive school",
+      "language" : "en"
+    }, {
+      "value" : "põhikool",
+      "language" : "et"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p14592",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p48279"
+  }, {
+    "name" : [ {
+      "value" : "oppivelvollisuus",
+      "language" : "fi"
+    }, {
+      "value" : "läroplikt",
+      "language" : "sv"
+    }, {
+      "value" : "compulsory education",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p7089",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p7187"
+  }, {
+    "name" : [ {
+      "value" : "grundläggande utbildning",
+      "language" : "sv"
+    }, {
+      "value" : "perusopetus",
+      "language" : "fi"
+    }, {
+      "value" : "basic education",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p1275",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p33827"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Lapset ja lapsiperheet",
+      "language" : "fi"
+    }, {
+      "value" : "Children and families with children",
+      "language" : "en"
+    }, {
+      "value" : "Barn och barnfamiljer",
+      "language" : "sv"
+    } ],
+    "code" : "KR1.2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2003",
+    "parentId" : "daff1fb9-9394-49b5-b033-d1d1c7005ab6",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001"
+  }, {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "sv",
+    "value" : "I Vasa ges grundläggande utbildning främst i grundskolor som staden är huvudman för.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Koulutulokkaat ilmoitetaan perusopetukseen Wilman kautta sinä vuonna, kun lapsi täyttää seitsemän vuotta. Ohjeet ilmoittautumista varten lähetetään koteihin tammikuun alussa.\n\nVaasaan muuttavat oppivelvollisuusikäiset lapset ilmoitetaan Kasvatus- ja opetusviraston opetussihteerille (suomenkieliset oppilasasiat) tai hallintosihteerille (ruotsinkieliset oppilasasiat).",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "en",
+    "value" : "New pupils are entered for basic education during the year when the child turns seven years old. The instructions for entering are sent to the homes in the beginning of January.\n\nThe compulsory school aged children moving to Vaasa are entered at the education secretaries within the child guidance and school authorities (Finnish speaking pupils) or to the administrative secretary (Swedish speaking pupils).\n",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "en",
+    "value" : "In Vaasa, basic education is mostly given in basic schools maintained by the city.",
+    "type" : "Summary"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : "Den grundläggande utbildningen kostar ingenting. Förutom undervisningen är även läroböcker och övriga läromedel, arbetsredskap och material avgiftsfria. Eleverna har även rätt att få en avgiftsfri, fullvärdig måltid varje skoldag och under vissa förutsättningar avgiftsfri skolskjuts. Dessutom har eleverna rätt till den avgiftsfria elevvård som deltagande i undervisningen förutsätter.\n\nI Vasa ordnas grundläggande utbildning huvudsakligen i grundskolor, som Vasa stad är huvudman för. Staden ordnar grundläggande utbildning för cirka 5100 grundskoleelever, varav cirka 1200 elever går i svenskspråkiga grundskolor. \n\nVasa stad har 15 finskspråkiga skolor och 5 svenskspråkiga skolor, som ordnar grundläggande utbildning. I Vasa finns dessutom Vasa Övningsskola, som staten är huvudman för, och de privata skolorna Vaasan kristillinen koulu och Vaasan Rudolf Steiner-koulu.\n",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "en",
+    "value" : "The basic education is free of charge. In addition to the basic education, also the textbooks and other teaching materials and accessories are free of charge. The pupils also have the right to a free full meal during every school day and on certain preconditions free school transports. The pupil also has the right to the student welfare needed to be able to participate in the education.\n\nIn Vaasa, basic education is mostly given in basic schools maintained by the city. The city is producing education services for about 5 100 pupils in basic school, of which 1 200 are attending Swedish language education.\n\nThere are 15 Finnish language and 5 Swedish language basic schools where basic education is arranged in the city of Vaasa. Furthermore, there are a few private schools; Vaasan kristillinen koulu and Vaasan Rudolf Steiner-koulu as well as a state-run school, Vasa Övningsskola in the City. \n",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : "Perusopetus on maksuton. Opetuksen lisäksi oppikirjat ja muu oppimateriaalit sekä työvälineet ja aineet ovat maksuttomia. Oppilaalla on myös oikeus saada jokaisena koulun työpäivänä maksuton, täysipainoinen ateria sekä tietyin edellytyksin maksuton koulukuljetus. Oppilaalla on myös oikeus saada maksutta opetukseen osallistumisen edellyttämä oppilashuolto.\n\nVaasassa perusopetusta annetaan pääosin kaupungin ylläpitämissä peruskouluissa. Kaupunki tuottaa koulutuspalveluja noin 5100:lle peruskoulun oppilaalle, joista noin 1200 käy ruotsinkielistä koulua.\n\nVaasan kaupungissa on 15 suomenkielistä ja viisi ruotsinkielistä peruskoulua, joissa järjestetään perusopetusta. Lisäksi kaupungissa toimii valtion ylläpitämä Vasa Övningsskola sekä yksityiset Vaasan kristillinen koulu ja Vaasan Rudolf Steiner-koulu.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasassa perusopetusta annetaan pääosin kaupungin ylläpitämissä peruskouluissa.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Inskrivning av blivande förstaklassister till den grundläggande utbildningen görs via Wilma det år då barnet fyller sju år. Anvisningar angående inskrivningen skickas till hemmen i början av januari.\n\nBarn i skolpliktsålder som flyttar till Vasa anmäls till förvaltningssekreteraren (svenskspråkig grundläggande utbildning) eller utbildningssekreteraren (finskspråkig grundläggande utbildning) vid verket för fostran och utbildning.\n",
+    "type" : "UserInstruction"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

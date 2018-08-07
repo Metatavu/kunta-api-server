@@ -17,11 +17,11 @@ import fi.metatavu.kuntaapi.server.rest.model.Service;
 import fi.metatavu.ptv.client.ApiResponse;
 import fi.metatavu.ptv.client.ConnectionApi;
 import fi.metatavu.ptv.client.ServiceApi;
-import fi.metatavu.ptv.client.model.V7VmOpenApiService;
-import fi.metatavu.ptv.client.model.V7VmOpenApiServiceAndChannelRelationInBase;
-import fi.metatavu.ptv.client.model.V7VmOpenApiServiceInBase;
-import fi.metatavu.ptv.client.model.V7VmOpenApiServiceServiceChannel;
-import fi.metatavu.ptv.client.model.V7VmOpenApiServiceServiceChannelInBase;
+import fi.metatavu.ptv.client.model.V8VmOpenApiService;
+import fi.metatavu.ptv.client.model.V8VmOpenApiServiceAndChannelRelationInBase;
+import fi.metatavu.ptv.client.model.V8VmOpenApiServiceInBase;
+import fi.metatavu.ptv.client.model.V8VmOpenApiServiceServiceChannel;
+import fi.metatavu.ptv.client.model.V8VmOpenApiServiceServiceChannelInBase;
 import fi.metatavu.kuntaapi.server.controllers.IdentifierController;
 import fi.metatavu.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.metatavu.kuntaapi.server.controllers.ServiceController;
@@ -121,15 +121,15 @@ public class PtvServiceProvider implements ServiceProvider {
       
       ServiceApi serviceApi = ptvApi.getServiceApi(mainOrganizationId);
       
-      ApiResponse<V7VmOpenApiService> findResponse = serviceApi.apiV7ServiceByIdGet(ptvServiceId.getId());
+      ApiResponse<V8VmOpenApiService> findResponse = serviceApi.apiV8ServiceByIdGet(ptvServiceId.getId());
       if (!findResponse.isOk()) {
         logger.log(Level.SEVERE, () -> String.format("Failed to retrieve service [%d] %s", findResponse.getStatus(), findResponse.getMessage()));
         return IntegrationResponse.statusMessage(findResponse.getStatus(), findResponse.getMessage());
       }
       
-      V7VmOpenApiService ptvService = findResponse.getResponse();
+      V8VmOpenApiService ptvService = findResponse.getResponse();
       
-      V7VmOpenApiServiceInBase ptvServiceIn = ptvOutPtvInTranslator.translateService(ptvService);
+      V8VmOpenApiServiceInBase ptvServiceIn = ptvOutPtvInTranslator.translateService(ptvService);
       ptvServiceIn.setAreas(kuntaApiPtvTranslator.translateAreas(service.getAreas()));
       ptvServiceIn.setAreaType(service.getAreaType());
       ptvServiceIn.setFundingType(service.getFundingType());
@@ -155,12 +155,12 @@ public class PtvServiceProvider implements ServiceProvider {
       ptvServiceIn.setDeleteAllLaws(true);
       ptvServiceIn.setDeleteAllLifeEvents(true);
       ptvServiceIn.setDeleteServiceChargeType(true);
-      ptvServiceIn.setDeleteStatutoryServiceGeneralDescriptionId(false);
-      
-      ApiResponse<V7VmOpenApiService> updateResponse = serviceApi.apiV7ServiceByIdPut(ptvServiceId.getId(), ptvServiceIn, false);
+      ptvServiceIn.setDeleteGeneralDescriptionId(true); 
+
+      ApiResponse<V8VmOpenApiService> updateResponse = serviceApi.apiV8ServiceByIdPut(ptvServiceId.getId(), false, ptvServiceIn);
       
       if (updateResponse.isOk()) {
-        ApiResponse<V7VmOpenApiService> updateServiceChannelsResponse = updateServiceChannels(mainOrganizationId, ptvService, service);
+        ApiResponse<V8VmOpenApiService> updateServiceChannelsResponse = updateServiceChannels(mainOrganizationId, ptvService, service);
         if (!updateServiceChannelsResponse.isOk()) {
           logger.severe(() -> String.format("Failed to update service channels [%d] %s", updateServiceChannelsResponse.getStatus(), updateServiceChannelsResponse.getMessage()));
           return IntegrationResponse.statusMessage(updateServiceChannelsResponse.getStatus(), updateServiceChannelsResponse.getMessage());
@@ -202,15 +202,15 @@ public class PtvServiceProvider implements ServiceProvider {
    * @param service kunta api where services are updated from
    * @return response
    */
-  private ApiResponse<V7VmOpenApiService> updateServiceChannels(OrganizationId organizationId, V7VmOpenApiService ptvService, Service service) {
+  private ApiResponse<V8VmOpenApiService> updateServiceChannels(OrganizationId organizationId, V8VmOpenApiService ptvService, Service service) {
     ConnectionApi connectionApi = ptvApi.getConnectionApi(organizationId);
-    V7VmOpenApiServiceAndChannelRelationInBase relationUpdateRequest = new V7VmOpenApiServiceAndChannelRelationInBase();
+    V8VmOpenApiServiceAndChannelRelationInBase relationUpdateRequest = new V8VmOpenApiServiceAndChannelRelationInBase();
     relationUpdateRequest.setDeleteAllChannelRelations(true);
-    relationUpdateRequest.channelRelations(new ArrayList<V7VmOpenApiServiceServiceChannelInBase>());
+    relationUpdateRequest.channelRelations(new ArrayList<V8VmOpenApiServiceServiceChannelInBase>());
     
     List<String> ptvServiceChannelIds = getPtvServiceChannelIds(service);
     
-    List<V7VmOpenApiServiceServiceChannel> serviceChannels = ptvService.getServiceChannels().stream()
+    List<V8VmOpenApiServiceServiceChannel> serviceChannels = ptvService.getServiceChannels().stream()
       .filter(channel -> channel.getServiceChannel() != null && channel.getServiceChannel().getId() != null)
       .collect(Collectors.toList());
     
@@ -220,7 +220,7 @@ public class PtvServiceProvider implements ServiceProvider {
     
     for (String ptvServiceChannelId : ptvServiceChannelIds) {
       if (!ptvExistingServiceChannelIds.contains(ptvServiceChannelId)) {
-        V7VmOpenApiServiceServiceChannelInBase channelRelation = new V7VmOpenApiServiceServiceChannelInBase();
+        V8VmOpenApiServiceServiceChannelInBase channelRelation = new V8VmOpenApiServiceServiceChannelInBase();
         channelRelation.setServiceChannelId(ptvServiceChannelId);
         channelRelation.setDeleteAllDescriptions(false);
         channelRelation.setDeleteAllServiceHours(false);
@@ -237,7 +237,7 @@ public class PtvServiceProvider implements ServiceProvider {
       .filter(Objects::nonNull)
       .forEach(relationUpdateRequest::addChannelRelationsItem);
       
-    return connectionApi.apiV7ConnectionServiceIdByServiceIdPut(ptvService.getId().toString(), relationUpdateRequest);
+    return connectionApi.apiV8ConnectionServiceIdByServiceIdPut(ptvService.getId().toString(), relationUpdateRequest);
   }
   
   /**

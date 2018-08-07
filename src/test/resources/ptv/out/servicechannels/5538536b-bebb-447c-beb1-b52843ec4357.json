@@ -1,0 +1,136 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "1",
+    "url" : "http://www.naantali.fi/perhe_ja_sosiaali/hoito_ja_vanhuspalvelut/Kummelin_ryhmakoti/kummelin_ryhmakoti/fi_FI/kummelin_ryhmakoti/",
+    "value" : "Kummelin ryhmäkoti",
+    "language" : "fi"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Sauniementie",
+        "language" : "fi"
+      } ],
+      "streetNumber" : "3",
+      "postalCode" : "21195",
+      "postOffice" : [ {
+        "value" : "VELKUA",
+        "language" : "sv"
+      }, {
+        "value" : "VELKUA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "529",
+        "name" : [ {
+          "value" : "Naantali",
+          "language" : "fi"
+        }, {
+          "value" : "Nådendal",
+          "language" : "sv"
+        }, {
+          "value" : "Naantali",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ ],
+      "latitude" : "6715210.484",
+      "longitude" : "208661.091",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "7dda4402-0c92-4d3c-aefe-f0d1f0637929",
+      "name" : "Tehostettu palveluasuminen ikäihmisille"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "ea30eb08-c9a6-4e73-8875-dd3fbabac451",
+      "name" : "Saattohoito"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : "Kummelin ryhmäkoti",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "505947211",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Kummelin ryhmäkodin johtaja",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "400230390",
+    "language" : "fi"
+  } ],
+  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "emails" : [ {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Kummelin ryhmäkoti",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Kummelin ryhmäkoti tarjoaa ympärivuorokautista palveluasumista ikäihmisille.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Kummelin ryhmäkoti tarjoaa ympärivuorokautista palveluasumista ikäihmisille, joilla on runsaasti päivittäistä hoidon tarvetta, mutta jotka eivät vielä ole laitoshoidon tarpeessa. Kummelin ryhmäkodissa on kodinomainen ja virikkeellinen ympäristö. Ryhmäkoti sijaitsee Velkuan Teersalossa, meren rannalla Kummelin palvelukeskuksessa. \n",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-09-27T13:04:17.638963",
+  "id" : "5538536b-bebb-447c-beb1-b52843ec4357"
+}

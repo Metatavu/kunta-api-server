@@ -1,0 +1,263 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Kiinteistöt",
+      "language" : "fi"
+    }, {
+      "value" : "Properties",
+      "language" : "en"
+    }, {
+      "value" : "Fastigheter",
+      "language" : "sv"
+    } ],
+    "description" : [ {
+      "value" : "Tässä alapalveluluokassa käsitellään palvelujen näkökulmasta kiinteistötietoja sekä kiinteistöjen kauppaa ja verotusta.",
+      "language" : "fi"
+    }, {
+      "value" : "I denna underservicegrupp behandlas ur servicesynvinkeln fastighetsuppgifter samt fastighetsaffärer och -beskattning.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains property information as well as the trade and taxation of properties from the service point of view.",
+      "language" : "en"
+    } ],
+    "code" : "P2.4",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1011",
+    "parentId" : "dd30002b-be2b-4689-878a-60e93492cc87",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1007"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "9a5a0855-41ec-4ca9-9612-a07651ec44a8",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "d195781f-8f27-46a2-8bbd-2784e2f1b441",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "22cd9e41-dcc9-42d5-bc40-3dd64d27c030",
+      "name" : "Kiinteistötoimi"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "35d19bb4-52b9-4b88-afdb-cc705cbeacc3",
+      "name" : "Kaupanvahvistus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "d4af83c8-0eeb-49a7-8bc4-d77a50868394",
+      "name" : "Kartastoassistentti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "sv"
+  }, {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : null,
+  "serviceNames" : [ {
+    "language" : "sv",
+    "value" : "Bestyrkande av köp",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Kaupanvahvistus",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ ],
+    "code" : null,
+    "ontologyType" : null,
+    "uri" : "http://www.yso.fi/onto/yso/p13797",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ ],
+    "code" : null,
+    "ontologyType" : null,
+    "uri" : "http://www.yso.fi/onto/yso/p6712",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Företag och samfund",
+      "language" : "sv"
+    }, {
+      "value" : "Yritykset ja yhteisöt",
+      "language" : "fi"
+    }, {
+      "value" : "Businesses and non-government organizations",
+      "language" : "en"
+    } ],
+    "code" : "KR2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "Företag på den inhemska marknaden",
+      "language" : "sv"
+    }, {
+      "value" : "Businesses operating in the domestic (Finnish) market",
+      "language" : "en"
+    }, {
+      "value" : "Kotimarkkinoilla toimivat yritykset",
+      "language" : "fi"
+    } ],
+    "code" : "KR2.3",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2011",
+    "parentId" : "338939bb-b01a-4a80-a091-7c5238322bc0",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008"
+  }, {
+    "name" : [ {
+      "value" : "Medborgare",
+      "language" : "sv"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : "Kaupanvahvistaminen tilataan suoraan kaupanvahvistajilta ja tonttikaupan tietopaketti kiinteistötoimen kartastoassistentilta. Kaupanvahvistajien yhteystiedot löydät Vaasan kaupungin verkkosivulta Kaupanvahvistus.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan kaupungilla on 8 julkista kaupanvahvistajaa, jotka ovat virkansa puolesta oikeutettuja toimimaan kaupanvahvistajina kaikissa kiinteistökaupoissa koko Suomen alueella.\n\nVaasan kaupungin kiinteistötoimesta on mahdollista tilata tonttikaupan tietopaketti, joka sisältää kaikki oleelliset viranomaistiedot kaupan kohteena olevasta alueesta.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan kaupungilla on 8 julkista kaupanvahvistajaa.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Vasa stad har 8 offentliga köpvittnen.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Bestyrkande av köp beställs direkt av köpvittnet och infopaket om tomtköp kan beställas av fastighetssektorns kartverksassistent. Köpvittnenas kontaktuppgifter finns på Vasa stads nätsidor Bestyrkande av köp. ",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : "Vasa stad har åtta offentliga köpvittnen, som å tjänstens vägnar har rätt att fungera som köpvittnen vid alla fastighetsköp i hela Finland.\n\nPå Fastighetssektorn kan man beställa ett infopaket för tomtköp, vilket innehåller alla väsentliga myndighetsuppgifter om det område som är föremål för köpet.",
+    "type" : "Description"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

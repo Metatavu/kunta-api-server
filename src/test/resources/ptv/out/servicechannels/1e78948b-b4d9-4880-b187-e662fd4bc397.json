@@ -1,0 +1,78 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/node/1981/",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/en/node/1981/",
+    "value" : null,
+    "language" : "en"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/sv/node/1981/",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "sv", "en", "fi" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "819bed3d-6147-4a22-a454-eac010516ce7",
+      "name" : "Kansalaisopistot"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "sv",
+    "value" : "Vaasa-opistos webbsidor",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasa-opiston verkkosivut",
+    "type" : "Name"
+  }, {
+    "language" : "en",
+    "value" : "The web pages of Vaasa-opisto",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Vaasa-opiston eli Vaasan suomenkielisen työväenopiston sivuilta löydät lisätietoa opiston toiminnasta.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasa-opiston eli Vaasan suomenkielisen työväenopiston sivuilta löydät lisätietoa opiston toiminnasta.",
+    "type" : "Summary"
+  }, {
+    "language" : "en",
+    "value" : "The webpages of the Finnish-speaking workers institute in Vaasa, e.g. Vaasa-opisto, offer you further information about their activities.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "På Vaasa-opistos d.v.s. Vasas finskspråkiga arbetarinstituts sidor finns ytterligare information om institutets verksamhet.\n",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "På Vaasa-opistos d.v.s. Vasas finskspråkiga arbetarinstituts sidor finns ytterligare information om institutets verksamhet.",
+    "type" : "Summary"
+  }, {
+    "language" : "en",
+    "value" : "The webpages of the Finnish-speaking workers institute in Vaasa, e.g. Vaasa-opisto, offer you further information about their activities.\n",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "1e78948b-b4d9-4880-b187-e662fd4bc397"
+}

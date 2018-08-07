@@ -1,0 +1,78 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/node/2041",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/en/node/2041/",
+    "value" : null,
+    "language" : "en"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/sv/ungdomarnas-vasa",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv", "en" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "f1118351-952c-414a-b421-522746102314",
+      "name" : "Nuorisopalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "sv",
+    "value" : "Ungdomsservicens webbsidor",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Nuorisopalveluiden verkkosivut",
+    "type" : "Name"
+  }, {
+    "language" : "en",
+    "value" : "The web pages of the youth services",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "På webbsidorna hittar du mer information om ungdomsservicen.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Verkkosivuilta löydät lisätietoa nuorisopalveluista.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "På webbsidorna hittar du mer information om ungdomsservicen.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Verkkosivuilta löydät lisätietoa nuorisopalveluista. ",
+    "type" : "Description"
+  }, {
+    "language" : "en",
+    "value" : "More information about the youth services can be obtained from their web pages.",
+    "type" : "Summary"
+  }, {
+    "language" : "en",
+    "value" : "More information about the youth services can be obtained from their web pages.",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "b4f2b7bc-8602-4186-a2bb-2bf7bf11164f"
+}

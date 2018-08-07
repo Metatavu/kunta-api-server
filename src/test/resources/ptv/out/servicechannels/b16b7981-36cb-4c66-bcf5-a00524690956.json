@@ -1,0 +1,105 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/kaupungin-organisaatio/tekninen-toimi/kiinteistotoimi",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/sv/node/26658",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "0d38d2ee-b81d-4683-a019-2d1328f58687",
+      "name" : "Tontit rakentamiseen"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "2ad665ab-a8ec-4f86-907b-f328b5a35d99",
+      "name" : "Rasitetoimitus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "3c02634b-8d84-46f6-8923-61760dadeb7a",
+      "name" : "Tontin lohkominen"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "b22837c8-4110-4432-9b57-54fdbdd22f48",
+      "name" : "Tonttijako"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "d28e65e2-985f-49ab-a962-7f239f178a9a",
+      "name" : "Luvat kaupungin omistamille maa- ja vesialueille"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Kiinteistötoimen verkkosivut",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Fastighetssektorns webbsidor",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Vaasan kaupungin kiinteistötoimen sivuilta löydät tietoa kiinteistötoimen tarjoamista palveluista sekä palveluiden yhdyshenkilöiden yhteystiedot.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan kaupungin kiinteistötoimen sivuilta löydät tietoa kiinteistötoimen tarjoamista palveluista sekä palveluiden yhdyshenkilöiden yhteystiedot.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "På Vasa stads fastighetssektors sidor finns information om den service som fastighetssektorn erbjuder samt kontaktuppgifter för servicens kontaktperso",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "På Vasa stads fastighetssektors sidor finns information om den service som fastighetssektorn erbjuder samt kontaktuppgifter för servicens kontaktpersoner. ",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "b16b7981-36cb-4c66-bcf5-a00524690956"
+}

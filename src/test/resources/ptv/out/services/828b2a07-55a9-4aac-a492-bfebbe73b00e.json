@@ -1,0 +1,231 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Vuokra-asuminen",
+      "language" : "fi"
+    }, {
+      "value" : "Hyresboende",
+      "language" : "sv"
+    }, {
+      "value" : "Rental housing",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Tässä palvelualaluokassa käsitellään vuokra-asuntojen saatavuuden ja hintatietojen palvelut, vuokrasopimusasiat, vuokralaisen oikeudet ja velvollisuudet sekä asunnon vuokralle antaminen ja jälleenvuokraaminen. Luokkaan kuuluvat myös vuokra-asunnon etsimiseen ja hankkimiseen liittyvät palvelut.",
+      "language" : "fi"
+    }, {
+      "value" : "I denna serviceundergrupp behandlas tjänster för hyresbostäders tillgänglighet och prisuppgifter, hyresavtalsärenden, hyrestagarens rättigheter och skyldigheter samt uthyrning och återuthyrning av bostad. Till gruppen hör också tjänster i anslutning till sökande och anskaffande av hyresbostad.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains services related to the availability and price information of rental residences, lease agreement issues, a lodger’s rights and duties, as well as letting and subletting. It also includes services related to seeking and obtaining a rented residence.",
+      "language" : "en"
+    } ],
+    "code" : "P1.1",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1002",
+    "parentId" : "00c74cc0-46c5-48f3-ab36-6dc0a7bcaec1",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1001"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "0069c15e-4ec6-4bd2-b1eb-a771b889b10c",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-20T08:17:50.468321",
+  "id" : "828b2a07-55a9-4aac-a492-bfebbe73b00e",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "5646b5f5-79fb-480d-81dd-16536f19021c",
+      "name" : "Merimaskun palvelupiste"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "6de93558-77d8-454b-a61b-7328cba94506",
+      "name" : "Asuntoasioiden toimistosihteeri"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "731905ef-d7cd-4690-b1a0-50826ae795bc",
+      "name" : "Naantalin vuokra-asuntotarjonta"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "7fd3a666-279b-42d3-8217-119d457de590",
+      "name" : "Kaupungintalon yhteispalvelupiste"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "89e95451-fdfb-4e95-a6fd-7a61ba449269",
+      "name" : "Velkuan palvelupiste"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "9d2a3990-260c-4f48-be59-2b90e0542ae6",
+      "name" : "Asuntohakemuslomake"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "fff205fe-e420-43ea-8702-6a7a685c2b51",
+      "name" : "Rymättylän palvelupiste"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Kunnan vuokra-asunnot",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "kommunala hyresbostäder",
+      "language" : "sv"
+    }, {
+      "value" : "kunnalliset vuokra-asunnot",
+      "language" : "fi"
+    }, {
+      "value" : "municipal rental dwellings",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p1734",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p36586"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Naantalin vuokra-asunnoista suurinta osaa vuokraa Naantalin Vuokratalot Oy.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Naantalissa on monipuolinen, viihtyisä ja luonnonläheinen vuokra-asuntotarjonta. Kaikkiaan kaupungilla on yli tuhat vuokra-asuntoa, joista suurinta osaa vuokraa Naantalin Vuokratalot Oy.\n",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Hae asuntoa täyttämällä asuntohakemuslomake ja palauta se asuntoasioiden toimistosihteerille tai johonkin kaupungin palvelupisteistä. Lomakkeen paperiversion voi hakea toimistosihteeriltä tai palvelupisteistä, tai sen voi tulostaa itse.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

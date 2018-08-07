@@ -1,0 +1,290 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Vanhusten palvelut",
+      "language" : "fi"
+    }, {
+      "value" : "Äldretjänster",
+      "language" : "sv"
+    }, {
+      "value" : "Services for older people",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "This service subclass contains services for older people, excluding housing services and including rehabilitation, transport and befriending services among other things.",
+      "language" : "en"
+    }, {
+      "value" : "Till denna serviceundergrupp hör andra än boendetjänster, bl.a. rehabiliterings-, transport- och väntjänster för de äldre.",
+      "language" : "sv"
+    }, {
+      "value" : "Tähän alapalveluluokkaan kuuluvat vanhusten muut kuin asumispalvelut, muun muassa kuntoutus-, kuljetus- ja ystäväpalvelut.",
+      "language" : "fi"
+    } ],
+    "code" : "P4.2",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1025",
+    "parentId" : "079b55da-af80-41ab-9346-c8fdd284afcf",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1023"
+  }, {
+    "name" : [ {
+      "value" : "Vammaisten muut kuin asumis- ja kotipalvelut",
+      "language" : "fi"
+    }, {
+      "value" : "Andra än boende- och hemservice för personer med funktionsnedsättning",
+      "language" : "sv"
+    }, {
+      "value" : "Services for the disabled other than housing and home services",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Till denna serviceundergrupp hör andra än boendeservice, bl.a. rehabiliterings-, tolknings- och färdtjänster för personer med funktionsnedsättning.",
+      "language" : "sv"
+    }, {
+      "value" : "Tähän alapalveluluokkaan kuuluvat vammaisten muut kuin asumispalvelut, muun muassa kuntoutus-, tulkkaus- ja kuljetuspalvelut.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains services for persons with disabilities, excluding housing services and including rehabilitation, interpretation and transport services.",
+      "language" : "en"
+    } ],
+    "code" : "P4.4",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1027",
+    "parentId" : "079b55da-af80-41ab-9346-c8fdd284afcf",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1023"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "8d52d7b8-c49a-4f5f-8bba-4524ab7dbbaf",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-10-20T13:25:31.089018",
+  "id" : "2d32a11c-3b05-45b7-bdb3-a6f0022e14bf",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "08446245-d828-4563-8c96-63d02554dc66",
+      "name" : "Naantalin sosiaali- ja terveyspalvelut, kaupungintalo, 3. krs."
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "2ba08719-ae78-408a-82ab-1276410029c2",
+      "name" : "Sosiaalityöntekijä (asiakkaat M - Ö), vammaispalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "4fa40ae7-4693-415f-8be7-0af7880a7501",
+      "name" : "Sosiaalityöntekijä (asiakkaat A - L), vammaispalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "5646b5f5-79fb-480d-81dd-16536f19021c",
+      "name" : "Merimaskun palvelupiste"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "5e5c70b8-1119-4dba-8f1f-8477843ccab9",
+      "name" : "Sosiaalihuoltolain mukaiset kuljetuspalvelut vaikeavammaisille"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "74d6e94d-a6de-4222-989c-b6d688093ab3",
+      "name" : "Avohuollon ohjaaja, vammaispalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "7fd3a666-279b-42d3-8217-119d457de590",
+      "name" : "Kaupungintalon yhteispalvelupiste"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "89e95451-fdfb-4e95-a6fd-7a61ba449269",
+      "name" : "Velkuan palvelupiste"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "95333385-aff3-4228-910c-614831f730c7",
+      "name" : "Kuljetuspalveluhakemus, vaikeavammaiset"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "fff205fe-e420-43ea-8702-6a7a685c2b51",
+      "name" : "Rymättylän palvelupiste"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : "* Kuljetuspalvelua voi käyttää asiointi- ja virkistysmatkoihin Naantalissa ja lähikunnissa (Raisio, Masku ja Turku). Matkat myönnetään kalenterikuukausittain eikä niitä voi siirtää seuraavalle kuukaudelle. Kuljetuspalvelua ei saa käyttää lääkäri-, sairaala- tai kuntoutusmatkoihin, joihin on mahdollisuus hakea korvausta Kelasta.\n* Kuljetuspalvelumatka on yhdensuuntainen, yleensä keskeytymätön matka. Matkan jatkuminen tai paluumatka on aina uusi kuljetuspalvelumatka.\n* Invataksin tai vaihtoehtovarusteisen taksin käyttöoikeus on vain niillä henkilöillä, jotka eivät apuvälineiden tai muun erityisen syyn vuoksi voi käyttää tavallista taksia. Asiakkaalla saa olla tarpeen mukaan saattaja, jolta ei peritä maksua.\n* Maksu suoritetaan taksikortilla, joka on henkilökohtainen. Kuljettajalla on oikeus tarkistaa asiakkaan henkilöllisyys. Kuljettaja veloittaa asiakkaaltaan omavastuuosuuden, joka on kulloinkin voimassa olevan linja-autotaksan mukainen.\n* Ryhmäkuljetuksissa jokaiselta asiakkaalta, saattajaa lukuun ottamatta, peritään omavastuuosuus. Kuljetuspalvelumatka peritään vain yhdeltä asiakkaalta.\n* Taksi on aina tilattava taksikeskuksen kautta väärinkäytösten välttämiseksi. Taksikortin väärinkäytösten yhteydessä asiakas voi menettää kortin käyttöoikeuden.\n* Jos kuljetuspalveluoikeus päättyy, taksikortti pitää palauttaa Naantalin vammaispalveluihin.",
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "Chargeable",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Sosiaalihuollon kuljetuspalvelut vaikeavammaisille",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "färdtjänst",
+      "language" : "sv"
+    }, {
+      "value" : "kuljetuspalvelut (palvelut)",
+      "language" : "fi"
+    }, {
+      "value" : "transport services",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p7545",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p36438"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Vaikeavammaisten kuljetuspalveluja voi käyttää asiointi- ja virkistysmatkoihin Naantalissa ja lähikunnissa.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Kuljetuspalveluissa on omavastuuosuus.",
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Naantalin kaupungin myöntämää vaikeavammaisten kuljetuspalvelua voi käyttää asiointi- ja virkistysmatkoihin Naantalissa ja lähikunnissa (Raisio, Masku ja Turku).",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Hae kuljetuspalveluja vaikeavammaisten kuljetuspalveluhakemuksella ja toimita hakemus johonkin kaupungin palvelupisteistä (kaupungintalo, Merimasku, Rymättylä ja Velkua) tai vammaispalveluihin kaupungintalon kolmanteen kerrokseen. Voit myös postittaa hakemuksesi Naantalin sosiaali- ja terveyspalveluihin/vammaispalvelut.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

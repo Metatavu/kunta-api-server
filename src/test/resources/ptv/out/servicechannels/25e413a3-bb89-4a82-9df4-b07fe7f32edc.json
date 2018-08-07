@@ -1,0 +1,61 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/node/26272",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/sv/node/26272",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "53487459-2c09-4d9a-938e-999a4828102a",
+      "name" : "Vaasan kaupunginorkesteri"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Vaasan kaupunginorkesterin verkkosivut",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Vasa stadsorkesters webbsidor",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Verkkosivuilta löydät yhteystietojen lisäksi tietoa kaupunginorkesterin toiminnasta, ohjelmistosta ja lipunmyynnistä. ",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "På stadsorkesters sidor hittar du kontakter och tilläggsuppgifter om orkesters verksamhet, program och biljetter. \n",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "På stadsorkesters sidor hittar du kontakter och tilläggsuppgifter om orkesters verksamhet, program och biljetter.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Verkkosivuilta löydät yhteystietojen lisäksi tietoa kaupunginorkesterin toiminnasta, ohjelmistosta ja lipunmyynnistä.",
+    "type" : "Summary"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "25e413a3-bb89-4a82-9df4-b07fe7f32edc"
+}

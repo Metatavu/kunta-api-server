@@ -1,0 +1,44 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "http://www.naantali.fi/perhe_ja_sosiaali/aikuissosiaalityo/fi_FI/tyollistamispalvelut/",
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "fa186802-61aa-43d5-a1ba-888912a29db5",
+      "name" : "Tuettu työllistäminen"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Työllistämispalvelujen verkkosivu",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Naantalin työllistämispalvelujen verkkosivulla on tietoa kaupungin työllistämiseen liittyvistä palveluista ja yhteystiedoista.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Työllistämispalvelujen verkkosivulla on tietoa Naantalin kaupungin työllistämiseen liittyvistä palveluista ja yhteystiedoista.",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2018-01-09T12:45:02.205546",
+  "id" : "b958b2b9-9f92-43be-b751-5de1e8b54dc4"
+}

@@ -1,0 +1,349 @@
+{
+  "sourceId" : null,
+  "keywords" : [ {
+    "value" : "förskola",
+    "language" : "sv"
+  }, {
+    "value" : "förskoleundervisning",
+    "language" : "sv"
+  }, {
+    "value" : "grundskola",
+    "language" : "sv"
+  }, {
+    "value" : "grundläggande utbildning",
+    "language" : "sv"
+  }, {
+    "value" : "skolresor",
+    "language" : "sv"
+  } ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Perusopetus",
+      "language" : "fi"
+    }, {
+      "value" : "Grundläggande utbildning",
+      "language" : "sv"
+    }, {
+      "value" : "Basic education",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Till denna serviceundergrupp hör både den egentliga grundläggande utbildningen med innehåll och mål samt direkta tjänster som erbjuds i anslutning till grundläggande utbildningen och för att stöda den, t.ex. skoltransporter, skolmat och assistanstjänster. Till denna grupp hör också ärenden i anslutning till avläggande av grundläggande utbildning utomlands i enlighet med den finska grundläggande utbildningen.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains basic education itself with its contents and objectives as well as the services offered directly in connection with and in support of basic education, for example school transport, school lunches and an assistant’s services. The class also includes issues related to completing abroad a basic education that is in line with the Finnish basic education.",
+      "language" : "en"
+    }, {
+      "value" : "Tähän palvelualaluokkaan kuuluvat sekä varsinainen perusopetus sisältöineen ja tavoitteineen sekä perusopetuksen yhteydessä ja sen tukemiseksi välittömästi tarjottavat palvelut, esimerkiksi koulukuljetukset, kouluruokailu ja avustajapalvelut. Tähän luokkaan kuuluvat myös Suomen perusopetuksen mukaisen peruskoulutuksen ulkomailla suorittamiseen liittyvät asiat.",
+      "language" : "fi"
+    } ],
+    "code" : "P6.2",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1062",
+    "parentId" : "fd1bb60e-4206-4f0a-994f-8ffcb4ffaaa4",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1060"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "6153b653-b3b0-4348-baf4-99b7af9c3538",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "d1bff5b9-517c-480e-9fd9-17ff8a7bf7ce",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "27fe151c-e919-41d7-ac7d-bc9ec4adbc6f",
+      "name" : "Koulumatkat"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "68713f11-3a34-488e-8769-b99f79f9d666",
+      "name" : "Saattoavustuslomake"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "86da08c1-7150-4645-a805-4546f56081a1",
+      "name" : "Koulukuljetuksen puhelinasiointi"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : "Vaasan kaupungin peruskoulujen oppilaat saavat ilmaisen koulukuljetuksen, mikäli koulumatkan pituus on esiopetuksen ja perusopetuksen 1.-2.-luokkien oppilailla yli 3 kilometriä ja vuosiluokkien 3.-9. oppilailla yli 5 kilometriä. Kuljetusetuus myönnetään oppilaan lähikouluun ja koulumatka mitataan oppilaan kotoa lähikouluun lyhintä kulkukelpoista reittiä pitkin.\n\nOppilaalla on oikeus maksuttomaan koulukuljetukseen myös, jos koulumatka oppilaan ikä tai muut olosuhteet huomioon ottaen muuten muodostuu oppilaalle liian vaikeaksi, rasittavaksi tai vaaralliseksi, vaikka koulumatka olisikin yllä olevia kilometrirajoja lyhyempi. Maksuttoman kuljetusetuuden edellytyksenä on lääkärin, psykologin tai muun vastaavan asiantuntijan lausunto.",
+    "language" : "fi"
+  }, {
+    "value" : "Eleverna i Vasa stads grundskolor har rätt till gratis skolskjuts, om skolvägen för elever i förskoleundervisning och åk 1 - 2  är över 3 kilometer och elever i åk 3 – 9 år över 5 km. Förmånen beviljas till elevens närskola och skolvägen mäts från hemmet till närskolan längs den kortaste trafikerbara vägen. Eleven har rätt till kostnadsfri skolskjuts också, om skolvägen med beaktande av elevens ålder eller andra omständigheter anses vara för svår, ansträngande eller farlig, fastän skolvägen skulle vara kortare än kilometergränserna ovan. Förutsättningen för skjutsförmånen är utlåtande av en läkare, psykolog eller en annan motsvarande sakkunnig.",
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : null,
+  "serviceNames" : [ {
+    "language" : "sv",
+    "value" : "Skolskjuts",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Koulukuljetus",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "Grundschule, Gesamtschule",
+      "language" : "de"
+    }, {
+      "value" : "peruskoulu",
+      "language" : "fi"
+    }, {
+      "value" : "grundskolan",
+      "language" : "sv"
+    }, {
+      "value" : "comprehensive school",
+      "language" : "en"
+    }, {
+      "value" : "põhikool",
+      "language" : "et"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p14592",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p48279"
+  }, {
+    "name" : [ ],
+    "code" : null,
+    "ontologyType" : null,
+    "uri" : "http://www.yso.fi/onto/yso/p15089",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "grundläggande utbildning",
+      "language" : "sv"
+    }, {
+      "value" : "perusopetus",
+      "language" : "fi"
+    }, {
+      "value" : "basic education",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p1275",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p33827"
+  }, {
+    "name" : [ {
+      "value" : "koulukuljetus",
+      "language" : "fi"
+    }, {
+      "value" : "skoltransport",
+      "language" : "sv"
+    }, {
+      "value" : "school transport",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p13650",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p35680"
+  }, {
+    "name" : [ {
+      "value" : "förskoleundervisning",
+      "language" : "sv"
+    }, {
+      "value" : "esiopetus",
+      "language" : "fi"
+    }, {
+      "value" : "preschool education",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p5766",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p33827"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Lapset ja lapsiperheet",
+      "language" : "fi"
+    }, {
+      "value" : "Children and families with children",
+      "language" : "en"
+    }, {
+      "value" : "Barn och barnfamiljer",
+      "language" : "sv"
+    } ],
+    "code" : "KR1.2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2003",
+    "parentId" : "daff1fb9-9394-49b5-b033-d1d1c7005ab6",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001"
+  }, {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasassa peruskoulun oppilaat saavat ilmaisen koulukuljetuksen, mikäli annetut kriteetit täyttyvät.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : "I Vasa får elever i grundskolan gratis skolskjuts, om de angivna kriterierna uppfylls.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "I Vasa får elever i grundskolan gratis skolskjuts, om de angivna kriterierna uppfylls.  Till skolresorna används i huvudsak allmänna kommunikationsmedel. I specialfall kan skolbussar eller taxitransporter användas. För skjutsning eller ledsagning av eleven kan också ett bidrag som anses vara tillräckligt beviljas. Blankett för ansökan om bidrag för ledsagning av elev.  ",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : "Maksuttomasta koulukuljetuksesta ja kuljetustavasta tehdään päätökset koulun tai huoltajan laatiman esityksen pohjalta. Lukuvuoden alussa kukin peruskoulu laatii esityksen ilmaiseen koulukuljetukseen oikeutetuista oppilaista. Muina aikoina huoltaja toimittaa hakemuksen oppilaitokseen.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasassa peruskoulun oppilaat saavat ilmaisen koulukuljetuksen, mikäli annetut kriteetit täyttyvät. Vaasassa koulumatkoilla käytetään pääasiassa yleisiä kulkuneuvoja. Erityistapauksissa voidaan käyttää koulubusseja tai taksikuljetuksia. Oppilaan kuljettamista tai saattamista varten voidaan myöntää myös riittäväksi katsottu avustus. Avustusta haetaan saattoavustuslomakkeella.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Beslut om kostnadsfri skolskjuts och kostnadsfritt skjutsningssätt fattas på basis av en framställning från skolan eller vårdnadshavaren.  I början av läsåret förbereder varje grundskola en framställning över de elever som är berättigade till kostnadsfri skolskjuts. Övriga tider inlämnar vårdnadshavaren en ansökan till läroanstalten.",
+    "type" : "UserInstruction"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

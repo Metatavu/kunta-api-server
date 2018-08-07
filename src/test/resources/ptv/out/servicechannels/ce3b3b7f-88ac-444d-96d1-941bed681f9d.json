@@ -1,0 +1,173 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/palvelut/aikuisten-sosiaalityo",
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "0d40274d-f411-4e53-aea3-72e308f88749",
+      "name" : "Aikuisten sosiaalityö"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "16104040-172a-4df6-8e3c-881bd4259f34",
+      "name" : "Vammaisten apuvälineet ja avustukset"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "2379f83b-2cb4-45b4-8f01-a98923093e90",
+      "name" : "Vammaisten päivä- ja työtoiminta"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "27d1aafa-92bb-4a40-8774-4a9c745f2841",
+      "name" : "Omaishoidon tuki"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "90f4c62d-5b9a-4411-8af1-f37250965a01",
+      "name" : "Pakolaisten vastaanotto ja kotouttaminen"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63252947",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63252947",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Johtava sosiaalityöntekijä - aikuissosiaalityö, vammaispalvelut ja kotouttaminen",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Ledande socialarbetare - vuxensocialarbete, aktivering och rehabilitering",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ {
+    "serviceHourType" : "DaysOfTheWeek",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ {
+      "value" : null,
+      "language" : "fi"
+    } ],
+    "openingHour" : [ {
+      "dayFrom" : "Monday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    }, {
+      "dayFrom" : "Tuesday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    }, {
+      "dayFrom" : "Wednesday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    }, {
+      "dayFrom" : "Thursday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    }, {
+      "dayFrom" : "Friday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    } ]
+  } ],
+  "serviceChannelType" : "Phone",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Aikuissosiaalityön sosiaalityöntekijä neuvoo ja ohjaa liittyen vammaispalveluihin ja kotouttamiseen.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Aikuisten sosiaalityön tarkoituksena on mm. \n* edistää vammaisten henkilöiden osallisuutta ja yhdenvertaisuutta yhteiskunnassa sekä ehkäistä ja poistaa vammaisuudesta johtuvia esteitä\n* edistää ja tukea kotoutumista",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Ledande socialarberare svarar på frågor i anslutning till vuxensocialarbete, handikappservice, aktivering och rehabilitering.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Ledande socialarberare svarar på frågor i anslutning till vuxensocialarbete, handikappservice, aktivering och rehabilitering.\n\nServiceområdet för vuxensocialarbete:\n\n* stöda unga klienter, klienter i arbetsför ålder samt klienter som behöver särskilt stöd i ärenden som berör livshanteringen, arbete, utkomst och studier\n* minska på ojämlikheten och främja delaktigheten samt jämlikheten i samhället\n",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "ce3b3b7f-88ac-444d-96d1-941bed681f9d"
+}

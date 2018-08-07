@@ -1,0 +1,213 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Vanhusten palvelut",
+      "language" : "fi"
+    }, {
+      "value" : "Äldretjänster",
+      "language" : "sv"
+    }, {
+      "value" : "Services for older people",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "This service subclass contains services for older people, excluding housing services and including rehabilitation, transport and befriending services among other things.",
+      "language" : "en"
+    }, {
+      "value" : "Till denna serviceundergrupp hör andra än boendetjänster, bl.a. rehabiliterings-, transport- och väntjänster för de äldre.",
+      "language" : "sv"
+    }, {
+      "value" : "Tähän alapalveluluokkaan kuuluvat vanhusten muut kuin asumispalvelut, muun muassa kuntoutus-, kuljetus- ja ystäväpalvelut.",
+      "language" : "fi"
+    } ],
+    "code" : "P4.2",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1025",
+    "parentId" : "079b55da-af80-41ab-9346-c8fdd284afcf",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1023"
+  }, {
+    "name" : [ {
+      "value" : "Vammaisten muut kuin asumis- ja kotipalvelut",
+      "language" : "fi"
+    }, {
+      "value" : "Andra än boende- och hemservice för personer med funktionsnedsättning",
+      "language" : "sv"
+    }, {
+      "value" : "Services for the disabled other than housing and home services",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Till denna serviceundergrupp hör andra än boendeservice, bl.a. rehabiliterings-, tolknings- och färdtjänster för personer med funktionsnedsättning.",
+      "language" : "sv"
+    }, {
+      "value" : "Tähän alapalveluluokkaan kuuluvat vammaisten muut kuin asumispalvelut, muun muassa kuntoutus-, tulkkaus- ja kuljetuspalvelut.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains services for persons with disabilities, excluding housing services and including rehabilitation, interpretation and transport services.",
+      "language" : "en"
+    } ],
+    "code" : "P4.4",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1027",
+    "parentId" : "079b55da-af80-41ab-9346-c8fdd284afcf",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1023"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "8d52d7b8-c49a-4f5f-8bba-4524ab7dbbaf",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-10-20T13:30:55.259867",
+  "id" : "6ece8450-c9c3-4f6a-a9d7-c261d6565c74",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "24e84582-15ef-403f-93d7-31075373d310",
+      "name" : "Kotihoidon avohuollon ohjaaja"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "57913242-6ef8-40f5-b919-3a535aa97174",
+      "name" : "Kuljetuspalveluhakemus, ikäihmiset"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "9f83057f-920a-4040-b808-8dad18539a62",
+      "name" : "Sosiaalihuoltolain mukaiset kuljetuspalvelut ikäihmisille"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : "Ikäihminen, jonka alentunut toimintakyky aiheuttaa vaikeuksia liikkumisessa ja estää julkisten liikennevälineiden käyttämisen, voi anoa kuljetuspalvelua itsenäiseen asiointiin ja virkistykseen. Lähtökohtana on, että hakija pystyy tekemään jokapäiväiseen elämäänsä liittyviä matkoja taksilla tai invataksilla.\n\n* Kuljetuspalvelua myönnetään toistaiseksi. Mikäli hakijan olosuhteissa tapahtuu muutoksia tai kuljetuspalvelutuen määräraha loppuu, tarkistetaan voimassa oleva kuljetuspalvelupäätös muutosten mukaisesti.\n* Sairaudesta aiheutuvat matkat esim. lääkäriin, fysioterapiaan ym. haetaan Kelasta sairausvakuutuslain mukaan.\n* Kuljetuspalvelua myönnetään erityisen harkinnan mukaan myös tehostetussa palveluasumisessa tai laitoshoidossa olevalle henkilölle.\n* Kuljetuspalvelua ei myönnetä, jos hakija kykenee käyttämään palveluliikennettä. \n* Matkoja myönnettäessä otetaan huomioon omaisten mahdollisuudet kuljettaa hakijaa asiointi- ja virkistysmatkoilla. \n* Kaksi yhdensuuntaisista matkoista voi ulottua Naantalin rajojen ulkopuolelle Raisioon, Turkuun tai Maskuun.\n* Matka on tilattava ensisijaisesti taksin tilauskeskuksen numerosta.",
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "Chargeable",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Sosiaalihuollon kuljetuspalvelut ikäihmisille",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "färdtjänst",
+      "language" : "sv"
+    }, {
+      "value" : "kuljetuspalvelut (palvelut)",
+      "language" : "fi"
+    }, {
+      "value" : "transport services",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p7545",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p36438"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : "Kuljetuspalvelu ikäihmisille on Naantalin kaupungin kotihoidon tukipalvelu.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : "Kuljetuspalvelusta peritään alueella voimassa oleva Matkahuollon linja-autotaksan mukainen omavastuuosuus. Taksin odotusaikaa ei korvata.",
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Kuljetuspalvelu ikäihmisille on Naantalin kaupungin kotihoidon tukipalvelu. Kuljetuspalvelu on harkinnanvaraista ja sitä myönnetään määrärahojen mukaan.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Hae ikäihmisten kuljetuspalvelua kuljetuspalveluhakemuksella. ",
+    "type" : "UserInstruction"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

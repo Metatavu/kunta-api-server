@@ -1,0 +1,306 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Ensiapu ja päivystys",
+      "language" : "fi"
+    }, {
+      "value" : "Förstahjälpen och jouren",
+      "language" : "sv"
+    }, {
+      "value" : "First aid and emergency care",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Tässä palvelualaluokassa käsitellään potilaan kiireelliseen hoitoon ja hoitoon hakeutumiseen liittyviä palveluja.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains services related to providing and obtaining urgent care.",
+      "language" : "en"
+    }, {
+      "value" : "I denna serviceundergrupp behandlas tjänster i anslutning till brådskande vård av patienten och uppsökande av vård.",
+      "language" : "sv"
+    } ],
+    "code" : "P5.5",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1043",
+    "parentId" : "76ca210c-5183-4d41-b796-50612d5930c7",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1038"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "000a7f6e-1d8c-44c0-8c58-89e3fbe9bbff",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "cedfb7dc-79f4-4bc0-8b6b-39e151079fc1",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "37f7d324-cc8c-42e4-b68a-88ecbcbe1235",
+      "name" : "Noroviruksen kotihoito-ohjeet"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "en"
+  }, {
+    "value" : "När ska jag gå till den egna hälsostationens jour?\n\n* Vardagar må-to kl. 8-16, fr kl. 8-14\n* Ring först och kom med tidsbeställning\n* Febersjukdomar och inflammationer i de övre luftvägarna, om egenvård inte är tillräcklig\n* Urinvägsinfektion och misstanke om sådan\n* Akuta öroninflammationer, öronvärk och näsblödning\n* Akuta muskel- och ledsmärtor samt försträckningar av olika grader\n* Förlängningar av sjukledighet\n* Lindriga hjärnskakningar, där personen inte varit medvetslös\n* Mindre sår, krossår, skador och stukningar\n* Lindriga ögonskador \n\nOmedelbar, akut första hjälpen behövs alltid vid \n\n* Kraftiga bröstsmärtor \n* Kraftig blödning\n* Allvarliga andningssvårigheter\n* Symptom på hjärnblödning (antingen alla eller någon av följande): \n* svårigheter att tala (svårt att hitta ord eller talet är sluddrigt)\n* tecken på förlamning i ansiktet där ena mungipan hänger eller rör sig dåligt\n* svaghetssymptom i armar och ben\n* Allvarlig ögonskada\n",
+    "language" : "sv"
+  }, {
+    "value" : "Milloin oman terveysaseman päivystykseen?\n* Arkipäivisin ma-to klo 8-16, pe klo 8-14\n* Soitetaan ensin ja tullaan ajanvarauksella\n* Kuumetaudit ja ylähengitystietulehdukset, jos itsehoito ei riitä\n* Virtsatietulehdukset ja niiden epäilyt\n* Äkilliset korvatulehdukset, korvasäryt ja nenäverenvuodot\n* Äkilliset lihas- ja nivelkivut sekä eriasteiset venähdykset\n* Sairasloman jatkot\n* Lievät aivotärähdykset, joihin ei liity tajuttomuutta\n* Pienemmät haavat, ruhjeet, vammat ja nyrjähdykset\n* Lievät silmävammat \n\nVälitöntä, kiireellistä ensiapua tarvitsevat aina\n* Voimakas rintakipu\n* Voimakas verenvuoto\n* Paha hengitysvaikeus\n* Aivohalvausoireita (joko kaikki tai jokin seuraavista):\n* puhevaikeutta (hankaluuksia löytää sanoja tai puhe on sammaltavaa)\n* kasvohalvauksen merkkinä toinen suupieli roikkuu tai liikkuu huonosti\n* käden/jalan heikkousoireita\n* Vakavat silmävammat",
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi", "sv", "en" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "Chargeable",
+  "serviceNames" : [ {
+    "language" : "sv",
+    "value" : "Läkarjourtjänster",
+    "type" : "AlternativeName"
+  }, {
+    "language" : "sv",
+    "value" : "Läkarjourtjänster",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Lääkäripäivystyksen palvelut",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Lääkäripäivystys ja ensiapu",
+    "type" : "AlternativeName"
+  }, {
+    "language" : "en",
+    "value" : "Emergency health care",
+    "type" : "AlternativeName"
+  }, {
+    "language" : "en",
+    "value" : "Primary health care emergency services",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "jour",
+      "language" : "sv"
+    }, {
+      "value" : "päivystys",
+      "language" : "fi"
+    }, {
+      "value" : "on-call duty",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p14988",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p31480"
+  }, {
+    "name" : [ {
+      "value" : "päivystyspalvelut",
+      "language" : "fi"
+    }, {
+      "value" : "jourservice",
+      "language" : "sv"
+    }, {
+      "value" : "emergency services",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p75845",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p12249"
+  }, {
+    "name" : [ {
+      "value" : "akutvård",
+      "language" : "sv"
+    }, {
+      "value" : "hätäensiapu",
+      "language" : "fi"
+    }, {
+      "value" : "emergency medical care",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "TERO",
+    "uri" : "http://www.yso.fi/onto/koko/p54247",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p4420"
+  }, {
+    "name" : [ {
+      "value" : "första hjälpen",
+      "language" : "sv"
+    }, {
+      "value" : "ensiapu",
+      "language" : "fi"
+    }, {
+      "value" : "first aid",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p4420",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p48187"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "en",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "en",
+    "value" : "The emergency services provide urgent treatment.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "en",
+    "value" : "Your own Health Centre is open from Monday to Thursday 8–16 and on Fridays 8–14, and is the place to go when you need urgent care during these times.\n\nIn the evenings, at night and at weekends, emergency health care is given at the Accident & Emergency Clinic of the Vaasa Central Hospital’s Y building.\n\nIf you are not sure whether your symptoms require emergency care, please call your own Health Centre during office hours and outside these hours call the emergency care helpline at 06 213 1001.\n\nAppointments for Health Centres cannot be made or cancelled at the Accident & Emergency Clinic, nor are laboratory or other results given here; instead, you can get them from your own Health Centre during office hours.\n\nPrescriptions are not renewed at the Accident & Emergency Clinic.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : "På jourmottagningen vårdas patienter som behöver första hjälpen akut och brådskande sjukvård. Patienterna undersöks och behandlas i angelägenhetsordning.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : "På jourmottagningen vårdas patienter som behöver första hjälpen akut och brådskande sjukvård.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Päivystyksessä hoidetaan välitöntä ensiapua ja kiireellistä sairaanhoitoa tarvitsevat potilaat. Potilaat tutkitaan ja hoidetaan kiireellisyyden mukaan.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "De personer som är i behov av brådskande vård sköts i första hand på den egna hälsostationen vardagar må-to kl. 8-16, fr kl. 8-14 och under övriga tider i samjouren vid Vasa centralsjukhus (Sandviksgatan 2-4).\n\nSjukvårdsrådgivning samt tidsbokning till läkar- och skötarmottagning sker via den egna hälsostationen även i jourärenden. Ring gärna först och kom sedan enligt tidsbokning även i jourärenden. ",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Sairaanhoidon neuvonta ja ajanvaraus lääkärin sekä hoitajan vastaanotolle omalta terveysasemalta myös päivystysasioissa. Terveysasemilla toivotaan, että soitetaan ensin ja tullaan ajanvarauksella myös päivystysasioissa.\n\nKiireellistä hoitoa tarvitsevat hoidetaan ensisijaisesti omalla terveysasemalla arkisin ma-to klo 8 - 16 ja pe klo 8 - 14 muina aikoina Vaasan keskussairaalan yhteispäivystyksessä (Hietalahdenkatu 2 - 4).",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "en",
+    "value" : "Emergency health care is for people who need emergency treatment and care. Patients are examined and treated in order of urgency.\n\nPatients requiring immediate treatment, such as heart attack or stroke patients, are given priority. Others are examined in order of arrival.\n\n",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : "Päivystyksessä hoidetaan välitöntä ensiapua ja kiireellistä sairaanhoitoa tarvitsevat potilaat kiireellisyyden mukaan.",
+    "type" : "Summary"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

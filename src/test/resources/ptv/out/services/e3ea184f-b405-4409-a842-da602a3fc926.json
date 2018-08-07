@@ -1,0 +1,226 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Lapsiperheiden sosiaalipalvelut",
+      "language" : "fi"
+    }, {
+      "value" : "Socialtjänster för barnfamiljer",
+      "language" : "sv"
+    }, {
+      "value" : "Social services for families with children",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "I denna serviceundergrupp behandlas ekonomiska bidrag och förmåner särskilt för barnfamiljer samt de hem- och stödtjänster som inte omfattas av familjerådgivningen eller barnskyddet.",
+      "language" : "sv"
+    }, {
+      "value" : "Tässä alapalveluluokassa käsitellään erityisesti lapsiperheille suunnattuja taloudellisia tukia ja etuuksia sekä niitä koti- ja tukipalveluja, jotka eivät kuulu perheneuvonnan tai lastensuojelun piiriin.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains financial subsidies and benefits targeted especially at families with children as well as home and support services that are not included in family counselling or child welfare.",
+      "language" : "en"
+    } ],
+    "code" : "P3.6",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1019",
+    "parentId" : "77af99fa-93eb-4de6-ac83-1b161a961263",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1013"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "4f7cdd0a-f448-4a87-8399-567f7981bc81",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "e3ea184f-b405-4409-a842-da602a3fc926",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "0bb161b9-0b9c-44d4-804b-43be031c8a02",
+      "name" : "Perhetyön johtava ohjaaja"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "e6cf380b-c354-42fe-802f-14476d1893d1",
+      "name" : "Perhetukikeskus Mäntykoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "sv",
+    "value" : "Familjearbete",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Perhetyö",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "socialhandledning",
+      "language" : "sv"
+    }, {
+      "value" : "sosiaaliohjaus",
+      "language" : "fi"
+    }, {
+      "value" : "social guidance",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p67955",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p18203"
+  }, {
+    "name" : [ {
+      "value" : "perhetyö (sosiaalityö)",
+      "language" : "fi"
+    }, {
+      "value" : "familjearbete",
+      "language" : "sv"
+    }, {
+      "value" : "family work",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p12895",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p16696"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : "Familjearbete är hjälparbete som görs tillsammans med familjen och som syftar till förändring. Familjearbetet är en stödåtgärd inom barnskyddets öppenvård.\n\nInnan intensivt familjearbete inleds görs en detaljerad plan för familjearbetet. Klientplan görs i samarbete mellan barnet och barnets föräldrar, familjearbetet och den socialarbetare som ansvarar för barnets angelägenheter.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Perhetyötä tehdään lastensuojelun avohuollon tukitoimena.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Perhetyötä tehdään lastensuojelun avohuollon tukitoimena. Perhetyö on muutokseen tavoittelevaa auttamistyötä yhdessä perheen kanssa. Perhetyö voi olla myös intensiivistä perhetyötä, jolloin työskentely perheissä on tiivistä ja pidempiaikaista.\n\nEnnen intensiivisen perhetyön aloittamista tehdään yksityiskohtainen suunnitelma perhetyölle. Asiakassuunnitelma laaditaan yhteistyössä lapsen ja hänen perheensä, perhetyön ja lapsen asioista vastaavan sosiaalityöntekijän kesken.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : "Familjearbetet är en stödåtgärd inom barnskyddets öppenvård.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

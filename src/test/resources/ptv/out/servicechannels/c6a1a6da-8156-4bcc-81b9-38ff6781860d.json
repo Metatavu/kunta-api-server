@@ -1,0 +1,204 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Hietalahdenkatu",
+        "language" : "fi"
+      }, {
+        "value" : "Sandviksgatan",
+        "language" : "sv"
+      } ],
+      "streetNumber" : "6",
+      "postalCode" : "65100",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ ],
+      "latitude" : "7006634.382",
+      "longitude" : "228431.013",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "d14f70fd-d474-4d58-bd18-ed32dab8d2ab",
+      "name" : "Lastenneuvolapalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : "Keskusta, Sundom",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "407692211",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Sundom",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "406766104",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Keskusta, Vaskiluoto",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "406206625",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Hietalahti, Suvilahti",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "406784631",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Hietalahti",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "403563240",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "(Centrum och Vasklot)",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "406206625",
+    "language" : "sv"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "(Sundom) (Sundom Lärcenter)",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "406766104",
+    "language" : "sv"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "(Centrum, Sundom)",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "407692211",
+    "language" : "sv"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "(Sandviken)",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "403563240",
+    "language" : "sv"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "(Sandviken, Sunnanvik)",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "406784631",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Keskustan lastenneuvola",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Centrums barnrådgivning",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "Centrums barnrådgivning: Centrum, Vasklot, Sundom, Sunnanvik och Sandviken.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Centrums barnrådgivning: Centrum, Vasklot, Sundom och Sandviken.\n\nTelefontid kl. 11-11.30.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Keskustan lastenneuvola palvelee keskustan, Hietalahden, Sundomin ja Vaskiluodon alueen lapsiperheitä. \n\nPuhelinaika klo 11-11.30.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Keskustan lastenneuvola palvelee Vaasan keskustan, Hietalahden, Suvilahden, Sundomin ja Vaskiluodon alueen lapsiperheitä.",
+    "type" : "Summary"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "c6a1a6da-8156-4bcc-81b9-38ff6781860d"
+}

@@ -1,0 +1,72 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/node/19881/",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/sv/node/19881",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "16d1bd9e-6a64-4888-843c-2aabfd23653d",
+      "name" : "Hygienia"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "dc032066-5697-4d62-bf91-2622d1f9b556",
+      "name" : "Lääkärin ja hoitajan vastaanotto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Influenssan kotihoito-ohje",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Hemvårdsinstruktion för influensa",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Vaasan kaupungin sivuilta löydät influenssan kotihoito-ohjeet ja ohjeistuksen hoitoon hakeutumisesta.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan kaupungin sivuilta löydät influenssan kotihoito-ohjeet ja ohjeistuksen hoitoon hakeutumisesta.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "På Vasa stads webbsidor hittar du hemvårdsinstruktion för influensa.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "På Vasa stads webbsidor hittar du hemvårdsinstruktion för influensa.",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "1a7417f4-7b86-4ce2-b415-ff8d374c0f67"
+}

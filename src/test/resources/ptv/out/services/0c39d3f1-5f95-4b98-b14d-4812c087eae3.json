@@ -1,0 +1,358 @@
+{
+  "sourceId" : null,
+  "keywords" : [ {
+    "value" : "sokeritauti",
+    "language" : "fi"
+  } ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Terveyden ja hyvinvoinnin neuvonta- ja ohjauspalvelut",
+      "language" : "fi"
+    }, {
+      "value" : "Advisory and guidance services for health and well-being",
+      "language" : "en"
+    }, {
+      "value" : "Hälsovårdens rådgivnings- och handledningstjänster",
+      "language" : "sv"
+    } ],
+    "description" : [ {
+      "value" : "The class contains services related to an individual service transaction, visit to a service unit, or a service package or its management, through which a client receives advice and guidance when seeking health and/or well-being services in either problem situations or health promotion. These include the patient ombudsman’s services, appointments, reminder services, self-care services and case management services.",
+      "language" : "en"
+    }, {
+      "value" : "Tjänster i anslutning till en separat servicehändelse, besök till en serviceenhet eller tjänster i samband med en servicehelhet eller dess hantering, med hjälp av vilken klienten får rådgivning och handledning när han eller hon söker hälsovårdstjänster i problemsituationer. Sådana är t.ex. patientombudsmannens tjänster, tidsbeställningar, påminnelsetjänster, egenvårdstjänster och servicestyrning.",
+      "language" : "sv"
+    }, {
+      "value" : "Yksittäiseen palvelutapahtumaan, käyntiin palveluyksikössä tai palvelukokonaisuuteen tai sen hallintaan liittyvät palvelut, joiden avulla asiakas saa neuvontaa ja opastusta etsiessään palveluja terveyden ja hyvinvoinnin ongelmatilanteisiin ja terveyden edistämiseen. Näitä ovat esimerkiksi potilasasiamiespalvelu, ajanvaraukset, muistutuspalvelut, oma- ja itsehoitopalvelut ja palveluohjaus.",
+      "language" : "fi"
+    } ],
+    "code" : "P5.17",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1055",
+    "parentId" : "76ca210c-5183-4d41-b796-50612d5930c7",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1038"
+  }, {
+    "name" : [ {
+      "value" : "Egen- och självvård",
+      "language" : "sv"
+    }, {
+      "value" : "Oma- ja itsehoito",
+      "language" : "fi"
+    }, {
+      "value" : "Self-care",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Tähän alapalveluluokkaan kuuluvat sekä omahoito (potilaan itsensä toteuttamaa, ammattihenkilön kanssa yhdessä suunnittelemaa ja kulloiseenkin tilanteeseen parhaiten sopivaa näyttöön perustuvaa hoitoa) että itsehoito (ilman ammattihenkilön apua henkilön tilanteeseensa suunnittelemaa hoitoa, joka saattaa sisältää itselääkintää ja elämäntapamuutoksia).",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains the self-care that healthcare professionals and the patient together have planned for the patient's specific situation. It also contains self-care in the sense of self-medication and lifestyle changes that the patient takes up without the help or consultations by healthcare professionals.",
+      "language" : "en"
+    }, {
+      "value" : "Till denna servicearbetsgrupp hör tjänster vars syfte är att möjliggöra och stöda klienten att själv vårda sjukdomen som konstaterats till den del det är möjligt enligt vårdanvisningarna.",
+      "language" : "sv"
+    } ],
+    "code" : "P5.11",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1049",
+    "parentId" : "76ca210c-5183-4d41-b796-50612d5930c7",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1038"
+  }, {
+    "name" : [ {
+      "value" : "Primärvård",
+      "language" : "sv"
+    }, {
+      "value" : "Perusterveydenhuolto",
+      "language" : "fi"
+    }, {
+      "value" : "Primary health care",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Tähän palvelualaluokkaan kuuluvat palvelut, jotka sijoittuvat perusterveydenhuollon määritelmään: \"Perusterveydenhuolto edistää, tukee ja ylläpitää väestön terveyttä, hyvinvointia ja toimintakykyä tarjoamalla terveyden- ja sairaanhoidon palveluita. Pääasialliset palvelumuodot ovat kuntalaisten käynnit eriasteisten hoitajien ja lääkäreiden vastaanotoilla ja ympärivuorokautinen sairaanhoito terveyskeskuksessa.\n Toiminta perustuu pääosin kunnallista terveydenhuoltoa säätelevään lainsäädäntöön.\"",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains services that meet the following definition of primary care: “The task of primary health care is to maintain, support and improve citizens’ health, well-being, and work and functional ability by offering health and medical care services. The main service forms are visits made by municipal residents to the surgeries of nurses and doctors at different levels and 24-hour medical care at health centres. The activities are primarily based on the legislation that regulates municipal health care.”",
+      "language" : "en"
+    }, {
+      "value" : "Denna serviceundergrupp omfattar tjänster som svarar mot definitionen av primärvård: \"Primärvården främjar, stöder och upprätthåller befolkningens hälsa, välfärd och funktionsförmåga genom att erbjuda hälso- och sjukvårdstjänster. Huvudsakliga serviceformer är kommuninvånarnas besök på olika graders skötar- och läkarmottagningar och dygnet runt sjukvård på hälsovårdscentralen. Verksamheten grundar sig i huvudsak på lagstiftning som reglerar den kommunala hälso- och sjukvården.\"",
+      "language" : "sv"
+    } ],
+    "code" : "P5.1",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1039",
+    "parentId" : "76ca210c-5183-4d41-b796-50612d5930c7",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1038"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "0c39d3f1-5f95-4b98-b14d-4812c087eae3",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "325f24cb-e861-41a3-b1b2-a437545aa3b8",
+      "name" : "Gerbyn terveysasema"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "44d9a59b-9730-41a2-b937-d281cf40e89e",
+      "name" : "Diabetesvastaanotto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "47b1e897-dac7-4ff6-b5da-c002a5256d01",
+      "name" : "Ristinummen terveysasema"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "6e762593-dc8c-418e-8c54-397e591c428e",
+      "name" : "Diabetes"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "6edc6ede-1c47-4b17-a886-80de30e8035e",
+      "name" : "Diabeteshoitaja"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "a2f714ff-d0b2-4e57-bdd7-914dd5d36303",
+      "name" : "Vähänkyrön terveysasema"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "cfa06fda-7937-40b2-8d64-f36e9375a235",
+      "name" : "Tammikaivon terveysasema"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "e655c858-04ff-473c-9924-75f1e178370f",
+      "name" : "Kirkkopuistikon terveysasema"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "fa52eb8c-2d3b-46f4-98de-f1b1a2b21c33",
+      "name" : "Diabeteshoitaja"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "sv"
+  }, {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi", "sv", "en" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Diabeteksen hoito",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Diabetes",
+    "type" : "AlternativeName"
+  }, {
+    "language" : "sv",
+    "value" : "Diabetes",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "raskausdiabetes",
+      "language" : "fi"
+    }, {
+      "value" : "graviditetsdiabetes",
+      "language" : "sv"
+    }, {
+      "value" : "gestational diabetes",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "TERO",
+    "uri" : "http://www.yso.fi/onto/koko/p62471",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p16407"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "sv",
+    "value" : "På hälsostationer arbetar flera diabetesskötare som tar hand om vård av diabetespatienter och kontroller.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : "Man sköter diabetiker både på hälsostationer och Diabetesmottagningen. Typ 2 -diabetiker sköts oftast på hälsostationer, typ 1 -diabetiker sköts vanligen på Diabetesmottagningen.\n\nPå hälsostationer arbetar flera diabetesskötare som tar hand om vård av diabetespatienter och kontroller.\n\nPå hälsostationer arbetar flera diabetesskötare som tar hand om vård av diabetespatienter och kontroller.\n\nTill sakkunniggruppen på Diabetesmottagningen hör en läkare som är specialiserad i diabetes samt en specialiserande läkare, diabetesskötare och fotvårdare. Patienterna är typ 1 -diabetiker men även vissa typ 2 -diabetiker sköts på Diabetesmottagningen.\n\nPå diabetesmottagningen görs vid behov sensorering, dvs. mätning av vävnadssockret samt mätning av blodsockret.\n\nUtdelningen av vårdmaterial i fråga om diabetes ingår också i diabetesmottagningens verksamhet. Vårdmaterial för diabetes delas även ut via den egna hälsostationen. Insulinpumpmaterial delas ut enbart via Diabetesmottagningen.\n\nDiabetiker sänds till hälsostationens diabetessköterskemottagning med remiss från den vårdande läkaren. Diabetikerna som redan besökt mottagningen kan vid behov själv kontakta diabetesskötaren.\n\nDiabetiker sänds till Diabetesmottagningen (huvudhälsostation/baracken) med remiss från den vårdande läkaren eller diabetesskötaren på hälsostationen. Diabetikerna som redan besökt mottagningen kan vid behov själv kontakta Diabetesmottagningen.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Terveysasemilla työskentelee useita diabeteshoitajia, jotka huolehtivat diabetespotilaiden hoidosta ja kontrolleista.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Diebeteshoitajia työskentelee kaikilla terveysasemilla.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : "Diabetes (vanhalta nimeltään sokeritauti) on pitkäaikaissairaus, joka vaatii päivittäistä omahoitoa.\n\nDiabetespotilaita hoidetaan sekä terveysasemilla että diabetesvastaanotolla. 2-tyypin diabetesta sairastavat hoidetaan enimmäkseen terveysasemilla, 1-tyypin diabeetikot hoidetaan yleensä diabetesvastaanotolla.\n\nTerveysasemilla työskentelee useita diabeteshoitajia, jotka huolehtivat diabetespotilaiden hoidosta ja kontrolleista\n\nDiabetesvastaanoton asiantuntijaryhmään kuuluu diabetekseen erikoistunut lääkäri sekä erikoistuva lääkäri, diabeteshoitajia ja jalkojenhoitaja. Potilaat ovat 1-tyypin diabetesta sairastavia, mutta myös tiettyjä 2-tyypin diabeetikkoja hoidetaan Diabetesvastaanotolla.\n\nDiabetesvastaanotolla tehdään tarvittaessa sensorointia eli kudossokerin mittausta sekä verensokerin mittausta.\n\nDiabetekseen liittyvien hoitovälineiden jakelu sisältyy myös diabetesvastaanoton toimintaan. Diabeteshoitotarvikkeita on saatavissa myös omalta terveysasemalta. Insuliinipumpputarvikkeita jaetaan vain Diabetesvastaanotolta.\n\nDiabeetikot tulevat terveysaseman diabeteshoitajan vastaanotolle hoitavan lääkärin lähetteellä. Vastaanotoilla käyneet diabeetikot voivat tarvittaessa ottaa itse yhteyttä diabeteshoitajaan.\n\nDiabetesvastaanotolle diabeetikot tulevat hoitavan lääkärin tai terveysasemalla työskentelevän diabeteshoitajan lähetteellä. Vastaanotolla käyneet diabeetikot voivat tarvittaessa ottaa itse yhteyttä Diabetesvastaanotolle.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

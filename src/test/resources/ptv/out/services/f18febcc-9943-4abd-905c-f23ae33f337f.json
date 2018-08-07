@@ -1,0 +1,370 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Liikunta ja urheilu",
+      "language" : "fi"
+    }, {
+      "value" : "Motion och idrott",
+      "language" : "sv"
+    }, {
+      "value" : "Sports and exercise",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Tähän palvelualaluokkaan kuuluvat liikuntapaikat, urheiluopistot ja niiden palvelut, liikunnan tietopalvelut ja urheiluseurojen sekä liikuntajärjestöjen toiminta.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains sports facilities, sports institutes and their services, exercise information services and the activities of sports clubs and sports associations.",
+      "language" : "en"
+    }, {
+      "value" : "Denna serviceundergrupp omfattar motionsställen, idrottsinstitut och deras tjänster, informationstjänster för motion samt idrottsföreningars och motionsorganisationers verksamhet.",
+      "language" : "sv"
+    } ],
+    "code" : "P27.1",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1211",
+    "parentId" : "175762f6-53cd-4d29-a285-625bfb421b21",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1210"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "26ca68f9-bc6d-4aba-a02f-7387c8d38437",
+  "serviceVouchers" : [ ],
+  "modified" : "2018-05-28T12:29:11.553252",
+  "id" : "f18febcc-9943-4abd-905c-f23ae33f337f",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "1a859043-2617-4a98-8722-1be7e99063e0",
+      "name" : "Naantalin kaupungin sivistystoimisto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3994f38d-dc91-4105-be8a-5edd0d2ef739",
+      "name" : "Kirjaamo"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "4e62b66b-62c9-4c1c-8bed-d8ed89e6acf5",
+      "name" : "Vapaa-aikatoimen sihteeri"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "5646b5f5-79fb-480d-81dd-16536f19021c",
+      "name" : "Merimaskun palvelupiste"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "7fd3a666-279b-42d3-8217-119d457de590",
+      "name" : "Kaupungintalon yhteispalvelupiste"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "89e95451-fdfb-4e95-a6fd-7a61ba449269",
+      "name" : "Velkuan palvelupiste"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "ad2541ee-2954-4cc7-ac48-4b3c986f6f53",
+      "name" : "Seuraverkko liikunnan avustusten hakemiseen"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "fff205fe-e420-43ea-8702-6a7a685c2b51",
+      "name" : "Rymättylän palvelupiste"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : "Kaupunki voi myöntää avustuksia liikuntatoimintaa harjoittaville rekisteröidyille yhdistyksille, joiden kotipaikka tai toiminnan kohde on Naantali.",
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Liikunnan kansalaistoiminnan tuki ja avustukset",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "gymnastik- och idrottsorganisationer",
+      "language" : "sv"
+    }, {
+      "value" : "liikuntajärjestöt",
+      "language" : "fi"
+    }, {
+      "value" : "physical training and sports organisations",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p64690",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p35587"
+  }, {
+    "name" : [ {
+      "value" : "avustukset",
+      "language" : "fi"
+    }, {
+      "value" : "understöd (bidrag)",
+      "language" : "sv"
+    }, {
+      "value" : "financial aid",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p34757",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p63861;http://www.yso.fi/onto/koko/p13760"
+  }, {
+    "name" : [ {
+      "value" : "yleishyödylliset avustukset",
+      "language" : "fi"
+    }, {
+      "value" : "allmännyttiga bidrag",
+      "language" : "sv"
+    }, {
+      "value" : "nonprofit grants",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p66631",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p34757"
+  }, {
+    "name" : [ {
+      "value" : "idrottsföreningar",
+      "language" : "sv"
+    }, {
+      "value" : "urheiluseurat",
+      "language" : "fi"
+    }, {
+      "value" : "sports clubs",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p34830",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p7233;http://www.yso.fi/onto/koko/p34681"
+  }, {
+    "name" : [ {
+      "value" : "liikuntaseurat",
+      "language" : "fi"
+    }, {
+      "value" : "föreningar för idrott och motion",
+      "language" : "sv"
+    }, {
+      "value" : "sports and exercise clubs",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p7233",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p35587"
+  }, {
+    "name" : [ {
+      "value" : "motionshandledning",
+      "language" : "sv"
+    }, {
+      "value" : "liikunnanohjaus",
+      "language" : "fi"
+    }, {
+      "value" : "physical training instruction",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p68741",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p77930"
+  }, {
+    "name" : [ {
+      "value" : "lasten ja nuorten osallisuus",
+      "language" : "fi"
+    }, {
+      "value" : "barns och ungdomars medverkan",
+      "language" : "sv"
+    }, {
+      "value" : "the involvement of children and young people",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p65414",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p35853"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Företag och samfund",
+      "language" : "sv"
+    }, {
+      "value" : "Yritykset ja yhteisöt",
+      "language" : "fi"
+    }, {
+      "value" : "Businesses and non-government organizations",
+      "language" : "en"
+    } ],
+    "code" : "KR2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "Föreningar och organisationer",
+      "language" : "sv"
+    }, {
+      "value" : "Yhdistykset ja järjestöt",
+      "language" : "fi"
+    }, {
+      "value" : "Non-government organizations",
+      "language" : "en"
+    } ],
+    "code" : "KR2.7",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2015",
+    "parentId" : "338939bb-b01a-4a80-a091-7c5238322bc0",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008"
+  }, {
+    "name" : [ {
+      "value" : "Medborgare",
+      "language" : "sv"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Naantalin tukee vuosittain liikuntajärjestöjä kohde- ja perusavustuksilla, ohjaajapalkkioilla sekä valmennusapurahoilla.\n\nPerusavustuksella tuetaan yhteisön tai yhdistyksen vuotuista toimintaa. Perusavustuksia myönnettäessä huomioidaan hakijan toiminnan tarkoitus, laatu ja laajuus, hakijan taloudellinen aseman, muualta saatava tuki sekä omatoimisuus varojen hankinnassa.\n\nKohdeavustukset ovat yksilöityjä avustuksia, jotka on tarkoitettu liikuntatapahtumien järjestämiseen sekä muiden kertaluontoisten tai vakiintumattomien hankkeiden toteuttamiseen.\n\nValmennusapurahalla tuetaan yksittäisiä nuoria urheilijoita. Valmennusapurahaa voivat hakea naantalilaiset alle 20-vuotiaat urheilijat ja tukea voidaan myöntää kerralla kahdelle urheilijalle.\n\nOhjaajapalkkioilla tuetaan alle 20-vuotiaiden urheilijoiden ohjausta. ",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "* Perus- ja kohdeavustuksia haetaan vuosittain maaliskuun loppuun mennessä. Urheiluseurat hakevat perus- ja kohdeavustuksia sähköisesti seuraverkon kautta.\n* Valmennusapurahaa haetaan vuosittain maaliskuun loppuun mennessä vapaamuotoisella hakemuksella, joka osoitetaan kulttuuri- ja vapaa-aikalautakunnalle.\n* Ohjaajapalkkioita haetaan vuosittain elokuun loppuun mennessä lomakkeella. Lomakkeen voi täyttää tai tulostaa verkkosivuilta tai noutaa kaupungin kaikista palvelupisteistä.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : "Naantali tukee liikuntajärjestöjä vuosittain avustuksin. Avustusmuotoja ovat kohde- ja perusavustus, ohjaajapalkkiot ja valmennusapuraha.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

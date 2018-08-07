@@ -1,0 +1,116 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/node/2781/",
+    "value" : "Varhaiskasvatuksen verkkosivut",
+    "language" : "fi"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Länsimetsäntie",
+        "language" : "fi"
+      } ],
+      "streetNumber" : "10",
+      "postalCode" : "65280",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ ],
+      "latitude" : "7011792.719",
+      "longitude" : "226639.73",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "82b0256e-536b-4ae7-9b31-135e0e00c53d",
+      "name" : "Avoin varhaiskasvatus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "403526732",
+    "language" : "fi"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ {
+    "value" : "gerbynavoinpk@vaasa.fi",
+    "language" : "fi"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Gerbyn avoin päiväkoti",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Päiväkodin toiminta on maksutonta ja tarkoitettu alle kouluikäisille vaasalaisille lapsille sekä heidän vanhemmilleen ja hoitajilleen.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Avoin päiväkoti\n* Päiväkodin toiminta on maksutonta ja tarkoitettu alle kouluikäisille vaasalaisille lapsille sekä heidän vanhemmilleen ja hoitajilleen. Toimintaan voi osallistua ilman ennakkoilmoittautumista. \n* Pyrkimyksenä on tukea sekä lapsen kehitystä että aikuista lapsen kasvatustyössä. \n* Avoimessa päiväkodissa leikitään, lauletaan, askarrellaan, maalataan, leivotaan ja tehdään retkiä yhdessä. Aikuisille on muun muassa asiantuntijavierailuja ja tuote-esittelyjä. \n* Ohjelma ilmestyy kerran kuussa. \n* Tarjolla on kahvia, teetä ja mehua pientä maksua vastaan. Mukaan voi ottaa myös omat eväät, joita voi lämmittää mikrossa. \n* Avoimessa päiväkodissa kaikki aikuiset toimivat yhdessä lasten kanssa, mutta päävastuu lapsesta on mukana olevalla aikuisella. \nAvoimen päiväkodin kerho\n* Avoimen päiväkodin kerho on tarkoitettu ensisijaisesti 2,5-5-vuotiaille vaasalaisille lapsille, jotka eivät ole kunnallisessa päivähoidossa. \n* Kerhoon otetaan enintään 15 lasta.\n*  Vierailemme myös Länsimetsän päiväkodissa erilaisissa tilaisuuksissa, esimerkiksi teatterinäytöksissä, laulutuokioissa ja konserteissa ja teemme retkiä lähimetsään ja muihin kohteisiin. \n* Erikoisohjelmasta jaamme tiedotteet koteihin. ",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "34e9c629-929c-424f-adaf-a923b5df9a3c"
+}

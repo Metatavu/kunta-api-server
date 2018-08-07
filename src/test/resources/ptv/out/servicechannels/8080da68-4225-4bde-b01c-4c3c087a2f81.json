@@ -1,0 +1,278 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Senaatinkatu",
+        "language" : "fi"
+      }, {
+        "value" : "Senatsgatan",
+        "language" : "sv"
+      } ],
+      "streetNumber" : "1 B",
+      "postalCode" : "65100",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ {
+        "value" : "Kaupungintalo",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa stadshus",
+        "language" : "sv"
+      } ],
+      "latitude" : "7007615.528",
+      "longitude" : "228176.537",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "0b699dd9-77ab-4636-9cc0-7502e6a73858",
+      "name" : "Ilmoitus alkutuotantopaikasta"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "0e6841ee-8533-4477-8e5a-615dfbafe33f",
+      "name" : "Ympäristönsuojelulain mukainen ilmoitus poikkeuksellisesta tilanteesta"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "0f942277-361a-4a22-abdc-99482fa2e58a",
+      "name" : "Elintarvikekontaktimateriaalialan toimijan ilmoitus toimipaikastaan ja toiminnastaan"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "1f2f9c8c-cb45-4e18-bb88-6d50c6683da8",
+      "name" : "Ympäristön tila"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "3e3abeb8-7c7f-4570-b083-d6717b553160",
+      "name" : "Ilmoitus melusta ja tärinästä"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "4c409d73-3ed5-46be-b18c-a0ef4b492672",
+      "name" : "Ruokamyrkytysepäilyn selvittäminen"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "4eb900cc-5988-4ac1-ba45-2ba9df199786",
+      "name" : "Tupakointikiellon hakeminen taloyhtiöön"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "599ae0d6-92ed-4704-9807-1e6eff8addd9",
+      "name" : "Toiminnan rekisteröinti ympäristönsuojelun tietojärjestelmään"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "aed69004-2165-4945-bdd6-d27ead3ada6e",
+      "name" : "Ympäristönsuojelulain mukainen ilmoitus koeluonteisesta toiminnasta"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "bbd21873-c5d0-4279-9874-4da9ff7066f2",
+      "name" : "Ilmoitus elintarvikehuoneistosta"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "bc8664c9-c095-41fb-89d7-8afed15fbde5",
+      "name" : "Tupakkatuotteiden ja nikotiininesteiden vähittäismyyntilupa sekä tukkumyynti-ilmoitus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "c5fdbe70-df5e-410f-bb5f-72456d21a31e",
+      "name" : "Aumausilmoitus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "dcf79ef5-f09b-496e-ae65-f222430c0654",
+      "name" : "Asumisterveys"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "eb395f8a-87e6-47af-bcaf-7f3a5219aec6",
+      "name" : "Maa-ainesten ottamislupa"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63251111",
+    "language" : "fi"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ {
+    "value" : "terveysvalvonta@vaasa.fi",
+    "language" : "fi"
+  }, {
+    "value" : "ymparistonsuojelu@vaasa.fi",
+    "language" : "fi"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Ympäristötoimi",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Miljöväsendet",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Vaasan kaupungin ympäristötoimeen kuuluvat ympäristöosasto ja eläinlääkintä.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan kaupungin ympäristötoimeen kuuluvat ympäristöosasto ja eläinlääkintä. Ympäristöosaston tehtäviin kuuluvat ympäristönsuojelun, terveydensuojelun ja elintarvikevalvonnan viranomaistehtävät. Toimintaan kuuluu myös maa-ainesasioiden ja jätehuollon valvonta. Terveysvalvonnan osalta Vaasa ja Laihia muodostavat yhteistoiminta-alueen. Tavoitteena on edistää ympäristön terveellisyyttä ja viihtyisyyttä sekä kestävää kehitystä.\n\nEläinlääkintä tarjoaa eläinlääkintäpalveluja Vaasan ja Laihian alueilla. Ympärivuorokautinen eläinlääkäripäivystys hoidetaan yhteistyössä naapurikuntien kanssa. Lisäksi eläinlääkintä valvoo lihan- ja maidontuotantoa, eläinsuojelulain noudattamista sekä huolehtii ennaltaehkäisevästä eläinlääkintätyöstä. ",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Till Vasa stads miljöväsende hör miljöavdelningen och veterinärvården.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Till Vasa stads miljöväsende hör miljöavdelningen och veterinärvården. Till miljöavdelningens uppgifter hör miljöskyddets, hälsoskyddets och livsmedelsövervakningens myndighetsuppgifter. Verksamheten omfattar också övervakningen av marktäktsärenden och avfallshantering. I fråga om hälsoövervakningen bildar Vasa och Laihela ett samarbetsområde. Målet är att främja en hälsosam och trivsam miljö samt en hållbar utveckling.\n\nVeterinärvården erbjuder veterinärvårdsservice i Vasa och Laihela. Veterinärjour dygnet runt sköts i samarbete med grannkommunerna. Därtill övervakar veterinärvården kött- och mjölkproduktionen, iakttagandet av djurskyddslagen samt sköter förebyggande veterinärvårdsarbete. \n",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "8080da68-4225-4bde-b01c-4c3c087a2f81"
+}

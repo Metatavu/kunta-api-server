@@ -1,0 +1,81 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "attachments" : [ ],
+  "languages" : [ ],
+  "deliveryAddresses" : [ {
+    "subType" : "NoAddress",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : null,
+    "deliveryAddressInText" : [ {
+      "value" : "Yli 65-vuotiaat: kotihoidon toimisto (Tuulensuunkatu 8) ja alle 65-vuotiaat: vammaispalvelut (kaupungintalo, Käsityöläiskatu 2, 3. krs).",
+      "language" : "fi"
+    } ],
+    "receiver" : [ {
+      "value" : "Kotihoidon avohuollon ohjaaja tai vammaispalvelut.",
+      "language" : "fi"
+    } ]
+  } ],
+  "supportPhones" : [ ],
+  "formIdentifier" : [ {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "10af2c6f-e1e8-40ba-997a-cfec575e5447",
+      "name" : "Omaishoidon tuki"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "channelUrls" : [ {
+    "language" : "fi",
+    "value" : "http://www.naantali.fi/perhe_ja_sosiaali/hoito_ja_vanhuspalvelut/fi_FI/omaishoidon_tuki/_files/96425277959440117/default/omaishoidon%20tukihakemus.pdf",
+    "type" : "PDF"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Omaishoidon tuen tukihakemus",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "PrintableForm",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Naantalin kaupungin omaishoidon tuen tukihakemus.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Naantalin kaupungin omaishoidon tukihakemus. Alle 65-vuotiaiden asiakkaiden hakemusten palautus vammaispalvelujen sosiaalityöntekijälle. Yli 65-vuotiaiden asiakkaiden hakemusten palautus kotihoidon avohuollonohjaajalle.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-02T12:14:58.116257",
+  "id" : "a16947bc-a1fb-42a9-b14c-a50d9a7d5b71"
+}

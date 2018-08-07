@@ -1,0 +1,206 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Terveyden ja hyvinvoinnin neuvonta- ja ohjauspalvelut",
+      "language" : "fi"
+    }, {
+      "value" : "Advisory and guidance services for health and well-being",
+      "language" : "en"
+    }, {
+      "value" : "Hälsovårdens rådgivnings- och handledningstjänster",
+      "language" : "sv"
+    } ],
+    "description" : [ {
+      "value" : "The class contains services related to an individual service transaction, visit to a service unit, or a service package or its management, through which a client receives advice and guidance when seeking health and/or well-being services in either problem situations or health promotion. These include the patient ombudsman’s services, appointments, reminder services, self-care services and case management services.",
+      "language" : "en"
+    }, {
+      "value" : "Tjänster i anslutning till en separat servicehändelse, besök till en serviceenhet eller tjänster i samband med en servicehelhet eller dess hantering, med hjälp av vilken klienten får rådgivning och handledning när han eller hon söker hälsovårdstjänster i problemsituationer. Sådana är t.ex. patientombudsmannens tjänster, tidsbeställningar, påminnelsetjänster, egenvårdstjänster och servicestyrning.",
+      "language" : "sv"
+    }, {
+      "value" : "Yksittäiseen palvelutapahtumaan, käyntiin palveluyksikössä tai palvelukokonaisuuteen tai sen hallintaan liittyvät palvelut, joiden avulla asiakas saa neuvontaa ja opastusta etsiessään palveluja terveyden ja hyvinvoinnin ongelmatilanteisiin ja terveyden edistämiseen. Näitä ovat esimerkiksi potilasasiamiespalvelu, ajanvaraukset, muistutuspalvelut, oma- ja itsehoitopalvelut ja palveluohjaus.",
+      "language" : "fi"
+    } ],
+    "code" : "P5.17",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1055",
+    "parentId" : "76ca210c-5183-4d41-b796-50612d5930c7",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1038"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "dfeddc78-7887-4f37-a0f2-0e1c08273836",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "5b0c2240-4cd2-4ea1-b362-6152580a119a",
+      "name" : "Seksuaalineuvoja"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "ba19d63d-3fb3-405d-a213-6b0a0493717b",
+      "name" : "Seksuaalineuvonnan vastaanotto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : "Seksuaalineuvonta on tarkoitettu kaikenikäisille Vaasassa asuville, sekä parisuhteessa oleville että sinkuille sukupuolesta ja seksuaalisesta suuntautumisesta riippumatta.",
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "sv",
+    "value" : "Sexualrådgivning",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Seksuaalineuvonta",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : "Seksuaalineuvonta on tarkoitettu kaikenikäisille sukupuolesta ja seksuaalisesta suuntautumisesta riippumatta.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Seksuaalisuus on erityisen yksityinen ja intiimi elämänalue ja siksi siihen liittyvistä asioista puhuminen koetaan yleensä hyvin vaikeaksi. Seksuaalisuus on osa elämää, ihmisyyttä, sukupuolisuutta, minä- ja kehonkuvaa. Jokainen ihminen on seksuaalinen ja joka ihmisen seksuaalisuus on ainutlaatuista. Lapsuus- ja nuoruusvuosien tapahtumat, kulttuuri, parisuhdeongelmat, uskomukset ja väärinkäsitykset sekä sairaudet, vaivat ja niiden hoidot voivat vaikuttaa seksuaaliterveyteen ja seksuaaliseen hyvinvointiin.\n\nSEKSUAALINEUVONTAAN HAKEUTUVIEN ONGELMAT VOIVAT OLLA\n* sairauksiin tai leikkauksiin liittyvät seksuaaliasiat\n* pelkoja liittyen gynekologisiin tutkimuksiin\n* seksuaalisuuteen liittyvät asiat raskauden aikana tai synnytyksen jälkeen\n* seksuaalisten toimintojen häiriöt, kuten kiihottumis- ja orgasmivaikeudet\n* seksuaalinen haluttomuus\n* herkkä siemensyöksy\n* läheisyyteen liittyvät ahdistukset ja suorituspaineet\n* oman kehon hyväksymisen vaikeudet\n* omaan seksuaali- ja sukupuoli-identiteettiin liittyvät asiat\n* ikääntymiseen liittyvät ongelmat\nVastaanotolla on lupa tuoda esille kaikki seksuaalisuuteen liittyvät asiat luottamuksellisesti. Vastaanotolla käsitellään asioita joita asiakas itse haluaa nostaa esille. Yhdessä keskustellen pyritään luomaan myönteinen suhde itseensä ja omaan seksuaalisuuteensa sekä mahdolliseen parisuhteeseen.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : "Sexualrådgivning är för Vasabor, både kvinnor och män, som lever som singel eller i parförhållande.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Sexualrådgivning är för Vasabor, både kvinnor och män, som lever som singel eller i parförhållande.\n\nALLMÄNT OM SEXUALITET\n\nSexualiteten är väldigt privat och intim, därför känns det många gånger svårt att prata om sexualitet. Sexualiteten är en del av livet, mänskligheten, själv- och kroppsbilden. Alla människor är sexuella och varje människas sexualitet är unik. Barn- och ungdomstidens händelser, kulturen, parförhållandeproblem,  övertygelser och missförstånd samt sjukdomar och medicineringar kan påverka den sexuella hälsan och det sexuella välbefinnandet.\n\nORSAKER TILL VARFÖR MAN SÖKER SEXUALRÅDGIVNING\n\n• sexuella frågor angående sjukdomar eller behandlingar\n• rädsla för gynekologiska undersökningar\n• sexuella funderingar gällande graviditet eller efter förlossningen\n• upphetsnings- eller orgasmsvårighet\n• sexuell olust hos kvinnan eller mannen\n• erektions problem\n• känslig utlösning\n• samlagssmärtor\n• närhets- och prestationsångest\n• problem med att acceptera sin kropp\n• funderingar angående den egna sexual- och könsidentiteten\n• ålders relaterade problem\n• sexuella trauman\n\nAlla frågor och funderingar angående sexualiteten diskuteras konfidentiellt. Under besöket behandlas de saker som klienten själv vill prata om. Genom att prata och fundera tillsammans försöker man skapa en positiv relation till ens egen sexualitet och självbild samt till det eventuella parförhållandet.",
+    "type" : "Description"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

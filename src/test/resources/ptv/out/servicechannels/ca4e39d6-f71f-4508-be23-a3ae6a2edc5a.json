@@ -1,0 +1,67 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://asiointi.palvelunne.fi/naantali/eServices/Online/IndexNoAuth",
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "requiresSignature" : false,
+  "attachments" : [ ],
+  "languages" : [ ],
+  "supportPhones" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "e4e40f0b-6cee-4c1b-acba-3bf5b57ace9b",
+      "name" : "Vesihuolto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Vesihuoltolaitoksen sähköinen asiointipalvelu",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "EChannel",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Asiakaspalvelun kautta voi mm. tarkkailla vedenkulutusta, ilmoittaa mittarilukeman, muuttaa yhteystietoja ja ottaa yhteyttä asiakaspalveluun.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Asiakaspalvelun kautta voit tarkkailla vedenkulutusta, ilmoittaa mittarilukeman, muuttaa yhteystietoja, ottaa yhteyttä asiakaspalveluun sekä selata sopimus- ja laskutietoja.\nPalveluun on rekisteröidyttävä asiakas- ja viitenumeroilla. Rekisteröitymistä varten tarvittavat tiedot löytyvät vesilaskultasi. \nRekisteröinnin yhteydessä kysytään asiakastunnusta, joka tarkoittaa laskun asiakasnumeroa.\nKulutuslukema syötetään vasta varsinaisessa palvelussa.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "ca4e39d6-f71f-4508-be23-a3ae6a2edc5a",
+  "signatureQuantity" : 0,
+  "requiresAuthentication" : true
+}

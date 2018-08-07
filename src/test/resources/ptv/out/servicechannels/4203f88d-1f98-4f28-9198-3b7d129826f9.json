@@ -1,0 +1,162 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Mäkikaivontie",
+        "language" : "fi"
+      }, {
+        "value" : "Backbrunnsvägen",
+        "language" : "sv"
+      } ],
+      "streetNumber" : "5-7 D",
+      "postalCode" : "65100",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ {
+        "value" : null,
+        "language" : "sv"
+      } ],
+      "latitude" : "7007101.467",
+      "longitude" : "229324.475",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "98614223-4745-4f54-86d1-a20f6c6030aa",
+      "name" : "Vammaisten asumispalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : "Sosiaaliohjaaja",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63253959",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Vastaava ohjaaja",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "407573500",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Vastaava ohjaaja",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63252629",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Boendeförman",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "407573500",
+    "language" : "sv"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Socialhandledare",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63252698",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Mäkikaivon tukiasunnot",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Backbrunnsgatans stödbostäder",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Mäkikaivon tukiasunnot kuuluvat kehitysvammaisten asumispalveluihin.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Backbrunnsgatans stödbostäder hör till boendeenheter för personer med utvecklingsstörning.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Mäkikaivon tukiasunnot kuuluvat kehitysvammaisten asumispalveluihin.\n\nMäkikaivon tukiasunnoissa asuu eri tavoin tukea tarvitsevia nuoria aikuisia kehitysvammaisia. Tukiasunnot sijaitsevat kerrostalossa Hietalahdessa. Mäkihovin henkilökunta työskentelee myös Mäkikaivon tukiasunnoissa. Tavoitteena on tukea asukkaiden omatoimisuutta, itsenäistä asumista sekä selviytymistä arkipäivän asioissa.\n",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Backbrunnsgatans stödbostäder hör till boendeenheter för personer med utvecklingsstörning.\n\nI Bäckbrunnsgatans stödbostäder bor unga handikappade vuxna som på olika sätt behöver stöd. Stödbostäderna finns i ett våningshus på det nya bostadsområdet i Sandviken. Mäkihovis personal arbetar även i Bäckbrunnsgatans stödbostäder.\n\nVårt mål är att stödja invånarnas förmåga att klara sig själva, leva självständigt, samt att utveckla förmågan att klara de dagliga sysslorna.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "4203f88d-1f98-4f28-9198-3b7d129826f9"
+}

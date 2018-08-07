@@ -1,0 +1,369 @@
+{
+  "sourceId" : null,
+  "keywords" : [ {
+    "value" : "keskusarkisto",
+    "language" : "fi"
+  }, {
+    "value" : "centralarkivet",
+    "language" : "sv"
+  } ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Requests for public documents and information",
+      "language" : "en"
+    }, {
+      "value" : "Begäran om dokument och information",
+      "language" : "sv"
+    }, {
+      "value" : "Asiakirja- ja tietopyynnöt",
+      "language" : "fi"
+    } ],
+    "description" : [ {
+      "value" : "This service subclass features services where citizens, private organisations and government (state and local) officials can request public documents and other official information insomuch as they have a legal right to receive these materials.",
+      "language" : "en"
+    }, {
+      "value" : "Tämä alapalveluluokka sisältää julkishallinnon palvelut, joissa kansalaiset, yhteisöt ja toiset viranomaiset voivat pyytää itselleen viranomaisen virallisia asiakirjoja tai muita viranomaisen hallinnoimia tietoja (tyypillisesti organisaation kirjaamosta) niissä puitteissa, kuin heillä on näiden tietojen saamiseen oikeus.",
+      "language" : "fi"
+    }, {
+      "value" : "Denna underservicegrupp innehåller den offentliga förvaltningens tjänster där medborgare, samfund och andra myndigheter kan be om myndighetens offentliga dokument eller annan information administrerad av myndigheten (typiskt från organisationens registratorskontor) inom ramen som de har rätt till att få informationen.",
+      "language" : "sv"
+    } ],
+    "code" : "P9.2",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1218",
+    "parentId" : "95f29e15-fb54-4ac2-8c9b-fac6ae3121fa",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1095"
+  }, {
+    "name" : [ {
+      "value" : "Arkistot",
+      "language" : "fi"
+    }, {
+      "value" : "Arkiv",
+      "language" : "sv"
+    }, {
+      "value" : "Archives",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Denna serviceundergrupp omfattar i första hand tjänster som tillhandahålls av Nationalarkivet, landskapsarkiven under Nationalarkivet och övriga arkiv som regleras av författningar.",
+      "language" : "sv"
+    }, {
+      "value" : "Tähän palvelualaluokkaan kuuluvat ensi sijassa Kansallisarkiston, sen alaisten maakunta-arkistojen sekä muiden säädösperustaisesti toimivien arkistojen palvelut.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass mainly contains the services of the National Archives Service, the Provincial Archives subordinate to it as well as other statutory archives.",
+      "language" : "en"
+    } ],
+    "code" : "P25.4",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1202",
+    "parentId" : "200f3f00-31b1-41cc-a986-2d9e4dc40fb7",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1198"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "048fa56e-daaa-4191-9d8f-fdb7a156b1c5",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "ce20452a-944d-4567-91fe-487704b3a290",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "1426e079-0124-4697-b95f-f9cb1af04c7c",
+      "name" : "Keskusarkisto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "2fb18d2c-3f05-4672-b526-c00d83050399",
+      "name" : "Tietopalvelupäällikkö"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "c6ebf8ad-74b9-4e6f-bee0-791a27a8741d",
+      "name" : "Keskusarkisto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : null,
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Ainesto- ja tietopalvelu",
+    "type" : "AlternativeName"
+  }, {
+    "language" : "sv",
+    "value" : "Centralarkivet",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Keskusarkisto",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Material- och informationstjänst",
+    "type" : "AlternativeName"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "arkistotoimi",
+      "language" : "fi"
+    }, {
+      "value" : "arkivfunktion",
+      "language" : "sv"
+    }, {
+      "value" : "archives administration",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p14841",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p30546"
+  }, {
+    "name" : [ {
+      "value" : "dokumentförvaltning",
+      "language" : "sv"
+    }, {
+      "value" : "asiakirjahallinto",
+      "language" : "fi"
+    }, {
+      "value" : "document management",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p14087",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p30546"
+  }, {
+    "name" : [ {
+      "value" : "arkiv",
+      "language" : "sv"
+    }, {
+      "value" : "arkistot",
+      "language" : "fi"
+    }, {
+      "value" : "archives (memory organisations)",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p36469",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p56133"
+  }, {
+    "name" : [ {
+      "value" : "arkivering",
+      "language" : "sv"
+    }, {
+      "value" : "arkistointi",
+      "language" : "fi"
+    }, {
+      "value" : "archiving",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p32211",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p25288"
+  }, {
+    "name" : [ {
+      "value" : "informationstjänst",
+      "language" : "sv"
+    }, {
+      "value" : "tietopalvelu",
+      "language" : "fi"
+    }, {
+      "value" : "information service (library services)",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p35996",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p15530;http://id.loc.gov/authorities/subjects/sh85066157"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Företag och samfund",
+      "language" : "sv"
+    }, {
+      "value" : "Yritykset ja yhteisöt",
+      "language" : "fi"
+    }, {
+      "value" : "Businesses and non-government organizations",
+      "language" : "en"
+    } ],
+    "code" : "KR2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "Myndigheter",
+      "language" : "sv"
+    }, {
+      "value" : "Authorities",
+      "language" : "en"
+    }, {
+      "value" : "Viranomaiset",
+      "language" : "fi"
+    } ],
+    "code" : "KR3",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2017",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "Medborgare",
+      "language" : "sv"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "sv",
+    "value" : "Myndighetsverksamheten och dess handlingarna är i regel offentlig.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Viranomaistoiminta asiakirjoineen on lähtökohtaisesti julkista.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Keskusarkistosta ja siellä säilytettävistä asiakirjoista saat lisätietoa tietopalvelupäälliköltä. ",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan kaupungin keskusarkisto toimii kaupungin hallintokuntien pitkän ajan ja pysyvästi säilytettävien asiakirjojen päätearkistona. Keskusarkiston asiakirjoista saa tietoja eri hallintoelimissä käsitellyistä asioista ja kopioita esimerkiksi koulutodistuksista. Keskusarkistossa säilytetään myös rakennuspiirustuksia ja karttoja. Keskusarkistossa säilytetään yli 120 eri arkistonmuodostajan arkistoa. Vanhimmat asiakirjat ovat peräisin 1800-luvun alkuvuosilta. ",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Vasa stads centralarkiv fungerar som ett slutarkiv för stadens förvaltningars handlingar som ska förvaras en längre tid eller varaktigt. I centralarkivets handlingar fås uppgifter om ärenden som har behandlats i olika förvaltningsorgan och kopior t.ex. på skolbetyg. I centralarkivet förvaras också byggnadsritningar och kartor.\n\nI centralarkivet förvaras över 120 olika arkivbildares arkiv. De äldsta handlingarna är från början av 1800–talet.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Om centralarkivet och de handlingar som förvaras där fås tilläggsinformation av chefen för informationstjänsten.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

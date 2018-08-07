@@ -1,0 +1,253 @@
+{
+  "sourceId" : null,
+  "keywords" : [ {
+    "value" : "kongresser",
+    "language" : "sv"
+  } ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Matkailu",
+      "language" : "fi"
+    }, {
+      "value" : "Turism",
+      "language" : "sv"
+    }, {
+      "value" : "Tourism",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "I denna servicegrupp behandlas resetjänster, resedokument, gränstjänster, turisters säkerhet och finländska beskickningars tjänster.",
+      "language" : "sv"
+    }, {
+      "value" : "Tässä palveluluokassa käsitellään matkailupalveluja, matkustusasiakirjoja, rajapalveluja, matkailijan turvallisuutta ja Suomen ulkomaan-edustustojen palveluja.",
+      "language" : "fi"
+    }, {
+      "value" : "This service class contains tourism services, travel documents, border services, traveller’s safety and the services of Finland's foreign missions.",
+      "language" : "en"
+    } ],
+    "code" : "P17",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1152",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "fbd24248-a37e-48e6-9bc3-f2b5cabb6988",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "74cd40c7-db75-4943-b066-b4d3d5abc5ca",
+      "name" : "Kokousmatkailun verkkosivut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  }, {
+    "value" : null,
+    "language" : "en"
+  } ],
+  "languages" : [ "fi", "sv", "en" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "en",
+    "value" : "Congress Vaasa",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Konferensturism",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Kokousmatkailu",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "kokoustilat",
+      "language" : "fi"
+    }, {
+      "value" : "konferenslokaler",
+      "language" : "sv"
+    }, {
+      "value" : "conference rooms",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p32078",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p34942"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Yritykset ja yhteisöt",
+      "language" : "fi"
+    }, {
+      "value" : "Businesses and non-government organizations",
+      "language" : "en"
+    }, {
+      "value" : "Företag och samfund",
+      "language" : "sv"
+    } ],
+    "code" : "KR2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "en",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : "Kansainvälinen Vaasan seutu hyvine kulkuyhteyksineen tarjoaa monipuoliset mahdollisuudet kokousten ja kongressien järjestämiseen.",
+    "type" : "Summary"
+  }, {
+    "language" : "en",
+    "value" : "The Vaasa region with its good connection attracts every year a lot of meetings, conferences and international congresses. The high-class conference venues and hotels and interesting activities in the unique Kvarken World Heritage area creates excellent opportunities for a meeting to succeed.",
+    "type" : "Description"
+  }, {
+    "language" : "en",
+    "value" : "Congress Vaasa represents all the partners in the meeting industry in the Vaasa region. Congress Vaasa will help you find the best in Vaasa.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : "Kansainvälinen Vaasan seutu hyvine kulkuyhteyksineen tarjoaa monipuoliset mahdollisuudet kokousten ja kongressien järjestämiseen. Korkeatasoiset kokoustilat ja hotellit sekä mielenkiintoiset elämykset Merenkurkun ainutlaatuisessa maailmanperintösaaristossa luovat loistavat puitteet onnistuneelle kokoukselle. ",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Kongressi Vaasa neuvoo kokuspalveluihin liittyvissä asioissa. Yhteystiedot löydät Vaasan kaupungin verkkosivuilta. ",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Kongressi Vaasan neuvontapalvelu on maksuton.",
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : "Kongress Vasas rådgivningstjänst är avgiftsfri.",
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : "Kongress Vasa ger råd i ärenden som rör konferens- och kongresstjänster. Kontaktuppgifter finns på Vasa stads webbsidor. ",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : "Den internationella Vasaregionen med sina goda förbindelser erbjuder mångsidiga möjligheter för konferenser och kongresser.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Den internationella Vasaregionen med sina goda förbindelser erbjuder mångsidiga möjligheter för konferenser och kongresser. Högklassiga mötesutrymmen och hotell samt intressanta upplevelser i Kvarkens unika världsarvsskärgård skapar ypperliga förhållanden för lyckade konferenser. ",
+    "type" : "Description"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "en",
+    "value" : "The Vaasa region with its good connection attracts every year a lot of meetings, conferences and international congresses.",
+    "type" : "Summary"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

@@ -1,0 +1,240 @@
+{
+  "sourceId" : null,
+  "keywords" : [ {
+    "value" : "ilmoitukset",
+    "language" : "fi"
+  }, {
+    "value" : "ympäristö",
+    "language" : "fi"
+  } ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "PermitOrObligation",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Ympäristöilmoitukset ja luvat",
+      "language" : "fi"
+    }, {
+      "value" : "Miljöanmälan och -tillstånd",
+      "language" : "sv"
+    }, {
+      "value" : "Environmental notifications and permits",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Tähän palvelualaluokkaan kuuluvat ne ilmoitus- ja lupamenettelyt, jotka liittyvät ympäristöä pysyvästi muuttaviin tai ympäristölle mahdollisesti haitallisiin toimenpiteisiin kuten kaivostoimintaan tai ympäristövaarallisiin kemikaaleihin.",
+      "language" : "fi"
+    }, {
+      "value" : "Denna serviceundergrupp omfattar anmälnings- och tillståndsförfaranden relaterade till åtgärder som förändrar miljön permanent eller som eventuellt är skadliga för miljön, såsom gruvdrift eller miljöfarliga kemikalier.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains the notification and permit procedures associated with actions that permanently change the environment or are potentially harmful for the environment, including mining or chemicals that pose an environmental hazard.",
+      "language" : "en"
+    } ],
+    "code" : "P23.5",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1188",
+    "parentId" : "9eac7938-e66b-4023-ac2e-8774ee615bca",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1184"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "26f5e089-6394-42c8-9154-e5b8202340c0",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "ae2fcc93-d7f6-478b-956c-c2fe7d389aef",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "c700b147-8472-4f53-9fac-2ff53b312ae5",
+      "name" : "Ympäristönsuojelun luvat ja ilmoitukset"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : null,
+  "serviceNames" : [ {
+    "language" : "sv",
+    "value" : "Miljötillstånd",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Ympäristölupa",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ ],
+    "code" : null,
+    "ontologyType" : null,
+    "uri" : "http://www.yso.fi/onto/yso/p2073",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "luvat",
+      "language" : "fi"
+    }, {
+      "value" : "tillstånd (lov)",
+      "language" : "sv"
+    }, {
+      "value" : "permits",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p32857",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p73604;http://www.yso.fi/onto/koko/p34854"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Yritykset ja yhteisöt",
+      "language" : "fi"
+    }, {
+      "value" : "Businesses and non-government organizations",
+      "language" : "en"
+    }, {
+      "value" : "Företag och samfund",
+      "language" : "sv"
+    } ],
+    "code" : "KR2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Voimassa toistaiseksi.",
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : "Ympäristönsuojelulain mukaan toimintaan, johon sisältyy ympäristön pilaantumisen vaara, tarvitaan ympäristölupa.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasassa ympäristölupia voi hakea kaupungin ympäristöosastolta. ",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "3-4 kk",
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : "Lisää tietoa ympäristölupien verkkosivulta. ",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : "Enligt miljöskyddslagen behövs miljötillstånd för sådan verksamhet som medför risk för förorening av miljön.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Katso ympäristönsuojeluviranomaisen maksut.",
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : "Tilläggsinformation på webbsidan om miljötillstånd. ",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : "Se miljövårdsmyndighetens avgifter.",
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : "I Vasa kan miljötillstånd ansökas hos stadens miljöavdelning. ",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : "3-4 månader",
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : "Gäller tillsvidare.",
+    "type" : "ValidityTime"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

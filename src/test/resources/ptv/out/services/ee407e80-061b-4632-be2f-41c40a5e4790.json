@@ -1,0 +1,250 @@
+{
+  "sourceId" : null,
+  "keywords" : [ {
+    "value" : "fyssari",
+    "language" : "fi"
+  } ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Kuntoutus",
+      "language" : "fi"
+    }, {
+      "value" : "Rehabilitation",
+      "language" : "en"
+    }, {
+      "value" : "Rehabilitering",
+      "language" : "sv"
+    } ],
+    "description" : [ {
+      "value" : "This service subclass contains statutory and other services whose primary purpose is to help a person recover his or her work or functional ability that has been reduced for various reasons through different therapeutic and/or medical methods.",
+      "language" : "en"
+    }, {
+      "value" : "Tässä. alapalveluluokassa käsitellään läkisääteisiä ja muita palveluja, joiden ensisijainen tarkoitus on palauttaa henkilön eri syistä alentunut työ- tai toimintakyky erilaisin terapeuttisin ja/tai lääkinnällisin menetelmin.",
+      "language" : "fi"
+    }, {
+      "value" : "I denna serviceundergrupp behandlas lagstadgade och övriga tjänster vars primära syfte är att återställa personens arbets- eller funktionsförmåga, som av olika anledningar blivit nedsatt, med hjälp av olika terapeutiska och/eller medicinska metoder.",
+      "language" : "sv"
+    } ],
+    "code" : "P5.13",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1051",
+    "parentId" : "76ca210c-5183-4d41-b796-50612d5930c7",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1038"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "02e20af0-a193-4a25-8f00-5b4e5370fa8c",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "ee407e80-061b-4632-be2f-41c40a5e4790",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "14e326e1-8dab-4558-82e6-b95d04eb153d",
+      "name" : "Fysioterapian esitietolomake"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "36b3eb6f-974f-4553-a90e-4420efa11c35",
+      "name" : "Lasten fysioterapiavastaanotto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "381a64cb-1046-4ace-8d0f-46b2ecd5f1ba",
+      "name" : "Fysioterapia"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "73d1c8b6-a4e6-414a-8e63-15b58e46738e",
+      "name" : "Aikuisten fysioterapiavastaanotto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "7d5d7b0c-2474-45b4-ac22-f0f4864bc33c",
+      "name" : "Fysioterapian keskitetty puhelinpalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv", "en" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "Chargeable",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Fysioterapian palvelut",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Fysioterapia",
+    "type" : "AlternativeName"
+  }, {
+    "language" : "sv",
+    "value" : "Fysioterapi",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "fysioterapi",
+      "language" : "sv"
+    }, {
+      "value" : "fysioterapia",
+      "language" : "fi"
+    }, {
+      "value" : "physiotherapy",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p72543",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p71852"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : "Till fysioterapi kommer du genom en remiss av hälsostationsläkare. Om du har problem med rörelse- eller funktionsförmågan blir du individuellt undersökt, varefter fysioterapin fortsätter antingen individuellt eller i grupp. En remiss till fysioterapin fås från läkarmottagningen i den egna hälsostationen.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : "Fysioterapia on lääkinnällistä kuntoutusta, jonka tarkoituksena on kivun poistaminen sekä liikunta-, toiminta- ja työkyvyn parantaminen.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Fysioterapian tarkoitus on ylläpitää ja edistää toimintakykyä, jotta selviytyminen omassa toiminta- ja elinympäristössä onnistuu mahdollisimman hyvin.\n\nÄkillisissä tuki- ja liikuntaelinten kiputiloissa hoitaja kirjoittaa lähetteen ja antaa seuraavan vapaan ajan fysioterapeutin suoravastaanotolle. Tavoitteena on löytää yhdessä sopivat harjoitteet kipujesi vähentämiseksi.\n\nFysioterapia on keskeinen osa kaupunginsairaalan kuntoutusosastojen 8 ja 9 toimintaa sekä intervalliosasto 6 toimintaa. ",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Fyrioterapiaan tullaan terveysasemalääkärin lähetteellä. Liikunta- ja toimintakyvyn ongelmissa  tehdään tutkimus, minkä jälkeen fysioterapia jatkuu joko yksilöllisesti tai ryhmässä.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Kaikista fysioterapiakäynneistä veloitetaan 11,50 € / käynti. Fysioterapia on maksutonta alle 18-vuotiaille sekä niille kuntoutujille, joiden maksukatto 691 € kalenterivuodessa, on saavutettu.",
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : "För samtliga besök i fysioterapin debiteras 11,50 € / besök. Fysioterapin är avgiftsfri för patienter under 18 år och för de patienter som har uppnått avgiftstaket 691 € euro under kalenderåret.",
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : "Syftet med fysioterapin är att upprätthålla och främja funktionsförmågan, så att man klarar sig i sin egen verksamhets- och livsmiljö så bra som möjligt.\n\nI akuta smärttillstånd i stöd- och rörelseorganen skriver skötaren ut en remiss och ger dig följande lediga tid till fysioterapeutens direktmottagning. Syftet är att tillsammans hitta lämpliga övningar för att minska på dina smärtor.\n\nFysioterapin är en central del av verksamheten i stadssjukhusets rehabiliteringsavdelningar 8 och 9 samt intervallavdelningen 6. ",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Syftet med fysioterapin är att upprätthålla och främja funktionsförmågan, så att man klarar sig i sin egen verksamhetsmiljö så bra som möjligt.",
+    "type" : "Summary"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

@@ -1,0 +1,176 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Kotisairaanhoito ja omaishoito",
+      "language" : "fi"
+    }, {
+      "value" : "Hemsjukvård och närståendevård",
+      "language" : "sv"
+    }, {
+      "value" : "Home nursing and informal care",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "This service subclass contains home nursing as a service that supports a patient in living at home. It includes home nursing activities, support for home nursing and procedures for applying for this support. This class also contains informal care, which includes subsidies and benefits for informal carers, rights to family leave and contracts related to informal caring.",
+      "language" : "en"
+    }, {
+      "value" : "Tässä alapalveluluokassa käsitellään kotisairaanhoitoa palveluna, joka tukee potilaan kotona asumista. Tähän liittyvät sekä kotisairaanhoidon toiminnot että kotisairaanhoidon tuki ja sen hakemismenettelyt. Myös omaishoito kuuluu tähän luokkaan ja sisältää omaishoitajan tuet ja etuudet, perhevapaaoikeudet sekä omaishoitajuuteen liittyvät sopimukset.",
+      "language" : "fi"
+    }, {
+      "value" : "I denna serviceundergrupp behandlas hemsjukvård som en tjänst som stöder patientens boende hemma. Till detta hör både hemsjukvårdsfunktioner och hemvårdsstöd och dess ansökningsförfaranden. Till denna grupp hör också närståendevård och närståendevårdarens arvoden och förmåner, rätt till familjeledighet samt avtal om närståendevård.",
+      "language" : "sv"
+    } ],
+    "code" : "P5.14",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1052",
+    "parentId" : "76ca210c-5183-4d41-b796-50612d5930c7",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1038"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "5e08ea8f-ca0e-4294-9f54-5852f0d156f3",
+  "serviceVouchers" : [ ],
+  "modified" : "2018-06-07T10:27:48.749426",
+  "id" : "e1753de9-0cf1-42be-97c9-8400ee131706",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "1ecffd2d-dfd6-4c28-afe3-5a808faa4d71",
+      "name" : "Kotisairaala"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "aca059a8-4e25-43d6-8b24-647ea2f7da61",
+      "name" : "Terveyskeskuksen vuodeosasto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : "Kotisairaalahoidon edellytyksenä on, että potilas haluaa itse hoitoa kotona ja hänet voidaan hoitaa siellä lääkärin ohjein turvallisesti.\n\nPotilaan tulee selviytyä päivittäisistä toiminnoistaan itse läheistensä tai tukipalvelujen avulla.\n\n",
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : null,
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Kotisairaalapalvelut",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "kotisairaalat",
+      "language" : "fi"
+    }, {
+      "value" : "sjukhusansluten hemsjukvård",
+      "language" : "sv"
+    }, {
+      "value" : "home hospitals",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p1364",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p34497"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Kotisairaalapalveluja järjestetään potilaan kotona tai muussa sen hetkisessä asuinpaikassa, kuten palvelutalossa tai hoitokodissa.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Naantalin kaupungin kotisairaalatoiminta toteuttaa sairaalatasoista hoitoa potilaan kotona tai muussa sen hetkisessä asuinpaikassa kuten palvelutalossa tai hoitokodissa.\n\nKotisairaalapotilaina voivat olla esimerkiksi:\n* suonensisäiset antibioottihoitoa tarvitsevat potilaat\n* nestehoitoa, kiireetöntä verensiirtoa ja lääkeinfuusiota tarvitsevat potilaat\n* saattohoidettavat potilaat\n* kotona hoidettavaksi soveltuvat erikoissairaanhoidon potilaat\n* ennaltasovitut lääkärin pyytämät tarkastuskäynnit kotiutuksen jälkeen.\n\n",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

@@ -1,0 +1,163 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Neuvolapalvelut",
+      "language" : "fi"
+    }, {
+      "value" : "Rådgivningstjänster",
+      "language" : "sv"
+    }, {
+      "value" : "Health clinic services",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "I denna serviceundergrupp behandlas kommunens lagstadgade moderskaps- och barnrådgivningstjänster med olika verksamhetsformer.",
+      "language" : "sv"
+    }, {
+      "value" : "Tässä palvelualaluokassa käsitellään kuntien lakisääteisesti järjestämiä äitiys-ja lastenneuvolapalveluja eri toimintamuotoineen.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains the statutory maternity and child health clinic services organised by the municipalities and the clinics’ various forms of activities.",
+      "language" : "en"
+    } ],
+    "code" : "P5.2",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1040",
+    "parentId" : "76ca210c-5183-4d41-b796-50612d5930c7",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1038"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "41d99e1e-ea5d-42a6-b51b-a2c1276237cb",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-12-12T11:32:07.104617",
+  "id" : "731b8f4e-f84a-44c5-8cac-9f6fdbe472b3",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "352d1d8a-f98a-41a1-a8bc-e4584f966f33",
+      "name" : "Seksuaaliterveysneuvola"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : "Seksuaaliterveysneuvolan palvelut on tarkoitettu naantalilaisille nuorille ja aikuisille.",
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : null,
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Seksuaaliterveysneuvola",
+    "type" : "AlternativeName"
+  }, {
+    "language" : "fi",
+    "value" : "Perhesuunnittelu- ja ehkäisyneuvonta",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "seksuaalineuvonta",
+      "language" : "fi"
+    }, {
+      "value" : "sexualrådgivning",
+      "language" : "sv"
+    }, {
+      "value" : "sexual counselling",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p15309",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p35080;http://www.yso.fi/onto/koko/p48187"
+  }, {
+    "name" : [ {
+      "value" : "ehkäisyneuvolat",
+      "language" : "fi"
+    } ],
+    "code" : null,
+    "ontologyType" : "TERO",
+    "uri" : "http://www.yso.fi/onto/koko/p60102",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p37040"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Naantalilaiset nuoret ja aikuiset saavat seksuaaliterveysneuvolasta ohjausta ja neuvontaa raskauden ehkäisyssä sekä seksuaali- ja lisääntymisterveyteen liittyvissä asioissa. \n\nPalveluihin kuuluvat:\n* raskauden ehkäisyyn liittyvät asiat\n* kierukoiden ja ehkäisyimplanttien asetukset ja poistot\n* sukupuolitautien ehkäisy, seulonta ja hoito\n* raskaudenkeskeytykseen liittyvät asiat\n* lapsettomuushoitoihin ohjaus\n* vaihdevuosiin liittyvä hoitojen aloitus ja kontrollit\n* seksuaaliterveyteen ja seksuaalisuuteen liittyvät asiat. ",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Seksuaaliterveysneuvola toimii ajanvarauksella. Palvelut ovat maksuttomia.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Nuoret ja aikuiset saavat seksuaaliterveysneuvolasta ohjausta ja neuvontaa raskauden ehkäisyssä sekä seksuaali- ja lisääntymisterveysasioissa.",
+    "type" : "Summary"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

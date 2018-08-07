@@ -1,0 +1,255 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Vesihuolto",
+      "language" : "fi"
+    }, {
+      "value" : "Vattenförsörjning",
+      "language" : "sv"
+    }, {
+      "value" : "Water supply",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Denna serviceundergrupp omfattar i första hand ärenden relaterade till hantering av bebyggda miljöers avfallsvatten från såväl affärslokaler och permanenta bostäder som från semester- och fritidsbostäder.",
+      "language" : "sv"
+    }, {
+      "value" : "Tähän palvelualaluokkaan kuuluvat ensi sijassa rakennetun ympäristön jätevesien käsittelyyn liittyvät asiat niin liiketiloissa, ympärivuotisissa asunnoissa kuin loma- ja vapaa-ajan kiinteistöissä.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass primarily contains issues related to handling sewage in built environments from business premises, permanent dwellings and secondary residences alike.",
+      "language" : "en"
+    } ],
+    "code" : "P23.3",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1187",
+    "parentId" : "9eac7938-e66b-4023-ac2e-8774ee615bca",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1184"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2018-05-03T11:52:33.08718",
+  "id" : "98b02142-faba-4667-870d-a3a03a91f81b",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "0bb82838-705a-4d76-86c8-82f3f354e964",
+      "name" : "Kadunsuunnitteluinsinööri"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "47e4d8fb-f474-406d-b3f5-6cfa3f449855",
+      "name" : "Viheraluepäällikkö"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "48ad7f12-41d7-4389-b207-bea3e9756522",
+      "name" : "Kuntatekniikka"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "49eeb077-35b8-4895-84e1-e79db7a81f84",
+      "name" : "Byggnadstillsynen"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "e899f316-a506-494e-a45f-8e7de6bc47e4",
+      "name" : "Kunnossapitopäällikkö"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "sv"
+  }, {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "sv",
+    "value" : "Dagvattenhantering",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Hulevesien hallinta",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Yritykset ja yhteisöt",
+      "language" : "fi"
+    }, {
+      "value" : "Businesses and non-government organizations",
+      "language" : "en"
+    }, {
+      "value" : "Företag och samfund",
+      "language" : "sv"
+    } ],
+    "code" : "KR2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : "Vasa stad ordnar dagvattenhanteringen på detaljplaneområde.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Hulevesien hallinnan järjestämisestä asemakaava-alueella huolehtii kuntatekniikka. Rakennusvalvonta vastaa lupa-asioista ja toimii valvovana viranomaisena.\n\nYhteyshenkilöt / Vaasan kaupungin kuntatekniikka:\n* hulevesijärjestelmän kunnossapito, hulevesiviemärit, kaivot ja katuojat: kunnossapitopäällikkö \n* hulevesijärjestelmän kunnossapito, runko-ojat: viheraluepäällikkö \n* suunnitteluun liittyvät asiat: kadunsuunnitteluinsinööri ",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : "- Vasa stad ordnar dagvattenhanteringen på detaljplaneområde. Dagvattnet utgörs av regn- eller smältvatten som ansamlas på markytan, byggnadstak eller andra ytor samt dräneringsvatten. Till skötseln av dagvattnet hör också att förebygga översvämningsskador och bekämpa översvämning.\n\nDagvattenhanteringen som helhet består av kommunens dagvattensystem och i det ingår de konstruktioner och anordningar för dagvattenhantering som är på kommunens ansvar.\n\nKommunen ansvarar för förebyggandet av översvämningsskador och översvämningsbekämpning på sina fastigheter och på väg-, gatu-, vattendrags- och grönområden. Till kommunens ansvar hör också att ansvara för den egna serviceproduktionens kontinuitet, upprätthållandet av infrastruktur samt stöd till räddningsverksamheten när översvämning hotar och vid översvämningar.\n\nFastighetsägaren eller –innehavaren samt invånarna bör skydda sig själva och sin egendom med tillbudsstående medel. De bör för sin del förhindra att översvämningsskador uppkommer och bereda sig på skadebekämpnings- och skyddsåtgärder som översvämningssituationer förutsätter.\n",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan kaupunki järjestää hulevesien hallinnan Vaasassa asemakaava-alueella.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "- Vaasan kaupunki järjestää hulevesien hallinnan Vaasassa asemakaava-alueella. Hulevedet ovat maan pinnalle, rakennuksen katolle tai muulle pinnalle kerääntyvän sade- tai sulamisveden sekä perustusten kuivatusvesiä. Hulevesien hoitamiseen liittyy myös tulvavahinkojen ehkäisy ja tulvantorjunta.\n\nHulevesien hallinnan kokonaisuus koostuu kunnan hulevesijärjestelmästä, johon kuuluvat kunnan vastuulla olevat hulevesien hallinnan rakenteet ja laitteet. \n\nKunta vastaa tulvavahinkojen ehkäisystä ja tulvantorjunnasta omistamillaan kiinteistöillään sekä tie-, katu-, vesistö- ja viheralueilla. Kunnan vastuulle kuuluu myös vastata oman palvelutuotannon jatkuvuudesta, infrastruktuurin ylläpitämisestä sekä pelastustoiminnan tukemisesta tulvatilanteen uhatessa ja sen aikana.\n\nKiinteistön omistajan tai haltijan sekä asukkaiden on suojeltava itseään ja omaisuuttaan käytettävissä olevin keinoin. Heidän on osaltaan ehkäistävä tulvavahinkojen syntymistä ja varauduttava tulvatilanteen edellyttämiin vahingontorjunta- ja suojaustoimenpiteisiin.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Organiseringen av dagvattenhanteringen på detaljplaneområdet sköts av kommuntekniken. Byggnadstillsynen ansvarar för tillståndsäranden och fungerar som en övervakningsmyndighet i fråga om dagvattenhanteringen.\n\nKontaktpersoner / Vasa stads kommuntekniken: \n* underhållet av dagvattensystemet, dagvattenavloppen, brunnarna och dikerna vid gator: underhållschef\n* underhållet av dagvattensystemet, utfallsdikerna: grönområdeschef \n* planerisäranden: gatuplaneringsingengör",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

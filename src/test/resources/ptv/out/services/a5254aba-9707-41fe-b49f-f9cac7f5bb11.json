@@ -1,0 +1,285 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Perusopetus",
+      "language" : "fi"
+    }, {
+      "value" : "Grundläggande utbildning",
+      "language" : "sv"
+    }, {
+      "value" : "Basic education",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Till denna serviceundergrupp hör både den egentliga grundläggande utbildningen med innehåll och mål samt direkta tjänster som erbjuds i anslutning till grundläggande utbildningen och för att stöda den, t.ex. skoltransporter, skolmat och assistanstjänster. Till denna grupp hör också ärenden i anslutning till avläggande av grundläggande utbildning utomlands i enlighet med den finska grundläggande utbildningen.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains basic education itself with its contents and objectives as well as the services offered directly in connection with and in support of basic education, for example school transport, school lunches and an assistant’s services. The class also includes issues related to completing abroad a basic education that is in line with the Finnish basic education.",
+      "language" : "en"
+    }, {
+      "value" : "Tähän palvelualaluokkaan kuuluvat sekä varsinainen perusopetus sisältöineen ja tavoitteineen sekä perusopetuksen yhteydessä ja sen tukemiseksi välittömästi tarjottavat palvelut, esimerkiksi koulukuljetukset, kouluruokailu ja avustajapalvelut. Tähän luokkaan kuuluvat myös Suomen perusopetuksen mukaisen peruskoulutuksen ulkomailla suorittamiseen liittyvät asiat.",
+      "language" : "fi"
+    } ],
+    "code" : "P6.2",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1062",
+    "parentId" : "fd1bb60e-4206-4f0a-994f-8ffcb4ffaaa4",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1060"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "a5254aba-9707-41fe-b49f-f9cac7f5bb11",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "2e95d8c1-21d2-4058-a762-a4db8833cb36",
+      "name" : "Oppimisen ja koulunkäynnin tuki"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "c0a53a33-f672-42ba-920b-b446c67755bd",
+      "name" : "Kasvatus- ja opetuspäällikkö"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ {
+    "names" : [ {
+      "value" : "Lag om grundläggande utbildning",
+      "language" : "sv"
+    }, {
+      "value" : "Perusopetuslaki",
+      "language" : "fi"
+    } ],
+    "webPages" : [ {
+      "url" : "http://www.finlex.fi/fi/laki/ajantasa/1998/19980628",
+      "value" : "Perusopetuslaki",
+      "language" : "fi"
+    }, {
+      "url" : "http://www.finlex.fi/fi/laki/ajantasa/1998/19980628",
+      "value" : "Lag om grundläggande utbildning",
+      "language" : "sv"
+    } ]
+  } ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "sv"
+  }, {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ {
+    "id" : "f9814514-e5cc-4aae-9534-a23e07e0e07b",
+    "name" : [ {
+      "value" : "Tuiren Palvelukokonaisuus",
+      "language" : "fi"
+    } ]
+  } ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "sv",
+    "value" : "Specialundervisning och särskilt stöd i grundläggande utbildning",
+    "type" : "AlternativeName"
+  }, {
+    "language" : "fi",
+    "value" : "Oppimisen ja koulunkäynnin tuki",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Perusopetuksen erityisopetus ja erityinen tuki",
+    "type" : "AlternativeName"
+  }, {
+    "language" : "sv",
+    "value" : "Stöd för lärande och skolgång",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "grundläggande utbildning",
+      "language" : "sv"
+    }, {
+      "value" : "perusopetus",
+      "language" : "fi"
+    }, {
+      "value" : "basic education",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p1275",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p33827"
+  }, {
+    "name" : [ {
+      "value" : "specialundervisning",
+      "language" : "sv"
+    }, {
+      "value" : "erityisopetus",
+      "language" : "fi"
+    }, {
+      "value" : "special education (teaching)",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p9092",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p5929;http://www.yso.fi/onto/koko/p33827"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Lapset ja lapsiperheet",
+      "language" : "fi"
+    }, {
+      "value" : "Children and families with children",
+      "language" : "en"
+    }, {
+      "value" : "Barn och barnfamiljer",
+      "language" : "sv"
+    } ],
+    "code" : "KR1.2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2003",
+    "parentId" : "daff1fb9-9394-49b5-b033-d1d1c7005ab6",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001"
+  }, {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : "Målet med stödet för lärande och skolgång är att stöda inlärningen samt trygga barnets utveckling och mognad.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : "Oppimisen ja koulunkäynnin tuen tavoitteena on tukea oppimista sekä tervettä kasvua ja kehitystä.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : "Eleverna har rätt att få tillräckligt stöd för lärande och skolgång genast när behov uppstår. Elevens lärare bedömer behovet av stöd i samarbete med elevvårdspersonal och vårdnadshavare.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Oppilailla on oikeus riittävään tukeen oppimiseen ja koulunkäyntiin heti tuen tarpeen ilmetessä. Oppilaan opettaja arvioi tuen tarvetta yhteistyössä oppilashuollon henkilöstön ja huoltajien kanssa.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : "Målet med stödet för lärande och skolgång är att stöda inlärningen samt trygga barnets utveckling och mognad. \n\nEnligt lag om grundläggande utbildning har eleven rätt att under hela den grundläggande utbildningen vid sidan av läroplansenlig undervisning få elevhandledning och tillräckligt stöd för lärande och skolgång genast när behov uppstår. Stödet ska ges så länge och på den nivå som det behövs. En elev kan behöva tillfälligt eller långvarigt stöd i studierna och skolgången. Stödformerna är till exempel samarbete mellan hemmet och skolan, stödundervisning, differentiering av undervisning, specialundervisning på deltid, elevhandledning, elevvårdstjänster, biträdestjänster o.s.v.\n\nDet stöd som eleven får ska vara flexibelt, planerat på lång sikt och föränderligt i enlighet med behovet. Formerna av stöd ska användas enskilt eller tillsammans för att komplettera varandra. Stödet ska ges så länge och på den nivå som det behövs. Det stöd som eleven ska ges delas in i allmänt, intensifierat och särskilt stöd.\n\nDet allmänna stöd som ska ges varje elev är en del av all fostran och undervisning. Dess uppgift är att stödja eleven att uppnå målen för undervisningen.\n\nDet intensifierade stödet är ett mera kontinuerligt, systematiskt och individuellt stöd för elevens lärande och skolgång, i situationer då det allmänna stödet inte räcker till. Utgående från en yrkesövergripande pedagogisk bedömning behandlas inledandet av det intensifierade stödet. Det intensifierade stödet ska ges eleven i enlighet med en plan som ska göras upp för elevens lärande.\n\nOm det intensifierade stödet inte utgör ett tillräckligt stöd för eleven att prestera i skolgången ska ett förvaltningsbeslut om särskilt stöd fattas för honom eller henne. En individuell plan för hur undervisningen ska ordnas (IP) ska göras upp för eleven. Ur planen ska framgå hur undervisningen och det övriga stödet enligt beslutet om särskilt stöd ska ordnas för eleven. Utöver specialundervisning kan eleven behöva till exempel omfattande elevvårdsstöd, habilitering eller annat individuellt stöd. Betydelsen av vårdnadshavarens stöd, ett yrkesövergripande samarbete och individuell handledning betonas.\n\nEn elev som erhåller särskilt stöd kan fortsätta sin skolgång i sin närskola eller om vårdnadshavarna och skolan så anser, flytta över till specialklassundervisning.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Oppimisen ja koulunkäynnin tuen tavoitteena on tukea oppimista sekä tervettä kasvua ja kehitystä niin, että perusopetuksen oppimäärän suorittaminen on mahdollista.\n\nOppilaalla on perusopetuslain mukaan oikeus koko perusopetuksen ajan saada opetussuunnitelman mukaisen opetuksen ohella riittävää oppimisen ja koulunkäynnin tukea heti tuen tarpeen ilmetessä. Tukea annetaan niin kauan ja sen tasoisena kuin se on tarpeellista. Oppilas saattaa tarvita oppimisessaan ja koulunkäynnissään tukea tilapäisesti tai pitempiaikaisesti. Tukimuotoja ovat esimerkiksi kodin ja koulun välinen yhteistyö, tukiopetus, opetuksen eriyttäminen, osa-aikainen erityisopetus, oppilaan ohjaus, oppilashuollollinen tuki, avustajapalvelut jne.\n\nOppilaan saaman tuen tulee olla joustavaa, pitkäjänteisesti suunniteltua ja tuen tarpeen mukaan muuttuvaa. Tukimuotoja käytetään sekä yksittäin että yhdessä toisiaan täydentävinä. Tukea annetaan niin kauan ja sen tasoisena kuin se on tarpeellista. Oppilaalle annettava tuki jaetaan yleiseen, tehostettuun ja erityiseen tukeen.\n\nJokaiselle oppilaalle annettava yleinen tuki on osa kaikkea kasvatusta ja opetusta. Sen tehtävänä on oppilaan tukeminen tavoitteiden saavuttamisessa.\n\nTehostettu tuki on oppilaan oppimisen ja koulunkäynnin jatkuvampaa, suunnitelmallisempaa ja yksilöllisempää tukemista, silloin kun yleinen tuki ei riitä. Tehostetun tuen aloittaminen käsitellään moniammatíllisesti pedagogisen arvion pohjalta. Tehostettua tukea annetaan oppilaalle laadittavan oppimissuunnitelman mukaisesti.\n\nJos oppilaalle annettu tehostettu tuki ei riitä auttamaan oppilasta selviytymään koulutyöstä, tehdään hänelle erityistä tukea koskeva hallintopäätös. Oppilaalle laaditaan henkilökohtainen opetuksen järjestämistä koskeva suunnitelma (HOJKS), josta on käytävä ilmi erityistä tukea koskevan päätöksen mukaisen opetuksen ja muun tuen antaminen. Erityisopetuksen lisäksi oppilas saattaa tarvita esimerkiksi vahvaa oppilashuollollista, kuntouttavaa, hoidollista tai muuta yksilöllistä tukea. Huoltajan tuen, moniammatillisen yhteistyön ja yksilöllisen ohjauksen merkitys korostuu.\n\nOppilas, joka on erityisen tuen piirissä voi jatkaa opiskeluaan omassa lähikoulussaan tai huoltajien ja koulun niin arvioidessa siirtyä luokkamuotoiseen erityisopetukseen.",
+    "type" : "Description"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

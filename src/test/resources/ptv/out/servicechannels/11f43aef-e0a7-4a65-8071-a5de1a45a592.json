@@ -1,0 +1,61 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://www.facebook.com/reimari.vaasa",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://www.facebook.com/reimari.vaasa",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "32539a31-ad0b-4765-91d0-be17afec1933",
+      "name" : "Nuorten tieto- ja neuvontapalvelu Reimari"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Reimarin Facebook-sivu",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Reimaris Facebook-sida",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Reimarin julkisessa Facebook-profiilissa voit seurata Reimarin toimintaa ja ottaa yhteyttä.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Reimarin julkisessa Facebook-profiilissa voit seurata Reimarin toimintaa ja ottaa yhteyttä. ",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Via Reimaris offentliga Facebook-profil kan du följa Reimaris verksamhet och ta kontakt.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Via Reimaris offentliga Facebook-profil kan du följa Reimaris verksamhet och ta kontakt. ",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "11f43aef-e0a7-4a65-8071-a5de1a45a592"
+}

@@ -1,0 +1,44 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "http://www.naantali.fi/opetus_ja_koulutus/koulut/maijamaki/fi_FI/joustavaperuopetus/",
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "c04e0218-2707-4c64-9de4-dcef5befbd19",
+      "name" : "Joustava perusopetus (JOPO)"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Naantalin JOPO:n verkkosivu",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Naantalin JOPO:n verkkosivulta löydät perustietoa JOPO:sta ja sinne hakemisesta, sekä JOPO-opettajan yhteystiedot.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Naantalin joustavan perusopetuksen eli JOPO:n verkkosivulta löydät perustietoa JOPO:sta, JOPO:on hakemisesta sekä JOPO-opettajan yhteystiedot.",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "f0259b1c-c1e6-4ed4-bf47-6a753e6cf8cb"
+}

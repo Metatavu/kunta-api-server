@@ -1,0 +1,100 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "attachments" : [ ],
+  "languages" : [ ],
+  "deliveryAddresses" : [ {
+    "subType" : "NoAddress",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : null,
+    "deliveryAddressInText" : [ ],
+    "receiver" : [ {
+      "value" : null,
+      "language" : "fi"
+    }, {
+      "value" : null,
+      "language" : "sv"
+    } ]
+  } ],
+  "supportPhones" : [ ],
+  "formIdentifier" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "e274966f-2cf2-4bdd-b3c5-5836166e3f14",
+      "name" : "Potilastietojen tarkistaminen"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "channelUrls" : [ {
+    "language" : "fi",
+    "value" : "https://www.vaasa.fi/sites/default/files/rekisteritietojen_tarkastuspyynto_asiakas1_2017.pdf",
+    "type" : "PDF"
+  }, {
+    "language" : "sv",
+    "value" : "https://www.vaasa.fi/sites/default/files/insynsbegaran_om_registerinformation_2017.pdf",
+    "type" : "PDF"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Sosiaali- ja terveydenhuollon rekisteritietojen tarkastuspyyntö",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Insynsbegaran om registerinformation inom social- och hälsovården",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "PrintableForm",
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "Insynsbegaran om registerinformation inom social- och hälsovården.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Sosiaali- ja terveydenhuollon rekisteritietojen tarkastuspyyntölomake.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Sosiaali- ja terveydenhuollon rekisteritietojen tarkastuspyyntölomake.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Insynsbegaran om registerinformation inom social- och hälsovården.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "44e42a93-4388-4660-b39c-d9f0f6cfb0e6"
+}

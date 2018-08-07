@@ -1,0 +1,290 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Culture",
+      "language" : "en"
+    }, {
+      "value" : "Kulttuuri",
+      "language" : "fi"
+    }, {
+      "value" : "Kultur",
+      "language" : "sv"
+    } ],
+    "description" : [ {
+      "value" : "This service class contains a wide range of cultural services associated with different branches of arts, the library system, religious organisations and liberal adult education. The class also includes different free time services.",
+      "language" : "en"
+    }, {
+      "value" : "Tässä palveluluokassa käsitellään kulttuuripalveluja laajasti taiteen eri alojen, kirjastolaitoksen, uskonnollisten yhteisöjen ja vapaan sivistystyön puitteissa. Myös erilaiset vapaa-ajan palvelut kuuluvat tähän luokkaan.",
+      "language" : "fi"
+    }, {
+      "value" : "I denna servicegrupp behandlas kulturtjänster på ett omfattande plan inom ramen för olika konstarter, biblioteksväsendet, religiösa samfund och fritt bildningsarbete. Även olika fritidstjänster hör till denna grupp.",
+      "language" : "sv"
+    } ],
+    "code" : "P25",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1198",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "Free-time services",
+      "language" : "en"
+    }, {
+      "value" : "Fritidstjänster",
+      "language" : "sv"
+    }, {
+      "value" : "Vapaa-ajan palvelut",
+      "language" : "fi"
+    } ],
+    "description" : [ {
+      "value" : "Denna serviceundergrupp omfattar tjänster relaterade till fritiden på ett omfattande plan. Denna grupp omfattar inte motions- och idrottstjänster, som har en egen huvudgrupp.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains free-time services in a wide sense. The class does not include sports and exercise services, which have their own main class.",
+      "language" : "en"
+    }, {
+      "value" : "Tähän palvelualaluokkaan kuuluvat vapaa-ajan piiriin laajasti katsottavat palvelut. Tähän luokkaan eivät kuulu liikunnan ja urheilun palvelut, jotka ovat omassa pääluokassaan.",
+      "language" : "fi"
+    } ],
+    "code" : "P25.5",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1203",
+    "parentId" : "200f3f00-31b1-41cc-a986-2d9e4dc40fb7",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1198"
+  }, {
+    "name" : [ {
+      "value" : "Services for older people",
+      "language" : "en"
+    }, {
+      "value" : "Vanhusten palvelut",
+      "language" : "fi"
+    }, {
+      "value" : "Äldretjänster",
+      "language" : "sv"
+    } ],
+    "description" : [ {
+      "value" : "This service subclass contains services for older people, excluding housing services and including rehabilitation, transport and befriending services among other things.",
+      "language" : "en"
+    }, {
+      "value" : "Till denna serviceundergrupp hör andra än boendetjänster, bl.a. rehabiliterings-, transport- och väntjänster för de äldre.",
+      "language" : "sv"
+    }, {
+      "value" : "Tähän alapalveluluokkaan kuuluvat vanhusten muut kuin asumispalvelut, muun muassa kuntoutus-, kuljetus- ja ystäväpalvelut.",
+      "language" : "fi"
+    } ],
+    "code" : "P4.2",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1025",
+    "parentId" : "079b55da-af80-41ab-9346-c8fdd284afcf",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1023"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "a2706e59-e4cb-4ad7-abb1-3d17a99c218b",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "a5122aa7-16f2-4d49-b360-d2c72d0768c3",
+      "name" : "Vastaava viriketoiminnan ohjaaja - Ikäkeskus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "da6bf912-3e36-4394-95fa-7ca8862d29f5",
+      "name" : "Ikäihmisten viriketoiminta"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : "I rekreationsverksamheten kan man delta i om man bor hemma, i servicebostad eller på vårdanstalt och är 65 år fylld pensionär från Vasa. ",
+    "language" : "sv"
+  }, {
+    "value" : "Viriketoimintaan voivat osallistua kotona tai palveluasunnossa asuvat sekä laitoshoidossa olevat yli 65-vuotiaat vaasalaiset.",
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "sv",
+    "value" : "Rekrationsverksamhet för äldre",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Ikäihmisten viriketoiminta",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "hobby- och klubbverksamhet",
+      "language" : "sv"
+    }, {
+      "value" : "harrastus- ja kerhotoiminta",
+      "language" : "fi"
+    }, {
+      "value" : "hobby and club activities",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p66986",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p18203"
+  }, {
+    "name" : [ {
+      "value" : "rekreation",
+      "language" : "sv"
+    }, {
+      "value" : "virkistystoiminta",
+      "language" : "fi"
+    }, {
+      "value" : "recreation",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p3971",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p34717;http://www.yso.fi/onto/koko/p18203"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : "Seniorcentret erbjuder mångsidig rekreations- och stimulansverksamhet. Målet är att stöda välmående,  en självständig vardag och socialt umgänge.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Grupperna är i regel avgiftsfria, men i vissa grupper kan man samla in en materialavgift.",
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : "Ryhmät ovat pääsääntöisesti maksuttomia, mutta joissakin ryhmissä voidaan kerätä materiaalimaksu.",
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Ikäkeskuksen viriketoiminta tarjoaa monipuolista virkistys- ja viriketoimintaa, jonka tavoitteena on tukea hyvinvointia, arjen omatoimisuutta, osallistumista ja sosiaalista kanssakäymistä.\n\nToiminta rakentuu erilaisista kädentaito-, puutyö-, askartelu-, musiikki-, peli-, visailu-, muistinvirkistys-, keskustelu-, taide- ja kulttuuriryhmistä.\n\nKaikille avoimia yhteislaulutilaisuuksia ja konsertteja järjestetään säännöllisesti.\n\nViriketoimintaa on tarjolla Vuorikadulla, Vaasan kaupungin palvelutaloissa ja laitoshoidossa sekä korttelikerhoissa eri puolilla Vaasaa.\n\nKorttelikerhot toimivat kohtaamispaikkana asuinalueen ikäihmisille ympäri Vaasaa. Tavoitteena on tavata rennossa ilmapiirissä ja tutustua uusiin ihmisiin. Kerhojen teemat vaihtuvat ryhmäläisten toiveiden mukaisesti.\n\nLisätietoja toiminnasta ja aikatauluista Vaasan kaupungin verkkosivuilta.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : "Ikäkeskus tarjoaa monipuolista virkistys- ja viriketoimintaa. Tavoitteena on tukea hyvinvointia, arjen omatoimisuutta ja sosiaalista kanssakäymistä.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Rekreationsverksamheterna erbjuder mångsidiga rekreations och inspirationsingivande aktiviteter, vars syfte är att stödja välmående, självständighet, delaktighet och social interraktion.\n\nTjänsten erbjuder diverse handarbets-, träslöjd-, hobby-, musik-, spel-, minnesövnings-, diskussions-, konst-, samt kulturgrupper. Deltagandet är i allmänhet gratis, men vissa grupper kan begära en avgift för materialkostnader.\n\nAllsångsevenemang och konserter hålls regelbundet och är öppen för alla.\n\nRekreationsverksamheterna erbjuds vid Berggatan, Vasa stads servicehus och vårdhem samt i kvartersklubbarna runtom i Vasa. \n\nKvartersklubbar\n\nFungerar som mötesplats för äldre personer runtom i Vasa. Syftet är att mötas i en avslappnad miljö och träffa nya människor.\nKlubbarnas teman ändras enligt medlemmarnas önskemål.",
+    "type" : "Description"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

@@ -1,0 +1,61 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/node/25823",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/sv/node/25823",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "a25a05d9-7824-4ecb-af57-64a86033ec26",
+      "name" : "Yksityiset sosiaalipalveluiden tuottajat"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Yksityiset sosiaalipalveluiden tuottajat",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Privata socialservice",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Vaasan kaupungin verkkosivuilta löydät lisätietoa yksityisistä verovapaista sosiaalipalveluiden tuottajista.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan kaupungin verkkosivuilta löydät lisätietoa yksityisistä verovapaista sosiaalipalveluiden tuottajista.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "På Vasa stads webbsidor hittar du tillägsuppgifter om privata socialservice utan moms.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "På Vasa stads webbsidor hittar du tillägsuppgifter om privata socialservice utan moms.",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "ba1c7305-5412-4177-824f-ad9b9cc38747"
+}

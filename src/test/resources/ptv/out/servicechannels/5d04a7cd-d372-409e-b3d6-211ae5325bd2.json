@@ -1,0 +1,113 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/savilahden-yhtenaiskoulu",
+    "value" : "Savilahden yhtenäiskoulun verkkosivut",
+    "language" : "fi"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Savilahdentie",
+        "language" : "fi"
+      } ],
+      "streetNumber" : "1-5",
+      "postalCode" : "66500",
+      "postOffice" : [ {
+        "value" : "LILLKYRO",
+        "language" : "sv"
+      }, {
+        "value" : "VÄHÄKYRÖ",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ ],
+      "latitude" : "7001175.174",
+      "longitude" : "252680.849",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "17c633dd-5408-495a-86c1-d8f57598e899",
+      "name" : "Perusopetus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : "Rehtori",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "405081447",
+    "language" : "fi"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Savilahden yhtenäiskoulu",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Savilahden yhtenäiskoulu on alun alkaen entisen Vaasan läänin vanhin ja koko Suomen neljänneksi vanhin koulu.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Savilahden yhtenäiskoulu on alun alkaen entisen Vaasan läänin vanhin ja koko Suomen neljänneksi vanhin koulu. Vaasan ensimmäisenä yhtenäiskouluna se aloitti toimintansa vuonna 2013. Opetusta koulussa on annettu yhtäjaksoisesti 150 vuoden ajan. Yhtenäiskoulun oppilaiksi siirtyivät Vähänkyrön yläasteen, Saarenpään ja Savilahden alakoulun oppilaat. Opetusta annetaan vuosiluokille 1-9, sen myötä yhtenäiskoulu muodostaa noin 350 oppilaan koulun. Koulun perustehtävä on sama kuin vuonna 1858, eli antaa perusopetusta alueen lapsille. Savilahden koulun toimintaa tukee vapaaehtoisvoimin pyöritettävä vanhempainyhdistys luokilla 1-6. Yhdistyksen tarkoituksena on lisätä oppilaiden, koulun henkilökunnan ja vanhempien yhteenkuuluvuutta ja yhteistä tekemistä. Yhdistys on jo vuosia tukenut muun muassa koululaisten uimahallikäyntejä. Se toimii myös auttavana kätenä koulun tapahtumissa sekä avustaa taloudellisesti mahdollisuuksien mukaan opinahjon muuta toimintaa. Lisätietoja koulun toiminnasta löydät koulun kotisivuilta.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "5d04a7cd-d372-409e-b3d6-211ae5325bd2"
+}

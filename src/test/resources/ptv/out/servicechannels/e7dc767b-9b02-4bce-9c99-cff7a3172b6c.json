@@ -1,0 +1,144 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/node/2781/",
+    "value" : "Varhaiskasvatus",
+    "language" : "fi"
+  }, {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/sv/node/2781/",
+    "value" : "Småbarnsfostran",
+    "language" : "sv"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Sudentie",
+        "language" : "fi"
+      }, {
+        "value" : "Vargvägen",
+        "language" : "sv"
+      } ],
+      "streetNumber" : "4",
+      "postalCode" : "65350",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ {
+        "value" : null,
+        "language" : "fi"
+      } ],
+      "latitude" : "7005974.359",
+      "longitude" : "230121.597",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "73af8c06-6a6b-4780-9164-8e8872eecc9c",
+      "name" : "Kunnallinen päiväkotihoito"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "ce3f03b6-2083-4d89-a5a0-2466d0f90577",
+      "name" : "Varhaiskasvatuksen vuorohoito"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ {
+    "value" : "punahilkanpk@vaasa.fi",
+    "language" : "fi"
+  }, {
+    "value" : "punahilkanpk@vaasa.fi",
+    "language" : "sv"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Punahilkan päiväkoti",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Rödluvans daghem",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Punahilkan päiväkoti on kaksikielinen vuorohoitopäiväkoti.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Rödluvans daghem är ett tvåspråkigt skiftesdaghem.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Punahilkan päiväkoti on kaksikielinen vuorohoitopäiväkoti, joka palvelee niitä perheitä, joissa vanhemmat työnsä luonteesta johtuen tarvitsevat lapsilleen ilta-, yö- ja viikonloppuhoitoa. \n\n0 – 6-vuotiaille lapsille järjestetään tarpeen mukaisesti iltahoitoa, viikonloppuhoitoa, vuorohoitoa ja vuorohoitoa tarvitsevien lasten esiopetusta (6 v.).\n \nLapsiryhmät:\n\n* Björnboet, sisarusryhmä, vuorohoito (ruots.)\n* Kanin, alle 3 v. (ruots.)\n* Hirvi, esiopetus\n* Ilves, esiopetus\n* Ketunpesä, sisarusryhmä, vuorohoito\n* Kissa, alle 3 v.\n* Koira, alle 3 v.\n* Kauris, 3-5 v.\n* Majava, 3 - 4 v.\n* Mäyrä, 1 - 4 v.\n* Näätä, 5 v.\n* Siili, alle 3 v.\n \nPunahilkan päiväkodin toiminta perustuu Vaasan varhaiskasvatussuunnitelmaan. Toiminnassa painotamme Lapsen silmin -mallia; lapsen kuuntelua ja lapsen aitoa kohtaamista, joka toteutuu pedagogisesti hyvin suunnitellussa toiminnassa.\n\nToiminta toteutetaan pienryhmissä, pienryhmän kokoonpano vaihtelee lasten iän ja toiminnan mukaan. Myös iltapäivällä ja illalla toimitaan pienryhmissä. Lapsen kokonaisvaltaisen hyvinvoinnin turvaamiseksi vuorohoidossa korostuu tiivis yhteistyö perheiden kanssa. Päiväkodissamme toteutuu kasvatuskumppanuus, jota tukee yksilöllinen omahoitajuus.\n\nPunahilkan päiväkoti toimii yhteistyössä Lumikin päiväkodin kanssa ja esim. liikunta- ja ruokasalia käytävät molemmat päiväkodit.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Rödluvans daghem är ett tvåspråkigt skiftesdaghem för familjer där barnen på grund av föräldrarnas arbete behöver vård under kvällar, nätter och veckoslut. \n\nFör barn i åldern 0–6 år ordnas vid behov vård under kvällar, nätter och veckoslut samt skiftesvård och förskoleundervisning för barn som är i skiftesvård (6-åringar). \n\nBarngrupper:\n* Björnboet, skiftesvård\n* Kanin, under 3-åringar\n* Hirvi, förskoleundervisning (finsk)\n* Ilves, förkoleundervisning (finsk)\n* Ketunpesä, skiftesvård (finsk)\n* Kissa, under 3-åringar (finsk)\n* Koira, under 3-åringar (finsk)\n* Kauris, 3–5-åringar(finsk)\n* Majava, 3 - 4-åringar (finsk)\n* Mäyrä, 1 - 4-åringar (finsk)\n* Näätä, 5-åringar (finsk)\n* Siili, under 3-åringar (finsk)\n\nVerksamheten i Rödluvans daghem baserar sig på Vasa stads plan för småbarnspedagogik. Verksamhetsmodellen Med barnaögon betonas, dvs. att lyssna på barnet och visa genuint intresse för barnet och möta barnet, vilket förverkligas i en pedagogiskt välplanerad verksamhet. \n\nVerksamheten sker i smågrupper, sammansättningen av smågruppen varierar enligt barnens ålder och verksamhet. \nSmågruppsverksamheten används även på eftermiddagar och kvällar. För att säkerställa barnets helhetsmässiga välbefinnande betonas samarbetet med familjerna i skiftesvården. I vårt daghem förverkligas fostrarsamverkan, vilket stöds av den individuella egenvårdarmodellen. \n\nRödluvans daghem samarbetar med daghemmet Lumikki och t.ex. mat- och gymnastiksalen används av båda daghemmen. \n",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-03T13:19:28.977016",
+  "id" : "e7dc767b-9b02-4bce-9c99-cff7a3172b6c"
+}

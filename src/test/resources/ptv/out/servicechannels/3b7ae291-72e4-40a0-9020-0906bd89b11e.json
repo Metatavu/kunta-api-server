@@ -1,0 +1,152 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Junkkarintie",
+        "language" : "sv"
+      }, {
+        "value" : "Junkkarintie",
+        "language" : "fi"
+      } ],
+      "streetNumber" : "3 B",
+      "postalCode" : "66400",
+      "postOffice" : [ {
+        "value" : "LAIHIA",
+        "language" : "sv"
+      }, {
+        "value" : "LAIHIA",
+        "language" : "fi"
+      } ],
+      "municipality" : null,
+      "additionalInformation" : [ {
+        "value" : null,
+        "language" : "fi"
+      } ],
+      "latitude" : "6993353.265",
+      "longitude" : "247449.266",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "sv", "fi" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    }, {
+      "code" : "399",
+      "name" : [ {
+        "value" : "Laihia",
+        "language" : "fi"
+      }, {
+        "value" : "Laihela",
+        "language" : "sv"
+      }, {
+        "value" : "Laihia",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "1d57b037-40d2-4769-92eb-f2571c58824f",
+      "name" : "Eläinlääkäripalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Fax",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : null,
+    "isFinnishServiceNumber" : true,
+    "number" : null,
+    "language" : "sv"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Ajanvaraus ja neuvonta, puhelinaika arkisin klo 8-9",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "405255517",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Tidsreservering och rådgivning på vardagar kl. 8-9",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "405255517",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ ],
+  "serviceChannelNames" : [ {
+    "language" : "sv",
+    "value" : "Veterinärvård i Laihela och Lillkyro",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Laihian ja Vähänkyrön eläinlääkintä",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "Veterinärvård i Laihela och Lillkyro behandlar sällskapsdjur. Vaccinering av smådjur utan tidsreservering i Laihela på torsdagar kl. 16-17. Mottagning i Laihela betjänar främst klienter i Laihela och Lillkyro.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Veterinärvård i Laihela och Lillkyro behandlar sällskapsdjur.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Laihian ja Vähänkyrön eläinlääkintä hoitaa lemmikkieläimiä.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Laihian ja Vähänkyrön eläinlääkintä hoitaa lemmikkieläimiä. Pieneläinten rokotukset ilman ajanvarausta Laihialla torstaisin klo 16-17.  Laihian vastaanotto on tarkoitettu ensisijaisesti Laihian ja Vähänkyrön asiakkaille.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "3b7ae291-72e4-40a0-9020-0906bd89b11e"
+}

@@ -1,0 +1,437 @@
+{
+  "sourceId" : null,
+  "keywords" : [ {
+    "value" : "Vanhan Vaasan museo",
+    "language" : "fi"
+  }, {
+    "value" : "Kuntsi",
+    "language" : "fi"
+  }, {
+    "value" : "Terranova",
+    "language" : "fi"
+  }, {
+    "value" : "Pohjanmaan museo",
+    "language" : "fi"
+  }, {
+    "value" : "Vaasan taidehalli",
+    "language" : "fi"
+  } ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Museot",
+      "language" : "fi"
+    }, {
+      "value" : "Museer",
+      "language" : "sv"
+    }, {
+      "value" : "Museums",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Denna serviceundergrupp anknyter till museernas fysiska serviceställen och utställningsverksamhet, frågor relaterade till skyddet av byggnadsarvet samt museernas e-tjänster, såsom informationstjänster och digitalisering av kulturarvet.",
+      "language" : "sv"
+    }, {
+      "value" : "Tähän palvelualaluokkaan liittyvät museoiden fyysiset palvelupisteet ja näyttelytoiminta, rakennusperinnön suojeluun liittyvät asiat sekä museoalan sähköiset palvelut kuten tietopalvelut ja kulttuuriperinnön digitointi.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass is associated with the physical service points and exhibition activities of museums, issues related to the protection of building heritage, as well as electronic services in the museum sector, including information services and digitalisation of cultural heritage.",
+      "language" : "en"
+    } ],
+    "code" : "P25.3",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1201",
+    "parentId" : "200f3f00-31b1-41cc-a986-2d9e4dc40fb7",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1198"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "497f9445-5303-4fb1-83b8-1c05ee6b352b",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "3c746357-4921-4214-8ce0-025e729dfb70",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "05888189-3960-45ea-976e-81642102038b",
+      "name" : "Kuntsin modernin taiteen museo"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "1398ecb8-e831-43d0-827a-f09bf24733ea",
+      "name" : "Pohjanmaan museon verkkosivut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "37fad599-1c0b-4a43-ae62-a8aed4cc2886",
+      "name" : "Vaasan taidehalli"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "6e8f7414-06b9-4b3c-9396-dae2bfff7dfc",
+      "name" : "Kuntsin modernin taiteen museon verkkosivut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "9ca115ac-b9f4-4cce-9244-629dbae77395",
+      "name" : "Näyttelyt"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "9ddee882-d5e9-4d4c-8d26-098c4901b306",
+      "name" : "Pohjanmaan museo"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "a4ca5644-7749-466d-9916-4264158d0e22",
+      "name" : "Tikanojan taidekoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "c0320952-f50a-4513-8242-1626c605b4d3",
+      "name" : "Vanhan Vaasan museo"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "c12f3878-6b44-4518-b647-138b429c7991",
+      "name" : "Tikanojan taidekodin verkkosivut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  }, {
+    "value" : null,
+    "language" : "en"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "Chargeable",
+  "serviceNames" : [ {
+    "language" : "sv",
+    "value" : "Museitjänster",
+    "type" : "Name"
+  }, {
+    "language" : "en",
+    "value" : "Museum services",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Museopalvelut",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "kulttuuripalvelut",
+      "language" : "fi"
+    }, {
+      "value" : "kulturtjänster",
+      "language" : "sv"
+    }, {
+      "value" : "cultural services",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p72236",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p36438"
+  }, {
+    "name" : [ {
+      "value" : "museot",
+      "language" : "fi"
+    }, {
+      "value" : "museer",
+      "language" : "sv"
+    }, {
+      "value" : "museums",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p35910",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p56133;http://www.yso.fi/onto/koko/p59220"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "en",
+    "value" : "More information about the museums in the City of Vaasa can be found on the web pages of the museums. ",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : "Museernas permanenta samlingsutställningar samt de tillfälliga utställningarna är avgiftsbelagda. Vasa konsthall har fritt inträde. För alla som är under 18 år är inträdet fritt till Vasa stads museer. Närmare prisuppgifter finns på museernas webbsidor.",
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : "Vasa stads museer producerar musei- och kulturtraditionstjänster inom verksamhetsområdet Vasa och Österbotten.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Lue lisää Vaasan kaupungin museoista museoiden verkkosivuilta.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "en",
+    "value" : "The museums of the City of Vaasa produce museum and cultural heritage services for the Vaasa and Ostrobothnian area. The museums arrange changing and permanent exhibitions in art, history and natural science. Furthermore the museums arrange public events and museum pedagogic activities. The museum’s collections of art, antiquities and archives are huge and for public use during exhibitions, web exhibitions and publications and as for the archive collections also by ordering. \n\nThe museums of the City of Vaasa are The Kuntsi museum of modern art, The Ostrobothnian museum, Tikanojan taidekoti, The Art Hall of Vaasa and Vanhan Vaasan Museo. \n\nThe museums of the city work as a regional cultural environment authority for the built cultural environment and in terms of relics of antiquities and the sphere of operations is spanning the Ostrobothnian district as well as the municipalities on the coastal area of Ostrobothnia.\n",
+    "type" : "Description"
+  }, {
+    "language" : "en",
+    "value" : "The museums of the City of Vaasa produce museum and cultural heritage services for the Vaasa and Ostrobothnian area.",
+    "type" : "Summary"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "en",
+    "value" : "The permanent collection exhibitions as well as the changing ones are liable to charges. The Art Hall of Vaasa has free entrance. Below 18 year olds can enter the museums in the City of Vaasa free of charge. More specific prices can be found on the museum’s web pages.",
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : "Vasa stads museer producerar musei- och kulturtraditionstjänster inom verksamhetsområdet Vasa och Österbotten. Museerna ordnar tillfälliga och permanenta utställningar inom konst, historia och naturvetenskap. Därtill ordnas i museerna publika evenemang och museipedagogisk verksamhet. Museernas konst- och föremåls- och arkivsamlingar samt naturvetenskapliga samlingar är betydande och är tillgängliga för publiken vid utställningar, webbutställningar och -publikationer samt då det gäller arkivsamlingar på beställning. \n\nTill Vasa stads museer hör Kuntsis museum för modern konst, Österbottens museum, Tikanojas konsthem, Vasa konsthall och Gamla Vasa museum. \n\nVasa stads museer fungerar som regional kulturmiljömyndighet i ärenden som gäller den bebyggda kulturmiljön och fornminnen och verksamhetsområdet utgörs av landskapet Österbotten och kommunerna i Sydösterbotten. ",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan kaupungin museot tuottavat museo- ja kulttuuriperintöpalveluita toimialueenaan Vaasa ja Pohjanmaa. Museot järjestävät vaihtuvia ja pysyviä näyttelyitä taiteen, historian ja luonnontieteen saralta. Lisäksi museoissa järjestetään yleisötapahtumia ja museopedagogista toimintaa. Museoiden taide-, esine-, luonnontieteelliset ja arkistokokoelmat ovat huomattavat ja yleisön käytössä näyttelyissä, verkkonäyttelyissä ja -julkaisuissa sekä arkistokokoelmien osalta tilauksesta. \n\nVaasan kaupungin museot ovat Kuntsin modernin taiteen museo, Pohjanmaan museo, Tikanojan taidekoti, Vaasan taidehalli ja Vanhan Vaasan museo. \n\nVaasan kaupungin museot toimii alueellisena kulttuuriympäristöviranomaisena rakennettuun kulttuuriympäristöön ja muinaismuistoihin liittyvissä asioissa toiminta-alueenaan Pohjanmaan maakunta sekä Suupohjan rannikkoalueet kunnat. \n",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Museoiden pysyvät kokoelmanäyttelyt sekä vaihtuvat näyttelyt ovat maksullisia. Vaasan taidehalliin on maksuton sisäänpääsy. Alle 18-vuotiaat pääsevät kaikkiin Vaasan kaupungin museoihin ilmaiseksi. Tarkemmat hintatiedot löydät museoiden verkkosivuilta.",
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan kaupungin museot tuottavat museo- ja kulttuuriperintöpalveluita toimialueenaan Vaasa ja Pohjanmaa.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : "Läs mera om Vasa stads museer på museernas webbsidor.",
+    "type" : "UserInstruction"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

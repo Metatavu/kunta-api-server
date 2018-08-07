@@ -1,0 +1,241 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Asuminen",
+      "language" : "fi"
+    }, {
+      "value" : "Boende",
+      "language" : "sv"
+    }, {
+      "value" : "Housing",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Denna servicegrupp omfattar hur man söker, hittar och skaffar en bostad, olika boendeformer, ekonomiskt stöd för boende, processer och tjänster i anslutning till flyttning inom Finland samt tjänster som berör befolkningsdatasystemet.",
+      "language" : "sv"
+    }, {
+      "value" : "Tähän palveluluokkaan kuuluvat asunnon etsiminen, löytäminen ja hankkiminen, erilaiset asumismuodot, asumisen taloudelliset tuet, Suomen sisällä tapahtuvaan muuttoon liittyvät prosessit ja palvelut sekä väestötietojärjestelmään liittyvät palvelut.",
+      "language" : "fi"
+    }, {
+      "value" : "This service class includes seeking, finding and purchasing a residence, different housing forms, housing benefits, processes and services related to migration within Finland, as well as services associated with the Population Information System.",
+      "language" : "en"
+    } ],
+    "code" : "P1",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1001",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "Ympäristö",
+      "language" : "fi"
+    }, {
+      "value" : "Miljö",
+      "language" : "sv"
+    }, {
+      "value" : "The environment",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "I denna servicegrupp behandlas miljörelaterade tjänster med tanke på såväl naturliga miljöer som boendemiljöer och övriga bebyggda miljöer.",
+      "language" : "sv"
+    }, {
+      "value" : "Tässä palveluluokassa käsitellään ympäristöön liittyviä palveluja sekä luonnonympäristöjen että asumis- ja muun rakennetun ympäristön kannalta.",
+      "language" : "fi"
+    }, {
+      "value" : "This service class contains services related to the environment, including both natural environments and living and other built environments.",
+      "language" : "en"
+    } ],
+    "code" : "P23",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1184",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "454a68e2-7a26-4896-b2e5-798aabf2ea12",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "64221f78-3c09-4006-8610-d16995d7cc7f",
+      "name" : "Viheralueyksikkö"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "sv"
+  }, {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Puistot ja viheralueet",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Parker och grönområden",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "grönområden",
+      "language" : "sv"
+    }, {
+      "value" : "viheralueet",
+      "language" : "fi"
+    }, {
+      "value" : "greenbelts",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p33392",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p37350"
+  }, {
+    "name" : [ {
+      "value" : "parker",
+      "language" : "sv"
+    }, {
+      "value" : "puistot",
+      "language" : "fi"
+    }, {
+      "value" : "parks",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p34333",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p33392"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "sv",
+    "value" : "Stadens vackra parker och grönområden planeras, byggs och underhålls för stadens invånare. Parkerna omfattar lekområden, hundparker, motions- och idrottsställen samt näridrottsområden. För planerings-, anläggnings-, underhålls- och skötselåtgärderna för stadens grönområden (parker, lekområden m.m. grönområden) svarar grönområdesenheten.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Stadens vackra parker och grönområden planeras, byggs och underhålls för stadens invånare.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan Palautepalvelussa voit  antaa palautetta puistoista ja viheralueista.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Kaupungin kauniit puistot ja viheralueet suunnitellaan, rakennetaan ja ylläpidetään kaupungin asukkaita varten. Puistot pitävät sisällään leikkialueet, koirapuistot, liikunta- ja ulkoilupaikat sekä lähiliikunta-alueet. Kaupungin viheralueiden (puistojen, leikkialueiden ym. viheralueiden) suunnittelu-, rakennus-, kunnossapito- ja hoitotoimenpiteistä vastaa viheralueyksikkö.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Kaupungin kauniit puistot ja viheralueet suunnitellaan, rakennetaan ja ylläpidetään kaupungin asukkaita varten.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "I Vasas feedbacktjänst kan du ge respons om parker och grönområden.",
+    "type" : "UserInstruction"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

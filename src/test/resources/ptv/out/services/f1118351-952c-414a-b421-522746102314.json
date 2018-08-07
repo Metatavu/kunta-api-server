@@ -1,0 +1,420 @@
+{
+  "sourceId" : null,
+  "keywords" : [ {
+    "value" : "nuoriso",
+    "language" : "fi"
+  }, {
+    "value" : "nuoret",
+    "language" : "fi"
+  }, {
+    "value" : "unga",
+    "language" : "sv"
+  }, {
+    "value" : "fritid",
+    "language" : "sv"
+  }, {
+    "value" : "vapaa-aika",
+    "language" : "fi"
+  }, {
+    "value" : "ungdomar",
+    "language" : "sv"
+  } ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Vapaa-ajan palvelut",
+      "language" : "fi"
+    }, {
+      "value" : "Fritidstjänster",
+      "language" : "sv"
+    }, {
+      "value" : "Free-time services",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Denna serviceundergrupp omfattar tjänster relaterade till fritiden på ett omfattande plan. Denna grupp omfattar inte motions- och idrottstjänster, som har en egen huvudgrupp.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains free-time services in a wide sense. The class does not include sports and exercise services, which have their own main class.",
+      "language" : "en"
+    }, {
+      "value" : "Tähän palvelualaluokkaan kuuluvat vapaa-ajan piiriin laajasti katsottavat palvelut. Tähän luokkaan eivät kuulu liikunnan ja urheilun palvelut, jotka ovat omassa pääluokassaan.",
+      "language" : "fi"
+    } ],
+    "code" : "P25.5",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1203",
+    "parentId" : "200f3f00-31b1-41cc-a986-2d9e4dc40fb7",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1198"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "3ba7c26b-37b3-41e0-a55a-680a422cbde5",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "f1118351-952c-414a-b421-522746102314",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "256af5ed-f6e1-41dc-97c5-c0612dc96794",
+      "name" : "Nuorten tieto- ja neuvontapalvelu Reimari"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "26e92d30-9023-43e0-84ae-c0c976374df0",
+      "name" : "Origo - Etsivä nuorisotyö"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "32c0ce40-244d-462a-b921-7a7d1a31943f",
+      "name" : "Ohjaamo Pohjanmaa"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3feb233e-128a-47b5-b152-411dc7e29223",
+      "name" : "Nuorisotilojen verkkosivut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "59178725-f709-4653-89c1-35f6bd7db79c",
+      "name" : "Nuorisoasema Klaara"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "61d4c8df-b515-47e3-8cfd-8d973e02cffc",
+      "name" : "Nuorisopalveluiden vuokrattavat tilat"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "65fd01f5-86ac-4d58-8f04-92e4b4ce35c4",
+      "name" : "Nuorisopalveluiden toimisto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "688ae9a5-5961-4d03-b435-60b534ce26e3",
+      "name" : "Nuorisopalveluiden Facebook"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "6ab7420b-e5dc-4e1e-a68d-e3ef4ae633a3",
+      "name" : "Reimarin verkkosivut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "7079e777-7b2f-448f-a891-853c0a9d666d",
+      "name" : "Nuorisovaltuuston verkkosivu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "a5962979-6c24-481f-9584-2128c79c8996",
+      "name" : "Nuorisopalveluiden Instagram"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "b4f2b7bc-8602-4186-a2bb-2bf7bf11164f",
+      "name" : "Nuorisopalveluiden verkkosivut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "d2d85803-abf7-4687-b198-e585cb066e84",
+      "name" : "Nuorisoavustusten verkkosivu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  }, {
+    "value" : null,
+    "language" : "en"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "sv",
+    "value" : "Ungdomsservicen",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Nuorisopalvelut",
+    "type" : "Name"
+  }, {
+    "language" : "en",
+    "value" : "Youth services",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Ungdomsarbete",
+    "type" : "AlternativeName"
+  }, {
+    "language" : "fi",
+    "value" : "Nuorisotyö",
+    "type" : "AlternativeName"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "ungdomsarbete",
+      "language" : "sv"
+    }, {
+      "value" : "nuorisotyö",
+      "language" : "fi"
+    }, {
+      "value" : "youth work",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p14497",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p33881"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Nuoret",
+      "language" : "fi"
+    }, {
+      "value" : "Young people",
+      "language" : "en"
+    }, {
+      "value" : "De unga",
+      "language" : "sv"
+    } ],
+    "code" : "KR1.3",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2004",
+    "parentId" : "daff1fb9-9394-49b5-b033-d1d1c7005ab6",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001"
+  }, {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "en",
+    "value" : "The municipality’s youth work among others contains educational guidance for youngsters, activity premises, hobby possibilities as well as information",
+    "type" : "Summary"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : "Kommunens ungdomsarbete omfattar bland annat fostrande handledning av unga, verksamhetslokaler, möjligheter till fritidssysselsättning samt informatio",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "en",
+    "value" : "The youth services of the city of Vaasa offer youngsters in Vaasa versatile low step services in everyday life as well as leisure times. There are six youth clubs in Vaasa, a youth information and guidance centre called Reimari, a multicultural youth worker and a youth café called Walkers. In addition, the youngsters are offered musical and band training in the Rock school (Rokkikoulu) and action at the skate hall. Vaasa also has an active youth council. The youth services of the city of Vaasa rents premises for various events and parties. More information can be found on their web pages. \n",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan kaupungin nuorisopalvelut tarjoaa vaasalaisille nuorille monipuolisia matalan kynnyksen palveluita arkeen ja vapaa-aikaan. Vaasasta löytyy kuusi nuorisotaloa, nuorten tieto- ja neuvontapalvelu Reimari, monikulttuurisen nuorisotyön nuoriso-ohjaaja ja Walkers-nuorisokahvila. Lisäksi nuorille tarjotaan musiikki- ja bändiopetusta Rokkikoulussa ja vauhtia Skeittihallissa. Vaasassa toimii myös aktiivinen nuorisovaltuusto. Nuorisopalvelut myös vuokraa tiloja erilaisia tilaisuuksia ja juhlia varten. Lisätietoa verkkosivuilta. ",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Kerho- ja tapahtumatoiminnasta lisätietoja Reimarin verkkosivuilta sekä nuorisotaloilta. ",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "en",
+    "value" : "More information about the club and event happenings can be found on the web pages of Reimari as well as the youth clubs. \n",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : "Kunnan nuorisotyötä ovat muun muassa nuorten kasvatuksellinen ohjaus, toimintatilat ja harrastusmahdollisuudet sekä tieto- ja neuvontapalvelut.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : "Vasa stads ungdomsservice erbjuder ungdomar i Vasa mångsidig service med låg tröskel på vardagar och fritiden. I Vasa finns sex ungdomsgårdar, ungdomarnas informations- och rådgivningstjänst Reimari, en ungdomsledare för mångkulturellt arbete och ungdomscaféet Walkers. Därtill erbjuds ungdomarna musik- och bandundervisning i Rockskolan och fart i skejthallen. Vasa har även ett aktivt ungdomsfullmäktige. Ungdomsservicen hyr även ut lokaler för olika tillställningar och fester. Ytterligare uppgifter finns på webbsidorna. ",
+    "type" : "Description"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : "Mer information om klubb- och evenemangsverksamheten finns på Reimaris webbsidor och fås från ungdomsgårdarna. ",
+    "type" : "UserInstruction"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

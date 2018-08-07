@@ -1,0 +1,171 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/node/1981/",
+    "value" : "Vaasa-opisto",
+    "language" : "fi"
+  }, {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/en/node/1981/",
+    "value" : "Vaasa-opisto",
+    "language" : "en"
+  }, {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/sv/node/1981/",
+    "value" : "Vaasa-opisto",
+    "language" : "sv"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Koulukatu",
+        "language" : "en"
+      }, {
+        "value" : "Koulukatu",
+        "language" : "fi"
+      }, {
+        "value" : "Koulukatu",
+        "language" : "sv"
+      } ],
+      "streetNumber" : "2",
+      "postalCode" : "61500",
+      "postOffice" : [ {
+        "value" : "ISOKYRÖ",
+        "language" : "sv"
+      }, {
+        "value" : "ISOKYRÖ",
+        "language" : "fi"
+      } ],
+      "municipality" : null,
+      "additionalInformation" : [ {
+        "value" : "Isonkyrön opistotalo",
+        "language" : "sv"
+      }, {
+        "value" : "Isonkyrön opistotalo",
+        "language" : "fi"
+      } ],
+      "latitude" : "6994364.767",
+      "longitude" : "263114.184",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "sv", "en", "fi" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "152",
+      "name" : [ {
+        "value" : "Storkyro",
+        "language" : "sv"
+      }, {
+        "value" : "Isokyrö",
+        "language" : "fi"
+      }, {
+        "value" : "Isokyrö",
+        "language" : "en"
+      } ]
+    }, {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    }, {
+      "code" : "399",
+      "name" : [ {
+        "value" : "Laihia",
+        "language" : "fi"
+      }, {
+        "value" : "Laihela",
+        "language" : "sv"
+      }, {
+        "value" : "Laihia",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "819bed3d-6147-4a22-a454-eac010516ce7",
+      "name" : "Kansalaisopistot"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ {
+    "value" : "vaasa-opisto@edu.vaasa.fi",
+    "language" : "fi"
+  }, {
+    "value" : "vaasa-opisto@edu.vaasa.fi",
+    "language" : "en"
+  }, {
+    "value" : "vaasa-opisto@edu.vaasa.fi",
+    "language" : "sv"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "en",
+    "value" : "Vaasa-opisto – the unit in Isokyrö",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Vaasa-opisto – verksamhetsenheten i Storkyro",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasa-opisto - Isonkyrön toimipiste",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Vaasan kaupungin suomenkielinen työväenopisto Vaasa-opisto tuottaa kansalaisopistopalveluja myös Isossakyrössä. Vaasa-opisto järjestää opetusta kielistä sekä taito-, taide- ja tietoaineista. Lue lisää Vaasa-opiston toiminnasta opiston kotisivuilta.\n",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Vasa stads finskspråkiga arbetarinstitut Vaasa-opisto producerar medborgarinstitutstjänster också i Storkyro.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Vasa stads finskspråkiga arbetarinstitut Vaasa-opisto producerar medborgarinstitutstjänster också i Storkyro. Vaasa-opisto ordnar undervisning i språk samt färdighets-, konst- och kunskapsämnen. Läs mera om Vaasa-opistos verksamhet på institutets webbsidor.\n",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan kaupungin suomenkielinen työväenopisto Vaasa-opisto tuottaa kansalaisopistopalveluja myös Isossakyrössä.",
+    "type" : "Summary"
+  }, {
+    "language" : "en",
+    "value" : "The Finnish-speaking workers institute of the City of Vaasa, Vaasa-opisto, also produce workers institute services in Isokyrö.",
+    "type" : "Summary"
+  }, {
+    "language" : "en",
+    "value" : "The Finnish-speaking workers institute of the City of Vaasa, Vaasa-opisto, also produce workers institute services in Isokyrö. Vaasa-opisto arranges education in different languages as well as practical, arts and theoretical subjects. Read more about the institute’s activities on the web pages of Vaasa-opisto.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "91b8ff5a-7918-4a61-a592-4471d088b9e3"
+}

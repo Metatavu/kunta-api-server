@@ -1,0 +1,173 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/kaupungin-organisaatio/tekninen-toimi/vaasan-talotoimi-liikelaitos",
+    "value" : "Vaasan Talotoimen verkkosivut",
+    "language" : "fi"
+  }, {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/sv/node/26157",
+    "value" : "Vasa Hussektorns webbsidor",
+    "language" : "sv"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Kirkkopuistikko",
+        "language" : "fi"
+      }, {
+        "value" : "Grusgatan",
+        "language" : "sv"
+      } ],
+      "streetNumber" : "26 A",
+      "postalCode" : "65100",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ ],
+      "latitude" : "7007388.61",
+      "longitude" : "228141.849",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  }, {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Sorakatu",
+        "language" : "fi"
+      }, {
+        "value" : "Kyrkoesplanaden",
+        "language" : "sv"
+      } ],
+      "streetNumber" : "2",
+      "postalCode" : "65100",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ ],
+      "latitude" : "7007175.844",
+      "longitude" : "230130.647",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "5ed3234b-84ee-4ba0-ba0e-35ad1b22dea0",
+      "name" : "Toimitilat ja niiden rakennuttaminen"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ {
+    "value" : "talotoimi@vaasa.fi",
+    "language" : "fi"
+  }, {
+    "value" : "talotoimi@vaasa.fi",
+    "language" : "sv"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Vaasan Talotoimi -liikelaitos",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Vasa Hussektor -affärsverk",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "Vasa Hussektor har i uppgift att producera lokalitetsservice som stadens olika förvaltningsområden behöver.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Vasa Hussektor har i uppgift att producera lokalitetsservice som stadens olika förvaltningsområden behöver. Hussektorns mål är att producera kostnadseffektiv lokalitetsservice så att de som använder lokalerna har tillgång till ändamålsenliga, säkra och hälsosamma lokaler. Utöver detta har Hussektorn som mål att sköta upprätthållandet av värdet på byggnadsegendomen i sin besittning.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan Talotoimi -liikelaitoksen tehtävänä on tuottaa toimitilapalveluita kaupungin eri hallinnonalojen tarpeisiin.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan Talotoimi -liikelaitoksen tehtävänä on tuottaa toimitilapalveluita kaupungin eri hallinnonalojen tarpeisiin. Talotoimen tavoitteena on tuottaa kustannustehokkaita toimitilapalveluita siten, että tilojen käyttäjillä on käytössään tarkoituksenmukaiset, turvalliset ja terveelliset toimitilat. Tämän lisäksi Talotoimen tavoitteena on huolehtia hallinnassaan olevan rakennusomaisuuden arvon säilymisestä.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "f1d7673c-57cf-4502-99d0-f3f938e877fd"
+}

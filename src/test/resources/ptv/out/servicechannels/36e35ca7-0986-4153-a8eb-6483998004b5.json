@@ -1,0 +1,61 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/sites/default/files/rekisteri_tietosuojaselosteista_2017.pdf",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/sites/default/files/register_inom_social-_och_halsosektorn_2017.pdf",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "e274966f-2cf2-4bdd-b3c5-5836166e3f14",
+      "name" : "Potilastietojen tarkistaminen"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Sosiaali- ja terveystoimen rekisterinpitäjät ja päätöksenteosta vastaavat",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Förteckning över registeransvariga och beslutsfattande personer",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Lista sosiaali- ja terveystoimen rekisterinpitäjistä ja päätöksenteosta vastaavista henkilöistä.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Förteckning över registeransvariga och beslutsfattande personer inom social- och hälsosektorn.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Förteckning över registeransvariga och beslutsfattande personer inom social- och hälsosektorn.\n\nBåde insynsbegäran och rättelseyrkandet skickas till den rätta registeransvarige.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Lista sosiaali- ja terveystoimen rekisterinpitäjistä ja päätöksenteosta vastaavista henkilöistä. \n\nKun kyseessä on asiakas- ja potilastietojen tarkistaminen/korjaus tai lokitietopyyntö, sekä tarkastuspyyntölomake että korjaamisvaatimuslomake lähetetään kyseiselle rekisterinpitäjälle.",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "36e35ca7-0986-4153-a8eb-6483998004b5"
+}

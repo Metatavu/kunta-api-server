@@ -1,0 +1,304 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Liikunta ja ulkoilu",
+      "language" : "fi"
+    }, {
+      "value" : "Motion och friluftsliv",
+      "language" : "sv"
+    }, {
+      "value" : "Sports and outdoor activities",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "I denna servicegrupp behandlas tjänster relaterade till motion, friluftsliv och fritidsverksamhet ute i naturen.",
+      "language" : "sv"
+    }, {
+      "value" : "Tässä palveluluokassa käsitellään kuntoliikuntaan, ulkoiluun ja luonnossa tapahtuvaan vapaa-ajan toimintaan liittyviä palveluja.",
+      "language" : "fi"
+    }, {
+      "value" : "This service class contains services related to keep-fit exercise, outdoor exercise and free-time activities in nature.",
+      "language" : "en"
+    } ],
+    "code" : "P27",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1210",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "Kultur",
+      "language" : "sv"
+    }, {
+      "value" : "Kulttuuri",
+      "language" : "fi"
+    }, {
+      "value" : "Culture",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "This service class contains a wide range of cultural services associated with different branches of arts, the library system, religious organisations and liberal adult education. The class also includes different free time services.",
+      "language" : "en"
+    }, {
+      "value" : "Tässä palveluluokassa käsitellään kulttuuripalveluja laajasti taiteen eri alojen, kirjastolaitoksen, uskonnollisten yhteisöjen ja vapaan sivistystyön puitteissa. Myös erilaiset vapaa-ajan palvelut kuuluvat tähän luokkaan.",
+      "language" : "fi"
+    }, {
+      "value" : "I denna servicegrupp behandlas kulturtjänster på ett omfattande plan inom ramen för olika konstarter, biblioteksväsendet, religiösa samfund och fritt bildningsarbete. Även olika fritidstjänster hör till denna grupp.",
+      "language" : "sv"
+    } ],
+    "code" : "P25",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1198",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "Kansalaisjärjestöjen toiminta",
+      "language" : "fi"
+    }, {
+      "value" : "Frivilligorganisationers verksamhet",
+      "language" : "sv"
+    }, {
+      "value" : "Activities of non-governmental organisations",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Tähän palvelualaluokkaan kuuluvat järjestöjen ja yhdistysten toimintaan ja sen lainmukaisuuteen kuuluvat asiat kuten kampanjointiin liittyvän nimien ja varojen keräämisen lupamenettelyt.",
+      "language" : "fi"
+    }, {
+      "value" : "Denna serviceundergrupp omfattar ärenden relaterade till organisationers och föreningars verksamhet och dess lagenlighet, såsom tillståndsförfaranden för insamling av namn och medel för kampanjer.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains issues related to the activities of organisations and associations and the legality of these activities, including permit procedures for collecting signatures and funds as part of campaigning.",
+      "language" : "en"
+    } ],
+    "code" : "P8.4",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1094",
+    "parentId" : "6621dcc1-803a-4984-b20e-16da4651a293",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1090"
+  }, {
+    "name" : [ {
+      "value" : "Vapaa-ajan palvelut",
+      "language" : "fi"
+    }, {
+      "value" : "Free-time services",
+      "language" : "en"
+    }, {
+      "value" : "Fritidstjänster",
+      "language" : "sv"
+    } ],
+    "description" : [ {
+      "value" : "Denna serviceundergrupp omfattar tjänster relaterade till fritiden på ett omfattande plan. Denna grupp omfattar inte motions- och idrottstjänster, som har en egen huvudgrupp.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains free-time services in a wide sense. The class does not include sports and exercise services, which have their own main class.",
+      "language" : "en"
+    }, {
+      "value" : "Tähän palvelualaluokkaan kuuluvat vapaa-ajan piiriin laajasti katsottavat palvelut. Tähän luokkaan eivät kuulu liikunnan ja urheilun palvelut, jotka ovat omassa pääluokassaan.",
+      "language" : "fi"
+    } ],
+    "code" : "P25.5",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1203",
+    "parentId" : "200f3f00-31b1-41cc-a986-2d9e4dc40fb7",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1198"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-28T11:21:23.282119",
+  "id" : "85445e96-f21d-402c-ad45-623652598b80",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "154a0c3b-1212-4355-9e99-b007cfb2eebe",
+      "name" : "Saaristolautakunnan avustusohjesääntö"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "313685e9-ddf5-4306-92cd-558ce929113f",
+      "name" : "Saaristolautakunnan esittelijä"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3994f38d-dc91-4105-be8a-5edd0d2ef739",
+      "name" : "Kirjaamo"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "5646b5f5-79fb-480d-81dd-16536f19021c",
+      "name" : "Merimaskun palvelupiste"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "7c33380c-ef73-4e59-9d2d-47a94c1d26f1",
+      "name" : "Saaristolautakunnan avustukset"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "7fd3a666-279b-42d3-8217-119d457de590",
+      "name" : "Kaupungintalon yhteispalvelupiste"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "89e95451-fdfb-4e95-a6fd-7a61ba449269",
+      "name" : "Velkuan palvelupiste"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "fff205fe-e420-43ea-8702-6a7a685c2b51",
+      "name" : "Rymättylän palvelupiste"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : "Avustuksen saajan kotipaikan tulee olla Naantali tai sen toiminnan kohde Naantalin saaristo- tai maaseutualue. Avustuksia voidaan myöntää rekisteröityjen kotiseutu- ja kyläyhdistysten sekä muiden alueen hyväksi toimivien yhdistysten ja säätiöiden toimintaan sekä saaristo- ja maaseutualueen tapahtumien ja hankkeiden toteuttamiseen.\n\nAvustusta myönnettäessä otetaan huomioon seuraavia tekijöitä: saaristo-ohjelman tavoitteiden toteuttaminen, yhdistysten toiminnan avoimuus, laajuus ja merkittävyys, paikallinen toiminta saariston kehittämisen ja edunvalvonnan hyväksi, saaristomatkailun kehittäminen, asukastoiminnan kehittäminen, saariston tapahtumien järjestäminen sekä saaristolaisperinteen vaaliminen.",
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Saaristolautakunnan myöntämät avustukset",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Yritykset ja yhteisöt",
+      "language" : "fi"
+    }, {
+      "value" : "Businesses and non-government organizations",
+      "language" : "en"
+    }, {
+      "value" : "Företag och samfund",
+      "language" : "sv"
+    } ],
+    "code" : "KR2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Naantalin kaupungin saaristolautakunnalta voit hakea avustusta Naantalin saaristo- ja maaseutualueilla toimiville yhdistyksille ja säätiöille.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : "Naantalin kaupungin saaristolautakunnalta voit hakea avustusta rekisteröidyille yhdistyksille ja säätiöille, jotka toimivat saaristo- ja maaseutualueen hyväksi.   Avustuksia voidaan myöntää kotiseutu- ja kyläyhdistysten sekä muiden alueen hyväksi toimivien yhdistysten ja säätiöiden toimintaan sekä saaristo- ja maaseutualueen tapahtumien ja hankkeiden toteuttamiseen.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Avustusten hakuaika on vuosittain maaliskuun loppuun mennessä. Toimita avustushakemus Naantalin kaupungin kirjaamoon. Hakemuksen mukaan tulee liittää edellisen toimintakauden toimintakertomus ja tilinpäätös sekä kuluvan toimintakauden toimintasuunnitelma ja talousarvio.\n\nAvustushakemuksia saa kaupungintalon, Merimaskun, Rymättylän ja Velkuan palvelupisteistä tai saaristolautakunnan esittelijältä, tai sen voi tulostaa verkosta. Palauta avustushakemus määräaikaan mennessä liitteineen saaristolautakunnalle osoitettuna.\n\nAvustukset maksetaan hakijan tilille sen jälkeen, kun avustuspäätös on saanut lainvoiman. Saaristolautakunta valvoo avustusten käyttöä taloussäännön § 21 mukaisesti. \n\nTarkempia tietoja avustuksista, niiden anomisesta ja maksatuksesta saa avustusohjesäännöstä ja saaristolautakunnan esittelijältä.",
+    "type" : "UserInstruction"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

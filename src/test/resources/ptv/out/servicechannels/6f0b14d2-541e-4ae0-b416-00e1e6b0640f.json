@@ -1,0 +1,149 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/tuottajat/himalaja",
+    "value" : "Himalajan palvelutalo",
+    "language" : "fi"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Himalajankatu",
+        "language" : "fi"
+      }, {
+        "value" : "Himalajagatan",
+        "language" : "sv"
+      } ],
+      "streetNumber" : "1",
+      "postalCode" : "65100",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ {
+        "value" : null,
+        "language" : "sv"
+      } ],
+      "latitude" : "7008149.459",
+      "longitude" : "229261.569",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "c687d556-4f17-44e9-bb64-9f7d02e4233e",
+      "name" : "Palveluasuminen"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Fax",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : null,
+    "isFinnishServiceNumber" : true,
+    "number" : null,
+    "language" : "sv"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "3252460",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63252460",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Himalaja",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Himalaja",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Himalaja on tehostettu ikäihmisten palvelutalo, joka muodostuu neljästä pienkodista.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Himalajan 1. ja 2. kerroksessa toimii 58-paikkainen tehostettu palvelutalo, joka muodostuu neljästä pienkodista. Yksi pienkodeista on ruotsinkielinen. Kolmannessa kerroksessa sijaitseva Venny ja Elvi on intervalliyksikkö. Yksikön toiminta on suunnattu kotona asuville ikäihmisille, jotka tarvitsevat kuntoutusta kotona asumisen tueksi. Palvelutalo on tarkoitettu ikäihmisille, jotka eivät selviä omassa kodissaan avopalveluiden tuella.\nAsukkaat asuvat vuokralla ja jokaisella on oma kylpyhuoneella varustettu huone. Jokainen kalustaa ja sisustaa oman huoneensa makunsa mukaan kodikseen, omilla huonekaluillaan ja tavaroillaan.\n\nLisäksi käytettävissä ovat yhteiset oleskelu-, ruokailu-, sauna- ja harrastetilat.\n\nJokaiselle asukkaalle tehdään henkilökohtainen palvelu- ja hoitosuunnitelma.\n\nSAS-työryhmä valitsee asukkaat. Lisätietoja antaa johtava sosiaalityöntekijä p. 0400 910 698.\n ",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Himalaja är ett servicehus som består av fyra småhem.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "I den första och andra våningen fungerar servicehuset med 58-platser som består av fyra småhem. Ett av småhemmen är svenskspråkigt. I den tredje våningen finns intervallenhet, Venny och Elvi. Enhetens verksamhet är riktad till hemmaboende seniorer som behöver rehabilitering.\nServicehuset är ämnat för seniorer som inte klarar sig i sina egna hem med stöd av öppenservicen.\n\nInvånarna bor på hyra och alla har ett rum som är försett med eget badrum. Var och en inreder och möblerar själv sina rum med egna möbler och saker enligt smak och tycke.\n\nDärtill finns gemensamma uppehålls-, måltids-, bastu- och hobbyutrymmen.\n\nFör invånarna uppgörs en individuell vård- och serviceplan.\n\nInvånarna väljs av SAS-byrån. Mera information ger ledande socialarbetare tfn 0400 910 698.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "6f0b14d2-541e-4ae0-b416-00e1e6b0640f"
+}

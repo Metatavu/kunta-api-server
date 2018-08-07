@@ -1,0 +1,65 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "attachments" : [ ],
+  "languages" : [ ],
+  "deliveryAddresses" : [ ],
+  "supportPhones" : [ ],
+  "formIdentifier" : [ ],
+  "areas" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "fb17ba7c-1207-4116-b098-d415763139f0",
+      "name" : "Kulttuuriavustukset ja -palkinnot"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "channelUrls" : [ {
+    "language" : "fi",
+    "value" : "https://vaasa.fi/sites/default/files/avustuslomake_bidragsblankett_2018.pdf",
+    "type" : "PDF"
+  }, {
+    "language" : "sv",
+    "value" : "https://vaasa.fi/sites/default/files/avustuslomake_bidragsblankett_2018.pdf",
+    "type" : "PDF"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Kulttuuriavustukset hakulomake",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Kulturunderstöds ansökningsblanketten",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "PrintableForm",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Voit hakea kulttuuriavustusta tällä lomakkeella.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Kulttuuriavustusten hakulomake",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Ansökan om kulturunderstöd 2018",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : " Staden delar årligen ut kulturunderstöd till kulturverksamhet.",
+    "type" : "Description"
+  } ],
+  "areaType" : null,
+  "publishingStatus" : "Published",
+  "modified" : "2018-05-03T12:22:44.528461",
+  "id" : "48ad674a-6d02-442d-8284-1bef73da8ccc"
+}

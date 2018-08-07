@@ -1,0 +1,113 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/lansimetsan-koulu",
+    "value" : "Länsimetsän koulun verkkosivut",
+    "language" : "fi"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Länsimetsäntie",
+        "language" : "fi"
+      } ],
+      "streetNumber" : "10",
+      "postalCode" : "65280",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ ],
+      "latitude" : "7011792.719",
+      "longitude" : "226639.73",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "17c633dd-5408-495a-86c1-d8f57598e899",
+      "name" : "Perusopetus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : "Rehtori",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "407473096",
+    "language" : "fi"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Länsimetsän koulu",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Länsimetsän koulussa on noin 330 oppilasta vuosiluokilla 1-6.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Länsimetsän koulussa on noin 330 oppilasta vuosiluokilla 1-6. Suomenkielisen yleisopetuksen lisäksi koulussa annetaan kielikylpyopetusta ruotsin kielellä 1. ja 2. luokalla. Koulu sijaitsee luonnonläheisessä ympäristössä ja se näkyy myös koulun opetuksessa. Koulussa arvostetaan perinteitä, mutta samalla se pyrkii olemaan tulevaisuuteen suuntautunut, moderni ja avoimesti toimiva koulu, jonka arkipäivään kuuluu muun muassa nykyaikaisen tieto- ja viestintätekniikan hyödyntäminen. Länsimetsän koulu avasi ovensa tammikuussa 1999. Aluksi talossa toimi suomenkielisten 1-2 luokkien lisäksi ruotsinkielinen Gerby skolan, joka muutti omiin tiloihinsa jo seuraavana syksynä. Länsimetsän koulun toiminta-ajatus on “Vahva alku elämän koulutielle\n osaavassa ja turvallisessa ohjauksessa\n omalta pohjalta ponnistaen\n yhdessä toisten kanssa\n kohti maailman mahdollisuuksia.”",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "f1891bbe-34ed-467f-aaff-c19e60911de5"
+}

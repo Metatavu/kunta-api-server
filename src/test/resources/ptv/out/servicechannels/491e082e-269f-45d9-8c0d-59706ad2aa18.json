@@ -1,0 +1,93 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "",
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "202bb31f-fef0-454f-9958-66a53f91a190",
+      "name" : "Avohoito nuorille"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63252850",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63252850",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Klaaran puhelinasiointi",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Telefonkontakt med Klaara",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "Phone",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Nuorisoasema Klaaraan voit ottaa yhteyttä ja varata aikoja muun muassa puhelimitse. Myös neuvontaa ja ohjausta voidaan toteuttaa puhelimitse. ",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Nuorisoasema Klaaraan voit ottaa yhteyttä ja varata aikoja muun muassa puhelimitse. Myös neuvontaa ja ohjausta voidaan toteuttaa puhelimitse.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Du kan kontakta ungdomsstationen Klaara och boka tider bland annat per telefon. Även rådgivning och handledning kan ske per telefon.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Du kan kontakta ungdomsstationen Klaara och boka tider bland annat per telefon. Även rådgivning och handledning kan ske per telefon. ",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "491e082e-269f-45d9-8c0d-59706ad2aa18"
+}

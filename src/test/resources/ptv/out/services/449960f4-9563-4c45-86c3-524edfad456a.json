@@ -1,0 +1,206 @@
+{
+  "sourceId" : null,
+  "keywords" : [ {
+    "value" : " sähköiset asiointipalvelut",
+    "language" : "fi"
+  } ],
+  "areas" : [ ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Tietosuoja ja henkilötiedot",
+      "language" : "fi"
+    }, {
+      "value" : "Datasekretess och personuppgifter",
+      "language" : "sv"
+    }, {
+      "value" : "Data protection and personal data",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "This service subclass contains services related to personal data and privacy protection, personal identifiers, travel documents and registers containing personal data. It also contains matters pertaining to a citizen's rights to control and use their personal data.",
+      "language" : "en"
+    }, {
+      "value" : "Tässä palvelualaluokassa käsitellään henkilötietojen ja yksityisyyden suojaan, henkilötunnuksiin ja -tunnisteisiin, matkustusasiakirjoihin ja henkilötietoja sisältäviin rekistereihin liittyviä palveluja sekä kansalaisen oikeuksia hallita ja käyttää omia tietojaan.",
+      "language" : "fi"
+    }, {
+      "value" : "Denna serviceundergrupp omfattar tjänster relaterad till skyddet av personuppgifter och integritet, personbeteckningar och -koder, resedokument och register med personuppgifter samt medborgarnas rättigheter att kontrollera och begränsa användningen av deras personuppgifter.",
+      "language" : "sv"
+    } ],
+    "code" : "P7.9",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1085",
+    "parentId" : "487549b3-a7de-4312-badb-2ee6bb390950",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1076"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "Nationwide",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2018-03-20T08:41:04.395827",
+  "id" : "449960f4-9563-4c45-86c3-524edfad456a",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "7aec0b28-015a-4b0d-9131-3b1e35f725f2",
+      "name" : "Varmenteiden testauspalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "839e3ff0-484b-45aa-bb52-784a1ab2c109",
+      "name" : "Varmenteiden neuvontapalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ {
+    "names" : [ {
+      "value" : "Laki väestötietojärjestelmästä ja Väestörekisterikeskuksen varmennepalveluista",
+      "language" : "fi"
+    } ],
+    "webPages" : [ {
+      "url" : "https://www.finlex.fi/fi/laki/ajantasa/2009/20090661",
+      "value" : null,
+      "language" : "fi"
+    } ]
+  }, {
+    "names" : [ {
+      "value" : "Laki vahvasta sähköisestä tunnistamisesta ja sähköisistä luottamuspalveluista",
+      "language" : "fi"
+    } ],
+    "webPages" : [ {
+      "url" : "https://www.finlex.fi/fi/laki/ajantasa/2009/20090617",
+      "value" : null,
+      "language" : "fi"
+    } ]
+  }, {
+    "names" : [ {
+      "value" : "Kotikuntalaki",
+      "language" : "fi"
+    } ],
+    "webPages" : [ {
+      "url" : "https://www.finlex.fi/fi/laki/ajantasa/1994/19940201",
+      "value" : null,
+      "language" : "fi"
+    } ]
+  }, {
+    "names" : [ {
+      "value" : "Henkilökorttilaki",
+      "language" : "fi"
+    } ],
+    "webPages" : [ {
+      "url" : "https://www.finlex.fi/fi/laki/ajantasa/2016/20160663",
+      "value" : null,
+      "language" : "fi"
+    } ]
+  } ],
+  "requirements" : [ {
+    "value" : "Kansalaisvarmenne voidaan myöntää Suomen kansalaiselle tai Suomessa vakinaisesti asuvalle ulkomaalaiselle, jonka henkilötiedot on talletettu väestötietojärjestelmään.",
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi", "sv", "en" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "Chargeable",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Kansalaisvarmenne",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Kansalaisvarmenne henkilökortilla",
+    "type" : "AlternativeName"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "tietoturva",
+      "language" : "fi"
+    }, {
+      "value" : "datasäkerhet",
+      "language" : "sv"
+    }, {
+      "value" : "data security",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p35296",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p33999;http://www.yso.fi/onto/koko/p34854"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Henkilökortin hintatiedot ovat saatavilla poliisin palveluhinnastosta.",
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : "Henkilökortilla oleva kansalaisvarmenne sisältää vahvan sähköisen tunnistusvälineen ja hyväksytyn sähköisen allekirjoituksen varmenteen.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Kansalaisvarmenne sisältyy poliisin myöntämään henkilökorttiin.\n\nKansalaisvarmenteen avulla henkilökortilla voi tunnistautua sähköisesti esimerkiksi viranomaisten asiointipalveluihin, salata sähköposteja ja dokumentteja sekä tehdä sähköisen allekirjoituksen. Sähköisesti allekirjoitettu asiakirja on juridisesti yhtä sitova kuin käsin allekirjoitettu. Kansalaisvarmenteen avulla tapahtuva sähköinen asiointi on turvallista. \n\nKansalaisvarmenne on eräänlainen sähköinen henkilöllisyystodistus, joka sisältää mm. etu- ja sukunimen sekä sähköisen asiointitunnuksen. Sähköinen asiointitunnus (SATU) toimii henkilön yksilöivänä tunnistetietona.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Henkilökorttia haetaan poliisilta. Voit hakea henkilökorttia poliisin sähköisessä asiointipalvelussa tai käymällä henkilökohtaisesti poliisin lupapalvelupisteessä. Henkilökortti toimitetaan valitsemaasi noutopisteeseen. Hakijan henkilöllisyys todistetaan henkilökohtaisen käynnin yhteydessä voimassa olevalla passilla tai voimassa olevalla henkilökortilla. Sähköisessä asioinnissa vaaditaan vahvaa sähköistä tunnistautumista.\n\nVoit käyttää kansalaisvarmennetta sähköisessä asioinnissa henkilökohtaisten PIN-tunnuslukujen avulla, jotka luodaan varmenteen aktivoinnin yhteydessä. Aktivointiin tarvitset aktivointitunnusluvun, kortinlukijan ja kortinlukijaohjelmiston. Aktivointitunnusluku toimitetaan sinulle postitse. Kortinlukijalaitteita myydään yleensä erilaisissa tietotekniikkatarvikkeita myyvissä liikkeissä. Joissakin tietokoneissa on kortinlukija valmiina. Kortinlukijaohjelmiston latauslinkit ja yksityiskohtaiset ohjeet varmenteen aktivointiin ovat saatavilla Väestörekisterikeskuksen verkkosivuilla.\n\nHenkilökortin käyttö matkustusasiakirjana ja henkilöllisyystodistuksena ei edellytä kansalaisvarmenteen aktivointia.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "b458d033-042d-4cbe-b030-34e81da28821",
+      "name" : "Väestörekisterikeskus"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "b458d033-042d-4cbe-b030-34e81da28821",
+      "name" : "Väestörekisterikeskus"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

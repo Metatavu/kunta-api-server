@@ -1,0 +1,88 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "73ff8109-ab84-416d-a858-be94413c93a9",
+      "name" : "Suun terveydenhuolto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63251224",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63251224",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Hammashuollon asiakaslaskutus",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Fakturering av klienter inom tandvården",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "Phone",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Hammashuollon asiakaslaskutuksen palvelunumero vastaa tiedusteluihin laskuista ja niiden maksamisesta.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Tietoa hammashuollon asiakaslaskutuksesta ja maksamisesta",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Fakturering av klienter inom tandvården",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "På servicenumret till klientfaktureringen inom tandvården besvaras frågor om fakturor och betalningen av dem. ",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "67b473f1-296b-40f8-a33f-d0394798d0ba"
+}

@@ -1,0 +1,99 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "0aa3d969-e80b-4e20-89b2-9681eb0fd02a",
+      "name" : "Lapsi- ja perhesosiaalityö"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "2659766d-af0e-44b6-8305-a3ab9b0ae712",
+      "name" : "Lastensuojelun sijaishuolto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63252564",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63252564",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Johtava sosiaalityöntekijä - lapsi- ja perhesosiaalityön palvelutarpeen arviointi",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Ledande socialarbetare - Barn- och familjesocialarbete, bedömning av servicebehov",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "Phone",
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "Ledande socialarbetare - Barn- och familjesocialarbete, bedömning av servicebehov",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Ledande socialarbetare - Barn- och familjesocialarbete, bedömning av servicebehov.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Johtava sosiaalityöntekijä - lapsi- ja perhesosiaalityön palvelutarpeen arviointi.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Johtava sosiaalityöntekijä - lapsi- ja perhesosiaalityön palvelutarpeen arviointi",
+    "type" : "Summary"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "090e8fd3-14be-4847-a056-f06bc7c010bd"
+}

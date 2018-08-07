@@ -1,0 +1,55 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "http://www.naantali.fi/perhe_ja_sosiaali/aikuissosiaalityo/fi_FI/aikuissosiaalityo/",
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "6365e70f-6c55-4f8c-bc94-9afd532757cd",
+      "name" : "Asunnottomien palveluohjaus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "668f5276-8371-47e5-a260-400f0037c133",
+      "name" : "Mielenterveyskuntoutujien asumispalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Aikuissosiaalityön verkkosivu",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Naantalin kaupungin aikuissosiaalityön verkkosivu.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Aikuissosiaalityön verkkosivulta löydät tietoa Naantalin kaupungin aikuissosiaalityöstä.",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "d2ec2033-ff24-4603-8957-25b507cd5f3a"
+}

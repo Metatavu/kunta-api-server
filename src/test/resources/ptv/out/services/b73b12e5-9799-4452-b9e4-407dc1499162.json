@@ -1,0 +1,262 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Perheiden palvelut",
+      "language" : "fi"
+    }, {
+      "value" : "Tjänster för familjer",
+      "language" : "sv"
+    }, {
+      "value" : "Services for families",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "I denna servicegrupp behandlas tjänster för barnfamiljer, som i huvudsak omfattar perioden från graviditeten till att en ung person blir myndig. I innehållet i servicegruppen granskas tjänsterna för familjer och situationer ofta via aktörer, situationer och synvinklar.",
+      "language" : "sv"
+    }, {
+      "value" : "Tässä palveluluokassa käsitellään lapsiperheen palveluja, jotka pääosin kattavat ajanjakson raskausajasta nuoren täysi-ikäiseksi tulemiseen. Palveluluokan sisällössä perheen palveluja ja tilanteita tarkastellaan useiden toimijoiden, tilanteiden ja näkökulmien kautta.",
+      "language" : "fi"
+    }, {
+      "value" : "This service class contains services for families with children, mainly covering the period from pregnancy until a young person turns 18. In the contents of this service class, family services are examined from the perspective of different actors, situations and viewpoints.",
+      "language" : "en"
+    } ],
+    "code" : "P3",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1013",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "b73b12e5-9799-4452-b9e4-407dc1499162",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "4569ea04-2153-496b-923a-762e1ea78ec8",
+      "name" : "Perhekeskus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "47855bd6-eb54-4fb2-8ced-2177f1305cd7",
+      "name" : "Helmi - kohtauspaikka naisille"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "6a65e2f3-45a8-4107-93fb-79a5883472e0",
+      "name" : "Perhekeskuksen verkkosivu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "sv",
+    "value" : "Familjecentret",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Perhekeskuksen palvelut",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "perhekeskukset (keskukset)",
+      "language" : "fi"
+    }, {
+      "value" : "familjecentra",
+      "language" : "sv"
+    } ],
+    "code" : null,
+    "ontologyType" : "TERO",
+    "uri" : "http://www.yso.fi/onto/koko/p76747",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p36172"
+  }, {
+    "name" : [ {
+      "value" : "perhekeskukset (keskukset, sosiaalipalveluja antavat palveluyksiköt)",
+      "language" : "fi"
+    }, {
+      "value" : "familjecentraler",
+      "language" : "sv"
+    }, {
+      "value" : "family centres",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p52740",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p68313;http://www.yso.fi/onto/koko/p36172"
+  } ],
+  "lifeEvents" : [ {
+    "name" : [ {
+      "value" : "Att få barn",
+      "language" : "sv"
+    }, {
+      "value" : "Having a child",
+      "language" : "en"
+    }, {
+      "value" : "Lapsen saaminen",
+      "language" : "fi"
+    } ],
+    "code" : "KE1",
+    "ontologyType" : "LIFESITUATION",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v3001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Perhekeskustoiminta perustuu perheiden osallisuuteen, vertaistukeen, perhelähtöisyyteen, moniammatilliseen toimintaan ja kumppanuuteen.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Perhekeskustoiminta perustuu perheiden osallisuuteen, vertaistukeen, perhelähtöisyyteen, moniammatilliseen toimintaan ja kumppanuuteen.\n\nTavoitteena on kehittää asuinalueiden yhteisöllisyyttä, joka lisää asukkaiden viihtyvyyttä ja sosiaalisia verkostoja.\n\nPerhekeskustoimintamalli on moniammatillista tiimityötä, jossa perheet ja toimijatahot verkostoituvat yhteistyöhön.\n\nPerhekeskus on yhteistyölle rakentuva ajattelu- ja toimintamalli, jonka tavoitteena on vahvistaa lapsiperheiden hyvinvointia, vanhempien parisuhdetta ja vanhemmuutta. Työ on moniammatillista ja verkostoitunutta. Tavoitteena on rakentaa entistä vahvempi varhaisen tuen toimintamalli, jossa keskeisenä tekijänä on vuorovaikutus perheiden ja heidän kanssaan työskentelevien työntekijöiden välillä. Mahdollisiin ongelmiin pyritään puuttumaan varhain tekemällä ennaltaehkäisevää työtä. Monessa tapauksessa tämä tarkoittaa sosiaalisten kontaktien lisäämistä.\n\nYhteiskunta on nykyään on yhä monimuotoisempi niin arvoiltaan, väestöltään kuin toiminnaltaankin. Asukkailla on mahdollisuus rikastuttaa oman asuinalueensa toimivuutta ja yhteenkuuluvuuden tunnetta. Perhekeskustoiminta perustuu kansalaisaktiivisuuden varaan. Viranomaistoiminta mahdollistaa ja tukee asukkaiden oma-aloitteisuutta sekä toimii käyntiin panevana voimana.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : "Målet är att utveckla samhörigheten på bostadsområdena, vilket ökar invånarnas trivsel och främjar sociala nätverk.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Målet är att utveckla samhörigheten på bostadsområdena, vilket ökar invånarnas trivsel och främjar sociala nätverk.\n\nFamiljecentrets verksamhet byggs upp kring en tanke- och verksamhetsmodell som baserar sig på samarbete och vars mål är att stärka barnfamiljernas välmående, föräldrarnas parrelation och föräldraskapet.  Arbetet är branschöverskridande och nätverkande.  Målet är att utveckla en allt starkare handlingsmodell för tidigt stöd, där en central faktor är växelverkan mellan familjerna och arbetstagarna som jobbar med dem.  I eventuella problem försöker man ingripa tidigt genom förebyggande arbete. I många fall innebär detta en utökning av de sociala kontakterna.\n\nSamhället är nuförtiden allt mångformigare både i fråga om värden, befolkning och verksamhet.  Invånarna har möjlighet att berika sitt bostadsområde genom ökad funktionsduglighet och samhörighet. Familjecenterverksamheten baserar sig på medborgaraktivitet.  Myndighetsverksamheten möjliggör och stöder invånarnas eget initiativ och fungerar som igångsättande kraft.\n\nMänniskan har ett behov av att höra till ett sammanhang.  För en del är det arbetsgemenskapen, familjen, släkten, hobbygruppen… Det kan också vara det egna bostadsområdet och människorna där! Någon är bra att skriva, någon att teckna, någon att leda, någon tycker om att motionera, att baka, att servera kaffe eller att arbeta med hantverk! Vi kan allt möjligt och alla behövs! Det finns nog sådana som vill göra saker, bara arbetsmängden som krävs är rimlig!\n",
+    "type" : "Description"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

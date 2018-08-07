@@ -1,0 +1,101 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/node/25391",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/sv/node/25391",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "31b705f5-fee4-49a0-b9d6-7e74886a1fb1",
+      "name" : "Oppilaanohjaus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "405738544",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "0405738544",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "sv",
+    "value" : "Variskan koulus elevhandledare",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Variskan koulun oppilaanohjaaja",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "Phone",
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "I ärenden som ansluter sig till elevhandledning kan du kontakta Variskan koulus elevhandledare per telefon. ",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "I ärenden som ansluter sig till elevhandledning kan du kontakta Variskan koulus elevhandledare per telefon.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Oppilaanohjaukseen liittyvissä asioissa voit olla yhteyksissä puhelimitse Variskan koulun oppilaanohjaajaan.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Oppilaanohjaukseen liittyvissä asioissa voit olla yhteyksissä puhelimitse Variskan koulun oppilaanohjaajaan.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "e972a60f-cb18-4c01-a463-f20c975eac92"
+}

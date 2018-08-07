@@ -1,0 +1,129 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/node/15271",
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi", "sv", "en" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "ee407e80-061b-4632-be2f-41c40a5e4790",
+      "name" : "Fysioterapian palvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63251995",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63251995",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Fysioterapian keskitetty puhelinpalvelu",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Fysioterapins gemensamma telefon",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ {
+    "serviceHourType" : "DaysOfTheWeek",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ {
+      "value" : null,
+      "language" : "fi"
+    } ],
+    "openingHour" : [ {
+      "dayFrom" : "Monday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "11:00:00"
+    }, {
+      "dayFrom" : "Tuesday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "11:00:00"
+    }, {
+      "dayFrom" : "Wednesday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "11:00:00"
+    }, {
+      "dayFrom" : "Thursday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "11:00:00"
+    }, {
+      "dayFrom" : "Friday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "11:00:00"
+    } ]
+  } ],
+  "serviceChannelType" : "Phone",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Fysioterapian keskitetty puhelinpalvelu vastaa kyselyihin ja tiedusteluihin. Äkillisissä tuki- ja liikuntaelinten kiputiloissa hoitaja kirjoittaa lähetteen ja antaa sinulle seuraavan vapaan ajan fysioterapeutin suoravastaanotolle.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Fysioterapian keskitetty puhelinpalvelu vastaa kyselyihin ja tiedusteluihin.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Fysioterapins gemensamma telefon",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Fysioterapins gemensamma telefon svarar på frågor i anslutning till fysioterapi för vuxna och barn.\n\nI akuta smärttillstånd i stöd- och rörelseorganen skriver skötaren ut en remiss och ger dig följande lediga tid till fysioterapeutens direktmottagning.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "7d5d7b0c-2474-45b4-ac22-f0f4864bc33c"
+}

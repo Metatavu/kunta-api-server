@@ -1,0 +1,61 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/node/8471",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/sv/node/8471",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "ce286f65-f041-4fea-aba0-a8aeac7cba7d",
+      "name" : "Katujen suunnittelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Katujen suunnittelu",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Gatuplanering",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Verkkosivuilta löydät lisätietoa katujen suunnittelusta, suunnitelmien katsomisesta ja muistutusten tekemisestä. ",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Verkkosivuilta löydät lisätietoa katujen suunnittelusta, suunnitelmien katsomisesta ja muistutusten tekemisestä.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "På webbsidorna hittar du mer information om gatuplanering, planer och inlämnande av anmärkningar.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "På webbsidorna hittar du mer information om gatuplanering, planer och inlämnande av anmärkningar. ",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "bc3696c8-212d-4214-8112-d5358a00dd83"
+}

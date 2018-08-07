@@ -1,0 +1,141 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Vöyrinkatu",
+        "language" : "fi"
+      }, {
+        "value" : "Vörågatan",
+        "language" : "sv"
+      } ],
+      "streetNumber" : "46",
+      "postalCode" : "65100",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ {
+        "value" : "1. kerros",
+        "language" : "fi"
+      }, {
+        "value" : "1 vån",
+        "language" : "sv"
+      } ],
+      "latitude" : "7007876.311",
+      "longitude" : "228810.459",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "e2fbafcd-b81d-4f77-a604-d6646c7203e6",
+      "name" : "Nuorten päihdehoito"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : "Sosiaaliohjaaja",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "406804091",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "406804091",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ {
+    "value" : "tiina.rinne@vaasa.fi",
+    "language" : "fi"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Nuorten päihdepysäkki Haavi",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Håven – hjälpstation för missbrukande ungdomar",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Nuorten päihdepysäkki Haavi on päihdepalvelujen ja lastensuojelun palvelumuoto. Haavin toiminta on suunnattu 12−18-vuotiaille nuorille.\n\nHaavin toimintamuotoja ovat päihteiden käytön kartoitus, nuoren elämäntilanteen selvittely ja jatkohoitoon ohjaus.\n\n",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Nuorten päihdepysäkki Haavi on päihdepalvelujen ja lastensuojelun palvelumuoto. Haavin toiminta on suunnattu 12−18-vuotiaille nuorille.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Håven – hjälpstation för missbrukande ungdomar är en serviceform bestående av missbrukarservice och barnskydd.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Håven – hjälpstation för missbrukande ungdomar är en serviceform bestående av missbrukarservice och barnskydd.\n\nHåvens verksamhetsformer är kartläggning av rusmedelsanvändningen, utredning av den ungas livssituation och hänvisning till fortsatt vård.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "59fcbbf8-1a55-445f-957c-d2d6ef9bfd10"
+}

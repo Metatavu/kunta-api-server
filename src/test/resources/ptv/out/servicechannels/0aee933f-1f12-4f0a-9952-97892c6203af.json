@@ -1,0 +1,91 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "e940104d-f78b-4efd-b18b-976984cc0d82",
+      "name" : "Tapahtumatekniikkapalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "400404171",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "400404171",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Tekniikkavastaava - Kulttuurikeskus",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Teknikansvarig – Kulturcentret",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "Phone",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Kulttuurikeskuksen tekniikkavastaava neuvoo lava-, ääni- ja valotekniikkapalveluihin liityvissä asioissa.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Kulturcentrets teknikansvariga ger råd i ärenden som gäller scen-, ljud- och ljustekniska tjänster.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Kulturcentrets teknikansvariga ger råd i ärenden som gäller scen-, ljud- och ljustekniska tjänster.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Kulttuurikeskuksen tekniikkavastaava neuvoo lava-, ääni- ja valotekniikkapalveluihin liittyvissä asioissa.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "0aee933f-1f12-4f0a-9952-97892c6203af"
+}

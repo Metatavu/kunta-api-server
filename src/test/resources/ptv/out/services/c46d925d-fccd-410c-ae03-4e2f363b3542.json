@@ -1,0 +1,159 @@
+{
+  "sourceId" : null,
+  "keywords" : [ {
+    "value" : "Asiointilupa, asiointivaltuudet",
+    "language" : "fi"
+  } ],
+  "areas" : [ ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Oikeusturva",
+      "language" : "fi"
+    }, {
+      "value" : "Rättssäkerhet",
+      "language" : "sv"
+    }, {
+      "value" : "Legal protection",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "This service class contains services related to fundamental rights, legislation, court processes and instances, protection of privacy, minorities and immaterial rights. Rather than being included in this class, consumer issues have a main class of their own.",
+      "language" : "en"
+    }, {
+      "value" : "Tässä palveluluokassa käsitellään perusoikeuksiin, lainsäädäntöön, oikeusprosesseihin ja -asteisiin, yksilönsuojaan, vähemmistöihin ja immateriaalioikeuksiin liittyviä palveluja. Kuluttaja-asioita ei käsitellä tässä luokassa, vaan omassa pääluokassaan.",
+      "language" : "fi"
+    }, {
+      "value" : "I denna servicegrupp behandlas tjänster relaterade till grundläggande rättigheter, lagstiftning, rättsprocesser och -instanser, skydd för privatlivet, minoriteter samt immaterialrätt. Konsumentärenden behandlas inte i denna grupp, utan i en egen huvudgrupp.",
+      "language" : "sv"
+    } ],
+    "code" : "P7",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1076",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "Nationwide",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "c46d925d-fccd-410c-ae03-4e2f363b3542",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "fc0c0a42-ecb9-45d7-8898-a73378bf4415",
+      "name" : "Suomi.fi-valtuuksien käyttöönotto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : "Palvelun käyttäminen edellyttää palvelun käyttöönottoa ja käyttöehtojen hyväksymistä. Organisaation asiointipalvelussa tulee olla käytössä vahvan tunnistamisen tunnistuspalvelu. Palvelua hyödyntävän organisaation on toteutettava liittymä rajapinnan kautta Suomi.fi-palveluväylään sekä lisättävä rooli- ja valtuuskyselyt oman palvelunsa toiminnallisuuteen. Lisäksi organisaation tulee tehdä asiointipalvelujärjestelmäänsä tarvittavat käyttöliittymä- ja sovellusmuutokset. Organisaatio tarvitsee VTJ-tietoluvan sekä Väestörekisterikeskuksen palvelinvarmenteen, jos palvelua käytetään Suomi.fi-palveluväylän kautta.",
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : null,
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Valtuuksien tarkastaminen Suomi.fi-valtuuksien avulla ja valtuusrekisteri",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Valtuuden tarkastaminen Suomi.fi-valtuuksien avulla",
+    "type" : "AlternativeName"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "tietoon perustuva suostumus",
+      "language" : "fi"
+    }, {
+      "value" : "informerat samtycke",
+      "language" : "sv"
+    }, {
+      "value" : "informed consent",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "TERO",
+    "uri" : "http://www.yso.fi/onto/koko/p51717",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p53859"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Yritykset ja yhteisöt",
+      "language" : "fi"
+    }, {
+      "value" : "Businesses and non-government organizations",
+      "language" : "en"
+    }, {
+      "value" : "Företag och samfund",
+      "language" : "sv"
+    } ],
+    "code" : "KR2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "Viranomaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Authorities",
+      "language" : "en"
+    }, {
+      "value" : "Myndigheter",
+      "language" : "sv"
+    } ],
+    "code" : "KR3",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2017",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Palvelun avulla organisaatio tarkistaa henkilön oikeuden asioida toisen henkilön tai yrityksen puolesta.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Suomi.fi-valtuuksien avulla organisaatio voi tarkistaa henkilön laillisen oikeuden asioida toisen henkilön tai yrityksen puolesta. Palvelu tarkistaa oikeudet suoraan olemassa olevista rekistereistä (esimerkiksi väestötietojärjestelmä ja kaupparekisteri) ja välittää tiedon automaattisesti organisaation sähköiselle asiointipalvelulle. Lisäksi palvelussa rakennetaan kansallinen valtuusrekisteri. Organisaatio voi liittyä kansalliseen valtuusrekisteriin, jolloin kansalainen tai yrityksen edustaja pystyy luomaan valtuuksia organisaation asiointipalveluun. Esimerkiksi pankki voisi liittyä valtuusrekisteriin, jolloin kansalainen voi valtuuttaa toisen henkilön hoitamaan pankkiasioitaan kyseisessä pankissa. Suomi.fi-valtuudet on tarkoitettu julkiselle ja yksityiselle sektorille.",
+    "type" : "Description"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "b458d033-042d-4cbe-b030-34e81da28821",
+      "name" : "Väestörekisterikeskus"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "b458d033-042d-4cbe-b030-34e81da28821",
+      "name" : "Väestörekisterikeskus"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

@@ -1,0 +1,131 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "attachments" : [ ],
+  "languages" : [ ],
+  "deliveryAddresses" : [ {
+    "subType" : "Street",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Kirkkopuistikko",
+        "language" : "fi"
+      }, {
+        "value" : "Kyrkoesplanaden",
+        "language" : "sv"
+      } ],
+      "streetNumber" : "26 A",
+      "postalCode" : "65101",
+      "postOffice" : [ {
+        "value" : "VAASA",
+        "language" : "fi"
+      }, {
+        "value" : "VASA",
+        "language" : "sv"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ ]
+    },
+    "deliveryAddressInText" : null,
+    "receiver" : [ {
+      "value" : "Kiinteistötoimi",
+      "language" : "fi"
+    }, {
+      "value" : "Fastighetssektorn",
+      "language" : "sv"
+    } ]
+  } ],
+  "supportPhones" : [ ],
+  "formIdentifier" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "0d38d2ee-b81d-4683-a019-2d1328f58687",
+      "name" : "Tontit rakentamiseen"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "channelUrls" : [ {
+    "language" : "fi",
+    "value" : "https://www.vaasa.fi/sites/default/files/atoms/files/pientalotonttihakemus.pdf",
+    "type" : "PDF"
+  }, {
+    "language" : "sv",
+    "value" : "https://www.vaasa.fi/sites/default/files/atoms/files/pientalotonttihakemus.pdf",
+    "type" : "PDF"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Pientalotonttihakemus",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Ansökan om småhustomt",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "PrintableForm",
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "Med ansökan om småhustomt kan du söka bostadstomter i Vasa.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Pientalotonttihakemuksella voit hakea asuntotontteja Vaasassa. Hakulomakkeen voi tulostaa verkossa. Hakulomakkeita saa myös kiinteistötoimesta ja Kansalaisinfosta.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Pientalotonttihakemuksella voit hakea asuntotontteja Vaasassa.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Med ansökan om småhustomt kan du söka bostadstomter i Vasa. Ansökningsblanketten kan skrivas ut på nätet. Ansökningsblanketter fås också på fastighetssektorn och Medborgarinfon. \n",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "ec6c5f45-d38c-4220-8b76-1b0e591800af"
+}

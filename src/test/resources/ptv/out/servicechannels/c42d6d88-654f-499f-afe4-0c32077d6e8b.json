@@ -1,0 +1,78 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://reittiopas.vaasa.fi/reittiopas/main",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://reittiopas.vaasa.fi/reittiopas/main?lang=2",
+    "value" : null,
+    "language" : "en"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://reittiopas.vaasa.fi/reittiopas/main?lang=3",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv", "en" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "2fce2731-41b3-430c-9823-cbd58ac1d3f5",
+      "name" : "Bussit - Paikallisliikenne"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "sv",
+    "value" : "Reseplaneraren",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Reittiopas",
+    "type" : "Name"
+  }, {
+    "language" : "en",
+    "value" : "Journey Planner",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "Reseplaneraren",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Reittiopas Vaasa",
+    "type" : "Summary"
+  }, {
+    "language" : "en",
+    "value" : "Journey Planner",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Reseplaneraren",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Reittiopas Vaasa",
+    "type" : "Description"
+  }, {
+    "language" : "en",
+    "value" : "Journey Planner",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-11-06T10:48:23.392284",
+  "id" : "c42d6d88-654f-499f-afe4-0c32077d6e8b"
+}

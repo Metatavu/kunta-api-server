@@ -1,0 +1,61 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/node/13251/",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/sv/node/13251/",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "dbd66199-6da4-437d-bb7b-99c6eacf3ef0",
+      "name" : "Perusopetuksen aamu- ja iltapäivätoiminta"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Perusopetuksen aamu- ja iltapäivätoiminta",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Morgon- och eftermiddagsverksamhet inom den grundläggande utbildningen",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "Om morgon- och eftermiddagsverksamheten inom den grundläggande utbildningen kan du läsa mera på Vasa stads sidor.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Perusopetuksen aamu- ja iltapäivätoiminnasta voit lukea lisää Vaasan kaupungin sivuilta.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Perusopetuksen aamu- ja iltapäivätoiminnasta voit lukea lisää Vaasan kaupungin sivuilta.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Om morgon- och eftermiddagsverksamheten inom den grundläggande utbildningen kan du läsa mera på Vasa stads sidor.\n",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "53b6e1af-8305-4dcf-89bb-877daa1b89ac"
+}

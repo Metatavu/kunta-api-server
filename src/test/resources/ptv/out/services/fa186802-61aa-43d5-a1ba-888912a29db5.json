@@ -1,0 +1,255 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Tuettu työllistyminen",
+      "language" : "fi"
+    }, {
+      "value" : "Beredskapsarbete",
+      "language" : "sv"
+    }, {
+      "value" : "Subsidised employment",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Denna serviceundergrupp omfattar tjänsterna för stödd sysselsättning vars kundgrupper är långtidsarbetslösa, partiellt arbetsföra, personer med funktionsnedsättning och andra arbetssökande vars möjligheter att få arbete på den öppna arbetsmarknaden är mindre. Tjänsterna för stödd sysselsättning omfattar t.ex. lönesubvention, karriärträning, arbetsprövning och stöd för specialarrangemang å arbetsplatsen. Denna grupp omfattar också stöd och rådgivning för arbetsgivare i anslutning till beredskapsarbete.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains services of subsidised employment whose target groups are persons with extended unemployment periods, persons with reduced working capability, the handicapped and other groups with weakened opportunities for employment in the open labour market. Subsidised employment services include e.g. pay subsidy, job coaching, work try-outs and subsidy for arranging working conditions. This service subclass also includes employers' information services on subsidised employment.",
+      "language" : "en"
+    }, {
+      "value" : "Tähän palvelualaluokkaan kuuluvat tuetun työllistymisen palvelut, joiden asiakasryhmiä ovat pitkään työttömänä olleet, osatyökykyiset, vammaiset ja muut työnhakijat, joiden työnsaantimahdollisuudet avoimilla työmarkkinoilla ovat tavallista heikommat. Tuetun työllistymisen palveluja ovat mm. palkkatuki, työhönvalmennus, työkokeilu ja työolosuhteiden järjestelytuki. Tähän luokkaan kuuluu myös työnantajien neuvonta tuettuun työllistymiseen liittyen.",
+      "language" : "fi"
+    } ],
+    "code" : "P10.7",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1103",
+    "parentId" : "e30562f5-0141-4d5c-bc25-e24679dba4d4",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1096"
+  }, {
+    "name" : [ {
+      "value" : "Vammaisten muut kuin asumis- ja kotipalvelut",
+      "language" : "fi"
+    }, {
+      "value" : "Andra än boende- och hemservice för personer med funktionsnedsättning",
+      "language" : "sv"
+    }, {
+      "value" : "Services for the disabled other than housing and home services",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Till denna serviceundergrupp hör andra än boendeservice, bl.a. rehabiliterings-, tolknings- och färdtjänster för personer med funktionsnedsättning.",
+      "language" : "sv"
+    }, {
+      "value" : "Tähän alapalveluluokkaan kuuluvat vammaisten muut kuin asumispalvelut, muun muassa kuntoutus-, tulkkaus- ja kuljetuspalvelut.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains services for persons with disabilities, excluding housing services and including rehabilitation, interpretation and transport services.",
+      "language" : "en"
+    } ],
+    "code" : "P4.4",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1027",
+    "parentId" : "079b55da-af80-41ab-9346-c8fdd284afcf",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1023"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "1236c2a2-e1f5-417f-a6ef-4eda0b9a39b5",
+  "serviceVouchers" : [ ],
+  "modified" : "2018-01-09T12:44:40.048164",
+  "id" : "fa186802-61aa-43d5-a1ba-888912a29db5",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "29cdec15-2d70-45ba-8132-a26679995884",
+      "name" : "Työllistämispalvelujen sosiaaliohjaaja (asiakkaat A - L)"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "6dff6b65-fb93-43b3-9271-052e8ae1f1d4",
+      "name" : "Työllistämispalvelujen sosiaaliohjaaja (asiakkaat M - Ö)"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "9c079f65-3686-4f42-ad12-d15cfd40157e",
+      "name" : "Työllistämispalvelujen palvelupiste"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "aedc93c6-91c1-4914-aaa1-b838483af5bc",
+      "name" : "Työllisyysohjaaja"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "b958b2b9-9f92-43be-b751-5de1e8b54dc4",
+      "name" : "Työllistämispalvelujen verkkosivu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : "Tuetun työllistämisen palvelut on tarkoitettu ensisijaisesti vähintään 300 päivää työmarkkinatuella olleille naantalilaisille.",
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Tuettu työllistäminen",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Työllistämispalvelut",
+    "type" : "AlternativeName"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "tuettu työllistyminen",
+      "language" : "fi"
+    }, {
+      "value" : "stödd sysselsättning",
+      "language" : "sv"
+    }, {
+      "value" : "subsidised employment",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p10274",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p5158"
+  }, {
+    "name" : [ {
+      "value" : "työllistymistä tukeva toiminta",
+      "language" : "fi"
+    }, {
+      "value" : "sysselsättningsfrämjande verksamhet",
+      "language" : "sv"
+    }, {
+      "value" : "activities that support employment",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p65930",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p18203"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : "Naantalin kaupunki palkkaa naantalilaisia pitkäaikaistyöttömiä kaupungin eri toimialoille kahdeksan kuukauden palkkatuettuun työsuhteeseen. Paikat on tarkoitettu vähintään 300 päivää työmarkkinatuella olleille henkilöille.\n\nKaupungin tarjoamia palkkkatukipaikkoja on esimerkiksi varhaiskasvatuksessa, vanhuspalveluissa sekä ateria- ja siivouspalveluissa. Myös muilta aloilta on mahdollisuus saada palkkatukipaikkoja asiakkaan tarpeen mukaan.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Naantalin kaupunki palkkaa vähintään 300 päivää työmarkkinatuella olleita naantalilaisia palkkatuettuun työsuhteeseen eri toimialoille.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "* Työllistämispalvelujen sosiaaliohjaaja kutsuu sinut kirjeitse tapaamiseen, kun olet ollut 300 päivää työmarkkinatuella. Jatkotoimenpiteet suunnitellaan yksilöllisen tilanteesi mukaan.\n* Voit ottaa työllistämispalvelujen sosiaaliohjaajaan yhteyttä myös itse.",
+    "type" : "UserInstruction"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

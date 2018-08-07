@@ -1,0 +1,83 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "languages" : [ "fi" ],
+  "areas" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "a55b0b53-4267-4f76-acd4-6333ef308a1c",
+      "name" : "Lukiokoulutuksen opiskelijahuolto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "447334634",
+    "language" : "fi"
+  } ],
+  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Lukion koulukuraattori",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ {
+    "serviceHourType" : "DaysOfTheWeek",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ ],
+    "openingHour" : [ {
+      "dayFrom" : "Monday",
+      "dayTo" : "",
+      "from" : "09:00:00",
+      "to" : "15:00:00"
+    }, {
+      "dayFrom" : "Tuesday",
+      "dayTo" : "",
+      "from" : "09:00:00",
+      "to" : "15:00:00"
+    }, {
+      "dayFrom" : "Wednesday",
+      "dayTo" : "",
+      "from" : "09:00:00",
+      "to" : "15:00:00"
+    }, {
+      "dayFrom" : "Thursday",
+      "dayTo" : "",
+      "from" : "09:00:00",
+      "to" : "15:00:00"
+    }, {
+      "dayFrom" : "Friday",
+      "dayTo" : "",
+      "from" : "09:00:00",
+      "to" : "15:00:00"
+    } ]
+  } ],
+  "serviceChannelType" : "Phone",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Naantalin lukiossa työskentelee yksi koulukuraattori.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Naantalin lukiossa työskentelee yksi koulukuraattori. Vanhemmat tai oppilas itse voi ottaa yhteyttä koulukuraattoriin puhelimitse, sähköpostilla tai Wilma-viestillä.\n\nKoulukuraattoriin voi olla yhteydessä esimerkiksi seuraavissa asioissa:\n* Ystävyys- ja seurustelusuhteisiin liittyvät vaikeudet, koulukiusaaminen\n* Levottomuus, häirintä luokkatilanteissa\n* Lievät mielenterveyteen liittyvät vaikeudet\n* Huoli perheen hyvinvoinnista\n* Päihteiden käyttö",
+    "type" : "Description"
+  } ],
+  "areaType" : null,
+  "publishingStatus" : "Published",
+  "modified" : "2017-12-04T10:00:27.070805",
+  "id" : "3b892ed2-1286-4137-9f12-fc4008c06efc"
+}

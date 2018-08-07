@@ -1,0 +1,189 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "1",
+    "url" : "http://kuntsi.vaasa.fi/index.html",
+    "value" : "Kuntsin modernin taiteen museon verkkosivut",
+    "language" : "fi"
+  }, {
+    "orderNumber" : "1",
+    "url" : "http://kuntsi.vaasa.fi/swe/index.html",
+    "value" : "Kuntsis museums webbsidor",
+    "language" : "sv"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Sisäsatama",
+        "language" : "fi"
+      }, {
+        "value" : "Inre hamnen",
+        "language" : "sv"
+      } ],
+      "streetNumber" : null,
+      "postalCode" : "65100",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : null,
+      "additionalInformation" : [ ],
+      "latitude" : null,
+      "longitude" : null,
+      "coordinateState" : null
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  }, {
+    "type" : "Postal",
+    "subType" : "PostOfficeBox",
+    "postOfficeBoxAddress" : {
+      "postOfficeBox" : [ {
+        "value" : "PL 3",
+        "language" : "fi"
+      }, {
+        "value" : "PB 3",
+        "language" : "sv"
+      } ],
+      "postalCode" : "65101",
+      "postOffice" : [ {
+        "value" : "VAASA",
+        "language" : "fi"
+      }, {
+        "value" : "VASA",
+        "language" : "sv"
+      } ],
+      "municipality" : null,
+      "additionalInformation" : [ ]
+    },
+    "streetAddress" : null,
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "sv", "fi" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "3c746357-4921-4214-8ce0-025e729dfb70",
+      "name" : "Museopalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Fax",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63171046",
+    "language" : "fi"
+  }, {
+    "type" : "Fax",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63171046",
+    "language" : "sv"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "401830440",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "401830440",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ {
+    "value" : "kuntsi.info@vaasa.fi",
+    "language" : "fi"
+  }, {
+    "value" : "kuntsi.info@vaasa.fi",
+    "language" : "sv"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Kuntsin modernin taiteen museo",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Kuntsis museum för modern konst",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "Kuntsis museum för modern konst är ett museum för modern konst och nutidsbildkonst.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Kuntsin modernin taiteen museo on modernin ja nykykuvataiteen museo.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Kuntsin modernin taiteen museo on modernin ja nykykuvataiteen museo, joka järjestää vaihtuvia taidenäyttelyitä sekä museopedagogista ohjelmaa ja yleisötapahtumia. Kuntsin modernin taiteen museossa on museokauppa. \n\nLue lisää Kuntsin modernin taiteen museon toiminnasta ja katso aukioloajat museon verkkosivuilta.\n\n\n",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Kuntsis museum för modern konst är ett museum för modern konst och nutidsbildkonst som ordnar tillfälliga konstutställningar samt museipedagogiskt program och publika evenemang. Kuntsis museum för modern konst har en museibutik. \n\nLäs mera om verksamheten vid Kuntsis museum för modern konst och se öppettiderna på museets webbsidor.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "05888189-3960-45ea-976e-81642102038b"
+}

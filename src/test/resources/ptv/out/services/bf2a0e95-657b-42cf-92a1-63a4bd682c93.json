@@ -1,0 +1,188 @@
+{
+  "sourceId" : null,
+  "keywords" : [ {
+    "value" : "rakennustiedot",
+    "language" : "fi"
+  }, {
+    "value" : "kiinteistötiedot",
+    "language" : "fi"
+  }, {
+    "value" : "eVäestösuora",
+    "language" : "fi"
+  }, {
+    "value" : "VTJ suorakysely",
+    "language" : "fi"
+  } ],
+  "areas" : [ ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Generella informations- ja förvaltningstjänster",
+      "language" : "sv"
+    }, {
+      "value" : "General information and administrative services",
+      "language" : "en"
+    }, {
+      "value" : "Yleiset tieto- ja hallintopalvelut",
+      "language" : "fi"
+    } ],
+    "description" : [ {
+      "value" : "I denna servicegrupp behandlas informations-, förvaltnings- och stödtjänster riktade till medborgare, samfund och andra myndigheter som till innehållet kan hänföra sig till vilket ämne som helst och därför inte kan placeras under de andra offentliga förvaltningens servicegrupper.",
+      "language" : "sv"
+    }, {
+      "value" : "This service class features services that offer general information, administrative and support services to citizens and public and private organisations. These are services that are not connected to any specific service topic and for that reason cannot be included in the other main classes of the service classification.",
+      "language" : "en"
+    }, {
+      "value" : "Tässä palveluluokassa käsitellään kansalaisille, yhteisöille ja toisille viranomaisille tarjottavia tieto-, hallinto- ja tukipalveluja, jotka sisällöltään voivat liittyä mihin aiheeseen tahansa ja joita ei tämän vuoksi voida sijoittaa julkisen palvelun luokituksen muihin aiheluokkiin.",
+      "language" : "fi"
+    } ],
+    "code" : "P9",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1095",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "Nationwide",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "bf2a0e95-657b-42cf-92a1-63a4bd682c93",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "82aa191c-050e-4640-bace-52bdd09f9453",
+      "name" : "VTJkysely -palvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : "Väestötietojärjestelmän tiedot eivät ole julkisia, ja niiden käyttö edellyttää aina Väestörekisterikeskuksen käyttäjäorganisaatiolle myöntämää tietolupaa sekä käyttäjäorganisaation sitoutumista luvan ehtoihin. Luvan saajan tulee tutustua myönnetyn tietoluvan ehtoihin ja varmistaa, että väestötietojärjestelmän tietoja käsiteltäessä noudatetaan tietosuojaa ja tietojenkäsittelyn turvallisuutta koskevaa lainsäädäntöä ja viranomaisten määräyksiä. Väestötietojärjestelmästä saatuja tietoja ei saa luovuttaa kolmannelle osapuolelle ilman Väestörekisterikeskuksen tapauskohtaisesti myöntämää lupaa.",
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : null,
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "VTJkysely",
+    "type" : "AlternativeName"
+  }, {
+    "language" : "fi",
+    "value" : "VTJkysely-palvelu",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "befolkningsdata",
+      "language" : "sv"
+    }, {
+      "value" : "väestötiedot",
+      "language" : "fi"
+    }, {
+      "value" : "population data",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p55228",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p34386"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Yritykset ja yhteisöt",
+      "language" : "fi"
+    }, {
+      "value" : "Businesses and non-government organizations",
+      "language" : "en"
+    }, {
+      "value" : "Företag och samfund",
+      "language" : "sv"
+    } ],
+    "code" : "KR2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "Viranomaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Authorities",
+      "language" : "en"
+    }, {
+      "value" : "Myndigheter",
+      "language" : "sv"
+    } ],
+    "code" : "KR3",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2017",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : "Selainkäyttöinen palvelu, jonka avulla käyttäjät voivat hakea väestötietojärjestelmän (VTJ) tietoja.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Maksullinen palvelu, mutta julkishallinnolle maksuton.",
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : "VTJkyselyn käyttöönottoon vaadittavaa tietolupaa haetaan Väestörekisterikeskukselta. Tietolupahakemuksessa on ilmoitettava haettavien tietojen käyttötarkoitus ja hakemuksen yhteydessä on annettava selvitys tietojen käytöstä ja suojauksesta. Hakemuslomakkeet löytyvät Väestörekisterikeskuksen asiakassivustolta: www.eevertti.vrk.fi",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "VTJkysely on selainkäyttöinen, reaaliaikainen palvelu, jonka avulla käyttäjät voivat hakea tarvitsemiaan väestötietojärjestelmän tietoja. VTJkyselystä löytyvät kaikki väestötietojärjestelmään kirjatut henkilö-, rakennus- ja kiinteistötiedot. Palvelu on toiminnassa ympäri vuorokauden.",
+    "type" : "Description"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "b458d033-042d-4cbe-b030-34e81da28821",
+      "name" : "Väestörekisterikeskus"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "b458d033-042d-4cbe-b030-34e81da28821",
+      "name" : "Väestörekisterikeskus"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

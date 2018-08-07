@@ -1,0 +1,58 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "http://www.arkkitehtuuripankki.fi",
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "requiresSignature" : false,
+  "attachments" : [ ],
+  "languages" : [ ],
+  "supportPhones" : [ {
+    "additionalInformation" : "Hannu Ojala, Väestörekisterikeskus, kehityspäällikkö",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "295535123",
+    "language" : "fi"
+  } ],
+  "areas" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "4a3f3c92-834d-4f83-8a60-2251717b13e7",
+      "name" : "Julkisen hallinnon kokonaisarkkitehtuurin mallinnuspalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "b458d033-042d-4cbe-b030-34e81da28821",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Arkkitehtuuripankki.fi",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "EChannel",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Arkkitehtuuripankki.fi on julkisen hallinnon kokonaisarkkitehtuurin mallinnuspalvelu.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Arkkitehtuuripankki.fi on kokonaisarkkitehtuurin mallinnuspalvelu, joka auttaa ja tukee julkisen hallinnon organisaatioita kokonaisarkkitehtuurin mallintamisessa ja julkaisemisessa. Mallinnuspalvelua voivat käyttää kaikki julkisen hallinnon arkkitehtuurityötä tekevät. Mallinnusten tekeminen edellyttää käyttöoikeuksien hakemista. Mallinnuspalvelussa julkaistujen kuvausten katseluoikeus on kaikilla, mutta se edellyttää kirjautumista palveluun. Käyttöoikeuksia voi hakea palvelussa. Mallinnusta varten omalle työasemalle täytyy asentaa client-ohjelma, jonka asennusohje löytyy palvelusta. Asennus vaatii pääkäyttäjäoikeudet ja tietoliikenneyhteyden avaamisen. \n",
+    "type" : "Description"
+  } ],
+  "areaType" : null,
+  "publishingStatus" : "Published",
+  "modified" : "2018-06-05T07:55:31.170062",
+  "id" : "4529c92d-8f18-43fb-9ee0-055258df6ec5",
+  "signatureQuantity" : 0,
+  "requiresAuthentication" : true
+}

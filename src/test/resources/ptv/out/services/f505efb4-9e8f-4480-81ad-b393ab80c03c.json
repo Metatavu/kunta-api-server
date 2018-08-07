@@ -1,0 +1,332 @@
+{
+  "sourceId" : null,
+  "keywords" : [ {
+    "value" : "purkulupa",
+    "language" : "fi"
+  } ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "PermitOrObligation",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Toimialakohtaiset luvat ja velvoitteet",
+      "language" : "fi"
+    }, {
+      "value" : "Sector-specific permits and obligations",
+      "language" : "en"
+    }, {
+      "value" : "Branschspecifika tillstånd och skyldigheter",
+      "language" : "sv"
+    } ],
+    "description" : [ {
+      "value" : "Tähän alapalveluluokkaan kuuluvat yritystoimintaa velvoittavat asiat, jotka voivat liittyä lupien hankintaan, ilmoituksien tekemiseen tai rekisteröinteihin.",
+      "language" : "fi"
+    }, {
+      "value" : "Denna underservicegrupp omfattar obligatoriska ärenden relaterade till företagsverksamhet, såsom tillstånd, anmälningar och registrering.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains obligations associated with enterprising, which may be related to obtaining permits, submitting notifications or completing registrations.",
+      "language" : "en"
+    } ],
+    "code" : "P11.2",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1107",
+    "parentId" : "60445628-3697-444b-b4b8-ef0cd42b45cf",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1105"
+  }, {
+    "name" : [ {
+      "value" : "Rakentaminen",
+      "language" : "fi"
+    }, {
+      "value" : "Byggande",
+      "language" : "sv"
+    }, {
+      "value" : "Construction",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Tässä alapalveluluokassa käsitellään rakentamiseen liittyviä asioita yksityisen rakentajan palvelujen näkökulmasta. Keskeisiä asioita ovat esimerkiksi rakentamisen luvat ja lupaprosessit, rakennusvalvonnasta huolehtiminen, remontointi ja korjausrakentaminen sekä rakentamiseen liittyvät veroasiat.",
+      "language" : "fi"
+    }, {
+      "value" : "This subclass contains issues related to construction from the point of view of services for private builders. Key issues include permits and permit processes of construction, ensuring appropriate building control, renovations and repairs as well as tax issues relevant to construction.",
+      "language" : "en"
+    }, {
+      "value" : "I denna serviceundergrupp behandlas ärenden i samband med byggande utgående från tjänster för en privat byggare. Centrala ärenden är t.ex. bygglov och tillståndsprocesser, sörjande för byggnadstillsyn, renovering och ombyggnad samt skatteärenden i anslutning till byggande.",
+      "language" : "sv"
+    } ],
+    "code" : "P2.1",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1008",
+    "parentId" : "dd30002b-be2b-4689-878a-60e93492cc87",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1007"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "040ea0b1-3edc-459a-86dd-127951de9d94",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "f505efb4-9e8f-4480-81ad-b393ab80c03c",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "49eeb077-35b8-4895-84e1-e79db7a81f84",
+      "name" : "Byggnadstillsynen"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "61f668cc-7809-48a9-a8c6-5fdbcb0b9244",
+      "name" : "Rakennusvalvonnan verkkosivut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "6d7b198d-dc42-4ddd-9a71-a2f86295ffe2",
+      "name" : "Rakennuslupa-, toimenpidelupa- ja purkulupahakemuslomake"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "990343e6-a13c-46a4-9014-af3a99b0a6bc",
+      "name" : "Vaasan kaupungin rakentamisen sähköinen asiointipalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "sv", "fi" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : null,
+  "serviceNames" : [ {
+    "language" : "sv",
+    "value" : "Rivningslov",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Purkulupa",
+    "type" : "AlternativeName"
+  }, {
+    "language" : "fi",
+    "value" : "Purkamislupa",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "byggnadstillsyn",
+      "language" : "sv"
+    }, {
+      "value" : "rakennusvalvonta",
+      "language" : "fi"
+    }, {
+      "value" : "supervisory control of building",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p31057",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p35439"
+  }, {
+    "name" : [ {
+      "value" : "rivningstillstånd",
+      "language" : "sv"
+    }, {
+      "value" : "purkamisluvat",
+      "language" : "fi"
+    }, {
+      "value" : "demolition permits",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p68142",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p65281"
+  }, {
+    "name" : [ ],
+    "code" : null,
+    "ontologyType" : null,
+    "uri" : "http://www.yso.fi/onto/yso/p21263",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Företag och samfund",
+      "language" : "sv"
+    }, {
+      "value" : "Yritykset ja yhteisöt",
+      "language" : "fi"
+    }, {
+      "value" : "Businesses and non-government organizations",
+      "language" : "en"
+    } ],
+    "code" : "KR2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "Företag på den inhemska marknaden",
+      "language" : "sv"
+    }, {
+      "value" : "Businesses operating in the domestic (Finnish) market",
+      "language" : "en"
+    }, {
+      "value" : "Kotimarkkinoilla toimivat yritykset",
+      "language" : "fi"
+    } ],
+    "code" : "KR2.3",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2011",
+    "parentId" : "338939bb-b01a-4a80-a091-7c5238322bc0",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008"
+  }, {
+    "name" : [ {
+      "value" : "Medborgare",
+      "language" : "sv"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "sv",
+    "value" : "Rivningslovet är i kraft tre (3) år.",
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : "Rakentamiseen liittyvät luvat haetaan kirjallisesti.\n\nPurkuluvan hakemiseen tarvitaan:\n1.\tPurkulupahakemus (1 kpl)\n2.\tSelvitys rakennuspaikan hallintaoikeudesta, esim. lainhuuto tai kopio kauppakirjasta/vuokrasopimuksesta\n3.\tAsemapiirros, johon on merkitty purettava rakennus (3 kpl)\n4.\tValokuvia purettavasta rakennuksesta\n5.\tSelvitys naapurien kuulemisesta\n6.\tHallituksen tai yhtiökokouksen pöytäkirjanote, josta ilmenee suostumus hankkeeseen, mikäli kyseessä on asunto-osakeyhtiö tai –osuuskunta.\nTarvittaessa voidaan pyytää muitakin selvityksiä.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasassa rakentamiseen liittyvät luvat haetaan rakennusvalvonnasta.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Rakennuksen tai sen osan purkamiseen tarvitaan lupa asemakaava-alueella ja alueilla, joissa on rakennuskielto tai yleiskaavan määräys asiasta.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : "Purkulupa on voimassa kolme (3) vuotta.",
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : "En byggnad eller en del av en byggnad får inte utan tillstånd rivas på ett detaljplaneområde eller på ett område på vilket byggförbud gäller.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : "Rivningslov ansöks skriftligt.\n\nFör rivningsansökan behövs:\n1. Ansökningsblankett (1 st.)\n2. Utredning gällande besittningsrätt till byggplatsen, t.ex. lagfart eller kopia av köpebrev/arrendeavtal\n3. Situationsplan, där byggnaden som ska rivas har märkts ut (3 st.)\n4. Fotografier av byggnaden som ska rivas\n5. Utredning över hörande av grannar\n6. Utdrag ur styrelsens eller bolagsstämmans protokoll, varav samtycke till projektet framgår, ifall det är fråga om ett bostadsaktiebolag eller –andelslag\nVid behov kan även andra utredningar inbegäras.\n",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : "En byggnad eller en del av en byggnad får inte utan tillstånd rivas på ett detaljplaneområde eller på ett område på vilket byggförbud gäller eller om så bestäms i generalplanen. \n\nI Vasa ansöks rivningslov hos byggnadstillsynen. \n",
+    "type" : "Description"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

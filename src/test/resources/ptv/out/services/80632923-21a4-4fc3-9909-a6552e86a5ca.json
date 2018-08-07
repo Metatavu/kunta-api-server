@@ -1,0 +1,182 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Neuvolapalvelut",
+      "language" : "fi"
+    }, {
+      "value" : "Rådgivningstjänster",
+      "language" : "sv"
+    }, {
+      "value" : "Health clinic services",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "I denna serviceundergrupp behandlas kommunens lagstadgade moderskaps- och barnrådgivningstjänster med olika verksamhetsformer.",
+      "language" : "sv"
+    }, {
+      "value" : "Tässä palvelualaluokassa käsitellään kuntien lakisääteisesti järjestämiä äitiys-ja lastenneuvolapalveluja eri toimintamuotoineen.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains the statutory maternity and child health clinic services organised by the municipalities and the clinics’ various forms of activities.",
+      "language" : "en"
+    } ],
+    "code" : "P5.2",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1040",
+    "parentId" : "76ca210c-5183-4d41-b796-50612d5930c7",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1038"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "32557e34-c3a8-4772-aa61-5299ec439d32",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-11-28T13:04:07.417189",
+  "id" : "80632923-21a4-4fc3-9909-a6552e86a5ca",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "260d17f5-ab62-4ff6-8e74-6758b4a366f4",
+      "name" : "Rymättylän äitiysneuvola"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "8555b583-f742-4488-bbcb-21cb7a2f408d",
+      "name" : "Merimaskun, Velkuan ja Livonsaaren äitiysneuvolat"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "cccc5e4a-0422-462b-9d4b-cf4407991c9a",
+      "name" : "Äitiysneuvoloiden verkkosivu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "ddf336dc-4cd8-413d-b256-2b4c7ff227f5",
+      "name" : "Naantalin äitiysneuvola"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : "Äitiysneuvolapalvelut on tarkoitettu kaikille raskaana oleville äideille ja heidän perheilleen.",
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Äitiysneuvolapalvelut",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "äitiysneuvolat",
+      "language" : "fi"
+    }, {
+      "value" : "mödrarådgivningar",
+      "language" : "sv"
+    }, {
+      "value" : "prenatal clinics",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p4971",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p77844;http://www.yso.fi/onto/koko/p37040"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Ota yhteyttä äitiysneuvolaan, kun olet tehnyt raskaustestin ja se on positiivinen. ",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Äitiysneuvola seuraa ja turvaa odottavan äidin, sikiön ja vastasyntyneen terveyttä, sekä edistää ja ylläpitää koko perheen terveyttä ja hyvinvointia.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Äitiysneuvola seuraa ja turvaa odottavan äidin, sikiön ja vastasyntyneen terveyttä, sekä edistää ja ylläpitää koko perheen terveyttä ja hyvinvointia. Odottava äiti käy raskauden aikana säännöllisesti terveydenhoitajan vastaanotolla. \n\nRaskauden seurantaan kuuluvat myös alku- ja loppuraskauden lääkärikäynnit sekä jälkitarkastus vauvan syntymän jälkeen. Vastaanottokäynneillä tehdään tarvittavat tutkimukset äidin ja sikiön terveyden ja hyvinvoinnin turvaamiseksi. Jos raskauden kulussa ilmenee ongelmia, ohjaa neuvola äidin jatkotutkimuksiin. Raskauden aikana on mahdollisuus osallistua kahteen ultraääniseulontaan. \n\nKoko perhe on tervetullut neuvolavastaanotoille.",
+    "type" : "Description"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

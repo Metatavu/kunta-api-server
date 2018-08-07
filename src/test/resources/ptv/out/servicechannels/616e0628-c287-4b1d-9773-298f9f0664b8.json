@@ -1,0 +1,137 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/tuottajat/krannila",
+    "value" : "Krannila",
+    "language" : "fi"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Sairaskodinkatu",
+        "language" : "fi"
+      }, {
+        "value" : "Sjukhemsgatan",
+        "language" : "sv"
+      } ],
+      "streetNumber" : null,
+      "postalCode" : "65100",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ ],
+      "latitude" : null,
+      "longitude" : null,
+      "coordinateState" : null
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "c687d556-4f17-44e9-bb64-9f7d02e4233e",
+      "name" : "Palveluasuminen"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "406413485",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "406413485",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Krannila",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Krannila",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Krannilassa on neljä pienkotia (Suoma, Senni, Hilta ja Väinö), joissa on yhteensä 60 asuntoa. Asunnot ovat 25 m²:n kokoisia ja jokainen asunto sisältää oman kylpyhuoneen. Lisäksi käytössä ovat yhteiset tilat kuten ruokailu- ja oleskelutilat. Krannila on tarkoitettu ikääntyneille, jotka eivät selviä omassa kodissaan avopalveluiden tuella.\n\nPienkodeissa on ympäri vuorokauden hoitohenkilökunnan apu saatavilla tarpeen tullen. Jokaisella asukkaalla on vastuuhoitaja, joka toimii tiiviissä yhteistyössä omaisten ja eri ammattilaisten kanssa ohjaten ja neuvoen. Asukkaalle laaditaan yhdessä asukkaan ja omaisten kanssa hyvinvointisuunnitelma, joka pohjautuu mm. itsenäisen toimintakyvyn vahvistamiseen, osallisuuteen sekä itsemääräämisoikeuteen.\n\nAsunnostaan asukas maksaa vuokraa. Päivittäiset lämpimät ateriat toimittaa pääterveysaseman ravintokeskuksen keittiö ja aamu- ja iltapalat puolestaan valmistetaan pienkodeissa paikan päällä.\n\nKrannilan asukkaat valitsee SAS-työryhmä. Lisätietoja saa johtavalta sosiaalityöntekijältä p. 0400 910 698.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Krannila on tarkoitettu ikääntyneille, jotka eivät selviä omassa kodissaan avopalveluiden tuella.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Krannila riktar sig till äldre personer som inte längre klarar sig i de egna hemmen trots stöd från öppenservicen.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "I Krannila finns fyra småhem (Suoma, Senni, Hilta och Väinö), i vilka det sammanlagt finns 60 bostäder. Bostäderna är 25 m² stora och varje bostad inkluderar eget badrum. Därtill finns gemensamma utrymmen såsom matsal och dagrum till förfogande. Krannila riktar sig till äldre personer som inte längre klarar sig i de egna hemmen trots stöd från öppenservicen.\n\nI småhemmen finns vårdpersonalens hjälp att fås dygnet runt, ifall behov uppstår. Varje invånare har en ansvarig skötare, som fungerar i effektivt samarbete med de anhöriga och olika sakkunniga och ger handledning och rådgivning.  För invånarna uppgörs en välfärdsplan tillsammans med invånaren själv och dennes anhöriga. Planen baserar sig bl.a. på stärkande av funktionsförmågan, delaktigheten och självbestämmanderätten.\n\nInvånaren betalar hyra för sin bostad. De dagliga varma måltiderna levereras från näringscentrets kök i huvudhälsostationen. Morgon- och kvällsmålen å sin sida tillverkas på plats i småhemmen.\n\nKrannilas invånare väljs av SAS-arbetsgruppen. Mer information fås av ledande socialarbetaren tfn 0400 910 698.\n\n",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "616e0628-c287-4b1d-9773-298f9f0664b8"
+}

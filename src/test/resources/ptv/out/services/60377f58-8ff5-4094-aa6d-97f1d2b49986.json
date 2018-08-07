@@ -1,0 +1,252 @@
+{
+  "sourceId" : null,
+  "keywords" : [ {
+    "value" : "teatteri",
+    "language" : "fi"
+  }, {
+    "value" : "kaupunginteatteri",
+    "language" : "fi"
+  }, {
+    "value" : "kulttuuri",
+    "language" : "fi"
+  }, {
+    "value" : "teater",
+    "language" : "sv"
+  }, {
+    "value" : "kultur",
+    "language" : "sv"
+  } ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Kulttuuri",
+      "language" : "fi"
+    }, {
+      "value" : "Kultur",
+      "language" : "sv"
+    }, {
+      "value" : "Culture",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "This service class contains a wide range of cultural services associated with different branches of arts, the library system, religious organisations and liberal adult education. The class also includes different free time services.",
+      "language" : "en"
+    }, {
+      "value" : "Tässä palveluluokassa käsitellään kulttuuripalveluja laajasti taiteen eri alojen, kirjastolaitoksen, uskonnollisten yhteisöjen ja vapaan sivistystyön puitteissa. Myös erilaiset vapaa-ajan palvelut kuuluvat tähän luokkaan.",
+      "language" : "fi"
+    }, {
+      "value" : "I denna servicegrupp behandlas kulturtjänster på ett omfattande plan inom ramen för olika konstarter, biblioteksväsendet, religiösa samfund och fritt bildningsarbete. Även olika fritidstjänster hör till denna grupp.",
+      "language" : "sv"
+    } ],
+    "code" : "P25",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1198",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "60377f58-8ff5-4094-aa6d-97f1d2b49986",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "150c1670-f896-4cd4-9dd0-0acdfd5480ff",
+      "name" : "Vaasan kaupunginteatterin verkkosivut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "18a0828f-356a-4dd9-a696-4924c30852db",
+      "name" : "Teatteripalveluiden verkkosivut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "49e9a4b5-90b5-43e0-bb32-4151941caf4d",
+      "name" : "Vaasan kaupunginteatteri"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "Chargeable",
+  "serviceNames" : [ {
+    "language" : "sv",
+    "value" : "Teatrar",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Teatteripalvelut",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Teatterit",
+    "type" : "AlternativeName"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "teatrar",
+      "language" : "sv"
+    }, {
+      "value" : "teatterit",
+      "language" : "fi"
+    }, {
+      "value" : "theatres",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p48364",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p48190"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "sv",
+    "value" : "I Vasa fungerar Vaasan kaupunginteatteri och svenskspråkiga Wasa Teater.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Kullakin teatterilla on omat lipunmyyntijärjestelmät.",
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasassa toimii kaksi ammattiteatteria, Vaasan kaupunginteatteri ja ruotsinkielinen Wasa Teater. Niiden lisäksi teatterielämyksiä tarjoavat Vaasan ylioppilasteatteri Ramppi, Pikku Aasin nukketeatteri, Soiva Sammakko -lastenteatteri, Teatteri Mirax ja Teatteri Outolintu. Vaasan teattereiden monipuolisessa ohjelmistossa on tarjolla niin komediaa ja klassikoita, kuin tarinoita ja taistelujakin koko perheelle ympäri vuoden. Teattereista löytyy viihdykettä vapaa-aikaan kaikenikäisille. Kaupunginteatterilla toteutetaan vuosittain myös ooppera- tai operettiproduktio. Se toteutetaan yhteistyössä Vaasan kaupunginteatterin, kaupunginorkesterin ja Oopperasäätiön kanssa. Linkit eri teattereiden verkkosivuille löydät Vaasan kaupungin verkkosivuilta. ",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : "I Vasa fungerar två yrkesteatrar, d.v.s. Vaasan kaupunginteatteri och svenskspråkiga Wasa Teater. Utöver dessa erbjuds teaterupplevelser av Vasas studentteater Rampen, Lilla Åsnans dockteater, barnteatern Klingande Grodan, Teater Mirax och Teatteri Outolintu. I den mångsidiga repertoaren för Vasas teatrar erbjuds såväl komedier och klassiker som spex och spänning för hela familjen året runt. Föreställningarna bjuder på fritidsunderhållning för alla åldrar. Vid Vaasan kaupunginteatteri genomförs varje år också en opera- eller operettproduktion, som förverkligas i samarbete mellan Vaasan kaupunginteatteri, stadsorkestern och Operastiftelsen. Länkar till teatrarnas webbsidor hittar du på Vasa stads webbplats. ",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : "Alla teatrar har egna biljettförsäljningssystem.",
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasassa toimii kaupunginteatteri ja ruotsinkielinen Wasa Teater.",
+    "type" : "Summary"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

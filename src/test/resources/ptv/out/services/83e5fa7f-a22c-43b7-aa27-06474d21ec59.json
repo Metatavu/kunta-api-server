@@ -1,0 +1,278 @@
+{
+  "sourceId" : null,
+  "keywords" : [ {
+    "value" : "jälkiasennushissi",
+    "language" : "fi"
+  } ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Asuminen",
+      "language" : "fi"
+    }, {
+      "value" : "Boende",
+      "language" : "sv"
+    }, {
+      "value" : "Housing",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Denna servicegrupp omfattar hur man söker, hittar och skaffar en bostad, olika boendeformer, ekonomiskt stöd för boende, processer och tjänster i anslutning till flyttning inom Finland samt tjänster som berör befolkningsdatasystemet.",
+      "language" : "sv"
+    }, {
+      "value" : "Tähän palveluluokkaan kuuluvat asunnon etsiminen, löytäminen ja hankkiminen, erilaiset asumismuodot, asumisen taloudelliset tuet, Suomen sisällä tapahtuvaan muuttoon liittyvät prosessit ja palvelut sekä väestötietojärjestelmään liittyvät palvelut.",
+      "language" : "fi"
+    }, {
+      "value" : "This service class includes seeking, finding and purchasing a residence, different housing forms, housing benefits, processes and services related to migration within Finland, as well as services associated with the Population Information System.",
+      "language" : "en"
+    } ],
+    "code" : "P1",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1001",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "Korjaus- ja energia-avustukset",
+      "language" : "fi"
+    }, {
+      "value" : "Reparations- och energibidrag",
+      "language" : "sv"
+    }, {
+      "value" : "Renovation and energy grants",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "This service subclass contains grants for renovations and improving a building’s energy efficiency as well as the application processes and e-services related to these grants from the service point of view.",
+      "language" : "en"
+    }, {
+      "value" : "I denna underservicegrupp behandlas ur servicesynpunkt bidrag i anslutning till ombyggnad och till ökningen av byggnadens energieffektivitet, ansökningsprocesser för bidragen och ärendehanteringstjänster i samband med dem.",
+      "language" : "sv"
+    }, {
+      "value" : "Tässä alapalveluluokassa käsitellään palvelunäkökulmasta korjausrakentamiseen ja rakennuksen energiatehokkuuden lisäämiseen tarkoitettuja avustuksia, niiden hakuprosesseja ja niihin liittyviä asiointipalveluja.",
+      "language" : "fi"
+    } ],
+    "code" : "P2.2",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1009",
+    "parentId" : "dd30002b-be2b-4689-878a-60e93492cc87",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1007"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2017-11-17T06:18:52.874538",
+  "id" : "83e5fa7f-a22c-43b7-aa27-06474d21ec59",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "22cd9e41-dcc9-42d5-bc40-3dd64d27c030",
+      "name" : "Kiinteistötoimi"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "7de53057-287b-4899-b4b3-86291bf47b45",
+      "name" : "Hissiavustusanomus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "c38feebb-9dfa-4efc-b2f7-02b2fd282841",
+      "name" : "Maksatushakemus, hissi"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : "Kaupungin avustus myönnetään käytettävissä olevan määrärahan puitteissa sen jälkeen, kun ARA on hyväksynyt hankkeen kustannukset ja myöntänyt hankkeelle valtion hissiavustuksen.",
+    "language" : "fi"
+  }, {
+    "value" : "Staden beviljar understöd inom ramen för tillbudsstående anslag när ARA har godkänt kostnaderna för projektet och beviljat statligt hissunderstöd för projektet.",
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "sv",
+    "value" : "Hissunderstöd",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Hissiavustus",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "hissiavustukset",
+      "language" : "fi"
+    }, {
+      "value" : "hissbidrag",
+      "language" : "sv"
+    }, {
+      "value" : "lift subsidies",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p66470",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p34757"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Yritykset ja yhteisöt",
+      "language" : "fi"
+    }, {
+      "value" : "Businesses and non-government organizations",
+      "language" : "en"
+    }, {
+      "value" : "Företag och samfund",
+      "language" : "sv"
+    } ],
+    "code" : "KR2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "sv",
+    "value" : "Staten och Vasa stad understödjer för efterinstallation av hiss.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : "Hissiavustuksella ja liikkumisesteiden poistamiseen tarkoitetulla avustuksella on jatkuva \nhakuaika. Vaasan kaupungin avustusta voit hakea hissiavustuslomakkeella.\n\nLisätietoja hissi- ja esteettömyysavustuksesta saat ARAlta. Lisätietoja saat myös Vaasan kaupungin kiinteistötoimesta.\n\n\n",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Valtio ja Vaasan kaupunki avustavat jälkiasennushissien rakentamisessa.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : "Valtio ja Vaasan kaupunki avustavat jälkiasennushissien rakentamisessa. Jälkiasennushissin rakentamiseen on mahdollisuus saada avustusta yhteensä jopa 55 prosenttia.\n\nValtion avustus jälkiasennushissien rakentamiseen on 45 prosenttia hyväksyttävistä kohtuullisista hissin tai hissien rakentamiseen liittyvistä kokonaiskustannuksista. Kaupungin avustuksen määrä on enintään 10 prosenttia ARA:n hyväksymistä kustannuksista. Kaupungin avustus myönnetään käytettävissä olevan määrärahan puitteissa sen jälkeen, kun ARA on hyväksynyt hankkeen kustannukset ja myöntänyt hankkeelle valtion hissiavustuksen.\n\nHissiavustushakemus jätetään Asumisen rahoitus- ja kehittämiskeskus ARA:an. Kaupungin avustusta haetaan kaupungin omalla lomakkeella. Työt voidaan aloittaa ARA:n varsinaisen avustuspäätöksen jälkeen. Samassa yhteydessä kannattaa hakea myös avustusta liikkumisesteiden poistamiskustannuksiin, joita ARA myös avustaa 45 prosentilla.\n\nVaasassa toimii hissityöryhmä, joka on perustettu vuonna 2013. Työryhmän tarkoituksena on moninkertaistaa jälkiasennushissien määrä Vaasassa. Työryhmään kuuluu edustajia Vaasan kaupungin kiinteistötoimesta, rakennusvalvonnasta, vammaisneuvostosta ja kaavoituksesta sekä Suomen Kiinteistöliitosta ja ARA:sta. Lisäksi ryhmään on kutsuttu yritysten edustajia ja isännöitsijöitä.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Ansökningstiden i fråga om hissunderstöd och understöd för avlägsnande av rörelsehinder är kontinuerlig. Vasa stads understöd kan du söka med hissunderstödsblanketten.\n\nMera information om hiss- och tillgänglighetsunderstöd får du från ARA. Mera information ger också Vasa stads fastighetssektor. ",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : "Staten och Vasa stad understödjer för efterinstallation av hiss. Det är möjligt att få sammanlagt upp till 55 procent i understöd för efterinstallation av hiss.\n\nStatsunderstödet för efterinstallation av hiss är 45 % av de godtagbara rimliga totalkostnaderna för byggandet av en eller flera hissar. Stadens understöd är högst 10 % av de av Finansierings- och utvecklingscentralen för boendet ARA godkända kostnaderna. Staden beviljar understöd inom ramen för tillbudsstående anslag när ARA har godkänt kostnaderna för projektet och beviljat statligt hissunderstöd för projektet.\n\nAnsökan om hissunderstöd lämnas in till Finansierings- och utvecklingscentralen för boendet, ARA. Stadens understöd ansökas med stads egen blankett. Arbetena kan inledas efter ARA:s egentliga understödsbeslut. Det lönar sig att i samma sammanhang också ansöka om understöd för kostnaderna för avlägsnande av rörelsehinder, som ARA också understöder med 45 %.\n\nI Vasa finns en hissarbetsgrupp, som bildades år 2013. Arbetsgruppens syfte är att mångfaldiga antalet efterinstallerade hissar i Vasa. I arbetsgruppen ingår representanter för Vasa stads fastighetssektor, byggnadstillsyn, handikappråd och planläggning samt Suomen Kiinteistöliitto och ARA. Därtill har representanter för företag och disponenter bjudits in till gruppen.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

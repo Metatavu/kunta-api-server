@@ -1,0 +1,201 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/palvelut/adoptioneuvonta",
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "6eb47ca9-69ae-43df-b2c3-a066f6ff7428",
+      "name" : "Adoptioneuvonta"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : "Kotimainen adoptio",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63252318",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Kotimainen adoptio",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63252622",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Kotimainen adoptio",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63252608",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Kansainvälinen adoptio",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63252625",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Kansainvälinen adoptio",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63252619",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Inhemska adoptioner",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63252622",
+    "language" : "sv"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Inhemska adoptioner",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63252318",
+    "language" : "sv"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Inhemska adoptioner",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63252608",
+    "language" : "sv"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Internationella adoptioner",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63252625",
+    "language" : "sv"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Internationella adoptioner",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63252619",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Sosiaalityöntekijät - adoptioneuvonta",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Socialarbetarna - adoptionsrådgivning",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ {
+    "serviceHourType" : "DaysOfTheWeek",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ {
+      "value" : null,
+      "language" : "fi"
+    } ],
+    "openingHour" : [ {
+      "dayFrom" : "Monday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    }, {
+      "dayFrom" : "Tuesday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    }, {
+      "dayFrom" : "Wednesday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    }, {
+      "dayFrom" : "Thursday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    }, {
+      "dayFrom" : "Friday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    } ]
+  } ],
+  "serviceChannelType" : "Phone",
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "Adoptionsrådgivning ges såväl till förälder som vill adoptera bort sitt minderåriga barn som till en person som tänker adoptera ett barn. Syftet med adoptionsrådgivning är att bevaka barnets bästa samt hjälpa barnet, barnets biologiska föräldrar och adoptivföräldrar innan domstol fastställer adoptionen samt vid behov även därefter.\n\nYtterligare information om inhemska och internationella adoptioner ger socialarbetarna.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Ytterligare information om inhemska och internationella adoptioner ger socialarbetarna.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Adoptioneuvontaa annetaan sekä vanhemmalle, joka haluaa antaa alaikäisen lapsensa adoptiolapseksi, että henkilölle, joka aikoo ottaa adoptiolapsen. Adoptiolapsineuvonnan tarkoituksena on valvoa lapsen etua sekä auttaa lasta, lapsen syntymävanhempia ja adoptiovanhempia ennen kuin tuomioistuin vahvistaa adoption sekä tarvittaessa sen jälkeen.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Sosiaalityöntekijät neuvovat kotimaisessa ja kansainvälisessä adoptiossa.",
+    "type" : "Summary"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "a5052240-d30c-466c-825c-8492b6f8db5f"
+}

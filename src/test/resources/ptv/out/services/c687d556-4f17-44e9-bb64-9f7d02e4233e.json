@@ -1,0 +1,302 @@
+{
+  "sourceId" : null,
+  "keywords" : [ {
+    "value" : "palvelukoti",
+    "language" : "fi"
+  }, {
+    "value" : "vanhainkoti",
+    "language" : "fi"
+  } ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Asumispalvelut",
+      "language" : "fi"
+    }, {
+      "value" : "Boendetjänster",
+      "language" : "sv"
+    }, {
+      "value" : "Housing services",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Till denna serviceundergrupp hör bostads- och serviceboendelösningar för äldre och personer med nedsatt funktionsförmåga (subventionerat boende, serviceboende och effektiverat serviceboende), bidrag i samband med dessa samt hjälp- och stödmedel som används hemma. Denna grupp innehåller också stödboendet för omhändertagna barn, långtidssjuka och rehabiliteringsklienter inom missbrukarvården. Till denna grupp hör inte t.ex. hem- och hemsjukvårdstjänster, som finns i sina egna grupper.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains housing and supported housing solutions for older people and the disabled (supported housing, sheltered housing and sheltered housing with 24-hour assistance), the associated benefits and assistive and support devices used at home. The class also contains supported housing services for children in foster care, chronically ill people and persons in substance abuse rehabilitation. This class does not include home care and home nursing services, for example, which have their own classes.",
+      "language" : "en"
+    }, {
+      "value" : "Tähän alapalveluluokkaan kuuluvat ikääntyneiden ja vammaisten asunto- ja palveluasumisratkaisut (tuettu asuminen, palveluasuminen ja tehostettu palveluasuminen), niihin kuuluvat tuet sekä kotona käytettävät apu- ja tukivälineet. Luokkaan kuuluvat myös huostaanotettujen lasten ja pitkäaikaissairaiden perhehoidon ja päihdekuntoutujien tukiasuminen. Luokkaan eivät kuulu esimerkiksi koti- ja kotisairaanhoitopalvelut, jotka ovat omissa luokissaan.",
+      "language" : "fi"
+    } ],
+    "code" : "P4.1",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1024",
+    "parentId" : "079b55da-af80-41ab-9346-c8fdd284afcf",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1023"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "e0391dc4-a880-4e79-8aaa-c81217098606",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "c687d556-4f17-44e9-bb64-9f7d02e4233e",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "616e0628-c287-4b1d-9773-298f9f0664b8",
+      "name" : "Krannila"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "6f0b14d2-541e-4ae0-b416-00e1e6b0640f",
+      "name" : "Himalaja"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "6f97416d-0d02-444b-bed2-6f4fd53d1b3c",
+      "name" : "Kotiranta"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "b07cd6d3-446f-46f6-b1b7-e104497c781e",
+      "name" : "Fyrrykartano"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "b18bd28f-1b9d-4a81-a384-0138af4ddb1f",
+      "name" : "Asiakasmaksutoimiston verkkosivu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "c5cdc916-22b4-4387-93f6-8cd6f8be3095",
+      "name" : "Kirkkopuistikon palvelutalo"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "e979a097-62bb-47e1-b1c9-884e859f6693",
+      "name" : "SAS-työryhmän johtava sosiaalityöntekijä"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "eee09731-e18b-4d03-8aef-b90b4cbbf7e6",
+      "name" : "Ruukinkartano"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : "Palveluasumisen kriteerit arvioidaan yksilökohtaisesti.",
+    "language" : "fi"
+  }, {
+    "value" : "Det finns kriterierna för att få serviceboendeplats. Kriterierna bedöms individuellt utifrån ansökan. ",
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "Chargeable",
+  "serviceNames" : [ {
+    "language" : "sv",
+    "value" : "Serviceboende för äldre",
+    "type" : "AlternativeName"
+  }, {
+    "language" : "fi",
+    "value" : "Palveluasuminen",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Serviceboende",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Ikäihmisten palveluasuminen",
+    "type" : "AlternativeName"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "boendeservice",
+      "language" : "sv"
+    }, {
+      "value" : "asumispalvelut",
+      "language" : "fi"
+    }, {
+      "value" : "housing services",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p17574",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p18203"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "sv",
+    "value" : "SAS-arbetsgruppen väljer invånarna. Mera information ger ledande socialarbetare.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : "Serviceboende är antingen våningshusboende i egen lägenhet eller boende i småhem, där invånarna har till förfogande ett eget rum och därtill småhemmets gemensamma utrymmen.\n\nInvånaren möblerar själv sin bostad och köper den service som han eller hon behöver från huset.\n\n",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Ikäihmisten palveluasuminen on joko kerrostaloasumista omassa huoneistossa tai asumista pienkodissa, jossa asukkaalla on käytössään oma huone ja lisäksi pienkodin yhteiset tilat.\n\nPalveluasuminen on tarkoitettu ikääntyneille, jotka eivät selviä omassa kodissaan avopalveluiden tuella. Pienkodeissa on ympäri vuorokauden hoitohenkilökunnan apu saatavilla tarpeen tullen. \n\n",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : "Serviceboende är antingen våningshusboende i egen lägenhet eller boende i småhem.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Asukkaat valitsee SAS-työryhmä. Lisätietoja saa johtavalta sosiaalityöntekijältä.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Palveluasuminen on joko kerrostaloasumista omassa huoneistossa tai asumista pienkodissa, jossa asukkaalla on käytössään oma huone.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

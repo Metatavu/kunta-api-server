@@ -1,0 +1,259 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Koulu- ja opiskelijaterveydenhuolto",
+      "language" : "fi"
+    }, {
+      "value" : "Skol- och studerandehälsovården",
+      "language" : "sv"
+    }, {
+      "value" : "Pupil and student health care",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Till denna serviceundergrupp hör hälsovårdstjänster för skolelever och studeranden på heltid. Till gruppen hör inte socialtjänster för dessa grupper.",
+      "language" : "sv"
+    }, {
+      "value" : "Tähän alapalveluluokkaan kuuluvat koululaisille ja kokopäivisille opiskelijoille tarkoitetut terveyspalvelut. Luokkaan eivät kuulu näille ryhmille suunnatut sosiaalipalvelut.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains health services intended for pupils and full-time students. It does not include social services targeted at these groups.",
+      "language" : "en"
+    } ],
+    "code" : "P5.9",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1047",
+    "parentId" : "76ca210c-5183-4d41-b796-50612d5930c7",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1038"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "9cc8f0f4-38ca-44d6-87d8-d2004f57c863",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-11-20T14:02:57.418127",
+  "id" : "4ec69c86-a8b3-46de-90e0-2d614c2982f8",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "0bd11d7c-03b2-4f30-8cff-1f96552c6c70",
+      "name" : "Kultarannan kouluterveydenhoitajan vastaanotto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "32833c27-7d41-4267-800a-a9a888b513b7",
+      "name" : "Velkuan kouluterveydenhoitajan vastaanotto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "44e25569-8158-4c35-8777-9a2288099873",
+      "name" : "Karvetin kouluterveydenhoitajan vastaanotto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "5710833d-b774-4826-a507-76bd96b89599",
+      "name" : "Merimaskun kouluterveydenhoitajan vastaanotto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "59f83093-b842-4a53-8029-d6a91d2cdbb8",
+      "name" : "Rymättylän kouluterveydenhoitajan vastaanotto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "8927cde9-6a0b-4ce8-97d7-8a040a2380a7",
+      "name" : "Lietsalan kouluterveydenhoitajan vastaanotto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "9da5566f-9a1c-47fe-a48c-b297e5b52d8a",
+      "name" : "Kuparivuoren kouluterveydenhoitajan vastaanotto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "a6b40b67-1854-43d9-a443-2702aa215814",
+      "name" : "Suopellon kouluterveydenhoitajan vastaanotto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "a9bb7a61-ba30-40a3-b16a-069b73f1a62e",
+      "name" : "Kouluterveydenhuollon verkkosivu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "a9c78c33-d864-4b44-af8d-8bbd102186cc",
+      "name" : "Maijamäen kouluterveydenhoitajien vastaanotto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "bdd7af3f-8e88-4c22-b6b5-abeb6d32cc4a",
+      "name" : "Taimon kouluterveydenhoitajan vastaanotto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : "Kouluterveydenhuolto on tarkoitettu perusopetuksen 1. - 9. -luokkalaisille oppilaille.",
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Kouluterveydenhuollon palvelut",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "skolhälsovård",
+      "language" : "sv"
+    }, {
+      "value" : "kouluterveydenhuolto",
+      "language" : "fi"
+    }, {
+      "value" : "school health care",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p2223",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p2062"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Kouluterveydenhuolto tukee oppilaiden hyvinvointia ja terveyttä yhteistyössä vanhempien, opettajien ja muun oppilashuollon kanssa. Tavoitteena on tunnistaa mahdollisimman varhaisessa vaiheessa eritystä tukea tarvitsevat oppilaat ja ohjata heidät jatkohoitoon. \n\nNaantalin kouluterveydenhuollon asiakkaita ovat perusopetuksen 1. - 9. -luokkalaiset oppilaat. Kouluissa on kouluterveydenhoitajan ja -lääkärin vastaanotto kunkin koulun oman aikataulun mukaan.\n\nLaajat ikäkausiin liittyvät terveystarkastukset on 1. luokalla (koulun alkutaipale), 5. luokalla (murrosiän alku), ja 8. luokalla (Nuorison terveystodistus) ja näihin tarkastuksiin kutsutaan vanhemmat mukaan. Laajat terveystarkastukset tekee terveydenhoitajan lisäksi lääkäri. Kouluterveydenhoitaja tapaa kaikki oppilaat tarkastusten välisinä vuosina.\n\nSeuranta- ja tukikäyntejä järjestetään yksilöllisesti oppilaan tarpeen mukaan. Oppilaat saavat rokotukset kouluterveydenhuollossa.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Kouluterveydenhuolto tukee oppilaiden hyvinvointia ja terveyttä yhteistyössä vanhempien, opettajien ja muun oppilashuollon kanssa.",
+    "type" : "Summary"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

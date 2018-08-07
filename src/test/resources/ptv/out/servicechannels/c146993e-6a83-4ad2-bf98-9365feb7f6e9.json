@@ -1,0 +1,137 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Gripinkatu",
+        "language" : "fi"
+      }, {
+        "value" : "Gripgatan",
+        "language" : "sv"
+      } ],
+      "streetNumber" : "4",
+      "postalCode" : "65380",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ {
+        "value" : null,
+        "language" : "sv"
+      } ],
+      "latitude" : "7005213.842",
+      "longitude" : "233578.976",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "2659766d-af0e-44b6-8305-a3ab9b0ae712",
+      "name" : "Lastensuojelun sijaishuolto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : "Johtava ohjaaja",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63252647",
+    "language" : "fi"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Kortteeri",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Kortteeri",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ {
+    "serviceHourType" : "DaysOfTheWeek",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ {
+      "value" : null,
+      "language" : "fi"
+    } ],
+    "openingHour" : [ ]
+  } ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Kortteeri on Kustaalan nuorisokodin toimintayksikkö. Nuorisokoti on lastensuojelulaitos jonka tarkoituksena on lasten ja nuorten kehityksen tukeminen. Laitosten tehtävänä on tarjota turvallinen hoito ja virikkeellinen kasvuympäristö. Ne voivat antaa lyhytaikaista tai pitkäaikaista hoitoa lapsille ja nuorille, jotka eivät voi asua kotonaan.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Kortteeri on Kustaalan nuorisokodin toimintayksikkö.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Kortteeri är en verksamhetsenhet inom Gustavsro ungdomshem.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Kortteeri är en verksamhetsenhet inom Gustavsro ungdomshem.\n\nUngdomshemmet är en barnskyddsanstalt vars syfte är att stöda utvecklingen hos barn och unga.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "c146993e-6a83-4ad2-bf98-9365feb7f6e9"
+}

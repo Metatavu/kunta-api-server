@@ -1,0 +1,147 @@
+{
+  "sourceId" : null,
+  "keywords" : [ {
+    "value" : "Väestötiedot, Henkilötiedot, Rakennustiedot, Kiinteistötiedot",
+    "language" : "fi"
+  } ],
+  "areas" : [ ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Government (state and local) registers and databases",
+      "language" : "en"
+    }, {
+      "value" : "Rekisterit ja tietokannat",
+      "language" : "fi"
+    }, {
+      "value" : "Register och databaser",
+      "language" : "sv"
+    } ],
+    "description" : [ {
+      "value" : "Denna underservicegrupp innehåller lagenligt utnyttjande av innehållet i den offentliga förvaltningens register och databaser som enstaka informationsinlämningar eller som automatiskt sambruk av information mellan systemen.",
+      "language" : "sv"
+    }, {
+      "value" : "Tämä alapalveluluokka sisältää julkishallinnon rekisterien ja tietokantojen sisältämän aineiston lainmukaisen, palveluluonteisen hyödyntämisen yksittäisinä tietoluovutuksina tai koneellisena tietojen yhteiskäyttönä järjestelmien välillä.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass features services that facilitate legal disclosures of information from public sector registers and databases either as individual instances or mass information exchange between information systems.",
+      "language" : "en"
+    } ],
+    "code" : "P9.3",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1219",
+    "parentId" : "95f29e15-fb54-4ac2-8c9b-fac6ae3121fa",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1095"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "Nationwide",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2018-04-09T12:24:39.363374",
+  "id" : "47e7c82b-9d67-4a7e-93f7-c6ff87adf2fa",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "80f6bcb5-e224-4041-97da-95b6936878fe",
+      "name" : "Väestörekisterikeskuksen verkkoasiointi"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Muutostietopalvelu",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "befolkningsdata",
+      "language" : "sv"
+    }, {
+      "value" : "väestötiedot",
+      "language" : "fi"
+    }, {
+      "value" : "population data",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p55228",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p34386"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Viranomaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Authorities",
+      "language" : "en"
+    }, {
+      "value" : "Myndigheter",
+      "language" : "sv"
+    } ],
+    "code" : "KR3",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2017",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : "VTJ:n tiedoilla ylläpidetään eri organisaatioiden rekistereitä.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Palvelu on pääosin maksuton.",
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Muutostietopalvelun käyttöönotto edellyttää Väestörekisterikeskuksen organisaatiolle (julkishallinto) myöntämää tietolupaa ja organisaation sitoutumista luvan ehtoihin. Tietolupaa haetaan Väestörekisterikeskukselta ja hakemuksessa on kerrottava mm. tietojen käyttötarkoitus. Hakemuksen mukana on toimitettava selvitys tietojen suojauksesta.\n",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Muutostietopalvelulla asiakkaan rekisterin tiedot pidetään säännöllisesti ajantasaisina. Palvelu soveltuu isoille rekistereille, joiden tiedot ovat päivittäin käytössä. Väestötietojärjestelmän muuttuneet henkilö- ja rakennustiedot päivitetään asiakkaan rekisteriin ennalta sovituin väliajoin, esimerkiksi päivittäin tai viikoittain. Muutostietopalvelu aloitetaan perustietotoimituksella, jolloin asiakkaan rekisteriin päivitetään väestötietojärjestelmästä tarvittavat tiedot.",
+    "type" : "Description"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "b458d033-042d-4cbe-b030-34e81da28821",
+      "name" : "Väestörekisterikeskus"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "b458d033-042d-4cbe-b030-34e81da28821",
+      "name" : "Väestörekisterikeskus"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

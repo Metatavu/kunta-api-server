@@ -1,0 +1,113 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "1",
+    "url" : "http://www.naantali.fi/opetus_ja_koulutus/varhaiskasvatus/avoin_paivakoti_toiminta/vaentupa_karvetissa/fi_FI/vaentuvan_esittely/",
+    "value" : "Väentuvan avoin päiväkoti",
+    "language" : "fi"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Ripikatu",
+        "language" : "fi"
+      } ],
+      "streetNumber" : "8",
+      "postalCode" : "21110",
+      "postOffice" : [ {
+        "value" : "NAANTALI",
+        "language" : "sv"
+      }, {
+        "value" : "NAANTALI",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "529",
+        "name" : [ {
+          "value" : "Naantali",
+          "language" : "fi"
+        }, {
+          "value" : "Nådendal",
+          "language" : "sv"
+        }, {
+          "value" : "Naantali",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ ],
+      "latitude" : "6715150.019",
+      "longitude" : "227994.176",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "0e3a60ea-fea7-47e1-9200-6d1ee8600bb2",
+      "name" : "Avoin varhaiskasvatuspalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : "",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "24345261",
+    "language" : "fi"
+  } ],
+  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "emails" : [ ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Väentuvan avoin päiväkoti",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Väentuvan avoimen päiväkodin maksuton toiminta on tarkoitettu pienten vauvojen ja lasten perheille, joiden lapset ovat kotihoidossa.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Väentuvan avoin päiväkoti on varhaiskasvatuksen maksuton tapaamis- ja toimintapaikka naantalilaisille pienten vauvojen ja lasten perheille, joiden lapset ovat kotihoidossa.\n\nVäentuvan avoimessa päiväkodissa:\n* Voit muiden vanhempien ja henkilökunnan kanssa jakaa yhteisiä kokemuksia vanhemmuudesta.\n* Voit tukea vanhempana lapsen omaehtoista oppimista ja kehitystä ohjatuissa ryhmissä ja vapaassa leikissä.\n* Voit saada tukea ja tietoa kasvatuskysymyksiin (mahdollisuus henkilökohtaiseen keskusteluun, neuvontaan ja ohjaukseen).\n* Voit tavata tuttuja ja saada uusia ystäviä.\nVaikka isompi sisarus on päivähoidossa, voi perheen pienemmän kanssa osallistua toimintaan. Myös Viskari-kerhoryhmien lapset perheineen voivat osallistua avoimeen toimintaan.\n",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "7473dcb4-12f9-48bf-962a-3b8be1edb4f9"
+}

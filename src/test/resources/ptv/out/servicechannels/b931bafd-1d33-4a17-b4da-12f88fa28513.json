@@ -1,0 +1,158 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "attachments" : [ ],
+  "languages" : [ ],
+  "deliveryAddresses" : [ {
+    "subType" : "PostOfficeBox",
+    "postOfficeBoxAddress" : {
+      "postOfficeBox" : [ {
+        "value" : "PL 2",
+        "language" : "sv"
+      }, {
+        "value" : "PL 2",
+        "language" : "fi"
+      }, {
+        "value" : "PL 2",
+        "language" : "en"
+      } ],
+      "postalCode" : "65101",
+      "postOffice" : [ {
+        "value" : "VAASA",
+        "language" : "fi"
+      }, {
+        "value" : "VASA",
+        "language" : "sv"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ {
+        "value" : null,
+        "language" : "fi"
+      } ]
+    },
+    "streetAddress" : null,
+    "deliveryAddressInText" : null,
+    "receiver" : [ {
+      "value" : "Småbarnsfostran i Vasa",
+      "language" : "sv"
+    }, {
+      "value" : "Vaasan kaupungin varhaiskasvatus",
+      "language" : "fi"
+    }, {
+      "value" : "Vaasan kaupungin varhaiskasvatus",
+      "language" : "en"
+    } ]
+  } ],
+  "supportPhones" : [ ],
+  "formIdentifier" : [ {
+    "value" : null,
+    "language" : "sv"
+  }, {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "en"
+  } ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "f93c4ffb-6576-4836-b633-5850d8352dca",
+      "name" : "Päiväkotihoito esiopetusikäisille"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "channelUrls" : [ {
+    "language" : "fi",
+    "value" : "https://www.vaasa.fi/sites/default/files/ilmoittautuminen_esiopetukseen_2017.pdf",
+    "type" : "PDF"
+  }, {
+    "language" : "en",
+    "value" : "https://www.vaasa.fi/sites/default/files/preschool_education_enrolment_2017.pdf",
+    "type" : "PDF"
+  }, {
+    "language" : "sv",
+    "value" : "https://www.vaasa.fi/sites/default/files/anmalan_till_forskoleundervisning_2017.pdf",
+    "type" : "PDF"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "sv",
+    "value" : "Anmälan till förskoleundervisning",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Esiopetukseen ilmoittautuminen",
+    "type" : "Name"
+  }, {
+    "language" : "en",
+    "value" : "Preschool education enrolment",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "PrintableForm",
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "Anmälan till förskoleundervisning som anordnas av Vasa stad sker med blanketten Anmälan till förskoleundervisning.\nDet primära sättet att anmäla sitt barn till förskoleundervisningen som anordnas av Vasa stad är en elektronisk anmälan. Alternativt kan man använda pappersblanketten Anmälan till förskoleundervisning. Blanketten kan skrivas ut här eller hämtas på daghemmen eller förvaltningen för småbarnspedagogik, Rådhusgatan 29, 65100 Vasa (må-fre kl. 9.00–15.00). \n\nBarnet anmäls till förskoleundervisning till det geografiska storområde där familjen bor då förskoleundervisningen börjar. Det är inte möjligt att välja någon viss enhet i samband med anmälan. Barn som behöver skiftesvård eller kvällsvård får sin förskoleundervisning vid skiftesdaghemmet Rödluvans daghem.   \n\nOm barnet utöver förskoleundervisning (4 h/dag) behöver dagvård anger man även dagvårdsbehovet i anmälningsblanketten.  \n\nEtt skriftligt beslut om intagning till förskoleundervisning skickas hem till vårdnadshavarna 20.4.2017. Förskoleundervisningsplatsen ska tas emot skriftligt inom den utsatta tid som anges i beslutet.     \n",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Anmälan till förskoleundervisning som anordnas av Vasa stad sker med blanketten Anmälan till förskoleundervisning.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Ilmoittautuminen Vaasan kaupungin järjestämään esiopetukseen tapahtuu ensisijaisesti sähköisesti. Vaihtoehtoisesti esiopetukseen voi ilmoittautua myös \"Ilmoittautuminen esiopetukseen\"- lomakkeella. Lomakkeen voi tulostaa tästä, noutaa päiväkodeista tai varhaiskasvatuksen hallinnosta, os. Raastuvankatu 29, 65100 Vaasa (ma – pe klo 9.00 - 15.00).\n\nLapsi ilmoitetaan esiopetukseen sille maantieteelliselle suuralueelle, jossa lapsi asuu esiopetuksen alkaessa. Tiettyä yksikköä ei voi valita ilmoittautumisen yhteydessä. Vuorohoitoa tai iltahoitoa tarvitsevien lasten esiopetus järjestetään Punahilkan päiväkodissa.\n\nMikäli lapsi tarvitsee esiopetuksen (4 h/pvä) lisäksi myös päivähoitoa, tulee ilmoittautumislomakkeessa täyttää päivähoidon tarve esiopetuksen lisäksi. \n\nKirjallinen päätös esiopetukseen ottamisesta postitetaan huoltajille 20.4.2017. Esiopetuspaikka tulee ottaa kirjallisesti vastaan päätöksestä ilmenevään määräaikaan mennessä.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan kaupungin järjestämään esiopetukseen voi ilmoittautua \"Ilmoittautuminen esiopetukseen\"-lomakkeella.",
+    "type" : "Summary"
+  }, {
+    "language" : "en",
+    "value" : "You can apply for preschool education by filling out the form “Preschool Education Enrolment”.",
+    "type" : "Summary"
+  }, {
+    "language" : "en",
+    "value" : "You can apply for preschool education electronically (in Finnish)\n\nYou can also apply for preschool education by filling out the form “Preschool Education Enrolment”. The form is available in here, day care centers and at the Administration for Early Childhood Education, Raastuvankatu 29, 65100 Vaasa (opening hours mon – fri 9.00 – 15.00).\n\nThe area borders for basics schools are followed when placing children in the Preschool education. The municipality give the child a place in Preschool education from the own geographical area, according to the law of basic education. A certain Preschool education unit cannot be chosen when applying for day care. Preschool education for children whose parents work at night, or do non-standard shifts, is provided in Punahilkka day care centre.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "b931bafd-1d33-4a17-b4da-12f88fa28513"
+}

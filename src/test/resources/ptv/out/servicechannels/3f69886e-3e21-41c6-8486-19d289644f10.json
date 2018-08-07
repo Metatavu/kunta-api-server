@@ -1,0 +1,146 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "http://www.abo.fi/vos/",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "http://www.abo.fi/vos/",
+    "value" : null,
+    "language" : "en"
+  }, {
+    "orderNumber" : "0",
+    "url" : "http://www.abo.fi/vos/",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "sv" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "17c633dd-5408-495a-86c1-d8f57598e899",
+      "name" : "Perusopetus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "31b705f5-fee4-49a0-b9d6-7e74886a1fb1",
+      "name" : "Oppilaanohjaus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "34ce61c9-128d-4e19-b805-cd0fc40c6f3c",
+      "name" : "Lukiokoulutuksen opinto-ohjaus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "6387f401-b9ea-4cc9-85a0-f750909d3a96",
+      "name" : "Lukiokoulutus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "b36ea9f7-a278-468b-b488-5946e638fbc5",
+      "name" : "Lukiokoulutuksen opiskelijahuolto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "sv",
+    "value" : "Vasa övningsskolas webbsidor",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Vasa övningsskolan verkkosivut",
+    "type" : "Name"
+  }, {
+    "language" : "en",
+    "value" : "Web pages of Vasa övningsskola",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "en",
+    "value" : "The web pages of Vasa övningsskola gives you information about the school.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "På Vasa övningsskolas sidor hittar du information om skolans verksamhet. \n",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "På Vasa övningsskolas sidor hittar du information om skolans verksamhet.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Vasa övningsskolan sivuilta löydät tietoa koulun toiminnasta.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Vasa övningsskolan sivuilta löydät tietoa koulun toiminnasta.",
+    "type" : "Description"
+  }, {
+    "language" : "en",
+    "value" : "The web pages of Vasa övningsskola gives you information about the school. \n",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "3f69886e-3e21-41c6-8486-19d289644f10"
+}

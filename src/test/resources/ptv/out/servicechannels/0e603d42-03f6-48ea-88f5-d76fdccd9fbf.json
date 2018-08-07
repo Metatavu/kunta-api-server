@@ -1,0 +1,50 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "http://www.kansalaisneuvonta.fi/fi-FI/Kansalaisneuvonta_Kysy_julkisista_palvel(57056)",
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "requiresSignature" : false,
+  "attachments" : [ ],
+  "languages" : [ "sv", "en", "fi" ],
+  "supportPhones" : [ ],
+  "areas" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "7a1e5f72-beee-4006-8a96-657862555142",
+      "name" : "Kansalaisneuvonta"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "b458d033-042d-4cbe-b030-34e81da28821",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Kansalaisneuvonnan yhteydenottolomake",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "EChannel",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Kansalaisneuvonnan yhteydenottolomakkeella voit lähettää kysymyksen tai palautteen Kansalaisneuvonnan palveluneuvojalle.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Kansalaisneuvonnan sähköisellä yhteydenottolomakkeella voit lähettää kysymyksen Kansalaisneuvonnan palveluneuvojalle. Sähköisellä lomakkeella voit myös antaa palautetta sivustosta tai Kansalaisneuvonnasta. \n\nVoit lähettää sähköisellä lomakkeella kysymyksen tai palautteen mihin vuorokaudenaikaan tahansa. ",
+    "type" : "Description"
+  } ],
+  "areaType" : null,
+  "publishingStatus" : "Published",
+  "modified" : "2018-05-23T11:39:40.574423",
+  "id" : "0e603d42-03f6-48ea-88f5-d76fdccd9fbf",
+  "signatureQuantity" : 0,
+  "requiresAuthentication" : false
+}

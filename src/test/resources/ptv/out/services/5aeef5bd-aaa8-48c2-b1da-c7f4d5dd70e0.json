@@ -1,0 +1,306 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Asumispalvelut",
+      "language" : "fi"
+    }, {
+      "value" : "Boendetjänster",
+      "language" : "sv"
+    }, {
+      "value" : "Housing services",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Till denna serviceundergrupp hör bostads- och serviceboendelösningar för äldre och personer med nedsatt funktionsförmåga (subventionerat boende, serviceboende och effektiverat serviceboende), bidrag i samband med dessa samt hjälp- och stödmedel som används hemma. Denna grupp innehåller också stödboendet för omhändertagna barn, långtidssjuka och rehabiliteringsklienter inom missbrukarvården. Till denna grupp hör inte t.ex. hem- och hemsjukvårdstjänster, som finns i sina egna grupper.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains housing and supported housing solutions for older people and the disabled (supported housing, sheltered housing and sheltered housing with 24-hour assistance), the associated benefits and assistive and support devices used at home. The class also contains supported housing services for children in foster care, chronically ill people and persons in substance abuse rehabilitation. This class does not include home care and home nursing services, for example, which have their own classes.",
+      "language" : "en"
+    }, {
+      "value" : "Tähän alapalveluluokkaan kuuluvat ikääntyneiden ja vammaisten asunto- ja palveluasumisratkaisut (tuettu asuminen, palveluasuminen ja tehostettu palveluasuminen), niihin kuuluvat tuet sekä kotona käytettävät apu- ja tukivälineet. Luokkaan kuuluvat myös huostaanotettujen lasten ja pitkäaikaissairaiden perhehoidon ja päihdekuntoutujien tukiasuminen. Luokkaan eivät kuulu esimerkiksi koti- ja kotisairaanhoitopalvelut, jotka ovat omissa luokissaan.",
+      "language" : "fi"
+    } ],
+    "code" : "P4.1",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1024",
+    "parentId" : "079b55da-af80-41ab-9346-c8fdd284afcf",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1023"
+  }, {
+    "name" : [ {
+      "value" : "Terveydenhuolto, sairaanhoito ja ravitsemus",
+      "language" : "fi"
+    }, {
+      "value" : "Hälso- och sjukvård, näring",
+      "language" : "sv"
+    }, {
+      "value" : "Health and medical care, nutrition",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Tässä palveluluokassa käsitellään sekä yleisiä että tietyille ryhmille suunnattuja terveyden- ja sairaanhoidon palveluja. Luokkaan kuuluvat myös lääkkeisiin ja ravitsemukseen liittyvät palvelut sekä kuntoutus terveydenhoidollisen ja lääkinnällisen kuntoutuksen osalta.",
+      "language" : "fi"
+    }, {
+      "value" : "I denna serviceundergrupp behandlas både allmänna och hälso- och sjukvårdstjänster för vissa grupper. Till gruppen hör också tjänster i anslutning till läkemedel och näring samt rehabilitering för hälso- och sjukvårdens och medicinska rehabiliteringens del.",
+      "language" : "sv"
+    }, {
+      "value" : "This service class contains health and medical care services, both general services and those intended for specific groups. It also includes services associated with medicines and nutrition, as well as rehabilitation for the part of health care related and medical rehabilitation.",
+      "language" : "en"
+    } ],
+    "code" : "P5",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1038",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "5aeef5bd-aaa8-48c2-b1da-c7f4d5dd70e0",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "0447794b-bb9b-487a-93fc-4c3dbfc5b086",
+      "name" : "Asiakasmaksutoimisto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "092bc995-3a9a-4659-979c-d2ef02ed47b5",
+      "name" : "Hakemus ikäihmisten päivätoimintaan, lyhytaikaiseen hoitoon tai intervallihoitoon"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "1900c58f-ff55-4e64-97c5-35df2f55d3bb",
+      "name" : "Laihian vuodeostasto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "2b2299a3-d527-4221-878b-5f82a6e2dec9",
+      "name" : "Ikäihmisten hoitopaikat"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "4c27b1fc-9108-41b0-a7ae-b86b04cba565",
+      "name" : "Lyhytaikainen hoito ja intervallihoito - Himalaja"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "61ad1756-7d08-4dbf-95d6-8834996f2375",
+      "name" : "Hakemus tehostettuun palveluasumiseen"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "e979a097-62bb-47e1-b1c9-884e859f6693",
+      "name" : "SAS-työryhmän johtava sosiaalityöntekijä"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "f1e584a7-af2c-4a81-8b48-4a1f96969856",
+      "name" : "Lyhytaikainen hoito ja intervallihoito - muut paikat"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : "Kriterierna bedöms individuellt utifrån ansökan. ",
+    "language" : "sv"
+  }, {
+    "value" : "Kriteerit arvioidaan yksilökohtaisesti hakemuksen perusteella.",
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "Chargeable",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Lyhytaikainen hoito ja intervallihoito",
+    "type" : "AlternativeName"
+  }, {
+    "language" : "fi",
+    "value" : "Ikäihmisten hoitopaikat",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Kortvarig vård och intervallvård",
+    "type" : "AlternativeName"
+  }, {
+    "language" : "sv",
+    "value" : "Seniorernas vårdplatser",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : "Klienterna väljs av SAS-arbetsgruppen. Ytterligare information om serviceboende med heldygnsomsorg ger ledande socialarbetaren tfn 0400 910 698.\n\nOlika enheter erbjuder kortvarig vård och intervallvård. ",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : "Seniorernas vårdplatser kan vara kortvarig vård, intervallvård eller långvarig vård dvs. effektiverat serviceboende.\n\nKortvarigvård\n\nKorttidsvården är avsedd för personer med tillfälligt behov av vård, omsorg och rehabilitering. Korttidsvård kan också ansökas för att den vårdande anhöriga får möjlighet till vila. När man söker efter en lämplig plats har den fysiska och psykiska funktionsförmågan betydelse, nämligen behovet av hjälp i olika situationer. För behov av kortvarig vårdplats räkker det bara att kontakta SAS-byrån.\n\nIntervallvård\n\nVården kan ordnas tillfälligt eller den regelbundna service som intervallvård.\n\nEffetiverat serviceboende\n\nEffetiverat serviceboende är nödvändigt då behovet av hjälp är dygnet runt, och service till hemmet inte mera räcker till. Till långtidsvårdplatser behövs en ansökan skriftligt eller muntligt. Ansökan behandlas av SAS-team så snabbt som möjligt när alla bilagor är med som behövs. Beslutet fås per brev.\n\n\n",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Asukkaat valitsee SAS-työryhmä. Lisätietoja tehostetusta palveluasumisesta saa johtavalta sosiaalityöntekijältä p. 0400 910 698.\n\nEri yksiköt tarjoavat lyhytaikaista hoitoa ja intervallihoitoa. ",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Ikäihmisten hoitopaikat voivat olla joko lyhytaikaista hoitoa, intervallihoitoa tai pitkäaikaista hoitoa eli tehostettua palveluasumista.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : "Seniorernas vårdplatser kan vara kortvarig vård, intervallvård eller långvarig vård dvs. effektiverat serviceboende.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Ikäihmisten hoitopaikat voivat olla joko lyhytaikaista hoitoa, intervallihoitoa tai pitkäaikaista hoitoa eli tehostettua palveluasumista.\n\nLyhytaikaiset hoitopaikat\n\nLyhytaikainen hoito on tarkoitettu tilapäistä hoitoa, huolenpitoa ja kuntoutusta tarvitseville. Lyhytaikaista hoitopaikkaa voi hakea myös hoitavan omaisen levon vuoksi. Sopivaa paikkaa mietittäessä merkittävää on fyysinen ja psyykkinen toimintakyky, eli avuntarve eri tilanteissa. Lyhytaikasta hoitopaikkaa varten riittää yhteydenotto SAS-toimistoon (selvitä-arvioi-sijoita).\n\nIntervallihoitopaikat\n\nHoitoa voidaan järjestää tilapäisesti tai säännöllisesti tapahtuvana hoitona eli intervallihoitona.\n\nTehostettu palveluasuminen\n\nTehostettu palveluasuminen on tarkoitettu henkilöille, joiden avun tarve on ympäri vuorokauden eivätkä kotiin saatavat palvelut enää riitä. Tehostettua palveluasumista voi hakea kirjallisesti tai suullisesti.  Hakemus käsitellään SAS-työryhmässä mahdollisimman pian, kun kaikki tarvittavat liitteet on toimitettu. Hakemuksen käsittelyyn liittyy sosiaalihuoltolain mukainen palvelutarpeen arviointi. Päätös lähetetään kotiin postitse.",
+    "type" : "Description"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

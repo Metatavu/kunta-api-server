@@ -1,0 +1,213 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "1",
+    "url" : "http://www.naantali.fi/opetus_ja_koulutus/koulut/kuparivuori/fi_FI/etusivu/",
+    "value" : "Kuparivuoren koulun www-sivut",
+    "language" : "fi"
+  }, {
+    "orderNumber" : "2",
+    "url" : "http://www.naantali.fi/opetus_ja_koulutus/koulut/kuparivuori/fi_FI/henkilokunta/",
+    "value" : "Kuparivuoren koulun henkilökunta",
+    "language" : "fi"
+  }, {
+    "orderNumber" : "3",
+    "url" : "http://www.naantali.fi/opetus_ja_koulutus/koulut/kuparivuori/fi_FI/etusivu/_files/91250848647813069/default/KASVATUSKESKUSTELU%202014.pdf",
+    "value" : "Kasvatuskeskustelu eli KAKE",
+    "language" : "fi"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Kuparivuorentie",
+        "language" : "fi"
+      } ],
+      "streetNumber" : "2",
+      "postalCode" : "21100",
+      "postOffice" : [ {
+        "value" : "NAANTALI",
+        "language" : "sv"
+      }, {
+        "value" : "NAANTALI",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "529",
+        "name" : [ {
+          "value" : "Naantali",
+          "language" : "fi"
+        }, {
+          "value" : "Nådendal",
+          "language" : "sv"
+        }, {
+          "value" : "Naantali",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ ],
+      "latitude" : "6713647.856",
+      "longitude" : "226445.177",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  }, {
+    "type" : "Postal",
+    "subType" : "PostOfficeBox",
+    "postOfficeBoxAddress" : {
+      "postOfficeBox" : [ {
+        "value" : "PL 43",
+        "language" : "fi"
+      } ],
+      "postalCode" : "21101",
+      "postOffice" : [ {
+        "value" : "NAANTALI",
+        "language" : "sv"
+      }, {
+        "value" : "NAANTALI",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "529",
+        "name" : [ {
+          "value" : "Naantali",
+          "language" : "fi"
+        }, {
+          "value" : "Nådendal",
+          "language" : "sv"
+        }, {
+          "value" : "Naantali",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ ]
+    },
+    "streetAddress" : null,
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "25b6bae1-fa45-4fe4-8ea1-36260c46b2ce",
+      "name" : "Nuorisotyö"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "aa770428-0ee1-433d-8d2c-90c060c477cd",
+      "name" : "Perusopetuksen erityisopetus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "e45cae1e-dfbc-44eb-b57b-ef73f21b38c4",
+      "name" : "Perusopetus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "f20366fd-b41d-406b-bfab-e6928359a008",
+      "name" : "Painotettu opetus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : "Opettajainhuone",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "444171233",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Vararehtori",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "447334636",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Rehtori",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "445334368",
+    "language" : "fi"
+  } ],
+  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "emails" : [ {
+    "value" : "etunimi.sukunimi@naantali.fi",
+    "language" : "fi"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Kuparivuoren koulu",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Kuparivuoren koulu on Naantalin kaupungin perusopetuksen alakoulu.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Kuparivuoren koulu on Naantalin kaupungin perusopetuksen alakoulu. Kannustava ja myönteinen ilmapiiri sekä hyvät käytöstavat ovat koulun keskeisiä teemoja hyviin oppimistuloksiin pyrittäessä. Koulussa toimii kaksitoista yleisopetuksen ja kolme erityisen tuen pienryhmää. Tavoitteena on tarjota oppilaille hyvät puitteet opiskeluun ja tarjota opintoihin monipuolista tukea yksilöllisen tarpeen mukaan.\n\nSyksystä 1998 lähtien opiskelun on voinut aloittaa englannin kielirikasteisella luokalla. Oppilaat oppivat vähitellen käyttämään englannin kieltä luokkarutiineissaan tekemisen, katselemisen ja kuulemisen kautta.\n  \nKasvatuskeskustelu eli KAKE on käytössä Kuparivuoren koulussa. ",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "9f9f9de3-e74b-4924-90b2-4a003bfebf30"
+}

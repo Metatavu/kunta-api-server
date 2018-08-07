@@ -1,0 +1,84 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://sahkas2.vaasa.fi/hta/aloitus.html",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://sahkas2.vaasa.fi/hta/aloitus.html",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "requiresSignature" : false,
+  "attachments" : [ ],
+  "languages" : [ ],
+  "supportPhones" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "dd8fb9a3-e6f4-4793-8f7e-22dac70f39f1",
+      "name" : "Kuntalaisaloite"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Asian vireillepano",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Anhängiggörande av ärende",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "EChannel",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Asian vireillepano -verkkopalvelussa voit jättää kuntalaisaloitteen Vaasan kaupungille. Palvelussa voit myös esimerkiksi tehdä esityksen, ehdotuksen, oikaisun, valituksen tai hakemuksen virkaan.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Asian vireillepano -verkkopalvelussa voit jättää kuntalaisaloitteen Vaasan kaupungille.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "I webbtjänsten Anhängiggörande av ärende kan du lämna in ett kommuninvånarinitiativ till Vasa stad.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "I webbtjänsten Anhängiggörande av ärende kan du lämna in ett kommuninvånarinitiativ till Vasa stad. I tjänsten kan du bland annat göra en framställning eller lämna in ett förslag, en rättelse, besvär eller en tjänsteansökan.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "23d94e3b-534c-4b83-ab78-1a1769096003",
+  "signatureQuantity" : 0,
+  "requiresAuthentication" : true
+}

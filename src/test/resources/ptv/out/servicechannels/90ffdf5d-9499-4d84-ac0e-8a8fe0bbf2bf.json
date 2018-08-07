@@ -1,0 +1,61 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/node/12111",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/sv/node/12111",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "sv", "fi" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "eb49b997-0f21-4f7d-8f9f-a53205ed459c",
+      "name" : "Pysäköinninvalvonta"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Pysäköinti",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Parkering",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "På sidorna hittar du information om Vasa stads parkeringstjänster, parkeringsövervakningen samt de avgiftsbelagda parkeringsområdena och deras priser.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Sivuilta löydät tietoa Vaasan kaupungin pysäköintipalveluista, pysäköinninvalvonnasta sekä maksullisista pysäköintialueista ja niiden hinnoista.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Sivuilta löydät tietoa Vaasan kaupungin pysäköintipalveluista, pysäköinninvalvonnasta sekä maksullisista pysäköintialueista ja niiden hinnoista.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "På sidorna hittar du information om Vasa stads parkeringstjänster, parkeringsövervakningen samt de avgiftsbelagda parkeringsområdena och deras priser.",
+    "type" : "Summary"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "90ffdf5d-9499-4d84-ac0e-8a8fe0bbf2bf"
+}

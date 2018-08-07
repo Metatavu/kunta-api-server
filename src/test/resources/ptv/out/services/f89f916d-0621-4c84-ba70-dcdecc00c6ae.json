@@ -1,0 +1,215 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Lastensuojelu",
+      "language" : "fi"
+    }, {
+      "value" : "Barnskydd",
+      "language" : "sv"
+    }, {
+      "value" : "Child welfare",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "I denna serviceundergrupp behandlas tjänster som ansluter sig till förebyggande av familjekriser, en trygg uppväxtmiljö för barn och ungdomar och olika fosterhemslösningar.",
+      "language" : "sv"
+    }, {
+      "value" : "Tässä alapalveluluokassa käsitellään palveluja, jotka liittyvät perheen kriisien ehkäisemiseen, lapsen tai nuoren kasvuympäristön turvallisuuteen ja erilaisiin sijaiskotiratkaisuihin.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains services associated with preventing family crises, safety of the environment in which a child or a young person grows up, and different substitute care arrangements.",
+      "language" : "en"
+    } ],
+    "code" : "P3.8",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1021",
+    "parentId" : "77af99fa-93eb-4de6-ac83-1b161a961263",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1013"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "2e6be6be-90c4-4267-9a05-f3935874a3f2",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "f89f916d-0621-4c84-ba70-dcdecc00c6ae",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "93ebd686-9982-4411-87d2-29e0022d1280",
+      "name" : "Sosiaalityöntekijät - lastensuojelun avohuolto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Lastensuojelun avohuolto",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Lastensuojelun tukitoimet",
+    "type" : "AlternativeName"
+  }, {
+    "language" : "sv",
+    "value" : "Barnskyddes öppenvård",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "öppenvård inom barnskyddet",
+      "language" : "sv"
+    }, {
+      "value" : "lastensuojelun avohuolto",
+      "language" : "fi"
+    }, {
+      "value" : "non-institutional social care in child welfare",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p66540",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p15822"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : "En klientrelation inom barnskyddets öppenvård inleds då beslut fattas om att en utredning om behovet av barnskydd ska göras eller andra brådskande barnskyddsåtgärder vidtas. Klientrelationen fortsätter efter att en utredning om behovet av barnskydd gjorts ifall socialarbetaren som svarar för barnets angelägenheter bedömer att barnet är i behov av stödåtgärder inom barnskyddets öppenvård.\n\nUnder öppenvårdstiden ska barnet ha en gällande klientplan.\n\nStödåtgärder inom barnskyddet\n\nI klientplanen antecknas de omständigheter och saker som målet inom barnskyddet är att påverka, som till exempel barnets och familjens behov av stöd, service och andra stödåtgärder genom vilka målet är svara på stödbehovet samt den tid inom vilken man uppskattar att målen kan uppnås.\n\nSyftet med stödåtgärderna är att främja och stöda ett barns positiva utveckling samt stöda och stärka förmågan och möjligheterna att fostra hos föräldrarna, vårdnadshavarna och personer som svarar för barnets vård och fostran. Stödåtgärder är ekonomiskt stöd, stöd i anslutning till boendet, dagvård, hemservice, utkomststöd samt förebyggande utkomststöd. Stöd ges även i andra problemsituationer, i skolgången, vid skaffningen av yrke, placering i arbete, fritidsintressen och upprätthållandet av nära mänskliga relationer. Dessutom ingår i stödåtgärderna stödperson och stödfamilj, vård- och terapiservice, familjearbete, referensgruppsverksamhet samt semester- och rekreationsverksamhet.\n\n",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "En klientrelation inom barnskyddets öppenvård inleds då beslut fattas om att en utredning om behovet av barnskydd ska göras.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Lastensuojelun avohuollon asiakkuus alkaa, kun selvitys lastensuojelutarpeesta päätetään tehdä tai tehdään muita kiireellisiä lastensuojelutoimenpiteitä. Avohuollon asiakkuus jatkuu lastensuojelutarpeen selvityksen jälkeen, mikäli lapsen asioista vastaava sosiaalityöntekijä arvioi lapsen olevan lastensuojelun avohuollon tukitoimien tarpeessa.\n\nAvohuollon aikana lapsella on oltava voimassa oleva asiakassuunnitelma.\n\nLastensuojelun tukitoimet\n\nAsiakassuunnitelmaan kirjataan ne olosuhteet ja asiat, joihin lastensuojelussa pyritään vaikuttamaan. Näitä asioita ovat esimerkiksi lapsen ja hänen perheensä tuen tarve, palvelut ja muut tukitoimet, joilla tuen tarpeeseen pyritään vastaamaan sekä arvioitu aika, jonka kuluessa tavoitteet pyritään toteuttamaan.\n\nTukitoimien tarkoituksena on edistää ja tukea lapsen myönteistä kehitystä sekä tukea ja vahvistaa vanhempien, huoltajien ja lapsen hoidosta ja kasvatuksesta vastaavien henkilöiden kasvatuskykyä ja mahdollisuuksia. Tukitoimia ovat taloudellinen avustaminen, asumisen turvaaminen, päivähoito, kotipalvelu, toimeentulotuki, sekä ehkäisevä toimeentulotuki. Tukea annetaan myös muissa ongelmatilanteissa, koulunkäynnissä, ammatin hankinnassa, työhön sijoittumisessa, harrastuksissa ja läheisten ihmissuhteiden ylläpitämisessä. Lisäksi tukitoimintaan kuuluu tukihenkilö- ja perhe, hoito- ja terapiapalveluja, perhetyötä, vertaisryhmätoimintaa sekä loma- ja virkistystoimintaa.\n\nHuostaanotto\n\nHuostaanottoon voidaan ryhtyä silloin, kun lapsen terveys ja kehitys uhkaavat vakavasti vaarantua ja avohuollon tukitoimenpiteet on todettu riittämättömiksi tai mahdottomiksi toteuttaa. Huostaanotto on viimesijainen toimenpide ja se voidaan tehdä tarvittaessa myös vastoin vanhempien suostumusta. Huostaan otettu lapsi sijoitetaan lastensuojelulaitokseen tai sijaisperheeseen.\n ",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Lastensuojelun avohuollon asiakkuus alkaa, kun tehdään selvitys lastensuojelutarpeesta  tai tehdään muita kiireellisiä lastensuojelutoimenpiteitä.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

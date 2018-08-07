@@ -1,0 +1,84 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "http://kartta.vaasa.fi/flex/index.html?config=config_vaasa.xml",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "http://kartta.vaasa.fi/flex/index.html?config=config_vaasa.xml",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "requiresSignature" : false,
+  "attachments" : [ ],
+  "languages" : [ ],
+  "supportPhones" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "2cadcde8-8108-48fc-b069-f373f6b2bea8",
+      "name" : "Karttatuotteet"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Vaasan seudun karttapalvelu",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Vasaregionens kartservice",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "EChannel",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Vaasan kiinteistötoimi ylläpitää Vaasan seudun karttapalvelua (Flex). Vaasan seudun karttapalvelusta löytyy kantakartta, opaskartta, ortoilmakuvia ja muita karttoja sekä muuta paikkatietoa. ",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan kiinteistötoimi ylläpitää Vaasan seudun karttapalvelua (Flex).",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Vasas fastighetssektor upprätthåller Vasaregionens kartservice (Flex).",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Vasas fastighetssektor upprätthåller Vasaregionens kartservice (Flex). I Vasaregionens kartservice finns stomkarta, guidekarta, ortoflygfoton och andra kartor samt andra lägesdata.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "8704bfc8-6d3f-44f2-84b0-0ff5d3022750",
+  "signatureQuantity" : 0,
+  "requiresAuthentication" : false
+}

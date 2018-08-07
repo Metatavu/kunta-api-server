@@ -1,0 +1,61 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "http://www.foregangarna.fi/",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "http://www.foregangarna.fi/",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "sv" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "d64463b9-e039-48c8-b3e6-b625ecf3ea69",
+      "name" : "Etsivä nuorisotyö"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Föregångarna",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Föregångarna",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "På webbsidorna hittar du information om det svenskspråkiga uppsökande ungdomsarbetet i Vasaregionen.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Verkkosivuilta löydät tietoa Vaasan seudulla toimivasta, ruotsinkielisestä etsivästä nuorisotyöstä.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "På webbsidorna hittar du information om det svenskspråkiga uppsökande ungdomsarbetet i Vasaregionen. ",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Verkkosivuilta löydät tietoa Vaasan seudulla toimivasta, ruotsinkielisestä etsivästä nuorisotyöstä. ",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "ff84da0a-627f-4ff7-bd4d-29c709b0097b"
+}

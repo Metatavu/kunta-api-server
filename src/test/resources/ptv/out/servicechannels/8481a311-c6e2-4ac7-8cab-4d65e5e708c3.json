@@ -1,0 +1,78 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://opistopalvelut.fi/naantali/index.php",
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "requiresSignature" : false,
+  "attachments" : [ ],
+  "languages" : [ ],
+  "supportPhones" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "4dbc8d94-9494-4799-99d0-dbb503ff7e24",
+      "name" : "Taiteen perusopetus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "4f328176-048c-4d47-95b2-c2a539f67f6d",
+      "name" : "Kansalaisopisto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Netti-ilmoittautuminen Naantalin opistoon",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "EChannel",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Naantalin opistolla on käytössä ilmoittautuminen verkon kautta.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Ilmoittautuminen syksyn 2017 kursseille on alkanut 15.6.2017. \n\nOpiskelijat otetaan kurssille ilmoittautumisjärjestyksessä. Ilmoittautuessasi internetin kautta näet heti, onko paikkoja vielä vapaana. Kurssin täytyttyä voit ilmoittautua varasijoille. Täytäthän ilmoittautuessasi yhteystietosi huolellisesti.  \n\nHuomioithan, että ilmoittautuessasi kurssille sitoudut maksamaan kurssimaksun.\n\nOpetus alkaa opetusohjelman mukaisesti. Kurssin alkamisesta ei ilmoiteta erikseen. Peruutuspaikan saamisesta, kurssin peruuntumisesta tai aikataulumuutoksista lähetetään tieto ilmoittautuneille tekstiviestillä.\n",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "8481a311-c6e2-4ac7-8cab-4d65e5e708c3",
+  "signatureQuantity" : 0,
+  "requiresAuthentication" : false
+}

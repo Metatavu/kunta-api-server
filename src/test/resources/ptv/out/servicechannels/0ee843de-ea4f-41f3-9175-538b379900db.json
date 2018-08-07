@@ -1,0 +1,216 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/node/7571/",
+    "value" : "Avoin päiväkoti ja kerhotoiminta (leikkitoiminta)",
+    "language" : "fi"
+  }, {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/sv/node/7571/",
+    "value" : "Öppet daghem och klubbverksamhet (lekverksamhet)",
+    "language" : "sv"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Läntinen Kasarmintori",
+        "language" : "fi"
+      }, {
+        "value" : "Västra Kasärntorget",
+        "language" : "sv"
+      } ],
+      "streetNumber" : "8-10",
+      "postalCode" : "65100",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ ],
+      "latitude" : "0",
+      "longitude" : "0",
+      "coordinateState" : "NotReceived"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "82b0256e-536b-4ae7-9b31-135e0e00c53d",
+      "name" : "Avoin varhaiskasvatus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "407789598",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "407789598",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ {
+    "value" : "gustavsborgsoppnadh@vasa.fi",
+    "language" : "fi"
+  }, {
+    "value" : "gustavsborgsoppnadh@vasa.fi",
+    "language" : "sv"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "sv",
+    "value" : "Gustavsborgs öppna daghem",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Gustavsborgs öppna daghem",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ {
+    "serviceHourType" : "DaysOfTheWeek",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ {
+      "value" : "Öppet daghem",
+      "language" : "sv"
+    } ],
+    "openingHour" : [ {
+      "dayFrom" : "Monday",
+      "dayTo" : "",
+      "from" : "09:00:00",
+      "to" : "15:00:00"
+    }, {
+      "dayFrom" : "Wednesday",
+      "dayTo" : "",
+      "from" : "09:00:00",
+      "to" : "15:00:00"
+    }, {
+      "dayFrom" : "Friday",
+      "dayTo" : "",
+      "from" : "09:00:00",
+      "to" : "15:00:00"
+    } ]
+  }, {
+    "serviceHourType" : "DaysOfTheWeek",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ {
+      "value" : "Klubben",
+      "language" : "sv"
+    } ],
+    "openingHour" : [ {
+      "dayFrom" : "Tuesday",
+      "dayTo" : "",
+      "from" : "08:30:00",
+      "to" : "12:30:00"
+    }, {
+      "dayFrom" : "Thursday",
+      "dayTo" : "",
+      "from" : "08:30:00",
+      "to" : "12:30:00"
+    } ]
+  }, {
+    "serviceHourType" : "DaysOfTheWeek",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ {
+      "value" : "Babyöppet",
+      "language" : "sv"
+    } ],
+    "openingHour" : [ {
+      "dayFrom" : "Tuesday",
+      "dayTo" : "",
+      "from" : "13:00:00",
+      "to" : "15:00:00"
+    }, {
+      "dayFrom" : "Thursday",
+      "dayTo" : "",
+      "from" : "13:00:00",
+      "to" : "15:00:00"
+    } ]
+  } ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "Verksamhet vid öppna daghem är avsedd för barn under skolåldern som bor i Vasa.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Verksamhet vid öppna daghem är avsedd för barn under skolåldern som bor i Vasa.\n\nÖppet daghem:\nFör alla åldrar måndag, onsdag och fredag kl. 9.00 - 15.00\nFör bebisar (0 - 12 mån.) tisdag och torsdag kl. 13.00 - 15.00\nSångstund måndag, onsdag och fredag kl. 10.30\nSagostund måndag, onsdag och fredag kl. 12.30\nBabyrytmik tisdag och torsdag kl. 14.00\nÖppet daghem är avsett för Vasabarn under skolåldern samt deras föräldrar och dagvårdare och erbjuder både fri lek och ledd sysselsättning.\nVerksamheten bygger på idén att vårdare och barn tillsammans skall ha möjlighet att träffa andra människor, uppleva gemenskap och stimulans i grupp.\nDeltagandet är avgiftsfritt. Barnets vårdare skall vara närvarande och ha ansvar för barnet.\n \n\nDagklubben:\nAvsedd för 2,5 – 5-åriga barn som är bosatta i Vasa och som inte är i kommunal dagvård\nTisdag och torsdag kl. 8.30 - 12.30\nDagklubben vid Öppet daghem har ledd verksamhet med samlingar, sång, sagor och pyssel samt fri lek så att barnen får träna sig i att fungera i grupp och får stöd i sin personliga utveckling",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Avoimen päiväkodin toiminta on tarkoitettu alle kouluikäisille lapsille, jotka asuvat Vaasassa.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Avoimen päiväkodin toiminta on tarkoitettu alle kouluikäisille lapsille, jotka asuvat Vaasassa.\n\nAvoin päiväkoti:\nKaiken ikäisille lapsille maanantaisin, keskiviikkoisin ja perjantaisin klo 9-15\nVauvoille (0-12 kk) tiistaisin ja torstaisin klo 13-15\n\nLauluhetki maanantaisin, keskiviikkoisin ja perjantaisin klo 10:30\nSatuhetki maanantaisin, keskiviikkoisin ja perjantaisin klo 12:30\nBabyrytmik tiistaisin ja torstaisin klo 14\n\nAvoin päiväkoti on suunnattu vaasalaisille alle kouluikäisille lapsille ja heidän vanhemilleen ja hoitajilleen. Avoin päiväkoti tarjoaa sekä vapaata leikkiä, että ohjattua ajanvietettä. \nToiminta perustuu ajatukselle, että lapsi ja hoitaja yhdessä saavat mahdollisuuden tavata muita ihmisiä, kokea yhteisöllisyyttä ja virikkeitä ryhmässä.\nOsallistuminen on maksutonta. Lapsen hoitajan on oltava läsnä ja otettava vastuu lapsesta.\n\nPäiväkerho:\nSuunnattu  2,5-5 -vuotiaille lapsille, jotka asuvat Vaasassa ja eivät ole kunnallisessa päivähoidossa.\nTiistaisin ja torstaisin klo 8:30 - 12:30.\nAvoimen päiväkodin kerhossa on ohjattu toimintaa, johon kuuluu laulua, satuja ja askartelua sekä vapaata leikkiä, jotta lapsi saa opetella ryhmässä toimimista ja saa tukea henkilökohtaisessa kehityksessään.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-09-14T08:09:25.591581",
+  "id" : "0ee843de-ea4f-41f3-9175-538b379900db"
+}

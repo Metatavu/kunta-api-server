@@ -1,0 +1,225 @@
+{
+  "sourceId" : null,
+  "keywords" : [ {
+    "value" : "yritysarkkitehtuuri",
+    "language" : "fi"
+  } ],
+  "areas" : [ ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Government (state and local) registers and databases",
+      "language" : "en"
+    }, {
+      "value" : "Rekisterit ja tietokannat",
+      "language" : "fi"
+    }, {
+      "value" : "Register och databaser",
+      "language" : "sv"
+    } ],
+    "description" : [ {
+      "value" : "Denna underservicegrupp innehåller lagenligt utnyttjande av innehållet i den offentliga förvaltningens register och databaser som enstaka informationsinlämningar eller som automatiskt sambruk av information mellan systemen.",
+      "language" : "sv"
+    }, {
+      "value" : "Tämä alapalveluluokka sisältää julkishallinnon rekisterien ja tietokantojen sisältämän aineiston lainmukaisen, palveluluonteisen hyödyntämisen yksittäisinä tietoluovutuksina tai koneellisena tietojen yhteiskäyttönä järjestelmien välillä.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass features services that facilitate legal disclosures of information from public sector registers and databases either as individual instances or mass information exchange between information systems.",
+      "language" : "en"
+    } ],
+    "code" : "P9.3",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1219",
+    "parentId" : "95f29e15-fb54-4ac2-8c9b-fac6ae3121fa",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1095"
+  }, {
+    "name" : [ {
+      "value" : "Generella informations- ja förvaltningstjänster",
+      "language" : "sv"
+    }, {
+      "value" : "General information and administrative services",
+      "language" : "en"
+    }, {
+      "value" : "Yleiset tieto- ja hallintopalvelut",
+      "language" : "fi"
+    } ],
+    "description" : [ {
+      "value" : "I denna servicegrupp behandlas informations-, förvaltnings- och stödtjänster riktade till medborgare, samfund och andra myndigheter som till innehållet kan hänföra sig till vilket ämne som helst och därför inte kan placeras under de andra offentliga förvaltningens servicegrupper.",
+      "language" : "sv"
+    }, {
+      "value" : "This service class features services that offer general information, administrative and support services to citizens and public and private organisations. These are services that are not connected to any specific service topic and for that reason cannot be included in the other main classes of the service classification.",
+      "language" : "en"
+    }, {
+      "value" : "Tässä palveluluokassa käsitellään kansalaisille, yhteisöille ja toisille viranomaisille tarjottavia tieto-, hallinto- ja tukipalveluja, jotka sisällöltään voivat liittyä mihin aiheeseen tahansa ja joita ei tämän vuoksi voida sijoittaa julkisen palvelun luokituksen muihin aiheluokkiin.",
+      "language" : "fi"
+    } ],
+    "code" : "P9",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1095",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "Nationwide",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2018-06-05T07:56:34.977354",
+  "id" : "4a3f3c92-834d-4f83-8a60-2251717b13e7",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "4529c92d-8f18-43fb-9ee0-055258df6ec5",
+      "name" : "Arkkitehtuuripankki.fi"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "6180d972-a4b3-4812-a924-b35a1b377ad2",
+      "name" : "Avoindata.fi verkkoasiointi"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "881b179b-a0d1-49c4-9bce-4457b4e03ccd",
+      "name" : "JHS 179 Kokonaisarkkitehtuurin suunnittelu ja kehittäminen"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ {
+    "names" : [ {
+      "value" : "Laki julkisen hallinnon tietohallinnon ohjauksesta (Tietohallintolaki)",
+      "language" : "fi"
+    } ],
+    "webPages" : [ {
+      "url" : "https://www.finlex.fi/fi/laki/ajantasa/2011/20110634",
+      "value" : null,
+      "language" : "fi"
+    } ]
+  } ],
+  "requirements" : [ {
+    "value" : "Mallinnuspalvelua voivat käyttää kaikki julkisen hallinnon arkkitehtuurityötä tekevät.\n\nMallinnusten tekeminen edellyttää käyttöoikeuksien hakemista. \n\nMallinnuspalvelussa julkaistujen kuvausten katseluoikeus on kaikilla, mutta se edellyttää kirjautumista palveluun. \n",
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ {
+    "name" : [ {
+      "value" : "Toimiala tuntematon",
+      "language" : "fi"
+    }, {
+      "value" : "Industry unknown",
+      "language" : "en"
+    }, {
+      "value" : "Näringsgrenen okänd",
+      "language" : "sv"
+    } ],
+    "code" : "5",
+    "ontologyType" : null,
+    "uri" : "http://www.stat.fi/meta/luokitukset/toimiala/001-2008/00000",
+    "parentId" : "e6b9db07-3faa-49a8-afbc-54df6ff9b50a",
+    "parentUri" : "http://www.stat.fi/meta/luokitukset/toimiala/001-2008/0000"
+  } ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Julkisen hallinnon kokonaisarkkitehtuurin mallinnuspalvelu",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Yritykset ja yhteisöt",
+      "language" : "fi"
+    }, {
+      "value" : "Businesses and non-government organizations",
+      "language" : "en"
+    }, {
+      "value" : "Företag och samfund",
+      "language" : "sv"
+    } ],
+    "code" : "KR2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "Businesses operating in the domestic (Finnish) market",
+      "language" : "en"
+    }, {
+      "value" : "Kotimarkkinoilla toimivat yritykset",
+      "language" : "fi"
+    }, {
+      "value" : "Företag på den inhemska marknaden",
+      "language" : "sv"
+    } ],
+    "code" : "KR2.3",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2011",
+    "parentId" : "338939bb-b01a-4a80-a091-7c5238322bc0",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008"
+  }, {
+    "name" : [ {
+      "value" : "Authorities",
+      "language" : "en"
+    }, {
+      "value" : "Myndigheter",
+      "language" : "sv"
+    }, {
+      "value" : "Viranomaiset",
+      "language" : "fi"
+    } ],
+    "code" : "KR3",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2017",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Kokonaisarkkitehtuurin mallinnuspalvelu, Arkkitehtuuripankki.fi, tukee julkisen hallinnon organisaatioita kokonaisarkkitehtuurin mallintamisessa.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Käyttöoikeuksia voi hakea Arkkitehtuuripankki.fi:ssä. \n\nMallinnusta varten omalle työasemalle täytyy asentaa client-ohjelma, jonka asennusohje löytyy palvelusta. Asennus vaatii pääkäyttäjäoikeudet ja tietoliikenneyhteyden avaamisen.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Kokonaisarkkitehtuuri (KA) tukee johtamista, strategian toimeenpanoa, toiminnan ja palvelujen jatkuvaa kehittämistä, muutosten ja monimutkaisuuden hallintaa, digitalisaation hallittua hyödyntämistä sekä yhteentoimivuutta. \n\nKokonaisarkkitehtuurin mallinnuspalvelu, Arkkitehtuuripankki.fi, auttaa ja tukee julkisen hallinnon organisaatioita kokonaisarkkitehtuurin mallintamisessa ja julkaisemisessa. Arkkitehtuuripankki on palvelukokonaisuus, jonka pääosat ovat\n* Koulutus: Väestörekisterikeskus järjestää valmennuksia, jotka tukevat julkisen hallinnon organisaatioiden toiminnan ohjaamista ja kokonaisvaltaista kehittämistä. \n* Käyttöympäristö: KA-mallinnusympäristö, jonne organisaatiot voivat luoda arkkitehtuurimallejaan. \n* Julkaisuympäristö: KA-välineellä organisaatiot voivat julkaista luotua KA-materiaalia. Materiaaliin voi tutustua selaimella.\n* Kehittämisen tukipalvelut: Koulutuksen, kehittämistyön aloittamisen ja kehittämisen tuen lisäksi saatavilla on tukea aineiston siirtoon ja migraatioon muista välineistä.\n\nArkkitehtuuripankki.fi-palvelu perustuu julkisen hallinnon suositukseen JHS 179, jossa on kuvattu kokonaisarkkitehtuurin suunnittelumenetelmä. JHS 179 puolestaan on luotu kansainvälisen viitekehyksen TOGAFin pohjalta. Kokonaisarkkitehtuurimenetelmä on kokonaisarkkitehtuurityön järjestelmällinen työ- ja menettelytapa, jonka avulla tunnistetaan, jäsennetään, suunnitellaan ja kuvataan kokonaisuuden rakenneosat ja niiden riippuvuudet nyky- ja tavoitetilassa. \n\nMallinnuspalvelu täyttää julkisen hallinnon digitaalisen turvallisuuden johtoryhmän (VAHTI) ohjeistuksen mukaisen STIV-tietoturvaluokituksen.\n",
+    "type" : "Description"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "b458d033-042d-4cbe-b030-34e81da28821",
+      "name" : "Väestörekisterikeskus"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "b458d033-042d-4cbe-b030-34e81da28821",
+      "name" : "Väestörekisterikeskus"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

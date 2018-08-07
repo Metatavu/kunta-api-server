@@ -1,0 +1,162 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Tammikaivontie",
+        "language" : "fi"
+      }, {
+        "value" : "Dammbrunnsvägen",
+        "language" : "sv"
+      } ],
+      "streetNumber" : "4",
+      "postalCode" : "65100",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ {
+        "value" : "Ikäkeskus/Tammikartano",
+        "language" : "fi"
+      }, {
+        "value" : "Seniorcenter/Dammbrunnsgården",
+        "language" : "sv"
+      } ],
+      "latitude" : "7007850.117",
+      "longitude" : "230049.973",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "a355e75f-be55-4c48-a5fd-0b1d9a3f2b1c",
+      "name" : "Hoitotarvikejakelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : "Puhelinaika torstaisin klo 8-10.30",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "403587330",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "403587330",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ {
+    "value" : "hoitotarvikejakelu@vaasa.fi",
+    "language" : "fi"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Hoitotarvikejakelu",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Utdelning av vårdmaterial",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ {
+    "serviceHourType" : "DaysOfTheWeek",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ {
+      "value" : null,
+      "language" : "fi"
+    } ],
+    "openingHour" : [ {
+      "dayFrom" : "Wednesday",
+      "dayTo" : "",
+      "from" : "12:00:00",
+      "to" : "17:00:00"
+    }, {
+      "dayFrom" : "Thursday",
+      "dayTo" : "",
+      "from" : "11:00:00",
+      "to" : "16:00:00"
+    } ]
+  } ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Hoitotarvikejakelussa jaetaan hoidon kannalta tarpeellisia hoitotarvikkeita pitkäaikaista sairautta sairastaville ja avohoidossa oleville vaasalaisille potilaille. Hoitotarvikkeita jaetaan kolmen kuukauden tarve kerrallaan. Hoitotarvikkeet ovat maksuttomia ja niihin tarvitaan lähete.\n\nDiabetestarvikkeet jaetaan omalta terveysasemalta tai diabetesvastaanotolta.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Hoitotarvikejakelusta voi hakea erilaisia hoidon kannalta tarpeellisia hoitotarvikkeita.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Vårdmaterial som behövs i vården delas ut åt Vasabor som är långtidssjuka och vårdas i öppna vården.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Vårdmaterial som behövs i vården delas ut åt Vasabor som är långtidssjuka och vårdas i öppna vården. Vårdmaterial delas ut för högst tre månaders behov i taget. Vårdmaterialen är avgiftsfria.\n\nDiabetestillbehör delas ut via den egna hälsostationen eller diabetesmottagningen.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "4607db32-ae9d-4e57-ae20-9e0e644e09c0"
+}

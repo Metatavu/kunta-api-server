@@ -1,0 +1,229 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Veneily",
+      "language" : "fi"
+    }, {
+      "value" : "Boating",
+      "language" : "en"
+    }, {
+      "value" : "Båtliv",
+      "language" : "sv"
+    } ],
+    "description" : [ {
+      "value" : "This service subclass contains marinas and moorings, boating safety, rules and regulations, maps of water areas and boating-related training.",
+      "language" : "en"
+    }, {
+      "value" : "Tähän palvelualaluokkaan kuuluvat venesatamat ja -paikat, veneilyn turvallisuus, säännöt ja säädökset, vesialueiden kartat sekä veneilykoulutus.",
+      "language" : "fi"
+    }, {
+      "value" : "Denna serviceundergrupp omfattar båthamnar och -platser, säkerhet till sjöss, regler och författningar, sjökort och båtförarutbildning.",
+      "language" : "sv"
+    } ],
+    "code" : "P27.3",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1213",
+    "parentId" : "175762f6-53cd-4d29-a285-625bfb421b21",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1210"
+  }, {
+    "name" : [ {
+      "value" : "Vesiliikenne",
+      "language" : "fi"
+    }, {
+      "value" : "Vattentrafik",
+      "language" : "sv"
+    }, {
+      "value" : "Waterborne transport",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Tähän palvelualaluokkaan kuuluvat vesiajoneuvojen kelpoisuus- ja turvallisuusvaatimukset, rekisteri- ja omistusasiat, satamapalvelut aluksille, vesiliikenteen turvallisuus ja eräisiin alustyyppeihin liittyvät kuljettajakelpoisuudet ja -luvat.",
+      "language" : "fi"
+    }, {
+      "value" : "Denna serviceundergrupp omfattar behörighets- och säkerhetskrav på vattenfordon, registrerings- och innehavsärenden, hamntjänster för fartyg, säkerhet i vattentrafik och förarbehörighet och -tillstånd för vissa fartygstyper.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains condition and safety requirements applicable to watercraft, registration and ownership issues, port services for vessels, safety of waterborne transport and operator qualifications and licences for certain vessel types.",
+      "language" : "en"
+    } ],
+    "code" : "P16.8",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1150",
+    "parentId" : "99c23d1f-53e3-415f-9757-479fe6f8e4ea",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1142"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "429568b5-5876-49f5-a9cc-4b91d1c0ea50",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "726b85b3-0a86-4edf-a64f-a7ef14749627",
+      "name" : "Katumestari"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "be91df34-094a-4de7-9368-3ce7b8826214",
+      "name" : "Naantalin laituri- ja pienvenepaikkojen sähköinen varausjärjestelmä"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "ea647137-9a6f-4bdd-a9c6-af0528b20318",
+      "name" : "Venepaikkojen asiakaspalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "Chargeable",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Naantalin laituri- ja pienvenepaikkojen vuokraus",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "båtsport",
+      "language" : "sv"
+    }, {
+      "value" : "veneily",
+      "language" : "fi"
+    }, {
+      "value" : "boating",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p34055",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p35142;http://id.loc.gov/authorities/subjects/sh85015159"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Yritykset ja yhteisöt",
+      "language" : "fi"
+    }, {
+      "value" : "Businesses and non-government organizations",
+      "language" : "en"
+    }, {
+      "value" : "Företag och samfund",
+      "language" : "sv"
+    } ],
+    "code" : "KR2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : "Vuokrattavien venepaikkojen hinnat määräytyvät paikan leveyden perusteella voimassa olevan hinnaston mukaan.",
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Naantalin kaupungilla on hallinnassaan 13 venesatamaa, joissa on noin 1 000 vuokrattavissa olevaa laituripaikkaa ja noin 100 pienvenepaikkaa.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Kaikki Naantalin kaupungin vuokraamat kausivenepaikat löytyvät ympäri vuorokauden auki olevasta sähköisestä varausjärjestelmästä. Paikkoja voi vuokrata myös soittamalla asiakaspalveluun toimistoaikana.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Naantalin kaupungilla on hallinnassaan 13 venesatamaa, joissa on noin 1 000 vuokrattavissa olevaa laituripaikkaa ja noin 100 pienvenepaikkaa. Satamia on sekä vanhan Naantalin alueella että saaristossa. Vierasvenesatamia Naantalissa on 5. Laitureiden kunnossapidosta vastaa katumestari.\n\nKaikki Naantalin kaupungin vuokraamat kausivenepaikat löytyvät ympäri vuorokauden auki olevasta sähköisestä varausjärjestelmästä. Paikkoja voi vuokrata myös soittamalla asiakaspalveluun toimistoaikana.",
+    "type" : "Description"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

@@ -1,0 +1,144 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "attachments" : [ ],
+  "languages" : [ ],
+  "deliveryAddresses" : [ {
+    "subType" : "Street",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Vöyrinkatu",
+        "language" : "fi"
+      }, {
+        "value" : "Vörågatan",
+        "language" : "sv"
+      } ],
+      "streetNumber" : "2",
+      "postalCode" : "65100",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : null,
+      "additionalInformation" : [ {
+        "value" : "Lomakkeet lähetetään ensisijaisesti sähköpostilla osoitteeseen: hanna.elomaa@vaasa.fi",
+        "language" : "fi"
+      }, {
+        "value" : "Blanketter skickas i första hand via e-post: hanna.elomaa@vasa.fi",
+        "language" : "sv"
+      } ]
+    },
+    "deliveryAddressInText" : null,
+    "receiver" : [ {
+      "value" : "Hanna Elomaa, Palvelupäällikkö",
+      "language" : "fi"
+    }, {
+      "value" : "Hanna Elomaa, Servicechef",
+      "language" : "sv"
+    } ]
+  } ],
+  "supportPhones" : [ ],
+  "formIdentifier" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "8863e1d6-8d66-4f36-848a-231e93ae259c",
+      "name" : "Ruokapalveluiden tapahtuma- ja vuokrauspalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "9e7adb97-3950-407b-aa48-a1344627fd2a",
+      "name" : "Kotipalveluateriat"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "channelUrls" : [ {
+    "language" : "fi",
+    "value" : "https://www.vaasa.fi/sites/default/files/tarjouspyynto_-_ansokan.pdf",
+    "type" : "PDF"
+  }, {
+    "language" : "sv",
+    "value" : "https://www.vaasa.fi/sites/default/files/tarjouspyynto_-_ansokan.pdf",
+    "type" : "PDF"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Ruokapalveluiden tarjouspyyntölomake",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Matservicens blankett för anbudsförfrågan",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "PrintableForm",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Vaasan Ruokapalveluiden keittiöiltä voi tilata tarjoilun ja palvelun erilaisiin tapahtumiin. Toiveet tarjoilusta jätetään tarjouspyyntölomakkeella.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan Ruokapalveluiden keittiöiltä voi tilata tarjoilun ja palvelun erilaisiin tapahtumiin. Toimintamuoto suunnitellaan tilaajan kanssa tapauskohtaisesti. Toiveet tarjoilusta jätetään ruokapalveluiden tarjouspyyntölomakkeella.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Från Vasa Matservice kök kan servering och service beställas till olika evenemang. Önskemål om serveringen kan anges på blanketten för anbudsförfrågan",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Från Vasa Matservice kök kan servering och service beställas till olika evenemang. Verksamhetsformen planeras tillsammans med beställaren från fall till fall. Önskemål om serveringen o.d. kan anges på blanketten för anbudsförfrågan.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "3b8818e0-3922-4bd0-adb3-d96bc551aec3"
+}

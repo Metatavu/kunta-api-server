@@ -1,0 +1,222 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Tilaisuuksien järjestäminen",
+      "language" : "fi"
+    }, {
+      "value" : "Organisation of public events",
+      "language" : "en"
+    }, {
+      "value" : "Ordnande av evenemang",
+      "language" : "sv"
+    } ],
+    "description" : [ {
+      "value" : "Tässä palvelualaluokassa käsitellään niitä palveluja ja velvoittavia menettelyjä, jotka liittyvät yleisötilaisuuksien ja julkisilla paikoilla tapahtuvien yleisten kokousten kuten mielenosoitusten järjestämiseen.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains the services and mandatory procedures associated with organising open events and public meetings in public places, including demonstrations.",
+      "language" : "en"
+    }, {
+      "value" : "I denna serviceundergrupp behandlas tjänster och förpliktande förfaranden relaterade till ordnande av allmänna evenemang och allmänna möten på allmänna platser såsom demonstrationer.",
+      "language" : "sv"
+    } ],
+    "code" : "P20.2",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1169",
+    "parentId" : "6b69805c-fd6f-4117-aa1d-4fc24584b46d",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1167"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "e940104d-f78b-4efd-b18b-976984cc0d82",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "0aee933f-1f12-4f0a-9952-97892c6203af",
+      "name" : "Tekniikkavastaava - Kulttuurikeskus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "ceace322-cbb7-406c-8511-a3381f14417a",
+      "name" : "Kulttuurikeskus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "sv"
+  }, {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "Chargeable",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Tapahtumatekniikkapalvelut",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Scen-, ljud- och ljustekniktjänster",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "händelser",
+      "language" : "sv"
+    }, {
+      "value" : "tapahtumat",
+      "language" : "fi"
+    }, {
+      "value" : "events",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p35733",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p35417"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Yritykset ja yhteisöt",
+      "language" : "fi"
+    }, {
+      "value" : "Businesses and non-government organizations",
+      "language" : "en"
+    }, {
+      "value" : "Företag och samfund",
+      "language" : "sv"
+    } ],
+    "code" : "KR2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : "Kulttuurikeskus tarjoaa tapahtumiin ja tilaisuuksiin liittyen tekniikka- ja kuljetuspalveluita, kaluston vuokrausta ja neuvontaa.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Kulturcentret erbjuder i anslutning till evenemang och tillställningar teknik- och transporttjänster, uthyrning av utrustning samt rådgivning. I servicen ingår beträffande tekniken ljud- och ljustekniska tjänster, scenmontering och transportservice, beträffande utrustningen uthyrning av tält, bord och bänkar samt beträffande evenemangens och tillställningarnas tekniska genomförande rådgivning.\n\n",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Kulturcentret erbjuder i anslutning till evenemang och tillställningar teknik- och transporttjänster, uthyrning av utrustning samt rådgivning.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Kulttuurikeskus tarjoaa tapahtumiin ja tilaisuuksiin liittyen tekniikka- ja kuljetuspalveluita, kaluston vuokrausta ja neuvontaa. Palvelu sisältää tekniikan osalta ääni- ja valotekniikkapalveluita, lavan asennuksen ja kuljetuspalveluita, kaluston osalta telttojen ja pöytä- ja penkkikaluston vuokrauksen sekä neuvontaa tapahtumien ja tilaisuuksien tekniseen toteutukseen liittyen.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Lisätietoja palvelusta antaa Kulttuurikeskuksen tekniikkavastaava.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : "Mer information om servicen ger Kulturcentrets teknikansvariga.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

@@ -1,0 +1,67 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "languages" : [ "fi" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "d9239117-0dbe-4fab-ab9e-8bd265e3b6e3",
+      "name" : "Elinkeinoasiamiehen palvelut yrityksille"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "447334691",
+    "language" : "fi"
+  } ],
+  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Naantalin elinkeinoasiamies",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "Phone",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Elinkeinoasiamies on yhteyshenkilö yritysten ja kaupungin sekä muiden elinkeinopalvelujen välillä. Elinkeinoasiamies auttaa yrityksiä niiden toiminnan kehittämisessä, toimitila- ja tonttiasioissa, työvoima- ja koulutusasioissa ja sopivien rahoituslähteiden löytämisessä.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Elinkeinoasiamies on yhteyshenkilö yritysten ja kaupungin sekä muiden elinkeinopalvelujen välillä.",
+    "type" : "Summary"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "d4f935b3-2331-4602-9e1b-fdd8603c3a62"
+}

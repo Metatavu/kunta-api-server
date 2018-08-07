@@ -1,0 +1,112 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "languages" : [ "fi" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "4386f9a2-12ec-4079-b1aa-e0731627161a",
+      "name" : "Oppilaanohjaus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : "ryhmät lv. 2017-2018: 7A, 7C, 7D 8B, 8C, 8D 9C, 9D, 9G, JoPo",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "447334658",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "ryhmät lv. 2017-2018: 7B, 7E, 7F 8A, 8E, 8F, 8G 9A, 9B, 9E, 9F",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "447334586",
+    "language" : "fi"
+  } ],
+  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Maijamäen koulun oppilaanohjaajat",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ {
+    "serviceHourType" : "DaysOfTheWeek",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ {
+      "value" : null,
+      "language" : "fi"
+    } ],
+    "openingHour" : [ {
+      "dayFrom" : "Monday",
+      "dayTo" : "",
+      "from" : "09:00:00",
+      "to" : "15:00:00"
+    }, {
+      "dayFrom" : "Tuesday",
+      "dayTo" : "",
+      "from" : "09:00:00",
+      "to" : "15:00:00"
+    }, {
+      "dayFrom" : "Wednesday",
+      "dayTo" : "",
+      "from" : "09:00:00",
+      "to" : "15:00:00"
+    }, {
+      "dayFrom" : "Thursday",
+      "dayTo" : "",
+      "from" : "09:00:00",
+      "to" : "15:00:00"
+    }, {
+      "dayFrom" : "Friday",
+      "dayTo" : "",
+      "from" : "09:00:00",
+      "to" : "15:00:00"
+    } ]
+  } ],
+  "serviceChannelType" : "Phone",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Maijamäen koulun oppilaanohjaajat tukevat Maijamäen koulun oppilaita opiskelussa ja urasuunnittelussa. He perehdyttävät oppilaat uuteen kouluun, tukevat heidän koulunkäyntiään, organisoivat valinnaisainehakuun liittyvät asiat sekä antavat tietoa ammateista, jatko-opintomahdollisuuksista sekä pääsymahdollisuuksista eri kouluihin. Oppilaanohjaajat järjestävät työelämään tutustumisjaksot (TET) sekä avustavat yhteishakuun liittyvissä kysymyksissä. Työtä toteutetaan oppitunneilla sekä ryhmä- ja  yksilöohjauksena. ",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Maijamäen koulun oppilaanohjaajat tukevat Maijamäen koulun oppilaita opiskelussa ja urasuunnittelussa.",
+    "type" : "Summary"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "e3c417ee-23c0-4a7d-a989-a567c70324c3"
+}

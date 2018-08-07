@@ -1,0 +1,128 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Vallinmäentie",
+        "language" : "fi"
+      } ],
+      "streetNumber" : "43",
+      "postalCode" : "66400",
+      "postOffice" : [ {
+        "value" : "LAIHIA",
+        "language" : "sv"
+      }, {
+        "value" : "LAIHIA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "399",
+        "name" : [ {
+          "value" : "Laihia",
+          "language" : "fi"
+        }, {
+          "value" : "Laihela",
+          "language" : "sv"
+        }, {
+          "value" : "Laihia",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ ],
+      "latitude" : "6992700.088",
+      "longitude" : "247998.557",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "1df0be8d-54ef-42d9-9112-52b7c34e7a95",
+      "name" : "Perhesuunnittelu- ja ehkäisyneuvonta"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "59203070-088b-4260-99b6-1195b45bfee1",
+      "name" : "Äitiysneuvolapalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : "Terveydenhoitaja",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63258307",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Terveydenhoitaja",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63258310",
+    "language" : "fi"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Laihian äitiys- ja perhesuunnitteluneuvola",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Laihian äitiys- ja perhesuunnitteluneuvola sijaitsee Laihian terveysaseman yhteydessä. Käynti neuvolaan tapahtuu kiinteisön päädystä, omasta sisäänkäynnistä. \n\nNeuvolan puhelinaika ma-pe klo 10.30 – 11.30 jolloin voi myös kysyä neuvolasta määrättyjen laboratoriotutkimusten tuloksia.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Laihian äitiys- ja perhesuunnitteluneuvola sijaitsee Laihian terveysaseman yhteydessä.",
+    "type" : "Summary"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "fdc67297-4eb7-432c-b993-79ec222c7d7a"
+}

@@ -1,0 +1,159 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Tammikaivontie",
+        "language" : "fi"
+      }, {
+        "value" : "Dammbrunnsvägen",
+        "language" : "sv"
+      } ],
+      "streetNumber" : "4",
+      "postalCode" : "65100",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ {
+        "value" : null,
+        "language" : "sv"
+      }, {
+        "value" : "1. kerros",
+        "language" : "fi"
+      } ],
+      "latitude" : "7007850.117",
+      "longitude" : "230049.973",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi", "sv", "en" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "b4ce9327-5581-4b5b-9602-06ddcd5c572e",
+      "name" : "Sukupuolitautien poliklinikan palvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : "Neuvonta ja laboratoriovastaukset, ke klo 14-16",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63251692",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Telefonrådgivning och laboratoriesvar",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63251692",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Sukupuolitautien poliklinikka",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Polikliniken för könssjukdomar",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ {
+    "serviceHourType" : "DaysOfTheWeek",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ {
+      "value" : null,
+      "language" : "fi"
+    } ],
+    "openingHour" : [ {
+      "dayFrom" : "Wednesday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "10:00:00"
+    }, {
+      "dayFrom" : "Friday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "09:00:00"
+    } ]
+  } ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Sukupuolitautien poliklinikka sijaitsee pääterveysasemalla ja palvelee keskiviikko- ja perjantaiaamuisin ilman ajanvarausta.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Sukupuolitautien poliklinikka sijaitsee pääterveysasemalla ja palvelee keskiviikko- ja perjantaiaamuisin ilman ajanvarausta.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Polikliniken för könssjukdomar finns på Huvudhälsostationen.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Polikliniken för könssjukdomar finns på Huvudhälsostationen.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "27c292ad-122a-4ba9-a2c9-a29406acf1a5"
+}

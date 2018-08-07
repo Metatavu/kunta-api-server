@@ -1,0 +1,301 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Kasvatus- ja perheneuvonta",
+      "language" : "fi"
+    }, {
+      "value" : "Rådgivning i uppfostrings- och familjefrågor",
+      "language" : "sv"
+    }, {
+      "value" : "Developmental and family counselling",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "This service subclass contains counselling services intended for families with young children, parents of families and young people.",
+      "language" : "en"
+    }, {
+      "value" : "I denna serviceundergrupp behandlas rådgivningstjänster för barnfamiljer, familjernas föräldrar och ungdomar.",
+      "language" : "sv"
+    }, {
+      "value" : "Tässä alapalveluluokassa käsitellään lapsiperheille, perheiden vanhemmille ja nuorille suunnattuja neuvontapalveluja.",
+      "language" : "fi"
+    } ],
+    "code" : "P3.7",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1020",
+    "parentId" : "77af99fa-93eb-4de6-ac83-1b161a961263",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1013"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "02728135-66e5-48c3-9406-80da7cc00b37",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "0924e179-148c-486e-90f3-5207a2b16487",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "3874922a-91ee-4aee-a2e8-6c3f9c6b06ab",
+      "name" : "Perheneuvola"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "4258f64a-d599-43a8-968b-618d9af60cf3",
+      "name" : "Perheneuvola"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "de735919-02a9-45d6-bfda-0a1f497a7373",
+      "name" : "Perheneuvolan päivystysnumero"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv", "en" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : null,
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Perheneuvola",
+    "type" : "AlternativeName"
+  }, {
+    "language" : "fi",
+    "value" : "Perheneuvolan palvelut",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Familjerådgivningens tjänster",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "uppfostringsrådgivning",
+      "language" : "sv"
+    }, {
+      "value" : "kasvatusneuvonta",
+      "language" : "fi"
+    }, {
+      "value" : "parenting guidance",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p9954",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p35080"
+  }, {
+    "name" : [ {
+      "value" : "kasvatusneuvolat",
+      "language" : "fi"
+    }, {
+      "value" : "uppfostringsrådgivningsbyråer",
+      "language" : "sv"
+    }, {
+      "value" : "parenting counselling centres",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p9767",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p37040"
+  }, {
+    "name" : [ {
+      "value" : "perheneuvolat",
+      "language" : "fi"
+    }, {
+      "value" : "familjerådgivningsbyråer",
+      "language" : "sv"
+    }, {
+      "value" : "family counselling centres",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p14454",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p37040;http://www.yso.fi/onto/koko/p77844"
+  }, {
+    "name" : [ {
+      "value" : "perheneuvonta",
+      "language" : "fi"
+    }, {
+      "value" : "familjerådgivning",
+      "language" : "sv"
+    }, {
+      "value" : "family counselling",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p9581",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p35080"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Lapset ja lapsiperheet",
+      "language" : "fi"
+    }, {
+      "value" : "Children and families with children",
+      "language" : "en"
+    }, {
+      "value" : "Barn och barnfamiljer",
+      "language" : "sv"
+    } ],
+    "code" : "KR1.2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2003",
+    "parentId" : "daff1fb9-9394-49b5-b033-d1d1c7005ab6",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001"
+  }, {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : "Tiedustelut ja ajanvaraukset ensisijaisesti puhelimitse perheneuvolan päivystysnumerosta.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Lapsiperheet voivat saada perheneuvolan palveluita lapsen hyvinvoinnin, kasvun ja kehityksen edistämiseksi. Tärkeää on myös vanhemmuuden tukeminen.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : "På familjerådgivningen erbjuds mångsidig sakkunnighjälp vid problem i anslutning till familjelivet. Familjerådgivningen har som uppgift att stöda en positiv utveckling hos barn samt att bidra till att familjerna är välmående och fungerande.\n\nDu kan ta kontakt med familjerådgivningen:\n* om du behöver hjälp i parrelationen, föräldraskapet eller relationer mellan barn och vuxna\n* när du är orolig för barnets beteende och välmående (barnet kan t.ex. ha svårt att lyda, koncentrationssvårigheter, rädslor eller vara nedstämt)  \n* för att få hjälp i medlingssamtal (före beslut om separation, under själva processen eller efter separationen)\n\nVid medlingssamtalen försöker vi hjälpa familjer som genomgår en separation att hantera situationen och hitta lösningar där man beaktar både barnens behov och de vuxnas synvinklar.\n\nTill vår verksamhet hör också olika grupper både för barn och vuxna. De flesta bland vårdpersonalen har en specialutbildning utöver sin grundexamen, t.ex. i familjerådgivningsarbete, familjeterapi och sexualrådgivning.\n\nVår verksamhet är konfidentiell och avgiftsfri.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "På familjerådgivningen erbjuds mångsidig sakkunnighjälp vid problem i anslutning till familjelivet.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : "Frågor och tidsbokningen på första hand på familjerådgivningens journummer.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : "Perheneuvolassa on tarjolla monipuolista asiantuntija-apua perhe-elämään liittyvissä solmukohdissa. Perheneuvolan tehtävänä on tukea lapsen myönteistä kehitystä sekä perheiden hyvinvointia ja toimivuutta.\n\nVoit ottaa yhteyttä perheneuvolaan, jos tarvitset apua liittyen parisuhteeseen, vanhemmuuteen tai lasten ja aikuisten välisiin suhteisiin tai kun olet huolissasi lapsen käyttäytymisestä ja hyvinvoinnista (lapsella voi olla esim. tottelemisvaikeuksia, keskittymisvaikeuksia, pelkoja tai alakuloisuutta).\n\nPerheneuvolasta saa myös tukea ja apua sovittelukeskusteluissa (ennen eropäätöstä, eron aikana tai eron jälkeen). Sovittelukeskusteluissa pyrimme auttamaan erotilanteessa olevia perheitä käsittelemään tilannetta ja löytämään ratkaisuja, joissa huomioidaan sekä lasten tarpeet että aikuisten näkökulmat.\n\nPalveluihin kuuluvat myös erilaiset lasten ja vanhempien ryhmät. Useimmilla perheneuvolan työntekijöillä on perustutkintonsa lisäksi muuta koulutusta, kuten perheneuvolatyöhön erikoistuminen tai perheterapia- ja seksuaalineuvojakoulutus.\n\nPalvelu on luottamuksellista ja maksutonta.\n\n",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

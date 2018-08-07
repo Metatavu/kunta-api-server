@@ -1,0 +1,153 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/node/20131",
+    "value" : "Borgaregatans skola",
+    "language" : "fi"
+  }, {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/sv/node/20131",
+    "value" : "Borgaregatans skola",
+    "language" : "sv"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Borgaregatan",
+        "language" : "sv"
+      }, {
+        "value" : "Porvarinkatu",
+        "language" : "fi"
+      } ],
+      "streetNumber" : "13-15",
+      "postalCode" : "65230",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ ],
+      "latitude" : "7009598.588",
+      "longitude" : "229533.062",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "17c633dd-5408-495a-86c1-d8f57598e899",
+      "name" : "Perusopetus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "453a2956-ba94-444a-816d-6a57321a7d75",
+      "name" : "Joustava perusopetus (JOPO)"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : "Rehtori",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "405476292",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Rektor",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "405476292",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ ],
+  "serviceChannelNames" : [ {
+    "language" : "sv",
+    "value" : "Borgaregatans skola",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Borgaregatans skola",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "Borgaregatans skola är Vasa stads kommunala skola för årskurserna 7-10.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Borgaregatans skola on Vaasan kaupungin koulu vuosikursseille 7-10.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Borgaregatans skola on Vaasan kaupungin koulu vuosikursseille 7-10. Koulussa on noin 350 oppilasta, runsaat 30 opettajaa ja muuta henkilökuntaa noin 10 henkilöä. \n\nBorgaregatans skola rakennettiin vuonna 1977. Perusteellinen remontti tehtiin vuoden 2012 ja alkuvuoden 2013 aikana. Arkkitehti Gerd Hytönen halusi suunnittelussa panostaa viihtyvyyteen kirkkaiden värien ja lasin avulla, muuttamatta kuitenkaan liikaa alkuperäistä ideaa kotiosastoista, jotka ovat keltainen osasto Språk (kieli), sininen osasto Human (humaani) ja punainen osasto Natur (luonto). Näin ollen keltaisella osastolla opiskellaan pääasiassa kieliä, punaisella osastolla matematikkaa ja luonnontieteitä ja sinisellä osastolla äidinkieltä ja humanistisia aineita. Sekä punaisella että sinisellä osastolla on kuitenkin fysiikka-kemian ja biologia-maantiedon laboratoriot. \n\nJokaisella osastolla on lasinen oppimisympäristö. Pohjakerroksessa sijaitsee suurin oppimisympäristö, jota kutsutaan nimellä Mediateket. Siellä voi lainata kirjota, lukea tai työskennellä tietokoneella eri oppiaineiden parissa. Pohjakerroksessa sijaitsee myös koulun yhteinen ruokasali, auditorio, tekstiili- ja puutyöverstaat, tanssisali, kuntosali, oppilaskioski ja kokoushuone, pukuhuone sekä oppilashuollon henkilökunnan vastaanotto (terveydenhoitaja, kuraattori ja koululääkäri). \n\nMuut käytännön aineet kuten kuvataide, kotitalous ja musiikki sijaitsevat toisessa kerroksessa, jossa myös osastot sijaitsevat. Koulun erityisopetuskeskus sijaitsee myös ylemmässä kerroksessa. Koulussa on myös noin 100m2 aurinkopaneeleita koulun vesikatolla.\n\n",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Borgaregatans skola är Vasa stads kommunala skola för årskurserna 7-10. I skolan går ca 350 elever och har drygt 30 lärare och ca 10 övrig personal. \n\nBorgaregatans skola byggdes år 1977. En grundlig och omfattande renovering gjordes under år 2012 och början av år 2013, så skolan är fräsch och fin. I planeringen ville arkitekt Gerd Hytönen satsa på trivsel med ljusa färger och glas utan att ändra allt för mycket på ursprungsidén med hemavdelningar som är gula avdelningen som vi kallar för Språk, blå avdelningen som vi kallar för Human och röda avdelningen som vi kallar för Natur. I huvudsak studerar man alltså språk i gula, matematik och naturvetenskaper i röda samt modersmål och allmänhumanistiska ämnen i blå. Både blå och röd har dock laboratorier för fysik- kemi och biologi-geografi. \n\nI varje avdelning finns en lärmiljö i glas. I bottenvåningen finns det största som vi kallar för Mediateket. Där kan man låna böcker, läsa eller jobba med datorer i olika ämnen. I bottenvåningen finns också skolans gemensamma matsal, auditoriet, både textil- och teknisk slöjd, danssal, gym, elevkiosk och mötesrum, omklädningsrummen för gymnastik samt elevvårdspersonalens mottagning (hälsovårdare, kurator och skolläkare). \n\nÖvriga praktiska ämnen såsom bildkonst, huslig ekonomi och musik finns på andra våningen där även avdelningarna finns. Skolan specialpedagogiska center finns också på övre plan. Skolan har också ca 100 m2 solpaneler på skolans vattentak.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-09-14T10:52:38.216373",
+  "id" : "c1673b07-b4d3-4c28-a8e4-874148bd9fec"
+}

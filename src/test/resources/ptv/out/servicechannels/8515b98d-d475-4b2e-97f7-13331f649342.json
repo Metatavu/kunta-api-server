@@ -1,0 +1,44 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://sites.google.com/gafe.naantali.fi/opinto-opas-2017-18/opiskelijan-tukeminen/opintokompassi",
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "a55b0b53-4267-4f76-acd4-6333ef308a1c",
+      "name" : "Lukiokoulutuksen opiskelijahuolto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Opintokompassi",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Kun mietit kenen puoleen kääntyä, Opintokompassi auttaa sinua löytämään oikean henkilön.  ",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Opintokompassi auttaa sinua löytämään oikean henkilön.",
+    "type" : "Summary"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-11-24T12:28:56.612959",
+  "id" : "8515b98d-d475-4b2e-97f7-13331f649342"
+}

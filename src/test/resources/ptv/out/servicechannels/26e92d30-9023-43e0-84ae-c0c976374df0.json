@@ -1,0 +1,135 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Rådhusgatan",
+        "language" : "sv"
+      }, {
+        "value" : "Raastuvankatu",
+        "language" : "fi"
+      } ],
+      "streetNumber" : "30",
+      "postalCode" : "65100",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ {
+        "value" : "2. krs",
+        "language" : "fi"
+      } ],
+      "latitude" : "7007458.67",
+      "longitude" : "228297.506",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "d64463b9-e039-48c8-b3e6-b625ecf3ea69",
+      "name" : "Etsivä nuorisotyö"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "f1118351-952c-414a-b421-522746102314",
+      "name" : "Nuorisopalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "404802895",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "40480289",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ {
+    "value" : "etsivatyo@vaasa.fi",
+    "language" : "fi"
+  }, {
+    "value" : "etsivatyo@vaasa.fi",
+    "language" : "sv"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "sv",
+    "value" : "Origo - Uppsökande ungdomsarbete",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Origo - Etsivä nuorisotyö",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "Uppsökande ungdomsarbete är avsett för ungdomar i åldern 15–29 år som behöver stöd i planeringen av framtiden och med att sköta saker i vardagen.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Etsivä nuorisotyö on tarkoitettu 15–29-vuotiaille nuorille, jotka kaipaavat tukea tulevaisuuden suunnittelussa ja arkisten asioiden hoitamisessa.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Etsivä nuorisotyö avuksi?\nEtsivä nuorisotyö on just sua varten, jos\n- opintosi ovat keskeytyneet\n- tarvitset apua arjen asioiden hoitamisessa\n- etsit työ-, työharjoittelu- tai opiskelupaikkaa\n- tarvitset asuntoa\n- kohtaat ongelmia toimeentulon, terveydentilan tai jonkin riippuvuuden kanssa\n- haluat pohtia elämäntilannettasi yleisesti\n- kaipaat tukea tulevaisuuden suunnittelussa\n- haluat vain juttuseuraa\n- sinulla on jokin muu asia, johon haluat apua\n\nPalvelu on maksutonta ja luottamuksellista.\n\nOta meihin rohkeasti yhteyttä, me haluamme auttaa.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Via det uppsökande ungdomsarbetet har den unga en trygg och pålitlig vuxen vid sin sida. Hjälpen är frivillig och grundar sig på den ungas egna önskemål och målsättningar. Den unga får individuellt stöd och personlig vägledning som syftar till att hjälpa honom eller henne framåt i livet. Den unga får information och uppmuntran i att sköta sina ärenden och hitta lämpliga lösningar.\n\nDen uppsökande ungdomsarbetaren kan hjälpa om den unga till exempel\n\n- behöver stöd i planeringen av framtiden\n- behöver information om olika studiemöjligheter\n- söker en arbets- eller en arbetsförsöksplats\n- håller på att avbryta sina studier eller skriva ut sig från sin läroanstalt\n- har avbrutit militär- eller civiltjänstgöringen\n- vill fundera tillsammans på olika alternativ och möjligheter\n- behöver hjälp med ärenden som gäller boende och utkomst\n- funderar på saker som gäller mental hälsa eller rusmedel.\n\nArbetet utgår från de mål den unga själv har satt upp. Hjälpen ges helt avgiftsfritt och ytterst konfidentiellt. Vem som helst kan meddela oss om sin oro över en ung person. Vi söker tillsammans med den unga en lämplig tjänst och vi kan konkret hjälpa till att börja sköta ärendena vidare.\n\nDu kan enkelt ta kontakt genom att skicka meddelanden via Facebook, per telefon eller per e-post. Du kan också komma till Kultsa och prata med oss.",
+    "type" : "Description"
+  } ],
+  "areaType" : null,
+  "publishingStatus" : "Published",
+  "modified" : "2018-02-02T08:53:21.273039",
+  "id" : "26e92d30-9023-43e0-84ae-c0c976374df0"
+}

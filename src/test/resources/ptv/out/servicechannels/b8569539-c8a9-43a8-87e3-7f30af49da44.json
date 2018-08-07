@@ -1,0 +1,55 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "http://www.naantali.fi/terveys/paivystys/fi_FI/tk_etu/",
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "80580972-afc1-4ede-9cec-ea3e458cbc69",
+      "name" : "Hammashoidon päivystys"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "bab25dd8-a246-4fa7-ae82-c77c22a61fc2",
+      "name" : "Lääkäripäivystyksen palvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Ensiapu ja päivystys",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Ensiapu ja päivystys -osio Naantalin kaupungin verkkosivuilla. Saat sivulta tietoa myös Turun alueen yhteispäivystyksestä Tyksin T2-sairaalassa.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Ensiapu ja päivystys -verkkosivulta saat tietoa Naantalin terveyskeskuksen päivystyksestä ja hammaslääkäripäivystyksestä, sekä Turun alueen yhteispäivystyksestä Tyksin T2-sairaalassa.",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2018-01-04T09:50:00.434782",
+  "id" : "b8569539-c8a9-43a8-87e3-7f30af49da44"
+}

@@ -1,0 +1,61 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "http://mikeva.fi/palvelukoti/palvelukoti-onnenkaivo/",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "http://mikeva.fi/palvelukoti/palvelukoti-onnenkaivo/",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "0990557d-c5a9-4964-875b-18642be276d9",
+      "name" : "Yksityinen ikäihmisten palveluasuminen"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Onnenkaivo",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Onnenkaivo",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Palvelukoti Onnenkaivon verkkosivuilta löydät tietoa heidän palveluistaan.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Palvelukoti Onnenkaivon verkkosivuilta löydät tietoa heidän palveluistaan.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Onnenkaivo är ett privat servicehus. På Onnenkaivos webbsidor hittar du uppgifter om deras verksamhet.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Onnenkaivo är ett privat servicehus. På Onnenkaivos webbsidor hittar du uppgifter om deras verksamhet på finska.",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "5011189d-6eb8-4f00-b7f3-e36157e09451"
+}

@@ -1,0 +1,243 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Sosiaalipalvelut",
+      "language" : "fi"
+    }, {
+      "value" : "Socialtjänster",
+      "language" : "sv"
+    }, {
+      "value" : "Social services",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Tässä palveluluokassa käsitellään sekä yleisiä että erityisryhmille suunnattuja sosiaalipalveluja, jotka on tarkoitettu kansalaisten arjen, asumisen ja toimeentulon tukemiseen.",
+      "language" : "fi"
+    }, {
+      "value" : "I den här servicegruppen behandlas både allmänna socialtjänster och socialtjänster för specialgrupper, vilka avsetts som stöd för medborgarnas vardag, boende och försörjning.",
+      "language" : "sv"
+    }, {
+      "value" : "This service class contains both general social services and those targeted at special groups to support citizens’ everyday life management, housing and incomes.",
+      "language" : "en"
+    } ],
+    "code" : "P4",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1023",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "afa61ef1-f81f-42a7-a5c6-aee08c7ac706",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "092bc995-3a9a-4659-979c-d2ef02ed47b5",
+      "name" : "Hakemus ikäihmisten päivätoimintaan, lyhytaikaiseen hoitoon tai intervallihoitoon"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "sv"
+  }, {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "Chargeable",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Ikäihmisten päivätoiminta",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Dagcenter för äldre",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "vanhuspalvelut",
+      "language" : "fi"
+    }, {
+      "value" : "äldreservice",
+      "language" : "sv"
+    }, {
+      "value" : "services for older people",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "TERO",
+    "uri" : "http://www.yso.fi/onto/koko/p70914",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p18203"
+  }, {
+    "name" : [ {
+      "value" : "vanhukset (ikäryhmät, ikään liittyvä rooli, väestöryhmään liittyvä rooli)",
+      "language" : "fi"
+    }, {
+      "value" : "åldringar",
+      "language" : "sv"
+    }, {
+      "value" : "elderly",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p33623",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p33115;http://www.yso.fi/onto/koko/p34010"
+  }, {
+    "name" : [ {
+      "value" : "päivätoiminta",
+      "language" : "fi"
+    }, {
+      "value" : "dagverksamhet",
+      "language" : "sv"
+    }, {
+      "value" : "day activities",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p18172",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p18203"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : "Med dagverksamheten strävar man efter att upprätthålla funktionsförmågan av de hemmaboende äldre och att stöda de närstående i vårdarbetet.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : "Asiakaskäynneistä laskutetaan jälkikäteen 22,80 €/osallistumispäivä ja kuljetus 3,20 €/suunta. Asiakasmaksu kartuttaa maksukattoa.",
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Päivätoimintaan haetaan päivätoimintahakemuksella. Sen voi lähettää asiakas itse, omaiset ja läheiset tai sosiaali- ja terveydenhuollon henkilöstö. Hakulomake lähetetään ikäihmisten kuntouttavan päivätoiminnan jonoista vastaavalle palvelukoordinaattorille, joka tekee päätöksen päivätoiminnan myöntämisestä.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Päivätoiminnassa järjestetään monipuolista toimintaa, jonka tavoitteena on tukea iäkkäiden hyvinvointia ja omatoimisuutta sekä lisätä sosiaalista kanssakäymistä. \n\nPäivätoiminta on suunnattu kotona asuville yli 65-vuotiaille vaasalaisille, joiden fyysinen, psyykkinen tai sosiaalinen toimintakyky on alentunut tai vaarassa alentua ja jotka eivät pysty tai jaksa osallistua muihin kodin ulkopuolisiin toimintoihin.\n\nIkäkeskus järjestää päivätoimintaa Vuorikadulla, Ruukinkartanossa Palosaarentiellä ja Muistolassa. Osa muistisairaiden päivätoiminnasta hankitaan ostopalveluina Vaasanseudun muistiyhdistykseltä (suomenkielinen) tai Minnesstödsföreningen Förgätmigej i Vasa rf:ltä (ruotsinkielinen).\n\nToiminnan tarkoituksena on tukea kotona asuvia ikäihmisiä sekä heidän omaisiaan. Tavoitteena on tukea ikääntyneen fyysistä, psyykkistä, kognitiivista sekä sosiaalista toimintakykyä ja edistää ikäihmisen kotona asumiseen liittyviä tiedollisia ja taidollisia valmiuksia. Päivätoiminnan tavoite on osaltaan tukea omaishoitajien jaksamista, jolloin omaishoitaja saa omaa aikaa sekä mahdollisuuden virkistymiseen ja lepoon. Teemme yhteistyötä sekä kotihoidon että omaisten kanssa.\n\nPäivätoimintaan kuuluu muun muassa aamupala, ryhmäliikuntaa, kylvetyspalvelu (erityistarpeesta), lounas, sosiokulttuurista ohjelmaa, ulkoilua ja päiväkahvi. Kaikista päivätoimintayksiköistä tehdään pieniä retkiä esimerkiksi museoihin, musiikkitapahtumiin sekä erilaisiin teematapahtumiin. Näistä tulee mahdollisesti erillinen osallistumismaksu.\n\nAsiakkaat haetaan pääsääntöisesti inva-taksilla kotoa ja viedään takaisin päivän päätteeksi. Kuljetusten järjestämisestä huolehtii yksiköiden henkilökunta. Päivän kesto on noin 8.15–14.30. \n\nOhjattavat asiakasryhmät\n* Asiakkaat, joilla on todettu toimintakyvyn vaje ja terveydentilan lasku johtuen ikääntymisestä, vammasta tai sairaudesta sekä tarve toimintakykyä ylläpitävään toimintaan ja ohjaukseen\n* Asiakkaat, joilla on muistisairaus\n* Asiakkaat, joilla palvelutarpeen taustalla on sosiaaliset syyt (elämäntilanteen muutos, yksinäisyys, turvattomuus, masennus, riski syrjäytyä)\n* Omaishoidon asiakkaat sekä asiakkaat, jotka täyttävät omaishoidon kriteerit mutta eivät syystä tai toisesta ole hakeutuneet omaishoitoon",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : "Till dagverksamheten söks genom dagverksamhetsansökan. Den kan sändas av klienten själv, av anhöriga och närstående eller av personalen inom social- och hälsovården. Ansökningsblanketten sänds till den servicekoordinator som ansvarar för köerna för den rehabiliterande dagverksamheten för seniorer, som också fattar beslut om beviljande av dagverksamheten.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : "Dagverksamhet ordnas vardagar vid Seniorcentret, Bruksgården och Muistola. Med dagverksamheten strävar man efter att upprätthålla funktionsförmågan av de hemmaboende äldre och att stöda de närstående i vårdarbetet.\n\nTill dagcenter kommer man med en läkar-, hemsjukvårds- eller hemtjänstremiss. Därtill kan äldre tas till grupper t.ex. för en bedömnings- och rehabiliteringsperiod.\n\nTill dagsverksamheten hör bl.a. morgonmål, grupp- eller individuell gymnastik, bad/bastu (vid behov), lunch, rekreationsverksamhet, utomhusaktiviteter och kaffe. Det finns också möjlighet till hälsovård.\n\nKlienterna hämtas i regel med invataxi hemifrån och förs tillbaka då dagen avslutas.  Ordnandet av tranporterna sköts av enheternas personal. Dagens längd är ca 8.15–14.30. \n\nSeniorcenter, Smedsbyvägens dagcenter\nVid Smedsbyvägens dagcenter finns det 10 platser åt gången och 65 år fyllda pensionärer från Vasa kan delta vid dagcentret.\n\nFör deltagaren ordnas skjuts till och från dagcentret ifall behov finns. Deltagaren betalar för dagsverksamheten samt transporten själv.\n\nMuistolas dagcenter\nMuistola är ett dagcenter för dementa, med plats för 8 personer åt gången.\n65 år fyllda pensionärer från Vasa som är diagnostiserade med demens kan delta vid dagcentret.\n\nDeltagaren hämtas till och från Muistola, och till dagsverksamheten hör bl.a. morgonmål, utomhusaktivitet, gymnastik, lunch, rekreationsverksamhet och kaffe.\n\nDeltagaren betalar själv för dagsverksamheten samt transporten.\n\nBruksgårdens dagcenter\nTill för 65 år fyllda pensionärer från Vasa.\n\nTill dagsverksamheten hör bl.a. morgonmål, grupp- eller individuell gymnastik, bad/bastu (vid behov), lunch, rekreationsverksamhet, utomusaktivitet och kaffe.\n\nIfall deltagaren behöver transport kan han/hon hämtas och föras till Bruksgårdens dagcenter.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "För klientbesöken faktureras i efterhand 22,80 €/deltagardag och för transporten 3,20 €/riktning.  Klientavgiften läggs till avgiftstaket.",
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Päivätoiminnassa järjestetään monipuolista toimintaa, jonka tavoitteena on tukea iäkkäiden hyvinvointia ja omatoimisuutta.",
+    "type" : "Summary"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

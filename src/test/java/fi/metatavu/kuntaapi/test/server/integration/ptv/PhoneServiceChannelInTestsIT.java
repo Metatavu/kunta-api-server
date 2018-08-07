@@ -12,8 +12,8 @@ import com.github.tomakehurst.wiremock.junit.WireMockRule;
 import com.jayway.restassured.http.ContentType;
 
 import fi.metatavu.kuntaapi.server.rest.model.PhoneServiceChannel;
-import fi.metatavu.ptv.client.model.V7VmOpenApiPhoneChannel;
-import fi.metatavu.ptv.client.model.V7VmOpenApiPhoneChannelInBase;
+import fi.metatavu.ptv.client.model.V8VmOpenApiPhoneChannel;
+import fi.metatavu.ptv.client.model.V8VmOpenApiPhoneChannelInBase;
 import fi.metatavu.kuntaapi.server.persistence.model.clients.AccessType;
 import fi.metatavu.kuntaapi.server.persistence.model.clients.ClientOrganizationPermission;
 import fi.metatavu.kuntaapi.test.AbstractPtvMocker;
@@ -76,8 +76,8 @@ public class PhoneServiceChannelInTestsIT extends AbstractPtvInTest {
     grantOrganizationPermission(AccessType.READ_WRITE, organizationId, ClientOrganizationPermission.UPDATE_SERVICE_CHANNELS);
 
     PhoneServiceChannel kuntaApiResource = getPhoneServiceChannel(0, TestPtvConsts.PHONE_SERVICE_CHANNELS.length);
-    V7VmOpenApiPhoneChannelInBase ptvInResource = getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_IN_API, ptvId, V7VmOpenApiPhoneChannelInBase.class);
-    V7VmOpenApiPhoneChannel ptvOutResource =  getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_OUT_API, ptvId, V7VmOpenApiPhoneChannel.class);
+    V8VmOpenApiPhoneChannelInBase ptvInResource = getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_IN_API, ptvId, V8VmOpenApiPhoneChannelInBase.class);
+    V8VmOpenApiPhoneChannel ptvOutResource =  getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_OUT_API, ptvId, V8VmOpenApiPhoneChannel.class);
     
     getPtvServiceChannelMocker().mockPhonePut(ptvId, ptvOutResource);
     
@@ -113,7 +113,7 @@ public class PhoneServiceChannelInTestsIT extends AbstractPtvInTest {
     kuntaApiResource.setServiceHours(Arrays.asList(createServiceHour(false, Collections.emptyList(), "Exception", false, null, null, createLocalizedValue("en", "Test"))));
     kuntaApiResource.setSupportEmails(createEmails("en", "fake@example.com"));
     
-    V7VmOpenApiPhoneChannelInBase ptvInResource = getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_IN_API, ptvId, V7VmOpenApiPhoneChannelInBase.class);
+    V8VmOpenApiPhoneChannelInBase ptvInResource = getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_IN_API, ptvId, V8VmOpenApiPhoneChannelInBase.class);
     ptvInResource.setAreas(Arrays.asList(createArea("Municipality", "12345")));
     ptvInResource.setAreaType("AreaType");
     ptvInResource.setServiceChannelDescriptions(createPtvInLocalizedItems("en", "Description", "Changed Description"));
@@ -122,7 +122,7 @@ public class PhoneServiceChannelInTestsIT extends AbstractPtvInTest {
     ptvInResource.setPhoneNumbers(createPtvInPhonesWithTypes("en", "Phone", "+358", "12345-FAKE", "Charged", "Testing", false, "Test phone"));
     ptvInResource.setSupportEmails(createPtvInLanguageItems("en", "fake@example.com"));
     
-    V7VmOpenApiPhoneChannel ptvOutResource =  getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_OUT_API, ptvId, V7VmOpenApiPhoneChannel.class);
+    V8VmOpenApiPhoneChannel ptvOutResource =  getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_OUT_API, ptvId, V8VmOpenApiPhoneChannel.class);
     
     getPtvServiceChannelMocker().mockPhonePut(ptvId, ptvOutResource);
     

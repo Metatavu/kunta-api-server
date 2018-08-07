@@ -115,19 +115,19 @@ public class PtvCodeListEntityDiscoverJob extends EntityDiscoverJob<PtvCodeListT
         executeAreaCodeListTask(codeListApi, "BusinessRegions", task.getType());
       break;
       case COUNTRY:
-        handleCountryCodeListResponse(codeListApi.apiV7CodeListGetCountryCodesGet(), task.getType());
+        handleCountryCodeListResponse(codeListApi.apiV8CodeListGetCountryCodesGet(), task.getType());
       break;
       case HOSPITAL_REGIONS:
         executeAreaCodeListTask(codeListApi, "HospitalRegions", task.getType());
       break;
       case LANGUAGE:
-        handleCodeListResponse(codeListApi.apiV7CodeListGetLanguageCodesGet(), task.getType());
+        handleCodeListResponse(codeListApi.apiV8CodeListGetLanguageCodesGet(), task.getType());
       break;
       case MUNICIPALITY:
-        handleCodeListResponse(codeListApi.apiV7CodeListGetMunicipalityCodesGet(), task.getType());
+        handleCodeListResponse(codeListApi.apiV8CodeListGetMunicipalityCodesGet(), task.getType());
       break;
       case POSTAL:
-        handleCodeListPagedResponse(codeListApi.apiV7CodeListGetPostalCodesGet(task.getPage()), task.getType());
+        handleCodeListPagedResponse(codeListApi.apiV8CodeListGetPostalCodesGet(task.getPage()), task.getType());
       break;
       case PROVINCE:
         executeAreaCodeListTask(codeListApi, "Province", task.getType());
@@ -137,7 +137,7 @@ public class PtvCodeListEntityDiscoverJob extends EntityDiscoverJob<PtvCodeListT
   }
 
   private void executeAreaCodeListTask(CodeListApi codeListApi, String areaCodeType, CodeType codeType) {
-    handleCodeListResponse(codeListApi.apiV7CodeListGetAreaCodesTypeByTypeGet(areaCodeType), codeType);
+    handleCodeListResponse(codeListApi.apiV8CodeListGetAreaCodesTypeByTypeGet(areaCodeType), codeType);
   }
 
   private void handleCodeListResponse(ApiResponse<List<VmOpenApiCodeListItem>> response, CodeType codeType) {
@@ -221,6 +221,8 @@ public class PtvCodeListEntityDiscoverJob extends EntityDiscoverJob<PtvCodeListT
         case "en":
           nameEn = localizedValue.getValue();
         break;
+        default:
+          logger.log(Level.SEVERE, () -> String.format("Unrecognized locale %s", localizedValue.getLanguage()));
       }
     }
     
@@ -241,7 +243,7 @@ public class PtvCodeListEntityDiscoverJob extends EntityDiscoverJob<PtvCodeListT
   }
 
   private void fillQueuePostal(CodeListApi codeListApi) {
-    ApiResponse<VmOpenApiCodeListPage> postalCodesResponse = codeListApi.apiV7CodeListGetPostalCodesGet(0);
+    ApiResponse<VmOpenApiCodeListPage> postalCodesResponse = codeListApi.apiV8CodeListGetPostalCodesGet(0);
     if (postalCodesResponse.isOk()) {
       if (postalCodesResponse.getResponse() == null) {
         logger.log(Level.SEVERE, "Failed to read PTV code list size");

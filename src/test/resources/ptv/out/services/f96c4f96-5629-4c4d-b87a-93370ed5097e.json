@@ -1,0 +1,219 @@
+{
+  "sourceId" : null,
+  "keywords" : [ {
+    "value" : "sossu",
+    "language" : "fi"
+  } ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Toimeentulotuki",
+      "language" : "fi"
+    }, {
+      "value" : "Social assistance",
+      "language" : "en"
+    }, {
+      "value" : "Utkomststöd",
+      "language" : "sv"
+    } ],
+    "description" : [ {
+      "value" : "This service subclass contains issues related to social assistance, including the different forms of assistance, eligibility criteria, the grounds for calculating assistance amounts and application procedures.",
+      "language" : "en"
+    }, {
+      "value" : "Tässä alapalveluluokassa käsitellään toimeentulotukeen liittyviä asioita kuten tuen eri muotoja, saamisen edellytyksiä, tuen laskennan perusteita ja hakumenettelyjä.",
+      "language" : "fi"
+    }, {
+      "value" : "I denna serviceundergrupp behandlas ärenden i samband med utkomststöd, t.ex. olika stödformer, förutsättningar för beviljande, grunder för uträkning av stöd och ansökningsförfaranden.",
+      "language" : "sv"
+    } ],
+    "code" : "P4.10",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1033",
+    "parentId" : "079b55da-af80-41ab-9346-c8fdd284afcf",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1023"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2017-11-28T07:45:17.596679",
+  "id" : "f96c4f96-5629-4c4d-b87a-93370ed5097e",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "sv"
+  }, {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Toimeentulotuki",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Utkomststöd",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "toimeentulotuki",
+      "language" : "fi"
+    }, {
+      "value" : "utkomststöd",
+      "language" : "sv"
+    }, {
+      "value" : "income support",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p4771",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p12885"
+  }, {
+    "name" : [ {
+      "value" : "sociala förmåner",
+      "language" : "sv"
+    }, {
+      "value" : "sosiaalietuudet",
+      "language" : "fi"
+    }, {
+      "value" : "social benefits",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p12885",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p13760;http://www.yso.fi/onto/koko/p68737"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Toimeentulotuki on viimesijainen toimeentuloturvan muoto. Toimeentulotuen perusosa haetaan Kelasta.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : "Utkomststödet är den form av utkomstskydd som kommer i sista hand. Utkomststödets grunddel ansöks hos FPA.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : "Utkomststödet är den form av utkomstskydd som kommer i sista hand. Utkomststödets grunddel ansöks hos FPA.\n\nRätt till utkomststöd har en person eller familj vars egna inkomster och tillgångar inte räcker för nödvändig utkomst.\n\nGrundläggande utkomststöd har flyttat över till FPA i början av 2017. Det sista utkomststödsbeslutet från kommunen bör sparas till den första utkomststödsansökan som lämnas in till FPA.\n\n",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : "Toimeentulotuki on viimesijainen toimeentuloturvan muoto. Toimeentulotuen perusosa haetaan Kelasta.\n \nToimeentulotukeen on oikeus henkilöllä tai perheellä, jonka omat tulot ja varat eivät riitä tarpeen mukaiseen toimeentuloon.\n\nPerustoimeentulotuen maksaminen on siirtynyt Kelaan tammikuusta 2017 alkaen. Viimeisin kunnasta saatu toimeentulotukipäätös tulee säilyttää ja liittää ensimmäiseen Kelalle jätettävään toimeentulotukihakemukseen. \n",
+    "type" : "Description"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

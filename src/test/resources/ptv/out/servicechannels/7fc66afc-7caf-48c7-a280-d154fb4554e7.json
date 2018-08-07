@@ -1,0 +1,201 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Rauhankatu",
+        "language" : "fi"
+      }, {
+        "value" : "Fredsgatan",
+        "language" : "sv"
+      } ],
+      "streetNumber" : "16 A",
+      "postalCode" : "65100",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ {
+        "value" : "4. kerros",
+        "language" : "fi"
+      }, {
+        "value" : "4 vån",
+        "language" : "sv"
+      } ],
+      "latitude" : "7007364.227",
+      "longitude" : "228394.375",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi", "sv", "en" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "73ceb656-c1a3-4479-b84a-d99d88f1b66d",
+      "name" : "Turvapaikanhakijoiden vastaanotto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : "Päivystysnumero ma-pe klo 16-22, la-su klo 8-22",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "401849295",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63252920",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Vastaanottokeskuksen johtaja",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "400661566",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63252920",
+    "language" : "sv"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Mottagningscentralens dejournumret",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "401849296",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Vastaanottokeskus",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Mottagningscentral",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ {
+    "serviceHourType" : "DaysOfTheWeek",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ {
+      "value" : null,
+      "language" : "fi"
+    } ],
+    "openingHour" : [ {
+      "dayFrom" : "Monday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    }, {
+      "dayFrom" : "Tuesday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    }, {
+      "dayFrom" : "Wednesday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    }, {
+      "dayFrom" : "Thursday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    }, {
+      "dayFrom" : "Friday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    } ]
+  } ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Vastaanottokeskuksen tehtävänä on järjestää kansainvälistä suojelua hakeville ja tilapäistä suojelua saaville henkilöille vastaanottopalveluja.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Mottagningscentralens uppgift är att ordna mottagningsservice för sådana som söker internationellt skydd och personer som får tillfälligt skydd.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Mottagningscentralens uppgift är att ordna mottagningsservice för sådana som söker internationellt skydd och personer som får tillfälligt skydd.\n\nPlatsantalet vid Vasa mottagningscentral är 400. Mottagningscentralen inkvarterar klienterna i bostäder runt om i staden.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Vastaanottokeskuksen tehtävänä on järjestää kansainvälistä suojelua hakeville ja tilapäistä suojelua saaville henkilöille vastaanottopalveluja.\n\nVastaanottokeskuksen paikkaluku on 400. Asiakkaat asuvat hajasijoitettuina eri puolilla Vaasaa tavallisissa vuokra-asunnoissa.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "7fc66afc-7caf-48c7-a280-d154fb4554e7"
+}

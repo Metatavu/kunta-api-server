@@ -1,0 +1,192 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Kansalaisvaikuttaminen",
+      "language" : "fi"
+    }, {
+      "value" : "Medborgarnas medverkan",
+      "language" : "sv"
+    }, {
+      "value" : "Civic participation",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Denna serviceundergrupp omfattar medborgarnas och frivilligorganisationernas politiska och samhälleliga medverkan utanför val ur ett serviceperspektiv. Gruppen omfattar bland annat förfaranden för grundande och registrering av föreningar samt medborgar- och kommuninvånarinitiativ.",
+      "language" : "sv"
+    }, {
+      "value" : "Tässä palvelualaluokassa käsitellään palvelujen näkökumasta kansalaisten ja kansalaisyhteisöjen poliittista ja yhteiskunnallista vaikuttamista vaalien ulkopuolella. Luokkaan kuuluvat muun muassa yhdistyksen perustamisen ja rekisteröinnin menettelyt sekä kansalais- ja kuntalaisaloitteiden tekeminen.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains the political and social participation of citizens and non-governmental organisations outside the elections from the service point of view. The class includes the procedures for establishing and registering an association and submitting citizen’s and local resident’s initiatives.",
+      "language" : "en"
+    } ],
+    "code" : "P8.3",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1093",
+    "parentId" : "6621dcc1-803a-4984-b20e-16da4651a293",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1090"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "9b35bcbb-928d-4935-8b25-2664873b987e",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "a7f0acae-9d7f-4e5c-ba34-1f3274bf3276",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "3994f38d-dc91-4105-be8a-5edd0d2ef739",
+      "name" : "Kirjaamo"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "49ddf8de-70d0-4f5b-accf-bd381574c096",
+      "name" : "Tehdyt kuntalaisaloitteet vuodesta 2010 (Naantali)"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : "* Aloite saa olla vapaamuotoinen\n* Aloitteesta pitää ilmetä aloitteen tekijän yhteystiedot\n* Aloitteella ei tarkoiteta kyselyjä eikä henkilökohtaisia hakemuksia tai anomuksia",
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : null,
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Kuntalaisaloite",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "kuntalaisaloitteet",
+      "language" : "fi"
+    }, {
+      "value" : "invånarinitiativ",
+      "language" : "sv"
+    }, {
+      "value" : "initiatives to municipal authorities",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p70111",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p7617"
+  }, {
+    "name" : [ {
+      "value" : "deltagande",
+      "language" : "sv"
+    }, {
+      "value" : "osallistuminen",
+      "language" : "fi"
+    }, {
+      "value" : "participation",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p35770",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p34717"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Kuntalaisaloite on kuntalaisen mahdollisuus vaikuttaa oman kunnan päätöksentekoon. Tämä mahdollisuus perustuu kuntalakiin.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Voit tehdä kuntalaisaloitteen Naantalin kaupungin toimintaa koskevissa asioissa. Aloite on ehdotus tai idea, ja siitä tulee ilmetä mihin kaupungin toimintaan liittyvään asiaan sillä haluat vaikuttaa. Aloite käynnistää aina prosessin, vaikka se ei saisikaan aikaan muutosta. Aloitettasi käsitellyt viranhaltija tai toimielin ilmoittaa sinulle aloitteesi johdosta tehdyt toimenpiteet.\n\nKirjaamossa aloite kirjataan saapuneeksi ja se lähetetään valmisteltavaksi siihen virastoon, jonka toimialaan asia kuuluu. Se, mihin virastoon aloite on siirretty käsiteltäväksi, ilmoitetaan kaupungin kotisivuilla. Kun aloitteesi on tullut loppuun käsitellyksi, kaupunki lähettää sinulle vastauksen ja käsittelyn päätöspäivämäärä ilmoitetaan kaupungin kotisivuilla. ",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Tee aloitteesi ensisijaisesti Kuntalaisaloite.fi-palvelussa. Palvelu julkaisee aloitteesi sivuillaan ja ohjaa sen Naantalin kaupungin kirjaamoon. Voit toimittaa aloitteesi myös sähköpostitse tai paperilla suoraan kaupungin kirjaamoon.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

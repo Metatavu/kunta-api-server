@@ -1,0 +1,91 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "",
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "25b6bae1-fa45-4fe4-8ea1-36260c46b2ce",
+      "name" : "Nuorisotyö"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "c04e0218-2707-4c64-9de4-dcef5befbd19",
+      "name" : "Joustava perusopetus (JOPO)"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : "Erityisnuorisotyöntekijä on mukana JOPO-opetuksessa keskiviikkoisin ja torstaisin (tilanne lukuvuonna 2017 - 2018).",
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "444171379",
+    "language" : "fi"
+  } ],
+  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Erityisnuorisotyöntekijä",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "Phone",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Erityisnuorisotyöntekijä tukee naantalilaisia 15–29-vuotiaita nuoria pulmallisissa elämäntilanteissa ja tarjoaa yksilöllistä neuvontaa.\n\nUsein auttaa kun asioita saa miettiä yhdessä turvallisen aikuisen kanssa ja jatkaa pienen kannustuksen jälkeen taas eteenpäin. Joskus asiat selvät yhden jutustelun jälkeen, joskus ne ottavat pidemmän aikansa. Erityisnuorisotyöntekijän luokse voi tulla yksin tai vaikkapa yhdessä ystävän kanssa jos se tuntuu helpommalta.\n\nToiminta lähtee aina nuoren tarpeista. Erityisnuorisotyöntekijän kanssa voi jutella esimerkiksi ystävyys- tai seurustelusuhteisiin liittyvistä koukeroista, päihteistä ja terveyteen liittyvistä asioista, harrastuksen puutteesta, asumisasioista, kiusaamisasioista ja muista huolista.\n\nErityisnuorisotyöntekijä on mukana myös JOPO-opetuksessa.\n",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Erityisnuorisotyöntekijä tukee naantalilaisia 15–29-vuotiaita nuoria pulmallisissa elämäntilanteissa ja tarjoaa yksilöllistä neuvontaa ja ohjausta.",
+    "type" : "Summary"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "e67a7c41-6f4d-46a0-8bd2-f77150a644a5"
+}

@@ -1,0 +1,120 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Fräsargatan",
+        "language" : "sv"
+      }, {
+        "value" : "Jyrsijänkatu",
+        "language" : "fi"
+      } ],
+      "streetNumber" : "2",
+      "postalCode" : "65370",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ {
+        "value" : "Ingången via dörren till Korsnästågets hälsostation.",
+        "language" : "sv"
+      }, {
+        "value" : "Sisäänkäynti Ristinummen terveysaseman ovesta",
+        "language" : "fi"
+      } ],
+      "latitude" : "7006638.403",
+      "longitude" : "233637.789",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi", "sv", "en" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "73ff8109-ab84-416d-a858-be94413c93a9",
+      "name" : "Suun terveydenhuolto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ ],
+  "serviceChannelNames" : [ {
+    "language" : "sv",
+    "value" : "Roparnäs tandklinik",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Huutoniemen hammashoitola",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "Tandkliniken fungerar med tidsbokning. På tandkliniken sköts granskningar av munområdet och behövliga förebyggande och reparerande åtgärder. Roparnäs tandklinik finns i anslutning till Korsnästågets hälsostation. ",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Roparnäs tandklinik",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Huutoniemen hammashoitola sijaitsee Ristinummen terveysaseman yhteydessä.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Huutoniemen hammashoitola sijaitsee Ristinummen terveysaseman yhteydessä. Hammashoitola toimii ajanvarauksella. Hammashoitolassa hoidetaan suun alueen tarkastuksia ja tarvittavia ehkäiseviä ja korjaavia toimenpiteitä.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "114de139-4e9e-4389-aee8-99a81233c151"
+}

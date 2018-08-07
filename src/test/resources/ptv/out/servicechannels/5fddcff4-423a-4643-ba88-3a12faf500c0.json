@@ -1,0 +1,106 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "29cffb45-b0b2-4079-9cb9-256f68c7f40c",
+      "name" : "Vammaisten kuntoutusohjaus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63252672",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63252649",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63252649",
+    "language" : "sv"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63252672",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Kuntoutusohjaaja - vammaispalvelut",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Rehabiliteringshandledare - handikappservice",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "Phone",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Vammaisten kuntoutusohjaaja auttaa ja neuvoo kuntoutusohjaukseen liittyvissä kysymyksissä.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Vammaisten kuntoutusohjaaja auttaa ja neuvoo kuntoutusohjaukseen liittyvissä kysymyksissä.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Rehabiliteringshandledarna svarar på frågor i anslutning till rehabiliteringshandledning för personer med funktionsnedsättning.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Rehabiliteringshandledarna svarar på frågor i anslutning till rehabiliteringshandledning för personer med funktionsnedsättning.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "5fddcff4-423a-4643-ba88-3a12faf500c0"
+}

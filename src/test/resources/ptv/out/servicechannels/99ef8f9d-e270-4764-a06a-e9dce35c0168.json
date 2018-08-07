@@ -1,0 +1,196 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/node/21291/",
+    "value" : "TaiKon - Taiteen perusopetuksen yhteystiedot",
+    "language" : "fi"
+  }, {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/en/node/2401/",
+    "value" : "TaiKon - Basic education in art in Vaasa",
+    "language" : "en"
+  }, {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/sv/node/21291/",
+    "value" : "Kontaktuppgifter för TaiKon – Grundläggande konstundervisning",
+    "language" : "sv"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Itäinen Kasarmintori",
+        "language" : "en"
+      }, {
+        "value" : "Itäinen Kasarmintori",
+        "language" : "fi"
+      }, {
+        "value" : "Östra Kaserntorget",
+        "language" : "sv"
+      } ],
+      "streetNumber" : "7-9",
+      "postalCode" : "65100",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : null,
+      "additionalInformation" : [ {
+        "value" : "Kasarmi 11",
+        "language" : "fi"
+      }, {
+        "value" : "Kasern 11",
+        "language" : "sv"
+      } ],
+      "latitude" : "7006948.88",
+      "longitude" : "228375.738",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "sv", "fi" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "54a6b6a4-0c7a-4e9f-b5d4-55eefc89d4a9",
+      "name" : "Taiteen perusopetus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "819bed3d-6147-4a22-a454-eac010516ce7",
+      "name" : "Kansalaisopistot"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "en",
+    "value" : "TaiKon – Basic arts education",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "TaiKon – Grundläggande konstundervisning",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "TaiKon - Taiteen perusopetus",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ {
+    "serviceHourType" : "DaysOfTheWeek",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ {
+      "value" : null,
+      "language" : "fi"
+    } ],
+    "openingHour" : [ {
+      "dayFrom" : "Monday",
+      "dayTo" : "",
+      "from" : "09:00:00",
+      "to" : "17:00:00"
+    }, {
+      "dayFrom" : "Tuesday",
+      "dayTo" : "",
+      "from" : "09:00:00",
+      "to" : "17:00:00"
+    }, {
+      "dayFrom" : "Wednesday",
+      "dayTo" : "",
+      "from" : "09:00:00",
+      "to" : "17:00:00"
+    }, {
+      "dayFrom" : "Thursday",
+      "dayTo" : "",
+      "from" : "09:00:00",
+      "to" : "17:00:00"
+    }, {
+      "dayFrom" : "Friday",
+      "dayTo" : "",
+      "from" : "09:00:00",
+      "to" : "17:00:00"
+    } ]
+  } ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "TaiKonin eli taiteen perusopetuksen toimisto ja toimitilat sijaitsevat Vaasan Kasarmintorilla Kasarmi 11:ssa.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "TaiKonin eli taiteen perusopetuksen toimisto ja toimitilat sijaitsevat Vaasan Kasarmintorilla Kasarmi 11:ssa. TaiKonin toimistolla voit ilmoittautua mukaan opetukseen. \nPalvelupiste on normaalisti auki arkisin klo 9-17. TaiKon noudattaa koulujen loma-aikoja, jolloin palvelupiste on suljettu.\n\nVaasan Kasarmi 11:n lisäksi TaiKon tarjoaa opetusta Nummen, Länsimetsän, Huutoniemen, Gerbyn, Vikingan ja Sundomin kouluissa sekä Kyrölän nuorisotalolla Vähässäkyrössä. ",
+    "type" : "Description"
+  }, {
+    "language" : "en",
+    "value" : "The offices and premises of TaiKon, the basic arts education, are located at the Vaasa Barracks Square (Vaasan Kasarmintori) in Barrack (Kasarmi) 11.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "TaiKons d.v.s. den grundläggande konstundervisningens kansli och lokaler finns vid kaserntorget i Vasa i Kasern 11.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "TaiKons d.v.s. den grundläggande konstundervisningens kansli och lokaler finns vid kaserntorget i Vasa i Kasern 11. På TaiKons kansli kan du anmäla dig till undervisningen. \nKundbetjäningen är normalt öppen vardagar kl. 9-17. TaiKon följer skolornas lovtider och då är kundbetjäningen stängd.\n\nFörutom i Kasern 11 erbjuder TaiKon undervisning i Nummen, Länsimetsän, Huutoniemen koulu och Gerby, Vikinga och Sundom skolor samt i ungdomsgården Kyrölä i Lillkyro.\n\n\n\n",
+    "type" : "Description"
+  }, {
+    "language" : "en",
+    "value" : "The offices and premises of TaiKon, the basic arts education, are located at the Vaasa Barracks Square (Vaasan Kasarmintori) in Barrack 11 (Kasarmi 11). At the offices you can register yourself for the education. \n\nNormally the customer service is open week days from 9 to 17. TaiKon follows the school holidays, during which the customer service is also closed.\n\nApart from Barrack 11 in Vaasa TaiKon offers education at Nummen, Länsimetsän, Huutoniemen, Gerbyn, Vikingan and Sundomin koulu and also at the Kyrölä youth club in Vähäkyrö.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "99ef8f9d-e270-4764-a06a-e9dce35c0168"
+}

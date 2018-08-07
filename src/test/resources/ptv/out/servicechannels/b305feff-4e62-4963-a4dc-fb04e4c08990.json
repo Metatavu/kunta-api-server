@@ -1,0 +1,61 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/node/24751",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/sv/node/24751",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "a51c6d22-91f3-440e-8200-66b7e7f77ebc",
+      "name" : "Henkilöstökoulutus ulkopuolisille"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Henkilöstökoulutus",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Personalutbildning",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Verkkosivuilta löydät lisätietoa henkilöstökoulutuksista ja siitä, miten kaupungin henkilöstön ulkopuoliset voivat niihin osallistua.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Verkkosivuilta löydät lisätietoa henkilöstökoulutuksista ja siitä, miten kaupungin henkilöstön ulkopuoliset voivat niihin osallistua. ",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "På webbsidorna finns tilläggsinformation om personalutbildningar och om hur utomstående som inte hör till stadens personal kan delta i dem.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "På webbsidorna finns tilläggsinformation om personalutbildningar och om hur utomstående som inte hör till stadens personal kan delta i dem. \n",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "b305feff-4e62-4963-a4dc-fb04e4c08990"
+}

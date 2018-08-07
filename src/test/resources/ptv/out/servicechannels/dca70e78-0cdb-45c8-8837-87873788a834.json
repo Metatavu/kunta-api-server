@@ -1,0 +1,174 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Dammbrunnsvägen",
+        "language" : "sv"
+      }, {
+        "value" : "Tammikaivontie",
+        "language" : "fi"
+      } ],
+      "streetNumber" : "2",
+      "postalCode" : "65100",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ {
+        "value" : null,
+        "language" : "sv"
+      }, {
+        "value" : "Apuvälinelainaamo sijaitsee osastojen 5, 6 ja 7 sisäänkäynnin luona.",
+        "language" : "fi"
+      } ],
+      "latitude" : "7007929.973",
+      "longitude" : "229953.395",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi", "sv", "en" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "49cbf014-8ddc-4a54-9272-db85ad1f5889",
+      "name" : "Apuvälinepalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "407405639",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "407405639",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ ],
+  "serviceChannelNames" : [ {
+    "language" : "sv",
+    "value" : "Hjälpmedelsutlåning",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Apuvälinelainaamo",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ {
+    "serviceHourType" : "DaysOfTheWeek",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ {
+      "value" : null,
+      "language" : "fi"
+    } ],
+    "openingHour" : [ {
+      "dayFrom" : "Monday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "12:00:00"
+    }, {
+      "dayFrom" : "Tuesday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "12:00:00"
+    }, {
+      "dayFrom" : "Wednesday",
+      "dayTo" : "",
+      "from" : "12:00:00",
+      "to" : "16:00:00"
+    }, {
+      "dayFrom" : "Thursday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "12:00:00"
+    }, {
+      "dayFrom" : "Friday",
+      "dayTo" : "",
+      "from" : "12:00:00",
+      "to" : "15:00:00"
+    } ]
+  } ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "Hjälpmedelsutlåningen erbjuder hjälpmedel för olika behov. \nMed hjälpmedel stöds kommuninvånare att klara sig hemma och i hemmiljön trots funktionsnedsättning, sjukdom eller åldersrelaterat besvär med funktionsförmågan.\n\nI hjälpmedelsfrågor kan kontakt tas direkt till hjälpmedelsutlåningen.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Hjälpmedelsutlåningen erbjuder hjälpmedel för olika behov.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Apuvälinelainaamo tarjoaa apuvälineitä erilaisiin tarpeisiin.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Apuvälinelainaamo tarjoaa apuvälineitä erilaisiin tarpeisiin. Apuvälineillä tuetaan kuntalaisten selviytymistä kotona ja kotiympäristössä vamman, sairauden tai ikääntymisen aiheuttamasta toimintakyvyn haitasta huolimatta.\n\nApuvälineasioissa voi puhelimitse ottaa suoraan yhteyttä apuvälinelainaamoon.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "dca70e78-0cdb-45c8-8837-87873788a834"
+}

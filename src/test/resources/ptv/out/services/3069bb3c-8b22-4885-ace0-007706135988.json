@@ -1,0 +1,270 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Korkeakoulutus",
+      "language" : "fi"
+    }, {
+      "value" : "Högskoleutbildning",
+      "language" : "sv"
+    }, {
+      "value" : "Higher education",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Tähän alapalveluluokkaan kuuluvat korkea-asteen koulutuksen sisältö ja tarkoitus, korkeakoulutukseen hakeminen ja tutkintovaatimukset ja -rakenteet. Opintojen taloudellinen tuki käsitellään omassa alapalveluluokassaan.",
+      "language" : "fi"
+    }, {
+      "value" : "Till denna serviceundergrupp hör innehåll och syfte för en utbildning av högre nivå, hur man söker till utbildning av högre nivå samt examenskrav och -strukturer. Det ekonomiska stödet för studierna behandlas i sin egen serviceundergrupp.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains the contents and objectives of higher education, applying for a place in higher education and decree requirements and structures. Financial support for studies is included in its own subclass.",
+      "language" : "en"
+    } ],
+    "code" : "P6.9",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1069",
+    "parentId" : "fd1bb60e-4206-4f0a-994f-8ffcb4ffaaa4",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1060"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "3069bb3c-8b22-4885-ace0-007706135988",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "1ed812c3-0972-4585-a838-5236b3bebbf7",
+      "name" : "Opiskele Vaasassa"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "7797b20c-d33f-4492-8d48-d26f8ef4e853",
+      "name" : "Vaasan kesäyliopiston verkkosivut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "en"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  }, {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi", "sv", "en" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "en",
+    "value" : "Universities",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Högskoleutbildning",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Korkeakoulutus",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "yrkeshögskoleutbildning",
+      "language" : "sv"
+    }, {
+      "value" : "ammattikorkeakoulutus",
+      "language" : "fi"
+    }, {
+      "value" : "polytechnic education",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p66923",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p14692"
+  }, {
+    "name" : [ {
+      "value" : "universitetsutbildning",
+      "language" : "sv"
+    }, {
+      "value" : "yliopistokoulutus (korkea-asteen koulutus)",
+      "language" : "fi"
+    }, {
+      "value" : "university education",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p63823",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p14692"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasa on monipuolinen ja väkilukuun suhteutettuna Suomen suurin korkeakoulukaupunki.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : "Tutustu Vaasaan opiskelijakaupunkina, oppilaitoksiin, opintotarjontaan sekä hakuaikoihin osoitteessa www.opiskelevaasassa.fi",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasa on monipuolinen ja väkilukuun suhteutettuna Suomen suurin korkeakoulukaupunki. Yli 12 000 opiskelijaa opiskelee kolmella kielellä kuudessa eri korkeakouluyksikössä. Opiskelijoilla on mahdollisuus suorittaa yli 30 tutkintoa.\n\nKorkeakouluissa on vuosittain yli 900 kansainvälistä vaihto- ja tutkinto-opiskelijaa. Vastavuoroisesti Vaasasta opiskelijavaihtoon voi lähteä kymmeniin eri maihin.\n\nSuurimpia ja suosituimpia opiskelualoja ovat kauppatieteet ja liiketalous, hallintotieteet, yhteiskuntatieteet, humanistiset tieteet, sosiaali- ja terveysala sekä tekniikan ala eri opintokokonaisuuksineen.\n\nVahva yhteys yritysmaailmaan ja varsinkin energiateknologia-alaan antaa opiskelijoille hyvät työllistymisnäkymät.\n\nOppilaskunnat ja ainejärjestöt sekä eri harrastusmahdollisuudet teatterista urheiluun tekevät opiskeluajasta elämyksen.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "en",
+    "value" : "Vaasa is a diverse university city with the highest ratio of university students per capita in Finland. There are more than 12,000 students in Vaasa studying in three languages in six university units, and they have more than 30 degrees to choose from.\n\nThe universities in Vaasa receive more than 900 international exchange and degree students a year. Similarly, students from Vaasa can become exchange students in dozens of different countries.\n\nThe universities’ strong connections to the region’s companies, and the energy technology sector in particular, offer students excellent employment prospects.\n\nStudent associations and organisations and rich recreational opportunities make studying in Vaasa a great experience.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : "Vasa är en mångsidig högskolestad som i förhållande till folkmängden är Finlands största. Över 12 000 studerande studerar på tre språk i sju olika högskoleenheter. Studerande har möjlighet att avlägga över 30 examina.\n\nI högskolorna finns årligen över 900 internationella utbytes- och examensstuderande. På motsvarande sätt kan utbytesstuderande från Vasa fara till tiotals olika länder.\n\nDe största och populäraste studieområdena är ekonomi och företagsekonomi, förvaltningsvetenskap, samhällsvetenskap, humanistiska vetenskaper, social- och hälsovårdssektorn samt tekniska branschen med sina olika studiehelheter.\n\nEn stark förbindelse till företagsvärlden och speciellt till energiteknologibranschen ger studerandena goda sysselsättningsutsikter.\n\nStudentkårer och ämnesorganisationer samt olika hobbymöjligheter från teater till idrott gör studietiden till en upplevelse.",
+    "type" : "Description"
+  }, {
+    "language" : "en",
+    "value" : "Vaasa is a diverse university city with the highest ratio of university students per capita in Finland.",
+    "type" : "Summary"
+  }, {
+    "language" : "en",
+    "value" : "Find out more about Vaasa as a student city, about the universities themselves, the range of studies on offer and application times at www.opiskelevaasassa.fi.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : "Vasa är en mångsidig högskolestad som i förhållande till folkmängden är Finlands största.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Bekanta dig med Vasa som studiestad, med läroanstalterna, studieutbudet samt ansökningstiderna på adressen www.opiskelevaasassa.fi.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "ValidityTime"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "Other",
+    "organization" : null,
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

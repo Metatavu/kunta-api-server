@@ -1,0 +1,133 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "attachments" : [ ],
+  "languages" : [ ],
+  "deliveryAddresses" : [ {
+    "subType" : "NoAddress",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : null,
+    "deliveryAddressInText" : [ ],
+    "receiver" : [ {
+      "value" : null,
+      "language" : "fi"
+    }, {
+      "value" : null,
+      "language" : "sv"
+    } ]
+  } ],
+  "supportPhones" : [ ],
+  "formIdentifier" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "0404e86d-f3b5-4e04-b95a-af5078709361",
+      "name" : "Suunnittelutarveratkaisu tai poikkeamispäätös"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "b1e7b1fb-2c5c-4756-8fc5-88ca5596049f",
+      "name" : "Maisematyölupa"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "b540c695-530a-42be-a8a6-19754dc823a1",
+      "name" : "Rakennuslupa"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "c64e7178-dcc8-49fd-a88a-84cb3bdc2086",
+      "name" : "Rakentaminen ranta-alueelle"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "channelUrls" : [ {
+    "language" : "fi",
+    "value" : "https://www.vaasa.fi/sites/default/files/naapureille_tiedottaminen.pdf",
+    "type" : "PDF"
+  }, {
+    "language" : "sv",
+    "value" : "https://www.vaasa.fi/sites/default/files/grannehorande.pdf",
+    "type" : "PDF"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Naapurien kuuleminen",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Hörande av grannar",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "PrintableForm",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Tiettyjen lupien, kuten rakennusluvan tai maisematyöluvan anomiseen, pitää liittää selvitys naapurien kuulemisesta. Kuultavia naapureita ovat viereisten, vastapäisten ja kulmittaisten kiinteistöjen omistajat ja haltijat. Hakija voi itse hoitaa naapurien kuulemisen tai vaihtoehtoisesti kaupunki voi hoitaa kuulemisen lisämaksusta.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Tiettyjen lupien, kuten rakennusluvan tai maisematyöluvan anomiseen, pitää liittää selvitys naapurien kuulemisesta.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Vid ansökan om vissa tillstånd, såsom bygglov eller tillstånd för miljöåtgärder, ska en utredning över hörande av grannar bifogas.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Vid ansökan om vissa tillstånd, såsom bygglov eller tillstånd för miljöåtgärder, ska en utredning över hörande av grannar bifogas. Grannar som ska höras är ägare eller innehavare av fastighet som ligger invid, mittemot eller snett mittemot.  Den sökande kan själv sköta hörandet eller så kan staden sköta det mot en tilläggsavgift. ",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "801c60af-bf19-4355-8c14-512050059b2e"
+}

@@ -1,0 +1,100 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "attachments" : [ ],
+  "languages" : [ ],
+  "deliveryAddresses" : [ {
+    "subType" : "NoAddress",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : null,
+    "deliveryAddressInText" : [ ],
+    "receiver" : [ {
+      "value" : null,
+      "language" : "fi"
+    }, {
+      "value" : null,
+      "language" : "sv"
+    } ]
+  } ],
+  "supportPhones" : [ ],
+  "formIdentifier" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "3e3abeb8-7c7f-4570-b083-d6717b553160",
+      "name" : "Ilmoitus melusta ja tärinästä"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "channelUrls" : [ {
+    "language" : "fi",
+    "value" : "https://www.vaasa.fi/sites/default/files/ilmoitus_melua_ja_hairintaa_aiheuttavasta_tilapaisesta_toiminnasta.pdf",
+    "type" : "PDF"
+  }, {
+    "language" : "sv",
+    "value" : "https://www.vaasa.fi/sites/default/files/anmalan_on_tillfallig_verksamhet_som_fororsakar_buller_och_skakningar.pdf",
+    "type" : "PDF"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Ilmoitus melua ja tärinää aiheuttavasta tilapäisestä toiminnasta",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Anmälan om tillfällig verksamhet som orsakar buller eller skakningar",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "PrintableForm",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Melu- ja tärinäilmoituksen voi tehdä lomakkeella verkossa tai postitse. ",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Melu- ja tärinäilmoituksen voi tehdä lomakkeella verkossa tai postitse.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Anmälan och buller eller skakningar kan göras på en blankett på nätet eller per post.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Anmälan och buller eller skakningar kan göras på en blankett på nätet eller per post. ",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "7e0051ed-323b-4b48-ac18-28c37a368dd8"
+}

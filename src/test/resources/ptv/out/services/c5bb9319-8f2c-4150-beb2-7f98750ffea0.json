@@ -1,0 +1,268 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Veneily",
+      "language" : "fi"
+    }, {
+      "value" : "Boating",
+      "language" : "en"
+    }, {
+      "value" : "Båtliv",
+      "language" : "sv"
+    } ],
+    "description" : [ {
+      "value" : "This service subclass contains marinas and moorings, boating safety, rules and regulations, maps of water areas and boating-related training.",
+      "language" : "en"
+    }, {
+      "value" : "Tähän palvelualaluokkaan kuuluvat venesatamat ja -paikat, veneilyn turvallisuus, säännöt ja säädökset, vesialueiden kartat sekä veneilykoulutus.",
+      "language" : "fi"
+    }, {
+      "value" : "Denna serviceundergrupp omfattar båthamnar och -platser, säkerhet till sjöss, regler och författningar, sjökort och båtförarutbildning.",
+      "language" : "sv"
+    } ],
+    "code" : "P27.3",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1213",
+    "parentId" : "175762f6-53cd-4d29-a285-625bfb421b21",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1210"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2018-05-30T10:52:02.430958",
+  "id" : "c5bb9319-8f2c-4150-beb2-7f98750ffea0",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "2a927951-d87f-4299-9686-2d06ed169a07",
+      "name" : "Venepaikat"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "2b71e4ae-2375-474c-978d-33649069664d",
+      "name" : "Timmi"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "dfb343a9-ccf3-4a39-be6a-eeaf6bfbb875",
+      "name" : "Venepaikkahakemus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    }, {
+      "language" : "fi",
+      "value" : "Täytä lomake ja klikkaa \"lähetä\" - painiketta jolloin lomake tulee venepaikkapalvelun sähköpostissa perille. \nVoit myös täyttää ja tulostaa ja lähettää postitse osoitteella Vaasan kaupunki venepaikat Kirkkopuistikko 26 A 65100 Vaasa.",
+      "type" : "Description"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "e4e40850-842e-41ff-b6f4-934ff9c736f9",
+      "name" : "Venepaikkapalvelu."
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "sv"
+  }, {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "Chargeable",
+  "serviceNames" : [ {
+    "language" : "sv",
+    "value" : "Båtplatser",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Venepaikat",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Laituripaikat",
+    "type" : "AlternativeName"
+  }, {
+    "language" : "sv",
+    "value" : "Bryggplatser",
+    "type" : "AlternativeName"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "båtplatser",
+      "language" : "sv"
+    }, {
+      "value" : "venepaikat",
+      "language" : "fi"
+    }, {
+      "value" : "boat places",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p68128",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p11148"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : "Priset bestäms enligt bryggplatsens bredd och servicen i hamnen. Servicen består av avfallsservice, belysning, säkerhetsport, bred Y-bom och vattenpost. Priserna på kajplatserna i inre hamnen (vid Kuntsis museum) faställs enligt fartygets längd.",
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : "Laituripaikan hinta määräytyy laituripaikan leveyden ja sataman palvelujen mukaan. Palveluja ovat jätehuolto, valaistus, turvaportti, leveä aisapaikka ja vesiposti. Sisäsataman laituripaikkojen hinnat (Kuntsin museon luona) määritellään aluksen pituuden mukaan.",
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : "Staden hyr ut och underhåller båtplatser vid stränderna i centrum, Vasklot, Brändö, Vikinga, Storviken, Gerby, Sundom och i Inre hamnen.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : "Kaupunki tarjoaa venepaikkoja keskikaupungin rannoissa, Vaskiluodossa, Palosaarella, Viikingalla, Isolahdessa, Gerbyssä, Sundomissa ja Sisäsatamassa.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Till dem som hyrde båtplats föregående säsong sänds en faktura automatiskt under mars månad. Genom att betala fakturan senast på förfallodagen säkerställer den som hyr båtplatsen hyrningen för den kommande hyresperioden. Platser som inte har blivit betalda kan hyras ut omedelbart. \n\nVia den elektroniska reserveringstjänsten (Timmi) kan du göra och betala båtplatsreserveringar via nätet. Alternativt kan du utan att registrera dig i tjänsten kontrollera vilka båtplatser som är lediga genom att på in på ”Selaile tilavarauksia” och välja båtplatser. För att kunna reservera en plats måste du registrera dig i tjänsten. \nDe som redan har en båtplats reserverad kan efter registrering söka fram uppgifterna om den egna reserveringen genom identifiering med nätbankskoder.\n\nDu kan fylla i en blankett för ansökan om båtplats på vår webbplats, klicka på ”sänd”, så får vi din ansökan per e-post.\n\nYtterligare upplysningar ges vid kundtjänsten för båtplatser eller på webbsidan Båtplatser. ",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Edellisen kauden venepaikkavuokransa maksaneille lähetetään automaattisesti lasku maaliskuun aikana. Maksamalla laskun eräpäivään mennessä vuokralainen varmistaa venepaikan tulevalle vuokrakaudelle. Samalla hän sitoutuu noudattamaan venelaituripaikkojen voimassaolevia vuokrasopimusehtoja. Maksamatta jääneet paikat ovat heti vuokrattavissa. \n\nSähköisen varauspalvelun (Timmi) kautta voit selailla vapaita venepaikkoja sekä tehdä ja maksaa venepaikkavarauksia verkkomaksuna. Varauksen tekeminen edellyttää palveluun rekisteröitymistä verkkopankkitunnuksilla.\n\nOheisesta linkistä löydät venepaikkahakemuslomakkeen, klikkaa “lähetä” -painiketta jolloin saamme hakemuksesi sähköpostilla.\n\nIlmoita osoitteenmuutoksesta tai venepaikan peruutuksesta! \n\nLisätietoja saat venepaikkojen asiakaspalvelusta tai Venepaikat-verkkosivulta.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "- Kaupunki vuokraa ja ylläpitää venepaikkoja keskikaupungin rannoissa, Vaskiluodossa, Palosaarella, Viikingalla, Isolahdessa, Gerbyssä ja Sundomissa. Sisäsataman laiturissa on vuokrattavana laituripaikkoja isommille aluksille. -\n \nKaupungilla on myös tarjota veneille ilmaisia talvisäilytyspaikkoja sekä ympärivuotisia säilytyspaikkoja.\n\nIsolahden ja Kulmakadun venesatamissa kameravalvontaa suorittavat yhdistykset.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "- Staden hyr ut och underhåller båtplatser vid stränderna i centrum, Vasklot, Brändö, Vikinga, Storviken, Gerby, Sundom och i Inre hamnen. Vid bryggan i inre hamnen finns kajplatser att hyra för större fartyg. -\n\nStaden erbjuder både vinterförvaringsplatser och året om-förvaringsplatser. Tavlor med andvändningsvillkoren för förvaringsplatserna finns på de största förvaringsområdena.\n\nI Storvikens och Vinkelgatans båthamnar sköter föreningar videoövervakningen.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

@@ -1,0 +1,112 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "attachments" : [ {
+    "type" : "Attachment",
+    "name" : "Hakuohje",
+    "description" : null,
+    "url" : "https://www.vaasa.fi/sites/default/files/esteettomyysavustus_ohje.pdf",
+    "language" : "fi"
+  }, {
+    "type" : "Attachment",
+    "name" : "Ansökningsanvisning",
+    "description" : null,
+    "url" : "https://www.vaasa.fi/sites/default/files/esteettomyysavustus_ohje_sve.pdf",
+    "language" : "sv"
+  } ],
+  "languages" : [ ],
+  "deliveryAddresses" : [ {
+    "subType" : "NoAddress",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : null,
+    "deliveryAddressInText" : [ ],
+    "receiver" : [ {
+      "value" : null,
+      "language" : "fi"
+    }, {
+      "value" : null,
+      "language" : "sv"
+    } ]
+  } ],
+  "supportPhones" : [ ],
+  "formIdentifier" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "22cbe0dc-9773-4a1c-b81f-6084d3f2fb9d",
+      "name" : "Esteettömyysavustus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "channelUrls" : [ {
+    "language" : "fi",
+    "value" : "https://www.vaasa.fi/sites/default/files/maksatushakemus.pdf",
+    "type" : "PDF"
+  }, {
+    "language" : "sv",
+    "value" : "https://www.vaasa.fi/sites/default/files/maksatushakemus_sve.pdf",
+    "type" : "PDF"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Maksatushakemus",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Utbetalningsansökan",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "PrintableForm",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Esteettömyysavustuksen maksatusta haetaan maksatushakemuksella Vaasan kaupungin kiinteistötoimesta. Esteettömyysavustus maksetaan yhdessä erässä töiden valmistumisen jälkeen. Avustusta maksetaan toteutuneiden kustannusten mukaan, kuitenkin enintään avustuspäätöksen mukainen avustussumma. Avustuksen maksatusta on haettava viimeistään 1.12.2017, jolloin toimenpiteiden tulee olla valmiita.\n\nMaksatusta varten kiinteistötoimeen on toimitettava laskelma hankkeen toteutuneista kustannuksista sekä kopiot laskuista ja maksutositteista, joista näkyy, että laskut on maksettu maksunsaajalle. Korjausneuvoja voi tulla tarkastamaan valmiin työn ennen avustuksen maksamista. ",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Esteettömyysavustuksen maksatusta haetaan maksatushakemuksella Vaasan kaupungin kiinteistötoimesta.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Utbetalningen av tillgänglighetsunderstödet ansöks med en utbetalningsansökan hos Vasa stads fastighetssektor.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Utbetalningen av tillgänglighetsunderstödet ansöks med en utbetalningsansökan hos Vasa stads fastighetssektor. Understödet betalas ut i en rat när arbetena är klara. Understödet betalas enligt de verkliga kostnaderna, dock minst det belopp som anges i beslutet om understöd. Ansökan om utbetalning av understödet ska inlämnas senast 1.12.2017, och då bör åtgärderna vara klara.\n\nFör utbetalningen ska en kalkyl över de verkliga kostnaderna för projektet och kopior av fakturorna och betalningsverifikaten, av vilka framgår att fakturorna är betalda till betalningsmottagaren, lämnas in till fastighetssektorn. Reparationsrådgivaren kan komma och granska det färdiga arbetet innan understödet betalas ut.\n\n",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "260ffe9b-58aa-4f51-9153-f33968161a8b"
+}

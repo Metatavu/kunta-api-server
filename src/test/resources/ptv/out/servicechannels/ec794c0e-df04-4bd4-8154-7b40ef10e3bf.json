@@ -1,0 +1,44 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "http://www.naantali.fi/opetus_ja_koulutus/aamu_ja_iltapaivatoiminta/fi_FI/hakeminen/",
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "3d7ef99e-b375-4ddc-b185-0267e83e483c",
+      "name" : "Perusopetuksen aamu- ja iltapäivätoiminta"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Hakeminen Naantalin aamu- ja iltapäivätoimintaan",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Saat verkkosivulta tietoa siitä, miten Naantalin aamu- ja iltapäivätoimintaan haetaan.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Saat verkkosivulta tietoa siitä, miten Naantalin aamu- ja iltapäivätoimintaan haetaan.",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "ec794c0e-df04-4bd4-8154-7b40ef10e3bf"
+}

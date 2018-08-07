@@ -1,0 +1,147 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "1",
+    "url" : "http://www.pohjanmaanmuseo.fi/?page=VANHAN+VAASAN+MUSEO",
+    "value" : "Vanhan Vaasan museon verkkosivut",
+    "language" : "fi"
+  }, {
+    "orderNumber" : "1",
+    "url" : "http://www.pohjanmaanmuseo.fi/?page=GAMLA+VASA+MUSEUM",
+    "value" : "Gamla Vasa museum",
+    "language" : "sv"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Kauppiaankatu",
+        "language" : "fi"
+      }, {
+        "value" : "Köpmansgatan",
+        "language" : "sv"
+      } ],
+      "streetNumber" : "10",
+      "postalCode" : "65380",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : null,
+      "additionalInformation" : [ ],
+      "latitude" : "7004617.684",
+      "longitude" : "233562.909",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "sv", "fi" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "3c746357-4921-4214-8ce0-025e729dfb70",
+      "name" : "Museopalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Fax",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : null,
+    "isFinnishServiceNumber" : true,
+    "number" : null,
+    "language" : "sv"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Pohjanmaan museo",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63253800",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Österbottens museum",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63253800",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Vanhan Vaasan museo",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Gamla Vasa museum",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Vanhan Vaasan museo sijaitsee historiallisesti merkittävällä alueella Vanhassa Vaasassa.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Vanhan Vaasan museo sijaitsee historiallisesti merkittävällä alueella Vanhassa Vaasassa. Museo on avoinna kesäisin ja sen yhteydessä toimii kesäaikaan myös kahvila. \n\nLue lisää Vanhan Vaasan museon toiminnasta ja katso aukioloajat Pohjanmaan museon verkkosivuilta.\n",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Gamla Vasa museum ligger på ett historiskt betydelsefullt område i Gamla Vasa. Museet är öppet på somrarna och då fungerar där också ett kafé.  \n\nLäs mera om verksamheten i Gamla Vasa museum och se öppettiderna på Österbottens museums webbsidor.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Gamla Vasa museum ligger på ett historiskt betydelsefullt område i Gamla Vasa.",
+    "type" : "Summary"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "c0320952-f50a-4513-8242-1626c605b4d3"
+}

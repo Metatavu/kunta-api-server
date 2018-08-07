@@ -1,0 +1,96 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "",
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "09201a18-7e59-4245-9b62-d9589b33d275",
+      "name" : "Kulttuurikaruselli K-65"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "400668197",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "400668197",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Kulttuurisuunnittelija - Kulttuurikeskus",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Kulturplanerare - Kulturcentret",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "Phone",
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "Kulturcentrets kulturplanerare svarar för ärenden som gäller kulturservice för barn, seniorer och specialgrupper. Kulturplaneraren fungerar som Kulturkasernens kontaktperson samt ansvarar för produktionen av Konstens natt och för samarbetet med olika kulturaktörer. Du kan ta kontakt med kulturplaneraren per telefon eller e-post leena.nyqvist@vasa.fi.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Kulttuurikeskuksen kulttuurisuunnittelija vastaa lasten, ikäihmisten ja erityisryhmien kulttuuripalveluihin liittyvistä asioista. Kulttuurisuunnitelija toimii Kulttuurikasarmin yhteyshenkilönä, vastaa Taiteiden yön tuottamista sekä yhteistyöstä eri kulttuuritoimijoiden kanssa. Kulttuurisuunnittelijaan voit olla yhteydessä puhelimitse tai sähköpostilla leena.nyqvist@vaasa.fi.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Kulttuurikeskuksen kulttuurisuunnittelija vastaa lasten, ikäihmisten ja erityisryhmien kulttuuripalveluihin liittyvistä asioista.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Kulturcentrets kulturplanerare svarar för ärenden som gäller kulturservice för barn, seniorer och specialgrupper.",
+    "type" : "Summary"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "a36cb4c8-5a6f-46a7-a346-cb43eb3791c8"
+}

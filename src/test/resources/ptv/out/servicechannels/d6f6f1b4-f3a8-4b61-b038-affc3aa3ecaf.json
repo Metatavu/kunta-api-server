@@ -1,0 +1,72 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/node/13291/",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/sv/node/13291/",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "8433ea3c-30f5-4393-970b-123511adf7e2",
+      "name" : "Suomen tai ruotsin opetus toisena kielenä"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "9614cf83-4bc0-4a41-8fd6-31477e12e17a",
+      "name" : "Kieli- ja kulttuuriryhmien opetus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Kieli- ja kulttuuriryhmien opetus",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Undervisning för språk- och kulturgrupper",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Vaasan kaupungin sivuilta löydät tietoa maahanmuuttajataustaisten oppilaiden opetuksesta Vaasan perusopetuksessa.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan kaupungin sivuilta löydät tietoa maahanmuuttajataustaisten oppilaiden opetuksesta Vaasan perusopetuksessa.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "På Vasa stads sidor finns information om undervisningen för elever med invandrarbakgrund inom Vasas grundläggande utbildning.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "På Vasa stads sidor finns information om undervisningen för elever med invandrarbakgrund inom Vasas grundläggande utbildning. \n",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "d6f6f1b4-f3a8-4b61-b038-affc3aa3ecaf"
+}

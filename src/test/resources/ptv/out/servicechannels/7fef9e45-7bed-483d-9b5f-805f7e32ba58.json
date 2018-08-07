@@ -1,0 +1,218 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/node/2781/",
+    "value" : "Varhaiskasvatus",
+    "language" : "fi"
+  }, {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/node/2781/",
+    "value" : "Varhaiskasvatus",
+    "language" : "en"
+  }, {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/sv/node/2781/",
+    "value" : "Småbarnsfostran",
+    "language" : "sv"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Raastuvankatu",
+        "language" : "fi"
+      }, {
+        "value" : "Raastuvankatu",
+        "language" : "en"
+      }, {
+        "value" : "Raastuvankatu",
+        "language" : "sv"
+      } ],
+      "streetNumber" : "29",
+      "postalCode" : "65100",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : null,
+      "additionalInformation" : [ {
+        "value" : null,
+        "language" : "fi"
+      } ],
+      "latitude" : "7007332.848",
+      "longitude" : "228356.547",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "sv", "fi" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "73af8c06-6a6b-4780-9164-8e8872eecc9c",
+      "name" : "Kunnallinen päiväkotihoito"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "82b0256e-536b-4ae7-9b31-135e0e00c53d",
+      "name" : "Avoin varhaiskasvatus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "ce3f03b6-2083-4d89-a5a0-2466d0f90577",
+      "name" : "Varhaiskasvatuksen vuorohoito"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "d3f16063-3409-492f-970a-24b796e536a3",
+      "name" : "Yksityinen päiväkotihoito"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "fc1b8a9e-58b7-4671-a7ac-de1d280d3bc8",
+      "name" : "Eri kieli- ja kulttuuritaustaisten lasten varhaiskasvatus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "en",
+    "value" : "Customer services of the early childhood education",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Småbarnspedagogikens kundbetjäning",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Varhaiskasvatuksen asiakaspalvelu",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ {
+    "serviceHourType" : "DaysOfTheWeek",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ {
+      "value" : null,
+      "language" : "fi"
+    } ],
+    "openingHour" : [ {
+      "dayFrom" : "Monday",
+      "dayTo" : "",
+      "from" : "09:00:00",
+      "to" : "15:00:00"
+    }, {
+      "dayFrom" : "Tuesday",
+      "dayTo" : "",
+      "from" : "09:00:00",
+      "to" : "15:00:00"
+    }, {
+      "dayFrom" : "Wednesday",
+      "dayTo" : "",
+      "from" : "09:00:00",
+      "to" : "15:00:00"
+    }, {
+      "dayFrom" : "Thursday",
+      "dayTo" : "",
+      "from" : "09:00:00",
+      "to" : "15:00:00"
+    }, {
+      "dayFrom" : "Friday",
+      "dayTo" : "",
+      "from" : "09:00:00",
+      "to" : "15:00:00"
+    } ]
+  } ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "en",
+    "value" : "The customer services of the early childhood education gives advice and guidance among others about applying for a day-care place and entering the pre-school education and furthermore also answers questions about day-care fees and targeted allowance. ",
+    "type" : "Description"
+  }, {
+    "language" : "en",
+    "value" : "The customer services of the early childhood education gives advice and guidance among others about applying for a day-care place and entering the pre",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Småbarnspedagogikens kundbetjäning ger råd och handleder i ärenden som hänför sig till ansökan om dagvård och anmälan till förskoleundervisning.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Varhaiskasvatuksen asiakaspalvelu neuvoo ja opastaa muun muassa päivähoitopaikan hakemiseen ja esiopetukseen ilmoittautumiseen liittyvissä asioissa.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Varhaiskasvatuksen asiakaspalvelu neuvoo ja opastaa muun muassa päivähoitopaikan hakemiseen ja esiopetukseen ilmoittautumiseen liittyvissä asioissa, päivähoitomaksuja koskevissa kysymyksissä ja täsmälisää koskevissa asioissa. ",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Småbarnspedagogikens kundbetjäning ger råd och handleder i ärenden som hänför sig till ansökan om dagvård och anmälan till förskoleundervisning samt i frågor som gäller dagvårdsavgifter och det selektiva tillägget.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "7fef9e45-7bed-483d-9b5f-805f7e32ba58"
+}

@@ -1,0 +1,61 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://www.youtube.com/channel/UC_SlcVMtfLOTg6BW_45HLQg",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://www.youtube.com/channel/UC_SlcVMtfLOTg6BW_45HLQg",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "819bed3d-6147-4a22-a454-eac010516ce7",
+      "name" : "Kansalaisopistot"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Vasa Arbiksen YouTube-kanava",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Vasa Arbis Youtubekanal",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Vasa Arbiksen YouTube-kanavalta voit seurata Arbiksen toimintaa videoiden kautta. ",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Vasa Arbiksen YouTube-kanavalta voit seurata Arbiksen toimintaa videoiden kautta.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "På Vasa Arbis Youtubekanal kan du följa med Arbis verksamhet via videor.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "På Vasa Arbis Youtubekanal kan du följa med Arbis verksamhet via videor.\n",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "0e9ea93d-c839-496d-8640-bfe016adfd9d"
+}

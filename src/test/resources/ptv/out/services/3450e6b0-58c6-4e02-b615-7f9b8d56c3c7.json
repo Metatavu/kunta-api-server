@@ -1,0 +1,499 @@
+{
+  "sourceId" : null,
+  "keywords" : [ {
+    "value" : "terkkari",
+    "language" : "fi"
+  }, {
+    "value" : "kouluterkka",
+    "language" : "fi"
+  } ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Koulu- ja opiskelijaterveydenhuolto",
+      "language" : "fi"
+    }, {
+      "value" : "Skol- och studerandehälsovården",
+      "language" : "sv"
+    }, {
+      "value" : "Pupil and student health care",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Till denna serviceundergrupp hör hälsovårdstjänster för skolelever och studeranden på heltid. Till gruppen hör inte socialtjänster för dessa grupper.",
+      "language" : "sv"
+    }, {
+      "value" : "Tähän alapalveluluokkaan kuuluvat koululaisille ja kokopäivisille opiskelijoille tarkoitetut terveyspalvelut. Luokkaan eivät kuulu näille ryhmille suunnatut sosiaalipalvelut.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains health services intended for pupils and full-time students. It does not include social services targeted at these groups.",
+      "language" : "en"
+    } ],
+    "code" : "P5.9",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1047",
+    "parentId" : "76ca210c-5183-4d41-b796-50612d5930c7",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1038"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "9cc8f0f4-38ca-44d6-87d8-d2004f57c863",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "3450e6b0-58c6-4e02-b615-7f9b8d56c3c7",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "066380b4-9766-4be7-a977-55f1a9500bcb",
+      "name" : "Kouluterveydenhoitaja - Variskan koulu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "12395c35-dc80-41bd-a4a6-4eb60f6cadd7",
+      "name" : "Kouluterveydenhoitaja - Isolahden koulu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "1595c846-71da-4079-ad35-bea9633b48c8",
+      "name" : "Kouluterveydenhoitaja - Länsimetsän koulu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "213f9a9f-a933-4ca0-9572-e53266e6b6a5",
+      "name" : "Kouluterveydenhoitaja - Sundom skola"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "270d2a70-ec98-4499-87f5-9639a77bf8bc",
+      "name" : "Kouluterveydenhoitaja - Hietalahden koulu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "39896a28-e099-46aa-9c83-bd1e0641f4ff",
+      "name" : "Kouluterveydenhoitaja - Köpingin koulu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "4cda548d-df5a-47c1-adae-2618e0f04d80",
+      "name" : "Kouluterveydenhoitaja - Steinerkoulu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "5c8add1f-d90b-4f97-82a3-7f360e4292f6",
+      "name" : "Kouluterveydenhuollon eTerveyspalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "5e2bccf1-55bd-4ffb-8b73-03acce488cb9",
+      "name" : "Kouluterveydenhoitaja - Vöyrinkaupungin koulu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "664443b7-e991-43f5-b25a-379eac2b5f2a",
+      "name" : "Terveydenhuollon sähköisen asioinnin sopimus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "68a4109a-73ea-40cc-99ff-807ba8a7eae8",
+      "name" : "Kouluterveydenhoitaja - Tervajoen koulu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "6e73666c-fe27-410f-9378-e579db96d522",
+      "name" : "Kouluterveydenhoitaja - Savilahden yhtenäiskoulu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "797453bc-94aa-4da2-a154-fb22654095ea",
+      "name" : "Kouluterveydenhoitaja - Borgaregatans skola"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "a2d137f1-1645-44b0-808c-f905692eef5d",
+      "name" : "Kouluterveydenhoitaja - Merenkurkun koulu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "a69c200d-9e0c-4220-b0ea-f29bc123fc61",
+      "name" : "Kouluterveydenhoitaja - Haga skola"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "acb4e032-de4b-4d6c-ac6f-14fd1cce2763",
+      "name" : "Kouluterveydenhoitaja - Vanhan Vaasan koulu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "cd7add65-4e30-4edd-8567-3f9ed50bbe48",
+      "name" : "Kouluterveydenhoitaja - Nummen koulu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "cf8db885-4f37-4770-af5a-3a0837982c82",
+      "name" : "Kouluterveydenhoitaja - Onkilahden koulu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "d17d3fb9-bdd0-4eff-b8e3-5b650fb7d977",
+      "name" : "Kouluterveydenhoitaja - Vasa övningsskola"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "df8a3afe-cd8e-4ae9-9830-da66222bd26d",
+      "name" : "Kouluterveydenhoitaja - Vikinga skola"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "e2ac4a75-3677-4e4d-a03a-6c38dcd79142",
+      "name" : "Kouluterveydenhoitaja - Kristillinen koulu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "e8977e15-60cd-4797-9b5f-d1fbe912bd63",
+      "name" : "Kouluterveydenhoitaja - Merikaarron koulu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "ec1379cf-30a0-4a63-870a-9aaba539e8b4",
+      "name" : "Kouluterveydenhoitaja - Gerby skola"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "f3843fdd-0743-494e-b5fb-01d46376ce08",
+      "name" : "Kouluterveydenhoitaja - Keskuskoulu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "fc0425bb-0433-4d2f-ab4e-86c4fa36db56",
+      "name" : "Kouluterveydenhoitaja - Huutoniemen koulu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : "Kun lapsi aloittaa koulun, hän siirtyy automaattisesti kouluterveyshuollon piiriin.",
+    "language" : "fi"
+  }, {
+    "value" : "Då barnet börjar skolan, övergår det automatiskt till skolhälsovården.",
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Kouluterveydenhuollon palvelut",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Skolhälsovårdstjänster",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Kouluterveydenhuolto",
+    "type" : "AlternativeName"
+  }, {
+    "language" : "sv",
+    "value" : "Skolhälsovården",
+    "type" : "AlternativeName"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "skolhälsovård",
+      "language" : "sv"
+    }, {
+      "value" : "kouluterveydenhuolto",
+      "language" : "fi"
+    }, {
+      "value" : "school health care",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p2223",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p2062"
+  }, {
+    "name" : [ {
+      "value" : "kouluterveydenhoitajat",
+      "language" : "fi"
+    } ],
+    "code" : null,
+    "ontologyType" : "TERO",
+    "uri" : "http://www.yso.fi/onto/koko/p53102",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p32854"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Kouluterveydenhuolto on tarkoitettu peruskoululaisille ja heidän perheilleen. Se on lakisääteistä ja maksutonta perusterveydenhuollon terveyttä edistävää toimintaa. Toiminta on luottamuksellista. Työtä tehdään yhteistyössä vanhempien ja huoltajien kanssa sekä oppilashuolto- ja opetushenkilöstön ja muiden tarvittavien tahojen kanssa.\n\nKouluterveydenhuoltoon kuuluvat:\n\n* oppilaan kasvun ja kehityksen seuranta sekä terveyden ja hyvinvoinnin edistäminen\n* vanhempien ja huoltajien kasvatustyön tukeminen\n* oppilaan tuen ja tutkimusten tarpeen varhainen tunnistaminen sekä tarvittaessa jatkotutkimuksiin ja -hoitoon ohjaaminen\n* moniammatillinen oppilashuoltotyö\n* kouluympäristön terveellisyyden ja turvallisuuden sekä kouluyhteisön hyvinvoinnin edistäminen ja seuranta\n* suun terveydenhuolto\n\nKouluterveydenhoitajaan voi ottaa yhteyttä, jos haluaa keskustella\n\n* kasvamisesta ja murrosiästä\n* ravitsemukseen ja syömiseen liittyvistä asioista\n* lepoon, uneen ja liikuntaan liittyvistä asioista\n* oppilaan päihteiden käytöstä\n* kaverisuhteista, kiusaamisesta\n* seurusteluun ja seksuaalisuuteen liittyvistä asioista\n* kun tarvitsee apua pitkäaikaissairauden hoitoon ja koulunkäynnin/opiskelun yhteensovittamisessa\n* kun jaksaminen huolestuttaa\n* kun tarvitsee neuvoa terveyspalveluiden käytöstä\nKouluterveydenhuoltoon kuuluvat vuosittaiset terveystarkastukset, joista 1., 5. ja 8. luokan terveystarkastukset ovat laajoja.\n\nMuissa lääkärinhoitoa vaativissa asioissa varaa aika omalta terveysasemalta\n* vapaa-ajan tapaturmat\n* pitkäaikaissairauksien seuranta (esim. astma)\n* akuutit sairaudet (esim. korva- ja silmäsairaudet)\n",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Kouluterveydenhuollon tarkoituksena on seurata oppilaan kasvua ja kehitystä ja edistää hänen terveyttään ja hyvinvointiaan.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : "Skolhälsovården är avsedd för grundskolbarn och deras familjer. Den är lagstadgad och avgiftsfri verksamhet inom primärhälsovården som främjar hälsan. Verksamheten är konfidentiell. Arbete utförs i samarbete med föräldrar och vårdnadshavare samt med elevvårds- och undervisningspersonal och andra behövliga parter.\n\nI skolhälsovården ingår\n\n* uppföljning av elevens uppväxt och utveckling samt främjande av hälsa och välmående\n* stödande av föräldrar och målsmän i fostringsarbetet\n* känna igen behov till stöd och undersökning av eleven samt vid behov handledning till fortsatt undersökning och -vård\n* yrkesövergripande elevvårdsarbete\n* främjande och uppföljning av en hälsosam och trygg skolmiljö\n* munhälsovård\nDu kan kontakta skolhälsovårdaren, ifall du önskar prata om\n* tillväxt och pubertet\n* ärenden som berör näring och ätande\n* ärenden som berör vila, sömn och motion\n* elevens användning av rusmedel\n* kamraförhållande och mobbning\n* ärenden som berör sällskapande och sexualitet\n* om du behöver hjälp med vården av långvariga sjukdomar och anpassande av vård och skolgång/studier\n* då du är oroad över din ork\n* då du behöver rådgivning i användning av hälsovårdsservice\nI skolhälsovården ingår årliga hälsogranskningar, varav hälsogranskningarna på årskurs 1, 5 och 8 är omfattande.\n\nI övriga ärenden som kräver läkarvård bör du boka en tid från den egna hälsostationen \n\n* fritidsolycksfall \n* uppföljning av långvariga sjukdomar (t.ex. astma) \n* akuta sjukdomar (t.ex. öron- och ögonsjukdomar",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "I skolhälsovården ingår uppföljning av elevens uppväxt och utveckling samt främjande av hälsa och välmående.",
+    "type" : "Summary"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

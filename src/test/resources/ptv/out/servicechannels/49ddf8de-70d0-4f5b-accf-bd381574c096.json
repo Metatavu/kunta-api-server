@@ -1,0 +1,44 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "http://www.naantali.fi/osallistu_ja_vaikuta/kuntalaisaloite/fi_FI/tehdytkuntalaisaloitteet/",
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "a7f0acae-9d7f-4e5c-ba34-1f3274bf3276",
+      "name" : "Kuntalaisaloite"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Tehdyt kuntalaisaloitteet vuodesta 2010 (Naantali)",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Verkkosivuilla on lista kuntalaisaloitteista, jotka ovat parhaillaan käsittelyssä tai joista on tehty päätös.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Verkkosivuilla on lista kuntalaisaloitteista, jotka ovat parhaillaan käsittelyssä tai joista on tehty päätös. Löydät sivuilta aloitteen otsikon, saapumispäivämäärän, käsittelijän, tilan ja päätöspäivämäärän.",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "49ddf8de-70d0-4f5b-accf-bd381574c096"
+}

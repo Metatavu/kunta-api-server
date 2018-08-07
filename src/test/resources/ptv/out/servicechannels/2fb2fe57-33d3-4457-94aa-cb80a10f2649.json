@@ -1,0 +1,130 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "attachments" : [ ],
+  "languages" : [ ],
+  "deliveryAddresses" : [ {
+    "subType" : "PostOfficeBox",
+    "postOfficeBoxAddress" : {
+      "postOfficeBox" : [ {
+        "value" : "PL 241",
+        "language" : "fi"
+      }, {
+        "value" : "PB 241",
+        "language" : "sv"
+      } ],
+      "postalCode" : "65100",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ ]
+    },
+    "streetAddress" : null,
+    "deliveryAddressInText" : null,
+    "receiver" : [ {
+      "value" : "Vaasan kaupunki / Sosiaali- ja terveystoimi - Tietosuojavastaava",
+      "language" : "fi"
+    }, {
+      "value" : "Vasa stad/social- och hälsosektorn / Dataskyddsansvarige",
+      "language" : "sv"
+    } ]
+  } ],
+  "supportPhones" : [ ],
+  "formIdentifier" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "437bf7ac-6b1a-479c-b20c-395562b59e7b",
+      "name" : "Lokitietojen saaminen"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "channelUrls" : [ {
+    "language" : "fi",
+    "value" : "https://www.vaasa.fi/sites/default/files/lokitietojen_tarkastuspyynto_2015_lomake.pdf",
+    "type" : "PDF"
+  }, {
+    "language" : "sv",
+    "value" : "https://www.vaasa.fi/sites/default/files/lokitietojenselvityspyynto2017_sve.pdf",
+    "type" : "PDF"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Sosiaali- ja terveystoimen lokitietojen tarkistuspyyntö",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Begäran om insyn i logguppgifter",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "PrintableForm",
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "Begäran om insyn i logguppgifter.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Begäran om insyn i logguppgifter.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Sosiaali- ja terveystoimen lokitietojen tarkistuspyyntölomake.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Sosiaali- ja terveystoimen lokitietojen tarkistuspyyntölomake.",
+    "type" : "Summary"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "2fb2fe57-33d3-4457-94aa-cb80a10f2649"
+}

@@ -1,0 +1,129 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Vöyrinkatu",
+        "language" : "fi"
+      }, {
+        "value" : "Vörågatan",
+        "language" : "sv"
+      } ],
+      "streetNumber" : "2 B",
+      "postalCode" : "65100",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ {
+        "value" : "2. kerros",
+        "language" : "fi"
+      }, {
+        "value" : null,
+        "language" : "sv"
+      } ],
+      "latitude" : "7008805.837",
+      "longitude" : "228596.756",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi", "sv", "en" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "b73b12e5-9799-4452-b9e4-407dc1499162",
+      "name" : "Perhekeskuksen palvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : "Perhekeskuskoordinaattori",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "405323566",
+    "language" : "fi"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Perhekeskus",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Familjecentret",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "Familjecentrets verksamhet byggs upp kring en tanke- och verksamhetsmodell som baserar sig på samarbete.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Perhekeskus on yhteistyölle rakentuva ajattelu- ja toimintamalli, jonka tavoitteena on vahvistaa lapsiperheiden hyvinvointia, vanhempien parisuhdetta ja vanhemmuutta. ",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Perhekeskus tarjoaa avointa toimintaa lapsiperheille ja toimii käyntiin panevana voimana.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "En vettig verksamhet utgår alltid från invånarna. Exempel på invånarverksamhet är bl.a. plantloppis, morgongrötring, bastulänk, hobbykrets, sommartävling, vinterjippo, motionscirkel, minnespromenad, städdag, dagpromenad i grupp… Jag hjälper er gärna i starten!\n\nVasa familjecenter är med i olika slag av verksamhet, till exempel Föräldrar på stan, olika klubbar, grupper och evenemang, som hjälper kommuninvånarna att utveckla samhörigheten, skapa sociala kontakter, få kamratstöd och i att öka människornas välmående.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "4569ea04-2153-496b-923a-762e1ea78ec8"
+}

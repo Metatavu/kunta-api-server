@@ -1,0 +1,243 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Liikenne",
+      "language" : "fi"
+    }, {
+      "value" : "Trafik",
+      "language" : "sv"
+    }, {
+      "value" : "Transport",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "This service class contains public transport, registration, tax and permit issues related to vehicles, professional transport and traffic safety from the service point of view. Tourism and map services are excluded from this class and have their own service classes.",
+      "language" : "en"
+    }, {
+      "value" : "I denna servicegrupp behandlas kollektivtrafik, registrerings-, beskattnings- och tillståndsärenden för fordon, yrkestrafik och trafiksäkerhet ur ett serviceperspektiv. Rese- och karttjänster ingår inte i denna grupp utan behandlas i egna servicegrupper.",
+      "language" : "sv"
+    }, {
+      "value" : "Tässä palveluluokassa käsitellään palvelujen näkökulmasta julkista liikennettä, ajoneuvojen rekisteri-, verotus- ja lupa-asioita, ammattiliikennettä sekä liikenneturvallisuutta. Matkailu- ja karttapalvelut eivät kuulu tähän luokkaan vaan ne käsitellään omissa palveluluokissaan.",
+      "language" : "fi"
+    } ],
+    "code" : "P16",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1142",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "9e9743e8-98e6-4a28-b992-c5bd3e7ad9d3",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "e89d0d03-048d-4a38-ae3b-7fc02ac1ce4c",
+      "name" : "Liikennesuunnittelun verkkosivut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : null,
+  "serviceNames" : [ {
+    "language" : "sv",
+    "value" : "Trafikplanering",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Liikennesuunnittelu",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "gator",
+      "language" : "sv"
+    }, {
+      "value" : "kadut",
+      "language" : "fi"
+    }, {
+      "value" : "streets",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p34030",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p33793"
+  }, {
+    "name" : [ {
+      "value" : "liikenne",
+      "language" : "fi"
+    }, {
+      "value" : "trafik",
+      "language" : "sv"
+    }, {
+      "value" : "traffic",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p71582",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p35142"
+  }, {
+    "name" : [ {
+      "value" : "liikennesuunnittelu (yhdyskuntasuunnittelu)",
+      "language" : "fi"
+    }, {
+      "value" : "trafikplanering",
+      "language" : "sv"
+    }, {
+      "value" : "transport planning",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p33409",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p35989"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "sv",
+    "value" : "Trafikplanering innebär planering av trafikleder och -regleringar så att de blir smidiga och trygga.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Trafikplanering innebär planering av trafikleder och -regleringar så att de blir smidiga och trygga. I arbetet ingår bl.a. trafikregleringar och tillståndsärenden samt skötsel av att trafikljusen fungerar. Trafikundersökningar utgör en del av planeringen.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Liikennesuunnittelu tarkoittaa liikenneväylien ja -järjestelyjen suunnittelua sujuviksi ja turvallisiksi. Työ pitää sisällään muun muassa liikennejärjestelyitä ja lupa-asioita sekä liikennevalojen toimivuudesta huolehtimista. Liikennetutkimukset ovat osa suunnittelua.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Liikennesuunnittelu tarkoittaa liikenneväylien ja -järjestelyjen suunnittelua sujuviksi ja turvallisiksi.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

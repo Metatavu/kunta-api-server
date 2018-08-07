@@ -1,0 +1,44 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "http://www.naantali.fi/ruokapalvelut/koulujen_listat/fi_FI/kouluruokailu/_files/99799951350038756/default/Ruoka-aineallergia%20koulussa.pdf",
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "f42c6e4a-d681-4c6c-8fe5-53e793144670",
+      "name" : "Ruokailu päiväkodeissa, esikoulussa ja kouluissa"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Ruoka-aineallergia koulussa",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Toimintaohjeet ruoka-aineallergioiden hoitamisesta koulussa. Ohjeet huoltajille, kouluterveydenhoitajalle, lääkärille, opettajalle ja keittiöhenkilökunnalle.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Toimintaohjeet ruoka-aineallergioiden hoitamisesta koulussa.",
+    "type" : "Summary"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2018-04-13T09:28:24.227951",
+  "id" : "03d45cd0-65f1-494b-a354-5a17de9f52cf"
+}

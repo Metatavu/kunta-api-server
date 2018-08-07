@@ -1,0 +1,61 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://www.instagram.com/vasaarbis/",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://www.instagram.com/vasaarbis/",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "819bed3d-6147-4a22-a454-eac010516ce7",
+      "name" : "Kansalaisopistot"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Vasa Arbiksen Instagram-tili",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Vasa Arbis Instagramkonto",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Vasa Arbiksen Instagram-tilin kautta voit seurata Arbiksen toimintaa.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "På Vasa Arbis Instagramkonto kan du följa med Arbis verksamhet.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Vasa Arbiksen Instagram-tilin kautta voit seurata Arbiksen toimintaa. ",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "På Vasa Arbis Instagramkonto kan du följa med Arbis verksamhet. \n",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "ae1ba77b-aae4-4b2e-a7ed-12a1fc22b856"
+}

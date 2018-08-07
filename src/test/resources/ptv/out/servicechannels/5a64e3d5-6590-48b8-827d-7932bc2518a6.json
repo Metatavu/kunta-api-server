@@ -1,0 +1,160 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://kirjasto.vaasa.fi/fi/library-page/kirjastoauto-r%C3%B6lli?refId=XZKkjS",
+    "value" : "Kirjastoauto Rölli",
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://kirjasto.vaasa.fi/sv/library-page/bokbussen-r%C3%B6lli?culture=sv",
+    "value" : "Bokbussen Rölli",
+    "language" : "sv"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Biblioteksgatan",
+        "language" : "sv"
+      }, {
+        "value" : "Kirjastonkatu",
+        "language" : "fi"
+      } ],
+      "streetNumber" : "13",
+      "postalCode" : "65100",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ {
+        "value" : "Pääkirjaston osoite",
+        "language" : "fi"
+      } ],
+      "latitude" : "7008060.208",
+      "longitude" : "228243.393",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "435f2ae4-fbb4-416f-9255-716c49c3b228",
+      "name" : "Kirjastopalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "407403030",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63253530",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "407403030",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ {
+    "value" : "kirjasto.kirjastoautot@vaasa.fi",
+    "language" : "fi"
+  }, {
+    "value" : "kirjasto.kirjastoautot@vaasa.fi",
+    "language" : "sv"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "sv",
+    "value" : "Bokbussen Rölli",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Kirjastoauto Rölli",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Osa kirjastoauton kokoelmasta sijaitsee Vaasan pääkirjaston varastossa, autossa on mukana lähinnä uudempaa aineistoa. Lisätietoa kirjastoauton verkkosivulta. ",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "En del av bokbussens samling finns i lager vid Vasa huvudbibliotek, i bilen finns snarast nyare material. Mer information för bokbussen finns på bokbussens webbsida. ",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Bokbussen Rölli åker runt till skolor, daghem och i förorterna.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Kirjastoauto Rölli kiertää kouluilla, päiväkodeilla ja lähiöissä.",
+    "type" : "Summary"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2018-01-17T06:48:10.100346",
+  "id" : "5a64e3d5-6590-48b8-827d-7932bc2518a6"
+}

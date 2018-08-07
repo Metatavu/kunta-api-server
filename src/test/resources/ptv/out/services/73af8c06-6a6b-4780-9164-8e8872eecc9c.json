@@ -1,0 +1,793 @@
+{
+  "sourceId" : null,
+  "keywords" : [ {
+    "value" : "daghemsvård",
+    "language" : "sv"
+  }, {
+    "value" : "kommunala daghem",
+    "language" : "sv"
+  } ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Lasten päivähoito",
+      "language" : "fi"
+    }, {
+      "value" : "Barndagvård",
+      "language" : "sv"
+    }, {
+      "value" : "Day-care for children",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Till denna serviceundergrupp hör barnets rättigheter i anslutning till dagvård för små barn, förutsättningar för dagvård, ärendehanteringstjänster och ansökningsförfaranden, olika genomföringsformer och servicekanaler för dagvård, vårdavgifter och bidrag i anslutning till dem.",
+      "language" : "sv"
+    }, {
+      "value" : "Tähän alapalveluluokkaan kuuluvat pienten lasten päivähoitoon liittyvät lapsen oikeudet, päivähoidon saamisen edellytykset, asiointipalvelut ja hakumenettelyt, erilaiset päivähoidon toteuttamismuodot ja palvelukanavat, hoidon maksut ja niihin liittyvät taloudelliset tuet.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains a child’s rights related to day-care for young children, eligibility criteria, e-services and application procedures associated with day-care, different forms and service channels of day-care provision, fees charged for day-care and financial support related to the fees.",
+      "language" : "en"
+    } ],
+    "code" : "P3.4",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1017",
+    "parentId" : "77af99fa-93eb-4de6-ac83-1b161a961263",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1013"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "e4315af5-abcb-45a0-ab00-688e7ecd5313",
+  "serviceVouchers" : [ {
+    "orderNumber" : 0,
+    "value" : "Palveluseteli varhaiskasvatuksessa",
+    "language" : "fi",
+    "url" : "https://www.vaasa.fi/palveluseteli-varhaiskasvatuksessa",
+    "additionalInformation" : "Varhaiskasvatuksessa otetaan palveluseteli käyttöön 1.8.2018 alkaen."
+  }, {
+    "orderNumber" : 0,
+    "value" : "Servicesedel inom småbarnspedagogiken",
+    "language" : "sv",
+    "url" : "https://www.vaasa.fi/sv/servicesedel-inom-smabarnspedagogiken",
+    "additionalInformation" : "Servicesedel inom småbarnspedagogiken tas i bruk 1.8.2018."
+  } ],
+  "modified" : "2018-05-25T06:33:42.527329",
+  "id" : "73af8c06-6a6b-4780-9164-8e8872eecc9c",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "02ca738b-ca02-471f-8ec9-9d18cbe1db6e",
+      "name" : "Päivähoitopaikan siirtohakemus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "03dd41be-3ede-4486-add7-828c987ad8c1",
+      "name" : "Villityksen päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "0df98722-4a39-4ee2-b5bb-03893d90b10b",
+      "name" : "Isolahden päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "18c4bdc4-e241-4b31-ac04-130d76267f6e",
+      "name" : "Björkdungens daghem"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "1aa80ff7-cb99-4c62-88de-9be17e26bb33",
+      "name" : "Purolan päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "2d0c9e48-67ea-45d1-892a-558ab2ca0e13",
+      "name" : "Kappelinmäen päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "2e8d4020-5177-4954-99d9-0a6e5b7741b3",
+      "name" : "Haga daghem"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "389a5f90-1d08-4abb-a852-fccddc081f14",
+      "name" : "Tuuliniityn päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e98a233-a02e-4f20-bbb0-07c95e7d32a5",
+      "name" : "Tervajoen päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3f38322b-9052-4942-96bd-3f377d947dab",
+      "name" : "Esikon päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "41409b25-4cb0-4c63-a068-66fb078558aa",
+      "name" : "Päivähoitopaikan irtisanominen"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "52ef1239-f75a-4d0a-8c93-53fc0fbb1240",
+      "name" : "Hemstrands daghem"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "686fc94c-ffdd-45a7-99b5-5bbdc903d7cf",
+      "name" : "Varhaiskasvatuksen verkkosivut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "709bce4f-1f80-428c-8f33-b8810fd73746",
+      "name" : "Inkerinpuiston päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "76133a5f-ce96-4346-9cb3-435f19417265",
+      "name" : "Ristinummen päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "7742a6b3-5aba-4af4-9772-b2b5bdefac30",
+      "name" : "Varhaiskasvatuksen palveluohjaus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "7dd72461-1178-46ef-8cf1-8c48b72d8955",
+      "name" : "Paakarin päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "7fef9e45-7bed-483d-9b5f-805f7e32ba58",
+      "name" : "Varhaiskasvatuksen asiakaspalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "877655b0-b148-4840-a078-ff8370f5e728",
+      "name" : "Sundom daghem"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "8810643e-3117-4ff1-b903-7379b381b157",
+      "name" : "Huvikummun päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "88fa54a5-1313-46f7-af90-b8ff2f7c8808",
+      "name" : "Länsimetsän päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "8ae9e0be-ec92-47ef-bb45-6eb9bdb7f3a8",
+      "name" : "Lumikin päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "8c79c916-ac58-4268-8fe6-81a8e8749dd3",
+      "name" : "Metsäkallion päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "8f605f3c-39e9-4676-8224-79e0356aadc8",
+      "name" : "Malmöntalon päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "97333818-d20a-457d-835f-6954738c3d7c",
+      "name" : "Teeriniemen päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "9743448e-4339-49c6-9654-37418a5e4214",
+      "name" : "Pikkuonnin päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "97d7c3de-cc1d-44b9-914f-c1ee16816e5d",
+      "name" : "Kapteeninkadun päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "998896f5-92e8-4c0f-9ec2-43747416c38f",
+      "name" : "Varhaiskasvatuksen palveluohjaus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "a287b94a-16df-4659-a2e4-435ad8cc6009",
+      "name" : "Varhaiskasvatuksen sähköinen asiointi"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "a6a43f29-3899-4318-841e-3f1f76d06397",
+      "name" : "Pikku Kasarmin päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "ab5a0d3c-f8d9-4c9c-ad7c-3ac1c372a027",
+      "name" : "Klemettilän päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "bd40dcd4-0743-4590-a379-a87e2ebc726e",
+      "name" : "Pukinkulman päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "c2d59ae3-ed79-422a-a7b2-9345c2e5a4a0",
+      "name" : "Taikametsän päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "c5f06103-d223-4562-a1e3-ebd46a518280",
+      "name" : "Satamapuiston päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "c8109e38-62a9-429a-9ef4-a941cb11e334",
+      "name" : "Alkulan päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "c9c073ec-fa65-4469-b1fc-cf5d7bb69b50",
+      "name" : "Päivähoitohakemus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "d16bef47-23e5-4d50-8fcd-6a4e378bf21d",
+      "name" : "Vikinga förskola"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "d2825cc5-9fe7-41e7-af40-4cc334f34fa4",
+      "name" : "Villin lännen päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "da2678fc-2680-470c-9f73-027474dee689",
+      "name" : "Granvikens daghem"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "e072c856-073f-4ef3-b7ab-a5b9768edbd0",
+      "name" : "Gustavsborgs daghem"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "e1213212-9fda-4fef-a03b-7ce06410c5e3",
+      "name" : "Trollbergets daghem"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "e516ec20-363e-49be-8eea-7d2b3cabea5b",
+      "name" : "Suvilahden päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "e7dc767b-9b02-4bce-9c99-cff7a3172b6c",
+      "name" : "Punahilkan päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "ec7b6920-b8cf-4b15-8993-efcbe72aab44",
+      "name" : "Palosaaren päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : true,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  }, {
+    "value" : null,
+    "language" : "en"
+  } ],
+  "languages" : [ "sv", "fi" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : null,
+  "serviceNames" : [ {
+    "language" : "sv",
+    "value" : "Kommunal daghemsvård",
+    "type" : "Name"
+  }, {
+    "language" : "en",
+    "value" : "Municipal day-care",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Kunnallinen päiväkotihoito",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "kunnalliset päiväkodit",
+      "language" : "fi"
+    }, {
+      "value" : "kommunala daghem",
+      "language" : "sv"
+    }, {
+      "value" : "municipal nursery schools",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p69458",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p34607"
+  }, {
+    "name" : [ {
+      "value" : "päiväkotihoito",
+      "language" : "fi"
+    }, {
+      "value" : "dagvård",
+      "language" : "sv"
+    }, {
+      "value" : "nursery school care",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p69116",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p9399"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Lapset ja lapsiperheet",
+      "language" : "fi"
+    }, {
+      "value" : "Children and families with children",
+      "language" : "en"
+    }, {
+      "value" : "Barn och barnfamiljer",
+      "language" : "sv"
+    } ],
+    "code" : "KR1.2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2003",
+    "parentId" : "daff1fb9-9394-49b5-b033-d1d1c7005ab6",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001"
+  }, {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : "Alle 7-vuotiaat lapset voivat saada päiväkotihoitoa kunnan järjestämänä.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan kaupungin päiväkodeissa lapsiryhmät voivat olla alle 3-vuotiaiden tai 3 - 6-vuotiaiden ryhmiä, sisarusryhmiä 1 - 6-vuotiaille, esiopetusryhmiä tai erityispäivähoitoa tarjoavia ryhmiä. Päiväkodit ovat avoinna tavallisimmin klo 6.30 - 17.00. Ilta- , yö- ja viikonloppuhoitoa tarvitseville lapsille hoitoa järjestetään vuorohoitopäiväkoti Punahilkassa.\n\nPäiväkodeissa huolehditaan alle kouluikäisten lasten varhaiskasvatuksesta ja esiopetuksesta, josta vastaa koulutettu henkilökunta. Toiminta on tavoitteellista ja suunnitelmallista huomioiden lapsen iän, yksilöllisyyden sekä erilaiset kehitystarpeet. \n\nPäiväkodeilla voi toiminnassaan olla erilaisia painopistealueita esim. musiikki-, liikunta-, luontokasvatusta. Erityistä tukea tarvitsevien lasten hoidon, kasvatuksen ja opetuksen järjestämisessä asiantuntijana ja tukena toimii erityisvarhaiskasvatus. Lisäksi Vaasassa on mahdollisuus ruotsin kielen kielikylpyopetukseen sekä vieraskieliseen opetukseen (englanti).",
+    "type" : "Description"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : "Undantag är sysselsättning eller studier, då ansöker man om dagvårdplats senast två veckor före vårdbehovet. \nRätten till dagvård börjar då perioden för föräldraledighetspenningen tar slut och slutar då barnet omfattas av läroplikt. \n\nDet primära sättet att ansöka om dagvårdsplats är en elektronisk ansökan, men pappersblanketten är ett alternativ. Blanketten kan skrivas ut eller hämtas på daghemmen eller småbarnspedagogikens kundbetjäning. \n\nEn eventuell uppsägning av dagvårdsplatsen görs skriftligt senast 30 kalenderdagar före den sista vårddagen. Man kan anhålla om förflyttning av dagvårdsplats genom att fylla i förflyttningsblanketten. \n\nObs! Till familjer som har ansökt om småbarnspedagogik fr.o.m. januari 2018 skickas beslut hem 24.11.2017. \n",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Lasten päivähoidon asiakasmaksut löydät Vaasan kaupungin verkkosivuilta.",
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Poikkeuksena työllistyminen tai opiskelun alkaminen, jolloin hoitopaikkaa haettava viimeistään kaksi viikkoa ennen hoidon tarvetta. Oikeus päivähoitoon alkaa, kun vanhempainrahakausi loppuu ja päättyy, kun lapsi siirtyy oppivelvollisuuden piiriin. \n\nPäivähoitopaikkaa haetaan ensisijaisesti sähköisesti tai vaihtoehtoisesti lomakkeella. Lomakkeen voi tulostaa tai sen voi noutaa päiväkodeista tai varhaiskasvauksen asiakaspalvelusta.\n\nMahdollinen päivähoitopaikan irtisanominen tulee tehdä kirjallisesti 30 kalenteripäivää ennen viimeistä hoidossaolopäivää. Lapsen päivähoitopaikan siirtoa voi anoa täyttämällä siirtoanomuksen.\n\nHuom! Perheille, jotka ovat hakeneet lapselle varhaiskasvatuspaikkaa tammikuusta 2018 alkaen, postitetaan kirjallinen päätös 24.11.2017.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "en",
+    "value" : "The child groups in the day-care centres of the City of Vaasa can be groups for below 3 year olds or 3 – 6 year olds, sibling groups for 1 – 6 year olds or groups offering pre-school education or speciality day-care services. The day-care centres are normally open from 6.30 – 17.00. Children who need evening, night or weekend care, the care is arranged at the alternate care home Punahilkka.\n\nThe day-care centres take care of the early childhood and pre-school education and this is arranged by an educated personnel. The activity is target-oriented and systematic and observes the child’s age, individuality as well as different needs in the child’s development. \n\nThe day-care centres can have different focus areas in their activities, e.g. music, sports or nature oriented education. Childcare, education and upbringing for the children in need of special support is offered by specialized early-childhood education, who also work as experts in arranging the activities. Furthermore Vaasa offers the possibility to Swedish speaking immersion education as well as education of a foreign language (English).",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Under 7-åriga barn kan få daghemsvård anordnad av kommunen. \nI Vasa stads daghem finns det barngrupper för under 3-åringar och för 3–6-åringar, syskongrupper för 1–6-åringar, förskolegrupper och grupper som erbjuder specialdagvård. Vanligen har daghemmen öppet från kl. 6.30 till 17.00. Skiftesdaghemmet Rödluvan erbjuder vård för barn som är i behov av det under kvällar, nätter och veckoslut. \n\nEn utbildad daghemspersonal svarar för småbarnspedagogiken och förskoleundervisningen som är avsedd för barn under skolåldern. Verksamheten är målinriktad och planmässig och tar barnets ålder, individualitet och olika utvecklingsbehov i beaktande. \n \nDaghemmen kan ha olika tygndpuktsområden i sin verksamhet, exempelvis musik-, motion- eller miljöfostran. Specialdagvården ger stöd och fungerar som sakkunnig för barn som behöver särskilt stöd i vård, fostran och undervisning. Därtill finns det möjlighet till språkbadsundervisning på svenska och undervisning på främmande språk (engelska) i Vasa. \n",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Under 7-åriga barn kan få daghemsvård anordnad av kommunen.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Klientavgifterna för barndagvård finns på Vasa stads webbsida.",
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "en",
+    "value" : "Exceptions are getting employed or starting studies, when the dare-care place needs to be applied for by latest two weeks before the care need occurs. The right to day-care begins when the parental funding ends and the child is affected by the compulsory education.\n\nThe day-care place is primarily applied for electronically or alternatively by handing in a form. The form can be printed out or it can be fetched from the day-care centre or the customer service of the early childhood education.\n\nThe possible cancelling of a day-care place shall be done in written form 30 calendar days before the last day-care day. Changing the child’s day-care place can be applied by filling in a form about the transfer.\n",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "en",
+    "value" : "The client fees for children’s day-care can be found on the web pages of the City of Vaasa.",
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "en",
+    "value" : "Children aged under 7 may receive day care organised by the municipality.",
+    "type" : "Summary"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

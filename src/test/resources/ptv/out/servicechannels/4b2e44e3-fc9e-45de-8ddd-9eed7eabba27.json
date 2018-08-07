@@ -1,0 +1,88 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "3fbc14ae-bb71-4388-ab6e-6d41f28f7fdd",
+      "name" : "Mielenterveyskuntoutujien asumispalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "400866789",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "400866789",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Mielenterveys- ja päihdekuntoutujien asumispalveluiden palveluyksikköjohtaja",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Serviceenhetschefen för boendeservice för personer inom mentalvårds- och missbrukarrehabilitering",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "Phone",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Mielenterveys- ja päihdekuntoutujien asumispalveluiden palveluyksikköjohtaja.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Mielenterveys- ja päihdekuntoutujien asumispalveluiden palveluyksikköjohtaja.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Serviceenhetschefen för boendeservice för personer inom mentalvårds- och missbrukarrehabilitering.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Serviceenhetschefen för boendeservice för personer inom mentalvårds- och missbrukarrehabilitering.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "4b2e44e3-fc9e-45de-8ddd-9eed7eabba27"
+}

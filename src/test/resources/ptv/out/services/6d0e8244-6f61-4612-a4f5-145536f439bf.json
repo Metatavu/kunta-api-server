@@ -1,0 +1,215 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Terveydenhuolto, sairaanhoito ja ravitsemus",
+      "language" : "fi"
+    }, {
+      "value" : "Hälso- och sjukvård, näring",
+      "language" : "sv"
+    }, {
+      "value" : "Health and medical care, nutrition",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Tässä palveluluokassa käsitellään sekä yleisiä että tietyille ryhmille suunnattuja terveyden- ja sairaanhoidon palveluja. Luokkaan kuuluvat myös lääkkeisiin ja ravitsemukseen liittyvät palvelut sekä kuntoutus terveydenhoidollisen ja lääkinnällisen kuntoutuksen osalta.",
+      "language" : "fi"
+    }, {
+      "value" : "I denna serviceundergrupp behandlas både allmänna och hälso- och sjukvårdstjänster för vissa grupper. Till gruppen hör också tjänster i anslutning till läkemedel och näring samt rehabilitering för hälso- och sjukvårdens och medicinska rehabiliteringens del.",
+      "language" : "sv"
+    }, {
+      "value" : "This service class contains health and medical care services, both general services and those intended for specific groups. It also includes services associated with medicines and nutrition, as well as rehabilitation for the part of health care related and medical rehabilitation.",
+      "language" : "en"
+    } ],
+    "code" : "P5",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1038",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "6d0e8244-6f61-4612-a4f5-145536f439bf",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "10452160-3182-4939-9212-d89d430ce8ed",
+      "name" : "Haavahoitajan vastaanotto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : "Haavahoitajan vastaanotolle ohjataan lääkärin lähetteellä. ",
+    "language" : "fi"
+  }, {
+    "value" : "Till sårskötarens mottagning hänvisas genom läkarremiss.",
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "sv",
+    "value" : "Sårvård",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Haavanhoito",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Haavahoito",
+    "type" : "AlternativeName"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "stickskador",
+      "language" : "sv"
+    }, {
+      "value" : "pistohaavat",
+      "language" : "fi"
+    }, {
+      "value" : "wounds, stab",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "TERO",
+    "uri" : "http://www.yso.fi/onto/koko/p64958",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p13187"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : "Sårskötaren planerar, förverkligar och utvärderar lokal sårvård för olika typer av kroniska sår.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Sårskötaren planerar, förverkligar och utvärderar lokal sårvård för olika typer av kroniska sår.\n\nSårskötaren utför yrkesövergripande samarbete med alla yrkesgrupper som deltar i vården av sårpatienten. Sårskötaren ger råd, handleder och utbildar personalen, patienten och klienten i sårvård samt i användningen av lokalvårdsprodukter och förebyggande sårvård.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Haavahoitaja suunnittelee, toteuttaa ja arvioi erilaisten kroonisten haavojen paikallishoidon.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Haavahoitaja suunnittelee, toteuttaa ja arvioi erilaisten kroonisten haavojen paikallishoidon.\n\nHaavahoitaja tekee moniammatillista yhteistyötä kaikkien haavapotilaan hoitoon osallistuvien ammattiryhmien kanssa. Haavahoitaja neuvoo, ohjaa ja kouluttaa henkilökuntaa, potilasta ja asiakasta haavahoidossa sekä paikallishoitotuotteiden käytössä ja haavojen ennalta ehkäisevässä hoidossa.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "UserInstruction"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

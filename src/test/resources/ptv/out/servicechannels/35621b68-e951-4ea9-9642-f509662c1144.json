@@ -1,0 +1,117 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/sites/default/files/avustushakemus_uusi_sahkoinen.pdf",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/sites/default/files/avustushakemus_uusi_sahkoinen.pdf",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "requiresSignature" : false,
+  "attachments" : [ ],
+  "languages" : [ ],
+  "supportPhones" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "7f1c5751-6a67-4af5-af18-79177e2fb687",
+      "name" : "Avustukset eläkeläisyhdistysten toimintaan"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "866d0002-4d70-4759-a743-afe0f6836343",
+      "name" : "Avustukset toimintaan Vähässäkyrössä"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "96c64475-9312-4c18-9f5d-d37dfb1a69da",
+      "name" : "Avustukset tapahtumien järjestämiseen"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "d558a51c-2a75-4a6f-943b-99da839205f5",
+      "name" : "Kaupunginhallituksen avustukset toimintaan"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Avustushakemus sähköpostilla",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Understödsansökan per e-post",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "EChannel",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Avustushakemukset toimitetaan ensisijaisesti sähköisesti",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Lomakkeella haetaan:\nAvustukset tapahtumien järjestämiseen\nAvustukset eläkeläisyhdistysten toimintaan\nAvustukset toimintaan Vähässäkyrössä\nKaupunginhallituksen avustukset toimintaan\n\nTäytetty lomake lähetetään osoitteeseen kirjaamo@vaasa.fi",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Understödsansökningarna sänds i första hand in elektroniskt.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Med blanketten ansöker man om:\nUnderstöd för ordnande av evenemang\nUnderstöd för pensionärsföreningarnas verksamhet\nUnderstöd för verksamhet i Lillkyro\nStadsstyrelsens understöd för verksamhet\n\nDen ifyllda blanketten sänds till registraturen@vasa.fi.\n",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "35621b68-e951-4ea9-9642-f509662c1144",
+  "signatureQuantity" : 0,
+  "requiresAuthentication" : false
+}

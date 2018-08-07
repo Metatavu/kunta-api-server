@@ -1,0 +1,88 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "59dfdd1d-3353-4a28-9ea6-0f338bdf9676",
+      "name" : "Laskutus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63251234",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63251234",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Palveluvastaava, ostolaskut",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Serviceansvarig, inköpsfakturor",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "Phone",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Voit ottaa yhteyttä palveluvastaavaan Vaasan kaupungille lähetettäviin ostolaskuihin (maksajana kaupunki) liittyvissä asioissa.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Voit ottaa yhteyttä palveluvastaavaan Vaasan kaupungille lähetettäviin ostolaskuihin (maksajana kaupunki) liittyvissä asioissa.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Serviceansvarig för inköpsfakturor kan kontaktas i ärenden som gäller fakturor som skickas till Vasa stad (staden betalare).",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Serviceansvarig för inköpsfakturor kan kontaktas i ärenden som gäller fakturor som skickas till Vasa stad (staden betalare). ",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "5a62d0af-2a14-4cc5-b172-9027a8458566"
+}

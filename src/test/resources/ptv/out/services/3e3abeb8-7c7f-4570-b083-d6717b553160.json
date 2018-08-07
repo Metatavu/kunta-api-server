@@ -1,0 +1,313 @@
+{
+  "sourceId" : null,
+  "keywords" : [ {
+    "value" : "ilmoitukset",
+    "language" : "fi"
+  }, {
+    "value" : "meluilmoitus",
+    "language" : "fi"
+  } ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "PermitOrObligation",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Tilaisuuksien järjestäminen",
+      "language" : "fi"
+    }, {
+      "value" : "Organisation of public events",
+      "language" : "en"
+    }, {
+      "value" : "Ordnande av evenemang",
+      "language" : "sv"
+    } ],
+    "description" : [ {
+      "value" : "Tässä palvelualaluokassa käsitellään niitä palveluja ja velvoittavia menettelyjä, jotka liittyvät yleisötilaisuuksien ja julkisilla paikoilla tapahtuvien yleisten kokousten kuten mielenosoitusten järjestämiseen.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains the services and mandatory procedures associated with organising open events and public meetings in public places, including demonstrations.",
+      "language" : "en"
+    }, {
+      "value" : "I denna serviceundergrupp behandlas tjänster och förpliktande förfaranden relaterade till ordnande av allmänna evenemang och allmänna möten på allmänna platser såsom demonstrationer.",
+      "language" : "sv"
+    } ],
+    "code" : "P20.2",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1169",
+    "parentId" : "6b69805c-fd6f-4117-aa1d-4fc24584b46d",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1167"
+  }, {
+    "name" : [ {
+      "value" : "Ympäristöilmoitukset ja luvat",
+      "language" : "fi"
+    }, {
+      "value" : "Miljöanmälan och -tillstånd",
+      "language" : "sv"
+    }, {
+      "value" : "Environmental notifications and permits",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Tähän palvelualaluokkaan kuuluvat ne ilmoitus- ja lupamenettelyt, jotka liittyvät ympäristöä pysyvästi muuttaviin tai ympäristölle mahdollisesti haitallisiin toimenpiteisiin kuten kaivostoimintaan tai ympäristövaarallisiin kemikaaleihin.",
+      "language" : "fi"
+    }, {
+      "value" : "Denna serviceundergrupp omfattar anmälnings- och tillståndsförfaranden relaterade till åtgärder som förändrar miljön permanent eller som eventuellt är skadliga för miljön, såsom gruvdrift eller miljöfarliga kemikalier.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains the notification and permit procedures associated with actions that permanently change the environment or are potentially harmful for the environment, including mining or chemicals that pose an environmental hazard.",
+      "language" : "en"
+    } ],
+    "code" : "P23.5",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1188",
+    "parentId" : "9eac7938-e66b-4023-ac2e-8774ee615bca",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1184"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "a389965e-14fb-4296-b93d-5b5750073260",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "3e3abeb8-7c7f-4570-b083-d6717b553160",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "7e0051ed-323b-4b48-ac18-28c37a368dd8",
+      "name" : "Ilmoitus melua ja tärinää aiheuttavasta tilapäisestä toiminnasta"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "8080da68-4225-4bde-b01c-4c3c087a2f81",
+      "name" : "Ympäristötoimi"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "c700b147-8472-4f53-9fac-2ff53b312ae5",
+      "name" : "Ympäristönsuojelun luvat ja ilmoitukset"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : null,
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Ilmoitus melusta ja tärinästä",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Anmälan om buller och skakningar",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "miljöanmälan",
+      "language" : "sv"
+    }, {
+      "value" : "ympäristöilmoitukset",
+      "language" : "fi"
+    }, {
+      "value" : "environmental notifications",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p67947",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p13673;http://www.yso.fi/onto/koko/p73603"
+  }, {
+    "name" : [ {
+      "value" : "ilmoitukset yleisötilaisuuksista",
+      "language" : "fi"
+    }, {
+      "value" : "annonser om evenemang för allmänheten",
+      "language" : "sv"
+    }, {
+      "value" : "public event notifications",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p67930",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p73603;http://www.yso.fi/onto/koko/p13673"
+  }, {
+    "name" : [ {
+      "value" : "rakentaminen",
+      "language" : "fi"
+    }, {
+      "value" : "byggande",
+      "language" : "sv"
+    }, {
+      "value" : "construction",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p34882",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p24991"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Yritykset ja yhteisöt",
+      "language" : "fi"
+    }, {
+      "value" : "Businesses and non-government organizations",
+      "language" : "en"
+    }, {
+      "value" : "Företag och samfund",
+      "language" : "sv"
+    } ],
+    "code" : "KR2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "sv",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : "En skriftlig anmälan ska inlämnas till kommunens miljövårdsmyndighet om verksamhet som orsakar mycket störande buller eller skakningar.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "30 päivää ennen tapahtumaa",
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : "3 vko, jos tapahtumasta on kuulutettava",
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : "Erityisen häiritsevää melua tai tärinää aiheuttavasta toiminnasta on tehtävä kirjallinen ilmoitus kunnan ympäristönsuojeluviranomaiselle.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Ilmoitus on tapahtumakohtainen.",
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasassa melu- ja tärinäilmoitukset tehdään kaupungin ympäristöosastolle. Lisätietoa ympäristöilmoitusten verkkosivulta. ",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Katso ympäristöterveydenhuollon maksut.",
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : "I Vasa görs anmälningar om buller och skakningar till stadens miljöavdelning. Ytterligare information på webbsidan för miljöanmälningar. ",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Anmälan görs händelsespecifikt.",
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : "Se miljö- och hälsoskyddets avgifter.",
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : "3 veckor om händelsen ska kungöras",
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : "30 dagar före händelsen",
+    "type" : "DeadLine"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

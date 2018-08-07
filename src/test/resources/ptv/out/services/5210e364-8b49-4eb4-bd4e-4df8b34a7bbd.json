@@ -1,0 +1,247 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Vesihuolto",
+      "language" : "fi"
+    }, {
+      "value" : "Vattenförsörjning",
+      "language" : "sv"
+    }, {
+      "value" : "Water supply",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Denna serviceundergrupp omfattar i första hand ärenden relaterade till hantering av bebyggda miljöers avfallsvatten från såväl affärslokaler och permanenta bostäder som från semester- och fritidsbostäder.",
+      "language" : "sv"
+    }, {
+      "value" : "Tähän palvelualaluokkaan kuuluvat ensi sijassa rakennetun ympäristön jätevesien käsittelyyn liittyvät asiat niin liiketiloissa, ympärivuotisissa asunnoissa kuin loma- ja vapaa-ajan kiinteistöissä.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass primarily contains issues related to handling sewage in built environments from business premises, permanent dwellings and secondary residences alike.",
+      "language" : "en"
+    } ],
+    "code" : "P23.3",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1187",
+    "parentId" : "9eac7938-e66b-4023-ac2e-8774ee615bca",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1184"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "544659c4-34c5-4c58-8d57-0813d4e3fb58",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "5210e364-8b49-4eb4-bd4e-4df8b34a7bbd",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "16548766-39da-42a7-9c04-874fb781856d",
+      "name" : "Vaasan Veden verkkosivut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "df0097e6-ad66-4a86-a4df-0d31f34daf24",
+      "name" : "Vaasan Vesi"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "df13867d-bb3b-407a-a5c1-fa90a425cf2d",
+      "name" : "Vaasan Veden lomakkeet"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "Chargeable",
+  "serviceNames" : [ {
+    "language" : "sv",
+    "value" : "Anslutning till vatten- och avloppsnätet",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Liittyminen vesi- ja viemäriverkostoon",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "vattentjänster",
+      "language" : "sv"
+    }, {
+      "value" : "vesihuolto",
+      "language" : "fi"
+    }, {
+      "value" : "water services",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p36311",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p36160"
+  }, {
+    "name" : [ ],
+    "code" : null,
+    "ontologyType" : null,
+    "uri" : "http://www.yso.fi/onto/yso/p5979",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Yritykset ja yhteisöt",
+      "language" : "fi"
+    }, {
+      "value" : "Businesses and non-government organizations",
+      "language" : "en"
+    }, {
+      "value" : "Företag och samfund",
+      "language" : "sv"
+    } ],
+    "code" : "KR2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan Veden verkkosivuilta löydät viemäreiden käyttöohjeet sekä ohjeet ja hintatiedot vesi- ja viemäriverkostoon liittymisestä. Voit tilata ilmaiset liittymätiedot Vaasan Veden sivuilta löytyvällä verkkolomakkeella.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasassa vesihuoltopalveluista vastaa Vaasan Vesi. Vesi- ja viemäriverkostot kuljettavat puhtaan veden kuluttajalle ja vievät likaisen veden pois. \n",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasassa vesihuoltopalveluista vastaa Vaasan Vesi.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : "I Vasa ansvarar Vasa Vatten för vattentjänsterna.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : "I Vasa ansvarar Vasa Vatten för vattentjänsterna. Vatten- och avloppsledningsnäten leder rent vatten till konsumenterna och orent vatten från konsumenterna. \n\n",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "På Vasa Vattens webbsidor finns bruksanvisning för avlopp samt anvisningar och prisuppgifter för anslutning till vatten- och avloppsnätet. Du kan beställa gratis anslutningsuppgifter på blanketten som finns på Vasa Vattens webbsidor.\n",
+    "type" : "UserInstruction"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "ProcuredServices",
+    "organization" : null,
+    "roleType" : "Producer",
+    "additionalInformation" : [ {
+      "value" : "Vaasan Vesi",
+      "language" : "fi"
+    }, {
+      "value" : "Vasa Vatten",
+      "language" : "sv"
+    } ]
+  } ]
+}

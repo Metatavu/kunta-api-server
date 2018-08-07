@@ -1,0 +1,257 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Val",
+      "language" : "sv"
+    }, {
+      "value" : "Elections",
+      "language" : "en"
+    }, {
+      "value" : "Vaalit",
+      "language" : "fi"
+    } ],
+    "description" : [ {
+      "value" : "Denna serviceundergrupp omfattar tjänster och uppföljning relaterade till förutsättningar för rösträtt, förfaranden för kandidatuppställning i nationella och kommunala val eller Europaparlamentsval, information om val till väljare, valfinansiering samt informationstjänster för valresultat.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains the criteria for the right to vote, the procedures for becoming a candidate in national, municipal or European Parliament elections, informing voters about elections, services and monitoring related to election financing as well as information services concerning the results of elections.",
+      "language" : "en"
+    }, {
+      "value" : "Tähän palvelualaluokkaan kuuluvat äänioikeuden edellytykset, valtakunnallisissa, kunnallisissa tai Euroopan parlamentin vaaleissa ehdolle asettumisen menettelyt, vaaleista tiedottaminen äänestäjille, vaalirahoitukseen liittyvät palvelut ja seuranta sekä vaalien tuloksia koskevat tietopalvelut.",
+      "language" : "fi"
+    } ],
+    "code" : "P8.2",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1092",
+    "parentId" : "6621dcc1-803a-4984-b20e-16da4651a293",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1090"
+  }, {
+    "name" : [ {
+      "value" : "Demokratia",
+      "language" : "fi"
+    }, {
+      "value" : "Demokrati",
+      "language" : "sv"
+    }, {
+      "value" : "Democracy",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "This service class includes services and information related to representative democracy. Particularly prominent in it are political parties, the election system and voting as well as services provided by the civic society and the third sector.",
+      "language" : "en"
+    }, {
+      "value" : "Tähän palveluluokkaan kuuluvat edustukselliseen demokratiaan liittyvät palvelut ja tiedot. Erityisesti esillä ovat puolueet, vaalijärjestelmä ja äänestäminen sekä kansalaisyhteiskunnan ja kolmannen sektorin tuottamat palvelut.",
+      "language" : "fi"
+    }, {
+      "value" : "Denna servicegrupp omfattar tjänster och information relaterade till representativ demokrati. Fokus ligger på partier, valsystem och röstning samt service som tillhandahålls av medborgarsamhället och tredje sektorn.",
+      "language" : "sv"
+    } ],
+    "code" : "P8",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1090",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "Political parties",
+      "language" : "en"
+    }, {
+      "value" : "Puolueet",
+      "language" : "fi"
+    }, {
+      "value" : "Partier",
+      "language" : "sv"
+    } ],
+    "description" : [ {
+      "value" : "Denna serviceundergrupp omfattar ärenden relaterade till grundande och registrering av partier samt partistöd.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains the establishment and registration of a political party as well as issues related to party subsidies from the service point of view.",
+      "language" : "en"
+    }, {
+      "value" : "Tässä palvelualaluokassa käsitellään palvelujen näkökulmasta puolueen perustamista ja rekisteröintiä sekä puoluetukeen liittyviä asioita.",
+      "language" : "fi"
+    } ],
+    "code" : "P8.1",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1091",
+    "parentId" : "6621dcc1-803a-4984-b20e-16da4651a293",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1090"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "Nationwide",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "092bd121-9cbd-4d01-8556-fae25ea280cf",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "1efdc6c5-7320-45b8-8479-ec09976aabb8",
+      "name" : "Suomen edustustot ulkomailla"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "sv", "fi" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Äänestäminen vaaleissa",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Vaalit",
+    "type" : "AlternativeName"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "centralvalnämnd",
+      "language" : "sv"
+    }, {
+      "value" : "keskusvaalilautakunta",
+      "language" : "fi"
+    }, {
+      "value" : "central election comittee",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p67657",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p6230"
+  }, {
+    "name" : [ {
+      "value" : "presidentinvaalit",
+      "language" : "fi"
+    }, {
+      "value" : "presidentval",
+      "language" : "sv"
+    }, {
+      "value" : "presidential elections",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p14979",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p32366"
+  }, {
+    "name" : [ {
+      "value" : "EU-val",
+      "language" : "sv"
+    }, {
+      "value" : "EU-vaalit",
+      "language" : "fi"
+    }, {
+      "value" : "EU elections",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p67793",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p32366"
+  }, {
+    "name" : [ {
+      "value" : "vaalit",
+      "language" : "fi"
+    }, {
+      "value" : "val (samhälleliga händelser)",
+      "language" : "sv"
+    }, {
+      "value" : "elections",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p32366",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p14567"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Suomessa valitaan yleisillä vaaleilla eduskunta, tasavallan presidentti, kuntien valtuustot sekä jäsenet Euroopan parlamenttiin.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : "Voit äänestää vaaleissa vaalipäivänä tai sitä ennen ennakkoäänestyksessä. Voit äänestää ennakkoon missä tahansa ennakkoäänestyspaikassa.\nNiitä on esimerkiksi monissa kunnan virastoissa, kirjastoissa tai posteissa. Kaikki lähialueen ennakkoäänestyspaikat löydät ilmoituskortista tai netistä osoitteesta www.vaalit.fi.  \n\nNäin äänestät ennakkoon\n1.Ota äänestykseen mukaan henkilöllisyystodistus, esimerkiksi passi, henkilökortti tai ajokortti. \n2.Näytä henkilöllisyystodistus vaalivirkailijalle. Virkailija tarkistaa sen ja antaa sinulle äänestyslipun. \n3.Mene äänestyskoppiin, jossa täytät äänestyslippusi. Kirjoita äänestyslippuun selvästi sen ehdokkaan numero, jota äänestät. \n4.Älä kirjoita äänestyslippuun mitään muuta kuin ehdokkaasi numero. \n5.Taita äänestyslippu keskeltä niin, että kukaan ei voi nähdä numeroa. \n6.Palaa vaalivirkailijan luokse. Hän leimaa taitetun äänestyslipun ja antaa sinulle ruskean vaalikuoren. \n7.Laita äänestyslippu kuoreen ja liimaa kuori kiinni. Tarkista, että kuori on huolellisesti kiinni. \n8.Vaalivirkailija pyytää sinua allekirjoittamaan lomakkeen. \n9.Allekirjoituksella vakuutat, että olet itse täyttänyt äänestyslipun, saanut siihen leiman ja sulkenut sen kirjekuoreen. \n10.Lopuksi virkailija sulkee vaalikuoren ja allekirjoitetun lomakkeen keltaiseen lähetekuoreen. \n11.Lähetekuori lähetetään keskusvaalilautakunnalle. \nNäin äänestät vaalipäivänä\n1.Ota äänestykseen mukaan henkilöllisyystodistus, esimerkiksi passi, henkilökortti tai ajokortti. \n2.Näytä henkilöllisyystodistus vaalivirkailijalle. Virkailija tarkistaa sen ja antaa sinulle äänestyslipun. \n3.Mene äänestyskoppiin, jossa täytät äänestyslippusi. \n4.Kirjoita äänestyslippuun selvästi sen ehdokkaan numero, jota äänestät. \n5.Jos et muista numeroa, tarkista numero äänestyskopin seinällä olevasta luettelosta. \n6.Älä kirjoita äänestyslippuun mitään muuta kuin ehdokkaasi numero. \n7.Taita äänestyslippu keskeltä niin, että kukaan ei voi nähdä numeroa. \n8.Palaa vaalivirkailijan luokse.  Hän leimaa taitetun äänestyslipun. \n9.Pudota taitettu ja leimattu äänestyslippusi vaaliuurnaan. \nMuista äänestystavoista löydät ohjeet www.vaalit.fi",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : "Yleisillä vaaleilla valitaan eduskunta, tasavallan presidentti, kuntien valtuustot sekä jäsenet Euroopan parlamenttiin. \"Yleiset vaalit\" tarkoittaa, että vaaleissa äänioikeus on yleinen eli se on kaikilla säädetyt edellytykset täyttävillä henkilöillä eikä ainoastaan jollakin erikseen määrätyllä ryhmällä. Suomessa toimitetaan seuraavat yleiset valtakunnalliset vaalit: eduskuntavaalit joka neljäs vuosi, kuntavaalit joka neljäs vuosi, tasavallan presidentin vaali (presidentinvaali) joka kuudes vuosi ja Euroopan parlamentin vaalit (europarlamenttivaalit) joka viides vuosi.",
+    "type" : "Description"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "011154df-3726-461e-ae9c-a1182d1746de",
+      "name" : "Ulkoministeriö"
+    },
+    "roleType" : "OtherResponsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "b458d033-042d-4cbe-b030-34e81da28821",
+      "name" : "Väestörekisterikeskus"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : null,
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

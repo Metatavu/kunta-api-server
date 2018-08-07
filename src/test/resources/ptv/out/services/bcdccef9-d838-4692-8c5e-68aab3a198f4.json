@@ -1,0 +1,208 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Terveystarkastukset",
+      "language" : "fi"
+    }, {
+      "value" : "Health examinations",
+      "language" : "en"
+    }, {
+      "value" : "Hälsoundersökningar",
+      "language" : "sv"
+    } ],
+    "description" : [ {
+      "value" : "Till denna serviceundergrupp hör både regelbundna hälsoundersökningar (t.ex. i skolan) och godtyckliga hälsoundersökningar (t.ex. i företagshälsovården) och sållningsliknande, sjukdomsbaserade undersökningar, som erbjuds till omfattande befolkningsgrupper.",
+      "language" : "sv"
+    }, {
+      "value" : "Tähän palvelualaluokkaan kuuluvat sekä säännöllisesti järjestettävät terveystarkastukset (esimerkiksi kouluissa) ja harkinnanvaraiset terveystarkastukset (esimerkiksi työterveydenhuollossa) että tiettyihin sairauksiin liittyvät seulonnat, joita tarjotaan laajoille väestöryhmille.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains both regular health examinations (for example at schools) and discretionary health examinations (for example in occupational health care services) as well as screenings of large population groups, focusing on specific illnesses.",
+      "language" : "en"
+    } ],
+    "code" : "P5.8",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1046",
+    "parentId" : "76ca210c-5183-4d41-b796-50612d5930c7",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1038"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "9de1f04a-7aaf-4971-bb5b-b3d76906acbb",
+  "serviceVouchers" : [ ],
+  "modified" : "2018-04-12T11:37:02.081197",
+  "id" : "bcdccef9-d838-4692-8c5e-68aab3a198f4",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "04f58a3b-679d-4887-bf8c-454f8f82a800",
+      "name" : "Rymättylän terveysasema"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "395eec2b-5b23-41a2-801c-3d30a6ff6e3c",
+      "name" : "Merimaskun terveysasema"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "66e737c9-fec5-4e2c-a288-e9dc7439b5a5",
+      "name" : "Naantalin terveyskeskus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "6829ccac-2369-4a77-8684-81d6db477964",
+      "name" : "Terveyspalvelujen todistushinnasto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "b93655b0-58cf-43c0-aafd-a01ebae7d174",
+      "name" : "Velkuan terveysasema"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "fbbb8ab0-e53e-4785-a918-37cd01658080",
+      "name" : "Terveyskeskuksen puhelinvaihde"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "Chargeable",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Terveystodistuspalvelut",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "terveystarkastukset",
+      "language" : "fi"
+    }, {
+      "value" : "hälsokontroller",
+      "language" : "sv"
+    }, {
+      "value" : "health examinations",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p4603",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p869;http://www.yso.fi/onto/koko/p34179"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : "* Kun tarvitset terveystodistuksen, ota yhteyttä Naantalin terveyskeskuksen ajanvaraukseen ja varaa aika lääkärin vastaanotolle. \n* Ilmoita aikaa varatessasi, että käyntisi tarkoitus on terveystodistuksen tarve. ",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Maksullisia terveystodistuksia ovat esimerkiksi ajokorttitodistus, ja todistukset sukellus- ja lentolupakirjaa varten.",
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Voit hankkia terveystodistuksen esimerkiksi ajokorttia tai sukellus- ja lentolupakirjaa varten Naantalin terveyskeskuksesta tai Merimaskun, Rymättylän tai Velkuan terveysasemalta. Terveystodistuksen saaminen edellyttää käyntiä lääkärin vastaanotolla.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Voit hankkia terveystodistuksen esimerkiksi ajokorttia varten Naantalin terveyskeskuksesta tai Merimaskun, Rymättylän tai Velkuan terveysasemalta.",
+    "type" : "Summary"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

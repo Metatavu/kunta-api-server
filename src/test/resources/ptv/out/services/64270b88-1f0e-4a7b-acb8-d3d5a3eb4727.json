@@ -1,0 +1,653 @@
+{
+  "sourceId" : null,
+  "keywords" : [ {
+    "value" : "Urheiluakatemia",
+    "language" : "fi"
+  }, {
+    "value" : "urheiluyläkoulu",
+    "language" : "fi"
+  }, {
+    "value" : "lajivalmennus",
+    "language" : "fi"
+  } ],
+  "areas" : [ {
+    "type" : "Region",
+    "code" : "15",
+    "name" : [ {
+      "value" : "Ostrobothnia",
+      "language" : "en"
+    }, {
+      "value" : "Pohjanmaa",
+      "language" : "fi"
+    }, {
+      "value" : "Österbotten",
+      "language" : "sv"
+    } ],
+    "municipalities" : [ {
+      "code" : "946",
+      "name" : [ {
+        "value" : "Vörå",
+        "language" : "sv"
+      }, {
+        "value" : "Vörå",
+        "language" : "en"
+      }, {
+        "value" : "Vöyri",
+        "language" : "fi"
+      } ]
+    }, {
+      "code" : "287",
+      "name" : [ {
+        "value" : "Kristinestad",
+        "language" : "sv"
+      }, {
+        "value" : "Kristiinankaupunki",
+        "language" : "fi"
+      }, {
+        "value" : "Kristinestad",
+        "language" : "en"
+      } ]
+    }, {
+      "code" : "152",
+      "name" : [ {
+        "value" : "Isokyrö",
+        "language" : "en"
+      }, {
+        "value" : "Isokyrö",
+        "language" : "fi"
+      }, {
+        "value" : "Storkyro",
+        "language" : "sv"
+      } ]
+    }, {
+      "code" : "599",
+      "name" : [ {
+        "value" : "Pedersöre",
+        "language" : "sv"
+      }, {
+        "value" : "Pedersören kunta",
+        "language" : "fi"
+      }, {
+        "value" : "Pedersöre",
+        "language" : "en"
+      } ]
+    }, {
+      "code" : "231",
+      "name" : [ {
+        "value" : "Kaskö",
+        "language" : "sv"
+      }, {
+        "value" : "Kaskinen",
+        "language" : "en"
+      }, {
+        "value" : "Kaskinen",
+        "language" : "fi"
+      } ]
+    }, {
+      "code" : "499",
+      "name" : [ {
+        "value" : "Mustasaari",
+        "language" : "fi"
+      }, {
+        "value" : "Korsholm",
+        "language" : "sv"
+      }, {
+        "value" : "Korsholm",
+        "language" : "en"
+      } ]
+    }, {
+      "code" : "545",
+      "name" : [ {
+        "value" : "Närpes",
+        "language" : "en"
+      }, {
+        "value" : "Närpiö",
+        "language" : "fi"
+      }, {
+        "value" : "Närpes",
+        "language" : "sv"
+      } ]
+    }, {
+      "code" : "475",
+      "name" : [ {
+        "value" : "Malax",
+        "language" : "sv"
+      }, {
+        "value" : "Malax",
+        "language" : "en"
+      }, {
+        "value" : "Maalahti",
+        "language" : "fi"
+      } ]
+    }, {
+      "code" : "598",
+      "name" : [ {
+        "value" : "Jakobstad",
+        "language" : "sv"
+      }, {
+        "value" : "Jakobstad",
+        "language" : "en"
+      }, {
+        "value" : "Pietarsaari",
+        "language" : "fi"
+      } ]
+    }, {
+      "code" : "288",
+      "name" : [ {
+        "value" : "Kronoby",
+        "language" : "en"
+      }, {
+        "value" : "Kruunupyy",
+        "language" : "fi"
+      }, {
+        "value" : "Kronoby",
+        "language" : "sv"
+      } ]
+    }, {
+      "code" : "440",
+      "name" : [ {
+        "value" : "Luoto",
+        "language" : "fi"
+      }, {
+        "value" : "Larsmo",
+        "language" : "sv"
+      }, {
+        "value" : "Larsmo",
+        "language" : "en"
+      } ]
+    }, {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    }, {
+      "code" : "893",
+      "name" : [ {
+        "value" : "Nykarleby",
+        "language" : "en"
+      }, {
+        "value" : "Uusikaarlepyy",
+        "language" : "fi"
+      }, {
+        "value" : "Nykarleby",
+        "language" : "sv"
+      } ]
+    }, {
+      "code" : "280",
+      "name" : [ {
+        "value" : "Korsnäs",
+        "language" : "en"
+      }, {
+        "value" : "Korsnäs",
+        "language" : "fi"
+      }, {
+        "value" : "Korsnäs",
+        "language" : "sv"
+      } ]
+    }, {
+      "code" : "399",
+      "name" : [ {
+        "value" : "Laihia",
+        "language" : "en"
+      }, {
+        "value" : "Laihela",
+        "language" : "sv"
+      }, {
+        "value" : "Laihia",
+        "language" : "fi"
+      } ]
+    } ]
+  }, {
+    "type" : "Region",
+    "code" : "14",
+    "name" : [ {
+      "value" : "Södra Österbotten",
+      "language" : "sv"
+    }, {
+      "value" : "Etelä-Pohjanmaa",
+      "language" : "fi"
+    }, {
+      "value" : "South Ostrobothnia",
+      "language" : "en"
+    } ],
+    "municipalities" : [ {
+      "code" : "233",
+      "name" : [ {
+        "value" : "Kauhava",
+        "language" : "sv"
+      }, {
+        "value" : "Kauhava",
+        "language" : "en"
+      }, {
+        "value" : "Kauhava",
+        "language" : "fi"
+      } ]
+    }, {
+      "code" : "010",
+      "name" : [ {
+        "value" : "Alavus",
+        "language" : "fi"
+      }, {
+        "value" : "Alavus",
+        "language" : "sv"
+      }, {
+        "value" : "Alavus",
+        "language" : "en"
+      } ]
+    }, {
+      "code" : "301",
+      "name" : [ {
+        "value" : "Kurikka",
+        "language" : "sv"
+      }, {
+        "value" : "Kurikka",
+        "language" : "fi"
+      }, {
+        "value" : "Kurikka",
+        "language" : "en"
+      } ]
+    }, {
+      "code" : "300",
+      "name" : [ {
+        "value" : "Kuortane",
+        "language" : "sv"
+      }, {
+        "value" : "Kuortane",
+        "language" : "fi"
+      }, {
+        "value" : "Kuortane",
+        "language" : "en"
+      } ]
+    }, {
+      "code" : "005",
+      "name" : [ {
+        "value" : "Alajärvi",
+        "language" : "sv"
+      }, {
+        "value" : "Alajärvi",
+        "language" : "fi"
+      }, {
+        "value" : "Alajärvi",
+        "language" : "en"
+      } ]
+    }, {
+      "code" : "934",
+      "name" : [ {
+        "value" : "Vimpeli",
+        "language" : "fi"
+      }, {
+        "value" : "Vimpeli",
+        "language" : "en"
+      }, {
+        "value" : "Vimpeli",
+        "language" : "sv"
+      } ]
+    }, {
+      "code" : "232",
+      "name" : [ {
+        "value" : "Kauhajoki",
+        "language" : "sv"
+      }, {
+        "value" : "Kauhajoki",
+        "language" : "fi"
+      }, {
+        "value" : "Kauhajoki",
+        "language" : "en"
+      } ]
+    }, {
+      "code" : "151",
+      "name" : [ {
+        "value" : "Storå",
+        "language" : "sv"
+      }, {
+        "value" : "Isojoki",
+        "language" : "en"
+      }, {
+        "value" : "Isojoki",
+        "language" : "fi"
+      } ]
+    }, {
+      "code" : "743",
+      "name" : [ {
+        "value" : "Seinäjoki",
+        "language" : "en"
+      }, {
+        "value" : "Seinäjoki",
+        "language" : "fi"
+      }, {
+        "value" : "Seinäjoki",
+        "language" : "sv"
+      } ]
+    }, {
+      "code" : "145",
+      "name" : [ {
+        "value" : "Ilmajoki",
+        "language" : "en"
+      }, {
+        "value" : "Ilmajoki",
+        "language" : "sv"
+      }, {
+        "value" : "Ilmajoki",
+        "language" : "fi"
+      } ]
+    }, {
+      "code" : "403",
+      "name" : [ {
+        "value" : "Lappajärvi",
+        "language" : "en"
+      }, {
+        "value" : "Lappajärvi",
+        "language" : "sv"
+      }, {
+        "value" : "Lappajärvi",
+        "language" : "fi"
+      } ]
+    }, {
+      "code" : "218",
+      "name" : [ {
+        "value" : "Karijoki",
+        "language" : "en"
+      }, {
+        "value" : "Bötom",
+        "language" : "sv"
+      }, {
+        "value" : "Karijoki",
+        "language" : "fi"
+      } ]
+    }, {
+      "code" : "846",
+      "name" : [ {
+        "value" : "Östermark",
+        "language" : "sv"
+      }, {
+        "value" : "Teuva",
+        "language" : "en"
+      }, {
+        "value" : "Teuva",
+        "language" : "fi"
+      } ]
+    }, {
+      "code" : "408",
+      "name" : [ {
+        "value" : "Lapua",
+        "language" : "fi"
+      }, {
+        "value" : "Lapua",
+        "language" : "en"
+      }, {
+        "value" : "Lappo",
+        "language" : "sv"
+      } ]
+    }, {
+      "code" : "989",
+      "name" : [ {
+        "value" : "Ähtäri",
+        "language" : "fi"
+      }, {
+        "value" : "Ähtäri",
+        "language" : "en"
+      }, {
+        "value" : "Etseri",
+        "language" : "sv"
+      } ]
+    }, {
+      "code" : "052",
+      "name" : [ {
+        "value" : "Evijärvi",
+        "language" : "sv"
+      }, {
+        "value" : "Evijärvi",
+        "language" : "en"
+      }, {
+        "value" : "Evijärvi",
+        "language" : "fi"
+      } ]
+    }, {
+      "code" : "759",
+      "name" : [ {
+        "value" : "Soini",
+        "language" : "en"
+      }, {
+        "value" : "Soini",
+        "language" : "fi"
+      }, {
+        "value" : "Soini",
+        "language" : "sv"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Liikunta ja urheilu",
+      "language" : "fi"
+    }, {
+      "value" : "Motion och idrott",
+      "language" : "sv"
+    }, {
+      "value" : "Sports and exercise",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Tähän palvelualaluokkaan kuuluvat liikuntapaikat, urheiluopistot ja niiden palvelut, liikunnan tietopalvelut ja urheiluseurojen sekä liikuntajärjestöjen toiminta.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains sports facilities, sports institutes and their services, exercise information services and the activities of sports clubs and sports associations.",
+      "language" : "en"
+    }, {
+      "value" : "Denna serviceundergrupp omfattar motionsställen, idrottsinstitut och deras tjänster, informationstjänster för motion samt idrottsföreningars och motionsorganisationers verksamhet.",
+      "language" : "sv"
+    } ],
+    "code" : "P27.1",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1211",
+    "parentId" : "175762f6-53cd-4d29-a285-625bfb421b21",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1210"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2017-10-20T06:15:14.345232",
+  "id" : "64270b88-1f0e-4a7b-acb8-d3d5a3eb4727",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "384a1d03-df7c-4cbe-a09f-2284917a0e40",
+      "name" : "Lasten ja nuorten liikunta"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "6c6b7832-815c-49b6-aa3c-4855c4f1dd05",
+      "name" : "Liikuntasuunnittelija, Lasten ja nuorten liikunta"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "dde488ee-b44c-4094-b0c6-9b459997b19e",
+      "name" : "Valmennustoiminnan verkkosivut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : null,
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Valmennustoiminta 7-9 lk",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Träningsverksamhet för åk 7-9",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "urheilu",
+      "language" : "fi"
+    }, {
+      "value" : "idrott",
+      "language" : "sv"
+    }, {
+      "value" : "sports",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p48399",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p35142"
+  }, {
+    "name" : [ {
+      "value" : "motion (idrott)",
+      "language" : "sv"
+    }, {
+      "value" : "liikunta",
+      "language" : "fi"
+    }, {
+      "value" : "physical training",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p30612",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p35142"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Yläkouluikäisille suunnatun valmennustoiminnan toimintamuotoja ovat lajivalmennus 8-9lk, urheiluyläkoulu sekä yläkoululeiritysmalli.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Lisätietoja saat verkkosivuilta ja liikuntakoordinaattorilta. ",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : "Träningsverksamhetens verksamhetsformer för åk 7-9 är grenträningen, idrottsskola och lägermodellet.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Ytterligare information får du på träningsverksamhetens och Vasaregionens idrottsakademis webbsidorna och av koordinatorn. ",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Lajivalmennus on urheiluseurojen toteuttamaa ja Vaasan kaupungin kasvatus- ja opetustoimen koordinoimaa toimintaa, jossa aamuharjoittelu on keskitetty yhteiseen ajankohtaan.\n\nVöyrinkaupungin koulussa on syksystä 2017 lähtien 7-luokkalaisille oma urheiluluokka, jossa toteutuvat Suomen Olympiakomitean valtakunnallisen urheiluyläkoulun kriteerit.\n\nNorvallan ja Kuortaneen urheiluopistoilla järjestetään valtakunnalliset yläkoululeirit. Leirimallissa urheiluopisto tarjoaa urheilijoille leiritysprojektin, jonka tarkoituksena on antaa eväitä arkeen leirien välisenä aikana.\n\nToimintaa järjestetään yhteistyössä Vaasanseudun Urheiluakatemian kanssa.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Grenträningen förverkligas av föreningarna och koordineras av verket för fostran och utbildning inom Vasa stad. Morgonträningen är koncentrerad till en gemensam tidpunkt. \n\nI Vöyrinkaupungin koulu startar hösten 2017 en idrottsklass för åk 7 där Finlands Olympiska kommittés kriterier för idrottsskolor förverkligas.\n\nNorrvalla och Kuortane Idrottsinstitut arrangerar båda de sk nationella skollägren, framtidsgruppens skolläger respektive ”yläkoululeiritys”. Via lägermodellen erbjuds idrottarna ett lägerupplägg som skall ge idrottarna stöd i den vardagliga träningen mellan lägren.\n\nVerksamheten ordnas i samarbete med Vasaregionens idrottsakademi.",
+    "type" : "Description"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

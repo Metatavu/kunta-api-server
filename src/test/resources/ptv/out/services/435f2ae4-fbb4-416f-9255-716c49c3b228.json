@@ -1,0 +1,636 @@
+{
+  "sourceId" : null,
+  "keywords" : [ {
+    "value" : "biblioteksservice",
+    "language" : "sv"
+  }, {
+    "value" : "allmänna bibliotek",
+    "language" : "sv"
+  }, {
+    "value" : "bibliotekskort",
+    "language" : "sv"
+  }, {
+    "value" : "bibliotekssamlingar",
+    "language" : "sv"
+  }, {
+    "value" : "biblioteksmaterial",
+    "language" : "sv"
+  }, {
+    "value" : "samlingsdatabaser",
+    "language" : "sv"
+  } ],
+  "areas" : [ {
+    "type" : "Region",
+    "code" : "15",
+    "name" : [ {
+      "value" : "Ostrobothnia",
+      "language" : "en"
+    }, {
+      "value" : "Pohjanmaa",
+      "language" : "fi"
+    }, {
+      "value" : "Österbotten",
+      "language" : "sv"
+    } ],
+    "municipalities" : [ {
+      "code" : "946",
+      "name" : [ {
+        "value" : "Vörå",
+        "language" : "sv"
+      }, {
+        "value" : "Vöyri",
+        "language" : "fi"
+      }, {
+        "value" : "Vörå",
+        "language" : "en"
+      } ]
+    }, {
+      "code" : "287",
+      "name" : [ {
+        "value" : "Kristinestad",
+        "language" : "en"
+      }, {
+        "value" : "Kristinestad",
+        "language" : "sv"
+      }, {
+        "value" : "Kristiinankaupunki",
+        "language" : "fi"
+      } ]
+    }, {
+      "code" : "152",
+      "name" : [ {
+        "value" : "Storkyro",
+        "language" : "sv"
+      }, {
+        "value" : "Isokyrö",
+        "language" : "fi"
+      }, {
+        "value" : "Isokyrö",
+        "language" : "en"
+      } ]
+    }, {
+      "code" : "599",
+      "name" : [ {
+        "value" : "Pedersöre",
+        "language" : "en"
+      }, {
+        "value" : "Pedersören kunta",
+        "language" : "fi"
+      }, {
+        "value" : "Pedersöre",
+        "language" : "sv"
+      } ]
+    }, {
+      "code" : "231",
+      "name" : [ {
+        "value" : "Kaskö",
+        "language" : "sv"
+      }, {
+        "value" : "Kaskinen",
+        "language" : "fi"
+      }, {
+        "value" : "Kaskinen",
+        "language" : "en"
+      } ]
+    }, {
+      "code" : "499",
+      "name" : [ {
+        "value" : "Korsholm",
+        "language" : "en"
+      }, {
+        "value" : "Korsholm",
+        "language" : "sv"
+      }, {
+        "value" : "Mustasaari",
+        "language" : "fi"
+      } ]
+    }, {
+      "code" : "545",
+      "name" : [ {
+        "value" : "Närpes",
+        "language" : "en"
+      }, {
+        "value" : "Närpiö",
+        "language" : "fi"
+      }, {
+        "value" : "Närpes",
+        "language" : "sv"
+      } ]
+    }, {
+      "code" : "475",
+      "name" : [ {
+        "value" : "Malax",
+        "language" : "sv"
+      }, {
+        "value" : "Maalahti",
+        "language" : "fi"
+      }, {
+        "value" : "Malax",
+        "language" : "en"
+      } ]
+    }, {
+      "code" : "598",
+      "name" : [ {
+        "value" : "Jakobstad",
+        "language" : "sv"
+      }, {
+        "value" : "Pietarsaari",
+        "language" : "fi"
+      }, {
+        "value" : "Jakobstad",
+        "language" : "en"
+      } ]
+    }, {
+      "code" : "288",
+      "name" : [ {
+        "value" : "Kronoby",
+        "language" : "sv"
+      }, {
+        "value" : "Kronoby",
+        "language" : "en"
+      }, {
+        "value" : "Kruunupyy",
+        "language" : "fi"
+      } ]
+    }, {
+      "code" : "440",
+      "name" : [ {
+        "value" : "Luoto",
+        "language" : "fi"
+      }, {
+        "value" : "Larsmo",
+        "language" : "en"
+      }, {
+        "value" : "Larsmo",
+        "language" : "sv"
+      } ]
+    }, {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    }, {
+      "code" : "893",
+      "name" : [ {
+        "value" : "Uusikaarlepyy",
+        "language" : "fi"
+      }, {
+        "value" : "Nykarleby",
+        "language" : "sv"
+      }, {
+        "value" : "Nykarleby",
+        "language" : "en"
+      } ]
+    }, {
+      "code" : "280",
+      "name" : [ {
+        "value" : "Korsnäs",
+        "language" : "en"
+      }, {
+        "value" : "Korsnäs",
+        "language" : "fi"
+      }, {
+        "value" : "Korsnäs",
+        "language" : "sv"
+      } ]
+    }, {
+      "code" : "399",
+      "name" : [ {
+        "value" : "Laihia",
+        "language" : "en"
+      }, {
+        "value" : "Laihela",
+        "language" : "sv"
+      }, {
+        "value" : "Laihia",
+        "language" : "fi"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Bibliotek",
+      "language" : "sv"
+    }, {
+      "value" : "Libraries",
+      "language" : "en"
+    }, {
+      "value" : "Kirjastot",
+      "language" : "fi"
+    } ],
+    "description" : [ {
+      "value" : "Denna serviceundergrupp anknyter till kommunala och nationella allmän- och specialbibliotek och deras tjänster.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass is associated with municipal and national general and specialist libraries and their services.",
+      "language" : "en"
+    }, {
+      "value" : "Tähän palvelualaluokkaan kuuluvat kunnalliset ja valtakunnalliset yleis- ja erikoiskirjastot palveluineen.",
+      "language" : "fi"
+    } ],
+    "code" : "P25.1",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1199",
+    "parentId" : "200f3f00-31b1-41cc-a986-2d9e4dc40fb7",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1198"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "93ddab5e-d052-4b39-a2ea-dafa9530f075",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "435f2ae4-fbb4-416f-9255-716c49c3b228",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "03ad3379-8f18-4fbb-81a6-7c00562064b8",
+      "name" : "Vähänkyrön omatoimikirjasto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "32a838d8-fff9-4415-b119-5cc0b38ff6d1",
+      "name" : "Suvilahden kirjasto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "5a64e3d5-6590-48b8-827d-7932bc2518a6",
+      "name" : "Kirjastoauto Rölli"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "66c10e5f-1abd-4325-a953-b443fb926c96",
+      "name" : "Sundomin omatoimikirjasto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "798526b9-e272-48da-bd52-75a5d9fd8d25",
+      "name" : "Palosaaren kirjasto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "84e04200-54fe-462d-86d4-ea69d26fefb4",
+      "name" : "Merikaarron kirjasto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "98eb680e-278b-43af-9eb1-122055ae8b6c",
+      "name" : "Vaasan pääkirjasto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "a23e2868-86fe-49c0-b90d-e601ec2c819d",
+      "name" : "Huudi"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "b1347c1f-1ec3-484f-8a97-0860046f6aad",
+      "name" : "Vaasan kaupunginkirjasto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "dbb0f60f-57af-4f98-9337-da57772071be",
+      "name" : "Variskan kirjasto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  }, {
+    "value" : null,
+    "language" : "en"
+  } ],
+  "languages" : [ "fi", "sv", "en" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : null,
+  "serviceNames" : [ {
+    "language" : "sv",
+    "value" : "Biblioteksservice",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Kirjastopalvelut",
+    "type" : "Name"
+  }, {
+    "language" : "en",
+    "value" : "Library Services",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "kirjastopalvelut",
+      "language" : "fi"
+    }, {
+      "value" : "biblioteksservice",
+      "language" : "sv"
+    }, {
+      "value" : "library services",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p15530",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p72236"
+  }, {
+    "name" : [ {
+      "value" : "bibliotekskort",
+      "language" : "sv"
+    }, {
+      "value" : "kirjastokortit",
+      "language" : "fi"
+    }, {
+      "value" : "library cards",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p17622",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p33743"
+  }, {
+    "name" : [ {
+      "value" : "yleiset kirjastot",
+      "language" : "fi"
+    }, {
+      "value" : "allmänna bibliotek",
+      "language" : "sv"
+    }, {
+      "value" : "public libraries",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p17635",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p30906"
+  }, {
+    "name" : [ {
+      "value" : "kirjastokokoelmat",
+      "language" : "fi"
+    }, {
+      "value" : "bibliotekssamlingar",
+      "language" : "sv"
+    }, {
+      "value" : "library collections",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p66454",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p34792"
+  }, {
+    "name" : [ {
+      "value" : "samlingsdatabaser",
+      "language" : "sv"
+    }, {
+      "value" : "kokoelmatietokannat",
+      "language" : "fi"
+    }, {
+      "value" : "collection databases",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p55325",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p34350"
+  }, {
+    "name" : [ {
+      "value" : "biblioteksmaterial",
+      "language" : "sv"
+    }, {
+      "value" : "kirjastoaineistot",
+      "language" : "fi"
+    }, {
+      "value" : "library materials",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p7374",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p37069"
+  }, {
+    "name" : [ {
+      "value" : "kirjastot",
+      "language" : "fi"
+    }, {
+      "value" : "bibliotek",
+      "language" : "sv"
+    }, {
+      "value" : "libraries",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p30906",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p59220;http://www.yso.fi/onto/koko/p56133"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "en",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : "Vasa stadsbibliotek erbjuder tillgång till material, biblioteksservice och kulturinnehåll såväl i biblioteken som på nätet.",
+    "type" : "Summary"
+  }, {
+    "language" : "en",
+    "value" : "The library is a public facility and meeting place where the townspeople come for information, education, culture and experiences.",
+    "type" : "Summary"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "en",
+    "value" : "The library is a public facility and meeting place where the townspeople come for information, education, culture and experiences.\n\nAt the core of the city’s library services is an extensive, diverse collection of literature and other material that residents with a library card can borrow. If you have any questions or need guidance with issues concerning the library, don’t hesitate to ask the library staff. The library also organises various events and exhibitions.\n\nAs well as books, you can borrow music, DVDs, audiobooks, magazines, console games, e-books and e-book devices from Vaasa City Library. The Vaasa City Library’s collection includes about 540,000 works. Material is available in several languages in addition to Finnish and Swedish.",
+    "type" : "Description"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : "Vasa stadsbibliotek erbjuder tillgång till material, biblioteksservice och kulturinnehåll såväl i biblioteken som på nätet. Vasa stadsbibliotek är landskapsbiblioteket i Österbotten, och från biblioteket kan man förutom böcker även låna musik, filmer, ljudböcker, tidningar, konsolspel samt e-böcker. I bibliotekets samling finns cirka 540 000 olika verk. Material finns på flera olika språk, förutom på finska och svenska. Förutom bibliotekets samling är även den informationsservice personalen erbjuder en väsentlig del av biblioteksservicen. Biblioteket erbjuder i tillägg till de traditionella biblioteken även sin service i biblioteksbussen, skolbibliotek, patientbibliotek och genom hemservicen. Självbetjäningsbiblioteken betjänar kunderna dagligen. Vasa stadsbibliotek producerar olika utställningar och evenemang, såsom litteraturcirklar, sagostunder, Litteraturfestivalen LittFest, apparathandledning, boktips, författarbesök och hyr även ut lokaler för evenemang och möten. Bibliotekskortet är nyckeln till bibliotekets tjänster. ",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan kaupunginkirjasto tarjoaa pääsyn aineistoihin, kirjastopalveluihin ja kulttuurisisältöihin niin kirjastoissa kuin verkossakin.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan kaupunginkirjasto tarjoaa pääsyn aineistoihin, kirjastopalveluihin ja kulttuurisisältöihin niin kirjastoissa kuin verkossa. Vaasan kaupunginkirjasto on Pohjanmaan alueen maakuntakirjasto, josta voi lainata kirjojen lisäksi myös musiikkia, elokuvia, äänikirjoja, lehtiä, konsolipelejä sekä e-kirjoja. Kirjaston kokoelmiin kuuluu noin 540 000 eri teosta. Aineistoa on useilla eri kielillä, suomen ja ruotsin lisäksi. Kirjaston kokoelman lisäksi henkilökunnan tarjoama tietopalvelu on oleellinen osa kirjastopalveluita. Kirjasto tarjoaa palveluitaan perinteisten kirjastojen lisäksi myös kirjastoautossa, koulukirjastoissa, potilaskirjastoissa ja kotipalvelun kautta. Omatoimikirjastot palvelevat asiakkaita joka päivä. Vaasan kaupunginkirjasto tuottaa erilaisia näyttelyitä ja tapahtumia, kuten lukupiirejä, satutuokioita, LIttFest-kirjallisuusfestivaalin, laiteopastusta, kirjavinkkausta ja kirjailijavierailuja sekä vuokraa tiloja tapahtumia ja kokouksia varten. Kirjastokortti on avain kirjaston palveluihin. ",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

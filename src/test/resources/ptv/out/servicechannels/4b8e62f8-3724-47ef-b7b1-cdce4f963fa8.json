@@ -1,0 +1,89 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "http://vamia.fi/",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "http://vamia.fi/en/",
+    "value" : null,
+    "language" : "en"
+  }, {
+    "orderNumber" : "0",
+    "url" : "http://vamia.fi/sv/",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv", "en" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "1b3777e3-da4b-4cec-a57d-b020f52071cc",
+      "name" : "Ammatillinen koulutus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "55941159-9a0a-4856-a43b-5dfeb8418b45",
+      "name" : "Ammatillisen koulutuksen opiskelijahuolto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "sv",
+    "value" : "Vamias webbsidor",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Vamian verkkosivut",
+    "type" : "Name"
+  }, {
+    "language" : "en",
+    "value" : "Web pages of Vamia",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "Vamia är organisation för Vasa stads yrkesutbildning. Läs mera om undervisningen på läroanstaltens sidor. ",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Vamia är organisation för Vasa stads yrkesutbildning. Läs mera om undervisningen på läroanstaltens sidor.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Vamia on Vaasan kaupungin ammatillisen koulutuksen organisaatio. Lue lisää opetuksesta oppilaitoksen sivuilta.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Vamia on Vaasan kaupungin ammatillisen koulutuksen organisaatio. Lue lisää opetuksesta oppilaitoksen sivuilta.",
+    "type" : "Description"
+  }, {
+    "language" : "en",
+    "value" : "Vamia is an organisation for vocational education by the City of Vaasa. Read further on the education alternatives on the schools web pages.",
+    "type" : "Summary"
+  }, {
+    "language" : "en",
+    "value" : "Vamia is an organisation for vocational education by the City of Vaasa. Read further on the education alternatives on the schools web pages.",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "4b8e62f8-3724-47ef-b7b1-cdce4f963fa8"
+}

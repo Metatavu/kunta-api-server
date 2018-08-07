@@ -1,0 +1,318 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Ammatinvalinta ja opintojen ohjaus",
+      "language" : "fi"
+    }, {
+      "value" : "Career guidance and guidance counselling",
+      "language" : "en"
+    }, {
+      "value" : "Yrkesval och studiehandledning",
+      "language" : "sv"
+    } ],
+    "description" : [ {
+      "value" : "Till denna serviceundergrupp hör de tjänster som erbjuds inom ramarna för Finlands utbildningssystem och som guidar, ger råd och handleder elever eller studerande att fatta motiverade beslut för att välja yrke och/eller utbildningsinriktning. Karriärvägledningstjänster för en person som redan är i arbetslivet finns i den egna undergruppen under huvudgruppen Arbete och arbetslöshet.",
+      "language" : "sv"
+    }, {
+      "value" : "Tähän alapalveluluokkaan kuuluvat ne Suomen koulutusjärjestelmän puitteissa tarjottavat palvelut, jotka opastavat, neuvovat ja ohjaavat oppilasta tai opiskelijaa tekemään perusteltuja valintoja ammatin ja/tai koulutussuuntautumisen valitsemiseksi. Työelämässä jo olevan henkilön uraohjauspalvelut ovat omassa alaluokassaan Työ ja työttömyys -pääluokan alla.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains services offered within the Finnish education system intended to guide, advise and direct a pupil or a student in making justified choices when choosing a career and/or an educational path. Career guidance services for persons already in the labour market are included in their own subclass under the main class Work and unemployment.",
+      "language" : "en"
+    } ],
+    "code" : "P6.4",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1064",
+    "parentId" : "fd1bb60e-4206-4f0a-994f-8ffcb4ffaaa4",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1060"
+  }, {
+    "name" : [ {
+      "value" : "Lukiokoulutus",
+      "language" : "fi"
+    }, {
+      "value" : "Gymnasieutbildning",
+      "language" : "sv"
+    }, {
+      "value" : "General upper secondary education",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Till denna serviceundergrupp hör gymnasieutbildningens innehåll och syfte, hur man söker till gymnasieutbildningen, sätt att genomföra gymnasieutbildning samt studentexamen. Det ekonomiska stödet för studierna behandlas i sin egen serviceundergrupp.",
+      "language" : "sv"
+    }, {
+      "value" : "Tähän alapalveluluokkaan kuuluvat lukiokoulutuksen sisältö ja tarkoitus, lukiokoulutukseen hakeminen, lukion suorittamisen tavat ja ylioppilastutkinto. Opintojen taloudellinen tuki käsitellään omassa alapalveluluokassaan.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains the contents and objectives of general upper secondary education, applying for a place in general upper secondary education, methods of completing the education and the matriculation examination. Financial support for studies is included in its own subclass.",
+      "language" : "en"
+    } ],
+    "code" : "P6.8",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1068",
+    "parentId" : "fd1bb60e-4206-4f0a-994f-8ffcb4ffaaa4",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1060"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "1c94b5dc-93e7-4eb4-bc23-9b332109fb5b",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "34ce61c9-128d-4e19-b805-cd0fc40c6f3c",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "08ed030f-2000-47fe-83ab-7bcfe338db9c",
+      "name" : "Vasa svenska aftonläroverketin verkkosivut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "234ed31d-c6fc-4f1e-9fb6-8e7bbcee0f88",
+      "name" : "Vasa Gymnasiumin verkkosivut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3f69886e-3e21-41c6-8486-19d289644f10",
+      "name" : "Vasa övningsskolan verkkosivut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "45be9de4-40f9-45f5-a16b-d7bc6e7dcec4",
+      "name" : "Vaasan lyseon lukion verkkosivut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : null,
+  "serviceNames" : [ {
+    "language" : "sv",
+    "value" : "Gymnasieutbildningens studiehandledning",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Lukiokoulutuksen opinto-ohjaus",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "lukiokoulutus (opetus)",
+      "language" : "fi"
+    }, {
+      "value" : "gymnasieutbildning",
+      "language" : "sv"
+    }, {
+      "value" : "general upper secondary education",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p75844",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p33827"
+  }, {
+    "name" : [ {
+      "value" : "opinto-ohjaus",
+      "language" : "fi"
+    }, {
+      "value" : "studievägledning",
+      "language" : "sv"
+    }, {
+      "value" : "educational counselling",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p5541",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p77930"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : "Lukioiden sivuilla voit tutustua tarkemmin koulujen opinto-ohjaukseen.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : "I Vasa finns fyra gymnasier: Vaasan lyseon lukio och dess vuxenlinje, Vasa gymnasium, Vasa övningsskolas gymnasium och dess IB-linje samt Vasa svenska aftonläroverk.\n",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : "Gymnasieeleverna har rätt att få studiehandledning, som stöder den studerande och hjälper honom eller henne att förbereda sig för studier och arbetsli",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : "På gymnasiernas sidor kan du bekanta dig närmare med studiehandledningen i skolorna. ",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasassa toimii neljä lukiota: Vaasan lyseon lukio ja Vaasan lyseon lukion aikuislinja, Vasa gymnasium, Vasa övningsskola gymnasium ja sen IB-linja sekä Vasa svenska aftonläroverk.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Lukiolaisilla on oikeus opinto-ohjaukseen, joka tukee opiskelijaa ja auttaa valmistautumaan lukion jälkeisiin opintoihin ja työelämään.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

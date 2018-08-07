@@ -1,0 +1,61 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/node/1311/",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/sv/node/1311/",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "c5bb9319-8f2c-4150-beb2-7f98750ffea0",
+      "name" : "Venepaikat"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Venepaikat",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Båtplatser",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "På webbsidorna hittar du mer information om båtplatser i Vasa.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Venepaikat -verkkosivulta löydät lisätietoa Vaasan kaupungin venepaikoista.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Venepaikat -verkkosivulta löydät lisätietoa Vaasan kaupungin venepaikoista.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "På webbsidorna hittar du mer information om båtplatser i Vasa.",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "2a927951-d87f-4299-9686-2d06ed169a07"
+}

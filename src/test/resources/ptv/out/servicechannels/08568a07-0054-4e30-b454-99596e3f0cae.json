@@ -1,0 +1,167 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/node/18591",
+    "value" : "Rokkikoulu",
+    "language" : "fi"
+  }, {
+    "orderNumber" : "1",
+    "url" : "https://www.facebook.com/Rokkikoulu",
+    "value" : "Rokkikoulun Facebook",
+    "language" : "fi"
+  }, {
+    "orderNumber" : "2",
+    "url" : "https://www.instagram.com/rokkikoulu/",
+    "value" : "Rokkikoulun Instagram",
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/sv/node/18591",
+    "value" : "Rockskolan",
+    "language" : "sv"
+  }, {
+    "orderNumber" : "1",
+    "url" : "https://fi-fi.facebook.com/Rokkikoulu",
+    "value" : "Rockskolans Facebook",
+    "language" : "sv"
+  }, {
+    "orderNumber" : "2",
+    "url" : "https://www.instagram.com/rokkikoulu/",
+    "value" : "Rockskolans Instagramkonto",
+    "language" : "sv"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Kvarngatan",
+        "language" : "sv"
+      }, {
+        "value" : "Myllykatu",
+        "language" : "fi"
+      } ],
+      "streetNumber" : "18 A",
+      "postalCode" : "65100",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ {
+        "value" : "Rockwerstas",
+        "language" : "fi"
+      }, {
+        "value" : "Rockwerstas",
+        "language" : "sv"
+      } ],
+      "latitude" : "7007834.055",
+      "longitude" : "229173.52",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "045f0990-2097-442e-9c11-e24b0f68987f",
+      "name" : "Kulttuurinen nuorisotyö"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "632d6d70-14c7-4b91-b37a-05de0c140161",
+      "name" : "Nuorisotilat"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ {
+    "value" : "rokkikoulu@vaasa.fi",
+    "language" : "fi"
+  }, {
+    "value" : "rokkikoulu@vaasa.fi",
+    "language" : "sv"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Rokkikoulu",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Rockskolan",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Vaasan kaupungin nuorisopalveluiden ylläpitämä Rokkikoulu toimii Vaasan Rockwerstaalla.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Rockskolan, som upprätthålls av Vasa stads ungdomsservice, håller till vid Vasa Rockwerstas.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan kaupungin nuorisopalveluiden ylläpitämä Rokkikoulu toimii Vaasan Rockwerstaalla. Rokkikoulu tarjoaa vaasalaisille 13-17-vuotiaille nuorille musiikin opiskeluun vaihtoehdon, joka keskittyy olennaiseen ja ottaa huomioon kunkin nuoren toiveet ja tavoitteet rock- ja pop-musiikissa. Opetusta annetaan sekä yksilöohjauksena että bändiopetuksena. \n",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Rockskolan, som upprätthålls av Vasa stads ungdomsservice, håller till vid Vasa Rockwerstas. Rockskolan erbjuder 13-17-åriga ungdomar i Vasa en alternativ musikutbildning, som koncentrerar sig på det väsentliga och beaktar den enskilda individens önskemål och målsättningar inom rock- och popmusiken. Undervisning ges både som individuell undervisning och bandundervisning. ",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2018-02-02T13:44:50.799046",
+  "id" : "08568a07-0054-4e30-b454-99596e3f0cae"
+}

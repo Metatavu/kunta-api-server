@@ -1,0 +1,260 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Sosiaalipalvelut",
+      "language" : "fi"
+    }, {
+      "value" : "Socialtjänster",
+      "language" : "sv"
+    }, {
+      "value" : "Social services",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Tässä palveluluokassa käsitellään sekä yleisiä että erityisryhmille suunnattuja sosiaalipalveluja, jotka on tarkoitettu kansalaisten arjen, asumisen ja toimeentulon tukemiseen.",
+      "language" : "fi"
+    }, {
+      "value" : "I den här servicegruppen behandlas både allmänna socialtjänster och socialtjänster för specialgrupper, vilka avsetts som stöd för medborgarnas vardag, boende och försörjning.",
+      "language" : "sv"
+    }, {
+      "value" : "This service class contains both general social services and those targeted at special groups to support citizens’ everyday life management, housing and incomes.",
+      "language" : "en"
+    } ],
+    "code" : "P4",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1023",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "dbce0e5f-7b75-4f4a-b024-408c066c1129",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "2bb73be6-ff05-4214-93a9-76a00b06ed36",
+      "name" : "Päiväkeskus Treffis"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "7c5944a3-4928-4fca-82d1-d59b34365734",
+      "name" : "Vaasan Setlementtiyhdistyksen verkkosivut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "sv"
+  }, {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Päihde- ja mielenterveyskuntoutujien päivä- ja työtoiminta",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Dagverksamhet för personer med problem som gäller missbruk och mental hälsa",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "yksityinen päivätoiminta",
+      "language" : "fi"
+    }, {
+      "value" : "privat dagverksamhet",
+      "language" : "sv"
+    }, {
+      "value" : "private day activities",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p75777",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p18172"
+  }, {
+    "name" : [ {
+      "value" : "päivätoiminta",
+      "language" : "fi"
+    }, {
+      "value" : "dagverksamhet",
+      "language" : "sv"
+    }, {
+      "value" : "day activities",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p18172",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p18203"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan kaupunki tarjoaa päihde- ja mielenterveyskuntoutujille päivä- ja työtoimintaa kuntoutumisen tueksi.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan kaupunki tarjoaa päihde- ja mielenterveyskuntoutujille päivä- ja työtoimintaa kuntoutumisen tueksi.\n\nPäivä- ja työtoimintaa järjestetään sekä kaupungin omana toimintana että ostopalveluna. Tarkoituksena on tarjota virikkeitä, sosiaalista kanssakäymistä, harrastustoimintaa ja tukea arkeen sekä työelämätaitojen vahvistamista.\n\nPäiväkeskus Treffis on kaupungin oma toimintayksikkö ja se tarjoaa mahdollisuuden viettää raitista vapaa-aikaa kuntoutumisen tukena. Päiväkeskuksessa voi lukea päivä- ja aikakausilehtiä, käyttää internetpalveluita, kahvitella, laittaa omista tarvikkeista aterioita sekä pelata biljardia.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Vasa stad erbjuder dag- och arbetsverksamhet som stöd för rehabiliteringen av personer inom missbrukar- och mentalvårdsrehabilitering.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : "Dagcentret erbjuder möjlighet till nykter fritid som stöd för rehabiliteringen.\n\nDag- och arbetsverksamhet ordnas både som stadens egen verksamhet och genom köpservice. Syftet är att erbjuda rekreation, socialt umgänge, hobbyverksamhet, stöd i vardagen samt förstärkande av arbetslivsfärdigheterna.\n\nDagcentret Treffis är stadens egen verksamhetsenhet och centret erbjuder möjligheten att tillbringa en rusmedelsfri fritid som stöd för rehabiliteringen. I dagcentret kan man läsa dagstidningar, tidskrifter, använda internettjänster, dricka kaffe, tillreda måltider av egna ingredienser samt spela biljard.\n",
+    "type" : "Description"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "ProcuredServices",
+    "organization" : null,
+    "roleType" : "Producer",
+    "additionalInformation" : [ {
+      "value" : "Vasa Settlementförening R.F",
+      "language" : "sv"
+    }, {
+      "value" : "Vaasan Setlementtiyhdistys",
+      "language" : "fi"
+    } ]
+  }, {
+    "provisionType" : "ProcuredServices",
+    "organization" : null,
+    "roleType" : "Producer",
+    "additionalInformation" : [ {
+      "value" : "Vaasanseudun sosiaalipsykiatrinen yhdistys ry",
+      "language" : "fi"
+    }, {
+      "value" : "Vaasanseudun sosiaalipsykiatrinen yhdistys ry",
+      "language" : "sv"
+    } ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

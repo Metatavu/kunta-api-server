@@ -1,0 +1,88 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "d195781f-8f27-46a2-8bbd-2784e2f1b441",
+      "name" : "Kaupanvahvistus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63254364",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63254364",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Kartastoassistentti",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Kartverksassistent",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "Phone",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Tonttikaupan tietopaketti tilataan kiinteistötoimen kartastoassistentilta.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan kaupungin kiinteistötoimesta on mahdollista tilata tonttikaupan tietopaketti, joka sisältää kaikki oleelliset viranomaistiedot kaupan kohteena olevasta alueesta. Tonttikaupan tietopaketti tilataan kiinteistötoimen kartastoassistentilta.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Infopaket om tomtköp beställs av fastighetssektorns kartverksassistent.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Från Vasa stads fastighetssektor kan man beställa ett infopaket om tomtköp, där alla väsentliga myndighetsuppgifter ingår om området som är föremål för köpet. Infopaket om tomtköp beställs av fastighetssektorns kartverksassistent. ",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "d4af83c8-0eeb-49a7-8bc4-d77a50868394"
+}

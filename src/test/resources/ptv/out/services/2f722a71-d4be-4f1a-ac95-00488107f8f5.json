@@ -1,0 +1,264 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Jätehuolto",
+      "language" : "fi"
+    }, {
+      "value" : "Avfallshantering",
+      "language" : "sv"
+    }, {
+      "value" : "Waste management",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "I denna serviceundergrupp behandlas kommunal lagstadgad avfallshantering, lokal forskning i och utredning av avfall samt relaterade informationstjänster.",
+      "language" : "sv"
+    }, {
+      "value" : "Tässä palveluluokassa käsitellään, kunnallista lakisääteistä jätehuoltoa, jätteisiin liittyvää paikallista tutkimusta ja selvityksiä sekä aiheeseen liittyviä tietopalveluja.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains statutory municipal waste management, local research and studies related to waste as well as information services on waste.",
+      "language" : "en"
+    } ],
+    "code" : "P23.2",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1186",
+    "parentId" : "9eac7938-e66b-4023-ac2e-8774ee615bca",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1184"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "176b2639-e0e2-4d3b-aa1b-4cd11d147aef",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "2f722a71-d4be-4f1a-ac95-00488107f8f5",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : null,
+  "serviceNames" : [ {
+    "language" : "sv",
+    "value" : "Avfallsrådgivning",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Jätehuollon neuvonta",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "avfall",
+      "language" : "sv"
+    }, {
+      "value" : "jätteet",
+      "language" : "fi"
+    }, {
+      "value" : "wastes",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p33692",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p35700"
+  }, {
+    "name" : [ {
+      "value" : "jätehuolto",
+      "language" : "fi"
+    }, {
+      "value" : "avfallshantering",
+      "language" : "sv"
+    }, {
+      "value" : "waste management",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p36676",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p36160;http://www.yso.fi/onto/koko/p33180"
+  }, {
+    "name" : [ {
+      "value" : "jäteneuvonta",
+      "language" : "fi"
+    }, {
+      "value" : "avfallsrådgivning",
+      "language" : "sv"
+    }, {
+      "value" : "waste advice",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p4787",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p35080"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Företag och samfund",
+      "language" : "sv"
+    }, {
+      "value" : "Yritykset ja yhteisöt",
+      "language" : "fi"
+    }, {
+      "value" : "Businesses and non-government organizations",
+      "language" : "en"
+    } ],
+    "code" : "KR2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "Företag på den inhemska marknaden",
+      "language" : "sv"
+    }, {
+      "value" : "Businesses operating in the domestic (Finnish) market",
+      "language" : "en"
+    }, {
+      "value" : "Kotimarkkinoilla toimivat yritykset",
+      "language" : "fi"
+    } ],
+    "code" : "KR2.3",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2011",
+    "parentId" : "338939bb-b01a-4a80-a091-7c5238322bc0",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008"
+  }, {
+    "name" : [ {
+      "value" : "Medborgare",
+      "language" : "sv"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasassa jätehuollon neuvonnasta vastaa seudun kuntien omistama Stormossen Oy.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Jätehuollon neuvontapalveluista voit lukea lisää Stormossenin verkkosivuilta.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasassa jätehuollon neuvonnasta vastaa seudun kuntien omistama Stormossen Oy.  Stormossenin jäteneuvontapalveluihin kuuluvat muun muassa tutustumiskäynnit jätekeskuksella, alakouluikäisille suunnatut jäteseikkailut, yritysneuvonta ja jäteneuvojan tilaaminen erilaisiin tilaisuuksiin.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "I Vasa svarar Ab Stormossen Oy, som ägs av kommunerna i regionen, för avfallsrådgivningen.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "I Vasa svarar Ab Stormossen Oy, som ägs av kommunerna i regionen, för avfallsrådgivningen.  Till Stormossens avfallsrådgivningsservice hör bland annat studiebesök på avfallscentralen, sopäventyr för barn i åk 1-6, företagsrådgivning och beställning av avfallsrådgivare till olika evenemang.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Du kan läsa mera om avfallsrådgivningsservicen på Stormossens webbsidor. ",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "ProcuredServices",
+    "organization" : null,
+    "roleType" : "Producer",
+    "additionalInformation" : [ {
+      "value" : "Ab Stormossen Oy",
+      "language" : "fi"
+    } ]
+  } ]
+}

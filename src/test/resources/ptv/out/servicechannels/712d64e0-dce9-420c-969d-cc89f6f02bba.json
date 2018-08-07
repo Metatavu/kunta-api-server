@@ -1,0 +1,61 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/kaupungin-organisaatio/tekninen-toimi/vaasan-ruokapalvelut/ruokapalvelut-peruskouluissa",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/sv/stadens-organisation/tekniska-sektorn/vasa-matservice/matservicen-i-grundskolorna",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "sv", "fi" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "35869142-f4c4-4faa-a2b5-1cbb3c659352",
+      "name" : "Kouluruokailu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Ruokapalvelut peruskouluissa",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Matservicen i grundskolorna",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Vaasan Ruokapalveluiden sivuilta löydät peruskoulujen ruokalistan, tietoa erityisruokavalioista sekä muuta yleistä tietoa kouluruokailusta Vaasassa.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan Ruokapalveluiden sivuilta löydät peruskoulujen ruokalistan, tietoa erityisruokavalioista sekä muuta yleistä tietoa kouluruokailusta Vaasassa.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Matsedeln för grundskolorna, information om specialkost samt ytterligare information om skolmåltiderna i Vasa finns på sidan Vasa Matservice.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Matsedeln för grundskolorna, information om specialkost samt ytterligare information om skolmåltiderna i Vasa finns på sidan Vasa Matservice.",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "712d64e0-dce9-420c-969d-cc89f6f02bba"
+}

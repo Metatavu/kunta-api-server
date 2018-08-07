@@ -1,0 +1,124 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "languages" : [ "fi", "sv", "en" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "0d40274d-f411-4e53-aea3-72e308f88749",
+      "name" : "Aikuisten sosiaalityö"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63254656",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63254656",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "sv",
+    "value" : "Ledande socialarbetare - aktivering och rehabilitering",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Johtava sosiaalityöntekijä - aktivointi ja kuntoutus",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ {
+    "serviceHourType" : "DaysOfTheWeek",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ {
+      "value" : null,
+      "language" : "fi"
+    } ],
+    "openingHour" : [ {
+      "dayFrom" : "Monday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    }, {
+      "dayFrom" : "Tuesday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    }, {
+      "dayFrom" : "Wednesday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    }, {
+      "dayFrom" : "Thursday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    }, {
+      "dayFrom" : "Friday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    } ]
+  } ],
+  "serviceChannelType" : "Phone",
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "Serviceområdet för vuxensocialarbete:\n\n* stöda unga klienter, klienter i arbetsför ålder samt klienter som behöver särskilt stöd i ärenden som berör livshanteringen, arbete, utkomst och studier\n* minska på ojämlikheten och främja delaktigheten samt jämlikheten i samhället\n* främja delaktigheten och jämlikheten för personer med funktionsnedsättningar i samhället samt främja och få bort hinder som beror på funktionsnedsättningarna",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Ledande socialarbetare - aktivering och rehabilitering.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Aikuissosiaalityön johtava sosiaalityöntekijä neuvoo ja ohjaa liittyen aktivointitoimenpiteisiin ja kuntoutukseen.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Aikuissosiaalityön johtava sosiaalityöntekijä neuvoo ja ohjaa liittyen aktivointitoimenpiteisiin ja kuntoutukseen.\n\nAikuisten sosiaalityön tarkoituksena on mm:\n* ehkäistä ja vähentää päihteiden ongelmakäyttöä ja siihen liittyviä haittoja sekä parantaa päihteiden ongelmakäyttäjien ja heidän läheistensä toimintakykyä ja turvallisuutta\n* vahvistaa mielenterveyttä suojaavia tekijöitä\n* vähentää ja poistaa mielenterveyttä vaarantavia tekijöitä\n* tukea mielenterveyskuntoutujien elämänhallintaa, parantaa heidän ja heidän läheistensä toimintakykyä",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "047fa48f-fc26-4ab0-88d6-c9a9623be138"
+}

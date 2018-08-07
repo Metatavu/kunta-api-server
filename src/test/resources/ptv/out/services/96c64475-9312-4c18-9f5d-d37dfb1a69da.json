@@ -1,0 +1,337 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Motion och idrott",
+      "language" : "sv"
+    }, {
+      "value" : "Sports and exercise",
+      "language" : "en"
+    }, {
+      "value" : "Liikunta ja urheilu",
+      "language" : "fi"
+    } ],
+    "description" : [ {
+      "value" : "Tähän palvelualaluokkaan kuuluvat liikuntapaikat, urheiluopistot ja niiden palvelut, liikunnan tietopalvelut ja urheiluseurojen sekä liikuntajärjestöjen toiminta.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains sports facilities, sports institutes and their services, exercise information services and the activities of sports clubs and sports associations.",
+      "language" : "en"
+    }, {
+      "value" : "Denna serviceundergrupp omfattar motionsställen, idrottsinstitut och deras tjänster, informationstjänster för motion samt idrottsföreningars och motionsorganisationers verksamhet.",
+      "language" : "sv"
+    } ],
+    "code" : "P27.1",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1211",
+    "parentId" : "175762f6-53cd-4d29-a285-625bfb421b21",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1210"
+  }, {
+    "name" : [ {
+      "value" : "Kulttuuri",
+      "language" : "fi"
+    }, {
+      "value" : "Kultur",
+      "language" : "sv"
+    }, {
+      "value" : "Culture",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "This service class contains a wide range of cultural services associated with different branches of arts, the library system, religious organisations and liberal adult education. The class also includes different free time services.",
+      "language" : "en"
+    }, {
+      "value" : "Tässä palveluluokassa käsitellään kulttuuripalveluja laajasti taiteen eri alojen, kirjastolaitoksen, uskonnollisten yhteisöjen ja vapaan sivistystyön puitteissa. Myös erilaiset vapaa-ajan palvelut kuuluvat tähän luokkaan.",
+      "language" : "fi"
+    }, {
+      "value" : "I denna servicegrupp behandlas kulturtjänster på ett omfattande plan inom ramen för olika konstarter, biblioteksväsendet, religiösa samfund och fritt bildningsarbete. Även olika fritidstjänster hör till denna grupp.",
+      "language" : "sv"
+    } ],
+    "code" : "P25",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1198",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "Taiteet",
+      "language" : "fi"
+    }, {
+      "value" : "Arts",
+      "language" : "en"
+    }, {
+      "value" : "Konst",
+      "language" : "sv"
+    } ],
+    "description" : [ {
+      "value" : "I denna serviceundergrupp behandlas yrkesutbildning och utbildning på högre stadier som anknyter till utställningar och evenemang som riktar sig till allmänheten och som fokuserar på bildkonst, konstindustri, föreställande konstarter, musik och litteratur samt informationstjänster relaterade till konstsamlingar.",
+      "language" : "sv"
+    }, {
+      "value" : "Tässä palvelualaluokassa käsitellään kuvataiteisiin, taideteollisuuteen, eri esittäviin taiteisiin, musiikkiin ja kirjallisuuteen liittyvää ammatillista ja korkea-asteen koulutusta, yleisölle suunnattuja näyttelyjä ja tapahtumia sekä taidekokoelmiin liittyviä tietopalveluja.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains vocational and higher level education and training related to visual arts, arts and design, different performing arts, music and literature, exhibitions and events intended for the public as well as information services associated with art collections.",
+      "language" : "en"
+    } ],
+    "code" : "P25.2",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1200",
+    "parentId" : "200f3f00-31b1-41cc-a986-2d9e4dc40fb7",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1198"
+  }, {
+    "name" : [ {
+      "value" : "Kansalaisjärjestöjen toiminta",
+      "language" : "fi"
+    }, {
+      "value" : "Activities of non-governmental organisations",
+      "language" : "en"
+    }, {
+      "value" : "Frivilligorganisationers verksamhet",
+      "language" : "sv"
+    } ],
+    "description" : [ {
+      "value" : "Tähän palvelualaluokkaan kuuluvat järjestöjen ja yhdistysten toimintaan ja sen lainmukaisuuteen kuuluvat asiat kuten kampanjointiin liittyvän nimien ja varojen keräämisen lupamenettelyt.",
+      "language" : "fi"
+    }, {
+      "value" : "Denna serviceundergrupp omfattar ärenden relaterade till organisationers och föreningars verksamhet och dess lagenlighet, såsom tillståndsförfaranden för insamling av namn och medel för kampanjer.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains issues related to the activities of organisations and associations and the legality of these activities, including permit procedures for collecting signatures and funds as part of campaigning.",
+      "language" : "en"
+    } ],
+    "code" : "P8.4",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1094",
+    "parentId" : "6621dcc1-803a-4984-b20e-16da4651a293",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1090"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "96c64475-9312-4c18-9f5d-d37dfb1a69da",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "1be51928-1202-41ad-add3-6f136f53c2d1",
+      "name" : "Yhteispalvelu Vähäkyrö"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "2bc72bd6-20e3-4780-9775-e7e5752489ea",
+      "name" : "Keskuskirjaamo"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "35621b68-e951-4ea9-9642-f509662c1144",
+      "name" : "Avustushakemus sähköpostilla"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "97570ca2-8438-4f25-a8c8-d29688217a20",
+      "name" : "Yhteispalvelu Vaasa - Kansalaisinfo"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "c85952f5-5c00-4426-8f65-428b3a8bb5fb",
+      "name" : "Avustushakemuslomake"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : "Närmare uppgifter om villkoren för beviljande av understöd finns på Vasa stads webbsidor.",
+    "language" : "sv"
+  }, {
+    "value" : "Tarkemmat tiedot avustusten myöntöperusteista löydät Vaasan kaupungin nettisivuilta.\n",
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "sv",
+    "value" : "Understöd för ordnande av evenemang",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Avustukset tapahtumien järjestämiseen",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "avustukset",
+      "language" : "fi"
+    }, {
+      "value" : "understöd (bidrag)",
+      "language" : "sv"
+    }, {
+      "value" : "financial aid",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p34757",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p63861;http://www.yso.fi/onto/koko/p13760"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Yritykset ja yhteisöt",
+      "language" : "fi"
+    }, {
+      "value" : "Businesses and non-government organizations",
+      "language" : "en"
+    }, {
+      "value" : "Företag och samfund",
+      "language" : "sv"
+    } ],
+    "code" : "KR2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : "Staden beviljar understöd till arrangörer av för allmänheten öppna evenemang som ordnas i Vasa och som i första hand är nationella, internationella eller strävar efter att bli det.\nMer information om evenemangsunderstöden ger kommunikationschef Leena Forsén, tfn 040 635 0762.\n\nFör evenemangsarrangörerna har man i Vasa utarbetat en handbok för evenemangsarrangörer, i vilken man har samlat uppgifter om vad ordnandet av ett lyckat evenemang förutsätter, vilka tillstånd som behövs och kontaktuppgifterna till den myndighet som beviljar tillstånd. ",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Ansökningstiderna för understöden meddelas genom kungörelser. Man kan följa kungörelserna på stadens webbsidor eller vid Vasa samserviceställe.\nAnsökningarna sänds i första hand in elektroniskt.  Till ansökan kan man bifoga bilagor i elektronisk form. \n\nMan kan skriva ut blanketten för understödsansökan eller hämta en pappersblankett vid Vasa samserviceställe eller Lillkyro samserviceställe. \n\nBlanketten returneras till stadens registratur, Vasa stads centralregistratur, PB 3, 65101 VASA eller registraturen@vasa.fi.\nELLER till Lillkyro samserviceställe, Lillkyrovägen 11, 66500 Lillkyro.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : "Vasa stad delar årligen ut evenemangsunderstöd.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Avustusten hakuajat ilmoitetaan kuulutuksilla. Kuulutuksia voi seurata kaupungin www-sivuilla tai Vaasan yhteispalvelupisteessä.\n\nHakemukset toimitetaan ensisijaisesti sähköisen asioinnin kautta.  Hakemukseen voi lisätä sähköisessä muodossa olevat liitteet. \nAvustushakemuslomakkeen voi tulostaa tai hakea paperilomake Vaasan yhteispalvelupisteestä ja Vähänkyrön yhteispalvelupisteestä. \n\nLomake palautetaan kaupungin kirjaamoon, Vaasan kaupungin keskuskirjaamo, PL 3, 65101 VAASA tai kirjaamo@vaasa.fi.\nTAI Vähänkyrön yhteispalvelupisteeseen, Vähänkyröntie 11, 66500 Vähäkyrö.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Kaupunki myöntää avustuksia Vaasassa järjestettävien, yleisölle avoimien ja ensisijaisesti valtakunnallisten, kansainvälisten tai sellaiseksi pyrkivien tapahtumien järjestäjille.\nLisätietoja tapahtuma-avustuksista antaa viestintäpäällikkö Leena Forsén puh. 040 635 0762.\n\nTapahtumajärjestäjille on Vaasassa tehty Tapahtumajärjestäjän käsikirja, johon on koottu tiedot siitä, mitä onnistuneen tapahtuman järjestäminen edellyttää, mitä lupia tarvitaan ja luvan myöntävän viranomaisen yhteystiedot. \n",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan kaupunki jakaa vuosittain tapahtuma-avustuksia.",
+    "type" : "Summary"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

@@ -1,0 +1,300 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "1",
+    "url" : "http://www.vaasanvesi.fi/asiakaspalvelu",
+    "value" : "Vaasan veden asiakaspalvelu",
+    "language" : "fi"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Valimontie",
+        "language" : "fi"
+      }, {
+        "value" : "Gjuterivägen",
+        "language" : "sv"
+      } ],
+      "streetNumber" : "2 B",
+      "postalCode" : "65100",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ ],
+      "latitude" : "7007228.581",
+      "longitude" : "229805.6",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  }, {
+    "type" : "Postal",
+    "subType" : "PostOfficeBox",
+    "postOfficeBoxAddress" : {
+      "postOfficeBox" : [ {
+        "value" : "PL 701",
+        "language" : "fi"
+      }, {
+        "value" : "PB 701",
+        "language" : "sv"
+      } ],
+      "postalCode" : "65100",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ ]
+    },
+    "streetAddress" : null,
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "414b4c1c-7d39-4ad0-bcb4-a0926c6f2d51",
+      "name" : "Jäteveden puhdistus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "5210e364-8b49-4eb4-bd4e-4df8b34a7bbd",
+      "name" : "Liittyminen vesi- ja viemäriverkostoon"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "5bc8f908-9b0b-45a9-8c06-b6d7e325cb5a",
+      "name" : "Veden tuotanto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Fax",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : null,
+    "isFinnishServiceNumber" : true,
+    "number" : null,
+    "language" : "sv"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Vaasan kaupungin puhelinkeskus",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63251111",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Vikailmoitukset työaikana",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63254187",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Vikailmoitukset työajan ulkopuolella",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63254151",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Vikailmoitukset työajan ulkopuolella",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "407257900",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Vasa stads telefonväxeln",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63251111",
+    "language" : "sv"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Felanmälningar under arbetstid",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63254187",
+    "language" : "sv"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Felanmälningar utanför arbetstid",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63254151",
+    "language" : "sv"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Felanmälningar utanför arbetstid",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "407257900",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ {
+    "value" : "vaasanvesi@vaasa.fi",
+    "language" : "fi"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Vaasan Vesi",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Vasa Vatten",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ {
+    "serviceHourType" : "DaysOfTheWeek",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ {
+      "value" : null,
+      "language" : "fi"
+    } ],
+    "openingHour" : [ {
+      "dayFrom" : "Monday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "15:30:00"
+    }, {
+      "dayFrom" : "Tuesday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "15:30:00"
+    }, {
+      "dayFrom" : "Wednesday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "15:30:00"
+    }, {
+      "dayFrom" : "Thursday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "15:30:00"
+    }, {
+      "dayFrom" : "Friday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "15:30:00"
+    } ]
+  } ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Vaasan vesi on Vaasan kaupungin liikelaitos. Vaasan Vesi tuottaa vesihuoltopalveluita Vaasan seudulla.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan vesi on Vaasan kaupungin liikelaitos. Vaasan Vesi tuottaa vesihuoltopalveluita Vaasan seudulla, joista keskeisimmät ovat hyvänlaatuinen talousvesi ja sen jakelu sekä jätevesien viemäröinti ja puhdistus. Näiden palveluiden tuottamiseen sisältyy lukuisa joukko osa- ja oheispalveluja. Asiakaspalveluun voit olla yhteydessä vesihuoltoon liittyvissä asioissa. Tarkemmat yhteystiedot liittymätietojen tilaukseen, työtilauksiin ja muihin palveluihin löydät asiakaspalvelun verkkosivulta.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Vasa Vatten är Vasa stads affärsverk. Vasa Vatten producerar vattentjänster i Vasaregionen.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Vasa Vatten är Vasa stads affärsverk. Vasa Vatten erbjuder sina kunder vattenförsörjningstjänster, varav de mest centrala är att rena och leverera ett högklassigt hushållsvatten, samt leda och rena avloppsvatten. I dessa tjänster ingår även en rad sidotjänster. I ärenden som gäller vattentjänster kan du kontakta kundbetjäningen. Närmare kontaktuppgifter för beställning av anslutningsuppgifter, arbetsbeställningar och andra tjänster finns på kundbetjäningens webbsida.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "df0097e6-ad66-4a86-a4df-0d31f34daf24"
+}

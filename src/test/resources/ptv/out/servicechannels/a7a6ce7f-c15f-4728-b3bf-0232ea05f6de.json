@@ -1,0 +1,124 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "1df0be8d-54ef-42d9-9112-52b7c34e7a95",
+      "name" : "Perhesuunnittelu- ja ehkäisyneuvonta"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Sms",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "406718134",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "406718134",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "sv",
+    "value" : "SMS-avbokning av en tidsbokning till Familjeplaneringsrådgivningen",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Perhesuunnitteluneuvolan ajanvarauksen tekstiviestiperuutus",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ {
+    "serviceHourType" : "DaysOfTheWeek",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ {
+      "value" : null,
+      "language" : "fi"
+    } ],
+    "openingHour" : [ {
+      "dayFrom" : "Monday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    }, {
+      "dayFrom" : "Tuesday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    }, {
+      "dayFrom" : "Wednesday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    }, {
+      "dayFrom" : "Thursday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    }, {
+      "dayFrom" : "Friday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    } ]
+  } ],
+  "serviceChannelType" : "Phone",
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "Du kan avboka din tid genom ett textmeddelande.  Ange ditt namn och den bokade tidpunkten. Om du inte får svarsbekräftelse på meddelandet, har din anmälan inte kommit fram. Vänligen kontakta oss igen.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "SMS-avbokning av en tidsbokning till Familjeplaneringsrådgivningen.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Perhesuunnitteluneuvolan ajanvarauksen tekstiviestiperuutus",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Perhesuunnitteluneuvolan ajanvarauksen voi peruuttaa myös tekstiviestillä. Ilmoita viestissä nimesi ja peruutettava aika. Mikäli et saa vastausviestiä, peruutuksesi ei ole tullut perille. Ota siinä tapauksessa uudelleen yhteyttä.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "a7a6ce7f-c15f-4728-b3bf-0232ea05f6de"
+}

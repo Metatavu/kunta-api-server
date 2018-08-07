@@ -1,0 +1,44 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "http://www.naantali.fi/perhe_ja_sosiaali/perhepalvelut/fi_FI/lapsiperhepsykologi/",
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "7ff97ed3-77f1-40d6-a9a8-d99a17067b2d",
+      "name" : "Lapsiperhepsykologin palvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Lapsiperhepsykologien verkkosivu",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Saat verkkosivuilta tietoa Naantalin sosiaalipalveluiden lapsiperhepsykologien palveluista.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Saat verkkosivuilta tietoa lapsiperhepsykologien palveluista.",
+    "type" : "Summary"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-12-29T07:35:20.843917",
+  "id" : "3f741246-7679-4ff1-97db-55ee17e28b08"
+}

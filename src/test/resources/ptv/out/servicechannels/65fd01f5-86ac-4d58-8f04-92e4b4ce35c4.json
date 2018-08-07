@@ -1,0 +1,168 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/node/2041",
+    "value" : "Nuorten Vaasa",
+    "language" : "fi"
+  }, {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/en/youngsters-in-vaasa",
+    "value" : "Youngsters in Vaasa",
+    "language" : "en"
+  }, {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/sv/node/2041",
+    "value" : "Ungdomarnas Vasa",
+    "language" : "sv"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Vaasanpuistikko",
+        "language" : "en"
+      }, {
+        "value" : "Vaasanpuistikko",
+        "language" : "fi"
+      }, {
+        "value" : "Vasaesplanaden",
+        "language" : "sv"
+      } ],
+      "streetNumber" : "20 A",
+      "postalCode" : "65100",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ {
+        "value" : "3. vån.",
+        "language" : "sv"
+      }, {
+        "value" : "3. krs",
+        "language" : "fi"
+      } ],
+      "latitude" : "7007593.926",
+      "longitude" : "228557.495",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi", "sv", "en" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "f1118351-952c-414a-b421-522746102314",
+      "name" : "Nuorisopalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : null,
+    "isFinnishServiceNumber" : true,
+    "number" : null,
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ {
+    "value" : "youngwasa@vaasa.fi",
+    "language" : "fi"
+  }, {
+    "value" : "youngwasa@vaasa.fi",
+    "language" : "en"
+  }, {
+    "value" : "youngwasa@vaasa.fi",
+    "language" : "sv"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "en",
+    "value" : "The youth service offices",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Ungdomsservicens kontor",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Nuorisopalveluiden toimisto",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Vaasan nuorisopalveluiden toimisto sijaitsee Vaasanpuistikolla. Nuorisopalvelut tarjoavat nuorille erilaisia palveluita arkeen ja vapaa-aikaan. Lisätietoja verkkosivuilta. ",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan nuorisopalveluiden toimisto sijaitsee Vaasanpuistikolla.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Vasa stads ungdomsservices kontor finns på Vasaesplanaden. Ungdomsservicen erbjuder unga olika typer av service på vardagar och fritiden. Mer information finns på webbsidorna. ",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Vasa stads ungdomsservices kontor finns på Vasaesplanaden.",
+    "type" : "Summary"
+  }, {
+    "language" : "en",
+    "value" : "The youth service offices of Vaasa are located at Vaasanpuistikko.",
+    "type" : "Summary"
+  }, {
+    "language" : "en",
+    "value" : "The youth service offices of Vaasa are located at Vaasanpuistikko. The youth services offer the youngsters various services both for everyday tasks as well as for leisure time. More information can be found on the web pages.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "65fd01f5-86ac-4d58-8f04-92e4b4ce35c4"
+}

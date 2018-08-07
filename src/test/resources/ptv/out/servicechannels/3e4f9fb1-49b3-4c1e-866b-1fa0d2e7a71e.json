@@ -1,0 +1,100 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "attachments" : [ ],
+  "languages" : [ ],
+  "deliveryAddresses" : [ {
+    "subType" : "NoAddress",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : null,
+    "deliveryAddressInText" : [ ],
+    "receiver" : [ {
+      "value" : null,
+      "language" : "fi"
+    }, {
+      "value" : null,
+      "language" : "sv"
+    } ]
+  } ],
+  "supportPhones" : [ ],
+  "formIdentifier" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "90bb012f-c085-4304-b8a0-f3eb31662cae",
+      "name" : "Rakennusvalvonta ja rakennustyön aikainen valvonta"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "channelUrls" : [ {
+    "language" : "fi",
+    "value" : "https://www.vaasa.fi/sites/default/files/vastaava_tyonjohtaja.pdf",
+    "type" : "PDF"
+  }, {
+    "language" : "sv",
+    "value" : "https://www.vaasa.fi/sites/default/files/ansvarig_arbetsledare_2.pdf",
+    "type" : "PDF"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Ilmoitus vastaavasta työnjohtajasta, rakennusvalvonta",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Meddelande om ansvarig arbetsledare, byggnadstillsynen",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "PrintableForm",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Rakennuslupapäätöksessä luvanhakija voidaan määrätä toimittamaan vastaavien työnjohtajien hakemukset rakennusvalvontaan ennen töiden aloittamista tai aloituskokousta. Vastaavista työnjohtajista ilmoitetaan lomakkeella.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Rakennuslupapäätöksessä luvanhakija voidaan määrätä toimittamaan vastaavien työnjohtajien hakemukset rakennusvalvontaan.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "I bygglovsbeslutet kan den sökande åläggas att inlämna ansökningar om ansvariga arbetsledare innan arbetena inleds eller före det inledande mötet. Anm",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "I bygglovsbeslutet kan den sökande åläggas att inlämna ansökningar om ansvariga arbetsledare innan arbetena inleds eller före det inledande mötet. Anmälan om ansvariga arbetsledare görs på en blankett. ",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "3e4f9fb1-49b3-4c1e-866b-1fa0d2e7a71e"
+}

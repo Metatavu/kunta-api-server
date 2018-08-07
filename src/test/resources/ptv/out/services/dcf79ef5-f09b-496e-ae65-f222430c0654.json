@@ -1,0 +1,250 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    }, {
+      "code" : "399",
+      "name" : [ {
+        "value" : "Laihia",
+        "language" : "fi"
+      }, {
+        "value" : "Laihela",
+        "language" : "sv"
+      }, {
+        "value" : "Laihia",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Ympäristövalvonta ja -terveydenhuolto",
+      "language" : "fi"
+    }, {
+      "value" : "Miljötillsyn och -hälsovård",
+      "language" : "sv"
+    }, {
+      "value" : "Environmental oversight and hygiene",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Denna serviceundergrupp omfattar lagstadgade myndighetsförfaranden med vars hjälp man på kommunnivå tar hand om den naturliga miljöns tillstånd och livsmiljöns sundhet.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains statutory official procedures for maintaining a good status of the natural environment and a healthy living environment.",
+      "language" : "en"
+    }, {
+      "value" : "Tähän palvelualaluokkaan kuuluvat ne lakisääteiset viranomaismenettelyt, joiden avulla kuntatasolla huolehditaan luonnonympäristön tilasta ja elinympäristön terveellisyydestä.",
+      "language" : "fi"
+    } ],
+    "code" : "P23.7",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1190",
+    "parentId" : "9eac7938-e66b-4023-ac2e-8774ee615bca",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1184"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "dcf79ef5-f09b-496e-ae65-f222430c0654",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "0bec1e95-377f-45da-b618-d3eed2ab2569",
+      "name" : "Asuntotarkastuspyyntö"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "43c1fb3a-4294-424b-b0a2-1dcca60140d5",
+      "name" : "Asumisterveys ja sisäilma"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "8080da68-4225-4bde-b01c-4c3c087a2f81",
+      "name" : "Ympäristötoimi"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "80afdc16-3d98-4bdb-90f0-778e7b6c96fe",
+      "name" : "Ympäristötoimen maksut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "sv"
+  }, {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : null,
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Asumisterveys",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Boendehälsa",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "asumisterveys (terveys)",
+      "language" : "fi"
+    } ],
+    "code" : null,
+    "ontologyType" : "TERO",
+    "uri" : "http://www.yso.fi/onto/koko/p77517",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p31347"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : "Den första inspektionen är avgiftsfri , för de följande inspektionerna tas en avgift ut enligt prislistan.",
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : "När en sanitär olägenhet, dvs. en hälsorisk misstänks bör i första hand fastighetsägaren eller en representant för denna (husbolagets disponent, styrelseordföranden, hyresvärden) kontaktas och denna är skyldig att utreda orsaken till problemet och att avhjälpa olägenheterna. \nExempelvis fuktskador lönar det sig att reparera genast så att inte någon hälsorisk uppkommer. Exempelvis fuktskador lönar det sig att reparera genast så att inte någon hälsorisk uppkommer. Om den som äger bostaden eller annan inomhuslokal, trots motiverade förfrågningar, inte vidtar de utrednings- och reparationsåtgärder som behövs kan invånaren kontakta hälsoskyddsmyndigheten. ",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "En bostadsinspektion behövs när en boende misstänkter att bostaden ger upphov till sanitär olägenhet.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Asuntotarkastus tehdään silloin, kun asukas epäilee asunnon aiheuttavan terveyshaittaa.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Asuntotarkastus tehdään silloin, kun asukas epäilee asunnon aiheuttavan terveyshaittaa. Epäiltäessä terveyshaittaa, tulee ensisijaisesti ottaa yhteys kiinteistön omistajaan tai tämän edustajaan (taloyhtiön isännöitsijä, hallituksen puheenjohtaja, vuokranantaja), joka on velvollinen selvittämään ongelman syyn ja korjaamaan epäkohdat. \n\nEsimerkiksi kosteusvauriot kannattaa korjata heti, jotta terveyshaittaa ei pääsisi syntymään. Mikäli asunnon tai muun sisätilan omistaja ei perustelluista pyynnöistä huolimatta ryhdy tarvittaviin selvitys- ja korjaustoimiin, asukas voi ottaa yhteyttä terveydensuojeluviranomaiseen. ",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Ensimmäinen tarkastus on maksuton, seuraavista tarkastuksista veloitetaan hinnaston mukainen maksu.",
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : "Asuntotarkastuspyynnön voi jättää kaupungin ympäristöosastolle. Lisätietoja verkkosivulta. ",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : "En begäran om bostadsinspektion kan lämnas in till stadens miljöavdelning. Mer information på webbsidan. ",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

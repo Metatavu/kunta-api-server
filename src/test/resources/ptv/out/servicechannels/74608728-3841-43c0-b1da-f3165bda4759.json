@@ -1,0 +1,44 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "http://www.naantali.fi/opetus_ja_koulutus/kouluruokailu/fi_FI/kouluruokailu/",
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "f42c6e4a-d681-4c6c-8fe5-53e793144670",
+      "name" : "Ruokailu päiväkodeissa, esikoulussa ja kouluissa"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Kouluruokailun verkkosivu",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Naantalin kouluruokailun verkkosivu sisältää tietoa kouluruokailusta ja koulujen ruokalistan koulujen työaikoina.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Naantalin kouluruokailun verkkosivu sisältää tietoa kouluruokailusta ja koulujen ruokalistan koulujen työaikoina.",
+    "type" : "Summary"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "74608728-3841-43c0-b1da-f3165bda4759"
+}

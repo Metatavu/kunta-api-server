@@ -1,0 +1,402 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Lasten päivähoito",
+      "language" : "fi"
+    }, {
+      "value" : "Barndagvård",
+      "language" : "sv"
+    }, {
+      "value" : "Day-care for children",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Till denna serviceundergrupp hör barnets rättigheter i anslutning till dagvård för små barn, förutsättningar för dagvård, ärendehanteringstjänster och ansökningsförfaranden, olika genomföringsformer och servicekanaler för dagvård, vårdavgifter och bidrag i anslutning till dem.",
+      "language" : "sv"
+    }, {
+      "value" : "Tähän alapalveluluokkaan kuuluvat pienten lasten päivähoitoon liittyvät lapsen oikeudet, päivähoidon saamisen edellytykset, asiointipalvelut ja hakumenettelyt, erilaiset päivähoidon toteuttamismuodot ja palvelukanavat, hoidon maksut ja niihin liittyvät taloudelliset tuet.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains a child’s rights related to day-care for young children, eligibility criteria, e-services and application procedures associated with day-care, different forms and service channels of day-care provision, fees charged for day-care and financial support related to the fees.",
+      "language" : "en"
+    } ],
+    "code" : "P3.4",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1017",
+    "parentId" : "77af99fa-93eb-4de6-ac83-1b161a961263",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1013"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2018-05-25T06:36:40.535426",
+  "id" : "82b0256e-536b-4ae7-9b31-135e0e00c53d",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "0e12ceba-a0fa-45b0-9c58-2d36c1b0cab2",
+      "name" : "Kuningattarenpolun avoin päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "0ee843de-ea4f-41f3-9175-538b379900db",
+      "name" : "Gustavsborgs öppna daghem"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "34e9c629-929c-424f-adaf-a923b5df9a3c",
+      "name" : "Gerbyn avoin päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "5f916676-9011-4ec3-8d9d-96f308264311",
+      "name" : "Varhaiskasvatuksen asiakasmaksut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "686fc94c-ffdd-45a7-99b5-5bbdc903d7cf",
+      "name" : "Varhaiskasvatuksen verkkosivut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "7742a6b3-5aba-4af4-9772-b2b5bdefac30",
+      "name" : "Varhaiskasvatuksen palveluohjaus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "77a0fd32-854b-43ac-8d4f-a5d35e983802",
+      "name" : "Vaahteramäen avoin päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "7fef9e45-7bed-483d-9b5f-805f7e32ba58",
+      "name" : "Varhaiskasvatuksen asiakaspalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "998896f5-92e8-4c0f-9ec2-43747416c38f",
+      "name" : "Varhaiskasvatuksen palveluohjaus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "a287b94a-16df-4659-a2e4-435ad8cc6009",
+      "name" : "Varhaiskasvatuksen sähköinen asiointi"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "abb2f4a8-b0a3-4c09-a1d3-a5a6374fd212",
+      "name" : "Hakemus avoimen päiväkodin kerhoon"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "eb45ed07-2b23-4b7b-8f07-25e530348162",
+      "name" : "Huutoniemen avoin päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "fd154a50-37e8-4d84-a7fe-77e369829b51",
+      "name" : "Ristinummen avoin päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  }, {
+    "value" : null,
+    "language" : "en"
+  } ],
+  "languages" : [ "sv", "fi" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "Chargeable",
+  "serviceNames" : [ {
+    "language" : "en",
+    "value" : "Play activities in open day care centers",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Avoin varhaiskasvatus",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Öppen småbarnspedagogik",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "öppen småbarnsfostran",
+      "language" : "sv"
+    }, {
+      "value" : "avoin varhaiskasvatus",
+      "language" : "fi"
+    }, {
+      "value" : "open early childhood education and care",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p54786",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p9399"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Lapset ja lapsiperheet",
+      "language" : "fi"
+    }, {
+      "value" : "Children and families with children",
+      "language" : "en"
+    }, {
+      "value" : "Barn och barnfamiljer",
+      "language" : "sv"
+    } ],
+    "code" : "KR1.2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2003",
+    "parentId" : "daff1fb9-9394-49b5-b033-d1d1c7005ab6",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001"
+  }, {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "en",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasassa avoin varhaiskasvatus tarjoaa avointa päiväkotitoimintaa sekä kerhotoimintaa.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Den öppna småbarnspedagogiken i Vasa erbjuder öppen daghemsverksamhet och klubbverksamhet. Den öppna småbarnspedagogiken är ledd och övervakad verksamhet och ett bra alternativ för heltids- eller deltidsdagvård. Leken är en central del av verksamheten. Den öppna småbarnspedagogiken är en planmässig och målinriktad verksamhet om baserar sig på planen för småbarnspedagogik. \n\nVerksamheten i de öppna daghemmen är avsedd för samtliga Vasabarn som är under skolåldern samt för deras föräldrar och vårdare. Ingen förhandsanmälan krävs och verksamheten är avgiftsfri. Syftet med verksamheten i de öppna daghemmen är att stödja familjerna i deras barnuppfostran, ge familjerna möjlighet att bekanta sig med varandra, erbjuda barnen leksällskap och mångsidig verksamhet i vardagen och erbjuda föräldrarna kamratstöd. \n\nKlubbarna i de öppna daghemmen är avsedda för barn som inte är i kommunal dagvård och som är bosatta i Vasa. Klubben är ett bra alternativ för barn som inte är i behov av dagvård utan annan regelbunden verksamhet i grupp. I första hand är klubben avsedd för barn i åldern 2,5–5 år. Den samlas två gånger i veckan, 3–4 timmar åt gången. Barnet kan ha endast en klubbplats. \n\nDå klubbverksamheten inleds ingås ett serviceavtal, och en egen klubbplan för småbarnspedagogik utarbetas för samtliga barn. Barn och familjer som omfattas av tjänster inom den öppna småbarnspedagogiken har vid behov även möjlighet till stöd av specialdagvården i ärenden som ansluter sig till barnets inlärning och utveckling. Syftet med klubbverksamheten är att stödja barnen i att utveckla sin självkänsla och självständighet, erbjuda barnen en mångsidig, planerad och ledd verksamhet både som individ och som gruppmedlem, och väcka en positiv inställning till att lära sig nytt. \n\nLäs mera om den öppna småbarnspedagogiken i Vasa på stadens webbsidor.\n",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : "Avoimen päiväkodin kerhotoiminnasta peritään kiinteä kuukausimaksu. Kuningattarenpolun sekä Vaahteramäen avoimissa päiväkodeissa on myös maksutonta kerhotoimintaa. Tarkemmat tiedot asiakasmaksuista löydät Vaasan kaupungin varhaiskasvatuksen sivuilta.\n\nAvoin päiväkotitoiminta on maksutonta.\n\nOsallistuminen ei vaikuta Kelan maksamaan kotihoidon tukeen.",
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : "Den öppna småbarnspedagogiken i Vasa erbjuder öppen daghemsverksamhet och klubbverksamhet.",
+    "type" : "Summary"
+  }, {
+    "language" : "en",
+    "value" : "Play activities include open day care center and open day care club.",
+    "type" : "Summary"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasassa avoin varhaiskasvatus tarjoaa avointa päiväkotitoimintaa sekä kerhotoimintaa. Avoin varhaiskasvatus on ohjattua ja valvottua toimintaa ja hyvä vaihtoehto koko- tai osapäiväiselle päivähoidolle. Leikin osuus toiminnassa on keskeinen. \n\nAvoin varhaiskasvatus on suunnitelmallista ja tavoitteellista toimintaa, joka perustuu varhaiskasvatussuunnitelmaan (vasu). \n\nAvoimen päiväkodin toiminta on tarkoitettu kaikille vaasalaisille alle kouluikäisille lapsille sekä heidän vanhemmilleen ja hoitajilleen. Toimintaan voi osallistua ilman ennakkoilmoittautumista ja se on maksutonta. Avoimen päiväkodin tavoitteena on tukea perheitä lasten kasvatuksessa, tutustuttaa perheitä toisiinsa, tarjota lapsille leikkiseuraa ja monipuolista toimintaa arjen keskellä sekä vanhemmille mahdollisuus vertaistukeen toisten vanhempien kanssa.\n\nAvoimen päiväkodin kerho on tarkoitettu lapsille, jotka eivät ole kunnallisessa päivähoidossa ja joiden asuinkunta on Vaasa. Kerho on hyvä vaihtoehto lapselle, joka ei tarvitse päivähoitoa vaan muuta säännöllistä ryhmätoimintaa. Kerho on ensisijaisesti 2,5 - 5-vuotiaille lapsille, ja se toimii 2 kertaa viikossa 3-4 tuntia kerrallaan. Lapsella voi olla vain yksi kerhopaikka. \n\nJokaiselle lapselle tehdään kerhotoiminnan alussa palvelusopimus, sekä oma kerhovasu. Avoimen varhaiskasvatuspalvelun piiriin kuuluvien lasten ja heidän perheidensä on mahdollista saada tarvittaessa myös erityisvarhaiskasvatuksen tukea lapsen kasvuun ja kehitykseen liittyvissä asioissa. Kerhotoiminnan tavoitteena on tukea lapsen itsetunnon kehitystä ja itsenäistymistä, tarjota lapsille monipuolista, suunniteltua ja ohjattua toimintaa, tukea lasta toimimaan sekä yksilönä että ryhmän jäsenenä ja herättää myönteistä suhtautumista uuden oppimiseen. \n\nLue lisää avoimesta varhaiskasvatuksesta Vaasan kaupungin verkkosivuilta.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Hakuaika toimintakauden 2018 – 2019 kerhotoimintaan on ajalla 12.3. – 3.4.2018. Hakemus on voimassa 31.5.2019 asti ja mikäli vapaita paikkoja löytyy, voi kerhon aloittaa myös kesken toimintakauden. Hakemuksia voi jättää myös ympäri vuoden.\n\nKerhoon haetaan ensisijaisesti sähköisesti . Voit täyttää hakemuksen Vaasan kaupungin varhaiskasvatuksen sähköisessä asiointipalvelussa.\n\nLomakkeen voi myös tulostaa tai noutaa avoimesta päiväkodista tai varhaiskasvatuksen asiakaspalvelusta, os. Raastuvankatu 29, 65100 Vaasa (ma - pe klo 9.00 - 15.00). Lomake palautetaan siihen avoimeen päiväkotiin, josta kerhopaikkaa haetaan.\n\nKerhopaikan saaneille lähetetään päätös kotiin huhtikuun aikana.\n\nAvoimen päiväkodin toimintaan voi ilmoittautua suoraan avoimen päiväkodin henkilökunnalle (täytetään kirjallinen lomake).",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "en",
+    "value" : "Activities starting in August 2018 are to be applied in 12th Marc – 3th April 2018 primarily electronically in Finnish. Application is valid untill 31st May 2019. It is also possible to apply potentially available places in clubs throughout the year. \n\nThe application form can also alternatively be printed or be fetched at playgrounds.\n\nThe paper copy is to be returned to an open day care center. Club access is confirmed in to the head of the family and the decision will be sent to families in April.\n\nThe open day care centers provide additional information about their activities and fees.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : "Ansökningstiden till klubbverksamheten för verksamhetsperioden 2018 – 2019 är under tiden 12.3 – 3.4.2018. Ansökan är i kraft till 31.5.2019. Om det finns lediga platser kan ett barn börja i en klubb även mitt i verksamhetsperioden. Ansökningar kan också lämnas in året runt. \n\nDet primära sättet att ansöka om klubbplats är en elektronisk ansökan, men pappersblanketten är ett alternativ. Du kan fylla i den elektroniska ansökan i stadens elektroniska ärendehantering. \n\nBlanketten kan skrivas ut eller hämtas på de öppna daghemmen eller småbarnspedagogikens kundbetjäning, Rådhusgatan 29, 65100 Vasa (må-fre kl. 9.00–15.00). Blanketten returneras till det öppna daghem där man ansöker om en klubbplats. Man kan även anmäla sig direkt till personalen vid ett öppet daghem (en skriftlig blankett ifylls).\n\nTill dem som har fått en klubbplats skickas ett beslut hem i april.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "en",
+    "value" : "Activities in an open day care club:\n\nClubs for children living in Vaasa and who are not in a municipal day care. Clubs are primarily intended for children at the age 2,5–5.\n\nClub is a good alternative to a child who does not need a day care but other regular group activity.\n\nClub takes place 2 times a week.\n\nClub with a fixed fee and a meal served.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : "För klubbverksamheten i ett öppet daghem uppbärs en fast månadsavgift. I två öppna daghem Kuningattarenpolun avoin päiväkoti och Vaahteramäen avoin päiväkoti finns även avgiftsfri klubbverksamhet. Närmare information om klientavgifterna finns på småbarnspedagogikens sidor. Den öppna daghemsverksamheten är avgiftsfri. Deltagandet påverkar inte utbetalningen av FPA:s hemvårdsstöd.",
+    "type" : "ChargeTypeAdditionalInfo"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

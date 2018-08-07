@@ -1,0 +1,197 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/node/8781",
+    "value" : "Sumppu",
+    "language" : "fi"
+  }, {
+    "orderNumber" : "2",
+    "url" : "https://www.facebook.com/nuorisotalosumppu",
+    "value" : "Sumpun Facebook",
+    "language" : "fi"
+  }, {
+    "orderNumber" : "3",
+    "url" : "https://www.instagram.com/nuorisotalosumppu/",
+    "value" : "Sumpun Instagram",
+    "language" : "fi"
+  }, {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/sv/node/8781",
+    "value" : "Sumppu",
+    "language" : "sv"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Pallokatu",
+        "language" : "fi"
+      }, {
+        "value" : "Bollgatan",
+        "language" : "sv"
+      } ],
+      "streetNumber" : "17",
+      "postalCode" : "65230",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ ],
+      "latitude" : "7010476.78",
+      "longitude" : "228269.653",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "632d6d70-14c7-4b91-b37a-05de0c140161",
+      "name" : "Nuorisotilat"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ {
+    "value" : "nuorisotalo.sumppu@vaasa.fi",
+    "language" : "fi"
+  }, {
+    "value" : "nuorisotalo.sumppu@vaasa.fi",
+    "language" : "sv"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "sv",
+    "value" : "Sumppu",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Sumppu",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ {
+    "serviceHourType" : "DaysOfTheWeek",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ {
+      "value" : "Normaalit palveluajat (13-17 -vuotiaat)",
+      "language" : "fi"
+    } ],
+    "openingHour" : [ {
+      "dayFrom" : "Wednesday",
+      "dayTo" : "",
+      "from" : "17:00:00",
+      "to" : "21:00:00"
+    }, {
+      "dayFrom" : "Thursday",
+      "dayTo" : "",
+      "from" : "17:00:00",
+      "to" : "21:00:00"
+    }, {
+      "dayFrom" : "Friday",
+      "dayTo" : "",
+      "from" : "17:00:00",
+      "to" : "22:00:00"
+    }, {
+      "dayFrom" : "Saturday",
+      "dayTo" : "",
+      "from" : "16:00:00",
+      "to" : "22:00:00"
+    } ]
+  }, {
+    "serviceHourType" : "DaysOfTheWeek",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ {
+      "value" : "Normaalit palveluajat (5-6 -luokkalaiset)",
+      "language" : "fi"
+    } ],
+    "openingHour" : [ {
+      "dayFrom" : "Wednesday",
+      "dayTo" : "",
+      "from" : "14:00:00",
+      "to" : "17:00:00"
+    }, {
+      "dayFrom" : "Thursday",
+      "dayTo" : "",
+      "from" : "14:00:00",
+      "to" : "17:00:00"
+    }, {
+      "dayFrom" : "Friday",
+      "dayTo" : "",
+      "from" : "15:00:00",
+      "to" : "17:00:00"
+    } ]
+  } ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Nuorisotalo Sumpussa voi tavata ystäviä, tehdä uusia tuttavuuksia ja nauttia rennosta ilmapiiristä.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Nuorisotalo Sumpussa voi tavata ystäviä, tehdä uusia tuttavuuksia ja nauttia rennosta ilmapiiristä. Sumppu sijaitsee Isolahdessa, aivan Isolahden koulun vieressä. Sumppuun pääsee kätevästi niin kävellen, polkupyörällä kuin bussillakin. Keskiviikkoisin talolla on kokkikerho, jossa kokkaillaan ja leivotaan suolaista ja makeaa, perjantaisin jutellaan ja juodaan kahvia. Sumpussa voi pelata esimerkiksi biljardia, pingistä, erilaisia lautapelejä sekä pleikkaripelejä. Käytettävissä on myös tietokone nettiyhteyksineen. Sumpussa voi osallistua ohjattuun toimintaan, hyödyntää talon pelitarjontaan tai hengailla rauhassa. Sumpussa arvostetaan nuorten omaa aktiivisuutta ja kunnioitetaan nuorten toiveita. Nuoret voivat vaikuttaa nuorisotalon asioihin ja suunnitella ja järjestää itse toimintaa ja teemailtoja talolla. Nuoret voivat kertoa ideoistaan ohjaajille ja osallistua säännöllisesti pidettäviin talokokouksiin. ",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "På ungdomsgården Sumppu kan man träffa vänner, stifta nya bekantskaper och njuta av en avslappnad atmosfär.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "På ungdomsgården Sumppu kan man träffa vänner, stifta nya bekantskaper och njuta av en avslappnad atmosfär. Sumppu ligger i Storviken nära Isolahden koulu. Till Sumppu tar du dig behändigt både till fots, med cykel och med buss. På onsdagar hålls en kockklubb där man lagar mat och bakar salt och sött, på fredagar samtalar man och dricker kaffe. I Sumppu kan man spela t.ex. biljard, pingis, olika brädspel och Playstation-spel. Det finns även en dator med nätförbindelser. I Sumppu kan man delta i de ledda aktiviteterna, utnyttja spelutbudet eller bara hänga tillsammans i lugn och ro. I Sumppu värdesätter man när ungdomarna själva är aktiva och respekterar deras önskemål. Ungdomarna kan påverka sådant som rör ungdomsgården och själva planera och ordna aktiviteter och temakvällar på ungdomsgården. Ungdomarna kan dela med sig av sina idéer till ledarna och delta i ungdomsgårdens möten, som ordnas regelbundet. ",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "14b72850-4d43-4d92-9d8d-b99f9fc67f7f"
+}

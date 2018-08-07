@@ -1,0 +1,130 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "attachments" : [ ],
+  "languages" : [ ],
+  "deliveryAddresses" : [ {
+    "subType" : "PostOfficeBox",
+    "postOfficeBoxAddress" : {
+      "postOfficeBox" : [ {
+        "value" : "PL 3",
+        "language" : "fi"
+      }, {
+        "value" : "PB 3",
+        "language" : "sv"
+      } ],
+      "postalCode" : "65101",
+      "postOffice" : [ {
+        "value" : "VAASA",
+        "language" : "fi"
+      }, {
+        "value" : "VASA",
+        "language" : "sv"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ ]
+    },
+    "streetAddress" : null,
+    "deliveryAddressInText" : null,
+    "receiver" : [ {
+      "value" : "Vaasan kaupungin keskuskirjaamo",
+      "language" : "fi"
+    }, {
+      "value" : "Vaasan kaupungin keskuskirjaamo",
+      "language" : "sv"
+    } ]
+  } ],
+  "supportPhones" : [ ],
+  "formIdentifier" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "373ce62b-9594-44a6-96af-3a474868f1c3",
+      "name" : "Nuorisoyhdistysten ja -ryhmien tuki ja avustukset"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "channelUrls" : [ {
+    "language" : "fi",
+    "value" : "https://www.vaasa.fi/sites/default/files/avustuslomake-vapaa-aikalautakunta2017.pdf",
+    "type" : "PDF"
+  }, {
+    "language" : "sv",
+    "value" : "https://www.vaasa.fi/sites/default/files/avustuslomake-vapaa-aikalautakunta2017.pdf",
+    "type" : "PDF"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Vapaa-aikalautakunnan avustushakemus",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Fritidsnämndens ansökan om bidrag",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "PrintableForm",
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "Med fritidsnämndens blankett kan du ansöka om bidrag per post. ",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Med fritidsnämndens blankett kan du ansöka om bidrag per post.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Vapaa-aikalautakunnan lomakkeella voit hakea avustusta postitse. ",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Vapaa-aikalautakunnan lomakkeella voit hakea avustusta postitse.",
+    "type" : "Summary"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "a46c5ddf-1c08-44d9-acf2-6a7396d410da"
+}

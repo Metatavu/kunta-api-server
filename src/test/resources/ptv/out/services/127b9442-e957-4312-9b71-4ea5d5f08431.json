@@ -1,0 +1,313 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Tienpito",
+      "language" : "fi"
+    }, {
+      "value" : "Väghållning",
+      "language" : "sv"
+    }, {
+      "value" : "Road maintenance",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Tähän palvelualaluokkaan kuuluvat teiden hoitoluokat ja niiden mukainen peruskunnossapito sekä teiden parannustyöt ja näihin saatavat avustukset.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains road maintenance classes, basic maintenance in accordance to the classes as well as road improvements and grants available for them.",
+      "language" : "en"
+    }, {
+      "value" : "Denna serviceundergrupp omfattar vägarnas underhållsklasser och grundläggande vägunderhåll enligt dem samt förbättringsarbeten på vägar och bidrag för dem.",
+      "language" : "sv"
+    } ],
+    "code" : "P16.7",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1149",
+    "parentId" : "99c23d1f-53e3-415f-9757-479fe6f8e4ea",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1142"
+  }, {
+    "name" : [ {
+      "value" : "Liikenne",
+      "language" : "fi"
+    }, {
+      "value" : "Trafik",
+      "language" : "sv"
+    }, {
+      "value" : "Transport",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "This service class contains public transport, registration, tax and permit issues related to vehicles, professional transport and traffic safety from the service point of view. Tourism and map services are excluded from this class and have their own service classes.",
+      "language" : "en"
+    }, {
+      "value" : "I denna servicegrupp behandlas kollektivtrafik, registrerings-, beskattnings- och tillståndsärenden för fordon, yrkestrafik och trafiksäkerhet ur ett serviceperspektiv. Rese- och karttjänster ingår inte i denna grupp utan behandlas i egna servicegrupper.",
+      "language" : "sv"
+    }, {
+      "value" : "Tässä palveluluokassa käsitellään palvelujen näkökulmasta julkista liikennettä, ajoneuvojen rekisteri-, verotus- ja lupa-asioita, ammattiliikennettä sekä liikenneturvallisuutta. Matkailu- ja karttapalvelut eivät kuulu tähän luokkaan vaan ne käsitellään omissa palveluluokissaan.",
+      "language" : "fi"
+    } ],
+    "code" : "P16",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1142",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "Rakennettu ympäristö",
+      "language" : "fi"
+    }, {
+      "value" : "Bebyggd miljö",
+      "language" : "sv"
+    }, {
+      "value" : "Built environment",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Tässä palveluluokassa käsitellään julkiseen ja asumiskäyttöön tarkoitettuja rakennuksia sekä yleensä kiinteistöihin ja niiden käyttöön liittyvää kunnallista infrastruktuuria ja sen palveluja.",
+      "language" : "fi"
+    }, {
+      "value" : "I denna serviceundergrupp behandlas byggnader ämnade för offentligt och boendebruk samt kommunal infrastruktur och dess tjänster allmänt i anslutning till fastigheter och dess bruk.",
+      "language" : "sv"
+    }, {
+      "value" : "This service class contains public and residential buildings as well as municipal infrastructure and related services associated with buildings and their use in general.",
+      "language" : "en"
+    } ],
+    "code" : "P2",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1007",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "635054a2-1cfc-45b2-9f6c-aebba696666c",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "127b9442-e957-4312-9b71-4ea5d5f08431",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "0eade5fc-e729-49d3-8ad9-92884baf19e6",
+      "name" : "Apulaiskaupunginpuutarhuri"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "726b85b3-0a86-4edf-a64f-a7ef14749627",
+      "name" : "Katumestari"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "745fd3e6-0639-407f-87cf-318934cb221a",
+      "name" : "Varikkopäällikkö"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "7d904ef2-8fb9-4338-877b-3cbea239e1d6",
+      "name" : "Puistot"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "7e56ffae-49ad-4697-9e64-e3f6b372bbee",
+      "name" : "Kadut ja tiet"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "9902faa1-fcf3-41cd-bcda-bb16a84c188b",
+      "name" : "Kaupunginpuutarhuri"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "fd5716fe-49ad-409b-9543-3bf3507b33e0",
+      "name" : "Yhdyskuntatekniikan päällikkö"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : null,
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Katujen ja yleisten alueiden kunnossapito",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ ],
+    "code" : null,
+    "ontologyType" : null,
+    "uri" : "http://www.yso.fi/onto/yso/p9046",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "väghållning",
+      "language" : "sv"
+    }, {
+      "value" : "tienpito",
+      "language" : "fi"
+    }, {
+      "value" : "road maintenance",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p18841",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p25523"
+  }, {
+    "name" : [ ],
+    "code" : null,
+    "ontologyType" : null,
+    "uri" : "http://www.yso.fi/onto/yso/p8317",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "grönområden",
+      "language" : "sv"
+    }, {
+      "value" : "viheralueet",
+      "language" : "fi"
+    }, {
+      "value" : "greenbelts",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p33392",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p37350"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : "Lisätietoja ja yhteystiedot löytyvät kaupungin verkkosivuilta.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Naantalissa asemakaava-alueella olevia teitä, katuja, toreja, puistoja, istutuksia ja muita yleisiä alueita hoidetaan hoitoluokituksen mukaan.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Naantalissa kadut, yleiset alueet ja puistot hoidetaan hoitoluokituksen mukaan. \nKaupungin ylläpitämiä teitä ja katuja hoidetaan katuluokituksen mukaisesti. Luokituksessa väylät on jaoteltu viiteen kunnossapitoluokkaan: pääkadut, kokoojakadut, asuntokadut, kevyen liikenteen väylät ja yksityistiet. Katuluokituksen perusteena on liikenteen laatu ja tarpeet sekä liikennemäärät. Samaan luokkaan kuuluvat kadut pyritään pitämään yhdenmukaisessa kunnossa. Katuluokitukseen liittyy kiinteästi hoitotason määrittely, jossa kunnossapitoluokittain on määritelty väylien kesä- ja talvihoito, puhtaanapito sekä valaistuksen ylläpito. Esimerkiksi talvikunnossapidossa esitetään luokittain millaisessa kunnossa väylien on oltava ja milloin talvityöhön on ryhdyttävä lumisateen tai jäätymisen jälkeen. Laatuvaatimuksena on, että katu on liikennöitävässä kunnossa.\n\nNaantali kaupungin viheromaisuutta hoidetaan viheralueiden hoitoluokituksen mukaisesti: rakennetut puistot A1-A3, taajamametsät C, erityisalueet E sekä erikseen puhtaanapidon hoitoluokka P. Tarkoituksenmukaisesti hoidetut viheralueet ovat viihtyisiä ja turvallisia, ne antavat iloa sekä virkistystä käyttäjilleen ja ovat merkittävä osa Naantalin kaupunkikuvaa. A1- ja A2-luokituksen tarkimmin hoidetut puistot sijaitsevat pääasiassa Naantalin keskustassa ja vanhassa kaupungissa. Lisäksi kaikki leikkialueet sijainnistaan riippumatta hoidetaan aina A2-tason mukaan. Tavanomaisia viherympäristön kunnossapitotoimia ovat puhtaanapito, kevät- ja syyssiivoukset, nurmen leikkaus, kasvillisuuden ja istutusten hoitotoimet, kalusteiden ja laitteiden ylläpito sekä auraus ja liukkauden torjunta.\n",
+    "type" : "Description"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

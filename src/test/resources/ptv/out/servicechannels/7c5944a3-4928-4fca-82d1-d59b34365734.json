@@ -1,0 +1,44 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasansetlementti.net/tietoa-vaasan-setlementtiyhdisty/kylakeskus-kultanummi/",
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "dbce0e5f-7b75-4f4a-b024-408c066c1129",
+      "name" : "Päihde- ja mielenterveyskuntoutujien päivä- ja työtoiminta"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Vaasan Setlementtiyhdistyksen verkkosivut",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Vaasan Setlementtiyhdistyksen verkkosivuilta löydät tietoa yhdistyksen tarjoamista palveluista.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan Setlementtiyhdistyksen verkkosivuilta löydät tietoa yhdistyksen tarjoamista palveluista kuten mielenterveyskuntoutujien virkistys- ja harrastustoiminnasta.",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "7c5944a3-4928-4fca-82d1-d59b34365734"
+}

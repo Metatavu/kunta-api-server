@@ -1,0 +1,170 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/node/2781/",
+    "value" : "Varhaiskasvatuksen verkkosivut",
+    "language" : "fi"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Jyrsijänkatu",
+        "language" : "fi"
+      } ],
+      "streetNumber" : "2",
+      "postalCode" : "65370",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ ],
+      "latitude" : "7006638.403",
+      "longitude" : "233637.789",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "82b0256e-536b-4ae7-9b31-135e0e00c53d",
+      "name" : "Avoin varhaiskasvatus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : "suora",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "400949211",
+    "language" : "fi"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Ristinummen avoin päiväkoti",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ {
+    "serviceHourType" : "DaysOfTheWeek",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ {
+      "value" : "Kerho",
+      "language" : "fi"
+    } ],
+    "openingHour" : [ {
+      "dayFrom" : "Monday",
+      "dayTo" : "",
+      "from" : "08:30:00",
+      "to" : "12:30:00"
+    }, {
+      "dayFrom" : "Friday",
+      "dayTo" : "",
+      "from" : "08:30:00",
+      "to" : "12:30:00"
+    } ]
+  }, {
+    "serviceHourType" : "DaysOfTheWeek",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ {
+      "value" : "Avoin päiväkoti",
+      "language" : "fi"
+    } ],
+    "openingHour" : [ {
+      "dayFrom" : "Monday",
+      "dayTo" : "",
+      "from" : "13:00:00",
+      "to" : "15:00:00"
+    }, {
+      "dayFrom" : "Tuesday",
+      "dayTo" : "",
+      "from" : "09:00:00",
+      "to" : "15:30:00"
+    }, {
+      "dayFrom" : "Wednesday",
+      "dayTo" : "",
+      "from" : "08:30:00",
+      "to" : "15:00:00"
+    }, {
+      "dayFrom" : "Thursday",
+      "dayTo" : "",
+      "from" : "09:00:00",
+      "to" : "15:30:00"
+    }, {
+      "dayFrom" : "Friday",
+      "dayTo" : "",
+      "from" : "13:00:00",
+      "to" : "15:00:00"
+    } ]
+  } ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Avoin päiväkoti on tarkoitettu vaasalaisille alle kouluikäisille lapsille ja heidän vanhemmilleen ja hoitajilleen.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Avoin päiväkoti on tarkoitettu vaasalaisille alle kouluikäisille lapsille ja heidän vanhemmilleen ja hoitajilleen. Osallistua voi ilman ennakkoilmoittautumista. Pyrkimyksenä on tukea sekä lapsen kehitystä että aikuista kasvatustyössä. Avoimessa päiväkodissa leikitään, lauletaan, askarrellaan, jumpataan, maalataan, leivotaan ja tehdään retkiä yhdessä. Aikuisille on muun muassa asiantuntijavierailuja ja tuote-esittelyjä. Ohjelma ilmestyy kerran kuussa. Tarjolla on kahvia, teetä ja maitoa pientä korvausta vastaan. Mukaan voi ottaa myös omat eväät, jotka voi lämmittää mikrossa. Avoimessa päiväkodissa kaikki aikuiset toimivat yhdessä lasten kanssa, mutta päävastuu lapsesta on mukana olevalla aikuisella. Päiväkotiin voi tulla silloin, kun aikuiselle ja lapselle sopii. \n\nPäiväkodin kerho on tarkoitettu ensisijaisesti 2,5 - 5-vuotiaille vaasalaisille lapsille, jotka eivät ole kunnallisessa päivähoidossa. Kerhossa askarrellaan, lauletaan, leikitään ja jumpataan. Avoimen päiväkodin toiminnan tarkoituksena on antaa lapsille ja aikuisille mahdollisuus leikkiä yhdessä ja tutustua toisiin lapsiin ja aikuisiin sekä tarjota vaihtelua päivään.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2018-03-21T06:09:52.921217",
+  "id" : "fd154a50-37e8-4d84-a7fe-77e369829b51"
+}

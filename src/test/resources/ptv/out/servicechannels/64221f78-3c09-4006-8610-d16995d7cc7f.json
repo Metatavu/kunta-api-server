@@ -1,0 +1,185 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/node/18261",
+    "value" : "Viheralueyksikkö",
+    "language" : "fi"
+  }, {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/sv/node/18261",
+    "value" : "Grönområdesenheten",
+    "language" : "sv"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Strandvägen",
+        "language" : "sv"
+      }, {
+        "value" : "Rantamaantie",
+        "language" : "fi"
+      } ],
+      "streetNumber" : "5",
+      "postalCode" : "65350",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ {
+        "value" : "Stadsgården",
+        "language" : "sv"
+      }, {
+        "value" : "Kaupunginpuutarha",
+        "language" : "fi"
+      } ],
+      "latitude" : "7005999.405",
+      "longitude" : "229518.292",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "2ba22c86-e28a-4988-aca7-38c6ce95bed7",
+      "name" : "Matonpesupaikat"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "33e455fe-d74d-435c-bb55-e090222bbce6",
+      "name" : "Leikkipuistot"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "454a68e2-7a26-4896-b2e5-798aabf2ea12",
+      "name" : "Puistot ja viheralueet"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "5b4e1a6b-c97b-4634-9c7b-b3464181e23d",
+      "name" : "Puunkaatolupa"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "645e3abd-ed4b-4c73-9e7a-adb4dde26879",
+      "name" : "Koirapuistot"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "a8d91727-72f0-490f-a924-912923e0431c",
+      "name" : "Viljelypalstat"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ ],
+  "serviceChannelNames" : [ {
+    "language" : "sv",
+    "value" : "Grönområdesenheten",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Viheralueyksikkö",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "Grönområdesenheten svarar för planerings-, byggnads-, underhålls- och skötselåtgärder i fråga om Vasa stads grönområden (parker, lekplatser och andra grönområden). Närmare kontaktuppgifter till personalen finns på grönområdesenhetens webbsidor. ",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Grönområdesenheten svarar för planerings-, byggnads-, underhålls- och skötselåtgärder i fråga om Vasa stads grönområden (parker, lekplatser och andra",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Viheralueyksikkö vastaa Vaasan kaupungin viheralueiden suunnittelu-, rakennus-, kunnossapito- ja hoitotoimenpiteistä.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Viheralueyksikkö vastaa Vaasan kaupungin viheralueiden (puistojen, leikkialueiden, ym. viheralueiden) suunnittelu-, rakennus-, kunnossapito- ja hoitotoimenpiteistä. Henkilökunnan tarkemmat yhteystiedot löydät viheralueyksikön verkkosivulta.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "64221f78-3c09-4006-8610-d16995d7cc7f"
+}

@@ -1,0 +1,94 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/node/1581",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/sv/node/1581",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "0549a1e8-93da-42cb-b2c3-2b65daad2816",
+      "name" : "Kaavaotteet ja -neuvonta"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "61f21023-a984-4e31-9b05-4f414b24e11c",
+      "name" : "Asemakaavoitukseen vaikuttaminen"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "7580b7a3-bb88-46b9-903e-4d374029f6c8",
+      "name" : "Yleiskaavoitukseen vaikuttaminen"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "79d638b1-7e96-443c-84ab-f9e12171f4de",
+      "name" : "Ranta-asemakaavoitukseen vaikuttaminen"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Kaavoituksen verkkosivut",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Planläggningens webbsidor",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Vaasan kaupungin kaavoitusyksikön verkkosivuilta löydät voimassa olevat asema- ja yleiskaavat, sekä muuta yleistä tietoa kaavoituksesta Vaasassa.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan kaupungin kaavoitusyksikön verkkosivuilta löydät voimassa olevat asema- ja yleiskaavat, sekä muuta yleistä tietoa kaavoituksesta Vaasassa.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "På Vasa stads planläggningsenhets webbsidor hittar du de detalj- och generalplaner som är i kraft samt annan allmän information om planläggningen i Va",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "På Vasa stads planläggningsenhets webbsidor hittar du de detalj- och generalplaner som är i kraft samt annan allmän information om planläggningen i Vasa.",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "3e84085a-328c-4e1f-81fa-aeae61c6478a"
+}

@@ -1,0 +1,96 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "languages" : [ "sv", "fi", "en" ],
+  "areas" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "7a1e5f72-beee-4006-8a96-657862555142",
+      "name" : "Kansalaisneuvonta"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Sms",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : "puhelinliittymän mukainen tekstiviestimaksu, ei lisämaksua",
+    "prefixNumber" : null,
+    "isFinnishServiceNumber" : true,
+    "number" : "13145",
+    "language" : "fi"
+  } ],
+  "organizationId" : "b458d033-042d-4cbe-b030-34e81da28821",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Kansalaisneuvonnan tekstiviestipalvelu",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ {
+    "serviceHourType" : "DaysOfTheWeek",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ ],
+    "openingHour" : [ {
+      "dayFrom" : "Monday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "21:00:00"
+    }, {
+      "dayFrom" : "Tuesday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "21:00:00"
+    }, {
+      "dayFrom" : "Wednesday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "21:00:00"
+    }, {
+      "dayFrom" : "Thursday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "21:00:00"
+    }, {
+      "dayFrom" : "Friday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "21:00:00"
+    } ]
+  }, {
+    "serviceHourType" : "DaysOfTheWeek",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ ],
+    "openingHour" : [ {
+      "dayFrom" : "Saturday",
+      "dayTo" : "",
+      "from" : "09:00:00",
+      "to" : "15:00:00"
+    } ]
+  } ],
+  "serviceChannelType" : "Phone",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Kansalaisneuvonnan tekstiviestipalvelu",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Voit lähettää kysymyksen tai palautteen Kansalaisneuvonnalle tekstiviestinä. Kirjoita tekstiviestin alkuun kirjainyhdistelmä Kn ja sen jälkeen viestisi. Tekstiviestipalvelu on tarkoitettu etenkin erityisryhmille, esimerkiksi puhe- ja kuulovammaisille. Tekstiviestinä saat neuvontaa, jos olet Suomessa ja käytössäsi on suomalainen matkapuhelinliittymä.",
+    "type" : "Description"
+  } ],
+  "areaType" : null,
+  "publishingStatus" : "Published",
+  "modified" : "2018-02-16T08:39:59.934749",
+  "id" : "517a7df1-89d0-4d56-9f5c-b9c40e45c329"
+}

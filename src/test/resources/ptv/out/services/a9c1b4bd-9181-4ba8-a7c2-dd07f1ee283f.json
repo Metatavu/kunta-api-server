@@ -1,0 +1,519 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Motion och idrott",
+      "language" : "sv"
+    }, {
+      "value" : "Sports and exercise",
+      "language" : "en"
+    }, {
+      "value" : "Liikunta ja urheilu",
+      "language" : "fi"
+    } ],
+    "description" : [ {
+      "value" : "Tähän palvelualaluokkaan kuuluvat liikuntapaikat, urheiluopistot ja niiden palvelut, liikunnan tietopalvelut ja urheiluseurojen sekä liikuntajärjestöjen toiminta.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains sports facilities, sports institutes and their services, exercise information services and the activities of sports clubs and sports associations.",
+      "language" : "en"
+    }, {
+      "value" : "Denna serviceundergrupp omfattar motionsställen, idrottsinstitut och deras tjänster, informationstjänster för motion samt idrottsföreningars och motionsorganisationers verksamhet.",
+      "language" : "sv"
+    } ],
+    "code" : "P27.1",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1211",
+    "parentId" : "175762f6-53cd-4d29-a285-625bfb421b21",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1210"
+  }, {
+    "name" : [ {
+      "value" : "Kulttuuri",
+      "language" : "fi"
+    }, {
+      "value" : "Kultur",
+      "language" : "sv"
+    }, {
+      "value" : "Culture",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "This service class contains a wide range of cultural services associated with different branches of arts, the library system, religious organisations and liberal adult education. The class also includes different free time services.",
+      "language" : "en"
+    }, {
+      "value" : "Tässä palveluluokassa käsitellään kulttuuripalveluja laajasti taiteen eri alojen, kirjastolaitoksen, uskonnollisten yhteisöjen ja vapaan sivistystyön puitteissa. Myös erilaiset vapaa-ajan palvelut kuuluvat tähän luokkaan.",
+      "language" : "fi"
+    }, {
+      "value" : "I denna servicegrupp behandlas kulturtjänster på ett omfattande plan inom ramen för olika konstarter, biblioteksväsendet, religiösa samfund och fritt bildningsarbete. Även olika fritidstjänster hör till denna grupp.",
+      "language" : "sv"
+    } ],
+    "code" : "P25",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1198",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "Vapaa-ajan palvelut",
+      "language" : "fi"
+    }, {
+      "value" : "Free-time services",
+      "language" : "en"
+    }, {
+      "value" : "Fritidstjänster",
+      "language" : "sv"
+    } ],
+    "description" : [ {
+      "value" : "Denna serviceundergrupp omfattar tjänster relaterade till fritiden på ett omfattande plan. Denna grupp omfattar inte motions- och idrottstjänster, som har en egen huvudgrupp.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains free-time services in a wide sense. The class does not include sports and exercise services, which have their own main class.",
+      "language" : "en"
+    }, {
+      "value" : "Tähän palvelualaluokkaan kuuluvat vapaa-ajan piiriin laajasti katsottavat palvelut. Tähän luokkaan eivät kuulu liikunnan ja urheilun palvelut, jotka ovat omassa pääluokassaan.",
+      "language" : "fi"
+    } ],
+    "code" : "P25.5",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1203",
+    "parentId" : "200f3f00-31b1-41cc-a986-2d9e4dc40fb7",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1198"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2018-05-28T11:50:04.442467",
+  "id" : "a9c1b4bd-9181-4ba8-a7c2-dd07f1ee283f",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "16579725-4f14-4862-a98a-cd22700dd5ec",
+      "name" : "Rymättylän nuorisotila"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "1a859043-2617-4a98-8722-1be7e99063e0",
+      "name" : "Naantalin kaupungin sivistystoimisto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "1ec205e3-ad1a-49d6-a495-d124528cc490",
+      "name" : "Merimaskun nuorisotila Kensu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "4f1831b0-d506-4023-b6d5-b62b7f8b1efd",
+      "name" : "Naantalin lukion auditorio"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "513fc9c1-73bf-465d-b9d4-d5d4d22cb557",
+      "name" : "Aaholli"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "5646b5f5-79fb-480d-81dd-16536f19021c",
+      "name" : "Merimaskun palvelupiste"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "5d7013ef-3ccd-432e-a52c-4097a0401f5c",
+      "name" : "Haijaisten toimintakeskus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "7fd3a666-279b-42d3-8217-119d457de590",
+      "name" : "Kaupungintalon yhteispalvelupiste"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "89e95451-fdfb-4e95-a6fd-7a61ba449269",
+      "name" : "Velkuan palvelupiste"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "aa23d748-f068-43ca-bc5a-9e6cb0dcf46d",
+      "name" : "Suopellon koulun auditorio"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "b320b619-01bd-4d63-8245-7658c36363d7",
+      "name" : "Tilanvaraus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "bacd2ca7-b412-4952-b9ef-78dec169c5f3",
+      "name" : "Karvetin monitoimitalo"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "ed246a4e-9e76-48c8-908d-19fc4c8ab589",
+      "name" : "Julius-tilanvarausjärjestelmä Naantali"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "fd41c9ab-9ffe-41ad-b8ec-393353ddb59f",
+      "name" : "Urheilutalo"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "fff205fe-e420-43ea-8702-6a7a685c2b51",
+      "name" : "Rymättylän palvelupiste"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "Chargeable",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Tilanvaraus",
+    "type" : "AlternativeName"
+  }, {
+    "language" : "fi",
+    "value" : "Vuokrattavat kulttuuri- ja vapaa-aikatilat",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "konsertlokaler",
+      "language" : "sv"
+    }, {
+      "value" : "konserttitilat",
+      "language" : "fi"
+    }, {
+      "value" : "concert spaces",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p65512",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p67645"
+  }, {
+    "name" : [ {
+      "value" : "hobbylokaler",
+      "language" : "sv"
+    }, {
+      "value" : "harrastustilat",
+      "language" : "fi"
+    }, {
+      "value" : "hobby spaces",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p66130",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p36575"
+  }, {
+    "name" : [ {
+      "value" : "vapaa-ajan tilat",
+      "language" : "fi"
+    }, {
+      "value" : "fritidslokaler",
+      "language" : "sv"
+    }, {
+      "value" : "recreation and leisure facilities",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p36575",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p34942"
+  }, {
+    "name" : [ {
+      "value" : "idrottshallar",
+      "language" : "sv"
+    }, {
+      "value" : "liikuntahallit (sisäliikuntapaikat)",
+      "language" : "fi"
+    }, {
+      "value" : "sports halls",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p66946",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p66287"
+  }, {
+    "name" : [ {
+      "value" : "galleriat",
+      "language" : "fi"
+    }, {
+      "value" : "gallerier",
+      "language" : "sv"
+    }, {
+      "value" : "galleries",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p69447",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p67645"
+  }, {
+    "name" : [ {
+      "value" : "idrottställen inomhus",
+      "language" : "sv"
+    }, {
+      "value" : "sisäliikuntapaikat",
+      "language" : "fi"
+    }, {
+      "value" : "indoor sports facilities",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p66287",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p10416"
+  }, {
+    "name" : [ {
+      "value" : "kulturlokaler",
+      "language" : "sv"
+    }, {
+      "value" : "kulttuuritilat",
+      "language" : "fi"
+    }, {
+      "value" : "cultural facilities",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p67645",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p34942"
+  }, {
+    "name" : [ {
+      "value" : "koulujen liikuntasalit",
+      "language" : "fi"
+    }, {
+      "value" : "gymnastiksalar i skolor",
+      "language" : "sv"
+    }, {
+      "value" : "school gyms",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p67121",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p66287"
+  }, {
+    "name" : [ {
+      "value" : "kulttuurin monitoimitalot",
+      "language" : "fi"
+    }, {
+      "value" : "allaktivitetshus inom kultur",
+      "language" : "sv"
+    }, {
+      "value" : "cultural community centres",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p68270",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p67645"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Yritykset ja yhteisöt",
+      "language" : "fi"
+    }, {
+      "value" : "Businesses and non-government organizations",
+      "language" : "en"
+    }, {
+      "value" : "Företag och samfund",
+      "language" : "sv"
+    } ],
+    "code" : "KR2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : "* Tilan käyttöhakemuksen voi jättää joko sähköpostitse, Julius-tilanvarausjärjestelmän kautta tai verkkosivuilta ladattavalla lomakkeella. Lomakkeita saa myös kaupungin kaikista palvelupisteistä sekä sivistystoimistosta.\n* Vapaana olevat vuorot näkyvät Julius-tilanvarausjärjestelmästä.\n* Yksittäisiä vuoroja tulee hakea vähintään kolme viikkoa ennen ajankohtaa.\n* Talvikauden vakiovuoroja haetaan vuosittain toukokuussa, kesän käyttövuoroja maaliskuussa.\n* Ilmoita tiloja varatessasi ajankohta kellonaikoineen, varauksen tarkoitus, yhteyshenkilö ja hänen yhteystietonsa sekä laskutustiedot.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : "Tilojen käytöstä peritään lautakunnan päättämiä maksuja.",
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : "Kulttuuri- ja vapaa-aikatilat ovat niin naantalilaisten kuin muidenkin järjestäjien käytettävissä ja niistä peritään lautakuntien päättämiä maksuja.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Naantalissa on vuokrattavia tiloja monenlaiseen toimintaan. Kulttuuri- ja vapaa-aikatilat ovat niin naantalilaisten kuin muidenkin järjestäjien käytettävissä ja niistä peritään lautakuntien päättämiä maksuja. \n\nVuokrattavia kulttuuri- ja vapaa-aikatiloja ovat mm.\n* Aaholli, monitoimitalo Rymättylässä\n* Auditoriot (Suopellon koulu ja Naantalin lukio)\n* Haijaisten toimintakeskus\n* Karvetin monitoimitalo\n* Kesti-Maaria, kulttuuri- ja vapaa-aikatila kanta-Naantalissa\n* Koulusalit\n* Kristoffer-sali, kulttuuritila kanta-Naantalissa\n* Lossitupa, kokoontumistila Merimaskussa\n* Maijamäen liikuntahalli ja tatami-sali\n* Naantalin taidehuone, näyttelytila vanhassakaupungissa\n* Salorannan nuorisoleirialue\n* Ulkoliikuntatilat\n* Urheilutalo, liikunta- ja vapaa-aikatila kanta-Naantalissa",
+    "type" : "Description"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

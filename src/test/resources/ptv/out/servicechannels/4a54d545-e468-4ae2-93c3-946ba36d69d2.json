@@ -1,0 +1,114 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Vöyrinkatu",
+        "language" : "fi"
+      }, {
+        "value" : "Vörågatan",
+        "language" : "sv"
+      } ],
+      "streetNumber" : "2",
+      "postalCode" : "65100",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ ],
+      "latitude" : "7008805.837",
+      "longitude" : "228596.756",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi", "sv", "en" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "73ff8109-ab84-416d-a858-be94413c93a9",
+      "name" : "Suun terveydenhuolto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Malmöntalon hammashoitola",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Malmögårdens tandklinik",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Hammashoitola toimii ajanvarauksella. Hammashoitolassa hoidetaan suun alueen tarkastuksia ja tarvittavia ehkäiseviä ja korjaavia toimenpiteitä.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Malmöntalon hammashoitola",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Malmögårdens tandklinik",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Tandkliniken fungerar med tidsbokning. På tandkliniken sköts granskningar av munområdet och behövliga förebyggande och reparerande åtgärder.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "4a54d545-e468-4ae2-93c3-946ba36d69d2"
+}

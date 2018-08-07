@@ -1,0 +1,44 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "http://www.naantali.fi/perhe_ja_sosiaali/hoito_ja_vanhuspalvelut/fi_FI/kotihoidon_maksut/_files/97298405207901580/default/Asiakasmaksut%20internet.pdf",
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "29e1b6f6-b722-4bd1-b128-df796b728355",
+      "name" : "Kotihoito"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Kotihoidon asiakasmaksut ja tukipalveluhinnat Naantalissa",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Tietoa kotihoidon asiakasmaksuista ja tukipalveluhinnoista Naantalin kotihoidossa.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Tietoa kotihoidon asiakasmaksuista ja tukipalveluhinnoista Naantalin kotihoidossa. ",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "13fd6849-3ea7-46e5-b319-8f7cfddd4f27"
+}

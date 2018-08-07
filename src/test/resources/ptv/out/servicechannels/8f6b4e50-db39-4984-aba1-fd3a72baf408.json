@@ -1,0 +1,44 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "http://www.naantali.fi/kulttuuri/avustukset/fi_FI/avustukset/",
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "48955394-8800-42ab-8f47-03703ed8880e",
+      "name" : "Kulttuuriin liittyvän kansalaistoiminnan tuki ja avustukset"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Kulttuuritoiminnan avustukset",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Verkkosivuilta löydät hyödyllistä tietoa Naantalin kaupungin kulttuuritoimintaan tarkoitetuista avustuksista ja niiden myöntämisen edellytyksistä.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Verkkosivuilta löydät tietoa Naantalin kaupungin kulttuuritoimintaan tarkoitetuista avustuksista ja niiden myöntämisen edellytyksistä.",
+    "type" : "Summary"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "8f6b4e50-db39-4984-aba1-fd3a72baf408"
+}

@@ -1,0 +1,242 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Sosiaalipalvelut",
+      "language" : "fi"
+    }, {
+      "value" : "Socialtjänster",
+      "language" : "sv"
+    }, {
+      "value" : "Social services",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Tässä palveluluokassa käsitellään sekä yleisiä että erityisryhmille suunnattuja sosiaalipalveluja, jotka on tarkoitettu kansalaisten arjen, asumisen ja toimeentulon tukemiseen.",
+      "language" : "fi"
+    }, {
+      "value" : "I den här servicegruppen behandlas både allmänna socialtjänster och socialtjänster för specialgrupper, vilka avsetts som stöd för medborgarnas vardag, boende och försörjning.",
+      "language" : "sv"
+    }, {
+      "value" : "This service class contains both general social services and those targeted at special groups to support citizens’ everyday life management, housing and incomes.",
+      "language" : "en"
+    } ],
+    "code" : "P4",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1023",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "0d656d0f-290b-4fc2-ac2d-3833f0725dc1",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "0d40274d-f411-4e53-aea3-72e308f88749",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "005bf017-7733-444c-9f94-6b16857aafbb",
+      "name" : "Sosiaalipäivystys"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "047fa48f-fc26-4ab0-88d6-c9a9623be138",
+      "name" : "Johtava sosiaalityöntekijä - aktivointi ja kuntoutus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "972519f8-ce2e-40c9-9940-ea1ea2a9edf7",
+      "name" : "Aikuissosiaalityön ohjaus ja neuvonta"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "ce3b3b7f-88ac-444d-96d1-941bed681f9d",
+      "name" : "Johtava sosiaalityöntekijä - aikuissosiaalityö, vammaispalvelut ja kotouttaminen"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv", "en" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Aikuissosiaalityö",
+    "type" : "AlternativeName"
+  }, {
+    "language" : "fi",
+    "value" : "Aikuisten sosiaalityö",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Vuxensocialarbete",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "palvelutarpeen arviointi",
+      "language" : "fi"
+    } ],
+    "code" : null,
+    "ontologyType" : "TERO",
+    "uri" : "http://www.yso.fi/onto/koko/p63187",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p36738"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Sosiaalityön päivystys ja yhteydenotot ma-pe klo 8 – 11 p. 040 575 3109.\n\nOhjaus ja neuvonta: ma-pe klo 8-16, puh. 06 325 2326.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : "Tillsammans med socialarbetaren kan du diskutera olika saker som har att göra med din nuvarande livssituation och framtid. \n\nServiceområdet för vuxensocialarbete:\n\n* stöda unga klienter, klienter i arbetsför ålder samt klienter som behöver särskilt stöd i ärenden som berör livshanteringen, arbete, utkomst och studier\n* minska på ojämlikheten och främja delaktigheten samt jämlikheten i samhället\n* främja delaktigheten och jämlikheten för personer med funktionsnedsättningar i samhället samt främja och få bort hinder som beror på funktionsnedsättningarna\n* främja och stöda integrationen\n* främja och minska på skador som beror på problemanvändningen av rusmedel och andra problem med mentala hälsan samt främjande av missbrukarnas och deras anhörigas funktionsförmåga och säkerhet\n* effektivera faktorer som skyddar den mentala hälsan\n* minska och få bort faktorer som försätter den mentala hälsan för risker\n* stöda livshanteringen och förbättra funktionsförmågan hos personer i mentalvårdsrehabilitering samt hos deras närstående\n\nDärtill sköter serviceområdet om mottagningscentralsverksamheten för personer som söker internationellt skydd samt vid identifiering av offer för människohandel och hjälpande av dessa personer genom i lagen stadgade tjänster (genom avtal med staten) samt för tolktjänster vid ärendehanteringen.\n",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Tillsammans med socialarbetaren kan du diskutera olika saker som har att göra med din nuvarande livssituation och framtid.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : "Socialarbetes jour och förfrågningar må-fr kl. 8-11 tfn 040 575 3109.\n\nHandledning och rådgivning: må-fr kl. 8-16, tfn 06 325 2326.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Sosiaalityöntekijän kanssa voit keskustella monenlaisista asioista, jotka liittyvät nykyiseen tilanteeseesi tai tulevaisuutesi.\n\nAikuisten sosiaalityön palvelualue:\n* tukee nuoria, työikäisiä ja erityistä tukea tarvitsevia asiakkaita elämänhallintaan, työhön, toimeentuloon ja opiskeluun liittyvissä asioissa\n* vähentää eriarvoisuutta sekä edistää osallisuutta ja yhdenvertaisuutta yhteiskunnassa\n* edistää vammaisten henkilöiden osallisuutta ja yhdenvertaisuutta yhteiskunnassa sekä ehkäistä ja poistaa vammaisuudesta johtuvia esteitä\n* edistää ja tukea kotoutumista\n* ehkäisee ja vähentää päihteiden ongelmakäyttöä ja siihen liittyviä haittoja sekä parantaa päihteiden ongelmakäyttäjien ja heidän läheistensä toimintakykyä ja turvallisuutta\n* vahvistaa mielenterveyttä suojaavia tekijöitä\n* vähentää ja poistaa mielenterveyttä vaarantavia tekijöitä\n* tukee mielenterveyskuntoutujien elämänhallintaa, parantaa heidän ja heidän läheistensä toimintakykyä\nLisäksi palvelualue huolehtii kansainvälistä suojelua hakevien vastaanottokeskuspalveluista sekä ihmiskaupan uhrin tunnistamisesta ja auttamisesta annetun lain mukaisista palveluista (sopimuksella valtion kanssa) ja asioimistulkkauspalveluista.\n",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : "Aikuisten sosiaalityön palvelualue tukee nuoria, työikäisiä ja erityistä tukea tarvitsevia asiakkaita elämänhallinnassa, työssä ja toimeentulossa.",
+    "type" : "Summary"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

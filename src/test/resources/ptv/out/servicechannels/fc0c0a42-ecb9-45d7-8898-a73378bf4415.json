@@ -1,0 +1,53 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://www.suomi.fi/valtuudet",
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "requiresSignature" : false,
+  "attachments" : [ ],
+  "languages" : [ ],
+  "supportPhones" : [ ],
+  "areas" : [ ],
+  "supportEmails" : [ {
+    "value" : "kapa-asiakaspalvelu@vrk.fi",
+    "language" : "fi"
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "c46d925d-fccd-410c-ae03-4e2f363b3542",
+      "name" : "Valtuuksien tarkastaminen Suomi.fi-valtuuksien avulla ja valtuusrekisteri"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "b458d033-042d-4cbe-b030-34e81da28821",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Suomi.fi-valtuuksien käyttöönotto",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "EChannel",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Suomi.fi-valtuuksien avulla organisaatio voi tarkistaa henkilön laillisen oikeuden asioida toisen henkilön tai yrityksen puolesta. Palvelu tarkistaa oikeudet suoraan olemassa olevista rekistereistä (esimerkiksi väestötietojärjestelmä ja kaupparekisteri) ja välittää tiedon automaattisesti organisaation sähköiselle asiointipalvelulle. Lisäksi palvelussa rakennetaan kansallinen valtuusrekisteri. Organisaatio voi liittyä kansalliseen valtuusrekisteriin, jolloin kansalainen tai yrityksen edustaja pystyy luomaan valtuuksia organisaation asiointipalveluun. Esimerkiksi pankki voisi liittyä valtuusrekisteriin, jolloin kansalainen voi valtuuttaa toisen henkilön hoitamaan pankkiasioitaan kyseisessä pankissa. Suomi.fi-valtuudet on tarkoitettu julkiselle ja yksityiselle sektorille.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Suomi.fi-valtuuksien avulla organisaatio voi tarkistaa henkilön laillisen oikeuden asioida toisen henkilön tai yrityksen puolesta.",
+    "type" : "Summary"
+  } ],
+  "areaType" : null,
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-27T12:45:12.551393",
+  "id" : "fc0c0a42-ecb9-45d7-8898-a73378bf4415",
+  "signatureQuantity" : 0,
+  "requiresAuthentication" : false
+}

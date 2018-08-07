@@ -1,0 +1,259 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "PermitOrObligation",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Ympäristöilmoitukset ja luvat",
+      "language" : "fi"
+    }, {
+      "value" : "Miljöanmälan och -tillstånd",
+      "language" : "sv"
+    }, {
+      "value" : "Environmental notifications and permits",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Tähän palvelualaluokkaan kuuluvat ne ilmoitus- ja lupamenettelyt, jotka liittyvät ympäristöä pysyvästi muuttaviin tai ympäristölle mahdollisesti haitallisiin toimenpiteisiin kuten kaivostoimintaan tai ympäristövaarallisiin kemikaaleihin.",
+      "language" : "fi"
+    }, {
+      "value" : "Denna serviceundergrupp omfattar anmälnings- och tillståndsförfaranden relaterade till åtgärder som förändrar miljön permanent eller som eventuellt är skadliga för miljön, såsom gruvdrift eller miljöfarliga kemikalier.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains the notification and permit procedures associated with actions that permanently change the environment or are potentially harmful for the environment, including mining or chemicals that pose an environmental hazard.",
+      "language" : "en"
+    } ],
+    "code" : "P23.5",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1188",
+    "parentId" : "9eac7938-e66b-4023-ac2e-8774ee615bca",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1184"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "aed621f8-b8b3-4c55-a39c-469cf8d4a2d4",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "c5fdbe70-df5e-410f-bb5f-72456d21a31e",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "8080da68-4225-4bde-b01c-4c3c087a2f81",
+      "name" : "Ympäristötoimi"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Aumausilmoitus",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Anmälan om lagring av gödsel",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "gödsel",
+      "language" : "sv"
+    }, {
+      "value" : "lannoitteet",
+      "language" : "fi"
+    }, {
+      "value" : "fertilisers",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p33683",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p35700"
+  }, {
+    "name" : [ {
+      "value" : "miljöanmälan",
+      "language" : "sv"
+    }, {
+      "value" : "ympäristöilmoitukset",
+      "language" : "fi"
+    }, {
+      "value" : "environmental notifications",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p67947",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p13673;http://www.yso.fi/onto/koko/p73603"
+  }, {
+    "name" : [ {
+      "value" : "varastointi",
+      "language" : "fi"
+    }, {
+      "value" : "lagring",
+      "language" : "sv"
+    }, {
+      "value" : "warehousing",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p36492",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p25605"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Yritykset ja yhteisöt",
+      "language" : "fi"
+    }, {
+      "value" : "Businesses and non-government organizations",
+      "language" : "en"
+    }, {
+      "value" : "Företag och samfund",
+      "language" : "sv"
+    } ],
+    "code" : "KR2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "Kotimarkkinoilla toimivat yritykset",
+      "language" : "fi"
+    }, {
+      "value" : "Businesses operating in the domestic (Finnish) market",
+      "language" : "en"
+    }, {
+      "value" : "Företag på den inhemska marknaden",
+      "language" : "sv"
+    } ],
+    "code" : "KR2.3",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2011",
+    "parentId" : "338939bb-b01a-4a80-a091-7c5238322bc0",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008"
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : "En stack är en avlång grop som har grävts i en åker, där det lagras gödsel, andra organiska gödselmedel eller efterkomposteringsmaterial.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Responsen kommer inom några dagar.",
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Palautteen saa muutaman päivän kuluessa.",
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : "Voimassa toistaiseksi, kunnes auma puretaan.",
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : "Ilmoitus tulee tehdä vähintään 14 vrk ennen auman perustamista.",
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : "Auma on peltoon kaivettu pitkulainen kuoppa, jonne patteroidaan lantaa, muita orgaanisia lannoitteita tai jälkikypsytettävää kompostia.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Ilmoitus tulee tehdä jokaisesta aumasta. Uusi ilmoitus on tehtävä, vaikka auma tehtäisiin samaan paikkaan kuin edellisvuonna. ",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Anmälan ska göras minst 14 dygn före stacken anläggs.",
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : "Gäller tillsvidare, till dess stacken avslutas.",
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : "Anmälan ska göras om varje stack. En ny anmälan ska lämnas in fastän stacken anläggs på samma ställe som året innan. ",
+    "type" : "Description"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

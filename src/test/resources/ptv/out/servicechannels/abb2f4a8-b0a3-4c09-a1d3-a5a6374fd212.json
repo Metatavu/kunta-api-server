@@ -1,0 +1,122 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "attachments" : [ ],
+  "languages" : [ ],
+  "deliveryAddresses" : [ {
+    "subType" : "NoAddress",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : null,
+    "deliveryAddressInText" : [ ],
+    "receiver" : [ {
+      "value" : null,
+      "language" : "sv"
+    }, {
+      "value" : null,
+      "language" : "fi"
+    }, {
+      "value" : null,
+      "language" : "en"
+    } ]
+  } ],
+  "supportPhones" : [ ],
+  "formIdentifier" : [ {
+    "value" : null,
+    "language" : "sv"
+  }, {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "en"
+  } ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "82b0256e-536b-4ae7-9b31-135e0e00c53d",
+      "name" : "Avoin varhaiskasvatus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "channelUrls" : [ {
+    "language" : "fi",
+    "value" : "https://www.vaasa.fi/sites/default/files/hakemus_avoimen_kerhoon_2016_0.pdf",
+    "type" : "PDF"
+  }, {
+    "language" : "en",
+    "value" : "https://www.vaasa.fi/sites/default/files/application_open_day_care_centre_clubb_2014_2.pdf",
+    "type" : "PDF"
+  }, {
+    "language" : "sv",
+    "value" : "https://www.vaasa.fi/sites/default/files/ansokan_om_oppet_daghems_klubb_2016.pdf",
+    "type" : "PDF"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "sv",
+    "value" : "Ansökan om öppet daghems klubb",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Hakemus avoimen päiväkodin kerhoon",
+    "type" : "Name"
+  }, {
+    "language" : "en",
+    "value" : "Applying to the open day-care club",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "PrintableForm",
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "Det primära ansökningssättet är en elektronisk ansökan eller alternativt används en pappersblankett. Blanketten kan skrivas ut eller hämtas på de öppna daghemmen eller förvaltningen för småbarnspedagogik.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Det primära ansökningssättet är en elektronisk ansökan eller alternativt används en pappersblankett.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Avoimen päiväkodin kerhoon haetaan ensisijaisesti sähköisesti, mutta paikkaa voi hakea myös lomakkeella.",
+    "type" : "Summary"
+  }, {
+    "language" : "en",
+    "value" : "The applying to the open day-care club is mainly done electronically, but a place can also be applied with a form.",
+    "type" : "Summary"
+  }, {
+    "language" : "en",
+    "value" : "The applying to the open day-care club is mainly done electronically, but a place can also be applied with a form. The form can be printed out or fetched from the open day-care centre or from the administration of early childhood education.\n",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Avoimen päiväkodin kerhoon haetaan ensisijaisesti sähköisesti, mutta paikkaa voi hakea myös lomakkeella. Lomakkeen voi tulostaa tai noutaa avoimesta päiväkodista tai varhaiskasvatuksen hallinnosta.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "abb2f4a8-b0a3-4c09-a1d3-a5a6374fd212"
+}

@@ -1,0 +1,292 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Krutkällarvägen",
+        "language" : "sv"
+      }, {
+        "value" : "Ruutikellarintie",
+        "language" : "fi"
+      } ],
+      "streetNumber" : "4",
+      "postalCode" : "65100",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ {
+        "value" : "2. krs",
+        "language" : "fi"
+      }, {
+        "value" : null,
+        "language" : "sv"
+      } ],
+      "latitude" : "7006492.234",
+      "longitude" : "229776.311",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  }, {
+    "type" : "Postal",
+    "subType" : "PostOfficeBox",
+    "postOfficeBoxAddress" : {
+      "postOfficeBox" : [ {
+        "value" : "PL 241",
+        "language" : "fi"
+      }, {
+        "value" : "PL 241",
+        "language" : "sv"
+      } ],
+      "postalCode" : "65101",
+      "postOffice" : [ {
+        "value" : "VAASA",
+        "language" : "fi"
+      }, {
+        "value" : "VASA",
+        "language" : "sv"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ {
+        "value" : null,
+        "language" : "sv"
+      } ]
+    },
+    "streetAddress" : null,
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "5aeef5bd-aaa8-48c2-b1da-c7f4d5dd70e0",
+      "name" : "Ikäihmisten hoitopaikat"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "b8ef394a-a6fe-438c-810b-f685c49c3164",
+      "name" : "Laitoshoito"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "f46711a1-af86-4d72-bba6-03c780405f9e",
+      "name" : "Kotihoito"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : "Maksupäällikkö",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63252411",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Laskutussihteeri",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63252348",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Laskutussihteeri",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63251605",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Laskutussihteeri",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63252568",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Betalningschef",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63252411",
+    "language" : "sv"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Faktureringssekreterare",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63252348",
+    "language" : "sv"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Faktureringssekreterare",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63251605",
+    "language" : "sv"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Faktureringssekreterare",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63252568",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Asiakasmaksutoimisto",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Klientavgiftsbyrån",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ {
+    "serviceHourType" : "DaysOfTheWeek",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ {
+      "value" : null,
+      "language" : "sv"
+    } ],
+    "openingHour" : [ {
+      "dayFrom" : "Monday",
+      "dayTo" : "",
+      "from" : "09:00:00",
+      "to" : "15:00:00"
+    }, {
+      "dayFrom" : "Tuesday",
+      "dayTo" : "",
+      "from" : "09:00:00",
+      "to" : "15:00:00"
+    }, {
+      "dayFrom" : "Wednesday",
+      "dayTo" : "",
+      "from" : "09:00:00",
+      "to" : "15:00:00"
+    }, {
+      "dayFrom" : "Thursday",
+      "dayTo" : "",
+      "from" : "09:00:00",
+      "to" : "15:00:00"
+    }, {
+      "dayFrom" : "Friday",
+      "dayTo" : "",
+      "from" : "09:00:00",
+      "to" : "15:00:00"
+    } ]
+  } ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "Besluten om klientavgifterna för hemvård, effetiverat serviceboende och anstaltsvård fattas vid klientavgiftsbyrå. Klientavgiftsbyrån betjänar även i ärenden som berör avgiftstaket och frikortet, nedsättning av de inkomstbundna klientavgifterna samt i ärenden som berör faktureringen.\n\nTilläggsuppgifter hittar du på Vasa stads webbsidor.\n",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Besluten om klientavgifterna för hemvård, effetiverat serviceboende och anstaltsvård fattas vid klientavgiftsbyrå.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Päätökset kotihoidon, tehostetun palveluasumisen ja laitoshoidon asiakasmaksuista tehdään asiakasmaksutoimistossa. Asiakasmaksutoimisto palvelee myös sosiaali- ja terveystoimen asiakasmaksujen maksukattoon ja vapaakorttiin, tulosidonnaisten asiakasmaksujen alentamiseen sekä laskutukseen liittyvissä asioissa.\n\nLisätietoa Vaasan kaupungin verkkosivuilla.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Päätökset kotihoidon, tehostetun palveluasumisen ja laitoshoidon asiakasmaksuista tehdään asiakasmaksutoimistossa.",
+    "type" : "Summary"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "0447794b-bb9b-487a-93fc-4c3dbfc5b086"
+}

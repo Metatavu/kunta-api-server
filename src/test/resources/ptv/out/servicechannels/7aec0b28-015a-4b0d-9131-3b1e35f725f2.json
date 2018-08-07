@@ -1,0 +1,50 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://vrk.fineid.fi/",
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "requiresSignature" : false,
+  "attachments" : [ ],
+  "languages" : [ ],
+  "supportPhones" : [ ],
+  "areas" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "449960f4-9563-4c45-86c3-524edfad456a",
+      "name" : "Kansalaisvarmenne"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "b458d033-042d-4cbe-b030-34e81da28821",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Varmenteiden testauspalvelu",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "EChannel",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Kansalais- ja organisaatiovarmenteen testipalvelussa voit kokeilla sähköisen allekirjoituksen tekemistä.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Kansalais- ja organisaatiovarmenteen testipalvelussa voit kirjautua varmennetta käyttäen testisivustolle ja kokeilla sähköisen allekirjoituksen tekemistä.\n\nVarmenteiden testipalvelua voi käyttää kaikilla Väestörekisterikeskuksen myöntämillä varmenteilla. Ennen varmenteiden testaamista tulee kortinlukijan ja kortinlukijaohjelmiston olla asennettuna työasemaan.\n\nTestipalvelussa kortin varmennetiedot luetaan kortinlukijaohjelmiston välityksellä, jonka jälkeen palvelin kysyy vahvistusta kirjautumisessa käytettävästä varmenteesta. Tähän tarvitset PIN 1. Jos annat PIN-tunnuslukusi väärin viisi kertaa, kortin tunnistamisvarmenne menee lukkoon. Sen voi vapauttaa PUK-koodilla. Organisaatiokorttien PUK-koodit ovat yleensä organisaation turvavastaavalla.",
+    "type" : "Description"
+  } ],
+  "areaType" : null,
+  "publishingStatus" : "Published",
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "7aec0b28-015a-4b0d-9131-3b1e35f725f2",
+  "signatureQuantity" : 0,
+  "requiresAuthentication" : true
+}

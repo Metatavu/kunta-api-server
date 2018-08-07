@@ -1,0 +1,44 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "http://www.naantali.fi/terveys/palvelut/fi_FI/kohdunkaulansyovan_joukkotarkastukset/",
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "83f1f6a6-1867-4e13-b0c7-eaa671efa596",
+      "name" : "Seulontatutkimukset"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Kohdunkaulansyövän seulonnat -verkkosivu",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Kohdunkaulansyövän seulonnat -verkkosivulta saat tietoa seulontoihin kutsuttavista ikäluokista sekä seulontojen toteutuksesta.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Naantalin kaupungin kohdunkaulansyövän seulonnat -verkkosivulta saat tietoa maksuttomiin kohdunkaulansyövän seulontoihin kutsuttavista ikäluokista sekä seulonnan toteuttavan Synlabin yhteystiedoista. Synlab sijaitsee Turussa.",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2018-04-09T10:04:32.867173",
+  "id" : "a0ad2cf0-7d97-488b-a1d7-f695c9f67c13"
+}

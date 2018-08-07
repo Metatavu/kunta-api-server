@@ -1,0 +1,169 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Päihde- ja mielenterveyspalvelut",
+      "language" : "fi"
+    }, {
+      "value" : "Intoxicant abuse and mental health services",
+      "language" : "en"
+    }, {
+      "value" : "Tjänster för missbrukare och mentalvårdstjänster",
+      "language" : "sv"
+    } ],
+    "description" : [ {
+      "value" : "Tjänster som hör till denna serviceundergrupp har anvisats för personer som insjuknat i missbrukar- och övriga beroendsjukdomar och för de som lider av mentala problem. Gruppens tjänster kan vara såväl vårdande, stödjande som förebyggande.",
+      "language" : "sv"
+    }, {
+      "value" : "Tähän palvelualaluokkaan kuuluvat palvelut on kohdennettu päihde- ja muista riippuvuusairauksia sairastaville ja mielenterveyden ongelmista kärsiville. Luokan palvelut voivat olla niin hoitavia, tukevia kuin ennalta ehkäiseviä.",
+      "language" : "fi"
+    }, {
+      "value" : "The services in this subclass are intended for persons with intoxicant and other addictions or mental health problems. They may include treatment, support and prevention.",
+      "language" : "en"
+    } ],
+    "code" : "P5.7",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1045",
+    "parentId" : "76ca210c-5183-4d41-b796-50612d5930c7",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1038"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "425b251a-c8d6-4374-95fb-b5e5155574c8",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-10-04T13:26:30.75114",
+  "id" : "0f522839-80cc-414d-ac8b-0952d59a87d1",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "a2806468-2e95-4e6f-85f1-89b38b2a6ad1",
+      "name" : "Päivätoimintakeskus Tuulentupa"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : "Kaikille naantalilaisille avoin ja päihteetön matalan kynnyksen palvelu.",
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Päihteiden käyttäjien päiväkeskuspalvelut",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Päivätoimintakeskus Tuulentuvan palvelut",
+    "type" : "AlternativeName"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "päihdehuolto",
+      "language" : "fi"
+    }, {
+      "value" : "missbrukarvård",
+      "language" : "sv"
+    }, {
+      "value" : "social work with intoxicant abusers",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p12968",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p18203;http://www.yso.fi/onto/koko/p11412"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : "Päiväkeskustoiminta auttaa elämänhallinnan ja toimintakyvyn ylläpitämisessä ja kehittämisessä sekä tarjoaa viriketoimintaa päihteidenkäytön sijaan.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : "Päihteiden käyttäjien päiväkeskustoiminta auttaa elämänhallinnan ja toimintakyvyn ylläpitämisessä ja kehittämisessä sekä tarjoaa erilaista viriketoimintaa päihteiden käytön sijaan. Toiminta on asiakaslähtöistä ja tarjoaa mahdollisuden vertaistukeen.\n\nPäiväkeskuspalveluja Naantalissa ovat muun muassa:\n* ohjaus erilaisissa elämänhallintaa koskevissa kysymyksissä\n* ohjaus eri viranomaistahoihin sekä avohuollon palveluihin\n* apu erilaisten tukien hakemisessa ja kaavakkeiden täyttämisessä\n* ohjaus toipumista tukeviin vertaistukiryhmiin (esim. NA-ryhmä)\n* ohjaus ja motivointi mielekkääseen päihteettömään toimintaan",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Naantalissa päihteiden käyttäjien päiväkeskuspalvelut ovat saatavilla Päivätoimintakeskus Tuulentuvasta.",
+    "type" : "UserInstruction"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

@@ -1,0 +1,61 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/node/6851/",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/sv/node/6851/",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "b08f9788-f337-4840-a4fa-92ec4638b2db",
+      "name" : "Avoimet tarjouspyynnöt"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Avoimet tarjouspyynnöt",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Öppna anbudsförfrågningar",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Verkkosivuilta löydät avoimia tarjouspyyntöjä Vaasan kaupungin yksiköiden kilpailuttamista hankinnoista ja muuta tietoa avoimista tarjouspyynnöistä.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Verkkosivuilta löydät avoimia tarjouspyyntöjä Vaasan kaupungin yksiköiden kilpailuttamista hankinnoista ja muuta tietoa avoimista tarjouspyynnöistä.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "På webbsidorna publiceras öppna anbudsförfrågningar för upphandlingar som Vasa stads enheter konkurrensutsätter samt annan information om öppna anbuds",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "På webbsidorna publiceras öppna anbudsförfrågningar för upphandlingar som Vasa stads enheter konkurrensutsätter samt annan information om öppna anbudsförfrågningar. ",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "9b9d2f65-b7a6-47cc-8265-6944ee51f102"
+}

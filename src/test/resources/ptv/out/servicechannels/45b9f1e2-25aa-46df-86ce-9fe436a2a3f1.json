@@ -1,0 +1,87 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "languages" : [ "fi" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "536bddf4-b7d8-463b-85b1-d8d6a2ff5c83",
+      "name" : "Toimintaterapian palvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "e6948df4-134b-4255-9015-ad4e3c366f6d",
+      "name" : "Lääkinnällisen kuntoutuksen palvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : "Aikuisten toimintaterapian puhelinaika ma - pe klo 11 - 11.30. Puhelimeen vastataan mahdollisuuksien mukaan myös muina aikoina.",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "24362657",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Lasten toimintaterapia",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "406648091",
+    "language" : "fi"
+  } ],
+  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Toimintaterapian puhelinasiointi",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "Phone",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Ota yhteyttä Naantalin terveyspalvelujen lasten ja aikuisten toimintaterapian puhelinasiointiin toimintaterapiaan liittyvissä asioissa.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Naantalin terveyspalvelujen lasten ja aikuisten toimintaterapian puhelinasiointi.",
+    "type" : "Summary"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2018-04-09T13:17:39.828183",
+  "id" : "45b9f1e2-25aa-46df-86ce-9fe436a2a3f1"
+}

@@ -1,0 +1,242 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Lapsiperheiden sosiaalipalvelut",
+      "language" : "fi"
+    }, {
+      "value" : "Socialtjänster för barnfamiljer",
+      "language" : "sv"
+    }, {
+      "value" : "Social services for families with children",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "I denna serviceundergrupp behandlas ekonomiska bidrag och förmåner särskilt för barnfamiljer samt de hem- och stödtjänster som inte omfattas av familjerådgivningen eller barnskyddet.",
+      "language" : "sv"
+    }, {
+      "value" : "Tässä alapalveluluokassa käsitellään erityisesti lapsiperheille suunnattuja taloudellisia tukia ja etuuksia sekä niitä koti- ja tukipalveluja, jotka eivät kuulu perheneuvonnan tai lastensuojelun piiriin.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains financial subsidies and benefits targeted especially at families with children as well as home and support services that are not included in family counselling or child welfare.",
+      "language" : "en"
+    } ],
+    "code" : "P3.6",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1019",
+    "parentId" : "77af99fa-93eb-4de6-ac83-1b161a961263",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1013"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "989953ea-21dc-4d1d-a7fb-63cc07e43cbf",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "005bf017-7733-444c-9f94-6b16857aafbb",
+      "name" : "Sosiaalipäivystys"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "2bda0a71-96d9-4c9a-8b03-5c0eabf945ea",
+      "name" : "Lapsi- ja perhesosiaalityön ja lastensuojelun päivystys"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "sv",
+    "value" : "Barnskyddsanmälan",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Lastensuojeluilmoitus",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "lastensuojeluilmoitukset (ilmoitukset (tiedotteet))",
+      "language" : "fi"
+    } ],
+    "code" : null,
+    "ontologyType" : "TERO",
+    "uri" : "http://www.yso.fi/onto/koko/p64613",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p13673"
+  }, {
+    "name" : [ {
+      "value" : "barnskydd",
+      "language" : "sv"
+    }, {
+      "value" : "lastensuojelu",
+      "language" : "fi"
+    }, {
+      "value" : "child protection",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p15822",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p32415;http://www.yso.fi/onto/koko/p18203"
+  }, {
+    "name" : [ {
+      "value" : "ennakollinen lastensuojeluilmoitus",
+      "language" : "fi"
+    } ],
+    "code" : null,
+    "ontologyType" : "TERO",
+    "uri" : "http://www.yso.fi/onto/koko/p53695",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p64613"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "sv",
+    "value" : "En barnskyddsanmälan kan vem som helst göra som märker att ett barn eller en ung person behöver hjälp.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Lastensuojeluilmoituksen voi tehdä jokainen, joka huomaa lapsen tai nuoren olevan avun tarpeessa.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : "En barnskyddsanmälan gör man genom att ta kontakt antingen med Österbottens socialjour eller på vardagar under tjänstetid ringa barnskyddets journummer.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : "Lapsen hoidon ja huolenpidon tarve, kehitystä vaarantavat olosuhteet tai oma käyttäytyminen saattavat edellyttää lastensuojelutarpeen selvityksen tekemistä. Lastensuojeluilmoituksen voi tehdä jokainen, joka huomaa lapsen tai nuoren olevan avun tarpeessa.\n\nEri viranomaiset, luottamustehtävässä toimivat henkilöt tai vastaavissa tehtävissä toimeksiantosuhteessa tai itsenäisinä ammatinharjoittajina toimivat henkilöt sekä terveydenhuollon ammattihenkilöt ovat velvollisia salassapitosäädösten estämättä tekemään lastensuojeluilmoituksen. Ilmoitusvelvollisuus voidaan toteuttaa pyyntönä yhdessä lapsen tai hänen vanhempansa kanssa.\n\nEnnen lapsen syntymää lastensuojeluilmoituksen tekemiseen velvolliset viranomaiset ovat velvollisia tekemään ennakollisen lastensuojeluilmoituksen, jos on perusteltua syytä epäillä, että lapsi tulee tarvitsemaan lastensuojelun tukitoimia välittömästi syntymänsä jälkeen. Päivystävän sosiaaliviranomaisen on arvioitava kiireellisissä tapauksissa sosiaalipalvelujen tarve.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Lastensuojeluilmoitus tehdään ottamalla yhteyttä joko Pohjanmaan sosiaalipäivystykseen tai arkisin virka-aikana lastensuojelun päivystysnumeroon.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : "Barnets behov av vård och omsorg, förhållanden som äventyrar barnets utveckling eller det egna beteendet kan förutsätta en utredning om behovet av barnskydd. En barnskyddsanmälan kan vem som helst göra som märker att ett barn eller en ung person behöver hjälp.\n\nMyndigheter, personer innehar förtroendeuppdrag eller personer som utför motsvarande uppgifter i uppdragsförhållanden eller som självständiga yrkesutövare samt yrkesutbildade personer inom hälso- och sjukvården är skyldiga att oavsett sekretessbestämmelserna göra en barnskyddsanmälan. Anmälningsskyldigheten kan också uppfyllas genom att en begäran görs tillsammans med barnet eller barnets förälder.\n\nOm det finns grundad anledning att misstänka att ett ofött barn omedelbart efter sin födelse kommer att behöva stödåtgärder inom barnskyddet ska de myndigheter som är skyldiga att gör barnskyddsanmälan före barnets födelse göra en föregripande barnskyddsanmälan.  Jourhavande sociala myndighet ska i brådskande fall bedöma behovet av socialservice.",
+    "type" : "Description"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

@@ -1,0 +1,84 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://sote.easiointi.fi/fi/web/vaasa-te",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://sote.easiointi.fi/fi/web/vaasa-te",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "requiresSignature" : false,
+  "attachments" : [ ],
+  "languages" : [ ],
+  "supportPhones" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "3450e6b0-58c6-4e02-b615-7f9b8d56c3c7",
+      "name" : "Kouluterveydenhuollon palvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Kouluterveydenhuollon eTerveyspalvelu",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Skolhälsovårdens eHälsoservice",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "EChannel",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Kouluterveydenhuollon eTerveyspalvelussa verkkoasiointi mahdollistaa asiakkaan (oppilaan huoltaja(t)) ja terveydenhuollon ammattihenkilön välisen kirjallisen viestinnän suojatussa yhteydessä selainkäyttöisessä eTerveyspalvelut-asiointiportaalissa, johon kirjaudutaan mobiilivarmenteella tai pankkitunnistuksella. Verkkoasioinnissa käytävä viestintä voi koskea esimerkiksi\najanvarausta tai asiakkaan terveydentilaan liittyvää tietoa.\n",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Kouluterveydenhuollon eTerveyspalvelu.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Skolhälsovårdens eHälsoservice",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Skolhälsovårdens eHälsoservice",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "5c8add1f-d90b-4f97-82a3-7f360e4292f6",
+  "signatureQuantity" : 0,
+  "requiresAuthentication" : true
+}

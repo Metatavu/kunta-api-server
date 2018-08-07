@@ -1,0 +1,84 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://wasub.vaasa.fi/hrm/eHRM?PAGE=publicGetCourse1",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://wasub.vaasa.fi/hrm/eHRM?PAGE=publicGetCourse1",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "requiresSignature" : false,
+  "attachments" : [ ],
+  "languages" : [ ],
+  "supportPhones" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "a51c6d22-91f3-440e-8200-66b7e7f77ebc",
+      "name" : "Henkilöstökoulutus ulkopuolisille"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Koulutusohjelma",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Utbildningsprogram",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "EChannel",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Vaasan kaupungin koulutusohjelmasta löydät ajankohtaiset koulutustapahtumat aihealueittain. Täällä voit myös rekisteröityä ja ilmoittautua koulutuksiin. ",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan kaupungin koulutusohjelmasta löydät ajankohtaiset koulutustapahtumat aihealueittain.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "I Vasa stads utbildningsprogram hittar du aktuella utbildningsevenemang enligt ämnesområde.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "I Vasa stads utbildningsprogram hittar du aktuella utbildningsevenemang enligt ämnesområde. Här kan du också registrera dig och anmäla dig till utbildningar. \n",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2018-01-18T08:30:47.321535",
+  "id" : "98c082c4-9342-43fa-bb1c-c9134fca8924",
+  "signatureQuantity" : 0,
+  "requiresAuthentication" : false
+}

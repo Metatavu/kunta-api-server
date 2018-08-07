@@ -1,0 +1,291 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Hyvinvointipalvelujen tukipalvelut",
+      "language" : "fi"
+    }, {
+      "value" : "Hälsovårdens stödtjänster",
+      "language" : "sv"
+    }, {
+      "value" : "Support services for well-being services",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Palveluyksikön perustehtävää tai yksittäistä asiakasta tukevat asiakas- ja potilaspalvelut, joita ovat esim. majoitukseen, ravitsemukseen, virkistykseen ja tiedonsaantiin liittyvät palvelut palveluyksikön asiakkaille ja potilaille sekä apuvälinepalvelut.",
+      "language" : "fi"
+    }, {
+      "value" : "Klient- och patienttjänster som stöder serviceenhetens grunduppgift eller en individuell klient och som utgörs av tjänster i anslutning till exempelvis inkvartering, näring, rekreation och tillgång till information för serviceenhetens klienter och patienter.",
+      "language" : "sv"
+    }, {
+      "value" : "Client and patient services that support the basic task of a unit or an individual client, which include services related to accommodation, nutrition, recreation and access to information for service unit clients and patients. Services related to daily living aids are also in this category.",
+      "language" : "en"
+    } ],
+    "code" : "P5.18",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1056",
+    "parentId" : "76ca210c-5183-4d41-b796-50612d5930c7",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1038"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "f60dfd22-e5d2-41dd-ac38-c49f072f3674",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-11-27T14:12:03.982433",
+  "id" : "26633879-9cf6-48b2-9687-a9dc20fe176d",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "04f58a3b-679d-4887-bf8c-454f8f82a800",
+      "name" : "Rymättylän terveysasema"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "06da87ff-1eb3-4912-8d38-fa372b2c73ef",
+      "name" : "Hoitotarvikejakeluohje"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "2dcb002b-2597-4800-adf8-37416e9d1eca",
+      "name" : "Hoitotarviketilaukset puhelimitse"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "395eec2b-5b23-41a2-801c-3d30a6ff6e3c",
+      "name" : "Merimaskun terveysasema"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "4c2dc627-33af-41e4-8e67-cf54ccd2579b",
+      "name" : "Velkuan terveydenhoitajan vastaanotto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "5d0e3db9-f2e1-45eb-a17e-3f58d7260c6a",
+      "name" : "Merimaskun terveydenhoitajan vastaanotto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "5e534966-0117-45e6-a64e-4272c696a72c",
+      "name" : "Hoitotarvikejakelun verkkosivu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "66e737c9-fec5-4e2c-a288-e9dc7439b5a5",
+      "name" : "Naantalin terveyskeskus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : "Hoitotarvikejakelu sijaitsee terveyskeskuksen 1. kerroksessa.",
+      "type" : "Description"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ {
+      "serviceHourType" : "DaysOfTheWeek",
+      "validFrom" : null,
+      "validTo" : null,
+      "isClosed" : false,
+      "validForNow" : true,
+      "additionalInformation" : [ ],
+      "openingHour" : [ {
+        "dayFrom" : "Monday",
+        "dayTo" : "",
+        "from" : "09:00:00",
+        "to" : "11:00:00"
+      }, {
+        "dayFrom" : "Monday",
+        "dayTo" : "",
+        "from" : "13:00:00",
+        "to" : "15:30:00"
+      }, {
+        "dayFrom" : "Wednesday",
+        "dayTo" : "",
+        "from" : "09:00:00",
+        "to" : "11:00:00"
+      }, {
+        "dayFrom" : "Wednesday",
+        "dayTo" : "",
+        "from" : "13:00:00",
+        "to" : "15:30:00"
+      } ]
+    } ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "890c8a82-d6bb-4a55-af03-cadccd6d9583",
+      "name" : "Sähköiset terveyspalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "b93655b0-58cf-43c0-aafd-a01ebae7d174",
+      "name" : "Velkuan terveysasema"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "bda52c55-5692-4628-811c-bc504646eb46",
+      "name" : "Rymättylän terveydenhoitajan vastaanotto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : "* Voit saada hoitotarvikkeita, jos hoitotarvikkeiden ja -välineiden tarpeesi arvioidaan olevan pitkäaikaista (yleensä yli 3 kuukautta kestävää). \n* Hoitotarvikkeiden tarpeen arvioi hoitava lääkäri.",
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : null,
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Hoitotarvikejakelu",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "hoitotarvikkeet",
+      "language" : "fi"
+    }, {
+      "value" : "vårdartiklar",
+      "language" : "sv"
+    }, {
+      "value" : "care supplies",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p75705",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p35048"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Naantalin kaupungin maksuton hoitotarvikejakelu palvelee kotona ja palveluasunnoissa asuvia pitkäaikaissairaita.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Tilaa hoitotarvikkeet viimeistään kaksi viikkoa ennen edellisten tarvikkeiden loppumista. Diabeteksen hoitoon tarvittavia verensokeriliuskoja ja insuliinin kynäneuloja ei tarvitse tilata etukäteen.\n\nVoit tilata hoitotarvikkeita:\n* käymällä hoitotarvikejakelussa terveyskeskuksessa,\n* soittamalla hoitotarvikejakeluun puhelinaikana,\n* lähettämällä sähköpostia hoitotarvikejakeluun (hoitotarvikkeet (at) naantali.fi) tai\n* verkkoasioinnin eli Naantalin sähköisten terveyspalvelujen kautta (edellyttää tunnistautumista).\n\nHae hoitotarvikkeet terveyskeskuksen hoitotarvikejakelusta tai erikseen sovittuna Merimaskun, Rymättylän tai Velkuan terveydenhoitajan vastaanotolta.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Maksuton hoitotarvikejakelu palvelee kotona ja palveluasunnoissa olevia pitkäaikaissairaita. Hoitotarvikejakelu tukee kotona selviytymistäsi, toimintakykyäsi ja kotihoitoa.\n\nJaettavia hoitotarvikkeita ja -välineitä ovat esimerkiksi:\n* diabeetikon ja avannepotilaan hoitovälineet\n* sääri- ja makuuhaavan hoitoon tarvittavat hoitovälineet\n* heikentyneen pidätyskyvyn hoitotarvikkeet vaikeaan tai keskivaikeaan oireistoon sekä\n* eräiden muiden pitkäaikaisten sairauksien (esim. keuhkojen toiminnan vajauksen ja trakeostomian) yhteydessä tarvittavat hoitovälineet.",
+    "type" : "Description"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

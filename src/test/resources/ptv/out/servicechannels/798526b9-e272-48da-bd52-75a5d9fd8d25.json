@@ -1,0 +1,181 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://kirjasto.vaasa.fi/fi/library-page/palosaaren-kirjasto",
+    "value" : "Palosaaren kirjasto",
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://kirjasto.vaasa.fi/sv/library-page/br%C3%A4nd%C3%B6-bibliotek?refId=Wvx2bD",
+    "value" : "Brändö bibliotek",
+    "language" : "sv"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Pikitehtaankatu",
+        "language" : "fi"
+      }, {
+        "value" : "Beckbruksgatan",
+        "language" : "sv"
+      } ],
+      "streetNumber" : "19-23",
+      "postalCode" : "65200",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ ],
+      "latitude" : "7009224.388",
+      "longitude" : "227353.128",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "435f2ae4-fbb4-416f-9255-716c49c3b228",
+      "name" : "Kirjastopalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "063253571",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "063253571",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ {
+    "value" : "kirjasto.palosaari@vaasa.fi",
+    "language" : "fi"
+  }, {
+    "value" : "kirjasto.palosaari@vaasa.fi",
+    "language" : "sv"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "sv",
+    "value" : "Brändö bibliotek",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Palosaaren kirjasto",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ {
+    "serviceHourType" : "DaysOfTheWeek",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ ],
+    "openingHour" : [ {
+      "dayFrom" : "Monday",
+      "dayTo" : "",
+      "from" : "12:00:00",
+      "to" : "19:00:00"
+    }, {
+      "dayFrom" : "Tuesday",
+      "dayTo" : "",
+      "from" : "12:00:00",
+      "to" : "19:00:00"
+    }, {
+      "dayFrom" : "Wednesday",
+      "dayTo" : "",
+      "from" : "12:00:00",
+      "to" : "19:00:00"
+    }, {
+      "dayFrom" : "Thursday",
+      "dayTo" : "",
+      "from" : "10:00:00",
+      "to" : "16:00:00"
+    }, {
+      "dayFrom" : "Friday",
+      "dayTo" : "",
+      "from" : "10:00:00",
+      "to" : "16:00:00"
+    } ]
+  } ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "Brändö bibliotek är en filial till Vasa stadsbibliotek.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Kirjaston lehtilukusalissa järjestetään näyttelyitä. Palautusluukku sijaitsee talon päädyssä Pursimiehenkadun puolella. Hissi ja invaluiska sijaitsevat takaovella päiväkodin puolella. Lisää tietoa kirjaston palveluista ja aukioloajoista Palosaaren kirjaston verkkosivuilta. ",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "I bibliotekets tidningsläsesal ordnas utställningar. Returlådan finns i husets ända mot Båtmansgatan. Hissen och invarampen finns vid bakdörren på daghemmets sida. Mer information om servicen och öppethållningstiderna från Brändö bibliotekets webbsidor. ",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Palosaaren kirjasto on jo yli sata vuotta vanha lähikirjasto.",
+    "type" : "Summary"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2018-04-30T06:58:47.973469",
+  "id" : "798526b9-e272-48da-bd52-75a5d9fd8d25"
+}

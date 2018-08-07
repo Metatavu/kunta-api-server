@@ -1,0 +1,96 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "languages" : [ "sv", "fi" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "0210fca6-03a3-4386-9212-52c33bf727c3",
+      "name" : "Eläinsuojelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : "Valvontaeläinlääkäri",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "401588649",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "401588649",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Valvontaeläinlääkäri",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Övervakningsveterinär",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "Phone",
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "I Vasa sköter övervakningsveterinären uppgifter som ansluter sig till djurskyddet. ",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "I Vasa sköter övervakningsveterinären uppgifter som ansluter sig till djurskyddet.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasassa valvontaeläinlääkäri hoitaa eläinsuojeluun liittyvät tehtävät.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasassa valvontaeläinlääkäri hoitaa eläinsuojeluun liittyvät tehtävät. ",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "6dad2ebd-48ec-470a-b47d-6557951b6d96"
+}

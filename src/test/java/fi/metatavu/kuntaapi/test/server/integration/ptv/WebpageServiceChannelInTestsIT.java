@@ -11,8 +11,8 @@ import com.github.tomakehurst.wiremock.junit.WireMockRule;
 import com.jayway.restassured.http.ContentType;
 
 import fi.metatavu.kuntaapi.server.rest.model.WebPageServiceChannel;
-import fi.metatavu.ptv.client.model.V6VmOpenApiWebPageChannelInBase;
-import fi.metatavu.ptv.client.model.V7VmOpenApiWebPageChannel;
+import fi.metatavu.ptv.client.model.V8VmOpenApiWebPageChannelInBase;
+import fi.metatavu.ptv.client.model.V8VmOpenApiWebPageChannel;
 import fi.metatavu.kuntaapi.server.persistence.model.clients.AccessType;
 import fi.metatavu.kuntaapi.server.persistence.model.clients.ClientOrganizationPermission;
 import fi.metatavu.kuntaapi.test.AbstractPtvMocker;
@@ -76,8 +76,8 @@ public class WebpageServiceChannelInTestsIT extends AbstractPtvInTest {
     grantOrganizationPermission(AccessType.READ_WRITE, organizationId, ClientOrganizationPermission.UPDATE_SERVICE_CHANNELS);
 
     WebPageServiceChannel kuntaApiResource = getWebPageChannel(0, TestPtvConsts.WEB_PAGE_SERVICE_CHANNELS.length);
-    V6VmOpenApiWebPageChannelInBase ptvInResource = getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_IN_API, ptvId, V6VmOpenApiWebPageChannelInBase.class);
-    V7VmOpenApiWebPageChannel ptvOutResource =  getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_OUT_API, ptvId, V7VmOpenApiWebPageChannel.class);
+    V8VmOpenApiWebPageChannelInBase ptvInResource = getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_IN_API, ptvId, V8VmOpenApiWebPageChannelInBase.class);
+    V8VmOpenApiWebPageChannel ptvOutResource =  getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_OUT_API, ptvId, V8VmOpenApiWebPageChannel.class);
     
     getPtvServiceChannelMocker().mockWebpagePut(ptvId, ptvOutResource);
     
@@ -109,15 +109,15 @@ public class WebpageServiceChannelInTestsIT extends AbstractPtvInTest {
     kuntaApiResource.setSupportPhones(createPhones("en", "Phone", "+358", "12345-FAKE", "Charged", "Testing", false, "Test phone"));
     kuntaApiResource.setUrls(createLocalizedValue("en", "URL", "www.example.com"));
     
-    V6VmOpenApiWebPageChannelInBase ptvInResource = getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_IN_API, ptvId, V6VmOpenApiWebPageChannelInBase.class);
+    V8VmOpenApiWebPageChannelInBase ptvInResource = getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_IN_API, ptvId, V8VmOpenApiWebPageChannelInBase.class);
     ptvInResource.setServiceChannelDescriptions(createPtvInLocalizedItems("en", "Description", "Changed Description"));
     ptvInResource.setLanguages(Arrays.asList("en"));
     ptvInResource.setServiceChannelNames(createPtvInLanguageItems("en", "Changed Name"));
     ptvInResource.setSupportEmails(createPtvInLanguageItems("en", "fake@example.com"));
     ptvInResource.setSupportPhones(createPtvInPhones("en", "+358", "12345-FAKE", "Charged", "Testing", false, "Test phone"));
-    ptvInResource.setUrls(createPtvInLanguageItems("en", "www.example.com"));
+    ptvInResource.setWebPage(createPtvInLanguageItems("en", "www.example.com"));
     
-    V7VmOpenApiWebPageChannel ptvOutResource =  getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_OUT_API, ptvId, V7VmOpenApiWebPageChannel.class);
+    V8VmOpenApiWebPageChannel ptvOutResource =  getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_OUT_API, ptvId, V8VmOpenApiWebPageChannel.class);
     
     getPtvServiceChannelMocker().mockWebpagePut(ptvId, ptvOutResource);
     

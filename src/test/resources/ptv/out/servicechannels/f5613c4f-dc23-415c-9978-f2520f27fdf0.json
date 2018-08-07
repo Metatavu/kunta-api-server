@@ -1,0 +1,129 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/node/6911",
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "613fd965-86e9-4137-88cd-629839f054da",
+      "name" : "Ikääntyvien palveluohjaus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : null,
+    "isFinnishServiceNumber" : true,
+    "number" : "401684939",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "401684939",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Palveluneuvoja - ikäihmisten palvelut",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Servicerådgivaren för servicen för äldre",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ {
+    "serviceHourType" : "DaysOfTheWeek",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ {
+      "value" : null,
+      "language" : "fi"
+    } ],
+    "openingHour" : [ {
+      "dayFrom" : "Monday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    }, {
+      "dayFrom" : "Tuesday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    }, {
+      "dayFrom" : "Wednesday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    }, {
+      "dayFrom" : "Thursday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    }, {
+      "dayFrom" : "Friday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    } ]
+  } ],
+  "serviceChannelType" : "Phone",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Ikäihmisten palveluiden palveluneuvoja kartoittaa palvelujen tarpeen ja ohjaa tarvittavien palveluiden piiriin.\n\nPalveluneuvoja tekee myös kotikäyntejä. Hyvinvointia ja terveyttä edistävien (HYTE) kotikäyntien aikana kartoitetaan henkilön fyysinen, psyykkinen ja sosiaalinen toimintakyky, palvelujen tarve ja hänet ohjataan tarvittavien palvelujen piiriin.\n\nHYTE-käyntien asiakkaita ovat 80-vuotiaat vaasalaiset. Käynnit sovitaan etukäteen ja niihin osallistuminen on vapaaehtoista.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Ikäihmisten palveluiden palveluneuvoja kartoittaa palvelujen tarpeen ja ohjaa tarvittavien palveluiden piiriin.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Servicerådgivaren för servicen för äldre kartlägger servicebehovet och hänvisar klienten till den service som behövs.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Servicerådgivaren för servicen för äldre kartlägger servicebehovet och hänvisar klienten till den service som behövs. \n\nVälmående- och hälsofrämjande hembesök\nUnder de välmående- och hälsofrämjande hembesöken (HYTE) kartlägger man personens fysiska-, psykiska- och sociala funktion, behovet av tjänster och han/hon blir hänvisad till behövlig service.\n\nHYTE riktar sig till 80 år fyllda Vasabor, besöken överenskoms i förväg och deltagandet är frivilligt.\n\n\n",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "f5613c4f-dc23-415c-9978-f2520f27fdf0"
+}

@@ -1,0 +1,236 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Pysäköinti",
+      "language" : "fi"
+    }, {
+      "value" : "Parking",
+      "language" : "en"
+    }, {
+      "value" : "Parkering",
+      "language" : "sv"
+    } ],
+    "description" : [ {
+      "value" : "Tähän palvelualaluokkaan kuuluvat paikalliset pysäköintialueet ja niiden tiedot sekä sähköiset pysäköintipalvelut.",
+      "language" : "fi"
+    }, {
+      "value" : "Denna serviceundergrupp omfattar lokala parkeringsområden och information om dem samt elektroniska parkeringstjänster.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains local parking areas and their information as well as electronic parking services.",
+      "language" : "en"
+    } ],
+    "code" : "P16.4",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1146",
+    "parentId" : "99c23d1f-53e3-415f-9757-479fe6f8e4ea",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1142"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "eb84e480-0bc5-413c-b6fb-5c12512ab087",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "eb49b997-0f21-4f7d-8f9f-a53205ed459c",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "3e02b313-bcf3-4899-8262-eb67f91a9644",
+      "name" : "Oikaisuvaatimus pysäköinninvalvojalle"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "90ffdf5d-9499-4d84-ac0e-8a8fe0bbf2bf",
+      "name" : "Pysäköinti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "97570ca2-8438-4f25-a8c8-d29688217a20",
+      "name" : "Yhteispalvelu Vaasa - Kansalaisinfo"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "sv", "fi" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "Chargeable",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Pysäköinti",
+    "type" : "AlternativeName"
+  }, {
+    "language" : "sv",
+    "value" : "Parkeringsövervakningen",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Pysäköinninvalvonta",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ ],
+    "code" : null,
+    "ontologyType" : null,
+    "uri" : "http://www.yso.fi/onto/yso/p24477",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasassa oikasuvaatimusta haetaan oikaisuvaatimuslomakkeella. Pysäköinnin virhemaksut voi maksaa pankkiin tai kaupungin kassaan Kansalaisinfoon. \n\nPysäköinnin voi maksaa pysäköintiautomaatteihin tai matkapuhelinsovelluksella. Vaasassa käytössä ovat matkapuhelinsovellukset EASYPARK ja ParkMan.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasassa pysäköintiä valvoo poliisi ja kaupungin pysäköinnintarkastajat.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Krigsveteraner från Vasa och Korsholm behöver inte betala för parkeringen på stadens parkeringsområden. Närmare prisuppgifter för de avgiftsbelagda parkeringsområdena finns på stadens webbsidor.",
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : "I Vasa övervakas parkeringen av polisen och stadens parkeringskontrollanter.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : "I Vasa ansöks begäran om omprövning på blanketten för begäran om omprövning. Felparkeringsavgiften kan betalas till banken eller till stadens kassa vid Medborgarinfon.  \n\nParkeringen kan betalas i parkeringsautomater eller med en mobilapp. I Vasa används mobilapparna EASYPARK och ParkMan. \n",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : "I Vasa övervakas parkeringen av polisen och stadens parkeringskontrollanter. \n\nI staden finns många parkeringsplatser. Parkeringsplatserna är indelade i zoner och parkeringspriser enligt dem. Zonindelningskartan för den avgiftsbelagda parkeringen och parkeringszonernas pristabell hittar du på stadens webbsidor. \n\nFelparkeringsavgiften är 50 euro. Vid försummelse av betalning inom utsatt tid följer en avgiftsförhöjning med 14 euro. ",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasassa pysäköintiä valvoo poliisi ja kaupungin pysäköinnintarkastajat. \n\nKaupungissa on useita pysäköintipaikkoja. Pysäköintipaikat on jaettu vyöhykkeisiin ja niiden mukaisiin pysäköintihintoihin. Maksullisen pysäköinnin vyöhykejakokartan ja pysäköintivyöhykkeiden hintataulukon löydät kaupungin nettisivuilta.\n\nPysäköinnin virhemaksu on 50 euroa. Maksun laiminlyönnistä määräaikana seuraa maksun korotus 14 eurolla.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasalaisten ja mustasaarelaisten sotaveteraanien ei tarvitse maksaa pysäköinnistä kaupungin pysäköintialueilla. Maksullisten pysäköintialueiden tarkemmat hintatiedot löydät kaupungin nettisivuilta.",
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

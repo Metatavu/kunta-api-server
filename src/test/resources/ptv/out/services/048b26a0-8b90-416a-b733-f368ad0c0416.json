@@ -1,0 +1,244 @@
+{
+  "sourceId" : null,
+  "keywords" : [ {
+    "value" : "mainospaikat",
+    "language" : "fi"
+  }, {
+    "value" : "reklamplatser",
+    "language" : "sv"
+  } ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Elinkeinot",
+      "language" : "fi"
+    }, {
+      "value" : "Näringar",
+      "language" : "sv"
+    }, {
+      "value" : "Industries",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Tähän palveluluokkaan kuuluvat kaikki yritystoimintaan liittyvät palvelut yrityksen perustamisesta liiketoiminnan kehittämiseen ja aina yrityksen lopettamiseen saakka.",
+      "language" : "fi"
+    }, {
+      "value" : "Denna servicegrupp omfattar alla tjänster relaterade till företagsverksamhet från etablering av företag till utveckling av affärsverksamheten och nedläggning av företag.",
+      "language" : "sv"
+    }, {
+      "value" : "This service class contains all services related to enterprising from the establishment of an enterprise to business development and winding up a company.",
+      "language" : "en"
+    } ],
+    "code" : "P11",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1105",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "048b26a0-8b90-416a-b733-f368ad0c0416",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "48ad7f12-41d7-4389-b207-bea3e9756522",
+      "name" : "Kuntatekniikka"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "6c3986f4-22a0-4372-927a-308b14110956",
+      "name" : "Yleisten alueiden käyttölupahakemus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "sv"
+  }, {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "Chargeable",
+  "serviceNames" : [ {
+    "language" : "sv",
+    "value" : "Hyrning av försäljnings- och reklamplatser",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Myynti- ja mainospaikkojen vuokraus",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "gator",
+      "language" : "sv"
+    }, {
+      "value" : "kadut",
+      "language" : "fi"
+    }, {
+      "value" : "streets",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p34030",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p33793"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Yritykset ja yhteisöt",
+      "language" : "fi"
+    }, {
+      "value" : "Businesses and non-government organizations",
+      "language" : "en"
+    }, {
+      "value" : "Företag och samfund",
+      "language" : "sv"
+    } ],
+    "code" : "KR2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : "Vasa stad hyr ut försäljnings- och reklamplatser på omrården som den äger.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Fylla i ansökan om tillstånd att använda gata eller annat allmänt område.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan kaupunki vuokraa omistamiltaan alueilta myynti- ja mainospaikkoja.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : "Täytä kadun tai muun yleisen alueen käyttölupahakemus.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan kaupunki vuokraa omistamiltaan alueilta myynti- ja mainospaikkoja. Alueita vuokrataan esim. erilaisten tapahtumien ja tempausten käyttöön, myyntitoimintaan, kesäterassien sijoittamiseen, banderollimainontaan ja liikemainontaan.\n\nKaupungin yleisten alueiden käyttö edellyttää kaupungin lupaa. Voit hakea myynti- ja mainospaikkoja yleisten alueiden käyttölupahakemuksella.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Vasa stad hyr ut försäljnings- och reklamplatser på omrården som den äger. Områden hyrs ut t.ex. för olika evenemang och jippon, försäljningsverksamhet, uteserveringar, reklambanderoller och affärsreklam.\n\nAnvändning av stadens allmänna områden förutsätter stadens tillstånd. Du kan ansöka om försäljnings- och reklamplatser genom anhållan om rätt att använda allmänt område.\n",
+    "type" : "Description"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

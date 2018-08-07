@@ -1,0 +1,342 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Neuvolapalvelut",
+      "language" : "fi"
+    }, {
+      "value" : "Rådgivningstjänster",
+      "language" : "sv"
+    }, {
+      "value" : "Health clinic services",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "I denna serviceundergrupp behandlas kommunens lagstadgade moderskaps- och barnrådgivningstjänster med olika verksamhetsformer.",
+      "language" : "sv"
+    }, {
+      "value" : "Tässä palvelualaluokassa käsitellään kuntien lakisääteisesti järjestämiä äitiys-ja lastenneuvolapalveluja eri toimintamuotoineen.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains the statutory maternity and child health clinic services organised by the municipalities and the clinics’ various forms of activities.",
+      "language" : "en"
+    } ],
+    "code" : "P5.2",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1040",
+    "parentId" : "76ca210c-5183-4d41-b796-50612d5930c7",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1038"
+  }, {
+    "name" : [ {
+      "value" : "Terveyden ja hyvinvoinnin neuvonta- ja ohjauspalvelut",
+      "language" : "fi"
+    }, {
+      "value" : "Advisory and guidance services for health and well-being",
+      "language" : "en"
+    }, {
+      "value" : "Hälsovårdens rådgivnings- och handledningstjänster",
+      "language" : "sv"
+    } ],
+    "description" : [ {
+      "value" : "The class contains services related to an individual service transaction, visit to a service unit, or a service package or its management, through which a client receives advice and guidance when seeking health and/or well-being services in either problem situations or health promotion. These include the patient ombudsman’s services, appointments, reminder services, self-care services and case management services.",
+      "language" : "en"
+    }, {
+      "value" : "Tjänster i anslutning till en separat servicehändelse, besök till en serviceenhet eller tjänster i samband med en servicehelhet eller dess hantering, med hjälp av vilken klienten får rådgivning och handledning när han eller hon söker hälsovårdstjänster i problemsituationer. Sådana är t.ex. patientombudsmannens tjänster, tidsbeställningar, påminnelsetjänster, egenvårdstjänster och servicestyrning.",
+      "language" : "sv"
+    }, {
+      "value" : "Yksittäiseen palvelutapahtumaan, käyntiin palveluyksikössä tai palvelukokonaisuuteen tai sen hallintaan liittyvät palvelut, joiden avulla asiakas saa neuvontaa ja opastusta etsiessään palveluja terveyden ja hyvinvoinnin ongelmatilanteisiin ja terveyden edistämiseen. Näitä ovat esimerkiksi potilasasiamiespalvelu, ajanvaraukset, muistutuspalvelut, oma- ja itsehoitopalvelut ja palveluohjaus.",
+      "language" : "fi"
+    } ],
+    "code" : "P5.17",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1055",
+    "parentId" : "76ca210c-5183-4d41-b796-50612d5930c7",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1038"
+  }, {
+    "name" : [ {
+      "value" : "Terveydenhuolto, sairaanhoito ja ravitsemus",
+      "language" : "fi"
+    }, {
+      "value" : "Hälso- och sjukvård, näring",
+      "language" : "sv"
+    }, {
+      "value" : "Health and medical care, nutrition",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Tässä palveluluokassa käsitellään sekä yleisiä että tietyille ryhmille suunnattuja terveyden- ja sairaanhoidon palveluja. Luokkaan kuuluvat myös lääkkeisiin ja ravitsemukseen liittyvät palvelut sekä kuntoutus terveydenhoidollisen ja lääkinnällisen kuntoutuksen osalta.",
+      "language" : "fi"
+    }, {
+      "value" : "I denna serviceundergrupp behandlas både allmänna och hälso- och sjukvårdstjänster för vissa grupper. Till gruppen hör också tjänster i anslutning till läkemedel och näring samt rehabilitering för hälso- och sjukvårdens och medicinska rehabiliteringens del.",
+      "language" : "sv"
+    }, {
+      "value" : "This service class contains health and medical care services, both general services and those intended for specific groups. It also includes services associated with medicines and nutrition, as well as rehabilitation for the part of health care related and medical rehabilitation.",
+      "language" : "en"
+    } ],
+    "code" : "P5",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1038",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "32557e34-c3a8-4772-aa61-5299ec439d32",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "59203070-088b-4260-99b6-1195b45bfee1",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "1dc8b511-394f-4817-a5c1-448a20c9711b",
+      "name" : "Äitiys- ja perhesuunnitteluneuvola"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "31c3790f-b887-4b74-b9d3-2b5361b64471",
+      "name" : "Neuvolapsykologi"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "9fd02a69-ea0c-4455-854a-9d2adc5686e1",
+      "name" : "Vähänkyrön äitiysneuvola"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "f816e9bb-fef8-4875-a36c-b4be61ed1fab",
+      "name" : "Äitiysneuvolan verkkosivut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "fdc67297-4eb7-432c-b993-79ec222c7d7a",
+      "name" : "Laihian äitiys- ja perhesuunnitteluneuvola"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  }, {
+    "value" : null,
+    "language" : "en"
+  } ],
+  "languages" : [ "fi", "sv", "en" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Äitiysneuvolapalvelut",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Mödrarådgivningens tjänster",
+    "type" : "Name"
+  }, {
+    "language" : "en",
+    "value" : "Maternity clinic services",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "äitiysneuvolat",
+      "language" : "fi"
+    }, {
+      "value" : "mödrarådgivningar",
+      "language" : "sv"
+    }, {
+      "value" : "prenatal clinics",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p4971",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p77844;http://www.yso.fi/onto/koko/p37040"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Äitiysneuvolassa seurataan raskauden etenemistä ja synnytyksen jälkeen vauvan ja äidin terveydentilaa.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : "Rådgivningsbyrån följer upp hur graviditeten fortskrider och hur barnet och modern mår efter förlossningen.",
+    "type" : "Summary"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : "Syftet med mödrarådgivningen är att säkerställa den gravida moderns, fostrets och den nyföddas hälsa samt främja och upprätthålla familjens hälsa och välmående.\n\nDen gravida kan ta kontakt med det egna områdets rådgivning genast i början av graviditeten, då menstruationen har uteblivit. Det första besöket på mödrarådgivningen förläggs till ca 8-9 graviditetsveckan. Papporna är välkomna med på rådgivningsbesöken.\n\nUnder graviditetstiden görs besök i allmänhet på hälsovårdares eller barnmorskas mottagning 8-9 gånger och på rådgivningsläkares mottagning minst två gånger. Uppföljningen under graviditetstiden planeras dock individuellt",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "en",
+    "value" : "To make an appointment, call the nurse of your own area. Telephone consulting Mon-Fri at 11-11.30. Maternity clinic is open normally during summer.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "en",
+    "value" : "The purpose of a maternity clinic is to secure the health of the pregnant woman, the fetus and the newborn, and to promote the whole familys health and well-being.\n\nIf you think you may be pregnant, you should contact your area’s maternity clinic as soon as you miss a period.\n\nDuring pregnancy, the mother usually visits a nurse 8-9 times and a doctor at least two times at the maternity clinic. The first visit takes place approximately during the 8th or 9th pregnancy week. Fathers are welcome to accompany the mother at the clinic too.",
+    "type" : "Description"
+  }, {
+    "language" : "en",
+    "value" : "Pregnant women and families expecting a baby are entitled to use municipal maternity clinic service.",
+    "type" : "Summary"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : "Äitiysneuvonnan tavoitteena on turvata odottavan äidin, sikiön ja vastasyntyneen terveys sekä edistää ja ylläpitää perheen terveyttä ja hyvinvointia. Raskaana olevan kannattaa olla yhteydessä alueensa neuvolaan heti raskauden alussa, kun kuukautiset ovat jääneet pois. Ensimmäinen käynti äitiysneuvolassa ajoittuu noin 8-9 raskausviikolle. Isät ovat tervetulleita neuvolakäynneille.\n\nRaskausaikana käydään yleensä terveydenhoitajan tai kätilön vastaanotolla 8-9 kertaa ja neuvolalääkärin vastaanotolla vähintään kaksi kertaa. Raskausajan seuranta suunnitellaan kuitenkin yksilöllisesti.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Aika äitiysneuvolaan varataan soittamalla oman alueen terveydenhoitajalle puhelinajalla ma – pe klo 11-11.30. Äitiysneuvolatoiminta on keskitetty osoitteeseen Hietalahdenkatu 6, 65100 Vaasa (Vähänkyrön äitiysneuvolaa lukuun ottamatta). ",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

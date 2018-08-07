@@ -1,0 +1,61 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/node/13221/",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/sv/node/13221/",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "d84d80a7-9688-4ab6-932b-4437f9e67386",
+      "name" : "Painotettu opetus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Painotettu opetus",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Specialiseringsundervisning",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Vaasan kaupungin sivuilta löydät tietoa Vaasassa järjestettävästä painotetusta opetuksesta sekä painotettua opetusta järjestävien koulujen rehtorien yhteystiedot.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan kaupungin sivuilta löydät tietoa Vaasassa järjestettävästä painotetusta opetuksesta.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "På Vasa stads webbsidor finns information om den specialiseringsundervisning som Vasa stad ordnar samt kontaktuppgifterna till rektorerna i de skolor",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "På Vasa stads webbsidor finns information om den specialiseringsundervisning som Vasa stad ordnar samt kontaktuppgifterna till rektorerna i de skolor som ordnas specialiseringsundervisning. \n",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "e501b104-ec59-47f5-8359-50058d82cb15"
+}

@@ -1,0 +1,108 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "attachments" : [ ],
+  "languages" : [ ],
+  "deliveryAddresses" : [ {
+    "subType" : "NoAddress",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : null,
+    "deliveryAddressInText" : [ ],
+    "receiver" : [ {
+      "value" : null,
+      "language" : "sv"
+    }, {
+      "value" : null,
+      "language" : "fi"
+    } ]
+  } ],
+  "supportPhones" : [ ],
+  "formIdentifier" : [ {
+    "value" : null,
+    "language" : "sv"
+  }, {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "dbd66199-6da4-437d-bb7b-99c6eacf3ef0",
+      "name" : "Perusopetuksen aamu- ja iltapäivätoiminta"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "channelUrls" : [ {
+    "language" : "fi",
+    "value" : "https://eduvaasa.sharepoint.com/:w:/s/kasvatus/EejT7RixmG9Gsghs07EN700BgFRiCm5vl0_F1jJ6qERqdQ?e=hEg8FG",
+    "type" : "DOC"
+  }, {
+    "language" : "sv",
+    "value" : "https://eduvaasa.sharepoint.com/:w:/s/kasvatus/EcCdy3PhqQJEkwJNDhaIDDEBrQckW2IoT2tfPrlOkDq5lA?e=irDsHq",
+    "type" : "DOC"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "sv",
+    "value" : "Blankett för befrielse från avgift för morgon och eftermiddagsverksamhet",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Aamu- ja iltapäivätoimintamaksun maksuvapautuslomake",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "PrintableForm",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Maksuvapautuslomakkeella voi hakea maksuvapautusta perusopetuksen aamu- ja iltapäivätoiminnasta perittävästä kuukausimaksusta.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "I Vasa tas för den grundläggande utbildningens morgon- och eftermiddagsverksamheten en fast månadsavgift ut. Befrielse från verksamhetsavgiften kan ges på ekonomiska eller sociala grunder. Befrielse från avgift söks på en blankett för ansökan om befrielse. ",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Med blanketten kan man söka befrielse från månadsavgiften som tas ut för morgon- och eftermiddagsverksamheten inom den grundläggande utbildningen.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasassa perusopetuksen aamu- ja iltapäivätoiminnasta peritään kiinteä kuukausimaksu. Toimintamaksuista voidaan myöntää maksuvapautusta taloudellisin ja sosiaalisin perustein. Maksuvapautusta haetaan maksuvapautuslomakkeella. ",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2018-05-09T11:53:36.352384",
+  "id" : "3b5f7a91-15e0-4408-b960-0d818d143064"
+}

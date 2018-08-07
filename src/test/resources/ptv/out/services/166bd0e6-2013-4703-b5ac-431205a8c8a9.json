@@ -1,0 +1,233 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Röntgen, laboratorio ja muut tutkimuspalvelut",
+      "language" : "fi"
+    }, {
+      "value" : "Röntgen, laboratorium och övriga undersökningstjänster",
+      "language" : "sv"
+    }, {
+      "value" : "Imaging, laboratory and other examination services",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "This service subclass contains different clinical patient examination services provided at health care service points. Laboratory services associated with scientific research are not included in this class.",
+      "language" : "en"
+    }, {
+      "value" : "Tässä palvelualaluokassa käsitellään terveydenhuollon toimipisteissä annettavia erilaisia kliinisiä potilaan tutkimuspalveluja. Tähän luokkaan eivät kuulu tieteelliseen tutkimukseen liittyvät tutkimuspalvelut.",
+      "language" : "fi"
+    }, {
+      "value" : "I denna serviceundergrupp behandlas olika kliniska patientundersökningstjänster som erbjuds på hälso- och sjukvårdens verksamhetsställen. Till denna grupp hör inte undersökningstjänster i anslutning till vetenskaplig forskning.",
+      "language" : "sv"
+    } ],
+    "code" : "P5.4",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1042",
+    "parentId" : "76ca210c-5183-4d41-b796-50612d5930c7",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1038"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "119d794f-1758-4fe1-b41e-2f4c911fff0b",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-12-04T08:40:55.393663",
+  "id" : "166bd0e6-2013-4703-b5ac-431205a8c8a9",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "3c6a6156-0f15-487c-b194-fb88b30ed7e4",
+      "name" : "Röntgenin ajanvaraus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "66e737c9-fec5-4e2c-a288-e9dc7439b5a5",
+      "name" : "Naantalin terveyskeskus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : "Kuvantamis- ja ultraäänitutkimuksia tehdään terveyskeskuksen 1. kerroksessa.",
+      "type" : "Description"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ {
+      "serviceHourType" : "DaysOfTheWeek",
+      "validFrom" : null,
+      "validTo" : null,
+      "isClosed" : false,
+      "validForNow" : true,
+      "additionalInformation" : [ ],
+      "openingHour" : [ {
+        "dayFrom" : "Monday",
+        "dayTo" : "",
+        "from" : "08:00:00",
+        "to" : "15:00:00"
+      }, {
+        "dayFrom" : "Tuesday",
+        "dayTo" : "",
+        "from" : "08:00:00",
+        "to" : "15:00:00"
+      }, {
+        "dayFrom" : "Wednesday",
+        "dayTo" : "",
+        "from" : "08:00:00",
+        "to" : "15:00:00"
+      }, {
+        "dayFrom" : "Thursday",
+        "dayTo" : "",
+        "from" : "08:00:00",
+        "to" : "15:00:00"
+      }, {
+        "dayFrom" : "Friday",
+        "dayTo" : "",
+        "from" : "08:00:00",
+        "to" : "15:00:00"
+      } ]
+    } ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "6a2a6518-caa8-4b14-a1cb-a532610c00da",
+      "name" : "Röntgenin verkkosivu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "890c8a82-d6bb-4a55-af03-cadccd6d9583",
+      "name" : "Sähköiset terveyspalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : "Tarvitset tutkimusta varten lääkärin lähetteen\n* Naantalin kaupungin terveyspalveluista tai hammashoidosta,\n* Työterveyshuolto Aurinkoristeyksestä,\n* Naantalin Yksityislääkäreiltä,\n* hammaslääkäri Ville Vähäpassilta tai\n* hammaslääkäri Anne Linjalta.",
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : null,
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Kuvantamispalvelut",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Röntgen",
+    "type" : "AlternativeName"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "kuvantamistutkimus",
+      "language" : "fi"
+    } ],
+    "code" : null,
+    "ontologyType" : "TERO",
+    "uri" : "http://www.yso.fi/onto/koko/p52605",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p36376"
+  }, {
+    "name" : [ {
+      "value" : "kuvantaminen",
+      "language" : "fi"
+    }, {
+      "value" : "diagnostisk avbildning",
+      "language" : "sv"
+    }, {
+      "value" : "imaging",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p16699",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p25288"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Naantalin terveyskeskuksen kuvantamispalvelut pähkinänkuoressa:\n\n* Naantalin röntgenin kuvantamispalveluja ovat luuston, keuhkojen ja hampaiston röntgentutkimukset sekä tietyt UÄ (ultraääni) -tutkimukset . \n* Tutkimuksia tehdään ajanvarauksella, mutta päivystyspotilaiden tutkimukset tehdään ilman ajanvarausta. \n* Mammografiatutkimukset, rintojen ultraäänitutkimukset ja magneettitutkimukset Naantali kaupunki ostaa yksityiseltä palveluntuottajalta. \n* Jos tarvitset röntgenkuvista kopioita, ne saat maksua vastaan röntgenistä.\n* Röntgenissä otetut kuvat näkyvät myös TYKS-kuvaverkossa.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Varaa aika kuvantamispalveluihin (röntgen- ja ultraäänitutkimukset) puhelimitse tai verkossa sähköisten terveyspalvelujen kautta. Sähköisten terveyspalveluiden käyttö edellyttää suostumusta. Voit tehdä suostumuksen sähköisesti tai asioidessasi terveyskeskuksessa.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Naantalin terveyskeskuksen kuvantamispalveluja ovat tavallisimmat röntgentutkimukset sekä tietyt ultraäänitutkimukset.",
+    "type" : "Summary"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

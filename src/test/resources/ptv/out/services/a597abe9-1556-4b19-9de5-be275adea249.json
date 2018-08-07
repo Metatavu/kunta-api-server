@@ -1,0 +1,180 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Päihde- ja mielenterveyspalvelut",
+      "language" : "fi"
+    }, {
+      "value" : "Intoxicant abuse and mental health services",
+      "language" : "en"
+    }, {
+      "value" : "Tjänster för missbrukare och mentalvårdstjänster",
+      "language" : "sv"
+    } ],
+    "description" : [ {
+      "value" : "Tjänster som hör till denna serviceundergrupp har anvisats för personer som insjuknat i missbrukar- och övriga beroendsjukdomar och för de som lider av mentala problem. Gruppens tjänster kan vara såväl vårdande, stödjande som förebyggande.",
+      "language" : "sv"
+    }, {
+      "value" : "Tähän palvelualaluokkaan kuuluvat palvelut on kohdennettu päihde- ja muista riippuvuusairauksia sairastaville ja mielenterveyden ongelmista kärsiville. Luokan palvelut voivat olla niin hoitavia, tukevia kuin ennalta ehkäiseviä.",
+      "language" : "fi"
+    }, {
+      "value" : "The services in this subclass are intended for persons with intoxicant and other addictions or mental health problems. They may include treatment, support and prevention.",
+      "language" : "en"
+    } ],
+    "code" : "P5.7",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1045",
+    "parentId" : "76ca210c-5183-4d41-b796-50612d5930c7",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1038"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "d0ecf04d-7356-44c0-9ea8-18d52e81b6c1",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "a597abe9-1556-4b19-9de5-be275adea249",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "615021cb-c315-4af1-ac25-f981b4051f39",
+      "name" : "Vaasan päihdekeskus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "sv", "fi" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Päihdekuntoutus",
+    "type" : "AlternativeName"
+  }, {
+    "language" : "fi",
+    "value" : "Yhteisökuntoutus",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "päihdekuntoutus (kuntoutus)",
+      "language" : "fi"
+    }, {
+      "value" : "missbrukarrehabilitering",
+      "language" : "sv"
+    }, {
+      "value" : "substance abuse rehabilitation",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "TERO",
+    "uri" : "http://www.yso.fi/onto/koko/p72032",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p3951"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Päihdekeskuksessa toteutetaan erillistä pidempiaikaista laitoskuntoutusta yhteisöhoidon menetelmin.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Päihdekeskuksessa toteutetaan erillistä pidempiaikaista laitoskuntoutusta yhteisöhoidon menetelmin. Yhteisökuntoutukseen voi hakeutua katkaisu- ja vieroitushoidon jälkeen. Perusjakson pituus on 28 vuorokautta, jonka aikana on oikeutettu KELA:n kuntoutusrahaan. Perusjakson jälkeen on mahdollisuus jatkaa kuntoutumista päiväasiakkaana.\n\nYhteisöhoito tarjoaa pidempiaikaista lääkkeetöntä laitoskuntoutusta päihdeongelmaisille.\n\nYhteisöhoitoon kuuluu:\n* 4 viikon perusjakso\n* yksilöllisen kuntoutussuunnitelman laatiminen ja toteuttaminen\n* keskustelu- ja toimintaryhmät, itsearviointi ja yksilökeskustelut\n* jatkosuunnitelman teko ja päiväasiakkuus\nPalvelu on suunnattu 18-vuotta täyttäneille vaasalaisille. Sopimuskunnista ja muista kunnista tarvitaan maksusitoumus.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

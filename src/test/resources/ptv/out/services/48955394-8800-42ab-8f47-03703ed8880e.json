@@ -1,0 +1,279 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Taiteet",
+      "language" : "fi"
+    }, {
+      "value" : "Arts",
+      "language" : "en"
+    }, {
+      "value" : "Konst",
+      "language" : "sv"
+    } ],
+    "description" : [ {
+      "value" : "I denna serviceundergrupp behandlas yrkesutbildning och utbildning på högre stadier som anknyter till utställningar och evenemang som riktar sig till allmänheten och som fokuserar på bildkonst, konstindustri, föreställande konstarter, musik och litteratur samt informationstjänster relaterade till konstsamlingar.",
+      "language" : "sv"
+    }, {
+      "value" : "Tässä palvelualaluokassa käsitellään kuvataiteisiin, taideteollisuuteen, eri esittäviin taiteisiin, musiikkiin ja kirjallisuuteen liittyvää ammatillista ja korkea-asteen koulutusta, yleisölle suunnattuja näyttelyjä ja tapahtumia sekä taidekokoelmiin liittyviä tietopalveluja.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains vocational and higher level education and training related to visual arts, arts and design, different performing arts, music and literature, exhibitions and events intended for the public as well as information services associated with art collections.",
+      "language" : "en"
+    } ],
+    "code" : "P25.2",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1200",
+    "parentId" : "200f3f00-31b1-41cc-a986-2d9e4dc40fb7",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1198"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2018-05-28T11:41:18.72626",
+  "id" : "48955394-8800-42ab-8f47-03703ed8880e",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "1a859043-2617-4a98-8722-1be7e99063e0",
+      "name" : "Naantalin kaupungin sivistystoimisto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3994f38d-dc91-4105-be8a-5edd0d2ef739",
+      "name" : "Kirjaamo"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "5646b5f5-79fb-480d-81dd-16536f19021c",
+      "name" : "Merimaskun palvelupiste"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "7fd3a666-279b-42d3-8217-119d457de590",
+      "name" : "Kaupungintalon yhteispalvelupiste"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "89e95451-fdfb-4e95-a6fd-7a61ba449269",
+      "name" : "Velkuan palvelupiste"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "8f6b4e50-db39-4984-aba1-fd3a72baf408",
+      "name" : "Kulttuuritoiminnan avustukset"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "fff205fe-e420-43ea-8702-6a7a685c2b51",
+      "name" : "Rymättylän palvelupiste"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : "Kulttuuri- ja vapaa-aikalautakunta voi myöntää perus- ja kohdeavustuksia kulttuuritoimintaa harjoittaville rekisteröidyille yhdistyksille ja säätiöille, joiden kotipaikka on tai toiminnan kohde on Naantalin kaupunki. Yhdistyksen toiminnan tulee olla vakiintunutta.\n\nKulttuuritoiminnalla tarkoitetaan taiteen harjoittamista, taidepalvelusten tarjontaa sekä paikallisen kulttuuriperinteen vaalimista ja edistämistä.",
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : null,
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Kulttuuriin liittyvän kansalaistoiminnan tuki ja avustukset",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "avustukset",
+      "language" : "fi"
+    }, {
+      "value" : "understöd (bidrag)",
+      "language" : "sv"
+    }, {
+      "value" : "financial aid",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p34757",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p63861;http://www.yso.fi/onto/koko/p13760"
+  }, {
+    "name" : [ {
+      "value" : "kulttuuripalvelut",
+      "language" : "fi"
+    }, {
+      "value" : "kulturtjänster",
+      "language" : "sv"
+    }, {
+      "value" : "cultural services",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p72236",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p36438"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Företag och samfund",
+      "language" : "sv"
+    }, {
+      "value" : "Yritykset ja yhteisöt",
+      "language" : "fi"
+    }, {
+      "value" : "Businesses and non-government organizations",
+      "language" : "en"
+    } ],
+    "code" : "KR2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "Föreningar och organisationer",
+      "language" : "sv"
+    }, {
+      "value" : "Yhdistykset ja järjestöt",
+      "language" : "fi"
+    }, {
+      "value" : "Non-government organizations",
+      "language" : "en"
+    } ],
+    "code" : "KR2.7",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2015",
+    "parentId" : "338939bb-b01a-4a80-a091-7c5238322bc0",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008"
+  }, {
+    "name" : [ {
+      "value" : "Medborgare",
+      "language" : "sv"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Perus- ja kohdeavustuksia haetaan vuosittain maaliskuun loppuun mennessä lomakkeilla. Lomakkeen voi täyttää tai tulostaa verkkosivuilta tai noutaa kaupungin kaikista palvelupisteistä. Hakijan tulee palauttaa lomake ja sen liitteet määräaikaan mennessä kaupungin kirjaamoon.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Perusavustukset on tarkoitettu yhdistyksen tai säätiön vuosittaisen ja yleisen kulttuuritoiminnan tukemiseen. Perusavustuksia myönnettäessä huomioidaan yhdistyksen jäsenmäärä sekä toiminnan laajuus ja/tai merkityksellisyys.\n\nKohdeavustuksia myönnetään yksittäisten kulttuuritapahtumien järjestämiseen ja muiden kertaluontoisiksi tai vakiintumattomiksi katsottavien hankkeiden toteuttamiseen.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Naantalin kulttuuri- ja vapaa-aikalautakunta tukee vuosittain kulttuuritoimintaa kohde- ja perusavustuksilla.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

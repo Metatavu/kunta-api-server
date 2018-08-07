@@ -1,0 +1,166 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/sv/node/2781/",
+    "value" : "Varhaiskasvatus",
+    "language" : "fi"
+  }, {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/sv/node/2781",
+    "value" : "Småbarnsfostran",
+    "language" : "sv"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Kustaa III:n polku",
+        "language" : "fi"
+      }, {
+        "value" : "Gustav III:s stig",
+        "language" : "sv"
+      } ],
+      "streetNumber" : "2",
+      "postalCode" : "65380",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ ],
+      "latitude" : "7005691.966",
+      "longitude" : "233510.054",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "73af8c06-6a6b-4780-9164-8e8872eecc9c",
+      "name" : "Kunnallinen päiväkotihoito"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ {
+    "value" : "hagadh@vasa.fi",
+    "language" : "fi"
+  }, {
+    "value" : "hagadh@vasa.fi",
+    "language" : "sv"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "sv",
+    "value" : "Haga daghem",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Haga daghem",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ {
+    "serviceHourType" : "DaysOfTheWeek",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ {
+      "value" : null,
+      "language" : "sv"
+    } ],
+    "openingHour" : [ {
+      "dayFrom" : "Monday",
+      "dayTo" : "",
+      "from" : "06:30:00",
+      "to" : "17:00:00"
+    }, {
+      "dayFrom" : "Tuesday",
+      "dayTo" : "",
+      "from" : "06:30:00",
+      "to" : "17:00:00"
+    }, {
+      "dayFrom" : "Wednesday",
+      "dayTo" : "",
+      "from" : "06:30:00",
+      "to" : "17:00:00"
+    }, {
+      "dayFrom" : "Thursday",
+      "dayTo" : "",
+      "from" : "06:30:00",
+      "to" : "17:00:00"
+    }, {
+      "dayFrom" : "Friday",
+      "dayTo" : "",
+      "from" : "06:30:00",
+      "to" : "17:00:00"
+    } ]
+  } ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Haga daghem on päiväkoti 3-6 vuotiaille lapsille. Ryhmässä Knattarna on 21 kokopäiväpaikkaa 3-6 vuotiaille (sekaryhmä) ja esikoulussa on 21 kokopäiväpaikkaa.\n\nPäiväkodin painopistealueet ovat ympäristötietoisuus, leikki ja liikunta ja kielellinen harjoittelu. Haga daghem tarjoaa lapsille turvaa ja viihtyvyyttä pedagogisesti hyvässä ympäristössä.  Jokainen lapsi saa tarvitsemaansa huomiota ja läheisyyttä. Lapsi saa seurustella toisten lasten ja aikuisten kanssa iloisessa ja kiireettömässä ilmapiirissä.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Haga daghem har plates för barn mellan 3 och 6 år.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Haga daghem on päiväkoti 3-6 vuotiaille lapsille.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Haga daghem har plates för barn mellan 3 och 6 år. Gruppen är Knattarna, 21 heldagsplatser (blandgrupp) för 3 - 6-åringar och förskolan, 21 heldagsplatser. \n\nDaghems tyngdpunktsområden är miljömedvetenhet, lek och rörelse och språkträning. Haga daghem vil ge barnen  trygghet och trivsel i en pedagogiskt riktig miljö. Varje barn bör få den uppmärksamhet och närhet det behöver. I en glad atmosfär, fri från stress får barnet umgås med andra barn och vuxna.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-09-13T12:43:36.980263",
+  "id" : "2e8d4020-5177-4954-99d9-0a6e5b7741b3"
+}

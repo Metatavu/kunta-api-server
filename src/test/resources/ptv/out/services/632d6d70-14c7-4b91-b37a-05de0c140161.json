@@ -1,0 +1,412 @@
+{
+  "sourceId" : null,
+  "keywords" : [ {
+    "value" : "youngwasa",
+    "language" : "fi"
+  }, {
+    "value" : "ungdomsservicen",
+    "language" : "sv"
+  }, {
+    "value" : "nuorisotalot",
+    "language" : "fi"
+  }, {
+    "value" : "nuorisopalvelut",
+    "language" : "fi"
+  }, {
+    "value" : "ungdomar",
+    "language" : "sv"
+  }, {
+    "value" : "youngwasa",
+    "language" : "sv"
+  }, {
+    "value" : "ungdomslokaler",
+    "language" : "sv"
+  }, {
+    "value" : "nuoriso",
+    "language" : "fi"
+  } ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Vapaa-ajan palvelut",
+      "language" : "fi"
+    }, {
+      "value" : "Fritidstjänster",
+      "language" : "sv"
+    }, {
+      "value" : "Free-time services",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Denna serviceundergrupp omfattar tjänster relaterade till fritiden på ett omfattande plan. Denna grupp omfattar inte motions- och idrottstjänster, som har en egen huvudgrupp.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains free-time services in a wide sense. The class does not include sports and exercise services, which have their own main class.",
+      "language" : "en"
+    }, {
+      "value" : "Tähän palvelualaluokkaan kuuluvat vapaa-ajan piiriin laajasti katsottavat palvelut. Tähän luokkaan eivät kuulu liikunnan ja urheilun palvelut, jotka ovat omassa pääluokassaan.",
+      "language" : "fi"
+    } ],
+    "code" : "P25.5",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1203",
+    "parentId" : "200f3f00-31b1-41cc-a986-2d9e4dc40fb7",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1198"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "4f9f203f-dd47-41c5-9955-1535e2583ae7",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "632d6d70-14c7-4b91-b37a-05de0c140161",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "08568a07-0054-4e30-b454-99596e3f0cae",
+      "name" : "Rokkikoulu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "14b72850-4d43-4d92-9d8d-b99f9fc67f7f",
+      "name" : "Sumppu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "24a5e2a5-5c2e-48f1-8dfe-73994574763d",
+      "name" : "Walkers Vaasa"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "32f998b1-98d7-4908-911d-e93e36d42421",
+      "name" : "Skeittihalli"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3feb233e-128a-47b5-b152-411dc7e29223",
+      "name" : "Nuorisotilojen verkkosivut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "61d4c8df-b515-47e3-8cfd-8d973e02cffc",
+      "name" : "Nuorisopalveluiden vuokrattavat tilat"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "81cd6743-2324-49d6-8007-fd36ec165933",
+      "name" : "Nuorisotalo Kyrölä"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "a23e2868-86fe-49c0-b90d-e601ec2c819d",
+      "name" : "Huudi"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "d82ca993-9b34-47e1-8649-d580e0a43184",
+      "name" : "Kultsa"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "ef6706ab-e1fa-4e63-a513-263574bc0088",
+      "name" : "Villa Gerby"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "ff8ff656-6c30-4970-8b63-be04902cc52d",
+      "name" : "Ristikka"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "en"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv", "en" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : null,
+  "serviceNames" : [ {
+    "language" : "en",
+    "value" : "Youth premises",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Ungdomslokaler",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Nuorisotilat",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "ungdomslokaler",
+      "language" : "sv"
+    }, {
+      "value" : "nuorisotilat",
+      "language" : "fi"
+    }, {
+      "value" : "youth recreational facilities",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p30853",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p34942"
+  }, {
+    "name" : [ {
+      "value" : "ungdomsarbete",
+      "language" : "sv"
+    }, {
+      "value" : "nuorisotyö",
+      "language" : "fi"
+    }, {
+      "value" : "youth work",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p14497",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p33881"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Nuoret",
+      "language" : "fi"
+    }, {
+      "value" : "Young people",
+      "language" : "en"
+    }, {
+      "value" : "De unga",
+      "language" : "sv"
+    } ],
+    "code" : "KR1.3",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2004",
+    "parentId" : "daff1fb9-9394-49b5-b033-d1d1c7005ab6",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001"
+  }, {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "en",
+    "value" : "Come and drop in at a youth centre! ",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "en",
+    "value" : "In the youth premises, you can play pool, meet up with friends, find new friends or just hang around. There is also a lot of fun stuff such as clubs and various events arranged at the premises. There are six different youth premises, aka own living rooms, for the youth of Vaasa; Kultsa in the centre, Sumppu in Isolahti, Villa Gerby in Gerby, Huudi in Huutoniemi, Ristikka in Ristinummi and Kyrölä in Vähäkyrö. The idyllic and cheap youth café Walkers is located in the same location as Kultsa. \n\n\n\n",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "en",
+    "value" : "Youth centres offer both instructor-led activities and activities organised by young people themselves.",
+    "type" : "Summary"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : "I ungdomslokalerna kan man spela biljard, träffa kompisar, bekanta sig med nya eller bara hänga. I lokalerna ordnas även annan trevlig sysselsättning, t.ex. klubbar och tillställningar. I Vasa finns det sex ungdomslokaler, dvs. egna vardagsrum för ungdomarna: Kultsa i centrum, Sumppu i Storviken, Villa Gerby i Gerby, Huudi i Roparnäs, Ristikka i Korsnäståget och Kyrölä i Lillkyro. I Kultsa finns även det idylliska och förmånliga ungdomscaféet Walkers. ",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Ungdomslokaler erbjuder både ledd verksamhet och sådan verksamhet som ungdomarna själva ordnar.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Nuorisotiloissa on tarjolla sekä ohjattua että nuorten itsensä järjestämää toimintaa.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : "Nuorisotiloissa voi pelata biljardia, tavata kavereita, tutustua uusiin tai vain hengailla. Tiloissa järjestetään myös kivaa tekemistä, kuten kerhoja ja tapahtumia. Nuorisotiloja eli vaasalaisten nuorten omia olohuoneita löytyy Vaasasta kuusi kappaletta: keskustassa Kultsa, Isolahdessa Sumppu, Gerbyssä Villa Gerby, Huutoniemellä Huudi, Ristinummella Ristikka ja Vähässäkyrössä Kyrölä. Kultsasta löytyy myös idyllinen ja edullinen Walkers-nuorisokahvila. ",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "UserInstruction"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

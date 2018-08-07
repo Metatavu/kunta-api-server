@@ -1,0 +1,509 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "http://www.naantali.fi/terveys/palvelut/fi_FI/palvelut/",
+    "value" : "Terveyskeskuksen verkkosivu",
+    "language" : "fi"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Tuulensuunkatu",
+        "language" : "fi"
+      } ],
+      "streetNumber" : "6",
+      "postalCode" : "21100",
+      "postOffice" : [ {
+        "value" : "NAANTALI",
+        "language" : "sv"
+      }, {
+        "value" : "NAANTALI",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "529",
+        "name" : [ {
+          "value" : "Naantali",
+          "language" : "fi"
+        }, {
+          "value" : "Nådendal",
+          "language" : "sv"
+        }, {
+          "value" : "Naantali",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ ],
+      "latitude" : "6713978.383",
+      "longitude" : "226690.36",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "01ae280a-9161-4750-94cf-e770c52dd622",
+      "name" : "Opiskeluterveydenhuollon palvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "166bd0e6-2013-4703-b5ac-431205a8c8a9",
+      "name" : "Kuvantamispalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : "Kuvantamis- ja ultraäänitutkimuksia tehdään terveyskeskuksen 1. kerroksessa.",
+      "type" : "Description"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ {
+      "serviceHourType" : "DaysOfTheWeek",
+      "validFrom" : null,
+      "validTo" : null,
+      "isClosed" : false,
+      "validForNow" : true,
+      "additionalInformation" : [ ],
+      "openingHour" : [ {
+        "dayFrom" : "Monday",
+        "dayTo" : "",
+        "from" : "08:00:00",
+        "to" : "15:00:00"
+      }, {
+        "dayFrom" : "Tuesday",
+        "dayTo" : "",
+        "from" : "08:00:00",
+        "to" : "15:00:00"
+      }, {
+        "dayFrom" : "Wednesday",
+        "dayTo" : "",
+        "from" : "08:00:00",
+        "to" : "15:00:00"
+      }, {
+        "dayFrom" : "Thursday",
+        "dayTo" : "",
+        "from" : "08:00:00",
+        "to" : "15:00:00"
+      }, {
+        "dayFrom" : "Friday",
+        "dayTo" : "",
+        "from" : "08:00:00",
+        "to" : "15:00:00"
+      } ]
+    } ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "1e91c7da-980a-4e1d-9ad7-e645cf4d1e8b",
+      "name" : "Laboratoriopalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : "Naantalin terveyskeskuksen laboratorion toimisto on avoinna arkipäivisin klo 7.45 - 14.30. Laboratorio sijaitsee terveyskeskuksen katutasossa.",
+      "type" : "Description"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "21453852-7aa1-4aa8-a01a-cf4df5af0d44",
+      "name" : "Koululaisten suun terveydenhuolto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : "Hammashoitola sijaitsee Naantalin terveyskeskuksen tiloissa toisessa kerroksessa. Varaa tai peruuta hoitoaikasi keskitetystä ajanvaraus ja peruutusnumerosta.",
+      "type" : "Description"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "26633879-9cf6-48b2-9687-a9dc20fe176d",
+      "name" : "Hoitotarvikejakelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : "Hoitotarvikejakelu sijaitsee terveyskeskuksen 1. kerroksessa.",
+      "type" : "Description"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ {
+      "serviceHourType" : "DaysOfTheWeek",
+      "validFrom" : null,
+      "validTo" : null,
+      "isClosed" : false,
+      "validForNow" : true,
+      "additionalInformation" : [ ],
+      "openingHour" : [ {
+        "dayFrom" : "Monday",
+        "dayTo" : "",
+        "from" : "09:00:00",
+        "to" : "11:00:00"
+      }, {
+        "dayFrom" : "Monday",
+        "dayTo" : "",
+        "from" : "13:00:00",
+        "to" : "15:30:00"
+      }, {
+        "dayFrom" : "Wednesday",
+        "dayTo" : "",
+        "from" : "09:00:00",
+        "to" : "11:00:00"
+      }, {
+        "dayFrom" : "Wednesday",
+        "dayTo" : "",
+        "from" : "13:00:00",
+        "to" : "15:30:00"
+      } ]
+    } ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "2ce5ef00-4d4a-4e18-a936-0ed03de16c75",
+      "name" : "Lääkärin tai hoitajan vastaanotto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "50719692-7569-4d68-9783-16ee751be3e8",
+      "name" : "Rintamaveteraanien kuntoutus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "536bddf4-b7d8-463b-85b1-d8d6a2ff5c83",
+      "name" : "Toimintaterapian palvelut"
+    },
+    "serviceChargeType" : "Chargeable",
+    "description" : [ {
+      "language" : "fi",
+      "value" : "Lasten toimintaterapia sijaitsee terveyskeskuksen 1. kerroksessa lastenneuvolan yhteydessä.\nAikuisten toimintaterapia sijaitsee terveyskeskuksen 2. kerroksessa fysioterapian yhteydessä.",
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : "Lasten toimintaterapia on maksuton.\nAikuisten toimintaterapiasta peritään käyntimaksu.",
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "60c1bd64-2b2c-483d-8ab1-aa3bce2598a3",
+      "name" : "Apuvälinepalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : "Apuvälinelainaamo sijaitsee Naantalin terveyskeskuksessa. Käynti vuodeosaston ovesta; apuvälinelainaamo on lasikäytävän yhteydessä. \nVoit asioida apuvälinelainaamossa sen aukioloaikoina tai ottaa yhteyttä puhelimitse.",
+      "type" : "Description"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ {
+      "serviceHourType" : "DaysOfTheWeek",
+      "validFrom" : null,
+      "validTo" : null,
+      "isClosed" : false,
+      "validForNow" : true,
+      "additionalInformation" : [ {
+        "value" : "Apuvälinelainaamo on avoinna",
+        "language" : "fi"
+      } ],
+      "openingHour" : [ {
+        "dayFrom" : "Monday",
+        "dayTo" : "",
+        "from" : "12:00:00",
+        "to" : "13:00:00"
+      }, {
+        "dayFrom" : "Tuesday",
+        "dayTo" : "",
+        "from" : "12:00:00",
+        "to" : "13:00:00"
+      }, {
+        "dayFrom" : "Wednesday",
+        "dayTo" : "",
+        "from" : "12:00:00",
+        "to" : "13:00:00"
+      }, {
+        "dayFrom" : "Wednesday",
+        "dayTo" : "",
+        "from" : "15:30:00",
+        "to" : "16:30:00"
+      }, {
+        "dayFrom" : "Thursday",
+        "dayTo" : "",
+        "from" : "12:00:00",
+        "to" : "13:00:00"
+      } ]
+    } ],
+    "contactDetails" : {
+      "emails" : [ ],
+      "phoneNumbers" : [ ],
+      "webPages" : [ {
+        "orderNumber" : "0",
+        "url" : "http://www.naantali.fi/terveys/palvelut/fi_FI/apuvalinelainaamo/",
+        "value" : "Apuvälinelainaamo",
+        "language" : "fi"
+      } ],
+      "addresses" : [ ]
+    },
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "6abb351f-8a43-49ac-b926-1134135534df",
+      "name" : "Fysioterapian palvelut"
+    },
+    "serviceChargeType" : "Chargeable",
+    "description" : [ {
+      "language" : "fi",
+      "value" : "Fysioterapia sijaitsee terveyskeskuksen toisessa kerroksessa.",
+      "type" : "Description"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "80580972-afc1-4ede-9cec-ea3e458cbc69",
+      "name" : "Hammashoidon päivystys"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : "Naantalin hammashoitola sijaitsee Naantalin terveyskeskuksen tiloissa toisessa kerroksessa. Varaa tai peruuta hoitoaikasi keskitetystä ajanvaraus ja peruutusnumerosta.",
+      "type" : "Description"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : {
+      "emails" : [ ],
+      "phoneNumbers" : [ ],
+      "webPages" : [ {
+        "orderNumber" : "0",
+        "url" : "http://www.naantali.fi/terveys/palvelut/hammashoito/fi_FI/hammashoito/",
+        "value" : "Hammashoidon verkkosivu",
+        "language" : "fi"
+      } ],
+      "addresses" : [ ]
+    },
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "bab19689-bfaf-4b53-994a-cbf4591901a3",
+      "name" : "Muistineuvonta"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : "Muistikoordinaattori työskentelee Naantalin terveyskeskuksessa.",
+      "type" : "Description"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "bab25dd8-a246-4fa7-ae82-c77c22a61fc2",
+      "name" : "Lääkäripäivystyksen palvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "bcdccef9-d838-4692-8c5e-68aab3a198f4",
+      "name" : "Terveystodistuspalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "c2f928f7-c123-4f04-bdfc-7cf822b5de88",
+      "name" : "Rokotuspalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "e6948df4-134b-4255-9015-ad4e3c366f6d",
+      "name" : "Lääkinnällisen kuntoutuksen palvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : "Ajanvaraus, potilastoimisto ja päivystys",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "24362760",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Puhelinvaihde (arkisin klo 8-16)",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "24345111",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Vuodeosasto (vuorokauden ympäri)",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "24362624",
+    "language" : "fi"
+  } ],
+  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "emails" : [ ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Naantalin terveyskeskus",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ {
+    "serviceHourType" : "DaysOfTheWeek",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ {
+      "value" : "Naantalin terveyskeskus",
+      "language" : "fi"
+    } ],
+    "openingHour" : [ {
+      "dayFrom" : "Monday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "20:00:00"
+    }, {
+      "dayFrom" : "Tuesday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "20:00:00"
+    }, {
+      "dayFrom" : "Wednesday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "20:00:00"
+    }, {
+      "dayFrom" : "Thursday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "20:00:00"
+    }, {
+      "dayFrom" : "Friday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "20:00:00"
+    }, {
+      "dayFrom" : "Saturday",
+      "dayTo" : "",
+      "from" : "09:00:00",
+      "to" : "14:00:00"
+    } ]
+  }, {
+    "serviceHourType" : "DaysOfTheWeek",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ {
+      "value" : "Naantalin terveyskeskuksen vuodeosasto",
+      "language" : "fi"
+    } ],
+    "openingHour" : [ ]
+  } ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Naantalin terveyskeskus sijaitsee Naantalin keskustassa.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Naantalin terveyskeskus sijaitsee Naantalin keskustassa osoitteessa Tuulensuunkatu 6. Samassa rakennuksessa sijaitsee terveyskeskuksen vuodeosasto.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2018-01-04T12:32:25.733931",
+  "id" : "66e737c9-fec5-4e2c-a288-e9dc7439b5a5"
+}

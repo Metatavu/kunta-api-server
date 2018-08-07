@@ -1,0 +1,129 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/node/16781/edit",
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "16d1bd9e-6a64-4888-843c-2aabfd23653d",
+      "name" : "Hygienia"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "401618289",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "401618289",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Hygieniahoitaja",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Hygienskötaren",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ {
+    "serviceHourType" : "DaysOfTheWeek",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ {
+      "value" : null,
+      "language" : "fi"
+    } ],
+    "openingHour" : [ {
+      "dayFrom" : "Monday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    }, {
+      "dayFrom" : "Tuesday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    }, {
+      "dayFrom" : "Wednesday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    }, {
+      "dayFrom" : "Thursday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    }, {
+      "dayFrom" : "Friday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    } ]
+  } ],
+  "serviceChannelType" : "Phone",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Hygieniahoitajan tehtävänä on edistää potilas- ja asiakasturvallisuutta sekä terveydenhuollon henkilökunnan työturvallisuutta Vaasan kaupungin alueella. Hygieniahoitaja antaa asiantuntija-apua ja neuvoja sekä yksityis- että ammattihenkilöille. ",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Hygieniahoitajan tehtävänä on edistää potilas- ja asiakasturvallisuutta sekä terveydenhuollon henkilökunnan työturvallisuutta.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Hygienskötarens uppgift är att främja patient- och klientsäkerheten samt arbetar-skyddet för hälsovårdspersonalen i Vasa stads område.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Hygienskötarens uppgift är att främja patient- och klientsäkerheten samt arbetar-skyddet för hälsovårdspersonalen i Vasa stads område. Hygienskötaren fungerar i samarbete med ansvariga läkaren för smittsamma sjukdomar samt utför samarbete med de olika enheterna inom social- och hälsovården.\n",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "c42199f3-e91b-4854-84e4-d10f0bba3320"
+}

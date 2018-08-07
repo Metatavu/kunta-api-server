@@ -1,0 +1,212 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Suun ja hampaiden terveydenhuolto",
+      "language" : "fi"
+    }, {
+      "value" : "Mun- och tandhälsovård",
+      "language" : "sv"
+    }, {
+      "value" : "Oral and dental health care",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Till denna serviceundergrupp hör tjänster i samband med mun- och tandhälsovård såsom kontroller, tandläkarens och -munhygienistens vårdåtgärder samt specialtandläkartjänster såsom ortodonti.",
+      "language" : "sv"
+    }, {
+      "value" : "Tähän alapalveluluokkaan kuuluvat suun ja hampaiden terveydenhuollon palvelut kuten ennaltaehkäisevä hoito, tarkastukset, hammaslääkärin ja -hygienistin hoitotoimenpiteet sekä oikomishoidon kaltaiset erikoishammaslääkäripalvelut.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains oral and dental health services, including preventive care, check-ups, procedures carried out by a dentist or a dental hygienist, as well as specialist dental care services, such as orthodontic treatments.",
+      "language" : "en"
+    } ],
+    "code" : "P5.10",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1048",
+    "parentId" : "76ca210c-5183-4d41-b796-50612d5930c7",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1038"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "65376bae-3e69-4ec6-b826-58e10b4308c0",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-12-04T07:58:34.0302",
+  "id" : "99446180-12d3-49d5-a812-870c6d94fd98",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "17ef2d32-eef4-43f6-af35-aabe64295770",
+      "name" : "Hammashoidon ajanvaraus ja -peruutus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "53117c9f-4716-4fe9-9ced-36159cd05d08",
+      "name" : "Rymättylän hammashoitola"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "58822970-c0ff-4324-a03e-3f999013765c",
+      "name" : "Hammashoitoajan peruutus tekstiviestillä"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "97d679f1-c7db-4a7c-990a-54575eabe0df",
+      "name" : "Hammashoidon verkkosivu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "c64203c3-8a27-4d75-9ce4-a0569892077d",
+      "name" : "Hammashoidon verkkopalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "cae772d7-d3c2-4aec-a343-80cca36f6ea8",
+      "name" : "Naantalin hammashoitola"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : "Hoitoon pääsyn perusteena on terveydenhuollon ammattihenkilön toteama hoidon tarve.",
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "Chargeable",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Hammashoito",
+    "type" : "AlternativeName"
+  }, {
+    "language" : "fi",
+    "value" : "Suun terveydenhuolto",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "tandvård",
+      "language" : "sv"
+    }, {
+      "value" : "hammashuolto",
+      "language" : "fi"
+    }, {
+      "value" : "dental care (public health service)",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p13395",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p2062"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Terveyskeskuksen hammashoito on tarkoitettu kaikille Naantalin asukkaille sekä terveyskeskuksen vaihtajille. Hammashoidon asiakkaana sinulle määritellään yksilöllinen tarkastusväli hammaslääkärille, suuhygienistille ja/tai hammashoitajalle. \n\nSuun terveydenhuolto kuuluu hoitotakuun piiriin, joten pääset kiireettömään hoitoon kuuden kuukauden sisällä yhteydenotosta.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "* Varaa aika suun terveydenhuoltoon soittamalla keskitettyyn ajanvarausnumeroon.\n* Muistathan peruuttaa aikasi, jos et pääse vastaanotolle. Voit tehdä sen soittamalla ajanvaraus- ja -peruutusnumeroon, lähettämällä viestin tekstiviestipalveluun tai ilmoittamalla siitä sähköisen asioinnin kautta.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Hammashoito on maksullista 18 vuotta täyttäneille. Peruuttamatta jääneestä vastaanottoajasta peritään maksu 15-vuotiaasta alkaen.",
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Terveyskeskuksen hammashoito on tarkoitettu Naantalin asukkaille sekä terveyskeskuksen vaihtajille.",
+    "type" : "Summary"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

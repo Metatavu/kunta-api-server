@@ -1,0 +1,195 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/node/1981/",
+    "value" : "Vaasa-opisto",
+    "language" : "fi"
+  }, {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/en/node/1981/",
+    "value" : "Vaasa-opisto",
+    "language" : "en"
+  }, {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/sv/node/1981/",
+    "value" : "Vaasa-opisto",
+    "language" : "sv"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Laihiantie",
+        "language" : "en"
+      }, {
+        "value" : "Laihiantie",
+        "language" : "fi"
+      }, {
+        "value" : "Laihiantie",
+        "language" : "sv"
+      } ],
+      "streetNumber" : "39 C",
+      "postalCode" : "66400",
+      "postOffice" : [ {
+        "value" : "LAIHIA",
+        "language" : "sv"
+      }, {
+        "value" : "LAIHIA",
+        "language" : "fi"
+      } ],
+      "municipality" : null,
+      "additionalInformation" : [ {
+        "value" : null,
+        "language" : "sv"
+      } ],
+      "latitude" : "6992774.918",
+      "longitude" : "247310.164",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "sv", "en", "fi" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "152",
+      "name" : [ {
+        "value" : "Storkyro",
+        "language" : "sv"
+      }, {
+        "value" : "Isokyrö",
+        "language" : "fi"
+      }, {
+        "value" : "Isokyrö",
+        "language" : "en"
+      } ]
+    }, {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    }, {
+      "code" : "399",
+      "name" : [ {
+        "value" : "Laihia",
+        "language" : "fi"
+      }, {
+        "value" : "Laihela",
+        "language" : "sv"
+      }, {
+        "value" : "Laihia",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "819bed3d-6147-4a22-a454-eac010516ce7",
+      "name" : "Kansalaisopistot"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : "",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "406353391",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "406353391",
+    "language" : "en"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "406353391",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ {
+    "value" : "vaasa-opisto@edu.vaasa.fi",
+    "language" : "fi"
+  }, {
+    "value" : "vaasa-opisto@edu.vaasa.fi",
+    "language" : "en"
+  }, {
+    "value" : "vaasa-opisto@edu.vaasa.fi",
+    "language" : "sv"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "en",
+    "value" : "Vaasa-opisto – the unit in Laihia",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Vaasa-opisto – verksamhetsenheten i Laihela",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasa-opisto - Laihian toimipiste",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "Vasa stads finskspråkiga arbetarinstitut Vaasa-opisto producerar medborgarinstitutstjänster också i Laihela. Vaasa-opisto ordnar undervisning i språk samt färdighets-, konst- och kunskapsämnen. Läs mera om Vaasa-opistos verksamhet på institutets webbsidor.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Vasa stads finskspråkiga arbetarinstitut Vaasa-opisto producerar medborgarinstitutstjänster också i Laihela.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan kaupungin suomenkielinen työväenopisto Vaasa-opisto tuottaa kansalaisopistopalveluja myös Laihialla.",
+    "type" : "Summary"
+  }, {
+    "language" : "en",
+    "value" : "The Finnish-speaking workers institute of the City of Vaasa, Vaasa-opisto, also produce workers institute services in Laihia. Vaasa-opisto arranges education in different languages as well as practical, arts and theoretical subjects. Read more about the institute’s activities on the web pages of Vaasa-opisto.\n",
+    "type" : "Description"
+  }, {
+    "language" : "en",
+    "value" : "The Finnish-speaking workers institute of the City of Vaasa, Vaasa-opisto, also produce workers institute services in Laihia.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan kaupungin suomenkielinen työväenopisto Vaasa-opisto tuottaa kansalaisopistopalveluja myös Laihialla. Vaasa-opisto järjestää opetusta kielistä sekä taito-, taide- ja tietoaineista. Lue lisää Vaasa-opiston toiminnasta opiston kotisivuilta.\n",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "286cd1b2-3cbc-4445-a04c-ad41198b229a"
+}

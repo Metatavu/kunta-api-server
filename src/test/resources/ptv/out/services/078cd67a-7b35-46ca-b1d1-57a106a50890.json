@@ -1,0 +1,265 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Rakennettu ympäristö",
+      "language" : "fi"
+    }, {
+      "value" : "Bebyggd miljö",
+      "language" : "sv"
+    }, {
+      "value" : "Built environment",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Tässä palveluluokassa käsitellään julkiseen ja asumiskäyttöön tarkoitettuja rakennuksia sekä yleensä kiinteistöihin ja niiden käyttöön liittyvää kunnallista infrastruktuuria ja sen palveluja.",
+      "language" : "fi"
+    }, {
+      "value" : "I denna serviceundergrupp behandlas byggnader ämnade för offentligt och boendebruk samt kommunal infrastruktur och dess tjänster allmänt i anslutning till fastigheter och dess bruk.",
+      "language" : "sv"
+    }, {
+      "value" : "This service class contains public and residential buildings as well as municipal infrastructure and related services associated with buildings and their use in general.",
+      "language" : "en"
+    } ],
+    "code" : "P2",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1007",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "078cd67a-7b35-46ca-b1d1-57a106a50890",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "49eeb077-35b8-4895-84e1-e79db7a81f84",
+      "name" : "Byggnadstillsynen"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "61f668cc-7809-48a9-a8c6-5fdbcb0b9244",
+      "name" : "Rakennusvalvonnan verkkosivut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "ad3f02a0-a19c-442c-b7c1-c280a40ed7f0",
+      "name" : "Vaasan kaupungin rakennusjärjestys"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "sv"
+  }, {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "sv",
+    "value" : "Tillsyn av den byggda miljön",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Rakennetun ympäristön valvonta",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "byggnadstillsyn",
+      "language" : "sv"
+    }, {
+      "value" : "rakennusvalvonta",
+      "language" : "fi"
+    }, {
+      "value" : "supervisory control of building",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p31057",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p35439"
+  }, {
+    "name" : [ {
+      "value" : "rakentaminen",
+      "language" : "fi"
+    }, {
+      "value" : "byggande",
+      "language" : "sv"
+    }, {
+      "value" : "construction",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p34882",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p24991"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Yritykset ja yhteisöt",
+      "language" : "fi"
+    }, {
+      "value" : "Businesses and non-government organizations",
+      "language" : "en"
+    }, {
+      "value" : "Företag och samfund",
+      "language" : "sv"
+    } ],
+    "code" : "KR2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : "Byggnadstillsynen övervakar att den byggda miljön är ren och i gott skick.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : "En skriftlig anmälan om en ovårdad byggd miljö eller någon annan olägenhet i den byggda miljön kan göras till Vasa stads byggnadstillsyn, Rådhusgatan 21 B, 65100 Vasa.\n\nAnonyma anmälningar behandlas inte.\n\nÄrendet blir offentligt då byggnadstillsynen har fått det.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : "Rakennusvalvonta valvoo rakennetun ympäristön kuntoa ja siisteyttä.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Rakennusvalvonta valvoo rakennetun ympäristön kuntoa ja siisteyttä. Rakennusvalvonta valvoo ympäristön hoitoa muun muassa pitämällä katselmuksia ja antamalla korjauskehotuksia.\n\nRakennukset ja niiden ympäristö on pidettävä rakennusluvan mukaisena ja sellaisessa kunnossa, ettei siitä vaarannu terveys, turvallisuus ja käyttökelpoisuus. Rakennus ei myöskään saa aiheuttaa ympäristöhaittaa tai rumentaa ympäristöä.\n\nRakennukset on rakennettava rakenteellisesti käyttötarkoitukseensa sopiviksi ja turvallisiksi. Niiden on oltava säädösten ja määräysten mukaisella etäisyydellä naapurin rajasta ja rakennuksista ja sopeuduttava ympäristöön. Rakennus ei saa aiheuttaa naapurille tai ympäristölle kohtuutonta haittaa.\n\nVaasan kaupungin rakennusjärjestyksen mukaan rakennuspaikkaa ei saa käyttää sellaiseen varastointiin, joka rumentaa ympäristöä tai aiheuttaa haittaa naapureille. Ympäristöön olennaisesti vaikuttavat ulkovarastot, jätesäiliöt tai -katokset ja vastaavat rakennelmat on tarvittaessa suojattava istutuksin tai aidalla.\n\nKäyttämättömät rakennukset on taajama-alueilla suojattava niin, etteivät asiattomat pääse niihin sisälle. Suojeltavaksi määrättyjä rakennuksia on hoidettava niin, ettei niiden säilyminen vaarannu.\n\nKäytöstä poistetut kaivot ja muut vaaralliset rakennelmat on peitettävä niin, ettei niistä aiheudu vaaraa.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Rakennetun ympäristön epäsiisteydestä tai muusta epäkohdasta voi ilmoittaa kirjallisesti Vaasan kaupungin rakennusvalvontaan, Raastuvankatu 21 B, 65100 Vaasa.\n\nNimettömiä ilmoituksia ei käsitellä.\n\nAsiasta tulee julkinen, kun se on saapunut rakennusvalvontaan.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : "Byggnadstillsynen övervakar att den byggda miljön är ren och i gott skick. Byggnadstillsynen övervakar vården av miljön bland annat genom att göra syner och ge renoveringsuppmaningar. \n\nByggnader och deras omgivning ska skötas enligt bygglovet och vara i ett sådant skick att inte hälsan, säkerheten och dugligheten för användning äventyras. Byggnaden får inte heller orsaka miljöolägenheter eller förfula miljön.\n\nByggnader ska konstruktionsmässigt byggas så att de passar för sitt användningsändamål och är säkra. De ska byggas på ett sådant avstånd från grannens tomt och byggnader som anges i författningar och bestämmelser och vara anpassade till miljön. En byggnad får inte orsaka oskäliga olägenheter för grannen eller miljön.\n\nEnligt Vasa stads byggnadsordning får byggplatsen inte användas för sådan förvaring som förfular miljön eller orsakar olägenheter för grannarna. Uteförråd, avfallsbehållare eller -tak och andra liknande konstruktioner som har väsentlig inverkan på miljön ska vid behov skyddas med planteringar eller staket.\n\nByggnader som inte är i användning ska i tätorter skyddas så att inte obehöriga kan komma in. Byggnader med byggnadsskydd ska skötas så att bevarandet av dem inte äventyras.\n\nBrunnar som tagits ur bruk och andra farliga konstruktioner måste täckas över så att de inte orsakar fara.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

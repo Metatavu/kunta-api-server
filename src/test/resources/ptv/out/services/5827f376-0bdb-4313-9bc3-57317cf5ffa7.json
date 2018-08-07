@@ -1,0 +1,184 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Kiinteistöt",
+      "language" : "fi"
+    }, {
+      "value" : "Properties",
+      "language" : "en"
+    }, {
+      "value" : "Fastigheter",
+      "language" : "sv"
+    } ],
+    "description" : [ {
+      "value" : "Tässä alapalveluluokassa käsitellään palvelujen näkökulmasta kiinteistötietoja sekä kiinteistöjen kauppaa ja verotusta.",
+      "language" : "fi"
+    }, {
+      "value" : "I denna underservicegrupp behandlas ur servicesynvinkeln fastighetsuppgifter samt fastighetsaffärer och -beskattning.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains property information as well as the trade and taxation of properties from the service point of view.",
+      "language" : "en"
+    } ],
+    "code" : "P2.4",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1011",
+    "parentId" : "dd30002b-be2b-4689-878a-60e93492cc87",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1007"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "9a5a0855-41ec-4ca9-9612-a07651ec44a8",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-20T08:35:16.487968",
+  "id" : "5827f376-0bdb-4313-9bc3-57317cf5ffa7",
+  "serviceChannels" : [ ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : null,
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Kaupanvahvistus",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ ],
+    "code" : null,
+    "ontologyType" : null,
+    "uri" : "http://www.yso.fi/onto/yso/p13797",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ ],
+    "code" : null,
+    "ontologyType" : null,
+    "uri" : "http://www.yso.fi/onto/yso/p6712",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Företag och samfund",
+      "language" : "sv"
+    }, {
+      "value" : "Yritykset ja yhteisöt",
+      "language" : "fi"
+    }, {
+      "value" : "Businesses and non-government organizations",
+      "language" : "en"
+    } ],
+    "code" : "KR2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "Företag på den inhemska marknaden",
+      "language" : "sv"
+    }, {
+      "value" : "Businesses operating in the domestic (Finnish) market",
+      "language" : "en"
+    }, {
+      "value" : "Kotimarkkinoilla toimivat yritykset",
+      "language" : "fi"
+    } ],
+    "code" : "KR2.3",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2011",
+    "parentId" : "338939bb-b01a-4a80-a091-7c5238322bc0",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008"
+  }, {
+    "name" : [ {
+      "value" : "Medborgare",
+      "language" : "sv"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Kaupanvahvistuksessa kiinteistön luovutus vahvistetaan kaikkien luovutuskirjan allekirjoittajien läsnä ollessa. Kaikkein kaupan osapuolten tulee olla joko lasnä, tai valtakirjalla valtuutettuina. Ilman kaupanvahvistusta luovutus on mitätön, eikä ostaja voi saada ostamalleen kiinteistölle lainhuutoa. \n\nNaantalin alueen kaupanvahvistajat löydät Maanmittauslaitoksen Kaupanvahvistajahausta. ",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : " Kaupanvahvistajahausta voit hakea kaupanvahvistajia kirjoittamalla yhden tai useampia hakuehtoja. Kaupanvahvistajan nimeä klikkaamalla saat lisätietoja.\n\nSovi kaupanvahvistuksesta tarkemmin suoraan kaupanvahvistajan kanssa.\n",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Kaupanvahvistuksessa kiinteistön luovutus vahvistetaan kaikkien luovutuskirjan allekirjoittajien läsnä ollessa.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "Other",
+    "organization" : null,
+    "roleType" : "Producer",
+    "additionalInformation" : [ {
+      "value" : "kaupanvahvistajat",
+      "language" : "fi"
+    } ]
+  } ]
+}

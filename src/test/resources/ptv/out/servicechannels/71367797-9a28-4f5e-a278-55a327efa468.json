@@ -1,0 +1,189 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Vallinmäentie",
+        "language" : "fi"
+      } ],
+      "streetNumber" : "43",
+      "postalCode" : "66400",
+      "postOffice" : [ {
+        "value" : "LAIHIA",
+        "language" : "sv"
+      }, {
+        "value" : "LAIHIA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "399",
+        "name" : [ {
+          "value" : "Laihia",
+          "language" : "fi"
+        }, {
+          "value" : "Laihela",
+          "language" : "sv"
+        }, {
+          "value" : "Laihia",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ ],
+      "latitude" : "6992700.088",
+      "longitude" : "247998.557",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "dc032066-5697-4d62-bf91-2622d1f9b556",
+      "name" : "Lääkärin ja hoitajan vastaanotto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Fax",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63258202",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Ajanvaraus hoitajien- ja lääkäreiden vastaanotoille",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63258200",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Keskus",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63258111",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Sairaanhoidon neuvonta",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "407148908",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Lääkärinvastaanotolta määrätyt laboratoriotulokset ja röntgenvastaukset ma-pe klo 13 – 15",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "401886200",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Reseptien uusinnat ma-pe klo 12-15",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63258200",
+    "language" : "fi"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Laihian terveysasema",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ {
+    "serviceHourType" : "DaysOfTheWeek",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ {
+      "value" : null,
+      "language" : "fi"
+    } ],
+    "openingHour" : [ {
+      "dayFrom" : "Monday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "17:00:00"
+    }, {
+      "dayFrom" : "Tuesday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "17:00:00"
+    }, {
+      "dayFrom" : "Wednesday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "17:00:00"
+    }, {
+      "dayFrom" : "Thursday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    }, {
+      "dayFrom" : "Friday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "15:00:00"
+    } ]
+  } ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Laihian terveysasema palvelee alueen asukkaita sekä kiireettömissä että kiireellisissä sairaustapauksissa lääkäri- ja hoitajavastaanotolla.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasa ja Laihia ovat tehneet yhteistoimintasopimuksen sosiaali- ja terveyspalvelujen järjestämisestä. Yhteistoimintasopimus sisältää kaikki perusterveydenhuollon palvelut – lääkärin vastaanottotoiminnan, neuvolatoiminnan, hammashuollon, kotisairaanhoidon ja laitoshoidon, kuntoutuspalvelut ja terveydenhuollon tukipalvelut.\n\nLaihian terveysasema palvelee alueen asukkaita sekä kiireettömissä että kiireellisissä sairaustapauksissa lääkäri- ja hoitajavastaanotolla.\n\nMuistathan että voit lähettää reseptisi uusittavaksi myös internetin OmaKanta -palvelun kautta osoitteessa kanta.fi.\n\nHoitajavastaanotto: ma-ke klo 8 – 17, to 8 – 16 ja pe 8 – 15\n\nLääkäripäivystys: Arkipäivisin ma-to klo 8 - 16 ja pe 8 - 14 omalla terveysasemalla",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "71367797-9a28-4f5e-a278-55a327efa468"
+}

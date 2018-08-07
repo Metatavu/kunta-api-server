@@ -1,0 +1,242 @@
+{
+  "sourceId" : null,
+  "keywords" : [ {
+    "value" : "turistrådgivning",
+    "language" : "sv"
+  } ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Matkailu",
+      "language" : "fi"
+    }, {
+      "value" : "Turism",
+      "language" : "sv"
+    }, {
+      "value" : "Tourism",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "I denna servicegrupp behandlas resetjänster, resedokument, gränstjänster, turisters säkerhet och finländska beskickningars tjänster.",
+      "language" : "sv"
+    }, {
+      "value" : "Tässä palveluluokassa käsitellään matkailupalveluja, matkustusasiakirjoja, rajapalveluja, matkailijan turvallisuutta ja Suomen ulkomaan-edustustojen palveluja.",
+      "language" : "fi"
+    }, {
+      "value" : "This service class contains tourism services, travel documents, border services, traveller’s safety and the services of Finland's foreign missions.",
+      "language" : "en"
+    } ],
+    "code" : "P17",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1152",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "30d65e81-ef7a-4234-aeeb-9bb6003569a9",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "74cd40c7-db75-4943-b066-b4d3d5abc5ca",
+      "name" : "Kokousmatkailun verkkosivut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "en"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  }, {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi", "sv", "en" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : null,
+  "serviceNames" : [ {
+    "language" : "sv",
+    "value" : "Turismtjänster",
+    "type" : "Name"
+  }, {
+    "language" : "en",
+    "value" : "Travelling services",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Matkailupalvelut",
+    "type" : "Name"
+  }, {
+    "language" : "en",
+    "value" : "Tourist services",
+    "type" : "AlternativeName"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "turistinformation",
+      "language" : "sv"
+    }, {
+      "value" : "matkailuneuvonta",
+      "language" : "fi"
+    }, {
+      "value" : "tourist information",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p68976",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p35080"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Matkailutoimisto palvelee Vaasan keskustassa Rewell Centerissä ja verkossa. Voit ottaa yhteyttä myös puhelimitse tai sähköpostitse. ",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan seudun Matkailu Oy (Visit Vaasa) edistää ja kehittää seudun matkailua ja vastaa matkailuneuvonnasta. Matkailuneuvonnasta löytyy monipuolista matkailutietoa Vaasan alueelta. Vaasan seudun Matkailu Oy vastaa matkailuneuvonnan lisäksi matkailun yhteismarkkinoinnista, materiaalituotannosta, tuotekehityksestä, myynnistä ja hallinnosta. Sille kuuluu myös kokousjärjestäjille suunnattu maksuton neuvonta. ",
+    "type" : "Description"
+  }, {
+    "language" : "en",
+    "value" : "Vaasan seudun Matkailu Oy (Visit Vaasa) promotes and develops the travelling in the area and handles the travellers’ guidance. The travellers’ guidance has a lot of travelling information for the Vaasa region. Apart from travellers’ guidance Visit Vaasa also takes care of the common marketing in terms of travel, production of materials, developing the products as well as selling and administering these. In addition, the free guidance aimed at organisers of meetings is a part of the work. \n",
+    "type" : "Description"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "en",
+    "value" : "The Tourist Information Centre (i.e. Visit Vaasa office) is open all year round.",
+    "type" : "Summary"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : "Turistbyrån betjänar i Vasa centrum i Rewell Center och på webben. Du kan även ta kontakt per telefon eller per e-post. ",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : "Vasaregionens Turism Ab (Visit Vaasa) främjar och utvecklar turismen i regionen och svarar för turistrådgivningen. Via turistrådgivningen får man mångsidig turistinformation om Vasaregionen. Vasaregionens Turism Ab svarar förutom för turistrådgivningen även för sammarknadsföring av turism, materialproduktion, produktutveckling, försäljning och administration. Till dess uppgifter hör även avgiftsfri rådgivning för konferensarrangörer. ",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan seudun Matkailu Oy (Visit Vaasa) edistää ja kehittää seudun matkailua ja vastaa matkailuneuvonnasta.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "en",
+    "value" : "The tourist office serves in Rewell Center in the centre of Vaasa and online. You  can also contact the offices by phone or e-mail.\n",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : "Vasaregionens Turism Ab (Visit Vaasa) främjar och utvecklar turismen i regionen och svarar för turistrådgivningen.",
+    "type" : "Summary"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

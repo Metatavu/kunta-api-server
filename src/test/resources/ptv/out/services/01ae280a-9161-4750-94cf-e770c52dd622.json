@@ -1,0 +1,160 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Koulu- ja opiskelijaterveydenhuolto",
+      "language" : "fi"
+    }, {
+      "value" : "Skol- och studerandehälsovården",
+      "language" : "sv"
+    }, {
+      "value" : "Pupil and student health care",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Till denna serviceundergrupp hör hälsovårdstjänster för skolelever och studeranden på heltid. Till gruppen hör inte socialtjänster för dessa grupper.",
+      "language" : "sv"
+    }, {
+      "value" : "Tähän alapalveluluokkaan kuuluvat koululaisille ja kokopäivisille opiskelijoille tarkoitetut terveyspalvelut. Luokkaan eivät kuulu näille ryhmille suunnatut sosiaalipalvelut.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains health services intended for pupils and full-time students. It does not include social services targeted at these groups.",
+      "language" : "en"
+    } ],
+    "code" : "P5.9",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1047",
+    "parentId" : "76ca210c-5183-4d41-b796-50612d5930c7",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1038"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "3ad52e61-1539-452d-9aa4-07fa882c8fd1",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-11-27T08:15:34.982948",
+  "id" : "01ae280a-9161-4750-94cf-e770c52dd622",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "66e737c9-fec5-4e2c-a288-e9dc7439b5a5",
+      "name" : "Naantalin terveyskeskus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "d43c95b3-4bb8-404f-b29e-e11a43c1d916",
+      "name" : "Lukion terveydenhoitajan vastaanotto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Opiskeluterveydenhuollon palvelut",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "studenthälsovård",
+      "language" : "sv"
+    }, {
+      "value" : "opiskeluterveydenhuolto",
+      "language" : "fi"
+    }, {
+      "value" : "student health service",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p51985",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p2062"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Opiskeluterveydenhuolto edistää kokonaisvaltaista hyvinvointiasi ja opiskelukykyisyyttäsi sekä tulevaa työkykyäsi.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Ota yhteyttä Naantalin lukion terveydenhoitajaan opiskeluterveydenhuoltoon liittyvissä asioissa.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Opiskeluterveydenhuolto seuraa kokonaisvaltaista hyvinvointiasi ja opiskelukykyisyyttäsi sekä edistää tulevaa työkykyäsi. Terveydenhoitaja kutsuu sinut terveystarkastukseen ensimmäisen opiskeluvuoden aikana. Toisena opiskeluvuonna opiskeluterveydenhuollon lääkäri tekee tytöille terveystarkastuksen ja pojille puolestaan järjestetään asevelvollisen kutsuntatarkastukset terveyskeskuksessa. \n\nKaikille opiskelijoille tarjotaan terveystarkastuksia ja -palveluita tarpeen mukaan. Palvelua saa myös mielenterveys- ja päihdekysymyksissä. Tarkastuksessa kiinnitetään huomiota terveyteesi, hyvinvointiisi, elämäntilanteeseesi ja opiskelumotivaatioosi sekä sinua ohjataan terveyttä edistävissä valinnoissasi. \n\nErityistä tukea tarvitsevat opiskelijat pyritään tunnistamaan varhain. Tuen järjestämisessä tehdään yhteistyötä huoltajien, muun opiskelijahuollon, opettajien tai hoitotahojen kanssa. Kouluterveydenhuolto tukee opiskelijaa omalta osaltaan yhdessä tehdyn suunnitelman mukaisesti. Opiskelijoille kuuluvat myös opiskeluun vaikuttavien sairauksien sairaanhoitopalvelut.",
+    "type" : "Description"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

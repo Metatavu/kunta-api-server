@@ -1,0 +1,213 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Palo- ja pelastustoiminta",
+      "language" : "fi"
+    }, {
+      "value" : "Fire and rescue activities",
+      "language" : "en"
+    }, {
+      "value" : "Brand- och räddningsverksamhet",
+      "language" : "sv"
+    } ],
+    "description" : [ {
+      "value" : "Denna serviceundergrupp omfattar lokala och nationella brand- och räddningstjänster.",
+      "language" : "sv"
+    }, {
+      "value" : "Tähän alapalveluluokkaan kuuluvat paikalliset ja valtakunnalliset palo- ja pelastuspalvelut.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains local and national fire and rescue services.",
+      "language" : "en"
+    } ],
+    "code" : "P19.1",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1160",
+    "parentId" : "582fa27b-c4a7-4818-83e6-0874420a79d1",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1159"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "fa00cc50-4de6-40ca-9a29-c504deba1de4",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "b8cb00a5-30eb-46af-b4ef-a71945a4c985",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "sv"
+  }, {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : null,
+  "serviceNames" : [ {
+    "language" : "sv",
+    "value" : "Räddningsverksamhet",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Pelastustoiminta",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "räddningsverksamhet",
+      "language" : "sv"
+    }, {
+      "value" : "pelastustoiminta",
+      "language" : "fi"
+    }, {
+      "value" : "rescue operations",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p2467",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p34717"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Yritykset ja yhteisöt",
+      "language" : "fi"
+    }, {
+      "value" : "Businesses and non-government organizations",
+      "language" : "en"
+    }, {
+      "value" : "Företag och samfund",
+      "language" : "sv"
+    } ],
+    "code" : "KR2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : "Lue lisää Pohjanmaan pelastuslaitoksen www-sivuilta.\n\nPelastuslaitoksen toimisto (ma-pe 08-16)\nSepänkyläntie 14-16,  65100 Vaasa\nPuhelin 06 325 1444\nFaksi 06 325 3636\npohjanmaanpelastuslaitos@vaasa.fi \n ",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasassa pelastustoiminnasta huolehtii Pohjanmaan pelastuslaitos.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasassa pelastustoiminnasta huolehtii Pohjanmaan pelastuslaitos.\n\nPohjanmaan pelastus huolehtii pelastustoiminnasta ja onnettomuuksien ehkäisystä Pohjanmaalla 12 kunnan alueella. Pelastuslaitoksen tavoitteena on hyvä turvallisuuskulttuuri, vähemmän onnettomuuksia ja pienemmät vahingot.\n\nPelastuslaitos antaa nopeaa ja tehokasta apua onnettomuuksissa ja poikkeusoloissa. Pelastustoimen palvelualueella on 39 paloasemaa, joista Vaasan paloasema on vakinaisesti miehitetty ja ympärivuorokautisessa hälytysvalmiudessa. Muilla paloasemilla on henkilöstöä virka-aikana ja osa paloasemista on miehittämättömiä, näissä toiminta on vapaaehtoisten varmistamaa.\n\nToiminta-alueen tehtävät koostuvat pelastustoimen ja ensivastetoiminnan eri tehtävistä. Pelastuslaitos työllistää 198 päätoimista henkilöä ja toiminnassa on mukana noin 530 vapaaehtoista henkilöä.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : "Österbottens räddningsverk sörjer för räddningsverksamheten i Vasa.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : "Österbottens räddningsverk sörjer för räddningsverksamheten i Vasa.\n\nÖsterbottens räddningsverk sörjer för räddningsverksamheten och förebyggandet av olyckor i 12 kommuner i Österbotten. Räddningsverkets mål är en god säkerhetskultur, färre olyckor och mindre skador.\n\nRäddningsverket ger snabb och effektiv hjälp vid olyckor och undantagsförhållanden. Inom räddningsverkets serviceområde finns 39 brandstationer, av vilka Vasa brandstation är permanent bemannad och i larmberedskap dygnet runt. På de andra brandstationerna finns det personal under tjänstetid, och en del av brandstationerna är obemannade, vid dessa säkerställs verksamheten av frivilliga.\n\nVerksamhetsområdets åligganden består av olika uppgifter för räddningsväsendet och första insatsen. Räddningsverket sysselsätter 198 personer på heltid och i verksamheten deltar ca 530 frivilliga.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Läs mer på Österbottens räddningsverks webbsidor.\n\nByrå (mån-fre 8-16)\nSmedsbyvägen 14-16,  65100 Vasa\nTfn 06 325 1444\nFax 06 325 3636\npohjanmaanpelastuslaitos@vaasa.fi ",
+    "type" : "UserInstruction"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "Other",
+    "organization" : null,
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

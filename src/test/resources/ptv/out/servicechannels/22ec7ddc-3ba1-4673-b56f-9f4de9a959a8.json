@@ -1,0 +1,101 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://opistopalvelut.fi/vasa/index.php",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://opistopalvelut.fi/vasa/index.php?l=en",
+    "value" : null,
+    "language" : "en"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://opistopalvelut.fi/vasa/index.php?l=sv",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "requiresSignature" : false,
+  "attachments" : [ ],
+  "languages" : [ ],
+  "supportPhones" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "819bed3d-6147-4a22-a454-eac010516ce7",
+      "name" : "Kansalaisopistot"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Vasa Arbiksen kurssitarjonta ja ilmoittautuminen",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Vasa Arbis kursutbud och anmälningar",
+    "type" : "Name"
+  }, {
+    "language" : "en",
+    "value" : "The course selection of Vasa Arbis and registering",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "EChannel",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Vaasan ruotsinkielisen työväenopiston eli Vasa Arbiksen verkkoasiointipalvelussa voit tutustua kurssitarjontaan ja ilmoittautua kursseille.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan ruotsinkielisen työväenopiston eli Vasa Arbiksen verkkoasiointipalvelussa voit tutustua kurssitarjontaan ja ilmoittautua kursseille.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "I svenskspråkiga Vasa Arbis e-tjänst kan du bekanta dig med institutets kursutbud och anmäla dig till kurser.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "I svenskspråkiga Vasa Arbis e-tjänst kan du bekanta dig med institutets kursutbud och anmäla dig till kurser. \n",
+    "type" : "Description"
+  }, {
+    "language" : "en",
+    "value" : "The Swedish-speaking workers institute in Vaasa, e.g. Vasa Arbis offers their course selection and registering for courses through their online custom",
+    "type" : "Summary"
+  }, {
+    "language" : "en",
+    "value" : "The Swedish-speaking workers institute in Vaasa, e.g. Vasa Arbis offers their course selection and registering for courses through their online customer services.\n",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "22ec7ddc-3ba1-4673-b56f-9f4de9a959a8",
+  "signatureQuantity" : 0,
+  "requiresAuthentication" : true
+}

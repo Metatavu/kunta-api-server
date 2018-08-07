@@ -1,0 +1,61 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://www.instagram.com/youngwasa/",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://www.instagram.com/youngwasa/",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "f1118351-952c-414a-b421-522746102314",
+      "name" : "Nuorisopalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Nuorisopalveluiden Instagram",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Ungdomsservices Instagramkonto",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Vaasan kaupungin nuorisopalveluiden Instagramissa voit seurata nuorisopalveluiden ajankohtaisia asioita.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan kaupungin nuorisopalveluiden Instagramissa voit seurata nuorisopalveluiden ajankohtaisia asioita. ",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "På Vasa stads ungdomsservices Instagramkonto kan du följa med vad som är aktuellt inom ungdomsservicen.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "På Vasa stads ungdomsservices Instagramkonto kan du följa med vad som är aktuellt inom ungdomsservicen. ",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "a5962979-6c24-481f-9584-2128c79c8996"
+}

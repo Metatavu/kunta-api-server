@@ -1,0 +1,222 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Sosiaalipalvelujen neuvonta- ja ohjauspalvelut",
+      "language" : "fi"
+    }, {
+      "value" : "Socialtjänsternas rådgivnings- och handledningstjänster",
+      "language" : "sv"
+    }, {
+      "value" : "Social service advisory and guidance services",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Till denna serviceundergrupp hör allmän rådgivning och handledning gällande socialtjänster som erbjuds medborgarna samt stöd till socialtjänstklienter i frågor som gäller socialtjänster, t.ex. rättsskydd och kundförhållande. Till exempel socialombudsmannens verksamhet hör till denna grupp.",
+      "language" : "sv"
+    }, {
+      "value" : "Tähän alapalveluluokkaan kuuluu kansalaisille annettava sosiaalipalveluja koskeva yleinen neuvonta ja ohjaus sekä sosiaalihuollon asiakkaiden tukeminen sosiaalipalveluja koskevissa, esimerkiksi oikeusturvaan ja asiakkuuteen liittyvissä kysymyksissä. Esimerkiksi sosiaaliasiamiehen toiminta kuuluu tähän luokkaan.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass includes general advice and guidance on social services provided for citizens as well as support for social welfare clients in issues related to social services, including legal protection and client relationships. For example, the activities of a social services ombudsman belong to this class.",
+      "language" : "en"
+    } ],
+    "code" : "P4.13",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1036",
+    "parentId" : "079b55da-af80-41ab-9346-c8fdd284afcf",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1023"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "50006434-e727-428e-8af6-326b8464578c",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-10-04T07:40:13.508294",
+  "id" : "6365e70f-6c55-4f8c-bc94-9afd532757cd",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "12f88f0a-1e93-45dd-8e2c-44261e359ebc",
+      "name" : "Asumispalveluohjaaja"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "d2ec2033-ff24-4603-8957-25b507cd5f3a",
+      "name" : "Aikuissosiaalityön verkkosivu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : null,
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Asunnottomien palveluohjaus",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Asumispalveluohjaajan palvelut",
+    "type" : "AlternativeName"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "asunnottomat",
+      "language" : "fi"
+    }, {
+      "value" : "bostadslösa",
+      "language" : "sv"
+    }, {
+      "value" : "homeless persons (lacking housing)",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p3201",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p2786"
+  }, {
+    "name" : [ {
+      "value" : "asunnottomien palvelut",
+      "language" : "fi"
+    } ],
+    "code" : null,
+    "ontologyType" : "TERO",
+    "uri" : "http://www.yso.fi/onto/koko/p57696",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p36438"
+  }, {
+    "name" : [ {
+      "value" : "servicerådgivning",
+      "language" : "sv"
+    }, {
+      "value" : "palveluohjaus",
+      "language" : "fi"
+    }, {
+      "value" : "service counselling",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p6198",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p77930"
+  }, {
+    "name" : [ {
+      "value" : "asunnottomuus",
+      "language" : "fi"
+    }, {
+      "value" : "bostadslöshet",
+      "language" : "sv"
+    }, {
+      "value" : "homelessness (lack of housing)",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p12674",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p74112"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : "Sosiaalityön asumispalveluohjaaja neuvoo ja ohjaa asunnottomia asunnon hakemisessa.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Sosiaalityön asumispalveluohjaaja neuvoo ja ohjaa asunnottomia asunnon hakemisessa. Ohjaaja kartoittaa yhdessä asiakkaan kanssa hänen tilannettaan sekä tuen tarvetta ja antaa ohjausta, neuvontaa ja psykososiaalista tukea.\n\nPalveluohjauksen tavoitteena on vähentää ja poistaa asunnottomuuteen liittyviä hyvinvointia ja turvallisuutta vaarantavia tekijöitä.\n\nJotta apu saavuttaisi asiakkaan mahdollisimman hyvin, hoidon ja kuntoutuksen tarpeen arviointi ja -suunnitelma tehdään tarvittaessa sosiaali- ja terveystoimen yhteistyönä.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

@@ -1,0 +1,44 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "http://www.naantali.fi/liikenne/tiet_kadut/fi_FI/katu_etusivu/",
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "127b9442-e957-4312-9b71-4ea5d5f08431",
+      "name" : "Katujen ja yleisten alueiden kunnossapito"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Kadut ja tiet",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Verkkosivulta löytyvät ajantasaiset tiedot sekä yhteystiedot katujen ja teiden osalta.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Verkkosivulta löytyvät Naantalin  katujen ja teiden osalta ajantasaiset tiedot, sekä yhteystiedot. Alasivuilta löytyy lisäksi tietoa mm. kunnossapitoluokituksesta,  yleisillä alueilla tarvittavista luvista ja yleisten alueiden vuokraamisesta tilapäiskäyttöön.",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "7e56ffae-49ad-4697-9e64-e3f6b372bbee"
+}

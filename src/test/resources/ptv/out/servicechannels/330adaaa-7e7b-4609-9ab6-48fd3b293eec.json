@@ -1,0 +1,84 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://tarjouspalvelu.fi/default.aspx?p=91&g=3b09cca8-5f47-4056-8404-82a2bc0ea003",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://tarjouspalvelu.fi/default.aspx?p=91&g=6dec001b-ac0e-41a3-9810-aa796ddeb388",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "requiresSignature" : false,
+  "attachments" : [ ],
+  "languages" : [ ],
+  "supportPhones" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "b08f9788-f337-4840-a4fa-92ec4638b2db",
+      "name" : "Avoimet tarjouspyynnöt"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Tarjouspalvelu-portaali",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Tarjouspalvelu-portalen",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "EChannel",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Tarjouspalvelu-portaalissa Vaasan kaupunki ilmoittaa käynnissä olevista tarjouskilpailuista ja tarjoajat pystyvät jättämään tarjouksensa sähköisesti.\n\nVoimassa olevia tarjouspyyntöjä voi katsoa ilman tunnuksia Tarjouspyynnöt-osiossa. Kun rekisteröidyt palveluun, pystyt lataamaan tarjouspyynnön ja siihen liittyvät dokumentit omalle tietokoneellesi, esittämään tarjouspyyntöä koskevia kysymyksiä ja jättämään tarjouksen sähköisesti.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Tarjouspalvelu-portaalissa Vaasan kaupunki ilmoittaa käynnissä olevista tarjouskilpailuista ja tarjoajat pystyvät jättämään tarjouksensa sähköisesti.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "I Tarjouspalvelu-portalen meddelar Vasa stad pågående anbudsförfaranden och anbudsgivarna kan lämna sina anbud elektroniskt.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "I Tarjouspalvelu-portalen meddelar Vasa stad pågående anbudsförfaranden och anbudsgivarna kan lämna sina anbud elektroniskt. \n\nAktuella anbudsförfrågningar går att se utan användarkoder under Anbudsförfrågningar. Då du registrerar dig i tjänsten, kan du ladda ner anbudsförfrågningen och anslutande dokument till din egen dator, ställa frågor om anbudsförfrågningen och lämna anbud elektroniskt. \n",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "330adaaa-7e7b-4609-9ab6-48fd3b293eec",
+  "signatureQuantity" : 0,
+  "requiresAuthentication" : true
+}

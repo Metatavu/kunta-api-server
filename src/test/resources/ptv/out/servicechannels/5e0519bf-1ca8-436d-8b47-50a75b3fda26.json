@@ -1,0 +1,78 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/node/8871",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/en/node/8871",
+    "value" : null,
+    "language" : "en"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/sv/node/8871",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv", "en" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "3d5f0d69-be0a-4743-bd47-9aaeb37e005e",
+      "name" : "Ohjaamo Pohjanmaa"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "sv",
+    "value" : "Navigatorn Österbottens webbsidor",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Ohjaamo Pohjanmaan verkkosivut",
+    "type" : "Name"
+  }, {
+    "language" : "en",
+    "value" : "The web pages of Ohjaamo Pohjanmaa",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "en",
+    "value" : "More information and contact details for Ohjaamo Pohjanmaa can be found on the web pages of the City of Vaasa.\n",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Kontaktuppgifter och mer information om Navigatorn Österbottens finns på Vasa stads webbsidor. ",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Kontaktuppgifter och mer information om Navigatorn Österbottens finns på Vasa stads webbsidor.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Yhteystiedot ja lisätietoa Ohjaamo Pohjanmaasta Vaasan kaupungin verkkosivuilta.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Yhteystiedot ja lisätietoa Ohjaamo Pohjanmaasta Vaasan kaupungin verkkosivuilta. ",
+    "type" : "Description"
+  }, {
+    "language" : "en",
+    "value" : "More information and contact details for Ohjaamo Pohjanmaa can be found on the web pages of the City of Vaasa.",
+    "type" : "Summary"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "5e0519bf-1ca8-436d-8b47-50a75b3fda26"
+}

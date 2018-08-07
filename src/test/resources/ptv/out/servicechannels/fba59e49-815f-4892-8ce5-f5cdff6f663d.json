@@ -1,0 +1,142 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "attachments" : [ ],
+  "languages" : [ ],
+  "deliveryAddresses" : [ {
+    "subType" : "Street",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Vöyrinkatu",
+        "language" : "fi"
+      }, {
+        "value" : "Vörågatan",
+        "language" : "sv"
+      } ],
+      "streetNumber" : "46",
+      "postalCode" : "65100",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ ]
+    },
+    "deliveryAddressInText" : null,
+    "receiver" : [ {
+      "value" : "Vaasan kaupunki/Sosiaali- ja terveystoimi/Vammaispalvelut",
+      "language" : "fi"
+    }, {
+      "value" : "Vasa stad/Social- och hälsovårdsverket/Handikappservice",
+      "language" : "sv"
+    } ]
+  } ],
+  "supportPhones" : [ ],
+  "formIdentifier" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "33efb9ce-5c0c-43ad-aa37-e29af2fc50ff",
+      "name" : "Vammaisten kuljetuspalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "ed700774-906d-4447-8235-e52dfd8bf29a",
+      "name" : "Ikäihmisten kuljetuspalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "channelUrls" : [ {
+    "language" : "fi",
+    "value" : "https://www.vaasa.fi/sites/default/files/kuljetuspalveluhakemus.pdf",
+    "type" : "PDF"
+  }, {
+    "language" : "sv",
+    "value" : "https://www.vaasa.fi/sites/default/files/fardtjanstansokan.pdf",
+    "type" : "PDF"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Kuljetuspalveluhakemus",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Färdtjänstansökan",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "PrintableForm",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Kuljetuspalveluhakemuksen lomakkeella haetaan vanhusten tai vaikeavammaisten kuljetuspalvelua.\n\nHakemus tulostetaan, täytetään ja palautetaan Vammaispalveluihin.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Kuljetuspalveluhakemuksen lomakkeella haetaan vanhusten tai vaikeavammaisten kuljetuspalvelua.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Ansökan om färdtjänst för åldringar eller gravt handikappade.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Ansökan om färdtjänst för åldringar eller gravt handikappade.\n\n",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "fba59e49-815f-4892-8ce5-f5cdff6f663d"
+}

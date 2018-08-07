@@ -1,0 +1,111 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "attachments" : [ ],
+  "languages" : [ ],
+  "deliveryAddresses" : [ {
+    "subType" : "NoAddress",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : null,
+    "deliveryAddressInText" : [ ],
+    "receiver" : [ {
+      "value" : null,
+      "language" : "sv"
+    }, {
+      "value" : null,
+      "language" : "fi"
+    } ]
+  } ],
+  "supportPhones" : [ ],
+  "formIdentifier" : [ {
+    "value" : null,
+    "language" : "sv"
+  }, {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "3450e6b0-58c6-4e02-b615-7f9b8d56c3c7",
+      "name" : "Kouluterveydenhuollon palvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "d14f70fd-d474-4d58-bd18-ed32dab8d2ab",
+      "name" : "Lastenneuvolapalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "channelUrls" : [ {
+    "language" : "fi",
+    "value" : "https://www.vaasa.fi/sites/default/files/35-697s_eterveyspalvelut_sahkoisen_asioinnin_sopimus_.pdf",
+    "type" : "PDF"
+  }, {
+    "language" : "sv",
+    "value" : "https://www.vaasa.fi/sites/default/files/35-807s_ehalsoservice_avtal_om_skotsel_av_arenden_elektroniskt_.pdf",
+    "type" : "PDF"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "sv",
+    "value" : "Avtalet om skötseln av ärenden elektroniskt",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Terveydenhuollon sähköisen asioinnin sopimus",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "PrintableForm",
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "För att kunna använda eHälsoservicen bör man fylla i Avtalet om skötseln av ärenden elektroniskt och returnera till skolhälsovårdaren.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Avtalet om skötseln av ärenden elektroniskt",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Terveydenhuollon sähköisen asioinnin sopimus.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "eTerveyspalveluiden käyttöönottoa varten tulee täyttää sähköisen asioinnin sopimus, joka palautetaan terveydenhoitajalle. eTerveyspalvelussa on mahdollista mm. tarkastella ja varata aikoja määräaikaistarkastuksiin.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "664443b7-e991-43f5-b25a-379eac2b5f2a"
+}

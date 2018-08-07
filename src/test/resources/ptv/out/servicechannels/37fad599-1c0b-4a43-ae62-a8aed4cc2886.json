@@ -1,0 +1,150 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "1",
+    "url" : "http://www.pohjanmaanmuseo.fi/?page=VAASAN+TAIDEHALLI",
+    "value" : "Vaasan taidehallin verkkosivut",
+    "language" : "fi"
+  }, {
+    "orderNumber" : "1",
+    "url" : "http://www.pohjanmaanmuseo.fi/?page=VASA+KONSTHALL&setlang=l1",
+    "value" : "Vasa konsthall",
+    "language" : "sv"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Senaatinkatu",
+        "language" : "fi"
+      }, {
+        "value" : "Senatsgatan",
+        "language" : "sv"
+      } ],
+      "streetNumber" : "1 D",
+      "postalCode" : "65100",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : null,
+      "additionalInformation" : [ {
+        "value" : "Sisäänkäynti Raastuvankadulta",
+        "language" : "fi"
+      }, {
+        "value" : "Ingång från Rådhusgatan",
+        "language" : "sv"
+      } ],
+      "latitude" : "7007615.528",
+      "longitude" : "228176.537",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "sv", "fi" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "3c746357-4921-4214-8ce0-025e729dfb70",
+      "name" : "Museopalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Fax",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "401823839",
+    "language" : "sv"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "401823839",
+    "language" : "fi"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Vaasan taidehalli",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Vasa konsthall",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Vaasan taidehallin näyttelyissä esitellään kuvataidetta, visuaalisen kulttuurin eri muotoja sekä ajankohtaisia kulttuurisia ilmiöitä. Vaasan taidehallissa järjestetään kutsunäyttelyiden sekä Vaasan kaupungin museoiden tuottamien näyttelyiden lisäksi näyttelyitä myös hakemusten perusteella. Tarkemmat hakuohjeet löydät taidehallin kotisivuilta.\n\n Lue lisää Vaasan taidehallin toiminnasta ja katso aukioloajat Pohjanmaan museon verkkosivuilta. Taidehalli sijaitsee Vaasan kaupungintalon ensimmäisessä kerroksessa.\n",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan taidehallin näyttelyissä esitellään kuvataidetta, visuaalisen kulttuurin eri muotoja sekä ajankohtaisia kulttuurisia ilmiöitä.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "På Vasa konsthalls utställningar visas bildkonst, olika former av visuell kultur samt aktuella kulturella fenomen. I Vasa konsthall ordnas förutom utställningar med inbjudna deltagare och av Vasa stads museer producerade utställningar även utställningar på basis av ansökning. Närmare ansökningsanvisningar finns på konsthallens webbsidor.\n\nLäs mera om verksamheten i Vasa konsthall och se öppettiderna på Österbottens museums webbsidor. Konsthallen finns i första våningen i Vasa stadshus. ",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "På Vasa konsthalls utställningar visas bildkonst, olika former av visuell kultur samt aktuella kulturella fenomen.",
+    "type" : "Summary"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "37fad599-1c0b-4a43-ae62-a8aed4cc2886"
+}

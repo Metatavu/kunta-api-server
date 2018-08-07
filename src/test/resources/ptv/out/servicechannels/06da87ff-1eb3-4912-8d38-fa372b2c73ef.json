@@ -1,0 +1,44 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "http://www.naantali.fi/terveys/palvelut/hoitotarvikejakelu/fi_FI/hoitotarvikejakelu/_files/98102260327122002/default/Hoitotarvikejakeluohje%202016.pdf",
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "26633879-9cf6-48b2-9687-a9dc20fe176d",
+      "name" : "Hoitotarvikejakelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Hoitotarvikejakeluohje",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Naantalin kaupungin ohje hoitotarvikejakelusta.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Hoitotarvikejakeluohje sisältää tietoa hoitotarvikkeiden tarpeen arvioinnista ja jakelun piiriin kuuluvista eri hoitotarvikkeista ja -välineistä. \n\nOhje sisältää myös listan tarvikkeista, jotka eivät kuulu hoitotarvikejakelun piiriin.",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-11-27T14:14:54.013075",
+  "id" : "06da87ff-1eb3-4912-8d38-fa372b2c73ef"
+}

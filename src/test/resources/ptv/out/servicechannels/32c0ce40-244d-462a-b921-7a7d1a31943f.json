@@ -1,0 +1,126 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "http://www.ohjaamot.fi",
+    "value" : "www.ohjaamot.fi",
+    "language" : "fi"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Raastuvankatu",
+        "language" : "fi"
+      }, {
+        "value" : "Rådhusgatan",
+        "language" : "sv"
+      } ],
+      "streetNumber" : "30",
+      "postalCode" : "65100",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ {
+        "value" : "2. krs",
+        "language" : "sv"
+      }, {
+        "value" : "2. krs",
+        "language" : "fi"
+      } ],
+      "latitude" : "7007458.67",
+      "longitude" : "228297.506",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi", "sv", "en" ],
+  "areas" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "f1118351-952c-414a-b421-522746102314",
+      "name" : "Nuorisopalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "407376779",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "407376779",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Ohjaamo Pohjanmaa",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Navigatorn Österbotten",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "Via Navigatorn Österbotten får ungdomar under 30 år information, stöd och vägledning kring arbete, studier och andra frågor.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Via Navigatorn Österbotten får ungdomar under 30 år information, stöd och vägledning kring arbete, studier och andra frågor. Du hittar alla Navigatorn-servicepunkter i Finland via den riksomfattande webbtjänsten ohjaamot.fi.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Ohjaamo Pohjanmaasta alle 30-vuotiaat nuoret saavat tietoa, tukea ja ohjausta työllisyyteen, opiskeluun ja muihin mieltä askarruttaviin asioihin. Kaikki Suomen Ohjaamot löytyvät valtakunnallisesta ohjaamot.fi -verkkopalvelusta.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Ohjaamo Pohjanmaasta alle 30-vuotiaat nuoret saavat tietoa, tukea ja ohjausta työllisyyteen, opiskeluun ja muihin mieltä askarruttaviin asioihin.",
+    "type" : "Summary"
+  } ],
+  "areaType" : null,
+  "publishingStatus" : "Published",
+  "modified" : "2018-02-02T10:16:35.106988",
+  "id" : "32c0ce40-244d-462a-b921-7a7d1a31943f"
+}

@@ -1,0 +1,243 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Päihde- ja mielenterveyspalvelut",
+      "language" : "fi"
+    }, {
+      "value" : "Intoxicant abuse and mental health services",
+      "language" : "en"
+    }, {
+      "value" : "Tjänster för missbrukare och mentalvårdstjänster",
+      "language" : "sv"
+    } ],
+    "description" : [ {
+      "value" : "Tjänster som hör till denna serviceundergrupp har anvisats för personer som insjuknat i missbrukar- och övriga beroendsjukdomar och för de som lider av mentala problem. Gruppens tjänster kan vara såväl vårdande, stödjande som förebyggande.",
+      "language" : "sv"
+    }, {
+      "value" : "Tähän palvelualaluokkaan kuuluvat palvelut on kohdennettu päihde- ja muista riippuvuusairauksia sairastaville ja mielenterveyden ongelmista kärsiville. Luokan palvelut voivat olla niin hoitavia, tukevia kuin ennalta ehkäiseviä.",
+      "language" : "fi"
+    }, {
+      "value" : "The services in this subclass are intended for persons with intoxicant and other addictions or mental health problems. They may include treatment, support and prevention.",
+      "language" : "en"
+    } ],
+    "code" : "P5.7",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1045",
+    "parentId" : "76ca210c-5183-4d41-b796-50612d5930c7",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1038"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "2fd022da-64b6-47d2-b128-68ff3f9e99cf",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "f7ccc18b-dc20-4183-a052-37ffc896b7ca",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "615021cb-c315-4af1-ac25-f981b4051f39",
+      "name" : "Vaasan päihdekeskus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "sv",
+    "value" : "Tillnyktringsvård, avgiftning och avvänjning",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Selviämis-, katkaisu- ja vieroitushoito",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "avvänjning",
+      "language" : "sv"
+    }, {
+      "value" : "vieroitushoito (päihdehuolto)",
+      "language" : "fi"
+    }, {
+      "value" : "detoxification",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p62595",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p12968"
+  }, {
+    "name" : [ {
+      "value" : "katkaisuhoito",
+      "language" : "fi"
+    }, {
+      "value" : "avgiftning",
+      "language" : "sv"
+    }, {
+      "value" : "detoxification (social work with intoxicant abusers)",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p16233",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p12968"
+  }, {
+    "name" : [ {
+      "value" : "selviämishoito",
+      "language" : "fi"
+    }, {
+      "value" : "tillnyktringsvård",
+      "language" : "sv"
+    }, {
+      "value" : "sobering-up treatment",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p66788",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p12968"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : "Selviämis-, katkaisu- ja vieroitushoito päihteidenkäytön lopettamisen tueksi.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Katkaisu- ja vieroitushoidon tavoitteena on saada pitkään jatkunut päihteiden käyttö loppumaan. Katkaisuhoito toteutetaan asiakkaan yksilöllisten tarpeiden mukaisesti. Yhdessä asiakkaan kanssa suunnitellaan yksilöllinen jatkohoitosuunnitelma.\n\nPäihdekeskuksessa tarjottavan katkaisuhoidon tavoitteena on tukea asiakasta päihteiden käytön lopettamisessa.\n\nKatkaisu- ja vieroitushoitoon kuuluu:\n* motivoiminen päihteiden käytön lopettamiseen\n* lääkkeellinen apu vieroitusoireisiin sekä fyysisen kunnon palauttaminen\n* psykososiaalinen tuki ja yksilökeskustelut\n* jatkohoitosuunnitelman laatiminen\nPalvelu on suunnattu 18-vuotta täyttäneille vaasalaisille. Sopimuskunnista ja muista kunnista tarvitaan maksusitoumus.\n\nSelviämishoidon tavoitteena on varmistaa asiakkaan turvallinen selviäminen akuutista päihtymistilasta. Selviämishoitoa tarjotaan päihdekeskuksessa hoidon aloituksen ensivaiheessa asiakkaan ollessa päihtynyt. Hoito on lyhytaikaista ja sen tavoitteena on hoidon jatkuvuuden takaaminen.\n\nSelviämishoitoon kuuluu:\n* asiakkaan päihtymystilanteen arviointi\n* valvottu selviäminen päihtymystilasta\n* jatkohoidon suunnittelu ja siirtyminen katkaisuhoitoon\nSelviämis- ja katkaisuhoito ovat matalan kynnyksen palveluja, joihin asiakas voi hakeutua itse ja hoito voidaan käynnistää välittömästi, mikäli hoitoon pääsyn kriteerit täyttyvät ja yksikössä on tilaa.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Syftet med avgiftningen och avvänjningen är att få ett missbruk som pågått länge att sluta. Avgiftningen genomförs enligt klientens individuella behov. Vi gör tillsammans med klienten upp en individuell plan för den fortsatta vården.\n\nMålet med den akutvård som erbjuds i missbrukarcentret är att stöda klienten i att sluta använda rusmedel.\n\nI avgiftningen och avvänjningen ingår:\n\n- motivera till att sluta använda rusmedel\n\n- medicinsk hjälp vid avvänjningssymptom samt återställande av den fysiska konditionen\n\n- psykosocialt stöd och individuella diskussioner\n\n- uppgörande av en plan för fortsatt vård\n\nServicen är riktad till 18 år fyllda Vasabor. Från avtalskommunerna och andra kommuner behövs betalförbindelse.\n\n\nTillnyktringsvårdens syfte är att säkerställa att klienten tryggt klarar sig ur det akuta berusningstillståndet.\n\nTillnyktringsvård erbjuds i initialskedet av vården i missbrukarcentret då klienten är berusad. Vården är kortvarig och dess syfte är att garantera kontinuitet i vården.\n\nI tillnyktringsvården ingår:\n\nbedömning av klientens berusningstillstånd\növervakad tillnyktring från berusningstillståndet\nplanering av fortsatt vård och övergång till akutvård\nServicen riktar sig till över 18 åriga Vasabor. Från avtalskommunerna och andra kommuner behövs betalförbindelse.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : "Tillnyktrings-, akut- och missbrukarvård som stöd för slutande av rusmedelsanvändning.",
+    "type" : "Summary"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

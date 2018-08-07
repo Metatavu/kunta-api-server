@@ -1,0 +1,288 @@
+{
+  "sourceId" : null,
+  "keywords" : [ {
+    "value" : "specialsmåbarnspedagogik",
+    "language" : "sv"
+  }, {
+    "value" : "specialdagvård",
+    "language" : "sv"
+  }, {
+    "value" : "särskilt stöd",
+    "language" : "sv"
+  } ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Lasten päivähoito",
+      "language" : "fi"
+    }, {
+      "value" : "Barndagvård",
+      "language" : "sv"
+    }, {
+      "value" : "Day-care for children",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Till denna serviceundergrupp hör barnets rättigheter i anslutning till dagvård för små barn, förutsättningar för dagvård, ärendehanteringstjänster och ansökningsförfaranden, olika genomföringsformer och servicekanaler för dagvård, vårdavgifter och bidrag i anslutning till dem.",
+      "language" : "sv"
+    }, {
+      "value" : "Tähän alapalveluluokkaan kuuluvat pienten lasten päivähoitoon liittyvät lapsen oikeudet, päivähoidon saamisen edellytykset, asiointipalvelut ja hakumenettelyt, erilaiset päivähoidon toteuttamismuodot ja palvelukanavat, hoidon maksut ja niihin liittyvät taloudelliset tuet.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains a child’s rights related to day-care for young children, eligibility criteria, e-services and application procedures associated with day-care, different forms and service channels of day-care provision, fees charged for day-care and financial support related to the fees.",
+      "language" : "en"
+    } ],
+    "code" : "P3.4",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1017",
+    "parentId" : "77af99fa-93eb-4de6-ac83-1b161a961263",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1013"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "074eeb91-c68a-430d-ba1b-14e6dffed48b",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-11-20T12:59:18.169276",
+  "id" : "43befe44-8bcc-4b37-9634-824666e05681",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "76133a5f-ce96-4346-9cb3-435f19417265",
+      "name" : "Ristinummen päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "8f605f3c-39e9-4676-8224-79e0356aadc8",
+      "name" : "Malmöntalon päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "97333818-d20a-457d-835f-6954738c3d7c",
+      "name" : "Teeriniemen päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "b270a404-3dc0-441e-b444-a657a6474945",
+      "name" : "Erityisvarhaiskasvatus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "sv", "fi" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : null,
+  "serviceNames" : [ {
+    "language" : "sv",
+    "value" : "Specialdagvård",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Erityisvarhaiskasvatus",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "erityispäivähoito",
+      "language" : "fi"
+    }, {
+      "value" : "specialdagvård",
+      "language" : "sv"
+    }, {
+      "value" : "special day care",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p13527",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p3474"
+  }, {
+    "name" : [ ],
+    "code" : null,
+    "ontologyType" : null,
+    "uri" : "http://www.yso.fi/onto/yso/p28737",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ ],
+    "code" : null,
+    "ontologyType" : null,
+    "uri" : "http://www.yso.fi/onto/tero/TNR1985",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Lapset ja lapsiperheet",
+      "language" : "fi"
+    }, {
+      "value" : "Children and families with children",
+      "language" : "en"
+    }, {
+      "value" : "Barn och barnfamiljer",
+      "language" : "sv"
+    } ],
+    "code" : "KR1.2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2003",
+    "parentId" : "daff1fb9-9394-49b5-b033-d1d1c7005ab6",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001"
+  }, {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : "Specialdagvården i Vasa ordnas enligt lagen om småbarnspedagogik och lagen om grundläggande utbildning. \nSpecialdagvårdens mål är att i dialog med hemmen och dagvårdspersonalen stödja barnets positiva utveckling. För att ge barnet möjligheter till utveckling och inlärning ska daghemsverksamheten och miljön anpassas efter barnets behov. \n\nDet finns sju ambulerande specialbarnträdgårdslärare och fem specialbarnträdgårdslärare inom Vasa stads småbarnspedagogik. De följer upp och observerar barnets utveckling och inlärning, utvärderar behovet av stöd samt ger stöd och handledning i planeringen och förverkligandet av barnets vård, fostran och inlärning. De ambulerande specialbarnträdgårdslärarna arbetar inom ett område som består av flera enheter. Specialbarnträdgårdslärarna arbetar i 1 (-2) daghem.  \n\nI samarbete med familjen kan barnet hänvisas till andra sakkunniga, såsom psykolog, talterapeut, ergoterapeut, fysioterapeut, familjearbetere m. fl. Då barnet erbjuds andra stödtjänster t.ex. terapier och/eller medicinsk habilitering ska det bindas samman till en helhet. Det är viktigt att alla personer i nätverket kring barnet samarbetar med varandra tillsammans med föräldrarna. Gruppstorleken kan vid behov minskas om det i gruppen finns ett barn i behov av särskilt stöd eller så kan barnet få en assistent. Modellen trestegsstödet används inom förskoleundervisningen. Stödet är indelat i tre former av stöd: allmänt stöd, intensifierat stöd och särskilt stöd. \n\nI Vasa finns det även tre integrerade specialgrupper. Grupperna är finskspråkiga smågrupper där specialbarnträdgårdsläraren svarar för gruppens verksamhet. Vid Malmögårdens daghem finns en grupp för barn som är försenade i sin utveckling. Vid Ristinummen päiväkoti i Korsnäståget finns en grupp för barn med motoriska svårigheter.  Vid Teeriniemen päiväkoti i Orrnäs finns en grupp för barn som har språkliga problem.   \n\nI Vasa erbjuds även S2-undervisning (finska som andra språk) inom småbarnspedagogiken och förskoleundervisningen. Basen för språkinlärningen för ett barn med invandrarbakgrund är goda kunskaper i finska och i det egna modersmålet. Finskan lärs ut dagligen i olika språkanvändningssituationer. Barnets kunskaper i finska observeras, kartläggs och utvärderas samt dokumenteras regelbundet. Målet är att barnet lär sig förstå och tala finska, är en aktiv språkanvändare och når en funktionell flerspråklighet.\n",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasassa erityisvarhaiskasvatusta järjestetään päivähoitolain ja perusopetuslain mukaisesti.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Specialdagvården i Vasa ordnas enligt lagen om småbarnspedagogik och lagen om grundläggande utbildning.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Varhaiskasvatuksessa lapsen kehitystä ja oppimista tuetaan lapsen tarpeiden edellyttämällä tavalla. Lapsen kannalta on tärkeää, että tuki muodostaa johdonmukaisen jatkumon varhaiskasvatuksen aikana sekä lapsen aloittaessa esiopetuksen.\n\nVaasassa erityisvarhaiskasvatusta järjestetään varhaiskasvatuslain ja perusopetuslain mukaisesti. Erityisvarhaiskasvatus tukee lapsen myönteistä kehitystä yhdessä kodin ja varhaiskasvatuksen henkilöstön kanssa. Lapsen kehitys- ja oppimismahdollisuuksien edistämiseksi varhaiskasvastustoiminta ja ympäristö on sopeutettava lapsen tarpeiden mukaan.\n\nVaasan kaupungissa on seitsemän kiertävää erityislastentarhanopettajaa eli keltoa sekä erityislastentarhanopettajia eli eltoja. He seuraavat ja tarkkailevat lapsen kehitystä ja oppimista ja arvioivat lapsen tuen tarpeen ja antavat tukea sekä opastusta lapsen hoidon, kasvatuksen ja oppimisen suunnittelussa ja toteutuksessa. Kiertävät erityislastentarhanopettajat toimivat useammasta yksiköstä koostuvalla alueella,  erityislastentarhanopettajat työskentelevät 1(-2) päiväkodissa. \n\nYhteistyössä perheen kanssa lapsi voidaan ohjata myös muiden asiantuntijoiden, kuten psykologin, puheterapeutin, toimintaterapeutin, fysioterapeutin tai perhetyöntekijän vastaanotolle. Lapselle tarjottavat muut tukipalvelut, kuten terapia tai lääkinnällinen kuntoutus, on yhdistettävä kokonaisuudeksi. On tärkeää, että lasta ympäröivä verkosto tekee yhteistyötä keskenään yhdessä lapsen vanhempien kanssa. Ryhmäkokoa voidaan tarvittaessa pienentää, jos ryhmässä on tukea tarvitseva lapsi, tai lapselle voidaan järjestää avustaja.\n\nVarhaiskasvatuksessa ja esiopetuksessa käytetään kolmiportaisen tuen mallia. Tuki on jaettu kolmeen osaan: yleinen tuki, tehostettu tuki ja erityinentuki. Lapsen saaman tuen tulee olla joustavaa, suunniteltua ja tuen tarpeen mukaan muuttuvaa. Tukea annetaan niin kauan ja sen tasoisena sekä muotoisena kuin se on tarpeellista.\n\nVaasassa tarjotaan myös Suomi toisena kielenä (S2) -opetusta varhaiskasvatuksessa ja esiopetuksessa. Eri kieli- ja kulttuuritaustaisen lapsen oppimisen perustana ovat hyvä suomen kielen taito sekä hänen oman äidinkielen taitonsa. Suomen kieltä opetetaan päivittäin eri kielenkäyttötilanteissa. Lapsen kielitaidon kehittymistä havainnoidaan, kartoitetaan ja arvioidaan sekä dokumentoidaan säännöllisesti. Tavoitteena on, että lapsi oppii ymmärtämään ja puhumaan suomea, on aktiivinen kielenkäyttäjä ja saavuttaa toiminnallisen monikielisyyden taidot.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : "Läs mera om specialdagvården i Vasa på stadens webbsidor.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Lue lisää erityisvarhaiskasvatuksesta Vaasan kaupungin verkkosivuilta.",
+    "type" : "UserInstruction"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

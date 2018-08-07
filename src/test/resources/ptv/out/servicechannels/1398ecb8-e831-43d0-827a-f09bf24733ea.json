@@ -1,0 +1,86 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "http://www.pohjanmaanmuseo.fi/?page=Koti",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "http://www.pohjanmaanmuseo.fi/?page=Home&setlang=l3",
+    "value" : null,
+    "language" : "en"
+  }, {
+    "orderNumber" : "0",
+    "url" : "http://www.pohjanmaanmuseo.fi/?page=Hem",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "sv", "en", "fi" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "3c746357-4921-4214-8ce0-025e729dfb70",
+      "name" : "Museopalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "sv",
+    "value" : "Österbottens museums webbsidor",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Pohjanmaan museon verkkosivut",
+    "type" : "Name"
+  }, {
+    "language" : "en",
+    "value" : "Webpages of the Ostrobothnian Museum (Pohjanmaan museo)",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Pohjanmaan museon verkkosivuilta löydät lisätietoja Pohjanmaan museon, Vaasan Taidehallin ja Vanhan Vaasan museon toiminnasta. Sivustolta löydät tietoa museoiden näyttelyistä, hinnastosta, aukioloajoista, tapahtumista ja museoiden historiasta ja kokoelmista. ",
+    "type" : "Description"
+  }, {
+    "language" : "en",
+    "value" : "The web pages of the Ostrobothnian Museum gives you further information about the activities of The Ostrobothnian Museum, Art Hall of Vaasa and Vanhan",
+    "type" : "Summary"
+  }, {
+    "language" : "en",
+    "value" : "The web pages of the Ostrobothnian Museum gives you further information about the activities of The Ostrobothnian Museum, Vaasa Art Gallery and The Museum of Old Vaasa. The pages present the current exhibitions, prices, opening times, events and the history and collections of the museum. ",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "På Österbottens museums webbsidor finns ytterligare information om verksamheten i Österbottens museum, Vasa konsthall och Gamla Vasa museum. På sidorna finns information om museernas utställningar, priser, öppettider, evenemang och deras historia och samlingar. ",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "På Österbottens museums webbsidor finns ytterligare information om verksamheten i Österbottens museum, Vasa konsthall och Gamla Vasa museum.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Pohjanmaan museon verkkosivuilta löydät lisätietoja Pohjanmaan museon, Vaasan Taidehallin ja Vanhan Vaasan museon toiminnasta.",
+    "type" : "Summary"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "1398ecb8-e831-43d0-827a-f09bf24733ea"
+}

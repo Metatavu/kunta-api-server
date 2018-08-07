@@ -1,0 +1,78 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/node/17441",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/en/node/17441",
+    "value" : null,
+    "language" : "en"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/sv/node/17441",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv", "en" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "d21c6ae1-b1ef-452b-8e00-fd79822ca995",
+      "name" : "Liikenneyhteydet"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "sv",
+    "value" : "Trafikförbindelser",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Liikenneyhteydet",
+    "type" : "Name"
+  }, {
+    "language" : "en",
+    "value" : "Transport",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Verkkosivuilta löydät lisätietoa Vaasan  liikennöitsijöistä ja liikenneyhteyksistä. ",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "På webbsidorna hittar du mer information om trafikidkare och trafikförbindelser i Vasa. ",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "På webbsidorna hittar du mer information om trafikidkare och trafikförbindelser i Vasa.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Verkkosivuilta löydät lisätietoa Vaasan liikennöitsijöistä ja liikenneyhteyksistä.",
+    "type" : "Summary"
+  }, {
+    "language" : "en",
+    "value" : "Find out more about transportation companies and public transport timetables on the website.",
+    "type" : "Summary"
+  }, {
+    "language" : "en",
+    "value" : "Find out more about transportation companies and public transport timetables on the website of the City of Vaasa.",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "c978992d-f35e-4af1-b40b-6da596356f69"
+}

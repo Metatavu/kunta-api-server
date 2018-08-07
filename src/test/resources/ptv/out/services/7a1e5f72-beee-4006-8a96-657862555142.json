@@ -1,0 +1,213 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Hätänumerot ja onnettomuustilanteet",
+      "language" : "fi"
+    }, {
+      "value" : "Emergency numbers and accidents",
+      "language" : "en"
+    }, {
+      "value" : "Nödnummer och olyckor",
+      "language" : "sv"
+    } ],
+    "description" : [ {
+      "value" : "I denna serviceundergrupp behandlas det allmänna nödnumret 112, olika myndigheters särskilda nödnummer samt räddnings- och kristjänster i samband med olyckor både omedelbart och efter olyckan. Även tjänster som siktar på att förebygga olyckor och olycksutredning hör till denna grupp.",
+      "language" : "sv"
+    }, {
+      "value" : "Tässä palvelualaluokassa käsitellään 112-numeroa, eri viranomaisten erityisiä hätäpalvelunumeroja sekä onnettomuuksiin liittyviä pelastus- ja kriisipalveluja niin paikan päällä kuin onnettomuuden jälkihoidossa. Myös onnettomuuksien ehkäisemiseen tähtäävät palvelut ja onnettomuustutkinta kuuluvat tähän luokkaan.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains the 112 emergency number, specific emergency service numbers of different authorities as well as rescue and crisis services related to accidents both on scene and as part of post-incident management. The class also includes services aiming to prevent accidents and accident investigation.",
+      "language" : "en"
+    } ],
+    "code" : "P19.3",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1162",
+    "parentId" : "582fa27b-c4a7-4818-83e6-0874420a79d1",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1159"
+  }, {
+    "name" : [ {
+      "value" : "Förvaltningens generella rådgivningstjänster",
+      "language" : "sv"
+    }, {
+      "value" : "Hallinnon yleiset neuvontapalvelut",
+      "language" : "fi"
+    }, {
+      "value" : "General advisory services in the public sector",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "This service subclass features services such as Public Service Info where citizens and organisations can ask for general advice in matters related to public services and government organisations.",
+      "language" : "en"
+    }, {
+      "value" : "Tämä alapalveluluokka sisältää viranomaisten kansalaisille ja yhteisöille tuottamia yleisluonteisia neuvontapalveluja kuten esimerkiksi Kansalaisneuvonta.",
+      "language" : "fi"
+    }, {
+      "value" : "Denna underservicegrupp innehåller myndigheters generella rådgivningstjänster producerade åt medborgare och samfund, som exempel Medborgarrådgivningen",
+      "language" : "sv"
+    } ],
+    "code" : "P9.6",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1222",
+    "parentId" : "95f29e15-fb54-4ac2-8c9b-fac6ae3121fa",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1095"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "Nationwide",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2018-05-09T07:46:56.326716",
+  "id" : "7a1e5f72-beee-4006-8a96-657862555142",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "0e603d42-03f6-48ea-88f5-d76fdccd9fbf",
+      "name" : "Kansalaisneuvonnan yhteydenottolomake"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "45391e7b-06d9-4926-a3b7-287777e875f9",
+      "name" : "Kansalaisneuvonnan verkkosivut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "517a7df1-89d0-4d56-9f5c-b9c40e45c329",
+      "name" : "Kansalaisneuvonnan tekstiviestipalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "6c40d9f8-6dda-43b4-9856-161da8b1effe",
+      "name" : "Kansalaisneuvonnan chat"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "7201ec88-4e54-4a89-a143-b50f1b5a2a02",
+      "name" : "Kansalaisneuvonnan puhelinpalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "996c2f9b-c8aa-4ebf-b322-12526d0e6fb1",
+      "name" : "Kansalaisneuvonnan etäyhteys"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi", "sv", "en" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : null,
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Kansalaisneuvonta",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "allmän rådgivning",
+      "language" : "sv"
+    }, {
+      "value" : "yleisneuvonta",
+      "language" : "fi"
+    }, {
+      "value" : "general guidance",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p69412",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p35080"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Kansalaisneuvonta on julkisen hallinnon neuvontapalvelu, joka auttaa sinua löytämään oikean viranomaisen tai viranomaisen sähköisen palvelun asiasi hoitamiseen. Lisäksi Kansalaisneuvonnasta saat tukea sähköiseen asiointiin ja vastauksia yleisluontoisiin julkisia palveluita koskeviin kysymyksiin. \n\nKansalaisneuvonnan palveluneuvojat vastaavat palautteisiin ja antavat puhelimitse ja sähköpostitse sekä etäyhteyden ja chat-palvelun välityksellä neuvontaa. \n\nKukin viranomainen vastaa omien palveluidensa sisältöä, asiointiprosessiensa kulkua sekä lomakkeiden ja sähköisten asiointipalveluiden toimintahäiriöitä koskevasta neuvonnasta. Kansalaisneuvonta välittää näitä asioita koskevat palautteet organisaatioille selvitettäviksi. Kansalaisneuvonnan kautta et voi panna asioita vireille tai tiedustella yksityiskohtia asioinnin etenemisestä.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Kansalaisneuvonta ohjaa sinut oikeaan julkiseen palveluun ja neuvoo palveluiden käytössä.",
+    "type" : "Summary"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "b458d033-042d-4cbe-b030-34e81da28821",
+      "name" : "Väestörekisterikeskus"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "b458d033-042d-4cbe-b030-34e81da28821",
+      "name" : "Väestörekisterikeskus"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

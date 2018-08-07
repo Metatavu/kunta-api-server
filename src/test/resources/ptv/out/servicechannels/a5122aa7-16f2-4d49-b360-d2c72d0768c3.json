@@ -1,0 +1,117 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "09201a18-7e59-4245-9b62-d9589b33d275",
+      "name" : "Kulttuurikaruselli K-65"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "a2706e59-e4cb-4ad7-abb1-3d17a99c218b",
+      "name" : "Ikäihmisten viriketoiminta"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : "Kulttuurikaruselli",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "408684602",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Vuorikeskus ja Ruukinkartano",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "407173005",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Kulturkarusellen",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "408684602",
+    "language" : "sv"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Bergcenter och Bruksgården",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "407173005",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "sv",
+    "value" : "Ansvarig ledare för rekreationsverksamheten - Seniorcentret",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Vastaava viriketoiminnan ohjaaja - Ikäkeskus",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "Phone",
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "Seniorcentrets ansvariga ledare för rekreationsverksamheten ger råd i ärenden som gäller Kulturkarusellen K-65.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Seniorcentrets ansvariga ledare för rekreationsverksamheten ger råd i ärenden som gäller Kulturkarusellen K-65.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Ikäkeskuksen vastaava viriketoiminnan ohjaaja neuvoo Kulttuurikaruselli K-65 liittyvissä asioissa.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Ikäkeskuksen vastaava viriketoiminnan ohjaaja neuvoo Kulttuurikaruselli K-65 liittyvissä asioissa.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "a5122aa7-16f2-4d49-b360-d2c72d0768c3"
+}

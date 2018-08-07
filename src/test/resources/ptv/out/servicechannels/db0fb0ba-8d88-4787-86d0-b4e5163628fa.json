@@ -1,0 +1,157 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "attachments" : [ {
+    "type" : "Attachment",
+    "name" : "Pisteytyskaavake",
+    "description" : null,
+    "url" : "https://www.vaasa.fi/sites/default/files/2016_yksityistien_pisteytyslomake.pdf",
+    "language" : "fi"
+  }, {
+    "type" : "Attachment",
+    "name" : "Blankett för poängsättning",
+    "description" : null,
+    "url" : "https://www.vaasa.fi/sites/default/files/2016_ykstyistien_pisteytyslomake_sve.pdf",
+    "language" : "sv"
+  } ],
+  "languages" : [ ],
+  "deliveryAddresses" : [ {
+    "subType" : "Street",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Kyrkoesplanaden",
+        "language" : "sv"
+      }, {
+        "value" : "Kirkkopuistikko",
+        "language" : "fi"
+      } ],
+      "streetNumber" : "26 A",
+      "postalCode" : "65100",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ {
+        "value" : "Märk kuvertet ”Bidrag för enskild väg”",
+        "language" : "sv"
+      }, {
+        "value" : "Kuoreen merkintä \"Yksityistieavustus\". Lomake palautetaan liitteineen määräaikaan mennessä Vaasan kaupungin kuntatekniikkaan.",
+        "language" : "fi"
+      } ]
+    },
+    "deliveryAddressInText" : null,
+    "receiver" : [ {
+      "value" : "Vasa stad, Kommuntekniken",
+      "language" : "sv"
+    }, {
+      "value" : "Vaasan kaupunki, kuntatekniikka",
+      "language" : "fi"
+    } ]
+  } ],
+  "supportPhones" : [ {
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : null,
+    "isFinnishServiceNumber" : true,
+    "number" : null,
+    "language" : "sv"
+  } ],
+  "formIdentifier" : [ {
+    "value" : null,
+    "language" : "sv"
+  }, {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "238625ee-39a8-4464-b815-a638f107c964",
+      "name" : "Yksityistieavustukset"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "channelUrls" : [ {
+    "language" : "fi",
+    "value" : "https://www.vaasa.fi/sites/default/files/2017_yksityistiet_avustushakemus_perus.pdf",
+    "type" : "PDF"
+  }, {
+    "language" : "sv",
+    "value" : "https://www.vaasa.fi/sites/default/files/2017_yksityistiet_avustushakemus_perus_sve.pdf",
+    "type" : "PDF"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "sv",
+    "value" : "Ansökningsblankett för bidrag för enskild väg",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Yksityistieavustuksen hakulomake",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "PrintableForm",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Yksityistieavustusta haetaan täyttämällä yksityisteiden kunnossapitoanomus. Avustusta haetaan uusien kriteereiden mukaisesti joka kolmas vuosi (2016-2018).\n\nKaikki yksityistieavustusta hakevat täyttävät anomuskaavakkeen. Lisäksi täytetään yksityistien pisteytyskaavake, kun avustusta haetaan ensimmäistä kertaa tai kun tien asutus ja liikenne on lisääntynyt.\n\nLomake palautetaan liitteineen määräaikaan mennessä Vaasan kaupungin kuntatekniikkaan.\n\n\nAnomukseen tulee liittää:\n* Kopio tiekunnan kokouspöytäkirjasta ja maksuunpanoluettelosta\n* Kopio edellisen tilikauden tilinpidosta ja tilityksen tarkastamisesta ( YksTL 64§ ja 67§ )\nTiekunnat, jotka eivät ole aiemmin hakeneet avustusta tai joiden tien liikennettä aiheuttavat toiminnot ovat muuttuneet, liittävät avustushakemukseen myös:\n* Tien pisteytyskaavakkeen\n* Karttaliitteen, jossa värikynällä merkitty ko. yksityistie ja sen varrella olevat ympärivuotisesti asutut asunnot",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Anhållan görs på blanketten för anhållan om bidrag för underhåll av enskild väg. Bidraget ansöks nya kriterier vart tredje år (2016-2018). \n\nAlla som ansöker om bidrag för enskild väg ska fylla i ansökningsblanketten. En blankett för poängsättning av enskildar väga ska också fyllas i då bidrag söks första gången eller då vägens bosättning och trafik har ökat. \n\nBlanketten inklusive bilagor returneras inom utsatt tid till Vasa stads kommunteknik. \n\n\nTill anhållan ska fogas:\n* Kopia av väglagets stämmoprotokoll och debiteringslängd\n* Kopia av föregående räkenskapsperiods bokföring och granskning av redovisningen (Lagen om enskilda vägar 64 § och 67 §)\nDe väglag som inte tidigare har ansökt om bidrag eller på vilkas väg de funktioner som medför trafik har förändrats, fogar till sin anhållan om bidrag också:\n* Poängsättningsblanketten för enskilda vägar\n* En kartbilaga, där den aktuella enskilda vägen och bostäderna med året-runt-bosättning invid den är markerade med färgpenna",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Anhållan görs på blanketten för anhållan om bidrag för underhåll av enskild väg. Bidraget ansöks nya kriterier vart tredje år (2016-2018).",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Yksityistieavustusta haetaan kolmen vuoden välein (2016-2018) täyttämällä kunnossapitoanomus.",
+    "type" : "Summary"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "db0fb0ba-8d88-4787-86d0-b4e5163628fa"
+}

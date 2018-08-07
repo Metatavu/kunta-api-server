@@ -16,7 +16,7 @@ import javax.inject.Inject;
 
 import fi.metatavu.kuntaapi.server.rest.model.OrganizationService;
 import fi.metatavu.ptv.client.ApiResponse;
-import fi.metatavu.ptv.client.model.V7VmOpenApiOrganization;
+import fi.metatavu.ptv.client.model.V8VmOpenApiOrganization;
 import fi.metatavu.ptv.client.model.V5VmOpenApiOrganizationService;
 import fi.metatavu.kuntaapi.server.cache.ModificationHashCache;
 import fi.metatavu.kuntaapi.server.controllers.IdentifierController;
@@ -121,11 +121,11 @@ public class PtvOrganizationEntityDiscoverJob extends EntityDiscoverJob<IdTask<O
       return;
     }
     
-    ApiResponse<V7VmOpenApiOrganization> response = ptvApi.getOrganizationApi().apiV7OrganizationByIdGet(ptvOrganizationId.getId());
+    ApiResponse<V8VmOpenApiOrganization> response = ptvApi.getOrganizationApi().apiV8OrganizationByIdGet(ptvOrganizationId.getId());
     if (response.isOk()) {
       Identifier identifier = identifierController.acquireIdentifier(orderIndex, ptvOrganizationId);
       OrganizationId kuntaApiOrganizationId = kuntaApiIdFactory.createFromIdentifier(OrganizationId.class, identifier);
-      V7VmOpenApiOrganization ptvOrganization = response.getResponse();
+      V8VmOpenApiOrganization ptvOrganization = response.getResponse();
       OrganizationId kuntaApiParentOrganizationId = translateParentOrganizationId(kuntaApiOrganizationId,
           ptvOrganization);
      
@@ -155,8 +155,8 @@ public class PtvOrganizationEntityDiscoverJob extends EntityDiscoverJob<IdTask<O
     }
   }
 
-  private OrganizationId translateParentOrganizationId(OrganizationId kuntaApiOrganizationId, V7VmOpenApiOrganization ptvOrganization) {
-    OrganizationId ptvParentOrganizationId = ptvIdFactory.createOrganizationId(ptvOrganization.getParentOrganization());
+  private OrganizationId translateParentOrganizationId(OrganizationId kuntaApiOrganizationId, V8VmOpenApiOrganization ptvOrganization) {
+    OrganizationId ptvParentOrganizationId = ptvIdFactory.createOrganizationId(ptvOrganization.getParentOrganizationId());
     OrganizationId kuntaApiParentOrganizationId = null;
     
     if (ptvParentOrganizationId != null) {
@@ -184,7 +184,7 @@ public class PtvOrganizationEntityDiscoverJob extends EntityDiscoverJob<IdTask<O
 
     OrganizationId kuntaApiServiceOrganizationId = idController.translateOrganizationId(ptvIdFactory.createOrganizationId(ptvOrganizationService.getOrganizationId()), KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiServiceOrganizationId == null) {
-      logger.log(Level.INFO, String.format("Could not translate organization %s into Kunta API", ptvOrganizationService.getOrganizationId())); 
+      logger.log(Level.INFO, () -> String.format("Could not translate organization %s into Kunta API", ptvOrganizationService.getOrganizationId())); 
       return null;
     }
 

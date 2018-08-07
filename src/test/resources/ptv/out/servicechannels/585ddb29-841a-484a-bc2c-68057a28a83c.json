@@ -1,0 +1,61 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://www.instagram.com/nuva.vaasa/",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://www.instagram.com/nuva.vaasa/",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "5f9e9752-8f27-44f9-b462-34a9b44a08ed",
+      "name" : "Nuorten vaikuttaminen"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Nuorisovaltuuston Instagram",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Ungdomsfullmäktiges Instagramkonto",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "På ungdomsfullmäktiges Instagramkonto kan du följa med ungdomsfullmäktiges aktuella ärenden och tillställningar.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Nuorisovaltuuston Instagramissa voit seurata nuorisovaltuuston ajankohtaisia asioita ja tapahtumia.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Nuorisovaltuuston Instagramissa voit seurata nuorisovaltuuston ajankohtaisia asioita ja tapahtumia. ",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "På ungdomsfullmäktiges Instagramkonto kan du följa med ungdomsfullmäktiges aktuella ärenden och tillställningar. \n",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "585ddb29-841a-484a-bc2c-68057a28a83c"
+}

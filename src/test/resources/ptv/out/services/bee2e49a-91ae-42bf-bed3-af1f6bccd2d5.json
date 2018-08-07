@@ -1,0 +1,353 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Perusopetus",
+      "language" : "fi"
+    }, {
+      "value" : "Grundläggande utbildning",
+      "language" : "sv"
+    }, {
+      "value" : "Basic education",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Till denna serviceundergrupp hör både den egentliga grundläggande utbildningen med innehåll och mål samt direkta tjänster som erbjuds i anslutning till grundläggande utbildningen och för att stöda den, t.ex. skoltransporter, skolmat och assistanstjänster. Till denna grupp hör också ärenden i anslutning till avläggande av grundläggande utbildning utomlands i enlighet med den finska grundläggande utbildningen.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains basic education itself with its contents and objectives as well as the services offered directly in connection with and in support of basic education, for example school transport, school lunches and an assistant’s services. The class also includes issues related to completing abroad a basic education that is in line with the Finnish basic education.",
+      "language" : "en"
+    }, {
+      "value" : "Tähän palvelualaluokkaan kuuluvat sekä varsinainen perusopetus sisältöineen ja tavoitteineen sekä perusopetuksen yhteydessä ja sen tukemiseksi välittömästi tarjottavat palvelut, esimerkiksi koulukuljetukset, kouluruokailu ja avustajapalvelut. Tähän luokkaan kuuluvat myös Suomen perusopetuksen mukaisen peruskoulutuksen ulkomailla suorittamiseen liittyvät asiat.",
+      "language" : "fi"
+    } ],
+    "code" : "P6.2",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1062",
+    "parentId" : "fd1bb60e-4206-4f0a-994f-8ffcb4ffaaa4",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1060"
+  }, {
+    "name" : [ {
+      "value" : "Koulutus",
+      "language" : "fi"
+    }, {
+      "value" : "Utbildning",
+      "language" : "sv"
+    }, {
+      "value" : "Education and training",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Tässä palveluluokassa käsitellään yleisen oppivelvollisuuden piirissä olevia koulutuspalveluja, toisen asteen koulutuspalveluja, korkea-asteen koulutusta sekä aikuis-, jatko- ja täydennyskoulutusta. Opintojen taloudellinen tuki, ulkomailla opiskeleminen ja tieteelliseen työhön kuuluvat palvelut kuuluvat myös tähän luokkaan.",
+      "language" : "fi"
+    }, {
+      "value" : "I denna serviceundergrupp behandlas utbildningstjänster som omfattas av den allmänna läroplikten, andra gradens utbildningstjänster, utbildning av högre graden samt vuxen-, fortsättnings- och kompletteringsutbildning. Ekonomiskt stöd för studierna, studier utomlands och tjänster i samband med vetenskapligt arbete hör också till denna grupp.",
+      "language" : "sv"
+    }, {
+      "value" : "This service class contains education services within the scope of compulsory education, secondary level education and training services, higher education as well as adult, further and continuing education and training. Financial support for studies, studying abroad and services related to scientific work are also included in this class.",
+      "language" : "en"
+    } ],
+    "code" : "P6",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1060",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "bee2e49a-91ae-42bf-bed3-af1f6bccd2d5",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "8cb98fe5-9c5d-4be7-acee-491a158c95d9",
+      "name" : "Vaasa-opisto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "e20a2ff5-43b4-4659-9b9d-d6053262ec74",
+      "name" : "Aikuisten perusopinnot 17–25-vuotiaille"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : "Utbildningen är avsedd för 17-25 åriga ungedomar som bor i Vasa och som saknar grundskolans avgångsbetyg. För att komma in till skolningen bör man ha tillräckliga kunskaper i finska språket. I huvudsaken tar man in invandrare, men även andra ungdomar som uppfyller fordringar kan söka sig till utbildningen.",
+    "language" : "sv"
+  }, {
+    "value" : "Koulutus on suunnattu 17-25 -vuotiaille Vaasassa asuville nuorille, joilta puuttuu peruskoulun päättötodistus. Pääsyvaatimuksena on riittävä suomen kielen taito. Pääasiassa koulutukseen otetaan maahanmuuttajataustaisia nuoria, mutta myös muut nuoret, jotka täyttävät kriteerit, voivat hakea.",
+    "language" : "fi"
+  }, {
+    "value" : "The education is meant for 17-25-year-old young persons who live in Vaasa and who don't have the school leaving certificate from the comprehensive school. As the entrance requirements we have adequate knowledge in Finnish. We mainly take immigrant students but young persons who carry out the requirements can apply.",
+    "language" : "en"
+  } ],
+  "languages" : [ "fi", "sv", "en" ],
+  "serviceCollections" : [ {
+    "id" : "f9814514-e5cc-4aae-9534-a23e07e0e07b",
+    "name" : [ {
+      "value" : "Tuiren Palvelukokonaisuus",
+      "language" : "fi"
+    } ]
+  } ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "en",
+    "value" : "The comprehensive school education for adults",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "De vuxnas grundläggande studier",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Aikuisten peruskouluopinnot",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "grundläggande utbildning",
+      "language" : "sv"
+    }, {
+      "value" : "perusopetus",
+      "language" : "fi"
+    }, {
+      "value" : "basic education",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p1275",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p33827"
+  }, {
+    "name" : [ {
+      "value" : "maahanmuuttajat",
+      "language" : "fi"
+    }, {
+      "value" : "invandrare",
+      "language" : "sv"
+    }, {
+      "value" : "immigrants",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p30529",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p34096;http://www.yso.fi/onto/koko/p37018"
+  } ],
+  "lifeEvents" : [ {
+    "name" : [ {
+      "value" : "Till Finland som invandrare",
+      "language" : "sv"
+    }, {
+      "value" : "Maahanmuuttajana Suomeen",
+      "language" : "fi"
+    }, {
+      "value" : "Immigrating to Finland",
+      "language" : "en"
+    } ],
+    "code" : "KE5",
+    "ontologyType" : "LIFESITUATION",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v3015",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "De unga",
+      "language" : "sv"
+    }, {
+      "value" : "Young people",
+      "language" : "en"
+    }, {
+      "value" : "Nuoret",
+      "language" : "fi"
+    } ],
+    "code" : "KR1.3",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2004",
+    "parentId" : "daff1fb9-9394-49b5-b033-d1d1c7005ab6",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001"
+  }, {
+    "name" : [ {
+      "value" : "Utlandsfinländare",
+      "language" : "sv"
+    }, {
+      "value" : "Ulkosuomalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Expatriate Finns",
+      "language" : "en"
+    } ],
+    "code" : "KR1.5",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2006",
+    "parentId" : "daff1fb9-9394-49b5-b033-d1d1c7005ab6",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001"
+  }, {
+    "name" : [ {
+      "value" : "Medborgare",
+      "language" : "sv"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "en",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : "Målet med de vuxnas grundläggande studier är att fullgöra grundskolestudier.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Katso tarkemmat tiedot Vaasa-opiston kotisivulta.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : "Aikuisten perusopinnoissa tavoitteena on suorittaa peruskouluopinnot päätökseen.",
+    "type" : "Summary"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "en",
+    "value" : "Vaasa-opisto’s web pages offer more information about the education.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "en",
+    "value" : "The goal of the comprehensive school education for adults is to carry out comprehensive school. The education is meant for 17-25-year-old young persons who live in Vaasa and who don't have the school leaving certificate from the comprehensive school. \n\nThe education takes 1-2 years. The curriculum consists of 44 courses. A main part of the education is in Finnish and English and mathematics.\n\nIt is possible to carry out the courses for one year, if the sudent’s starting level and facility are adequate. For these persons who need a longer time there are more opitional courses and practical training.\n\nDuring the education, the students get a curriculum for further studies. Special attention is directed to counceling of the students and to effective measures of support. So that the students have better chances to get the school leaving examination at a suitable rapid pace.",
+    "type" : "Description"
+  }, {
+    "language" : "en",
+    "value" : "The goal of the comprehensive school education for adults is to carry out comprehensive school.",
+    "type" : "Summary"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : "Aikuisten perusopinnoissa tavoitteena on suorittaa peruskouluopinnot päätökseen. Koulutus on suunnattu 17-25 -vuotiaille Vaasassa asuville nuorille, joilta puuttuu peruskoulun päättötodistus.\n\nKoulutus suoritetaan 1-2 vuodessa. Opetussuunnitelmaan kuuluu 44 kurssia. Eniten opetusta on suomen ja englannin kielissä sekä matematiikassa.\n\nKurssit on mahdollista suorittaa vuodessa, jos lähtötaso ja omat valmiudet ovat riittävät. Pidemmän koulutuspolun tarvitsevilla opintoihin sisältyy enemmän valinnaisia opintoja ja työharjoittelu.\n\nOpintojen aikana opiskelijalle tehdään jatko-opintosuunnitelma. Koulutuksessa kiinnitetään erityistä huomiota oppilaan ohjaukseen ja tehokkaisiin tukitoimiin siten, että opiskelijalla on mahdollisuus saada peruskoulututkinto valmiiksi tiiviissä tahdissa.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : "Målet med de vuxnas grundläggande studier är att fullgöra grundskolestudier. Utbildningen är avsedd för 17-25 åriga ungedomar som bor i Vasa och som saknar grundskolans avgångsbetyg. \n\nDet tar 1-2 år att utföra utbildningen. Läroplanen består av 44 kurser. Mest undervisning finns det i finska och engelska språken och i matematik.\n\nDet är möjligt att utföra kurserna i ett år om studerandens utgångsnivå och egna beredskaper räcker till. De som behöver en längre utbildningsstig har mera valbara studier och arbetspraktik.\n\nUnder studierna får studeranden planer för fortsatta studier. I utbildningen fästs uppmärksamhet i synnerhet i vägledningen av studeranden och i effektiva stödåtgärder så att studeranden har möjlighet att avlägga grundskoleexamen i lagom snabb takt.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Se närmare uppgifter på Vaasa-opistos hemsidor.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

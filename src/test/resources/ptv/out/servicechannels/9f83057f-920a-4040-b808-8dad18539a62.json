@@ -1,0 +1,44 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "http://www.naantali.fi/perhe_ja_sosiaali/hoito_ja_vanhuspalvelut/fi_FI/kuljetuspalvelut_shl/",
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "6ece8450-c9c3-4f6a-a9d7-c261d6565c74",
+      "name" : "Sosiaalihuollon kuljetuspalvelut ikäihmisille"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Sosiaalihuoltolain mukaiset kuljetuspalvelut ikäihmisille",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Naantalin kaupungin verkkosivu sosiaalihuoltolain mukaisista kuljetuspalveluista ikäihmisille.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Verkkosivu sosiaalihuoltolain mukaisista Naantalin kuljetuspalveluista ikäihmisille.",
+    "type" : "Summary"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "9f83057f-920a-4040-b808-8dad18539a62"
+}

@@ -1,0 +1,138 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Vähänkyröntie",
+        "language" : "fi"
+      }, {
+        "value" : "Lillkyrovägen",
+        "language" : "sv"
+      } ],
+      "streetNumber" : "18",
+      "postalCode" : "66500",
+      "postOffice" : [ {
+        "value" : "LILLKYRO",
+        "language" : "sv"
+      }, {
+        "value" : "VÄHÄKYRÖ",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ {
+        "value" : "Sisäänkäynti terveysaseman pääovesta tai lääkärinvastaanoton puolelta.",
+        "language" : "fi"
+      }, {
+        "value" : null,
+        "language" : "sv"
+      } ],
+      "latitude" : "7001046.876",
+      "longitude" : "252923.988",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "a355e75f-be55-4c48-a5fd-0b1d9a3f2b1c",
+      "name" : "Hoitotarvikejakelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : "Puhelinaika ma-pe klo 10.30-11",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "444750532",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "444750532",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Vähänkyrön hoitotarvikejakelu",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Vårdmaterialutdelning i Lillkyro",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Vähänkyrön hoitotarvikejakelusta voi hakea erilaisia hoidon kannalta tarpeellisia hoitotarvikkeita.\n\nHoitotarvikejakelu ilman ajanvarausta torstaisin klo 8-9. Muina aikoina hoitotarvikejakelu ajanvarauksella.\n",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Vähänkyrön hoitotarvikejakelusta voi hakea erilaisia hoidon kannalta tarpeellisia hoitotarvikkeita.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Vårdmaterialutdelning i Lillkyro.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Utdelning av vårdmaterial utan tidsbokning på Lillkyro hälsostation på torsdagar.   Övriga tider med tidsbokning.\n\n",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "9b1cce81-b41d-48cf-bf9d-d9ef31eb67a8"
+}

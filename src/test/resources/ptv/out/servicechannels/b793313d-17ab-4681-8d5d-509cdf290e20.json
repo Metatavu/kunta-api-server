@@ -1,0 +1,78 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/node/12981/",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/en/node/12981/",
+    "value" : null,
+    "language" : "en"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/sv/node/12981/",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "sv", "en", "fi" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "fd82a9bd-9b1a-4062-aecc-527283ae8832",
+      "name" : "Asunnon vuokraus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "en",
+    "value" : "Renting an apartment",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Hyrning av bostad",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Asunnon vuokraus",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "en",
+    "value" : "The web pages of the City of Vaasa offers information about rental living in Vaasa as well as a list of mediators of rental apartments.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "På Vasa stads webbsidor hittar du uppgifter om hyresbostader i Vasa och en förteckning över aktörer som erbjuder hyresbostäder i Vasa.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "På Vasa stads webbsidor hittar du uppgifter om hyresbostader i Vasa och en förteckning över aktörer som erbjuder hyresbostäder i Vasa.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan kaupungin sivuilta löydät tietoa vuokra-asumisesta Vaasassa sekä listan vuokra-asunnon tarjoajista.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan kaupungin sivuilta löydät tietoa vuokra-asumisesta Vaasassa sekä listan vuokra-asunnon tarjoajista.",
+    "type" : "Description"
+  }, {
+    "language" : "en",
+    "value" : "The web pages of the City of Vaasa offers information about rental living in Vaasa as well as a list of mediators of rental apartments.",
+    "type" : "Summary"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "b793313d-17ab-4681-8d5d-509cdf290e20"
+}

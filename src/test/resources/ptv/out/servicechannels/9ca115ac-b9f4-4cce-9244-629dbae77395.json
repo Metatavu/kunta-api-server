@@ -1,0 +1,69 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/node/2011/",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/sv/node/2011/",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "sv", "fi" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "3c746357-4921-4214-8ce0-025e729dfb70",
+      "name" : "Museopalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Näyttelyt",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Utställningar",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Näyttelyt -sivulta löydät tietoa Vaasan kaupungin museoista, ajankohtaisia uutisia museoiden toiminnasta sekä linkit museoiden omille verkkosivuille.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Under Utställningar hittar du uppgifter om Vasa stads museer, aktuella nyheter om museernas verksamhet samt länkar till museernas egna webbsidor.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Under Utställningar hittar du uppgifter om Vasa stads museer, aktuella nyheter om museernas verksamhet samt länkar till museernas egna webbsidor.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Näyttelyt -sivulta löydät tietoa Vaasan kaupungin museoista, ajankohtaisia uutisia museoiden toiminnasta sekä linkit museoiden omille verkkosivuille.",
+    "type" : "Summary"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "9ca115ac-b9f4-4cce-9244-629dbae77395"
+}

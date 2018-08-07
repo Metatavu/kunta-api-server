@@ -1,0 +1,249 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "http://www.wasacitybus.fi",
+    "value" : "Wasa Citybus",
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "http://www.wasacitybus.fi",
+    "value" : "Wasa Citybus",
+    "language" : "en"
+  }, {
+    "orderNumber" : "0",
+    "url" : "http://www.wasacitybus/sv/",
+    "value" : "Wasa Citybus",
+    "language" : "sv"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Hovioikeudenpuistikko",
+        "language" : "en"
+      }, {
+        "value" : "Hovioikeudenpuistikko",
+        "language" : "fi"
+      }, {
+        "value" : "Hovrättsesplanaden",
+        "language" : "sv"
+      } ],
+      "streetNumber" : "11",
+      "postalCode" : "65100",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ ],
+      "latitude" : "7007686.658",
+      "longitude" : "228199.53",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi", "sv", "en" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "2fce2731-41b3-430c-9823-cbd58ac1d3f5",
+      "name" : "Bussit - Paikallisliikenne"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "d21c6ae1-b1ef-452b-8e00-fd79822ca995",
+      "name" : "Liikenneyhteydet"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Fax",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63567455",
+    "language" : "fi"
+  }, {
+    "type" : "Fax",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63567455",
+    "language" : "en"
+  }, {
+    "type" : "Fax",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63567455",
+    "language" : "sv"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63120326",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63120326",
+    "language" : "en"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63120326",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ {
+    "value" : "info@wasacitybus.fi",
+    "language" : "fi"
+  }, {
+    "value" : "info@wasacitybus.fi",
+    "language" : "en"
+  }, {
+    "value" : "info@wasacitybus.fi",
+    "language" : "sv"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Wasa Citybus",
+    "type" : "Name"
+  }, {
+    "language" : "en",
+    "value" : "Wasa Citybus",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Wasa Citybus",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ {
+    "serviceHourType" : "DaysOfTheWeek",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ {
+      "value" : null,
+      "language" : "fi"
+    } ],
+    "openingHour" : [ {
+      "dayFrom" : "Monday",
+      "dayTo" : "",
+      "from" : "11:00:00",
+      "to" : "16:30:00"
+    }, {
+      "dayFrom" : "Tuesday",
+      "dayTo" : "",
+      "from" : "11:00:00",
+      "to" : "16:30:00"
+    }, {
+      "dayFrom" : "Wednesday",
+      "dayTo" : "",
+      "from" : "11:00:00",
+      "to" : "16:30:00"
+    }, {
+      "dayFrom" : "Thursday",
+      "dayTo" : "",
+      "from" : "11:00:00",
+      "to" : "16:30:00"
+    } ]
+  } ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Oy Wasa Citybus Ab tarjoaa linja-autoliikenteen aikataulunmukaisia reittipalveluja Vaasassa.",
+    "type" : "Summary"
+  }, {
+    "language" : "en",
+    "value" : "Oy Wasa Citybus Ab offers time scheduled routes through bus services in Vaasa.",
+    "type" : "Summary"
+  }, {
+    "language" : "en",
+    "value" : "Oy Wasa Citybus Ab offers time scheduled routes through bus services in Vaasa. The customer service office is located in the city centre of Vaasa.\n",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Oy Wasa Citybus Ab erbjuder tidtabellsenlig ruttservice för busstrafiken i Vasa. Kundservicestället finns i Vasa centrum.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Oy Wasa Citybus Ab erbjuder tidtabellsenlig ruttservice för busstrafiken i Vasa. Kundservicestället finns i Vasa centrum.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Oy Wasa Citybus Ab tarjoaa linja-autoliikenteen aikataulunmukaisia reittipalveluja Vaasassa. Asiakaspalvelupiste sijaitsee Vaasan keskustassa. ",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2018-05-25T09:35:26.823324",
+  "id" : "57fcbb91-277e-4202-a599-719ec0908c7c"
+}

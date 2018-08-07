@@ -1,0 +1,275 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Päihde- ja mielenterveyspalvelut",
+      "language" : "fi"
+    }, {
+      "value" : "Intoxicant abuse and mental health services",
+      "language" : "en"
+    }, {
+      "value" : "Tjänster för missbrukare och mentalvårdstjänster",
+      "language" : "sv"
+    } ],
+    "description" : [ {
+      "value" : "Tjänster som hör till denna serviceundergrupp har anvisats för personer som insjuknat i missbrukar- och övriga beroendsjukdomar och för de som lider av mentala problem. Gruppens tjänster kan vara såväl vårdande, stödjande som förebyggande.",
+      "language" : "sv"
+    }, {
+      "value" : "Tähän palvelualaluokkaan kuuluvat palvelut on kohdennettu päihde- ja muista riippuvuusairauksia sairastaville ja mielenterveyden ongelmista kärsiville. Luokan palvelut voivat olla niin hoitavia, tukevia kuin ennalta ehkäiseviä.",
+      "language" : "fi"
+    }, {
+      "value" : "The services in this subclass are intended for persons with intoxicant and other addictions or mental health problems. They may include treatment, support and prevention.",
+      "language" : "en"
+    } ],
+    "code" : "P5.7",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1045",
+    "parentId" : "76ca210c-5183-4d41-b796-50612d5930c7",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1038"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "1557f616-f8b0-4bd5-b538-6e2b3c5a233a",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "c0ce316c-23d2-416c-9c3c-816380b868d5",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "6bcef9ad-7c08-4e8b-8e55-d233c60380ce",
+      "name" : "Vähänkyrön mielenterveyspalveluiden vastaanotto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "9188e9c0-5c39-4ec4-a715-f6e4da8e0277",
+      "name" : "Mielenterveys- ja riippuvuuskeskus Horisontti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "925bfe49-6276-41e6-a5d2-809c970ff046",
+      "name" : "Riippuvuus- ja mielenterveyspalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : "Vasas Center för mental- och beroendevård Horisonten erbjuder öppen mentalvårdsservice för 25 år fyllda och äldre Vasabor. 25 år fyllda personer från Vasa och avtalskommunerna erbjuds hjälp vid missbruks- och beroendeproblem.",
+    "language" : "sv"
+  }, {
+    "value" : "Vaasan Mielenterveys- ja riippuvuuskeskus Horisontti tarjoaa mielenterveyden avopalveluita 25 vuotta täyttäneille tai sitä vanhemmille vaasalaisille. Päihde- ja riippuvuusongelmiin tarjotaan apua yli 25-vuotiaille vaasalaisille ja sopimuskuntalaisille.",
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "sv",
+    "value" : "Mentalvårdsservice",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Riippuvuus- ja mielenterveyspalvelut",
+    "type" : "AlternativeName"
+  }, {
+    "language" : "sv",
+    "value" : "Beroende- och mentalvårdsservice",
+    "type" : "AlternativeName"
+  }, {
+    "language" : "fi",
+    "value" : "Mielenterveyspalvelut",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "mentalvårdstjänster",
+      "language" : "sv"
+    }, {
+      "value" : "mielenterveyspalvelut",
+      "language" : "fi"
+    }, {
+      "value" : "mental health services",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p14390",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p12249"
+  }, {
+    "name" : [ {
+      "value" : "aineriippuvuus",
+      "language" : "fi"
+    } ],
+    "code" : null,
+    "ontologyType" : "TERO",
+    "uri" : "http://www.yso.fi/onto/koko/p59016",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p36750"
+  }, {
+    "name" : [ {
+      "value" : "peliriippuvuus",
+      "language" : "fi"
+    } ],
+    "code" : null,
+    "ontologyType" : "TERO",
+    "uri" : "http://www.yso.fi/onto/koko/p62275",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p56502"
+  }, {
+    "name" : [ {
+      "value" : "riippuvuusneuvonta",
+      "language" : "fi"
+    }, {
+      "value" : "missbruksrådgivning",
+      "language" : "sv"
+    }, {
+      "value" : "addiction counselling",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "TERO",
+    "uri" : "http://www.yso.fi/onto/koko/p62410",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p35080"
+  }, {
+    "name" : [ {
+      "value" : "psyykkinen riippuvuus",
+      "language" : "fi"
+    } ],
+    "code" : null,
+    "ontologyType" : "TERO",
+    "uri" : "http://www.yso.fi/onto/koko/p64620",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p36750"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : "I servicen ingår hjälp med missbrukar- och beroendeproblem, problem med mentala hälsan samt med utmanande livssituationer.\n\nVasas Center för mental- och beroendevård Horisonten erbjuder hjälp vid:\n* Missbruks- och beroendeproblem bland 25 år fyllda personer och deras närstående i Vasa, Laihela och avtalskommunerna.\n* Mentalvårdsproblem bland 25 år fyllda Vasabor samt deras anhöriga.\n* Besvärliga livssituationer.\nServicen är frivillig, konfidentiell och avgiftsfri.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Palveluihin kuuluu apu päihde- ja riippuvuusongelmiin, mielenterveyden ongelmiin sekä haastaviin elämäntilanteisiin.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Palveluihin kuuluu apu päihde- ja riippuvuusongelmiin, mielenterveyden ongelmiin sekä haastaviin elämäntilanteisiin.\n\nVaasan Mielenterveys- ja riippuvuuskeskus Horisontti tarjoaa apua\n* Päihde- ja riippuvuusongelmiin yli 25-vuotiaille henkilöille ja heidän läheisilleen vaasalaisille, laihialaisille ja sopimuskuntalaisille.\n* Mielenterveyden ongelmiin 25 vuotta täyttäneille vaasalaisille ja heidän omaisille.\n* Haastaviin elämäntilanteisiin\nPalvelut ovat vapaaehtoisia, luottamuksellisia ja maksuttomia.\n\n",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : "I servicen ingår hjälp med missbrukar- och beroendeproblem, problem med mentala hälsan samt med utmanande livssituationer.",
+    "type" : "Summary"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

@@ -1,0 +1,345 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Sosiaalipalvelujen oheis- ja tukipalvelut",
+      "language" : "fi"
+    }, {
+      "value" : "Social service auxiliary and support services",
+      "language" : "en"
+    }, {
+      "value" : "Socialtjänsternas sido- och stödtjänster",
+      "language" : "sv"
+    } ],
+    "description" : [ {
+      "value" : "Tähän alapalveluluokkaan kuuluvat sosiaalipalveluja täydentävät palvelut, joiden avulla tuetaan palveluyksikön perustehtävää, asiakkaan arkea ja sosiaalipalvelujen saavutettavuutta. Tällaisia ovat esim. ateriapalvelut, vaatehuoltopalvelut, siivouspalvelut, sosiaalista kanssakäymistä edistävät palvelut ja palveluyksikön asiakkaille tarkoitetut sähköiset palvelukanavat.",
+      "language" : "fi"
+    }, {
+      "value" : "Till denna serviceundergrupp hör tjänster som kompletterar socialtjänster, med hjälp av vilka man stöder serviceenhetens grunduppgift, kundens vardag och socialtjänsternas tillgänglighet. Sådana är bl.a. måltidstjänster, klädvårdstjänster, städningstjänster, tjänster som främjar social växelverkan och elektroniska servicekanaler för serviceenhetens klienter.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains services complementing social services that help to support the basic tasks of a service unit, a client's everyday life and the accessibility of social services. They include meal, clothing care and cleaning services, services that promote social interaction, and e-service channels intended for service unit clients.",
+      "language" : "en"
+    } ],
+    "code" : "P4.14",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1037",
+    "parentId" : "079b55da-af80-41ab-9346-c8fdd284afcf",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1023"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "06fcd368-0eb3-4df2-8704-10ecb7d2d68a",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "38f5078c-08dc-4884-9a1a-98482bb156d5",
+      "name" : "Turvapuhelin"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3b6fcbb2-52b2-4243-b074-bf0e1b9358d4",
+      "name" : "Tukipalveluneuvoja"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "fddedfa5-b2a2-470b-800c-5b6340e22216",
+      "name" : "Kotipalveluohjaajat"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "Chargeable",
+  "serviceNames" : [ {
+    "language" : "sv",
+    "value" : "Hemvårdens stödtjänster",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Kotihoidon tukipalvelut",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "måltidsservice för hushåll",
+      "language" : "sv"
+    }, {
+      "value" : "kotiateriapalvelut",
+      "language" : "fi"
+    }, {
+      "value" : "home meal services",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p66729",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p48304"
+  }, {
+    "name" : [ {
+      "value" : "ateriapalvelut",
+      "language" : "fi"
+    }, {
+      "value" : "måltidsservice",
+      "language" : "sv"
+    }, {
+      "value" : "meals on wheels services",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p48304",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p54976;http://www.yso.fi/onto/koko/p48297"
+  }, {
+    "name" : [ {
+      "value" : "yhteiset tukipalvelut (sosiaalipalvelut)",
+      "language" : "fi"
+    }, {
+      "value" : "gemensamma stödtjänster (socialservice)",
+      "language" : "sv"
+    }, {
+      "value" : "common support services (social services)",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p66172",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p18203"
+  }, {
+    "name" : [ {
+      "value" : "hemservice",
+      "language" : "sv"
+    }, {
+      "value" : "kotipalvelu",
+      "language" : "fi"
+    }, {
+      "value" : "home help service",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p54976",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p18203"
+  }, {
+    "name" : [ {
+      "value" : "kotihoito (sosiaalipalvelut)",
+      "language" : "fi"
+    }, {
+      "value" : "hemvård",
+      "language" : "sv"
+    }, {
+      "value" : "home care",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p77834",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p18203"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Disabled people",
+      "language" : "en"
+    }, {
+      "value" : "Handikappade",
+      "language" : "sv"
+    }, {
+      "value" : "Vammaiset",
+      "language" : "fi"
+    } ],
+    "code" : "KR1.6",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2007",
+    "parentId" : "daff1fb9-9394-49b5-b033-d1d1c7005ab6",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001"
+  }, {
+    "name" : [ {
+      "value" : "De äldre",
+      "language" : "sv"
+    }, {
+      "value" : "Seniors",
+      "language" : "en"
+    }, {
+      "value" : "Ikäihmiset",
+      "language" : "fi"
+    } ],
+    "code" : "KR1.1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2002",
+    "parentId" : "daff1fb9-9394-49b5-b033-d1d1c7005ab6",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001"
+  }, {
+    "name" : [ {
+      "value" : "Pitkäaikaissairaat",
+      "language" : "fi"
+    }, {
+      "value" : "Långtidssjuka",
+      "language" : "sv"
+    }, {
+      "value" : "People with long-term illnesses",
+      "language" : "en"
+    } ],
+    "code" : "KR1.4",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2005",
+    "parentId" : "daff1fb9-9394-49b5-b033-d1d1c7005ab6",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001"
+  }, {
+    "name" : [ {
+      "value" : "Medborgare",
+      "language" : "sv"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Kotihoidon tukipalveluihin kuuluu mm. ateriapalvelu, apteekkipalvelu, kauppapalvelu ja turvapuhelin.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Hemvårdens stödtjänster är t.ex. apoteksservice, butikservice och trygghetstelefon.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Kotihoidon tukipalvelut ovat asukkaan päivittäistä selviytymistä tukevia palveluja. Palveluista peritään erillinen tukipalvelumaksu. Tukipalveluiden käyttöönotosta saa lisätietoja oman alueen kotipalveluohjaajalta.\n\nApteekkipalvelu\n\nApteekkipalvelu toteutetaan annosjakeluna (ANJA). Sopimusapteekki toimittaa kotihoitoon lääkkeet kerta-annospusseissa kahden viikon välein ja kotihoito vastaa lääkkeiden toimituksesta potilaille. Lääkehoitoon sisältyy hoitohenkilökunnan ohjaus, neuvonta ja vastuu potilaiden voinnin seurannasta. Lääkehoidon vaikuttavuutta arvioidaan yhteistyössä hoitavan lääkärin kanssa. Apteekkipalvelu parantaa lääkehoidon turvallisuutta, edistää lääkehoidon onnistumista ja säästää lääkekuluissa. Palveluista veloitetaan maksu.\n\nAteriapalvelu\n\nAteriapalvelussa ruoka voidaan toimittaa kotiin tai asiakas voi käydä ruokailemassa eri toimipisteissä. Kaupungin ateriapalvelu myönnetään tarveharkinnan mukaan. Aterian kotiinkuljetuksesta saa tietoa oman alueen kotipalveluohjaajalta.\n\nMyös yksityiset ateriapalvelun tuottajat toimittavat lounaita kotiin. \n\nKauppapalvelu\n\nHoitaja tekee yhdessä asiakkaan kanssa tilauksen kauppaan. Kauppakassi toimitetaan asiakkaalle kotiin. Palvelu toimii arkisin.\n\nKylvetyspalvelu\n\nKotona asuvilla asiakkailla on mahdollisuus kylvetyspalveluun, johon kuluu kuljetus. Palvelu on tarkoitettu asiakkaille, joilla on kotona puutteelliset peseytymismahdollisuudet tai -tilat. Palvelusta ja kuljetuksesta peritään maksu.\n\nLumipalvelu\n\nPalvelu on ikäihmisille, etusijalla ovat sotainvalidit. Palveluun on jono. Lumipalvelusta peritään kertamaksu, joka laskutetaan kuukausittain. Myös yksityisiltä yrittäjiltä voi kysyä apua lumitöihin.\n\nRuohonleikkauspalvelu\n\nPalvelu on vain sotainvalideille. Palveluun on jono. Palvelusta peritään kertamaksu, joka laskutetaan kuukausittain. Myös yksityisiltä yrittäjiltä voi kysyä apua ruoholeikkuuseen.\n\nTurvapuhelin\n\nTurvapuhelin myönnetään tarveharkinnan mukaan. Turvapuhelin on laite, joka kytketään omaan lankapuhelimeen. Hätätilanteessa hälytykset tehdään rannekepainikkeella. Palvelusta peritään kuukausimaksu bruttotulojen mukaan. Lisätietoja turvapuhelimesta antaa oman alueen kotipalveluohjaaja tai tukipalveluneuvoja.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : "Hemvårdens stödtjänster är tjänster som stöder klientens möjligheter att klara vardagen. En separat stödserviceavgift uppbärs för tjänsterna. Ytterligare uppgifter om användningen av stödtjänster ger det egna områdets hemserviceledare.\n\nApoteksservice\n\nApoteksservicen genomförs som doseringsdistribution.  Avtalsapoteket levererar medicinerna till hemvården i doseringspåsar med två veckors mellanrum, och hemvården ansvarar för att leverera medicinerna till patienterna. I läkemedelbehandlingen ingår handledning och rådgivning av vårdpersonalen samt ansvar för att uppfölja patientens mående. Läkemedelsbehandlingens verkningar bedöms i samarbete med den vårdande läkaren. Apoteksservicen förbättrar säkerheten inom den medicinska vården, främjar att behandlingen fungerar och sparar i medicinkostnader. För servicen debiteras en avgift.\n\nBadservice\n\nHemmaboende klienter har möjlighet till badservice, i vilken ingår transport. Servicen är ämnad för klienter som har bristfälliga möjligheter eller utrymmen att tvätta sig hemma. För servicen och transporten debiteras en avgift.\n\nButiksservice\n\nSkötaren gör tillsammans med klienten en beställning till butiken. Butikskassen levereras hem till klienten. Servicen fungerar under vardagar.\n\nGräsklippningsservice\n\nServicen är riktad enbart till krigsinvalider. Det är en kö till servicen. För servicen debiteras en engångsavgift som faktureras månatligen. Man kan även fråga om hjälp med gräsklippning av privata företagare.\n\nSnöservice\n\nServicen riktar sig till seniorer, dock primärt på krigsinvalider. Det är en kö till servicen. För snöservicen debiteras en engångsavgift som faktureras månatligen. Man kan även fråga om hjälp i snöarbeten av privata företagare.\n\nTrygghetstelefon\n\nTrygghetstelefon beviljas enligt behovsprövning. Trygghetstelefonen är en anläggning som kopplas till den egna trådtelefonen. I nödfall görs alarm med hjälp av en armbandstryckknapp. För servicen debiteras en månadsavgift enligt bruttoinkomst. Mer information om trygghetstelefon fås av hemservicehandledaren eller stödservicehandledaren i det egna området.\n\n",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "UserInstruction"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

@@ -1,0 +1,283 @@
+{
+  "sourceId" : null,
+  "keywords" : [ {
+    "value" : "kulttuurinen vanhustyö",
+    "language" : "fi"
+  } ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Kulttuuri",
+      "language" : "fi"
+    }, {
+      "value" : "Kultur",
+      "language" : "sv"
+    }, {
+      "value" : "Culture",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "This service class contains a wide range of cultural services associated with different branches of arts, the library system, religious organisations and liberal adult education. The class also includes different free time services.",
+      "language" : "en"
+    }, {
+      "value" : "Tässä palveluluokassa käsitellään kulttuuripalveluja laajasti taiteen eri alojen, kirjastolaitoksen, uskonnollisten yhteisöjen ja vapaan sivistystyön puitteissa. Myös erilaiset vapaa-ajan palvelut kuuluvat tähän luokkaan.",
+      "language" : "fi"
+    }, {
+      "value" : "I denna servicegrupp behandlas kulturtjänster på ett omfattande plan inom ramen för olika konstarter, biblioteksväsendet, religiösa samfund och fritt bildningsarbete. Även olika fritidstjänster hör till denna grupp.",
+      "language" : "sv"
+    } ],
+    "code" : "P25",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1198",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "Vanhusten palvelut",
+      "language" : "fi"
+    }, {
+      "value" : "Äldretjänster",
+      "language" : "sv"
+    }, {
+      "value" : "Services for older people",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "This service subclass contains services for older people, excluding housing services and including rehabilitation, transport and befriending services among other things.",
+      "language" : "en"
+    }, {
+      "value" : "Till denna serviceundergrupp hör andra än boendetjänster, bl.a. rehabiliterings-, transport- och väntjänster för de äldre.",
+      "language" : "sv"
+    }, {
+      "value" : "Tähän alapalveluluokkaan kuuluvat vanhusten muut kuin asumispalvelut, muun muassa kuntoutus-, kuljetus- ja ystäväpalvelut.",
+      "language" : "fi"
+    } ],
+    "code" : "P4.2",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1025",
+    "parentId" : "079b55da-af80-41ab-9346-c8fdd284afcf",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1023"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "09201a18-7e59-4245-9b62-d9589b33d275",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "a36cb4c8-5a6f-46a7-a346-cb43eb3791c8",
+      "name" : "Kulttuurisuunnittelija - Kulttuurikeskus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "a5122aa7-16f2-4d49-b360-d2c72d0768c3",
+      "name" : "Vastaava viriketoiminnan ohjaaja - Ikäkeskus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "ceace322-cbb7-406c-8511-a3381f14417a",
+      "name" : "Kulttuurikeskus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Kulttuurikaruselli K-65",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Kulturkarusell K-65",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "händelser",
+      "language" : "sv"
+    }, {
+      "value" : "tapahtumat",
+      "language" : "fi"
+    }, {
+      "value" : "events",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p35733",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p35417"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Ikäihmiset",
+      "language" : "fi"
+    }, {
+      "value" : "Seniors",
+      "language" : "en"
+    }, {
+      "value" : "De äldre",
+      "language" : "sv"
+    } ],
+    "code" : "KR1.1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2002",
+    "parentId" : "daff1fb9-9394-49b5-b033-d1d1c7005ab6",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001"
+  }, {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Kulttuurikaruselli K-65 tarjoaa elämyksiä ensisijaisesti ikäihmisille, joiden omat mahdollisuudet kulttuurin tekemiseen ja kokemiseen ovat rajalliset.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Lisää tietoa Kulttuurikarusellista antavat Kulttuurikeskuksen kulttuurisuunnittelija sekä ikäkeskuksen vastaava viriketoiminnan ohjaaja.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Kulttuurikaruselli K-65 tarjoaa elämyksiä ensisijaisesti ikäihmisille, joiden omat mahdollisuudet kulttuurin tekemiseen ja kokemiseen ovat rajalliset. Kulttuurikaruselli järjestää ikäihmisille kulttuuritoimintaa vaihtuvien teemojen mukaan. Tavoitteena on innostaa uusien kulttuurilajien kokeiluun, saada aikaan myönteisiä ja voimaannuttavia kulttuurielämyksiä, helpottaa kulttuurin käyttöä sekä poistaa kulttuuriin liittyviä ennakkoluuloja. \n\nKulttuurikarusellin toiminnalla tuotetaan kulttuurillista hyvinvointia  ympärivuorokautisessa hoidossa oleville vanhuksille ja heidän omaisilleen. Lisäksi toiminnasta pääsevät osallisiksi toimintapaikkojen lähiympäristöissä kotona asuvat ikääntyneet vanhukset. Toiminnalla tuetaan myös henkilökunnan jaksamista, koulutusta ja yhteisöllistä arkea. Kulttuurikaruselli K-65 on Vaasan kaupungin Kulttuurikeskuksen ja Ikäkeskuksen viriketoiminnan yhteistyössä toteuttamaa kulttuurisen vanhustyön palvelua. Yhteistyön peruslähtökohtana on sosiaali- ja terveysministeriön ikäihmisten palvelujen laatusuositus ja visiona on turvata aktiivinen ja elämän makuinen vanhuus niille vaasalaisille ikäihmisille, joiden mahdollisuudet päästä kulttuurin pariin ovat heikot.\n\nKulttuurikarusellin toiminnan puitteissa taide- ja kulttuurialan toimijat, yhdistykset ja oppilaitokset voivat ottaa vaasalaisen palvelutalon, vanhainkodin tai yhden kaupunginsairaalan osaston kummikohteekseen ja vierailla, esiintyä tai harjoitella siellä säännöllisesti muutaman kerran vuodessa. Kummitoiminnan tavoitteena on löytää säännöllistä ja pidempiaikaisempaa yhteistyötä toimijoiden ja vanhuspalvelukohteiden välillä. Toimintaa on tarkoitus kehittää niin, että kaikissa kaupungin vanhusten hoitopaikoissa olisi ainakin yksi kummiyhteisö.\n\nVuonna 2014 aloitettiin uusi perinne, jossa vuosittain Vaasaan valitaan vuoden Lucia-Mummo. Mummokandidaatit tulevat koti-ja laitoshoidon asiakkaista henkilökunnan ehdotusten perusteella ja Lucia-Mummo valitaan yleisöäänestyksen perusteella. Tapahtuma on saavuttanut suuren suosion ja se tuo ikäihmisten arkeen iloa, kauneutta ja hyvän mielen.\n",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : "Kulturkarusellen K-65 erbjuder upplevelser till äldre vars möjligheter att själv utöva och uppleva kultur är begränsade.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Kulturkarusellen K-65 erbjuder i första hand upplevelser till äldre vars möjligheter att själv utöva och uppleva kultur är begränsade. Kulturkarusellen ordnar kulturverksamhet för äldre enligt varierande teman. Syftet är att uppmuntra till att prova på nya kulturformer, skapa positiva och energigivande kulturupplevelser, underlätta användningen av kultur och avskaffa fördomar om kultur. \n\nGenom Kulturkarusellens verksamhet produceras kulturellt välbefinnande för äldre i dygnetruntvård och för deras anhöriga. Även äldre personer som bor hemma kan ta del av verksamheten på sådana verksamhetsställen som finns i närmiljön. Genom verksamheten stöds även personalens ork, utbildning och samhörighet i vardagen. Kulturkarusellen K-65 är kulturell service för äldre som genonförs som ett samarbete mellan Vasa stads Kulturcenter och stimulansverksamheten vid Seniorcentret. Utgångspunkten för samarbetet är Social- och hälsovårdsministeriets kvalitetsrekommendation om tjänster för äldre, och visionen är att trygga en aktiv och livssmakande ålderdom för de seniorer i Vasa vars möjligheter att delta i kulturella evenemang är nedsatta. \n\nInom ramen för Kulturkarusellens verksamhet kan aktörer inom konst- och kulturbranschen, föreningar och läroanstalter välja ett servicehus, ålderdomshem eller en avdelning på stadssjukhuset som sitt fadderobjekt och besöka, uppträda eller öva där regelbundet några gånger per år. Målet med fadderverksamheten är att få till stånd ett regelbundet och mer långsiktigt samarbete mellan aktörerna och äldreomsorgsenheterna. Det är meningen att utveckla verksamheten så att stadens alla vårdenheter för äldre skulle ha åtminstone ett faddersamfund.\n\nÅr 2014 inleddes en ny tradition då man varje år väljer en Lucia-mommo i Vasa. Mommokandidaterna är klienter inom hem- och anstaltsvården vilka föreslås av personalen, och Lucia-mommon väljs på basis av en publikomröstning. Evenemanget har blivit mycket populärt och innebär glädje, skönhet och välbehag i seniorernas vardag.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Mer information om Kulturkarusellen ger Kulturcentrets kulturplanerare och Seniorcentrets ansvariga ledare för rekreationsverksamheten.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "ProcuredServices",
+    "organization" : null,
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

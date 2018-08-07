@@ -1,0 +1,324 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    }, {
+      "code" : "399",
+      "name" : [ {
+        "value" : "Laihia",
+        "language" : "fi"
+      }, {
+        "value" : "Laihela",
+        "language" : "sv"
+      }, {
+        "value" : "Laihia",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "PermitOrObligation",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Toimialakohtaiset luvat ja velvoitteet",
+      "language" : "fi"
+    }, {
+      "value" : "Sector-specific permits and obligations",
+      "language" : "en"
+    }, {
+      "value" : "Branschspecifika tillstånd och skyldigheter",
+      "language" : "sv"
+    } ],
+    "description" : [ {
+      "value" : "Tähän alapalveluluokkaan kuuluvat yritystoimintaa velvoittavat asiat, jotka voivat liittyä lupien hankintaan, ilmoituksien tekemiseen tai rekisteröinteihin.",
+      "language" : "fi"
+    }, {
+      "value" : "Denna underservicegrupp omfattar obligatoriska ärenden relaterade till företagsverksamhet, såsom tillstånd, anmälningar och registrering.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains obligations associated with enterprising, which may be related to obtaining permits, submitting notifications or completing registrations.",
+      "language" : "en"
+    } ],
+    "code" : "P11.2",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1107",
+    "parentId" : "60445628-3697-444b-b4b8-ef0cd42b45cf",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1105"
+  }, {
+    "name" : [ {
+      "value" : "Livsmedelssäkerhet",
+      "language" : "sv"
+    }, {
+      "value" : "Elintarviketurvallisuus",
+      "language" : "fi"
+    }, {
+      "value" : "Food safety",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Till denna serviceundergrupp hör ärenden i anslutning till näringssäkerhet samt livsmedelsövervakning och -information. Denna grupp innehåller också tillstånd och anmälningar i anslutning till livsmedelssäkerhet som behövs inom företagsverksamhet.",
+      "language" : "sv"
+    }, {
+      "value" : "Tähän alapalveluluokkaan kuuluvat ravinnon turvallisuuteen sekä elintarvikevalvontaan ja -tiedotukseen liittyvät asiat. Tämä luokka sisältää myös yritystoiminnassa tarvittavat elintarviketurvallisuuteen liittyvät luvat ja ilmoitukset.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass includes issues related to food safety as well as inspections and information activities associated with food safety. The class also includes food safety related permits and notifications that are required for enterprising.",
+      "language" : "en"
+    } ],
+    "code" : "P5.21",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1059",
+    "parentId" : "76ca210c-5183-4d41-b796-50612d5930c7",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1038"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "6acf4b75-ce64-4c2d-8ec8-5e507416516f",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "0f942277-361a-4a22-abdc-99482fa2e58a",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "3b7db065-0351-432c-9245-6713f569f7a4",
+      "name" : "Elintarvikevalvonta"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "8080da68-4225-4bde-b01c-4c3c087a2f81",
+      "name" : "Ympäristötoimi"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : null,
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Elintarvikekontaktimateriaalialan toimijan ilmoitus toimipaikastaan ja toiminnastaan",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Anmälan av företagare inom livsmedelskontaktmaterialbranschen om verksamhetsställe och verksamhet",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "elintarvikehygienia",
+      "language" : "fi"
+    }, {
+      "value" : "livsmedelshygien",
+      "language" : "sv"
+    }, {
+      "value" : "food hygiene",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "TERO",
+    "uri" : "http://www.yso.fi/onto/koko/p33033",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p33290"
+  }, {
+    "name" : [ {
+      "value" : "förpackningsmaterial",
+      "language" : "sv"
+    }, {
+      "value" : "pakkausmateriaalit",
+      "language" : "fi"
+    }, {
+      "value" : "packaging material",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p33567",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p35401"
+  }, {
+    "name" : [ {
+      "value" : "kertakäyttöpakkaukset",
+      "language" : "fi"
+    }, {
+      "value" : "engångsförpackningar",
+      "language" : "sv"
+    }, {
+      "value" : "disposable packages",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p34666",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p31567"
+  }, {
+    "name" : [ {
+      "value" : "livsmedelsbranschen",
+      "language" : "sv"
+    }, {
+      "value" : "elintarvikeala",
+      "language" : "fi"
+    }, {
+      "value" : "food sector",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p6995",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p35647;http://id.loc.gov/authorities/subjects/sh85050282"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Yritykset ja yhteisöt",
+      "language" : "fi"
+    }, {
+      "value" : "Businesses and non-government organizations",
+      "language" : "en"
+    }, {
+      "value" : "Företag och samfund",
+      "language" : "sv"
+    } ],
+    "code" : "KR2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "Kotimarkkinoilla toimivat yritykset",
+      "language" : "fi"
+    }, {
+      "value" : "Businesses operating in the domestic (Finnish) market",
+      "language" : "en"
+    }, {
+      "value" : "Företag på den inhemska marknaden",
+      "language" : "sv"
+    } ],
+    "code" : "KR2.3",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2011",
+    "parentId" : "338939bb-b01a-4a80-a091-7c5238322bc0",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008"
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : "Till företagaren sänds ett mottagningsmeddelande. ",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Elintarvikekontaktimateriaalialan toiminnasta on tehtävä ilmoitus toimintapaikkakunnan elintarvikevalvontaviranomaiselle.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Om verksamhet inom livsmedelskontaktmaterialbranschen ska en anmälan göras till verksamhetsställets myndigheter för livsmedelstillsyn.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Toimijalle lähetetään vastaanottoilmoitus. ",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : "Voimassa, kunnes toiminta lopetetaan.",
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

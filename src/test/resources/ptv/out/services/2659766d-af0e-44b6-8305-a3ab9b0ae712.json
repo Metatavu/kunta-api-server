@@ -1,0 +1,269 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Lastensuojelu",
+      "language" : "fi"
+    }, {
+      "value" : "Barnskydd",
+      "language" : "sv"
+    }, {
+      "value" : "Child welfare",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "I denna serviceundergrupp behandlas tjänster som ansluter sig till förebyggande av familjekriser, en trygg uppväxtmiljö för barn och ungdomar och olika fosterhemslösningar.",
+      "language" : "sv"
+    }, {
+      "value" : "Tässä alapalveluluokassa käsitellään palveluja, jotka liittyvät perheen kriisien ehkäisemiseen, lapsen tai nuoren kasvuympäristön turvallisuuteen ja erilaisiin sijaiskotiratkaisuihin.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains services associated with preventing family crises, safety of the environment in which a child or a young person grows up, and different substitute care arrangements.",
+      "language" : "en"
+    } ],
+    "code" : "P3.8",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1021",
+    "parentId" : "77af99fa-93eb-4de6-ac83-1b161a961263",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1013"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "3309ac37-86f9-4506-8adb-b9b80a8d01d8",
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "2659766d-af0e-44b6-8305-a3ab9b0ae712",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "090e8fd3-14be-4847-a056-f06bc7c010bd",
+      "name" : "Johtava sosiaalityöntekijä - lapsi- ja perhesosiaalityön palvelutarpeen arviointi"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "2bda0a71-96d9-4c9a-8b03-5c0eabf945ea",
+      "name" : "Lapsi- ja perhesosiaalityön ja lastensuojelun päivystys"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "44e969c9-25b3-4a1d-beee-9732df4bebb7",
+      "name" : "Pysäkki"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "5adc8db3-f723-4f47-98b7-52e688aa4f43",
+      "name" : "Lasten sijaishuollon verkkosivut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "c146993e-6a83-4ad2-bf98-9365feb7f6e9",
+      "name" : "Kortteeri"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "c33756f5-b31a-47b7-8202-5310350dbc0e",
+      "name" : "Omakoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "e6cf380b-c354-42fe-802f-14476d1893d1",
+      "name" : "Perhetukikeskus Mäntykoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : "FreeOfCharge",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Lastensuojelun sijaishuolto",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Barns vård utom hemmet",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Lasten sijaishuolto",
+    "type" : "AlternativeName"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "lastensuojelun sijaishuolto",
+      "language" : "fi"
+    }, {
+      "value" : "vård utom hemmet inom barnskyddet",
+      "language" : "sv"
+    }, {
+      "value" : "child protection foster care",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p66757",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p15822"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Kiireellisissä tapauksissa on otettava aina ensin yhteyttä sosiaalipäivystykseen numerossa 06 325 2347 (24/7).",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : "Med barns vård utom hemmet avses att barnets vård och fostran ordnas utanför hemmet. Då ett barn eller en ung person är i omdelbar fara måste han eller hon placeras antingen i familjevård eller i institutionsvård. Med familjevård avses att ett barns eller en ung persons vård, fostran och annan dygnet runt omvårdnad ordnas i ett privathem utanför hemmet.\n\nHan eller hon placeras att bo i en av socialväsendet vald familj som en familjemedlem antingen tillfälligt eller tillsvidare. Fosterhemmet kan finnas i Vasa eller i närområdet. Ett omhändertaget barn eller ett barn som placeras som stödåtgärd inom öppenvården kan placeras i familjevård. Som familjevårdare kan godkännas en person som på basis av sin utbildning, erfarenhet eller personliga egenskaper är lämplig att ge familjevård. Med familjevårdaren ingås ett uppdragsavtal.\n\nBarnskyddsanstalterna är hemlika verksamhetsenheter som specialiserat sig på att stöda barns och ungas utveckling. Anstalternas uppgift är att erbjuda en trygg vård och en stimulerande uppväxtmiljö. De kan ge kortvarig eller långvarig vård åt barn och unga som inte kan bo hemma.\n\n\n\n",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Lasten sijaishuollolla tarkoitetaan lapsen hoidon ja kasvatuksen järjestämistä kodin ulkopuolella. Lapsen tai nuoren ollessa välittömässä vaarassa pitää hänet sijoittaa joko perhehoitoon tai laitoshoitoon.\n\nPerhehoito tarkoittaa, että lapsen tai nuoren hoito, kasvatus ja muu ympärivuorokautinen huolenpito järjestetään yksityiskodissa oman kodin ulkopuolella. Hänet sijoitetaan asumaan sosiaalitoimen valitsemaan perheeseen yhdeksi perheenjäseneksi joko tilapäisesti tai toistaiseksi. Sijaiskoti voi olla Vaasassa tai lähiympäristössä.\n\nPerhehoitoon voidaan sijoittaa joko huostaanotettu tai avohuollon tukitoimenpiteenä sijoitettu lapsi. Perhehoitajaksi taas voidaan hyväksyä henkilö, joka koulutuksensa, kokemuksensa tai henkilökohtaisten ominaisuuksiensa perusteella on sopiva antamaan perhehoitoa. Perhehoitajan kanssa laaditaan toimeksiantosopimus.\n\nLastensuojelulaitokset ovat lasten ja nuorten kehityksen tukemiseen erikoistuneita kodinomaisia toimintayksiköitä. Laitosten tehtävänä on tarjota turvallinen hoito ja virikkeellinen kasvuympäristö. Ne voivat antaa lyhytaikaista tai pitkäaikaista hoitoa lapsille ja nuorille, jotka eivät voi asua kotonaan.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Lasten sijaishuollolla tarkoitetaan lapsen hoidon ja kasvatuksen järjestämistä kodin ulkopuolella.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : "Med barns vård utom hemmet avses att barnets vård och fostran ordnas utanför hemmet.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

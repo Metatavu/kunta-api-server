@@ -1,0 +1,221 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Asumispalvelut",
+      "language" : "fi"
+    }, {
+      "value" : "Boendetjänster",
+      "language" : "sv"
+    }, {
+      "value" : "Housing services",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Till denna serviceundergrupp hör bostads- och serviceboendelösningar för äldre och personer med nedsatt funktionsförmåga (subventionerat boende, serviceboende och effektiverat serviceboende), bidrag i samband med dessa samt hjälp- och stödmedel som används hemma. Denna grupp innehåller också stödboendet för omhändertagna barn, långtidssjuka och rehabiliteringsklienter inom missbrukarvården. Till denna grupp hör inte t.ex. hem- och hemsjukvårdstjänster, som finns i sina egna grupper.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains housing and supported housing solutions for older people and the disabled (supported housing, sheltered housing and sheltered housing with 24-hour assistance), the associated benefits and assistive and support devices used at home. The class also contains supported housing services for children in foster care, chronically ill people and persons in substance abuse rehabilitation. This class does not include home care and home nursing services, for example, which have their own classes.",
+      "language" : "en"
+    }, {
+      "value" : "Tähän alapalveluluokkaan kuuluvat ikääntyneiden ja vammaisten asunto- ja palveluasumisratkaisut (tuettu asuminen, palveluasuminen ja tehostettu palveluasuminen), niihin kuuluvat tuet sekä kotona käytettävät apu- ja tukivälineet. Luokkaan kuuluvat myös huostaanotettujen lasten ja pitkäaikaissairaiden perhehoidon ja päihdekuntoutujien tukiasuminen. Luokkaan eivät kuulu esimerkiksi koti- ja kotisairaanhoitopalvelut, jotka ovat omissa luokissaan.",
+      "language" : "fi"
+    } ],
+    "code" : "P4.1",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1024",
+    "parentId" : "079b55da-af80-41ab-9346-c8fdd284afcf",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1023"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : null,
+  "serviceVouchers" : [ ],
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "332b8b64-4e75-4ac2-85d3-18c7a1efafd1",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "e979a097-62bb-47e1-b1c9-884e859f6693",
+      "name" : "SAS-työryhmän johtava sosiaalityöntekijä"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "sv"
+  }, {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : null,
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Palveluasumisen palveluseteli",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Serviceboendes servicesedel",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "palveluasuminen (asuminen)",
+      "language" : "fi"
+    } ],
+    "code" : null,
+    "ontologyType" : "TERO",
+    "uri" : "http://www.yso.fi/onto/koko/p76748",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p34228"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Ikäihmiset",
+      "language" : "fi"
+    }, {
+      "value" : "Seniors",
+      "language" : "en"
+    }, {
+      "value" : "De äldre",
+      "language" : "sv"
+    } ],
+    "code" : "KR1.1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2002",
+    "parentId" : "daff1fb9-9394-49b5-b033-d1d1c7005ab6",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001"
+  }, {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Ikäihmisten palveluasumisessa on mahdollisuus palveluseteleihin.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : "Ikäihmisten palveluasumisessa on mahdollisuus palveluseteleihin, jotka käyvät ympärivuorokautiseen asumiseen. Palveluasumisen palvelusetelin myöntämisestä päätetään SAS-toimistossa tapauskohtaisesti. Palvelusetelin arvo määräytyy asiakkaan nettotulojen perusteella. Asiakas maksaa omavastuuosuuden, joka on palveluntuottajan hoitovuorokausihinnan ja palvelusetelin arvon välinen erotus.\n\nPalvelusetelin lähtökohtana on aina se, että asiakas täyttää sosiaali- ja terveyslautakunnan vahvistamat tehostetun palveluasumisen kriteerit. Tehostettu palveluasuminen on tarkoitettu henkilöille, joiden avun tarve on ympäri vuorokauden eivätkä kotiin saatavat palvelut enää riitä. Kun asiakas on valinnut itselleen sopivan yksikön, palveluntuottaja ja asiakas tekevät keskenään asunnosta vuokrasopimuksen ja palvelusopimuksen.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Seniorer i Vasa har möjlighet att med hjälp av en servicesedel välja det lämpligaste stället att bo.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Seniorer i Vasa har möjlighet att med hjälp av en servicesedel välja det lämpligaste stället att bo på bland enheterna för serviceboende med heldygnsomsorg. \n\nUtgångspunkten för servicesedeln är alltid att klienten uppfyller de av social- och hälsovårdsnämnden fastställda kriterierna för serviceboende med heldygnsomsorg. Serviceboende med heldygnsomsorg är avsett för personer som behöver hjälp dygnet runt och där servicen som tillhandahålls hemma inte längre är tillräcklig. Då klienten valt en lämplig enhet, ingår serviceproducenten och klienten sinsemellan ett hyresavtal om bostaden och ett serviceavtal.",
+    "type" : "Description"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

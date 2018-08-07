@@ -1,0 +1,90 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://sote.easiointi.fi/fi/web/vaasa-te",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://sote.easiointi.fi/sv/web/vaasa-te",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "requiresSignature" : false,
+  "attachments" : [ ],
+  "languages" : [ ],
+  "supportPhones" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ {
+    "value" : "eterveys@vaasa.fi",
+    "language" : "fi"
+  }, {
+    "value" : "eterveys@vaasa.fi",
+    "language" : "sv"
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "1df0be8d-54ef-42d9-9112-52b7c34e7a95",
+      "name" : "Perhesuunnittelu- ja ehkäisyneuvonta"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Perhesuunnitteluneuvolan sähköinen ajanvaraus",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Familjeplanerings tidsbokning via webben",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "EChannel",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Perhesuunnitteluneuvolan sähköinen ajanvarauspalvelu on käytettävissä vaasalaisille 13-50-vuotiaille naisille.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Perhesuunnitteluneuvolan sähköinen ajanvarauspalvelu on käytettävissä vaasalaisille 13-50-vuotiaille naisille.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Familjeplanerings tidsbokning via webben.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Familjeplanerings tidsbokning via webben. Enbart 13 – 50 åriga kvinnor från Vasa kan boka en tid via webben. ",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "e10754bc-9219-4c15-a277-59f1e0094576",
+  "signatureQuantity" : 0,
+  "requiresAuthentication" : true
+}

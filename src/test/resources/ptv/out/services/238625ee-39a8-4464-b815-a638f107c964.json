@@ -1,0 +1,229 @@
+{
+  "sourceId" : null,
+  "keywords" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "type" : "Service",
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Tienpito",
+      "language" : "fi"
+    }, {
+      "value" : "Väghållning",
+      "language" : "sv"
+    }, {
+      "value" : "Road maintenance",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Tähän palvelualaluokkaan kuuluvat teiden hoitoluokat ja niiden mukainen peruskunnossapito sekä teiden parannustyöt ja näihin saatavat avustukset.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains road maintenance classes, basic maintenance in accordance to the classes as well as road improvements and grants available for them.",
+      "language" : "en"
+    }, {
+      "value" : "Denna serviceundergrupp omfattar vägarnas underhållsklasser och grundläggande vägunderhåll enligt dem samt förbättringsarbeten på vägar och bidrag för dem.",
+      "language" : "sv"
+    } ],
+    "code" : "P16.7",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1149",
+    "parentId" : "99c23d1f-53e3-415f-9757-479fe6f8e4ea",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1142"
+  } ],
+  "fundingType" : "PubliclyFunded",
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "generalDescriptionId" : "4b4291c9-3449-48f6-a4c8-980b53c84a0b",
+  "serviceVouchers" : [ ],
+  "modified" : "2018-03-22T10:31:01.519135",
+  "id" : "238625ee-39a8-4464-b815-a638f107c964",
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "d470500b-c84a-4191-9645-43ef61c09d96",
+      "name" : "Yksityistieavustus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "db0fb0ba-8d88-4787-86d0-b4e5163628fa",
+      "name" : "Yksityistieavustuksen hakulomake"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "legislation" : [ ],
+  "requirements" : [ {
+    "value" : "Om kommunen understöder underhållet av en enskild väg, får väganvändare som inte hör till väglaget inte förbjudas att använda vägen. För regelbunden trafik på vägen krävs även i detta fall tillstånd av väglaget eller vägdelägarna. \n\nVasa stads kriterier för bidrag till enskilda vägar är följande:\n* Understöd ansöks vart tredje år.\n* Vägen ska vara i trafikerbart skick.\n* Penningunderstöd primärt för skötsel, väglaget beslutar själv om de praktiska åtgärderna\n* Till bidrag berättigar i princip tre permanenta hushåll/väg (inte väglag).\n* Bidragsanslaget delas ut för vägarna i proportion till vägens längd (€/km) enligt prövning.\n* Om vägen är i dåligt skick, kan bidraget dras tillbaka enligt prövning.\n*  Väglaget bör bära upp enhetsavgifter av vägdelägarna.\n* Anhållan med bilagor bör anlända inom utsatt tid.",
+    "language" : "sv"
+  }, {
+    "value" : "Jos kunta avustaa yksityisen tien kunnossapitoa, ei tien käyttämistä saa kieltää tiekuntaan kuulumattomilta tienkäyttäjiltä. Säännöllisen liikenteen harjoittamiseen tiellä tarvitaan tällöinkin tiekunnan tai tieosakkaiden lupa. \n\nVaasan kaupungin yksityisteiden avustuskriteerit ovat seuraavat:\n* Avustus haetaan 3 vuoden välein.\n* Tien täytyy olla liikennöitävässä kunnossa.\n* Avustetaan rahallisesti ensisijaisesti hoitoa, tiekunta päättää itse käytännön toimenpiteistä.\n* Avustukseen oikeuttaa lähtökohtaisesti 3 pysyvän asutuksen taloutta / tie (ei tiekunta).\n* Avustusmäärä jaetaan teille tien pituuden suhteessa (€/km) harkintaa käyttäen.\n* Mikäli tien kunto on huono, avustus voidaan harkinnan varaisesti perua.\n* Tiekunnan tulee kerätä tieosakkailta yksikkömaksuja.\n* Hakemuksen liitteineen on saavuttava määräaikaan mennessä.\n",
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceCollections" : [ ],
+  "industrialClasses" : [ ],
+  "serviceChargeType" : null,
+  "serviceNames" : [ {
+    "language" : "sv",
+    "value" : "Statsbidrag för enskilda vägar",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Yksityistieavustukset",
+    "type" : "Name"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ ],
+    "code" : null,
+    "ontologyType" : null,
+    "uri" : "http://www.yso.fi/onto/yso/p11569",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "väghållning",
+      "language" : "sv"
+    }, {
+      "value" : "tienpito",
+      "language" : "fi"
+    }, {
+      "value" : "road maintenance",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p18841",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p25523"
+  } ],
+  "lifeEvents" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : "Kunnalta voi anoa avustusta yksityisen tien ylläpitoa varten.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Bidraget ansöks vart tredje år (2016-2018) genom att en underhållsanhållan fylls i.\nUnderstödet för år 2018 betalas i augusti.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : "Kunnalta voi anoa avustusta yksityisen tien ylläpitoa varten. Yksityistie on tie, jonka ylläpidosta vastaavat tietä tarvitsevien kiinteistöjen omistajat. Yksityisistä teistä on säädetty laissa. Yksityisteiden tienpidon avustaminen on kunnan vapaaehtoista harkinnanvaraista toimintaa, jonka ehdot kunta voi määritellä.\n\nYksityistielain mukaan kunta päättää varoistaan jaettavista avustuksista. Vaasan kaupunki myöntää hakemuksesta vuosittain kunnossapitoavustuksia (noin 65 000 €) järjestäytyneille tiekunnille ja sopimusteille teknisen lautakunnan 4.11.2015 tekemän päätöksen mukaisesti. Järjestäytynyt tiekunta on maanmittauslaitoksen yksityistietoimituksessa perustettu. Sopimustie syntyy kirjallisella sopimuksella. Tiekunnalle on valittu toimielin joka kokoustaa vuosittain. \n\nAvustukseen oikeuttavia töitä ovat tien höyläys ja lanaus, pölynsidonta, vesakontorjunta, niitto, auraus, liukkaudentorjunta, aurausviitoitus, talvihöyläys, sorastus, ojien perkaus ja muut tien liikennekelpoisuutta varmistavat työt.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Avustusta haetaan kolmen vuoden välein (2016-2018) täyttämällä kunnossapitoanomus.\nVuoden 2018 avustus maksetaan elokuun aikana.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : "Bidrag för underhåll av en enskild väg kan ansökas från kommunen.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : "Bidrag för underhåll av en enskild väg kan ansökas från kommunen. En enskild väg är en väg som underhålls av ägarna till de fastigheter som behöver vägen. Bestämmelser om enskilda vägar, alltså privata vägar, ingår i lagen. Bidrag för väghållningen av enskilda vägar hör till kommunens frivilliga, prövningsbaserade verksamhet och kommunen kan fastställa villkoren för verksamheten.\n\nEnligt lagen om enskilda vägar är det kommunen som bestämmer vilka understöd som delas ut av kommunens medel. Vasa stad beviljar årligen på ansökan underhållsbidrag (ca 65 000 €) till organiserade väglag och för avtalsvägar i enlighet med tekniska nämndens beslut 4.11.2015. Ett organiserat väglag är grundat vid lantmäteriverkets förrättning om enskild väg en avtalsväg bildas enligt ett skriftligt avtal. För ett väglag har ett organ valts som sammanträder årligen.\n\nFörr följande arbeten betalas bidrag: väghyvling och sladdning, dammbindning, slybekämpning, slåtter, plogning, utmärkning för plogning, vinterhyvling, halkbekämpning, grus eller kross till slitlagret, rensning av diken och övriga arbeten som säkerställer att vägen är trafikduglig.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "Other",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ]
+}

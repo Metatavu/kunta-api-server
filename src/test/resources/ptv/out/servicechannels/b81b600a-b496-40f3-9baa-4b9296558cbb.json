@@ -1,0 +1,122 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "attachments" : [ ],
+  "languages" : [ ],
+  "deliveryAddresses" : [ {
+    "subType" : "PostOfficeBox",
+    "postOfficeBoxAddress" : {
+      "postOfficeBox" : [ {
+        "value" : "PL 47",
+        "language" : "fi"
+      } ],
+      "postalCode" : "21101",
+      "postOffice" : [ {
+        "value" : "NAANTALI",
+        "language" : "sv"
+      }, {
+        "value" : "NAANTALI",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "529",
+        "name" : [ {
+          "value" : "Naantali",
+          "language" : "fi"
+        }, {
+          "value" : "Nådendal",
+          "language" : "sv"
+        }, {
+          "value" : "Naantali",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ {
+        "value" : "Voit viedä hakemuksen myös terveyskeskuksen neuvontaan tai Naantalin kaupungin palvelupisteisiin.",
+        "language" : "fi"
+      } ]
+    },
+    "streetAddress" : null,
+    "deliveryAddressInText" : null,
+    "receiver" : [ {
+      "value" : "Naantalin terveyskeskus/veteraaniasiat",
+      "language" : "fi"
+    } ]
+  } ],
+  "supportPhones" : [ ],
+  "formIdentifier" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "50719692-7569-4d68-9783-16ee751be3e8",
+      "name" : "Rintamaveteraanien kuntoutus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : "Voit hakea veteraanikuntoutusta myös puhelimitse soittamalla terveyspalvelujen sosiaalityöntekijälle.",
+      "type" : "Description"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : {
+      "emails" : [ ],
+      "phoneNumbers" : [ {
+        "additionalInformation" : "Terveyspalvelujen sosiaalityöntekijä, joka hoitaa veteraanikuntoutusasioita.",
+        "serviceChargeType" : "Chargeable",
+        "chargeDescription" : null,
+        "prefixNumber" : "+358",
+        "isFinnishServiceNumber" : false,
+        "number" : "24362634",
+        "language" : "fi"
+      } ],
+      "webPages" : [ ],
+      "addresses" : [ ]
+    },
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "channelUrls" : [ {
+    "language" : "fi",
+    "value" : "http://www.naantali.fi/perhe_ja_sosiaali/hoito_ja_vanhuspalvelut/fi_FI/veteraanikuntoutus/_files/99404237338181904/default/Kopio%20Veteraanikuntoutus%20hakulomake%20-18.pdf",
+    "type" : "PDF"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Veteraanikuntoutuksen hakulomake",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "PrintableForm",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Voit hakea veteraanikuntoutuksen hakulomakkeella maksuttomaan rintamaveteraanikuntoutukseen.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Voit hakea veteraanikuntoutuksen hakulomakkeella maksuttomaan rintamaveteraanikuntoutukseen. Hakulomakkeen voi noutaa myös terveyskeskuksen neuvonnasta sekä kaikista kaupungin palvelupisteistä.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2018-04-09T14:53:56.79477",
+  "id" : "b81b600a-b496-40f3-9baa-4b9296558cbb"
+}

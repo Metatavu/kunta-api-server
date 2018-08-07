@@ -1,0 +1,44 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "http://verkkopalvelu.vrk.fi/Nimipalvelu/default.asp?L=1",
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "610325e0-f485-4caa-bd3b-5bf74d5480c5",
+      "name" : "Nimipalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "b458d033-042d-4cbe-b030-34e81da28821",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Nimipalvelu",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Nimipalvelun kautta voit hakea väestötietojärjestelmään tallennettujen etu- ja sukunimien lukumääriä Suomessa.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Nimipalvelun kautta voit hakea väestötietojärjestelmään tallennettujen etu- ja sukunimien lukumääriä Suomessa.",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "5ea39e0c-eb4b-402f-a43b-ace2f4baddd6"
+}

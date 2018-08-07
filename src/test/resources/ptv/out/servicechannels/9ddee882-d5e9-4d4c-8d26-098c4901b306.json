@@ -1,0 +1,192 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "1",
+    "url" : "http://www.pohjanmaanmuseo.fi/?page=Koti",
+    "value" : "Pohjanmaan museon verkkosivut",
+    "language" : "fi"
+  }, {
+    "orderNumber" : "1",
+    "url" : "http://www.pohjanmaanmuseo.fi/?page=Hem&setlang=l1",
+    "value" : "Österbottens museums webbsidor",
+    "language" : "sv"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Museokatu",
+        "language" : "fi"
+      }, {
+        "value" : "Museigatan",
+        "language" : "sv"
+      } ],
+      "streetNumber" : "3",
+      "postalCode" : "65100",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : null,
+      "additionalInformation" : [ {
+        "value" : null,
+        "language" : "fi"
+      } ],
+      "latitude" : "7008108.839",
+      "longitude" : "227805.547",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  }, {
+    "type" : "Postal",
+    "subType" : "PostOfficeBox",
+    "postOfficeBoxAddress" : {
+      "postOfficeBox" : [ {
+        "value" : "PL 3",
+        "language" : "fi"
+      }, {
+        "value" : "PB 3",
+        "language" : "sv"
+      } ],
+      "postalCode" : "65101",
+      "postOffice" : [ {
+        "value" : "VAASA",
+        "language" : "fi"
+      }, {
+        "value" : "VASA",
+        "language" : "sv"
+      } ],
+      "municipality" : null,
+      "additionalInformation" : [ ]
+    },
+    "streetAddress" : null,
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : null,
+    "country" : "FI"
+  } ],
+  "languages" : [ "sv", "fi" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "3c746357-4921-4214-8ce0-025e729dfb70",
+      "name" : "Museopalvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Fax",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63171046",
+    "language" : "fi"
+  }, {
+    "type" : "Fax",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63171046",
+    "language" : "sv"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63253800",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63253800",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ {
+    "value" : "museoinfo@vaasa.fi",
+    "language" : "fi"
+  }, {
+    "value" : "museoinfo@vaasa.fi",
+    "language" : "sv"
+  } ],
+  "serviceChannelNames" : [ {
+    "language" : "sv",
+    "value" : "Österbottens museum",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Pohjanmaan museo",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Pohjanmaan museo on historian, taiteen ja luonnontieteellinen museo.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Österbottens museum är ett museum för historia, konst och naturvetenskap.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Österbottens museum är ett museum för historia, konst och naturvetenskap. Museet har permanenta samlingsutställningar om Vasa stads historia, Kvarkens natur samt ur konst- och stilhistoriska samlingar. Därtill ordnas i museet tillfälliga utställning i anslutning till historia, konst och natur samt museipedagogiskt program och publika evenemang. I Österbottens museum finns ett kafé och en museibutik. \n\nLäs mera om verksamheten vid Österbottens museum och se öppettiderna på museets webbsidor.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Pohjanmaan museo on historian, taiteen ja luonnontieteellinen museo. Museossa on esillä pysyvät kokoelmanäyttelyt Vaasan kaupungin historiasta, Merenkurkun luonnosta sekä taide- ja tyylihistoriallisista kokoelmista. Lisäksi museossa järjestetään historiaan, taiteeseen ja luontoon liittyviä vaihtuvia näyttelyitä sekä museopedagogista ohjelmaa ja yleisötapahtumia. Pohjanmaan museossa on kahvila ja museokauppa. \n\nLue lisää Pohjanmaan museon toiminnasta ja katso aukioloajat museon verkkosivuilta.\n",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-09-11T00:00:00",
+  "id" : "9ddee882-d5e9-4d4c-8d26-098c4901b306"
+}

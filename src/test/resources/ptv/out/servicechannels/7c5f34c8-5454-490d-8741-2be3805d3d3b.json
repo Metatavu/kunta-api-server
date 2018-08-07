@@ -1,0 +1,95 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://vaasa.maps.arcgis.com/apps/webappviewer/index.html?id=36b97b2cf8c94e479b45defc7b52e408",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://vaasa.maps.arcgis.com/apps/webappviewer/index.html?id=36b97b2cf8c94e479b45defc7b52e408",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "requiresSignature" : false,
+  "attachments" : [ ],
+  "languages" : [ ],
+  "supportPhones" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "26f554eb-e4cb-4c13-b921-c33370131f59",
+      "name" : "Pyörätiet ja -reitit"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "2cadcde8-8108-48fc-b069-f373f6b2bea8",
+      "name" : "Karttatuotteet"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Vaasan pyöräilykarttasovellus",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Vasas cykelkartapplikation",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "EChannel",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Vaasan pyöräilykarttasovelluksesta näet kaupungin pyörätieverkostot. ",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan pyöräilykarttasovelluksesta näet kaupungin pyörätieverkostot.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "I Vasas cykelkartapplikation ser du stadens cykelvägnät. ",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "I Vasas cykelkartapplikation ser du stadens cykelvägnät.",
+    "type" : "Summary"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "7c5f34c8-5454-490d-8741-2be3805d3d3b",
+  "signatureQuantity" : 0,
+  "requiresAuthentication" : false
+}
