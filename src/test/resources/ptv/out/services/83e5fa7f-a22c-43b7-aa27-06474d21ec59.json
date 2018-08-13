@@ -1,9 +1,20 @@
 {
+  "id" : "83e5fa7f-a22c-43b7-aa27-06474d21ec59",
   "sourceId" : null,
-  "keywords" : [ {
-    "value" : "jälkiasennushissi",
-    "language" : "fi"
+  "generalDescriptionId" : null,
+  "type" : "Service",
+  "fundingType" : "PubliclyFunded",
+  "serviceNames" : [ {
+    "language" : "sv",
+    "value" : "Hissunderstöd",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Hissiavustus",
+    "type" : "Name"
   } ],
+  "serviceChargeType" : "FreeOfCharge",
+  "areaType" : "LimitedType",
   "areas" : [ {
     "type" : "Municipality",
     "code" : null,
@@ -21,185 +32,6 @@
         "language" : "en"
       } ]
     } ]
-  } ],
-  "type" : "Service",
-  "serviceClasses" : [ {
-    "name" : [ {
-      "value" : "Asuminen",
-      "language" : "fi"
-    }, {
-      "value" : "Boende",
-      "language" : "sv"
-    }, {
-      "value" : "Housing",
-      "language" : "en"
-    } ],
-    "description" : [ {
-      "value" : "Denna servicegrupp omfattar hur man söker, hittar och skaffar en bostad, olika boendeformer, ekonomiskt stöd för boende, processer och tjänster i anslutning till flyttning inom Finland samt tjänster som berör befolkningsdatasystemet.",
-      "language" : "sv"
-    }, {
-      "value" : "Tähän palveluluokkaan kuuluvat asunnon etsiminen, löytäminen ja hankkiminen, erilaiset asumismuodot, asumisen taloudelliset tuet, Suomen sisällä tapahtuvaan muuttoon liittyvät prosessit ja palvelut sekä väestötietojärjestelmään liittyvät palvelut.",
-      "language" : "fi"
-    }, {
-      "value" : "This service class includes seeking, finding and purchasing a residence, different housing forms, housing benefits, processes and services related to migration within Finland, as well as services associated with the Population Information System.",
-      "language" : "en"
-    } ],
-    "code" : "P1",
-    "ontologyType" : "PTVL",
-    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1001",
-    "parentId" : null,
-    "parentUri" : null
-  }, {
-    "name" : [ {
-      "value" : "Korjaus- ja energia-avustukset",
-      "language" : "fi"
-    }, {
-      "value" : "Reparations- och energibidrag",
-      "language" : "sv"
-    }, {
-      "value" : "Renovation and energy grants",
-      "language" : "en"
-    } ],
-    "description" : [ {
-      "value" : "This service subclass contains grants for renovations and improving a building’s energy efficiency as well as the application processes and e-services related to these grants from the service point of view.",
-      "language" : "en"
-    }, {
-      "value" : "I denna underservicegrupp behandlas ur servicesynpunkt bidrag i anslutning till ombyggnad och till ökningen av byggnadens energieffektivitet, ansökningsprocesser för bidragen och ärendehanteringstjänster i samband med dem.",
-      "language" : "sv"
-    }, {
-      "value" : "Tässä alapalveluluokassa käsitellään palvelunäkökulmasta korjausrakentamiseen ja rakennuksen energiatehokkuuden lisäämiseen tarkoitettuja avustuksia, niiden hakuprosesseja ja niihin liittyviä asiointipalveluja.",
-      "language" : "fi"
-    } ],
-    "code" : "P2.2",
-    "ontologyType" : "PTVL",
-    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1009",
-    "parentId" : "dd30002b-be2b-4689-878a-60e93492cc87",
-    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1007"
-  } ],
-  "fundingType" : "PubliclyFunded",
-  "areaType" : "LimitedType",
-  "publishingStatus" : "Published",
-  "generalDescriptionId" : null,
-  "serviceVouchers" : [ ],
-  "modified" : "2017-11-17T06:18:52.874538",
-  "id" : "83e5fa7f-a22c-43b7-aa27-06474d21ec59",
-  "serviceChannels" : [ {
-    "serviceChannel" : {
-      "id" : "22cd9e41-dcc9-42d5-bc40-3dd64d27c030",
-      "name" : "Kiinteistötoimi"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
-      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
-      "name" : "Vaasan Palautepalvelu"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
-      "id" : "7de53057-287b-4899-b4b3-86291bf47b45",
-      "name" : "Hissiavustusanomus"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
-      "id" : "c38feebb-9dfa-4efc-b2f7-02b2fd282841",
-      "name" : "Maksatushakemus, hissi"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  } ],
-  "serviceVouchersInUse" : false,
-  "legislation" : [ ],
-  "requirements" : [ {
-    "value" : "Kaupungin avustus myönnetään käytettävissä olevan määrärahan puitteissa sen jälkeen, kun ARA on hyväksynyt hankkeen kustannukset ja myöntänyt hankkeelle valtion hissiavustuksen.",
-    "language" : "fi"
-  }, {
-    "value" : "Staden beviljar understöd inom ramen för tillbudsstående anslag när ARA har godkänt kostnaderna för projektet och beviljat statligt hissunderstöd för projektet.",
-    "language" : "sv"
-  } ],
-  "languages" : [ "fi", "sv" ],
-  "serviceCollections" : [ ],
-  "industrialClasses" : [ ],
-  "serviceChargeType" : "FreeOfCharge",
-  "serviceNames" : [ {
-    "language" : "sv",
-    "value" : "Hissunderstöd",
-    "type" : "Name"
-  }, {
-    "language" : "fi",
-    "value" : "Hissiavustus",
-    "type" : "Name"
-  } ],
-  "ontologyTerms" : [ {
-    "name" : [ {
-      "value" : "hissiavustukset",
-      "language" : "fi"
-    }, {
-      "value" : "hissbidrag",
-      "language" : "sv"
-    }, {
-      "value" : "lift subsidies",
-      "language" : "en"
-    } ],
-    "code" : null,
-    "ontologyType" : "JUPO",
-    "uri" : "http://www.yso.fi/onto/koko/p66470",
-    "parentId" : null,
-    "parentUri" : "http://www.yso.fi/onto/koko/p34757"
-  } ],
-  "lifeEvents" : [ ],
-  "targetGroups" : [ {
-    "name" : [ {
-      "value" : "Yritykset ja yhteisöt",
-      "language" : "fi"
-    }, {
-      "value" : "Businesses and non-government organizations",
-      "language" : "en"
-    }, {
-      "value" : "Företag och samfund",
-      "language" : "sv"
-    } ],
-    "code" : "KR2",
-    "ontologyType" : "TARGETGROUP",
-    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008",
-    "parentId" : null,
-    "parentUri" : null
-  }, {
-    "name" : [ {
-      "value" : "Kansalaiset",
-      "language" : "fi"
-    }, {
-      "value" : "Citizens",
-      "language" : "en"
-    }, {
-      "value" : "Medborgare",
-      "language" : "sv"
-    } ],
-    "code" : "KR1",
-    "ontologyType" : "TARGETGROUP",
-    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
-    "parentId" : null,
-    "parentUri" : null
   } ],
   "serviceDescriptions" : [ {
     "language" : "sv",
@@ -258,6 +90,169 @@
     "value" : null,
     "type" : "ChargeTypeAdditionalInfo"
   } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Asuminen",
+      "language" : "fi"
+    }, {
+      "value" : "Boende",
+      "language" : "sv"
+    }, {
+      "value" : "Housing",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Denna servicegrupp omfattar hur man söker, hittar och skaffar en bostad, olika boendeformer, ekonomiskt stöd för boende, processer och tjänster i anslutning till flyttning inom Finland samt tjänster som berör befolkningsdatasystemet.",
+      "language" : "sv"
+    }, {
+      "value" : "Tähän palveluluokkaan kuuluvat asunnon etsiminen, löytäminen ja hankkiminen, erilaiset asumismuodot, asumisen taloudelliset tuet, Suomen sisällä tapahtuvaan muuttoon liittyvät prosessit ja palvelut sekä väestötietojärjestelmään liittyvät palvelut.",
+      "language" : "fi"
+    }, {
+      "value" : "This service class includes seeking, finding and purchasing a residence, different housing forms, housing benefits, processes and services related to migration within Finland, as well as services associated with the Population Information System.",
+      "language" : "en"
+    } ],
+    "code" : "P1",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1001",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "Korjaus- ja energia-avustukset",
+      "language" : "fi"
+    }, {
+      "value" : "Reparations- och energibidrag",
+      "language" : "sv"
+    }, {
+      "value" : "Renovation and energy grants",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "This service subclass contains grants for renovations and improving a building’s energy efficiency as well as the application processes and e-services related to these grants from the service point of view.",
+      "language" : "en"
+    }, {
+      "value" : "I denna underservicegrupp behandlas ur servicesynpunkt bidrag i anslutning till ombyggnad och till ökningen av byggnadens energieffektivitet, ansökningsprocesser för bidragen och ärendehanteringstjänster i samband med dem.",
+      "language" : "sv"
+    }, {
+      "value" : "Tässä alapalveluluokassa käsitellään palvelunäkökulmasta korjausrakentamiseen ja rakennuksen energiatehokkuuden lisäämiseen tarkoitettuja avustuksia, niiden hakuprosesseja ja niihin liittyviä asiointipalveluja.",
+      "language" : "fi"
+    } ],
+    "code" : "P2.2",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1009",
+    "parentId" : "dd30002b-be2b-4689-878a-60e93492cc87",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1007"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "hissiavustukset",
+      "language" : "fi"
+    }, {
+      "value" : "hissbidrag",
+      "language" : "sv"
+    }, {
+      "value" : "lift subsidies",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p66470",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p34757"
+  } ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Yritykset ja yhteisöt",
+      "language" : "fi"
+    }, {
+      "value" : "Businesses and non-government organizations",
+      "language" : "en"
+    }, {
+      "value" : "Företag och samfund",
+      "language" : "sv"
+    } ],
+    "code" : "KR2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "lifeEvents" : [ ],
+  "industrialClasses" : [ ],
+  "legislation" : [ ],
+  "keywords" : [ {
+    "value" : "jälkiasennushissi",
+    "language" : "fi"
+  } ],
+  "requirements" : [ {
+    "value" : "Kaupungin avustus myönnetään käytettävissä olevan määrärahan puitteissa sen jälkeen, kun ARA on hyväksynyt hankkeen kustannukset ja myöntänyt hankkeelle valtion hissiavustuksen.",
+    "language" : "fi"
+  }, {
+    "value" : "Staden beviljar understöd inom ramen för tillbudsstående anslag när ARA har godkänt kostnaderna för projektet och beviljat statligt hissunderstöd för projektet.",
+    "language" : "sv"
+  } ],
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "22cd9e41-dcc9-42d5-bc40-3dd64d27c030",
+      "name" : "Kiinteistötoimi"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "7de53057-287b-4899-b4b3-86291bf47b45",
+      "name" : "Hissiavustusanomus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "c38feebb-9dfa-4efc-b2f7-02b2fd282841",
+      "name" : "Maksatushakemus, hissi"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
   "organizations" : [ {
     "provisionType" : null,
     "organization" : {
@@ -274,5 +269,10 @@
     },
     "roleType" : "Producer",
     "additionalInformation" : [ ]
-  } ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "serviceVouchers" : [ ],
+  "serviceCollections" : [ ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-11-17T06:18:52.874538Z"
 }

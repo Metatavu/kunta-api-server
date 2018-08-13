@@ -1,14 +1,35 @@
 {
+  "id" : "610325e0-f485-4caa-bd3b-5bf74d5480c5",
   "sourceId" : null,
-  "keywords" : [ {
-    "value" : "sukunimitilasto",
-    "language" : "fi"
-  }, {
-    "value" : "etunimitilasto",
-    "language" : "fi"
-  } ],
-  "areas" : [ ],
+  "generalDescriptionId" : null,
   "type" : "Service",
+  "fundingType" : "PubliclyFunded",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Nimipalvelu",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Nimihaku",
+    "type" : "AlternativeName"
+  } ],
+  "serviceChargeType" : null,
+  "areaType" : "Nationwide",
+  "areas" : [ ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Nimipalvelun kautta voit hakea väestötietojärjestelmään tallennettujen etu- ja sukunimien lukumääriä Suomessa. Voit myös tutkia tilastoja yleisimmistä nimistä eri ajanjaksoilta. Vanhimmat nimitiedot ulottuvat jopa 1800-luvulle.\n\nVäestötietojärjestelmä sisältää myös harvinaisia, esimerkiksi ulkomaista alkuperää olevia etunimiä, joita ei voida automaattisesti hyväksyä nimeksi vastasyntyneelle lapselle Suomessa. Nimien rekisteröimisestä järjestelmään päättävät maistraatit ja seurakunnat.\n\nKäytettävissä olevat nimihaut: etunimihaku, sukunimihaku, yleisimmät etunimet, yleisimmät sukunimet.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Hae yksittäisiä etu- ja sukunimitietoja kirjoittamalla otsakepalkin hakuruutuun haettava nimi.\nKirjoita sukunimi virallisessa muodossa, esim. Virtanen, Virtanen-Lahtinen, von Taffelsson.\nKirjoita etunimi muodollisesti oikein esim. Maria, Matti-Juhani.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Nimipalvelun kautta voit hakea väestötietojärjestelmään tallennettujen etu- ja sukunimien lukumääriä Suomessa.",
+    "type" : "Summary"
+  } ],
+  "languages" : [ "fi", "en", "sv" ],
   "serviceClasses" : [ {
     "name" : [ {
       "value" : "Muuttaminen Suomen sisällä ja väestötiedot",
@@ -36,62 +57,7 @@
     "parentId" : "00c74cc0-46c5-48f3-ab36-6dc0a7bcaec1",
     "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1001"
   } ],
-  "fundingType" : "PubliclyFunded",
-  "areaType" : "Nationwide",
-  "publishingStatus" : "Published",
-  "generalDescriptionId" : null,
-  "serviceVouchers" : [ ],
-  "modified" : "2018-04-06T06:20:50.310033",
-  "id" : "610325e0-f485-4caa-bd3b-5bf74d5480c5",
-  "serviceChannels" : [ {
-    "serviceChannel" : {
-      "id" : "5ea39e0c-eb4b-402f-a43b-ace2f4baddd6",
-      "name" : "Nimipalvelu"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  } ],
-  "serviceVouchersInUse" : false,
-  "legislation" : [ ],
-  "requirements" : [ {
-    "value" : null,
-    "language" : "fi"
-  } ],
-  "languages" : [ "fi", "en", "sv" ],
-  "serviceCollections" : [ ],
-  "industrialClasses" : [ ],
-  "serviceChargeType" : null,
-  "serviceNames" : [ {
-    "language" : "fi",
-    "value" : "Nimipalvelu",
-    "type" : "Name"
-  }, {
-    "language" : "fi",
-    "value" : "Nimihaku",
-    "type" : "AlternativeName"
-  } ],
   "ontologyTerms" : [ ],
-  "lifeEvents" : [ {
-    "name" : [ {
-      "value" : "Att få barn",
-      "language" : "sv"
-    }, {
-      "value" : "Having a child",
-      "language" : "en"
-    }, {
-      "value" : "Lapsen saaminen",
-      "language" : "fi"
-    } ],
-    "code" : "KE1",
-    "ontologyType" : "LIFESITUATION",
-    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v3001",
-    "parentId" : null,
-    "parentUri" : null
-  } ],
   "targetGroups" : [ {
     "name" : [ {
       "value" : "Kansalaiset",
@@ -109,18 +75,47 @@
     "parentId" : null,
     "parentUri" : null
   } ],
-  "serviceDescriptions" : [ {
-    "language" : "fi",
-    "value" : "Nimipalvelun kautta voit hakea väestötietojärjestelmään tallennettujen etu- ja sukunimien lukumääriä Suomessa. Voit myös tutkia tilastoja yleisimmistä nimistä eri ajanjaksoilta. Vanhimmat nimitiedot ulottuvat jopa 1800-luvulle.\n\nVäestötietojärjestelmä sisältää myös harvinaisia, esimerkiksi ulkomaista alkuperää olevia etunimiä, joita ei voida automaattisesti hyväksyä nimeksi vastasyntyneelle lapselle Suomessa. Nimien rekisteröimisestä järjestelmään päättävät maistraatit ja seurakunnat.\n\nKäytettävissä olevat nimihaut: etunimihaku, sukunimihaku, yleisimmät etunimet, yleisimmät sukunimet.",
-    "type" : "Description"
+  "lifeEvents" : [ {
+    "name" : [ {
+      "value" : "Att få barn",
+      "language" : "sv"
+    }, {
+      "value" : "Having a child",
+      "language" : "en"
+    }, {
+      "value" : "Lapsen saaminen",
+      "language" : "fi"
+    } ],
+    "code" : "KE1",
+    "ontologyType" : "LIFESITUATION",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v3001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "industrialClasses" : [ ],
+  "legislation" : [ ],
+  "keywords" : [ {
+    "value" : "sukunimitilasto",
+    "language" : "fi"
   }, {
-    "language" : "fi",
-    "value" : "Hae yksittäisiä etu- ja sukunimitietoja kirjoittamalla otsakepalkin hakuruutuun haettava nimi.\nKirjoita sukunimi virallisessa muodossa, esim. Virtanen, Virtanen-Lahtinen, von Taffelsson.\nKirjoita etunimi muodollisesti oikein esim. Maria, Matti-Juhani.",
-    "type" : "UserInstruction"
-  }, {
-    "language" : "fi",
-    "value" : "Nimipalvelun kautta voit hakea väestötietojärjestelmään tallennettujen etu- ja sukunimien lukumääriä Suomessa.",
-    "type" : "Summary"
+    "value" : "etunimitilasto",
+    "language" : "fi"
+  } ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "5ea39e0c-eb4b-402f-a43b-ace2f4baddd6",
+      "name" : "Nimipalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
   } ],
   "organizations" : [ {
     "provisionType" : null,
@@ -138,5 +133,10 @@
     },
     "roleType" : "Producer",
     "additionalInformation" : [ ]
-  } ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "serviceVouchers" : [ ],
+  "serviceCollections" : [ ],
+  "publishingStatus" : "Published",
+  "modified" : "2018-04-06T06:20:50.310033Z"
 }

@@ -1,11 +1,51 @@
 {
+  "id" : "7cf9a776-808e-4e58-a904-863f48887ea2",
   "sourceId" : null,
-  "keywords" : [ {
-    "value" : "Palveluväylä, X-Road",
-    "language" : "fi"
-  } ],
-  "areas" : [ ],
+  "generalDescriptionId" : null,
   "type" : "Service",
+  "fundingType" : "PubliclyFunded",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Suomi.fi-palveluväylä",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Suomi.fi-palveluväylä",
+    "type" : "AlternativeName"
+  } ],
+  "serviceChargeType" : null,
+  "areaType" : "Nationwide",
+  "areas" : [ ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Suomi.fi-palveluväylä tarjoaa organisaatioille vakioidun tavan siirtää tietoja tietojärjestelmien välillä.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Suomi.fi-palveluväylä tarjoaa organisaatioille vakioidun tavan siirtää tietoja niin julkisten kuin yksityistenkin organisaatioiden tietojärjestelmien välillä.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  } ],
+  "languages" : [ "sv", "fi" ],
   "serviceClasses" : [ {
     "name" : [ {
       "value" : "Generella informations- ja förvaltningstjänster",
@@ -33,46 +73,7 @@
     "parentId" : null,
     "parentUri" : null
   } ],
-  "fundingType" : "PubliclyFunded",
-  "areaType" : "Nationwide",
-  "publishingStatus" : "Published",
-  "generalDescriptionId" : null,
-  "serviceVouchers" : [ ],
-  "modified" : "2017-09-11T00:00:00",
-  "id" : "7cf9a776-808e-4e58-a904-863f48887ea2",
-  "serviceChannels" : [ {
-    "serviceChannel" : {
-      "id" : "7374dd89-8e26-4402-90fe-c32942525476",
-      "name" : "Suomi.fi-palveluväylän käyttöönotto"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  } ],
-  "serviceVouchersInUse" : false,
-  "legislation" : [ ],
-  "requirements" : [ {
-    "value" : "Palvelun käyttäminen edellyttää palvelun käyttöönottoa ja käyttöehtojen hyväksymistä. Organisaation on toteutettava liittymät omien palveluidensa ja Suomi.fi-palveluväylän välille. Palveluiden rajapintoihin voidaan tarvita muutoksia yhteentoimivuuden toteuttamiseksi. Organisaatiolla tulee olla käytössään ns. liityntäpalvelin, jonka kautta tekninen liittyminen toteutetaan – tällainen voidaan tarvittaessa pystyttää käyttöönoton yhteydessä. Organisaatio tarvitsee myös Väestörekisterikeskuksen palvelinvarmenteen.",
-    "language" : "fi"
-  } ],
-  "languages" : [ "sv", "fi" ],
-  "serviceCollections" : [ ],
-  "industrialClasses" : [ ],
-  "serviceChargeType" : null,
-  "serviceNames" : [ {
-    "language" : "fi",
-    "value" : "Suomi.fi-palveluväylä",
-    "type" : "Name"
-  }, {
-    "language" : "fi",
-    "value" : "Suomi.fi-palveluväylä",
-    "type" : "AlternativeName"
-  } ],
   "ontologyTerms" : [ ],
-  "lifeEvents" : [ ],
   "targetGroups" : [ {
     "name" : [ {
       "value" : "Yritykset ja yhteisöt",
@@ -106,34 +107,28 @@
     "parentId" : null,
     "parentUri" : null
   } ],
-  "serviceDescriptions" : [ {
-    "language" : "fi",
-    "value" : null,
-    "type" : "UserInstruction"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ChargeTypeAdditionalInfo"
-  }, {
-    "language" : "fi",
-    "value" : "Suomi.fi-palveluväylä tarjoaa organisaatioille vakioidun tavan siirtää tietoja tietojärjestelmien välillä.",
-    "type" : "Summary"
-  }, {
-    "language" : "fi",
-    "value" : "Suomi.fi-palveluväylä tarjoaa organisaatioille vakioidun tavan siirtää tietoja niin julkisten kuin yksityistenkin organisaatioiden tietojärjestelmien välillä.",
-    "type" : "Description"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "DeadLine"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ProcessingTime"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ValidityTime"
+  "lifeEvents" : [ ],
+  "industrialClasses" : [ ],
+  "legislation" : [ ],
+  "keywords" : [ {
+    "value" : "Palveluväylä, X-Road",
+    "language" : "fi"
+  } ],
+  "requirements" : [ {
+    "value" : "Palvelun käyttäminen edellyttää palvelun käyttöönottoa ja käyttöehtojen hyväksymistä. Organisaation on toteutettava liittymät omien palveluidensa ja Suomi.fi-palveluväylän välille. Palveluiden rajapintoihin voidaan tarvita muutoksia yhteentoimivuuden toteuttamiseksi. Organisaatiolla tulee olla käytössään ns. liityntäpalvelin, jonka kautta tekninen liittyminen toteutetaan – tällainen voidaan tarvittaessa pystyttää käyttöönoton yhteydessä. Organisaatio tarvitsee myös Väestörekisterikeskuksen palvelinvarmenteen.",
+    "language" : "fi"
+  } ],
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "7374dd89-8e26-4402-90fe-c32942525476",
+      "name" : "Suomi.fi-palveluväylän käyttöönotto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
   } ],
   "organizations" : [ {
     "provisionType" : null,
@@ -151,5 +146,10 @@
     },
     "roleType" : "Producer",
     "additionalInformation" : [ ]
-  } ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "serviceVouchers" : [ ],
+  "serviceCollections" : [ ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-09-11T00:00:00Z"
 }

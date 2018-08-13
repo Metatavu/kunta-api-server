@@ -1,6 +1,16 @@
 {
+  "id" : "0739289c-cc26-4097-b029-fa9c58c8d4e9",
   "sourceId" : null,
-  "keywords" : [ ],
+  "generalDescriptionId" : "898c273d-9f22-41ad-b3c6-acbd13465b95",
+  "type" : "Service",
+  "fundingType" : "PubliclyFunded",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Rajankäynti asemakaava-alueella",
+    "type" : "Name"
+  } ],
+  "serviceChargeType" : "Chargeable",
+  "areaType" : "LimitedType",
   "areas" : [ {
     "type" : "Municipality",
     "code" : null,
@@ -19,7 +29,36 @@
       } ]
     } ]
   } ],
-  "type" : "Service",
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Rajankäynti on virallinen kiinteistötoimitus epäselvän rajan määrittämikseksi. Naantalin kaupunki tekee rajankäynnit sitovan tonttijaon alueella.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Naantalin kaupungin tekemän rajankäynnin hinta löytyy Ympäristöviraston maksuluettelosta Maanmittaus-osiosta.",
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Jos tontti, jolla rajankäynti tarvitaan, sijaitsee Manner-Naantalin ja Luonnonmaan asemakaava-alueilla, hae rajankäyntiä tulostettavalla lomakkeella kaupungilta. Merkitse lomakkeeseen haettavan toimenpiteen kohtaan \"Rajankäynti\". \n\nJos rajankäyntiä tarvitseva kiinteistö sijaitsee muualla kuin Manner-Naantalin ja Luonnonmaan asemakaava-alueilla, hae rajankäyntiä Maanmittauslaitokselta.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : "Rajankäynti on virallinen kiinteistötoimitus epäselvän kiinteistörajan määrittämikseksi. Rajankäynnissä rakennetaan ja laillistetaan uusi rajamerkki maastoon kadonneen tilalle. Raja käydään aina sen mukaisesti, mihin se on edellisellä kerralla kiinteistötoimituksessa vahvistunut. \n\nNaantalin kaupunki tekee rajankäynnit sitovan tonttijaon, eli Manner-Naantalin ja Luonnonmaan asemakaavoitetuilla alueilla. Muilla alueilla rajankäynneistä vastaa Maanmittauslaitos.",
+    "type" : "Description"
+  } ],
+  "languages" : [ "fi" ],
   "serviceClasses" : [ {
     "name" : [ {
       "value" : "Maankäyttö, kaavoitus ja tontit",
@@ -46,51 +85,6 @@
     "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1010",
     "parentId" : "dd30002b-be2b-4689-878a-60e93492cc87",
     "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1007"
-  } ],
-  "fundingType" : "PubliclyFunded",
-  "areaType" : "LimitedType",
-  "publishingStatus" : "Published",
-  "generalDescriptionId" : "898c273d-9f22-41ad-b3c6-acbd13465b95",
-  "serviceVouchers" : [ ],
-  "modified" : "2017-09-29T10:09:55.444222",
-  "id" : "0739289c-cc26-4097-b029-fa9c58c8d4e9",
-  "serviceChannels" : [ {
-    "serviceChannel" : {
-      "id" : "14a9874a-8b9b-488a-aec5-5321dd36678f",
-      "name" : "Kiinteistötoimitushakemus"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
-      "id" : "32834fb0-9e06-44a2-aed4-2cc61751e8a8",
-      "name" : "Ympäristöviraston maksuluettelo"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  } ],
-  "serviceVouchersInUse" : false,
-  "legislation" : [ ],
-  "requirements" : [ {
-    "value" : null,
-    "language" : "fi"
-  } ],
-  "languages" : [ "fi" ],
-  "serviceCollections" : [ ],
-  "industrialClasses" : [ ],
-  "serviceChargeType" : "Chargeable",
-  "serviceNames" : [ {
-    "language" : "fi",
-    "value" : "Rajankäynti asemakaava-alueella",
-    "type" : "Name"
   } ],
   "ontologyTerms" : [ {
     "name" : [ {
@@ -125,7 +119,6 @@
     "parentId" : null,
     "parentUri" : "http://www.yso.fi/onto/koko/p13588"
   } ],
-  "lifeEvents" : [ ],
   "targetGroups" : [ {
     "name" : [ {
       "value" : "Yritykset ja yhteisöt",
@@ -159,34 +152,36 @@
     "parentId" : null,
     "parentUri" : null
   } ],
-  "serviceDescriptions" : [ {
-    "language" : "fi",
-    "value" : "Rajankäynti on virallinen kiinteistötoimitus epäselvän rajan määrittämikseksi. Naantalin kaupunki tekee rajankäynnit sitovan tonttijaon alueella.",
-    "type" : "Summary"
-  }, {
-    "language" : "fi",
-    "value" : "Naantalin kaupungin tekemän rajankäynnin hinta löytyy Ympäristöviraston maksuluettelosta Maanmittaus-osiosta.",
-    "type" : "ChargeTypeAdditionalInfo"
-  }, {
-    "language" : "fi",
-    "value" : "Jos tontti, jolla rajankäynti tarvitaan, sijaitsee Manner-Naantalin ja Luonnonmaan asemakaava-alueilla, hae rajankäyntiä tulostettavalla lomakkeella kaupungilta. Merkitse lomakkeeseen haettavan toimenpiteen kohtaan \"Rajankäynti\". \n\nJos rajankäyntiä tarvitseva kiinteistö sijaitsee muualla kuin Manner-Naantalin ja Luonnonmaan asemakaava-alueilla, hae rajankäyntiä Maanmittauslaitokselta.",
-    "type" : "UserInstruction"
-  }, {
-    "language" : "fi",
+  "lifeEvents" : [ ],
+  "industrialClasses" : [ ],
+  "legislation" : [ ],
+  "keywords" : [ ],
+  "requirements" : [ {
     "value" : null,
-    "type" : "DeadLine"
+    "language" : "fi"
+  } ],
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "14a9874a-8b9b-488a-aec5-5321dd36678f",
+      "name" : "Kiinteistötoimitushakemus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
   }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ProcessingTime"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ValidityTime"
-  }, {
-    "language" : "fi",
-    "value" : "Rajankäynti on virallinen kiinteistötoimitus epäselvän kiinteistörajan määrittämikseksi. Rajankäynnissä rakennetaan ja laillistetaan uusi rajamerkki maastoon kadonneen tilalle. Raja käydään aina sen mukaisesti, mihin se on edellisellä kerralla kiinteistötoimituksessa vahvistunut. \n\nNaantalin kaupunki tekee rajankäynnit sitovan tonttijaon, eli Manner-Naantalin ja Luonnonmaan asemakaavoitetuilla alueilla. Muilla alueilla rajankäynneistä vastaa Maanmittauslaitos.",
-    "type" : "Description"
+    "serviceChannel" : {
+      "id" : "32834fb0-9e06-44a2-aed4-2cc61751e8a8",
+      "name" : "Ympäristöviraston maksuluettelo"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
   } ],
   "organizations" : [ {
     "provisionType" : null,
@@ -204,5 +199,10 @@
     },
     "roleType" : "Producer",
     "additionalInformation" : [ ]
-  } ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "serviceVouchers" : [ ],
+  "serviceCollections" : [ ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-09-29T10:09:55.444222Z"
 }

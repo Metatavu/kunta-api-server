@@ -1,6 +1,24 @@
 {
+  "id" : "6ccb671f-05cd-46cf-a0a4-4f98d43dfd37",
   "sourceId" : null,
-  "keywords" : [ ],
+  "generalDescriptionId" : null,
+  "type" : "Service",
+  "fundingType" : "PubliclyFunded",
+  "serviceNames" : [ {
+    "language" : "sv",
+    "value" : "Simhallen",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Uimahalli",
+    "type" : "Name"
+  }, {
+    "language" : "en",
+    "value" : "Swimming Centre",
+    "type" : "Name"
+  } ],
+  "serviceChargeType" : "Chargeable",
+  "areaType" : "LimitedType",
   "areas" : [ {
     "type" : "Municipality",
     "code" : null,
@@ -18,155 +36,6 @@
         "language" : "en"
       } ]
     } ]
-  } ],
-  "type" : "Service",
-  "serviceClasses" : [ {
-    "name" : [ {
-      "value" : "Liikunta ja urheilu",
-      "language" : "fi"
-    }, {
-      "value" : "Motion och idrott",
-      "language" : "sv"
-    }, {
-      "value" : "Sports and exercise",
-      "language" : "en"
-    } ],
-    "description" : [ {
-      "value" : "Tähän palvelualaluokkaan kuuluvat liikuntapaikat, urheiluopistot ja niiden palvelut, liikunnan tietopalvelut ja urheiluseurojen sekä liikuntajärjestöjen toiminta.",
-      "language" : "fi"
-    }, {
-      "value" : "This service subclass contains sports facilities, sports institutes and their services, exercise information services and the activities of sports clubs and sports associations.",
-      "language" : "en"
-    }, {
-      "value" : "Denna serviceundergrupp omfattar motionsställen, idrottsinstitut och deras tjänster, informationstjänster för motion samt idrottsföreningars och motionsorganisationers verksamhet.",
-      "language" : "sv"
-    } ],
-    "code" : "P27.1",
-    "ontologyType" : "PTVL",
-    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1211",
-    "parentId" : "175762f6-53cd-4d29-a285-625bfb421b21",
-    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1210"
-  } ],
-  "fundingType" : "PubliclyFunded",
-  "areaType" : "LimitedType",
-  "publishingStatus" : "Published",
-  "generalDescriptionId" : null,
-  "serviceVouchers" : [ ],
-  "modified" : "2017-09-19T12:11:17.435834",
-  "id" : "6ccb671f-05cd-46cf-a0a4-4f98d43dfd37",
-  "serviceChannels" : [ {
-    "serviceChannel" : {
-      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
-      "name" : "Vaasan Palautepalvelu"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
-      "id" : "5aff3fde-9e88-4f1d-9e8a-8be9ebf6a098",
-      "name" : "Vaasan uimahalli"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
-      "id" : "8144cba3-258a-417b-a857-884c146e205c",
-      "name" : "Uimahallin verkkosivu"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  } ],
-  "serviceVouchersInUse" : false,
-  "legislation" : [ ],
-  "requirements" : [ {
-    "value" : null,
-    "language" : "en"
-  }, {
-    "value" : null,
-    "language" : "sv"
-  }, {
-    "value" : null,
-    "language" : "fi"
-  } ],
-  "languages" : [ "fi", "sv", "en" ],
-  "serviceCollections" : [ ],
-  "industrialClasses" : [ ],
-  "serviceChargeType" : "Chargeable",
-  "serviceNames" : [ {
-    "language" : "sv",
-    "value" : "Simhallen",
-    "type" : "Name"
-  }, {
-    "language" : "fi",
-    "value" : "Uimahalli",
-    "type" : "Name"
-  }, {
-    "language" : "en",
-    "value" : "Swimming Centre",
-    "type" : "Name"
-  } ],
-  "ontologyTerms" : [ {
-    "name" : [ {
-      "value" : "uimahallit",
-      "language" : "fi"
-    }, {
-      "value" : "simhallar",
-      "language" : "sv"
-    }, {
-      "value" : "indoor swimming pools (sports halls)",
-      "language" : "en"
-    } ],
-    "code" : null,
-    "ontologyType" : "JUPO",
-    "uri" : "http://www.yso.fi/onto/koko/p11070",
-    "parentId" : null,
-    "parentUri" : "http://www.yso.fi/onto/koko/p75672;http://www.yso.fi/onto/koko/p66287;http://www.yso.fi/onto/koko/p35315;http://www.yso.fi/onto/koko/p33522"
-  }, {
-    "name" : [ {
-      "value" : "simning",
-      "language" : "sv"
-    }, {
-      "value" : "uinti",
-      "language" : "fi"
-    }, {
-      "value" : "swimming",
-      "language" : "en"
-    } ],
-    "code" : null,
-    "ontologyType" : "JUPO",
-    "uri" : "http://www.yso.fi/onto/koko/p32246",
-    "parentId" : null,
-    "parentUri" : "http://www.yso.fi/onto/koko/p18621;http://www.yso.fi/onto/koko/p48399"
-  } ],
-  "lifeEvents" : [ ],
-  "targetGroups" : [ {
-    "name" : [ {
-      "value" : "Kansalaiset",
-      "language" : "fi"
-    }, {
-      "value" : "Citizens",
-      "language" : "en"
-    }, {
-      "value" : "Medborgare",
-      "language" : "sv"
-    } ],
-    "code" : "KR1",
-    "ontologyType" : "TARGETGROUP",
-    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
-    "parentId" : null,
-    "parentUri" : null
   } ],
   "serviceDescriptions" : [ {
     "language" : "en",
@@ -253,6 +122,132 @@
     "value" : null,
     "type" : "ProcessingTime"
   } ],
+  "languages" : [ "fi", "sv", "en" ],
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Liikunta ja urheilu",
+      "language" : "fi"
+    }, {
+      "value" : "Motion och idrott",
+      "language" : "sv"
+    }, {
+      "value" : "Sports and exercise",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Tähän palvelualaluokkaan kuuluvat liikuntapaikat, urheiluopistot ja niiden palvelut, liikunnan tietopalvelut ja urheiluseurojen sekä liikuntajärjestöjen toiminta.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains sports facilities, sports institutes and their services, exercise information services and the activities of sports clubs and sports associations.",
+      "language" : "en"
+    }, {
+      "value" : "Denna serviceundergrupp omfattar motionsställen, idrottsinstitut och deras tjänster, informationstjänster för motion samt idrottsföreningars och motionsorganisationers verksamhet.",
+      "language" : "sv"
+    } ],
+    "code" : "P27.1",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1211",
+    "parentId" : "175762f6-53cd-4d29-a285-625bfb421b21",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1210"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "uimahallit",
+      "language" : "fi"
+    }, {
+      "value" : "simhallar",
+      "language" : "sv"
+    }, {
+      "value" : "indoor swimming pools (sports halls)",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p11070",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p75672;http://www.yso.fi/onto/koko/p66287;http://www.yso.fi/onto/koko/p35315;http://www.yso.fi/onto/koko/p33522"
+  }, {
+    "name" : [ {
+      "value" : "simning",
+      "language" : "sv"
+    }, {
+      "value" : "uinti",
+      "language" : "fi"
+    }, {
+      "value" : "swimming",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p32246",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p18621;http://www.yso.fi/onto/koko/p48399"
+  } ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "lifeEvents" : [ ],
+  "industrialClasses" : [ ],
+  "legislation" : [ ],
+  "keywords" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "en"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  }, {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "5aff3fde-9e88-4f1d-9e8a-8be9ebf6a098",
+      "name" : "Vaasan uimahalli"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "8144cba3-258a-417b-a857-884c146e205c",
+      "name" : "Uimahallin verkkosivu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
   "organizations" : [ {
     "provisionType" : null,
     "organization" : {
@@ -269,5 +264,10 @@
     },
     "roleType" : "Producer",
     "additionalInformation" : [ ]
-  } ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "serviceVouchers" : [ ],
+  "serviceCollections" : [ ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-09-19T12:11:17.435834Z"
 }

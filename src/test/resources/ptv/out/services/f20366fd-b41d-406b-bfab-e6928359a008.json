@@ -1,6 +1,16 @@
 {
+  "id" : "f20366fd-b41d-406b-bfab-e6928359a008",
   "sourceId" : null,
-  "keywords" : [ ],
+  "generalDescriptionId" : "9e1319d5-ec73-463c-98a2-33e9e8667942",
+  "type" : "Service",
+  "fundingType" : "PubliclyFunded",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Painotettu opetus",
+    "type" : "Name"
+  } ],
+  "serviceChargeType" : null,
+  "areaType" : "LimitedType",
   "areas" : [ {
     "type" : "Municipality",
     "code" : null,
@@ -19,7 +29,36 @@
       } ]
     } ]
   } ],
-  "type" : "Service",
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : "Naantalissa perusopetuksen oppilas voi opiskella englannin kielirikasteisella, luonnontieteellis-matemaattisella tai liikuntaa painottavalla luokalla.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Naantalissa perusopetuksen oppilas voi opiskella englannin kielirikasteisella, luonnontieteellis-matemaattisella tai liikuntaa painottavalla luokalla. Painotettua opetusta järjestetään vain naantalilaisille oppilaille.\n\nEnglannin kielirikasteiset luokat Kuparivuoren (1. - 6. lk) ja Maijamäen (7. - 9. lk) koulussa:\n* Opiskelu on suunnattu äidinkielenään suomea puhuville oppilaille tai niille, joiden suomen kielen taito vastaa äidinkielen tasoa. Englannin kielen osuus opetuksesta on noin 25 %, sitä käytetään usean oppiaineen tunneilla sekä jokapäiväisissä rutiineissa. Opetuksen tavoitteena saada oppilas innostumaan englannin kielestä sekä tutustuttaa hänet vieraisiin kulttuureihin.  Kielirikasteiselle luokalle pyritään kouluun ilmoittautumisen yhteydessä. Pyrkijöille järjestetään kouluvalmiustesti sekä kielellisten valmiuksien lisätesti koulupsykologin valvonnassa. Luokalle otetaan enintään 24 oppilasta. \n* Kuparivuoren koulussa alkanut kielirikasteinen opetus jatkuu läpi yläkoulun omana ryhmänään Maijamäen koulussa. Ryhmää voidaan täydentää pääsykokeen kautta 7. luokalle, mikäli ryhmässä on tilaa.\nLuonnontieteellis-matemaattiset luokat Maijamäen koulussa (7. - 9. lk):\n* LUMA-luokan oppilailla on yläkoulun aikana yhteensä 2+2 viikkotuntia enemmän opetusta luonnontieteissä ja matematiikassa. \nLiikuntapainotteiset luokat Suopellon koulussa (7. - 9. lk):\n* LILU-luokan oppilailla on yläkoulun aikana yhteensä 1+2+2 viikkotuntia enemmän opetusta liikunnassa. Liikuntaluokan tavoitteina ovat monipuolisen liikunnanopetuksen tarjoaminen, liikunnan määrän lisääminen, uusiin liikuntalajeihin tutustuminen sekä oman liikuntalajin harrastamisen tukeminen. Tavoitteena on myös tukea nuoren kasvua ja kehitystä siten, että koulunkäynti, liikuntaharrastukset ja muu vapaa-aika tukevat tasapainoisesti toisiaan.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Englannin kielirikasteiselle 1. luokalle pyritään kouluun ilmoittautumisen yhteydessä. Pyrkijöille järjestetään kouluvalmiustesti sekä kielellisten valmiuksien lisätesti koulupsykologin valvonnassa.  \n\nYläkoulujen painotetun opetuksen luokille järjestetään erilliset pääsykokeet, joista tiedotetaan tarkemmin 6.-luokkalaisille ja heidän huoltajilleen järjestettävässä vanhempainillassa.",
+    "type" : "UserInstruction"
+  } ],
+  "languages" : [ "fi" ],
   "serviceClasses" : [ {
     "name" : [ {
       "value" : "Perusopetus",
@@ -46,84 +85,6 @@
     "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1062",
     "parentId" : "fd1bb60e-4206-4f0a-994f-8ffcb4ffaaa4",
     "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1060"
-  } ],
-  "fundingType" : "PubliclyFunded",
-  "areaType" : "LimitedType",
-  "publishingStatus" : "Published",
-  "generalDescriptionId" : "9e1319d5-ec73-463c-98a2-33e9e8667942",
-  "serviceVouchers" : [ ],
-  "modified" : "2017-10-20T10:42:53.439749",
-  "id" : "f20366fd-b41d-406b-bfab-e6928359a008",
-  "serviceChannels" : [ {
-    "serviceChannel" : {
-      "id" : "20c61f5a-e693-480d-a16e-24b86bd3b9f7",
-      "name" : "Maijamäen koulu"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
-      "id" : "581397f6-9667-41fe-8275-7a383d78d493",
-      "name" : "Kielirikasteinen opetus Kuparivuoren koulussa"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
-      "id" : "6894ee49-f5ac-4a69-b9f0-bf3de2a02f0c",
-      "name" : "Naantalin kaupungin johtava rehtori"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
-      "id" : "79ef34ea-b731-4c0d-ac77-d139be9eb84c",
-      "name" : "Suopellon koulu"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
-      "id" : "9f9f9de3-e74b-4924-90b2-4a003bfebf30",
-      "name" : "Kuparivuoren koulu"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  } ],
-  "serviceVouchersInUse" : false,
-  "legislation" : [ ],
-  "requirements" : [ {
-    "value" : "Painotettuun opetukseen voivat hakea naantalilaiset peruskoulun oppilaat.  Oppilaat valitaan testien ja pääsykokeiden perusteella.",
-    "language" : "fi"
-  } ],
-  "languages" : [ "fi" ],
-  "serviceCollections" : [ ],
-  "industrialClasses" : [ ],
-  "serviceChargeType" : null,
-  "serviceNames" : [ {
-    "language" : "fi",
-    "value" : "Painotettu opetus",
-    "type" : "Name"
   } ],
   "ontologyTerms" : [ {
     "name" : [ {
@@ -203,7 +164,6 @@
     "parentId" : null,
     "parentUri" : "http://www.yso.fi/onto/koko/p33827"
   } ],
-  "lifeEvents" : [ ],
   "targetGroups" : [ {
     "name" : [ {
       "value" : "Lapset ja lapsiperheet",
@@ -237,34 +197,69 @@
     "parentId" : null,
     "parentUri" : null
   } ],
-  "serviceDescriptions" : [ {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ValidityTime"
+  "lifeEvents" : [ ],
+  "industrialClasses" : [ ],
+  "legislation" : [ ],
+  "keywords" : [ ],
+  "requirements" : [ {
+    "value" : "Painotettuun opetukseen voivat hakea naantalilaiset peruskoulun oppilaat.  Oppilaat valitaan testien ja pääsykokeiden perusteella.",
+    "language" : "fi"
+  } ],
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "20c61f5a-e693-480d-a16e-24b86bd3b9f7",
+      "name" : "Maijamäen koulu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
   }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ChargeTypeAdditionalInfo"
+    "serviceChannel" : {
+      "id" : "581397f6-9667-41fe-8275-7a383d78d493",
+      "name" : "Kielirikasteinen opetus Kuparivuoren koulussa"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
   }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "DeadLine"
+    "serviceChannel" : {
+      "id" : "6894ee49-f5ac-4a69-b9f0-bf3de2a02f0c",
+      "name" : "Naantalin kaupungin johtava rehtori"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
   }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ProcessingTime"
+    "serviceChannel" : {
+      "id" : "79ef34ea-b731-4c0d-ac77-d139be9eb84c",
+      "name" : "Suopellon koulu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
   }, {
-    "language" : "fi",
-    "value" : "Naantalissa perusopetuksen oppilas voi opiskella englannin kielirikasteisella, luonnontieteellis-matemaattisella tai liikuntaa painottavalla luokalla.",
-    "type" : "Summary"
-  }, {
-    "language" : "fi",
-    "value" : "Naantalissa perusopetuksen oppilas voi opiskella englannin kielirikasteisella, luonnontieteellis-matemaattisella tai liikuntaa painottavalla luokalla. Painotettua opetusta järjestetään vain naantalilaisille oppilaille.\n\nEnglannin kielirikasteiset luokat Kuparivuoren (1. - 6. lk) ja Maijamäen (7. - 9. lk) koulussa:\n* Opiskelu on suunnattu äidinkielenään suomea puhuville oppilaille tai niille, joiden suomen kielen taito vastaa äidinkielen tasoa. Englannin kielen osuus opetuksesta on noin 25 %, sitä käytetään usean oppiaineen tunneilla sekä jokapäiväisissä rutiineissa. Opetuksen tavoitteena saada oppilas innostumaan englannin kielestä sekä tutustuttaa hänet vieraisiin kulttuureihin.  Kielirikasteiselle luokalle pyritään kouluun ilmoittautumisen yhteydessä. Pyrkijöille järjestetään kouluvalmiustesti sekä kielellisten valmiuksien lisätesti koulupsykologin valvonnassa. Luokalle otetaan enintään 24 oppilasta. \n* Kuparivuoren koulussa alkanut kielirikasteinen opetus jatkuu läpi yläkoulun omana ryhmänään Maijamäen koulussa. Ryhmää voidaan täydentää pääsykokeen kautta 7. luokalle, mikäli ryhmässä on tilaa.\nLuonnontieteellis-matemaattiset luokat Maijamäen koulussa (7. - 9. lk):\n* LUMA-luokan oppilailla on yläkoulun aikana yhteensä 2+2 viikkotuntia enemmän opetusta luonnontieteissä ja matematiikassa. \nLiikuntapainotteiset luokat Suopellon koulussa (7. - 9. lk):\n* LILU-luokan oppilailla on yläkoulun aikana yhteensä 1+2+2 viikkotuntia enemmän opetusta liikunnassa. Liikuntaluokan tavoitteina ovat monipuolisen liikunnanopetuksen tarjoaminen, liikunnan määrän lisääminen, uusiin liikuntalajeihin tutustuminen sekä oman liikuntalajin harrastamisen tukeminen. Tavoitteena on myös tukea nuoren kasvua ja kehitystä siten, että koulunkäynti, liikuntaharrastukset ja muu vapaa-aika tukevat tasapainoisesti toisiaan.",
-    "type" : "Description"
-  }, {
-    "language" : "fi",
-    "value" : "Englannin kielirikasteiselle 1. luokalle pyritään kouluun ilmoittautumisen yhteydessä. Pyrkijöille järjestetään kouluvalmiustesti sekä kielellisten valmiuksien lisätesti koulupsykologin valvonnassa.  \n\nYläkoulujen painotetun opetuksen luokille järjestetään erilliset pääsykokeet, joista tiedotetaan tarkemmin 6.-luokkalaisille ja heidän huoltajilleen järjestettävässä vanhempainillassa.",
-    "type" : "UserInstruction"
+    "serviceChannel" : {
+      "id" : "9f9f9de3-e74b-4924-90b2-4a003bfebf30",
+      "name" : "Kuparivuoren koulu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
   } ],
   "organizations" : [ {
     "provisionType" : null,
@@ -282,5 +277,10 @@
     },
     "roleType" : "Producer",
     "additionalInformation" : [ ]
-  } ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "serviceVouchers" : [ ],
+  "serviceCollections" : [ ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-20T10:42:53.439749Z"
 }

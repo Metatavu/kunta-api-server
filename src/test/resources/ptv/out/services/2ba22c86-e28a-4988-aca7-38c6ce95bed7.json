@@ -1,6 +1,20 @@
 {
+  "id" : "2ba22c86-e28a-4988-aca7-38c6ce95bed7",
   "sourceId" : null,
-  "keywords" : [ ],
+  "generalDescriptionId" : null,
+  "type" : "Service",
+  "fundingType" : "PubliclyFunded",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Matonpesupaikat",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Mattvättningsställe",
+    "type" : "Name"
+  } ],
+  "serviceChargeType" : "FreeOfCharge",
+  "areaType" : "LimitedType",
   "areas" : [ {
     "type" : "Municipality",
     "code" : null,
@@ -18,196 +32,6 @@
         "language" : "en"
       } ]
     } ]
-  } ],
-  "type" : "Service",
-  "serviceClasses" : [ {
-    "name" : [ {
-      "value" : "Asuminen",
-      "language" : "fi"
-    }, {
-      "value" : "Boende",
-      "language" : "sv"
-    }, {
-      "value" : "Housing",
-      "language" : "en"
-    } ],
-    "description" : [ {
-      "value" : "Denna servicegrupp omfattar hur man söker, hittar och skaffar en bostad, olika boendeformer, ekonomiskt stöd för boende, processer och tjänster i anslutning till flyttning inom Finland samt tjänster som berör befolkningsdatasystemet.",
-      "language" : "sv"
-    }, {
-      "value" : "Tähän palveluluokkaan kuuluvat asunnon etsiminen, löytäminen ja hankkiminen, erilaiset asumismuodot, asumisen taloudelliset tuet, Suomen sisällä tapahtuvaan muuttoon liittyvät prosessit ja palvelut sekä väestötietojärjestelmään liittyvät palvelut.",
-      "language" : "fi"
-    }, {
-      "value" : "This service class includes seeking, finding and purchasing a residence, different housing forms, housing benefits, processes and services related to migration within Finland, as well as services associated with the Population Information System.",
-      "language" : "en"
-    } ],
-    "code" : "P1",
-    "ontologyType" : "PTVL",
-    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1001",
-    "parentId" : null,
-    "parentUri" : null
-  }, {
-    "name" : [ {
-      "value" : "Ympäristö",
-      "language" : "fi"
-    }, {
-      "value" : "Miljö",
-      "language" : "sv"
-    }, {
-      "value" : "The environment",
-      "language" : "en"
-    } ],
-    "description" : [ {
-      "value" : "I denna servicegrupp behandlas miljörelaterade tjänster med tanke på såväl naturliga miljöer som boendemiljöer och övriga bebyggda miljöer.",
-      "language" : "sv"
-    }, {
-      "value" : "Tässä palveluluokassa käsitellään ympäristöön liittyviä palveluja sekä luonnonympäristöjen että asumis- ja muun rakennetun ympäristön kannalta.",
-      "language" : "fi"
-    }, {
-      "value" : "This service class contains services related to the environment, including both natural environments and living and other built environments.",
-      "language" : "en"
-    } ],
-    "code" : "P23",
-    "ontologyType" : "PTVL",
-    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1184",
-    "parentId" : null,
-    "parentUri" : null
-  } ],
-  "fundingType" : "PubliclyFunded",
-  "areaType" : "LimitedType",
-  "publishingStatus" : "Published",
-  "generalDescriptionId" : null,
-  "serviceVouchers" : [ ],
-  "modified" : "2017-11-02T10:48:44.609608",
-  "id" : "2ba22c86-e28a-4988-aca7-38c6ce95bed7",
-  "serviceChannels" : [ {
-    "serviceChannel" : {
-      "id" : "39144ed7-4fd6-49aa-a764-e9c19796f357",
-      "name" : "Laiturivastaava / Piiripuutarhuri"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
-      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
-      "name" : "Vaasan Palautepalvelu"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
-      "id" : "64221f78-3c09-4006-8610-d16995d7cc7f",
-      "name" : "Viheralueyksikkö"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
-      "id" : "8050efdb-186f-48a3-9336-0fdf85bdc285",
-      "name" : "Matonpesupaikkojen päivystysnumero"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
-      "id" : "95d059a9-f583-4e6f-a4a3-58ed8f718649",
-      "name" : "Työnjohtaja"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  } ],
-  "serviceVouchersInUse" : false,
-  "legislation" : [ ],
-  "requirements" : [ {
-    "value" : "\n",
-    "language" : "fi"
-  }, {
-    "value" : null,
-    "language" : "sv"
-  } ],
-  "languages" : [ "fi", "sv" ],
-  "serviceCollections" : [ ],
-  "industrialClasses" : [ ],
-  "serviceChargeType" : "FreeOfCharge",
-  "serviceNames" : [ {
-    "language" : "fi",
-    "value" : "Matonpesupaikat",
-    "type" : "Name"
-  }, {
-    "language" : "sv",
-    "value" : "Mattvättningsställe",
-    "type" : "Name"
-  } ],
-  "ontologyTerms" : [ {
-    "name" : [ {
-      "value" : "mattvättställen",
-      "language" : "sv"
-    }, {
-      "value" : "matonpesupaikat",
-      "language" : "fi"
-    }, {
-      "value" : "carpet washing places",
-      "language" : "en"
-    } ],
-    "code" : null,
-    "ontologyType" : "JUPO",
-    "uri" : "http://www.yso.fi/onto/koko/p69286",
-    "parentId" : null,
-    "parentUri" : "http://www.yso.fi/onto/koko/p11148"
-  }, {
-    "name" : [ {
-      "value" : "mattbryggor",
-      "language" : "sv"
-    }, {
-      "value" : "mattolaiturit",
-      "language" : "fi"
-    }, {
-      "value" : "piers for washing carpets",
-      "language" : "en"
-    } ],
-    "code" : null,
-    "ontologyType" : "JUPO",
-    "uri" : "http://www.yso.fi/onto/koko/p67820",
-    "parentId" : null,
-    "parentUri" : "http://www.yso.fi/onto/koko/p69286"
-  } ],
-  "lifeEvents" : [ ],
-  "targetGroups" : [ {
-    "name" : [ {
-      "value" : "Kansalaiset",
-      "language" : "fi"
-    }, {
-      "value" : "Citizens",
-      "language" : "en"
-    }, {
-      "value" : "Medborgare",
-      "language" : "sv"
-    } ],
-    "code" : "KR1",
-    "ontologyType" : "TARGETGROUP",
-    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
-    "parentId" : null,
-    "parentUri" : null
   } ],
   "serviceDescriptions" : [ {
     "language" : "sv",
@@ -266,6 +90,177 @@
     "value" : "Vaasassa on kaksi matonpesupaikkaa, Hietasaaressa ja Palosaarella Sundin rannassa. \n\nKäyttövesi pumpataan merestä ja likavesi menee jätevesiviemäriin. Pesupaikoilla on kuusi pienempää ja kaksi suurempaa pesuallasta sekä mankeli mattojen kuivausta varten.\n\nPesupaikoilta löytyy myös kuivaustelineet.\n\nPesupaikan käyttäjät ovat vastuussa matonpesupaikan siisteydestä ja omaisuudestaan.",
     "type" : "Description"
   } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Asuminen",
+      "language" : "fi"
+    }, {
+      "value" : "Boende",
+      "language" : "sv"
+    }, {
+      "value" : "Housing",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Denna servicegrupp omfattar hur man söker, hittar och skaffar en bostad, olika boendeformer, ekonomiskt stöd för boende, processer och tjänster i anslutning till flyttning inom Finland samt tjänster som berör befolkningsdatasystemet.",
+      "language" : "sv"
+    }, {
+      "value" : "Tähän palveluluokkaan kuuluvat asunnon etsiminen, löytäminen ja hankkiminen, erilaiset asumismuodot, asumisen taloudelliset tuet, Suomen sisällä tapahtuvaan muuttoon liittyvät prosessit ja palvelut sekä väestötietojärjestelmään liittyvät palvelut.",
+      "language" : "fi"
+    }, {
+      "value" : "This service class includes seeking, finding and purchasing a residence, different housing forms, housing benefits, processes and services related to migration within Finland, as well as services associated with the Population Information System.",
+      "language" : "en"
+    } ],
+    "code" : "P1",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1001",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "Ympäristö",
+      "language" : "fi"
+    }, {
+      "value" : "Miljö",
+      "language" : "sv"
+    }, {
+      "value" : "The environment",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "I denna servicegrupp behandlas miljörelaterade tjänster med tanke på såväl naturliga miljöer som boendemiljöer och övriga bebyggda miljöer.",
+      "language" : "sv"
+    }, {
+      "value" : "Tässä palveluluokassa käsitellään ympäristöön liittyviä palveluja sekä luonnonympäristöjen että asumis- ja muun rakennetun ympäristön kannalta.",
+      "language" : "fi"
+    }, {
+      "value" : "This service class contains services related to the environment, including both natural environments and living and other built environments.",
+      "language" : "en"
+    } ],
+    "code" : "P23",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1184",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "mattvättställen",
+      "language" : "sv"
+    }, {
+      "value" : "matonpesupaikat",
+      "language" : "fi"
+    }, {
+      "value" : "carpet washing places",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p69286",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p11148"
+  }, {
+    "name" : [ {
+      "value" : "mattbryggor",
+      "language" : "sv"
+    }, {
+      "value" : "mattolaiturit",
+      "language" : "fi"
+    }, {
+      "value" : "piers for washing carpets",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p67820",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p69286"
+  } ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "lifeEvents" : [ ],
+  "industrialClasses" : [ ],
+  "legislation" : [ ],
+  "keywords" : [ ],
+  "requirements" : [ {
+    "value" : "\n",
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "39144ed7-4fd6-49aa-a764-e9c19796f357",
+      "name" : "Laiturivastaava / Piiripuutarhuri"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "64221f78-3c09-4006-8610-d16995d7cc7f",
+      "name" : "Viheralueyksikkö"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "8050efdb-186f-48a3-9336-0fdf85bdc285",
+      "name" : "Matonpesupaikkojen päivystysnumero"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "95d059a9-f583-4e6f-a4a3-58ed8f718649",
+      "name" : "Työnjohtaja"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
   "organizations" : [ {
     "provisionType" : null,
     "organization" : {
@@ -282,5 +277,10 @@
     },
     "roleType" : "Producer",
     "additionalInformation" : [ ]
-  } ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "serviceVouchers" : [ ],
+  "serviceCollections" : [ ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-11-02T10:48:44.609608Z"
 }

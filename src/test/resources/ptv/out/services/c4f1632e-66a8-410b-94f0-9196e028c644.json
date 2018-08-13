@@ -1,6 +1,16 @@
 {
+  "id" : "c4f1632e-66a8-410b-94f0-9196e028c644",
   "sourceId" : null,
-  "keywords" : [ ],
+  "generalDescriptionId" : "bfd155b8-7eac-406c-99fc-4b6215f9d51a",
+  "type" : "Service",
+  "fundingType" : "PubliclyFunded",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Esiopetuksen oppilashuolto",
+    "type" : "Name"
+  } ],
+  "serviceChargeType" : null,
+  "areaType" : "LimitedType",
   "areas" : [ {
     "type" : "Municipality",
     "code" : null,
@@ -19,7 +29,36 @@
       } ]
     } ]
   } ],
-  "type" : "Service",
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Esiopetuksen oppilashuolto on yhteistyötä, johon osallistuvat varhaiskasvatuksen erityisopettajat päiväkodeissa, sekä koulupsykologit ja -kuraattorit.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Vanhemmat ja varhaiskasvatuksen henkilökunta voivat ottaa huolen syntyessä yhteyttä koulupsykologiin tai -kuraattoriin tai varhaiskasvatuksen erityisopettajiin.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Esiopetuksen oppilashuolto Naantalissa\n* edistää lapsen hyvinvointia ja ehkäisee ongelmia ennalta\n* mahdollistaa varhaisen puuttumisen jo silloin kun huoli on vielä pieni\n* havaitsee lasten kehityksessä ja vanhemmuudessa ilmenevää tuen tarvetta\n* tarjoaa tukea lapsille ja vanhemmille.\n\nEsiopetuksen oppilashuolto on moniammatillista yhteistyötä, johon osallistuvat varhaiskasvatuksen erityisopettajat (päiväkodeissa), sekä koulupsykologit ja -kuraattorit. Koulupsykologin tuki on tarkoitettu lapsille, joilla voi olla oppimisen, tarkkaavuuden tai tunne-elämän häiriöitä. Koulukuraattori puolestaan auttaa lapsia, joilla voi olla sosiaalisia tai tunne-elämän pulmia tai perheen tilanteessa tarvitaan sosiaalityön osaamista.",
+    "type" : "Description"
+  } ],
+  "languages" : [ "fi" ],
   "serviceClasses" : [ {
     "name" : [ {
       "value" : "Esiopetus",
@@ -99,13 +138,87 @@
     "parentId" : null,
     "parentUri" : null
   } ],
-  "fundingType" : "PubliclyFunded",
-  "areaType" : "LimitedType",
-  "publishingStatus" : "Published",
-  "generalDescriptionId" : "bfd155b8-7eac-406c-99fc-4b6215f9d51a",
-  "serviceVouchers" : [ ],
-  "modified" : "2017-11-06T13:16:58.724212",
-  "id" : "c4f1632e-66a8-410b-94f0-9196e028c644",
+  "ontologyTerms" : [ {
+    "name" : [ ],
+    "code" : null,
+    "ontologyType" : null,
+    "uri" : "http://www.yso.fi/onto/yso/p15089",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "oppilashuolto",
+      "language" : "fi"
+    }, {
+      "value" : "elevvård",
+      "language" : "sv"
+    }, {
+      "value" : "pupil welfare",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p7638",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p36160"
+  }, {
+    "name" : [ {
+      "value" : "förskoleundervisning",
+      "language" : "sv"
+    }, {
+      "value" : "esiopetus",
+      "language" : "fi"
+    }, {
+      "value" : "preschool education",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p5766",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p33827"
+  } ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Lapset ja lapsiperheet",
+      "language" : "fi"
+    }, {
+      "value" : "Children and families with children",
+      "language" : "en"
+    }, {
+      "value" : "Barn och barnfamiljer",
+      "language" : "sv"
+    } ],
+    "code" : "KR1.2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2003",
+    "parentId" : "daff1fb9-9394-49b5-b033-d1d1c7005ab6",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001"
+  }, {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "lifeEvents" : [ ],
+  "industrialClasses" : [ ],
+  "legislation" : [ ],
+  "keywords" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  } ],
   "serviceChannels" : [ {
     "serviceChannel" : {
       "id" : "6dc68be3-cfc9-44b5-afc4-adc9fae54763",
@@ -151,124 +264,6 @@
     "contactDetails" : null,
     "digitalAuthorizations" : [ ]
   } ],
-  "serviceVouchersInUse" : false,
-  "legislation" : [ ],
-  "requirements" : [ {
-    "value" : null,
-    "language" : "fi"
-  } ],
-  "languages" : [ "fi" ],
-  "serviceCollections" : [ ],
-  "industrialClasses" : [ ],
-  "serviceChargeType" : null,
-  "serviceNames" : [ {
-    "language" : "fi",
-    "value" : "Esiopetuksen oppilashuolto",
-    "type" : "Name"
-  } ],
-  "ontologyTerms" : [ {
-    "name" : [ ],
-    "code" : null,
-    "ontologyType" : null,
-    "uri" : "http://www.yso.fi/onto/yso/p15089",
-    "parentId" : null,
-    "parentUri" : null
-  }, {
-    "name" : [ {
-      "value" : "oppilashuolto",
-      "language" : "fi"
-    }, {
-      "value" : "elevvård",
-      "language" : "sv"
-    }, {
-      "value" : "pupil welfare",
-      "language" : "en"
-    } ],
-    "code" : null,
-    "ontologyType" : "JUPO",
-    "uri" : "http://www.yso.fi/onto/koko/p7638",
-    "parentId" : null,
-    "parentUri" : "http://www.yso.fi/onto/koko/p36160"
-  }, {
-    "name" : [ {
-      "value" : "förskoleundervisning",
-      "language" : "sv"
-    }, {
-      "value" : "esiopetus",
-      "language" : "fi"
-    }, {
-      "value" : "preschool education",
-      "language" : "en"
-    } ],
-    "code" : null,
-    "ontologyType" : "JUPO",
-    "uri" : "http://www.yso.fi/onto/koko/p5766",
-    "parentId" : null,
-    "parentUri" : "http://www.yso.fi/onto/koko/p33827"
-  } ],
-  "lifeEvents" : [ ],
-  "targetGroups" : [ {
-    "name" : [ {
-      "value" : "Lapset ja lapsiperheet",
-      "language" : "fi"
-    }, {
-      "value" : "Children and families with children",
-      "language" : "en"
-    }, {
-      "value" : "Barn och barnfamiljer",
-      "language" : "sv"
-    } ],
-    "code" : "KR1.2",
-    "ontologyType" : "TARGETGROUP",
-    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2003",
-    "parentId" : "daff1fb9-9394-49b5-b033-d1d1c7005ab6",
-    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001"
-  }, {
-    "name" : [ {
-      "value" : "Kansalaiset",
-      "language" : "fi"
-    }, {
-      "value" : "Citizens",
-      "language" : "en"
-    }, {
-      "value" : "Medborgare",
-      "language" : "sv"
-    } ],
-    "code" : "KR1",
-    "ontologyType" : "TARGETGROUP",
-    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
-    "parentId" : null,
-    "parentUri" : null
-  } ],
-  "serviceDescriptions" : [ {
-    "language" : "fi",
-    "value" : "Esiopetuksen oppilashuolto on yhteistyötä, johon osallistuvat varhaiskasvatuksen erityisopettajat päiväkodeissa, sekä koulupsykologit ja -kuraattorit.",
-    "type" : "Summary"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ValidityTime"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ProcessingTime"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "DeadLine"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ChargeTypeAdditionalInfo"
-  }, {
-    "language" : "fi",
-    "value" : "Vanhemmat ja varhaiskasvatuksen henkilökunta voivat ottaa huolen syntyessä yhteyttä koulupsykologiin tai -kuraattoriin tai varhaiskasvatuksen erityisopettajiin.",
-    "type" : "UserInstruction"
-  }, {
-    "language" : "fi",
-    "value" : "Esiopetuksen oppilashuolto Naantalissa\n* edistää lapsen hyvinvointia ja ehkäisee ongelmia ennalta\n* mahdollistaa varhaisen puuttumisen jo silloin kun huoli on vielä pieni\n* havaitsee lasten kehityksessä ja vanhemmuudessa ilmenevää tuen tarvetta\n* tarjoaa tukea lapsille ja vanhemmille.\n\nEsiopetuksen oppilashuolto on moniammatillista yhteistyötä, johon osallistuvat varhaiskasvatuksen erityisopettajat (päiväkodeissa), sekä koulupsykologit ja -kuraattorit. Koulupsykologin tuki on tarkoitettu lapsille, joilla voi olla oppimisen, tarkkaavuuden tai tunne-elämän häiriöitä. Koulukuraattori puolestaan auttaa lapsia, joilla voi olla sosiaalisia tai tunne-elämän pulmia tai perheen tilanteessa tarvitaan sosiaalityön osaamista.",
-    "type" : "Description"
-  } ],
   "organizations" : [ {
     "provisionType" : null,
     "organization" : {
@@ -285,5 +280,10 @@
     },
     "roleType" : "Producer",
     "additionalInformation" : [ ]
-  } ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "serviceVouchers" : [ ],
+  "serviceCollections" : [ ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-11-06T13:16:58.724212Z"
 }

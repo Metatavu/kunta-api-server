@@ -1,11 +1,35 @@
 {
+  "id" : "7be2de65-f022-4985-84ef-cabf9df574ab",
   "sourceId" : null,
-  "keywords" : [ {
-    "value" : "tietojen tarkastusoikeus",
-    "language" : "fi"
-  } ],
-  "areas" : [ ],
+  "generalDescriptionId" : null,
   "type" : "Service",
+  "fundingType" : "PubliclyFunded",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Tarkasta tietosi",
+    "type" : "AlternativeName"
+  }, {
+    "language" : "fi",
+    "value" : "Omien väestötietojen tarkastaminen",
+    "type" : "Name"
+  } ],
+  "serviceChargeType" : null,
+  "areaType" : "Nationwide",
+  "areas" : [ ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Sinulla on oikeus tarkastaa tietoja, joita sinusta on tallennettu väestötietojärjestelmään.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Voit tarkastaa tietosi Omien tietojen tarkastus -verkkopalvelussa. Voit tarkastaa voimassaolevat henkilötietosi, nimihistoriatietosi, mahdolliset kiinteistö- ja rakennusomistuksesi sekä väestötietojärjestelmään tallennetut asuinhistoriatietosi. Muita historiatietoja voit tarkastaa maistraatissa.\n\nOmien tietojen tarkastuspalvelussa voit myös tehdä väestötietojärjestelmään äidinkieltäsi, asiointikieltäsi, sähköpostiosoitettasi, ammattiasi, kutsumanimeäsi ja tietojenluovutuskieltoja koskevan ilmoituksen.\n\nMikäli havaitset tiedoissasi oikaisutarpeita, ota yhteyttä paikalliseen rekisterinpitäjään eli kotikuntasi mukaiseen maistraattiin. Maistraatit eivät lähtökohtaisesti korjaa tai muuta yli neljä vuotta vanhoja osoitetietoja tai täydennä väestötietojärjestelmän perustamisvaiheessa 1970-luvun alussa rekisteristä pois rajattuja perhesuhdetietoja.\n\nJos et voi käyttää verkkopalvelua, voit tarkastaa tietosi käymällä henkilökohtaisesti maistraatissa tai pyytää tietojesi tarkastuksen maistraatista kirjallisesti. Kirjallisen pyynnön voit tehdä esimerkiksi tulostamalla ja täyttämällä lomakkeen ja lähettämällä sen maistraattiin.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Sinulla on oikeus tarkastaa tietoja, joita sinusta on tallennettu väestötietojärjestelmään. \n\nVäestötietojärjestelmä sisältää ajantasaiset henkilötiedot Suomen kansalaisista ja Suomessa asuvista ulkomaalaisista. Henkilötietojen lisäksi järjestelmä sisältää tietoja myös kiinteistöistä, rakennuksista ja huoneistoista. Se palvelee siten suomalaisen yhteiskunnan moninaisia tietotarpeita. Järjestelmän ylläpidosta vastaavat Väestörekisterikeskus ja maistraatit.\n\nHenkilötietolain mukaisesti jokaisella henkilöllä on oikeus saada tietää, mitä häntä koskevia tietoja henkilörekisteriin on tallennettu. Rekisterinpitäjän on myös ilmoitettava rekisteröidylle rekisterin säännönmukaiset tietolähteet, sekä mihin rekisterin tietoja käytetään ja säännönmukaisesti luovutetaan.\n\nHenkilötietolain mukaan rekisterinpitäjä on velvollinen korjaamaan tietojen käsittelyn kannalta virheelliset, tarpeettomat, puutteelliset tai vanhentuneet tiedot. Rekisterinpitäjän on myös estettävä tällaisen tiedon leviäminen, jos tieto voi vaarantaa rekisteröidyn yksityisyyden suojaa tai hänen oikeuksiaan.",
+    "type" : "Description"
+  } ],
+  "languages" : [ "sv", "en", "fi" ],
   "serviceClasses" : [ {
     "name" : [ {
       "value" : "Tietosuoja ja henkilötiedot",
@@ -33,44 +57,6 @@
     "parentId" : "487549b3-a7de-4312-badb-2ee6bb390950",
     "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1076"
   } ],
-  "fundingType" : "PubliclyFunded",
-  "areaType" : "Nationwide",
-  "publishingStatus" : "Published",
-  "generalDescriptionId" : null,
-  "serviceVouchers" : [ ],
-  "modified" : "2017-09-11T00:00:00",
-  "id" : "7be2de65-f022-4985-84ef-cabf9df574ab",
-  "serviceChannels" : [ {
-    "serviceChannel" : {
-      "id" : "a165743c-4121-4ab5-b1d4-e04ff36ee430",
-      "name" : "Omien tietojen tarkastus väestötietojärjestelmästä"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  } ],
-  "serviceVouchersInUse" : false,
-  "legislation" : [ ],
-  "requirements" : [ {
-    "value" : "Voit tarkastaa tietosi vain, jos sinulla on suomalainen henkilötunnus.",
-    "language" : "fi"
-  } ],
-  "languages" : [ "sv", "en", "fi" ],
-  "serviceCollections" : [ ],
-  "industrialClasses" : [ ],
-  "serviceChargeType" : null,
-  "serviceNames" : [ {
-    "language" : "fi",
-    "value" : "Tarkasta tietosi",
-    "type" : "AlternativeName"
-  }, {
-    "language" : "fi",
-    "value" : "Omien väestötietojen tarkastaminen",
-    "type" : "Name"
-  } ],
   "ontologyTerms" : [ {
     "name" : [ {
       "value" : "befolkningsdata",
@@ -88,7 +74,6 @@
     "parentId" : null,
     "parentUri" : "http://www.yso.fi/onto/koko/p34386"
   } ],
-  "lifeEvents" : [ ],
   "targetGroups" : [ {
     "name" : [ {
       "value" : "Kansalaiset",
@@ -106,18 +91,28 @@
     "parentId" : null,
     "parentUri" : null
   } ],
-  "serviceDescriptions" : [ {
-    "language" : "fi",
-    "value" : "Sinulla on oikeus tarkastaa tietoja, joita sinusta on tallennettu väestötietojärjestelmään.",
-    "type" : "Summary"
-  }, {
-    "language" : "fi",
-    "value" : "Voit tarkastaa tietosi Omien tietojen tarkastus -verkkopalvelussa. Voit tarkastaa voimassaolevat henkilötietosi, nimihistoriatietosi, mahdolliset kiinteistö- ja rakennusomistuksesi sekä väestötietojärjestelmään tallennetut asuinhistoriatietosi. Muita historiatietoja voit tarkastaa maistraatissa.\n\nOmien tietojen tarkastuspalvelussa voit myös tehdä väestötietojärjestelmään äidinkieltäsi, asiointikieltäsi, sähköpostiosoitettasi, ammattiasi, kutsumanimeäsi ja tietojenluovutuskieltoja koskevan ilmoituksen.\n\nMikäli havaitset tiedoissasi oikaisutarpeita, ota yhteyttä paikalliseen rekisterinpitäjään eli kotikuntasi mukaiseen maistraattiin. Maistraatit eivät lähtökohtaisesti korjaa tai muuta yli neljä vuotta vanhoja osoitetietoja tai täydennä väestötietojärjestelmän perustamisvaiheessa 1970-luvun alussa rekisteristä pois rajattuja perhesuhdetietoja.\n\nJos et voi käyttää verkkopalvelua, voit tarkastaa tietosi käymällä henkilökohtaisesti maistraatissa tai pyytää tietojesi tarkastuksen maistraatista kirjallisesti. Kirjallisen pyynnön voit tehdä esimerkiksi tulostamalla ja täyttämällä lomakkeen ja lähettämällä sen maistraattiin.",
-    "type" : "UserInstruction"
-  }, {
-    "language" : "fi",
-    "value" : "Sinulla on oikeus tarkastaa tietoja, joita sinusta on tallennettu väestötietojärjestelmään. \n\nVäestötietojärjestelmä sisältää ajantasaiset henkilötiedot Suomen kansalaisista ja Suomessa asuvista ulkomaalaisista. Henkilötietojen lisäksi järjestelmä sisältää tietoja myös kiinteistöistä, rakennuksista ja huoneistoista. Se palvelee siten suomalaisen yhteiskunnan moninaisia tietotarpeita. Järjestelmän ylläpidosta vastaavat Väestörekisterikeskus ja maistraatit.\n\nHenkilötietolain mukaisesti jokaisella henkilöllä on oikeus saada tietää, mitä häntä koskevia tietoja henkilörekisteriin on tallennettu. Rekisterinpitäjän on myös ilmoitettava rekisteröidylle rekisterin säännönmukaiset tietolähteet, sekä mihin rekisterin tietoja käytetään ja säännönmukaisesti luovutetaan.\n\nHenkilötietolain mukaan rekisterinpitäjä on velvollinen korjaamaan tietojen käsittelyn kannalta virheelliset, tarpeettomat, puutteelliset tai vanhentuneet tiedot. Rekisterinpitäjän on myös estettävä tällaisen tiedon leviäminen, jos tieto voi vaarantaa rekisteröidyn yksityisyyden suojaa tai hänen oikeuksiaan.",
-    "type" : "Description"
+  "lifeEvents" : [ ],
+  "industrialClasses" : [ ],
+  "legislation" : [ ],
+  "keywords" : [ {
+    "value" : "tietojen tarkastusoikeus",
+    "language" : "fi"
+  } ],
+  "requirements" : [ {
+    "value" : "Voit tarkastaa tietosi vain, jos sinulla on suomalainen henkilötunnus.",
+    "language" : "fi"
+  } ],
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "a165743c-4121-4ab5-b1d4-e04ff36ee430",
+      "name" : "Omien tietojen tarkastus väestötietojärjestelmästä"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
   } ],
   "organizations" : [ {
     "provisionType" : null,
@@ -135,5 +130,10 @@
     },
     "roleType" : "Producer",
     "additionalInformation" : [ ]
-  } ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "serviceVouchers" : [ ],
+  "serviceCollections" : [ ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-09-11T00:00:00Z"
 }

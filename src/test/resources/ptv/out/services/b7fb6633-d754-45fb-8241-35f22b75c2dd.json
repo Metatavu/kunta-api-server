@@ -1,14 +1,51 @@
 {
+  "id" : "b7fb6633-d754-45fb-8241-35f22b75c2dd",
   "sourceId" : null,
-  "keywords" : [ {
-    "value" : "Palvelutietovaranto",
-    "language" : "fi"
-  }, {
-    "value" : "PTV",
-    "language" : "fi"
-  } ],
-  "areas" : [ ],
+  "generalDescriptionId" : null,
   "type" : "Service",
+  "fundingType" : "PubliclyFunded",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "PTV",
+    "type" : "AlternativeName"
+  }, {
+    "language" : "fi",
+    "value" : "Suomi.fi-palvelutietovaranto",
+    "type" : "Name"
+  } ],
+  "serviceChargeType" : "FreeOfCharge",
+  "areaType" : "Nationwide",
+  "areas" : [ ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Suomi.fi-palvelutietovaranto (PTV) on keskitetty tietovaranto, johon organisaatiot tuottavat yhdenmukaisesti tiedot tarjoamistaan palveluista ja niiden asiointikanavista. Kun organisaatio on kuvannut tiedot palveluistaan Suomi.fi-palvelutietovarantoon, niitä voi päivittää suoraan Palvelutietovarantoon osana normaalia palvelutuotantoa. Palvelutietovarantoon päivitettyjä tai siihen integroituja tietoja voi käyttää hyväksi avoimen rajapinnan avulla missä tahansa verkkopalvelussa. Esimerkiksi kaikki julkisen hallinnon organisaatiot kuvaavat palvelunsa Palvelutietovarantoon, josta ne tuodaan kansalaisten ja yritysten nähtäville Suomi.fi-verkkopalveluun. \n\nOrganisaatio kuvaa palvelunsa yhteisen tietomallin mukaisesti. Jokainen palvelujaan kuvaava organisaatio on velvollinen tekemään kuvailutyön ja sen jälkeen tapahtuvan tietojen ylläpidon itse. Laki hallinnon yhteisistä sähköisen asioinnin tukipalveluista (571/2016) velvoittaa julkishallinnon organisaatioita kuvaamaan palvelunsa Suomi.fi-palvelutietovarantoon.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : "Suomi.fi-palvelutietovarannossa organisaatiot tuottavat yhdenmukaisesti tiedot tarjoamistaan palveluista ja niiden asiointikanavista.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Tutustu Suomi.fi-palvelutietovarantoon ja sen käyttöönottoon Suomi.fi-palveluhallintasivustolla.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  } ],
+  "languages" : [ "sv", "fi" ],
   "serviceClasses" : [ {
     "name" : [ {
       "value" : "Government (state and local) registers and databases",
@@ -36,46 +73,7 @@
     "parentId" : "95f29e15-fb54-4ac2-8c9b-fac6ae3121fa",
     "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1095"
   } ],
-  "fundingType" : "PubliclyFunded",
-  "areaType" : "Nationwide",
-  "publishingStatus" : "Published",
-  "generalDescriptionId" : null,
-  "serviceVouchers" : [ ],
-  "modified" : "2018-04-09T12:42:05.662078",
-  "id" : "b7fb6633-d754-45fb-8241-35f22b75c2dd",
-  "serviceChannels" : [ {
-    "serviceChannel" : {
-      "id" : "1d01e828-362b-4cd2-b302-c3a4b8b1941c",
-      "name" : "Suomi.fi-palvelutietovarannon käyttöönotto"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  } ],
-  "serviceVouchersInUse" : false,
-  "legislation" : [ ],
-  "requirements" : [ {
-    "value" : "Suomi.fi-palvelutietovarannon käyttäminen edellyttää palvelun käyttöönottoa ja käyttöehtojen hyväksymistä.",
-    "language" : "fi"
-  } ],
-  "languages" : [ "sv", "fi" ],
-  "serviceCollections" : [ ],
-  "industrialClasses" : [ ],
-  "serviceChargeType" : "FreeOfCharge",
-  "serviceNames" : [ {
-    "language" : "fi",
-    "value" : "PTV",
-    "type" : "AlternativeName"
-  }, {
-    "language" : "fi",
-    "value" : "Suomi.fi-palvelutietovaranto",
-    "type" : "Name"
-  } ],
   "ontologyTerms" : [ ],
-  "lifeEvents" : [ ],
   "targetGroups" : [ {
     "name" : [ {
       "value" : "Yritykset ja yhteisöt",
@@ -109,34 +107,31 @@
     "parentId" : null,
     "parentUri" : null
   } ],
-  "serviceDescriptions" : [ {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ChargeTypeAdditionalInfo"
+  "lifeEvents" : [ ],
+  "industrialClasses" : [ ],
+  "legislation" : [ ],
+  "keywords" : [ {
+    "value" : "Palvelutietovaranto",
+    "language" : "fi"
   }, {
-    "language" : "fi",
-    "value" : "Suomi.fi-palvelutietovaranto (PTV) on keskitetty tietovaranto, johon organisaatiot tuottavat yhdenmukaisesti tiedot tarjoamistaan palveluista ja niiden asiointikanavista. Kun organisaatio on kuvannut tiedot palveluistaan Suomi.fi-palvelutietovarantoon, niitä voi päivittää suoraan Palvelutietovarantoon osana normaalia palvelutuotantoa. Palvelutietovarantoon päivitettyjä tai siihen integroituja tietoja voi käyttää hyväksi avoimen rajapinnan avulla missä tahansa verkkopalvelussa. Esimerkiksi kaikki julkisen hallinnon organisaatiot kuvaavat palvelunsa Palvelutietovarantoon, josta ne tuodaan kansalaisten ja yritysten nähtäville Suomi.fi-verkkopalveluun. \n\nOrganisaatio kuvaa palvelunsa yhteisen tietomallin mukaisesti. Jokainen palvelujaan kuvaava organisaatio on velvollinen tekemään kuvailutyön ja sen jälkeen tapahtuvan tietojen ylläpidon itse. Laki hallinnon yhteisistä sähköisen asioinnin tukipalveluista (571/2016) velvoittaa julkishallinnon organisaatioita kuvaamaan palvelunsa Suomi.fi-palvelutietovarantoon.",
-    "type" : "Description"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ProcessingTime"
-  }, {
-    "language" : "fi",
-    "value" : "Suomi.fi-palvelutietovarannossa organisaatiot tuottavat yhdenmukaisesti tiedot tarjoamistaan palveluista ja niiden asiointikanavista.",
-    "type" : "Summary"
-  }, {
-    "language" : "fi",
-    "value" : "Tutustu Suomi.fi-palvelutietovarantoon ja sen käyttöönottoon Suomi.fi-palveluhallintasivustolla.",
-    "type" : "UserInstruction"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "DeadLine"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ValidityTime"
+    "value" : "PTV",
+    "language" : "fi"
+  } ],
+  "requirements" : [ {
+    "value" : "Suomi.fi-palvelutietovarannon käyttäminen edellyttää palvelun käyttöönottoa ja käyttöehtojen hyväksymistä.",
+    "language" : "fi"
+  } ],
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "1d01e828-362b-4cd2-b302-c3a4b8b1941c",
+      "name" : "Suomi.fi-palvelutietovarannon käyttöönotto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
   } ],
   "organizations" : [ {
     "provisionType" : null,
@@ -154,5 +149,10 @@
     },
     "roleType" : "Producer",
     "additionalInformation" : [ ]
-  } ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "serviceVouchers" : [ ],
+  "serviceCollections" : [ ],
+  "publishingStatus" : "Published",
+  "modified" : "2018-04-09T12:42:05.662078Z"
 }

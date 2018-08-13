@@ -1,6 +1,16 @@
 {
+  "id" : "d088280f-3d17-4698-b440-feffc6e4fa0f",
   "sourceId" : null,
-  "keywords" : [ ],
+  "generalDescriptionId" : "1c94b5dc-93e7-4eb4-bc23-9b332109fb5b",
+  "type" : "Service",
+  "fundingType" : "PubliclyFunded",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Lukiokoulutuksen opinto-ohjaus",
+    "type" : "Name"
+  } ],
+  "serviceChargeType" : null,
+  "areaType" : "LimitedType",
   "areas" : [ {
     "type" : "Municipality",
     "code" : null,
@@ -19,7 +29,36 @@
       } ]
     } ]
   } ],
-  "type" : "Service",
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Lukiokoulutukseen osallistuvalla on oikeus opinto-ohjaukseen, joka tukee opiskelijaa opinnoissa ja auttaa häntä valmistautumaan lukion jälkeisiin opintoihin ja työelämään.\n\nOpinto-ohjaus Naantalin lukiossa:\n* kaksi opinto-ohjaajaa\n* kaksi pakollista kurssia\n* pienryhmäohjausta\n* henkilökohtaiset opintosuunnitelmat ja jatko-opintosuunnitelmat ",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Naantalin lukio tarjoaa opiskelijoilleen monipuolista opinto-ohjausta opiskelun tueksi.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Ota yhteyttä omaan opinto-ohjaajaasi. Yhteystiedot löydät opinto-oppaasta tai lukion omilta verkkosivuilta.",
+    "type" : "UserInstruction"
+  } ],
+  "languages" : [ "fi" ],
   "serviceClasses" : [ {
     "name" : [ {
       "value" : "Ammatinvalinta ja opintojen ohjaus",
@@ -99,13 +138,64 @@
     "parentId" : "fd1bb60e-4206-4f0a-994f-8ffcb4ffaaa4",
     "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1060"
   } ],
-  "fundingType" : "PubliclyFunded",
-  "areaType" : "LimitedType",
-  "publishingStatus" : "Published",
-  "generalDescriptionId" : "1c94b5dc-93e7-4eb4-bc23-9b332109fb5b",
-  "serviceVouchers" : [ ],
-  "modified" : "2017-11-24T12:48:35.506036",
-  "id" : "d088280f-3d17-4698-b440-feffc6e4fa0f",
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "lukiokoulutus (opetus)",
+      "language" : "fi"
+    }, {
+      "value" : "gymnasieutbildning",
+      "language" : "sv"
+    }, {
+      "value" : "general upper secondary education",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p75844",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p33827"
+  }, {
+    "name" : [ {
+      "value" : "opinto-ohjaus",
+      "language" : "fi"
+    }, {
+      "value" : "studievägledning",
+      "language" : "sv"
+    }, {
+      "value" : "educational counselling",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p5541",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p77930"
+  } ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "lifeEvents" : [ ],
+  "industrialClasses" : [ ],
+  "legislation" : [ ],
+  "keywords" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  } ],
   "serviceChannels" : [ {
     "serviceChannel" : {
       "id" : "11f5b3e0-3ead-43bb-918b-60f8d638e23c",
@@ -140,101 +230,6 @@
     "contactDetails" : null,
     "digitalAuthorizations" : [ ]
   } ],
-  "serviceVouchersInUse" : false,
-  "legislation" : [ ],
-  "requirements" : [ {
-    "value" : null,
-    "language" : "fi"
-  } ],
-  "languages" : [ "fi" ],
-  "serviceCollections" : [ ],
-  "industrialClasses" : [ ],
-  "serviceChargeType" : null,
-  "serviceNames" : [ {
-    "language" : "fi",
-    "value" : "Lukiokoulutuksen opinto-ohjaus",
-    "type" : "Name"
-  } ],
-  "ontologyTerms" : [ {
-    "name" : [ {
-      "value" : "lukiokoulutus (opetus)",
-      "language" : "fi"
-    }, {
-      "value" : "gymnasieutbildning",
-      "language" : "sv"
-    }, {
-      "value" : "general upper secondary education",
-      "language" : "en"
-    } ],
-    "code" : null,
-    "ontologyType" : "JUPO",
-    "uri" : "http://www.yso.fi/onto/koko/p75844",
-    "parentId" : null,
-    "parentUri" : "http://www.yso.fi/onto/koko/p33827"
-  }, {
-    "name" : [ {
-      "value" : "opinto-ohjaus",
-      "language" : "fi"
-    }, {
-      "value" : "studievägledning",
-      "language" : "sv"
-    }, {
-      "value" : "educational counselling",
-      "language" : "en"
-    } ],
-    "code" : null,
-    "ontologyType" : "JUPO",
-    "uri" : "http://www.yso.fi/onto/koko/p5541",
-    "parentId" : null,
-    "parentUri" : "http://www.yso.fi/onto/koko/p77930"
-  } ],
-  "lifeEvents" : [ ],
-  "targetGroups" : [ {
-    "name" : [ {
-      "value" : "Kansalaiset",
-      "language" : "fi"
-    }, {
-      "value" : "Citizens",
-      "language" : "en"
-    }, {
-      "value" : "Medborgare",
-      "language" : "sv"
-    } ],
-    "code" : "KR1",
-    "ontologyType" : "TARGETGROUP",
-    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
-    "parentId" : null,
-    "parentUri" : null
-  } ],
-  "serviceDescriptions" : [ {
-    "language" : "fi",
-    "value" : null,
-    "type" : "DeadLine"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ProcessingTime"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ValidityTime"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ChargeTypeAdditionalInfo"
-  }, {
-    "language" : "fi",
-    "value" : "Lukiokoulutukseen osallistuvalla on oikeus opinto-ohjaukseen, joka tukee opiskelijaa opinnoissa ja auttaa häntä valmistautumaan lukion jälkeisiin opintoihin ja työelämään.\n\nOpinto-ohjaus Naantalin lukiossa:\n* kaksi opinto-ohjaajaa\n* kaksi pakollista kurssia\n* pienryhmäohjausta\n* henkilökohtaiset opintosuunnitelmat ja jatko-opintosuunnitelmat ",
-    "type" : "Description"
-  }, {
-    "language" : "fi",
-    "value" : "Naantalin lukio tarjoaa opiskelijoilleen monipuolista opinto-ohjausta opiskelun tueksi.",
-    "type" : "Summary"
-  }, {
-    "language" : "fi",
-    "value" : "Ota yhteyttä omaan opinto-ohjaajaasi. Yhteystiedot löydät opinto-oppaasta tai lukion omilta verkkosivuilta.",
-    "type" : "UserInstruction"
-  } ],
   "organizations" : [ {
     "provisionType" : null,
     "organization" : {
@@ -251,5 +246,10 @@
     },
     "roleType" : "Producer",
     "additionalInformation" : [ ]
-  } ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "serviceVouchers" : [ ],
+  "serviceCollections" : [ ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-11-24T12:48:35.506036Z"
 }

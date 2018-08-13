@@ -1,6 +1,16 @@
 {
+  "id" : "4b9f3ded-173b-4018-b43b-d3bbd1ef0ba8",
   "sourceId" : null,
-  "keywords" : [ ],
+  "generalDescriptionId" : "ffb71e57-eb50-479b-9142-3cee2b440b11",
+  "type" : "Service",
+  "fundingType" : "PubliclyFunded",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Tilapäinen päivähoito",
+    "type" : "Name"
+  } ],
+  "serviceChargeType" : null,
+  "areaType" : "LimitedType",
   "areas" : [ {
     "type" : "Municipality",
     "code" : null,
@@ -19,7 +29,36 @@
       } ]
     } ]
   } ],
-  "type" : "Service",
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Lapselle on mahdollista saada tilapäinen hoitopaikka väliaikaiseen tarpeeseen.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : "Lapselle on mahdollista saada tilapäinen hoitopaikka väliaikaiseen tarpeeseen. Kotihoidon tuen tai yksityisen hoidon tuen saaminen tai hoitopaikka toisessa kunnassa eivät ole este tilapäisen paikan käytölle.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Tilapäistä päivähoitoa voi tiedustella oman alueen päiväkodin johtajalta tai Naantalin varhaiskasvatusjohtajalta.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Tilapäisen päivähoidon hinnat Naantalissa: kokopäivähoito 18 €/päivä, sisältää ateriat. Osapäivähoito 12 €/päivä.",
+    "type" : "ChargeTypeAdditionalInfo"
+  } ],
+  "languages" : [ "fi" ],
   "serviceClasses" : [ {
     "name" : [ {
       "value" : "Lasten päivähoito",
@@ -47,13 +86,64 @@
     "parentId" : "77af99fa-93eb-4de6-ac83-1b161a961263",
     "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1013"
   } ],
-  "fundingType" : "PubliclyFunded",
-  "areaType" : "LimitedType",
-  "publishingStatus" : "Published",
-  "generalDescriptionId" : "ffb71e57-eb50-479b-9142-3cee2b440b11",
-  "serviceVouchers" : [ ],
-  "modified" : "2017-10-31T08:15:43.515627",
-  "id" : "4b9f3ded-173b-4018-b43b-d3bbd1ef0ba8",
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "barndagvård",
+      "language" : "sv"
+    }, {
+      "value" : "lasten päivähoito",
+      "language" : "fi"
+    }, {
+      "value" : "child day care",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUHO",
+    "uri" : "http://www.yso.fi/onto/koko/p58117",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p3474"
+  } ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Lapset ja lapsiperheet",
+      "language" : "fi"
+    }, {
+      "value" : "Children and families with children",
+      "language" : "en"
+    }, {
+      "value" : "Barn och barnfamiljer",
+      "language" : "sv"
+    } ],
+    "code" : "KR1.2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2003",
+    "parentId" : "daff1fb9-9394-49b5-b033-d1d1c7005ab6",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001"
+  }, {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "lifeEvents" : [ ],
+  "industrialClasses" : [ ],
+  "legislation" : [ ],
+  "keywords" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  } ],
   "serviceChannels" : [ {
     "serviceChannel" : {
       "id" : "0739aa9b-7312-4cdd-bc63-d86b39dc4257",
@@ -209,101 +299,6 @@
     "contactDetails" : null,
     "digitalAuthorizations" : [ ]
   } ],
-  "serviceVouchersInUse" : false,
-  "legislation" : [ ],
-  "requirements" : [ {
-    "value" : null,
-    "language" : "fi"
-  } ],
-  "languages" : [ "fi" ],
-  "serviceCollections" : [ ],
-  "industrialClasses" : [ ],
-  "serviceChargeType" : null,
-  "serviceNames" : [ {
-    "language" : "fi",
-    "value" : "Tilapäinen päivähoito",
-    "type" : "Name"
-  } ],
-  "ontologyTerms" : [ {
-    "name" : [ {
-      "value" : "barndagvård",
-      "language" : "sv"
-    }, {
-      "value" : "lasten päivähoito",
-      "language" : "fi"
-    }, {
-      "value" : "child day care",
-      "language" : "en"
-    } ],
-    "code" : null,
-    "ontologyType" : "JUHO",
-    "uri" : "http://www.yso.fi/onto/koko/p58117",
-    "parentId" : null,
-    "parentUri" : "http://www.yso.fi/onto/koko/p3474"
-  } ],
-  "lifeEvents" : [ ],
-  "targetGroups" : [ {
-    "name" : [ {
-      "value" : "Lapset ja lapsiperheet",
-      "language" : "fi"
-    }, {
-      "value" : "Children and families with children",
-      "language" : "en"
-    }, {
-      "value" : "Barn och barnfamiljer",
-      "language" : "sv"
-    } ],
-    "code" : "KR1.2",
-    "ontologyType" : "TARGETGROUP",
-    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2003",
-    "parentId" : "daff1fb9-9394-49b5-b033-d1d1c7005ab6",
-    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001"
-  }, {
-    "name" : [ {
-      "value" : "Kansalaiset",
-      "language" : "fi"
-    }, {
-      "value" : "Citizens",
-      "language" : "en"
-    }, {
-      "value" : "Medborgare",
-      "language" : "sv"
-    } ],
-    "code" : "KR1",
-    "ontologyType" : "TARGETGROUP",
-    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
-    "parentId" : null,
-    "parentUri" : null
-  } ],
-  "serviceDescriptions" : [ {
-    "language" : "fi",
-    "value" : "Lapselle on mahdollista saada tilapäinen hoitopaikka väliaikaiseen tarpeeseen.",
-    "type" : "Summary"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "DeadLine"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ProcessingTime"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ValidityTime"
-  }, {
-    "language" : "fi",
-    "value" : "Lapselle on mahdollista saada tilapäinen hoitopaikka väliaikaiseen tarpeeseen. Kotihoidon tuen tai yksityisen hoidon tuen saaminen tai hoitopaikka toisessa kunnassa eivät ole este tilapäisen paikan käytölle.",
-    "type" : "Description"
-  }, {
-    "language" : "fi",
-    "value" : "Tilapäistä päivähoitoa voi tiedustella oman alueen päiväkodin johtajalta tai Naantalin varhaiskasvatusjohtajalta.",
-    "type" : "UserInstruction"
-  }, {
-    "language" : "fi",
-    "value" : "Tilapäisen päivähoidon hinnat Naantalissa: kokopäivähoito 18 €/päivä, sisältää ateriat. Osapäivähoito 12 €/päivä.",
-    "type" : "ChargeTypeAdditionalInfo"
-  } ],
   "organizations" : [ {
     "provisionType" : null,
     "organization" : {
@@ -320,5 +315,10 @@
     },
     "roleType" : "Producer",
     "additionalInformation" : [ ]
-  } ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "serviceVouchers" : [ ],
+  "serviceCollections" : [ ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627Z"
 }

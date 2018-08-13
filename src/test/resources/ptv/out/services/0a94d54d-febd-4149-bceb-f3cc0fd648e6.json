@@ -1,11 +1,51 @@
 {
+  "id" : "0a94d54d-febd-4149-bceb-f3cc0fd648e6",
   "sourceId" : null,
-  "keywords" : [ {
-    "value" : "Asiointilupa, asiointivaltuudet",
-    "language" : "fi"
-  } ],
-  "areas" : [ ],
+  "generalDescriptionId" : null,
   "type" : "Service",
+  "fundingType" : "PubliclyFunded",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Henkilön puolesta asiointi",
+    "type" : "AlternativeName"
+  }, {
+    "language" : "fi",
+    "value" : "Suomi.fi-valtuudet henkilön puolesta asiointiin",
+    "type" : "Name"
+  } ],
+  "serviceChargeType" : null,
+  "areaType" : "Nationwide",
+  "areas" : [ ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Suomi.fi-valtuudet-palvelu voidaan jakaa kahteen osaan: Jos asioit toisen henkilön puolesta jossakin julkishallinnon tai yksityisen sektorin verkkopalvelussa, Suomi.fi-valtuudet tarkistaa taustatoimintona oikeutesi puolesta-asiointiin. Tämä edellyttää, että verkkopalvelu on ottanut Suomi.fi-valtuudet käyttöön. Esimerkiksi Kelan Omakannassa oikeutesi asioida lapsen puolesta tarkistetaan Suomi.fi-valtuuksien avulla. Tulevaisuudessa voit valtuuttaa toisen henkilön tai yrityksen asioimaan puolestasi sähköisissä asiointipalveluissa. Valtuuttaminen tapahtuu Suomi.fi-verkkopalvelussa. Valtuuksien hallintaa voi jo nyt kokeilla testihenkilöiden tunnuksilla testipalvelussa.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Suomi.fi-valtuudet tarkistaa oikeuden asioida henkilön puolesta. Palvelun avulla voi valtuuttaa toisen henkilön asioimaan puolestasi verkkopalveluissa",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  } ],
+  "languages" : [ "sv", "fi" ],
   "serviceClasses" : [ {
     "name" : [ {
       "value" : "Oikeusturva",
@@ -85,46 +125,7 @@
     "parentId" : "487549b3-a7de-4312-badb-2ee6bb390950",
     "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1076"
   } ],
-  "fundingType" : "PubliclyFunded",
-  "areaType" : "Nationwide",
-  "publishingStatus" : "Published",
-  "generalDescriptionId" : null,
-  "serviceVouchers" : [ ],
-  "modified" : "2017-09-11T00:00:00",
-  "id" : "0a94d54d-febd-4149-bceb-f3cc0fd648e6",
-  "serviceChannels" : [ {
-    "serviceChannel" : {
-      "id" : "daee70a8-ec2d-413d-ab79-2ebf79fe04a3",
-      "name" : "Sähköisten valtuuksien luonti henkilön puolesta asioinnissa"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  } ],
-  "serviceVouchersInUse" : false,
-  "legislation" : [ ],
-  "requirements" : [ {
-    "value" : "Tulevaisuudessa kun valtuuksien hallinnointi on mahdollista, valtuuttaminen edellyttää tunnistautumista Suomi.fi-verkkopalveluun. Tunnistautuminen tapahtuu verkkopankkitunnuksilla, mobiilivarmenteella tai varmennekortilla (henkilökortti, organisaatiokortti ja sosiaali- ja terveydenhuollon ammattikortti).",
-    "language" : "fi"
-  } ],
-  "languages" : [ "sv", "fi" ],
-  "serviceCollections" : [ ],
-  "industrialClasses" : [ ],
-  "serviceChargeType" : null,
-  "serviceNames" : [ {
-    "language" : "fi",
-    "value" : "Henkilön puolesta asiointi",
-    "type" : "AlternativeName"
-  }, {
-    "language" : "fi",
-    "value" : "Suomi.fi-valtuudet henkilön puolesta asiointiin",
-    "type" : "Name"
-  } ],
   "ontologyTerms" : [ ],
-  "lifeEvents" : [ ],
   "targetGroups" : [ {
     "name" : [ {
       "value" : "Kansalaiset",
@@ -142,34 +143,28 @@
     "parentId" : null,
     "parentUri" : null
   } ],
-  "serviceDescriptions" : [ {
-    "language" : "fi",
-    "value" : null,
-    "type" : "UserInstruction"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ChargeTypeAdditionalInfo"
-  }, {
-    "language" : "fi",
-    "value" : "Suomi.fi-valtuudet-palvelu voidaan jakaa kahteen osaan: Jos asioit toisen henkilön puolesta jossakin julkishallinnon tai yksityisen sektorin verkkopalvelussa, Suomi.fi-valtuudet tarkistaa taustatoimintona oikeutesi puolesta-asiointiin. Tämä edellyttää, että verkkopalvelu on ottanut Suomi.fi-valtuudet käyttöön. Esimerkiksi Kelan Omakannassa oikeutesi asioida lapsen puolesta tarkistetaan Suomi.fi-valtuuksien avulla. Tulevaisuudessa voit valtuuttaa toisen henkilön tai yrityksen asioimaan puolestasi sähköisissä asiointipalveluissa. Valtuuttaminen tapahtuu Suomi.fi-verkkopalvelussa. Valtuuksien hallintaa voi jo nyt kokeilla testihenkilöiden tunnuksilla testipalvelussa.",
-    "type" : "Description"
-  }, {
-    "language" : "fi",
-    "value" : "Suomi.fi-valtuudet tarkistaa oikeuden asioida henkilön puolesta. Palvelun avulla voi valtuuttaa toisen henkilön asioimaan puolestasi verkkopalveluissa",
-    "type" : "Summary"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "DeadLine"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ProcessingTime"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ValidityTime"
+  "lifeEvents" : [ ],
+  "industrialClasses" : [ ],
+  "legislation" : [ ],
+  "keywords" : [ {
+    "value" : "Asiointilupa, asiointivaltuudet",
+    "language" : "fi"
+  } ],
+  "requirements" : [ {
+    "value" : "Tulevaisuudessa kun valtuuksien hallinnointi on mahdollista, valtuuttaminen edellyttää tunnistautumista Suomi.fi-verkkopalveluun. Tunnistautuminen tapahtuu verkkopankkitunnuksilla, mobiilivarmenteella tai varmennekortilla (henkilökortti, organisaatiokortti ja sosiaali- ja terveydenhuollon ammattikortti).",
+    "language" : "fi"
+  } ],
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "daee70a8-ec2d-413d-ab79-2ebf79fe04a3",
+      "name" : "Sähköisten valtuuksien luonti henkilön puolesta asioinnissa"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
   } ],
   "organizations" : [ {
     "provisionType" : null,
@@ -187,5 +182,10 @@
     },
     "roleType" : "Producer",
     "additionalInformation" : [ ]
-  } ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "serviceVouchers" : [ ],
+  "serviceCollections" : [ ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-09-11T00:00:00Z"
 }

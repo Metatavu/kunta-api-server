@@ -1,6 +1,20 @@
 {
+  "id" : "5fe23177-860c-4257-ac03-b4cdeab87d19",
   "sourceId" : null,
-  "keywords" : [ ],
+  "generalDescriptionId" : null,
+  "type" : "Service",
+  "fundingType" : "PubliclyFunded",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Työllistymistä edistävä monialainen yhteispalvelu (TYP)",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Sektorsövergripande samsercive som främjar sysselsättningen",
+    "type" : "Name"
+  } ],
+  "serviceChargeType" : null,
+  "areaType" : "LimitedType",
   "areas" : [ {
     "type" : "Municipality",
     "code" : null,
@@ -127,7 +141,64 @@
       } ]
     } ]
   } ],
-  "type" : "Service",
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : "TYP är en samarbetsmodell för kommunen, TE-byrån och FPA och den betjänar personer som varit långvarigt arbetslösa.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Den sektorsövergripande samservicen som främjar sysselsättningen (TYP) är en samarbetsmodell för kommunen, TE-byrån och FPA och den betjänar personer som varit långvarigt arbetslösa. \n\nSyftet med samservicen är att tillsammans med den arbetslösa personen bedöma vilken service denne behöver som stöd för att sysselsätta sig, planera ändamålsenlig service samt följa upp hur planerna och servicen framskrider. Målet för den sektorsövergripande samservicen som främjar sysselsättningen är att främja sysselsättningen av arbetslösa genom erbjuda ändamålsenlig offentlig arbetskraftsservice, socialservice, hälso- och sjukvårdstjänster samt rehabiliteringstjänster i enligt personens individuella servicebehov. \n\nKlientskapet inleds med en initialkartläggning, som görs tillsammans mellan den arbetslösa personen, kommunens socialarbetare eller socialhandledare samt en sakkunnig från TE-byrån. \n\nI slutet av kartläggningsperioden uppgörs sen sektorsövergripande sysselsättningsplan, i vilken man kommer överens om den service som ingår i personens servicebehov Planen följs upp och uppdateras enligt situation.\n\nDen service som överenskommits i planen kan vara offentlig arbetskraftsservice och även social-, hälso- och rehabiliteringsservice. \n\nNya klienter till den sektorsövergripande samservicen (TYP) hänvisas via TE-byrån, kommunens socialsektor eller via FPA. Personen övergår till att bli en samserviceklient, ifall dennes sysselsättning förutsätter sammanpassning av TE-byråns, kommunens och FPA:s serviceformer. Klienten kan även själv söka till att bli TYP-klient genom att ta kontakt med socialsektorn i den egna kommunen eller en sakkunnig inom TE-byrån. \n\nKlientskapet inom den sektorsövergripande samservicen avslutas då behovet till sektorsövergripande samservice inte längre finns. \n\nKommunerna i Vasanejden och området Sydösterbotten, Storkyro, Laihela, Kaskö, Kristinestad, Korsnäs, Malax, Korsholm, Närpes, Vasa och Vörå samt Österbottens TE-byrå och fPA har ingått samarbetsavtal om ordnande av sektorsövergripande samservice. Den sektorsövergripande samservicens service förverkligas som en del av den egna verksamheten i varje kommun. I nätverket för hela området finns en TYP-koordinator vars uppgift är att ansvara för och utveckla hela nätverkets verksamhet.\n\n",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : "Ärendehanteringen i den sektorsövergripande samservicen i Vasanejden och Sydösterbotten (TYP) sker enligt tidsbokning från den egna kommunen eller TE-byrån.\n",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Asiointi Vaasan seudun ja Suupohjan alueen monialaisessa yhteispalvelussa tapahtuu ajanvarauksella omasta kunnasta tai TE-toimistosta. ",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Työllistymistä edistävä monialainen yhteispalvelu (TYP) on kunnan, TE-toimiston ja Kelan yhteistoimintamalli, joka palvelee pidempään työttömänä olleita henkilöitä. \n\nYhteispalvelun tarkoituksena on yhdessä työttömän henkilön kanssa arvioida, mitä palveluja hän tarvitsee työllistymisen tueksi, suunnitella tarkoituksenmukaiset palvelut sekä seurata niiden etenemistä. Tavoitteena on edistää työttömän henkilön työllistymistä tarjoamalla hänen palvelutarpeensa mukaisia julkisia työvoimapalveluja sekä sosiaali-, terveys- ja kuntoutuspalveluja. \n\nAsiakkuus alkaa alkukartoituksella, joka tehdään yhdessä työttömän henkilön, kunnan sosiaalityöntekijän tai sosiaaliohjaajan ja TE-toimiston asiantuntijan kanssa.\n\nKartoitusjakson päätteeksi tehdään monialainen työllistymissuunnitelma, jossa sovitaan henkilön palvelutarpeen mukaisista palveluista. Suunnitelmaa seurataan ja sitä päivitetään tilanteen mukaan. \n\nSuunnitelmassa sovitut palvelut voivat olla julkisia työvoimapalveluja sekä sosiaali-, terveys- ja kuntoutuspalveluja. \n\nUudet asiakkaat monialaiseen yhteispalveluun ohjautuvat TE-toimiston, kunnan sosiaalitoimen tai Kelan kautta.  Asiakas voi myös itse hakeutua TYP-asiakkaaksi ottamalla yhteyttä oman kunnan sosiaalitoimeen tai TE-toimiston asiantuntijaan. \n\nAsiakkuus päättyy, kun tarvetta yhteispalveluun ei enää ole. \n\nVaasan seudun ja Suupohjan alueen kunnat Isokyrö, Laihia, Kaskinen, Kristiinankaupunki, Korsnäs, Maalahti, Mustasaari, Närpiö, Vaasa ja Vöyri sekä Pohjanmaan TE-toimisto ja Kela ovat solmineet yhteistyösopimuksen monialaisen yhteispalvelun järjestämisestä. Monialaisen yhteispalvelun palvelut toteutetaan osana jokaisen kunnan omaa toimintaa. Alueen verkostossa toimii TYP-koordinaattori, jonka tehtävänä on vastata ja kehittää koko verkoston toimintaa. ",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : "Työllistymistä edistävä monialainen yhteispalvelu (TYP) on kunnan, TE-toimiston ja Kelan yhteistoimintamalli, joka palvelee pitkäaikaistyöttömiä.",
+    "type" : "Summary"
+  } ],
+  "languages" : [ "fi", "sv" ],
   "serviceClasses" : [ {
     "name" : [ {
       "value" : "Työttömän tuet ja etuudet",
@@ -285,13 +356,51 @@
     "parentId" : "e30562f5-0141-4d5c-bc25-e24679dba4d4",
     "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1096"
   } ],
-  "fundingType" : "PubliclyFunded",
-  "areaType" : "LimitedType",
-  "publishingStatus" : "Published",
-  "generalDescriptionId" : null,
-  "serviceVouchers" : [ ],
-  "modified" : "2017-10-13T10:17:22.067304",
-  "id" : "5fe23177-860c-4257-ac03-b4cdeab87d19",
+  "ontologyTerms" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "lifeEvents" : [ {
+    "name" : [ {
+      "value" : "Att bli arbetslös",
+      "language" : "sv"
+    }, {
+      "value" : "Työttömäksi jääminen",
+      "language" : "fi"
+    }, {
+      "value" : "Losing a job",
+      "language" : "en"
+    } ],
+    "code" : "KE8",
+    "ontologyType" : "LIFESITUATION",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v3018",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "industrialClasses" : [ ],
+  "legislation" : [ ],
+  "keywords" : [ ],
+  "requirements" : [ {
+    "value" : "Personen övergår till att bli en samserviceklient, ifall dennes sysselsättning förutsätter sammanpassning av TE-byråns, kommunens och FPA:s serviceformer.",
+    "language" : "sv"
+  }, {
+    "value" : "Henkilö siirtyy yhteispalvelun asiakkaaksi, jos hänen työllistymisensä edellyttää TE-toimiston, kunnan ja Kelan palvelujen yhteensovittamista.",
+    "language" : "fi"
+  } ],
   "serviceChannels" : [ {
     "serviceChannel" : {
       "id" : "3b85838e-7ee7-4123-ba50-3c901e0d1597",
@@ -326,120 +435,6 @@
     "contactDetails" : null,
     "digitalAuthorizations" : [ ]
   } ],
-  "serviceVouchersInUse" : false,
-  "legislation" : [ ],
-  "requirements" : [ {
-    "value" : "Personen övergår till att bli en samserviceklient, ifall dennes sysselsättning förutsätter sammanpassning av TE-byråns, kommunens och FPA:s serviceformer.",
-    "language" : "sv"
-  }, {
-    "value" : "Henkilö siirtyy yhteispalvelun asiakkaaksi, jos hänen työllistymisensä edellyttää TE-toimiston, kunnan ja Kelan palvelujen yhteensovittamista.",
-    "language" : "fi"
-  } ],
-  "languages" : [ "fi", "sv" ],
-  "serviceCollections" : [ ],
-  "industrialClasses" : [ ],
-  "serviceChargeType" : null,
-  "serviceNames" : [ {
-    "language" : "fi",
-    "value" : "Työllistymistä edistävä monialainen yhteispalvelu (TYP)",
-    "type" : "Name"
-  }, {
-    "language" : "sv",
-    "value" : "Sektorsövergripande samsercive som främjar sysselsättningen",
-    "type" : "Name"
-  } ],
-  "ontologyTerms" : [ ],
-  "lifeEvents" : [ {
-    "name" : [ {
-      "value" : "Att bli arbetslös",
-      "language" : "sv"
-    }, {
-      "value" : "Työttömäksi jääminen",
-      "language" : "fi"
-    }, {
-      "value" : "Losing a job",
-      "language" : "en"
-    } ],
-    "code" : "KE8",
-    "ontologyType" : "LIFESITUATION",
-    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v3018",
-    "parentId" : null,
-    "parentUri" : null
-  } ],
-  "targetGroups" : [ {
-    "name" : [ {
-      "value" : "Kansalaiset",
-      "language" : "fi"
-    }, {
-      "value" : "Citizens",
-      "language" : "en"
-    }, {
-      "value" : "Medborgare",
-      "language" : "sv"
-    } ],
-    "code" : "KR1",
-    "ontologyType" : "TARGETGROUP",
-    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
-    "parentId" : null,
-    "parentUri" : null
-  } ],
-  "serviceDescriptions" : [ {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ValidityTime"
-  }, {
-    "language" : "sv",
-    "value" : null,
-    "type" : "ProcessingTime"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ProcessingTime"
-  }, {
-    "language" : "sv",
-    "value" : null,
-    "type" : "DeadLine"
-  }, {
-    "language" : "sv",
-    "value" : "TYP är en samarbetsmodell för kommunen, TE-byrån och FPA och den betjänar personer som varit långvarigt arbetslösa.",
-    "type" : "Summary"
-  }, {
-    "language" : "sv",
-    "value" : "Den sektorsövergripande samservicen som främjar sysselsättningen (TYP) är en samarbetsmodell för kommunen, TE-byrån och FPA och den betjänar personer som varit långvarigt arbetslösa. \n\nSyftet med samservicen är att tillsammans med den arbetslösa personen bedöma vilken service denne behöver som stöd för att sysselsätta sig, planera ändamålsenlig service samt följa upp hur planerna och servicen framskrider. Målet för den sektorsövergripande samservicen som främjar sysselsättningen är att främja sysselsättningen av arbetslösa genom erbjuda ändamålsenlig offentlig arbetskraftsservice, socialservice, hälso- och sjukvårdstjänster samt rehabiliteringstjänster i enligt personens individuella servicebehov. \n\nKlientskapet inleds med en initialkartläggning, som görs tillsammans mellan den arbetslösa personen, kommunens socialarbetare eller socialhandledare samt en sakkunnig från TE-byrån. \n\nI slutet av kartläggningsperioden uppgörs sen sektorsövergripande sysselsättningsplan, i vilken man kommer överens om den service som ingår i personens servicebehov Planen följs upp och uppdateras enligt situation.\n\nDen service som överenskommits i planen kan vara offentlig arbetskraftsservice och även social-, hälso- och rehabiliteringsservice. \n\nNya klienter till den sektorsövergripande samservicen (TYP) hänvisas via TE-byrån, kommunens socialsektor eller via FPA. Personen övergår till att bli en samserviceklient, ifall dennes sysselsättning förutsätter sammanpassning av TE-byråns, kommunens och FPA:s serviceformer. Klienten kan även själv söka till att bli TYP-klient genom att ta kontakt med socialsektorn i den egna kommunen eller en sakkunnig inom TE-byrån. \n\nKlientskapet inom den sektorsövergripande samservicen avslutas då behovet till sektorsövergripande samservice inte längre finns. \n\nKommunerna i Vasanejden och området Sydösterbotten, Storkyro, Laihela, Kaskö, Kristinestad, Korsnäs, Malax, Korsholm, Närpes, Vasa och Vörå samt Österbottens TE-byrå och fPA har ingått samarbetsavtal om ordnande av sektorsövergripande samservice. Den sektorsövergripande samservicens service förverkligas som en del av den egna verksamheten i varje kommun. I nätverket för hela området finns en TYP-koordinator vars uppgift är att ansvara för och utveckla hela nätverkets verksamhet.\n\n",
-    "type" : "Description"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ChargeTypeAdditionalInfo"
-  }, {
-    "language" : "sv",
-    "value" : "Ärendehanteringen i den sektorsövergripande samservicen i Vasanejden och Sydösterbotten (TYP) sker enligt tidsbokning från den egna kommunen eller TE-byrån.\n",
-    "type" : "UserInstruction"
-  }, {
-    "language" : "fi",
-    "value" : "Asiointi Vaasan seudun ja Suupohjan alueen monialaisessa yhteispalvelussa tapahtuu ajanvarauksella omasta kunnasta tai TE-toimistosta. ",
-    "type" : "UserInstruction"
-  }, {
-    "language" : "fi",
-    "value" : "Työllistymistä edistävä monialainen yhteispalvelu (TYP) on kunnan, TE-toimiston ja Kelan yhteistoimintamalli, joka palvelee pidempään työttömänä olleita henkilöitä. \n\nYhteispalvelun tarkoituksena on yhdessä työttömän henkilön kanssa arvioida, mitä palveluja hän tarvitsee työllistymisen tueksi, suunnitella tarkoituksenmukaiset palvelut sekä seurata niiden etenemistä. Tavoitteena on edistää työttömän henkilön työllistymistä tarjoamalla hänen palvelutarpeensa mukaisia julkisia työvoimapalveluja sekä sosiaali-, terveys- ja kuntoutuspalveluja. \n\nAsiakkuus alkaa alkukartoituksella, joka tehdään yhdessä työttömän henkilön, kunnan sosiaalityöntekijän tai sosiaaliohjaajan ja TE-toimiston asiantuntijan kanssa.\n\nKartoitusjakson päätteeksi tehdään monialainen työllistymissuunnitelma, jossa sovitaan henkilön palvelutarpeen mukaisista palveluista. Suunnitelmaa seurataan ja sitä päivitetään tilanteen mukaan. \n\nSuunnitelmassa sovitut palvelut voivat olla julkisia työvoimapalveluja sekä sosiaali-, terveys- ja kuntoutuspalveluja. \n\nUudet asiakkaat monialaiseen yhteispalveluun ohjautuvat TE-toimiston, kunnan sosiaalitoimen tai Kelan kautta.  Asiakas voi myös itse hakeutua TYP-asiakkaaksi ottamalla yhteyttä oman kunnan sosiaalitoimeen tai TE-toimiston asiantuntijaan. \n\nAsiakkuus päättyy, kun tarvetta yhteispalveluun ei enää ole. \n\nVaasan seudun ja Suupohjan alueen kunnat Isokyrö, Laihia, Kaskinen, Kristiinankaupunki, Korsnäs, Maalahti, Mustasaari, Närpiö, Vaasa ja Vöyri sekä Pohjanmaan TE-toimisto ja Kela ovat solmineet yhteistyösopimuksen monialaisen yhteispalvelun järjestämisestä. Monialaisen yhteispalvelun palvelut toteutetaan osana jokaisen kunnan omaa toimintaa. Alueen verkostossa toimii TYP-koordinaattori, jonka tehtävänä on vastata ja kehittää koko verkoston toimintaa. ",
-    "type" : "Description"
-  }, {
-    "language" : "sv",
-    "value" : null,
-    "type" : "ValidityTime"
-  }, {
-    "language" : "sv",
-    "value" : null,
-    "type" : "ChargeTypeAdditionalInfo"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "DeadLine"
-  }, {
-    "language" : "fi",
-    "value" : "Työllistymistä edistävä monialainen yhteispalvelu (TYP) on kunnan, TE-toimiston ja Kelan yhteistoimintamalli, joka palvelee pitkäaikaistyöttömiä.",
-    "type" : "Summary"
-  } ],
   "organizations" : [ {
     "provisionType" : null,
     "organization" : {
@@ -453,5 +448,10 @@
     "organization" : null,
     "roleType" : "Producer",
     "additionalInformation" : [ ]
-  } ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "serviceVouchers" : [ ],
+  "serviceCollections" : [ ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-13T10:17:22.067304Z"
 }
