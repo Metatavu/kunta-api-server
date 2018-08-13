@@ -38,10 +38,9 @@ import fi.metatavu.ptv.client.model.VmOpenApiLocalizedListItem;
 import fi.metatavu.ptv.client.model.VmOpenApiServiceVoucher;
 import fi.metatavu.ptv.client.model.VmOpenApiWebPageWithOrderNumber;
 import fi.metatavu.kuntaapi.server.integrations.ptv.translation.PtvAddressSubtype;
-import fi.metatavu.kuntaapi.test.AbstractIntegrationTest;
 
 @SuppressWarnings ({"squid:S00107", "squid:S2187"})
-public class AbstractPtvInTest extends AbstractIntegrationTest {
+public class AbstractPtvInTest extends AbstractPtvTest {
 
   private static final String LOCATION = "Location";
 

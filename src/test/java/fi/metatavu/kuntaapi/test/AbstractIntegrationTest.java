@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.List;
 
+import org.apache.commons.io.IOUtils;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -20,7 +21,13 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.LoggerContext;
 import org.apache.logging.log4j.core.config.Configuration;
 import org.apache.logging.log4j.core.config.LoggerConfig;
+import org.hamcrest.Matcher;
+import org.json.JSONException;
 import org.junit.After;
+import org.skyscreamer.jsonassert.Customization;
+import org.skyscreamer.jsonassert.JSONAssert;
+import org.skyscreamer.jsonassert.JSONCompareMode;
+import org.skyscreamer.jsonassert.comparator.CustomComparator;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.jayway.restassured.http.ContentType;
@@ -35,6 +42,7 @@ import fi.metatavu.kuntaapi.server.rest.model.PrintableFormServiceChannel;
 import fi.metatavu.kuntaapi.server.rest.model.Service;
 import fi.metatavu.kuntaapi.server.rest.model.ServiceLocationServiceChannel;
 import fi.metatavu.kuntaapi.server.rest.model.WebPageServiceChannel;
+import fi.metatavu.kuntaapi.test.json.JSONMatcher;
 import fi.metatavu.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.metatavu.kuntaapi.server.integrations.ptv.PtvConsts;
 import fi.metatavu.kuntaapi.server.persistence.model.clients.AccessType;
@@ -415,8 +423,6 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
         if (slug.equals(currentSlug)) {
           return;
         }
-        
-        
         
         if (System.currentTimeMillis() > timeout) {
           fail(String.format("Timeout waiting for news article %d to have slug %s", index, slug));
@@ -1058,7 +1064,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   
     givenReadonly()
       .contentType(ContentType.JSON)
-      .get(String.format("%s?firstResult=21&maxResults=20", basePath))
+      .get(String.format("%s?firstResult=%d&maxResults=20", basePath, maxResults))
       .then()
       .assertThat()
       .statusCode(200)
@@ -1114,6 +1120,69 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
         Thread.sleep(ms);
       } catch (InterruptedException e) {
       }
+    }
+  }
+
+  /**
+   * Returns Hamcrest Matcher for checking that JSONs equal
+   * 
+   * @param expected expected JSON file path
+   * @param customizations JSONAssert customizations
+   * @return Matcher
+   * @throws IOException when file reading fails
+   */
+  protected Matcher<Object> jsonEqualsFile(final String expectedFile, Customization... customizations) throws IOException {
+    return jsonEquals(readFileAsString(expectedFile), customizations);
+  }
+
+  /**
+   * Returns Hamcrest Matcher for checking that JSONs equal
+   * 
+   * @param expected expected JSON string
+   * @param customizations JSONAssert customizations
+   * @return Matcher
+   */
+  protected Matcher<Object> jsonEquals(final String expected, Customization... customizations) {
+    return new JSONMatcher(expected, customizations);
+  }
+  
+  /**
+   * Asserts that actual JSON string equals to expected string
+   * 
+   * @param expected expected JSON string
+   * @param actual actual JSON string
+   * @param customizations customization rules (optional)
+   * @throws JSONException when JSON parsing fails
+   */
+  protected void assertJSONEquals(String expected, String actual, Customization... customizations) throws JSONException {
+    CustomComparator customComparator = new CustomComparator(JSONCompareMode.LENIENT, customizations);
+    JSONAssert.assertEquals(expected, actual, customComparator);
+  }
+  
+  /**
+   * Asserts that actual JSON string equals to expected string from a file
+   * 
+   * @param expectedFile file containing expected JSON string
+   * @param actual actual JSON string
+   * @param customizations customization rules (optional)
+   * @throws JSONException when JSON parsing fails
+   * @throws IOException when file reading fails
+   */
+  protected void assertJSONFileEquals(String expectedFile, String actual, Customization... customizations) throws JSONException, IOException {
+    CustomComparator customComparator = new CustomComparator(JSONCompareMode.LENIENT, customizations);
+    JSONAssert.assertEquals(readFileAsString(expectedFile), actual, customComparator);
+  }
+
+  /**
+   * Reads test file contents as string
+   * 
+   * @param path file path
+   * @return file contents
+   * @throws IOException when file reading fails
+   */
+  protected String readFileAsString(String path) throws IOException {
+    try (InputStream fileStream = getClass().getClassLoader().getResourceAsStream(path)) {
+      return IOUtils.toString(fileStream, "UTF-8");
     }
   }
   
