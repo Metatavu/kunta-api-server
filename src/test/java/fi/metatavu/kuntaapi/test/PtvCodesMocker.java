@@ -10,6 +10,8 @@ import fi.metatavu.kuntaapi.server.integrations.kuntarekry.KuntaRekryJob;
 import fi.metatavu.kuntaapi.server.integrations.ptv.PtvConsts;
 
 public class PtvCodesMocker extends AbstractMocker {
+
+  private static final int POSTAL_CODE_PAGES = 5;
   
   @Override
   public void startMock() {
@@ -21,7 +23,10 @@ public class PtvCodesMocker extends AbstractMocker {
     mockCodes("/CodeList/GetCountryCodes", "country.json");
     mockCodes("/CodeList/GetLanguageCodes", "language.json");
     mockCodes("/CodeList/GetMunicipalityCodes", "municipality.json");
-    mockCodesPaged("/CodeList/GetPostalCodes", "postal.json", 0);
+    
+    for (int page = 0; page < POSTAL_CODE_PAGES + 1; page++) {    
+      mockCodesPaged("/CodeList/GetPostalCodes", String.format("postal-%d.json", page), page);
+    }
     
     super.startMock();
   }
