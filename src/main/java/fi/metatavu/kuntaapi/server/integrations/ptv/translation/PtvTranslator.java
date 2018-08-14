@@ -289,7 +289,8 @@ public class PtvTranslator extends AbstractTranslator {
     result.setAreas(translateAreas(ptvService.getAreas()));
     result.setAreaType(ptvService.getAreaType());
     result.setVouchers(ptvService.getServiceVouchersInUse() ? translateServiceVouchers(ptvService.getServiceVouchers()) : Collections.emptyList());
-    
+    result.setFundingType(ptvService.getFundingType());
+
     return result;
   }
   
@@ -886,15 +887,17 @@ public class PtvTranslator extends AbstractTranslator {
     return null;
   }
 
-  public List<LocalizedValue> translateWebPagesToLocalizedItems(List<VmOpenApiWebPageWithOrderNumber> webPages) {
-    if (webPages != null && !webPages.isEmpty()) {
+  public List<LocalizedValue> translateWebPagesToLocalizedItems(List<VmOpenApiWebPageWithOrderNumber> ptvWebPages) {
+    if (ptvWebPages != null && !ptvWebPages.isEmpty()) {
       List<LocalizedValue> result = new ArrayList<>();
       
-      for (VmOpenApiWebPageWithOrderNumber webPage : webPages) {
-        if ((webPage != null) && StringUtils.isNotBlank(webPage.getValue())) {
+      Collections.sort(ptvWebPages, new WebPageWithOrderNumberComparator());
+      
+      for (VmOpenApiWebPageWithOrderNumber ptvWebPage : ptvWebPages) {
+        if ((ptvWebPage != null) && StringUtils.isNotBlank(ptvWebPage.getValue())) {
           LocalizedValue localizedValue = new LocalizedValue();
-          localizedValue.setLanguage(webPage.getLanguage());
-          localizedValue.setValue(webPage.getValue());
+          localizedValue.setLanguage(ptvWebPage.getLanguage());
+          localizedValue.setValue(ptvWebPage.getValue());
           localizedValue.setType(null);
           result.add(localizedValue);
         }
