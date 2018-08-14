@@ -18,6 +18,7 @@ import com.jayway.restassured.http.ContentType;
 
 import fi.metatavu.kuntaapi.server.integrations.management.ManagementConsts;
 import fi.metatavu.kuntaapi.test.AbstractIntegrationTest;
+import fi.metatavu.kuntaapi.test.server.integration.ptv.TestPtvConsts;
 
 @SuppressWarnings ("squid:S1192")
 public class PostTestsIT extends AbstractIntegrationTest {
@@ -34,7 +35,7 @@ public class PostTestsIT extends AbstractIntegrationTest {
   @Before
   public void beforeTest() throws InterruptedException {
     getPtvOrganizationMocker()
-      .mock("9355a207-efd3-4cfb-a02b-67187f34c822");
+      .mock(TestPtvConsts.ORGANIZATIONS[2]);
     
     getManagementTagMocker()
       .mockTags(9002);

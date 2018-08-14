@@ -17,6 +17,7 @@ import com.jayway.restassured.http.ContentType;
 
 import fi.metatavu.kuntaapi.server.integrations.tpt.TptConsts;
 import fi.metatavu.kuntaapi.test.AbstractIntegrationTest;
+import fi.metatavu.kuntaapi.test.server.integration.ptv.TestPtvConsts;
 
 @SuppressWarnings ("squid:S1192")
 public class TptTestsIT extends AbstractIntegrationTest {
@@ -31,7 +32,7 @@ public class TptTestsIT extends AbstractIntegrationTest {
   
   @Before
   public void beforeTest() throws InterruptedException {
-    getPtvOrganizationMocker().mock("9355a207-efd3-4cfb-a02b-67187f34c822");
+    getPtvOrganizationMocker().mock(TestPtvConsts.ORGANIZATIONS[2]);
     getTptMocker().mockAreaSearch("Testil%C3%A4", "tpt/area-search.json");
     
     startMocks();
