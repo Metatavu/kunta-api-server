@@ -235,7 +235,7 @@ public class TaskController {
   }
   
   private fi.metatavu.kuntaapi.server.persistence.model.Task prioritizeTaskModel(String queueName, String uniqueId) {
-    fi.metatavu.kuntaapi.server.persistence.model.Task task = findTask(queueName, uniqueId);
+    fi.metatavu.kuntaapi.server.persistence.model.Task task = findTaskModel(queueName, uniqueId);
     if (task != null && !task.getPriority()) {
       return taskDAO.updatePriority(task, true);
     }
