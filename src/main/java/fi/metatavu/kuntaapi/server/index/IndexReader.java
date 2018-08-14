@@ -8,6 +8,7 @@ import javax.ejb.DependsOn;
 import javax.ejb.Lock;
 import javax.ejb.LockType;
 import javax.ejb.Singleton;
+import javax.ejb.Startup;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
@@ -25,6 +26,7 @@ import fi.metatavu.kuntaapi.server.integrations.KuntaApiIdFactory;
 @ApplicationScoped
 @Singleton
 @DependsOn (value = "IndexUpdater")
+@Startup
 public class IndexReader extends AbstractIndexHander {
   
   public static final int MAX_RESULTS = 1000;
