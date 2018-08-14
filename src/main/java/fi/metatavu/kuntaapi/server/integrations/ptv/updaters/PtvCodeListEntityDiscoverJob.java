@@ -248,7 +248,7 @@ public class PtvCodeListEntityDiscoverJob extends EntityDiscoverJob<PtvCodeListT
       if (postalCodesResponse.getResponse() == null) {
         logger.log(Level.SEVERE, "Failed to read PTV code list size");
       } else {
-        for (int page = 0; page < postalCodesResponse.getResponse().getPageCount(); page++) {
+        for (int page = 1; page < postalCodesResponse.getResponse().getPageCount(); page++) {
           codeListTaskQueue.enqueueTask(new PtvCodeListTask(false, CodeType.POSTAL, page));
         }
       }
