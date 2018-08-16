@@ -1,0 +1,59 @@
+{
+	"sourceId": null,
+	"serviceChannelDescriptions": [
+		{
+			"language": "fi",
+			"value": "Suomi.fi-valtuudet, Yrityksen puolesta asiointi",
+			"type": "Summary"
+		},
+		{
+			"language": "fi",
+			"value": "Suomi.fi-valtuudet-palvelu voidaan jakaa kahteen osaan: Jos haluat asioida edustamasi yrityksen puolesta jossakin julkishallinnon tai yksityisen sektorin verkkopalvelussa, Suomi.fi-valtuudet tarkistaa oikeutesi puolesta-asiointiin. Tämä edellyttää, että verkkopalvelu on ottanut Suomi.fi-valtuudet käyttöön. Esimerkiksi Trafin Oma asiointi -palvelussa oikeutesi asioida yrityksen puolesta tarkistetaan Suomi.fi-valtuuksien avulla. Tulevaisuudessa yritys voi valtuuttaa toisen yrityksen tai henkilön asioimaan puolestaan sähköisissä asiointipalveluissa. Valtuuttaminen tapahtuu Suomi.fi-verkkopalvelussa. Valtuuksien hallintaa voi jo nyt kokeilla testihenkilöiden tunnuksilla osoitteessa https://valtuusrekisteri.beta.suomi.fi/",
+			"type": "Description"
+		}
+	],
+	"organizationId": "b458d033-042d-4cbe-b030-34e81da28821",
+	"areaType": null,
+	"serviceChannelNames": [
+		{
+			"value": "Sähköisten valtuuksien luonti yrityksen puolesta asioinnissa",
+			"language": "fi"
+		}
+	],
+	"areas": [],
+	"signatureQuantity": "0",
+	"requiresSignature": false,
+	"requiresAuthentication": false,
+  "webPage": [
+    {
+      "language": "fi",
+      "value": "https://valtuusrekisteri.beta.suomi.fi/"
+    }
+  ],
+	"attachments": [],
+  "supportPhones": [
+    {
+      "additionalInformation": null,
+      "chargeDescription": null,
+      "isFinnishServiceNumber": true,
+      "language": "fi",
+      "number": "029500",
+      "prefixNumber": null,
+      "serviceChargeType": "Chargeable"
+    }
+  ],
+	"supportEmails": [
+		{
+			"value": "palveluneuvoja@kansalaisneuvonta.fi",
+			"language": "fi"
+		}
+	],
+	"serviceHours": [],
+	"publishingStatus": "Published",
+	"isVisibleForAll": true,
+	"deleteAllAttachments": true,
+	"deleteAllWebPages": false,
+	"deleteAllServiceHours": true,
+	"deleteAllSupportEmails": true,
+	"deleteAllSupportPhones": true
+}

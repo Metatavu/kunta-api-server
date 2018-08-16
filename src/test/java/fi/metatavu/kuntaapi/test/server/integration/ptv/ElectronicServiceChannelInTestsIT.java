@@ -36,11 +36,9 @@ public class ElectronicServiceChannelInTestsIT extends AbstractPtvInTest {
 
     startMocks();
     
-    waitApiListCount("/organizations", 3);
-    waitApiListCount("/electronicServiceChannels", TestPtvConsts.ELECTRONIC_CHANNEL_SERVICE_CHANNELS.length);
-    waitApiListCount("/services", TestPtvConsts.SERVICES.length);
+    waitApiListCount("/organizations", TestPtvConsts.ORGANIZATIONS.length);
   }
-  
+
   @Test
   public void updateElectronicServiceChannelUnauthorized() throws IOException, InterruptedException {
     ElectronicServiceChannel kuntaApiResource = getElectronicServiceChannel(0, TestPtvConsts.ELECTRONIC_CHANNEL_SERVICE_CHANNELS.length);
@@ -53,7 +51,7 @@ public class ElectronicServiceChannelInTestsIT extends AbstractPtvInTest {
       .assertThat()
       .statusCode(401);
   }
-  
+
   @Test
   public void updateElectronicServiceChannelForbidden() throws IOException, InterruptedException {
     ElectronicServiceChannel kuntaApiResource = getElectronicServiceChannel(0, TestPtvConsts.ELECTRONIC_CHANNEL_SERVICE_CHANNELS.length);
@@ -65,38 +63,37 @@ public class ElectronicServiceChannelInTestsIT extends AbstractPtvInTest {
       .then()
       .assertThat()
       .statusCode(403);
-  }
-  
+  }  
+
   @Test
   public void updateElectronicServiceChannelUnchanged() throws IOException, InterruptedException {
     String ptvId = TestPtvConsts.ELECTRONIC_CHANNEL_SERVICE_CHANNELS[0];
-    String organizationId = getOrganizationId(0);
+    String organizationId = getOrganizationId(2);
     String kuntaApiChannelId = getElectronicChannelId(0, TestPtvConsts.ELECTRONIC_CHANNEL_SERVICE_CHANNELS.length);
     
     grantOrganizationPermission(AccessType.READ_WRITE, organizationId, ClientOrganizationPermission.UPDATE_SERVICE_CHANNELS);
 
     ElectronicServiceChannel kuntaApiResource = getElectronicServiceChannel(0, TestPtvConsts.ELECTRONIC_CHANNEL_SERVICE_CHANNELS.length);
     V8VmOpenApiElectronicChannelInBase ptvInResource = getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_IN_API, ptvId, V8VmOpenApiElectronicChannelInBase.class);
-    V8VmOpenApiElectronicChannel ptvOutResource =  getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_OUT_API, ptvId, V8VmOpenApiElectronicChannel.class);
+    V8VmOpenApiElectronicChannel ptvOutResource = getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_OUT_API, ptvId, V8VmOpenApiElectronicChannel.class);
     
     getPtvServiceChannelMocker().mockElectronicPut(ptvId, ptvOutResource);
     
     givenReadWrite()
       .body(kuntaApiResource)
       .contentType(ContentType.JSON)
-      .put(SERVICE_CHANNEL_FIND_PATH,kuntaApiChannelId)
+      .put(SERVICE_CHANNEL_FIND_PATH, kuntaApiChannelId)
       .then()
       .assertThat()
       .statusCode(200);
 
     getPtvServiceChannelMocker().verifyElectronic(ptvId, ptvInResource);
   }
-  
+
   @Test
   public void updateElectronicServiceChannelChanges() throws IOException, InterruptedException {
     String ptvId = TestPtvConsts.ELECTRONIC_CHANNEL_SERVICE_CHANNELS[0];
-    String organizationId = getOrganizationId(0);
-    
+    String organizationId = getOrganizationId(2);
     String kuntaApiChannelId = getElectronicChannelId(0, TestPtvConsts.ELECTRONIC_CHANNEL_SERVICE_CHANNELS.length);
     
     grantOrganizationPermission(AccessType.READ_WRITE, organizationId, ClientOrganizationPermission.UPDATE_SERVICE_CHANNELS);

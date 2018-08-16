@@ -640,7 +640,12 @@ public class KuntaApiPtvTranslator extends AbstractTranslator {
   }
 
   private V4VmOpenApiPhone translatePhoneNumber(Phone phoneNumber) {
-    if (phoneNumber == null || !"Phone".equals(phoneNumber.getType())) {
+    if (phoneNumber == null) {
+      return null;
+    }
+    
+    String type = phoneNumber.getType();
+    if (type != null && !"Phone".equals(type)) {
       return null;
     }
     

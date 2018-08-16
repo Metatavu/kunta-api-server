@@ -12,23 +12,6 @@ import javax.transaction.Transactional;
 import javax.transaction.Transactional.TxType;
 import javax.ws.rs.core.Response;
 
-import fi.metatavu.kuntaapi.server.rest.model.ElectronicServiceChannel;
-import fi.metatavu.kuntaapi.server.rest.model.PhoneServiceChannel;
-import fi.metatavu.kuntaapi.server.rest.model.PrintableFormServiceChannel;
-import fi.metatavu.kuntaapi.server.rest.model.ServiceLocationServiceChannel;
-import fi.metatavu.kuntaapi.server.rest.model.WebPageServiceChannel;
-import fi.metatavu.ptv.client.ApiResponse;
-import fi.metatavu.ptv.client.ServiceChannelApi;
-import fi.metatavu.ptv.client.model.V8VmOpenApiElectronicChannelInBase;
-import fi.metatavu.ptv.client.model.V8VmOpenApiWebPageChannelInBase;
-import fi.metatavu.ptv.client.model.V8VmOpenApiElectronicChannel;
-import fi.metatavu.ptv.client.model.V8VmOpenApiPhoneChannel;
-import fi.metatavu.ptv.client.model.V8VmOpenApiPhoneChannelInBase;
-import fi.metatavu.ptv.client.model.V8VmOpenApiPrintableFormChannel;
-import fi.metatavu.ptv.client.model.V8VmOpenApiPrintableFormChannelInBase;
-import fi.metatavu.ptv.client.model.V8VmOpenApiServiceLocationChannel;
-import fi.metatavu.ptv.client.model.V8VmOpenApiServiceLocationChannelInBase;
-import fi.metatavu.ptv.client.model.V8VmOpenApiWebPageChannel;
 import fi.metatavu.kuntaapi.server.controllers.IdentifierController;
 import fi.metatavu.kuntaapi.server.id.ElectronicServiceChannelId;
 import fi.metatavu.kuntaapi.server.id.IdController;
@@ -52,6 +35,23 @@ import fi.metatavu.kuntaapi.server.integrations.ptv.tasks.ServiceChannelUpdateTa
 import fi.metatavu.kuntaapi.server.integrations.ptv.translation.KuntaApiPtvTranslator;
 import fi.metatavu.kuntaapi.server.integrations.ptv.translation.PtvOutPtvInTranslator;
 import fi.metatavu.kuntaapi.server.integrations.ptv.updaters.PtvServiceChannelEntityDiscoverJob;
+import fi.metatavu.kuntaapi.server.rest.model.ElectronicServiceChannel;
+import fi.metatavu.kuntaapi.server.rest.model.PhoneServiceChannel;
+import fi.metatavu.kuntaapi.server.rest.model.PrintableFormServiceChannel;
+import fi.metatavu.kuntaapi.server.rest.model.ServiceLocationServiceChannel;
+import fi.metatavu.kuntaapi.server.rest.model.WebPageServiceChannel;
+import fi.metatavu.ptv.client.ApiResponse;
+import fi.metatavu.ptv.client.ServiceChannelApi;
+import fi.metatavu.ptv.client.model.V8VmOpenApiElectronicChannel;
+import fi.metatavu.ptv.client.model.V8VmOpenApiElectronicChannelInBase;
+import fi.metatavu.ptv.client.model.V8VmOpenApiPhoneChannel;
+import fi.metatavu.ptv.client.model.V8VmOpenApiPhoneChannelInBase;
+import fi.metatavu.ptv.client.model.V8VmOpenApiPrintableFormChannel;
+import fi.metatavu.ptv.client.model.V8VmOpenApiPrintableFormChannelInBase;
+import fi.metatavu.ptv.client.model.V8VmOpenApiServiceLocationChannel;
+import fi.metatavu.ptv.client.model.V8VmOpenApiServiceLocationChannelInBase;
+import fi.metatavu.ptv.client.model.V8VmOpenApiWebPageChannel;
+import fi.metatavu.ptv.client.model.V8VmOpenApiWebPageChannelInBase;
 
 /**
  * Service channel provider for PTV
@@ -179,7 +179,7 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
       ptvElectronicServiceChannelIn.setDeleteAllServiceHours(true);
       ptvElectronicServiceChannelIn.setDeleteAllSupportEmails(true);
       ptvElectronicServiceChannelIn.setDeleteAllSupportPhones(true);
-      ptvElectronicServiceChannelIn.setDeleteAllWebPages(false);
+      ptvElectronicServiceChannelIn.setDeleteAllWebPages(true);
 
       ApiResponse<V8VmOpenApiElectronicChannel> response = serviceChannelApi.apiV8ServiceChannelEChannelByIdPut(ptvElectronicServiceChannelId.getId(), ptvElectronicServiceChannelIn);
       if (response.isOk()) {
