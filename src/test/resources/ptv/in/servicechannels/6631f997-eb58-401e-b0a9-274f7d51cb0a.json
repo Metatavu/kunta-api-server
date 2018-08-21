@@ -52,7 +52,7 @@
 	"publishingStatus": "Published",
 	"isVisibleForAll": true,
 	"deleteAllAttachments": true,
-	"deleteAllWebPages": false,
+	"deleteAllWebPages": true,
 	"deleteAllServiceHours": true,
 	"deleteAllSupportEmails": true,
 	"deleteAllSupportPhones": true

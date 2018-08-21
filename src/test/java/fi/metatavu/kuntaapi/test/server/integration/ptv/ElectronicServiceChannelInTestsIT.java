@@ -114,7 +114,7 @@ public class ElectronicServiceChannelInTestsIT extends AbstractPtvInTest {
       createPhone("en", "Phone", "+358", "12345-FAKE", "Charged", "Testing", false, "Test phone"),
       createPhone("en", "Fax", "+258", "54321-FAKE", "Free", "Testing fax", true, "Test fax")
     ));
-    kuntaApiResource.setUrls(createLocalizedValue("en", "URL", "www.example.com"));
+    kuntaApiResource.setWebPages(createWebPages("en", "WebPage", "www.example.com", "www.example.com", null));
     
     V8VmOpenApiElectronicChannelInBase ptvInResource = getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_IN_API, ptvId, V8VmOpenApiElectronicChannelInBase.class);
     ptvInResource.setAreas(Arrays.asList(createArea("Municipality", "12345")));

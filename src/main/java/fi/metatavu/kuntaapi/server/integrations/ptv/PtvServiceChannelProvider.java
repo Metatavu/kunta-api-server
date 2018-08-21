@@ -174,7 +174,7 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
       ptvElectronicServiceChannelIn.setSignatureQuantity(String.valueOf(electronicServiceChannel.getSignatureQuantity()));
       ptvElectronicServiceChannelIn.setSupportEmails(kuntaApiPtvTranslator.translateEmailsIntoLanguageItems(electronicServiceChannel.getSupportEmails()));
       ptvElectronicServiceChannelIn.setSupportPhones(kuntaApiPtvTranslator.translatePhoneNumbers(electronicServiceChannel.getSupportPhones()));
-      ptvElectronicServiceChannelIn.setWebPage(kuntaApiPtvTranslator.translateLocalizedValuesIntoLanguageItems(electronicServiceChannel.getUrls()));
+      ptvElectronicServiceChannelIn.setWebPage(kuntaApiPtvTranslator.translateWebPagesIntoLanguageItems(electronicServiceChannel.getWebPages()));
       ptvElectronicServiceChannelIn.setDeleteAllAttachments(true);
       ptvElectronicServiceChannelIn.setDeleteAllServiceHours(true);
       ptvElectronicServiceChannelIn.setDeleteAllSupportEmails(true);
