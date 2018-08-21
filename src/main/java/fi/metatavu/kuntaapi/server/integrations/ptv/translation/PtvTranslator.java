@@ -183,6 +183,10 @@ public class PtvTranslator extends AbstractTranslator {
   public PhoneServiceChannel translatePhoneServiceChannel(PhoneServiceChannelId kuntaApiPhoneServiceChannelId,
       OrganizationId kuntaApiOrganizationId, V8VmOpenApiPhoneChannel ptvPhoneServiceChannel) {
     
+    if (ptvPhoneServiceChannel == null) {
+      return null;
+    }
+    
     PhoneServiceChannel result = new PhoneServiceChannel();
     result.setDescriptions(translateLocalizedValues(ptvPhoneServiceChannel.getServiceChannelDescriptions()));
     result.setId(kuntaApiPhoneServiceChannelId.getId());
@@ -194,6 +198,8 @@ public class PtvTranslator extends AbstractTranslator {
     result.setServiceHours(translateServiceHours(ptvPhoneServiceChannel.getServiceHours()));
     result.setSupportEmails(translateEmailsLanguageItem(ptvPhoneServiceChannel.getSupportEmails()));
     result.setWebPages(translateWebPagesWithOrderNumber(ptvPhoneServiceChannel.getWebPages()));
+    result.setAreaType(ptvPhoneServiceChannel.getAreaType());
+    result.setAreas(translateAreas(ptvPhoneServiceChannel.getAreas()));
     
     return result;
   }
