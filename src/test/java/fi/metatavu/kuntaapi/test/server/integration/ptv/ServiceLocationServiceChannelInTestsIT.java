@@ -1,5 +1,7 @@
 package fi.metatavu.kuntaapi.test.server.integration.ptv;
 
+import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.wireMockConfig;
+
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collections;
@@ -22,11 +24,12 @@ import fi.metatavu.kuntaapi.test.AbstractPtvMocker;
 public class ServiceLocationServiceChannelInTestsIT extends AbstractPtvInTest {
 
   private static final String SERVICE_CHANNEL_FIND_PATH = "/serviceLocationServiceChannels/{kuntaApiChannelId}";
+  
   /**
    * Starts WireMock
    */
   @Rule
-  public WireMockRule wireMockRule = new WireMockRule(getWireMockPort());
+  public WireMockRule wireMockRule = new WireMockRule(wireMockConfig().port(getWireMockPort()), false);
   
   @Before
   public void beforeTest() throws InterruptedException {
@@ -36,9 +39,7 @@ public class ServiceLocationServiceChannelInTestsIT extends AbstractPtvInTest {
 
     startMocks();
     
-    waitApiListCount("/organizations", 3);
-    waitApiListCount("/serviceLocationServiceChannels", TestPtvConsts.SERVICE_LOCATION_SERVICE_CHANNELS.length);
-    waitApiListCount("/services", TestPtvConsts.SERVICES.length);
+    waitApiListCount("/organizations", TestPtvConsts.ORGANIZATIONS.length);
   }
   
   @Test
@@ -70,7 +71,7 @@ public class ServiceLocationServiceChannelInTestsIT extends AbstractPtvInTest {
   @Test
   public void updateServiceLocationServiceChannelUnchanged() throws IOException, InterruptedException {
     String ptvId = TestPtvConsts.SERVICE_LOCATION_SERVICE_CHANNELS[0];
-    String organizationId = getOrganizationId(0);
+    String organizationId = getOrganizationId(1);
     String kuntaApiChannelId = getServiceLocationChannelId(0, TestPtvConsts.SERVICE_LOCATION_SERVICE_CHANNELS.length);
     
     grantOrganizationPermission(AccessType.READ_WRITE, organizationId, ClientOrganizationPermission.UPDATE_SERVICE_CHANNELS);
@@ -95,7 +96,7 @@ public class ServiceLocationServiceChannelInTestsIT extends AbstractPtvInTest {
   @Test
   public void updateServiceLocationServiceChannelChanges() throws IOException, InterruptedException {
     String ptvId = TestPtvConsts.SERVICE_LOCATION_SERVICE_CHANNELS[0];
-    String organizationId = getOrganizationId(0);
+    String organizationId = getOrganizationId(1);
     
     String kuntaApiChannelId = getServiceLocationChannelId(0, TestPtvConsts.SERVICE_LOCATION_SERVICE_CHANNELS.length);
     

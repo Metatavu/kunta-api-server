@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.UUID;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
@@ -24,6 +25,16 @@ import org.osgeo.proj4j.CoordinateTransform;
 import org.osgeo.proj4j.CoordinateTransformFactory;
 import org.osgeo.proj4j.ProjCoordinate;
 
+import fi.metatavu.kuntaapi.server.id.BaseId;
+import fi.metatavu.kuntaapi.server.id.CodeId;
+import fi.metatavu.kuntaapi.server.id.ElectronicServiceChannelId;
+import fi.metatavu.kuntaapi.server.id.OrganizationId;
+import fi.metatavu.kuntaapi.server.id.PhoneServiceChannelId;
+import fi.metatavu.kuntaapi.server.id.PrintableFormServiceChannelId;
+import fi.metatavu.kuntaapi.server.id.ServiceId;
+import fi.metatavu.kuntaapi.server.id.ServiceLocationServiceChannelId;
+import fi.metatavu.kuntaapi.server.id.WebPageServiceChannelId;
+import fi.metatavu.kuntaapi.server.integrations.ptv.CodeType;
 import fi.metatavu.kuntaapi.server.rest.model.Address;
 import fi.metatavu.kuntaapi.server.rest.model.Area;
 import fi.metatavu.kuntaapi.server.rest.model.Code;
@@ -51,24 +62,25 @@ import fi.metatavu.kuntaapi.server.rest.model.ServiceOrganization;
 import fi.metatavu.kuntaapi.server.rest.model.ServiceVoucher;
 import fi.metatavu.kuntaapi.server.rest.model.WebPage;
 import fi.metatavu.kuntaapi.server.rest.model.WebPageServiceChannel;
-import fi.metatavu.ptv.client.model.V8VmOpenApiDailyOpeningTime;
+import fi.metatavu.kuntaapi.server.utils.TimeUtils;
 import fi.metatavu.ptv.client.model.V4VmOpenApiEmail;
 import fi.metatavu.ptv.client.model.V4VmOpenApiFintoItem;
 import fi.metatavu.ptv.client.model.V4VmOpenApiLaw;
 import fi.metatavu.ptv.client.model.V4VmOpenApiPhone;
 import fi.metatavu.ptv.client.model.V4VmOpenApiPhoneWithType;
-import fi.metatavu.ptv.client.model.V8VmOpenApiServiceHour;
-import fi.metatavu.ptv.client.model.V6VmOpenApiServiceOrganization;
 import fi.metatavu.ptv.client.model.V4VmOpenApiWebPage;
+import fi.metatavu.ptv.client.model.V6VmOpenApiServiceOrganization;
 import fi.metatavu.ptv.client.model.V7VmOpenApiAddress;
+import fi.metatavu.ptv.client.model.V7VmOpenApiFintoItemWithDescription;
 import fi.metatavu.ptv.client.model.V8VmOpenApiAddressDelivery;
 import fi.metatavu.ptv.client.model.V8VmOpenApiAddressWithMoving;
+import fi.metatavu.ptv.client.model.V8VmOpenApiDailyOpeningTime;
 import fi.metatavu.ptv.client.model.V8VmOpenApiElectronicChannel;
-import fi.metatavu.ptv.client.model.V7VmOpenApiFintoItemWithDescription;
 import fi.metatavu.ptv.client.model.V8VmOpenApiOrganization;
 import fi.metatavu.ptv.client.model.V8VmOpenApiPhoneChannel;
 import fi.metatavu.ptv.client.model.V8VmOpenApiPrintableFormChannel;
 import fi.metatavu.ptv.client.model.V8VmOpenApiService;
+import fi.metatavu.ptv.client.model.V8VmOpenApiServiceHour;
 import fi.metatavu.ptv.client.model.V8VmOpenApiServiceLocationChannel;
 import fi.metatavu.ptv.client.model.V8VmOpenApiWebPageChannel;
 import fi.metatavu.ptv.client.model.VmOpenApiAddressPostOfficeBox;
@@ -84,17 +96,6 @@ import fi.metatavu.ptv.client.model.VmOpenApiMunicipality;
 import fi.metatavu.ptv.client.model.VmOpenApiNameTypeByLanguage;
 import fi.metatavu.ptv.client.model.VmOpenApiServiceVoucher;
 import fi.metatavu.ptv.client.model.VmOpenApiWebPageWithOrderNumber;
-import fi.metatavu.kuntaapi.server.id.BaseId;
-import fi.metatavu.kuntaapi.server.id.CodeId;
-import fi.metatavu.kuntaapi.server.id.ElectronicServiceChannelId;
-import fi.metatavu.kuntaapi.server.id.OrganizationId;
-import fi.metatavu.kuntaapi.server.id.PhoneServiceChannelId;
-import fi.metatavu.kuntaapi.server.id.PrintableFormServiceChannelId;
-import fi.metatavu.kuntaapi.server.id.ServiceId;
-import fi.metatavu.kuntaapi.server.id.ServiceLocationServiceChannelId;
-import fi.metatavu.kuntaapi.server.id.WebPageServiceChannelId;
-import fi.metatavu.kuntaapi.server.integrations.ptv.CodeType;
-import fi.metatavu.kuntaapi.server.utils.TimeUtils;
 
 @ApplicationScoped
 public class PtvTranslator extends AbstractTranslator {
@@ -157,16 +158,46 @@ public class PtvTranslator extends AbstractTranslator {
       PrintableFormServiceChannelId kuntaApiPrintableFormServiceChannelId, OrganizationId kuntaApiOrganizationId,
       V8VmOpenApiPrintableFormChannel ptvPrintableFormServiceChannel) {
     
+    if (ptvPrintableFormServiceChannel.getDeliveryAddresses() == null || ptvPrintableFormServiceChannel.getDeliveryAddresses().isEmpty()) {
+      return null;
+    }
+    
+    V8VmOpenApiAddressDelivery deliveryAddress = null;
+    List<V8VmOpenApiAddressDelivery> deliveryAddresses = ptvPrintableFormServiceChannel.getDeliveryAddresses().stream()
+      .filter(Objects::nonNull)
+      .filter((address) -> {
+        long receiverCount = address.getReceiver().stream()
+          .map(VmOpenApiLanguageItem::getValue)
+          .filter(StringUtils::isNotBlank)
+          .count();
+        
+        if (receiverCount == 0) {
+          return false;
+        }
+        
+        long inTextCount = address.getDeliveryAddressInText() == null ? 0 : address.getDeliveryAddressInText().stream()
+          .map(VmOpenApiLanguageItem::getValue)
+          .filter(StringUtils::isNotBlank)
+          .count();
+        
+        return inTextCount > 0 || address.getPostOfficeBoxAddress() != null || address.getStreetAddress() != null;
+      })
+      .collect(Collectors.toList());
+    
+    if (deliveryAddresses != null && !deliveryAddresses.isEmpty()) {
+      deliveryAddress = deliveryAddresses.get(0);
+      if (deliveryAddresses.size() > 1) {
+        logger.log(Level.WARNING, String.format("Multiple delivery addresses are not yet supported: %d delivery addresses found", deliveryAddresses.size()));
+      }
+    }
+    
     PrintableFormServiceChannel result = new PrintableFormServiceChannel();
     result.setAttachments(translateAttachments(ptvPrintableFormServiceChannel.getAttachments()));
     result.setChannelUrls(translateLocalizedValues(ptvPrintableFormServiceChannel.getChannelUrls()));
-    
-    // TODO: FIXME delivery address
-//    result.setDeliveryAddress(translateAddressDelivery(ptvPrintableFormServiceChannel.getDeliveryAddress()));
+    result.setDeliveryAddress(translateAddressDelivery(deliveryAddress));
     result.setDescriptions(translateLocalizedValues(ptvPrintableFormServiceChannel.getServiceChannelDescriptions()));
     result.setFormIdentifier(translateLocalizedItems(ptvPrintableFormServiceChannel.getFormIdentifier()));
-    // TODO: FIXME form receiver
-//    result.setFormReceiver(translateLocalizedItems(ptvPrintableFormServiceChannel.getFormReceiver()));
+    result.setFormReceiver(deliveryAddress != null ? translateLocalizedItems(deliveryAddress.getReceiver()) : null);
     result.setId(kuntaApiPrintableFormServiceChannelId.getId());
     result.setLanguages(ptvPrintableFormServiceChannel.getLanguages());
     result.setNames(translateLocalizedValues(ptvPrintableFormServiceChannel.getServiceChannelNames()));
@@ -176,6 +207,8 @@ public class PtvTranslator extends AbstractTranslator {
     result.setSupportEmails(translateEmailsLanguageItem(ptvPrintableFormServiceChannel.getSupportEmails()));
     result.setSupportPhones(translatePhones(ptvPrintableFormServiceChannel.getSupportPhones()));
     result.setWebPages(translateWebPagesWithOrderNumber(ptvPrintableFormServiceChannel.getWebPages()));
+    result.setAreaType(ptvPrintableFormServiceChannel.getAreaType());
+    result.setAreas(translateAreas(ptvPrintableFormServiceChannel.getAreas()));
     
     return result;
   }

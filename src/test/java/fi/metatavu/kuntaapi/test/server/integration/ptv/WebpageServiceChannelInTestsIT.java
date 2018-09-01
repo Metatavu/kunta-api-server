@@ -1,5 +1,7 @@
 package fi.metatavu.kuntaapi.test.server.integration.ptv;
 
+import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.wireMockConfig;
+
 import java.io.IOException;
 import java.util.Arrays;
 
@@ -26,7 +28,7 @@ public class WebpageServiceChannelInTestsIT extends AbstractPtvInTest {
    * Starts WireMock
    */
   @Rule
-  public WireMockRule wireMockRule = new WireMockRule(getWireMockPort());
+  public WireMockRule wireMockRule = new WireMockRule(wireMockConfig().port(getWireMockPort()), false);
   
   @Before
   public void beforeTest() throws InterruptedException {
@@ -36,9 +38,7 @@ public class WebpageServiceChannelInTestsIT extends AbstractPtvInTest {
 
     startMocks();
     
-    waitApiListCount("/organizations", 3);
-    waitApiListCount("/webPageServiceChannels", TestPtvConsts.WEB_PAGE_SERVICE_CHANNELS.length);
-    waitApiListCount("/services", TestPtvConsts.SERVICES.length);
+    waitApiListCount("/organizations", TestPtvConsts.ORGANIZATIONS.length);
   }
   
   @Test
@@ -107,7 +107,7 @@ public class WebpageServiceChannelInTestsIT extends AbstractPtvInTest {
     kuntaApiResource.setNames(createLocalizedValue("en", "Name", "Changed Name"));
     kuntaApiResource.setSupportEmails(createEmails("en", "fake@example.com"));
     kuntaApiResource.setSupportPhones(createPhones("en", "Phone", "+358", "12345-FAKE", "Charged", "Testing", false, "Test phone"));
-    kuntaApiResource.setUrls(createLocalizedValue("en", "URL", "www.example.com"));
+    kuntaApiResource.setWebPages(createWebPages("en", "URL", "www.example.com", null, null));
     
     V8VmOpenApiWebPageChannelInBase ptvInResource = getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_IN_API, ptvId, V8VmOpenApiWebPageChannelInBase.class);
     ptvInResource.setServiceChannelDescriptions(createPtvInLocalizedItems("en", "Description", "Changed Description"));

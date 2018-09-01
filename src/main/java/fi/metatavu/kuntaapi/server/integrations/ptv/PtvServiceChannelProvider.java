@@ -248,7 +248,6 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
     
     return null;
   }
-  
 
   @Override
   public IntegrationResponse<PrintableFormServiceChannel> updatePrintableFormServiceChannel(PrintableFormServiceChannelId printableFormChannelId, PrintableFormServiceChannel printableFormServiceChannel) {
@@ -272,18 +271,15 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
         logger.log(Level.WARNING, () -> String.format(FAILED_TO_TRANSLATE_PTV_ORGANIZATION_ID_INTO_KUNTA_API_ORGANIZATION_ID, ptvOrganizationId));
         return null;
       }
-      
+
       ServiceChannelApi serviceChannelApi = ptvApi.getServiceChannelApi(kuntaApiOrganizationId);
       
       ptvPrintableFormServiceChannelIn.setAreas(kuntaApiPtvTranslator.translateAreas(printableFormServiceChannel.getAreas()));
       ptvPrintableFormServiceChannelIn.setAreaType(printableFormServiceChannel.getAreaType());
       ptvPrintableFormServiceChannelIn.setAttachments(kuntaApiPtvTranslator.translateAttachments(printableFormServiceChannel.getAttachments()));
       ptvPrintableFormServiceChannelIn.setChannelUrls(kuntaApiPtvTranslator.translateLocalizedValuesIntoLocalizedListItems(printableFormServiceChannel.getChannelUrls()));
-      // TODO: FIXME: Delivery address
-//      ptvPrintableFormServiceChannelIn.setDeliveryAddress(kuntaApiPtvTranslator.translateDeliveryAddresses(printableFormServiceChannel.getDeliveryAddress()));
+      ptvPrintableFormServiceChannelIn.setDeliveryAddresses(kuntaApiPtvTranslator.translateDeliveryAddresses(printableFormServiceChannel.getFormReceiver(), printableFormServiceChannel.getDeliveryAddress()));
       ptvPrintableFormServiceChannelIn.setFormIdentifier(kuntaApiPtvTranslator.translateLocalizedValuesIntoLanguageItems(printableFormServiceChannel.getFormIdentifier()));
-      // TODO: FIXME: form receiver
-//      ptvPrintableFormServiceChannelIn.setFormReceiver(kuntaApiPtvTranslator.translateLocalizedValuesIntoLanguageItems(printableFormServiceChannel.getFormReceiver()));
       ptvPrintableFormServiceChannelIn.setPublishingStatus(printableFormServiceChannel.getPublishingStatus());
       ptvPrintableFormServiceChannelIn.setServiceChannelDescriptions(kuntaApiPtvTranslator.translateLocalizedValuesIntoLocalizedListItems(printableFormServiceChannel.getDescriptions()));
       ptvPrintableFormServiceChannelIn.setServiceChannelNames(kuntaApiPtvTranslator.translateLocalizedValuesIntoLanguageItems(printableFormServiceChannel.getNames()));
@@ -388,7 +384,7 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
       ptvWebPageServiceChannelIn.setServiceChannelNames(kuntaApiPtvTranslator.translateLocalizedValuesIntoLanguageItems(webPageServiceChannel.getNames()));
       ptvWebPageServiceChannelIn.setSupportEmails(kuntaApiPtvTranslator.translateEmailsIntoLanguageItems(webPageServiceChannel.getSupportEmails()));
       ptvWebPageServiceChannelIn.setSupportPhones(kuntaApiPtvTranslator.translatePhoneNumbers(webPageServiceChannel.getSupportPhones()));
-      ptvWebPageServiceChannelIn.setWebPage(kuntaApiPtvTranslator.translateLocalizedValuesIntoLanguageItems(webPageServiceChannel.getUrls()));
+      ptvWebPageServiceChannelIn.setWebPage(kuntaApiPtvTranslator.translateWebPagesIntoLanguageItems(webPageServiceChannel.getWebPages()));
       
       ApiResponse<V8VmOpenApiWebPageChannel> response = serviceChannelApi.apiV8ServiceChannelWebPageByIdPut(ptvWebPageServiceChannelId.getId(), ptvWebPageServiceChannelIn);
       if (response.isOk()) {

@@ -281,7 +281,7 @@ public class KuntaApiPtvTranslator extends AbstractTranslator {
     }
     
     List<VmOpenApiWebPageWithOrderNumber> result = new ArrayList<>(webPages.size());
-    int orderNumber = 0;
+    int orderNumber = 1;
     
     for (WebPage webPage : webPages) {
       VmOpenApiWebPageWithOrderNumber ptvWebPage = translateWebPageWithOrder(webPage, String.valueOf(orderNumber));
@@ -463,36 +463,40 @@ public class KuntaApiPtvTranslator extends AbstractTranslator {
   /**
    * Translates Kunta API delivery address into PTV in addresses
    * 
+   * @param formReceiver 
    * @param deliveryAddress Kunta API delivery address
    * @return PTV in addresses
    */
-  public V8VmOpenApiAddressDeliveryIn translateDeliveryAddresses(Address deliveryAddress) {
-    if (deliveryAddress == null) {
-      return null;
+  public List<V8VmOpenApiAddressDeliveryIn> translateDeliveryAddresses(List<LocalizedValue> formReceiver, Address deliveryAddress) {
+    if (deliveryAddress == null && (formReceiver == null || formReceiver.isEmpty())) {
+      return Collections.emptyList();
     }
     
     V8VmOpenApiAddressDeliveryIn result = new V8VmOpenApiAddressDeliveryIn(); 
     
-    PtvAddressSubtype subtype = getAddressSubtype(deliveryAddress.getSubtype());
-    switch (subtype) {
-      case POST_OFFICE_BOX:
-        result.setPostOfficeBoxAddress(translatePostOfficeBoxAddress(deliveryAddress));
-      break;
-      case NO_ADDRESS:
-        result.setDeliveryAddressInText(translateLocalizedValuesIntoLanguageItems(deliveryAddress.getAdditionalInformations()));
-      break;
-      case SINGLE:
-      case STREET:
-        result.setStreetAddress(translateStreetAddress(deliveryAddress));
-      break;
-      default:
-        logger.log(Level.SEVERE, () -> String.format(UNKNOWN_SUBTYPE, deliveryAddress.getSubtype()));
-      break;
+    if (deliveryAddress != null) {
+      PtvAddressSubtype subtype = getAddressSubtype(deliveryAddress.getSubtype());
+      switch (subtype) {
+        case POST_OFFICE_BOX:
+          result.setPostOfficeBoxAddress(translatePostOfficeBoxAddress(deliveryAddress));
+        break;
+        case NO_ADDRESS:
+          result.setDeliveryAddressInText(translateLocalizedValuesIntoLanguageItems(deliveryAddress.getAdditionalInformations()));
+        break;
+        case SINGLE:
+        case STREET:
+          result.setStreetAddress(translateStreetAddress(deliveryAddress));
+        break;
+        default:
+          logger.log(Level.SEVERE, () -> String.format(UNKNOWN_SUBTYPE, deliveryAddress.getSubtype()));
+        break;
+      }
     }
 
     result.setSubType(deliveryAddress.getSubtype());
+    result.setFormReceiver(translateLocalizedValuesIntoLanguageItems(formReceiver));
     
-    return result;
+    return Arrays.asList(result);
   }
   
   private VmOpenApiAttachment translateAttachment(ServiceChannelAttachment attachment) {

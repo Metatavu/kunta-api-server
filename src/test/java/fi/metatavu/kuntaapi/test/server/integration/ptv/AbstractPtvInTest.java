@@ -172,7 +172,7 @@ public class AbstractPtvInTest extends AbstractPtvTest {
   protected List<VmOpenApiWebPageWithOrderNumber> createPtvInWebPages(String language, String url, String value) {
     VmOpenApiWebPageWithOrderNumber result = new VmOpenApiWebPageWithOrderNumber();
     result.setLanguage(language);
-    result.setOrderNumber("0");
+    result.setOrderNumber("1");
     result.setUrl(url);
     result.setValue(value);
     return Arrays.asList(result);
@@ -263,12 +263,13 @@ public class AbstractPtvInTest extends AbstractPtvTest {
     return result;
   }
 
-  protected V8VmOpenApiAddressDeliveryIn createPtvInDeliveryAddress(String subType, VmOpenApiAddressStreetIn streetAddress, VmOpenApiAddressPostOfficeBoxIn postOfficeBoxAddress, List<VmOpenApiLanguageItem> deliveryAddressInText) {
+  protected V8VmOpenApiAddressDeliveryIn createPtvInDeliveryAddress(String subType, VmOpenApiAddressStreetIn streetAddress, VmOpenApiAddressPostOfficeBoxIn postOfficeBoxAddress, List<VmOpenApiLanguageItem> deliveryAddressInText, List<VmOpenApiLanguageItem> formReceiver) {
     V8VmOpenApiAddressDeliveryIn result = new V8VmOpenApiAddressDeliveryIn();
     result.setDeliveryAddressInText(deliveryAddressInText);
     result.setPostOfficeBoxAddress(postOfficeBoxAddress);
     result.setStreetAddress(streetAddress);
     result.setSubType(subType);
+    result.setFormReceiver(formReceiver);
     return result;
   }
 
