@@ -264,7 +264,7 @@ public class PtvServiceEntityDiscoverJob extends EntityDiscoverJob<IdTask<Servic
       return;
     } 
     
-    logger.log(Level.WARNING, () -> String.format("Failed to resolve service channel %s type", serviceChannelId));
+    logger.log(Level.INFO, () -> String.format("Failed to resolve service channel %s type", serviceChannelId));
     serviceChannelTasksQueue.enqueueTask(new ServiceChannelUpdateTask(true, serviceChannelId, null));
   }
   

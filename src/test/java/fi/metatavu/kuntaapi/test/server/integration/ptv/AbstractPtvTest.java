@@ -85,4 +85,14 @@ public abstract class AbstractPtvTest extends AbstractIntegrationTest {
     return JSONAssertCustomizations.notNulls("id", "services.serviceId", "services.organizationId");
   }
   
+
+  /**
+   * Returns list of JSONAssert customizations for checking service channel.
+   * 
+   * @return list of JSONAssert customizations for checking service channel.
+   */
+  protected Customization[] getServiceChannelCustomizations() {
+    return JSONAssertCustomizations.notNulls("id");
+  }
+  
 }

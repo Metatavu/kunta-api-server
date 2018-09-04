@@ -1,0 +1,164 @@
+{
+  "names": [
+    {
+      "language" : "fi",
+      "value" : "Keskustan päiväkoti",
+      "type" : "Name"
+    }
+  ],
+  "descriptions": [
+    {
+      "language" : "fi",
+      "value" : "Keskustan päiväkoti toimii Naantalin vanhassakaupungissa kahdessa rakennuksessa.",
+      "type" : "Summary"
+    }, {
+      "language" : "fi",
+      "value" : "Keskustan päiväkoti toimii kahdessa rakennuksessa, Kaivokadun talossa ja Vanhalla Raatihuoneella. Hoitopaikkoja on tällä hetkellä yhteensä 60. Keskustan päiväkodissa toimii myös integroitu kuntoutusryhmä.\n",
+      "type" : "Description"
+    }
+  ],
+  "phoneNumbers": [
+    {
+      "type" : "Phone",
+      "additionalInformation" : null,
+      "serviceChargeType" : "Chargeable",
+      "chargeDescription" : null,
+      "prefixNumber" : "+358",
+      "isFinnishServiceNumber" : false,
+      "number" : "440410431",
+      "language" : "fi"
+    }
+  ],
+  "emails": [ ],
+  "languages" : [ "fi" ],
+  "phoneServiceCharge": true,
+  "webPages": [
+    {
+      "url" : "http://www.naantali.fi/opetus_ja_koulutus/varhaiskasvatus/paivakodit/keskustan_pk/fi_FI/keskustan_pk/",
+      "value" : "Keskustan päiväkoti",
+      "language" : "fi",
+      "description": null,
+      "type": null
+    }
+  ],
+  "areaType" : "LimitedType",
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi",
+        "type": null
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv",
+        "type": null
+      }, {
+        "value" : "Naantali",
+        "language" : "en",
+        "type": null
+      } ]
+    } ]
+  } ],
+  "addresses" : [
+    {
+      "latitude" : "6713925.933",
+      "longitude" : "226321.604",
+      "coordinates": {
+        "epsg3067": {
+          "latitude" : "6713925.933",
+          "longitude" : "226321.604"
+        },
+        "epsg4326": {
+          "latitude": "string",
+          "longitude": "string"
+        }
+      },
+      "coordinateState": "string",
+      "type" : "Location",
+      "subType" : "Single",
+      "postOfficeBox": [ ],
+      "postalCode" : "21100",
+      "postOffice": [
+        {
+          "value" : "NAANTALI",
+          "language" : "sv"
+        }, {
+          "value" : "NAANTALI",
+          "language" : "fi"
+        }
+      ],
+      "streetAddress": [
+        {
+          "value" : "Kaivokatu",
+          "language" : "fi",
+          "type": null
+        }
+      ],
+      "streetNumber" : "9",
+      "municipality": {
+        "municipality": "529",
+        "names": [
+          {
+            "language": "string",
+            "value": "string",
+            "type": "string"
+          }
+        ]
+      },
+      "country": "string",      
+      "locationAbroad" : [],
+      "multipointLocation" : [],
+      "additionalInformations": [ ]
+    },
+    {
+      "latitude" : "6713925.933",
+      "longitude" : "226321.604",
+      "coordinates": {
+        "epsg3067": {
+          "latitude" : "6713925.933",
+          "longitude" : "226321.604"
+        },
+        "epsg4326": {
+          "latitude": "string",
+          "longitude": "string"
+        }
+      },
+      "coordinateState": "Ok",
+      "type" : "Location",
+      "subType" : "Single",
+      "postOfficeBox": [ ],
+      "postalCode" : "21100",
+      "postOffice": [ ],
+      "streetAddress": [
+        {
+          "value" : "Kaivokatu",
+          "language" : "fi",
+          "type": null
+        }
+      ],
+      "streetNumber" : "9",
+      "municipality": {
+        "code" : "529",
+        "names" : [ {
+          "value" : "Naantali",
+          "language" : "fi"
+        }, {
+          "value" : "Nådendal",
+          "language" : "sv"
+        }, {
+          "value" : "Naantali",
+          "language" : "en"
+        } ]
+      },
+      "country" : "FI",
+      "locationAbroad": [ ],
+      "multipointLocation": [ ],
+      "additionalInformations": [ ]
+  }],
+  "serviceHours": [ ],
+  "publishingStatus": "Published"
+}
