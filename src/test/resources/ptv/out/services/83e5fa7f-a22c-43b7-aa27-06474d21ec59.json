@@ -210,17 +210,6 @@
   } ],
   "serviceChannels" : [ {
     "serviceChannel" : {
-      "id" : "22cd9e41-dcc9-42d5-bc40-3dd64d27c030",
-      "name" : "Kiinteistötoimi"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
       "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
       "name" : "Vaasan Palautepalvelu"
     },
@@ -274,5 +263,5 @@
   "serviceVouchers" : [ ],
   "serviceCollections" : [ ],
   "publishingStatus" : "Published",
-  "modified" : "2017-11-17T06:18:52.874538Z"
+  "modified" : "2018-05-03T11:53:58.162746Z"
 }

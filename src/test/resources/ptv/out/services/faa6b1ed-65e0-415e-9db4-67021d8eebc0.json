@@ -232,17 +232,6 @@
   } ],
   "serviceChannels" : [ {
     "serviceChannel" : {
-      "id" : "3db7f436-300e-4fbf-8e88-fd3b6c903e12",
-      "name" : "Varhaiskasvatustoimisto"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
       "id" : "ad29e11d-9c97-4e02-a7da-5f5cefe442e9",
       "name" : "Varhaiskasvatuksen johtaja"
     },
@@ -274,5 +263,5 @@
   "serviceVouchers" : [ ],
   "serviceCollections" : [ ],
   "publishingStatus" : "Published",
-  "modified" : "2017-11-06T13:48:54.975538Z"
+  "modified" : "2018-05-03T11:53:58.162746Z"
 }

@@ -198,17 +198,6 @@
   } ],
   "serviceChannels" : [ {
     "serviceChannel" : {
-      "id" : "11f5b3e0-3ead-43bb-918b-60f8d638e23c",
-      "name" : "Lukion opinto-ohjaajat"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
       "id" : "abac25e1-bd15-4c1a-b22e-9d9a705d9220",
       "name" : "Naantalin lukio"
     },
@@ -251,5 +240,5 @@
   "serviceVouchers" : [ ],
   "serviceCollections" : [ ],
   "publishingStatus" : "Published",
-  "modified" : "2017-11-24T12:48:35.506036Z"
+  "modified" : "2018-05-03T11:53:58.162746Z"
 }

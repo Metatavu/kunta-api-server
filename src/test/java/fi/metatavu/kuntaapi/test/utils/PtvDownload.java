@@ -1,7 +1,9 @@
 package fi.metatavu.kuntaapi.test.utils;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
@@ -45,11 +47,13 @@ public class PtvDownload {
   private static final boolean DOWNLOAD_RESOURCES = false;
   private static final boolean PURGE_SERVICES = false;
   private static final boolean PURGE_SERVICECHANNELS = false;
+  private static final boolean LIMIT_CHANNELS = true;
   
   private static final String JSON = ".json";
   private static final String PTV = "v8";
   private static final int POSTAL_CODE_PAGES = 5;
-  private static final int LIMIT_ORGANIZATION_SERVICES = 10;
+  private static final int ORGANIZATION_SERVICE_LIMIT = 10;
+  private static final int CHANNEL_LIMIT = 10;
 
   public static void main(String[] args) throws IOException {
     PtvDownload instance = new PtvDownload();
@@ -70,8 +74,49 @@ public class PtvDownload {
       instance.downloadOrganizations();
     }
     
+    if (LIMIT_CHANNELS) {
+      instance.limitChannels();
+    }
+    
     if (PRINT_IDS) {
       instance.printIds();
+    }
+  }
+
+  private void limitChannels() throws JsonParseException, JsonMappingException, IOException {
+    EnumMap<ServiceChannelType,List<String>> channelTypeMap = createChannelTypeMap();
+    
+    for (ServiceChannelType channelType : ServiceChannelType.values()) {
+      List<String> channelIds = channelTypeMap.get(channelType);
+      for (int i = channelIds.size() - 1; i >= CHANNEL_LIMIT; i--) {
+        deleteServiceChannel(channelIds.get(i));
+      }
+    }
+  }
+
+  private void deleteServiceChannel(String channelId) throws JsonParseException, JsonMappingException, IOException {
+    File[] serviceFiles = getServicesFolder().listFiles();
+    for (int i = 0; i < serviceFiles.length; i++) {
+      System.out.println( IOUtils.toString(new FileReader(serviceFiles[i])) );
+      removeServiceChannel(serviceFiles[i], channelId);      
+    }
+    
+    File channelFile = new File(getServiceChannelsFolder(), String.format("%s.json", channelId));
+    channelFile.delete();
+  }
+  
+  private void removeServiceChannel(File serviceFile, String channelId) throws JsonParseException, JsonMappingException, IOException {
+    ObjectMapper objectMapper = getObjectMapper();
+    V8VmOpenApiService service = objectMapper.readValue(serviceFile, V8VmOpenApiService.class);
+    
+    service.setServiceChannels(service.getServiceChannels().stream().filter((serviceChannel) -> {
+      return !StringUtils.equals(channelId, serviceChannel.getServiceChannel().getId().toString());
+    }).collect(Collectors.toList()));
+    
+    try (FileOutputStream fileStream = new FileOutputStream(serviceFile)) {
+      try (InputStream inputStream = new ByteArrayInputStream(objectMapper.writeValueAsBytes(service))) {
+        prettyPrintJson(inputStream, fileStream, V8VmOpenApiService.class);
+      }
     }
   }
 
@@ -153,6 +198,26 @@ public class PtvDownload {
       System.out.println(StringUtils.join(channelTypeIds, ",\n"));
       System.out.println("    };");
     }
+  }
+  
+  private EnumMap<ServiceChannelType, List<String>> createChannelTypeMap() {
+    EnumMap<ServiceChannelType, List<String>> result = new EnumMap<>(ServiceChannelType.class);
+    
+    Arrays.stream(ServiceChannelType.values()).forEach((type) -> {
+      result.put(type, new ArrayList<>());
+    });
+    
+    Arrays.stream(getServiceChannelsFolder().listFiles()).forEach((channelFile) -> {
+      try {
+        ServiceChannelType channelType = resolveChannelType(channelFile);
+        String id = FilenameUtils.getBaseName(channelFile.getName());
+        result.get(channelType).add(id);
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+    });
+    
+    return result;
   }
 
   private List<EnumMap<ServiceChannelType, List<String>>> createServiceChannelsTypeMap(File[] serviceFiles) throws JsonParseException, JsonMappingException, IOException {
@@ -279,8 +344,6 @@ public class PtvDownload {
     } catch (IOException e) {
       e.printStackTrace();
     }
-    
-    
   }
 
   private File[] listJsonFiles(File folder) {
@@ -312,7 +375,7 @@ public class PtvDownload {
   private void limitOrganizationServices(File organizationFile) throws IOException {
     ObjectMapper objectMapper = getObjectMapper();
     V8VmOpenApiOrganization organization = objectMapper.readValue(organizationFile, V8VmOpenApiOrganization.class);
-    List<V5VmOpenApiOrganizationService> services = organization.getServices().stream().limit(LIMIT_ORGANIZATION_SERVICES).collect(Collectors.toList());
+    List<V5VmOpenApiOrganizationService> services = organization.getServices().stream().limit(ORGANIZATION_SERVICE_LIMIT).collect(Collectors.toList());
     organization.setServices(services);
     objectMapper.writerWithDefaultPrettyPrinter().writeValue(organizationFile, organization);
   }

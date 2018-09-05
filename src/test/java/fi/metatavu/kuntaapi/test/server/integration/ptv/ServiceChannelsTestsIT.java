@@ -2,9 +2,6 @@ package fi.metatavu.kuntaapi.test.server.integration.ptv;
 
 import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.wireMockConfig;
 import static org.hamcrest.core.Is.is;
-import static org.hamcrest.core.IsNull.notNullValue;
-import static org.hamcrest.core.IsNull.nullValue;
-import static org.hamcrest.core.StringStartsWith.startsWith;
 
 import java.io.IOException;
 import java.time.ZoneId;
@@ -16,8 +13,6 @@ import org.junit.Test;
 
 import com.github.tomakehurst.wiremock.junit.WireMockRule;
 import com.jayway.restassured.http.ContentType;
-
-import fi.metatavu.kuntaapi.test.AbstractIntegrationTest;
 
 @SuppressWarnings ("squid:S1192")
 public class ServiceChannelsTestsIT extends AbstractPtvTest {
@@ -131,7 +126,7 @@ public class ServiceChannelsTestsIT extends AbstractPtvTest {
       .contentType(ContentType.JSON)
       .get("/serviceLocationServiceChannels/{channelId}", channelId)
       .body().asString();
-      
+    
     assertJSONFileEquals(String.format("ptv/kuntaapi/servicechannels/servicelocation/%d.json", channelIndex) , response, getServiceChannelCustomizations());
   }
 

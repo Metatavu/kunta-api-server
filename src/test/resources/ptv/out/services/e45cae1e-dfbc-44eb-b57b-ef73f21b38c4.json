@@ -184,17 +184,6 @@
   } ],
   "serviceChannels" : [ {
     "serviceChannel" : {
-      "id" : "20c61f5a-e693-480d-a16e-24b86bd3b9f7",
-      "name" : "Maijamäen koulu"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
       "id" : "2481937a-5d4d-4643-a9b9-9877be5d4d3e",
       "name" : "Rymättylän koulu"
     },
@@ -228,28 +217,6 @@
     "digitalAuthorizations" : [ ]
   }, {
     "serviceChannel" : {
-      "id" : "41c7c254-4e33-49ad-bbc5-830b5b295f70",
-      "name" : "Velkuan koulu"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
-      "id" : "44807258-fefe-43f0-a900-1f3e8f8f6f68",
-      "name" : "Kultarannan koulu"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
       "id" : "6894ee49-f5ac-4a69-b9f0-bf3de2a02f0c",
       "name" : "Naantalin kaupungin johtava rehtori"
     },
@@ -272,52 +239,8 @@
     "digitalAuthorizations" : [ ]
   }, {
     "serviceChannel" : {
-      "id" : "79ef34ea-b731-4c0d-ac77-d139be9eb84c",
-      "name" : "Suopellon koulu"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
-      "id" : "9f9f9de3-e74b-4924-90b2-4a003bfebf30",
-      "name" : "Kuparivuoren koulu"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
-      "id" : "acfd9ef0-6d18-4a18-b163-fcd7dfd1ef76",
-      "name" : "Lietsalan koulu"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
       "id" : "b8931c4b-1119-4c69-9bc4-a41fb00b92fe",
       "name" : "Wilma Naantali"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
-      "id" : "c148e197-646e-4c38-97b3-27cbe4a983eb",
-      "name" : "Karvetin koulu"
     },
     "serviceChargeType" : null,
     "description" : [ ],
@@ -358,5 +281,5 @@
   "serviceVouchers" : [ ],
   "serviceCollections" : [ ],
   "publishingStatus" : "Published",
-  "modified" : "2017-10-02T13:02:56.986947Z"
+  "modified" : "2018-05-03T11:53:58.162746Z"
 }

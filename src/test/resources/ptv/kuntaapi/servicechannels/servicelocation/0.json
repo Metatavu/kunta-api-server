@@ -20,7 +20,7 @@
   "phoneNumbers": [
     {
       "type" : "Phone",
-      "additionalInformation" : null,
+      "additionalInformation" : "",
       "serviceChargeType" : "Chargeable",
       "chargeDescription" : null,
       "prefixNumber" : "+358",
@@ -31,7 +31,7 @@
   ],
   "emails": [ ],
   "languages" : [ "fi" ],
-  "phoneServiceCharge": true,
+  "phoneServiceCharge": null,
   "webPages": [
     {
       "url" : "http://www.naantali.fi/opetus_ja_koulutus/varhaiskasvatus/paivakodit/keskustan_pk/fi_FI/keskustan_pk/",
@@ -45,10 +45,10 @@
   "areas" : [ {
     "type" : "Municipality",
     "code" : null,
-    "name" : null,
+    "name" : [],
     "municipalities" : [ {
       "code" : "529",
-      "name" : [ {
+      "names" : [ {
         "value" : "Naantali",
         "language" : "fi",
         "type": null
@@ -63,101 +63,136 @@
       } ]
     } ]
   } ],
-  "addresses" : [
+  "addresses":[
     {
-      "latitude" : "6713925.933",
-      "longitude" : "226321.604",
-      "coordinates": {
-        "epsg3067": {
-          "latitude" : "6713925.933",
-          "longitude" : "226321.604"
+      "latitude":"6713890.211",
+      "longitude":"226225.47",
+      "coordinates":{
+        "epsg3067":{
+          "latitude":"6713890.211",
+          "longitude":"226225.47"
         },
-        "epsg4326": {
-          "latitude": "string",
-          "longitude": "string"
+        "epsg4326":{
+          "latitude":"60.46791951720928",
+          "longitude":"22.01797748150723"
         }
       },
-      "coordinateState": "string",
-      "type" : "Location",
-      "subType" : "Single",
-      "postOfficeBox": [ ],
-      "postalCode" : "21100",
-      "postOffice": [
+      "coordinateState":"Ok",
+      "type":"Location",
+      "subtype":"Single",
+      "postOfficeBox":null,
+      "postalCode":"21110",
+      "postOffice":[
         {
-          "value" : "NAANTALI",
-          "language" : "sv"
-        }, {
-          "value" : "NAANTALI",
-          "language" : "fi"
-        }
-      ],
-      "streetAddress": [
+          "language":"sv",
+          "value":"NAANTALI",
+          "type":null
+        },
         {
-          "value" : "Kaivokatu",
-          "language" : "fi",
-          "type": null
-        }
-      ],
-      "streetNumber" : "9",
-      "municipality": {
-        "municipality": "529",
-        "names": [
+          "language":"fi",
+          "value":"NAANTALI",
+          "type":null
+        }],
+      "streetAddress":[
+        {
+          "language":"fi",
+          "value":"Mannerheiminkatu",
+          "type":null
+        }],
+      "streetNumber":"14",
+      "municipality":{
+        "code":"529",
+        "names":[
           {
-            "language": "string",
-            "value": "string",
-            "type": "string"
-          }
-        ]
+            "language":"fi",
+            "value":"Naantali",
+            "type":null
+          },
+          {
+            "language":"sv",
+            "value":"Nådendal",
+            "type":null
+          },
+          {
+            "language":"en",
+            "value":"Naantali",
+            "type":null
+          }]
       },
-      "country": "string",      
-      "locationAbroad" : [],
-      "multipointLocation" : [],
-      "additionalInformations": [ ]
+      "country":"FI",
+      "locationAbroad":[
+      ],
+      "multipointLocation":[
+      ],
+      "additionalInformations":[
+        {
+          "language":"fi",
+          "value":"Käynti Alikadun puolelta.",
+          "type":null
+        }]
     },
     {
-      "latitude" : "6713925.933",
-      "longitude" : "226321.604",
-      "coordinates": {
-        "epsg3067": {
-          "latitude" : "6713925.933",
-          "longitude" : "226321.604"
+      "latitude":"6713925.933",
+      "longitude":"226321.604",
+      "coordinates":{
+        "epsg3067":{
+          "latitude":"6713925.933",
+          "longitude":"226321.604"
         },
-        "epsg4326": {
-          "latitude": "string",
-          "longitude": "string"
+        "epsg4326":{
+          "latitude":"60.46830424910952",
+          "longitude":"22.019670075614965"
         }
       },
-      "coordinateState": "Ok",
-      "type" : "Location",
-      "subType" : "Single",
-      "postOfficeBox": [ ],
-      "postalCode" : "21100",
-      "postOffice": [ ],
-      "streetAddress": [
+      "coordinateState":"Ok",
+      "type":"Location",
+      "subtype":"Single",
+      "postOfficeBox":null,
+      "postalCode":"21100",
+      "postOffice":[
         {
-          "value" : "Kaivokatu",
-          "language" : "fi",
-          "type": null
-        }
-      ],
-      "streetNumber" : "9",
-      "municipality": {
-        "code" : "529",
-        "names" : [ {
-          "value" : "Naantali",
-          "language" : "fi"
-        }, {
-          "value" : "Nådendal",
-          "language" : "sv"
-        }, {
-          "value" : "Naantali",
-          "language" : "en"
-        } ]
+          "language":"sv",
+          "value":"NAANTALI",
+          "type":null
+        },
+        {
+          "language":"fi",
+          "value":"NAANTALI",
+          "type":null
+        }],
+      "streetAddress":[
+        {
+          "language":"fi",
+          "value":"Kaivokatu",
+          "type":null
+        }],
+      "streetNumber":"9",
+      "municipality":{
+        "code":"529",
+        "names":[
+          {
+            "language":"fi",
+            "value":"Naantali",
+            "type":null
+          },
+          {
+            "language":"sv",
+            "value":"Nådendal",
+            "type":null
+          },
+          {
+            "language":"en",
+            "value":"Naantali",
+            "type":null
+          }]
       },
-      "country" : "FI",
-      "locationAbroad": [ ],
-      "multipointLocation": [ ],
-      "additionalInformations": [ ]
+      "country":"FI",
+      "locationAbroad":[
+      ],
+      "multipointLocation":[
+      ],
+      "additionalInformations":[
+      ]
   }],
   "serviceHours": [ ],
   "publishingStatus": "Published"

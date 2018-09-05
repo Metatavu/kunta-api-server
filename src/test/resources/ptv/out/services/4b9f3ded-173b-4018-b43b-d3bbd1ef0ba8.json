@@ -146,30 +146,8 @@
   } ],
   "serviceChannels" : [ {
     "serviceChannel" : {
-      "id" : "0739aa9b-7312-4cdd-bc63-d86b39dc4257",
-      "name" : "Tammiston päiväkoti"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
       "id" : "1bd39cda-3006-482e-acff-93ab8ddc9f1b",
       "name" : "Keskustan päiväkoti"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
-      "id" : "33abffaa-244b-4485-85d2-a7885509c6b6",
-      "name" : "Soinisten päiväkoti"
     },
     "serviceChargeType" : null,
     "description" : [ ],
@@ -190,107 +168,8 @@
     "digitalAuthorizations" : [ ]
   }, {
     "serviceChannel" : {
-      "id" : "495ab7f8-cc75-4e43-bbc4-629e41d67e71",
-      "name" : "Suovuoren päiväkoti"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
-      "id" : "55511eb4-7e65-4cd8-9dbb-95ee54f82d03",
-      "name" : "Taimon päiväkoti"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
-      "id" : "5addb843-4487-46c5-b955-6d5d41bfdad7",
-      "name" : "Nuhjalan päiväkoti"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
-      "id" : "7bbe81f9-c65f-46e5-a78f-b0ab123306f8",
-      "name" : "Ruonan päiväkoti"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
-      "id" : "875ad885-ad22-4cd4-b555-143fdf2649ab",
-      "name" : "Viialan päiväkoti"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
-      "id" : "87e0e1ca-857b-4d79-a428-4f66b746177a",
-      "name" : "Karvetin päiväkoti"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
-      "id" : "9872be90-1f7d-4021-ab13-25556c6f9357",
-      "name" : "Kreivinniityn päiväkoti"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
-      "id" : "abbf9e88-97a6-4908-8ab8-58fab37fac4f",
-      "name" : "Merimaskun päiväkoti"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
       "id" : "ad29e11d-9c97-4e02-a7da-5f5cefe442e9",
       "name" : "Varhaiskasvatuksen johtaja"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
-      "id" : "fdfce5e7-3b5a-45dc-8cf0-d67f90042256",
-      "name" : "Vuoropäiväkoti"
     },
     "serviceChargeType" : null,
     "description" : [ ],
@@ -320,5 +199,5 @@
   "serviceVouchers" : [ ],
   "serviceCollections" : [ ],
   "publishingStatus" : "Published",
-  "modified" : "2017-10-31T08:15:43.515627Z"
+  "modified" : "2018-05-03T11:53:58.162746Z"
 }

@@ -211,17 +211,6 @@
     "digitalAuthorizations" : [ ]
   }, {
     "serviceChannel" : {
-      "id" : "48ad7f12-41d7-4389-b207-bea3e9756522",
-      "name" : "Kuntatekniikka"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
       "id" : "a4ba85e1-0b1f-4f40-a7fd-0ed7342e0547",
       "name" : "Kustannuslaskija"
     },
@@ -253,5 +242,5 @@
   "serviceVouchers" : [ ],
   "serviceCollections" : [ ],
   "publishingStatus" : "Published",
-  "modified" : "2017-11-15T06:01:10.664172Z"
+  "modified" : "2018-05-03T11:53:58.162746Z"
 }

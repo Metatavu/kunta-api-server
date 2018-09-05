@@ -228,17 +228,6 @@
     "serviceHours" : [ ],
     "contactDetails" : null,
     "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
-      "id" : "ca5cb1d4-9e81-4cbe-8d6b-b88e6c1da353",
-      "name" : "Kriisiryhmän verkkosivut"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
   } ],
   "organizations" : [ {
     "provisionType" : null,
@@ -261,5 +250,5 @@
   "serviceVouchers" : [ ],
   "serviceCollections" : [ ],
   "publishingStatus" : "Published",
-  "modified" : "2017-11-02T11:44:10.2184Z"
+  "modified" : "2018-05-03T11:53:58.162746Z"
 }

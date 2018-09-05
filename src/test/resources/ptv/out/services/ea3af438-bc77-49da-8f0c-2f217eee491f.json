@@ -210,107 +210,8 @@
   } ],
   "serviceChannels" : [ {
     "serviceChannel" : {
-      "id" : "0bd11d7c-03b2-4f30-8cff-1f96552c6c70",
-      "name" : "Kultarannan kouluterveydenhoitajan vastaanotto"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
       "id" : "32833c27-7d41-4267-800a-a9a888b513b7",
       "name" : "Velkuan kouluterveydenhoitajan vastaanotto"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
-      "id" : "44e25569-8158-4c35-8777-9a2288099873",
-      "name" : "Karvetin kouluterveydenhoitajan vastaanotto"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
-      "id" : "5710833d-b774-4826-a507-76bd96b89599",
-      "name" : "Merimaskun kouluterveydenhoitajan vastaanotto"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
-      "id" : "59f83093-b842-4a53-8029-d6a91d2cdbb8",
-      "name" : "Rymättylän kouluterveydenhoitajan vastaanotto"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
-      "id" : "8927cde9-6a0b-4ce8-97d7-8a040a2380a7",
-      "name" : "Lietsalan kouluterveydenhoitajan vastaanotto"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
-      "id" : "8ca0e38d-2ac5-44ec-9b19-dc6833f2add8",
-      "name" : "Naantalin koulupsykologit"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
-      "id" : "9da5566f-9a1c-47fe-a48c-b297e5b52d8a",
-      "name" : "Kuparivuoren kouluterveydenhoitajan vastaanotto"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
-      "id" : "a6b40b67-1854-43d9-a443-2702aa215814",
-      "name" : "Suopellon kouluterveydenhoitajan vastaanotto"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
-      "id" : "a9c78c33-d864-4b44-af8d-8bbd102186cc",
-      "name" : "Maijamäen kouluterveydenhoitajien vastaanotto"
     },
     "serviceChargeType" : null,
     "description" : [ ],
@@ -342,30 +243,8 @@
     "digitalAuthorizations" : [ ]
   }, {
     "serviceChannel" : {
-      "id" : "bdd7af3f-8e88-4c22-b6b5-abeb6d32cc4a",
-      "name" : "Taimon kouluterveydenhoitajan vastaanotto"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
       "id" : "d27cc10b-a6ee-41ab-9de1-c0bb46543dda",
       "name" : "Oppilashuolto Naantalissa"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
-      "id" : "ddff2508-46bb-4b80-a1df-879fc48f3ae5",
-      "name" : "Naantalin kaupungin johtava koulupsykologi"
     },
     "serviceChargeType" : null,
     "description" : [ ],
@@ -395,5 +274,5 @@
   "serviceVouchers" : [ ],
   "serviceCollections" : [ ],
   "publishingStatus" : "Published",
-  "modified" : "2017-10-02T14:16:29.488111Z"
+  "modified" : "2018-05-03T11:53:58.162746Z"
 }

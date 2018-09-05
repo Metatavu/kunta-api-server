@@ -227,17 +227,6 @@
     "digitalAuthorizations" : [ ]
   }, {
     "serviceChannel" : {
-      "id" : "5aff3fde-9e88-4f1d-9e8a-8be9ebf6a098",
-      "name" : "Vaasan uimahalli"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
       "id" : "8144cba3-258a-417b-a857-884c146e205c",
       "name" : "Uimahallin verkkosivu"
     },
@@ -269,5 +258,5 @@
   "serviceVouchers" : [ ],
   "serviceCollections" : [ ],
   "publishingStatus" : "Published",
-  "modified" : "2017-09-19T12:11:17.435834Z"
+  "modified" : "2018-05-03T11:53:58.162746Z"
 }

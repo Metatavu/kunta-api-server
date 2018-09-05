@@ -207,52 +207,8 @@
   } ],
   "serviceChannels" : [ {
     "serviceChannel" : {
-      "id" : "39144ed7-4fd6-49aa-a764-e9c19796f357",
-      "name" : "Laiturivastaava / Piiripuutarhuri"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
       "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
       "name" : "Vaasan Palautepalvelu"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
-      "id" : "64221f78-3c09-4006-8610-d16995d7cc7f",
-      "name" : "Viheralueyksikkö"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
-      "id" : "8050efdb-186f-48a3-9336-0fdf85bdc285",
-      "name" : "Matonpesupaikkojen päivystysnumero"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
-      "id" : "95d059a9-f583-4e6f-a4a3-58ed8f718649",
-      "name" : "Työnjohtaja"
     },
     "serviceChargeType" : null,
     "description" : [ ],
@@ -282,5 +238,5 @@
   "serviceVouchers" : [ ],
   "serviceCollections" : [ ],
   "publishingStatus" : "Published",
-  "modified" : "2017-11-02T10:48:44.609608Z"
+  "modified" : "2018-05-03T11:53:58.162746Z"
 }

@@ -232,30 +232,8 @@
     "digitalAuthorizations" : [ ]
   }, {
     "serviceChannel" : {
-      "id" : "8ca0e38d-2ac5-44ec-9b19-dc6833f2add8",
-      "name" : "Naantalin koulupsykologit"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
       "id" : "bc91db9e-2f56-4044-a375-30987de714eb",
       "name" : "Naantalin koulukuraattorit"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
-      "id" : "ddff2508-46bb-4b80-a1df-879fc48f3ae5",
-      "name" : "Naantalin kaupungin johtava koulupsykologi"
     },
     "serviceChargeType" : null,
     "description" : [ ],
@@ -285,5 +263,5 @@
   "serviceVouchers" : [ ],
   "serviceCollections" : [ ],
   "publishingStatus" : "Published",
-  "modified" : "2017-11-06T13:16:58.724212Z"
+  "modified" : "2018-05-03T11:53:58.162746Z"
 }
