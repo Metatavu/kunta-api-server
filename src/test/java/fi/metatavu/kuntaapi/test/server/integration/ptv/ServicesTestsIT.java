@@ -122,7 +122,7 @@ public class ServicesTestsIT extends AbstractPtvTest {
       .body("id.size()", is(2))
       .body("id[0]", is(serviceId))
       .body("phoneServiceChannelIds[0].size()", is(TestPtvConsts.SERVICE_PHONE_CHANNELS[serviceIndex].length))
-      .body("phoneServiceChannelIds[0][2]", is(phoneChannelId1));
+      .body("phoneServiceChannelIds[0][1]", is(phoneChannelId1));
     
     givenReadonly()
       .contentType(ContentType.JSON)
@@ -180,7 +180,7 @@ public class ServicesTestsIT extends AbstractPtvTest {
       .body("id.size()", is(1))
       .body("id[0]", is(serviceId))
       .body("serviceLocationServiceChannelIds[0].size()", is(TestPtvConsts.SERVICE_SERVICE_LOCATION_CHANNELS[serviceIndex].length))
-      .body("serviceLocationServiceChannelIds[0][1]", is(serviceLocationChannelId));
+      .body("serviceLocationServiceChannelIds[0][0]", is(serviceLocationChannelId));
     
     givenReadonly()
       .contentType(ContentType.JSON)
@@ -288,12 +288,12 @@ public class ServicesTestsIT extends AbstractPtvTest {
       .assertThat()
       .statusCode(200)
       .body("id.size()", is(2))
-      .body("names[0].size()", is(3))
-      .body("names[0][2].value", is("Perusopetus"))
-      .body("areas[0].municipalities[0].names[0].value[0]", is("Vaasa"))
-      .body("names[1].size()", is(1))
-      .body("names[1][0].value", is("Perusopetus"))
-      .body("areas[1].municipalities[0].names[0].value[0]", is("Naantali"));
+      .body("names[1].size()", is(3))
+      .body("names[1][2].value", is("Perusopetus"))
+      .body("areas[1].municipalities[0].names[0].value[0]", is("Vaasa"))
+      .body("names[0].size()", is(1))
+      .body("names[0][0].value", is("Perusopetus"))
+      .body("areas[0].municipalities[0].names[0].value[0]", is("Naantali"));
 
     givenReadonly()
       .contentType(ContentType.JSON)
@@ -302,12 +302,12 @@ public class ServicesTestsIT extends AbstractPtvTest {
       .assertThat()
       .statusCode(200)
       .body("id.size()", is(2))
-      .body("names[0].size()", is(1))
-      .body("names[0][0].value", is("Perusopetus"))
-      .body("areas[0].municipalities[0].names[0].value[0]", is("Naantali"))
-      .body("names[1].size()", is(3))
-      .body("names[1][2].value", is("Perusopetus"))
-      .body("areas[1].municipalities[0].names[0].value[0]", is("Vaasa"));
+      .body("names[1].size()", is(1))
+      .body("names[1][0].value", is("Perusopetus"))
+      .body("areas[1].municipalities[0].names[0].value[0]", is("Naantali"))
+      .body("names[0].size()", is(3))
+      .body("names[0][2].value", is("Perusopetus"))
+      .body("areas[0].municipalities[0].names[0].value[0]", is("Vaasa"));
   }
 
   @Test
