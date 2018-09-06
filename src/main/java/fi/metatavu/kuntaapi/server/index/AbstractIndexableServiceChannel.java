@@ -1,14 +1,14 @@
 package fi.metatavu.kuntaapi.server.index;
 
 public abstract class AbstractIndexableServiceChannel implements Indexable, IndexRemove {
-
-  @Field(index = "not_analyzed", store = true, type = "long")
+  
+  @Field(store = true, type = "long")
   private Long orderIndex;
 
-  @Field(index = "not_analyzed", store = true)
+  @Field(type="keyword", store = true)
   private String serviceChannelId;
 
-  @Field(index = "not_analyzed", store = true)
+  @Field(type="keyword", store = true)
   private String organizationId;
 
   @Field(analyzer = "finnish")
