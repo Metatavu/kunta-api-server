@@ -62,8 +62,10 @@ public class ServicesTestsIT extends AbstractPtvTest {
   }
   
   @Test
-  public void testListServices() throws IOException {
+  public void testListServices() throws IOException, InterruptedException {
     int serviceIndex = 1;
+    
+    waitServiceChannels(serviceIndex);
     
     givenReadonly()
       .contentType(ContentType.JSON)
