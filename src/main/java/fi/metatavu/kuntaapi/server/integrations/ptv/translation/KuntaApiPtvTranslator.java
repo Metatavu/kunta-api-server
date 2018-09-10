@@ -488,12 +488,13 @@ public class KuntaApiPtvTranslator extends AbstractTranslator {
           result.setStreetAddress(translateStreetAddress(deliveryAddress));
         break;
         default:
-          logger.log(Level.SEVERE, () -> String.format(UNKNOWN_SUBTYPE, subtype != null ? subtype.toString() : "NULL"));
+          logger.log(Level.SEVERE, () -> String.format(UNKNOWN_SUBTYPE, deliveryAddress.getSubtype()));
         break;
       }
+
+      result.setSubType(deliveryAddress.getSubtype());
     }
 
-    result.setSubType(deliveryAddress.getSubtype());
     result.setFormReceiver(translateLocalizedValuesIntoLanguageItems(formReceiver));
     
     return Arrays.asList(result);

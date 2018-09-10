@@ -21,6 +21,7 @@ import fi.metatavu.kuntaapi.test.AbstractPtvMocker;
 @SuppressWarnings ("squid:S1075")
 public class ElectronicServiceChannelInTestsIT extends AbstractPtvInTest {
 
+  private static final String WWW_EXAMPLE_COM = "www.example.com";
   private static final String SERVICE_CHANNEL_FIND_PATH = "/electronicServiceChannels/{kuntaApiChannelId}";
   /**
    * Starts WireMock
@@ -114,7 +115,7 @@ public class ElectronicServiceChannelInTestsIT extends AbstractPtvInTest {
       createPhone("en", "Phone", "+358", "12345-FAKE", "Charged", "Testing", false, "Test phone"),
       createPhone("en", "Fax", "+258", "54321-FAKE", "Free", "Testing fax", true, "Test fax")
     ));
-    kuntaApiResource.setWebPages(createWebPages("en", "WebPage", "www.example.com", "www.example.com", null));
+    kuntaApiResource.setWebPages(createWebPages("en", "WebPage", WWW_EXAMPLE_COM, WWW_EXAMPLE_COM, null));
     
     V8VmOpenApiElectronicChannelInBase ptvInResource = getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_IN_API, ptvId, V8VmOpenApiElectronicChannelInBase.class);
     ptvInResource.setAreas(Arrays.asList(createArea("Municipality", "12345")));
@@ -128,7 +129,7 @@ public class ElectronicServiceChannelInTestsIT extends AbstractPtvInTest {
     ptvInResource.setSignatureQuantity("22");
     ptvInResource.setSupportEmails(createPtvInLanguageItems("en", "fake@example.com"));
     ptvInResource.setSupportPhones(createPtvInPhones("en", "+358", "12345-FAKE", "Charged", "Testing", false, "Test phone"));
-    ptvInResource.setWebPage(createPtvInLanguageItems("en", "www.example.com"));
+    ptvInResource.setWebPage(createPtvInLanguageItems("en", WWW_EXAMPLE_COM));
     
     V8VmOpenApiElectronicChannel ptvOutResource =  getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_OUT_API, ptvId, V8VmOpenApiElectronicChannel.class);
     
