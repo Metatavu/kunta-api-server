@@ -250,8 +250,6 @@ public class TaskController {
       return taskDAO.create(taskQueue, uniqueId, priority, data, OffsetDateTime.now());
     } catch (PersistenceException e) {
       handleCreateTaskErrorPersistence(queueName, uniqueId, e);
-    } catch (JDBCException e) {
-      handleCreateTaskErrorJdbc(queueName, uniqueId, e);
     } catch (Exception e) {
       logger.log(Level.SEVERE, "Task creating failed on unexpected error", e);
     }
