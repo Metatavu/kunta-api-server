@@ -1,5 +1,7 @@
 package fi.metatavu.kuntaapi.test.server.integration.ptv;
 
+import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.wireMockConfig;
+
 import java.io.IOException;
 import java.util.Arrays;
 
@@ -28,7 +30,7 @@ public class ServiceInTestsIT extends AbstractPtvInTest {
    * Starts WireMock
    */
   @Rule
-  public WireMockRule wireMockRule = new WireMockRule(getWireMockPort());
+  public WireMockRule wireMockRule = new WireMockRule(wireMockConfig().port(getWireMockPort()), false);
   
   @Before
   public void beforeTest() throws InterruptedException {
@@ -38,7 +40,7 @@ public class ServiceInTestsIT extends AbstractPtvInTest {
 
     startMocks();
     
-    waitApiListCount("/organizations", 3);
+    waitApiListCount("/organizations", TestPtvConsts.ORGANIZATIONS.length);
     waitApiListCount("/electronicServiceChannels", TestPtvConsts.ELECTRONIC_CHANNEL_SERVICE_CHANNELS.length);
     waitApiListCount("/phoneServiceChannels", TestPtvConsts.PHONE_SERVICE_CHANNELS.length);
     waitApiListCount("/printableFormServiceChannels", TestPtvConsts.PRINTABLE_FORM_SERVICE_CHANNELS.length);
