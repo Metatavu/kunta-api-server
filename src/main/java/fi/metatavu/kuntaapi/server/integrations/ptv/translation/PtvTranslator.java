@@ -165,7 +165,7 @@ public class PtvTranslator extends AbstractTranslator {
     V8VmOpenApiAddressDelivery deliveryAddress = null;
     List<V8VmOpenApiAddressDelivery> deliveryAddresses = ptvPrintableFormServiceChannel.getDeliveryAddresses().stream()
       .filter(Objects::nonNull)
-      .filter((address) -> {
+      .filter(address -> {
         long receiverCount = address.getReceiver().stream()
           .map(VmOpenApiLanguageItem::getValue)
           .filter(StringUtils::isNotBlank)
@@ -187,7 +187,7 @@ public class PtvTranslator extends AbstractTranslator {
     if (deliveryAddresses != null && !deliveryAddresses.isEmpty()) {
       deliveryAddress = deliveryAddresses.get(0);
       if (deliveryAddresses.size() > 1) {
-        logger.log(Level.WARNING, String.format("Multiple delivery addresses are not yet supported: %d delivery addresses found", deliveryAddresses.size()));
+        logger.log(Level.WARNING, () -> String.format("Multiple delivery addresses are not yet supported: %d delivery addresses found", deliveryAddresses.size()));
       }
     }
     

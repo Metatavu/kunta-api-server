@@ -43,6 +43,7 @@ public class JSONMatcher extends DiagnosingMatcher<Object> {
     description.appendText(expected);
   }
   
+  @SuppressWarnings ("squid:S00112")
   @Override
   protected boolean matches(final Object actualObject, final Description mismatchDescription) {
     String actual = toJSONString(actualObject);

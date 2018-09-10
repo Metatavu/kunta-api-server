@@ -1,5 +1,6 @@
 package fi.metatavu.kuntaapi.test.server.integration.ptv;
 
+@SuppressWarnings ({"squid:ModifiersOrderCheck", "squid:S2386", "squid:S1192"})
 public class TestPtvConsts {
   
   public final static String[] ORGANIZATIONS = {

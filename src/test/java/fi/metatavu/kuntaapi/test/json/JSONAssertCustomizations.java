@@ -12,6 +12,10 @@ import org.skyscreamer.jsonassert.Customization;
  */
 public class JSONAssertCustomizations {
   
+  private JSONAssertCustomizations() {
+    // Private constructor
+  }
+  
   /**
    * Customization for marking property to be not nullable
    * 

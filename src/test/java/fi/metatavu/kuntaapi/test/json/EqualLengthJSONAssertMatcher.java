@@ -17,6 +17,7 @@ public class EqualLengthJSONAssertMatcher implements ValueMatcher<Object> {
     this.expected = expected;
   }
 
+  @SuppressWarnings ("squid:S1221")
   @Override
   public boolean equal(Object o1, Object o2) {
     if (o2 instanceof JSONArray) {

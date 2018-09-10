@@ -27,12 +27,11 @@ public abstract class AbstractPtvTest extends AbstractIntegrationTest {
   protected void waitOrganizationServices(int organizationIndex) {
     String organizationId = getOrganizationId(organizationIndex);
     
-    await().atMost(5, TimeUnit.MINUTES).until(() -> {
-      return givenReadonly()
-        .contentType(ContentType.JSON)
-        .get("/organizations/{organizationId}", organizationId)
-        .body().jsonPath().getInt("services.size()") == TestPtvConsts.ORGANIZATION_SERVICES[organizationIndex].length;
-    });
+    await().atMost(5, TimeUnit.MINUTES).until(() -> givenReadonly()
+      .contentType(ContentType.JSON)
+      .get("/organizations/{organizationId}", organizationId)
+      .body().jsonPath().getInt("services.size()") == TestPtvConsts.ORGANIZATION_SERVICES[organizationIndex].length
+    );
   }
 
   /**

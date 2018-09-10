@@ -9,6 +9,7 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.EnumMap;
@@ -22,10 +23,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -39,9 +37,10 @@ import fi.metatavu.ptv.client.model.V8VmOpenApiServiceServiceChannel;
 import fi.metatavu.ptv.client.model.VmOpenApiCodeListItem;
 import fi.metatavu.ptv.client.model.VmOpenApiItem;
 
-@SuppressWarnings ({"squid:S106", "squid:S3457", "squid:S1148"})
+@SuppressWarnings ({"squid:S106", "squid:S3457", "squid:S1148", "squid:S1192", "squid:UnusedPrivateMethod"})
 public class PtvDownload {
 
+  private static final String S_JSON = "%s.json";
   private static final boolean PRINT_IDS = true;
   private static final boolean DOWNLOAD_CODES = false;
   private static final boolean DOWNLOAD_RESOURCES = false;
@@ -83,7 +82,7 @@ public class PtvDownload {
     }
   }
 
-  private void limitChannels() throws JsonParseException, JsonMappingException, IOException {
+  private void limitChannels() throws IOException {
     EnumMap<ServiceChannelType,List<String>> channelTypeMap = createChannelTypeMap();
     
     for (ServiceChannelType channelType : ServiceChannelType.values()) {
@@ -94,24 +93,24 @@ public class PtvDownload {
     }
   }
 
-  private void deleteServiceChannel(String channelId) throws JsonParseException, JsonMappingException, IOException {
+  private void deleteServiceChannel(String channelId) throws IOException {
     File[] serviceFiles = getServicesFolder().listFiles();
     for (int i = 0; i < serviceFiles.length; i++) {
       System.out.println( IOUtils.toString(new FileReader(serviceFiles[i])) );
       removeServiceChannel(serviceFiles[i], channelId);      
     }
     
-    File channelFile = new File(getServiceChannelsFolder(), String.format("%s.json", channelId));
-    channelFile.delete();
+    File channelFile = new File(getServiceChannelsFolder(), String.format(S_JSON, channelId));
+    Files.delete(channelFile.toPath());
   }
   
-  private void removeServiceChannel(File serviceFile, String channelId) throws JsonParseException, JsonMappingException, IOException {
+  private void removeServiceChannel(File serviceFile, String channelId) throws IOException {
     ObjectMapper objectMapper = getObjectMapper();
     V8VmOpenApiService service = objectMapper.readValue(serviceFile, V8VmOpenApiService.class);
     
-    service.setServiceChannels(service.getServiceChannels().stream().filter((serviceChannel) -> {
-      return !StringUtils.equals(channelId, serviceChannel.getServiceChannel().getId().toString());
-    }).collect(Collectors.toList()));
+    service.setServiceChannels(service.getServiceChannels().stream().filter(serviceChannel -> 
+      !StringUtils.equals(channelId, serviceChannel.getServiceChannel().getId().toString())
+    ).collect(Collectors.toList()));
     
     try (FileOutputStream fileStream = new FileOutputStream(serviceFile)) {
       try (InputStream inputStream = new ByteArrayInputStream(objectMapper.writeValueAsBytes(service))) {
@@ -131,7 +130,7 @@ public class PtvDownload {
   private PtvDownload downloadCodes() throws MalformedURLException, FileNotFoundException, IOException {
     String[] areaCodeTypes = {"Province", "HospitalRegions", "BusinessRegions"};
     for (String areaCodeType : areaCodeTypes) {
-      download(getFullUrl(String.format("/CodeList/GetAreaCodes/type/%s", areaCodeType)), new File(getCodesFolder(), String.format("%s.json", areaCodeType.toLowerCase())), VmOpenApiCodeListItem.class);
+      download(getFullUrl(String.format("/CodeList/GetAreaCodes/type/%s", areaCodeType)), new File(getCodesFolder(), String.format(S_JSON, areaCodeType.toLowerCase())), VmOpenApiCodeListItem.class);
     }
 
     download(getFullUrl("/CodeList/GetCountryCodes"), new File(getCodesFolder(), "country.json"), VmOpenApiCodeListItem.class);
@@ -163,7 +162,7 @@ public class PtvDownload {
 
     for (int i = 0; i < organizationFiles.length; i++) {
       File organizationFile = organizationFiles[i];
-      organizationServices.add(i, printOrganizationServicesList(i, organizationFile));
+      organizationServices.add(i, printOrganizationServicesList(organizationFile));
     }
 
     System.out.println(StringUtils.join(organizationServices, ",\n"));
@@ -203,11 +202,9 @@ public class PtvDownload {
   private EnumMap<ServiceChannelType, List<String>> createChannelTypeMap() {
     EnumMap<ServiceChannelType, List<String>> result = new EnumMap<>(ServiceChannelType.class);
     
-    Arrays.stream(ServiceChannelType.values()).forEach((type) -> {
-      result.put(type, new ArrayList<>());
-    });
+    Arrays.stream(ServiceChannelType.values()).forEach(type -> result.put(type, new ArrayList<>()) );
     
-    Arrays.stream(getServiceChannelsFolder().listFiles()).forEach((channelFile) -> {
+    Arrays.stream(getServiceChannelsFolder().listFiles()).forEach(channelFile -> {
       try {
         ServiceChannelType channelType = resolveChannelType(channelFile);
         String id = FilenameUtils.getBaseName(channelFile.getName());
@@ -220,7 +217,7 @@ public class PtvDownload {
     return result;
   }
 
-  private List<EnumMap<ServiceChannelType, List<String>>> createServiceChannelsTypeMap(File[] serviceFiles) throws JsonParseException, JsonMappingException, IOException {
+  private List<EnumMap<ServiceChannelType, List<String>>> createServiceChannelsTypeMap(File[] serviceFiles) throws IOException {
     List<EnumMap<ServiceChannelType, List<String>>> result = new ArrayList<>();
     
     for (int i = 0; i < serviceFiles.length; i++) {
@@ -230,7 +227,7 @@ public class PtvDownload {
       V8VmOpenApiService service = new ObjectMapper().readValue(serviceFile, V8VmOpenApiService.class);
       List<V8VmOpenApiServiceServiceChannel> serviceChannels = service.getServiceChannels();
       for (V8VmOpenApiServiceServiceChannel serviceChannel : serviceChannels) {
-        File serviceChannelFile = new File(getServiceChannelsFolder(), String.format("%s.json", serviceChannel.getServiceChannel().getId()));
+        File serviceChannelFile = new File(getServiceChannelsFolder(), String.format(S_JSON, serviceChannel.getServiceChannel().getId()));
         ServiceChannelType channelType = resolveChannelType(serviceChannelFile);
         if (!channels.containsKey(channelType)) {
           channels.put(channelType, new ArrayList<>());
@@ -245,7 +242,7 @@ public class PtvDownload {
     return result;
   }
 
-  private ServiceChannelType resolveChannelType(File file) throws JsonParseException, JsonMappingException, IOException {
+  private ServiceChannelType resolveChannelType(File file) throws IOException {
     ServiceChannelTypeExtract serviceChannelTypeExtract = getObjectMapper().readValue(file, ServiceChannelTypeExtract.class);
     return resolveChannelType(serviceChannelTypeExtract.getServiceChannelType());
   }
@@ -267,7 +264,7 @@ public class PtvDownload {
     }
   }
   
-  private String printOrganizationServicesList(int index, File organizationFile) throws IOException {
+  private String printOrganizationServicesList(File organizationFile) throws IOException {
     ObjectMapper objectMapper = getObjectMapper();
     V8VmOpenApiOrganization organization = objectMapper.readValue(organizationFile, V8VmOpenApiOrganization.class);
 
@@ -286,11 +283,11 @@ public class PtvDownload {
     result.append("\n      }");
 
     return result.toString();
-  };
+  }
   
   private void printIdList(String constName, File[] files) {
     printIdList(constName, Arrays.stream(files)
-      .map((file) -> StringUtils.stripEnd(file.getName(), JSON))
+      .map(file -> StringUtils.stripEnd(file.getName(), JSON))
       .collect(Collectors.toList()));
   }
 
@@ -332,12 +329,10 @@ public class PtvDownload {
     return this;
   }
   
-  private void downloadOrganization(File organizationsFolder, String organizationId) {
+  private void downloadOrganization(File organizationsFolder, String organizationId) throws IOException {
     String url = getFullUrl(String.format("/Organization/%s", organizationId));
-    File target = new File(organizationsFolder, String.format("%s.json", organizationId));
-    if (target.exists()) {
-      target.delete();
-    }
+    File target = new File(organizationsFolder, String.format(S_JSON, organizationId));
+    Files.deleteIfExists(target.toPath());
     
     try {
       download(url, target, V8VmOpenApiOrganization.class);         
@@ -405,7 +400,7 @@ public class PtvDownload {
     File servicesFolder = getServicesFolder();
 
     String url = getFullUrl(String.format("/Service/%s", serviceId));
-    File target = new File(servicesFolder, String.format("%s.json", serviceId));
+    File target = new File(servicesFolder, String.format(S_JSON, serviceId));
     if (!target.exists()) {
       try {
         download(url, target, V8VmOpenApiService.class);          
@@ -431,7 +426,7 @@ public class PtvDownload {
     File serviceChannelsFolder = getServiceChannelsFolder();
     
     String url = String.format("https://api.palvelutietovaranto.trn.suomi.fi/api/%s/ServiceChannel/%s", PTV, serviceChannelId);
-    File target = new File(serviceChannelsFolder, String.format("%s.json", serviceChannelId));
+    File target = new File(serviceChannelsFolder, String.format(S_JSON, serviceChannelId));
     if (!target.exists()) {
       try {
         download(url, target, null);    
@@ -441,7 +436,7 @@ public class PtvDownload {
     }
   }
 
-  private void download(String url, File target, Class<?> outputClass) throws IOException, MalformedURLException, FileNotFoundException {      
+  private void download(String url, File target, Class<?> outputClass) throws IOException {      
     System.out.println(url);
     
     URLConnection connection = new URL(url).openConnection();
@@ -452,7 +447,7 @@ public class PtvDownload {
     }
   }
   
-  private void prettyPrintJson(InputStream inputStream, FileOutputStream fileStream, Class<?> outputClass) throws JsonParseException, JsonMappingException, JsonProcessingException, IOException {
+  private void prettyPrintJson(InputStream inputStream, FileOutputStream fileStream, Class<?> outputClass) throws IOException {
     byte[] bytes = IOUtils.toByteArray(inputStream);
     
     try {

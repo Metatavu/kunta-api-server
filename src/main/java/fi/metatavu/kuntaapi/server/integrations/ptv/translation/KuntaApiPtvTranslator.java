@@ -488,7 +488,7 @@ public class KuntaApiPtvTranslator extends AbstractTranslator {
           result.setStreetAddress(translateStreetAddress(deliveryAddress));
         break;
         default:
-          logger.log(Level.SEVERE, () -> String.format(UNKNOWN_SUBTYPE, deliveryAddress.getSubtype()));
+          logger.log(Level.SEVERE, () -> String.format(UNKNOWN_SUBTYPE, subtype != null ? subtype.toString() : "NULL"));
         break;
       }
     }
