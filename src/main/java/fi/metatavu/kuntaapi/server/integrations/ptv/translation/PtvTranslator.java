@@ -158,39 +158,39 @@ public class PtvTranslator extends AbstractTranslator {
       PrintableFormServiceChannelId kuntaApiPrintableFormServiceChannelId, OrganizationId kuntaApiOrganizationId,
       V8VmOpenApiPrintableFormChannel ptvPrintableFormServiceChannel) {
     
-    if (ptvPrintableFormServiceChannel.getDeliveryAddresses() == null || ptvPrintableFormServiceChannel.getDeliveryAddresses().isEmpty()) {
+    if (ptvPrintableFormServiceChannel == null) {
       return null;
     }
     
     V8VmOpenApiAddressDelivery deliveryAddress = null;
-    List<V8VmOpenApiAddressDelivery> deliveryAddresses = ptvPrintableFormServiceChannel.getDeliveryAddresses().stream()
-      .filter(Objects::nonNull)
-      .filter(address -> {
-        long receiverCount = address.getReceiver().stream()
-          .map(VmOpenApiLanguageItem::getValue)
-          .filter(StringUtils::isNotBlank)
-          .count();
-        
-        if (receiverCount == 0) {
-          return false;
+    List<V8VmOpenApiAddressDelivery> allDeliveryAddresses = ptvPrintableFormServiceChannel.getDeliveryAddresses();
+
+    if (allDeliveryAddresses != null) {
+      List<V8VmOpenApiAddressDelivery> deliveryAddresses = allDeliveryAddresses.stream()
+        .filter(Objects::nonNull)
+        .filter(address -> {
+          long receiverCount = address.getReceiver().stream()
+            .map(VmOpenApiLanguageItem::getValue)
+            .filter(StringUtils::isNotBlank)
+            .count();
+          
+          long inTextCount = address.getDeliveryAddressInText() == null ? 0 : address.getDeliveryAddressInText().stream()
+            .map(VmOpenApiLanguageItem::getValue)
+            .filter(StringUtils::isNotBlank)
+            .count();
+          
+          return receiverCount > 0 || inTextCount > 0 || address.getPostOfficeBoxAddress() != null || address.getStreetAddress() != null;
+        })
+        .collect(Collectors.toList());
+      
+      if (deliveryAddresses != null && !deliveryAddresses.isEmpty()) {
+        deliveryAddress = deliveryAddresses.get(0);
+        if (deliveryAddresses.size() > 1) {
+          logger.log(Level.WARNING, () -> String.format("Multiple delivery addresses are not yet supported: %d delivery addresses found", deliveryAddresses.size()));
         }
-        
-        long inTextCount = address.getDeliveryAddressInText() == null ? 0 : address.getDeliveryAddressInText().stream()
-          .map(VmOpenApiLanguageItem::getValue)
-          .filter(StringUtils::isNotBlank)
-          .count();
-        
-        return inTextCount > 0 || address.getPostOfficeBoxAddress() != null || address.getStreetAddress() != null;
-      })
-      .collect(Collectors.toList());
-    
-    if (deliveryAddresses != null && !deliveryAddresses.isEmpty()) {
-      deliveryAddress = deliveryAddresses.get(0);
-      if (deliveryAddresses.size() > 1) {
-        logger.log(Level.WARNING, () -> String.format("Multiple delivery addresses are not yet supported: %d delivery addresses found", deliveryAddresses.size()));
       }
     }
-    
+
     PrintableFormServiceChannel result = new PrintableFormServiceChannel();
     result.setAttachments(translateAttachments(ptvPrintableFormServiceChannel.getAttachments()));
     result.setChannelUrls(translateLocalizedValues(ptvPrintableFormServiceChannel.getChannelUrls()));
@@ -933,10 +933,10 @@ public class PtvTranslator extends AbstractTranslator {
       Collections.sort(ptvWebPages, new WebPageWithOrderNumberComparator());
       
       for (VmOpenApiWebPageWithOrderNumber ptvWebPage : ptvWebPages) {
-        if ((ptvWebPage != null) && StringUtils.isNotBlank(ptvWebPage.getValue())) {
+        if ((ptvWebPage != null) && StringUtils.isNotBlank(ptvWebPage.getUrl())) {
           LocalizedValue localizedValue = new LocalizedValue();
           localizedValue.setLanguage(ptvWebPage.getLanguage());
-          localizedValue.setValue(ptvWebPage.getValue());
+          localizedValue.setValue(ptvWebPage.getUrl());
           localizedValue.setType(null);
           result.add(localizedValue);
         }
