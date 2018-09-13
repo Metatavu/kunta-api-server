@@ -38,7 +38,13 @@
     }
   ],
   "requiresAuthentication": false,
-  "urls": [ ],
+  "urls": [ 
+    {
+      "language": "fi",
+      "type": null,
+      "value": "https://valtuusrekisteri.beta.suomi.fi/"
+    }
+  ],
   "languages": [ ],
   "attachments": [ ],
   
