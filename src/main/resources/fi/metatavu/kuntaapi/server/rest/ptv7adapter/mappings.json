@@ -1,0 +1,200 @@
+{
+	"printableFormServiceChannel": {
+		"descriptions/type": {
+			"Summary": "ShortDescription",
+			"AlternativeName": "AlternateName"
+		},
+		"areaType": {
+			"NationwideExceptAlandIslands": "WholeCountryExceptAlandIslands",
+			"LimitedType": "AreaType",
+			"Nationwide": "WholeCountry"
+		},
+		"areas/type": {
+			"BusinessSubRegion": "BusinessRegions",
+			"Region": "Province",
+			"HospitalDistrict": "HospitalRegions"
+		},
+		"names/type": {
+			"Summary": "ShortDescription",
+			"AlternativeName": "AlternateName"
+		},
+		"supportPhones/serviceChargeType": {
+			"Chargeable": "Charged",
+			"FreeOfCharge": "Free"
+		}
+	},
+	"webPageServiceChannel": {
+		"descriptions/type": {
+			"Summary": "ShortDescription",
+			"AlternativeName": "AlternateName"
+		},
+		"names/type": {
+			"Summary": "ShortDescription",
+			"AlternativeName": "AlternateName"
+		},
+		"supportPhones/serviceChargeType": {
+			"Chargeable": "Charged",
+			"FreeOfCharge": "Free"
+		}
+	},
+	"service": {
+		"descriptions/type": {
+			"ProcessingTime": "ProcessingTimeAdditionalInfo",
+			"ValidityTime": "ValidityTimeAdditionalInfo",
+			"UserInstruction": "ServiceUserInstruction",
+			"DeadLine": "DeadLineAdditionalInfo",
+			"Summary": "ShortDescription"
+		},
+		"areaType": {
+			"NationwideExceptAlandIslands": "WholeCountryExceptAlandIslands",
+			"LimitedType": "AreaType",
+			"Nationwide": "WholeCountry"
+		},
+		"serviceChannels/phones/serviceChargeType": {
+			"Chargeable": "Charged",
+			"FreeOfCharge": "Free"
+		},
+		"serviceChannels/serviceHours/serviceHourType": {
+			"OverMidnight": "Special",
+			"Weekdays": "Standard",
+			"Exceptional": "Exception"
+		},
+		"type": {
+			"PermitOrObligation": "PermissionAndObligation",
+			"ProfessionalQualification": "ProfessionalQualifications"
+		},
+		"serviceChargeType": {
+			"Chargeable": "Charged",
+			"FreeOfCharge": "Free"
+		},
+		"names/type": {
+			"Summary": "ShortDescription",
+			"AlternativeName": "AlternateName"
+		},
+		"serviceChannels/serviceChargeType": {
+			"Chargeable": "Charged",
+			"FreeOfCharge": "Free"
+		},
+		"serviceProducers/provisionType": {
+			"SelfProducedServices": "SelfProduced",
+			"ProcuredServices": "PurchaseServices"
+		}
+	},
+	"organization": {
+		"descriptions/type": {
+			"Summary": "ShortDescription",
+			"AlternativeName": "AlternateName"
+		},
+		"areaType": {
+			"NationwideExceptAlandIslands": "WholeCountryExceptAlandIslands",
+			"LimitedType": "AreaType",
+			"Nationwide": "WholeCountry"
+		},
+		"names/type": {
+			"Summary": "ShortDescription",
+			"AlternativeName": "AlternateName"
+		},
+		"displayNameType/type": {
+			"AlternativeName": "AlternateName"
+		},
+		"phoneNumbers/serviceChargeType": {
+			"Chargeable": "Charged",
+			"FreeOfCharge": "Free"
+		}
+	},
+	"phoneServiceChannel": {
+		"descriptions/type": {
+			"Summary": "ShortDescription",
+			"AlternativeName": "AlternateName"
+		},
+		"phoneNumber/serviceChargeType": {
+			"Chargeable": "Charged",
+			"FreeOfCharge": "Free"
+		},
+		"serviceHours/serviceHourType": {
+			"OverMidnight": "Special",
+			"Weekdays": "Standard",
+			"Exceptional": "Exception"
+		},
+		"areaType": {
+			"NationwideExceptAlandIslands": "WholeCountryExceptAlandIslands",
+			"LimitedType": "AreaType",
+			"Nationwide": "WholeCountry"
+		},
+		"areas/type": {
+			"BusinessSubRegion": "BusinessRegions",
+			"Region": "Province",
+			"HospitalDistrict": "HospitalRegions"
+		},
+		"names/type": {
+			"Summary": "ShortDescription",
+			"AlternativeName": "AlternateName"
+		},
+		"supportPhones/serviceChargeType": {
+			"Chargeable": "Charged",
+			"FreeOfCharge": "Free"
+		}
+	},
+	"serviceLocationServiceChannel": {
+		"descriptions/type": {
+			"Summary": "ShortDescription",
+			"AlternativeName": "AlternateName"
+		},
+		"phoneNumber/serviceChargeType": {
+			"Chargeable": "Charged",
+			"FreeOfCharge": "Free"
+		},
+		"serviceHours/serviceHourType": {
+			"OverMidnight": "Special",
+			"Weekdays": "Standard",
+			"Exceptional": "Exception"
+		},
+		"areaType": {
+			"NationwideExceptAlandIslands": "WholeCountryExceptAlandIslands",
+			"LimitedType": "AreaType",
+			"Nationwide": "WholeCountry"
+		},
+		"areas/type": {
+			"BusinessSubRegion": "BusinessRegions",
+			"Region": "Province",
+			"HospitalDistrict": "HospitalRegions"
+		},
+		"names/type": {
+			"Summary": "ShortDescription",
+			"AlternativeName": "AlternateName"
+		},
+		"supportPhones/serviceChargeType": {
+			"Chargeable": "Charged",
+			"FreeOfCharge": "Free"
+		}
+	},
+	"electoricServiceChannel": {
+		"descriptions/type": {
+			"Summary": "ShortDescription",
+			"AlternativeName": "AlternateName"
+		},
+		"serviceHours/serviceHourType": {
+			"OverMidnight": "Special",
+			"Weekdays": "Standard",
+			"Exceptional": "Exception"
+		},
+		"areaType": {
+			"NationwideExceptAlandIslands": "WholeCountryExceptAlandIslands",
+			"LimitedType": "AreaType",
+			"Nationwide": "WholeCountry"
+		},
+		"areas/type": {
+			"BusinessSubRegion": "BusinessRegions",
+			"Region": "Province",
+			"HospitalDistrict": "HospitalRegions"
+		},
+		"names/type": {
+			"Summary": "ShortDescription",
+			"AlternativeName": "AlternateName"
+		},
+		"supportPhones/serviceChargeType": {
+			"Chargeable": "Charged",
+			"FreeOfCharge": "Free"
+		}
+	}
+}
