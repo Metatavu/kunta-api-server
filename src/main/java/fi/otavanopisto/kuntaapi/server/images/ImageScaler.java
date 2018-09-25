@@ -10,6 +10,8 @@ import java.util.logging.Logger;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
+import org.apache.commons.lang3.ArrayUtils;
+
 /**
  * Image scaler 
  * 
@@ -18,11 +20,23 @@ import javax.inject.Inject;
  */
 @ApplicationScoped
 public class ImageScaler {
+	
+  private static final String[] UNSCALEABLE_TYPES = {"image/gif"};
  
   @Inject
   private Logger logger;
   
- /**
+  /**
+   * Returns whether image should not be scaled because it will lose some properties (e.g. animation)
+   * 
+   * @param contentType content type
+   * @return whether image should not be scaled
+   */
+  public boolean isUnscaleableType(String contentType) {
+	return ArrayUtils.contains(UNSCALEABLE_TYPES, contentType);
+  }
+  
+  /**
    * Scales image to cover size x size
    * 
    * @param originalImage image
@@ -117,6 +131,12 @@ public class ImageScaler {
     return toBufferedImage(scaledInstance);
   }
 
+  /**
+   * Converts image into buffered image 
+   * 
+   * @param image image
+   * @return buffered image
+   */
   private BufferedImage toBufferedImage(Image image) {
     if (image instanceof BufferedImage) {
       return (BufferedImage) image;
