@@ -427,14 +427,14 @@ public class PageTestsIT extends AbstractIntegrationTest {
     String pageContent = getPageContent(organizationId, pageId);
     
     Elements pageImages = Jsoup.parse(pageContent).select("img");
-    assertEquals(2, pageImages.size());
+    assertEquals(3, pageImages.size());
     
     assertEquals("about:blank", pageImages.get(0).attr("src"));
     assertEquals(organizationId, pageImages.get(0).attr("data-organization-id"));
     assertEquals( pageId, pageImages.get(0).attr("data-page-id"));
     assertEquals(imageId, pageImages.get(0).attr("data-attachment-id"));
     assertEquals(ManagementConsts.ATTACHMENT_TYPE_PAGE_CONTENT_IMAGE, pageImages.get(0).attr("data-image-type"));
-    assertEquals("http://example.com/image.jpg", pageImages.get(1).attr("src"));
+    assertEquals("http://example.com/image.jpg", pageImages.get(2).attr("src"));
       
     givenReadonly()
       .contentType(ContentType.JSON)
@@ -442,7 +442,7 @@ public class PageTestsIT extends AbstractIntegrationTest {
       .then()
       .assertThat()
       .statusCode(200)
-      .body("id.size()", is(1))
+      .body("id.size()", is(2))
       .body("contentType[0]", is(IMAGE_JPEG))
       .body("type[0]", is("content-image"));
     
