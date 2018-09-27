@@ -9,6 +9,7 @@ import static org.junit.Assert.assertNull;
 
 import java.io.IOException;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.select.Elements;
 import org.junit.After;
@@ -26,8 +27,6 @@ import fi.otavanopisto.kuntaapi.test.AbstractIntegrationTest;
 @SuppressWarnings ("squid:S1192")
 public class PageTestsIT extends AbstractIntegrationTest {
 
-  private static final String IMAGE_JPEG = "image/jpeg";
-
   /**
    * Starts WireMock
    */
@@ -40,7 +39,7 @@ public class PageTestsIT extends AbstractIntegrationTest {
       .mock("9355a207-efd3-4cfb-a02b-67187f34c822");
     
     getManagementMediaMocker()
-      .mockMedias(3001, 3002);
+      .mockMedias(3001, 3002, 3003);
     
     getManagementTagMocker()
       .mockTags(9002)
@@ -303,11 +302,11 @@ public class PageTestsIT extends AbstractIntegrationTest {
   }
   
   @Test
-  public void testPageImage() {
+  public void testPageImage() throws InterruptedException {
     String organizationId = getOrganizationId(0);
     String pageId = getPageId(organizationId, 0);
     String imageId = getPageImageId(organizationId, pageId, 0);
-    
+
     givenReadonly()
       .contentType(ContentType.JSON)
       .get("/organizations/{ORGANIZATIONID}/pages/{PAGEID}/images/{IMAGEID}", organizationId, pageId, imageId)
@@ -316,6 +315,48 @@ public class PageTestsIT extends AbstractIntegrationTest {
       .statusCode(200)
       .body("id", is(imageId))
       .body("contentType", is(IMAGE_JPEG));
+  }
+  
+  @Test
+  public void testPageImageScaled() throws InterruptedException, IOException {
+    String organizationId = getOrganizationId(0);
+
+    String pageId = getPageId(organizationId, 2);
+    
+    System.out.println(
+      givenReadonly()
+	      .contentType(ContentType.JSON)
+	      .get("/organizations/{ORGANIZATIONID}/pages/{PAGEID}", organizationId, pageId)
+	      .asString()
+	    );
+    
+    waitApiListCount(String.format("/organizations/%s/pages/%s/images", organizationId, pageId), 2);
+
+    String image1Id = getPageImageId(organizationId, pageId, 0);
+    String image2Id = getPageImageId(organizationId, pageId, 1);
+
+    givenReadonly()
+	  .contentType(ContentType.JSON)
+	  .get("/organizations/{ORGANIZATIONID}/pages/{PAGEID}/images/{IMAGEID}/data?size=25", organizationId, pageId, image1Id)
+	  .then()
+	  .assertThat()
+	  .statusCode(200)
+	  .header("Content-Type", is(IMAGE_JPEG));
+    
+    givenReadonly()
+	  .contentType(ContentType.JSON)
+	  .get("/organizations/{ORGANIZATIONID}/pages/{PAGEID}/images/{IMAGEID}/data?size=25", organizationId, pageId, image2Id)
+	  .then()
+	  .assertThat()
+	  .statusCode(200)
+	  .header("Content-Type", is(IMAGE_GIF));
+    
+    String image2Hex = DigestUtils.md5Hex(givenReadonly()
+	  .contentType(ContentType.JSON)
+	  .get("/organizations/{ORGANIZATIONID}/pages/{PAGEID}/images/{IMAGEID}/data?size=25", organizationId, pageId, image2Id)
+	  .asInputStream());
+
+    assertEquals(getResourceMd5("management/medias/2017/03/test-image-animated.gif"), image2Hex);
   }
   
   @Test
@@ -348,7 +389,7 @@ public class PageTestsIT extends AbstractIntegrationTest {
   public void testPageListImagesByType() throws InterruptedException {
     String organizationId = getOrganizationId(0);
     String pageId = getPageId(organizationId, 1);
-    
+
     waitApiListCount(String.format("/organizations/%s/pages/%s/images", organizationId, pageId), 2);
     
     givenReadonly()
@@ -386,14 +427,14 @@ public class PageTestsIT extends AbstractIntegrationTest {
     String pageContent = getPageContent(organizationId, pageId);
     
     Elements pageImages = Jsoup.parse(pageContent).select("img");
-    assertEquals(2, pageImages.size());
+    assertEquals(3, pageImages.size());
     
     assertEquals("about:blank", pageImages.get(0).attr("src"));
     assertEquals(organizationId, pageImages.get(0).attr("data-organization-id"));
     assertEquals( pageId, pageImages.get(0).attr("data-page-id"));
     assertEquals(imageId, pageImages.get(0).attr("data-attachment-id"));
     assertEquals(ManagementConsts.ATTACHMENT_TYPE_PAGE_CONTENT_IMAGE, pageImages.get(0).attr("data-image-type"));
-    assertEquals("http://example.com/image.jpg", pageImages.get(1).attr("src"));
+    assertEquals("http://example.com/image.jpg", pageImages.get(2).attr("src"));
       
     givenReadonly()
       .contentType(ContentType.JSON)
@@ -401,7 +442,7 @@ public class PageTestsIT extends AbstractIntegrationTest {
       .then()
       .assertThat()
       .statusCode(200)
-      .body("id.size()", is(1))
+      .body("id.size()", is(2))
       .body("contentType[0]", is(IMAGE_JPEG))
       .body("type[0]", is("content-image"));
     
