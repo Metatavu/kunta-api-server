@@ -39,6 +39,33 @@ public class Ptv7Adapter {
   
   @Inject
   private Logger logger;
+  
+  /**
+   * Translates PTV8 to use PTV7 naming conventions
+   * 
+   * @param entity entity
+   * @return translated entity
+   * @throws IOException thrown on reading error
+   */
+  public Object translate(Object entity) throws IOException {
+    if (entity instanceof Organization) {
+      return translate((Organization) entity);
+    } else if (entity instanceof ElectronicServiceChannel) {
+      return translate((ElectronicServiceChannel) entity);
+    } else if (entity instanceof PrintableFormServiceChannel) {
+      return translate((PrintableFormServiceChannel) entity);
+    } else if (entity instanceof ServiceLocationServiceChannel) {
+      return translate((ServiceLocationServiceChannel) entity);
+    } else if (entity instanceof PhoneServiceChannel) {
+      return translate((PhoneServiceChannel) entity);
+    } else if (entity instanceof WebPageServiceChannel) {
+      return translate((WebPageServiceChannel) entity);
+    } else if (entity instanceof Service) {
+      return translate((Service) entity);
+    }
+    
+    return null;
+  }
 
   /**
    * Translates PTV8 to use PTV7 naming conventions

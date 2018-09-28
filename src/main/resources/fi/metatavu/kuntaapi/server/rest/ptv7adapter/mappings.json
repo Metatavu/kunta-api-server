@@ -50,34 +50,17 @@
 			"LimitedType": "AreaType",
 			"Nationwide": "WholeCountry"
 		},
-		"serviceChannels/phones/serviceChargeType": {
-			"Chargeable": "Charged",
-			"FreeOfCharge": "Free"
-		},
-		"serviceChannels/serviceHours/serviceHourType": {
-			"OverMidnight": "Special",
-			"Weekdays": "Standard",
-			"Exceptional": "Exception"
-		},
 		"type": {
 			"PermitOrObligation": "PermissionAndObligation",
 			"ProfessionalQualification": "ProfessionalQualifications"
 		},
-		"serviceChargeType": {
+		"chargeType": {
 			"Chargeable": "Charged",
 			"FreeOfCharge": "Free"
 		},
 		"names/type": {
 			"Summary": "ShortDescription",
 			"AlternativeName": "AlternateName"
-		},
-		"serviceChannels/serviceChargeType": {
-			"Chargeable": "Charged",
-			"FreeOfCharge": "Free"
-		},
-		"serviceProducers/provisionType": {
-			"SelfProducedServices": "SelfProduced",
-			"ProcuredServices": "PurchaseServices"
 		}
 	},
 	"organization": {
@@ -107,7 +90,7 @@
 			"Summary": "ShortDescription",
 			"AlternativeName": "AlternateName"
 		},
-		"phoneNumber/serviceChargeType": {
+		"phoneNumbers/serviceChargeType": {
 			"Chargeable": "Charged",
 			"FreeOfCharge": "Free"
 		},
@@ -129,10 +112,6 @@
 		"names/type": {
 			"Summary": "ShortDescription",
 			"AlternativeName": "AlternateName"
-		},
-		"supportPhones/serviceChargeType": {
-			"Chargeable": "Charged",
-			"FreeOfCharge": "Free"
 		}
 	},
 	"serviceLocationServiceChannel": {
@@ -140,7 +119,7 @@
 			"Summary": "ShortDescription",
 			"AlternativeName": "AlternateName"
 		},
-		"phoneNumber/serviceChargeType": {
+		"phoneNumbers/serviceChargeType": {
 			"Chargeable": "Charged",
 			"FreeOfCharge": "Free"
 		},
@@ -162,10 +141,6 @@
 		"names/type": {
 			"Summary": "ShortDescription",
 			"AlternativeName": "AlternateName"
-		},
-		"supportPhones/serviceChargeType": {
-			"Chargeable": "Charged",
-			"FreeOfCharge": "Free"
 		}
 	},
 	"electoricServiceChannel": {
