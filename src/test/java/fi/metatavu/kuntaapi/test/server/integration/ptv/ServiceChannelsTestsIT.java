@@ -45,7 +45,29 @@ public class ServiceChannelsTestsIT extends AbstractPtvTest {
       
     assertJSONFileEquals(String.format("ptv/kuntaapi/servicechannels/electronic/%d.json", channelIndex) , response, getServiceChannelCustomizations());
   }
-  
+
+  @Test
+  public void testFindElectronicChannelCompability() throws InterruptedException, JSONException, IOException {
+    int channelIndex = 0;
+    String channelId = getElectronicChannelId(channelIndex, TestPtvConsts.ELECTRONIC_CHANNEL_SERVICE_CHANNELS.length);
+    
+    givenReadonly()
+      .contentType(ContentType.JSON)
+      .get("/electronicServiceChannels/{channelId}", channelId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("descriptions[0].type", is("Summary"));
+    
+    givenReadonlyCompabilityMode()
+      .contentType(ContentType.JSON)
+      .get("/electronicServiceChannels/{channelId}", channelId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("descriptions[0].type", is("ShortDescription"));
+  }
+
   @Test
   public void testListElectronicChannels() throws InterruptedException, IOException {
     int channelIndex = 0;
@@ -58,6 +80,51 @@ public class ServiceChannelsTestsIT extends AbstractPtvTest {
       .then()
       .body("id.size()", is(TestPtvConsts.ELECTRONIC_CHANNEL_SERVICE_CHANNELS.length))
       .body("[0]", jsonEqualsFile(String.format("ptv/kuntaapi/servicechannels/electronic/%d.json", channelIndex), getServiceChannelCustomizations()));
+  }
+
+  @Test
+  public void testListElectronicChannelsCompability() throws InterruptedException, IOException {
+    int channelIndex = 0;
+
+    waitApiListCount("/electronicServiceChannels", TestPtvConsts.ELECTRONIC_CHANNEL_SERVICE_CHANNELS.length);
+
+    givenReadonly()
+      .contentType(ContentType.JSON)
+      .get("/electronicServiceChannels")
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("[0].descriptions[0].type", is("Summary"));
+
+    givenReadonlyCompabilityMode()
+      .contentType(ContentType.JSON)
+      .get("/electronicServiceChannels")
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("[0].descriptions[0].type", is("ShortDescription"));
+  }
+  
+  @Test
+  public void testFindPhoneChannelCompability() throws InterruptedException, JSONException, IOException {
+    int channelIndex = 0;
+    String channelId = getPhoneChannelId(channelIndex, TestPtvConsts.PHONE_SERVICE_CHANNELS.length);
+    
+    givenReadonly()
+      .contentType(ContentType.JSON)
+      .get("/phoneServiceChannels/{channelId}", channelId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("descriptions[0].type", is("Summary"));
+
+    givenReadonlyCompabilityMode()
+      .contentType(ContentType.JSON)
+      .get("/phoneServiceChannels/{channelId}", channelId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("descriptions[0].type", is("ShortDescription"));
   }
   
   @Test
@@ -72,7 +139,7 @@ public class ServiceChannelsTestsIT extends AbstractPtvTest {
       
     assertJSONFileEquals(String.format("ptv/kuntaapi/servicechannels/phone/%d.json", channelIndex) , response, getServiceChannelCustomizations());
   }
-  
+
   @Test
   public void testListPhoneChannels() throws InterruptedException, IOException {
     int channelIndex = 0;
@@ -88,6 +155,28 @@ public class ServiceChannelsTestsIT extends AbstractPtvTest {
   }
   
   @Test
+  public void testListPhoneChannelsCompability() throws InterruptedException, IOException {
+    waitApiListCount("/phoneServiceChannels", TestPtvConsts.PHONE_SERVICE_CHANNELS.length);
+
+    givenReadonly()
+      .contentType(ContentType.JSON)
+      .get("/phoneServiceChannels")
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("[0].descriptions[0].type", is("Summary"));
+
+
+    givenReadonlyCompabilityMode()
+      .contentType(ContentType.JSON)
+      .get("/phoneServiceChannels")
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("[0].descriptions[0].type", is("ShortDescription"));
+  }
+
+  @Test
   public void testFindPrintableFormChannel() throws InterruptedException, JSONException, IOException {
     int channelIndex = 0;
     String channelId = getPrintableFormChannelId(channelIndex, TestPtvConsts.PRINTABLE_FORM_SERVICE_CHANNELS.length);
@@ -98,6 +187,28 @@ public class ServiceChannelsTestsIT extends AbstractPtvTest {
       .body().asString();
       
     assertJSONFileEquals(String.format("ptv/kuntaapi/servicechannels/printableform/%d.json", channelIndex) , response, getServiceChannelCustomizations());
+  }
+
+  @Test
+  public void testFindPrintableFormChannelCompability() throws InterruptedException, JSONException, IOException {
+    int channelIndex = 0;
+    String channelId = getPrintableFormChannelId(channelIndex, TestPtvConsts.PRINTABLE_FORM_SERVICE_CHANNELS.length);
+    
+    givenReadonly()
+      .contentType(ContentType.JSON)
+      .get("/printableFormServiceChannels/{channelId}", channelId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("descriptions[1].type", is("Summary"));
+
+    givenReadonlyCompabilityMode()
+      .contentType(ContentType.JSON)
+      .get("/printableFormServiceChannels/{channelId}", channelId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("descriptions[1].type", is("ShortDescription"));
   }
 
   @Test
@@ -112,6 +223,27 @@ public class ServiceChannelsTestsIT extends AbstractPtvTest {
       .then()
       .body("id.size()", is(TestPtvConsts.PRINTABLE_FORM_SERVICE_CHANNELS.length))
       .body("[0]", jsonEqualsFile(String.format("ptv/kuntaapi/servicechannels/printableform/%d.json", channelIndex), getServiceChannelCustomizations()));
+  }
+
+  @Test
+  public void testListPrintableFormChannelsCompability() throws InterruptedException, IOException {
+    waitApiListCount("/printableFormServiceChannels", TestPtvConsts.PRINTABLE_FORM_SERVICE_CHANNELS.length);
+
+    givenReadonly()
+      .contentType(ContentType.JSON)
+      .get("/printableFormServiceChannels")
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("[0].descriptions[1].type", is("Summary"));
+
+    givenReadonlyCompabilityMode()
+      .contentType(ContentType.JSON)
+      .get("/printableFormServiceChannels")
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("[0].descriptions[1].type", is("ShortDescription"));
   }
   
   @Test
@@ -128,6 +260,28 @@ public class ServiceChannelsTestsIT extends AbstractPtvTest {
   }
 
   @Test
+  public void testFindServiceLocationChannelCompability() throws InterruptedException, JSONException, IOException {
+    int channelIndex = 0;
+    String channelId = getServiceLocationChannelId(channelIndex, TestPtvConsts.SERVICE_LOCATION_SERVICE_CHANNELS.length);
+    
+    givenReadonly()
+      .contentType(ContentType.JSON)
+      .get("/serviceLocationServiceChannels/{channelId}", channelId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("descriptions[0].type", is("Summary"));
+
+    givenReadonlyCompabilityMode()
+      .contentType(ContentType.JSON)
+      .get("/serviceLocationServiceChannels/{channelId}", channelId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("descriptions[0].type", is("ShortDescription"));
+  }
+
+  @Test
   public void testListServiceLocationChannel() throws InterruptedException, IOException {
     int channelIndex = 0;
 
@@ -139,6 +293,27 @@ public class ServiceChannelsTestsIT extends AbstractPtvTest {
       .then()
       .body("id.size()", is(TestPtvConsts.SERVICE_LOCATION_SERVICE_CHANNELS.length))
       .body("[0]", jsonEqualsFile(String.format("ptv/kuntaapi/servicechannels/servicelocation/%d.json", channelIndex), getServiceChannelCustomizations()));
+  }
+
+  @Test
+  public void testListServiceLocationChannelCompability() throws InterruptedException, IOException {
+    waitApiListCount("/serviceLocationServiceChannels", TestPtvConsts.SERVICE_LOCATION_SERVICE_CHANNELS.length);
+
+    givenReadonly()
+      .contentType(ContentType.JSON)
+      .get("/serviceLocationServiceChannels")
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("[0].descriptions[0].type", is("Summary"));
+
+    givenReadonlyCompabilityMode()
+      .contentType(ContentType.JSON)
+      .get("/serviceLocationServiceChannels")
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("[0].descriptions[0].type", is("ShortDescription"));
   }
   
   @Test
@@ -193,6 +368,28 @@ public class ServiceChannelsTestsIT extends AbstractPtvTest {
   }
 
   @Test
+  public void testFindWebPageChannelCompability() throws InterruptedException, JSONException, IOException {
+    int channelIndex = 0;
+    String channelId = getWebPageChannelId(channelIndex, TestPtvConsts.WEB_PAGE_SERVICE_CHANNELS.length);
+    
+    givenReadonly()
+      .contentType(ContentType.JSON)
+      .get("/webPageServiceChannels/{channelId}", channelId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("descriptions[2].type", is("Summary"));
+    
+    givenReadonlyCompabilityMode()
+      .contentType(ContentType.JSON)
+      .get("/webPageServiceChannels/{channelId}", channelId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("descriptions[2].type", is("ShortDescription"));
+  }
+
+  @Test
   public void testListWebPageChannel() throws InterruptedException, IOException {
     int channelIndex = 0;
   
@@ -204,6 +401,27 @@ public class ServiceChannelsTestsIT extends AbstractPtvTest {
       .then()
       .body("id.size()", is(TestPtvConsts.WEB_PAGE_SERVICE_CHANNELS.length))
       .body("[0]", jsonEqualsFile(String.format("ptv/kuntaapi/servicechannels/webpage/%d.json", channelIndex), getServiceChannelCustomizations()));
+  }
+
+  @Test
+  public void testListWebPageChannelCompability() throws InterruptedException, IOException {
+    waitApiListCount("/webPageServiceChannels", TestPtvConsts.WEB_PAGE_SERVICE_CHANNELS.length);
+  
+    givenReadonly()
+      .contentType(ContentType.JSON)
+      .get("/webPageServiceChannels")
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("[0].descriptions[2].type", is("Summary"));
+
+    givenReadonlyCompabilityMode()
+      .contentType(ContentType.JSON)
+      .get("/webPageServiceChannels")
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("[0].descriptions[2].type", is("ShortDescription"));
   }
 
   @Test

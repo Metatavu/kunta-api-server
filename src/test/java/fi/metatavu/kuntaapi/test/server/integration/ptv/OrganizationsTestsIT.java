@@ -47,6 +47,29 @@ public class OrganizationsTestsIT extends AbstractPtvTest {
     
     assertJSONFileEquals(String.format("ptv/kuntaapi/organizations/%d.json", organizationIndex) , response, getOrganizationCustomizations());
   }
+
+  @Test
+  public void findOrganizationCompability() throws InterruptedException, IOException, JSONException {
+    int organizationIndex = 2;
+    String organizationId = getOrganizationId(organizationIndex);
+    waitOrganizationServices(organizationIndex);
+    
+    givenReadonly()
+      .contentType(ContentType.JSON)
+      .get("/organizations/{organizationId}", organizationId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("areaType", is("Nationwide"));
+
+    givenReadonlyCompabilityMode()
+      .contentType(ContentType.JSON)
+      .get("/organizations/{organizationId}", organizationId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("areaType", is("WholeCountry"));
+  }
   
   @Test
   public void testListOrganizations() throws IOException {
@@ -63,6 +86,28 @@ public class OrganizationsTestsIT extends AbstractPtvTest {
       .body("[0]", jsonEqualsFile(String.format("ptv/kuntaapi/organizations/%d.json", organizationIndex), getOrganizationCustomizations()));
   }
   
+  @Test
+  public void testListOrganizationsCompability() throws IOException {
+    int organizationIndex = 2;
+    waitOrganizationServices(organizationIndex);
+    
+    givenReadonly()
+      .contentType(ContentType.JSON)
+      .get("/organizations")
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("[2].areaType", is("Nationwide"));
+  
+    givenReadonlyCompabilityMode()
+      .contentType(ContentType.JSON)
+      .get("/organizations")
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("[2].areaType", is("WholeCountry"));
+  }
+
   @Test
   public void testListOrganizationsByBusinessCode() {
     if (skipElasticSearchTests()) {
