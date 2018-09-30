@@ -15,32 +15,6 @@ import org.apache.commons.lang3.EnumUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 
-import fi.metatavu.kuntaapi.server.rest.OrganizationsApi;
-import fi.metatavu.kuntaapi.server.rest.model.Agency;
-import fi.metatavu.kuntaapi.server.rest.model.Announcement;
-import fi.metatavu.kuntaapi.server.rest.model.Attachment;
-import fi.metatavu.kuntaapi.server.rest.model.Banner;
-import fi.metatavu.kuntaapi.server.rest.model.Contact;
-import fi.metatavu.kuntaapi.server.rest.model.Emergency;
-import fi.metatavu.kuntaapi.server.rest.model.Event;
-import fi.metatavu.kuntaapi.server.rest.model.FileDef;
-import fi.metatavu.kuntaapi.server.rest.model.Fragment;
-import fi.metatavu.kuntaapi.server.rest.model.Incident;
-import fi.metatavu.kuntaapi.server.rest.model.Job;
-import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
-import fi.metatavu.kuntaapi.server.rest.model.Menu;
-import fi.metatavu.kuntaapi.server.rest.model.MenuItem;
-import fi.metatavu.kuntaapi.server.rest.model.NewsArticle;
-import fi.metatavu.kuntaapi.server.rest.model.Organization;
-import fi.metatavu.kuntaapi.server.rest.model.OrganizationSetting;
-import fi.metatavu.kuntaapi.server.rest.model.Page;
-import fi.metatavu.kuntaapi.server.rest.model.Route;
-import fi.metatavu.kuntaapi.server.rest.model.Schedule;
-import fi.metatavu.kuntaapi.server.rest.model.Shortlink;
-import fi.metatavu.kuntaapi.server.rest.model.Stop;
-import fi.metatavu.kuntaapi.server.rest.model.StopTime;
-import fi.metatavu.kuntaapi.server.rest.model.Tile;
-import fi.metatavu.kuntaapi.server.rest.model.Trip;
 import fi.metatavu.kuntaapi.server.controllers.AnnouncementController;
 import fi.metatavu.kuntaapi.server.controllers.BannerController;
 import fi.metatavu.kuntaapi.server.controllers.ClientContainer;
@@ -101,6 +75,31 @@ import fi.metatavu.kuntaapi.server.integrations.OrganizationSortBy;
 import fi.metatavu.kuntaapi.server.integrations.PageSortBy;
 import fi.metatavu.kuntaapi.server.integrations.PublicTransportStopTimeSortBy;
 import fi.metatavu.kuntaapi.server.integrations.SortDir;
+import fi.metatavu.kuntaapi.server.rest.model.Agency;
+import fi.metatavu.kuntaapi.server.rest.model.Announcement;
+import fi.metatavu.kuntaapi.server.rest.model.Attachment;
+import fi.metatavu.kuntaapi.server.rest.model.Banner;
+import fi.metatavu.kuntaapi.server.rest.model.Contact;
+import fi.metatavu.kuntaapi.server.rest.model.Emergency;
+import fi.metatavu.kuntaapi.server.rest.model.Event;
+import fi.metatavu.kuntaapi.server.rest.model.FileDef;
+import fi.metatavu.kuntaapi.server.rest.model.Fragment;
+import fi.metatavu.kuntaapi.server.rest.model.Incident;
+import fi.metatavu.kuntaapi.server.rest.model.Job;
+import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
+import fi.metatavu.kuntaapi.server.rest.model.Menu;
+import fi.metatavu.kuntaapi.server.rest.model.MenuItem;
+import fi.metatavu.kuntaapi.server.rest.model.NewsArticle;
+import fi.metatavu.kuntaapi.server.rest.model.Organization;
+import fi.metatavu.kuntaapi.server.rest.model.OrganizationSetting;
+import fi.metatavu.kuntaapi.server.rest.model.Page;
+import fi.metatavu.kuntaapi.server.rest.model.Route;
+import fi.metatavu.kuntaapi.server.rest.model.Schedule;
+import fi.metatavu.kuntaapi.server.rest.model.Shortlink;
+import fi.metatavu.kuntaapi.server.rest.model.Stop;
+import fi.metatavu.kuntaapi.server.rest.model.StopTime;
+import fi.metatavu.kuntaapi.server.rest.model.Tile;
+import fi.metatavu.kuntaapi.server.rest.model.Trip;
 import fi.metatavu.kuntaapi.server.system.OrganizationSettingProvider;
 
 /**
@@ -179,10 +178,10 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   
   @Inject
   private ClientContainer clientContainer;
-  
+
   @Inject
   private HttpCacheController httpCacheController;
-  
+
   @Inject
   private PublicTransportController publicTransportController;
   
@@ -222,14 +221,14 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   	  return createNotFound(NOT_FOUND);
   	}
   	
-  	Response notModified = httpCacheController.getNotModified(request, organizationId);
+  	Response notModified = restResponseBuilder.getNotModified(request, organizationId);
   	if (notModified != null) {
   	  return notModified;
   	}
   	
   	Organization organization = organizationController.findOrganization(organizationId);
   	if (organization != null) {
-      return httpCacheController.sendModified(organization, organization.getId());
+      return restResponseBuilder.sendModified(organization, organization.getId());
     }
       
     return createNotFound(NOT_FOUND);
@@ -240,14 +239,14 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     EventId eventId = toEventId(organizationId, eventIdParam);
     
-    Response notModified = httpCacheController.getNotModified(request, eventId);
+    Response notModified = restResponseBuilder.getNotModified(request, eventId);
     if (notModified != null) {
       return notModified;
     }
     
     Event event = eventController.findEvent(organizationId, eventId);
     if (event != null) {
-      return httpCacheController.sendModified(event, event.getId());
+      return restResponseBuilder.sendModified(event, event.getId());
     }    
     
     return createNotFound(NOT_FOUND);
@@ -259,14 +258,14 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     EventId eventId = toEventId(organizationId, eventIdParam);
     AttachmentId attachmentId = new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, imageIdParam);
     
-    Response notModified = httpCacheController.getNotModified(request, attachmentId);
+    Response notModified = restResponseBuilder.getNotModified(request, attachmentId);
     if (notModified != null) {
       return notModified;
     }
     
     Attachment attachment = eventController.findEventImage(organizationId, eventId, attachmentId);
     if (attachment != null) {
-      return httpCacheController.sendModified(attachment, attachment.getId());
+      return restResponseBuilder.sendModified(attachment, attachment.getId());
     }    
     
     return createNotFound(NOT_FOUND);
@@ -279,7 +278,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     AttachmentId attachmentId = new AttachmentId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, imageIdParam);
     
     
-    Response notModified = httpCacheController.getNotModified(request, attachmentId);
+    Response notModified = restResponseBuilder.getNotModified(request, attachmentId);
     if (notModified != null) {
       return notModified;
     }
@@ -377,14 +376,14 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     NewsArticleId newsArticleId = toNewsArticleId(organizationId, newsArticleIdParam);
     
-    Response notModified = httpCacheController.getNotModified(request, newsArticleId);
+    Response notModified = restResponseBuilder.getNotModified(request, newsArticleId);
     if (notModified != null) {
       return notModified;
     }
     
     NewsArticle newsArticle = newsController.findNewsArticle(organizationId, newsArticleId);
     if (newsArticle != null) {
-      return httpCacheController.sendModified(newsArticle, newsArticle.getId());
+      return restResponseBuilder.sendModified(newsArticle, newsArticle.getId());
     }
     
     return createNotFound(NOT_FOUND);
@@ -396,14 +395,14 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     NewsArticleId newsArticleId = toNewsArticleId(organizationId, newsArticleIdParam);
     AttachmentId attachmentId = toAttachmentId(organizationId, imageIdParam);
     
-    Response notModified = httpCacheController.getNotModified(request, attachmentId);
+    Response notModified = restResponseBuilder.getNotModified(request, attachmentId);
     if (notModified != null) {
       return notModified;
     }
     
     Attachment attachment = newsController.findNewsArticleImage(organizationId, newsArticleId, attachmentId);
     if (attachment != null) {
-      return httpCacheController.sendModified(attachment, attachment.getId());
+      return restResponseBuilder.sendModified(attachment, attachment.getId());
     }
     
     return createNotFound(NOT_FOUND);
@@ -415,7 +414,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     NewsArticleId newsArticleId = toNewsArticleId(organizationId, newsArticleIdParam);
     AttachmentId attachmentId = toAttachmentId(organizationId, imageIdParam);
    
-    Response notModified = httpCacheController.getNotModified(request, attachmentId);
+    Response notModified = restResponseBuilder.getNotModified(request, attachmentId);
     if (notModified != null) {
       return notModified;
     }
@@ -464,14 +463,14 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     BannerId bannerId = toBannerId(organizationId, bannerIdParam);
     
-    Response notModified = httpCacheController.getNotModified(request, bannerId);
+    Response notModified = restResponseBuilder.getNotModified(request, bannerId);
     if (notModified != null) {
       return notModified;
     }
 
     Banner banner = bannerController.findBanner(organizationId, bannerId);
     if (banner != null) {
-      return httpCacheController.sendModified(banner, banner.getId());
+      return restResponseBuilder.sendModified(banner, banner.getId());
     }
     
     return createNotFound(NOT_FOUND);
@@ -498,14 +497,14 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     BannerId bannerId = toBannerId(organizationId, bannerIdParam);
     AttachmentId attachmentId = toAttachmentId(organizationId, imageIdParam);
     
-    Response notModified = httpCacheController.getNotModified(request, attachmentId);
+    Response notModified = restResponseBuilder.getNotModified(request, attachmentId);
     if (notModified != null) {
       return notModified;
     }
 
     Attachment attachment = bannerController.findBannerImage(organizationId, bannerId, attachmentId);
     if (attachment != null) {
-      return httpCacheController.sendModified(attachment, attachment.getId());
+      return restResponseBuilder.sendModified(attachment, attachment.getId());
     }
     
     return createNotFound(NOT_FOUND);
@@ -517,7 +516,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     BannerId bannerId = toBannerId(organizationId, bannerIdParam);
     AttachmentId attachmentId = toAttachmentId(organizationId, imageIdParam);
     
-    Response notModified = httpCacheController.getNotModified(request, attachmentId);
+    Response notModified = restResponseBuilder.getNotModified(request, attachmentId);
     if (notModified != null) {
       return notModified;
     }
@@ -551,14 +550,14 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
     TileId tileId = toTileId(organizationId, tileIdParam);
     
-    Response notModified = httpCacheController.getNotModified(request, tileId);
+    Response notModified = restResponseBuilder.getNotModified(request, tileId);
     if (notModified != null) {
       return notModified;
     }
 
     Tile tile = tileController.findTile(organizationId, tileId);
     if (tile != null) {
-      return httpCacheController.sendModified(tile, tile.getId());
+      return restResponseBuilder.sendModified(tile, tile.getId());
     }
     
     return createNotFound(NOT_FOUND);
@@ -585,14 +584,14 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     TileId tileId = toTileId(organizationId, tileIdParam);
     AttachmentId attachmentId = toAttachmentId(organizationId, imageIdParam);
     
-    Response notModified = httpCacheController.getNotModified(request, attachmentId);
+    Response notModified = restResponseBuilder.getNotModified(request, attachmentId);
     if (notModified != null) {
       return notModified;
     }
 
     Attachment attachment = tileController.findTileImage(organizationId, tileId, attachmentId);
     if (attachment != null) {
-      return httpCacheController.sendModified(attachment, attachment.getId());
+      return restResponseBuilder.sendModified(attachment, attachment.getId());
     }
     
     return createNotFound(NOT_FOUND);
@@ -604,7 +603,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     TileId tileId = toTileId(organizationId, tileIdParam);
     AttachmentId attachmentId = toAttachmentId(organizationId, imageIdParam);
     
-    Response notModified = httpCacheController.getNotModified(request, attachmentId);
+    Response notModified = restResponseBuilder.getNotModified(request, attachmentId);
     if (notModified != null) {
       return notModified;
     }
@@ -823,14 +822,14 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createNotFound(NOT_FOUND);
     }
 
-    Response notModified = httpCacheController.getNotModified(request, pageId);
+    Response notModified = restResponseBuilder.getNotModified(request, pageId);
     if (notModified != null) {
       return notModified;
     }
     
     Page page = pageController.findPage(organizationId, pageId);
     if (page != null) {
-      return httpCacheController.sendModified(page, page.getId());
+      return restResponseBuilder.sendModified(page, page.getId());
     }
     
     return createNotFound(NOT_FOUND);
@@ -848,7 +847,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createNotFound(NOT_FOUND);
     }
 
-    Response notModified = httpCacheController.getNotModified(request, pageId);
+    Response notModified = restResponseBuilder.getNotModified(request, pageId);
     if (notModified != null) {
       return notModified;
     }
@@ -856,7 +855,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     if (pageController.findPage(organizationId, pageId) != null) {
       List<LocalizedValue> pageContents = pageController.getPageContents(organizationId, pageId);
       if (pageContents != null) {
-        return httpCacheController.sendModified(pageContents, pageId.getId());
+        return restResponseBuilder.sendModified(pageContents, pageId.getId());
       }
     }
     
@@ -890,14 +889,14 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     PageId pageId = toPageId(organizationId, pageIdParam);
     AttachmentId attachmentId = toAttachmentId(organizationId, imageIdParam);
     
-    Response notModified = httpCacheController.getNotModified(request, attachmentId);
+    Response notModified = restResponseBuilder.getNotModified(request, attachmentId);
     if (notModified != null) {
       return notModified;
     }
     
     Attachment attachment = pageController.findPageImage(organizationId, pageId, attachmentId);
     if (attachment != null) {
-      return httpCacheController.sendModified(attachment, attachment.getId());
+      return restResponseBuilder.sendModified(attachment, attachment.getId());
     }
     
     return createNotFound(NOT_FOUND);
@@ -909,7 +908,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     PageId pageId = toPageId(organizationId, pageIdParam);
     AttachmentId attachmentId = toAttachmentId(organizationId, imageIdParam);
     
-    Response notModified = httpCacheController.getNotModified(request, attachmentId);
+    Response notModified = restResponseBuilder.getNotModified(request, attachmentId);
     if (notModified != null) {
       return notModified;
     }
@@ -959,14 +958,14 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createNotFound(NOT_FOUND);
     }
 
-    Response notModified = httpCacheController.getNotModified(request, fragmentId);
+    Response notModified = restResponseBuilder.getNotModified(request, fragmentId);
     if (notModified != null) {
       return notModified;
     }
     
     Fragment fragment = fragmentController.findFragment(organizationId, fragmentId);
     if (fragment != null) {
-      return httpCacheController.sendModified(fragment, fragment.getId());
+      return restResponseBuilder.sendModified(fragment, fragment.getId());
     }
     
     return createNotFound(NOT_FOUND);
@@ -1020,14 +1019,14 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createNotFound(NOT_FOUND);
     }
     
-    Response notModified = httpCacheController.getNotModified(request, menuId);
+    Response notModified = restResponseBuilder.getNotModified(request, menuId);
     if (notModified != null) {
       return notModified;
     }
     
     Menu menu = menuController.findMenu(organizationId, menuId);
     if (menu != null) {
-      return httpCacheController.sendModified(menu, menu.getId());
+      return restResponseBuilder.sendModified(menu, menu.getId());
     }
     
     return createNotFound(NOT_FOUND);
@@ -1078,14 +1077,14 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   }
 
   private Response findOrganizationMenuItem(OrganizationId organizationId, MenuId menuId, MenuItemId menuItemId, Request request) {
-    Response notModified = httpCacheController.getNotModified(request, menuItemId);
+    Response notModified = restResponseBuilder.getNotModified(request, menuItemId);
     if (notModified != null) {
       return notModified;
     }
     
     MenuItem menuItem = menuController.findMenuItem(organizationId, menuId, menuItemId);
     if (menuItem != null) {
-      return httpCacheController.sendModified(menuItem, menuItem.getId());
+      return restResponseBuilder.sendModified(menuItem, menuItem.getId());
     }
     
     return createNotFound(NOT_FOUND);
@@ -1135,14 +1134,14 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createNotFound(NOT_FOUND);
     }
     
-    Response notModified = httpCacheController.getNotModified(request, fileId);
+    Response notModified = restResponseBuilder.getNotModified(request, fileId);
     if (notModified != null) {
       return notModified;
     }
     
     FileDef file = fileController.findFile(organizationId, fileId);
     if (file != null) {
-      return httpCacheController.sendModified(file, file.getId());
+      return restResponseBuilder.sendModified(file, file.getId());
     }
     
     return createNotFound(NOT_FOUND);
@@ -1183,7 +1182,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createNotFound(NOT_FOUND);
     }
     
-    Response notModified = httpCacheController.getNotModified(request, fileId);
+    Response notModified = restResponseBuilder.getNotModified(request, fileId);
     if (notModified != null) {
       return notModified;
     }
@@ -1210,14 +1209,14 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createNotFound(NOT_FOUND);
     }
 
-    Response notModified = httpCacheController.getNotModified(request, jobId);
+    Response notModified = restResponseBuilder.getNotModified(request, jobId);
     if (notModified != null) {
       return notModified;
     }
 
     Job job = jobController.findJob(organizationId, jobId);
     if (job != null) {
-      return httpCacheController.sendModified(job, job.getId());
+      return restResponseBuilder.sendModified(job, job.getId());
     }
     
     return createNotFound(NOT_FOUND);
@@ -1269,14 +1268,14 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createNotFound(NOT_FOUND);
     }
 
-    Response notModified = httpCacheController.getNotModified(request, announcementId);
+    Response notModified = restResponseBuilder.getNotModified(request, announcementId);
     if (notModified != null) {
       return notModified;
     }
     
     Announcement announcement = announcementController.findAnnouncement(organizationId, announcementId);
     if (announcement != null) {
-      return httpCacheController.sendModified(announcement, announcement.getId());
+      return restResponseBuilder.sendModified(announcement, announcement.getId());
     }
     
     return createNotFound(NOT_FOUND);
@@ -1328,14 +1327,14 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createNotFound(NOT_FOUND);
     }
 
-    Response notModified = httpCacheController.getNotModified(request, contactId);
+    Response notModified = restResponseBuilder.getNotModified(request, contactId);
     if (notModified != null) {
       return notModified;
     }
     
     Contact contact = contactController.findContact(organizationId, contactId);
     if (contact != null) {
-      return httpCacheController.sendModified(contact, contact.getId());
+      return restResponseBuilder.sendModified(contact, contact.getId());
     }
     
     return createNotFound(NOT_FOUND);
@@ -1385,14 +1384,14 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createNotFound(NOT_FOUND);
     }
 
-    Response notModified = httpCacheController.getNotModified(request, agencyId);
+    Response notModified = restResponseBuilder.getNotModified(request, agencyId);
     if (notModified != null) {
       return notModified;
     }
     
     Agency agency = publicTransportController.findAgency(organizationId, agencyId);
     if (agency != null) {
-      return httpCacheController.sendModified(agency, agency.getId());
+      return restResponseBuilder.sendModified(agency, agency.getId());
     }
     
     return createNotFound(NOT_FOUND);
@@ -1410,14 +1409,14 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createNotFound(NOT_FOUND);
     }
 
-    Response notModified = httpCacheController.getNotModified(request, routeId);
+    Response notModified = restResponseBuilder.getNotModified(request, routeId);
     if (notModified != null) {
       return notModified;
     }
     
     Route route = publicTransportController.findRoute(organizationId, routeId);
     if (route != null) {
-      return httpCacheController.sendModified(route, route.getId());
+      return restResponseBuilder.sendModified(route, route.getId());
     }
     
     return createNotFound(NOT_FOUND);
@@ -1435,14 +1434,14 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createNotFound(NOT_FOUND);
     }
 
-    Response notModified = httpCacheController.getNotModified(request, scheduleId);
+    Response notModified = restResponseBuilder.getNotModified(request, scheduleId);
     if (notModified != null) {
       return notModified;
     }
     
     Schedule schedule = publicTransportController.findSchedule(organizationId, scheduleId);
     if (schedule != null) {
-      return httpCacheController.sendModified(schedule, schedule.getId());
+      return restResponseBuilder.sendModified(schedule, schedule.getId());
     }
     
     return createNotFound(NOT_FOUND);
@@ -1477,14 +1476,14 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createNotFound(NOT_FOUND);
     }
 
-    Response notModified = httpCacheController.getNotModified(request, stopId);
+    Response notModified = restResponseBuilder.getNotModified(request, stopId);
     if (notModified != null) {
       return notModified;
     }
     
     Stop stop = publicTransportController.findStop(organizationId, stopId);
     if (stop != null) {
-      return httpCacheController.sendModified(stop, stop.getId());
+      return restResponseBuilder.sendModified(stop, stop.getId());
     }
     
     return createNotFound(NOT_FOUND);
@@ -1502,14 +1501,14 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createNotFound(NOT_FOUND);
     }
 
-    Response notModified = httpCacheController.getNotModified(request, stopTimeId);
+    Response notModified = restResponseBuilder.getNotModified(request, stopTimeId);
     if (notModified != null) {
       return notModified;
     }
     
     StopTime stopTime = publicTransportController.findStopTime(organizationId, stopTimeId);
     if (stopTime != null) {
-      return httpCacheController.sendModified(stopTime, stopTime.getId());
+      return restResponseBuilder.sendModified(stopTime, stopTime.getId());
     }
     
     return createNotFound(NOT_FOUND);
@@ -1527,14 +1526,14 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createNotFound(NOT_FOUND);
     }
 
-    Response notModified = httpCacheController.getNotModified(request, tripId);
+    Response notModified = restResponseBuilder.getNotModified(request, tripId);
     if (notModified != null) {
       return notModified;
     }
     
     Trip trip = publicTransportController.findTrip(organizationId, tripId);
     if (trip != null) {
-      return httpCacheController.sendModified(trip, trip.getId());
+      return restResponseBuilder.sendModified(trip, trip.getId());
     }
     
     return createNotFound(NOT_FOUND);
@@ -1658,14 +1657,14 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createNotFound(NOT_FOUND);
     }
 
-    Response notModified = httpCacheController.getNotModified(request, shortlinkId);
+    Response notModified = restResponseBuilder.getNotModified(request, shortlinkId);
     if (notModified != null) {
       return notModified;
     }
     
     Shortlink shortlink = shortlinkController.findShortlink(organizationId, shortlinkId);
     if (shortlink != null) {
-      return httpCacheController.sendModified(shortlink, shortlink.getId());
+      return restResponseBuilder.sendModified(shortlink, shortlink.getId());
     }
     
     return createNotFound(NOT_FOUND);
@@ -1707,14 +1706,14 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createNotFound(NOT_FOUND);
     }
 
-    Response notModified = httpCacheController.getNotModified(request, incidentId);
+    Response notModified = restResponseBuilder.getNotModified(request, incidentId);
     if (notModified != null) {
       return notModified;
     }
     
     Incident incident = incidentController.findIncident(organizationId, incidentId);
     if (incident != null) {
-      return httpCacheController.sendModified(incident, incident.getId());
+      return restResponseBuilder.sendModified(incident, incident.getId());
     }
     
     return createNotFound(NOT_FOUND);
@@ -1770,14 +1769,14 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createNotFound(NOT_FOUND);
     }
 
-    Response notModified = httpCacheController.getNotModified(request, emergencyId);
+    Response notModified = restResponseBuilder.getNotModified(request, emergencyId);
     if (notModified != null) {
       return notModified;
     }
     
     Emergency emergency = emergencyController.findEmergency(organizationId, emergencyId);
     if (emergency != null) {
-      return httpCacheController.sendModified(emergency, emergency.getId());
+      return restResponseBuilder.sendModified(emergency, emergency.getId());
     }
     
     return createNotFound(NOT_FOUND);

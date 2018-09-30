@@ -9,10 +9,7 @@ import javax.ws.rs.core.Response;
 
 import org.apache.commons.lang3.EnumUtils;
 
-import fi.metatavu.kuntaapi.server.rest.PrintableFormServiceChannelsApi;
-import fi.metatavu.kuntaapi.server.rest.model.PrintableFormServiceChannel;
 import fi.metatavu.kuntaapi.server.controllers.ClientContainer;
-import fi.metatavu.kuntaapi.server.controllers.HttpCacheController;
 import fi.metatavu.kuntaapi.server.controllers.SecurityController;
 import fi.metatavu.kuntaapi.server.controllers.ServiceController;
 import fi.metatavu.kuntaapi.server.id.OrganizationId;
@@ -22,6 +19,7 @@ import fi.metatavu.kuntaapi.server.integrations.KuntaApiIdFactory;
 import fi.metatavu.kuntaapi.server.integrations.ServiceChannelSortBy;
 import fi.metatavu.kuntaapi.server.integrations.SortDir;
 import fi.metatavu.kuntaapi.server.persistence.model.clients.ClientOrganizationPermission;
+import fi.metatavu.kuntaapi.server.rest.model.PrintableFormServiceChannel;
 
 @RequestScoped
 @Stateful
@@ -42,9 +40,6 @@ public class PrintableFormServiceChannelsApiImpl extends PrintableFormServiceCha
   private ServiceController serviceController;
 
   @Inject
-  private HttpCacheController httpCacheController;
-  
-  @Inject
   private RestResponseBuilder restResponseBuilder;
   
   @Inject
@@ -60,14 +55,14 @@ public class PrintableFormServiceChannelsApiImpl extends PrintableFormServiceCha
       return createBadRequest(String.format(INVALID_PRINTABLE_FORM_CHANNEL_ID, printableFormServiceChannelIdParam));
     }
 
-    Response notModified = httpCacheController.getNotModified(request, printableFormServiceChannelId);
+    Response notModified = restResponseBuilder.getNotModified(request, printableFormServiceChannelId);
     if (notModified != null) {
       return notModified;
     }
 
     PrintableFormServiceChannel printableFormChannel = serviceController.findPrintableFormServiceChannel(printableFormServiceChannelId);
     if (printableFormChannel != null) {
-      return httpCacheController.sendModified(printableFormChannel, printableFormChannel.getId());
+      return restResponseBuilder.sendModified(printableFormChannel, printableFormChannel.getId());
     }
     
     return createNotFound(NOT_FOUND);
@@ -113,7 +108,7 @@ public class PrintableFormServiceChannelsApiImpl extends PrintableFormServiceCha
     
     IntegrationResponse<PrintableFormServiceChannel> integrationResponse = serviceController.updatePrintableFormServiceChannel(printableFormServiceChannelId, newPrintableFormChannel);
     if (integrationResponse.isOk()) {
-      return httpCacheController.sendModified(integrationResponse.getEntity(), integrationResponse.getEntity().getId());
+      return restResponseBuilder.sendModified(integrationResponse.getEntity(), integrationResponse.getEntity().getId());
     } else {
       return restResponseBuilder.buildErrorResponse(integrationResponse);
     }

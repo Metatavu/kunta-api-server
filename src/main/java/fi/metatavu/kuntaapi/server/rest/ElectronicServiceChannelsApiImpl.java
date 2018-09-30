@@ -9,19 +9,17 @@ import javax.ws.rs.core.Response;
 
 import org.apache.commons.lang3.EnumUtils;
 
-import fi.metatavu.kuntaapi.server.rest.ElectronicServiceChannelsApi;
-import fi.metatavu.kuntaapi.server.rest.model.ElectronicServiceChannel;
 import fi.metatavu.kuntaapi.server.controllers.ClientContainer;
-import fi.metatavu.kuntaapi.server.controllers.HttpCacheController;
 import fi.metatavu.kuntaapi.server.controllers.SecurityController;
 import fi.metatavu.kuntaapi.server.controllers.ServiceController;
 import fi.metatavu.kuntaapi.server.id.ElectronicServiceChannelId;
 import fi.metatavu.kuntaapi.server.id.OrganizationId;
-import fi.metatavu.kuntaapi.server.integrations.ServiceChannelSortBy;
 import fi.metatavu.kuntaapi.server.integrations.IntegrationResponse;
 import fi.metatavu.kuntaapi.server.integrations.KuntaApiIdFactory;
+import fi.metatavu.kuntaapi.server.integrations.ServiceChannelSortBy;
 import fi.metatavu.kuntaapi.server.integrations.SortDir;
 import fi.metatavu.kuntaapi.server.persistence.model.clients.ClientOrganizationPermission;
+import fi.metatavu.kuntaapi.server.rest.model.ElectronicServiceChannel;
 
 @RequestScoped
 @Stateful
@@ -44,9 +42,6 @@ public class ElectronicServiceChannelsApiImpl extends ElectronicServiceChannelsA
 
   @Inject
   private SecurityController securityController;
-
-  @Inject
-  private HttpCacheController httpCacheController;
   
   @Inject
   private RestResponseBuilder restResponseBuilder;
@@ -61,14 +56,14 @@ public class ElectronicServiceChannelsApiImpl extends ElectronicServiceChannelsA
       return createBadRequest(String.format(INVALID_ELECTRONIC_CHANNEL_ID, electronicChannelIdParam));
     }
     
-    Response notModified = httpCacheController.getNotModified(request, electronicChannelId);
+    Response notModified = restResponseBuilder.getNotModified(request, electronicChannelId);
     if (notModified != null) {
       return notModified;
     }
 
     ElectronicServiceChannel electronicChannel = serviceController.findElectronicServiceChannel(electronicChannelId);
     if (electronicChannel != null) {
-      return httpCacheController.sendModified(electronicChannel, electronicChannel.getId());
+      return restResponseBuilder.sendModified(electronicChannel, electronicChannel.getId());
     }
     
     return createNotFound(NOT_FOUND);
@@ -114,7 +109,7 @@ public class ElectronicServiceChannelsApiImpl extends ElectronicServiceChannelsA
     
     IntegrationResponse<ElectronicServiceChannel> integrationResponse = serviceController.updateElectronicServiceChannel(electronicServiceChannelId, newElectronicChannel);
     if (integrationResponse.isOk()) {
-      return httpCacheController.sendModified(integrationResponse.getEntity(), integrationResponse.getEntity().getId());
+      return restResponseBuilder.sendModified(integrationResponse.getEntity(), integrationResponse.getEntity().getId());
     } else {
       return restResponseBuilder.buildErrorResponse(integrationResponse);
     }
