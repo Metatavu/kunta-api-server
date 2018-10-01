@@ -84,8 +84,6 @@ public class ServiceChannelsTestsIT extends AbstractPtvTest {
 
   @Test
   public void testListElectronicChannelsCompability() throws InterruptedException, IOException {
-    int channelIndex = 0;
-
     waitApiListCount("/electronicServiceChannels", TestPtvConsts.ELECTRONIC_CHANNEL_SERVICE_CHANNELS.length);
 
     givenReadonly()

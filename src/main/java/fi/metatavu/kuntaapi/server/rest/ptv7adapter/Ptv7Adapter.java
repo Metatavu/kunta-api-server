@@ -160,7 +160,7 @@ public class Ptv7Adapter {
     
     T result = cloneEntity(entityClass, entity);
     
-    entityMapping.keySet().forEach((propertyPath) -> {
+    entityMapping.keySet().forEach(propertyPath -> {
       Map<String, String> propertyMapping = entityMapping.get(propertyPath);
       try {
         applyPropertyValue(result, new ArrayList<>(Arrays.asList(StringUtils.split(propertyPath, "/"))), propertyMapping);
@@ -219,7 +219,7 @@ public class Ptv7Adapter {
         }
       } else {
         Object value = readMethod.invoke(bean);
-       
+
         if (value instanceof List<?>) {
           List<?> list = (List<?>) value;
           for (Object item : list) {
@@ -230,7 +230,7 @@ public class Ptv7Adapter {
         }
       }
     } catch (IllegalAccessException | InvocationTargetException | IntrospectionException e) {
-      e.printStackTrace();
+      logger.log(Level.WARNING, "Failed to apply PTV 7 compatibility changes", e);
       throw e;
     }
   }

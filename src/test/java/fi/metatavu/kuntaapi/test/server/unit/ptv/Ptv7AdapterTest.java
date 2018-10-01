@@ -151,7 +151,7 @@ public class Ptv7AdapterTest extends AbstractTest {
    * @throws JsonParseException throw when JSON parsing fails
    * @throws JsonMappingException throw when JSON mapping fails
    */
-  private <T> T loadEntity(Class<?extends T> resultClass, String file) throws IOException, JsonParseException, JsonMappingException {
+  private <T> T loadEntity(Class<?extends T> resultClass, String file) throws IOException {
     try (InputStream fileStream = getClass().getClassLoader().getResourceAsStream(file)) {
       ObjectMapper objectMapper = getObjectMapper();
       return objectMapper.readValue(fileStream, resultClass);
