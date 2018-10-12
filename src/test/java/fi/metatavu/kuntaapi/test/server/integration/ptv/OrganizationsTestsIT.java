@@ -50,7 +50,7 @@ public class OrganizationsTestsIT extends AbstractPtvTest {
 
   @Test
   public void findOrganizationCompability() throws InterruptedException, IOException, JSONException {
-    int organizationIndex = 2;
+    int organizationIndex = 1;
     String organizationId = getOrganizationId(organizationIndex);
     waitOrganizationServices(organizationIndex);
     

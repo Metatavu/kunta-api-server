@@ -71,7 +71,8 @@ public class ServiceLocationServiceChannelInTestsIT extends AbstractPtvInTest {
   @Test
   public void updateServiceLocationServiceChannelUnchanged() throws IOException, InterruptedException {
     String ptvId = TestPtvConsts.SERVICE_LOCATION_SERVICE_CHANNELS[0];
-    String organizationId = getOrganizationId(1);
+    int organizationIndex = getPtvServiceLocationServiceOrganization(ptvId);
+    String organizationId = getOrganizationId(organizationIndex);
     String kuntaApiChannelId = getServiceLocationChannelId(0, TestPtvConsts.SERVICE_LOCATION_SERVICE_CHANNELS.length);
     
     grantOrganizationPermission(AccessType.READ_WRITE, organizationId, ClientOrganizationPermission.UPDATE_SERVICE_CHANNELS);
@@ -96,7 +97,8 @@ public class ServiceLocationServiceChannelInTestsIT extends AbstractPtvInTest {
   @Test
   public void updateServiceLocationServiceChannelChanges() throws IOException, InterruptedException {
     String ptvId = TestPtvConsts.SERVICE_LOCATION_SERVICE_CHANNELS[0];
-    String organizationId = getOrganizationId(1);
+    int organizationIndex = getPtvServiceLocationServiceOrganization(ptvId);
+    String organizationId = getOrganizationId(organizationIndex);
     
     String kuntaApiChannelId = getServiceLocationChannelId(0, TestPtvConsts.SERVICE_LOCATION_SERVICE_CHANNELS.length);
     

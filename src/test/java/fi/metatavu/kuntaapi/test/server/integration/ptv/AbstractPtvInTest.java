@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import org.apache.commons.lang3.ArrayUtils;
+
 import fi.metatavu.kuntaapi.server.rest.model.Address;
 import fi.metatavu.kuntaapi.server.rest.model.Area;
 import fi.metatavu.kuntaapi.server.rest.model.Coordinates;
@@ -19,12 +21,16 @@ import fi.metatavu.kuntaapi.server.rest.model.ServiceChannelAttachment;
 import fi.metatavu.kuntaapi.server.rest.model.ServiceHour;
 import fi.metatavu.kuntaapi.server.rest.model.ServiceVoucher;
 import fi.metatavu.kuntaapi.server.rest.model.WebPage;
+import fi.metatavu.kuntaapi.test.AbstractPtvMocker;
 import fi.metatavu.ptv.client.model.V8VmOpenApiDailyOpeningTime;
+import fi.metatavu.ptv.client.model.V8VmOpenApiElectronicChannel;
+import fi.metatavu.ptv.client.model.V8VmOpenApiPhoneChannel;
 import fi.metatavu.ptv.client.model.V4VmOpenApiLaw;
 import fi.metatavu.ptv.client.model.V4VmOpenApiPhone;
 import fi.metatavu.ptv.client.model.V4VmOpenApiPhoneSimple;
 import fi.metatavu.ptv.client.model.V4VmOpenApiPhoneWithType;
 import fi.metatavu.ptv.client.model.V8VmOpenApiServiceHour;
+import fi.metatavu.ptv.client.model.V8VmOpenApiServiceLocationChannel;
 import fi.metatavu.ptv.client.model.V4VmOpenApiWebPage;
 import fi.metatavu.ptv.client.model.V8VmOpenApiAddressDeliveryIn;
 import fi.metatavu.ptv.client.model.V7VmOpenApiAddressWithMovingIn;
@@ -343,6 +349,61 @@ public class AbstractPtvInTest extends AbstractPtvTest {
     result.setSystem("TEST");
     result.setUri(uri);
     return Arrays.asList(result);
+  }
+
+  /**
+   * Returns index of test PTV organization of a service channel 
+   * 
+   * @param serviceChannelId service channel id
+   * @return index of test PTV organization of a service channel 
+   */
+  protected int getPtvPhoneServiceOrganization(String serviceChannelId) {
+    V8VmOpenApiPhoneChannel phoneChannel = getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_OUT_API, serviceChannelId, V8VmOpenApiPhoneChannel.class);
+    if (phoneChannel != null) {
+      return getPtvOrganizationIndex(phoneChannel.getOrganizationId().toString());
+    }
+    
+    return -1;
+  }
+
+  /**
+   * Returns index of test PTV organization of a service channel 
+   * 
+   * @param serviceChannelId service channel id
+   * @return index of test PTV organization of a service channel 
+   */
+  protected int getPtvServiceLocationServiceOrganization(String serviceChannelId) {
+    V8VmOpenApiServiceLocationChannel serviceLocationChannel = getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_OUT_API, serviceChannelId, V8VmOpenApiServiceLocationChannel.class);
+    if (serviceLocationChannel != null) {
+      return getPtvOrganizationIndex(serviceLocationChannel.getOrganizationId().toString());
+    }
+    
+    return -1;
+  }
+
+  /**
+   * Returns index of test PTV organization of a service channel 
+   * 
+   * @param serviceChannelId service channel id
+   * @return index of test PTV organization of a service channel 
+   */
+  protected int getPtvElectronicServiceOrganization(String serviceChannelId) {
+    V8VmOpenApiElectronicChannel phoneChannel = getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_OUT_API, serviceChannelId, V8VmOpenApiElectronicChannel.class);
+    if (phoneChannel != null) {
+      return getPtvOrganizationIndex(phoneChannel.getOrganizationId().toString());
+    }
+    
+    return -1;
+  }
+  
+  /**
+   * Returns index of test PTV organization
+   * 
+   * @param ptvOrganization organization id
+   * @return index of test ptv organization
+   */
+  protected int getPtvOrganizationIndex(String ptvOrganization) {
+    return ArrayUtils.indexOf(TestPtvConsts.ORGANIZATIONS, ptvOrganization);
   }
   
 }

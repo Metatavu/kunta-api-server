@@ -69,7 +69,8 @@ public class ElectronicServiceChannelInTestsIT extends AbstractPtvInTest {
   @Test
   public void updateElectronicServiceChannelUnchanged() throws IOException, InterruptedException {
     String ptvId = TestPtvConsts.ELECTRONIC_CHANNEL_SERVICE_CHANNELS[0];
-    String organizationId = getOrganizationId(2);
+    int organizationIndex = getPtvElectronicServiceOrganization(ptvId);
+    String organizationId = getOrganizationId(organizationIndex);
     String kuntaApiChannelId = getElectronicChannelId(0, TestPtvConsts.ELECTRONIC_CHANNEL_SERVICE_CHANNELS.length);
     
     grantOrganizationPermission(AccessType.READ_WRITE, organizationId, ClientOrganizationPermission.UPDATE_SERVICE_CHANNELS);
@@ -94,7 +95,8 @@ public class ElectronicServiceChannelInTestsIT extends AbstractPtvInTest {
   @Test
   public void updateElectronicServiceChannelChanges() throws IOException, InterruptedException {
     String ptvId = TestPtvConsts.ELECTRONIC_CHANNEL_SERVICE_CHANNELS[0];
-    String organizationId = getOrganizationId(2);
+    int organizationIndex = getPtvElectronicServiceOrganization(ptvId);
+    String organizationId = getOrganizationId(organizationIndex);
     String kuntaApiChannelId = getElectronicChannelId(0, TestPtvConsts.ELECTRONIC_CHANNEL_SERVICE_CHANNELS.length);
     
     grantOrganizationPermission(AccessType.READ_WRITE, organizationId, ClientOrganizationPermission.UPDATE_SERVICE_CHANNELS);

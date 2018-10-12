@@ -13,12 +13,12 @@ import org.junit.Test;
 import com.github.tomakehurst.wiremock.junit.WireMockRule;
 import com.jayway.restassured.http.ContentType;
 
-import fi.metatavu.kuntaapi.server.rest.model.PhoneServiceChannel;
-import fi.metatavu.ptv.client.model.V8VmOpenApiPhoneChannel;
-import fi.metatavu.ptv.client.model.V8VmOpenApiPhoneChannelInBase;
 import fi.metatavu.kuntaapi.server.persistence.model.clients.AccessType;
 import fi.metatavu.kuntaapi.server.persistence.model.clients.ClientOrganizationPermission;
+import fi.metatavu.kuntaapi.server.rest.model.PhoneServiceChannel;
 import fi.metatavu.kuntaapi.test.AbstractPtvMocker;
+import fi.metatavu.ptv.client.model.V8VmOpenApiPhoneChannel;
+import fi.metatavu.ptv.client.model.V8VmOpenApiPhoneChannelInBase;
 
 @SuppressWarnings ("squid:S1075")
 public class PhoneServiceChannelInTestsIT extends AbstractPtvInTest {
@@ -70,9 +70,11 @@ public class PhoneServiceChannelInTestsIT extends AbstractPtvInTest {
   
   @Test
   public void updatePhoneServiceChannelUnchanged() throws IOException, InterruptedException {
-    String ptvId = TestPtvConsts.PHONE_SERVICE_CHANNELS[0];
-    String organizationId = getOrganizationId(1);
-    String kuntaApiChannelId = getPhoneChannelId(0, TestPtvConsts.PHONE_SERVICE_CHANNELS.length);
+    int serviceChannelIndex = 0;
+    String ptvId = TestPtvConsts.PHONE_SERVICE_CHANNELS[serviceChannelIndex];
+    int organizationIndex = getPtvPhoneServiceOrganization(ptvId);
+    String organizationId = getOrganizationId(organizationIndex);
+    String kuntaApiChannelId = getPhoneChannelId(serviceChannelIndex, TestPtvConsts.PHONE_SERVICE_CHANNELS.length);
     
     grantOrganizationPermission(AccessType.READ_WRITE, organizationId, ClientOrganizationPermission.UPDATE_SERVICE_CHANNELS);
 
@@ -96,14 +98,13 @@ public class PhoneServiceChannelInTestsIT extends AbstractPtvInTest {
   @Test
   public void updatePhoneServiceChannelChanges() throws IOException, InterruptedException {
     String ptvId = TestPtvConsts.PHONE_SERVICE_CHANNELS[0];
-    String organizationId = getOrganizationId(1);
-    
+    int organizationIndex = getPtvPhoneServiceOrganization(ptvId);
+    String organizationId = getOrganizationId(organizationIndex);
     String kuntaApiChannelId = getPhoneChannelId(0, TestPtvConsts.PHONE_SERVICE_CHANNELS.length);
     
     grantOrganizationPermission(AccessType.READ_WRITE, organizationId, ClientOrganizationPermission.UPDATE_SERVICE_CHANNELS);
 
     PhoneServiceChannel kuntaApiResource = getPhoneServiceChannel(0, TestPtvConsts.PHONE_SERVICE_CHANNELS.length);
-    
     
     kuntaApiResource.setAreas(Arrays.asList(createArea("Municipality", "12345", createLocalizedValue("en", "Examplia"))));
     kuntaApiResource.setAreaType("AreaType");
@@ -124,11 +125,11 @@ public class PhoneServiceChannelInTestsIT extends AbstractPtvInTest {
     ptvInResource.setSupportEmails(createPtvInLanguageItems("en", "fake@example.com"));
     ptvInResource.setDeleteAllServiceHours(true);
     ptvInResource.setDeleteAllWebPages(true);
-    ptvInResource.setOrganizationId(TestPtvConsts.ORGANIZATIONS[1]);
+    ptvInResource.setOrganizationId(TestPtvConsts.ORGANIZATIONS[0]);
     ptvInResource.setPublishingStatus("Published");
     ptvInResource.setWebPage(Collections.emptyList());
     ptvInResource.setServiceHours(Arrays.asList(creaatePtvInServiceHour(false, Collections.emptyList(), "Exception", false, null, null, createPtvInLanguageItems("en", "Test"))));
-    
+    ptvInResource.setIsVisibleForAll(true);
     V8VmOpenApiPhoneChannel ptvOutResource =  getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_OUT_API, ptvId, V8VmOpenApiPhoneChannel.class);
     
     getPtvServiceChannelMocker().mockPhonePut(ptvId, ptvOutResource);

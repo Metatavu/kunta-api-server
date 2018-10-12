@@ -73,7 +73,7 @@ public class ServiceChannelsTestsIT extends AbstractPtvTest {
     int channelIndex = 0;
 
     waitApiListCount("/electronicServiceChannels", TestPtvConsts.ELECTRONIC_CHANNEL_SERVICE_CHANNELS.length);
-
+    
     givenReadonly()
       .contentType(ContentType.JSON)
       .get("/electronicServiceChannels")
@@ -130,6 +130,8 @@ public class ServiceChannelsTestsIT extends AbstractPtvTest {
     int channelIndex = 0;
     String channelId = getPhoneChannelId(channelIndex, TestPtvConsts.PHONE_SERVICE_CHANNELS.length);
     
+    waitForElasticIndex();
+    
     String response = givenReadonly()
       .contentType(ContentType.JSON)
       .get("/phoneServiceChannels/{channelId}", channelId)
@@ -143,7 +145,7 @@ public class ServiceChannelsTestsIT extends AbstractPtvTest {
     int channelIndex = 0;
 
     waitApiListCount("/phoneServiceChannels", TestPtvConsts.PHONE_SERVICE_CHANNELS.length);
-
+    
     givenReadonly()
       .contentType(ContentType.JSON)
       .get("/phoneServiceChannels")
@@ -198,7 +200,7 @@ public class ServiceChannelsTestsIT extends AbstractPtvTest {
       .then()
       .assertThat()
       .statusCode(200)
-      .body("descriptions[1].type", is("Summary"));
+      .body("descriptions[0].type", is("Summary"));
 
     givenReadonlyCompabilityMode()
       .contentType(ContentType.JSON)
@@ -206,7 +208,7 @@ public class ServiceChannelsTestsIT extends AbstractPtvTest {
       .then()
       .assertThat()
       .statusCode(200)
-      .body("descriptions[1].type", is("ShortDescription"));
+      .body("descriptions[0].type", is("ShortDescription"));
   }
 
   @Test
@@ -233,7 +235,7 @@ public class ServiceChannelsTestsIT extends AbstractPtvTest {
       .then()
       .assertThat()
       .statusCode(200)
-      .body("[0].descriptions[1].type", is("Summary"));
+      .body("[0].descriptions[0].type", is("Summary"));
 
     givenReadonlyCompabilityMode()
       .contentType(ContentType.JSON)
@@ -241,7 +243,7 @@ public class ServiceChannelsTestsIT extends AbstractPtvTest {
       .then()
       .assertThat()
       .statusCode(200)
-      .body("[0].descriptions[1].type", is("ShortDescription"));
+      .body("[0].descriptions[0].type", is("ShortDescription"));
   }
   
   @Test
@@ -284,7 +286,7 @@ public class ServiceChannelsTestsIT extends AbstractPtvTest {
     int channelIndex = 0;
 
     waitApiListCount("/serviceLocationServiceChannels", TestPtvConsts.SERVICE_LOCATION_SERVICE_CHANNELS.length);
-
+    
     givenReadonly()
       .contentType(ContentType.JSON)
       .get("/serviceLocationServiceChannels")
@@ -323,7 +325,7 @@ public class ServiceChannelsTestsIT extends AbstractPtvTest {
     waitApiListCount("/serviceLocationServiceChannels", TestPtvConsts.SERVICE_LOCATION_SERVICE_CHANNELS.length);
     waitForElasticIndex();
     
-    String search = "(Merimaskun*)|(koulun*)";
+    String search = "(Viialan*)|(päiväkoti*)";
     
     givenReadonly()
       .contentType(ContentType.JSON)
@@ -331,7 +333,7 @@ public class ServiceChannelsTestsIT extends AbstractPtvTest {
       .then()
       .assertThat()
       .statusCode(200)
-      .body("id.size()", is(5));
+      .body("id.size()", is(4));
       
     givenReadonly()
       .contentType(ContentType.JSON)
@@ -339,8 +341,8 @@ public class ServiceChannelsTestsIT extends AbstractPtvTest {
       .then()
       .assertThat()
       .statusCode(200)
-      .body("id.size()", is(5))
-      .body("names[0][0].value", is("Merimaskun koulu"));
+      .body("id.size()", is(4))
+      .body("names[0][0].value", is("Viialan päiväkoti"));
     
     givenReadonly()
       .contentType(ContentType.JSON)
@@ -348,8 +350,8 @@ public class ServiceChannelsTestsIT extends AbstractPtvTest {
       .then()
       .assertThat()
       .statusCode(200)
-      .body("id.size()", is(5))
-      .body("names[4][0].value", is("Merimaskun koulu"));
+      .body("id.size()", is(4))
+      .body("names[3][0].value", is("Viialan päiväkoti"));
   }
 
   @Test
@@ -392,7 +394,7 @@ public class ServiceChannelsTestsIT extends AbstractPtvTest {
     int channelIndex = 0;
   
     waitApiListCount("/webPageServiceChannels", TestPtvConsts.WEB_PAGE_SERVICE_CHANNELS.length);
-  
+
     givenReadonly()
       .contentType(ContentType.JSON)
       .get("/webPageServiceChannels")

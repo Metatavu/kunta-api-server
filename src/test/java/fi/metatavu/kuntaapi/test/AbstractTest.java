@@ -95,7 +95,11 @@ public abstract class AbstractTest {
   }
   
   protected void deleteOrganizationSetting(String organizationId, String key) {
-    executeDelete("delete from OrganizationSetting where settingKey = ? and organizationKuntaApiId = ?", key, organizationId);
+    try {
+      executeDelete("delete from OrganizationSetting where settingKey = ? and organizationKuntaApiId = ?", key, organizationId);
+    } catch (SQLException e) {
+      fail(e.getMessage());
+    }
   }
   
   protected long insertSystemSetting(String key, String value) {
@@ -103,15 +107,23 @@ public abstract class AbstractTest {
   }
   
   protected void deleteSystemSetting(String key) {
-    executeDelete("delete from SystemSetting where settingKey = ?", key);
+    try {
+      executeDelete("delete from SystemSetting where settingKey = ?", key);
+    } catch (SQLException e) {
+      fail(e.getMessage());
+    }
   }
  
   protected void deleteIdentifiers() {
-    executeDelete("delete from StoredBinaryResource");
-    executeDelete("delete from StoredResource");
-    executeDelete("delete from IdentifierRelation");
-    executeDelete("delete from Identifier");
-    executeDelete("delete from ArchivedIdentifier");
+    try {
+      executeDelete("delete from StoredBinaryResource");
+      executeDelete("delete from StoredResource");
+      executeDelete("delete from IdentifierRelation");
+      executeDelete("delete from Identifier");
+      executeDelete("delete from ArchivedIdentifier");
+    } catch (SQLException e) {
+      fail(e.getMessage());
+    }
   }
   
   protected long executeInsert(String sql, Object... params) {
@@ -163,8 +175,8 @@ public abstract class AbstractTest {
     
     return -1;
   }
-  
-  protected void executeDelete(String sql, Object... params) {
+
+  protected void executeDelete(String sql, Object... params) throws SQLException {
     try (Connection connection = getConnection()) {
       connection.setAutoCommit(true);
       PreparedStatement statement = connection.prepareStatement(sql);
@@ -174,9 +186,6 @@ public abstract class AbstractTest {
       } finally {
         statement.close();
       }
-    } catch (Exception e) {
-      logger.log(Level.SEVERE, "Failed to execute delete", e);
-      fail(e.getMessage());
     }
   }
 

@@ -9,6 +9,7 @@ import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 import org.apache.commons.io.IOUtils;
@@ -438,7 +439,11 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   }
   
   protected void clearTasks() {
-    executeDelete("delete from Task");
+    try {
+      executeDelete("delete from Task");
+    } catch (Exception e) {
+      clearTasks();
+    }
   }
 
   @SuppressWarnings ({"squid:S1166", "squid:S00108", "squid:S2925", "squid:S106"})
@@ -1217,7 +1222,11 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   }
   
   private void deleteOrganizationPermissions() {
-    executeDelete("delete from ClientOrganizationPermissionGrant");
+    try {
+      executeDelete("delete from ClientOrganizationPermissionGrant");
+    } catch (SQLException e) {
+      fail(e.getMessage());
+    }
   }
   
   private void createSystemSettings() {
