@@ -1,0 +1,155 @@
+{
+  "id" : "7cf9a776-808e-4e58-a904-863f48887ea2",
+  "sourceId" : null,
+  "generalDescriptionId" : null,
+  "type" : "Service",
+  "fundingType" : "PubliclyFunded",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Suomi.fi-palveluväylä",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Suomi.fi-palveluväylä",
+    "type" : "AlternativeName"
+  } ],
+  "serviceChargeType" : null,
+  "areaType" : "Nationwide",
+  "areas" : [ ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Suomi.fi-palveluväylä tarjoaa organisaatioille vakioidun tavan siirtää tietoja tietojärjestelmien välillä.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Suomi.fi-palveluväylä tarjoaa organisaatioille vakioidun tavan siirtää tietoja niin julkisten kuin yksityistenkin organisaatioiden tietojärjestelmien välillä.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  } ],
+  "languages" : [ "sv", "fi" ],
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Generella informations- ja förvaltningstjänster",
+      "language" : "sv"
+    }, {
+      "value" : "General information and administrative services",
+      "language" : "en"
+    }, {
+      "value" : "Yleiset tieto- ja hallintopalvelut",
+      "language" : "fi"
+    } ],
+    "description" : [ {
+      "value" : "I denna servicegrupp behandlas informations-, förvaltnings- och stödtjänster riktade till medborgare, samfund och andra myndigheter som till innehållet kan hänföra sig till vilket ämne som helst och därför inte kan placeras under de andra offentliga förvaltningens servicegrupper.",
+      "language" : "sv"
+    }, {
+      "value" : "This service class features services that offer general information, administrative and support services to citizens and public and private organisations. These are services that are not connected to any specific service topic and for that reason cannot be included in the other main classes of the service classification.",
+      "language" : "en"
+    }, {
+      "value" : "Tässä palveluluokassa käsitellään kansalaisille, yhteisöille ja toisille viranomaisille tarjottavia tieto-, hallinto- ja tukipalveluja, jotka sisällöltään voivat liittyä mihin aiheeseen tahansa ja joita ei tämän vuoksi voida sijoittaa julkisen palvelun luokituksen muihin aiheluokkiin.",
+      "language" : "fi"
+    } ],
+    "code" : "P9",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1095",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "ontologyTerms" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Yritykset ja yhteisöt",
+      "language" : "fi"
+    }, {
+      "value" : "Businesses and non-government organizations",
+      "language" : "en"
+    }, {
+      "value" : "Företag och samfund",
+      "language" : "sv"
+    } ],
+    "code" : "KR2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "Viranomaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Authorities",
+      "language" : "en"
+    }, {
+      "value" : "Myndigheter",
+      "language" : "sv"
+    } ],
+    "code" : "KR3",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2017",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "lifeEvents" : [ ],
+  "industrialClasses" : [ ],
+  "legislation" : [ ],
+  "keywords" : [ {
+    "value" : "Palveluväylä, X-Road",
+    "language" : "fi"
+  } ],
+  "requirements" : [ {
+    "value" : "Palvelun käyttäminen edellyttää palvelun käyttöönottoa ja käyttöehtojen hyväksymistä. Organisaation on toteutettava liittymät omien palveluidensa ja Suomi.fi-palveluväylän välille. Palveluiden rajapintoihin voidaan tarvita muutoksia yhteentoimivuuden toteuttamiseksi. Organisaatiolla tulee olla käytössään ns. liityntäpalvelin, jonka kautta tekninen liittyminen toteutetaan – tällainen voidaan tarvittaessa pystyttää käyttöönoton yhteydessä. Organisaatio tarvitsee myös Väestörekisterikeskuksen palvelinvarmenteen.",
+    "language" : "fi"
+  } ],
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "7374dd89-8e26-4402-90fe-c32942525476",
+      "name" : "Suomi.fi-palveluväylän käyttöönotto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "b458d033-042d-4cbe-b030-34e81da28821",
+      "name" : "Väestörekisterikeskus"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "b458d033-042d-4cbe-b030-34e81da28821",
+      "name" : "Väestörekisterikeskus"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "serviceVouchers" : [ ],
+  "serviceCollections" : [ ],
+  "publishingStatus" : "Published",
+  "modified" : "2018-05-03T11:53:58.162746Z"
+}

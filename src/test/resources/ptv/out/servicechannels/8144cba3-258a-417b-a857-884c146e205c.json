@@ -1,0 +1,78 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/node/19161",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/node/19161",
+    "value" : null,
+    "language" : "en"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/sv/node/19161",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "6ccb671f-05cd-46cf-a0a4-4f98d43dfd37",
+      "name" : "Uimahalli"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "sv",
+    "value" : "Simhallens webbsida",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Uimahallin verkkosivu",
+    "type" : "Name"
+  }, {
+    "language" : "en",
+    "value" : "Swimming Centre",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "På webbsidan hittar du tilläggsuppgifter om Vasa simhalls service och öppettider. ",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "På webbsidan hittar du tilläggsuppgifter om Vasa simhalls service och öppettider.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Verkkosivuilta löydät lisätietoa Vaasan uimahallin palveluista ja aukioloajoista.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Verkkosivuilta löydät lisätietoa Vaasan uimahallin palveluista ja aukioloajoista. ",
+    "type" : "Description"
+  }, {
+    "language" : "en",
+    "value" : "To see hopening hours and to read more about the services offered, go to the swimming centre’s website.",
+    "type" : "Summary"
+  }, {
+    "language" : "en",
+    "value" : "To see hopening hours and to read more about the services offered, go to the swimming centre’s website.  ",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "8144cba3-258a-417b-a857-884c146e205c"
+}

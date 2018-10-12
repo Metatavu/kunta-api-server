@@ -24,6 +24,7 @@ import com.jayway.restassured.http.ContentType;
 import fi.metatavu.kuntaapi.server.integrations.mikkelinyt.MikkeliNytConsts;
 import fi.metatavu.kuntaapi.test.AbstractIntegrationTest;
 import fi.metatavu.kuntaapi.test.AbstractMocker;
+import fi.metatavu.kuntaapi.test.server.integration.ptv.TestPtvConsts;
 import fi.otavanopisto.mikkelinyt.model.Event;
 import fi.otavanopisto.mikkelinyt.model.EventsResponse;
 
@@ -62,7 +63,7 @@ public class MikkeliNytRestTestsIT extends AbstractIntegrationTest {
     String imagesBasePath = IMAGES_BASE_PATH;
     
     getPtvOrganizationMocker()
-      .mock("9355a207-efd3-4cfb-a02b-67187f34c822");
+      .mock(TestPtvConsts.ORGANIZATIONS[2]);
     
     startMocks();
 

@@ -15,16 +15,16 @@ import java.util.logging.Logger;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import fi.metatavu.ptv.client.model.V6VmOpenApiElectronicChannelInBase;
-import fi.metatavu.ptv.client.model.V6VmOpenApiWebPageChannelInBase;
-import fi.metatavu.ptv.client.model.V7VmOpenApiElectronicChannel;
-import fi.metatavu.ptv.client.model.V7VmOpenApiPhoneChannel;
-import fi.metatavu.ptv.client.model.V7VmOpenApiPhoneChannelInBase;
-import fi.metatavu.ptv.client.model.V7VmOpenApiPrintableFormChannel;
-import fi.metatavu.ptv.client.model.V7VmOpenApiPrintableFormChannelInBase;
-import fi.metatavu.ptv.client.model.V7VmOpenApiServiceLocationChannel;
-import fi.metatavu.ptv.client.model.V7VmOpenApiServiceLocationChannelInBase;
-import fi.metatavu.ptv.client.model.V7VmOpenApiWebPageChannel;
+import fi.metatavu.ptv.client.model.V8VmOpenApiElectronicChannelInBase;
+import fi.metatavu.ptv.client.model.V8VmOpenApiWebPageChannelInBase;
+import fi.metatavu.ptv.client.model.V8VmOpenApiElectronicChannel;
+import fi.metatavu.ptv.client.model.V8VmOpenApiPhoneChannel;
+import fi.metatavu.ptv.client.model.V8VmOpenApiPhoneChannelInBase;
+import fi.metatavu.ptv.client.model.V8VmOpenApiPrintableFormChannel;
+import fi.metatavu.ptv.client.model.V8VmOpenApiPrintableFormChannelInBase;
+import fi.metatavu.ptv.client.model.V8VmOpenApiServiceLocationChannel;
+import fi.metatavu.ptv.client.model.V8VmOpenApiServiceLocationChannelInBase;
+import fi.metatavu.ptv.client.model.V8VmOpenApiWebPageChannel;
 import fi.metatavu.kuntaapi.server.integrations.ptv.PtvConsts;
 
 @SuppressWarnings ({"squid:S1075", "squid:S1450"})
@@ -47,24 +47,24 @@ public class PtvServiceChannelMocker extends AbstractPtvMocker<Object> {
   
   @Override
   public String getEntityId(Object entity) {
-    if (entity instanceof V7VmOpenApiElectronicChannel) {
-      return ((V7VmOpenApiElectronicChannel) entity).getId().toString();
+    if (entity instanceof V8VmOpenApiElectronicChannel) {
+      return ((V8VmOpenApiElectronicChannel) entity).getId().toString();
     }
     
-    if (entity instanceof V7VmOpenApiPhoneChannel) {
-      return ((V7VmOpenApiPhoneChannel) entity).getId().toString();
+    if (entity instanceof V8VmOpenApiPhoneChannel) {
+      return ((V8VmOpenApiPhoneChannel) entity).getId().toString();
     }
     
-    if (entity instanceof V7VmOpenApiPrintableFormChannel) {
-      return ((V7VmOpenApiPrintableFormChannel) entity).getId().toString();
+    if (entity instanceof V8VmOpenApiPrintableFormChannel) {
+      return ((V8VmOpenApiPrintableFormChannel) entity).getId().toString();
     }
     
-    if (entity instanceof V7VmOpenApiServiceLocationChannel) {
-      return ((V7VmOpenApiServiceLocationChannel) entity).getId().toString();
+    if (entity instanceof V8VmOpenApiServiceLocationChannel) {
+      return ((V8VmOpenApiServiceLocationChannel) entity).getId().toString();
     }
     
-    if (entity instanceof V7VmOpenApiWebPageChannel) {
-      return ((V7VmOpenApiWebPageChannel) entity).getId().toString();
+    if (entity instanceof V8VmOpenApiWebPageChannel) {
+      return ((V8VmOpenApiWebPageChannel) entity).getId().toString();
     }
     
     return null;
@@ -75,43 +75,43 @@ public class PtvServiceChannelMocker extends AbstractPtvMocker<Object> {
     return readEntityFromJSONFile(String.format("ptv/%s/%s/%s.json", api, getName(), id));
   }
   
-  public void mockElectronicPut(String id, V7VmOpenApiElectronicChannel responseEntity) {
+  public void mockElectronicPut(String id, V8VmOpenApiElectronicChannel responseEntity) {
     mockServiceChannelPut("EChannel", id, responseEntity);
   }
   
-  public void mockPhonePut(String id, V7VmOpenApiPhoneChannel responseEntity) {
+  public void mockPhonePut(String id, V8VmOpenApiPhoneChannel responseEntity) {
     mockServiceChannelPut("Phone", id, responseEntity);
   }
   
-  public void mockPrintableFormPut(String id, V7VmOpenApiPrintableFormChannel responseEntity) {
+  public void mockPrintableFormPut(String id, V8VmOpenApiPrintableFormChannel responseEntity) {
     mockServiceChannelPut("PrintableForm", id, responseEntity);
   }
   
-  public void mockServiceLocationPut(String id, V7VmOpenApiServiceLocationChannel responseEntity) {
+  public void mockServiceLocationPut(String id, V8VmOpenApiServiceLocationChannel responseEntity) {
     mockServiceChannelPut("ServiceLocation", id, responseEntity);
   }
 
-  public void mockWebpagePut(String id, V7VmOpenApiWebPageChannel responseEntity) {
+  public void mockWebpagePut(String id, V8VmOpenApiWebPageChannel responseEntity) {
     mockServiceChannelPut("WebPage", id, responseEntity);
   }
   
-  public void verifyElectronic(String id, V6VmOpenApiElectronicChannelInBase entity) {
+  public void verifyElectronic(String id, V8VmOpenApiElectronicChannelInBase entity) {
     verifyPut(String.format("/ptv/api/%s/ServiceChannel/EChannel/%s", PtvConsts.VERSION, id), toJSON(entity));
   }
   
-  public void verifyPhone(String id, V7VmOpenApiPhoneChannelInBase entity) {
+  public void verifyPhone(String id, V8VmOpenApiPhoneChannelInBase entity) {
     verifyPut(String.format("/ptv/api/%s/ServiceChannel/Phone/%s", PtvConsts.VERSION, id), toJSON(entity));
   }
   
-  public void verifyPrintableForm(String id, V7VmOpenApiPrintableFormChannelInBase entity) {
+  public void verifyPrintableForm(String id, V8VmOpenApiPrintableFormChannelInBase entity) {
     verifyPut(String.format("/ptv/api/%s/ServiceChannel/PrintableForm/%s", PtvConsts.VERSION, id), toJSON(entity));
   }
   
-  public void verifyWebPage(String id, V6VmOpenApiWebPageChannelInBase entity) {
+  public void verifyWebPage(String id, V8VmOpenApiWebPageChannelInBase entity) {
     verifyPut(String.format("/ptv/api/%s/ServiceChannel/WebPage/%s", PtvConsts.VERSION, id), toJSON(entity));
   }
   
-  public void verifyServiceLocation(String id, V7VmOpenApiServiceLocationChannelInBase entity) {
+  public void verifyServiceLocation(String id, V8VmOpenApiServiceLocationChannelInBase entity) {
     verifyPut(String.format("/ptv/api/%s/ServiceChannel/ServiceLocation/%s", PtvConsts.VERSION, id), toJSON(entity));
   }
   

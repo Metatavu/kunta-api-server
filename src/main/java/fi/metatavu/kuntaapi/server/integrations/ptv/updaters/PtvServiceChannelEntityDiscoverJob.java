@@ -18,11 +18,11 @@ import fi.metatavu.kuntaapi.server.rest.model.PhoneServiceChannel;
 import fi.metatavu.kuntaapi.server.rest.model.PrintableFormServiceChannel;
 import fi.metatavu.kuntaapi.server.rest.model.ServiceLocationServiceChannel;
 import fi.metatavu.kuntaapi.server.rest.model.WebPageServiceChannel;
-import fi.metatavu.ptv.client.model.V7VmOpenApiElectronicChannel;
-import fi.metatavu.ptv.client.model.V7VmOpenApiPhoneChannel;
-import fi.metatavu.ptv.client.model.V7VmOpenApiPrintableFormChannel;
-import fi.metatavu.ptv.client.model.V7VmOpenApiServiceLocationChannel;
-import fi.metatavu.ptv.client.model.V7VmOpenApiWebPageChannel;
+import fi.metatavu.ptv.client.model.V8VmOpenApiElectronicChannel;
+import fi.metatavu.ptv.client.model.V8VmOpenApiPhoneChannel;
+import fi.metatavu.ptv.client.model.V8VmOpenApiPrintableFormChannel;
+import fi.metatavu.ptv.client.model.V8VmOpenApiServiceLocationChannel;
+import fi.metatavu.ptv.client.model.V8VmOpenApiWebPageChannel;
 import fi.metatavu.kuntaapi.server.cache.ModificationHashCache;
 import fi.metatavu.kuntaapi.server.controllers.IdentifierController;
 import fi.metatavu.kuntaapi.server.controllers.IdentifierRelationController;
@@ -208,7 +208,7 @@ public class PtvServiceChannelEntityDiscoverJob extends EntityDiscoverJob <Abstr
     }
   }
   
-  private void updateElectronicServiceChannel(Long orderIndex, V7VmOpenApiElectronicChannel ptvElectronicServiceChannel) {
+  private void updateElectronicServiceChannel(Long orderIndex, V8VmOpenApiElectronicChannel ptvElectronicServiceChannel) {
     if (ptvElectronicServiceChannel == null) {
       return;
     }
@@ -236,7 +236,7 @@ public class PtvServiceChannelEntityDiscoverJob extends EntityDiscoverJob <Abstr
     indexElectronicServiceChannel(orderIndex, electronicServiceChannel);
   }
 
-  private void updateServiceLocationServiceChannel(Long orderIndex, V7VmOpenApiServiceLocationChannel ptvServiceLocationServiceChannel) {
+  private void updateServiceLocationServiceChannel(Long orderIndex, V8VmOpenApiServiceLocationChannel ptvServiceLocationServiceChannel) {
     if (ptvServiceLocationServiceChannel == null) {
       return;
     }
@@ -266,7 +266,7 @@ public class PtvServiceChannelEntityDiscoverJob extends EntityDiscoverJob <Abstr
     updateParentPageIds(parentPageIds);
   }
 
-  private void updatePrintableFormServiceChannel(Long orderIndex, V7VmOpenApiPrintableFormChannel ptvPrintableFormServiceChannel) {
+  private void updatePrintableFormServiceChannel(Long orderIndex, V8VmOpenApiPrintableFormChannel ptvPrintableFormServiceChannel) {
     if (ptvPrintableFormServiceChannel == null) {
       return;
     }
@@ -293,7 +293,7 @@ public class PtvServiceChannelEntityDiscoverJob extends EntityDiscoverJob <Abstr
     indexPrintableFormServiceChannel(orderIndex, printableFormServiceChannel);
   }
   
-  private void updatePhoneServiceChannel(Long orderIndex, V7VmOpenApiPhoneChannel ptvPhoneServiceChannel) {
+  private void updatePhoneServiceChannel(Long orderIndex, V8VmOpenApiPhoneChannel ptvPhoneServiceChannel) {
     if (ptvPhoneServiceChannel == null) {
       return;
     }
@@ -320,7 +320,7 @@ public class PtvServiceChannelEntityDiscoverJob extends EntityDiscoverJob <Abstr
     indexPhoneServiceChannel(orderIndex, phoneServiceChannel);
   }
   
-  private void updateWebPageServiceChannel(Long orderIndex, V7VmOpenApiWebPageChannel ptvWebPageServiceChannel) {
+  private void updateWebPageServiceChannel(Long orderIndex, V8VmOpenApiWebPageChannel ptvWebPageServiceChannel) {
     if (ptvWebPageServiceChannel == null) {
       return;
     }

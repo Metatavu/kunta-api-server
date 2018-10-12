@@ -23,7 +23,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import fi.metatavu.kuntaapi.server.rest.model.ServiceHour;
-import fi.metatavu.ptv.client.model.V4VmOpenApiServiceHour;
+import fi.metatavu.ptv.client.model.V8VmOpenApiServiceHour;
 import fi.metatavu.kuntaapi.server.integrations.ptv.translation.PtvTranslator;
 import fi.metatavu.kuntaapi.test.AbstractTest;
 
@@ -53,7 +53,7 @@ public class PtvTranslatorTest extends AbstractTest {
   public void testSingle() throws IOException, JSONException {
     assertNotNull(ptvTranslator);
     
-    List<V4VmOpenApiServiceHour> ptvServiceHours = loadPtvTestHours("ptv-single.json");
+    List<V8VmOpenApiServiceHour> ptvServiceHours = loadPtvTestHours("ptv-single.json");
     List<ServiceHour> expected = loadKuntaAPITestHours("kuntaapi-single.json");
     List<ServiceHour> actual = ptvTranslator.translateServiceHours(ptvServiceHours);
     
@@ -64,7 +64,7 @@ public class PtvTranslatorTest extends AbstractTest {
   public void testUnmodified() throws IOException, JSONException {
     assertNotNull(ptvTranslator);
     
-    List<V4VmOpenApiServiceHour> ptvServiceHours = loadPtvTestHours("ptv-unmodified.json");
+    List<V8VmOpenApiServiceHour> ptvServiceHours = loadPtvTestHours("ptv-unmodified.json");
     List<ServiceHour> expected = loadKuntaAPITestHours("kuntaapi-unmodified.json");
     List<ServiceHour> actual = ptvTranslator.translateServiceHours(ptvServiceHours);
     
@@ -75,17 +75,17 @@ public class PtvTranslatorTest extends AbstractTest {
   public void testMerged() throws IOException, JSONException {
     assertNotNull(ptvTranslator);
     
-    List<V4VmOpenApiServiceHour> ptvServiceHours = loadPtvTestHours("ptv-merged.json");
+    List<V8VmOpenApiServiceHour> ptvServiceHours = loadPtvTestHours("ptv-merged.json");
     List<ServiceHour> expected = loadKuntaAPITestHours("kuntaapi-merged.json");
     List<ServiceHour> actual = ptvTranslator.translateServiceHours(ptvServiceHours);
     
     assertServiceHoursEqual(expected, actual);
   }
   
-  private List<V4VmOpenApiServiceHour> loadPtvTestHours(String file) throws IOException {
+  private List<V8VmOpenApiServiceHour> loadPtvTestHours(String file) throws IOException {
     try (InputStream fileStream = getClass().getClassLoader().getResourceAsStream(String.format("ptv/servicehours/%s", file))) {
       ObjectMapper objectMapper = getObjectMapper();
-      return objectMapper.readValue(fileStream, new TypeReference<List<V4VmOpenApiServiceHour>>() {});
+      return objectMapper.readValue(fileStream, new TypeReference<List<V8VmOpenApiServiceHour>>() {});
     }
   }
 

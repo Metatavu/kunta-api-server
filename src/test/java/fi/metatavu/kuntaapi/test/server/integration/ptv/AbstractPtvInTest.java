@@ -19,14 +19,14 @@ import fi.metatavu.kuntaapi.server.rest.model.ServiceChannelAttachment;
 import fi.metatavu.kuntaapi.server.rest.model.ServiceHour;
 import fi.metatavu.kuntaapi.server.rest.model.ServiceVoucher;
 import fi.metatavu.kuntaapi.server.rest.model.WebPage;
-import fi.metatavu.ptv.client.model.V2VmOpenApiDailyOpeningTime;
+import fi.metatavu.ptv.client.model.V8VmOpenApiDailyOpeningTime;
 import fi.metatavu.ptv.client.model.V4VmOpenApiLaw;
 import fi.metatavu.ptv.client.model.V4VmOpenApiPhone;
 import fi.metatavu.ptv.client.model.V4VmOpenApiPhoneSimple;
 import fi.metatavu.ptv.client.model.V4VmOpenApiPhoneWithType;
-import fi.metatavu.ptv.client.model.V4VmOpenApiServiceHour;
+import fi.metatavu.ptv.client.model.V8VmOpenApiServiceHour;
 import fi.metatavu.ptv.client.model.V4VmOpenApiWebPage;
-import fi.metatavu.ptv.client.model.V7VmOpenApiAddressDeliveryIn;
+import fi.metatavu.ptv.client.model.V8VmOpenApiAddressDeliveryIn;
 import fi.metatavu.ptv.client.model.V7VmOpenApiAddressWithMovingIn;
 import fi.metatavu.ptv.client.model.VmOpenApiAddressPostOfficeBoxIn;
 import fi.metatavu.ptv.client.model.VmOpenApiAddressStreetIn;
@@ -38,10 +38,9 @@ import fi.metatavu.ptv.client.model.VmOpenApiLocalizedListItem;
 import fi.metatavu.ptv.client.model.VmOpenApiServiceVoucher;
 import fi.metatavu.ptv.client.model.VmOpenApiWebPageWithOrderNumber;
 import fi.metatavu.kuntaapi.server.integrations.ptv.translation.PtvAddressSubtype;
-import fi.metatavu.kuntaapi.test.AbstractIntegrationTest;
 
 @SuppressWarnings ({"squid:S00107", "squid:S2187"})
-public class AbstractPtvInTest extends AbstractIntegrationTest {
+public class AbstractPtvInTest extends AbstractPtvTest {
 
   private static final String LOCATION = "Location";
 
@@ -146,8 +145,8 @@ public class AbstractPtvInTest extends AbstractIntegrationTest {
     return Arrays.asList(result);
   }
 
-  protected V4VmOpenApiServiceHour creaatePtvInServiceHour(Boolean isClosed, List<V2VmOpenApiDailyOpeningTime> openingHour, String serviceHourType, Boolean validForNow, OffsetDateTime validFrom, OffsetDateTime validTo, List<VmOpenApiLanguageItem> additionalInformation) {
-    V4VmOpenApiServiceHour result = new V4VmOpenApiServiceHour();
+  protected V8VmOpenApiServiceHour creaatePtvInServiceHour(Boolean isClosed, List<V8VmOpenApiDailyOpeningTime> openingHour, String serviceHourType, Boolean validForNow, OffsetDateTime validFrom, OffsetDateTime validTo, List<VmOpenApiLanguageItem> additionalInformation) {
+    V8VmOpenApiServiceHour result = new V8VmOpenApiServiceHour();
     result.setAdditionalInformation(additionalInformation);
     result.setIsClosed(isClosed);
     result.setOpeningHour(openingHour);
@@ -173,7 +172,7 @@ public class AbstractPtvInTest extends AbstractIntegrationTest {
   protected List<VmOpenApiWebPageWithOrderNumber> createPtvInWebPages(String language, String url, String value) {
     VmOpenApiWebPageWithOrderNumber result = new VmOpenApiWebPageWithOrderNumber();
     result.setLanguage(language);
-    result.setOrderNumber("0");
+    result.setOrderNumber("1");
     result.setUrl(url);
     result.setValue(value);
     return Arrays.asList(result);
@@ -264,12 +263,13 @@ public class AbstractPtvInTest extends AbstractIntegrationTest {
     return result;
   }
 
-  protected V7VmOpenApiAddressDeliveryIn createPtvInDeliveryAddress(String subType, VmOpenApiAddressStreetIn streetAddress, VmOpenApiAddressPostOfficeBoxIn postOfficeBoxAddress, List<VmOpenApiLanguageItem> deliveryAddressInText) {
-    V7VmOpenApiAddressDeliveryIn result = new V7VmOpenApiAddressDeliveryIn();
+  protected V8VmOpenApiAddressDeliveryIn createPtvInDeliveryAddress(String subType, VmOpenApiAddressStreetIn streetAddress, VmOpenApiAddressPostOfficeBoxIn postOfficeBoxAddress, List<VmOpenApiLanguageItem> deliveryAddressInText, List<VmOpenApiLanguageItem> formReceiver) {
+    V8VmOpenApiAddressDeliveryIn result = new V8VmOpenApiAddressDeliveryIn();
     result.setDeliveryAddressInText(deliveryAddressInText);
     result.setPostOfficeBoxAddress(postOfficeBoxAddress);
     result.setStreetAddress(streetAddress);
     result.setSubType(subType);
+    result.setFormReceiver(formReceiver);
     return result;
   }
 

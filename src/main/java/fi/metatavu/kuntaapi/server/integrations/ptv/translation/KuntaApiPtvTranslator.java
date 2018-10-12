@@ -29,14 +29,14 @@ import fi.metatavu.kuntaapi.server.rest.model.ServiceHour;
 import fi.metatavu.kuntaapi.server.rest.model.ServiceOrganization;
 import fi.metatavu.kuntaapi.server.rest.model.ServiceVoucher;
 import fi.metatavu.kuntaapi.server.rest.model.WebPage;
-import fi.metatavu.ptv.client.model.V2VmOpenApiDailyOpeningTime;
+import fi.metatavu.ptv.client.model.V8VmOpenApiDailyOpeningTime;
 import fi.metatavu.ptv.client.model.V4VmOpenApiLaw;
 import fi.metatavu.ptv.client.model.V4VmOpenApiPhone;
 import fi.metatavu.ptv.client.model.V4VmOpenApiPhoneSimple;
 import fi.metatavu.ptv.client.model.V4VmOpenApiPhoneWithType;
-import fi.metatavu.ptv.client.model.V4VmOpenApiServiceHour;
+import fi.metatavu.ptv.client.model.V8VmOpenApiServiceHour;
 import fi.metatavu.ptv.client.model.V4VmOpenApiWebPage;
-import fi.metatavu.ptv.client.model.V7VmOpenApiAddressDeliveryIn;
+import fi.metatavu.ptv.client.model.V8VmOpenApiAddressDeliveryIn;
 import fi.metatavu.ptv.client.model.V7VmOpenApiAddressWithMovingIn;
 import fi.metatavu.ptv.client.model.VmOpenApiAddressPostOfficeBoxIn;
 import fi.metatavu.ptv.client.model.VmOpenApiAddressStreetIn;
@@ -229,15 +229,15 @@ public class KuntaApiPtvTranslator extends AbstractTranslator {
    * @param serviceHours Kunta API Service hours
    * @return PTV Service Hours
    */
-  public List<V4VmOpenApiServiceHour> translateServiceHours(List<ServiceHour> serviceHours) {
+  public List<V8VmOpenApiServiceHour> translateServiceHours(List<ServiceHour> serviceHours) {
     if (serviceHours == null || serviceHours.isEmpty()) {
       return Collections.emptyList();
     }
     
-    List<V4VmOpenApiServiceHour> result = new ArrayList<>(serviceHours.size());
+    List<V8VmOpenApiServiceHour> result = new ArrayList<>(serviceHours.size());
     
     for (ServiceHour serviceHour : serviceHours) {
-      V4VmOpenApiServiceHour ptvServiceHour = translateServiceHour(serviceHour);
+      V8VmOpenApiServiceHour ptvServiceHour = translateServiceHour(serviceHour);
       if (ptvServiceHour != null) {
         result.add(ptvServiceHour);
       }
@@ -281,7 +281,7 @@ public class KuntaApiPtvTranslator extends AbstractTranslator {
     }
     
     List<VmOpenApiWebPageWithOrderNumber> result = new ArrayList<>(webPages.size());
-    int orderNumber = 0;
+    int orderNumber = 1;
     
     for (WebPage webPage : webPages) {
       VmOpenApiWebPageWithOrderNumber ptvWebPage = translateWebPageWithOrder(webPage, String.valueOf(orderNumber));
@@ -463,36 +463,41 @@ public class KuntaApiPtvTranslator extends AbstractTranslator {
   /**
    * Translates Kunta API delivery address into PTV in addresses
    * 
+   * @param formReceiver 
    * @param deliveryAddress Kunta API delivery address
    * @return PTV in addresses
    */
-  public V7VmOpenApiAddressDeliveryIn translateDeliveryAddresses(Address deliveryAddress) {
-    if (deliveryAddress == null) {
-      return null;
+  public List<V8VmOpenApiAddressDeliveryIn> translateDeliveryAddresses(List<LocalizedValue> formReceiver, Address deliveryAddress) {
+    if (deliveryAddress == null && (formReceiver == null || formReceiver.isEmpty())) {
+      return Collections.emptyList();
     }
     
-    V7VmOpenApiAddressDeliveryIn result = new V7VmOpenApiAddressDeliveryIn(); 
+    V8VmOpenApiAddressDeliveryIn result = new V8VmOpenApiAddressDeliveryIn(); 
     
-    PtvAddressSubtype subtype = getAddressSubtype(deliveryAddress.getSubtype());
-    switch (subtype) {
-      case POST_OFFICE_BOX:
-        result.setPostOfficeBoxAddress(translatePostOfficeBoxAddress(deliveryAddress));
-      break;
-      case NO_ADDRESS:
-        result.setDeliveryAddressInText(translateLocalizedValuesIntoLanguageItems(deliveryAddress.getAdditionalInformations()));
-      break;
-      case SINGLE:
-      case STREET:
-        result.setStreetAddress(translateStreetAddress(deliveryAddress));
-      break;
-      default:
-        logger.log(Level.SEVERE, () -> String.format(UNKNOWN_SUBTYPE, deliveryAddress.getSubtype()));
-      break;
+    if (deliveryAddress != null) {
+      PtvAddressSubtype subtype = getAddressSubtype(deliveryAddress.getSubtype());
+      switch (subtype) {
+        case POST_OFFICE_BOX:
+          result.setPostOfficeBoxAddress(translatePostOfficeBoxAddress(deliveryAddress));
+        break;
+        case NO_ADDRESS:
+          result.setDeliveryAddressInText(translateLocalizedValuesIntoLanguageItems(deliveryAddress.getAdditionalInformations()));
+        break;
+        case SINGLE:
+        case STREET:
+          result.setStreetAddress(translateStreetAddress(deliveryAddress));
+        break;
+        default:
+          logger.log(Level.SEVERE, () -> String.format(UNKNOWN_SUBTYPE, deliveryAddress.getSubtype()));
+        break;
+      }
+
+      result.setSubType(deliveryAddress.getSubtype());
     }
 
-    result.setSubType(deliveryAddress.getSubtype());
+    result.setFormReceiver(translateLocalizedValuesIntoLanguageItems(formReceiver));
     
-    return result;
+    return Arrays.asList(result);
   }
   
   private VmOpenApiAttachment translateAttachment(ServiceChannelAttachment attachment) {
@@ -640,7 +645,12 @@ public class KuntaApiPtvTranslator extends AbstractTranslator {
   }
 
   private V4VmOpenApiPhone translatePhoneNumber(Phone phoneNumber) {
-    if (phoneNumber == null || !"Phone".equals(phoneNumber.getType())) {
+    if (phoneNumber == null) {
+      return null;
+    }
+    
+    String type = phoneNumber.getType();
+    if (type != null && !"Phone".equals(type)) {
       return null;
     }
     
@@ -738,12 +748,12 @@ public class KuntaApiPtvTranslator extends AbstractTranslator {
     return null;
   }
 
-  private V4VmOpenApiServiceHour translateServiceHour(ServiceHour serviceHour) {
+  private V8VmOpenApiServiceHour translateServiceHour(ServiceHour serviceHour) {
     if (serviceHour == null) {
       return null;
     }
     
-    V4VmOpenApiServiceHour result = new V4VmOpenApiServiceHour();
+    V8VmOpenApiServiceHour result = new V8VmOpenApiServiceHour();
     result.setAdditionalInformation(translateLocalizedValuesIntoLanguageItems(serviceHour.getAdditionalInformation()));
     result.setIsClosed(serviceHour.getIsClosed());
     result.setOpeningHour(translateDailyOpeningTimes(serviceHour.getOpeningHour()));
@@ -755,15 +765,15 @@ public class KuntaApiPtvTranslator extends AbstractTranslator {
     return result;
   }
 
-  private List<V2VmOpenApiDailyOpeningTime> translateDailyOpeningTimes(List<DailyOpeningTime> dailyOpeningTimes) {
+  private List<V8VmOpenApiDailyOpeningTime> translateDailyOpeningTimes(List<DailyOpeningTime> dailyOpeningTimes) {
     if (dailyOpeningTimes == null || dailyOpeningTimes.isEmpty()) {
       return Collections.emptyList();
     }
     
-    List<V2VmOpenApiDailyOpeningTime> result = new ArrayList<>(dailyOpeningTimes.size());
+    List<V8VmOpenApiDailyOpeningTime> result = new ArrayList<>(dailyOpeningTimes.size());
     
     for (DailyOpeningTime dailyOpeningTime : dailyOpeningTimes) {
-      V2VmOpenApiDailyOpeningTime ptvServiceHour = translateDailyOpeningTime(dailyOpeningTime);
+      V8VmOpenApiDailyOpeningTime ptvServiceHour = translateDailyOpeningTime(dailyOpeningTime);
       if (ptvServiceHour != null) {
         result.add(ptvServiceHour);
       }
@@ -772,16 +782,15 @@ public class KuntaApiPtvTranslator extends AbstractTranslator {
     return result;
   }
 
-  private V2VmOpenApiDailyOpeningTime translateDailyOpeningTime(DailyOpeningTime dailyOpeningTime) {
+  private V8VmOpenApiDailyOpeningTime translateDailyOpeningTime(DailyOpeningTime dailyOpeningTime) {
     if (dailyOpeningTime == null) {
       return null;
     }
     
-    V2VmOpenApiDailyOpeningTime result = new V2VmOpenApiDailyOpeningTime();
+    V8VmOpenApiDailyOpeningTime result = new V8VmOpenApiDailyOpeningTime();
     result.setDayFrom(translateOpeningTimeDay(dailyOpeningTime.getDayFrom()));
     result.setDayTo(translateOpeningTimeDay(dailyOpeningTime.getDayTo()));
     result.setFrom(dailyOpeningTime.getFrom());
-    result.setIsExtra(dailyOpeningTime.getIsExtra());
     result.setTo(dailyOpeningTime.getTo());
     
     return result;

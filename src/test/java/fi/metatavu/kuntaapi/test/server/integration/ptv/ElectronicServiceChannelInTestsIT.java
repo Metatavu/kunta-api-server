@@ -12,8 +12,8 @@ import com.github.tomakehurst.wiremock.junit.WireMockRule;
 import com.jayway.restassured.http.ContentType;
 
 import fi.metatavu.kuntaapi.server.rest.model.ElectronicServiceChannel;
-import fi.metatavu.ptv.client.model.V6VmOpenApiElectronicChannelInBase;
-import fi.metatavu.ptv.client.model.V7VmOpenApiElectronicChannel;
+import fi.metatavu.ptv.client.model.V8VmOpenApiElectronicChannelInBase;
+import fi.metatavu.ptv.client.model.V8VmOpenApiElectronicChannel;
 import fi.metatavu.kuntaapi.server.persistence.model.clients.AccessType;
 import fi.metatavu.kuntaapi.server.persistence.model.clients.ClientOrganizationPermission;
 import fi.metatavu.kuntaapi.test.AbstractPtvMocker;
@@ -21,6 +21,7 @@ import fi.metatavu.kuntaapi.test.AbstractPtvMocker;
 @SuppressWarnings ("squid:S1075")
 public class ElectronicServiceChannelInTestsIT extends AbstractPtvInTest {
 
+  private static final String WWW_EXAMPLE_COM = "www.example.com";
   private static final String SERVICE_CHANNEL_FIND_PATH = "/electronicServiceChannels/{kuntaApiChannelId}";
   /**
    * Starts WireMock
@@ -36,11 +37,9 @@ public class ElectronicServiceChannelInTestsIT extends AbstractPtvInTest {
 
     startMocks();
     
-    waitApiListCount("/organizations", 3);
-    waitApiListCount("/electronicServiceChannels", TestPtvConsts.ELECTRONIC_CHANNEL_SERVICE_CHANNELS.length);
-    waitApiListCount("/services", TestPtvConsts.SERVICES.length);
+    waitApiListCount("/organizations", TestPtvConsts.ORGANIZATIONS.length);
   }
-  
+
   @Test
   public void updateElectronicServiceChannelUnauthorized() throws IOException, InterruptedException {
     ElectronicServiceChannel kuntaApiResource = getElectronicServiceChannel(0, TestPtvConsts.ELECTRONIC_CHANNEL_SERVICE_CHANNELS.length);
@@ -53,7 +52,7 @@ public class ElectronicServiceChannelInTestsIT extends AbstractPtvInTest {
       .assertThat()
       .statusCode(401);
   }
-  
+
   @Test
   public void updateElectronicServiceChannelForbidden() throws IOException, InterruptedException {
     ElectronicServiceChannel kuntaApiResource = getElectronicServiceChannel(0, TestPtvConsts.ELECTRONIC_CHANNEL_SERVICE_CHANNELS.length);
@@ -65,38 +64,37 @@ public class ElectronicServiceChannelInTestsIT extends AbstractPtvInTest {
       .then()
       .assertThat()
       .statusCode(403);
-  }
-  
+  }  
+
   @Test
   public void updateElectronicServiceChannelUnchanged() throws IOException, InterruptedException {
     String ptvId = TestPtvConsts.ELECTRONIC_CHANNEL_SERVICE_CHANNELS[0];
-    String organizationId = getOrganizationId(0);
+    String organizationId = getOrganizationId(2);
     String kuntaApiChannelId = getElectronicChannelId(0, TestPtvConsts.ELECTRONIC_CHANNEL_SERVICE_CHANNELS.length);
     
     grantOrganizationPermission(AccessType.READ_WRITE, organizationId, ClientOrganizationPermission.UPDATE_SERVICE_CHANNELS);
 
     ElectronicServiceChannel kuntaApiResource = getElectronicServiceChannel(0, TestPtvConsts.ELECTRONIC_CHANNEL_SERVICE_CHANNELS.length);
-    V6VmOpenApiElectronicChannelInBase ptvInResource = getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_IN_API, ptvId, V6VmOpenApiElectronicChannelInBase.class);
-    V7VmOpenApiElectronicChannel ptvOutResource =  getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_OUT_API, ptvId, V7VmOpenApiElectronicChannel.class);
+    V8VmOpenApiElectronicChannelInBase ptvInResource = getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_IN_API, ptvId, V8VmOpenApiElectronicChannelInBase.class);
+    V8VmOpenApiElectronicChannel ptvOutResource = getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_OUT_API, ptvId, V8VmOpenApiElectronicChannel.class);
     
     getPtvServiceChannelMocker().mockElectronicPut(ptvId, ptvOutResource);
     
     givenReadWrite()
       .body(kuntaApiResource)
       .contentType(ContentType.JSON)
-      .put(SERVICE_CHANNEL_FIND_PATH,kuntaApiChannelId)
+      .put(SERVICE_CHANNEL_FIND_PATH, kuntaApiChannelId)
       .then()
       .assertThat()
       .statusCode(200);
 
     getPtvServiceChannelMocker().verifyElectronic(ptvId, ptvInResource);
   }
-  
+
   @Test
   public void updateElectronicServiceChannelChanges() throws IOException, InterruptedException {
     String ptvId = TestPtvConsts.ELECTRONIC_CHANNEL_SERVICE_CHANNELS[0];
-    String organizationId = getOrganizationId(0);
-    
+    String organizationId = getOrganizationId(2);
     String kuntaApiChannelId = getElectronicChannelId(0, TestPtvConsts.ELECTRONIC_CHANNEL_SERVICE_CHANNELS.length);
     
     grantOrganizationPermission(AccessType.READ_WRITE, organizationId, ClientOrganizationPermission.UPDATE_SERVICE_CHANNELS);
@@ -117,9 +115,9 @@ public class ElectronicServiceChannelInTestsIT extends AbstractPtvInTest {
       createPhone("en", "Phone", "+358", "12345-FAKE", "Charged", "Testing", false, "Test phone"),
       createPhone("en", "Fax", "+258", "54321-FAKE", "Free", "Testing fax", true, "Test fax")
     ));
-    kuntaApiResource.setUrls(createLocalizedValue("en", "URL", "www.example.com"));
+    kuntaApiResource.setWebPages(createWebPages("en", "WebPage", WWW_EXAMPLE_COM, WWW_EXAMPLE_COM, null));
     
-    V6VmOpenApiElectronicChannelInBase ptvInResource = getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_IN_API, ptvId, V6VmOpenApiElectronicChannelInBase.class);
+    V8VmOpenApiElectronicChannelInBase ptvInResource = getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_IN_API, ptvId, V8VmOpenApiElectronicChannelInBase.class);
     ptvInResource.setAreas(Arrays.asList(createArea("Municipality", "12345")));
     ptvInResource.setAreaType("AreaType");
     ptvInResource.setAttachments(createPtvInAttachments("en", "https://www.example.com", "Example PDF", "PDF file for testing"));
@@ -131,9 +129,9 @@ public class ElectronicServiceChannelInTestsIT extends AbstractPtvInTest {
     ptvInResource.setSignatureQuantity("22");
     ptvInResource.setSupportEmails(createPtvInLanguageItems("en", "fake@example.com"));
     ptvInResource.setSupportPhones(createPtvInPhones("en", "+358", "12345-FAKE", "Charged", "Testing", false, "Test phone"));
-    ptvInResource.setUrls(createPtvInLanguageItems("en", "www.example.com"));
+    ptvInResource.setWebPage(createPtvInLanguageItems("en", WWW_EXAMPLE_COM));
     
-    V7VmOpenApiElectronicChannel ptvOutResource =  getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_OUT_API, ptvId, V7VmOpenApiElectronicChannel.class);
+    V8VmOpenApiElectronicChannel ptvOutResource =  getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_OUT_API, ptvId, V8VmOpenApiElectronicChannel.class);
     
     getPtvServiceChannelMocker().mockElectronicPut(ptvId, ptvOutResource);
     

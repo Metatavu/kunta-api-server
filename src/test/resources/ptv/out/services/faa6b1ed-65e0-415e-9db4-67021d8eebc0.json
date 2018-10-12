@@ -1,0 +1,267 @@
+{
+  "id" : "faa6b1ed-65e0-415e-9db4-67021d8eebc0",
+  "sourceId" : null,
+  "generalDescriptionId" : "074eeb91-c68a-430d-ba1b-14e6dffed48b",
+  "type" : "Service",
+  "fundingType" : "PubliclyFunded",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Varhaiserityiskasvatus",
+    "type" : "AlternativeName"
+  }, {
+    "language" : "fi",
+    "value" : "Erityisvarhaiskasvatus",
+    "type" : "Name"
+  } ],
+  "serviceChargeType" : null,
+  "areaType" : "LimitedType",
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : "Erityisvarhaiskasvatus on tarkoitettu erityistä hoitoa ja tukea tarvitseville lapsille.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Varhaiskasvatuksen erityisopettaja arvioi erityisen tuen tarpeen yksilöllisesti.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : "Erityisvarhaiskasvatus on tarkoitettu erityistä hoitoa ja tukea tarvitseville lapsille. Ongelmien varhainen havaitseminen ja ennaltaehkäisy on tärkeää. Erityisvarhaiskasvatuksen tehtävänä on turvata näille lapsille kuntouttava toimintaympäristö päivähoidossa. \n\nTavoitteena on yhdessä perheen ja varhaiskasvatuksen henkilöstön kanssa tukea lapsen kehitystä ja oppimisvalmiuksia, ja pyrkiä kaikkien lasten kohdalla oppimisvaikeuksien ennaltaehkäisyyn.\n\nKaikissa Naantalin päiväkodeissa toteutetaan kuntouttavaa toimintaa yksilö- ja/tai pienryhmäopetuksena. Tarvittaessa lapsen tai ryhmän tukena on erityispäivähoitaja.\n\nVarhaiskasvatuksen erityisopettajat ovat vastuussa lapsen kuntoutuksen suunnittelusta ja toteutuksesta yhteistyössä perheen, varhaiskasvatuksen henkilökunnan ja muun kuntouttavan tahon kanssa. \n\nNaantalin erityisvarhaiskasvatuksessa toimii kolme kiertävää varhaiskasvatuksen erityisopettajaa ja neljä lapsiryhmässä vakituisesti työskentelevää varhaiskasvatuksen erityisopettajaa. ",
+    "type" : "Description"
+  } ],
+  "languages" : [ "fi" ],
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Lasten päivähoito",
+      "language" : "fi"
+    }, {
+      "value" : "Barndagvård",
+      "language" : "sv"
+    }, {
+      "value" : "Day-care for children",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Till denna serviceundergrupp hör barnets rättigheter i anslutning till dagvård för små barn, förutsättningar för dagvård, ärendehanteringstjänster och ansökningsförfaranden, olika genomföringsformer och servicekanaler för dagvård, vårdavgifter och bidrag i anslutning till dem.",
+      "language" : "sv"
+    }, {
+      "value" : "Tähän alapalveluluokkaan kuuluvat pienten lasten päivähoitoon liittyvät lapsen oikeudet, päivähoidon saamisen edellytykset, asiointipalvelut ja hakumenettelyt, erilaiset päivähoidon toteuttamismuodot ja palvelukanavat, hoidon maksut ja niihin liittyvät taloudelliset tuet.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains a child’s rights related to day-care for young children, eligibility criteria, e-services and application procedures associated with day-care, different forms and service channels of day-care provision, fees charged for day-care and financial support related to the fees.",
+      "language" : "en"
+    } ],
+    "code" : "P3.4",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1017",
+    "parentId" : "77af99fa-93eb-4de6-ac83-1b161a961263",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1013"
+  }, {
+    "name" : [ {
+      "value" : "Perheiden palvelut",
+      "language" : "fi"
+    }, {
+      "value" : "Tjänster för familjer",
+      "language" : "sv"
+    }, {
+      "value" : "Services for families",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "I denna servicegrupp behandlas tjänster för barnfamiljer, som i huvudsak omfattar perioden från graviditeten till att en ung person blir myndig. I innehållet i servicegruppen granskas tjänsterna för familjer och situationer ofta via aktörer, situationer och synvinklar.",
+      "language" : "sv"
+    }, {
+      "value" : "Tässä palveluluokassa käsitellään lapsiperheen palveluja, jotka pääosin kattavat ajanjakson raskausajasta nuoren täysi-ikäiseksi tulemiseen. Palveluluokan sisällössä perheen palveluja ja tilanteita tarkastellaan useiden toimijoiden, tilanteiden ja näkökulmien kautta.",
+      "language" : "fi"
+    }, {
+      "value" : "This service class contains services for families with children, mainly covering the period from pregnancy until a young person turns 18. In the contents of this service class, family services are examined from the perspective of different actors, situations and viewpoints.",
+      "language" : "en"
+    } ],
+    "code" : "P3",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1013",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "erityispäivähoito",
+      "language" : "fi"
+    }, {
+      "value" : "specialdagvård",
+      "language" : "sv"
+    }, {
+      "value" : "special day care",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p13527",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p3474"
+  }, {
+    "name" : [ ],
+    "code" : null,
+    "ontologyType" : null,
+    "uri" : "http://www.yso.fi/onto/yso/p28737",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ ],
+    "code" : null,
+    "ontologyType" : null,
+    "uri" : "http://www.yso.fi/onto/tero/TNR1985",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "varhaiserityiskasvatus",
+      "language" : "fi"
+    } ],
+    "code" : null,
+    "ontologyType" : "TERO",
+    "uri" : "http://www.yso.fi/onto/koko/p58988",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p9399"
+  }, {
+    "name" : [ {
+      "value" : "kasvatus",
+      "language" : "fi"
+    }, {
+      "value" : "fostran",
+      "language" : "sv"
+    }, {
+      "value" : "upbringing",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p30840",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p33778;http://www.yso.fi/onto/koko/p34717"
+  }, {
+    "name" : [ {
+      "value" : "varhaiskasvatus",
+      "language" : "fi"
+    }, {
+      "value" : "småbarnsfostran",
+      "language" : "sv"
+    }, {
+      "value" : "early childhood education and care",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p9399",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p33827;http://www.yso.fi/onto/koko/p30840"
+  } ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "Lapset ja lapsiperheet",
+      "language" : "fi"
+    }, {
+      "value" : "Children and families with children",
+      "language" : "en"
+    }, {
+      "value" : "Barn och barnfamiljer",
+      "language" : "sv"
+    } ],
+    "code" : "KR1.2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2003",
+    "parentId" : "daff1fb9-9394-49b5-b033-d1d1c7005ab6",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001"
+  } ],
+  "lifeEvents" : [ ],
+  "industrialClasses" : [ ],
+  "legislation" : [ ],
+  "keywords" : [ ],
+  "requirements" : [ {
+    "value" : "Varhaiskasvatuksen erityisopettaja arvioi tuen tarpeen yksilöllisesti.",
+    "language" : "fi"
+  } ],
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "ad29e11d-9c97-4e02-a7da-5f5cefe442e9",
+      "name" : "Varhaiskasvatuksen johtaja"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "serviceVouchers" : [ ],
+  "serviceCollections" : [ ],
+  "publishingStatus" : "Published",
+  "modified" : "2018-05-03T11:53:58.162746Z"
+}

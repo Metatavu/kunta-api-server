@@ -1,0 +1,278 @@
+{
+  "id" : "ea3af438-bc77-49da-8f0c-2f217eee491f",
+  "sourceId" : null,
+  "generalDescriptionId" : "9d083187-3f60-4087-a4e4-46037899b0a4",
+  "type" : "Service",
+  "fundingType" : "PubliclyFunded",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Perusopetuksen oppilashuolto",
+    "type" : "Name"
+  } ],
+  "serviceChargeType" : null,
+  "areaType" : "LimitedType",
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Vanhemmat tai oppilas itse voi ottaa yhteyttä oman koulunsa kouluterveydenhoitajaan, koulupsykologiin tai koulukuraattoriin joko puhelimitse, sähköpostilla tai Wilma-viestillä.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : "Perusopetuksen oppilailla on oikeus saada oppilashuollon palveluja, joita tarjoavat kouluterveydenhoitajat, -psykologit sekä -kuraattorit.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Oppilashuolto on kodin ja koulun yhteinen asia. Oppilashuolto on osa koulun toimintaa, joka kuuluu kaikille koulun arjessa mukana oleville. Naantalin perusopetuksen oppilashuollossa työskentelee kouluterveydenhoitajia, -psykologeja sekä -kuraattoreja, joilla on kaikilla omat vastuukoulut ja -esikoulut. Johtava koulupsykologi toimii koulukuraattoreiden ja koulupsykologien esimiehenä. \n\nOppilashuolto\n* on oppilaan hyvän oppimisen, hyvän psyykkisen ja fyysisen terveyden sekä sosiaalisen hyvinvoinnin edistämistä ja ylläpitämistä.\n* sisältää sekä päivittäisen opettajien opetustyöhön kuuluvan oppilashuollon että oppilashuollon palvelut, joita ovat kouluterveydenhuolto sekä psykologi- ja kuraattoripalvelut.\n* on yhteisöllistä ja/tai yksilöllistä.\n* on kaikkien koulun aikuisten toteuttamaa yhdessä oppilaiden ja heidän vanhempiensa kanssa.",
+    "type" : "Description"
+  } ],
+  "languages" : [ "fi" ],
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Koulu- ja opiskelijahuollon sosiaalipalvelut",
+      "language" : "fi"
+    }, {
+      "value" : "Socialtjänster för skol- och studerandevård",
+      "language" : "sv"
+    }, {
+      "value" : "Pupil and student welfare social services",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Tähän alapalveluluokkaan kuuluvat koululaisille ja kokopäivisille opiskelijoille tarkoitetut sosiaalipalvelut kuten koulukuraattorin palvelut sekä toisen ja korkea-asteen opiskelijoille suunnatut arjessa pärjäämistä tukevat palvelut, kuten vertaistukiryhmät ja neuvontapalvelut, jotka eivät ole terveyden- tai sairaanhoidon palveluja.",
+      "language" : "fi"
+    }, {
+      "value" : "Till denna underservicegrupp hör socialtjänster som är avsedda för skolelever och studeranden på heltid såsom skolkuratortjänster samt tjänster som stöder studeranden inom andra gradens utbildning och yrkesutbildning på högre nivå att klara sig i vardagen. Sådana är t.ex. kamratstöd och rådgivningstjänster som inte är hälso- eller sjukvårdstjänster.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains social services intended for pupils and full-time students, including a school social worker’s services and services targeted at secondary and tertiary level students that support coping with everyday life, such as peer support groups and advisory services that are not health or medical care services.",
+      "language" : "en"
+    } ],
+    "code" : "P4.9",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1032",
+    "parentId" : "079b55da-af80-41ab-9346-c8fdd284afcf",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1023"
+  }, {
+    "name" : [ {
+      "value" : "Ammatinvalinta ja opintojen ohjaus",
+      "language" : "fi"
+    }, {
+      "value" : "Career guidance and guidance counselling",
+      "language" : "en"
+    }, {
+      "value" : "Yrkesval och studiehandledning",
+      "language" : "sv"
+    } ],
+    "description" : [ {
+      "value" : "Till denna serviceundergrupp hör de tjänster som erbjuds inom ramarna för Finlands utbildningssystem och som guidar, ger råd och handleder elever eller studerande att fatta motiverade beslut för att välja yrke och/eller utbildningsinriktning. Karriärvägledningstjänster för en person som redan är i arbetslivet finns i den egna undergruppen under huvudgruppen Arbete och arbetslöshet.",
+      "language" : "sv"
+    }, {
+      "value" : "Tähän alapalveluluokkaan kuuluvat ne Suomen koulutusjärjestelmän puitteissa tarjottavat palvelut, jotka opastavat, neuvovat ja ohjaavat oppilasta tai opiskelijaa tekemään perusteltuja valintoja ammatin ja/tai koulutussuuntautumisen valitsemiseksi. Työelämässä jo olevan henkilön uraohjauspalvelut ovat omassa alaluokassaan Työ ja työttömyys -pääluokan alla.",
+      "language" : "fi"
+    }, {
+      "value" : "This service subclass contains services offered within the Finnish education system intended to guide, advise and direct a pupil or a student in making justified choices when choosing a career and/or an educational path. Career guidance services for persons already in the labour market are included in their own subclass under the main class Work and unemployment.",
+      "language" : "en"
+    } ],
+    "code" : "P6.4",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1064",
+    "parentId" : "fd1bb60e-4206-4f0a-994f-8ffcb4ffaaa4",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1060"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "Grundschule, Gesamtschule",
+      "language" : "de"
+    }, {
+      "value" : "peruskoulu",
+      "language" : "fi"
+    }, {
+      "value" : "grundskolan",
+      "language" : "sv"
+    }, {
+      "value" : "comprehensive school",
+      "language" : "en"
+    }, {
+      "value" : "põhikool",
+      "language" : "et"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p14592",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p48279"
+  }, {
+    "name" : [ {
+      "value" : "oppilashuolto",
+      "language" : "fi"
+    }, {
+      "value" : "elevvård",
+      "language" : "sv"
+    }, {
+      "value" : "pupil welfare",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p7638",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p36160"
+  }, {
+    "name" : [ {
+      "value" : "grundläggande utbildning",
+      "language" : "sv"
+    }, {
+      "value" : "perusopetus",
+      "language" : "fi"
+    }, {
+      "value" : "basic education",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p1275",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p33827"
+  } ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Lapset ja lapsiperheet",
+      "language" : "fi"
+    }, {
+      "value" : "Children and families with children",
+      "language" : "en"
+    }, {
+      "value" : "Barn och barnfamiljer",
+      "language" : "sv"
+    } ],
+    "code" : "KR1.2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2003",
+    "parentId" : "daff1fb9-9394-49b5-b033-d1d1c7005ab6",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001"
+  }, {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "lifeEvents" : [ ],
+  "industrialClasses" : [ ],
+  "legislation" : [ ],
+  "keywords" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "32833c27-7d41-4267-800a-a9a888b513b7",
+      "name" : "Velkuan kouluterveydenhoitajan vastaanotto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "b8931c4b-1119-4c69-9bc4-a41fb00b92fe",
+      "name" : "Wilma Naantali"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "bc91db9e-2f56-4044-a375-30987de714eb",
+      "name" : "Naantalin koulukuraattorit"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "d27cc10b-a6ee-41ab-9de1-c0bb46543dda",
+      "name" : "Oppilashuolto Naantalissa"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "serviceVouchers" : [ ],
+  "serviceCollections" : [ ],
+  "publishingStatus" : "Published",
+  "modified" : "2018-05-03T11:53:58.162746Z"
+}

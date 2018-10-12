@@ -1,0 +1,131 @@
+{
+  "id" : "610325e0-f485-4caa-bd3b-5bf74d5480c5",
+  "sourceId" : null,
+  "generalDescriptionId" : null,
+  "type" : "Service",
+  "fundingType" : "PubliclyFunded",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Nimipalvelu",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Nimihaku",
+    "type" : "AlternativeName"
+  } ],
+  "serviceChargeType" : null,
+  "areaType" : "Nationwide",
+  "areas" : [ ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Nimipalvelun kautta voit hakea väestötietojärjestelmään tallennettujen etu- ja sukunimien lukumääriä Suomessa. Voit myös tutkia tilastoja yleisimmistä nimistä eri ajanjaksoilta. Vanhimmat nimitiedot ulottuvat jopa 1800-luvulle.\n\nVäestötietojärjestelmä sisältää myös harvinaisia, esimerkiksi ulkomaista alkuperää olevia etunimiä, joita ei voida automaattisesti hyväksyä nimeksi vastasyntyneelle lapselle Suomessa. Nimien rekisteröimisestä järjestelmään päättävät maistraatit ja seurakunnat.\n\nKäytettävissä olevat nimihaut: etunimihaku, sukunimihaku, yleisimmät etunimet, yleisimmät sukunimet.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Hae yksittäisiä etu- ja sukunimitietoja kirjoittamalla otsakepalkin hakuruutuun haettava nimi.\nKirjoita sukunimi virallisessa muodossa, esim. Virtanen, Virtanen-Lahtinen, von Taffelsson.\nKirjoita etunimi muodollisesti oikein esim. Maria, Matti-Juhani.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Nimipalvelun kautta voit hakea väestötietojärjestelmään tallennettujen etu- ja sukunimien lukumääriä Suomessa.",
+    "type" : "Summary"
+  } ],
+  "languages" : [ "fi", "en", "sv" ],
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Muuttaminen Suomen sisällä ja väestötiedot",
+      "language" : "fi"
+    }, {
+      "value" : "Flyttning inom Finland och befolkningsuppgifter",
+      "language" : "sv"
+    }, {
+      "value" : "Migration within Finland and population information",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Tässä palvelualaluokassa käsitellään muuttamiseen liittyvät velvoitteet ja ilmoitus- ja asiointipalvelut sekä väestötietojärjestelmään liittyvät asiat kuten nimet ja nimenmuutokset, rakennustiedot ja turvakiellot.",
+      "language" : "fi"
+    }, {
+      "value" : "I denna serviceundergrupp behandlas skyldigheter i anslutning till flyttning och anmälnings- och ärendehanteringstjänster samt ärenden i samband med befolkningsdatasystemet, såsom namn och namnändringar, byggnadsuppgifter och spärrmarkeringar.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains the obligations, notification services and e-services related to moving house and issues associated with the Population Information System, including names and name changes, building data and non-disclosure orders for personal security reasons.",
+      "language" : "en"
+    } ],
+    "code" : "P1.5",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1006",
+    "parentId" : "00c74cc0-46c5-48f3-ab36-6dc0a7bcaec1",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1001"
+  } ],
+  "ontologyTerms" : [ ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "lifeEvents" : [ {
+    "name" : [ {
+      "value" : "Att få barn",
+      "language" : "sv"
+    }, {
+      "value" : "Having a child",
+      "language" : "en"
+    }, {
+      "value" : "Lapsen saaminen",
+      "language" : "fi"
+    } ],
+    "code" : "KE1",
+    "ontologyType" : "LIFESITUATION",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v3001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "industrialClasses" : [ ],
+  "legislation" : [ ],
+  "keywords" : [ {
+    "value" : "sukunimitilasto",
+    "language" : "fi"
+  }, {
+    "value" : "etunimitilasto",
+    "language" : "fi"
+  } ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "serviceChannels" : [ ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "b458d033-042d-4cbe-b030-34e81da28821",
+      "name" : "Väestörekisterikeskus"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "b458d033-042d-4cbe-b030-34e81da28821",
+      "name" : "Väestörekisterikeskus"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "serviceVouchers" : [ ],
+  "serviceCollections" : [ ],
+  "publishingStatus" : "Published",
+  "modified" : "2018-05-03T11:53:58.162746Z"
+}

@@ -1,0 +1,70 @@
+{
+  "sourceId": null,
+  "serviceChannelDescriptions": [
+    {
+      "language" : "sv",
+      "value" : "Betalning av Vasa stads hissunderstöd kan du söka med betalningsansökan.",
+      "type" : "Description"
+    }, {
+      "language" : "sv",
+      "value" : "Betalning av Vasa stads hissunderstöd kan du söka med betalningsansökan.",
+      "type" : "Summary"
+    }, {
+      "language" : "fi",
+      "value" : "Vaasan kaupungin hissiavustuksen maksatusta voi hakea maksatushakemuksella.",
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : "Vaasan kaupungin hissiavustuksen maksatusta voi hakea maksatushakemuksella.",
+      "type" : "Summary"
+    }
+  ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "areaType": "LimitedType",
+  "serviceChannelNames": [
+    {
+      "language" : "fi",
+      "value" : "Maksatushakemus, hissi"
+    }, {
+      "language" : "sv",
+      "value" : "Betalningsansökan, hiss"
+    }
+  ],
+  "areas": [
+    {
+      "type": "Municipality",
+      "areaCodes": [
+        "905"
+      ]
+    }
+  ],
+  "formIdentifier": [
+  ],
+  "deliveryAddresses": [
+  ],
+  "channelUrls": [
+    {
+      "language" : "fi",
+      "value" : "https://www.vaasa.fi/sites/default/files/maksatushakemus_0.pdf",
+      "type" : "PDF"
+    }, {
+      "language" : "sv",
+      "value" : "https://www.vaasa.fi/sites/default/files/maksatushakemus_ru_0.pdf",
+      "type" : "PDF"
+    }
+  ],
+  "supportPhones": [
+  ],
+  "attachments": [
+  ],
+  "deleteAllDeliveryAddresses": true,
+  "supportEmails": [
+  ],
+  "deleteAllChannelUrls": true,
+  "deleteAllAttachments": true,
+  "deleteAllFormIdentifiers": true,
+  "publishingStatus": "Published",
+  "isVisibleForAll": true,
+  "deleteAllSupportEmails": true,
+  "deleteAllSupportPhones": true
+}

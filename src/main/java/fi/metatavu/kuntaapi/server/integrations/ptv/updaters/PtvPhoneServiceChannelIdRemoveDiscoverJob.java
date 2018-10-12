@@ -22,7 +22,7 @@ import fi.metatavu.kuntaapi.server.integrations.ptv.tasks.ServiceChannelTasksQue
 import fi.metatavu.kuntaapi.server.settings.SystemSettingController;
 import fi.metatavu.ptv.client.ApiResponse;
 import fi.metatavu.ptv.client.ResultType;
-import fi.metatavu.ptv.client.model.V7VmOpenApiPhoneChannel;
+import fi.metatavu.ptv.client.model.V8VmOpenApiPhoneChannel;
 
 @ApplicationScoped
 @Singleton
@@ -82,7 +82,7 @@ public class PtvPhoneServiceChannelIdRemoveDiscoverJob extends IdDiscoverJob {
       }
       
       String path = String.format("/api/%s/ServiceChannel/%s", PtvConsts.VERSION, ptvPhoneServiceChannelId.getId());
-      ApiResponse<V7VmOpenApiPhoneChannel> response = ptvClient.doGETRequest(null, path, new ResultType<V7VmOpenApiPhoneChannel>() {}, null, null);
+      ApiResponse<V8VmOpenApiPhoneChannel> response = ptvClient.doGETRequest(null, path, new ResultType<V8VmOpenApiPhoneChannel>() {}, null, null);
       if (response.getStatus() == 404) {
         serviceChannelTasksQueue.enqueueTask(new PhoneServiceChannelRemoveTask(false, ptvPhoneServiceChannelId));
       }

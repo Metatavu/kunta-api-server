@@ -1,0 +1,105 @@
+{
+  "sourceId": null,
+  "serviceChannelDescriptions": [
+    {
+      "language" : "fi",
+      "value" : "Keskustan päiväkoti toimii Naantalin vanhassakaupungissa kahdessa rakennuksessa.",
+      "type" : "Summary"
+    }, {
+      "language" : "fi",
+      "value" : "Keskustan päiväkoti toimii kahdessa rakennuksessa, Kaivokadun talossa ja Vanhalla Raatihuoneella. Hoitopaikkoja on tällä hetkellä yhteensä 60. Keskustan päiväkodissa toimii myös integroitu kuntoutusryhmä.\n",
+      "type" : "Description"
+    }
+  ],
+  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "areaType": "LimitedType",
+  "serviceChannelNames": [
+    {
+      "language" : "fi",
+      "value" : "Keskustan päiväkoti"
+    }
+  ],
+  "areas": [
+    {
+      "type": "Municipality",
+      "areaCodes": [
+        "529"
+      ]
+    }
+  ],
+  "emails": [
+  ],
+  "faxNumbers": [
+  ],
+  "phoneNumbers": [
+    {
+      "additionalInformation" : "",
+      "serviceChargeType" : "Chargeable",
+      "chargeDescription" : null,
+      "prefixNumber" : "+358",
+      "isFinnishServiceNumber" : false,
+      "number" : "440410431",
+      "language" : "fi"
+    }
+  ],
+  "languages" : [ "fi" ],
+  "webPages" : [ {
+    "orderNumber" : "1",
+    "url" : "http://www.naantali.fi/opetus_ja_koulutus/varhaiskasvatus/paivakodit/keskustan_pk/fi_FI/keskustan_pk/",
+    "value" : "Keskustan päiväkoti",
+    "language" : "fi"
+  } ],
+  "addresses": [
+    {
+      "type" : "Location",
+      "subType" : "Single",
+      "postOfficeBoxAddress" : null,
+      "streetAddress": {
+        "street" : [ {
+          "value" : "Mannerheiminkatu",
+          "language" : "fi"
+        } ],
+        "streetNumber" : "14",
+        "postalCode": "21110",
+        "municipality": "529",
+        "additionalInformation" : [ {
+          "value" : "Käynti Alikadun puolelta.",
+          "language" : "fi"
+        } ],
+        "latitude" : "6713890.211",
+        "longitude" : "226225.47"
+      },
+      "locationAbroad" : [],
+      "multipointLocation" : [],
+      "country" : "FI"
+    },    
+    {
+      "type" : "Location",
+      "subType" : "Single",
+      "postOfficeBoxAddress" : null,
+      "streetAddress": {
+        "street" : [ {
+          "value" : "Kaivokatu",
+          "language" : "fi"
+        } ],
+        "streetNumber" : "9",
+        "postalCode" : "21100",
+        "municipality": "529",
+        "additionalInformation": [ ],
+        "latitude" : "6713925.933",
+        "longitude" : "226321.604"
+      },
+      "locationAbroad" : [],
+      "multipointLocation" : [],
+      "country" : "FI"
+    }
+  ],
+  "serviceHours": [ ],
+  "deleteAllEmails": true,
+  "deleteAllPhoneNumbers": true,
+  "deleteAllFaxNumbers": true,
+  "publishingStatus": "Published",
+  "isVisibleForAll": true,
+  "deleteAllWebPages": true,
+  "deleteAllServiceHours": true
+}

@@ -21,9 +21,9 @@ import fi.metatavu.kuntaapi.server.rest.model.Service;
 import fi.metatavu.kuntaapi.server.rest.model.ServiceOrganization;
 import fi.metatavu.ptv.client.ApiResponse;
 import fi.metatavu.ptv.client.model.V6VmOpenApiServiceOrganization;
-import fi.metatavu.ptv.client.model.V7VmOpenApiServiceServiceChannel;
+import fi.metatavu.ptv.client.model.V8VmOpenApiServiceServiceChannel;
 import fi.metatavu.ptv.client.model.VmOpenApiItem;
-import fi.metatavu.ptv.client.model.V7VmOpenApiService;
+import fi.metatavu.ptv.client.model.V8VmOpenApiService;
 import fi.metatavu.kuntaapi.server.cache.ModificationHashCache;
 import fi.metatavu.kuntaapi.server.controllers.IdentifierController;
 import fi.metatavu.kuntaapi.server.controllers.IdentifierRelationController;
@@ -150,11 +150,11 @@ public class PtvServiceEntityDiscoverJob extends EntityDiscoverJob<IdTask<Servic
       return;
     }
     
-    ApiResponse<V7VmOpenApiService> response = ptvApi.getServiceApi(null).apiV7ServiceByIdGet(ptvServiceId.getId());
+    ApiResponse<V8VmOpenApiService> response = ptvApi.getServiceApi(null).apiV8ServiceByIdGet(ptvServiceId.getId());
     if (response.isOk()) {
       Identifier identifier = identifierController.acquireIdentifier(orderIndex, ptvServiceId);
       
-      V7VmOpenApiService ptvService = response.getResponse();
+      V8VmOpenApiService ptvService = response.getResponse();
       ServiceId kuntaApiServiceId = kuntaApiIdFactory.createFromIdentifier(ServiceId.class, identifier);
       
       fi.metatavu.kuntaapi.server.rest.model.Service service = translateService(ptvService, kuntaApiServiceId);
@@ -194,8 +194,8 @@ public class PtvServiceEntityDiscoverJob extends EntityDiscoverJob<IdTask<Servic
     }
   }
 
-  private fi.metatavu.kuntaapi.server.rest.model.Service translateService(V7VmOpenApiService ptvService, ServiceId kuntaApiServiceId) {
-    List<V7VmOpenApiServiceServiceChannel> serviceChannels = ptvService.getServiceChannels();
+  private fi.metatavu.kuntaapi.server.rest.model.Service translateService(V8VmOpenApiService ptvService, ServiceId kuntaApiServiceId) {
+    List<V8VmOpenApiServiceServiceChannel> serviceChannels = ptvService.getServiceChannels();
     
     List<ElectronicServiceChannelId> kuntaApiElectronicServiceChannelIds = new ArrayList<>(); 
     List<PhoneServiceChannelId> kuntaApiPhoneServiceChannelIds = new ArrayList<>();
@@ -203,7 +203,7 @@ public class PtvServiceEntityDiscoverJob extends EntityDiscoverJob<IdTask<Servic
     List<ServiceLocationServiceChannelId> kuntaApiServiceLocationServiceChannelIds = new ArrayList<>();
     List<WebPageServiceChannelId> kuntaApiWebPageServiceChannelIds = new ArrayList<>();
     
-    for (V7VmOpenApiServiceServiceChannel serviceChannel : serviceChannels) {
+    for (V8VmOpenApiServiceServiceChannel serviceChannel : serviceChannels) {
       sortServiceChannel(kuntaApiElectronicServiceChannelIds, kuntaApiPhoneServiceChannelIds,
           kuntaApiPrintableFormServiceChannelIds, kuntaApiServiceLocationServiceChannelIds,
           kuntaApiWebPageServiceChannelIds, serviceChannel);
@@ -225,7 +225,7 @@ public class PtvServiceEntityDiscoverJob extends EntityDiscoverJob<IdTask<Servic
       List<PhoneServiceChannelId> kuntaApiPhoneServiceChannelIds,
       List<PrintableFormServiceChannelId> kuntaApiPrintableFormServiceChannelIds,
       List<ServiceLocationServiceChannelId> kuntaApiServiceLocationServiceChannelIds,
-      List<WebPageServiceChannelId> kuntaApiWebPageServiceChannelIds, V7VmOpenApiServiceServiceChannel serviceServiceChannel) {
+      List<WebPageServiceChannelId> kuntaApiWebPageServiceChannelIds, V8VmOpenApiServiceServiceChannel serviceServiceChannel) {
     
     VmOpenApiItem serviceChannel = serviceServiceChannel.getServiceChannel();
     if (serviceChannel == null || serviceChannel.getId() == null) {
@@ -264,7 +264,7 @@ public class PtvServiceEntityDiscoverJob extends EntityDiscoverJob<IdTask<Servic
       return;
     } 
     
-    logger.log(Level.WARNING, () -> String.format("Failed to resolve service channel %s type", serviceChannelId));
+    logger.log(Level.INFO, () -> String.format("Failed to resolve service channel %s type", serviceChannelId));
     serviceChannelTasksQueue.enqueueTask(new ServiceChannelUpdateTask(true, serviceChannelId, null));
   }
   

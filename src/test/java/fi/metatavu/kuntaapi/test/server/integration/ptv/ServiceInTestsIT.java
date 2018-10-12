@@ -1,5 +1,7 @@
 package fi.metatavu.kuntaapi.test.server.integration.ptv;
 
+import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.wireMockConfig;
+
 import java.io.IOException;
 import java.util.Arrays;
 
@@ -11,10 +13,10 @@ import com.github.tomakehurst.wiremock.junit.WireMockRule;
 import com.jayway.restassured.http.ContentType;
 
 import fi.metatavu.kuntaapi.server.rest.model.Service;
-import fi.metatavu.ptv.client.model.V7VmOpenApiService;
-import fi.metatavu.ptv.client.model.V7VmOpenApiServiceAndChannelRelationInBase;
-import fi.metatavu.ptv.client.model.V7VmOpenApiServiceInBase;
-import fi.metatavu.ptv.client.model.V7VmOpenApiServiceServiceChannelInBase;
+import fi.metatavu.ptv.client.model.V8VmOpenApiService;
+import fi.metatavu.ptv.client.model.V8VmOpenApiServiceAndChannelRelationInBase;
+import fi.metatavu.ptv.client.model.V8VmOpenApiServiceInBase;
+import fi.metatavu.ptv.client.model.V8VmOpenApiServiceServiceChannelInBase;
 import fi.metatavu.kuntaapi.server.persistence.model.clients.AccessType;
 import fi.metatavu.kuntaapi.server.persistence.model.clients.ClientOrganizationPermission;
 import fi.metatavu.kuntaapi.test.AbstractPtvMocker;
@@ -28,7 +30,7 @@ public class ServiceInTestsIT extends AbstractPtvInTest {
    * Starts WireMock
    */
   @Rule
-  public WireMockRule wireMockRule = new WireMockRule(getWireMockPort());
+  public WireMockRule wireMockRule = new WireMockRule(wireMockConfig().port(getWireMockPort()), false);
   
   @Before
   public void beforeTest() throws InterruptedException {
@@ -38,7 +40,7 @@ public class ServiceInTestsIT extends AbstractPtvInTest {
 
     startMocks();
     
-    waitApiListCount("/organizations", 3);
+    waitApiListCount("/organizations", TestPtvConsts.ORGANIZATIONS.length);
     waitApiListCount("/electronicServiceChannels", TestPtvConsts.ELECTRONIC_CHANNEL_SERVICE_CHANNELS.length);
     waitApiListCount("/phoneServiceChannels", TestPtvConsts.PHONE_SERVICE_CHANNELS.length);
     waitApiListCount("/printableFormServiceChannels", TestPtvConsts.PRINTABLE_FORM_SERVICE_CHANNELS.length);
@@ -79,8 +81,8 @@ public class ServiceInTestsIT extends AbstractPtvInTest {
     grantOrganizationPermission(AccessType.READ_WRITE, organizationId, ClientOrganizationPermission.UPDATE_SERVICES);
 
     Service kuntaApiResource = getService(0, TestPtvConsts.SERVICES.length);
-    V7VmOpenApiServiceInBase ptvInResource = getPtvServiceMocker().readEntity(AbstractPtvMocker.PTV_IN_API, ptvId, V7VmOpenApiServiceInBase.class);
-    V7VmOpenApiService ptvOutResource =  getPtvServiceMocker().readEntity(AbstractPtvMocker.PTV_OUT_API, ptvId, V7VmOpenApiService.class);
+    V8VmOpenApiServiceInBase ptvInResource = getPtvServiceMocker().readEntity(AbstractPtvMocker.PTV_IN_API, ptvId, V8VmOpenApiServiceInBase.class);
+    V8VmOpenApiService ptvOutResource =  getPtvServiceMocker().readEntity(AbstractPtvMocker.PTV_OUT_API, ptvId, V8VmOpenApiService.class);
     
     getPtvServiceMocker().mockServicePut(ptvId, ptvOutResource);
     
@@ -110,7 +112,7 @@ public class ServiceInTestsIT extends AbstractPtvInTest {
     kuntaApiResource.setServiceLocationServiceChannelIds(Arrays.asList(getServiceLocationChannelId(0, TestPtvConsts.SERVICE_LOCATION_SERVICE_CHANNELS.length)));
     kuntaApiResource.setWebPageServiceChannelIds(Arrays.asList(getWebPageChannelId(0, TestPtvConsts.WEB_PAGE_SERVICE_CHANNELS.length)));
 
-    V7VmOpenApiService ptvOutResource =  getPtvServiceMocker().readEntity(AbstractPtvMocker.PTV_OUT_API, ptvServiceId, V7VmOpenApiService.class);
+    V8VmOpenApiService ptvOutResource =  getPtvServiceMocker().readEntity(AbstractPtvMocker.PTV_OUT_API, ptvServiceId, V8VmOpenApiService.class);
     
     getPtvServiceMocker().mockServicePut(ptvServiceId, ptvOutResource);
     
@@ -132,10 +134,10 @@ public class ServiceInTestsIT extends AbstractPtvInTest {
   }
   
   private void verifyChannelRequest(String ptvServiceId, String... ptvServiceChannelIds) {
-    V7VmOpenApiServiceAndChannelRelationInBase ptvChannelRequest = new V7VmOpenApiServiceAndChannelRelationInBase();
+    V8VmOpenApiServiceAndChannelRelationInBase ptvChannelRequest = new V8VmOpenApiServiceAndChannelRelationInBase();
     
     for (String ptvServiceChannelId : ptvServiceChannelIds) {
-      V7VmOpenApiServiceServiceChannelInBase channelRelation = new V7VmOpenApiServiceServiceChannelInBase();
+      V8VmOpenApiServiceServiceChannelInBase channelRelation = new V8VmOpenApiServiceServiceChannelInBase();
       channelRelation.setServiceChannelId(ptvServiceChannelId);
       channelRelation.setDeleteAllDescriptions(false);
       channelRelation.setDeleteAllServiceHours(false);
@@ -173,7 +175,7 @@ public class ServiceInTestsIT extends AbstractPtvInTest {
     kuntaApiResource.setType("PermissionAndObligation");
     kuntaApiResource.setVouchers(createServiceVouchers("en", "Voucher", "https://www.example.com/voucher", "Test voucher"));
     
-    V7VmOpenApiServiceInBase ptvInResource = getPtvServiceMocker().readEntity(AbstractPtvMocker.PTV_IN_API, ptvId, V7VmOpenApiServiceInBase.class);
+    V8VmOpenApiServiceInBase ptvInResource = getPtvServiceMocker().readEntity(AbstractPtvMocker.PTV_IN_API, ptvId, V8VmOpenApiServiceInBase.class);
     ptvInResource.setAreas(Arrays.asList(createArea("Municipality", "12345")));
     ptvInResource.setAreaType("AreaType");
     ptvInResource.setServiceChargeType("Charged");
@@ -193,7 +195,7 @@ public class ServiceInTestsIT extends AbstractPtvInTest {
     ptvInResource.setServiceVouchers(createPtvServiceVouchers("en", "Voucher", "https://www.example.com/voucher", "Test voucher"));
     ptvInResource.setServiceVouchersInUse(true);
     
-    V7VmOpenApiService ptvOutResource =  getPtvServiceMocker().readEntity(AbstractPtvMocker.PTV_OUT_API, ptvId, V7VmOpenApiService.class);
+    V8VmOpenApiService ptvOutResource =  getPtvServiceMocker().readEntity(AbstractPtvMocker.PTV_OUT_API, ptvId, V8VmOpenApiService.class);
     
     getPtvServiceMocker().mockServicePut(ptvId, ptvOutResource);
     

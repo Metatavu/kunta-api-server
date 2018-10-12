@@ -22,7 +22,7 @@ import fi.metatavu.kuntaapi.server.integrations.ptv.tasks.WebPageServiceChannelR
 import fi.metatavu.kuntaapi.server.settings.SystemSettingController;
 import fi.metatavu.ptv.client.ApiResponse;
 import fi.metatavu.ptv.client.ResultType;
-import fi.metatavu.ptv.client.model.V7VmOpenApiWebPageChannel;
+import fi.metatavu.ptv.client.model.V8VmOpenApiWebPageChannel;
 
 @ApplicationScoped
 @Singleton
@@ -82,7 +82,7 @@ public class PtvWebPageServiceChannelIdRemoveDiscoverJob extends IdDiscoverJob {
       }
       
       String path = String.format("/api/%s/ServiceChannel/%s", PtvConsts.VERSION, ptvWebPageServiceChannelId.getId());
-      ApiResponse<V7VmOpenApiWebPageChannel> response = ptvClient.doGETRequest(null, path, new ResultType<V7VmOpenApiWebPageChannel>() {}, null, null);
+      ApiResponse<V8VmOpenApiWebPageChannel> response = ptvClient.doGETRequest(null, path, new ResultType<V8VmOpenApiWebPageChannel>() {}, null, null);
       if (response.getStatus() == 404) {
         serviceChannelTasksQueue.enqueueTask(new WebPageServiceChannelRemoveTask(false, ptvWebPageServiceChannelId));
       }

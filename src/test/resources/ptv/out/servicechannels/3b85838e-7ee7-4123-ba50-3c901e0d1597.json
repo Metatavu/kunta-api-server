@@ -1,0 +1,72 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/node/28070",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/sv/node/28070",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "09e2a52e-823f-496e-9923-d83c542973b6",
+      "name" : "Vaasan kaupungin puhelinasiointi"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "5fe23177-860c-4257-ac03-b4cdeab87d19",
+      "name" : "Työllistymistä edistävä monialainen yhteispalvelu (TYP)"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "sv",
+    "value" : "Sektorsövergripande samservice som främjar sysselsättningen",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Työllistymistä edistävä monialainen yhteispalvelu",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Verkkosivulta löydät lisätietoa työllistymistä edistävästä monialaisesta yhteispalvelusta. ",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Verkkosivulta löydät lisätietoa työllistymistä edistävästä monialaisesta yhteispalvelusta.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "På webbsidan hittar du tilläggsinformation om sektorsövergripande samservice som främjar sysselsättningen (TYP).",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "På webbsidan hittar du tilläggsinformation om sektorsövergripande samservice som främjar sysselsättningen (TYP). \n",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "3b85838e-7ee7-4123-ba50-3c901e0d1597"
+}

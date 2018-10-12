@@ -470,7 +470,7 @@ public abstract class AbstractPtvMocker<R> {
   
   protected void verifyPut(String path, String payload) {
     verify(1, putRequestedFor(urlEqualTo(path))
-        .withRequestBody(equalToJson(payload, true, true)));
+        .withRequestBody(equalToJson(payload, true, false)));
   }
   
   public class GuidPage {
