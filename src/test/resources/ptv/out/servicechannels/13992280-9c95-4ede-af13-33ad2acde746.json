@@ -18,10 +18,10 @@
     "streetAddress" : {
       "street" : [ {
         "value" : "Sundomvägen",
-        "language" : "fi"
+        "language" : "sv"
       }, {
         "value" : "Sundomvägen",
-        "language" : "sv"
+        "language" : "fi"
       } ],
       "streetNumber" : "13",
       "postalCode" : "65410",
@@ -35,14 +35,14 @@
       "municipality" : {
         "code" : "905",
         "name" : [ {
-          "value" : "Vaasa",
-          "language" : "fi"
-        }, {
           "value" : "Vasa",
           "language" : "sv"
         }, {
           "value" : "Vaasa",
           "language" : "en"
+        }, {
+          "value" : "Vaasa",
+          "language" : "fi"
         } ]
       },
       "additionalInformation" : [ ],
@@ -52,7 +52,7 @@
     },
     "locationAbroad" : null,
     "multipointLocation" : null,
-    "entrances" : null,
+    "entrances" : [ ],
     "country" : "FI"
   } ],
   "languages" : [ "sv" ],
@@ -63,14 +63,14 @@
     "municipalities" : [ {
       "code" : "905",
       "name" : [ {
-        "value" : "Vaasa",
-        "language" : "fi"
-      }, {
         "value" : "Vasa",
         "language" : "sv"
       }, {
         "value" : "Vaasa",
         "language" : "en"
+      }, {
+        "value" : "Vaasa",
+        "language" : "fi"
       } ]
     } ]
   } ],
@@ -128,12 +128,12 @@
   "serviceHours" : [ ],
   "serviceChannelType" : "ServiceLocation",
   "serviceChannelDescriptions" : [ {
-    "language" : "fi",
-    "value" : "Sundom skola on etäällä kaupungin liikennehälystä ja lähellä luontoa.",
-    "type" : "Summary"
-  }, {
     "language" : "sv",
     "value" : "Sundom skola ligger avskild från stadens trafikbrus i nära anslutning till naturen.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Sundom skola on etäällä kaupungin liikennehälystä ja lähellä luontoa.",
     "type" : "Summary"
   }, {
     "language" : "sv",

@@ -1,0 +1,178 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Vasaesplanaden",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasanpuistikko",
+        "language" : "fi"
+      } ],
+      "streetNumber" : "20",
+      "postalCode" : "65100",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        }, {
+          "value" : "Vaasa",
+          "language" : "fi"
+        } ]
+      },
+      "additionalInformation" : [ ],
+      "latitude" : "7007593.926",
+      "longitude" : "228557.495",
+      "coordinateState" : "Ok"
+    },
+    "locationAbroad" : null,
+    "multipointLocation" : null,
+    "entrances" : [ ],
+    "country" : "FI"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      }, {
+        "value" : "Vaasa",
+        "language" : "fi"
+      } ]
+    } ]
+  } ],
+  "services" : [ {
+    "service" : {
+      "id" : "7a32451f-3f36-46f2-83b5-5557589b8680",
+      "name" : "Perheliikunta"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "98fd2cc8-ccbb-46c1-a773-92fecf7a0c91",
+      "name" : "Lasten ja nuorten liikunta"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "c5cd2254-29a3-4712-a093-f15c44208117",
+      "name" : "Action-toiminta"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "e8460816-27c2-4c5a-b18c-ceefb3d674e2",
+      "name" : "Liikkuva koulu -toiminta"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "emails" : [ ],
+  "serviceChannelNames" : [ {
+    "language" : "sv",
+    "value" : "Idrottsservicens byrå",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Liikuntapalvelujen toimisto",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ {
+    "serviceHourType" : "DaysOfTheWeek",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ {
+      "value" : null,
+      "language" : "fi"
+    } ],
+    "openingHour" : [ {
+      "dayFrom" : "Monday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    }, {
+      "dayFrom" : "Tuesday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    }, {
+      "dayFrom" : "Wednesday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "17:00:00"
+    }, {
+      "dayFrom" : "Thursday",
+      "dayTo" : "",
+      "from" : "08:00:00",
+      "to" : "16:00:00"
+    } ]
+  } ],
+  "serviceChannelType" : "ServiceLocation",
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "Idrottsservicen producerar mångsidig idrotts- och fritidsservice. Byrån finns på Vasaesplanaden.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Liikuntapalvelut tuottaa monipuolisia liikunta- ja vapaa-ajan palveluja. Toimisto sijaitsee Vaasanpuistikolla.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Idrottsservicen producerar mångsidig idrotts- och fritidsservice. Byrån finns på Vasaesplanaden. ",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Liikuntapalvelut tuottaa monipuolisia liikunta- ja vapaa-ajan palveluja. Toimisto sijaitsee Vaasanpuistikolla. ",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "ea120e38-dfc7-44e6-8e75-0d49ddcfe852"
+}

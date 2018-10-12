@@ -1,0 +1,78 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "http://www.abo.fi/vos/",
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "orderNumber" : "0",
+    "url" : "http://www.abo.fi/vos/",
+    "value" : null,
+    "language" : "en"
+  }, {
+    "orderNumber" : "0",
+    "url" : "http://www.abo.fi/vos/",
+    "value" : null,
+    "language" : "sv"
+  } ],
+  "languages" : [ "sv" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "17c633dd-5408-495a-86c1-d8f57598e899",
+      "name" : "Perusopetus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "sv",
+    "value" : "Vasa övningsskolas webbsidor",
+    "type" : "Name"
+  }, {
+    "language" : "en",
+    "value" : "Web pages of Vasa övningsskola",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Vasa övningsskolan verkkosivut",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Vasa övningsskolan sivuilta löydät tietoa koulun toiminnasta.",
+    "type" : "Summary"
+  }, {
+    "language" : "en",
+    "value" : "The web pages of Vasa övningsskola gives you information about the school.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "På Vasa övningsskolas sidor hittar du information om skolans verksamhet.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "På Vasa övningsskolas sidor hittar du information om skolans verksamhet. \n",
+    "type" : "Description"
+  }, {
+    "language" : "en",
+    "value" : "The web pages of Vasa övningsskola gives you information about the school. \n",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Vasa övningsskolan sivuilta löydät tietoa koulun toiminnasta.",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "3f69886e-3e21-41c6-8486-19d289644f10"
+}

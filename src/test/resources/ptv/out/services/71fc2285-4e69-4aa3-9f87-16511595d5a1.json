@@ -1,0 +1,254 @@
+{
+  "id" : "71fc2285-4e69-4aa3-9f87-16511595d5a1",
+  "sourceId" : null,
+  "generalDescriptionId" : "d7bd004b-b4ee-4f53-85e0-4d0dce13a344",
+  "type" : "Service",
+  "fundingType" : "PubliclyFunded",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Maahanmuuttajien valmistava opetus",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Valmo, valmistava opetus",
+    "type" : "AlternativeName"
+  } ],
+  "serviceChargeType" : null,
+  "areaType" : "LimitedType",
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      }, {
+        "value" : "Naantali",
+        "language" : "fi"
+      } ]
+    } ]
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Maahanmuuttajien valmistavaa opetusta annetaan tarpeen mukaan perustettavassa ryhmässä Naantalissa tai yhteistyössä lähikuntien kanssa.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Valmistavan opetuksen tarpeesta tulee ottaa yhteyttä sivistyspalvelujen toimistosihteeriin tai johtavaan rehtoriin.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Maahanmuuttajien valmistavaa opetusta annetaan tarpeen mukaan perustettavassa ryhmässä Naantalissa tai yhteistyössä lähikuntien kanssa. Perusopetukseen valmistava opetus kestää pääsääntöisesti yhden lukuvuoden. Opetuksen tavoitteena on edistää oppilaan suomen kielen taitoa, tasapainoista kehitystä ja kotoutumista suomalaiseen yhteiskuntaan sekä antaa tarvittavia valmiuksia perusopetukseen siirtymistä varten. \n\nOppilas opiskelee oman opinto-ohjelmansa mukaan. Opinto-ohjelman laatimisessa ja opetuksen järjestämisessä otetaan huomioon oppilaan ikä ja opiskeluvalmiudet. Valmistavan opetuksen jälkeen oppilas siirtyy perusopetukseen tai muuhun hänelle soveltuvaan opetukseen.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  } ],
+  "languages" : [ "fi" ],
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Grundläggande utbildning",
+      "language" : "sv"
+    }, {
+      "value" : "Basic education",
+      "language" : "en"
+    }, {
+      "value" : "Perusopetus",
+      "language" : "fi"
+    } ],
+    "description" : [ {
+      "value" : "Till denna serviceundergrupp hör både den egentliga grundläggande utbildningen med innehåll och mål samt direkta tjänster som erbjuds i anslutning till grundläggande utbildningen och för att stöda den, t.ex. skoltransporter, skolmat och assistanstjänster. Till denna grupp hör också ärenden i anslutning till avläggande av grundläggande utbildning utomlands i enlighet med den finska grundläggande utbildningen.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains basic education itself with its contents and objectives as well as the services offered directly in connection with and in support of basic education, for example school transport, school lunches and an assistant’s services. The class also includes issues related to completing abroad a basic education that is in line with the Finnish basic education.",
+      "language" : "en"
+    }, {
+      "value" : "Tähän palvelualaluokkaan kuuluvat sekä varsinainen perusopetus sisältöineen ja tavoitteineen sekä perusopetuksen yhteydessä ja sen tukemiseksi välittömästi tarjottavat palvelut, esimerkiksi koulukuljetukset, kouluruokailu ja avustajapalvelut. Tähän luokkaan kuuluvat myös Suomen perusopetuksen mukaisen peruskoulutuksen ulkomailla suorittamiseen liittyvät asiat.",
+      "language" : "fi"
+    } ],
+    "code" : "P6.2",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1062",
+    "parentId" : "fd1bb60e-4206-4f0a-994f-8ffcb4ffaaa4",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1060"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "Grundschule, Gesamtschule",
+      "language" : "de"
+    }, {
+      "value" : "grundskolan",
+      "language" : "sv"
+    }, {
+      "value" : "põhikool",
+      "language" : "et"
+    }, {
+      "value" : "comprehensive school",
+      "language" : "en"
+    }, {
+      "value" : "peruskoulu",
+      "language" : "fi"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p14592",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p48279"
+  }, {
+    "name" : [ {
+      "value" : "förberedande utbildning för invandrare",
+      "language" : "sv"
+    }, {
+      "value" : "preparatory education and training for immigrants",
+      "language" : "en"
+    }, {
+      "value" : "maahanmuuttajien valmistava koulutus",
+      "language" : "fi"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p65970",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p36950"
+  }, {
+    "name" : [ {
+      "value" : "grundläggande utbildning",
+      "language" : "sv"
+    }, {
+      "value" : "basic education",
+      "language" : "en"
+    }, {
+      "value" : "perusopetus",
+      "language" : "fi"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p1275",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p33827"
+  }, {
+    "name" : [ {
+      "value" : "förberedande undervisning",
+      "language" : "sv"
+    }, {
+      "value" : "preparatory education",
+      "language" : "en"
+    }, {
+      "value" : "valmistava opetus",
+      "language" : "fi"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p6010",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p33827"
+  }, {
+    "name" : [ ],
+    "code" : null,
+    "ontologyType" : null,
+    "uri" : "http://www.yso.fi/onto/yso/p6165",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Barn och barnfamiljer",
+      "language" : "sv"
+    }, {
+      "value" : "Children and families with children",
+      "language" : "en"
+    }, {
+      "value" : "Lapset ja lapsiperheet",
+      "language" : "fi"
+    } ],
+    "code" : "KR1.2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2003",
+    "parentId" : "daff1fb9-9394-49b5-b033-d1d1c7005ab6",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001"
+  }, {
+    "name" : [ {
+      "value" : "Medborgare",
+      "language" : "sv"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "lifeEvents" : [ ],
+  "industrialClasses" : [ ],
+  "legislation" : [ ],
+  "keywords" : [ ],
+  "requirements" : [ {
+    "value" : "Perusopetukseen valmistavaa opetusta saavat ne maahanmuuttajataustaiset oppilaat, joiden suomen kielen taito tai muut valmiudet eivät riitä esi- ja perusopetuksen ryhmissä opiskelemiseen.",
+    "language" : "fi"
+  } ],
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "403097f7-f397-4eed-aac6-98442faa33b6",
+      "name" : "Sivistyspalvelujen toimistosihteeri"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Testiorganisaatio 6 (Kunta)"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Testiorganisaatio 6 (Kunta)"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "ProcuredServices",
+    "organization" : null,
+    "roleType" : "Producer",
+    "additionalInformation" : [ {
+      "value" : "lähikunnat",
+      "language" : "fi"
+    } ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "serviceVouchers" : [ ],
+  "serviceCollections" : [ ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:46:57.919805Z"
+}

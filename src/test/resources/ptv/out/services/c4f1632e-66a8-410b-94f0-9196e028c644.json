@@ -18,14 +18,14 @@
     "municipalities" : [ {
       "code" : "529",
       "name" : [ {
-        "value" : "Naantali",
-        "language" : "fi"
-      }, {
         "value" : "Nådendal",
         "language" : "sv"
       }, {
         "value" : "Naantali",
         "language" : "en"
+      }, {
+        "value" : "Naantali",
+        "language" : "fi"
       } ]
     } ]
   } ],
@@ -35,8 +35,12 @@
     "type" : "Summary"
   }, {
     "language" : "fi",
-    "value" : null,
-    "type" : "ValidityTime"
+    "value" : "Vanhemmat ja varhaiskasvatuksen henkilökunta voivat ottaa huolen syntyessä yhteyttä koulupsykologiin tai -kuraattoriin tai varhaiskasvatuksen erityisopettajiin.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Esiopetuksen oppilashuolto Naantalissa\n* edistää lapsen hyvinvointia ja ehkäisee ongelmia ennalta\n* mahdollistaa varhaisen puuttumisen jo silloin kun huoli on vielä pieni\n* havaitsee lasten kehityksessä ja vanhemmuudessa ilmenevää tuen tarvetta\n* tarjoaa tukea lapsille ja vanhemmille.\n\nEsiopetuksen oppilashuolto on moniammatillista yhteistyötä, johon osallistuvat varhaiskasvatuksen erityisopettajat (päiväkodeissa), sekä koulupsykologit ja -kuraattorit. Koulupsykologin tuki on tarkoitettu lapsille, joilla voi olla oppimisen, tarkkaavuuden tai tunne-elämän häiriöitä. Koulukuraattori puolestaan auttaa lapsia, joilla voi olla sosiaalisia tai tunne-elämän pulmia tai perheen tilanteessa tarvitaan sosiaalityön osaamista.",
+    "type" : "Description"
   }, {
     "language" : "fi",
     "value" : null,
@@ -44,41 +48,37 @@
   }, {
     "language" : "fi",
     "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
     "type" : "DeadLine"
   }, {
     "language" : "fi",
     "value" : null,
-    "type" : "ChargeTypeAdditionalInfo"
-  }, {
-    "language" : "fi",
-    "value" : "Vanhemmat ja varhaiskasvatuksen henkilökunta voivat ottaa huolen syntyessä yhteyttä koulupsykologiin tai -kuraattoriin tai varhaiskasvatuksen erityisopettajiin.",
-    "type" : "UserInstruction"
-  }, {
-    "language" : "fi",
-    "value" : "Esiopetuksen oppilashuolto Naantalissa\n* edistää lapsen hyvinvointia ja ehkäisee ongelmia ennalta\n* mahdollistaa varhaisen puuttumisen jo silloin kun huoli on vielä pieni\n* havaitsee lasten kehityksessä ja vanhemmuudessa ilmenevää tuen tarvetta\n* tarjoaa tukea lapsille ja vanhemmille.\n\nEsiopetuksen oppilashuolto on moniammatillista yhteistyötä, johon osallistuvat varhaiskasvatuksen erityisopettajat (päiväkodeissa), sekä koulupsykologit ja -kuraattorit. Koulupsykologin tuki on tarkoitettu lapsille, joilla voi olla oppimisen, tarkkaavuuden tai tunne-elämän häiriöitä. Koulukuraattori puolestaan auttaa lapsia, joilla voi olla sosiaalisia tai tunne-elämän pulmia tai perheen tilanteessa tarvitaan sosiaalityön osaamista.",
-    "type" : "Description"
+    "type" : "ValidityTime"
   } ],
   "languages" : [ "fi" ],
   "serviceClasses" : [ {
     "name" : [ {
-      "value" : "Esiopetus",
-      "language" : "fi"
-    }, {
       "value" : "Förskoleundervisning",
       "language" : "sv"
     }, {
       "value" : "Pre-school education",
       "language" : "en"
+    }, {
+      "value" : "Esiopetus",
+      "language" : "fi"
     } ],
     "description" : [ {
-      "value" : "Tähän palvelualaluokkaan kuuluvat sekä varsinainen esiopetus sisältöineen että esiopetuksen paikallinen järjestäminen ja vaihtoehdot lasten ja heidän perheidensä kannalta.",
-      "language" : "fi"
-    }, {
       "value" : "Till denna servicearbetsgrupp hör både den egentliga förskoleundervisningen med innehåll och det lokala ordnandet av förskoleundervisning och alternativ med tanke på barnen och deras familjer.",
       "language" : "sv"
     }, {
       "value" : "This service subclass contains pre-school education itself and its contents, the local organisation of pre-school education, and alternatives for children and their parents.",
       "language" : "en"
+    }, {
+      "value" : "Tähän palvelualaluokkaan kuuluvat sekä varsinainen esiopetus sisältöineen että esiopetuksen paikallinen järjestäminen ja vaihtoehdot lasten ja heidän perheidensä kannalta.",
+      "language" : "fi"
     } ],
     "code" : "P6.1",
     "ontologyType" : "PTVL",
@@ -87,24 +87,24 @@
     "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1060"
   }, {
     "name" : [ {
-      "value" : "Koulu- ja opiskelijahuollon sosiaalipalvelut",
-      "language" : "fi"
-    }, {
       "value" : "Socialtjänster för skol- och studerandevård",
       "language" : "sv"
     }, {
       "value" : "Pupil and student welfare social services",
       "language" : "en"
+    }, {
+      "value" : "Koulu- ja opiskelijahuollon sosiaalipalvelut",
+      "language" : "fi"
     } ],
     "description" : [ {
-      "value" : "Tähän alapalveluluokkaan kuuluvat koululaisille ja kokopäivisille opiskelijoille tarkoitetut sosiaalipalvelut kuten koulukuraattorin palvelut sekä toisen ja korkea-asteen opiskelijoille suunnatut arjessa pärjäämistä tukevat palvelut, kuten vertaistukiryhmät ja neuvontapalvelut, jotka eivät ole terveyden- tai sairaanhoidon palveluja.",
-      "language" : "fi"
-    }, {
       "value" : "Till denna underservicegrupp hör socialtjänster som är avsedda för skolelever och studeranden på heltid såsom skolkuratortjänster samt tjänster som stöder studeranden inom andra gradens utbildning och yrkesutbildning på högre nivå att klara sig i vardagen. Sådana är t.ex. kamratstöd och rådgivningstjänster som inte är hälso- eller sjukvårdstjänster.",
       "language" : "sv"
     }, {
       "value" : "This service subclass contains social services intended for pupils and full-time students, including a school social worker’s services and services targeted at secondary and tertiary level students that support coping with everyday life, such as peer support groups and advisory services that are not health or medical care services.",
       "language" : "en"
+    }, {
+      "value" : "Tähän alapalveluluokkaan kuuluvat koululaisille ja kokopäivisille opiskelijoille tarkoitetut sosiaalipalvelut kuten koulukuraattorin palvelut sekä toisen ja korkea-asteen opiskelijoille suunnatut arjessa pärjäämistä tukevat palvelut, kuten vertaistukiryhmät ja neuvontapalvelut, jotka eivät ole terveyden- tai sairaanhoidon palveluja.",
+      "language" : "fi"
     } ],
     "code" : "P4.9",
     "ontologyType" : "PTVL",
@@ -113,24 +113,24 @@
     "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1023"
   }, {
     "name" : [ {
-      "value" : "Perheiden palvelut",
-      "language" : "fi"
-    }, {
       "value" : "Tjänster för familjer",
       "language" : "sv"
     }, {
       "value" : "Services for families",
       "language" : "en"
+    }, {
+      "value" : "Perheiden palvelut",
+      "language" : "fi"
     } ],
     "description" : [ {
       "value" : "I denna servicegrupp behandlas tjänster för barnfamiljer, som i huvudsak omfattar perioden från graviditeten till att en ung person blir myndig. I innehållet i servicegruppen granskas tjänsterna för familjer och situationer ofta via aktörer, situationer och synvinklar.",
       "language" : "sv"
     }, {
-      "value" : "Tässä palveluluokassa käsitellään lapsiperheen palveluja, jotka pääosin kattavat ajanjakson raskausajasta nuoren täysi-ikäiseksi tulemiseen. Palveluluokan sisällössä perheen palveluja ja tilanteita tarkastellaan useiden toimijoiden, tilanteiden ja näkökulmien kautta.",
-      "language" : "fi"
-    }, {
       "value" : "This service class contains services for families with children, mainly covering the period from pregnancy until a young person turns 18. In the contents of this service class, family services are examined from the perspective of different actors, situations and viewpoints.",
       "language" : "en"
+    }, {
+      "value" : "Tässä palveluluokassa käsitellään lapsiperheen palveluja, jotka pääosin kattavat ajanjakson raskausajasta nuoren täysi-ikäiseksi tulemiseen. Palveluluokan sisällössä perheen palveluja ja tilanteita tarkastellaan useiden toimijoiden, tilanteiden ja näkökulmien kautta.",
+      "language" : "fi"
     } ],
     "code" : "P3",
     "ontologyType" : "PTVL",
@@ -147,14 +147,14 @@
     "parentUri" : null
   }, {
     "name" : [ {
-      "value" : "oppilashuolto",
-      "language" : "fi"
-    }, {
       "value" : "elevvård",
       "language" : "sv"
     }, {
       "value" : "pupil welfare",
       "language" : "en"
+    }, {
+      "value" : "oppilashuolto",
+      "language" : "fi"
     } ],
     "code" : null,
     "ontologyType" : "JUPO",
@@ -166,11 +166,11 @@
       "value" : "förskoleundervisning",
       "language" : "sv"
     }, {
-      "value" : "esiopetus",
-      "language" : "fi"
-    }, {
       "value" : "preschool education",
       "language" : "en"
+    }, {
+      "value" : "esiopetus",
+      "language" : "fi"
     } ],
     "code" : null,
     "ontologyType" : "JUPO",
@@ -180,14 +180,14 @@
   } ],
   "targetGroups" : [ {
     "name" : [ {
-      "value" : "Lapset ja lapsiperheet",
-      "language" : "fi"
+      "value" : "Barn och barnfamiljer",
+      "language" : "sv"
     }, {
       "value" : "Children and families with children",
       "language" : "en"
     }, {
-      "value" : "Barn och barnfamiljer",
-      "language" : "sv"
+      "value" : "Lapset ja lapsiperheet",
+      "language" : "fi"
     } ],
     "code" : "KR1.2",
     "ontologyType" : "TARGETGROUP",
@@ -196,14 +196,14 @@
     "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001"
   }, {
     "name" : [ {
-      "value" : "Kansalaiset",
-      "language" : "fi"
+      "value" : "Medborgare",
+      "language" : "sv"
     }, {
       "value" : "Citizens",
       "language" : "en"
     }, {
-      "value" : "Medborgare",
-      "language" : "sv"
+      "value" : "Kansalaiset",
+      "language" : "fi"
     } ],
     "code" : "KR1",
     "ontologyType" : "TARGETGROUP",
@@ -221,8 +221,8 @@
   } ],
   "serviceChannels" : [ {
     "serviceChannel" : {
-      "id" : "6dc68be3-cfc9-44b5-afc4-adc9fae54763",
-      "name" : "Päivähoidon esimies"
+      "id" : "8ca0e38d-2ac5-44ec-9b19-dc6833f2add8",
+      "name" : "Naantalin koulupsykologit"
     },
     "serviceChargeType" : null,
     "description" : [ ],
@@ -241,12 +241,23 @@
     "serviceHours" : [ ],
     "contactDetails" : null,
     "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "ddff2508-46bb-4b80-a1df-879fc48f3ae5",
+      "name" : "Naantalin kaupungin johtava koulupsykologi"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
   } ],
   "organizations" : [ {
     "provisionType" : null,
     "organization" : {
       "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
-      "name" : "Naantalin kaupunki"
+      "name" : "Testiorganisaatio 6 (Kunta)"
     },
     "roleType" : "Responsible",
     "additionalInformation" : [ ]
@@ -254,7 +265,7 @@
     "provisionType" : "SelfProducedServices",
     "organization" : {
       "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
-      "name" : "Naantalin kaupunki"
+      "name" : "Testiorganisaatio 6 (Kunta)"
     },
     "roleType" : "Producer",
     "additionalInformation" : [ ]
@@ -263,5 +274,5 @@
   "serviceVouchers" : [ ],
   "serviceCollections" : [ ],
   "publishingStatus" : "Published",
-  "modified" : "2018-05-03T11:53:58.162746Z"
+  "modified" : "2017-11-06T13:16:58.724212Z"
 }

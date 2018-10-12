@@ -1,64 +1,106 @@
 {
-  "names": [
-    {
-      "language" : "sv",
-      "value" : "Sektorsövergripande samservice som främjar sysselsättningen",
-      "type" : "Name"
-    }, {
-      "language" : "fi",
-      "value" : "Työllistymistä edistävä monialainen yhteispalvelu",
-      "type" : "Name"
-    }
-  ],
-  "descriptions": [
-    {
-      "language" : "fi",
-      "value" : "Verkkosivulta löydät lisätietoa työllistymistä edistävästä monialaisesta yhteispalvelusta. ",
-      "type" : "Description"
-    }, {
-      "language" : "fi",
-      "value" : "Verkkosivulta löydät lisätietoa työllistymistä edistävästä monialaisesta yhteispalvelusta.",
-      "type" : "Summary"
-    }, {
-      "language" : "sv",
-      "value" : "På webbsidan hittar du tilläggsinformation om sektorsövergripande samservice som främjar sysselsättningen (TYP).",
-      "type" : "Summary"
-    }, {
-      "language" : "sv",
-      "value" : "På webbsidan hittar du tilläggsinformation om sektorsövergripande samservice som främjar sysselsättningen (TYP). \n",
-      "type" : "Description"
-    }
-  ],
-  "urls": [ 
-    {
-      "language": "fi",
-      "type": null,
-      "value": "https://www.vaasa.fi/node/28070"
-    },
-    {
-      "language": "sv",
-      "type": null,
-      "value": "https://www.vaasa.fi/sv/node/28070"
-    }
-  ],
-  "supportPhones" : [ ],
-  "supportEmails" : [ ],  
-  "languages" : [ "fi", "sv" ],
-  "webPages": [
-    {
-      "url" : "https://www.vaasa.fi/node/28070",
-      "value" : null,
-      "language" : "fi",
-      "description": null,
-      "type": null
-    }, {
-      "url" : "https://www.vaasa.fi/sv/node/28070",
-      "value" : null,
-      "language" : "sv",
-      "description": null,
-      "type": null
-    }
-  ],
-  "serviceHours" : [ ],
-  "publishingStatus" : "Published"
+   "id":"5488db72-7cd0-438f-ba35-254c3aa3e9c5",
+   "organizationId":"a2422d82-3e17-460d-a2ed-08f6fb04766b",
+   "names":[
+      {
+         "language":"sv",
+         "value":"Vasa övningsskolas webbsidor",
+         "type":"Name"
+      },
+      {
+         "language":"en",
+         "value":"Web pages of Vasa övningsskola",
+         "type":"Name"
+      },
+      {
+         "language":"fi",
+         "value":"Vasa övningsskolan verkkosivut",
+         "type":"Name"
+      }
+   ],
+   "descriptions":[
+      {
+         "language":"fi",
+         "value":"Vasa övningsskolan sivuilta löydät tietoa koulun toiminnasta.",
+         "type":"Summary"
+      },
+      {
+         "language":"en",
+         "value":"The web pages of Vasa övningsskola gives you information about the school.",
+         "type":"Summary"
+      },
+      {
+         "language":"sv",
+         "value":"På Vasa övningsskolas sidor hittar du information om skolans verksamhet.",
+         "type":"Summary"
+      },
+      {
+         "language":"sv",
+         "value":"På Vasa övningsskolas sidor hittar du information om skolans verksamhet. \n",
+         "type":"Description"
+      },
+      {
+         "language":"en",
+         "value":"The web pages of Vasa övningsskola gives you information about the school. \n",
+         "type":"Description"
+      },
+      {
+         "language":"fi",
+         "value":"Vasa övningsskolan sivuilta löydät tietoa koulun toiminnasta.",
+         "type":"Description"
+      }
+   ],
+   "urls":[
+      {
+         "language":"fi",
+         "value":"http://www.abo.fi/vos/",
+         "type":null
+      },
+      {
+         "language":"en",
+         "value":"http://www.abo.fi/vos/",
+         "type":null
+      },
+      {
+         "language":"sv",
+         "value":"http://www.abo.fi/vos/",
+         "type":null
+      }
+   ],
+   "supportPhones":[
+
+   ],
+   "supportEmails":[
+
+   ],
+   "languages":[
+      "sv"
+   ],
+   "webPages":[
+      {
+         "description":null,
+         "url":"http://www.abo.fi/vos/",
+         "language":"fi",
+         "value":null,
+         "type":null
+      },
+      {
+         "description":null,
+         "url":"http://www.abo.fi/vos/",
+         "language":"en",
+         "value":null,
+         "type":null
+      },
+      {
+         "description":null,
+         "url":"http://www.abo.fi/vos/",
+         "language":"sv",
+         "value":null,
+         "type":null
+      }
+   ],
+   "serviceHours":[
+
+   ],
+   "publishingStatus":"Published"
 }

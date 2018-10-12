@@ -16,17 +16,6 @@
   "supportEmails" : [ ],
   "services" : [ {
     "service" : {
-      "id" : "09e2a52e-823f-496e-9923-d83c542973b6",
-      "name" : "Vaasan kaupungin puhelinasiointi"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
       "id" : "5fe23177-860c-4257-ac03-b4cdeab87d19",
       "name" : "Työllistymistä edistävä monialainen yhteispalvelu (TYP)"
     },
@@ -50,20 +39,20 @@
   "serviceHours" : [ ],
   "serviceChannelType" : "WebPage",
   "serviceChannelDescriptions" : [ {
-    "language" : "fi",
-    "value" : "Verkkosivulta löydät lisätietoa työllistymistä edistävästä monialaisesta yhteispalvelusta. ",
-    "type" : "Description"
+    "language" : "sv",
+    "value" : "På webbsidan hittar du tilläggsinformation om sektorsövergripande samservice som främjar sysselsättningen (TYP).",
+    "type" : "Summary"
   }, {
     "language" : "fi",
     "value" : "Verkkosivulta löydät lisätietoa työllistymistä edistävästä monialaisesta yhteispalvelusta.",
     "type" : "Summary"
   }, {
     "language" : "sv",
-    "value" : "På webbsidan hittar du tilläggsinformation om sektorsövergripande samservice som främjar sysselsättningen (TYP).",
-    "type" : "Summary"
-  }, {
-    "language" : "sv",
     "value" : "På webbsidan hittar du tilläggsinformation om sektorsövergripande samservice som främjar sysselsättningen (TYP). \n",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Verkkosivulta löydät lisätietoa työllistymistä edistävästä monialaisesta yhteispalvelusta. ",
     "type" : "Description"
   } ],
   "publishingStatus" : "Published",

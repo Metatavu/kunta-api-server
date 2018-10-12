@@ -10,27 +10,19 @@
   "businessName" : "Väestörekisterikeskus",
   "organizationNames" : [ {
     "language" : "sv",
-    "value" : "BRC",
-    "type" : "AlternativeName"
-  }, {
-    "language" : "fi",
-    "value" : "Väestörekisterikeskus",
+    "value" : "Testorganisation 1 (Staten)",
     "type" : "Name"
   }, {
     "language" : "fi",
-    "value" : "VRK",
-    "type" : "AlternativeName"
-  }, {
-    "language" : "sv",
-    "value" : "Befolkningsregistercentralen",
+    "value" : "Testiorganisaatio 1 (Valtio)",
     "type" : "Name"
   } ],
   "displayNameType" : [ {
     "type" : "Name",
-    "language" : "fi"
+    "language" : "sv"
   }, {
     "type" : "Name",
-    "language" : "sv"
+    "language" : "fi"
   } ],
   "areaType" : "Nationwide",
   "areas" : null,
@@ -86,11 +78,11 @@
     "postOfficeBoxAddress" : null,
     "streetAddress" : {
       "street" : [ {
-        "value" : "Teknologiakatu",
-        "language" : "fi"
-      }, {
         "value" : "Teknologigatan",
         "language" : "sv"
+      }, {
+        "value" : "Teknologiakatu",
+        "language" : "fi"
       } ],
       "streetNumber" : "7",
       "postalCode" : "67100",
@@ -104,14 +96,14 @@
       "municipality" : {
         "code" : "272",
         "name" : [ {
-          "value" : "Kokkola",
-          "language" : "fi"
-        }, {
           "value" : "Karleby",
           "language" : "sv"
         }, {
           "value" : "Kokkola",
           "language" : "en"
+        }, {
+          "value" : "Kokkola",
+          "language" : "fi"
         } ]
       },
       "additionalInformation" : [ {
@@ -130,20 +122,20 @@
     "postOfficeBoxAddress" : null,
     "streetAddress" : {
       "street" : [ {
-        "value" : "Lintulahdenkuja",
-        "language" : "fi"
-      }, {
         "value" : "Fågelviksgränden",
         "language" : "sv"
+      }, {
+        "value" : "Lintulahdenkuja",
+        "language" : "fi"
       } ],
       "streetNumber" : "4",
       "postalCode" : "00530",
       "postOffice" : [ {
-        "value" : "HELSINKI",
-        "language" : "fi"
-      }, {
         "value" : "HELSINGFORS",
         "language" : "sv"
+      }, {
+        "value" : "HELSINKI",
+        "language" : "fi"
       } ],
       "municipality" : {
         "code" : "091",
@@ -152,10 +144,10 @@
           "language" : "sv"
         }, {
           "value" : "Helsinki",
-          "language" : "fi"
+          "language" : "en"
         }, {
           "value" : "Helsinki",
-          "language" : "en"
+          "language" : "fi"
         } ]
       },
       "additionalInformation" : [ {
@@ -202,10 +194,10 @@
     "postOfficeBoxAddress" : {
       "postOfficeBox" : [ {
         "value" : "PL 123",
-        "language" : "fi"
+        "language" : "sv"
       }, {
         "value" : "PL 123",
-        "language" : "sv"
+        "language" : "fi"
       } ],
       "postalCode" : "00531",
       "postOffice" : [ {
@@ -228,46 +220,6 @@
   "electronicInvoicings" : [ ],
   "publishingStatus" : "Published",
   "services" : [ {
-    "organizationId" : "b458d033-042d-4cbe-b030-34e81da28821",
-    "service" : {
-      "id" : "7be2de65-f022-4985-84ef-cabf9df574ab",
-      "name" : "Omien väestötietojen tarkastaminen"
-    },
-    "roleType" : "Responsible",
-    "provisionType" : null,
-    "additionalInformation" : [ ],
-    "webPages" : [ ]
-  }, {
-    "organizationId" : "b458d033-042d-4cbe-b030-34e81da28821",
-    "service" : {
-      "id" : "0a94d54d-febd-4149-bceb-f3cc0fd648e6",
-      "name" : "Suomi.fi-valtuudet henkilön puolesta asiointiin"
-    },
-    "roleType" : "Responsible",
-    "provisionType" : null,
-    "additionalInformation" : [ ],
-    "webPages" : [ ]
-  }, {
-    "organizationId" : "b458d033-042d-4cbe-b030-34e81da28821",
-    "service" : {
-      "id" : "f4e22166-0b6a-4d33-b885-715a298999c4",
-      "name" : "Suomi.fi-valtuudet yrityksen puolesta asiointiin"
-    },
-    "roleType" : "Responsible",
-    "provisionType" : null,
-    "additionalInformation" : [ ],
-    "webPages" : [ ]
-  }, {
-    "organizationId" : "b458d033-042d-4cbe-b030-34e81da28821",
-    "service" : {
-      "id" : "7cf9a776-808e-4e58-a904-863f48887ea2",
-      "name" : "Suomi.fi-palveluväylä"
-    },
-    "roleType" : "Responsible",
-    "provisionType" : null,
-    "additionalInformation" : [ ],
-    "webPages" : [ ]
-  }, {
     "organizationId" : "b458d033-042d-4cbe-b030-34e81da28821",
     "service" : {
       "id" : "610325e0-f485-4caa-bd3b-5bf74d5480c5",
@@ -322,6 +274,46 @@
     "service" : {
       "id" : "b7fb6633-d754-45fb-8241-35f22b75c2dd",
       "name" : "Suomi.fi-palvelutietovaranto"
+    },
+    "roleType" : "Responsible",
+    "provisionType" : null,
+    "additionalInformation" : [ ],
+    "webPages" : [ ]
+  }, {
+    "organizationId" : "b458d033-042d-4cbe-b030-34e81da28821",
+    "service" : {
+      "id" : "449960f4-9563-4c45-86c3-524edfad456a",
+      "name" : "Kansalaisvarmenne"
+    },
+    "roleType" : "Responsible",
+    "provisionType" : null,
+    "additionalInformation" : [ ],
+    "webPages" : [ ]
+  }, {
+    "organizationId" : "b458d033-042d-4cbe-b030-34e81da28821",
+    "service" : {
+      "id" : "116a9bc3-e565-4db1-aaac-d3f084d1513f",
+      "name" : "JHS-suositukset ja julkisen hallinnon kokonaisarkkitehtuurilinjaukset"
+    },
+    "roleType" : "Responsible",
+    "provisionType" : null,
+    "additionalInformation" : [ ],
+    "webPages" : [ ]
+  }, {
+    "organizationId" : "b458d033-042d-4cbe-b030-34e81da28821",
+    "service" : {
+      "id" : "5791d0db-dd48-4dc0-b2cf-99fcb04d1362",
+      "name" : "Palvelukuvaus testausta varten"
+    },
+    "roleType" : "Responsible",
+    "provisionType" : null,
+    "additionalInformation" : [ ],
+    "webPages" : [ ]
+  }, {
+    "organizationId" : "b458d033-042d-4cbe-b030-34e81da28821",
+    "service" : {
+      "id" : "6487128b-8db8-4fd3-9118-4d9bc08768c4",
+      "name" : "Valtionhallinnon yhteinen Hankesalkku"
     },
     "roleType" : "Responsible",
     "provisionType" : null,

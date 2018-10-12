@@ -1,0 +1,121 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "languages" : [ "fi" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      }, {
+        "value" : "Naantali",
+        "language" : "fi"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "c4f1632e-66a8-410b-94f0-9196e028c644",
+      "name" : "Esiopetuksen oppilashuolto"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : "Maijamäen ja Velkuan koulut sekä Naantalin lukio",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "445334354",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Kultarannan, Rymättylän, Suopellon ja Taimon koulut; Ruonan, Rymättylän, Soinisten, Suovuoren, Taimon ja Viialan päiväkodit",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "447560923",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : "Karvetin, Kuparivuoren, Lietsalan ja Merimaskun koulut; Karvetti (Lietsala), Keskusta, Kreivinniitty, Merimasku, Nuhjala, Tammisto, Vuoropäiväkoti",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "444171371",
+    "language" : "fi"
+  } ],
+  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Naantalin koulupsykologit",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ {
+    "serviceHourType" : "DaysOfTheWeek",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ {
+      "value" : null,
+      "language" : "fi"
+    } ],
+    "openingHour" : [ {
+      "dayFrom" : "Monday",
+      "dayTo" : "",
+      "from" : "09:00:00",
+      "to" : "15:00:00"
+    }, {
+      "dayFrom" : "Tuesday",
+      "dayTo" : "",
+      "from" : "09:00:00",
+      "to" : "15:00:00"
+    }, {
+      "dayFrom" : "Wednesday",
+      "dayTo" : "",
+      "from" : "09:00:00",
+      "to" : "15:00:00"
+    }, {
+      "dayFrom" : "Thursday",
+      "dayTo" : "",
+      "from" : "09:00:00",
+      "to" : "15:00:00"
+    }, {
+      "dayFrom" : "Friday",
+      "dayTo" : "",
+      "from" : "09:00:00",
+      "to" : "15:00:00"
+    } ]
+  } ],
+  "serviceChannelType" : "Phone",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Naantalin perusopetuksessa työskentelee kolme koulupsykologia, joilla on omat vastuukoulut ja -esikoulut.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Naantalin perusopetuksessa työskentelee kolme koulupsykologia, joilla on omat vastuukoulut ja -esikoulut. Vanhemmat voivat tai oppilas itse voi ottaa yhteyttä koulupsykologiin puhelimitse, sähköpostilla tai Wilma-viestillä.\n\nKoulupsykologiin voi olla yhteydessä esimerkiksi seuraavissa asioissa:\n* Esikouluikäisten koulun aloitukseen liittyvissä kysymyksissä\n* Oppimisvaikeudet ja/tai opiskelumotivaation lasku\n* Mielenterveyteen liittyvissä huolissa, kuten mielialan lasku, ahdistuneisuus, pelot, syömisen ja/tai nukkumisen ongelmat, itsetuhoisuus\n* Yksinäisyys, vaikeudet sosiaalisissa suhteissa\n* Nuoren voimakas murrosikä\n* Huoli perheen hyvinvoinnista, kuten vanhempien ero, perheväkivalta, vanhemman oma jaksaminen\n* Perhettä koskevat kriisitilanteet",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2018-01-02T12:27:13.155048",
+  "id" : "8ca0e38d-2ac5-44ec-9b19-dc6833f2add8"
+}

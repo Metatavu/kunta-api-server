@@ -10,19 +10,19 @@
     "deliveryAddressInText" : [ ],
     "receiver" : [ {
       "value" : null,
-      "language" : "fi"
+      "language" : "sv"
     }, {
       "value" : null,
-      "language" : "sv"
+      "language" : "fi"
     } ]
   } ],
   "supportPhones" : [ ],
   "formIdentifier" : [ {
     "value" : null,
-    "language" : "fi"
+    "language" : "sv"
   }, {
     "value" : null,
-    "language" : "sv"
+    "language" : "fi"
   } ],
   "areas" : [ {
     "type" : "Municipality",
@@ -31,14 +31,14 @@
     "municipalities" : [ {
       "code" : "905",
       "name" : [ {
-        "value" : "Vaasa",
-        "language" : "fi"
-      }, {
         "value" : "Vasa",
         "language" : "sv"
       }, {
         "value" : "Vaasa",
         "language" : "en"
+      }, {
+        "value" : "Vaasa",
+        "language" : "fi"
       } ]
     } ]
   } ],
@@ -66,31 +66,31 @@
     "type" : "PDF"
   } ],
   "serviceChannelNames" : [ {
-    "language" : "fi",
-    "value" : "Hissiavustusanomus",
-    "type" : "Name"
-  }, {
     "language" : "sv",
     "value" : "Ansökan om hissunderstöd",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Hissiavustusanomus",
     "type" : "Name"
   } ],
   "serviceHours" : [ ],
   "serviceChannelType" : "PrintableForm",
   "serviceChannelDescriptions" : [ {
-    "language" : "fi",
-    "value" : "Vaasan kaupungin hissiavustusta voit hakea hissiavustusanomuksella.",
-    "type" : "Description"
-  }, {
-    "language" : "fi",
-    "value" : "Vaasan kaupungin hissiavustusta voit hakea hissiavustusanomuksella.",
-    "type" : "Summary"
-  }, {
     "language" : "sv",
     "value" : "Vasa stads hissunderstöd kan du söka med hissunderstödsblanketten.",
     "type" : "Summary"
   }, {
+    "language" : "fi",
+    "value" : "Vaasan kaupungin hissiavustusta voit hakea hissiavustusanomuksella.",
+    "type" : "Summary"
+  }, {
     "language" : "sv",
     "value" : "Vasa stads hussunderstöd kan du söka med hissunderstödsblanketten. ",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan kaupungin hissiavustusta voit hakea hissiavustusanomuksella.",
     "type" : "Description"
   } ],
   "areaType" : "LimitedType",

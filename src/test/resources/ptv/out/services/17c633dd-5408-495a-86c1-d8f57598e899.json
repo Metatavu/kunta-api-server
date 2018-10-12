@@ -26,93 +26,33 @@
     "municipalities" : [ {
       "code" : "905",
       "name" : [ {
-        "value" : "Vaasa",
-        "language" : "fi"
-      }, {
         "value" : "Vasa",
         "language" : "sv"
       }, {
         "value" : "Vaasa",
         "language" : "en"
+      }, {
+        "value" : "Vaasa",
+        "language" : "fi"
       } ]
     } ]
   } ],
   "serviceDescriptions" : [ {
     "language" : "sv",
-    "value" : "I Vasa ges grundläggande utbildning främst i grundskolor som staden är huvudman för.",
-    "type" : "Summary"
+    "value" : null,
+    "type" : "ProcessingTime"
   }, {
-    "language" : "sv",
+    "language" : "en",
     "value" : null,
     "type" : "ChargeTypeAdditionalInfo"
   }, {
-    "language" : "fi",
-    "value" : "Koulutulokkaat ilmoitetaan perusopetukseen Wilman kautta sinä vuonna, kun lapsi täyttää seitsemän vuotta. Ohjeet ilmoittautumista varten lähetetään koteihin tammikuun alussa.\n\nVaasaan muuttavat oppivelvollisuusikäiset lapset ilmoitetaan Kasvatus- ja opetusviraston opetussihteerille (suomenkieliset oppilasasiat) tai hallintosihteerille (ruotsinkieliset oppilasasiat).",
-    "type" : "UserInstruction"
-  }, {
-    "language" : "en",
-    "value" : "New pupils are entered for basic education during the year when the child turns seven years old. The instructions for entering are sent to the homes in the beginning of January.\n\nThe compulsory school aged children moving to Vaasa are entered at the education secretaries within the child guidance and school authorities (Finnish speaking pupils) or to the administrative secretary (Swedish speaking pupils).\n",
-    "type" : "UserInstruction"
-  }, {
     "language" : "sv",
-    "value" : null,
-    "type" : "ProcessingTime"
+    "value" : "I Vasa ges grundläggande utbildning främst i grundskolor som staden är huvudman för.",
+    "type" : "Summary"
   }, {
     "language" : "en",
     "value" : "In Vaasa, basic education is mostly given in basic schools maintained by the city.",
     "type" : "Summary"
-  }, {
-    "language" : "en",
-    "value" : null,
-    "type" : "ChargeTypeAdditionalInfo"
-  }, {
-    "language" : "en",
-    "value" : null,
-    "type" : "DeadLine"
-  }, {
-    "language" : "en",
-    "value" : null,
-    "type" : "ValidityTime"
-  }, {
-    "language" : "sv",
-    "value" : null,
-    "type" : "ValidityTime"
-  }, {
-    "language" : "sv",
-    "value" : "Den grundläggande utbildningen kostar ingenting. Förutom undervisningen är även läroböcker och övriga läromedel, arbetsredskap och material avgiftsfria. Eleverna har även rätt att få en avgiftsfri, fullvärdig måltid varje skoldag och under vissa förutsättningar avgiftsfri skolskjuts. Dessutom har eleverna rätt till den avgiftsfria elevvård som deltagande i undervisningen förutsätter.\n\nI Vasa ordnas grundläggande utbildning huvudsakligen i grundskolor, som Vasa stad är huvudman för. Staden ordnar grundläggande utbildning för cirka 5100 grundskoleelever, varav cirka 1200 elever går i svenskspråkiga grundskolor. \n\nVasa stad har 15 finskspråkiga skolor och 5 svenskspråkiga skolor, som ordnar grundläggande utbildning. I Vasa finns dessutom Vasa Övningsskola, som staten är huvudman för, och de privata skolorna Vaasan kristillinen koulu och Vaasan Rudolf Steiner-koulu.\n",
-    "type" : "Description"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "DeadLine"
-  }, {
-    "language" : "en",
-    "value" : "The basic education is free of charge. In addition to the basic education, also the textbooks and other teaching materials and accessories are free of charge. The pupils also have the right to a free full meal during every school day and on certain preconditions free school transports. The pupil also has the right to the student welfare needed to be able to participate in the education.\n\nIn Vaasa, basic education is mostly given in basic schools maintained by the city. The city is producing education services for about 5 100 pupils in basic school, of which 1 200 are attending Swedish language education.\n\nThere are 15 Finnish language and 5 Swedish language basic schools where basic education is arranged in the city of Vaasa. Furthermore, there are a few private schools; Vaasan kristillinen koulu and Vaasan Rudolf Steiner-koulu as well as a state-run school, Vasa Övningsskola in the City. \n",
-    "type" : "Description"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ProcessingTime"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ValidityTime"
-  }, {
-    "language" : "en",
-    "value" : null,
-    "type" : "ProcessingTime"
-  }, {
-    "language" : "fi",
-    "value" : "Perusopetus on maksuton. Opetuksen lisäksi oppikirjat ja muu oppimateriaalit sekä työvälineet ja aineet ovat maksuttomia. Oppilaalla on myös oikeus saada jokaisena koulun työpäivänä maksuton, täysipainoinen ateria sekä tietyin edellytyksin maksuton koulukuljetus. Oppilaalla on myös oikeus saada maksutta opetukseen osallistumisen edellyttämä oppilashuolto.\n\nVaasassa perusopetusta annetaan pääosin kaupungin ylläpitämissä peruskouluissa. Kaupunki tuottaa koulutuspalveluja noin 5100:lle peruskoulun oppilaalle, joista noin 1200 käy ruotsinkielistä koulua.\n\nVaasan kaupungissa on 15 suomenkielistä ja viisi ruotsinkielistä peruskoulua, joissa järjestetään perusopetusta. Lisäksi kaupungissa toimii valtion ylläpitämä Vasa Övningsskola sekä yksityiset Vaasan kristillinen koulu ja Vaasan Rudolf Steiner-koulu.",
-    "type" : "Description"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ChargeTypeAdditionalInfo"
-  }, {
-    "language" : "sv",
-    "value" : null,
-    "type" : "DeadLine"
   }, {
     "language" : "fi",
     "value" : "Vaasassa perusopetusta annetaan pääosin kaupungin ylläpitämissä peruskouluissa.",
@@ -121,18 +61,78 @@
     "language" : "sv",
     "value" : "Inskrivning av blivande förstaklassister till den grundläggande utbildningen görs via Wilma det år då barnet fyller sju år. Anvisningar angående inskrivningen skickas till hemmen i början av januari.\n\nBarn i skolpliktsålder som flyttar till Vasa anmäls till förvaltningssekreteraren (svenskspråkig grundläggande utbildning) eller utbildningssekreteraren (finskspråkig grundläggande utbildning) vid verket för fostran och utbildning.\n",
     "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "en",
+    "value" : "New pupils are entered for basic education during the year when the child turns seven years old. The instructions for entering are sent to the homes in the beginning of January.\n\nThe compulsory school aged children moving to Vaasa are entered at the education secretaries within the child guidance and school authorities (Finnish speaking pupils) or to the administrative secretary (Swedish speaking pupils).\n",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Koulutulokkaat ilmoitetaan perusopetukseen Wilman kautta sinä vuonna, kun lapsi täyttää seitsemän vuotta. Ohjeet ilmoittautumista varten lähetetään koteihin tammikuun alussa.\n\nVaasaan muuttavat oppivelvollisuusikäiset lapset ilmoitetaan Kasvatus- ja opetusviraston opetussihteerille (suomenkieliset oppilasasiat) tai hallintosihteerille (ruotsinkieliset oppilasasiat).",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : "Den grundläggande utbildningen kostar ingenting. Förutom undervisningen är även läroböcker och övriga läromedel, arbetsredskap och material avgiftsfria. Eleverna har även rätt att få en avgiftsfri, fullvärdig måltid varje skoldag och under vissa förutsättningar avgiftsfri skolskjuts. Dessutom har eleverna rätt till den avgiftsfria elevvård som deltagande i undervisningen förutsätter.\n\nI Vasa ordnas grundläggande utbildning huvudsakligen i grundskolor, som Vasa stad är huvudman för. Staden ordnar grundläggande utbildning för cirka 5100 grundskoleelever, varav cirka 1200 elever går i svenskspråkiga grundskolor. \n\nVasa stad har 15 finskspråkiga skolor och 5 svenskspråkiga skolor, som ordnar grundläggande utbildning. I Vasa finns dessutom Vasa Övningsskola, som staten är huvudman för, och de privata skolorna Vaasan kristillinen koulu och Vaasan Rudolf Steiner-koulu.\n",
+    "type" : "Description"
+  }, {
+    "language" : "en",
+    "value" : "The basic education is free of charge. In addition to the basic education, also the textbooks and other teaching materials and accessories are free of charge. The pupils also have the right to a free full meal during every school day and on certain preconditions free school transports. The pupil also has the right to the student welfare needed to be able to participate in the education.\n\nIn Vaasa, basic education is mostly given in basic schools maintained by the city. The city is producing education services for about 5 100 pupils in basic school, of which 1 200 are attending Swedish language education.\n\nThere are 15 Finnish language and 5 Swedish language basic schools where basic education is arranged in the city of Vaasa. Furthermore, there are a few private schools; Vaasan kristillinen koulu and Vaasan Rudolf Steiner-koulu as well as a state-run school, Vasa Övningsskola in the City. \n",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Perusopetus on maksuton. Opetuksen lisäksi oppikirjat ja muu oppimateriaalit sekä työvälineet ja aineet ovat maksuttomia. Oppilaalla on myös oikeus saada jokaisena koulun työpäivänä maksuton, täysipainoinen ateria sekä tietyin edellytyksin maksuton koulukuljetus. Oppilaalla on myös oikeus saada maksutta opetukseen osallistumisen edellyttämä oppilashuolto.\n\nVaasassa perusopetusta annetaan pääosin kaupungin ylläpitämissä peruskouluissa. Kaupunki tuottaa koulutuspalveluja noin 5100:lle peruskoulun oppilaalle, joista noin 1200 käy ruotsinkielistä koulua.\n\nVaasan kaupungissa on 15 suomenkielistä ja viisi ruotsinkielistä peruskoulua, joissa järjestetään perusopetusta. Lisäksi kaupungissa toimii valtion ylläpitämä Vasa Övningsskola sekä yksityiset Vaasan kristillinen koulu ja Vaasan Rudolf Steiner-koulu.",
+    "type" : "Description"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
   } ],
   "languages" : [ "sv", "fi" ],
   "serviceClasses" : [ {
     "name" : [ {
-      "value" : "Perusopetus",
-      "language" : "fi"
-    }, {
       "value" : "Grundläggande utbildning",
       "language" : "sv"
     }, {
       "value" : "Basic education",
       "language" : "en"
+    }, {
+      "value" : "Perusopetus",
+      "language" : "fi"
     } ],
     "description" : [ {
       "value" : "Till denna serviceundergrupp hör både den egentliga grundläggande utbildningen med innehåll och mål samt direkta tjänster som erbjuds i anslutning till grundläggande utbildningen och för att stöda den, t.ex. skoltransporter, skolmat och assistanstjänster. Till denna grupp hör också ärenden i anslutning till avläggande av grundläggande utbildning utomlands i enlighet med den finska grundläggande utbildningen.",
@@ -155,17 +155,17 @@
       "value" : "Grundschule, Gesamtschule",
       "language" : "de"
     }, {
-      "value" : "peruskoulu",
-      "language" : "fi"
-    }, {
       "value" : "grundskolan",
       "language" : "sv"
+    }, {
+      "value" : "põhikool",
+      "language" : "et"
     }, {
       "value" : "comprehensive school",
       "language" : "en"
     }, {
-      "value" : "põhikool",
-      "language" : "et"
+      "value" : "peruskoulu",
+      "language" : "fi"
     } ],
     "code" : null,
     "ontologyType" : "YSO",
@@ -174,14 +174,14 @@
     "parentUri" : "http://www.yso.fi/onto/koko/p48279"
   }, {
     "name" : [ {
-      "value" : "oppivelvollisuus",
-      "language" : "fi"
-    }, {
       "value" : "läroplikt",
       "language" : "sv"
     }, {
       "value" : "compulsory education",
       "language" : "en"
+    }, {
+      "value" : "oppivelvollisuus",
+      "language" : "fi"
     } ],
     "code" : null,
     "ontologyType" : "YSO",
@@ -193,11 +193,11 @@
       "value" : "grundläggande utbildning",
       "language" : "sv"
     }, {
-      "value" : "perusopetus",
-      "language" : "fi"
-    }, {
       "value" : "basic education",
       "language" : "en"
+    }, {
+      "value" : "perusopetus",
+      "language" : "fi"
     } ],
     "code" : null,
     "ontologyType" : "JUPO",
@@ -207,14 +207,14 @@
   } ],
   "targetGroups" : [ {
     "name" : [ {
-      "value" : "Lapset ja lapsiperheet",
-      "language" : "fi"
+      "value" : "Barn och barnfamiljer",
+      "language" : "sv"
     }, {
       "value" : "Children and families with children",
       "language" : "en"
     }, {
-      "value" : "Barn och barnfamiljer",
-      "language" : "sv"
+      "value" : "Lapset ja lapsiperheet",
+      "language" : "fi"
     } ],
     "code" : "KR1.2",
     "ontologyType" : "TARGETGROUP",
@@ -223,14 +223,14 @@
     "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001"
   }, {
     "name" : [ {
-      "value" : "Kansalaiset",
-      "language" : "fi"
+      "value" : "Medborgare",
+      "language" : "sv"
     }, {
       "value" : "Citizens",
       "language" : "en"
     }, {
-      "value" : "Medborgare",
-      "language" : "sv"
+      "value" : "Kansalaiset",
+      "language" : "fi"
     } ],
     "code" : "KR1",
     "ontologyType" : "TARGETGROUP",
@@ -242,13 +242,13 @@
   "industrialClasses" : [ ],
   "legislation" : [ ],
   "keywords" : [ {
+    "value" : "grundskola",
+    "language" : "sv"
+  }, {
     "value" : "grundläggande utbildning",
     "language" : "sv"
   }, {
     "value" : "läroplikt",
-    "language" : "sv"
-  }, {
-    "value" : "grundskola",
     "language" : "sv"
   } ],
   "requirements" : [ {
@@ -326,8 +326,8 @@
     "digitalAuthorizations" : [ ]
   }, {
     "serviceChannel" : {
-      "id" : "5d04a7cd-d372-409e-b3d6-211ae5325bd2",
-      "name" : "Savilahden yhtenäiskoulu"
+      "id" : "3f69886e-3e21-41c6-8486-19d289644f10",
+      "name" : "Vasa övningsskolan verkkosivut"
     },
     "serviceChargeType" : null,
     "description" : [ ],
@@ -337,11 +337,52 @@
     "digitalAuthorizations" : [ ]
   }, {
     "serviceChannel" : {
-      "id" : "ecdf1bc2-ad32-46cc-9421-50ce61bc710f",
-      "name" : "Vikinga skola"
+      "id" : "4a28133d-683a-47a9-b5f3-6b2f95a5d6e9",
+      "name" : "Hallintosihteeri"
     },
     "serviceChargeType" : null,
     "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "5c8de887-82f4-4900-910d-6496b113fec1",
+      "name" : "Onkilahden yhtenäiskoulu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "9339d846-cb38-4be3-96b3-6e07bbd99208",
+      "name" : "Gerby skola"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "e805eb29-51f6-4d1b-ac68-07f3d6c77f44",
+      "name" : "Vaasan perusopetuksen verkkosivut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ {
+      "language" : "fi",
+      "value" : null,
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : null,
+      "type" : "ChargeTypeAdditionalInfo"
+    } ],
     "extraTypes" : [ ],
     "serviceHours" : [ ],
     "contactDetails" : null,
@@ -351,7 +392,7 @@
     "provisionType" : null,
     "organization" : {
       "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
-      "name" : "Vaasan kaupunki"
+      "name" : "Testiorganisaatio 9 (Kunta)"
     },
     "roleType" : "Responsible",
     "additionalInformation" : [ ]
@@ -359,7 +400,7 @@
     "provisionType" : "SelfProducedServices",
     "organization" : {
       "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
-      "name" : "Vaasan kaupunki"
+      "name" : "Testiorganisaatio 9 (Kunta)"
     },
     "roleType" : "Producer",
     "additionalInformation" : [ ]
@@ -368,5 +409,5 @@
   "serviceVouchers" : [ ],
   "serviceCollections" : [ ],
   "publishingStatus" : "Published",
-  "modified" : "2018-05-03T11:53:58.162746Z"
+  "modified" : "2017-10-19T06:39:48.135752Z"
 }

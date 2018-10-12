@@ -18,14 +18,14 @@
     "municipalities" : [ {
       "code" : "529",
       "name" : [ {
-        "value" : "Naantali",
-        "language" : "fi"
-      }, {
         "value" : "Nådendal",
         "language" : "sv"
       }, {
         "value" : "Naantali",
         "language" : "en"
+      }, {
+        "value" : "Naantali",
+        "language" : "fi"
       } ]
     } ]
   } ],
@@ -35,50 +35,50 @@
     "type" : "Summary"
   }, {
     "language" : "fi",
-    "value" : null,
-    "type" : "DeadLine"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ProcessingTime"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ValidityTime"
+    "value" : "Tilapäistä päivähoitoa voi tiedustella oman alueen päiväkodin johtajalta tai Naantalin varhaiskasvatusjohtajalta.",
+    "type" : "UserInstruction"
   }, {
     "language" : "fi",
     "value" : "Lapselle on mahdollista saada tilapäinen hoitopaikka väliaikaiseen tarpeeseen. Kotihoidon tuen tai yksityisen hoidon tuen saaminen tai hoitopaikka toisessa kunnassa eivät ole este tilapäisen paikan käytölle.",
     "type" : "Description"
   }, {
     "language" : "fi",
-    "value" : "Tilapäistä päivähoitoa voi tiedustella oman alueen päiväkodin johtajalta tai Naantalin varhaiskasvatusjohtajalta.",
-    "type" : "UserInstruction"
+    "value" : null,
+    "type" : "ProcessingTime"
   }, {
     "language" : "fi",
     "value" : "Tilapäisen päivähoidon hinnat Naantalissa: kokopäivähoito 18 €/päivä, sisältää ateriat. Osapäivähoito 12 €/päivä.",
     "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
   } ],
   "languages" : [ "fi" ],
   "serviceClasses" : [ {
     "name" : [ {
-      "value" : "Lasten päivähoito",
-      "language" : "fi"
-    }, {
       "value" : "Barndagvård",
       "language" : "sv"
     }, {
       "value" : "Day-care for children",
       "language" : "en"
+    }, {
+      "value" : "Lasten päivähoito",
+      "language" : "fi"
     } ],
     "description" : [ {
       "value" : "Till denna serviceundergrupp hör barnets rättigheter i anslutning till dagvård för små barn, förutsättningar för dagvård, ärendehanteringstjänster och ansökningsförfaranden, olika genomföringsformer och servicekanaler för dagvård, vårdavgifter och bidrag i anslutning till dem.",
       "language" : "sv"
     }, {
-      "value" : "Tähän alapalveluluokkaan kuuluvat pienten lasten päivähoitoon liittyvät lapsen oikeudet, päivähoidon saamisen edellytykset, asiointipalvelut ja hakumenettelyt, erilaiset päivähoidon toteuttamismuodot ja palvelukanavat, hoidon maksut ja niihin liittyvät taloudelliset tuet.",
-      "language" : "fi"
-    }, {
       "value" : "This service subclass contains a child’s rights related to day-care for young children, eligibility criteria, e-services and application procedures associated with day-care, different forms and service channels of day-care provision, fees charged for day-care and financial support related to the fees.",
       "language" : "en"
+    }, {
+      "value" : "Tähän alapalveluluokkaan kuuluvat pienten lasten päivähoitoon liittyvät lapsen oikeudet, päivähoidon saamisen edellytykset, asiointipalvelut ja hakumenettelyt, erilaiset päivähoidon toteuttamismuodot ja palvelukanavat, hoidon maksut ja niihin liittyvät taloudelliset tuet.",
+      "language" : "fi"
     } ],
     "code" : "P3.4",
     "ontologyType" : "PTVL",
@@ -91,11 +91,11 @@
       "value" : "barndagvård",
       "language" : "sv"
     }, {
-      "value" : "lasten päivähoito",
-      "language" : "fi"
-    }, {
       "value" : "child day care",
       "language" : "en"
+    }, {
+      "value" : "lasten päivähoito",
+      "language" : "fi"
     } ],
     "code" : null,
     "ontologyType" : "JUHO",
@@ -105,14 +105,14 @@
   } ],
   "targetGroups" : [ {
     "name" : [ {
-      "value" : "Lapset ja lapsiperheet",
-      "language" : "fi"
+      "value" : "Barn och barnfamiljer",
+      "language" : "sv"
     }, {
       "value" : "Children and families with children",
       "language" : "en"
     }, {
-      "value" : "Barn och barnfamiljer",
-      "language" : "sv"
+      "value" : "Lapset ja lapsiperheet",
+      "language" : "fi"
     } ],
     "code" : "KR1.2",
     "ontologyType" : "TARGETGROUP",
@@ -121,14 +121,14 @@
     "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001"
   }, {
     "name" : [ {
-      "value" : "Kansalaiset",
-      "language" : "fi"
+      "value" : "Medborgare",
+      "language" : "sv"
     }, {
       "value" : "Citizens",
       "language" : "en"
     }, {
-      "value" : "Medborgare",
-      "language" : "sv"
+      "value" : "Kansalaiset",
+      "language" : "fi"
     } ],
     "code" : "KR1",
     "ontologyType" : "TARGETGROUP",
@@ -146,17 +146,6 @@
   } ],
   "serviceChannels" : [ {
     "serviceChannel" : {
-      "id" : "1bd39cda-3006-482e-acff-93ab8ddc9f1b",
-      "name" : "Keskustan päiväkoti"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
       "id" : "41ebe689-dbed-4bb2-a6f2-184e29d625ed",
       "name" : "Rymättylän päiväkoti"
     },
@@ -168,8 +157,41 @@
     "digitalAuthorizations" : [ ]
   }, {
     "serviceChannel" : {
-      "id" : "ad29e11d-9c97-4e02-a7da-5f5cefe442e9",
-      "name" : "Varhaiskasvatuksen johtaja"
+      "id" : "55511eb4-7e65-4cd8-9dbb-95ee54f82d03",
+      "name" : "Taimon päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "7bbe81f9-c65f-46e5-a78f-b0ab123306f8",
+      "name" : "Ruonan päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "875ad885-ad22-4cd4-b555-143fdf2649ab",
+      "name" : "Viialan päiväkoti"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "fdfce5e7-3b5a-45dc-8cf0-d67f90042256",
+      "name" : "Vuoropäiväkoti"
     },
     "serviceChargeType" : null,
     "description" : [ ],
@@ -182,7 +204,7 @@
     "provisionType" : null,
     "organization" : {
       "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
-      "name" : "Naantalin kaupunki"
+      "name" : "Testiorganisaatio 6 (Kunta)"
     },
     "roleType" : "Responsible",
     "additionalInformation" : [ ]
@@ -190,7 +212,7 @@
     "provisionType" : "SelfProducedServices",
     "organization" : {
       "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
-      "name" : "Naantalin kaupunki"
+      "name" : "Testiorganisaatio 6 (Kunta)"
     },
     "roleType" : "Producer",
     "additionalInformation" : [ ]
@@ -199,5 +221,5 @@
   "serviceVouchers" : [ ],
   "serviceCollections" : [ ],
   "publishingStatus" : "Published",
-  "modified" : "2018-05-03T11:53:58.162746Z"
+  "modified" : "2017-10-31T08:15:43.515627Z"
 }

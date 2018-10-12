@@ -1,0 +1,82 @@
+{
+  "sourceId" : null,
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Sivistyspalvelujen toimistosihteeri neuvoo perusopetukseen liittyvissä käytännön asioissa.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Sivistyspalvelujen toimistosihteeri neuvoo perusopetukseen liittyvissä käytännön asioissa. ",
+    "type" : "Description"
+  } ],
+  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "areaType" : "LimitedType",
+  "serviceChannelNames" : [ {
+    "value" : "Sivistyspalvelujen toimistosihteeri",
+    "language" : "fi"
+  } ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "areaCodes" : [ "529" ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "24345264",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "447334643",
+    "language" : "fi"
+  } ],
+  "webPage" : [ ],
+  "supportEmails" : [ ],
+  "languages" : [ "fi" ],
+  "serviceHours" : [ {
+    "serviceHourType" : "DaysOfTheWeek",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : true,
+    "additionalInformation" : [ ],
+    "openingHour" : [ {
+      "dayFrom" : "Monday",
+      "dayTo" : null,
+      "from" : "09:00:00",
+      "to" : "15:00:00"
+    }, {
+      "dayFrom" : "Tuesday",
+      "dayTo" : null,
+      "from" : "09:00:00",
+      "to" : "15:00:00"
+    }, {
+      "dayFrom" : "Wednesday",
+      "dayTo" : null,
+      "from" : "09:00:00",
+      "to" : "15:00:00"
+    }, {
+      "dayFrom" : "Thursday",
+      "dayTo" : null,
+      "from" : "09:00:00",
+      "to" : "15:00:00"
+    }, {
+      "dayFrom" : "Friday",
+      "dayTo" : null,
+      "from" : "09:00:00",
+      "to" : "15:00:00"
+    } ]
+  } ],
+  "publishingStatus" : "Published",
+  "isVisibleForAll" : true,
+  "deleteAllWebPages" : true,
+  "deleteAllServiceHours" : true
+}

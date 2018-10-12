@@ -27,14 +27,14 @@
       "municipality" : {
         "code" : "529",
         "name" : [ {
-          "value" : "Naantali",
-          "language" : "fi"
-        }, {
           "value" : "Nådendal",
           "language" : "sv"
         }, {
           "value" : "Naantali",
           "language" : "en"
+        }, {
+          "value" : "Naantali",
+          "language" : "fi"
         } ]
       },
       "additionalInformation" : [ {
@@ -47,7 +47,7 @@
     },
     "locationAbroad" : null,
     "multipointLocation" : null,
-    "entrances" : null,
+    "entrances" : [ ],
     "country" : "FI"
   }, {
     "type" : "Location",
@@ -70,14 +70,14 @@
       "municipality" : {
         "code" : "529",
         "name" : [ {
-          "value" : "Naantali",
-          "language" : "fi"
-        }, {
           "value" : "Nådendal",
           "language" : "sv"
         }, {
           "value" : "Naantali",
           "language" : "en"
+        }, {
+          "value" : "Naantali",
+          "language" : "fi"
         } ]
       },
       "additionalInformation" : [ ],
@@ -87,7 +87,7 @@
     },
     "locationAbroad" : null,
     "multipointLocation" : null,
-    "entrances" : null,
+    "entrances" : [ ],
     "country" : "FI"
   } ],
   "languages" : [ "fi" ],
@@ -98,14 +98,14 @@
     "municipalities" : [ {
       "code" : "529",
       "name" : [ {
-        "value" : "Naantali",
-        "language" : "fi"
-      }, {
         "value" : "Nådendal",
         "language" : "sv"
       }, {
         "value" : "Naantali",
         "language" : "en"
+      }, {
+        "value" : "Naantali",
+        "language" : "fi"
       } ]
     } ]
   } ],

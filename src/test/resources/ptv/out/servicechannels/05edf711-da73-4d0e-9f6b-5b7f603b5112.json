@@ -1,0 +1,106 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://sote.easiointi.fi/fi/web/naantali-vaka",
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "requiresSignature" : false,
+  "attachments" : [ {
+    "type" : "Attachment",
+    "name" : "Päivähoitopaikan hakeminen -verkkosivu",
+    "description" : null,
+    "url" : "http://www.naantali.fi/opetus_ja_koulutus/varhaiskasvatus/fi_FI/paivahoidon_haku/",
+    "language" : "fi"
+  } ],
+  "languages" : [ ],
+  "supportPhones" : [ ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      }, {
+        "value" : "Naantali",
+        "language" : "fi"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "0982b9a3-66ba-445b-81ed-6202f924c356",
+      "name" : "Varhaiskasvatuksen vuorohoito"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "73f7ef7c-fad3-4b59-a601-a5d172ec4293",
+      "name" : "Kunnallinen perhepäivähoito"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "8c7ac754-4229-4abc-b2a8-d51b817f43f2",
+      "name" : "Päivähoito esiopetusikäisille"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "f7dfce01-2b3b-4dda-95c6-92213fbabd1e",
+      "name" : "Kunnallinen päiväkotihoito"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Naantalin varhaiskasvatuksen verkkoasiointi",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "EChannel",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Voit tehdä verkkoasioinnissa varhaiskasvatushakemuksen, ilmoittaa hoitoajat ja ilmoittautua esiopetukseen.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Naantalin kaupungin varhaiskasvatuksen verkkoasioinnissa voit tehdä varhaiskasvatushakemuksen, ilmoittaa hoitoajat ja ilmoittautua esiopetukseen. \n\nTarvitset palvelun käyttämistä varten pankkitunnukset tai mobiilivarmenteen.",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "05edf711-da73-4d0e-9f6b-5b7f603b5112",
+  "signatureQuantity" : 0,
+  "requiresAuthentication" : true
+}

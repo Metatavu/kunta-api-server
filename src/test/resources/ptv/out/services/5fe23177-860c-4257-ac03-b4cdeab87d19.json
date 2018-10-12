@@ -5,12 +5,12 @@
   "type" : "Service",
   "fundingType" : "PubliclyFunded",
   "serviceNames" : [ {
-    "language" : "fi",
-    "value" : "Työllistymistä edistävä monialainen yhteispalvelu (TYP)",
-    "type" : "Name"
-  }, {
     "language" : "sv",
     "value" : "Sektorsövergripande samsercive som främjar sysselsättningen",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Työllistymistä edistävä monialainen yhteispalvelu (TYP)",
     "type" : "Name"
   } ],
   "serviceChargeType" : null,
@@ -22,26 +22,26 @@
     "municipalities" : [ {
       "code" : "946",
       "name" : [ {
-        "value" : "Vöyri",
-        "language" : "fi"
-      }, {
         "value" : "Vörå",
         "language" : "sv"
       }, {
         "value" : "Vörå",
         "language" : "en"
+      }, {
+        "value" : "Vöyri",
+        "language" : "fi"
       } ]
     }, {
       "code" : "287",
       "name" : [ {
-        "value" : "Kristiinankaupunki",
-        "language" : "fi"
-      }, {
         "value" : "Kristinestad",
         "language" : "sv"
       }, {
         "value" : "Kristinestad",
         "language" : "en"
+      }, {
+        "value" : "Kristiinankaupunki",
+        "language" : "fi"
       } ]
     }, {
       "code" : "152",
@@ -50,10 +50,10 @@
         "language" : "sv"
       }, {
         "value" : "Isokyrö",
-        "language" : "fi"
+        "language" : "en"
       }, {
         "value" : "Isokyrö",
-        "language" : "en"
+        "language" : "fi"
       } ]
     }, {
       "code" : "231",
@@ -62,113 +62,93 @@
         "language" : "sv"
       }, {
         "value" : "Kaskinen",
-        "language" : "fi"
+        "language" : "en"
       }, {
         "value" : "Kaskinen",
-        "language" : "en"
+        "language" : "fi"
       } ]
     }, {
       "code" : "499",
       "name" : [ {
-        "value" : "Mustasaari",
-        "language" : "fi"
-      }, {
         "value" : "Korsholm",
         "language" : "sv"
       }, {
         "value" : "Korsholm",
         "language" : "en"
+      }, {
+        "value" : "Mustasaari",
+        "language" : "fi"
       } ]
     }, {
       "code" : "545",
       "name" : [ {
-        "value" : "Närpiö",
-        "language" : "fi"
-      }, {
         "value" : "Närpes",
         "language" : "sv"
       }, {
         "value" : "Närpes",
         "language" : "en"
+      }, {
+        "value" : "Närpiö",
+        "language" : "fi"
       } ]
     }, {
       "code" : "475",
       "name" : [ {
-        "value" : "Maalahti",
-        "language" : "fi"
-      }, {
         "value" : "Malax",
         "language" : "sv"
       }, {
         "value" : "Malax",
         "language" : "en"
+      }, {
+        "value" : "Maalahti",
+        "language" : "fi"
       } ]
     }, {
       "code" : "905",
       "name" : [ {
-        "value" : "Vaasa",
-        "language" : "fi"
-      }, {
         "value" : "Vasa",
         "language" : "sv"
       }, {
         "value" : "Vaasa",
         "language" : "en"
+      }, {
+        "value" : "Vaasa",
+        "language" : "fi"
       } ]
     }, {
       "code" : "280",
       "name" : [ {
         "value" : "Korsnäs",
-        "language" : "fi"
-      }, {
-        "value" : "Korsnäs",
         "language" : "sv"
       }, {
         "value" : "Korsnäs",
         "language" : "en"
+      }, {
+        "value" : "Korsnäs",
+        "language" : "fi"
       } ]
     }, {
       "code" : "399",
       "name" : [ {
-        "value" : "Laihia",
-        "language" : "fi"
-      }, {
         "value" : "Laihela",
         "language" : "sv"
       }, {
         "value" : "Laihia",
         "language" : "en"
+      }, {
+        "value" : "Laihia",
+        "language" : "fi"
       } ]
     } ]
   } ],
   "serviceDescriptions" : [ {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ValidityTime"
-  }, {
-    "language" : "sv",
-    "value" : null,
-    "type" : "ProcessingTime"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ProcessingTime"
-  }, {
-    "language" : "sv",
-    "value" : null,
-    "type" : "DeadLine"
-  }, {
     "language" : "sv",
     "value" : "TYP är en samarbetsmodell för kommunen, TE-byrån och FPA och den betjänar personer som varit långvarigt arbetslösa.",
     "type" : "Summary"
   }, {
-    "language" : "sv",
-    "value" : "Den sektorsövergripande samservicen som främjar sysselsättningen (TYP) är en samarbetsmodell för kommunen, TE-byrån och FPA och den betjänar personer som varit långvarigt arbetslösa. \n\nSyftet med samservicen är att tillsammans med den arbetslösa personen bedöma vilken service denne behöver som stöd för att sysselsätta sig, planera ändamålsenlig service samt följa upp hur planerna och servicen framskrider. Målet för den sektorsövergripande samservicen som främjar sysselsättningen är att främja sysselsättningen av arbetslösa genom erbjuda ändamålsenlig offentlig arbetskraftsservice, socialservice, hälso- och sjukvårdstjänster samt rehabiliteringstjänster i enligt personens individuella servicebehov. \n\nKlientskapet inleds med en initialkartläggning, som görs tillsammans mellan den arbetslösa personen, kommunens socialarbetare eller socialhandledare samt en sakkunnig från TE-byrån. \n\nI slutet av kartläggningsperioden uppgörs sen sektorsövergripande sysselsättningsplan, i vilken man kommer överens om den service som ingår i personens servicebehov Planen följs upp och uppdateras enligt situation.\n\nDen service som överenskommits i planen kan vara offentlig arbetskraftsservice och även social-, hälso- och rehabiliteringsservice. \n\nNya klienter till den sektorsövergripande samservicen (TYP) hänvisas via TE-byrån, kommunens socialsektor eller via FPA. Personen övergår till att bli en samserviceklient, ifall dennes sysselsättning förutsätter sammanpassning av TE-byråns, kommunens och FPA:s serviceformer. Klienten kan även själv söka till att bli TYP-klient genom att ta kontakt med socialsektorn i den egna kommunen eller en sakkunnig inom TE-byrån. \n\nKlientskapet inom den sektorsövergripande samservicen avslutas då behovet till sektorsövergripande samservice inte längre finns. \n\nKommunerna i Vasanejden och området Sydösterbotten, Storkyro, Laihela, Kaskö, Kristinestad, Korsnäs, Malax, Korsholm, Närpes, Vasa och Vörå samt Österbottens TE-byrå och fPA har ingått samarbetsavtal om ordnande av sektorsövergripande samservice. Den sektorsövergripande samservicens service förverkligas som en del av den egna verksamheten i varje kommun. I nätverket för hela området finns en TYP-koordinator vars uppgift är att ansvara för och utveckla hela nätverkets verksamhet.\n\n",
-    "type" : "Description"
-  }, {
     "language" : "fi",
-    "value" : null,
-    "type" : "ChargeTypeAdditionalInfo"
+    "value" : "Työllistymistä edistävä monialainen yhteispalvelu (TYP) on kunnan, TE-toimiston ja Kelan yhteistoimintamalli, joka palvelee pitkäaikaistyöttömiä.",
+    "type" : "Summary"
   }, {
     "language" : "sv",
     "value" : "Ärendehanteringen i den sektorsövergripande samservicen i Vasanejden och Sydösterbotten (TYP) sker enligt tidsbokning från den egna kommunen eller TE-byrån.\n",
@@ -178,13 +158,21 @@
     "value" : "Asiointi Vaasan seudun ja Suupohjan alueen monialaisessa yhteispalvelussa tapahtuu ajanvarauksella omasta kunnasta tai TE-toimistosta. ",
     "type" : "UserInstruction"
   }, {
+    "language" : "sv",
+    "value" : "Den sektorsövergripande samservicen som främjar sysselsättningen (TYP) är en samarbetsmodell för kommunen, TE-byrån och FPA och den betjänar personer som varit långvarigt arbetslösa. \n\nSyftet med samservicen är att tillsammans med den arbetslösa personen bedöma vilken service denne behöver som stöd för att sysselsätta sig, planera ändamålsenlig service samt följa upp hur planerna och servicen framskrider. Målet för den sektorsövergripande samservicen som främjar sysselsättningen är att främja sysselsättningen av arbetslösa genom erbjuda ändamålsenlig offentlig arbetskraftsservice, socialservice, hälso- och sjukvårdstjänster samt rehabiliteringstjänster i enligt personens individuella servicebehov. \n\nKlientskapet inleds med en initialkartläggning, som görs tillsammans mellan den arbetslösa personen, kommunens socialarbetare eller socialhandledare samt en sakkunnig från TE-byrån. \n\nI slutet av kartläggningsperioden uppgörs sen sektorsövergripande sysselsättningsplan, i vilken man kommer överens om den service som ingår i personens servicebehov Planen följs upp och uppdateras enligt situation.\n\nDen service som överenskommits i planen kan vara offentlig arbetskraftsservice och även social-, hälso- och rehabiliteringsservice. \n\nNya klienter till den sektorsövergripande samservicen (TYP) hänvisas via TE-byrån, kommunens socialsektor eller via FPA. Personen övergår till att bli en samserviceklient, ifall dennes sysselsättning förutsätter sammanpassning av TE-byråns, kommunens och FPA:s serviceformer. Klienten kan även själv söka till att bli TYP-klient genom att ta kontakt med socialsektorn i den egna kommunen eller en sakkunnig inom TE-byrån. \n\nKlientskapet inom den sektorsövergripande samservicen avslutas då behovet till sektorsövergripande samservice inte längre finns. \n\nKommunerna i Vasanejden och området Sydösterbotten, Storkyro, Laihela, Kaskö, Kristinestad, Korsnäs, Malax, Korsholm, Närpes, Vasa och Vörå samt Österbottens TE-byrå och fPA har ingått samarbetsavtal om ordnande av sektorsövergripande samservice. Den sektorsövergripande samservicens service förverkligas som en del av den egna verksamheten i varje kommun. I nätverket för hela området finns en TYP-koordinator vars uppgift är att ansvara för och utveckla hela nätverkets verksamhet.\n\n",
+    "type" : "Description"
+  }, {
     "language" : "fi",
     "value" : "Työllistymistä edistävä monialainen yhteispalvelu (TYP) on kunnan, TE-toimiston ja Kelan yhteistoimintamalli, joka palvelee pidempään työttömänä olleita henkilöitä. \n\nYhteispalvelun tarkoituksena on yhdessä työttömän henkilön kanssa arvioida, mitä palveluja hän tarvitsee työllistymisen tueksi, suunnitella tarkoituksenmukaiset palvelut sekä seurata niiden etenemistä. Tavoitteena on edistää työttömän henkilön työllistymistä tarjoamalla hänen palvelutarpeensa mukaisia julkisia työvoimapalveluja sekä sosiaali-, terveys- ja kuntoutuspalveluja. \n\nAsiakkuus alkaa alkukartoituksella, joka tehdään yhdessä työttömän henkilön, kunnan sosiaalityöntekijän tai sosiaaliohjaajan ja TE-toimiston asiantuntijan kanssa.\n\nKartoitusjakson päätteeksi tehdään monialainen työllistymissuunnitelma, jossa sovitaan henkilön palvelutarpeen mukaisista palveluista. Suunnitelmaa seurataan ja sitä päivitetään tilanteen mukaan. \n\nSuunnitelmassa sovitut palvelut voivat olla julkisia työvoimapalveluja sekä sosiaali-, terveys- ja kuntoutuspalveluja. \n\nUudet asiakkaat monialaiseen yhteispalveluun ohjautuvat TE-toimiston, kunnan sosiaalitoimen tai Kelan kautta.  Asiakas voi myös itse hakeutua TYP-asiakkaaksi ottamalla yhteyttä oman kunnan sosiaalitoimeen tai TE-toimiston asiantuntijaan. \n\nAsiakkuus päättyy, kun tarvetta yhteispalveluun ei enää ole. \n\nVaasan seudun ja Suupohjan alueen kunnat Isokyrö, Laihia, Kaskinen, Kristiinankaupunki, Korsnäs, Maalahti, Mustasaari, Närpiö, Vaasa ja Vöyri sekä Pohjanmaan TE-toimisto ja Kela ovat solmineet yhteistyösopimuksen monialaisen yhteispalvelun järjestämisestä. Monialaisen yhteispalvelun palvelut toteutetaan osana jokaisen kunnan omaa toimintaa. Alueen verkostossa toimii TYP-koordinaattori, jonka tehtävänä on vastata ja kehittää koko verkoston toimintaa. ",
     "type" : "Description"
   }, {
     "language" : "sv",
     "value" : null,
-    "type" : "ValidityTime"
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
   }, {
     "language" : "sv",
     "value" : null,
@@ -192,23 +180,35 @@
   }, {
     "language" : "fi",
     "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
     "type" : "DeadLine"
   }, {
     "language" : "fi",
-    "value" : "Työllistymistä edistävä monialainen yhteispalvelu (TYP) on kunnan, TE-toimiston ja Kelan yhteistoimintamalli, joka palvelee pitkäaikaistyöttömiä.",
-    "type" : "Summary"
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
   } ],
   "languages" : [ "fi", "sv" ],
   "serviceClasses" : [ {
     "name" : [ {
-      "value" : "Työttömän tuet ja etuudet",
-      "language" : "fi"
+      "value" : "Stöd och förmåner för arbetslösa",
+      "language" : "sv"
     }, {
       "value" : "Support and benefits for the unemployed",
       "language" : "en"
     }, {
-      "value" : "Stöd och förmåner för arbetslösa",
-      "language" : "sv"
+      "value" : "Työttömän tuet ja etuudet",
+      "language" : "fi"
     } ],
     "description" : [ {
       "value" : "I denna serviceundergrupp behandlas olika ekonomiska stödformer för arbetslösa arbetssökande, förutsättningar för beviljande av dem och tjänster för ansökan om stöd.",
@@ -227,14 +227,14 @@
     "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1096"
   }, {
     "name" : [ {
+      "value" : "Beredskapsarbete",
+      "language" : "sv"
+    }, {
       "value" : "Subsidised employment",
       "language" : "en"
     }, {
       "value" : "Tuettu työllistyminen",
       "language" : "fi"
-    }, {
-      "value" : "Beredskapsarbete",
-      "language" : "sv"
     } ],
     "description" : [ {
       "value" : "Denna serviceundergrupp omfattar tjänsterna för stödd sysselsättning vars kundgrupper är långtidsarbetslösa, partiellt arbetsföra, personer med funktionsnedsättning och andra arbetssökande vars möjligheter att få arbete på den öppna arbetsmarknaden är mindre. Tjänsterna för stödd sysselsättning omfattar t.ex. lönesubvention, karriärträning, arbetsprövning och stöd för specialarrangemang å arbetsplatsen. Denna grupp omfattar också stöd och rådgivning för arbetsgivare i anslutning till beredskapsarbete.",
@@ -253,24 +253,24 @@
     "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1096"
   }, {
     "name" : [ {
-      "value" : "Jobseeking and jobs",
-      "language" : "en"
-    }, {
       "value" : "Jobbsökning och arbetsplatser",
       "language" : "sv"
+    }, {
+      "value" : "Jobseeking and jobs",
+      "language" : "en"
     }, {
       "value" : "Työnhaku ja työpaikat",
       "language" : "fi"
     } ],
     "description" : [ {
-      "value" : "Tähän palvelualaluokkaan kuuluvat useat työttömälle tarkoitetut palvelut. Näiden avulla työnhakija voi muun muassa etsiä avoimia työpaikkoja Suomesta ja ulkomailta ja hakea niihin, ilmoittautua työttömäksi työnhakijaksi, tuottaa ansioluettelon ja jättää avoimia hakemuksia työpaikkapalveluihin. Myös työnhakuvalmennuksen ja työvoimakoulutuksen kaltaiset palvelut kuuluvat tähän luokkaan.",
-      "language" : "fi"
-    }, {
       "value" : "Denna serviceundergrupp omfattar flera tjänster för arbetslösa. Med hjälp av dem kan arbetssökande bland annat söka lediga arbetsplatser i Finland och utomlands, anmäla sig som arbetslös arbetssökande, skriva CV och lämna öppna ansökningar till rekryteringstjänster. Även tjänster av typen jobbsökningscoachning och arbetskraftsutbildning hör till denna grupp.",
       "language" : "sv"
     }, {
       "value" : "This service subclass contains many services intended for the unemployed. Supported by them, jobseekers may, for example, look for vacancies in Finland and abroad and submit their applications, register as unemployed jobseekers, prepare a CV and submit open applications to web services for jobseekers. The class also includes such services as coaching for jobseekers and labour market training.",
       "language" : "en"
+    }, {
+      "value" : "Tähän palvelualaluokkaan kuuluvat useat työttömälle tarkoitetut palvelut. Näiden avulla työnhakija voi muun muassa etsiä avoimia työpaikkoja Suomesta ja ulkomailta ja hakea niihin, ilmoittautua työttömäksi työnhakijaksi, tuottaa ansioluettelon ja jättää avoimia hakemuksia työpaikkapalveluihin. Myös työnhakuvalmennuksen ja työvoimakoulutuksen kaltaiset palvelut kuuluvat tähän luokkaan.",
+      "language" : "fi"
     } ],
     "code" : "P10.1",
     "ontologyType" : "PTVL",
@@ -279,24 +279,24 @@
     "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1096"
   }, {
     "name" : [ {
-      "value" : "Sosiaalipalvelujen neuvonta- ja ohjauspalvelut",
-      "language" : "fi"
-    }, {
       "value" : "Socialtjänsternas rådgivnings- och handledningstjänster",
       "language" : "sv"
     }, {
       "value" : "Social service advisory and guidance services",
       "language" : "en"
+    }, {
+      "value" : "Sosiaalipalvelujen neuvonta- ja ohjauspalvelut",
+      "language" : "fi"
     } ],
     "description" : [ {
       "value" : "Till denna serviceundergrupp hör allmän rådgivning och handledning gällande socialtjänster som erbjuds medborgarna samt stöd till socialtjänstklienter i frågor som gäller socialtjänster, t.ex. rättsskydd och kundförhållande. Till exempel socialombudsmannens verksamhet hör till denna grupp.",
       "language" : "sv"
     }, {
-      "value" : "Tähän alapalveluluokkaan kuuluu kansalaisille annettava sosiaalipalveluja koskeva yleinen neuvonta ja ohjaus sekä sosiaalihuollon asiakkaiden tukeminen sosiaalipalveluja koskevissa, esimerkiksi oikeusturvaan ja asiakkuuteen liittyvissä kysymyksissä. Esimerkiksi sosiaaliasiamiehen toiminta kuuluu tähän luokkaan.",
-      "language" : "fi"
-    }, {
       "value" : "This service subclass includes general advice and guidance on social services provided for citizens as well as support for social welfare clients in issues related to social services, including legal protection and client relationships. For example, the activities of a social services ombudsman belong to this class.",
       "language" : "en"
+    }, {
+      "value" : "Tähän alapalveluluokkaan kuuluu kansalaisille annettava sosiaalipalveluja koskeva yleinen neuvonta ja ohjaus sekä sosiaalihuollon asiakkaiden tukeminen sosiaalipalveluja koskevissa, esimerkiksi oikeusturvaan ja asiakkuuteen liittyvissä kysymyksissä. Esimerkiksi sosiaaliasiamiehen toiminta kuuluu tähän luokkaan.",
+      "language" : "fi"
     } ],
     "code" : "P4.13",
     "ontologyType" : "PTVL",
@@ -305,11 +305,11 @@
     "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1023"
   }, {
     "name" : [ {
-      "value" : "Career guidance and career planning",
-      "language" : "en"
-    }, {
       "value" : "Yrkesval och karriärplanering",
       "language" : "sv"
+    }, {
+      "value" : "Career guidance and career planning",
+      "language" : "en"
     }, {
       "value" : "Ammatinvalinta ja urasuunnittelu",
       "language" : "fi"
@@ -318,11 +318,11 @@
       "value" : "I denna serviceundergrupp behandlas tjänster som primärt anlitas antingen i början av arbetskarriären eller i situationer av arbetslösheten för att hjälpa arbetssökande att hitta en lämplig arbets- eller utbildningskarriär. Yrkesvalstjänster för skolelever och studerande finns i en egen undergrupp under huvudgruppen Utbildning.",
       "language" : "sv"
     }, {
-      "value" : "Tässä palvelualaluokassa käsitellään palveluja, jotka ensi sijassa auttavat joko työuran alussa tai työttömyystilanteessa olevaa työnhakijaa sijoittumaan hänelle parhaiten sopivalle työ- tai koulutusuralle. Koululaisen ja opiskelijan ammatinvalintapalvelut ovat omassa alaluokassaan Koulutus-pääluokan alla.",
-      "language" : "fi"
-    }, {
       "value" : "This service class contains services that primarily help jobseekers, either are at the beginning of their careers or unemployed, to embark on a path of employment or education best suited for them. Career guidance services for pupils and students are included in their own subclass under the main class Education and training.",
       "language" : "en"
+    }, {
+      "value" : "Tässä palvelualaluokassa käsitellään palveluja, jotka ensi sijassa auttavat joko työuran alussa tai työttömyystilanteessa olevaa työnhakijaa sijoittumaan hänelle parhaiten sopivalle työ- tai koulutusuralle. Koululaisen ja opiskelijan ammatinvalintapalvelut ovat omassa alaluokassaan Koulutus-pääluokan alla.",
+      "language" : "fi"
     } ],
     "code" : "P10.2",
     "ontologyType" : "PTVL",
@@ -341,14 +341,14 @@
       "language" : "fi"
     } ],
     "description" : [ {
+      "value" : "I denna serviceundergrupp behandlas tjänster som på ett förebyggande sätt siktar på att upprätthålla arbetsförmågan eller, om arbetsförmågan redan minskat, återställa den genom yrkesinriktad rehabilitering.",
+      "language" : "sv"
+    }, {
       "value" : "This service subclass contains services that aim in different ways to promote a persons's work ability or, once an employee’s work ability already has declined, restoring it through methods of vocational rehabilitation.",
       "language" : "en"
     }, {
       "value" : "Tässä palvelualaluokassa käsitellään palveluja, jotka tähtäävät eri tavoin ennaltaehkäisevästi työkyvyn ylläpitämiseen tai, työkyvyn jo alennuttua, sen palauttamiseen ammatillisen kuntoutuksen menetelmin.",
       "language" : "fi"
-    }, {
-      "value" : "I denna serviceundergrupp behandlas tjänster som på ett förebyggande sätt siktar på att upprätthålla arbetsförmågan eller, om arbetsförmågan redan minskat, återställa den genom yrkesinriktad rehabilitering.",
-      "language" : "sv"
     } ],
     "code" : "P10.4",
     "ontologyType" : "PTVL",
@@ -359,14 +359,14 @@
   "ontologyTerms" : [ ],
   "targetGroups" : [ {
     "name" : [ {
-      "value" : "Kansalaiset",
-      "language" : "fi"
+      "value" : "Medborgare",
+      "language" : "sv"
     }, {
       "value" : "Citizens",
       "language" : "en"
     }, {
-      "value" : "Medborgare",
-      "language" : "sv"
+      "value" : "Kansalaiset",
+      "language" : "fi"
     } ],
     "code" : "KR1",
     "ontologyType" : "TARGETGROUP",
@@ -379,11 +379,11 @@
       "value" : "Att bli arbetslös",
       "language" : "sv"
     }, {
-      "value" : "Työttömäksi jääminen",
-      "language" : "fi"
-    }, {
       "value" : "Losing a job",
       "language" : "en"
+    }, {
+      "value" : "Työttömäksi jääminen",
+      "language" : "fi"
     } ],
     "code" : "KE8",
     "ontologyType" : "LIFESITUATION",
@@ -395,11 +395,11 @@
   "legislation" : [ ],
   "keywords" : [ ],
   "requirements" : [ {
-    "value" : "Personen övergår till att bli en samserviceklient, ifall dennes sysselsättning förutsätter sammanpassning av TE-byråns, kommunens och FPA:s serviceformer.",
-    "language" : "sv"
-  }, {
     "value" : "Henkilö siirtyy yhteispalvelun asiakkaaksi, jos hänen työllistymisensä edellyttää TE-toimiston, kunnan ja Kelan palvelujen yhteensovittamista.",
     "language" : "fi"
+  }, {
+    "value" : "Personen övergår till att bli en samserviceklient, ifall dennes sysselsättning förutsätter sammanpassning av TE-byråns, kommunens och FPA:s serviceformer.",
+    "language" : "sv"
   } ],
   "serviceChannels" : [ {
     "serviceChannel" : {
@@ -423,12 +423,23 @@
     "serviceHours" : [ ],
     "contactDetails" : null,
     "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "d6ffcebe-21b9-4ce4-9c51-92c0dc9623e3",
+      "name" : "Yhteispalvelun puhelinasiointi"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
   } ],
   "organizations" : [ {
     "provisionType" : null,
     "organization" : {
       "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
-      "name" : "Vaasan kaupunki"
+      "name" : "Testiorganisaatio 9 (Kunta)"
     },
     "roleType" : "Responsible",
     "additionalInformation" : [ ]
@@ -442,5 +453,5 @@
   "serviceVouchers" : [ ],
   "serviceCollections" : [ ],
   "publishingStatus" : "Published",
-  "modified" : "2018-05-03T11:53:58.162746Z"
+  "modified" : "2017-10-13T10:17:22.067304Z"
 }

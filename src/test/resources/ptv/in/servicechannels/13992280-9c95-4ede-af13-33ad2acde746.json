@@ -1,0 +1,95 @@
+{
+  "sourceId" : null,
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "Sundom skola ligger avskild från stadens trafikbrus i nära anslutning till naturen.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Sundom skola on etäällä kaupungin liikennehälystä ja lähellä luontoa.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Sundom skola ligger avskild från stadens trafikbrus i nära anslutning till naturen. Genom byggandens olika verksamheter har elever och lärare nära tillgång till det som behövs för undervisningen. Både föräldrar och övriga månar om byggnaden och dess plats i samhället.\n",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Sundom skola on etäällä kaupungin liikennehälystä ja lähellä luontoa. Rakennuksen eri toimintojen kautta oppilailla ja opettajilla on opetuksessa tarvittavat asiat lähellä. Sekä vanhemmat että muut huolehtivat rakennuksesta ja sen asemasta yhteiskunnassa. ",
+    "type" : "Description"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "areaType" : "LimitedType",
+  "serviceChannelNames" : [ {
+    "value" : "Sundom skola",
+    "language" : "sv"
+  }, {
+    "value" : "Sundom skola",
+    "language" : "fi"
+  } ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "areaCodes" : [ "905" ]
+  } ],
+  "emails" : [ ],
+  "faxNumbers" : [ ],
+  "phoneNumbers" : [ {
+    "additionalInformation" : "Rektor",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "405166046",
+    "language" : "fi"
+  }, {
+    "additionalInformation" : "Rektor",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "405166046",
+    "language" : "sv"
+  } ],
+  "languages" : [ "sv" ],
+  "webPages" : [ {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/sv/node/20791",
+    "value" : "Sundom skola",
+    "language" : "fi"
+  }, {
+    "orderNumber" : "2",
+    "url" : "https://www.vaasa.fi/sv/node/20791",
+    "value" : "Sundom skola",
+    "language" : "sv"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Single",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Sundomvägen",
+        "language" : "sv"
+      }, {
+        "value" : "Sundomvägen",
+        "language" : "fi"
+      } ],
+      "streetNumber" : "13",
+      "postalCode" : "65410",
+      "municipality" : "905",
+      "additionalInformation" : [ ],
+      "latitude" : "7001836.409",
+      "longitude" : "224930.408"
+    },
+    "locationAbroad" : [ ],
+    "multipointLocation" : [ ],
+    "country" : "FI"
+  } ],
+  "serviceHours" : [ ],
+  "deleteAllEmails" : true,
+  "deleteAllPhoneNumbers" : true,
+  "deleteAllFaxNumbers" : true,
+  "publishingStatus" : "Published",
+  "isVisibleForAll" : true,
+  "deleteAllWebPages" : true,
+  "deleteAllServiceHours" : true
+}

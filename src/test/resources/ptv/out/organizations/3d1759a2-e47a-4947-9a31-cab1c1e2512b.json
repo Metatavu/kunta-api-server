@@ -7,14 +7,14 @@
   "municipality" : {
     "code" : "529",
     "name" : [ {
-      "value" : "Naantali",
-      "language" : "fi"
-    }, {
       "value" : "Nådendal",
       "language" : "sv"
     }, {
       "value" : "Naantali",
       "language" : "en"
+    }, {
+      "value" : "Naantali",
+      "language" : "fi"
     } ]
   },
   "organizationType" : "Municipality",
@@ -22,15 +22,15 @@
   "businessName" : "Naantali",
   "organizationNames" : [ {
     "language" : "fi",
-    "value" : "Naantalin kaupunki",
+    "value" : "Testiorganisaatio 6 (Kunta)",
     "type" : "Name"
   } ],
   "displayNameType" : [ {
     "type" : "Name",
-    "language" : "fi"
+    "language" : "sv"
   }, {
     "type" : "Name",
-    "language" : "sv"
+    "language" : "fi"
   } ],
   "areaType" : null,
   "areas" : null,
@@ -92,14 +92,14 @@
       "municipality" : {
         "code" : "529",
         "name" : [ {
-          "value" : "Naantali",
-          "language" : "fi"
-        }, {
           "value" : "Nådendal",
           "language" : "sv"
         }, {
           "value" : "Naantali",
           "language" : "en"
+        }, {
+          "value" : "Naantali",
+          "language" : "fi"
         } ]
       },
       "additionalInformation" : [ {
@@ -131,14 +131,14 @@
       "municipality" : {
         "code" : "529",
         "name" : [ {
-          "value" : "Naantali",
-          "language" : "fi"
-        }, {
           "value" : "Nådendal",
           "language" : "sv"
         }, {
           "value" : "Naantali",
           "language" : "en"
+        }, {
+          "value" : "Naantali",
+          "language" : "fi"
         } ]
       },
       "additionalInformation" : [ {
@@ -155,38 +155,8 @@
   "services" : [ {
     "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
     "service" : {
-      "id" : "228738ee-754a-49b7-8240-2b84c5ca2970",
-      "name" : "Etsivä nuorisotyö"
-    },
-    "roleType" : "Responsible",
-    "provisionType" : null,
-    "additionalInformation" : [ ],
-    "webPages" : [ ]
-  }, {
-    "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
-    "service" : {
-      "id" : "ea3af438-bc77-49da-8f0c-2f217eee491f",
-      "name" : "Perusopetuksen oppilashuolto"
-    },
-    "roleType" : "Responsible",
-    "provisionType" : null,
-    "additionalInformation" : [ ],
-    "webPages" : [ ]
-  }, {
-    "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
-    "service" : {
       "id" : "f20366fd-b41d-406b-bfab-e6928359a008",
       "name" : "Painotettu opetus"
-    },
-    "roleType" : "Responsible",
-    "provisionType" : null,
-    "additionalInformation" : [ ],
-    "webPages" : [ ]
-  }, {
-    "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
-    "service" : {
-      "id" : "e45cae1e-dfbc-44eb-b57b-ef73f21b38c4",
-      "name" : "Perusopetus"
     },
     "roleType" : "Responsible",
     "provisionType" : null,
@@ -245,8 +215,38 @@
   }, {
     "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
     "service" : {
-      "id" : "0739289c-cc26-4097-b029-fa9c58c8d4e9",
-      "name" : "Rajankäynti asemakaava-alueella"
+      "id" : "71fc2285-4e69-4aa3-9f87-16511595d5a1",
+      "name" : "Maahanmuuttajien valmistava opetus"
+    },
+    "roleType" : "Responsible",
+    "provisionType" : null,
+    "additionalInformation" : [ ],
+    "webPages" : [ ]
+  }, {
+    "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+    "service" : {
+      "id" : "2d32a11c-3b05-45b7-bdb3-a6f0022e14bf",
+      "name" : "Sosiaalihuollon kuljetuspalvelut vaikeavammaisille"
+    },
+    "roleType" : "Responsible",
+    "provisionType" : null,
+    "additionalInformation" : [ ],
+    "webPages" : [ ]
+  }, {
+    "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+    "service" : {
+      "id" : "73f7ef7c-fad3-4b59-a601-a5d172ec4293",
+      "name" : "Kunnallinen perhepäivähoito"
+    },
+    "roleType" : "Responsible",
+    "provisionType" : null,
+    "additionalInformation" : [ ],
+    "webPages" : [ ]
+  }, {
+    "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+    "service" : {
+      "id" : "f7dfce01-2b3b-4dda-95c6-92213fbabd1e",
+      "name" : "Kunnallinen päiväkotihoito"
     },
     "roleType" : "Responsible",
     "provisionType" : null,

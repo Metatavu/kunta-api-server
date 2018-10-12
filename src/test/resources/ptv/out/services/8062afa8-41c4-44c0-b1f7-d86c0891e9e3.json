@@ -22,85 +22,85 @@
     "municipalities" : [ {
       "code" : "905",
       "name" : [ {
-        "value" : "Vaasa",
-        "language" : "fi"
-      }, {
         "value" : "Vasa",
         "language" : "sv"
       }, {
         "value" : "Vaasa",
         "language" : "en"
+      }, {
+        "value" : "Vaasa",
+        "language" : "fi"
       } ]
     } ]
   } ],
   "serviceDescriptions" : [ {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ProcessingTime"
-  }, {
     "language" : "sv",
-    "value" : null,
-    "type" : "ProcessingTime"
-  }, {
-    "language" : "sv",
-    "value" : null,
-    "type" : "ValidityTime"
-  }, {
-    "language" : "sv",
-    "value" : "Mätningsservicen beställs från fastighetssektorns mätningsservice. I ärenden som ansluter sig till visning av tomthöjder och utmärkande av byggnads plats och lägessyn kan du ta kontakt med mätningsteknikern.",
-    "type" : "UserInstruction"
-  }, {
-    "language" : "sv",
-    "value" : "Avgiften fastställs enligt ikraftvarande taksa. Priset består av en utmärknings- och kontrollavgift.",
-    "type" : "ChargeTypeAdditionalInfo"
-  }, {
-    "language" : "sv",
-    "value" : null,
-    "type" : "DeadLine"
-  }, {
-    "language" : "fi",
-    "value" : "Maksu määräytyy voimassa olevien taksojen mukaisesti. Hinta koostuu merkitsemis- ja tarkistusmaksusta.",
-    "type" : "ChargeTypeAdditionalInfo"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "DeadLine"
+    "value" : "Vasa stads mätningsservice-enhet ansvarar för terrängmätningar av tomter och byggnaders placeringar samt höjdmarkeringar.",
+    "type" : "Summary"
   }, {
     "language" : "fi",
     "value" : "Vaasan kaupungin mittauspalvelut-yksikkö vastaa tonttien ja rakennusten maastoonmerkitsemismittauksista.",
     "type" : "Summary"
   }, {
-    "language" : "fi",
-    "value" : "Vaasan kaupungin mittauspalvelut-yksikkö vastaa tonttien ja rakennusten maastoonmerkitsemismittauksista. Osoitamme maastossa tonttien ja rakennusten sijainnit ja korkeusaseman. ",
-    "type" : "Description"
+    "language" : "sv",
+    "value" : "Mätningsservicen beställs från fastighetssektorns mätningsservice. I ärenden som ansluter sig till visning av tomthöjder och utmärkande av byggnads plats och lägessyn kan du ta kontakt med mätningsteknikern.",
+    "type" : "UserInstruction"
   }, {
     "language" : "fi",
     "value" : "Mittauspalvelut tilataan kiinteistötoimen mittauspalveluilta. Tontin korkeuden näyttöön ja rakennuksen sijainnin merkitsemiseen ja katselmoimiseen liittyvissä asioissa voit olla yhteydessä mittausteknikkoon. \n",
     "type" : "UserInstruction"
   }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ValidityTime"
-  }, {
-    "language" : "sv",
-    "value" : "Vasa stads mätningsservice-enhet ansvarar för terrängmätningar av tomter och byggnaders placeringar samt höjdmarkeringar.",
-    "type" : "Summary"
-  }, {
     "language" : "sv",
     "value" : "Vasa stads mätningsservice-enhet ansvarar för terrängmätningar av tomter och byggnaders placeringar samt höjdmarkeringar.",
     "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan kaupungin mittauspalvelut-yksikkö vastaa tonttien ja rakennusten maastoonmerkitsemismittauksista. Osoitamme maastossa tonttien ja rakennusten sijainnit ja korkeusaseman. ",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "sv",
+    "value" : "Avgiften fastställs enligt ikraftvarande taksa. Priset består av en utmärknings- och kontrollavgift.",
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Maksu määräytyy voimassa olevien taksojen mukaisesti. Hinta koostuu merkitsemis- ja tarkistusmaksusta.",
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
   } ],
   "languages" : [ "fi", "sv" ],
   "serviceClasses" : [ {
     "name" : [ {
-      "value" : "Maankäyttö, kaavoitus ja tontit",
-      "language" : "fi"
-    }, {
       "value" : "Markanvändning, planering och tomter",
       "language" : "sv"
     }, {
       "value" : "Land use, land use planning and sites",
       "language" : "en"
+    }, {
+      "value" : "Maankäyttö, kaavoitus ja tontit",
+      "language" : "fi"
     } ],
     "description" : [ {
       "value" : "I denna underservicegrupp behandlas landskapsplanering, detaljplaner och stadsplaner, påverkningsmöjligheter för dessa samt affärer med och hyrning av planerad mark och tomter, inklusive företagstomter.",
@@ -120,14 +120,14 @@
   } ],
   "ontologyTerms" : [ {
     "name" : [ {
-      "value" : "tontit",
-      "language" : "fi"
-    }, {
       "value" : "tomter",
       "language" : "sv"
     }, {
       "value" : "plots of land",
       "language" : "en"
+    }, {
+      "value" : "tontit",
+      "language" : "fi"
     } ],
     "code" : null,
     "ontologyType" : "JUPO",
@@ -139,11 +139,11 @@
       "value" : "lägessyn",
       "language" : "sv"
     }, {
-      "value" : "sijaintikatselmukset",
-      "language" : "fi"
-    }, {
       "value" : "location inspections",
       "language" : "en"
+    }, {
+      "value" : "sijaintikatselmukset",
+      "language" : "fi"
     } ],
     "code" : null,
     "ontologyType" : "JUPO",
@@ -153,14 +153,14 @@
   } ],
   "targetGroups" : [ {
     "name" : [ {
-      "value" : "Yritykset ja yhteisöt",
-      "language" : "fi"
+      "value" : "Företag och samfund",
+      "language" : "sv"
     }, {
       "value" : "Businesses and non-government organizations",
       "language" : "en"
     }, {
-      "value" : "Företag och samfund",
-      "language" : "sv"
+      "value" : "Yritykset ja yhteisöt",
+      "language" : "fi"
     } ],
     "code" : "KR2",
     "ontologyType" : "TARGETGROUP",
@@ -169,14 +169,14 @@
     "parentUri" : null
   }, {
     "name" : [ {
-      "value" : "Kansalaiset",
-      "language" : "fi"
+      "value" : "Medborgare",
+      "language" : "sv"
     }, {
       "value" : "Citizens",
       "language" : "en"
     }, {
-      "value" : "Medborgare",
-      "language" : "sv"
+      "value" : "Kansalaiset",
+      "language" : "fi"
     } ],
     "code" : "KR1",
     "ontologyType" : "TARGETGROUP",
@@ -190,10 +190,10 @@
   "keywords" : [ ],
   "requirements" : [ {
     "value" : null,
-    "language" : "sv"
+    "language" : "fi"
   }, {
     "value" : null,
-    "language" : "fi"
+    "language" : "sv"
   } ],
   "serviceChannels" : [ {
     "serviceChannel" : {
@@ -206,23 +206,12 @@
     "serviceHours" : [ ],
     "contactDetails" : null,
     "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
-      "id" : "4faaad5e-5cba-4166-a76b-a2f0a0ba64eb",
-      "name" : "Mittausteknikko"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
   } ],
   "organizations" : [ {
     "provisionType" : null,
     "organization" : {
       "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
-      "name" : "Vaasan kaupunki"
+      "name" : "Testiorganisaatio 9 (Kunta)"
     },
     "roleType" : "Responsible",
     "additionalInformation" : [ ]
@@ -230,7 +219,7 @@
     "provisionType" : "SelfProducedServices",
     "organization" : {
       "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
-      "name" : "Vaasan kaupunki"
+      "name" : "Testiorganisaatio 9 (Kunta)"
     },
     "roleType" : "Producer",
     "additionalInformation" : [ ]
@@ -239,5 +228,5 @@
   "serviceVouchers" : [ ],
   "serviceCollections" : [ ],
   "publishingStatus" : "Published",
-  "modified" : "2018-05-03T11:53:58.162746Z"
+  "modified" : "2017-11-15T10:59:38.378822Z"
 }

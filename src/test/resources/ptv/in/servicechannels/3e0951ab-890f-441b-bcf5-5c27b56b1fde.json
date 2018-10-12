@@ -1,0 +1,54 @@
+{
+  "sourceId" : null,
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "Du kan ge respons om Vasa stads service och verksamhet.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan Palautepalvelussa voit antaa palautetta Vaasan kaupungin palveluista ja toiminnasta.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Du kan ge respons om Vasa stads service och verksamhet.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan Palautepalvelussa voit antaa palautetta Vaasan kaupungin palveluista ja toiminnasta.",
+    "type" : "Description"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "areaType" : "LimitedType",
+  "serviceChannelNames" : [ {
+    "value" : "Vasa Feedback -tjänsten",
+    "language" : "sv"
+  }, {
+    "value" : "Vaasan Palautepalvelu",
+    "language" : "fi"
+  } ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "areaCodes" : [ "905" ]
+  } ],
+  "signatureQuantity" : "0",
+  "requiresSignature" : false,
+  "requiresAuthentication" : false,
+  "webPage" : [ {
+    "value" : "https://kartta.vaasa.fi/eFeedback",
+    "language" : "fi"
+  }, {
+    "value" : "https://kartta.vaasa.fi/eFeedback/sv",
+    "language" : "sv"
+  } ],
+  "attachments" : [ ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "serviceHours" : [ ],
+  "publishingStatus" : "Published",
+  "isVisibleForAll" : true,
+  "deleteAllAttachments" : true,
+  "deleteAllWebPages" : true,
+  "deleteAllServiceHours" : true,
+  "deleteAllSupportEmails" : true,
+  "deleteAllSupportPhones" : true
+}

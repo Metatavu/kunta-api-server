@@ -17,52 +17,19 @@
     "municipalities" : [ {
       "code" : "529",
       "name" : [ {
-        "value" : "Naantali",
-        "language" : "fi"
-      }, {
         "value" : "Nådendal",
         "language" : "sv"
       }, {
         "value" : "Naantali",
         "language" : "en"
+      }, {
+        "value" : "Naantali",
+        "language" : "fi"
       } ]
     } ]
   } ],
   "supportEmails" : [ ],
   "services" : [ {
-    "service" : {
-      "id" : "3d7ef99e-b375-4ddc-b185-0267e83e483c",
-      "name" : "Perusopetuksen aamu- ja iltapäivätoiminta"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "4386f9a2-12ec-4079-b1aa-e0731627161a",
-      "name" : "Oppilaanohjaus"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "563e5c31-5d26-448a-9b85-30d2c7df811e",
-      "name" : "Lukiokoulutus"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
     "service" : {
       "id" : "a55b0b53-4267-4f76-acd4-6333ef308a1c",
       "name" : "Lukiokoulutuksen opiskelijahuolto"
@@ -75,41 +42,8 @@
     "digitalAuthorizations" : [ ]
   }, {
     "service" : {
-      "id" : "aa770428-0ee1-433d-8d2c-90c060c477cd",
-      "name" : "Perusopetuksen erityisopetus"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
       "id" : "d088280f-3d17-4698-b440-feffc6e4fa0f",
       "name" : "Lukiokoulutuksen opinto-ohjaus"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "e45cae1e-dfbc-44eb-b57b-ef73f21b38c4",
-      "name" : "Perusopetus"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "ea3af438-bc77-49da-8f0c-2f217eee491f",
-      "name" : "Perusopetuksen oppilashuolto"
     },
     "serviceChargeType" : null,
     "description" : [ ],

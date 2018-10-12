@@ -1,0 +1,114 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "",
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi", "sv", "en" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      }, {
+        "value" : "Vaasa",
+        "language" : "fi"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "17c633dd-5408-495a-86c1-d8f57598e899",
+      "name" : "Perusopetus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63253202",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63253202",
+    "language" : "en"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63253202",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "sv",
+    "value" : "Förvaltningssekreterare",
+    "type" : "Name"
+  }, {
+    "language" : "en",
+    "value" : "The administrative secretary",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Hallintosihteeri",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "Phone",
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "Nya elever som flyttar till Vasa anmäls till förvaltningssekreteraren inom verket för småbarnsfostran och utbildning (svenskspråkiga elevärenden).",
+    "type" : "Summary"
+  }, {
+    "language" : "en",
+    "value" : "The new pupil’s moving to Vaasa are entered at the administrative secretary of the child guidance and school authorities (Swedish speaking pupils).",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasaan muuttavat uudet oppilaat ilmoitetaan Kasvatus- ja opetusviraston hallintosihteerille (ruotsinkieliset oppilasasiat).",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Nya elever som flyttar till Vasa anmäls till förvaltningssekreteraren inom verket för småbarnsfostran och utbildning (svenskspråkiga elevärenden).\n",
+    "type" : "Description"
+  }, {
+    "language" : "en",
+    "value" : "The new pupil’s moving to Vaasa are entered at the administrative secretary of the child guidance and school authorities (Swedish speaking pupils).\n",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasaan muuttavat uudet oppilaat ilmoitetaan Kasvatus- ja opetusviraston hallintosihteerille (ruotsinkieliset oppilasasiat).",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "4a28133d-683a-47a9-b5f3-6b2f95a5d6e9"
+}

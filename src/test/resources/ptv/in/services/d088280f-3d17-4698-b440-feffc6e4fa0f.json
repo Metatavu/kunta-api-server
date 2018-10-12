@@ -1,0 +1,56 @@
+{
+  "sourceId" : null,
+  "generalDescriptionId" : "1c94b5dc-93e7-4eb4-bc23-9b332109fb5b",
+  "type" : "Service",
+  "fundingType" : "PubliclyFunded",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Lukiokoulutuksen opinto-ohjaus",
+    "type" : "Name"
+  } ],
+  "serviceChargeType" : null,
+  "areaType" : "LimitedType",
+  "areas" : [ {
+    "type" : "Municipality",
+    "areaCodes" : [ "529" ]
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Naantalin lukio tarjoaa opiskelijoilleen monipuolista opinto-ohjausta opiskelun tueksi.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Ota yhteyttä omaan opinto-ohjaajaasi. Yhteystiedot löydät opinto-oppaasta tai lukion omilta verkkosivuilta.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Lukiokoulutukseen osallistuvalla on oikeus opinto-ohjaukseen, joka tukee opiskelijaa opinnoissa ja auttaa häntä valmistautumaan lukion jälkeisiin opintoihin ja työelämään.\n\nOpinto-ohjaus Naantalin lukiossa:\n* kaksi opinto-ohjaajaa\n* kaksi pakollista kurssia\n* pienryhmäohjausta\n* henkilökohtaiset opintosuunnitelmat ja jatko-opintosuunnitelmat ",
+    "type" : "Description"
+  } ],
+  "languages" : [ "fi" ],
+  "serviceClasses" : [ "http://urn.fi/URN:NBN:fi:au:ptvl:v1064", "http://urn.fi/URN:NBN:fi:au:ptvl:v1068", "http://urn.fi/URN:NBN:fi:au:ptvl:v1069" ],
+  "ontologyTerms" : [ "http://www.yso.fi/onto/koko/p75844", "http://www.yso.fi/onto/koko/p5541" ],
+  "targetGroups" : [ "http://urn.fi/URN:NBN:fi:au:ptvl:v2001" ],
+  "lifeEvents" : [ ],
+  "industrialClasses" : [ ],
+  "legislation" : [ ],
+  "keywords" : [ ],
+  "requirements" : [ ],
+  "otherResponsibleOrganizations" : [ ],
+  "serviceProducers" : [ {
+    "orderNumber" : 0,
+    "provisionType" : "SelfProducedServices",
+    "organizations" : [ "3d1759a2-e47a-4947-9a31-cab1c1e2512b" ],
+    "additionalInformation" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "serviceVouchers" : [ ],
+  "publishingStatus" : "Published",
+  "deleteAllLifeEvents" : true,
+  "deleteAllIndustrialClasses" : true,
+  "deleteAllLaws" : true,
+  "deleteAllKeywords" : true,
+  "deleteServiceChargeType" : true,
+  "deleteGeneralDescriptionId" : false,
+  "mainResponsibleOrganization" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b"
+}

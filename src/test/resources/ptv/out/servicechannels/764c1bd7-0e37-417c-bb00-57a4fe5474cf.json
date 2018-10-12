@@ -1,0 +1,56 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://hankesalkku.vrk.fi",
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "requiresSignature" : false,
+  "attachments" : [ {
+    "type" : "Attachment",
+    "name" : "Yhteiset periaatteet valtionhallinnon merkittävien ICT-hankkeiden raportoinnissa",
+    "description" : null,
+    "url" : "http://vm.fi/documents/10623/355484/Ohje+merkitt%C3%A4vien+hankkeiden+raportoinnista/006dc1af-4401-4218-91f7-5e502a4f3d66/Ohje+merkitt%C3%A4vien+hankkeiden+raportoinnista.pdf",
+    "language" : "fi"
+  } ],
+  "languages" : [ ],
+  "supportPhones" : [ ],
+  "areas" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "6487128b-8db8-4fd3-9118-4d9bc08768c4",
+      "name" : "Valtionhallinnon yhteinen Hankesalkku"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "b458d033-042d-4cbe-b030-34e81da28821",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Hankesalkku",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "EChannel",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Hankesalkku sisältää perustiedot valtionhallinnon tärkeistä kehityshankkeista ja -projekteista.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Hankesalkkujärjestelmä sisältää perustiedot valtionhallinnon merkittävistä kehityshankkeista ja -projekteista sekä niihin liittyvän tilanneraportoinnin. Merkittävien hankkeiden seurantaan ja raportointiin on sovittu yhteiset toimintatavat, jotka on kuvattu erillisessä ohjeessa. Käyttöoikeudet järjestelmään voit pyytää oman organisaatiosi Hankesalkku-vastaavalta.",
+    "type" : "Description"
+  } ],
+  "areaType" : null,
+  "publishingStatus" : "Published",
+  "modified" : "2018-04-12T09:03:13.442425",
+  "id" : "764c1bd7-0e37-417c-bb00-57a4fe5474cf",
+  "signatureQuantity" : 0,
+  "requiresAuthentication" : true
+}

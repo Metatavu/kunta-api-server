@@ -7,14 +7,14 @@
   "municipality" : {
     "code" : "905",
     "name" : [ {
-      "value" : "Vaasa",
-      "language" : "fi"
-    }, {
       "value" : "Vasa",
       "language" : "sv"
     }, {
       "value" : "Vaasa",
       "language" : "en"
+    }, {
+      "value" : "Vaasa",
+      "language" : "fi"
     } ]
   },
   "organizationType" : "Municipality",
@@ -22,36 +22,36 @@
   "businessName" : "Vaasa",
   "organizationNames" : [ {
     "language" : "sv",
-    "value" : "Vasa stad",
-    "type" : "Name"
-  }, {
-    "language" : "fi",
-    "value" : "Vaasan kaupunki",
+    "value" : "Testorganisation 9 (Kommun)",
     "type" : "Name"
   }, {
     "language" : "en",
-    "value" : "City of Vaasa",
+    "value" : "Testorganization 9 (Municipality)",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Testiorganisaatio 9 (Kunta)",
     "type" : "Name"
   } ],
   "displayNameType" : [ {
-    "type" : "Name",
-    "language" : "fi"
-  }, {
     "type" : "Name",
     "language" : "sv"
   }, {
     "type" : "Name",
     "language" : "en"
+  }, {
+    "type" : "Name",
+    "language" : "fi"
   } ],
   "areaType" : null,
   "areas" : null,
   "organizationDescriptions" : [ {
-    "language" : "en",
-    "value" : "Vaasa is a heavily growing city with 67 000 inhabitants and the biggest economic centre in Ostrobothnia. Together with its six neighbouring municipalities, the City of Vaasa forms the Vaasa region. The Vaasa region has over 114 000 inhabitants. The region is one of the strongest growing and most successful regions in the country.",
-    "type" : "Description"
-  }, {
     "language" : "sv",
     "value" : "Vasa är en kraftigt växande stad med över 67 000 invånare och det största ekonomiska centret i Österbotten. Vasa stad bildar tillsammans med sina sex grannkommuner Vasaregionen. I Vasaregionen bor över 114 000 invånare. Bland landets regioner hör Vasaregionen till dem som växer kraftigast och har bäst framgång. ",
+    "type" : "Description"
+  }, {
+    "language" : "en",
+    "value" : "Vaasa is a heavily growing city with 67 000 inhabitants and the biggest economic centre in Ostrobothnia. Together with its six neighbouring municipalities, the City of Vaasa forms the Vaasa region. The Vaasa region has over 114 000 inhabitants. The region is one of the strongest growing and most successful regions in the country.",
     "type" : "Description"
   }, {
     "language" : "fi",
@@ -66,24 +66,16 @@
     "language" : "en"
   }, {
     "orderNumber" : "1",
-    "url" : "https://www.vaasa.fi/sv",
-    "value" : "Vasa stad",
-    "language" : "sv"
-  }, {
-    "orderNumber" : "1",
     "url" : "https://www.vaasa.fi/",
     "value" : "Vaasan kaupunki",
     "language" : "fi"
+  }, {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/sv",
+    "value" : "Vasa stad",
+    "language" : "sv"
   } ],
   "phoneNumbers" : [ {
-    "additionalInformation" : "Telefonväxeln",
-    "serviceChargeType" : "Chargeable",
-    "chargeDescription" : null,
-    "prefixNumber" : "+358",
-    "isFinnishServiceNumber" : false,
-    "number" : "63251111",
-    "language" : "sv"
-  }, {
     "additionalInformation" : "Puhelinvaihde",
     "serviceChargeType" : "Chargeable",
     "chargeDescription" : null,
@@ -99,6 +91,14 @@
     "isFinnishServiceNumber" : false,
     "number" : "63251111",
     "language" : "en"
+  }, {
+    "additionalInformation" : "Telefonväxeln",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63251111",
+    "language" : "sv"
   } ],
   "addresses" : [ {
     "type" : "Visiting",
@@ -106,14 +106,14 @@
     "postOfficeBoxAddress" : null,
     "streetAddress" : {
       "street" : [ {
-        "value" : "Vaasanpuistikko",
-        "language" : "fi"
-      }, {
         "value" : "Vasaesplanaden",
         "language" : "sv"
       }, {
         "value" : "Vaasanpuistikko",
         "language" : "en"
+      }, {
+        "value" : "Vaasanpuistikko",
+        "language" : "fi"
       } ],
       "streetNumber" : "10",
       "postalCode" : "65100",
@@ -127,14 +127,14 @@
       "municipality" : {
         "code" : "905",
         "name" : [ {
-          "value" : "Vaasa",
-          "language" : "fi"
-        }, {
           "value" : "Vasa",
           "language" : "sv"
         }, {
           "value" : "Vaasa",
           "language" : "en"
+        }, {
+          "value" : "Vaasa",
+          "language" : "fi"
         } ]
       },
       "additionalInformation" : [ {
@@ -203,16 +203,6 @@
   }, {
     "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
     "service" : {
-      "id" : "6ccb671f-05cd-46cf-a0a4-4f98d43dfd37",
-      "name" : "Uimahalli"
-    },
-    "roleType" : "Responsible",
-    "provisionType" : null,
-    "additionalInformation" : [ ],
-    "webPages" : [ ]
-  }, {
-    "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
-    "service" : {
       "id" : "2ba22c86-e28a-4988-aca7-38c6ce95bed7",
       "name" : "Matonpesupaikat"
     },
@@ -245,6 +235,16 @@
     "service" : {
       "id" : "17c633dd-5408-495a-86c1-d8f57598e899",
       "name" : "Perusopetus"
+    },
+    "roleType" : "Responsible",
+    "provisionType" : null,
+    "additionalInformation" : [ ],
+    "webPages" : [ ]
+  }, {
+    "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+    "service" : {
+      "id" : "98fd2cc8-ccbb-46c1-a773-92fecf7a0c91",
+      "name" : "Lasten ja nuorten liikunta"
     },
     "roleType" : "Responsible",
     "provisionType" : null,

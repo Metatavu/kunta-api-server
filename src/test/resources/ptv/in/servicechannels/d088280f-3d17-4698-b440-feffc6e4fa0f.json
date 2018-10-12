@@ -1,0 +1,75 @@
+{
+  "sourceId" : null,
+  "serviceChannelDescriptions" : [ {
+    "language" : "en",
+    "value" : "Changed Description",
+    "type" : "Description"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "areaType" : "AreaType",
+  "serviceChannelNames" : [ {
+    "value" : "Changed Name",
+    "language" : "en"
+  } ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "areaCodes" : [ "12345" ]
+  } ],
+  "emails" : [ {
+    "value" : "fake@example.com",
+    "language" : "en"
+  } ],
+  "faxNumbers" : [ {
+    "prefixNumber" : "+258",
+    "isFinnishServiceNumber" : true,
+    "number" : "54321-FAKE",
+    "language" : "en"
+  } ],
+  "phoneNumbers" : [ {
+    "additionalInformation" : "Test phone",
+    "serviceChargeType" : "Charged",
+    "chargeDescription" : "Testing",
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "12345-FAKE",
+    "language" : "en"
+  } ],
+  "languages" : [ "en" ],
+  "webPages" : [ {
+    "orderNumber" : "1",
+    "url" : "https://www.example.com",
+    "value" : "Example",
+    "language" : "en"
+  } ],
+  "addresses" : [ {
+    "type" : "Location",
+    "subType" : "Abroad",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : null,
+    "locationAbroad" : [ {
+      "value" : "Far away",
+      "language" : "en"
+    } ],
+    "multipointLocation" : [ ],
+    "country" : null
+  } ],
+  "serviceHours" : [ {
+    "serviceHourType" : "Exception",
+    "validFrom" : null,
+    "validTo" : null,
+    "isClosed" : false,
+    "validForNow" : false,
+    "additionalInformation" : [ {
+      "value" : "Test",
+      "language" : "en"
+    } ],
+    "openingHour" : [ ]
+  } ],
+  "deleteAllEmails" : true,
+  "deleteAllPhoneNumbers" : true,
+  "deleteAllFaxNumbers" : true,
+  "publishingStatus" : "Published",
+  "isVisibleForAll" : true,
+  "deleteAllWebPages" : true,
+  "deleteAllServiceHours" : true
+}

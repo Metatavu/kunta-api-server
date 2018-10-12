@@ -9,14 +9,14 @@
     "municipalities" : [ {
       "code" : "529",
       "name" : [ {
-        "value" : "Naantali",
-        "language" : "fi"
-      }, {
         "value" : "Nådendal",
         "language" : "sv"
       }, {
         "value" : "Naantali",
         "language" : "en"
+      }, {
+        "value" : "Naantali",
+        "language" : "fi"
       } ]
     } ]
   } ],
@@ -25,17 +25,6 @@
     "service" : {
       "id" : "c4f1632e-66a8-410b-94f0-9196e028c644",
       "name" : "Esiopetuksen oppilashuolto"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "ea3af438-bc77-49da-8f0c-2f217eee491f",
-      "name" : "Perusopetuksen oppilashuolto"
     },
     "serviceChargeType" : null,
     "description" : [ ],

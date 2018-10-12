@@ -1,0 +1,175 @@
+{
+  "id" : "5791d0db-dd48-4dc0-b2cf-99fcb04d1362",
+  "sourceId" : null,
+  "generalDescriptionId" : "17747acb-fb25-4f1d-bb41-e243e671775d",
+  "type" : "Service",
+  "fundingType" : "PubliclyFunded",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Palvelukuvaus testausta varten",
+    "type" : "Name"
+  } ],
+  "serviceChargeType" : "Chargeable",
+  "areaType" : "Nationwide",
+  "areas" : [ ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Palvelukuvaus testausta varten this is a paragraph 1. \n\nHere is a paragraph 2. ",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Palvelukuvaus testausta varten",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "UserInstruction"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Rehabilitering",
+      "language" : "sv"
+    }, {
+      "value" : "Rehabilitation",
+      "language" : "en"
+    }, {
+      "value" : "Kuntoutus",
+      "language" : "fi"
+    } ],
+    "description" : [ {
+      "value" : "I denna serviceundergrupp behandlas lagstadgade och övriga tjänster vars primära syfte är att återställa personens arbets- eller funktionsförmåga, som av olika anledningar blivit nedsatt, med hjälp av olika terapeutiska och/eller medicinska metoder.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains statutory and other services whose primary purpose is to help a person recover his or her work or functional ability that has been reduced for various reasons through different therapeutic and/or medical methods.",
+      "language" : "en"
+    }, {
+      "value" : "Tässä. alapalveluluokassa käsitellään läkisääteisiä ja muita palveluja, joiden ensisijainen tarkoitus on palauttaa henkilön eri syistä alentunut työ- tai toimintakyky erilaisin terapeuttisin ja/tai lääkinnällisin menetelmin.",
+      "language" : "fi"
+    } ],
+    "code" : "P5.13",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1051",
+    "parentId" : "76ca210c-5183-4d41-b796-50612d5930c7",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1038"
+  }, {
+    "name" : [ {
+      "value" : "Boende",
+      "language" : "sv"
+    }, {
+      "value" : "Housing",
+      "language" : "en"
+    }, {
+      "value" : "Asuminen",
+      "language" : "fi"
+    } ],
+    "description" : [ {
+      "value" : "Denna servicegrupp omfattar hur man söker, hittar och skaffar en bostad, olika boendeformer, ekonomiskt stöd för boende, processer och tjänster i anslutning till flyttning inom Finland samt tjänster som berör befolkningsdatasystemet.",
+      "language" : "sv"
+    }, {
+      "value" : "This service class includes seeking, finding and purchasing a residence, different housing forms, housing benefits, processes and services related to migration within Finland, as well as services associated with the Population Information System.",
+      "language" : "en"
+    }, {
+      "value" : "Tähän palveluluokkaan kuuluvat asunnon etsiminen, löytäminen ja hankkiminen, erilaiset asumismuodot, asumisen taloudelliset tuet, Suomen sisällä tapahtuvaan muuttoon liittyvät prosessit ja palvelut sekä väestötietojärjestelmään liittyvät palvelut.",
+      "language" : "fi"
+    } ],
+    "code" : "P1",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "veteraanikuntoutus",
+      "language" : "fi"
+    } ],
+    "code" : null,
+    "ontologyType" : "TERO",
+    "uri" : "http://www.yso.fi/onto/koko/p63763",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p3951"
+  }, {
+    "name" : [ {
+      "value" : "krigsveteraner",
+      "language" : "sv"
+    }, {
+      "value" : "ex-service men",
+      "language" : "en"
+    }, {
+      "value" : "sotaveteraanit",
+      "language" : "fi"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p16719",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p37018"
+  } ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Medborgare",
+      "language" : "sv"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "lifeEvents" : [ ],
+  "industrialClasses" : [ ],
+  "legislation" : [ {
+    "names" : [ {
+      "value" : "Lakilinkki",
+      "language" : "fi"
+    } ],
+    "webPages" : [ {
+      "url" : "http://www.suomi.fi",
+      "value" : null,
+      "language" : "fi"
+    } ]
+  } ],
+  "keywords" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "serviceChannels" : [ ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "b458d033-042d-4cbe-b030-34e81da28821",
+      "name" : "Testiorganisaatio 1 (Valtio)"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "b458d033-042d-4cbe-b030-34e81da28821",
+      "name" : "Testiorganisaatio 1 (Valtio)"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "ProcuredServices",
+    "organization" : null,
+    "roleType" : "Producer",
+    "additionalInformation" : [ {
+      "value" : "SuomiOrg",
+      "language" : "fi"
+    } ]
+  } ],
+  "serviceVouchersInUse" : true,
+  "serviceVouchers" : [ ],
+  "serviceCollections" : [ ],
+  "publishingStatus" : "Published",
+  "modified" : "2018-01-03T13:25:06.931238Z"
+}

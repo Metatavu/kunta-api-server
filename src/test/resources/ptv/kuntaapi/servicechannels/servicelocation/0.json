@@ -1,199 +1,195 @@
 {
-  "names": [
-    {
-      "language" : "fi",
-      "value" : "Keskustan päiväkoti",
-      "type" : "Name"
-    }
-  ],
-  "descriptions": [
-    {
-      "language" : "fi",
-      "value" : "Keskustan päiväkoti toimii Naantalin vanhassakaupungissa kahdessa rakennuksessa.",
-      "type" : "Summary"
-    }, {
-      "language" : "fi",
-      "value" : "Keskustan päiväkoti toimii kahdessa rakennuksessa, Kaivokadun talossa ja Vanhalla Raatihuoneella. Hoitopaikkoja on tällä hetkellä yhteensä 60. Keskustan päiväkodissa toimii myös integroitu kuntoutusryhmä.\n",
-      "type" : "Description"
-    }
-  ],
-  "phoneNumbers": [
-    {
-      "type" : "Phone",
-      "additionalInformation" : "",
-      "serviceChargeType" : "Chargeable",
-      "chargeDescription" : null,
-      "prefixNumber" : "+358",
-      "isFinnishServiceNumber" : false,
-      "number" : "440410431",
-      "language" : "fi"
-    }
-  ],
-  "emails": [ ],
-  "languages" : [ "fi" ],
-  "phoneServiceCharge": null,
-  "webPages": [
-    {
-      "url" : "http://www.naantali.fi/opetus_ja_koulutus/varhaiskasvatus/paivakodit/keskustan_pk/fi_FI/keskustan_pk/",
-      "value" : "Keskustan päiväkoti",
-      "language" : "fi",
-      "description": null,
-      "type": null
-    }
-  ],
-  "areaType" : "LimitedType",
-  "areas" : [ {
-    "type" : "Municipality",
-    "code" : null,
-    "name" : [],
-    "municipalities" : [ {
-      "code" : "529",
-      "names" : [ {
-        "value" : "Naantali",
-        "language" : "fi",
-        "type": null
-      }, {
-        "value" : "Nådendal",
-        "language" : "sv",
-        "type": null
-      }, {
-        "value" : "Naantali",
-        "language" : "en",
-        "type": null
-      } ]
-    } ]
-  } ],
-  "addresses":[
-    {
-      "latitude":"6713890.211",
-      "longitude":"226225.47",
-      "coordinates":{
-        "epsg3067":{
-          "latitude":"6713890.211",
-          "longitude":"226225.47"
-        },
-        "epsg4326":{
-          "latitude":"60.46791951720928",
-          "longitude":"22.01797748150723"
-        }
+   "id":"62df5f7f-6b8f-47e0-946d-55ec80457616",
+   "organizationId":"d668f1d9-9973-4e9c-ad20-bc6bd92eda21",
+   "names":[
+      {
+         "language":"sv",
+         "value":"Sundom skola",
+         "type":"Name"
       },
-      "coordinateState":"Ok",
-      "type":"Location",
-      "subtype":"Single",
-      "postOfficeBox":null,
-      "postalCode":"21110",
-      "postOffice":[
-        {
-          "language":"sv",
-          "value":"NAANTALI",
-          "type":null
-        },
-        {
-          "language":"fi",
-          "value":"NAANTALI",
-          "type":null
-        }],
-      "streetAddress":[
-        {
-          "language":"fi",
-          "value":"Mannerheiminkatu",
-          "type":null
-        }],
-      "streetNumber":"14",
-      "municipality":{
-        "code":"529",
-        "names":[
-          {
-            "language":"fi",
-            "value":"Naantali",
-            "type":null
-          },
-          {
-            "language":"sv",
-            "value":"Nådendal",
-            "type":null
-          },
-          {
-            "language":"en",
-            "value":"Naantali",
-            "type":null
-          }]
+      {
+         "language":"fi",
+         "value":"Sundom skola",
+         "type":"Name"
+      }
+   ],
+   "descriptions":[
+      {
+         "language":"sv",
+         "value":"Sundom skola ligger avskild från stadens trafikbrus i nära anslutning till naturen.",
+         "type":"Summary"
       },
-      "country":"FI",
-      "locationAbroad":[
-      ],
-      "multipointLocation":[
-      ],
-      "additionalInformations":[
-        {
-          "language":"fi",
-          "value":"Käynti Alikadun puolelta.",
-          "type":null
-        }]
-    },
-    {
-      "latitude":"6713925.933",
-      "longitude":"226321.604",
-      "coordinates":{
-        "epsg3067":{
-          "latitude":"6713925.933",
-          "longitude":"226321.604"
-        },
-        "epsg4326":{
-          "latitude":"60.46830424910952",
-          "longitude":"22.019670075614965"
-        }
+      {
+         "language":"fi",
+         "value":"Sundom skola on etäällä kaupungin liikennehälystä ja lähellä luontoa.",
+         "type":"Summary"
       },
-      "coordinateState":"Ok",
-      "type":"Location",
-      "subtype":"Single",
-      "postOfficeBox":null,
-      "postalCode":"21100",
-      "postOffice":[
-        {
-          "language":"sv",
-          "value":"NAANTALI",
-          "type":null
-        },
-        {
-          "language":"fi",
-          "value":"NAANTALI",
-          "type":null
-        }],
-      "streetAddress":[
-        {
-          "language":"fi",
-          "value":"Kaivokatu",
-          "type":null
-        }],
-      "streetNumber":"9",
-      "municipality":{
-        "code":"529",
-        "names":[
-          {
-            "language":"fi",
-            "value":"Naantali",
-            "type":null
-          },
-          {
-            "language":"sv",
-            "value":"Nådendal",
-            "type":null
-          },
-          {
-            "language":"en",
-            "value":"Naantali",
-            "type":null
-          }]
+      {
+         "language":"sv",
+         "value":"Sundom skola ligger avskild från stadens trafikbrus i nära anslutning till naturen. Genom byggandens olika verksamheter har elever och lärare nära tillgång till det som behövs för undervisningen. Både föräldrar och övriga månar om byggnaden och dess plats i samhället.\n",
+         "type":"Description"
       },
-      "country":"FI",
-      "locationAbroad":[
-      ],
-      "multipointLocation":[
-      ],
-      "additionalInformations":[
-      ]
-  }],
-  "serviceHours": [ ],
-  "publishingStatus": "Published"
+      {
+         "language":"fi",
+         "value":"Sundom skola on etäällä kaupungin liikennehälystä ja lähellä luontoa. Rakennuksen eri toimintojen kautta oppilailla ja opettajilla on opetuksessa tarvittavat asiat lähellä. Sekä vanhemmat että muut huolehtivat rakennuksesta ja sen asemasta yhteiskunnassa. ",
+         "type":"Description"
+      }
+   ],
+   "phoneNumbers":[
+      {
+         "additionalInformation":"Rektor",
+         "serviceChargeType":"Chargeable",
+         "chargeDescription":null,
+         "prefixNumber":"+358",
+         "isFinnishServiceNumber":false,
+         "number":"405166046",
+         "language":"fi",
+         "type":"Phone"
+      },
+      {
+         "additionalInformation":"Rektor",
+         "serviceChargeType":"Chargeable",
+         "chargeDescription":null,
+         "prefixNumber":"+358",
+         "isFinnishServiceNumber":false,
+         "number":"405166046",
+         "language":"sv",
+         "type":"Phone"
+      }
+   ],
+   "emails":[
+
+   ],
+   "languages":[
+      "sv"
+   ],
+   "phoneServiceCharge":null,
+   "webPages":[
+      {
+         "description":null,
+         "url":"https://www.vaasa.fi/sv/node/20791",
+         "language":"fi",
+         "value":"Sundom skola",
+         "type":null
+      },
+      {
+         "description":null,
+         "url":"https://www.vaasa.fi/sv/node/20791",
+         "language":"sv",
+         "value":"Sundom skola",
+         "type":null
+      }
+   ],
+   "areaType":"LimitedType",
+   "areas":[
+      {
+         "type":"Municipality",
+         "code":null,
+         "name":[
+
+         ],
+         "municipalities":[
+            {
+               "code":"905",
+               "names":[
+                  {
+                     "language":"sv",
+                     "value":"Vasa",
+                     "type":null
+                  },
+                  {
+                     "language":"en",
+                     "value":"Vaasa",
+                     "type":null
+                  },
+                  {
+                     "language":"fi",
+                     "value":"Vaasa",
+                     "type":null
+                  }
+               ]
+            }
+         ]
+      }
+   ],
+   "addresses":[
+      {
+         "latitude":"7001836.409",
+         "longitude":"224930.408",
+         "coordinates":{
+            "epsg3067":{
+               "latitude":"7001836.409",
+               "longitude":"224930.408"
+            },
+            "epsg4326":{
+               "latitude":"63.041187666515064",
+               "longitude":"21.556992055825894"
+            }
+         },
+         "coordinateState":"Ok",
+         "type":"Location",
+         "subtype":"Single",
+         "postOfficeBox":null,
+         "postalCode":"65410",
+         "postOffice":[
+            {
+               "language":"sv",
+               "value":"SUNDOM",
+               "type":null
+            },
+            {
+               "language":"fi",
+               "value":"SUNDOM",
+               "type":null
+            }
+         ],
+         "streetAddress":[
+            {
+               "language":"sv",
+               "value":"Sundomvägen",
+               "type":null
+            },
+            {
+               "language":"fi",
+               "value":"Sundomvägen",
+               "type":null
+            }
+         ],
+         "streetNumber":"13",
+         "municipality":{
+            "code":"905",
+            "names":[
+               {
+                  "language":"sv",
+                  "value":"Vasa",
+                  "type":null
+               },
+               {
+                  "language":"en",
+                  "value":"Vaasa",
+                  "type":null
+               },
+               {
+                  "language":"fi",
+                  "value":"Vaasa",
+                  "type":null
+               }
+            ]
+         },
+         "country":"FI",
+         "locationAbroad":[
+
+         ],
+         "multipointLocation":[
+
+         ],
+         "additionalInformations":[
+
+         ]
+      }
+   ],
+   "serviceHours":[
+
+   ],
+   "publishingStatus":"Published"
 }

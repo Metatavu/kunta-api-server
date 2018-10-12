@@ -27,14 +27,14 @@
     "municipalities" : [ {
       "code" : "905",
       "name" : [ {
-        "value" : "Vaasa",
-        "language" : "fi"
-      }, {
         "value" : "Vasa",
         "language" : "sv"
       }, {
         "value" : "Vaasa",
         "language" : "en"
+      }, {
+        "value" : "Vaasa",
+        "language" : "fi"
       } ]
     } ]
   } ],
@@ -76,11 +76,11 @@
     "value" : "Wilma",
     "type" : "Name"
   }, {
-    "language" : "fi",
+    "language" : "en",
     "value" : "Wilma",
     "type" : "Name"
   }, {
-    "language" : "en",
+    "language" : "fi",
     "value" : "Wilma",
     "type" : "Name"
   } ],
@@ -88,27 +88,27 @@
   "serviceChannelType" : "EChannel",
   "serviceChannelDescriptions" : [ {
     "language" : "sv",
-    "value" : "Wilma är läroanstaltens www-anslutning. \n\nI Wilma kan studerande göra kursval, uppfölja sina prestationer, läsa notiser och kommunicera med lärare.\n\nI Wilma kan lärare mata in vitsord och frånvaro, uppdatera personuppgifter och kommunicera med studerande och vårdnadshavare.\n\nVia Wilma kan vårdnadshavare följa upp och reda ut studerandens frånvaron, kommunicera med lärare via intern post och läsa skolans notiser.\n\nWilma används också av läroanstaltens personal, ledning och arbetsplatshandledare.",
-    "type" : "Description"
-  }, {
-    "language" : "sv",
     "value" : "Wilma är läroanstaltens www-anslutning.",
+    "type" : "Summary"
+  }, {
+    "language" : "en",
+    "value" : "Wilma is the web interface for the student administration program Primus and for the schedule program Kurre 7.",
     "type" : "Summary"
   }, {
     "language" : "fi",
     "value" : "Wilman kautta opettajat, oppilaat ja oppilaiden huoltajat pitävät yhteyttä.",
     "type" : "Summary"
   }, {
-    "language" : "fi",
-    "value" : "Wilma on oppilaitoksen hallinto-ohjelman www-liittymä.\n\nOpiskelijat valitsevat Wilmassa kursseja, seuraavat suorituksiaan, lukevat tiedotteita ja viestivät opettajien kanssa.\n\nOpettajat syöttävät Wilman kautta arvioinnit ja poissaolot, päivittävät henkilötietojaan ja viestivät opiskelijoiden ja huoltajien kanssa.\n\nHuoltajat seuraavat ja selvittävät Wilman kautta opiskelijan poissaoloja, viestivät opettajien kanssa ja lukevat koulun tiedotteita.\n\nWilmaa käyttävät myös oppilaitoksen henkilökunta, johto sekä työpaikkaohjaajat.",
+    "language" : "sv",
+    "value" : "Wilma är läroanstaltens www-anslutning. \n\nI Wilma kan studerande göra kursval, uppfölja sina prestationer, läsa notiser och kommunicera med lärare.\n\nI Wilma kan lärare mata in vitsord och frånvaro, uppdatera personuppgifter och kommunicera med studerande och vårdnadshavare.\n\nVia Wilma kan vårdnadshavare följa upp och reda ut studerandens frånvaron, kommunicera med lärare via intern post och läsa skolans notiser.\n\nWilma används också av läroanstaltens personal, ledning och arbetsplatshandledare.",
     "type" : "Description"
   }, {
     "language" : "en",
-    "value" : "Wilma is the web interface for the student administration program Primus and for the schedule program Kurre 7.",
-    "type" : "Summary"
-  }, {
-    "language" : "en",
     "value" : "Wilma is the web interface for the student administration program Primus and for the schedule program Kurre 7. This Wilma license is owned by Vaasan opetusvirasto.\n\nIn Wilma a student can register for courses, check grades, read announcements and communicate with teachers.\n\nIn Wilma a teacher can grade students, register absences and update personal information. Teacher can also communicate with students and guardians.\n\nGuardians can see and clear absences, communicate with teachers, and read announcements.\n\nWilma is also used by school personnel, administration and workplace instructors.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Wilma on oppilaitoksen hallinto-ohjelman www-liittymä.\n\nOpiskelijat valitsevat Wilmassa kursseja, seuraavat suorituksiaan, lukevat tiedotteita ja viestivät opettajien kanssa.\n\nOpettajat syöttävät Wilman kautta arvioinnit ja poissaolot, päivittävät henkilötietojaan ja viestivät opiskelijoiden ja huoltajien kanssa.\n\nHuoltajat seuraavat ja selvittävät Wilman kautta opiskelijan poissaoloja, viestivät opettajien kanssa ja lukevat koulun tiedotteita.\n\nWilmaa käyttävät myös oppilaitoksen henkilökunta, johto sekä työpaikkaohjaajat.",
     "type" : "Description"
   } ],
   "areaType" : "LimitedType",

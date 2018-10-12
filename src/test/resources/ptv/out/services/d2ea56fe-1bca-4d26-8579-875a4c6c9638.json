@@ -6,36 +6,20 @@
   "fundingType" : "PubliclyFunded",
   "serviceNames" : [ {
     "language" : "fi",
-    "value" : "Henkilörekisterin päivitys",
-    "type" : "AlternativeName"
-  }, {
-    "language" : "fi",
     "value" : "Päivityspalvelu",
     "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Henkilörekisterin päivitys",
+    "type" : "AlternativeName"
   } ],
   "serviceChargeType" : "Chargeable",
   "areaType" : "Nationwide",
   "areas" : [ ],
   "serviceDescriptions" : [ {
     "language" : "fi",
-    "value" : null,
-    "type" : "ChargeTypeAdditionalInfo"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ValidityTime"
-  }, {
-    "language" : "fi",
     "value" : "Henkilörekisterin päivitys ajantasaisin tiedoin. Päivitettävä rekisteri voi olla oppilas-, alumni-, potilas-, asiakas- tai muu henkilörekisteri.",
     "type" : "Summary"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "DeadLine"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ProcessingTime"
   }, {
     "language" : "fi",
     "value" : "Tietojen saamiseksi hakijaorganisaation on toimitettava Väestörekisterikeskukselle kirjallinen hakemus. Oppilaitoksille on myönnetty yleinen lupa oppilastietojen päivitykseen, joten oppilaitokset voivat suoraan tilata päivityksiä tämän luvan perusteella.",
@@ -44,28 +28,44 @@
     "language" : "fi",
     "value" : "Päivityspalvelulla asiakkaan rekisterissä olevat henkilö-, rakennus- ja kiinteistötiedot päivitetään ajan tasalle väestötietojärjestelmän tiedoilla. Päivityksessä luovutetaan ajantasaiset nimi- ja osoitetiedot tai mahdollinen tieto henkilön kuolemasta. Päivitys tehdään henkilötunnusten tai muiden tunnistetietojen perusteella. Päivityspalvelu on kertaluontoinen, ja se voidaan tehdä tarvittaessa, esimerkiksi kerran vuodessa.",
     "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
   } ],
   "languages" : [ "fi" ],
   "serviceClasses" : [ {
     "name" : [ {
+      "value" : "Register och databaser",
+      "language" : "sv"
+    }, {
       "value" : "Government (state and local) registers and databases",
       "language" : "en"
     }, {
       "value" : "Rekisterit ja tietokannat",
       "language" : "fi"
-    }, {
-      "value" : "Register och databaser",
-      "language" : "sv"
     } ],
     "description" : [ {
       "value" : "Denna underservicegrupp innehåller lagenligt utnyttjande av innehållet i den offentliga förvaltningens register och databaser som enstaka informationsinlämningar eller som automatiskt sambruk av information mellan systemen.",
       "language" : "sv"
     }, {
-      "value" : "Tämä alapalveluluokka sisältää julkishallinnon rekisterien ja tietokantojen sisältämän aineiston lainmukaisen, palveluluonteisen hyödyntämisen yksittäisinä tietoluovutuksina tai koneellisena tietojen yhteiskäyttönä järjestelmien välillä.",
-      "language" : "fi"
-    }, {
       "value" : "This service subclass features services that facilitate legal disclosures of information from public sector registers and databases either as individual instances or mass information exchange between information systems.",
       "language" : "en"
+    }, {
+      "value" : "Tämä alapalveluluokka sisältää julkishallinnon rekisterien ja tietokantojen sisältämän aineiston lainmukaisen, palveluluonteisen hyödyntämisen yksittäisinä tietoluovutuksina tai koneellisena tietojen yhteiskäyttönä järjestelmien välillä.",
+      "language" : "fi"
     } ],
     "code" : "P9.3",
     "ontologyType" : "PTVL",
@@ -74,24 +74,24 @@
     "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1095"
   }, {
     "name" : [ {
-      "value" : "Tietosuoja ja henkilötiedot",
-      "language" : "fi"
-    }, {
       "value" : "Datasekretess och personuppgifter",
       "language" : "sv"
     }, {
       "value" : "Data protection and personal data",
       "language" : "en"
+    }, {
+      "value" : "Tietosuoja ja henkilötiedot",
+      "language" : "fi"
     } ],
     "description" : [ {
+      "value" : "Denna serviceundergrupp omfattar tjänster relaterad till skyddet av personuppgifter och integritet, personbeteckningar och -koder, resedokument och register med personuppgifter samt medborgarnas rättigheter att kontrollera och begränsa användningen av deras personuppgifter.",
+      "language" : "sv"
+    }, {
       "value" : "This service subclass contains services related to personal data and privacy protection, personal identifiers, travel documents and registers containing personal data. It also contains matters pertaining to a citizen's rights to control and use their personal data.",
       "language" : "en"
     }, {
       "value" : "Tässä palvelualaluokassa käsitellään henkilötietojen ja yksityisyyden suojaan, henkilötunnuksiin ja -tunnisteisiin, matkustusasiakirjoihin ja henkilötietoja sisältäviin rekistereihin liittyviä palveluja sekä kansalaisen oikeuksia hallita ja käyttää omia tietojaan.",
       "language" : "fi"
-    }, {
-      "value" : "Denna serviceundergrupp omfattar tjänster relaterad till skyddet av personuppgifter och integritet, personbeteckningar och -koder, resedokument och register med personuppgifter samt medborgarnas rättigheter att kontrollera och begränsa användningen av deras personuppgifter.",
-      "language" : "sv"
     } ],
     "code" : "P7.9",
     "ontologyType" : "PTVL",
@@ -104,11 +104,11 @@
       "value" : "register",
       "language" : "sv"
     }, {
-      "value" : "rekisterit",
-      "language" : "fi"
-    }, {
       "value" : "registers",
       "language" : "en"
+    }, {
+      "value" : "rekisterit",
+      "language" : "fi"
     } ],
     "code" : null,
     "ontologyType" : "JUPO",
@@ -118,14 +118,14 @@
   } ],
   "targetGroups" : [ {
     "name" : [ {
-      "value" : "Yritykset ja yhteisöt",
-      "language" : "fi"
+      "value" : "Företag och samfund",
+      "language" : "sv"
     }, {
       "value" : "Businesses and non-government organizations",
       "language" : "en"
     }, {
-      "value" : "Företag och samfund",
-      "language" : "sv"
+      "value" : "Yritykset ja yhteisöt",
+      "language" : "fi"
     } ],
     "code" : "KR2",
     "ontologyType" : "TARGETGROUP",
@@ -134,14 +134,14 @@
     "parentUri" : null
   }, {
     "name" : [ {
-      "value" : "Viranomaiset",
-      "language" : "fi"
+      "value" : "Myndigheter",
+      "language" : "sv"
     }, {
       "value" : "Authorities",
       "language" : "en"
     }, {
-      "value" : "Myndigheter",
-      "language" : "sv"
+      "value" : "Viranomaiset",
+      "language" : "fi"
     } ],
     "code" : "KR3",
     "ontologyType" : "TARGETGROUP",
@@ -163,31 +163,12 @@
     "value" : "Väestötietojärjestelmän tiedoilla voidaan päivittää luvansaajan omaa rekisteriä tai sellaista muuta rekisteriä, johon luvansaajalla on käyttöoikeus.\nPäivitys tehdään henkilötunnusten perusteella. Jos henkilötunnuksia ei ole käytettävissä, pitää henkilöistä olla riittävät tiedot tunnistamista varten.",
     "language" : "fi"
   } ],
-  "serviceChannels" : [ {
-    "serviceChannel" : {
-      "id" : "80f6bcb5-e224-4041-97da-95b6936878fe",
-      "name" : "Väestörekisterikeskuksen verkkoasiointi"
-    },
-    "serviceChargeType" : null,
-    "description" : [ {
-      "language" : "fi",
-      "value" : null,
-      "type" : "Description"
-    }, {
-      "language" : "fi",
-      "value" : null,
-      "type" : "ChargeTypeAdditionalInfo"
-    } ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  } ],
+  "serviceChannels" : [ ],
   "organizations" : [ {
     "provisionType" : null,
     "organization" : {
       "id" : "b458d033-042d-4cbe-b030-34e81da28821",
-      "name" : "Väestörekisterikeskus"
+      "name" : "Testiorganisaatio 1 (Valtio)"
     },
     "roleType" : "Responsible",
     "additionalInformation" : [ ]
@@ -195,7 +176,7 @@
     "provisionType" : "SelfProducedServices",
     "organization" : {
       "id" : "b458d033-042d-4cbe-b030-34e81da28821",
-      "name" : "Väestörekisterikeskus"
+      "name" : "Testiorganisaatio 1 (Valtio)"
     },
     "roleType" : "Producer",
     "additionalInformation" : [ ]
@@ -204,5 +185,5 @@
   "serviceVouchers" : [ ],
   "serviceCollections" : [ ],
   "publishingStatus" : "Published",
-  "modified" : "2018-05-03T11:53:58.162746Z"
+  "modified" : "2018-04-09T12:36:20.063132Z"
 }

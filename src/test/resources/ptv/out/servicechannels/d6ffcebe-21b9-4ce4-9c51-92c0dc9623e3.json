@@ -1,0 +1,88 @@
+{
+  "sourceId" : null,
+  "webPages" : [ ],
+  "languages" : [ "fi", "sv" ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      }, {
+        "value" : "Vaasa",
+        "language" : "fi"
+      } ]
+    } ]
+  } ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "5fe23177-860c-4257-ac03-b4cdeab87d19",
+      "name" : "Työllistymistä edistävä monialainen yhteispalvelu (TYP)"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "phoneNumbers" : [ {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "406350450",
+    "language" : "fi"
+  }, {
+    "type" : "Phone",
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "406350450",
+    "language" : "sv"
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "sv",
+    "value" : "Telefonkontakt med samservicen",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Yhteispalvelun puhelinasiointi",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "Phone",
+  "serviceChannelDescriptions" : [ {
+    "language" : "sv",
+    "value" : "På bifogade servicenummer når du TYP-koordinatorn för Vasaregionen.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Oheisesta palvelunumerosta tavoitat Vaasan alueen TYP-koordinaattorin.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "På bifogade servicenummer når du TYP-koordinatorn för Vasaregionen. ",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Oheisesta palvelunumerosta tavoitat Vaasan alueen TYP-koordinaattorin. ",
+    "type" : "Description"
+  } ],
+  "areaType" : "LimitedType",
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "d6ffcebe-21b9-4ce4-9c51-92c0dc9623e3"
+}

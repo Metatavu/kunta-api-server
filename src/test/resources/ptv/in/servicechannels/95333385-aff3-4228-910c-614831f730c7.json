@@ -1,0 +1,60 @@
+{
+  "sourceId" : null,
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Vaikeavammaisuuden perusteella haettavien kuljetuspalvelujen hakulomake.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Hakulomake  vaikeavammaisuuden perusteella haettavaa kuljetuspalvelua varten. Hakemuksen liitteeksi tarvitaan lääkärinlausunto kuljetuspalvelun tarpeesta. Palauta hakemus liitteineen johonkin kaupungin palvelupisteistä tai vammaispalveluihin kaupungintalon 3. kerrokseen. Voit lähettää lomakkeen myös postitse Naantalin vammaispalveluihin.",
+    "type" : "Description"
+  } ],
+  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "areaType" : "LimitedType",
+  "serviceChannelNames" : [ {
+    "value" : "Kuljetuspalveluhakemus, vaikeavammaiset",
+    "language" : "fi"
+  } ],
+  "areas" : [ {
+    "type" : "Municipality",
+    "areaCodes" : [ "529" ]
+  } ],
+  "formIdentifier" : [ ],
+  "deliveryAddresses" : [ {
+    "subType" : "PostOfficeBox",
+    "postOfficeBoxAddress" : {
+      "postOfficeBox" : [ {
+        "value" : "PL43",
+        "language" : "fi"
+      } ],
+      "postalCode" : "21101",
+      "municipality" : "529",
+      "additionalInformation" : [ {
+        "value" : "Käyntiosoite: Käsityöläiskatu 2.",
+        "language" : "fi"
+      } ]
+    },
+    "streetAddress" : null,
+    "deliveryAddressInText" : null,
+    "formReceiver" : [ {
+      "value" : "Naantalin sosiaali- ja terveyspalvelut/vammaispalvelut",
+      "language" : "fi"
+    } ]
+  } ],
+  "channelUrls" : [ {
+    "language" : "fi",
+    "value" : "http://www.naantali.fi/perhe_ja_sosiaali/vammaispalvelut/fi_FI/kuljetuspalvelut/_files/98062991483867059/default/Kuljetuspalveluhakemus_vammaispalvelut.pdf",
+    "type" : "PDF"
+  } ],
+  "supportPhones" : [ ],
+  "attachments" : [ ],
+  "deleteAllDeliveryAddresses" : true,
+  "supportEmails" : [ ],
+  "deleteAllChannelUrls" : true,
+  "deleteAllAttachments" : true,
+  "deleteAllFormIdentifiers" : true,
+  "publishingStatus" : "Published",
+  "isVisibleForAll" : true,
+  "deleteAllSupportEmails" : true,
+  "deleteAllSupportPhones" : true
+}

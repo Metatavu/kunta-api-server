@@ -1,0 +1,306 @@
+{
+  "id" : "116a9bc3-e565-4db1-aaac-d3f084d1513f",
+  "sourceId" : null,
+  "generalDescriptionId" : null,
+  "type" : "Service",
+  "fundingType" : "PubliclyFunded",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "JHS-suositukset ja julkisen hallinnon kokonaisarkkitehtuurilinjaukset",
+    "type" : "Name"
+  } ],
+  "serviceChargeType" : "FreeOfCharge",
+  "areaType" : "Nationwide",
+  "areas" : [ ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Julkisen hallinnon tietohallinnon kehittämisen ja tietojärjestelmien yhteentoimivuuden parantamisen keskeinen työkalu on Yhteinentieto.fi-sivusto.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Kaikkea Yhteinentieto.fi-sivuston sisältöä voi lukea ja selata ilman kirjautumista, mutta muu sivuston toiminnallisuus vaatii rekisteröitymisen sähköpostiosoitteella.\n\nSivustolla voi seurata Juhtan, sen asiantuntijajaoston sekä hankkeiden ja työ- ja muiden ryhmien toimintaa. Rekisteröityneenä käyttäjänä voi ilmoittautua esimerkiksi jonkin JHS-hankkeen seuraajaksi, jolloin saa automaattisesti viestin, kun hankkeessa julkaistaan uusi kokousesityslista tai yleisötilaisuus. ",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Väestörekisterikeskus tarjoaa työkaluja julkisen hallinnon tietohallinnon kehittämiseen ja tietojärjestelmien yhteentoimivuuden parantamiseen. Keskeinen työkalu on Yhteinentieto.fi-sivusto, joka kokoaa yhteen julkisen hallinnon tietohallinnon neuvottelukunnan (Juhta) toiminnan.\n\nJuhta on valtion, kuntien ja Kansaneläkelaitoksen yhteistyöelin, jonka tavoitteena on tukea julkisen hallinnon tietohallinnon strategista ohjaamista ja koordinointia sekä edistää julkisten palvelujen saatavuutta, tehokkuutta ja laatua tasapuolisesti koko maassa. \n\nYhteinentieto.fi-palvelu tukee osaltaan julkisen hallinnon digitalisaatiokehitystä. \n\nYhteinentieto.fissä julkaistaan \n* Juhtan antamat julkisen hallinnon suositukset (JHS-suositukset), joiden avulla pyritään edistämään viranomaisten tietohallinnon toimintaa ja tietojärjestelmien yhteentoimivuutta sekä levittämään parhaita käytäntöjä\n*  julkisen hallinnon kokonaisarkkitehtuurilinjaukset (JHKA-linjaukset), jotka Juhta on hyväksynyt.\n\nLisäksi Yhteinentieto.fi:ssä pystyy seuraamaan Juhtan ja sen alaisten asiantuntijaryhmien sekä JHS-hankkeiden toimintaa. Palvelussa julkaistaan muun muassa kokousmuistioita ja siellä voi seurata JHS-suositusten valmistelun etenemistä. Palvelusta saa tietoa erilaisista yleisötilaisuuksista sekä JHS-suositusvalmisteluun liittyvistä palautekierroksista.\n\nSivusto on vielä kehitysvaiheessa: valmis sivusto julkaistaan syksyllä 2018.",
+    "type" : "Description"
+  } ],
+  "languages" : [ "fi", "sv", "en" ],
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Register och databaser",
+      "language" : "sv"
+    }, {
+      "value" : "Government (state and local) registers and databases",
+      "language" : "en"
+    }, {
+      "value" : "Rekisterit ja tietokannat",
+      "language" : "fi"
+    } ],
+    "description" : [ {
+      "value" : "Denna underservicegrupp innehåller lagenligt utnyttjande av innehållet i den offentliga förvaltningens register och databaser som enstaka informationsinlämningar eller som automatiskt sambruk av information mellan systemen.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass features services that facilitate legal disclosures of information from public sector registers and databases either as individual instances or mass information exchange between information systems.",
+      "language" : "en"
+    }, {
+      "value" : "Tämä alapalveluluokka sisältää julkishallinnon rekisterien ja tietokantojen sisältämän aineiston lainmukaisen, palveluluonteisen hyödyntämisen yksittäisinä tietoluovutuksina tai koneellisena tietojen yhteiskäyttönä järjestelmien välillä.",
+      "language" : "fi"
+    } ],
+    "code" : "P9.3",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1219",
+    "parentId" : "95f29e15-fb54-4ac2-8c9b-fac6ae3121fa",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1095"
+  }, {
+    "name" : [ {
+      "value" : "Generella informations- ja förvaltningstjänster",
+      "language" : "sv"
+    }, {
+      "value" : "General information and administrative services",
+      "language" : "en"
+    }, {
+      "value" : "Yleiset tieto- ja hallintopalvelut",
+      "language" : "fi"
+    } ],
+    "description" : [ {
+      "value" : "I denna servicegrupp behandlas informations-, förvaltnings- och stödtjänster riktade till medborgare, samfund och andra myndigheter som till innehållet kan hänföra sig till vilket ämne som helst och därför inte kan placeras under de andra offentliga förvaltningens servicegrupper.",
+      "language" : "sv"
+    }, {
+      "value" : "This service class features services that offer general information, administrative and support services to citizens and public and private organisations. These are services that are not connected to any specific service topic and for that reason cannot be included in the other main classes of the service classification.",
+      "language" : "en"
+    }, {
+      "value" : "Tässä palveluluokassa käsitellään kansalaisille, yhteisöille ja toisille viranomaisille tarjottavia tieto-, hallinto- ja tukipalveluja, jotka sisällöltään voivat liittyä mihin aiheeseen tahansa ja joita ei tämän vuoksi voida sijoittaa julkisen palvelun luokituksen muihin aiheluokkiin.",
+      "language" : "fi"
+    } ],
+    "code" : "P9",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1095",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "offentlig upphandling",
+      "language" : "sv"
+    }, {
+      "value" : "public procurement",
+      "language" : "en"
+    }, {
+      "value" : "julkiset hankinnat",
+      "language" : "fi"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p33184",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p32794"
+  }, {
+    "name" : [ {
+      "value" : "geodatamaterial",
+      "language" : "sv"
+    }, {
+      "value" : "geographic data materials",
+      "language" : "en"
+    }, {
+      "value" : "paikkatietoaineistot",
+      "language" : "fi"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p67605",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p37069"
+  }, {
+    "name" : [ {
+      "value" : "direktiv och rekommendationer",
+      "language" : "sv"
+    }, {
+      "value" : "guidelines and recommendations",
+      "language" : "en"
+    }, {
+      "value" : "ohjeet ja suositukset",
+      "language" : "fi"
+    } ],
+    "code" : null,
+    "ontologyType" : "TERO",
+    "uri" : "http://www.yso.fi/onto/koko/p63100",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p34032"
+  } ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Företag och samfund",
+      "language" : "sv"
+    }, {
+      "value" : "Businesses and non-government organizations",
+      "language" : "en"
+    }, {
+      "value" : "Yritykset ja yhteisöt",
+      "language" : "fi"
+    } ],
+    "code" : "KR2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "Företag på den inhemska marknaden",
+      "language" : "sv"
+    }, {
+      "value" : "Businesses operating in the domestic (Finnish) market",
+      "language" : "en"
+    }, {
+      "value" : "Kotimarkkinoilla toimivat yritykset",
+      "language" : "fi"
+    } ],
+    "code" : "KR2.3",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2011",
+    "parentId" : "338939bb-b01a-4a80-a091-7c5238322bc0",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008"
+  }, {
+    "name" : [ {
+      "value" : "Föreningar och organisationer",
+      "language" : "sv"
+    }, {
+      "value" : "Non-government organizations",
+      "language" : "en"
+    }, {
+      "value" : "Yhdistykset ja järjestöt",
+      "language" : "fi"
+    } ],
+    "code" : "KR2.7",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2015",
+    "parentId" : "338939bb-b01a-4a80-a091-7c5238322bc0",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008"
+  }, {
+    "name" : [ {
+      "value" : "Myndigheter",
+      "language" : "sv"
+    }, {
+      "value" : "Authorities",
+      "language" : "en"
+    }, {
+      "value" : "Viranomaiset",
+      "language" : "fi"
+    } ],
+    "code" : "KR3",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2017",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "Medborgare",
+      "language" : "sv"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "lifeEvents" : [ ],
+  "industrialClasses" : [ {
+    "name" : [ {
+      "value" : "Näringsgrenen okänd",
+      "language" : "sv"
+    }, {
+      "value" : "Industry unknown",
+      "language" : "en"
+    }, {
+      "value" : "Toimiala tuntematon",
+      "language" : "fi"
+    } ],
+    "code" : "5",
+    "ontologyType" : null,
+    "uri" : "http://www.stat.fi/meta/luokitukset/toimiala/001-2008/00000",
+    "parentId" : "e6b9db07-3faa-49a8-afbc-54df6ff9b50a",
+    "parentUri" : "http://www.stat.fi/meta/luokitukset/toimiala/001-2008/0000"
+  } ],
+  "legislation" : [ {
+    "names" : [ {
+      "value" : "Laki julkisen hallinnon tietohallinnon ohjauksesta (Tietohallintolaki)",
+      "language" : "fi"
+    } ],
+    "webPages" : [ {
+      "url" : "https://www.finlex.fi/fi/laki/ajantasa/2011/20110634",
+      "value" : null,
+      "language" : "fi"
+    } ]
+  }, {
+    "names" : [ {
+      "value" : "Valtioneuvoston asetus julkisen hallinnon tietohallinnon neuvottelukunnasta (Juhta-asetus)",
+      "language" : "fi"
+    } ],
+    "webPages" : [ {
+      "url" : "https://www.finlex.fi/fi/laki/alkup/2013/20130163",
+      "value" : null,
+      "language" : "fi"
+    } ]
+  }, {
+    "names" : [ {
+      "value" : "Asetus julkisen hallinnon tietohallinnon neuvottelukunnasta annetun asetuksen muuttamisesta",
+      "language" : "fi"
+    } ],
+    "webPages" : [ {
+      "url" : "https://www.finlex.fi/fi/laki/alkup/2016/20160129",
+      "value" : null,
+      "language" : "fi"
+    } ]
+  } ],
+  "keywords" : [ {
+    "value" : "jhs-suositukset",
+    "language" : "fi"
+  }, {
+    "value" : "julkisen hallinnon tietohallinnon neuvottelukunta (Juhta)",
+    "language" : "fi"
+  } ],
+  "requirements" : [ {
+    "value" : "Yhteinentieto.fi-sivuston käyttäjäksi voi rekisteröityä kuka tahansa. Rekisteröityneet käyttäjät saavat ilmoituksia valitsemistaan aiheista. \n",
+    "language" : "fi"
+  } ],
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "f6846d11-f017-4803-9a87-a22fe53e2669",
+      "name" : "Yhteinentieto.fi"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "b458d033-042d-4cbe-b030-34e81da28821",
+      "name" : "Testiorganisaatio 1 (Valtio)"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "b458d033-042d-4cbe-b030-34e81da28821",
+      "name" : "Testiorganisaatio 1 (Valtio)"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "serviceVouchers" : [ ],
+  "serviceCollections" : [ ],
+  "publishingStatus" : "Published",
+  "modified" : "2018-10-01T09:58:07.024363Z"
+}

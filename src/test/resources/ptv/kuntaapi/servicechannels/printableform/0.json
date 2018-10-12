@@ -1,74 +1,135 @@
 {
-  "names": [
-    {
-      "language" : "fi",
-      "value" : "Maksatushakemus, hissi",
-      "type" : "Name"
-    }, {
-      "language" : "sv",
-      "value" : "Betalningsansökan, hiss",
-      "type" : "Name"
-    }
-  ],
-  "descriptions" : [ {
-    "language" : "sv",
-    "value" : "Betalning av Vasa stads hissunderstöd kan du söka med betalningsansökan.",
-    "type" : "Description"
-  }, {
-    "language" : "sv",
-    "value" : "Betalning av Vasa stads hissunderstöd kan du söka med betalningsansökan.",
-    "type" : "Summary"
-  }, {
-    "language" : "fi",
-    "value" : "Vaasan kaupungin hissiavustuksen maksatusta voi hakea maksatushakemuksella.",
-    "type" : "Description"
-  }, {
-    "language" : "fi",
-    "value" : "Vaasan kaupungin hissiavustuksen maksatusta voi hakea maksatushakemuksella.",
-    "type" : "Summary"
-  } ],
-  "formIdentifier": [ ],
-  "formReceiver": null,
-  "deliveryAddress": null,
-  "channelUrls" : [ {
-    "language" : "fi",
-    "value" : "https://www.vaasa.fi/sites/default/files/maksatushakemus_0.pdf",
-    "type" : "PDF"
-  }, {
-    "language" : "sv",
-    "value" : "https://www.vaasa.fi/sites/default/files/maksatushakemus_ru_0.pdf",
-    "type" : "PDF"
-  } ],
-  "attachments": [ ],
-  "supportPhones": [ ],
-  "supportEmails": [ ],
-  "languages": [ ],
-  "webPages": [ ],
-  "serviceHours": [ ],
-  "publishingStatus" : "Published",
-  "areaType" : "LimitedType",  
-  "areas": [
-    {
-      "type" : "Municipality",
-      "code": null,
-      "name": [ ],
-      "municipalities": [
-        {
-          "code": "905",
-          "names": [
-            {
-              "value" : "Vaasa",
-              "language" : "fi"
-            }, {
-              "value" : "Vasa",
-              "language" : "sv"
-            }, {
-              "value" : "Vaasa",
-              "language" : "en"
-            }
-          ]
-        }
-      ]
-    }
-  ]
+	"id": "89e426f7-7718-42a2-80dd-2db9098fbd7d",
+	"organizationId": "426e46c2-6900-4a4e-a33c-5132ccbab18b",
+	"names": [
+		{
+			"language": "fi",
+			"value": "Kuljetuspalveluhakemus, vaikeavammaiset",
+			"type": "Name"
+		}
+	],
+	"descriptions": [
+		{
+			"language": "fi",
+			"value": "Vaikeavammaisuuden perusteella haettavien kuljetuspalvelujen hakulomake.",
+			"type": "Summary"
+		},
+		{
+			"language": "fi",
+			"value": "Hakulomake  vaikeavammaisuuden perusteella haettavaa kuljetuspalvelua varten. Hakemuksen liitteeksi tarvitaan lääkärinlausunto kuljetuspalvelun tarpeesta. Palauta hakemus liitteineen johonkin kaupungin palvelupisteistä tai vammaispalveluihin kaupungintalon 3. kerrokseen. Voit lähettää lomakkeen myös postitse Naantalin vammaispalveluihin.",
+			"type": "Description"
+		}
+	],
+	"formIdentifier": [],
+	"formReceiver": [
+		{
+			"language": "fi",
+			"value": "Naantalin sosiaali- ja terveyspalvelut/vammaispalvelut",
+			"type": null
+		}
+	],
+	"deliveryAddress": {
+		"latitude": null,
+		"longitude": null,
+		"coordinates": null,
+		"coordinateState": null,
+		"type": null,
+		"subtype": "PostOfficeBox",
+		"postOfficeBox": [
+			{
+				"language": "fi",
+				"value": "PL43",
+				"type": null
+			}
+		],
+		"postalCode": "21101",
+		"postOffice": [
+			{
+				"language": "sv",
+				"value": "NAANTALI",
+				"type": null
+			},
+			{
+				"language": "fi",
+				"value": "NAANTALI",
+				"type": null
+			}
+		],
+		"streetAddress": null,
+		"streetNumber": null,
+		"municipality": {
+			"code": "529",
+			"names": [
+				{
+					"language": "sv",
+					"value": "Nådendal",
+					"type": null
+				},
+				{
+					"language": "en",
+					"value": "Naantali",
+					"type": null
+				},
+				{
+					"language": "fi",
+					"value": "Naantali",
+					"type": null
+				}
+			]
+		},
+		"country": null,
+		"locationAbroad": [],
+		"multipointLocation": [],
+		"additionalInformations": [
+			{
+				"language": "fi",
+				"value": "Käyntiosoite: Käsityöläiskatu 2.",
+				"type": null
+			}
+		]
+	},
+	"channelUrls": [
+		{
+			"language": "fi",
+			"value": "http://www.naantali.fi/perhe_ja_sosiaali/vammaispalvelut/fi_FI/kuljetuspalvelut/_files/98062991483867059/default/Kuljetuspalveluhakemus_vammaispalvelut.pdf",
+			"type": "PDF"
+		}
+	],
+	"attachments": [],
+	"supportPhones": [],
+	"supportEmails": [],
+	"languages": [],
+	"webPages": [],
+	"serviceHours": [],
+	"publishingStatus": "Published",
+	"areaType": "LimitedType",
+	"areas": [
+		{
+			"type": "Municipality",
+			"code": null,
+			"name": [],
+			"municipalities": [
+				{
+					"code": "529",
+					"names": [
+						{
+							"language": "sv",
+							"value": "Nådendal",
+							"type": null
+						},
+						{
+							"language": "en",
+							"value": "Naantali",
+							"type": null
+						},
+						{
+							"language": "fi",
+							"value": "Naantali",
+							"type": null
+						}
+					]
+				}
+			]
+		}
+	]
 }

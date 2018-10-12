@@ -1,0 +1,202 @@
+{
+  "id" : "2d32a11c-3b05-45b7-bdb3-a6f0022e14bf",
+  "sourceId" : null,
+  "generalDescriptionId" : "8d52d7b8-c49a-4f5f-8bba-4524ab7dbbaf",
+  "type" : "Service",
+  "fundingType" : "PubliclyFunded",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Sosiaalihuollon kuljetuspalvelut vaikeavammaisille",
+    "type" : "Name"
+  } ],
+  "serviceChargeType" : "Chargeable",
+  "areaType" : "LimitedType",
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      }, {
+        "value" : "Naantali",
+        "language" : "fi"
+      } ]
+    } ]
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Vaikeavammaisten kuljetuspalveluja voi käyttää asiointi- ja virkistysmatkoihin Naantalissa ja lähikunnissa.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Hae kuljetuspalveluja vaikeavammaisten kuljetuspalveluhakemuksella ja toimita hakemus johonkin kaupungin palvelupisteistä (kaupungintalo, Merimasku, Rymättylä ja Velkua) tai vammaispalveluihin kaupungintalon kolmanteen kerrokseen. Voit myös postittaa hakemuksesi Naantalin sosiaali- ja terveyspalveluihin/vammaispalvelut.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Naantalin kaupungin myöntämää vaikeavammaisten kuljetuspalvelua voi käyttää asiointi- ja virkistysmatkoihin Naantalissa ja lähikunnissa (Raisio, Masku ja Turku).",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : "Kuljetuspalveluissa on omavastuuosuus.",
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  } ],
+  "languages" : [ "fi" ],
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Äldretjänster",
+      "language" : "sv"
+    }, {
+      "value" : "Services for older people",
+      "language" : "en"
+    }, {
+      "value" : "Vanhusten palvelut",
+      "language" : "fi"
+    } ],
+    "description" : [ {
+      "value" : "Till denna serviceundergrupp hör andra än boendetjänster, bl.a. rehabiliterings-, transport- och väntjänster för de äldre.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains services for older people, excluding housing services and including rehabilitation, transport and befriending services among other things.",
+      "language" : "en"
+    }, {
+      "value" : "Tähän alapalveluluokkaan kuuluvat vanhusten muut kuin asumispalvelut, muun muassa kuntoutus-, kuljetus- ja ystäväpalvelut.",
+      "language" : "fi"
+    } ],
+    "code" : "P4.2",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1025",
+    "parentId" : "079b55da-af80-41ab-9346-c8fdd284afcf",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1023"
+  }, {
+    "name" : [ {
+      "value" : "Andra än boende- och hemservice för personer med funktionsnedsättning",
+      "language" : "sv"
+    }, {
+      "value" : "Services for the disabled other than housing and home services",
+      "language" : "en"
+    }, {
+      "value" : "Vammaisten muut kuin asumis- ja kotipalvelut",
+      "language" : "fi"
+    } ],
+    "description" : [ {
+      "value" : "Till denna serviceundergrupp hör andra än boendeservice, bl.a. rehabiliterings-, tolknings- och färdtjänster för personer med funktionsnedsättning.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains services for persons with disabilities, excluding housing services and including rehabilitation, interpretation and transport services.",
+      "language" : "en"
+    }, {
+      "value" : "Tähän alapalveluluokkaan kuuluvat vammaisten muut kuin asumispalvelut, muun muassa kuntoutus-, tulkkaus- ja kuljetuspalvelut.",
+      "language" : "fi"
+    } ],
+    "code" : "P4.4",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1027",
+    "parentId" : "079b55da-af80-41ab-9346-c8fdd284afcf",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1023"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "färdtjänst",
+      "language" : "sv"
+    }, {
+      "value" : "transport services",
+      "language" : "en"
+    }, {
+      "value" : "kuljetuspalvelut (palvelut)",
+      "language" : "fi"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p7545",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p36438"
+  } ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Medborgare",
+      "language" : "sv"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "lifeEvents" : [ ],
+  "industrialClasses" : [ ],
+  "legislation" : [ ],
+  "keywords" : [ ],
+  "requirements" : [ {
+    "value" : "* Kuljetuspalvelua voi käyttää asiointi- ja virkistysmatkoihin Naantalissa ja lähikunnissa (Raisio, Masku ja Turku). Matkat myönnetään kalenterikuukausittain eikä niitä voi siirtää seuraavalle kuukaudelle. Kuljetuspalvelua ei saa käyttää lääkäri-, sairaala- tai kuntoutusmatkoihin, joihin on mahdollisuus hakea korvausta Kelasta.\n* Kuljetuspalvelumatka on yhdensuuntainen, yleensä keskeytymätön matka. Matkan jatkuminen tai paluumatka on aina uusi kuljetuspalvelumatka.\n* Invataksin tai vaihtoehtovarusteisen taksin käyttöoikeus on vain niillä henkilöillä, jotka eivät apuvälineiden tai muun erityisen syyn vuoksi voi käyttää tavallista taksia. Asiakkaalla saa olla tarpeen mukaan saattaja, jolta ei peritä maksua.\n* Maksu suoritetaan taksikortilla, joka on henkilökohtainen. Kuljettajalla on oikeus tarkistaa asiakkaan henkilöllisyys. Kuljettaja veloittaa asiakkaaltaan omavastuuosuuden, joka on kulloinkin voimassa olevan linja-autotaksan mukainen.\n* Ryhmäkuljetuksissa jokaiselta asiakkaalta, saattajaa lukuun ottamatta, peritään omavastuuosuus. Kuljetuspalvelumatka peritään vain yhdeltä asiakkaalta.\n* Taksi on aina tilattava taksikeskuksen kautta väärinkäytösten välttämiseksi. Taksikortin väärinkäytösten yhteydessä asiakas voi menettää kortin käyttöoikeuden.\n* Jos kuljetuspalveluoikeus päättyy, taksikortti pitää palauttaa Naantalin vammaispalveluihin.",
+    "language" : "fi"
+  } ],
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "5e5c70b8-1119-4dba-8f1f-8477843ccab9",
+      "name" : "Sosiaalihuoltolain mukaiset kuljetuspalvelut vaikeavammaisille"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "95333385-aff3-4228-910c-614831f730c7",
+      "name" : "Kuljetuspalveluhakemus, vaikeavammaiset"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Testiorganisaatio 6 (Kunta)"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Testiorganisaatio 6 (Kunta)"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "serviceVouchers" : [ ],
+  "serviceCollections" : [ ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-20T13:25:31.089018Z"
+}

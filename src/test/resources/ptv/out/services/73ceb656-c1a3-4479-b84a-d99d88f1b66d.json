@@ -5,21 +5,21 @@
   "type" : "Service",
   "fundingType" : "PubliclyFunded",
   "serviceNames" : [ {
+    "language" : "sv",
+    "value" : "Mottagning av asylsökande",
+    "type" : "Name"
+  }, {
     "language" : "en",
     "value" : "Receiving asylum seekers",
     "type" : "Name"
   }, {
-    "language" : "sv",
-    "value" : "Mottagning av asylsökande",
+    "language" : "fi",
+    "value" : "Turvapaikanhakijoiden vastaanotto",
     "type" : "Name"
   }, {
     "language" : "fi",
     "value" : "Vastaanottokeskuksen palvelut",
     "type" : "AlternativeName"
-  }, {
-    "language" : "fi",
-    "value" : "Turvapaikanhakijoiden vastaanotto",
-    "type" : "Name"
   } ],
   "serviceChargeType" : "FreeOfCharge",
   "areaType" : "LimitedType",
@@ -30,35 +30,43 @@
     "municipalities" : [ {
       "code" : "905",
       "name" : [ {
-        "value" : "Vaasa",
-        "language" : "fi"
-      }, {
         "value" : "Vasa",
         "language" : "sv"
       }, {
         "value" : "Vaasa",
         "language" : "en"
+      }, {
+        "value" : "Vaasa",
+        "language" : "fi"
       } ]
     } ]
   } ],
   "serviceDescriptions" : [ {
-    "language" : "fi",
-    "value" : "Vastaanottokeskuksen tehtävänä on järjestää kansainvälistä suojelua hakeville ja tilapäistä suojelua saaville henkilöille vastaanottopalveluja.",
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : "Mottagningscentralens uppgift är att ordna mottagningsservice för sådana som söker internationellt skydd och personer som får tillfälligt skydd.",
     "type" : "Summary"
   }, {
     "language" : "en",
     "value" : "The Reception Centre organises reception services for people applying for international asylum and people receiving temporary asylum.",
     "type" : "Summary"
   }, {
-    "language" : "en",
-    "value" : null,
-    "type" : "DeadLine"
+    "language" : "fi",
+    "value" : "Vastaanottokeskuksen tehtävänä on järjestää kansainvälistä suojelua hakeville ja tilapäistä suojelua saaville henkilöille vastaanottopalveluja.",
+    "type" : "Summary"
   }, {
     "language" : "sv",
     "value" : null,
-    "type" : "ProcessingTime"
+    "type" : "UserInstruction"
   }, {
     "language" : "en",
+    "value" : null,
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
     "value" : null,
     "type" : "UserInstruction"
   }, {
@@ -67,60 +75,52 @@
     "type" : "Description"
   }, {
     "language" : "en",
-    "value" : null,
-    "type" : "ValidityTime"
-  }, {
-    "language" : "en",
-    "value" : null,
-    "type" : "ChargeTypeAdditionalInfo"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "DeadLine"
-  }, {
-    "language" : "sv",
-    "value" : null,
-    "type" : "ChargeTypeAdditionalInfo"
-  }, {
-    "language" : "sv",
-    "value" : null,
-    "type" : "UserInstruction"
-  }, {
-    "language" : "en",
-    "value" : null,
-    "type" : "ProcessingTime"
-  }, {
-    "language" : "sv",
-    "value" : "Mottagningscentralens uppgift är att ordna mottagningsservice för sådana som söker internationellt skydd och personer som får tillfälligt skydd.",
-    "type" : "Summary"
-  }, {
-    "language" : "en",
     "value" : "The Reception Centre organises reception services for people applying for international asylum and people receiving temporary asylum.\n\nReception services include, for example, organising temporary accommodation, the necessary social and health services, interpreter services and arranging work and study activities.",
     "type" : "Description"
-  }, {
-    "language" : "sv",
-    "value" : null,
-    "type" : "DeadLine"
-  }, {
-    "language" : "sv",
-    "value" : null,
-    "type" : "ValidityTime"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ChargeTypeAdditionalInfo"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "UserInstruction"
   }, {
     "language" : "fi",
     "value" : "Vastaanottokeskuksen tehtävänä on järjestää kansainvälistä suojelua hakeville ja tilapäistä suojelua saaville henkilöille vastaanottopalveluja.\n\nVastaanottokeskuksen palveluihin kuuluu :\n\n- tilapäinen majoitus\n\n- välttämättömät ja kiireelliset sosiaali – ja terveyspalvelut\n\n- työ – ja opintotoiminnan järjestäminen\n\n- tulkki – ja oikeusapupalvelut\n\n- vapaaehtoisen paluun tiedotus\n\n\n\n",
     "type" : "Description"
   }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
     "language" : "fi",
     "value" : null,
     "type" : "ProcessingTime"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "ValidityTime"
   }, {
     "language" : "fi",
     "value" : null,
@@ -129,24 +129,24 @@
   "languages" : [ "fi", "sv", "en" ],
   "serviceClasses" : [ {
     "name" : [ {
-      "value" : "Asuminen",
-      "language" : "fi"
-    }, {
       "value" : "Boende",
       "language" : "sv"
     }, {
       "value" : "Housing",
       "language" : "en"
+    }, {
+      "value" : "Asuminen",
+      "language" : "fi"
     } ],
     "description" : [ {
       "value" : "Denna servicegrupp omfattar hur man söker, hittar och skaffar en bostad, olika boendeformer, ekonomiskt stöd för boende, processer och tjänster i anslutning till flyttning inom Finland samt tjänster som berör befolkningsdatasystemet.",
       "language" : "sv"
     }, {
-      "value" : "Tähän palveluluokkaan kuuluvat asunnon etsiminen, löytäminen ja hankkiminen, erilaiset asumismuodot, asumisen taloudelliset tuet, Suomen sisällä tapahtuvaan muuttoon liittyvät prosessit ja palvelut sekä väestötietojärjestelmään liittyvät palvelut.",
-      "language" : "fi"
-    }, {
       "value" : "This service class includes seeking, finding and purchasing a residence, different housing forms, housing benefits, processes and services related to migration within Finland, as well as services associated with the Population Information System.",
       "language" : "en"
+    }, {
+      "value" : "Tähän palveluluokkaan kuuluvat asunnon etsiminen, löytäminen ja hankkiminen, erilaiset asumismuodot, asumisen taloudelliset tuet, Suomen sisällä tapahtuvaan muuttoon liittyvät prosessit ja palvelut sekä väestötietojärjestelmään liittyvät palvelut.",
+      "language" : "fi"
     } ],
     "code" : "P1",
     "ontologyType" : "PTVL",
@@ -167,14 +167,14 @@
   } ],
   "targetGroups" : [ {
     "name" : [ {
-      "value" : "Kansalaiset",
-      "language" : "fi"
+      "value" : "Medborgare",
+      "language" : "sv"
     }, {
       "value" : "Citizens",
       "language" : "en"
     }, {
-      "value" : "Medborgare",
-      "language" : "sv"
+      "value" : "Kansalaiset",
+      "language" : "fi"
     } ],
     "code" : "KR1",
     "ontologyType" : "TARGETGROUP",
@@ -191,10 +191,10 @@
     "language" : "fi"
   }, {
     "value" : null,
-    "language" : "sv"
+    "language" : "en"
   }, {
     "value" : null,
-    "language" : "en"
+    "language" : "sv"
   } ],
   "serviceChannels" : [ {
     "serviceChannel" : {
@@ -212,7 +212,7 @@
     "provisionType" : null,
     "organization" : {
       "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
-      "name" : "Vaasan kaupunki"
+      "name" : "Testiorganisaatio 9 (Kunta)"
     },
     "roleType" : "Responsible",
     "additionalInformation" : [ ]
@@ -220,7 +220,7 @@
     "provisionType" : "SelfProducedServices",
     "organization" : {
       "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
-      "name" : "Vaasan kaupunki"
+      "name" : "Testiorganisaatio 9 (Kunta)"
     },
     "roleType" : "Producer",
     "additionalInformation" : [ ]
@@ -229,5 +229,5 @@
   "serviceVouchers" : [ ],
   "serviceCollections" : [ ],
   "publishingStatus" : "Published",
-  "modified" : "2018-05-03T11:53:58.162746Z"
+  "modified" : "2017-10-31T08:15:43.515627Z"
 }

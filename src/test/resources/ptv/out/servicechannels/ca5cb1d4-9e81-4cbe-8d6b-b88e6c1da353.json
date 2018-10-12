@@ -1,0 +1,44 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "https://www.vaasa.fi/node/25731",
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "9f242076-de0b-4c58-810e-aac4979d71fa",
+      "name" : "Päivystävän kriisiryhmän palvelut"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Kriisiryhmän verkkosivut",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Vaasan kaupungin verkkosivuilta löydät tietoa päivystävän kriisiryhmän toiminnasta.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan kaupungin verkkosivuilta löydät tietoa päivystävän kriisiryhmän toiminnasta.",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "ca5cb1d4-9e81-4cbe-8d6b-b88e6c1da353"
+}

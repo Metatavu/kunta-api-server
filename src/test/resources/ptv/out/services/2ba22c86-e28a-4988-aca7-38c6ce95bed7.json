@@ -5,12 +5,12 @@
   "type" : "Service",
   "fundingType" : "PubliclyFunded",
   "serviceNames" : [ {
-    "language" : "fi",
-    "value" : "Matonpesupaikat",
-    "type" : "Name"
-  }, {
     "language" : "sv",
     "value" : "Mattvättningsställe",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Matonpesupaikat",
     "type" : "Name"
   } ],
   "serviceChargeType" : "FreeOfCharge",
@@ -22,95 +22,95 @@
     "municipalities" : [ {
       "code" : "905",
       "name" : [ {
-        "value" : "Vaasa",
-        "language" : "fi"
-      }, {
         "value" : "Vasa",
         "language" : "sv"
       }, {
         "value" : "Vaasa",
         "language" : "en"
+      }, {
+        "value" : "Vaasa",
+        "language" : "fi"
       } ]
     } ]
   } ],
   "serviceDescriptions" : [ {
     "language" : "sv",
-    "value" : null,
-    "type" : "ChargeTypeAdditionalInfo"
-  }, {
-    "language" : "sv",
-    "value" : null,
-    "type" : "DeadLine"
-  }, {
-    "language" : "fi",
-    "value" : "Vaasassa on kaksi matonpesupaikkaa, Hietasaaressa ja Palosaarella Sundin rannassa.",
-    "type" : "Summary"
+    "value" : "Vid funktionsfel utanför arbetstid, kontakta journumret för mattvättningsställena. \n\nYtterligare upplysningar ges av kommunteknikens arbetsledare och bryggansvarig/distriktsträdgårdsmästare. \n",
+    "type" : "UserInstruction"
   }, {
     "language" : "sv",
     "value" : "I Vasa finns två mattvättningsställen, Sandö och Brändö sund.",
     "type" : "Summary"
   }, {
-    "language" : "sv",
-    "value" : null,
-    "type" : "ValidityTime"
-  }, {
-    "language" : "sv",
-    "value" : null,
-    "type" : "ProcessingTime"
+    "language" : "fi",
+    "value" : "Vaasassa on kaksi matonpesupaikkaa, Hietasaaressa ja Palosaarella Sundin rannassa.",
+    "type" : "Summary"
   }, {
     "language" : "fi",
     "value" : "Työajan ulkonpuolella sattuneissa vikatilanteissa ota yhteyttä matonpesupaikkojen päivystysnumeroon.\n\nLisätietoja antavat kuntatekniikan työnjohtaja sekä laiturivastaava/piiripuutarhuri.",
     "type" : "UserInstruction"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ChargeTypeAdditionalInfo"
   }, {
     "language" : "sv",
     "value" : "I Vasa finns två mattvättningsställen, Sandö och Brändö sund. \n\nVattnet som används pumpas från havet och smutsvattnet går till spillvattenavloppet.  På tvättningsplatserna finns sex mindre och två större tvättställ samt en mangel för torkning av mattorna.\n\nPå tvättningsställena finns också torkställningar.\n\nDe som använder tvättningsställena ansvarar för att de hålls städade och för sin egendom.",
     "type" : "Description"
   }, {
     "language" : "fi",
-    "value" : null,
-    "type" : "DeadLine"
+    "value" : "Vaasassa on kaksi matonpesupaikkaa, Hietasaaressa ja Palosaarella Sundin rannassa. \n\nKäyttövesi pumpataan merestä ja likavesi menee jätevesiviemäriin. Pesupaikoilla on kuusi pienempää ja kaksi suurempaa pesuallasta sekä mankeli mattojen kuivausta varten.\n\nPesupaikoilta löytyy myös kuivaustelineet.\n\nPesupaikan käyttäjät ovat vastuussa matonpesupaikan siisteydestä ja omaisuudestaan.",
+    "type" : "Description"
   }, {
-    "language" : "fi",
+    "language" : "sv",
     "value" : null,
     "type" : "ProcessingTime"
   }, {
     "language" : "fi",
     "value" : null,
-    "type" : "ValidityTime"
+    "type" : "ProcessingTime"
   }, {
     "language" : "sv",
-    "value" : "Vid funktionsfel utanför arbetstid, kontakta journumret för mattvättningsställena. \n\nYtterligare upplysningar ges av kommunteknikens arbetsledare och bryggansvarig/distriktsträdgårdsmästare. \n",
-    "type" : "UserInstruction"
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
   }, {
     "language" : "fi",
-    "value" : "Vaasassa on kaksi matonpesupaikkaa, Hietasaaressa ja Palosaarella Sundin rannassa. \n\nKäyttövesi pumpataan merestä ja likavesi menee jätevesiviemäriin. Pesupaikoilla on kuusi pienempää ja kaksi suurempaa pesuallasta sekä mankeli mattojen kuivausta varten.\n\nPesupaikoilta löytyy myös kuivaustelineet.\n\nPesupaikan käyttäjät ovat vastuussa matonpesupaikan siisteydestä ja omaisuudestaan.",
-    "type" : "Description"
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
   } ],
   "languages" : [ "fi", "sv" ],
   "serviceClasses" : [ {
     "name" : [ {
-      "value" : "Asuminen",
-      "language" : "fi"
-    }, {
       "value" : "Boende",
       "language" : "sv"
     }, {
       "value" : "Housing",
       "language" : "en"
+    }, {
+      "value" : "Asuminen",
+      "language" : "fi"
     } ],
     "description" : [ {
       "value" : "Denna servicegrupp omfattar hur man söker, hittar och skaffar en bostad, olika boendeformer, ekonomiskt stöd för boende, processer och tjänster i anslutning till flyttning inom Finland samt tjänster som berör befolkningsdatasystemet.",
       "language" : "sv"
     }, {
-      "value" : "Tähän palveluluokkaan kuuluvat asunnon etsiminen, löytäminen ja hankkiminen, erilaiset asumismuodot, asumisen taloudelliset tuet, Suomen sisällä tapahtuvaan muuttoon liittyvät prosessit ja palvelut sekä väestötietojärjestelmään liittyvät palvelut.",
-      "language" : "fi"
-    }, {
       "value" : "This service class includes seeking, finding and purchasing a residence, different housing forms, housing benefits, processes and services related to migration within Finland, as well as services associated with the Population Information System.",
       "language" : "en"
+    }, {
+      "value" : "Tähän palveluluokkaan kuuluvat asunnon etsiminen, löytäminen ja hankkiminen, erilaiset asumismuodot, asumisen taloudelliset tuet, Suomen sisällä tapahtuvaan muuttoon liittyvät prosessit ja palvelut sekä väestötietojärjestelmään liittyvät palvelut.",
+      "language" : "fi"
     } ],
     "code" : "P1",
     "ontologyType" : "PTVL",
@@ -119,24 +119,24 @@
     "parentUri" : null
   }, {
     "name" : [ {
-      "value" : "Ympäristö",
-      "language" : "fi"
-    }, {
       "value" : "Miljö",
       "language" : "sv"
     }, {
       "value" : "The environment",
       "language" : "en"
+    }, {
+      "value" : "Ympäristö",
+      "language" : "fi"
     } ],
     "description" : [ {
       "value" : "I denna servicegrupp behandlas miljörelaterade tjänster med tanke på såväl naturliga miljöer som boendemiljöer och övriga bebyggda miljöer.",
       "language" : "sv"
     }, {
-      "value" : "Tässä palveluluokassa käsitellään ympäristöön liittyviä palveluja sekä luonnonympäristöjen että asumis- ja muun rakennetun ympäristön kannalta.",
-      "language" : "fi"
-    }, {
       "value" : "This service class contains services related to the environment, including both natural environments and living and other built environments.",
       "language" : "en"
+    }, {
+      "value" : "Tässä palveluluokassa käsitellään ympäristöön liittyviä palveluja sekä luonnonympäristöjen että asumis- ja muun rakennetun ympäristön kannalta.",
+      "language" : "fi"
     } ],
     "code" : "P23",
     "ontologyType" : "PTVL",
@@ -149,11 +149,11 @@
       "value" : "mattvättställen",
       "language" : "sv"
     }, {
-      "value" : "matonpesupaikat",
-      "language" : "fi"
-    }, {
       "value" : "carpet washing places",
       "language" : "en"
+    }, {
+      "value" : "matonpesupaikat",
+      "language" : "fi"
     } ],
     "code" : null,
     "ontologyType" : "JUPO",
@@ -165,11 +165,11 @@
       "value" : "mattbryggor",
       "language" : "sv"
     }, {
-      "value" : "mattolaiturit",
-      "language" : "fi"
-    }, {
       "value" : "piers for washing carpets",
       "language" : "en"
+    }, {
+      "value" : "mattolaiturit",
+      "language" : "fi"
     } ],
     "code" : null,
     "ontologyType" : "JUPO",
@@ -179,14 +179,14 @@
   } ],
   "targetGroups" : [ {
     "name" : [ {
-      "value" : "Kansalaiset",
-      "language" : "fi"
+      "value" : "Medborgare",
+      "language" : "sv"
     }, {
       "value" : "Citizens",
       "language" : "en"
     }, {
-      "value" : "Medborgare",
-      "language" : "sv"
+      "value" : "Kansalaiset",
+      "language" : "fi"
     } ],
     "code" : "KR1",
     "ontologyType" : "TARGETGROUP",
@@ -216,12 +216,23 @@
     "serviceHours" : [ ],
     "contactDetails" : null,
     "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "8050efdb-186f-48a3-9336-0fdf85bdc285",
+      "name" : "Matonpesupaikkojen päivystysnumero"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
   } ],
   "organizations" : [ {
     "provisionType" : null,
     "organization" : {
       "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
-      "name" : "Vaasan kaupunki"
+      "name" : "Testiorganisaatio 9 (Kunta)"
     },
     "roleType" : "Responsible",
     "additionalInformation" : [ ]
@@ -229,7 +240,7 @@
     "provisionType" : "SelfProducedServices",
     "organization" : {
       "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
-      "name" : "Vaasan kaupunki"
+      "name" : "Testiorganisaatio 9 (Kunta)"
     },
     "roleType" : "Producer",
     "additionalInformation" : [ ]
@@ -238,5 +249,5 @@
   "serviceVouchers" : [ ],
   "serviceCollections" : [ ],
   "publishingStatus" : "Published",
-  "modified" : "2018-05-03T11:53:58.162746Z"
+  "modified" : "2017-11-02T10:48:44.609608Z"
 }

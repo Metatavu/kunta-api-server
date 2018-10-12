@@ -1,0 +1,192 @@
+{
+  "id" : "73f7ef7c-fad3-4b59-a601-a5d172ec4293",
+  "sourceId" : null,
+  "generalDescriptionId" : "c52233a0-2089-437d-b841-ae4676399976",
+  "type" : "Service",
+  "fundingType" : "PubliclyFunded",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Kunnallinen perhepäivähoito",
+    "type" : "Name"
+  } ],
+  "serviceChargeType" : null,
+  "areaType" : "LimitedType",
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      }, {
+        "value" : "Naantali",
+        "language" : "fi"
+      } ]
+    } ]
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Perhepäivähoito on päivähoitoa hoitajan kodissa pienessä ryhmässä. Naantalissa on 15 perhepäivähoitajaa.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Hae lapselle päivähoitopaikkaa vähintään neljä kuukautta ennen hoidon tarvetta. Ellei hoidon tarve ole ennakoitavissa (jos esimerkiksi työllistyt nopeasti), hae lapselle hoitopaikkaa viimeistään kaksi viikkoa ennen hoidon alkua. Saat päätöksen hoitopaikasta kotiin postitse.\n\nHae päivähoitopaikkaa verkkopalvelussa (tee varhaiskasvatushakemus). Tarvitset kirjautumista varten pankkitunnukset tai mobiilivarmenteen.\n\nNaantalin kaupunki on sopinut päivähoidon seudullisesta yhteistyöstä lähikuntien kanssa. Sopimuksen perusteella lapsen päivähoito voidaan tietyissä tapauksissa järjestää sopimukseen liittyneessä muussa kunnassa/kaupungissa kuin kotikunnassa/- kaupungissa. ",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Perhepäivähoito on päivähoitoa hoitajan kodissa pienessä ryhmässä. Naantalissa on 15 perhepäivähoitajaa. \n\nPerhepäivähoitajat toimivat omissa alueellisissa ryhmissään: \n* Merimasku - Keskusta\n* Nuhjala - Peräniitty - Lietsala\n* Tammisto - Karvetti - Rymättylä.\n\nJokaiselle perhepäivähoidossa olevalle lapselle laaditaan yhteistyössä vanhempien kanssa hoito- ja kasvatussuunnitelma. Vuosittaiset kasvatuskeskustelut, vanhempainillat ja jokapäiväiset arjen kohtaamiset luovat hyvän pohjan yhteiselle kasvatustyölle.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  } ],
+  "languages" : [ "fi" ],
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Barndagvård",
+      "language" : "sv"
+    }, {
+      "value" : "Day-care for children",
+      "language" : "en"
+    }, {
+      "value" : "Lasten päivähoito",
+      "language" : "fi"
+    } ],
+    "description" : [ {
+      "value" : "Till denna serviceundergrupp hör barnets rättigheter i anslutning till dagvård för små barn, förutsättningar för dagvård, ärendehanteringstjänster och ansökningsförfaranden, olika genomföringsformer och servicekanaler för dagvård, vårdavgifter och bidrag i anslutning till dem.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains a child’s rights related to day-care for young children, eligibility criteria, e-services and application procedures associated with day-care, different forms and service channels of day-care provision, fees charged for day-care and financial support related to the fees.",
+      "language" : "en"
+    }, {
+      "value" : "Tähän alapalveluluokkaan kuuluvat pienten lasten päivähoitoon liittyvät lapsen oikeudet, päivähoidon saamisen edellytykset, asiointipalvelut ja hakumenettelyt, erilaiset päivähoidon toteuttamismuodot ja palvelukanavat, hoidon maksut ja niihin liittyvät taloudelliset tuet.",
+      "language" : "fi"
+    } ],
+    "code" : "P3.4",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1017",
+    "parentId" : "77af99fa-93eb-4de6-ac83-1b161a961263",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1013"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "familjedagvård",
+      "language" : "sv"
+    }, {
+      "value" : "family day care",
+      "language" : "en"
+    }, {
+      "value" : "perhepäivähoito (päivähoito)",
+      "language" : "fi"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p5959",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p3474"
+  } ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Barn och barnfamiljer",
+      "language" : "sv"
+    }, {
+      "value" : "Children and families with children",
+      "language" : "en"
+    }, {
+      "value" : "Lapset ja lapsiperheet",
+      "language" : "fi"
+    } ],
+    "code" : "KR1.2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2003",
+    "parentId" : "daff1fb9-9394-49b5-b033-d1d1c7005ab6",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001"
+  }, {
+    "name" : [ {
+      "value" : "Medborgare",
+      "language" : "sv"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "lifeEvents" : [ ],
+  "industrialClasses" : [ ],
+  "legislation" : [ ],
+  "keywords" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "05edf711-da73-4d0e-9f6b-5b7f603b5112",
+      "name" : "Naantalin varhaiskasvatuksen verkkoasiointi"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "87eee314-3446-4237-b0ec-a5ff3f42035e",
+      "name" : "Naantalin perhepäivähoito"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Testiorganisaatio 6 (Kunta)"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Testiorganisaatio 6 (Kunta)"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "serviceVouchers" : [ ],
+  "serviceCollections" : [ ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-24T12:13:21.397814Z"
+}

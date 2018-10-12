@@ -1,64 +1,117 @@
 {
-  "names": [
-    {
-      "language" : "fi",
-      "value" : "Sähköisten valtuuksien luonti yrityksen puolesta asioinnissa",
-      "type" : "Name"
-    }
-  ],
-  "descriptions": [
-    {
-      "language" : "fi",
-      "value" : "Suomi.fi-valtuudet, Yrityksen puolesta asiointi",
-      "type" : "Summary"
-    }, {
-      "language" : "fi",
-      "value" : "Suomi.fi-valtuudet-palvelu voidaan jakaa kahteen osaan: Jos haluat asioida edustamasi yrityksen puolesta jossakin julkishallinnon tai yksityisen sektorin verkkopalvelussa, Suomi.fi-valtuudet tarkistaa oikeutesi puolesta-asiointiin. Tämä edellyttää, että verkkopalvelu on ottanut Suomi.fi-valtuudet käyttöön. Esimerkiksi Trafin Oma asiointi -palvelussa oikeutesi asioida yrityksen puolesta tarkistetaan Suomi.fi-valtuuksien avulla. Tulevaisuudessa yritys voi valtuuttaa toisen yrityksen tai henkilön asioimaan puolestaan sähköisissä asiointipalveluissa. Valtuuttaminen tapahtuu Suomi.fi-verkkopalvelussa. Valtuuksien hallintaa voi jo nyt kokeilla testihenkilöiden tunnuksilla osoitteessa https://valtuusrekisteri.beta.suomi.fi/",
-      "type" : "Description"
-    }
-  ],
-  "signatureQuantity": 0,
-  "requiresSignature": false,
-  "supportPhones": [
-    {
-      "additionalInformation": null,
-      "serviceChargeType": "Chargeable",
-      "chargeDescription": null,
-      "prefixNumber": null,
-      "isFinnishServiceNumber": true,
-      "number": "029500",
-      "language": "fi",
-      "type": null
-    }
-  ],
-  "supportEmails": [
-    {
-      "value" : "palveluneuvoja@kansalaisneuvonta.fi",
-      "language" : "fi"
-    }
-  ],
-  "requiresAuthentication": false,
-  "urls": [ 
-    {
-      "language": "fi",
-      "type": null,
-      "value": "https://valtuusrekisteri.beta.suomi.fi/"
-    }
-  ],
-  "languages": [ ],
-  "attachments": [ ],
-  
-  "webPages": [
-    {
-      "url" : "https://valtuusrekisteri.beta.suomi.fi/",
-      "value" : null,
-      "language" : "fi",
-      "description": null,
-      "type": null
-    }
-  ],
-  "serviceHours": [ ],
-  "publishingStatus": "Published",
-  "areaType": null,
-  "areas": [ ]
+   "id":"bcf164e0-30f6-47c5-8728-23224454c777",
+   "organizationId":"5e6eb501-41a3-4255-9331-889a82f6b02a",
+   "names":[
+      {
+         "language":"sv",
+         "value":"Vasa Feedback -tjänsten",
+         "type":"Name"
+      },
+      {
+         "language":"fi",
+         "value":"Vaasan Palautepalvelu",
+         "type":"Name"
+      }
+   ],
+   "descriptions":[
+      {
+         "language":"sv",
+         "value":"Du kan ge respons om Vasa stads service och verksamhet.",
+         "type":"Summary"
+      },
+      {
+         "language":"fi",
+         "value":"Vaasan Palautepalvelussa voit antaa palautetta Vaasan kaupungin palveluista ja toiminnasta.",
+         "type":"Summary"
+      },
+      {
+         "language":"sv",
+         "value":"Du kan ge respons om Vasa stads service och verksamhet.",
+         "type":"Description"
+      },
+      {
+         "language":"fi",
+         "value":"Vaasan Palautepalvelussa voit antaa palautetta Vaasan kaupungin palveluista ja toiminnasta.",
+         "type":"Description"
+      }
+   ],
+   "signatureQuantity":0,
+   "requiresSignature":false,
+   "supportPhones":[
+
+   ],
+   "supportEmails":[
+
+   ],
+   "requiresAuthentication":false,
+   "urls":[
+      {
+         "language":"fi",
+         "value":"https://kartta.vaasa.fi/eFeedback",
+         "type":null
+      },
+      {
+         "language":"sv",
+         "value":"https://kartta.vaasa.fi/eFeedback/sv",
+         "type":null
+      }
+   ],
+   "languages":[
+
+   ],
+   "attachments":[
+
+   ],
+   "webPages":[
+      {
+         "description":null,
+         "url":"https://kartta.vaasa.fi/eFeedback",
+         "language":"fi",
+         "value":null,
+         "type":null
+      },
+      {
+         "description":null,
+         "url":"https://kartta.vaasa.fi/eFeedback/sv",
+         "language":"sv",
+         "value":null,
+         "type":null
+      }
+   ],
+   "serviceHours":[
+
+   ],
+   "publishingStatus":"Published",
+   "areaType":"LimitedType",
+   "areas":[
+      {
+         "type":"Municipality",
+         "code":null,
+         "name":[
+
+         ],
+         "municipalities":[
+            {
+               "code":"905",
+               "names":[
+                  {
+                     "language":"sv",
+                     "value":"Vasa",
+                     "type":null
+                  },
+                  {
+                     "language":"en",
+                     "value":"Vaasa",
+                     "type":null
+                  },
+                  {
+                     "language":"fi",
+                     "value":"Vaasa",
+                     "type":null
+                  }
+               ]
+            }
+         ]
+      }
+   ]
 }

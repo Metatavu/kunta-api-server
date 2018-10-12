@@ -22,8 +22,16 @@
     "type" : "Summary"
   }, {
     "language" : "fi",
+    "value" : "VTJ-rajapinnan käyttöönottoon vaadittavaa tietolupaa haetaan Väestörekisterikeskukselta. Tietolupahakemuksessa on ilmoitettava haettavien tietojen käyttötarkoitus ja hakemuksen yhteydessä on annettava selvitys tietojen käytöstä ja suojauksesta. \n\nVTJ-rajapinnan ja asiakkaan väliset yhteydet tunnistetaan palvelinvarmenteilla. Palvelinvarmenteen on oltava luotetun tahon myöntämä ja sillä on oltava julkisesti saatavilla oleva sulkulistapalvelu. Palvelinvarmenteen voi hankkia maksutta Väestörekisterikeskukselta. Hakemuslomakkeet löytyvät Väestörekisterikeskuksen asiakassivustolta: www.eevertti.vrk.fi \n",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
     "value" : "VTJ-rajapinnan kautta asiakkaan oma sovellus voi hakea tietoa väestötietojärjestelmästä. Rajapinta toimii ympäri vuorokauden seitsemänä päivänä viikossa. Tiedot välitetään XML-sanomina WebService – rajapinnan kautta. Järjestelmien väliset yhteydet tunnistetaan palvelinvarmenteilla. Tietojen siirto tapahtuu HTTPS –protokollan mukaisesti TLS-protokollalla salattuna. ",
     "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
   }, {
     "language" : "fi",
     "value" : "Maksullinen palvelu, julkishallinnolle pääsääntöisesti maksuton perustamiskustannuksia lukuun ottamatta (sovelletaan voimassa olevaa maksuasetusta).",
@@ -35,37 +43,29 @@
   }, {
     "language" : "fi",
     "value" : null,
-    "type" : "ProcessingTime"
-  }, {
-    "language" : "fi",
-    "value" : null,
     "type" : "ValidityTime"
-  }, {
-    "language" : "fi",
-    "value" : "VTJ-rajapinnan käyttöönottoon vaadittavaa tietolupaa haetaan Väestörekisterikeskukselta. Tietolupahakemuksessa on ilmoitettava haettavien tietojen käyttötarkoitus ja hakemuksen yhteydessä on annettava selvitys tietojen käytöstä ja suojauksesta. \n\nVTJ-rajapinnan ja asiakkaan väliset yhteydet tunnistetaan palvelinvarmenteilla. Palvelinvarmenteen on oltava luotetun tahon myöntämä ja sillä on oltava julkisesti saatavilla oleva sulkulistapalvelu. Palvelinvarmenteen voi hankkia maksutta Väestörekisterikeskukselta. Hakemuslomakkeet löytyvät Väestörekisterikeskuksen asiakassivustolta: www.eevertti.vrk.fi \n",
-    "type" : "UserInstruction"
   } ],
   "languages" : [ "sv", "fi" ],
   "serviceClasses" : [ {
     "name" : [ {
+      "value" : "Register och databaser",
+      "language" : "sv"
+    }, {
       "value" : "Government (state and local) registers and databases",
       "language" : "en"
     }, {
       "value" : "Rekisterit ja tietokannat",
       "language" : "fi"
-    }, {
-      "value" : "Register och databaser",
-      "language" : "sv"
     } ],
     "description" : [ {
       "value" : "Denna underservicegrupp innehåller lagenligt utnyttjande av innehållet i den offentliga förvaltningens register och databaser som enstaka informationsinlämningar eller som automatiskt sambruk av information mellan systemen.",
       "language" : "sv"
     }, {
-      "value" : "Tämä alapalveluluokka sisältää julkishallinnon rekisterien ja tietokantojen sisältämän aineiston lainmukaisen, palveluluonteisen hyödyntämisen yksittäisinä tietoluovutuksina tai koneellisena tietojen yhteiskäyttönä järjestelmien välillä.",
-      "language" : "fi"
-    }, {
       "value" : "This service subclass features services that facilitate legal disclosures of information from public sector registers and databases either as individual instances or mass information exchange between information systems.",
       "language" : "en"
+    }, {
+      "value" : "Tämä alapalveluluokka sisältää julkishallinnon rekisterien ja tietokantojen sisältämän aineiston lainmukaisen, palveluluonteisen hyödyntämisen yksittäisinä tietoluovutuksina tai koneellisena tietojen yhteiskäyttönä järjestelmien välillä.",
+      "language" : "fi"
     } ],
     "code" : "P9.3",
     "ontologyType" : "PTVL",
@@ -78,11 +78,11 @@
       "value" : "befolkningsdata",
       "language" : "sv"
     }, {
-      "value" : "väestötiedot",
-      "language" : "fi"
-    }, {
       "value" : "population data",
       "language" : "en"
+    }, {
+      "value" : "väestötiedot",
+      "language" : "fi"
     } ],
     "code" : null,
     "ontologyType" : "JUPO",
@@ -92,14 +92,14 @@
   } ],
   "targetGroups" : [ {
     "name" : [ {
-      "value" : "Yritykset ja yhteisöt",
-      "language" : "fi"
+      "value" : "Företag och samfund",
+      "language" : "sv"
     }, {
       "value" : "Businesses and non-government organizations",
       "language" : "en"
     }, {
-      "value" : "Företag och samfund",
-      "language" : "sv"
+      "value" : "Yritykset ja yhteisöt",
+      "language" : "fi"
     } ],
     "code" : "KR2",
     "ontologyType" : "TARGETGROUP",
@@ -108,14 +108,14 @@
     "parentUri" : null
   }, {
     "name" : [ {
-      "value" : "Viranomaiset",
-      "language" : "fi"
+      "value" : "Myndigheter",
+      "language" : "sv"
     }, {
       "value" : "Authorities",
       "language" : "en"
     }, {
-      "value" : "Myndigheter",
-      "language" : "sv"
+      "value" : "Viranomaiset",
+      "language" : "fi"
     } ],
     "code" : "KR3",
     "ontologyType" : "TARGETGROUP",
@@ -134,31 +134,12 @@
     "value" : "Väestötietojärjestelmän tiedot eivät ole julkisia, ja niiden käyttö edellyttää aina Väestörekisterikeskuksen käyttäjäorganisaatiolle myöntämää tietolupaa sekä käyttäjäorganisaation sitoutumista luvan ehtoihin. Tietoluvassa on määritelty luvansaajalle myönnetyt tietoryhmät, tietojen käyttötarkoitus sekä muut tarpeelliset ehdot. Lainsäädäntö ja tietosuojasäännökset ohjaavat sitä, mitä tietoja voidaan kyseessä olevaan toimintaan luovuttaa. Luvan saajan tulee tutustua myönnetyn tietoluvan ehtoihin ja varmistaa, että väestötietojärjestelmän tietoja käsiteltäessä noudatetaan tietosuojaa ja tietojenkäsittelyn turvallisuutta koskevaa lainsäädäntöä ja viranomaisten määräyksiä. Väestötietojärjestelmästä saatuja tietoja ei saa luovuttaa kolmannelle osapuolelle ilman Väestörekisterikeskuksen tapauskohtaisesti myöntämää lupaa. \n ",
     "language" : "fi"
   } ],
-  "serviceChannels" : [ {
-    "serviceChannel" : {
-      "id" : "80f6bcb5-e224-4041-97da-95b6936878fe",
-      "name" : "Väestörekisterikeskuksen verkkoasiointi"
-    },
-    "serviceChargeType" : null,
-    "description" : [ {
-      "language" : "fi",
-      "value" : null,
-      "type" : "Description"
-    }, {
-      "language" : "fi",
-      "value" : null,
-      "type" : "ChargeTypeAdditionalInfo"
-    } ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  } ],
+  "serviceChannels" : [ ],
   "organizations" : [ {
     "provisionType" : null,
     "organization" : {
       "id" : "b458d033-042d-4cbe-b030-34e81da28821",
-      "name" : "Väestörekisterikeskus"
+      "name" : "Testiorganisaatio 1 (Valtio)"
     },
     "roleType" : "Responsible",
     "additionalInformation" : [ ]
@@ -166,7 +147,7 @@
     "provisionType" : "SelfProducedServices",
     "organization" : {
       "id" : "b458d033-042d-4cbe-b030-34e81da28821",
-      "name" : "Väestörekisterikeskus"
+      "name" : "Testiorganisaatio 1 (Valtio)"
     },
     "roleType" : "Producer",
     "additionalInformation" : [ ]
@@ -175,5 +156,5 @@
   "serviceVouchers" : [ ],
   "serviceCollections" : [ ],
   "publishingStatus" : "Published",
-  "modified" : "2018-05-03T11:53:58.162746Z"
+  "modified" : "2018-04-09T12:23:52.211992Z"
 }

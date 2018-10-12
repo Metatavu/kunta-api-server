@@ -5,12 +5,12 @@
   "type" : "Service",
   "fundingType" : "PubliclyFunded",
   "serviceNames" : [ {
-    "language" : "fi",
-    "value" : "Lumenvastaanotto",
-    "type" : "Name"
-  }, {
     "language" : "sv",
     "value" : "Snömottagning",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Lumenvastaanotto",
     "type" : "Name"
   } ],
   "serviceChargeType" : "Chargeable",
@@ -22,92 +22,92 @@
     "municipalities" : [ {
       "code" : "905",
       "name" : [ {
-        "value" : "Vaasa",
-        "language" : "fi"
-      }, {
         "value" : "Vasa",
         "language" : "sv"
       }, {
         "value" : "Vaasa",
         "language" : "en"
+      }, {
+        "value" : "Vaasa",
+        "language" : "fi"
       } ]
     } ]
   } ],
   "serviceDescriptions" : [ {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ValidityTime"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ProcessingTime"
-  }, {
-    "language" : "fi",
-    "value" : "Portin elektronisen kulkuluvan voit pyytää kuntatekniikan kustannuslaskijalta.",
-    "type" : "UserInstruction"
+    "language" : "sv",
+    "value" : "Stadens snömottagningsplats finns vid Myrgrund.",
+    "type" : "Summary"
   }, {
     "language" : "fi",
     "value" : "Vaasan kaupungin lumenvastaanottopaikka sijaitsee Myrgrundissa.",
     "type" : "Summary"
   }, {
+    "language" : "sv",
+    "value" : "Elektroniskt passertillstånd till porten kan du begära av kommuntekniks kostnadsberäknare.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "fi",
+    "value" : "Portin elektronisen kulkuluvan voit pyytää kuntatekniikan kustannuslaskijalta.",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : "Stadens snömottagningsplats finns vid Myrgrund. På området finns elektronisk passerkontroll. För att komma in genom porten behöver du tillträdesrätt som du får via kommuntekniken.\n\nDe lass som du för sparas i en passerlogg.\n\nFaktureringen sker månatligen utifrån logghändelserna.\n\nTillträdesrätten är bilvis. Varje bil har en s.k. tagg.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan kaupungin lumenvastaanottopaikka sijaitsee Myrgrundissa. Alueella on elektroninen kulunvalvonta. Päästäksesi portista sisään tarvitset kulkuoikeuden, jonka saat kuntatekniikasta.\n\nTuomasi kuormat tallentuvat kulkulogiin.\n\nLaskutus tapahtuu kuukausittain logitapahtumien perusteella.\n\nKulkuoikeus on autokohtainen. Jokaisella autolla on ns. tägi.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
     "language" : "fi",
     "value" : null,
-    "type" : "DeadLine"
+    "type" : "ProcessingTime"
   }, {
     "language" : "sv",
     "value" : "Tagg = bilspecifikt kort 62,00 euro moms 24 %\nMottagningspris för lass 20,00 euro moms 24 %",
     "type" : "ChargeTypeAdditionalInfo"
   }, {
     "language" : "fi",
-    "value" : "Vaasan kaupungin lumenvastaanottopaikka sijaitsee Myrgrundissa. Alueella on elektroninen kulunvalvonta. Päästäksesi portista sisään tarvitset kulkuoikeuden, jonka saat kuntatekniikasta.\n\nTuomasi kuormat tallentuvat kulkulogiin.\n\nLaskutus tapahtuu kuukausittain logitapahtumien perusteella.\n\nKulkuoikeus on autokohtainen. Jokaisella autolla on ns. tägi.",
-    "type" : "Description"
-  }, {
-    "language" : "fi",
     "value" : "Tägi = autokohtainen kortti 62,00 euroa alv 24%\nKuorman vastaanottohinta 20,00 euroa alv 24%",
     "type" : "ChargeTypeAdditionalInfo"
-  }, {
-    "language" : "sv",
-    "value" : "Stadens snömottagningsplats finns vid Myrgrund. På området finns elektronisk passerkontroll. För att komma in genom porten behöver du tillträdesrätt som du får via kommuntekniken.\n\nDe lass som du för sparas i en passerlogg.\n\nFaktureringen sker månatligen utifrån logghändelserna.\n\nTillträdesrätten är bilvis. Varje bil har en s.k. tagg.",
-    "type" : "Description"
-  }, {
-    "language" : "sv",
-    "value" : null,
-    "type" : "ProcessingTime"
-  }, {
-    "language" : "sv",
-    "value" : "Stadens snömottagningsplats finns vid Myrgrund.",
-    "type" : "Summary"
-  }, {
-    "language" : "sv",
-    "value" : null,
-    "type" : "ValidityTime"
   }, {
     "language" : "sv",
     "value" : null,
     "type" : "DeadLine"
   }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
     "language" : "sv",
-    "value" : "Elektroniskt passertillstånd till porten kan du begära av kommuntekniks kostnadsberäknare.",
-    "type" : "UserInstruction"
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
   } ],
   "languages" : [ "fi", "sv" ],
   "serviceClasses" : [ {
     "name" : [ {
-      "value" : "Liikenne",
-      "language" : "fi"
-    }, {
       "value" : "Trafik",
       "language" : "sv"
     }, {
       "value" : "Transport",
       "language" : "en"
+    }, {
+      "value" : "Liikenne",
+      "language" : "fi"
     } ],
     "description" : [ {
-      "value" : "This service class contains public transport, registration, tax and permit issues related to vehicles, professional transport and traffic safety from the service point of view. Tourism and map services are excluded from this class and have their own service classes.",
-      "language" : "en"
-    }, {
       "value" : "I denna servicegrupp behandlas kollektivtrafik, registrerings-, beskattnings- och tillståndsärenden för fordon, yrkestrafik och trafiksäkerhet ur ett serviceperspektiv. Rese- och karttjänster ingår inte i denna grupp utan behandlas i egna servicegrupper.",
       "language" : "sv"
+    }, {
+      "value" : "This service class contains public transport, registration, tax and permit issues related to vehicles, professional transport and traffic safety from the service point of view. Tourism and map services are excluded from this class and have their own service classes.",
+      "language" : "en"
     }, {
       "value" : "Tässä palveluluokassa käsitellään palvelujen näkökulmasta julkista liikennettä, ajoneuvojen rekisteri-, verotus- ja lupa-asioita, ammattiliikennettä sekä liikenneturvallisuutta. Matkailu- ja karttapalvelut eivät kuulu tähän luokkaan vaan ne käsitellään omissa palveluluokissaan.",
       "language" : "fi"
@@ -123,11 +123,11 @@
       "value" : "gator",
       "language" : "sv"
     }, {
-      "value" : "kadut",
-      "language" : "fi"
-    }, {
       "value" : "streets",
       "language" : "en"
+    }, {
+      "value" : "kadut",
+      "language" : "fi"
     } ],
     "code" : null,
     "ontologyType" : "JUPO",
@@ -136,14 +136,14 @@
     "parentUri" : "http://www.yso.fi/onto/koko/p33793"
   }, {
     "name" : [ {
-      "value" : "liikenne",
-      "language" : "fi"
-    }, {
       "value" : "trafik",
       "language" : "sv"
     }, {
       "value" : "traffic",
       "language" : "en"
+    }, {
+      "value" : "liikenne",
+      "language" : "fi"
     } ],
     "code" : null,
     "ontologyType" : "JUPO",
@@ -153,14 +153,14 @@
   } ],
   "targetGroups" : [ {
     "name" : [ {
-      "value" : "Yritykset ja yhteisöt",
-      "language" : "fi"
+      "value" : "Företag och samfund",
+      "language" : "sv"
     }, {
       "value" : "Businesses and non-government organizations",
       "language" : "en"
     }, {
-      "value" : "Företag och samfund",
-      "language" : "sv"
+      "value" : "Yritykset ja yhteisöt",
+      "language" : "fi"
     } ],
     "code" : "KR2",
     "ontologyType" : "TARGETGROUP",
@@ -169,14 +169,14 @@
     "parentUri" : null
   }, {
     "name" : [ {
-      "value" : "Kansalaiset",
-      "language" : "fi"
+      "value" : "Medborgare",
+      "language" : "sv"
     }, {
       "value" : "Citizens",
       "language" : "en"
     }, {
-      "value" : "Medborgare",
-      "language" : "sv"
+      "value" : "Kansalaiset",
+      "language" : "fi"
     } ],
     "code" : "KR1",
     "ontologyType" : "TARGETGROUP",
@@ -193,10 +193,10 @@
   } ],
   "requirements" : [ {
     "value" : null,
-    "language" : "fi"
+    "language" : "sv"
   }, {
     "value" : null,
-    "language" : "sv"
+    "language" : "fi"
   } ],
   "serviceChannels" : [ {
     "serviceChannel" : {
@@ -209,23 +209,12 @@
     "serviceHours" : [ ],
     "contactDetails" : null,
     "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
-      "id" : "a4ba85e1-0b1f-4f40-a7fd-0ed7342e0547",
-      "name" : "Kustannuslaskija"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
   } ],
   "organizations" : [ {
     "provisionType" : null,
     "organization" : {
       "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
-      "name" : "Vaasan kaupunki"
+      "name" : "Testiorganisaatio 9 (Kunta)"
     },
     "roleType" : "Responsible",
     "additionalInformation" : [ ]
@@ -233,7 +222,7 @@
     "provisionType" : "SelfProducedServices",
     "organization" : {
       "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
-      "name" : "Vaasan kaupunki"
+      "name" : "Testiorganisaatio 9 (Kunta)"
     },
     "roleType" : "Producer",
     "additionalInformation" : [ ]
@@ -242,5 +231,5 @@
   "serviceVouchers" : [ ],
   "serviceCollections" : [ ],
   "publishingStatus" : "Published",
-  "modified" : "2018-05-03T11:53:58.162746Z"
+  "modified" : "2017-11-15T06:01:10.664172Z"
 }
