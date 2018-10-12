@@ -155,7 +155,7 @@ public class PtvServiceProvider implements ServiceProvider {
       ptvServiceIn.setDeleteAllLaws(true);
       ptvServiceIn.setDeleteAllLifeEvents(true);
       ptvServiceIn.setDeleteServiceChargeType(true);
-      ptvServiceIn.setDeleteGeneralDescriptionId(true); 
+      ptvServiceIn.setDeleteGeneralDescriptionId(false); 
 
       ApiResponse<V8VmOpenApiService> updateResponse = serviceApi.apiV8ServiceByIdPut(ptvServiceId.getId(), false, ptvServiceIn);
       

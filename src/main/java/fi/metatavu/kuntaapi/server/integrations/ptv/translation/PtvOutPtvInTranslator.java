@@ -344,7 +344,7 @@ public class PtvOutPtvInTranslator extends AbstractTranslator {
    
     VmOpenApiLanguageItem result = new VmOpenApiLanguageItem();
     result.setLanguage(webPage.getLanguage());
-    result.setValue(webPage.getValue());
+    result.setValue(webPage.getUrl());
     
     return result; 
   }

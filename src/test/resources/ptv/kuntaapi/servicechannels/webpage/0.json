@@ -29,7 +29,18 @@
       "type" : "Description"
     }
   ],
-  "urls": [ ],
+  "urls": [ 
+    {
+      "language": "fi",
+      "type": null,
+      "value": "https://www.vaasa.fi/node/28070"
+    },
+    {
+      "language": "sv",
+      "type": null,
+      "value": "https://www.vaasa.fi/sv/node/28070"
+    }
+  ],
   "supportPhones" : [ ],
   "supportEmails" : [ ],  
   "languages" : [ "fi", "sv" ],
