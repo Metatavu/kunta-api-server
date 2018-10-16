@@ -444,4 +444,8 @@
     <addForeignKeyConstraint baseTableName="ClientOrganizationPermissionGrant" constraintName="FK_CLIENT_ORGANIZATION_CLIENT_ID" baseColumnNames="client_id" referencedTableName="Client" referencedColumnNames="id"/>
   </changeSet>
   
+  <changeSet id="purge-tasks" author="antti.leppa">
+    <delete tableName="Task"/>
+  </changeSet>
+
 </databaseChangeLog>
