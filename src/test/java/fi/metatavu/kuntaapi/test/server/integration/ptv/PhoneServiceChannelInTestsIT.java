@@ -13,6 +13,7 @@ import org.junit.Test;
 import com.github.tomakehurst.wiremock.junit.WireMockRule;
 import com.jayway.restassured.http.ContentType;
 
+import fi.metatavu.kuntaapi.server.integrations.ptv.PtvConsts;
 import fi.metatavu.kuntaapi.server.persistence.model.clients.AccessType;
 import fi.metatavu.kuntaapi.server.persistence.model.clients.ClientOrganizationPermission;
 import fi.metatavu.kuntaapi.server.rest.model.PhoneServiceChannel;
@@ -126,7 +127,7 @@ public class PhoneServiceChannelInTestsIT extends AbstractPtvInTest {
     ptvInResource.setDeleteAllServiceHours(true);
     ptvInResource.setDeleteAllWebPages(true);
     ptvInResource.setOrganizationId(TestPtvConsts.ORGANIZATIONS[0]);
-    ptvInResource.setPublishingStatus("Published");
+    ptvInResource.setPublishingStatus(PtvConsts.PUBLISHED_STATUS);
     ptvInResource.setWebPage(Collections.emptyList());
     ptvInResource.setServiceHours(Arrays.asList(creaatePtvInServiceHour(false, Collections.emptyList(), "Exception", false, null, null, createPtvInLanguageItems("en", "Test"))));
     ptvInResource.setIsVisibleForAll(true);

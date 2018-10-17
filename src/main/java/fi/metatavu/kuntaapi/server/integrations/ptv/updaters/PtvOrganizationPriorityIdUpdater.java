@@ -11,6 +11,7 @@ import javax.inject.Inject;
 
 import fi.metatavu.ptv.client.ApiResponse;
 import fi.metatavu.ptv.client.model.V8VmOpenApiOrganizationGuidPage;
+import fi.metatavu.kuntaapi.server.integrations.ptv.PtvConsts;
 import fi.metatavu.kuntaapi.server.integrations.ptv.client.PtvApi;
 
 @ApplicationScoped
@@ -46,7 +47,7 @@ public class PtvOrganizationPriorityIdUpdater extends AbstractPtvOrganizationIdD
   @Override
   public ApiResponse<V8VmOpenApiOrganizationGuidPage> getPage() {
     currentUpdateStart = OffsetDateTime.now();
-    return ptvApi.getOrganizationApi().apiV8OrganizationGet(null, lastUpdate.minusMinutes(UPDATE_SLACK_MINUTE), null, "published");
+    return ptvApi.getOrganizationApi().apiV8OrganizationGet(null, lastUpdate.minusMinutes(UPDATE_SLACK_MINUTE), null, PtvConsts.PUBLISHED_STATUS);
   }
 
   @Override

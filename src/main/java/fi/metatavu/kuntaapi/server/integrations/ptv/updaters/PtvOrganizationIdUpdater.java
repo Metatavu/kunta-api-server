@@ -10,6 +10,7 @@ import javax.inject.Inject;
 
 import fi.metatavu.ptv.client.ApiResponse;
 import fi.metatavu.ptv.client.model.V8VmOpenApiOrganizationGuidPage;
+import fi.metatavu.kuntaapi.server.integrations.ptv.PtvConsts;
 import fi.metatavu.kuntaapi.server.integrations.ptv.client.PtvApi;
 
 @ApplicationScoped
@@ -40,7 +41,7 @@ public class PtvOrganizationIdUpdater extends AbstractPtvOrganizationIdDiscoverJ
 
   @Override
   public ApiResponse<V8VmOpenApiOrganizationGuidPage> getPage() {
-    return ptvApi.getOrganizationApi().apiV8OrganizationGet(page, null, null, "published");
+    return ptvApi.getOrganizationApi().apiV8OrganizationGet(page, null, null, PtvConsts.PUBLISHED_STATUS);
   }
 
   @Override
