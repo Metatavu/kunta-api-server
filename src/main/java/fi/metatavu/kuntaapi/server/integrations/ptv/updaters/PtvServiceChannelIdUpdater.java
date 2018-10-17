@@ -10,6 +10,7 @@ import javax.inject.Inject;
 
 import fi.metatavu.ptv.client.ApiResponse;
 import fi.metatavu.ptv.client.model.V3VmOpenApiGuidPage;
+import fi.metatavu.kuntaapi.server.integrations.ptv.PtvConsts;
 import fi.metatavu.kuntaapi.server.integrations.ptv.client.PtvApi;
 
 @ApplicationScoped
@@ -35,7 +36,7 @@ public class PtvServiceChannelIdUpdater extends AbstractPtvServiceChannelIdDisco
   
   @Override
   public ApiResponse<V3VmOpenApiGuidPage> getPage() {
-    return ptvApi.getServiceChannelApi(null).apiV8ServiceChannelGet(page, null, null, "published");
+    return ptvApi.getServiceChannelApi(null).apiV8ServiceChannelGet(page, null, null, PtvConsts.PUBLISHED_STATUS);
   }
 
   @Override
