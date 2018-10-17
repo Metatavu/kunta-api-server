@@ -16,6 +16,7 @@ import com.jayway.restassured.http.ContentType;
 import fi.metatavu.kuntaapi.server.rest.model.PhoneServiceChannel;
 import fi.metatavu.ptv.client.model.V8VmOpenApiPhoneChannel;
 import fi.metatavu.ptv.client.model.V8VmOpenApiPhoneChannelInBase;
+import fi.metatavu.kuntaapi.server.integrations.ptv.PtvConsts;
 import fi.metatavu.kuntaapi.server.persistence.model.clients.AccessType;
 import fi.metatavu.kuntaapi.server.persistence.model.clients.ClientOrganizationPermission;
 import fi.metatavu.kuntaapi.test.AbstractPtvMocker;
@@ -125,7 +126,7 @@ public class PhoneServiceChannelInTestsIT extends AbstractPtvInTest {
     ptvInResource.setDeleteAllServiceHours(true);
     ptvInResource.setDeleteAllWebPages(true);
     ptvInResource.setOrganizationId(TestPtvConsts.ORGANIZATIONS[1]);
-    ptvInResource.setPublishingStatus("Published");
+    ptvInResource.setPublishingStatus(PtvConsts.PUBLISHED_STATUS);
     ptvInResource.setWebPage(Collections.emptyList());
     ptvInResource.setServiceHours(Arrays.asList(creaatePtvInServiceHour(false, Collections.emptyList(), "Exception", false, null, null, createPtvInLanguageItems("en", "Test"))));
     

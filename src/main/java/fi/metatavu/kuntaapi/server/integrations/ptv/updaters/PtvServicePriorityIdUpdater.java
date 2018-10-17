@@ -11,6 +11,7 @@ import javax.inject.Inject;
 
 import fi.metatavu.ptv.client.ApiResponse;
 import fi.metatavu.ptv.client.model.V3VmOpenApiGuidPage;
+import fi.metatavu.kuntaapi.server.integrations.ptv.PtvConsts;
 import fi.metatavu.kuntaapi.server.integrations.ptv.client.PtvApi;
 
 @ApplicationScoped
@@ -46,7 +47,7 @@ public class PtvServicePriorityIdUpdater extends AbstractPtvServiceIdDiscoverJob
   @Override
   public ApiResponse<V3VmOpenApiGuidPage> getPage() {
     currentUpdateStart = OffsetDateTime.now();
-    return ptvApi.getServiceApi(null).apiV8ServiceGet(null, lastUpdate.minusMinutes(UPDATE_SLACK_MINUTE), null, "published");
+    return ptvApi.getServiceApi(null).apiV8ServiceGet(null, lastUpdate.minusMinutes(UPDATE_SLACK_MINUTE), null, PtvConsts.PUBLISHED_STATUS);
   }
 
   @Override

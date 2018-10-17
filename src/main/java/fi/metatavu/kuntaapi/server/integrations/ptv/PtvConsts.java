@@ -24,6 +24,7 @@ public class PtvConsts {
   public static final String ORGANIZATION_SETTING_API_USER = "ptv.apiuser";
   public static final String ORGANIZATION_SETTING_API_PASS = "ptv.apipass";
   public static final String PTV_ACCESS_TOKEN_TYPE = "ptv";
+  public static final String PUBLISHED_STATUS = "Published";
   
   private PtvConsts() {
   }
