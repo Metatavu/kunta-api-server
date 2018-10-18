@@ -9,10 +9,7 @@ import javax.ws.rs.core.Response;
 
 import org.apache.commons.lang3.EnumUtils;
 
-import fi.metatavu.kuntaapi.server.rest.ServiceLocationServiceChannelsApi;
-import fi.metatavu.kuntaapi.server.rest.model.ServiceLocationServiceChannel;
 import fi.metatavu.kuntaapi.server.controllers.ClientContainer;
-import fi.metatavu.kuntaapi.server.controllers.HttpCacheController;
 import fi.metatavu.kuntaapi.server.controllers.SecurityController;
 import fi.metatavu.kuntaapi.server.controllers.ServiceController;
 import fi.metatavu.kuntaapi.server.id.OrganizationId;
@@ -22,6 +19,7 @@ import fi.metatavu.kuntaapi.server.integrations.KuntaApiIdFactory;
 import fi.metatavu.kuntaapi.server.integrations.ServiceChannelSortBy;
 import fi.metatavu.kuntaapi.server.integrations.SortDir;
 import fi.metatavu.kuntaapi.server.persistence.model.clients.ClientOrganizationPermission;
+import fi.metatavu.kuntaapi.server.rest.model.ServiceLocationServiceChannel;
 
 @RequestScoped
 @Stateful
@@ -45,9 +43,6 @@ public class ServiceLocationServiceChannelsApiImpl extends ServiceLocationServic
   private SecurityController securityController;
 
   @Inject
-  private HttpCacheController httpCacheController;
-  
-  @Inject
   private ClientContainer clientContainer;
   
   @Inject
@@ -60,14 +55,14 @@ public class ServiceLocationServiceChannelsApiImpl extends ServiceLocationServic
       return createBadRequest(String.format(INVALID_SERVICE_LOCATION_CHANNEL_ID, serviceLocationServiceChannelId));
     }
 
-    Response notModified = httpCacheController.getNotModified(request, serviceLocationChannelId);
+    Response notModified = restResponseBuilder.getNotModified(request, serviceLocationChannelId);
     if (notModified != null) {
       return notModified;
     }
 
     ServiceLocationServiceChannel serviceLocationChannel = serviceController.findServiceLocationServiceChannel(serviceLocationChannelId);
     if (serviceLocationChannel != null) {
-      return httpCacheController.sendModified(serviceLocationChannel, serviceLocationChannel.getId());
+      return restResponseBuilder.sendModified(serviceLocationChannel, serviceLocationChannel.getId());
     }
     
     return createNotFound(NOT_FOUND);
@@ -89,7 +84,7 @@ public class ServiceLocationServiceChannelsApiImpl extends ServiceLocationServic
     
     IntegrationResponse<ServiceLocationServiceChannel> integrationResponse = serviceController.updateServiceLocationServiceChannel(serviceLocationServiceChannelId, newServiceLocationChannel);
     if (integrationResponse.isOk()) {
-      return httpCacheController.sendModified(integrationResponse.getEntity(), integrationResponse.getEntity().getId());
+      return restResponseBuilder.sendModified(integrationResponse.getEntity(), integrationResponse.getEntity().getId());
     } else {
       return restResponseBuilder.buildErrorResponse(integrationResponse);
     }

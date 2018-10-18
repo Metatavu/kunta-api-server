@@ -368,7 +368,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
    * @return REST assurred request specification autheticated with test client with unrestricted access to API
    */
   protected RequestSpecification givenUnrestricted() {
-    return givenAuthenticated(AccessType.UNRESTRICTED);
+    return givenAuthenticated(AccessType.UNRESTRICTED, false);
   }
 
   /**
@@ -377,7 +377,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
    * @return REST assurred request specification autheticated with test client with read only access to API
    */
   protected RequestSpecification givenReadonly() {
-    return givenAuthenticated(AccessType.READ_ONLY);
+    return givenAuthenticated(AccessType.READ_ONLY, false);
   }
 
   /**
@@ -386,17 +386,47 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
    * @return REST assurred request specification autheticated with test client with read write access to API
    */
   protected RequestSpecification givenReadWrite() {
-    return givenAuthenticated(AccessType.READ_WRITE);
+    return givenAuthenticated(AccessType.READ_WRITE, false);
+  }
+
+    /**
+   * Returns REST assurred request specification autheticated with test client with unrestricted access to API
+   * 
+   * @return REST assurred request specification autheticated with test client with unrestricted access to API
+   */
+  protected RequestSpecification givenUnrestrictedCompabilityMode() {
+    return givenAuthenticated(AccessType.UNRESTRICTED, true);
+  }
+
+  /**
+   * Returns REST assurred request specification autheticated with test client with read only access to API
+   * 
+   * @return REST assurred request specification autheticated with test client with read only access to API
+   */
+  protected RequestSpecification givenReadonlyCompabilityMode() {
+    return givenAuthenticated(AccessType.READ_ONLY, true);
+  }
+
+  /**
+   * Returns REST assurred request specification autheticated with test client with read write access to API
+   * 
+   * @return REST assurred request specification autheticated with test client with read write access to API
+   */
+  protected RequestSpecification givenReadWriteCompabilityMode() {
+    return givenAuthenticated(AccessType.READ_WRITE, true);
   }
   
   /**
    * Returns REST assurred request specification autheticated with test client of given access type
    * 
    * @param accessType access type
+   * @param compabilityMode use PTV-7 compability mode header
+   * 
    * @return REST assurred request specification autheticated with test client of given access type
    */
-  protected RequestSpecification givenAuthenticated(AccessType accessType) {
+  protected RequestSpecification givenAuthenticated(AccessType accessType, boolean compabilityMode) {
     return given()
+      .header("Kunta-API-PTV7-Compatibility", compabilityMode ? "true" : "false")
       .baseUri(getApiBasePath())
       .auth().preemptive().basic(getClientId(accessType), getClientSecret(accessType));
   }

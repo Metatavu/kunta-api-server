@@ -1,0 +1,64 @@
+{
+  "names": [
+    {
+      "language" : "sv",
+      "value" : "Sektorsövergripande samservice som främjar sysselsättningen",
+      "type" : "Name"
+    }, {
+      "language" : "fi",
+      "value" : "Työllistymistä edistävä monialainen yhteispalvelu",
+      "type" : "Name"
+    }
+  ],
+  "descriptions": [
+    {
+      "language" : "fi",
+      "value" : "Verkkosivulta löydät lisätietoa työllistymistä edistävästä monialaisesta yhteispalvelusta. ",
+      "type" : "Description"
+    }, {
+      "language" : "fi",
+      "value" : "Verkkosivulta löydät lisätietoa työllistymistä edistävästä monialaisesta yhteispalvelusta.",
+      "type" : "ShortDescription"
+    }, {
+      "language" : "sv",
+      "value" : "På webbsidan hittar du tilläggsinformation om sektorsövergripande samservice som främjar sysselsättningen (TYP).",
+      "type" : "ShortDescription"
+    }, {
+      "language" : "sv",
+      "value" : "På webbsidan hittar du tilläggsinformation om sektorsövergripande samservice som främjar sysselsättningen (TYP). \n",
+      "type" : "Description"
+    }
+  ],
+  "urls": [ 
+    {
+      "language": "fi",
+      "type": null,
+      "value": "https://www.vaasa.fi/node/28070"
+    },
+    {
+      "language": "sv",
+      "type": null,
+      "value": "https://www.vaasa.fi/sv/node/28070"
+    }
+  ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],  
+  "languages" : [ "fi", "sv" ],
+  "webPages": [
+    {
+      "url" : "https://www.vaasa.fi/node/28070",
+      "value" : null,
+      "language" : "fi",
+      "description": null,
+      "type": null
+    }, {
+      "url" : "https://www.vaasa.fi/sv/node/28070",
+      "value" : null,
+      "language" : "sv",
+      "description": null,
+      "type": null
+    }
+  ],
+  "serviceHours" : [ ],
+  "publishingStatus" : "Published"
+}

@@ -1,0 +1,64 @@
+{
+  "names": [
+    {
+      "language" : "fi",
+      "value" : "Sähköisten valtuuksien luonti yrityksen puolesta asioinnissa",
+      "type" : "Name"
+    }
+  ],
+  "descriptions": [
+    {
+      "language" : "fi",
+      "value" : "Suomi.fi-valtuudet, Yrityksen puolesta asiointi",
+      "type" : "ShortDescription"
+    }, {
+      "language" : "fi",
+      "value" : "Suomi.fi-valtuudet-palvelu voidaan jakaa kahteen osaan: Jos haluat asioida edustamasi yrityksen puolesta jossakin julkishallinnon tai yksityisen sektorin verkkopalvelussa, Suomi.fi-valtuudet tarkistaa oikeutesi puolesta-asiointiin. Tämä edellyttää, että verkkopalvelu on ottanut Suomi.fi-valtuudet käyttöön. Esimerkiksi Trafin Oma asiointi -palvelussa oikeutesi asioida yrityksen puolesta tarkistetaan Suomi.fi-valtuuksien avulla. Tulevaisuudessa yritys voi valtuuttaa toisen yrityksen tai henkilön asioimaan puolestaan sähköisissä asiointipalveluissa. Valtuuttaminen tapahtuu Suomi.fi-verkkopalvelussa. Valtuuksien hallintaa voi jo nyt kokeilla testihenkilöiden tunnuksilla osoitteessa https://valtuusrekisteri.beta.suomi.fi/",
+      "type" : "Description"
+    }
+  ],
+  "signatureQuantity": 0,
+  "requiresSignature": false,
+  "supportPhones": [
+    {
+      "additionalInformation": null,
+      "serviceChargeType": "Charged",
+      "chargeDescription": null,
+      "prefixNumber": null,
+      "isFinnishServiceNumber": true,
+      "number": "029500",
+      "language": "fi",
+      "type": null
+    }
+  ],
+  "supportEmails": [
+    {
+      "value" : "palveluneuvoja@kansalaisneuvonta.fi",
+      "language" : "fi"
+    }
+  ],
+  "requiresAuthentication": false,
+  "urls": [ 
+    {
+      "language": "fi",
+      "type": null,
+      "value": "https://valtuusrekisteri.beta.suomi.fi/"
+    }
+  ],
+  "languages": [ ],
+  "attachments": [ ],
+  
+  "webPages": [
+    {
+      "url" : "https://valtuusrekisteri.beta.suomi.fi/",
+      "value" : null,
+      "language" : "fi",
+      "description": null,
+      "type": null
+    }
+  ],
+  "serviceHours": [ ],
+  "publishingStatus": "Published",
+  "areaType": null,
+  "areas": [ ]
+}

@@ -14,10 +14,7 @@ import javax.ws.rs.core.Response;
 import org.apache.commons.lang3.EnumUtils;
 import org.apache.commons.lang3.StringUtils;
 
-import fi.metatavu.kuntaapi.server.rest.ServicesApi;
-import fi.metatavu.kuntaapi.server.rest.model.Service;
 import fi.metatavu.kuntaapi.server.controllers.ClientContainer;
-import fi.metatavu.kuntaapi.server.controllers.HttpCacheController;
 import fi.metatavu.kuntaapi.server.controllers.SecurityController;
 import fi.metatavu.kuntaapi.server.controllers.ServiceController;
 import fi.metatavu.kuntaapi.server.id.ElectronicServiceChannelId;
@@ -34,6 +31,7 @@ import fi.metatavu.kuntaapi.server.integrations.KuntaApiIdFactory;
 import fi.metatavu.kuntaapi.server.integrations.ServiceSortBy;
 import fi.metatavu.kuntaapi.server.integrations.SortDir;
 import fi.metatavu.kuntaapi.server.persistence.model.clients.ClientOrganizationPermission;
+import fi.metatavu.kuntaapi.server.rest.model.Service;
 
 /**
  * REST Service implementation
@@ -63,9 +61,6 @@ public class ServicesApiImpl extends ServicesApi {
   private RestValidator restValidator;
 
   @Inject
-  private HttpCacheController httpCacheController;
-
-  @Inject
   private RestResponseBuilder restResponseBuilder;
 
   @Inject
@@ -80,14 +75,14 @@ public class ServicesApiImpl extends ServicesApi {
   public Response findService(String serviceIdParam, @Context Request request) {
     ServiceId serviceId = toServiceId(serviceIdParam);
     
-    Response notModified = httpCacheController.getNotModified(request, serviceId);
+    Response notModified = restResponseBuilder.getNotModified(request, serviceId);
     if (notModified != null) {
       return notModified;
     }
 
     Service service = serviceController.findService(serviceId);
     if (service != null) {
-      return httpCacheController.sendModified(service, service.getId());
+      return restResponseBuilder.sendModified(service, service.getId());
     }
     
     return createNotFound(NOT_FOUND);
@@ -156,7 +151,7 @@ public class ServicesApiImpl extends ServicesApi {
     
     IntegrationResponse<Service> integrationResponse = serviceController.updateService(serviceId, body);
     if (integrationResponse.isOk()) {
-      return httpCacheController.sendModified(integrationResponse.getEntity(), integrationResponse.getEntity().getId());
+      return restResponseBuilder.sendModified(integrationResponse.getEntity(), integrationResponse.getEntity().getId());
     } else {
       return restResponseBuilder.buildErrorResponse(integrationResponse);
     }

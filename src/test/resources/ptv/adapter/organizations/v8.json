@@ -1,0 +1,255 @@
+{
+	"parentOrganization": null,
+	"organizationType": "Municipality",
+	"municipality": {
+		"code": "905",
+		"names": [
+			{
+				"language": "fi",
+				"value": "Vaasa",
+				"type": null
+			},
+			{
+				"language": "sv",
+				"value": "Vasa",
+				"type": null
+			},
+			{
+				"language": "en",
+				"value": "Vaasa",
+				"type": null
+			}
+		]
+	},
+	"businessCode": "0209602-6",
+	"businessName": "Vaasa",
+	"names": [
+		{
+			"language": "sv",
+			"value": "Vasa stad",
+			"type": "Name"
+		},
+		{
+			"language": "fi",
+			"value": "Vaasan kaupunki",
+			"type": "Name"
+		},
+		{
+			"language": "en",
+			"value": "City of Vaasa",
+			"type": "Name"
+		}
+	],
+	"displayNameType": [
+		{
+			"type": "Name",
+			"language": "fi"
+		},
+		{
+			"type": "Name",
+			"language": "sv"
+		},
+		{
+			"type": "Name",
+			"language": "en"
+		}
+	],
+	"areaType": null,
+	"areas": [],
+	"descriptions": [
+	  {
+      "language": "en",
+      "value": "Vaasa is a heavily growing city with 67 000 inhabitants and the biggest economic centre in Ostrobothnia. Together with its six neighbouring municipalities, the City of Vaasa forms the Vaasa region. The Vaasa region has over 114 000 inhabitants. The region is one of the strongest growing and most successful regions in the country.",
+      "type": "Summary"
+    },
+    {
+      "language": "sv",
+      "value": "Vasa är en kraftigt växande stad med över 67 000 invånare och det största ekonomiska centret i Österbotten. Vasa stad bildar tillsammans med sina sex grannkommuner Vasaregionen. I Vasaregionen bor över 114 000 invånare. Bland landets regioner hör Vasaregionen till dem som växer kraftigast och har bäst framgång. ",
+      "type": "AlternativeName"
+    }
+	],
+	"emailAddresses": [],
+	"phoneNumbers": [
+		{
+			"additionalInformation": "Telefonväxeln",
+			"serviceChargeType": "Chargeable",
+			"chargeDescription": null,
+			"prefixNumber": "+358",
+			"isFinnishServiceNumber": false,
+			"number": "63251111",
+			"language": "sv",
+			"type": null
+		},
+		{
+			"additionalInformation": "Puhelinvaihde",
+			"serviceChargeType": "FreeOfCharge",
+			"chargeDescription": null,
+			"prefixNumber": "+358",
+			"isFinnishServiceNumber": false,
+			"number": "63251111",
+			"language": "fi",
+			"type": null
+		}
+	],
+	"webPages": [
+		{
+			"description": null,
+			"url": "https://www.vaasa.fi/en",
+			"language": "en",
+			"value": "City of Vaasa",
+			"type": null
+		},
+		{
+			"description": null,
+			"url": "https://www.vaasa.fi/sv",
+			"language": "sv",
+			"value": "Vasa stad",
+			"type": null
+		},
+		{
+			"description": null,
+			"url": "https://www.vaasa.fi/",
+			"language": "fi",
+			"value": "Vaasan kaupunki",
+			"type": null
+		}
+	],
+	"addresses": [
+		{
+			"latitude": "7007482.053",
+			"longitude": "228184.6",
+			"coordinates": {
+				"epsg3067": {
+					"latitude": "7007482.053",
+					"longitude": "228184.6"
+				},
+				"epsg4326": {
+					"latitude": "63.09408979728125",
+					"longitude": "21.611698629580196"
+				}
+			},
+			"coordinateState": "Ok",
+			"type": "Visiting",
+			"subtype": "Street",
+			"postOfficeBox": null,
+			"postalCode": "65100",
+			"postOffice": [
+				{
+					"language": "sv",
+					"value": "VASA",
+					"type": null
+				},
+				{
+					"language": "fi",
+					"value": "VAASA",
+					"type": null
+				}
+			],
+			"streetAddress": [
+				{
+					"language": "fi",
+					"value": "Vaasanpuistikko",
+					"type": null
+				},
+				{
+					"language": "sv",
+					"value": "Vasaesplanaden",
+					"type": null
+				},
+				{
+					"language": "en",
+					"value": "Vaasanpuistikko",
+					"type": null
+				}
+			],
+			"streetNumber": "10",
+			"municipality": {
+				"code": "905",
+				"names": [
+					{
+						"language": "fi",
+						"value": "Vaasa",
+						"type": null
+					},
+					{
+						"language": "sv",
+						"value": "Vasa",
+						"type": null
+					},
+					{
+						"language": "en",
+						"value": "Vaasa",
+						"type": null
+					}
+				]
+			},
+			"country": "FI",
+			"locationAbroad": [],
+			"multipointLocation": [],
+			"additionalInformations": []
+		}
+	],
+	"publishingStatus": "Published",
+	"services": [
+		{
+			"additionalInformation": [],
+			"roleType": "Responsible",
+			"provisionType": null,
+			"webPages": []
+		},
+		{
+			"additionalInformation": [],
+			"roleType": "Responsible",
+			"provisionType": null,
+			"webPages": []
+		},
+		{
+			"additionalInformation": [],
+			"roleType": "Responsible",
+			"provisionType": null,
+			"webPages": []
+		},
+		{
+			"additionalInformation": [],
+			"roleType": "Responsible",
+			"provisionType": null,
+			"webPages": []
+		},
+		{
+			"additionalInformation": [],
+			"roleType": "Responsible",
+			"provisionType": null,
+			"webPages": []
+		},
+		{
+			"additionalInformation": [],
+			"roleType": "Responsible",
+			"provisionType": null,
+			"webPages": []
+		},
+		{
+			"additionalInformation": [],
+			"roleType": "Responsible",
+			"provisionType": null,
+			"webPages": []
+		},
+		{
+			"additionalInformation": [],
+			"roleType": "Responsible",
+			"provisionType": null,
+			"webPages": []
+		},
+		{
+			"additionalInformation": [],
+			"roleType": "Responsible",
+			"provisionType": null,
+			"webPages": []
+		},
+		{
+			"additionalInformation": [],
+			"roleType": "Responsible",
+			"provisionType": null,
+			"webPages": []
+		}
+	]
+}

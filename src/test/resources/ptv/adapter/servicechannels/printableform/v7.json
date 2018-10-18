@@ -1,0 +1,74 @@
+{
+  "names": [
+    {
+      "language" : "fi",
+      "value" : "Maksatushakemus, hissi",
+      "type" : "Name"
+    }, {
+      "language" : "sv",
+      "value" : "Betalningsansökan, hiss",
+      "type" : "Name"
+    }
+  ],
+  "descriptions" : [ {
+    "language" : "sv",
+    "value" : "Betalning av Vasa stads hissunderstöd kan du söka med betalningsansökan.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Betalning av Vasa stads hissunderstöd kan du söka med betalningsansökan.",
+    "type" : "ShortDescription"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan kaupungin hissiavustuksen maksatusta voi hakea maksatushakemuksella.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan kaupungin hissiavustuksen maksatusta voi hakea maksatushakemuksella.",
+    "type" : "ShortDescription"
+  } ],
+  "formIdentifier": [ ],
+  "formReceiver": null,
+  "deliveryAddress": null,
+  "channelUrls" : [ {
+    "language" : "fi",
+    "value" : "https://www.vaasa.fi/sites/default/files/maksatushakemus_0.pdf",
+    "type" : "PDF"
+  }, {
+    "language" : "sv",
+    "value" : "https://www.vaasa.fi/sites/default/files/maksatushakemus_ru_0.pdf",
+    "type" : "PDF"
+  } ],
+  "attachments": [ ],
+  "supportPhones": [ ],
+  "supportEmails": [ ],
+  "languages": [ ],
+  "webPages": [ ],
+  "serviceHours": [ ],
+  "publishingStatus" : "Published",
+  "areaType" : "AreaType",  
+  "areas": [
+    {
+      "type" : "Municipality",
+      "code": null,
+      "name": [ ],
+      "municipalities": [
+        {
+          "code": "905",
+          "names": [
+            {
+              "value" : "Vaasa",
+              "language" : "fi"
+            }, {
+              "value" : "Vasa",
+              "language" : "sv"
+            }, {
+              "value" : "Vaasa",
+              "language" : "en"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
