@@ -64,7 +64,7 @@ public class KuntaRekryTestsIT extends AbstractIntegrationTest {
       .assertThat()
       .statusCode(200)
       .body("id", notNullValue())
-      .body("title", is("Työn 1 otsikko"))
+      .body("title", is("Työn 1 otsikko, priority"))
       .body("employmentType", is("Keikkatyö"))
       .body("description", is("Esimerkkityön 1 kuvaus"))
       .body("location", is("Esimerkki"))
@@ -86,7 +86,7 @@ public class KuntaRekryTestsIT extends AbstractIntegrationTest {
       .statusCode(200)
       .body("id.size()", is(3))
       .body("id[1]", notNullValue())
-      .body("title[1]", is("Työn 2 otsikko"))
+      .body("title[1]", is("Työn 2 otsikko, priority"))
       .body("employmentType[1]", is("Keikkatyö"))
       .body("description[1]", is("Esimerkkityön 2 kuvaus"))
       .body("location[1]", is("Esimerkki"))
@@ -100,9 +100,13 @@ public class KuntaRekryTestsIT extends AbstractIntegrationTest {
   
   @Test
   public void testListJobsSort() {
+    String organizationId = getOrganizationId(0);
+    
+    insertOrganizationSetting(organizationId, "jobs.priority-title", "priority");
+    
     givenReadonly()
       .contentType(ContentType.JSON)
-      .get("/organizations/{organizationId}/jobs?sortBy=PUBLICATION_END&sortDir=ASCENDING", getOrganizationId(0))
+      .get("/organizations/{organizationId}/jobs?sortBy=PUBLICATION_END&sortDir=ASCENDING", organizationId)
       .then()
       .assertThat()
       .statusCode(200)
@@ -112,7 +116,7 @@ public class KuntaRekryTestsIT extends AbstractIntegrationTest {
     
     givenReadonly()
       .contentType(ContentType.JSON)
-      .get("/organizations/{organizationId}/jobs?sortBy=PUBLICATION_END&sortDir=DESCENDING", getOrganizationId(0))
+      .get("/organizations/{organizationId}/jobs?sortBy=PUBLICATION_END&sortDir=DESCENDING", organizationId)
       .then()
       .assertThat()
       .statusCode(200)
@@ -122,7 +126,7 @@ public class KuntaRekryTestsIT extends AbstractIntegrationTest {
     
     givenReadonly()
       .contentType(ContentType.JSON)
-      .get("/organizations/{organizationId}/jobs?sortBy=PUBLICATION_START&sortDir=ASCENDING", getOrganizationId(0))
+      .get("/organizations/{organizationId}/jobs?sortBy=PUBLICATION_START&sortDir=ASCENDING", organizationId)
       .then()
       .assertThat()
       .statusCode(200)
@@ -132,13 +136,37 @@ public class KuntaRekryTestsIT extends AbstractIntegrationTest {
     
     givenReadonly()
       .contentType(ContentType.JSON)
-      .get("/organizations/{organizationId}/jobs?sortBy=PUBLICATION_START&sortDir=DESCENDING", getOrganizationId(0))
+      .get("/organizations/{organizationId}/jobs?sortBy=PUBLICATION_START&sortDir=DESCENDING", organizationId)
       .then()
       .assertThat()
       .statusCode(200)
       .body("id.size()", is(3))
       .body("id[0]", notNullValue())
       .body("link[0]", is("https://www.kuntarekry.fi/fi/tyopaikka/2234567890"));
+    
+    givenReadonly()
+      .contentType(ContentType.JSON)
+      .get("/organizations/{organizationId}/jobs?sortBy=PRIORITY_TITLE_PUBLICATION_END&sortDir=DESCENDING", organizationId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(3))
+      .body("link[0]", is("https://www.kuntarekry.fi/fi/tyopaikka/2234567890"))
+      .body("link[1]", is("https://www.kuntarekry.fi/fi/tyopaikka/1234567890"))
+      .body("link[2]", is("https://www.kuntarekry.fi/fi/tyopaikka/3234567890"));
+    
+    givenReadonly()
+      .contentType(ContentType.JSON)
+      .get("/organizations/{organizationId}/jobs?sortBy=PRIORITY_TITLE_PUBLICATION_END&sortDir=ASCENDING", organizationId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(3))
+      .body("link[0]", is("https://www.kuntarekry.fi/fi/tyopaikka/3234567890"))
+      .body("link[1]", is("https://www.kuntarekry.fi/fi/tyopaikka/1234567890"))
+      .body("link[2]", is("https://www.kuntarekry.fi/fi/tyopaikka/2234567890"));
+    
+    deleteOrganizationSetting(organizationId, "jobs.priority-title");
   } 
   
   @Test
