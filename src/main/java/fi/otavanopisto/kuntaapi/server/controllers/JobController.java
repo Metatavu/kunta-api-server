@@ -71,10 +71,12 @@ public class JobController {
         Collections.sort(sorted, new PublicationStartComparator(orderDirection));
       break;
       case PRIORITY_TITLE_PUBLICATION_END:
-        String priorityTitle = getPriorityTitle(organizationId);
-        Collections.sort(sorted, new PriorityTitleJobComparator(priorityTitle, orderDirection)
+        Collections.sort(sorted, new PriorityTitleJobComparator(getPriorityTitle(organizationId), orderDirection)
           .thenComparing(new PublicationEndComparator(orderDirection)));
       break;
+      case PRIORITY_TITLE_PUBLICATION_START:
+        Collections.sort(sorted, new PriorityTitleJobComparator(getPriorityTitle(organizationId), orderDirection)
+          .thenComparing(new PublicationStartComparator(orderDirection)));
       default:
     }
 

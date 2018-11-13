@@ -166,6 +166,28 @@ public class KuntaRekryTestsIT extends AbstractIntegrationTest {
       .body("link[1]", is("https://www.kuntarekry.fi/fi/tyopaikka/1234567890"))
       .body("link[2]", is("https://www.kuntarekry.fi/fi/tyopaikka/2234567890"));
     
+    givenReadonly()
+      .contentType(ContentType.JSON)
+      .get("/organizations/{organizationId}/jobs?sortBy=PRIORITY_TITLE_PUBLICATION_START&sortDir=DESCENDING", organizationId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(3))
+      .body("link[0]", is("https://www.kuntarekry.fi/fi/tyopaikka/2234567890"))
+      .body("link[1]", is("https://www.kuntarekry.fi/fi/tyopaikka/1234567890"))
+      .body("link[2]", is("https://www.kuntarekry.fi/fi/tyopaikka/3234567890"));
+    
+    givenReadonly()
+      .contentType(ContentType.JSON)
+      .get("/organizations/{organizationId}/jobs?sortBy=PRIORITY_TITLE_PUBLICATION_START&sortDir=ASCENDING", organizationId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(3))
+      .body("link[0]", is("https://www.kuntarekry.fi/fi/tyopaikka/3234567890"))
+      .body("link[1]", is("https://www.kuntarekry.fi/fi/tyopaikka/1234567890"))
+      .body("link[2]", is("https://www.kuntarekry.fi/fi/tyopaikka/2234567890"));
+    
     deleteOrganizationSetting(organizationId, "jobs.priority-title");
   } 
   
