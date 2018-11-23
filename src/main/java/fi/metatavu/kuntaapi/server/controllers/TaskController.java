@@ -21,6 +21,7 @@ import fi.metatavu.kuntaapi.server.persistence.dao.TaskDAO;
 import fi.metatavu.kuntaapi.server.persistence.dao.TaskQueueDAO;
 import fi.metatavu.metaflow.tasks.Task;
 import fi.metatavu.kuntaapi.server.persistence.model.TaskQueue;
+import fi.metatavu.kuntaapi.server.tasks.TaskSerializer;
 
 @ApplicationScoped
 public class TaskController {
@@ -35,6 +36,9 @@ public class TaskController {
   
   @Inject
   private ClusterController clusterController;
+
+  @Inject
+  private TaskSerializer taskSerializer;
 
   /**
    * Creates new task
@@ -52,7 +56,7 @@ public class TaskController {
 
     String uniqueId = task.getUniqueId();
     if (taskDAO.countByQueueAndUniqueId(taskQueue, uniqueId) == 0) {
-      byte[] data = serialize(task);
+      byte[] data = taskSerializer.serialize(task);
 	    if (data != null) {
 	      return handleNewTask(queueName, task, taskQueue, uniqueId, data);
 	    }
@@ -83,7 +87,7 @@ public class TaskController {
       byte[] data = task.getData();
       taskDAO.delete(task);
       taskQueueDAO.updateLastTaskReturned(taskQueue, OffsetDateTime.now());
-      return unserialize(data);
+      return taskSerializer.unserialize(data);
     }
     
     return null;
@@ -164,7 +168,7 @@ public class TaskController {
       return null;
     }
 
-    return unserialize(task.getData());
+    return taskSerializer.unserialize(task.getData());
   }
   
   /**
@@ -277,52 +281,4 @@ public class TaskController {
     logger.log(Level.SEVERE, "Task creating failed on unexpected JDBC error", e);
   }
   
-  @SuppressWarnings ("squid:S1168")
-  private <T extends Task> byte[] serialize(T task) {
-    try (ByteArrayOutputStream resultStream = new ByteArrayOutputStream()) {
-      serializeToStream(task, resultStream);
-      resultStream.flush();
-      return resultStream.toByteArray();
-    } catch (IOException e) {
-      logger.log(Level.SEVERE, "Failed to write serialized task data", e);
-    }
-    
-    return null;
-  }
-
-  private <T extends Task> void serializeToStream(T task, ByteArrayOutputStream resultStream) {
-    try (ObjectOutputStream objectStream = new ObjectOutputStream(resultStream)) {
-      objectStream.writeObject(task);
-      objectStream.flush();
-    } catch (IOException e) {
-      logger.log(Level.SEVERE, "Failed to serialize task", e);
-    }
-  }
-
-  private <T extends Task> T unserialize(byte[] rawData) {
-    try (ByteArrayInputStream byteStream = new ByteArrayInputStream(rawData)) {
-      return unserializeFromStream(byteStream);
-    } catch (IOException e) {
-      logger.log(Level.SEVERE, "Failed to write unserialized task data", e);
-    }
-    
-    return null;
-  }
-
-  @SuppressWarnings({"unchecked", "squid:S4508"})
-  private <T extends Task> T unserializeFromStream(ByteArrayInputStream byteStream) {
-    try (ObjectInputStream objectStream = new ObjectInputStream(byteStream)) {
-      Object object = objectStream.readObject();
-      if (object == null) {
-        return null;
-      }
-      
-      return (T) object;
-    } catch (IOException | ClassNotFoundException e) {
-      logger.log(Level.SEVERE, "Failed to unserialize task", e);
-    }
-    
-    return null;
-  }
-
 }
