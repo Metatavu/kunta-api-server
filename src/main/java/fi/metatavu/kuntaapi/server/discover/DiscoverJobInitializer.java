@@ -16,7 +16,7 @@ import javax.enterprise.inject.Any;
 import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
 
-import fi.metatavu.kuntaapi.server.tasks.Job;
+import fi.metatavu.kuntaapi.server.tasks.metaflow.Job;
 
 @Singleton
 @ApplicationScoped

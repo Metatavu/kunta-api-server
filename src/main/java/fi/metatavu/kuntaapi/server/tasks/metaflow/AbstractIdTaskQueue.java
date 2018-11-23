@@ -1,7 +1,8 @@
-package fi.metatavu.kuntaapi.server.tasks;
+package fi.metatavu.kuntaapi.server.tasks.metaflow;
 
 import fi.metatavu.kuntaapi.server.id.BaseId;
 import fi.metatavu.kuntaapi.server.id.IdType;
+import fi.metatavu.kuntaapi.server.tasks.IdTask;
 
 /**
  * Abstract base class for id tasks

@@ -3,7 +3,7 @@ package fi.metatavu.kuntaapi.server.discover;
 import javax.inject.Inject;
 
 import fi.metatavu.kuntaapi.server.settings.SystemSettingController;
-import fi.metatavu.kuntaapi.server.tasks.AbstractJob;
+import fi.metatavu.kuntaapi.server.tasks.metaflow.AbstractJob;
 
 public abstract class AbstractDiscoverJob extends AbstractJob {
 

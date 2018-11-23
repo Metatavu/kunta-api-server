@@ -3,7 +3,7 @@ package fi.metatavu.kuntaapi.server.integrations.linkedevents.tasks;
 import javax.enterprise.context.ApplicationScoped;
 
 import fi.metatavu.kuntaapi.server.integrations.linkedevents.LinkedEventsConsts;
-import fi.metatavu.kuntaapi.server.tasks.AbstractOrganizationEntityTaskQueue;
+import fi.metatavu.kuntaapi.server.tasks.metaflow.AbstractOrganizationEntityTaskQueue;
 
 @ApplicationScoped
 public class OrganizationLinkedEventsEventTaskQueue extends AbstractOrganizationEntityTaskQueue {

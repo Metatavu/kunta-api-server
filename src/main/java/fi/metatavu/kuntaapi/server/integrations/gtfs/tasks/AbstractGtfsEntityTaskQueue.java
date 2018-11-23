@@ -1,7 +1,7 @@
 package fi.metatavu.kuntaapi.server.integrations.gtfs.tasks;
 
 import fi.metatavu.kuntaapi.server.integrations.gtfs.GtfsConsts;
-import fi.metatavu.kuntaapi.server.tasks.AbstractKuntaApiTaskQueue;
+import fi.metatavu.kuntaapi.server.tasks.metaflow.AbstractKuntaApiTaskQueue;
 
 public abstract class AbstractGtfsEntityTaskQueue <T extends AbstractGtfsEntityTask<?>> extends AbstractKuntaApiTaskQueue<T> {
 

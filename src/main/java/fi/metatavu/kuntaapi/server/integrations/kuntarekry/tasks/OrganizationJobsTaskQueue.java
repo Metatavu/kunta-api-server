@@ -3,7 +3,7 @@ package fi.metatavu.kuntaapi.server.integrations.kuntarekry.tasks;
 import javax.enterprise.context.ApplicationScoped;
 
 import fi.metatavu.kuntaapi.server.integrations.KuntaApiConsts;
-import fi.metatavu.kuntaapi.server.tasks.AbstractOrganizationEntityTaskQueue;
+import fi.metatavu.kuntaapi.server.tasks.metaflow.AbstractOrganizationEntityTaskQueue;
 
 @ApplicationScoped
 public class OrganizationJobsTaskQueue extends AbstractOrganizationEntityTaskQueue {

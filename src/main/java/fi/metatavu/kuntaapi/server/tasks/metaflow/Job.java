@@ -1,4 +1,4 @@
-package fi.metatavu.kuntaapi.server.tasks;
+package fi.metatavu.kuntaapi.server.tasks.metaflow;
 
 /**
  * Base interface for scheduled jobs
