@@ -19,13 +19,14 @@ import fi.metatavu.kuntaapi.server.integrations.kuntarekry.tasks.KuntaRekryRemov
 import fi.metatavu.kuntaapi.server.persistence.model.Identifier;
 import fi.metatavu.kuntaapi.server.rest.model.Job;
 import fi.metatavu.kuntaapi.server.tasks.jms.AbstractJmsJob;
+import fi.metatavu.kuntaapi.server.tasks.jms.JmsQueueProperties;
 
 @ApplicationScoped
 @SuppressWarnings ("squid:S3306")
 @MessageDriven (
   activationConfig = {
-    @ActivationConfigProperty (propertyName = "destinationLookup", propertyValue = KuntaRekryJobTaskQueue.JMS_QUEUE),
-    @ActivationConfigProperty (propertyName = "maxSessions", propertyValue = "1")
+    @ActivationConfigProperty (propertyName = JmsQueueProperties.DESTINATION_LOOKUP, propertyValue = KuntaRekryJobTaskQueue.JMS_QUEUE),
+    @ActivationConfigProperty (propertyName = JmsQueueProperties.MAX_SESSIONS, propertyValue = "1")
   }
 )
 public class KuntaRekryJobEntityDiscoverJob extends AbstractJmsJob<AbstractKuntaRekryJobTask> {
