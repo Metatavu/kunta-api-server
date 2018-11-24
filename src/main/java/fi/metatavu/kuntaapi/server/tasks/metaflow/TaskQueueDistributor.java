@@ -1,6 +1,7 @@
 package fi.metatavu.kuntaapi.server.tasks.metaflow;
 
 import java.util.List;
+import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -12,6 +13,7 @@ import javax.ejb.Singleton;
 import javax.ejb.Startup;
 import javax.enterprise.concurrent.ManagedScheduledExecutorService;
 import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
@@ -20,6 +22,7 @@ import org.apache.commons.codec.binary.StringUtils;
 
 import fi.metatavu.kuntaapi.server.controllers.ClusterController;
 import fi.metatavu.kuntaapi.server.controllers.TaskController;
+import fi.metatavu.kuntaapi.server.lifecycle.BeforeShutdownEvent;
 import fi.metatavu.kuntaapi.server.persistence.model.TaskQueue;
 import fi.metatavu.kuntaapi.server.settings.SystemSettingController;
 
@@ -48,10 +51,27 @@ public class TaskQueueDistributor {
   
   @Resource
   private EJBContext ejbContext;
+  
+  private ScheduledFuture<?> future;
 
   @PostConstruct
   public void postConstruct() {
     startTimer();
+  }
+  
+  /**
+   * Event listener that listens server shutdown event
+   * 
+   * @param event event
+   */
+  public void onBeforeShutdown(@Observes BeforeShutdownEvent event) {
+    logger.info("Cancelling task");
+
+    if (future != null) {
+      future.cancel(false);
+    }
+
+    logger.info("Task cancelled");
   }
   
   private void selfAssignQueues() {
@@ -80,7 +100,7 @@ public class TaskQueueDistributor {
   }
   
   private void startTimer(long warmup, long delay) {
-    managedScheduledExecutorService.scheduleWithFixedDelay(() -> {
+    future = managedScheduledExecutorService.scheduleWithFixedDelay(() -> {
       UserTransaction userTransaction = ejbContext.getUserTransaction();
       try {
         userTransaction.begin();
