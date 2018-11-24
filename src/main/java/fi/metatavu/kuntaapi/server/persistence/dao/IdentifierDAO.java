@@ -64,12 +64,10 @@ public class IdentifierDAO extends AbstractDAO<Identifier> {
     criteria.select(root);
     criteria.where(
       criteriaBuilder.and(
-          criteriaBuilder.equal(root.get(Identifier_.type), type),
-          criteriaBuilder.equal(root.get(Identifier_.source), source),
-          criteriaBuilder.equal(root.get(Identifier_.sourceId), sourceId),
-          organizationKuntaApiId == null 
-            ? criteriaBuilder.isNull(root.get(Identifier_.organizationKuntaApiId)) 
-            : criteriaBuilder.equal(root.get(Identifier_.organizationKuntaApiId), organizationKuntaApiId)
+        criteriaBuilder.equal(root.get(Identifier_.type), type),
+        criteriaBuilder.equal(root.get(Identifier_.source), source),
+        criteriaBuilder.equal(root.get(Identifier_.sourceId), sourceId),
+        criteriaBuilder.equal(root.get(Identifier_.organizationKuntaApiId), organizationKuntaApiId)
       )
     );
     
@@ -93,11 +91,9 @@ public class IdentifierDAO extends AbstractDAO<Identifier> {
     criteria.select(root);
     criteria.where(
       criteriaBuilder.and(
-          criteriaBuilder.equal(root.get(Identifier_.type), type),
-          criteriaBuilder.equal(root.get(Identifier_.kuntaApiId), kuntaApiId),
-          organizationKuntaApiId == null 
-            ? criteriaBuilder.isNull(root.get(Identifier_.organizationKuntaApiId)) 
-            : criteriaBuilder.equal(root.get(Identifier_.organizationKuntaApiId), organizationKuntaApiId)
+        criteriaBuilder.equal(root.get(Identifier_.type), type),
+        criteriaBuilder.equal(root.get(Identifier_.kuntaApiId), kuntaApiId),
+        criteriaBuilder.equal(root.get(Identifier_.organizationKuntaApiId), organizationKuntaApiId)
       )
     );
     
