@@ -1,10 +1,5 @@
 package fi.metatavu.kuntaapi.server.controllers;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.sql.SQLException;
 import java.time.OffsetDateTime;
 import java.util.List;
@@ -19,9 +14,9 @@ import org.hibernate.JDBCException;
 
 import fi.metatavu.kuntaapi.server.persistence.dao.TaskDAO;
 import fi.metatavu.kuntaapi.server.persistence.dao.TaskQueueDAO;
-import fi.metatavu.metaflow.tasks.Task;
 import fi.metatavu.kuntaapi.server.persistence.model.TaskQueue;
 import fi.metatavu.kuntaapi.server.tasks.TaskSerializer;
+import fi.metatavu.metaflow.tasks.Task;
 
 @ApplicationScoped
 public class TaskController {
