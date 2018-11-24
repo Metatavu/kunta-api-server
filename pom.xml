@@ -120,6 +120,7 @@
     <weld-se.version>3.0.4.Final</weld-se.version>
     <reflections.version>0.9.11</reflections.version>
     <awaitility.version>3.1.2</awaitility.version>
+    <mariadb-java-client.version>2.3.0</mariadb-java-client.version>
     <it.package>**</it.package>
     <it.tests>fi/metatavu/kuntaapi/test/server/integration/${it.package}/*IT.java</it.tests>
   </properties>
@@ -701,6 +702,13 @@
     </dependency>
     
     <dependency>
+      <groupId>org.mariadb.jdbc</groupId>
+      <artifactId>mariadb-java-client</artifactId>
+      <version>${mariadb-java-client.version}</version>
+      <scope>test</scope>
+    </dependency>
+    
+    <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <scope>test</scope>
@@ -720,9 +728,9 @@
         <h2.version>1.4.192</h2.version>
         <it.port.http>58080</it.port.http>
         <it.host>api.kunta-api.test</it.host>
-        <it.jdbc.driver>org.h2.jdbcx.JdbcDataSource</it.jdbc.driver>
-        <it.jdbc.url>jdbc:h2:file:${project.build.directory}/h2;AUTO_SERVER=TRUE;DB_CLOSE_ON_EXIT=FALSE;MVCC=true;LOCK_TIMEOUT=10000</it.jdbc.url>
-        <it.jdbc.properties>URL=jdbc:h2:file:${project.build.directory}/h2\;AUTO_SERVER=TRUE\;DB_CLOSE_ON_EXIT=FALSE\;MVCC=true\;LOCK_TIMEOUT=10000</it.jdbc.properties>
+        <it.jdbc.driver>org.mariadb.jdbc.MySQLDataSource</it.jdbc.driver>
+        <it.jdbc.dbname>katest</it.jdbc.dbname>
+        <it.jdbc.url>jdbc:mysql://localhost:3306/${it.jdbc.dbname}</it.jdbc.url>
         <it.jdbc.jndi>java:/jboss/datasources/kuntaapi</it.jdbc.jndi>
         <it.jdbc.username>sa</it.jdbc.username>
         <it.jdbc.password>sa</it.jdbc.password>
@@ -833,10 +841,10 @@
               <skip>${it.skipelasticsearch}</skip>
               <plugins>
                 <plugin>
-                  <uri>ingest-attachment</uri>
+                  <uri>file://${project.build.directory}/../elasticplugins/ingest-attachment-${elasticsearch.version}.zip</uri>
                 </plugin>
                 <plugin>
-                  <uri>mapper-attachments</uri>
+                  <uri>file://${project.build.directory}/../elasticplugins/mapper-attachments-${elasticsearch.version}.zip</uri>
                 </plugin>
               </plugins>
             </configuration>
@@ -871,13 +879,7 @@
                   <url>http://download.jboss.org/wildfly/${wildfly.version}/wildfly-${wildfly.version}.zip</url>
                   <downloadDir>${project.basedir}/.cargo/downloads</downloadDir>
                   <extractDir>${project.basedir}/.cargo/extracts</extractDir>
-                </zipUrlInstaller>     
-                <dependencies>
-                  <dependency>
-                    <groupId>com.h2database</groupId>
-                    <artifactId>h2</artifactId>
-                  </dependency>
-                </dependencies>         
+                </zipUrlInstaller>   
               </container>
               <configuration>
                 <properties>
@@ -915,6 +917,66 @@
             <version>2.0.0.Final</version>
             <executions>
               <execution>
+                <id>deploy-jdbc-driver</id>
+                <phase>pre-integration-test</phase>
+                <goals>
+                  <goal>deploy-artifact</goal>
+                </goals>
+                <configuration>
+                  <groupId>org.mariadb.jdbc</groupId>
+                  <artifactId>mariadb-java-client</artifactId>
+                  <name>mariadb-driver</name>
+                </configuration>
+              </execution>           
+              <execution>
+                <id>add-datasource</id>
+                <phase>pre-integration-test</phase>
+                <goals>
+                  <goal>add-resource</goal>
+                </goals>
+                <configuration>
+                  <address>subsystem=datasources</address>
+                  <resources>
+                    <resource>
+                      <address>xa-data-source=${it.jdbc.jndi}</address>
+                      <properties>
+                        <xa-datasource-class>${it.jdbc.driver}</xa-datasource-class>
+                        <jndi-name>${it.jdbc.jndi}</jndi-name>
+                        <enabled>true</enabled>
+                        <driver-name>mariadb-driver</driver-name>
+                      </properties>
+                      <resources>
+                        <resource>
+                          <address>xa-datasource-properties=DatabaseName</address>
+                          <properties>
+                              <value>${it.jdbc.dbname}</value>
+                          </properties>
+                        </resource>
+                        <resource>
+                          <address>xa-datasource-properties=ServerName</address>
+                          <properties>
+                            <value>localhost</value>
+                          </properties>
+                        </resource>
+                        <resource>
+                          <address>xa-datasource-properties=User</address>
+                          <properties>
+                              <value>${it.jdbc.username}</value>
+                          </properties>
+                        </resource>
+                        <resource>
+                          <address>xa-datasource-properties=Password</address>
+                          <properties>
+                            <value>${it.jdbc.password}</value>
+                          </properties>
+                        </resource>
+                      </resources>
+                    </resource>
+                  </resources>
+                </configuration>
+              </execution>              
+               
+              <execution>
                 <id>wildfly-configure</id>
                 <phase>pre-integration-test</phase>
                 <goals>
@@ -923,7 +985,6 @@
                 <configuration>
                   <batch>true</batch>
                   <commands>
-                    <command>xa-data-source add --name=ci --driver-name=h2 --jndi-name=${it.jdbc.jndi} --user-name=${it.jdbc.username} --password=${it.jdbc.password} --xa-datasource-properties=${it.jdbc.properties}</command>
                     <command>/subsystem=undertow/server=default-server/host=kunta-api:add(alias=["${it.host}"],default-web-module="kunta-api.war")</command>
                     <command>/system-property=it-test:add(value="true")</command>
                     <command>/subsystem=logging/logger=org.jboss.as.ejb3.deployment:add(level=WARNING)</command>
@@ -936,12 +997,17 @@
                     <command>/subsystem=logging/logger=fi.metatavu.kuntaapi.server.security.SecurityFilter:add(level=INFO)</command>
                     <command>/subsystem=logging/logger=fi.metatavu.kuntaapi.server.index.IndexUpdater:add(level=SEVERE)</command>
                     <command>/subsystem=logging/logger=org.onebusaway.gtfs.serialization.GtfsReader:add(level=WARN)</command>
+                    <command>/subsystem=logging/logger=fi.metatavu.kuntaapi.server.integrations.ptv.updaters.PtvServiceEntityDiscoverJob:add(level=WARN)</command>
+                    <command>/subsystem=logging/logger=fi.metatavu.kuntaapi.server.integrations.ptv.updaters.PtvServiceChannelEntityDiscoverJob:add(level=WARN)</command>
+                    <command>/subsystem=logging/logger=fi.metatavu.kuntaapi.server.tasks.metaflow.TaskQueueDistributor:add(level=WARN)</command>
                     <command>/subsystem=logging/logger=fi.metatavu.kuntaapi.server.rest.SlowRequestFilter:add(level=FATAL)</command>
                     <command>/subsystem=logging/logger=fi.metatavu.kuntaapi.server.integrations.tilannehuone.updaters.TilannehuoneIdDiscoverJob:add(level=SEVERE)</command>
                     <command>/subsystem=logging/logger=fi.metatavu.kuntaapi.server.integrations.ptv.updaters.PtvOrganizationEntityDiscoverJob:add(level=WARN)</command>
                     <command>/subsystem=infinispan/cache-container=kunta-api:add()</command>
                     <command>/subsystem=infinispan/cache-container=hibernate/local-cache=entity/component=transaction:write-attribute(name=locking,value=OPTIMISTIC)</command>
                     <command>/subsystem=infinispan/cache-container=kunta-api/local-cache=modificationhash:add()</command>
+                    <command>/subsystem=messaging-activemq/server=default/connection-factory=InVmConnectionFactory:write-attribute(name=confirmation-window-size,value="10240")</command>
+                    <command>/:reload</command>
                   </commands>
                 </configuration>
               </execution>

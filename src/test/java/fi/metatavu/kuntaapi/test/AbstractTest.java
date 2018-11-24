@@ -7,6 +7,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.Instant;
 import java.time.OffsetDateTime;
 import java.time.ZoneId;
@@ -117,7 +118,7 @@ public abstract class AbstractTest {
   protected long executeInsert(String sql, Object... params) {
     try (Connection connection = getConnection()) {
       connection.setAutoCommit(true);
-      PreparedStatement statement = connection.prepareStatement(sql);
+      PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
       try {
         applyStatementParams(statement, params);
         statement.execute();
