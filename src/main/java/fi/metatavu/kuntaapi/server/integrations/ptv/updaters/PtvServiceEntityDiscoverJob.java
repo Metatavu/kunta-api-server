@@ -6,28 +6,18 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.ejb.AccessTimeout;
-import javax.ejb.Singleton;
+import javax.ejb.ActivationConfigProperty;
+import javax.ejb.MessageDriven;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Event;
 import javax.inject.Inject;
 
-import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
-import fi.metatavu.kuntaapi.server.rest.model.Service;
-import fi.metatavu.kuntaapi.server.rest.model.ServiceOrganization;
-import fi.metatavu.ptv.client.ApiResponse;
-import fi.metatavu.ptv.client.model.V6VmOpenApiServiceOrganization;
-import fi.metatavu.ptv.client.model.V8VmOpenApiServiceServiceChannel;
-import fi.metatavu.ptv.client.model.VmOpenApiItem;
-import fi.metatavu.ptv.client.model.V8VmOpenApiService;
 import fi.metatavu.kuntaapi.server.cache.ModificationHashCache;
 import fi.metatavu.kuntaapi.server.controllers.IdentifierController;
 import fi.metatavu.kuntaapi.server.controllers.IdentifierRelationController;
-import fi.metatavu.kuntaapi.server.discover.EntityDiscoverJob;
 import fi.metatavu.kuntaapi.server.id.ElectronicServiceChannelId;
 import fi.metatavu.kuntaapi.server.id.IdController;
 import fi.metatavu.kuntaapi.server.id.OrganizationId;
@@ -51,21 +41,33 @@ import fi.metatavu.kuntaapi.server.integrations.ptv.PtvConsts;
 import fi.metatavu.kuntaapi.server.integrations.ptv.PtvIdFactory;
 import fi.metatavu.kuntaapi.server.integrations.ptv.PtvServiceResourceContainer;
 import fi.metatavu.kuntaapi.server.integrations.ptv.client.PtvApi;
-import fi.metatavu.kuntaapi.server.integrations.ptv.tasks.ServiceChannelTasksQueue;
-import fi.metatavu.kuntaapi.server.integrations.ptv.tasks.ServiceChannelUpdateTask;
 import fi.metatavu.kuntaapi.server.integrations.ptv.tasks.ServiceIdTaskQueue;
 import fi.metatavu.kuntaapi.server.integrations.ptv.translation.PtvTranslator;
 import fi.metatavu.kuntaapi.server.persistence.model.Identifier;
+import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
+import fi.metatavu.kuntaapi.server.rest.model.Service;
+import fi.metatavu.kuntaapi.server.rest.model.ServiceOrganization;
 import fi.metatavu.kuntaapi.server.settings.SystemSettingController;
 import fi.metatavu.kuntaapi.server.tasks.IdTask;
 import fi.metatavu.kuntaapi.server.tasks.IdTask.Operation;
+import fi.metatavu.kuntaapi.server.tasks.jms.AbstractJmsJob;
+import fi.metatavu.kuntaapi.server.tasks.jms.JmsQueueProperties;
 import fi.metatavu.kuntaapi.server.utils.LocalizationUtils;
+import fi.metatavu.ptv.client.ApiResponse;
+import fi.metatavu.ptv.client.model.V6VmOpenApiServiceOrganization;
+import fi.metatavu.ptv.client.model.V8VmOpenApiService;
+import fi.metatavu.ptv.client.model.V8VmOpenApiServiceServiceChannel;
+import fi.metatavu.ptv.client.model.VmOpenApiItem;
 
 @ApplicationScoped
-@Singleton
-@AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
-public class PtvServiceEntityDiscoverJob extends EntityDiscoverJob<IdTask<ServiceId>> {
+@MessageDriven (
+  activationConfig = {
+    @ActivationConfigProperty (propertyName = JmsQueueProperties.DESTINATION_LOOKUP, propertyValue = ServiceIdTaskQueue.JMS_QUEUE),
+    @ActivationConfigProperty (propertyName = JmsQueueProperties.MAX_SESSIONS, propertyValue = "1")
+  }
+)
+public class PtvServiceEntityDiscoverJob extends AbstractJmsJob<IdTask<ServiceId>> {
 
   @Inject
   private Logger logger;
@@ -101,16 +103,10 @@ public class PtvServiceEntityDiscoverJob extends EntityDiscoverJob<IdTask<Servic
   private ModificationHashCache modificationHashCache;
   
   @Inject
-  private ServiceIdTaskQueue serviceIdTaskQueue;
-
-  @Inject
   private Event<IndexRequest> indexRequest;
   
   @Inject
   private Event<IndexRemoveRequest> indexRemoveRequest;
-
-  @Inject
-  private ServiceChannelTasksQueue serviceChannelTasksQueue;
   
   @Inject
   private PageIdTaskQueue pageIdTaskQueue;
@@ -119,28 +115,11 @@ public class PtvServiceEntityDiscoverJob extends EntityDiscoverJob<IdTask<Servic
   private ManagementIdFactory managementIdFactory;
    
   @Override
-  public String getName() {
-    return "ptv-services";
-  }
-
-  @Override
-  public void timeout() {
-    executeNextTask();
-  }
-  
-  @Override
   public void execute(IdTask<ServiceId> task) {
     if (task.getOperation() == Operation.UPDATE) {
       updatePtvService(task.getId(), task.getOrderIndex()); 
     } else if (task.getOperation() == Operation.REMOVE) {
       deletePtvService(task.getId());
-    }
-  }
-  
-  private void executeNextTask() {
-    IdTask<ServiceId> task = serviceIdTaskQueue.next();
-    if (task != null) {
-      execute(task);
     }
   }
 
@@ -263,9 +242,8 @@ public class PtvServiceEntityDiscoverJob extends EntityDiscoverJob<IdTask<Servic
       kuntaApiWebPageServiceChannelIds.add(kuntaApiWebPageServiceChannelId);
       return;
     } 
-    
+
     logger.log(Level.INFO, () -> String.format("Failed to resolve service channel %s type", serviceChannelId));
-    serviceChannelTasksQueue.enqueueTask(new ServiceChannelUpdateTask(true, serviceChannelId, null));
   }
   
   private List<ServiceOrganization> translateServiceOrganizations(List<V6VmOpenApiServiceOrganization> ptvServiceOrganizations) {
@@ -283,7 +261,7 @@ public class PtvServiceEntityDiscoverJob extends EntityDiscoverJob<IdTask<Servic
         if (kuntaApiOrganizationId != null) {
           result.add(ptvTranslator.translateServiceOrganization(kuntaApiOrganizationId, ptvServiceOrganization));
         } else {
-          logger.log(Level.SEVERE, () -> String.format("Failed to translate organization %s into Kunta API id", ptvOrganizationId));
+          logger.log(Level.INFO, () -> String.format("Failed to translate organization %s into Kunta API id", ptvOrganizationId));
         }
       }
     }

@@ -10,6 +10,10 @@
         <entry name="java:/jms/queue/ptv-service-channels"/>
         <durable>true</durable>
       </jms-queue>
+      <jms-queue name="ptv-services">
+        <entry name="java:/jms/queue/ptv-services"/>
+        <durable>true</durable>
+      </jms-queue>
     </jms-destinations>
   </server>
 </messaging-deployment>
