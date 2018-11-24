@@ -2,31 +2,18 @@ package fi.metatavu.kuntaapi.server.integrations.ptv.updaters;
 
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.ejb.AccessTimeout;
-import javax.ejb.Singleton;
+import javax.ejb.ActivationConfigProperty;
+import javax.ejb.MessageDriven;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Event;
 import javax.inject.Inject;
 
-import fi.metatavu.kuntaapi.server.rest.model.ElectronicServiceChannel;
-import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
-import fi.metatavu.kuntaapi.server.rest.model.PhoneServiceChannel;
-import fi.metatavu.kuntaapi.server.rest.model.PrintableFormServiceChannel;
-import fi.metatavu.kuntaapi.server.rest.model.ServiceLocationServiceChannel;
-import fi.metatavu.kuntaapi.server.rest.model.WebPageServiceChannel;
-import fi.metatavu.ptv.client.model.V8VmOpenApiElectronicChannel;
-import fi.metatavu.ptv.client.model.V8VmOpenApiPhoneChannel;
-import fi.metatavu.ptv.client.model.V8VmOpenApiPrintableFormChannel;
-import fi.metatavu.ptv.client.model.V8VmOpenApiServiceLocationChannel;
-import fi.metatavu.ptv.client.model.V8VmOpenApiWebPageChannel;
 import fi.metatavu.kuntaapi.server.cache.ModificationHashCache;
 import fi.metatavu.kuntaapi.server.controllers.IdentifierController;
 import fi.metatavu.kuntaapi.server.controllers.IdentifierRelationController;
-import fi.metatavu.kuntaapi.server.discover.EntityDiscoverJob;
 import fi.metatavu.kuntaapi.server.id.ElectronicServiceChannelId;
 import fi.metatavu.kuntaapi.server.id.IdController;
 import fi.metatavu.kuntaapi.server.id.OrganizationId;
@@ -68,16 +55,33 @@ import fi.metatavu.kuntaapi.server.integrations.ptv.tasks.ServiceLocationService
 import fi.metatavu.kuntaapi.server.integrations.ptv.tasks.WebPageServiceChannelRemoveTask;
 import fi.metatavu.kuntaapi.server.integrations.ptv.translation.PtvTranslator;
 import fi.metatavu.kuntaapi.server.persistence.model.Identifier;
+import fi.metatavu.kuntaapi.server.rest.model.ElectronicServiceChannel;
+import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
+import fi.metatavu.kuntaapi.server.rest.model.PhoneServiceChannel;
+import fi.metatavu.kuntaapi.server.rest.model.PrintableFormServiceChannel;
+import fi.metatavu.kuntaapi.server.rest.model.ServiceLocationServiceChannel;
+import fi.metatavu.kuntaapi.server.rest.model.WebPageServiceChannel;
 import fi.metatavu.kuntaapi.server.settings.SystemSettingController;
 import fi.metatavu.kuntaapi.server.tasks.IdTask;
 import fi.metatavu.kuntaapi.server.tasks.IdTask.Operation;
+import fi.metatavu.kuntaapi.server.tasks.jms.AbstractJmsJob;
+import fi.metatavu.kuntaapi.server.tasks.jms.JmsQueueProperties;
 import fi.metatavu.kuntaapi.server.utils.LocalizationUtils;
+import fi.metatavu.ptv.client.model.V8VmOpenApiElectronicChannel;
+import fi.metatavu.ptv.client.model.V8VmOpenApiPhoneChannel;
+import fi.metatavu.ptv.client.model.V8VmOpenApiPrintableFormChannel;
+import fi.metatavu.ptv.client.model.V8VmOpenApiServiceLocationChannel;
+import fi.metatavu.ptv.client.model.V8VmOpenApiWebPageChannel;
 
 @ApplicationScoped
-@Singleton
-@AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
-public class PtvServiceChannelEntityDiscoverJob extends EntityDiscoverJob <AbstractServiceChannelTask> {
+@MessageDriven (
+  activationConfig = {
+    @ActivationConfigProperty (propertyName = JmsQueueProperties.DESTINATION_LOOKUP, propertyValue = ServiceChannelTasksQueue.JMS_QUEUE),
+    @ActivationConfigProperty (propertyName = JmsQueueProperties.MAX_SESSIONS, propertyValue = "1")
+  }
+)
+public class PtvServiceChannelEntityDiscoverJob extends AbstractJmsJob<AbstractServiceChannelTask> {
 
   private static final String COULD_NOT_TRANSLATE_ORGANIZATION_INTO_KUNTA_API_ID = "Could not translate organization %s into kunta api id";
 
@@ -130,9 +134,6 @@ public class PtvServiceChannelEntityDiscoverJob extends EntityDiscoverJob <Abstr
   private PtvServiceChannelResolver serviceChannelResolver;
 
   @Inject
-  private ServiceChannelTasksQueue serviceChannelTasksQueue;
-  
-  @Inject
   private IdentifierRelationController identifierRelationController;
   
   @Inject
@@ -140,16 +141,6 @@ public class PtvServiceChannelEntityDiscoverJob extends EntityDiscoverJob <Abstr
 
   @Inject
   private ManagementIdFactory managementIdFactory;
-  
-  @Override
-  public String getName() {
-    return "ptv-service-channels";
-  }
-
-  @Override
-  public void timeout() {
-    executeNextTask();
-  }
   
   @Override
   public void execute(AbstractServiceChannelTask task) {
@@ -160,13 +151,6 @@ public class PtvServiceChannelEntityDiscoverJob extends EntityDiscoverJob <Abstr
     }
   }
   
-  private void executeNextTask() {
-    AbstractServiceChannelTask task = serviceChannelTasksQueue.next();
-    if (task != null) {
-      execute(task);
-    }
-  }
-
   private void updateServiceChannelChannel(ServiceChannelUpdateTask task) {
     if (!systemSettingController.hasSettingValue(PtvConsts.SYSTEM_SETTING_BASEURL)) {
       logger.log(Level.INFO, "Ptv system setting not defined, skipping update."); 
