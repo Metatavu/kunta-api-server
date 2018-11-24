@@ -6,15 +6,46 @@
         <entry name="java:/jms/queue/kunta-rekry-jobs"/>
         <durable>true</durable>
       </jms-queue>
+      
       <jms-queue name="ptv-service-channels">
         <entry name="java:/jms/queue/ptv-service-channels"/>
         <durable>true</durable>
       </jms-queue>
+      
       <jms-queue name="ptv-services">
         <entry name="java:/jms/queue/ptv-services"/>
+        <durable>true</durable>
+      </jms-queue>
+      
+      <jms-queue name="gtfs-agencies">
+        <entry name="java:/jms/queue/gtfs-agencies"/>
+        <durable>true</durable>
+      </jms-queue>
+      
+      <jms-queue name="gtfs-routes">
+        <entry name="java:/jms/queue/gtfs-routes"/>
+        <durable>true</durable>
+      </jms-queue>
+      
+      <jms-queue name="gtfs-schedules">
+        <entry name="java:/jms/queue/gtfs-schedules"/>
+        <durable>true</durable>
+      </jms-queue>
+
+      <jms-queue name="gtfs-stops">
+        <entry name="java:/jms/queue/gtfs-stops"/>
+        <durable>true</durable>
+      </jms-queue>
+      
+      <jms-queue name="gtfs-stoptimes">
+        <entry name="java:/jms/queue/gtfs-stoptimes"/>
+        <durable>true</durable>
+      </jms-queue>
+      
+      <jms-queue name="gtfs-trips">
+        <entry name="java:/jms/queue/gtfs-trips"/>
         <durable>true</durable>
       </jms-queue>
     </jms-destinations>
   </server>
 </messaging-deployment>
-

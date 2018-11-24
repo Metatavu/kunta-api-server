@@ -1,11 +1,10 @@
 package fi.metatavu.kuntaapi.server.integrations.gtfs;
 
-import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.ejb.AccessTimeout;
-import javax.ejb.Singleton;
+import javax.ejb.ActivationConfigProperty;
+import javax.ejb.MessageDriven;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Event;
 import javax.inject.Inject;
@@ -15,7 +14,6 @@ import org.onebusaway.gtfs.model.StopTime;
 import fi.metatavu.kuntaapi.server.cache.ModificationHashCache;
 import fi.metatavu.kuntaapi.server.controllers.IdentifierController;
 import fi.metatavu.kuntaapi.server.controllers.IdentifierRelationController;
-import fi.metatavu.kuntaapi.server.discover.EntityDiscoverJob;
 import fi.metatavu.kuntaapi.server.id.IdController;
 import fi.metatavu.kuntaapi.server.id.OrganizationId;
 import fi.metatavu.kuntaapi.server.id.PublicTransportStopId;
@@ -29,12 +27,18 @@ import fi.metatavu.kuntaapi.server.integrations.gtfs.resources.GtfsPublicTranspo
 import fi.metatavu.kuntaapi.server.integrations.gtfs.tasks.GtfsStopTimeEntityTask;
 import fi.metatavu.kuntaapi.server.integrations.gtfs.tasks.GtfsStopTimeTaskQueue;
 import fi.metatavu.kuntaapi.server.persistence.model.Identifier;
+import fi.metatavu.kuntaapi.server.tasks.jms.AbstractJmsJob;
+import fi.metatavu.kuntaapi.server.tasks.jms.JmsQueueProperties;
 
 @ApplicationScoped
-@Singleton
-@AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
-public class GtfsStopTimeEntityDiscoverJob extends EntityDiscoverJob<GtfsStopTimeEntityTask> {
+@MessageDriven (
+  activationConfig = {
+    @ActivationConfigProperty (propertyName = JmsQueueProperties.DESTINATION_LOOKUP, propertyValue = GtfsStopTimeTaskQueue.JMS_QUEUE),
+    @ActivationConfigProperty (propertyName = JmsQueueProperties.MAX_SESSIONS, propertyValue = "1")
+  }
+)
+public class GtfsStopTimeEntityDiscoverJob extends AbstractJmsJob<GtfsStopTimeEntityTask> {
 
   @Inject
   private Logger logger;
@@ -69,19 +73,6 @@ public class GtfsStopTimeEntityDiscoverJob extends EntityDiscoverJob<GtfsStopTim
   @Inject
   private Event<IndexRequest> indexRequest;
 
-  @Override
-  public String getName() {
-    return "gtfs-public-transport-stoptimes";
-  }
-
-  @Override
-  public void timeout() {
-    GtfsStopTimeEntityTask task = gtfsStopTimeTaskQueue.next();
-    if (task != null) {
-      execute(task);
-    }
-  }
-  
   @Override
   public void execute(GtfsStopTimeEntityTask task) {
     updateGtfsStopTime(task);

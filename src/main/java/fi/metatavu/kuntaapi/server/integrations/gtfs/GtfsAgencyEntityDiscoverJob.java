@@ -1,11 +1,10 @@
 package fi.metatavu.kuntaapi.server.integrations.gtfs;
 
-import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.ejb.AccessTimeout;
-import javax.ejb.Singleton;
+import javax.ejb.ActivationConfigProperty;
+import javax.ejb.MessageDriven;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
@@ -14,7 +13,6 @@ import org.onebusaway.gtfs.model.Agency;
 import fi.metatavu.kuntaapi.server.cache.ModificationHashCache;
 import fi.metatavu.kuntaapi.server.controllers.IdentifierController;
 import fi.metatavu.kuntaapi.server.controllers.IdentifierRelationController;
-import fi.metatavu.kuntaapi.server.discover.EntityDiscoverJob;
 import fi.metatavu.kuntaapi.server.id.IdController;
 import fi.metatavu.kuntaapi.server.id.OrganizationId;
 import fi.metatavu.kuntaapi.server.id.PublicTransportAgencyId;
@@ -24,12 +22,18 @@ import fi.metatavu.kuntaapi.server.integrations.gtfs.resources.GtfsPublicTranspo
 import fi.metatavu.kuntaapi.server.integrations.gtfs.tasks.GtfsAgencyEntityTask;
 import fi.metatavu.kuntaapi.server.integrations.gtfs.tasks.GtfsAgencyTaskQueue;
 import fi.metatavu.kuntaapi.server.persistence.model.Identifier;
+import fi.metatavu.kuntaapi.server.tasks.jms.AbstractJmsJob;
+import fi.metatavu.kuntaapi.server.tasks.jms.JmsQueueProperties;
 
 @ApplicationScoped
-@Singleton
-@AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
-public class GtfsAgencyEntityDiscoverJob extends EntityDiscoverJob<GtfsAgencyEntityTask> {
+@MessageDriven (
+  activationConfig = {
+    @ActivationConfigProperty (propertyName = JmsQueueProperties.DESTINATION_LOOKUP, propertyValue = GtfsAgencyTaskQueue.JMS_QUEUE),
+    @ActivationConfigProperty (propertyName = JmsQueueProperties.MAX_SESSIONS, propertyValue = "1")
+  }
+)
+public class GtfsAgencyEntityDiscoverJob extends AbstractJmsJob<GtfsAgencyEntityTask> {
   
   @Inject
   private Logger logger;
@@ -57,22 +61,6 @@ public class GtfsAgencyEntityDiscoverJob extends EntityDiscoverJob<GtfsAgencyEnt
 
   @Inject
   private KuntaApiIdFactory kuntaApiIdFactory; 
-
-  @Inject
-  private GtfsAgencyTaskQueue gtfsAgencyTaskQueue;
-
-  @Override
-  public String getName() {
-    return "gtfs-public-transport-agencies";
-  }
-  
-  @Override
-  public void timeout() {
-    GtfsAgencyEntityTask task = gtfsAgencyTaskQueue.next();
-    if (task != null) {
-      execute(task);
-    }
-  }
   
   @Override
   public void execute(GtfsAgencyEntityTask task) {

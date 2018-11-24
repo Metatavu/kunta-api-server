@@ -1,11 +1,10 @@
 package fi.metatavu.kuntaapi.server.integrations.gtfs;
 
-import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.ejb.AccessTimeout;
-import javax.ejb.Singleton;
+import javax.ejb.ActivationConfigProperty;
+import javax.ejb.MessageDriven;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
@@ -14,7 +13,6 @@ import org.onebusaway.gtfs.model.ServiceCalendar;
 import fi.metatavu.kuntaapi.server.cache.ModificationHashCache;
 import fi.metatavu.kuntaapi.server.controllers.IdentifierController;
 import fi.metatavu.kuntaapi.server.controllers.IdentifierRelationController;
-import fi.metatavu.kuntaapi.server.discover.EntityDiscoverJob;
 import fi.metatavu.kuntaapi.server.id.IdController;
 import fi.metatavu.kuntaapi.server.id.OrganizationId;
 import fi.metatavu.kuntaapi.server.id.PublicTransportScheduleId;
@@ -24,12 +22,18 @@ import fi.metatavu.kuntaapi.server.integrations.gtfs.resources.GtfsPublicTranspo
 import fi.metatavu.kuntaapi.server.integrations.gtfs.tasks.GtfsScheduleEntityTask;
 import fi.metatavu.kuntaapi.server.integrations.gtfs.tasks.GtfsScheduleTaskQueue;
 import fi.metatavu.kuntaapi.server.persistence.model.Identifier;
+import fi.metatavu.kuntaapi.server.tasks.jms.AbstractJmsJob;
+import fi.metatavu.kuntaapi.server.tasks.jms.JmsQueueProperties;
 
 @ApplicationScoped
-@Singleton
-@AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
-public class GtfsScheduleEntityDiscoverJob extends EntityDiscoverJob<GtfsScheduleEntityTask> {
+@MessageDriven (
+  activationConfig = {
+    @ActivationConfigProperty (propertyName = JmsQueueProperties.DESTINATION_LOOKUP, propertyValue = GtfsScheduleTaskQueue.JMS_QUEUE),
+    @ActivationConfigProperty (propertyName = JmsQueueProperties.MAX_SESSIONS, propertyValue = "1")
+  }
+)
+public class GtfsScheduleEntityDiscoverJob extends AbstractJmsJob<GtfsScheduleEntityTask> {
 
   @Inject
   private Logger logger;
@@ -58,25 +62,9 @@ public class GtfsScheduleEntityDiscoverJob extends EntityDiscoverJob<GtfsSchedul
   @Inject
   private GtfsIdFactory gtfsIdFactory;
   
-  @Inject
-  private GtfsScheduleTaskQueue gtfsScheduleTaskQueue;
-
-  @Override
-  public String getName() {
-    return "gtfs-public-transport-schedules";
-  }
-  
   @Override
   public void execute(GtfsScheduleEntityTask task) {
     updateGtfsSchedule(task);
-  }
-
-  @Override
-  public void timeout() {
-    GtfsScheduleEntityTask task = gtfsScheduleTaskQueue.next();
-    if (task != null) {
-      execute(task);
-    }
   }
   
   private void updateGtfsSchedule(GtfsScheduleEntityTask task) {
