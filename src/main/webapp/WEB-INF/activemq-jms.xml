@@ -3,9 +3,14 @@
   <server name="default">
     <jms-destinations>
       <jms-queue name="kunta-rekty-jobs">
-        <entry name="java:/jms/queue/kunta-rekty-jobs"/>
+        <entry name="java:/jms/queue/kunta-rekry-jobs"/>
+        <durable>true</durable>
+      </jms-queue>
+      <jms-queue name="ptv-service-channels">
+        <entry name="java:/jms/queue/ptv-service-channels"/>
         <durable>true</durable>
       </jms-queue>
     </jms-destinations>
   </server>
 </messaging-deployment>
+
