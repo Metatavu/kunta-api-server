@@ -5,6 +5,9 @@ import static org.hamcrest.core.IsNull.notNullValue;
 import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.Assert.assertEquals;
 
+import org.awaitility.Duration;
+
+import static org.awaitility.Awaitility.await;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
@@ -50,6 +53,8 @@ public class MenuTestsIT extends AbstractIntegrationTest {
     waitApiListCount(String.format("/organizations/%s/menus", organizationId), 1); 
     String menuId = getMenuId(organizationId, 0);
     waitApiListCount(String.format("/organizations/%s/menus/%s/items", organizationId, menuId), 3); 
+    
+    
   }
 
   @After
@@ -148,6 +153,16 @@ public class MenuTestsIT extends AbstractIntegrationTest {
   public void testListMenuItems() {
     String organizationId = getOrganizationId(0);
     String menuId = getMenuId(organizationId, 0);
+    
+    await().atMost(Duration.FIVE_MINUTES).until(() -> {
+      return givenReadonly()
+        .contentType(ContentType.JSON)
+        .get("/organizations/{organizationId}/menus/{menuId}/items", organizationId, menuId)
+        .andReturn()
+        .body()
+        .jsonPath()
+        .get("pageId[1]") != null;
+    });
     
     givenReadonly()
       .contentType(ContentType.JSON)
