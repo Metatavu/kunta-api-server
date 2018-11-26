@@ -841,10 +841,10 @@
               <skip>${it.skipelasticsearch}</skip>
               <plugins>
                 <plugin>
-                  <uri>file://${project.build.directory}/../elasticplugins/ingest-attachment-${elasticsearch.version}.zip</uri>
+                  <uri>ingest-attachment</uri>
                 </plugin>
                 <plugin>
-                  <uri>file://${project.build.directory}/../elasticplugins/mapper-attachments-${elasticsearch.version}.zip</uri>
+                  <uri>mapper-attachments</uri>
                 </plugin>
               </plugins>
             </configuration>
