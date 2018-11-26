@@ -52,6 +52,16 @@
         <durable>true</durable>
       </jms-queue>
       
+      <jms-queue name="tilannehuone-emergencies">
+        <entry name="java:/jms/queue/tilannehuone-emergencies"/>
+        <durable>true</durable>
+      </jms-queue>
+      
+      <jms-queue name="tpt-jobs">
+        <entry name="java:/jms/queue/tpt-jobs"/>
+        <durable>true</durable>
+      </jms-queue>
+      
       <jms-queue name="management-announcements">
         <entry name="java:/jms/queue/management-announcements"/>
         <durable>true</durable>
