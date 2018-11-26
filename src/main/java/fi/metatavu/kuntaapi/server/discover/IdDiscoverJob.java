@@ -4,7 +4,7 @@ public abstract class IdDiscoverJob extends AbstractDiscoverJob {
 
   @Override
   public long getTestModeTimerInterval() {
-    return 15000l;
+    return 10000l;
   }
 
   @Override
