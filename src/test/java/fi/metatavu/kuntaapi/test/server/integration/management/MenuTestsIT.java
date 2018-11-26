@@ -132,6 +132,7 @@ public class MenuTestsIT extends AbstractIntegrationTest {
   public void testFindMenuItem() {
     String organizationId = getOrganizationId(0);
     String menuId = getMenuId(organizationId, 0);
+    waitMenuItemPage(organizationId, menuId, 0);
     String menuItemId = getMenuItemId(organizationId, menuId, 0);
     
     givenReadonly()
@@ -154,15 +155,7 @@ public class MenuTestsIT extends AbstractIntegrationTest {
     String organizationId = getOrganizationId(0);
     String menuId = getMenuId(organizationId, 0);
     
-    await().atMost(Duration.FIVE_MINUTES).until(() -> {
-      return givenReadonly()
-        .contentType(ContentType.JSON)
-        .get("/organizations/{organizationId}/menus/{menuId}/items", organizationId, menuId)
-        .andReturn()
-        .body()
-        .jsonPath()
-        .get("pageId[1]") != null;
-    });
+    waitMenuItemPage(organizationId, menuId, 1);
     
     givenReadonly()
       .contentType(ContentType.JSON)
@@ -177,6 +170,25 @@ public class MenuTestsIT extends AbstractIntegrationTest {
       .body("pageId[1]", notNullValue())
       .body("fileId[1]", nullValue())
       .body("externalUrl[1]", nullValue());
+  }
+
+  /**
+   * Waits for menu item pageId not null
+   * 
+   * @param organizationId organization id
+   * @param menuId menuId
+   * @param index index of menu item
+   */
+  private void waitMenuItemPage(String organizationId, String menuId, int index) {
+    await().atMost(Duration.FIVE_MINUTES).until(() -> {
+      return givenReadonly()
+        .contentType(ContentType.JSON)
+        .get("/organizations/{organizationId}/menus/{menuId}/items", organizationId, menuId)
+        .andReturn()
+        .body()
+        .jsonPath()
+        .get(String.format("pageId[%d]", index)) != null;
+    });
   }
     
   private void createManagementSettings(String organizationId) {
