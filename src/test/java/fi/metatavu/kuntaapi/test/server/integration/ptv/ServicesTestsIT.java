@@ -274,6 +274,9 @@ public class ServicesTestsIT extends AbstractPtvTest {
     String organizationId2 = getOrganizationId(1); 
     String invalidOrganizationId = "invalid";
     
+    waitOrganizationServices(0);
+    waitOrganizationServices(1);
+    
     givenReadonly()
       .contentType(ContentType.JSON)
       .get(String.format("/services?organizationId=%s", organizationId1))
