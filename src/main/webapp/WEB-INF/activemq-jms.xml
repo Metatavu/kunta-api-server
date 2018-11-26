@@ -16,6 +16,11 @@
         <entry name="java:/jms/queue/ptv-services"/>
         <durable>true</durable>
       </jms-queue>
+
+      <jms-queue name="ptv-organizations">
+        <entry name="java:/jms/queue/ptv-organizations"/>
+        <durable>true</durable>
+      </jms-queue>
       
       <jms-queue name="gtfs-agencies">
         <entry name="java:/jms/queue/gtfs-agencies"/>
@@ -49,46 +54,6 @@
       
       <jms-queue name="management-announcements">
         <entry name="java:/jms/queue/management-announcements"/>
-        <durable>true</durable>
-      </jms-queue>
-
-      <jms-queue name="management-banners">
-        <entry name="java:/jms/queue/management-banners"/>
-        <durable>true</durable>
-      </jms-queue>
-
-      <jms-queue name="management-fragments">
-        <entry name="java:/jms/queue/management-fragments"/>
-        <durable>true</durable>
-      </jms-queue>
-
-      <jms-queue name="management-incidents">
-        <entry name="java:/jms/queue/management-incidents"/>
-        <durable>true</durable>
-      </jms-queue>
-
-      <jms-queue name="management-menus">
-        <entry name="java:/jms/queue/management-menus"/>
-        <durable>true</durable>
-      </jms-queue>
-
-      <jms-queue name="management-news-articles">
-        <entry name="java:/jms/queue/management-news-articles"/>
-        <durable>true</durable>
-      </jms-queue>
-
-      <jms-queue name="management-pages">
-        <entry name="java:/jms/queue/management-pages"/>
-        <durable>true</durable>
-      </jms-queue>
-
-      <jms-queue name="management-shortlinks">
-        <entry name="java:/jms/queue/management-shortlinks"/>
-        <durable>true</durable>
-      </jms-queue>
-
-      <jms-queue name="management-tiles">
-        <entry name="java:/jms/queue/management-tiles"/>
         <durable>true</durable>
       </jms-queue>
       

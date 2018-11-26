@@ -4,23 +4,17 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
-import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.ejb.AccessTimeout;
-import javax.ejb.Singleton;
+import javax.ejb.ActivationConfigProperty;
+import javax.ejb.MessageDriven;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Event;
 import javax.inject.Inject;
 
-import fi.metatavu.kuntaapi.server.rest.model.OrganizationService;
-import fi.metatavu.ptv.client.ApiResponse;
-import fi.metatavu.ptv.client.model.V8VmOpenApiOrganization;
-import fi.metatavu.ptv.client.model.V5VmOpenApiOrganizationService;
 import fi.metatavu.kuntaapi.server.cache.ModificationHashCache;
 import fi.metatavu.kuntaapi.server.controllers.IdentifierController;
-import fi.metatavu.kuntaapi.server.discover.EntityDiscoverJob;
 import fi.metatavu.kuntaapi.server.id.IdController;
 import fi.metatavu.kuntaapi.server.id.OrganizationId;
 import fi.metatavu.kuntaapi.server.id.ServiceId;
@@ -35,15 +29,25 @@ import fi.metatavu.kuntaapi.server.integrations.ptv.resources.PtvOrganizationRes
 import fi.metatavu.kuntaapi.server.integrations.ptv.tasks.OrganizationIdTaskQueue;
 import fi.metatavu.kuntaapi.server.integrations.ptv.translation.PtvTranslator;
 import fi.metatavu.kuntaapi.server.persistence.model.Identifier;
+import fi.metatavu.kuntaapi.server.rest.model.OrganizationService;
 import fi.metatavu.kuntaapi.server.settings.SystemSettingController;
 import fi.metatavu.kuntaapi.server.tasks.IdTask;
 import fi.metatavu.kuntaapi.server.tasks.IdTask.Operation;
+import fi.metatavu.kuntaapi.server.tasks.jms.AbstractJmsJob;
+import fi.metatavu.kuntaapi.server.tasks.jms.JmsQueueProperties;
+import fi.metatavu.ptv.client.ApiResponse;
+import fi.metatavu.ptv.client.model.V5VmOpenApiOrganizationService;
+import fi.metatavu.ptv.client.model.V8VmOpenApiOrganization;
 
 @ApplicationScoped
-@Singleton
-@AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
-public class PtvOrganizationEntityDiscoverJob extends EntityDiscoverJob<IdTask<OrganizationId>> {
+@MessageDriven (
+  activationConfig = {
+    @ActivationConfigProperty (propertyName = JmsQueueProperties.DESTINATION_LOOKUP, propertyValue = OrganizationIdTaskQueue.JMS_QUEUE),
+    @ActivationConfigProperty (propertyName = JmsQueueProperties.MAX_SESSIONS, propertyValue = "1")
+  }
+)
+public class PtvOrganizationEntityDiscoverJob extends AbstractJmsJob<IdTask<OrganizationId>> {
 
   @Inject
   private Logger logger;
@@ -78,19 +82,6 @@ public class PtvOrganizationEntityDiscoverJob extends EntityDiscoverJob<IdTask<O
   @Inject
   private Event<IndexRequest> indexRequest;
   
-  @Inject
-  private OrganizationIdTaskQueue organizationIdTaskQueue;
-
-  @Override
-  public String getName() {
-    return "ptv-organizations";
-  }
-
-  @Override
-  public void timeout() {
-    executeNextTask();
-  }
-  
   @Override
   public void execute(IdTask<OrganizationId> task) {
     OrganizationId organizationId = task.getId();
@@ -99,13 +90,6 @@ public class PtvOrganizationEntityDiscoverJob extends EntityDiscoverJob<IdTask<O
       updateOrganization(organizationId, task.getOrderIndex());
     } else if (task.getOperation() == Operation.REMOVE) {
       logger.log(Level.SEVERE, "PTV Organization removal is not implemented");
-    }
-  }
-  
-  private void executeNextTask() {
-    IdTask<OrganizationId> task = organizationIdTaskQueue.next();
-    if (task != null) {
-      execute(task);
     }
   }
   
