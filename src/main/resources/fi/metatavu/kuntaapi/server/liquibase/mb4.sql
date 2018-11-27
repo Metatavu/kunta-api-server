@@ -33,7 +33,7 @@ ALTER TABLE `ArchivedIdentifier` CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb
 ALTER TABLE `Client` CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ALTER TABLE `ClientOrganizationPermissionGrant` CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ALTER TABLE `Identifier` CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-ALTER TABLE `identifierrelation` CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+ALTER TABLE `IdentifierRelation` CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ALTER TABLE `OrganizationExternalAccessToken` CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ALTER TABLE `OrganizationSetting` CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ALTER TABLE `StoredBinaryResource` CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
