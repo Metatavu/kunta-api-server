@@ -33,6 +33,22 @@ public abstract class AbstractPtvTest extends AbstractIntegrationTest {
       .body().jsonPath().getInt("services.size()") == TestPtvConsts.ORGANIZATION_SERVICES[organizationIndex].length
     );
   }
+  
+  /**
+   * Waits that all service organizations have been discovered
+   *  
+   * @param serviceIndex organization index
+   * @throws InterruptedException 
+   */
+  protected void waitServiceOrganizations(int serviceIndex, int organizationCount) throws InterruptedException {
+    String serviceId = getServiceId(serviceIndex, TestPtvConsts.SERVICES.length);
+    
+    await().atMost(5, TimeUnit.MINUTES).until(() -> givenReadonly()
+      .contentType(ContentType.JSON)
+      .get("/services/{serviceId}", serviceId)
+      .body().jsonPath().getInt("organizations.size()") == organizationCount
+    );
+  }
 
   /**
    * Waits that all service channels have been discovered

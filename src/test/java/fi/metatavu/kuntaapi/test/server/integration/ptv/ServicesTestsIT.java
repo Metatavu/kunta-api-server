@@ -44,6 +44,9 @@ public class ServicesTestsIT extends AbstractPtvTest {
   @Test
   public void findService() throws InterruptedException, JSONException, IOException {
     int serviceIndex = 0;
+    
+    waitServiceOrganizations(serviceIndex, 2);
+    
     String serviceId = getServiceId(serviceIndex, TestPtvConsts.SERVICES.length);
     
     String response = givenReadonly()
