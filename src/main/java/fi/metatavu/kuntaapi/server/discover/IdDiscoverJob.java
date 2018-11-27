@@ -9,7 +9,7 @@ public abstract class IdDiscoverJob extends AbstractDiscoverJob {
 
   @Override
   public long getTestModeTimerWarmup() {
-    return 2000l;
+    return 30000l;
   }
 
   @Override

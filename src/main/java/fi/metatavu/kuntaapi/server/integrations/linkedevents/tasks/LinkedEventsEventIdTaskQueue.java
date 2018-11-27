@@ -5,7 +5,7 @@ import javax.enterprise.context.ApplicationScoped;
 import fi.metatavu.kuntaapi.server.id.EventId;
 import fi.metatavu.kuntaapi.server.id.IdType;
 import fi.metatavu.kuntaapi.server.integrations.linkedevents.LinkedEventsConsts;
-import fi.metatavu.kuntaapi.server.tasks.AbstractIdTaskQueue;
+import fi.metatavu.kuntaapi.server.tasks.metaflow.AbstractIdTaskQueue;
 
 @ApplicationScoped
 public class LinkedEventsEventIdTaskQueue extends AbstractIdTaskQueue<EventId> {

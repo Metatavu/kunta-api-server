@@ -3,6 +3,7 @@ package fi.metatavu.kuntaapi.server.integrations.ptv;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -31,10 +32,10 @@ import fi.metatavu.kuntaapi.server.integrations.ptv.resources.PtvServiceLocation
 import fi.metatavu.kuntaapi.server.integrations.ptv.resources.PtvWebPageServiceChannelResourceContainer;
 import fi.metatavu.kuntaapi.server.integrations.ptv.servicechannels.PtvServiceChannelResolver;
 import fi.metatavu.kuntaapi.server.integrations.ptv.servicechannels.ServiceChannelType;
+import fi.metatavu.kuntaapi.server.integrations.ptv.tasks.ServiceChannelTasksQueue;
 import fi.metatavu.kuntaapi.server.integrations.ptv.tasks.ServiceChannelUpdateTask;
 import fi.metatavu.kuntaapi.server.integrations.ptv.translation.KuntaApiPtvTranslator;
 import fi.metatavu.kuntaapi.server.integrations.ptv.translation.PtvOutPtvInTranslator;
-import fi.metatavu.kuntaapi.server.integrations.ptv.updaters.PtvServiceChannelEntityDiscoverJob;
 import fi.metatavu.kuntaapi.server.rest.model.ElectronicServiceChannel;
 import fi.metatavu.kuntaapi.server.rest.model.PhoneServiceChannel;
 import fi.metatavu.kuntaapi.server.rest.model.PrintableFormServiceChannel;
@@ -108,9 +109,9 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
 
   @Inject
   private PtvServiceChannelResolver ptvServiceChannelResolver;
-  
+
   @Inject
-  private PtvServiceChannelEntityDiscoverJob ptvServiceChannelEntityDiscoverJob;
+  private ServiceChannelTasksQueue serviceChannelTasksQueue;
   
   @Override
   public ElectronicServiceChannel findElectronicServiceChannel(ElectronicServiceChannelId electronicServiceChannelId) {
@@ -532,7 +533,11 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
   }
   
   private void updateServiceChannel(String updatedPtvChannelId) {
-    ptvServiceChannelEntityDiscoverJob.execute(new ServiceChannelUpdateTask(true, updatedPtvChannelId, null));
+    try {
+      serviceChannelTasksQueue.enqueueTaskSync(new ServiceChannelUpdateTask(true, updatedPtvChannelId, null));
+    } catch (InterruptedException | ExecutionException e) {
+      logger.log(Level.SEVERE, "Exception occurred while waiting for service channel update", e);
+    }
   }
   
   @SuppressWarnings("unchecked")

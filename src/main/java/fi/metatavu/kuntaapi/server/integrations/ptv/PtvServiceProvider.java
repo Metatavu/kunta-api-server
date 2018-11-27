@@ -3,6 +3,7 @@ package fi.metatavu.kuntaapi.server.integrations.ptv;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.ExecutionException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
@@ -13,15 +14,6 @@ import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.transaction.Transactional.TxType;
 
-import fi.metatavu.kuntaapi.server.rest.model.Service;
-import fi.metatavu.ptv.client.ApiResponse;
-import fi.metatavu.ptv.client.ConnectionApi;
-import fi.metatavu.ptv.client.ServiceApi;
-import fi.metatavu.ptv.client.model.V8VmOpenApiService;
-import fi.metatavu.ptv.client.model.V8VmOpenApiServiceAndChannelRelationInBase;
-import fi.metatavu.ptv.client.model.V8VmOpenApiServiceInBase;
-import fi.metatavu.ptv.client.model.V8VmOpenApiServiceServiceChannel;
-import fi.metatavu.ptv.client.model.V8VmOpenApiServiceServiceChannelInBase;
 import fi.metatavu.kuntaapi.server.controllers.IdentifierController;
 import fi.metatavu.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.metatavu.kuntaapi.server.controllers.ServiceController;
@@ -37,11 +29,20 @@ import fi.metatavu.kuntaapi.server.integrations.IntegrationResponse;
 import fi.metatavu.kuntaapi.server.integrations.KuntaApiIdFactory;
 import fi.metatavu.kuntaapi.server.integrations.ServiceProvider;
 import fi.metatavu.kuntaapi.server.integrations.ptv.client.PtvApi;
+import fi.metatavu.kuntaapi.server.integrations.ptv.tasks.ServiceIdTaskQueue;
 import fi.metatavu.kuntaapi.server.integrations.ptv.translation.KuntaApiPtvTranslator;
 import fi.metatavu.kuntaapi.server.integrations.ptv.translation.PtvOutPtvInTranslator;
-import fi.metatavu.kuntaapi.server.integrations.ptv.updaters.PtvServiceEntityDiscoverJob;
+import fi.metatavu.kuntaapi.server.rest.model.Service;
 import fi.metatavu.kuntaapi.server.tasks.IdTask;
 import fi.metatavu.kuntaapi.server.tasks.IdTask.Operation;
+import fi.metatavu.ptv.client.ApiResponse;
+import fi.metatavu.ptv.client.ConnectionApi;
+import fi.metatavu.ptv.client.ServiceApi;
+import fi.metatavu.ptv.client.model.V8VmOpenApiService;
+import fi.metatavu.ptv.client.model.V8VmOpenApiServiceAndChannelRelationInBase;
+import fi.metatavu.ptv.client.model.V8VmOpenApiServiceInBase;
+import fi.metatavu.ptv.client.model.V8VmOpenApiServiceServiceChannel;
+import fi.metatavu.ptv.client.model.V8VmOpenApiServiceServiceChannelInBase;
 
 /**
  * PTV Service provider
@@ -82,7 +83,7 @@ public class PtvServiceProvider implements ServiceProvider {
   private ServiceController serviceController;
 
   @Inject
-  private PtvServiceEntityDiscoverJob ptvServiceEntityDiscoverJob;
+  private ServiceIdTaskQueue serviceIdTaskQueue;
   
   @Override
   public Service findService(ServiceId serviceId) {
@@ -166,7 +167,11 @@ public class PtvServiceProvider implements ServiceProvider {
           return IntegrationResponse.statusMessage(updateServiceChannelsResponse.getStatus(), updateServiceChannelsResponse.getMessage());
         }
         
-        ptvServiceEntityDiscoverJob.execute(new IdTask<ServiceId>(true, Operation.UPDATE, ptvServiceId));
+        try {
+          serviceIdTaskQueue.enqueueTaskSync(new IdTask<ServiceId>(true, Operation.UPDATE, ptvServiceId));
+        } catch (InterruptedException | ExecutionException e) {
+          logger.log(Level.SEVERE, "Failed to update service", e);
+        }
         
         return findServiceAfterUpdate(serviceId);
       } else {        

@@ -1,17 +1,15 @@
 package fi.metatavu.kuntaapi.server.integrations.tpt.updaters;
 
-import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
-import javax.ejb.AccessTimeout;
-import javax.ejb.Singleton;
+import javax.ejb.ActivationConfigProperty;
+import javax.ejb.MessageDriven;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 import fi.metatavu.kuntaapi.server.cache.ModificationHashCache;
 import fi.metatavu.kuntaapi.server.controllers.IdentifierController;
 import fi.metatavu.kuntaapi.server.controllers.IdentifierRelationController;
-import fi.metatavu.kuntaapi.server.discover.EntityDiscoverJob;
 import fi.metatavu.kuntaapi.server.id.JobId;
 import fi.metatavu.kuntaapi.server.id.OrganizationId;
 import fi.metatavu.kuntaapi.server.integrations.KuntaApiIdFactory;
@@ -25,6 +23,8 @@ import fi.metatavu.kuntaapi.server.integrations.tpt.tasks.TptJobRemoveTask;
 import fi.metatavu.kuntaapi.server.integrations.tpt.tasks.TptJobTaskQueue;
 import fi.metatavu.kuntaapi.server.integrations.tpt.tasks.TptJobUpdateTask;
 import fi.metatavu.kuntaapi.server.persistence.model.Identifier;
+import fi.metatavu.kuntaapi.server.tasks.jms.AbstractJmsJob;
+import fi.metatavu.kuntaapi.server.tasks.jms.JmsQueueProperties;
 
 /**
  * Entity update for te-palvelut.fi -integration
@@ -32,10 +32,14 @@ import fi.metatavu.kuntaapi.server.persistence.model.Identifier;
  * @author Antti Leppä
  */
 @ApplicationScoped
-@Singleton
-@AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
-public class TptEntityDiscoverJob extends EntityDiscoverJob<TptAbstractJobTask> {
+@MessageDriven (
+  activationConfig = {
+    @ActivationConfigProperty (propertyName = JmsQueueProperties.DESTINATION_LOOKUP, propertyValue = TptJobTaskQueue.JMS_QUEUE),
+    @ActivationConfigProperty (propertyName = JmsQueueProperties.MAX_SESSIONS, propertyValue = "1")
+  }
+)
+public class TptEntityDiscoverJob extends AbstractJmsJob<TptAbstractJobTask> {
 
   @Inject
   private Logger logger;
@@ -63,22 +67,6 @@ public class TptEntityDiscoverJob extends EntityDiscoverJob<TptAbstractJobTask> 
 
   @Inject
   private TptApi tptApi;
-  
-  @Inject
-  private TptJobTaskQueue tptJobTaskQueue;
-
-  @Override
-  public String getName() {
-    return "tpt-entities";
-  }
-
-  @Override
-  public void timeout() {
-    TptAbstractJobTask task = tptJobTaskQueue.next();
-    if (task != null) {
-      execute(task);
-    }
-  }
 
   @Override
   public void execute(TptAbstractJobTask task) {

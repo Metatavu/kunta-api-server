@@ -1,4 +1,4 @@
-package fi.metatavu.kuntaapi.server.tasks;
+package fi.metatavu.kuntaapi.server.tasks.metaflow;
 
 import javax.inject.Inject;
 

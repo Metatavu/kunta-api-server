@@ -1,17 +1,13 @@
 package fi.metatavu.kuntaapi.server.integrations.kuntarekry;
 
-import java.util.concurrent.TimeUnit;
-
-import javax.ejb.AccessTimeout;
-import javax.ejb.Singleton;
+import javax.ejb.ActivationConfigProperty;
+import javax.ejb.MessageDriven;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
-import fi.metatavu.kuntaapi.server.rest.model.Job;
 import fi.metatavu.kuntaapi.server.cache.ModificationHashCache;
 import fi.metatavu.kuntaapi.server.controllers.IdentifierController;
 import fi.metatavu.kuntaapi.server.controllers.IdentifierRelationController;
-import fi.metatavu.kuntaapi.server.discover.EntityDiscoverJob;
 import fi.metatavu.kuntaapi.server.id.JobId;
 import fi.metatavu.kuntaapi.server.id.OrganizationId;
 import fi.metatavu.kuntaapi.server.integrations.KuntaApiConsts;
@@ -21,12 +17,19 @@ import fi.metatavu.kuntaapi.server.integrations.kuntarekry.tasks.KuntaRekryJobEn
 import fi.metatavu.kuntaapi.server.integrations.kuntarekry.tasks.KuntaRekryJobTaskQueue;
 import fi.metatavu.kuntaapi.server.integrations.kuntarekry.tasks.KuntaRekryRemoveJobTask;
 import fi.metatavu.kuntaapi.server.persistence.model.Identifier;
+import fi.metatavu.kuntaapi.server.rest.model.Job;
+import fi.metatavu.kuntaapi.server.tasks.jms.AbstractJmsJob;
+import fi.metatavu.kuntaapi.server.tasks.jms.JmsQueueProperties;
 
 @ApplicationScoped
-@Singleton
-@AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
-public class KuntaRekryJobEntityDiscoverJob extends EntityDiscoverJob<AbstractKuntaRekryJobTask> {
+@MessageDriven (
+  activationConfig = {
+    @ActivationConfigProperty (propertyName = JmsQueueProperties.DESTINATION_LOOKUP, propertyValue = KuntaRekryJobTaskQueue.JMS_QUEUE),
+    @ActivationConfigProperty (propertyName = JmsQueueProperties.MAX_SESSIONS, propertyValue = "1")
+  }
+)
+public class KuntaRekryJobEntityDiscoverJob extends AbstractJmsJob<AbstractKuntaRekryJobTask> {
 
   @Inject
   private KuntaRekryTranslator kuntaRekryTranslator;
@@ -39,36 +42,16 @@ public class KuntaRekryJobEntityDiscoverJob extends EntityDiscoverJob<AbstractKu
   
   @Inject
   private ModificationHashCache modificationHashCache;
-  
-  @Inject
-  private KuntaRekryJobTaskQueue kuntaRekryJobTaskQueue;
 
   @Inject
   private KuntaRekryJobResourceContainer kuntaRekryJobResourceContainer;
 
-  @Override
-  public String getName() {
-    return "organization-jobs";
-  }
-
-  @Override
-  public void timeout() {
-    executeNextTask();
-  }
-  
   @Override
   public void execute(AbstractKuntaRekryJobTask task) {
     if (task instanceof KuntaRekryRemoveJobTask) {
       removeKuntaRekryJob((KuntaRekryRemoveJobTask) task);
     } else if (task instanceof KuntaRekryJobEntityTask) {
       updateKuntaRekryJob((KuntaRekryJobEntityTask) task); 
-    }
-  }
-  
-  private void executeNextTask() {
-    AbstractKuntaRekryJobTask task = kuntaRekryJobTaskQueue.next();
-    if (task != null) {
-      execute(task);
     }
   }
   

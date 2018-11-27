@@ -1,4 +1,4 @@
-package fi.metatavu.kuntaapi.server.tasks;
+package fi.metatavu.kuntaapi.server.tasks.metaflow;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

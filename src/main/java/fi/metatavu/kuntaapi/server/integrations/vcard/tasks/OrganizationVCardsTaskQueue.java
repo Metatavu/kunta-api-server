@@ -3,7 +3,7 @@ package fi.metatavu.kuntaapi.server.integrations.vcard.tasks;
 import javax.enterprise.context.ApplicationScoped;
 
 import fi.metatavu.kuntaapi.server.integrations.vcard.VCardConsts;
-import fi.metatavu.kuntaapi.server.tasks.AbstractOrganizationEntityTaskQueue;
+import fi.metatavu.kuntaapi.server.tasks.metaflow.AbstractOrganizationEntityTaskQueue;
 
 @ApplicationScoped
 public class OrganizationVCardsTaskQueue extends AbstractOrganizationEntityTaskQueue {

@@ -44,6 +44,9 @@ public class ServicesTestsIT extends AbstractPtvTest {
   @Test
   public void findService() throws InterruptedException, JSONException, IOException {
     int serviceIndex = 0;
+    
+    waitServiceOrganizations(serviceIndex, 2);
+    
     String serviceId = getServiceId(serviceIndex, TestPtvConsts.SERVICES.length);
     
     String response = givenReadonly()
@@ -269,10 +272,15 @@ public class ServicesTestsIT extends AbstractPtvTest {
   }
 
   @Test
-  public void testListServicesByOrganization() {
+  public void testListServicesByOrganization() throws InterruptedException {
     String organizationId1 = getOrganizationId(0);
     String organizationId2 = getOrganizationId(1); 
     String invalidOrganizationId = "invalid";
+    
+    waitOrganizationServices(0);
+    waitOrganizationServices(1);
+    
+    waitForElasticIndex();
     
     givenReadonly()
       .contentType(ContentType.JSON)

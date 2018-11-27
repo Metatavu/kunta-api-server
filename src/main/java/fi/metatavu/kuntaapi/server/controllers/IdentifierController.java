@@ -59,6 +59,8 @@ import fi.metatavu.kuntaapi.server.persistence.model.IdentifierRelation;
 @SuppressWarnings ("squid:S3306")
 public class IdentifierController {
   
+  private static final String NULL_ORGANIZATION = "ROOT";
+
   @Inject
   private Logger logger;
   
@@ -584,7 +586,7 @@ public class IdentifierController {
   }
 
   private Identifier createIdentifier(Long orderIndex, String type, String kuntaApiId, String source, String sourceId, String organizationKuntaApiId) {
-    return identifierDAO.create(orderIndex, type, kuntaApiId, source, sourceId, organizationKuntaApiId, OffsetDateTime.now());
+    return identifierDAO.create(orderIndex, type, kuntaApiId, source, sourceId, organizationKuntaApiId == null ? NULL_ORGANIZATION : organizationKuntaApiId, OffsetDateTime.now());
   }
   
   private Identifier updateIdentifier(Identifier identifier, Long orderIndex) {
@@ -596,9 +598,9 @@ public class IdentifierController {
 
   private Identifier findIdentifierByTypeSourceIdAndOrganizationId(String type, String source, String sourceId, String organizationKuntaApiId) {
     if (StringUtils.equals(source, KuntaApiConsts.IDENTIFIER_NAME)) {
-      return identifierDAO.findByTypeAndKuntaApiIdAndOrganizationKuntaApiId(type, sourceId, organizationKuntaApiId);
+      return identifierDAO.findByTypeAndKuntaApiIdAndOrganizationKuntaApiId(type, sourceId, organizationKuntaApiId == null ? NULL_ORGANIZATION : organizationKuntaApiId);
     } else {
-      return identifierDAO.findByTypeSourceSourceIdAndOrganizationKuntaApiId(type, source, sourceId, organizationKuntaApiId);
+      return identifierDAO.findByTypeSourceSourceIdAndOrganizationKuntaApiId(type, source, sourceId, organizationKuntaApiId == null ? NULL_ORGANIZATION : organizationKuntaApiId);
     }
   }
 

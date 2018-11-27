@@ -1,11 +1,10 @@
 package fi.metatavu.kuntaapi.server.integrations.tilannehuone.updaters;
 
 import java.time.OffsetDateTime;
-import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
-import javax.ejb.AccessTimeout;
-import javax.ejb.Singleton;
+import javax.ejb.ActivationConfigProperty;
+import javax.ejb.MessageDriven;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Event;
 import javax.inject.Inject;
@@ -15,7 +14,6 @@ import org.apache.commons.lang3.StringUtils;
 import fi.metatavu.kuntaapi.server.cache.ModificationHashCache;
 import fi.metatavu.kuntaapi.server.controllers.IdentifierController;
 import fi.metatavu.kuntaapi.server.controllers.IdentifierRelationController;
-import fi.metatavu.kuntaapi.server.discover.EntityDiscoverJob;
 import fi.metatavu.kuntaapi.server.id.EmergencyId;
 import fi.metatavu.kuntaapi.server.id.OrganizationId;
 import fi.metatavu.kuntaapi.server.index.IndexRequest;
@@ -30,12 +28,18 @@ import fi.metatavu.kuntaapi.server.integrations.tilannehuone.tasks.TilannehuoneE
 import fi.metatavu.kuntaapi.server.integrations.tilannehuone.tasks.TilannehuoneEmergencyTaskQueue;
 import fi.metatavu.kuntaapi.server.persistence.model.Identifier;
 import fi.metatavu.kuntaapi.server.settings.OrganizationSettingController;
+import fi.metatavu.kuntaapi.server.tasks.jms.AbstractJmsJob;
+import fi.metatavu.kuntaapi.server.tasks.jms.JmsQueueProperties;
 
 @ApplicationScoped
-@Singleton
-@AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
-public class TilannehuoneEntityDiscoverJob extends EntityDiscoverJob<TilannehuoneEmergencyEntityTask> {
+@MessageDriven (
+  activationConfig = {
+    @ActivationConfigProperty (propertyName = JmsQueueProperties.DESTINATION_LOOKUP, propertyValue = TilannehuoneEmergencyTaskQueue.JMS_QUEUE),
+    @ActivationConfigProperty (propertyName = JmsQueueProperties.MAX_SESSIONS, propertyValue = "1")
+  }
+)
+public class TilannehuoneEntityDiscoverJob extends AbstractJmsJob<TilannehuoneEmergencyEntityTask> {
 
   @Inject
   private Logger logger;
@@ -65,23 +69,7 @@ public class TilannehuoneEntityDiscoverJob extends EntityDiscoverJob<Tilannehuon
   private TilannehuoneIdFactory tilannehuoneIdFactory;
   
   @Inject
-  private TilannehuoneEmergencyTaskQueue tilannehuoneEmergencyTaskQueue;
-  
-  @Inject
   private Event<IndexRequest> indexRequest;
-
-  @Override
-  public String getName() {
-    return "tilannehuone-entities";
-  }
-
-  @Override
-  public void timeout() {
-    TilannehuoneEmergencyEntityTask task = tilannehuoneEmergencyTaskQueue.next();
-    if (task != null) {
-      execute(task);
-    }
-  }
   
   @Override
   public void execute(TilannehuoneEmergencyEntityTask task) {

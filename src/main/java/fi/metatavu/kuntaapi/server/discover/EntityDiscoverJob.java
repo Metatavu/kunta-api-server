@@ -9,9 +9,10 @@ import org.apache.commons.codec.digest.DigestUtils;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import fi.metatavu.kuntaapi.server.tasks.ExecutableJob;
+import fi.metatavu.kuntaapi.server.tasks.metaflow.ExecutableJob;
 import fi.metatavu.metaflow.tasks.Task;
 
+@Deprecated
 public abstract class EntityDiscoverJob <T extends Task> extends AbstractDiscoverJob implements ExecutableJob<T> {
 
   @Inject
@@ -24,7 +25,7 @@ public abstract class EntityDiscoverJob <T extends Task> extends AbstractDiscove
 
   @Override
   public long getTestModeTimerWarmup() {
-    return 200l;
+    return 30000l;
   }
 
   @Override

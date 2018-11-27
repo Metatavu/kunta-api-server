@@ -1,11 +1,10 @@
 package fi.metatavu.kuntaapi.server.integrations.gtfs;
 
-import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.ejb.AccessTimeout;
-import javax.ejb.Singleton;
+import javax.ejb.ActivationConfigProperty;
+import javax.ejb.MessageDriven;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
@@ -14,7 +13,6 @@ import org.onebusaway.gtfs.model.Route;
 import fi.metatavu.kuntaapi.server.cache.ModificationHashCache;
 import fi.metatavu.kuntaapi.server.controllers.IdentifierController;
 import fi.metatavu.kuntaapi.server.controllers.IdentifierRelationController;
-import fi.metatavu.kuntaapi.server.discover.EntityDiscoverJob;
 import fi.metatavu.kuntaapi.server.id.IdController;
 import fi.metatavu.kuntaapi.server.id.OrganizationId;
 import fi.metatavu.kuntaapi.server.id.PublicTransportAgencyId;
@@ -25,12 +23,18 @@ import fi.metatavu.kuntaapi.server.integrations.gtfs.resources.GtfsPublicTranspo
 import fi.metatavu.kuntaapi.server.integrations.gtfs.tasks.GtfsRouteEntityTask;
 import fi.metatavu.kuntaapi.server.integrations.gtfs.tasks.GtfsRouteTaskQueue;
 import fi.metatavu.kuntaapi.server.persistence.model.Identifier;
+import fi.metatavu.kuntaapi.server.tasks.jms.AbstractJmsJob;
+import fi.metatavu.kuntaapi.server.tasks.jms.JmsQueueProperties;
 
 @ApplicationScoped
-@Singleton
-@AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
-public class GtfsRouteEntityDiscoverJob extends EntityDiscoverJob<GtfsRouteEntityTask> {
+@MessageDriven (
+  activationConfig = {
+    @ActivationConfigProperty (propertyName = JmsQueueProperties.DESTINATION_LOOKUP, propertyValue = GtfsRouteTaskQueue.JMS_QUEUE),
+    @ActivationConfigProperty (propertyName = JmsQueueProperties.MAX_SESSIONS, propertyValue = "1")
+  }
+)
+public class GtfsRouteEntityDiscoverJob extends AbstractJmsJob<GtfsRouteEntityTask> {
 
   @Inject
   private Logger logger;
@@ -62,19 +66,6 @@ public class GtfsRouteEntityDiscoverJob extends EntityDiscoverJob<GtfsRouteEntit
   @Inject
   private GtfsRouteTaskQueue gtfsRouteTaskQueue;
 
-  @Override
-  public String getName() {
-    return "gtfs-public-transport-routes";
-  }
-
-  @Override
-  public void timeout() {
-    GtfsRouteEntityTask task = gtfsRouteTaskQueue.next();
-    if (task != null) {
-      execute(task);
-    }
-  }
-  
   @Override
   public void execute(GtfsRouteEntityTask task) {
     updateGtfsRoute(task);

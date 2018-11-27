@@ -6,3 +6,5 @@ if [ ! -f sonar-scanner/bin/sonar-scanner ]; then
   unzip sonar-scanner-cli-3.2.0.1227-linux.zip
   mv sonar-scanner-3.2.0.1227-linux sonar-scanner
 fi;
+
+mysql -u root < scripts/setup-db.sql

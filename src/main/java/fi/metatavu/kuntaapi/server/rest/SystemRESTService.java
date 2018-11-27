@@ -58,9 +58,9 @@ import fi.metatavu.kuntaapi.server.persistence.model.Identifier;
 import fi.metatavu.kuntaapi.server.rest.model.Service;
 import fi.metatavu.kuntaapi.server.rest.model.ServiceLocationServiceChannel;
 import fi.metatavu.kuntaapi.server.settings.SystemSettingController;
-import fi.metatavu.kuntaapi.server.tasks.AbstractKuntaApiTaskQueue;
 import fi.metatavu.kuntaapi.server.tasks.IdTask;
 import fi.metatavu.kuntaapi.server.tasks.IdTask.Operation;
+import fi.metatavu.kuntaapi.server.tasks.metaflow.AbstractKuntaApiTaskQueue;
 
 /**
  * System REST Services

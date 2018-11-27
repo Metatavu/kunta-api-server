@@ -1,8 +1,9 @@
-package fi.metatavu.kuntaapi.server.tasks;
+package fi.metatavu.kuntaapi.server.tasks.metaflow;
 
 import java.util.List;
 
 import fi.metatavu.kuntaapi.server.id.ServiceId;
+import fi.metatavu.kuntaapi.server.tasks.ServiceEntityUpdateTask;
 
 /**
  * Abstract base class for service entity update tasks

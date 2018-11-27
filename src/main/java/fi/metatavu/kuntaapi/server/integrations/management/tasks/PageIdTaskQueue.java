@@ -5,7 +5,7 @@ import javax.enterprise.context.ApplicationScoped;
 import fi.metatavu.kuntaapi.server.id.IdType;
 import fi.metatavu.kuntaapi.server.id.PageId;
 import fi.metatavu.kuntaapi.server.integrations.management.ManagementConsts;
-import fi.metatavu.kuntaapi.server.tasks.AbstractIdTaskQueue;
+import fi.metatavu.kuntaapi.server.tasks.metaflow.AbstractIdTaskQueue;
 
 @ApplicationScoped
 public class PageIdTaskQueue extends AbstractIdTaskQueue<PageId> {

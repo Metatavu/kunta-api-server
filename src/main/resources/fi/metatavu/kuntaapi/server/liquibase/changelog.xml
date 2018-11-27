@@ -447,5 +447,12 @@
   <changeSet id="purge-tasks" author="antti.leppa">
     <delete tableName="Task"/>
   </changeSet>
+  
+  <changeSet id="identifier-organization-not-null" author="antti.leppa">
+    <sql>UPDATE Identifier SET organizationKuntaApiId = 'ROOT' where organizationKuntaApiId is null</sql>
+    <sql>UPDATE ArchivedIdentifier SET organizationKuntaApiId = 'ROOT' where organizationKuntaApiId is null</sql>
+    <addNotNullConstraint tableName="Identifier" columnName="organizationKuntaApiId" columnDataType="varchar(255)"/> 
+    <addNotNullConstraint tableName="ArchivedIdentifier" columnName="organizationKuntaApiId" columnDataType="varchar(255)"/>
+  </changeSet>
 
 </databaseChangeLog>
