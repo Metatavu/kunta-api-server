@@ -454,5 +454,9 @@
     <addNotNullConstraint tableName="Identifier" columnName="organizationKuntaApiId" columnDataType="varchar(255)"/> 
     <addNotNullConstraint tableName="ArchivedIdentifier" columnName="organizationKuntaApiId" columnDataType="varchar(255)"/>
   </changeSet>
+  
+  <changeSet id="mb4" author="antti.leppa">
+    <sqlFile path="fi/metatavu/kuntaapi/server/liquibase/mb4.sql" />
+  </changeSet>
 
 </databaseChangeLog>
