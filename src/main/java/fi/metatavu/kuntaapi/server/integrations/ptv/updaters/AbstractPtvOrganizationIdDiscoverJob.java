@@ -63,7 +63,11 @@ public abstract class AbstractPtvOrganizationIdDiscoverJob extends IdDiscoverJob
           V8VmOpenApiOrganizationItem item = items.get(i);
           Long orderIndex = getOrderIndex(i, response.getResponse());
           OrganizationId ptvOrganizationId = ptvIdFactory.createOrganizationId(item.getId());
-          organizationIdTaskQueue.enqueueTask(new IdTask<OrganizationId>(getIsPriority(), Operation.UPDATE, ptvOrganizationId, orderIndex));
+          if (ptvOrganizationId != null) {
+            organizationIdTaskQueue.enqueueTask(new IdTask<OrganizationId>(getIsPriority(), Operation.UPDATE, ptvOrganizationId, orderIndex));
+          } else {
+            logger.warning("Organization list returned item with null id");
+          }
         }
       }
       

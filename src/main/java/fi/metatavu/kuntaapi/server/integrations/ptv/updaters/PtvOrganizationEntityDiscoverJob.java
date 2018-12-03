@@ -99,6 +99,10 @@ public class PtvOrganizationEntityDiscoverJob extends AbstractJmsJob<IdTask<Orga
       return;
     }
     
+    if (organizationId == null) {
+      return;
+    }
+    
     OrganizationId ptvOrganizationId = idController.translateOrganizationId(organizationId, PtvConsts.IDENTIFIER_NAME);
     if (ptvOrganizationId == null) {
       logger.log(Level.SEVERE, () -> String.format("Failed to translate organization id %s into Ptv Id", organizationId)); 
