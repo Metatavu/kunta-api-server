@@ -4,24 +4,17 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.ejb.AccessTimeout;
-import javax.ejb.Singleton;
+import javax.ejb.ActivationConfigProperty;
+import javax.ejb.MessageDriven;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
-import fi.metatavu.kuntaapi.server.rest.model.Menu;
-import fi.metatavu.kuntaapi.server.rest.model.MenuItem;
-import fi.metatavu.management.client.ApiResponse;
-import fi.metatavu.management.client.DefaultApi;
-import fi.metatavu.management.client.model.Menuitem;
 import fi.metatavu.kuntaapi.server.cache.ModificationHashCache;
 import fi.metatavu.kuntaapi.server.controllers.IdentifierController;
 import fi.metatavu.kuntaapi.server.controllers.IdentifierRelationController;
-import fi.metatavu.kuntaapi.server.discover.EntityDiscoverJob;
 import fi.metatavu.kuntaapi.server.id.IdController;
 import fi.metatavu.kuntaapi.server.id.MenuId;
 import fi.metatavu.kuntaapi.server.id.MenuItemId;
@@ -34,15 +27,26 @@ import fi.metatavu.kuntaapi.server.integrations.management.resources.ManagementM
 import fi.metatavu.kuntaapi.server.integrations.management.tasks.MenuIdTaskQueue;
 import fi.metatavu.kuntaapi.server.persistence.model.Identifier;
 import fi.metatavu.kuntaapi.server.resources.MenuResourceContainer;
+import fi.metatavu.kuntaapi.server.rest.model.Menu;
+import fi.metatavu.kuntaapi.server.rest.model.MenuItem;
 import fi.metatavu.kuntaapi.server.settings.OrganizationSettingController;
 import fi.metatavu.kuntaapi.server.tasks.IdTask;
 import fi.metatavu.kuntaapi.server.tasks.IdTask.Operation;
+import fi.metatavu.kuntaapi.server.tasks.jms.AbstractJmsJob;
+import fi.metatavu.kuntaapi.server.tasks.jms.JmsQueueProperties;
+import fi.metatavu.management.client.ApiResponse;
+import fi.metatavu.management.client.DefaultApi;
+import fi.metatavu.management.client.model.Menuitem;
 
 @ApplicationScoped
-@Singleton
-@AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
-public class ManagementMenuEntityDiscoverJob extends EntityDiscoverJob<IdTask<MenuId>> {
+@MessageDriven (
+  activationConfig = {
+    @ActivationConfigProperty (propertyName = JmsQueueProperties.DESTINATION_LOOKUP, propertyValue = MenuIdTaskQueue.JMS_QUEUE),
+    @ActivationConfigProperty (propertyName = JmsQueueProperties.MAX_SESSIONS, propertyValue = "1")
+  }
+)
+public class ManagementMenuEntityDiscoverJob extends AbstractJmsJob<IdTask<MenuId>> {
 
   @Inject
   private Logger logger;
@@ -63,9 +67,6 @@ public class ManagementMenuEntityDiscoverJob extends EntityDiscoverJob<IdTask<Me
   private ModificationHashCache modificationHashCache;
   
   @Inject
-  private MenuIdTaskQueue menuIdTaskQueue;
-  
-  @Inject
   private IdController idController;
   
   @Inject
@@ -75,16 +76,6 @@ public class ManagementMenuEntityDiscoverJob extends EntityDiscoverJob<IdTask<Me
   private ManagementMenuItemResourceContainer managementMenuItemResourceContainer;
 
   @Override
-  public String getName() {
-    return "management-menus";
-  }
-  
-  @Override
-  public void timeout() {
-    executeNextTask();
-  }
-  
-  @Override
   public void execute(IdTask<MenuId> task) {
     if (task.getOperation() == Operation.UPDATE) {
       updateManagementMenu(task.getId(), task.getOrderIndex()); 
@@ -93,13 +84,6 @@ public class ManagementMenuEntityDiscoverJob extends EntityDiscoverJob<IdTask<Me
     }
   }
   
-  private void executeNextTask() {
-    IdTask<MenuId> task = menuIdTaskQueue.next();
-    if (task != null) {
-      execute(task);
-    }
-  }
-
   private void updateManagementMenu(MenuId managementMenuId, Long orderIndex) {
     OrganizationId organizationId = managementMenuId.getOrganizationId();
     if (!organizationSettingController.hasSettingValue(organizationId, ManagementConsts.ORGANIZATION_SETTING_BASEURL)) {
