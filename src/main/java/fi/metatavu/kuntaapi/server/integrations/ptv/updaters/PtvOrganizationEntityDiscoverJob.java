@@ -14,6 +14,7 @@ import javax.enterprise.event.Event;
 import javax.inject.Inject;
 
 import org.apache.commons.lang3.StringUtils;
+import org.jboss.ejb3.annotation.Pool;
 
 import fi.metatavu.kuntaapi.server.cache.ModificationHashCache;
 import fi.metatavu.kuntaapi.server.controllers.IdentifierController;
@@ -43,10 +44,10 @@ import fi.metatavu.ptv.client.model.V8VmOpenApiOrganization;
 
 @ApplicationScoped
 @SuppressWarnings ("squid:S3306")
+@Pool(JmsQueueProperties.NO_CONCURRENCY_POOL)
 @MessageDriven (
   activationConfig = {
-    @ActivationConfigProperty (propertyName = JmsQueueProperties.DESTINATION_LOOKUP, propertyValue = OrganizationIdTaskQueue.JMS_QUEUE),
-    @ActivationConfigProperty (propertyName = JmsQueueProperties.MAX_SESSIONS, propertyValue = "1")
+    @ActivationConfigProperty (propertyName = JmsQueueProperties.DESTINATION_LOOKUP, propertyValue = OrganizationIdTaskQueue.JMS_QUEUE)
   }
 )
 public class PtvOrganizationEntityDiscoverJob extends AbstractJmsJob<IdTask<OrganizationId>> {
