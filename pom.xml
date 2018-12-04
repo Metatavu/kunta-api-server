@@ -67,7 +67,7 @@
     <!-- Integrations -->
     
     <management-rest-client.version>0.0.31</management-rest-client.version>
-    <mikkelinyt.rest-model.version>0.0.1</mikkelinyt.rest-model.version>
+    <mikkelinyt.rest-model.version>0.1.1</mikkelinyt.rest-model.version>
     <linkedevents-client.version>0.0.7</linkedevents-client.version>
 
     <!-- PTV -->
@@ -299,7 +299,7 @@
     </dependency>
     
     <dependency>
-      <groupId>fi.otavanopisto.mikkelinyt.mikkelinyt-rest-model</groupId>
+      <groupId>fi.metatavu.mikkelinyt.mikkelinyt-rest-model</groupId>
       <artifactId>mikkelinyt-rest-model</artifactId>
       <version>${mikkelinyt.rest-model.version}</version>
     </dependency>
