@@ -72,6 +72,11 @@
         <durable>true</durable>
       </jms-queue>
       
+      <jms-queue name="management-news">
+        <entry name="java:/jms/queue/management-news"/>
+        <durable>true</durable>
+      </jms-queue>
+      
     </jms-destinations>
   </server>
 </messaging-deployment>
