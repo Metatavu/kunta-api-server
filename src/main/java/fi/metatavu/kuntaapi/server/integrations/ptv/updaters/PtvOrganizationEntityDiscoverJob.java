@@ -49,7 +49,7 @@ import fi.metatavu.ptv.client.model.V8VmOpenApiOrganization;
     @ActivationConfigProperty (propertyName = JmsQueueProperties.DESTINATION_LOOKUP, propertyValue = OrganizationIdTaskQueue.JMS_QUEUE)
   }
 )
-@Pool(JmsQueueProperties.LOW_CONCURRENCY_POOL)
+@Pool(JmsQueueProperties.NO_CONCURRENCY_POOL)
 public class PtvOrganizationEntityDiscoverJob extends AbstractJmsJob<IdTask<OrganizationId>> {
 
   @Inject

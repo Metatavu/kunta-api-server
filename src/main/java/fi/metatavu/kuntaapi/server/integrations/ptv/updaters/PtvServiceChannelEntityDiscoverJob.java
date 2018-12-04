@@ -82,7 +82,7 @@ import fi.metatavu.ptv.client.model.V8VmOpenApiWebPageChannel;
     @ActivationConfigProperty (propertyName = JmsQueueProperties.DESTINATION_LOOKUP, propertyValue = ServiceChannelTasksQueue.JMS_QUEUE)
   }
 )
-@Pool(JmsQueueProperties.LOW_CONCURRENCY_POOL)
+@Pool(JmsQueueProperties.NO_CONCURRENCY_POOL)
 public class PtvServiceChannelEntityDiscoverJob extends AbstractJmsJob<AbstractServiceChannelTask> {
 
   private static final String COULD_NOT_TRANSLATE_ORGANIZATION_INTO_KUNTA_API_ID = "Could not translate organization %s into kunta api id";
