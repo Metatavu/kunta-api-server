@@ -467,7 +467,7 @@ public class PtvTranslator extends AbstractTranslator {
   }
   
   private Address translateAddressWithMoving(V8VmOpenApiAddressWithMoving ptvAddress) {
-    if (ptvAddress == null) {
+    if ((ptvAddress == null)|| (ptvAddress.getPostOfficeBoxAddress() == null && ptvAddress.getStreetAddress() == null && ptvAddress.getLocationAbroad() == null && ptvAddress.getMultipointLocation() == null)) {
       return null;
     }
     
