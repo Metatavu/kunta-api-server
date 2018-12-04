@@ -12,6 +12,7 @@ public class JmsQueueProperties {
   public static final String LOW_CONCURRENCY_POOL = "mdb-low-concurrency-pool";
   public static final String MEDIUM_CONCURRENCY_POOL = "mdb-medium-concurrency-pool";
   public static final String HIGH_CONCURRENCY_POOL = "mdb-high-concurrency-pool";
+  public static final String CONNECTION_FACTORY = "java:/ConnectionFactory";
   
   private JmsQueueProperties() {
     // Private constructor

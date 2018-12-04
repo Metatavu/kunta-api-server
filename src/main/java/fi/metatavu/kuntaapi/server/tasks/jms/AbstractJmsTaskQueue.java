@@ -37,7 +37,7 @@ public abstract class AbstractJmsTaskQueue<T extends Task> {
   @Inject
   private TaskSerializer taskSerializer; 
   
-  @Resource (lookup = "java:/ConnectionFactory")
+  @Resource (lookup = JmsQueueProperties.CONNECTION_FACTORY)
   private ConnectionFactory connectionFactory;
   
   /**
