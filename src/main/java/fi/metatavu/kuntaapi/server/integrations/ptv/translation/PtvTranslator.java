@@ -100,7 +100,7 @@ import fi.metatavu.ptv.client.model.VmOpenApiWebPageWithOrderNumber;
 @ApplicationScoped
 public class PtvTranslator extends AbstractTranslator {
   
-  private static final String UNKNOWN_ADDRESS_SUBTYPE = "Unknown %s address subtype %s";
+  private static final String UNKNOWN_ADDRESS_SUBTYPE = "Unknown %s address subtype %s. Address body %s";
 
   @Inject
   private Logger logger;
@@ -480,7 +480,7 @@ public class PtvTranslator extends AbstractTranslator {
       case POST_OFFICE_BOX:
         return translatePostOfficeBoxAddress(ptvAddress.getPostOfficeBoxAddress(), ptvAddress.getType(), ptvAddress.getSubType(), ptvAddress.getCountry());
       default:
-        logger.severe(() -> String.format(UNKNOWN_ADDRESS_SUBTYPE, "with moving", ptvAddress.getSubType()));
+        logger.severe(() -> String.format(UNKNOWN_ADDRESS_SUBTYPE, "with moving", ptvAddress.getSubType(), ptvAddress.toString()));
     }
     
     return translateNoAddress(ptvAddress.getLocationAbroad(), ptvAddress.getType(), ptvAddress.getSubType());
@@ -498,7 +498,7 @@ public class PtvTranslator extends AbstractTranslator {
       case POST_OFFICE_BOX:
         return translatePostOfficeBoxAddress(ptvAddress.getPostOfficeBoxAddress(), ptvAddress.getType(), ptvAddress.getSubType(), ptvAddress.getCountry());
       default:
-        logger.severe(() -> String.format(UNKNOWN_ADDRESS_SUBTYPE, ptvAddress.getType(), ptvAddress.getSubType()));
+        logger.severe(() -> String.format(UNKNOWN_ADDRESS_SUBTYPE, ptvAddress.getType(), ptvAddress.getSubType(), ptvAddress.toString()));
     }
     
     return translateNoAddress(ptvAddress.getForeignAddress(), ptvAddress.getType(), ptvAddress.getSubType());
@@ -518,7 +518,7 @@ public class PtvTranslator extends AbstractTranslator {
       case NO_ADDRESS:
         return translateNoAddress(ptvAddress.getDeliveryAddressInText(), null, ptvAddress.getSubType());
       default:
-        logger.severe(() -> String.format(UNKNOWN_ADDRESS_SUBTYPE, "delivery", ptvAddress.getSubType()));
+        logger.severe(() -> String.format(UNKNOWN_ADDRESS_SUBTYPE, "delivery", ptvAddress.getSubType(), ptvAddress.toString()));
     }
     
     return translateNoAddress(ptvAddress.getDeliveryAddressInText(), null, ptvAddress.getSubType());
