@@ -1179,6 +1179,9 @@ public class PtvTranslator extends AbstractTranslator {
   }
   
   private Coordinates translateCoordinates(String ptvLatitude, String ptvLongitude) {
+    if (StringUtils.isBlank(ptvLatitude) || StringUtils.isBlank(ptvLongitude)) {
+      return null;
+    }
 
     if (!NumberUtils.isParsable(ptvLongitude) || !NumberUtils.isParsable(ptvLatitude)){
       logger.warning("coordinates not parsable");
