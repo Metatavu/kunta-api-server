@@ -77,6 +77,11 @@
         <durable>true</durable>
       </jms-queue>
       
+      <jms-queue name="management-pages">
+        <entry name="java:/jms/queue/management-pages"/>
+        <durable>true</durable>
+      </jms-queue>
+      
     </jms-destinations>
   </server>
 </messaging-deployment>
