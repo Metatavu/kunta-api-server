@@ -57,7 +57,7 @@ import fi.metatavu.management.client.model.Tag;
     @ActivationConfigProperty (propertyName = JmsQueueProperties.DESTINATION_LOOKUP, propertyValue = NewsArticleIdTaskQueue.JMS_QUEUE)
   }
 )
-@Pool(JmsQueueProperties.LOW_CONCURRENCY_POOL)
+@Pool(JmsQueueProperties.NO_CONCURRENCY_POOL)
 public class ManagementNewsArticleEntityDiscoverJob extends AbstractJmsJob<IdTask<NewsArticleId>> {
 
   @Inject

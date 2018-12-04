@@ -3,7 +3,6 @@ package fi.metatavu.kuntaapi.server.integrations.management;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -100,12 +99,7 @@ public class ManagementNewsArticleIdDiscoverJob extends IdDiscoverJob {
     for (int i = 0, l = managementPosts.size(); i < l; i++) {
       Post managementPost = managementPosts.get(i);
       NewsArticleId newsArticleId = new NewsArticleId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementPost.getId()));
-
-      try {
-        newsArticleIdTaskQueue.enqueueTaskSync(new IdTask<NewsArticleId>(false, Operation.UPDATE, newsArticleId, (long) i));
-      } catch (InterruptedException | ExecutionException e) {
-        logger.log(Level.SEVERE, "New update task failed");
-      }
+      newsArticleIdTaskQueue.enqueueTask(new IdTask<NewsArticleId>(false, Operation.UPDATE, newsArticleId, (long) i));
     }
   }
   
@@ -119,11 +113,7 @@ public class ManagementNewsArticleIdDiscoverJob extends IdDiscoverJob {
         // If status is 404 the post has been removed and if its a 403 its either trashed or unpublished.
         // In both cases the post should not longer be available throught API
         if (status == 404 || status == 403) {
-          try {
-            newsArticleIdTaskQueue.enqueueTaskSync(new IdTask<NewsArticleId>(false, Operation.REMOVE, newsArticleId));
-          } catch (InterruptedException | ExecutionException e) {
-            logger.log(Level.SEVERE, "New removal task failed");
-          }
+          newsArticleIdTaskQueue.enqueueTask(new IdTask<NewsArticleId>(false, Operation.REMOVE, newsArticleId));
         }
       }
     }
