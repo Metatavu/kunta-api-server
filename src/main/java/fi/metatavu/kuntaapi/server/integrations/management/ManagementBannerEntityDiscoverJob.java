@@ -1,25 +1,20 @@
 package fi.metatavu.kuntaapi.server.integrations.management;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.ejb.AccessTimeout;
-import javax.ejb.Singleton;
+import javax.ejb.ActivationConfigProperty;
+import javax.ejb.MessageDriven;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 import org.apache.commons.codec.digest.DigestUtils;
+import org.jboss.ejb3.annotation.Pool;
 
-import fi.metatavu.management.client.ApiResponse;
-import fi.metatavu.management.client.DefaultApi;
-import fi.metatavu.management.client.model.Attachment;
-import fi.metatavu.management.client.model.Banner;
 import fi.metatavu.kuntaapi.server.cache.ModificationHashCache;
 import fi.metatavu.kuntaapi.server.controllers.IdentifierController;
 import fi.metatavu.kuntaapi.server.controllers.IdentifierRelationController;
-import fi.metatavu.kuntaapi.server.discover.EntityDiscoverJob;
 import fi.metatavu.kuntaapi.server.id.AttachmentId;
 import fi.metatavu.kuntaapi.server.id.BannerId;
 import fi.metatavu.kuntaapi.server.id.OrganizationId;
@@ -35,12 +30,22 @@ import fi.metatavu.kuntaapi.server.resources.BannerResourceContainer;
 import fi.metatavu.kuntaapi.server.settings.OrganizationSettingController;
 import fi.metatavu.kuntaapi.server.tasks.IdTask;
 import fi.metatavu.kuntaapi.server.tasks.IdTask.Operation;
+import fi.metatavu.kuntaapi.server.tasks.jms.AbstractJmsJob;
+import fi.metatavu.kuntaapi.server.tasks.jms.JmsQueueProperties;
+import fi.metatavu.management.client.ApiResponse;
+import fi.metatavu.management.client.DefaultApi;
+import fi.metatavu.management.client.model.Attachment;
+import fi.metatavu.management.client.model.Banner;
 
 @ApplicationScoped
-@Singleton
-@AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
-public class ManagementBannerEntityDiscoverJob extends EntityDiscoverJob<IdTask<BannerId>> {
+@MessageDriven (
+  activationConfig = {
+    @ActivationConfigProperty (propertyName = JmsQueueProperties.DESTINATION_LOOKUP, propertyValue = BannerIdTaskQueue.JMS_QUEUE)
+  }
+)
+@Pool(JmsQueueProperties.NO_CONCURRENCY_POOL)
+public class ManagementBannerEntityDiscoverJob extends AbstractJmsJob<IdTask<BannerId>> {
 
   @Inject
   private Logger logger;
@@ -76,20 +81,7 @@ public class ManagementBannerEntityDiscoverJob extends EntityDiscoverJob<IdTask<
   private ModificationHashCache modificationHashCache;
 
   @Inject
-  private BannerIdTaskQueue bannerIdTaskQueue;
-
-  @Inject
   private ScaledImageStore scaledImageStore;
-  
-  @Override
-  public String getName() {
-    return "management-banners";
-  }
-
-  @Override
-  public void timeout() {
-    executeNextTask();
-  }
   
   @Override
   public void execute(IdTask<BannerId> task) {
@@ -97,13 +89,6 @@ public class ManagementBannerEntityDiscoverJob extends EntityDiscoverJob<IdTask<
       updateManagementBanner(task.getId(), task.getOrderIndex()); 
     } else if (task.getOperation() == Operation.REMOVE) {
       deleteManagementBanner(task.getId());
-    }
-  }
-  
-  private void executeNextTask() {
-    IdTask<BannerId> task = bannerIdTaskQueue.next();
-    if (task != null) {
-      execute(task);
     }
   }
 

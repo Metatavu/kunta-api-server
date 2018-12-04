@@ -82,6 +82,11 @@
         <durable>true</durable>
       </jms-queue>
       
+      <jms-queue name="management-banners">
+        <entry name="java:/jms/queue/management-banners"/>
+        <durable>true</durable>
+      </jms-queue>
+      
     </jms-destinations>
   </server>
 </messaging-deployment>
