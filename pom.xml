@@ -1013,6 +1013,10 @@
                     <command>/subsystem=infinispan/cache-container=hibernate/local-cache=entity/component=transaction:write-attribute(name=locking,value=OPTIMISTIC)</command>
                     <command>/subsystem=infinispan/cache-container=kunta-api/local-cache=modificationhash:add()</command>
                     <command>/subsystem=messaging-activemq/server=default/connection-factory=InVmConnectionFactory:write-attribute(name=confirmation-window-size,value="10240")</command>
+                    <command>/subsystem=ejb3/strict-max-bean-instance-pool=mdb-no-concurrency-pool:add(max-pool-size="1")</command>
+                    <command>/subsystem=ejb3/strict-max-bean-instance-pool=mdb-low-concurrency-pool:add(max-pool-size="5")</command>
+                    <command>/subsystem=ejb3/strict-max-bean-instance-pool=mdb-medium-concurrency-pool:add(max-pool-size="50")</command>
+                    <command>/subsystem=ejb3/strict-max-bean-instance-pool=mdb-high-concurrency-pool:add(max-pool-size="200")</command>
                     <command>/:reload</command>
                   </commands>
                 </configuration>
