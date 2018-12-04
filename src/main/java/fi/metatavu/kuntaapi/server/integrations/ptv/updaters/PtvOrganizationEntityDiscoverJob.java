@@ -152,7 +152,7 @@ public class PtvOrganizationEntityDiscoverJob extends AbstractJmsJob<IdTask<Orga
     if (ptvParentOrganizationId != null) {
       kuntaApiParentOrganizationId = idController.translateOrganizationId(kuntaApiParentOrganizationId, KuntaApiConsts.IDENTIFIER_NAME);
       if (kuntaApiParentOrganizationId == null) {
-        logger.log(Level.SEVERE, () -> String.format("Could not to translate organization %s parent organization id %s into KuntaAPI id", kuntaApiOrganizationId, ptvParentOrganizationId));
+        logger.log(Level.INFO, () -> String.format("Could not to translate organization %s parent organization id %s into KuntaAPI id", kuntaApiOrganizationId, ptvParentOrganizationId));
       }
     }
     
