@@ -407,6 +407,12 @@
     </dependency>
     
     <dependency>
+      <groupId>org.wildfly</groupId>
+      <artifactId>wildfly-ejb3</artifactId>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-lang3</artifactId>
       <version>3.4</version>
@@ -841,10 +847,10 @@
               <skip>${it.skipelasticsearch}</skip>
               <plugins>
                 <plugin>
-                  <uri>ingest-attachment</uri>
+                  <uri>file://${project.build.directory}/../elasticplugins/ingest-attachment-${elasticsearch.version}.zip</uri>
                 </plugin>
                 <plugin>
-                  <uri>mapper-attachments</uri>
+                  <uri>file://${project.build.directory}/../elasticplugins/mapper-attachments-${elasticsearch.version}.zip</uri>
                 </plugin>
               </plugins>
             </configuration>
