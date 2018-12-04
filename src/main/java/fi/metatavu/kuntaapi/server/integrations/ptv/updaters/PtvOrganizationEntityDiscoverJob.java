@@ -44,12 +44,12 @@ import fi.metatavu.ptv.client.model.V8VmOpenApiOrganization;
 
 @ApplicationScoped
 @SuppressWarnings ("squid:S3306")
-@Pool(JmsQueueProperties.NO_CONCURRENCY_POOL)
 @MessageDriven (
   activationConfig = {
     @ActivationConfigProperty (propertyName = JmsQueueProperties.DESTINATION_LOOKUP, propertyValue = OrganizationIdTaskQueue.JMS_QUEUE)
   }
 )
+@Pool(JmsQueueProperties.LOW_CONCURRENCY_POOL)
 public class PtvOrganizationEntityDiscoverJob extends AbstractJmsJob<IdTask<OrganizationId>> {
 
   @Inject

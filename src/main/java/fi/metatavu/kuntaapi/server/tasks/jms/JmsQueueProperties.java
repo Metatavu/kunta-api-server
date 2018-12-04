@@ -7,7 +7,6 @@ package fi.metatavu.kuntaapi.server.tasks.jms;
  */
 public class JmsQueueProperties {
 
-  public static final String MAX_SESSIONS = "maxSessions";
   public static final String DESTINATION_LOOKUP = "destinationLookup";
   public static final String NO_CONCURRENCY_POOL = "mdb-no-concurrency-pool";
   public static final String LOW_CONCURRENCY_POOL = "mdb-low-concurrency-pool";

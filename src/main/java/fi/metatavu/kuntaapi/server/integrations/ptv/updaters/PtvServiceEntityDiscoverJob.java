@@ -15,6 +15,8 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Event;
 import javax.inject.Inject;
 
+import org.jboss.ejb3.annotation.Pool;
+
 import fi.metatavu.kuntaapi.server.cache.ModificationHashCache;
 import fi.metatavu.kuntaapi.server.controllers.IdentifierController;
 import fi.metatavu.kuntaapi.server.controllers.IdentifierRelationController;
@@ -63,10 +65,10 @@ import fi.metatavu.ptv.client.model.VmOpenApiItem;
 @SuppressWarnings ("squid:S3306")
 @MessageDriven (
   activationConfig = {
-    @ActivationConfigProperty (propertyName = JmsQueueProperties.DESTINATION_LOOKUP, propertyValue = ServiceIdTaskQueue.JMS_QUEUE),
-    @ActivationConfigProperty (propertyName = JmsQueueProperties.MAX_SESSIONS, propertyValue = "1")
+    @ActivationConfigProperty (propertyName = JmsQueueProperties.DESTINATION_LOOKUP, propertyValue = ServiceIdTaskQueue.JMS_QUEUE)
   }
 )
+@Pool(JmsQueueProperties.LOW_CONCURRENCY_POOL)
 public class PtvServiceEntityDiscoverJob extends AbstractJmsJob<IdTask<ServiceId>> {
 
   @Inject

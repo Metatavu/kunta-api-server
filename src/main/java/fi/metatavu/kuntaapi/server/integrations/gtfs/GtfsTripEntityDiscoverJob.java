@@ -8,6 +8,7 @@ import javax.ejb.MessageDriven;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
+import org.jboss.ejb3.annotation.Pool;
 import org.onebusaway.gtfs.model.Trip;
 
 import fi.metatavu.kuntaapi.server.cache.ModificationHashCache;
@@ -30,11 +31,11 @@ import fi.metatavu.kuntaapi.server.tasks.jms.JmsQueueProperties;
 @ApplicationScoped
 @SuppressWarnings ("squid:S3306")
 @MessageDriven (
-    activationConfig = {
-      @ActivationConfigProperty (propertyName = JmsQueueProperties.DESTINATION_LOOKUP, propertyValue = GtfsTripTaskQueue.JMS_QUEUE),
-      @ActivationConfigProperty (propertyName = JmsQueueProperties.MAX_SESSIONS, propertyValue = "1")
-    }
-  )
+  activationConfig = {
+    @ActivationConfigProperty (propertyName = JmsQueueProperties.DESTINATION_LOOKUP, propertyValue = GtfsTripTaskQueue.JMS_QUEUE)
+  }
+)
+@Pool(JmsQueueProperties.HIGH_CONCURRENCY_POOL)
 public class GtfsTripEntityDiscoverJob extends AbstractJmsJob<GtfsTripEntityTask> {
 
   @Inject
