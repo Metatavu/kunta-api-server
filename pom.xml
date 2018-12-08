@@ -1017,6 +1017,23 @@
                     <command>/subsystem=ejb3/strict-max-bean-instance-pool=mdb-low-concurrency-pool:add(max-pool-size="5")</command>
                     <command>/subsystem=ejb3/strict-max-bean-instance-pool=mdb-medium-concurrency-pool:add(max-pool-size="50")</command>
                     <command>/subsystem=ejb3/strict-max-bean-instance-pool=mdb-high-concurrency-pool:add(max-pool-size="200")</command>
+                    <command>/subsystem=messaging-activemq/server=default/jms-queue=kunta-rekry-jobs:add(entries=[java:/jms/queue/kunta-rekry-jobs])</command>
+                    <command>/subsystem=messaging-activemq/server=default/jms-queue=ptv-service-channels:add(entries=[java:/jms/queue/ptv-service-channels])</command>
+                    <command>/subsystem=messaging-activemq/server=default/jms-queue=ptv-services:add(entries=[java:/jms/queue/ptv-services])</command>
+                    <command>/subsystem=messaging-activemq/server=default/jms-queue=ptv-organizations:add(entries=[java:/jms/queue/ptv-organizations])</command>
+                    <command>/subsystem=messaging-activemq/server=default/jms-queue=gtfs-agencies:add(entries=[java:/jms/queue/gtfs-agencies])</command>
+                    <command>/subsystem=messaging-activemq/server=default/jms-queue=gtfs-routes:add(entries=[java:/jms/queue/gtfs-routes])</command>
+                    <command>/subsystem=messaging-activemq/server=default/jms-queue=gtfs-schedules:add(entries=[java:/jms/queue/gtfs-schedules])</command>
+                    <command>/subsystem=messaging-activemq/server=default/jms-queue=gtfs-stops:add(entries=[java:/jms/queue/gtfs-stops])</command>
+                    <command>/subsystem=messaging-activemq/server=default/jms-queue=gtfs-stoptimes:add(entries=[java:/jms/queue/gtfs-stoptimes])</command>
+                    <command>/subsystem=messaging-activemq/server=default/jms-queue=gtfs-trips:add(entries=[java:/jms/queue/gtfs-trips])</command>
+                    <command>/subsystem=messaging-activemq/server=default/jms-queue=tilannehuone-emergencies:add(entries=[java:/jms/queue/tilannehuone-emergencies])</command>
+                    <command>/subsystem=messaging-activemq/server=default/jms-queue=tpt-jobs:add(entries=[java:/jms/queue/tpt-jobs])</command>
+                    <command>/subsystem=messaging-activemq/server=default/jms-queue=management-announcements:add(entries=[java:/jms/queue/management-announcements])</command>
+                    <command>/subsystem=messaging-activemq/server=default/jms-queue=management-menus:add(entries=[java:/jms/queue/management-menus])</command>
+                    <command>/subsystem=messaging-activemq/server=default/jms-queue=management-news:add(entries=[java:/jms/queue/management-news])</command>
+                    <command>/subsystem=messaging-activemq/server=default/jms-queue=management-pages:add(entries=[java:/jms/queue/management-pages])</command>
+                    <command>/subsystem=messaging-activemq/server=default/jms-queue=management-banners:add(entries=[java:/jms/queue/management-banners])</command>
                     <command>/:reload</command>
                   </commands>
                 </configuration>
