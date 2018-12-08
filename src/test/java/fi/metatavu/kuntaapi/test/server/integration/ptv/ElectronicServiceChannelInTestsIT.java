@@ -1,5 +1,7 @@
 package fi.metatavu.kuntaapi.test.server.integration.ptv;
 
+import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.wireMockConfig;
+
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collections;
@@ -23,11 +25,12 @@ public class ElectronicServiceChannelInTestsIT extends AbstractPtvInTest {
 
   private static final String WWW_EXAMPLE_COM = "www.example.com";
   private static final String SERVICE_CHANNEL_FIND_PATH = "/electronicServiceChannels/{kuntaApiChannelId}";
+
   /**
    * Starts WireMock
    */
   @Rule
-  public WireMockRule wireMockRule = new WireMockRule(getWireMockPort());
+  public WireMockRule wireMockRule = new WireMockRule(wireMockConfig().port(getWireMockPort()), false);
   
   @Before
   public void beforeTest() throws InterruptedException {
