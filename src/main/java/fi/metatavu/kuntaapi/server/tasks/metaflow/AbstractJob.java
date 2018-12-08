@@ -109,7 +109,7 @@ public abstract class AbstractJob implements Job {
       String key = String.format("%s.%s.warmup", getSettingPrefix(), getName());
       Long warmup = NumberUtils.createLong(systemSettingController.getSettingValue(key));
       if (warmup != null) {
-        if (warmup > MINIMUM_WARMUP) {
+        if (warmup >= MINIMUM_WARMUP) {
           return warmup;
         } else {
           logger.warning(() -> String.format("%s warmup too low (%d), using default", key, warmup));
