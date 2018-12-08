@@ -10,6 +10,7 @@ import javax.enterprise.event.Event;
 import javax.inject.Inject;
 
 import org.apache.commons.lang3.StringUtils;
+import org.jboss.ejb3.annotation.Pool;
 
 import fi.metatavu.kuntaapi.server.cache.ModificationHashCache;
 import fi.metatavu.kuntaapi.server.controllers.IdentifierController;
@@ -35,10 +36,10 @@ import fi.metatavu.kuntaapi.server.tasks.jms.JmsQueueProperties;
 @SuppressWarnings ("squid:S3306")
 @MessageDriven (
   activationConfig = {
-    @ActivationConfigProperty (propertyName = JmsQueueProperties.DESTINATION_LOOKUP, propertyValue = TilannehuoneEmergencyTaskQueue.JMS_QUEUE),
-    @ActivationConfigProperty (propertyName = JmsQueueProperties.MAX_SESSIONS, propertyValue = "1")
+    @ActivationConfigProperty (propertyName = JmsQueueProperties.DESTINATION_LOOKUP, propertyValue = TilannehuoneEmergencyTaskQueue.JMS_QUEUE)
   }
 )
+@Pool(JmsQueueProperties.HIGH_CONCURRENCY_POOL)
 public class TilannehuoneEntityDiscoverJob extends AbstractJmsJob<TilannehuoneEmergencyEntityTask> {
 
   @Inject

@@ -18,6 +18,8 @@ import fi.metatavu.kuntaapi.server.settings.SystemSettingController;
  * @author Antti Leppä
  */
 public abstract class AbstractJob implements Job {
+  
+  private static final long MINIMUM_WARMUP = 1000l * 60;
 
   @Inject
   private Logger logger;
@@ -107,7 +109,11 @@ public abstract class AbstractJob implements Job {
       String key = String.format("%s.%s.warmup", getSettingPrefix(), getName());
       Long warmup = NumberUtils.createLong(systemSettingController.getSettingValue(key));
       if (warmup != null) {
-        return warmup;
+        if (warmup >= MINIMUM_WARMUP) {
+          return warmup;
+        } else {
+          logger.warning(() -> String.format("%s warmup too low (%d), using default", key, warmup));
+        }
       }
       
       logger.log(Level.WARNING, () -> String.format("Warmup for entity updater %s is undefied", key));
@@ -117,7 +123,7 @@ public abstract class AbstractJob implements Job {
       }
     }
     
-    return 1000l * 60;
+    return MINIMUM_WARMUP;
   }
   
   @Override

@@ -8,6 +8,7 @@ import javax.ejb.MessageDriven;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
+import org.jboss.ejb3.annotation.Pool;
 import org.onebusaway.gtfs.model.Stop;
 
 import fi.metatavu.kuntaapi.server.cache.ModificationHashCache;
@@ -29,10 +30,10 @@ import fi.metatavu.kuntaapi.server.tasks.jms.JmsQueueProperties;
 @SuppressWarnings ("squid:S3306")
 @MessageDriven (
   activationConfig = {
-    @ActivationConfigProperty (propertyName = JmsQueueProperties.DESTINATION_LOOKUP, propertyValue = GtfsStopTaskQueue.JMS_QUEUE),
-    @ActivationConfigProperty (propertyName = JmsQueueProperties.MAX_SESSIONS, propertyValue = "1")
+    @ActivationConfigProperty (propertyName = JmsQueueProperties.DESTINATION_LOOKUP, propertyValue = GtfsStopTaskQueue.JMS_QUEUE)
   }
 )
+@Pool(JmsQueueProperties.HIGH_CONCURRENCY_POOL)
 public class GtfsStopEntityDiscoverJob extends AbstractJmsJob<GtfsStopEntityTask> {
 
   @Inject

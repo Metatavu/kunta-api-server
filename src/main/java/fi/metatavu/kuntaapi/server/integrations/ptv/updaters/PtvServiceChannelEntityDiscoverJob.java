@@ -11,6 +11,8 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Event;
 import javax.inject.Inject;
 
+import org.jboss.ejb3.annotation.Pool;
+
 import fi.metatavu.kuntaapi.server.cache.ModificationHashCache;
 import fi.metatavu.kuntaapi.server.controllers.IdentifierController;
 import fi.metatavu.kuntaapi.server.controllers.IdentifierRelationController;
@@ -77,10 +79,10 @@ import fi.metatavu.ptv.client.model.V8VmOpenApiWebPageChannel;
 @SuppressWarnings ("squid:S3306")
 @MessageDriven (
   activationConfig = {
-    @ActivationConfigProperty (propertyName = JmsQueueProperties.DESTINATION_LOOKUP, propertyValue = ServiceChannelTasksQueue.JMS_QUEUE),
-    @ActivationConfigProperty (propertyName = JmsQueueProperties.MAX_SESSIONS, propertyValue = "1")
+    @ActivationConfigProperty (propertyName = JmsQueueProperties.DESTINATION_LOOKUP, propertyValue = ServiceChannelTasksQueue.JMS_QUEUE)
   }
 )
+@Pool(JmsQueueProperties.NO_CONCURRENCY_POOL)
 public class PtvServiceChannelEntityDiscoverJob extends AbstractJmsJob<AbstractServiceChannelTask> {
 
   private static final String COULD_NOT_TRANSLATE_ORGANIZATION_INTO_KUNTA_API_ID = "Could not translate organization %s into kunta api id";

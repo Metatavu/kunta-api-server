@@ -13,6 +13,9 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Event;
 import javax.inject.Inject;
 
+import org.apache.commons.lang3.StringUtils;
+import org.jboss.ejb3.annotation.Pool;
+
 import fi.metatavu.kuntaapi.server.cache.ModificationHashCache;
 import fi.metatavu.kuntaapi.server.controllers.IdentifierController;
 import fi.metatavu.kuntaapi.server.id.IdController;
@@ -43,10 +46,10 @@ import fi.metatavu.ptv.client.model.V8VmOpenApiOrganization;
 @SuppressWarnings ("squid:S3306")
 @MessageDriven (
   activationConfig = {
-    @ActivationConfigProperty (propertyName = JmsQueueProperties.DESTINATION_LOOKUP, propertyValue = OrganizationIdTaskQueue.JMS_QUEUE),
-    @ActivationConfigProperty (propertyName = JmsQueueProperties.MAX_SESSIONS, propertyValue = "1")
+    @ActivationConfigProperty (propertyName = JmsQueueProperties.DESTINATION_LOOKUP, propertyValue = OrganizationIdTaskQueue.JMS_QUEUE)
   }
 )
+@Pool(JmsQueueProperties.NO_CONCURRENCY_POOL)
 public class PtvOrganizationEntityDiscoverJob extends AbstractJmsJob<IdTask<OrganizationId>> {
 
   @Inject
@@ -99,6 +102,10 @@ public class PtvOrganizationEntityDiscoverJob extends AbstractJmsJob<IdTask<Orga
       return;
     }
     
+    if (organizationId == null) {
+      return;
+    }
+
     OrganizationId ptvOrganizationId = idController.translateOrganizationId(organizationId, PtvConsts.IDENTIFIER_NAME);
     if (ptvOrganizationId == null) {
       logger.log(Level.SEVERE, () -> String.format("Failed to translate organization id %s into Ptv Id", organizationId)); 
@@ -146,7 +153,7 @@ public class PtvOrganizationEntityDiscoverJob extends AbstractJmsJob<IdTask<Orga
     if (ptvParentOrganizationId != null) {
       kuntaApiParentOrganizationId = idController.translateOrganizationId(kuntaApiParentOrganizationId, KuntaApiConsts.IDENTIFIER_NAME);
       if (kuntaApiParentOrganizationId == null) {
-        logger.log(Level.SEVERE, () -> String.format("Could not to translate organization %s parent organization id %s into KuntaAPI id", kuntaApiOrganizationId, ptvParentOrganizationId));
+        logger.log(Level.INFO, () -> String.format("Could not to translate organization %s parent organization id %s into KuntaAPI id", kuntaApiOrganizationId, ptvParentOrganizationId));
       }
     }
     
@@ -154,7 +161,7 @@ public class PtvOrganizationEntityDiscoverJob extends AbstractJmsJob<IdTask<Orga
   }
   
   private OrganizationService translateOrganizationService(V5VmOpenApiOrganizationService ptvOrganizationService) {
-    if (ptvOrganizationService.getService() == null || ptvOrganizationService.getService().getId() == null) {
+    if (ptvOrganizationService.getService() == null || ptvOrganizationService.getService().getId() == null || StringUtils.isBlank(ptvOrganizationService.getOrganizationId())) {
       return null;
     }
     
@@ -165,7 +172,7 @@ public class PtvOrganizationEntityDiscoverJob extends AbstractJmsJob<IdTask<Orga
       logger.log(Level.INFO, () -> String.format("Could not translate service %s into Kunta API", ptvServiceId)); 
       return null;
     }
-
+    
     OrganizationId kuntaApiServiceOrganizationId = idController.translateOrganizationId(ptvIdFactory.createOrganizationId(ptvOrganizationService.getOrganizationId()), KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiServiceOrganizationId == null) {
       logger.log(Level.INFO, () -> String.format("Could not translate organization %s into Kunta API", ptvOrganizationService.getOrganizationId())); 

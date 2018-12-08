@@ -3,21 +3,18 @@ package fi.metatavu.kuntaapi.server.integrations.management.tasks;
 import javax.enterprise.context.ApplicationScoped;
 
 import fi.metatavu.kuntaapi.server.id.MenuId;
-import fi.metatavu.kuntaapi.server.id.IdType;
-import fi.metatavu.kuntaapi.server.integrations.management.ManagementConsts;
-import fi.metatavu.kuntaapi.server.tasks.metaflow.AbstractIdTaskQueue;
+import fi.metatavu.kuntaapi.server.tasks.IdTask;
+import fi.metatavu.kuntaapi.server.tasks.jms.AbstractJmsTaskQueue;
 
-@ApplicationScoped
-public class MenuIdTaskQueue extends AbstractIdTaskQueue<MenuId> {
-
-  @Override
-  public String getSource() {
-    return ManagementConsts.IDENTIFIER_NAME;
-  }
+@ApplicationScoped  
+public class MenuIdTaskQueue extends AbstractJmsTaskQueue<IdTask<MenuId>> {
+  
+  public static final String NAME = "management-menus";
+  public static final String JMS_QUEUE = JMS_QUEUE_PREFIX + NAME;
   
   @Override
-  public IdType getType() {
-    return IdType.MENU;
+  public String getName() {
+    return NAME;
   }
-  
+
 }

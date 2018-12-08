@@ -6,9 +6,6 @@ import java.util.logging.Logger;
 
 import javax.inject.Inject;
 
-import fi.metatavu.ptv.client.ApiResponse;
-import fi.metatavu.ptv.client.model.V8VmOpenApiOrganizationGuidPage;
-import fi.metatavu.ptv.client.model.V8VmOpenApiOrganizationItem;
 import fi.metatavu.kuntaapi.server.discover.IdDiscoverJob;
 import fi.metatavu.kuntaapi.server.id.OrganizationId;
 import fi.metatavu.kuntaapi.server.integrations.ptv.PtvConsts;
@@ -17,6 +14,9 @@ import fi.metatavu.kuntaapi.server.integrations.ptv.tasks.OrganizationIdTaskQueu
 import fi.metatavu.kuntaapi.server.settings.SystemSettingController;
 import fi.metatavu.kuntaapi.server.tasks.IdTask;
 import fi.metatavu.kuntaapi.server.tasks.IdTask.Operation;
+import fi.metatavu.ptv.client.ApiResponse;
+import fi.metatavu.ptv.client.model.V8VmOpenApiOrganizationGuidPage;
+import fi.metatavu.ptv.client.model.V8VmOpenApiOrganizationItem;
 
 @SuppressWarnings ("squid:S3306")
 public abstract class AbstractPtvOrganizationIdDiscoverJob extends IdDiscoverJob {
@@ -61,9 +61,17 @@ public abstract class AbstractPtvOrganizationIdDiscoverJob extends IdDiscoverJob
       if (items != null) {
         for (int i = 0; i < items.size(); i++) {
           V8VmOpenApiOrganizationItem item = items.get(i);
-          Long orderIndex = getOrderIndex(i, response.getResponse());
-          OrganizationId ptvOrganizationId = ptvIdFactory.createOrganizationId(item.getId());
-          organizationIdTaskQueue.enqueueTask(new IdTask<OrganizationId>(getIsPriority(), Operation.UPDATE, ptvOrganizationId, orderIndex));
+          if (item.getId() != null) {
+            Long orderIndex = getOrderIndex(i, response.getResponse());
+            OrganizationId ptvOrganizationId = ptvIdFactory.createOrganizationId(item.getId());
+            if (ptvOrganizationId != null) {
+              organizationIdTaskQueue.enqueueTask(new IdTask<OrganizationId>(getIsPriority(), Operation.UPDATE, ptvOrganizationId, orderIndex));
+            } else {
+              logger.log(Level.SEVERE, () -> String.format("Failed to translate %s into PTV id", item.getId()));
+            }
+          } else {
+            logger.warning("Organization list returned item with null id");
+          }
         }
       }
       

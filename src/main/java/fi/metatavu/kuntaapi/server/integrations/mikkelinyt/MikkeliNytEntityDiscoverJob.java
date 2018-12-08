@@ -22,7 +22,6 @@ import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.client.utils.URIBuilder;
 
-import fi.metatavu.kuntaapi.server.rest.model.Attachment;
 import fi.metatavu.kuntaapi.server.cache.ModificationHashCache;
 import fi.metatavu.kuntaapi.server.controllers.IdentifierController;
 import fi.metatavu.kuntaapi.server.controllers.IdentifierRelationController;
@@ -42,11 +41,12 @@ import fi.metatavu.kuntaapi.server.integrations.mikkelinyt.resources.MikkeliNytA
 import fi.metatavu.kuntaapi.server.integrations.mikkelinyt.resources.MikkeliNytEventResourceContainer;
 import fi.metatavu.kuntaapi.server.integrations.mikkelinyt.tasks.OrganizationEventsTaskQueue;
 import fi.metatavu.kuntaapi.server.persistence.model.Identifier;
+import fi.metatavu.kuntaapi.server.rest.model.Attachment;
 import fi.metatavu.kuntaapi.server.settings.OrganizationSettingController;
 import fi.metatavu.kuntaapi.server.settings.SystemSettingController;
 import fi.metatavu.kuntaapi.server.tasks.OrganizationEntityUpdateTask;
-import fi.otavanopisto.mikkelinyt.model.Event;
-import fi.otavanopisto.mikkelinyt.model.EventsResponse;
+import fi.metatavu.mikkelinyt.model.Event;
+import fi.metatavu.mikkelinyt.model.EventsResponse;
 
 @ApplicationScoped
 @Singleton
@@ -211,14 +211,14 @@ public class MikkeliNytEntityDiscoverJob extends EntityDiscoverJob<OrganizationE
       return new Response<>(500, "Internal Server Error", null);
     }
     
-    return httpClient.doGETRequest(uri, new GenericHttpClient.ResultType<fi.otavanopisto.mikkelinyt.model.EventsResponse>() {});
+    return httpClient.doGETRequest(uri, new GenericHttpClient.ResultType<EventsResponse>() {});
   }
   
   private String getApiKey(OrganizationId organizationId) {
     return organizationSettingController.getSettingValue(organizationId, MikkeliNytConsts.ORGANIZATION_SETTING_APIKEY);
   }
   
-  private fi.metatavu.kuntaapi.server.rest.model.Event translate(EventId kuntaApiId, fi.otavanopisto.mikkelinyt.model.Event nytEvent) {
+  private fi.metatavu.kuntaapi.server.rest.model.Event translate(EventId kuntaApiId, Event nytEvent) {
     if (nytEvent == null) {
       return null;
     }

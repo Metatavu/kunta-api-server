@@ -18,7 +18,6 @@ import javax.inject.Inject;
 
 import org.apache.commons.codec.binary.StringUtils;
 
-import fi.metatavu.kuntaapi.server.debug.Timed;
 import fi.metatavu.kuntaapi.server.integrations.SortDir;
 
 @ApplicationScoped
@@ -35,7 +34,6 @@ public class EntityController {
     return sortEntitiesInNaturalOrder(entities, SortDir.ASC);
   }
   
-  @Timed (infoThreshold = 200, warningThreshold = 400, severeThreshold = 800)
   public <T> List<T> sortEntitiesInNaturalOrder(List<T> entities, SortDir sortDir) {
     
     List<String> kuntaApiIds = new ArrayList<>(entities.size());

@@ -3,21 +3,18 @@ package fi.metatavu.kuntaapi.server.integrations.management.tasks;
 import javax.enterprise.context.ApplicationScoped;
 
 import fi.metatavu.kuntaapi.server.id.BannerId;
-import fi.metatavu.kuntaapi.server.id.IdType;
-import fi.metatavu.kuntaapi.server.integrations.management.ManagementConsts;
-import fi.metatavu.kuntaapi.server.tasks.metaflow.AbstractIdTaskQueue;
+import fi.metatavu.kuntaapi.server.tasks.IdTask;
+import fi.metatavu.kuntaapi.server.tasks.jms.AbstractJmsTaskQueue;
 
 @ApplicationScoped
-public class BannerIdTaskQueue extends AbstractIdTaskQueue<BannerId> {
+public class BannerIdTaskQueue extends AbstractJmsTaskQueue<IdTask<BannerId>> {
+  
+  public static final String NAME = "management-banners";
+  public static final String JMS_QUEUE = JMS_QUEUE_PREFIX + NAME;
+  
+  @Override
+  public String getName() {
+    return NAME;
+  }
 
-  @Override
-  public String getSource() {
-    return ManagementConsts.IDENTIFIER_NAME;
-  }
-  
-  @Override
-  public IdType getType() {
-    return IdType.BANNER;
-  }
-  
 }

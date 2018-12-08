@@ -8,6 +8,8 @@ import javax.ejb.MessageDriven;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
+import org.jboss.ejb3.annotation.Pool;
+
 import fi.metatavu.kuntaapi.server.cache.ModificationHashCache;
 import fi.metatavu.kuntaapi.server.controllers.IdentifierController;
 import fi.metatavu.kuntaapi.server.controllers.IdentifierRelationController;
@@ -31,10 +33,10 @@ import fi.metatavu.management.client.model.Announcement;
 @SuppressWarnings ("squid:S3306")
 @MessageDriven (
   activationConfig = {
-    @ActivationConfigProperty (propertyName = JmsQueueProperties.DESTINATION_LOOKUP, propertyValue = AnnouncementIdTaskQueue.JMS_QUEUE),
-    @ActivationConfigProperty (propertyName = JmsQueueProperties.MAX_SESSIONS, propertyValue = "1")
+    @ActivationConfigProperty (propertyName = JmsQueueProperties.DESTINATION_LOOKUP, propertyValue = AnnouncementIdTaskQueue.JMS_QUEUE)
   }
 )
+@Pool(JmsQueueProperties.LOW_CONCURRENCY_POOL)
 public class ManagementAnnouncementEntityDiscoverJob extends AbstractJmsJob<IdTask<AnnouncementId>> {
 
   @Inject

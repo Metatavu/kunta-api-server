@@ -6,16 +6,13 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 import org.apache.commons.lang3.StringUtils;
 
-import fi.metatavu.kuntaapi.server.rest.model.Attachment;
-import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
-import fi.metatavu.kuntaapi.server.rest.model.Page;
 import fi.metatavu.kuntaapi.server.controllers.IdentifierController;
 import fi.metatavu.kuntaapi.server.controllers.IdentifierRelationController;
-import fi.metatavu.kuntaapi.server.debug.Timed;
 import fi.metatavu.kuntaapi.server.id.AttachmentId;
 import fi.metatavu.kuntaapi.server.id.IdController;
 import fi.metatavu.kuntaapi.server.id.OrganizationId;
@@ -27,7 +24,9 @@ import fi.metatavu.kuntaapi.server.integrations.PageProvider;
 import fi.metatavu.kuntaapi.server.integrations.management.resources.ManagementAttachmentResourceContainer;
 import fi.metatavu.kuntaapi.server.integrations.management.resources.ManagementPageContentResourceContainer;
 import fi.metatavu.kuntaapi.server.integrations.management.resources.ManagementPageResourceContainer;
-import javax.enterprise.context.ApplicationScoped;
+import fi.metatavu.kuntaapi.server.rest.model.Attachment;
+import fi.metatavu.kuntaapi.server.rest.model.LocalizedValue;
+import fi.metatavu.kuntaapi.server.rest.model.Page;
 
 /**
  * Page provider for management service
@@ -63,13 +62,11 @@ public class ManagementPageProvider extends AbstractManagementProvider implement
   private KuntaApiIdFactory kuntaApiIdFactory;
    
   @Override
-  @Timed (infoThreshold = 100, warningThreshold = 200, severeThreshold = 400)
   public List<Page> listOrganizationPages(OrganizationId organizationId, PageId parentId, boolean onlyRootPages, boolean includeUnmappedParentIds) {
     return listPages(organizationId, parentId, onlyRootPages, includeUnmappedParentIds);
   }
 
   @Override
-  @Timed (infoThreshold = 25, warningThreshold = 50, severeThreshold = 100)
   public Page findOrganizationPage(OrganizationId organizationId, PageId pageId) {
     return managementPageResourceContainer.get(pageId);
   }

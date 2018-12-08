@@ -25,8 +25,8 @@ import fi.metatavu.kuntaapi.server.integrations.mikkelinyt.MikkeliNytConsts;
 import fi.metatavu.kuntaapi.test.AbstractIntegrationTest;
 import fi.metatavu.kuntaapi.test.AbstractMocker;
 import fi.metatavu.kuntaapi.test.server.integration.ptv.TestPtvConsts;
-import fi.otavanopisto.mikkelinyt.model.Event;
-import fi.otavanopisto.mikkelinyt.model.EventsResponse;
+import fi.metatavu.mikkelinyt.model.Event;
+import fi.metatavu.mikkelinyt.model.EventsResponse;
 
 /**
  * Tests for MikkeliNyt integration

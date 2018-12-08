@@ -64,7 +64,7 @@ public class Ptv7Adapter {
       return translate((Service) entity);
     }
     
-    return null;
+    return entity;
   }
 
   /**

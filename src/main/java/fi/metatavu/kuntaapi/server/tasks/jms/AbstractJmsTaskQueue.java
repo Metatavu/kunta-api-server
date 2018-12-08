@@ -9,7 +9,9 @@ import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
+import javax.jms.DeliveryMode;
 import javax.jms.JMSException;
+import javax.jms.Message;
 import javax.jms.MessageProducer;
 import javax.jms.Queue;
 import javax.jms.Session;
@@ -31,13 +33,16 @@ public abstract class AbstractJmsTaskQueue<T extends Task> {
   
   protected final static String JMS_QUEUE_PREFIX = "java:/jms/queue/";
   
+  private final static int HIGH_PRIORITY = 9;
+  private final static int DEFAULT_PRIORITY = Message.DEFAULT_PRIORITY;
+  
   @Inject
   private Logger logger;
 
   @Inject
   private TaskSerializer taskSerializer; 
   
-  @Resource (lookup = "java:/ConnectionFactory")
+  @Resource (lookup = JmsQueueProperties.CONNECTION_FACTORY)
   private ConnectionFactory connectionFactory;
   
   /**
@@ -53,7 +58,11 @@ public abstract class AbstractJmsTaskQueue<T extends Task> {
       StreamMessage message = createMessage(session, task);
       if (message != null) {
         MessageProducer producer = createProducer(session);
-        producer.send(message);
+        if (task.getPriority()) {
+          logger.log(Level.INFO, () -> String.format("Added priority task to the JMS queue %s", getName()));
+        }
+        
+        producer.send(message, DeliveryMode.PERSISTENT, task.getPriority() ? HIGH_PRIORITY : DEFAULT_PRIORITY, Message.DEFAULT_TIME_TO_LIVE);
       }
     } catch (NamingException | JMSException e) {
       logger.log(Level.SEVERE, "Failed to enqueue task", e);

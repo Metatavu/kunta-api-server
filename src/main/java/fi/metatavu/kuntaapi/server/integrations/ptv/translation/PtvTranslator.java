@@ -100,7 +100,7 @@ import fi.metatavu.ptv.client.model.VmOpenApiWebPageWithOrderNumber;
 @ApplicationScoped
 public class PtvTranslator extends AbstractTranslator {
   
-  private static final String UNKNOWN_ADDRESS_SUBTYPE = "Unknown address subtype %s";
+  private static final String UNKNOWN_ADDRESS_SUBTYPE = "Unknown %s address subtype %s. Address body %s";
 
   @Inject
   private Logger logger;
@@ -169,7 +169,12 @@ public class PtvTranslator extends AbstractTranslator {
       List<V8VmOpenApiAddressDelivery> deliveryAddresses = allDeliveryAddresses.stream()
         .filter(Objects::nonNull)
         .filter(address -> {
-          long receiverCount = address.getReceiver().stream()
+          List<VmOpenApiLanguageItem> receiver = address.getReceiver();
+          if (receiver == null) {
+            return false;
+          }
+          
+          long receiverCount = receiver.stream()
             .map(VmOpenApiLanguageItem::getValue)
             .filter(StringUtils::isNotBlank)
             .count();
@@ -467,7 +472,7 @@ public class PtvTranslator extends AbstractTranslator {
   }
   
   private Address translateAddressWithMoving(V8VmOpenApiAddressWithMoving ptvAddress) {
-    if (ptvAddress == null) {
+    if ((ptvAddress == null)|| (ptvAddress.getPostOfficeBoxAddress() == null && ptvAddress.getStreetAddress() == null && ptvAddress.getLocationAbroad() == null && ptvAddress.getMultipointLocation() == null)) {
       return null;
     }
     
@@ -480,7 +485,7 @@ public class PtvTranslator extends AbstractTranslator {
       case POST_OFFICE_BOX:
         return translatePostOfficeBoxAddress(ptvAddress.getPostOfficeBoxAddress(), ptvAddress.getType(), ptvAddress.getSubType(), ptvAddress.getCountry());
       default:
-        logger.severe(() -> String.format(UNKNOWN_ADDRESS_SUBTYPE, ptvAddress.getSubType()));
+        logger.severe(() -> String.format(UNKNOWN_ADDRESS_SUBTYPE, "with moving", ptvAddress.getSubType(), ptvAddress.toString()));
     }
     
     return translateNoAddress(ptvAddress.getLocationAbroad(), ptvAddress.getType(), ptvAddress.getSubType());
@@ -498,7 +503,7 @@ public class PtvTranslator extends AbstractTranslator {
       case POST_OFFICE_BOX:
         return translatePostOfficeBoxAddress(ptvAddress.getPostOfficeBoxAddress(), ptvAddress.getType(), ptvAddress.getSubType(), ptvAddress.getCountry());
       default:
-        logger.severe(() -> String.format(UNKNOWN_ADDRESS_SUBTYPE, ptvAddress.getType(), ptvAddress.getSubType()));
+        logger.severe(() -> String.format(UNKNOWN_ADDRESS_SUBTYPE, ptvAddress.getType(), ptvAddress.getSubType(), ptvAddress.toString()));
     }
     
     return translateNoAddress(ptvAddress.getForeignAddress(), ptvAddress.getType(), ptvAddress.getSubType());
@@ -518,7 +523,7 @@ public class PtvTranslator extends AbstractTranslator {
       case NO_ADDRESS:
         return translateNoAddress(ptvAddress.getDeliveryAddressInText(), null, ptvAddress.getSubType());
       default:
-        logger.severe(() -> String.format(UNKNOWN_ADDRESS_SUBTYPE, ptvAddress.getSubType()));
+        logger.severe(() -> String.format(UNKNOWN_ADDRESS_SUBTYPE, "delivery", ptvAddress.getSubType(), ptvAddress.toString()));
     }
     
     return translateNoAddress(ptvAddress.getDeliveryAddressInText(), null, ptvAddress.getSubType());
@@ -1179,6 +1184,9 @@ public class PtvTranslator extends AbstractTranslator {
   }
   
   private Coordinates translateCoordinates(String ptvLatitude, String ptvLongitude) {
+    if (StringUtils.isBlank(ptvLatitude) || StringUtils.isBlank(ptvLongitude)) {
+      return null;
+    }
 
     if (!NumberUtils.isParsable(ptvLongitude) || !NumberUtils.isParsable(ptvLatitude)){
       logger.warning("coordinates not parsable");

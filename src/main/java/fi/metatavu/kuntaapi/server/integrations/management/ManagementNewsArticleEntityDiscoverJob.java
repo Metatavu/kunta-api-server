@@ -4,30 +4,22 @@ import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.ejb.AccessTimeout;
-import javax.ejb.Singleton;
+import javax.ejb.ActivationConfigProperty;
+import javax.ejb.MessageDriven;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Event;
 import javax.inject.Inject;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.jboss.ejb3.annotation.Pool;
 
-import fi.metatavu.kuntaapi.server.rest.model.NewsArticle;
-import fi.metatavu.management.client.ApiResponse;
-import fi.metatavu.management.client.DefaultApi;
-import fi.metatavu.management.client.model.Attachment;
-import fi.metatavu.management.client.model.Category;
-import fi.metatavu.management.client.model.Post;
-import fi.metatavu.management.client.model.Tag;
 import fi.metatavu.kuntaapi.server.cache.ModificationHashCache;
 import fi.metatavu.kuntaapi.server.controllers.IdentifierController;
 import fi.metatavu.kuntaapi.server.controllers.IdentifierRelationController;
-import fi.metatavu.kuntaapi.server.discover.EntityDiscoverJob;
 import fi.metatavu.kuntaapi.server.id.AttachmentId;
 import fi.metatavu.kuntaapi.server.id.IdController;
 import fi.metatavu.kuntaapi.server.id.NewsArticleId;
@@ -45,15 +37,28 @@ import fi.metatavu.kuntaapi.server.integrations.management.resources.ManagementA
 import fi.metatavu.kuntaapi.server.integrations.management.tasks.NewsArticleIdTaskQueue;
 import fi.metatavu.kuntaapi.server.persistence.model.Identifier;
 import fi.metatavu.kuntaapi.server.resources.NewsArticleResourceContainer;
+import fi.metatavu.kuntaapi.server.rest.model.NewsArticle;
 import fi.metatavu.kuntaapi.server.settings.OrganizationSettingController;
 import fi.metatavu.kuntaapi.server.tasks.IdTask;
 import fi.metatavu.kuntaapi.server.tasks.IdTask.Operation;
+import fi.metatavu.kuntaapi.server.tasks.jms.AbstractJmsJob;
+import fi.metatavu.kuntaapi.server.tasks.jms.JmsQueueProperties;
+import fi.metatavu.management.client.ApiResponse;
+import fi.metatavu.management.client.DefaultApi;
+import fi.metatavu.management.client.model.Attachment;
+import fi.metatavu.management.client.model.Category;
+import fi.metatavu.management.client.model.Post;
+import fi.metatavu.management.client.model.Tag;
 
 @ApplicationScoped
-@Singleton
-@AccessTimeout (unit = TimeUnit.HOURS, value = 1l)
 @SuppressWarnings ("squid:S3306")
-public class ManagementNewsArticleEntityDiscoverJob extends EntityDiscoverJob<IdTask<NewsArticleId>> {
+@MessageDriven (
+  activationConfig = {
+    @ActivationConfigProperty (propertyName = JmsQueueProperties.DESTINATION_LOOKUP, propertyValue = NewsArticleIdTaskQueue.JMS_QUEUE)
+  }
+)
+@Pool(JmsQueueProperties.NO_CONCURRENCY_POOL)
+public class ManagementNewsArticleEntityDiscoverJob extends AbstractJmsJob<IdTask<NewsArticleId>> {
 
   @Inject
   private Logger logger;
@@ -92,9 +97,6 @@ public class ManagementNewsArticleEntityDiscoverJob extends EntityDiscoverJob<Id
   private ModificationHashCache modificationHashCache;
   
   @Inject
-  private NewsArticleIdTaskQueue newsArticleIdTaskQueue;
-  
-  @Inject
   private Event<IndexRequest> indexRequest;
 
   @Inject
@@ -104,28 +106,11 @@ public class ManagementNewsArticleEntityDiscoverJob extends EntityDiscoverJob<Id
   private ScaledImageStore scaledImageStore;
   
   @Override
-  public String getName() {
-    return "management-news";
-  }
-
-  @Override
-  public void timeout() {
-    executeNextTask();
-  }
-  
-  @Override
   public void execute(IdTask<NewsArticleId> task) {
     if (task.getOperation() == Operation.UPDATE) {
       updateManagementPost(task.getId(), task.getOrderIndex()); 
     } else if (task.getOperation() == Operation.REMOVE) {
       deleteManagementPost(task.getId());
-    }
-  }
-  
-  private void executeNextTask() {
-    IdTask<NewsArticleId> task = newsArticleIdTaskQueue.next();
-    if (task != null) {
-      execute(task);
     }
   }
   
