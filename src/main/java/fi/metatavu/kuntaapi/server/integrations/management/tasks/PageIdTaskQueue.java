@@ -7,7 +7,7 @@ import fi.metatavu.kuntaapi.server.tasks.IdTask;
 import fi.metatavu.kuntaapi.server.tasks.jms.AbstractJmsTaskQueue;
 
 @ApplicationScoped
-public class PageIdTaskQueue  extends AbstractJmsTaskQueue<IdTask<PageId>> {
+public class PageIdTaskQueue extends AbstractJmsTaskQueue<IdTask<PageId>> {
   
   public static final String NAME = "management-pages";
   public static final String JMS_QUEUE = JMS_QUEUE_PREFIX + NAME;
