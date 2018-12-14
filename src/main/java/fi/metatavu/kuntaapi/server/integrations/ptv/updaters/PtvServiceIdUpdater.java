@@ -10,7 +10,7 @@ import javax.inject.Inject;
 import fi.metatavu.kuntaapi.server.integrations.ptv.PtvConsts;
 import fi.metatavu.kuntaapi.server.integrations.ptv.client.PtvApi;
 import fi.metatavu.kuntaapi.server.integrations.ptv.resources.PtvServiceListTask;
-import fi.metatavu.kuntaapi.server.integrations.ptv.tasks.ServiceListTaskQueue;
+import fi.metatavu.kuntaapi.server.integrations.ptv.tasks.lists.ServiceListTaskQueue;
 import fi.metatavu.ptv.client.ApiResponse;
 import fi.metatavu.ptv.client.model.V3VmOpenApiGuidPage;
 

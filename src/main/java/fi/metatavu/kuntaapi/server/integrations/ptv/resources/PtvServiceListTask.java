@@ -1,23 +1,19 @@
 package fi.metatavu.kuntaapi.server.integrations.ptv.resources;
 
-import fi.metatavu.metaflow.tasks.impl.DefaultTaskImpl;
-
 /**
  * Task for PTV service list updates
  * 
  * @author Antti Leppä
  */
-public class PtvServiceListTask extends DefaultTaskImpl {
+public class PtvServiceListTask extends AbstractPtvListTask {
   
-  private static final long serialVersionUID = 4289945359149088299L;
-  
-  private Integer page;
-  
+  private static final long serialVersionUID = 4897379861552685138L;
+
   /**
    * Constructor
    */
   public PtvServiceListTask() {
-    // Zero-argument constructor
+    super();
   }
   
   /**
@@ -27,17 +23,7 @@ public class PtvServiceListTask extends DefaultTaskImpl {
    * @param page page index
    */
   public PtvServiceListTask(boolean priority, Integer page) {
-	  super(String.format("ptv-service-list-%d", page), priority);
-    this.page = page;
-  }
-  
-  /**
-   * Returns page index
-   * 
-   * @return page index
-   */
-  public Integer getPage() {
-    return page;
+	  super("service", priority, page);
   }
   
 }
