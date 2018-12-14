@@ -2,7 +2,6 @@ package fi.metatavu.kuntaapi.server.integrations.ptv.updaters;
 
 import java.util.concurrent.TimeUnit;
 
-import javax.annotation.PostConstruct;
 import javax.ejb.AccessTimeout;
 import javax.ejb.Singleton;
 import javax.enterprise.context.ApplicationScoped;
@@ -12,6 +11,8 @@ import fi.metatavu.ptv.client.ApiResponse;
 import fi.metatavu.ptv.client.model.V3VmOpenApiGuidPage;
 import fi.metatavu.kuntaapi.server.integrations.ptv.PtvConsts;
 import fi.metatavu.kuntaapi.server.integrations.ptv.client.PtvApi;
+import fi.metatavu.kuntaapi.server.integrations.ptv.resources.PtvServiceChannelListTask;
+import fi.metatavu.kuntaapi.server.integrations.ptv.tasks.lists.ServiceChannelListTaskQueue;
 
 @ApplicationScoped
 @Singleton
@@ -21,13 +22,9 @@ public class PtvServiceChannelIdUpdater extends AbstractPtvServiceChannelIdDisco
   
   @Inject
   private PtvApi ptvApi;
-  
-  private Integer page;
-  
-  @PostConstruct
-  public void init() {
-    page = 1;
-  }
+
+  @Inject
+  private ServiceChannelListTaskQueue serviceChannelListTaskQueue;
   
   @Override
   public String getName() {
@@ -35,27 +32,43 @@ public class PtvServiceChannelIdUpdater extends AbstractPtvServiceChannelIdDisco
   }
   
   @Override
-  public ApiResponse<V3VmOpenApiGuidPage> getPage() {
+  public ApiResponse<V3VmOpenApiGuidPage> getPage(Integer page) {
     return ptvApi.getServiceChannelApi(null).apiV8ServiceChannelGet(page, null, null, PtvConsts.PUBLISHED_STATUS);
   }
 
   @Override
-  public Long getOrderIndex(int itemIndex, V3VmOpenApiGuidPage guidPage) {
+  public Long getOrderIndex(Integer page, int itemIndex, V3VmOpenApiGuidPage guidPage) {
     return (long) (itemIndex + (page * guidPage.getPageSize()));
   }
 
   @Override
   public void afterSuccess(V3VmOpenApiGuidPage guidPage) {
-    if ((page + 1) < guidPage.getPageCount()) {
-      page++;
-    } else {
-      page = 1;
-    }
+    
   }
 
   @Override
   public boolean getIsPriority() {
     return false;
+  }
+
+  @Override
+  public void timeout() {
+    PtvServiceChannelListTask task = serviceChannelListTaskQueue.next();
+    if (task != null) {
+      discoverIds(task.getPage());
+    } else if (serviceChannelListTaskQueue.isEmptyAndLocalNodeResponsible()) {
+      fillQueue();
+    }
+  }
+
+  /**
+   * Fills task queue with tasks for all pages
+   */
+  private void fillQueue() {
+    Integer pageCount = getPage(1).getResponse().getPageCount();
+    for (int page = 1; page < pageCount + 1; page++) {
+      serviceChannelListTaskQueue.enqueueTask(new PtvServiceChannelListTask(false, page));
+    }
   }
 
 }
