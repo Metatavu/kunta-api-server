@@ -23,7 +23,7 @@ public class PtvOrganizationListTask extends AbstractPtvListTask {
    * @param page page index
    */
   public PtvOrganizationListTask(boolean priority, Integer page) {
-	  super("organization", priority, page);
+    super("organization", priority, page);
   }
   
 }
