@@ -13,6 +13,8 @@ import fi.metatavu.ptv.client.ApiResponse;
 import fi.metatavu.ptv.client.model.V8VmOpenApiOrganizationGuidPage;
 import fi.metatavu.kuntaapi.server.integrations.ptv.PtvConsts;
 import fi.metatavu.kuntaapi.server.integrations.ptv.client.PtvApi;
+import fi.metatavu.kuntaapi.server.integrations.ptv.resources.PtvOrganizationListTask;
+import fi.metatavu.kuntaapi.server.integrations.ptv.tasks.lists.PriorityOrganizationListTaskQueue;
 
 @ApplicationScoped
 @Singleton
@@ -21,9 +23,12 @@ import fi.metatavu.kuntaapi.server.integrations.ptv.client.PtvApi;
 public class PtvOrganizationPriorityIdUpdater extends AbstractPtvOrganizationIdDiscoverJob {
   
   private static final int UPDATE_SLACK_MINUTE = 3;
-  
+
   @Inject
   private PtvApi ptvApi;
+
+  @Inject
+  private PriorityOrganizationListTaskQueue priorityOrganizationListTaskQueue;
   
   private OffsetDateTime currentUpdateStart;
   
@@ -45,13 +50,13 @@ public class PtvOrganizationPriorityIdUpdater extends AbstractPtvOrganizationIdD
   }
 
   @Override
-  public ApiResponse<V8VmOpenApiOrganizationGuidPage> getPage() {
+  public ApiResponse<V8VmOpenApiOrganizationGuidPage> getPage(Integer page) {
     currentUpdateStart = OffsetDateTime.now();
     return ptvApi.getOrganizationApi().apiV8OrganizationGet(null, lastUpdate.minusMinutes(UPDATE_SLACK_MINUTE), null, PtvConsts.PUBLISHED_STATUS);
   }
 
   @Override
-  public Long getOrderIndex(int itemIndex, V8VmOpenApiOrganizationGuidPage guidPage) {
+  public Long getOrderIndex(Integer page, int itemIndex, V8VmOpenApiOrganizationGuidPage guidPage) {
     return null;
   }
 
@@ -59,5 +64,22 @@ public class PtvOrganizationPriorityIdUpdater extends AbstractPtvOrganizationIdD
   public void afterSuccess(V8VmOpenApiOrganizationGuidPage guidPage) {
     lastUpdate = currentUpdateStart;
   }
-
+  
+  @Override
+  public void timeout() {
+    PtvOrganizationListTask task = priorityOrganizationListTaskQueue.next();
+    if (task != null) {
+      discoverIds(task.getPage());
+    } else if (priorityOrganizationListTaskQueue.isEmptyAndLocalNodeResponsible()) {
+      fillQueue();
+    }
+  }
+  
+  /**
+   * Adds new priority list task into the queue
+   */
+  private void fillQueue() {
+    priorityOrganizationListTaskQueue.enqueueTask(new PtvOrganizationListTask(true, 1));
+  }
+  
 }

@@ -33,26 +33,39 @@ public abstract class AbstractPtvOrganizationIdDiscoverJob extends IdDiscoverJob
   @Inject
   private OrganizationIdTaskQueue organizationIdTaskQueue;
 
-  public abstract ApiResponse<V8VmOpenApiOrganizationGuidPage> getPage();
+  /**
+   * Requests a guid page from PTV
+   * 
+   * @param page page index
+   * @return response
+   */
+  public abstract ApiResponse<V8VmOpenApiOrganizationGuidPage> getPage(Integer page);
 
-  public abstract Long getOrderIndex(int itemIndex, V8VmOpenApiOrganizationGuidPage guidPage);
+  /**
+   * Return order index for given page and item index
+   * 
+   * @param page page index
+   * @param itemIndex item index
+   * @return  order index for given page and item index
+   */
+  public abstract Long getOrderIndex(Integer page, int itemIndex, V8VmOpenApiOrganizationGuidPage guidPage);
   
   public abstract void afterSuccess(V8VmOpenApiOrganizationGuidPage guidPage);
 
   public abstract boolean getIsPriority();
-
-  @Override
-  public void timeout() {
-    discoverIds();
-  }
   
-  private void discoverIds() {
+  /**
+   * Performs id discovery for given page
+   * 
+   * @param page page index
+   */
+  protected void discoverIds(Integer page) {
     if (!systemSettingController.hasSettingValue(PtvConsts.SYSTEM_SETTING_BASEURL)) {
       logger.log(Level.INFO, "Organization management baseUrl not set, skipping update"); 
       return;
     }
     
-    ApiResponse<V8VmOpenApiOrganizationGuidPage> response = getPage();
+    ApiResponse<V8VmOpenApiOrganizationGuidPage> response = getPage(page);
     if (!response.isOk()) {
       logger.severe(() -> String.format("Organization list reported [%d] %s", response.getStatus(), response.getMessage()));
     } else {
@@ -62,7 +75,7 @@ public abstract class AbstractPtvOrganizationIdDiscoverJob extends IdDiscoverJob
         for (int i = 0; i < items.size(); i++) {
           V8VmOpenApiOrganizationItem item = items.get(i);
           if (item.getId() != null) {
-            Long orderIndex = getOrderIndex(i, response.getResponse());
+            Long orderIndex = getOrderIndex(page, i, response.getResponse());
             OrganizationId ptvOrganizationId = ptvIdFactory.createOrganizationId(item.getId());
             if (ptvOrganizationId != null) {
               organizationIdTaskQueue.enqueueTask(new IdTask<OrganizationId>(getIsPriority(), Operation.UPDATE, ptvOrganizationId, orderIndex));

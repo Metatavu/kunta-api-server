@@ -41,6 +41,13 @@ public abstract class AbstractPtvServiceIdDiscoverJob extends IdDiscoverJob {
    */
   public abstract ApiResponse<V3VmOpenApiGuidPage> getPage(Integer page);
 
+  /**
+   * Return order index for given page and item index
+   * 
+   * @param page page index
+   * @param itemIndex item index
+   * @return  order index for given page and item index
+   */
   public abstract Long getOrderIndex(Integer page, int itemIndex, V3VmOpenApiGuidPage guidPage);
   
   public abstract void afterSuccess(V3VmOpenApiGuidPage guidPage);
