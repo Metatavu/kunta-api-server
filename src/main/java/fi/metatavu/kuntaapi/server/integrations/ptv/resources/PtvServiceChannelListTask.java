@@ -23,7 +23,7 @@ public class PtvServiceChannelListTask extends AbstractPtvListTask {
    * @param page page index
    */
   public PtvServiceChannelListTask(boolean priority, Integer page) {
-	  super("servicechannel", priority, page);
+    super("servicechannel", priority, page);
   }
   
 }
