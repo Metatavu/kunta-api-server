@@ -13,6 +13,8 @@ import fi.metatavu.ptv.client.ApiResponse;
 import fi.metatavu.ptv.client.model.V3VmOpenApiGuidPage;
 import fi.metatavu.kuntaapi.server.integrations.ptv.PtvConsts;
 import fi.metatavu.kuntaapi.server.integrations.ptv.client.PtvApi;
+import fi.metatavu.kuntaapi.server.integrations.ptv.resources.PtvServiceChannelListTask;
+import fi.metatavu.kuntaapi.server.integrations.ptv.tasks.lists.PriorityServiceChannelListTaskQueue;
 
 @ApplicationScoped
 @Singleton
@@ -24,6 +26,9 @@ public class PtvServiceChannelPriorityIdUpdater extends AbstractPtvServiceChanne
   
   @Inject
   private PtvApi ptvApi;
+  
+  @Inject
+  private PriorityServiceChannelListTaskQueue priorityServiceChannelListTaskQueue;
   
   private OffsetDateTime currentUpdateStart;
   
@@ -40,13 +45,13 @@ public class PtvServiceChannelPriorityIdUpdater extends AbstractPtvServiceChanne
   }
   
   @Override
-  public ApiResponse<V3VmOpenApiGuidPage> getPage() {
+  public ApiResponse<V3VmOpenApiGuidPage> getPage(Integer page) {
     currentUpdateStart = OffsetDateTime.now();
     return ptvApi.getServiceChannelApi(null).apiV8ServiceChannelGet(null, lastUpdate.minusMinutes(UPDATE_SLACK_MINUTE), null, PtvConsts.PUBLISHED_STATUS);
   }
 
   @Override
-  public Long getOrderIndex(int itemIndex, V3VmOpenApiGuidPage guidPage) {
+  public Long getOrderIndex(Integer page, int itemIndex, V3VmOpenApiGuidPage guidPage) {
     return null;
   }
 
@@ -59,5 +64,22 @@ public class PtvServiceChannelPriorityIdUpdater extends AbstractPtvServiceChanne
   public boolean getIsPriority() {
     return true;
   }
-
+  
+  @Override
+  public void timeout() {
+    PtvServiceChannelListTask task = priorityServiceChannelListTaskQueue.next();
+    if (task != null) {
+      discoverIds(task.getPage());
+    } else if (priorityServiceChannelListTaskQueue.isEmptyAndLocalNodeResponsible()) {
+      fillQueue();
+    }
+  }
+  
+  /**
+   * Adds new priority list task into the queue
+   */
+  private void fillQueue() {
+    priorityServiceChannelListTaskQueue.enqueueTask(new PtvServiceChannelListTask(true, 1));
+  }
+  
 }

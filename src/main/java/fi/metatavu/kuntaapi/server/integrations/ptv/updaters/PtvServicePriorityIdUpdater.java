@@ -9,10 +9,12 @@ import javax.ejb.Singleton;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
-import fi.metatavu.ptv.client.ApiResponse;
-import fi.metatavu.ptv.client.model.V3VmOpenApiGuidPage;
 import fi.metatavu.kuntaapi.server.integrations.ptv.PtvConsts;
 import fi.metatavu.kuntaapi.server.integrations.ptv.client.PtvApi;
+import fi.metatavu.kuntaapi.server.integrations.ptv.resources.PtvServiceListTask;
+import fi.metatavu.kuntaapi.server.integrations.ptv.tasks.lists.PriorityServiceListTaskQueue;
+import fi.metatavu.ptv.client.ApiResponse;
+import fi.metatavu.ptv.client.model.V3VmOpenApiGuidPage;
 
 @ApplicationScoped
 @Singleton
@@ -23,7 +25,10 @@ public class PtvServicePriorityIdUpdater extends AbstractPtvServiceIdDiscoverJob
   private static final int UPDATE_SLACK_MINUTE = 3;
   
   @Inject
-  private PtvApi ptvApi;
+  private PtvApi ptvApi;  
+  
+  @Inject
+  private PriorityServiceListTaskQueue priorityServiceListTaskQueue;
 
   private OffsetDateTime currentUpdateStart;
   
@@ -45,13 +50,13 @@ public class PtvServicePriorityIdUpdater extends AbstractPtvServiceIdDiscoverJob
   }
   
   @Override
-  public ApiResponse<V3VmOpenApiGuidPage> getPage() {
+  public ApiResponse<V3VmOpenApiGuidPage> getPage(Integer page) {
     currentUpdateStart = OffsetDateTime.now();
     return ptvApi.getServiceApi(null).apiV8ServiceGet(null, lastUpdate.minusMinutes(UPDATE_SLACK_MINUTE), null, PtvConsts.PUBLISHED_STATUS);
   }
 
   @Override
-  public Long getOrderIndex(int itemIndex, V3VmOpenApiGuidPage guidPage) {
+  public Long getOrderIndex(Integer page, int itemIndex, V3VmOpenApiGuidPage guidPage) {
     return null;
   }
 
@@ -59,5 +64,21 @@ public class PtvServicePriorityIdUpdater extends AbstractPtvServiceIdDiscoverJob
   public void afterSuccess(V3VmOpenApiGuidPage guidPage) {
     lastUpdate = currentUpdateStart;
   }
-
+  
+  @Override
+  public void timeout() {
+    PtvServiceListTask task = priorityServiceListTaskQueue.next();
+    if (task != null) {
+      discoverIds(task.getPage());
+    } else if (priorityServiceListTaskQueue.isEmptyAndLocalNodeResponsible()) {
+      fillQueue();
+    }
+  }
+  
+  /**
+   * Adds new priority list task into the queue
+   */
+  private void fillQueue() {
+    priorityServiceListTaskQueue.enqueueTask(new PtvServiceListTask(true, 1));
+  }
 }

@@ -27,26 +27,39 @@ public abstract class AbstractPtvServiceChannelIdDiscoverJob extends IdDiscoverJ
   @Inject
   private ServiceChannelTasksQueue serviceChannelTasksQueue;
 
-  @Override
-  public void timeout() {
-    discoverIds();
-  }
-  
-  public abstract ApiResponse<V3VmOpenApiGuidPage> getPage();
+  /**
+   * Requests a guid page from PTV
+   * 
+   * @param page page index
+   * @return response
+   */
+  public abstract ApiResponse<V3VmOpenApiGuidPage> getPage(Integer page);
 
-  public abstract Long getOrderIndex(int itemIndex, V3VmOpenApiGuidPage guidPage);
+  /**
+   * Return order index for given page and item index
+   * 
+   * @param page page index
+   * @param itemIndex item index
+   * @return  order index for given page and item index
+   */
+  public abstract Long getOrderIndex(Integer page, int itemIndex, V3VmOpenApiGuidPage guidPage);
   
   public abstract void afterSuccess(V3VmOpenApiGuidPage guidPage);
 
   public abstract boolean getIsPriority();
 
-  private void discoverIds() {
+  /**
+   * Performs id discovery for given page
+   * 
+   * @param page page index
+   */
+  protected void discoverIds(Integer page) {
     if (!systemSettingController.hasSettingValue(PtvConsts.SYSTEM_SETTING_BASEURL)) {
       logger.log(Level.INFO, "Ptv system setting not defined, skipping update."); 
       return;
     }
     
-    ApiResponse<V3VmOpenApiGuidPage> response = getPage();
+    ApiResponse<V3VmOpenApiGuidPage> response = getPage(page);
     if (!response.isOk()) {
       logger.severe(() -> String.format("Service channel list reported [%d] %s", response.getStatus(), response.getMessage()));
     } else {
@@ -55,7 +68,7 @@ public abstract class AbstractPtvServiceChannelIdDiscoverJob extends IdDiscoverJ
       if (items != null) {
         for (int i = 0; i < items.size(); i++) {
           VmOpenApiItem item = items.get(i);
-          Long orderIndex = getOrderIndex(i, response.getResponse());
+          Long orderIndex = getOrderIndex(page, i, response.getResponse());
           serviceChannelTasksQueue.enqueueTask(new ServiceChannelUpdateTask(getIsPriority(), item.getId().toString(), orderIndex));
         }
       }
