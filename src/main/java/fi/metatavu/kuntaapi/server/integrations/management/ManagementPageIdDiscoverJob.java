@@ -92,7 +92,7 @@ public class ManagementPageIdDiscoverJob extends IdDiscoverJob {
     for (int i = 0, l = managementPages.size(); i < l; i++) {
       Page managementPage = managementPages.get(i);
       PageId pageId = new PageId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementPage.getId()));
-      pageIdTaskQueue.enqueueTask(new IdTask<PageId>(false, Operation.UPDATE, pageId, (long) i));
+      pageIdTaskQueue.enqueueTaskSync(new IdTask<PageId>(false, Operation.UPDATE, pageId, (long) i));
     }
   }
   

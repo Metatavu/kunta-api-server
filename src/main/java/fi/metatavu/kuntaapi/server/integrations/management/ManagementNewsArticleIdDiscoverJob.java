@@ -99,7 +99,7 @@ public class ManagementNewsArticleIdDiscoverJob extends IdDiscoverJob {
     for (int i = 0, l = managementPosts.size(); i < l; i++) {
       Post managementPost = managementPosts.get(i);
       NewsArticleId newsArticleId = new NewsArticleId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementPost.getId()));
-      newsArticleIdTaskQueue.enqueueTask(new IdTask<NewsArticleId>(false, Operation.UPDATE, newsArticleId, (long) i));
+      newsArticleIdTaskQueue.enqueueTaskSync(new IdTask<NewsArticleId>(false, Operation.UPDATE, newsArticleId, (long) i));
     }
   }
   

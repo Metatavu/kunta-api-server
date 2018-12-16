@@ -3,7 +3,6 @@ package fi.metatavu.kuntaapi.server.integrations.ptv;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.concurrent.ExecutionException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
@@ -167,11 +166,7 @@ public class PtvServiceProvider implements ServiceProvider {
           return IntegrationResponse.statusMessage(updateServiceChannelsResponse.getStatus(), updateServiceChannelsResponse.getMessage());
         }
         
-        try {
-          serviceIdTaskQueue.enqueueTaskSync(new IdTask<ServiceId>(true, Operation.UPDATE, ptvServiceId));
-        } catch (InterruptedException | ExecutionException e) {
-          logger.log(Level.SEVERE, "Failed to update service", e);
-        }
+        serviceIdTaskQueue.enqueueTaskSync(new IdTask<ServiceId>(true, Operation.UPDATE, ptvServiceId));
         
         return findServiceAfterUpdate(serviceId);
       } else {        

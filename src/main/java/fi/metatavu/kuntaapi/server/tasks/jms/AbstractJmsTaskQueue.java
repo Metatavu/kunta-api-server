@@ -1,7 +1,5 @@
 package fi.metatavu.kuntaapi.server.tasks.jms;
 
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -12,6 +10,7 @@ import javax.jms.ConnectionFactory;
 import javax.jms.DeliveryMode;
 import javax.jms.JMSException;
 import javax.jms.Message;
+import javax.jms.MessageConsumer;
 import javax.jms.MessageProducer;
 import javax.jms.Queue;
 import javax.jms.Session;
@@ -33,8 +32,10 @@ public abstract class AbstractJmsTaskQueue<T extends Task> {
   
   protected final static String JMS_QUEUE_PREFIX = "java:/jms/queue/";
   
-  private final static int HIGH_PRIORITY = 9;
-  private final static int DEFAULT_PRIORITY = Message.DEFAULT_PRIORITY;
+  private static final int HIGH_PRIORITY = 9;
+  private static final int DEFAULT_PRIORITY = Message.DEFAULT_PRIORITY;
+  private static final long REPLY_TIMEOUT = 1000;
+  private static final long MAX_REPLY_TIMEOUT = 2 * 60 * 1000;
   
   @Inject
   private Logger logger;
@@ -44,7 +45,7 @@ public abstract class AbstractJmsTaskQueue<T extends Task> {
   
   @Resource (lookup = JmsQueueProperties.CONNECTION_FACTORY)
   private ConnectionFactory connectionFactory;
-  
+
   /**
    * Enqueues task into the queue. 
    * 
@@ -53,56 +54,98 @@ public abstract class AbstractJmsTaskQueue<T extends Task> {
    * @param task task
    */
   public void enqueueTask(T task) {
-    try {
-      Session session = createSession();
-      StreamMessage message = createMessage(session, task);
-      if (message != null) {
-        MessageProducer producer = createProducer(session);
-        if (task.getPriority()) {
-          logger.log(Level.INFO, () -> String.format("Added priority task to the JMS queue %s", getName()));
-        }
-        
-        producer.send(message, DeliveryMode.PERSISTENT, task.getPriority() ? HIGH_PRIORITY : DEFAULT_PRIORITY, Message.DEFAULT_TIME_TO_LIVE);
-      }
-    } catch (NamingException | JMSException e) {
-      logger.log(Level.SEVERE, "Failed to enqueue task", e);
-    }
+    enqueueTask(task, 0, false);
   }
   
   /**
-   * Enqueues task into the queue and returns future task for completion
+   * Enqueues task into the queue. 
+   * 
+   * Method does not wait for task completion
    * 
    * @param task task
-   * @return future task for completion
+   * @param deliveryDelay defines minimum length of time in milliseconds before the task is delivered into the queue. Zero means that task is queued immediately
    */
-  public Future<Task> enqueueTaskAsync(T task) {
-    try {
-      Session session = createSession();
-      StreamMessage message = createMessage(session, task);
-      if (message != null) {
-        MessageProducer producer = createProducer(session);
-        TaskCompletionFuture result = new TaskCompletionFuture(task);
-        producer.send(message, new TaskCompletionListener(result));
-        return result;
-      }
-    } catch (NamingException | JMSException e) {
-      logger.log(Level.SEVERE, "Failed to enqueue task", e);
-    }
-    
-    return null;
-  }
-  
-  /**
-   * Enqueues task into the queue and waits for it's completion
-   * 
-   * @param task task
-   * @throws ExecutionException when task execution fails
-   * @throws InterruptedException when execution is interrupted
-   */
-  public void enqueueTaskSync(T task) throws InterruptedException, ExecutionException {
-    enqueueTaskAsync(task).get();    
+  public void enqueueTask(T task, int deliveryDelay) {
+    enqueueTask(task, deliveryDelay, false);
   }
 
+  /**
+   * Enqueues task into the queue. 
+   * 
+   * Method waits for task completion
+   * 
+   * @param task task
+   */
+  public void enqueueTaskSync(T task) {
+    enqueueTask(task, 0, true);
+  }
+  
+  /**
+   * Enqueues task into the queue. 
+   * 
+   * @param task task
+   * @param deliveryDelay defines minimum length of time in milliseconds before the task is delivered into the queue. Zero means that task is queued immediately
+   * @param blocking Whether to block until a reply message arrives
+   */
+  private void enqueueTask(T task, int deliveryDelay, boolean blocking) {
+    try (Connection connection = connectionFactory.createConnection()) {
+      connection.start();
+      
+      try (Session session = createSession(connection)) {
+        StreamMessage message = createMessage(session, task);
+        if (message != null) {
+          Queue queue = getQueue();
+          
+          try (MessageProducer producer = createProducer(queue, session)) {
+            if (task.getPriority()) {
+              logger.log(Level.INFO, () -> String.format("Added priority task to the JMS queue %s", getName()));
+            }
+            
+            message.setStringProperty(JmsQueueProperties.MESSAGE_TYPE, JmsQueueProperties.MESSAGE_TYPE_TASK);
+            
+            if (blocking) {
+              message.setJMSReplyTo(queue);
+            }
+            
+            try (MessageConsumer consumer = createConsumer(queue, session, JmsQueueProperties.REPLY_MESSAGE_SELECTOR)) {
+              if (deliveryDelay > 0) {
+                producer.setDeliveryDelay(deliveryDelay);
+              }
+              
+              producer.send(message, DeliveryMode.PERSISTENT, task.getPriority() ? HIGH_PRIORITY : DEFAULT_PRIORITY, Message.DEFAULT_TIME_TO_LIVE);
+              
+              if (blocking) {
+                long waitTimeout = System.currentTimeMillis() + MAX_REPLY_TIMEOUT;
+                Message replyMessage = null;
+                while (true) {
+                  replyMessage = consumer.receive(REPLY_TIMEOUT); 
+                  if (replyMessage != null) {
+                    break;  
+                  }
+                  
+                  if (System.currentTimeMillis() > waitTimeout) {
+                    if (logger.isLoggable(Level.SEVERE)) {
+                      logger.severe(String.format("Waiting for blocking task in queue %s timed out", getName()));
+                    }
+                    
+                    break;
+                  }
+                }
+              }
+            }
+          }
+        }
+      } finally {
+        if (connection != null) { 
+          connection.close();
+        }
+      }
+      
+    } catch (NamingException | JMSException e) {
+      logger.log(Level.SEVERE, "Failed to enqueue task", e);
+    }
+  }
+  
   /**
    * Creates JMS message producer
    * 
@@ -111,19 +154,22 @@ public abstract class AbstractJmsTaskQueue<T extends Task> {
    * @throws JMSException when producer creation fails
    * @throws NamingException thrown when JNDI lookup fails
    */
-  private MessageProducer createProducer(Session session) throws JMSException, NamingException {
-    MessageProducer producer = session.createProducer(getQueue());
+  private MessageProducer createProducer(Queue queue, Session session) throws JMSException, NamingException {
+    MessageProducer producer = session.createProducer(queue);
     return producer;
   }
 
+  private MessageConsumer createConsumer(Queue queue, Session session, String selector) throws JMSException {
+    return session.createConsumer(queue, selector);
+  }
+  
   /**
    * Creates new JMS session
    * 
    * @return new JMS session
    * @throws JMSException thrown when session creation fails
    */
-  private Session createSession() throws JMSException {
-    Connection connection = connectionFactory.createConnection();
+  private Session createSession(Connection connection) throws JMSException {
     return connection.createSession();
   }
   
