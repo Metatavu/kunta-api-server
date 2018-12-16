@@ -21,6 +21,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import fi.metatavu.kuntaapi.server.settings.SystemSettingController;
 import fi.metatavu.kuntaapi.server.tasks.TaskSerializer;
 import fi.metatavu.metaflow.tasks.Task;
 
@@ -40,6 +41,9 @@ public abstract class AbstractJmsJob <T extends Task> implements MessageListener
 
   @Inject
   private TaskSerializer taskSerializer;
+  
+  @Inject
+  private SystemSettingController systemSettingController;
 
   @Resource (lookup = JmsQueueProperties.CONNECTION_FACTORY)
   private ConnectionFactory connectionFactory;
@@ -62,6 +66,10 @@ public abstract class AbstractJmsJob <T extends Task> implements MessageListener
 
   @Override
   public void onMessage(Message message) {
+    if (!systemSettingController.isNotTestingOrTestRunning()) {
+      return;
+    }
+    
     if (message instanceof StreamMessage) {
       StreamMessage streamMessage = (StreamMessage) message;
       ByteArrayOutputStream messageStream = new ByteArrayOutputStream();

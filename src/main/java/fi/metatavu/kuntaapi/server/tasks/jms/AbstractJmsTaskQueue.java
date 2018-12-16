@@ -18,6 +18,7 @@ import javax.jms.StreamMessage;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
+import fi.metatavu.kuntaapi.server.settings.SystemSettingController;
 import fi.metatavu.kuntaapi.server.tasks.TaskSerializer;
 import fi.metatavu.metaflow.tasks.Task;
 
@@ -42,6 +43,9 @@ public abstract class AbstractJmsTaskQueue<T extends Task> {
 
   @Inject
   private TaskSerializer taskSerializer; 
+
+  @Inject
+  private SystemSettingController systemSettingController;
   
   @Resource (lookup = JmsQueueProperties.CONNECTION_FACTORY)
   private ConnectionFactory connectionFactory;
@@ -88,6 +92,10 @@ public abstract class AbstractJmsTaskQueue<T extends Task> {
    * @param blocking Whether to block until a reply message arrives
    */
   private void enqueueTask(T task, int deliveryDelay, boolean blocking) {
+    if (!systemSettingController.isNotTestingOrTestRunning()) {
+      return;
+    }
+    
     try (Connection connection = connectionFactory.createConnection()) {
       connection.start();
       

@@ -98,7 +98,7 @@ public abstract class AbstractPtvServiceIdDiscoverJob extends IdDiscoverJob {
       return 0;
     }
     
-    if (systemSettingController.isTestRunning()) {
+    if (systemSettingController.inTestMode()) {
       return (DELIVERY_INTERVAL / 10) * index;
     }
     
