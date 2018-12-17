@@ -44,7 +44,8 @@ import fi.metatavu.management.client.model.Menuitem;
 @SuppressWarnings ("squid:S3306")
 @MessageDriven (
   activationConfig = {
-    @ActivationConfigProperty (propertyName = JmsQueueProperties.DESTINATION_LOOKUP, propertyValue = MenuIdTaskQueue.JMS_QUEUE)
+    @ActivationConfigProperty (propertyName = JmsQueueProperties.DESTINATION_LOOKUP, propertyValue = MenuIdTaskQueue.JMS_QUEUE),
+    @ActivationConfigProperty(propertyName = JmsQueueProperties.MESSAGE_SELECTOR, propertyValue = JmsQueueProperties.TASK_MESSAGE_SELECTOR)
   }
 )
 @Pool(JmsQueueProperties.NO_CONCURRENCY_POOL)

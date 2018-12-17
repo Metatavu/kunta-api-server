@@ -21,6 +21,8 @@ import fi.metatavu.ptv.client.model.V8VmOpenApiOrganizationItem;
 @SuppressWarnings ("squid:S3306")
 public abstract class AbstractPtvOrganizationIdDiscoverJob extends IdDiscoverJob {
   
+  private static final int DELIVERY_INTERVAL = 1000;
+
   @Inject
   private Logger logger;
 
@@ -78,7 +80,7 @@ public abstract class AbstractPtvOrganizationIdDiscoverJob extends IdDiscoverJob
             Long orderIndex = getOrderIndex(page, i, response.getResponse());
             OrganizationId ptvOrganizationId = ptvIdFactory.createOrganizationId(item.getId());
             if (ptvOrganizationId != null) {
-              organizationIdTaskQueue.enqueueTask(new IdTask<OrganizationId>(getIsPriority(), Operation.UPDATE, ptvOrganizationId, orderIndex));
+              organizationIdTaskQueue.enqueueTask(new IdTask<OrganizationId>(getIsPriority(), Operation.UPDATE, ptvOrganizationId, orderIndex), getDeliveryDelay(i));
             } else {
               logger.log(Level.SEVERE, () -> String.format("Failed to translate %s into PTV id", item.getId()));
             }
@@ -90,6 +92,24 @@ public abstract class AbstractPtvOrganizationIdDiscoverJob extends IdDiscoverJob
       
       afterSuccess(response.getResponse());      
     }
+  }
+  
+  /**
+   * Returns task queue delay time in milliseconds
+   * 
+   * @param index index
+   * @return task queue delay time in milliseconds
+   */
+  private int getDeliveryDelay(int index) {
+    if (getIsPriority()) {
+      return 0;
+    }
+    
+    if (systemSettingController.inTestMode()) {
+      return (DELIVERY_INTERVAL / 10) * index;
+    }
+    
+    return index * DELIVERY_INTERVAL;
   }
 
 }

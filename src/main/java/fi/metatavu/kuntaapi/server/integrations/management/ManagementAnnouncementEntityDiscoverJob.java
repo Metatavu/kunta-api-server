@@ -33,7 +33,8 @@ import fi.metatavu.management.client.model.Announcement;
 @SuppressWarnings ("squid:S3306")
 @MessageDriven (
   activationConfig = {
-    @ActivationConfigProperty (propertyName = JmsQueueProperties.DESTINATION_LOOKUP, propertyValue = AnnouncementIdTaskQueue.JMS_QUEUE)
+    @ActivationConfigProperty (propertyName = JmsQueueProperties.DESTINATION_LOOKUP, propertyValue = AnnouncementIdTaskQueue.JMS_QUEUE),
+    @ActivationConfigProperty(propertyName = JmsQueueProperties.MESSAGE_SELECTOR, propertyValue = JmsQueueProperties.TASK_MESSAGE_SELECTOR)
   }
 )
 @Pool(JmsQueueProperties.LOW_CONCURRENCY_POOL)

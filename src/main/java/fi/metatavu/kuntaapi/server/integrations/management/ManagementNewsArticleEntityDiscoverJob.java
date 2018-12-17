@@ -54,10 +54,11 @@ import fi.metatavu.management.client.model.Tag;
 @SuppressWarnings ("squid:S3306")
 @MessageDriven (
   activationConfig = {
-    @ActivationConfigProperty (propertyName = JmsQueueProperties.DESTINATION_LOOKUP, propertyValue = NewsArticleIdTaskQueue.JMS_QUEUE)
+    @ActivationConfigProperty (propertyName = JmsQueueProperties.DESTINATION_LOOKUP, propertyValue = NewsArticleIdTaskQueue.JMS_QUEUE),
+    @ActivationConfigProperty(propertyName = JmsQueueProperties.MESSAGE_SELECTOR, propertyValue = JmsQueueProperties.TASK_MESSAGE_SELECTOR)
   }
 )
-@Pool(JmsQueueProperties.NO_CONCURRENCY_POOL)
+@Pool(JmsQueueProperties.HIGH_CONCURRENCY_POOL)
 public class ManagementNewsArticleEntityDiscoverJob extends AbstractJmsJob<IdTask<NewsArticleId>> {
 
   @Inject

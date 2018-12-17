@@ -18,6 +18,8 @@ import fi.metatavu.ptv.client.model.VmOpenApiItem;
 @SuppressWarnings ("squid:S3306")
 public abstract class AbstractPtvServiceChannelIdDiscoverJob extends IdDiscoverJob {
   
+  private static final int DELIVERY_INTERVAL = 1000;
+
   @Inject
   private Logger logger;
 
@@ -69,12 +71,30 @@ public abstract class AbstractPtvServiceChannelIdDiscoverJob extends IdDiscoverJ
         for (int i = 0; i < items.size(); i++) {
           VmOpenApiItem item = items.get(i);
           Long orderIndex = getOrderIndex(page, i, response.getResponse());
-          serviceChannelTasksQueue.enqueueTask(new ServiceChannelUpdateTask(getIsPriority(), item.getId().toString(), orderIndex));
+          serviceChannelTasksQueue.enqueueTask(new ServiceChannelUpdateTask(getIsPriority(), item.getId().toString(), orderIndex), getDeliveryDelay(i));
         }
       }
       
       afterSuccess(response.getResponse());
     }
+  }
+  
+  /**
+   * Returns task queue delay time in milliseconds
+   * 
+   * @param index index
+   * @return task queue delay time in milliseconds
+   */
+  private int getDeliveryDelay(int index) {
+    if (getIsPriority()) {
+      return 0;
+    }
+    
+    if (systemSettingController.inTestMode()) {
+      return (DELIVERY_INTERVAL / 10) * index;
+    }
+    
+    return index * DELIVERY_INTERVAL;
   }
 
 }

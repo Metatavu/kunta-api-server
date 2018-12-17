@@ -3,7 +3,6 @@ package fi.metatavu.kuntaapi.server.integrations.ptv;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ExecutionException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -533,11 +532,7 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
   }
   
   private void updateServiceChannel(String updatedPtvChannelId) {
-    try {
-      serviceChannelTasksQueue.enqueueTaskSync(new ServiceChannelUpdateTask(true, updatedPtvChannelId, null));
-    } catch (InterruptedException | ExecutionException e) {
-      logger.log(Level.SEVERE, "Exception occurred while waiting for service channel update", e);
-    }
+    serviceChannelTasksQueue.enqueueTaskSync(new ServiceChannelUpdateTask(true, updatedPtvChannelId, null));
   }
   
   @SuppressWarnings("unchecked")
