@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.List;
+import java.util.logging.Logger;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.http.client.methods.HttpPost;
@@ -58,6 +59,8 @@ import fi.metatavu.kuntaapi.server.persistence.model.clients.ClientOrganizationP
 public abstract class AbstractIntegrationTest extends AbstractTest {
   
   public static final String BASE_URL = "/v1";
+  
+  private static final Logger logger = Logger.getLogger(AbstractIntegrationTest.class.getName());
   
   private KuntarekryMocker kuntarekryMocker = new KuntarekryMocker();
   private TptMocker tptMocker = new TptMocker(); 
@@ -438,7 +441,11 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   }
   
   protected void clearTasks() {
-    executeDelete("delete from Task");
+    try {
+      executeDelete("delete from Task");
+    } catch (Exception e) {
+      logger.log(java.util.logging.Level.SEVERE, "Purging tasks failed", e);
+    }
   }
 
   @SuppressWarnings ({"squid:S1166", "squid:S00108", "squid:S2925", "squid:S106"})
