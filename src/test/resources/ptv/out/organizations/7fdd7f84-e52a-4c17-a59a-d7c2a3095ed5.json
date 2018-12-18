@@ -4,6 +4,7 @@
   "oid": "",
   "parentOrganizationId": null,
   "organizationRootId": "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "organizationType": "Municipality",
   "municipality": {
     "code": "905",
     "name": [
@@ -21,7 +22,6 @@
       }
     ]
   },
-  "organizationType": "Municipality",
   "businessCode": "0209602-6",
   "businessName": "Vaasa",
   "organizationNames": [

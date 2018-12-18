@@ -4,6 +4,7 @@
   "oid": "",
   "parentOrganizationId": null,
   "organizationRootId": "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "organizationType": "Municipality",
   "municipality": {
     "code": "529",
     "name": [
@@ -21,7 +22,6 @@
       }
     ]
   },
-  "organizationType": "Municipality",
   "businessCode": "0135457-2",
   "businessName": "Naantali",
   "organizationNames": [
