@@ -4,8 +4,8 @@
   "oid": "",
   "parentOrganizationId": null,
   "organizationRootId": "b458d033-042d-4cbe-b030-34e81da28821",
-  "organizationType": "State",
   "municipality": null,
+  "organizationType": "State",
   "businessCode": "0245437-2",
   "businessName": "Väestörekisterikeskus",
   "organizationNames": [
@@ -66,20 +66,6 @@
       "language": "sv"
     }
   ],
-  "webPages": [
-    {
-      "orderNumber": "0",
-      "url": "http://www.vrk.fi",
-      "value": "Väestörekisterikeskuksen kotisivu",
-      "language": "fi"
-    },
-    {
-      "orderNumber": "1",
-      "url": "http://vrk.fi/sv",
-      "value": "Befolkningsregistercentralens hemsida",
-      "language": "sv"
-    }
-  ],
   "phoneNumbers": [
     {
       "additionalInformation": null,
@@ -97,6 +83,18 @@
       "prefixNumber": null,
       "isFinnishServiceNumber": true,
       "number": "0295535001",
+      "language": "sv"
+    }
+  ],
+  "webPages": [
+    {
+      "url": "http://www.vrk.fi",
+      "value": "Väestörekisterikeskuksen kotisivu",
+      "language": "fi"
+    },
+    {
+      "url": "http://vrk.fi/sv",
+      "value": "Befolkningsregistercentralens hemsida",
       "language": "sv"
     }
   ],
@@ -155,6 +153,7 @@
         "longitude": "311433.453",
         "coordinateState": "Ok"
       },
+      "otherAddress": null,
       "foreignAddress": null,
       "country": "FI"
     },
@@ -212,6 +211,7 @@
         "longitude": "386952.285",
         "coordinateState": "Ok"
       },
+      "otherAddress": null,
       "foreignAddress": null,
       "country": "FI"
     },
@@ -249,6 +249,7 @@
         ]
       },
       "streetAddress": null,
+      "otherAddress": null,
       "foreignAddress": null,
       "country": "FI"
     },
@@ -286,6 +287,7 @@
         ]
       },
       "streetAddress": null,
+      "otherAddress": null,
       "foreignAddress": null,
       "country": "FI"
     }
@@ -405,5 +407,6 @@
     }
   ],
   "modified": "2017-09-11T00:00:00Z",
-  "subOrganizations": null
+  "subOrganizations": null,
+  "responsibleOrganizationId": null
 }

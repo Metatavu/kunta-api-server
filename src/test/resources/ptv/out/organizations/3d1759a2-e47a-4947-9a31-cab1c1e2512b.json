@@ -4,7 +4,6 @@
   "oid": "",
   "parentOrganizationId": null,
   "organizationRootId": "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
-  "organizationType": "Municipality",
   "municipality": {
     "code": "529",
     "name": [
@@ -22,6 +21,7 @@
       }
     ]
   },
+  "organizationType": "Municipality",
   "businessCode": "0135457-2",
   "businessName": "Naantali",
   "organizationNames": [
@@ -72,14 +72,6 @@
       "language": "fi"
     }
   ],
-  "webPages": [
-    {
-      "orderNumber": "1",
-      "url": "http://www.naantali.fi/fi_FI/",
-      "value": "Naantalin kaupungin verkkosivut",
-      "language": "fi"
-    }
-  ],
   "phoneNumbers": [
     {
       "additionalInformation": "Naantalin kaupungin vaihde",
@@ -88,6 +80,13 @@
       "prefixNumber": "+358",
       "isFinnishServiceNumber": false,
       "number": "24345111",
+      "language": "fi"
+    }
+  ],
+  "webPages": [
+    {
+      "url": "http://www.naantali.fi/fi_FI/",
+      "value": "Naantalin kaupungin verkkosivut",
       "language": "fi"
     }
   ],
@@ -142,6 +141,7 @@
         "longitude": "226646.468",
         "coordinateState": "Ok"
       },
+      "otherAddress": null,
       "foreignAddress": null,
       "country": "FI"
     },
@@ -191,6 +191,7 @@
         ]
       },
       "streetAddress": null,
+      "otherAddress": null,
       "foreignAddress": null,
       "country": "FI"
     }
@@ -310,5 +311,6 @@
     }
   ],
   "modified": "2017-09-11T00:00:00Z",
-  "subOrganizations": null
+  "subOrganizations": null,
+  "responsibleOrganizationId": null
 }
