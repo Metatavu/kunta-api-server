@@ -271,8 +271,8 @@
       },
       "serviceChargeType": null,
       "description": [],
-      "extraTypes": [],
-      "serviceHours": [],
+      "extraTypes": null,
+      "serviceHours": null,
       "contactDetails": null,
       "digitalAuthorizations": []
     },
@@ -283,29 +283,29 @@
       },
       "serviceChargeType": null,
       "description": [],
-      "extraTypes": [],
-      "serviceHours": [],
+      "extraTypes": null,
+      "serviceHours": null,
       "contactDetails": null,
       "digitalAuthorizations": []
     }
   ],
   "organizations": [
     {
-      "provisionType": null,
       "organization": {
         "id": "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
         "name": "Naantalin kaupunki"
       },
       "roleType": "Responsible",
+      "provisionType": null,
       "additionalInformation": []
     },
     {
-      "provisionType": "SelfProducedServices",
       "organization": {
         "id": "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
         "name": "Naantalin kaupunki"
       },
       "roleType": "Producer",
+      "provisionType": "SelfProducedServices",
       "additionalInformation": []
     }
   ],

@@ -553,8 +553,8 @@
       },
       "serviceChargeType": null,
       "description": [],
-      "extraTypes": [],
-      "serviceHours": [],
+      "extraTypes": null,
+      "serviceHours": null,
       "contactDetails": null,
       "digitalAuthorizations": []
     },
@@ -565,26 +565,26 @@
       },
       "serviceChargeType": null,
       "description": [],
-      "extraTypes": [],
-      "serviceHours": [],
+      "extraTypes": null,
+      "serviceHours": null,
       "contactDetails": null,
       "digitalAuthorizations": []
     }
   ],
   "organizations": [
     {
-      "provisionType": null,
       "organization": {
         "id": "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
         "name": "Vaasan kaupunki"
       },
       "roleType": "Responsible",
+      "provisionType": null,
       "additionalInformation": []
     },
     {
-      "provisionType": "Other",
       "organization": null,
       "roleType": "Producer",
+      "provisionType": "Other",
       "additionalInformation": []
     }
   ],

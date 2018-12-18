@@ -146,21 +146,21 @@
   "serviceChannels": [],
   "organizations": [
     {
-      "provisionType": null,
       "organization": {
         "id": "b458d033-042d-4cbe-b030-34e81da28821",
         "name": "Väestörekisterikeskus"
       },
       "roleType": "Responsible",
+      "provisionType": null,
       "additionalInformation": []
     },
     {
-      "provisionType": "SelfProducedServices",
       "organization": {
         "id": "b458d033-042d-4cbe-b030-34e81da28821",
         "name": "Väestörekisterikeskus"
       },
       "roleType": "Producer",
+      "provisionType": "SelfProducedServices",
       "additionalInformation": []
     }
   ],
