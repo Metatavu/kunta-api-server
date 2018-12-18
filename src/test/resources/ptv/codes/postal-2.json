@@ -1,0 +1,9000 @@
+{
+  "pageCount" : 5,
+  "pageNumber" : 2,
+  "pageSize" : 1000,
+  "itemList" : [ {
+    "code" : "15864",
+    "names" : [ {
+      "value" : "SMARTPOST",
+      "language" : "fi"
+    }, {
+      "value" : "SMARTPOST",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "15870",
+    "names" : [ {
+      "value" : "HOLLOLA",
+      "language" : "fi"
+    }, {
+      "value" : "HOLLOLA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "15871",
+    "names" : [ {
+      "value" : "HOLLOLA",
+      "language" : "sv"
+    }, {
+      "value" : "HOLLOLA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "15875",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "15880",
+    "names" : [ {
+      "value" : "HOLLOLA",
+      "language" : "sv"
+    }, {
+      "value" : "HOLLOLA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "15900",
+    "names" : [ {
+      "value" : "LAHTI",
+      "language" : "fi"
+    }, {
+      "value" : "LAHTI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "15901",
+    "names" : [ {
+      "value" : "LAHTI",
+      "language" : "sv"
+    }, {
+      "value" : "LAHTI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "15950",
+    "names" : [ {
+      "value" : "LAHTI",
+      "language" : "sv"
+    }, {
+      "value" : "LAHTI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "15980",
+    "names" : [ {
+      "value" : "MESSILÄ",
+      "language" : "sv"
+    }, {
+      "value" : "MESSILÄ",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "16100",
+    "names" : [ {
+      "value" : "UUSIKYLÄ",
+      "language" : "sv"
+    }, {
+      "value" : "UUSIKYLÄ",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "16160",
+    "names" : [ {
+      "value" : "OKKERI",
+      "language" : "sv"
+    }, {
+      "value" : "OKKERI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "16200",
+    "names" : [ {
+      "value" : "ARTJÄRVI",
+      "language" : "sv"
+    }, {
+      "value" : "ARTJÄRVI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "16201",
+    "names" : [ {
+      "value" : "ARTJÄRVI",
+      "language" : "sv"
+    }, {
+      "value" : "ARTJÄRVI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "16230",
+    "names" : [ {
+      "value" : "ARTJÄRVI KK",
+      "language" : "sv"
+    }, {
+      "value" : "ARTJÄRVI KK",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "16260",
+    "names" : [ {
+      "value" : "HIETANA",
+      "language" : "fi"
+    }, {
+      "value" : "HIETANA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "16270",
+    "names" : [ {
+      "value" : "VILLIKKALA",
+      "language" : "fi"
+    }, {
+      "value" : "VILLIKKALA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "16280",
+    "names" : [ {
+      "value" : "KUIVANTO",
+      "language" : "fi"
+    }, {
+      "value" : "KUIVANTO",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "16300",
+    "names" : [ {
+      "value" : "ORIMATTILA",
+      "language" : "sv"
+    }, {
+      "value" : "ORIMATTILA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "16301",
+    "names" : [ {
+      "value" : "ORIMATTILA",
+      "language" : "sv"
+    }, {
+      "value" : "ORIMATTILA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "16304",
+    "names" : [ {
+      "value" : "SMARTPOST",
+      "language" : "fi"
+    }, {
+      "value" : "SMARTPOST",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "16305",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "16310",
+    "names" : [ {
+      "value" : "VIRENOJA",
+      "language" : "sv"
+    }, {
+      "value" : "VIRENOJA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "16320",
+    "names" : [ {
+      "value" : "PENNALA",
+      "language" : "fi"
+    }, {
+      "value" : "PENNALA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "16330",
+    "names" : [ {
+      "value" : "HEINÄMAA",
+      "language" : "sv"
+    }, {
+      "value" : "HEINÄMAA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "16350",
+    "names" : [ {
+      "value" : "NIINIKOSKI",
+      "language" : "fi"
+    }, {
+      "value" : "NIINIKOSKI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "16390",
+    "names" : [ {
+      "value" : "PAKAA",
+      "language" : "sv"
+    }, {
+      "value" : "PAKAA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "16450",
+    "names" : [ {
+      "value" : "MALLUSJOKI",
+      "language" : "fi"
+    }, {
+      "value" : "MALLUSJOKI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "16500",
+    "names" : [ {
+      "value" : "HERRALA",
+      "language" : "fi"
+    }, {
+      "value" : "HERRALA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "16510",
+    "names" : [ {
+      "value" : "LUHTIKYLÄ",
+      "language" : "sv"
+    }, {
+      "value" : "LUHTIKYLÄ",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "16540",
+    "names" : [ {
+      "value" : "MERTIE",
+      "language" : "fi"
+    }, {
+      "value" : "MERTIE",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "16600",
+    "names" : [ {
+      "value" : "JÄRVELÄ",
+      "language" : "fi"
+    }, {
+      "value" : "JÄRVELÄ",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "16601",
+    "names" : [ {
+      "value" : "JÄRVELÄ",
+      "language" : "sv"
+    }, {
+      "value" : "JÄRVELÄ",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "16610",
+    "names" : [ {
+      "value" : "KÄRKÖLÄ",
+      "language" : "fi"
+    }, {
+      "value" : "KÄRKÖLÄ",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "16630",
+    "names" : [ {
+      "value" : "TENNILÄ",
+      "language" : "sv"
+    }, {
+      "value" : "TENNILÄ",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "16670",
+    "names" : [ {
+      "value" : "LAPPILA",
+      "language" : "sv"
+    }, {
+      "value" : "LAPPILA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "16710",
+    "names" : [ {
+      "value" : "HOLLOLA KK",
+      "language" : "fi"
+    }, {
+      "value" : "HOLLOLA KK",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "16730",
+    "names" : [ {
+      "value" : "KUTAJÄRVI",
+      "language" : "sv"
+    }, {
+      "value" : "KUTAJÄRVI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "16790",
+    "names" : [ {
+      "value" : "MANSKIVI",
+      "language" : "fi"
+    }, {
+      "value" : "MANSKIVI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "16800",
+    "names" : [ {
+      "value" : "HÄMEENKOSKI",
+      "language" : "fi"
+    }, {
+      "value" : "HÄMEENKOSKI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "16801",
+    "names" : [ {
+      "value" : "HÄMEENKOSKI",
+      "language" : "sv"
+    }, {
+      "value" : "HÄMEENKOSKI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "16900",
+    "names" : [ {
+      "value" : "LAMMI",
+      "language" : "fi"
+    }, {
+      "value" : "LAMMI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "16901",
+    "names" : [ {
+      "value" : "LAMMI",
+      "language" : "fi"
+    }, {
+      "value" : "LAMMI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "16905",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "16960",
+    "names" : [ {
+      "value" : "ISO-EVO",
+      "language" : "fi"
+    }, {
+      "value" : "ISO-EVO",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "16970",
+    "names" : [ {
+      "value" : "EVO",
+      "language" : "fi"
+    }, {
+      "value" : "EVO",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "16980",
+    "names" : [ {
+      "value" : "RONNI",
+      "language" : "fi"
+    }, {
+      "value" : "RONNI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "17110",
+    "names" : [ {
+      "value" : "KALLIOLA",
+      "language" : "fi"
+    }, {
+      "value" : "KALLIOLA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "17120",
+    "names" : [ {
+      "value" : "PAIMELA",
+      "language" : "fi"
+    }, {
+      "value" : "PAIMELA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "17130",
+    "names" : [ {
+      "value" : "VESIVEHMAA",
+      "language" : "sv"
+    }, {
+      "value" : "VESIVEHMAA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "17150",
+    "names" : [ {
+      "value" : "URAJÄRVI",
+      "language" : "fi"
+    }, {
+      "value" : "URAJÄRVI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "17200",
+    "names" : [ {
+      "value" : "VÄÄKSY",
+      "language" : "fi"
+    }, {
+      "value" : "VÄÄKSY",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "17201",
+    "names" : [ {
+      "value" : "VÄÄKSY",
+      "language" : "sv"
+    }, {
+      "value" : "VÄÄKSY",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "17205",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "17220",
+    "names" : [ {
+      "value" : "PIETILÄ",
+      "language" : "sv"
+    }, {
+      "value" : "PIETILÄ",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "17240",
+    "names" : [ {
+      "value" : "KALKKINEN",
+      "language" : "fi"
+    }, {
+      "value" : "KALKKINEN",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "17320",
+    "names" : [ {
+      "value" : "ASIKKALA",
+      "language" : "sv"
+    }, {
+      "value" : "ASIKKALA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "17410",
+    "names" : [ {
+      "value" : "VIITAILA",
+      "language" : "fi"
+    }, {
+      "value" : "VIITAILA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "17430",
+    "names" : [ {
+      "value" : "KURHILA",
+      "language" : "sv"
+    }, {
+      "value" : "KURHILA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "17440",
+    "names" : [ {
+      "value" : "VÄHIMAA",
+      "language" : "fi"
+    }, {
+      "value" : "VÄHIMAA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "17450",
+    "names" : [ {
+      "value" : "ISO-ÄINIÖ",
+      "language" : "sv"
+    }, {
+      "value" : "ISO-ÄINIÖ",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "17470",
+    "names" : [ {
+      "value" : "MAAKESKI",
+      "language" : "sv"
+    }, {
+      "value" : "MAAKESKI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "17500",
+    "names" : [ {
+      "value" : "PADASJOKI",
+      "language" : "sv"
+    }, {
+      "value" : "PADASJOKI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "17501",
+    "names" : [ {
+      "value" : "PADASJOKI",
+      "language" : "sv"
+    }, {
+      "value" : "PADASJOKI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "17510",
+    "names" : [ {
+      "value" : "NYYSTÖLÄ",
+      "language" : "sv"
+    }, {
+      "value" : "NYYSTÖLÄ",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "17530",
+    "names" : [ {
+      "value" : "ARRAKOSKI",
+      "language" : "sv"
+    }, {
+      "value" : "ARRAKOSKI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "17610",
+    "names" : [ {
+      "value" : "AUTTOINEN",
+      "language" : "sv"
+    }, {
+      "value" : "AUTTOINEN",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "17630",
+    "names" : [ {
+      "value" : "VESIJAKO",
+      "language" : "sv"
+    }, {
+      "value" : "VESIJAKO",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "17710",
+    "names" : [ {
+      "value" : "TORITTU",
+      "language" : "fi"
+    }, {
+      "value" : "TORITTU",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "17740",
+    "names" : [ {
+      "value" : "KASINIEMI",
+      "language" : "fi"
+    }, {
+      "value" : "KASINIEMI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "17780",
+    "names" : [ {
+      "value" : "HARMOINEN",
+      "language" : "sv"
+    }, {
+      "value" : "HARMOINEN",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "17800",
+    "names" : [ {
+      "value" : "KUHMOINEN",
+      "language" : "sv"
+    }, {
+      "value" : "KUHMOINEN",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "17801",
+    "names" : [ {
+      "value" : "KUHMOINEN",
+      "language" : "fi"
+    }, {
+      "value" : "KUHMOINEN",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "17840",
+    "names" : [ {
+      "value" : "HARJUNSALMI",
+      "language" : "sv"
+    }, {
+      "value" : "HARJUNSALMI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "17850",
+    "names" : [ {
+      "value" : "PIHLAJAKOSKI",
+      "language" : "fi"
+    }, {
+      "value" : "PIHLAJAKOSKI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "17870",
+    "names" : [ {
+      "value" : "RUOLAHTI",
+      "language" : "sv"
+    }, {
+      "value" : "RUOLAHTI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "17930",
+    "names" : [ {
+      "value" : "PÄIJÄLÄ",
+      "language" : "fi"
+    }, {
+      "value" : "PÄIJÄLÄ",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "17950",
+    "names" : [ {
+      "value" : "KYLÄMÄ",
+      "language" : "fi"
+    }, {
+      "value" : "KYLÄMÄ",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "17970",
+    "names" : [ {
+      "value" : "PUUKKOINEN",
+      "language" : "fi"
+    }, {
+      "value" : "PUUKKOINEN",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "18100",
+    "names" : [ {
+      "value" : "HEINOLA",
+      "language" : "fi"
+    }, {
+      "value" : "HEINOLA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "18101",
+    "names" : [ {
+      "value" : "HEINOLA",
+      "language" : "fi"
+    }, {
+      "value" : "HEINOLA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "18105",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "18120",
+    "names" : [ {
+      "value" : "HEINOLA",
+      "language" : "sv"
+    }, {
+      "value" : "HEINOLA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "18130",
+    "names" : [ {
+      "value" : "HEINOLA",
+      "language" : "sv"
+    }, {
+      "value" : "HEINOLA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "18150",
+    "names" : [ {
+      "value" : "HEINOLA",
+      "language" : "fi"
+    }, {
+      "value" : "HEINOLA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "18200",
+    "names" : [ {
+      "value" : "HEINOLA",
+      "language" : "sv"
+    }, {
+      "value" : "HEINOLA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "18300",
+    "names" : [ {
+      "value" : "HEINOLA KK",
+      "language" : "fi"
+    }, {
+      "value" : "HEINOLA KK",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "18600",
+    "names" : [ {
+      "value" : "MYLLYOJA",
+      "language" : "fi"
+    }, {
+      "value" : "MYLLYOJA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "19110",
+    "names" : [ {
+      "value" : "VIERUMÄKI",
+      "language" : "fi"
+    }, {
+      "value" : "VIERUMÄKI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "19120",
+    "names" : [ {
+      "value" : "VIERUMÄKI",
+      "language" : "sv"
+    }, {
+      "value" : "VIERUMÄKI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "19160",
+    "names" : [ {
+      "value" : "HUUTOTÖYRY",
+      "language" : "sv"
+    }, {
+      "value" : "HUUTOTÖYRY",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "19210",
+    "names" : [ {
+      "value" : "LUSI",
+      "language" : "sv"
+    }, {
+      "value" : "LUSI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "19230",
+    "names" : [ {
+      "value" : "ONKINIEMI",
+      "language" : "sv"
+    }, {
+      "value" : "ONKINIEMI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "19250",
+    "names" : [ {
+      "value" : "SYRJÄKOSKI",
+      "language" : "fi"
+    }, {
+      "value" : "SYRJÄKOSKI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "19260",
+    "names" : [ {
+      "value" : "PAASO",
+      "language" : "sv"
+    }, {
+      "value" : "PAASO",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "19310",
+    "names" : [ {
+      "value" : "KARILANMAA",
+      "language" : "sv"
+    }, {
+      "value" : "KARILANMAA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "19320",
+    "names" : [ {
+      "value" : "NIKKAROINEN",
+      "language" : "sv"
+    }, {
+      "value" : "NIKKAROINEN",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "19370",
+    "names" : [ {
+      "value" : "NUORAMOINEN",
+      "language" : "fi"
+    }, {
+      "value" : "NUORAMOINEN",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "19410",
+    "names" : [ {
+      "value" : "KUORTTI",
+      "language" : "sv"
+    }, {
+      "value" : "KUORTTI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "19417",
+    "names" : [ ]
+  }, {
+    "code" : "19420",
+    "names" : [ {
+      "value" : "MANSIKKAMÄKI",
+      "language" : "sv"
+    }, {
+      "value" : "MANSIKKAMÄKI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "19430",
+    "names" : [ {
+      "value" : "PERTUNMAA",
+      "language" : "fi"
+    }, {
+      "value" : "PERTUNMAA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "19460",
+    "names" : [ {
+      "value" : "RUORASMÄKI",
+      "language" : "fi"
+    }, {
+      "value" : "RUORASMÄKI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "19470",
+    "names" : [ {
+      "value" : "LIHAVANPÄÄ",
+      "language" : "fi"
+    }, {
+      "value" : "LIHAVANPÄÄ",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "19480",
+    "names" : [ {
+      "value" : "HARTOSENPÄÄ",
+      "language" : "fi"
+    }, {
+      "value" : "HARTOSENPÄÄ",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "19510",
+    "names" : [ {
+      "value" : "LEPSALA",
+      "language" : "fi"
+    }, {
+      "value" : "LEPSALA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "19540",
+    "names" : [ {
+      "value" : "KOITTI",
+      "language" : "fi"
+    }, {
+      "value" : "KOITTI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "19600",
+    "names" : [ {
+      "value" : "HARTOLA",
+      "language" : "sv"
+    }, {
+      "value" : "HARTOLA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "19601",
+    "names" : [ {
+      "value" : "HARTOLA",
+      "language" : "fi"
+    }, {
+      "value" : "HARTOLA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "19610",
+    "names" : [ {
+      "value" : "MURAKKA",
+      "language" : "sv"
+    }, {
+      "value" : "MURAKKA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "19620",
+    "names" : [ {
+      "value" : "POHELA",
+      "language" : "sv"
+    }, {
+      "value" : "POHELA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "19630",
+    "names" : [ {
+      "value" : "KALHONKYLÄ",
+      "language" : "fi"
+    }, {
+      "value" : "KALHONKYLÄ",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "19650",
+    "names" : [ {
+      "value" : "JOUTSA",
+      "language" : "fi"
+    }, {
+      "value" : "JOUTSA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "19651",
+    "names" : [ {
+      "value" : "JOUTSA",
+      "language" : "fi"
+    }, {
+      "value" : "JOUTSA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "19670",
+    "names" : [ {
+      "value" : "MIESKONMÄKI",
+      "language" : "fi"
+    }, {
+      "value" : "MIESKONMÄKI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "19700",
+    "names" : [ {
+      "value" : "SYSMÄ",
+      "language" : "fi"
+    }, {
+      "value" : "SYSMÄ",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "19701",
+    "names" : [ {
+      "value" : "SYSMÄ",
+      "language" : "fi"
+    }, {
+      "value" : "SYSMÄ",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "19730",
+    "names" : [ {
+      "value" : "SÄRKILAMPI",
+      "language" : "sv"
+    }, {
+      "value" : "SÄRKILAMPI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "19740",
+    "names" : [ {
+      "value" : "LIIKOLA",
+      "language" : "sv"
+    }, {
+      "value" : "LIIKOLA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "19770",
+    "names" : [ {
+      "value" : "VALITTULA",
+      "language" : "sv"
+    }, {
+      "value" : "VALITTULA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "19850",
+    "names" : [ {
+      "value" : "PUTKIJÄRVI",
+      "language" : "sv"
+    }, {
+      "value" : "PUTKIJÄRVI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "19910",
+    "names" : [ {
+      "value" : "TAMMIJÄRVI",
+      "language" : "fi"
+    }, {
+      "value" : "TAMMIJÄRVI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "19920",
+    "names" : [ {
+      "value" : "PAPPINEN",
+      "language" : "fi"
+    }, {
+      "value" : "PAPPINEN",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "19950",
+    "names" : [ {
+      "value" : "LUHANKA",
+      "language" : "sv"
+    }, {
+      "value" : "LUHANKA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "20006",
+    "names" : [ {
+      "value" : "SVARSFÖRSÄNDELSE",
+      "language" : "sv"
+    }, {
+      "value" : "VASTAUSLÄHETYS",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "20014",
+    "names" : [ {
+      "value" : "TURUN YLIOPISTO",
+      "language" : "fi"
+    }, {
+      "value" : "TURUN YLIOPISTO",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "20020",
+    "names" : [ {
+      "value" : "WOIKOSKI",
+      "language" : "sv"
+    }, {
+      "value" : "WOIKOSKI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "20025",
+    "names" : [ {
+      "value" : "IF",
+      "language" : "sv"
+    }, {
+      "value" : "IF",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "20032",
+    "names" : [ {
+      "value" : "ARBETSHÄLSOINSTITUTET",
+      "language" : "sv"
+    }, {
+      "value" : "TYÖTERVEYSLAITOS",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "20100",
+    "names" : [ {
+      "value" : "ÅBO",
+      "language" : "sv"
+    }, {
+      "value" : "TURKU",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "20101",
+    "names" : [ {
+      "value" : "TURKU",
+      "language" : "fi"
+    }, {
+      "value" : "ÅBO",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "20105",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "20200",
+    "names" : [ {
+      "value" : "TURKU",
+      "language" : "fi"
+    }, {
+      "value" : "ÅBO",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "20201",
+    "names" : [ {
+      "value" : "ÅBO",
+      "language" : "sv"
+    }, {
+      "value" : "TURKU",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "20204",
+    "names" : [ {
+      "value" : "SMARTPOST",
+      "language" : "sv"
+    }, {
+      "value" : "SMARTPOST",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "20210",
+    "names" : [ {
+      "value" : "TURKU",
+      "language" : "fi"
+    }, {
+      "value" : "ÅBO",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "20214",
+    "names" : [ {
+      "value" : "SMARTPOST",
+      "language" : "fi"
+    }, {
+      "value" : "SMARTPOST",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "20215",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "20240",
+    "names" : [ {
+      "value" : "ÅBO",
+      "language" : "sv"
+    }, {
+      "value" : "TURKU",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "20241",
+    "names" : [ {
+      "value" : "ÅBO",
+      "language" : "sv"
+    }, {
+      "value" : "TURKU",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "20250",
+    "names" : [ {
+      "value" : "TURKU",
+      "language" : "fi"
+    }, {
+      "value" : "ÅBO",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "20251",
+    "names" : [ {
+      "value" : "ÅBO",
+      "language" : "sv"
+    }, {
+      "value" : "TURKU",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "20255",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "20300",
+    "names" : [ {
+      "value" : "ÅBO",
+      "language" : "sv"
+    }, {
+      "value" : "TURKU",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "20304",
+    "names" : [ {
+      "value" : "SMARTPOST",
+      "language" : "sv"
+    }, {
+      "value" : "SMARTPOST",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "20305",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "20320",
+    "names" : [ {
+      "value" : "TURKU",
+      "language" : "fi"
+    }, {
+      "value" : "ÅBO",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "20321",
+    "names" : [ {
+      "value" : "TURKU",
+      "language" : "fi"
+    }, {
+      "value" : "ÅBO",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "20324",
+    "names" : [ {
+      "value" : "SMARTPOST",
+      "language" : "sv"
+    }, {
+      "value" : "SMARTPOST",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "20325",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "20360",
+    "names" : [ {
+      "value" : "TURKU",
+      "language" : "fi"
+    }, {
+      "value" : "ÅBO",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "20361",
+    "names" : [ {
+      "value" : "TURKU",
+      "language" : "fi"
+    }, {
+      "value" : "ÅBO",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "20365",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "20380",
+    "names" : [ {
+      "value" : "TURKU",
+      "language" : "fi"
+    }, {
+      "value" : "ÅBO",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "20381",
+    "names" : [ {
+      "value" : "TURKU",
+      "language" : "fi"
+    }, {
+      "value" : "ÅBO",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "20400",
+    "names" : [ {
+      "value" : "TURKU",
+      "language" : "fi"
+    }, {
+      "value" : "ÅBO",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "20460",
+    "names" : [ {
+      "value" : "TURKU",
+      "language" : "fi"
+    }, {
+      "value" : "ÅBO",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "20500",
+    "names" : [ {
+      "value" : "ÅBO",
+      "language" : "sv"
+    }, {
+      "value" : "TURKU",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "20501",
+    "names" : [ {
+      "value" : "TURKU",
+      "language" : "fi"
+    }, {
+      "value" : "ÅBO",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "20505",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "20520",
+    "names" : [ {
+      "value" : "ÅBO",
+      "language" : "sv"
+    }, {
+      "value" : "TURKU",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "20521",
+    "names" : [ {
+      "value" : "TURKU",
+      "language" : "fi"
+    }, {
+      "value" : "ÅBO",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "20525",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "20540",
+    "names" : [ {
+      "value" : "ÅBO",
+      "language" : "sv"
+    }, {
+      "value" : "TURKU",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "20541",
+    "names" : [ {
+      "value" : "TURKU",
+      "language" : "fi"
+    }, {
+      "value" : "ÅBO",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "20545",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "20610",
+    "names" : [ {
+      "value" : "ÅBO",
+      "language" : "sv"
+    }, {
+      "value" : "TURKU",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "20611",
+    "names" : [ {
+      "value" : "ÅBO",
+      "language" : "sv"
+    }, {
+      "value" : "TURKU",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "20615",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "20660",
+    "names" : [ {
+      "value" : "LITTOINEN",
+      "language" : "fi"
+    }, {
+      "value" : "LITTOINEN",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "20700",
+    "names" : [ {
+      "value" : "ÅBO",
+      "language" : "sv"
+    }, {
+      "value" : "TURKU",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "20701",
+    "names" : [ {
+      "value" : "ÅBO",
+      "language" : "sv"
+    }, {
+      "value" : "TURKU",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "20705",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "20720",
+    "names" : [ {
+      "value" : "TURKU",
+      "language" : "fi"
+    }, {
+      "value" : "ÅBO",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "20730",
+    "names" : [ {
+      "value" : "ÅBO",
+      "language" : "sv"
+    }, {
+      "value" : "TURKU",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "20734",
+    "names" : [ {
+      "value" : "SMARTPOST",
+      "language" : "fi"
+    }, {
+      "value" : "SMARTPOST",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "20735",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "20740",
+    "names" : [ {
+      "value" : "TURKU",
+      "language" : "fi"
+    }, {
+      "value" : "ÅBO",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "20741",
+    "names" : [ {
+      "value" : "ÅBO",
+      "language" : "sv"
+    }, {
+      "value" : "TURKU",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "20745",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "20750",
+    "names" : [ {
+      "value" : "ÅBO",
+      "language" : "sv"
+    }, {
+      "value" : "TURKU",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "20751",
+    "names" : [ {
+      "value" : "TURKU",
+      "language" : "fi"
+    }, {
+      "value" : "ÅBO",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "20760",
+    "names" : [ {
+      "value" : "PIISPANRISTI",
+      "language" : "fi"
+    }, {
+      "value" : "PIISPANRISTI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "20761",
+    "names" : [ {
+      "value" : "PIISPANRISTI",
+      "language" : "fi"
+    }, {
+      "value" : "PIISPANRISTI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "20765",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "20780",
+    "names" : [ {
+      "value" : "KAARINA",
+      "language" : "sv"
+    }, {
+      "value" : "KAARINA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "20781",
+    "names" : [ {
+      "value" : "KAARINA",
+      "language" : "fi"
+    }, {
+      "value" : "KAARINA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "20784",
+    "names" : [ {
+      "value" : "SMARTPOST",
+      "language" : "sv"
+    }, {
+      "value" : "SMARTPOST",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "20785",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "20800",
+    "names" : [ {
+      "value" : "ÅBO",
+      "language" : "sv"
+    }, {
+      "value" : "TURKU",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "20801",
+    "names" : [ {
+      "value" : "ÅBO",
+      "language" : "sv"
+    }, {
+      "value" : "TURKU",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "20810",
+    "names" : [ {
+      "value" : "TURKU",
+      "language" : "fi"
+    }, {
+      "value" : "ÅBO",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "20811",
+    "names" : [ {
+      "value" : "ÅBO",
+      "language" : "sv"
+    }, {
+      "value" : "TURKU",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "20815",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "20880",
+    "names" : [ {
+      "value" : "ÅBO",
+      "language" : "sv"
+    }, {
+      "value" : "TURKU",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "20900",
+    "names" : [ {
+      "value" : "ÅBO",
+      "language" : "sv"
+    }, {
+      "value" : "TURKU",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "20905",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "20960",
+    "names" : [ {
+      "value" : "ÅBO",
+      "language" : "sv"
+    }, {
+      "value" : "TURKU",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "21006",
+    "names" : [ {
+      "value" : "VASTAUSLÄHETYS",
+      "language" : "fi"
+    }, {
+      "value" : "SVARSFÖRSÄNDELSE",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "21086",
+    "names" : [ {
+      "value" : "MIGRATIONSVERKET",
+      "language" : "sv"
+    }, {
+      "value" : "MAAHANMUUTTOVIRASTO",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "21100",
+    "names" : [ {
+      "value" : "NAANTALI",
+      "language" : "fi"
+    }, {
+      "value" : "NAANTALI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "21101",
+    "names" : [ {
+      "value" : "NAANTALI",
+      "language" : "fi"
+    }, {
+      "value" : "NAANTALI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "21105",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "21110",
+    "names" : [ {
+      "value" : "NAANTALI",
+      "language" : "sv"
+    }, {
+      "value" : "NAANTALI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "21120",
+    "names" : [ {
+      "value" : "RAISIO",
+      "language" : "sv"
+    }, {
+      "value" : "RAISIO",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "21130",
+    "names" : [ {
+      "value" : "POIKKO",
+      "language" : "sv"
+    }, {
+      "value" : "POIKKO",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "21140",
+    "names" : [ {
+      "value" : "RYMÄTTYLÄ",
+      "language" : "sv"
+    }, {
+      "value" : "RYMÄTTYLÄ",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "21150",
+    "names" : [ {
+      "value" : "RÖÖLÄ",
+      "language" : "fi"
+    }, {
+      "value" : "RÖÖLÄ",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "21160",
+    "names" : [ {
+      "value" : "MERIMASKU",
+      "language" : "sv"
+    }, {
+      "value" : "MERIMASKU",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "21180",
+    "names" : [ {
+      "value" : "LIVONSAARI",
+      "language" : "fi"
+    }, {
+      "value" : "LIVONSAARI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "21195",
+    "names" : [ {
+      "value" : "VELKUA",
+      "language" : "sv"
+    }, {
+      "value" : "VELKUA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "21200",
+    "names" : [ {
+      "value" : "RAISIO",
+      "language" : "sv"
+    }, {
+      "value" : "RAISIO",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "21201",
+    "names" : [ {
+      "value" : "RAISIO",
+      "language" : "sv"
+    }, {
+      "value" : "RAISIO",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "21205",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "21210",
+    "names" : [ {
+      "value" : "RAISIO",
+      "language" : "sv"
+    }, {
+      "value" : "RAISIO",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "21220",
+    "names" : [ {
+      "value" : "RAISIO",
+      "language" : "sv"
+    }, {
+      "value" : "RAISIO",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "21230",
+    "names" : [ {
+      "value" : "LEMU",
+      "language" : "sv"
+    }, {
+      "value" : "LEMU",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "21240",
+    "names" : [ {
+      "value" : "ASKAINEN",
+      "language" : "sv"
+    }, {
+      "value" : "ASKAINEN",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "21250",
+    "names" : [ {
+      "value" : "MASKU",
+      "language" : "fi"
+    }, {
+      "value" : "MASKU",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "21251",
+    "names" : [ {
+      "value" : "MASKU",
+      "language" : "fi"
+    }, {
+      "value" : "MASKU",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "21255",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "21260",
+    "names" : [ {
+      "value" : "RAISIO",
+      "language" : "fi"
+    }, {
+      "value" : "RAISIO",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "21270",
+    "names" : [ {
+      "value" : "NOUSIAINEN",
+      "language" : "fi"
+    }, {
+      "value" : "NOUSIAINEN",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "21280",
+    "names" : [ {
+      "value" : "RAISIO",
+      "language" : "sv"
+    }, {
+      "value" : "RAISIO",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "21284",
+    "names" : [ {
+      "value" : "SMARTPOST",
+      "language" : "fi"
+    }, {
+      "value" : "SMARTPOST",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "21285",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "21290",
+    "names" : [ {
+      "value" : "RUSKO",
+      "language" : "fi"
+    }, {
+      "value" : "RUSKO",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "21291",
+    "names" : [ {
+      "value" : "RUSKO",
+      "language" : "fi"
+    }, {
+      "value" : "RUSKO",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "21310",
+    "names" : [ {
+      "value" : "VAHTO",
+      "language" : "sv"
+    }, {
+      "value" : "VAHTO",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "21330",
+    "names" : [ {
+      "value" : "PATIS",
+      "language" : "sv"
+    }, {
+      "value" : "PAATTINEN",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "21335",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "21340",
+    "names" : [ {
+      "value" : "TORTINMÄKI",
+      "language" : "fi"
+    }, {
+      "value" : "TORTINMÄKI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "21350",
+    "names" : [ {
+      "value" : "ILMARINEN",
+      "language" : "sv"
+    }, {
+      "value" : "ILMARINEN",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "21360",
+    "names" : [ {
+      "value" : "LIETO AS",
+      "language" : "sv"
+    }, {
+      "value" : "LIETO AS",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "21370",
+    "names" : [ {
+      "value" : "AURA KK",
+      "language" : "fi"
+    }, {
+      "value" : "AURA KK",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "21380",
+    "names" : [ {
+      "value" : "AURA",
+      "language" : "fi"
+    }, {
+      "value" : "AURA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "21381",
+    "names" : [ {
+      "value" : "AURA",
+      "language" : "sv"
+    }, {
+      "value" : "AURA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "21410",
+    "names" : [ {
+      "value" : "VANHALINNA",
+      "language" : "sv"
+    }, {
+      "value" : "VANHALINNA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "21420",
+    "names" : [ {
+      "value" : "LIETO",
+      "language" : "fi"
+    }, {
+      "value" : "LIETO",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "21421",
+    "names" : [ {
+      "value" : "LIETO",
+      "language" : "fi"
+    }, {
+      "value" : "LIETO",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "21424",
+    "names" : [ {
+      "value" : "SMARTPOST",
+      "language" : "sv"
+    }, {
+      "value" : "SMARTPOST",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "21425",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "21430",
+    "names" : [ {
+      "value" : "YLISKULMA",
+      "language" : "sv"
+    }, {
+      "value" : "YLISKULMA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "21450",
+    "names" : [ {
+      "value" : "TARVASJOKI",
+      "language" : "fi"
+    }, {
+      "value" : "TARVASJOKI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "21480",
+    "names" : [ {
+      "value" : "PRUNKILA",
+      "language" : "fi"
+    }, {
+      "value" : "PRUNKILA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "21490",
+    "names" : [ {
+      "value" : "MARTTILA",
+      "language" : "sv"
+    }, {
+      "value" : "MARTTILA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "21500",
+    "names" : [ {
+      "value" : "PIIKKIÖ",
+      "language" : "fi"
+    }, {
+      "value" : "PIIKKIÖ",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "21501",
+    "names" : [ {
+      "value" : "PIIKKIÖ",
+      "language" : "sv"
+    }, {
+      "value" : "PIIKKIÖ",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "21510",
+    "names" : [ {
+      "value" : "HEVONPÄÄ",
+      "language" : "sv"
+    }, {
+      "value" : "HEVONPÄÄ",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "21520",
+    "names" : [ {
+      "value" : "NASKARLA",
+      "language" : "fi"
+    }, {
+      "value" : "NASKARLA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "21530",
+    "names" : [ {
+      "value" : "PAIMIO",
+      "language" : "sv"
+    }, {
+      "value" : "PAIMIO",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "21531",
+    "names" : [ {
+      "value" : "PAIMIO",
+      "language" : "fi"
+    }, {
+      "value" : "PAIMIO",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "21535",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "21540",
+    "names" : [ {
+      "value" : "PREITILÄ",
+      "language" : "sv"
+    }, {
+      "value" : "PREITILÄ",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "21555",
+    "names" : [ {
+      "value" : "TAATILA",
+      "language" : "sv"
+    }, {
+      "value" : "TAATILA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "21560",
+    "names" : [ {
+      "value" : "OLLILA",
+      "language" : "sv"
+    }, {
+      "value" : "OLLILA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "21570",
+    "names" : [ {
+      "value" : "SAUVO",
+      "language" : "fi"
+    }, {
+      "value" : "SAUVO",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "21571",
+    "names" : [ {
+      "value" : "SAUVO",
+      "language" : "sv"
+    }, {
+      "value" : "SAUVO",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "21590",
+    "names" : [ {
+      "value" : "KARUNA",
+      "language" : "sv"
+    }, {
+      "value" : "KARUNA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "21600",
+    "names" : [ {
+      "value" : "PARGAS",
+      "language" : "sv"
+    }, {
+      "value" : "PARAINEN",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "21601",
+    "names" : [ {
+      "value" : "PARAINEN",
+      "language" : "fi"
+    }, {
+      "value" : "PARGAS",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "21604",
+    "names" : [ {
+      "value" : "SMARTPOST",
+      "language" : "sv"
+    }, {
+      "value" : "SMARTPOST",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "21605",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "21610",
+    "names" : [ {
+      "value" : "KIRJALA",
+      "language" : "sv"
+    }, {
+      "value" : "KIRJALA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "21620",
+    "names" : [ {
+      "value" : "KUUSISTO",
+      "language" : "sv"
+    }, {
+      "value" : "KUUSISTO",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "21630",
+    "names" : [ {
+      "value" : "LIELAHTI TL",
+      "language" : "fi"
+    }, {
+      "value" : "LIELAX",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "21650",
+    "names" : [ {
+      "value" : "LILLANDET",
+      "language" : "sv"
+    }, {
+      "value" : "LILLANDET",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "21660",
+    "names" : [ {
+      "value" : "NAGU",
+      "language" : "sv"
+    }, {
+      "value" : "NAUVO",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "21661",
+    "names" : [ {
+      "value" : "NAGU",
+      "language" : "sv"
+    }, {
+      "value" : "NAUVO",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "21670",
+    "names" : [ {
+      "value" : "PÄRNÄS",
+      "language" : "sv"
+    }, {
+      "value" : "PÄRNÄINEN",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "21680",
+    "names" : [ {
+      "value" : "NÖTÖ",
+      "language" : "fi"
+    }, {
+      "value" : "NÖTÖ",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "21710",
+    "names" : [ {
+      "value" : "KORPO",
+      "language" : "sv"
+    }, {
+      "value" : "KORPPOO",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "21720",
+    "names" : [ {
+      "value" : "KORPOSTRÖM",
+      "language" : "fi"
+    }, {
+      "value" : "KORPOSTRÖM",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "21740",
+    "names" : [ {
+      "value" : "UTÖ",
+      "language" : "sv"
+    }, {
+      "value" : "UTÖ",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "21750",
+    "names" : [ {
+      "value" : "NORRSKATA",
+      "language" : "sv"
+    }, {
+      "value" : "NORRSKATA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "21760",
+    "names" : [ {
+      "value" : "HOUTSKÄR",
+      "language" : "sv"
+    }, {
+      "value" : "HOUTSKARI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "21770",
+    "names" : [ {
+      "value" : "MOSSALA",
+      "language" : "sv"
+    }, {
+      "value" : "MOSSALA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "21800",
+    "names" : [ {
+      "value" : "KYRÖ",
+      "language" : "fi"
+    }, {
+      "value" : "KYRÖ",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "21801",
+    "names" : [ {
+      "value" : "KYRÖ",
+      "language" : "sv"
+    }, {
+      "value" : "KYRÖ",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "21820",
+    "names" : [ {
+      "value" : "KUMILA",
+      "language" : "fi"
+    }, {
+      "value" : "KUMILA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "21840",
+    "names" : [ {
+      "value" : "KARINAINEN",
+      "language" : "fi"
+    }, {
+      "value" : "KARINAINEN",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "21860",
+    "names" : [ {
+      "value" : "AUVAINEN",
+      "language" : "fi"
+    }, {
+      "value" : "AUVAINEN",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "21870",
+    "names" : [ {
+      "value" : "RIIHIKOSKI",
+      "language" : "fi"
+    }, {
+      "value" : "RIIHIKOSKI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "21871",
+    "names" : [ {
+      "value" : "RIIHIKOSKI",
+      "language" : "sv"
+    }, {
+      "value" : "RIIHIKOSKI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "21880",
+    "names" : [ {
+      "value" : "PÖYTYÄ",
+      "language" : "sv"
+    }, {
+      "value" : "PÖYTYÄ",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "21890",
+    "names" : [ {
+      "value" : "HAVERI",
+      "language" : "sv"
+    }, {
+      "value" : "HAVERI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "21900",
+    "names" : [ {
+      "value" : "YLÄNE",
+      "language" : "sv"
+    }, {
+      "value" : "YLÄNE",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "21901",
+    "names" : [ {
+      "value" : "YLÄNE",
+      "language" : "fi"
+    }, {
+      "value" : "YLÄNE",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "21930",
+    "names" : [ {
+      "value" : "UUSIKARTANO",
+      "language" : "fi"
+    }, {
+      "value" : "UUSIKARTANO",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "22100",
+    "names" : [ {
+      "value" : "MARIEHAMN",
+      "language" : "fi"
+    }, {
+      "value" : "MARIEHAMN",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "22101",
+    "names" : [ {
+      "value" : "MARIEHAMN",
+      "language" : "fi"
+    }, {
+      "value" : "MARIEHAMN",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "22110",
+    "names" : [ {
+      "value" : "MARIEHAMN",
+      "language" : "sv"
+    }, {
+      "value" : "MARIEHAMN",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "22111",
+    "names" : [ {
+      "value" : "MARIEHAMN",
+      "language" : "sv"
+    }, {
+      "value" : "MARIEHAMN",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "22120",
+    "names" : [ {
+      "value" : "MARIEHAMN",
+      "language" : "fi"
+    }, {
+      "value" : "MARIEHAMN",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "22130",
+    "names" : [ {
+      "value" : "GOTTBY",
+      "language" : "sv"
+    }, {
+      "value" : "GOTTBY",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "22140",
+    "names" : [ {
+      "value" : "MARIEHAMN",
+      "language" : "fi"
+    }, {
+      "value" : "MARIEHAMN",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "22150",
+    "names" : [ {
+      "value" : "JOMALA",
+      "language" : "sv"
+    }, {
+      "value" : "JOMALA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "22151",
+    "names" : [ {
+      "value" : "JOMALA",
+      "language" : "sv"
+    }, {
+      "value" : "JOMALA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "22160",
+    "names" : [ {
+      "value" : "MARIEHAMN",
+      "language" : "sv"
+    }, {
+      "value" : "MARIEHAMN",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "22220",
+    "names" : [ {
+      "value" : "EMKARBY",
+      "language" : "fi"
+    }, {
+      "value" : "EMKARBY",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "22240",
+    "names" : [ {
+      "value" : "HAMMARLAND",
+      "language" : "fi"
+    }, {
+      "value" : "HAMMARLAND",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "22270",
+    "names" : [ {
+      "value" : "ECKERÖ",
+      "language" : "sv"
+    }, {
+      "value" : "ECKERÖ",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "22310",
+    "names" : [ {
+      "value" : "PÅLSBÖLE",
+      "language" : "fi"
+    }, {
+      "value" : "PÅLSBÖLE",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "22320",
+    "names" : [ {
+      "value" : "ÖDKARBY",
+      "language" : "sv"
+    }, {
+      "value" : "ÖDKARBY",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "22330",
+    "names" : [ {
+      "value" : "TJUDÖ",
+      "language" : "fi"
+    }, {
+      "value" : "TJUDÖ",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "22340",
+    "names" : [ {
+      "value" : "GETA",
+      "language" : "fi"
+    }, {
+      "value" : "GETA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "22410",
+    "names" : [ {
+      "value" : "GODBY",
+      "language" : "sv"
+    }, {
+      "value" : "GODBY",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "22411",
+    "names" : [ {
+      "value" : "GODBY",
+      "language" : "fi"
+    }, {
+      "value" : "GODBY",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "22430",
+    "names" : [ {
+      "value" : "SALTVIK",
+      "language" : "sv"
+    }, {
+      "value" : "SALTVIK",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "22520",
+    "names" : [ {
+      "value" : "KASTELHOLM",
+      "language" : "sv"
+    }, {
+      "value" : "KASTELHOLM",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "22530",
+    "names" : [ {
+      "value" : "SUND",
+      "language" : "fi"
+    }, {
+      "value" : "SUND",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "22550",
+    "names" : [ {
+      "value" : "VÅRDÖ",
+      "language" : "sv"
+    }, {
+      "value" : "VÅRDÖ",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "22610",
+    "names" : [ {
+      "value" : "LEMLAND",
+      "language" : "fi"
+    }, {
+      "value" : "LEMLAND",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "22630",
+    "names" : [ {
+      "value" : "LUMPARLAND",
+      "language" : "sv"
+    }, {
+      "value" : "LUMPARLAND",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "22710",
+    "names" : [ {
+      "value" : "FÖGLÖ",
+      "language" : "sv"
+    }, {
+      "value" : "FÖGLÖ",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "22720",
+    "names" : [ {
+      "value" : "SOTTUNGA",
+      "language" : "fi"
+    }, {
+      "value" : "SOTTUNGA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "22730",
+    "names" : [ {
+      "value" : "KÖKAR",
+      "language" : "sv"
+    }, {
+      "value" : "KÖKAR",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "22810",
+    "names" : [ {
+      "value" : "SEGLINGE",
+      "language" : "fi"
+    }, {
+      "value" : "SEGLINGE",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "22820",
+    "names" : [ {
+      "value" : "KUMLINGE",
+      "language" : "sv"
+    }, {
+      "value" : "KUMLINGE",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "22830",
+    "names" : [ {
+      "value" : "ENKLINGE",
+      "language" : "fi"
+    }, {
+      "value" : "ENKLINGE",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "22840",
+    "names" : [ {
+      "value" : "LAPPO",
+      "language" : "fi"
+    }, {
+      "value" : "LAPPO",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "22910",
+    "names" : [ {
+      "value" : "TORSHOLMA",
+      "language" : "fi"
+    }, {
+      "value" : "TORSHOLMA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "22920",
+    "names" : [ {
+      "value" : "BRÄNDÖ",
+      "language" : "fi"
+    }, {
+      "value" : "BRÄNDÖ",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "22930",
+    "names" : [ {
+      "value" : "FISKÖ",
+      "language" : "sv"
+    }, {
+      "value" : "FISKÖ",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "22940",
+    "names" : [ {
+      "value" : "ÅVA",
+      "language" : "sv"
+    }, {
+      "value" : "ÅVA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "22950",
+    "names" : [ {
+      "value" : "JURMO",
+      "language" : "sv"
+    }, {
+      "value" : "JURMO",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "23100",
+    "names" : [ {
+      "value" : "MYNÄMÄKI",
+      "language" : "fi"
+    }, {
+      "value" : "MYNÄMÄKI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "23101",
+    "names" : [ {
+      "value" : "MYNÄMÄKI",
+      "language" : "sv"
+    }, {
+      "value" : "MYNÄMÄKI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "23104",
+    "names" : [ {
+      "value" : "SMARTPOST",
+      "language" : "sv"
+    }, {
+      "value" : "SMARTPOST",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "23120",
+    "names" : [ {
+      "value" : "MIETOINEN",
+      "language" : "fi"
+    }, {
+      "value" : "MIETOINEN",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "23140",
+    "names" : [ {
+      "value" : "HIETAMÄKI",
+      "language" : "sv"
+    }, {
+      "value" : "HIETAMÄKI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "23200",
+    "names" : [ {
+      "value" : "VINKKILÄ",
+      "language" : "sv"
+    }, {
+      "value" : "VINKKILÄ",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "23201",
+    "names" : [ {
+      "value" : "VINKKILÄ",
+      "language" : "fi"
+    }, {
+      "value" : "VINKKILÄ",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "23210",
+    "names" : [ {
+      "value" : "VEHMAA",
+      "language" : "fi"
+    }, {
+      "value" : "VEHMAA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "23260",
+    "names" : [ {
+      "value" : "RAUTILA",
+      "language" : "sv"
+    }, {
+      "value" : "RAUTILA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "23310",
+    "names" : [ {
+      "value" : "TAIVASSALO",
+      "language" : "sv"
+    }, {
+      "value" : "TAIVASSALO",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "23311",
+    "names" : [ {
+      "value" : "TAIVASSALO",
+      "language" : "fi"
+    }, {
+      "value" : "TAIVASSALO",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "23360",
+    "names" : [ {
+      "value" : "KUSTAVI",
+      "language" : "sv"
+    }, {
+      "value" : "KUSTAVI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "23390",
+    "names" : [ {
+      "value" : "INIÖ",
+      "language" : "fi"
+    }, {
+      "value" : "INIÖ",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "23450",
+    "names" : [ {
+      "value" : "LOKALAHTI",
+      "language" : "fi"
+    }, {
+      "value" : "LOKALAHTI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "23500",
+    "names" : [ {
+      "value" : "UUSIKAUPUNKI",
+      "language" : "sv"
+    }, {
+      "value" : "UUSIKAUPUNKI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "23501",
+    "names" : [ {
+      "value" : "UUSIKAUPUNKI",
+      "language" : "fi"
+    }, {
+      "value" : "UUSIKAUPUNKI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "23504",
+    "names" : [ {
+      "value" : "SMARTPOST",
+      "language" : "sv"
+    }, {
+      "value" : "SMARTPOST",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "23505",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "23600",
+    "names" : [ {
+      "value" : "KALANTI",
+      "language" : "sv"
+    }, {
+      "value" : "KALANTI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "23601",
+    "names" : [ {
+      "value" : "KALANTI",
+      "language" : "fi"
+    }, {
+      "value" : "KALANTI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "23660",
+    "names" : [ {
+      "value" : "KALANTI AS",
+      "language" : "fi"
+    }, {
+      "value" : "KALANTI AS",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "23800",
+    "names" : [ {
+      "value" : "LAITILA",
+      "language" : "fi"
+    }, {
+      "value" : "LAITILA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "23801",
+    "names" : [ {
+      "value" : "LAITILA",
+      "language" : "fi"
+    }, {
+      "value" : "LAITILA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "23804",
+    "names" : [ {
+      "value" : "SMARTPOST",
+      "language" : "sv"
+    }, {
+      "value" : "SMARTPOST",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "23805",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "23840",
+    "names" : [ {
+      "value" : "SOUKAINEN",
+      "language" : "sv"
+    }, {
+      "value" : "SOUKAINEN",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "23880",
+    "names" : [ {
+      "value" : "SUONTAKA",
+      "language" : "sv"
+    }, {
+      "value" : "SUONTAKA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "23930",
+    "names" : [ {
+      "value" : "PYHÄMAA",
+      "language" : "fi"
+    }, {
+      "value" : "PYHÄMAA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "23950",
+    "names" : [ {
+      "value" : "PYHÄRANTA",
+      "language" : "fi"
+    }, {
+      "value" : "PYHÄRANTA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "23960",
+    "names" : [ {
+      "value" : "SANTTIO",
+      "language" : "fi"
+    }, {
+      "value" : "SANTTIO",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "24100",
+    "names" : [ {
+      "value" : "SALO",
+      "language" : "sv"
+    }, {
+      "value" : "SALO",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "24101",
+    "names" : [ {
+      "value" : "SALO",
+      "language" : "sv"
+    }, {
+      "value" : "SALO",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "24102",
+    "names" : [ {
+      "value" : "SALO",
+      "language" : "fi"
+    }, {
+      "value" : "SALO",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "24104",
+    "names" : [ {
+      "value" : "SMARTPOST",
+      "language" : "sv"
+    }, {
+      "value" : "SMARTPOST",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "24105",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "24130",
+    "names" : [ {
+      "value" : "SALO",
+      "language" : "sv"
+    }, {
+      "value" : "SALO",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "24240",
+    "names" : [ {
+      "value" : "SALO",
+      "language" : "fi"
+    }, {
+      "value" : "SALO",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "24245",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "24260",
+    "names" : [ {
+      "value" : "SALO",
+      "language" : "fi"
+    }, {
+      "value" : "SALO",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "24280",
+    "names" : [ {
+      "value" : "SALO",
+      "language" : "sv"
+    }, {
+      "value" : "SALO",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "24285",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "24800",
+    "names" : [ {
+      "value" : "HALIKKO",
+      "language" : "sv"
+    }, {
+      "value" : "HALIKKO",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "24801",
+    "names" : [ {
+      "value" : "HALIKKO",
+      "language" : "fi"
+    }, {
+      "value" : "HALIKKO",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "24804",
+    "names" : [ {
+      "value" : "SMARTPOST",
+      "language" : "sv"
+    }, {
+      "value" : "SMARTPOST",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "24805",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "24910",
+    "names" : [ {
+      "value" : "HALIKKO AS",
+      "language" : "sv"
+    }, {
+      "value" : "HALIKKO AS",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "25110",
+    "names" : [ {
+      "value" : "KRUUSILA",
+      "language" : "sv"
+    }, {
+      "value" : "KRUUSILA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "25130",
+    "names" : [ {
+      "value" : "MUURLA",
+      "language" : "sv"
+    }, {
+      "value" : "MUURLA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "25160",
+    "names" : [ {
+      "value" : "TUOHITTU",
+      "language" : "fi"
+    }, {
+      "value" : "TUOHITTU",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "25170",
+    "names" : [ {
+      "value" : "KOTALATO",
+      "language" : "fi"
+    }, {
+      "value" : "KOTALATO",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "25180",
+    "names" : [ {
+      "value" : "PERTTELI",
+      "language" : "fi"
+    }, {
+      "value" : "PERTTELI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "25190",
+    "names" : [ {
+      "value" : "PERTTELI",
+      "language" : "fi"
+    }, {
+      "value" : "PERTTELI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "25210",
+    "names" : [ {
+      "value" : "VARTSALA",
+      "language" : "fi"
+    }, {
+      "value" : "VARTSALA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "25230",
+    "names" : [ {
+      "value" : "ANGELNIEMI",
+      "language" : "sv"
+    }, {
+      "value" : "ANGELNIEMI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "25240",
+    "names" : [ {
+      "value" : "HAJALA",
+      "language" : "sv"
+    }, {
+      "value" : "HAJALA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "25250",
+    "names" : [ {
+      "value" : "MÄRYNUMMI",
+      "language" : "fi"
+    }, {
+      "value" : "MÄRYNUMMI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "25260",
+    "names" : [ {
+      "value" : "VASKIO",
+      "language" : "fi"
+    }, {
+      "value" : "VASKIO",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "25320",
+    "names" : [ {
+      "value" : "RAATALA",
+      "language" : "sv"
+    }, {
+      "value" : "RAATALA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "25330",
+    "names" : [ {
+      "value" : "KUUSJOKI",
+      "language" : "fi"
+    }, {
+      "value" : "KUUSJOKI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "25340",
+    "names" : [ {
+      "value" : "KANUNKI",
+      "language" : "fi"
+    }, {
+      "value" : "KANUNKI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "25360",
+    "names" : [ {
+      "value" : "PERTTELI",
+      "language" : "fi"
+    }, {
+      "value" : "PERTTELI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "25370",
+    "names" : [ {
+      "value" : "PERTTELI",
+      "language" : "fi"
+    }, {
+      "value" : "PERTTELI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "25380",
+    "names" : [ {
+      "value" : "REKIJOKI",
+      "language" : "sv"
+    }, {
+      "value" : "REKIJOKI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "25390",
+    "names" : [ {
+      "value" : "KIIKALA",
+      "language" : "fi"
+    }, {
+      "value" : "KIIKALA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "25410",
+    "names" : [ {
+      "value" : "SUOMUSJÄRVI",
+      "language" : "sv"
+    }, {
+      "value" : "SUOMUSJÄRVI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "25420",
+    "names" : [ {
+      "value" : "LAHNAJÄRVI",
+      "language" : "sv"
+    }, {
+      "value" : "LAHNAJÄRVI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "25430",
+    "names" : [ {
+      "value" : "KETTULA",
+      "language" : "sv"
+    }, {
+      "value" : "KETTULA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "25460",
+    "names" : [ {
+      "value" : "KISKO",
+      "language" : "fi"
+    }, {
+      "value" : "KISKO",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "25470",
+    "names" : [ {
+      "value" : "KISKO",
+      "language" : "fi"
+    }, {
+      "value" : "KISKO",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "25500",
+    "names" : [ {
+      "value" : "BJÄRNÅ",
+      "language" : "sv"
+    }, {
+      "value" : "PERNIÖ",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "25501",
+    "names" : [ {
+      "value" : "BJÄRNÅ",
+      "language" : "sv"
+    }, {
+      "value" : "PERNIÖ",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "25520",
+    "names" : [ {
+      "value" : "PERNIÖ AS",
+      "language" : "fi"
+    }, {
+      "value" : "PERNIÖ AS",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "25540",
+    "names" : [ {
+      "value" : "KNAAPILA",
+      "language" : "fi"
+    }, {
+      "value" : "KNAAPILA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "25550",
+    "names" : [ {
+      "value" : "AIJALA",
+      "language" : "fi"
+    }, {
+      "value" : "AIJALA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "25560",
+    "names" : [ {
+      "value" : "KOSKI AS",
+      "language" : "fi"
+    }, {
+      "value" : "KOSKI AS",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "25570",
+    "names" : [ {
+      "value" : "TEIJO",
+      "language" : "sv"
+    }, {
+      "value" : "TEIJO",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "25610",
+    "names" : [ {
+      "value" : "YLÖNKYLÄ",
+      "language" : "sv"
+    }, {
+      "value" : "YLÖNKYLÄ",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "25630",
+    "names" : [ {
+      "value" : "SÄRKISALO",
+      "language" : "fi"
+    }, {
+      "value" : "FINBY",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "25640",
+    "names" : [ {
+      "value" : "FÖRBY",
+      "language" : "fi"
+    }, {
+      "value" : "FÖRBY",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "25650",
+    "names" : [ {
+      "value" : "STRÖMMA",
+      "language" : "sv"
+    }, {
+      "value" : "STRÖMMA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "25660",
+    "names" : [ {
+      "value" : "MATHILDEDAL",
+      "language" : "fi"
+    }, {
+      "value" : "MATHILDEDAL",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "25700",
+    "names" : [ {
+      "value" : "KEMIÖ",
+      "language" : "fi"
+    }, {
+      "value" : "KIMITO",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "25701",
+    "names" : [ {
+      "value" : "KIMITO",
+      "language" : "sv"
+    }, {
+      "value" : "KEMIÖ",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "25710",
+    "names" : [ {
+      "value" : "VRETA",
+      "language" : "sv"
+    }, {
+      "value" : "VRETA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "25730",
+    "names" : [ {
+      "value" : "MJÖSUND",
+      "language" : "fi"
+    }, {
+      "value" : "MJÖSUND",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "25760",
+    "names" : [ {
+      "value" : "KILA",
+      "language" : "sv"
+    }, {
+      "value" : "KIILA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "25810",
+    "names" : [ {
+      "value" : "MARK",
+      "language" : "fi"
+    }, {
+      "value" : "MARK",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "25820",
+    "names" : [ {
+      "value" : "VESTLAX",
+      "language" : "sv"
+    }, {
+      "value" : "VESTLAX",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "25830",
+    "names" : [ {
+      "value" : "VÄSTANFJÄRD",
+      "language" : "fi"
+    }, {
+      "value" : "VÄSTANFJÄRD",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "25840",
+    "names" : [ {
+      "value" : "NIVELAX",
+      "language" : "fi"
+    }, {
+      "value" : "NIVELAX",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "25860",
+    "names" : [ {
+      "value" : "BJÖRKBODA",
+      "language" : "sv"
+    }, {
+      "value" : "BJÖRKBODA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "25870",
+    "names" : [ {
+      "value" : "DRAGSFJÄRD",
+      "language" : "sv"
+    }, {
+      "value" : "DRAGSFJÄRD",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "25900",
+    "names" : [ {
+      "value" : "TAALINTEHDAS",
+      "language" : "fi"
+    }, {
+      "value" : "DALSBRUK",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "25910",
+    "names" : [ {
+      "value" : "VÄNOXA",
+      "language" : "sv"
+    }, {
+      "value" : "VÄNOXA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "25930",
+    "names" : [ {
+      "value" : "KASNÄS",
+      "language" : "sv"
+    }, {
+      "value" : "KASNÄS",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "25940",
+    "names" : [ {
+      "value" : "HIITTINEN",
+      "language" : "fi"
+    }, {
+      "value" : "HITIS",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "25950",
+    "names" : [ {
+      "value" : "ROSALA",
+      "language" : "fi"
+    }, {
+      "value" : "ROSALA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "25960",
+    "names" : [ {
+      "value" : "HÖGSÅRA",
+      "language" : "sv"
+    }, {
+      "value" : "HÖGSÅRA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "26100",
+    "names" : [ {
+      "value" : "RAUMA",
+      "language" : "sv"
+    }, {
+      "value" : "RAUMA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "26101",
+    "names" : [ {
+      "value" : "RAUMA",
+      "language" : "sv"
+    }, {
+      "value" : "RAUMA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "26102",
+    "names" : [ {
+      "value" : "RAUMO",
+      "language" : "sv"
+    }, {
+      "value" : "RAUMA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "26104",
+    "names" : [ {
+      "value" : "SMARTPOST",
+      "language" : "sv"
+    }, {
+      "value" : "SMARTPOST",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "26105",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "26200",
+    "names" : [ {
+      "value" : "RAUMA",
+      "language" : "sv"
+    }, {
+      "value" : "RAUMA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "26410",
+    "names" : [ {
+      "value" : "KAARO",
+      "language" : "sv"
+    }, {
+      "value" : "KAARO",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "26510",
+    "names" : [ {
+      "value" : "RAUMA",
+      "language" : "fi"
+    }, {
+      "value" : "RAUMA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "26560",
+    "names" : [ {
+      "value" : "KOLLA",
+      "language" : "sv"
+    }, {
+      "value" : "KOLLA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "26660",
+    "names" : [ {
+      "value" : "RAUMA",
+      "language" : "sv"
+    }, {
+      "value" : "RAUMA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "26661",
+    "names" : [ {
+      "value" : "RAUMA",
+      "language" : "fi"
+    }, {
+      "value" : "RAUMA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "26720",
+    "names" : [ {
+      "value" : "MONNANUMMI",
+      "language" : "sv"
+    }, {
+      "value" : "MONNANUMMI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "26740",
+    "names" : [ {
+      "value" : "VASARAINEN",
+      "language" : "sv"
+    }, {
+      "value" : "VASARAINEN",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "26820",
+    "names" : [ {
+      "value" : "RAUMA",
+      "language" : "fi"
+    }, {
+      "value" : "RAUMA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "26840",
+    "names" : [ {
+      "value" : "KORTELA",
+      "language" : "sv"
+    }, {
+      "value" : "KORTELA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "26845",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "26910",
+    "names" : [ {
+      "value" : "UNAJA",
+      "language" : "fi"
+    }, {
+      "value" : "UNAJA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "26930",
+    "names" : [ {
+      "value" : "VERMUNTILA",
+      "language" : "fi"
+    }, {
+      "value" : "VERMUNTILA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "26950",
+    "names" : [ {
+      "value" : "VOILUOTO",
+      "language" : "fi"
+    }, {
+      "value" : "VOILUOTO",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "27100",
+    "names" : [ {
+      "value" : "EURAJOKI",
+      "language" : "sv"
+    }, {
+      "value" : "EURAJOKI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "27101",
+    "names" : [ {
+      "value" : "EURAJOKI",
+      "language" : "sv"
+    }, {
+      "value" : "EURAJOKI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "27110",
+    "names" : [ {
+      "value" : "EURAJOKI",
+      "language" : "fi"
+    }, {
+      "value" : "EURAJOKI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "27130",
+    "names" : [ {
+      "value" : "EURAJOKI",
+      "language" : "sv"
+    }, {
+      "value" : "EURAJOKI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "27150",
+    "names" : [ {
+      "value" : "EURAJOKI",
+      "language" : "sv"
+    }, {
+      "value" : "EURAJOKI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "27160",
+    "names" : [ {
+      "value" : "EURAJOKI",
+      "language" : "fi"
+    }, {
+      "value" : "EURAJOKI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "27170",
+    "names" : [ {
+      "value" : "EURAJOKI",
+      "language" : "sv"
+    }, {
+      "value" : "EURAJOKI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "27220",
+    "names" : [ {
+      "value" : "LAPPI",
+      "language" : "fi"
+    }, {
+      "value" : "LAPPI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "27230",
+    "names" : [ {
+      "value" : "LAPPI",
+      "language" : "fi"
+    }, {
+      "value" : "LAPPI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "27231",
+    "names" : [ {
+      "value" : "LAPPI",
+      "language" : "fi"
+    }, {
+      "value" : "LAPPI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "27250",
+    "names" : [ {
+      "value" : "LAPPI",
+      "language" : "fi"
+    }, {
+      "value" : "LAPPI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "27260",
+    "names" : [ {
+      "value" : "LAPPI",
+      "language" : "sv"
+    }, {
+      "value" : "LAPPI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "27310",
+    "names" : [ {
+      "value" : "KODISJOKI",
+      "language" : "fi"
+    }, {
+      "value" : "KODISJOKI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "27320",
+    "names" : [ {
+      "value" : "IHODE",
+      "language" : "fi"
+    }, {
+      "value" : "IHODE",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "27340",
+    "names" : [ {
+      "value" : "REILA",
+      "language" : "fi"
+    }, {
+      "value" : "REILA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "27400",
+    "names" : [ {
+      "value" : "KIUKAINEN",
+      "language" : "sv"
+    }, {
+      "value" : "KIUKAINEN",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "27401",
+    "names" : [ {
+      "value" : "KIUKAINEN",
+      "language" : "sv"
+    }, {
+      "value" : "KIUKAINEN",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "27420",
+    "names" : [ {
+      "value" : "PANELIA AS",
+      "language" : "sv"
+    }, {
+      "value" : "PANELIA AS",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "27430",
+    "names" : [ {
+      "value" : "PANELIA",
+      "language" : "fi"
+    }, {
+      "value" : "PANELIA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "27450",
+    "names" : [ {
+      "value" : "HAROLA",
+      "language" : "fi"
+    }, {
+      "value" : "HAROLA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "27500",
+    "names" : [ {
+      "value" : "KAUTTUA",
+      "language" : "fi"
+    }, {
+      "value" : "KAUTTUA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "27501",
+    "names" : [ {
+      "value" : "KAUTTUA",
+      "language" : "fi"
+    }, {
+      "value" : "KAUTTUA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "27510",
+    "names" : [ {
+      "value" : "EURA",
+      "language" : "fi"
+    }, {
+      "value" : "EURA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "27511",
+    "names" : [ {
+      "value" : "EURA",
+      "language" : "sv"
+    }, {
+      "value" : "EURA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "27515",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "27600",
+    "names" : [ {
+      "value" : "HINNERJOKI",
+      "language" : "sv"
+    }, {
+      "value" : "HINNERJOKI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "27640",
+    "names" : [ {
+      "value" : "HONKILAHTI KK",
+      "language" : "fi"
+    }, {
+      "value" : "HONKILAHTI KK",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "27650",
+    "names" : [ {
+      "value" : "HONKILAHTI",
+      "language" : "fi"
+    }, {
+      "value" : "HONKILAHTI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "27670",
+    "names" : [ {
+      "value" : "MANNILA",
+      "language" : "fi"
+    }, {
+      "value" : "MANNILA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "27710",
+    "names" : [ {
+      "value" : "KÖYLIÖ",
+      "language" : "fi"
+    }, {
+      "value" : "KÖYLIÖ",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "27730",
+    "names" : [ {
+      "value" : "TUISKULA",
+      "language" : "sv"
+    }, {
+      "value" : "TUISKULA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "27740",
+    "names" : [ {
+      "value" : "VOITOINEN",
+      "language" : "fi"
+    }, {
+      "value" : "VOITOINEN",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "27750",
+    "names" : [ {
+      "value" : "KÖYLIÖ",
+      "language" : "fi"
+    }, {
+      "value" : "KÖYLIÖ",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "27800",
+    "names" : [ {
+      "value" : "SÄKYLÄ",
+      "language" : "fi"
+    }, {
+      "value" : "SÄKYLÄ",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "27801",
+    "names" : [ {
+      "value" : "SÄKYLÄ",
+      "language" : "fi"
+    }, {
+      "value" : "SÄKYLÄ",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "27820",
+    "names" : [ {
+      "value" : "SÄKYLÄ",
+      "language" : "sv"
+    }, {
+      "value" : "SÄKYLÄ",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "27840",
+    "names" : [ {
+      "value" : "KÖYLIÖ",
+      "language" : "fi"
+    }, {
+      "value" : "KÖYLIÖ",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "27860",
+    "names" : [ {
+      "value" : "KÖYLIÖ",
+      "language" : "fi"
+    }, {
+      "value" : "KÖYLIÖ",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "27910",
+    "names" : [ {
+      "value" : "SÄKYLÄ",
+      "language" : "sv"
+    }, {
+      "value" : "SÄKYLÄ",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "27920",
+    "names" : [ {
+      "value" : "SÄKYLÄ",
+      "language" : "fi"
+    }, {
+      "value" : "SÄKYLÄ",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "28100",
+    "names" : [ {
+      "value" : "PORI",
+      "language" : "sv"
+    }, {
+      "value" : "PORI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "28101",
+    "names" : [ {
+      "value" : "PORI",
+      "language" : "sv"
+    }, {
+      "value" : "PORI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "28102",
+    "names" : [ {
+      "value" : "PORI",
+      "language" : "fi"
+    }, {
+      "value" : "PORI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "28104",
+    "names" : [ {
+      "value" : "SMARTPOST",
+      "language" : "fi"
+    }, {
+      "value" : "SMARTPOST",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "28105",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "28120",
+    "names" : [ {
+      "value" : "PORI",
+      "language" : "fi"
+    }, {
+      "value" : "PORI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "28130",
+    "names" : [ {
+      "value" : "PORI",
+      "language" : "fi"
+    }, {
+      "value" : "PORI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "28131",
+    "names" : [ {
+      "value" : "PORI",
+      "language" : "fi"
+    }, {
+      "value" : "PORI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "28134",
+    "names" : [ {
+      "value" : "SMARTPOST",
+      "language" : "sv"
+    }, {
+      "value" : "SMARTPOST",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "28135",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "28190",
+    "names" : [ {
+      "value" : "PORI",
+      "language" : "sv"
+    }, {
+      "value" : "PORI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "28200",
+    "names" : [ {
+      "value" : "PORI",
+      "language" : "fi"
+    }, {
+      "value" : "PORI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "28220",
+    "names" : [ {
+      "value" : "PORI",
+      "language" : "sv"
+    }, {
+      "value" : "PORI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "28240",
+    "names" : [ {
+      "value" : "PORI",
+      "language" : "sv"
+    }, {
+      "value" : "PORI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "28260",
+    "names" : [ {
+      "value" : "HARJUNPÄÄ",
+      "language" : "fi"
+    }, {
+      "value" : "HARJUNPÄÄ",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "28300",
+    "names" : [ {
+      "value" : "PORI",
+      "language" : "fi"
+    }, {
+      "value" : "PORI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "28330",
+    "names" : [ {
+      "value" : "PORI",
+      "language" : "fi"
+    }, {
+      "value" : "PORI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "28360",
+    "names" : [ {
+      "value" : "PORI",
+      "language" : "sv"
+    }, {
+      "value" : "PORI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "28361",
+    "names" : [ {
+      "value" : "PORI",
+      "language" : "sv"
+    }, {
+      "value" : "PORI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "28365",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "28370",
+    "names" : [ {
+      "value" : "PORI",
+      "language" : "fi"
+    }, {
+      "value" : "PORI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "28400",
+    "names" : [ {
+      "value" : "ULVILA",
+      "language" : "fi"
+    }, {
+      "value" : "ULVILA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "28401",
+    "names" : [ {
+      "value" : "ULVILA",
+      "language" : "fi"
+    }, {
+      "value" : "ULVILA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "28405",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "28407",
+    "names" : [ {
+      "value" : "NOUTOPISTE",
+      "language" : "fi"
+    }, {
+      "value" : "NOUTOPISTE",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "28430",
+    "names" : [ {
+      "value" : "PORI",
+      "language" : "sv"
+    }, {
+      "value" : "PORI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "28434",
+    "names" : [ {
+      "value" : "SMARTPOST",
+      "language" : "fi"
+    }, {
+      "value" : "SMARTPOST",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "28450",
+    "names" : [ {
+      "value" : "VANHA-ULVILA",
+      "language" : "sv"
+    }, {
+      "value" : "VANHA-ULVILA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "28500",
+    "names" : [ {
+      "value" : "PORI",
+      "language" : "sv"
+    }, {
+      "value" : "PORI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "28540",
+    "names" : [ {
+      "value" : "PORI",
+      "language" : "fi"
+    }, {
+      "value" : "PORI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "28560",
+    "names" : [ {
+      "value" : "PORI",
+      "language" : "sv"
+    }, {
+      "value" : "PORI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "28580",
+    "names" : [ {
+      "value" : "PORI",
+      "language" : "sv"
+    }, {
+      "value" : "PORI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "28600",
+    "names" : [ {
+      "value" : "PORI",
+      "language" : "fi"
+    }, {
+      "value" : "PORI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "28601",
+    "names" : [ {
+      "value" : "PORI",
+      "language" : "fi"
+    }, {
+      "value" : "PORI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "28604",
+    "names" : [ {
+      "value" : "SMARTPOST",
+      "language" : "sv"
+    }, {
+      "value" : "SMARTPOST",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "28610",
+    "names" : [ {
+      "value" : "PORI",
+      "language" : "sv"
+    }, {
+      "value" : "PORI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "28614",
+    "names" : [ {
+      "value" : "SMARTPOST",
+      "language" : "fi"
+    }, {
+      "value" : "SMARTPOST",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "28615",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "28660",
+    "names" : [ {
+      "value" : "PORI",
+      "language" : "fi"
+    }, {
+      "value" : "PORI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "28760",
+    "names" : [ {
+      "value" : "PORI",
+      "language" : "fi"
+    }, {
+      "value" : "PORI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "28800",
+    "names" : [ {
+      "value" : "PORI",
+      "language" : "fi"
+    }, {
+      "value" : "PORI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "28840",
+    "names" : [ {
+      "value" : "PORI",
+      "language" : "fi"
+    }, {
+      "value" : "PORI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "28844",
+    "names" : [ {
+      "value" : "SMARTPOST",
+      "language" : "fi"
+    }, {
+      "value" : "SMARTPOST",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "28880",
+    "names" : [ {
+      "value" : "PORI",
+      "language" : "fi"
+    }, {
+      "value" : "PORI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "28900",
+    "names" : [ {
+      "value" : "PORI",
+      "language" : "fi"
+    }, {
+      "value" : "PORI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "29100",
+    "names" : [ {
+      "value" : "LUVIA",
+      "language" : "fi"
+    }, {
+      "value" : "LUVIA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "29101",
+    "names" : [ {
+      "value" : "LUVIA",
+      "language" : "fi"
+    }, {
+      "value" : "LUVIA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "29105",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "29180",
+    "names" : [ {
+      "value" : "PERÄNKYLÄ",
+      "language" : "fi"
+    }, {
+      "value" : "PERÄNKYLÄ",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "29200",
+    "names" : [ {
+      "value" : "HARJAVALTA",
+      "language" : "sv"
+    }, {
+      "value" : "HARJAVALTA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "29201",
+    "names" : [ {
+      "value" : "HARJAVALTA",
+      "language" : "fi"
+    }, {
+      "value" : "HARJAVALTA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "29205",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "29250",
+    "names" : [ {
+      "value" : "NAKKILA",
+      "language" : "fi"
+    }, {
+      "value" : "NAKKILA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "29251",
+    "names" : [ {
+      "value" : "NAKKILA",
+      "language" : "fi"
+    }, {
+      "value" : "NAKKILA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "29270",
+    "names" : [ {
+      "value" : "HORMISTO",
+      "language" : "fi"
+    }, {
+      "value" : "HORMISTO",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "29280",
+    "names" : [ {
+      "value" : "JÄRVIMAA",
+      "language" : "fi"
+    }, {
+      "value" : "JÄRVIMAA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "29310",
+    "names" : [ {
+      "value" : "KAASMARKKU",
+      "language" : "sv"
+    }, {
+      "value" : "KAASMARKKU",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "29320",
+    "names" : [ {
+      "value" : "LEINEPERI",
+      "language" : "sv"
+    }, {
+      "value" : "LEINEPERI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "29340",
+    "names" : [ {
+      "value" : "KULLAA",
+      "language" : "fi"
+    }, {
+      "value" : "KULLAA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "29350",
+    "names" : [ {
+      "value" : "PALUS",
+      "language" : "sv"
+    }, {
+      "value" : "PALUS",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "29570",
+    "names" : [ {
+      "value" : "SÖÖRMARKKU",
+      "language" : "fi"
+    }, {
+      "value" : "SÖÖRMARKKU",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "29600",
+    "names" : [ {
+      "value" : "NOORMARKKU",
+      "language" : "sv"
+    }, {
+      "value" : "NOORMARKKU",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "29601",
+    "names" : [ {
+      "value" : "NOORMARKKU",
+      "language" : "sv"
+    }, {
+      "value" : "NOORMARKKU",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "29630",
+    "names" : [ {
+      "value" : "POMARKKU",
+      "language" : "fi"
+    }, {
+      "value" : "POMARKKU",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "29631",
+    "names" : [ {
+      "value" : "POMARKKU",
+      "language" : "fi"
+    }, {
+      "value" : "POMARKKU",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "29640",
+    "names" : [ {
+      "value" : "HONKAKOSKI",
+      "language" : "fi"
+    }, {
+      "value" : "HONKAKOSKI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "29680",
+    "names" : [ {
+      "value" : "LASSILA",
+      "language" : "sv"
+    }, {
+      "value" : "LASSILA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "29700",
+    "names" : [ {
+      "value" : "AHLAINEN",
+      "language" : "fi"
+    }, {
+      "value" : "AHLAINEN",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "29720",
+    "names" : [ {
+      "value" : "LAMPPI",
+      "language" : "fi"
+    }, {
+      "value" : "LAMPPI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "29740",
+    "names" : [ {
+      "value" : "ETELÄMAA",
+      "language" : "sv"
+    }, {
+      "value" : "ETELÄMAA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "29750",
+    "names" : [ {
+      "value" : "POHJANSAHA",
+      "language" : "fi"
+    }, {
+      "value" : "POHJANSAHA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "29760",
+    "names" : [ {
+      "value" : "KÖÖRTILÄ",
+      "language" : "fi"
+    }, {
+      "value" : "KÖÖRTILÄ",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "29790",
+    "names" : [ {
+      "value" : "TUORILA",
+      "language" : "sv"
+    }, {
+      "value" : "TUORILA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "29810",
+    "names" : [ {
+      "value" : "SIIKAINEN",
+      "language" : "fi"
+    }, {
+      "value" : "SIIKAINEN",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "29811",
+    "names" : [ {
+      "value" : "SIIKAINEN",
+      "language" : "sv"
+    }, {
+      "value" : "SIIKAINEN",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "29830",
+    "names" : [ {
+      "value" : "SAMMI",
+      "language" : "fi"
+    }, {
+      "value" : "SAMMI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "29860",
+    "names" : [ {
+      "value" : "OTAMO",
+      "language" : "fi"
+    }, {
+      "value" : "OTAMO",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "29880",
+    "names" : [ {
+      "value" : "LEVÄSJOKI",
+      "language" : "fi"
+    }, {
+      "value" : "LEVÄSJOKI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "29900",
+    "names" : [ {
+      "value" : "MERIKARVIA",
+      "language" : "sv"
+    }, {
+      "value" : "MERIKARVIA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "29901",
+    "names" : [ {
+      "value" : "MERIKARVIA",
+      "language" : "sv"
+    }, {
+      "value" : "MERIKARVIA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "29940",
+    "names" : [ {
+      "value" : "KUVASKANGAS",
+      "language" : "fi"
+    }, {
+      "value" : "KUVASKANGAS",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "30100",
+    "names" : [ {
+      "value" : "FORSSA",
+      "language" : "sv"
+    }, {
+      "value" : "FORSSA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "30101",
+    "names" : [ {
+      "value" : "FORSSA",
+      "language" : "sv"
+    }, {
+      "value" : "FORSSA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "30102",
+    "names" : [ {
+      "value" : "FORSSA",
+      "language" : "fi"
+    }, {
+      "value" : "FORSSA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "30104",
+    "names" : [ {
+      "value" : "SMARTPOST",
+      "language" : "sv"
+    }, {
+      "value" : "SMARTPOST",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "30105",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "30107",
+    "names" : [ {
+      "value" : "NOUTOPISTE",
+      "language" : "fi"
+    }, {
+      "value" : "NOUTOPISTE",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "30108",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "30300",
+    "names" : [ {
+      "value" : "FORSSA",
+      "language" : "sv"
+    }, {
+      "value" : "FORSSA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "30304",
+    "names" : [ {
+      "value" : "SMARTPOST",
+      "language" : "sv"
+    }, {
+      "value" : "SMARTPOST",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "30420",
+    "names" : [ {
+      "value" : "FORSSA",
+      "language" : "fi"
+    }, {
+      "value" : "FORSSA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "30421",
+    "names" : [ {
+      "value" : "FORSSA",
+      "language" : "sv"
+    }, {
+      "value" : "FORSSA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "31006",
+    "names" : [ {
+      "value" : "VASTAUSLÄHETYS",
+      "language" : "fi"
+    }, {
+      "value" : "SVARSFÖRSÄNDELSE",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "31110",
+    "names" : [ {
+      "value" : "MATKU",
+      "language" : "sv"
+    }, {
+      "value" : "MATKU",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "31130",
+    "names" : [ {
+      "value" : "KOIJÄRVI",
+      "language" : "fi"
+    }, {
+      "value" : "KOIJÄRVI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "31140",
+    "names" : [ {
+      "value" : "MENONEN",
+      "language" : "sv"
+    }, {
+      "value" : "MENONEN",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "31160",
+    "names" : [ {
+      "value" : "NUUTAJÄRVI",
+      "language" : "fi"
+    }, {
+      "value" : "NUUTAJÄRVI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "31170",
+    "names" : [ {
+      "value" : "SAVIJOKI",
+      "language" : "fi"
+    }, {
+      "value" : "SAVIJOKI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "31230",
+    "names" : [ {
+      "value" : "SUSIKAS",
+      "language" : "fi"
+    }, {
+      "value" : "SUSIKAS",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "31250",
+    "names" : [ {
+      "value" : "TEURO",
+      "language" : "fi"
+    }, {
+      "value" : "TEURO",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "31300",
+    "names" : [ {
+      "value" : "TAMMELA",
+      "language" : "sv"
+    }, {
+      "value" : "TAMMELA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "31310",
+    "names" : [ {
+      "value" : "MUSTIALA",
+      "language" : "sv"
+    }, {
+      "value" : "MUSTIALA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "31340",
+    "names" : [ {
+      "value" : "PORRAS",
+      "language" : "fi"
+    }, {
+      "value" : "PORRAS",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "31350",
+    "names" : [ {
+      "value" : "LIESJÄRVI",
+      "language" : "sv"
+    }, {
+      "value" : "LIESJÄRVI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "31370",
+    "names" : [ {
+      "value" : "EERIKKILÄN URHEILUOPISTO",
+      "language" : "sv"
+    }, {
+      "value" : "EERIKKILÄN URHEILUOPISTO",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "31380",
+    "names" : [ {
+      "value" : "LETKU",
+      "language" : "sv"
+    }, {
+      "value" : "LETKU",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "31400",
+    "names" : [ {
+      "value" : "SOMERO",
+      "language" : "sv"
+    }, {
+      "value" : "SOMERO",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "31401",
+    "names" : [ {
+      "value" : "SOMERO",
+      "language" : "sv"
+    }, {
+      "value" : "SOMERO",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "31405",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "31410",
+    "names" : [ {
+      "value" : "YLÖPIRTTI",
+      "language" : "fi"
+    }, {
+      "value" : "YLÖPIRTTI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "31450",
+    "names" : [ {
+      "value" : "HÄNTÄLÄ",
+      "language" : "sv"
+    }, {
+      "value" : "HÄNTÄLÄ",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "31460",
+    "names" : [ {
+      "value" : "HIRSJÄRVI",
+      "language" : "sv"
+    }, {
+      "value" : "HIRSJÄRVI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "31470",
+    "names" : [ {
+      "value" : "SOMERNIEMI",
+      "language" : "sv"
+    }, {
+      "value" : "SOMERNIEMI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "31490",
+    "names" : [ {
+      "value" : "TERTTILÄ",
+      "language" : "fi"
+    }, {
+      "value" : "TERTTILÄ",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "31500",
+    "names" : [ {
+      "value" : "KOSKI TL",
+      "language" : "fi"
+    }, {
+      "value" : "KOSKI TL",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "31501",
+    "names" : [ {
+      "value" : "KOSKI TL",
+      "language" : "sv"
+    }, {
+      "value" : "KOSKI TL",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "31520",
+    "names" : [ {
+      "value" : "PITKÄJÄRVI",
+      "language" : "fi"
+    }, {
+      "value" : "PITKÄJÄRVI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "31530",
+    "names" : [ {
+      "value" : "PYÖLI",
+      "language" : "sv"
+    }, {
+      "value" : "PYÖLI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "31600",
+    "names" : [ {
+      "value" : "JOKIOINEN",
+      "language" : "sv"
+    }, {
+      "value" : "JOKIOINEN",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "31601",
+    "names" : [ {
+      "value" : "JOKIOINEN",
+      "language" : "fi"
+    }, {
+      "value" : "JOKIOINEN",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "31610",
+    "names" : [ {
+      "value" : "VAULAMMI",
+      "language" : "fi"
+    }, {
+      "value" : "VAULAMMI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "31620",
+    "names" : [ {
+      "value" : "LATOVAINIO",
+      "language" : "sv"
+    }, {
+      "value" : "LATOVAINIO",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "31630",
+    "names" : [ {
+      "value" : "MINKIÖ",
+      "language" : "fi"
+    }, {
+      "value" : "MINKIÖ",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "31640",
+    "names" : [ {
+      "value" : "HUMPPILA",
+      "language" : "fi"
+    }, {
+      "value" : "HUMPPILA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "31641",
+    "names" : [ {
+      "value" : "HUMPPILA",
+      "language" : "sv"
+    }, {
+      "value" : "HUMPPILA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "31650",
+    "names" : [ {
+      "value" : "VENÄJÄNKANGAS",
+      "language" : "sv"
+    }, {
+      "value" : "VENÄJÄNKANGAS",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "31700",
+    "names" : [ {
+      "value" : "URJALA AS",
+      "language" : "fi"
+    }, {
+      "value" : "URJALA AS",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "31720",
+    "names" : [ {
+      "value" : "URJALANKYLÄ",
+      "language" : "sv"
+    }, {
+      "value" : "URJALANKYLÄ",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "31730",
+    "names" : [ {
+      "value" : "HONKOLA",
+      "language" : "sv"
+    }, {
+      "value" : "HONKOLA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "31750",
+    "names" : [ {
+      "value" : "KEHRO",
+      "language" : "fi"
+    }, {
+      "value" : "KEHRO",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "31760",
+    "names" : [ {
+      "value" : "URJALA",
+      "language" : "sv"
+    }, {
+      "value" : "URJALA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "31761",
+    "names" : [ {
+      "value" : "URJALA",
+      "language" : "sv"
+    }, {
+      "value" : "URJALA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "31810",
+    "names" : [ {
+      "value" : "ORINIEMI",
+      "language" : "fi"
+    }, {
+      "value" : "ORINIEMI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "31830",
+    "names" : [ {
+      "value" : "HALKIVAHA",
+      "language" : "fi"
+    }, {
+      "value" : "HALKIVAHA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "31850",
+    "names" : [ {
+      "value" : "KOSKIOINEN",
+      "language" : "sv"
+    }, {
+      "value" : "KOSKIOINEN",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "31860",
+    "names" : [ {
+      "value" : "TURSA",
+      "language" : "fi"
+    }, {
+      "value" : "TURSA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "31900",
+    "names" : [ {
+      "value" : "PUNKALAIDUN",
+      "language" : "sv"
+    }, {
+      "value" : "PUNKALAIDUN",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "31901",
+    "names" : [ {
+      "value" : "PUNKALAIDUN",
+      "language" : "fi"
+    }, {
+      "value" : "PUNKALAIDUN",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "31930",
+    "names" : [ {
+      "value" : "VANTTILA",
+      "language" : "sv"
+    }, {
+      "value" : "VANTTILA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "31950",
+    "names" : [ {
+      "value" : "SADONMAA",
+      "language" : "fi"
+    }, {
+      "value" : "SADONMAA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "31960",
+    "names" : [ {
+      "value" : "ORISUO",
+      "language" : "fi"
+    }, {
+      "value" : "ORISUO",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "31970",
+    "names" : [ {
+      "value" : "KANTEENMAA",
+      "language" : "sv"
+    }, {
+      "value" : "KANTEENMAA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "32100",
+    "names" : [ {
+      "value" : "YPÄJÄ",
+      "language" : "sv"
+    }, {
+      "value" : "YPÄJÄ",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "32140",
+    "names" : [ {
+      "value" : "YPÄJÄ AS",
+      "language" : "fi"
+    }, {
+      "value" : "YPÄJÄ AS",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "32200",
+    "names" : [ {
+      "value" : "LOIMAA",
+      "language" : "sv"
+    }, {
+      "value" : "LOIMAA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "32201",
+    "names" : [ {
+      "value" : "LOIMAA",
+      "language" : "fi"
+    }, {
+      "value" : "LOIMAA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "32204",
+    "names" : [ {
+      "value" : "SMARTPOST",
+      "language" : "sv"
+    }, {
+      "value" : "SMARTPOST",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "32205",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "32210",
+    "names" : [ {
+      "value" : "LOIMAA",
+      "language" : "sv"
+    }, {
+      "value" : "LOIMAA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "32250",
+    "names" : [ {
+      "value" : "KOJONKULMA",
+      "language" : "fi"
+    }, {
+      "value" : "KOJONKULMA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "32260",
+    "names" : [ {
+      "value" : "KOJONPERÄ",
+      "language" : "fi"
+    }, {
+      "value" : "KOJONPERÄ",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "32270",
+    "names" : [ {
+      "value" : "METSÄMAA",
+      "language" : "fi"
+    }, {
+      "value" : "METSÄMAA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "32280",
+    "names" : [ {
+      "value" : "METSÄKORPI",
+      "language" : "sv"
+    }, {
+      "value" : "METSÄKORPI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "32300",
+    "names" : [ {
+      "value" : "MELLILÄ",
+      "language" : "fi"
+    }, {
+      "value" : "MELLILÄ",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "32410",
+    "names" : [ {
+      "value" : "NIINIJOKI",
+      "language" : "sv"
+    }, {
+      "value" : "NIINIJOKI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "32430",
+    "names" : [ {
+      "value" : "YLHÄINEN",
+      "language" : "sv"
+    }, {
+      "value" : "YLHÄINEN",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "32440",
+    "names" : [ {
+      "value" : "ALASTARO",
+      "language" : "sv"
+    }, {
+      "value" : "ALASTARO",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "32441",
+    "names" : [ {
+      "value" : "ALASTARO",
+      "language" : "sv"
+    }, {
+      "value" : "ALASTARO",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "32450",
+    "names" : [ {
+      "value" : "TAMMIAINEN",
+      "language" : "sv"
+    }, {
+      "value" : "TAMMIAINEN",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "32500",
+    "names" : [ {
+      "value" : "ORIPÄÄ",
+      "language" : "sv"
+    }, {
+      "value" : "ORIPÄÄ",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "32520",
+    "names" : [ {
+      "value" : "LATVA",
+      "language" : "sv"
+    }, {
+      "value" : "LATVA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "32560",
+    "names" : [ {
+      "value" : "VIRTTAA",
+      "language" : "sv"
+    }, {
+      "value" : "VIRTTAA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "32610",
+    "names" : [ {
+      "value" : "VAMPULA",
+      "language" : "sv"
+    }, {
+      "value" : "VAMPULA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "32620",
+    "names" : [ {
+      "value" : "RUTAVA",
+      "language" : "sv"
+    }, {
+      "value" : "RUTAVA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "32700",
+    "names" : [ {
+      "value" : "HUITTINEN",
+      "language" : "fi"
+    }, {
+      "value" : "HUITTINEN",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "32701",
+    "names" : [ {
+      "value" : "HUITTINEN",
+      "language" : "fi"
+    }, {
+      "value" : "HUITTINEN",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "32704",
+    "names" : [ {
+      "value" : "SMARTPOST",
+      "language" : "sv"
+    }, {
+      "value" : "SMARTPOST",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "32705",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "32710",
+    "names" : [ {
+      "value" : "SAMPU",
+      "language" : "fi"
+    }, {
+      "value" : "SAMPU",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "32730",
+    "names" : [ {
+      "value" : "SASTAMALA",
+      "language" : "fi"
+    }, {
+      "value" : "SASTAMALA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "32740",
+    "names" : [ {
+      "value" : "SASTAMALA",
+      "language" : "fi"
+    }, {
+      "value" : "SASTAMALA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "32741",
+    "names" : [ {
+      "value" : "SASTAMALA",
+      "language" : "fi"
+    }, {
+      "value" : "SASTAMALA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "32760",
+    "names" : [ {
+      "value" : "SUTTILA",
+      "language" : "fi"
+    }, {
+      "value" : "SUTTILA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "32770",
+    "names" : [ {
+      "value" : "HUHTAMO",
+      "language" : "fi"
+    }, {
+      "value" : "HUHTAMO",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "32800",
+    "names" : [ {
+      "value" : "KOKEMÄKI",
+      "language" : "sv"
+    }, {
+      "value" : "KOKEMÄKI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "32801",
+    "names" : [ {
+      "value" : "KOKEMÄKI",
+      "language" : "sv"
+    }, {
+      "value" : "KOKEMÄKI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "32805",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "32810",
+    "names" : [ {
+      "value" : "PEIPOHJA",
+      "language" : "fi"
+    }, {
+      "value" : "PEIPOHJA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "32830",
+    "names" : [ {
+      "value" : "RISTE",
+      "language" : "fi"
+    }, {
+      "value" : "RISTE",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "32860",
+    "names" : [ {
+      "value" : "KORKEAOJA",
+      "language" : "sv"
+    }, {
+      "value" : "KORKEAOJA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "32910",
+    "names" : [ {
+      "value" : "KAUVATSA AS",
+      "language" : "sv"
+    }, {
+      "value" : "KAUVATSA AS",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "32920",
+    "names" : [ {
+      "value" : "KAUVATSA",
+      "language" : "fi"
+    }, {
+      "value" : "KAUVATSA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "33006",
+    "names" : [ {
+      "value" : "VASTAUSLÄHETYS",
+      "language" : "fi"
+    }, {
+      "value" : "SVARSFÖRSÄNDELSE",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "33014",
+    "names" : [ {
+      "value" : "TAMPEREEN YLIOPISTO",
+      "language" : "sv"
+    }, {
+      "value" : "TAMPEREEN YLIOPISTO",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33020",
+    "names" : [ {
+      "value" : "WOIKOSKI",
+      "language" : "fi"
+    }, {
+      "value" : "WOIKOSKI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "33032",
+    "names" : [ {
+      "value" : "TYÖTERVEYSLAITOS",
+      "language" : "fi"
+    }, {
+      "value" : "ARBETSHÄLSOINSTITUTET",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "33056",
+    "names" : [ {
+      "value" : "FPA",
+      "language" : "sv"
+    }, {
+      "value" : "KELA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33060",
+    "names" : [ {
+      "value" : "OLE",
+      "language" : "sv"
+    }, {
+      "value" : "OLE",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33086",
+    "names" : [ {
+      "value" : "MIGRATIONSVERKET",
+      "language" : "sv"
+    }, {
+      "value" : "MAAHANMUUTTOVIRASTO",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33100",
+    "names" : [ {
+      "value" : "TAMPERE",
+      "language" : "fi"
+    }, {
+      "value" : "TAMPERE",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "33101",
+    "names" : [ {
+      "value" : "TAMPERE",
+      "language" : "fi"
+    }, {
+      "value" : "TAMPERE",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "33104",
+    "names" : [ {
+      "value" : "SMARTPOST",
+      "language" : "sv"
+    }, {
+      "value" : "SMARTPOST",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33105",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33107",
+    "names" : [ {
+      "value" : "NOUTOPISTE",
+      "language" : "fi"
+    }, {
+      "value" : "NOUTOPISTE",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "33108",
+    "names" : [ {
+      "value" : "NOUTOPISTE",
+      "language" : "fi"
+    }, {
+      "value" : "NOUTOPISTE",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "33180",
+    "names" : [ {
+      "value" : "TAMPERE",
+      "language" : "sv"
+    }, {
+      "value" : "TAMPERE",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33200",
+    "names" : [ {
+      "value" : "TAMPERE",
+      "language" : "sv"
+    }, {
+      "value" : "TAMPERE",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33201",
+    "names" : [ {
+      "value" : "TAMPERE",
+      "language" : "fi"
+    }, {
+      "value" : "TAMPERE",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "33210",
+    "names" : [ {
+      "value" : "TAMPERE",
+      "language" : "sv"
+    }, {
+      "value" : "TAMPERE",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33211",
+    "names" : [ {
+      "value" : "TAMPERE",
+      "language" : "fi"
+    }, {
+      "value" : "TAMPERE",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "33215",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "33230",
+    "names" : [ {
+      "value" : "TAMPERE",
+      "language" : "fi"
+    }, {
+      "value" : "TAMPERE",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "33231",
+    "names" : [ {
+      "value" : "TAMPERE",
+      "language" : "fi"
+    }, {
+      "value" : "TAMPERE",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "33240",
+    "names" : [ {
+      "value" : "TAMPERE",
+      "language" : "fi"
+    }, {
+      "value" : "TAMPERE",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "33250",
+    "names" : [ {
+      "value" : "TAMPERE",
+      "language" : "fi"
+    }, {
+      "value" : "TAMPERE",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "33251",
+    "names" : [ {
+      "value" : "TAMPERE",
+      "language" : "fi"
+    }, {
+      "value" : "TAMPERE",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "33270",
+    "names" : [ {
+      "value" : "TAMPERE",
+      "language" : "sv"
+    }, {
+      "value" : "TAMPERE",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33271",
+    "names" : [ {
+      "value" : "TAMPERE",
+      "language" : "sv"
+    }, {
+      "value" : "TAMPERE",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33275",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33300",
+    "names" : [ {
+      "value" : "TAMPERE",
+      "language" : "sv"
+    }, {
+      "value" : "TAMPERE",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33305",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33310",
+    "names" : [ {
+      "value" : "TAMPERE",
+      "language" : "fi"
+    }, {
+      "value" : "TAMPERE",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "33311",
+    "names" : [ {
+      "value" : "TAMPERE",
+      "language" : "sv"
+    }, {
+      "value" : "TAMPERE",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33315",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33330",
+    "names" : [ {
+      "value" : "TAMPERE",
+      "language" : "fi"
+    }, {
+      "value" : "TAMPERE",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "33331",
+    "names" : [ {
+      "value" : "TAMPERE",
+      "language" : "sv"
+    }, {
+      "value" : "TAMPERE",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33340",
+    "names" : [ {
+      "value" : "TAMPERE",
+      "language" : "sv"
+    }, {
+      "value" : "TAMPERE",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33341",
+    "names" : [ {
+      "value" : "TAMPERE",
+      "language" : "fi"
+    }, {
+      "value" : "TAMPERE",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "33380",
+    "names" : [ {
+      "value" : "PITKÄNIEMI",
+      "language" : "fi"
+    }, {
+      "value" : "PITKÄNIEMI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "33400",
+    "names" : [ {
+      "value" : "TAMPERE",
+      "language" : "fi"
+    }, {
+      "value" : "TAMPERE",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "33401",
+    "names" : [ {
+      "value" : "TAMPERE",
+      "language" : "fi"
+    }, {
+      "value" : "TAMPERE",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "33405",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33410",
+    "names" : [ {
+      "value" : "TAMPERE",
+      "language" : "sv"
+    }, {
+      "value" : "TAMPERE",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33411",
+    "names" : [ {
+      "value" : "TAMPERE",
+      "language" : "sv"
+    }, {
+      "value" : "TAMPERE",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33420",
+    "names" : [ {
+      "value" : "TAMPERE",
+      "language" : "sv"
+    }, {
+      "value" : "TAMPERE",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33430",
+    "names" : [ {
+      "value" : "VUORENTAUSTA",
+      "language" : "sv"
+    }, {
+      "value" : "VUORENTAUSTA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33450",
+    "names" : [ {
+      "value" : "SIIVIKKALA",
+      "language" : "sv"
+    }, {
+      "value" : "SIIVIKKALA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33470",
+    "names" : [ {
+      "value" : "YLÖJÄRVI",
+      "language" : "fi"
+    }, {
+      "value" : "YLÖJÄRVI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "33471",
+    "names" : [ {
+      "value" : "YLÖJÄRVI",
+      "language" : "sv"
+    }, {
+      "value" : "YLÖJÄRVI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33474",
+    "names" : [ {
+      "value" : "SMARTPOST",
+      "language" : "sv"
+    }, {
+      "value" : "SMARTPOST",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33475",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "33480",
+    "names" : [ {
+      "value" : "YLÖJÄRVI",
+      "language" : "fi"
+    }, {
+      "value" : "YLÖJÄRVI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "33485",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33500",
+    "names" : [ {
+      "value" : "TAMPERE",
+      "language" : "sv"
+    }, {
+      "value" : "TAMPERE",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33501",
+    "names" : [ {
+      "value" : "TAMPERE",
+      "language" : "fi"
+    }, {
+      "value" : "TAMPERE",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "33520",
+    "names" : [ {
+      "value" : "TAMPERE",
+      "language" : "fi"
+    }, {
+      "value" : "TAMPERE",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "33521",
+    "names" : [ {
+      "value" : "TAMPERE",
+      "language" : "sv"
+    }, {
+      "value" : "TAMPERE",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33530",
+    "names" : [ {
+      "value" : "TAMPERE",
+      "language" : "sv"
+    }, {
+      "value" : "TAMPERE",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33531",
+    "names" : [ {
+      "value" : "TAMPERE",
+      "language" : "sv"
+    }, {
+      "value" : "TAMPERE",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33534",
+    "names" : [ {
+      "value" : "SMARTPOST",
+      "language" : "fi"
+    }, {
+      "value" : "SMARTPOST",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "33540",
+    "names" : [ {
+      "value" : "TAMPERE",
+      "language" : "sv"
+    }, {
+      "value" : "TAMPERE",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33541",
+    "names" : [ {
+      "value" : "TAMPERE",
+      "language" : "sv"
+    }, {
+      "value" : "TAMPERE",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33545",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33560",
+    "names" : [ {
+      "value" : "TAMPERE",
+      "language" : "sv"
+    }, {
+      "value" : "TAMPERE",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33561",
+    "names" : [ {
+      "value" : "TAMPERE",
+      "language" : "sv"
+    }, {
+      "value" : "TAMPERE",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33580",
+    "names" : [ {
+      "value" : "TAMPERE",
+      "language" : "sv"
+    }, {
+      "value" : "TAMPERE",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33581",
+    "names" : [ {
+      "value" : "TAMPERE",
+      "language" : "sv"
+    }, {
+      "value" : "TAMPERE",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33585",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33587",
+    "names" : [ {
+      "value" : "NOUTOPISTE",
+      "language" : "sv"
+    }, {
+      "value" : "NOUTOPISTE",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33610",
+    "names" : [ {
+      "value" : "TAMPERE",
+      "language" : "fi"
+    }, {
+      "value" : "TAMPERE",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "33680",
+    "names" : [ {
+      "value" : "TAMPERE",
+      "language" : "sv"
+    }, {
+      "value" : "TAMPERE",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33700",
+    "names" : [ {
+      "value" : "TAMPERE",
+      "language" : "sv"
+    }, {
+      "value" : "TAMPERE",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33701",
+    "names" : [ {
+      "value" : "TAMPERE",
+      "language" : "sv"
+    }, {
+      "value" : "TAMPERE",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33710",
+    "names" : [ {
+      "value" : "TAMPERE",
+      "language" : "fi"
+    }, {
+      "value" : "TAMPERE",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "33711",
+    "names" : [ {
+      "value" : "TAMPERE",
+      "language" : "sv"
+    }, {
+      "value" : "TAMPERE",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33715",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33720",
+    "names" : [ {
+      "value" : "TAMPERE",
+      "language" : "sv"
+    }, {
+      "value" : "TAMPERE",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33721",
+    "names" : [ {
+      "value" : "TAMPERE",
+      "language" : "sv"
+    }, {
+      "value" : "TAMPERE",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33724",
+    "names" : [ {
+      "value" : "SMARTPOST",
+      "language" : "sv"
+    }, {
+      "value" : "SMARTPOST",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33725",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33730",
+    "names" : [ {
+      "value" : "TAMPERE",
+      "language" : "fi"
+    }, {
+      "value" : "TAMPERE",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "33731",
+    "names" : [ {
+      "value" : "TAMPERE",
+      "language" : "sv"
+    }, {
+      "value" : "TAMPERE",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33800",
+    "names" : [ {
+      "value" : "TAMPERE",
+      "language" : "sv"
+    }, {
+      "value" : "TAMPERE",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33801",
+    "names" : [ {
+      "value" : "TAMPERE",
+      "language" : "fi"
+    }, {
+      "value" : "TAMPERE",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "33805",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33820",
+    "names" : [ {
+      "value" : "TAMPERE",
+      "language" : "sv"
+    }, {
+      "value" : "TAMPERE",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33821",
+    "names" : [ {
+      "value" : "TAMPERE",
+      "language" : "fi"
+    }, {
+      "value" : "TAMPERE",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "33825",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33840",
+    "names" : [ {
+      "value" : "TAMPERE",
+      "language" : "fi"
+    }, {
+      "value" : "TAMPERE",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "33841",
+    "names" : [ {
+      "value" : "TAMPERE",
+      "language" : "fi"
+    }, {
+      "value" : "TAMPERE",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "33850",
+    "names" : [ {
+      "value" : "TAMPERE",
+      "language" : "fi"
+    }, {
+      "value" : "TAMPERE",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "33851",
+    "names" : [ {
+      "value" : "TAMPERE",
+      "language" : "sv"
+    }, {
+      "value" : "TAMPERE",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33870",
+    "names" : [ {
+      "value" : "TAMPERE",
+      "language" : "sv"
+    }, {
+      "value" : "TAMPERE",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33874",
+    "names" : [ {
+      "value" : "SMARTPOST",
+      "language" : "fi"
+    }, {
+      "value" : "SMARTPOST",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "33875",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "33880",
+    "names" : [ {
+      "value" : "LEMPÄÄLÄ",
+      "language" : "fi"
+    }, {
+      "value" : "LEMPÄÄLÄ",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "33881",
+    "names" : [ {
+      "value" : "LEMPÄÄLÄ",
+      "language" : "sv"
+    }, {
+      "value" : "LEMPÄÄLÄ",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33900",
+    "names" : [ {
+      "value" : "TAMPERE",
+      "language" : "sv"
+    }, {
+      "value" : "TAMPERE",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33901",
+    "names" : [ {
+      "value" : "TAMPERE",
+      "language" : "sv"
+    }, {
+      "value" : "TAMPERE",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33905",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "33920",
+    "names" : [ {
+      "value" : "PIRKKALA",
+      "language" : "sv"
+    }, {
+      "value" : "PIRKKALA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33950",
+    "names" : [ {
+      "value" : "PIRKKALA",
+      "language" : "sv"
+    }, {
+      "value" : "PIRKKALA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33954",
+    "names" : [ {
+      "value" : "SMARTPOST",
+      "language" : "sv"
+    }, {
+      "value" : "SMARTPOST",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33955",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "33960",
+    "names" : [ {
+      "value" : "PIRKKALA",
+      "language" : "fi"
+    }, {
+      "value" : "PIRKKALA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "33961",
+    "names" : [ {
+      "value" : "PIRKKALA",
+      "language" : "sv"
+    }, {
+      "value" : "PIRKKALA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33965",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "33980",
+    "names" : [ {
+      "value" : "PIRKKALA",
+      "language" : "fi"
+    }, {
+      "value" : "PIRKKALA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "34110",
+    "names" : [ {
+      "value" : "LAKIALA",
+      "language" : "fi"
+    }, {
+      "value" : "LAKIALA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "34130",
+    "names" : [ {
+      "value" : "YLINEN",
+      "language" : "sv"
+    }, {
+      "value" : "YLINEN",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "34140",
+    "names" : [ {
+      "value" : "MUTALA",
+      "language" : "fi"
+    }, {
+      "value" : "MUTALA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "34150",
+    "names" : [ {
+      "value" : "KYRÖNLAHTI",
+      "language" : "fi"
+    }, {
+      "value" : "KYRÖNLAHTI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "34180",
+    "names" : [ {
+      "value" : "LÄNSI-TEISKO",
+      "language" : "fi"
+    }, {
+      "value" : "LÄNSI-TEISKO",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "34240",
+    "names" : [ {
+      "value" : "KÄMMENNIEMI",
+      "language" : "sv"
+    }, {
+      "value" : "KÄMMENNIEMI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "34260",
+    "names" : [ {
+      "value" : "TERÄLAHTI",
+      "language" : "fi"
+    }, {
+      "value" : "TERÄLAHTI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "34270",
+    "names" : [ {
+      "value" : "VELAATTA",
+      "language" : "fi"
+    }, {
+      "value" : "VELAATTA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "34300",
+    "names" : [ {
+      "value" : "KURU",
+      "language" : "fi"
+    }, {
+      "value" : "KURU",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "34301",
+    "names" : [ {
+      "value" : "KURU",
+      "language" : "fi"
+    }, {
+      "value" : "KURU",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "34320",
+    "names" : [ {
+      "value" : "PARKKUU",
+      "language" : "sv"
+    }, {
+      "value" : "PARKKUU",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "34330",
+    "names" : [ {
+      "value" : "POIKELUS",
+      "language" : "sv"
+    }, {
+      "value" : "POIKELUS",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "34410",
+    "names" : [ {
+      "value" : "MUROLE",
+      "language" : "sv"
+    }, {
+      "value" : "MUROLE",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "34420",
+    "names" : [ {
+      "value" : "MUROLEEN KANAVA",
+      "language" : "sv"
+    }, {
+      "value" : "MUROLEEN KANAVA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "34430",
+    "names" : [ {
+      "value" : "KEKKONEN",
+      "language" : "fi"
+    }, {
+      "value" : "KEKKONEN",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "34450",
+    "names" : [ {
+      "value" : "JÄMINKIPOHJA",
+      "language" : "fi"
+    }, {
+      "value" : "JÄMINKIPOHJA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "34510",
+    "names" : [ {
+      "value" : "LUODE",
+      "language" : "sv"
+    }, {
+      "value" : "LUODE",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "34530",
+    "names" : [ {
+      "value" : "LÄNSI-AURE",
+      "language" : "sv"
+    }, {
+      "value" : "LÄNSI-AURE",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "34550",
+    "names" : [ {
+      "value" : "ITÄ-AURE",
+      "language" : "sv"
+    }, {
+      "value" : "ITÄ-AURE",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "34600",
+    "names" : [ {
+      "value" : "RUOVESI",
+      "language" : "fi"
+    }, {
+      "value" : "RUOVESI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "34601",
+    "names" : [ {
+      "value" : "RUOVESI",
+      "language" : "sv"
+    }, {
+      "value" : "RUOVESI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "34640",
+    "names" : [ {
+      "value" : "MUSTAJÄRVI",
+      "language" : "fi"
+    }, {
+      "value" : "MUSTAJÄRVI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "34710",
+    "names" : [ {
+      "value" : "VASKIVESI",
+      "language" : "fi"
+    }, {
+      "value" : "VASKIVESI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "34730",
+    "names" : [ {
+      "value" : "VASKUU",
+      "language" : "fi"
+    }, {
+      "value" : "VASKUU",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "34740",
+    "names" : [ {
+      "value" : "KORO",
+      "language" : "fi"
+    }, {
+      "value" : "KORO",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "34770",
+    "names" : [ {
+      "value" : "KURJENKYLÄ",
+      "language" : "sv"
+    }, {
+      "value" : "KURJENKYLÄ",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "34800",
+    "names" : [ {
+      "value" : "VIRRAT",
+      "language" : "fi"
+    }, {
+      "value" : "VIRRAT",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "34801",
+    "names" : [ {
+      "value" : "VIRRAT",
+      "language" : "sv"
+    }, {
+      "value" : "VIRRAT",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "34805",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "34870",
+    "names" : [ {
+      "value" : "VISUVESI",
+      "language" : "sv"
+    }, {
+      "value" : "VISUVESI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "34910",
+    "names" : [ {
+      "value" : "ÄIJÄNNEVA",
+      "language" : "sv"
+    }, {
+      "value" : "ÄIJÄNNEVA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "34930",
+    "names" : [ {
+      "value" : "LIEDENPOHJA",
+      "language" : "fi"
+    }, {
+      "value" : "LIEDENPOHJA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "34950",
+    "names" : [ {
+      "value" : "OHTOLA",
+      "language" : "fi"
+    }, {
+      "value" : "OHTOLA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "34970",
+    "names" : [ {
+      "value" : "TOISVESI",
+      "language" : "fi"
+    }, {
+      "value" : "TOISVESI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "34980",
+    "names" : [ {
+      "value" : "KILLINKOSKI",
+      "language" : "sv"
+    }, {
+      "value" : "KILLINKOSKI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "35100",
+    "names" : [ {
+      "value" : "ORIVESI AS",
+      "language" : "sv"
+    }, {
+      "value" : "ORIVESI AS",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "35220",
+    "names" : [ {
+      "value" : "ERÄJÄRVI",
+      "language" : "fi"
+    }, {
+      "value" : "ERÄJÄRVI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "35240",
+    "names" : [ {
+      "value" : "RISTAKALLIO",
+      "language" : "fi"
+    }, {
+      "value" : "RISTAKALLIO",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "35260",
+    "names" : [ {
+      "value" : "HOIVAMÄKI",
+      "language" : "fi"
+    }, {
+      "value" : "HOIVAMÄKI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "35270",
+    "names" : [ {
+      "value" : "VÄSTILÄ",
+      "language" : "sv"
+    }, {
+      "value" : "VÄSTILÄ",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "35300",
+    "names" : [ {
+      "value" : "ORIVESI",
+      "language" : "sv"
+    }, {
+      "value" : "ORIVESI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "35301",
+    "names" : [ {
+      "value" : "ORIVESI",
+      "language" : "fi"
+    }, {
+      "value" : "ORIVESI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "35305",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "35320",
+    "names" : [ {
+      "value" : "HIRSILÄ",
+      "language" : "fi"
+    }, {
+      "value" : "HIRSILÄ",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "35400",
+    "names" : [ {
+      "value" : "LÄNGELMÄKI",
+      "language" : "fi"
+    }, {
+      "value" : "LÄNGELMÄKI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "35420",
+    "names" : [ {
+      "value" : "TALVIAINEN",
+      "language" : "sv"
+    }, {
+      "value" : "TALVIAINEN",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "35480",
+    "names" : [ {
+      "value" : "LÄNGELMÄKI",
+      "language" : "sv"
+    }, {
+      "value" : "LÄNGELMÄKI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "35500",
+    "names" : [ {
+      "value" : "KORKEAKOSKI",
+      "language" : "sv"
+    }, {
+      "value" : "KORKEAKOSKI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "35520",
+    "names" : [ {
+      "value" : "PIRTTIKANGAS",
+      "language" : "sv"
+    }, {
+      "value" : "PIRTTIKANGAS",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "35530",
+    "names" : [ {
+      "value" : "LYLY",
+      "language" : "fi"
+    }, {
+      "value" : "LYLY",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "35540",
+    "names" : [ {
+      "value" : "JUUPAJOKI",
+      "language" : "sv"
+    }, {
+      "value" : "JUUPAJOKI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "35550",
+    "names" : [ {
+      "value" : "SALOKUNTA",
+      "language" : "fi"
+    }, {
+      "value" : "SALOKUNTA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "35600",
+    "names" : [ {
+      "value" : "HALLI",
+      "language" : "sv"
+    }, {
+      "value" : "HALLI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "35601",
+    "names" : [ {
+      "value" : "HALLI",
+      "language" : "fi"
+    }, {
+      "value" : "HALLI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "35610",
+    "names" : [ {
+      "value" : "PIHLAISTO",
+      "language" : "fi"
+    }, {
+      "value" : "PIHLAISTO",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "35630",
+    "names" : [ {
+      "value" : "KUOREVESI",
+      "language" : "fi"
+    }, {
+      "value" : "KUOREVESI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "35700",
+    "names" : [ {
+      "value" : "VILPPULA",
+      "language" : "sv"
+    }, {
+      "value" : "VILPPULA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "35701",
+    "names" : [ {
+      "value" : "VILPPULA",
+      "language" : "fi"
+    }, {
+      "value" : "VILPPULA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "35740",
+    "names" : [ {
+      "value" : "YLÄ-VÄÄRI",
+      "language" : "sv"
+    }, {
+      "value" : "YLÄ-VÄÄRI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "35750",
+    "names" : [ {
+      "value" : "VÄÄRINMAJA",
+      "language" : "sv"
+    }, {
+      "value" : "VÄÄRINMAJA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "35800",
+    "names" : [ {
+      "value" : "MÄNTTÄ",
+      "language" : "sv"
+    }, {
+      "value" : "MÄNTTÄ",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "35801",
+    "names" : [ {
+      "value" : "MÄNTTÄ",
+      "language" : "fi"
+    }, {
+      "value" : "MÄNTTÄ",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "35805",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "35820",
+    "names" : [ {
+      "value" : "MÄNTTÄ",
+      "language" : "sv"
+    }, {
+      "value" : "MÄNTTÄ",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "35990",
+    "names" : [ {
+      "value" : "KOLHO",
+      "language" : "fi"
+    }, {
+      "value" : "KOLHO",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "36100",
+    "names" : [ {
+      "value" : "KANGASALA AS",
+      "language" : "sv"
+    }, {
+      "value" : "KANGASALA AS",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "36110",
+    "names" : [ {
+      "value" : "RUUTANA",
+      "language" : "sv"
+    }, {
+      "value" : "RUUTANA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "36120",
+    "names" : [ {
+      "value" : "SUINULA",
+      "language" : "sv"
+    }, {
+      "value" : "SUINULA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "36200",
+    "names" : [ {
+      "value" : "KANGASALA",
+      "language" : "sv"
+    }, {
+      "value" : "KANGASALA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "36201",
+    "names" : [ {
+      "value" : "KANGASALA",
+      "language" : "sv"
+    }, {
+      "value" : "KANGASALA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "36205",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "36220",
+    "names" : [ {
+      "value" : "KANGASALA",
+      "language" : "fi"
+    }, {
+      "value" : "KANGASALA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "36224",
+    "names" : [ {
+      "value" : "SMARTPOST",
+      "language" : "sv"
+    }, {
+      "value" : "SMARTPOST",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "36225",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "36240",
+    "names" : [ {
+      "value" : "KANGASALA",
+      "language" : "fi"
+    }, {
+      "value" : "KANGASALA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "36270",
+    "names" : [ {
+      "value" : "KANGASALA",
+      "language" : "fi"
+    }, {
+      "value" : "KANGASALA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "36280",
+    "names" : [ {
+      "value" : "PIKONLINNA",
+      "language" : "sv"
+    }, {
+      "value" : "PIKONLINNA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "36340",
+    "names" : [ {
+      "value" : "TOHKALA",
+      "language" : "fi"
+    }, {
+      "value" : "TOHKALA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "36420",
+    "names" : [ {
+      "value" : "SAHALAHTI",
+      "language" : "fi"
+    }, {
+      "value" : "SAHALAHTI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "36430",
+    "names" : [ {
+      "value" : "SAHALAHTI",
+      "language" : "fi"
+    }, {
+      "value" : "SAHALAHTI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "36450",
+    "names" : [ {
+      "value" : "SALMENTAKA",
+      "language" : "sv"
+    }, {
+      "value" : "SALMENTAKA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "36520",
+    "names" : [ {
+      "value" : "RAIKKU",
+      "language" : "fi"
+    }, {
+      "value" : "RAIKKU",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "36570",
+    "names" : [ {
+      "value" : "KAIVANTO",
+      "language" : "fi"
+    }, {
+      "value" : "KAIVANTO",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "36600",
+    "names" : [ {
+      "value" : "PÄLKÄNE",
+      "language" : "fi"
+    }, {
+      "value" : "PÄLKÄNE",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "36601",
+    "names" : [ {
+      "value" : "PÄLKÄNE",
+      "language" : "fi"
+    }, {
+      "value" : "PÄLKÄNE",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "36640",
+    "names" : [ {
+      "value" : "ILTASMÄKI",
+      "language" : "sv"
+    }, {
+      "value" : "ILTASMÄKI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "36660",
+    "names" : [ {
+      "value" : "LAITIKKALA",
+      "language" : "fi"
+    }, {
+      "value" : "LAITIKKALA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "36720",
+    "names" : [ {
+      "value" : "AITOO",
+      "language" : "sv"
+    }, {
+      "value" : "AITOO",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "36760",
+    "names" : [ {
+      "value" : "LUOPIOINEN",
+      "language" : "sv"
+    }, {
+      "value" : "LUOPIOINEN",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "36810",
+    "names" : [ {
+      "value" : "KUHMALAHTI",
+      "language" : "sv"
+    }, {
+      "value" : "KUHMALAHTI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "36840",
+    "names" : [ {
+      "value" : "POHJA",
+      "language" : "fi"
+    }, {
+      "value" : "POHJA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "36880",
+    "names" : [ {
+      "value" : "VEHKAJÄRVI",
+      "language" : "sv"
+    }, {
+      "value" : "VEHKAJÄRVI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "36910",
+    "names" : [ {
+      "value" : "RAUTAJÄRVI",
+      "language" : "sv"
+    }, {
+      "value" : "RAUTAJÄRVI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "36930",
+    "names" : [ {
+      "value" : "KYYNÄRÖ",
+      "language" : "fi"
+    }, {
+      "value" : "KYYNÄRÖ",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "37100",
+    "names" : [ {
+      "value" : "NOKIA",
+      "language" : "fi"
+    }, {
+      "value" : "NOKIA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "37101",
+    "names" : [ {
+      "value" : "NOKIA",
+      "language" : "fi"
+    }, {
+      "value" : "NOKIA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "37105",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "37120",
+    "names" : [ {
+      "value" : "NOKIA",
+      "language" : "fi"
+    }, {
+      "value" : "NOKIA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "37121",
+    "names" : [ {
+      "value" : "NOKIA",
+      "language" : "sv"
+    }, {
+      "value" : "NOKIA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "37124",
+    "names" : [ {
+      "value" : "SMARTPOST",
+      "language" : "fi"
+    }, {
+      "value" : "SMARTPOST",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "37125",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "37130",
+    "names" : [ {
+      "value" : "NOKIA",
+      "language" : "fi"
+    }, {
+      "value" : "NOKIA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "37135",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "37140",
+    "names" : [ {
+      "value" : "NOKIA",
+      "language" : "fi"
+    }, {
+      "value" : "NOKIA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "37150",
+    "names" : [ {
+      "value" : "NOKIA",
+      "language" : "fi"
+    }, {
+      "value" : "NOKIA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "37155",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "37180",
+    "names" : [ {
+      "value" : "SARKOLA",
+      "language" : "sv"
+    }, {
+      "value" : "SARKOLA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "37200",
+    "names" : [ {
+      "value" : "SIURO",
+      "language" : "sv"
+    }, {
+      "value" : "SIURO",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "37210",
+    "names" : [ {
+      "value" : "KULOVESI",
+      "language" : "fi"
+    }, {
+      "value" : "KULOVESI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "37240",
+    "names" : [ {
+      "value" : "LINNAVUORI",
+      "language" : "sv"
+    }, {
+      "value" : "LINNAVUORI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "37241",
+    "names" : [ {
+      "value" : "LINNAVUORI",
+      "language" : "sv"
+    }, {
+      "value" : "LINNAVUORI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "37310",
+    "names" : [ {
+      "value" : "TOTTIJÄRVI",
+      "language" : "fi"
+    }, {
+      "value" : "TOTTIJÄRVI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "37350",
+    "names" : [ {
+      "value" : "VESILAHTI",
+      "language" : "sv"
+    }, {
+      "value" : "VESILAHTI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "37370",
+    "names" : [ {
+      "value" : "VESILAHTI",
+      "language" : "sv"
+    }, {
+      "value" : "VESILAHTI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "37380",
+    "names" : [ {
+      "value" : "VESILAHTI",
+      "language" : "fi"
+    }, {
+      "value" : "VESILAHTI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "37420",
+    "names" : [ {
+      "value" : "VESILAHTI",
+      "language" : "fi"
+    }, {
+      "value" : "VESILAHTI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "37470",
+    "names" : [ {
+      "value" : "VESILAHTI",
+      "language" : "fi"
+    }, {
+      "value" : "VESILAHTI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "37500",
+    "names" : [ {
+      "value" : "LEMPÄÄLÄ",
+      "language" : "sv"
+    }, {
+      "value" : "LEMPÄÄLÄ",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "37501",
+    "names" : [ {
+      "value" : "LEMPÄÄLÄ",
+      "language" : "fi"
+    }, {
+      "value" : "LEMPÄÄLÄ",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "37505",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "37530",
+    "names" : [ {
+      "value" : "LEMPÄÄLÄ",
+      "language" : "sv"
+    }, {
+      "value" : "LEMPÄÄLÄ",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "37550",
+    "names" : [ {
+      "value" : "LEMPÄÄLÄ",
+      "language" : "fi"
+    }, {
+      "value" : "LEMPÄÄLÄ",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "37551",
+    "names" : [ {
+      "value" : "LEMPÄÄLÄ",
+      "language" : "sv"
+    }, {
+      "value" : "LEMPÄÄLÄ",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "37560",
+    "names" : [ {
+      "value" : "LEMPÄÄLÄ",
+      "language" : "sv"
+    }, {
+      "value" : "LEMPÄÄLÄ",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "37565",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "37570",
+    "names" : [ {
+      "value" : "LEMPÄÄLÄ",
+      "language" : "fi"
+    }, {
+      "value" : "LEMPÄÄLÄ",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "37575",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "37600",
+    "names" : [ {
+      "value" : "VALKEAKOSKI",
+      "language" : "fi"
+    }, {
+      "value" : "VALKEAKOSKI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "37601",
+    "names" : [ {
+      "value" : "VALKEAKOSKI",
+      "language" : "fi"
+    }, {
+      "value" : "VALKEAKOSKI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "37605",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "37630",
+    "names" : [ {
+      "value" : "VALKEAKOSKI",
+      "language" : "sv"
+    }, {
+      "value" : "VALKEAKOSKI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "37634",
+    "names" : [ {
+      "value" : "SMARTPOST",
+      "language" : "fi"
+    }, {
+      "value" : "SMARTPOST",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "37700",
+    "names" : [ {
+      "value" : "SÄÄKSMÄKI",
+      "language" : "sv"
+    }, {
+      "value" : "SÄÄKSMÄKI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "37720",
+    "names" : [ {
+      "value" : "RITVALA",
+      "language" : "sv"
+    }, {
+      "value" : "RITVALA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "37740",
+    "names" : [ {
+      "value" : "HAUKILA",
+      "language" : "fi"
+    }, {
+      "value" : "HAUKILA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "37770",
+    "names" : [ {
+      "value" : "TARTTILA",
+      "language" : "fi"
+    }, {
+      "value" : "TARTTILA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "37800",
+    "names" : [ {
+      "value" : "AKAA",
+      "language" : "fi"
+    }, {
+      "value" : "AKAA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "37801",
+    "names" : [ {
+      "value" : "AKAA",
+      "language" : "fi"
+    }, {
+      "value" : "AKAA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "37805",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "37830",
+    "names" : [ {
+      "value" : "AKAA",
+      "language" : "fi"
+    }, {
+      "value" : "AKAA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "37835",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "37850",
+    "names" : [ {
+      "value" : "METSÄKANSA",
+      "language" : "fi"
+    }, {
+      "value" : "METSÄKANSA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "37860",
+    "names" : [ {
+      "value" : "KÄRJENNIEMI",
+      "language" : "fi"
+    }, {
+      "value" : "KÄRJENNIEMI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "37900",
+    "names" : [ {
+      "value" : "AKAA",
+      "language" : "sv"
+    }, {
+      "value" : "AKAA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "37910",
+    "names" : [ {
+      "value" : "AKAA",
+      "language" : "sv"
+    }, {
+      "value" : "AKAA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "37911",
+    "names" : [ {
+      "value" : "AKAA",
+      "language" : "fi"
+    }, {
+      "value" : "AKAA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "37915",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "37960",
+    "names" : [ {
+      "value" : "AKAA",
+      "language" : "sv"
+    }, {
+      "value" : "AKAA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "38100",
+    "names" : [ {
+      "value" : "SASTAMALA",
+      "language" : "fi"
+    }, {
+      "value" : "SASTAMALA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "38120",
+    "names" : [ {
+      "value" : "SASTAMALA",
+      "language" : "fi"
+    }, {
+      "value" : "SASTAMALA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "38130",
+    "names" : [ {
+      "value" : "SASTAMALA",
+      "language" : "fi"
+    }, {
+      "value" : "SASTAMALA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "38140",
+    "names" : [ {
+      "value" : "SASTAMALA",
+      "language" : "sv"
+    }, {
+      "value" : "SASTAMALA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "38200",
+    "names" : [ {
+      "value" : "SASTAMALA",
+      "language" : "sv"
+    }, {
+      "value" : "SASTAMALA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "38201",
+    "names" : [ {
+      "value" : "SASTAMALA",
+      "language" : "fi"
+    }, {
+      "value" : "SASTAMALA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "38205",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "38210",
+    "names" : [ {
+      "value" : "SASTAMALA",
+      "language" : "fi"
+    }, {
+      "value" : "SASTAMALA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "38211",
+    "names" : [ {
+      "value" : "SASTAMALA",
+      "language" : "sv"
+    }, {
+      "value" : "SASTAMALA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "38220",
+    "names" : [ {
+      "value" : "SASTAMALA",
+      "language" : "sv"
+    }, {
+      "value" : "SASTAMALA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "38250",
+    "names" : [ {
+      "value" : "SASTAMALA",
+      "language" : "sv"
+    }, {
+      "value" : "SASTAMALA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "38270",
+    "names" : [ {
+      "value" : "SASTAMALA",
+      "language" : "fi"
+    }, {
+      "value" : "SASTAMALA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "38280",
+    "names" : [ {
+      "value" : "SASTAMALA",
+      "language" : "fi"
+    }, {
+      "value" : "SASTAMALA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "38300",
+    "names" : [ {
+      "value" : "SASTAMALA",
+      "language" : "fi"
+    }, {
+      "value" : "SASTAMALA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "38360",
+    "names" : [ {
+      "value" : "SASTAMALA",
+      "language" : "sv"
+    }, {
+      "value" : "SASTAMALA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "38370",
+    "names" : [ {
+      "value" : "TERVAHAUTA",
+      "language" : "sv"
+    }, {
+      "value" : "TERVAHAUTA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "38420",
+    "names" : [ {
+      "value" : "SASTAMALA",
+      "language" : "sv"
+    }, {
+      "value" : "SASTAMALA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "38460",
+    "names" : [ {
+      "value" : "SASTAMALA",
+      "language" : "sv"
+    }, {
+      "value" : "SASTAMALA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "38470",
+    "names" : [ {
+      "value" : "SASTAMALA",
+      "language" : "fi"
+    }, {
+      "value" : "SASTAMALA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "38490",
+    "names" : [ {
+      "value" : "HAUKIJÄRVI",
+      "language" : "sv"
+    }, {
+      "value" : "HAUKIJÄRVI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "38510",
+    "names" : [ {
+      "value" : "SASTAMALA",
+      "language" : "fi"
+    }, {
+      "value" : "SASTAMALA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "38600",
+    "names" : [ {
+      "value" : "LAVIA",
+      "language" : "fi"
+    }, {
+      "value" : "LAVIA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "38601",
+    "names" : [ {
+      "value" : "LAVIA",
+      "language" : "sv"
+    }, {
+      "value" : "LAVIA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "38650",
+    "names" : [ {
+      "value" : "YLI-PUTTO",
+      "language" : "sv"
+    }, {
+      "value" : "YLI-PUTTO",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "38670",
+    "names" : [ {
+      "value" : "KALLIALA",
+      "language" : "fi"
+    }, {
+      "value" : "KALLIALA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "38680",
+    "names" : [ {
+      "value" : "TUUNAJÄRVI",
+      "language" : "fi"
+    }, {
+      "value" : "TUUNAJÄRVI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "38700",
+    "names" : [ {
+      "value" : "KANKAANPÄÄ",
+      "language" : "sv"
+    }, {
+      "value" : "KANKAANPÄÄ",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "38701",
+    "names" : [ {
+      "value" : "KANKAANPÄÄ",
+      "language" : "sv"
+    }, {
+      "value" : "KANKAANPÄÄ",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "38705",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "38710",
+    "names" : [ {
+      "value" : "KANKAANPÄÄ",
+      "language" : "fi"
+    }, {
+      "value" : "KANKAANPÄÄ",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "38720",
+    "names" : [ {
+      "value" : "VIHTELJÄRVI",
+      "language" : "sv"
+    }, {
+      "value" : "VIHTELJÄRVI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "38740",
+    "names" : [ {
+      "value" : "HAPUOJA",
+      "language" : "sv"
+    }, {
+      "value" : "HAPUOJA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "38750",
+    "names" : [ {
+      "value" : "VENESKOSKI",
+      "language" : "sv"
+    }, {
+      "value" : "VENESKOSKI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "38760",
+    "names" : [ {
+      "value" : "VENESJÄRVI",
+      "language" : "fi"
+    }, {
+      "value" : "VENESJÄRVI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "38770",
+    "names" : [ {
+      "value" : "LOHIKKO",
+      "language" : "fi"
+    }, {
+      "value" : "LOHIKKO",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "38800",
+    "names" : [ {
+      "value" : "JÄMIJÄRVI",
+      "language" : "sv"
+    }, {
+      "value" : "JÄMIJÄRVI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "38840",
+    "names" : [ {
+      "value" : "NIINISALO",
+      "language" : "sv"
+    }, {
+      "value" : "NIINISALO",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "38841",
+    "names" : [ {
+      "value" : "NIINISALO",
+      "language" : "sv"
+    }, {
+      "value" : "NIINISALO",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "38860",
+    "names" : [ {
+      "value" : "SUURIMAA",
+      "language" : "fi"
+    }, {
+      "value" : "SUURIMAA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "38910",
+    "names" : [ {
+      "value" : "ALA-HONKAJOKI",
+      "language" : "sv"
+    }, {
+      "value" : "ALA-HONKAJOKI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "38920",
+    "names" : [ {
+      "value" : "VATAJANKOSKI",
+      "language" : "sv"
+    }, {
+      "value" : "VATAJANKOSKI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "38950",
+    "names" : [ {
+      "value" : "HONKAJOKI",
+      "language" : "fi"
+    }, {
+      "value" : "HONKAJOKI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "38951",
+    "names" : [ {
+      "value" : "HONKAJOKI",
+      "language" : "sv"
+    }, {
+      "value" : "HONKAJOKI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "38970",
+    "names" : [ {
+      "value" : "LAUHALA",
+      "language" : "sv"
+    }, {
+      "value" : "LAUHALA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "39100",
+    "names" : [ {
+      "value" : "HÄMEENKYRÖ",
+      "language" : "fi"
+    }, {
+      "value" : "HÄMEENKYRÖ",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "39101",
+    "names" : [ {
+      "value" : "HÄMEENKYRÖ",
+      "language" : "sv"
+    }, {
+      "value" : "HÄMEENKYRÖ",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "39104",
+    "names" : [ {
+      "value" : "SMARTPOST",
+      "language" : "sv"
+    }, {
+      "value" : "SMARTPOST",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "39110",
+    "names" : [ {
+      "value" : "SIMUNA",
+      "language" : "sv"
+    }, {
+      "value" : "SIMUNA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "39130",
+    "names" : [ {
+      "value" : "SASI",
+      "language" : "fi"
+    }, {
+      "value" : "SASI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "39150",
+    "names" : [ {
+      "value" : "PINSIÖ",
+      "language" : "sv"
+    }, {
+      "value" : "PINSIÖ",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "39160",
+    "names" : [ {
+      "value" : "JULKUJÄRVI",
+      "language" : "sv"
+    }, {
+      "value" : "JULKUJÄRVI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "39170",
+    "names" : [ {
+      "value" : "JUMESNIEMI",
+      "language" : "sv"
+    }, {
+      "value" : "JUMESNIEMI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "39180",
+    "names" : [ {
+      "value" : "HERTTUALA",
+      "language" : "sv"
+    }, {
+      "value" : "HERTTUALA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "39195",
+    "names" : [ {
+      "value" : "KAIPIO",
+      "language" : "sv"
+    }, {
+      "value" : "KAIPIO",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "39200",
+    "names" : [ {
+      "value" : "KYRÖSKOSKI",
+      "language" : "sv"
+    }, {
+      "value" : "KYRÖSKOSKI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "39230",
+    "names" : [ {
+      "value" : "OSARA",
+      "language" : "fi"
+    }, {
+      "value" : "OSARA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "39290",
+    "names" : [ {
+      "value" : "VESAJÄRVI",
+      "language" : "fi"
+    }, {
+      "value" : "VESAJÄRVI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "39310",
+    "names" : [ {
+      "value" : "VILJAKKALA",
+      "language" : "fi"
+    }, {
+      "value" : "VILJAKKALA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "39340",
+    "names" : [ {
+      "value" : "KARHE",
+      "language" : "sv"
+    }, {
+      "value" : "KARHE",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "39360",
+    "names" : [ {
+      "value" : "KOMI",
+      "language" : "sv"
+    }, {
+      "value" : "KOMI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "39380",
+    "names" : [ {
+      "value" : "LAVAJÄRVI",
+      "language" : "fi"
+    }, {
+      "value" : "LAVAJÄRVI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "39410",
+    "names" : [ {
+      "value" : "LUHALAHTI",
+      "language" : "sv"
+    }, {
+      "value" : "LUHALAHTI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "39430",
+    "names" : [ {
+      "value" : "RÖYHIÖ",
+      "language" : "sv"
+    }, {
+      "value" : "RÖYHIÖ",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "39450",
+    "names" : [ {
+      "value" : "SISÄTTÖ",
+      "language" : "fi"
+    }, {
+      "value" : "SISÄTTÖ",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "39500",
+    "names" : [ {
+      "value" : "IKAALINEN",
+      "language" : "sv"
+    }, {
+      "value" : "IKAALINEN",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "39501",
+    "names" : [ {
+      "value" : "IKAALINEN",
+      "language" : "fi"
+    }, {
+      "value" : "IKAALINEN",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "39505",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "39530",
+    "names" : [ {
+      "value" : "KILVAKKALA",
+      "language" : "sv"
+    }, {
+      "value" : "KILVAKKALA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "39580",
+    "names" : [ {
+      "value" : "RIITIALA",
+      "language" : "sv"
+    }, {
+      "value" : "RIITIALA",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "39590",
+    "names" : [ {
+      "value" : "TEVANIEMI",
+      "language" : "fi"
+    }, {
+      "value" : "TEVANIEMI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "39610",
+    "names" : [ {
+      "value" : "KOVELAHTI",
+      "language" : "sv"
+    }, {
+      "value" : "KOVELAHTI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "39620",
+    "names" : [ {
+      "value" : "KOVESJOKI",
+      "language" : "sv"
+    }, {
+      "value" : "KOVESJOKI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "39660",
+    "names" : [ {
+      "value" : "LAPINNEVA",
+      "language" : "fi"
+    }, {
+      "value" : "LAPINNEVA",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "39700",
+    "names" : [ {
+      "value" : "PARKANO",
+      "language" : "fi"
+    }, {
+      "value" : "PARKANO",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "39701",
+    "names" : [ {
+      "value" : "PARKANO",
+      "language" : "fi"
+    }, {
+      "value" : "PARKANO",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "39705",
+    "names" : [ {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "fi"
+    }, {
+      "value" : "PAKETTIAUTOMAATTI",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "39750",
+    "names" : [ {
+      "value" : "KUIVASJÄRVI",
+      "language" : "sv"
+    }, {
+      "value" : "KUIVASJÄRVI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "39770",
+    "names" : [ {
+      "value" : "AURESKOSKI",
+      "language" : "sv"
+    }, {
+      "value" : "AURESKOSKI",
+      "language" : "fi"
+    } ]
+  }, {
+    "code" : "39780",
+    "names" : [ {
+      "value" : "ALASKYLÄ",
+      "language" : "fi"
+    }, {
+      "value" : "ALASKYLÄ",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "39810",
+    "names" : [ {
+      "value" : "LINNANKYLÄ",
+      "language" : "fi"
+    }, {
+      "value" : "LINNANKYLÄ",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "39820",
+    "names" : [ {
+      "value" : "KIHNIÖ",
+      "language" : "fi"
+    }, {
+      "value" : "KIHNIÖ",
+      "language" : "sv"
+    } ]
+  }, {
+    "code" : "39880",
+    "names" : [ {
+      "value" : "KIHNIÖ AS",
+      "language" : "fi"
+    }, {
+      "value" : "KIHNIÖ AS",
+      "language" : "sv"
+    } ]
+  } ]
+}

@@ -13,7 +13,8 @@ addons:
   apt:
     packages:
       - oracle-java8-installer
-      
+  mariadb: '10.3'
+
 install: true
 
 before_script:

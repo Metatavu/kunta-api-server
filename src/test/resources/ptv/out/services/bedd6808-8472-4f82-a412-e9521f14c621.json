@@ -1,0 +1,273 @@
+{
+  "id" : "bedd6808-8472-4f82-a412-e9521f14c621",
+  "sourceId" : null,
+  "generalDescriptionId" : null,
+  "type" : "Service",
+  "fundingType" : "PubliclyFunded",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Avoimet työpaikat",
+    "type" : "Name"
+  }, {
+    "language" : "en",
+    "value" : "Vacancies",
+    "type" : "Name"
+  }, {
+    "language" : "sv",
+    "value" : "Lediga arbetsplatser",
+    "type" : "Name"
+  } ],
+  "serviceChargeType" : "FreeOfCharge",
+  "areaType" : "LimitedType",
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "905",
+      "name" : [ {
+        "value" : "Vaasa",
+        "language" : "fi"
+      }, {
+        "value" : "Vasa",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasa",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "en",
+    "value" : "Vacancies are applied through the web. Further information and instructions can be found at the city’s web pages. ",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "en",
+    "value" : "The City of Vaasa is continuously looking for new employees, substitutes and trainees. You can also get a summer job, do your non-military service, do pay subsidized work or getting to know working life. On offer is a wide range of duties in different fields, from nurse to sports facility keeper and from secretary to set designer. The City of Vaasa announces its vacancies on kuntarekry.fi, the Employment and Economic Development Offices and the city’s own web pages. Job applications are done through the web; vacancies are announced in newspapers as well as the web. Office posts are announced on public notice boards. \n",
+    "type" : "Description"
+  }, {
+    "language" : "en",
+    "value" : "The City of Vaasa is continuously looking for new employees, substitutes and trainees.",
+    "type" : "Summary"
+  }, {
+    "language" : "en",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "sv",
+    "value" : "Vasa stad behöver hela tiden nya kunniga krafter – arbetstagare, vikarier och praktikanter.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan kaupunki hakee jatkuvasti uusia työntekijöitä, sijaisia ja harjoittelijoita. Kaupungille voi tulla myös kesätöihin, siviilipalvelukseen, palkkatuettuun työhön tai tutustumaan työelämään. Tarjolla on työtehtäviä monipuolisesti eri aloilta sairaanhoitajasta liikuntapaikkojen hoitajaan ja sihteeristä lavastajaan. Vaasan kaupunki ilmoittaa avoimista työpaikoista Kuntarekry.fi, Työ- ja elinkeinotoimiston ja Vaasan kaupungin verkkosivuilla. Työnhaku tapahtuu verkossa, avoimista paikoista ilmoitetaan niin lehdissä kuin verkossakin. Virat kuulutetaan virallisilla ilmoitustauluilla. ",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Man söker jobb via det elektroniska rekryteringssystemet. Mera information finns på Vasa stads webbsidor. ",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : "Avoimiin työtehtäviin haetaan verkossa. Lisää tietoa ja ohjeita saat Vaasan kaupungin verkkosivuilta. ",
+    "type" : "UserInstruction"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "sv",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan kaupunki hakee jatkuvasti uusia työntekijöitä, sijaisia ja harjoittelijoita.",
+    "type" : "Summary"
+  }, {
+    "language" : "sv",
+    "value" : "Vasa stad behöver hela tiden nya kunniga krafter – arbetstagare, vikarier och praktikanter. Ett mångsidigt urval av arbetsuppgifter inom olika branscher erbjuds, allt från sjukskötare till idrottsplatsskötare och från sekreterare till scenograf. Vasa stad meddelar om lediga arbetsplatser på Kommunrekry,  Arbets- och näringsbyråns webbsidor och Vasa stads webbsidorMan söker jobb via det elektroniska rekryteringssystemet. Tjänster kungörs på kommunens officiella anslagstavlor. ",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  } ],
+  "languages" : [ "fi", "sv" ],
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Työnhaku ja työpaikat",
+      "language" : "fi"
+    }, {
+      "value" : "Jobbsökning och arbetsplatser",
+      "language" : "sv"
+    }, {
+      "value" : "Jobseeking and jobs",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Tähän palvelualaluokkaan kuuluvat useat työttömälle tarkoitetut palvelut. Näiden avulla työnhakija voi muun muassa etsiä avoimia työpaikkoja Suomesta ja ulkomailta ja hakea niihin, ilmoittautua työttömäksi työnhakijaksi, tuottaa ansioluettelon ja jättää avoimia hakemuksia työpaikkapalveluihin. Myös työnhakuvalmennuksen ja työvoimakoulutuksen kaltaiset palvelut kuuluvat tähän luokkaan.",
+      "language" : "fi"
+    }, {
+      "value" : "Denna serviceundergrupp omfattar flera tjänster för arbetslösa. Med hjälp av dem kan arbetssökande bland annat söka lediga arbetsplatser i Finland och utomlands, anmäla sig som arbetslös arbetssökande, skriva CV och lämna öppna ansökningar till rekryteringstjänster. Även tjänster av typen jobbsökningscoachning och arbetskraftsutbildning hör till denna grupp.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains many services intended for the unemployed. Supported by them, jobseekers may, for example, look for vacancies in Finland and abroad and submit their applications, register as unemployed jobseekers, prepare a CV and submit open applications to web services for jobseekers. The class also includes such services as coaching for jobseekers and labour market training.",
+      "language" : "en"
+    } ],
+    "code" : "P10.1",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1097",
+    "parentId" : "e30562f5-0141-4d5c-bc25-e24679dba4d4",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1096"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "sommararbetsplatser",
+      "language" : "sv"
+    }, {
+      "value" : "kesätyöpaikat",
+      "language" : "fi"
+    }, {
+      "value" : "summer jobs",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p68836",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p36495"
+  } ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "lifeEvents" : [ {
+    "name" : [ {
+      "value" : "Att bli arbetslös",
+      "language" : "sv"
+    }, {
+      "value" : "Työttömäksi jääminen",
+      "language" : "fi"
+    }, {
+      "value" : "Losing a job",
+      "language" : "en"
+    } ],
+    "code" : "KE8",
+    "ontologyType" : "LIFESITUATION",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v3018",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "industrialClasses" : [ ],
+  "legislation" : [ ],
+  "keywords" : [ ],
+  "requirements" : [ {
+    "value" : null,
+    "language" : "fi"
+  }, {
+    "value" : null,
+    "language" : "sv"
+  }, {
+    "value" : null,
+    "language" : "en"
+  } ],
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+      "name" : "Vaasan Palautepalvelu"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "47796e25-0320-449e-9d0e-d4f84bf30afe",
+      "name" : "Töihin Vaasan kaupungille"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "a05c8380-7d82-4594-b272-719315553075",
+      "name" : "Avoimet työpaikat"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+      "name" : "Vaasan kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "serviceVouchers" : [ ],
+  "serviceCollections" : [ ],
+  "publishingStatus" : "Published",
+  "modified" : "2018-05-03T11:53:58.162746Z"
+}

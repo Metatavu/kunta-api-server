@@ -1,0 +1,253 @@
+{
+  "id" : "f20366fd-b41d-406b-bfab-e6928359a008",
+  "sourceId" : null,
+  "generalDescriptionId" : "9e1319d5-ec73-463c-98a2-33e9e8667942",
+  "type" : "Service",
+  "fundingType" : "PubliclyFunded",
+  "serviceNames" : [ {
+    "language" : "fi",
+    "value" : "Painotettu opetus",
+    "type" : "Name"
+  } ],
+  "serviceChargeType" : null,
+  "areaType" : "LimitedType",
+  "areas" : [ {
+    "type" : "Municipality",
+    "code" : null,
+    "name" : null,
+    "municipalities" : [ {
+      "code" : "529",
+      "name" : [ {
+        "value" : "Naantali",
+        "language" : "fi"
+      }, {
+        "value" : "Nådendal",
+        "language" : "sv"
+      }, {
+        "value" : "Naantali",
+        "language" : "en"
+      } ]
+    } ]
+  } ],
+  "serviceDescriptions" : [ {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ValidityTime"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ChargeTypeAdditionalInfo"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "DeadLine"
+  }, {
+    "language" : "fi",
+    "value" : null,
+    "type" : "ProcessingTime"
+  }, {
+    "language" : "fi",
+    "value" : "Naantalissa perusopetuksen oppilas voi opiskella englannin kielirikasteisella, luonnontieteellis-matemaattisella tai liikuntaa painottavalla luokalla.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Naantalissa perusopetuksen oppilas voi opiskella englannin kielirikasteisella, luonnontieteellis-matemaattisella tai liikuntaa painottavalla luokalla. Painotettua opetusta järjestetään vain naantalilaisille oppilaille.\n\nEnglannin kielirikasteiset luokat Kuparivuoren (1. - 6. lk) ja Maijamäen (7. - 9. lk) koulussa:\n* Opiskelu on suunnattu äidinkielenään suomea puhuville oppilaille tai niille, joiden suomen kielen taito vastaa äidinkielen tasoa. Englannin kielen osuus opetuksesta on noin 25 %, sitä käytetään usean oppiaineen tunneilla sekä jokapäiväisissä rutiineissa. Opetuksen tavoitteena saada oppilas innostumaan englannin kielestä sekä tutustuttaa hänet vieraisiin kulttuureihin.  Kielirikasteiselle luokalle pyritään kouluun ilmoittautumisen yhteydessä. Pyrkijöille järjestetään kouluvalmiustesti sekä kielellisten valmiuksien lisätesti koulupsykologin valvonnassa. Luokalle otetaan enintään 24 oppilasta. \n* Kuparivuoren koulussa alkanut kielirikasteinen opetus jatkuu läpi yläkoulun omana ryhmänään Maijamäen koulussa. Ryhmää voidaan täydentää pääsykokeen kautta 7. luokalle, mikäli ryhmässä on tilaa.\nLuonnontieteellis-matemaattiset luokat Maijamäen koulussa (7. - 9. lk):\n* LUMA-luokan oppilailla on yläkoulun aikana yhteensä 2+2 viikkotuntia enemmän opetusta luonnontieteissä ja matematiikassa. \nLiikuntapainotteiset luokat Suopellon koulussa (7. - 9. lk):\n* LILU-luokan oppilailla on yläkoulun aikana yhteensä 1+2+2 viikkotuntia enemmän opetusta liikunnassa. Liikuntaluokan tavoitteina ovat monipuolisen liikunnanopetuksen tarjoaminen, liikunnan määrän lisääminen, uusiin liikuntalajeihin tutustuminen sekä oman liikuntalajin harrastamisen tukeminen. Tavoitteena on myös tukea nuoren kasvua ja kehitystä siten, että koulunkäynti, liikuntaharrastukset ja muu vapaa-aika tukevat tasapainoisesti toisiaan.",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Englannin kielirikasteiselle 1. luokalle pyritään kouluun ilmoittautumisen yhteydessä. Pyrkijöille järjestetään kouluvalmiustesti sekä kielellisten valmiuksien lisätesti koulupsykologin valvonnassa.  \n\nYläkoulujen painotetun opetuksen luokille järjestetään erilliset pääsykokeet, joista tiedotetaan tarkemmin 6.-luokkalaisille ja heidän huoltajilleen järjestettävässä vanhempainillassa.",
+    "type" : "UserInstruction"
+  } ],
+  "languages" : [ "fi" ],
+  "serviceClasses" : [ {
+    "name" : [ {
+      "value" : "Perusopetus",
+      "language" : "fi"
+    }, {
+      "value" : "Grundläggande utbildning",
+      "language" : "sv"
+    }, {
+      "value" : "Basic education",
+      "language" : "en"
+    } ],
+    "description" : [ {
+      "value" : "Till denna serviceundergrupp hör både den egentliga grundläggande utbildningen med innehåll och mål samt direkta tjänster som erbjuds i anslutning till grundläggande utbildningen och för att stöda den, t.ex. skoltransporter, skolmat och assistanstjänster. Till denna grupp hör också ärenden i anslutning till avläggande av grundläggande utbildning utomlands i enlighet med den finska grundläggande utbildningen.",
+      "language" : "sv"
+    }, {
+      "value" : "This service subclass contains basic education itself with its contents and objectives as well as the services offered directly in connection with and in support of basic education, for example school transport, school lunches and an assistant’s services. The class also includes issues related to completing abroad a basic education that is in line with the Finnish basic education.",
+      "language" : "en"
+    }, {
+      "value" : "Tähän palvelualaluokkaan kuuluvat sekä varsinainen perusopetus sisältöineen ja tavoitteineen sekä perusopetuksen yhteydessä ja sen tukemiseksi välittömästi tarjottavat palvelut, esimerkiksi koulukuljetukset, kouluruokailu ja avustajapalvelut. Tähän luokkaan kuuluvat myös Suomen perusopetuksen mukaisen peruskoulutuksen ulkomailla suorittamiseen liittyvät asiat.",
+      "language" : "fi"
+    } ],
+    "code" : "P6.2",
+    "ontologyType" : "PTVL",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1062",
+    "parentId" : "fd1bb60e-4206-4f0a-994f-8ffcb4ffaaa4",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1060"
+  } ],
+  "ontologyTerms" : [ {
+    "name" : [ {
+      "value" : "Grundschule, Gesamtschule",
+      "language" : "de"
+    }, {
+      "value" : "peruskoulu",
+      "language" : "fi"
+    }, {
+      "value" : "grundskolan",
+      "language" : "sv"
+    }, {
+      "value" : "comprehensive school",
+      "language" : "en"
+    }, {
+      "value" : "põhikool",
+      "language" : "et"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p14592",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p48279"
+  }, {
+    "name" : [ {
+      "value" : "musiikkiluokat",
+      "language" : "fi"
+    }, {
+      "value" : "musikklasser",
+      "language" : "sv"
+    }, {
+      "value" : "music-oriented classes",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "YSO",
+    "uri" : "http://www.yso.fi/onto/koko/p11469",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p7698"
+  }, {
+    "name" : [ ],
+    "code" : null,
+    "ontologyType" : null,
+    "uri" : "http://www.yso.fi/onto/yso/p25542",
+    "parentId" : null,
+    "parentUri" : null
+  }, {
+    "name" : [ {
+      "value" : "stärkt undervisning",
+      "language" : "sv"
+    }, {
+      "value" : "painotettu opetus",
+      "language" : "fi"
+    }, {
+      "value" : "weighted-curriculum education",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p66174",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p33827"
+  }, {
+    "name" : [ {
+      "value" : "grundläggande utbildning",
+      "language" : "sv"
+    }, {
+      "value" : "perusopetus",
+      "language" : "fi"
+    }, {
+      "value" : "basic education",
+      "language" : "en"
+    } ],
+    "code" : null,
+    "ontologyType" : "JUPO",
+    "uri" : "http://www.yso.fi/onto/koko/p1275",
+    "parentId" : null,
+    "parentUri" : "http://www.yso.fi/onto/koko/p33827"
+  } ],
+  "targetGroups" : [ {
+    "name" : [ {
+      "value" : "Lapset ja lapsiperheet",
+      "language" : "fi"
+    }, {
+      "value" : "Children and families with children",
+      "language" : "en"
+    }, {
+      "value" : "Barn och barnfamiljer",
+      "language" : "sv"
+    } ],
+    "code" : "KR1.2",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2003",
+    "parentId" : "daff1fb9-9394-49b5-b033-d1d1c7005ab6",
+    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001"
+  }, {
+    "name" : [ {
+      "value" : "Kansalaiset",
+      "language" : "fi"
+    }, {
+      "value" : "Citizens",
+      "language" : "en"
+    }, {
+      "value" : "Medborgare",
+      "language" : "sv"
+    } ],
+    "code" : "KR1",
+    "ontologyType" : "TARGETGROUP",
+    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+    "parentId" : null,
+    "parentUri" : null
+  } ],
+  "lifeEvents" : [ ],
+  "industrialClasses" : [ ],
+  "legislation" : [ ],
+  "keywords" : [ ],
+  "requirements" : [ {
+    "value" : "Painotettuun opetukseen voivat hakea naantalilaiset peruskoulun oppilaat.  Oppilaat valitaan testien ja pääsykokeiden perusteella.",
+    "language" : "fi"
+  } ],
+  "serviceChannels" : [ {
+    "serviceChannel" : {
+      "id" : "581397f6-9667-41fe-8275-7a383d78d493",
+      "name" : "Kielirikasteinen opetus Kuparivuoren koulussa"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "serviceChannel" : {
+      "id" : "6894ee49-f5ac-4a69-b9f0-bf3de2a02f0c",
+      "name" : "Naantalin kaupungin johtava rehtori"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizations" : [ {
+    "provisionType" : null,
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Responsible",
+    "additionalInformation" : [ ]
+  }, {
+    "provisionType" : "SelfProducedServices",
+    "organization" : {
+      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "name" : "Naantalin kaupunki"
+    },
+    "roleType" : "Producer",
+    "additionalInformation" : [ ]
+  } ],
+  "serviceVouchersInUse" : false,
+  "serviceVouchers" : [ ],
+  "serviceCollections" : [ ],
+  "publishingStatus" : "Published",
+  "modified" : "2018-05-03T11:53:58.162746Z"
+}

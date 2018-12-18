@@ -1,0 +1,256 @@
+{
+  "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "sourceId" : null,
+  "oid" : "",
+  "parentOrganizationId" : null,
+  "organizationRootId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "municipality" : {
+    "code" : "905",
+    "name" : [ {
+      "value" : "Vaasa",
+      "language" : "fi"
+    }, {
+      "value" : "Vasa",
+      "language" : "sv"
+    }, {
+      "value" : "Vaasa",
+      "language" : "en"
+    } ]
+  },
+  "organizationType" : "Municipality",
+  "businessCode" : "0209602-6",
+  "businessName" : "Vaasa",
+  "organizationNames" : [ {
+    "language" : "sv",
+    "value" : "Vasa stad",
+    "type" : "Name"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasan kaupunki",
+    "type" : "Name"
+  }, {
+    "language" : "en",
+    "value" : "City of Vaasa",
+    "type" : "Name"
+  } ],
+  "displayNameType" : [ {
+    "type" : "Name",
+    "language" : "fi"
+  }, {
+    "type" : "Name",
+    "language" : "sv"
+  }, {
+    "type" : "Name",
+    "language" : "en"
+  } ],
+  "areaType" : null,
+  "areas" : null,
+  "organizationDescriptions" : [ {
+    "language" : "en",
+    "value" : "Vaasa is a heavily growing city with 67 000 inhabitants and the biggest economic centre in Ostrobothnia. Together with its six neighbouring municipalities, the City of Vaasa forms the Vaasa region. The Vaasa region has over 114 000 inhabitants. The region is one of the strongest growing and most successful regions in the country.",
+    "type" : "Description"
+  }, {
+    "language" : "sv",
+    "value" : "Vasa är en kraftigt växande stad med över 67 000 invånare och det största ekonomiska centret i Österbotten. Vasa stad bildar tillsammans med sina sex grannkommuner Vasaregionen. I Vasaregionen bor över 114 000 invånare. Bland landets regioner hör Vasaregionen till dem som växer kraftigast och har bäst framgång. ",
+    "type" : "Description"
+  }, {
+    "language" : "fi",
+    "value" : "Vaasa on yli 67 000 asukkaan voimakkaasti kasvava kaupunki ja Pohjanmaan suurin taloudellinen keskus. Vaasan kaupunki muodostaa Vaasan seudun yhdessä kuuden naapurikuntansa kanssa. Vaasan seudulla asuu yli 114 000 asukasta. Seutu kuuluu maan voimakkaimmin kasvaviin ja parhaiten menestyviin seutuihin. ",
+    "type" : "Description"
+  } ],
+  "emails" : [ ],
+  "webPages" : [ {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/en",
+    "value" : "City of Vaasa",
+    "language" : "en"
+  }, {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/sv",
+    "value" : "Vasa stad",
+    "language" : "sv"
+  }, {
+    "orderNumber" : "1",
+    "url" : "https://www.vaasa.fi/",
+    "value" : "Vaasan kaupunki",
+    "language" : "fi"
+  } ],
+  "phoneNumbers" : [ {
+    "additionalInformation" : "Telefonväxeln",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63251111",
+    "language" : "sv"
+  }, {
+    "additionalInformation" : "Puhelinvaihde",
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63251111",
+    "language" : "fi"
+  }, {
+    "additionalInformation" : null,
+    "serviceChargeType" : "Chargeable",
+    "chargeDescription" : null,
+    "prefixNumber" : "+358",
+    "isFinnishServiceNumber" : false,
+    "number" : "63251111",
+    "language" : "en"
+  } ],
+  "addresses" : [ {
+    "type" : "Visiting",
+    "subType" : "Street",
+    "postOfficeBoxAddress" : null,
+    "streetAddress" : {
+      "street" : [ {
+        "value" : "Vaasanpuistikko",
+        "language" : "fi"
+      }, {
+        "value" : "Vasaesplanaden",
+        "language" : "sv"
+      }, {
+        "value" : "Vaasanpuistikko",
+        "language" : "en"
+      } ],
+      "streetNumber" : "10",
+      "postalCode" : "65100",
+      "postOffice" : [ {
+        "value" : "VASA",
+        "language" : "sv"
+      }, {
+        "value" : "VAASA",
+        "language" : "fi"
+      } ],
+      "municipality" : {
+        "code" : "905",
+        "name" : [ {
+          "value" : "Vaasa",
+          "language" : "fi"
+        }, {
+          "value" : "Vasa",
+          "language" : "sv"
+        }, {
+          "value" : "Vaasa",
+          "language" : "en"
+        } ]
+      },
+      "additionalInformation" : [ {
+        "value" : null,
+        "language" : "sv"
+      } ],
+      "latitude" : "7007482.053",
+      "longitude" : "228184.6",
+      "coordinateState" : "Ok"
+    },
+    "foreignAddress" : null,
+    "country" : "FI"
+  } ],
+  "electronicInvoicings" : [ ],
+  "publishingStatus" : "Published",
+  "services" : [ {
+    "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+    "service" : {
+      "id" : "73ceb656-c1a3-4479-b84a-d99d88f1b66d",
+      "name" : "Turvapaikanhakijoiden vastaanotto"
+    },
+    "roleType" : "Responsible",
+    "provisionType" : null,
+    "additionalInformation" : [ ],
+    "webPages" : [ ]
+  }, {
+    "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+    "service" : {
+      "id" : "5fe23177-860c-4257-ac03-b4cdeab87d19",
+      "name" : "Työllistymistä edistävä monialainen yhteispalvelu (TYP)"
+    },
+    "roleType" : "Responsible",
+    "provisionType" : null,
+    "additionalInformation" : [ ],
+    "webPages" : [ ]
+  }, {
+    "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+    "service" : {
+      "id" : "bedd6808-8472-4f82-a412-e9521f14c621",
+      "name" : "Avoimet työpaikat"
+    },
+    "roleType" : "Responsible",
+    "provisionType" : null,
+    "additionalInformation" : [ ],
+    "webPages" : [ ]
+  }, {
+    "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+    "service" : {
+      "id" : "1ba9c665-d20d-4ea0-8282-81e35c701fe7",
+      "name" : "Lumenvastaanotto"
+    },
+    "roleType" : "Responsible",
+    "provisionType" : null,
+    "additionalInformation" : [ ],
+    "webPages" : [ ]
+  }, {
+    "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+    "service" : {
+      "id" : "8062afa8-41c4-44c0-b1f7-d86c0891e9e3",
+      "name" : "Tontin korkeuden näyttö ja rakennuksen sijainnin merkitseminen ja katselmoiminen"
+    },
+    "roleType" : "Responsible",
+    "provisionType" : null,
+    "additionalInformation" : [ ],
+    "webPages" : [ ]
+  }, {
+    "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+    "service" : {
+      "id" : "6ccb671f-05cd-46cf-a0a4-4f98d43dfd37",
+      "name" : "Uimahalli"
+    },
+    "roleType" : "Responsible",
+    "provisionType" : null,
+    "additionalInformation" : [ ],
+    "webPages" : [ ]
+  }, {
+    "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+    "service" : {
+      "id" : "2ba22c86-e28a-4988-aca7-38c6ce95bed7",
+      "name" : "Matonpesupaikat"
+    },
+    "roleType" : "Responsible",
+    "provisionType" : null,
+    "additionalInformation" : [ ],
+    "webPages" : [ ]
+  }, {
+    "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+    "service" : {
+      "id" : "9f242076-de0b-4c58-810e-aac4979d71fa",
+      "name" : "Päivystävän kriisiryhmän palvelut"
+    },
+    "roleType" : "Responsible",
+    "provisionType" : null,
+    "additionalInformation" : [ ],
+    "webPages" : [ ]
+  }, {
+    "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+    "service" : {
+      "id" : "83e5fa7f-a22c-43b7-aa27-06474d21ec59",
+      "name" : "Hissiavustus"
+    },
+    "roleType" : "Responsible",
+    "provisionType" : null,
+    "additionalInformation" : [ ],
+    "webPages" : [ ]
+  }, {
+    "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+    "service" : {
+      "id" : "17c633dd-5408-495a-86c1-d8f57598e899",
+      "name" : "Perusopetus"
+    },
+    "roleType" : "Responsible",
+    "provisionType" : null,
+    "additionalInformation" : [ ],
+    "webPages" : [ ]
+  } ],
+  "modified" : "2017-09-11T00:00:00Z",
+  "subOrganizations" : null
+}

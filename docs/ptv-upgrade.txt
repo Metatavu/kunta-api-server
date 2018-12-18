@@ -1,0 +1,13 @@
+Upgrading PTV version
+---------------------
+
+Following steps should be taken when upgrading PTV into new version:
+
+1) Download current PTV data with older PTV version
+2) Fix tests to work with downloaded data
+3) Generate new Swagger client
+4) Bump PTV client version
+5) Fix code to be compatible with new PTV version
+6) Fix tests to work with new PTV version
+7) Add new features from new PTV version
+8) Add tests to new version features

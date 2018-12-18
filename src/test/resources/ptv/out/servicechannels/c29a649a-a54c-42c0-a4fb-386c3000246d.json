@@ -1,0 +1,55 @@
+{
+  "sourceId" : null,
+  "webPages" : [ {
+    "orderNumber" : "0",
+    "url" : "http://www.naantali.fi/opetus_ja_koulutus/koulut/fi_FI/etusivu/",
+    "value" : null,
+    "language" : "fi"
+  } ],
+  "languages" : [ "fi" ],
+  "supportPhones" : [ ],
+  "supportEmails" : [ ],
+  "services" : [ {
+    "service" : {
+      "id" : "704cb442-2423-43ec-ae70-089b503932c9",
+      "name" : "Suomen opetus toisena kielenä"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  }, {
+    "service" : {
+      "id" : "e45cae1e-dfbc-44eb-b57b-ef73f21b38c4",
+      "name" : "Perusopetus"
+    },
+    "serviceChargeType" : null,
+    "description" : [ ],
+    "extraTypes" : [ ],
+    "serviceHours" : [ ],
+    "contactDetails" : null,
+    "digitalAuthorizations" : [ ]
+  } ],
+  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "serviceChannelNames" : [ {
+    "language" : "fi",
+    "value" : "Perusopetukseen ilmoittautuminen",
+    "type" : "Name"
+  } ],
+  "serviceHours" : [ ],
+  "serviceChannelType" : "WebPage",
+  "serviceChannelDescriptions" : [ {
+    "language" : "fi",
+    "value" : "Naantaliin muuttavat uudet oppilaat ilmoittautuvat perusopetukseen Wilman lomakkeella.",
+    "type" : "Summary"
+  }, {
+    "language" : "fi",
+    "value" : "Naantaliin muuttavat uudet oppilaat ilmoittautuvat perusopetukseen Wilman lomakkeella. Samalla lomakkeella voi tehdä myös vieraskuntalaishakemuksen, jos naapurikunnan oppilaalle haetaan paikkaa perusopetukseen Naantalissa.\n\nNaantalilaiset seuraavana syksynä 1. luokan aloittavat oppilaat saavat tammikuussa postitse ohjeet kouluun ilmoittautumisesta.\n\n\n",
+    "type" : "Description"
+  } ],
+  "publishingStatus" : "Published",
+  "modified" : "2017-10-31T08:15:43.515627",
+  "id" : "c29a649a-a54c-42c0-a4fb-386c3000246d"
+}
