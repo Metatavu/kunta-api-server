@@ -32,13 +32,15 @@
   "languages": [],
   "webPages": [
     {
-      "orderNumber": "0",
       "url": "https://esuomi.fi/palveluntarjoajille/palveluvayla/liittyminen/palveluvaylaan-liittyminen/",
       "value": null,
       "language": "fi"
     }
   ],
   "serviceHours": [],
+  "accessibilityClassificationLevel": null,
+  "wcagLevel": null,
+  "accessibilityStatementWebPage": null,
   "services": [
     {
       "service": {

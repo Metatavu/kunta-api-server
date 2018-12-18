@@ -32,13 +32,15 @@
   "languages": [],
   "webPages": [
     {
-      "orderNumber": "0",
       "url": "https://esuomi.fi/palveluntarjoajille/palvelutietovaranto/kayttoonotto/liittymisohje/",
       "value": null,
       "language": "fi"
     }
   ],
   "serviceHours": [],
+  "accessibilityClassificationLevel": null,
+  "wcagLevel": null,
+  "accessibilityStatementWebPage": null,
   "services": [
     {
       "service": {

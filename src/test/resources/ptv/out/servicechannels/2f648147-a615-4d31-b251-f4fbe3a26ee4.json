@@ -57,25 +57,25 @@
   "languages": [],
   "webPages": [
     {
-      "orderNumber": "0",
       "url": "https://wilma.vaasa.fi/",
       "value": null,
       "language": "fi"
     },
     {
-      "orderNumber": "0",
       "url": "https://wilma.vaasa.fi/?langid=3",
       "value": null,
       "language": "en"
     },
     {
-      "orderNumber": "0",
       "url": "https://wilma.vaasa.fi/?langid=2",
       "value": null,
       "language": "sv"
     }
   ],
   "serviceHours": [],
+  "accessibilityClassificationLevel": null,
+  "wcagLevel": null,
+  "accessibilityStatementWebPage": null,
   "services": [
     {
       "service": {

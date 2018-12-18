@@ -29,31 +29,30 @@
   ],
   "webPages": [
     {
-      "orderNumber": "0",
       "url": "http://www.naantali.fi/opetus_ja_koulutus/lukio/fi_FI/etusivu/",
       "value": "Naantalin lukion www-sivut",
       "language": "fi"
     },
     {
-      "orderNumber": "1",
       "url": "http://www.naantali.fi/opetus_ja_koulutus/lukio/fi_FI/hakijalle/",
       "value": "Tervetuloa Naantalin lukioon!",
       "language": "fi"
     },
     {
-      "orderNumber": "2",
       "url": "https://sites.google.com/gafe.naantali.fi/opinto-opas-2017-18/yhteystiedot",
       "value": "Opinto-opas 2017-2018",
       "language": "fi"
     },
     {
-      "orderNumber": "3",
       "url": "http://www.naantali.fi/opetus_ja_koulutus/lukio/fi_FI/henkilokunta/",
       "value": "Lukion henkilökunta",
       "language": "fi"
     }
   ],
   "serviceHours": [],
+  "accessibilityClassificationLevel": null,
+  "wcagLevel": null,
+  "accessibilityStatementWebPage": null,
   "services": [
     {
       "service": {

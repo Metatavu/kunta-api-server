@@ -60,25 +60,25 @@
   ],
   "webPages": [
     {
-      "orderNumber": "0",
       "url": "https://www.vaasa.fi/node/19161",
       "value": null,
       "language": "fi"
     },
     {
-      "orderNumber": "0",
       "url": "https://www.vaasa.fi/node/19161",
       "value": null,
       "language": "en"
     },
     {
-      "orderNumber": "0",
       "url": "https://www.vaasa.fi/sv/node/19161",
       "value": null,
       "language": "sv"
     }
   ],
   "serviceHours": [],
+  "accessibilityClassificationLevel": null,
+  "wcagLevel": null,
+  "accessibilityStatementWebPage": null,
   "services": [
     {
       "service": {

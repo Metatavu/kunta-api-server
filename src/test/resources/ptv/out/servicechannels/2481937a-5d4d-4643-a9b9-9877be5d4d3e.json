@@ -29,19 +29,20 @@
   ],
   "webPages": [
     {
-      "orderNumber": "1",
       "url": "http://www.naantali.fi/opetus_ja_koulutus/koulut/rymattyla/fi_FI/henkilokunta/",
       "value": "Rymättylän koulun henkilökunta",
       "language": "fi"
     },
     {
-      "orderNumber": "2",
       "url": "http://www.naantali.fi/opetus_ja_koulutus/koulut/rymattyla/fi_FI/etusivu/",
       "value": "Rymättylän koulun www-sivut",
       "language": "fi"
     }
   ],
   "serviceHours": [],
+  "accessibilityClassificationLevel": null,
+  "wcagLevel": null,
+  "accessibilityStatementWebPage": null,
   "services": [
     {
       "service": {

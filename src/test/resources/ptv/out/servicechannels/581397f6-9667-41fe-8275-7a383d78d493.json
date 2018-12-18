@@ -29,13 +29,15 @@
   ],
   "webPages": [
     {
-      "orderNumber": "0",
       "url": "http://www.naantali.fi/opetus_ja_koulutus/koulut/kuparivuori/fi_FI/kiri/",
       "value": null,
       "language": "fi"
     }
   ],
   "serviceHours": [],
+  "accessibilityClassificationLevel": null,
+  "wcagLevel": null,
+  "accessibilityStatementWebPage": null,
   "services": [
     {
       "service": {

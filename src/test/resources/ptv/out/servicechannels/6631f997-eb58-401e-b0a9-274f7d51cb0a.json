@@ -42,13 +42,15 @@
   "languages": [],
   "webPages": [
     {
-      "orderNumber": "0",
       "url": "https://valtuusrekisteri.beta.suomi.fi/",
       "value": null,
       "language": "fi"
     }
   ],
   "serviceHours": [],
+  "accessibilityClassificationLevel": null,
+  "wcagLevel": null,
+  "accessibilityStatementWebPage": null,
   "services": [
     {
       "service": {

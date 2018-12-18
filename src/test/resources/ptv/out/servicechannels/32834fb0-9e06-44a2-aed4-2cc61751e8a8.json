@@ -29,13 +29,15 @@
   ],
   "webPages": [
     {
-      "orderNumber": "0",
       "url": "http://www.naantali.fi/kaavoitus_ja_mittaus/kaavoitus/fi_FI/kaava-aloite/_files/97767125706623491/default/maksuluettelo%202017.pdf",
       "value": null,
       "language": "fi"
     }
   ],
   "serviceHours": [],
+  "accessibilityClassificationLevel": null,
+  "wcagLevel": null,
+  "accessibilityStatementWebPage": null,
   "services": [
     {
       "service": {

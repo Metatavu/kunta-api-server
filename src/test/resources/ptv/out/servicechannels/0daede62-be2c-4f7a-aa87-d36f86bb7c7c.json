@@ -44,19 +44,20 @@
   ],
   "webPages": [
     {
-      "orderNumber": "0",
       "url": "http://vakri.kotisivukone.com/vaasankristillinenkoulu",
       "value": null,
       "language": "fi"
     },
     {
-      "orderNumber": "0",
       "url": "http://vakri.kotisivukone.com/vaasankristillinenkoulu",
       "value": null,
       "language": "sv"
     }
   ],
   "serviceHours": [],
+  "accessibilityClassificationLevel": null,
+  "wcagLevel": null,
+  "accessibilityStatementWebPage": null,
   "services": [
     {
       "service": {

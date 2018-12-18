@@ -45,19 +45,20 @@
   ],
   "webPages": [
     {
-      "orderNumber": "0",
       "url": "https://www.vaasa.fi/toihin-vaasan-kaupungille",
       "value": null,
       "language": "fi"
     },
     {
-      "orderNumber": "0",
       "url": "https://www.vaasa.fi/sv/arbeta-i-vasa-stad",
       "value": null,
       "language": "sv"
     }
   ],
   "serviceHours": [],
+  "accessibilityClassificationLevel": null,
+  "wcagLevel": null,
+  "accessibilityStatementWebPage": null,
   "services": [
     {
       "service": {

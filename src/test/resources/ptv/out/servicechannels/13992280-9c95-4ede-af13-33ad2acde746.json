@@ -44,19 +44,20 @@
   ],
   "webPages": [
     {
-      "orderNumber": "1",
       "url": "https://www.vaasa.fi/sv/node/20791",
       "value": "Sundom skola",
       "language": "fi"
     },
     {
-      "orderNumber": "1",
       "url": "https://www.vaasa.fi/sv/node/20791",
       "value": "Sundom skola",
       "language": "sv"
     }
   ],
   "serviceHours": [],
+  "accessibilityClassificationLevel": null,
+  "wcagLevel": null,
+  "accessibilityStatementWebPage": null,
   "services": [
     {
       "service": {

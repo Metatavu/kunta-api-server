@@ -27,13 +27,15 @@
   "languages": [],
   "webPages": [
     {
-      "orderNumber": "0",
       "url": "https://wilma.naantali.fi/",
       "value": null,
       "language": "fi"
     }
   ],
   "serviceHours": [],
+  "accessibilityClassificationLevel": null,
+  "wcagLevel": null,
+  "accessibilityStatementWebPage": null,
   "services": [
     {
       "service": {

@@ -42,19 +42,20 @@
   "languages": [],
   "webPages": [
     {
-      "orderNumber": "0",
       "url": "https://kartta.vaasa.fi/eFeedback",
       "value": null,
       "language": "fi"
     },
     {
-      "orderNumber": "0",
       "url": "https://kartta.vaasa.fi/eFeedback/sv",
       "value": null,
       "language": "sv"
     }
   ],
   "serviceHours": [],
+  "accessibilityClassificationLevel": null,
+  "wcagLevel": null,
+  "accessibilityStatementWebPage": null,
   "services": [
     {
       "service": {

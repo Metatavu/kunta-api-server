@@ -29,13 +29,15 @@
   ],
   "webPages": [
     {
-      "orderNumber": "1",
       "url": "https://www.vaasa.fi/savilahden-yhtenaiskoulu",
       "value": "Savilahden yhtenäiskoulun verkkosivut",
       "language": "fi"
     }
   ],
   "serviceHours": [],
+  "accessibilityClassificationLevel": null,
+  "wcagLevel": null,
+  "accessibilityStatementWebPage": null,
   "services": [
     {
       "service": {

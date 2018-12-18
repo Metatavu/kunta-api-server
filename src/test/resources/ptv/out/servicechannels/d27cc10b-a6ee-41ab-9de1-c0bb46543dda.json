@@ -29,13 +29,15 @@
   ],
   "webPages": [
     {
-      "orderNumber": "0",
       "url": "http://www.naantali.fi/opetus_ja_koulutus/oppilashuolto/fi_FI/09_oppilashuolto_1/",
       "value": null,
       "language": "fi"
     }
   ],
   "serviceHours": [],
+  "accessibilityClassificationLevel": null,
+  "wcagLevel": null,
+  "accessibilityStatementWebPage": null,
   "services": [
     {
       "service": {
