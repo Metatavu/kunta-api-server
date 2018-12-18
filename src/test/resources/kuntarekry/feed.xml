@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <jobs>
   <job>
-    <jobtitle>Työn 1 otsikko</jobtitle>
+    <jobtitle>Työn 1 otsikko, priority</jobtitle>
     <employmenttype>Keikkatyö</employmenttype>
     <jobdescription>Esimerkkityön 1 kuvaus</jobdescription>
     <jobid>1234567890</jobid>
@@ -15,7 +15,7 @@
     <url>https://www.kuntarekry.fi/fi/tyopaikka/1234567890</url>
   </job>
   <job>
-    <jobtitle>Työn 2 otsikko</jobtitle>
+    <jobtitle>Työn 2 otsikko, priority</jobtitle>
     <employmenttype>Keikkatyö</employmenttype>
     <jobdescription>Esimerkkityön 2 kuvaus</jobdescription>
     <jobid>2234567890</jobid>

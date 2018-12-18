@@ -1,6 +1,5 @@
 package fi.metatavu.kuntaapi.server.controllers;
 
-import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -15,18 +14,27 @@ import fi.metatavu.kuntaapi.server.id.OrganizationId;
 import fi.metatavu.kuntaapi.server.integrations.JobProvider;
 import fi.metatavu.kuntaapi.server.integrations.JobProvider.JobOrder;
 import fi.metatavu.kuntaapi.server.integrations.JobProvider.JobOrderDirection;
+import fi.metatavu.kuntaapi.server.jobs.PriorityTitleJobComparator;
+import fi.metatavu.kuntaapi.server.jobs.PublicationEndComparator;
+import fi.metatavu.kuntaapi.server.jobs.PublicationStartComparator;
 import fi.metatavu.kuntaapi.server.utils.ListUtils;
 import fi.metatavu.kuntaapi.server.rest.model.Job;
+import fi.metatavu.kuntaapi.server.settings.OrganizationSettingController;
 
 @ApplicationScoped
 @SuppressWarnings ("squid:S3306")
 public class JobController {
-
+  
+  private static final String ORGANIZATION_SETTING_JOBS_PRIORTY_TITLE = "jobs.priority-title";
+  
   @Inject
   private EntityController entityController;
   
   @Inject
   private Instance<JobProvider> jobProviders;
+
+  @Inject
+  private OrganizationSettingController organizationSettingController;
 
   public Job findJob(OrganizationId organizationId, JobId jobId) {
     for (JobProvider jobProvider : getJobProviders()) {
@@ -45,10 +53,10 @@ public class JobController {
       result.addAll(jobProvider.listOrganizationJobs(organizationId));
     }
     
-    return ListUtils.limit(sortJobs(result, order, orderDirection), firstResult, maxResults);
+    return ListUtils.limit(sortJobs(organizationId, result, order, orderDirection), firstResult, maxResults);
   }
   
-  private List<Job> sortJobs(List<Job> jobs, JobOrder order, JobOrderDirection orderDirection) {
+  private List<Job> sortJobs(OrganizationId organizationId, List<Job> jobs, JobOrder order, JobOrderDirection orderDirection) {
     if (order == null) {
       return entityController.sortEntitiesInNaturalOrder(jobs);
     }
@@ -57,31 +65,22 @@ public class JobController {
     
     switch (order) {
       case PUBLICATION_END:
-        Collections.sort(sorted, (Job o1, Job o2) -> compareOffsetDateTimes(o1.getPublicationEnd(), o2.getPublicationEnd(), orderDirection));
+        Collections.sort(sorted, new PublicationEndComparator(orderDirection));
       break;
       case PUBLICATION_START:
-        Collections.sort(sorted, (Job o1, Job o2) -> compareOffsetDateTimes(o1.getPublicationStart(), o2.getPublicationStart(), orderDirection));
+        Collections.sort(sorted, new PublicationStartComparator(orderDirection));
       break;
+      case PRIORITY_TITLE_PUBLICATION_END:
+        Collections.sort(sorted, new PriorityTitleJobComparator(getPriorityTitle(organizationId), orderDirection)
+          .thenComparing(new PublicationEndComparator(orderDirection)));
+      break;
+      case PRIORITY_TITLE_PUBLICATION_START:
+        Collections.sort(sorted, new PriorityTitleJobComparator(getPriorityTitle(organizationId), orderDirection)
+          .thenComparing(new PublicationStartComparator(orderDirection)));
       default:
     }
 
     return sorted;
-  }
-  
-  private int compareOffsetDateTimes(OffsetDateTime o1, OffsetDateTime o2, JobOrderDirection orderDirection) {
-    if (o2 == o1) {
-      return 0;
-    }
-    
-    if (o2 == null) {
-      return orderDirection != JobOrderDirection.ASCENDING ? -1 : 1;
-    }
-    
-    if (o1 == null) {
-      return orderDirection != JobOrderDirection.ASCENDING ? 1 : -1;
-    }
-    
-    return orderDirection != JobOrderDirection.ASCENDING ? o2.compareTo(o1) : o1.compareTo(o2);
   }
 
   private List<JobProvider> getJobProviders() {
@@ -94,4 +93,15 @@ public class JobController {
     
     return Collections.unmodifiableList(result);
   }
+  
+  /**
+   * Returns priority title for an organization
+   * 
+   * @param organizationId organization id
+   * @return priority title for an organization
+   */
+  private String getPriorityTitle(OrganizationId organizationId) {
+    return organizationSettingController.getSettingValue(organizationId, ORGANIZATION_SETTING_JOBS_PRIORTY_TITLE);
+  }
+  
 }

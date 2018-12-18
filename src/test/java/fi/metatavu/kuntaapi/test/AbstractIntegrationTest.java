@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -60,9 +61,12 @@ import fi.metatavu.kuntaapi.server.persistence.model.clients.ClientOrganizationP
 public abstract class AbstractIntegrationTest extends AbstractTest {
   
   public static final String BASE_URL = "/v1";
-  
   private static final Logger logger = Logger.getLogger(AbstractIntegrationTest.class.getName());
-  
+
+  protected static final String IMAGE_JPEG = "image/jpeg";
+  protected static final String IMAGE_GIF = "image/gif";
+  protected static final String IMAGE_PNG = "image/png";
+
   private KuntarekryMocker kuntarekryMocker = new KuntarekryMocker();
   private TptMocker tptMocker = new TptMocker(); 
   private ManagementPageMappingMocker managementPageMappingMocker = new ManagementPageMappingMocker();
@@ -1222,6 +1226,20 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     try (InputStream fileStream = getClass().getClassLoader().getResourceAsStream(path)) {
       return IOUtils.toString(fileStream, "UTF-8");
     }
+  }
+  
+  /**
+   * Calculates contents md5 from a resource
+   * 
+   * @param resourceName resource name
+   * @return resource contents md5
+   * @throws IOException thrown when file reading fails
+   */
+  protected String getResourceMd5(String resourceName) throws IOException {
+    ClassLoader classLoader = getClass().getClassLoader();
+    try (InputStream fileStream = classLoader.getResourceAsStream(resourceName)) {
+      return DigestUtils.md5Hex(fileStream);
+    }    
   }
   
   private void deleteOrganizationPermissions() {

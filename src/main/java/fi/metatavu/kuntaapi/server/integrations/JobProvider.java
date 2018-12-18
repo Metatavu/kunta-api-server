@@ -51,7 +51,12 @@ public interface JobProvider {
     
     PUBLICATION_START,
     
-    PUBLICATION_END
+    PUBLICATION_END,
+    
+    PRIORITY_TITLE_PUBLICATION_END,
+    
+    PRIORITY_TITLE_PUBLICATION_START
+
   }
 
   

@@ -41,9 +41,12 @@ public abstract class AbstractAttachmentImageProvider {
     }
     
     AttachmentData attachmentData = getAttachmentData(kuntaApiAttachmentId);
+    
     if (size != null) {
       AttachmentData storedImage = scaleImage(attachmentData, size);
-      return scaledImageStore.storeScaledImage(kuntaApiAttachmentId, size, storedImage);
+      if (storedImage != null) {
+        return scaledImageStore.storeScaledImage(kuntaApiAttachmentId, size, storedImage);
+      }
     }
     
     return attachmentData;
@@ -57,8 +60,15 @@ public abstract class AbstractAttachmentImageProvider {
    */
   protected abstract AttachmentData getAttachmentData(AttachmentId kuntaApiAttachmentId);
 
+  /**
+   * Scales image
+   * 
+   * @param imageData original image data
+   * @param size desired size
+   * @return scaled image data or null if scaling has failed
+   */
   private AttachmentData scaleImage(AttachmentData imageData, Integer size) {
-    if (imageData == null || imageData.getData() == null) {
+    if (imageData == null || imageData.getData() == null || imageScaler.isUnscaleableType(imageData.getType())) {
       return null;
     }
     
