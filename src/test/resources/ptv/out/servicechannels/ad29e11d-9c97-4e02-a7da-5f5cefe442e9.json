@@ -1,36 +1,34 @@
 {
+  "id": "ad29e11d-9c97-4e02-a7da-5f5cefe442e9",
   "sourceId": null,
-  "webPages": [],
+  "serviceChannelType": "Phone",
+  "organizationId": "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "serviceChannelNames": [
+    {
+      "language": "fi",
+      "value": "Varhaiskasvatuksen johtaja",
+      "type": "Name"
+    }
+  ],
+  "serviceChannelDescriptions": [
+    {
+      "language": "fi",
+      "value": "Varhaiskasvatuksen johtaja vastaa Naantalin kaupungin varhaiskasvatuspalveluista.",
+      "type": "Description"
+    },
+    {
+      "language": "fi",
+      "value": "Varhaiskasvatuksen johtaja vastaa Naantalin kaupungin varhaiskasvatuspalveluista.",
+      "type": "Summary"
+    }
+  ],
+  "supportPhones": [],
+  "supportEmails": [],
   "languages": [
     "fi"
   ],
-  "areas": [
-    {
-      "type": "Municipality",
-      "code": null,
-      "name": null,
-      "municipalities": [
-        {
-          "code": "529",
-          "name": [
-            {
-              "value": "Naantali",
-              "language": "fi"
-            },
-            {
-              "value": "Nådendal",
-              "language": "sv"
-            },
-            {
-              "value": "Naantali",
-              "language": "en"
-            }
-          ]
-        }
-      ]
-    }
-  ],
-  "supportEmails": [],
+  "webPages": [],
+  "serviceHours": [],
   "services": [
     {
       "service": {
@@ -117,42 +115,6 @@
       "digitalAuthorizations": []
     }
   ],
-  "phoneNumbers": [
-    {
-      "type": "Phone",
-      "additionalInformation": null,
-      "serviceChargeType": "Chargeable",
-      "chargeDescription": null,
-      "prefixNumber": "+358",
-      "isFinnishServiceNumber": false,
-      "number": "406693926",
-      "language": "fi"
-    }
-  ],
-  "organizationId": "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
-  "serviceChannelNames": [
-    {
-      "language": "fi",
-      "value": "Varhaiskasvatuksen johtaja",
-      "type": "Name"
-    }
-  ],
-  "serviceHours": [],
-  "serviceChannelType": "Phone",
-  "serviceChannelDescriptions": [
-    {
-      "language": "fi",
-      "value": "Varhaiskasvatuksen johtaja vastaa Naantalin kaupungin varhaiskasvatuspalveluista.",
-      "type": "Description"
-    },
-    {
-      "language": "fi",
-      "value": "Varhaiskasvatuksen johtaja vastaa Naantalin kaupungin varhaiskasvatuspalveluista.",
-      "type": "Summary"
-    }
-  ],
-  "areaType": "LimitedType",
   "publishingStatus": "Published",
-  "modified": "2017-10-31T08:15:43.515627",
-  "id": "ad29e11d-9c97-4e02-a7da-5f5cefe442e9"
+  "modified": "2017-10-31T08:15:43.515627"
 }

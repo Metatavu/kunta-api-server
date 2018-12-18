@@ -1,5 +1,30 @@
 {
+  "id": "b8931c4b-1119-4c69-9bc4-a41fb00b92fe",
   "sourceId": null,
+  "serviceChannelType": "EChannel",
+  "organizationId": "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "serviceChannelNames": [
+    {
+      "language": "fi",
+      "value": "Wilma Naantali",
+      "type": "Name"
+    }
+  ],
+  "serviceChannelDescriptions": [
+    {
+      "language": "fi",
+      "value": "Wilma on www-käyttöliittymä, jota käyttävät koulujen oppilaat, huoltajat, opettajat sekä muu henkilökunta.",
+      "type": "Summary"
+    },
+    {
+      "language": "fi",
+      "value": "Wilma on koulujen hallinto-ohjelman www-liittymä, jota voi käyttää sekä tietokoneella että mobiililaitteilla.\n* Opiskelijat valitsevat Wilmassa kursseja, seuraavat suorituksiaan, lukevat tiedotteita ja viestivät opettajien kanssa.\n* Opettajat syöttävät Wilman kautta arvioinnit ja poissaolot ja viestivät opiskelijoiden ja huoltajien kanssa.\n* Huoltajat seuraavat ja selvittävät Wilman kautta opiskelijan poissaoloja, viestivät opettajien kanssa ja lukevat koulun tiedotteita.\nWilmaa käyttää myös koulujen muu henkilökunta.\n",
+      "type": "Description"
+    }
+  ],
+  "supportPhones": [],
+  "supportEmails": [],
+  "languages": [],
   "webPages": [
     {
       "orderNumber": "0",
@@ -8,37 +33,7 @@
       "language": "fi"
     }
   ],
-  "requiresSignature": false,
-  "attachments": [],
-  "languages": [],
-  "supportPhones": [],
-  "areas": [
-    {
-      "type": "Municipality",
-      "code": null,
-      "name": null,
-      "municipalities": [
-        {
-          "code": "529",
-          "name": [
-            {
-              "value": "Naantali",
-              "language": "fi"
-            },
-            {
-              "value": "Nådendal",
-              "language": "sv"
-            },
-            {
-              "value": "Naantali",
-              "language": "en"
-            }
-          ]
-        }
-      ]
-    }
-  ],
-  "supportEmails": [],
+  "serviceHours": [],
   "services": [
     {
       "service": {
@@ -149,32 +144,6 @@
       "digitalAuthorizations": []
     }
   ],
-  "organizationId": "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
-  "serviceChannelNames": [
-    {
-      "language": "fi",
-      "value": "Wilma Naantali",
-      "type": "Name"
-    }
-  ],
-  "serviceHours": [],
-  "serviceChannelType": "EChannel",
-  "serviceChannelDescriptions": [
-    {
-      "language": "fi",
-      "value": "Wilma on www-käyttöliittymä, jota käyttävät koulujen oppilaat, huoltajat, opettajat sekä muu henkilökunta.",
-      "type": "Summary"
-    },
-    {
-      "language": "fi",
-      "value": "Wilma on koulujen hallinto-ohjelman www-liittymä, jota voi käyttää sekä tietokoneella että mobiililaitteilla.\n* Opiskelijat valitsevat Wilmassa kursseja, seuraavat suorituksiaan, lukevat tiedotteita ja viestivät opettajien kanssa.\n* Opettajat syöttävät Wilman kautta arvioinnit ja poissaolot ja viestivät opiskelijoiden ja huoltajien kanssa.\n* Huoltajat seuraavat ja selvittävät Wilman kautta opiskelijan poissaoloja, viestivät opettajien kanssa ja lukevat koulun tiedotteita.\nWilmaa käyttää myös koulujen muu henkilökunta.\n",
-      "type": "Description"
-    }
-  ],
-  "areaType": "LimitedType",
   "publishingStatus": "Published",
-  "modified": "2017-10-31T08:15:43.515627",
-  "id": "b8931c4b-1119-4c69-9bc4-a41fb00b92fe",
-  "signatureQuantity": 0,
-  "requiresAuthentication": true
+  "modified": "2017-10-31T08:15:43.515627"
 }

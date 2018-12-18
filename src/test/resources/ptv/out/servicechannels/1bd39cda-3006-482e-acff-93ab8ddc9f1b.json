@@ -1,5 +1,32 @@
 {
+  "id": "1bd39cda-3006-482e-acff-93ab8ddc9f1b",
   "sourceId": null,
+  "serviceChannelType": "ServiceLocation",
+  "organizationId": "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "serviceChannelNames": [
+    {
+      "language": "fi",
+      "value": "Keskustan päiväkoti",
+      "type": "Name"
+    }
+  ],
+  "serviceChannelDescriptions": [
+    {
+      "language": "fi",
+      "value": "Keskustan päiväkoti toimii Naantalin vanhassakaupungissa kahdessa rakennuksessa.",
+      "type": "Summary"
+    },
+    {
+      "language": "fi",
+      "value": "Keskustan päiväkoti toimii kahdessa rakennuksessa, Kaivokadun talossa ja Vanhalla Raatihuoneella. Hoitopaikkoja on tällä hetkellä yhteensä 60. Keskustan päiväkodissa toimii myös integroitu kuntoutusryhmä.\n",
+      "type": "Description"
+    }
+  ],
+  "supportPhones": [],
+  "supportEmails": [],
+  "languages": [
+    "fi"
+  ],
   "webPages": [
     {
       "orderNumber": "1",
@@ -8,147 +35,7 @@
       "language": "fi"
     }
   ],
-  "addresses": [
-    {
-      "type": "Location",
-      "subType": "Single",
-      "postOfficeBoxAddress": null,
-      "streetAddress": {
-        "street": [
-          {
-            "value": "Mannerheiminkatu",
-            "language": "fi"
-          }
-        ],
-        "streetNumber": "14",
-        "postalCode": "21110",
-        "postOffice": [
-          {
-            "value": "NAANTALI",
-            "language": "sv"
-          },
-          {
-            "value": "NAANTALI",
-            "language": "fi"
-          }
-        ],
-        "municipality": {
-          "code": "529",
-          "name": [
-            {
-              "value": "Naantali",
-              "language": "fi"
-            },
-            {
-              "value": "Nådendal",
-              "language": "sv"
-            },
-            {
-              "value": "Naantali",
-              "language": "en"
-            }
-          ]
-        },
-        "additionalInformation": [
-          {
-            "value": "Käynti Alikadun puolelta.",
-            "language": "fi"
-          }
-        ],
-        "latitude": "6713890.211",
-        "longitude": "226225.47",
-        "coordinateState": "Ok"
-      },
-      "locationAbroad": null,
-      "multipointLocation": null,
-      "entrances": null,
-      "country": "FI"
-    },
-    {
-      "type": "Location",
-      "subType": "Single",
-      "postOfficeBoxAddress": null,
-      "streetAddress": {
-        "street": [
-          {
-            "value": "Kaivokatu",
-            "language": "fi"
-          }
-        ],
-        "streetNumber": "9",
-        "postalCode": "21100",
-        "postOffice": [
-          {
-            "value": "NAANTALI",
-            "language": "sv"
-          },
-          {
-            "value": "NAANTALI",
-            "language": "fi"
-          }
-        ],
-        "municipality": {
-          "code": "529",
-          "name": [
-            {
-              "value": "Naantali",
-              "language": "fi"
-            },
-            {
-              "value": "Nådendal",
-              "language": "sv"
-            },
-            {
-              "value": "Naantali",
-              "language": "en"
-            }
-          ]
-        },
-        "additionalInformation": [
-          {
-            "value": null,
-            "language": "fi"
-          }
-        ],
-        "latitude": "6713925.933",
-        "longitude": "226321.604",
-        "coordinateState": "Ok"
-      },
-      "locationAbroad": null,
-      "multipointLocation": null,
-      "entrances": null,
-      "country": "FI"
-    }
-  ],
-  "languages": [
-    "fi"
-  ],
-  "areas": [
-    {
-      "type": "Municipality",
-      "code": null,
-      "name": null,
-      "municipalities": [
-        {
-          "code": "529",
-          "name": [
-            {
-              "value": "Naantali",
-              "language": "fi"
-            },
-            {
-              "value": "Nådendal",
-              "language": "sv"
-            },
-            {
-              "value": "Naantali",
-              "language": "en"
-            }
-          ]
-        }
-      ]
-    }
-  ],
+  "serviceHours": [],
   "services": [
     {
       "service": {
@@ -199,43 +86,6 @@
       "digitalAuthorizations": []
     }
   ],
-  "phoneNumbers": [
-    {
-      "type": "Phone",
-      "additionalInformation": "",
-      "serviceChargeType": "Chargeable",
-      "chargeDescription": null,
-      "prefixNumber": "+358",
-      "isFinnishServiceNumber": false,
-      "number": "440410431",
-      "language": "fi"
-    }
-  ],
-  "organizationId": "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
-  "emails": [],
-  "serviceChannelNames": [
-    {
-      "language": "fi",
-      "value": "Keskustan päiväkoti",
-      "type": "Name"
-    }
-  ],
-  "serviceHours": [],
-  "serviceChannelType": "ServiceLocation",
-  "serviceChannelDescriptions": [
-    {
-      "language": "fi",
-      "value": "Keskustan päiväkoti toimii Naantalin vanhassakaupungissa kahdessa rakennuksessa.",
-      "type": "Summary"
-    },
-    {
-      "language": "fi",
-      "value": "Keskustan päiväkoti toimii kahdessa rakennuksessa, Kaivokadun talossa ja Vanhalla Raatihuoneella. Hoitopaikkoja on tällä hetkellä yhteensä 60. Keskustan päiväkodissa toimii myös integroitu kuntoutusryhmä.\n",
-      "type": "Description"
-    }
-  ],
-  "areaType": "LimitedType",
   "publishingStatus": "Published",
-  "modified": "2017-10-31T08:15:43.515627",
-  "id": "1bd39cda-3006-482e-acff-93ab8ddc9f1b"
+  "modified": "2017-10-31T08:15:43.515627"
 }

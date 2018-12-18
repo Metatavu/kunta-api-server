@@ -1,5 +1,32 @@
 {
+  "id": "32834fb0-9e06-44a2-aed4-2cc61751e8a8",
   "sourceId": null,
+  "serviceChannelType": "WebPage",
+  "organizationId": "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "serviceChannelNames": [
+    {
+      "language": "fi",
+      "value": "Ympäristöviraston maksuluettelo",
+      "type": "Name"
+    }
+  ],
+  "serviceChannelDescriptions": [
+    {
+      "language": "fi",
+      "value": "Maksuluettelossa on kerrottu Naantalin kaupungin Ympäristoviraston palveluista perittävät maksut.",
+      "type": "Summary"
+    },
+    {
+      "language": "fi",
+      "value": "Maksuluettelossa on lueteltu Ympäristöviraston palveluiden hinnat osastoittain. Luttelossa on listattu Ympäristönsuojelun, Asemakaavoituksen ja Maanmittauksen palveluiden hinnat. ",
+      "type": "Description"
+    }
+  ],
+  "supportPhones": [],
+  "supportEmails": [],
+  "languages": [
+    "fi"
+  ],
   "webPages": [
     {
       "orderNumber": "0",
@@ -8,11 +35,7 @@
       "language": "fi"
     }
   ],
-  "languages": [
-    "fi"
-  ],
-  "supportPhones": [],
-  "supportEmails": [],
+  "serviceHours": [],
   "services": [
     {
       "service": {
@@ -87,29 +110,6 @@
       "digitalAuthorizations": []
     }
   ],
-  "organizationId": "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
-  "serviceChannelNames": [
-    {
-      "language": "fi",
-      "value": "Ympäristöviraston maksuluettelo",
-      "type": "Name"
-    }
-  ],
-  "serviceHours": [],
-  "serviceChannelType": "WebPage",
-  "serviceChannelDescriptions": [
-    {
-      "language": "fi",
-      "value": "Maksuluettelossa on kerrottu Naantalin kaupungin Ympäristoviraston palveluista perittävät maksut.",
-      "type": "Summary"
-    },
-    {
-      "language": "fi",
-      "value": "Maksuluettelossa on lueteltu Ympäristöviraston palveluiden hinnat osastoittain. Luttelossa on listattu Ympäristönsuojelun, Asemakaavoituksen ja Maanmittauksen palveluiden hinnat. ",
-      "type": "Description"
-    }
-  ],
   "publishingStatus": "Published",
-  "modified": "2017-10-31T08:15:43.515627",
-  "id": "32834fb0-9e06-44a2-aed4-2cc61751e8a8"
+  "modified": "2017-10-31T08:15:43.515627"
 }

@@ -1,91 +1,8 @@
 {
+  "id": "c38feebb-9dfa-4efc-b2f7-02b2fd282841",
   "sourceId": null,
-  "webPages": [],
-  "attachments": [],
-  "languages": [],
-  "deliveryAddresses": [
-    {
-      "subType": "NoAddress",
-      "postOfficeBoxAddress": null,
-      "streetAddress": null,
-      "deliveryAddressInText": [],
-      "receiver": [
-        {
-          "value": null,
-          "language": "sv"
-        },
-        {
-          "value": null,
-          "language": "fi"
-        }
-      ]
-    }
-  ],
-  "supportPhones": [],
-  "formIdentifier": [
-    {
-      "value": null,
-      "language": "sv"
-    },
-    {
-      "value": null,
-      "language": "fi"
-    }
-  ],
-  "areas": [
-    {
-      "type": "Municipality",
-      "code": null,
-      "name": null,
-      "municipalities": [
-        {
-          "code": "905",
-          "name": [
-            {
-              "value": "Vaasa",
-              "language": "fi"
-            },
-            {
-              "value": "Vasa",
-              "language": "sv"
-            },
-            {
-              "value": "Vaasa",
-              "language": "en"
-            }
-          ]
-        }
-      ]
-    }
-  ],
-  "supportEmails": [],
-  "services": [
-    {
-      "service": {
-        "id": "83e5fa7f-a22c-43b7-aa27-06474d21ec59",
-        "name": "Hissiavustus"
-      },
-      "serviceChargeType": null,
-      "description": [],
-      "extraTypes": [],
-      "serviceHours": [],
-      "contactDetails": null,
-      "digitalAuthorizations": []
-    }
-  ],
+  "serviceChannelType": "PrintableForm",
   "organizationId": "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
-  "channelUrls": [
-    {
-      "language": "fi",
-      "value": "https://www.vaasa.fi/sites/default/files/maksatushakemus_0.pdf",
-      "type": "PDF"
-    },
-    {
-      "language": "sv",
-      "value": "https://www.vaasa.fi/sites/default/files/maksatushakemus_ru_0.pdf",
-      "type": "PDF"
-    }
-  ],
   "serviceChannelNames": [
     {
       "language": "fi",
@@ -98,8 +15,6 @@
       "type": "Name"
     }
   ],
-  "serviceHours": [],
-  "serviceChannelType": "PrintableForm",
   "serviceChannelDescriptions": [
     {
       "language": "sv",
@@ -122,8 +37,25 @@
       "type": "Summary"
     }
   ],
-  "areaType": "LimitedType",
+  "supportPhones": [],
+  "supportEmails": [],
+  "languages": [],
+  "webPages": [],
+  "serviceHours": [],
+  "services": [
+    {
+      "service": {
+        "id": "83e5fa7f-a22c-43b7-aa27-06474d21ec59",
+        "name": "Hissiavustus"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    }
+  ],
   "publishingStatus": "Published",
-  "modified": "2017-10-31T08:15:43.515627",
-  "id": "c38feebb-9dfa-4efc-b2f7-02b2fd282841"
+  "modified": "2017-10-31T08:15:43.515627"
 }

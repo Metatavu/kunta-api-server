@@ -1,73 +1,7 @@
 {
+  "id": "2e7f0b8d-4943-4fd4-8a22-7b02830be16e",
   "sourceId": null,
-  "webPages": [],
-  "languages": [
-    "fi",
-    "sv"
-  ],
-  "areas": [
-    {
-      "type": "Municipality",
-      "code": null,
-      "name": null,
-      "municipalities": [
-        {
-          "code": "905",
-          "name": [
-            {
-              "value": "Vaasa",
-              "language": "fi"
-            },
-            {
-              "value": "Vasa",
-              "language": "sv"
-            },
-            {
-              "value": "Vaasa",
-              "language": "en"
-            }
-          ]
-        }
-      ]
-    }
-  ],
-  "supportEmails": [],
-  "services": [
-    {
-      "service": {
-        "id": "9f242076-de0b-4c58-810e-aac4979d71fa",
-        "name": "Päivystävän kriisiryhmän palvelut"
-      },
-      "serviceChargeType": null,
-      "description": [],
-      "extraTypes": [],
-      "serviceHours": [],
-      "contactDetails": null,
-      "digitalAuthorizations": []
-    }
-  ],
-  "phoneNumbers": [
-    {
-      "type": "Phone",
-      "additionalInformation": null,
-      "serviceChargeType": "Chargeable",
-      "chargeDescription": null,
-      "prefixNumber": "+358",
-      "isFinnishServiceNumber": false,
-      "number": "405501990",
-      "language": "fi"
-    },
-    {
-      "type": "Phone",
-      "additionalInformation": null,
-      "serviceChargeType": "Chargeable",
-      "chargeDescription": null,
-      "prefixNumber": "+358",
-      "isFinnishServiceNumber": false,
-      "number": "405501990",
-      "language": "sv"
-    }
-  ],
+  "serviceChannelType": "Phone",
   "organizationId": "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
   "serviceChannelNames": [
     {
@@ -81,6 +15,35 @@
       "type": "Name"
     }
   ],
+  "serviceChannelDescriptions": [
+    {
+      "language": "sv",
+      "value": "Krisgruppen dejourerar kl. 8-16 på vardagar samt helgdagar. Ringbud kan lämnas dygnet runt.\n\nEn krisgrupp erbjuder psykisk första hjälpen för personer som upplevt en traumatisk situation. Sådana situationer är psykiskt belastande saker såsom en anhörigs eller närståendes plötsliga död, självmord samt allvariga tillbudssituationer. ",
+      "type": "Description"
+    },
+    {
+      "language": "sv",
+      "value": "Krisgruppen dejourerar kl. 8-16 på vardagar samt helgdagar. Ringbud kan lämnas dygnet runt.",
+      "type": "Summary"
+    },
+    {
+      "language": "fi",
+      "value": "Kriisiryhmä päivystää klo 8-16 sekä arkena että viikonloppuisin. Soittopyyntöjä voi jättää ympäri vuorokauden.",
+      "type": "Summary"
+    },
+    {
+      "language": "fi",
+      "value": "Kriisiryhmä päivystää klo 8-16 sekä arkena että viikonloppuisin. Soittopyyntöjä voi jättää ympäri vuorokauden.\n\nHenkistä ensiapua traumaattisen tilanteen kokeneille. Tällaisia tilanteita ovat psyykkisesti kuormittavat asiat kuten omaisen tai läheisen yllättävä kuolema, itsemurha sekä vakavat läheltä piti –tilanteet.",
+      "type": "Description"
+    }
+  ],
+  "supportPhones": [],
+  "supportEmails": [],
+  "languages": [
+    "fi",
+    "sv"
+  ],
+  "webPages": [],
   "serviceHours": [
     {
       "serviceHourType": "DaysOfTheWeek",
@@ -140,31 +103,20 @@
       ]
     }
   ],
-  "serviceChannelType": "Phone",
-  "serviceChannelDescriptions": [
+  "services": [
     {
-      "language": "sv",
-      "value": "Krisgruppen dejourerar kl. 8-16 på vardagar samt helgdagar. Ringbud kan lämnas dygnet runt.\n\nEn krisgrupp erbjuder psykisk första hjälpen för personer som upplevt en traumatisk situation. Sådana situationer är psykiskt belastande saker såsom en anhörigs eller närståendes plötsliga död, självmord samt allvariga tillbudssituationer. ",
-      "type": "Description"
-    },
-    {
-      "language": "sv",
-      "value": "Krisgruppen dejourerar kl. 8-16 på vardagar samt helgdagar. Ringbud kan lämnas dygnet runt.",
-      "type": "Summary"
-    },
-    {
-      "language": "fi",
-      "value": "Kriisiryhmä päivystää klo 8-16 sekä arkena että viikonloppuisin. Soittopyyntöjä voi jättää ympäri vuorokauden.",
-      "type": "Summary"
-    },
-    {
-      "language": "fi",
-      "value": "Kriisiryhmä päivystää klo 8-16 sekä arkena että viikonloppuisin. Soittopyyntöjä voi jättää ympäri vuorokauden.\n\nHenkistä ensiapua traumaattisen tilanteen kokeneille. Tällaisia tilanteita ovat psyykkisesti kuormittavat asiat kuten omaisen tai läheisen yllättävä kuolema, itsemurha sekä vakavat läheltä piti –tilanteet.",
-      "type": "Description"
+      "service": {
+        "id": "9f242076-de0b-4c58-810e-aac4979d71fa",
+        "name": "Päivystävän kriisiryhmän palvelut"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
     }
   ],
-  "areaType": "LimitedType",
   "publishingStatus": "Published",
-  "modified": "2017-10-31T08:15:43.515627",
-  "id": "2e7f0b8d-4943-4fd4-8a22-7b02830be16e"
+  "modified": "2017-10-31T08:15:43.515627"
 }

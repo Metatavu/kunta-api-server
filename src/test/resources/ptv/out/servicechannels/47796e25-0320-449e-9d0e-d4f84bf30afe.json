@@ -1,39 +1,7 @@
 {
+  "id": "47796e25-0320-449e-9d0e-d4f84bf30afe",
   "sourceId": null,
-  "webPages": [
-    {
-      "orderNumber": "0",
-      "url": "https://www.vaasa.fi/toihin-vaasan-kaupungille",
-      "value": null,
-      "language": "fi"
-    },
-    {
-      "orderNumber": "0",
-      "url": "https://www.vaasa.fi/sv/arbeta-i-vasa-stad",
-      "value": null,
-      "language": "sv"
-    }
-  ],
-  "languages": [
-    "fi",
-    "sv"
-  ],
-  "supportPhones": [],
-  "supportEmails": [],
-  "services": [
-    {
-      "service": {
-        "id": "bedd6808-8472-4f82-a412-e9521f14c621",
-        "name": "Avoimet työpaikat"
-      },
-      "serviceChargeType": null,
-      "description": [],
-      "extraTypes": [],
-      "serviceHours": [],
-      "contactDetails": null,
-      "digitalAuthorizations": []
-    }
-  ],
+  "serviceChannelType": "WebPage",
   "organizationId": "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
   "serviceChannelNames": [
     {
@@ -47,8 +15,6 @@
       "type": "Name"
     }
   ],
-  "serviceHours": [],
-  "serviceChannelType": "WebPage",
   "serviceChannelDescriptions": [
     {
       "language": "sv",
@@ -71,7 +37,41 @@
       "type": "Summary"
     }
   ],
+  "supportPhones": [],
+  "supportEmails": [],
+  "languages": [
+    "fi",
+    "sv"
+  ],
+  "webPages": [
+    {
+      "orderNumber": "0",
+      "url": "https://www.vaasa.fi/toihin-vaasan-kaupungille",
+      "value": null,
+      "language": "fi"
+    },
+    {
+      "orderNumber": "0",
+      "url": "https://www.vaasa.fi/sv/arbeta-i-vasa-stad",
+      "value": null,
+      "language": "sv"
+    }
+  ],
+  "serviceHours": [],
+  "services": [
+    {
+      "service": {
+        "id": "bedd6808-8472-4f82-a412-e9521f14c621",
+        "name": "Avoimet työpaikat"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    }
+  ],
   "publishingStatus": "Published",
-  "modified": "2017-10-31T08:15:43.515627",
-  "id": "47796e25-0320-449e-9d0e-d4f84bf30afe"
+  "modified": "2017-10-31T08:15:43.515627"
 }

@@ -1,5 +1,32 @@
 {
+  "id": "abac25e1-bd15-4c1a-b22e-9d9a705d9220",
   "sourceId": null,
+  "serviceChannelType": "ServiceLocation",
+  "organizationId": "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "serviceChannelNames": [
+    {
+      "language": "fi",
+      "value": "Naantalin lukio",
+      "type": "Name"
+    }
+  ],
+  "serviceChannelDescriptions": [
+    {
+      "language": "fi",
+      "value": "Naantalin lukio on Naantalin kaupungin ylläpitämä toisen asteen oppilaitos.",
+      "type": "Summary"
+    },
+    {
+      "language": "fi",
+      "value": "Naantalin lukio on yleislukio, jonka upeissa tiloissa ja kannustavassa ilmapiirissä lukiolaisilla on erinomaiset mahdollisuudet niin itsenäiseen kuin vuorovaikutukselliseen työskentelyyn ja tieteelliseen ajatteluun. \n\nMatkailualaan perehdyttävät opinnot ovat Naantalin lukion oma paikallinen erityspiirre. Laajojen reaaliaineiden ja matemaattisten aineiden opintokokonaisuuksien rinnalla on mahdollista opiskella useita vieraita kieliä (englanti, saksa, ranska, espanja, venäjä). \n\nTieto- ja viestintätekniikan opinnoissa Naantalin lukio tekee yhteistyötä TIEKEn ja Turun yliopiston kanssa. Kyseisten kurssien opintokokonaisuuden suorittaminen voi avata väylän Turun yliopistoon opiskelemaan Informaatioteknologian laitokselle suoraan ilman pääsykoetta.\n",
+      "type": "Description"
+    }
+  ],
+  "supportPhones": [],
+  "supportEmails": [],
+  "languages": [
+    "fi"
+  ],
   "webPages": [
     {
       "orderNumber": "0",
@@ -26,133 +53,7 @@
       "language": "fi"
     }
   ],
-  "addresses": [
-    {
-      "type": "Location",
-      "subType": "Single",
-      "postOfficeBoxAddress": null,
-      "streetAddress": {
-        "street": [
-          {
-            "value": "Vadstenanpolku",
-            "language": "fi"
-          }
-        ],
-        "streetNumber": "4",
-        "postalCode": "21100",
-        "postOffice": [
-          {
-            "value": "NAANTALI",
-            "language": "sv"
-          },
-          {
-            "value": "NAANTALI",
-            "language": "fi"
-          }
-        ],
-        "municipality": {
-          "code": "529",
-          "name": [
-            {
-              "value": "Naantali",
-              "language": "fi"
-            },
-            {
-              "value": "Nådendal",
-              "language": "sv"
-            },
-            {
-              "value": "Naantali",
-              "language": "en"
-            }
-          ]
-        },
-        "additionalInformation": [],
-        "latitude": "0",
-        "longitude": "0",
-        "coordinateState": "NotReceived"
-      },
-      "locationAbroad": null,
-      "multipointLocation": null,
-      "entrances": null,
-      "country": "FI"
-    },
-    {
-      "type": "Postal",
-      "subType": "PostOfficeBox",
-      "postOfficeBoxAddress": {
-        "postOfficeBox": [
-          {
-            "value": "PL 43",
-            "language": "fi"
-          }
-        ],
-        "postalCode": "21101",
-        "postOffice": [
-          {
-            "value": "NAANTALI",
-            "language": "sv"
-          },
-          {
-            "value": "NAANTALI",
-            "language": "fi"
-          }
-        ],
-        "municipality": {
-          "code": "529",
-          "name": [
-            {
-              "value": "Naantali",
-              "language": "fi"
-            },
-            {
-              "value": "Nådendal",
-              "language": "sv"
-            },
-            {
-              "value": "Naantali",
-              "language": "en"
-            }
-          ]
-        },
-        "additionalInformation": []
-      },
-      "streetAddress": null,
-      "locationAbroad": null,
-      "multipointLocation": null,
-      "entrances": null,
-      "country": "FI"
-    }
-  ],
-  "languages": [
-    "fi"
-  ],
-  "areas": [
-    {
-      "type": "Municipality",
-      "code": null,
-      "name": null,
-      "municipalities": [
-        {
-          "code": "529",
-          "name": [
-            {
-              "value": "Naantali",
-              "language": "fi"
-            },
-            {
-              "value": "Nådendal",
-              "language": "sv"
-            },
-            {
-              "value": "Naantali",
-              "language": "en"
-            }
-          ]
-        }
-      ]
-    }
-  ],
+  "serviceHours": [],
   "services": [
     {
       "service": {
@@ -191,68 +92,6 @@
       "digitalAuthorizations": []
     }
   ],
-  "phoneNumbers": [
-    {
-      "type": "Phone",
-      "additionalInformation": "Rehtori",
-      "serviceChargeType": "Chargeable",
-      "chargeDescription": null,
-      "prefixNumber": "+358",
-      "isFinnishServiceNumber": false,
-      "number": "447868571",
-      "language": "fi"
-    },
-    {
-      "type": "Phone",
-      "additionalInformation": "Apulaisrehtori",
-      "serviceChargeType": "Chargeable",
-      "chargeDescription": null,
-      "prefixNumber": "+358",
-      "isFinnishServiceNumber": false,
-      "number": "447334505",
-      "language": "fi"
-    },
-    {
-      "type": "Phone",
-      "additionalInformation": "Koulusihteeri",
-      "serviceChargeType": "Chargeable",
-      "chargeDescription": null,
-      "prefixNumber": "+358",
-      "isFinnishServiceNumber": false,
-      "number": "24345290",
-      "language": "fi"
-    }
-  ],
-  "organizationId": "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
-  "emails": [
-    {
-      "value": "etunimi.sukunimi@naantali.fi",
-      "language": "fi"
-    }
-  ],
-  "serviceChannelNames": [
-    {
-      "language": "fi",
-      "value": "Naantalin lukio",
-      "type": "Name"
-    }
-  ],
-  "serviceHours": [],
-  "serviceChannelType": "ServiceLocation",
-  "serviceChannelDescriptions": [
-    {
-      "language": "fi",
-      "value": "Naantalin lukio on Naantalin kaupungin ylläpitämä toisen asteen oppilaitos.",
-      "type": "Summary"
-    },
-    {
-      "language": "fi",
-      "value": "Naantalin lukio on yleislukio, jonka upeissa tiloissa ja kannustavassa ilmapiirissä lukiolaisilla on erinomaiset mahdollisuudet niin itsenäiseen kuin vuorovaikutukselliseen työskentelyyn ja tieteelliseen ajatteluun. \n\nMatkailualaan perehdyttävät opinnot ovat Naantalin lukion oma paikallinen erityspiirre. Laajojen reaaliaineiden ja matemaattisten aineiden opintokokonaisuuksien rinnalla on mahdollista opiskella useita vieraita kieliä (englanti, saksa, ranska, espanja, venäjä). \n\nTieto- ja viestintätekniikan opinnoissa Naantalin lukio tekee yhteistyötä TIEKEn ja Turun yliopiston kanssa. Kyseisten kurssien opintokokonaisuuden suorittaminen voi avata väylän Turun yliopistoon opiskelemaan Informaatioteknologian laitokselle suoraan ilman pääsykoetta.\n",
-      "type": "Description"
-    }
-  ],
-  "areaType": "LimitedType",
   "publishingStatus": "Published",
-  "modified": "2017-12-04T13:53:39.34889",
-  "id": "abac25e1-bd15-4c1a-b22e-9d9a705d9220"
+  "modified": "2017-12-04T13:53:39.34889"
 }

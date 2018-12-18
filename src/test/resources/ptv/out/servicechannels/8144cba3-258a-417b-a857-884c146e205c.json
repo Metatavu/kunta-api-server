@@ -1,45 +1,7 @@
 {
+  "id": "8144cba3-258a-417b-a857-884c146e205c",
   "sourceId": null,
-  "webPages": [
-    {
-      "orderNumber": "0",
-      "url": "https://www.vaasa.fi/node/19161",
-      "value": null,
-      "language": "fi"
-    },
-    {
-      "orderNumber": "0",
-      "url": "https://www.vaasa.fi/node/19161",
-      "value": null,
-      "language": "en"
-    },
-    {
-      "orderNumber": "0",
-      "url": "https://www.vaasa.fi/sv/node/19161",
-      "value": null,
-      "language": "sv"
-    }
-  ],
-  "languages": [
-    "fi",
-    "sv"
-  ],
-  "supportPhones": [],
-  "supportEmails": [],
-  "services": [
-    {
-      "service": {
-        "id": "6ccb671f-05cd-46cf-a0a4-4f98d43dfd37",
-        "name": "Uimahalli"
-      },
-      "serviceChargeType": null,
-      "description": [],
-      "extraTypes": [],
-      "serviceHours": [],
-      "contactDetails": null,
-      "digitalAuthorizations": []
-    }
-  ],
+  "serviceChannelType": "WebPage",
   "organizationId": "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
   "serviceChannelNames": [
     {
@@ -58,8 +20,6 @@
       "type": "Name"
     }
   ],
-  "serviceHours": [],
-  "serviceChannelType": "WebPage",
   "serviceChannelDescriptions": [
     {
       "language": "sv",
@@ -92,7 +52,47 @@
       "type": "Description"
     }
   ],
+  "supportPhones": [],
+  "supportEmails": [],
+  "languages": [
+    "fi",
+    "sv"
+  ],
+  "webPages": [
+    {
+      "orderNumber": "0",
+      "url": "https://www.vaasa.fi/node/19161",
+      "value": null,
+      "language": "fi"
+    },
+    {
+      "orderNumber": "0",
+      "url": "https://www.vaasa.fi/node/19161",
+      "value": null,
+      "language": "en"
+    },
+    {
+      "orderNumber": "0",
+      "url": "https://www.vaasa.fi/sv/node/19161",
+      "value": null,
+      "language": "sv"
+    }
+  ],
+  "serviceHours": [],
+  "services": [
+    {
+      "service": {
+        "id": "6ccb671f-05cd-46cf-a0a4-4f98d43dfd37",
+        "name": "Uimahalli"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    }
+  ],
   "publishingStatus": "Published",
-  "modified": "2017-10-31T08:15:43.515627",
-  "id": "8144cba3-258a-417b-a857-884c146e205c"
+  "modified": "2017-10-31T08:15:43.515627"
 }

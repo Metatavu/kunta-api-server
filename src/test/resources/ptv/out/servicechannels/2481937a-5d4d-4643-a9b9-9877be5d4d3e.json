@@ -1,5 +1,32 @@
 {
+  "id": "2481937a-5d4d-4643-a9b9-9877be5d4d3e",
   "sourceId": null,
+  "serviceChannelType": "ServiceLocation",
+  "organizationId": "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "serviceChannelNames": [
+    {
+      "language": "fi",
+      "value": "Rymättylän koulu",
+      "type": "Name"
+    }
+  ],
+  "serviceChannelDescriptions": [
+    {
+      "language": "fi",
+      "value": "Rymättylän koulu on Naantalin kaupungin perusopetuksen alakoulu.",
+      "type": "Summary"
+    },
+    {
+      "language": "fi",
+      "value": "Rymättylän koulu on Naantalin kaupungin perusopetuksen alakoulu. Koulun oppilasmäärä on noin 160. Koulun tiloissa annetaan myös esiopetusta.\n\nKoulun yhteiset arvot:\n* kaikessa koulun toiminnassa pyritään parantamaan oppilaiden itsetuntoa\n* kaikessa opetuksessa kehitetään oppilaiden tietojenhankkimistaitoja\n* koulussa painotetaan erityisesti oppilaiden sosiaalisia taitoja ja hyvien käytöstapojen noudattamista\n* kestävän kehityksen periaatteet näkyvät koulun toiminnassa\n* koulussa panostetaan koko koulun väen psyykkiseen ja fyysiseen turvallisuuteen\n* koulu kunnioittaa perinteitä sekä pyrkii vahvistamaan oppilaiden kotiseutuidentiteettiä\nNäihin arvoihin pyritään yhteistoiminnallisten opetusmenetelmien avulla, mutta kuitenkin lapsen yksilöllisyyttä kunnioittaen.\n\nRymättylän koulun kummioppilastoiminnassa kummin tehtävänä on huolehtia pikkuoppilaan hyvinvoinnista monin tavoin esimerkiksi välitunnilla ja mahdollisuuksien mukaan myös koulumatkoilla. Säännöllisin väliajoin pitkin lukuvuotta järjestetään kummitunteja, joiden aikana kummit ja heidän kummioppilaansa työskentelevät yhdessä.\n\nYhteistuumin laaditut viihtyvyyssäännöt (sekä oppilaille että henkilökunnalle) palautetaan mieliin yhteisesti heti lukuvuoden alussa ja aina silloin tällöin lukuvuoden kuluessakin.",
+      "type": "Description"
+    }
+  ],
+  "supportPhones": [],
+  "supportEmails": [],
+  "languages": [
+    "fi"
+  ],
   "webPages": [
     {
       "orderNumber": "1",
@@ -14,133 +41,7 @@
       "language": "fi"
     }
   ],
-  "addresses": [
-    {
-      "type": "Location",
-      "subType": "Single",
-      "postOfficeBoxAddress": null,
-      "streetAddress": {
-        "street": [
-          {
-            "value": "Piimätie",
-            "language": "fi"
-          }
-        ],
-        "streetNumber": "1",
-        "postalCode": "21140",
-        "postOffice": [
-          {
-            "value": "RYMÄTTYLÄ",
-            "language": "sv"
-          },
-          {
-            "value": "RYMÄTTYLÄ",
-            "language": "fi"
-          }
-        ],
-        "municipality": {
-          "code": "529",
-          "name": [
-            {
-              "value": "Naantali",
-              "language": "fi"
-            },
-            {
-              "value": "Nådendal",
-              "language": "sv"
-            },
-            {
-              "value": "Naantali",
-              "language": "en"
-            }
-          ]
-        },
-        "additionalInformation": [],
-        "latitude": "6703709.121",
-        "longitude": "221847.89",
-        "coordinateState": "EnteredByUser"
-      },
-      "locationAbroad": null,
-      "multipointLocation": null,
-      "entrances": null,
-      "country": "FI"
-    },
-    {
-      "type": "Postal",
-      "subType": "PostOfficeBox",
-      "postOfficeBoxAddress": {
-        "postOfficeBox": [
-          {
-            "value": "PL 43",
-            "language": "fi"
-          }
-        ],
-        "postalCode": "21101",
-        "postOffice": [
-          {
-            "value": "NAANTALI",
-            "language": "sv"
-          },
-          {
-            "value": "NAANTALI",
-            "language": "fi"
-          }
-        ],
-        "municipality": {
-          "code": "529",
-          "name": [
-            {
-              "value": "Naantali",
-              "language": "fi"
-            },
-            {
-              "value": "Nådendal",
-              "language": "sv"
-            },
-            {
-              "value": "Naantali",
-              "language": "en"
-            }
-          ]
-        },
-        "additionalInformation": []
-      },
-      "streetAddress": null,
-      "locationAbroad": null,
-      "multipointLocation": null,
-      "entrances": null,
-      "country": "FI"
-    }
-  ],
-  "languages": [
-    "fi"
-  ],
-  "areas": [
-    {
-      "type": "Municipality",
-      "code": null,
-      "name": null,
-      "municipalities": [
-        {
-          "code": "529",
-          "name": [
-            {
-              "value": "Naantali",
-              "language": "fi"
-            },
-            {
-              "value": "Nådendal",
-              "language": "sv"
-            },
-            {
-              "value": "Naantali",
-              "language": "en"
-            }
-          ]
-        }
-      ]
-    }
-  ],
+  "serviceHours": [],
   "services": [
     {
       "service": {
@@ -191,48 +92,6 @@
       "digitalAuthorizations": []
     }
   ],
-  "phoneNumbers": [
-    {
-      "type": "Phone",
-      "additionalInformation": "Koulunjohtaja",
-      "serviceChargeType": "Chargeable",
-      "chargeDescription": null,
-      "prefixNumber": "+358",
-      "isFinnishServiceNumber": false,
-      "number": "405245847",
-      "language": "fi"
-    }
-  ],
-  "organizationId": "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
-  "emails": [
-    {
-      "value": "etunimi.sukunimi@naantali.fi",
-      "language": "fi"
-    }
-  ],
-  "serviceChannelNames": [
-    {
-      "language": "fi",
-      "value": "Rymättylän koulu",
-      "type": "Name"
-    }
-  ],
-  "serviceHours": [],
-  "serviceChannelType": "ServiceLocation",
-  "serviceChannelDescriptions": [
-    {
-      "language": "fi",
-      "value": "Rymättylän koulu on Naantalin kaupungin perusopetuksen alakoulu.",
-      "type": "Summary"
-    },
-    {
-      "language": "fi",
-      "value": "Rymättylän koulu on Naantalin kaupungin perusopetuksen alakoulu. Koulun oppilasmäärä on noin 160. Koulun tiloissa annetaan myös esiopetusta.\n\nKoulun yhteiset arvot:\n* kaikessa koulun toiminnassa pyritään parantamaan oppilaiden itsetuntoa\n* kaikessa opetuksessa kehitetään oppilaiden tietojenhankkimistaitoja\n* koulussa painotetaan erityisesti oppilaiden sosiaalisia taitoja ja hyvien käytöstapojen noudattamista\n* kestävän kehityksen periaatteet näkyvät koulun toiminnassa\n* koulussa panostetaan koko koulun väen psyykkiseen ja fyysiseen turvallisuuteen\n* koulu kunnioittaa perinteitä sekä pyrkii vahvistamaan oppilaiden kotiseutuidentiteettiä\nNäihin arvoihin pyritään yhteistoiminnallisten opetusmenetelmien avulla, mutta kuitenkin lapsen yksilöllisyyttä kunnioittaen.\n\nRymättylän koulun kummioppilastoiminnassa kummin tehtävänä on huolehtia pikkuoppilaan hyvinvoinnista monin tavoin esimerkiksi välitunnilla ja mahdollisuuksien mukaan myös koulumatkoilla. Säännöllisin väliajoin pitkin lukuvuotta järjestetään kummitunteja, joiden aikana kummit ja heidän kummioppilaansa työskentelevät yhdessä.\n\nYhteistuumin laaditut viihtyvyyssäännöt (sekä oppilaille että henkilökunnalle) palautetaan mieliin yhteisesti heti lukuvuoden alussa ja aina silloin tällöin lukuvuoden kuluessakin.",
-      "type": "Description"
-    }
-  ],
-  "areaType": "LimitedType",
   "publishingStatus": "Published",
-  "modified": "2017-10-31T08:15:43.515627",
-  "id": "2481937a-5d4d-4643-a9b9-9877be5d4d3e"
+  "modified": "2017-10-31T08:15:43.515627"
 }

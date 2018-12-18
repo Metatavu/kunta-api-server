@@ -1,16 +1,27 @@
 {
+  "id": "6631f997-eb58-401e-b0a9-274f7d51cb0a",
   "sourceId": null,
-  "webPages": [
+  "serviceChannelType": "EChannel",
+  "organizationId": "b458d033-042d-4cbe-b030-34e81da28821",
+  "serviceChannelNames": [
     {
-      "orderNumber": "0",
-      "url": "https://valtuusrekisteri.beta.suomi.fi/",
-      "value": null,
-      "language": "fi"
+      "language": "fi",
+      "value": "Sähköisten valtuuksien luonti yrityksen puolesta asioinnissa",
+      "type": "Name"
     }
   ],
-  "requiresSignature": false,
-  "attachments": [],
-  "languages": [],
+  "serviceChannelDescriptions": [
+    {
+      "language": "fi",
+      "value": "Suomi.fi-valtuudet, Yrityksen puolesta asiointi",
+      "type": "Summary"
+    },
+    {
+      "language": "fi",
+      "value": "Suomi.fi-valtuudet-palvelu voidaan jakaa kahteen osaan: Jos haluat asioida edustamasi yrityksen puolesta jossakin julkishallinnon tai yksityisen sektorin verkkopalvelussa, Suomi.fi-valtuudet tarkistaa oikeutesi puolesta-asiointiin. Tämä edellyttää, että verkkopalvelu on ottanut Suomi.fi-valtuudet käyttöön. Esimerkiksi Trafin Oma asiointi -palvelussa oikeutesi asioida yrityksen puolesta tarkistetaan Suomi.fi-valtuuksien avulla. Tulevaisuudessa yritys voi valtuuttaa toisen yrityksen tai henkilön asioimaan puolestaan sähköisissä asiointipalveluissa. Valtuuttaminen tapahtuu Suomi.fi-verkkopalvelussa. Valtuuksien hallintaa voi jo nyt kokeilla testihenkilöiden tunnuksilla osoitteessa https://valtuusrekisteri.beta.suomi.fi/",
+      "type": "Description"
+    }
+  ],
   "supportPhones": [
     {
       "additionalInformation": null,
@@ -22,13 +33,22 @@
       "language": "fi"
     }
   ],
-  "areas": [],
   "supportEmails": [
     {
       "value": "palveluneuvoja@kansalaisneuvonta.fi",
       "language": "fi"
     }
   ],
+  "languages": [],
+  "webPages": [
+    {
+      "orderNumber": "0",
+      "url": "https://valtuusrekisteri.beta.suomi.fi/",
+      "value": null,
+      "language": "fi"
+    }
+  ],
+  "serviceHours": [],
   "services": [
     {
       "service": {
@@ -43,32 +63,6 @@
       "digitalAuthorizations": []
     }
   ],
-  "organizationId": "b458d033-042d-4cbe-b030-34e81da28821",
-  "serviceChannelNames": [
-    {
-      "language": "fi",
-      "value": "Sähköisten valtuuksien luonti yrityksen puolesta asioinnissa",
-      "type": "Name"
-    }
-  ],
-  "serviceHours": [],
-  "serviceChannelType": "EChannel",
-  "serviceChannelDescriptions": [
-    {
-      "language": "fi",
-      "value": "Suomi.fi-valtuudet, Yrityksen puolesta asiointi",
-      "type": "Summary"
-    },
-    {
-      "language": "fi",
-      "value": "Suomi.fi-valtuudet-palvelu voidaan jakaa kahteen osaan: Jos haluat asioida edustamasi yrityksen puolesta jossakin julkishallinnon tai yksityisen sektorin verkkopalvelussa, Suomi.fi-valtuudet tarkistaa oikeutesi puolesta-asiointiin. Tämä edellyttää, että verkkopalvelu on ottanut Suomi.fi-valtuudet käyttöön. Esimerkiksi Trafin Oma asiointi -palvelussa oikeutesi asioida yrityksen puolesta tarkistetaan Suomi.fi-valtuuksien avulla. Tulevaisuudessa yritys voi valtuuttaa toisen yrityksen tai henkilön asioimaan puolestaan sähköisissä asiointipalveluissa. Valtuuttaminen tapahtuu Suomi.fi-verkkopalvelussa. Valtuuksien hallintaa voi jo nyt kokeilla testihenkilöiden tunnuksilla osoitteessa https://valtuusrekisteri.beta.suomi.fi/",
-      "type": "Description"
-    }
-  ],
-  "areaType": null,
   "publishingStatus": "Published",
-  "modified": "2017-09-11T00:00:00",
-  "id": "6631f997-eb58-401e-b0a9-274f7d51cb0a",
-  "signatureQuantity": 0,
-  "requiresAuthentication": false
+  "modified": "2017-09-11T00:00:00"
 }

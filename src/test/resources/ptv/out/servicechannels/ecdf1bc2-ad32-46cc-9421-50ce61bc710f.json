@@ -1,142 +1,8 @@
 {
+  "id": "ecdf1bc2-ad32-46cc-9421-50ce61bc710f",
   "sourceId": null,
-  "webPages": [
-    {
-      "orderNumber": "1",
-      "url": "https://www.vaasa.fi/node/20771",
-      "value": "Vikinga skola",
-      "language": "fi"
-    },
-    {
-      "orderNumber": "1",
-      "url": "https://www.vaasa.fi/sv/node/20771",
-      "value": "Vikinga skola",
-      "language": "sv"
-    }
-  ],
-  "addresses": [
-    {
-      "type": "Location",
-      "subType": "Single",
-      "postOfficeBoxAddress": null,
-      "streetAddress": {
-        "street": [
-          {
-            "value": "Urheilukatu",
-            "language": "fi"
-          },
-          {
-            "value": "Idrottsgatan",
-            "language": "sv"
-          }
-        ],
-        "streetNumber": "10",
-        "postalCode": "65200",
-        "postOffice": [
-          {
-            "value": "VASA",
-            "language": "sv"
-          },
-          {
-            "value": "VAASA",
-            "language": "fi"
-          }
-        ],
-        "municipality": {
-          "code": "905",
-          "name": [
-            {
-              "value": "Vaasa",
-              "language": "fi"
-            },
-            {
-              "value": "Vasa",
-              "language": "sv"
-            },
-            {
-              "value": "Vaasa",
-              "language": "en"
-            }
-          ]
-        },
-        "additionalInformation": [],
-        "latitude": "7009933.144",
-        "longitude": "228142.875",
-        "coordinateState": "Ok"
-      },
-      "locationAbroad": null,
-      "multipointLocation": null,
-      "entrances": null,
-      "country": "FI"
-    }
-  ],
-  "languages": [
-    "sv"
-  ],
-  "areas": [
-    {
-      "type": "Municipality",
-      "code": null,
-      "name": null,
-      "municipalities": [
-        {
-          "code": "905",
-          "name": [
-            {
-              "value": "Vaasa",
-              "language": "fi"
-            },
-            {
-              "value": "Vasa",
-              "language": "sv"
-            },
-            {
-              "value": "Vaasa",
-              "language": "en"
-            }
-          ]
-        }
-      ]
-    }
-  ],
-  "services": [
-    {
-      "service": {
-        "id": "17c633dd-5408-495a-86c1-d8f57598e899",
-        "name": "Perusopetus"
-      },
-      "serviceChargeType": null,
-      "description": [],
-      "extraTypes": [],
-      "serviceHours": [],
-      "contactDetails": null,
-      "digitalAuthorizations": []
-    }
-  ],
-  "phoneNumbers": [
-    {
-      "type": "Phone",
-      "additionalInformation": "Rehtori",
-      "serviceChargeType": "Chargeable",
-      "chargeDescription": null,
-      "prefixNumber": "+358",
-      "isFinnishServiceNumber": false,
-      "number": "405813148",
-      "language": "fi"
-    },
-    {
-      "type": "Phone",
-      "additionalInformation": "Rektor",
-      "serviceChargeType": "Chargeable",
-      "chargeDescription": null,
-      "prefixNumber": "+358",
-      "isFinnishServiceNumber": false,
-      "number": "405813148",
-      "language": "sv"
-    }
-  ],
+  "serviceChannelType": "ServiceLocation",
   "organizationId": "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
-  "emails": [],
   "serviceChannelNames": [
     {
       "language": "sv",
@@ -149,8 +15,6 @@
       "type": "Name"
     }
   ],
-  "serviceHours": [],
-  "serviceChannelType": "ServiceLocation",
   "serviceChannelDescriptions": [
     {
       "language": "fi",
@@ -173,8 +37,40 @@
       "type": "Description"
     }
   ],
-  "areaType": "LimitedType",
+  "supportPhones": [],
+  "supportEmails": [],
+  "languages": [
+    "sv"
+  ],
+  "webPages": [
+    {
+      "orderNumber": "1",
+      "url": "https://www.vaasa.fi/node/20771",
+      "value": "Vikinga skola",
+      "language": "fi"
+    },
+    {
+      "orderNumber": "1",
+      "url": "https://www.vaasa.fi/sv/node/20771",
+      "value": "Vikinga skola",
+      "language": "sv"
+    }
+  ],
+  "serviceHours": [],
+  "services": [
+    {
+      "service": {
+        "id": "17c633dd-5408-495a-86c1-d8f57598e899",
+        "name": "Perusopetus"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    }
+  ],
   "publishingStatus": "Published",
-  "modified": "2017-10-16T10:03:22.258075",
-  "id": "ecdf1bc2-ad32-46cc-9421-50ce61bc710f"
+  "modified": "2017-10-16T10:03:22.258075"
 }

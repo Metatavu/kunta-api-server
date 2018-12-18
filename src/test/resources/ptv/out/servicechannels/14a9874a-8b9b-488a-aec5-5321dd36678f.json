@@ -1,65 +1,25 @@
 {
+  "id": "14a9874a-8b9b-488a-aec5-5321dd36678f",
   "sourceId": null,
-  "webPages": [],
-  "attachments": [],
-  "languages": [],
-  "deliveryAddresses": [
+  "serviceChannelType": "PrintableForm",
+  "organizationId": "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "serviceChannelNames": [
     {
-      "subType": "PostOfficeBox",
-      "postOfficeBoxAddress": {
-        "postOfficeBox": [
-          {
-            "value": "PL 43",
-            "language": "fi"
-          },
-          {
-            "value": "PL 43",
-            "language": "sv"
-          }
-        ],
-        "postalCode": "21101",
-        "postOffice": [
-          {
-            "value": "NAANTALI",
-            "language": "sv"
-          },
-          {
-            "value": "NAANTALI",
-            "language": "fi"
-          }
-        ],
-        "municipality": {
-          "code": "529",
-          "name": [
-            {
-              "value": "Naantali",
-              "language": "fi"
-            },
-            {
-              "value": "Nådendal",
-              "language": "sv"
-            },
-            {
-              "value": "Naantali",
-              "language": "en"
-            }
-          ]
-        },
-        "additionalInformation": [
-          {
-            "value": "Hakemuksen voi myös tuoda kaupungintalon Palvelupisteeseen osoitteeseen: Käsityöläiskatu 2, tai lähettää sähköpostilla suoraan toimitusinsiöörille.",
-            "language": "fi"
-          }
-        ]
-      },
-      "streetAddress": null,
-      "deliveryAddressInText": null,
-      "receiver": [
-        {
-          "value": "Tekniset palvelut / Maankäyttöosasto",
-          "language": "fi"
-        }
-      ]
+      "language": "fi",
+      "value": "Kiinteistötoimitushakemus",
+      "type": "Name"
+    }
+  ],
+  "serviceChannelDescriptions": [
+    {
+      "language": "fi",
+      "value": "Lomakkeella haetaan kiinteistötoimituksia ja tonttijakoa.",
+      "type": "Summary"
+    },
+    {
+      "language": "fi",
+      "value": "Lomakkeella haetaan tontin lohkomista, rasitetoimitusta, rajankäyntiä ja tonttijakoa tai sen muutosta. \n\nPdf-lomakkeen voi tulostaa täyttämistä varten, tai sen voi täyttää myös tietokoneella. ",
+      "type": "Description"
     }
   ],
   "supportPhones": [
@@ -73,44 +33,15 @@
       "language": "fi"
     }
   ],
-  "formIdentifier": [
-    {
-      "value": null,
-      "language": "fi"
-    }
-  ],
-  "areas": [
-    {
-      "type": "Municipality",
-      "code": null,
-      "name": null,
-      "municipalities": [
-        {
-          "code": "529",
-          "name": [
-            {
-              "value": "Naantali",
-              "language": "fi"
-            },
-            {
-              "value": "Nådendal",
-              "language": "sv"
-            },
-            {
-              "value": "Naantali",
-              "language": "en"
-            }
-          ]
-        }
-      ]
-    }
-  ],
   "supportEmails": [
     {
       "value": "seija.malmsten@naantali.fi",
       "language": "fi"
     }
   ],
+  "languages": [],
+  "webPages": [],
+  "serviceHours": [],
   "services": [
     {
       "service": {
@@ -161,37 +92,6 @@
       "digitalAuthorizations": []
     }
   ],
-  "organizationId": "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
-  "channelUrls": [
-    {
-      "language": "fi",
-      "value": "http://www.naantali.fi/kaavoitus_ja_mittaus/kiinteiston_muodostus/fi_FI/tontin_lohkominen/_files/90497689943943513/default/kiinteistotoimitushakemus_taytettava.pdf",
-      "type": "PDF"
-    }
-  ],
-  "serviceChannelNames": [
-    {
-      "language": "fi",
-      "value": "Kiinteistötoimitushakemus",
-      "type": "Name"
-    }
-  ],
-  "serviceHours": [],
-  "serviceChannelType": "PrintableForm",
-  "serviceChannelDescriptions": [
-    {
-      "language": "fi",
-      "value": "Lomakkeella haetaan kiinteistötoimituksia ja tonttijakoa.",
-      "type": "Summary"
-    },
-    {
-      "language": "fi",
-      "value": "Lomakkeella haetaan tontin lohkomista, rasitetoimitusta, rajankäyntiä ja tonttijakoa tai sen muutosta. \n\nPdf-lomakkeen voi tulostaa täyttämistä varten, tai sen voi täyttää myös tietokoneella. ",
-      "type": "Description"
-    }
-  ],
-  "areaType": "LimitedType",
   "publishingStatus": "Published",
-  "modified": "2017-10-31T08:15:43.515627",
-  "id": "14a9874a-8b9b-488a-aec5-5321dd36678f"
+  "modified": "2017-10-31T08:15:43.515627"
 }

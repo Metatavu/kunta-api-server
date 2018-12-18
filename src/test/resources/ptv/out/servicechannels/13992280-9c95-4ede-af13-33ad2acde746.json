@@ -1,152 +1,8 @@
 {
+  "id": "13992280-9c95-4ede-af13-33ad2acde746",
   "sourceId": null,
-  "webPages": [
-    {
-      "orderNumber": "1",
-      "url": "https://www.vaasa.fi/sv/node/20791",
-      "value": "Sundom skola",
-      "language": "fi"
-    },
-    {
-      "orderNumber": "1",
-      "url": "https://www.vaasa.fi/sv/node/20791",
-      "value": "Sundom skola",
-      "language": "sv"
-    }
-  ],
-  "addresses": [
-    {
-      "type": "Location",
-      "subType": "Single",
-      "postOfficeBoxAddress": null,
-      "streetAddress": {
-        "street": [
-          {
-            "value": "Sundomvägen",
-            "language": "fi"
-          },
-          {
-            "value": "Sundomvägen",
-            "language": "sv"
-          }
-        ],
-        "streetNumber": "13",
-        "postalCode": "65410",
-        "postOffice": [
-          {
-            "value": "SUNDOM",
-            "language": "sv"
-          },
-          {
-            "value": "SUNDOM",
-            "language": "fi"
-          }
-        ],
-        "municipality": {
-          "code": "905",
-          "name": [
-            {
-              "value": "Vaasa",
-              "language": "fi"
-            },
-            {
-              "value": "Vasa",
-              "language": "sv"
-            },
-            {
-              "value": "Vaasa",
-              "language": "en"
-            }
-          ]
-        },
-        "additionalInformation": [],
-        "latitude": "7001836.409",
-        "longitude": "224930.408",
-        "coordinateState": "Ok"
-      },
-      "locationAbroad": null,
-      "multipointLocation": null,
-      "entrances": null,
-      "country": "FI"
-    }
-  ],
-  "languages": [
-    "sv"
-  ],
-  "areas": [
-    {
-      "type": "Municipality",
-      "code": null,
-      "name": null,
-      "municipalities": [
-        {
-          "code": "905",
-          "name": [
-            {
-              "value": "Vaasa",
-              "language": "fi"
-            },
-            {
-              "value": "Vasa",
-              "language": "sv"
-            },
-            {
-              "value": "Vaasa",
-              "language": "en"
-            }
-          ]
-        }
-      ]
-    }
-  ],
-  "services": [
-    {
-      "service": {
-        "id": "17c633dd-5408-495a-86c1-d8f57598e899",
-        "name": "Perusopetus"
-      },
-      "serviceChargeType": null,
-      "description": [],
-      "extraTypes": [],
-      "serviceHours": [],
-      "contactDetails": null,
-      "digitalAuthorizations": []
-    }
-  ],
-  "phoneNumbers": [
-    {
-      "type": "Fax",
-      "additionalInformation": null,
-      "serviceChargeType": "Chargeable",
-      "chargeDescription": null,
-      "prefixNumber": null,
-      "isFinnishServiceNumber": true,
-      "number": null,
-      "language": "sv"
-    },
-    {
-      "type": "Phone",
-      "additionalInformation": "Rektor",
-      "serviceChargeType": "Chargeable",
-      "chargeDescription": null,
-      "prefixNumber": "+358",
-      "isFinnishServiceNumber": false,
-      "number": "405166046",
-      "language": "fi"
-    },
-    {
-      "type": "Phone",
-      "additionalInformation": "Rektor",
-      "serviceChargeType": "Chargeable",
-      "chargeDescription": null,
-      "prefixNumber": "+358",
-      "isFinnishServiceNumber": false,
-      "number": "405166046",
-      "language": "sv"
-    }
-  ],
+  "serviceChannelType": "ServiceLocation",
   "organizationId": "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
-  "emails": [],
   "serviceChannelNames": [
     {
       "language": "sv",
@@ -159,8 +15,6 @@
       "type": "Name"
     }
   ],
-  "serviceHours": [],
-  "serviceChannelType": "ServiceLocation",
   "serviceChannelDescriptions": [
     {
       "language": "fi",
@@ -183,8 +37,40 @@
       "type": "Description"
     }
   ],
-  "areaType": "LimitedType",
+  "supportPhones": [],
+  "supportEmails": [],
+  "languages": [
+    "sv"
+  ],
+  "webPages": [
+    {
+      "orderNumber": "1",
+      "url": "https://www.vaasa.fi/sv/node/20791",
+      "value": "Sundom skola",
+      "language": "fi"
+    },
+    {
+      "orderNumber": "1",
+      "url": "https://www.vaasa.fi/sv/node/20791",
+      "value": "Sundom skola",
+      "language": "sv"
+    }
+  ],
+  "serviceHours": [],
+  "services": [
+    {
+      "service": {
+        "id": "17c633dd-5408-495a-86c1-d8f57598e899",
+        "name": "Perusopetus"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    }
+  ],
   "publishingStatus": "Published",
-  "modified": "2017-10-16T10:07:14.325372",
-  "id": "13992280-9c95-4ede-af13-33ad2acde746"
+  "modified": "2017-10-16T10:07:14.325372"
 }

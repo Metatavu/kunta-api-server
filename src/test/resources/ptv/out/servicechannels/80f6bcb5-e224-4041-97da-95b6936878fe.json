@@ -1,5 +1,54 @@
 {
+  "id": "80f6bcb5-e224-4041-97da-95b6936878fe",
   "sourceId": null,
+  "serviceChannelType": "EChannel",
+  "organizationId": "b458d033-042d-4cbe-b030-34e81da28821",
+  "serviceChannelNames": [
+    {
+      "language": "fi",
+      "value": "Väestörekisterikeskuksen verkkoasiointi",
+      "type": "Name"
+    },
+    {
+      "language": "sv",
+      "value": "Befolkningsregistercentralens e-tjänster",
+      "type": "Name"
+    }
+  ],
+  "serviceChannelDescriptions": [
+    {
+      "language": "sv",
+      "value": "Via e-tjänsten kan du elektroniskt ansöka om och administrera de tjänster som Befolkningsregistercentralen erbjuder.",
+      "type": "Summary"
+    },
+    {
+      "language": "sv",
+      "value": "Befolkningsregistercentralens organisationskunder kan via e-tjänsten ansöka om olika tillstånd och användningsrättigheter som gäller ajourhållning av befolkningsdatasystemets person- och byggnadsuppgifter och informationstjänster samt BRC:s certifikattjänster. E-tjänsten kan inte användas av enskilda medborgare.",
+      "type": "Description"
+    },
+    {
+      "language": "fi",
+      "value": "Verkkoasioinnissa voit sähköisesti hakea ja hallinnoida Väestörekisterikeskuksen tarjoamia palveluja.",
+      "type": "Summary"
+    },
+    {
+      "language": "fi",
+      "value": "Väestörekisterikeskuksen organisaatioasiakkaat voivat verkkoasioinnissa hakea erilaisia väestötietojärjestelmän henkilö- ja rakennustietojen ylläpitoon ja tietopalveluihin sekä VRK:n varmennepalveluihin liittyviä lupia ja käyttöoikeuksia. VRK:n verkkoasiointi ei ole kansalaisten käytössä.\n",
+      "type": "Description"
+    }
+  ],
+  "supportPhones": [],
+  "supportEmails": [
+    {
+      "value": "asiointi@vrk.fi",
+      "language": "fi"
+    },
+    {
+      "value": "asiointi@vrk.fi",
+      "language": "sv"
+    }
+  ],
+  "languages": [],
   "webPages": [
     {
       "orderNumber": "0",
@@ -14,19 +63,20 @@
       "language": "sv"
     }
   ],
-  "requiresSignature": false,
-  "attachments": [],
-  "languages": [],
-  "supportPhones": [],
-  "areas": [],
-  "supportEmails": [
+  "serviceHours": [
     {
-      "value": "asiointi@vrk.fi",
-      "language": "fi"
-    },
-    {
-      "value": "asiointi@vrk.fi",
-      "language": "sv"
+      "serviceHourType": "DaysOfTheWeek",
+      "validFrom": null,
+      "validTo": null,
+      "isClosed": false,
+      "validForNow": true,
+      "additionalInformation": [
+        {
+          "value": null,
+          "language": "fi"
+        }
+      ],
+      "openingHour": []
     }
   ],
   "services": [
@@ -206,62 +256,6 @@
       "digitalAuthorizations": []
     }
   ],
-  "organizationId": "b458d033-042d-4cbe-b030-34e81da28821",
-  "serviceChannelNames": [
-    {
-      "language": "fi",
-      "value": "Väestörekisterikeskuksen verkkoasiointi",
-      "type": "Name"
-    },
-    {
-      "language": "sv",
-      "value": "Befolkningsregistercentralens e-tjänster",
-      "type": "Name"
-    }
-  ],
-  "serviceHours": [
-    {
-      "serviceHourType": "DaysOfTheWeek",
-      "validFrom": null,
-      "validTo": null,
-      "isClosed": false,
-      "validForNow": true,
-      "additionalInformation": [
-        {
-          "value": null,
-          "language": "fi"
-        }
-      ],
-      "openingHour": []
-    }
-  ],
-  "serviceChannelType": "EChannel",
-  "serviceChannelDescriptions": [
-    {
-      "language": "sv",
-      "value": "Via e-tjänsten kan du elektroniskt ansöka om och administrera de tjänster som Befolkningsregistercentralen erbjuder.",
-      "type": "Summary"
-    },
-    {
-      "language": "sv",
-      "value": "Befolkningsregistercentralens organisationskunder kan via e-tjänsten ansöka om olika tillstånd och användningsrättigheter som gäller ajourhållning av befolkningsdatasystemets person- och byggnadsuppgifter och informationstjänster samt BRC:s certifikattjänster. E-tjänsten kan inte användas av enskilda medborgare.",
-      "type": "Description"
-    },
-    {
-      "language": "fi",
-      "value": "Verkkoasioinnissa voit sähköisesti hakea ja hallinnoida Väestörekisterikeskuksen tarjoamia palveluja.",
-      "type": "Summary"
-    },
-    {
-      "language": "fi",
-      "value": "Väestörekisterikeskuksen organisaatioasiakkaat voivat verkkoasioinnissa hakea erilaisia väestötietojärjestelmän henkilö- ja rakennustietojen ylläpitoon ja tietopalveluihin sekä VRK:n varmennepalveluihin liittyviä lupia ja käyttöoikeuksia. VRK:n verkkoasiointi ei ole kansalaisten käytössä.\n",
-      "type": "Description"
-    }
-  ],
-  "areaType": null,
   "publishingStatus": "Published",
-  "modified": "2017-09-11T00:00:00",
-  "id": "80f6bcb5-e224-4041-97da-95b6936878fe",
-  "signatureQuantity": 0,
-  "requiresAuthentication": true
+  "modified": "2017-09-11T00:00:00"
 }

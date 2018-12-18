@@ -1,5 +1,48 @@
 {
+  "id": "3b85838e-7ee7-4123-ba50-3c901e0d1597",
   "sourceId": null,
+  "serviceChannelType": "WebPage",
+  "organizationId": "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames": [
+    {
+      "language": "sv",
+      "value": "Sektorsövergripande samservice som främjar sysselsättningen",
+      "type": "Name"
+    },
+    {
+      "language": "fi",
+      "value": "Työllistymistä edistävä monialainen yhteispalvelu",
+      "type": "Name"
+    }
+  ],
+  "serviceChannelDescriptions": [
+    {
+      "language": "fi",
+      "value": "Verkkosivulta löydät lisätietoa työllistymistä edistävästä monialaisesta yhteispalvelusta. ",
+      "type": "Description"
+    },
+    {
+      "language": "fi",
+      "value": "Verkkosivulta löydät lisätietoa työllistymistä edistävästä monialaisesta yhteispalvelusta.",
+      "type": "Summary"
+    },
+    {
+      "language": "sv",
+      "value": "På webbsidan hittar du tilläggsinformation om sektorsövergripande samservice som främjar sysselsättningen (TYP).",
+      "type": "Summary"
+    },
+    {
+      "language": "sv",
+      "value": "På webbsidan hittar du tilläggsinformation om sektorsövergripande samservice som främjar sysselsättningen (TYP). \n",
+      "type": "Description"
+    }
+  ],
+  "supportPhones": [],
+  "supportEmails": [],
+  "languages": [
+    "fi",
+    "sv"
+  ],
   "webPages": [
     {
       "orderNumber": "0",
@@ -14,12 +57,7 @@
       "language": "sv"
     }
   ],
-  "languages": [
-    "fi",
-    "sv"
-  ],
-  "supportPhones": [],
-  "supportEmails": [],
+  "serviceHours": [],
   "services": [
     {
       "service": {
@@ -46,44 +84,6 @@
       "digitalAuthorizations": []
     }
   ],
-  "organizationId": "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
-  "serviceChannelNames": [
-    {
-      "language": "sv",
-      "value": "Sektorsövergripande samservice som främjar sysselsättningen",
-      "type": "Name"
-    },
-    {
-      "language": "fi",
-      "value": "Työllistymistä edistävä monialainen yhteispalvelu",
-      "type": "Name"
-    }
-  ],
-  "serviceHours": [],
-  "serviceChannelType": "WebPage",
-  "serviceChannelDescriptions": [
-    {
-      "language": "fi",
-      "value": "Verkkosivulta löydät lisätietoa työllistymistä edistävästä monialaisesta yhteispalvelusta. ",
-      "type": "Description"
-    },
-    {
-      "language": "fi",
-      "value": "Verkkosivulta löydät lisätietoa työllistymistä edistävästä monialaisesta yhteispalvelusta.",
-      "type": "Summary"
-    },
-    {
-      "language": "sv",
-      "value": "På webbsidan hittar du tilläggsinformation om sektorsövergripande samservice som främjar sysselsättningen (TYP).",
-      "type": "Summary"
-    },
-    {
-      "language": "sv",
-      "value": "På webbsidan hittar du tilläggsinformation om sektorsövergripande samservice som främjar sysselsättningen (TYP). \n",
-      "type": "Description"
-    }
-  ],
   "publishingStatus": "Published",
-  "modified": "2017-10-31T08:15:43.515627",
-  "id": "3b85838e-7ee7-4123-ba50-3c901e0d1597"
+  "modified": "2017-10-31T08:15:43.515627"
 }

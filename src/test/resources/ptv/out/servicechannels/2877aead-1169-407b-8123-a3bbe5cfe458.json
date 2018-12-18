@@ -1,84 +1,7 @@
 {
+  "id": "2877aead-1169-407b-8123-a3bbe5cfe458",
   "sourceId": null,
-  "webPages": [],
-  "languages": [
-    "fi",
-    "sv",
-    "en"
-  ],
-  "areas": [
-    {
-      "type": "Municipality",
-      "code": null,
-      "name": null,
-      "municipalities": [
-        {
-          "code": "905",
-          "name": [
-            {
-              "value": "Vaasa",
-              "language": "fi"
-            },
-            {
-              "value": "Vasa",
-              "language": "sv"
-            },
-            {
-              "value": "Vaasa",
-              "language": "en"
-            }
-          ]
-        }
-      ]
-    }
-  ],
-  "supportEmails": [],
-  "services": [
-    {
-      "service": {
-        "id": "17c633dd-5408-495a-86c1-d8f57598e899",
-        "name": "Perusopetus"
-      },
-      "serviceChargeType": null,
-      "description": [],
-      "extraTypes": [],
-      "serviceHours": [],
-      "contactDetails": null,
-      "digitalAuthorizations": []
-    }
-  ],
-  "phoneNumbers": [
-    {
-      "type": "Phone",
-      "additionalInformation": null,
-      "serviceChargeType": "Chargeable",
-      "chargeDescription": null,
-      "prefixNumber": "+358",
-      "isFinnishServiceNumber": false,
-      "number": "63253122",
-      "language": "fi"
-    },
-    {
-      "type": "Phone",
-      "additionalInformation": null,
-      "serviceChargeType": "Chargeable",
-      "chargeDescription": null,
-      "prefixNumber": "+358",
-      "isFinnishServiceNumber": false,
-      "number": "63253122",
-      "language": "en"
-    },
-    {
-      "type": "Phone",
-      "additionalInformation": null,
-      "serviceChargeType": "Chargeable",
-      "chargeDescription": null,
-      "prefixNumber": "+358",
-      "isFinnishServiceNumber": false,
-      "number": "63253122",
-      "language": "sv"
-    }
-  ],
+  "serviceChannelType": "Phone",
   "organizationId": "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
   "serviceChannelNames": [
     {
@@ -97,8 +20,6 @@
       "type": "Name"
     }
   ],
-  "serviceHours": [],
-  "serviceChannelType": "Phone",
   "serviceChannelDescriptions": [
     {
       "language": "sv",
@@ -131,8 +52,29 @@
       "type": "Description"
     }
   ],
-  "areaType": "LimitedType",
+  "supportPhones": [],
+  "supportEmails": [],
+  "languages": [
+    "fi",
+    "sv",
+    "en"
+  ],
+  "webPages": [],
+  "serviceHours": [],
+  "services": [
+    {
+      "service": {
+        "id": "17c633dd-5408-495a-86c1-d8f57598e899",
+        "name": "Perusopetus"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    }
+  ],
   "publishingStatus": "Published",
-  "modified": "2017-10-31T08:15:43.515627",
-  "id": "2877aead-1169-407b-8123-a3bbe5cfe458"
+  "modified": "2017-10-31T08:15:43.515627"
 }

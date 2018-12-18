@@ -1,42 +1,55 @@
 {
+  "id": "4faaad5e-5cba-4166-a76b-a2f0a0ba64eb",
   "sourceId": null,
-  "webPages": [],
-  "languages": [
-    "fi",
-    "sv"
-  ],
-  "areas": [
+  "serviceChannelType": "Phone",
+  "organizationId": "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames": [
     {
-      "type": "Municipality",
-      "code": null,
-      "name": null,
-      "municipalities": [
-        {
-          "code": "905",
-          "name": [
-            {
-              "value": "Vaasa",
-              "language": "fi"
-            },
-            {
-              "value": "Vasa",
-              "language": "sv"
-            },
-            {
-              "value": "Vaasa",
-              "language": "en"
-            }
-          ]
-        }
-      ]
+      "language": "fi",
+      "value": "Mittausteknikko",
+      "type": "Name"
+    },
+    {
+      "language": "sv",
+      "value": "Mätningstekniker",
+      "type": "Name"
     }
   ],
+  "serviceChannelDescriptions": [
+    {
+      "language": "fi",
+      "value": "Vaasan kaupungin kiinteistötoimen mittausteknikkoon voit olla yhteydessä rakennusvalvontamittauksiin liittyvissä asioissa.",
+      "type": "Summary"
+    },
+    {
+      "language": "fi",
+      "value": "Vaasan kaupungin kiinteistötoimen mittausteknikkoon voit olla yhteydessä rakennusvalvontamittauksiin liittyvissä asioissa.",
+      "type": "Description"
+    },
+    {
+      "language": "sv",
+      "value": "Du kan ta kontakt med Vasa stads fastighetssektors mätningstekniker i ärenden som ansluter sig till byggnadstillsynsmätningar.",
+      "type": "Summary"
+    },
+    {
+      "language": "sv",
+      "value": "Du kan ta kontakt med Vasa stads fastighetssektors mätningstekniker i ärenden som ansluter sig till byggnadstillsynsmätningar. \n",
+      "type": "Description"
+    }
+  ],
+  "supportPhones": [],
   "supportEmails": [
     {
       "value": null,
       "language": "fi"
     }
   ],
+  "languages": [
+    "fi",
+    "sv"
+  ],
+  "webPages": [],
+  "serviceHours": [],
   "services": [
     {
       "service": {
@@ -63,67 +76,6 @@
       "digitalAuthorizations": []
     }
   ],
-  "phoneNumbers": [
-    {
-      "type": "Phone",
-      "additionalInformation": null,
-      "serviceChargeType": "Chargeable",
-      "chargeDescription": null,
-      "prefixNumber": "+358",
-      "isFinnishServiceNumber": false,
-      "number": "400292763",
-      "language": "fi"
-    },
-    {
-      "type": "Phone",
-      "additionalInformation": null,
-      "serviceChargeType": "Chargeable",
-      "chargeDescription": null,
-      "prefixNumber": "+358",
-      "isFinnishServiceNumber": false,
-      "number": "400292763",
-      "language": "sv"
-    }
-  ],
-  "organizationId": "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
-  "serviceChannelNames": [
-    {
-      "language": "fi",
-      "value": "Mittausteknikko",
-      "type": "Name"
-    },
-    {
-      "language": "sv",
-      "value": "Mätningstekniker",
-      "type": "Name"
-    }
-  ],
-  "serviceHours": [],
-  "serviceChannelType": "Phone",
-  "serviceChannelDescriptions": [
-    {
-      "language": "fi",
-      "value": "Vaasan kaupungin kiinteistötoimen mittausteknikkoon voit olla yhteydessä rakennusvalvontamittauksiin liittyvissä asioissa.",
-      "type": "Summary"
-    },
-    {
-      "language": "fi",
-      "value": "Vaasan kaupungin kiinteistötoimen mittausteknikkoon voit olla yhteydessä rakennusvalvontamittauksiin liittyvissä asioissa.",
-      "type": "Description"
-    },
-    {
-      "language": "sv",
-      "value": "Du kan ta kontakt med Vasa stads fastighetssektors mätningstekniker i ärenden som ansluter sig till byggnadstillsynsmätningar.",
-      "type": "Summary"
-    },
-    {
-      "language": "sv",
-      "value": "Du kan ta kontakt med Vasa stads fastighetssektors mätningstekniker i ärenden som ansluter sig till byggnadstillsynsmätningar. \n",
-      "type": "Description"
-    }
-  ],
-  "areaType": "LimitedType",
   "publishingStatus": "Published",
-  "modified": "2017-10-31T08:15:43.515627",
-  "id": "4faaad5e-5cba-4166-a76b-a2f0a0ba64eb"
+  "modified": "2017-10-31T08:15:43.515627"
 }
