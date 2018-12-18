@@ -2,6 +2,7 @@
   "id": "a683d5eb-ee1a-4869-98ba-a4a00ed880da",
   "sourceId": null,
   "generalDescriptionId": null,
+  "subType": null,
   "type": "Service",
   "fundingType": "PubliclyFunded",
   "serviceNames": [
