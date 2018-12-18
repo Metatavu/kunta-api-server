@@ -1,72 +1,88 @@
 {
-  "sourceId" : null,
-  "webPages" : [ {
-    "orderNumber" : "0",
-    "url" : "http://vakri.kotisivukone.com/vaasankristillinenkoulu",
-    "value" : null,
-    "language" : "fi"
-  }, {
-    "orderNumber" : "0",
-    "url" : "http://vakri.kotisivukone.com/vaasankristillinenkoulu",
-    "value" : null,
-    "language" : "sv"
-  } ],
-  "languages" : [ "fi" ],
-  "supportPhones" : [ ],
-  "supportEmails" : [ ],
-  "services" : [ {
-    "service" : {
-      "id" : "17c633dd-5408-495a-86c1-d8f57598e899",
-      "name" : "Perusopetus"
+  "sourceId": null,
+  "webPages": [
+    {
+      "orderNumber": "0",
+      "url": "http://vakri.kotisivukone.com/vaasankristillinenkoulu",
+      "value": null,
+      "language": "fi"
     },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "31b705f5-fee4-49a0-b9d6-7e74886a1fb1",
-      "name" : "Oppilaanohjaus"
+    {
+      "orderNumber": "0",
+      "url": "http://vakri.kotisivukone.com/vaasankristillinenkoulu",
+      "value": null,
+      "language": "sv"
+    }
+  ],
+  "languages": [
+    "fi"
+  ],
+  "supportPhones": [],
+  "supportEmails": [],
+  "services": [
+    {
+      "service": {
+        "id": "17c633dd-5408-495a-86c1-d8f57598e899",
+        "name": "Perusopetus"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
     },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  } ],
-  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
-  "serviceChannelNames" : [ {
-    "language" : "fi",
-    "value" : "Vaasan kristillisen koulun verkkosivut",
-    "type" : "Name"
-  }, {
-    "language" : "sv",
-    "value" : "Vaasan kristillinen koulus webbsidor",
-    "type" : "Name"
-  } ],
-  "serviceHours" : [ ],
-  "serviceChannelType" : "WebPage",
-  "serviceChannelDescriptions" : [ {
-    "language" : "fi",
-    "value" : "Vaasan kristillisen koulun verkkosivuilta löydät tietoa koulun toiminnasta.",
-    "type" : "Description"
-  }, {
-    "language" : "fi",
-    "value" : "Vaasan kristillisen koulun verkkosivuilta löydät tietoa koulun toiminnasta.",
-    "type" : "Summary"
-  }, {
-    "language" : "sv",
-    "value" : "På Vaasan kristillinen koulus webbsidor finns information om skolans verksamhet.",
-    "type" : "Summary"
-  }, {
-    "language" : "sv",
-    "value" : "På Vaasan kristillinen koulus webbsidor finns information om skolans verksamhet. \n",
-    "type" : "Description"
-  } ],
-  "publishingStatus" : "Published",
-  "modified" : "2017-10-31T08:15:43.515627",
-  "id" : "0daede62-be2c-4f7a-aa87-d36f86bb7c7c"
+    {
+      "service": {
+        "id": "31b705f5-fee4-49a0-b9d6-7e74886a1fb1",
+        "name": "Oppilaanohjaus"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    }
+  ],
+  "organizationId": "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames": [
+    {
+      "language": "fi",
+      "value": "Vaasan kristillisen koulun verkkosivut",
+      "type": "Name"
+    },
+    {
+      "language": "sv",
+      "value": "Vaasan kristillinen koulus webbsidor",
+      "type": "Name"
+    }
+  ],
+  "serviceHours": [],
+  "serviceChannelType": "WebPage",
+  "serviceChannelDescriptions": [
+    {
+      "language": "fi",
+      "value": "Vaasan kristillisen koulun verkkosivuilta löydät tietoa koulun toiminnasta.",
+      "type": "Description"
+    },
+    {
+      "language": "fi",
+      "value": "Vaasan kristillisen koulun verkkosivuilta löydät tietoa koulun toiminnasta.",
+      "type": "Summary"
+    },
+    {
+      "language": "sv",
+      "value": "På Vaasan kristillinen koulus webbsidor finns information om skolans verksamhet.",
+      "type": "Summary"
+    },
+    {
+      "language": "sv",
+      "value": "På Vaasan kristillinen koulus webbsidor finns information om skolans verksamhet. \n",
+      "type": "Description"
+    }
+  ],
+  "publishingStatus": "Published",
+  "modified": "2017-10-31T08:15:43.515627",
+  "id": "0daede62-be2c-4f7a-aa87-d36f86bb7c7c"
 }

@@ -1,181 +1,229 @@
 {
-  "sourceId" : null,
-  "webPages" : [ {
-    "orderNumber" : "1",
-    "url" : "http://www.naantali.fi/opetus_ja_koulutus/varhaiskasvatus/paivakodit/rymattylan_paivakoti/fi_FI/rymattylan_paivakoti/",
-    "value" : "Rymättylän päiväkoti",
-    "language" : "fi"
-  } ],
-  "addresses" : [ {
-    "type" : "Location",
-    "subType" : "Single",
-    "postOfficeBoxAddress" : null,
-    "streetAddress" : {
-      "street" : [ {
-        "value" : "Poikon Rantatie",
-        "language" : "fi"
-      } ],
-      "streetNumber" : "1",
-      "postalCode" : "21140",
-      "postOffice" : [ {
-        "value" : "RYMÄTTYLÄ",
-        "language" : "sv"
-      }, {
-        "value" : "RYMÄTTYLÄ",
-        "language" : "fi"
-      } ],
-      "municipality" : {
-        "code" : "529",
-        "name" : [ {
-          "value" : "Naantali",
-          "language" : "fi"
-        }, {
-          "value" : "Nådendal",
-          "language" : "sv"
-        }, {
-          "value" : "Naantali",
-          "language" : "en"
-        } ]
+  "sourceId": null,
+  "webPages": [
+    {
+      "orderNumber": "1",
+      "url": "http://www.naantali.fi/opetus_ja_koulutus/varhaiskasvatus/paivakodit/rymattylan_paivakoti/fi_FI/rymattylan_paivakoti/",
+      "value": "Rymättylän päiväkoti",
+      "language": "fi"
+    }
+  ],
+  "addresses": [
+    {
+      "type": "Location",
+      "subType": "Single",
+      "postOfficeBoxAddress": null,
+      "streetAddress": {
+        "street": [
+          {
+            "value": "Poikon Rantatie",
+            "language": "fi"
+          }
+        ],
+        "streetNumber": "1",
+        "postalCode": "21140",
+        "postOffice": [
+          {
+            "value": "RYMÄTTYLÄ",
+            "language": "sv"
+          },
+          {
+            "value": "RYMÄTTYLÄ",
+            "language": "fi"
+          }
+        ],
+        "municipality": {
+          "code": "529",
+          "name": [
+            {
+              "value": "Naantali",
+              "language": "fi"
+            },
+            {
+              "value": "Nådendal",
+              "language": "sv"
+            },
+            {
+              "value": "Naantali",
+              "language": "en"
+            }
+          ]
+        },
+        "additionalInformation": [
+          {
+            "value": "Esiopetus",
+            "language": "fi"
+          }
+        ],
+        "latitude": "6708891.73",
+        "longitude": "218798.447",
+        "coordinateState": "Ok"
       },
-      "additionalInformation" : [ {
-        "value" : "Esiopetus",
-        "language" : "fi"
-      } ],
-      "latitude" : "6708891.73",
-      "longitude" : "218798.447",
-      "coordinateState" : "Ok"
+      "locationAbroad": null,
+      "multipointLocation": null,
+      "entrances": null,
+      "country": "FI"
     },
-    "locationAbroad" : null,
-    "multipointLocation" : null,
-    "entrances" : null,
-    "country" : "FI"
-  }, {
-    "type" : "Location",
-    "subType" : "Single",
-    "postOfficeBoxAddress" : null,
-    "streetAddress" : {
-      "street" : [ {
-        "value" : "Piimätie",
-        "language" : "fi"
-      } ],
-      "streetNumber" : "1",
-      "postalCode" : "21140",
-      "postOffice" : [ {
-        "value" : "RYMÄTTYLÄ",
-        "language" : "sv"
-      }, {
-        "value" : "RYMÄTTYLÄ",
-        "language" : "fi"
-      } ],
-      "municipality" : {
-        "code" : "529",
-        "name" : [ {
-          "value" : "Naantali",
-          "language" : "fi"
-        }, {
-          "value" : "Nådendal",
-          "language" : "sv"
-        }, {
-          "value" : "Naantali",
-          "language" : "en"
-        } ]
+    {
+      "type": "Location",
+      "subType": "Single",
+      "postOfficeBoxAddress": null,
+      "streetAddress": {
+        "street": [
+          {
+            "value": "Piimätie",
+            "language": "fi"
+          }
+        ],
+        "streetNumber": "1",
+        "postalCode": "21140",
+        "postOffice": [
+          {
+            "value": "RYMÄTTYLÄ",
+            "language": "sv"
+          },
+          {
+            "value": "RYMÄTTYLÄ",
+            "language": "fi"
+          }
+        ],
+        "municipality": {
+          "code": "529",
+          "name": [
+            {
+              "value": "Naantali",
+              "language": "fi"
+            },
+            {
+              "value": "Nådendal",
+              "language": "sv"
+            },
+            {
+              "value": "Naantali",
+              "language": "en"
+            }
+          ]
+        },
+        "additionalInformation": [],
+        "latitude": "6703699.121",
+        "longitude": "221751.39",
+        "coordinateState": "Ok"
       },
-      "additionalInformation" : [ ],
-      "latitude" : "6703699.121",
-      "longitude" : "221751.39",
-      "coordinateState" : "Ok"
+      "locationAbroad": null,
+      "multipointLocation": null,
+      "entrances": null,
+      "country": "FI"
+    }
+  ],
+  "languages": [
+    "fi"
+  ],
+  "areas": [
+    {
+      "type": "Municipality",
+      "code": null,
+      "name": null,
+      "municipalities": [
+        {
+          "code": "529",
+          "name": [
+            {
+              "value": "Naantali",
+              "language": "fi"
+            },
+            {
+              "value": "Nådendal",
+              "language": "sv"
+            },
+            {
+              "value": "Naantali",
+              "language": "en"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "services": [
+    {
+      "service": {
+        "id": "4b9f3ded-173b-4018-b43b-d3bbd1ef0ba8",
+        "name": "Tilapäinen päivähoito"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
     },
-    "locationAbroad" : null,
-    "multipointLocation" : null,
-    "entrances" : null,
-    "country" : "FI"
-  } ],
-  "languages" : [ "fi" ],
-  "areas" : [ {
-    "type" : "Municipality",
-    "code" : null,
-    "name" : null,
-    "municipalities" : [ {
-      "code" : "529",
-      "name" : [ {
-        "value" : "Naantali",
-        "language" : "fi"
-      }, {
-        "value" : "Nådendal",
-        "language" : "sv"
-      }, {
-        "value" : "Naantali",
-        "language" : "en"
-      } ]
-    } ]
-  } ],
-  "services" : [ {
-    "service" : {
-      "id" : "4b9f3ded-173b-4018-b43b-d3bbd1ef0ba8",
-      "name" : "Tilapäinen päivähoito"
+    {
+      "service": {
+        "id": "f42c6e4a-d681-4c6c-8fe5-53e793144670",
+        "name": "Ruokailu päiväkodeissa, esikoulussa ja kouluissa"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
     },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "f42c6e4a-d681-4c6c-8fe5-53e793144670",
-      "name" : "Ruokailu päiväkodeissa, esikoulussa ja kouluissa"
+    {
+      "service": {
+        "id": "f7dfce01-2b3b-4dda-95c6-92213fbabd1e",
+        "name": "Kunnallinen päiväkotihoito"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    }
+  ],
+  "phoneNumbers": [
+    {
+      "type": "Phone",
+      "additionalInformation": null,
+      "serviceChargeType": "Chargeable",
+      "chargeDescription": null,
+      "prefixNumber": "+358",
+      "isFinnishServiceNumber": false,
+      "number": "447334706",
+      "language": "fi"
+    }
+  ],
+  "organizationId": "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "emails": [
+    {
+      "value": "etunimi.sukunimi@naantali.fi",
+      "language": "fi"
+    }
+  ],
+  "serviceChannelNames": [
+    {
+      "language": "fi",
+      "value": "Rymättylän päiväkoti",
+      "type": "Name"
+    }
+  ],
+  "serviceHours": [],
+  "serviceChannelType": "ServiceLocation",
+  "serviceChannelDescriptions": [
+    {
+      "language": "fi",
+      "value": "Rymättylän päiväkoti sijaitsee Poikossa. Päiväkodissa toimii kaksi ryhmää: Itikat alle 3-vuotiaille ja Ötökät yli 3-vuotiaille.",
+      "type": "Summary"
     },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "f7dfce01-2b3b-4dda-95c6-92213fbabd1e",
-      "name" : "Kunnallinen päiväkotihoito"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  } ],
-  "phoneNumbers" : [ {
-    "type" : "Phone",
-    "additionalInformation" : null,
-    "serviceChargeType" : "Chargeable",
-    "chargeDescription" : null,
-    "prefixNumber" : "+358",
-    "isFinnishServiceNumber" : false,
-    "number" : "447334706",
-    "language" : "fi"
-  } ],
-  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
-  "emails" : [ {
-    "value" : "etunimi.sukunimi@naantali.fi",
-    "language" : "fi"
-  } ],
-  "serviceChannelNames" : [ {
-    "language" : "fi",
-    "value" : "Rymättylän päiväkoti",
-    "type" : "Name"
-  } ],
-  "serviceHours" : [ ],
-  "serviceChannelType" : "ServiceLocation",
-  "serviceChannelDescriptions" : [ {
-    "language" : "fi",
-    "value" : "Rymättylän päiväkoti sijaitsee Poikossa. Päiväkodissa toimii kaksi ryhmää: Itikat alle 3-vuotiaille ja Ötökät yli 3-vuotiaille.",
-    "type" : "Summary"
-  }, {
-    "language" : "fi",
-    "value" : "Rymättylän päiväkoti sijaitsee Poikossa. Päiväkodissa toimii kaksi ryhmää: Itikat alle 3-vuotiaille ja Ötökät yli 3-vuotiaille. \n\nEsiopetus järjestetään Rymättylän koululla.\n",
-    "type" : "Description"
-  } ],
-  "areaType" : "LimitedType",
-  "publishingStatus" : "Published",
-  "modified" : "2017-10-31T08:15:43.515627",
-  "id" : "41ebe689-dbed-4bb2-a6f2-184e29d625ed"
+    {
+      "language": "fi",
+      "value": "Rymättylän päiväkoti sijaitsee Poikossa. Päiväkodissa toimii kaksi ryhmää: Itikat alle 3-vuotiaille ja Ötökät yli 3-vuotiaille. \n\nEsiopetus järjestetään Rymättylän koululla.\n",
+      "type": "Description"
+    }
+  ],
+  "areaType": "LimitedType",
+  "publishingStatus": "Published",
+  "modified": "2017-10-31T08:15:43.515627",
+  "id": "41ebe689-dbed-4bb2-a6f2-184e29d625ed"
 }

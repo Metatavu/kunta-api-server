@@ -1,3325 +1,3652 @@
 {
-  "sourceId" : null,
-  "webPages" : [ {
-    "orderNumber" : "0",
-    "url" : "https://kartta.vaasa.fi/eFeedback",
-    "value" : null,
-    "language" : "fi"
-  }, {
-    "orderNumber" : "0",
-    "url" : "https://kartta.vaasa.fi/eFeedback/sv",
-    "value" : null,
-    "language" : "sv"
-  } ],
-  "requiresSignature" : false,
-  "attachments" : [ ],
-  "languages" : [ ],
-  "supportPhones" : [ ],
-  "areas" : [ {
-    "type" : "Municipality",
-    "code" : null,
-    "name" : null,
-    "municipalities" : [ {
-      "code" : "905",
-      "name" : [ {
-        "value" : "Vaasa",
-        "language" : "fi"
-      }, {
-        "value" : "Vasa",
-        "language" : "sv"
-      }, {
-        "value" : "Vaasa",
-        "language" : "en"
-      } ]
-    } ]
-  } ],
-  "supportEmails" : [ ],
-  "services" : [ {
-    "service" : {
-      "id" : "0210fca6-03a3-4386-9212-52c33bf727c3",
-      "name" : "Eläinsuojelu"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "03385592-f0a8-4dc1-8790-2c23ce1486c8",
-      "name" : "Faksi-, skannaus-, kopio- ja postipalvelu"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "0404e86d-f3b5-4e04-b95a-af5078709361",
-      "name" : "Suunnittelutarveratkaisu tai poikkeamispäätös"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "045f0990-2097-442e-9c11-e24b0f68987f",
-      "name" : "Kulttuurinen nuorisotyö"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "048b26a0-8b90-416a-b733-f368ad0c0416",
-      "name" : "Myynti- ja mainospaikkojen vuokraus"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "0549a1e8-93da-42cb-b2c3-2b65daad2816",
-      "name" : "Kaavaotteet ja -neuvonta"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "06aa9e46-25f9-4a8a-9f66-be317450b933",
-      "name" : "Vanhussosiaalityö"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "06fcd368-0eb3-4df2-8704-10ecb7d2d68a",
-      "name" : "Kotihoidon tukipalvelut"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "078cd67a-7b35-46ca-b1d1-57a106a50890",
-      "name" : "Rakennetun ympäristön valvonta"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "09201a18-7e59-4245-9b62-d9589b33d275",
-      "name" : "Kulttuurikaruselli K-65"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "0924e179-148c-486e-90f3-5207a2b16487",
-      "name" : "Perheneuvolan palvelut"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "0990557d-c5a9-4964-875b-18642be276d9",
-      "name" : "Yksityinen ikäihmisten palveluasuminen"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "09986d77-0cbe-4d8e-9e1c-b2c1120de50f",
-      "name" : "Hammashuollon päivystys"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "09e2a52e-823f-496e-9923-d83c542973b6",
-      "name" : "Vaasan kaupungin puhelinasiointi"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "0a25ac2d-4476-4285-8a66-e00953ec26cd",
-      "name" : "Vaasan kaupungin sähköinen asiointi ja lomakkeet"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "0a2d9fec-d2f7-47eb-8313-ead1d05a5d0e",
-      "name" : "Kuulontutkimus"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "0aa3d969-e80b-4e20-89b2-9681eb0fd02a",
-      "name" : "Lapsi- ja perhesosiaalityö"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "0b699dd9-77ab-4636-9cc0-7502e6a73858",
-      "name" : "Ilmoitus alkutuotantopaikasta"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "0c39d3f1-5f95-4b98-b14d-4812c087eae3",
-      "name" : "Diabeteksen hoito"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "0c9e0160-6c37-46ab-8911-4c93087b87e2",
-      "name" : "Potilasasiamies"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "0cf9afd8-f623-40c6-a261-5762b86cd990",
-      "name" : "Graafiset palvelut"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "0d38d2ee-b81d-4683-a019-2d1328f58687",
-      "name" : "Tontit rakentamiseen"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "0d40274d-f411-4e53-aea3-72e308f88749",
-      "name" : "Aikuisten sosiaalityö"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "0e6841ee-8533-4477-8e5a-615dfbafe33f",
-      "name" : "Ympäristönsuojelulain mukainen ilmoitus poikkeuksellisesta tilanteesta"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "0ed1ef4e-0186-4fd0-a38c-8570277659f0",
-      "name" : "Liikuntaharrastukset"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "0f942277-361a-4a22-abdc-99482fa2e58a",
-      "name" : "Elintarvikekontaktimateriaalialan toimijan ilmoitus toimipaikastaan ja toiminnastaan"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "0f97c621-8a82-41e9-b235-42095910a276",
-      "name" : "Katujen ja yleisten alueiden kunnossapito"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "12096a3f-4575-4f5f-ac83-bf54ff896808",
-      "name" : "Kirjaamo"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "12a4e805-5b88-4377-9ec0-59baec08307a",
-      "name" : "Katujen rakentaminen"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "16104040-172a-4df6-8e3c-881bd4259f34",
-      "name" : "Vammaisten apuvälineet ja avustukset"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "163bc79d-9784-4763-bfbd-4cf8304a4da8",
-      "name" : "Terveyden edistäminen"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "16a5959b-9215-419d-bd5f-a9c5228c45b4",
-      "name" : "Maaseutupalvelut"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "16d1bd9e-6a64-4888-843c-2aabfd23653d",
-      "name" : "Hygienia"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "17c633dd-5408-495a-86c1-d8f57598e899",
-      "name" : "Perusopetus"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "1b3777e3-da4b-4cec-a57d-b020f52071cc",
-      "name" : "Ammatillinen koulutus"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "1b635b67-72ba-49bc-85b2-bec7a2a839ea",
-      "name" : "Katuvalaistus"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "1ba9c665-d20d-4ea0-8282-81e35c701fe7",
-      "name" : "Lumenvastaanotto"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "1d57b037-40d2-4769-92eb-f2571c58824f",
-      "name" : "Eläinlääkäripalvelut"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "1df0be8d-54ef-42d9-9112-52b7c34e7a95",
-      "name" : "Perhesuunnittelu- ja ehkäisyneuvonta"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "1f2f9c8c-cb45-4e18-bb88-6d50c6683da8",
-      "name" : "Ympäristön tila"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "202bb31f-fef0-454f-9958-66a53f91a190",
-      "name" : "Avohoito nuorille"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "22cbe0dc-9773-4a1c-b81f-6084d3f2fb9d",
-      "name" : "Esteettömyysavustus"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "2379f83b-2cb4-45b4-8f01-a98923093e90",
-      "name" : "Vammaisten päivä- ja työtoiminta"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "238625ee-39a8-4464-b815-a638f107c964",
-      "name" : "Yksityistieavustukset"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "24744d3b-04e3-45cf-8362-a9e3fe632d7f",
-      "name" : "Ruokailu palvelutaloissa ja Vaasan kaupungin sairaalassa"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "259c7384-0e97-4b14-9784-5bc64c59557a",
-      "name" : "Oppisopimuskoulutus"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "2659766d-af0e-44b6-8305-a3ab9b0ae712",
-      "name" : "Lastensuojelun sijaishuolto"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "26f554eb-e4cb-4c13-b921-c33370131f59",
-      "name" : "Pyörätiet ja -reitit"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "27d1aafa-92bb-4a40-8774-4a9c745f2841",
-      "name" : "Omaishoidon tuki"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "29cffb45-b0b2-4079-9cb9-256f68c7f40c",
-      "name" : "Vammaisten kuntoutusohjaus"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "29f1439a-8c1c-449a-81b5-08bd30342139",
-      "name" : "Sisäliikunta"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "2ad665ab-a8ec-4f86-907b-f328b5a35d99",
-      "name" : "Rasitetoimitus"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "2ba22c86-e28a-4988-aca7-38c6ce95bed7",
-      "name" : "Matonpesupaikat"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "2cadcde8-8108-48fc-b069-f373f6b2bea8",
-      "name" : "Karttatuotteet"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "2d94122b-f30f-4dbc-aba0-82b7d4db65a7",
-      "name" : "Sotaveteraanien kuntoutus"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "2e115128-17e0-4100-8b2e-ec18698d7e39",
-      "name" : "Ikäkeskuksen liikuntapalvelut"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "2e9c3dd1-3c7b-44ac-8149-e365b977ccf1",
-      "name" : "Sosiaalipäivystys"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "2ec62f75-b17b-4576-beca-138ba450b1ec",
-      "name" : "Isäneuvolapalvelut"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "2f722a71-d4be-4f1a-ac95-00488107f8f5",
-      "name" : "Jätehuollon neuvonta"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "2fce2731-41b3-430c-9823-cbd58ac1d3f5",
-      "name" : "Bussit - Paikallisliikenne"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "3069bb3c-8b22-4885-ace0-007706135988",
-      "name" : "Korkeakoulutus"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "307cd174-2824-4260-820c-e115624f6d4b",
-      "name" : "Koulujen kerhotoiminta"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "31b705f5-fee4-49a0-b9d6-7e74886a1fb1",
-      "name" : "Oppilaanohjaus"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "32539a31-ad0b-4765-91d0-be17afec1933",
-      "name" : "Nuorten tieto- ja neuvontapalvelu Reimari"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "332b8b64-4e75-4ac2-85d3-18c7a1efafd1",
-      "name" : "Palveluasumisen palveluseteli"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "33e455fe-d74d-435c-bb55-e090222bbce6",
-      "name" : "Leikkipuistot"
-    },
-    "serviceChargeType" : null,
-    "description" : [ {
-      "language" : "fi",
-      "value" : null,
-      "type" : "Description"
-    }, {
-      "language" : "fi",
-      "value" : null,
-      "type" : "ChargeTypeAdditionalInfo"
-    } ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "33efb9ce-5c0c-43ad-aa37-e29af2fc50ff",
-      "name" : "Vammaisten kuljetuspalvelut"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "340d5a16-a088-4f9d-8921-d7ca4d12f532",
-      "name" : "Kotipalvelu"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "3450e6b0-58c6-4e02-b615-7f9b8d56c3c7",
-      "name" : "Kouluterveydenhuollon palvelut"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "34ce61c9-128d-4e19-b805-cd0fc40c6f3c",
-      "name" : "Lukiokoulutuksen opinto-ohjaus"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "34df22c9-6a1f-4691-9b22-54cfd1ce0af8",
-      "name" : "Merimiesterveydenhuollon palvelut"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "35869142-f4c4-4faa-a2b5-1cbb3c659352",
-      "name" : "Kouluruokailu"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "35a5f87f-c9d9-46c6-a8c7-924389df0c26",
-      "name" : "Muistipoliklinikan palvelut"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "373ce62b-9594-44a6-96af-3a474868f1c3",
-      "name" : "Nuorisoyhdistysten ja -ryhmien tuki ja avustukset"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "37cda0ee-fd6a-4dc9-b1e8-b359c1ff6f2f",
-      "name" : "Toimintaterapian palvelut"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "39a1ba7c-e9b0-43bd-aa5b-761418da50dd",
-      "name" : "Vammaisten iltapäivä- ja lomahoito"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "3c02634b-8d84-46f6-8923-61760dadeb7a",
-      "name" : "Tontin lohkominen"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "3c746357-4921-4214-8ce0-025e729dfb70",
-      "name" : "Museopalvelut"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "3c94ce49-253e-47d3-b9fa-e1ef08ea63ae",
-      "name" : "Odotusajat vanhuspalveluihin"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "3d5f0d69-be0a-4743-bd47-9aaeb37e005e",
-      "name" : "Ohjaamo Pohjanmaa"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "3df9b54f-bbb5-4c22-904a-2f385a069942",
-      "name" : "Elinkeinopalvelut"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "3e3abeb8-7c7f-4570-b083-d6717b553160",
-      "name" : "Ilmoitus melusta ja tärinästä"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "3efb44e8-16ce-4c9c-bdab-32a32de50d5a",
-      "name" : "Sisätautien tutkimus"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "3f5175db-a83d-4553-b7fd-47c4a119dae1",
-      "name" : "Kotihoidontuen kuntalisä"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "3fbc14ae-bb71-4388-ab6e-6d41f28f7fdd",
-      "name" : "Mielenterveyskuntoutujien asumispalvelut"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "414b4c1c-7d39-4ad0-bcb4-a0926c6f2d51",
-      "name" : "Jäteveden puhdistus"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "41541d85-41f2-4443-83e1-50c32b2e4309",
-      "name" : "Rikosasioiden sovittelu"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "435f2ae4-fbb4-416f-9255-716c49c3b228",
-      "name" : "Kirjastopalvelut"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "437bf7ac-6b1a-479c-b20c-395562b59e7b",
-      "name" : "Lokitietojen saaminen"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "43befe44-8bcc-4b37-9634-824666e05681",
-      "name" : "Erityisvarhaiskasvatus"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "43c7b15a-a962-44e9-acba-934afdebc5cc",
-      "name" : "Talous- ja velkaneuvonta"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "453a2956-ba94-444a-816d-6a57321a7d75",
-      "name" : "Joustava perusopetus (JOPO)"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "454a68e2-7a26-4896-b2e5-798aabf2ea12",
-      "name" : "Puistot ja viheralueet"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "4829fc55-47de-4503-baa9-26b7753b543f",
-      "name" : "Vapaaehtoistyö"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "4892267b-4999-4f5d-84c3-d014f2d6e32a",
-      "name" : "Kulttuuripalveluiden neuvonta"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "490efa3f-e007-4a4c-961d-7fc14338fd9e",
-      "name" : "Lapsiperheiden kotipalvelu"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "49cbf014-8ddc-4a54-9272-db85ad1f5889",
-      "name" : "Apuvälinepalvelut"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "4b80f29b-c58b-47c6-8805-f5dff31be366",
-      "name" : "Kiinteistöjen puhtaanapito"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "4c409d73-3ed5-46be-b18c-a0ef4b492672",
-      "name" : "Ruokamyrkytysepäilyn selvittäminen"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "4c7c93da-2924-4101-a3c7-5b934450d422",
-      "name" : "Opioidiriippuvaisten korvaushoito"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "4eb900cc-5988-4ac1-ba45-2ba9df199786",
-      "name" : "Tupakointikiellon hakeminen taloyhtiöön"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "51e6aef9-72e8-4bf4-b438-41e5f3d02f03",
-      "name" : "Kaivuluvat"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "5210e364-8b49-4eb4-bd4e-4df8b34a7bbd",
-      "name" : "Liittyminen vesi- ja viemäriverkostoon"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "52540bc0-1e66-409e-9013-a1846c9c8486",
-      "name" : "Ohjattu terveysliikunta"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "53487459-2c09-4d9a-938e-999a4828102a",
-      "name" : "Vaasan kaupunginorkesteri"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "54a6b6a4-0c7a-4e9f-b5d4-55eefc89d4a9",
-      "name" : "Taiteen perusopetus"
-    },
-    "serviceChargeType" : null,
-    "description" : [ {
-      "language" : "fi",
-      "value" : null,
-      "type" : "Description"
-    }, {
-      "language" : "fi",
-      "value" : null,
-      "type" : "ChargeTypeAdditionalInfo"
-    } ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "55941159-9a0a-4856-a43b-5dfeb8418b45",
-      "name" : "Ammatillisen koulutuksen opiskelijahuolto"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "59203070-088b-4260-99b6-1195b45bfee1",
-      "name" : "Äitiysneuvolapalvelut"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "599ae0d6-92ed-4704-9807-1e6eff8addd9",
-      "name" : "Toiminnan rekisteröinti ympäristönsuojelun tietojärjestelmään"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "59dfdd1d-3353-4a28-9ea6-0f338bdf9676",
-      "name" : "Laskutus"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "5aeef5bd-aaa8-48c2-b1da-c7f4d5dd70e0",
-      "name" : "Ikäihmisten hoitopaikat"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "5b4e1a6b-c97b-4634-9c7b-b3464181e23d",
-      "name" : "Puunkaatolupa"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "5bc8f908-9b0b-45a9-8c06-b6d7e325cb5a",
-      "name" : "Veden tuotanto"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "5c1b1d93-d44f-46fa-a98b-4276d285ca17",
-      "name" : "Puheterapian palvelut"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "5cdb5298-5c7e-4b6b-a0b0-a40a2153ba34",
-      "name" : "Kotisairaalapalvelut"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "5e8a6205-2a63-4419-99a4-edaf461f5aae",
-      "name" : "Aikuisten erityisliikuntapalvelut"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "5ed3234b-84ee-4ba0-ba0e-35ad1b22dea0",
-      "name" : "Toimitilat ja niiden rakennuttaminen"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "5f9e9752-8f27-44f9-b462-34a9b44a08ed",
-      "name" : "Nuorten vaikuttaminen"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "5fe23177-860c-4257-ac03-b4cdeab87d19",
-      "name" : "Työllistymistä edistävä monialainen yhteispalvelu (TYP)"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "60377f58-8ff5-4094-aa6d-97f1d2b49986",
-      "name" : "Teatteripalvelut"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "604ec6b2-d5f4-4bf5-9e90-3c05bd05b962",
-      "name" : "Rakennusvalvonnan arkistopalvelut"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "613fd965-86e9-4137-88cd-629839f054da",
-      "name" : "Ikääntyvien palveluohjaus"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "61f21023-a984-4e31-9b05-4f414b24e11c",
-      "name" : "Asemakaavoitukseen vaikuttaminen"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "632d6d70-14c7-4b91-b37a-05de0c140161",
-      "name" : "Nuorisotilat"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "6387f401-b9ea-4cc9-85a0-f750909d3a96",
-      "name" : "Lukiokoulutus"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "63b83874-054a-44e0-a265-0ea1b9d27871",
-      "name" : "Asumisoikeusasunnot"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "63ed702e-73c6-46cf-8e10-0d45ebdcfc4b",
-      "name" : "Päihdekuntoutujien asumispalvelut"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "64270b88-1f0e-4a7b-acb8-d3d5a3eb4727",
-      "name" : "Valmennustoiminta 7-9 lk"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "645e3abd-ed4b-4c73-9e7a-adb4dde26879",
-      "name" : "Koirapuistot"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "6492e3c0-be6a-4f60-9a5a-93c09fa8918d",
-      "name" : "Päiväkotiruokailu"
-    },
-    "serviceChargeType" : null,
-    "description" : [ {
-      "language" : "fi",
-      "value" : null,
-      "type" : "Description"
-    }, {
-      "language" : "fi",
-      "value" : null,
-      "type" : "ChargeTypeAdditionalInfo"
-    } ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "64a68760-bf3a-4b43-b4ad-4743e305afd5",
-      "name" : "Kuntouttava työtoiminta"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "6828bd27-8141-4724-ad14-e54b15dbb7bb",
-      "name" : "Vammaisten henkilökohtainen apu"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "6bd6d625-4cee-4bcf-b654-b36744c0d0dd",
-      "name" : "Liikuntaneuvonta"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "6ccb671f-05cd-46cf-a0a4-4f98d43dfd37",
-      "name" : "Uimahalli"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "6d0e8244-6f61-4612-a4f5-145536f439bf",
-      "name" : "Haavanhoito"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "6d5ea041-0be0-4c1a-b0d7-dcccf825bed5",
-      "name" : "Rajan näyttö"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "6d81fb01-ba3d-437d-9e3f-c827284283c6",
-      "name" : "Seulontatutkimukset"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "6da04a24-bac0-4d15-b00e-9b352e93c3b8",
-      "name" : "Talviurheilukeskus Öjberget"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "6eb47ca9-69ae-43df-b2c3-a066f6ff7428",
-      "name" : "Adoptioneuvonta"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "73af8c06-6a6b-4780-9164-8e8872eecc9c",
-      "name" : "Kunnallinen päiväkotihoito"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "73ceb656-c1a3-4479-b84a-d99d88f1b66d",
-      "name" : "Turvapaikanhakijoiden vastaanotto"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "73fd2510-b0eb-48d9-b011-2db10c363aed",
-      "name" : "Fångstredskapsmärken för fiske"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "73ff8109-ab84-416d-a858-be94413c93a9",
-      "name" : "Suun terveydenhuolto"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "7580b7a3-bb88-46b9-903e-4d374029f6c8",
-      "name" : "Yleiskaavoitukseen vaikuttaminen"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "77419a3f-7bf9-42f8-9d04-d639f7056469",
-      "name" : "Vaasan uimarannat"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "785843f7-94d5-43bc-9bdd-21dc68187603",
-      "name" : "Tilojen vuokrauspalvelu"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "79d638b1-7e96-443c-84ab-f9e12171f4de",
-      "name" : "Ranta-asemakaavoitukseen vaikuttaminen"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "7a32451f-3f36-46f2-83b5-5557589b8680",
-      "name" : "Perheliikunta"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "7d293b2a-2cce-46e9-87e8-d5834091cc8f",
-      "name" : "Oppilashuolto"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "7f1c5751-6a67-4af5-af18-79177e2fb687",
-      "name" : "Avustukset eläkeläisyhdistysten toimintaan"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "804100e0-c3ef-4092-8645-01d869310055",
-      "name" : "Kansallislippujen vuokraus"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "804819a5-0248-4b6f-b6b2-67dbaa22e78e",
-      "name" : "Nettipiste Senjor"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "8062afa8-41c4-44c0-b1f7-d86c0891e9e3",
-      "name" : "Tontin korkeuden näyttö ja rakennuksen sijainnin merkitseminen ja katselmoiminen"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "819bed3d-6147-4a22-a454-eac010516ce7",
-      "name" : "Kansalaisopistot"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "8209ccd7-fc41-4458-9ae4-b47071760f01",
-      "name" : "Avustajapalvelut ja apuvälineet perusopetuksen oppilaalle"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "82632ea3-d841-44e6-a22c-ba7f2f8641bd",
-      "name" : "Röntgen"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "82b0256e-536b-4ae7-9b31-135e0e00c53d",
-      "name" : "Avoin varhaiskasvatus"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "82d314ee-bfd9-471f-a0a9-3683a18b4435",
-      "name" : "Ruotsin kielikylpyopetus varhaiskasvatuksessa"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "83cbdd3d-879f-4eb6-b9ef-9dc6e6ef1e4d",
-      "name" : "Lapsen huoltajuus ja tapaamisoikeus"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "83e5fa7f-a22c-43b7-aa27-06474d21ec59",
-      "name" : "Hissiavustus"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "843092c8-c5ed-441d-b6d8-78eb0bee4346",
-      "name" : "Kuntoutus"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "8433ea3c-30f5-4393-970b-123511adf7e2",
-      "name" : "Suomen tai ruotsin opetus toisena kielenä"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "865f4a49-afae-433c-bb83-035ac2852c2d",
-      "name" : "Sähköinen terveystarkastus ja terveysvalmennus"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "866d0002-4d70-4759-a743-afe0f6836343",
-      "name" : "Avustukset toimintaan Vähässäkyrössä"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "87731e64-992d-43e7-91e4-52bae08d3824",
-      "name" : "Asukasyhdistykset"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "88346e0a-9833-4360-8528-f93bbf99fd4c",
-      "name" : "Skeittihalli"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "8863e1d6-8d66-4f36-848a-231e93ae259c",
-      "name" : "Ruokapalveluiden tapahtuma- ja vuokrauspalvelut"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "888abdcc-5b29-4a55-bc48-d3beaf85bbf0",
-      "name" : "Osastokuntoutus"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "88c01d02-23d0-4211-b9eb-9fb85f0f4877",
-      "name" : "BotniaLab Oy"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "8a4b4a99-9cc4-44fa-948e-63db631643e7",
-      "name" : "Lemmikkieläinten hautapaikat"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "90bb012f-c085-4304-b8a0-f3eb31662cae",
-      "name" : "Rakennusvalvonta ja rakennustyön aikainen valvonta"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "90f4c62d-5b9a-4411-8af1-f37250965a01",
-      "name" : "Pakolaisten vastaanotto ja kotouttaminen"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "93888dc1-1f6f-4c5e-8d95-7daac71fd89f",
-      "name" : "Perhepäivähoito"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "94c7837a-ba19-4da5-8db2-f2c5f5af4820",
-      "name" : "Lasten erityisliikuntapalvelut"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "9614cf83-4bc0-4a41-8fd6-31477e12e17a",
-      "name" : "Kieli- ja kulttuuriryhmien opetus"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "96154ae3-ec5c-4549-8ab8-1a4c86395c88",
-      "name" : "Katujen ja yleisten alueiden käyttöluvat"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "96c64475-9312-4c18-9f5d-d37dfb1a69da",
-      "name" : "Avustukset tapahtumien järjestämiseen"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "97f1495b-8a21-4a5d-9c45-c03aa100de06",
-      "name" : "Kiinteistöjen ja asunnon välitys"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "98614223-4745-4f54-86d1-a20f6c6030aa",
-      "name" : "Vammaisten asumispalvelut"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "989953ea-21dc-4d1d-a7fb-63cc07e43cbf",
-      "name" : "Lastensuojeluilmoitus"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "98b02142-faba-4667-870d-a3a03a91f81b",
-      "name" : "Hulevesien hallinta"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "98f4b24e-fbca-4473-9418-e6f2392a8f9b",
-      "name" : "Kotisairaanhoito"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "98fd2cc8-ccbb-46c1-a773-92fecf7a0c91",
-      "name" : "Lasten ja nuorten liikunta"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "9960667a-adc6-4ee1-abaf-1c2d488632c7",
-      "name" : "Jätehuolto"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "9cec0d0d-b555-4eef-8303-0fef35a92c09",
-      "name" : "Kaupungin lomakkeet"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "9e7adb97-3950-407b-aa48-a1344627fd2a",
-      "name" : "Kotipalveluateriat"
-    },
-    "serviceChargeType" : null,
-    "description" : [ {
-      "language" : "fi",
-      "value" : null,
-      "type" : "Description"
-    }, {
-      "language" : "fi",
-      "value" : null,
-      "type" : "ChargeTypeAdditionalInfo"
-    } ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "9e9743e8-98e6-4a28-b992-c5bd3e7ad9d3",
-      "name" : "Liikennesuunnittelu"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "9f242076-de0b-4c58-810e-aac4979d71fa",
-      "name" : "Päivystävän kriisiryhmän palvelut"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "9fddf99c-23fe-4c41-b34e-e942fce2734e",
-      "name" : "Ehkäisevä päihdetyö"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "a093d734-5999-4ddc-a1ae-fbff37405979",
-      "name" : "Kaupungin kassa"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "a25a05d9-7824-4ecb-af57-64a86033ec26",
-      "name" : "Yksityiset sosiaalipalveluiden tuottajat"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "a2706e59-e4cb-4ad7-abb1-3d17a99c218b",
-      "name" : "Ikäihmisten viriketoiminta"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "a355e75f-be55-4c48-a5fd-0b1d9a3f2b1c",
-      "name" : "Hoitotarvikejakelu"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "a4618f65-b40c-4064-87d9-40b679ef4d4a",
-      "name" : "Vaasa-aiheisten tuotteiden myynti"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "a4b5f652-6d08-4fb4-884c-70835f2a98c2",
-      "name" : "Terveysneuvonta huumausaineiden käyttäjille"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "a51c6d22-91f3-440e-8200-66b7e7f77ebc",
-      "name" : "Henkilöstökoulutus ulkopuolisille"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "a5254aba-9707-41fe-b49f-f9cac7f5bb11",
-      "name" : "Oppimisen ja koulunkäynnin tuki"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "a5817705-6a7d-4d4a-a8e8-40020f23f64d",
-      "name" : "Lastensuojelutarpeen selvitys"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "a597abe9-1556-4b19-9de5-be275adea249",
-      "name" : "Yhteisökuntoutus"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "a6e4852f-c968-4fdc-95a7-76e4c69684d4",
-      "name" : "Yritysneuvonta"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "a85451af-8058-48b8-858e-6e591f68e708",
-      "name" : "Yritysten toimitilat"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "a8d91727-72f0-490f-a924-912923e0431c",
-      "name" : "Viljelypalstat"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "a9de364a-a777-4f14-844e-90739f661e0b",
-      "name" : "Tilastopalvelut"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "acce056c-9ba4-4c90-ba90-d5fe736ba746",
-      "name" : "Kotihoidon palveluseteli"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "ae2fcc93-d7f6-478b-956c-c2fe7d389aef",
-      "name" : "Ympäristölupa"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "aed69004-2165-4945-bdd6-d27ead3ada6e",
-      "name" : "Ympäristönsuojelulain mukainen ilmoitus koeluonteisesta toiminnasta"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "afa61ef1-f81f-42a7-a5c6-aee08c7ac706",
-      "name" : "Ikäihmisten päivätoiminta"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "b08f9788-f337-4840-a4fa-92ec4638b2db",
-      "name" : "Avoimet tarjouspyynnöt"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "b0fb5b22-460d-4393-b1aa-ff14f3bdf129",
-      "name" : "Kunnan viralliset ilmoitukset"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "b1e7b1fb-2c5c-4756-8fc5-88ca5596049f",
-      "name" : "Maisematyölupa"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "b22837c8-4110-4432-9b57-54fdbdd22f48",
-      "name" : "Tonttijako"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "b276b8f7-675a-4cfe-bb6f-e5a091325367",
-      "name" : "Rajankäynti asemakaava-alueella"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "b36ea9f7-a278-468b-b488-5946e638fbc5",
-      "name" : "Lukiokoulutuksen opiskelijahuolto"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "b4ce9327-5581-4b5b-9602-06ddcd5c572e",
-      "name" : "Sukupuolitautien poliklinikan palvelut"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "b540c695-530a-42be-a8a6-19754dc823a1",
-      "name" : "Rakennuslupa"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "b6036051-f838-48b0-8b5a-4354b5f311f1",
-      "name" : "Ulkoliikunta"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "b6c09aaf-9502-48c4-8f33-c6b89219053d",
-      "name" : "Aikuislukiokoulutus"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "b73b12e5-9799-4452-b9e4-407dc1499162",
-      "name" : "Perhekeskuksen palvelut"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "b8cb00a5-30eb-46af-b4ef-a71945a4c985",
-      "name" : "Pelastustoiminta"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "b8ef394a-a6fe-438c-810b-f685c49c3164",
-      "name" : "Laitoshoito"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "bb3c63f3-7008-44af-8ab7-69115883c2ff",
-      "name" : "Sotainvalidien kotipalvelu"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "bbd21873-c5d0-4279-9874-4da9ff7066f2",
-      "name" : "Ilmoitus elintarvikehuoneistosta"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "bc5fd96f-ff72-4525-bc04-c5183867a287",
-      "name" : "Liikuntapalvelut"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "bc8664c9-c095-41fb-89d7-8afed15fbde5",
-      "name" : "Tupakkatuotteiden ja nikotiininesteiden vähittäismyyntilupa sekä tukkumyynti-ilmoitus"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "bcdde8e9-c47f-4112-8b56-04d8163d256c",
-      "name" : "Senioriliikunta"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "bedd6808-8472-4f82-a412-e9521f14c621",
-      "name" : "Avoimet työpaikat"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "bee2e49a-91ae-42bf-bed3-af1f6bccd2d5",
-      "name" : "Aikuisten peruskouluopinnot"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "c0441fa9-94ae-4a68-b5c7-d6565cc78a0a",
-      "name" : "Asioimistulkkaus- ja käännöspalvelut"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "c089c4c7-fa8e-42b8-9ce2-82420376f206",
-      "name" : "Jätteenkuljetus"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "c0ce316c-23d2-416c-9c3c-816380b868d5",
-      "name" : "Mielenterveyspalvelut"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "c1c48a71-4b86-4f54-be2f-c702fb3fe633",
-      "name" : "Torimyyntipaikat"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "c30a7883-6588-4d2b-856d-4cd85cec443c",
-      "name" : "Vammais- ja esteettömyysasiamies"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "c50f8732-58bc-40e0-9794-6d422729a2e2",
-      "name" : "Lääkinnällisen kuntoutuksen palvelut"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "c5bb9319-8f2c-4150-beb2-7f98750ffea0",
-      "name" : "Venepaikat"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "c5cd2254-29a3-4712-a093-f15c44208117",
-      "name" : "Action-toiminta"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "c5fdbe70-df5e-410f-bb5f-72456d21a31e",
-      "name" : "Aumausilmoitus"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "c687d556-4f17-44e9-bb64-9f7d02e4233e",
-      "name" : "Palveluasuminen"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "c8749316-f6de-4cd4-bacb-c30297620336",
-      "name" : "10-luokka (lisäopetus)"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "ce20452a-944d-4567-91fe-487704b3a290",
-      "name" : "Keskusarkisto"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "ce286f65-f041-4fea-aba0-a8aeac7cba7d",
-      "name" : "Katujen suunnittelu"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "ce3f03b6-2083-4d89-a5a0-2466d0f90577",
-      "name" : "Varhaiskasvatuksen vuorohoito"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "ce71b058-2da7-4491-bf21-2fcf3492c61f",
-      "name" : "Korkotukilainat"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "cedfb7dc-79f4-4bc0-8b6b-39e151079fc1",
-      "name" : "Lääkäripäivystyksen palvelut"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "d14f70fd-d474-4d58-bd18-ed32dab8d2ab",
-      "name" : "Lastenneuvolapalvelut"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "d195781f-8f27-46a2-8bbd-2784e2f1b441",
-      "name" : "Kaupanvahvistus"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "d1bff5b9-517c-480e-9fd9-17ff8a7bf7ce",
-      "name" : "Koulukuljetus"
-    },
-    "serviceChargeType" : null,
-    "description" : [ {
-      "language" : "fi",
-      "value" : null,
-      "type" : "Description"
-    }, {
-      "language" : "fi",
-      "value" : null,
-      "type" : "ChargeTypeAdditionalInfo"
-    } ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "d21c6ae1-b1ef-452b-8e00-fd79822ca995",
-      "name" : "Liikenneyhteydet"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "d28e65e2-985f-49ab-a962-7f239f178a9a",
-      "name" : "Luvat kaupungin omistamille maa- ja vesialueille"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "d3f16063-3409-492f-970a-24b796e536a3",
-      "name" : "Yksityinen päiväkotihoito"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "d558a51c-2a75-4a6f-943b-99da839205f5",
-      "name" : "Kaupunginhallituksen avustukset toimintaan"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "d64463b9-e039-48c8-b3e6-b625ecf3ea69",
-      "name" : "Etsivä nuorisotyö"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "d840967f-3518-41e4-8c75-d48ae8f78362",
-      "name" : "Omaishoidon tuen palveluseteli"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "d84d80a7-9688-4ab6-932b-4437f9e67386",
-      "name" : "Painotettu opetus"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "d96742f6-e091-4299-97c4-108383cc5395",
-      "name" : "Harrastetoiminta"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "d9775bf3-191f-4c28-b924-443fe3809602",
-      "name" : "Maaperätiedot"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "db1a5de4-4683-485d-90c5-ac7677b70f1d",
-      "name" : "Sähkön jakelu"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "dbce0e5f-7b75-4f4a-b024-408c066c1129",
-      "name" : "Päihde- ja mielenterveyskuntoutujien päivä- ja työtoiminta"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "dbd66199-6da4-437d-bb7b-99c6eacf3ef0",
-      "name" : "Perusopetuksen aamu- ja iltapäivätoiminta"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "dc032066-5697-4d62-bf91-2622d1f9b556",
-      "name" : "Lääkärin ja hoitajan vastaanotto"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "dcf79ef5-f09b-496e-ae65-f222430c0654",
-      "name" : "Asumisterveys"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "dd8fb9a3-e6f4-4793-8f7e-22dac70f39f1",
-      "name" : "Kuntalaisaloite"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "dfeddc78-7887-4f37-a0f2-0e1c08273836",
-      "name" : "Seksuaalineuvonta"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "e0b762b8-2437-42c1-a285-19d924dc5f40",
-      "name" : "Lastensuojelun päivystys"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "e274966f-2cf2-4bdd-b3c5-5836166e3f14",
-      "name" : "Potilastietojen tarkistaminen"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "e28a1352-4825-4d5e-86c6-30e842377fe5",
-      "name" : "Esiopetus"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "e2fbafcd-b81d-4f77-a604-d6646c7203e6",
-      "name" : "Nuorten päihdehoito"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "e3ea184f-b405-4409-a842-da602a3fc926",
-      "name" : "Perhetyö"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "e51d86cc-53e9-4a28-9bdc-b621ac27db02",
-      "name" : "Romuralli"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "e6dd3fcb-06d4-42be-8700-56def339dd27",
-      "name" : "Isyyden selvittämispalvelut"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "e8460816-27c2-4c5a-b18c-ceefb3d674e2",
-      "name" : "Liikkuva koulu -toiminta"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "e940104d-f78b-4efd-b18b-976984cc0d82",
-      "name" : "Tapahtumatekniikkapalvelut"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "e993863b-a6ba-49c6-9315-36f64578ecb3",
-      "name" : "Reseptin uusiminen"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "eae0e06f-d5d5-42b5-91d0-6b9403608a50",
-      "name" : "Welcome Office"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "eb395f8a-87e6-47af-bcaf-7f3a5219aec6",
-      "name" : "Maa-ainesten ottamislupa"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "eb49b997-0f21-4f7d-8f9f-a53205ed459c",
-      "name" : "Pysäköinninvalvonta"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "ed700774-906d-4447-8235-e52dfd8bf29a",
-      "name" : "Ikäihmisten kuljetuspalvelu"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "ee407e80-061b-4632-be2f-41c40a5e4790",
-      "name" : "Fysioterapian palvelut"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "f0ec87e2-cb3e-4e33-961a-42f6373b03c3",
-      "name" : "Sosiaaliasiamies"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "f1118351-952c-414a-b421-522746102314",
-      "name" : "Nuorisopalvelut"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "f46711a1-af86-4d72-bba6-03c780405f9e",
-      "name" : "Kotihoito"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "f505efb4-9e8f-4480-81ad-b393ab80c03c",
-      "name" : "Purkamislupa"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "f7ccc18b-dc20-4183-a052-37ffc896b7ca",
-      "name" : "Selviämis-, katkaisu- ja vieroitushoito"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "f89f916d-0621-4c84-ba70-dcdecc00c6ae",
-      "name" : "Lastensuojelun avohuolto"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "f93c4ffb-6576-4836-b633-5850d8352dca",
-      "name" : "Päiväkotihoito esiopetusikäisille"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "f96c4f96-5629-4c4d-b87a-93370ed5097e",
-      "name" : "Toimeentulotuki"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "fa098e53-70cf-4937-8f12-6ef7a95b20ee",
-      "name" : "Ylijäämämaan vastaanotto"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "fb17ba7c-1207-4116-b098-d415763139f0",
-      "name" : "Kulttuuriavustukset ja -palkinnot"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "fbd24248-a37e-48e6-9bc3-f2b5cabb6988",
-      "name" : "Kokousmatkailu"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "fc1b8a9e-58b7-4671-a7ac-de1d280d3bc8",
-      "name" : "Eri kieli- ja kulttuuritaustaisten lasten varhaiskasvatus"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "fc5f5b39-12ac-4f84-b8fe-e1c06b23a2b4",
-      "name" : "Vaasan kaupungin julkaisut ja esitteet"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "fd82a9bd-9b1a-4062-aecc-527283ae8832",
-      "name" : "Asunnon vuokraus"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "ffe34721-c499-459a-86af-64c6f38410f6",
-      "name" : "Lapsen elatusavun vahvistaminen"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  } ],
-  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
-  "serviceChannelNames" : [ {
-    "language" : "fi",
-    "value" : "Vaasan Palautepalvelu",
-    "type" : "Name"
-  }, {
-    "language" : "sv",
-    "value" : "Vasa Feedback -tjänsten",
-    "type" : "Name"
-  } ],
-  "serviceHours" : [ ],
-  "serviceChannelType" : "EChannel",
-  "serviceChannelDescriptions" : [ {
-    "language" : "fi",
-    "value" : "Vaasan Palautepalvelussa voit antaa palautetta Vaasan kaupungin palveluista ja toiminnasta.",
-    "type" : "Description"
-  }, {
-    "language" : "fi",
-    "value" : "Vaasan Palautepalvelussa voit antaa palautetta Vaasan kaupungin palveluista ja toiminnasta.",
-    "type" : "Summary"
-  }, {
-    "language" : "sv",
-    "value" : "Du kan ge respons om Vasa stads service och verksamhet.",
-    "type" : "Summary"
-  }, {
-    "language" : "sv",
-    "value" : "Du kan ge respons om Vasa stads service och verksamhet.",
-    "type" : "Description"
-  } ],
-  "areaType" : "LimitedType",
-  "publishingStatus" : "Published",
-  "modified" : "2017-10-31T08:15:43.515627",
-  "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
-  "signatureQuantity" : 0,
-  "requiresAuthentication" : false
+  "sourceId": null,
+  "webPages": [
+    {
+      "orderNumber": "0",
+      "url": "https://kartta.vaasa.fi/eFeedback",
+      "value": null,
+      "language": "fi"
+    },
+    {
+      "orderNumber": "0",
+      "url": "https://kartta.vaasa.fi/eFeedback/sv",
+      "value": null,
+      "language": "sv"
+    }
+  ],
+  "requiresSignature": false,
+  "attachments": [],
+  "languages": [],
+  "supportPhones": [],
+  "areas": [
+    {
+      "type": "Municipality",
+      "code": null,
+      "name": null,
+      "municipalities": [
+        {
+          "code": "905",
+          "name": [
+            {
+              "value": "Vaasa",
+              "language": "fi"
+            },
+            {
+              "value": "Vasa",
+              "language": "sv"
+            },
+            {
+              "value": "Vaasa",
+              "language": "en"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "supportEmails": [],
+  "services": [
+    {
+      "service": {
+        "id": "0210fca6-03a3-4386-9212-52c33bf727c3",
+        "name": "Eläinsuojelu"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "03385592-f0a8-4dc1-8790-2c23ce1486c8",
+        "name": "Faksi-, skannaus-, kopio- ja postipalvelu"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "0404e86d-f3b5-4e04-b95a-af5078709361",
+        "name": "Suunnittelutarveratkaisu tai poikkeamispäätös"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "045f0990-2097-442e-9c11-e24b0f68987f",
+        "name": "Kulttuurinen nuorisotyö"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "048b26a0-8b90-416a-b733-f368ad0c0416",
+        "name": "Myynti- ja mainospaikkojen vuokraus"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "0549a1e8-93da-42cb-b2c3-2b65daad2816",
+        "name": "Kaavaotteet ja -neuvonta"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "06aa9e46-25f9-4a8a-9f66-be317450b933",
+        "name": "Vanhussosiaalityö"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "06fcd368-0eb3-4df2-8704-10ecb7d2d68a",
+        "name": "Kotihoidon tukipalvelut"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "078cd67a-7b35-46ca-b1d1-57a106a50890",
+        "name": "Rakennetun ympäristön valvonta"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "09201a18-7e59-4245-9b62-d9589b33d275",
+        "name": "Kulttuurikaruselli K-65"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "0924e179-148c-486e-90f3-5207a2b16487",
+        "name": "Perheneuvolan palvelut"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "0990557d-c5a9-4964-875b-18642be276d9",
+        "name": "Yksityinen ikäihmisten palveluasuminen"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "09986d77-0cbe-4d8e-9e1c-b2c1120de50f",
+        "name": "Hammashuollon päivystys"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "09e2a52e-823f-496e-9923-d83c542973b6",
+        "name": "Vaasan kaupungin puhelinasiointi"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "0a25ac2d-4476-4285-8a66-e00953ec26cd",
+        "name": "Vaasan kaupungin sähköinen asiointi ja lomakkeet"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "0a2d9fec-d2f7-47eb-8313-ead1d05a5d0e",
+        "name": "Kuulontutkimus"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "0aa3d969-e80b-4e20-89b2-9681eb0fd02a",
+        "name": "Lapsi- ja perhesosiaalityö"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "0b699dd9-77ab-4636-9cc0-7502e6a73858",
+        "name": "Ilmoitus alkutuotantopaikasta"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "0c39d3f1-5f95-4b98-b14d-4812c087eae3",
+        "name": "Diabeteksen hoito"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "0c9e0160-6c37-46ab-8911-4c93087b87e2",
+        "name": "Potilasasiamies"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "0cf9afd8-f623-40c6-a261-5762b86cd990",
+        "name": "Graafiset palvelut"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "0d38d2ee-b81d-4683-a019-2d1328f58687",
+        "name": "Tontit rakentamiseen"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "0d40274d-f411-4e53-aea3-72e308f88749",
+        "name": "Aikuisten sosiaalityö"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "0e6841ee-8533-4477-8e5a-615dfbafe33f",
+        "name": "Ympäristönsuojelulain mukainen ilmoitus poikkeuksellisesta tilanteesta"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "0ed1ef4e-0186-4fd0-a38c-8570277659f0",
+        "name": "Liikuntaharrastukset"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "0f942277-361a-4a22-abdc-99482fa2e58a",
+        "name": "Elintarvikekontaktimateriaalialan toimijan ilmoitus toimipaikastaan ja toiminnastaan"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "0f97c621-8a82-41e9-b235-42095910a276",
+        "name": "Katujen ja yleisten alueiden kunnossapito"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "12096a3f-4575-4f5f-ac83-bf54ff896808",
+        "name": "Kirjaamo"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "12a4e805-5b88-4377-9ec0-59baec08307a",
+        "name": "Katujen rakentaminen"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "16104040-172a-4df6-8e3c-881bd4259f34",
+        "name": "Vammaisten apuvälineet ja avustukset"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "163bc79d-9784-4763-bfbd-4cf8304a4da8",
+        "name": "Terveyden edistäminen"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "16a5959b-9215-419d-bd5f-a9c5228c45b4",
+        "name": "Maaseutupalvelut"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "16d1bd9e-6a64-4888-843c-2aabfd23653d",
+        "name": "Hygienia"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "17c633dd-5408-495a-86c1-d8f57598e899",
+        "name": "Perusopetus"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "1b3777e3-da4b-4cec-a57d-b020f52071cc",
+        "name": "Ammatillinen koulutus"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "1b635b67-72ba-49bc-85b2-bec7a2a839ea",
+        "name": "Katuvalaistus"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "1ba9c665-d20d-4ea0-8282-81e35c701fe7",
+        "name": "Lumenvastaanotto"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "1d57b037-40d2-4769-92eb-f2571c58824f",
+        "name": "Eläinlääkäripalvelut"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "1df0be8d-54ef-42d9-9112-52b7c34e7a95",
+        "name": "Perhesuunnittelu- ja ehkäisyneuvonta"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "1f2f9c8c-cb45-4e18-bb88-6d50c6683da8",
+        "name": "Ympäristön tila"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "202bb31f-fef0-454f-9958-66a53f91a190",
+        "name": "Avohoito nuorille"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "22cbe0dc-9773-4a1c-b81f-6084d3f2fb9d",
+        "name": "Esteettömyysavustus"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "2379f83b-2cb4-45b4-8f01-a98923093e90",
+        "name": "Vammaisten päivä- ja työtoiminta"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "238625ee-39a8-4464-b815-a638f107c964",
+        "name": "Yksityistieavustukset"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "24744d3b-04e3-45cf-8362-a9e3fe632d7f",
+        "name": "Ruokailu palvelutaloissa ja Vaasan kaupungin sairaalassa"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "259c7384-0e97-4b14-9784-5bc64c59557a",
+        "name": "Oppisopimuskoulutus"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "2659766d-af0e-44b6-8305-a3ab9b0ae712",
+        "name": "Lastensuojelun sijaishuolto"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "26f554eb-e4cb-4c13-b921-c33370131f59",
+        "name": "Pyörätiet ja -reitit"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "27d1aafa-92bb-4a40-8774-4a9c745f2841",
+        "name": "Omaishoidon tuki"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "29cffb45-b0b2-4079-9cb9-256f68c7f40c",
+        "name": "Vammaisten kuntoutusohjaus"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "29f1439a-8c1c-449a-81b5-08bd30342139",
+        "name": "Sisäliikunta"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "2ad665ab-a8ec-4f86-907b-f328b5a35d99",
+        "name": "Rasitetoimitus"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "2ba22c86-e28a-4988-aca7-38c6ce95bed7",
+        "name": "Matonpesupaikat"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "2cadcde8-8108-48fc-b069-f373f6b2bea8",
+        "name": "Karttatuotteet"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "2d94122b-f30f-4dbc-aba0-82b7d4db65a7",
+        "name": "Sotaveteraanien kuntoutus"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "2e115128-17e0-4100-8b2e-ec18698d7e39",
+        "name": "Ikäkeskuksen liikuntapalvelut"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "2e9c3dd1-3c7b-44ac-8149-e365b977ccf1",
+        "name": "Sosiaalipäivystys"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "2ec62f75-b17b-4576-beca-138ba450b1ec",
+        "name": "Isäneuvolapalvelut"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "2f722a71-d4be-4f1a-ac95-00488107f8f5",
+        "name": "Jätehuollon neuvonta"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "2fce2731-41b3-430c-9823-cbd58ac1d3f5",
+        "name": "Bussit - Paikallisliikenne"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "3069bb3c-8b22-4885-ace0-007706135988",
+        "name": "Korkeakoulutus"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "307cd174-2824-4260-820c-e115624f6d4b",
+        "name": "Koulujen kerhotoiminta"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "31b705f5-fee4-49a0-b9d6-7e74886a1fb1",
+        "name": "Oppilaanohjaus"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "32539a31-ad0b-4765-91d0-be17afec1933",
+        "name": "Nuorten tieto- ja neuvontapalvelu Reimari"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "332b8b64-4e75-4ac2-85d3-18c7a1efafd1",
+        "name": "Palveluasumisen palveluseteli"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "33e455fe-d74d-435c-bb55-e090222bbce6",
+        "name": "Leikkipuistot"
+      },
+      "serviceChargeType": null,
+      "description": [
+        {
+          "language": "fi",
+          "value": null,
+          "type": "Description"
+        },
+        {
+          "language": "fi",
+          "value": null,
+          "type": "ChargeTypeAdditionalInfo"
+        }
+      ],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "33efb9ce-5c0c-43ad-aa37-e29af2fc50ff",
+        "name": "Vammaisten kuljetuspalvelut"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "340d5a16-a088-4f9d-8921-d7ca4d12f532",
+        "name": "Kotipalvelu"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "3450e6b0-58c6-4e02-b615-7f9b8d56c3c7",
+        "name": "Kouluterveydenhuollon palvelut"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "34ce61c9-128d-4e19-b805-cd0fc40c6f3c",
+        "name": "Lukiokoulutuksen opinto-ohjaus"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "34df22c9-6a1f-4691-9b22-54cfd1ce0af8",
+        "name": "Merimiesterveydenhuollon palvelut"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "35869142-f4c4-4faa-a2b5-1cbb3c659352",
+        "name": "Kouluruokailu"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "35a5f87f-c9d9-46c6-a8c7-924389df0c26",
+        "name": "Muistipoliklinikan palvelut"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "373ce62b-9594-44a6-96af-3a474868f1c3",
+        "name": "Nuorisoyhdistysten ja -ryhmien tuki ja avustukset"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "37cda0ee-fd6a-4dc9-b1e8-b359c1ff6f2f",
+        "name": "Toimintaterapian palvelut"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "39a1ba7c-e9b0-43bd-aa5b-761418da50dd",
+        "name": "Vammaisten iltapäivä- ja lomahoito"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "3c02634b-8d84-46f6-8923-61760dadeb7a",
+        "name": "Tontin lohkominen"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "3c746357-4921-4214-8ce0-025e729dfb70",
+        "name": "Museopalvelut"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "3c94ce49-253e-47d3-b9fa-e1ef08ea63ae",
+        "name": "Odotusajat vanhuspalveluihin"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "3d5f0d69-be0a-4743-bd47-9aaeb37e005e",
+        "name": "Ohjaamo Pohjanmaa"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "3df9b54f-bbb5-4c22-904a-2f385a069942",
+        "name": "Elinkeinopalvelut"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "3e3abeb8-7c7f-4570-b083-d6717b553160",
+        "name": "Ilmoitus melusta ja tärinästä"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "3efb44e8-16ce-4c9c-bdab-32a32de50d5a",
+        "name": "Sisätautien tutkimus"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "3f5175db-a83d-4553-b7fd-47c4a119dae1",
+        "name": "Kotihoidontuen kuntalisä"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "3fbc14ae-bb71-4388-ab6e-6d41f28f7fdd",
+        "name": "Mielenterveyskuntoutujien asumispalvelut"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "414b4c1c-7d39-4ad0-bcb4-a0926c6f2d51",
+        "name": "Jäteveden puhdistus"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "41541d85-41f2-4443-83e1-50c32b2e4309",
+        "name": "Rikosasioiden sovittelu"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "435f2ae4-fbb4-416f-9255-716c49c3b228",
+        "name": "Kirjastopalvelut"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "437bf7ac-6b1a-479c-b20c-395562b59e7b",
+        "name": "Lokitietojen saaminen"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "43befe44-8bcc-4b37-9634-824666e05681",
+        "name": "Erityisvarhaiskasvatus"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "43c7b15a-a962-44e9-acba-934afdebc5cc",
+        "name": "Talous- ja velkaneuvonta"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "453a2956-ba94-444a-816d-6a57321a7d75",
+        "name": "Joustava perusopetus (JOPO)"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "454a68e2-7a26-4896-b2e5-798aabf2ea12",
+        "name": "Puistot ja viheralueet"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "4829fc55-47de-4503-baa9-26b7753b543f",
+        "name": "Vapaaehtoistyö"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "4892267b-4999-4f5d-84c3-d014f2d6e32a",
+        "name": "Kulttuuripalveluiden neuvonta"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "490efa3f-e007-4a4c-961d-7fc14338fd9e",
+        "name": "Lapsiperheiden kotipalvelu"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "49cbf014-8ddc-4a54-9272-db85ad1f5889",
+        "name": "Apuvälinepalvelut"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "4b80f29b-c58b-47c6-8805-f5dff31be366",
+        "name": "Kiinteistöjen puhtaanapito"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "4c409d73-3ed5-46be-b18c-a0ef4b492672",
+        "name": "Ruokamyrkytysepäilyn selvittäminen"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "4c7c93da-2924-4101-a3c7-5b934450d422",
+        "name": "Opioidiriippuvaisten korvaushoito"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "4eb900cc-5988-4ac1-ba45-2ba9df199786",
+        "name": "Tupakointikiellon hakeminen taloyhtiöön"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "51e6aef9-72e8-4bf4-b438-41e5f3d02f03",
+        "name": "Kaivuluvat"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "5210e364-8b49-4eb4-bd4e-4df8b34a7bbd",
+        "name": "Liittyminen vesi- ja viemäriverkostoon"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "52540bc0-1e66-409e-9013-a1846c9c8486",
+        "name": "Ohjattu terveysliikunta"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "53487459-2c09-4d9a-938e-999a4828102a",
+        "name": "Vaasan kaupunginorkesteri"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "54a6b6a4-0c7a-4e9f-b5d4-55eefc89d4a9",
+        "name": "Taiteen perusopetus"
+      },
+      "serviceChargeType": null,
+      "description": [
+        {
+          "language": "fi",
+          "value": null,
+          "type": "Description"
+        },
+        {
+          "language": "fi",
+          "value": null,
+          "type": "ChargeTypeAdditionalInfo"
+        }
+      ],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "55941159-9a0a-4856-a43b-5dfeb8418b45",
+        "name": "Ammatillisen koulutuksen opiskelijahuolto"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "59203070-088b-4260-99b6-1195b45bfee1",
+        "name": "Äitiysneuvolapalvelut"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "599ae0d6-92ed-4704-9807-1e6eff8addd9",
+        "name": "Toiminnan rekisteröinti ympäristönsuojelun tietojärjestelmään"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "59dfdd1d-3353-4a28-9ea6-0f338bdf9676",
+        "name": "Laskutus"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "5aeef5bd-aaa8-48c2-b1da-c7f4d5dd70e0",
+        "name": "Ikäihmisten hoitopaikat"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "5b4e1a6b-c97b-4634-9c7b-b3464181e23d",
+        "name": "Puunkaatolupa"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "5bc8f908-9b0b-45a9-8c06-b6d7e325cb5a",
+        "name": "Veden tuotanto"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "5c1b1d93-d44f-46fa-a98b-4276d285ca17",
+        "name": "Puheterapian palvelut"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "5cdb5298-5c7e-4b6b-a0b0-a40a2153ba34",
+        "name": "Kotisairaalapalvelut"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "5e8a6205-2a63-4419-99a4-edaf461f5aae",
+        "name": "Aikuisten erityisliikuntapalvelut"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "5ed3234b-84ee-4ba0-ba0e-35ad1b22dea0",
+        "name": "Toimitilat ja niiden rakennuttaminen"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "5f9e9752-8f27-44f9-b462-34a9b44a08ed",
+        "name": "Nuorten vaikuttaminen"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "5fe23177-860c-4257-ac03-b4cdeab87d19",
+        "name": "Työllistymistä edistävä monialainen yhteispalvelu (TYP)"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "60377f58-8ff5-4094-aa6d-97f1d2b49986",
+        "name": "Teatteripalvelut"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "604ec6b2-d5f4-4bf5-9e90-3c05bd05b962",
+        "name": "Rakennusvalvonnan arkistopalvelut"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "613fd965-86e9-4137-88cd-629839f054da",
+        "name": "Ikääntyvien palveluohjaus"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "61f21023-a984-4e31-9b05-4f414b24e11c",
+        "name": "Asemakaavoitukseen vaikuttaminen"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "632d6d70-14c7-4b91-b37a-05de0c140161",
+        "name": "Nuorisotilat"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "6387f401-b9ea-4cc9-85a0-f750909d3a96",
+        "name": "Lukiokoulutus"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "63b83874-054a-44e0-a265-0ea1b9d27871",
+        "name": "Asumisoikeusasunnot"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "63ed702e-73c6-46cf-8e10-0d45ebdcfc4b",
+        "name": "Päihdekuntoutujien asumispalvelut"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "64270b88-1f0e-4a7b-acb8-d3d5a3eb4727",
+        "name": "Valmennustoiminta 7-9 lk"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "645e3abd-ed4b-4c73-9e7a-adb4dde26879",
+        "name": "Koirapuistot"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "6492e3c0-be6a-4f60-9a5a-93c09fa8918d",
+        "name": "Päiväkotiruokailu"
+      },
+      "serviceChargeType": null,
+      "description": [
+        {
+          "language": "fi",
+          "value": null,
+          "type": "Description"
+        },
+        {
+          "language": "fi",
+          "value": null,
+          "type": "ChargeTypeAdditionalInfo"
+        }
+      ],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "64a68760-bf3a-4b43-b4ad-4743e305afd5",
+        "name": "Kuntouttava työtoiminta"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "6828bd27-8141-4724-ad14-e54b15dbb7bb",
+        "name": "Vammaisten henkilökohtainen apu"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "6bd6d625-4cee-4bcf-b654-b36744c0d0dd",
+        "name": "Liikuntaneuvonta"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "6ccb671f-05cd-46cf-a0a4-4f98d43dfd37",
+        "name": "Uimahalli"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "6d0e8244-6f61-4612-a4f5-145536f439bf",
+        "name": "Haavanhoito"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "6d5ea041-0be0-4c1a-b0d7-dcccf825bed5",
+        "name": "Rajan näyttö"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "6d81fb01-ba3d-437d-9e3f-c827284283c6",
+        "name": "Seulontatutkimukset"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "6da04a24-bac0-4d15-b00e-9b352e93c3b8",
+        "name": "Talviurheilukeskus Öjberget"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "6eb47ca9-69ae-43df-b2c3-a066f6ff7428",
+        "name": "Adoptioneuvonta"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "73af8c06-6a6b-4780-9164-8e8872eecc9c",
+        "name": "Kunnallinen päiväkotihoito"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "73ceb656-c1a3-4479-b84a-d99d88f1b66d",
+        "name": "Turvapaikanhakijoiden vastaanotto"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "73fd2510-b0eb-48d9-b011-2db10c363aed",
+        "name": "Fångstredskapsmärken för fiske"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "73ff8109-ab84-416d-a858-be94413c93a9",
+        "name": "Suun terveydenhuolto"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "7580b7a3-bb88-46b9-903e-4d374029f6c8",
+        "name": "Yleiskaavoitukseen vaikuttaminen"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "77419a3f-7bf9-42f8-9d04-d639f7056469",
+        "name": "Vaasan uimarannat"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "785843f7-94d5-43bc-9bdd-21dc68187603",
+        "name": "Tilojen vuokrauspalvelu"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "79d638b1-7e96-443c-84ab-f9e12171f4de",
+        "name": "Ranta-asemakaavoitukseen vaikuttaminen"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "7a32451f-3f36-46f2-83b5-5557589b8680",
+        "name": "Perheliikunta"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "7d293b2a-2cce-46e9-87e8-d5834091cc8f",
+        "name": "Oppilashuolto"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "7f1c5751-6a67-4af5-af18-79177e2fb687",
+        "name": "Avustukset eläkeläisyhdistysten toimintaan"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "804100e0-c3ef-4092-8645-01d869310055",
+        "name": "Kansallislippujen vuokraus"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "804819a5-0248-4b6f-b6b2-67dbaa22e78e",
+        "name": "Nettipiste Senjor"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "8062afa8-41c4-44c0-b1f7-d86c0891e9e3",
+        "name": "Tontin korkeuden näyttö ja rakennuksen sijainnin merkitseminen ja katselmoiminen"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "819bed3d-6147-4a22-a454-eac010516ce7",
+        "name": "Kansalaisopistot"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "8209ccd7-fc41-4458-9ae4-b47071760f01",
+        "name": "Avustajapalvelut ja apuvälineet perusopetuksen oppilaalle"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "82632ea3-d841-44e6-a22c-ba7f2f8641bd",
+        "name": "Röntgen"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "82b0256e-536b-4ae7-9b31-135e0e00c53d",
+        "name": "Avoin varhaiskasvatus"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "82d314ee-bfd9-471f-a0a9-3683a18b4435",
+        "name": "Ruotsin kielikylpyopetus varhaiskasvatuksessa"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "83cbdd3d-879f-4eb6-b9ef-9dc6e6ef1e4d",
+        "name": "Lapsen huoltajuus ja tapaamisoikeus"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "83e5fa7f-a22c-43b7-aa27-06474d21ec59",
+        "name": "Hissiavustus"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "843092c8-c5ed-441d-b6d8-78eb0bee4346",
+        "name": "Kuntoutus"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "8433ea3c-30f5-4393-970b-123511adf7e2",
+        "name": "Suomen tai ruotsin opetus toisena kielenä"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "865f4a49-afae-433c-bb83-035ac2852c2d",
+        "name": "Sähköinen terveystarkastus ja terveysvalmennus"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "866d0002-4d70-4759-a743-afe0f6836343",
+        "name": "Avustukset toimintaan Vähässäkyrössä"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "87731e64-992d-43e7-91e4-52bae08d3824",
+        "name": "Asukasyhdistykset"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "88346e0a-9833-4360-8528-f93bbf99fd4c",
+        "name": "Skeittihalli"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "8863e1d6-8d66-4f36-848a-231e93ae259c",
+        "name": "Ruokapalveluiden tapahtuma- ja vuokrauspalvelut"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "888abdcc-5b29-4a55-bc48-d3beaf85bbf0",
+        "name": "Osastokuntoutus"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "88c01d02-23d0-4211-b9eb-9fb85f0f4877",
+        "name": "BotniaLab Oy"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "8a4b4a99-9cc4-44fa-948e-63db631643e7",
+        "name": "Lemmikkieläinten hautapaikat"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "90bb012f-c085-4304-b8a0-f3eb31662cae",
+        "name": "Rakennusvalvonta ja rakennustyön aikainen valvonta"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "90f4c62d-5b9a-4411-8af1-f37250965a01",
+        "name": "Pakolaisten vastaanotto ja kotouttaminen"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "93888dc1-1f6f-4c5e-8d95-7daac71fd89f",
+        "name": "Perhepäivähoito"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "94c7837a-ba19-4da5-8db2-f2c5f5af4820",
+        "name": "Lasten erityisliikuntapalvelut"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "9614cf83-4bc0-4a41-8fd6-31477e12e17a",
+        "name": "Kieli- ja kulttuuriryhmien opetus"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "96154ae3-ec5c-4549-8ab8-1a4c86395c88",
+        "name": "Katujen ja yleisten alueiden käyttöluvat"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "96c64475-9312-4c18-9f5d-d37dfb1a69da",
+        "name": "Avustukset tapahtumien järjestämiseen"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "97f1495b-8a21-4a5d-9c45-c03aa100de06",
+        "name": "Kiinteistöjen ja asunnon välitys"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "98614223-4745-4f54-86d1-a20f6c6030aa",
+        "name": "Vammaisten asumispalvelut"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "989953ea-21dc-4d1d-a7fb-63cc07e43cbf",
+        "name": "Lastensuojeluilmoitus"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "98b02142-faba-4667-870d-a3a03a91f81b",
+        "name": "Hulevesien hallinta"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "98f4b24e-fbca-4473-9418-e6f2392a8f9b",
+        "name": "Kotisairaanhoito"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "98fd2cc8-ccbb-46c1-a773-92fecf7a0c91",
+        "name": "Lasten ja nuorten liikunta"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "9960667a-adc6-4ee1-abaf-1c2d488632c7",
+        "name": "Jätehuolto"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "9cec0d0d-b555-4eef-8303-0fef35a92c09",
+        "name": "Kaupungin lomakkeet"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "9e7adb97-3950-407b-aa48-a1344627fd2a",
+        "name": "Kotipalveluateriat"
+      },
+      "serviceChargeType": null,
+      "description": [
+        {
+          "language": "fi",
+          "value": null,
+          "type": "Description"
+        },
+        {
+          "language": "fi",
+          "value": null,
+          "type": "ChargeTypeAdditionalInfo"
+        }
+      ],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "9e9743e8-98e6-4a28-b992-c5bd3e7ad9d3",
+        "name": "Liikennesuunnittelu"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "9f242076-de0b-4c58-810e-aac4979d71fa",
+        "name": "Päivystävän kriisiryhmän palvelut"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "9fddf99c-23fe-4c41-b34e-e942fce2734e",
+        "name": "Ehkäisevä päihdetyö"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "a093d734-5999-4ddc-a1ae-fbff37405979",
+        "name": "Kaupungin kassa"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "a25a05d9-7824-4ecb-af57-64a86033ec26",
+        "name": "Yksityiset sosiaalipalveluiden tuottajat"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "a2706e59-e4cb-4ad7-abb1-3d17a99c218b",
+        "name": "Ikäihmisten viriketoiminta"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "a355e75f-be55-4c48-a5fd-0b1d9a3f2b1c",
+        "name": "Hoitotarvikejakelu"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "a4618f65-b40c-4064-87d9-40b679ef4d4a",
+        "name": "Vaasa-aiheisten tuotteiden myynti"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "a4b5f652-6d08-4fb4-884c-70835f2a98c2",
+        "name": "Terveysneuvonta huumausaineiden käyttäjille"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "a51c6d22-91f3-440e-8200-66b7e7f77ebc",
+        "name": "Henkilöstökoulutus ulkopuolisille"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "a5254aba-9707-41fe-b49f-f9cac7f5bb11",
+        "name": "Oppimisen ja koulunkäynnin tuki"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "a5817705-6a7d-4d4a-a8e8-40020f23f64d",
+        "name": "Lastensuojelutarpeen selvitys"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "a597abe9-1556-4b19-9de5-be275adea249",
+        "name": "Yhteisökuntoutus"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "a6e4852f-c968-4fdc-95a7-76e4c69684d4",
+        "name": "Yritysneuvonta"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "a85451af-8058-48b8-858e-6e591f68e708",
+        "name": "Yritysten toimitilat"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "a8d91727-72f0-490f-a924-912923e0431c",
+        "name": "Viljelypalstat"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "a9de364a-a777-4f14-844e-90739f661e0b",
+        "name": "Tilastopalvelut"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "acce056c-9ba4-4c90-ba90-d5fe736ba746",
+        "name": "Kotihoidon palveluseteli"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "ae2fcc93-d7f6-478b-956c-c2fe7d389aef",
+        "name": "Ympäristölupa"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "aed69004-2165-4945-bdd6-d27ead3ada6e",
+        "name": "Ympäristönsuojelulain mukainen ilmoitus koeluonteisesta toiminnasta"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "afa61ef1-f81f-42a7-a5c6-aee08c7ac706",
+        "name": "Ikäihmisten päivätoiminta"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "b08f9788-f337-4840-a4fa-92ec4638b2db",
+        "name": "Avoimet tarjouspyynnöt"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "b0fb5b22-460d-4393-b1aa-ff14f3bdf129",
+        "name": "Kunnan viralliset ilmoitukset"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "b1e7b1fb-2c5c-4756-8fc5-88ca5596049f",
+        "name": "Maisematyölupa"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "b22837c8-4110-4432-9b57-54fdbdd22f48",
+        "name": "Tonttijako"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "b276b8f7-675a-4cfe-bb6f-e5a091325367",
+        "name": "Rajankäynti asemakaava-alueella"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "b36ea9f7-a278-468b-b488-5946e638fbc5",
+        "name": "Lukiokoulutuksen opiskelijahuolto"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "b4ce9327-5581-4b5b-9602-06ddcd5c572e",
+        "name": "Sukupuolitautien poliklinikan palvelut"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "b540c695-530a-42be-a8a6-19754dc823a1",
+        "name": "Rakennuslupa"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "b6036051-f838-48b0-8b5a-4354b5f311f1",
+        "name": "Ulkoliikunta"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "b6c09aaf-9502-48c4-8f33-c6b89219053d",
+        "name": "Aikuislukiokoulutus"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "b73b12e5-9799-4452-b9e4-407dc1499162",
+        "name": "Perhekeskuksen palvelut"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "b8cb00a5-30eb-46af-b4ef-a71945a4c985",
+        "name": "Pelastustoiminta"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "b8ef394a-a6fe-438c-810b-f685c49c3164",
+        "name": "Laitoshoito"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "bb3c63f3-7008-44af-8ab7-69115883c2ff",
+        "name": "Sotainvalidien kotipalvelu"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "bbd21873-c5d0-4279-9874-4da9ff7066f2",
+        "name": "Ilmoitus elintarvikehuoneistosta"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "bc5fd96f-ff72-4525-bc04-c5183867a287",
+        "name": "Liikuntapalvelut"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "bc8664c9-c095-41fb-89d7-8afed15fbde5",
+        "name": "Tupakkatuotteiden ja nikotiininesteiden vähittäismyyntilupa sekä tukkumyynti-ilmoitus"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "bcdde8e9-c47f-4112-8b56-04d8163d256c",
+        "name": "Senioriliikunta"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "bedd6808-8472-4f82-a412-e9521f14c621",
+        "name": "Avoimet työpaikat"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "bee2e49a-91ae-42bf-bed3-af1f6bccd2d5",
+        "name": "Aikuisten peruskouluopinnot"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "c0441fa9-94ae-4a68-b5c7-d6565cc78a0a",
+        "name": "Asioimistulkkaus- ja käännöspalvelut"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "c089c4c7-fa8e-42b8-9ce2-82420376f206",
+        "name": "Jätteenkuljetus"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "c0ce316c-23d2-416c-9c3c-816380b868d5",
+        "name": "Mielenterveyspalvelut"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "c1c48a71-4b86-4f54-be2f-c702fb3fe633",
+        "name": "Torimyyntipaikat"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "c30a7883-6588-4d2b-856d-4cd85cec443c",
+        "name": "Vammais- ja esteettömyysasiamies"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "c50f8732-58bc-40e0-9794-6d422729a2e2",
+        "name": "Lääkinnällisen kuntoutuksen palvelut"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "c5bb9319-8f2c-4150-beb2-7f98750ffea0",
+        "name": "Venepaikat"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "c5cd2254-29a3-4712-a093-f15c44208117",
+        "name": "Action-toiminta"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "c5fdbe70-df5e-410f-bb5f-72456d21a31e",
+        "name": "Aumausilmoitus"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "c687d556-4f17-44e9-bb64-9f7d02e4233e",
+        "name": "Palveluasuminen"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "c8749316-f6de-4cd4-bacb-c30297620336",
+        "name": "10-luokka (lisäopetus)"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "ce20452a-944d-4567-91fe-487704b3a290",
+        "name": "Keskusarkisto"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "ce286f65-f041-4fea-aba0-a8aeac7cba7d",
+        "name": "Katujen suunnittelu"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "ce3f03b6-2083-4d89-a5a0-2466d0f90577",
+        "name": "Varhaiskasvatuksen vuorohoito"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "ce71b058-2da7-4491-bf21-2fcf3492c61f",
+        "name": "Korkotukilainat"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "cedfb7dc-79f4-4bc0-8b6b-39e151079fc1",
+        "name": "Lääkäripäivystyksen palvelut"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "d14f70fd-d474-4d58-bd18-ed32dab8d2ab",
+        "name": "Lastenneuvolapalvelut"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "d195781f-8f27-46a2-8bbd-2784e2f1b441",
+        "name": "Kaupanvahvistus"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "d1bff5b9-517c-480e-9fd9-17ff8a7bf7ce",
+        "name": "Koulukuljetus"
+      },
+      "serviceChargeType": null,
+      "description": [
+        {
+          "language": "fi",
+          "value": null,
+          "type": "Description"
+        },
+        {
+          "language": "fi",
+          "value": null,
+          "type": "ChargeTypeAdditionalInfo"
+        }
+      ],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "d21c6ae1-b1ef-452b-8e00-fd79822ca995",
+        "name": "Liikenneyhteydet"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "d28e65e2-985f-49ab-a962-7f239f178a9a",
+        "name": "Luvat kaupungin omistamille maa- ja vesialueille"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "d3f16063-3409-492f-970a-24b796e536a3",
+        "name": "Yksityinen päiväkotihoito"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "d558a51c-2a75-4a6f-943b-99da839205f5",
+        "name": "Kaupunginhallituksen avustukset toimintaan"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "d64463b9-e039-48c8-b3e6-b625ecf3ea69",
+        "name": "Etsivä nuorisotyö"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "d840967f-3518-41e4-8c75-d48ae8f78362",
+        "name": "Omaishoidon tuen palveluseteli"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "d84d80a7-9688-4ab6-932b-4437f9e67386",
+        "name": "Painotettu opetus"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "d96742f6-e091-4299-97c4-108383cc5395",
+        "name": "Harrastetoiminta"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "d9775bf3-191f-4c28-b924-443fe3809602",
+        "name": "Maaperätiedot"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "db1a5de4-4683-485d-90c5-ac7677b70f1d",
+        "name": "Sähkön jakelu"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "dbce0e5f-7b75-4f4a-b024-408c066c1129",
+        "name": "Päihde- ja mielenterveyskuntoutujien päivä- ja työtoiminta"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "dbd66199-6da4-437d-bb7b-99c6eacf3ef0",
+        "name": "Perusopetuksen aamu- ja iltapäivätoiminta"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "dc032066-5697-4d62-bf91-2622d1f9b556",
+        "name": "Lääkärin ja hoitajan vastaanotto"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "dcf79ef5-f09b-496e-ae65-f222430c0654",
+        "name": "Asumisterveys"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "dd8fb9a3-e6f4-4793-8f7e-22dac70f39f1",
+        "name": "Kuntalaisaloite"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "dfeddc78-7887-4f37-a0f2-0e1c08273836",
+        "name": "Seksuaalineuvonta"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "e0b762b8-2437-42c1-a285-19d924dc5f40",
+        "name": "Lastensuojelun päivystys"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "e274966f-2cf2-4bdd-b3c5-5836166e3f14",
+        "name": "Potilastietojen tarkistaminen"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "e28a1352-4825-4d5e-86c6-30e842377fe5",
+        "name": "Esiopetus"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "e2fbafcd-b81d-4f77-a604-d6646c7203e6",
+        "name": "Nuorten päihdehoito"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "e3ea184f-b405-4409-a842-da602a3fc926",
+        "name": "Perhetyö"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "e51d86cc-53e9-4a28-9bdc-b621ac27db02",
+        "name": "Romuralli"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "e6dd3fcb-06d4-42be-8700-56def339dd27",
+        "name": "Isyyden selvittämispalvelut"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "e8460816-27c2-4c5a-b18c-ceefb3d674e2",
+        "name": "Liikkuva koulu -toiminta"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "e940104d-f78b-4efd-b18b-976984cc0d82",
+        "name": "Tapahtumatekniikkapalvelut"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "e993863b-a6ba-49c6-9315-36f64578ecb3",
+        "name": "Reseptin uusiminen"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "eae0e06f-d5d5-42b5-91d0-6b9403608a50",
+        "name": "Welcome Office"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "eb395f8a-87e6-47af-bcaf-7f3a5219aec6",
+        "name": "Maa-ainesten ottamislupa"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "eb49b997-0f21-4f7d-8f9f-a53205ed459c",
+        "name": "Pysäköinninvalvonta"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "ed700774-906d-4447-8235-e52dfd8bf29a",
+        "name": "Ikäihmisten kuljetuspalvelu"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "ee407e80-061b-4632-be2f-41c40a5e4790",
+        "name": "Fysioterapian palvelut"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "f0ec87e2-cb3e-4e33-961a-42f6373b03c3",
+        "name": "Sosiaaliasiamies"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "f1118351-952c-414a-b421-522746102314",
+        "name": "Nuorisopalvelut"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "f46711a1-af86-4d72-bba6-03c780405f9e",
+        "name": "Kotihoito"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "f505efb4-9e8f-4480-81ad-b393ab80c03c",
+        "name": "Purkamislupa"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "f7ccc18b-dc20-4183-a052-37ffc896b7ca",
+        "name": "Selviämis-, katkaisu- ja vieroitushoito"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "f89f916d-0621-4c84-ba70-dcdecc00c6ae",
+        "name": "Lastensuojelun avohuolto"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "f93c4ffb-6576-4836-b633-5850d8352dca",
+        "name": "Päiväkotihoito esiopetusikäisille"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "f96c4f96-5629-4c4d-b87a-93370ed5097e",
+        "name": "Toimeentulotuki"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "fa098e53-70cf-4937-8f12-6ef7a95b20ee",
+        "name": "Ylijäämämaan vastaanotto"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "fb17ba7c-1207-4116-b098-d415763139f0",
+        "name": "Kulttuuriavustukset ja -palkinnot"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "fbd24248-a37e-48e6-9bc3-f2b5cabb6988",
+        "name": "Kokousmatkailu"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "fc1b8a9e-58b7-4671-a7ac-de1d280d3bc8",
+        "name": "Eri kieli- ja kulttuuritaustaisten lasten varhaiskasvatus"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "fc5f5b39-12ac-4f84-b8fe-e1c06b23a2b4",
+        "name": "Vaasan kaupungin julkaisut ja esitteet"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "fd82a9bd-9b1a-4062-aecc-527283ae8832",
+        "name": "Asunnon vuokraus"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "ffe34721-c499-459a-86af-64c6f38410f6",
+        "name": "Lapsen elatusavun vahvistaminen"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    }
+  ],
+  "organizationId": "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames": [
+    {
+      "language": "fi",
+      "value": "Vaasan Palautepalvelu",
+      "type": "Name"
+    },
+    {
+      "language": "sv",
+      "value": "Vasa Feedback -tjänsten",
+      "type": "Name"
+    }
+  ],
+  "serviceHours": [],
+  "serviceChannelType": "EChannel",
+  "serviceChannelDescriptions": [
+    {
+      "language": "fi",
+      "value": "Vaasan Palautepalvelussa voit antaa palautetta Vaasan kaupungin palveluista ja toiminnasta.",
+      "type": "Description"
+    },
+    {
+      "language": "fi",
+      "value": "Vaasan Palautepalvelussa voit antaa palautetta Vaasan kaupungin palveluista ja toiminnasta.",
+      "type": "Summary"
+    },
+    {
+      "language": "sv",
+      "value": "Du kan ge respons om Vasa stads service och verksamhet.",
+      "type": "Summary"
+    },
+    {
+      "language": "sv",
+      "value": "Du kan ge respons om Vasa stads service och verksamhet.",
+      "type": "Description"
+    }
+  ],
+  "areaType": "LimitedType",
+  "publishingStatus": "Published",
+  "modified": "2017-10-31T08:15:43.515627",
+  "id": "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+  "signatureQuantity": 0,
+  "requiresAuthentication": false
 }

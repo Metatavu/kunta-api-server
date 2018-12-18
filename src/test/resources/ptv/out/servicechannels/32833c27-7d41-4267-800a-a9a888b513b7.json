@@ -1,118 +1,146 @@
 {
-  "sourceId" : null,
-  "webPages" : [ ],
-  "addresses" : [ {
-    "type" : "Location",
-    "subType" : "Single",
-    "postOfficeBoxAddress" : null,
-    "streetAddress" : {
-      "street" : [ {
-        "value" : "Palvan koulutie",
-        "language" : "fi"
-      } ],
-      "streetNumber" : "9",
-      "postalCode" : "21195",
-      "postOffice" : [ {
-        "value" : "VELKUA",
-        "language" : "sv"
-      }, {
-        "value" : "VELKUA",
-        "language" : "fi"
-      } ],
-      "municipality" : null,
-      "additionalInformation" : [ ],
-      "latitude" : "6715111.963",
-      "longitude" : "206871.995",
-      "coordinateState" : "Ok"
+  "sourceId": null,
+  "webPages": [],
+  "addresses": [
+    {
+      "type": "Location",
+      "subType": "Single",
+      "postOfficeBoxAddress": null,
+      "streetAddress": {
+        "street": [
+          {
+            "value": "Palvan koulutie",
+            "language": "fi"
+          }
+        ],
+        "streetNumber": "9",
+        "postalCode": "21195",
+        "postOffice": [
+          {
+            "value": "VELKUA",
+            "language": "sv"
+          },
+          {
+            "value": "VELKUA",
+            "language": "fi"
+          }
+        ],
+        "municipality": null,
+        "additionalInformation": [],
+        "latitude": "6715111.963",
+        "longitude": "206871.995",
+        "coordinateState": "Ok"
+      },
+      "locationAbroad": null,
+      "multipointLocation": null,
+      "entrances": null,
+      "country": "FI"
+    }
+  ],
+  "languages": [
+    "fi"
+  ],
+  "areas": [
+    {
+      "type": "Municipality",
+      "code": null,
+      "name": null,
+      "municipalities": [
+        {
+          "code": "529",
+          "name": [
+            {
+              "value": "Naantali",
+              "language": "fi"
+            },
+            {
+              "value": "Nådendal",
+              "language": "sv"
+            },
+            {
+              "value": "Naantali",
+              "language": "en"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "services": [
+    {
+      "service": {
+        "id": "4ec69c86-a8b3-46de-90e0-2d614c2982f8",
+        "name": "Kouluterveydenhuollon palvelut"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
     },
-    "locationAbroad" : null,
-    "multipointLocation" : null,
-    "entrances" : null,
-    "country" : "FI"
-  } ],
-  "languages" : [ "fi" ],
-  "areas" : [ {
-    "type" : "Municipality",
-    "code" : null,
-    "name" : null,
-    "municipalities" : [ {
-      "code" : "529",
-      "name" : [ {
-        "value" : "Naantali",
-        "language" : "fi"
-      }, {
-        "value" : "Nådendal",
-        "language" : "sv"
-      }, {
-        "value" : "Naantali",
-        "language" : "en"
-      } ]
-    } ]
-  } ],
-  "services" : [ {
-    "service" : {
-      "id" : "4ec69c86-a8b3-46de-90e0-2d614c2982f8",
-      "name" : "Kouluterveydenhuollon palvelut"
+    {
+      "service": {
+        "id": "c2f928f7-c123-4f04-bdfc-7cf822b5de88",
+        "name": "Rokotuspalvelut"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
     },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "c2f928f7-c123-4f04-bdfc-7cf822b5de88",
-      "name" : "Rokotuspalvelut"
+    {
+      "service": {
+        "id": "ea3af438-bc77-49da-8f0c-2f217eee491f",
+        "name": "Perusopetuksen oppilashuolto"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    }
+  ],
+  "phoneNumbers": [
+    {
+      "type": "Phone",
+      "additionalInformation": null,
+      "serviceChargeType": "Chargeable",
+      "chargeDescription": null,
+      "prefixNumber": "+358",
+      "isFinnishServiceNumber": false,
+      "number": "409000864",
+      "language": "fi"
+    }
+  ],
+  "organizationId": "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "emails": [],
+  "serviceChannelNames": [
+    {
+      "language": "fi",
+      "value": "Velkuan kouluterveydenhoitajan vastaanotto",
+      "type": "Name"
+    }
+  ],
+  "serviceHours": [],
+  "serviceChannelType": "ServiceLocation",
+  "serviceChannelDescriptions": [
+    {
+      "language": "fi",
+      "value": "Kouluterveydenhoitajan vastaanotto on Velkuan koululla torstaisin. Kouluterveydenhoitaja on oppilaan luottohenkilö, jonka puoleen voi kääntyä kaikissa oppilaan terveyttä koskevissa asioissa.",
+      "type": "Description"
     },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "ea3af438-bc77-49da-8f0c-2f217eee491f",
-      "name" : "Perusopetuksen oppilashuolto"
-    },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  } ],
-  "phoneNumbers" : [ {
-    "type" : "Phone",
-    "additionalInformation" : null,
-    "serviceChargeType" : "Chargeable",
-    "chargeDescription" : null,
-    "prefixNumber" : "+358",
-    "isFinnishServiceNumber" : false,
-    "number" : "409000864",
-    "language" : "fi"
-  } ],
-  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
-  "emails" : [ ],
-  "serviceChannelNames" : [ {
-    "language" : "fi",
-    "value" : "Velkuan kouluterveydenhoitajan vastaanotto",
-    "type" : "Name"
-  } ],
-  "serviceHours" : [ ],
-  "serviceChannelType" : "ServiceLocation",
-  "serviceChannelDescriptions" : [ {
-    "language" : "fi",
-    "value" : "Kouluterveydenhoitajan vastaanotto on Velkuan koululla torstaisin. Kouluterveydenhoitaja on oppilaan luottohenkilö, jonka puoleen voi kääntyä kaikissa oppilaan terveyttä koskevissa asioissa.",
-    "type" : "Description"
-  }, {
-    "language" : "fi",
-    "value" : "Kouluterveydenhoitajan vastaanotto on Velkuan koululla torstaisin.",
-    "type" : "Summary"
-  } ],
-  "areaType" : "LimitedType",
-  "publishingStatus" : "Published",
-  "modified" : "2018-03-06T08:00:01.2248",
-  "id" : "32833c27-7d41-4267-800a-a9a888b513b7"
+    {
+      "language": "fi",
+      "value": "Kouluterveydenhoitajan vastaanotto on Velkuan koululla torstaisin.",
+      "type": "Summary"
+    }
+  ],
+  "areaType": "LimitedType",
+  "publishingStatus": "Published",
+  "modified": "2018-03-06T08:00:01.2248",
+  "id": "32833c27-7d41-4267-800a-a9a888b513b7"
 }

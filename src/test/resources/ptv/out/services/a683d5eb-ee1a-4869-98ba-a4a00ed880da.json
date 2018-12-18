@@ -1,179 +1,232 @@
 {
-  "id" : "a683d5eb-ee1a-4869-98ba-a4a00ed880da",
-  "sourceId" : null,
-  "generalDescriptionId" : null,
-  "type" : "Service",
-  "fundingType" : "PubliclyFunded",
-  "serviceNames" : [ {
-    "language" : "fi",
-    "value" : "VTJ-rajapinta",
-    "type" : "Name"
-  }, {
-    "language" : "fi",
-    "value" : "VTJ-tietopalvelurajapinta",
-    "type" : "AlternativeName"
-  } ],
-  "serviceChargeType" : null,
-  "areaType" : "Nationwide",
-  "areas" : [ ],
-  "serviceDescriptions" : [ {
-    "language" : "fi",
-    "value" : "VTJ-rajapinnan kautta asiakkaan oma sovellus voi hakea tietoa väestötietojärjestelmästä.",
-    "type" : "Summary"
-  }, {
-    "language" : "fi",
-    "value" : "VTJ-rajapinnan kautta asiakkaan oma sovellus voi hakea tietoa väestötietojärjestelmästä. Rajapinta toimii ympäri vuorokauden seitsemänä päivänä viikossa. Tiedot välitetään XML-sanomina WebService – rajapinnan kautta. Järjestelmien väliset yhteydet tunnistetaan palvelinvarmenteilla. Tietojen siirto tapahtuu HTTPS –protokollan mukaisesti TLS-protokollalla salattuna. ",
-    "type" : "Description"
-  }, {
-    "language" : "fi",
-    "value" : "Maksullinen palvelu, julkishallinnolle pääsääntöisesti maksuton perustamiskustannuksia lukuun ottamatta (sovelletaan voimassa olevaa maksuasetusta).",
-    "type" : "ChargeTypeAdditionalInfo"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "DeadLine"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ProcessingTime"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ValidityTime"
-  }, {
-    "language" : "fi",
-    "value" : "VTJ-rajapinnan käyttöönottoon vaadittavaa tietolupaa haetaan Väestörekisterikeskukselta. Tietolupahakemuksessa on ilmoitettava haettavien tietojen käyttötarkoitus ja hakemuksen yhteydessä on annettava selvitys tietojen käytöstä ja suojauksesta. \n\nVTJ-rajapinnan ja asiakkaan väliset yhteydet tunnistetaan palvelinvarmenteilla. Palvelinvarmenteen on oltava luotetun tahon myöntämä ja sillä on oltava julkisesti saatavilla oleva sulkulistapalvelu. Palvelinvarmenteen voi hankkia maksutta Väestörekisterikeskukselta. Hakemuslomakkeet löytyvät Väestörekisterikeskuksen asiakassivustolta: www.eevertti.vrk.fi \n",
-    "type" : "UserInstruction"
-  } ],
-  "languages" : [ "sv", "fi" ],
-  "serviceClasses" : [ {
-    "name" : [ {
-      "value" : "Government (state and local) registers and databases",
-      "language" : "en"
-    }, {
-      "value" : "Rekisterit ja tietokannat",
-      "language" : "fi"
-    }, {
-      "value" : "Register och databaser",
-      "language" : "sv"
-    } ],
-    "description" : [ {
-      "value" : "Denna underservicegrupp innehåller lagenligt utnyttjande av innehållet i den offentliga förvaltningens register och databaser som enstaka informationsinlämningar eller som automatiskt sambruk av information mellan systemen.",
-      "language" : "sv"
-    }, {
-      "value" : "Tämä alapalveluluokka sisältää julkishallinnon rekisterien ja tietokantojen sisältämän aineiston lainmukaisen, palveluluonteisen hyödyntämisen yksittäisinä tietoluovutuksina tai koneellisena tietojen yhteiskäyttönä järjestelmien välillä.",
-      "language" : "fi"
-    }, {
-      "value" : "This service subclass features services that facilitate legal disclosures of information from public sector registers and databases either as individual instances or mass information exchange between information systems.",
-      "language" : "en"
-    } ],
-    "code" : "P9.3",
-    "ontologyType" : "PTVL",
-    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1219",
-    "parentId" : "95f29e15-fb54-4ac2-8c9b-fac6ae3121fa",
-    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1095"
-  } ],
-  "ontologyTerms" : [ {
-    "name" : [ {
-      "value" : "befolkningsdata",
-      "language" : "sv"
-    }, {
-      "value" : "väestötiedot",
-      "language" : "fi"
-    }, {
-      "value" : "population data",
-      "language" : "en"
-    } ],
-    "code" : null,
-    "ontologyType" : "JUPO",
-    "uri" : "http://www.yso.fi/onto/koko/p55228",
-    "parentId" : null,
-    "parentUri" : "http://www.yso.fi/onto/koko/p34386"
-  } ],
-  "targetGroups" : [ {
-    "name" : [ {
-      "value" : "Yritykset ja yhteisöt",
-      "language" : "fi"
-    }, {
-      "value" : "Businesses and non-government organizations",
-      "language" : "en"
-    }, {
-      "value" : "Företag och samfund",
-      "language" : "sv"
-    } ],
-    "code" : "KR2",
-    "ontologyType" : "TARGETGROUP",
-    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008",
-    "parentId" : null,
-    "parentUri" : null
-  }, {
-    "name" : [ {
-      "value" : "Viranomaiset",
-      "language" : "fi"
-    }, {
-      "value" : "Authorities",
-      "language" : "en"
-    }, {
-      "value" : "Myndigheter",
-      "language" : "sv"
-    } ],
-    "code" : "KR3",
-    "ontologyType" : "TARGETGROUP",
-    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2017",
-    "parentId" : null,
-    "parentUri" : null
-  } ],
-  "lifeEvents" : [ ],
-  "industrialClasses" : [ ],
-  "legislation" : [ ],
-  "keywords" : [ {
-    "value" : "sovelluskysely",
-    "language" : "fi"
-  } ],
-  "requirements" : [ {
-    "value" : "Väestötietojärjestelmän tiedot eivät ole julkisia, ja niiden käyttö edellyttää aina Väestörekisterikeskuksen käyttäjäorganisaatiolle myöntämää tietolupaa sekä käyttäjäorganisaation sitoutumista luvan ehtoihin. Tietoluvassa on määritelty luvansaajalle myönnetyt tietoryhmät, tietojen käyttötarkoitus sekä muut tarpeelliset ehdot. Lainsäädäntö ja tietosuojasäännökset ohjaavat sitä, mitä tietoja voidaan kyseessä olevaan toimintaan luovuttaa. Luvan saajan tulee tutustua myönnetyn tietoluvan ehtoihin ja varmistaa, että väestötietojärjestelmän tietoja käsiteltäessä noudatetaan tietosuojaa ja tietojenkäsittelyn turvallisuutta koskevaa lainsäädäntöä ja viranomaisten määräyksiä. Väestötietojärjestelmästä saatuja tietoja ei saa luovuttaa kolmannelle osapuolelle ilman Väestörekisterikeskuksen tapauskohtaisesti myöntämää lupaa. \n ",
-    "language" : "fi"
-  } ],
-  "serviceChannels" : [ {
-    "serviceChannel" : {
-      "id" : "80f6bcb5-e224-4041-97da-95b6936878fe",
-      "name" : "Väestörekisterikeskuksen verkkoasiointi"
+  "id": "a683d5eb-ee1a-4869-98ba-a4a00ed880da",
+  "sourceId": null,
+  "generalDescriptionId": null,
+  "type": "Service",
+  "fundingType": "PubliclyFunded",
+  "serviceNames": [
+    {
+      "language": "fi",
+      "value": "VTJ-rajapinta",
+      "type": "Name"
     },
-    "serviceChargeType" : null,
-    "description" : [ {
-      "language" : "fi",
-      "value" : null,
-      "type" : "Description"
-    }, {
-      "language" : "fi",
-      "value" : null,
-      "type" : "ChargeTypeAdditionalInfo"
-    } ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  } ],
-  "organizations" : [ {
-    "provisionType" : null,
-    "organization" : {
-      "id" : "b458d033-042d-4cbe-b030-34e81da28821",
-      "name" : "Väestörekisterikeskus"
+    {
+      "language": "fi",
+      "value": "VTJ-tietopalvelurajapinta",
+      "type": "AlternativeName"
+    }
+  ],
+  "serviceChargeType": null,
+  "areaType": "Nationwide",
+  "areas": [],
+  "serviceDescriptions": [
+    {
+      "language": "fi",
+      "value": "VTJ-rajapinnan kautta asiakkaan oma sovellus voi hakea tietoa väestötietojärjestelmästä.",
+      "type": "Summary"
     },
-    "roleType" : "Responsible",
-    "additionalInformation" : [ ]
-  }, {
-    "provisionType" : "SelfProducedServices",
-    "organization" : {
-      "id" : "b458d033-042d-4cbe-b030-34e81da28821",
-      "name" : "Väestörekisterikeskus"
+    {
+      "language": "fi",
+      "value": "VTJ-rajapinnan kautta asiakkaan oma sovellus voi hakea tietoa väestötietojärjestelmästä. Rajapinta toimii ympäri vuorokauden seitsemänä päivänä viikossa. Tiedot välitetään XML-sanomina WebService – rajapinnan kautta. Järjestelmien väliset yhteydet tunnistetaan palvelinvarmenteilla. Tietojen siirto tapahtuu HTTPS –protokollan mukaisesti TLS-protokollalla salattuna. ",
+      "type": "Description"
     },
-    "roleType" : "Producer",
-    "additionalInformation" : [ ]
-  } ],
-  "serviceVouchersInUse" : false,
-  "serviceVouchers" : [ ],
-  "serviceCollections" : [ ],
-  "publishingStatus" : "Published",
-  "modified" : "2018-05-03T11:53:58.162746Z"
+    {
+      "language": "fi",
+      "value": "Maksullinen palvelu, julkishallinnolle pääsääntöisesti maksuton perustamiskustannuksia lukuun ottamatta (sovelletaan voimassa olevaa maksuasetusta).",
+      "type": "ChargeTypeAdditionalInfo"
+    },
+    {
+      "language": "fi",
+      "value": null,
+      "type": "DeadLine"
+    },
+    {
+      "language": "fi",
+      "value": null,
+      "type": "ProcessingTime"
+    },
+    {
+      "language": "fi",
+      "value": null,
+      "type": "ValidityTime"
+    },
+    {
+      "language": "fi",
+      "value": "VTJ-rajapinnan käyttöönottoon vaadittavaa tietolupaa haetaan Väestörekisterikeskukselta. Tietolupahakemuksessa on ilmoitettava haettavien tietojen käyttötarkoitus ja hakemuksen yhteydessä on annettava selvitys tietojen käytöstä ja suojauksesta. \n\nVTJ-rajapinnan ja asiakkaan väliset yhteydet tunnistetaan palvelinvarmenteilla. Palvelinvarmenteen on oltava luotetun tahon myöntämä ja sillä on oltava julkisesti saatavilla oleva sulkulistapalvelu. Palvelinvarmenteen voi hankkia maksutta Väestörekisterikeskukselta. Hakemuslomakkeet löytyvät Väestörekisterikeskuksen asiakassivustolta: www.eevertti.vrk.fi \n",
+      "type": "UserInstruction"
+    }
+  ],
+  "languages": [
+    "sv",
+    "fi"
+  ],
+  "serviceClasses": [
+    {
+      "name": [
+        {
+          "value": "Government (state and local) registers and databases",
+          "language": "en"
+        },
+        {
+          "value": "Rekisterit ja tietokannat",
+          "language": "fi"
+        },
+        {
+          "value": "Register och databaser",
+          "language": "sv"
+        }
+      ],
+      "description": [
+        {
+          "value": "Denna underservicegrupp innehåller lagenligt utnyttjande av innehållet i den offentliga förvaltningens register och databaser som enstaka informationsinlämningar eller som automatiskt sambruk av information mellan systemen.",
+          "language": "sv"
+        },
+        {
+          "value": "Tämä alapalveluluokka sisältää julkishallinnon rekisterien ja tietokantojen sisältämän aineiston lainmukaisen, palveluluonteisen hyödyntämisen yksittäisinä tietoluovutuksina tai koneellisena tietojen yhteiskäyttönä järjestelmien välillä.",
+          "language": "fi"
+        },
+        {
+          "value": "This service subclass features services that facilitate legal disclosures of information from public sector registers and databases either as individual instances or mass information exchange between information systems.",
+          "language": "en"
+        }
+      ],
+      "code": "P9.3",
+      "ontologyType": "PTVL",
+      "uri": "http://urn.fi/URN:NBN:fi:au:ptvl:v1219",
+      "parentId": "95f29e15-fb54-4ac2-8c9b-fac6ae3121fa",
+      "parentUri": "http://urn.fi/URN:NBN:fi:au:ptvl:v1095"
+    }
+  ],
+  "ontologyTerms": [
+    {
+      "name": [
+        {
+          "value": "befolkningsdata",
+          "language": "sv"
+        },
+        {
+          "value": "väestötiedot",
+          "language": "fi"
+        },
+        {
+          "value": "population data",
+          "language": "en"
+        }
+      ],
+      "code": null,
+      "ontologyType": "JUPO",
+      "uri": "http://www.yso.fi/onto/koko/p55228",
+      "parentId": null,
+      "parentUri": "http://www.yso.fi/onto/koko/p34386"
+    }
+  ],
+  "targetGroups": [
+    {
+      "name": [
+        {
+          "value": "Yritykset ja yhteisöt",
+          "language": "fi"
+        },
+        {
+          "value": "Businesses and non-government organizations",
+          "language": "en"
+        },
+        {
+          "value": "Företag och samfund",
+          "language": "sv"
+        }
+      ],
+      "code": "KR2",
+      "ontologyType": "TARGETGROUP",
+      "uri": "http://urn.fi/URN:NBN:fi:au:ptvl:v2008",
+      "parentId": null,
+      "parentUri": null
+    },
+    {
+      "name": [
+        {
+          "value": "Viranomaiset",
+          "language": "fi"
+        },
+        {
+          "value": "Authorities",
+          "language": "en"
+        },
+        {
+          "value": "Myndigheter",
+          "language": "sv"
+        }
+      ],
+      "code": "KR3",
+      "ontologyType": "TARGETGROUP",
+      "uri": "http://urn.fi/URN:NBN:fi:au:ptvl:v2017",
+      "parentId": null,
+      "parentUri": null
+    }
+  ],
+  "lifeEvents": [],
+  "industrialClasses": [],
+  "legislation": [],
+  "keywords": [
+    {
+      "value": "sovelluskysely",
+      "language": "fi"
+    }
+  ],
+  "requirements": [
+    {
+      "value": "Väestötietojärjestelmän tiedot eivät ole julkisia, ja niiden käyttö edellyttää aina Väestörekisterikeskuksen käyttäjäorganisaatiolle myöntämää tietolupaa sekä käyttäjäorganisaation sitoutumista luvan ehtoihin. Tietoluvassa on määritelty luvansaajalle myönnetyt tietoryhmät, tietojen käyttötarkoitus sekä muut tarpeelliset ehdot. Lainsäädäntö ja tietosuojasäännökset ohjaavat sitä, mitä tietoja voidaan kyseessä olevaan toimintaan luovuttaa. Luvan saajan tulee tutustua myönnetyn tietoluvan ehtoihin ja varmistaa, että väestötietojärjestelmän tietoja käsiteltäessä noudatetaan tietosuojaa ja tietojenkäsittelyn turvallisuutta koskevaa lainsäädäntöä ja viranomaisten määräyksiä. Väestötietojärjestelmästä saatuja tietoja ei saa luovuttaa kolmannelle osapuolelle ilman Väestörekisterikeskuksen tapauskohtaisesti myöntämää lupaa. \n ",
+      "language": "fi"
+    }
+  ],
+  "serviceChannels": [
+    {
+      "serviceChannel": {
+        "id": "80f6bcb5-e224-4041-97da-95b6936878fe",
+        "name": "Väestörekisterikeskuksen verkkoasiointi"
+      },
+      "serviceChargeType": null,
+      "description": [
+        {
+          "language": "fi",
+          "value": null,
+          "type": "Description"
+        },
+        {
+          "language": "fi",
+          "value": null,
+          "type": "ChargeTypeAdditionalInfo"
+        }
+      ],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    }
+  ],
+  "organizations": [
+    {
+      "provisionType": null,
+      "organization": {
+        "id": "b458d033-042d-4cbe-b030-34e81da28821",
+        "name": "Väestörekisterikeskus"
+      },
+      "roleType": "Responsible",
+      "additionalInformation": []
+    },
+    {
+      "provisionType": "SelfProducedServices",
+      "organization": {
+        "id": "b458d033-042d-4cbe-b030-34e81da28821",
+        "name": "Väestörekisterikeskus"
+      },
+      "roleType": "Producer",
+      "additionalInformation": []
+    }
+  ],
+  "serviceVouchersInUse": false,
+  "serviceVouchers": [],
+  "serviceCollections": [],
+  "publishingStatus": "Published",
+  "modified": "2018-05-03T11:53:58.162746Z"
 }

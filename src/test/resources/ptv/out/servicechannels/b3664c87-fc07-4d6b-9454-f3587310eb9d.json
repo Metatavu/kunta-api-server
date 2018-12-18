@@ -1,55 +1,67 @@
 {
-  "sourceId" : null,
-  "webPages" : [ {
-    "orderNumber" : "0",
-    "url" : "http://www.naantali.fi/nuoriso/fi_FI/etsiva/",
-    "value" : null,
-    "language" : "fi"
-  } ],
-  "languages" : [ "fi" ],
-  "supportPhones" : [ ],
-  "supportEmails" : [ ],
-  "services" : [ {
-    "service" : {
-      "id" : "228738ee-754a-49b7-8240-2b84c5ca2970",
-      "name" : "Etsivä nuorisotyö"
+  "sourceId": null,
+  "webPages": [
+    {
+      "orderNumber": "0",
+      "url": "http://www.naantali.fi/nuoriso/fi_FI/etsiva/",
+      "value": null,
+      "language": "fi"
+    }
+  ],
+  "languages": [
+    "fi"
+  ],
+  "supportPhones": [],
+  "supportEmails": [],
+  "services": [
+    {
+      "service": {
+        "id": "228738ee-754a-49b7-8240-2b84c5ca2970",
+        "name": "Etsivä nuorisotyö"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
     },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "25b6bae1-fa45-4fe4-8ea1-36260c46b2ce",
-      "name" : "Nuorisotyö"
+    {
+      "service": {
+        "id": "25b6bae1-fa45-4fe4-8ea1-36260c46b2ce",
+        "name": "Nuorisotyö"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    }
+  ],
+  "organizationId": "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "serviceChannelNames": [
+    {
+      "language": "fi",
+      "value": "Etsivä nuorisotyö Naantalin nettisivuilla",
+      "type": "Name"
+    }
+  ],
+  "serviceHours": [],
+  "serviceChannelType": "WebPage",
+  "serviceChannelDescriptions": [
+    {
+      "language": "fi",
+      "value": "Etsivän nuorisotyön nettisivuilta löydät tietoa siitä, mitä etsivä nuorisotyö on, kenelle se on tarkoitettu, ja kuka sitä tekee.",
+      "type": "Summary"
     },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  } ],
-  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
-  "serviceChannelNames" : [ {
-    "language" : "fi",
-    "value" : "Etsivä nuorisotyö Naantalin nettisivuilla",
-    "type" : "Name"
-  } ],
-  "serviceHours" : [ ],
-  "serviceChannelType" : "WebPage",
-  "serviceChannelDescriptions" : [ {
-    "language" : "fi",
-    "value" : "Etsivän nuorisotyön nettisivuilta löydät tietoa siitä, mitä etsivä nuorisotyö on, kenelle se on tarkoitettu, ja kuka sitä tekee.",
-    "type" : "Summary"
-  }, {
-    "language" : "fi",
-    "value" : "Etsivän nuorisotyön nettisivuilta löydät tietoa siitä, mitä etsivä nuorisotyö on, kenelle se on tarkoitettu, ja kuka sitä tekee. Löydät sivuilta myös etsivän nuorisotyöntekijän yhteystiedot.",
-    "type" : "Description"
-  } ],
-  "publishingStatus" : "Published",
-  "modified" : "2017-10-31T08:15:43.515627",
-  "id" : "b3664c87-fc07-4d6b-9454-f3587310eb9d"
+    {
+      "language": "fi",
+      "value": "Etsivän nuorisotyön nettisivuilta löydät tietoa siitä, mitä etsivä nuorisotyö on, kenelle se on tarkoitettu, ja kuka sitä tekee. Löydät sivuilta myös etsivän nuorisotyöntekijän yhteystiedot.",
+      "type": "Description"
+    }
+  ],
+  "publishingStatus": "Published",
+  "modified": "2017-10-31T08:15:43.515627",
+  "id": "b3664c87-fc07-4d6b-9454-f3587310eb9d"
 }

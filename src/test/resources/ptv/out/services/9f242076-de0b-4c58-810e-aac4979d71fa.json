@@ -1,254 +1,328 @@
 {
-  "id" : "9f242076-de0b-4c58-810e-aac4979d71fa",
-  "sourceId" : null,
-  "generalDescriptionId" : null,
-  "type" : "Service",
-  "fundingType" : "PubliclyFunded",
-  "serviceNames" : [ {
-    "language" : "fi",
-    "value" : "Päivystävän kriisiryhmän palvelut",
-    "type" : "Name"
-  }, {
-    "language" : "fi",
-    "value" : "Kriisiryhmän päivystys",
-    "type" : "AlternativeName"
-  }, {
-    "language" : "sv",
-    "value" : "Krisgruppens jour",
-    "type" : "Name"
-  } ],
-  "serviceChargeType" : "FreeOfCharge",
-  "areaType" : "LimitedType",
-  "areas" : [ {
-    "type" : "Municipality",
-    "code" : null,
-    "name" : null,
-    "municipalities" : [ {
-      "code" : "905",
-      "name" : [ {
-        "value" : "Vaasa",
-        "language" : "fi"
-      }, {
-        "value" : "Vasa",
-        "language" : "sv"
-      }, {
-        "value" : "Vaasa",
-        "language" : "en"
-      } ]
-    } ]
-  } ],
-  "serviceDescriptions" : [ {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ValidityTime"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "DeadLine"
-  }, {
-    "language" : "sv",
-    "value" : null,
-    "type" : "ProcessingTime"
-  }, {
-    "language" : "fi",
-    "value" : "Kriisiryhmä päivystää jokaisena viikonpäivänä klo 8-16. Muina aikoina voi jättää soittopyyntöjä.",
-    "type" : "UserInstruction"
-  }, {
-    "language" : "sv",
-    "value" : null,
-    "type" : "ChargeTypeAdditionalInfo"
-  }, {
-    "language" : "sv",
-    "value" : null,
-    "type" : "DeadLine"
-  }, {
-    "language" : "fi",
-    "value" : "Kriisiryhmä tarjoaa henkistä ensiapua traumaattisen tilanteen kokeneille.",
-    "type" : "Summary"
-  }, {
-    "language" : "sv",
-    "value" : null,
-    "type" : "ValidityTime"
-  }, {
-    "language" : "fi",
-    "value" : "Kriisiryhmä tarjoaa henkistä ensiapua traumaattisen tilanteen kokeneille. Tällaisia tilanteita ovat psyykkisesti kuormittavat asiat kuten omaisen tai läheisen yllättävä kuolema, itsemurha sekä vakavat läheltä piti –tilanteet.\n\nHenkilökohtaiseksi kriisiksi määritellään voimakkaasti psyykkisesti kuormittavat asiat kuten omaisen tai läheisen kuolema, tapaturma, onnettomuus tai itsemurha. Myös uhrin omaiset, ystävät tai esim. onnettomuuden silminnäkijät voivat soittaa kriisipuhelimeen.\n\nKriisiryhmän toimintamuotona on ns. jälkipuinti-istunto, joka pyritään järjestämään traumaattisen tilanteen kokeneille 1-3 vrk kuluttua.\n\nMuunlaisissa kriiseissä esim. äkilliset muutokset perhesuhteissa kuten avioero, perheen sisäisissä vaikeuksissa tai vakavasti sairastuessa, voit ottaa yhteyttä tapauksesta riippuen Mielenterveysasema Horisonttiin, turvakotiin tai kaupungin perheneuvolaan. ",
-    "type" : "Description"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ProcessingTime"
-  }, {
-    "language" : "sv",
-    "value" : "Krisgruppen dejourerar kl. 8-16 på vardagar samt helgdagar. Ringbud kan lämnas dygnet runt.",
-    "type" : "UserInstruction"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ChargeTypeAdditionalInfo"
-  }, {
-    "language" : "sv",
-    "value" : "En krisgrupp erbjuder psykisk första hjälpen för personer som upplevt en traumatisk situation.",
-    "type" : "Summary"
-  }, {
-    "language" : "sv",
-    "value" : "En krisgrupp erbjuder psykisk första hjälpen för personer som upplevt en traumatisk situation. Sådana situationer är psykiskt belastande saker såsom en anhörigs eller närståendes plötsliga död, självmord samt allvariga tillbudssituationer. Krisgruppen sammanträder 1 – 3 dygn efter att tråkiga och chockerande händelser inträffat för att diskutera med den person/de personer som behöver hjälp.\n\nMed personlig kris avses något som psykiskt belastar en person väldigt kraftigt såsom en anhörigs eller en nära anhörigs bortgång, olyckshändels eller självmord. I akuta och uppskakande dödsfall, såsom olyckor och självmord, kan offrets anhöriga, vänner och t.ex. personer som bevittnat olyckan ringa kristelefon.\n\nI kriser av annan typ t.ex. akuta förändringar i familjeförhållanden såsom skilsmässa, interna svårigheter i familjen eller allvarliga insjukningar, kan man beroende av fallet kontakta t.ex. psykologerna på Center för mental- och beroendevård Horisonten, skyddshemmet eller stadens familjerådgivning.\n\n",
-    "type" : "Description"
-  } ],
-  "languages" : [ "fi", "sv" ],
-  "serviceClasses" : [ {
-    "name" : [ {
-      "value" : "Päihde- ja mielenterveyspalvelut",
-      "language" : "fi"
-    }, {
-      "value" : "Intoxicant abuse and mental health services",
-      "language" : "en"
-    }, {
-      "value" : "Tjänster för missbrukare och mentalvårdstjänster",
-      "language" : "sv"
-    } ],
-    "description" : [ {
-      "value" : "Tjänster som hör till denna serviceundergrupp har anvisats för personer som insjuknat i missbrukar- och övriga beroendsjukdomar och för de som lider av mentala problem. Gruppens tjänster kan vara såväl vårdande, stödjande som förebyggande.",
-      "language" : "sv"
-    }, {
-      "value" : "Tähän palvelualaluokkaan kuuluvat palvelut on kohdennettu päihde- ja muista riippuvuusairauksia sairastaville ja mielenterveyden ongelmista kärsiville. Luokan palvelut voivat olla niin hoitavia, tukevia kuin ennalta ehkäiseviä.",
-      "language" : "fi"
-    }, {
-      "value" : "The services in this subclass are intended for persons with intoxicant and other addictions or mental health problems. They may include treatment, support and prevention.",
-      "language" : "en"
-    } ],
-    "code" : "P5.7",
-    "ontologyType" : "PTVL",
-    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1045",
-    "parentId" : "76ca210c-5183-4d41-b796-50612d5930c7",
-    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1038"
-  } ],
-  "ontologyTerms" : [ {
-    "name" : [ {
-      "value" : "psykiskt trauma",
-      "language" : "sv"
-    }, {
-      "value" : "psyykkinen trauma",
-      "language" : "fi"
-    }, {
-      "value" : "psychic trauma",
-      "language" : "en"
-    } ],
-    "code" : null,
-    "ontologyType" : "TERO",
-    "uri" : "http://www.yso.fi/onto/koko/p62523",
-    "parentId" : null,
-    "parentUri" : "http://www.yso.fi/onto/koko/p34134"
-  }, {
-    "name" : [ {
-      "value" : "döden",
-      "language" : "sv"
-    }, {
-      "value" : "kuolema",
-      "language" : "fi"
-    }, {
-      "value" : "death",
-      "language" : "en"
-    } ],
-    "code" : null,
-    "ontologyType" : "JUPO",
-    "uri" : "http://www.yso.fi/onto/koko/p34462",
-    "parentId" : null,
-    "parentUri" : "http://www.yso.fi/onto/koko/p73177;http://www.yso.fi/onto/koko/p25311"
-  }, {
-    "name" : [ {
-      "value" : "kriisipsykologia",
-      "language" : "fi"
-    } ],
-    "code" : null,
-    "ontologyType" : "TERO",
-    "uri" : "http://www.yso.fi/onto/koko/p59475",
-    "parentId" : null,
-    "parentUri" : "http://www.yso.fi/onto/koko/p32803"
-  } ],
-  "targetGroups" : [ {
-    "name" : [ {
-      "value" : "Kansalaiset",
-      "language" : "fi"
-    }, {
-      "value" : "Citizens",
-      "language" : "en"
-    }, {
-      "value" : "Medborgare",
-      "language" : "sv"
-    } ],
-    "code" : "KR1",
-    "ontologyType" : "TARGETGROUP",
-    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
-    "parentId" : null,
-    "parentUri" : null
-  } ],
-  "lifeEvents" : [ {
-    "name" : [ {
-      "value" : "Death of a close family member",
-      "language" : "en"
-    }, {
-      "value" : "Omaisen kuolema",
-      "language" : "fi"
-    }, {
-      "value" : "När en anhörig avlider",
-      "language" : "sv"
-    } ],
-    "code" : "KE14",
-    "ontologyType" : "LIFESITUATION",
-    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v3007",
-    "parentId" : null,
-    "parentUri" : null
-  } ],
-  "industrialClasses" : [ ],
-  "legislation" : [ ],
-  "keywords" : [ ],
-  "requirements" : [ {
-    "value" : null,
-    "language" : "fi"
-  } ],
-  "serviceChannels" : [ {
-    "serviceChannel" : {
-      "id" : "2e7f0b8d-4943-4fd4-8a22-7b02830be16e",
-      "name" : "Kriisiryhmän päivystysnumero"
+  "id": "9f242076-de0b-4c58-810e-aac4979d71fa",
+  "sourceId": null,
+  "generalDescriptionId": null,
+  "type": "Service",
+  "fundingType": "PubliclyFunded",
+  "serviceNames": [
+    {
+      "language": "fi",
+      "value": "Päivystävän kriisiryhmän palvelut",
+      "type": "Name"
     },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
-      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
-      "name" : "Vaasan Palautepalvelu"
+    {
+      "language": "fi",
+      "value": "Kriisiryhmän päivystys",
+      "type": "AlternativeName"
     },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  } ],
-  "organizations" : [ {
-    "provisionType" : null,
-    "organization" : {
-      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
-      "name" : "Vaasan kaupunki"
+    {
+      "language": "sv",
+      "value": "Krisgruppens jour",
+      "type": "Name"
+    }
+  ],
+  "serviceChargeType": "FreeOfCharge",
+  "areaType": "LimitedType",
+  "areas": [
+    {
+      "type": "Municipality",
+      "code": null,
+      "name": null,
+      "municipalities": [
+        {
+          "code": "905",
+          "name": [
+            {
+              "value": "Vaasa",
+              "language": "fi"
+            },
+            {
+              "value": "Vasa",
+              "language": "sv"
+            },
+            {
+              "value": "Vaasa",
+              "language": "en"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "serviceDescriptions": [
+    {
+      "language": "fi",
+      "value": null,
+      "type": "ValidityTime"
     },
-    "roleType" : "Responsible",
-    "additionalInformation" : [ ]
-  }, {
-    "provisionType" : "SelfProducedServices",
-    "organization" : {
-      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
-      "name" : "Vaasan kaupunki"
+    {
+      "language": "fi",
+      "value": null,
+      "type": "DeadLine"
     },
-    "roleType" : "Producer",
-    "additionalInformation" : [ ]
-  } ],
-  "serviceVouchersInUse" : false,
-  "serviceVouchers" : [ ],
-  "serviceCollections" : [ ],
-  "publishingStatus" : "Published",
-  "modified" : "2018-05-03T11:53:58.162746Z"
+    {
+      "language": "sv",
+      "value": null,
+      "type": "ProcessingTime"
+    },
+    {
+      "language": "fi",
+      "value": "Kriisiryhmä päivystää jokaisena viikonpäivänä klo 8-16. Muina aikoina voi jättää soittopyyntöjä.",
+      "type": "UserInstruction"
+    },
+    {
+      "language": "sv",
+      "value": null,
+      "type": "ChargeTypeAdditionalInfo"
+    },
+    {
+      "language": "sv",
+      "value": null,
+      "type": "DeadLine"
+    },
+    {
+      "language": "fi",
+      "value": "Kriisiryhmä tarjoaa henkistä ensiapua traumaattisen tilanteen kokeneille.",
+      "type": "Summary"
+    },
+    {
+      "language": "sv",
+      "value": null,
+      "type": "ValidityTime"
+    },
+    {
+      "language": "fi",
+      "value": "Kriisiryhmä tarjoaa henkistä ensiapua traumaattisen tilanteen kokeneille. Tällaisia tilanteita ovat psyykkisesti kuormittavat asiat kuten omaisen tai läheisen yllättävä kuolema, itsemurha sekä vakavat läheltä piti –tilanteet.\n\nHenkilökohtaiseksi kriisiksi määritellään voimakkaasti psyykkisesti kuormittavat asiat kuten omaisen tai läheisen kuolema, tapaturma, onnettomuus tai itsemurha. Myös uhrin omaiset, ystävät tai esim. onnettomuuden silminnäkijät voivat soittaa kriisipuhelimeen.\n\nKriisiryhmän toimintamuotona on ns. jälkipuinti-istunto, joka pyritään järjestämään traumaattisen tilanteen kokeneille 1-3 vrk kuluttua.\n\nMuunlaisissa kriiseissä esim. äkilliset muutokset perhesuhteissa kuten avioero, perheen sisäisissä vaikeuksissa tai vakavasti sairastuessa, voit ottaa yhteyttä tapauksesta riippuen Mielenterveysasema Horisonttiin, turvakotiin tai kaupungin perheneuvolaan. ",
+      "type": "Description"
+    },
+    {
+      "language": "fi",
+      "value": null,
+      "type": "ProcessingTime"
+    },
+    {
+      "language": "sv",
+      "value": "Krisgruppen dejourerar kl. 8-16 på vardagar samt helgdagar. Ringbud kan lämnas dygnet runt.",
+      "type": "UserInstruction"
+    },
+    {
+      "language": "fi",
+      "value": null,
+      "type": "ChargeTypeAdditionalInfo"
+    },
+    {
+      "language": "sv",
+      "value": "En krisgrupp erbjuder psykisk första hjälpen för personer som upplevt en traumatisk situation.",
+      "type": "Summary"
+    },
+    {
+      "language": "sv",
+      "value": "En krisgrupp erbjuder psykisk första hjälpen för personer som upplevt en traumatisk situation. Sådana situationer är psykiskt belastande saker såsom en anhörigs eller närståendes plötsliga död, självmord samt allvariga tillbudssituationer. Krisgruppen sammanträder 1 – 3 dygn efter att tråkiga och chockerande händelser inträffat för att diskutera med den person/de personer som behöver hjälp.\n\nMed personlig kris avses något som psykiskt belastar en person väldigt kraftigt såsom en anhörigs eller en nära anhörigs bortgång, olyckshändels eller självmord. I akuta och uppskakande dödsfall, såsom olyckor och självmord, kan offrets anhöriga, vänner och t.ex. personer som bevittnat olyckan ringa kristelefon.\n\nI kriser av annan typ t.ex. akuta förändringar i familjeförhållanden såsom skilsmässa, interna svårigheter i familjen eller allvarliga insjukningar, kan man beroende av fallet kontakta t.ex. psykologerna på Center för mental- och beroendevård Horisonten, skyddshemmet eller stadens familjerådgivning.\n\n",
+      "type": "Description"
+    }
+  ],
+  "languages": [
+    "fi",
+    "sv"
+  ],
+  "serviceClasses": [
+    {
+      "name": [
+        {
+          "value": "Päihde- ja mielenterveyspalvelut",
+          "language": "fi"
+        },
+        {
+          "value": "Intoxicant abuse and mental health services",
+          "language": "en"
+        },
+        {
+          "value": "Tjänster för missbrukare och mentalvårdstjänster",
+          "language": "sv"
+        }
+      ],
+      "description": [
+        {
+          "value": "Tjänster som hör till denna serviceundergrupp har anvisats för personer som insjuknat i missbrukar- och övriga beroendsjukdomar och för de som lider av mentala problem. Gruppens tjänster kan vara såväl vårdande, stödjande som förebyggande.",
+          "language": "sv"
+        },
+        {
+          "value": "Tähän palvelualaluokkaan kuuluvat palvelut on kohdennettu päihde- ja muista riippuvuusairauksia sairastaville ja mielenterveyden ongelmista kärsiville. Luokan palvelut voivat olla niin hoitavia, tukevia kuin ennalta ehkäiseviä.",
+          "language": "fi"
+        },
+        {
+          "value": "The services in this subclass are intended for persons with intoxicant and other addictions or mental health problems. They may include treatment, support and prevention.",
+          "language": "en"
+        }
+      ],
+      "code": "P5.7",
+      "ontologyType": "PTVL",
+      "uri": "http://urn.fi/URN:NBN:fi:au:ptvl:v1045",
+      "parentId": "76ca210c-5183-4d41-b796-50612d5930c7",
+      "parentUri": "http://urn.fi/URN:NBN:fi:au:ptvl:v1038"
+    }
+  ],
+  "ontologyTerms": [
+    {
+      "name": [
+        {
+          "value": "psykiskt trauma",
+          "language": "sv"
+        },
+        {
+          "value": "psyykkinen trauma",
+          "language": "fi"
+        },
+        {
+          "value": "psychic trauma",
+          "language": "en"
+        }
+      ],
+      "code": null,
+      "ontologyType": "TERO",
+      "uri": "http://www.yso.fi/onto/koko/p62523",
+      "parentId": null,
+      "parentUri": "http://www.yso.fi/onto/koko/p34134"
+    },
+    {
+      "name": [
+        {
+          "value": "döden",
+          "language": "sv"
+        },
+        {
+          "value": "kuolema",
+          "language": "fi"
+        },
+        {
+          "value": "death",
+          "language": "en"
+        }
+      ],
+      "code": null,
+      "ontologyType": "JUPO",
+      "uri": "http://www.yso.fi/onto/koko/p34462",
+      "parentId": null,
+      "parentUri": "http://www.yso.fi/onto/koko/p73177;http://www.yso.fi/onto/koko/p25311"
+    },
+    {
+      "name": [
+        {
+          "value": "kriisipsykologia",
+          "language": "fi"
+        }
+      ],
+      "code": null,
+      "ontologyType": "TERO",
+      "uri": "http://www.yso.fi/onto/koko/p59475",
+      "parentId": null,
+      "parentUri": "http://www.yso.fi/onto/koko/p32803"
+    }
+  ],
+  "targetGroups": [
+    {
+      "name": [
+        {
+          "value": "Kansalaiset",
+          "language": "fi"
+        },
+        {
+          "value": "Citizens",
+          "language": "en"
+        },
+        {
+          "value": "Medborgare",
+          "language": "sv"
+        }
+      ],
+      "code": "KR1",
+      "ontologyType": "TARGETGROUP",
+      "uri": "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+      "parentId": null,
+      "parentUri": null
+    }
+  ],
+  "lifeEvents": [
+    {
+      "name": [
+        {
+          "value": "Death of a close family member",
+          "language": "en"
+        },
+        {
+          "value": "Omaisen kuolema",
+          "language": "fi"
+        },
+        {
+          "value": "När en anhörig avlider",
+          "language": "sv"
+        }
+      ],
+      "code": "KE14",
+      "ontologyType": "LIFESITUATION",
+      "uri": "http://urn.fi/URN:NBN:fi:au:ptvl:v3007",
+      "parentId": null,
+      "parentUri": null
+    }
+  ],
+  "industrialClasses": [],
+  "legislation": [],
+  "keywords": [],
+  "requirements": [
+    {
+      "value": null,
+      "language": "fi"
+    }
+  ],
+  "serviceChannels": [
+    {
+      "serviceChannel": {
+        "id": "2e7f0b8d-4943-4fd4-8a22-7b02830be16e",
+        "name": "Kriisiryhmän päivystysnumero"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "serviceChannel": {
+        "id": "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+        "name": "Vaasan Palautepalvelu"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    }
+  ],
+  "organizations": [
+    {
+      "provisionType": null,
+      "organization": {
+        "id": "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+        "name": "Vaasan kaupunki"
+      },
+      "roleType": "Responsible",
+      "additionalInformation": []
+    },
+    {
+      "provisionType": "SelfProducedServices",
+      "organization": {
+        "id": "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+        "name": "Vaasan kaupunki"
+      },
+      "roleType": "Producer",
+      "additionalInformation": []
+    }
+  ],
+  "serviceVouchersInUse": false,
+  "serviceVouchers": [],
+  "serviceCollections": [],
+  "publishingStatus": "Published",
+  "modified": "2018-05-03T11:53:58.162746Z"
 }

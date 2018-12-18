@@ -1,215 +1,279 @@
 {
-  "id" : "9e63c517-812a-42a0-9e5b-3c1a0f0ff630",
-  "sourceId" : null,
-  "generalDescriptionId" : null,
-  "type" : "Service",
-  "fundingType" : "PubliclyFunded",
-  "serviceNames" : [ {
-    "language" : "fi",
-    "value" : "Poimintapalvelu",
-    "type" : "Name"
-  }, {
-    "language" : "fi",
-    "value" : "Otannat ja poiminnat",
-    "type" : "AlternativeName"
-  } ],
-  "serviceChargeType" : "Chargeable",
-  "areaType" : "Nationwide",
-  "areas" : [ ],
-  "serviceDescriptions" : [ {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ProcessingTime"
-  }, {
-    "language" : "fi",
-    "value" : "Poiminnat väestötietojärjestelmästä erilaisiin tarkoituksiin. Hakuehtoina voi olla sijainti, henkilöiden ikä, sukupuoli tms.",
-    "type" : "Summary"
-  }, {
-    "language" : "fi",
-    "value" : "Osa viranomaisten tietopalveluista on maksuttomia.",
-    "type" : "ChargeTypeAdditionalInfo"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "DeadLine"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ValidityTime"
-  }, {
-    "language" : "fi",
-    "value" : "Tietojen saamiseksi hakijaorganisaation on toimitettava Väestörekisterikeskukselle kirjallinen hakemus. Hakemuksen perusteella voidaan myöntää lupa tietojen käyttöön. Tietojen luovutuksesta, toimitusajasta ja -tavasta voidaan sopia erikseen.",
-    "type" : "UserInstruction"
-  }, {
-    "language" : "fi",
-    "value" : "Poimintapalvelussa väestötietojärjestelmästä poimitaan halutut kriteerit täyttäviä henkilöitä tai rakennuksia esimerkiksi kyselytutkimusta tai tiedotusta varten. Poimittuja henkilötietoja voidaan hyödyntää myös muun muassa rekisteripohjaisissa tutkimuksissa, joissa väestötietojärjestelmän tietoja liitetään muista lähteistä hankittuihin tietoihin. Valitusta kohderyhmästä voidaan poimia halutun kokoinen otos joko tasaväliotannalla tai eri ryhmiä painottaen. Poimintaperusteina voidaan käyttää henkilön ominaisuuksia (esimerkiksi ikä, sukupuoli, äidinkieli tai muuttohistoria), aluetta (esimerkiksi postinumero, kunta tai maakunta) ja rakennuksen ominaisuuksia (esimerkiksi käyttötarkoitus tai varusteet).",
-    "type" : "Description"
-  } ],
-  "languages" : [ "fi" ],
-  "serviceClasses" : [ {
-    "name" : [ {
-      "value" : "Requests for public documents and information",
-      "language" : "en"
-    }, {
-      "value" : "Begäran om dokument och information",
-      "language" : "sv"
-    }, {
-      "value" : "Asiakirja- ja tietopyynnöt",
-      "language" : "fi"
-    } ],
-    "description" : [ {
-      "value" : "This service subclass features services where citizens, private organisations and government (state and local) officials can request public documents and other official information insomuch as they have a legal right to receive these materials.",
-      "language" : "en"
-    }, {
-      "value" : "Tämä alapalveluluokka sisältää julkishallinnon palvelut, joissa kansalaiset, yhteisöt ja toiset viranomaiset voivat pyytää itselleen viranomaisen virallisia asiakirjoja tai muita viranomaisen hallinnoimia tietoja (tyypillisesti organisaation kirjaamosta) niissä puitteissa, kuin heillä on näiden tietojen saamiseen oikeus.",
-      "language" : "fi"
-    }, {
-      "value" : "Denna underservicegrupp innehåller den offentliga förvaltningens tjänster där medborgare, samfund och andra myndigheter kan be om myndighetens offentliga dokument eller annan information administrerad av myndigheten (typiskt från organisationens registratorskontor) inom ramen som de har rätt till att få informationen.",
-      "language" : "sv"
-    } ],
-    "code" : "P9.2",
-    "ontologyType" : "PTVL",
-    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1218",
-    "parentId" : "95f29e15-fb54-4ac2-8c9b-fac6ae3121fa",
-    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1095"
-  }, {
-    "name" : [ {
-      "value" : "Government (state and local) registers and databases",
-      "language" : "en"
-    }, {
-      "value" : "Rekisterit ja tietokannat",
-      "language" : "fi"
-    }, {
-      "value" : "Register och databaser",
-      "language" : "sv"
-    } ],
-    "description" : [ {
-      "value" : "Denna underservicegrupp innehåller lagenligt utnyttjande av innehållet i den offentliga förvaltningens register och databaser som enstaka informationsinlämningar eller som automatiskt sambruk av information mellan systemen.",
-      "language" : "sv"
-    }, {
-      "value" : "Tämä alapalveluluokka sisältää julkishallinnon rekisterien ja tietokantojen sisältämän aineiston lainmukaisen, palveluluonteisen hyödyntämisen yksittäisinä tietoluovutuksina tai koneellisena tietojen yhteiskäyttönä järjestelmien välillä.",
-      "language" : "fi"
-    }, {
-      "value" : "This service subclass features services that facilitate legal disclosures of information from public sector registers and databases either as individual instances or mass information exchange between information systems.",
-      "language" : "en"
-    } ],
-    "code" : "P9.3",
-    "ontologyType" : "PTVL",
-    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1219",
-    "parentId" : "95f29e15-fb54-4ac2-8c9b-fac6ae3121fa",
-    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1095"
-  } ],
-  "ontologyTerms" : [ {
-    "name" : [ {
-      "value" : "tutkimus",
-      "language" : "fi"
-    }, {
-      "value" : "forskning",
-      "language" : "sv"
-    }, {
-      "value" : "research",
-      "language" : "en"
-    } ],
-    "code" : null,
-    "ontologyType" : "JUPO",
-    "uri" : "http://www.yso.fi/onto/koko/p36376",
-    "parentId" : null,
-    "parentUri" : "http://www.yso.fi/onto/koko/p32014"
-  }, {
-    "name" : [ {
-      "value" : "befolkningsdata",
-      "language" : "sv"
-    }, {
-      "value" : "väestötiedot",
-      "language" : "fi"
-    }, {
-      "value" : "population data",
-      "language" : "en"
-    } ],
-    "code" : null,
-    "ontologyType" : "JUPO",
-    "uri" : "http://www.yso.fi/onto/koko/p55228",
-    "parentId" : null,
-    "parentUri" : "http://www.yso.fi/onto/koko/p34386"
-  }, {
-    "name" : [ {
-      "value" : "satunnaistaminen",
-      "language" : "fi"
-    } ],
-    "code" : null,
-    "ontologyType" : "TERO",
-    "uri" : "http://www.yso.fi/onto/koko/p53457",
-    "parentId" : null,
-    "parentUri" : "http://www.yso.fi/onto/koko/p32981"
-  } ],
-  "targetGroups" : [ {
-    "name" : [ {
-      "value" : "Viranomaiset",
-      "language" : "fi"
-    }, {
-      "value" : "Authorities",
-      "language" : "en"
-    }, {
-      "value" : "Myndigheter",
-      "language" : "sv"
-    } ],
-    "code" : "KR3",
-    "ontologyType" : "TARGETGROUP",
-    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2017",
-    "parentId" : null,
-    "parentUri" : null
-  } ],
-  "lifeEvents" : [ ],
-  "industrialClasses" : [ ],
-  "legislation" : [ ],
-  "keywords" : [ {
-    "value" : " satunnaisotos",
-    "language" : "fi"
-  } ],
-  "requirements" : [ {
-    "value" : "Tietoja voidaan luovuttaa hyväksyttäviin käyttötarkoituksiin, esim. viranomaistoimintaan tai tutkimuskäyttöön. Poimintapalvelun tilaaminen edellyttää Väestörekisterikeskuksen organisaatiolle myöntämää tietolupaa ja organisaation sitoutumista luvan ehtoihin. Tietolupaa haetaan kirjallisesti lomakkeella ja hakemuksessa on kerrottava mm. tietojen käyttötarkoitus. ",
-    "language" : "fi"
-  } ],
-  "serviceChannels" : [ {
-    "serviceChannel" : {
-      "id" : "80f6bcb5-e224-4041-97da-95b6936878fe",
-      "name" : "Väestörekisterikeskuksen verkkoasiointi"
+  "id": "9e63c517-812a-42a0-9e5b-3c1a0f0ff630",
+  "sourceId": null,
+  "generalDescriptionId": null,
+  "type": "Service",
+  "fundingType": "PubliclyFunded",
+  "serviceNames": [
+    {
+      "language": "fi",
+      "value": "Poimintapalvelu",
+      "type": "Name"
     },
-    "serviceChargeType" : null,
-    "description" : [ {
-      "language" : "fi",
-      "value" : null,
-      "type" : "Description"
-    }, {
-      "language" : "fi",
-      "value" : null,
-      "type" : "ChargeTypeAdditionalInfo"
-    } ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  } ],
-  "organizations" : [ {
-    "provisionType" : null,
-    "organization" : {
-      "id" : "b458d033-042d-4cbe-b030-34e81da28821",
-      "name" : "Väestörekisterikeskus"
+    {
+      "language": "fi",
+      "value": "Otannat ja poiminnat",
+      "type": "AlternativeName"
+    }
+  ],
+  "serviceChargeType": "Chargeable",
+  "areaType": "Nationwide",
+  "areas": [],
+  "serviceDescriptions": [
+    {
+      "language": "fi",
+      "value": null,
+      "type": "ProcessingTime"
     },
-    "roleType" : "Responsible",
-    "additionalInformation" : [ ]
-  }, {
-    "provisionType" : "SelfProducedServices",
-    "organization" : {
-      "id" : "b458d033-042d-4cbe-b030-34e81da28821",
-      "name" : "Väestörekisterikeskus"
+    {
+      "language": "fi",
+      "value": "Poiminnat väestötietojärjestelmästä erilaisiin tarkoituksiin. Hakuehtoina voi olla sijainti, henkilöiden ikä, sukupuoli tms.",
+      "type": "Summary"
     },
-    "roleType" : "Producer",
-    "additionalInformation" : [ ]
-  } ],
-  "serviceVouchersInUse" : false,
-  "serviceVouchers" : [ ],
-  "serviceCollections" : [ ],
-  "publishingStatus" : "Published",
-  "modified" : "2018-05-03T11:53:58.162746Z"
+    {
+      "language": "fi",
+      "value": "Osa viranomaisten tietopalveluista on maksuttomia.",
+      "type": "ChargeTypeAdditionalInfo"
+    },
+    {
+      "language": "fi",
+      "value": null,
+      "type": "DeadLine"
+    },
+    {
+      "language": "fi",
+      "value": null,
+      "type": "ValidityTime"
+    },
+    {
+      "language": "fi",
+      "value": "Tietojen saamiseksi hakijaorganisaation on toimitettava Väestörekisterikeskukselle kirjallinen hakemus. Hakemuksen perusteella voidaan myöntää lupa tietojen käyttöön. Tietojen luovutuksesta, toimitusajasta ja -tavasta voidaan sopia erikseen.",
+      "type": "UserInstruction"
+    },
+    {
+      "language": "fi",
+      "value": "Poimintapalvelussa väestötietojärjestelmästä poimitaan halutut kriteerit täyttäviä henkilöitä tai rakennuksia esimerkiksi kyselytutkimusta tai tiedotusta varten. Poimittuja henkilötietoja voidaan hyödyntää myös muun muassa rekisteripohjaisissa tutkimuksissa, joissa väestötietojärjestelmän tietoja liitetään muista lähteistä hankittuihin tietoihin. Valitusta kohderyhmästä voidaan poimia halutun kokoinen otos joko tasaväliotannalla tai eri ryhmiä painottaen. Poimintaperusteina voidaan käyttää henkilön ominaisuuksia (esimerkiksi ikä, sukupuoli, äidinkieli tai muuttohistoria), aluetta (esimerkiksi postinumero, kunta tai maakunta) ja rakennuksen ominaisuuksia (esimerkiksi käyttötarkoitus tai varusteet).",
+      "type": "Description"
+    }
+  ],
+  "languages": [
+    "fi"
+  ],
+  "serviceClasses": [
+    {
+      "name": [
+        {
+          "value": "Requests for public documents and information",
+          "language": "en"
+        },
+        {
+          "value": "Begäran om dokument och information",
+          "language": "sv"
+        },
+        {
+          "value": "Asiakirja- ja tietopyynnöt",
+          "language": "fi"
+        }
+      ],
+      "description": [
+        {
+          "value": "This service subclass features services where citizens, private organisations and government (state and local) officials can request public documents and other official information insomuch as they have a legal right to receive these materials.",
+          "language": "en"
+        },
+        {
+          "value": "Tämä alapalveluluokka sisältää julkishallinnon palvelut, joissa kansalaiset, yhteisöt ja toiset viranomaiset voivat pyytää itselleen viranomaisen virallisia asiakirjoja tai muita viranomaisen hallinnoimia tietoja (tyypillisesti organisaation kirjaamosta) niissä puitteissa, kuin heillä on näiden tietojen saamiseen oikeus.",
+          "language": "fi"
+        },
+        {
+          "value": "Denna underservicegrupp innehåller den offentliga förvaltningens tjänster där medborgare, samfund och andra myndigheter kan be om myndighetens offentliga dokument eller annan information administrerad av myndigheten (typiskt från organisationens registratorskontor) inom ramen som de har rätt till att få informationen.",
+          "language": "sv"
+        }
+      ],
+      "code": "P9.2",
+      "ontologyType": "PTVL",
+      "uri": "http://urn.fi/URN:NBN:fi:au:ptvl:v1218",
+      "parentId": "95f29e15-fb54-4ac2-8c9b-fac6ae3121fa",
+      "parentUri": "http://urn.fi/URN:NBN:fi:au:ptvl:v1095"
+    },
+    {
+      "name": [
+        {
+          "value": "Government (state and local) registers and databases",
+          "language": "en"
+        },
+        {
+          "value": "Rekisterit ja tietokannat",
+          "language": "fi"
+        },
+        {
+          "value": "Register och databaser",
+          "language": "sv"
+        }
+      ],
+      "description": [
+        {
+          "value": "Denna underservicegrupp innehåller lagenligt utnyttjande av innehållet i den offentliga förvaltningens register och databaser som enstaka informationsinlämningar eller som automatiskt sambruk av information mellan systemen.",
+          "language": "sv"
+        },
+        {
+          "value": "Tämä alapalveluluokka sisältää julkishallinnon rekisterien ja tietokantojen sisältämän aineiston lainmukaisen, palveluluonteisen hyödyntämisen yksittäisinä tietoluovutuksina tai koneellisena tietojen yhteiskäyttönä järjestelmien välillä.",
+          "language": "fi"
+        },
+        {
+          "value": "This service subclass features services that facilitate legal disclosures of information from public sector registers and databases either as individual instances or mass information exchange between information systems.",
+          "language": "en"
+        }
+      ],
+      "code": "P9.3",
+      "ontologyType": "PTVL",
+      "uri": "http://urn.fi/URN:NBN:fi:au:ptvl:v1219",
+      "parentId": "95f29e15-fb54-4ac2-8c9b-fac6ae3121fa",
+      "parentUri": "http://urn.fi/URN:NBN:fi:au:ptvl:v1095"
+    }
+  ],
+  "ontologyTerms": [
+    {
+      "name": [
+        {
+          "value": "tutkimus",
+          "language": "fi"
+        },
+        {
+          "value": "forskning",
+          "language": "sv"
+        },
+        {
+          "value": "research",
+          "language": "en"
+        }
+      ],
+      "code": null,
+      "ontologyType": "JUPO",
+      "uri": "http://www.yso.fi/onto/koko/p36376",
+      "parentId": null,
+      "parentUri": "http://www.yso.fi/onto/koko/p32014"
+    },
+    {
+      "name": [
+        {
+          "value": "befolkningsdata",
+          "language": "sv"
+        },
+        {
+          "value": "väestötiedot",
+          "language": "fi"
+        },
+        {
+          "value": "population data",
+          "language": "en"
+        }
+      ],
+      "code": null,
+      "ontologyType": "JUPO",
+      "uri": "http://www.yso.fi/onto/koko/p55228",
+      "parentId": null,
+      "parentUri": "http://www.yso.fi/onto/koko/p34386"
+    },
+    {
+      "name": [
+        {
+          "value": "satunnaistaminen",
+          "language": "fi"
+        }
+      ],
+      "code": null,
+      "ontologyType": "TERO",
+      "uri": "http://www.yso.fi/onto/koko/p53457",
+      "parentId": null,
+      "parentUri": "http://www.yso.fi/onto/koko/p32981"
+    }
+  ],
+  "targetGroups": [
+    {
+      "name": [
+        {
+          "value": "Viranomaiset",
+          "language": "fi"
+        },
+        {
+          "value": "Authorities",
+          "language": "en"
+        },
+        {
+          "value": "Myndigheter",
+          "language": "sv"
+        }
+      ],
+      "code": "KR3",
+      "ontologyType": "TARGETGROUP",
+      "uri": "http://urn.fi/URN:NBN:fi:au:ptvl:v2017",
+      "parentId": null,
+      "parentUri": null
+    }
+  ],
+  "lifeEvents": [],
+  "industrialClasses": [],
+  "legislation": [],
+  "keywords": [
+    {
+      "value": " satunnaisotos",
+      "language": "fi"
+    }
+  ],
+  "requirements": [
+    {
+      "value": "Tietoja voidaan luovuttaa hyväksyttäviin käyttötarkoituksiin, esim. viranomaistoimintaan tai tutkimuskäyttöön. Poimintapalvelun tilaaminen edellyttää Väestörekisterikeskuksen organisaatiolle myöntämää tietolupaa ja organisaation sitoutumista luvan ehtoihin. Tietolupaa haetaan kirjallisesti lomakkeella ja hakemuksessa on kerrottava mm. tietojen käyttötarkoitus. ",
+      "language": "fi"
+    }
+  ],
+  "serviceChannels": [
+    {
+      "serviceChannel": {
+        "id": "80f6bcb5-e224-4041-97da-95b6936878fe",
+        "name": "Väestörekisterikeskuksen verkkoasiointi"
+      },
+      "serviceChargeType": null,
+      "description": [
+        {
+          "language": "fi",
+          "value": null,
+          "type": "Description"
+        },
+        {
+          "language": "fi",
+          "value": null,
+          "type": "ChargeTypeAdditionalInfo"
+        }
+      ],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    }
+  ],
+  "organizations": [
+    {
+      "provisionType": null,
+      "organization": {
+        "id": "b458d033-042d-4cbe-b030-34e81da28821",
+        "name": "Väestörekisterikeskus"
+      },
+      "roleType": "Responsible",
+      "additionalInformation": []
+    },
+    {
+      "provisionType": "SelfProducedServices",
+      "organization": {
+        "id": "b458d033-042d-4cbe-b030-34e81da28821",
+        "name": "Väestörekisterikeskus"
+      },
+      "roleType": "Producer",
+      "additionalInformation": []
+    }
+  ],
+  "serviceVouchersInUse": false,
+  "serviceVouchers": [],
+  "serviceCollections": [],
+  "publishingStatus": "Published",
+  "modified": "2018-05-03T11:53:58.162746Z"
 }

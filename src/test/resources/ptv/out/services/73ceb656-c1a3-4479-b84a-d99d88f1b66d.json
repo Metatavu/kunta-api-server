@@ -1,233 +1,301 @@
 {
-  "id" : "73ceb656-c1a3-4479-b84a-d99d88f1b66d",
-  "sourceId" : null,
-  "generalDescriptionId" : null,
-  "type" : "Service",
-  "fundingType" : "PubliclyFunded",
-  "serviceNames" : [ {
-    "language" : "en",
-    "value" : "Receiving asylum seekers",
-    "type" : "Name"
-  }, {
-    "language" : "sv",
-    "value" : "Mottagning av asylsökande",
-    "type" : "Name"
-  }, {
-    "language" : "fi",
-    "value" : "Vastaanottokeskuksen palvelut",
-    "type" : "AlternativeName"
-  }, {
-    "language" : "fi",
-    "value" : "Turvapaikanhakijoiden vastaanotto",
-    "type" : "Name"
-  } ],
-  "serviceChargeType" : "FreeOfCharge",
-  "areaType" : "LimitedType",
-  "areas" : [ {
-    "type" : "Municipality",
-    "code" : null,
-    "name" : null,
-    "municipalities" : [ {
-      "code" : "905",
-      "name" : [ {
-        "value" : "Vaasa",
-        "language" : "fi"
-      }, {
-        "value" : "Vasa",
-        "language" : "sv"
-      }, {
-        "value" : "Vaasa",
-        "language" : "en"
-      } ]
-    } ]
-  } ],
-  "serviceDescriptions" : [ {
-    "language" : "fi",
-    "value" : "Vastaanottokeskuksen tehtävänä on järjestää kansainvälistä suojelua hakeville ja tilapäistä suojelua saaville henkilöille vastaanottopalveluja.",
-    "type" : "Summary"
-  }, {
-    "language" : "en",
-    "value" : "The Reception Centre organises reception services for people applying for international asylum and people receiving temporary asylum.",
-    "type" : "Summary"
-  }, {
-    "language" : "en",
-    "value" : null,
-    "type" : "DeadLine"
-  }, {
-    "language" : "sv",
-    "value" : null,
-    "type" : "ProcessingTime"
-  }, {
-    "language" : "en",
-    "value" : null,
-    "type" : "UserInstruction"
-  }, {
-    "language" : "sv",
-    "value" : "Mottagningscentralens uppgift är att ordna mottagningsservice för sådana som söker internationellt skydd och personer som får tillfälligt skydd.\n\nMottagningsservice är bland annat ordnande av tillfällig inkvartering, nödvändig social- och hälsovårdsservice, tolkservice samt ordnande av arbets- och studieverksamhet.",
-    "type" : "Description"
-  }, {
-    "language" : "en",
-    "value" : null,
-    "type" : "ValidityTime"
-  }, {
-    "language" : "en",
-    "value" : null,
-    "type" : "ChargeTypeAdditionalInfo"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "DeadLine"
-  }, {
-    "language" : "sv",
-    "value" : null,
-    "type" : "ChargeTypeAdditionalInfo"
-  }, {
-    "language" : "sv",
-    "value" : null,
-    "type" : "UserInstruction"
-  }, {
-    "language" : "en",
-    "value" : null,
-    "type" : "ProcessingTime"
-  }, {
-    "language" : "sv",
-    "value" : "Mottagningscentralens uppgift är att ordna mottagningsservice för sådana som söker internationellt skydd och personer som får tillfälligt skydd.",
-    "type" : "Summary"
-  }, {
-    "language" : "en",
-    "value" : "The Reception Centre organises reception services for people applying for international asylum and people receiving temporary asylum.\n\nReception services include, for example, organising temporary accommodation, the necessary social and health services, interpreter services and arranging work and study activities.",
-    "type" : "Description"
-  }, {
-    "language" : "sv",
-    "value" : null,
-    "type" : "DeadLine"
-  }, {
-    "language" : "sv",
-    "value" : null,
-    "type" : "ValidityTime"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ChargeTypeAdditionalInfo"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "UserInstruction"
-  }, {
-    "language" : "fi",
-    "value" : "Vastaanottokeskuksen tehtävänä on järjestää kansainvälistä suojelua hakeville ja tilapäistä suojelua saaville henkilöille vastaanottopalveluja.\n\nVastaanottokeskuksen palveluihin kuuluu :\n\n- tilapäinen majoitus\n\n- välttämättömät ja kiireelliset sosiaali – ja terveyspalvelut\n\n- työ – ja opintotoiminnan järjestäminen\n\n- tulkki – ja oikeusapupalvelut\n\n- vapaaehtoisen paluun tiedotus\n\n\n\n",
-    "type" : "Description"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ProcessingTime"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ValidityTime"
-  } ],
-  "languages" : [ "fi", "sv", "en" ],
-  "serviceClasses" : [ {
-    "name" : [ {
-      "value" : "Asuminen",
-      "language" : "fi"
-    }, {
-      "value" : "Boende",
-      "language" : "sv"
-    }, {
-      "value" : "Housing",
-      "language" : "en"
-    } ],
-    "description" : [ {
-      "value" : "Denna servicegrupp omfattar hur man söker, hittar och skaffar en bostad, olika boendeformer, ekonomiskt stöd för boende, processer och tjänster i anslutning till flyttning inom Finland samt tjänster som berör befolkningsdatasystemet.",
-      "language" : "sv"
-    }, {
-      "value" : "Tähän palveluluokkaan kuuluvat asunnon etsiminen, löytäminen ja hankkiminen, erilaiset asumismuodot, asumisen taloudelliset tuet, Suomen sisällä tapahtuvaan muuttoon liittyvät prosessit ja palvelut sekä väestötietojärjestelmään liittyvät palvelut.",
-      "language" : "fi"
-    }, {
-      "value" : "This service class includes seeking, finding and purchasing a residence, different housing forms, housing benefits, processes and services related to migration within Finland, as well as services associated with the Population Information System.",
-      "language" : "en"
-    } ],
-    "code" : "P1",
-    "ontologyType" : "PTVL",
-    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1001",
-    "parentId" : null,
-    "parentUri" : null
-  } ],
-  "ontologyTerms" : [ {
-    "name" : [ {
-      "value" : "turvapaikanhakijoiden vastaanottokeskukset",
-      "language" : "fi"
-    } ],
-    "code" : null,
-    "ontologyType" : "TERO",
-    "uri" : "http://www.yso.fi/onto/koko/p56205",
-    "parentId" : null,
-    "parentUri" : "http://www.yso.fi/onto/koko/p11067"
-  } ],
-  "targetGroups" : [ {
-    "name" : [ {
-      "value" : "Kansalaiset",
-      "language" : "fi"
-    }, {
-      "value" : "Citizens",
-      "language" : "en"
-    }, {
-      "value" : "Medborgare",
-      "language" : "sv"
-    } ],
-    "code" : "KR1",
-    "ontologyType" : "TARGETGROUP",
-    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
-    "parentId" : null,
-    "parentUri" : null
-  } ],
-  "lifeEvents" : [ ],
-  "industrialClasses" : [ ],
-  "legislation" : [ ],
-  "keywords" : [ ],
-  "requirements" : [ {
-    "value" : null,
-    "language" : "fi"
-  }, {
-    "value" : null,
-    "language" : "sv"
-  }, {
-    "value" : null,
-    "language" : "en"
-  } ],
-  "serviceChannels" : [ {
-    "serviceChannel" : {
-      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
-      "name" : "Vaasan Palautepalvelu"
+  "id": "73ceb656-c1a3-4479-b84a-d99d88f1b66d",
+  "sourceId": null,
+  "generalDescriptionId": null,
+  "type": "Service",
+  "fundingType": "PubliclyFunded",
+  "serviceNames": [
+    {
+      "language": "en",
+      "value": "Receiving asylum seekers",
+      "type": "Name"
     },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  } ],
-  "organizations" : [ {
-    "provisionType" : null,
-    "organization" : {
-      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
-      "name" : "Vaasan kaupunki"
+    {
+      "language": "sv",
+      "value": "Mottagning av asylsökande",
+      "type": "Name"
     },
-    "roleType" : "Responsible",
-    "additionalInformation" : [ ]
-  }, {
-    "provisionType" : "SelfProducedServices",
-    "organization" : {
-      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
-      "name" : "Vaasan kaupunki"
+    {
+      "language": "fi",
+      "value": "Vastaanottokeskuksen palvelut",
+      "type": "AlternativeName"
     },
-    "roleType" : "Producer",
-    "additionalInformation" : [ ]
-  } ],
-  "serviceVouchersInUse" : false,
-  "serviceVouchers" : [ ],
-  "serviceCollections" : [ ],
-  "publishingStatus" : "Published",
-  "modified" : "2018-05-03T11:53:58.162746Z"
+    {
+      "language": "fi",
+      "value": "Turvapaikanhakijoiden vastaanotto",
+      "type": "Name"
+    }
+  ],
+  "serviceChargeType": "FreeOfCharge",
+  "areaType": "LimitedType",
+  "areas": [
+    {
+      "type": "Municipality",
+      "code": null,
+      "name": null,
+      "municipalities": [
+        {
+          "code": "905",
+          "name": [
+            {
+              "value": "Vaasa",
+              "language": "fi"
+            },
+            {
+              "value": "Vasa",
+              "language": "sv"
+            },
+            {
+              "value": "Vaasa",
+              "language": "en"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "serviceDescriptions": [
+    {
+      "language": "fi",
+      "value": "Vastaanottokeskuksen tehtävänä on järjestää kansainvälistä suojelua hakeville ja tilapäistä suojelua saaville henkilöille vastaanottopalveluja.",
+      "type": "Summary"
+    },
+    {
+      "language": "en",
+      "value": "The Reception Centre organises reception services for people applying for international asylum and people receiving temporary asylum.",
+      "type": "Summary"
+    },
+    {
+      "language": "en",
+      "value": null,
+      "type": "DeadLine"
+    },
+    {
+      "language": "sv",
+      "value": null,
+      "type": "ProcessingTime"
+    },
+    {
+      "language": "en",
+      "value": null,
+      "type": "UserInstruction"
+    },
+    {
+      "language": "sv",
+      "value": "Mottagningscentralens uppgift är att ordna mottagningsservice för sådana som söker internationellt skydd och personer som får tillfälligt skydd.\n\nMottagningsservice är bland annat ordnande av tillfällig inkvartering, nödvändig social- och hälsovårdsservice, tolkservice samt ordnande av arbets- och studieverksamhet.",
+      "type": "Description"
+    },
+    {
+      "language": "en",
+      "value": null,
+      "type": "ValidityTime"
+    },
+    {
+      "language": "en",
+      "value": null,
+      "type": "ChargeTypeAdditionalInfo"
+    },
+    {
+      "language": "fi",
+      "value": null,
+      "type": "DeadLine"
+    },
+    {
+      "language": "sv",
+      "value": null,
+      "type": "ChargeTypeAdditionalInfo"
+    },
+    {
+      "language": "sv",
+      "value": null,
+      "type": "UserInstruction"
+    },
+    {
+      "language": "en",
+      "value": null,
+      "type": "ProcessingTime"
+    },
+    {
+      "language": "sv",
+      "value": "Mottagningscentralens uppgift är att ordna mottagningsservice för sådana som söker internationellt skydd och personer som får tillfälligt skydd.",
+      "type": "Summary"
+    },
+    {
+      "language": "en",
+      "value": "The Reception Centre organises reception services for people applying for international asylum and people receiving temporary asylum.\n\nReception services include, for example, organising temporary accommodation, the necessary social and health services, interpreter services and arranging work and study activities.",
+      "type": "Description"
+    },
+    {
+      "language": "sv",
+      "value": null,
+      "type": "DeadLine"
+    },
+    {
+      "language": "sv",
+      "value": null,
+      "type": "ValidityTime"
+    },
+    {
+      "language": "fi",
+      "value": null,
+      "type": "ChargeTypeAdditionalInfo"
+    },
+    {
+      "language": "fi",
+      "value": null,
+      "type": "UserInstruction"
+    },
+    {
+      "language": "fi",
+      "value": "Vastaanottokeskuksen tehtävänä on järjestää kansainvälistä suojelua hakeville ja tilapäistä suojelua saaville henkilöille vastaanottopalveluja.\n\nVastaanottokeskuksen palveluihin kuuluu :\n\n- tilapäinen majoitus\n\n- välttämättömät ja kiireelliset sosiaali – ja terveyspalvelut\n\n- työ – ja opintotoiminnan järjestäminen\n\n- tulkki – ja oikeusapupalvelut\n\n- vapaaehtoisen paluun tiedotus\n\n\n\n",
+      "type": "Description"
+    },
+    {
+      "language": "fi",
+      "value": null,
+      "type": "ProcessingTime"
+    },
+    {
+      "language": "fi",
+      "value": null,
+      "type": "ValidityTime"
+    }
+  ],
+  "languages": [
+    "fi",
+    "sv",
+    "en"
+  ],
+  "serviceClasses": [
+    {
+      "name": [
+        {
+          "value": "Asuminen",
+          "language": "fi"
+        },
+        {
+          "value": "Boende",
+          "language": "sv"
+        },
+        {
+          "value": "Housing",
+          "language": "en"
+        }
+      ],
+      "description": [
+        {
+          "value": "Denna servicegrupp omfattar hur man söker, hittar och skaffar en bostad, olika boendeformer, ekonomiskt stöd för boende, processer och tjänster i anslutning till flyttning inom Finland samt tjänster som berör befolkningsdatasystemet.",
+          "language": "sv"
+        },
+        {
+          "value": "Tähän palveluluokkaan kuuluvat asunnon etsiminen, löytäminen ja hankkiminen, erilaiset asumismuodot, asumisen taloudelliset tuet, Suomen sisällä tapahtuvaan muuttoon liittyvät prosessit ja palvelut sekä väestötietojärjestelmään liittyvät palvelut.",
+          "language": "fi"
+        },
+        {
+          "value": "This service class includes seeking, finding and purchasing a residence, different housing forms, housing benefits, processes and services related to migration within Finland, as well as services associated with the Population Information System.",
+          "language": "en"
+        }
+      ],
+      "code": "P1",
+      "ontologyType": "PTVL",
+      "uri": "http://urn.fi/URN:NBN:fi:au:ptvl:v1001",
+      "parentId": null,
+      "parentUri": null
+    }
+  ],
+  "ontologyTerms": [
+    {
+      "name": [
+        {
+          "value": "turvapaikanhakijoiden vastaanottokeskukset",
+          "language": "fi"
+        }
+      ],
+      "code": null,
+      "ontologyType": "TERO",
+      "uri": "http://www.yso.fi/onto/koko/p56205",
+      "parentId": null,
+      "parentUri": "http://www.yso.fi/onto/koko/p11067"
+    }
+  ],
+  "targetGroups": [
+    {
+      "name": [
+        {
+          "value": "Kansalaiset",
+          "language": "fi"
+        },
+        {
+          "value": "Citizens",
+          "language": "en"
+        },
+        {
+          "value": "Medborgare",
+          "language": "sv"
+        }
+      ],
+      "code": "KR1",
+      "ontologyType": "TARGETGROUP",
+      "uri": "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+      "parentId": null,
+      "parentUri": null
+    }
+  ],
+  "lifeEvents": [],
+  "industrialClasses": [],
+  "legislation": [],
+  "keywords": [],
+  "requirements": [
+    {
+      "value": null,
+      "language": "fi"
+    },
+    {
+      "value": null,
+      "language": "sv"
+    },
+    {
+      "value": null,
+      "language": "en"
+    }
+  ],
+  "serviceChannels": [
+    {
+      "serviceChannel": {
+        "id": "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+        "name": "Vaasan Palautepalvelu"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    }
+  ],
+  "organizations": [
+    {
+      "provisionType": null,
+      "organization": {
+        "id": "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+        "name": "Vaasan kaupunki"
+      },
+      "roleType": "Responsible",
+      "additionalInformation": []
+    },
+    {
+      "provisionType": "SelfProducedServices",
+      "organization": {
+        "id": "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+        "name": "Vaasan kaupunki"
+      },
+      "roleType": "Producer",
+      "additionalInformation": []
+    }
+  ],
+  "serviceVouchersInUse": false,
+  "serviceVouchers": [],
+  "serviceCollections": [],
+  "publishingStatus": "Published",
+  "modified": "2018-05-03T11:53:58.162746Z"
 }

@@ -1,191 +1,248 @@
 {
-  "id" : "0a94d54d-febd-4149-bceb-f3cc0fd648e6",
-  "sourceId" : null,
-  "generalDescriptionId" : null,
-  "type" : "Service",
-  "fundingType" : "PubliclyFunded",
-  "serviceNames" : [ {
-    "language" : "fi",
-    "value" : "Henkilön puolesta asiointi",
-    "type" : "AlternativeName"
-  }, {
-    "language" : "fi",
-    "value" : "Suomi.fi-valtuudet henkilön puolesta asiointiin",
-    "type" : "Name"
-  } ],
-  "serviceChargeType" : null,
-  "areaType" : "Nationwide",
-  "areas" : [ ],
-  "serviceDescriptions" : [ {
-    "language" : "fi",
-    "value" : null,
-    "type" : "UserInstruction"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ChargeTypeAdditionalInfo"
-  }, {
-    "language" : "fi",
-    "value" : "Suomi.fi-valtuudet-palvelu voidaan jakaa kahteen osaan: Jos asioit toisen henkilön puolesta jossakin julkishallinnon tai yksityisen sektorin verkkopalvelussa, Suomi.fi-valtuudet tarkistaa taustatoimintona oikeutesi puolesta-asiointiin. Tämä edellyttää, että verkkopalvelu on ottanut Suomi.fi-valtuudet käyttöön. Esimerkiksi Kelan Omakannassa oikeutesi asioida lapsen puolesta tarkistetaan Suomi.fi-valtuuksien avulla. Tulevaisuudessa voit valtuuttaa toisen henkilön tai yrityksen asioimaan puolestasi sähköisissä asiointipalveluissa. Valtuuttaminen tapahtuu Suomi.fi-verkkopalvelussa. Valtuuksien hallintaa voi jo nyt kokeilla testihenkilöiden tunnuksilla testipalvelussa.",
-    "type" : "Description"
-  }, {
-    "language" : "fi",
-    "value" : "Suomi.fi-valtuudet tarkistaa oikeuden asioida henkilön puolesta. Palvelun avulla voi valtuuttaa toisen henkilön asioimaan puolestasi verkkopalveluissa",
-    "type" : "Summary"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "DeadLine"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ProcessingTime"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ValidityTime"
-  } ],
-  "languages" : [ "sv", "fi" ],
-  "serviceClasses" : [ {
-    "name" : [ {
-      "value" : "Oikeusturva",
-      "language" : "fi"
-    }, {
-      "value" : "Legal protection",
-      "language" : "en"
-    }, {
-      "value" : "Rättssäkerhet",
-      "language" : "sv"
-    } ],
-    "description" : [ {
-      "value" : "This service class contains services related to fundamental rights, legislation, court processes and instances, protection of privacy, minorities and immaterial rights. Rather than being included in this class, consumer issues have a main class of their own.",
-      "language" : "en"
-    }, {
-      "value" : "Tässä palveluluokassa käsitellään perusoikeuksiin, lainsäädäntöön, oikeusprosesseihin ja -asteisiin, yksilönsuojaan, vähemmistöihin ja immateriaalioikeuksiin liittyviä palveluja. Kuluttaja-asioita ei käsitellä tässä luokassa, vaan omassa pääluokassaan.",
-      "language" : "fi"
-    }, {
-      "value" : "I denna servicegrupp behandlas tjänster relaterade till grundläggande rättigheter, lagstiftning, rättsprocesser och -instanser, skydd för privatlivet, minoriteter samt immaterialrätt. Konsumentärenden behandlas inte i denna grupp, utan i en egen huvudgrupp.",
-      "language" : "sv"
-    } ],
-    "code" : "P7",
-    "ontologyType" : "PTVL",
-    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1076",
-    "parentId" : null,
-    "parentUri" : null
-  }, {
-    "name" : [ {
-      "value" : "Intressebevakning",
-      "language" : "sv"
-    }, {
-      "value" : "Public guardianship",
-      "language" : "en"
-    }, {
-      "value" : "Edunvalvonta",
-      "language" : "fi"
-    } ],
-    "description" : [ {
-      "value" : "Tässä palvelualaluokassa käsitellään holhoustoimilain mukaisen edunvalvontaan liittyvät palvelut.",
-      "language" : "fi"
-    }, {
-      "value" : "Denna serviceundergrupp omfattar tjänster relaterade till intressebevakning enligt lagen om förmyndarverksamhet.",
-      "language" : "sv"
-    }, {
-      "value" : "This service subclass deals with services associated with public guardianship as specified in the relevant legislation.",
-      "language" : "en"
-    } ],
-    "code" : "P7.11",
-    "ontologyType" : "PTVL",
-    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1087",
-    "parentId" : "487549b3-a7de-4312-badb-2ee6bb390950",
-    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1076"
-  }, {
-    "name" : [ {
-      "value" : "Data protection and personal data",
-      "language" : "en"
-    }, {
-      "value" : "Datasekretess och personuppgifter",
-      "language" : "sv"
-    }, {
-      "value" : "Tietosuoja ja henkilötiedot",
-      "language" : "fi"
-    } ],
-    "description" : [ {
-      "value" : "This service subclass contains services related to personal data and privacy protection, personal identifiers, travel documents and registers containing personal data. It also contains matters pertaining to a citizen's rights to control and use their personal data.",
-      "language" : "en"
-    }, {
-      "value" : "Tässä palvelualaluokassa käsitellään henkilötietojen ja yksityisyyden suojaan, henkilötunnuksiin ja -tunnisteisiin, matkustusasiakirjoihin ja henkilötietoja sisältäviin rekistereihin liittyviä palveluja sekä kansalaisen oikeuksia hallita ja käyttää omia tietojaan.",
-      "language" : "fi"
-    }, {
-      "value" : "Denna serviceundergrupp omfattar tjänster relaterad till skyddet av personuppgifter och integritet, personbeteckningar och -koder, resedokument och register med personuppgifter samt medborgarnas rättigheter att kontrollera och begränsa användningen av deras personuppgifter.",
-      "language" : "sv"
-    } ],
-    "code" : "P7.9",
-    "ontologyType" : "PTVL",
-    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1085",
-    "parentId" : "487549b3-a7de-4312-badb-2ee6bb390950",
-    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1076"
-  } ],
-  "ontologyTerms" : [ ],
-  "targetGroups" : [ {
-    "name" : [ {
-      "value" : "Kansalaiset",
-      "language" : "fi"
-    }, {
-      "value" : "Citizens",
-      "language" : "en"
-    }, {
-      "value" : "Medborgare",
-      "language" : "sv"
-    } ],
-    "code" : "KR1",
-    "ontologyType" : "TARGETGROUP",
-    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
-    "parentId" : null,
-    "parentUri" : null
-  } ],
-  "lifeEvents" : [ ],
-  "industrialClasses" : [ ],
-  "legislation" : [ ],
-  "keywords" : [ {
-    "value" : "Asiointilupa, asiointivaltuudet",
-    "language" : "fi"
-  } ],
-  "requirements" : [ {
-    "value" : "Tulevaisuudessa kun valtuuksien hallinnointi on mahdollista, valtuuttaminen edellyttää tunnistautumista Suomi.fi-verkkopalveluun. Tunnistautuminen tapahtuu verkkopankkitunnuksilla, mobiilivarmenteella tai varmennekortilla (henkilökortti, organisaatiokortti ja sosiaali- ja terveydenhuollon ammattikortti).",
-    "language" : "fi"
-  } ],
-  "serviceChannels" : [ {
-    "serviceChannel" : {
-      "id" : "daee70a8-ec2d-413d-ab79-2ebf79fe04a3",
-      "name" : "Sähköisten valtuuksien luonti henkilön puolesta asioinnissa"
+  "id": "0a94d54d-febd-4149-bceb-f3cc0fd648e6",
+  "sourceId": null,
+  "generalDescriptionId": null,
+  "type": "Service",
+  "fundingType": "PubliclyFunded",
+  "serviceNames": [
+    {
+      "language": "fi",
+      "value": "Henkilön puolesta asiointi",
+      "type": "AlternativeName"
     },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  } ],
-  "organizations" : [ {
-    "provisionType" : null,
-    "organization" : {
-      "id" : "b458d033-042d-4cbe-b030-34e81da28821",
-      "name" : "Väestörekisterikeskus"
+    {
+      "language": "fi",
+      "value": "Suomi.fi-valtuudet henkilön puolesta asiointiin",
+      "type": "Name"
+    }
+  ],
+  "serviceChargeType": null,
+  "areaType": "Nationwide",
+  "areas": [],
+  "serviceDescriptions": [
+    {
+      "language": "fi",
+      "value": null,
+      "type": "UserInstruction"
     },
-    "roleType" : "Responsible",
-    "additionalInformation" : [ ]
-  }, {
-    "provisionType" : "SelfProducedServices",
-    "organization" : {
-      "id" : "b458d033-042d-4cbe-b030-34e81da28821",
-      "name" : "Väestörekisterikeskus"
+    {
+      "language": "fi",
+      "value": null,
+      "type": "ChargeTypeAdditionalInfo"
     },
-    "roleType" : "Producer",
-    "additionalInformation" : [ ]
-  } ],
-  "serviceVouchersInUse" : false,
-  "serviceVouchers" : [ ],
-  "serviceCollections" : [ ],
-  "publishingStatus" : "Published",
-  "modified" : "2018-05-03T11:53:58.162746Z"
+    {
+      "language": "fi",
+      "value": "Suomi.fi-valtuudet-palvelu voidaan jakaa kahteen osaan: Jos asioit toisen henkilön puolesta jossakin julkishallinnon tai yksityisen sektorin verkkopalvelussa, Suomi.fi-valtuudet tarkistaa taustatoimintona oikeutesi puolesta-asiointiin. Tämä edellyttää, että verkkopalvelu on ottanut Suomi.fi-valtuudet käyttöön. Esimerkiksi Kelan Omakannassa oikeutesi asioida lapsen puolesta tarkistetaan Suomi.fi-valtuuksien avulla. Tulevaisuudessa voit valtuuttaa toisen henkilön tai yrityksen asioimaan puolestasi sähköisissä asiointipalveluissa. Valtuuttaminen tapahtuu Suomi.fi-verkkopalvelussa. Valtuuksien hallintaa voi jo nyt kokeilla testihenkilöiden tunnuksilla testipalvelussa.",
+      "type": "Description"
+    },
+    {
+      "language": "fi",
+      "value": "Suomi.fi-valtuudet tarkistaa oikeuden asioida henkilön puolesta. Palvelun avulla voi valtuuttaa toisen henkilön asioimaan puolestasi verkkopalveluissa",
+      "type": "Summary"
+    },
+    {
+      "language": "fi",
+      "value": null,
+      "type": "DeadLine"
+    },
+    {
+      "language": "fi",
+      "value": null,
+      "type": "ProcessingTime"
+    },
+    {
+      "language": "fi",
+      "value": null,
+      "type": "ValidityTime"
+    }
+  ],
+  "languages": [
+    "sv",
+    "fi"
+  ],
+  "serviceClasses": [
+    {
+      "name": [
+        {
+          "value": "Oikeusturva",
+          "language": "fi"
+        },
+        {
+          "value": "Legal protection",
+          "language": "en"
+        },
+        {
+          "value": "Rättssäkerhet",
+          "language": "sv"
+        }
+      ],
+      "description": [
+        {
+          "value": "This service class contains services related to fundamental rights, legislation, court processes and instances, protection of privacy, minorities and immaterial rights. Rather than being included in this class, consumer issues have a main class of their own.",
+          "language": "en"
+        },
+        {
+          "value": "Tässä palveluluokassa käsitellään perusoikeuksiin, lainsäädäntöön, oikeusprosesseihin ja -asteisiin, yksilönsuojaan, vähemmistöihin ja immateriaalioikeuksiin liittyviä palveluja. Kuluttaja-asioita ei käsitellä tässä luokassa, vaan omassa pääluokassaan.",
+          "language": "fi"
+        },
+        {
+          "value": "I denna servicegrupp behandlas tjänster relaterade till grundläggande rättigheter, lagstiftning, rättsprocesser och -instanser, skydd för privatlivet, minoriteter samt immaterialrätt. Konsumentärenden behandlas inte i denna grupp, utan i en egen huvudgrupp.",
+          "language": "sv"
+        }
+      ],
+      "code": "P7",
+      "ontologyType": "PTVL",
+      "uri": "http://urn.fi/URN:NBN:fi:au:ptvl:v1076",
+      "parentId": null,
+      "parentUri": null
+    },
+    {
+      "name": [
+        {
+          "value": "Intressebevakning",
+          "language": "sv"
+        },
+        {
+          "value": "Public guardianship",
+          "language": "en"
+        },
+        {
+          "value": "Edunvalvonta",
+          "language": "fi"
+        }
+      ],
+      "description": [
+        {
+          "value": "Tässä palvelualaluokassa käsitellään holhoustoimilain mukaisen edunvalvontaan liittyvät palvelut.",
+          "language": "fi"
+        },
+        {
+          "value": "Denna serviceundergrupp omfattar tjänster relaterade till intressebevakning enligt lagen om förmyndarverksamhet.",
+          "language": "sv"
+        },
+        {
+          "value": "This service subclass deals with services associated with public guardianship as specified in the relevant legislation.",
+          "language": "en"
+        }
+      ],
+      "code": "P7.11",
+      "ontologyType": "PTVL",
+      "uri": "http://urn.fi/URN:NBN:fi:au:ptvl:v1087",
+      "parentId": "487549b3-a7de-4312-badb-2ee6bb390950",
+      "parentUri": "http://urn.fi/URN:NBN:fi:au:ptvl:v1076"
+    },
+    {
+      "name": [
+        {
+          "value": "Data protection and personal data",
+          "language": "en"
+        },
+        {
+          "value": "Datasekretess och personuppgifter",
+          "language": "sv"
+        },
+        {
+          "value": "Tietosuoja ja henkilötiedot",
+          "language": "fi"
+        }
+      ],
+      "description": [
+        {
+          "value": "This service subclass contains services related to personal data and privacy protection, personal identifiers, travel documents and registers containing personal data. It also contains matters pertaining to a citizen's rights to control and use their personal data.",
+          "language": "en"
+        },
+        {
+          "value": "Tässä palvelualaluokassa käsitellään henkilötietojen ja yksityisyyden suojaan, henkilötunnuksiin ja -tunnisteisiin, matkustusasiakirjoihin ja henkilötietoja sisältäviin rekistereihin liittyviä palveluja sekä kansalaisen oikeuksia hallita ja käyttää omia tietojaan.",
+          "language": "fi"
+        },
+        {
+          "value": "Denna serviceundergrupp omfattar tjänster relaterad till skyddet av personuppgifter och integritet, personbeteckningar och -koder, resedokument och register med personuppgifter samt medborgarnas rättigheter att kontrollera och begränsa användningen av deras personuppgifter.",
+          "language": "sv"
+        }
+      ],
+      "code": "P7.9",
+      "ontologyType": "PTVL",
+      "uri": "http://urn.fi/URN:NBN:fi:au:ptvl:v1085",
+      "parentId": "487549b3-a7de-4312-badb-2ee6bb390950",
+      "parentUri": "http://urn.fi/URN:NBN:fi:au:ptvl:v1076"
+    }
+  ],
+  "ontologyTerms": [],
+  "targetGroups": [
+    {
+      "name": [
+        {
+          "value": "Kansalaiset",
+          "language": "fi"
+        },
+        {
+          "value": "Citizens",
+          "language": "en"
+        },
+        {
+          "value": "Medborgare",
+          "language": "sv"
+        }
+      ],
+      "code": "KR1",
+      "ontologyType": "TARGETGROUP",
+      "uri": "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+      "parentId": null,
+      "parentUri": null
+    }
+  ],
+  "lifeEvents": [],
+  "industrialClasses": [],
+  "legislation": [],
+  "keywords": [
+    {
+      "value": "Asiointilupa, asiointivaltuudet",
+      "language": "fi"
+    }
+  ],
+  "requirements": [
+    {
+      "value": "Tulevaisuudessa kun valtuuksien hallinnointi on mahdollista, valtuuttaminen edellyttää tunnistautumista Suomi.fi-verkkopalveluun. Tunnistautuminen tapahtuu verkkopankkitunnuksilla, mobiilivarmenteella tai varmennekortilla (henkilökortti, organisaatiokortti ja sosiaali- ja terveydenhuollon ammattikortti).",
+      "language": "fi"
+    }
+  ],
+  "serviceChannels": [
+    {
+      "serviceChannel": {
+        "id": "daee70a8-ec2d-413d-ab79-2ebf79fe04a3",
+        "name": "Sähköisten valtuuksien luonti henkilön puolesta asioinnissa"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    }
+  ],
+  "organizations": [
+    {
+      "provisionType": null,
+      "organization": {
+        "id": "b458d033-042d-4cbe-b030-34e81da28821",
+        "name": "Väestörekisterikeskus"
+      },
+      "roleType": "Responsible",
+      "additionalInformation": []
+    },
+    {
+      "provisionType": "SelfProducedServices",
+      "organization": {
+        "id": "b458d033-042d-4cbe-b030-34e81da28821",
+        "name": "Väestörekisterikeskus"
+      },
+      "roleType": "Producer",
+      "additionalInformation": []
+    }
+  ],
+  "serviceVouchersInUse": false,
+  "serviceVouchers": [],
+  "serviceCollections": [],
+  "publishingStatus": "Published",
+  "modified": "2018-05-03T11:53:58.162746Z"
 }

@@ -1,258 +1,314 @@
 {
-  "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
-  "sourceId" : null,
-  "oid" : "",
-  "parentOrganizationId" : null,
-  "organizationRootId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
-  "municipality" : {
-    "code" : "529",
-    "name" : [ {
-      "value" : "Naantali",
-      "language" : "fi"
-    }, {
-      "value" : "Nådendal",
-      "language" : "sv"
-    }, {
-      "value" : "Naantali",
-      "language" : "en"
-    } ]
+  "id": "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "sourceId": null,
+  "oid": "",
+  "parentOrganizationId": null,
+  "organizationRootId": "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "municipality": {
+    "code": "529",
+    "name": [
+      {
+        "value": "Naantali",
+        "language": "fi"
+      },
+      {
+        "value": "Nådendal",
+        "language": "sv"
+      },
+      {
+        "value": "Naantali",
+        "language": "en"
+      }
+    ]
   },
-  "organizationType" : "Municipality",
-  "businessCode" : "0135457-2",
-  "businessName" : "Naantali",
-  "organizationNames" : [ {
-    "language" : "fi",
-    "value" : "Naantalin kaupunki",
-    "type" : "Name"
-  } ],
-  "displayNameType" : [ {
-    "type" : "Name",
-    "language" : "fi"
-  }, {
-    "type" : "Name",
-    "language" : "sv"
-  } ],
-  "areaType" : null,
-  "areas" : null,
-  "organizationDescriptions" : [ {
-    "language" : "fi",
-    "value" : null,
-    "type" : "Description"
-  } ],
-  "emails" : [ {
-    "description" : "Kaupungin virallinen sähköpostiosoite.",
-    "value" : "kirjaamo@naantali.fi",
-    "language" : "fi"
-  }, {
-    "description" : "Henkilökunta.",
-    "value" : "etunimi.sukunimi@naantali.fi",
-    "language" : "fi"
-  }, {
-    "description" : "Yhteispalvelupiste.",
-    "value" : "palvelupiste@naantali.fi",
-    "language" : "fi"
-  }, {
-    "description" : "Kaupungin yleinen palautesähköposti.",
-    "value" : "palaute@naantali.fi",
-    "language" : "fi"
-  } ],
-  "webPages" : [ {
-    "orderNumber" : "1",
-    "url" : "http://www.naantali.fi/fi_FI/",
-    "value" : "Naantalin kaupungin verkkosivut",
-    "language" : "fi"
-  } ],
-  "phoneNumbers" : [ {
-    "additionalInformation" : "Naantalin kaupungin vaihde",
-    "serviceChargeType" : "Chargeable",
-    "chargeDescription" : null,
-    "prefixNumber" : "+358",
-    "isFinnishServiceNumber" : false,
-    "number" : "24345111",
-    "language" : "fi"
-  } ],
-  "addresses" : [ {
-    "type" : "Visiting",
-    "subType" : "Street",
-    "postOfficeBoxAddress" : null,
-    "streetAddress" : {
-      "street" : [ {
-        "value" : "Käsityöläiskatu",
-        "language" : "fi"
-      } ],
-      "streetNumber" : "2",
-      "postalCode" : "21100",
-      "postOffice" : [ {
-        "value" : "NAANTALI",
-        "language" : "sv"
-      }, {
-        "value" : "NAANTALI",
-        "language" : "fi"
-      } ],
-      "municipality" : {
-        "code" : "529",
-        "name" : [ {
-          "value" : "Naantali",
-          "language" : "fi"
-        }, {
-          "value" : "Nådendal",
-          "language" : "sv"
-        }, {
-          "value" : "Naantali",
-          "language" : "en"
-        } ]
+  "organizationType": "Municipality",
+  "businessCode": "0135457-2",
+  "businessName": "Naantali",
+  "organizationNames": [
+    {
+      "language": "fi",
+      "value": "Naantalin kaupunki",
+      "type": "Name"
+    }
+  ],
+  "displayNameType": [
+    {
+      "type": "Name",
+      "language": "fi"
+    },
+    {
+      "type": "Name",
+      "language": "sv"
+    }
+  ],
+  "areaType": null,
+  "areas": null,
+  "organizationDescriptions": [
+    {
+      "language": "fi",
+      "value": null,
+      "type": "Description"
+    }
+  ],
+  "emails": [
+    {
+      "description": "Kaupungin virallinen sähköpostiosoite.",
+      "value": "kirjaamo@naantali.fi",
+      "language": "fi"
+    },
+    {
+      "description": "Henkilökunta.",
+      "value": "etunimi.sukunimi@naantali.fi",
+      "language": "fi"
+    },
+    {
+      "description": "Yhteispalvelupiste.",
+      "value": "palvelupiste@naantali.fi",
+      "language": "fi"
+    },
+    {
+      "description": "Kaupungin yleinen palautesähköposti.",
+      "value": "palaute@naantali.fi",
+      "language": "fi"
+    }
+  ],
+  "webPages": [
+    {
+      "orderNumber": "1",
+      "url": "http://www.naantali.fi/fi_FI/",
+      "value": "Naantalin kaupungin verkkosivut",
+      "language": "fi"
+    }
+  ],
+  "phoneNumbers": [
+    {
+      "additionalInformation": "Naantalin kaupungin vaihde",
+      "serviceChargeType": "Chargeable",
+      "chargeDescription": null,
+      "prefixNumber": "+358",
+      "isFinnishServiceNumber": false,
+      "number": "24345111",
+      "language": "fi"
+    }
+  ],
+  "addresses": [
+    {
+      "type": "Visiting",
+      "subType": "Street",
+      "postOfficeBoxAddress": null,
+      "streetAddress": {
+        "street": [
+          {
+            "value": "Käsityöläiskatu",
+            "language": "fi"
+          }
+        ],
+        "streetNumber": "2",
+        "postalCode": "21100",
+        "postOffice": [
+          {
+            "value": "NAANTALI",
+            "language": "sv"
+          },
+          {
+            "value": "NAANTALI",
+            "language": "fi"
+          }
+        ],
+        "municipality": {
+          "code": "529",
+          "name": [
+            {
+              "value": "Naantali",
+              "language": "fi"
+            },
+            {
+              "value": "Nådendal",
+              "language": "sv"
+            },
+            {
+              "value": "Naantali",
+              "language": "en"
+            }
+          ]
+        },
+        "additionalInformation": [
+          {
+            "value": "Naantalin kaupungintalo",
+            "language": "fi"
+          }
+        ],
+        "latitude": "6713681.46",
+        "longitude": "226646.468",
+        "coordinateState": "Ok"
       },
-      "additionalInformation" : [ {
-        "value" : "Naantalin kaupungintalo",
-        "language" : "fi"
-      } ],
-      "latitude" : "6713681.46",
-      "longitude" : "226646.468",
-      "coordinateState" : "Ok"
+      "foreignAddress": null,
+      "country": "FI"
     },
-    "foreignAddress" : null,
-    "country" : "FI"
-  }, {
-    "type" : "Postal",
-    "subType" : "PostOfficeBox",
-    "postOfficeBoxAddress" : {
-      "postOfficeBox" : [ {
-        "value" : "PL 43",
-        "language" : "fi"
-      } ],
-      "postalCode" : "21101",
-      "postOffice" : [ {
-        "value" : "NAANTALI",
-        "language" : "sv"
-      }, {
-        "value" : "NAANTALI",
-        "language" : "fi"
-      } ],
-      "municipality" : {
-        "code" : "529",
-        "name" : [ {
-          "value" : "Naantali",
-          "language" : "fi"
-        }, {
-          "value" : "Nådendal",
-          "language" : "sv"
-        }, {
-          "value" : "Naantali",
-          "language" : "en"
-        } ]
+    {
+      "type": "Postal",
+      "subType": "PostOfficeBox",
+      "postOfficeBoxAddress": {
+        "postOfficeBox": [
+          {
+            "value": "PL 43",
+            "language": "fi"
+          }
+        ],
+        "postalCode": "21101",
+        "postOffice": [
+          {
+            "value": "NAANTALI",
+            "language": "sv"
+          },
+          {
+            "value": "NAANTALI",
+            "language": "fi"
+          }
+        ],
+        "municipality": {
+          "code": "529",
+          "name": [
+            {
+              "value": "Naantali",
+              "language": "fi"
+            },
+            {
+              "value": "Nådendal",
+              "language": "sv"
+            },
+            {
+              "value": "Naantali",
+              "language": "en"
+            }
+          ]
+        },
+        "additionalInformation": [
+          {
+            "value": null,
+            "language": "fi"
+          }
+        ]
       },
-      "additionalInformation" : [ {
-        "value" : null,
-        "language" : "fi"
-      } ]
+      "streetAddress": null,
+      "foreignAddress": null,
+      "country": "FI"
+    }
+  ],
+  "electronicInvoicings": [],
+  "publishingStatus": "Published",
+  "services": [
+    {
+      "organizationId": "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "service": {
+        "id": "228738ee-754a-49b7-8240-2b84c5ca2970",
+        "name": "Etsivä nuorisotyö"
+      },
+      "roleType": "Responsible",
+      "provisionType": null,
+      "additionalInformation": [],
+      "webPages": []
     },
-    "streetAddress" : null,
-    "foreignAddress" : null,
-    "country" : "FI"
-  } ],
-  "electronicInvoicings" : [ ],
-  "publishingStatus" : "Published",
-  "services" : [ {
-    "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
-    "service" : {
-      "id" : "228738ee-754a-49b7-8240-2b84c5ca2970",
-      "name" : "Etsivä nuorisotyö"
+    {
+      "organizationId": "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "service": {
+        "id": "ea3af438-bc77-49da-8f0c-2f217eee491f",
+        "name": "Perusopetuksen oppilashuolto"
+      },
+      "roleType": "Responsible",
+      "provisionType": null,
+      "additionalInformation": [],
+      "webPages": []
     },
-    "roleType" : "Responsible",
-    "provisionType" : null,
-    "additionalInformation" : [ ],
-    "webPages" : [ ]
-  }, {
-    "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
-    "service" : {
-      "id" : "ea3af438-bc77-49da-8f0c-2f217eee491f",
-      "name" : "Perusopetuksen oppilashuolto"
+    {
+      "organizationId": "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "service": {
+        "id": "f20366fd-b41d-406b-bfab-e6928359a008",
+        "name": "Painotettu opetus"
+      },
+      "roleType": "Responsible",
+      "provisionType": null,
+      "additionalInformation": [],
+      "webPages": []
     },
-    "roleType" : "Responsible",
-    "provisionType" : null,
-    "additionalInformation" : [ ],
-    "webPages" : [ ]
-  }, {
-    "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
-    "service" : {
-      "id" : "f20366fd-b41d-406b-bfab-e6928359a008",
-      "name" : "Painotettu opetus"
+    {
+      "organizationId": "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "service": {
+        "id": "e45cae1e-dfbc-44eb-b57b-ef73f21b38c4",
+        "name": "Perusopetus"
+      },
+      "roleType": "Responsible",
+      "provisionType": null,
+      "additionalInformation": [],
+      "webPages": []
     },
-    "roleType" : "Responsible",
-    "provisionType" : null,
-    "additionalInformation" : [ ],
-    "webPages" : [ ]
-  }, {
-    "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
-    "service" : {
-      "id" : "e45cae1e-dfbc-44eb-b57b-ef73f21b38c4",
-      "name" : "Perusopetus"
+    {
+      "organizationId": "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "service": {
+        "id": "4b9f3ded-173b-4018-b43b-d3bbd1ef0ba8",
+        "name": "Tilapäinen päivähoito"
+      },
+      "roleType": "Responsible",
+      "provisionType": null,
+      "additionalInformation": [],
+      "webPages": []
     },
-    "roleType" : "Responsible",
-    "provisionType" : null,
-    "additionalInformation" : [ ],
-    "webPages" : [ ]
-  }, {
-    "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
-    "service" : {
-      "id" : "4b9f3ded-173b-4018-b43b-d3bbd1ef0ba8",
-      "name" : "Tilapäinen päivähoito"
+    {
+      "organizationId": "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "service": {
+        "id": "c4f1632e-66a8-410b-94f0-9196e028c644",
+        "name": "Esiopetuksen oppilashuolto"
+      },
+      "roleType": "Responsible",
+      "provisionType": null,
+      "additionalInformation": [],
+      "webPages": []
     },
-    "roleType" : "Responsible",
-    "provisionType" : null,
-    "additionalInformation" : [ ],
-    "webPages" : [ ]
-  }, {
-    "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
-    "service" : {
-      "id" : "c4f1632e-66a8-410b-94f0-9196e028c644",
-      "name" : "Esiopetuksen oppilashuolto"
+    {
+      "organizationId": "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "service": {
+        "id": "faa6b1ed-65e0-415e-9db4-67021d8eebc0",
+        "name": "Erityisvarhaiskasvatus"
+      },
+      "roleType": "Responsible",
+      "provisionType": null,
+      "additionalInformation": [],
+      "webPages": []
     },
-    "roleType" : "Responsible",
-    "provisionType" : null,
-    "additionalInformation" : [ ],
-    "webPages" : [ ]
-  }, {
-    "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
-    "service" : {
-      "id" : "faa6b1ed-65e0-415e-9db4-67021d8eebc0",
-      "name" : "Erityisvarhaiskasvatus"
+    {
+      "organizationId": "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "service": {
+        "id": "f8d7f555-a02c-47b3-9219-7f36767b979a",
+        "name": "Avustajapalvelut ja apuvälineet perusopetuksen oppilaalle"
+      },
+      "roleType": "Responsible",
+      "provisionType": null,
+      "additionalInformation": [],
+      "webPages": []
     },
-    "roleType" : "Responsible",
-    "provisionType" : null,
-    "additionalInformation" : [ ],
-    "webPages" : [ ]
-  }, {
-    "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
-    "service" : {
-      "id" : "f8d7f555-a02c-47b3-9219-7f36767b979a",
-      "name" : "Avustajapalvelut ja apuvälineet perusopetuksen oppilaalle"
+    {
+      "organizationId": "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "service": {
+        "id": "d088280f-3d17-4698-b440-feffc6e4fa0f",
+        "name": "Lukiokoulutuksen opinto-ohjaus"
+      },
+      "roleType": "Responsible",
+      "provisionType": null,
+      "additionalInformation": [],
+      "webPages": []
     },
-    "roleType" : "Responsible",
-    "provisionType" : null,
-    "additionalInformation" : [ ],
-    "webPages" : [ ]
-  }, {
-    "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
-    "service" : {
-      "id" : "d088280f-3d17-4698-b440-feffc6e4fa0f",
-      "name" : "Lukiokoulutuksen opinto-ohjaus"
-    },
-    "roleType" : "Responsible",
-    "provisionType" : null,
-    "additionalInformation" : [ ],
-    "webPages" : [ ]
-  }, {
-    "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
-    "service" : {
-      "id" : "0739289c-cc26-4097-b029-fa9c58c8d4e9",
-      "name" : "Rajankäynti asemakaava-alueella"
-    },
-    "roleType" : "Responsible",
-    "provisionType" : null,
-    "additionalInformation" : [ ],
-    "webPages" : [ ]
-  } ],
-  "modified" : "2017-09-11T00:00:00Z",
-  "subOrganizations" : null
+    {
+      "organizationId": "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+      "service": {
+        "id": "0739289c-cc26-4097-b029-fa9c58c8d4e9",
+        "name": "Rajankäynti asemakaava-alueella"
+      },
+      "roleType": "Responsible",
+      "provisionType": null,
+      "additionalInformation": [],
+      "webPages": []
+    }
+  ],
+  "modified": "2017-09-11T00:00:00Z",
+  "subOrganizations": null
 }

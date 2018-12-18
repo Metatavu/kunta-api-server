@@ -1,244 +1,317 @@
 {
-  "id" : "d088280f-3d17-4698-b440-feffc6e4fa0f",
-  "sourceId" : null,
-  "generalDescriptionId" : "1c94b5dc-93e7-4eb4-bc23-9b332109fb5b",
-  "type" : "Service",
-  "fundingType" : "PubliclyFunded",
-  "serviceNames" : [ {
-    "language" : "fi",
-    "value" : "Lukiokoulutuksen opinto-ohjaus",
-    "type" : "Name"
-  } ],
-  "serviceChargeType" : null,
-  "areaType" : "LimitedType",
-  "areas" : [ {
-    "type" : "Municipality",
-    "code" : null,
-    "name" : null,
-    "municipalities" : [ {
-      "code" : "529",
-      "name" : [ {
-        "value" : "Naantali",
-        "language" : "fi"
-      }, {
-        "value" : "Nådendal",
-        "language" : "sv"
-      }, {
-        "value" : "Naantali",
-        "language" : "en"
-      } ]
-    } ]
-  } ],
-  "serviceDescriptions" : [ {
-    "language" : "fi",
-    "value" : null,
-    "type" : "DeadLine"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ProcessingTime"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ValidityTime"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ChargeTypeAdditionalInfo"
-  }, {
-    "language" : "fi",
-    "value" : "Lukiokoulutukseen osallistuvalla on oikeus opinto-ohjaukseen, joka tukee opiskelijaa opinnoissa ja auttaa häntä valmistautumaan lukion jälkeisiin opintoihin ja työelämään.\n\nOpinto-ohjaus Naantalin lukiossa:\n* kaksi opinto-ohjaajaa\n* kaksi pakollista kurssia\n* pienryhmäohjausta\n* henkilökohtaiset opintosuunnitelmat ja jatko-opintosuunnitelmat ",
-    "type" : "Description"
-  }, {
-    "language" : "fi",
-    "value" : "Naantalin lukio tarjoaa opiskelijoilleen monipuolista opinto-ohjausta opiskelun tueksi.",
-    "type" : "Summary"
-  }, {
-    "language" : "fi",
-    "value" : "Ota yhteyttä omaan opinto-ohjaajaasi. Yhteystiedot löydät opinto-oppaasta tai lukion omilta verkkosivuilta.",
-    "type" : "UserInstruction"
-  } ],
-  "languages" : [ "fi" ],
-  "serviceClasses" : [ {
-    "name" : [ {
-      "value" : "Ammatinvalinta ja opintojen ohjaus",
-      "language" : "fi"
-    }, {
-      "value" : "Career guidance and guidance counselling",
-      "language" : "en"
-    }, {
-      "value" : "Yrkesval och studiehandledning",
-      "language" : "sv"
-    } ],
-    "description" : [ {
-      "value" : "Till denna serviceundergrupp hör de tjänster som erbjuds inom ramarna för Finlands utbildningssystem och som guidar, ger råd och handleder elever eller studerande att fatta motiverade beslut för att välja yrke och/eller utbildningsinriktning. Karriärvägledningstjänster för en person som redan är i arbetslivet finns i den egna undergruppen under huvudgruppen Arbete och arbetslöshet.",
-      "language" : "sv"
-    }, {
-      "value" : "Tähän alapalveluluokkaan kuuluvat ne Suomen koulutusjärjestelmän puitteissa tarjottavat palvelut, jotka opastavat, neuvovat ja ohjaavat oppilasta tai opiskelijaa tekemään perusteltuja valintoja ammatin ja/tai koulutussuuntautumisen valitsemiseksi. Työelämässä jo olevan henkilön uraohjauspalvelut ovat omassa alaluokassaan Työ ja työttömyys -pääluokan alla.",
-      "language" : "fi"
-    }, {
-      "value" : "This service subclass contains services offered within the Finnish education system intended to guide, advise and direct a pupil or a student in making justified choices when choosing a career and/or an educational path. Career guidance services for persons already in the labour market are included in their own subclass under the main class Work and unemployment.",
-      "language" : "en"
-    } ],
-    "code" : "P6.4",
-    "ontologyType" : "PTVL",
-    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1064",
-    "parentId" : "fd1bb60e-4206-4f0a-994f-8ffcb4ffaaa4",
-    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1060"
-  }, {
-    "name" : [ {
-      "value" : "Lukiokoulutus",
-      "language" : "fi"
-    }, {
-      "value" : "Gymnasieutbildning",
-      "language" : "sv"
-    }, {
-      "value" : "General upper secondary education",
-      "language" : "en"
-    } ],
-    "description" : [ {
-      "value" : "Till denna serviceundergrupp hör gymnasieutbildningens innehåll och syfte, hur man söker till gymnasieutbildningen, sätt att genomföra gymnasieutbildning samt studentexamen. Det ekonomiska stödet för studierna behandlas i sin egen serviceundergrupp.",
-      "language" : "sv"
-    }, {
-      "value" : "Tähän alapalveluluokkaan kuuluvat lukiokoulutuksen sisältö ja tarkoitus, lukiokoulutukseen hakeminen, lukion suorittamisen tavat ja ylioppilastutkinto. Opintojen taloudellinen tuki käsitellään omassa alapalveluluokassaan.",
-      "language" : "fi"
-    }, {
-      "value" : "This service subclass contains the contents and objectives of general upper secondary education, applying for a place in general upper secondary education, methods of completing the education and the matriculation examination. Financial support for studies is included in its own subclass.",
-      "language" : "en"
-    } ],
-    "code" : "P6.8",
-    "ontologyType" : "PTVL",
-    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1068",
-    "parentId" : "fd1bb60e-4206-4f0a-994f-8ffcb4ffaaa4",
-    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1060"
-  }, {
-    "name" : [ {
-      "value" : "Korkeakoulutus",
-      "language" : "fi"
-    }, {
-      "value" : "Högskoleutbildning",
-      "language" : "sv"
-    }, {
-      "value" : "Higher education",
-      "language" : "en"
-    } ],
-    "description" : [ {
-      "value" : "Tähän alapalveluluokkaan kuuluvat korkea-asteen koulutuksen sisältö ja tarkoitus, korkeakoulutukseen hakeminen ja tutkintovaatimukset ja -rakenteet. Opintojen taloudellinen tuki käsitellään omassa alapalveluluokassaan.",
-      "language" : "fi"
-    }, {
-      "value" : "Till denna serviceundergrupp hör innehåll och syfte för en utbildning av högre nivå, hur man söker till utbildning av högre nivå samt examenskrav och -strukturer. Det ekonomiska stödet för studierna behandlas i sin egen serviceundergrupp.",
-      "language" : "sv"
-    }, {
-      "value" : "This service subclass contains the contents and objectives of higher education, applying for a place in higher education and decree requirements and structures. Financial support for studies is included in its own subclass.",
-      "language" : "en"
-    } ],
-    "code" : "P6.9",
-    "ontologyType" : "PTVL",
-    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1069",
-    "parentId" : "fd1bb60e-4206-4f0a-994f-8ffcb4ffaaa4",
-    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1060"
-  } ],
-  "ontologyTerms" : [ {
-    "name" : [ {
-      "value" : "lukiokoulutus (opetus)",
-      "language" : "fi"
-    }, {
-      "value" : "gymnasieutbildning",
-      "language" : "sv"
-    }, {
-      "value" : "general upper secondary education",
-      "language" : "en"
-    } ],
-    "code" : null,
-    "ontologyType" : "JUPO",
-    "uri" : "http://www.yso.fi/onto/koko/p75844",
-    "parentId" : null,
-    "parentUri" : "http://www.yso.fi/onto/koko/p33827"
-  }, {
-    "name" : [ {
-      "value" : "opinto-ohjaus",
-      "language" : "fi"
-    }, {
-      "value" : "studievägledning",
-      "language" : "sv"
-    }, {
-      "value" : "educational counselling",
-      "language" : "en"
-    } ],
-    "code" : null,
-    "ontologyType" : "JUPO",
-    "uri" : "http://www.yso.fi/onto/koko/p5541",
-    "parentId" : null,
-    "parentUri" : "http://www.yso.fi/onto/koko/p77930"
-  } ],
-  "targetGroups" : [ {
-    "name" : [ {
-      "value" : "Kansalaiset",
-      "language" : "fi"
-    }, {
-      "value" : "Citizens",
-      "language" : "en"
-    }, {
-      "value" : "Medborgare",
-      "language" : "sv"
-    } ],
-    "code" : "KR1",
-    "ontologyType" : "TARGETGROUP",
-    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
-    "parentId" : null,
-    "parentUri" : null
-  } ],
-  "lifeEvents" : [ ],
-  "industrialClasses" : [ ],
-  "legislation" : [ ],
-  "keywords" : [ ],
-  "requirements" : [ {
-    "value" : null,
-    "language" : "fi"
-  } ],
-  "serviceChannels" : [ {
-    "serviceChannel" : {
-      "id" : "abac25e1-bd15-4c1a-b22e-9d9a705d9220",
-      "name" : "Naantalin lukio"
+  "id": "d088280f-3d17-4698-b440-feffc6e4fa0f",
+  "sourceId": null,
+  "generalDescriptionId": "1c94b5dc-93e7-4eb4-bc23-9b332109fb5b",
+  "type": "Service",
+  "fundingType": "PubliclyFunded",
+  "serviceNames": [
+    {
+      "language": "fi",
+      "value": "Lukiokoulutuksen opinto-ohjaus",
+      "type": "Name"
+    }
+  ],
+  "serviceChargeType": null,
+  "areaType": "LimitedType",
+  "areas": [
+    {
+      "type": "Municipality",
+      "code": null,
+      "name": null,
+      "municipalities": [
+        {
+          "code": "529",
+          "name": [
+            {
+              "value": "Naantali",
+              "language": "fi"
+            },
+            {
+              "value": "Nådendal",
+              "language": "sv"
+            },
+            {
+              "value": "Naantali",
+              "language": "en"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "serviceDescriptions": [
+    {
+      "language": "fi",
+      "value": null,
+      "type": "DeadLine"
     },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
-      "id" : "b8931c4b-1119-4c69-9bc4-a41fb00b92fe",
-      "name" : "Wilma Naantali"
+    {
+      "language": "fi",
+      "value": null,
+      "type": "ProcessingTime"
     },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  } ],
-  "organizations" : [ {
-    "provisionType" : null,
-    "organization" : {
-      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
-      "name" : "Naantalin kaupunki"
+    {
+      "language": "fi",
+      "value": null,
+      "type": "ValidityTime"
     },
-    "roleType" : "Responsible",
-    "additionalInformation" : [ ]
-  }, {
-    "provisionType" : "SelfProducedServices",
-    "organization" : {
-      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
-      "name" : "Naantalin kaupunki"
+    {
+      "language": "fi",
+      "value": null,
+      "type": "ChargeTypeAdditionalInfo"
     },
-    "roleType" : "Producer",
-    "additionalInformation" : [ ]
-  } ],
-  "serviceVouchersInUse" : false,
-  "serviceVouchers" : [ ],
-  "serviceCollections" : [ ],
-  "publishingStatus" : "Published",
-  "modified" : "2018-05-03T11:53:58.162746Z"
+    {
+      "language": "fi",
+      "value": "Lukiokoulutukseen osallistuvalla on oikeus opinto-ohjaukseen, joka tukee opiskelijaa opinnoissa ja auttaa häntä valmistautumaan lukion jälkeisiin opintoihin ja työelämään.\n\nOpinto-ohjaus Naantalin lukiossa:\n* kaksi opinto-ohjaajaa\n* kaksi pakollista kurssia\n* pienryhmäohjausta\n* henkilökohtaiset opintosuunnitelmat ja jatko-opintosuunnitelmat ",
+      "type": "Description"
+    },
+    {
+      "language": "fi",
+      "value": "Naantalin lukio tarjoaa opiskelijoilleen monipuolista opinto-ohjausta opiskelun tueksi.",
+      "type": "Summary"
+    },
+    {
+      "language": "fi",
+      "value": "Ota yhteyttä omaan opinto-ohjaajaasi. Yhteystiedot löydät opinto-oppaasta tai lukion omilta verkkosivuilta.",
+      "type": "UserInstruction"
+    }
+  ],
+  "languages": [
+    "fi"
+  ],
+  "serviceClasses": [
+    {
+      "name": [
+        {
+          "value": "Ammatinvalinta ja opintojen ohjaus",
+          "language": "fi"
+        },
+        {
+          "value": "Career guidance and guidance counselling",
+          "language": "en"
+        },
+        {
+          "value": "Yrkesval och studiehandledning",
+          "language": "sv"
+        }
+      ],
+      "description": [
+        {
+          "value": "Till denna serviceundergrupp hör de tjänster som erbjuds inom ramarna för Finlands utbildningssystem och som guidar, ger råd och handleder elever eller studerande att fatta motiverade beslut för att välja yrke och/eller utbildningsinriktning. Karriärvägledningstjänster för en person som redan är i arbetslivet finns i den egna undergruppen under huvudgruppen Arbete och arbetslöshet.",
+          "language": "sv"
+        },
+        {
+          "value": "Tähän alapalveluluokkaan kuuluvat ne Suomen koulutusjärjestelmän puitteissa tarjottavat palvelut, jotka opastavat, neuvovat ja ohjaavat oppilasta tai opiskelijaa tekemään perusteltuja valintoja ammatin ja/tai koulutussuuntautumisen valitsemiseksi. Työelämässä jo olevan henkilön uraohjauspalvelut ovat omassa alaluokassaan Työ ja työttömyys -pääluokan alla.",
+          "language": "fi"
+        },
+        {
+          "value": "This service subclass contains services offered within the Finnish education system intended to guide, advise and direct a pupil or a student in making justified choices when choosing a career and/or an educational path. Career guidance services for persons already in the labour market are included in their own subclass under the main class Work and unemployment.",
+          "language": "en"
+        }
+      ],
+      "code": "P6.4",
+      "ontologyType": "PTVL",
+      "uri": "http://urn.fi/URN:NBN:fi:au:ptvl:v1064",
+      "parentId": "fd1bb60e-4206-4f0a-994f-8ffcb4ffaaa4",
+      "parentUri": "http://urn.fi/URN:NBN:fi:au:ptvl:v1060"
+    },
+    {
+      "name": [
+        {
+          "value": "Lukiokoulutus",
+          "language": "fi"
+        },
+        {
+          "value": "Gymnasieutbildning",
+          "language": "sv"
+        },
+        {
+          "value": "General upper secondary education",
+          "language": "en"
+        }
+      ],
+      "description": [
+        {
+          "value": "Till denna serviceundergrupp hör gymnasieutbildningens innehåll och syfte, hur man söker till gymnasieutbildningen, sätt att genomföra gymnasieutbildning samt studentexamen. Det ekonomiska stödet för studierna behandlas i sin egen serviceundergrupp.",
+          "language": "sv"
+        },
+        {
+          "value": "Tähän alapalveluluokkaan kuuluvat lukiokoulutuksen sisältö ja tarkoitus, lukiokoulutukseen hakeminen, lukion suorittamisen tavat ja ylioppilastutkinto. Opintojen taloudellinen tuki käsitellään omassa alapalveluluokassaan.",
+          "language": "fi"
+        },
+        {
+          "value": "This service subclass contains the contents and objectives of general upper secondary education, applying for a place in general upper secondary education, methods of completing the education and the matriculation examination. Financial support for studies is included in its own subclass.",
+          "language": "en"
+        }
+      ],
+      "code": "P6.8",
+      "ontologyType": "PTVL",
+      "uri": "http://urn.fi/URN:NBN:fi:au:ptvl:v1068",
+      "parentId": "fd1bb60e-4206-4f0a-994f-8ffcb4ffaaa4",
+      "parentUri": "http://urn.fi/URN:NBN:fi:au:ptvl:v1060"
+    },
+    {
+      "name": [
+        {
+          "value": "Korkeakoulutus",
+          "language": "fi"
+        },
+        {
+          "value": "Högskoleutbildning",
+          "language": "sv"
+        },
+        {
+          "value": "Higher education",
+          "language": "en"
+        }
+      ],
+      "description": [
+        {
+          "value": "Tähän alapalveluluokkaan kuuluvat korkea-asteen koulutuksen sisältö ja tarkoitus, korkeakoulutukseen hakeminen ja tutkintovaatimukset ja -rakenteet. Opintojen taloudellinen tuki käsitellään omassa alapalveluluokassaan.",
+          "language": "fi"
+        },
+        {
+          "value": "Till denna serviceundergrupp hör innehåll och syfte för en utbildning av högre nivå, hur man söker till utbildning av högre nivå samt examenskrav och -strukturer. Det ekonomiska stödet för studierna behandlas i sin egen serviceundergrupp.",
+          "language": "sv"
+        },
+        {
+          "value": "This service subclass contains the contents and objectives of higher education, applying for a place in higher education and decree requirements and structures. Financial support for studies is included in its own subclass.",
+          "language": "en"
+        }
+      ],
+      "code": "P6.9",
+      "ontologyType": "PTVL",
+      "uri": "http://urn.fi/URN:NBN:fi:au:ptvl:v1069",
+      "parentId": "fd1bb60e-4206-4f0a-994f-8ffcb4ffaaa4",
+      "parentUri": "http://urn.fi/URN:NBN:fi:au:ptvl:v1060"
+    }
+  ],
+  "ontologyTerms": [
+    {
+      "name": [
+        {
+          "value": "lukiokoulutus (opetus)",
+          "language": "fi"
+        },
+        {
+          "value": "gymnasieutbildning",
+          "language": "sv"
+        },
+        {
+          "value": "general upper secondary education",
+          "language": "en"
+        }
+      ],
+      "code": null,
+      "ontologyType": "JUPO",
+      "uri": "http://www.yso.fi/onto/koko/p75844",
+      "parentId": null,
+      "parentUri": "http://www.yso.fi/onto/koko/p33827"
+    },
+    {
+      "name": [
+        {
+          "value": "opinto-ohjaus",
+          "language": "fi"
+        },
+        {
+          "value": "studievägledning",
+          "language": "sv"
+        },
+        {
+          "value": "educational counselling",
+          "language": "en"
+        }
+      ],
+      "code": null,
+      "ontologyType": "JUPO",
+      "uri": "http://www.yso.fi/onto/koko/p5541",
+      "parentId": null,
+      "parentUri": "http://www.yso.fi/onto/koko/p77930"
+    }
+  ],
+  "targetGroups": [
+    {
+      "name": [
+        {
+          "value": "Kansalaiset",
+          "language": "fi"
+        },
+        {
+          "value": "Citizens",
+          "language": "en"
+        },
+        {
+          "value": "Medborgare",
+          "language": "sv"
+        }
+      ],
+      "code": "KR1",
+      "ontologyType": "TARGETGROUP",
+      "uri": "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+      "parentId": null,
+      "parentUri": null
+    }
+  ],
+  "lifeEvents": [],
+  "industrialClasses": [],
+  "legislation": [],
+  "keywords": [],
+  "requirements": [
+    {
+      "value": null,
+      "language": "fi"
+    }
+  ],
+  "serviceChannels": [
+    {
+      "serviceChannel": {
+        "id": "abac25e1-bd15-4c1a-b22e-9d9a705d9220",
+        "name": "Naantalin lukio"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "serviceChannel": {
+        "id": "b8931c4b-1119-4c69-9bc4-a41fb00b92fe",
+        "name": "Wilma Naantali"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    }
+  ],
+  "organizations": [
+    {
+      "provisionType": null,
+      "organization": {
+        "id": "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+        "name": "Naantalin kaupunki"
+      },
+      "roleType": "Responsible",
+      "additionalInformation": []
+    },
+    {
+      "provisionType": "SelfProducedServices",
+      "organization": {
+        "id": "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+        "name": "Naantalin kaupunki"
+      },
+      "roleType": "Producer",
+      "additionalInformation": []
+    }
+  ],
+  "serviceVouchersInUse": false,
+  "serviceVouchers": [],
+  "serviceCollections": [],
+  "publishingStatus": "Published",
+  "modified": "2018-05-03T11:53:58.162746Z"
 }

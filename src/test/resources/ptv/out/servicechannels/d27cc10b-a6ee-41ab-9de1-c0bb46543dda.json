@@ -1,44 +1,55 @@
 {
-  "sourceId" : null,
-  "webPages" : [ {
-    "orderNumber" : "0",
-    "url" : "http://www.naantali.fi/opetus_ja_koulutus/oppilashuolto/fi_FI/09_oppilashuolto_1/",
-    "value" : null,
-    "language" : "fi"
-  } ],
-  "languages" : [ "fi" ],
-  "supportPhones" : [ ],
-  "supportEmails" : [ ],
-  "services" : [ {
-    "service" : {
-      "id" : "ea3af438-bc77-49da-8f0c-2f217eee491f",
-      "name" : "Perusopetuksen oppilashuolto"
+  "sourceId": null,
+  "webPages": [
+    {
+      "orderNumber": "0",
+      "url": "http://www.naantali.fi/opetus_ja_koulutus/oppilashuolto/fi_FI/09_oppilashuolto_1/",
+      "value": null,
+      "language": "fi"
+    }
+  ],
+  "languages": [
+    "fi"
+  ],
+  "supportPhones": [],
+  "supportEmails": [],
+  "services": [
+    {
+      "service": {
+        "id": "ea3af438-bc77-49da-8f0c-2f217eee491f",
+        "name": "Perusopetuksen oppilashuolto"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    }
+  ],
+  "organizationId": "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "serviceChannelNames": [
+    {
+      "language": "fi",
+      "value": "Oppilashuolto Naantalissa",
+      "type": "Name"
+    }
+  ],
+  "serviceHours": [],
+  "serviceChannelType": "WebPage",
+  "serviceChannelDescriptions": [
+    {
+      "language": "fi",
+      "value": "Verkkosivuilta saat lisätietoa oppilashuollon toiminnasta Naantalissa.",
+      "type": "Summary"
     },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  } ],
-  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
-  "serviceChannelNames" : [ {
-    "language" : "fi",
-    "value" : "Oppilashuolto Naantalissa",
-    "type" : "Name"
-  } ],
-  "serviceHours" : [ ],
-  "serviceChannelType" : "WebPage",
-  "serviceChannelDescriptions" : [ {
-    "language" : "fi",
-    "value" : "Verkkosivuilta saat lisätietoa oppilashuollon toiminnasta Naantalissa.",
-    "type" : "Summary"
-  }, {
-    "language" : "fi",
-    "value" : "Verkkosivuilta saat lisätietoa oppilashuollon toiminnasta Naantalissa. Oppilashuolto on osa koulun toimintaa, joka kuuluu kaikille koulun arjessa mukana oleville.",
-    "type" : "Description"
-  } ],
-  "publishingStatus" : "Published",
-  "modified" : "2017-10-31T08:15:43.515627",
-  "id" : "d27cc10b-a6ee-41ab-9de1-c0bb46543dda"
+    {
+      "language": "fi",
+      "value": "Verkkosivuilta saat lisätietoa oppilashuollon toiminnasta Naantalissa. Oppilashuolto on osa koulun toimintaa, joka kuuluu kaikille koulun arjessa mukana oleville.",
+      "type": "Description"
+    }
+  ],
+  "publishingStatus": "Published",
+  "modified": "2017-10-31T08:15:43.515627",
+  "id": "d27cc10b-a6ee-41ab-9de1-c0bb46543dda"
 }

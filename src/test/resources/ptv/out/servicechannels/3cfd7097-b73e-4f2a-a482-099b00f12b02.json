@@ -1,199 +1,248 @@
 {
-  "sourceId" : null,
-  "webPages" : [ {
-    "orderNumber" : "1",
-    "url" : "http://www.naantali.fi/opetus_ja_koulutus/koulut/merimasku/fi_FI/etusivu/",
-    "value" : "Merimaskun koulun www-sivut",
-    "language" : "fi"
-  }, {
-    "orderNumber" : "2",
-    "url" : "http://www.naantali.fi/opetus_ja_koulutus/koulut/merimasku/fi_FI/henkilokunta/",
-    "value" : "Merimaskun koulun henkilökunta",
-    "language" : "fi"
-  } ],
-  "addresses" : [ {
-    "type" : "Location",
-    "subType" : "Single",
-    "postOfficeBoxAddress" : null,
-    "streetAddress" : {
-      "street" : [ {
-        "value" : "Iskolantie",
-        "language" : "fi"
-      } ],
-      "streetNumber" : "9",
-      "postalCode" : "21160",
-      "postOffice" : [ {
-        "value" : "MERIMASKU",
-        "language" : "sv"
-      }, {
-        "value" : "MERIMASKU",
-        "language" : "fi"
-      } ],
-      "municipality" : {
-        "code" : "529",
-        "name" : [ {
-          "value" : "Naantali",
-          "language" : "fi"
-        }, {
-          "value" : "Nådendal",
-          "language" : "sv"
-        }, {
-          "value" : "Naantali",
-          "language" : "en"
-        } ]
+  "sourceId": null,
+  "webPages": [
+    {
+      "orderNumber": "1",
+      "url": "http://www.naantali.fi/opetus_ja_koulutus/koulut/merimasku/fi_FI/etusivu/",
+      "value": "Merimaskun koulun www-sivut",
+      "language": "fi"
+    },
+    {
+      "orderNumber": "2",
+      "url": "http://www.naantali.fi/opetus_ja_koulutus/koulut/merimasku/fi_FI/henkilokunta/",
+      "value": "Merimaskun koulun henkilökunta",
+      "language": "fi"
+    }
+  ],
+  "addresses": [
+    {
+      "type": "Location",
+      "subType": "Single",
+      "postOfficeBoxAddress": null,
+      "streetAddress": {
+        "street": [
+          {
+            "value": "Iskolantie",
+            "language": "fi"
+          }
+        ],
+        "streetNumber": "9",
+        "postalCode": "21160",
+        "postOffice": [
+          {
+            "value": "MERIMASKU",
+            "language": "sv"
+          },
+          {
+            "value": "MERIMASKU",
+            "language": "fi"
+          }
+        ],
+        "municipality": {
+          "code": "529",
+          "name": [
+            {
+              "value": "Naantali",
+              "language": "fi"
+            },
+            {
+              "value": "Nådendal",
+              "language": "sv"
+            },
+            {
+              "value": "Naantali",
+              "language": "en"
+            }
+          ]
+        },
+        "additionalInformation": [],
+        "latitude": "6714797.374",
+        "longitude": "218257.487",
+        "coordinateState": "EnteredByUser"
       },
-      "additionalInformation" : [ ],
-      "latitude" : "6714797.374",
-      "longitude" : "218257.487",
-      "coordinateState" : "EnteredByUser"
+      "locationAbroad": null,
+      "multipointLocation": null,
+      "entrances": null,
+      "country": "FI"
     },
-    "locationAbroad" : null,
-    "multipointLocation" : null,
-    "entrances" : null,
-    "country" : "FI"
-  }, {
-    "type" : "Postal",
-    "subType" : "PostOfficeBox",
-    "postOfficeBoxAddress" : {
-      "postOfficeBox" : [ {
-        "value" : "PL 43",
-        "language" : "fi"
-      } ],
-      "postalCode" : "21101",
-      "postOffice" : [ {
-        "value" : "NAANTALI",
-        "language" : "sv"
-      }, {
-        "value" : "NAANTALI",
-        "language" : "fi"
-      } ],
-      "municipality" : {
-        "code" : "529",
-        "name" : [ {
-          "value" : "Naantali",
-          "language" : "fi"
-        }, {
-          "value" : "Nådendal",
-          "language" : "sv"
-        }, {
-          "value" : "Naantali",
-          "language" : "en"
-        } ]
+    {
+      "type": "Postal",
+      "subType": "PostOfficeBox",
+      "postOfficeBoxAddress": {
+        "postOfficeBox": [
+          {
+            "value": "PL 43",
+            "language": "fi"
+          }
+        ],
+        "postalCode": "21101",
+        "postOffice": [
+          {
+            "value": "NAANTALI",
+            "language": "sv"
+          },
+          {
+            "value": "NAANTALI",
+            "language": "fi"
+          }
+        ],
+        "municipality": {
+          "code": "529",
+          "name": [
+            {
+              "value": "Naantali",
+              "language": "fi"
+            },
+            {
+              "value": "Nådendal",
+              "language": "sv"
+            },
+            {
+              "value": "Naantali",
+              "language": "en"
+            }
+          ]
+        },
+        "additionalInformation": []
       },
-      "additionalInformation" : [ ]
+      "streetAddress": null,
+      "locationAbroad": null,
+      "multipointLocation": null,
+      "entrances": null,
+      "country": "FI"
+    }
+  ],
+  "languages": [
+    "fi"
+  ],
+  "areas": [
+    {
+      "type": "Municipality",
+      "code": null,
+      "name": null,
+      "municipalities": [
+        {
+          "code": "529",
+          "name": [
+            {
+              "value": "Naantali",
+              "language": "fi"
+            },
+            {
+              "value": "Nådendal",
+              "language": "sv"
+            },
+            {
+              "value": "Naantali",
+              "language": "en"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "services": [
+    {
+      "service": {
+        "id": "25b6bae1-fa45-4fe4-8ea1-36260c46b2ce",
+        "name": "Nuorisotyö"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
     },
-    "streetAddress" : null,
-    "locationAbroad" : null,
-    "multipointLocation" : null,
-    "entrances" : null,
-    "country" : "FI"
-  } ],
-  "languages" : [ "fi" ],
-  "areas" : [ {
-    "type" : "Municipality",
-    "code" : null,
-    "name" : null,
-    "municipalities" : [ {
-      "code" : "529",
-      "name" : [ {
-        "value" : "Naantali",
-        "language" : "fi"
-      }, {
-        "value" : "Nådendal",
-        "language" : "sv"
-      }, {
-        "value" : "Naantali",
-        "language" : "en"
-      } ]
-    } ]
-  } ],
-  "services" : [ {
-    "service" : {
-      "id" : "25b6bae1-fa45-4fe4-8ea1-36260c46b2ce",
-      "name" : "Nuorisotyö"
+    {
+      "service": {
+        "id": "8c7ac754-4229-4abc-b2a8-d51b817f43f2",
+        "name": "Päivähoito esiopetusikäisille"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
     },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "8c7ac754-4229-4abc-b2a8-d51b817f43f2",
-      "name" : "Päivähoito esiopetusikäisille"
+    {
+      "service": {
+        "id": "aa770428-0ee1-433d-8d2c-90c060c477cd",
+        "name": "Perusopetuksen erityisopetus"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
     },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "aa770428-0ee1-433d-8d2c-90c060c477cd",
-      "name" : "Perusopetuksen erityisopetus"
+    {
+      "service": {
+        "id": "e45cae1e-dfbc-44eb-b57b-ef73f21b38c4",
+        "name": "Perusopetus"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    }
+  ],
+  "phoneNumbers": [
+    {
+      "type": "Phone",
+      "additionalInformation": "Koulunjohtaja",
+      "serviceChargeType": "Chargeable",
+      "chargeDescription": null,
+      "prefixNumber": "+358",
+      "isFinnishServiceNumber": false,
+      "number": "447334758",
+      "language": "fi"
     },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "e45cae1e-dfbc-44eb-b57b-ef73f21b38c4",
-      "name" : "Perusopetus"
+    {
+      "type": "Phone",
+      "additionalInformation": "Opettajat/koulunkäynninohjaajat",
+      "serviceChargeType": "Chargeable",
+      "chargeDescription": null,
+      "prefixNumber": "+358",
+      "isFinnishServiceNumber": false,
+      "number": "24345542",
+      "language": "fi"
+    }
+  ],
+  "organizationId": "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "emails": [
+    {
+      "value": "etunimi.sukunimi@naantali.fi",
+      "language": "fi"
+    }
+  ],
+  "serviceChannelNames": [
+    {
+      "language": "fi",
+      "value": "Merimaskun koulu",
+      "type": "Name"
+    }
+  ],
+  "serviceHours": [],
+  "serviceChannelType": "ServiceLocation",
+  "serviceChannelDescriptions": [
+    {
+      "language": "fi",
+      "value": "Merimaskun koulu on Naantalin kaupungin perusopetuksen alakoulu.",
+      "type": "Summary"
     },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  } ],
-  "phoneNumbers" : [ {
-    "type" : "Phone",
-    "additionalInformation" : "Koulunjohtaja",
-    "serviceChargeType" : "Chargeable",
-    "chargeDescription" : null,
-    "prefixNumber" : "+358",
-    "isFinnishServiceNumber" : false,
-    "number" : "447334758",
-    "language" : "fi"
-  }, {
-    "type" : "Phone",
-    "additionalInformation" : "Opettajat/koulunkäynninohjaajat",
-    "serviceChargeType" : "Chargeable",
-    "chargeDescription" : null,
-    "prefixNumber" : "+358",
-    "isFinnishServiceNumber" : false,
-    "number" : "24345542",
-    "language" : "fi"
-  } ],
-  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
-  "emails" : [ {
-    "value" : "etunimi.sukunimi@naantali.fi",
-    "language" : "fi"
-  } ],
-  "serviceChannelNames" : [ {
-    "language" : "fi",
-    "value" : "Merimaskun koulu",
-    "type" : "Name"
-  } ],
-  "serviceHours" : [ ],
-  "serviceChannelType" : "ServiceLocation",
-  "serviceChannelDescriptions" : [ {
-    "language" : "fi",
-    "value" : "Merimaskun koulu on Naantalin kaupungin perusopetuksen alakoulu.",
-    "type" : "Summary"
-  }, {
-    "language" : "fi",
-    "value" : "Merimaskun koulu on Naantalin kaupungin perusopetuksen alakoulu.  Koulussa on noin 140 oppilasta, jotka opiskelevat kahdeksassa opetusryhmässä. Lisäksi koulun tiloissa toimii esiopetusryhmä. Koulu on rakennettu neljässä osassa (1949, 1985, 1996 ja 2006). Merimaskun koulun erityisopetus on järjestetty integroimalla oppilaat muihin opetusryhmiin.\n\nMerimaskun alueen vuosiluokkien 7 - 9 oppilaat käyvät koulua Maijamäen koulussa.\n",
-    "type" : "Description"
-  } ],
-  "areaType" : "LimitedType",
-  "publishingStatus" : "Published",
-  "modified" : "2017-10-31T08:15:43.515627",
-  "id" : "3cfd7097-b73e-4f2a-a482-099b00f12b02"
+    {
+      "language": "fi",
+      "value": "Merimaskun koulu on Naantalin kaupungin perusopetuksen alakoulu.  Koulussa on noin 140 oppilasta, jotka opiskelevat kahdeksassa opetusryhmässä. Lisäksi koulun tiloissa toimii esiopetusryhmä. Koulu on rakennettu neljässä osassa (1949, 1985, 1996 ja 2006). Merimaskun koulun erityisopetus on järjestetty integroimalla oppilaat muihin opetusryhmiin.\n\nMerimaskun alueen vuosiluokkien 7 - 9 oppilaat käyvät koulua Maijamäen koulussa.\n",
+      "type": "Description"
+    }
+  ],
+  "areaType": "LimitedType",
+  "publishingStatus": "Published",
+  "modified": "2017-10-31T08:15:43.515627",
+  "id": "3cfd7097-b73e-4f2a-a482-099b00f12b02"
 }
