@@ -14,8 +14,8 @@ import com.github.tomakehurst.wiremock.junit.WireMockRule;
 import com.jayway.restassured.http.ContentType;
 
 import fi.metatavu.kuntaapi.server.rest.model.ElectronicServiceChannel;
-import fi.metatavu.ptv.client.model.V8VmOpenApiElectronicChannelInBase;
-import fi.metatavu.ptv.client.model.V8VmOpenApiElectronicChannel;
+import fi.metatavu.ptv.client.model.V9VmOpenApiElectronicChannelInBase;
+import fi.metatavu.ptv.client.model.V9VmOpenApiElectronicChannel;
 import fi.metatavu.kuntaapi.server.persistence.model.clients.AccessType;
 import fi.metatavu.kuntaapi.server.persistence.model.clients.ClientOrganizationPermission;
 import fi.metatavu.kuntaapi.test.AbstractPtvMocker;
@@ -78,8 +78,8 @@ public class ElectronicServiceChannelInTestsIT extends AbstractPtvInTest {
     grantOrganizationPermission(AccessType.READ_WRITE, organizationId, ClientOrganizationPermission.UPDATE_SERVICE_CHANNELS);
 
     ElectronicServiceChannel kuntaApiResource = getElectronicServiceChannel(0, TestPtvConsts.ELECTRONIC_CHANNEL_SERVICE_CHANNELS.length);
-    V8VmOpenApiElectronicChannelInBase ptvInResource = getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_IN_API, ptvId, V8VmOpenApiElectronicChannelInBase.class);
-    V8VmOpenApiElectronicChannel ptvOutResource = getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_OUT_API, ptvId, V8VmOpenApiElectronicChannel.class);
+    V9VmOpenApiElectronicChannelInBase ptvInResource = getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_IN_API, ptvId, V9VmOpenApiElectronicChannelInBase.class);
+    V9VmOpenApiElectronicChannel ptvOutResource = getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_OUT_API, ptvId, V9VmOpenApiElectronicChannel.class);
     
     getPtvServiceChannelMocker().mockElectronicPut(ptvId, ptvOutResource);
     
@@ -120,7 +120,7 @@ public class ElectronicServiceChannelInTestsIT extends AbstractPtvInTest {
     ));
     kuntaApiResource.setWebPages(createWebPages("en", "WebPage", WWW_EXAMPLE_COM, WWW_EXAMPLE_COM, null));
     
-    V8VmOpenApiElectronicChannelInBase ptvInResource = getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_IN_API, ptvId, V8VmOpenApiElectronicChannelInBase.class);
+    V9VmOpenApiElectronicChannelInBase ptvInResource = getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_IN_API, ptvId, V9VmOpenApiElectronicChannelInBase.class);
     ptvInResource.setAreas(Arrays.asList(createArea("Municipality", "12345")));
     ptvInResource.setAreaType("AreaType");
     ptvInResource.setAttachments(createPtvInAttachments("en", "https://www.example.com", "Example PDF", "PDF file for testing"));
@@ -134,7 +134,7 @@ public class ElectronicServiceChannelInTestsIT extends AbstractPtvInTest {
     ptvInResource.setSupportPhones(createPtvInPhones("en", "+358", "12345-FAKE", "Charged", "Testing", false, "Test phone"));
     ptvInResource.setWebPage(createPtvInLanguageItems("en", WWW_EXAMPLE_COM));
     
-    V8VmOpenApiElectronicChannel ptvOutResource =  getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_OUT_API, ptvId, V8VmOpenApiElectronicChannel.class);
+    V9VmOpenApiElectronicChannel ptvOutResource =  getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_OUT_API, ptvId, V9VmOpenApiElectronicChannel.class);
     
     getPtvServiceChannelMocker().mockElectronicPut(ptvId, ptvOutResource);
     

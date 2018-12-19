@@ -22,7 +22,7 @@ import fi.metatavu.kuntaapi.server.integrations.ptv.tasks.ServiceChannelTasksQue
 import fi.metatavu.kuntaapi.server.settings.SystemSettingController;
 import fi.metatavu.ptv.client.ApiResponse;
 import fi.metatavu.ptv.client.ResultType;
-import fi.metatavu.ptv.client.model.V8VmOpenApiPrintableFormChannel;
+import fi.metatavu.ptv.client.model.V9VmOpenApiPrintableFormChannel;
 
 @ApplicationScoped
 @Singleton
@@ -82,7 +82,7 @@ public class PtvPrintableFormServiceChannelIdRemoveDiscoverJob extends IdDiscove
       }
       
       String path = String.format("/api/%s/ServiceChannel/%s", PtvConsts.VERSION, ptvPrintableFormServiceChannelId.getId());
-      ApiResponse<V8VmOpenApiPrintableFormChannel> response = ptvClient.doGETRequest(null, path, new ResultType<V8VmOpenApiPrintableFormChannel>() {}, null, null);
+      ApiResponse<V9VmOpenApiPrintableFormChannel> response = ptvClient.doGETRequest(null, path, new ResultType<V9VmOpenApiPrintableFormChannel>() {}, null, null);
       if (response.getStatus() == 404) {
         serviceChannelTasksQueue.enqueueTask(new PrintableFormServiceChannelRemoveTask(false, ptvPrintableFormServiceChannelId));
       }

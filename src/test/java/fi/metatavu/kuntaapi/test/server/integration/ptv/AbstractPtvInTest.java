@@ -27,7 +27,7 @@ import fi.metatavu.ptv.client.model.V4VmOpenApiPhoneWithType;
 import fi.metatavu.ptv.client.model.V8VmOpenApiServiceHour;
 import fi.metatavu.ptv.client.model.V4VmOpenApiWebPage;
 import fi.metatavu.ptv.client.model.V8VmOpenApiAddressDeliveryIn;
-import fi.metatavu.ptv.client.model.V7VmOpenApiAddressWithMovingIn;
+import fi.metatavu.ptv.client.model.V9VmOpenApiAddressLocationIn;
 import fi.metatavu.ptv.client.model.VmOpenApiAddressPostOfficeBoxIn;
 import fi.metatavu.ptv.client.model.VmOpenApiAddressStreetIn;
 import fi.metatavu.ptv.client.model.VmOpenApiAddressStreetWithCoordinatesIn;
@@ -35,8 +35,8 @@ import fi.metatavu.ptv.client.model.VmOpenApiAreaIn;
 import fi.metatavu.ptv.client.model.VmOpenApiAttachment;
 import fi.metatavu.ptv.client.model.VmOpenApiLanguageItem;
 import fi.metatavu.ptv.client.model.VmOpenApiLocalizedListItem;
-import fi.metatavu.ptv.client.model.VmOpenApiServiceVoucher;
-import fi.metatavu.ptv.client.model.VmOpenApiWebPageWithOrderNumber;
+import fi.metatavu.ptv.client.model.V9VmOpenApiServiceVoucher;
+import fi.metatavu.ptv.client.model.V9VmOpenApiWebPage;
 import fi.metatavu.kuntaapi.server.integrations.ptv.translation.PtvAddressSubtype;
 
 @SuppressWarnings ({"squid:S00107", "squid:S2187"})
@@ -169,24 +169,22 @@ public class AbstractPtvInTest extends AbstractPtvTest {
     return result;
   }
 
-  protected List<VmOpenApiWebPageWithOrderNumber> createPtvInWebPages(String language, String url, String value) {
-    VmOpenApiWebPageWithOrderNumber result = new VmOpenApiWebPageWithOrderNumber();
+  protected List<V9VmOpenApiWebPage> createPtvInWebPages(String language, String url, String value) {
+    V9VmOpenApiWebPage result = new V9VmOpenApiWebPage();
     result.setLanguage(language);
-    result.setOrderNumber("1");
     result.setUrl(url);
     result.setValue(value);
     return Arrays.asList(result);
   }
 
-  protected List<V7VmOpenApiAddressWithMovingIn> createPtvInAddressAbroad(List<VmOpenApiLanguageItem> locationAbroad) {
+  protected List<V9VmOpenApiAddressLocationIn> createPtvInAddressAbroad(List<VmOpenApiLanguageItem> locationAbroad) {
     return createPtvInAddress(LOCATION, PtvAddressSubtype.ABROAD.getPtvValue(), null, null, null, Collections.emptyList(), locationAbroad);
   }
 
-  protected List<V7VmOpenApiAddressWithMovingIn> createPtvInAddress(String type, String subType, String country, VmOpenApiAddressStreetWithCoordinatesIn streetAddress, VmOpenApiAddressPostOfficeBoxIn postOfficeBoxAddress, List<VmOpenApiAddressStreetWithCoordinatesIn> multipointLocation, List<VmOpenApiLanguageItem> locationAbroad) {
-    V7VmOpenApiAddressWithMovingIn result = new V7VmOpenApiAddressWithMovingIn();
+  protected List<V9VmOpenApiAddressLocationIn> createPtvInAddress(String type, String subType, String country, VmOpenApiAddressStreetWithCoordinatesIn streetAddress, VmOpenApiAddressPostOfficeBoxIn postOfficeBoxAddress, List<VmOpenApiAddressStreetWithCoordinatesIn> multipointLocation, List<VmOpenApiLanguageItem> locationAbroad) {
+    V9VmOpenApiAddressLocationIn result = new V9VmOpenApiAddressLocationIn();
     result.setCountry(country);
     result.setLocationAbroad(locationAbroad);
-    result.setMultipointLocation(multipointLocation);
     result.setPostOfficeBoxAddress(postOfficeBoxAddress);
     result.setStreetAddress(streetAddress);
     result.setSubType(subType);
@@ -292,11 +290,10 @@ public class AbstractPtvInTest extends AbstractPtvTest {
     return Arrays.asList(result);
   }
 
-  protected List<VmOpenApiServiceVoucher> createPtvServiceVouchers(String language, String value, String url, String additionalInformation) {
-    VmOpenApiServiceVoucher result = new VmOpenApiServiceVoucher();
+  protected List<V9VmOpenApiServiceVoucher> createPtvServiceVouchers(String language, String value, String url, String additionalInformation) {
+    V9VmOpenApiServiceVoucher result = new V9VmOpenApiServiceVoucher();
     result.setAdditionalInformation(additionalInformation);
     result.setLanguage(language);
-    result.setOrderNumber(0);
     result.setUrl(url);
     result.setValue(value);
     return Arrays.asList(result);

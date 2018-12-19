@@ -40,7 +40,7 @@ import fi.metatavu.kuntaapi.server.tasks.jms.AbstractJmsJob;
 import fi.metatavu.kuntaapi.server.tasks.jms.JmsQueueProperties;
 import fi.metatavu.ptv.client.ApiResponse;
 import fi.metatavu.ptv.client.model.V5VmOpenApiOrganizationService;
-import fi.metatavu.ptv.client.model.V8VmOpenApiOrganization;
+import fi.metatavu.ptv.client.model.V9VmOpenApiOrganization;
 
 @ApplicationScoped
 @SuppressWarnings ("squid:S3306")
@@ -113,11 +113,11 @@ public class PtvOrganizationEntityDiscoverJob extends AbstractJmsJob<IdTask<Orga
       return;
     }
     
-    ApiResponse<V8VmOpenApiOrganization> response = ptvApi.getOrganizationApi().apiV8OrganizationByIdGet(ptvOrganizationId.getId());
+    ApiResponse<V9VmOpenApiOrganization> response = ptvApi.getOrganizationApi().apiV9OrganizationByIdGet(ptvOrganizationId.getId());
     if (response.isOk()) {
       Identifier identifier = identifierController.acquireIdentifier(orderIndex, ptvOrganizationId);
       OrganizationId kuntaApiOrganizationId = kuntaApiIdFactory.createFromIdentifier(OrganizationId.class, identifier);
-      V8VmOpenApiOrganization ptvOrganization = response.getResponse();
+      V9VmOpenApiOrganization ptvOrganization = response.getResponse();
       OrganizationId kuntaApiParentOrganizationId = translateParentOrganizationId(kuntaApiOrganizationId,
           ptvOrganization);
      
@@ -147,7 +147,7 @@ public class PtvOrganizationEntityDiscoverJob extends AbstractJmsJob<IdTask<Orga
     }
   }
 
-  private OrganizationId translateParentOrganizationId(OrganizationId kuntaApiOrganizationId, V8VmOpenApiOrganization ptvOrganization) {
+  private OrganizationId translateParentOrganizationId(OrganizationId kuntaApiOrganizationId, V9VmOpenApiOrganization ptvOrganization) {
     OrganizationId ptvParentOrganizationId = ptvIdFactory.createOrganizationId(ptvOrganization.getParentOrganizationId());
     OrganizationId kuntaApiParentOrganizationId = null;
     

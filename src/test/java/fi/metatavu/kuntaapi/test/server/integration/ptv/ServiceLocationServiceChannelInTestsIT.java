@@ -14,8 +14,8 @@ import com.github.tomakehurst.wiremock.junit.WireMockRule;
 import com.jayway.restassured.http.ContentType;
 
 import fi.metatavu.kuntaapi.server.rest.model.ServiceLocationServiceChannel;
-import fi.metatavu.ptv.client.model.V8VmOpenApiServiceLocationChannel;
-import fi.metatavu.ptv.client.model.V8VmOpenApiServiceLocationChannelInBase;
+import fi.metatavu.ptv.client.model.V9VmOpenApiServiceLocationChannel;
+import fi.metatavu.ptv.client.model.V9VmOpenApiServiceLocationChannelInBase;
 import fi.metatavu.kuntaapi.server.persistence.model.clients.AccessType;
 import fi.metatavu.kuntaapi.server.persistence.model.clients.ClientOrganizationPermission;
 import fi.metatavu.kuntaapi.test.AbstractPtvMocker;
@@ -77,8 +77,8 @@ public class ServiceLocationServiceChannelInTestsIT extends AbstractPtvInTest {
     grantOrganizationPermission(AccessType.READ_WRITE, organizationId, ClientOrganizationPermission.UPDATE_SERVICE_CHANNELS);
 
     ServiceLocationServiceChannel kuntaApiResource = getServiceLocationServiceChannel(0, TestPtvConsts.SERVICE_LOCATION_SERVICE_CHANNELS.length);
-    V8VmOpenApiServiceLocationChannelInBase ptvInResource = getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_IN_API, ptvId, V8VmOpenApiServiceLocationChannelInBase.class);
-    V8VmOpenApiServiceLocationChannel ptvOutResource =  getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_OUT_API, ptvId, V8VmOpenApiServiceLocationChannel.class);
+    V9VmOpenApiServiceLocationChannelInBase ptvInResource = getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_IN_API, ptvId, V9VmOpenApiServiceLocationChannelInBase.class);
+    V9VmOpenApiServiceLocationChannel ptvOutResource =  getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_OUT_API, ptvId, V9VmOpenApiServiceLocationChannel.class);
     
     getPtvServiceChannelMocker().mockServiceLocationPut(ptvId, ptvOutResource);
     
@@ -119,20 +119,20 @@ public class ServiceLocationServiceChannelInTestsIT extends AbstractPtvInTest {
     kuntaApiResource.setServiceHours(Arrays.asList(createServiceHour(false, Collections.emptyList(), "Exception", false, null, null, createLocalizedValue("en", "Test"))));
     kuntaApiResource.setWebPages(createWebPages("en", "WebPage", "https://www.example.com", "Example", "Example page"));
     
-    V8VmOpenApiServiceLocationChannelInBase ptvInResource = getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_IN_API, ptvId, V8VmOpenApiServiceLocationChannelInBase.class);
+    V9VmOpenApiServiceLocationChannelInBase ptvInResource = getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_IN_API, ptvId, V9VmOpenApiServiceLocationChannelInBase.class);
     ptvInResource.setAddresses(createPtvInAddressAbroad(createPtvInLanguageItems("en", "Far away")));
     ptvInResource.setAreas(Arrays.asList(createArea("Municipality", "12345")));
     ptvInResource.setAreaType("AreaType");
     ptvInResource.setServiceChannelDescriptions(createPtvInLocalizedItems("en", "Description", "Changed Description"));
     ptvInResource.setLanguages(Arrays.asList("en"));
-    ptvInResource.setServiceChannelNames(createPtvInLanguageItems("en", "Changed Name"));
+    ptvInResource.setServiceChannelNames(createPtvInLocalizedItems("en", "Name", "Changed Name"));
     ptvInResource.setEmails(createPtvInLanguageItems("en", "fake@example.com"));
     ptvInResource.setPhoneNumbers(createPtvInPhones("en", "+358", "12345-FAKE", "Charged", "Testing", false, "Test phone"));
     ptvInResource.setFaxNumbers(createPtvInFaxNumbers("en", "+258", "54321-FAKE", true));
     ptvInResource.setServiceHours(Arrays.asList(creaatePtvInServiceHour(false, Collections.emptyList(), "Exception", false, null, null, createPtvInLanguageItems("en", "Test"))));
     ptvInResource.setWebPages(createPtvInWebPages("en", "https://www.example.com", "Example"));
     
-    V8VmOpenApiServiceLocationChannel ptvOutResource =  getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_OUT_API, ptvId, V8VmOpenApiServiceLocationChannel.class);
+    V9VmOpenApiServiceLocationChannel ptvOutResource =  getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_OUT_API, ptvId, V9VmOpenApiServiceLocationChannel.class);
     
     getPtvServiceChannelMocker().mockServiceLocationPut(ptvId, ptvOutResource);
     

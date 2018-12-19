@@ -38,7 +38,7 @@ public class PtvOrganizationIdUpdater extends AbstractPtvOrganizationIdDiscoverJ
 
   @Override
   public ApiResponse<V8VmOpenApiOrganizationGuidPage> getPage(Integer page) {
-    return ptvApi.getOrganizationApi().apiV8OrganizationGet(page, null, null, PtvConsts.PUBLISHED_STATUS);
+    return ptvApi.getOrganizationApi().apiV9OrganizationGet(null, null, page, PtvConsts.PUBLISHED_STATUS);
   }
 
   @Override

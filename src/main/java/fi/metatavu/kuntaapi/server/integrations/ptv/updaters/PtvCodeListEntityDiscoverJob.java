@@ -115,19 +115,19 @@ public class PtvCodeListEntityDiscoverJob extends EntityDiscoverJob<PtvCodeListT
         executeAreaCodeListTask(codeListApi, "BusinessRegions", task.getType());
       break;
       case COUNTRY:
-        handleCountryCodeListResponse(codeListApi.apiV8CodeListGetCountryCodesGet(), task.getType());
+        handleCountryCodeListResponse(codeListApi.apiV9CodeListGetCountryCodesGet(), task.getType());
       break;
       case HOSPITAL_REGIONS:
         executeAreaCodeListTask(codeListApi, "HospitalRegions", task.getType());
       break;
       case LANGUAGE:
-        handleCodeListResponse(codeListApi.apiV8CodeListGetLanguageCodesGet(), task.getType());
+        handleCodeListResponse(codeListApi.apiV9CodeListGetLanguageCodesGet(), task.getType());
       break;
       case MUNICIPALITY:
-        handleCodeListResponse(codeListApi.apiV8CodeListGetMunicipalityCodesGet(), task.getType());
+        handleCodeListResponse(codeListApi.apiV9CodeListGetMunicipalityCodesGet(), task.getType());
       break;
       case POSTAL:
-        handleCodeListPagedResponse(codeListApi.apiV8CodeListGetPostalCodesGet(task.getPage()), task.getType());
+        handleCodeListPagedResponse(codeListApi.apiV9CodeListGetPostalCodesGet(task.getPage()), task.getType());
       break;
       case PROVINCE:
         executeAreaCodeListTask(codeListApi, "Province", task.getType());
@@ -137,7 +137,7 @@ public class PtvCodeListEntityDiscoverJob extends EntityDiscoverJob<PtvCodeListT
   }
 
   private void executeAreaCodeListTask(CodeListApi codeListApi, String areaCodeType, CodeType codeType) {
-    handleCodeListResponse(codeListApi.apiV8CodeListGetAreaCodesTypeByTypeGet(areaCodeType), codeType);
+    handleCodeListResponse(codeListApi.apiV9CodeListGetAreaCodesTypeByTypeGet(areaCodeType), codeType);
   }
 
   private void handleCodeListResponse(ApiResponse<List<VmOpenApiCodeListItem>> response, CodeType codeType) {
@@ -243,7 +243,7 @@ public class PtvCodeListEntityDiscoverJob extends EntityDiscoverJob<PtvCodeListT
   }
 
   private void fillQueuePostal(CodeListApi codeListApi) {
-    ApiResponse<VmOpenApiCodeListPage> postalCodesResponse = codeListApi.apiV8CodeListGetPostalCodesGet(0);
+    ApiResponse<VmOpenApiCodeListPage> postalCodesResponse = codeListApi.apiV9CodeListGetPostalCodesGet(0);
     if (postalCodesResponse.isOk()) {
       if (postalCodesResponse.getResponse() == null) {
         logger.log(Level.SEVERE, "Failed to read PTV code list size");
