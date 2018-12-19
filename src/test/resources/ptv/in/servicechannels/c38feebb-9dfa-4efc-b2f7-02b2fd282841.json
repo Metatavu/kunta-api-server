@@ -2,32 +2,36 @@
   "sourceId": null,
   "serviceChannelDescriptions": [
     {
-      "language" : "sv",
-      "value" : "Betalning av Vasa stads hissunderstöd kan du söka med betalningsansökan.",
-      "type" : "Description"
-    }, {
-      "language" : "sv",
-      "value" : "Betalning av Vasa stads hissunderstöd kan du söka med betalningsansökan.",
-      "type" : "Summary"
-    }, {
-      "language" : "fi",
-      "value" : "Vaasan kaupungin hissiavustuksen maksatusta voi hakea maksatushakemuksella.",
-      "type" : "Description"
-    }, {
-      "language" : "fi",
-      "value" : "Vaasan kaupungin hissiavustuksen maksatusta voi hakea maksatushakemuksella.",
-      "type" : "Summary"
+      "language": "sv",
+      "value": "Betalning av Vasa stads hissunderstöd kan du söka med betalningsansökan.",
+      "type": "Description"
+    },
+    {
+      "language": "sv",
+      "value": "Betalning av Vasa stads hissunderstöd kan du söka med betalningsansökan.",
+      "type": "Summary"
+    },
+    {
+      "language": "fi",
+      "value": "Vaasan kaupungin hissiavustuksen maksatusta voi hakea maksatushakemuksella.",
+      "type": "Description"
+    },
+    {
+      "language": "fi",
+      "value": "Vaasan kaupungin hissiavustuksen maksatusta voi hakea maksatushakemuksella.",
+      "type": "Summary"
     }
   ],
-  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "organizationId": "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
   "areaType": "LimitedType",
   "serviceChannelNames": [
     {
-      "language" : "fi",
-      "value" : "Maksatushakemus, hissi"
-    }, {
-      "language" : "sv",
-      "value" : "Betalningsansökan, hiss"
+      "value": "Maksatushakemus, hissi",
+      "language": "fi"
+    },
+    {
+      "value": "Betalningsansökan, hiss",
+      "language": "sv"
     }
   ],
   "areas": [
@@ -38,28 +42,24 @@
       ]
     }
   ],
-  "formIdentifier": [
-  ],
-  "deliveryAddresses": [
-  ],
+  "formIdentifier": [],
+  "deliveryAddresses": [],
   "channelUrls": [
     {
-      "language" : "fi",
-      "value" : "https://www.vaasa.fi/sites/default/files/maksatushakemus_0.pdf",
-      "type" : "PDF"
-    }, {
-      "language" : "sv",
-      "value" : "https://www.vaasa.fi/sites/default/files/maksatushakemus_ru_0.pdf",
-      "type" : "PDF"
+      "language": "fi",
+      "value": "https://www.vaasa.fi/sites/default/files/maksatushakemus_0.pdf",
+      "type": "PDF"
+    },
+    {
+      "language": "sv",
+      "value": "https://www.vaasa.fi/sites/default/files/maksatushakemus_ru_0.pdf",
+      "type": "PDF"
     }
   ],
-  "supportPhones": [
-  ],
-  "attachments": [
-  ],
+  "supportPhones": [],
+  "attachments": [],
   "deleteAllDeliveryAddresses": true,
-  "supportEmails": [
-  ],
+  "supportEmails": [],
   "deleteAllChannelUrls": true,
   "deleteAllAttachments": true,
   "deleteAllFormIdentifiers": true,

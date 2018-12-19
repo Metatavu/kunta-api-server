@@ -1,47 +1,55 @@
 {
-  "sourceId" : null,
+  "sourceId": null,
   "serviceChannelDescriptions": [
     {
-      "language" : "fi",
-      "value" : "Verkkosivulta löydät lisätietoa työllistymistä edistävästä monialaisesta yhteispalvelusta. ",
-      "type" : "Description"
-    }, {
-      "language" : "fi",
-      "value" : "Verkkosivulta löydät lisätietoa työllistymistä edistävästä monialaisesta yhteispalvelusta.",
-      "type" : "Summary"
-    }, {
-      "language" : "sv",
-      "value" : "På webbsidan hittar du tilläggsinformation om sektorsövergripande samservice som främjar sysselsättningen (TYP).",
-      "type" : "Summary"
-    }, {
-      "language" : "sv",
-      "value" : "På webbsidan hittar du tilläggsinformation om sektorsövergripande samservice som främjar sysselsättningen (TYP). \n",
-      "type" : "Description"
+      "language": "fi",
+      "value": "Verkkosivulta löydät lisätietoa työllistymistä edistävästä monialaisesta yhteispalvelusta. ",
+      "type": "Description"
+    },
+    {
+      "language": "fi",
+      "value": "Verkkosivulta löydät lisätietoa työllistymistä edistävästä monialaisesta yhteispalvelusta.",
+      "type": "Summary"
+    },
+    {
+      "language": "sv",
+      "value": "På webbsidan hittar du tilläggsinformation om sektorsövergripande samservice som främjar sysselsättningen (TYP).",
+      "type": "Summary"
+    },
+    {
+      "language": "sv",
+      "value": "På webbsidan hittar du tilläggsinformation om sektorsövergripande samservice som främjar sysselsättningen (TYP). \n",
+      "type": "Description"
     }
   ],
-  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "organizationId": "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
   "serviceChannelNames": [
     {
-      "language" : "sv",
-      "value" : "Sektorsövergripande samservice som främjar sysselsättningen"
-    }, {
-      "language" : "fi",
-      "value" : "Työllistymistä edistävä monialainen yhteispalvelu"
+      "value": "Sektorsövergripande samservice som främjar sysselsättningen",
+      "language": "sv"
+    },
+    {
+      "value": "Työllistymistä edistävä monialainen yhteispalvelu",
+      "language": "fi"
     }
   ],
   "webPage": [
     {
-      "value" : "https://www.vaasa.fi/node/28070",
-      "language" : "fi"
-    }, {
-      "value" : "https://www.vaasa.fi/sv/node/28070",
-      "language" : "sv"
+      "value": "https://www.vaasa.fi/node/28070",
+      "language": "fi"
+    },
+    {
+      "value": "https://www.vaasa.fi/sv/node/28070",
+      "language": "sv"
     }
   ],
-  "supportPhones" : [ ],
-  "supportEmails" : [ ],
-  "languages" : [ "fi", "sv" ],
-  "publishingStatus" : "Published",
+  "supportPhones": [],
+  "supportEmails": [],
+  "languages": [
+    "fi",
+    "sv"
+  ],
+  "publishingStatus": "Published",
   "isVisibleForAll": true,
   "deleteAllSupportEmails": true,
   "deleteAllSupportPhones": true
