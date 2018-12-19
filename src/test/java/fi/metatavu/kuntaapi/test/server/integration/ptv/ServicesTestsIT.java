@@ -321,6 +321,7 @@ public class ServicesTestsIT extends AbstractPtvTest {
 
     waitServiceChannels(0);
     waitServiceChannels(1);
+    waitServiceChannels(2);
     waitForElasticIndex();
     
     givenReadonly()
