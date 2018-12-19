@@ -90,6 +90,7 @@ public class PtvOutPtvInTranslator extends AbstractTranslator {
     result.setDeleteAllWebPages(true);
     result.setIsVisibleForAll(true);
     result.setDeleteAllPhoneNumbers(true);
+    result.setDeleteOid(false);
     result.setEmails(ptvResource.getEmails());
     result.setFaxNumbers(translateFaxNumbers(ptvResource.getPhoneNumbers()));
     result.setLanguages(ptvResource.getLanguages());
