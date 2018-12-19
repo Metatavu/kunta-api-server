@@ -87,7 +87,6 @@
   "otherResponsibleOrganizations": [],
   "serviceProducers": [
     {
-      "orderNumber": 0,
       "provisionType": "SelfProducedServices",
       "organizations": [
         "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5"
@@ -98,5 +97,7 @@
   "serviceVouchersInUse": false,
   "serviceVouchers": [],
   "publishingStatus": "Published",
-  "mainResponsibleOrganization": "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5"
+  "mainResponsibleOrganization": "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "validFrom": null,
+  "validTo": null
 }
