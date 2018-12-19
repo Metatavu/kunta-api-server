@@ -1,9 +1,11 @@
 {
   "sourceId": null,
+  "oid": null,
   "serviceChannelNames": [
     {
+      "language": "fi",
       "value": "Keskustan päiväkoti",
-      "language": "fi"
+      "type": null
     }
   ],
   "serviceChannelDescriptions": [
@@ -19,6 +21,7 @@
     }
   ],
   "organizationId": "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "displayNameType": null,
   "areaType": "LimitedType",
   "areas": [
     {
@@ -46,7 +49,6 @@
   ],
   "webPages": [
     {
-      "orderNumber": "1",
       "url": "http://www.naantali.fi/opetus_ja_koulutus/varhaiskasvatus/paivakodit/keskustan_pk/fi_FI/keskustan_pk/",
       "value": "Keskustan päiväkoti",
       "language": "fi"
@@ -76,8 +78,8 @@
         "latitude": "6713890.211",
         "longitude": "226225.47"
       },
+      "otherAddress": null,
       "locationAbroad": [],
-      "multipointLocation": [],
       "country": "FI"
     },
     {
@@ -98,8 +100,8 @@
         "latitude": "6713925.933",
         "longitude": "226321.604"
       },
+      "otherAddress": null,
       "locationAbroad": [],
-      "multipointLocation": [],
       "country": "FI"
     }
   ],
@@ -107,8 +109,11 @@
   "deleteAllEmails": true,
   "deleteAllPhoneNumbers": true,
   "deleteAllFaxNumbers": true,
+  "deleteOid": false,
   "publishingStatus": "Published",
   "isVisibleForAll": true,
+  "validFrom": null,
+  "validTo": null,
   "deleteAllWebPages": true,
   "deleteAllServiceHours": true
 }

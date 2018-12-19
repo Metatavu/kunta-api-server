@@ -65,6 +65,8 @@
   "deleteAllFormIdentifiers": true,
   "publishingStatus": "Published",
   "isVisibleForAll": true,
+  "validFrom": null,
+  "validTo": null,
   "deleteAllSupportEmails": true,
   "deleteAllSupportPhones": true
 }

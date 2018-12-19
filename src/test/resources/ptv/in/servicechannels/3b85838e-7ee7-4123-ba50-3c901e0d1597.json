@@ -49,8 +49,13 @@
     "fi",
     "sv"
   ],
+  "accessibilityClassificationLevel": null,
+  "wcagLevel": null,
+  "accessibilityStatementWebPage": null,
   "publishingStatus": "Published",
   "isVisibleForAll": true,
+  "validFrom": null,
+  "validTo": null,
   "deleteAllSupportEmails": true,
   "deleteAllSupportPhones": true
 }
