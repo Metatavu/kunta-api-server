@@ -37,14 +37,79 @@
       "type": "Description"
     }
   ],
+  "areaType": "LimitedType",
+  "areas": [
+    {
+      "type": "Municipality",
+      "code": null,
+      "name": null,
+      "municipalities": [
+        {
+          "code": "905",
+          "name": [
+            {
+              "value": "Vaasa",
+              "language": "fi"
+            },
+            {
+              "value": "Vasa",
+              "language": "sv"
+            },
+            {
+              "value": "Vaasa",
+              "language": "en"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "formIdentifier": [
+    {
+      "value": null,
+      "language": "fi"
+    },
+    {
+      "value": null,
+      "language": "sv"
+    }
+  ],
+  "deliveryAddresses": [
+    {
+      "subType": "NoAddress",
+      "postOfficeBoxAddress": null,
+      "streetAddress": null,
+      "deliveryAddressInText": [],
+      "receiver": [
+        {
+          "value": null,
+          "language": "fi"
+        },
+        {
+          "value": null,
+          "language": "sv"
+        }
+      ]
+    }
+  ],
+  "channelUrls": [
+    {
+      "language": "fi",
+      "value": "https://www.vaasa.fi/sites/default/files/hissiavustusanomus_uusi.pdf",
+      "type": "PDF"
+    },
+    {
+      "language": "sv",
+      "value": "https://www.vaasa.fi/sites/default/files/hissiavustusanomus_uusi_ruotsi.pdf",
+      "type": "PDF"
+    }
+  ],
+  "attachments": [],
   "supportPhones": [],
   "supportEmails": [],
   "languages": [],
   "webPages": [],
   "serviceHours": [],
-  "accessibilityClassificationLevel": null,
-  "wcagLevel": null,
-  "accessibilityStatementWebPage": null,
   "services": [
     {
       "service": {

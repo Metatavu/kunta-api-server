@@ -1,6 +1,7 @@
 {
   "id": "2481937a-5d4d-4643-a9b9-9877be5d4d3e",
   "sourceId": null,
+  "oid": null,
   "serviceChannelType": "ServiceLocation",
   "organizationId": "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
   "serviceChannelNames": [
@@ -10,6 +11,7 @@
       "type": "Name"
     }
   ],
+  "displayNameType": null,
   "serviceChannelDescriptions": [
     {
       "language": "fi",
@@ -22,8 +24,51 @@
       "type": "Description"
     }
   ],
-  "supportPhones": [],
-  "supportEmails": [],
+  "areaType": "LimitedType",
+  "areas": [
+    {
+      "type": "Municipality",
+      "code": null,
+      "name": null,
+      "municipalities": [
+        {
+          "code": "529",
+          "name": [
+            {
+              "value": "Naantali",
+              "language": "fi"
+            },
+            {
+              "value": "Nådendal",
+              "language": "sv"
+            },
+            {
+              "value": "Naantali",
+              "language": "en"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "phoneNumbers": [
+    {
+      "type": "Phone",
+      "additionalInformation": "Koulunjohtaja",
+      "serviceChargeType": "Chargeable",
+      "chargeDescription": null,
+      "prefixNumber": "+358",
+      "isFinnishServiceNumber": false,
+      "number": "405245847",
+      "language": "fi"
+    }
+  ],
+  "emails": [
+    {
+      "value": "etunimi.sukunimi@naantali.fi",
+      "language": "fi"
+    }
+  ],
   "languages": [
     "fi"
   ],
@@ -39,10 +84,105 @@
       "language": "fi"
     }
   ],
+  "addresses": [
+    {
+      "type": "Location",
+      "subType": "Single",
+      "postOfficeBoxAddress": null,
+      "streetAddress": {
+        "street": [
+          {
+            "value": "Piimätie",
+            "language": "fi"
+          }
+        ],
+        "streetNumber": "1",
+        "postalCode": "21140",
+        "postOffice": [
+          {
+            "value": "RYMÄTTYLÄ",
+            "language": "sv"
+          },
+          {
+            "value": "RYMÄTTYLÄ",
+            "language": "fi"
+          }
+        ],
+        "municipality": {
+          "code": "529",
+          "name": [
+            {
+              "value": "Naantali",
+              "language": "fi"
+            },
+            {
+              "value": "Nådendal",
+              "language": "sv"
+            },
+            {
+              "value": "Naantali",
+              "language": "en"
+            }
+          ]
+        },
+        "additionalInformation": [],
+        "latitude": "6703709.121",
+        "longitude": "221847.89",
+        "coordinateState": "EnteredByUser"
+      },
+      "otherAddress": null,
+      "locationAbroad": null,
+      "entrances": null,
+      "country": "FI"
+    },
+    {
+      "type": "Postal",
+      "subType": "PostOfficeBox",
+      "postOfficeBoxAddress": {
+        "postOfficeBox": [
+          {
+            "value": "PL 43",
+            "language": "fi"
+          }
+        ],
+        "postalCode": "21101",
+        "postOffice": [
+          {
+            "value": "NAANTALI",
+            "language": "sv"
+          },
+          {
+            "value": "NAANTALI",
+            "language": "fi"
+          }
+        ],
+        "municipality": {
+          "code": "529",
+          "name": [
+            {
+              "value": "Naantali",
+              "language": "fi"
+            },
+            {
+              "value": "Nådendal",
+              "language": "sv"
+            },
+            {
+              "value": "Naantali",
+              "language": "en"
+            }
+          ]
+        },
+        "additionalInformation": []
+      },
+      "streetAddress": null,
+      "otherAddress": null,
+      "locationAbroad": null,
+      "entrances": null,
+      "country": "FI"
+    }
+  ],
   "serviceHours": [],
-  "accessibilityClassificationLevel": null,
-  "wcagLevel": null,
-  "accessibilityStatementWebPage": null,
   "services": [
     {
       "service": {

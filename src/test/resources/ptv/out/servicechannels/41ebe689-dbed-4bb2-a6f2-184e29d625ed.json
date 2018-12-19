@@ -1,6 +1,7 @@
 {
   "id": "41ebe689-dbed-4bb2-a6f2-184e29d625ed",
   "sourceId": null,
+  "oid": null,
   "serviceChannelType": "ServiceLocation",
   "organizationId": "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
   "serviceChannelNames": [
@@ -10,6 +11,7 @@
       "type": "Name"
     }
   ],
+  "displayNameType": null,
   "serviceChannelDescriptions": [
     {
       "language": "fi",
@@ -22,8 +24,51 @@
       "type": "Description"
     }
   ],
-  "supportPhones": [],
-  "supportEmails": [],
+  "areaType": "LimitedType",
+  "areas": [
+    {
+      "type": "Municipality",
+      "code": null,
+      "name": null,
+      "municipalities": [
+        {
+          "code": "529",
+          "name": [
+            {
+              "value": "Naantali",
+              "language": "fi"
+            },
+            {
+              "value": "Nådendal",
+              "language": "sv"
+            },
+            {
+              "value": "Naantali",
+              "language": "en"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "phoneNumbers": [
+    {
+      "type": "Phone",
+      "additionalInformation": null,
+      "serviceChargeType": "Chargeable",
+      "chargeDescription": null,
+      "prefixNumber": "+358",
+      "isFinnishServiceNumber": false,
+      "number": "447334706",
+      "language": "fi"
+    }
+  ],
+  "emails": [
+    {
+      "value": "etunimi.sukunimi@naantali.fi",
+      "language": "fi"
+    }
+  ],
   "languages": [
     "fi"
   ],
@@ -34,10 +79,114 @@
       "language": "fi"
     }
   ],
+  "addresses": [
+    {
+      "type": "Location",
+      "subType": "Single",
+      "postOfficeBoxAddress": null,
+      "streetAddress": {
+        "street": [
+          {
+            "value": "Poikon Rantatie",
+            "language": "fi"
+          }
+        ],
+        "streetNumber": "1",
+        "postalCode": "21140",
+        "postOffice": [
+          {
+            "value": "RYMÄTTYLÄ",
+            "language": "sv"
+          },
+          {
+            "value": "RYMÄTTYLÄ",
+            "language": "fi"
+          }
+        ],
+        "municipality": {
+          "code": "529",
+          "name": [
+            {
+              "value": "Naantali",
+              "language": "fi"
+            },
+            {
+              "value": "Nådendal",
+              "language": "sv"
+            },
+            {
+              "value": "Naantali",
+              "language": "en"
+            }
+          ]
+        },
+        "additionalInformation": [
+          {
+            "value": "Esiopetus",
+            "language": "fi"
+          }
+        ],
+        "latitude": "6708891.73",
+        "longitude": "218798.447",
+        "coordinateState": "Ok"
+      },
+      "otherAddress": null,
+      "locationAbroad": null,
+      "entrances": null,
+      "country": "FI"
+    },
+    {
+      "type": "Location",
+      "subType": "Single",
+      "postOfficeBoxAddress": null,
+      "streetAddress": {
+        "street": [
+          {
+            "value": "Piimätie",
+            "language": "fi"
+          }
+        ],
+        "streetNumber": "1",
+        "postalCode": "21140",
+        "postOffice": [
+          {
+            "value": "RYMÄTTYLÄ",
+            "language": "sv"
+          },
+          {
+            "value": "RYMÄTTYLÄ",
+            "language": "fi"
+          }
+        ],
+        "municipality": {
+          "code": "529",
+          "name": [
+            {
+              "value": "Naantali",
+              "language": "fi"
+            },
+            {
+              "value": "Nådendal",
+              "language": "sv"
+            },
+            {
+              "value": "Naantali",
+              "language": "en"
+            }
+          ]
+        },
+        "additionalInformation": [],
+        "latitude": "6703699.121",
+        "longitude": "221751.39",
+        "coordinateState": "Ok"
+      },
+      "otherAddress": null,
+      "locationAbroad": null,
+      "entrances": null,
+      "country": "FI"
+    }
+  ],
   "serviceHours": [],
-  "accessibilityClassificationLevel": null,
-  "wcagLevel": null,
-  "accessibilityStatementWebPage": null,
   "services": [
     {
       "service": {

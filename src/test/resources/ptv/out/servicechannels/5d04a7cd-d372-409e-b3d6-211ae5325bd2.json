@@ -1,6 +1,7 @@
 {
   "id": "5d04a7cd-d372-409e-b3d6-211ae5325bd2",
   "sourceId": null,
+  "oid": null,
   "serviceChannelType": "ServiceLocation",
   "organizationId": "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
   "serviceChannelNames": [
@@ -10,6 +11,7 @@
       "type": "Name"
     }
   ],
+  "displayNameType": null,
   "serviceChannelDescriptions": [
     {
       "language": "fi",
@@ -22,8 +24,46 @@
       "type": "Description"
     }
   ],
-  "supportPhones": [],
-  "supportEmails": [],
+  "areaType": "LimitedType",
+  "areas": [
+    {
+      "type": "Municipality",
+      "code": null,
+      "name": null,
+      "municipalities": [
+        {
+          "code": "905",
+          "name": [
+            {
+              "value": "Vaasa",
+              "language": "fi"
+            },
+            {
+              "value": "Vasa",
+              "language": "sv"
+            },
+            {
+              "value": "Vaasa",
+              "language": "en"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "phoneNumbers": [
+    {
+      "type": "Phone",
+      "additionalInformation": "Rehtori",
+      "serviceChargeType": "Chargeable",
+      "chargeDescription": null,
+      "prefixNumber": "+358",
+      "isFinnishServiceNumber": false,
+      "number": "405081447",
+      "language": "fi"
+    }
+  ],
+  "emails": [],
   "languages": [
     "fi"
   ],
@@ -34,10 +74,59 @@
       "language": "fi"
     }
   ],
+  "addresses": [
+    {
+      "type": "Location",
+      "subType": "Single",
+      "postOfficeBoxAddress": null,
+      "streetAddress": {
+        "street": [
+          {
+            "value": "Savilahdentie",
+            "language": "fi"
+          }
+        ],
+        "streetNumber": "1-5",
+        "postalCode": "66500",
+        "postOffice": [
+          {
+            "value": "LILLKYRO",
+            "language": "sv"
+          },
+          {
+            "value": "VÄHÄKYRÖ",
+            "language": "fi"
+          }
+        ],
+        "municipality": {
+          "code": "905",
+          "name": [
+            {
+              "value": "Vaasa",
+              "language": "fi"
+            },
+            {
+              "value": "Vasa",
+              "language": "sv"
+            },
+            {
+              "value": "Vaasa",
+              "language": "en"
+            }
+          ]
+        },
+        "additionalInformation": [],
+        "latitude": "7001175.174",
+        "longitude": "252680.849",
+        "coordinateState": "Ok"
+      },
+      "otherAddress": null,
+      "locationAbroad": null,
+      "entrances": null,
+      "country": "FI"
+    }
+  ],
   "serviceHours": [],
-  "accessibilityClassificationLevel": null,
-  "wcagLevel": null,
-  "accessibilityStatementWebPage": null,
   "services": [
     {
       "service": {

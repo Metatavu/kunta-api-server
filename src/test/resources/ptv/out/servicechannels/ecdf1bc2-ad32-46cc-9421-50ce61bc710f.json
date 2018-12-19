@@ -1,6 +1,7 @@
 {
   "id": "ecdf1bc2-ad32-46cc-9421-50ce61bc710f",
   "sourceId": null,
+  "oid": null,
   "serviceChannelType": "ServiceLocation",
   "organizationId": "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
   "serviceChannelNames": [
@@ -15,6 +16,7 @@
       "type": "Name"
     }
   ],
+  "displayNameType": null,
   "serviceChannelDescriptions": [
     {
       "language": "fi",
@@ -37,8 +39,56 @@
       "type": "Description"
     }
   ],
-  "supportPhones": [],
-  "supportEmails": [],
+  "areaType": "LimitedType",
+  "areas": [
+    {
+      "type": "Municipality",
+      "code": null,
+      "name": null,
+      "municipalities": [
+        {
+          "code": "905",
+          "name": [
+            {
+              "value": "Vaasa",
+              "language": "fi"
+            },
+            {
+              "value": "Vasa",
+              "language": "sv"
+            },
+            {
+              "value": "Vaasa",
+              "language": "en"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "phoneNumbers": [
+    {
+      "type": "Phone",
+      "additionalInformation": "Rehtori",
+      "serviceChargeType": "Chargeable",
+      "chargeDescription": null,
+      "prefixNumber": "+358",
+      "isFinnishServiceNumber": false,
+      "number": "405813148",
+      "language": "fi"
+    },
+    {
+      "type": "Phone",
+      "additionalInformation": "Rektor",
+      "serviceChargeType": "Chargeable",
+      "chargeDescription": null,
+      "prefixNumber": "+358",
+      "isFinnishServiceNumber": false,
+      "number": "405813148",
+      "language": "sv"
+    }
+  ],
+  "emails": [],
   "languages": [
     "sv"
   ],
@@ -54,10 +104,63 @@
       "language": "sv"
     }
   ],
+  "addresses": [
+    {
+      "type": "Location",
+      "subType": "Single",
+      "postOfficeBoxAddress": null,
+      "streetAddress": {
+        "street": [
+          {
+            "value": "Urheilukatu",
+            "language": "fi"
+          },
+          {
+            "value": "Idrottsgatan",
+            "language": "sv"
+          }
+        ],
+        "streetNumber": "10",
+        "postalCode": "65200",
+        "postOffice": [
+          {
+            "value": "VASA",
+            "language": "sv"
+          },
+          {
+            "value": "VAASA",
+            "language": "fi"
+          }
+        ],
+        "municipality": {
+          "code": "905",
+          "name": [
+            {
+              "value": "Vaasa",
+              "language": "fi"
+            },
+            {
+              "value": "Vasa",
+              "language": "sv"
+            },
+            {
+              "value": "Vaasa",
+              "language": "en"
+            }
+          ]
+        },
+        "additionalInformation": [],
+        "latitude": "7009933.144",
+        "longitude": "228142.875",
+        "coordinateState": "Ok"
+      },
+      "otherAddress": null,
+      "locationAbroad": null,
+      "entrances": null,
+      "country": "FI"
+    }
+  ],
   "serviceHours": [],
-  "accessibilityClassificationLevel": null,
-  "wcagLevel": null,
-  "accessibilityStatementWebPage": null,
   "services": [
     {
       "service": {

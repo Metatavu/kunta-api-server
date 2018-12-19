@@ -22,6 +22,106 @@
       "type": "Description"
     }
   ],
+  "areaType": "LimitedType",
+  "areas": [
+    {
+      "type": "Municipality",
+      "code": null,
+      "name": null,
+      "municipalities": [
+        {
+          "code": "529",
+          "name": [
+            {
+              "value": "Naantali",
+              "language": "fi"
+            },
+            {
+              "value": "Nådendal",
+              "language": "sv"
+            },
+            {
+              "value": "Naantali",
+              "language": "en"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "formIdentifier": [
+    {
+      "value": null,
+      "language": "fi"
+    }
+  ],
+  "deliveryAddresses": [
+    {
+      "subType": "PostOfficeBox",
+      "postOfficeBoxAddress": {
+        "postOfficeBox": [
+          {
+            "value": "PL 43",
+            "language": "fi"
+          },
+          {
+            "value": "PL 43",
+            "language": "sv"
+          }
+        ],
+        "postalCode": "21101",
+        "postOffice": [
+          {
+            "value": "NAANTALI",
+            "language": "sv"
+          },
+          {
+            "value": "NAANTALI",
+            "language": "fi"
+          }
+        ],
+        "municipality": {
+          "code": "529",
+          "name": [
+            {
+              "value": "Naantali",
+              "language": "fi"
+            },
+            {
+              "value": "Nådendal",
+              "language": "sv"
+            },
+            {
+              "value": "Naantali",
+              "language": "en"
+            }
+          ]
+        },
+        "additionalInformation": [
+          {
+            "value": "Hakemuksen voi myös tuoda kaupungintalon Palvelupisteeseen osoitteeseen: Käsityöläiskatu 2, tai lähettää sähköpostilla suoraan toimitusinsiöörille.",
+            "language": "fi"
+          }
+        ]
+      },
+      "streetAddress": null,
+      "deliveryAddressInText": null,
+      "receiver": [
+        {
+          "value": "Tekniset palvelut / Maankäyttöosasto",
+          "language": "fi"
+        }
+      ]
+    }
+  ],
+  "channelUrls": [
+    {
+      "language": "fi",
+      "value": "http://www.naantali.fi/kaavoitus_ja_mittaus/kiinteiston_muodostus/fi_FI/tontin_lohkominen/_files/90497689943943513/default/kiinteistotoimitushakemus_taytettava.pdf",
+      "type": "PDF"
+    }
+  ],
+  "attachments": [],
   "supportPhones": [
     {
       "additionalInformation": "toimitusinsinööri Seija Malmsten",
@@ -42,9 +142,6 @@
   "languages": [],
   "webPages": [],
   "serviceHours": [],
-  "accessibilityClassificationLevel": null,
-  "wcagLevel": null,
-  "accessibilityStatementWebPage": null,
   "services": [
     {
       "service": {

@@ -22,6 +22,12 @@
       "type": "Description"
     }
   ],
+  "areaType": null,
+  "areas": [],
+  "signatureQuantity": 0,
+  "requiresSignature": false,
+  "requiresAuthentication": false,
+  "attachments": [],
   "supportPhones": [],
   "supportEmails": [
     {

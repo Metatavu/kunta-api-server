@@ -22,6 +22,37 @@
       "type": "Description"
     }
   ],
+  "areaType": "LimitedType",
+  "areas": [
+    {
+      "type": "Municipality",
+      "code": null,
+      "name": null,
+      "municipalities": [
+        {
+          "code": "529",
+          "name": [
+            {
+              "value": "Naantali",
+              "language": "fi"
+            },
+            {
+              "value": "Nådendal",
+              "language": "sv"
+            },
+            {
+              "value": "Naantali",
+              "language": "en"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "signatureQuantity": 0,
+  "requiresSignature": false,
+  "requiresAuthentication": true,
+  "attachments": [],
   "supportPhones": [],
   "supportEmails": [],
   "languages": [],

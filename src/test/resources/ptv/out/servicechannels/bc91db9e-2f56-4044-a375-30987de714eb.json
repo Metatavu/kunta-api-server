@@ -22,7 +22,65 @@
       "type": "Description"
     }
   ],
-  "supportPhones": [],
+  "areaType": "LimitedType",
+  "areas": [
+    {
+      "type": "Municipality",
+      "code": null,
+      "name": null,
+      "municipalities": [
+        {
+          "code": "529",
+          "name": [
+            {
+              "value": "Naantali",
+              "language": "fi"
+            },
+            {
+              "value": "Nådendal",
+              "language": "sv"
+            },
+            {
+              "value": "Naantali",
+              "language": "en"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "phoneNumbers": [
+    {
+      "type": "Phone",
+      "additionalInformation": "Lietsalan, Suopellon ja Taimon koulut; Nuhjalan, Ruonan, Soinisten, Suovuoren, Taimon ja Tammiston päiväkodit",
+      "serviceChargeType": "Chargeable",
+      "chargeDescription": null,
+      "prefixNumber": "+358",
+      "isFinnishServiceNumber": false,
+      "number": "447334527",
+      "language": "fi"
+    },
+    {
+      "type": "Phone",
+      "additionalInformation": "Karvetin, Kultarannan, Kuparivuoren, Merimaskun ja Rymättylän koulut; Merimaskun, Rymättylän ja Viialan päiväkodit",
+      "serviceChargeType": "Chargeable",
+      "chargeDescription": null,
+      "prefixNumber": "+358",
+      "isFinnishServiceNumber": false,
+      "number": "447334536",
+      "language": "fi"
+    },
+    {
+      "type": "Phone",
+      "additionalInformation": "Maijamäen ja Velkuan koulut sekä Naantalin lukio; Karvetin (Lietsalan), Keskustan, Kreivinniityn, Velkuan päiväkodit ja Vuoropäiväkoti",
+      "serviceChargeType": "Chargeable",
+      "chargeDescription": null,
+      "prefixNumber": "+358",
+      "isFinnishServiceNumber": false,
+      "number": "447334634",
+      "language": "fi"
+    }
+  ],
   "supportEmails": [],
   "languages": [
     "fi"
@@ -75,9 +133,6 @@
       ]
     }
   ],
-  "accessibilityClassificationLevel": null,
-  "wcagLevel": null,
-  "accessibilityStatementWebPage": null,
   "services": [
     {
       "service": {
