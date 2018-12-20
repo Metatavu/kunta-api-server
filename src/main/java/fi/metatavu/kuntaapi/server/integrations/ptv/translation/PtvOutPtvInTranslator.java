@@ -102,6 +102,8 @@ public class PtvOutPtvInTranslator extends AbstractTranslator {
     result.setServiceHours(ptvResource.getServiceHours());
     result.setSourceId(ptvResource.getSourceId());
     result.setWebPages(ptvResource.getWebPages());
+    result.setDisplayNameType(ptvResource.getDisplayNameType());
+    result.setOid(ptvResource.getOid());
     
     return result;
   }

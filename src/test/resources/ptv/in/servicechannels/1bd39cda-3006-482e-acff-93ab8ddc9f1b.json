@@ -134,7 +134,7 @@
   "deleteAllEmails": true,
   "deleteAllPhoneNumbers": true,
   "deleteAllFaxNumbers": true,
-  "deleteOid": true,
+  "deleteOid": false,
   "publishingStatus": "Published",
   "isVisibleForAll": true,
   "validFrom": null,
