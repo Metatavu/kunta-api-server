@@ -104,6 +104,6 @@
   "deleteServiceChargeType": true,
   "deleteGeneralDescriptionId": false,
   "mainResponsibleOrganization": "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
-  "validFrom": null,
-  "validTo": null
+  "validFrom": "2018-07-06T00:00:00.000Z",
+  "validTo": "2018-07-06T00:00:00.000Z"
 }

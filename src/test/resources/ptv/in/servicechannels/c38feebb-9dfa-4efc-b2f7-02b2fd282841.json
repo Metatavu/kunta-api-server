@@ -65,8 +65,8 @@
   "deleteAllFormIdentifiers": true,
   "publishingStatus": "Published",
   "isVisibleForAll": true,
-  "validFrom": null,
-  "validTo": null,
+  "validFrom": "2018-07-06T00:00:00.000Z",
+  "validTo": "2018-07-06T00:00:00.000Z",
   "deleteAllSupportEmails": true,
   "deleteAllSupportPhones": true
 }
