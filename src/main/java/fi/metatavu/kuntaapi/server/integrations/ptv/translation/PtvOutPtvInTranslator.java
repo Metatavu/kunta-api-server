@@ -131,6 +131,9 @@ public class PtvOutPtvInTranslator extends AbstractTranslator {
     result.setSupportEmails(ptvResource.getSupportEmails());
     result.setSupportPhones(ptvResource.getSupportPhones());
     result.setWebPage(translateWebPagesToLanguageItems(ptvResource.getWebPages()));
+    result.setAccessibilityClassificationLevel(ptvResource.getAccessibilityClassificationLevel());
+    result.setAccessibilityStatementWebPage(ptvResource.getAccessibilityStatementWebPage());
+    result.setWcagLevel(ptvResource.getWcagLevel());
     
     return result;
   }
@@ -215,7 +218,9 @@ public class PtvOutPtvInTranslator extends AbstractTranslator {
     result.setSupportEmails(ptvResource.getSupportEmails());
     result.setSupportPhones(ptvResource.getSupportPhones());
     result.setWebPage(translateWebPagesToLanguageItems(ptvResource.getWebPages()));
-    
+    result.setAccessibilityClassificationLevel(ptvResource.getAccessibilityClassificationLevel());
+    result.setAccessibilityStatementWebPage(ptvResource.getAccessibilityStatementWebPage());
+    result.setWcagLevel(ptvResource.getWcagLevel());    
     return result;
   }
 

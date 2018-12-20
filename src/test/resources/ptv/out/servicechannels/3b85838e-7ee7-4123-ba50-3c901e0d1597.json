@@ -56,8 +56,8 @@
     }
   ],
   "serviceHours": [],
-  "accessibilityClassificationLevel": null,
-  "wcagLevel": null,
+  "accessibilityClassificationLevel": "accessibilityClassificationLevel",
+  "wcagLevel": "AA",
   "accessibilityStatementWebPage": [
     {
       "url": "https://www.example.com",
