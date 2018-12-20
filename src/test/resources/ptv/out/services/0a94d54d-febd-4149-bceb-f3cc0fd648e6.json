@@ -215,9 +215,148 @@
       },
       "serviceChargeType": null,
       "description": [],
-      "extraTypes": null,
-      "serviceHours": null,
-      "contactDetails": null,
+      "extraTypes": [
+        {
+          "type": "type",
+          "code": "code",
+          "name": [
+            {
+              "value": "value",
+              "language": "en"
+            }
+          ],
+          "description": [
+            {
+              "value": "value",
+              "language": "en"
+            }
+          ]
+        }
+      ],
+      "serviceHours": [
+        {
+          "serviceHourType": "serviceHourType",
+          "validFrom": "2018-07-06T00:00:00.000Z",
+          "validTo": "2018-07-06T00:00:00.000Z",
+          "additionalInformation": [
+            {
+              "value": "value",
+              "language": "en"
+            }
+          ],
+          "openingHour": [
+            {
+              "dayFrom": "Monday",
+              "dayTo": "Friday",
+              "from": "08:00",
+              "to": "16:00"
+            }
+          ]
+        }
+      ],
+      "contactDetails": {
+        "emails": [
+          {
+            "value": "value",
+            "language": "en"
+          }
+        ],
+        "phoneNumbers": [
+          {
+            "type": "type",
+            "additionalInformation": "additionalInformation",
+            "serviceChargeType": "serviceChargeType",
+            "chargeDescription": "chargeDescription",
+            "prefixNumber": "+358",
+            "number": "012 345 6789",
+            "language": "en"
+          }
+        ],
+        "webPages": [
+          {
+            "url": "https://www.example.com",
+            "value": "value",
+            "language": "en"
+          }
+        ],
+        "addresses": [
+          {
+            "type": "type",
+            "subType": "subType",
+            "postOfficeBoxAddress": {
+              "postOfficeBox": [
+                {
+                  "value": "value",
+                  "language": "en"
+                }
+              ],
+              "postalCode": "12345",
+              "postOffice": [
+                {
+                  "value": "value",
+                  "language": "en"
+                }
+              ],
+              "municipality": {
+                "code": "code",
+                "name": [
+                  {
+                    "value": "value",
+                    "language": "en"
+                  }
+                ]
+              },
+              "additionalInformation": [
+                {
+                  "value": "value",
+                  "language": "en"
+                }
+              ]
+            },
+            "streetAddress": {
+              "street": [
+                {
+                  "value": "value",
+                  "language": "en"
+                }
+              ],
+              "streetNumber": "55",
+              "postalCode": "12345",
+              "postOffice": [
+                {
+                  "value": "value",
+                  "language": "en"
+                }
+              ],
+              "municipality": {
+                "code": "code",
+                "name": [
+                  {
+                    "value": "value",
+                    "language": "en"
+                  }
+                ]
+              },
+              "additionalInformation": [
+                {
+                  "value": "value",
+                  "language": "en"
+                }
+              ],
+              "latitude": "61.6887",
+              "longitude": "27.2721",
+              "coordinateState": "OK"
+            },
+            "locationAbroad": [
+              {
+                "value": "value",
+                "language": "en"
+              }
+            ],
+            "country": "en"
+          }
+        ]
+      },
       "digitalAuthorizations": []
     }
   ],

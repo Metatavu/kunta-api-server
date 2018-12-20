@@ -21,7 +21,12 @@
     }
   ],
   "organizationId": "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
-  "displayNameType": null,
+  "displayNameType": [
+    {
+      "type": "type",
+      "language": "en"
+    }
+  ],
   "areaType": "LimitedType",
   "areas": [
     {
@@ -78,7 +83,17 @@
         "latitude": "6713890.211",
         "longitude": "226225.47"
       },
-      "otherAddress": null,
+      "otherAddress": {
+        "latitude": "61.6887",
+        "longitude": "27.2721",
+        "postalCode": "12345",
+        "additionalInformation": [
+          {
+            "value": "value",
+            "language": "en"
+          }
+        ]
+      },
       "locationAbroad": [],
       "country": "FI"
     },
@@ -100,7 +115,17 @@
         "latitude": "6713925.933",
         "longitude": "226321.604"
       },
-      "otherAddress": null,
+      "otherAddress": {
+        "latitude": "61.6887",
+        "longitude": "27.2721",
+        "postalCode": "12345",
+        "additionalInformation": [
+          {
+            "value": "value",
+            "language": "en"
+          }
+        ]
+      },
       "locationAbroad": [],
       "country": "FI"
     }
@@ -109,7 +134,7 @@
   "deleteAllEmails": true,
   "deleteAllPhoneNumbers": true,
   "deleteAllFaxNumbers": true,
-  "deleteOid": false,
+  "deleteOid": null,
   "publishingStatus": "Published",
   "isVisibleForAll": true,
   "validFrom": null,

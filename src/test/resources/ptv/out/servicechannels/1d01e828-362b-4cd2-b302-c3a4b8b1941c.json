@@ -46,7 +46,13 @@
   "serviceHours": [],
   "accessibilityClassificationLevel": null,
   "wcagLevel": null,
-  "accessibilityStatementWebPage": null,
+  "accessibilityStatementWebPage": [
+    {
+      "url": "https://www.example.com",
+      "value": "value",
+      "language": "en"
+    }
+  ],
   "services": [
     {
       "service": {

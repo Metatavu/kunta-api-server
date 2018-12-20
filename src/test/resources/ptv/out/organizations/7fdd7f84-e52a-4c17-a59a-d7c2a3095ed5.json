@@ -180,7 +180,23 @@
         "longitude": "228184.6",
         "coordinateState": "Ok"
       },
-      "otherAddress": null,
+      "otherAddress": {
+        "latitude": "61.6887",
+        "longitude": "27.2721",
+        "postalCode": "12345",
+        "postOffice": [
+          {
+            "value": "value",
+            "language": "en"
+          }
+        ],
+        "additionalInformation": [
+          {
+            "value": "value",
+            "language": "en"
+          }
+        ]
+      },
       "foreignAddress": null,
       "country": "FI"
     }

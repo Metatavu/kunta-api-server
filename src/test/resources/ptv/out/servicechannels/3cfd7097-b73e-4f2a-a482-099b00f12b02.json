@@ -11,7 +11,12 @@
       "type": "Name"
     }
   ],
-  "displayNameType": null,
+  "displayNameType": [
+    {
+      "type": "type",
+      "language": "en"
+    }
+  ],
   "serviceChannelDescriptions": [
     {
       "language": "fi",
@@ -140,7 +145,23 @@
         "longitude": "218257.487",
         "coordinateState": "EnteredByUser"
       },
-      "otherAddress": null,
+      "otherAddress": {
+        "latitude": "61.6887",
+        "longitude": "27.2721",
+        "postalCode": "12345",
+        "postOffice": [
+          {
+            "value": "value",
+            "language": "en"
+          }
+        ],
+        "additionalInformation": [
+          {
+            "value": "value",
+            "language": "en"
+          }
+        ]
+      },
       "locationAbroad": null,
       "entrances": null,
       "country": "FI"
@@ -186,7 +207,23 @@
         "additionalInformation": []
       },
       "streetAddress": null,
-      "otherAddress": null,
+      "otherAddress": {
+        "latitude": "61.6887",
+        "longitude": "27.2721",
+        "postalCode": "12345",
+        "postOffice": [
+          {
+            "value": "value",
+            "language": "en"
+          }
+        ],
+        "additionalInformation": [
+          {
+            "value": "value",
+            "language": "en"
+          }
+        ]
+      },
       "locationAbroad": null,
       "entrances": null,
       "country": "FI"

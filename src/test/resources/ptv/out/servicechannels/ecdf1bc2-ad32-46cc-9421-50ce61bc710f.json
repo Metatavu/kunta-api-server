@@ -16,7 +16,12 @@
       "type": "Name"
     }
   ],
-  "displayNameType": null,
+  "displayNameType": [
+    {
+      "type": "type",
+      "language": "en"
+    }
+  ],
   "serviceChannelDescriptions": [
     {
       "language": "fi",
@@ -154,7 +159,23 @@
         "longitude": "228142.875",
         "coordinateState": "Ok"
       },
-      "otherAddress": null,
+      "otherAddress": {
+        "latitude": "61.6887",
+        "longitude": "27.2721",
+        "postalCode": "12345",
+        "postOffice": [
+          {
+            "value": "value",
+            "language": "en"
+          }
+        ],
+        "additionalInformation": [
+          {
+            "value": "value",
+            "language": "en"
+          }
+        ]
+      },
       "locationAbroad": null,
       "entrances": null,
       "country": "FI"
