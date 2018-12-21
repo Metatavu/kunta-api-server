@@ -1034,10 +1034,21 @@
                     <command>/subsystem=messaging-activemq/server=default/jms-queue=management-news:add(entries=[java:/jms/queue/management-news])</command>
                     <command>/subsystem=messaging-activemq/server=default/jms-queue=management-pages:add(entries=[java:/jms/queue/management-pages])</command>
                     <command>/subsystem=messaging-activemq/server=default/jms-queue=management-banners:add(entries=[java:/jms/queue/management-banners])</command>
-                    <command>/:reload</command>
                   </commands>
                 </configuration>
               </execution>
+              
+              <execution>
+                <id>wildfly-reload</id>
+                <phase>pre-integration-test</phase>
+                <goals>
+                  <goal>shutdown</goal>
+                </goals>
+                <configuration>
+                  <reload>true</reload>
+                </configuration>
+              </execution>
+              
               <execution>
                 <id>deploy</id>
                 <phase>pre-integration-test</phase>
