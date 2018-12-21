@@ -1,6 +1,7 @@
 {
   "sourceId": null,
   "generalDescriptionId": null,
+  "subType" : "subType",
   "type": "Service",
   "fundingType": "PubliclyFunded",
   "serviceNames": [
